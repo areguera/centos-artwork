@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manual describes what the CentOS Artwork Repository is and what
+can you do inside it.
+
+Copyright C 2009, 2010 CentOS Artwork SIG. All rights
+reserved.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
+copy of the license is included in the section entitled GNU Free
+Documentation License.  
+-->
+<!-- Created on September, 18 2010 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>CentOS Artwork Repository: 3.28 trunk/Scripts/Bash/Config</title>
+
+<meta name="description" content="CentOS Artwork Repository: 3.28 trunk/Scripts/Bash/Config">
+<meta name="keywords" content="CentOS Artwork Repository: 3.28 trunk/Scripts/Bash/Config">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.76">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+@import "/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Texi2html/common.css";
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="repository_30.html#SEC158" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC160" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_55.html#SEC296" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="repository_55.html#SEC296" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="trunk-Scripts-Bash-Config"></a>
+<a name="SEC159"></a>
+<h2 class="section"> 3.28 trunk/Scripts/Bash/Config </h2>
+
+
+<a name="SEC160"></a>
+<h3 class="subsection"> 3.28.1 Goals </h3>
+
+<p>The <tt>`trunk/Scripts/Bash/Config'</tt> directory exists to oraganize
+pre-rendering configuration scripts.
+</p>
+
+<a name="SEC161"></a>
+<h3 class="subsection"> 3.28.2 Description </h3>
+
+<p>Pre-rendering configuration scripts let you customize the way
+<code>centos-art.sh</code> script renders identity and translation
+repository entries.  Pre-rendering configuration scripts are
+<tt>`render.conf.sh'</tt> files with <code>loadConfiguration</code> function
+definition inside. 
+</p>
+<p>There is one <tt>`render.conf.sh'</tt> file for each pre-rendering
+configuration entry. Pre-rendering configuration entries can be based
+both on identity and translation repository entires.  Pre-rendering
+configuration entries are required for each identity entry, but not
+for translation entries. 
+</p>
+
+<a name="SEC162"></a>
+<h4 class="subsubsection"> 3.28.2.1 The <tt>`render.conf.sh'</tt> identity model </h4>
+
+<p>Inside CentOS Artwork Repository, we consider directories under
+<tt>`trunk/Identity'</tt> as identity entries. Identity entries can be
+image-based or text-based. When you render image-based identity
+entries you need to use image-based pre-rendering configuration
+scripts. Likewise, when you render text-based identity entries you
+need to use text-based pre-rendering configuration scripts.
+</p>
+<p>Inside both image-based and text-based identity pre-rendering
+configuration scripts, we use the <samp>`ACTIONS'</samp> array variable to
+define the way <code>centos-art.sh</code> script performs identity
+rendering. The first entry inside <samp>`ACTIONS'</samp> array variable (i.e.,
+<samp>`ACTIONS[0]'</samp>) is reserved to define the primary rendering action
+(i.e, <samp>`renderImage'</samp> or <samp>`renderText'</samp>).  Further entries
+inside <samp>`ACTIONS'</samp> (i.e., <samp>`ACTIONS[1]'</samp>, <samp>`ACTIONS[2]'</samp>,
+etc.) are used to define identity post-rendering actions.
+</p>
+<p>Inside identity pre-rendering configuration scripts, image-based
+pre-rendering configuration scripts look like the following:
+</p>
+<pre class="verbatim">#!/bin/bash
+
+function loadConfiguration {
+
+    # Define post-rendering actions. An empty value means that no
+    # post-rendering action is applied.
+    ACTIONS[0]='renderImage'
+    ACTIONS[1]='renderFormats: tif xpm pdf ppm'
+
+}
+</pre>
+<p>Inside identity pre-rendering configuration scripts, text-based
+pre-rendering configuration scripts look like the following:
+</p>
+<pre class="verbatim">#!/bin/bash
+
+function loadConfiguration {
+
+    # Define post-rendering actions. An empty value means that no
+    # post-rendering action is applied.
+    ACTIONS[0]='renderText'
+    ACTIONS[1]='formatText: --width=70 --uniform-spacing'
+
+}
+</pre>
+<p>When using identity pre-rendering configuration scripts, you can
+extend both image-based and text-based pre-rendering configuration
+scripts using image-based and text-based post-rendering actions,
+respectively. 
+</p>
+
+<a name="SEC163"></a>
+<h4 class="subsubsection"> 3.28.2.2 The <tt>`render.conf.sh'</tt> translation model </h4>
+
+<p>Translation pre-rendering configuration scripts take precedence before
+default translation rendering action. Translation pre-rendering
+actions are useful when default translation rendering action do not
+fit itself to translation entry rendering requirements.
+</p>
+
+<a name="SEC164"></a>
+<h3 class="subsection"> 3.28.3 Usage </h3>
+
+<p>Use the following commands to administer both identity and translation
+pre-rendering configuration scripts:
+</p>
+<dl compact="compact">
+<dt> <samp>`centos-art config 'path/to/dir/' --create'</samp></dt>
+<dd>
+<p>Use this command to create <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.
+</p>
+</dd>
+<dt> <samp>`centos-art config 'path/to/dir/' --edit'</samp></dt>
+<dd>
+<p>Use this command to edit <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.  
+</p>
+</dd>
+<dt> <samp>`centos-art config 'path/to/dir/' --read'</samp></dt>
+<dd>
+<p>Use this command to read <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.  
+</p>
+</dd>
+<dt> <samp>`centos-art config 'path/to/dir/' --remove'</samp></dt>
+<dd>
+<p>Use this command to remove <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.
+</p>
+</dd>
+</dl>
+
+<p>In the commands above, <samp>`path/to/dir'</samp> refers to one renderable
+directory path under <tt>`trunk/Identity'</tt> or
+<tt>`trunk/Translations'</tt> structures only. 
+</p>
+
+<a name="SEC165"></a>
+<h3 class="subsection"> 3.28.4 See also </h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_32.html#SEC166">3.29 trunk/Scripts/Bash/Config/Identity</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_33.html#SEC171">3.30 trunk/Scripts/Bash/Config/Translations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_30.html#SEC147">3.27 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#SEC164" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_32.html#SEC166" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC159" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_55.html#SEC296" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>September, 18 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

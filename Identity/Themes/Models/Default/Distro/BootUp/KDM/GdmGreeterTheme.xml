@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE greeter SYSTEM "greeter.dtd">
+<greeter>
+
+   <!-- Background Stuff -->
+
+   <item type="rect">
+   <pos x="0" y="0" width="100%" height="100%" />
+   <normal color="#204C8D" />
+   </item>
+
+   <item type="pixmap">
+   <pos y="0" x="0" width="100%" height="100%" />
+   <normal file="background.png" />
+   </item>
+
+   <!-- CentOS Symbol -->
+
+   <item type="pixmap">
+   <pos x="20" y="20" />
+   <normal file="centos-symbol.png" />
+   </item>
+
+   <!-- The Login Box -->
+
+   <item type="rect">
+   <pos x="50%" y="45%" width="box" height="box" anchor="n" />
+   <box orientation="horizontal" spacing="14">
+
+      <item type="rect">
+      <pos x="0" y="0" width="box" height="box" />
+      <box orientation="vertical" spacing="20">
+
+         <item type="label">
+         <normal color="#FFFFFF" font="Sans Bold 12" />
+         <stock type="username-label" />
+         </item>
+
+         <item type="label">
+         <normal color="#FFFFFF" font="Sans Bold 12" />
+         <stock type="password-label" />
+         </item>
+
+      </box>
+      </item>   
+
+      <item type="rect">
+      <pos x="0" y="0" width="box" height="box" />
+      <box orientation="vertical" spacing="14">
+
+         <item type="entry" id="user-entry">
+         <pos height="24" width="250" />
+         </item>
+
+         <item type="entry" id="pw-entry">
+         <pos height="24" width="250" />
+         </item> 
+
+      </box>
+      </item>   
+
+   </box>
+   </item>   
+
+   <!-- Messages -->
+
+   <item type="label" id="pam-error">
+   <pos x="50%" y="60%" anchor="n" />
+   <normal font="Sans Bold 12" color="#FFFFFF" />
+   <text />
+   </item>
+
+   <item type="label" id="timed-label">
+   <pos x="50%" y="65%" anchor="n" />
+   <show type="timed" />
+   <normal font="Sans Bold 12" color="#FFFFFF" />
+   <stock type="timed-label" />
+   </item>
+
+   <item type="label" id="caps-lock-warning">
+   <pos x="50%" y="70%" anchor="n" />
+   <normal font="Sans Bold 14" color="#FFFFFF" />
+   <stock type="caps-lock-warning" />
+   </item>
+
+   <!-- The clock -->
+
+   <item type="rect">
+   <pos x="-20" y="20" width="box" height="box" anchor="ne" />
+   <normal color="#204C8D" alpha="0.5" />
+   <box ypadding="10" xpadding="10" spacing="2" orientation="vertical">
+
+      <item type="label" id="clock">
+      <normal font="Sans 10" color="#FFFFFF" alpha=".9" />
+      <pos x="50%" anchor="n" />
+      <text>%c</text>
+      </item>
+
+      <item type="label">
+      <normal font="Sans Bold 10" color="#FFFFFF" alpha=".9" />
+      <pos x="50%" anchor="n" />
+      <text>%h</text>
+      </item>
+
+   </box>            
+   </item>
+
+   <!-- Bottom Box -->
+
+   <item type="rect">
+   <pos x="100%" y="100%" width="100%" height="box" anchor="se" />
+   <normal color="#204C8D" alpha="1.0" />
+   <box>
+
+      <!-- The Action Bar -->
+
+      <item type="rect">
+      <pos x="-14" y="0" width="box" height="box" anchor="ne" />
+      <box orientation="horizontal" xpadding="0" ypadding="10" >
+
+         <!-- Note (for CentOS 5.2): Language stock shows nothing on
+         KDM.  If the following section is uncommented some space is
+         lost in the action bar. -->
+
+         <!-- Language
+
+         <item type="rect" id="language_button" button="true">
+         <pos width="box" height="box" />
+         <box xpadding="6" orientation="horizontal">
+
+            <item type="pixmap">
+            <normal file="icon-language.png" />
+            </item>
+
+            <item type="label">
+            <active font="Sans Bold 12" color="#D8E5F7" />
+            <prelight font="Sans Bold 12" color="#D8E5F7" />
+            <normal font="Sans Bold 12" color="#FFFFFF" />
+            <pos y="5"  />
+            <stock type="language" />
+            </item>
+
+         </box>
+         </item>
+
+	 -->
+
+         <!-- Session -->
+
+         <item type="rect" id="session_button" button="true">
+         <pos width="box" height="box" />
+         <box xpadding="6" orientation="horizontal">
+
+            <item type="pixmap">
+            <normal file="icon-session.png" />
+            </item>
+
+            <item type="label">
+            <active font="Sans Bold 12" color="#D8E5F7" />
+            <prelight font="Sans Bold 12" color="#D8E5F7" />
+            <normal font="Sans Bold 12" color="#FFFFFF" />
+            <pos y="5" />
+            <stock type="session" />
+            </item>
+
+         </box>
+         </item>
+
+         <!-- System -->
+
+         <item type="rect" id="system_button" button="true">
+         <show modes="console" type="halt" />
+         <pos width="box" height="box" />
+         <box xpadding="6" orientation="horizontal">
+
+            <item type="pixmap">
+            <normal file="icon-reboot.png" />
+            </item>
+
+            <item type="label">
+            <active font="Sans Bold 12" color="#D8E5F7" />
+            <prelight font="Sans Bold 12" color="#D8E5F7" />
+            <normal font="Sans Bold 12" color="#FFFFFF" />
+            <pos y="5" />
+            <stock type="system" />
+            </item>
+
+         </box>
+         </item>
+
+         <!-- Disconnect / Quit -->
+
+         <item type="rect" id="disconnect_button" button="true">
+         <show modes="flexi,remote" />
+         <pos width="box" height="box" />
+         <box xpadding="6" orientation="horizontal">
+
+            <item type="pixmap">
+            <normal file="icon-shutdown.png" />
+            </item>
+
+            <item type="label">
+            <show modes="remote" />
+            <active font="Sans Bold 12" color="#D8E5F7" />
+            <prelight font="Sans Bold 12" color="#D8E5F7" />
+            <normal font="Sans Bold 12" color="#FFFFFF" />
+            <pos y="5" />
+            <stock type="disconnect" />
+            </item>
+
+            <item type="label">
+            <show modes="flexi" />
+            <active font="Sans Bold 12" color="#D8E5F7" />
+            <prelight font="Sans Bold 12" color="#D8E5F7" />
+            <normal font="Sans Bold 12" color="#FFFFFF" />
+            <pos y="5" />
+            <stock type="quit" />
+            </item>
+
+         </box>
+         </item>
+
+      </box>
+      </item>
+
+   </box>
+   </item>
+
+   <!-- CentOS Release -->
+
+   <item type="pixmap">
+   <pos x="20" y="-60" />
+   <normal file="centos-release.png" />
+   </item>
+
+</greeter>

@@ -1,0 +1,506 @@
+<?xml version="1.0"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title>Opciones de su membres&iacute;a</title>
+     <link rel="shortcut icon" href="<mm-favicon>" />
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/common.css" />
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/mailman.css" />
+</head>
+
+<body>
+
+    <div id="header">
+    <a href="http://www.centos.org/"><img class="logo" src="/error/include/img/centos.png" alt="CentOS" /></a>
+    <div class="navigation">
+    <ul class="mainlinks">
+            <li><a href="http://centos.org/">Home</a></li>
+            <li><a href="http://centos.org/downloads/">Downloads</a></li>
+            <li><a href="http://centos.org/docs">Docs</a></li>
+            <li><a href="http://centos.org/wiki/">Wiki</a></li>
+            <li class="current"><a href="http://centos.org/lists/">Lists</a></li>
+            <li><a href="http://centos.org/bugs/">Bugs</a></li>
+            <li><a href="http://centos.org/forums/">Forums</a></li>
+            <li><a href="http://centos.org/trac/">Projects</a></li>
+    </ul>
+    </div>
+    </div>
+
+<div id="errormsg">
+    <img src="/error/include/img/lists.png" alt="Lists" />
+    <p><mm-errormsg-listinfo> | <mm-errormsg-listadmin> </p>
+    <h1><mm-errormsg-header></h1>
+</div>
+
+<div id="centoslinks">
+
+        <mm-results>
+        <MM-Case-Preserved-User>
+        <MM-Disabled-Notice>
+
+        <h1><mm-list-name>: opciones de suscriptores</h1>
+
+        <p>Estado de la suscripci&oacute;n, constrase&ntilde;as y opciones de
+	la lists <MM-List-Name> para el usuarios:
+	<strong><MM-Presentable-User></strong>.
+	</p>
+
+        <MM-Form-Start>
+	<p><mm-logout-button></p>
+	<MM-Form-End>
+
+	<MM-Form-Start>
+
+        <h2>Cambiar la informaci&oacute;n de su membres&iacute;a en <MM-List-Name></h2>
+
+    	<p>Puede cambiar la direcci&oacute;n con la que
+        est&aacute; suscrito a la lista de distribuci&oacute;n,
+        introduciendo una direcci&oacute;n nueva en el campo que aparece
+        m&aacute;s abajo. Se le mandar&aacute; un mensaje de confirmaci&oacute;n
+        a la direcci&oacute;n que especifique, ya que los cambios no se
+        ser&aacute;n efectivos hasta que lo confirme.</p>
+
+        <p>Las confirmaciones caducan despu&eacute;s de <mm-pending-days>.</p>
+ 
+         <p>Opcionalmente, puede poner o cambiar su nombre y apellidos
+         (por ejemplo <em>Pepe P&eacute;rez</em>).</p>
+
+        <p>Si quiere aplicar los modificaciones de suscripci&oacute;n a
+        todas las listas en los que est&aacute; suscrito en <mm-host>,
+        habilite la casilla de verificaci&oacute;n <em>Cambiar
+	globalmente</em>.</p>
+ 
+  	<table>
+        	<tr>
+			<td class="description">Direcci&oacute;n nueva:</td>
+            		<td class="value"><mm-new-address-box></td>
+            	</tr>
+        	<tr>
+			<td class="description">De nuevo para confirmar:</td> 
+            		<td class="value"><mm-confirm-address-box></td>
+            	</tr>
+             	<tr>
+			<td class="description">Su nombre (opcional):</td>
+             		<td class="value"><mm-fullname-box></td>
+        	</tr>
+     		<tr>
+			<td colspan="2" class="mm_submit">
+				<mm-change-address-button>
+			</td>
+     		</tr>
+	</table>
+
+<h2>Anular suscripci&oacute;n de <MM-List-Name></h2>
+
+	<table>
+        	<tr>
+			<td colspan="2" class="center"><h3>Anular suscripci&oacute;n</h3></td>
+            	</tr>
+            	<tr>
+			<td class="description">
+
+			Seleccione la casilla de confirmaci&oacute;n y pulse
+			este bot&oacute;n para anular su suscripci&oacute;n
+			de esta lista de distribuci&oacute;n.
+
+			<p><strong>Advertencia:</strong> ¡Esta acci&oacute;n
+			tendr&aacute; efecto inmediato!</p>
+			</td>
+
+			<td class="value">
+        		<MM-Unsubscribe-Button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<h3 class="center">Mis otras suscripciones</h3></td>
+		</tr>
+		<tr>
+    			<td class="description">
+
+			Puede ver un informe del resto de las listas de
+			distribuci&oacute;n de <mm-host> en las que
+			est&aacute; suscrito. Utilice esta parte si quiere
+			aplicar cambios globales al resto de sus
+			suscripciones.
+
+			</td>
+			<td class="value">
+
+        		<MM-Other-Subscriptions-Submit>
+
+			</td>
+		</tr>
+	</table>
+
+<h2>Su clave para <MM-List-Name></h2>
+
+	<table>
+		<tr>
+			<td colspan="2">
+        		<a name="reminder"></a>
+			<h3 class="center">&iquest;Ha olvidado su clave?</h3>
+			</td>
+		</tr>
+		<tr>
+			<td class="description">
+
+			Pulse este bot&oacute;n para hacer que se le
+			env&iacute;e por correo electr&oacute;nico a la
+			direcci&oacute;nn con la que est&aacute; suscrito.
+
+			</td>
+			<td class="value">
+
+		        <MM-Umbrella-Notice> <MM-Email-My-Pw>
+
+			</td>
+
+		</tr>
+		<tr>
+			<td colspan="2" class="center">
+			<a name="changepw"></a>
+			<h3>
+			Cambiar su contrase&ntilde;a
+			</h3>	
+			</td>
+		</tr>
+            	<tr>
+			<td class="description">Contrase&ntilde;a nueva:</td>
+                	<td class="value"><MM-New-Pass-Box></td>
+                </tr>
+            	<tr>
+                	<td class="description">De nuevo para confirmar:</td>
+                	<td class="value"><MM-Confirm-Pass-Box></td>
+            	</tr>
+		<tr>
+			<td class="description">Cambiar globalmente:</td>
+        		<td class="value"><mm-global-pw-changes-button></td>
+		</tr>
+	</table>
+
+        <p class="mm_submit"><MM-Change-Pass-Button></p>
+
+<h2>Sus opciones de suscripci&oacute;n para la lista <MM-List-Name></h2>
+
+	<p>Los valores actuales est&aacute;n comprobado.</p>
+
+	<p>Observe que alguna de las opciones tienen una casilla seleccionable
+	<em>Aplicar globalmente</em>. Activando este campo, causar&aacute; que
+	los cambios se apliquen a cada una de las listas de
+	distribuci&oacute;n de <mm-host> en las que est&aacute; suscrito.
+	Dele con el rat&oacute;n a <em>Listar el resto de mis
+	suscripciones</em> m&aacute;s arriba para ver cuales son.</p>
+
+	<table>
+    		<tr>
+			<td colspan="2" class="center">
+        		<a name="mdelivery"></a>
+			<h3>
+        		Entrega de correo
+			</h3>
+			</td>
+		</tr>
+		<tr>
+			<td class="description">
+
+			Si selecciona <em>Habilitada</em> recibir&aacute; los
+			mensajes que se env&iacute;en a esta lista de
+			distribuci&oacute;n. Si selecciona
+			<em>Inhabilitada</em> indica su deseo de no recibir el
+			correo enviado a la lista de distribuci&oacute;n
+			durante un tiempo (por ejemplo, se va de vacaciones).
+			Si inhabilita la recepci&oacute;n de los mensajes de
+			correo, no olvide volver a habilitar la
+			recepci&oacute;n cuando proceda.
+
+		        </td>
+			<td class="value">
+
+        		<mm-delivery-enable-button>Habilitado<br />
+        		<mm-delivery-disable-button>Inhabilitado
+        		<p><mm-global-deliver-button>Aplicar globalmente</p>
+
+        		</td>
+		</tr>
+
+            	<tr><td colspan="2" class="center"><h3>Activar modo
+		recopilatorio</h3></td></tr>
+
+    		<tr>
+			<td class="description">
+
+			Si habilita el modo digest, recibir&aacute;
+			diariamente los mensajes enviados a la lista
+			recopilados en un &uacute;nico mensaje, en lugar de
+			recibirlos a medida que se env&iacute;an. Si cambia el
+			modo digest de Activar a Desactivar, puede que reciba
+			un &uacute;ltimo digest.
+
+        		</td>
+			<td class="value">
+
+        		<MM-Undigest-Radio-Button>Desactivar<br />
+        		<MM-Digest-Radio-Button>Activar
+
+        		</td>
+
+		</tr>
+		<tr>
+	    		<td colspan="2" class="center"><h3>&iquest;Recibir los
+			recopilatorios en texto plano o con codificación MIME</h3>
+			</td>
+		</tr>
+		<tr>
+        		<td class="description">
+
+			Su lector de correo puede que no soporte
+			recopilaciones (digests) MIME.  En general se
+			prefieren las recopilaciones MIME, pero si tiene
+			problemas a la hora de leerlas, seleccione las
+			recopilaciones en texto plano.
+		
+			</td>
+			<td class="value">
+
+        		<MM-Mime-Digests-Button>MIME<br />
+        		<MM-Plain-Digests-Button>Texto plano
+        		<p><mm-global-mime-button>Aplicar globalmente</p>
+
+        		</td>
+		</tr>
+    		<tr>
+			<td colspan="2" class="center">
+
+			<h3>&iquest;Quiere recibir los mensajes que usted
+			mismo env&iacute;e a esta lista?</h3>
+
+			</td>
+		</tr>
+    		<tr>
+			<td class="description">
+
+			Normalmente, recibir&aacute; una copia de cada mensaje
+			que env&iacute; a la lista. Si no quiere recibir dicha
+			copia, ponga esta opci&oacute;n a <em>No</em>.
+
+ 		       </td>
+		       <td class="value">
+
+			<mm-dont-receive-own-mail-button>No<br />
+			<mm-receive-own-mail-button>Yes 
+
+			</td>
+		</tr>
+    		<tr>
+			<td colspan="2" class="center">
+
+			<h3>&iquest;Quiere recibir una confirmación cuando
+			envíe correo a esta lista?</h3>
+			
+			</td>
+
+		</tr>
+    		<tr>
+        		<td class="description">
+
+			¿Quiere recibir una confirmaci&oacute;n cuando
+			env&iacute;e correo a esta lista ?
+
+			</td>
+
+        		<td class="value">
+
+        		<mm-dont-ack-posts-button>No<br />
+        		<mm-ack-posts-button>Si
+
+        		</td>
+			
+		</tr>
+    		<tr>
+			<td colspan="2" class="center">
+
+        		<h3>&iquest;Quiere recibir los recordatorios de esta
+			lista?</h3>
+
+			</td>
+		</tr>
+    		<tr>
+			<td class="description">
+
+			Mensualmente, recibir&aacute; un mensaje de correo con
+			la clave de cada una de las listas en la que
+			est&aacute; suscrito. Puede inhabilitar este
+			comportamiento por lista, con sólo seleccionar
+			<em>No</em> en esta opci&oacute;n. Si decide
+			inhabilitar el recordatorio de las claves en todas las
+			listas a las que est&aacute; suscrito, no se le
+			mandar&aacute; ning&uacute;n mensaje.
+
+		        </td>
+			<td class="value">
+
+			<mm-dont-get-password-reminder-button>No<br />
+			<mm-get-password-reminder-button>Si
+			<p><mm-global-remind-button>Aplicar globalmente</p>
+
+			</td>
+			
+		</tr>
+    		<tr>
+		
+			<td colspan="2" class="center">
+
+        		<h3>&iquest;Quiere ocultarse de la lista de suscriptores?</h3>
+
+			</td>
+
+		</tr>
+    		<tr>
+
+			<td class="description">
+
+			Cuando alguien vea la lista de suscriptores,
+			normalmente su direcci&oacute;n de correo
+			electr&oacute;nico saldr&aacute; listada (de una forma
+			oscura para frustrar los escaneadores spam). Si no
+			quiere que su direcci&oacute;n salga a relucir,
+			seleccione <em>Si</em>.
+
+			</td>
+        		<td class="value">
+
+			<MM-Public-Subscription-Button>No<br />
+			<MM-Hide-Subscription-Button>Si 
+			
+			</td>
+			
+		</tr>
+    		<tr>
+			<td class="description">
+
+        		&iquest;En qu&eacute; idioma deseas ver los mensajes de la lista?
+
+        		</td>
+			<td class="value"> 
+
+        		<MM-list-langs>
+
+         		</td>
+		</tr>
+     		<tr>
+			<td colspan="2" class="center">
+
+         		<h3>&iquest;A qu&eacute; tipo de temas le gustar&iacute;a suscribirse?</h3>
+	
+			</td>
+
+		</tr>
+     		<tr>
+			<td class="description">
+
+			Al seleccionar uno o m&aacute;s temas, puede filtrar
+			el tr&aacute;fico de la lista de distribuci&oacute;n,
+			de manera que solo recibir&aacute; un subconjunto de
+			los mensajes. &Uacute;nicamente le llegaran los
+			mensajes que coincidan con alguno de los temas
+			seleccionados.
+
+			<p>Si un mensaje no coincide con el tema, la regla que
+			decide si se entrega el mensaje depende de la
+			configuraci&oacute;n de la opci&oacute;n de abajo. Si
+			no selecciona ning&uacute;n tema de inter&eacute;s,
+			recibir&aacute; todos los mensajes dirigidos a la
+			lista.</p>
+
+         		</td>
+			<td class="value">
+
+         		<mm-topics>
+
+         		</td>
+		</tr>
+     		<tr>
+			<td colspan="2" class="center">
+
+			<h3>&iquest;Quiere recibir los mensajes que no
+			coincidan con ning&uacute;n tema?</h3>
+
+			</td>
+		</tr>
+     		<tr>
+			<td class="description">
+
+			Esta opci&oacute;n s&oacute;lo surte efecto si
+			est&aacute; suscrito a alg&uacute;n tema de los de
+			arriba. Esta opci&oacute;n describe cual ser&aacute;
+			la regla de entrega por defecto para los mensajes que
+			no coincidan con ning&uacute;n tema. Si selecciona que
+			<em>No</em> indica su deseo de no recibir los mensajes
+			que no coincidan con ning&uacute;n tema, mientras que
+			si selecciona que <em>Si</em> significa que
+			recibir&aacute; todos los mensajes que no coincidan
+			con ning&uacute;n tema.
+
+			<p>Si no se selecciona ning&uacute;n tema de
+			inter&eacute;s en la parte de arriba, entonces
+			recibir&aacute; todos los mensajes que se
+			env&iacute;en a la lista.</p>
+
+		        </td>
+			<td class="value">
+
+			<mm-suppress-nonmatching-topics>No<br />
+			<mm-receive-nonmatching-topics>Si
+
+        		</td>
+		</tr>
+    		<tr>
+			<td colspan="2" class="center">
+
+			<h3>&iquest;Desea evitar copias duplicadas de sus
+			propios mensajes?</h3>
+			
+			</td>
+		</tr>
+    		<tr>
+			<td class="description">
+
+			Cuando esté incluido explícitamente en las cabeceras
+			<tt>To:</tt> o <tt>Cc:</tt> de un mensaje dirigido a
+			la lista, puede optar por no recibir otra copia de la
+			lista de distribución. Seleccione <em>Si</em> para
+			evitar recibir copias de la lista de distribución o
+			<em>No</em> para recibirlas.
+
+			<p>Si la lista tiene suscriptores con los mensajes
+			personalizados, y eliges que s&iacute; deseas recibir
+			copias, cada copia tendrá una cabecera
+			<tt>X-Mailman-Copy: yes</tt> incluida en él.</p>
+
+        		</td>
+			<td class="value">
+
+        		<mm-receive-duplicates-button>No<br />
+        		<mm-dont-receive-duplicates-button>Si
+        		<p><mm-global-nodupes-button>Aplicar globalmente</p>
+
+        		</td>
+	</tr>
+    	<tr>
+	
+		<td colspan="2" class="mm_submit">
+		
+		<MM-options-Submit-button>
+		
+		</td>
+	</tr>
+</table>
+
+<MM-Form-End>
+
+<MM-Mailman-Footer>
+</body>
+</html>

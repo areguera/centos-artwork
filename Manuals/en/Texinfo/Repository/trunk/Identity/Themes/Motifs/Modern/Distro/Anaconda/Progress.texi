@@ -1,0 +1,59 @@
+@subsection Goals
+
+@itemize
+@item ...
+@end itemize
+
+@subsection Description
+
+@subsection Usage
+
+To render Anaconda progress slide images using the Modern's artistic
+motif design, the Default theme model, and available translation files
+(@pxref{trunk Translations Identity Themes Distro Anaconda Progress});
+use the following commands:
+
+@example
+cd /home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress/
+centos-art render --identity
+@end example
+
+The above command will create the following structure:
+
+@example
+trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
+|-- 3
+|   |-- en
+|   |   |-- 01-welcome.png
+|   |   |-- 02-donate.png
+|   |   `-- 03-yum.png
+|   `-- es
+|       |-- 01-welcome.png
+|       |-- 02-donate.png
+|       `-- 03-yum.png
+|-- 4
+|   |-- en
+|   |   |-- 01-welcome.png
+|   |   |-- 02-donate.png
+|   |   `-- 03-yum.png
+|   `-- es
+|       |-- 01-welcome.png
+|       |-- 02-donate.png
+|       `-- 03-yum.png
+`-- 5
+    |-- en
+    |   |-- 01-welcome.png
+    |   |-- 02-donate.png
+    |   `-- 03-yum.png
+    `-- es
+        |-- 01-welcome.png
+        |-- 02-donate.png
+        `-- 03-yum.png
+@end example
+
+
+@subsection See also
+
+@menu
+@end menu
+

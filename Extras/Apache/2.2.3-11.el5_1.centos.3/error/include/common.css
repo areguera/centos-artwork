@@ -1,0 +1,391 @@
+/***
+ * Apache's Common Customization for CentOS Web Environment
+ *
+ * The CentOS Artwork SIG
+ */
+
+html {
+	background-image:url(/error/include/img/html-background.png);
+	background-color: white;
+	font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+	font-size: 0.85em;
+	line-height: 1.25em;
+    	margin: 0 3% 0 3%;
+}
+
+body {
+    	border: none;
+	margin:0;
+    	padding: 10px;
+	background-color: white;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+/* Links */
+
+a:link { text-decoration: none; color: #204d92; }
+a:hover { text-decoration: underline; color: green; }
+a:active {  text-decoration: underline; color: #204d92; }
+a:visited { text-decoration: none; color: #204d92; }
+a:visited:hover { text-decoration: underline; color: green; }
+
+#errormsg a:link { text-decoration: none; color: #666; }
+#errormsg a:hover { text-decoration: underline; color: #666; }
+#errormsg a:active { text-decoration: underline; color: #666; }
+#errormsg a:visited { text-decoration: none; color: #666; }
+#errormsg a:visited:hover { text-decoration: underline; color: #666; }
+
+#footer a:link { text-decoration: none; color: #666; }
+#footer a:hover { text-decoration: underline; color: #666; }
+#footer a:active { text-decoration: underline; color: #666; }
+#footer a:visited { text-decoration: none; color: #666; }
+#footer a:visited:hover { text-decoration: underline; color: #666; }
+
+/* Page taril */
+
+#errormsg ul.pagetrail {
+	margin: 0;
+	margin-left: 120px;
+	padding: 0;
+	list-style: none;
+}
+
+#errormsg ul.pagetrail li {
+	display: inline;
+}
+
+#errormsg ul.pagetrail li:after {
+	content: " » "
+}
+
+#errormsg ul.pagetrail li:last-child:after {
+	content: ""
+}
+
+/* Header */
+
+#header {
+        margin:0;
+        padding: 0;
+        line-height: 1.0em;
+        border:none;
+        }
+
+#header .logo {
+   display: inline;
+   padding: 0;
+   /* For text only logo */
+   font-size: 1.4em;
+   line-height: 1em;
+   font-weight: bold;
+   border: none;
+   }
+
+#header a:link {
+	text-decoration: none;
+	border-bottom: none;
+	color: #666;
+	}
+
+#header .navigation {
+    float: right;
+    padding: 14px;
+    padding-left: 20px;
+    padding-right: 10px;
+    margin-left: 3em;
+    margin: 0;
+    margin-top: -49px;
+    text-align: right;
+    border-bottom: 1px solid #CCC;
+    font-weight: bold;
+}
+
+#header ul.mainlinks {
+    display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header ul.mainlinks li:hover {
+        background: #fdfdfd;
+}
+
+#header ul.mainlinks li a:link,
+#header ul.mainlinks li a:hover,
+#header ul.mainlinks li a:active,
+#header ul.mainlinks li a:visited {
+    color: #AAA;   
+    text-decoration: none;
+	border: none;
+}
+
+#header ul.mainlinks li {
+    display: inline;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background: #f8f8f8;
+    padding: 13px;
+    padding-bottom: 12px;
+}
+
+/* Alignment */
+
+.center { text-align: center; }
+.left { text-align: left ; }
+.floatl { float: left; }
+.floatr { float: right; }
+.right { text-align: right ; }
+.middle { vertical-align: middle; }
+
+/* Format */
+.strong { font-weight: bold; }
+.italic { font-style: italic; }
+
+/* Lists */
+
+#centoslinks ul,
+#centoslinks ol {
+        padding-left: 1.9em;
+        margin-left: 3em;
+        margin-bottom: 0.3em;
+        }
+
+#centoslinks ul {
+        list-style: url("/error/include/img/ul.png") circle;
+        }
+
+#centoslinks ol {
+        list-style-image: none !important;
+        }
+
+#centoslinks ul li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+#centoslinks ol li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+#centoslinks ul ul,
+#centoslinks ul ol,
+#centoslinks ol ul,
+#centoslinks ol ol {
+        margin-left: 0.5em;
+        margin-top: 0.3em;
+        }
+
+#centoslinks ul li p,
+#centoslinks ol li p {
+        margin-bottom: 0.3em;
+        line-height: 1.5em;
+        }
+
+
+/* Header: CentOS Global Links */
+
+#header ul.mainlinks li.current {
+    background: #FFF;
+    font-weight: bold;
+    padding-bottom: 13px;
+}
+
+#header ul.mainlinks li.current a:link,
+#header ul.mainlinks li.current a:visited {
+   color: #666;
+}
+
+/* Content */
+
+#centoslinks p {
+	line-height:1.5em;
+}
+
+#centoslinks pre {
+        padding: 0.5em 1em;
+        margin: 0.5em 0 0.5em 0;
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+        white-space: pre;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #E5E5E5;
+        border-left-width: 4px;
+        white-space: pre;
+        background: #FFFAE9;
+        overflow: auto;
+        }
+
+/* Error Message */
+
+#errormsg {
+    clear: both;
+    background: #f8f8f8;
+    padding: 0.5em;
+    padding-top: 0;
+    padding-right: 1em;
+    border-top: 5px solid #ddd;
+    border-bottom: 5px solid #ddd;
+    margin-bottom: 1em;
+    margin-top: 8px;
+    color: #666;
+}
+
+#errormsg img {
+    float: left;
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0.5em;
+}
+
+#errormsg h1,
+#errormsg h2 { 
+	color: #666; 
+	margin-left: 120px;
+	margin-bottom: 0.5em;
+}
+
+#errormsg p {
+	line-height: 1.5em;
+}
+
+#errormsg p,
+#errormsg ul {
+	margin-left: 120px;
+}
+
+hr.transparent {
+	color: transparent;
+	border: 0px;
+	clear: both;
+}
+
+/* CentOS Links */
+
+#centoslinks {
+	clear: both;
+	margin-right: 1em;
+	margin-left: 1em;
+}
+
+#centoslinks h1 {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1.9em;
+        margin: 0;
+        margin-bottom: 0.9em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #FFF;
+        border: none;
+        background-image: url("/error/include/img/h1-bg.png");
+        }
+
+#centoslinks h2 {
+        font-size: 1.4em;
+        line-height: 1.8em;
+        margin: 0;
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        padding-left: 0.7em; /* Should be the same for h{1-4}*/
+        background-image: url("/error/include/img/h2-bg.png");
+        border: none;
+        color: #666666;
+        }
+
+#centolinks h3 {
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #666666;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #DADADA;
+        }
+
+#centoslinks ul.linkblock {
+	line-height: 1.5em;
+	float: left;
+	list-style: none;
+	padding-left: 1em;
+	padding-right: 1em;
+	border-right: 1px dotted #ccc;
+	margin-left: 0;
+	font-size: small;
+}	
+
+#centoslinks ul.linkblock.last {
+	border-right: none;
+}
+
+#centoslinks table {
+    clear: both;
+    width: 100%;
+    font-size: inherit;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-right: 20px;
+}
+
+#centoslinks th {
+    text-align: left;
+    }
+
+#centoslinks td {
+   border-bottom: 1px solid #f8f8f8;
+   font-family: "DejaVu Sans Mono", "Liberation Sans Mono", monospace;
+   vertical-align: middle;
+   }
+
+#centoslinks td img {
+   float: right;
+   }
+
+#centoslinks td h1,
+#centoslinks td h2,
+#centoslinks td h3 {
+	margin: 0;
+   }
+
+#centoslinks th { 
+}
+
+#centoslinks img {
+    border: none;
+}
+
+/* Push stuff inside of headings */
+
+#centoslinks p,
+#centoslinks hr,
+#centoslinks pre,
+#centoslinks table {
+        margin-left: 1.5em;
+        }
+
+/* Footer */
+
+#footer {
+	padding: 0;
+	margin: 0;
+	margin-top: 2em;
+	padding-bottom: 0.5em;
+	color: #666;
+	clear: both;
+	border-bottom: 5px solid #F8F8F8;
+}
+
+#footer p {
+	font-size: small;
+	text-align: left;
+	padding: 0;
+	margin: 0;
+}
+
+#footer p.sysinfo {
+	font-size: x-small;	
+}

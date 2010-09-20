@@ -1,0 +1,1130 @@
+/* Trac CSS */
+
+html {
+        background-image:url(../background.png);
+        background-color: #FFF;
+        font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+        font-size: 0.85em;
+        line-height: 1.25em;
+        /* margin: 0;           /* <- full screen                       */
+        /* margin: 0 1% 0 1%;   /* <- with 1% of left and right margin  */
+        /* margin: 0 2% 0 2%;   /* <- with 2% of left and right margin  */
+        margin: 0 4% 0 4%;      /* <- with 4% of left and right margin  */
+        /* margin: 0 10% 0 10%; /* <- with 10% of left and right margin */
+        }
+
+body {
+    background: #FFF;
+    padding:0;
+	margin:0;
+	border:10px solid #FFF;	
+}
+
+#banner {
+	background: #204c8d url("../header-background.png");
+}
+
+h1 {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1.9em;
+        margin-top: 0.9em;
+        margin-bottom: 0.9em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #FFF;
+        border: none;
+        background-color: #204C8D;
+        background-image: url("../h1-background.png");
+        }
+h2 {
+        font-size: 1.4em;
+        line-height: 1.8em;
+        margin: 0;
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        padding-left: 0.7em; /* Should be the same for h{1-4}*/
+        background-image: url("../h2-background.png");
+        border: none;
+        color: #072B61;
+        }
+
+h3 {
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #072B61;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #DADADA;
+        }
+h4 {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0; /* Should be the same for h{1-4} */
+        color: #072B61;
+        border-bottom: none;
+        }
+
+h5 {
+        font-size: 1.1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #072B61;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+h6 {
+        font-size: 1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #000;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+hr { 
+	border: none;  
+	border-top: 1px solid #ccc; 
+	margin: 2em 0 
+	}
+
+address { font-style: normal }
+
+img { border: none }
+
+tt { 
+	font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	white-space: pre 
+	}
+
+.underline { text-decoration: underline }
+ol.loweralpha { list-style-type: lower-alpha }
+ol.upperalpha { list-style-type: upper-alpha }
+ol.lowerroman { list-style-type: lower-roman }
+ol.upperroman { list-style-type: upper-roman }
+ol.arabic     { list-style-type: decimal }
+
+/* Link styles */
+
+a:link  { text-decoration: none; color: #204C8D; }
+a:hover { text-decoration: underline; color: green; } 
+a:active { text-decoration: underline; color: green; } 
+a:visited { text-decoration: none; color: #204C8D; }
+a:visited:hover { text-decoration: underline; color: green; }
+
+h1 :link, h1 :visited ,h2 :link, h2 :visited, h3 :link, h3 :visited,
+h4 :link, h4 :visited, h5 :link, h5 :visited, h6 :link, h6 :visited {
+	color: inherit;
+ 	border-bottom: 1px dotted #ddd;
+}
+
+h1 a:hover { text-decoration: underline; color: #FFF; }
+h1 a:active { text-decoration: underline; color: #FFF; } 
+h1 a:visited { text-decoration: none; color: #FFF; }
+h1 a:visited:hover { text-decoration: underline; color: #FFF; }
+
+h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { text-decoration: underline; color: #072B61; } 
+h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active { text-decoration: underline; color: #072B61; } 
+h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited { text-decoration: none; color: #072B61; }
+h2 a:visited:hover, h3 a:visited:hover, h4 a:visited:hover, h5 a:visited:hover, 
+h6 a:visited:hover { text-decoration: underline; color: #072B61; }
+
+/* Heading anchors */
+
+.anchor:link, 
+.anchor:visited {
+	border: none;
+	color: #d7d7d7;
+	font-size: .8em;
+ 	background: transparent;
+}
+
+* > .anchor:link, 
+* > .anchor:visited {
+	 visibility: hidden;
+	}
+
+h1:hover .anchor, h2:hover .anchor, h3:hover .anchor,
+h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
+	visibility: visible;
+	}
+
+@media screen {
+	a.ext-link .icon {
+		background: url(../extlink.gif) left center no-repeat;
+		padding-left: 16px;
+		}
+	* html a.ext-link .icon { 
+		display: inline-block; 
+		}
+	}
+
+/* Forms */
+
+input, 
+textarea, 
+select { margin: 2px }
+
+input, 
+select { vertical-align: middle }
+
+input[type=button], 
+input[type=submit], 
+input[type=reset] {
+	}
+
+input[type=button]:hover, 
+input[type=submit]:hover, 
+input[type=reset]:hover {
+	}
+
+input[type=button][disabled], input[type=submit][disabled],
+input[type=reset][disabled] {
+	}
+
+#search input[type=text], 
+#search input.textwidget, 
+#search textarea { 
+	border: 2px solid #204C8D;
+	width: 130px;
+	background-color: #EDF4FF;
+        padding: 2px;
+        padding-left: 4px;
+        color: #204C8D;
+	}
+
+#search input[type=button], 
+#search input[type=submit], 
+#search input[type=reset] {
+        border-width: 2px;
+        border-style: solid;
+        border-color: #204C8D;
+        background-color: #3B71B8;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline;
+        font-weight: bold;
+        text-decoration: none;
+	padding: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	}
+
+input[type=text], 
+input.textwidget, 
+textarea { 
+	border: 1px solid #ccc;
+        font-size: 1.4em;
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	background-color: #f8f8f8;
+	}
+
+input[type=text] { 
+	font-size: 1em;
+}
+
+input[type=text], 
+input.textwidget { 
+	padding: .2em 
+	}
+
+input[type=text]:focus, 
+input.textwidget:focus, 
+textarea:focus {
+	background-color: #fff;
+	}
+
+option { 
+	border-bottom: 1px dotted #d7d7d7; 
+	}
+
+fieldset { 
+	border: 1px solid #d7d7d7; 
+	padding: .5em; margin: 0; 
+	}
+
+fieldset.iefix { 
+	background: transparent; 
+	border: none; padding: 0; margin: 0; 
+	}
+
+* html fieldset.iefix { 
+	width: 98%; 
+	}
+
+fieldset.iefix p {
+	margin: 0; 
+	}
+
+legend { 
+	color: #999; 
+	padding: 0 .25em; 
+	font-size: 90%; 
+	font-weight: bold 
+	}
+
+label.disabled { 
+	color: #d7d7d7; 
+	}
+
+.buttons { 
+	margin: .5em .5em .5em 0; 
+	}
+
+.buttons form, 
+.buttons form div { 
+	display: inline; 
+	}
+
+.buttons input { 
+	margin: 1em .5em .1em 0; 
+	}
+
+.inlinebuttons input { 
+	margin: 0;
+	padding: 0.1em;
+	border: 1px solid #ddd;
+	font-size: 95%;
+        cursor: pointer;
+	}
+
+/* Header */
+
+#header hr { display: none }
+
+#header h1 { margin: 1.5em 0 -1.5em; }
+
+#header img { 
+	border: none; 
+	margin: 10px;
+	font-weight: bold;
+	font-size: 1.4em;
+	line-height: 1em;
+	padding: 0;
+	float: left;
+}
+
+#header :link, 
+#header :visited, 
+#header :link:hover, 
+#header :visited:hover {
+	background: transparent;
+	color: #555;
+	margin-bottom: 2px;
+	border: none;
+	}
+
+#header h1 :link:hover, 
+#header h1 :visited:hover { 
+	color: #000 
+	}
+
+/* Quick search */
+
+#search {
+	float: right;
+ 	font-size: 10px;
+ 	height: 0;
+	text-align: right;
+	margin: 5px;
+}
+
+#search input { 
+	font-size: 10px 
+	}
+
+#search label { display: none }
+
+/* Navigation */
+
+.nav h2, 
+.nav hr { display: none }
+
+#metanav { padding-top: 30px; }
+
+#metanav a { color: #eee; }
+
+#metanav li { border-right-color: #eee; }
+
+#metanav a:hover {
+	background: transparent;
+	color: #fff;
+	text-decoration: underline;
+}
+
+.nav ul { 
+	font-size: 10px; 
+	list-style: none; 
+	margin: 0; 
+	margin-top: 5px; 
+	margin-bottom: 5px; 
+	text-align: right 
+}
+
+.nav li {
+	border-right: 1px dotted #628ECA;
+	display: inline;
+	padding: 0 .75em;
+	white-space: nowrap;
+	color: #eee;
+	}
+
+.nav li.last { 
+	border-right: none; 
+	}
+
+.nav li a {
+	border-bottom: none;
+	}
+
+/* Main navigation bar header */
+
+.mainnav {
+    clear: both;
+    display: block;
+    padding: 0;
+    padding-left: 0px;
+	margin:0;
+	padding-left: 20px;
+        }
+
+.mainnav ul {
+	padding:0;
+	margin:0;
+}
+
+.mainnav li {
+        float: left;
+        display: inline;
+        white-space: nowrap;
+        margin-left: 3px;
+	padding:0;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #628ECA;
+        background-color: #FFF;
+        background-image: url("../topbar_gradient.png");
+        background-position: left top;
+        background-repeat: repeat-x;
+	font-size: 0.9em;
+        }
+
+.mainnav li a { 
+        /* To cover the box area as linkable */
+        padding: 8px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+	background: transparent;
+	border-bottom: 0;
+	margin: 0;
+        }
+
+.mainnav a, 
+.mainnav a:visited {
+        color: #204C8D;
+        text-decoration: none;
+	border-bottom: 0;
+        }
+
+.mainnav li:hover {
+        background-color: #628ECA;
+        background-image: url("../topbar_gradient2.png");
+        background-position: left top;
+        background-repeat: repeat-x;
+        }
+
+.mainnav li:hover a {
+        color: #FFFFFF;
+        text-decoration: none;
+	background: transparent;
+	border-bottom: 0;
+        }
+
+.mainnav li:hover a:active { 
+	color:#FFF; 
+	text-decoration:none;
+	}
+
+.mainnav li a:active { 
+	color:#204C8D; 
+	text-decoration:none;
+	}
+
+.mainnav .active :link,
+.mainnav .active :visited {
+        color: #FFFFFF;
+	font-weight: bold;
+	}
+
+.mainnav li.active {
+        background-color: #628ECA;
+        background-image: url("../topbar_gradient2.png"); 
+        background-position: left top;
+        background-repeat: repeat-x;
+	}
+
+/* Main navigation bar footer*/
+
+#footer .mainnav li {
+        border-color: #628ECA;
+        background-color: #FFF;
+        background-image: url("../bottombar_gradient.png");
+        background-position: left bottom;
+        background-repeat: repeat-x;
+        }
+
+#footer .mainnav a, 
+#footer .mainnav a:visited {
+        color: #204C8D;
+        text-decoration: none;
+	border-bottom: 0;
+        }
+
+#footer .mainnav li:hover {
+        background-color: #628ECA;
+        background-image: url("../bottombar_gradient2.png");
+        background-position: left bottom;
+        background-repeat: repeat-x;
+        }
+
+#footer .mainnav li:hover a {
+        color: #FFFFFF;
+        text-decoration: none;
+	background: transparent;
+        }
+
+#footer .mainnav li:hover a:active { color:#FFF; text-decoration:none;}
+#footer .mainnav li a:active { color:#204C8D; text-decoration:none;}
+
+#footer .mainnav .active :link,
+#footer .mainnav .active :visited {
+        color: #FFFFFF;
+	font-weight: bold;
+	}
+
+#footer .mainnav li.active {
+        background-color: #628ECA;
+        background-image: url("../bottombar_gradient2.png"); 
+        background-position: left bottom;
+        background-repeat: repeat-x;
+	}
+
+/* Context-dependent navigation links */
+#ctxtnav { 
+	clear: both;
+	padding: 0;
+	}
+
+#ctxtnav ul {
+	background-color: #EDF4FF;
+	border-top: 1px solid #C9C9C9;
+	margin: 0;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-bottom: 2px dotted #628ECA;	
+	font-size: 0.9em;
+	clear: both;
+	text-align: left;
+	}
+
+#ctxtnav li ul {
+ 	background: #f7f7f7;
+ 	color: #ccc;
+ 	border: 1px solid;
+	padding: 0;
+	display: inline;
+	}
+
+#ctxtnav li li { padding: 0; }
+
+#ctxtnav li li :link, 
+#ctxtnav li li :visited { 
+	padding: 0 1em 
+	}
+
+#ctxtnav li li :link:hover, #ctxtnav li li :visited:hover {
+	background: #bba;
+	color: #fff;
+	}
+
+/* Alternate links */
+
+#altlinks { 
+	clear: both; 
+	text-align: center; 
+	}
+
+#altlinks h3 { 
+	font-size: 12px; 
+	letter-spacing: 
+	normal; margin: 0 
+	}
+
+#altlinks ul { 
+	list-style: none; 
+	margin: 0; 
+	padding: 0 0 1em 
+	}
+
+#altlinks li {
+	border-right: 1px solid #d7d7d7;
+	display: inline;
+	font-size: 11px;
+	line-height: 16px;
+	padding: 0 1em;
+	white-space: nowrap;
+	}
+
+#altlinks li.last { 
+	border-right: none; 
+	}
+
+#altlinks li :link, 
+#altlinks li :visited {
+	background-position: 0 -1px;
+	background-repeat: no-repeat;
+	border: none;
+	}
+
+#altlinks li a.ics { background-image: url(../ics.png); padding-left: 22px }
+
+#altlinks li a.rss { background-image: url(../xml.png); padding-left: 42px }
+
+/* Footer */
+
+#footer {
+	background: #204c8d url("../header-background.png");
+	margin-top: 1em;
+	}
+
+#footer :link, 
+#footer :visited { 
+	color: #bbb; 
+	}
+
+#footer hr { display: none }
+
+#footer #tracpowered { 
+	border: 0; 
+	float: left; 
+	}
+
+#footer #tracpowered:hover { 
+	background: transparent; 
+	}
+
+#footer p { 
+	margin: 0; 
+	}
+
+#footer p.left {
+	float: left;
+	margin-left: 1em;
+	padding: 0 1em;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+	}
+
+#footer p.right {
+	float: right;
+	text-align: right;
+	}
+
+#footer .credits {
+        text-align: center;
+        font-size: 0.88em;
+        padding: 0;
+        color: #EEE;
+	padding: 1em;
+	clear: both;
+	}
+
+#footer .credits a { 
+        color: #EEE; 
+        }
+
+
+#content { 
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 2em; 
+	position: relative 
+	}
+
+#help {
+	clear: both;
+	color: #999;
+	font-size: 90%;
+	margin: 1em;
+	text-align: right;
+	}
+
+#help :link, 
+#help :visited { cursor: help }
+
+#help hr { display: none }
+
+/* Page preferences form */
+
+#prefs {
+	background: #f7f7f0;
+	border: 1px outset #998;
+	float: right;
+	font-size: 9px;
+	padding: .8em;
+	position: relative;
+	margin: 0 1em 1em;
+	}
+
+* html #prefs { width: 26em } /* Set width only for IE */
+
+#prefs input, 
+#prefs select { font-size: 9px; vertical-align: middle }
+
+#prefs fieldset {
+	background: transparent;
+	border: none;
+	margin: .5em;
+	padding: 0;
+	}
+
+#prefs fieldset legend {
+	background: transparent;
+	color: #000;
+	font-size: 9px;
+	font-weight: normal;
+	margin: 0 0 0 -1.5em;
+	padding: 0;
+	}
+
+#prefs .buttons { text-align: right }
+
+/* Version information (browser, wiki, attachments) */
+
+#info {
+	margin: 1em 0 0 0;
+	background: #f7f7f0;
+	border: 1px solid #d7d7d7;
+	border-collapse: collapse;
+	border-spacing: 0;
+	clear: both;
+	width: 100%;
+	}
+
+#info th, 
+#info td { 
+	padding: 2px .5em; 
+	vertical-align: top 
+	}
+
+#info th { 
+	font-weight: bold; 
+	text-align: left; 
+	white-space: nowrap; 
+	}
+
+#info td.message { 
+	width: 100% 
+	}
+
+#info .message ul { 
+	padding: 0; 
+	margin: 0 2em 
+	}
+
+#info .message p { 
+	margin: 0; 
+	padding: 0 
+	}
+
+/* Wiki */
+
+.wikipage { 
+	padding-left: 18px; 
+	}
+
+.wikipage h1, 
+.wikipage h2, 
+.wikipage h3 { 
+	margin-left: -18px; 
+	}
+
+a.missing:link, 
+a.missing:visited, 
+span.missing { color: gray; }
+
+a.missing:link, 
+a.missing:visited { background: none; }
+
+a.missing:hover { color: gray }
+a.closed:link, a.closed:visited { text-decoration: line-through }
+
+dl.wiki dt { font-weight: bold }
+
+dl.compact dt { float: left; padding-right: .5em }
+
+dl.compact dd { margin: 0; padding: 0 }
+
+pre.wiki, 
+pre.literal-block {
+        border: 1pt dashed #797979;
+        background-color: #F3F3F3;
+        padding: 0.5em 1em;
+        margin: 0.5em 0 0.5em 0;
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+        white-space: pre;
+        /* begin css 3 or browser specific rules - do not remove!
+        see: http://forums.techguy.org/archive/index.php/t-249849.html */
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        /* end css 3 or browser specific rules */
+        border-width: 1px;
+        border-style: solid;
+        border-color: #E5E5E5;
+        border-left-width: 4px;
+        white-space: pre;
+        background: #FFFAE9;
+        overflow: auto;
+	}
+
+blockquote.citation { 
+	margin: -0.6em 0;
+	border-style: solid; 
+	border-width: 0 0 0 2px; 
+	padding-left: .5em;
+	border-color: #b44; 
+	}
+
+.citation blockquote.citation { 
+	border-color: #4b4; 
+	}
+
+.citation .citation blockquote.citation { 
+	border-color: #44b; 
+	}
+
+.citation .citation .citation blockquote.citation { 
+	border-color: #c55; 
+	}
+
+table.wiki {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+
+table.wiki td { 
+	border: 1px solid #ccc;  
+	padding: .5em ; 
+	}
+
+.wikitoolbar {
+	border: solid #d7d7d7;
+	border-width: 1px 1px 1px 0;
+	height: 18px;
+	width: 208px;
+	}
+
+.wikitoolbar :link, .wikitoolbar :visited {
+	background: transparent url("../edit_toolbar.png") no-repeat;
+	border: 1px solid #fff;
+	border-left-color: #d7d7d7;
+	cursor: default;
+	display: block;
+	float: left;
+	width: 24px;
+	height: 16px;
+	}
+
+.wikitoolbar :link:hover, 
+.wikitoolbar :visited:hover {
+	background-color: transparent;
+	border: 1px solid #fb2;
+	}
+
+.wikitoolbar a#em { 
+	background-position: 0 0 
+	}
+
+.wikitoolbar a#strong { 
+	background-position: 0 -16px 
+	}
+
+.wikitoolbar a#heading { 
+	background-position: 0 -32px 
+	}
+
+.wikitoolbar a#link { 
+	background-position: 0 -48px 
+	}
+
+.wikitoolbar a#code { 
+	background-position: 0 -64px 
+	}
+
+.wikitoolbar a#hr { 
+	background-position: 0 -80px 
+	}
+
+.wikitoolbar a#np { 
+	background-position: 0 -96px 
+	}
+
+.wikitoolbar a#br { 
+	background-position: 0 -112px 
+	}
+
+/* Styles for the form for adding attachments. */
+
+#attachment .field { margin-top: 1.3em }
+#attachment label { padding-left: .2em }
+#attachment fieldset { margin-top: 2em }
+#attachment fieldset .field { float: left; margin: 0 1em .5em 0 }
+#attachment .options { float: left; padding: 0 0 1em 1em }
+#attachment br { clear: left }
+.attachment #preview { margin-top: 1em }
+
+/* Styles for the list of attachments. */
+
+#attachments { 
+	border: 1px solid #ddd; 
+	padding-right: 1em;
+	}
+
+#attachments .attachments { 
+	margin-left: 2em; 
+	padding: 0 
+	}
+
+#attachments dt { 
+	display: list-item; 
+	list-style: square; 
+	font-size: small;
+	}
+
+#attachments dd { 
+	font-style: italic; 
+	margin-left: 0; 
+	padding-left: 0; 
+	font-size: small;
+	margin-bottom: 1em;
+	}
+
+
+/* Styles for tabular listings such as those used for displaying
+ * directory contents and report results. */
+
+table.listing {
+	clear: both;
+	border-bottom: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-top: 1em;
+	width: 100%;
+	}
+
+table.listing th { 
+	text-align: left; 
+	padding: .5em; 
+	}
+
+table.listing thead { 
+	background: #fff url("../h2-background.png"); 
+	}
+
+table.listing thead th {
+	border: 1px solid #ddd;
+	font-weight: bold;
+	padding: .5em;
+	vertical-align: bottom;
+	}
+
+table.listing thead th :link:hover, 
+table.listing thead th :visited:hover {
+ 	background-color: transparent;
+	}
+
+table.listing thead th a { 
+	border: none; 
+	padding-right: 12px;
+	}
+
+table.listing th.asc a, 
+table.listing th.desc a { 
+	font-weight: bold; 
+	}
+
+table.listing th.asc a, 
+table.listing th.desc a {
+ 	background-position: 100% 50%;
+	background-repeat: no-repeat;
+	}
+
+table.listing th.asc a { 
+	background-image: url("../asc.png"); 
+	}
+
+table.listing th.desc a { 
+	background-image: url("../desc.png"); 
+	}
+
+table.listing tbody td, 
+table.listing tbody th {
+	border: 1px dotted #ddd;
+	padding: .5em;
+	vertical-align: top;
+	}
+
+table.listing tbody td a:hover, 
+table.listing tbody th a:hover {
+	background-color: transparent;
+	}
+
+table.listing tbody tr { 
+	border-top: 1px solid #ddd 
+	}
+
+table.listing tbody tr.even {
+	background-color: #fcfcfc; 
+	}
+
+table.listing tbody tr.odd { 
+	background-color: #f7f7f7; 
+	}
+
+table.listing tbody tr:hover { 
+	background: #eed !important; 
+	}
+
+/* Styles for the error page (and rst errors) */
+
+#content.error .message, 
+div.system-message {
+	background: #fdc;
+	border: 2px solid #d00;
+	color: #500;
+	padding: .5em;
+	margin: 1em 0;
+	}
+
+#content.error pre, 
+div.system-message pre { 
+	margin-left: 1em; 
+	overflow: auto; 
+	font-size: small;
+	font-family: "DejaVu Sans Mono","Liberation Mono",monospace;
+	}
+
+div.system-message p { 
+	margin: 0; 
+	}
+
+div.system-message p.system-message-title { 
+	font-weight: bold; 
+	}
+
+/* Styles for search word highlighting */
+
+@media screen {
+	.searchword0 { background: #ff9 }
+	.searchword1 { background: #cfc }
+	.searchword2 { background: #cff }
+	.searchword3 { background: #ccf }
+	.searchword4 { background: #fcf }
+	}
+
+@media print {
+	#header, 
+	#altlinks, 
+	#footer, 
+	#help { 
+		display: none; 
+		}
+
+	.nav, 
+	form, 
+	.buttons form, 
+	form .buttons, 
+	form .inlinebuttons { 
+		display: none; 
+		}
+
+	form.printableform { 
+		display: block;
+		}
+	}
+
+/* Miscelaneous */
+
+.pageline {
+        clear: both;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        /* sync these values, line-height is needed for IE */
+        height: 5px;
+	line-height: 5px;
+        background: #628ECA;
+        }
+
+.wikitext {
+	padding: 3px;	
+	font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	font-size: 1em;
+}
+
+/* Lists */
+
+#content ul,
+#content ol {
+        padding-left: 0.5em;
+        margin-left: 3em;
+        margin-bottom: 0.3em;
+        }
+
+#content ul { 
+        list-style: url("../ul.png") circle; 
+        } 
+
+#content ol {
+        list-style-image: none !important;
+        }
+
+#content ul li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+#content ol li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+#content ul ul,
+#content ul ol,
+#content ol ul,
+#content ol ol {
+        margin-left: 1.5em;
+        margin-top: 0.3em;
+        }
+
+#content ul li p,
+#content ol li p {
+        margin-bottom: 0.3em;
+        line-height: 1.5em;
+        margin-left: 0 !important;
+        }

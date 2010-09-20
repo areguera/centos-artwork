@@ -1,0 +1,39 @@
+#puntal_content .lexiconTitle span {
+	font-weight: bold;
+}
+#puntal_content .word {
+	border: none;
+	margin: 0;
+	font-weight: normal;
+}
+
+p#letter_list { text-align: center; }
+
+p#letter_list a.cur_letter { font-weight: bold; }
+
+div.lexique dt.word {
+	margin-top: 1em;
+	font-weight: bold;
+}
+
+div.lexique dd.word_def {}
+
+div.lexique dd.word_example {
+	font-style: italic;
+}
+div.lexique dd.word_example em {
+	font-style: normal;
+}
+
+div.lexique dd.word_infos {
+	text-align: right;
+}
+
+div.lexique dt.inactive, 
+div.lexique dd.inactive {
+	color: #696969;
+}
+
+#puntal_content #lexiqueTitle span {
+	font-weight: bold;
+}

@@ -1,0 +1,288 @@
+% Part   : Concepts
+% Chapter: Manuals
+% ------------------------------------------------------------
+% $Id: manuals.tex 6191 2010-08-02 02:36:14Z al $
+% ------------------------------------------------------------
+
+\begin{description}
+\item[framework:] trunk/Manuals/
+\end{description}
+
+\noindent This chapter describes the CentOS Artwork Repository User
+Guide.  The CentOS Artwork Repository User Guide is the book you are
+reading right now. The main goals of this book is helping you to
+understand how CentOS Artwork Repository works, and what you can do to
+get the best of it.  It is also an excuse for you to join us and help
+improving it.
+
+\section{Structure}
+
+Inside CentOS Artwork Repository, documentation is conceived using
+\LaTeX's book class. Instead of having the entire document in a single
+file, information has been spread in separated files under Manuals
+framework structure. The Manuals framework structure is illustrated in
+\autoref{fig:Concepts:Manuals:Structure} and described in
+``\hyperlink{sec:Concepts:Manuals:Files}{Relevant Files}'' (see
+\autoref{sec:Concepts:Manuals:Files}) and
+``\hyperlink{sec:Concepts:Manuals:Directories}{Relevant Directories}''
+(see \autoref{sec:Concepts:Manuals:Directories}).
+
+\begin{figure}[!hbp]
+\hrulefill
+\begin{verbatim}
+trunk/Manuals/
+|-- Concepts
+|   |-- CentOS
+|   |-- Frameworks
+|   |-- Identity
+|   `-- ...
+|-- Distribution
+|   |-- Anaconda
+|   |   |-- Firstboot
+|   |   |-- Header
+|   |   |-- Progress
+|   |   `-- ...
+|   |-- Backgrounds
+|   |-- BootUp
+|   |   |-- GDM
+|   |   |-- GRUB
+|   |   `-- ...
+|   `-- Release
+|-- Licenses
+|-- Translations
+|-- Workstation
+|-- convenctions.tex
+|-- repository.aux
+|-- repository.lof
+|-- repository.log
+|-- repository.lot
+|-- repository.out
+|-- repository.pdf
+|-- repository.tex
+`-- repository.toc
+\end{verbatim}
+\hrulefill
+\caption{Manuals framework structure.%
+   \label{fig:Concepts:Manuals:Structure}}
+\end{figure}
+
+\section{Writing Style}
+
+When writing for CentOS Artwork Repository User Guide, keep in mind
+the following quote taken from the online ``BBC News Styleguide'':
+---The key to good writing is \textbf{simple thoughts simply
+expressed}.  Use short sentences and short words.  Anything which is
+confused, complicated, poorly written or capable of being
+misunderstood risks losing the listener or viewer, and once you have
+done that, you might just as well not have come to work---.
+
+If you need to express complicated ideas, try to split them out in
+smaller and simpler ideas as much as possible. If you consider it
+appropriate, try to use
+``\hyperlink{sec:Concepts:Identity:Models}{Design Models}'' (see
+\autoref{sec:Concepts:Identity:Models}) to illustrate your thoughts.
+
+\subsection{Cross References}
+
+When you create \LaTeX's cross references, you need to define targets
+and links.  Targets are the specific locations in the document that
+links point to.  In \LaTeX, these cross reference targets and links
+can be defined in many ways, so we need to standardize the way we use
+inside CentOS Artwork Repository User Guide to make it look uniform
+and easy to read.
+
+Inside CentOS Artwork Repository User Guide, cross references look
+like illustrated in
+\autoref{fig:Concepts:Manuals:CrossRef:Presentation}.  Cross reference
+targets are defined as illustrated in
+\autoref{fig:Concepts:Manuals:CrossRef:Targets}, and links to those
+targets are defined as illustrated in
+\autoref{fig:Concepts:Manuals:CrossRef:Links}. 
+
+Note that we use both \texttt{hypertarget} and \texttt{label} commands
+to define targets, and \texttt{hyperlink} and \texttt{autoref} to
+define links.  With \texttt{hyperlink} we create long text links
+---usefull when reading in the coputer---, and with \texttt{autoref}
+we create numbered links ---usefull when reading in a printed copy---.
+
+\begin{figure}[!hbp]
+\hrulefill
+\begin{flushleft}
+\dots you can find more information in
+``\hyperlink{sec:Concepts:Identity:Brands}{Logos}'' (see
+\autoref{sec:Concepts:Identity:Brands}), specifically in
+\hyperlink{sec:Concepts:Identity:Brands:Logos}{the horizontal version} (see
+\autoref{sec:Concepts:Identity:Brands:Logos}).
+\end{flushleft}
+\hrulefill
+\caption{Cross reference link presentation.%
+   \label{fig:Concepts:Manuals:CrossRef:Presentation}}
+\end{figure}
+
+\begin{figure}[!hbp]
+\hrulefill
+\begin{verbatim}
+\part{Concepts}
+...
+\chapter{The CentOS Logo}
+\hypertarget{sec:Concepts:Logo}{}
+\label{sec:Concepts:Logo}
+...
+\section{Horizontal}
+\hypertarget{sec:Concepts:Identity:Brands}{}
+\label{sec:Concepts:Identity:Brands}
+...
+\end{verbatim}
+\hrulefill
+\caption{\LaTeX's definition for cross reference targets.%
+   \label{fig:Concepts:Manuals:CrossRef:Targets}}
+\end{figure}
+
+\begin{figure}[!hbp]
+\hrulefill
+\begin{verbatim}
+\dots you can find more information in
+``\hyperlink{sec:Concepts:Identity:Brands}{The CentOS Logo}'' 
+(see \autoref{sec:Concepts:Identity:Brands}), specifically in
+\hyperlink{sec:Concepts:Identity:Brands:Logos}{the horizontal version} 
+(see \autoref{sec:Concepts:Identity:Brands:Logos}).
+\end{verbatim}
+\hrulefill
+\caption{\LaTeX's definition for cross reference links.%
+   \label{fig:Concepts:Manuals:CrossRef:Links}}
+\end{figure}
+
+\subsection{Figures}
+
+Inside CentOS Artwork Repository User Guide, illustrations (i.e.
+images, framework structures, source code, commands, etc.) are shown
+using \LaTeX's \texttt{figure} environment. An example of
+\texttt{figure} environment definition is illustrated in
+\autoref{fig:Concepts:Manuals:Figures}.  More information about
+\LaTeX's \texttt{figure} environment can be found in \LaTeX's info
+manual. To read the \LaTeX's info manual, execute in your terminal the
+command: \texttt{info latex}.
+
+\begin{figure}[!hbp]
+\hrulefill
+\begin{verbatim}
+\begin{figure}[!hbp]
+\hrulefill
+...
+\hrulefill
+\caption{... .%
+   \label{fig:...}}
+\end{figure}
+\end{verbatim}
+\hrulefill
+\caption{\LaTeX's definition for \texttt{figure} environment.%
+   \label{fig:Concepts:Manuals:Figures}}
+\end{figure}
+
+\subsection{Tables}
+
+Inside CentOS Artwork Repository User Guide, tabular information (i.e.
+translation markers, etc.) is shown using \LaTeX's \texttt{table}
+environment. An example of \texttt{table} environment definition is
+illustrated in \autoref{fig:Concepts:Manuals:Tables}.  More
+information about \LaTeX's \texttt{table} environment can be found in
+\LaTeX's info manual. To read the \LaTeX's info manual, execute in
+your terminal the command: \texttt{info latex}.
+
+\begin{figure}[!hbp]
+\hrulefill
+\begin{verbatim}
+\begin{table}[!hbp]
+\centering
+\begin{tabular}[pos]{cols}
+\hline
+...
+\hline
+\end{tabular}
+\caption{... .%
+   \label{tab:...}}
+\end{table}
+\end{verbatim}
+\hrulefill
+\caption{\LaTeX's definition for \texttt{table} environment.%
+   \label{fig:Concepts:Manuals:Tables}}
+\end{figure}
+
+\section{Relevant Files}
+\hypertarget{sec:Concepts:Manuals:Files}{}
+\label{sec:Concepts:Manuals:Files}
+
+\subsection{repository.tex}
+
+The \texttt{repository.tex} file is the main book's file. Here is
+where you define specific book information like class, title, authors,
+etc.  Inside \texttt{repository.tex} you organize chapters and load
+their sections.
+
+\subsection{introduction.tex} 
+
+The \texttt{Introduction.tex} file introduces a specific artwork
+component: what it does, where and when it appears in, etc.
+
+\subsection{framework.tex} 
+
+The \texttt{rramework.tex} file describes how to interact with a
+specific artwork component: where to find the artwork component inside
+CentOS Artwork Repository, how to render their images, how to render
+their translations, their specific translation markers, etc.
+
+\subsection{rebranding.tex} 
+
+The \texttt{rebranding.tex} file describes how to rebrand a specific
+artwork component: where to find the arwork component inside CentOS
+Distribution, related packages you need to modify, etc.
+
+\section{Relevant Directories}
+\hypertarget{sec:Concepts:Manuals:Directories}{}
+\label{sec:Concepts:Manuals:Directories}
+
+\subsection{Concepts}
+
+The \texttt{Concepts} directory organizes chapters related to
+``Concepts'' part.  Files in this directory describe concepts used
+inside CentOS Artwork Repository.
+
+\subsection{Workstation} 
+
+The \texttt{Workstation} directory organizes chapters related to
+``Preparing Your Workstation'' part. Files in this directory describe
+actions (i.e. installation and configuration) you need to do before
+using CentOS Artwork Repository. 
+
+\subsection{Distribution} 
+
+The \texttt{Distribution} directory organizes chapters releated to
+``Distribution'' part. This part gets its attention into the different
+artwork components of CentOS Distribution, using a subdirectory
+structure to organize them and the files \texttt{introduction.tex},
+\texttt{framework.tex}, and \texttt{rebranding.tex} to describe them.
+
+\subsection{Licenses} 
+
+The \texttt{Licenses} directory organizes licenses used in this book.
+
+\section{Revisions}
+\hypertarget{sec:Concepts:Manuals:Revisions}{}
+\label{sec:Concepts:Manuals:Revisions}
+
+Revisions are a way of organizing changes committed to CentOS Artwork
+Repository User Guide. Revisions have the format ``Revision M.N'',
+where M is the major revision number, and N is the update revision
+number.  Revision update number (N) may increase by one every month to
+release that month's changes.  Once the six month cycle is reached,
+major revision number (M) is increased by one and update revision
+number (N) is reset to 0.
+
+\section{Export to PDF}
+
+To produce the file \texttt{repository.pdf}, you need to get inside
+the Manual's framework and execute the command:
+
+\begin{quote}
+\texttt{pdflatex repository.tex}
+\end{quote}

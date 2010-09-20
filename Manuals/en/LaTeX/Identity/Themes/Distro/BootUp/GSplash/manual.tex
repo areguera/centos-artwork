@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{pdfauthor={CentOS Documentation SIG},%
+            pdftitle={GNOME Splash)},%
+            pdfsubject={CentOS Corporate Visual Identity}%
+            }
+
+\title{GNOME Splash}
+\author{CentOS Documentation SIG}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+
+This article describes the GNOME Splash Visual Style for CentOS
+Distribution. By default this image is disabled to make GNOME session
+load faster. If you enable it,\footnote{To enable GNOME Splash image
+go to: \texttt{System > Preferences > More Preferences > Sessions} and
+check the item \texttt{Show splash screen on login}.} this image is
+displayed after login screen, and while GNOME session is being loaded. 
+
+Copyright \copyright\ 2010\ The CentOS Project. Permission is
+granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.2 or any later
+version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License''.  
+\end{abstract}
+
+\tableofcontents
+
+\section{Workplace}
+\begin{itemize}
+\item SVN:trunk/Identity/Themes/\$THEME/Distro/BootUp/GSplash/
+\item SVN:trunk/Translations/Identity/Themes/Distro/BootUp/GSplash/
+\item SVN:trunk/Scripts/Identity/Themes/Distro/BootUp/GSplash/
+\end{itemize}
+
+\section{Theme}
+
+\input{table-theme.tex}
+
+\section{Design}
+
+GNOME Splash is rendered for each major release of CentOS
+Distribution. Each image is based in the same Artistic Motif and has
+the following components:
+
+\begin{enumerate}
+\item The CentOS Symbol.
+\item The CentOS Release Brand.
+\item The CentOS Default Artistic Motif.
+\end{enumerate}
+
+Image rendering is done using the script render.sh available in the
+workplace.  This script creates the appropriate PNG images under
+img/\$VERSION/.
+
+There is no color limitation in this section.
+
+\section{Configuration}
+\section{Rendering}
+\section{Testing}
+\section{Issues}
+
+% License section
+\input{../../../../../Licenses/GFDL.tex}
+
+\end{document}

@@ -1,0 +1,88 @@
+@subsection Goals
+
+@itemize
+@item Organize @file{centos-art.sh} locale files.
+@end itemize
+
+@subsection Description
+
+This command looks for @samp{.sh} files inside Bash directory and
+extracts translatable strings from files, using @command{xgettext}
+command, in order to create a portable object template
+(@file{centos-art.sh.pot}) file for them.
+
+With the @file{centos-art.sh.pot} file up to date, the
+@command{centos-art} command removes the temporal list of files sotred
+inside @file{/tmp} directory and checks the current language of your
+user's session to create a portable object file for it, in the
+location @file{$CLI_LANG/$CLI_LANG.po}. 
+
+The @var{CLI_LANG} variable discribes the locale language used to
+output messages inside @command{centos-art} command. The locale
+language used inside @command{centos-art} command is taken from the
+@var{LANG} environment variable.  The @var{CLI_LANG} variable has the
+@samp{LL_CC} format, where @samp{LL} is a language code from the
+ISO-639 standard, and @samp{CC} a country code from the ISO-3166
+standard.
+
+The @var{LANG} environment variable is set when you do log in to your
+system. If you are using a graphical session, change language to your
+native language and do login. That would set and exoprt the @var{LANG}
+environment variable to the correct value. On the other side, if you
+are using a text session edit your @file{~/.bash_profile} file to set
+and export the @var{LANG} environment variable to your native locale
+as defines the @command{locale -a} command output; do logout, and do
+login again.
+
+At this point, the @var{LANG} environment variable has the appropriate
+value you need, in order to translate @command{centos-art.sh} messages
+to your native language (the one set in @var{LANG} environment
+variable). 
+
+With the @file{$CLI_LANG/$CLI_LANG.po} file up to date, the
+@command{centos-art} opens it for you to update translation strings.
+The @command{centos-art} command uses the value of @var{EDITOR}
+environment variable to determine your favorite text editor. If no
+value is defined on @var{EDITOR}, the @file{/usr/bin/vim} text editor
+is used as default.
+
+When you finish PO file's edition and quit text editor, the
+@command{centos-art} command creates the related machine object in the
+location @file{$CLI_LANG/LC_MESSAGES/$TEXTDOMAIN.mo}.
+
+At this point, all translations you made in the PO file should be
+available to your language when runing @command{centos-art.sh} script. 
+
+@subsubsection Configuration files
+
+In order to make the @command{centos-art.sh} internationalization, the
+@command{centos-art.sh} script was modified as described in the
+@command{gettext} info documentation (@command{info gettext}).  You
+can find such modifications in the following files:
+
+@itemize
+@item @file{trunk/Scripts/Bash/initFunctions.sh}
+@item @file{trunk/Scripts/Bash/Functions/Config/cli_localeMessages.sh}
+@item @file{trunk/Scripts/Bash/Functions/Config/cli_localeMessagesStatus.sh}
+@end itemize
+
+@subsection Usage
+
+@subsubsection The @command{centos-art} @samp{locale-cli} action
+
+@table @samp
+@item centos-art locale-cli --edit
+Use this command to translate command-line interface output messages
+in the current system locale you are using (as specified in @var{LANG}
+environment variable).
+@item centos-art locale-cli --list
+Use this command to see the command-line interface locale report.
+@end table
+
+@subsection See also
+
+@menu
+* trunk Scripts Bash Config::
+* trunk Scripts Bash Functions::
+* trunk Scripts::
+@end menu

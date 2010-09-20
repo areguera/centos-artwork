@@ -1,0 +1,111 @@
+/***
+ * Browser Default Page Customization
+ *
+ * The CentOS Artwork SIG
+ */
+
+html {
+	background-image:url(img/html-background.png);
+	background-color: white;
+	font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+	font-size: 0.85em;
+	line-height: 1.25em;
+	margin: 0 3% 0 3%;
+}
+
+body {
+	margin:0;
+	padding: 10px;
+	background: #fff;
+}
+
+/* Links */
+
+a:link { border-bottom: 1px dotted #ccc; text-decoration: none; color: #204d92; }
+a:hover { border-bottom:1px dotted #ccc; text-decoration: underline; color: green; }
+a:active {  border-bottom:1px dotted #ccc; text-decoration: underline; color: #204d92; }
+a:visited { border-bottom:1px dotted #ccc; text-decoration: none; color: #204d92; }
+a:visited:hover { border-bottom:1px dotted #ccc; text-decoration: underline; color: green; }
+ 
+#footer p.sysinfo a:link { border-bottom: 1px dotted #ddd; text-decoration: none; color: #ccc; }
+#footer p.sysinfo a:hover { border-bottom:1px dotted #ddd; text-decoration: underline; color: #ccc; }
+#footer p.sysinfo a:active { border-bottom:1px dotted #ddd; text-decoration: underline; color: #ccc; }
+#footer p.sysinfo a:visited { border-bottom:1px dotted #ddd; text-decoration: none; color: #ccc; }
+#footer p.sysinfo a:visited:hover { border-bottom:1px dotted #ddd; text-decoration: underline; color: #ccc; }
+
+/* Content */
+
+p {
+	line-height:1.5em;
+}
+
+h1 { line-height: 1.9em; }
+h2 { line-height: 1.7em; }
+
+/* Error Message */
+
+#errormsg {
+	clear: both;
+	background: #f8f8f8;
+	padding: 1.5em;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-top: 5px solid #ddd;
+	border-bottom: 5px solid #ddd;
+	margin-bottom: 1em;
+}
+
+#errormsg h1, 
+#errormsg h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#errormsg p,
+#errormsg h1,
+#errormsg h2 {
+	margin-top: 0;
+	margin-left: 170px;
+}
+
+#errormsg img {
+	float: left;
+	margin: 1em;
+	margin-left: 0;
+	margin-top: 1.5em;
+}
+
+/* CentOS Links */
+
+#centoslinks {
+	margin-left: 1em;
+}
+
+#centoslinks h2 {
+    clear: both;
+    margin-bottom: 0;
+}
+	
+#centoslinks ul.linkblock {
+	line-height: 1.9em;
+	float: left;
+	list-style: none;
+	padding-left: 1em;
+	padding-right: 1em;
+	border-right: 1px dotted #ccc;
+}	
+
+#centoslinks ul.linkblock.last {
+	border-right: none;
+}
+
+#footer {
+	padding-top: 3em;
+	color: #ccc;
+	clear: both;
+}
+
+#footer p.sysinfo {
+	font-size: small;
+	text-align: center;
+}

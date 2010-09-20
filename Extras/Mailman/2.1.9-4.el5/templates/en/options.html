@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title>Your membership options</title>
+     <link rel="shortcut icon" href="<mm-favicon>" />
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/common.css" />
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/mailman.css" />
+</head>
+
+<body>
+
+    <div id="header">
+    <a href="http://www.centos.org/"><img class="logo" src="/error/include/img/centos.png" alt="CentOS" /></a>
+    <div class="navigation">
+    <ul class="mainlinks">
+            <li><a href="http://centos.org/">Home</a></li>
+            <li><a href="http://centos.org/downloads/">Downloads</a></li>
+            <li><a href="http://centos.org/docs">Docs</a></li>
+            <li><a href="http://centos.org/wiki/">Wiki</a></li>
+            <li class="current"><a href="http://centos.org/lists/">Lists</a></li>
+            <li><a href="http://centos.org/bugs/">Bugs</a></li>
+            <li><a href="http://centos.org/forums/">Forums</a></li>
+            <li><a href="http://centos.org/trac/">Projects</a></li>
+    </ul>
+    </div>
+    </div>
+
+<div id="errormsg">
+    <img src="/error/include/img/lists.png" alt="Lists" />
+    <p><mm-errormsg-listinfo> | <mm-errormsg-listadmin></p>
+    <h1><mm-errormsg-header></h1>
+</div>
+
+<div id="centoslinks">
+
+        <mm-results>
+        <MM-Case-Preserved-User>
+        <MM-Disabled-Notice>
+
+        <h1>Your membership options</h1> 
+
+        <p><strong><MM-Presentable-User></strong>'s subscription status,
+        password, and options for the <MM-List-Name> mailing list.</p>
+
+        <MM-Form-Start>
+	<p><mm-logout-button></p>
+	<MM-Form-End>
+
+	<MM-Form-Start>
+
+        <h2>Changing your <MM-List-Name> membership information</h2>
+    
+	<p>You can change the address that you are subscribed to the
+	mailing list with by entering the new address in the fields
+	below.  Note that a confirmation email will be sent to the new
+	address, and the change must be confirmed before it is
+	processed.</p>
+
+	<p>Confirmations time out after about <mm-pending-days>.</p>
+
+	<p>You can also optionally set or change your real name (i.e.
+	<em>John Smith</em>).</p>
+
+	<p>If you want to make the membership changes for all the
+	lists that you are subscribed to at <mm-host>, turn on the
+	<em>Change globally</em> check box.</p>
+
+        <table>
+        	<tr>
+			<td class="description">New address:</td>
+	            	<td class="value"><mm-new-address-box></td>
+	        </tr>
+	        <tr>
+			<td class="description">Again to confirm:</td> 
+	            	<td class="value"><mm-confirm-address-box></td>
+	        </tr>
+	        <tr>
+			<td class="description">Your name (optional):</td>
+	            	<td class="value"><mm-fullname-box></td>
+	        </tr>
+	        <tr>
+			<td class="description">Change globally:</td>
+	            	<td class="value"><mm-global-change-of-address></td>
+        	</tr>
+	        <tr>
+			<td colspan="2" class="mm_submit">
+				<mm-change-address-button>
+			</td>
+		</tr>
+	</table>
+
+<h2>Unsubscribing from <MM-List-Name></h2>
+
+	<table>
+        	<tr>
+			<td colspan="2"><h3 class="center">Unsubscirbe</h3></td>
+            	</tr>
+            	<tr>
+			<td class="description">
+
+			Your other <MM-Host> subscriptions. Turn on
+			the confirmation checkbox and hit this button
+			to unsubscribe from this mailing list.
+
+			<p><strong>Warning:</strong> This action will
+			be taken immediately!</p>
+
+			</td>
+			<td class="value">
+			
+			<MM-Unsubscribe-Button>
+			
+			</td>
+            	</tr>
+            	<tr>
+
+			<td colspan="2"><h3 class="center">List my
+			other subscriptions</h3></td>
+
+            	</tr>
+            	<tr>
+			<td class="description">
+
+			You can view a list of all the other mailing
+			lists at <mm-host> for which you are a member.
+			Use this if you want to make the same
+			membership option changes to this other
+			subscriptions.  
+		
+			</td> 
+			<td class="value">
+
+			<MM-Other-Subscriptions-Submit> 
+			
+			</td>
+		</tr>
+	</table>
+        
+<h2>Your <MM-List-Name> Password</h2>
+
+        <table>
+            <tr>
+		<td colspan="2">
+        	<a name="reminder"></a>
+		<h3 class="center">Forgotten Your Password?</h3>
+		</td>
+	    </tr>
+            <tr>
+		<td class="description">Click this button to have your password emailed to your
+        membership address.</td>
+                <td class="value"><MM-Umbrella-Notice> <MM-Email-My-Pw></td>
+            </tr>
+            <tr>
+		<td colspan="2">
+        	<a name="changepw"></a>
+		<h3 class="center">Change Your Password</h3>
+		</td>
+            </tr>
+            <tr>
+		<td class="description">New password:</td>
+                <td class="value"><MM-New-Pass-Box></td>
+            </tr>
+            <tr>
+                <td class="description">Again to confirm:</td>
+                <td class="value"><MM-Confirm-Pass-Box></td>
+            </tr>
+            <tr>
+                <td class="description">Change globally:</td>
+                <td class="value"><mm-global-pw-changes-button></td>
+            </tr>
+        </table>
+
+        <p class="mm_submit"><MM-Change-Pass-Button></p>
+
+<h2>Your <MM-List-Name> Subscription Options</h2>
+
+	<p>Current values are checked.</p>
+
+	<p>Note that some of the options have a <em>Set globally</em>
+	checkbox.  Checking this field will cause the changes to be
+	made to every mailing list that you are a member of on
+	<mm-host>.  Click on <em>List my other subscriptions</em>
+	above to see which other mailing lists you are subscribed
+	to.</p>
+
+        <table>
+            <tr><td colspan="2">
+	    	<h3 class="center">
+			<a name="mdelivery">Mail delivery</a>
+		</h3>
+		</td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		Set this option to <em>Enabled</em> to receive
+		messages posted to this mailing list.  Set it to
+		<em>Disabled</em> if you want to stay subscribed, but
+		don't want mail delivered to you for a while (e.g.
+		you're going on vacation).  If you disable mail
+		delivery, don't forget to re-enable it when you come
+		back; it will not be automatically re-enabled.
+
+		</td>
+	    	<td class="value">
+        		<mm-delivery-enable-button>Enabled<br />
+		        <mm-delivery-disable-button>Disabled
+        		<p><mm-global-deliver-button>Set globally</p>
+		</td>
+	    </tr>
+            <tr><td colspan="2"><h3 class="center">Set Digest Mode</h3></td></tr>
+	    <tr>
+	    	<td class="description">
+
+		If you turn digest mode on, you'll get posts bundled
+		together (usually one per day but possibly more on
+		busy lists), instead of singly when they're sent.  If
+		digest mode is changed from on to off, you may receive
+		one last digest.
+
+		</td>
+	    	<td class="value">
+
+		<MM-Undigest-Radio-Button>Off<br />
+        	<MM-Digest-Radio-Button>On
+
+		</td>
+	    </tr>
+
+            <tr>
+	    	<td colspan="2"><h3 class="center">Get MIME or Plain Text Digests?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		Your mail reader may or may not support MIME digests.
+		In general MIME digests are preferred, but if you have
+		a problem reading them, select plain text digests.
+
+		</td>
+	    	<td class="value">
+
+	        <MM-Mime-Digests-Button>MIME<br />
+        	<MM-Plain-Digests-Button>Plain Text
+        	<p><mm-global-mime-button>Set globally</p>
+
+		</td>
+	    </tr>
+
+            <tr>
+	    	<td colspan="2"><h3 class="center">Receive your own posts to the list?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		Ordinarily, you will get a copy of every message you
+		post to the list.  If you don't want to receive this
+		copy, set this option to <em>No</em>.
+
+		</td>
+	    	<td class="value">
+
+	        <mm-dont-receive-own-mail-button>No<br />
+	        <mm-receive-own-mail-button>Yes
+
+		</td>
+	    </tr>
+
+            <tr>
+	    	<td colspan="2"><h3 class="center">Receive acknowledgement?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		Receive acknowledgement mail when you send mail to the
+		list?
+
+		</td>
+	    	<td class="value">
+
+	        <mm-dont-ack-posts-button>No<br />
+	        <mm-ack-posts-button>Yes
+
+		</td>
+	    </tr>
+
+            <tr>
+	    	<td colspan="2"><h3 class="center">Get password reminder email for this list?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		Once a month, you will get an email containing a
+		password reminder for every list at this host to which
+		you are subscribed.  You can turn this off on a
+		per-list basis by selecting <em>No</em> for this
+		option.  If you turn off password reminders for all
+		the lists you are subscribed to, no reminder email
+		will be sent to you.
+
+		</td>
+	    	<td class="value">
+
+        	<mm-dont-get-password-reminder-button>No<br />
+	        <mm-get-password-reminder-button>Yes
+	        <p><mm-global-remind-button>Set globally</p>
+
+		</td>
+	    </tr>
+
+            <tr>
+	    	<td colspan="2"><h3 class="center">Conceal yourself from subscriber list?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		When someone views the list membership, your email
+		address is normally shown (in an obscured fashion to
+		thwart spam harvesters).  If you do not want your
+		email address to show up on this membership roster at
+		all, select <em>Yes</em> for this option.
+
+		</td>
+	    	<td class="value">
+
+        	<MM-Public-Subscription-Button>No<br />
+	        <MM-Hide-Subscription-Button>Yes
+
+		</td>
+	    </tr>
+
+            <tr>
+	    	<td colspan="2"><h3 class="center">What language do
+		you prefer? </h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+		Language:
+
+		</td>
+	    	<td class="value">
+
+        	<MM-list-langs>
+
+		</td>
+	    </tr>
+            <tr>
+	    	<td colspan="2"><h3 class="center">Which topic categories would you like to subscribe
+                to?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+
+                By selecting one or more topics, you can filter the
+                traffic on the mailing list, so as to receive only a
+                subset of the messages.  If a message matches one of
+                your selected topics, then you will get the message,
+                otherwise you will not.
+
+                <p>If a message does not match any topic, the delivery
+                rule depends on the setting of the option below.  If
+                you do not select any topics of interest, you will get
+                all the messages sent to the mailing list.</p>
+
+		</td>
+	    	<td class="value">
+
+        	<mm-topics>
+
+		</td>
+	    </tr>
+            <tr>
+	    	<td colspan="2"><h3 class="center">Do you want to receive messages that do not match any
+                topic filter?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+		
+                This option only takes effect if you've subscribed to
+                at least one topic above.  It describes what the
+                default delivery rule is for messages that don't match
+                any topic filter.  Selecting <em>No</em> says that if
+                the message does not match any topic filters, then you
+                won't get the message, while selecting <em>Yes</em>
+                says to deliver such non-matching messages to you.
+
+                <p>If no topics of interest are selected above, then
+                you will receive every message sent to the mailing
+                list.</p>
+
+		</td>
+	    	<td class="value">
+
+	        <mm-suppress-nonmatching-topics>No<br />
+        	<mm-receive-nonmatching-topics>Yes
+
+		</td>
+	    </tr>
+            <tr>
+	    	<td colspan="2"><h3 class="center">Avoid duplicate copies of messages?</h3></td>
+	    </tr>
+	    <tr>
+	    	<td class="description">
+                When you are listed explicitly in the <tt>To:</tt> or
+                <tt>Cc:</tt> headers of a list message, you can opt to
+                not receive another copy from the mailing list.
+                Select <em>Yes</em> to avoid receiving copies from the
+                mailing list; select <em>No</em> to receive copies.
+
+                <p>If the list has member personalized messages
+                enabled, and you elect to receive copies, every copy
+                will have a <tt>X-Mailman-Copy: yes</tt> header added
+                to it.</p>
+
+		</td>
+	    	<td class="value">
+
+	        <mm-receive-duplicates-button>No<br />
+	        <mm-dont-receive-duplicates-button>Yes
+        	<p><mm-global-nodupes-button>Set globally</p>
+
+		</td>
+	    </tr>
+            <tr>
+	    	<td colspan="2" class="mm_submit"><MM-options-Submit-button></td>
+	    </tr>
+</table>	
+        
+<MM-Form-End>
+
+<MM-Mailman-Footer>
+</body>
+</html>

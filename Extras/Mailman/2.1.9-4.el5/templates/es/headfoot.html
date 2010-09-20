@@ -1,0 +1,33 @@
+<p>Este texto puede incluir <a
+href="http://www.python.org/doc/current/lib/typesseq-strings.html"> cadenas de
+formato Python </a> que ser&aacute;n sustituidas por los atributos de la
+lista. La lista de substituciones permitidas son:</p>
+
+<ul>
+    <li><strong>real_name</strong> - El nombre 'presentable' de la lista.
+    Suele ser el nombre de la lista con la primera letra en
+    may&uacute;scula.</li>
+    
+
+    <li><strong>list_name</strong> - El nombre por el cual se identifica la lista
+    en las URLs, se distinguen las may&uacute;sculas de las
+    min&uacute;sculas.</li>
+
+    <li><strong>host_name</strong> - El nombre can&oacute;nico del servidor que
+    alberga la lista.</li>
+
+    <li><strong>web_page_url</strong> - El URL base de Mailman. Por ejemplo
+    para indicar la p&aacute;gina de informaci&oacute;n de la lista 
+    solo habría que agregarle detrás: <em>listinfo/%(list_name)s</em></li>
+
+    <li><strong>description</strong> - Una descripci&oacute;n concisa sobre
+    la lista de distribuci&oacute;n.</li>
+
+    <li><strong>info</strong> - La descripci&oacute;n completa sobre la
+    lista de distribuci&oacute;n.</li>
+
+    <li><strong>cgiext</strong> - La extensi&oacute;n que se agrega a los guiones
+    CGI.</li>
+</ul>
+
+<p class="notrendered">

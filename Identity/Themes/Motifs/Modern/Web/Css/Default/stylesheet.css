@@ -1,0 +1,40 @@
+/* CentOS Cascading Style Sheet
+ * -----------------------------------------------
+ * File		: stylesheet.css
+ * Category	: root
+ * Theme	: Modern
+ * Description	: This is the main CentOS Web Visual Style definition.
+ *		  CSS defined here are common for the whole CentOS Web
+ *		  Environment.
+ *
+ *		  Specific CSS definitions, like those used in
+ *		  specific web applications, are declared using the
+ *		  HTML link element in the head section of the
+ *		  specific web application who needs it. Specific CSS
+ *		  definitions extend CentOS common CSS definition.
+ *		  Specific CSS definitions do not overlap CentOS
+ *		  common CSS definitions. For more information visit:
+ *		  http://wiki.centos.org/WebsiteVer2/WebEnvironment/VisualStyle/Default
+ * -----------------------------------------------
+ * Author	: CentOS Artwork SIG
+ * License	: GPL (http://www.fsf.org/licensing/licenses/gpl.txt)
+ * -----------------------------------------------
+ */
+
+
+/* Common:
+ *
+ * CSS definitions used to build the base CentOS Web Visual Style. It
+ * should always be loaded in first place.
+ */
+
+@import url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Default/common.css") screen, projection; 
+@import url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Default/print.css") print;
+
+/* Miscellaneous:
+ *
+ * CSS definitions used to build visual effects. New definitions may
+ * be added as time goes by. 
+ */
+
+@import url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Default/tabs.css") screen, projection;

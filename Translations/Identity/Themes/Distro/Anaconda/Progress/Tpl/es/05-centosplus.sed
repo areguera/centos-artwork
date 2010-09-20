@@ -1,0 +1,13 @@
+# ------------------------------------------------------------
+# $Id: 05-centosplus.sed 13 2010-09-10 09:55:59Z al $
+# ------------------------------------------------------------
+
+
+s/=TITLE=/Repositorio CentOSPlus/
+s/=TEXT1=/Este repositorio es para paquetes que actualizarán ciertos componentes del repositorio base. Este repo cambiará a CentOS de forma tal que ya no será exactamente como los contenidos del proveedor./
+s/=TEXT2=/El equipo de desarrollo de CentOS ha probado cada paquete de este repositorio, y cada uno compila y trabaja bajo CentOS =MAJOR_RELEASE=. Estos mismos paquetes no han sido probados por el proveedor ni están disponibles entre sus productos./
+s/=TEXT3=/El uso de estos paquetes elimina la compatibilidad binaria del 100% respecto a los paquetes del proveedor./
+s/=TEXT4=//
+s/=TEXT5=//
+s/=TEXT6=//
+s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories/CentOSPlus!

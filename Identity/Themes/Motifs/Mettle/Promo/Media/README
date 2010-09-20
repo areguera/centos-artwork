@@ -1,0 +1,38 @@
+
+                                                       MEDIA RENDERING
+
+                                                The CentOS Artwork SIG
+                                               centos-devel@centos.org
+                                  https://projects.centos.org/artwork/
+
+**********************************************************************
+
+Basic Syntax:
+
+    ./render.sh version architecture filename
+
+Here version, architecture, and filename are filters used to render
+the image.
+
+         version: is the CentOS version you want to render images for.
+                  For example: 3, 4, 5, 5.3, 6
+
+    architecture: is the CentOS architecture you want to render images
+                  for. For example: i386, x86_64. 
+
+        filename: is a filter used to reduce the image rendering. It
+                  is has the form of a regular expresion. It should
+                  match any of the following values: label, sleeve,
+                  cd, dvd or combination of them.
+
+If you need to render many versions, and architectures at the same
+time then you can used the render-m.sh script. For example to render
+versions 2, 3, 4, 5, and 6 for i386 and x86_64 architecture you can
+run the following:
+
+    ./render.sh '2 3 4 5 6' 'i386 x86_64'
+
+If you need to do that just for label images then add the filename
+filter to the above command. For example 
+
+    ./render.sh '2 3 4 5 6' 'i386 x86_64' 'label'

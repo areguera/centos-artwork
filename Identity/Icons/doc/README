@@ -1,0 +1,38 @@
+
+						      SHARED DIRECTORY
+
+						    The CentOS Artwork
+					     <centos-devel@centos.org>
+			     https://projects.centos.org/trac/artwork/
+
+**********************************************************************
+
+    The `Shared' directory is use to store common images that are
+    shared among different sections of the artwork environment.
+
+    In order to build some images, like those in anaconda slides
+    section, it is needed to have some images already rendered in a
+    proper dimension so they could be included before the final
+    rendering of the image, the anaconda slide in this case.
+
+    These kind of images are organized here in the shared directory.
+    Generally the content of this directory are icons and graphical
+    representations of actions, applications, mime-types and so on.
+
+    Event default dimensions of these images may vary, it is
+    recommend to use an standard dimension for svg templates designs
+    (ex.  width=150px) and then vary the size of final rendered image
+    through the ./rendere.sh script. The syntax is as following:
+
+    	./render.sh filename dimension
+
+    These images are rendered inside img directory. img directory is
+    organized in subdirectories with a number as name, that number is
+    equivalent to images' width inside it. Those are the
+    subdirectories used by different artwork sections to retrive the
+    needed image for its own purpose.
+
+**********************************************************************
+						    The CentOS Artwork
+					     <centos-devel@centos.org>
+			     https://projects.centos.org/trac/artwork/

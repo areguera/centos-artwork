@@ -1,0 +1,667 @@
+@subsection Goals
+
+The @file{trunk/Translations} directory exists to:
+
+@itemize
+@item Organize translation files.
+@item Organize translation templates used to produce translation files.
+@end itemize
+
+@subsection Description
+
+When you create artwork for CentOS distribution you find that some
+artworks need to be created for different major releases of CentOS
+distribution and inside each major release they need to be created for
+different locales. To get an approximate idea of how many files we are
+talking about, consider the followig approximate statistic:
+
+@itemize
+@item Inside CentOS distribution, there are around 30 images to
+rebrand.@footnote{This number is an approximate value and may change.
+It is mainly based on CentOS 5 rebranding experience.}
+
+@item There are near to four major releases of CentOS distribution to
+rebrand in parallel development.@footnote{This value was taken from
+CentOS release schema.} 
+
+@item Each CentOS distribution in parallel development supports more
+than two hundreds locales.@footnote{This value was taken from the
+@command{locale -a} command's output.}
+@end itemize
+
+In order to aliviate maintainance of artwork production for such
+environment, we divided artwork production in three production lines:
+
+@enumerate
+@item @xref{trunk Identity Themes Models}, to define artworks
+characteristics (e.g., dimensions, position on the screen, etc.).
+@item @xref{trunk Identity Themes Motifs}, to define artworks visual
+styles (e.g., the look and feel).
+@item Translations, to define which major releases and locales
+artworks are produced for. 
+@end enumerate
+
+Inside CentOS Artwork Repository, the artworks' translation production
+line is stored under @file{trunk/Translations} directory.
+
+Inside @file{trunk/Translations} directory, we use ``translation
+entries'' to organize artworks' ``translation files'' and artworks'
+``translation templates''.
+
+@subsubsection Translation Entries
+@cindex Translation paths
+@cindex Translation entries
+
+Translation entries exists for each artwork you want to produce.
+Translation entries can be empty directories, or directories
+containing translation files and translation templates.  
+
+When translation entries are empty directories, the identity entry is
+used as reference to create file names and directories layout for
+rendered files.  In this case, the @command{centos-art} script takes
+one design template and outputs one non-translated file for each
+design template available.  This configuration is mainly used to
+produce non-translatable artworks like themes' backgrounds.
+
+When translation entries contain translation files, the translation
+entry implements the CentOS release schema and is used as reference to
+create file names and directories layout for translated artworks. In
+this case, the @command{centos-art} script applies one translation
+file to one design template to create one translated instance which is
+used to output one translated file. When the translated file is
+rendered, the @command{centos-art} script remove the previous instance
+and takes the next file in the list of translation files to repate the
+whole process once again, and so on for all files in the list. This
+configuration is mainly used to produce translatable artworks like
+Anaconda's progress slide images.
+
+To find out correspondence between translation entries and identity
+entries, you need to look the path of both translation entries and
+identity entries. For example, if you are using the Modern's artisitic
+motif, the identity entry for Anaconda progress artwork is:
+
+@verbatim
+trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
+@end verbatim
+
+and its translation entry is:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
+@end verbatim
+
+Note how the @file{Translations/} directory prefixes @file{Identity/}
+directory, also how static values (e.g., Identity, Themes, Distro,
+etc.) in the identity's entry path remain in translation's entry path,
+and how variable values like theme names (e.g., Modern) are stript out
+from translation's entry path. The same convenction can be applied to
+other identity entries in order to determine their translation
+entries, or to other translation entries to determine their identity
+entries.
+
+@quotation
+@strong{Note} Translation entries related to identity entries under
+@file{trunk/Identity/Themes/Motifs} do not use @file{Motifs/} in the
+path.  We've done this because @file{trunk/Identity/Themes/Models}
+structure, the other structure under @file{trunk/Identity/Themes},
+doesn't require translation paths so far. So in the sake of saving
+characters space when building translation entries for
+@file{trunk/Identity/Themes/Motifs} structure, we organize Motifs
+translation entries under @file{trunk/Translations/Identity/Themes/}
+directly. 
+
+If for some reason @file{trunk/Identity/Themes/Models} structure
+requires translation entries, we need to re-oraganize the current
+directory structure accordingly.
+@end quotation
+
+Translation entries, as described above, can be re-used by similar
+identity entries. For example the following identity entries:
+
+@verbatim
+trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress/
+trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Progress/
+trunk/Identity/Themes/Motifs/Mettle/Distro/Anaconda/Progress/
+@end verbatim
+
+are all valid identity entries able to re-use translation files inside
+Anaconda progress translation entry (the one shown in our example
+above). This way, you can create several identity entries and maintain
+just one translation entry for all of them.  Once you change the
+translation files inside the common translation entry, changes inside
+identity entries will take effect inside the next you render them.
+
+Trying to make things plain and simple: inside CentOS Artwork
+Repository, graphic designers can concentrate their efforts in
+artworks look and feel (the identity entries), and translators in
+artworks translations (the translation entries).
+
+@subsubsection Translation Markers
+@anchor{trunk:Translations:TranslationMarkers}
+@cindex Translation markers
+
+Translation markers are used in ``Theme Model Designs'' and
+``Translation Files'' as replacement patterns to commit content
+translation.  When you are rendering content using
+@command{centos-art} script inisde @file{trunk/Identity} structure,
+artistic motifs and translation files are applied to model designs to
+produce translated content as result. In order to have the appropriate
+translation in content rendered, markers defintion in translation
+files should match markers in model designs exactly. 
+
+@ifnotinfo
+@float Figure,fig:trunk:Translations:1
+@image{renderImage,,,Translation Markers,png}
+@caption{The image rendering flow.}
+@end float
+@end ifnotinfo
+
+Translation markers can be whatever text you want, but as convenction
+we use the following to represent releases of CentOS distribution:
+
+@table @samp
+@item =MINOR_RELEASE=
+Replace with minor release of CentOS distribution. In the schema M.N, the minor
+release is represented by the N letter.
+@item =MAJOR_RELEASE=
+Replace with major release of CentOS distribution. In the schema M.N,
+the major release is represented by the M letter.
+@item =RELEASE=
+Replace the full release of CentOS distribution. It is
+@samp{=MAJOR_RELEASE=.=MINOR_RELEASE=} basically. 
+@end table
+
+Specific translation markers convenctions are described inside
+specific translation entries. Read translation entries documentation
+to know more about supported translation markers.
+
+Translation markers standardization creates a common point of
+reference for translators and graphic designers. To have translation
+markers well defined makes possible that translators and graphic
+designers can work together but independently one another.
+
+@subsubsection Translation Files
+@cindex Translation files
+
+Translation files are text files with @command{sed}'s commands inside,
+replacement commands mainly. As convenction, translation file names
+end in @samp{.sed}. Translation files are used by @command{centos-art}
+script to produce translated artworks for specific major releases of
+CentOS Distribution. There are common translation files, specific
+translation, and template translation files.
+
+For example, the Firstboot artwork of CentOS distribution uses the
+images @file{splash-small.png} and @file{firstboot-left.png} as based
+to control its visual style. The @file{splash-small.png} image
+contains, in its graphic design, the release number information of
+CentOS distribution. So the @file{splash-small.png} is
+release-specific. In the other hand, the @file{firstboot-left.png}
+doesn't contain release number information. So the
+@file{firstboot-left.png} is not release-specific.
+
+If we want to produce Firstboot artwork for different major releases
+of CentOS distribution, using a monolithic visual identity, all
+Firstboot images should have the same visual style and, at the same
+time, the release-specific information in the release-specific images. 
+
+@quotation
+@strong{Note} The monolithic visual identity is implemented using
+theme models (@pxref{trunk Identity Themes Models}) and artistic
+motifs (@pxref{trunk Identity Themes Motifs}).
+@end quotation
+
+Assuming that both theme models and theme motifs are ready for using,
+the initial translation entry to produce Firstboot artworks would look
+like the following:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
+|-- Tpl
+|   `-- splash-small.sed
+`-- firstboot-left.sed
+@end verbatim
+
+With the translation entry above, @command{centos-art} command is able
+to produce the image @file{firstboot-left.png} only. To produce
+@file{splash-small.png} images for major releases (e.g., 3, 4, 5, and
+6) of CentOS distribution we need to produce the release-specific
+translation files using the @command{centos-art} script as following:
+
+@verbatim
+centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Themes/BootUp/Firstboot --filter='3,4,5,6'
+@end verbatim
+
+The above command produces the following translation entiry:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
+|-- 3
+|   `-- splash-small.sed
+|-- 4
+|   `-- splash-small.sed
+|-- 5
+|   `-- splash-small.sed
+|-- 6
+|   `-- splash-small.sed
+|-- Tpl
+|   `-- splash-small.sed
+`-- firstboot-left.sed
+@end verbatim
+
+At this point @command{centos-art} is able to produce the Firstboot
+artwork images for major releases of CentOS distribution. To add new
+release-specific translation files, run the translation rendering
+command with the release number you want to produce translation files
+for in the @samp{--filter='release-number'} argument.
+
+@subsubsection Template Translation Files
+@cindex Template translation files
+
+Template translation files are translation files stored inside
+translation template directory. Template translation files are used by
+@command{centos-art} script to produce specific translation files
+only. Template translation files may be empty or contain
+@command{sed}'s replacement commands. If template translation files
+are empty files, the final specifc translation file built from it
+contains release-specific replacement commands only. For example,
+see the following translation entry:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
+|-- 3
+|   `-- splash-small.sed
+|-- 4
+|   `-- splash-small.sed
+|-- 5
+|   `-- splash-small.sed
+|-- 6
+|   `-- splash-small.sed
+|-- Tpl
+|   `-- splash-small.sed    <-- template translation file.
+`-- firstboot-left.sed
+@end verbatim
+
+In the above exmaple, the @file{splash-small.sed} file is a template
+translation file and looks like:
+
+@verbatim
+# -------------------------------------
+# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# -------------------------------------
+@end verbatim
+
+In the above template translation file there are three comments lines,
+but when you render it, the @command{centos-art} adds the
+release-specific replacement commands. In our Firstboot example, after
+rendering Firstboot translation entry, the @file{splash-small.sed}
+translation file specific to CentOS 5, looks like the following:
+
+@verbatim
+# Warning: Do not modify this file directly. This file is created
+# automatically using 'centos-art' command line interface.  Any change
+# you do in this file will be lost the next time you update
+# translation files using 'centos-art' command line interface. If you
+# want to improve the content of this translation file, improve its
+# template file instead and run the 'centos-art' command line
+# interface later to propagate your changes.
+# -------------------------------------
+# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# -------------------------------------
+
+# Release number information.
+s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
+s!=MINOR_RELEASE=!0!g
+s!=MAJOR_RELEASE=!5!g
+@end verbatim
+
+If template translation files are not empty, replacement commands
+inside template translation files are preserved inside
+release-specific translation files.  For example, consider the English
+template translation file of Anaconda progress welcome slide.  The
+translation template directory structure looks like the following:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/Anaconda/Progress/
+`-- Tpl
+    `-- en
+        `-- 01-welcome.sed
+@end verbatim
+
+and if we render translation files for CentOS 4 and CentOS 5 major
+releases, the translation entry would look like the following:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/Anaconda/Progress/
+|-- 4
+|   `-- en
+|       `-- 01-welcome.sed
+|-- 5
+|   `-- en
+|       `-- 01-welcome.sed
+`-- Tpl
+    `-- en
+        `-- 01-welcome.sed
+@end verbatim
+
+@quotation
+@strong{Note} Release-specific translation directories preserve
+template translation directory structure and file names.
+@end quotation
+
+In the example above, the template translation file looks like the
+following:
+
+@verbatim
+# ------------------------------------------------------------
+# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# ------------------------------------------------------------
+s/=TITLE=/Welcome to CentOS =MAJOR_RELEASE= !/
+s/=TEXT1=/Thank you for installing CentOS =MAJOR_RELEASE=./
+s/=TEXT2=/CentOS is an enterprise-class Linux Distribution derived from sources freely provided to the public by a prominent North American Enterprise Linux vendor./
+s/=TEXT3=/CentOS conforms fully with the upstream vendors redistribution policy and aims to be 100% binary compatible. CentOS mainly changes packages to remove upstream vendor branding and artwork./
+s/=TEXT4=//
+s/=TEXT5=//
+s/=TEXT6=//
+s!=URL=!http://www.centos.org/!
+@end verbatim
+
+and, after render the translation entry, specific translation files
+look like the following:
+
+@verbatim
+# Warning: Do not modify this file directly. This file is created
+# automatically using 'centos-art' command line interface.  Any change
+# you do in this file will be lost the next time you update
+# translation files using 'centos-art' command line interface. If you
+# want to improve the content of this translation file, improve its
+# template file instead and run the 'centos-art' command line
+# interface later to propagate your changes.
+# ------------------------------------------------------------
+# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# ------------------------------------------------------------
+
+s/=TITLE=/Welcome to CentOS =MAJOR_RELEASE= !/
+s/=TEXT1=/Thank you for installing CentOS =MAJOR_RELEASE=./
+s/=TEXT2=/CentOS is an enterprise-class Linux Distribution derived from sources freely provided to the public by a prominen t North American Enterprise Linux vendor./
+s/=TEXT3=/CentOS conforms fully with the upstream vendors redistribution policy and aims to be 100% binary compatible. Cent OS mainly changes packages to remove upstream vendor branding and artwork./
+s/=TEXT4=//
+s/=TEXT5=//
+s/=TEXT6=//
+s!=URL=!http://www.centos.org/!
+
+# Release number information.
+s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
+s!=MINOR_RELEASE=!0!g
+s!=MAJOR_RELEASE=!5!g
+@end verbatim
+
+In the example above, relevant lines begin with the @samp{s} word
+followed by a separation character (e.g., @samp{/}, @samp{!}, etc.).
+These lines have the following format:
+
+@verbatim
+s/REGEXP/REPLACEMENT/FLAGS
+@end verbatim
+
+The @samp{/} characters may be uniformly replaced by any other single
+character within any given @command{s} command.  The @samp{/}
+character (or whatever other character is used in its stead) can
+appear in the REGEXP or REPLACEMENT only if it is preceded by a
+@samp{\} character.
+
+The @command{s} command is probably the most important in
+@command{sed} and has a lot of different options.  Its basic concept
+is simple: the @command{s} command attempts to match the pattern space
+against the supplied REGEXP; if the match is successful, then that
+portion of the pattern space which was matched is replaced with
+REPLACEMENT.
+
+In the context of our translation files, the REGEXP is where you
+define translation markers and REPLACEMENT where you define the
+translation text you want to have after artworks rendering.  Sometimes
+we use the FLAG component with the @samp{g} command to apply the
+replacements globally.
+
+@quotation
+@strong{Tip} More information about how to use @command{sed}'s
+replacement commands and flags is available in @command{sed}'s
+documentation manual. To read sed's documentation manual type the
+following command: 
+@verbatim
+info sed
+@end verbatim
+@end quotation
+
+Inside translation files, you can use translation markers not only
+inside the REGEXP but in the REPLACEMENT too. In order for this
+configuration to work, the REPLACEMENT of translation markers needs to
+be define @emph{after} its definition. For example, see in the
+release-specific translation file above, how the
+@samp{s!=MAJOR_RELASE=!5!g} replacement command is defined
+@emph{after} @samp{=MAJOR_RELASE=} translation marker definition in
+the REPLACEMENT of @samp{=TITLE=} translation marker replacement
+command.
+
+@subsubsection Common Translation Files
+@cindex Common translation files
+
+Common translation files contain common translations or no
+translation at all for their related artworks.  They are in the root
+directory of the translation entry. Common translation files create
+common artworks for all major releases of CentOS Distribution. 
+
+Translation entries, with common translation files inside, look like
+the following:
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
+|-- 3
+|   `-- splash-small.sed
+|-- 4
+|   `-- splash-small.sed
+|-- 5
+|   `-- splash-small.sed
+|-- 6
+|   `-- splash-small.sed
+|-- Tpl
+|   `-- splash-small.sed
+`-- firstboot-left.sed      <-- common translation file.
+@end verbatim
+
+@subsubsection Specific Translation Files
+@cindex Specific translation files
+
+Specific translation files contain specific translations for their
+related artworks. Specific translation files are not in the root
+directory of the translation entry, but inside directories which
+describe the type of translation they are doing. Specific translation
+files are produced automatically using the @command{centos-art}
+script.
+
+@verbatim
+trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
+|-- 3
+|   `-- splash-small.sed    <-- CentOS 3 specific translation file.
+|-- 4
+|   `-- splash-small.sed    <-- CentOS 4 specific translation file.
+|-- 5
+|   `-- splash-small.sed    <-- CentOS 5 specific translation file.
+|-- 6
+|   `-- splash-small.sed    <-- CentOS 6 specific translation file.
+|-- Tpl
+|   `-- splash-small.sed
+`-- firstboot-left.sed
+@end verbatim
+
+@subsubsection Translation Rendering
+@cindex Translation rendering
+
+When rendering translations, the @command{centos-art} script checks
+the translation entry to verify that it has a translation template
+directory inside. The translation template directory (@file{Tpl/})
+contains common translation files used to build release-specific
+translation files. If the translation template directory doesn't exist
+inside the translation entry the translation rendering fails. In this
+case the @command{centos-art} script outputs a message and quits
+script execution.
+
+@subsubsection Translation (Pre-)Rendering Configuration Scripts
+@cindex Translation configuration scripts
+@cindex Translation pre-rendering configuration scripts
+
+When the @command{centos-art} script finds a translation template
+directory inside translation entry, it looks for translations
+pre-rendering configuration scripts for that translation entry.
+Translation pre-rendering configuration scripts let you extend
+translation's default functionality (described below). 
+
+Translation pre-rendering configuration scripts are stored under
+@file{trunk/Scripts} directory, specifically under the appropriate
+language implementation. If you are using @command{centos-art} Bash's
+implementation, the translation pre-rendering scripts are store in the
+@file{trunk/Scripts/Bash/Config} location; if you are using
+@command{centos-art} Python's implementation, then translation
+pre-rendering scripts are stored in the
+@file{trunk/Scripts/Python/Config} location, and so on for other
+implementations.
+
+Bash's translation pre-rendering configuration scripts look like the
+following:
+
+@verbatim
+#!/bin/bash
+#
+# loadConfiguration.sh -- brief description here.
+#
+# Copyright (C) YEAR YOURNAME
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+# USA.
+# 
+# ----------------------------------------------------------------------
+# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# ----------------------------------------------------------------------
+
+function loadConfiguration {
+...
+}
+@end verbatim
+
+Translation pre-rendering scripts are function scripts loaded and
+executed when rendering a translation entry. Translation pre-rendering
+scripts are loaded using the translation entry being rendered as
+reference. For example, suppose you are using the
+@command{centos-art} Bash's implementation, and you are rendering
+translations for CentOS brands, in this situation the translation
+entry would be:
+
+@verbatim
+trunk/Translations/Identity/Brands
+@end verbatim
+
+and the entry inside the translation pre-rendering configuration
+structure would be:
+
+@verbatim
+trunk/Scripts/Bash/Config/Identity/Brands
+@end verbatim
+
+Once the @command{centos-art} script detects that translation
+pre-rendering configuration directory exists, the @command{centos-art}
+script looks for the translation pre-rendering configuration file.  If
+the translation pre-rendering configuration file exists, it is loaded
+and executed.  Once the translation pre-rendering configuration file
+has been executed the translation rendering process is over, and so
+the script execution.
+
+@quotation
+@strong{Note} Translation pre-rendering configuration files have the
+following form:
+@verbatim
+render.conf.extension
+@end verbatim
+where @samp{extension} refers the programming language implementation
+you are using. For example, @samp{sh} for Bash's, @samp{py} for
+Python's, @samp{pl} for Perl's, and so on for other implementations.
+@end quotation
+
+As we are using Bash implementation to describe the translation
+pre-rendering configuration example, the translation pre-rendering
+configuration file that @command{centos-art} looks for, inside the
+above translation pre-rendering configuration directory, is
+@file{render.conf.sh}.
+
+@subsubsection Translation Rendering Default Functionality
+@cindex Translation rendering default functionality
+
+In the other hand, if the translation pre-rendering configuration file
+doesn't exist, or it isn't written as function script, the
+@command{centos-art} script ignore translation pre-rendering
+configuration functionality and passes to render translation using
+default functionality instead.
+
+The translation rendering default functionality takes template
+translation directory structure, duplicates it for each release number
+specified in the @samp{--filter='release-number'} argument and
+produces release-specific directories. As part of template translation
+duplication process take place, the @command{centos-art} script adds
+release-specific replacement commands to each specific translation
+file inside release-specific directories. As result, specific
+translation files, inside release-specific directories, contain
+template translation replacement commands @emph{plus},
+release-specific replacement commands.
+
+@quotation
+@strong{Note} Release-specific replacement commands are standardized
+inside @command{centos-art} script using predifined release
+translation markers. Release translation markers are described in the
+translation marker section
+(@pxref{trunk:Translations:TranslationMarkers, Translation Markers}).
+@end quotation
+
+@c --- figure required to illustrate this section.
+
+@subsection Usage
+@cindex How to render translation files
+
+@table @samp
+@item centos-art render 'path/to/dir' 
+
+When @samp{path/to/dir} refers one directory under
+@samp{trunk/Translations}, this command orverwrites available
+translation files using translation templates.
+
+@item centos-art render 'path/to/dir' --filter='pattern' 
+
+When @samp{path/to/dir} refers one directory under
+@file{trunk/Translations}, this command renders release-specific
+translation files as you specify in the @samp{--filter='pattern'}
+argument. In this case, @samp{pattern} not a regular expression but an
+number (e.g., @samp{5}) or a list of numbers separated by commas
+(e.g., @samp{3,4,5,6}) that specify the major release of CentOS
+distribution you want to render translations for.  
+
+@end table
+
+@subsection See also
+
+@menu
+* trunk Translations Identity Brands::
+* trunk Translations Identity Fonts::
+* trunk Translations Identity Models::
+* trunk Translations Identity Release::
+* trunk Translations Identity Themes::
+* trunk Identity::
+@end menu

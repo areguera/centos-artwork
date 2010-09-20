@@ -1,0 +1,46 @@
+
+/* News title
+----------------------------------------------------------*/
+
+h2.news a:link            { text-decoration: none; color: #EEE }
+h2.news a:hover           { text-decoration: underline; color: #FFF; } 
+h2.news a:active          { text-decoration: underline; color: #FFF; } 
+h2.news a:visited         { text-decoration: none; color: #EEE; }
+h2.news a:visited:hover   { text-decoration: underline; color: #FFF; }
+
+/* Infos news
+----------------------------------------------------------*/
+p.infos { 
+	text-align: right;
+}
+
+/* Avatar
+----------------------------------------------------------*/
+.newsAvatar {
+	float: left; 
+	text-align: left; 
+	clear: left; 
+	width: auto; 
+	padding: 1em;
+	margin: 0;
+}
+
+.newsAvatar img {
+	padding-right: 1em;
+	padding-bottom: 1em;
+}
+
+/* RSS buton
+----------------------------------------------------------*/
+a.rss:link, a.rss:visited, a.rss:active {
+	color: #fff;
+	background: #f90;
+	border: 1px outset #f90;
+	text-decoration: none;
+	padding: 0.1em 0.3em;
+	font-size: 85%;
+}
+a.rss:hover {
+	color: #fff;
+	border: 1px inset #f90;
+}

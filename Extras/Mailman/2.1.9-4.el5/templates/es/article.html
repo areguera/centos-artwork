@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title> %(title)s </title>
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/common.css" />
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/mailman.css" />
+</head>
+
+<body>
+
+    <div id="header">
+    <a href="http://www.centos.org/"><img class="logo" src="/error/include/img/centos.png" alt="CentOS" /></a>
+    <div class="navigation">
+    <ul class="mainlinks">
+            <li><a href="http://centos.org/">Home</a></li>
+            <li><a href="http://centos.org/downloads/">Downloads</a></li>
+            <li><a href="http://centos.org/docs">Docs</a></li>
+            <li><a href="http://centos.org/wiki/">Wiki</a></li>
+            <li class="current"><a href="http://centos.org/lists/">Lists</a></li>
+            <li><a href="http://centos.org/bugs/">Bugs</a></li>
+            <li><a href="http://centos.org/forums/">Forums</a></li>
+            <li><a href="http://centos.org/trac/">Projects</a></li>
+    </ul>
+    </div>
+    </div>
+
+<div id="errormsg">
+    <img src="/error/include/img/lists.png" alt="Lists" />
+    <p>%(listinfo_link)s | %(listadmin_link)s </p>
+    <h1>%(errormsg_header)s</h1>
+</div>
+
+<div id="centoslinks">
+
+	<h1>%(subject_html)s </h1>
+
+	<p>	
+	<strong>%(author_html)s</strong> 
+    	<a href="mailto:%(email_url)s?Subject=%(subject_url)s&amp;In-Reply-To=%(in_reply_to_url)s" 
+	title="%(subject_html)s">%(email_html)s</a><br />
+    	<em>%(datestr_html)s</em>
+   	</p>
+    
+    	<ul>
+        %(prev_wsubj)s
+        %(next_wsubj)s
+         <li> <strong>Mensajes ordenados por:</strong> 
+              <a href="date.html#n%(sequence)s">[ fecha ]</a>
+              <a href="thread.html#n%(sequence)s">[ hilo ]</a>
+              <a href="subject.html#n%(sequence)s">[ asunto ]</a>
+              <a href="author.html#n%(sequence)s">[ autor ]</a>
+         </li>
+       </ul>
+    <hr />  
+<!--beginarticle-->
+%(body)s
+<!--endarticle-->
+    <hr />
+
+    <ul>
+        <!--threads-->
+	%(prev_wsubj)s
+	%(next_wsubj)s
+         <li> <strong>Mensajes ordenados por:</strong> 
+              <a href="date.html#n%(sequence)s">[ fecha ]</a>
+              <a href="thread.html#n%(sequence)s">[ hilo ]</a>
+              <a href="subject.html#n%(sequence)s">[ asunto ]</a>
+              <a href="author.html#n%(sequence)s">[ autor ]</a>
+         </li>
+    </ul>
+
+    <p><a href="%(listurl)s">M&aacute;s informaci&oacute;n sobre la lista de distribuci&oacute;n %(listname)s</a>.</p>
+</div>
+
+<div id="footer"> 
+        <p class="sysinfo"><a href="http://www.centos.org/"><strong>The CentOS Project</strong></a></p>
+        <p class="sysinfo floatr">Powered by <a href="http://www.gnu.org/software/mailman/index.html"><strong>Mailman</strong></a></p>
+        <p class="sysinfo">Community Enterprise Operating System</p>
+</div>
+
+</body>
+</html>

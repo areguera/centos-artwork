@@ -1,0 +1,199 @@
+/***  
+ *  Theme Name : Mettle
+ *   Theme URI : https://projects.centos.org/svn/artwork/trunk/Extras/Moin
+ * Description : Mettle is a proposed artwork motif for CentOS theming. 
+ *               MoinMoin is the application we use as a wiki to manage
+ *               documentaion.
+ *      Author : The CentOS Artwork SIG.
+ *               https://projects.centos.org/trac/artwork
+ *     Licence : This CSS design is released under GPL (
+ *               http://www.opensource.org/licenses/gpl-license.php)
+ ***/
+
+/* Content Styles */
+
+html {
+	font-family: "DejaVu Sans", "Liberation Sans", serif;
+	font-size: 11pt;
+	text-align: left;
+	background: #fff;
+	}
+
+body {
+	/* Give about 3.4cm in Mozilla/Firefox and about 2.2cm in Safari */
+	margin: 1.5cm;
+	background: #fff;
+	}
+
+a, a:visited, a.nonexistent, a.badinterwiki {
+	color: black;
+	text-decoration: none;
+	}
+
+a:hover, a:active {
+	text-decoration: underline;
+	}
+
+.info a {
+	color: gray;
+	}
+
+#page pre {
+	white-space: pre-wrap;
+	font-size: 10pt;
+	background: #fff;
+	border:none;
+	}
+
+#page tt {
+	font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	white-space: pre;
+	}
+
+a.interwiki:before, a.badinterwiki:before {
+	content: attr(title) ":";
+	}
+
+a.interwiki img, a.badinterwiki img {
+	display: none;
+	}
+
+.footnotes div {
+	width: 5em;
+	border-top: 1pt solid gray;
+	}
+
+/* User Interface Styles */
+
+#header, #sidebar, #footer, #timings, #credits, #interwiki, #pagelocation {
+	display: none;
+	}
+
+/* Messages style on printing view */
+
+.lmimg { 
+	width: 1%;
+	border: 1px solid #ccc;
+	border-right: none;
+	color: #000;
+	padding: 0;
+	padding-right: 0;
+	background: #fff;
+	}
+
+.lmtxt {
+	width: 99%;
+	border: 1px solid #ccc;
+	border-left: none;
+	color: #000;
+	padding: 0;
+	padding-left: 0.5em;
+	background: #fff;
+	}
+
+/* Various */
+
+#page td > p {margin: 0.5em !important; }
+
+td { border: 1pt solid #ccc; }
+
+/* List Presentation */
+
+#page ul,
+#page ol {
+	padding-left: 0.5em;
+	margin-left: 3em;
+	margin-bottom: 0.3em;
+	}
+
+/*#page ul { list-style: url(../img/moin-ul.png) circle; } */
+
+#page ol {
+	list-style-image: none !important;
+	}
+
+#page ul li {
+	padding-left: 0em;
+	margin-bottom: 0.3em;
+	}
+
+#page ol li {
+	padding-left: 0em;
+	margin-bottom: 0.3em;
+	}
+
+#page ul ul,
+#page ul ol,
+#page ol ul,
+#page ol ol {
+	margin-left: 1.5em;
+	margin-top: 0.3em;
+	}
+
+#page ul li p,
+#page ol li p {
+	margin-bottom: 0.3em;
+	line-height: 1.5em;
+	margin-left: 0 !important;
+	}
+
+/* Headings */
+
+#page h1 {
+	line-height: 1.9em;
+	margin: 0 0 0.9em 0;
+	}
+
+#page h2 {
+	line-height: 1.8em;
+	margin: 1.6em 0 0.8em 0;
+	}
+
+/* h2 emulation */
+
+#page .table-of-contents-heading {
+	line-height: 1.8em;
+	margin: 0;
+	margin-bottom: 10px;
+	}
+
+#page h3 {
+	line-height: 1.6em;
+	margin-top:0.5em;
+	}
+
+#page h4 {
+	line-height: 1.4em;
+	margin-top: 0.5em;
+	}
+
+#page h5 {
+	line-height: 1.1em;
+	margin-top:0.5em;
+	}
+
+#page h6 {
+	line-height: 1.1em;
+	margin-top:0.5em;
+	}
+
+/* Table Of Contents */
+.table-of-contents {
+	border: none;
+	background: none;
+	}
+
+/* Recent Changes Table */
+
+.recentchanges td {
+	font-size: 0.88em;
+	vertical-align: top;
+	border: none;
+	border: 1pt solid #ccc;
+	background: #ffffff;
+	}
+
+.rcdaybreak td {
+	background: #f8f8f8 url('../img/moin-h2-background.png');
+	}
+

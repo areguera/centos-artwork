@@ -1,0 +1,147 @@
+% Part   : Concepts
+% Chapter: Translations
+% ------------------------------------------------------------
+% $Id: translations.tex 6191 2010-08-02 02:36:14Z al $
+% ------------------------------------------------------------
+
+\begin{description} 
+\item[framework:] trunk/Translations/
+\end{description}
+
+\noindent Here is where translators locale images.  Image localization
+is defined inside \texttt{.sed} files, also known as translation
+files.  Translation files can be common or specific.  The given
+organization of translation files defines the translation path.
+
+\section{Common Translations}
+\hypertarget{sec:Concepts:Translations:Common}{}
+
+Common translation files contain common localization or no
+localization at all for their related images.  They are in the root
+directory of the translation path. Common translation files create
+common images for all major releases of CentOS Distribution.
+
+\section{Specific Translations}
+\hypertarget{sec:Concepts:Translations:Specific}{}
+
+Specific translation files contain specific localization for their
+related images. Specific translation files are not in the root
+directory of the translation path. Specific translation files are
+inside directories which describe the type of translation they are
+doing. 
+
+\section{Translation Path}
+\hypertarget{sec:Concepts:Translations:Path}{}
+
+Translation path is where we organize common and specific translation
+files. Translation path is also used as reference to build the path of
+rendered images inside image directory (see
+\hyperlink{sec:Concepts:Frameworks:Image}{Image Files}). 
+
+When rendering images, if no REGEX argument is provided to
+\texttt{render.sh} identity script, all translation files in the
+translation path are read and applied one by one to its related design
+template ---as defined in \texttt{getMatchingList} function--- to
+produce a translated image. Images produced using the
+\texttt{render.sh} identity script have the same name of its
+translation file, but with the \texttt{.png} extension instead.
+
+To control the number of images produced by \texttt{render.sh}
+identity script, you need to look into the translation path and
+provide a regular expression pattern that matches the translation
+path, or paths, related to the image, or images, you want to produce.  
+
+The regular expression pattern you provide to \texttt{render.sh}
+identity script is applied to the translation path from its very
+beginning.  It is not the same to say \texttt{5/es/01-welcome} that
+\texttt{01-welcome}, the frist expression matches but the last one
+does not.
+
+When using REGEX you don't need to specify the file extension. It is
+removed from translation path before applying the REGEX pattern, so it
+doesn't count here.
+
+\section{Translation Markers}
+\hypertarget{sec:Concepts:Translations:Markers}{}
+
+Translation markers are used in design templates and translation files
+as replacement pattern to commit image translation.  When
+\texttt{render.sh} identity script renders images, translation files
+are applied to design templates to get a PNG translated image as
+result.  In order to have the appropriate translation on the PNG
+image, marker defintion in translation files should match markers in
+design templates. 
+
+Translation markers can be whatever text you want, but as convenction
+we've defined those we use inside CentOS Artwork Repository. This
+definition creates a common point of reference to translators and
+graphic designers. To have a clean definition of translation markers
+is what makes possible that translators and graphic designers can work
+together but independently one another.
+
+\section{Translation Rendering}
+\hypertarget{sec:Concepts:Translations:Rendering}{}
+
+Translation paths and files ---also known as the translation
+structure--- are produced using the \texttt{render.sh} translation
+script, available in the current translation directory.
+
+The \texttt{render.sh} translation script combines the content of a
+translation template directory ---holding common information--- with
+the release-specific information you provide as argument when
+executing the script. As result,  the \texttt{render.sh} translation
+script produces the translation structure that \texttt{render.sh}
+identity script needs to create translated images.
+
+\section{Translation Rendering Script}
+\hypertarget{sec:Concepts:Translations:RenderingScripts}{}
+
+The \texttt{render.sh} translation script produces release-specific
+translation directories.  Use the \texttt{render.sh} translation script
+whenever you need to create a new release-specific translation
+directory based on translation template directory.  The \texttt{render.sh}
+translation script has the following syntax:
+
+\begin{quote}
+\texttt{./render.sh RELEASE ...}
+\end{quote}
+
+The RELEASE argument defines the release number used to create the
+release-specific translation directory. You can pass many RELEASE
+arguments, separated by one or more spaces, to \texttt{render.sh}
+translation script in a single call.  If no RELEASE argument is passed
+to \texttt{render.sh} translation script then all release-specific
+translation directories, available in the current translation
+directory, are updated using the translation template as reference.
+
+Default behaviour of \texttt{render.sh} translation script may be
+usefull if all your release-specific translation directories always
+have the same information that translation template does.  If this is
+the case, you only need to maintain the translation template and use
+the \texttt{render.sh} translation script to propagate changes to each
+release-specific translation directory.
+
+In contrast, if you are using the \texttt{render.sh} translation
+script to create release-specific translation directories that use
+translation template as base to introduce non-reusable translations,
+you should take care when executing the \texttt{render.sh} translation
+script.  Otherwise, your non-reusable translations may be replaced
+with those in template.
+
+Inside CentOS Artwork Repository, all translation directories
+(reusable and non-reusable) are versioned. If you accidentally
+propagate template content to a non-reusable translation, you have the
+Subversion's \texttt{revert} and \texttt{update} commands to undo the
+mess.
+
+As general rule, when you use the \texttt{render.sh} translations
+script, take care of details and check twice before commit your
+translation changes up to CentOS Artwork Repository.
+
+\section{Translation Template Directory}
+\hypertarget{sec:Concepts:Translations:TemplateDirectory}{}
+
+The translation template directory is located in the current
+translation directory and contains common translations for all
+release-specific translation directories. It is also used as base to
+build non-reusable translation.

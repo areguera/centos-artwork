@@ -1,0 +1,629 @@
+/*
+Theme Name  : Orange Bugs
+Theme URI   : https://projects.centos.org/svn/artwork/branches/MantisThemeDesign_GreenBugs
+Description : GreenBugs is a proposed motive for
+	      the official Mantis applications. It is based on
+	      TreeFlower theme.
+Author	    : The CentOS ArtWork SIG.
+Licence     : This CSS design is released under GPL (
+	      http://www.opensource.org/licenses/gpl-license.php)
+
+-------------------------------------------------------------
+     $Author: al $
+   $Revision: 1763 $
+       $Date: 2008-09-16 11:06:14 -0400 (Tue, 16 Sep 2008) $
+-------------------------------------------------------------
+*/
+
+html {
+        background-image:url(../images/html-background.png);
+        background-color: #FFF;
+        font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+        font-size: 0.85em;
+        line-height: 1.25em;
+        /* margin: 0;           /* <- full screen                       */
+        /* margin: 0 1% 0 1%;   /* <- with 1% of left and right margin  */
+        /* margin: 0 2% 0 2%;   /* <- with 2% of left and right margin  */
+        margin: 0 4% 0 4%;      /* <- with 4% of left and right margin  */
+        /* margin: 0 10% 0 10%; /* <- with 10% of left and right margin */
+        }
+
+
+body 	{
+	background-color: #ffffff; 
+	border: 10px solid #fff;
+	color: #000000; 
+	padding:0;
+	margin: 0;
+	}
+
+/* Links */
+
+a:link  			{ text-decoration: none; color: #1865A6 }
+a:hover 			{ text-decoration: underline; color: green; } 
+a:active 			{ text-decoration: underline; color: green; } 
+a:visited 			{ text-decoration: none; color: #1865A6; }
+a:visited:hover 		{ text-decoration: underline; color: green; }
+
+a.subtle 			{ color: #1865A6; text-decoration: none; }
+
+.logininfo a:link 		{ text-decoration: none; color: #EEE; }
+.logininfo a:hover 		{ text-decoration: underline; color: #FFF; }
+.logininfo a:active 		{ text-decoration: underline; color: #FFF; }
+.logininfo a:visited 		{ text-decoration: none; color: #EEE; }
+.logininfo a:visited:hover 	{ text-decoration: underline; color: #FFF; }
+
+a {
+	cursor: pointer;
+	}
+
+/* Headers */
+
+h1 {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1.9em;
+        margin: 0;
+        margin-top: 0.6em;
+        margin-bottom: 0.9em;
+        padding-left: 0.7em; /* Should be the same for h{1-3} */
+        color: #FFF;
+        border: none;
+        background-color: #1865A6;
+        background-image: url("../images/h1-background.png");
+        }
+
+h2 {
+        font-size: 1.4em;
+        line-height: 1.8em;
+        margin: 0;
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        padding-left: 0.7em; /* Should be the same for h{1-3}*/
+        background-image: url("../images/h2-background.png");
+        border: none;
+        color: #1865A6;
+        }
+
+h3 {
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-3} */
+        color: #1865A6;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #DADADA;
+        }
+
+h4 {
+        font-size: 1em;
+        line-height: 1.4em;
+        margin-top: 1em;
+        margin-bottom: 0.1em;;
+        padding-left: 1em; /* Should be the same for h{4-4} */
+        color: #1865A6;
+        border-bottom: none;
+        }
+
+/* Elements Indentation */
+
+div.news_entry {
+	margin-left: 1.5em;
+	}
+
+/* Lists */
+
+ul,
+ol {
+        padding-left: 0.5em;
+        margin-left: 3em;
+        margin-bottom: 0.3em;
+        }
+
+ul { 
+        list-style: url("../images/ul.png") circle; 
+        } 
+
+ol {
+        list-style-image: none !important;
+        }
+
+ul li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+ol li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+        margin-left: 1.5em;
+        margin-top: 0.3em;
+        }
+
+ul li p,
+ol li p {
+        margin-bottom: 0.3em;
+        line-height: 1.5em;
+        margin-left: 0 !important;
+        }
+
+/* Page */
+
+#page {
+	padding-left: 20px;
+	padding-right: 20px;
+	}
+
+/* Issues recently visited */
+
+div.recently_visited {
+	float: left;
+	font-size: 0.82em;
+	text-align: left;
+	margin: 0;
+	padding-top: 0.27em;
+	}
+
+/* Admonition Support */
+
+.lmtxt {
+        background-color: #ECECEC;
+        background-image: url("../images/msg-bg-gray.png");
+	width: auto;
+        border-width: 1px;
+        border-left-width: 4px;
+        border-style: solid;
+        border-color: #CFCFCF;
+        padding: 5px !important;
+        }
+
+.lmtxt.red,
+#message.red { 
+        border-color: #E0B7B7;
+        background-color: #FFECEC;
+        background-image: url("../images/msg-bg-red.png");
+        }
+
+.lmtxt.green,
+#message.green { 
+        border-color: #D6F6D2;
+        background-color: #EEFFEC;
+        background-image: url("../images/msg-bg-green.png");
+        }
+
+.lmtxt.violet,
+#message.violet { 
+        border-color: #F6D2F6; 
+        background-color: #FFECFF;
+        background-image: url("../images/msg-bg-violet.png");
+        }
+
+.lmtxt.blue,
+#message.blue { 
+        border-color: #D2E0F6; 
+        background-color: #ECF4FF;
+        background-image: url("../images/msg-bg-blue.png");
+        }
+
+.lmtxt.orange,
+#message.orange { 
+        border-color: #F6E7D2; 
+        background-color: #FFF8EC;
+        background-image: url("../images/msg-bg-orange.png");
+        }
+
+/* Helper_api Message */
+
+#message {
+        margin-top: 2em;
+        margin-right: 20%;
+        margin-bottom: 2em;
+        margin-left: 20%;
+        padding-top: 1em;
+        padding-right: 1em;
+        padding-bottom: 1em;
+        padding-left: 1.5em;
+	border-width: 0;
+        border-top-width: 4px;
+        border-top-style: solid;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        border-bottom-color: #D2E0F6;
+	text-align: center;
+        }
+
+#message p {
+        font-weight: bold;
+        line-height: 1.5em;
+        margin: 0;
+        padding-top: 1em;
+        padding-right: 2em;
+        padding-bottom: 1em;
+        padding-left: 2em;
+        }
+
+/* User Interface Styles */
+
+#header {
+        margin:0;
+	margin-bottom: 0.5em;
+        padding: 0;
+        background-color: #1865A6;
+        background-image: url("../images/header-background.png");
+        }
+
+#header .navibar {
+        border-bottom-width: 2px;
+        border-bottom-style: dotted;
+        border-bottom-color: #5FA1D8;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: #C9C9C9;
+        }
+
+#logo {
+	float:left;
+        margin: 0px;
+        padding: 0px;
+        /* For text only logo */
+        font-size: 1.4em;
+        font-weight: bold;
+        }
+
+#logo img {
+        margin: 10px;
+        vertical-align: middle;
+	border: 0;
+        }
+
+#logo a {
+        color: white;
+        text-decoration: none;
+	border: 0;
+        }
+
+#header .googlecontent {
+	padding-top: 3px;
+	padding-right: 5px;
+        text-align: right;
+        }
+
+.pageline {
+        clear: both;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        /* sync these values, line-height is needed for IE */
+        height: 5px;
+        line-height: 5px;
+        background: #5FA1D8;
+        }
+
+.pageline2 {
+	clear:both;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	}
+
+/* Information about Login  */
+
+.logininfo {
+	margin: 0px;
+	padding: 5px;
+	color: #EEE;
+        font-size: 0.82em;
+        white-space: nowrap;
+	}
+
+.logininfo ul {
+	text-align: right;
+	margin: 0;
+	padding: 0;
+	}
+
+.logininfo li {
+	display: inline;
+        padding: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+
+.logininfo li.last {
+	border-left: 1px dotted #EEE;
+	}
+
+/* Information about Projects */
+
+.projectinfo {
+        padding: 0;
+	margin: 0;
+        white-space: nowrap;
+	text-align:right;
+	color: #000;
+        font-size: 0.8em;
+	}
+
+.projectinfo li {
+        display: inline;
+        padding: 0;
+        }
+
+.projectinfo form {
+        display: inline;
+	padding: 0;
+	margin: 0;
+        }
+
+.projectinfo input[type=text],
+.projectinfo select {
+        border: 2px solid #1865A6;
+        background-color: #EDF8FF;
+	color: #1865A6;
+	padding: 1px;
+	font-size: inherit;
+        }
+
+.projectinfo input[type=text] {
+	padding: 2px;
+	padding-left: 4px;
+	}
+
+.projectinfo input[type=button], 
+.projectinfo input[type=submit], 
+.projectinfo input[type=reset] {
+        font-size: 0.8em;
+        border-width: 2px;
+        border-style: solid;
+        border-color: #124D7F;
+        background-color: #1865A6;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 2px;
+        padding-left: 4px;
+        padding-right: 4px;
+        }
+
+/* Main Navigation Bar */
+
+.navibar {
+        clear: both;
+        display: block;
+	margin: 0px;
+	padding: 0px;
+	padding-left: 20px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+        white-space: nowrap;
+        background: #EDF8FF; 
+	text-align: center;
+	font-size: 0.9em;
+        }
+
+.navibar li {
+        display: inline;
+	border-left: 1px dotted #1865A6;
+	padding-left: 10px;
+	padding-right: 10px;
+        }
+
+.navibar li.first {
+	border-left: 0;
+	padding-left: 0;
+	}
+
+/* Form Elements */
+
+input[type=text],
+input[type=password],
+textarea {
+	padding: 2px;
+        padding-left: 4px;
+        }
+
+input, 
+select { vertical-align: middle; }
+
+form	{ 
+	display: inline; 
+	margin: 0;
+	}
+
+/* Tables */
+
+table				{ }
+table.border_black		{ border: 1px solid #000; }
+table.hide			{ width: 100%; border: solid 0px #ffffff; }
+table.width100			{ width: 100%; border: solid 1px #000000; }
+table.width75			{ width: 75%;  border: solid 1px #000000; }
+table.width60			{ width: 60%;  border: solid 1px #000000; }
+table.width50			{ width: 50%;  border: solid 1px #000000; }
+
+td 				{ font-family: "DejaVu Sans", "Liberation Sans", sans-serif; 
+				  font-size: 10pt; padding: 4px; text-align: left; }
+td img.icon_sort		{ float:right; padding-right: 3px; padding-left: 3px; }
+
+td.center			{ text-align: center; }
+td.left				{ text-align: left; }
+td.right			{ text-align: right; }
+td.category			{ background-color: #EAE1EE; color: #000000; font-weight: bold; vertical-align : top; }
+
+td.col-1			{ background-color: #EAF3F9; color: #000000; }
+td.col-2			{ background-color: #EAF3F9; color: #000000; }
+td.form-title			{ color: #1865A6; font-weight: bold; text-align: left; }
+td.nopad			{ padding: 0px; }
+td.spacer			{ background-color: #ffffff; color: #000000; font-size: 1pt; line-height: 0.1; }
+td.small-caption		{ font-size: 8pt; }
+td.print			{ font-size: 8pt; text-align: left; padding: 2px; }
+td.print-category		{ font-size: 8pt; color: #000000; font-weight: bold; text-align: right; padding: 2px; }
+td.print-bottom			{ border-bottom: 1px solid #000000; }
+td.print-spacer			{ background-color: #ffffff; color: #000000; font-size: 1pt; line-height: 0.1; padding: 0px;}
+
+tr				{}
+tr.title			{ background-color: #FFF; background-image: url("../images/h2-background.png");}
+tr.row-1			{ background-color: #EAF3F9; color: #000000; }
+tr.row-2			{ background-color: #D8E9F4; color: #000000; }
+tr.row-category			{ background-color: #EAE1EE; color: #000000; font-weight: bold;}
+tr.row-category td  		{ text-align:center; }
+tr.row-category2		{ background-color: #EAE1EE; color: #000000; }
+tr.row-category-history 	{ background-color: #EAE1EE; color: #000000; font-weight: bold;}
+tr.row-category-history td 	{ text-align: left; }
+tr.vcenter			{ vertical-align: middle; }
+tr.print			{ vertical-align: top; }
+tr.print-category		{ color: #000000; font-weight: bold; }
+
+#buglist tr			{ text-align: center; }
+
+tr.bugnote			{ vertical-align: top; }
+td.bugnote-public		{ background-color: #EAE1EE; color: #000000; font-weight: bold; width: 25%; line-height: 1.4; }
+td.bugnote-private		{ background-color: #EAF3F9; color: #000000; font-weight: bold; width: 25%; line-height: 1.4; }
+td.bugnote-note-public		{ background-color: #EAF3F9; color: #000000; width: 75%; }
+td.bugnote-note-private		{ background-color: #EAF3F9; color: #000000; width: 75%; }
+
+td.login-info-left		{ width: 33%; padding: 0px; text-align: left; }
+td.login-info-middle		{ width: 33%; padding: 0px; text-align: center; }
+td.login-info-right		{ width: 33%; padding: 0px; text-align: right; white-space: nowrap; }
+
+td.menu				{ background-color: #EAF3F9; color: #000000; text-align: center; width: 100%; padding: 1px; }
+td.menu a			{ white-space: nowrap; }
+
+td.news-heading-public	{ background-color: #EAE1EE; color: #000000; text-align: left; border-bottom: 1px solid #000000; }
+td.news-heading-private	{ background-color: #EAF3F9; color: #000000; text-align: left; border-bottom: 1px solid #000000; }
+
+td.news-body			{ background-color: #ffffff; color: #000000; padding: 16px; }
+
+/* Quick summary. Element displayed near titles
+ * with the amount of opened and assigned issues. */
+
+div.quick-summary {
+	background-color: #fff;
+	border: 0;
+	border-left: 1px solid #ddd;
+	font-size: small;
+	width: 200px;
+	padding-left: 0.5em;
+	float:right;
+	margin-left: 1em;
+	margin-bottom: 1em;
+	}
+
+div.quick-summary p {
+	margin: 0;
+	padding: 0;
+	}
+
+.bracket-link {
+	text-align: left;
+	font-size: small;
+	}
+
+/* News Entries */
+
+div.news_entry {
+	margin-bottom: 1.5em;
+	}
+
+p.news_entry_info,
+p.news_entry_body {
+	margin: 0;
+	padding: 0;
+	}
+
+p.news_entry_info {
+	font-size: 0.8em;
+	color: gray;
+	}
+
+.progress400 { 
+	position: relative; 
+	width: 400px; 
+	border: 1px solid #d7d7d7; 
+	margin-top: 1em; 
+	margin-bottom: 1em; padding: 1px; 
+	}
+
+.progress400 .bar {
+	display: block; 
+	position: relative; 
+	background: #6bba70; 
+	text-align: center; 
+	font-weight: normal; 
+	color: #333; 
+	height: 2em; 
+	line-height: 2em; 
+	}
+
+/* Footer */
+
+#footer {
+        margin:0;
+	margin-top: 2em;
+        padding: 0;
+        background-color: #1865A6;
+        background-image: url("../images/header-background.png");
+        color: #EEE;
+        }
+
+#footer .navibar {
+        border-top-width: 2px;
+        border-top-style: dotted;
+        border-top-color: #5FA1D8;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #C9C9C9;
+        }
+
+#credits, #version, #timings {
+        text-align: left;
+        font-size: 0.88em;
+	padding: 5px;
+	margin: 0;
+        }
+
+#credits a { 
+        color: #EEE; 
+	font-style: italic;
+        }
+
+#credits a:hover {
+        text-decoration: underline;
+        }
+
+#footer div.poweredby {
+	float: right;
+	margin: 5px;
+	}
+
+/* Miscellaneous */
+
+.center				{ text-align: center; }
+.left				{ text-align: left; }
+.right				{ text-align: right; }
+.small				{ font-size: 8pt; }
+.small-normal 			{ font-size: 8pt; font-weight: normal; }
+.small-subprojects		{ font-size: 8pt; width: 200px; }
+.bold				{ font-weight: bold; }
+.bold-small			{ font-weight: bold; font-size: 8pt; }
+.italic				{ font-style: italic; }
+.italic-small			{ font-style: italic; font-size: 8pt; }
+.underline			{ text-decoration: underline; }
+.underline-small		{ text-decoration: underline; font-size: 8pt; }
+.strike				{ text-decoration: line-through; }
+.strike-small			{ text-decoration: line-through; font-size: 8pt; }
+
+span.print			{ font-size: 8pt; }
+span.required 			{ font-size: 8pt; color: #bb0000; }
+span.small 			{ font-size: 8pt; font-weight: normal; }
+span.pagetitle			{ font-size: 12pt; font-weight: bold; text-align: center; }
+span.bracket-link		{ white-space: nowrap; }

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>%(listname)s %(who)s Authentication</title>
+    <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/common.css" />
+    <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/mailman.css" />
+</head>
+
+<body>
+
+    <div id="header">
+    <a href="http://www.centos.org/"><img class="logo" src="/error/include/img/centos.png" alt="CentOS" /></a>
+    <div class="navigation">
+    <ul class="mainlinks">
+            <li><a href="http://centos.org/">Home</a></li>
+            <li><a href="http://centos.org/downloads/">Downloads</a></li>
+            <li><a href="http://centos.org/docs">Docs</a></li>
+            <li><a href="http://centos.org/wiki/">Wiki</a></li>
+            <li class="current"><a href="http://centos.org/lists/">Lists</a></li>
+            <li><a href="http://centos.org/bugs/">Bugs</a></li>
+            <li><a href="http://centos.org/forums/">Forums</a></li>
+            <li><a href="http://centos.org/trac/">Projects</a></li>
+    </ul>
+    </div>
+    </div>
+
+<div id="errormsg">
+    <img src="/error/include/img/lists.png" alt="Lists" />
+    <p> %(listinfo_link)s | %(listadmin_link)s </p>
+    <h1>%(errormsg_header)s</h1>
+</div>
+
+<div id="centoslinks">
+
+	%(message)s
+
+	<h1>%(listname)s %(who)s Authentication</h1>
+
+	<form method="post" action="%(path)s">
+	     	<p>List %(who)s Password: 
+		<input type="password" name="adminpw" size="30" /> 
+		<input type="submit" name="admlogin" value="Let me in..." />
+		</p>
+	</form>
+
+	<p><strong>Important:</strong> From this point on, you
+      	must have cookies enabled in your browser, otherwise no
+      	administrative changes will take effect.</p>
+
+      	<p>Session cookies are used in Mailman's
+      	administrative interface so that you don't need to
+      	re-authenticate with every administrative operation.  This
+      	cookie will expire automatically when you exit your browser, or
+      	you can explicitly expire the cookie by hitting the
+      	<em>Logout</em> link under <em>Other Administrative
+      	Activities</em> (which you'll see once you successfully log in).</p>

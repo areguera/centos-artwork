@@ -1,0 +1,993 @@
+/***  
+ *  Theme Name : Mettle
+ *   Theme URI : https://projects.centos.org/svn/artwork/trunk/Extras/Moin
+ * Description : Mettle is a proposed artwork motif for CentOS theming. 
+ *               MoinMoin is the application we use as a wiki to manage
+ *               documentaion.
+ *      Author : The CentOS Artwork SIG.
+ *               https://projects.centos.org/trac/artwork
+ *     Licence : This CSS design is released under GPL (
+ *               http://www.opensource.org/licenses/gpl-license.php)
+ ***/
+
+/* debug {
+	border: 1px dotted blue;
+	}
+*/
+
+html {
+	background-image:url(../img/moin-html-background.png);
+	background-color: #FFF;
+	font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+	font-size: 0.85em;
+	line-height: 1.25em;
+	/* margin: 0; 		/* <- full screen 			*/
+	/* margin: 0 1% 0 1%; 	/* <- with 1% of left and right margin	*/
+	/* margin: 0 2% 0 2%; 	/* <- with 2% of left and right margin	*/
+	margin: 0 3% 0 3%; 	/* <- with 4% of left and right margin	*/
+	/* margin: 0 10% 0 10%; /* <- with 10% of left and right margin	*/
+	}
+
+body {
+	background: #FFF;
+	padding: 10px;
+	}
+
+/* Links */
+
+a:link 	{ text-decoration: none; color: #204C8D }
+a:hover	{ text-decoration: underline; color: green; } 
+a:active { text-decoration: underline; color: green; } 
+a:visited { text-decoration: none; color: #204C8D; }
+a:visited:hover { text-decoration: underline; color: green; }
+a.nonexistent, a.badinterwiki { color: gray; }
+
+#errormsg a:link { text-decoration: none; border-bottom: 1px solid #DDD; color: #666; }
+#errormsg a:hover { text-decoration: underline; border-bottom: 1px solid #DDD; color: #666; }
+#errormsg a:active { text-decoration: underline; border-bottom: 1px solid #DDD; color: #666; }
+#errormsg a:visited { text-decoration: none; border-bottom: 1px solid #DDD; color: #666; }
+#errormsg a:visited:hover { text-decoration: underline; border-bottom: 1px solid #DDD; color: #666; }
+
+input {
+	/* does strange effect to button (text size becomes bigger when clicking)
+	font-size: 1em;
+	font-family: Arial, Lucida Grande, sans-serif;
+	*/
+	}
+
+textarea {
+	font-size: 1.4em;
+	font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	}
+
+.disabled {
+	/* IE ignore disabled attribute, but at least show items in gray */
+	color: gray;
+	}
+
+/* User Interface Styles */
+
+#header {
+	margin:0;
+	padding: 0;
+	line-height: 1.0em;
+	border:none;
+	}
+
+#header .navigation {
+    float: right;
+    padding: 13px;
+    padding-left: 20px; 
+    padding-right: 10px; 
+    margin-left: 3em;
+    margin: 0;
+    margin-top: -45px;
+    text-align: right;
+    border-bottom: 1px solid #CCC;
+}
+
+#header ul.mainlinks {
+    display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header ul.mainlinks li:hover {
+	background: #fdfdfd;	
+}
+
+#header ul.mainlinks li a:link, 
+#header ul.mainlinks li a:hover,
+#header ul.mainlinks li a:active,
+#header ul.mainlinks li a:visited {
+	color: #AAA;	
+	text-decoration: none;
+}
+
+#header ul.mainlinks li {
+    display: inline;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background: #f8f8f8;
+    padding: 13px;
+    padding-bottom: 12px;
+}
+
+/* Header: CentOS Global Links */
+
+#header ul.mainlinks li.current {
+    background: #FFF;
+    font-weight: bold;
+    padding-bottom: 13px;
+}
+
+#header ul.mainlinks li.current a:link,
+#header ul.mainlinks li.current a:visited {
+	color: #666;	
+}
+
+/* Error Message */
+
+#errormsg {
+    clear: both;
+    background: #f8f8f8;
+    padding: 1.5em;
+    padding-top: 0;
+    padding-bottom: 1em;
+    border-top: 5px solid #ddd;
+    border-bottom: 5px solid #ddd;
+    margin-bottom: 1em;
+    margin-top: 10px;
+}
+
+#errormsg img {
+    float: left;
+    margin: 0;
+    margin-top: 1em;
+    margin-left: 0.5em;
+}
+
+#errormsg h1 { 
+	color: #666; 
+	margin-left: 140px;
+}
+
+#errormsg ul {
+	margin-left: 140px;
+}
+
+#logo {
+    	display: inline;
+	padding: 0;
+	/* For text only logo */
+	font-size: 1.4em;
+	line-height: 1em;
+	font-weight: bold;
+	}
+
+*[dir="rtl"] #logo {
+	float: right;
+	}
+
+#logo img {
+	vertical-align: middle;
+	}
+
+#logo a {
+	color: white;
+	text-decoration: none;
+	}
+
+#header .googlecontent {
+	padding: 3px;
+	text-align: right;
+	}
+
+#username {
+	padding: 0.5em;
+	padding-top: 0;
+	padding-right: 0;
+	margin: 0;
+	font-size: 0.9em;
+	text-align: right;
+	}
+
+.userlinks {
+	float: right;
+	margin-top: 1em;
+}
+
+*[dir="rtl"] #username {
+	text-align: left;
+	}
+
+#username li {
+	display: inline;
+	padding: 0;
+	padding-right: 0.5em;
+	}
+
+#username form {
+	display: inline;
+	}
+
+#username input {
+	display: inline;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: #E7E7E7; /* inherit doesnt work on IE */
+	color: blue;
+	font-size: 0.82em;
+	cursor: pointer;
+	}
+
+#username input:hover {
+	color: red;
+	}
+
+#searchform {
+	padding: 0;
+	text-align: right;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	}
+
+*[dir="rtl"] #searchform {
+	float: left;
+	}
+
+#searchform input[type="submit"] {
+	font-size: 0.8em;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #AAA;
+        background-color: #FFF;
+        color: #666;
+        cursor: pointer;
+        display: inline;
+        text-decoration: none;
+        padding: 1px;
+	}
+
+#searchinput {
+	font-size: 0.8em;
+	display: inline;
+        padding: 2px;
+        padding-left: 4px;
+        border: 1px solid #AAA;
+        background-color: #FFF;
+        color: #666;
+	width: 130px;
+	}
+
+#titlesearch, #fullsearch {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAA;
+	background: #transparent; /* inherit doesnt work on IE */
+	color: #666;
+	cursor: pointer;
+	display: inline;
+	font-size: 0.8em;
+	text-decoration: none;
+	}
+
+#searchform label {
+	display: block;
+	}
+
+
+#searchform form div {
+	display: inline;
+	}
+
+#pagetrail {
+	font-size: 0.9em;
+	margin:0.4em;
+	padding:0;
+	padding-right: 0.5em;
+	}
+
+*[dir="rtl"] #pagetrail {
+	clear: left;
+	}
+
+#interwiki {
+        font-size: 0.8em;
+	}
+
+*[dir="rtl"] #interwiki {
+	display: inline;
+	margin-right: 5px;
+	font-size: 1em;
+	}
+
+#interwiki span:after {
+	content: ":";
+	}
+
+#locationline {
+	clear: both;
+	padding-left: 20px;
+	padding-right: 20px;
+	}
+
+*[dir="rtl"] #locationline {
+	clear: left;
+	}
+
+#pagelocation {
+	margin: 0;
+	padding: 0;
+	margin-top: 0.5em;
+	font-size: 0.9em;
+	color: #666;
+	}
+
+#pagelocation li {
+	display: inline;
+	}
+
+#pagetrail li {
+	display: inline;
+	margin: 0;
+	}
+
+/* XXX Warning: non-ascii characters! */
+
+#pagetrail li:after {
+	content: " » ";
+	color: #666666;
+	}
+
+*[dir="rtl"] #pagetrail li:after {
+	content: " « ";
+	}
+
+#pagetrail li:last-child:after {
+	content: "";
+	}
+
+#pagelocation li:after {
+	content: " » ";
+	}
+
+*[dir="rtl"] #pagelocation li:after {
+	content: " \\ "; /* TODO: check what looks best with RTL */
+	}
+
+#pagelocation li:last-child:after {
+	content: "";
+	}
+
+.navibar {
+	/* Problem: clear: right; aligns nicely right of
+	 * logo, but lets it float high in the header,
+	 * disconnected from ground */	
+	padding: 0;
+	margin: 0;
+	margin-top: 2em;
+	margin-bottom: 0.5em;
+	font-size: 0.9em;
+
+	/* For avoiding a gap between navibar and pageline
+	 * on IE */
+	zoom: 1;
+	}
+
+.navibar li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	}
+
+*[dir="rtl"] .navibar li {
+	float: right;
+	}
+
+.navibar li:after {
+        content: "|";
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+        color: #AAA;
+}
+
+.navibar li:last-child:after {
+        content: "";
+        padding-right: 0;
+        margin-right: 0;
+        }
+
+.navibar li.wikilink {
+	/*background: #3967a3; /*url(../img/tab-wiki.png) repeat-x;*/
+	}
+
+.navibar li.userlink {
+	/*background: #E6EAF0; /*url(../img/tab-user.png) repeat-x;*/
+	}
+
+.navibar li a {	
+	/* To cover the box area as linkable */
+	}
+
+.navibar a, .navibar a:visited {
+	color: #666;
+	}
+
+.navibar li.current a {
+	color: #666;
+	font-weight: bold;
+	}
+
+.navibar li:hover {
+	}
+
+.navibar li:hover a {
+	color: #000;
+	}
+
+.navibar li:hover a:active { color:#666; }
+.navibar li a:active { color:#666; }
+
+.navibar li.current, 
+.navibar li.current:hover, 
+.navibar li.current:hover a, 
+.navibar li.current:active a {
+	color: #666;
+	}
+
+.pageline {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	/* sync these values, line-height is needed for IE */
+	height: 5px;
+	line-height: 5px;
+	}
+
+.editbar {
+	padding: 0.5em;
+	padding-top: 0;
+	padding-right: 0;
+	white-space: nowrap;
+	margin: 0;
+	text-align: right;
+	}
+
+.editbar form, .editbar form div {
+	display: inline;
+	margin: 0px;
+	}
+
+#errormsg select,
+#footer select {
+	border: 1px solid #AAA;
+	font-size: 0.9em;
+}
+
+.editbar li {
+	display: inline;
+	padding: 0;
+	font-size: 0.9em;
+	}
+
+.editbar li:after {
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	content: "|";
+	color: #AAA;
+}
+
+.editbar li:last-child:after {
+	content: "";
+	padding-right: 0;
+	margin-right: 0;
+	}
+
+*[dir="rtl"] .editbar li {
+	float: right;
+	}
+
+#message {
+	clear: both;
+	margin-top: 2em;
+	margin-right: 10%;
+	margin-bottom: 2em;
+	margin-left: 10%;
+	padding-top: 1em;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	padding-left: 1.5em;
+	border-top-width: 4px;
+	border-top-style: solid;
+	border-top-color: #D2E0F6;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #D2E0F6;
+	background-color: #ECF4FF;
+	background-image: url("../img/moin-msg-bg-blue.png");
+	}
+
+#message p {
+	font-weight: bold;
+        line-height: 1.5em;
+	margin: 0;
+	padding-top: 1em;
+	padding-right: 2em;
+	padding-bottom: 1em;
+	padding-left: 2em;
+	}
+
+#message div.buttons {
+        font-weight: normal;
+	font-size: small;
+	margin-top: 0.5em;
+	}
+
+.dialog form {
+	margin: 0 15px;
+	}
+
+.dialog td {
+	border: none;
+	padding: 5px;
+	}
+
+.dialog td.label {
+	text-align: right;
+	font-weight: bold;
+	width: 25%;
+	}
+
+*[dir="rtl"] .dialog td.label {
+	text-align: left;
+	}
+
+.dialog td.content input {
+	width: 100%;
+	}
+
+#page {
+	padding-top: 0;
+	padding-right: 20px;
+	padding-bottom: 0;
+	padding-left: 20px;
+	background: #FFF;
+
+	/* theses are some Firefox 1.5b1 specific extensions, see also the CSS3 draft.
+	-moz-column-width: 25em;
+	-moz-column-gap: 2em;
+	-moz-column-rule: solid black 0.3em;     --   doesn"t work yet with 1.5b1!
+
+	TODO: make text/gui editor NOT use #page css, we don"t want columns there!
+	*/
+	}
+
+/* We use here dumb css1 ids because of IE suckiness */
+
+#editor-textarea, #editor-help {
+	font-family: monospace;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAA;
+	color: black;
+	background: #FFF;
+	padding: 3px;
+	width: 100%;
+	margin-top: 0.5em;
+	}
+
+#editor-help {
+	font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	font-size: small;
+	padding: 1em;
+	padding-top:0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #D2E0F6;
+	background-color: #ECF4FF;
+	background-image: url("../img/moin-msg-bg-blue.png");
+	width:97%;
+	}
+
+#editor-comment {
+	font-size: 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAA;
+	color: black;
+	background: #FFF;
+	vertical-align: middle;
+	padding: 1px;
+	display: inline;
+	width: 70%;
+	}
+
+#preview, #previewbelow {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #6C7680;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 20px;
+	padding-left: 30px;
+	background: url("../img/draft.png");
+	margin-top: 0.5em;
+	}
+
+input.button {
+	/*
+	border: 1px solid #8CACBB;  
+	color: black;
+	background: #CCCCCC;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: 100%;
+	cursor: pointer;
+	margin: 2px;
+	padding: 1px;
+	display: inline;
+	*/
+	}
+
+/* Headings */
+
+#editortitle li {
+	font-size: 1.4em;
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: 20px;
+	}
+
+#page h1 {
+	font-size: 1.7em;
+	font-weight: bold;
+	line-height: 1.9em;
+	margin: 0;
+	margin-bottom: 0.9em;
+	padding-left: 0.7em; /* Should be the same for h{1-4} */
+	color: #FFF;
+	border: none;
+	background-image: url("../img/moin-h1-background.png");
+	}
+
+#page h2 {
+	font-size: 1.4em;
+	line-height: 1.8em;
+	margin: 0;
+	margin-top: 1.6em;
+	margin-bottom: 0.8em;
+	padding-left: 0.7em; /* Should be the same for h{1-4}*/
+	background-image: url("../img/moin-h2-background.png");
+	border: none;
+	color: #666666;
+	}
+
+/* h2 emulation */
+
+#page .table-of-contents-heading {
+	font-size: 1.3em;
+	font-weight: bold;
+	line-height: 1.8em;
+	margin: 0;
+	margin-bottom: 10px;
+	padding-left: 0.7em; /* Should be the same for h{1-4} */
+	color: #666666;
+	background-color: #FFF;
+	background-image: url("../img/moin-h2-background.png");
+	}
+
+#page h3 {
+	font-size: 1.25em;
+	line-height: 1.6em;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	padding-left: 0.7em; /* Should be the same for h{1-4} */
+	color: #666666;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #DADADA;
+	}
+
+#page h4 {
+	font-size: 1.2em;
+	line-height: 1.4em;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	padding-left: 0.7em; /* Should be the same for h{1-4} */
+	color: #666666;
+	border-bottom: none;
+	}
+
+#page h5 {
+	font-size: 1.1em;
+	line-height: 1.1em;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	padding-left: 1.5em;
+	color: #666666;
+	font-weight: bold;
+	border-bottom: none;
+	}
+
+#page h6 {
+	font-size: 1em;
+	line-height: 1.1em;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	padding-left: 1.5em;
+	color: #666666;
+	font-weight: bold;
+	border-bottom: none;
+	}
+
+#page pre {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #E5E5E5;
+	border-left-width: 4px;
+	white-space: pre;
+	background: #FFFAE9;
+	overflow: auto;
+	}
+
+#page tt {
+	font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	white-space: pre;
+	}
+
+/* Push stuff inside of headings */
+
+#page p,
+#page hr,
+#page pre,
+#page table,
+#page .table-of-contents { 
+	margin-left: 1.5em; 
+	}
+
+/* Various */
+
+#page p {
+	margin-bottom: 1.3em;
+	line-height: 1.5em;
+	padding-left: 0;
+	}
+
+#page p#pageinfo {
+	margin: 0;
+	margin-top: 1.5em;
+}
+
+#page td > p {
+	margin: 0.5em !important; 
+	overflow: auto;
+	}
+
+#page td.lmimg > p {
+	overflow: visible;
+	}
+
+td { 
+	border-width: 1pt;
+	border-style: solid;
+	border-color: #CCC;
+	}
+
+/* Recent Changes Table */
+
+.recentchanges td {
+	font-size: 0.88em;
+	vertical-align: top;
+	border: none;
+	border-top-style: solid;
+	border-top-color: #EDEDED;
+	border-top-width: 1px;
+	border-left-style: solid;
+	border-left-color: #EDEDED;
+	border-left-width: 1px;
+	background: #fdfdfd;
+	}
+
+.rcdaybreak td {
+	font-size: 0.88em;
+	border-color: #CCC;
+	border-width: 1pt;
+	border-style: solid;
+	border-left: none;
+	border-right: none;
+	background-color: #FFF;
+	background-image: url("../img/moin-h2-background.png");
+	}
+
+/* Lists */
+
+#page ul,
+#page ol {
+	padding-left: 1.9em;
+	margin-left: 3em;
+	margin-bottom: 0.3em;
+	}
+
+#page ul { 
+	list-style: url("../img/moin-ul.png") circle; 
+	} 
+
+#page ol {
+	list-style-image: none !important;
+	}
+
+#page ul li {
+	padding-left: 0em;
+	margin-bottom: 0.3em;
+	}
+
+#page ol li {
+	padding-left: 0em;
+	margin-bottom: 0.3em;
+	}
+
+#page ul ul,
+#page ul ol,
+#page ol ul,
+#page ol ol {
+	margin-left: 0.5em;
+	margin-top: 0.3em;
+	}
+
+#page ul li p,
+#page ol li p {
+	margin-bottom: 0.3em;
+	line-height: 1.5em;
+	margin-left: 0 !important;
+	}
+
+/* Admonition Support */
+
+.lmimg {
+	background-color: #ECECEC;
+	background-image: url("../img/moin-msg-bg-gray.png");
+	width: 1%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #CFCFCF;
+	border-left-width: 4px;
+	border-right-width: 0;
+	padding: 0 !important;
+	}
+
+.lmtxt {
+	background-color: #ECECEC;
+	background-image: url("../img/moin-msg-bg-gray.png");
+	width:99%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #CFCFCF;
+	border-left: 0;
+	padding: 0 !important;
+	padding-left: 0.5em;
+	}
+
+.lmimg.red,
+.lmtxt.red { 
+	border-color: #E0B7B7;
+	background-color: #FFECEC;
+	background-image: url("../img/moin-msg-bg-red.png");
+	}
+
+.lmimg.green,
+.lmtxt.green { 
+	border-color: #D6F6D2;
+	background-color: #EEFFEC;
+	background-image: url("../img/moin-msg-bg-green.png");
+	}
+
+.lmimg.violet,
+.lmtxt.violet { 
+	border-color: #F6D2F6; 
+	background-color: #FFECFF;
+	background-image: url("../img/moin-msg-bg-violet.png");
+	}
+
+.lmimg.blue,
+.lmtxt.blue { 
+	border-color: #D2E0F6; 
+	background-color: #ECF4FF;
+	background-image: url("../img/moin-msg-bg-blue.png");
+	}
+
+.lmimg.orange,
+.lmtxt.orange { 
+	border-color: #F6E7D2; 
+	background-color: #FFF8EC;
+	background-image: url("../img/moin-msg-bg-orange.png");
+	}
+
+/* Differences Between Revisions */
+
+.diff {
+	width:99%;
+	}
+
+.diff-header {
+	font-weight: bold;
+	}
+
+.diff-title {
+	background: #C0C0C0;
+	}
+
+.diff-added {
+	background: #E0FFE0;
+	vertical-align: sub;
+	}
+
+.diff-removed {
+	background: #FFFFE0;
+	vertical-align: sub;
+	}
+
+.diff-added span {
+	background: #80FF80;
+	}
+
+.diff-removed span {
+	background: #FFFF80;
+	}
+
+/* Navigation Table */
+
+table.navigation {
+	float: right;
+	margin: 2px;
+	background: #FFFFFF;
+	}
+
+/* Footer */
+
+#footer {
+	clear: both;
+	color: #333;
+	border-bottom: 5px solid #F8F8F8;
+	margin-top: 2em;
+	}
+
+#footer .navibar,
+#footer .editbar {
+	margin: 0;
+	margin-left: 40px;
+	margin-bottom: 0.5em;
+	padding: 0;
+	text-align: left;
+}
+
+#credits, #version, #timings {
+	text-align: center;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+	color: #666666;
+	font-size: x-small;
+	}
+
+#footer a { 
+	color: #666666; 
+	border-bottom: 1px dotted #DDD;
+	}
+
+#footer a:hover {
+	text-decoration: underline;
+	}
+
+#footer img {
+	vertical-align: middle;
+	}
+
+#footer p.sysinfo {
+	margin:0;
+	padding: 0;
+	text-align: left;
+}

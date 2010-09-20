@@ -1,0 +1,146 @@
+
+/* Titres
+----------------------------------------------------------*/
+#puntal_content #articlesTitle span {
+	font-weight: bold;
+}
+
+
+/* Liste des catégories 
+----------------------------------------------------------*/
+#catBox ul {
+	padding: 0;
+}
+
+#catBox li {
+	display: inline;
+	margin-right: 12px;
+}
+#catBox li.current {
+	font-weight: bold;
+}
+
+/* Contenu des articles 
+----------------------------------------------------------*/
+.articleTitle {
+	margin-bottom: 0;
+}
+.articleDate {
+	margin-top: 0;
+	font-size: 0.9em;
+}
+
+.articleContent {
+}
+
+p.articleVote {
+	font-weight: bold;
+}
+
+.articleContent p {
+	margin: 1em 0;
+}
+
+.articleContent pre {
+	background-color: #333;
+	color: #fff;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+.articleContent h3, .articleContent h4, .articleContent h5, .articleContent h6  {
+	display: block;
+	font-weight: bold;
+}
+
+.articleContent h3 {
+  font-size: 1.4em;
+  margin: 1em 0;
+}
+.articleContent h4 {
+  font-size: 1.3em;
+  margin: 1.33em 0;
+}
+.articleContent h5 {
+  font-size: 1.2em;
+  margin: 1.67em 0;
+}
+.articleContent h6 {
+  font-size: 1.1em;
+  margin: 2.33em 0;
+}
+
+
+/* Lists settings from Mozilla Firefox */
+.articleContent ul,
+.articleContent ol {
+  display: block;
+  margin: 1em 0;
+  padding-left: 40px;
+}
+
+.articleContent ul,
+.articleContent ul li {
+  list-style-type: disc;
+}
+
+.articleContent ol,
+.articleContent ol li {
+  list-style-type: decimal;
+}
+
+.articleContent li {
+  display: list-item;
+}
+
+
+/* nested lists have no top/bottom margins */
+.articleContent ul ul, 
+.articleContent ul ol, 
+.articleContent ul dl, 
+.articleContent ol ul, 
+.articleContent ol ol, 
+.articleContent ol dl, 
+.articleContent dl ul, 
+.articleContent dl ol, 
+.articleContent dl dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* 2 deep unordered lists use a circle */
+.articleContent ol ul, 
+.articleContent ul ul,
+.articleContent ol ul li, 
+.articleContent ul ul li {
+  list-style-type: circle;
+}
+
+/* 3 deep (or more) unordered lists use a square */
+.articleContent ol ol ul, 
+.articleContent ol ul ul, 
+.articleContent ul ol ul, 
+.articleContent ul ul ul,
+.articleContent ol ol ul li, 
+.articleContent ol ul ul li, 
+.articleContent ul ol ul li, 
+.articleContent ul ul ul li {
+  list-style-type: square;
+}
+
+
+/* Commentaires
+----------------------------------------------------------*/
+.addLinkTop {
+	text-align: right;
+	margin-bottom: 0;
+}
+.addLinkBottom {
+	text-align: right;
+	margin-top: 0;
+}
+
+.comment {
+	margin: 0 0 1em 0;
+}
+

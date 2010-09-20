@@ -1,0 +1,48 @@
+<!--#if expr="! $CONTENT_LANGUAGE"
+--><!--#set var="CONTENT_LANGUAGE" value="en"
+--><!--#endif
+--><!--#if expr="! $CHARACTER_ENCODING"
+--><!--#set var="CHARACTER_ENCODING" value="ISO-8859-1"
+--><!--#endif
+--><?xml version="1.0" encoding="<!--#echo var="CHARACTER_ENCODING" -->"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<!--#echo var="CONTENT_LANGUAGE" -->" xml:lang="<!--#echo var="CONTENT_LANGUAGE" -->">
+<head>
+    <title><!--#echo encoding="none" var="TITLE" --></title>
+    <link rev="made" href="mailto:<!--#echo encoding="url" var="SERVER_ADMIN" -->" />
+    <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/common.css" />
+    <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/errors.css" />
+</head>
+
+<body>
+<div id="header">
+    <a href="http://www.centos.org/"><img class="logo" src="/error/include/img/centos.png" alt="CentOS" /></a>
+    <div class="navigation">
+    <ul class="mainlinks">
+            <li><a href="http://centos.org/">Home</a></li>
+            <li><a href="http://centos.org/downloads/">Downloads</a></li>
+            <li><a href="http://centos.org/docs/">Docs</a></li>
+            <li><a href="http://centos.org/wiki/">Wiki</a></li>
+            <li><a href="http://centos.org/lists/">Lists</a></li>
+            <li><a href="http://centos.org/bugs/">Bugs</a></li>
+            <li><a href="http://centos.org/forums/">Forums</a></li>
+            <li><a href="http://centos.org/trac/">Projects</a></li>
+    </ul>
+    </div>
+</div>
+
+	<div id="errormsg">
+
+	<img src="/error/include/img/error.png" alt="Error" />
+
+        <p class="floatr strong"><!--#echo encoding="none" var="TITLE" --></p>
+
+        <h1>Error <!--#echo encoding="none" var="REDIRECT_STATUS" --></h1>
+
+	</div>
+
+	<div id="centoslinks">
+
+        <p>

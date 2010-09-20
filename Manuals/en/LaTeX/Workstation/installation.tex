@@ -1,0 +1,139 @@
+% Part   : Preparing Your Workstation
+% Chapter: Installation
+% ------------------------------------------------------------
+% $Id: installation.tex 6191 2010-08-02 02:36:14Z al $
+% ------------------------------------------------------------
+
+This chapter describes tools you need to have installed in your CentOS
+workstation before using CentOS Artwork Repository.
+
+\section{Subversion}
+
+Subversion is a version control system, which allows you to keep old
+versions of files and directories (usually source code), keep a log of
+who, when, and why changes occurred, etc., like CVS, RCS or
+SCCS.\footnote{More documentation about Subversion and its tools,
+including detailed usage explanations of the svn, svnadmin, svnserve
+and svnlook programs, historical background, philosophical approaches
+and reasonings, etc., can be found at
+\url{http://svnbook.red-bean.com/.}} 
+
+To install Subversion client tools in your workstation you can use the
+following command:
+
+\begin{quote}
+yum install subversion
+\end{quote}
+
+\section{Inkscape}
+
+Inkscape is a GUI editor for Scalable Vector Graphics (SVG) format
+drawing files, with capabilities similar to Adobe Illustrator,
+CorelDraw, Visio, etc. Inkscape features include versatile shapes,
+bezier paths, freehand drawing, multiline text, text on path, alpha
+blending, arbitrary affine transforms, gradient and pattern fills,
+node editing, SVG-to-PNG export, grouping, layers, live clones, and
+more.
+
+Note that Inkscape is not inside CentOS Distribution, so you need to
+configure a third party repository like RPMForge or EPEL to install
+Inkscape.  Installation of a third party repositories inside CentOS
+Distribution is described in the following URL:
+
+\begin{quote}
+\url{http://wiki.centos.org/AdditionalResources/Repositories}
+\end{quote}
+
+Once you have configured the third party repository you can install
+Inkscape using the following command:
+
+\begin{quote}
+yum install inkscape
+\end{quote}
+
+\section{ImageMagick}
+
+ImageMagick is a free software suite for the creation, modification
+and display of bitmap images. It can read, convert and  write images
+in a large variety of formats. Images can be cropped, colors can be
+changed, various effects can be applied, images can  be rotated  and
+combined,  and text, lines, polygons, ellipses and Bézier curves can
+be added to images and stretched and rotated.
+
+To install ImageMagick in your workstation you can run the following
+command:
+
+\begin{quote}
+yum install ImageMagick
+\end{quote}
+
+\section{Netpbm}
+
+Netpbm is a toolkit for manipulation of graphic images, including
+conversion of images between a variety of different formats.  There
+are over 300 separate tools in the package including converters for
+about 100 graphics formats.
+
+To install Netpbm in your workstation you can run the following
+command:
+
+\begin{quote}
+yum install netpbm\{-progs\}
+\end{quote}
+
+\section{Syslinux}
+
+Syslinux is a suite of bootloaders, currently supporting DOS FAT
+filesystems, Linux ext2/ext3 filesystems (EXTLINUX), PXE network boots
+(PXELINUX), or ISO 9660 CD-ROMs (ISOLINUX).  It also includes a tool,
+MEMDISK, which loads legacy operating systems from these media.  The
+package \texttt{syslinux} provides the programs \texttt{ppmtolss16}
+and \texttt{lss16toppm} which are used to produce Anaconda Prompt
+images. The \texttt{ppmtolss16} Perl program also includes the file
+format specification.
+
+To install Syslinux in your workstation you can run the following
+command:
+
+\begin{quote}
+yum install syslinux
+\end{quote}
+
+\section{GNU Image Manipulation Program}
+
+GNU Image Manipulation Program (GIMP) is used to manipulate images
+inside CentOS Artwork Repository.  
+
+To install GIMP in your workstation you can run the following command:
+
+\begin{quote}
+yum install gimp
+\end{quote}
+
+\section{GNU Core Utilities}
+
+The GNU core utilities are a set of tools commonly used in shell
+scripts.
+
+To install the GNU core utilities in your workstation you can run the
+following command:
+
+\begin{quote}
+yum install core-utils
+\end{quote}
+
+\section{\LaTeX}
+
+\LaTeX\ is a document preparation system implemented as a macro
+package for Donald E.  Knuth's \TeX\ typesetting program. The \LaTeX\
+command typesets a file of text using the \TeX\ program and the LaTeX
+Macro package for \TeX.  To be more specific, it processes an input
+file containing the text of a document with interspersed commands that
+describe how the text should be formatted. 
+
+To install \LaTeX\ in your workstation you can run the following
+command:
+
+\begin{quote}
+yum install tetex-\{latex,fonts,doc,xdiv,dvips\}
+\end{quote}

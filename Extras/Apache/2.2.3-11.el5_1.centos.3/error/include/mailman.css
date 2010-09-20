@@ -1,0 +1,313 @@
+/***
+ * Mailman Customization.
+ *
+ * The CentOS Artwork SIG
+ */
+
+#errormsg p {
+	float: right;
+	font-size: x-small;
+}
+
+#centoslinks, 
+#centoslinks h1, 
+#centoslinks h2,
+#centoslinks h3 {
+	clear: both;
+	}
+
+/* Admin Panel */
+
+#centoslinks div.adminpanel.col1,
+#centoslinks div.adminpanel.col2 {
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+#centoslinks div.adminpanel.col1 {
+	width: 60%;
+}
+
+#centoslinks div.adminpanel.col2 {
+	width: 35%;
+	float: right;
+	margin-top:0;
+	margin-right: 0;
+}
+
+#centoslinks div.adminpanel p.adminpanel {
+	margin: 0;
+	padding-left: 1em;
+	line-height: 2.5em;
+	background: #f8f8f8;
+	font-weight: bold;
+}
+
+#centoslinks ul.adminpanel {
+	display: block;
+	margin-left: 1em;
+}
+
+/* The following two definitions are for the
+   "Emergency moderation of all list traffic is enabled"
+   message. */
+
+#centoslinks p.emergency {
+	color: #FFF;
+	background: #c32c2c;
+	background-image: none;
+	padding: 1em;
+	border: none;
+	text-align: center;
+	font-weight: bold;
+	margin: 0;
+	}
+
+#centoslinks p.emergency a {
+	color: #FFF;
+	border-bottom: 1px dotted #FFF;
+	}
+
+/* Tables customization */
+
+#centoslinks table {
+    	clear: both;
+    	width: 100%;
+    	font-size: inherit;
+	}
+
+#centoslinks td {
+   	font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+   	vertical-align: top;
+   	border-bottom: 0px;
+   	padding: 0.5em;
+   	}
+
+#centoslinks td.center {
+	text-align: center;
+	}
+
+#centoslinks td p {
+	margin-left: 0;
+	padding-left: 0;
+	}
+
+#centoslinks td.title,
+#centoslinks tr.title {
+	background-color: #f8f8f8;
+	}
+
+#centoslinks td.header,
+#centoslinks tr.header {
+	background-color: #efefef;
+	}
+
+#centoslinks .mm_submit {
+	padding: 0.5em;
+	text-align: center;
+	margin-top: 0;
+	}
+
+#centoslinks .mm_submit.tied {
+	/* Sometimes it is needed to use the submit button
+	 * without margin and padding. Use the .tied class
+	 * for those cases */
+	margin: 0;
+	padding: 0;
+	}
+
+/* Administrative Requests */
+
+#centoslinks table.helds_overview td {
+	padding: 0;
+	margin: 0;
+	}
+
+#centoslinks table.helds_overview td.header p{
+	margin: 0.3em;	
+	}
+
+#centoslinks table.helds_overview table,
+#centoslinks table.helds_overview table.helds_overview td {
+	margin: 0;
+	padding: 0;
+	}
+
+#centoslinks table.helds_overview table.helds_overview.right {
+	font-size: small;
+	}
+
+#centoslinks table.helds_overview td.helds_overview.left {
+	width: 40%;
+	margin: 0;
+	padding: 1em;
+	}
+
+#centoslinks table.helds_overview td.helds_overview.right {
+	border-left: 5px solid #f8f8f8;
+	}
+
+#centoslinks table.helds_overview td.helds_overview.right table {
+	text-align: left;
+	margin: 0; 
+	padding: 1em;
+	}
+
+#centoslinks table.helds_overview table.helds_overview.right td.description {
+	background: transparent;
+	text-align: left;
+	width: 1%;
+	}
+
+#centoslinks table.pending_subs table,
+#centoslinks table.pending_subs table td,
+#centoslinks table.pending_unsubs table,
+#centoslinks table.pending_unsubs table td {
+	margin: 0;
+	padding: 0;
+	}
+
+/* Administrative Panel */
+
+#centoslinks table.mm_usertable td {
+	vertical-align: middle;
+	}
+
+#centoslinks .value table,
+#centoslinks .value table tr,
+#centoslinks .value table td {
+	margin:0;
+	padding:0;
+	}
+
+/* Customize article body presentation */
+
+#centoslinks pre.article {
+	border: none;
+	background: transparent;
+	padding-left: 0;
+	overflow: visible;
+	}
+
+#centoslinks h1 {
+	margin-bottom: 1em;
+	}
+
+#centoslinks p.notrendered {
+	display: none;
+	}
+	
+#centoslinks ul.linkblock {
+	line-height: 1.9em;
+	float: left;
+	list-style: none;
+	padding-left: 1em;
+	padding-right: 1em;
+	border-right: 1px dotted #ccc;
+	}	
+
+#centoslinks ul.linkblock.last {
+	border-right: none;
+	}
+
+
+#centoslinks ul.mailaddresses li, 
+#centoslinks ol.mailaddresses li {
+   	font-family: "DejaVu Sans Mono", "Liberation Sans Mono", monospace;
+	}
+
+#centoslinks th {
+    	text-align: left;
+    	}
+
+#centoslinks td h1,
+#centoslinks td h2,
+#centoslinks td h3 {
+	margin: 0;
+   }
+
+#centoslinks td h3 {
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+	}
+
+#centoslinks .description { 
+	background-color: #efefef;
+	width:50%; 
+	padding: 0.5em; 
+	text-align: right;
+	}
+
+#centoslinks .value { 
+	background-color:#f8f8f8; 
+	}
+
+
+#centoslinks img {
+    border: none;
+	}
+
+/* Message */
+
+.message {
+        clear: both;
+        margin-top: 2em;
+        margin-right: 10%;
+        margin-bottom: 2em;
+        margin-left: 10%;
+        padding-top: 1em;
+        padding-right: 1em;
+        padding-bottom: 1em;
+        padding-left: 1.5em;
+        border-top-width: 4px;
+        border-top-style: solid;
+        border-top-color: #D2E0F6;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        border-bottom-color: #D2E0F6;
+        background-color: #ECF4FF;
+        background-image: url("/error/include/img/message-bg.png");
+        }
+
+.message.success {
+        border-color: #D6F6D2;
+        background-color: #EEFFEC;
+        background-image: url("/error/include/img/message-success-bg.png");
+	}
+
+.message.error {
+        border-color: #E0B7B7;
+        background-color: #FFECEC;
+        background-image: url("/error/include/img/message-error-bg.png");
+	}
+
+.message.warning {
+        border-color: #F6E7D2;
+        background-color: #FFF8EC;
+        background-image: url("/error/include/img/message-warning-bg.png");
+	}
+
+.message.error h3,
+.message.error p { 
+	color: #C32C2C; 
+	}
+
+.message.success h3,
+.message.success p {
+	color: #229321;
+	}
+
+.message p {
+	margin: 0 !important;
+	}
+
+.message h3 {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+	}
+
+p.message.warning {
+	margin: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 1em;
+	}

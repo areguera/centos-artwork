@@ -1,0 +1,96 @@
+
+/* Lien catégorie parent 
+----------------------------------------------------------*/
+.parentCatLink {
+	text-align: right;
+	float: right;
+}
+
+/* Titres 
+----------------------------------------------------------*/
+#puntal_content .directory span {
+	font-weight: bold;
+}
+
+/* Menu 
+----------------------------------------------------------*/
+#dirMenu {
+	list-style-none: none;
+	padding-left: 0;
+}
+#dirMenu li {
+	display: inline;
+	margin-right: 1em;
+}
+#dirMenu li.active {
+	font-weight: bold;
+}
+
+/* Totaux 
+----------------------------------------------------------*/
+.dirIntro {
+	text-align: center;
+}
+
+/* Liste des catégories de l'annuaire 
+----------------------------------------------------------*/
+ul.cats {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ul.cats li {
+	margin: 1.5em 0 1.5em 0;
+	padding: 0 1em 0 0;
+	float: left;
+	width: 48%;
+	height: auto;
+	line-height: 160%;
+	font-weight: bold;
+}
+
+/* Liste des sous-catégories de l'annuaire 
+----------------------------------------------------------*/
+ul.cats ul.subcats {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9em;
+}
+ul.cats ul.subcats li {
+	background: none;
+	float: none;
+	display: block;
+	margin: 0;
+	padding: 0 0 0 20px;
+	line-height: 160%;
+	font-weight: normal;
+}
+ul.cats ul.subcats li a {
+	background: none;
+	padding-left: 0;
+	text-decoration: none;
+}
+ul.cats ul.subcats li a:hover {
+	text-decoration: underline;
+}
+
+/* Les liens 
+----------------------------------------------------------*/
+.links {
+	padding-bottom: 2em;
+}
+
+/* Google Page Ranks 
+----------------------------------------------------------*/
+.pageranks { padding-left: 45px; }
+.pagerank1 { background: transparent url(img/pr1.png) no-repeat 0 50%; }
+.pagerank2 { background: transparent url(img/pr2.png) no-repeat 0 50%; }
+.pagerank3 { background: transparent url(img/pr3.png) no-repeat 0 50%; }
+.pagerank4 { background: transparent url(img/pr4.png) no-repeat 0 50%; }
+.pagerank5 { background: transparent url(img/pr5.png) no-repeat 0 50%; }
+.pagerank6 { background: transparent url(img/pr6.png) no-repeat 0 50%; }
+.pagerank7 { background: transparent url(img/pr7.png) no-repeat 0 50%; }
+.pagerank8 { background: transparent url(img/pr8.png) no-repeat 0 50%; }
+.pagerank9 { background: transparent url(img/pr9.png) no-repeat 0 50%; }
+.pagerank10 { background: transparent url(img/pr10.png) no-repeat 0 50%; }

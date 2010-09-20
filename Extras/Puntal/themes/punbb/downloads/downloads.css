@@ -1,0 +1,114 @@
+/* Titres
+----------------------------------------------------------*/
+#puntal_content #downloadsTitle span {
+	font-weight: bold;
+}
+
+/* Catégories */
+
+#catBox ul {
+}
+
+#catBox li {
+	display: inline;
+	margin-right: 12px;
+}
+#catBox li.current {
+	font-weight: bold;
+}
+
+/* Contenu des downloads 
+----------------------------------------------------------*/
+#downloadContent {
+}
+
+#downloadContent p {
+	margin: 1em 0;
+}
+
+#downloadContent pre {
+	background-color: #333;
+	color: #fff;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+#downloadContent h3, #downloadContent h4, #downloadContent h5, #downloadContent h6  {
+	display: block;
+	font-weight: bold;
+}
+
+#downloadContent h3 {
+  font-size: 1.4em;
+  margin: 1em 0;
+}
+#downloadContent h4 {
+  font-size: 1.3em;
+  margin: 1.33em 0;
+}
+#downloadContent h5 {
+  font-size: 1.2em;
+  margin: 1.67em 0;
+}
+#downloadContent h6 {
+  font-size: 1.1em;
+  margin: 2.33em 0;
+}
+
+
+/* Lists settings from Mozilla Firefox */
+#downloadContent ul,
+#downloadContent ol {
+  display: block;
+  margin: 1em 0;
+  padding-left: 40px;
+}
+
+#downloadContent ul,
+#downloadContent ul li {
+  list-style-type: disc;
+}
+
+#downloadContent ol,
+#downloadContent ol li {
+  list-style-type: decimal;
+}
+
+#downloadContent li {
+  display: list-item;
+}
+
+
+/* nested lists have no top/bottom margins */
+#downloadContent ul ul, 
+#downloadContent ul ol, 
+#downloadContent ul dl, 
+#downloadContent ol ul, 
+#downloadContent ol ol, 
+#downloadContent ol dl, 
+#downloadContent dl ul, 
+#downloadContent dl ol, 
+#downloadContent dl dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* 2 deep unordered lists use a circle */
+#downloadContent ol ul, 
+#downloadContent ul ul,
+#downloadContent ol ul li, 
+#downloadContent ul ul li {
+  list-style-type: circle;
+}
+
+/* 3 deep (or more) unordered lists use a square */
+#downloadContent ol ol ul, 
+#downloadContent ol ul ul, 
+#downloadContent ul ol ul, 
+#downloadContent ul ul ul,
+#downloadContent ol ol ul li, 
+#downloadContent ol ul ul li, 
+#downloadContent ul ol ul li, 
+#downloadContent ul ul ul li {
+  list-style-type: square;
+}

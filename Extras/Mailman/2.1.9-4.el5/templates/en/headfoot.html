@@ -1,0 +1,29 @@
+<p>This text can include 
+<a href="http://www.python.org/doc/current/lib/typesseq-strings.html">Python
+format strings</a> which are resolved against list attributes.  The
+list of substitutions allowed are:</p>
+
+<ul>
+    <li><strong>real_name</strong> - The "pretty" name of the list; usually
+    the list name with capitalization.</li>
+
+    <li><strong>list_name</strong> - The name by which the list is
+    identified in URLs, where case is significant.</li>
+
+    <li><strong>host_name</strong> - The fully qualified domain name
+    that the list server runs on.</li>
+
+    <li><strong>web_page_url</strong> - The base URL for Mailman.  This
+    can be appended with, e.g. <em>listinfo/%(list_name)s</em> to yield the
+    listinfo page for the mailing list.</li>
+
+    <li><strong>description</strong> - The brief description of the
+    mailing list.</li>
+
+    <li><strong>info</strong> - The full description of the mailing
+    list.</li>
+
+    <li><strong>cgiext</strong> - The extension added to CGI scripts.</li>
+</ul>
+
+<p class="notrendered">

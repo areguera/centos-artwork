@@ -1,0 +1,354 @@
+/* CentOS Cascading Style Sheet
+ * -----------------------------------------------
+ * File		: tabs.css
+ * Category	: root / common / miscellaneous
+ * Theme	: Modern
+ * Description	: CSS definitions used to build the CentOS common
+ *  		  visual style for tabs.
+ * -----------------------------------------------
+ * Author	: CentOS Artwork SIG
+ * License	: GPL (http://www.fsf.org/licensing/licenses/gpl.txt)
+ * -----------------------------------------------
+ */
+
+
+/* Tabs (Style 1): Two Rounded Borders
+-----------------------------------------------*/
+
+div#page-header div.tabs1 a:link, 
+div#page-footer div.tabs1 a:link { 
+	text-decoration: none; 
+	color: #FFF; 
+	}
+
+div#page-header div.tabs1 a:hover, 
+div#page-footer div.tabs1 a:hover { 
+	text-decoration: underline; 
+	color: #FFF; 
+	} 
+
+div#page-header div.tabs1 a:active, 
+div#page-footer div.tabs1 a:active { 
+	text-decoration: none; 
+	color: #FFF; } 
+
+div#page-header div.tabs1 a:visited, 
+div#page-footer div.tabs1 a:visited { 
+	text-decoration: none; 
+	color: #FFF; 
+	}
+
+div#page-header div.tabs1 a:visited:hover,
+div#page-footer div.tabs1 a:visited:hover { 
+	text-decoration: underline; 
+	color: #FFF; 
+	}
+
+div#page-header div.tabs1,
+div#page-footer div.tabs1 {
+	margin: 0;
+	padding: 0;
+	float: right;
+	margin-right: 5px;
+	}
+
+div#page-header div.tabs1 a,
+div#page-footer div.tabs1 a {
+	float: left;
+	font-weight: bold;
+	margin-right: 5px;
+	padding: 0px 8px 0 0px;
+	text-transform: uppercase;
+	}
+
+div#page-header div.tabs1 a span,
+div#page-footer div.tabs1 a span {
+	float: left;
+	font-size: x-small;
+	padding: 5px 0px 3px 8px;
+	}
+
+div#page-header div.tabs1 span:hover a,
+div#page-header div.tabs1 span:hover a,
+div#page-footer div.tabs1 span:hover a,
+div#page-footer div.tabs1 span:hover a,
+div#page-header div.tabs1 span:hover a span,
+div#page-footer div.tabs1 span:hover a span {
+	color: #FFF;
+	}
+
+div#page-header div.tabs1 span.current a,
+div#page-header div.tabs1 span.current a:hover,
+div#page-footer div.tabs1 span.current a,
+div#page-footer div.tabs1 span.current a:hover,
+div#page-header div.tabs1 span.current a span,
+div#page-header div.tabs1 span.current a span,
+div#page-footer div.tabs1 span.current a:hover span,
+div#page-footer div.tabs1 span.current a:hover span {
+	color: #000;
+	}
+
+div#page-header div.tabs1 span.download a,
+div#page-header div.tabs1 span.download a:hover,
+div#page-footer div.tabs1 span.download a,
+div#page-footer div.tabs1 span.download a:hover {
+	color: #FFF;
+	margin-left: 20px;
+	}
+
+div#page-header div.tabs1 span.download a span,
+div#page-header div.tabs1 span.download a:hover span,
+div#page-footer div.tabs1 span.download a span,
+div#page-footer div.tabs1 span.download a:hover span {
+	color: #FFF;
+	}
+
+/* */
+
+div#page-header div.tabs1 a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% 0px no-repeat;
+	}
+
+div#page-header div.tabs1 a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 0;
+	}
+
+div#page-header div.tabs1 span.current a,
+div#page-header div.tabs1 span.current a:hover {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -50px no-repeat;
+	}
+
+div#page-header div.tabs1 span.current a span,
+div#page-header div.tabs1 span.current a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 -50px;
+	}
+
+div#page-header div.tabs1 span:hover a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -25px no-repeat;
+	}
+
+div#page-header div.tabs1 span:hover a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 -25px;
+	}
+
+div#page-header div.tabs1 span.download a,
+div#page-header div.tabs1 span.download a:hover {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -75px no-repeat;
+	}
+
+div#page-header div.tabs1 span.download a span,
+div#page-header div.tabs1 span.download a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 -75px;
+	}
+
+/* */
+
+div#page-footer div.tabs1 {
+	margin-top: 29px;
+	}
+
+div#page-footer div.tabs1 a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% 0px no-repeat;
+	}
+
+div#page-footer div.tabs1 a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 0;
+	}
+
+div#page-footer div.tabs1 span.current a,
+div#page-footer div.tabs1 span.current a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -50px no-repeat;
+	}
+
+div#page-footer div.tabs1 span.current a span,
+div#page-footer div.tabs1 span.current a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 -50px;
+	}
+
+div#page-footer div.tabs2 span.current a,
+div#page-footer div.tabs2 span.current a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -125px no-repeat;
+	}
+
+div#page-footer div.tabs1 span:hover a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -25px no-repeat;
+	}
+
+div#page-footer div.tabs1 span:hover a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 -25px;
+	}
+
+div#page-footer div.tabs1 span.download a,
+div#page-footer div.tabs1 span.download a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -75px no-repeat;
+	}
+
+div#page-footer div.tabs1 span.download a span,
+div#page-footer div.tabs1 span.download a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 -75px;
+	}
+
+/* Tabs (Style 2): Two Rounded Borders
+-----------------------------------------------*/
+
+div#page-header div.tabs2,
+div#page-footer div.tabs2 {
+	margin-left: 20px;
+	padding: 0;
+	}
+
+div#page-header div.tabs2 a,
+div#page-footer div.tabs2 a {
+	color: #628eca;
+	float: left;
+	font-weight: bold;
+	margin-right: 3px;
+	padding: 0px 8px 0 0px;
+	text-decoration: none;
+	}
+
+div#page-header div.tabs2 span.current a,
+div#page-header div.tabs2 span.current a:hover,
+div#page-footer div.tabs2 span.current a,
+div#page-footer div.tabs2 span.current a:hover {
+	color: #FFF;
+	text-decoration: none;
+	}
+
+div#page-header div.tabs2 span.current a span,
+div#page-header div.tabs2 span.current a:hover span,
+div#page-footer div.tabs2 span.current a span,
+div#page-footer div.tabs2 span.current a:hover span {
+	color: #FFF;
+	text-decoration: none;
+	}
+
+div#page-header div.tabs2 a span,
+div#page-footer div.tabs2 a span {
+	float: left;
+	padding: 5px 0px 3px 8px;
+	}
+
+/* */
+
+div#page-header div.tabs2 a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -100px no-repeat;
+	}
+
+div#page-header div.tabs2 a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 -100px;
+	}
+
+div#page-header div.tabs2 span.current a,
+div#page-header div.tabs2 span.current a:hover {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -150px no-repeat;
+	}
+
+div#page-header div.tabs2 span.current a span,
+div#page-header div.tabs2 span.current a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 -150px;
+	}
+
+div#page-header div.subtabs2 span.current a,
+div#page-header div.subtabs2 span.current a:hover {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -150px no-repeat;
+	}
+
+div#page-header div.tabs2 span:hover a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs3-bg.png") 100% -125px no-repeat;
+	}
+
+div#page-header div.tabs2 span:hover a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs4-bg.png") 0 -125px;
+	}
+
+/* */
+
+div#page-footer div.tabs2 a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -100px no-repeat;
+	}
+
+div#page-footer div.tabs2 a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 -100px;
+	}
+
+div#page-footer div.tabs2 span.current a,
+div#page-footer div.tabs2 span.current a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -150px no-repeat;
+	}
+
+div#page-footer div.tabs2 span.current a span,
+div#page-footer div.tabs2 span.current a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 -150px;
+	}
+
+div#page-footer div.subtabs2 span.current a,
+div#page-footer div.subtabs2 span.current a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -150px no-repeat;
+	}
+
+div#page-footer div.tabs2 span:hover a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs1-bg.png") 100% -125px no-repeat;
+	}
+
+div#page-footer div.tabs2 span:hover a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/tabs2-bg.png") 0 -125px;
+	}
+
+/* Tabs (Style 3): 4 Rounded Borders
+-----------------------------------------------*/
+
+div#page-body div.tabs3 {
+	float: right;
+	}
+
+div#page-body div.tabs3 ul {
+	margin: 0;
+	padding: 0;
+	}
+
+div#page-body div.tabs3 a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination2-bg.png") 100% 0 no-repeat;
+	color: #628eca;
+	font-weight: bold;
+	float: left;
+	margin-right: 3px;
+	padding: 0px 7px 0 0px;
+	font-size: 10px;
+	}
+
+div#page-body div.tabs3 a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination1-bg.png") 0 0 no-repeat;
+	float: left;
+	padding: 5px 0px 3px 8px;
+	}
+
+div#page-body div.tabs3 span:hover a {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination2-bg.png") 100%  -25px no-repeat;
+	text-decoration: none;
+	}
+
+div#page-body div.tabs3 span:hover a span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination1-bg.png") 0 -25px;
+	}
+
+div#page-body div.tabs3 span.current a,
+div#page-body div.tabs3 span.current a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination2-bg.png") 100% -50px no-repeat;
+	color: #FFF;
+	text-decoration: none;
+	}
+
+div#page-body div.tabs3 span.current a,
+div#page-body div.tabs3 span.current a:hover { 
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination2-bg.png") 100% -50px no-repeat;
+	text-decoration: none;
+	}
+
+div#page-body div.tabs3 span.current a span,
+div#page-body div.tabs3 span.current a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/pagination1-bg.png") 0 -50px;
+	color: #FFF;
+	text-decoration: none;
+	}
+

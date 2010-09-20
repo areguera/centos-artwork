@@ -1,0 +1,46 @@
+% ------------------------------------------------------------
+% $Id: release.tex 6024 2010-06-28 04:28:27Z al $
+% ------------------------------------------------------------
+    \section{The CentOS Release Schema}
+\hypertarget{sec:Concepts:CentOS:Release}{}
+      \label{sec:Concepts:CentOS:Release}
+
+The upstream vendor has released 4 versions of enterprise Linux that
+CentOS rebuilds the freely available SRPMS for. So, the major CentOS
+releases are CentOS 2, CentOS 3, CentOS 4 and CentOS 5.  The upstream
+vendor releases security updates as required by circumstances. CentOS
+releases rebuilds of security updates as soon as possible. Usually
+within 24 hours (our stated goal is with 72 hours, but we are usually
+much faster).
+
+The upstream vendor also releases numbered update sets for Version 3,
+Version 4 and Version 5 of their product (Currently EL 3 update 9, EL
+4 update 6 and EL 5 update 1) 2 to 4 times per year. There are new
+ISOs from the upstream vendor provided for these update sets. Update
+sets will be completed as soon as possible after the vendor releases
+their version ... generally within 2 weeks. CentOS follows these
+conventions as well, so CentOS 3.9 correlates with EL 3 update 9 and
+CentOS 4.6 correlates with EL 4 update 6, CentOS 5.1 correlates to EL
+5 update 1, etc.
+
+One thing some people have problems understanding is that if you have
+any CentOS-3 product and update it, you will be updated to the latest
+CentOS-3.x version.
+
+The same is true for CentOS-4 and CentOS 5. If you update any CentOS-4
+product, you will be updated to the latest CentOS-4.x version, or to
+the latest CentOS 5.x version if you are updating a CentOS 5 system.
+This is exactly the same behavior as the upstream product. Let's
+assume that the latest EL4 product is update 6. If you install the
+upstream original EL4 CDs (the ones before any update set) and upgrade
+via their up2date, you will have latest update set installed (EL4
+update 6 in our example). Since all updates within a major release
+(CentOS 2, CentOS 3, CentOS 4, CentOS 5) always upgrade to the latest
+version when updates are performed (thus mimicking upstream behavior),
+only the latest version is maintained in each main tree on the CentOS
+mirrors.
+
+There is a CentOS Vault containing old CentOS trees. This vault is a
+picture of the older tree when it was removed from the main tree, and
+does not receive updates. It should only be used for reference. 
+

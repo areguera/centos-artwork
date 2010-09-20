@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title>The %(listname)s %(archive)s Archive by %(archtype)s</title>
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/common.css" />
+     <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/error/include/mailman.css" />
+</head>
+
+<body>
+
+    <div id="header">
+    <a href="http://www.centos.org/"><img class="logo" src="/error/include/img/centos.png" alt="CentOS" /></a>
+    <div class="navigation">
+    <ul class="mainlinks">
+            <li><a href="http://centos.org/">Home</a></li>
+            <li><a href="http://centos.org/downloads/">Downloads</a></li>
+            <li><a href="http://centos.org/docs">Docs</a></li>
+            <li><a href="http://centos.org/wiki/">Wiki</a></li>
+            <li class="current"><a href="http://centos.org/lists/">Lists</a></li>
+            <li><a href="http://centos.org/bugs/">Bugs</a></li>
+            <li><a href="http://centos.org/forums/">Forums</a></li>
+            <li><a href="http://centos.org/trac/">Projects</a></li>
+    </ul>
+    </div>
+    </div>
+
+<div id="errormsg">
+    <img src="/error/include/img/lists.png" alt="Lists" />
+    <p>%(listinfo_link)s | %(listadmin_link)s </p>
+    <h1>%(errormsg_header)s</h1>
+</div>
+
+<div id="centoslinks">
+
+      <a name="start"></a>
+      <h1>The %(listname)s %(archive)s Archive by %(archtype)s</h1>
+      <ul>
+         <li> <strong>Messages sorted by:</strong>
+	        %(thread_ref)s
+		%(subject_ref)s
+		%(author_ref)s
+		%(date_ref)s
+	 </li>
+	 <li><strong><a href="%(listinfo)s">More info on this list...</a></strong></li>
+      </ul>
+      <p>
+	 <strong>Starting:</strong> <em>%(firstdate)s</em><br />
+         <strong>Ending:</strong> <em>%(lastdate)s</em><br />
+         <strong>Messages:</strong> %(size)s
+     </p>
+
+     <ul>
+

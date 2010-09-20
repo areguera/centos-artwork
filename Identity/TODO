@@ -1,0 +1,229 @@
+------------------------------------------------------------
+* Rename trunk/Identity/Models/ to trunk/Identity/Manuals/
+
+* Reduce attention on the idea of creating a big book holding all
+  about CentOS corporate visual identity. The trunk/Identity/Manuals/
+  structure starts replacing the trunk/Manuals/ structure.  All ideas
+  inside trunk/Manuals need to be moved to trunk/Identity/Manuals
+  common visual style.
+
+* As both manuals and design models get growing, I've found that
+  using a set of scalable vector graphic as design templates/models
+  --to define how illustrations look like--, and a set of translation
+  files --to define the illustrations language-- to describe small
+  ideas is more flexible (since an innovative graphic design point of
+  view) than creating a big book describing all the same small ideas
+  by means of texts and illustrations using LaTeX format.
+
+  Using scalable vector graphics design templates/models and
+  translation files to produce multi-language illustrations is
+  straightforward.
+
+    Note: translation files are applied to design templates using
+    rendering scripts.
+ 
+* Inside trunk/Identity/Manuals/, the format used to create each
+  specific flayer is A4-Landscape (297x210mm).
+
+------------------------------------------------------------
+
+* Inside Themes structure similar design templates are repeated
+  constantly.  In order to optimeze Themes' structure, split Themes'
+  structure in the following two structures:
+  
+    1. trunk/Identity/Themes/Models: This structure contains design
+       templates (SVG) only. 
+       
+       Models structure is organized by Names (e.g., Default,
+       Alternative, etc.).  Convenctional models define art work
+       sizes, formats and position of elements in the screen.
+       
+       For example, inside models structure is where you set that
+       Anaconda Header art work is 800x88 pixels, the anaconda splash
+       is about 510x300 pixels, the GDM non-graphical definitions
+       (i.e., .xml, and .desktop files.), and so on.
+
+    2. trunk/Identity/Themes/Motifs: This structure contains artistic
+       motifs images (e.g.: .xcf, .png, .jpg, .xpm, .ppm, etc.) and
+       rendering scripts only[1].
+
+            [1]: Rendering script files are currently inside each
+            renderable art work structure. In the near future,
+            rendering script files will be replaced by a command line
+            utility.
+
+       As previously set, Motifs strcutre is organized by Names (e.g.,
+       Modern, TreeFlower, etc.). Each name represents one artistic
+       motif. Convenctional artistic motifs define visual style for
+       CentOS distribution (Distro), promotion (Promo), and web sites
+       (Web). Conventional artisitc motifs structure, also, covers
+       specific artistic motif's design, copyright note, license
+       (CC-SA), author(s), color, and palettes[2].
+
+            [2]: Palette files are required to produce color-limited
+            images, automatically. Two examples of color-limited
+            images are anaconda prompt (indexed to 16 colors), and
+            GRUB splash (indexed to 14 colors).
+
+       A relevant directory inside each artistic motif structure is
+       that used for Backgrounds (Distro/Backgrounds/). The background
+       directory stores images for many different sizes and screen
+       resolutions. Images inside background directory are passed
+       through Models design templates to produce the theme's final
+       images.
+
+------------------------------------------------------------
+* /branches/Identity/Themes/$THEME/$BRANCH_ID/ 
+
+  This structure is used to store alternative theme designs that share
+  one common design concept. The common design concept is defined at
+  /trunk/Identity/Themes/$THEME/.
+  
+    - `$THEME': is a case-sensitive name that match one name under
+      /trunk/Identity/Themes/ (e.g., Modern, TreeFlower, etc.).
+  
+    - `$BRANCH_ID': represents a unique serial number used to identify
+      the branch (e.g., 1.0, 2.0, 3.0, etc.).
+
+  For example, if you have a different design proposition (e.g., 1.0,
+  2.0, and 3.0) based on TreeFlower's concept, then the directory
+  structure will look similar to the following:
+
+    /branches/Identity/Themes/TreeFlower/1.0/
+    /branches/Identity/Themes/TreeFlower/2.0/
+    /branches/Identity/Themes/TreeFlower/3.0/
+
+  You can repeat the previous naming process in cascade as long as
+  different graphic designs arise. For example, if you find that a
+  completly different design can be derived from 1.0 then you can
+  create one branch, named 1.1 to store the idea:
+
+    /branches/Identity/Themes/TreeFlower/1.1/
+
+  The /branches/Identity/Themes/$THEME/$BRANCH_ID/ directory structure
+  is the same structure used under trunk. So, all rendering and
+  automation scripts available inside trunk structure are available in
+  here too.
+
+  The directory structure described in this section is for completly
+  different designs, compared with its trunk version. If you only want
+  to experiment new ideas around the same turnk design then do not use
+  this structure. Instead, go to the Motif's directory in the trunk's
+  structure and create a new motif file to work your idea. For
+  example:
+
+    /trunk/Identity/Themes/TreeFlower/Motif/motif.svg
+    /trunk/Identity/Themes/TreeFlower/Motif/motif-1.svg
+    /trunk/Identity/Themes/TreeFlower/Motif/motif-2.svg
+    /trunk/Identity/Themes/TreeFlower/Motif/motif-n.svg
+
+  In the above path, the motif.svg file is the theme's default design
+  used on distribution, websites, and promotion art works.  The other
+  files (i.e., motif-1.svg, motif-2.svg, motif-n.svg) are alternative
+  ideas of the same design.
+
+------------------------------------------------------------
+
+* Create/Design a command line utility to achive the same task of
+  invocation rendering script (render.sh) files.
+
+  - When invoking the command line utility, users can provide a path,
+    absolute or relative, to an specific framework. After verifying
+    the provided framework as valid path, image rendering starts for
+    that specific framework.
+
+    If no path is provided to the command line utility, print the
+    usage message and quit.
+
+    Brain Storm 1: 
+    -------------
+    
+    If such a command line is created name flexibility inside the
+    repository may be limited. 
+    
+    Presently, there is one render.sh script inside each renderable
+    art work component which points to an entry in the scripts
+    configuration structure. If renderable art work components change
+    their path, the rendering action is not affected because both
+    configuration scripts and translation structures remains immutable
+    out of renderable strucutres.
+
+    Thinking how to design an efficient command line interface that
+    help us automate most tasks inside CentOS Artwork Repository, I
+    propose to realy on a strong name convenction to bond renderable
+    structures, scripts, and translations files altogether.
+
+    Presently, invokation rendering scripts call one configuration
+    file. The configuration file defines which task(s) to do and what
+    function(s) to call for that art work, that one the rendering
+    script was invoked from. For brevity, a function initialization
+    script is called to make all functions available inside the
+    configuration script and functions loaded inside it.
+
+    If the invokation script is removed, we have to find some way to
+    make that bond between renderable art work component and
+    configuration script. The first idea coming to my mind is using
+    some kind of name convenction on paths so we could relay on it.
+    For exmample, if you are inside the following directory, or
+    provide it to the command line utility:
+
+        Themes/Motifs/Modern/Info
+
+    The command line utility should verify if that directory exists
+    firstly, and later if it has a configuration script associated. To
+    determine which configuration script is associated with this path
+    we need to build a common path that can be compared no matter
+    where the command line utility was invoked from. For example,
+    taken the above path as reference, we could build such a common
+    path using its absolute path:
+
+        /home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Info
+
+    And later, manipulate the string to build its assiciated
+    configuration script. The manipulation, relays on the following
+    name convenction: 
+
+        - Insert the Scripts/Bash/Config/ string before Identity/
+
+        - Remove the theme' name (e.g., Modern/) from the string.
+
+        Note: Pay attention to trailing slashes. They are part of
+        string manipulation.
+
+    This convenction produces the following path:
+
+        /home/centos/artwork/trunk/Scripts/Bash/Config/Identity/Themes/Motifs/Info
+    
+    If the above configuration directory exists, and it has the
+    render.conf.sh script inside, then it can be assumed as a valid
+    configuration entry in the configuration structure. Otherwise
+    there is no configuartion file for the specified framework, and by
+    extension no actions related to it. 
+
+        Note: Actions are based one functions loaded in the
+        render.conf.sh script. If the script render.conf.sh is empty,
+        or malformed you will have a result of the same nature.
+
+    This schema relays completly on names convenctions. So in order to
+    the command line utility to work, the repository should have a
+    strong name convenction and changes to it need to be carefuly
+    planned before commit them.
+
+  - The command line utility should provide the following:
+
+    - List of valid frameworks: This feature lets users to know
+      available frameworks where the command line utility can be used
+      for image rendering inside CentOS Artwork Repository.
+
+    - Usage message: This functionality lets the user to know how to
+      use the command line utility. It resumes available options and
+      features.
+
+    - Online framework documentation: This feature lets users request
+      information about specific art works and available actions
+      inside CentOS Artwork Repository, anywhere, anytime.
+
+    - ...
+
+* Remove invocation rendering script (render.sh) files.
+    

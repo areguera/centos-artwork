@@ -1,0 +1,121 @@
+@subsection Goals
+
+The @file{trunk/Scripts/Bash/Config} directory exists to oraganize
+pre-rendering configuration scripts.
+
+@subsection Description
+
+Pre-rendering configuration scripts let you customize the way
+@command{centos-art.sh} script renders identity and translation
+repository entries.  Pre-rendering configuration scripts are
+@file{render.conf.sh} files with @command{loadConfiguration} function
+definition inside. 
+
+There is one @file{render.conf.sh} file for each pre-rendering
+configuration entry. Pre-rendering configuration entries can be based
+both on identity and translation repository entires.  Pre-rendering
+configuration entries are required for each identity entry, but not
+for translation entries. 
+
+@subsubsection The @file{render.conf.sh} identity model
+
+Inside CentOS Artwork Repository, we consider directories under
+@file{trunk/Identity} as identity entries. Identity entries can be
+image-based or text-based. When you render image-based identity
+entries you need to use image-based pre-rendering configuration
+scripts. Likewise, when you render text-based identity entries you
+need to use text-based pre-rendering configuration scripts.
+
+Inside both image-based and text-based identity pre-rendering
+configuration scripts, we use the @samp{ACTIONS} array variable to
+define the way @command{centos-art.sh} script performs identity
+rendering. The first entry inside @samp{ACTIONS} array variable (i.e.,
+@samp{ACTIONS[0]}) is reserved to define the primary rendering action
+(i.e, @samp{renderImage} or @samp{renderText}).  Further entries
+inside @samp{ACTIONS} (i.e., @samp{ACTIONS[1]}, @samp{ACTIONS[2]},
+etc.) are used to define identity post-rendering actions.
+
+Inside identity pre-rendering configuration scripts, image-based
+pre-rendering configuration scripts look like the following:
+
+@verbatim
+#!/bin/bash
+
+function loadConfiguration {
+
+    # Define post-rendering actions. An empty value means that no
+    # post-rendering action is applied.
+    ACTIONS[0]='renderImage'
+    ACTIONS[1]='renderFormats: tif xpm pdf ppm'
+
+}
+@end verbatim
+
+Inside identity pre-rendering configuration scripts, text-based
+pre-rendering configuration scripts look like the following:
+
+@verbatim
+#!/bin/bash
+
+function loadConfiguration {
+
+    # Define post-rendering actions. An empty value means that no
+    # post-rendering action is applied.
+    ACTIONS[0]='renderText'
+    ACTIONS[1]='formatText: --width=70 --uniform-spacing'
+
+}
+@end verbatim
+
+When using identity pre-rendering configuration scripts, you can
+extend both image-based and text-based pre-rendering configuration
+scripts using image-based and text-based post-rendering actions,
+respectively. 
+
+@subsubsection The @file{render.conf.sh} translation model
+
+Translation pre-rendering configuration scripts take precedence before
+default translation rendering action. Translation pre-rendering
+actions are useful when default translation rendering action do not
+fit itself to translation entry rendering requirements.
+
+@subsection Usage
+
+Use the following commands to administer both identity and translation
+pre-rendering configuration scripts:
+
+@table @samp
+
+@item centos-art config 'path/to/dir/' --create
+
+Use this command to create @samp{path/to/dir} related pre-rendering
+configuration script.
+
+@item centos-art config 'path/to/dir/' --edit
+
+Use this command to edit @samp{path/to/dir} related pre-rendering
+configuration script.  
+
+@item centos-art config 'path/to/dir/' --read
+
+Use this command to read @samp{path/to/dir} related pre-rendering
+configuration script.  
+
+@item centos-art config 'path/to/dir/' --remove
+
+Use this command to remove @samp{path/to/dir} related pre-rendering
+configuration script.
+
+@end table
+
+In the commands above, @samp{path/to/dir} refers to one renderable
+directory path under @file{trunk/Identity} or
+@file{trunk/Translations} structures only. 
+
+@subsection See also
+
+@menu
+* trunk Scripts Bash Config Identity::
+* trunk Scripts Bash Config Translations::
+* trunk Scripts Bash::
+@end menu

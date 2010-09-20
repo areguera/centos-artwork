@@ -1,0 +1,105 @@
+@subsection Goals
+
+@itemize
+@item Organize brands' translation files.
+@end itemize
+
+@subsection Description
+
+Translation files, inside @file{trunk/Translations/Identity/Brands}
+translation entry, don't use default rendering translation
+functionality, they use the following translation pre-rendering
+configuration file instead:
+
+@verbatim
+/home/centos/artwork/trunk/Translation/Identity/Brands/render.conf.sh
+@end verbatim
+
+Inside @file{trunk/Translations/Identity/Brands} translation entry,
+translation files are symbolic links pointing to the common template
+translation structure, inside the translation template (@samp{Tpl/})
+directory.
+
+Inside @file{trunk/Translations/Identity/Brands} translation entry,
+translation files are created using identity design templates as
+reference.  The translation pre-rendering script creates a translation
+structure where the translation template (@samp{Tpl/}) directory
+structure applies to each single design template available.
+
+For example, if the brands' translation template (@samp{Tpl/})
+directory has 30 translation files, and there are 20 design templates;
+the brands' translation pre-rendering script creates a translation
+structure of symbolic links where the 30 translation files apply the
+20 design templates one by one, producing 600 translation symbolic
+links as result. At this point, when rendering identity, the
+@command{centos-art} script considers translation symbolic links as
+translation files.
+
+Translation file names, inside brands' translation template
+(@samp{Tpl}) directory have special meaning:
+
+@subsubsection Conventional file names
+@cindex Translation brands file names
+
+Convenctional file names look like @file{blue.sed}, @file{2c-a.sed},
+etc.  Replacement commands inside translation file are applied to
+design templates and translation file names are used as final image
+name.  The image dimensions use the same dimensions that design
+template has.
+
+@subsubsection Numeric file names 
+@cindex Translation brands file names
+
+Numeric file names look like @file{300.sed}, @file{200.sed}, etc.
+Replacements commands inside translation files are applied to design
+templates, and translation file names are used as final image name.
+The final image is saved using an specific @samp{width} defined by the
+number part of the translation file name. The image @samp{height} is
+automatically scaled based on the previous @samp{width} definition to
+maintain the design's ratio.  
+
+For example, if your design template has 400x200 pixels of dimension,
+and you apply a translation file named `300.sed' to it, the final
+image you get as result will have 300x100 pixels of dimension.   The
+same is true if you use higher numbers like `1024.sed', `2048.sed',
+etc. In these cases you have bigger images proportionally.
+
+As we are using scalable vector graphics to design identity templates,
+the image size you produce is not limitted in size. You can use one
+design template produced in 400x200 pixels to produce larger or
+shorter PNG images using numeric translation files as described
+above.
+
+@subsubsection Translation markers
+
+Inside @file{trunk/Translations/Identity/Brands/}, translation files
+combine the following translation markers:
+
+@table @samp
+@item #000000
+
+Specify which color to use when rendering brand images.
+
+@quotation
+@strong{Note} As translation files inside
+@file{trunk/Translations/Identity/Brands} are symbolic links that
+point to template translation files, translation markers are defined
+inside template translation files.
+@end quotation
+@end table
+
+@subsection Usage
+@cindex How to render brands' translation files
+
+To render brands' translation files, use the following command:
+
+@verbatim
+centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Brands
+@end verbatim
+
+@subsection See also
+
+@menu
+* trunk Translations Identity Brands Tpl::
+* trunk Identity Brands::
+@end menu

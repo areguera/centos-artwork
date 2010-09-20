@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{pdfauthor={CentOS Documentation SIG},%
+            pdftitle={Grand Unified Bootloader (GRUB)},%
+            pdfsubject={CentOS Corporate Visual Identity}%
+            }
+
+\title{Grand Unified Bootloader (GRUB)}
+\author{CentOS Documentation SIG}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+This article describes GRUB Visual Style for CentOS Distribution.
+This screen is where the selection of which kernel to run and other
+boot-time options, are made. It is seen every time the computer boots.
+
+Copyright \copyright\ 2010\ The CentOS Project. Permission is
+granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.2 or any later
+version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License''.  
+\end{abstract}
+
+\tableofcontents
+
+\section{Workplace}
+
+\begin{itemize}
+\item SVN:trunk/Identity/Themes/\$THEME/Distro/BootUp/GRUB/
+\item SVN:trunk/Translations/Identity/Themes/Distro/BootUp/GRUB/
+\item SVN:trunk/Scripts/Identity/Themes/Distro/BootUp/GRUB/
+\end{itemize}
+
+\section{Theme}
+
+\input{table-theme.tex}
+
+\section{Design}
+
+Initially, \emph{splash.xpm.gz} is a PNG image (splash.png) which is
+converted to xpm.gz. \emph{splash.png} image is rendered for each
+major release of CentOS distribution.  Each image is based in the same
+Artistic Motif and has the following components:
+
+\begin{enumerate}
+\item The CentOS Release Brand.
+\item The CentOS Default Artistic Motif.
+\end{enumerate}
+
+Image rendering is done using the rendering script (\emph{render.sh})
+available in the workplace of this section.  This script creates
+the appropriate PNG images under \emph{img/\$VERSION/}
+directory.
+
+After image rendering, each \emph{img/\$VERSION/splash.png} image
+should be indexed to 14 colors. This can be done using an image
+manipulation tool like GIMP, or ImageMagick.  This color reduction
+could bring some noise to your design. If that is the case, you need
+to retouch your design in a 14 colors basis.
+
+The final step is to convert the 14 colors indexed \emph{splash.png}
+image into \emph{splash.xpm.gz}. To do so, use the command
+\emph{convert2xpm.sh} provided in the workplace. This command
+explores the \emph{img/\$VERSION/} directories and
+converts\footnote{\emph{convert splash.png splash.xpm \&\& gzip
+splash.xpm}} each \emph{splash.png} image indexed to 14 colors to its
+\emph{.xpm.gz} equivalent. The converted images are saved under
+\emph{xpm/\$VERSION/} directories. 
+
+\section{Configuration}
+\section{Rendering}
+\section{Testing}
+\section{Issues}
+
+The following issues were seen on a video card \emph{Trident
+Microsysmtes CyberBlade/i1 (cyblafb)}:
+
+\begin{description}
+
+\item[Different colors]: As more different colors you have on your
+design, more are the possibilities of increasing the amount of noise
+in your design after indexing to 14 colors. For example, if you
+include the actual CentOS symbol in this image, it ocupies 3 colors
+(for the orange, green, violet) which are completely different and
+non-reusable in the blue toned background image.
+
+\item [CentOS Symbol]: If the CentOS symbol is included in
+this image, colors used in the symbol after indexing the image
+are not the defaults colors defined as CentOS Symbol Colors. 
+
+To workaround this, in first place, I used a variant of CentOS symbol
+without background colors, just the white borders. Later, I desided to
+remove it completely because that symbol could confuse people about
+which is the CentOS default symbol (see ``The CentOS Brand'' manual).
+Finally, I ended up using just the plain word CentOS to brand the
+GRUB. 
+
+\end{description}
+
+% License section
+\input{../../../../../Licenses/GFDL.tex}
+\end{document}

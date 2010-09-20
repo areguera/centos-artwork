@@ -1,0 +1,61 @@
+#puntal_content #calendarTitle span {
+	font-weight: bold;
+}
+
+/* tableaux */
+table.calendar {
+}
+#puntal_content table.minicalendar {
+	float: left;
+	width: 49%;
+}
+#puntal_content table.minicalendar caption {
+}
+
+/* bloc de texte */
+div#infos_cal {
+	float: right;
+	width: 60%;
+	margin-top: 1em;
+}
+div#infos_cal h3 {
+	margin-top: 1em;
+}
+
+/* cellules */
+table.calendar td {
+	height: 75px;
+	width: 14%;
+	vertical-align: top;
+}
+table.calendar td.inactive {
+	background: #ddd;
+}
+table.calendar td.past {
+	color: #ccc;
+}
+table.calendar td.today {
+	background: #fff;
+}
+table.calendar td.active {
+	border: 1px solid #c00;
+}
+
+/* liens */
+table.calendar td.past a {
+	color: #ccc;
+}
+table.calendar td.today a {}
+table.calendar td.active a {}
+
+/* numero jour */
+table.calendar td p.daynumber {}
+
+/* liste événement dans cellules */
+table.calendar td ul.eventlist {
+	font-size: 0.9em;
+}
+table.calendar td ul.eventlist li {
+	list-style: square inside
+}
+

@@ -1,0 +1,62 @@
+@subsection Goals
+
+@itemize
+@item ...
+@end itemize
+
+@subsection Description
+
+@itemize
+@item ...
+@end itemize
+
+@subsection Usage
+
+@table @samp
+@item centos-art help 'path/to/dir'
+Use this command to read directory documentation specified in
+@samp{path/to/dir}.
+
+@item centos-art help 'path/to/dir' --read='filename'
+Use this command to read file documentation as specified by
+@samp{path/to/dir/filename} combination. 
+
+@item centos-art help 'path/to/dir' --edit
+Use this command to edit directory documentation as specified in
+@samp{path/to/dir}.
+
+@item centos-art help 'path/to/dir' --edit='filename'
+Use this command to edit file documentation as specified in
+@samp{path/to/dir/filename} combination.
+
+@item centos-art help 'path/to/dir' --update
+Use this command to update documentation output files.
+
+@item centos-art help 'path/to/dir' --remove
+Use this command to remove directory documentation as specified in
+@samp{path/to/dir}.
+
+@quotation
+@strong{Caution} When directory documentation is removed all
+documentation under it is also removed.
+@end quotation
+
+@quotation
+@strong{Tip} To recover from directory documentation lost, try the
+following command (before commit local changes up to central
+repository): 
+@verbatim
+svn revert path/to/dir --recursive
+@end verbatim
+@end quotation
+
+@item centos-art help 'path/to/dir' --remove='filename'
+
+Use this command to remove file documentation as specified in
+@samp{path/to/dir/filename} combination.
+@end table
+
+@subsection See also
+
+@menu
+@end menu

@@ -1,0 +1,195 @@
+/*** 
+ * Style used in some server responses.
+ *
+ * -- CentOS Artwork SIG.
+ *    http://projects.centos.org/trac/artwork/wiki/WebServerCustomization
+ */
+
+html {
+    background-color: #FFF;
+    background-image: url(/error/include/img/html-background.png);
+    font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+    font-size: 0.85em;
+    line-height: 1.25em;
+    margin: 0 4% 0 4%;      /* <- with 4% of left and right margin  */
+    }
+
+body {
+    background: #FFF;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #FFF;     
+    padding:0;
+    margin: 0;
+    }
+
+/* Links */
+
+a:link  { text-decoration: none; color: #204C8D }
+a:hover { text-decoration: underline; color: green; } 
+a:active { text-decoration: underline; color: green; } 
+a:visited { text-decoration: none; color: #204C8D; }
+a:visited:hover { text-decoration: underline; color: green; }
+
+#footer .credits a:link  { border-bottom: 1px dotted #eee; text-decoration: none; color: #eee }
+#footer .credits a:hover { border-bottom: 1px dotted #eee; text-decoration: underline; color: #fff; } 
+#footer .credits a:active { border-bottom: 1px dotted #eee; text-decoration: underline; color: #eee; } 
+#footer .credits a:visited { border-bottom: 1px dotted #eee; text-decoration: none; color: #eee; }
+#footer .credits a:visited:hover { border-bottom: 1px dotted #eee; text-decoration: underline; color: #fff; }
+
+/* Tables */
+
+table { 
+    width: 100%;
+    font-size: inherit;
+    }
+
+th {
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+
+td {
+   border-bottom: 1px solid #f8f8f8;
+   font-family: "DejaVu Sans Mono", "Liberation Sans Mono", monospace;
+   vertical-align: middle;
+   }
+
+td img {
+   float: right;
+   }
+
+th { 
+    background-image: url(/error/include/img/h2-background.png);
+    }
+       
+/* Presentation */
+
+#header {
+    background-color: #204C8D;
+    background-image: url(/error/include/img/header-background.png);
+    margin-bottom: 1em;
+    color: #fff;
+    }
+
+#logo {
+    color: #fff;
+    padding: 10px;
+    width: 400px;
+    }
+
+.googlecontent {
+    float: right;
+    margin: 1em;
+}
+
+.pageline {
+    border: 2.5px solid #628ECA;
+    clear: both;
+    margin:0;
+    padding:0;
+}
+
+#header .mainlinks {
+    color: #000;
+    margin:0;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+    background-color: #EDF4FF;
+    border-top: 1px solid #C9C9C9;
+    border-bottom: 2px dotted #628ECA;
+    }       
+
+#header div.people_info {
+    float: right;
+    padding: 1.2em 10% 1.2em 1.2em;
+    padding-right: 10%;
+    text-align: center;
+    }	
+
+#header div.people_info h1 {
+    font-size: 1.7em;
+    font-weight: normal;
+    }	
+#header div.people_info p {
+    margin: 0;
+    padding: 0;
+    line-height: 0.5em;
+}
+
+/* Content */
+
+#content h1 {
+    line-height:1.9em;
+    margin-bottom: 0;
+}
+
+#content tt {
+   font-family: "DejaVu Sans Mono", "Liberation Sans Mono", monospace;
+}
+
+ul.mainlinks > li {
+    border-right: 1px dotted #628ECA;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: inline;
+    list-style: none;
+    }
+
+ul.mainlinks > li.last,
+ul.mainlinks > li.first {
+    border-right: none;
+    }
+ 
+hr { 
+    margin:0; 
+    padding: 0;
+    border: 1px dashed #f8f8f8;
+    }
+
+#content {
+    clear:both;
+    padding-bottom:0.5em;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+#content p {
+    padding-left:1.5;
+    line-height: 1.5em;
+}
+
+/* Footer */
+
+#footer {
+    background-color: #204C8D;
+    background-image: url(/error/include/img/header-background.png);
+    margin-top: 1em;
+    }
+
+#footer p {
+    font-size: small;
+    margin: 5px;
+    }
+
+#footer .mainlinks {
+    color: #000;
+    margin:0;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+    background-color: #EDF4FF;
+    border-top: 2px dotted #628ECA;
+    border-bottom: 1px solid #C9C9C9;
+    }
+
+#footer .credits {
+    color: #eee;
+    font-size: small;
+    padding: 1em;
+    }
+
+#footer .credits p.right {
+    float: right;
+}

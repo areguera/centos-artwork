@@ -1,0 +1,74 @@
+
+/* Titres
+----------------------------------------------------------*/
+#puntal_content #bugTrackerTitle span {
+	font-weight: bold;
+}
+
+#puntal_content #bugsFilter {
+	border: none;
+	font-weight: normal;
+	width: auto;
+}
+
+/* Menu
+----------------------------------------------------------*/
+#bugtrackerMenu {
+	list-style-type: none;
+	padding-left: 0;
+}
+#bugtrackerMenu li {
+	display: inline;
+	margin-right: 1em;
+}
+
+/* Sévérités
+----------------------------------------------------------*/
+table.bugs td.sev_1 { background-color: #fff5dd; }
+table.bugs td.sev_2 { background-color: #ecdbb7; }
+table.bugs td.sev_3 { background-color: #f5d5c6; }
+table.bugs td.sev_4 { background-color: #F7B390; }
+table.bugs td.sev_5 { background-color: #f3a29b; }
+
+#puntal_content .bugTitle {
+	width: auto;
+	border: none;
+	margin: 0;
+	font-weight: normal;
+}
+
+
+/* Barre d'avancement
+----------------------------------------------------------*/
+div.av_bar_ext {
+	border: 1px solid #004925;
+	background-color: #fff;
+	width: 100px;
+	height: 10px;
+	text-align: left;
+}
+div.av_bar_int {
+	background-color: #060;
+	height: 10px;
+}
+p.percent_txt {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+
+/* Commentaires
+----------------------------------------------------------*/
+.addLinkTop {
+	text-align: right;
+	margin-bottom: 0;
+}
+.addLinkBottom {
+	text-align: right;
+	margin-top: 0;
+}
+
+.comment  {
+	margin: 0 0 1em 0;
+}
