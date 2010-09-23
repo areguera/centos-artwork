@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# prepare.sh -- This function prepares your workstation for using
-# centos-art.sh script.
+# prepare_getActions.sh -- This function defines prepare actions.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -24,11 +23,24 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare {
+function prepare_getActions {
 
-    # Define prepare variables.
+    case $OPTIONNAM in
 
-    # Define prepare actions.
-    prepare_getActions
+        --packages )
+            prepare_forUsingPackages
+            ;;
+
+        --paths )
+            prepare_forUsingPaths
+            ;;
+
+        * )
+            cli_printMessage "`gettext "The option provided is not valid."`"
+
+    esac
+
+    cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
 }
+
