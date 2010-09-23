@@ -35,7 +35,7 @@ function help_updateOutputFiles {
     [[ ! -d ${MANUALS_DIR[3]} ]] &&  mkdir -p ${MANUALS_DIR[3]}
 
     # Update .info file
-    makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]} --no-ifhtml
+    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]} --no-ifhtml
 
     # Check .info file. If the info file was not created then there
     # are errors to fix.
@@ -99,7 +99,7 @@ function help_updateOutputFiles {
     [[ ! -d ${MANUALS_DIR[5]} ]] &&  mkdir -p ${MANUALS_DIR[5]}
 
     # Update plaintext output directory.
-    makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} --plaintext --no-ifhtml
+    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} --plaintext --no-ifhtml
 
     # Update central repository. Be sure to see changes before commit
     # them up to central repository.

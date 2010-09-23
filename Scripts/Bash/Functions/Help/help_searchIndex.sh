@@ -49,6 +49,6 @@ function help_searchIndex {
     # There is no need to check the entry inside documentation
     # structure here.  Just provide a word to look if there is any
     # index matching in the info document.
-    info --index-search="$REGEX" --file=${MANUALS_FILE[4]}
+    /usr/bin/info --index-search="$REGEX" --file=${MANUALS_FILE[4]}
 
 }

@@ -30,7 +30,7 @@ function help_searchNode {
     # exits use the info reader to open the info file at the
     # specified node. Otherwise, ask the user for create it.
     if [[ -f "$ENTRY" ]];then
-        info --node="$(help_getNode)" --file=${MANUALS_FILE[4]}
+        /usr/bin/info --node="$(help_getNode)" --file=${MANUALS_FILE[4]}
     else
         help_editEntry
     fi
