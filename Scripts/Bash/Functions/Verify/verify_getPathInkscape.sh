@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# info_getPathInkscape.sh -- This function prepares user's
+# verify_getPathInkscape.sh -- This function prepares user's
 # ~/.inkscape configurations directory to use CentOS defaults (e.g.,
 # palettes, patterns, etc).
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function info_getPathInkscape {
+function verify_getPathInkscape {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS

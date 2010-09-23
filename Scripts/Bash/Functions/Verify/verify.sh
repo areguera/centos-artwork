@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# info_getActions.sh -- This function defines prepare actions.
+# prepare.sh -- This function prepares your workstation for using
+# centos-art.sh script.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -23,24 +24,11 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function info_getActions {
+function verify {
 
-    case $OPTIONNAM in
+    # Define prepare variables.
 
-        --packages )
-            info_getPackages
-            ;;
-
-        --paths )
-            info_getPaths
-            ;;
-
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`"
-
-    esac
-
-    cli_printMessage "$(caller)" "AsToKnowMoreLine"
+    # Define prepare actions.
+    verify_getActions
 
 }
-

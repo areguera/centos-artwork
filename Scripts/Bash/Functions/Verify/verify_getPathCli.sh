@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# info_getPathCli.sh -- This function 
+# verify_getPathCli.sh -- This function 
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function info_getPathCli  {
+function verify_getPathCli  {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS

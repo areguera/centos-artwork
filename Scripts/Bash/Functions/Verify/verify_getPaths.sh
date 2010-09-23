@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# prepare.sh -- This function prepares your workstation for using
-# centos-art.sh script.
+# verify_getPaths.sh -- This function verifies centos-art.sh
+# required paths existence. If there is any missing path, leave a
+# message and quit script execution.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -24,11 +25,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function info {
+function verify_getPaths {
 
-    # Define prepare variables.
-
-    # Define prepare actions.
-    info_getActions
+    verify_getPathCli
+    verify_getPathFonts
+    verify_getPathInkscape
 
 }

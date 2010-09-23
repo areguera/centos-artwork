@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# info_getPathFonts.sh -- This function checks user's fonts
+# verify_getPathFonts.sh -- This function checks user's fonts
 # directory. In order for some artworks to be rendered correctly,
 # denmark font needs to be available. By default, denmark font doesn't
 # come with CentOS distribution so create a symbolic link (from the
@@ -27,7 +27,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function info_getPathFonts {
+function verify_getPathFonts {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS

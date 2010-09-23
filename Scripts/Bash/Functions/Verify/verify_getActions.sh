@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# info_getPaths.sh -- This function verifies centos-art.sh
-# required paths existence. If there is any missing path, leave a
-# message and quit script execution.
+# verify_getActions.sh -- This function defines prepare actions.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -25,10 +23,24 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function info_getPaths {
+function verify_getActions {
 
-    info_getPathCli
-    info_getPathFonts
-    info_getPathInkscape
+    case $OPTIONNAM in
+
+        --packages )
+            verify_getPackages
+            ;;
+
+        --paths )
+            verify_getPaths
+            ;;
+
+        * )
+            cli_printMessage "`gettext "The option provided is not valid."`"
+
+    esac
+
+    cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
 }
+
