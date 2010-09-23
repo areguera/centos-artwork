@@ -31,12 +31,17 @@ function cli_getActions {
     local ACTIONFILES=''
     local ACTIONSCRIPT=''
     local ACTIONFUN=''
+    local REPOFUNDIR=''
+
+    # Define path to directory where actions are stored inside the
+    # repository.
+    REPOFUNDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions
 
     # Define action directory. 
     ACTIONDIR=$(cli_getRepoName 'd' $ACTION)
 
     # Define action file name.
-    ACTIONSCRIPT=${REPO_PATHS[8]}/${ACTIONDIR}/${ACTION}.sh
+    ACTIONSCRIPT=${REPOFUNDIR}/${ACTIONDIR}/${ACTION}.sh
 
     # Check action existence.
     if [[ ! -f $ACTIONSCRIPT ]];then
@@ -45,7 +50,7 @@ function cli_getActions {
     fi
 
     # Build action-specifc script file list.
-    ACTIONFILES=$(ls ${REPO_PATHS[8]}/${ACTIONDIR}/${ACTION}*.sh)
+    ACTIONFILES=$(ls ${REPOFUNDIR}/${ACTIONDIR}/${ACTION}*.sh)
 
     for FILE in $ACTIONFILES;do
 

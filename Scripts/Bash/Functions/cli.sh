@@ -31,26 +31,6 @@ function cli {
     # Define action variable using first argument (lowercase) value.
     ACTION=$(cli_getRepoName 'f' "$1")
 
-    # Define command-line information.
-    CLI_COMMAND="centos-art.sh"
-    CLI_DESCRIPTION="$CLI_COMMAND - `gettext "Automate frequent tasks inside CentOS Artwork Repository."`"
-    CLI_RELEASE="alpha"
-    CLI_COPYRIGHT="Copyright (C) 2009-2010 Alain Reguera Delgado."
-    CLI_LICENSE="This program is free software; you can redistribute
-        it and/or modify it under the terms of the GNU General Public License
-        as published by the Free Software Foundation; either version 2 of the
-        License, or (at your option) any later version.
-     
-        This program is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-        General Public License for more details.
-         
-        You should have received a copy of the GNU General Public License
-        along with this program; if not, write to the Free Software
-        Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
-        USA."
-
     # Define option name (OPTIONNAM) and option value (OPTIONVAL)
     # variables passed as second argument to the command line
     # interface when the format is `--option=value' without the value
@@ -116,17 +96,6 @@ function cli {
     if [[ -f $OPTIONVAL/$REGEX ]];then
         OPTIONVAL=$OPTIONVAL/$REGEX
     fi
-
-    # Define centos-art.sh standard paths.
-    REPO_PATHS[0]=/home/centos
-    REPO_PATHS[1]=${REPO_PATHS[0]}/bin
-    REPO_PATHS[2]=${REPO_PATHS[1]}/centos-art
-    REPO_PATHS[3]=${REPO_PATHS[0]}/artwork/trunk/Scripts/Bash/$CLI_COMMAND
-    REPO_PATHS[4]=${REPO_PATHS[0]}/artwork/trunk/Scripts/Bash
-    REPO_PATHS[5]=${REPO_PATHS[0]}/artwork/trunk/Translations
-    REPO_PATHS[6]=${REPO_PATHS[0]}/.fonts
-    REPO_PATHS[7]=${REPO_PATHS[0]}/artwork/trunk/Identity/Fonts/Ttf
-    REPO_PATHS[8]=${REPO_PATHS[0]}/artwork/trunk/Scripts/Bash/Functions
 
     # Define positive answer.
     Y="`gettext "y"`"
