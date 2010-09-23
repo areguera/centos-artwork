@@ -40,7 +40,7 @@ function help_updateOutputFiles {
     # Check .info file. If the info file was not created then there
     # are errors to fix.
     if [[ ! -f ${MANUALS_FILE[4]} ]];then
-        cli_printMessage "trunk/Scripts/Bash/Functions/Help --filter='help_updateOutputFiles.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Compress .info file.

@@ -51,7 +51,7 @@ function render_getActionsIdentity {
     # here, so leave a message quit script execution.
     if [[ ! -d $ARTCONF ]];then
         cli_printMessage "`gettext "The path provided can't be processed."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_getActionsIdentity.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     for FILE in $(find $ARTCONF -name 'render.conf.sh');do

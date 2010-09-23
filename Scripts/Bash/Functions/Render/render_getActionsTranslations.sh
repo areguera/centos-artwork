@@ -34,7 +34,7 @@ function render_getActionsTranslations {
     # exist leave a message and quit execution. 
     if [[ ! -d $OPTIONVAL/Tpl ]];then
         cli_printMessage "`gettext "Can't find translation templates in the directory provided."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_getActionsTranslations.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Check if there are pre-defined configuration scripts for the
@@ -60,7 +60,7 @@ function render_getActionsTranslations {
         # that doesn't match release-specifc rendering translation
         # (the one done after this block), we need to end the
         # translation rendering right here.
-        cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_getActionsTranslations.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # -------------------------------------------------------------
@@ -120,7 +120,7 @@ function render_getActionsTranslations {
     # execution.
     if [[ $RELEASES == "" ]];then
         cli_printMessage "`gettext "There is not release-specific directory in the translation entry."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_getActionsTranslations.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     for RELEASE in $RELEASES;do
@@ -131,7 +131,7 @@ function render_getActionsTranslations {
         # Check release format.
         if [[ ! "$RELEASE" =~ "^${RELEASE_FORMAT}$" ]]; then
             cli_printMessage "`eval_gettext "The \\\"\\\$RELEASE\\\" release number isn't valid."`"
-            cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_getActionsTranslations.sh" "AsToKnowMoreLine"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
         fi
 
         # Define major and minor release format.

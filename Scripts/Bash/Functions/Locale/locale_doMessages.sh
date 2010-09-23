@@ -77,7 +77,4 @@ function locale_doMessages {
     # Create machine object (.mo).
     msgfmt $PO_FILE --output=$MO_FILE
 
-    # Add new files inside TEXTDOMAINDIR to your working copy.
-    help_addNewFilesToWorkingCopy $TEXTDOMAINDIR
-
 }

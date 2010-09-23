@@ -36,10 +36,10 @@ function cli_checkFiles {
     # be passed.
     if [[ $# -lt 1 ]];then
         cli_printMessage "`gettext "cli_checkFiles: At least one argument should be passed."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions --filter='cli_checkFiles.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # If action is not specified, assume `Checking' as default.
+    # Define default action to take, if it is not specified.
     if [[ ! "$3" ]] || [[ "$3" == '' ]];then
         ACTION=`gettext "Checking"`
     fi
@@ -89,7 +89,7 @@ function cli_checkFiles {
         # If there is some message print it and continue with the next
         # FILE in the loop (2). We wouldn't continue if a file is
         # missing.
-        if [ "$MESSAGE" == '' ];then
+        if [[ "$MESSAGE" == '' ]];then
             cli_printMessage "${ACTION}: $FILE"
         else
             cli_printMessage "${ACTION}: $MESSAGE"

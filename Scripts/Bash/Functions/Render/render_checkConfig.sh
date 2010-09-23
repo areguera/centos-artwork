@@ -31,7 +31,7 @@ function render_checkConfig {
         || [[ ! ${ACTIONS[0]} =~ '^(renderImage|renderText)$' ]];then
 
         cli_printMessage "`gettext "The ACTIONS[0] variable only supports the \\\"renderImage\\\" or \\\"renderText\\\" value."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_checkConfig.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
     fi
 
@@ -54,7 +54,7 @@ function render_checkConfig {
         || [[ ! -d "/home/centos/artwork/trunk/Identity/Themes/Models/$THEMEMODEL" ]];then
 
         cli_printMessage "`eval_gettext "The \\\"\\\$THEMEMODEL\\\" theme model doesn't exist."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_checkConfig.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
     fi
 

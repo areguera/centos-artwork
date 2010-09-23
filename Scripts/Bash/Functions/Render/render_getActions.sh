@@ -64,7 +64,7 @@ function render_getActions {
 
             else
 
-                cli_printMessage "trunk/Scripts/Bash" "AsToKnowMoreLine"
+                cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
             fi
             ;;

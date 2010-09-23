@@ -48,7 +48,7 @@ function help_createLanguageLayout {
         read DOCTPL[${COUNTER}]
         if [[ ! $DOCTPL[${COUNTER}] =~ '[[:print:]]+' ]];then
             cli_printMessage "`gettext "The string entered isn't valid."`"
-            cli_printMessage "trunk/Scripts/Bash/Functions/Help --filter='help_createLanguageLayout.sh" "AsToKnowMoreLine"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
         fi
         COUNTER=$(($COUNTER + 1))
     done

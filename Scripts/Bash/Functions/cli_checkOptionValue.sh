@@ -29,11 +29,11 @@ function cli_checkOptionValue {
     # Check option value before making an absolute path from it. 
     if [[ $OPTIONVAL =~ '(\.\.(/)?)' ]];then
         cli_printMessage "`gettext "The path provided can't be processed."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions --filter='cli_checkOptionValue.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
     if [[ ! $OPTIONVAL =~ '^[A-Za-z0-9\./-]+$' ]];then
         cli_printMessage "`gettext "The path provided can't be processed."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions --filter='cli_checkOptionValue.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Re-define option value to match the correct absolute path. As we
@@ -63,7 +63,7 @@ function cli_checkOptionValue {
 
     else
         cli_printMessage "`gettext "The path provided is not a valid directory."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions --filter='cli_checkOptionValue.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
 }

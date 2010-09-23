@@ -38,7 +38,7 @@ function locale_getActions {
 
         * )
             cli_printMessage "`gettext "The option provided is not valid."`"
-            cli_printMessage "trunk/Scripts/Bash/Locale" "AsToKnowMoreLine"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
     esac
 

@@ -43,7 +43,7 @@ function help_searchIndex {
     # a regular expression pattern.
     if [[ ! "$REGEX" =~ $PATTERN ]];then
         cli_printMessage "`gettext "The search pattern is not valid."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Help --filter='help_searchIndex.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # There is no need to check the entry inside documentation

@@ -35,7 +35,7 @@ function help_removeEntry {
     if [[ ! -f $ENTRY ]];then
         cli_printMessage "`gettext "The following entry doesn't exist:"`"
         cli_printMessage "$ENTRY" "AsResponseLine"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Help --filter='help_removeEntry.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Define entries. Start with the one being processed currently.

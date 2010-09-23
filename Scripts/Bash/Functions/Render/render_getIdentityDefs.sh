@@ -236,7 +236,7 @@ function render_getIdentityDefs {
         if [[ "$TEMPLATE" == '' ]];then
             cli_printMessage "`eval_gettext "No template defined for \\\$FILE."`"
             cli_printMessage "`gettext "Check the matching list (render_getIdentityMatchinglist) script."`"
-            cli_printMessage "trunk/Scripts/Bash/Functions/Render --filter='render_getIdentityDefs.sh" "AsToKnowMoreLine"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
         fi
     
     fi

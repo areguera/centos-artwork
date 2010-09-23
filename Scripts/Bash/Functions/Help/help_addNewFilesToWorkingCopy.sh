@@ -32,7 +32,7 @@ function help_addNewFilesToWorkingCopy {
     # Restrict files addition to your working copy only.
     if [[ ! $LOCATION =~ '^/home/centos/artwork/' ]];then
         cli_printMessage "`gettext "Only files under /home/centos/artwork please."`"
-        cli_printMessage "trunk/Scripts/Bash/Functions/Help --filter='help_addNewFilesToWorkingCopy.sh" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Update your working copy first.

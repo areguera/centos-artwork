@@ -41,7 +41,7 @@ function cli_getActions {
     # Check action existence.
     if [[ ! -f $ACTIONSCRIPT ]];then
         cli_printMessage "`gettext "The action provided is not valid."`"
-        cli_printMessage "trunk/Scripts/Bash" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Build action-specifc script file list.
@@ -62,7 +62,7 @@ function cli_getActions {
         else
 
             cli_printMessage "`eval_gettext "The \\\$FILE hasn't execution rights."`"
-            cli_printMessage "trunk/Scripts/Bash" "AsToKnowMoreLine"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
         fi
 

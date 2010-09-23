@@ -52,7 +52,7 @@ function help_getActions {
 
     * )
         cli_printMessage "`gettext "The option provided is not valid."`"
-        cli_printMessage "trunk/Manuals" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
         ;;
     
     esac
