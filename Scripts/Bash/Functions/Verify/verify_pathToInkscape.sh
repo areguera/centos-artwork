@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_getPathInkscape.sh -- This function prepares user's
+# verify_pathToInkscape.sh -- This function prepares user's
 # ~/.inkscape configurations directory to use CentOS defaults (e.g.,
 # palettes, patterns, etc).
 #
@@ -25,12 +25,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_getPathInkscape {
+function verify_pathToInkscape {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS
     local -a REPOFILES
     local -a REPOLINKS
+    local FILE=''
 
     # Define directories required by the centos-art.sh script command
     # line interface. 
@@ -45,9 +46,19 @@ function verify_getPathInkscape {
     # command line interface.
     REPOLINKS=${REPODIRS[0]}/CentOS.gpl
 
-    # Check defined directories, files, and symbolic links.
-    cli_checkFiles "${REPODIRS[@]}"
-    cli_checkFiles "${REPOFILES[@]}"
-    cli_checkFiles "${REPOLINKS[@]}"
+    # Check defined directories.
+    for FILE in "${REPODIRS[@]}";do
+        cli_checkFiles $FILE 'd'
+    done
+
+    # Check defined files.
+    for FILE in "${REPOFILES[@]}";do
+        cli_checkFiles $FILE 'f'
+    done
+
+    # Check defined symbolic links.
+    for FILE in "${REPOLINKS[@]}";do
+        cli_checkFiles $FILE 'h'
+    done
 
 }

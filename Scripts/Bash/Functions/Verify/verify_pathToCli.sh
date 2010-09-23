@@ -1,10 +1,6 @@
 #!/bin/bash
 #
-# verify_getPathFonts.sh -- This function checks user's fonts
-# directory. In order for some artworks to be rendered correctly,
-# denmark font needs to be available. By default, denmark font doesn't
-# come with CentOS distribution so create a symbolic link (from the
-# one we have inside repository) to make it available if it isn't yet.
+# verify_pathToCli.sh -- This function 
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -27,26 +23,41 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_getPathFonts {
+function verify_pathToCli  {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS
     local -a REPOFILES
     local -a REPOLINKS
+    local FILE=''
 
-    # Define font related directories.
-    REPODIRS[0]=/home/centos/.fonts
-    REPODIRS[1]=/home/centos/artwork/trunk/Identity/Fonts/Ttf
+    # Define directories required by the centos-art.sh script command
+    # line interface. 
+    REPODIRS[0]=/home/centos
+    REPODIRS[1]=/home/centos/bin
+    REPODIRS[2]=/home/centos/artwork/trunk/Scripts/Bash
 
-    # Define font related files.
-    REPOFILES=${REPODIRS[0]}/denmark.ttf
+    # Define files required by the centos-art.sh script command line
+    # interface.
+    REPOFILES=${REPODIRS[2]}/centos-art.sh
 
-    # Define font related symbolic links.
-    REPOLINKS=${REPODIRS[1]}/denmark.ttf
+    # Define symbolic links required by the centos-art.sh script
+    # command line interface.
+    REPOLINKS=${REPODIRS[1]}/centos-art
 
-    # Check defined directories, files, and symbolic links.
-    cli_checkFiles "${REPODIRS[@]}" 
-    cli_checkFiles "${REPOFILES[@]}"
-    cli_checkFiles "${REPOLINKS[@]}"
+    # Check defined directories.
+    for FILE in "${REPODIRS[@]}";do
+        cli_checkFiles $FILE 'd'
+    done
+
+    # Check defined files.
+    for FILE in "${REPOFILES[@]}";do
+        cli_checkFiles $FILE 'f'
+    done
+
+    # Check defined symbolic links.
+    for FILE in "${REPOLINKS[@]}";do
+        cli_checkFiles $FILE 'h'
+    done
 
 }

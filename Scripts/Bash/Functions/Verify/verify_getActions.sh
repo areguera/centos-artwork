@@ -32,7 +32,9 @@ function verify_getActions {
             ;;
 
         --paths )
-            verify_getPaths
+            verify_pathToCli
+            verify_pathToFonts
+            verify_pathToInkscape
             ;;
 
         * )
