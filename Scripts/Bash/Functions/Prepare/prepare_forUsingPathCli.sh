@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# prepare_forUsingCli.sh -- This function 
+# prepare_forUsingPathCli.sh -- This function 
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_forUsingCli  {
+function prepare_forUsingPathCli  {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS

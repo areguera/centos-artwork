@@ -27,11 +27,8 @@
 
 function prepare_forUsingPaths {
 
-    # Output action message.
-    cli_printMessage "`gettext "Checking paths"`"
-
-    prepare_forUsingCli
-    prepare_forUsingFonts
-    prepare_forUsingInkscape
+    prepare_forUsingPathCli
+    prepare_forUsingPathFonts
+    prepare_forUsingPathInkscape
 
 }
