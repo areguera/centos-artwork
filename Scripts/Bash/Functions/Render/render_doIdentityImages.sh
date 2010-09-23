@@ -28,6 +28,7 @@ function render_doIdentityImages {
 
     local EXPORTID=''
     local EXTERNALFILES=''
+    local EXTERNALFILE=''
 
     # Export id used inside design templates. This value defines the
     # design area we want to export.
@@ -75,7 +76,9 @@ function render_doIdentityImages {
             | sed -r 's!^[[:space:]]+!!' \
             | sed -r 's!^(xlink:href|sodipodi:absref)="!!' \
             | sed -r 's!".*$!!' | uniq)
-        cli_checkFiles "$EXTERNALFILES" '' ''
+        for EXTERNALFILE in $EXTERNALFILES;do
+            cli_checkFiles $EXTERNALFILE
+        done
 
         # Render template instance and modify the inkscape output to
         # reduce the amount of characters used in description column

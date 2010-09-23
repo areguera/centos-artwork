@@ -285,10 +285,13 @@ function render_getIdentityDefs {
             ".*/${TEMPLATE}" | sort | head -n 1)
     fi
     
-    # Check existence of TEMPLATE file. Show design template being
-    # used or stop running, we cannot continue if the provided
-    # template doesn't exist.
+    # Check existence of TEMPLATE file. If design template doesn't
+    # exist we cannot render it; in such case, stop working for it and
+    # try the next one in the list.
     cli_checkFiles "$TEMPLATE" '' "`gettext "Design"`"
+    if [[ $? -gt 0 ]];then
+        continue
+    fi
      
     # Get relative path to file. The path string (stored in FILE) has
     # two parts: 1. the variable path and 2. the common path.  The

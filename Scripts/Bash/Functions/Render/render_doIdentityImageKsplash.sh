@@ -50,11 +50,10 @@ function render_doIdentityImageKsplash {
     fi
 
     # Check required image files existence.
-    cli_checkFiles "$KSPLASH_PREVIEW
-                $KSPLASH_ACTIVE_BAR
-                $KSPLASH_BOTTOM
-                $KSPLASH_PREVIEW_FONT
-                " 'f'
+    cli_checkFiles $KSPLASH_PREVIEW
+    cli_checkFiles $KSPLASH_ACTIVE_BAR
+    cli_checkFiles $KSPLASH_BOTTOM
+    cli_checkFiles $KSPLASH_PREVIEW_FONT
 
     # Create Preview.png image.
     convert -append \

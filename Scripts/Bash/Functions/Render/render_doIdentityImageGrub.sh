@@ -45,7 +45,7 @@ function render_doIdentityImageGrub {
     # GRUB's 14 colors image (splash.png) rendering.  If there is no
     # palette available, do not apply color reduction, show a message,
     # and continue.
-    cli_checkFiles "$PALETTE_PPM" '' ''
+    cli_checkFiles $PALETTE_PPM
 
     # Create Netpbm superformat (PNM). PNM file is created from the
     # PNG image rendered previously. PNM is a common point for image

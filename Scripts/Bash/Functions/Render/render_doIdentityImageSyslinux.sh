@@ -50,8 +50,8 @@ function render_doIdentityImageSyslinux {
     # automate the syslinux's 16 colors image (syslinux-splash.png)
     # rendering.  If there is no palette available, do not apply color
     # reduction, show a message, and continue.
-    cli_checkFiles "$PALETTE_PPM
-                $PALETTE_HEX" '' ''
+    cli_checkFiles $PALETTE_PPM
+    cli_checkFiles $PALETTE_HEX
 
     # Create Netpbm superformat (PNM). PNM file is created from the
     # PNG image rendered previously. PNM is a common point for image

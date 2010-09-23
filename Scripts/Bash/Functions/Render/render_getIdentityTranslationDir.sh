@@ -28,7 +28,7 @@
 
 function render_getIdentityTranslationDir {
 
-    TRANSLATIONPATH=${REPO_PATHS[5]}/$ARTCOMP
+    TRANSLATIONPATH=/home/centos/artwork/trunk/Translations/$ARTCOMP
 
     if [[ "$(find $TRANSLATIONPATH -name '*.sed')" == '' ]];then
         TRANSLATIONPATH=''
