@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_checkFiles.sh -- This function checks file(s) existence.
+# cli_checkFiles.sh -- This function checks file existence.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -26,8 +26,7 @@
 function cli_checkFiles {
 
     # Define variables as local to avoid conflicts outside.
-    local FILE=''
-    local FILES="$1"
+    local FILE="$1"
     local TYPE="$2"
     local ACTION="$3"
     local MESSAGE=''
@@ -35,8 +34,8 @@ function cli_checkFiles {
     # Check amount of paramaters passed. At least one argument should
     # be passed.
     if [[ $# -lt 1 ]];then
-        cli_printMessage "`gettext "cli_checkFiles: At least one argument should be passed."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "cli_checkFiles: `gettext "You need to provide one argument at least."`"
+        cli_printMessages "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Define default action to take, if it is not specified.
@@ -44,58 +43,61 @@ function cli_checkFiles {
         ACTION=`gettext "Checking"`
     fi
 
-    for FILE in $FILES;do
-      
-        case $TYPE in
+    # Check file provided.
+    if [[ $FILE == '' ]];then
+        MESSAGE="`gettext "Unknown"`"
+        cli_printMessage "${ACTION}: $MESSAGE"
+        return 1
+    fi
 
-            d | directory )
-                # File exists and is a directory
-                if [[ ! -d $FILE ]];then
-                    MESSAGE="The directory \"$FILE\" doesn't exist."
-                fi
-                ;;
+    # Check file types.
+    case $TYPE in
 
-            f | regular-file )
-                # File exists and is a regular file.
-                if [[ ! -f $FILE ]];then
-                    MESSAGE="The file \"$FILE\" is not a regular file."
-                fi
-                ;;
+        d | directory )
+            # File exists and is a directory
+            if [[ ! -d $FILE ]];then
+                MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
+            fi
+            ;;
 
-            h | symbolic-link )
-                # File exists and is a symbolic link.
+        f | regular-file )
+            # File exists and is a regular file.
+            if [[ ! -f $FILE ]];then
+                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`"
+            fi
+            ;;
+
+        h | symbolic-link )
+            # File exists and is a symbolic link.
+            if [[ ! -h $FILE ]];then
+                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`"
+            fi
+            ;;
+
+        fh )
+            # To exist, file should be a regular file or a symbolic link.
+            if [[ ! -f $FILE ]];then
                 if [[ ! -h $FILE ]];then
-                    MESSAGE="The file \"$FILE\" is not a symbolic link."
+                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" doesn't exist."`"
                 fi
-                ;;
+            fi
+            ;;
 
-            fh )
-                # To exist, file should be a regular file or a symbolic link.
-                if [[ ! -f $FILE ]];then
-                    if [[ ! -h $FILE ]];then
-                        MESSAGE="The file \"$FILE\" doesn't exist."
-                    fi
-                fi
-                ;;
+        * )
+            # File exists.
+            if [[ ! -a $FILE ]];then
+                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" doesn't exist."`"
+            fi
 
-            * )
-                # File exists.
-                if [[ ! -a $FILE ]];then
-                    MESSAGE="The file \"$FILE\" doesn't exist."
-                fi
+    esac
 
-        esac
-
-        # If there is some message print it and continue with the next
-        # FILE in the loop (2). We wouldn't continue if a file is
-        # missing.
-        if [[ "$MESSAGE" == '' ]];then
-            cli_printMessage "${ACTION}: $FILE"
-        else
-            cli_printMessage "${ACTION}: $MESSAGE"
-            continue 2;
-        fi
-
-   done
+   # If there is some message print it. 
+   if [[ "$MESSAGE" == '' ]];then
+       cli_printMessage "${ACTION}: $FILE"
+       return 0
+   else
+       cli_printMessage "${ACTION}: $MESSAGE"
+       return 1
+   fi
 
 }
