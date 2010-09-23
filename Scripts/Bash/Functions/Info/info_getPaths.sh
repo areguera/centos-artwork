@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# prepare_forUsingPathCli.sh -- This function 
+# info_getPaths.sh -- This function verifies centos-art.sh
+# required paths existence. If there is any missing path, leave a
+# message and quit script execution.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -23,29 +25,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_forUsingPathCli  {
+function info_getPaths {
 
-    # Define variables as local to avoid conflicts outside.
-    local -a REPODIRS
-    local -a REPOFILES
-    local -a REPOLINKS
-
-    # Define directories required by the centos-art.sh script command
-    # line interface. 
-    REPODIRS[0]=/home/centos
-    REPODIRS[1]=/home/centos/bin
-    REPODIRS[2]=/home/centos/artwork/trunk/Scripts/Bash
-
-    # Define files required by the centos-art.sh script command line
-    # interface.
-    REPOFILES=${REPODIRS[2]}/centos-art.sh
-
-    # Define symbolic links required by the centos-art.sh script
-    # command line interface.
-    REPOLINKS=${REPODIRS[1]}/centos-art
-
-    # Check defined directories, files, and symbolic links.
-    cli_checkFiles ${REPOFILES[@]} 'f'
-    cli_checkFiles ${REPOLINKS[@]} 'h'
+    info_getPathCli
+    info_getPathFonts
+    info_getPathInkscape
 
 }

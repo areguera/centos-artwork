@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# prepare_forUsingPaths.sh -- This function verifies centos-art.sh
-# required paths existence. If there is any missing path, leave a
-# message and quit script execution.
+# info_getActions.sh -- This function defines prepare actions.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -25,10 +23,24 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_forUsingPaths {
+function info_getActions {
 
-    prepare_forUsingPathCli
-    prepare_forUsingPathFonts
-    prepare_forUsingPathInkscape
+    case $OPTIONNAM in
+
+        --packages )
+            info_getPackages
+            ;;
+
+        --paths )
+            info_getPaths
+            ;;
+
+        * )
+            cli_printMessage "`gettext "The option provided is not valid."`"
+
+    esac
+
+    cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
 }
+

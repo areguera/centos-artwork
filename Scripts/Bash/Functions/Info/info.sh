@@ -24,11 +24,11 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare {
+function info {
 
     # Define prepare variables.
 
     # Define prepare actions.
-    prepare_getActions
+    info_getActions
 
 }
