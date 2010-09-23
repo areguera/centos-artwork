@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on September, 18 2010 by texi2html 1.76 -->
+<!-- Created on September, 23 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.43 trunk/Translations/Identity/Brands</title>
+<title>CentOS Artwork Repository: 3.43 trunk/Scripts/Bash/Locale</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.43 trunk/Translations/Identity/Brands">
-<meta name="keywords" content="CentOS Artwork Repository: 3.43 trunk/Translations/Identity/Brands">
+<meta name="description" content="CentOS Artwork Repository: 3.43 trunk/Scripts/Bash/Locale">
+<meta name="keywords" content="CentOS Artwork Repository: 3.43 trunk/Scripts/Bash/Locale">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,152 +56,143 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_45.html#SEC246" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC248" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_45.html#SEC215" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC217" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_55.html#SEC296" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_55.html#SEC296" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Translations-Identity-Brands"></a>
-<a name="SEC247"></a>
-<h2 class="section"> 3.43 trunk/Translations/Identity/Brands </h2>
+<a name="trunk-Scripts-Bash-Locale"></a>
+<a name="SEC216"></a>
+<h2 class="section"> 3.43 trunk/Scripts/Bash/Locale </h2>
 
 
-<a name="SEC248"></a>
+<a name="SEC217"></a>
 <h3 class="subsection"> 3.43.1 Goals </h3>
 
 <ul class="toc">
-<li> Organize brands' translation files.
+<li> Organize <tt>`centos-art.sh'</tt> locale files.
 </li></ul>
 
 
-<a name="SEC249"></a>
+<a name="SEC218"></a>
 <h3 class="subsection"> 3.43.2 Description </h3>
 
-<p>Translation files, inside <tt>`trunk/Translations/Identity/Brands'</tt>
-translation entry, don't use default rendering translation
-functionality, they use the following translation pre-rendering
-configuration file instead:
+<p>This command looks for <samp>`.sh'</samp> files inside Bash directory and
+extracts translatable strings from files, using <code>xgettext</code>
+command, in order to create a portable object template
+(<tt>`centos-art.sh.pot'</tt>) file for them.
 </p>
-<pre class="verbatim">/home/centos/artwork/trunk/Translation/Identity/Brands/render.conf.sh
-</pre>
-<p>Inside <tt>`trunk/Translations/Identity/Brands'</tt> translation entry,
-translation files are symbolic links pointing to the common template
-translation structure, inside the translation template (<samp>`Tpl/'</samp>)
-directory.
+<p>With the <tt>`centos-art.sh.pot'</tt> file up to date, the
+<code>centos-art</code> command removes the temporal list of files sotred
+inside <tt>`/tmp'</tt> directory and checks the current language of your
+user's session to create a portable object file for it, in the
+location <tt>`$CLI_LANG/$CLI_LANG.po'</tt>. 
 </p>
-<p>Inside <tt>`trunk/Translations/Identity/Brands'</tt> translation entry,
-translation files are created using identity design templates as
-reference.  The translation pre-rendering script creates a translation
-structure where the translation template (<samp>`Tpl/'</samp>) directory
-structure applies to each single design template available.
+<p>The <var>CLI_LANG</var> variable discribes the locale language used to
+output messages inside <code>centos-art</code> command. The locale
+language used inside <code>centos-art</code> command is taken from the
+<var>LANG</var> environment variable.  The <var>CLI_LANG</var> variable has the
+<samp>`LL_CC'</samp> format, where <samp>`LL'</samp> is a language code from the
+ISO-639 standard, and <samp>`CC'</samp> a country code from the ISO-3166
+standard.
 </p>
-<p>For example, if the brands' translation template (<samp>`Tpl/'</samp>)
-directory has 30 translation files, and there are 20 design templates;
-the brands' translation pre-rendering script creates a translation
-structure of symbolic links where the 30 translation files apply the
-20 design templates one by one, producing 600 translation symbolic
-links as result. At this point, when rendering identity, the
-<code>centos-art</code> script considers translation symbolic links as
-translation files.
+<p>The <var>LANG</var> environment variable is set when you do log in to your
+system. If you are using a graphical session, change language to your
+native language and do login. That would set and exoprt the <var>LANG</var>
+environment variable to the correct value. On the other side, if you
+are using a text session edit your <tt>`~/.bash_profile'</tt> file to set
+and export the <var>LANG</var> environment variable to your native locale
+as defines the <code>locale -a</code> command output; do logout, and do
+login again.
 </p>
-<p>Translation file names, inside brands' translation template
-(<samp>`Tpl'</samp>) directory have special meaning:
+<p>At this point, the <var>LANG</var> environment variable has the appropriate
+value you need, in order to translate <code>centos-art.sh</code> messages
+to your native language (the one set in <var>LANG</var> environment
+variable). 
 </p>
-
-<a name="SEC250"></a>
-<h4 class="subsubsection"> 3.43.2.1 Conventional file names </h4>
-
-<p>Convenctional file names look like <tt>`blue.sed'</tt>, <tt>`2c-a.sed'</tt>,
-etc.  Replacement commands inside translation file are applied to
-design templates and translation file names are used as final image
-name.  The image dimensions use the same dimensions that design
-template has.
+<p>With the <tt>`$CLI_LANG/$CLI_LANG.po'</tt> file up to date, the
+<code>centos-art</code> opens it for you to update translation strings.
+The <code>centos-art</code> command uses the value of <var>EDITOR</var>
+environment variable to determine your favorite text editor. If no
+value is defined on <var>EDITOR</var>, the <tt>`/usr/bin/vim'</tt> text editor
+is used as default.
 </p>
-
-<a name="SEC251"></a>
-<h4 class="subsubsection"> 3.43.2.2 Numeric file names </h4>
-
-<p>Numeric file names look like <tt>`300.sed'</tt>, <tt>`200.sed'</tt>, etc.
-Replacements commands inside translation files are applied to design
-templates, and translation file names are used as final image name.
-The final image is saved using an specific <samp>`width'</samp> defined by the
-number part of the translation file name. The image <samp>`height'</samp> is
-automatically scaled based on the previous <samp>`width'</samp> definition to
-maintain the design's ratio.  
+<p>When you finish PO file's edition and quit text editor, the
+<code>centos-art</code> command creates the related machine object in the
+location <tt>`$CLI_LANG/LC_MESSAGES/$TEXTDOMAIN.mo'</tt>.
 </p>
-<p>For example, if your design template has 400x200 pixels of dimension,
-and you apply a translation file named `300.sed' to it, the final
-image you get as result will have 300x100 pixels of dimension.   The
-same is true if you use higher numbers like `1024.sed', `2048.sed',
-etc. In these cases you have bigger images proportionally.
-</p>
-<p>As we are using scalable vector graphics to design identity templates,
-the image size you produce is not limitted in size. You can use one
-design template produced in 400x200 pixels to produce larger or
-shorter PNG images using numeric translation files as described
-above.
+<p>At this point, all translations you made in the PO file should be
+available to your language when runing <code>centos-art.sh</code> script. 
 </p>
 
-<a name="SEC252"></a>
-<h4 class="subsubsection"> 3.43.2.3 Translation markers </h4>
+<a name="SEC219"></a>
+<h4 class="subsubsection"> 3.43.2.1 Configuration files </h4>
 
-<p>Inside <tt>`trunk/Translations/Identity/Brands/'</tt>, translation files
-combine the following translation markers:
+<p>In order to make the <code>centos-art.sh</code> internationalization, the
+<code>centos-art.sh</code> script was modified as described in the
+<code>gettext</code> info documentation (<code>info gettext</code>).  You
+can find such modifications in the following files:
 </p>
+<ul class="toc">
+<li> <tt>`trunk/Scripts/Bash/initFunctions.sh'</tt>
+</li><li> <tt>`trunk/Scripts/Bash/Functions/Config/cli_localeMessages.sh'</tt>
+</li><li> <tt>`trunk/Scripts/Bash/Functions/Config/cli_localeMessagesStatus.sh'</tt>
+</li></ul>
+
+
+<a name="SEC220"></a>
+<h3 class="subsection"> 3.43.3 Usage </h3>
+
+
+<a name="SEC221"></a>
+<h4 class="subsubsection"> 3.43.3.1 The <code>centos-art</code> <samp>`locale-cli'</samp> action </h4>
+
 <dl compact="compact">
-<dt> <samp>`#000000'</samp></dt>
-<dd>
-<p>Specify which color to use when rendering brand images.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> As translation files inside
-<tt>`trunk/Translations/Identity/Brands'</tt> are symbolic links that
-point to template translation files, translation markers are defined
-inside template translation files.
-</p></blockquote>
-</dd>
+<dt> <samp>`centos-art locale-cli --edit'</samp></dt>
+<dd><p>Use this command to translate command-line interface output messages
+in the current system locale you are using (as specified in <var>LANG</var>
+environment variable).
+</p></dd>
+<dt> <samp>`centos-art locale-cli --list'</samp></dt>
+<dd><p>Use this command to see the command-line interface locale report.
+</p></dd>
 </dl>
 
 
-<a name="SEC253"></a>
-<h3 class="subsection"> 3.43.3 Usage </h3>
-
-<p>To render brands' translation files, use the following command:
-</p>
-<pre class="verbatim">centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Brands
-</pre>
-
-<a name="SEC254"></a>
+<a name="SEC222"></a>
 <h3 class="subsection"> 3.43.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_47.html#SEC255">3.44 trunk/Translations/Identity/Brands/Tpl</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_31.html#SEC159">3.28 trunk/Scripts/Bash/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_5.html#SEC20">3.2 trunk/Identity/Brands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_34.html#SEC176">3.31 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_29.html#SEC142">3.26 trunk/Scripts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC253" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_47.html#SEC255" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC221" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_47.html#SEC223" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC247" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_55.html#SEC296" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC216" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>September, 18 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>September, 23 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
