@@ -44,18 +44,8 @@ function verify_getPackages {
     PACKAGES_FROM_THIRDS="(inkscape|blender)"
 
     # Output table of packages needed by centos-art.sh script.
-    for PACKAGE in $PACKAGES;do
-        PACKAGE_INFO=$(rpm -q --queryformat "%{SUMMARY}" $PACKAGE \
-            | tr "\n" ' ' | sed -r 's!^([[:alpha:]])!\u\1!' )
-        cli_printMessage "$PACKAGE | $PACKAGE_INFO"
-    done \
-        | egrep -i $REGEX \
-        | awk 'BEGIN {FS="|"; format ="%15s|%s\n"
-                      printf "--------------------------------------------------------------------------------\n"
-                      printf format, "'`gettext "Package"`' ", " '`gettext "Description"`'"
-                      printf "--------------------------------------------------------------------------------\n"}
-                     {printf format, substr($1,0,15), $2}
-                 END {printf "--------------------------------------------------------------------------------\n"}'
+    rpm -q --queryformat "%{NAME}: %{SUMMARY}\n" $PACKAGES \
+        | egrep -i $REGEX
 
     cli_printMessage "$(caller)" "AsToKnowMoreLine"
 }
