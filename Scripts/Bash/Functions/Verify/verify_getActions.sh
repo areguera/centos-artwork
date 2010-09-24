@@ -28,7 +28,7 @@ function verify_getActions {
     case $OPTIONNAM in
 
         --packages )
-            verify_getPackages
+            verify_requiredPackages
             ;;
 
         --paths )

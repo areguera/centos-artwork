@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_getPackages.sh -- This function queries your system's
+# verify_requiredPackages.sh -- This function queries your system's
 # rpm database to verify centos-art.sh required packages existence.
 # If there is any missing package, leave a message and quit script
 # execution.
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_getPackages {
+function verify_requiredPackages {
 
     # Define variables as local to avoid conflicts outside.
     local PACKAGE=''
