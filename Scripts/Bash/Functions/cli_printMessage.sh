@@ -37,7 +37,8 @@ function cli_printMessage {
 
     # Reduce paths inside output messages. The main purpose for this
     # is to free horizontal space in output messages.
-    MESSAGE=$(echo "$MESSAGE" | sed -r 's!/home/centos/artwork/trunk/!trunk/!')
+    MESSAGE=$(echo "$MESSAGE" \
+        | sed -r 's!/home/centos/artwork/(trunk|branches|tags)/!\1/!')
 
     # Remove blank spaces from lines' begining.
     MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')

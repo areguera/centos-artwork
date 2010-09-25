@@ -81,9 +81,9 @@ function render_getActionsIdentity {
         # configuration script path value. Otherwise massive rendering
         # may fail. Functions like renderImage need to know the exact
         # artwork path (that is, where images will be stored).
-        OPTIONVAL=$(dirname $(echo $FILE \
-            | sed -r 's!Scripts/Bash/Functions/Render/Config/Identity/!Identity/!' \
-            | sed -r "s!Themes/!Themes/Motifs/$(cli_getThemeName)/!"))
+        OPTIONVAL=$(dirname $(echo $FILE | sed -r \
+            -e 's!Scripts/Bash/Functions/Render/Config/Identity/!Identity/!' \
+            -e "s!Themes/!Themes/Motifs/$(cli_getThemeName)/!"))
 
         # Re-define artwork identification.
         ARTCOMP=$(echo $OPTIONVAL | cut -d/ -f6-)

@@ -88,7 +88,7 @@ function render_doIdentityImages {
             --export-png=$FILE.png \
                 | sed -r -e "s!Area !`gettext "Area"`: !" \
                 -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
-                -e "s!Bitmap saved as:.+/trunk/!`gettext "Saved as"`: trunk/!"
+                -e "s!Bitmap saved as:.+/(trunk|branches|tags)/!`gettext "Saved as"`: \1/!"
 
         # Remove template instance. 
         if [[ -a $INSTANCE ]];then

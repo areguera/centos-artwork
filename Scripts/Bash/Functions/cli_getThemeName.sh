@@ -29,9 +29,9 @@ function cli_getThemeName {
 
     local THEMENAME=''
 
-    if [[ $OPTIONVAL =~ '^.+/Themes/Motifs/([A-Za-z0-9-]+)+/.+$' ]];then
+    if [[ $OPTIONVAL =~ '^.+/Themes/Motifs/([A-Za-z0-9-]+)/.+$' ]];then
         THEMENAME=$(echo $OPTIONVAL \
-            | sed -r 's!^.+/Themes/Motifs/([A-Za-z0-9-]+)+/.+!\1!') 
+            | sed -r "s!^.+/Themes/Motifs/([A-Za-z0-9-]+(/${RELEASE_FORMAT})?)/.+!\1!") 
     fi
 
     echo $THEMENAME
