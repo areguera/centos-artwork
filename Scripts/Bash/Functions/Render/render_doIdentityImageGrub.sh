@@ -29,7 +29,7 @@ function render_doIdentityImageGrub {
     local FILE=$1
 
     # Define Motif's palette location. We do this relatively.
-    local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Palettes
+    local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
 
     # Define the Netpbm color palettes used when reducing colors.
     # These palettes should be 14 colors based. For more information
