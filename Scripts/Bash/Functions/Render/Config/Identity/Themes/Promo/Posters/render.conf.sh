@@ -33,7 +33,7 @@ function render_loadConfig {
     ACTIONS[1]='renderFormats: pdf jpg tif'
 
     # Define matching list.
-    MATCHINGLIST="poster.svg: gnulinux-centos.sed"
+    MATCHINGLIST=""
 
     # Deifne theme model.
     #THEMEMODEL='Default'
