@@ -83,6 +83,7 @@ function help_updateOutputFiles {
         --I=/home/centos/artwork/trunk/Identity/Fonts/Img \
         --I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts \
         --I=/home/centos/artwork/trunk/Identity/Models/Img/Corporate \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web \
         --I=/home/centos/artwork/trunk/Identity/Models/Img/Distro
 
     # Apply html transformations.
