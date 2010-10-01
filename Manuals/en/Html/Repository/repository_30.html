@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on September, 23 2010 by texi2html 1.76 -->
+<!-- Created on October, 1 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.27 trunk/Scripts/Bash</title>
+<title>CentOS Artwork Repository: 3.27 trunk/Manuals</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.27 trunk/Scripts/Bash">
-<meta name="keywords" content="CentOS Artwork Repository: 3.27 trunk/Scripts/Bash">
+<meta name="description" content="CentOS Artwork Repository: 3.27 trunk/Manuals">
+<meta name="keywords" content="CentOS Artwork Repository: 3.27 trunk/Manuals">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -61,232 +61,104 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC311" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC311" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash"></a>
+<a name="trunk-Manuals"></a>
 <a name="SEC147"></a>
-<h2 class="section"> 3.27 trunk/Scripts/Bash </h2>
+<h2 class="section"> 3.27 trunk/Manuals </h2>
 
 
 <a name="SEC148"></a>
 <h3 class="subsection"> 3.27.1 Goals </h3>
 
-<p>The <tt>`trunk/Scripts/Bash'</tt> directory exists to organize the
-&quot;trunk&quot; development line of <code>centos-art.sh</code> automation
-script.  The <code>centos-art.sh</code> script standardize frequent tasks
-inside your working copy of CentOS Artwork Repository.
-</p>
+<ul class="toc">
+<li> ...
+</li></ul>
+
 
 <a name="SEC149"></a>
 <h3 class="subsection"> 3.27.2 Description </h3>
 
-<p>The best way to understand <code>centos-art.sh</code> automation script
-is studying its source code. The <code>centos-art.sh</code> script is
-splited in several configuration and function files which are loaded
-when the <code>centos-art.sh</code> script is executed. This section
-describes the order in which <code>centos-art.sh</code> loads its
-configuration and function files.
-</p>
-<p>When you type the <code>centos-art</code> command in your terminal, the
-operating system trys to execute that command. In order to execute the
-command, the operating system needs to know where it is, so the
-operating system uses the <var>PATH</var> environment variable to look for
-that command's location. If your system was prepared to use CentOS
-Artwork Repository correctly (see usage section above), you should
-have a symbolic link inside <tt>`~/bin/'</tt> directory that points to the
-<code>centos-art.sh</code> script file. As <tt>`~/bin/'</tt> directory is, by
-default, inside <var>PATH</var> environment variable, the execution of
-<code>centos-art</code> command runs the <tt>`centos-art.sh'</tt> script.
-</p>
-<p>When <code>centos-art.sh</code> script is executed, the first it does is
-execute the <tt>`trunk/Scripts/Bash/initFunctions.sh'</tt> file to
-initialize <code>gettext</code> variables and all function scripts inside
-<tt>`trunk/Scripts/Bash/Functions'</tt> directory. 
-</p>
-<p>Once <code>gettext</code> variables and all function scripts have been
-initialized, the <code>centos-art.sh</code> script initializes its
-environment variables using the <code>cli_getVariables</code> function.
-At this point the <code>centos-art.sh</code> script calls the
-<code>cli_getActions</code> function from <code>cli_getVariables</code>
-function's bottom. 
-</p>
-<p>The <code>cli_getActions</code> function defines which actions the
-<code>centos-art.sh</code> script is able to perform. Inside
-<code>cli_getActions</code> function, actions are defined combining
-positional arguments and function calls.
-</p>
-<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_003aInitialization"></a>
-<pre class="verbatim">+------------------------------------------------------------------+
-| [centos@host]$ centos-art action 'path/to/dir' --option='value'  |
-+------------------------------------------------------------------+
-| ~/bin/centos-art --&gt; ~/artwork/trunk/Scripts/Bash/centos-art.sh  |
-+---v-----------------------------------------v--------------------+
-    | centos-art.sh                           |
-    +---v---------------------------------v---+
-    .   | initFunctions.sh                |   .
-    .   +---------------------------------+   .
-    .   | cli_getVariables $@             |   .
-    .   +---v-------------------------v---+   .
-    .   .   | cli_getActions          |   .   .
-    .   .   +---v-----------------v---+   .   .
-    .   .   .   | function call 1 |   .   .   .
-    .   .   .   | function call 2 |   .   .   .
-    .   .   .   | function call n |   .   .   .
-    .   .   .   +-----------------+   .   .   .
-    .   .   ...........................   .   .
-    .   ...................................   .
-    ...........................................
-</pre>
-</div><p><strong>Figure 3.1: The <code>centos-art.sh</code> initialization environment.
-</strong>
-</p>
+<ul class="toc">
+<li> ...
+</li></ul>
+
 
 <a name="SEC150"></a>
-<h4 class="subsubsection"> 3.27.2.1 The identity matching list </h4>
-
-<p>The identity matching list is used by identity rendering functions to
-define the relation between translation files and identity design
-templates. See section <a href="repository_39.html#SEC185">trunk/Scripts/Bash/Functions/Config/cli_getIdentityMatchinglist.sh</a>, for more information.
-</p>
-
-<a name="SEC151"></a>
-<h4 class="subsubsection"> 3.27.2.2 Adding new features </h4>
-
-<p>To add new features inside <code>centos-art.sh</code> script, you need to
-set positional arguments and function calls inside
-<code>cli_getActions</code> function for the new function or functions
-required by the new feature you want to add.
-</p>
-
-<a name="SEC152"></a>
 <h3 class="subsection"> 3.27.3 Usage </h3>
 
-
-<a name="SEC153"></a>
-<h4 class="subsubsection"> 3.27.3.1 The <code>centos-art</code> <samp>`check'</samp> action </h4>
-
-<p>This feature is supported through the following command:
-</p>
 <dl compact="compact">
-<dt> <samp>`centos-art check'</samp></dt>
-<dd><p>This command verifies paths, symbolic links, installed packages and
-everything your workstation needs in order to run the
-<code>centos-art</code> command correctly. 
+<dt> <samp>`centos-art help 'path/to/dir''</samp></dt>
+<dd><p>Use this command to read directory documentation specified in
+<samp>`path/to/dir'</samp>.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> If this is the first time you run
-<code>centos-art</code> command, the appropriate way to execute check
-action is not using the <code>centos-art</code> command, but the absolute
-path to <code>centos-art.sh</code> script instead:
-</p><pre class="verbatim">~/artwork/trunk/Scripts/Bash/centos-art.sh check
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --read='filename''</samp></dt>
+<dd><p>Use this command to read file documentation as specified by
+<samp>`path/to/dir/filename'</samp> combination. 
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --edit'</samp></dt>
+<dd><p>Use this command to edit directory documentation as specified in
+<samp>`path/to/dir'</samp>.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --edit='filename''</samp></dt>
+<dd><p>Use this command to edit file documentation as specified in
+<samp>`path/to/dir/filename'</samp> combination.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --update'</samp></dt>
+<dd><p>Use this command to update documentation output files.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --remove'</samp></dt>
+<dd><p>Use this command to remove directory documentation as specified in
+<samp>`path/to/dir'</samp>.
+</p>
+<blockquote class="red"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-error.png" alt="Caution"><h3>Caution</h3><p> When directory documentation is removed all
+documentation under it is also removed.
+</p></blockquote>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> To recover from directory documentation lost, try the
+following command (before commit local changes up to central
+repository): 
+</p><pre class="verbatim">svn revert path/to/dir --recursive
 </pre></blockquote>
+
 </dd>
-</dl>
-
-
-<a name="SEC154"></a>
-<h4 class="subsubsection"> 3.27.3.2 The <code>centos-art</code> <samp>`search'</samp> action </h4>
-
-<p>This feature is not supported yet.
-</p>
-<dl compact="compact">
-<dt> <samp>`centos-art search 'pattern''</samp> </dt>
+<dt> <samp>`centos-art help 'path/to/dir' --remove='filename''</samp></dt>
 <dd>
-<p>Use this command to find directories and files that match exactly the
-posix-regular expression set in <samp>`pattern'</samp> as in <samp>`^pattern$'</samp>.
-</p>
-</dd>
-<dt> <samp>`centos-art search 'pattern1 pattern2 patternN''</samp> </dt>
-<dd>
-<p>Use this command to search repository entries that match pattern1
-<em>or</em> patter2 <em>or</em> patternN as in
-<samp>`'^.*(pattern1|pattern2|patternN).*$''</samp>.
-</p>
-</dd>
-<dt> <samp>`centos-art search 'path/to/dir1 path/to/dir2 path/to/dirN''</samp> </dt>
-<dd>
-<p>Use this command to search repository entries that match
-<samp>`path/to/dir1'</samp> <em>or</em> <samp>`path/to/dir2'</samp>, <em>or</em>
-<samp>`path/to/dirN'</samp> as in
-<samp>`^.*(path/to/dir1|path/to/dir2|path/to/dirN).*$''</samp>.
-</p>
-</dd>
-</dl>
-
-
-<a name="SEC155"></a>
-<h4 class="subsubsection"> 3.27.3.3 The <code>centos-art</code> <samp>`path'</samp> action </h4>
-
-<p>This feature is not supported yet.
-</p>
-<dl compact="compact">
-<dt> <samp>`centos-art path 'path/to/dir/' --copy-to='path/to/dir''</samp></dt>
-<dt> <samp>`centos-art path 'path/to/dir/' --copy-to='path/to/dir/filename''</samp></dt>
-<dt> <samp>`centos-art path 'path/to/dir/' --move-to='path/to/dir''</samp></dt>
-<dt> <samp>`centos-art path 'path/to/dir/' --move-to='path/to/dir/filename''</samp></dt>
-<dt> <samp>`centos-art path 'path/to/dir/' --remove'</samp></dt>
-</dl>
-
-
-<a name="SEC156"></a>
-<h4 class="subsubsection"> 3.27.3.4 The <code>centos-art</code> <samp>`locale-art'</samp> action </h4>
-
-<p>This feature is not supported yet.
-</p>
-<dl compact="compact">
-<dt> <samp>`centos-art locale-art 'path/to/dir' --edit'</samp></dt>
-<dt> <samp>`centos-art locale-art 'path/to/dir' --edit='filename''</samp></dt>
-<dt> <samp>`centos-art locale-art 'path/to/dir' --list'</samp></dt>
-<dt> <samp>`centos-art locale-art 'path/to/dir' --list='filename''</samp></dt>
-</dl>
-
-
-<a name="SEC157"></a>
-<h4 class="subsubsection"> 3.27.3.5 The <code>centos-art</code> <samp>`license'</samp> action </h4>
-
-<p>This feature is supported through the following command:
-</p>
-<dl compact="compact">
-<dt> <samp>`centos-art license'</samp></dt>
-<dd><p>Use this command to see a brief description of <code>centos-art</code>
-command its copyright and its license notes.
+<p>Use this command to remove file documentation as specified in
+<samp>`path/to/dir/filename'</samp> combination.
 </p></dd>
 </dl>
 
 
-<a name="SEC158"></a>
+<a name="SEC151"></a>
 <h3 class="subsection"> 3.27.4 See also </h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_31.html#SEC159">3.28 trunk/Scripts/Bash/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_34.html#SEC176">3.31 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_46.html#SEC216">3.43 trunk/Scripts/Bash/Locale</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_29.html#SEC142">3.26 trunk/Scripts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC157" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_31.html#SEC159" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC150" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_31.html#SEC152" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC147" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC311" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>September, 23 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 1 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

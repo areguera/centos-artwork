@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on September, 23 2010 by texi2html 1.76 -->
+<!-- Created on October, 1 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.16 trunk/Identity/Themes/Motifs</title>
+<title>CentOS Artwork Repository: 3.16 trunk/Identity/Themes/Models/Default/Promo</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.16 trunk/Identity/Themes/Motifs">
-<meta name="keywords" content="CentOS Artwork Repository: 3.16 trunk/Identity/Themes/Motifs">
+<meta name="description" content="CentOS Artwork Repository: 3.16 trunk/Identity/Themes/Models/Default/Promo">
+<meta name="keywords" content="CentOS Artwork Repository: 3.16 trunk/Identity/Themes/Models/Default/Promo">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -61,130 +61,47 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC311" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC311" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Identity-Themes-Motifs"></a>
+<a name="trunk-Identity-Themes-Models-Default-Promo"></a>
 <a name="SEC92"></a>
-<h2 class="section"> 3.16 trunk/Identity/Themes/Motifs </h2>
+<h2 class="section"> 3.16 trunk/Identity/Themes/Models/Default/Promo </h2>
 
 
 <a name="SEC93"></a>
 <h3 class="subsection"> 3.16.1 Goals </h3>
 
-<p>The <tt>`trunk/Identity/Themes/Motifs'</tt> directory exists to:
-</p>
 <ul class="toc">
-<li> Organize CentOS themes' artistic motifs. 
+<li> ...
 </li></ul>
-
 
 
 <a name="SEC94"></a>
 <h3 class="subsection"> 3.16.2 Description </h3>
 
-<p>The artistic motif of theme is a graphic design component that
-provides theme's visual style, it is used as pattern to connect all
-visual manifestations inside one unique theme.
+<p>It applies to all tangible and non tangible items CentOS uses to
+promote its existence. Clothes, posters, installation media,
+stationery, release countdown images, banners, stickers, are all
+examples of promotion designs.
 </p>
-<p>Artistic motifs are based on conceptual ideas. Conceptual ideas bring
-the motivation, they are fuel for the engines of human imagination.
-Good conceptual ideas may produce good motivation to produce almost
-anything, and art works don't escape from it.
-</p>
-<dl compact="compact">
-<dt> <samp>`TreeFlower'</samp> </dt>
-<dd><p>CentOS like trees, has roots, trunk, branches, leaves and flowers. Day
-by day they work together in freedom, ruled by the laws of nature and
-open standards, to show the beauty of its existence.
-</p></dd>
-<dt> <samp>`Modern'</samp> </dt>
-<dd><p>Modern, squares and circles flowing up.
-</p></dd>
-</dl>
+<ul class="toc">
+<li> ...
+</li></ul>
 
-<p>If you have new conceptual ideas for CentOS, then you can say that you
-want to create a new artistic motif for CentOS. To create a new
-artistic motif you need to create a directory under
-<tt>`Identity/Themes/Motifs/'</tt> using a name coherent with your
-conceptual idea. That name will be your artistic motif's name. If
-possible, when creating new conceptual ideas for CentOS, think about
-what CentOS means for you, what does it makes you feel, take your
-time, think deep, and share; you can improve the idea as time goes on.
-</p>
-<p>Once you have defined a name for your theme, you need to create the
-motif structure of your theme. The motif structure is the basic
-direcotry structure you'll use to work your ideas. Here is where you
-organize your graphic design projects.
-</p>
-<p>To add a new motif structure to CentOS Artwork Repository, you need to
-use the <code>centos-art</code> command line in the
-<tt>`Identity/Themes/Motifs/'</tt> directory as described below:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">centos-art add --motif=ThemeName
-</pre></td></tr></table>
-<p>The previous command will create the motif's basic structure for you.
-The basic structure produced by <code>centos-art</code> command is
-illustrated in the following figure:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">trunk/Identity/Themes/Motifs/$ThemeName/
-|-- Backgrounds
-|   |-- Img
-|   `-- Tpl
-|-- Info
-|   |-- Img
-|   `-- Tpl
-|-- Palettes
-`-- Screenshots
-</pre></td></tr></table>
 
 <a name="SEC95"></a>
 <h3 class="subsection"> 3.16.3 Usage </h3>
 
-<p>When designing artistic motifs for CentOS, consider the following
-recommendations:
-</p>
 <ul class="toc">
-<li> Give a unique (case-sensitive) name to your Motif. This name is
-used as value wherever theme variable (<b>$THEME</b>) or translation marker
-(<b>=THEME=</b>) is.  Optionally, you can add a description about
-inspiration and concepts behind your work.
-
-</li><li> Use the location <tt>`trunk/Identity/Themes/Motifs/$THEME/'</tt> to
-store your work. If it doesn't exist create it. Note that this require
-you to have previous commit access in CentOS Artwork Repository.
-
-</li><li> The CentOS Project is using the blue color (<b>#204c8d</b>)
-as base for its corporate visual identity. Use the CentOS Project's
-base corporate color as much as possible in your artistic motif
-designs.
-
-</li><li> Try to make your design fit one of the theme models.
-
-</li><li> Feel free to make your art enterprise-level and beautiful.
-
-</li><li> Add the following information on your art work (both in a visible
-design area, and inside Inkscape's document metadata section wherever
-it be possible):
-
-<ul class="toc">
-<li> The name (or logo) of your artistic motif.
-
-</li><li> The copyright sentence: <b>Copyright (C) YEAR YOURNAME</b>
-
-</li><li> The license under which the work is released. All CentOS Art
-works are released under
-<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Share-Alike License 3.0</a>
-(<a href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>).
-
-</li></ul>
+<li> ...
 </li></ul>
 
 
@@ -199,11 +116,11 @@ works are released under
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC92" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_60.html#SEC301" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC311" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>September, 23 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 1 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
