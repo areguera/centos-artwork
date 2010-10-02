@@ -53,7 +53,16 @@ CentOS Artwork Repository
     3.7.4 See also
   3.8 trunk/Identity/Models/Tpl/Promo/Web
     3.8.1 Goals
-    3.8.2 Description
+    3.8.2 The CentOS web environment
+      3.8.2.1 Design model (without ads)
+      3.8.2.2 Design model (with ads)
+      3.8.2.3 Controlling visual style
+      3.8.2.4 Producing visual style
+      3.8.2.5 Development and release cycle
+      3.8.2.6 The [webenv-test] repository
+      3.8.2.7 The [webenv] repository
+      3.8.2.8 Priority configuration
+      3.8.2.9 Navigation
     3.8.3 Usage
     3.8.4 See also
   3.9 trunk/Identity/Release
@@ -872,12 +881,311 @@ Image-based files always end up having the `.png' extension.
 3.8.1 Goals
 -----------
 
-   * Provide SVG design models to CentOS web interface.
+Organize scalable vector graphics (svg) to help describe the CentOS web
+environment.
 
-3.8.2 Description
------------------
+3.8.2 The CentOS web environment
+--------------------------------
 
-   * ...
+Inside CentOS corporate identity, the CentOS web environment is
+considered a promotion component. The CentOS web environment is formed
+by a central web application --to cover base needs (e.g., per-major
+release information like release notes, lifetime, downloads,
+documentation, support, security advisories, bugs, etc.)-- and many
+different free web applications --to cover specific needs (e.g., wiki,
+mailing lists, etc.)--.
+
+   The CentOS web environment is addressed to solve the following
+issues:
+
+   * One unique name and one unique visual style to all web
+     applications used inside the web environment.
+
+   * One-step navigation to web applications inside the environment.
+
+   * High degree of customization to change the visual style of all web
+     applications with few changes (e.g, updating just two or three
+     images plus common style sheet [CSS] definitions).
+
+   The CentOS project is attached to a monolithic corporate visual
+identity (*note trunk Identity::), where all visual manifestations have
+one unique name and one unique visual style. This way, the CentOS web
+environment has one unique name (the CentOS brand) and one unique
+visual style (the CentOS default theme) for all its visual
+manifestations, the web applications in this case.
+
+   Since a maintainance point of view, achiving the one unique visual
+style inside CentOS web environment is not a simple task. The CentOS
+web environment is built upon many different web applications which
+have different visual styles and different internal ways to customize
+their own visual styles. For example: MoinMoin, the web application
+used to support the CentOS wiki (`http://wiki.centos.org/') is highly
+customizable but Mailman (in its 2.x.x serie), the web application used
+to support the CentOS mailing list, doesn't support(1) a customization
+system that separates presentation from logic, similar to MoinMoin's
+one.
+
+   This visual style diversity complicates our goal of one unique visual
+style for all web applications. So, if we want one unique visual style
+for all web applications used, it is innevitable to modify the web
+applications in order to implement the CentOS one unique visual style
+customization in them. Direct modification of upstream applications is
+not convenient because upstream applications come with their one visual
+style and administrators take the risk of loosing all customization
+changes the next time the application be updated (since not all
+upstream web applications, used in CentOS web environment, separate
+presentation from logic).
+
+   To solve the "one unique visual style" issue, installation and
+actualization of web applications --used inside CentOS web
+environment-- need to be independent from upstream web applications
+development line; in a way that CentOS web environment administrators
+can install and update web applications freely without risk of loosing
+the one unique visual style customization changes.
+
+   At the surface of this issue we can see the need of one specific yum
+repository to store CentOS web environment customized web applications.
+
+3.8.2.1 Design model (without ads)
+..................................
+
+3.8.2.2 Design model (with ads)
+...............................
+
+3.8.2.3 Controlling visual style
+................................
+
+Inside CentOS web environment, the visual style is controlled by the
+following compenents:
+
+*Webenv header background*
+
+     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-top.png
+
+*Webapp header background*
+
+     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-app.png
+
+*Webapp footer background*
+
+     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/footer-bg-app.png
+
+*CSS definitions*
+
+     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/CSS/stylesheet.css
+
+3.8.2.4 Producing visual style
+..............................
+
+The visual style of CentOS web environment is defined in the following
+files:
+
+
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Xcf/1024x250.xcf
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250-bg.png
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Tpl/1024x250.svg
+
+   As graphic designer you use `1024x250.xcf' file to produce
+`1024x250-bg.png' file. Later, inside `1024x250.svg' file, you use the
+`1024x250-bg.png' file as background layer to draw your vectorial
+design. When you consider you artwork ready, use the `centos-art.sh'
+script, as described below, to produce the visual style controller
+images of CentOS web environment.
+
+
+centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Promo/Web
+
+   The image files which control the visual style of CentOS web
+environment are stored in the location:
+
+
+trunk/Identity/Themes/Motifs/$THEME/Promo/Web
+
+   Once you have rendered required image files, changing the visual
+style of CentOS web environment is a matter of replacing old image files
+with new ones, inside webenv repository file system structure. The
+visual style changes will take effect the next time customization line
+of CentOS web applications be packaged, uploded, and installed from
+[webenv] or [webenv-test] repositories.
+
+3.8.2.5 Development and release cycle
+.....................................
+
+The CentOS web environment development and relase cycle is described
+below:
+
+*Download*
+     The first action is download the source code of web applications we
+     want to use inside CentOS web environment.
+
+          *Important* The source location from which web application are
+          downloaded is very important. Use SRPMs from CentOS *[base]*
+          and *[updates]* repositories as first choise, and third party
+          repositories (e.g. RPMForge, EPEL, etc.) as last resource.
+
+*Prepare*
+     Once web application source code has been downloaded, our duty is
+     organize its files inside `webenv' version controlled repository.
+
+     When preparing the structure keep in mind that different web
+     applications have different visual styles, and also different ways
+     to implement it. A convenient way to organize the file system
+     structure would be create one development line for each web
+     application we use inside CentOS web environment. For example,
+     consider the following file system structure:
+
+
+     https://projects.centos.org/svn/webenv/trunk/
+     |-- WebApp1/
+     |   |-- Sources/
+     |   |   `-- webapp1-0.0.1/
+     |   |-- Rpms/
+     |   |   `-- webapp1-0.0.1.rpm
+     |   |-- Srpms/
+     |   |   `-- webapp1-0.0.1.srpm
+     |   `-- Specs/
+     |       `-- webapp1-0.0.1.spec
+     |-- WebApp2/
+     `-- WebAppN/
+
+*Customize*
+     Once web applications have been organized inside the version
+     controlled repository file system, use subversion to create the
+     CentOS customization development line of web applications source
+     code.  For example, using the above file system structure, you can
+     create the customization development line of `webapp1-0.0.1/' with
+     the following command:
+
+
+     svn cp trunk/WebApp1/Sources/webapp1-0.0.1 trunk/WebApp1/Sources/webapp1-0.0.1-webenv
+
+     The command above creates the following structure:
+
+
+     https://projects.centos.org/svn/webenv/trunk/
+     |-- WebApp1/
+     |   |-- Sources/
+     |   |   |-- webapp1-0.0.1/
+     |   |   `-- webapp1-0.0.1-webenv/
+     |   |-- Rpms/
+     |   |   `-- webapp1-0.0.1.rpm
+     |   |-- Srpms/
+     |   |   `-- webapp1-0.0.1.srpm
+     |   `-- Specs/
+     |       `-- webapp1-0.0.1.spec
+     |-- WebApp2/
+     `-- WebAppN/
+
+     In the above structure, the `webapp1-0.0.1-webenv/' directory is
+     the place where you customize the visual style of `webapp1-0.0.1/'
+     web application.
+
+          *Tip* Use Subversion's `diff' between CentOS customization
+          and upstream development lines to know what you are changing
+          exactly.
+
+*Build packages*
+     When web application has been customized, build the web application
+     RPM and SRPM using the source location with `-webenv' prefix.
+
+
+     https://projects.centos.org/svn/webenv/trunk/
+     |-- WebApp1/
+     |   |-- Sources/
+     |   |   |-- webapp1-0.0.1/
+     |   |   `-- webapp1-0.0.1-webenv/
+     |   |-- Rpms/
+     |   |   |-- webapp1-0.0.1.rpm
+     |   |   `-- webapp1-0.0.1-webenv.rpm
+     |   |-- Srpms/
+     |   |   |-- webapp1-0.0.1.srpm
+     |   |   `-- webapp1-0.0.1-webenv.srpm
+     |   `-- Specs/
+     |       |-- webapp1-0.0.1.spec
+     |       `-- webapp1-0.0.1-webenv.spec
+     |-- WebApp2/
+     `-- WebAppN/
+
+*Release for testing*
+     When the customized web application has been packaged, make
+     packages available for testing and quality assurance. This can be
+     achives using a [webenv-test] yum repository.
+
+          *Note* The [webenv-test] repository is not shipped inside
+          CentOS distribution default yum configuraiton. In order to use
+          [webenv-test] repository you need to configure it first.
+
+     If some problem is found to install/update/use the customized
+     version of web application, the problem is notified somewhere (a
+     bugtracker maybe) and the customization face is repated in order
+     to fix the problem. To release the new package add a number after
+     `-webenv' prefix. For example, if some problem is found in
+     `webapp1-0.0.1-webenv.rpm', when it be fixed the new package will
+     be named `webapp1-0.0.1-webenv-1.rpm'. If a problem is found in
+     `webapp1-0.0.1-webenv-1.rpm', when it be fixed the new package
+     will be named `webapp1-0.0.1-webenv-2.rpm', and so on.
+
+     The "customization -- release for testing" process is repeated
+     until CentOS quality assurance team considers the package is ready
+     for production.
+
+*Release for production*
+     When customized web application packages are considered ready for
+     production they are moved from [webenv-test] to [webenv]
+     repository.  This action is commited by CentOS quality assurance
+     team.
+
+          *Note* The [webenv] repository is not shipped inside CentOS
+          distribution default yum configuraiton. In order to use
+          [webenv] repository you need to configure it first.
+
+3.8.2.6 The [webenv-test] repository
+....................................
+
+
+/etc/yum.repos.d/CentOS-Webenv-test.repo
+
+
+[webenv-test]
+name=CentOS-$releasever - Webenv-test
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=webenv-test
+#baseurl=http://mirror.centos.org/centos/$releasever/webenv-test/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
+enabled=1
+priority=10
+
+3.8.2.7 The [webenv] repository
+...............................
+
+
+/etc/yum.repos.d/CentOS-Webenv.repo
+
+
+[webenv]
+name=CentOS-$releasever - Webenv
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=webenv
+#baseurl=http://mirror.centos.org/centos/$releasever/webenv/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
+enabled=1
+priority=10
+
+3.8.2.8 Priority configuration
+..............................
+
+Both [webenv] and [webenv-test] repositories update packages inside
+CentOS [base] and CentOS [updates] repositories.
+
+3.8.2.9 Navigation
+..................
+
+Inside CentOS web environment, the one-step navegation between web
+applications is addressed using the web environment navigation bar.
+The web environment navigation bar contains links to main applications
+and is always visible no matter where you are inside the web
+environment.
 
 3.8.3 Usage
 -----------
@@ -886,6 +1194,11 @@ Image-based files always end up having the `.png' extension.
 
 3.8.4 See also
 --------------
+
+---------- Footnotes ----------
+
+   (1) Mailman's theme support may be introduced in mailman-3.x.x
+release.
 
 3.9 trunk/Identity/Release
 ==========================
@@ -3268,98 +3581,98 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  337)
-Common translation files:                      See 3.48.2.5. (line 2693)
-How to render brands' translation files:       See 3.50.3.   (line 2998)
-How to render fonts' translation files:        See 3.52.3.   (line 3075)
-How to render translation files:               See 3.48.3.   (line 2863)
-Specific translation files:                    See 3.48.2.6. (line 2718)
-tags:                                          See 2.        (line  340)
-Template translation files:                    See 3.48.2.4. (line 2523)
-Translation brands file names:                 See 3.50.2.1. (line 2955)
-Translation configuration scripts:             See 3.48.2.8. (line 2752)
-Translation entries:                           See 3.48.2.1. (line 2339)
-Translation files:                             See 3.48.2.3. (line 2455)
-Translation markers:                           See 3.48.2.2. (line 2420)
-Translation paths:                             See 3.48.2.1. (line 2339)
+branches:                                      See 1.        (line  346)
+Common translation files:                      See 3.48.2.5. (line 3006)
+How to render brands' translation files:       See 3.50.3.   (line 3311)
+How to render fonts' translation files:        See 3.52.3.   (line 3388)
+How to render translation files:               See 3.48.3.   (line 3176)
+Specific translation files:                    See 3.48.2.6. (line 3031)
+tags:                                          See 2.        (line  349)
+Template translation files:                    See 3.48.2.4. (line 2836)
+Translation brands file names:                 See 3.50.2.1. (line 3268)
+Translation configuration scripts:             See 3.48.2.8. (line 3065)
+Translation entries:                           See 3.48.2.1. (line 2652)
+Translation files:                             See 3.48.2.3. (line 2768)
+Translation markers:                           See 3.48.2.2. (line 2733)
+Translation paths:                             See 3.48.2.1. (line 2652)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 2752)
-Translation rendering:                         See 3.48.2.7. (line 2741)
-Translation rendering default functionality:   See 3.48.2.9. (line 2838)
-trunk:                                         See 3.        (line  343)
-trunk Identity:                                See 3.1.      (line  346)
-trunk Identity Brands:                         See 3.2.      (line  766)
-trunk Identity Fonts:                          See 3.3.      (line  783)
-trunk Identity Icons:                          See 3.4.      (line  800)
-trunk Identity Isolinux:                       See 3.5.      (line  817)
-trunk Identity Models:                         See 3.6.      (line  834)
-trunk Identity Models Img Promo Web:           See 3.7.      (line  851)
-trunk Identity Models Tpl Promo Web:           See 3.8.      (line  872)
-trunk Identity Release:                        See 3.9.      (line  893)
-trunk Identity Themes:                         See 3.10.     (line  910)
-trunk Identity Themes Models:                  See 3.11.     (line  935)
-trunk Identity Themes Models Alternative:      See 3.12.     (line  968)
-trunk Identity Themes Models Default:          See 3.13.     (line  995)
-trunk Identity Themes Models Default Distro:   See 3.14.     (line 1027)
+                                                             (line 3065)
+Translation rendering:                         See 3.48.2.7. (line 3054)
+Translation rendering default functionality:   See 3.48.2.9. (line 3151)
+trunk:                                         See 3.        (line  352)
+trunk Identity:                                See 3.1.      (line  355)
+trunk Identity Brands:                         See 3.2.      (line  775)
+trunk Identity Fonts:                          See 3.3.      (line  792)
+trunk Identity Icons:                          See 3.4.      (line  809)
+trunk Identity Isolinux:                       See 3.5.      (line  826)
+trunk Identity Models:                         See 3.6.      (line  843)
+trunk Identity Models Img Promo Web:           See 3.7.      (line  860)
+trunk Identity Models Tpl Promo Web:           See 3.8.      (line  881)
+trunk Identity Release:                        See 3.9.      (line 1206)
+trunk Identity Themes:                         See 3.10.     (line 1223)
+trunk Identity Themes Models:                  See 3.11.     (line 1248)
+trunk Identity Themes Models Alternative:      See 3.12.     (line 1281)
+trunk Identity Themes Models Default:          See 3.13.     (line 1308)
+trunk Identity Themes Models Default Distro:   See 3.14.     (line 1340)
 trunk Identity Themes Models Default Distro Anaconda:See 3.15.
-                                                             (line 1111)
-trunk Identity Themes Models Default Promo:    See 3.16.     (line 1128)
-trunk Identity Themes Models Default Web:      See 3.17.     (line 1154)
-trunk Identity Themes Motifs:                  See 3.18.     (line 1179)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.19.    (line 1283)
+                                                             (line 1424)
+trunk Identity Themes Models Default Promo:    See 3.16.     (line 1441)
+trunk Identity Themes Models Default Web:      See 3.17.     (line 1467)
+trunk Identity Themes Motifs:                  See 3.18.     (line 1492)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.19.    (line 1596)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.20.
-                                                             (line 1405)
+                                                             (line 1718)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.21.
-                                                             (line 1426)
+                                                             (line 1739)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.22.
-                                                             (line 1447)
+                                                             (line 1760)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.23.
-                                                             (line 1474)
-trunk Identity Themes Motifs Modern Palettes:  See 3.24.     (line 1530)
-trunk Identity Themes Motifs TreeFlower:       See 3.25.     (line 1552)
-trunk Identity Widgets:                        See 3.26.     (line 1569)
-trunk Manuals:                                 See 3.27.     (line 1586)
-trunk Scripts:                                 See 3.28.     (line 1640)
-trunk Scripts Bash:                            See 3.29.     (line 1664)
-trunk Scripts Bash Config:                     See 3.30.     (line 1830)
-trunk Scripts Bash Config Identity:            See 3.31.     (line 1944)
-trunk Scripts Bash Config Translations:        See 3.32.     (line 1965)
-trunk Scripts Bash Functions:                  See 3.33.     (line 1986)
-trunk Scripts Bash Functions Config:           See 3.34.     (line 2007)
+                                                             (line 1787)
+trunk Identity Themes Motifs Modern Palettes:  See 3.24.     (line 1843)
+trunk Identity Themes Motifs TreeFlower:       See 3.25.     (line 1865)
+trunk Identity Widgets:                        See 3.26.     (line 1882)
+trunk Manuals:                                 See 3.27.     (line 1899)
+trunk Scripts:                                 See 3.28.     (line 1953)
+trunk Scripts Bash:                            See 3.29.     (line 1977)
+trunk Scripts Bash Config:                     See 3.30.     (line 2143)
+trunk Scripts Bash Config Identity:            See 3.31.     (line 2257)
+trunk Scripts Bash Config Translations:        See 3.32.     (line 2278)
+trunk Scripts Bash Functions:                  See 3.33.     (line 2299)
+trunk Scripts Bash Functions Config:           See 3.34.     (line 2320)
 trunk Scripts Bash Functions Config cli_getActions.sh:See 3.36.
-                                                             (line 2020)
+                                                             (line 2333)
 trunk Scripts Bash Functions Config cli_getActionsIdentity.sh:See 3.35.
-                                                             (line 2013)
+                                                             (line 2326)
 trunk Scripts Bash Functions Config cli_getActionsTranslations.sh:See 3.37.
-                                                             (line 2026)
+                                                             (line 2339)
 trunk Scripts Bash Functions Config cli_getIdentityMatchinglist.sh:See 3.38.
-                                                             (line 2033)
+                                                             (line 2346)
 trunk Scripts Bash Functions Config repo_renderIdentitySyslinux.sh:See 3.39.
-                                                             (line 2042)
+                                                             (line 2355)
 trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh:See 3.40.
-                                                             (line 2063)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2084)
+                                                             (line 2376)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2397)
 trunk Scripts Bash Functions Render render_getActions.sh:See 3.43.
-                                                             (line 2126)
+                                                             (line 2439)
 trunk Scripts Bash Functions Render render_getActionsIdentity.sh:See 3.42.
-                                                             (line 2105)
+                                                             (line 2418)
 trunk Scripts Bash Functions Render render_getActionsTranslations.sh:See 3.44.
-                                                             (line 2147)
-trunk Scripts Bash Locale:                     See 3.45.     (line 2168)
-trunk Scripts Perl:                            See 3.46.     (line 2252)
-trunk Scripts Python:                          See 3.47.     (line 2269)
-trunk Translations:                            See 3.48.     (line 2290)
-trunk Translations Identity:                   See 3.49.     (line 2893)
-trunk Translations Identity Brands:            See 3.50.     (line 2914)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 3009)
-trunk Translations Identity Fonts:             See 3.52.     (line 3024)
-trunk Translations Identity Models:            See 3.53.     (line 3091)
-trunk Translations Identity Release:           See 3.54.     (line 3106)
-trunk Translations Identity Themes:            See 3.55.     (line 3121)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 3136)
+                                                             (line 2460)
+trunk Scripts Bash Locale:                     See 3.45.     (line 2481)
+trunk Scripts Perl:                            See 3.46.     (line 2565)
+trunk Scripts Python:                          See 3.47.     (line 2582)
+trunk Translations:                            See 3.48.     (line 2603)
+trunk Translations Identity:                   See 3.49.     (line 3206)
+trunk Translations Identity Brands:            See 3.50.     (line 3227)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 3322)
+trunk Translations Identity Fonts:             See 3.52.     (line 3337)
+trunk Translations Identity Models:            See 3.53.     (line 3404)
+trunk Translations Identity Release:           See 3.54.     (line 3419)
+trunk Translations Identity Themes:            See 3.55.     (line 3434)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 3449)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 3157)
-trunk Translations Identity Widgets:           See 3.58.     (line 3250)
+                                                             (line 3470)
+trunk Translations Identity Widgets:           See 3.58.     (line 3563)
 List of Figures
 ***************
 
