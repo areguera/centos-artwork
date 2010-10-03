@@ -8,13 +8,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="content-style-type" content="text/css" />
 	<meta http-equiv="content-language" content="en" />
-	<meta name="keywords" content="centos text visual style guide" />
-	<meta name="description" content="CentOS texts visual style guide." />
+	<meta name="keywords" content="centos link visual style guide" />
+	<meta name="description" content="CentOS links visual style guide." />
 	<meta name="copyright" content="2009 - The CentOS Project" />
 
-	<title>Texts - CentOS Web Visual Style Guide</title>
+	<title>Links - CentOS Web Visual Style Guide</title>
 
-	<link href="../Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link href="/home/centos/artwork/trunk/Identity/Models/Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -135,9 +135,9 @@
 	<div class="tabs2">
 		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
 		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
-		<span class="current"><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
+		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
 		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
-		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
+		<span class="current"><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
 		<span><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
@@ -172,14 +172,9 @@
 
 <div id="page-body">
 
-	<blockquote class="message blue">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
+	<h1>Links</h1>
 
-	<h1>Texts</h1>
-
-	<p>CentOS Texts Visual Style Guide.</p>
+	<p>CentOS Links Visual Style Guide.</p>
 
 	<h2>Recommendations</h2>
 
@@ -189,159 +184,28 @@
 
 	<h2>Examples</h2>
 
-	<h3>Phrase elements</h3>
+	<h3>Common Link Style</h3>
 
-	<dl>
-	<dt>EM</dt>
-	<dd><em>Indicates emphasis.</em></dd>
+	<p><a href="">This is a common text link style</a></p>
+	<p><a href="" class="nonexistent">This is a common nonexistant text link style</a></p>
 
-    	<dt>STRONG</dt>
-	<dd><strong>Indicates stronger emphasis.</strong></dd>
+	<h3>Image Link Style</h3>
 
-    	<dt>CITE</dt> 
-	<dd><cite>Contains a citation or a reference to other
-	sources.</cite></dd>
+	<p><a title="Image Link" href="../Img/jpg/header-bg.jpg"><img src="../Img/jpg/header-bg.jpg" alt="Header Background" /></a></p>
 
-    	<dt>DFN</dt>
-	<dd><dfn>Indicates that this is the defining instance of the
-	enclosed term.</dfn></dd>
+	<h3>Decorative Link Styles</h3>
 
-    	<dt>CODE</dt>
-	<dd><code>Designates a fragment of computer code.</code></dd>
+	<p><a class="www" href="http://www.centos.org/">http://www.centos.org/</a>. This is
+	the "www" and "http" link style. It is generally used to link
+	external sites.</p>
 
-    	<dt>SAMP</dt> 
-	<dd><samp>Designates sample output from programs, scripts,
-	etc.</samp></dd>
+	<p><a class="mailto" href="mailto:centos-devel@centos.org">centos-devel@centos.org</a>. This
+	is the "mailto" link style. It is generally used to
+	display email addresses.</p>
 
-    	<dt>KBD</dt>
-	<dd><kbd>Indicates text to be entered by the user.</kbd></dd>
-
-    	<dt>VAR</dt> 
-	<dd><var>Indicates an instance of a variable or program
-	argument.</var></dd>
-
-    	<dt>ABBR</dt>
-	<dd><abbr title="Abbrebiation">Indicates an abbreviated form (e.g., WWW, HTTP, URI,
-	Mass., etc.).</abbr></dd>
-
-    	<dt>ACRONYM</dt>
-	<dd><acronym title="Acronym">Indicates an acronym (e.g., WAC, radar,
-	etc.).</acronym></dd>
-
-	</dl>
-
-	<h3>Subscripts and superscripts</h3>
-
-	<dl>
-	
-		<dt>SUB</dt>
-		<dd>H<sub>2</sub>O</dd>
-
-		<dt>SUP</dt>
-		<dd>E = mc<sup>2</sup></dd>
-		<dd><span lang="fr">M<sup>lle</sup> Dupont</span></dd>
-	</dl>
-
-	<h3>Paragraphs</h3>
-
-	<p>Paragraph here. Paragraph here. Paragraph here. Paragraph here.
-	Paragraph here. Paragraph here. Paragraph here. Paragraph here.
-	Paragraph here.  Paragraph here. Paragraph here. Paragraph here.
-	Paragraph here.  Paragraph here.</p>
-
-	<p>Paragraph here. Paragraph here. Paragraph here. Paragraph here.
-	Paragraph here. Paragraph here. Paragraph here. Paragraph here.
-	Paragraph here.  Paragraph here. Paragraph here. Paragraph here.
-	Paragraph here.  Paragraph here.</p>
-
-	<h3>Preformatted text</h3>
-
-	<pre>This is a pre formatted element.</pre>
-
-	<pre>
-This is a pre formatted element (line 1).
-This is a pre formatted element (line 2).
-This is a pre formatted element (line 3).
-</pre>
-
-	<h3>Quotations</h3>
-
-	<h4>Simple quotations</h4>
-
-	<blockquote><p>This is the default blockquote style.</p></blockquote>
-	<blockquote class="blue"><p>This is the blue class blockquote style.</p></blockquote>
-	<blockquote class="red"><p>This is the red class blockquote style.</p></blockquote>
-	<blockquote class="green"><p>This is the green class blockquote style.</p></blockquote>
-	<blockquote class="violet"><p>This is the violet class blockquote style.</p></blockquote>
-	<blockquote class="orange"><p>This is the orange class blockquote style.</p></blockquote>
-
-	<h4>Simple quotations with image</h4>
-
-	<blockquote><p><img src="../Img/png/info.png" alt="Start" />This
-	is the mixed default blockquote style.</p></blockquote>
-
-	<blockquote class="blue"><p><img src="../Img/png/info.png"
-	alt="Information" />This is the mixed blue class blockquote
-	style</p></blockquote>
-
-	<blockquote class="red"><p><img src="../Img/png/info.png"
-	alt="Error" />This is the default mixed red class blockquote
-	style.</p></blockquote>
-
-	<blockquote class="green"><p><img src="../Img/png/info.png"
-	alt="Download" />This is the default mixed green class
-	blockquote style.</p></blockquote>
-
-	<blockquote class="violet"><p><img src="../Img/png/info.png"
-	alt="Subversion" />This is the default mixed violet class
-	blockquote style.</p></blockquote>
-
-	<blockquote class="orange"><p><img src="../Img/png/info.png"
-	alt="Alert" />This is the default mixed orange class
-	blockquote style.</p></blockquote>
-
-	<h4>Inline quotation</h4>
-
-	<p>The <q cite="http://www.centos.org/">Community Enterprise
-	Operating System</q> is a GNU/Linux Distribution based on the
-	freely available sources of a prominet Linux vendor.</p>
-
-	<p>John said, <q lang="en-us">I saw Lucy at lunch, she told me
-	<q lang="en-us">Mary wants you to get some ice cream on your
-	way home.</q> I think I will get some at Ben and Jerry’s, on
-	Gloucester Road.</q></p>
-
-	<h4>Administrative Message quotation</h4>
-
-	<blockquote class="message">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
-
-	<blockquote class="message blue">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
-
-	<blockquote class="message red">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
-
-	<blockquote class="message green">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
-
-	<blockquote class="message violet">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
-
-	<blockquote class="message orange">
-		<p class="content">Thank you for your changes. Your attention to detail is appreciated.</p>
-		<p class="links"><a href="">Clear message</a></p>
-	</blockquote>
+	<p><a class="attachment" href="../Img/header-bg.jpg">header-bg.jpg</a>. This is the
+	"attachment" link style. It is generally used to display
+	an attachment.</p>
 
 </div>
 
@@ -362,9 +226,9 @@ href="">FirstnameLastname</a>)</div>
 	<div class="tabs2">
 		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
 		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
-		<span class="current"><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
+		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
 		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
-		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
+		<span class="current"><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
 		<span><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>

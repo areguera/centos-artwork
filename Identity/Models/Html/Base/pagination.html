@@ -8,13 +8,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="content-style-type" content="text/css" />
 	<meta http-equiv="content-language" content="en" />
-	<meta name="keywords" content="centos lists visual style guide" />
-	<meta name="description" content="CentOS lists visual style guide." />
+	<meta name="keywords" content="centos pagination visual style guide" />
+	<meta name="description" content="CentOS pagination visual style guide." />
 	<meta name="copyright" content="2009 - The CentOS Project" />
 
-	<title>Lists - CentOS Web Visual Style Guide</title>
+	<title>Pagination - CentOS Web Visual Style Guide</title>
 
-	<link href="../Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link href="/home/centos/artwork/trunk/Identity/Models/Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -136,11 +136,11 @@
 		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
 		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
-		<span class="current"><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
+		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
 		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
-		<span><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
+		<span class="current"><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
 	</div>
 
 	<div class="page-line blue"><hr style="display:none;" /></div>
@@ -172,9 +172,9 @@
 
 <div id="page-body">
 
-	<h1>Lists</h1>
+	<h1>Pagination</h1>
 
-	<p>CentOS Lists Visual Style Guide.</p>
+	<p>CentOS Pagination Visual Style Guide.</p>
 
 	<h2>Recommendations</h2>
 
@@ -184,94 +184,92 @@
 
 	<h2>Examples</h2>
 
-	<h3>Unordered Lists</h3>
+	<h3>Simple pagination</h3>
 
-	<ul>
-		<li><a href="" class="www">Link</a></li>
-		<li><a href="" class="mailto">Link</a>
-			<ul>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			</ul>
-		</li>
-		<li><a href="" class="mailto">Link</a>
-			<ol>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			</ol>
-		</li>
-		<li><a href="" class="mailto">Link</a></li>
-		<li><p><a href="" class="mailto">Link</a> inside a paragraph</p></li>
-	</ul>
+	<div class="tabs3">
+		<span><a href=""><span>1</span></a></span>
+		<span><a href=""><span>2</span></a></span>
+		<span class="current"><a href=""><span>3</span></a></span>
+		<span><a href=""><span>4</span></a></span>
+		<span><a href=""><span>5</span></a></span>
+		<span><a href=""><span>6</span></a></span>
+		<span><a href=""><span>7</span></a></span>
+		<span><a href=""><span>8</span></a></span>
+		<span><a href=""><span>9</span></a></span>
+		<span><a href=""><span>10</span></a></span>
+	</div>
 
-	<h3>Ordered Lists</h3>
+	<div class="actions">
+	<form action="" method="post" title="Filter">
+		<p>
+		<input type="text" value="" size="20" />
+		<select name="field">
+			<option value="name">Name</option>
+			<option value="description">Description</option>
+			<option value="date">Date</option>
+		</select>
+		<input type="submit" value="Filter" />
+		<input type="hidden" value="filter" name="f-action" />
+		</p>
+	</form>
+		<p class="results last">401-500 of 51948 matches found.</p>
+	</div>
 
-	<ol>
-		<li><a href="" class="www">Link</a></li>
-		<li><a href="" class="mailto">Link</a>
-			<ul>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			</ul>
-		</li>
-		<li><a href="" class="mailto">Link</a>
-			<ol>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			<li><a href="" class="www">Link</a></li>
-			</ol>
-		</li>
-		<li><a href="" class="mailto">Link</a></li>
-		<li><p><a href="" class="mailto">Link</a> inside a paragraph</p></li>
-	</ol>
+	<div class="actions">
+	<form action="" method="post" title="Filter">
+		<p> 
+		<input type="text" value="" size="20" /> 
+		<select name="field">
+			<option value="name">Name</option>
+			<option value="description">Description</option>
+			<option value="date">Date</option>
+		</select>
+		<input type="submit" value="Filter" />
+		<input type="hidden" value="filter" name="f-action" />
+		</p>
+	</form>
+		<p class="results last">No match found.</p>
+	</div> 
 
-	<h3>Definition Lists</h3>
+	<h3>Administrative pagination</h3>
 
-	<dl>
-		<dt>WWW</dt>
-		<dd>World Wide Web</dd>
+	<div class="tabs3">
+		<span><a href=""><span>1</span></a></span>
+		<span><a href=""><span>2</span></a></span>
+		<span class="current"><a href=""><span>3</span></a></span>
+		<span><a href=""><span>4</span></a></span>
+		<span><a href=""><span>5</span></a></span>
+		<span><a href=""><span>6</span></a></span>
+		<span><a href=""><span>7</span></a></span>
+		<span><a href=""><span>8</span></a></span>
+		<span><a href=""><span>9</span></a></span>
+		<span><a href=""><span>10</span></a></span>
+	</div>
 
-		<dt>CentOS</dt>
-		<dd>Community Enterprise Operating System</dd>
-	</dl>
-
-	<h3>Nested Lists</h3>
-
-	<p>Lists may also be nested and different list types may be
-	used together, as in the following example, which is a
-	definition list that contains an unordered list (the
-	ingredients) and an ordered list (the procedure):</p>
-
-	<dl>
-		<dt>The ingredients</dt>
-		<dd>
-		<ul>
-			<li>100 g. flour</li>
-			<li>10 g. sugar</li>
-			<li>1 cup water</li>
-			<li>2 eggs</li>
-			<li>salt, pepper</li>
-		</ul>
-		</dd>
-
-		<dt>The procedure</dt>
-		<dd>
-		<ol>
-		   <li>Mix dry ingredients thoroughly.</li>
-		   <li>Pour in wet ingredients.</li>
-		   <li>Mix for 10 minutes.</li>
-		   <li>Bake for one hour at 300 degrees.</li>
-		</ol>
-		</dd>
-
-	</dl>
+	<div class="actions">
+	<form action="" method="post" title="Filter">
+		<p>
+		<input type="text" value="" size="20" /> 
+		<select name="field">
+			<option value="name">Name</option>
+			<option value="description">Description</option>
+			<option value="date">Date</option>
+		</select>
+		<input type="submit" value="Filter" />
+		<input type="hidden" value="filter" name="f-action" />
+		</p>
+	</form>
+	<form action="" method="post" title="Administrative Actions">
+		<p class="last">
+		<select name="action">
+			<option value="edit">Update</option>
+			<option value="remove">Remove</option>
+		</select>
+		<input type="submit" value="Apply" />
+		<input type="hidden" value="admin" name="f-action" />
+		</p>
+	</form>
+	</div>
 
 </div>
 
@@ -293,11 +291,11 @@ href="">FirstnameLastname</a>)</div>
 		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
 		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
-		<span class="current"><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
+		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
 		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
-		<span><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
+		<span class="current"><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
 	</div>
 
 	<div class="page-line"><hr style="display:none;" /></div>

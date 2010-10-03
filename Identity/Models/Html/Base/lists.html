@@ -8,13 +8,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="content-style-type" content="text/css" />
 	<meta http-equiv="content-language" content="en" />
-	<meta name="keywords" content="centos introduction visual style guide" />
-	<meta name="description" content="CentOS visual style guide introduction." />
+	<meta name="keywords" content="centos lists visual style guide" />
+	<meta name="description" content="CentOS lists visual style guide." />
 	<meta name="copyright" content="2009 - The CentOS Project" />
 
-	<title>Introduction - CentOS Web Visual Style Guide</title>
+	<title>Lists - CentOS Web Visual Style Guide</title>
 
-	<link href="../Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link href="/home/centos/artwork/trunk/Identity/Models/Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -133,10 +133,10 @@
 	<div class="page-line"><hr style="display:none;" /></div>
 
 	<div class="tabs2">
-		<span class="current"><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
+		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
 		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
-		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
+		<span class="current"><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
 		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
@@ -172,147 +172,106 @@
 
 <div id="page-body">
 
-	<h1>Welcome to the CentOS Web Visual Style Guide</h1>
+	<h1>Lists</h1>
 
-	<p>The CentOS Web Visual Style Guide is a tool.</p>
+	<p>CentOS Lists Visual Style Guide.</p>
 
-	<p>This tool is part of CentOS "Corporate Visual Identity Manual"
-	proposition, which is based on a monolithic corporate visual
-	identity structure. In a monolithic corporate visual identity
-	structure, organization has one name and one visual style in
-	all its manifestations (Olins (1989).</p>
-
-	<p>CentOS web manifestation (anything involving HTML standards)
-	should be considered here. (Ex. Portals, Wikis, Forums, Blogs,
-	Bug Tracker).</p>
-
-	<p>People customizing CentOS Web Environment can use this guide
-	as reference each time they need to solve a visual
-	customization problem. If the solution to a particular problem
-	don't exist in this guide, please add your problem here, and
-	the possible solutions you've found. If you haven't found a
-	solution, add your problem anyway, surely someone will find a
-	solution for it.</p>
-
-	<p>With this guide we are trying to unify as much CSS definitions
-	as possible, creating a common CSS definition for all web
-	applications we use and specific CSS definitions in those
-	cases where it is absolutely needed. Specific CSS definitions
-	will extend CentOS common CSS definitions.</p>
-
-	<p style="text-align: center"><img src="../Img/png/wvs-schema-3.png" alt="wvs-schema-3.png" /></p>
-	
-	<h2>Our Goals</h2>
+	<h2>Recommendations</h2>
 
 	<ul>
-
-	 <li>Creating a common visual presentation along the web
-	 applications we use.</li>
-
-	 <li>Creating an environment where applications'
-	 source code can be updated without breaking the common visual
-	 presentation.</li>
-
-	 <li>...</li>
-
+		<li>...</li>
 	</ul>
 
-	<h2>Members</h2>
+	<h2>Examples</h2>
+
+	<h3>Unordered Lists</h3>
 
 	<ul>
-		<li>Alain Reguera Delgado</li>
-		<li>Marcus Moeller</li>
-		<li>Ralph Angenendt ( CentOS team representative )</li>
+		<li><a href="" class="www">Link</a></li>
+		<li><a href="" class="mailto">Link</a>
+			<ul>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			</ul>
+		</li>
+		<li><a href="" class="mailto">Link</a>
+			<ol>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			</ol>
+		</li>
+		<li><a href="" class="mailto">Link</a></li>
+		<li><p><a href="" class="mailto">Link</a> inside a paragraph</p></li>
 	</ul>
 
-	<h2>Working Lines</h2>
-
-	<p>The following sections try to land our goals in more
-	specific tasks:</p>
-
-	<h3>1. HTML Structures</h3>
-
-	<p>Defines HTML structures used to display content:</p>
-
-	<ul>
-		
-		<li><a
-		href="http://wiki.centos.org/WebsiteVer2/WebEnvironment/VisualStyle/Default"
-		class="www">Default:</a>
-		This is the simpliest HTML structure and can be used
-		as starting point when building new structures.</li>
-
-		<li><a href="" class="nonexistent">Two
-		Columns:</a> This is a two columns
-		structure based on default structure.</li>
-
-	</ul>	
-
-	<h3>2. CSS Definition</h3>
-
-	<p>This section defines CentOS Web visual style. CentOS web
-	visual style takes place in a set of CSS definitions. They are
-	organized in the following order:</p>
-
-	 <pre>
-Main definitions (<a href="../css/stylesheet.css">stylesheet.css</a>):
-  `-- Import Base CSS definitions (<a href="../css/common.css">common.css</a>, <a
-href="../css/print.css">print.css</a>) 
-  `-- Import Misscellaneous CSS definitions (<a href="../css/tabs.css">tabs.css</a>, containers.css, ...)</pre>
-
-	<p>Web applications needing common CSS definitions will link
-	common CSS definitions in the following order:</p>
-
-	<pre>&lt;link href="stylesheet.css" rel="stylesheet" type="text/css" /&gt;</pre>
-
-	<p>Web applications needing both common and specific CSS definitions will link
-	CSS definitions in the following order:</p>
-
-	<pre>&lt;link href="stylesheet.css" rel="stylesheet" type="text/css" /&gt;
-&lt;link href="specific.css" rel="stylesheet" type="text/css" /&gt;</pre>
-
-	<p>Specific web applications' CSS definition
-	(<tt>specific.css</tt>) will extend CentOS common CSS
-	definitions (<tt>stylesheet.css</tt>) and care will be taken
-	to avoid overlapping CentOS common CSS definitions in specific
-	CSS definitions.</p>
-
-	<h3>3. Web Development</h3>
-
-	<p>Specific CentOS Web functionalities that need to be built.</p>
-
-	<ul>
-		<li><a href="" class="nonexistent">LDAP User
-		Management</a>: Web application used to
-		administer the CentOS LDAP user's database.</li>
-	</ul>
-
-	<h2>Coding Style</h2>
-
-	<ol> 
-		<li><a href="" class="nonexistent">HTML Coding
-		Style</a>: Useful when you are writing HTML 
-		files for CentOS.</li>
-	
-		<li><a href="" class="nonexistent">CSS Coding
-		Style</a>: Useful when you are writing CSS
-		files for CentOS.</li>
-
-		<li><a href="" class="nonexistent">PHP Coding
-		Style</a>: Useful when you are writing PHP
-		applications for CentOS.</li>
-	
-	</ol>
-
-	<h2>Documentation</h2>
+	<h3>Ordered Lists</h3>
 
 	<ol>
-		<li><a class="www" href="http://www.w3.org/TR/html401">HTML 4.01 Specification</a></li>
-		<li><a class="www" href="http://www.w3.org/TR/CSS21">Cascading Style Sheets Level 2 Revision 1 (CSS2.1) Specification</a></li>
-		<li><a class="www" href="http://www.w3.org/TR/xhtml1">XHTML™ 1.0
-		The Extensible HyperText Markup Language (Second
-		Edition)</a></li>
+		<li><a href="" class="www">Link</a></li>
+		<li><a href="" class="mailto">Link</a>
+			<ul>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			</ul>
+		</li>
+		<li><a href="" class="mailto">Link</a>
+			<ol>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			<li><a href="" class="www">Link</a></li>
+			</ol>
+		</li>
+		<li><a href="" class="mailto">Link</a></li>
+		<li><p><a href="" class="mailto">Link</a> inside a paragraph</p></li>
 	</ol>
+
+	<h3>Definition Lists</h3>
+
+	<dl>
+		<dt>WWW</dt>
+		<dd>World Wide Web</dd>
+
+		<dt>CentOS</dt>
+		<dd>Community Enterprise Operating System</dd>
+	</dl>
+
+	<h3>Nested Lists</h3>
+
+	<p>Lists may also be nested and different list types may be
+	used together, as in the following example, which is a
+	definition list that contains an unordered list (the
+	ingredients) and an ordered list (the procedure):</p>
+
+	<dl>
+		<dt>The ingredients</dt>
+		<dd>
+		<ul>
+			<li>100 g. flour</li>
+			<li>10 g. sugar</li>
+			<li>1 cup water</li>
+			<li>2 eggs</li>
+			<li>salt, pepper</li>
+		</ul>
+		</dd>
+
+		<dt>The procedure</dt>
+		<dd>
+		<ol>
+		   <li>Mix dry ingredients thoroughly.</li>
+		   <li>Pour in wet ingredients.</li>
+		   <li>Mix for 10 minutes.</li>
+		   <li>Bake for one hour at 300 degrees.</li>
+		</ol>
+		</dd>
+
+	</dl>
 
 </div>
 
@@ -331,10 +290,10 @@ href="">FirstnameLastname</a>)</div>
 	<div class="page-line blue"><hr style="display:none;" /></div>
 
 	<div class="tabs2">
-		<span class="current"><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
+		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
 		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
-		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
+		<span class="current"><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
 		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>

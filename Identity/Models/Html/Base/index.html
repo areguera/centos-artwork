@@ -8,13 +8,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="content-style-type" content="text/css" />
 	<meta http-equiv="content-language" content="en" />
-	<meta name="keywords" content="centos heading visual style guide" />
-	<meta name="description" content="CentOS headings visual style guide." />
+	<meta name="keywords" content="centos introduction visual style guide" />
+	<meta name="description" content="CentOS visual style guide introduction." />
 	<meta name="copyright" content="2009 - The CentOS Project" />
 
-	<title>Headings - CentOS Web Visual Style Guide</title>
+	<title>Introduction - CentOS Web Visual Style Guide</title>
 
-	<link href="../Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link href="/home/centos/artwork/trunk/Identity/Models/Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -133,8 +133,8 @@
 	<div class="page-line"><hr style="display:none;" /></div>
 
 	<div class="tabs2">
-		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
-		<span class="current"><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
+		<span class="current"><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
+		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
 		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
 		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
@@ -172,59 +172,147 @@
 
 <div id="page-body">
 
-	<h1>Headings</h1>
+	<h1>Welcome to the CentOS Web Visual Style Guide</h1>
 
-	<p>CentOS Headings Visual Style Guide.</p>
+	<p>The CentOS Web Visual Style Guide is a tool.</p>
 
-	<h2>Recommendations</h2>
+	<p>This tool is part of CentOS "Corporate Visual Identity Manual"
+	proposition, which is based on a monolithic corporate visual
+	identity structure. In a monolithic corporate visual identity
+	structure, organization has one name and one visual style in
+	all its manifestations (Olins (1989).</p>
+
+	<p>CentOS web manifestation (anything involving HTML standards)
+	should be considered here. (Ex. Portals, Wikis, Forums, Blogs,
+	Bug Tracker).</p>
+
+	<p>People customizing CentOS Web Environment can use this guide
+	as reference each time they need to solve a visual
+	customization problem. If the solution to a particular problem
+	don't exist in this guide, please add your problem here, and
+	the possible solutions you've found. If you haven't found a
+	solution, add your problem anyway, surely someone will find a
+	solution for it.</p>
+
+	<p>With this guide we are trying to unify as much CSS definitions
+	as possible, creating a common CSS definition for all web
+	applications we use and specific CSS definitions in those
+	cases where it is absolutely needed. Specific CSS definitions
+	will extend CentOS common CSS definitions.</p>
+
+	<p style="text-align: center"><img src="../Img/png/wvs-schema-3.png" alt="wvs-schema-3.png" /></p>
+	
+	<h2>Our Goals</h2>
 
 	<ul>
 
-		<li>Defining headings' HTML structure both as anchor
-		and link. This may help to make references to specific
-		topics.</li>
+	 <li>Creating a common visual presentation along the web
+	 applications we use.</li>
 
-		<li>Using an automatically generated number for
-		heading's anchor name. To avoid duplications we could
-		take the heading string and determine its md5 number
-		and use that number as anchor name.  See examples
-		below.</li>
+	 <li>Creating an environment where applications'
+	 source code can be updated without breaking the common visual
+	 presentation.</li>
 
-		<li>...</li>
+	 <li>...</li>
 
 	</ul>
 
-	<h2>Example</h2>
+	<h2>Members</h2>
 
-	<h1><a
-	name="head-5871b1272673f7cf89bcaf48972c848a"
-	href="#head-5871b1272673f7cf89bcaf48972c848a">Heading Level 1</a></h1>
-	<pre>&lt;h1&gt;&lt;a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a"&gt;Heading Level 1&lt;/a&gt;&lt;/h1&gt;</pre>
+	<ul>
+		<li>Alain Reguera Delgado</li>
+		<li>Marcus Moeller</li>
+		<li>Ralph Angenendt ( CentOS team representative )</li>
+	</ul>
 
-	<h2><a name="head-d33a28a4193cffb949f506cfdf770f05"
-	href="#head-d33a28a4193cffb949f506cfdf770f05">Heading Level 2</a></h2>
+	<h2>Working Lines</h2>
 
-	<pre>&lt;h2&gt;&lt;a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05"&gt;Heading Level 2&lt;/a&gt;&lt;/h2&gt;</pre>
+	<p>The following sections try to land our goals in more
+	specific tasks:</p>
 
-	<h3><a name="head-82dd23c665d8ee437a980459c8b80d7a"
-	href="#head-82dd23c665d8ee437a980459c8b80d7a">Heading Level 3</a></h3>
+	<h3>1. HTML Structures</h3>
 
-	<pre>&lt;h3&gt;&lt;a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a"&gt;Heading Level 3&lt;/a&gt;&lt;/h3&gt;</pre>
+	<p>Defines HTML structures used to display content:</p>
 
-	<h4><a name="head-157dc030ea314f4b53a6ed238113a3f8"
-	href="#head-157dc030ea314f4b53a6ed238113a3f8">Heading Level 4</a></h4>
+	<ul>
+		
+		<li><a
+		href="http://wiki.centos.org/WebsiteVer2/WebEnvironment/VisualStyle/Default"
+		class="www">Default:</a>
+		This is the simpliest HTML structure and can be used
+		as starting point when building new structures.</li>
 
-	<pre>&lt;h4&gt;&lt;a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8"&gt;Heading Level 4&lt;/a&gt;&lt;/h4&gt;</pre>
+		<li><a href="" class="nonexistent">Two
+		Columns:</a> This is a two columns
+		structure based on default structure.</li>
 
-	<h5><a name="head-33628cc07bcbefc4e4732407b8680bf6"
-	href="#head-33628cc07bcbefc4e4732407b8680bf6">Heading Level 5</a></h5>
+	</ul>	
 
-	<pre>&lt;h5&gt;&lt;a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6"&gt;Heading Level 5&lt;/a&gt;&lt;/h5&gt;</pre>
+	<h3>2. CSS Definition</h3>
 
-	<h6><a name="head-93b42a4a61a0b05a81aff6224555603c"
-	href="#head-93b42a4a61a0b05a81aff6224555603c">Heading Level 6</a></h6>
+	<p>This section defines CentOS Web visual style. CentOS web
+	visual style takes place in a set of CSS definitions. They are
+	organized in the following order:</p>
 
-	<pre>&lt;h6&gt;&lt;a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c"&gt;Heading Level 5&lt;/a&gt;&lt;/h6&gt;</pre>
+	 <pre>
+Main definitions (<a href="../css/stylesheet.css">stylesheet.css</a>):
+  `-- Import Base CSS definitions (<a href="../css/common.css">common.css</a>, <a
+href="../css/print.css">print.css</a>) 
+  `-- Import Misscellaneous CSS definitions (<a href="../css/tabs.css">tabs.css</a>, containers.css, ...)</pre>
+
+	<p>Web applications needing common CSS definitions will link
+	common CSS definitions in the following order:</p>
+
+	<pre>&lt;link href="stylesheet.css" rel="stylesheet" type="text/css" /&gt;</pre>
+
+	<p>Web applications needing both common and specific CSS definitions will link
+	CSS definitions in the following order:</p>
+
+	<pre>&lt;link href="stylesheet.css" rel="stylesheet" type="text/css" /&gt;
+&lt;link href="specific.css" rel="stylesheet" type="text/css" /&gt;</pre>
+
+	<p>Specific web applications' CSS definition
+	(<tt>specific.css</tt>) will extend CentOS common CSS
+	definitions (<tt>stylesheet.css</tt>) and care will be taken
+	to avoid overlapping CentOS common CSS definitions in specific
+	CSS definitions.</p>
+
+	<h3>3. Web Development</h3>
+
+	<p>Specific CentOS Web functionalities that need to be built.</p>
+
+	<ul>
+		<li><a href="" class="nonexistent">LDAP User
+		Management</a>: Web application used to
+		administer the CentOS LDAP user's database.</li>
+	</ul>
+
+	<h2>Coding Style</h2>
+
+	<ol> 
+		<li><a href="" class="nonexistent">HTML Coding
+		Style</a>: Useful when you are writing HTML 
+		files for CentOS.</li>
+	
+		<li><a href="" class="nonexistent">CSS Coding
+		Style</a>: Useful when you are writing CSS
+		files for CentOS.</li>
+
+		<li><a href="" class="nonexistent">PHP Coding
+		Style</a>: Useful when you are writing PHP
+		applications for CentOS.</li>
+	
+	</ol>
+
+	<h2>Documentation</h2>
+
+	<ol>
+		<li><a class="www" href="http://www.w3.org/TR/html401">HTML 4.01 Specification</a></li>
+		<li><a class="www" href="http://www.w3.org/TR/CSS21">Cascading Style Sheets Level 2 Revision 1 (CSS2.1) Specification</a></li>
+		<li><a class="www" href="http://www.w3.org/TR/xhtml1">XHTML™ 1.0
+		The Extensible HyperText Markup Language (Second
+		Edition)</a></li>
+	</ol>
 
 </div>
 
@@ -243,8 +331,8 @@ href="">FirstnameLastname</a>)</div>
 	<div class="page-line blue"><hr style="display:none;" /></div>
 
 	<div class="tabs2">
-		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
-		<span class="current"><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
+		<span class="current"><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
+		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
 		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
 		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>

@@ -8,13 +8,13 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="content-style-type" content="text/css" />
 	<meta http-equiv="content-language" content="en" />
-	<meta name="keywords" content="centos link visual style guide" />
-	<meta name="description" content="CentOS links visual style guide." />
+	<meta name="keywords" content="centos heading visual style guide" />
+	<meta name="description" content="CentOS headings visual style guide." />
 	<meta name="copyright" content="2009 - The CentOS Project" />
 
-	<title>Links - CentOS Web Visual Style Guide</title>
+	<title>Headings - CentOS Web Visual Style Guide</title>
 
-	<link href="../Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link href="/home/centos/artwork/trunk/Identity/Models/Css/Default/stylesheet.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -134,10 +134,10 @@
 
 	<div class="tabs2">
 		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
-		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
+		<span class="current"><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
 		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
-		<span class="current"><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
+		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
 		<span><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
@@ -172,40 +172,59 @@
 
 <div id="page-body">
 
-	<h1>Links</h1>
+	<h1>Headings</h1>
 
-	<p>CentOS Links Visual Style Guide.</p>
+	<p>CentOS Headings Visual Style Guide.</p>
 
 	<h2>Recommendations</h2>
 
 	<ul>
+
+		<li>Defining headings' HTML structure both as anchor
+		and link. This may help to make references to specific
+		topics.</li>
+
+		<li>Using an automatically generated number for
+		heading's anchor name. To avoid duplications we could
+		take the heading string and determine its md5 number
+		and use that number as anchor name.  See examples
+		below.</li>
+
 		<li>...</li>
+
 	</ul>
 
-	<h2>Examples</h2>
+	<h2>Example</h2>
 
-	<h3>Common Link Style</h3>
+	<h1><a
+	name="head-5871b1272673f7cf89bcaf48972c848a"
+	href="#head-5871b1272673f7cf89bcaf48972c848a">Heading Level 1</a></h1>
+	<pre>&lt;h1&gt;&lt;a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a"&gt;Heading Level 1&lt;/a&gt;&lt;/h1&gt;</pre>
 
-	<p><a href="">This is a common text link style</a></p>
-	<p><a href="" class="nonexistent">This is a common nonexistant text link style</a></p>
+	<h2><a name="head-d33a28a4193cffb949f506cfdf770f05"
+	href="#head-d33a28a4193cffb949f506cfdf770f05">Heading Level 2</a></h2>
 
-	<h3>Image Link Style</h3>
+	<pre>&lt;h2&gt;&lt;a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05"&gt;Heading Level 2&lt;/a&gt;&lt;/h2&gt;</pre>
 
-	<p><a title="Image Link" href="../Img/jpg/header-bg.jpg"><img src="../Img/jpg/header-bg.jpg" alt="Header Background" /></a></p>
+	<h3><a name="head-82dd23c665d8ee437a980459c8b80d7a"
+	href="#head-82dd23c665d8ee437a980459c8b80d7a">Heading Level 3</a></h3>
 
-	<h3>Decorative Link Styles</h3>
+	<pre>&lt;h3&gt;&lt;a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a"&gt;Heading Level 3&lt;/a&gt;&lt;/h3&gt;</pre>
 
-	<p><a class="www" href="http://www.centos.org/">http://www.centos.org/</a>. This is
-	the "www" and "http" link style. It is generally used to link
-	external sites.</p>
+	<h4><a name="head-157dc030ea314f4b53a6ed238113a3f8"
+	href="#head-157dc030ea314f4b53a6ed238113a3f8">Heading Level 4</a></h4>
 
-	<p><a class="mailto" href="mailto:centos-devel@centos.org">centos-devel@centos.org</a>. This
-	is the "mailto" link style. It is generally used to
-	display email addresses.</p>
+	<pre>&lt;h4&gt;&lt;a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8"&gt;Heading Level 4&lt;/a&gt;&lt;/h4&gt;</pre>
 
-	<p><a class="attachment" href="../Img/header-bg.jpg">header-bg.jpg</a>. This is the
-	"attachment" link style. It is generally used to display
-	an attachment.</p>
+	<h5><a name="head-33628cc07bcbefc4e4732407b8680bf6"
+	href="#head-33628cc07bcbefc4e4732407b8680bf6">Heading Level 5</a></h5>
+
+	<pre>&lt;h5&gt;&lt;a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6"&gt;Heading Level 5&lt;/a&gt;&lt;/h5&gt;</pre>
+
+	<h6><a name="head-93b42a4a61a0b05a81aff6224555603c"
+	href="#head-93b42a4a61a0b05a81aff6224555603c">Heading Level 6</a></h6>
+
+	<pre>&lt;h6&gt;&lt;a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c"&gt;Heading Level 5&lt;/a&gt;&lt;/h6&gt;</pre>
 
 </div>
 
@@ -225,10 +244,10 @@ href="">FirstnameLastname</a>)</div>
 
 	<div class="tabs2">
 		<span><a title="Welcome to the web special interest group" href="index.html"><span>Welcome</span></a></span>
-		<span><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
+		<span class="current"><a title="CentOS headings visual style guide." href="headings.html"><span>Headings</span></a></span>
 		<span><a title="CentOS texts visual style guide." href="texts.html"><span>Texts</span></a></span>
 		<span><a title="CentOS lists visual style guide." href="lists.html"><span>Lists</span></a></span>
-		<span class="current"><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
+		<span><a title="CentOS links visual style guide." href="links.html"><span>Links</span></a></span>
 		<span><a title="CentOS tables visual style guide." href="tables.html"><span>Tables</span></a></span>
 		<span><a title="CentOS forms visual style guide." href="forms.html"><span>Forms</span></a></span>
 		<span><a title="CentOS pagination visual style guide." href="pagination.html"><span>Pagination</span></a></span>
