@@ -24,7 +24,7 @@
 
 html {
         background-color: #FFF;
-        background-image: url(/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/html-bg.png);
+        background-image: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/html-bg.png);
         }
 
 /* Define body
@@ -45,12 +45,12 @@ body {
 -----------------------------------------------*/
 
 div#page-header {
-	background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/jpg/header-bg.jpg");
+	background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/1024x250.jpg") 0 100%;
 	min-height: 85px;
 	}
 
 div#page-footer {
-	background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/jpg/footer-bg.jpg") 0 100%;
+	background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/1024x250.jpg") 0 100%;
 	min-height: 85px;
 	}
 
@@ -156,31 +156,31 @@ div#page-body a.nonexistent:hover { color: gray; }
 
 div#page-body a.www:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.http:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.https:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.mailto:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/email.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/email.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.attachment:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/attach.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/attach.png); 
     margin: 0 0.2em; 
     }
 
@@ -238,7 +238,7 @@ div#page-body h1 {
         padding-left: 0.7em;
         color: #FFF;
         border: none;
-        background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/h1-bg.png");
+        background: #204C8D url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h1-bg.png");
         }
 
 div#page-body h2 {
@@ -247,7 +247,7 @@ div#page-body h2 {
         margin-top: 1.6em;
         margin-bottom: 0.8em;
         padding-left: 0.7em;
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/h2-bg.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h2-bg.png");
         border: none;
         color: #072B61;
         }
@@ -310,7 +310,7 @@ div#page-body p {
 
 div#page-body blockquote {
         background-color: #ECECEC;
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/msg-bg-gray.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-gray.png");
         border-width: 1px;
         border-style: solid;
         border-color: #CFCFCF;
@@ -343,7 +343,7 @@ div#page-body blockquote.message p.links {
 	}
 
 div#page-body blockquote.blue {
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/msg-bg-blue.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-blue.png");
 	border-color: #D2E0F6; 
 	background-color: #ECF4FF;
 	}
@@ -351,25 +351,25 @@ div#page-body blockquote.blue {
 div#page-body blockquote.orange {
         border-color: #F6E7D2; 
         background-color: #FFF8EC;
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/msg-bg-orange.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-orange.png");
 	}
 
 div#page-body blockquote.violet {
         border-color: #F6D2F6; 
         background-color: #FFECFF;
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/msg-bg-violet.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-violet.png");
 	}	
 
 div#page-body blockquote.red {
         border-color: #E0B7B7;
         background-color: #FFECEC;
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/msg-bg-red.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-red.png");
 	}
 
 div#page-body blockquote.green {
         border-color: #D6F6D2;
         background-color: #EEFFEC;
-        background-image: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/msg-bg-green.png");
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-green.png");
 	}
 
 div#page-body blockquote img {
@@ -452,7 +452,8 @@ div#page-body ol {
         }
 
 div#page-body ul { 
-        list-style: url("/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Img/png/ul.png") circle; 
+        list-style:
+        url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ul.png") circle; 
         } 
 
 div#page-body ol {
