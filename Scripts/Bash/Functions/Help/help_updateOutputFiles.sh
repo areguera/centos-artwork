@@ -79,16 +79,17 @@ function help_updateOutputFiles {
     # @image{renderImage,,,,png}).
     texi2html ${MANUALS_FILE[1]} --output=${MANUALS_DIR[4]} --split section \
         --nosec-nav \
-        --css-include=/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Texi2html/stylesheet.css \
+        --css-include=/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
         --I=/home/centos/artwork/trunk/Identity/Fonts/Img \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Corporate \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Distro
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts/png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Corporate/png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Distro/png/
 
     # Apply html transformations.
     sed -r -i \
-        -f /home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Texi2html/transformations.sed \
+        -f /home/centos/artwork/trunk/Identity/Models/Css/Texi2html/transformations.sed \
         ${MANUALS_DIR[4]}/*.html
 
     # Remove html output directory from directory stack.
