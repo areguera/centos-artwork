@@ -1,0 +1,440 @@
+/* CSS
+ *
+ * Webenv/webenv.css -- This file provides CentOS customization to 
+ *
+ */
+
+/* Main Blocks
+-----------------------------------------------*/
+
+div#page-header {
+	background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/1360x250.jpg") 0 0;
+	min-height: 46px;
+	}
+
+div#page-footer {
+	background: #204C8D url("/home/centos/artwork/trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/1360x250.jpg") 0 100%;
+    padding: 10px;
+	}
+
+div#page-footer div.top img {
+    border:none;
+    float:right;
+    }
+
+div#page-header div.links,
+div#page-footer div.credits {
+    font-size: x-small;
+    color: #FFF;
+    }
+
+div#page-footer div.credits a {
+    color: #FFF;
+    font-style: italic;
+    }
+
+div#wrap {
+	padding: 0 10px 0 10px;
+    background-color: #FFF;
+	}
+
+div#page-header,
+div#wrap,
+div#page-body,
+div#page-footer {
+    min-width: 650px;
+    }
+
+div#page-body {
+	clear: both;
+    background-color: #ECF4FF;
+	}
+
+div#page-body-left {
+    border-right: 3px #729FCF solid;
+    margin-right: 180px;
+    padding: 20px;
+    background-color: #FFF;
+}
+
+div#page-body-right {
+    width: 180px;
+    float:right;
+    font-size: small;
+}
+
+/* Logo
+-----------------------------------------------*/
+
+div#page-header div#logo img {
+	border: none;
+	float: left;
+    margin: 5px;
+	}
+
+/* Links 
+-----------------------------------------------*/
+
+/* Base */
+
+a:link  { text-decoration: none; color: #0044B3; }
+a:hover { text-decoration: underline; color: green; }
+a:active { text-decoration: underline; color: green; }
+a:visited { text-decoration: none; color: #0044B3; }
+a:visited:hover { text-decoration: underline; color: green; }
+
+/* Broken or nonexistent links */
+
+div#page-body a.nonexistent, 
+div#page-body a.nonexistent:hover { color: gray; }
+
+/* Special decoration for some links' classes */
+
+div#page-body a.www:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.http:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.https:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.mailto:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/email.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.attachment:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/attach.png); 
+    margin: 0 0.2em; 
+    }
+
+/* */
+
+div#page-header div.links {
+    margin-right: 10px;
+    margin-top: 10px;
+    }
+
+div#page-header div.links div.user,
+div#page-header div.links div.trail {
+	display: block;
+	margin: 5px;
+	font-size: x-small;
+	text-align: right;
+	color: #fff;
+	}
+
+div#page-body-left div.trail a {
+    font-size: small;
+    }
+
+div#page-header div.links div.user a,
+div#page-header div.links div.trail a {
+	color: #FFF;
+    margin-right: 5px;
+	}
+
+div#page-header div.links div.user span {
+	border-right: 1px dotted #FFF;
+    padding-right: 3px;
+	}
+
+div#page-header div.links div.user span,
+div#page-header div.links div.trail span {
+	display: inline;
+    margin-left: 5px;
+	}
+
+div#page-header div.links div.user span.last,
+div#page-header div.links div.trail span.last {
+	border-right: none;
+	padding-right: 0;
+	}
+
+div#page-header div.links div.user span.last a,
+div#page-header div.links div.trail span.last a {
+	margin-right: 0;
+	}
+
+div#page-header div.links div.trail span:after,
+div#page-body-left div.trail span:after {
+	content: " » ";
+	}
+
+div#page-header div.links div.trail span.last:after,
+div#page-body-left div.trail span.last:after {
+	content: none;
+	}
+
+/* Headings
+-----------------------------------------------*/
+
+div#page-body h1 {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1.9em;
+        margin-top: 0.9em;
+        margin-bottom: 0.9em;
+        padding-left: 0.7em;
+        color: #FFF;
+        border: none;
+        background: #204C8D url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h1-bg.png");
+        }
+
+div#page-body h2 {
+        font-size: 1.4em;
+        line-height: 1.8em;
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        padding-left: 0.7em;
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h2-bg.png");
+        border: none;
+        color: #072B61;
+        }
+
+div#page-body h3 {
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #DADADA;
+        }
+
+div#page-body h4 {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        border-bottom: none;
+        }
+
+div#page-body h5 {
+        font-size: 1.1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+div#page-body h6 {
+        font-size: 1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+div#page-body h1 a:link  { text-decoration: none; color: #FFF }
+div#page-body h1 a:hover { text-decoration: none; color: #FFF; }
+div#page-body h1 a:active { text-decoration: underline; color: #FFF; }
+div#page-body h1 a:visited { text-decoration: none; color: #FFF; }
+div#page-body h1 a:visited:hover { text-decoration: none; color: #FFF; }
+
+div#page-body h2 a:link, div#page-body h2 a:visited, div#page-body h2 a:hover, 
+div#page-body h2 a:active, div#page-body h2 a:visited:hover, 
+div#page-body h3 a:link, div#page-body h3 a:visited, div#page-body h3 a:hover,
+div#page-body h3 a:active, div#page-body h3 a:visited:hover, 
+div#page-body h4 a:link, div#page-body h4 a:visited, div#page-body h4 a:hover,
+div#page-body h4 a:active, div#page-body h4 a:visited:hover, 
+div#page-body h5 a:link, div#page-body h5 a:visited, div#page-body h5 a:hover,
+div#page-body h5 a:active, div#page-body h5 a:visited:hover, 
+div#page-body h6 a:link, div#page-body h6 a:visited, div#page-body h6 a:hover,
+div#page-body h6 a:active, div#page-body h6 a:visited:hover {
+	color: #072B61; 
+	text-decoration: none;
+}
+
+/* Paragraphs
+-----------------------------------------------*/
+
+div#page-body p {
+	margin: 1em;
+	margin-left: 1.5em;
+	line-height: 1.5em;
+	}
+
+/* Quotations
+-----------------------------------------------*/
+
+div#page-body blockquote {
+        background-color: #ECECEC;
+        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-gray.png");
+        border-width: 1px;
+        border-style: solid;
+        border-color: #CFCFCF;
+        border-left-width: 4px;
+	margin: 1em;
+	}
+
+div#page-body blockquote p {
+	margin: 1em;
+	}
+
+div#page-body blockquote.message {
+	border: none;
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+	margin-left: 15%;
+	margin-right: 15%;
+        border-color: #CFCFCF;
+	padding: 0 2em;
+	}
+
+div#page-body blockquote.message p.content {
+	font-weight: bold;
+	margin-left: 0;
+	}
+
+div#page-body blockquote.message p.links {
+	font-size: x-small;	
+	margin-left: 0;
+	}
+
+div#page-body blockquote.blue {
+    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-blue.png");
+	border-color: #D2E0F6; 
+	background-color: #ECF4FF;
+	}
+
+div#page-body blockquote.orange {
+    border-color: #F6E7D2; 
+    background-color: #FFF8EC;
+    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-orange.png");
+	}
+
+div#page-body blockquote.violet {
+    border-color: #F6D2F6; 
+    background-color: #FFECFF;
+    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-violet.png");
+	}	
+
+div#page-body blockquote.red {
+    border-color: #E0B7B7;
+    background-color: #FFECEC;
+    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-red.png");
+	}
+
+div#page-body blockquote.green {
+    border-color: #D6F6D2;
+    background-color: #EEFFEC;
+    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-green.png");
+	}
+
+div#page-body blockquote img {
+	vertical-align: middle;
+	margin-right: 20px;
+	}
+
+div#page-body q:before {
+	content: " “";
+	}
+
+div#page-body q:after {
+	content: "” ";
+	}
+
+div#page-body q q:before {
+	content: " ‘";
+	}
+
+div#page-body q q:after {
+	content: "’ ";
+	}
+
+div#page-body address {
+	margin-left: 1.5em;
+	}
+
+/* Preformatted Texts
+-----------------------------------------------*/
+
+div#page-body pre {
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+        padding: 0.5em 1em;
+        margin: 0.5em 0 0.5em 1.5em;
+        white-space: pre;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #E5E5E5;
+        border-left-width: 4px;
+        white-space: pre;
+        background: #FFFAE9;
+        overflow: auto;
+        }
+
+/* Phrase Elements
+-----------------------------------------------*/
+
+div#page-body tt,
+div#page-body samp,
+div#page-body kbd,
+div#page-body code {
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	}
+
+/* Page Lines
+-----------------------------------------------*/
+
+div.page-line {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	}
+
+div.page-line.white {
+	height: 1px;
+	background-color: #FFF;
+	}
+
+/* Lists
+-----------------------------------------------*/
+
+div#page-body ul { 
+    list-style: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ul.png") circle; 
+    } 
+
+div#page-body-right ul {
+    padding: 1em;
+    margin: 0;
+    list-style: none;
+    border-top: 1px #FFF solid;
+}
+
+div#page-body-right ul.first {
+    border-top: none;
+    }
+
+div#page-body-right ul li {
+    padding: 0.3em;
+    }
+
+div#page-body-right ul li.current {
+    font-weight: bold;
+    }
+
+

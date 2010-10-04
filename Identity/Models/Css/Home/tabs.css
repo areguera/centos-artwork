@@ -1,0 +1,75 @@
+/* CentOS Cascading Style Sheet
+ * -----------------------------------------------
+ * File		: tabs.css
+ * Category	: root / common / miscellaneous
+ * Theme	: Modern
+ * Description	: CSS definitions used to build the CentOS common
+ *  		  visual style for tabs.
+ * -----------------------------------------------
+ * Author	: CentOS Artwork SIG
+ * License	: GPL (http://www.fsf.org/licensing/licenses/gpl.txt)
+ * -----------------------------------------------
+ */
+
+
+/* Tabs (Style 2): Two Rounded Borders
+-----------------------------------------------*/
+
+div#page-header div.tabs1 {
+	margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 21px;
+    float:right;
+	}
+
+div#page-header div.tabs1 a {
+	color: #FFF;
+	float: left;
+	font-weight: bold;
+	margin-right: 3px;
+	padding: 0px 8px 0 0px;
+	text-decoration: none;
+	}
+
+div#page-header div.tabs1 span.current a,
+div#page-header div.tabs1 span.current a:hover, 
+div#page-header div.tabs1 span.current a span,
+div#page-header div.tabs1 span.current a:hover span {
+	color: #204A87;
+	text-decoration: none;
+	}
+
+div#page-header div.tabs1 a span,
+div#page-footer div.tabs1 a span {
+	float: left;
+	padding: 5px 0px 3px 8px;
+	}
+
+/* */
+
+div#page-header div.tabs1 a {
+	background: none;
+	}
+
+div#page-header div.tabs1 a span {
+	background: none;
+	}
+
+div#page-header div.tabs1 span.current a,
+div#page-header div.tabs1 span.current a:hover {
+	background: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/tabs3-bg.png") 100% -50px no-repeat;
+	}
+
+div#page-header div.tabs1 span.current a span,
+div#page-header div.tabs1 span.current a:hover span {
+	background: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/tabs4-bg.png") 0 -50px no-repeat;
+	}
+
+div#page-header div.tabs1 span:hover a {
+	background: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/tabs3-bg.png") 100% 0 no-repeat;
+	}
+
+div#page-header div.tabs1 span:hover a span {
+	background: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/tabs4-bg.png") 0 0;
+	}
+
