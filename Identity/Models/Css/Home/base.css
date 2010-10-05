@@ -81,20 +81,11 @@ body {
 /* Links 
 -----------------------------------------------*/
 
-/* Base */
-
 a:link  { text-decoration: none; color: #0044B3; }
 a:hover { text-decoration: underline; color: green; }
 a:active { text-decoration: underline; color: green; }
 a:visited { text-decoration: none; color: #0044B3; }
 a:visited:hover { text-decoration: underline; color: green; }
-
-/* Broken or nonexistent links */
-
-a.nonexistent, 
-a.nonexistent:hover { color: gray; }
-
-/* Special decoration for some links' classes */
 
 /* Headings
 -----------------------------------------------*/
@@ -180,72 +171,23 @@ blockquote {
     margin-bottom: 1em;
     }
 
-blockquote p {
-    padding-left: 2.5em;
-    }
-
 blockquote h3 {
     margin-left: 2.5em;
     line-height: 0;
     border: none;
     color: #000000;
-}
+    }
 
 blockquote pre {
     border: none;
     background-color: #000000;
     color: #FFFFFF;
     margin: 0;
-    margin-left: 4em;
+    margin-left: 1.5em;
     }
 
 blockquote img {
     float: left;
-    }
-
-blockquote.message {
-    border: none;
-    border-top: 4px solid;
-    border-bottom: 4px solid;
-    margin-left: 15%;
-    margin-right: 15%;
-    border-color: #CFCFCF;
-    padding: 0 2em;
-    }
-
-blockquote.message p.content {
-    font-weight: bold;
-    margin-left: 0;
-    }
-
-blockquote.message p.links {
-    font-size: x-small;	
-    margin-left: 0;
-    }
-
-blockquote.blue {
-    border-color: #D2E0F6; 
-    background-color: #ECF4FF;
-    }
-
-blockquote.orange {
-    border-color: #F6E7D2; 
-    background-color: #FFF8EC;
-    }
-
-blockquote.violet {
-    border-color: #F6D2F6; 
-    background-color: #FFECFF;
-    }	
-
-blockquote.red {
-    border-color: #E0B7B7;
-    background-color: #FFECEC;
-    }
-
-blockquote.green {
-    border-color: #D6F6D2;
-    background-color: #EEFFEC;
     }
 
 q:before {
@@ -280,7 +222,6 @@ pre {
     border-style: solid;
     border-color: #E5E5E5;
     border-left-width: 4px;
-    white-space: pre;
     background: #FFFAE9;
     overflow: auto;
     }
@@ -387,7 +328,7 @@ table.menu {
     margin:0;
     margin-left: 3.5em;
     padding:0;
-}
+    }
 
 table caption {
     font-style: italic;
@@ -409,7 +350,8 @@ table tr th {
     padding-left: 0.5em;
     }
 
-table tr td p {
+table tr td p,
+table tr td pre {
     margin: 0;
     padding: 0;
     }
@@ -424,55 +366,26 @@ form {
 input[type="submit"], 
 input[type="button"] {
     padding: 1px;
-    }
-
-input[type="submit"],
-input[type="button"],
-input[type="button"],
-input[type="submit"] {
-    font-size: 0.8em;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #628ECA;
-    background-color: #204a87;
-    color: #FFF;
-    cursor: pointer;
     display: inline;
     text-decoration: none;
     }
 
 input[type="text"],
+input[type="password"],
 textarea {
-    font-size: 0.8em;
     display: inline;
     padding: 2px;
-    padding-left: 4px;
-    border: 1px solid #628ECA;
-    background-color: #EFF5FE;
-    color: #204a87;
     }
 
 select {
-    font-size: 0.8em;
     display: inline;
     padding: 1px;
-    border: 1px solid #628ECA;
-    background-color: #EFF5FE;
-    color: #204a87;
     }
 
 form p {
     display: inline;
     margin-left: 5px;
     margin-right: 5px;
-    }
-
-textarea {
-    padding: 2px;
-    }
-
-input[type="text"] {
-    padding: 1px;
     }
 
 /* Select
@@ -510,3 +423,4 @@ fieldset legend {
     font-weight: bold;
     color: #AAA;
     }
+

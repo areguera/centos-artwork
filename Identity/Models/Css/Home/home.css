@@ -24,7 +24,7 @@ div#page-footer div.top img {
 
 div#page-header div.links,
 div#page-footer div.credits {
-    font-size: x-small;
+    font-size: small;
     color: #FFF;
     }
 
@@ -47,21 +47,22 @@ div#page-footer {
 
 div#page-body {
 	clear: both;
-    background-color: #ECF4FF;
+    background-color: #F8F8F8;
 	}
 
-div#page-body-left {
-    border-right: 3px #729FCF solid;
+div#page-body div#left {
     margin-right: 180px;
     padding: 20px;
+    border-right: 3px #EEE solid;
     background-color: #FFF;
-}
+    }
 
-div#page-body-right {
-    width: 180px;
+div#page-body div#right {
     float:right;
+    width: 180px;
     font-size: small;
-}
+    border-left: 3px #EEE solid;
+    }
 
 /* Logo
 -----------------------------------------------*/
@@ -74,14 +75,6 @@ div#page-header div#logo img {
 
 /* Links 
 -----------------------------------------------*/
-
-/* Base */
-
-a:link  { text-decoration: none; color: #0044B3; }
-a:hover { text-decoration: underline; color: green; }
-a:active { text-decoration: underline; color: green; }
-a:visited { text-decoration: none; color: #0044B3; }
-a:visited:hover { text-decoration: underline; color: green; }
 
 /* Broken or nonexistent links */
 
@@ -131,12 +124,11 @@ div#page-header div.links div.user,
 div#page-header div.links div.trail {
 	display: block;
 	margin: 5px;
-	font-size: x-small;
 	text-align: right;
 	color: #fff;
 	}
 
-div#page-body-left div.trail a {
+div#page-body div#left div.trail a {
     font-size: small;
     }
 
@@ -169,12 +161,12 @@ div#page-header div.links div.trail span.last a {
 	}
 
 div#page-header div.links div.trail span:after,
-div#page-body-left div.trail span:after {
+div#page-body div#left div.trail span:after {
 	content: " » ";
 	}
 
 div#page-header div.links div.trail span.last:after,
-div#page-body-left div.trail span.last:after {
+div#page-body div#left div.trail span.last:after {
 	content: none;
 	}
 
@@ -277,30 +269,78 @@ div#page-body p {
 	line-height: 1.5em;
 	}
 
+/* Page Lines
+-----------------------------------------------*/
+
+div.page-line {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	}
+
+div.page-line.white {
+	height: 3px;
+	background-color: #FFF;
+	}
+
+/* Lists
+-----------------------------------------------*/
+
+div#page-body ul { 
+    list-style: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ul.png") circle; 
+    } 
+
+div#page-body div#right ul {
+    padding: 1em;
+    margin: 0;
+    list-style: none;
+    border-top: 1px #EEE solid;
+}
+
+div#page-body div#right ul.first {
+    border-top: none;
+    }
+
+div#page-body div#right ul li {
+    padding: 2px;
+    }
+
+div#page-body div#right ul li.current {
+    font-weight: bold;
+    }
+
 /* Quotations
 -----------------------------------------------*/
 
 div#page-body blockquote {
-        background-color: #ECECEC;
-        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-gray.png");
-        border-width: 1px;
-        border-style: solid;
-        border-color: #CFCFCF;
-        border-left-width: 4px;
-	margin: 1em;
+    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-gray.png");
 	}
 
-div#page-body blockquote p {
-	margin: 1em;
-	}
+div#page-body blockquote h3 {
+    line-height: 0;
+    border: none;
+    color: #000000;
+    padding: 0;
+    margin-left: 1.2em;
+    }
+
+div#page-body blockquote.icon h3 {
+    margin-left: 3.2em;
+    }
+
+div#page-body blockquote.icon hr, 
+div#page-body blockquote.icon pre, 
+div#page-body blockquote.icon table, 
+div#page-body blockquote.icon p {
+	margin-left: 4em;
+    }
 
 div#page-body blockquote.message {
 	border: none;
 	border-top: 4px solid;
 	border-bottom: 4px solid;
-	margin-left: 15%;
-	margin-right: 15%;
-        border-color: #CFCFCF;
+    border-color: #CFCFCF;
 	padding: 0 2em;
 	}
 
@@ -343,98 +383,4 @@ div#page-body blockquote.green {
     background-color: #EEFFEC;
     background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-green.png");
 	}
-
-div#page-body blockquote img {
-	vertical-align: middle;
-	margin-right: 20px;
-	}
-
-div#page-body q:before {
-	content: " “";
-	}
-
-div#page-body q:after {
-	content: "” ";
-	}
-
-div#page-body q q:before {
-	content: " ‘";
-	}
-
-div#page-body q q:after {
-	content: "’ ";
-	}
-
-div#page-body address {
-	margin-left: 1.5em;
-	}
-
-/* Preformatted Texts
------------------------------------------------*/
-
-div#page-body pre {
-        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
-        padding: 0.5em 1em;
-        margin: 0.5em 0 0.5em 1.5em;
-        white-space: pre;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #E5E5E5;
-        border-left-width: 4px;
-        white-space: pre;
-        background: #FFFAE9;
-        overflow: auto;
-        }
-
-/* Phrase Elements
------------------------------------------------*/
-
-div#page-body tt,
-div#page-body samp,
-div#page-body kbd,
-div#page-body code {
-        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
-	}
-
-/* Page Lines
------------------------------------------------*/
-
-div.page-line {
-	clear: both;
-	margin: 0;
-	padding: 0;
-	background-color: transparent;
-	}
-
-div.page-line.white {
-	height: 1px;
-	background-color: #FFF;
-	}
-
-/* Lists
------------------------------------------------*/
-
-div#page-body ul { 
-    list-style: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ul.png") circle; 
-    } 
-
-div#page-body-right ul {
-    padding: 1em;
-    margin: 0;
-    list-style: none;
-    border-top: 1px #FFF solid;
-}
-
-div#page-body-right ul.first {
-    border-top: none;
-    }
-
-div#page-body-right ul li {
-    padding: 0.3em;
-    }
-
-div#page-body-right ul li.current {
-    font-weight: bold;
-    }
-
 
