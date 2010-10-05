@@ -53,5 +53,6 @@ function render_loadConfig {
     icon-admonition-idea.svg:       icon-admonition-idea.sed
     icon-admonition-doc-old.svg:      icon-admonition-doc-old.sed
     icon-admonition-doc-redirect.svg: icon-admonition-doc-redirect.sed
+    icon-admonition-success.svg: icon-admonition-success.sed
     "
 }
