@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 2 2010 by texi2html 1.76 -->
+<!-- Created on October, 3 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -34,7 +34,7 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 <!--
-@import "/home/centos/artwork/trunk/Identity/Themes/Motifs/Modern/Web/Css/Texi2html/common.css";
+@import "/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/common.css";
 
 a.summary-letter {text-decoration: none}
 pre.display {font-family: serif}
@@ -61,14 +61,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC320" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC321" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC320" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC321" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Identity-Models-Tpl-Promo-Web"></a>
@@ -151,7 +151,7 @@ repository to store CentOS web environment customized web applications.
 <h4 class="subsubsection"> 3.8.2.1 Design model (without ads) </h4>
 
 <div class="float"><a name="fig_003aturnk_002fIdentity_002fModels_002fTpl_002fPromo_002fWeb_002fcustomization"></a>
-<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/customization.png" alt="The CentOS web customization design model">
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/png//customization.png" alt="The CentOS web customization design model">
 
 </p></div><p><strong>Figure 3.1: The CentOS web customization design model.
 </strong>
@@ -161,39 +161,41 @@ repository to store CentOS web environment customized web applications.
 <h4 class="subsubsection"> 3.8.2.2 Design model (with ads) </h4>
 
 <div class="float"><a name="fig_003aturnk_002fIdentity_002fModels_002fTpl_002fPromo_002fWeb_002fcustomization_002dwith_002dads"></a>
-<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/customization-with-ads.png" alt="The CentOS web customization design model using promotion">
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/png//customization-with-ads.png" alt="The CentOS web customization design model using promotion">
 
 </p></div><p><strong>Figure 3.2: The CentOS web customization using promotion design model.
 </strong>
 </p>
 
 <a name="SEC55"></a>
-<h4 class="subsubsection"> 3.8.2.3 Controlling visual style </h4>
+<h4 class="subsubsection"> 3.8.2.3 HTML definitions </h4>
+
+<div class="float"><a name="fig_003aturnk_002fIdentity_002fModels_002fTpl_002fPromo_002fWeb_002fwebenv_002dhtml_002ddefs"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/png//webenv-html-defs.png" alt="Web environment html defintions">
+
+</p></div><p><strong>Figure 3.3: Web environment html definitions
+</strong>
+</p>
+
+<a name="SEC56"></a>
+<h4 class="subsubsection"> 3.8.2.4 Controlling visual style </h4>
 
 <p>Inside CentOS web environment, the visual style is controlled by the
 following compenents:
 </p>
 <dl compact="compact">
 <dt> <strong>Webenv header background</strong></dt>
-<dd><pre class="verbatim">trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-top.png
-</pre>
-</dd>
-<dt> <strong>Webapp header background</strong></dt>
-<dd><pre class="verbatim">trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-app.png
-</pre>
-</dd>
-<dt> <strong>Webapp footer background</strong></dt>
-<dd><pre class="verbatim">trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/footer-bg-app.png
+<dd><pre class="verbatim">trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
 </pre>
 </dd>
 <dt> <strong>CSS definitions</strong></dt>
-<dd><pre class="verbatim">trunk/Identity/Themes/Motifs/$THEME/Promo/Web/CSS/stylesheet.css
+<dd><pre class="verbatim">trunk/Identity/Themes/Models/Default/Promo/Web/CSS/stylesheet.css
 </pre></dd>
 </dl>
 
 
-<a name="SEC56"></a>
-<h4 class="subsubsection"> 3.8.2.4 Producing visual style </h4>
+<a name="SEC57"></a>
+<h4 class="subsubsection"> 3.8.2.5 Producing visual style </h4>
 
 <p>The visual style of CentOS web environment is defined in the following
 files:
@@ -210,12 +212,7 @@ your vectorial design. When you consider you artwork ready, use the
 <code>centos-art.sh</code> script, as described below, to produce the
 visual style controller images of CentOS web environment.
 </p>
-<pre class="verbatim">centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Promo/Web
-</pre>
-<p>The image files which control the visual style of CentOS web
-environment are stored in the location:
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/$THEME/Promo/Web
+<pre class="verbatim">centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Backgrounds --filter='1024x250'
 </pre>
 <p>Once you have rendered required image files, changing the visual style
 of CentOS web environment is a matter of replacing old image files
@@ -225,8 +222,24 @@ of CentOS web applications be packaged, uploded, and installed from
 [webenv] or [webenv-test] repositories.
 </p>
 
-<a name="SEC57"></a>
-<h4 class="subsubsection"> 3.8.2.5 Development and release cycle </h4>
+<a name="SEC58"></a>
+<h4 class="subsubsection"> 3.8.2.6 Navigation </h4>
+
+<p>Inside CentOS web environment, the one-step navegation between web
+applications is addressed using the web environment navigation bar.
+The web environment navigation bar contains links to main applications
+and is always visible no matter where you are inside the web
+environment.
+</p>
+<div class="float"><a name="fig_003aturnk_002fIdentity_002fModels_002fTpl_002fPromo_002fWeb_002fnavigation"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/png//navigation.png" alt="The CentOS web navigation design model">
+
+</p></div><p><strong>Figure 3.4: The CentOS web navigation design model.
+</strong>
+</p>
+
+<a name="SEC59"></a>
+<h4 class="subsubsection"> 3.8.2.7 Development and release cycle </h4>
 
 <p>The CentOS web environment development and relase cycle is described
 below: 
@@ -370,8 +383,8 @@ repository you need to configure it first.
 </dl>
 
 
-<a name="SEC58"></a>
-<h4 class="subsubsection"> 3.8.2.6 The [webenv-test] repository </h4>
+<a name="SEC60"></a>
+<h4 class="subsubsection"> 3.8.2.8 The [webenv-test] repository </h4>
 
 <pre class="verbatim">/etc/yum.repos.d/CentOS-Webenv-test.repo
 </pre>
@@ -385,8 +398,8 @@ enabled=1
 priority=10
 </pre>
 
-<a name="SEC59"></a>
-<h4 class="subsubsection"> 3.8.2.7 The [webenv] repository </h4>
+<a name="SEC61"></a>
+<h4 class="subsubsection"> 3.8.2.9 The [webenv] repository </h4>
 
 <pre class="verbatim">/etc/yum.repos.d/CentOS-Webenv.repo
 </pre>
@@ -400,31 +413,14 @@ enabled=1
 priority=10
 </pre>
 
-<a name="SEC60"></a>
-<h4 class="subsubsection"> 3.8.2.8 Priority configuration </h4>
+<a name="SEC62"></a>
+<h4 class="subsubsection"> 3.8.2.10 Priority configuration </h4>
 
 <p>Both [webenv] and [webenv-test] repositories update packages inside
 CentOS [base] and CentOS [updates] repositories.
 </p>
 
-<a name="SEC61"></a>
-<h4 class="subsubsection"> 3.8.2.9 Navigation </h4>
-
-<p>Inside CentOS web environment, the one-step navegation between web
-applications is addressed using the web environment navigation bar.
-The web environment navigation bar contains links to main applications
-and is always visible no matter where you are inside the web
-environment.
-</p>
-<div class="float"><a name="fig_003aturnk_002fIdentity_002fModels_002fTpl_002fPromo_002fWeb_002fnavigation"></a>
-<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/navigation.png" alt="The CentOS web navigation design model">
-
-</p></div><p><strong>Figure 3.3: The CentOS web navigation design model.
-</strong>
-</p>
-
-
-<a name="SEC62"></a>
+<a name="SEC63"></a>
 <h3 class="subsection"> 3.8.3 Usage </h3>
 
 <ul class="toc">
@@ -432,7 +428,7 @@ environment.
 </li></ul>
 
 
-<a name="SEC63"></a>
+<a name="SEC64"></a>
 <h3 class="subsection"> 3.8.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
@@ -442,16 +438,16 @@ environment.
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC62" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_12.html#SEC64" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC63" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_12.html#SEC65" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC50" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC320" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC321" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 2 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 3 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

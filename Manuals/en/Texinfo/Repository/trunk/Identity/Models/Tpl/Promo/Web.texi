@@ -85,6 +85,15 @@ promotion}
 @end float
 @end ifnotinfo
 
+@subsubsection HTML definitions
+
+@ifnotinfo
+@float Figure,fig:turnk/Identity/Models/Tpl/Promo/Web/webenv-html-defs
+@image{webenv-html-defs,,,Web environment html defintions}
+@caption{Web environment html definitions}
+@end float
+@end ifnotinfo
+
 @subsubsection Controlling visual style
 
 Inside CentOS web environment, the visual style is controlled by the
@@ -93,22 +102,12 @@ following compenents:
 @table @strong
 @item Webenv header background
 @verbatim
-trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-top.png
-@end verbatim
-
-@item Webapp header background
-@verbatim
-trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-app.png
-@end verbatim
-
-@item Webapp footer background
-@verbatim
-trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/footer-bg-app.png
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
 @end verbatim
 
 @item CSS definitions
 @verbatim
-trunk/Identity/Themes/Motifs/$THEME/Promo/Web/CSS/stylesheet.css
+trunk/Identity/Themes/Models/Default/Promo/Web/CSS/stylesheet.css
 @end verbatim
 @end table
 
@@ -132,14 +131,7 @@ your vectorial design. When you consider you artwork ready, use the
 visual style controller images of CentOS web environment.
 
 @verbatim
-centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Promo/Web
-@end verbatim
-
-The image files which control the visual style of CentOS web
-environment are stored in the location:
-
-@verbatim
-trunk/Identity/Themes/Motifs/$THEME/Promo/Web
+centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Backgrounds --filter='1024x250'
 @end verbatim
 
 Once you have rendered required image files, changing the visual style
@@ -148,6 +140,21 @@ with new ones, inside webenv repository file system structure. The
 visual style changes will take effect the next time customization line
 of CentOS web applications be packaged, uploded, and installed from
 [webenv] or [webenv-test] repositories.
+
+@subsubsection Navigation
+
+Inside CentOS web environment, the one-step navegation between web
+applications is addressed using the web environment navigation bar.
+The web environment navigation bar contains links to main applications
+and is always visible no matter where you are inside the web
+environment.
+
+@ifnotinfo
+@float Figure,fig:turnk/Identity/Models/Tpl/Promo/Web/navigation
+@image{navigation,,,The CentOS web navigation design model}
+@caption{The CentOS web navigation design model.}
+@end float
+@end ifnotinfo
 
 @subsubsection Development and release cycle
 
@@ -337,22 +344,6 @@ priority=10
 
 Both [webenv] and [webenv-test] repositories update packages inside
 CentOS [base] and CentOS [updates] repositories.
-
-@subsubsection Navigation
-
-Inside CentOS web environment, the one-step navegation between web
-applications is addressed using the web environment navigation bar.
-The web environment navigation bar contains links to main applications
-and is always visible no matter where you are inside the web
-environment.
-
-@ifnotinfo
-@float Figure,fig:turnk/Identity/Models/Tpl/Promo/Web/navigation
-@image{navigation,,,The CentOS web navigation design model}
-@caption{The CentOS web navigation design model.}
-@end float
-@end ifnotinfo
-
 
 @subsection Usage
 

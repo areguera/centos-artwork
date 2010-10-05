@@ -56,13 +56,14 @@ CentOS Artwork Repository
     3.8.2 The CentOS web environment
       3.8.2.1 Design model (without ads)
       3.8.2.2 Design model (with ads)
-      3.8.2.3 Controlling visual style
-      3.8.2.4 Producing visual style
-      3.8.2.5 Development and release cycle
-      3.8.2.6 The [webenv-test] repository
-      3.8.2.7 The [webenv] repository
-      3.8.2.8 Priority configuration
-      3.8.2.9 Navigation
+      3.8.2.3 HTML definitions
+      3.8.2.4 Controlling visual style
+      3.8.2.5 Producing visual style
+      3.8.2.6 Navigation
+      3.8.2.7 Development and release cycle
+      3.8.2.8 The [webenv-test] repository
+      3.8.2.9 The [webenv] repository
+      3.8.2.10 Priority configuration
     3.8.3 Usage
     3.8.4 See also
   3.9 trunk/Identity/Release
@@ -952,7 +953,10 @@ repository to store CentOS web environment customized web applications.
 3.8.2.2 Design model (with ads)
 ...............................
 
-3.8.2.3 Controlling visual style
+3.8.2.3 HTML definitions
+........................
+
+3.8.2.4 Controlling visual style
 ................................
 
 Inside CentOS web environment, the visual style is controlled by the
@@ -960,21 +964,13 @@ following compenents:
 
 *Webenv header background*
 
-     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-top.png
-
-*Webapp header background*
-
-     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/header-bg-app.png
-
-*Webapp footer background*
-
-     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/Img/footer-bg-app.png
+     trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
 
 *CSS definitions*
 
-     trunk/Identity/Themes/Motifs/$THEME/Promo/Web/CSS/stylesheet.css
+     trunk/Identity/Themes/Models/Default/Promo/Web/CSS/stylesheet.css
 
-3.8.2.4 Producing visual style
+3.8.2.5 Producing visual style
 ..............................
 
 The visual style of CentOS web environment is defined in the following
@@ -994,13 +990,7 @@ script, as described below, to produce the visual style controller
 images of CentOS web environment.
 
 
-centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Promo/Web
-
-   The image files which control the visual style of CentOS web
-environment are stored in the location:
-
-
-trunk/Identity/Themes/Motifs/$THEME/Promo/Web
+centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Backgrounds --filter='1024x250'
 
    Once you have rendered required image files, changing the visual
 style of CentOS web environment is a matter of replacing old image files
@@ -1009,7 +999,16 @@ visual style changes will take effect the next time customization line
 of CentOS web applications be packaged, uploded, and installed from
 [webenv] or [webenv-test] repositories.
 
-3.8.2.5 Development and release cycle
+3.8.2.6 Navigation
+..................
+
+Inside CentOS web environment, the one-step navegation between web
+applications is addressed using the web environment navigation bar.
+The web environment navigation bar contains links to main applications
+and is always visible no matter where you are inside the web
+environment.
+
+3.8.2.7 Development and release cycle
 .....................................
 
 The CentOS web environment development and relase cycle is described
@@ -1140,7 +1139,7 @@ below:
           distribution default yum configuraiton. In order to use
           [webenv] repository you need to configure it first.
 
-3.8.2.6 The [webenv-test] repository
+3.8.2.8 The [webenv-test] repository
 ....................................
 
 
@@ -1156,7 +1155,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
 enabled=1
 priority=10
 
-3.8.2.7 The [webenv] repository
+3.8.2.9 The [webenv] repository
 ...............................
 
 
@@ -1172,20 +1171,11 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
 enabled=1
 priority=10
 
-3.8.2.8 Priority configuration
-..............................
+3.8.2.10 Priority configuration
+...............................
 
 Both [webenv] and [webenv-test] repositories update packages inside
 CentOS [base] and CentOS [updates] repositories.
-
-3.8.2.9 Navigation
-..................
-
-Inside CentOS web environment, the one-step navegation between web
-applications is addressed using the web environment navigation bar.
-The web environment navigation bar contains links to main applications
-and is always visible no matter where you are inside the web
-environment.
 
 3.8.3 Usage
 -----------
@@ -3581,98 +3571,98 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  346)
-Common translation files:                      See 3.48.2.5. (line 3006)
-How to render brands' translation files:       See 3.50.3.   (line 3311)
-How to render fonts' translation files:        See 3.52.3.   (line 3388)
-How to render translation files:               See 3.48.3.   (line 3176)
-Specific translation files:                    See 3.48.2.6. (line 3031)
-tags:                                          See 2.        (line  349)
-Template translation files:                    See 3.48.2.4. (line 2836)
-Translation brands file names:                 See 3.50.2.1. (line 3268)
-Translation configuration scripts:             See 3.48.2.8. (line 3065)
-Translation entries:                           See 3.48.2.1. (line 2652)
-Translation files:                             See 3.48.2.3. (line 2768)
-Translation markers:                           See 3.48.2.2. (line 2733)
-Translation paths:                             See 3.48.2.1. (line 2652)
+branches:                                      See 1.        (line  347)
+Common translation files:                      See 3.48.2.5. (line 2996)
+How to render brands' translation files:       See 3.50.3.   (line 3301)
+How to render fonts' translation files:        See 3.52.3.   (line 3378)
+How to render translation files:               See 3.48.3.   (line 3166)
+Specific translation files:                    See 3.48.2.6. (line 3021)
+tags:                                          See 2.        (line  350)
+Template translation files:                    See 3.48.2.4. (line 2826)
+Translation brands file names:                 See 3.50.2.1. (line 3258)
+Translation configuration scripts:             See 3.48.2.8. (line 3055)
+Translation entries:                           See 3.48.2.1. (line 2642)
+Translation files:                             See 3.48.2.3. (line 2758)
+Translation markers:                           See 3.48.2.2. (line 2723)
+Translation paths:                             See 3.48.2.1. (line 2642)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 3065)
-Translation rendering:                         See 3.48.2.7. (line 3054)
-Translation rendering default functionality:   See 3.48.2.9. (line 3151)
-trunk:                                         See 3.        (line  352)
-trunk Identity:                                See 3.1.      (line  355)
-trunk Identity Brands:                         See 3.2.      (line  775)
-trunk Identity Fonts:                          See 3.3.      (line  792)
-trunk Identity Icons:                          See 3.4.      (line  809)
-trunk Identity Isolinux:                       See 3.5.      (line  826)
-trunk Identity Models:                         See 3.6.      (line  843)
-trunk Identity Models Img Promo Web:           See 3.7.      (line  860)
-trunk Identity Models Tpl Promo Web:           See 3.8.      (line  881)
-trunk Identity Release:                        See 3.9.      (line 1206)
-trunk Identity Themes:                         See 3.10.     (line 1223)
-trunk Identity Themes Models:                  See 3.11.     (line 1248)
-trunk Identity Themes Models Alternative:      See 3.12.     (line 1281)
-trunk Identity Themes Models Default:          See 3.13.     (line 1308)
-trunk Identity Themes Models Default Distro:   See 3.14.     (line 1340)
+                                                             (line 3055)
+Translation rendering:                         See 3.48.2.7. (line 3044)
+Translation rendering default functionality:   See 3.48.2.9. (line 3141)
+trunk:                                         See 3.        (line  353)
+trunk Identity:                                See 3.1.      (line  356)
+trunk Identity Brands:                         See 3.2.      (line  776)
+trunk Identity Fonts:                          See 3.3.      (line  793)
+trunk Identity Icons:                          See 3.4.      (line  810)
+trunk Identity Isolinux:                       See 3.5.      (line  827)
+trunk Identity Models:                         See 3.6.      (line  844)
+trunk Identity Models Img Promo Web:           See 3.7.      (line  861)
+trunk Identity Models Tpl Promo Web:           See 3.8.      (line  882)
+trunk Identity Release:                        See 3.9.      (line 1196)
+trunk Identity Themes:                         See 3.10.     (line 1213)
+trunk Identity Themes Models:                  See 3.11.     (line 1238)
+trunk Identity Themes Models Alternative:      See 3.12.     (line 1271)
+trunk Identity Themes Models Default:          See 3.13.     (line 1298)
+trunk Identity Themes Models Default Distro:   See 3.14.     (line 1330)
 trunk Identity Themes Models Default Distro Anaconda:See 3.15.
-                                                             (line 1424)
-trunk Identity Themes Models Default Promo:    See 3.16.     (line 1441)
-trunk Identity Themes Models Default Web:      See 3.17.     (line 1467)
-trunk Identity Themes Motifs:                  See 3.18.     (line 1492)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.19.    (line 1596)
+                                                             (line 1414)
+trunk Identity Themes Models Default Promo:    See 3.16.     (line 1431)
+trunk Identity Themes Models Default Web:      See 3.17.     (line 1457)
+trunk Identity Themes Motifs:                  See 3.18.     (line 1482)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.19.    (line 1586)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.20.
-                                                             (line 1718)
+                                                             (line 1708)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.21.
-                                                             (line 1739)
+                                                             (line 1729)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.22.
-                                                             (line 1760)
+                                                             (line 1750)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.23.
-                                                             (line 1787)
-trunk Identity Themes Motifs Modern Palettes:  See 3.24.     (line 1843)
-trunk Identity Themes Motifs TreeFlower:       See 3.25.     (line 1865)
-trunk Identity Widgets:                        See 3.26.     (line 1882)
-trunk Manuals:                                 See 3.27.     (line 1899)
-trunk Scripts:                                 See 3.28.     (line 1953)
-trunk Scripts Bash:                            See 3.29.     (line 1977)
-trunk Scripts Bash Config:                     See 3.30.     (line 2143)
-trunk Scripts Bash Config Identity:            See 3.31.     (line 2257)
-trunk Scripts Bash Config Translations:        See 3.32.     (line 2278)
-trunk Scripts Bash Functions:                  See 3.33.     (line 2299)
-trunk Scripts Bash Functions Config:           See 3.34.     (line 2320)
+                                                             (line 1777)
+trunk Identity Themes Motifs Modern Palettes:  See 3.24.     (line 1833)
+trunk Identity Themes Motifs TreeFlower:       See 3.25.     (line 1855)
+trunk Identity Widgets:                        See 3.26.     (line 1872)
+trunk Manuals:                                 See 3.27.     (line 1889)
+trunk Scripts:                                 See 3.28.     (line 1943)
+trunk Scripts Bash:                            See 3.29.     (line 1967)
+trunk Scripts Bash Config:                     See 3.30.     (line 2133)
+trunk Scripts Bash Config Identity:            See 3.31.     (line 2247)
+trunk Scripts Bash Config Translations:        See 3.32.     (line 2268)
+trunk Scripts Bash Functions:                  See 3.33.     (line 2289)
+trunk Scripts Bash Functions Config:           See 3.34.     (line 2310)
 trunk Scripts Bash Functions Config cli_getActions.sh:See 3.36.
-                                                             (line 2333)
+                                                             (line 2323)
 trunk Scripts Bash Functions Config cli_getActionsIdentity.sh:See 3.35.
-                                                             (line 2326)
+                                                             (line 2316)
 trunk Scripts Bash Functions Config cli_getActionsTranslations.sh:See 3.37.
-                                                             (line 2339)
+                                                             (line 2329)
 trunk Scripts Bash Functions Config cli_getIdentityMatchinglist.sh:See 3.38.
-                                                             (line 2346)
+                                                             (line 2336)
 trunk Scripts Bash Functions Config repo_renderIdentitySyslinux.sh:See 3.39.
-                                                             (line 2355)
+                                                             (line 2345)
 trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh:See 3.40.
-                                                             (line 2376)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2397)
+                                                             (line 2366)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2387)
 trunk Scripts Bash Functions Render render_getActions.sh:See 3.43.
-                                                             (line 2439)
+                                                             (line 2429)
 trunk Scripts Bash Functions Render render_getActionsIdentity.sh:See 3.42.
-                                                             (line 2418)
+                                                             (line 2408)
 trunk Scripts Bash Functions Render render_getActionsTranslations.sh:See 3.44.
-                                                             (line 2460)
-trunk Scripts Bash Locale:                     See 3.45.     (line 2481)
-trunk Scripts Perl:                            See 3.46.     (line 2565)
-trunk Scripts Python:                          See 3.47.     (line 2582)
-trunk Translations:                            See 3.48.     (line 2603)
-trunk Translations Identity:                   See 3.49.     (line 3206)
-trunk Translations Identity Brands:            See 3.50.     (line 3227)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 3322)
-trunk Translations Identity Fonts:             See 3.52.     (line 3337)
-trunk Translations Identity Models:            See 3.53.     (line 3404)
-trunk Translations Identity Release:           See 3.54.     (line 3419)
-trunk Translations Identity Themes:            See 3.55.     (line 3434)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 3449)
+                                                             (line 2450)
+trunk Scripts Bash Locale:                     See 3.45.     (line 2471)
+trunk Scripts Perl:                            See 3.46.     (line 2555)
+trunk Scripts Python:                          See 3.47.     (line 2572)
+trunk Translations:                            See 3.48.     (line 2593)
+trunk Translations Identity:                   See 3.49.     (line 3196)
+trunk Translations Identity Brands:            See 3.50.     (line 3217)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 3312)
+trunk Translations Identity Fonts:             See 3.52.     (line 3327)
+trunk Translations Identity Models:            See 3.53.     (line 3394)
+trunk Translations Identity Release:           See 3.54.     (line 3409)
+trunk Translations Identity Themes:            See 3.55.     (line 3424)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 3439)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 3470)
-trunk Translations Identity Widgets:           See 3.58.     (line 3563)
+                                                             (line 3460)
+trunk Translations Identity Widgets:           See 3.58.     (line 3553)
 List of Figures
 ***************
 
