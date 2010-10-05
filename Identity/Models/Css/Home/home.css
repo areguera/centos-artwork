@@ -321,8 +321,8 @@ div#page-body blockquote h3 {
     line-height: 0;
     border: none;
     color: #000000;
-    padding: 0;
     margin-left: 1.2em;
+    padding: 0;
     }
 
 div#page-body blockquote.icon h3 {
@@ -341,17 +341,6 @@ div#page-body blockquote.message {
 	border-top: 4px solid;
 	border-bottom: 4px solid;
     border-color: #CFCFCF;
-	padding: 0 2em;
-	}
-
-div#page-body blockquote.message p.content {
-	font-weight: bold;
-	margin-left: 0;
-	}
-
-div#page-body blockquote.message p.links {
-	font-size: x-small;	
-	margin-left: 0;
 	}
 
 div#page-body blockquote.blue {
@@ -384,3 +373,68 @@ div#page-body blockquote.green {
     background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/msg-bg-green.png");
 	}
 
+/* Forms
+-----------------------------------------------*/
+
+div#page-body div.row1 {
+	clear: both;
+	background: #F8F8F8;
+	padding: 10px;
+	}
+
+div#page-body div.row2 {
+	clear: both;
+	background: #FFFFFF;
+	padding: 10px;
+	}
+
+div#page-body div.row3 {
+	clear: both;
+	border-top: 1px solid #CCC;
+	padding: 10px;
+	margin-top: 10px;
+	}
+
+div#page-body fieldset div.row1 span.descrip,
+div#page-body fieldset div.row2 span.descrip {
+	float: left;
+	}
+
+div#page-body fieldset div.field {
+	display: block;
+	margin-left: 30%;
+	}
+
+div#page-body fieldset div.field div.column {
+	float: left;
+	margin-right: 1em;
+	padding-right: 1em;
+	border-right: 1px dotted #AAA;
+	}
+
+div#page-body fieldset div.row3 div.descrip {
+	display: block;
+	font-size: small;
+	color: #AAA;
+	font-style: italic;
+	width: 70%
+	}
+
+div#page-body fieldset span.submit {
+	float: right;
+	}
+
+/* */
+
+div#page-body div.actions p {
+	display: inline;
+	margin: 0;
+	padding: 0 10px;
+	border-right: 1px dotted #AAA;
+	font-size: small;
+	color: #AAA;
+	}
+
+div#page-body div.actions p.last {
+	border-right: none;
+	}
