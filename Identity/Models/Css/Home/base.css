@@ -299,7 +299,7 @@ dl dt {
     }
 
 dl dt:after {
-    content: ": "
+    content: ""
     }
 
 dl dd {
@@ -310,9 +310,7 @@ dl dd {
 
 dl dd ul,
 dl dd ol {
-    margin: 0;
-    padding-top: 0;
-    margin-left: 4em;
+    margin-left: 0;
     }
 
 /* Tables 

@@ -85,31 +85,31 @@ div#page-body a.nonexistent:hover { color: gray; }
 
 div#page-body a.www:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.http:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.https:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.mailto:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/email.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/a-mail.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.attachment:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/attach.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/a-attach.png); 
     margin: 0 0.2em; 
     }
 
@@ -191,7 +191,7 @@ div#page-body h2 {
         margin-top: 1.6em;
         margin-bottom: 0.8em;
         padding-left: 0.7em;
-        background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h2-bg.png");
+        background: #FFF url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h2-bg.png");
         border: none;
         color: #072B61;
         }
@@ -309,6 +309,30 @@ div#page-body div#right ul li {
 div#page-body div#right ul li.current {
     font-weight: bold;
     }
+
+/* Table of content (toc) */
+
+div#page-body div.toc {
+	border: 1px solid #CCCCCC;
+	background: #FFF url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/toc-bg.png") right repeat-y; 
+	font-size: small;
+	text-align:left;
+	margin-left: 1.5em;
+    width:70%;
+	}
+
+div#page-body div.toc h3 {
+    margin-top: 0;
+    background: #FFF url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/h2-bg.png");
+    }
+
+div#page-body div.toc ul {
+    margin-left: 1.5em;
+    }
+
+div#page-body div.toc ul ul {
+    margin-left: 0;
+}
 
 /* Quotations
 -----------------------------------------------*/
