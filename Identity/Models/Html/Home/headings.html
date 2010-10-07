@@ -205,33 +205,38 @@
             The content of left column starts here.
             -->
 
-	        <h1><a name="head-a1811f6545db914813115417011b2df9">Headings</a></h1>
+	        <h1><a name="head-6b9358d34b58f88f3d03e90e589c71f4">Headings</a></h1>
     
 	        <p>CentOS Headings Visual Style Guide.</p>
 
             <div class="toc">
-            <h3><a name="head-6915b22396134a9ca1709c5ab6f15e3f">Table of contents</a></h3>
-                <ul>
-                <li><a href="#head-dc0cb512bb74064641dae42bf4581955">Recommendations</a></li>
-                <li><a href="#head-">Examples</a></li>
-                <ul>
-                    <li><a href="#head-5871b1272673f7cf89bcaf48972c848a">Heading Level 1</a></li>
-                    <li><a href="#head-d33a28a4193cffb949f506cfdf770f05">Heading Level 2</a></li>
-                    <li><a href="#head-82dd23c665d8ee437a980459c8b80d7a">Heading Level 3</a></li>
-                    <li><a href="#head-157dc030ea314f4b53a6ed238113a3f8">Heading Level 4</a></li>
-                    <li><a href="#head-33628cc07bcbefc4e4732407b8680bf6">Heading Level 5</a></li>
-                    <li><a href="#head-93b42a4a61a0b05a81aff6224555603c">Heading Level 6</a></li>
-                </ul>
-                </ul>
             </div>
 
-            <h2><a name="head-dc0cb512bb74064641dae42bf4581955">Recommendations</a></h2>
+            <h1><a name="head-b36f1286c992bc6d45a099abd334d2cc" href="#head-b36f1286c992bc6d45a099abd334d2cc">Heading Level 1</a></h1>
+            <pre>&lt;h1&gt;&lt;a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a"&gt;Heading Level 1&lt;/a&gt;&lt;/h1&gt;</pre>
+
+            <h2><a name="head-5003625eae36782ab5b73c8c2fbe9dd8" href="#head-5003625eae36782ab5b73c8c2fbe9dd8">Heading Level 2</a></h2>
+            <pre>&lt;h2&gt;&lt;a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05"&gt;Heading Level 2&lt;/a&gt;&lt;/h2&gt;</pre>
+
+            <h3><a name="head-10bbb3bf6f193ae1feb7a4b390f8cbe8" href="#head-10bbb3bf6f193ae1feb7a4b390f8cbe8">Heading Level 3</a></h3>
+            <pre>&lt;h3&gt;&lt;a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a"&gt;Heading Level 3&lt;/a&gt;&lt;/h3&gt;</pre>
+
+            <h4><a name="head-8ca0298dd61db97feb032a4bec76dbf0" href="#head-8ca0298dd61db97feb032a4bec76dbf0">Heading Level 4</a></h4>
+            <pre>&lt;h4&gt;&lt;a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8"&gt;Heading Level 4&lt;/a&gt;&lt;/h4&gt;</pre>
+
+            <h5><a name="head-21a1ed3c1c019ab1d5aa9504cbdb9e63" href="#head-21a1ed3c1c019ab1d5aa9504cbdb9e63">Heading Level 5</a></h5>
+            <pre>&lt;h5&gt;&lt;a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6"&gt;Heading Level 5&lt;/a&gt;&lt;/h5&gt;</pre>
+
+            <h6><a name="head-b44df3849cd5a9dd0599091b51661da5" href="#head-b44df3849cd5a9dd0599091b51661da5">Heading Level 6</a></h6>
+            <pre>&lt;h6&gt;&lt;a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c"&gt;Heading Level 5&lt;/a&gt;&lt;/h6&gt;</pre>
+
+            <h2><a name="head-910028ec18d2f05fbbe2c27938709ecb">Recommendations</a></h2>
 
             <p>As heading design recommendations:</p>
 
             <ul>
 
-                <li><p>When defining headings, make it accessible
+                <li><p>When defining headings, make them accessible
                 using the following structure:</p>
 
                 <pre>&lt;h1&gt;&lt;a name="head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
@@ -243,6 +248,16 @@
                 
                 </li>
 
+                <li><p>Sometimes headings are used as links. For those
+                cases, use the following structure:</p></li>
+
+                <pre>&lt;h1&gt;&lt;a href="#head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
+
+                <p>or the following, if you want to make a heading an
+                anchor and link of itself:</p>
+
+                <pre>&lt;h1&gt;&lt;a name="head-a1811f6545db914813115417011b2df9" href="#head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
+
                 <li><p>Avoid using more than 4 levels of headings. If
                 you think you need to, you probably do; but consider
                 splitting your content in several pages instead. Too
@@ -250,26 +265,6 @@
                 readability.</p></li>
 
             </ul>
-
-            <h2><a href="head-c1fb2df131f9b6be4e9c0868b3352fc0">Examples</a></h2>
-
-            <h1><a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a">Heading Level 1</a></h1>
-            <pre>&lt;h1&gt;&lt;a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a"&gt;Heading Level 1&lt;/a&gt;&lt;/h1&gt;</pre>
-
-            <h2><a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05">Heading Level 2</a></h2>
-            <pre>&lt;h2&gt;&lt;a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05"&gt;Heading Level 2&lt;/a&gt;&lt;/h2&gt;</pre>
-
-            <h3><a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a">Heading Level 3</a></h3>
-            <pre>&lt;h3&gt;&lt;a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a"&gt;Heading Level 3&lt;/a&gt;&lt;/h3&gt;</pre>
-
-            <h4><a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8">Heading Level 4</a></h4>
-            <pre>&lt;h4&gt;&lt;a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8"&gt;Heading Level 4&lt;/a&gt;&lt;/h4&gt;</pre>
-
-            <h5><a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6">Heading Level 5</a></h5>
-            <pre>&lt;h5&gt;&lt;a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6"&gt;Heading Level 5&lt;/a&gt;&lt;/h5&gt;</pre>
-
-            <h6><a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c">Heading Level 6</a></h6>
-            <pre>&lt;h6&gt;&lt;a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c"&gt;Heading Level 5&lt;/a&gt;&lt;/h6&gt;</pre>
 
             <!-- 
             The content of left column ends here.
