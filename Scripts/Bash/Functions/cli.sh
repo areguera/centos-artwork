@@ -49,7 +49,7 @@ function cli {
     # Define option name (OPTIONNAM), and option value (OPTIONVAL)
     # variables passed as second argument to the command line
     # interface when the format is `--option' without the value part.
-    elif [[ "$2" =~ '^-{1,2}[a-z]+=?$' ]];then
+    elif [[ "$2" =~ '^-{1,2}[a-z-]+=?$' ]];then
 
         # Define option name passed in the second argument.
         OPTIONNAM=$(echo "$2" | cut -d = -f1)
