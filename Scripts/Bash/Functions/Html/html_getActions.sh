@@ -31,9 +31,13 @@ function html_getActions {
     # script supports.
     case $OPTIONNAM in
 
-        --update-headings )
+        '--update-headings' )
             # Update html headings to create table of content.
             html_updateHeadings
+            ;;
+
+        * )
+            cli_printMessage "`eval_gettext "The option provided is not valid."`"
             ;;
 
     esac
