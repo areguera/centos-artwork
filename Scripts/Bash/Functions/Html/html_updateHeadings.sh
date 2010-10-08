@@ -1,33 +1,34 @@
 #!/bin/bash
 #
 # html_updateHeadings.sh -- This function transforms html headings to
-# create the page table of content headings as reference. Multiple
-# heading levels are supported using nested lists. Use this function
-# over html files inside the repository to standardize their headings. 
+# to make them accessible (e.g., through a table of contents).
 #
 #   - In order for this function to work, you need to put headings in
-#     just one line and they must have the following format:
+#     just one line and they must have the following formats:
 #
-#       <h1><a name="head-de063c99357e6675f1ba05b33635e044">Title<a></h1>
+#       <h1><a name="">Title</a></h1>
+#       <h1><a href="">Title</a></h1>
+#       <h1><a name="" href="">Title</a></h1>
 #
-#     Here h1 alternates between 1 and 6. Closing tag must be present
-#     and match the one opening. The value of <a name=""> option is
-#     the md5sum of page location, the 'head-' string plus heading
-#     title. If heading title or page location changes, does the <a
-#     name=""> option value changes too. This idea is similar to that
-#     one used by MoinMoin wiki.
+#     In the above examples, h1 alternates from h1 to h6. Closing tag
+#     must be present and match the one opening. The value of <a
+#     name=""> and <a href=""> options are the md5sum of page
+#     location, plus the 'head-' string, plus the heading string. If
+#     heading title or page location changes, the values of <a
+#     name=""> and <a href=""> options will change too.
 #
-#   - This function looks for <div class="toc">...</div> specification
-#     inside your page and, if present, replace the content inside
-#     with the link list o headinds. 
+#   - When creating the table of contents, this function looks for
+#     <div class="toc">...</div> specification inside your page and,
+#     if present, replaces the content inside with the list of heading
+#     links.
 #
 #   - If <div class="toc">...</div> specification is present on the
 #     page it is updated with headings links. Otherwise only heading
-#     links are created. 
+#     links are updated. 
 #
 #   - If <div class="toc">...</div> specification is malformed (e.g.,
 #     you forgot the closing tag), this function will look the next
-#     closing div in your html code and replace everything in-between
+#     closing div in your html code and replaces everything in-between
 #     with the table of content.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
@@ -56,12 +57,14 @@ function html_updateHeadings {
     # Define variables as local to avoid conflicts outside.
     local FILES=''
     local LEVEL=1
+    local COUNT=0
     local HEADING=''
     local PATTERN=''
     local -a FIRST
-    local -a NAME
     local -a FINAL
     local -a TITLE
+    local -a MD5SM
+    local -a OPTNS
 
     # Define list of html files to process using option value as
     # reference. 
@@ -105,6 +108,9 @@ function html_updateHeadings {
                 MD5SM[$COUNT]=$(echo "${FILE}${TITLE[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
                 OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\1!")
 
+                # Define entry list used to show table of contents.
+                LIENTRIES[$COUNT]='<li><a href="#head-'${MD5SM[$COUNT]}'">'${TITLE[$COUNT]}'</a></li>'
+
                 # Transform heading information using initial heading
                 # information as reference.
                 if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)=".*[^"]" (href|name)=".*[^"]">$' ]];then
@@ -132,6 +138,15 @@ function html_updateHeadings {
 
             done
 
+            # Define list structure using list entries for each
+            # heading level.
+            if [[ ${#LIENTRIES[*]} -gt 0 ]];then
+                LISTS[$(($LEVEL-1))]="${LIENTRIES[*]}"
+            fi
+        
+            # Clean up list entries of heading.
+            unset LIENTRIES
+
             # Reset heading counter.
             COUNT=0
 
@@ -140,8 +155,39 @@ function html_updateHeadings {
 
         done
 
+        # Define table of contents using specific list entries.
+        TOC=$(for LIST in "${LISTS[@]}";do
+            if [[ $LIST != '' ]];then
+                echo $LIST | sed -r 's!</li>$!<ul>!'
+            fi
+        done
+        for LIST in "${LISTS[@]}";do
+            if [[ $LIST != '' ]];then
+                echo '</ul></li>'
+            fi
+        done)
+        if [[ $TOC != '' ]];then
+            TOC=$(echo -e '<div class="toc"><h3>Table of contents</h3><ul>'${TOC}'</ul></div>')
+        fi
+
+        # Update table of contents html structure.
+        egrep '<div class="toc">' $FILE > /dev/null \
+            && sed -i -r '\%<div class="toc">%,\%</div>%c'"$TOC" $FILE
+
+        # Give format to table of contents html structure.
+        sed -i -r '/<div class="toc">/{
+            s!<h3>!\n<h3>!;
+            s!</h3>!</h3>\n!;
+            s!</li>!</li>\n!g;
+            s!<ul>!<ul>\n!g;
+            s!</div>!\n</div>!;
+            }' $FILE
+
         # Reset level counter.
-        LEVEL=0
+        LEVEL=1
+
+        # Clean up level specific list entries.
+        unset LISTS
 
     done
 
