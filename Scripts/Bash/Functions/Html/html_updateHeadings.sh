@@ -17,20 +17,6 @@
 #     heading title or page location changes, the values of <a
 #     name=""> and <a href=""> options will change too.
 #
-#   - When creating the table of contents, this function looks for
-#     <div class="toc">...</div> specification inside your page and,
-#     if present, replaces the content inside with the list of heading
-#     links.
-#
-#   - If <div class="toc">...</div> specification is present on the
-#     page it is updated with headings links. Otherwise only heading
-#     links are updated. 
-#
-#   - If <div class="toc">...</div> specification is malformed (e.g.,
-#     you forgot the closing tag), this function will look the next
-#     closing div in your html code and replaces everything in-between
-#     with the table of content.
-#
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -56,15 +42,15 @@ function html_updateHeadings {
 
     # Define variables as local to avoid conflicts outside.
     local FILES=''
-    local LEVEL=1
     local COUNT=0
-    local HEADING=''
+    local PREVCOUNT=0
     local PATTERN=''
-    local -a FIRST
     local -a FINAL
     local -a TITLE
     local -a MD5SM
     local -a OPTNS
+    local -a LEVEL
+    local -a PARENT
 
     # Define list of html files to process using option value as
     # reference. 
@@ -83,111 +69,73 @@ function html_updateHeadings {
         fi
 
         # Output action message.
-        cli_printMessage $FILE 'AsUpdatingLine'
+        #cli_printMessage $FILE 'AsUpdatingLine'
 
-        # Define how many heading levels this function works with.
-        until [[ $LEVEL -eq 7 ]]; do
+        # Define html heading regular expression. Use parenthisis to save
+        # html option name, option value, and heading title.
+        PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
 
-            # Define translation pattern. Use parenthisis to save
-            # html option name, option value, and heading title.
-            PATTERN="<h$LEVEL>(<a.*[^\>]>)(.*[^<])</a></h$LEVEL>"
+        # Define list of headings to process. When building the
+        # heading, it is required to change spaces characters from its
+        # current output form to something different (e.g., its \x040
+        # octal alternative). This is required because the space
+        # character is used as egrep default field separator and
+        # spaces can be present inside heading strings we don't want
+        # to separate.
+        for HEADING in $(egrep "$PATTERN" $FILE \
+            | sed -r -e 's!^[[:space:]]+!!' -e "s! !\x040!g");do
 
-            # Define list of headings to process. When building the
-            # heading, it is required to change spaces characters from
-            # its current output form to something different (e.g.,
-            # its \x040 octal alternative). This is required because
-            # the space character is used as egrep default field
-            # separator and spaces can be present inside heading
-            # strings we don't want to separate.
-            for HEADING in $(egrep "$PATTERN" $FILE \
-                | sed -r -e 's!^[[:space:]]+!!' -e "s! !\x040!g");do
-
-                # Define initial heading information.
-                FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\x040! !g")
-                TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
-                MD5SM[$COUNT]=$(echo "${FILE}${TITLE[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
-                OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\1!")
-
-                # Define entry list used to show table of contents.
-                LIENTRIES[$COUNT]='<li><a href="#head-'${MD5SM[$COUNT]}'">'${TITLE[$COUNT]}'</a></li>'
-
-                # Transform heading information using initial heading
-                # information as reference.
-                if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)=".*[^"]" (href|name)=".*[^"]">$' ]];then
-
-                    OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'" href="#head-'${MD5SM[$COUNT]}'">'
-
-                elif [[ ${OPTNS[$COUNT]} =~ '^<a name=".*[^"]">$' ]];then 
-
-                    OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'">'
-
-                elif [[ ${OPTNS[$COUNT]} =~ '^<a href=".*[^"]">$' ]];then
-
-                    OPTNS[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'
-
-                fi
-
-                FINAL[$COUNT]='<h'$LEVEL'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'$LEVEL'>'
-
-                # Update heading information using transformed heading
-                # information.
-                sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
-
-                # Increase heading counter.
-                COUNT=$(($COUNT + 1))
-
-            done
-
-            # Define list structure using list entries for each
-            # heading level.
-            if [[ ${#LIENTRIES[*]} -gt 0 ]];then
-                LISTS[$(($LEVEL-1))]="${LIENTRIES[*]}"
+            # Define previous counter value using current counter
+            # value as reference.
+            if [[ $COUNT -ne 0 ]];then
+                PREVCOUNT=$(($COUNT-1))
             fi
-        
-            # Clean up list entries of heading.
-            unset LIENTRIES
 
-            # Reset heading counter.
-            COUNT=0
+            # Define initial heading information.
+            FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\x040! !g")
+            TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\3!")
+            MD5SM[$COUNT]=$(echo "${FILE}${FIRST[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
+            OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
+            LEVEL[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\1!")
+            PARENT[$COUNT]=${LEVEL[$PREVCOUNT]}
 
-            # Increase level counter. 
-            LEVEL=$(($LEVEL + 1))
+            # Transform heading information using initial heading
+            # information as reference.
+            if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)=".*[^"]" (href|name)=".*[^"]">$' ]];then
+                OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'" href="#head-'${MD5SM[$COUNT]}'">'
+            elif [[ ${OPTNS[$COUNT]} =~ '^<a name=".*[^"]">$' ]];then 
+                OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'">'
+            elif [[ ${OPTNS[$COUNT]} =~ '^<a href=".*[^"]">$' ]];then
+                OPTNS[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'
+            fi
+
+            # Build final html heading structure.
+            FINAL[$COUNT]='<h'${LEVEL[$COUNT]}'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'${LEVEL[$COUNT]}'>'
+
+            # Build html heading link structure.
+            LINK[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'${TITLE[$COUNT]}'</a>'
+
+            # Build table of contents entry with numerical
+            # identifications.
+            TOCENTRIES[$COUNT]="$COUNT:${LEVEL[$COUNT]}:${PARENT[$COUNT]}:${LINK[$COUNT]}"
+
+            # Update heading information using the first and last
+            # heading structures.
+            #sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
+
+            # Increase heading counter.
+            COUNT=$(($COUNT + 1))
 
         done
 
-        # Define table of contents using specific list entries.
-        TOC=$(for LIST in "${LISTS[@]}";do
-            if [[ $LIST != '' ]];then
-                echo $LIST | sed -r 's!</li>$!<ul>!'
-            fi
-        done
-        for LIST in "${LISTS[@]}";do
-            if [[ $LIST != '' ]];then
-                echo '</ul></li>'
-            fi
-        done)
-        if [[ $TOC != '' ]];then
-            TOC=$(echo -e '<div class="toc"><h3>Table of contents</h3><ul>'${TOC}'</ul></div>')
-        fi
+        # Reset heading counter.
+        COUNT=0
 
-        # Update table of contents html structure.
-        egrep '<div class="toc">' $FILE > /dev/null \
-            && sed -i -r '\%<div class="toc">%,\%</div>%c'"$TOC" $FILE
-
-        # Give format to table of contents html structure.
-        sed -i -r '/<div class="toc">/{
-            s!<h3>!\n<h3>!;
-            s!</h3>!</h3>\n!;
-            s!</li>!</li>\n!g;
-            s!<ul>!<ul>\n!g;
-            s!</div>!\n</div>!;
-            }' $FILE
-
-        # Reset level counter.
-        LEVEL=1
-
-        # Clean up level specific list entries.
-        unset LISTS
+        # Use awk to build the table of content.
+        for TOC in "${TOCENTRIES[@]}";do
+            echo $TOC
+        done \
+            | awk 'BEGIN{FS=":"}{printf "%s\n", $4}'
 
     done
 
