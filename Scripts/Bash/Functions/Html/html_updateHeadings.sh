@@ -11,7 +11,7 @@
 #       <h1><a name="" href="">Title</a></h1>
 #
 #     In the above examples, h1 alternates from h1 to h6. Closing tag
-#     must be present and match the one opening. The value of <a
+#     must be present and match the one opentaging. The value of <a
 #     name=""> and <a href=""> options are the md5sum of page
 #     location, plus the 'head-' string, plus the heading string. If
 #     heading title or page location changes, the values of <a
@@ -69,7 +69,7 @@ function html_updateHeadings {
         fi
 
         # Output action message.
-        #cli_printMessage $FILE 'AsUpdatingLine'
+        cli_printMessage $FILE 'AsUpdatingLine'
 
         # Define html heading regular expression. Use parenthisis to save
         # html option name, option value, and heading title.
@@ -77,13 +77,13 @@ function html_updateHeadings {
 
         # Define list of headings to process. When building the
         # heading, it is required to change spaces characters from its
-        # current output form to something different (e.g., its \x040
+        # current output form to something different (e.g., its \040
         # octal alternative). This is required because the space
         # character is used as egrep default field separator and
         # spaces can be present inside heading strings we don't want
         # to separate.
         for HEADING in $(egrep "$PATTERN" $FILE \
-            | sed -r -e 's!^[[:space:]]+!!' -e "s! !\x040!g");do
+            | sed -r -e 's!^[[:space:]]+!!' -e "s! !\\\040!g");do
 
             # Define previous counter value using current counter
             # value as reference.
@@ -92,7 +92,7 @@ function html_updateHeadings {
             fi
 
             # Define initial heading information.
-            FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\x040! !g")
+            FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\\\040! !g")
             TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\3!")
             MD5SM[$COUNT]=$(echo "${FILE}${FIRST[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
             OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
@@ -121,21 +121,73 @@ function html_updateHeadings {
 
             # Update heading information using the first and last
             # heading structures.
-            #sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
+            sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
 
             # Increase heading counter.
             COUNT=$(($COUNT + 1))
 
         done
 
-        # Reset heading counter.
-        COUNT=0
-
         # Use awk to build the table of content.
-        for TOC in "${TOCENTRIES[@]}";do
-            echo $TOC
-        done \
-            | awk 'BEGIN{FS=":"}{printf "%s\n", $4}'
+        TOC=$(echo '<div class="toc">'
+            echo "<h3>`gettext "Table of contents"`</h3>"
+            for TOCENTRY in "${TOCENTRIES[@]}";do
+                echo $TOCENTRY
+            done \
+                | awk 'BEGIN {FS=":"}
+                         {
+                         if ($1 == 0 && $2 == $3) { 
+                            opentags  = "<ul><li>"
+                            closetags = ""
+                            }
+
+                         if ($1 >  0 && $2 >  $3) {
+                            opentags  = "<ul><li>"
+                            closetags = ""
+                            }
+
+                         if ($1 >  0 && $2 == $3) { 
+                            opentags  = "</li><li>"
+                            closetags = ""
+                            }
+
+                         if ($1 >  0 && $2 <  $3) { 
+                                opentags = ""
+                            for (i = 1; i <= ($3 - $2); i++) {
+                                opentags  = opentags "</li></ul>"
+                                closetags = ""
+                                }
+                                opentags = opentags "</li><li>"
+                            }
+
+                         printf "%s%s%s\n",opentags,$4,closetags
+                         }
+
+                     END {
+                         if ($1 > 0 && $2 >= $3 && $3 > 1) {
+                            for (i = 1; i <= $3; i++) {
+                                print "</li></ul>"
+                            }
+                         }
+                         if ($1 > 0 && $2 >= $3 && $3 == 1) {
+                                print "</li></ul>"
+                                print "</li></ul>"
+                         }
+                         if ($1 > 0 && $2 < $3) {
+                            for (i = 1; i <= $2; i++) {
+                                print "</li></ul>"
+                            }
+                         }
+                         print "</div>"
+                         }')
+
+
+        # Update file's table of contents.
+        sed -i -r '/<div class="toc">(.*)<\/div>/c'"$(echo -e $TOC)" $FILE
+
+        # Reset counters.
+        COUNT=0
+        PREVCOUNT=0
 
     done
 
