@@ -451,15 +451,97 @@ div#page-body fieldset span.submit {
 
 /* */
 
-div#page-body div.actions p {
+div#page-body div.actions {
+    margin-top: 10px;
+	border-bottom: 1px solid #AAA;
+    padding-bottom: 10px;
+
+    }
+
+div#page-body div.actions span {
 	display: inline;
 	margin: 0;
-	padding: 0 10px;
+	padding-right: 10px;
 	border-right: 1px dotted #AAA;
-	font-size: small;
 	color: #AAA;
 	}
 
-div#page-body div.actions p.last {
+div#page-body div.actions span.last {
 	border-right: none;
+	padding-left: 10px;
 	}
+
+/* */
+
+div#page-body div.pagination {
+    font-size: small;
+    padding: 10px;
+    border-top: 1px #AAA solid;
+    margin-left: 1.5em;
+    }
+
+div#page-body div.pagination span.left {
+    float: left;
+    }
+
+div#page-body div.pagination span.left a:before {
+    content: "«";
+    padding-right: 3px;
+    }
+
+div#page-body div.pagination span.right a:after {
+    content: "»";
+    padding-left: 3px;
+    }
+
+div#page-body div.pagination span.right {
+    float: right;
+    }
+
+/* */
+
+div#page-body div.records-list {
+    margin-bottom: 5px;
+    margin-left: 1.5em;
+    display: block;
+    }
+
+div#page-body div.records-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    }
+
+div#page-body div.records-list ul li {
+    padding: 0.5em;
+    }
+
+div#page-body div.records-list ul li.row1 {
+    background: #F8F8F8;
+    }
+
+div#page-body div.records-list ul li span.col0 {
+    display: block;
+    float:left;
+    text-align: center;
+    padding-right: 0.5em;
+    margin-right: 0.5em;
+    border-right: 1px solid #FFF;
+    }
+
+div#page-body div.records-list ul li span.col1 {
+    width: 250px;
+    display: block;
+    float:left;
+    }
+
+div#page-body div.records-list ul li span.col2 {
+    border-left: 1px solid #FFF;
+    padding-left: 0.5em;
+    }
+
+div#page-body div.records-list ul li.title {
+    font-weight: bold;
+    background: #eee;
+    border-bottom: 1px #AAA solid;
+    }
