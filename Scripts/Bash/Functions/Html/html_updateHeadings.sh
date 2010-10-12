@@ -41,7 +41,6 @@
 function html_updateHeadings {
 
     # Define variables as local to avoid conflicts outside.
-    local FILES=''
     local COUNT=0
     local PREVCOUNT=0
     local PATTERN=''
@@ -51,18 +50,16 @@ function html_updateHeadings {
     local -a OPTNS
     local -a LEVEL
     local -a PARENT
+    local -a TOCENTRIES
+    local -a LINK
 
-    # Define list of html files to process using option value as
-    # reference. 
-    if [[ -d $OPTIONVAL ]];then
-        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.(html|htm)$')
-    elif [[ -f $OPTIONVAL ]];then
-        FILES=$OPTIONVAL
-    fi
+    # Define html heading regular expression pattern. Use parenthisis
+    # to save html option name, option value, and heading title.
+    PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
 
     for FILE in $FILES;do
 
-        # Verify list of html files. Are they really html files? If
+        # Verify list of html files. Are files really html files? If
         # they don't, continue with the next one in the list.
         if [[ ! $(file --brief $FILE) =~ '^(XHTML|HTML|XML)' ]];then
             continue
@@ -71,14 +68,10 @@ function html_updateHeadings {
         # Output action message.
         cli_printMessage $FILE 'AsUpdatingLine'
 
-        # Define html heading regular expression. Use parenthisis to save
-        # html option name, option value, and heading title.
-        PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
-
         # Define list of headings to process. When building the
         # heading, it is required to change spaces characters from its
-        # current output form to something different (e.g., its \040
-        # octal alternative). This is required because the space
+        # current decimal output to something different (e.g., its
+        # \040 octal alternative). This is required because the space
         # character is used as egrep default field separator and
         # spaces can be present inside heading strings we don't want
         # to separate.
@@ -101,26 +94,29 @@ function html_updateHeadings {
 
             # Transform heading information using initial heading
             # information as reference.
-            if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)=".*[^"]" (href|name)=".*[^"]">$' ]];then
+            if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)="(.*)" (href|name)="(.*)">$' ]];then
                 OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'" href="#head-'${MD5SM[$COUNT]}'">'
-            elif [[ ${OPTNS[$COUNT]} =~ '^<a name=".*[^"]">$' ]];then 
+            elif [[ ${OPTNS[$COUNT]} =~ '^<a name="(.*)">$' ]];then 
                 OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'">'
-            elif [[ ${OPTNS[$COUNT]} =~ '^<a href=".*[^"]">$' ]];then
+            elif [[ ${OPTNS[$COUNT]} =~ '^<a href="(.*)">$' ]];then
                 OPTNS[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'
             fi
 
             # Build final html heading structure.
             FINAL[$COUNT]='<h'${LEVEL[$COUNT]}'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'${LEVEL[$COUNT]}'>'
 
-            # Build html heading link structure.
+            # Build html heading link structure. These links are used
+            # by the table of contents later.
             LINK[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'${TITLE[$COUNT]}'</a>'
 
             # Build table of contents entry with numerical
-            # identifications.
+            # identifications. The numerical identification is what we
+            # use to determine the correct position of each heading
+            # link on the table of content.
             TOCENTRIES[$COUNT]="$COUNT:${LEVEL[$COUNT]}:${PARENT[$COUNT]}:${LINK[$COUNT]}"
 
-            # Update heading information using the first and last
-            # heading structures.
+            # Update heading information inside the current file being
+            # processed. Use the first and final heading information.
             sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
 
             # Increase heading counter.
@@ -128,7 +124,12 @@ function html_updateHeadings {
 
         done
 
-        # Use awk to build the table of content.
+        # Build the table of contents using heading numerical
+        # identifications as reference. The numerical identification
+        # describes the order of headings in one html file. This
+        # information is processed by awk to make the appropriate
+        # replacements. Finnally, the result is stored in the TOC
+        # variable.
         TOC=$(echo '<div class="toc">'
             echo "<h3>`gettext "Table of contents"`</h3>"
             for TOCENTRY in "${TOCENTRIES[@]}";do
@@ -182,12 +183,23 @@ function html_updateHeadings {
                          }')
 
 
-        # Update file's table of contents.
+        # Update table of contents inside the current file being
+        # processed.
         sed -i -r '/<div class="toc">(.*)<\/div>/c'"$(echo -e $TOC)" $FILE
 
         # Reset counters.
         COUNT=0
         PREVCOUNT=0
+
+        # Clean up variables to receive the next file.
+        unset FINAL
+        unset TITLE
+        unset MD5SM
+        unset OPTNS
+        unset LEVEL
+        unset PARENT
+        unset TOCENTRIES
+        unset LINK
 
     done
 

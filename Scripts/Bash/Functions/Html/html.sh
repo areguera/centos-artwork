@@ -25,8 +25,18 @@
 # ----------------------------------------------------------------------
     
 function html {
+
+    local FILES=''
+
+    # Define list of html files to process using option value as
+    # reference.
+    if [[ -d $OPTIONVAL ]];then
+        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.(html|htm)$')
+    elif [[ -f $OPTIONVAL ]];then
+        FILES=$OPTIONVAL
+    fi
     
-    # Initialize documentation functions and path patterns.
+    # Define command line interface for html-based actions.
     html_getActions 
 
 }
