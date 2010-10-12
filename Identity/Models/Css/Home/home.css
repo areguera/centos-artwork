@@ -50,14 +50,14 @@ div#page-body {
     background-color: #F8F8F8;
 	}
 
-div#page-body div#left {
+div#page-body div#content {
     margin-right: 180px;
     padding: 20px;
     border-right: 3px #EEE solid;
     background-color: #FFF;
     }
 
-div#page-body div#right {
+div#page-body div#content-links {
     float:right;
     width: 180px;
     font-size: small;
@@ -128,7 +128,7 @@ div#page-header div.links div.trail {
 	color: #fff;
 	}
 
-div#page-body div#left div.trail a {
+div#page-body div#content div.trail a {
     font-size: small;
     margin-right: 5px;
     }
@@ -162,12 +162,12 @@ div#page-header div.links div.trail span.last a {
 	}
 
 div#page-header div.links div.trail span:after,
-div#page-body div#left div.trail span:after {
+div#page-body div#content div.trail span:after {
 	content: "»";
 	}
 
 div#page-header div.links div.trail span.last:after,
-div#page-body div#left div.trail span.last:after {
+div#page-body div#content div.trail span.last:after {
 	content: none;
 	}
 
@@ -292,22 +292,22 @@ div#page-body ul {
     list-style: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ul.png") circle; 
     } 
 
-div#page-body div#right ul {
+div#page-body div#content-links ul {
     padding: 1em;
     margin: 0;
     list-style: none;
     border-top: 1px #EEE solid;
 }
 
-div#page-body div#right ul.first {
+div#page-body div#content-links ul.first {
     border-top: none;
     }
 
-div#page-body div#right ul li {
+div#page-body div#content-links ul li {
     padding: 2px;
     }
 
-div#page-body div#right ul li.current {
+div#page-body div#content-links ul li.current {
     font-weight: bold;
     }
 
