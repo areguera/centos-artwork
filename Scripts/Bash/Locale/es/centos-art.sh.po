@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh 0.1\n"
 "Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2010-09-25 19:45-0400\n"
-"PO-Revision-Date: 2010-09-25 19:49-0400\n"
+"POT-Creation-Date: 2010-10-12 23:48-0400\n"
+"PO-Revision-Date: 2010-10-12 23:50-0400\n"
 "Last-Translator:  Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -1036,7 +1036,9 @@ msgstr "2 colores escala de grices."
 msgid ""
 "The ACTIONS[0] variable only supports the \"renderImage\" or \"renderText\" "
 "value."
-msgstr "La variable ACTIONS[0] solo permite los valores \"renderImage\" ó \"renderText\"."
+msgstr ""
+"La variable ACTIONS[0] solo permite los valores \"renderImage\" ó "
+"\"renderText\"."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:56
 #, sh-format
@@ -1051,6 +1053,7 @@ msgid "The path provided can't be processed."
 msgstr "El camino suministrado no puede ser procesado."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActions.sh:55
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_getActions.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_getActions.sh:54
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_getActions.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_getActions.sh:41
@@ -1107,6 +1110,10 @@ msgstr "Neceista ejecutar este guión como el usuario root."
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkOptionValue.sh:65
 msgid "The path provided is not a valid directory."
 msgstr "El camino suministrado no es un directorio valido."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_updateHeadings.sh:134
+msgid "Table of contents"
+msgstr "Tabla de contenidos"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_checkLanguageLayout.sh:33
 msgid "The following documentation entry will be created:"
@@ -1167,15 +1174,15 @@ msgstr "El capítulo siguiente de documentación será creado:"
 msgid "Updating manual's output files"
 msgstr "Actualizando los ficheros de salida del manual"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_updateOutputFiles.sh:108
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_updateOutputFiles.sh:110
 msgid "The working copy has been updated."
 msgstr "La copia de trabajo ha sido actualizada."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_updateOutputFiles.sh:109
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_updateOutputFiles.sh:111
 msgid "Do you want to see changes now?"
 msgstr "¿Desea ver los cambios ahora?"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_updateOutputFiles.sh:111
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Help/help_updateOutputFiles.sh:113
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
 
