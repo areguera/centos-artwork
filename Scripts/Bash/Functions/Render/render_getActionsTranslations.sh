@@ -187,5 +187,5 @@ function render_getActionsTranslations {
         done
 
     done \
-        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Style/output_forRendering.awk
+        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
 }
