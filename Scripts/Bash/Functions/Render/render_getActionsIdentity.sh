@@ -57,7 +57,9 @@ function render_getActionsIdentity {
     for FILE in $(find $ARTCONF -name 'render.conf.sh');do
 
         # Output action message.
-        cli_printMessage "`gettext "Reading configuration file:"` $FILE"
+        cli_printMessage "`gettext "Configuration"`: $FILE" \
+            | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk 
+        echo '----------------------------------------------------------------------'
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
