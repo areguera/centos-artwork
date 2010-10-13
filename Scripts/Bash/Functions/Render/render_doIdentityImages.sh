@@ -108,10 +108,6 @@ function render_doIdentityImages {
                     render_doIdentityImageGrub $FILE
                     ;;
 
-                renderKSplash )
-                    render_doIdentityImageKsplash $FILE
-                    ;;
-
                 renderFormats:* )
                     render_doIdentityImageFormats $FILE "$ACTION"
                     ;;
@@ -139,11 +135,15 @@ function render_doIdentityImages {
         case "$ACTION" in
 
             groupByFormat:* )
-                render_doIdentityGroupByFormat "$FILE" "$ACTION"
+                render_doIdentityGroupByFormat "$ACTION"
+                ;;
+
+            renderKSplash )
+                render_doIdentityImageKsplash
                 ;;
 
             renderGdmTgz:* )
-                render_doIdentityGdmTgz "$FILE" "$ACTION"
+                render_doIdentityGdmTgz "$ACTION"
                 ;;
 
         esac
