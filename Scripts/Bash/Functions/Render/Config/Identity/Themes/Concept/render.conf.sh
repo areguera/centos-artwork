@@ -26,11 +26,9 @@
 
 function render_loadConfig {
 
-    # Define base rendering action.
-    ACTIONS[0]='renderImage'
-
-    # Define post-rendering actions.
-    ACTIONS[1]='renderFormats: jpg ps pdf pnm'
+    # Define rendering actions.
+    ACTIONS[0]='BASE:renderImage'
+    ACTIONS[1]='POST:renderFormats: jpg ps pdf pnm'
 
     # Define matching list.
     MATCHINGLIST=''

@@ -57,18 +57,22 @@ function render_doIdentity {
 
     # Define which type of rendering features does centos-art.sh
     # script is able to performs.
-    case ${ACTIONS[0]} in
+    for ACTION in "${BASEACTIONS[@]}"; do
 
-        'renderText' )
-            # Provides text rendering feature.
-            render_doIdentityTexts
-            ;;
+        case $ACTION in
 
-        'renderImage' )
-            # Provides image rendering feature.
-            render_doIdentityImages
-            ;;
+            'renderText' )
+                # Provides text rendering feature.
+                render_doIdentityTexts
+                ;;
 
-    esac
+            'renderImage' )
+                # Provides image rendering feature.
+                render_doIdentityImages
+                ;;
+
+        esac
+
+    done 
 
 }

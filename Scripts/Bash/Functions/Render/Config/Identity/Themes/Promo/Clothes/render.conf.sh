@@ -26,11 +26,8 @@
 
 function render_loadConfig {
 
-    # Define base rendering action.
-    ACTIONS[0]='renderImage'
-
-    # Define post-rendering actions.
-    #ACTIONS[1]=''
+    # Define rendering actions.
+    ACTIONS[0]='BASE:renderImage'
 
     # Define matching list.
     #MATCHINGLIST=''

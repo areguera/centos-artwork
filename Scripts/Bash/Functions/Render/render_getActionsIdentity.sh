@@ -59,10 +59,13 @@ function render_getActionsIdentity {
         # Output action message.
         cli_printMessage "`gettext "Reading configuration file:"` $FILE"
 
-        # Define artwork-specific actions array. We need to do this
+        # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
         # render_doIdentityImages execution.
         local -a ACTIONS
+        local -a BASEACTIONS
+        local -a POSTACTIONS
+        local -a LASTACTIONS
   
         # Initialize artwork-specific pre-rendering configuration
         # (function) scripts.
@@ -111,6 +114,9 @@ function render_getActionsIdentity {
         # want ACTIONS to do what we exactly tell it to do inside each
         # artwork-specific pre-rendering configuration script.
         unset ACTIONS
+        unset BASEACTIONS
+        unset POSTACTIONS
+        unset LASTACTIONS
 
     done
 

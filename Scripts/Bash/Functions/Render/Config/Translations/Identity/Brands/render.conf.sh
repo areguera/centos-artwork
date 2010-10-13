@@ -147,7 +147,5 @@ function render_loadConfig {
         done
 
     done \
-        | awk 'BEGIN {FS=": "} \
-            { if ( $0 ~ /^-+$/ ) print $0; else \
-                printf "%-15s\t%s\n", $1, $2 }'
+        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Style/output_forRendering.awk
 }

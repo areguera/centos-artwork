@@ -26,13 +26,47 @@
 
 function render_checkConfig {
 
-    # Check base rendering action.
-    if [[ ${ACTIONS[0]} == '' ]] \
-        || [[ ! ${ACTIONS[0]} =~ '^(renderImage|renderText)$' ]];then
+    local BASECOUNT=0
+    local POSTCOUNT=0
+    local LASTCOUNT=0
 
-        cli_printMessage "`gettext "The ACTIONS[0] variable only supports the \\\"renderImage\\\" or \\\"renderText\\\" value."`"
+    # Re-define action variables in separated array variables. Once
+    # verification is done, we remove the BASE, POST, LAST parts from
+    # action definition in order to have the plain name of function to
+    # call.
+    for ACTION in "${ACTIONS[@]}"; do
+
+        # Define base-rendering actions.
+        if [[ $ACTION =~ '^BASE:render(Text|Image)$' ]];then
+            ACTION=$(echo "$ACTION" | cut -d: -f2-) 
+            BASEACTIONS[$BASECOUNT]="$ACTION"
+            BASECOUNT=$(($BASECOUNT + 1))
+
+        # Define post-rendering actions.
+        elif [[ $ACTION =~ '^POST:' ]];then
+            ACTION=$(echo "$ACTION" | cut -d: -f2-) 
+            POSTACTIONS[$POSTCOUNT]="$ACTION"
+            POSTCOUNT=$(($POSTCOUNT + 1))
+
+        # Define last-rendering actions.
+        elif [[ $ACTION =~ '^LAST:' ]];then
+            ACTION=$(echo "$ACTION" | cut -d: -f2-) 
+            LASTACTIONS[$LASTCOUNT]="$ACTION"
+            LASTCOUNT=$(($LASTCOUNT + 1))
+        fi
+
+    done
+
+    # Check base-rendering actions. The base-rendering action defines
+    # what kind of rendering does centos-art.sh script performs.
+    # Presently, we only support image rendering (renderImage) and
+    # text rendering (renderText) as base-rendering actions. 
+    if [[ ${#BASEACTIONS[*]} -lt 1 ]];then
+        cli_printMessage "`gettext "The BASE action is not defined."`"
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
-
+    elif [[ ${#BASEACTIONS[*]} -gt 1 ]];then
+        cli_printMessage "`gettext "Just one definition for BASE action is supported."`"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Check post-rendering actions. Validation of post-rendering

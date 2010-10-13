@@ -23,9 +23,6 @@
 # $Id: build-targz.sh 42 2010-09-17 05:51:32Z al $
 # ----------------------------------------------------------------------
 
-# Initialize functions
-. ~/artwork/trunk/Scripts/Bash/initFunctions.sh
-
 # Define artwork component
 ARTCOMP="Themes/Distro/BootUp/GDM"
 

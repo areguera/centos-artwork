@@ -26,11 +26,9 @@
 
 function render_loadConfig {
 
-    # Define base rendering action.
-    ACTIONS[0]='renderText'
-
-    # Define post-rendering actions.
-    ACTIONS[1]='formatText: --width=70 --uniform-spacing'
+    # Define rendering actions.
+    ACTIONS[0]='BASE:renderText'
+    ACTIONS[1]='POST:formatText: --width=70 --uniform-spacing'
 
     # Defines matching list.
     MATCHINGLIST="\

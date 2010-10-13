@@ -42,18 +42,8 @@ function render_doIdentityTexts {
             rm $INSTANCE
         fi
 
-        # Check post-rendering actions. Do we have any? If we don't,
-        # then continue with the next file in the loop.
-        if [[ ${#ACTIONS[@]} -lt 1 ]];then
-            continue
-        fi
-
         # Execute post-rendering actions.
-        for ACTION in "${ACTIONS[@]}"; do
-
-            if [[ "$ACTION" == '' ]];then
-                continue
-            fi
+        for ACTION in "${POSTACTIONS[@]}"; do
 
             case "$ACTION" in
 
@@ -68,8 +58,15 @@ function render_doIdentityTexts {
         echo '----------------------------------------------------------------------'
 
     done \
-        | awk 'BEGIN {FS=": "} \
-            { if ( $0 ~ /^-+$/ ) print $0; else \
-                printf "%s: \t%s\n", $1, $2 }'
+        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Style/output_forRendering.awk
+
+    # Execute last-rendering actions.
+    #for ACTION in "${LASTACTIONS[@]}"; do
+    #
+    #    case "$ACTION" in
+    #
+    #    esac
+    #
+    #done
 
 }

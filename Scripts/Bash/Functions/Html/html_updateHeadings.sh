@@ -135,53 +135,7 @@ function html_updateHeadings {
             for TOCENTRY in "${TOCENTRIES[@]}";do
                 echo $TOCENTRY
             done \
-                | awk 'BEGIN {FS=":"}
-                         {
-                         if ($1 == 0 && $2 == $3) { 
-                            opentags  = "<ul><li>"
-                            closetags = ""
-                            }
-
-                         if ($1 >  0 && $2 >  $3) {
-                            opentags  = "<ul><li>"
-                            closetags = ""
-                            }
-
-                         if ($1 >  0 && $2 == $3) { 
-                            opentags  = "</li><li>"
-                            closetags = ""
-                            }
-
-                         if ($1 >  0 && $2 <  $3) { 
-                                opentags = ""
-                            for (i = 1; i <= ($3 - $2); i++) {
-                                opentags  = opentags "</li></ul>"
-                                closetags = ""
-                                }
-                                opentags = opentags "</li><li>"
-                            }
-
-                         printf "%s%s%s\n",opentags,$4,closetags
-                         }
-
-                     END {
-                         if ($1 > 0 && $2 >= $3 && $3 > 1) {
-                            for (i = 1; i <= $3; i++) {
-                                print "</li></ul>"
-                            }
-                         }
-                         if ($1 > 0 && $2 >= $3 && $3 == 1) {
-                                print "</li></ul>"
-                                print "</li></ul>"
-                         }
-                         if ($1 > 0 && $2 < $3) {
-                            for (i = 1; i <= $2; i++) {
-                                print "</li></ul>"
-                            }
-                         }
-                         print "</div>"
-                         }')
-
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Style/output_forHeadingsToc.awk)
 
         # Update table of contents inside the current file being
         # processed.

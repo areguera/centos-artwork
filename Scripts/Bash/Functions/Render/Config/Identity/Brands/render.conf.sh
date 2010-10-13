@@ -29,11 +29,9 @@ function render_loadConfig {
     local TRANSLATION=''
     local TEMPLATE=''
 
-    # Define base rendering action.
-    ACTIONS[0]='renderImage'
-
-    # Define post-rendering action.
-    ACTIONS[1]='renderBrands: tif xpm pdf ppm'
+    # Define rendering actions.
+    ACTIONS[0]='BASE:renderImage'
+    ACTIONS[1]='POST:renderBrands: tif xpm pdf ppm'
 
     # Define matching list.
     MATCHINGLIST="\

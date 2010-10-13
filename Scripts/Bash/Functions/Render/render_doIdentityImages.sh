@@ -95,18 +95,8 @@ function render_doIdentityImages {
             rm $INSTANCE
         fi
 
-        # Check post-rendering actions. Do we have any? If we don't,
-        # then continue with the next file in the list.
-        if [[ ${#ACTIONS[@]} -lt 1 ]];then
-            continue
-        fi
-
         # Execute post-rendering actions.
-        for ACTION in "${ACTIONS[@]}"; do
-
-            if [[ "$ACTION" == '' ]] || [[ "$ACTION" == 'renderImage' ]];then
-                continue
-            fi
+        for ACTION in "${POSTACTIONS[@]}"; do
 
             case "$ACTION" in
 
@@ -131,7 +121,7 @@ function render_doIdentityImages {
                     ;;
 
                 groupByFormat:* )
-                    groupByFormat "$FILE" "$ACTION"
+                    render_doIdentityGroupByFormat "$FILE" "$ACTION"
                     ;;
 
             esac
@@ -141,8 +131,23 @@ function render_doIdentityImages {
         echo '----------------------------------------------------------------------'
 
    done \
-      | awk 'BEGIN {FS=": "} \
-         { if ( $0 ~ /^-+$/ ) print $0; else \
-            printf "%-15s\t%s\n", $1, $2 }'
+      | awk -f /home/centos/artwork/trunk/Scripts/Bash/Style/output_forRendering.awk
+
+    # Execute post-rendering actions.
+    for ACTION in "${LASTACTIONS[@]}"; do
+
+        case "$ACTION" in
+
+            groupByFormat:* )
+                render_doIdentityGroupByFormat "$FILE" "$ACTION"
+                ;;
+
+            renderGdmTgz:* )
+                render_doIdentityGdmTgz "$FILE" "$ACTION"
+                ;;
+
+        esac
+
+    done
 
 }
