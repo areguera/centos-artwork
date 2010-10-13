@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh 0.1\n"
 "Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2010-10-12 23:48-0400\n"
-"PO-Revision-Date: 2010-10-12 23:50-0400\n"
+"POT-Creation-Date: 2010-10-13 12:31-0400\n"
+"PO-Revision-Date: 2010-10-13 12:31-0400\n"
 "Last-Translator:  Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -1032,15 +1032,16 @@ msgstr "Diseño"
 msgid "2 colors grayscale"
 msgstr "2 colores escala de grices."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:33
-msgid ""
-"The ACTIONS[0] variable only supports the \"renderImage\" or \"renderText\" "
-"value."
-msgstr ""
-"La variable ACTIONS[0] solo permite los valores \"renderImage\" ó "
-"\"renderText\"."
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:65
+#, fuzzy
+msgid "The BASE action is not defined."
+msgstr "La acción suministrada no es válida."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:56
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:68
+msgid "Just one definition for BASE action is supported."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:90
 #, sh-format
 msgid "The \"$THEMEMODEL\" theme model doesn't exist."
 msgstr "El modelo de diseño \"$THEMEMODEL\" no existe."
@@ -1077,8 +1078,8 @@ msgid "The \"$RELEASE\" release number isn't valid."
 msgstr "La número de entrega \"$RELEASE\" no es válido."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:60
-msgid "Reading configuration file:"
-msgstr ""
+msgid "Configuration"
+msgstr "Configuración"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:47
 #, sh-format
@@ -2077,6 +2078,13 @@ msgstr "El fichero \"$FILE\" no es un enlace simbólico."
 #, sh-format
 msgid "The file \"$FILE\" doesn't exist."
 msgstr "El fichero \"$FILE\" no existe."
+
+#~ msgid ""
+#~ "The ACTIONS[0] variable only supports the \"renderImage\" or \"renderText"
+#~ "\" value."
+#~ msgstr ""
+#~ "La variable ACTIONS[0] solo permite los valores \"renderImage\" ó "
+#~ "\"renderText\"."
 
 #~ msgid "Package"
 #~ msgstr "Paquete"

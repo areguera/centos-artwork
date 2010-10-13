@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-12 23:48-0400\n"
+"POT-Creation-Date: 2010-10-13 12:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1032,13 +1032,15 @@ msgstr ""
 msgid "2 colors grayscale"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:33
-msgid ""
-"The ACTIONS[0] variable only supports the \"renderImage\" or \"renderText\" "
-"value."
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:65
+msgid "The BASE action is not defined."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:56
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:68
+msgid "Just one definition for BASE action is supported."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:90
 #, sh-format
 msgid "The \"$THEMEMODEL\" theme model doesn't exist."
 msgstr ""
@@ -1073,7 +1075,7 @@ msgid "The \"$RELEASE\" release number isn't valid."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:60
-msgid "Reading configuration file:"
+msgid "Configuration"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:47
