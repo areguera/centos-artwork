@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 3 2010 by texi2html 1.76 -->
+<!-- Created on October, 12 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.50 trunk/Translations/Identity/Brands</title>
+<title>CentOS Artwork Repository: 3.50 trunk/Scripts/Perl</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.50 trunk/Translations/Identity/Brands">
-<meta name="keywords" content="CentOS Artwork Repository: 3.50 trunk/Translations/Identity/Brands">
+<meta name="description" content="CentOS Artwork Repository: 3.50 trunk/Scripts/Perl">
+<meta name="keywords" content="CentOS Artwork Repository: 3.50 trunk/Scripts/Perl">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,152 +56,58 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_52.html#SEC271" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC273" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_52.html#SEC263" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC265" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC321" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC321" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Translations-Identity-Brands"></a>
-<a name="SEC272"></a>
-<h2 class="section"> 3.50 trunk/Translations/Identity/Brands </h2>
+<a name="trunk-Scripts-Perl"></a>
+<a name="SEC264"></a>
+<h2 class="section"> 3.50 trunk/Scripts/Perl </h2>
 
 
-<a name="SEC273"></a>
+<a name="SEC265"></a>
 <h3 class="subsection"> 3.50.1 Goals </h3>
 
 <ul class="toc">
-<li> Organize brands' translation files.
+<li> ...
 </li></ul>
 
 
-<a name="SEC274"></a>
+<a name="SEC266"></a>
 <h3 class="subsection"> 3.50.2 Description </h3>
 
-<p>Translation files, inside <tt>`trunk/Translations/Identity/Brands'</tt>
-translation entry, don't use default rendering translation
-functionality, they use the following translation pre-rendering
-configuration file instead:
-</p>
-<pre class="verbatim">/home/centos/artwork/trunk/Translation/Identity/Brands/render.conf.sh
-</pre>
-<p>Inside <tt>`trunk/Translations/Identity/Brands'</tt> translation entry,
-translation files are symbolic links pointing to the common template
-translation structure, inside the translation template (<samp>`Tpl/'</samp>)
-directory.
-</p>
-<p>Inside <tt>`trunk/Translations/Identity/Brands'</tt> translation entry,
-translation files are created using identity design templates as
-reference.  The translation pre-rendering script creates a translation
-structure where the translation template (<samp>`Tpl/'</samp>) directory
-structure applies to each single design template available.
-</p>
-<p>For example, if the brands' translation template (<samp>`Tpl/'</samp>)
-directory has 30 translation files, and there are 20 design templates;
-the brands' translation pre-rendering script creates a translation
-structure of symbolic links where the 30 translation files apply the
-20 design templates one by one, producing 600 translation symbolic
-links as result. At this point, when rendering identity, the
-<code>centos-art</code> script considers translation symbolic links as
-translation files.
-</p>
-<p>Translation file names, inside brands' translation template
-(<samp>`Tpl'</samp>) directory have special meaning:
-</p>
 
-<a name="SEC275"></a>
-<h4 class="subsubsection"> 3.50.2.1 Conventional file names </h4>
-
-<p>Convenctional file names look like <tt>`blue.sed'</tt>, <tt>`2c-a.sed'</tt>,
-etc.  Replacement commands inside translation file are applied to
-design templates and translation file names are used as final image
-name.  The image dimensions use the same dimensions that design
-template has.
-</p>
-
-<a name="SEC276"></a>
-<h4 class="subsubsection"> 3.50.2.2 Numeric file names </h4>
-
-<p>Numeric file names look like <tt>`300.sed'</tt>, <tt>`200.sed'</tt>, etc.
-Replacements commands inside translation files are applied to design
-templates, and translation file names are used as final image name.
-The final image is saved using an specific <samp>`width'</samp> defined by the
-number part of the translation file name. The image <samp>`height'</samp> is
-automatically scaled based on the previous <samp>`width'</samp> definition to
-maintain the design's ratio.  
-</p>
-<p>For example, if your design template has 400x200 pixels of dimension,
-and you apply a translation file named `300.sed' to it, the final
-image you get as result will have 300x100 pixels of dimension.   The
-same is true if you use higher numbers like `1024.sed', `2048.sed',
-etc. In these cases you have bigger images proportionally.
-</p>
-<p>As we are using scalable vector graphics to design identity templates,
-the image size you produce is not limitted in size. You can use one
-design template produced in 400x200 pixels to produce larger or
-shorter PNG images using numeric translation files as described
-above.
-</p>
-
-<a name="SEC277"></a>
-<h4 class="subsubsection"> 3.50.2.3 Translation markers </h4>
-
-<p>Inside <tt>`trunk/Translations/Identity/Brands/'</tt>, translation files
-combine the following translation markers:
-</p>
-<dl compact="compact">
-<dt> <samp>`#000000'</samp></dt>
-<dd>
-<p>Specify which color to use when rendering brand images.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> As translation files inside
-<tt>`trunk/Translations/Identity/Brands'</tt> are symbolic links that
-point to template translation files, translation markers are defined
-inside template translation files.
-</p></blockquote>
-</dd>
-</dl>
-
-
-<a name="SEC278"></a>
+<a name="SEC267"></a>
 <h3 class="subsection"> 3.50.3 Usage </h3>
 
-<p>To render brands' translation files, use the following command:
-</p>
-<pre class="verbatim">centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Brands
-</pre>
 
-<a name="SEC279"></a>
+<a name="SEC268"></a>
 <h3 class="subsection"> 3.50.4 See also </h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_54.html#SEC280">3.51 trunk/Translations/Identity/Brands/Tpl</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_5.html#SEC20">3.2 trunk/Identity/Brands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC278" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_54.html#SEC280" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC267" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_54.html#SEC269" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC272" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC321" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC264" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 3 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 12 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
