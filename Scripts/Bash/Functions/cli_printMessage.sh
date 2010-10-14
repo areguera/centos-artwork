@@ -74,42 +74,47 @@ function cli_printMessage {
 
         'AsUpdatingLine' )
             echo "`gettext "Updating"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsRemovingLine' )
             echo "`gettext "Removing"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsCheckingLine' )
             echo "`gettext "Checking"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsCreatingLine' )
             echo "`gettext "Creating"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsSavedAsLine' )
             echo "`gettext "Saved as"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsLinkToLine' )
             echo "`gettext "Linked to"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsMovedToLine' )
             echo "`gettext "Moved to"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsTranslationLine' )
             echo "`gettext "Translation"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            ;;
+
+        'AsConfigurationLine' )
+            echo "`gettext "Configuration"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         'AsResponseLine' )
@@ -144,7 +149,7 @@ function cli_printMessage {
 
         'AsRegularLine' )
             echo "$MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
         * )

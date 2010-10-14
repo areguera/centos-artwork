@@ -127,7 +127,7 @@ function render_doIdentityImages {
         echo '----------------------------------------------------------------------'
 
     done \
-        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 
     # Execute post-rendering actions.
     for ACTION in "${LASTACTIONS[@]}"; do
