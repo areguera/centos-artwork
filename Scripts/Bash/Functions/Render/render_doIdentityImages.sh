@@ -116,8 +116,8 @@ function render_doIdentityImages {
                     render_doIdentityImageBrands "$FILE" "$ACTION"
                     ;;
 
-                groupByFormat:* )
-                    render_doIdentityGroupByFormat "$FILE" "$ACTION"
+                groupByType:* )
+                    render_doIdentityGroupByType "$FILE" "$ACTION"
                     ;;
 
             esac
@@ -134,12 +134,12 @@ function render_doIdentityImages {
 
         case "$ACTION" in
 
-            groupByFormat:* )
-                render_doIdentityGroupByFormat "$ACTION"
-                ;;
-
             renderKSplash )
                 render_doIdentityImageKsplash
+                ;;
+
+            groupByType:* )
+                render_doIdentityGroupByType "$ACTION"
                 ;;
 
             renderGdmTgz:* )

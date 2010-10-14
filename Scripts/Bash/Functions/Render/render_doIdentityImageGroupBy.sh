@@ -1,29 +1,47 @@
 #!/bin/bash
 #
-# groupByFormats.sh -- This function provides post-rendering action
-# used to group images by format.  This function create a directory
-# for for the image format and move the image file inside it.  For
-# example: if the current file is a png file, it is moved inside a png
-# directory; if the current file is a jpg file, it is stored inside a
-# jpg directory, and so on.
+# render_doIdentityGroupByTypes.sh -- This function provides
+# post-rendering and last-rendering action to group file inside
+# directories named as their file type.
 #
-# For this function to work correctly, you need to specify which formats you
-# want to group. This is done in the post-rendering ACTIONS array inside the
-# appropriate render.conf.sh script. 
+#   Usage:
+#   ------
+#   Post-rendering --> render_doIdentityGroupByTypes "$FILE" "$ACTION"
+#   Last-rendering --> render_doIdentityGroupByTypes "$ACTION"
 #
-# For example, the following two lines will create a jpg, ppm, xpm, and tif
-# file for each png file and will group them all by its format, inside
-# directories named as the file format they contain inside (i.e. png, jpg,
-# ppm, xpm, tif). 
+#   Note that post-rendering uses 2 arguments ($FILE and $ACTION) and
+#   last-rendering just one ($ACTION). This function uses the amount
+#   of arguments to determine when it is acting as post-rendering and
+#   when as last-rendering.
+#
+# This function create one directory for each different file type.
+# Later files are moved inside directories respectively.  For example:
+# if the current file is a .png file, it is moved inside a Png/
+# directory; if the current file is a .jpg file, it is stored inside a
+# Jpg/ directory, and so on.
+#
+# For this function to work correctly, you need to specify which file
+# type you want to group. This is done in the post-rendering ACTIONS
+# array inside the appropriate `render.conf.sh' pre-configuration
+# script. 
+#
+# For example, the following three lines will create one jpg, ppm,
+# xpm, and tif file for each png file available and groups them all by
+# its file type, inside directories named as their file type (i.e.
+# Png, Jpg, Ppm, Xpm, Tif). Note that in the example, groupByType is
+# ivoked as post-rendering action. If you want to invoke it as
+# last-rendering action use LAST definition instead of POST.
 #     
-#     ACTIONS[0]="renderFormats: jpg, ppm, xpm, tif"
-#     ACTIONS[1]="groupByFormat: png, jpg, ppm, xpm, tif"
+#   ACTIONS[0]='BASE:renderImage' 
+#   ACTIONS[1]='POST:renderFormats: jpg, ppm, xpm, tif' 
+#   ACTIONS[2]='POST:groupByType: png, jpg, ppm, xpm, tif'
 #
-# groupByFormat function is generally used with renderFormats function. Both
-# definitions should match the type of formats you want to have rendered and
-# grouped. You don't need to specify the png format in renderFormats'
-# definition, but in groupByFormats's definition it should be specified.
-# Otherwise png files will not be grouped inside a png directory.
+# groupByType function is generally used with renderFormats function.
+# Both definitions must match the file type you want to have rendered
+# and grouped. You don't need to specify the png file type in
+# renderFormats' definition, but in groupByType's definition it must
+# be specified.  Otherwise png files will not be grouped inside a png
+# directory.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -46,44 +64,105 @@
 # $Id: render_doIdentityImageGroupBy.sh 56 2010-09-17 11:07:26Z al $
 # ----------------------------------------------------------------------
 
-function groupByFormat {
+function render_doIdentityGroupByType {
 
-   # Get absolute path of PNG image file.
-   local FILE="$1"
+    local FILE=''
+    local -a FILES
+    local -a PATTERNS
+    local FORMATS=''
+    local SOURCE=''
+    local TARGET=''
+    local COUNT=0
 
-   # Get image formats.
-   local FORMATS=$(echo "$2" | cut -d: -f2-)
+    if [[ $# -eq 1 ]];then
+        # Define file types for post-rendering action.
+        FORMATS=$1
+    elif [[ $# -eq 2 ]];then
+        # Define file types for last-rendering action.
+        FORMATS=$2
+    else
+        cli_printMessage "`gettext "groupByType: Wrong invokation."`"
+        cli_printMessage $(caller) "AsToKnowMoreLine"
+    fi
 
-   # Sanitize image formats.
-   FORMATS=$(echo "${FORMATS}" \
-      | sed -r 's!^ *!!g' \
-      | sed -r 's!( |:|,|;) *! !g' \
-      | sed -r 's! *$!!g')
+    # Sanitize file types passed from render.conf.sh pre-rendering
+    # configuration script.
+    FORMATS=$(echo "${FORMATS}" \
+        | cut -d: -f2- \
+        | sed -r 's!^ *!!g' \
+        | sed -r 's!( |:|,|;) *! !g' \
+        | sed -r 's! *$!!g')
 
-   # Check image formats.
-   if [ "$FORMATS" != "" ];then
+    # Check file types passed from render.conf.sh pre-rendering
+    # configuration script.
+    if [[ "$FORMATS" == "" ]];then
+        cli_printMessage "`gettext "groupByType: There is no file type information to process."`"
+        cli_printMessage $(caller) "AsToKnowMoreLine"
+    fi
 
-      # Loop through image formats and do group by format.
-      for FORMAT in $FORMATS;do
+    if [[ $# -eq 1 ]];then
 
-         # Redifine file path to add format directory
-         local SOURCE=${FILE}.${FORMAT}
-         local TARGET=$(dirname $FILE)/${FORMAT}
+        # Define pattern for file extensions.
+        PATTERNS[0]=$(echo "$FORMATS" | sed 's! !|!g')
 
-         # Check target directory existence.
-         if [ ! -d $TARGET ];then
-            mkdir $TARGET
-         fi
+        # Define pattern for directories.
+        PATTERNS[1]=$(echo $(for i in $FORMATS; do cli_getRepoName 'd' $i; done) | sed 's! !|!g')
 
-         # Redifine file path to add file and its format.
-         TARGET=${TARGET}/$(basename $FILE).${FORMAT}
+        # Define pattern for path. The path pattern combines both file
+        # extension and directories patterns. This pattern is what we
+        # use to match rendered file.
+        PATTERNS[2]="^.*[^(${PATTERNS[1]})]/[[:alpha:]_-]+\.(${PATTERNS[0]})$"
 
-         # Move file into its format location.
-         echo "Moved to: $TARGET"
-         mv ${SOURCE} ${TARGET}
+        # Define list of files to process when acting as
+        # last-rendering action. There may be many different files to
+        # process here, so we need to build a list with them all
+        # (without duplications).
+        for FILE in $(find $OPTIONVAL -regextype posix-egrep -type f -regex ${PATTERNS[2]} \
+            | sed -r 's!\.[[:alpha:]]{1,4}$!!' | sort | uniq \
+            | egrep $REGEX);do
+            FILES[$COUNT]="$FILE"
+            COUNT=$(($COUNT + 1))
+        done
+
+    elif [[ $# -eq 2 ]];then
+
+        # Define list of files to process when action as
+        # post-rendering action. There is just one value to process
+        # here, the one being currently rendered.
+        FILES[0]="$1"
+        
+    fi
+
+    # Start processing list of files.
+    for FILE in "${FILES[@]}";do
+
+        for FORMAT in $FORMATS;do
+
+            # Redifine file path to add file type directory
+            SOURCE=${FILE}.${FORMAT}
+            TARGET=$(dirname $FILE)/$(cli_getRepoName 'd' "$FORMAT")
+
+            # Check existence of source file.
+            cli_checkFiles $SOURCE 'f' '' '--quiet'
+            if [[ $? -ne 0 ]];then
+                continue
+            fi
+
+            # Check existence of target directory.
+            cli_checkFiles $TARGET 'd' '' '--quiet'
+            if [[ $? -ne 0 ]];then
+                mkdir $TARGET
+            fi
+
+            # Redifine file path to add file and its type.
+            TARGET=${TARGET}/$(basename $FILE).${FORMAT}
+
+            # Move file into its final location.
+            cli_printMessage "$TARGET" 'AsMovedToLine'
+            mv ${SOURCE} ${TARGET}
 
       done
 
-   fi
+    done
 
 }
