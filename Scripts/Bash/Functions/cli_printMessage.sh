@@ -73,31 +73,43 @@ function cli_printMessage {
             ;;
 
         'AsUpdatingLine' )
-            echo "`gettext "Updating"`: $MESSAGE"
+            echo "`gettext "Updating"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsRemovingLine' )
-            echo "`gettext "Removing"`: $MESSAGE"
+            echo "`gettext "Removing"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsCheckingLine' )
-            echo "`gettext "Checking"`: $MESSAGE"
+            echo "`gettext "Checking"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsCreatingLine' )
-            echo "`gettext "Creating"`: $MESSAGE"
+            echo "`gettext "Creating"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsSavedAsLine' )
-            echo "`gettext "Saved as"`: $MESSAGE"
+            echo "`gettext "Saved as"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsLinkToLine' )
-            echo "`gettext "Linked to"`: $MESSAGE"
+            echo "`gettext "Linked to"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+            ;;
+
+        'AsMovedToLine' )
+            echo "`gettext "Moved to"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsTranslationLine' )
-            echo "`gettext "Translation"`: $MESSAGE"
+            echo "`gettext "Translation"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
             ;;
 
         'AsResponseLine' )
@@ -125,10 +137,17 @@ function cli_printMessage {
             MESSAGE=$(echo $MESSAGE | cut -d ' ' -f2-)
             MESSAGE="$(dirname $MESSAGE)' --filter='$(basename $MESSAGE)"
             echo "`gettext "To know more, run"`: centos-art help --read='$MESSAGE'"
-            exit
+            exit # <-- ATTENTION: Do not remove this line. We use this
+                 #                case as convenction to end script
+                 #                execution.
             ;;
 
-        'AsRegularLine' | * )
+        'AsRegularLine' )
+            echo "$MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Styles/output_forRendering.awk
+            ;;
+
+        * )
             echo "$MESSAGE"
             ;;
 

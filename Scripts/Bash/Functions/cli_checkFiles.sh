@@ -4,10 +4,10 @@
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License as
-# published by the Free Software Foundation; either version 2 of the
-# License, or (at your option) any later version.
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,6 +29,7 @@ function cli_checkFiles {
     local FILE="$1"
     local TYPE="$2"
     local ACTION="$3"
+    local OPTIONS="$4"
     local MESSAGE=''
 
     # Check amount of paramaters passed. At least one argument should
@@ -46,7 +47,7 @@ function cli_checkFiles {
     # Check file provided.
     if [[ $FILE == '' ]];then
         MESSAGE="`gettext "Unknown"`"
-        cli_printMessage "${ACTION}: $MESSAGE"
+        cli_printMessage "${ACTION}: $MESSAGE" "AsRegularLine"
         return 1
     fi
 
@@ -91,13 +92,26 @@ function cli_checkFiles {
 
     esac
 
-   # If there is some message print it. 
-   if [[ "$MESSAGE" == '' ]];then
-       cli_printMessage "${ACTION}: $FILE"
-       return 0
-   else
-       cli_printMessage "${ACTION}: $MESSAGE"
-       return 1
-   fi
+    # If there is some message print it when there is no `--quiet'
+    # option passed as fourth argument. 
+    if [[ "$MESSAGE" == '' ]];then
+        for OPTION in $OPTIONS;do 
+            case $OPTION in
+                '--quiet' )
+                    return 0
+            esac
+        done
+        cli_printMessage "${ACTION}: $FILE" "AsRegularLine"
+        return 0
+    else
+        for OPTION in $OPTIONS;do 
+            case $OPTION in
+                '--quiet' )
+                    return 1
+            esac
+        done
+        cli_printMessage "${ACTION}: $MESSAGE" "AsRegularLine"
+        return 1
+    fi
 
 }
