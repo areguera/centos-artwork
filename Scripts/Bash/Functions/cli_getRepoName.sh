@@ -3,7 +3,7 @@
 # cli_getRepoName.sh -- This function sets naming convenction. Inside
 # CentOS Artowrk Repository, regular files are written in lower case
 # and directories are written in lower case but with the first letter
-# in upper case. Use this function to sanitize the name of regular
+# in upper case. Use this function to sanitate the name of regular
 # files and directories you work with.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado

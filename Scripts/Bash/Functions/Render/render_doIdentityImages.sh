@@ -138,13 +138,14 @@ function render_doIdentityImages {
                 render_doIdentityImageKsplash
                 ;;
 
+            renderGdmTgz:* )
+                render_doIdentityImageGdm "$ACTION"
+                ;;
+
             groupByType:* )
                 render_doIdentityGroupByType "$ACTION"
                 ;;
 
-            renderGdmTgz:* )
-                render_doIdentityGdmTgz "$ACTION"
-                ;;
 
         esac
 

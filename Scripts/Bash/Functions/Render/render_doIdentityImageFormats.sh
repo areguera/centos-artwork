@@ -35,7 +35,7 @@ function render_doIdentityImageFormats {
     # Get image formats.
     local FORMATS=$(echo "$2" | cut -d: -f2-)
 
-    # Sanitize image formats.
+    # Sanitate image formats.
     FORMATS=$(echo "${FORMATS}" \
         | sed -r 's!^ *!!g' \
         | sed -r 's!( |:|,|;) *! !g' \

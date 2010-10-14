@@ -85,7 +85,7 @@ function render_doIdentityGroupByType {
         cli_printMessage $(caller) "AsToKnowMoreLine"
     fi
 
-    # Sanitize file types passed from render.conf.sh pre-rendering
+    # Sanitate file types passed from render.conf.sh pre-rendering
     # configuration script.
     FORMATS=$(echo "${FORMATS}" \
         | cut -d: -f2- \
