@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 12 2010 by texi2html 1.76 -->
+<!-- Created on October, 15 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.30 trunk/Identity/Widgets</title>
+<title>CentOS Artwork Repository: 3.30 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.30 trunk/Identity/Widgets">
-<meta name="keywords" content="CentOS Artwork Repository: 3.30 trunk/Identity/Widgets">
+<meta name="description" content="CentOS Artwork Repository: 3.30 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds">
+<meta name="keywords" content="CentOS Artwork Repository: 3.30 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -61,53 +61,109 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC348" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC348" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Identity-Widgets"></a>
+<a name="trunk-Identity-Themes-Motifs-TreeFlower-Backgrounds"></a>
 <a name="SEC172"></a>
-<h2 class="section"> 3.30 trunk/Identity/Widgets </h2>
+<h2 class="section"> 3.30 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds </h2>
 
 
 <a name="SEC173"></a>
 <h3 class="subsection"> 3.30.1 Goals </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
-
+<p>This section exists to orgnize TreeFlower's backgrounds.
+</p>
 
 <a name="SEC174"></a>
 <h3 class="subsection"> 3.30.2 Description </h3>
 
 
 <a name="SEC175"></a>
-<h3 class="subsection"> 3.30.3 Usage </h3>
+<h4 class="subsubsection"> 3.30.2.1 How to create backgrounds </h4>
 
+<p>Once you have defined the vectorial artistic motif design, use the
+<code>centos-art.sh</code> script (as described in usage section below)
+to produce the png version of it. With the png version of your
+vectorial design do the following:
+</p>
+<p>Open the png version with GIMP.
+</p>
+<p>Save the png version as gimp's project inside
+<tt>`trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Xcf'</tt>
+directory, using the same name of your vectorial design but with the
+<samp>`.xcf'</samp> extension.  
+</p>
+<p>Now use GIMP to improve your design.  Here you may add one layer for
+pattern, another for colors, and so on until you find yourself
+confortable with your artwork. For example, in the revision 241 of
+TreeFlower's backgrounds we use four layers, from bottom to top:
+</p>
+<p><strong>Background:</strong> This is the lowest layer in the image. This layer
+contains the png version of our TreeFlower's artistic motif.
+</p>
+<p><strong>Pattern:</strong> Above background layer we have pattern. This layer
+contains a stripes (48x48) pattern and opacity is reduced to 10%.
+</p>
+<p><strong>Color#1:</strong> Above pattern layer we have one color layer. This
+layer gives an orange (ffae00) touch to our design to some how kill
+the artistic motif intensive white color. The opacity of this layer is
+reduced to 15%.
+</p>
+<p><strong>Color#2:</strong> Above color#1 layer we have another color layer.
+This layer gives a blue (0066ff) touch to our design to find between
+the orange, blue, white tones a passive tone color for the background.
+The opacity of this layer is reduced to 10%.
+</p>
+<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> There is no definite combination. To get the appropriate
+visual design is a matter of constant testing.
+</p></blockquote>
+
+<p>Finally, use the GIMP's <samp>`Save as copy ...'</samp> option to export
+the final design. To export the final design use the same name of your
+vectorial design plus <samp>`-final-1.png'</samp> extension. The numer 1 in
+the example represents the release of your final image. For example,
+if your vectorial file is <samp>`800x600.svg'</samp>, the first release of
+your final image does look like <samp>`800x600-final-1.png'</samp>, if a
+second release is available then it would be
+<samp>`800x600-final-2.png'</samp>, and so on for other releases. This is
+useful to track old work while new design improvements are made. 
+</p>
+<p>You can repeat these steps to create images for other screen
+resolutions.
+</p>
 
 <a name="SEC176"></a>
+<h3 class="subsection"> 3.30.3 Usage </h3>
+
+<ul class="toc">
+<li> ...
+</li></ul>
+
+
+<a name="SEC177"></a>
 <h3 class="subsection"> 3.30.4 See also </h3>
 
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC175" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_34.html#SEC177" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC176" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_34.html#SEC178" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC172" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC348" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 12 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 15 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

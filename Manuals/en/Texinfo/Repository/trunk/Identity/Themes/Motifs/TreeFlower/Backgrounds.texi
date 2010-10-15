@@ -1,0 +1,69 @@
+@subsection Goals
+
+This section exists to orgnize TreeFlower's backgrounds.
+
+@subsection Description
+
+@subsubsection How to create backgrounds
+
+Once you have defined the vectorial artistic motif design, use the
+@command{centos-art.sh} script (as described in usage section below)
+to produce the png version of it. With the png version of your
+vectorial design do the following:
+
+Open the png version with GIMP.
+
+Save the png version as gimp's project inside
+@file{trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Xcf}
+directory, using the same name of your vectorial design but with the
+@samp{.xcf} extension.  
+
+Now use GIMP to improve your design.  Here you may add one layer for
+pattern, another for colors, and so on until you find yourself
+confortable with your artwork. For example, in the revision 241 of
+TreeFlower's backgrounds we use four layers, from bottom to top:
+
+@strong{Background:} This is the lowest layer in the image. This layer
+contains the png version of our TreeFlower's artistic motif.
+
+@strong{Pattern:} Above background layer we have pattern. This layer
+contains a stripes (48x48) pattern and opacity is reduced to 10%.
+
+@strong{Color#1:} Above pattern layer we have one color layer. This
+layer gives an orange (ffae00) touch to our design to some how kill
+the artistic motif intensive white color. The opacity of this layer is
+reduced to 15%.
+
+@strong{Color#2:} Above color#1 layer we have another color layer.
+This layer gives a blue (0066ff) touch to our design to find between
+the orange, blue, white tones a passive tone color for the background.
+The opacity of this layer is reduced to 10%.
+
+@quotation
+@strong{Note} There is no definite combination. To get the appropriate
+visual design is a matter of constant testing.
+@end quotation
+
+Finally, use the GIMP's @samp{Save as copy ...} option to export
+the final design. To export the final design use the same name of your
+vectorial design plus @samp{-final-1.png} extension. The numer 1 in
+the example represents the release of your final image. For example,
+if your vectorial file is @samp{800x600.svg}, the first release of
+your final image does look like @samp{800x600-final-1.png}, if a
+second release is available then it would be
+@samp{800x600-final-2.png}, and so on for other releases. This is
+useful to track old work while new design improvements are made. 
+
+You can repeat these steps to create images for other screen
+resolutions.
+
+@subsection Usage
+
+@itemize
+@item ...
+@end itemize
+
+@subsection See also
+
+@menu
+@end menu

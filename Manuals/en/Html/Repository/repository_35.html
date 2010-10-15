@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 12 2010 by texi2html 1.76 -->
+<!-- Created on October, 15 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.32 trunk/Scripts</title>
+<title>CentOS Artwork Repository: 3.32 trunk/Manuals</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.32 trunk/Scripts">
-<meta name="keywords" content="CentOS Artwork Repository: 3.32 trunk/Scripts">
+<meta name="description" content="CentOS Artwork Repository: 3.32 trunk/Manuals">
+<meta name="keywords" content="CentOS Artwork Repository: 3.32 trunk/Manuals">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,39 +56,28 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_34.html#SEC181" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC183" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_34.html#SEC182" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC184" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC348" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC348" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts"></a>
-<a name="SEC182"></a>
-<h2 class="section"> 3.32 trunk/Scripts </h2>
-
-
+<a name="trunk-Manuals"></a>
 <a name="SEC183"></a>
-<h3 class="subsection"> 3.32.1 Goals </h3>
-
-<p>The <tt>`trunk/Scripts'</tt> directory exists to:
-</p>
-<ul class="toc">
-<li> Organize the &quot;trunk&quot; development line of automation scripts by
-programming language.  
-</li></ul>
+<h2 class="section"> 3.32 trunk/Manuals </h2>
 
 
 <a name="SEC184"></a>
-<h3 class="subsection"> 3.32.2 Description </h3>
+<h3 class="subsection"> 3.32.1 Goals </h3>
 
 <ul class="toc">
 <li> ...
@@ -96,7 +85,7 @@ programming language.
 
 
 <a name="SEC185"></a>
-<h3 class="subsection"> 3.32.3 Usage </h3>
+<h3 class="subsection"> 3.32.2 Description </h3>
 
 <ul class="toc">
 <li> ...
@@ -104,21 +93,72 @@ programming language.
 
 
 <a name="SEC186"></a>
+<h3 class="subsection"> 3.32.3 Usage </h3>
+
+<dl compact="compact">
+<dt> <samp>`centos-art help 'path/to/dir''</samp></dt>
+<dd><p>Use this command to read directory documentation specified in
+<samp>`path/to/dir'</samp>.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --read='filename''</samp></dt>
+<dd><p>Use this command to read file documentation as specified by
+<samp>`path/to/dir/filename'</samp> combination. 
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --edit'</samp></dt>
+<dd><p>Use this command to edit directory documentation as specified in
+<samp>`path/to/dir'</samp>.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --edit='filename''</samp></dt>
+<dd><p>Use this command to edit file documentation as specified in
+<samp>`path/to/dir/filename'</samp> combination.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --update'</samp></dt>
+<dd><p>Use this command to update documentation output files.
+</p>
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --remove'</samp></dt>
+<dd><p>Use this command to remove directory documentation as specified in
+<samp>`path/to/dir'</samp>.
+</p>
+<blockquote class="red"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-error.png" alt="Caution"><h3>Caution</h3><p> When directory documentation is removed all
+documentation under it is also removed.
+</p></blockquote>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> To recover from directory documentation lost, try the
+following command (before commit local changes up to central
+repository): 
+</p><pre class="verbatim">svn revert path/to/dir --recursive
+</pre></blockquote>
+
+</dd>
+<dt> <samp>`centos-art help 'path/to/dir' --remove='filename''</samp></dt>
+<dd>
+<p>Use this command to remove file documentation as specified in
+<samp>`path/to/dir/filename'</samp> combination.
+</p></dd>
+</dl>
+
+
+<a name="SEC187"></a>
 <h3 class="subsection"> 3.32.4 See also </h3>
 
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC185" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_36.html#SEC187" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC186" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_36.html#SEC188" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC182" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC183" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC348" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 12 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 15 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
