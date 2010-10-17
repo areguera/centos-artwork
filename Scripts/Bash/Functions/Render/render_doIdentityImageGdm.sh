@@ -60,7 +60,7 @@ function render_doIdentityImageGdm {
     TPL=/home/centos/artwork/trunk/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/GDM/
 
     # Define directory holding backgrounds.
-    BGS=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Backgrounds/Img
+    BGS=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Backgrounds/Img/Png
 
     # Define directory where temporal files are stored.
     TMP=$(cli_getThemeName)
