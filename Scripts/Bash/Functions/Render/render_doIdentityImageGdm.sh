@@ -109,7 +109,7 @@ function render_doIdentityImageGdm {
             cp $SYMBOL	         		            $TMP/centos-symbol.png
             cp $IMG/release.png                     $TMP/centos-release.png
             cp $IMG/screenshot.png                  $TMP/screenshot.png
-            cp $BGS/$RESOLUTION.png                 $TMP/background.png
+            cp $BGS/${RESOLUTION}-final.png         $TMP/background.png
             cp $TPL/*.png         		            $TMP/
             cp $TPL/GdmGreeterTheme.xml             $TMP/${TMP}.xml
             cp $TPL/GdmGreeterTheme.desktop         $TMP/
