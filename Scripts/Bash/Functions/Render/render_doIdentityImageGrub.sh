@@ -56,23 +56,38 @@ function render_doIdentityImageGrub {
         2>$FILE.log \
         > $FILE.pnm
 
-    # Reduce colors. Here we use the Netpbm color $PALETTE_PPM to
-    # enforce the color position in the image index and the
-    # Floyd-Steinberg dithering in order to improve color reduction.
+    # Reduce colors as specified in ppm palette of colors.
     cli_printMessage "$FILE-14c.ppm" "AsSavedAsLine"
-    pnmremap -verbose -floyd -mapfile=$PALETTE_PPM \
+    pnmremap -verbose -mapfile=$PALETTE_PPM \
         < $FILE.pnm \
         2>>$FILE.log \
         > $FILE-14c.ppm
 
-    # Create the XPM.GZ file. This is the file we put at
-    # /boot/grub/splash.xpm.gz.
-    cli_printMessage "$FILE.xpm.gz" "AsSavedAsLine"
+    # Create the splash-14c.xpm.gz file.
+    cli_printMessage "$FILE-14c.xpm.gz" "AsSavedAsLine"
     ppmtoxpm \
         < $FILE-14c.ppm \
         2>>$FILE.log \
         > $FILE.xpm \
-        && gzip --force $FILE.xpm
+        && gzip --force $FILE.xpm \
+        && mv $FILE.xpm.gz $FILE-14c.xpm.gz
+
+    # Reduce colors as specified in ppm palette of colors using
+    # Floyd-Steinberg dithering.
+    cli_printMessage "$FILE-14c-floyd.ppm" "AsSavedAsLine"
+    pnmremap -verbose -floyd -mapfile=$PALETTE_PPM \
+        < $FILE.pnm \
+        2>>$FILE.log \
+        > $FILE-14c-floyd.ppm
+
+    # Create the splash-14c-floyd.xpm.gz file.
+    cli_printMessage "$FILE-floyd.xpm.gz" "AsSavedAsLine"
+    ppmtoxpm \
+        < $FILE-14c-floyd.ppm \
+        2>>$FILE.log \
+        > $FILE.xpm \
+        && gzip --force $FILE.xpm \
+        && mv $FILE.xpm.gz $FILE-14c-floyd.xpm.gz
    
 }
 
