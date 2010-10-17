@@ -81,11 +81,11 @@ function help_updateOutputFiles {
         --nosec-nav \
         --css-include=/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
         --I=/home/centos/artwork/trunk/Identity/Fonts/Img \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts/png/ \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Corporate/png/ \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/png/ \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/png/ \
-        --I=/home/centos/artwork/trunk/Identity/Models/Img/Distro/png/
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Corporate/Png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Concepts/Png/ \
+        --I=/home/centos/artwork/trunk/Identity/Models/Img/Distro/Png/
 
     # Apply html transformations.
     sed -r -i \
