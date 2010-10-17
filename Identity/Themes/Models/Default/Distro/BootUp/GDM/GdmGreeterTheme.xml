@@ -21,10 +21,17 @@
    <normal file="centos-symbol.png" />
    </item>
 
+   <!-- CentOS Release -->
+
+   <item type="pixmap">
+   <pos x="10" y="55%" anchor="sw" />
+   <normal file="centos-release.png" />
+   </item>
+
    <!-- The Login Box -->
 
    <item type="rect">
-   <pos x="30" y="50%" width="490" height="box" />
+   <pos x="20" y="59%" width="490" height="box" />
    <box orientation="vertical">
 
       <item type="rect">
@@ -72,37 +79,35 @@
    <!-- The clock -->
 
    <item type="rect">
-   <pos x="-20" y="20" width="box" height="box" anchor="ne" />
-   <normal color="#204C8D" alpha="0.5" />
-   <box ypadding="10" xpadding="10" spacing="2" orientation="vertical">
+   <pos x="-20" y="-20" width="box" height="box" anchor="se" />
+   <box ypadding="0" xpadding="10" spacing="2" orientation="vertical">
 
-      <item type="label" id="clock">
-      <normal font="Sans 10" color="#FFFFFF" alpha=".9" />
-      <pos x="50%" anchor="n" />
-      <text>%c</text>
-      </item>
+        <item type="label" id="clock">
+        <normal font="Sans 10" color="#FFFFFF" alpha=".9" />
+        <pos x="50%" anchor="n" />
+        <text>%c</text>
+        </item>
+          
+        <item type="label">
+        <normal font="Sans Bold 10" color="#FFFFFF" alpha=".9" />
+        <pos x="50%" anchor="n" />
+        <text>%h</text>
+        </item>
 
-      <item type="label">
-      <normal font="Sans Bold 10" color="#FFFFFF" alpha=".9" />
-      <pos x="50%" anchor="n" />
-      <text>%h</text>
-      </item>
-
-   </box>            
-   </item>
+    </box>            
+    </item>
 
    <!-- Bottom Box -->
 
    <item type="rect">
    <pos x="100%" y="100%" width="100%" height="box" anchor="se" />
-   <normal color="#204C8D" alpha="1.0" />
    <box>
 
       <!-- The Action Bar -->
 
       <item type="rect">
-      <pos x="-14" y="0" width="box" height="box" anchor="ne" />
-      <box orientation="horizontal" xpadding="0" ypadding="10" >
+      <pos x="14" y="20" width="box" height="box" anchor="sw" />
+      <box orientation="horizontal" xpadding="0" ypadding="0" >
 
          <!-- Language -->
 
@@ -226,13 +231,6 @@
       </item>
 
    </box>
-   </item>
-
-   <!-- CentOS Release -->
-
-   <item type="pixmap">
-   <pos x="20" y="-60" />
-   <normal file="centos-release.png" />
    </item>
 
 </greeter>
