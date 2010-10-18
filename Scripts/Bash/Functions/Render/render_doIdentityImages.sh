@@ -100,12 +100,12 @@ function render_doIdentityImages {
 
             case "$ACTION" in
 
-                renderSyslinux )
-                    render_doIdentityImageSyslinux $FILE
+                renderSyslinux:* )
+                    render_doIdentityImageSyslinux $FILE "$ACTION"
                     ;;
 
-                renderGrub )
-                    render_doIdentityImageGrub $FILE
+                renderGrub:* )
+                    render_doIdentityImageGrub $FILE "$ACTION"
                     ;;
 
                 renderFormats:* )

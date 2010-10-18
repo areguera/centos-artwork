@@ -28,7 +28,8 @@ function render_loadConfig {
 
     # Define rendering actions.
     ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderGrub'
+    ACTIONS[1]='POST:renderGrub:'
+    ACTIONS[2]='POST:renderGrub: -floyd'
 
     # Define matching list.
     #MATCHINGLIST=''

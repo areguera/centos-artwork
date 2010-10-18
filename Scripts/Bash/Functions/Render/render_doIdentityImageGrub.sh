@@ -27,6 +27,37 @@
 function render_doIdentityImageGrub {
 
     local FILE=$1
+    local ACTION="$2"
+    local OPTIONS=''
+
+    # Define 16 colors images default file name prefix.
+    local PREFIX='-14c'
+
+    # Define options using those passed to actions from pre-rendering
+    # configuration script. These options are applied to pnmremap when
+    # doing color reduction, so any option available for pnmremap
+    # command can be passed to renderSyslinux functionality.
+    OPTIONS=$(echo "$ACTION" | cut -d: -f2-)
+
+    # Re-define 16 colors images default file name prefix using
+    # options as reference. This is useful to differenciate final
+    # files produced using Floyd-Steinberg dithering and files which
+    # do not.
+    if [[ "$OPTIONS" =~ '-floyd' ]];then
+        PREFIX="${PREFIX}-floyd"
+    fi
+
+    # Check options passed to action. This is required in order to
+    # aviod using options used already in this script. For example
+    # -verbose and -mapfile options.
+    for OPTION in $OPTIONS;do
+        # Remove anything after equal sign inside option.
+        OPTION=$(echo $OPTION | cut -d'=' -f1)
+        if [[ "$OPTION" =~ "-(mapfile|verbose)" ]];then
+            cli_printMessage "`eval_gettext "The \\\$OPTION option is already used."`"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        fi
+    done
 
     # Define Motif's palette location. We do this relatively.
     local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
@@ -57,37 +88,19 @@ function render_doIdentityImageGrub {
         > $FILE.pnm
 
     # Reduce colors as specified in ppm palette of colors.
-    cli_printMessage "$FILE-14c.ppm" "AsSavedAsLine"
-    pnmremap -verbose -mapfile=$PALETTE_PPM \
+    cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
+    pnmremap -verbose -mapfile=$PALETTE_PPM "$OPTIONS" \
         < $FILE.pnm \
         2>>$FILE.log \
-        > $FILE-14c.ppm
+        > ${FILE}${PREFIX}.ppm
 
-    # Create the splash-14c.xpm.gz file.
-    cli_printMessage "$FILE-14c.xpm.gz" "AsSavedAsLine"
+    # Create the 14 colors xpm.gz file.
+    cli_printMessage "${FILE}${PREFIX}.xpm.gz" "AsSavedAsLine"
     ppmtoxpm \
-        < $FILE-14c.ppm \
+        < ${FILE}${PREFIX}.ppm \
         2>>$FILE.log \
         > $FILE.xpm \
         && gzip --force $FILE.xpm \
-        && mv $FILE.xpm.gz $FILE-14c.xpm.gz
+        && mv $FILE.xpm.gz ${FILE}${PREFIX}.xpm.gz
 
-    # Reduce colors as specified in ppm palette of colors using
-    # Floyd-Steinberg dithering.
-    cli_printMessage "$FILE-14c-floyd.ppm" "AsSavedAsLine"
-    pnmremap -verbose -floyd -mapfile=$PALETTE_PPM \
-        < $FILE.pnm \
-        2>>$FILE.log \
-        > $FILE-14c-floyd.ppm
-
-    # Create the splash-14c-floyd.xpm.gz file.
-    cli_printMessage "$FILE-floyd.xpm.gz" "AsSavedAsLine"
-    ppmtoxpm \
-        < $FILE-14c-floyd.ppm \
-        2>>$FILE.log \
-        > $FILE.xpm \
-        && gzip --force $FILE.xpm \
-        && mv $FILE.xpm.gz $FILE-14c-floyd.xpm.gz
-   
 }
-

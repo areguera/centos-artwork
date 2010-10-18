@@ -28,7 +28,8 @@ function render_loadConfig {
 
     # Define rendering actions.
     ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderSyslinux'
+    ACTIONS[1]='POST:renderSyslinux:'
+    ACTIONS[2]='POST:renderSyslinux: -floyd'
 
     # Define matching list.
     MATCHINGLIST=''

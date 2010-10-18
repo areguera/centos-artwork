@@ -27,10 +27,40 @@
 function render_doIdentityImageSyslinux {
 
     local FILE=$1
+    local ACTION="$2"
+    local OPTIONS=''
+
+    # Define 16 colors images default file name prefix.
+    local PREFIX='-16c'
+
+    # Define options using those passed to actions from pre-rendering
+    # configuration script. These options are applied to pnmremap when
+    # doing color reduction, so any option available for pnmremap
+    # command can be passed to renderSyslinux functionality.
+    OPTIONS=$(echo "$ACTION" | cut -d: -f2-)
+
+    # Re-define 16 colors images default file name prefix using
+    # options as reference. This is useful to differenciate final
+    # files produced using Floyd-Steinberg dithering and files which
+    # do not.
+    if [[ "$OPTIONS" =~ '-floyd' ]];then
+        PREFIX="${PREFIX}-floyd"
+    fi
+
+    # Check options passed to action. This is required in order to
+    # aviod using options used already in this script. For example
+    # -verbose and -mapfile options.
+    for OPTION in $OPTIONS;do
+        # Remove anything after equal sign inside option.
+        OPTION=$(echo $OPTION | cut -d'=' -f1)
+        if [[ "$OPTION" =~ "-(mapfile|verbose)" ]];then
+            cli_printMessage "`eval_gettext "The \\\$OPTION option is already used."`"
+            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        fi
+    done
 
     # Define Motif's palette location. We do this relatively.
-    local
-    PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
+    local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
    
     # Define the Netpbm color palette used when reducing colors. This
     # palette should be 16 colors based. For more information on this
@@ -65,11 +95,11 @@ function render_doIdentityImageSyslinux {
     # Reduce colors. Here we use the Netpbm color $PALETTE_PPM to
     # enforce the color position in the image index and the
     # Floyd-Steinberg dithering in order to improve color reduction.
-    cli_printMessage "$FILE-16c.pnm" "AsSavedAsLine"
-    pnmremap -verbose -floyd -mapfile=$PALETTE_PPM \
+    cli_printMessage "$FILE${PREFIX}.pnm" "AsSavedAsLine"
+    pnmremap -verbose -mapfile=$PALETTE_PPM "$OPTIONS" \
         < $FILE.pnm \
-        2>>$FILE.log > $FILE-16c.pnm
-      
+        2>>$FILE.log > $FILE${PREFIX}.pnm
+
     # Create LSS16 image. As specified in isolinux documentation the
     # background color should be indexed on position 0 and forground
     # in position 7 (see /usr/share/doc/syslinux-X.XX/isolinux.doc).
@@ -80,26 +110,26 @@ function render_doIdentityImageSyslinux {
     # with the color information as described in isolinux
     # documentation (i.e #RRGGBB=0 #RRGGBB=1 ... [all values in the
     # same line]).
-    cli_printMessage "$FILE.lss" "AsSavedAsLine"
+    cli_printMessage "$FILE${PREFIX}.lss" "AsSavedAsLine"
     PALETTE_HEX=$(cat $PALETTE_HEX | tr "\n" ' ' | tr -s ' ')
     ppmtolss16 $PALETTE_HEX \
-        < $FILE-16c.pnm \
+        < $FILE${PREFIX}.pnm \
         2>>$FILE.log \
-        > $FILE.lss
+        > $FILE${PREFIX}.lss
      
     # Create the PPM image indexed to 16 colors. Also the colormap
     # used in the LSS16 image is saved on $FILE.log; this is useful to
     # verify the correct order of colors in the image index.
-    cli_printMessage "$FILE-16c.ppm" "AsSavedAsLine"
-    lss16toppm -map < $FILE.lss \
+    cli_printMessage "$FILE${PREFIX}.ppm" "AsSavedAsLine"
+    lss16toppm -map < $FILE${PREFIX}.lss \
        2>>$FILE.log \
-       > $FILE.ppm
+       > $FILE${PREFIX}.ppm
       
     # Create the 16 colors PNG image.
-    cli_printMessage "$FILE-16c.png" "AsSavedAsLine"
+    cli_printMessage "$FILE${PREFIX}.png" "AsSavedAsLine"
     pnmtopng -verbose -palette=$PALETTE_PPM \
-       < $FILE-16c.pnm \
+       < $FILE${PREFIX}.pnm \
        2>>$FILE.log \
-       > $FILE-16c.png
+       > $FILE${PREFIX}.png
    
 }
