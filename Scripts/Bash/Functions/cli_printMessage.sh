@@ -141,7 +141,10 @@ function cli_printMessage {
             # a file documentation entry.
             MESSAGE=$(echo $MESSAGE | cut -d ' ' -f2-)
             MESSAGE="$(dirname $MESSAGE)' --filter='$(basename $MESSAGE)"
-            echo "`gettext "To know more, run"`: centos-art help --read='$MESSAGE'"
+            echo "----------------------------------------------------------------------"
+            echo "`gettext "To know more, run"`:"
+            echo " centos-art help --read='$MESSAGE'"
+            echo "----------------------------------------------------------------------"
             exit # <-- ATTENTION: Do not remove this line. We use this
                  #                case as convenction to end script
                  #                execution.
