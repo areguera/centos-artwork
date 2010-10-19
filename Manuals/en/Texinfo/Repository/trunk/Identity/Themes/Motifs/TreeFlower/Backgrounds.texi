@@ -2,7 +2,9 @@
 
 This section exists to orgnize TreeFlower's backgrounds.
 
-@subsection Building desktop backgrounds
+@subsection Description
+
+@subsubsection Desktop background
 
 Once you have defined the vectorial artistic motif design, use the
 @command{centos-art.sh} script (as described in usage section below)
@@ -100,7 +102,7 @@ vectorial design plus @samp{-final.png} extension.
 You can repeat these steps to create images for other screen
 resolutions.
 
-@subsection Building syslinux backgrounds
+@subsubsection Anaconda Prompt (syslinux) background
 
 When building syslinux backgrounds it is needed to take into account
 that the final image is reduced to 16 colors. In desktop background
@@ -116,8 +118,6 @@ match that specification. For great contrast we'll use black as
 background and white as forground. At this poing we have black
 (000000) and white (ffffff) colors in our syslinux palette, which left
 us with 14 colors to play with. 
-
-@subsubsection Composition
 
 Let's begin with @file{Xcf/640x300.xcf} layer distribution from bottom
 to top:
@@ -174,8 +174,6 @@ backgrounds. Compared with desktop backgrounds there are some
 differences in opacity. This is because in our testings the final
 color information found with this composition produces an acceptable
 16 color image. Of course this is something we haven't seen yet.
-
-@subsubsection Defining color information
 
 To define the color information of our current coposition, save the
 syslinux GIMP's background composition we've done using GIMP's
@@ -243,7 +241,17 @@ Columns: 16
 Update the @samp{Palettes} menu to get the new color positions from
 the file you just edited and open the palette with double click. 
 
-@subsubsection The @file{syslinux.ppm} palette
+Update the @file{syslinux.gpl} file copying the following file:
+
+@verbatim
+~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
+@end verbatim
+
+to
+
+@verbatim
+trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.gpl
+@end verbatim
 
 With the @samp{CentOS-TreeFlower-Syslinux} palette opened in the
 @samp{Palette Editor}, open (Ctrl+O) the following file:
@@ -263,8 +271,6 @@ you probably need to zoom it a bit to set the color information in
 their place when using the pen tool with the brush @samp{Circle (01)
 (1 x 1)}.
 
-@subsubsection The @file{syslinux.hex} palette
-
 Once you've updated the @samp{syslinux.ppm} file, it is time to update
 the following file:
 
@@ -280,8 +286,8 @@ program inside CentOS distribution.
 
 The color information inside @file{syslinux.hex} must match the one in
 @file{syslinux.ppm} and @file{syslinux.gpl}. For example, based on
-@file{syslinux.gpl} palette of colors above, consider the following
-@file{syslinux.hex} file:
+@file{CentOS-TreeFlower-Syslinux} palette of colors above, consider
+the following @file{syslinux.hex} file:
 
 @verbatim
 #000000=0
@@ -302,31 +308,7 @@ The color information inside @file{syslinux.hex} must match the one in
 #c9c4c3=15
 @end verbatim
 
-@subsubsection The @file{syslinux.gpl} palette
-
-Update the @file{syslinux.gpl} file copying the following file:
-
-@verbatim
-~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
-@end verbatim
-
-to
-
-@verbatim
-trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.gpl
-@end verbatim
-
-@subsubsection Rendering
-
-At this point we've gathered all the information required to produced
-syslinux backgrounds with the correct color information. Use the
-following command to render syslinux backgrounds:
-
-@verbatim
-centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Prompt
-@end verbatim
-
-@subsubsection Grub
+@subsubsection Grub background
 
 @subsection Usage
 

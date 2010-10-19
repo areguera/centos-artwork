@@ -61,14 +61,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC355" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC350" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC355" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC350" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Identity-Themes-Motifs-TreeFlower-Backgrounds"></a>
@@ -83,7 +83,11 @@ ul.toc {list-style: none}
 </p>
 
 <a name="SEC174"></a>
-<h3 class="subsection"> 3.30.2 Building desktop backgrounds </h3>
+<h3 class="subsection"> 3.30.2 Description </h3>
+
+
+<a name="SEC175"></a>
+<h4 class="subsubsection"> 3.30.2.1 Desktop background </h4>
 
 <p>Once you have defined the vectorial artistic motif design, use the
 <code>centos-art.sh</code> script (as described in usage section below)
@@ -190,8 +194,8 @@ vectorial design plus <samp>`-final.png'</samp> extension.
 resolutions.
 </p>
 
-<a name="SEC175"></a>
-<h3 class="subsection"> 3.30.3 Building syslinux backgrounds </h3>
+<a name="SEC176"></a>
+<h4 class="subsubsection"> 3.30.2.2 Anaconda Prompt (syslinux) background </h4>
 
 <p>When building syslinux backgrounds it is needed to take into account
 that the final image is reduced to 16 colors. In desktop background
@@ -208,10 +212,6 @@ background and white as forground. At this poing we have black
 (000000) and white (ffffff) colors in our syslinux palette, which left
 us with 14 colors to play with. 
 </p>
-
-<a name="SEC176"></a>
-<h4 class="subsubsection"> 3.30.3.1 Composition </h4>
-
 <p>Let's begin with <tt>`Xcf/640x300.xcf'</tt> layer distribution from bottom
 to top:
 </p>
@@ -275,10 +275,6 @@ differences in opacity. This is because in our testings the final
 color information found with this composition produces an acceptable
 16 color image. Of course this is something we haven't seen yet.
 </p>
-
-<a name="SEC177"></a>
-<h4 class="subsubsection"> 3.30.3.2 Defining color information </h4>
-
 <p>To define the color information of our current coposition, save the
 syslinux GIMP's background composition we've done using GIMP's
 <samp>`File &gt; Save as Copy ...'</samp> option in the following location:
@@ -337,10 +333,14 @@ Columns: 16
 <p>Update the <samp>`Palettes'</samp> menu to get the new color positions from
 the file you just edited and open the palette with double click. 
 </p>
-
-<a name="SEC178"></a>
-<h4 class="subsubsection"> 3.30.3.3 The <tt>`syslinux.ppm'</tt> palette </h4>
-
+<p>Update the <tt>`syslinux.gpl'</tt> file copying the following file:
+</p>
+<pre class="verbatim">~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
+</pre>
+<p>to
+</p>
+<pre class="verbatim">trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.gpl
+</pre>
 <p>With the <samp>`CentOS-TreeFlower-Syslinux'</samp> palette opened in the
 <samp>`Palette Editor'</samp>, open (Ctrl+O) the following file:
 </p>
@@ -357,10 +357,6 @@ you probably need to zoom it a bit to set the color information in
 their place when using the pen tool with the brush <samp>`Circle (01)
 (1 x 1)'</samp>.
 </p>
-
-<a name="SEC179"></a>
-<h4 class="subsubsection"> 3.30.3.4 The <tt>`syslinux.hex'</tt> palette </h4>
-
 <p>Once you've updated the <samp>`syslinux.ppm'</samp> file, it is time to update
 the following file:
 </p>
@@ -374,8 +370,8 @@ program inside CentOS distribution.
 </p>
 <p>The color information inside <tt>`syslinux.hex'</tt> must match the one in
 <tt>`syslinux.ppm'</tt> and <tt>`syslinux.gpl'</tt>. For example, based on
-<tt>`syslinux.gpl'</tt> palette of colors above, consider the following
-<tt>`syslinux.hex'</tt> file:
+<tt>`CentOS-TreeFlower-Syslinux'</tt> palette of colors above, consider
+the following <tt>`syslinux.hex'</tt> file:
 </p>
 <pre class="verbatim">#000000=0
 #171423=1
@@ -395,52 +391,30 @@ program inside CentOS distribution.
 #c9c4c3=15
 </pre>
 
-<a name="SEC180"></a>
-<h4 class="subsubsection"> 3.30.3.5 The <tt>`syslinux.gpl'</tt> palette </h4>
-
-<p>Update the <tt>`syslinux.gpl'</tt> file copying the following file:
-</p>
-<pre class="verbatim">~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
-</pre>
-<p>to
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.gpl
-</pre>
-
-<a name="SEC181"></a>
-<h4 class="subsubsection"> 3.30.3.6 Rendering </h4>
-
-<p>At this point we've gathered all the information required to produced
-syslinux backgrounds with the correct color information. Use the
-following command to render syslinux backgrounds:
-</p>
-<pre class="verbatim">centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Prompt
-</pre>
-
-<a name="SEC182"></a>
-<h4 class="subsubsection"> 3.30.3.7 Grub </h4>
+<a name="SEC177"></a>
+<h4 class="subsubsection"> 3.30.2.3 Grub background </h4>
 
 
-<a name="SEC183"></a>
-<h3 class="subsection"> 3.30.4 Usage </h3>
+<a name="SEC178"></a>
+<h3 class="subsection"> 3.30.3 Usage </h3>
 
 <ul class="toc">
 <li> ...
 </li></ul>
 
 
-<a name="SEC184"></a>
-<h3 class="subsection"> 3.30.5 See also </h3>
+<a name="SEC179"></a>
+<h3 class="subsection"> 3.30.4 See also </h3>
 
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC183" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_34.html#SEC185" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC178" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_34.html#SEC180" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC172" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC355" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC350" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
