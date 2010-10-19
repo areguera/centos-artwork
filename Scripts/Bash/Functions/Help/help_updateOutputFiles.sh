@@ -80,7 +80,7 @@ function help_updateOutputFiles {
     texi2html ${MANUALS_FILE[1]} --output=${MANUALS_DIR[4]} --split section \
         --nosec-nav \
         --css-include=/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
-        --I=/home/centos/artwork/trunk/Identity/Fonts/Img \
+        --I=/home/centos/artwork/trunk/Identity/Fonts/Img/ \
         --I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Png/ \
         --I=/home/centos/artwork/trunk/Identity/Models/Img/Corporate/Png/ \
         --I=/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/Png/ \
