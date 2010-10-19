@@ -78,6 +78,9 @@ function render_doIdentityImages {
             | sed -r 's!".*$!!' | uniq)
         for EXTERNALFILE in $EXTERNALFILES;do
             cli_checkFiles $EXTERNALFILE
+            if [[ $? -ne 0 ]];then
+                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            fi
         done
 
         # Render template instance and modify the inkscape output to
