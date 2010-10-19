@@ -37,15 +37,7 @@ function render_doIdentityImageSyslinux {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    OPTIONS=$(echo "$ACTION" | cut -d: -f2-)
-
-    # Re-define 16 colors images default file name prefix using
-    # options as reference. This is useful to differenciate final
-    # files produced using Floyd-Steinberg dithering and files which
-    # do not.
-    if [[ "$OPTIONS" =~ '-floyd' ]];then
-        PREFIX="${PREFIX}-floyd"
-    fi
+    OPTIONS=$(echo -n "$ACTION" | cut -d: -f2-)
 
     # Check options passed to action. This is required in order to
     # aviod using options used already in this script. For example
@@ -59,7 +51,15 @@ function render_doIdentityImageSyslinux {
         fi
     done
 
-    # Define Motif's palette location. We do this relatively.
+    # Re-define 16 colors images default file name prefix using
+    # options as reference. This is useful to differenciate final
+    # files produced using Floyd-Steinberg dithering and final files
+    # which are not.
+    if [[ "$OPTIONS" =~ '-floyd' ]];then
+        PREFIX="${PREFIX}-floyd"
+    fi
+
+    # Define absolute location to motif's palette of colors.
     local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
    
     # Define the Netpbm color palette used when reducing colors. This
@@ -96,7 +96,7 @@ function render_doIdentityImageSyslinux {
     # enforce the color position in the image index and the
     # Floyd-Steinberg dithering in order to improve color reduction.
     cli_printMessage "$FILE${PREFIX}.pnm" "AsSavedAsLine"
-    pnmremap -verbose -mapfile=$PALETTE_PPM "$OPTIONS" \
+    pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
         < $FILE.pnm \
         2>>$FILE.log > $FILE${PREFIX}.pnm
 

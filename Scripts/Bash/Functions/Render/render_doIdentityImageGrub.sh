@@ -37,7 +37,7 @@ function render_doIdentityImageGrub {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    OPTIONS=$(echo "$ACTION" | cut -d: -f2-)
+    OPTIONS=$(echo -n "$ACTION" | cut -d: -f2-)
 
     # Re-define 16 colors images default file name prefix using
     # options as reference. This is useful to differenciate final
@@ -89,7 +89,7 @@ function render_doIdentityImageGrub {
 
     # Reduce colors as specified in ppm palette of colors.
     cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
-    pnmremap -verbose -mapfile=$PALETTE_PPM "$OPTIONS" \
+    pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
         < $FILE.pnm \
         2>>$FILE.log \
         > ${FILE}${PREFIX}.ppm
