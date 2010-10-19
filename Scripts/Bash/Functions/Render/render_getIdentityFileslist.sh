@@ -57,7 +57,7 @@ function render_getIdentityFileslist {
     
     fi
 
-    # Re-define filter string to apply.  
+    # Re-define filter string to apply.
     FILTER="^$LOCATION/${REGEX}.*\.${EXTENSION}$"
 
     # Re-define list of file to render using filter string.

@@ -55,18 +55,18 @@ function render_doIdentity {
     # files that will be rendered.
     render_getIdentityFileslist
 
-    # Define which type of rendering features does centos-art.sh
-    # script is able to performs.
+    # Define which type of features does centos-art.sh script is able
+    # to performs.
     for ACTION in "${BASEACTIONS[@]}"; do
 
         case $ACTION in
 
-            'renderText' )
+            renderText )
                 # Provides text rendering feature.
                 render_doIdentityTexts
                 ;;
 
-            'renderImage' )
+            renderImage )
                 # Provides image rendering feature.
                 render_doIdentityImages
                 ;;
