@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!<flowSpan style="font-weight:bold">[updates]</flowSpan> - Обновл
 s!=TEXT4=!<flowSpan style="font-weight:bold">[extras]</flowSpan> - Дополнительные пакеты к репозиторию [base] (не могут заменять пакеты из [base]).!
 s!=TEXT5=!<flowSpan style="font-weight:bold">[centosplus]</flowSpan> - Дополнительные пакеты к репозиторию [base] (могут заменять пакеты из [base]).!
 s!=TEXT6=!!
-s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories!
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Repositories!

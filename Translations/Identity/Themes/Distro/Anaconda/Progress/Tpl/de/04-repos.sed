@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!2. <flowSpan style="font-weight:bold">[updates]</flowSpan> - Updates f
 s!=TEXT4=!3. <flowSpan style="font-weight:bold">[extras]</flowSpan> - Zusätzliche Software für CentOS, ersetzt keine Pakete aus [base].!
 s!=TEXT5=!4. <flowSpan style="font-weight:bold">[centosplus]</flowSpan> - Zusätzliche Software für CentOS, ersetzt Software aus [base].!
 s/=TEXT6=//
-s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories!
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Repositories!

@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 07-docs.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -23,4 +23,4 @@ s!=TEXT16=!!
 s!=TEXT17=!!
 s!=TEXT18=!!
 s!=TEXT19=!!
-s!=URL=!http://wiki.centos.org/docs/=MAJOR_RELEASE=/!;
+s!=URL=!http://wiki.centos.org/=LOCALE=/docs/=MAJOR_RELEASE=/!;

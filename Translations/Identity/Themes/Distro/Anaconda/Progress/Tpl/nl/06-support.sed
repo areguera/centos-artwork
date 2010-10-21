@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 06-support.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!<flowSpan style="font-weight:bold">Mailing lijsten</flowSpan> - centos
 s!=TEXT4=!<flowSpan style="font-weight:bold">Forums</flowSpan> - beschikbaar op http://www.centos.org/modules/newbb/!
 s!=TEXT5=!!
 s!=TEXT6=!!
-s!=URL=!http://wiki.centos.org/GettingHelp!
+s!=URL=!http://wiki.centos.org/=LOCALE=/GettingHelp!

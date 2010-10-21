@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!2. <flowSpan style="font-weight:bold">[updates]</flowSpan> - Opravy [b
 s!=TEXT4=!3. <flowSpan style="font-weight:bold">[extras]</flowSpan> - Balíčky nedodávané nadřazeným vydavatelem (neupravuje [base]).!;
 s!=TEXT5=!4. <flowSpan style="font-weight:bold">[centosplus]</flowSpan> - Balíčky nedodávané nadřazeným vydavatelem (upravuje [base]).!;
 s!=TEXT6=!5. <flowSpan style="font-weight:bold">[testing]</flowSpan> - Testovací či beta verze balíčků!;
-s!=URL=!http://wiki.centos.org/AddicionalResources/Repositories!;
+s!=URL=!http://wiki.centos.org/=LOCALE=/AddicionalResources/Repositories!;

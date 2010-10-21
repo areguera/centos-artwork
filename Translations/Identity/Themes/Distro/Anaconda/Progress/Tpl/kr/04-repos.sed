@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!<flowSpan style="font-weight:bold">[updates]</flowSpan> - [base] 저�
 s!=TEXT4=!<flowSpan style="font-weight:bold">[extras]</flowSpan> - 업스트림에 없는 CentOS 아이템들 ([base]를 업그레이드 하지않음).!
 s!=TEXT5=!<flowSpan style="font-weight:bold">[centosplus]</flowSpan> - 업스트림에 없는 CentOS 아이템들 ([base]를 업그레이드 함).!
 s!=TEXT6=!!
-s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories!
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Repositories!

@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 05-centosplus.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!Uvědomte si, že použití těchto balíčků naruší 100% binární
 s!=TEXT4=!!;
 s/=TEXT5=//;
 s/=TEXT6=//;
-s!=URL=!http://wiki.centos.org/AdditionalResources/Respositories/CentOSPlus!;
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Respositories/CentOSPlus!;

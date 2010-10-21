@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 
@@ -10,4 +10,4 @@ s!=TEXT3=!<flowSpan style="font-weight:bold">[updates]</flowSpan> - Aggiornament
 s!=TEXT4=!<flowSpan style="font-weight:bold">[extras]</flowSpan> - pacchetti prodotti da CentOS che non provengono dal distributore primario (non aggiornano (upgrade) [base]).!
 s!=TEXT5=!<flowSpan style="font-weight:bold">[centosplus]</flowSpan> - pacchetti prodotti da CentOS che non provengono dal distributore primario (aggiornano (upgrade) [base]).!
 s!=TEXT6=!!
-s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories!
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Repositories!
