@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: eula.kr.sed 20 2010-09-11 08:50:50Z al $
+# $Id: eula.kr.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 s!=TITLE=!CentOS =RELEASE= EULA!

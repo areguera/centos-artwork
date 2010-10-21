@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: RELEASE-NOTES-nl.sed 20 2010-09-11 08:50:50Z al $
+# $Id: RELEASE-NOTES-nl.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 # Header content
@@ -47,11 +47,11 @@ s!=P6_URL=!http://wiki.centos.org/HowToContribute!g
 # Release number information
 s!=RELEASE=!=MAJOR_RELEASE=.4!g
 s!=MAJOR_RELEASE=!5!g
-# $Id: RELEASE-NOTES-nl.sed 20 2010-09-11 08:50:50Z al $
+# $Id: RELEASE-NOTES-nl.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 # Language Code (ISO639)
-s!=LANG_CODE=!nl!g
+s!=LOCALE=!nl!g
 
 # Language Direction. One of the following values:
 #  "ltr" = left to right
@@ -104,11 +104,11 @@ s!=P6_URL=!http://wiki.centos.org/HowToContribute!g
 s!=RELEASE=!=MAJOR_RELEASE=.4!g
 s!=MAJOR_RELEASE=!5!g
 # ------------------------------------------------------------
-# $Id: RELEASE-NOTES-nl.sed 20 2010-09-11 08:50:50Z al $
+# $Id: RELEASE-NOTES-nl.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 # Language Code (ISO639)
-s!=LANG_CODE=!nl!g
+s!=LOCALE=!nl!g
 
 # Language Direction. One of the following values:
 #  "ltr" = left to right
@@ -144,14 +144,14 @@ s!=P6=!Als u graag wilt meehelpen aan het CentOS project, zie\
 kunt doen.!
 
 # Url definition
-s!=P2_URL=!http://wiki.centos.org/=LANG_CODE=/Manuals/ReleaseNotes/CentOS=RELEASE=!g
-s!=P3_URL=!http://wiki.centos.org/=LANG_CODE=/FAQ/CentOS=MAJOR_RELEASE=!g
-s!=P4_URL=!http://wiki.centos.org/=LANG_CODE=/GettingHelp!g
+s!=P2_URL=!http://wiki.centos.org/=LOCALE=/Manuals/ReleaseNotes/CentOS=RELEASE=!g
+s!=P3_URL=!http://wiki.centos.org/=LOCALE=/FAQ/CentOS=MAJOR_RELEASE=!g
+s!=P4_URL=!http://wiki.centos.org/=LOCALE=/GettingHelp!g
 s!=P5_URL=!http://www.centos.org/!g
-s!=P6_URL=!http://wiki.centos.org/=LANG_CODE=/Contribute!g
+s!=P6_URL=!http://wiki.centos.org/=LOCALE=/Contribute!g
 
 # Language Code (ISO639)
-s!=LANG_CODE=!nl!g
+s!=LOCALE=!nl!g
 
 
 # Release number information.
