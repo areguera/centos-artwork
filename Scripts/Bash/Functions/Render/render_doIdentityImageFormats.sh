@@ -33,13 +33,7 @@ function render_doIdentityImageFormats {
     local FILE="$1"
 
     # Get image formats.
-    local FORMATS=$(echo "$2" | cut -d: -f2-)
-
-    # Sanitate image formats.
-    FORMATS=$(echo "${FORMATS}" \
-        | sed -r 's!^ *!!g' \
-        | sed -r 's!( |:|,|;) *! !g' \
-        | sed -r 's! *$!!g')
+    local FORMATS=$(render_getConfOption "$2" '2-')
 
     # Check base file existence.
     if [[ -f ${FILE}.png ]];then

@@ -30,7 +30,7 @@ function render_doIdentityTextFormats {
    local FILE="$1"
 
    # Get action to do over text file.
-   local OPTIONS=$(echo "$2" | cut -d: -f2-)
+   local OPTIONS=$(render_getConfOption "$2" '2-')
 
    # Remove some fmt's options. As we are applying fmt's options to a
    # file directly, there are some options like --version and --help

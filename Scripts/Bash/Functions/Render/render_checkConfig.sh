@@ -38,19 +38,19 @@ function render_checkConfig {
 
         # Define base-rendering actions.
         if [[ $ACTION =~ '^BASE:render(Text|Image)$' ]];then
-            ACTION=$(echo "$ACTION" | cut -d: -f2-) 
+            ACTION=$(render_getConfOption "$ACTION" '2-')
             BASEACTIONS[$BASECOUNT]="$ACTION"
             BASECOUNT=$(($BASECOUNT + 1))
 
         # Define post-rendering actions.
         elif [[ $ACTION =~ '^POST:' ]];then
-            ACTION=$(echo "$ACTION" | cut -d: -f2-) 
+            ACTION=$(render_getConfOption "$ACTION" '2-')
             POSTACTIONS[$POSTCOUNT]="$ACTION"
             POSTCOUNT=$(($POSTCOUNT + 1))
 
         # Define last-rendering actions.
         elif [[ $ACTION =~ '^LAST:' ]];then
-            ACTION=$(echo "$ACTION" | cut -d: -f2-) 
+            ACTION=$(render_getConfOption "$ACTION" '2-')
             LASTACTIONS[$LASTCOUNT]="$ACTION"
             LASTCOUNT=$(($LASTCOUNT + 1))
         fi

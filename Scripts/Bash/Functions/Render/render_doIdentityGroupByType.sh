@@ -87,16 +87,12 @@ function render_doIdentityGroupByType {
 
     # Sanitate file types passed from render.conf.sh pre-rendering
     # configuration script.
-    FORMATS=$(echo "${FORMATS}" \
-        | cut -d: -f2- \
-        | sed -r 's!^ *!!g' \
-        | sed -r 's!( |:|,|;) *! !g' \
-        | sed -r 's! *$!!g')
+    FORMATS=$(render_getConfOption "$FORMATS" '2-')
 
     # Check file types passed from render.conf.sh pre-rendering
     # configuration script.
     if [[ "$FORMATS" == "" ]];then
-        cli_printMessage "`gettext "groupByType: There is no file type information to process."`"
+        cli_printMessage "`gettext "There is no file type information to process."`"
         cli_printMessage $(caller) "AsToKnowMoreLine"
     fi
 

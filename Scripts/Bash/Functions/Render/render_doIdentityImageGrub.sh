@@ -37,7 +37,7 @@ function render_doIdentityImageGrub {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    OPTIONS=$(echo -n "$ACTION" | cut -d: -f2-)
+    OPTIONS=$(render_getConfOption "$ACTION" '2-')
 
     # Re-define 16 colors images default file name prefix using
     # options as reference. This is useful to differenciate final
@@ -52,7 +52,7 @@ function render_doIdentityImageGrub {
     # -verbose and -mapfile options.
     for OPTION in $OPTIONS;do
         # Remove anything after equal sign inside option.
-        OPTION=$(echo $OPTION | cut -d'=' -f1)
+        OPTION=$(echo -n $OPTION | cut -d'=' -f1)
         if [[ "$OPTION" =~ "-(mapfile|verbose)" ]];then
             cli_printMessage "`eval_gettext "The \\\$OPTION option is already used."`"
             cli_printMessage "$(caller)" "AsToKnowMoreLine"

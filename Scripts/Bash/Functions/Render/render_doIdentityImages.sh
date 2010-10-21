@@ -132,7 +132,8 @@ function render_doIdentityImages {
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 
-    # Execute post-rendering actions.
+    # Define and execute posible last-rendering actions for image
+    # rendeirng base action.
     for ACTION in "${LASTACTIONS[@]}"; do
 
         case "$ACTION" in
@@ -141,14 +142,13 @@ function render_doIdentityImages {
                 render_doIdentityImageKsplash
                 ;;
 
-            renderGdmTgz:* )
-                render_doIdentityImageGdm "$ACTION"
+            renderDm:* )
+                render_doIdentityImageDm "$ACTION"
                 ;;
 
             groupByType:* )
                 render_doIdentityGroupByType "$ACTION"
                 ;;
-
 
         esac
 
