@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 02-donate.sed 4861 2010-03-13 00:52:25Z al $
+# $Id: 02-donate.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -23,3 +23,6 @@ s!=URL=!http://www.centos.org/donate/!
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!6!g
+
+# Locale information.
+s!=LOCALE=!it!g

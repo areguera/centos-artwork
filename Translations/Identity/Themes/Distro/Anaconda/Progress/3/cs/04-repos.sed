@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 4861 2010-03-13 00:52:25Z al $
+# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -17,9 +17,12 @@ s!=TEXT3=!2. <flowSpan style="font-weight:bold">[updates]</flowSpan> - Opravy [b
 s!=TEXT4=!3. <flowSpan style="font-weight:bold">[extras]</flowSpan> - Balíčky nedodávané nadřazeným vydavatelem (neupravuje [base]).!;
 s!=TEXT5=!4. <flowSpan style="font-weight:bold">[centosplus]</flowSpan> - Balíčky nedodávané nadřazeným vydavatelem (upravuje [base]).!;
 s!=TEXT6=!5. <flowSpan style="font-weight:bold">[testing]</flowSpan> - Testovací či beta verze balíčků!;
-s!=URL=!http://wiki.centos.org/AddicionalResources/Repositories!;
+s!=URL=!http://wiki.centos.org/=LOCALE=/AddicionalResources/Repositories!;
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!3!g
+
+# Locale information.
+s!=LOCALE=!cs!g

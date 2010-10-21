@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 05-centosplus.sed 4959 2010-03-18 02:27:24Z al $
+# $Id: 05-centosplus.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -17,9 +17,12 @@ s/=TEXT3=/Você deve estar ciente de que o uso destes componentes remove o 100% 
 s/=TEXT4=//
 s/=TEXT5=//
 s/=TEXT6=//
-s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories/CentOSPlus!
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Repositories/CentOSPlus!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!3!g
+
+# Locale information.
+s!=LOCALE=!pt_BR!g

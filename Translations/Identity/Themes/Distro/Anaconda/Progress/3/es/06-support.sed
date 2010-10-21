@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 06-support.sed 4861 2010-03-13 00:52:25Z al $
+# $Id: 06-support.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -17,9 +17,12 @@ s!=TEXT3=!<flowSpan style="font-weight:bold">Listas de Correo</flowSpan> - CentO
 s!=TEXT4=!<flowSpan style="font-weight:bold">Foros</flowSpan>: Disponibles en http://www.centos.org/modules/newbb/!
 s/=TEXT5=//
 s/=TEXT6=//
-s!=URL=!http://wiki.centos.org/GettingHelp!
+s!=URL=!http://wiki.centos.org/=LOCALE=/GettingHelp!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!3!g
+
+# Locale information.
+s!=LOCALE=!es!g

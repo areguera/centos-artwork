@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 07-docs.sed 4959 2010-03-18 02:27:24Z al $
+# $Id: 07-docs.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -30,9 +30,12 @@ s!=TEXT16=!!
 s!=TEXT17=!!
 s!=TEXT18=!!
 s!=TEXT19=!!
-s!=URL=!http://wiki.centos.org/docs/=MAJOR_RELEASE=/!;
+s!=URL=!http://wiki.centos.org/=LOCALE=/docs/=MAJOR_RELEASE=/!;
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!4!g
+
+# Locale information.
+s!=LOCALE=!cs!g

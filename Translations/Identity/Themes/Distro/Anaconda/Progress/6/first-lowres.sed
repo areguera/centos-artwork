@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: first-lowres.sed 5788 2010-06-09 02:23:48Z al $
+# $Id: first-lowres.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 s!=COPYRIGHT=!Copyright © 2003-2010 The CentOS Project. All rights reserved.!

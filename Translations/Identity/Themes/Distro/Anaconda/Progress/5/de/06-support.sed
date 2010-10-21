@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 06-support.sed 4861 2010-03-13 00:52:25Z al $
+# $Id: 06-support.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -18,9 +18,12 @@ s!=TEXT4=!<flowSpan style="font-weight:bold">Webforen</flowSpan> - http://www.ce
 s!=TEXT4=!!
 s!=TEXT5=!!
 s/=TEXT6=//
-s!=URL=!http://wiki.centos.org/GettingHelp!
+s!=URL=!http://wiki.centos.org/=LOCALE=/GettingHelp!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!5!g
+
+# Locale information.
+s!=LOCALE=!de!g

@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 04-repos.sed 4861 2010-03-13 00:52:25Z al $
+# $Id: 04-repos.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -17,9 +17,12 @@ s!=TEXT3=!<flowSpan style="font-weight:bold">[updates]</flowSpan> - এখান
 s!=TEXT4=!<flowSpan style="font-weight:bold">[extras]</flowSpan> - এখান থেকে  CentOS পাকেজ পাবেন যেগুলো upstream নয়( করে না upgrade [base]).!
 s!=TEXT5=!<flowSpan style="font-weight:bold">[centosplus]</flowSpan> - এখান থেকে  CentOS পাকেজ পাবেন যেগুলো upstream নয় ( করে upgrade [base]).!
 s!=TEXT6=!!
-s!=URL=!http://wiki.centos.org/AdditionalResources/Repositories!
+s!=URL=!http://wiki.centos.org/=LOCALE=/AdditionalResources/Repositories!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
 s!=MAJOR_RELEASE=!5!g
+
+# Locale information.
+s!=LOCALE=!bn_IN!g
