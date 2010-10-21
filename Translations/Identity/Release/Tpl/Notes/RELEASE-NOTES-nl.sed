@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# $Id: RELEASE-NOTES-nl.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 # Header content
@@ -40,7 +40,7 @@ s!=P6_URL=!http://wiki.centos.org/HowToContribute!g
 # Release number information
 s!=RELEASE=!=MAJOR_RELEASE=.4!g
 s!=MAJOR_RELEASE=!5!g
-# $Id: RELEASE-NOTES-nl.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 # Language Code (ISO639)
@@ -97,7 +97,7 @@ s!=P6_URL=!http://wiki.centos.org/HowToContribute!g
 s!=RELEASE=!=MAJOR_RELEASE=.4!g
 s!=MAJOR_RELEASE=!5!g
 # ------------------------------------------------------------
-# $Id: RELEASE-NOTES-nl.sed 13 2010-09-10 09:55:59Z al $
+# $Id$
 # ------------------------------------------------------------
 
 # Language Code (ISO639)
