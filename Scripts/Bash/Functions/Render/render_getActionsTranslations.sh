@@ -72,6 +72,8 @@ function render_getActionsTranslations {
     local MAJOR_RELEASE=''
     local MINOR_RELEASE=''
     local RELEASE_INFO=''
+    local LOCALES_INFO=''
+    local LOCALE=''
     local TRANSLATION=''
     local FILE=''
 
@@ -157,30 +159,60 @@ function render_getActionsTranslations {
         # information previously defined.
         for FILE in $(find $OPTIONVAL/Tpl -name '*.sed');do
 
-            # Define translation file.
+            # Define translation file locale.
+            LOCALE=$(echo $FILE | sed -r 's!^/.+/Tpl/([a-z]{2}|[a-z]{2}_[A-Z]{2})/.+$!\1!' )
+            if [[ $LOCALE =~ '^([a-z]{2}|[a-z]{2}_[A-Z]{2})$' ]];then
+
+                # Define locales translation markers.
+                LOCALES_INFO="
+                    # Locale information.
+                    s!=LOCALE=!${LOCALE}!g"
+
+                # Strip opening spaces from locales translation markers
+                # output lines.
+                LOCALES_INFO=$(echo "$LOCALES_INFO" | sed 's!^[[:space:]]*!!')
+
+            fi
+
+            # Define absolute path to translation template file.
             TRANSLATION=$FILE
 
-            # Define destination for final file.
+            # Define absolute path to translation final file.
             FILE=$(echo $FILE | sed "s!/Tpl!/$RELEASE!")
 
-            # Create release-specific directory if it doesn't exist.
+            # Create release-specific directory, if it doesn't exist.
             DIRNAME=$(dirname $FILE)
             if [[ ! -d $DIRNAME ]];then
                 mkdir -p $DIRNAME
             fi
 
-            # Show some verbose about file being processed.
+            # Output information about files being processed.
             cli_printMessage $TRANSLATION "AsTranslationLine"
             cli_printMessage $FILE "AsSavedAsLine"
 
             # Add warnning message to final translation file.
             echo "$MESSAGE" > $FILE
 
-            # Add template content to final translation file. 
+            # Add template content to final translation file.
             cat $TRANSLATION >> $FILE
 
             # Add release markers to final translation file.
             echo "$RELEASE_INFO" >> $FILE
+
+            # Add locales markers to final translation file, if they
+            # have locales information only.
+            if [[ $LOCALES_INFO != '' ]];then
+                echo "$LOCALES_INFO" >> $FILE
+                # Clean up locales information variable to receive
+                # next value. If we don't clean up the variable here,
+                # translation files without locale information (e.g.,
+                # progress-first.sed, firstboot-left.sed, etc.) will
+                # use the locale information of the last translation
+                # template which does have locale information and we
+                # don't want that. We want to set locale information
+                # for each translation template individually.
+                LOCALES_INFO=''
+            fi
 
             echo "------------------------------------------------------------"
 
