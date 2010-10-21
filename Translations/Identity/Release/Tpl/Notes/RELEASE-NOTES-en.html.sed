@@ -44,7 +44,7 @@ s!=P5_URL=!http://www.centos.org/!g
 s!=P6_URL=!http://wiki.centos.org/Contribute!g
 
 # XHTML document language code (ISO639)
-s!=LANG_CODE=!en!g
+s!=LOCALE=!en!g
 
 # XHTML document language direction (ltr|rtl)
 s!=LANG_DIR=!ltr!g
