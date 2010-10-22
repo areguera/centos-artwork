@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: sleeve-installdvd.sed 4893 2010-03-13 17:06:33Z al $
+# $Id: sleeve-installdvd.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
@@ -27,9 +27,11 @@ s!=MESSAGE1_P3=!This results in a secure, low-maintenance, reliable,\
 predictable and reproducible environment.!
 
 s!=ARCH=!for =ARCH= architectures!
-s!=URL=!http://www.centos.org/!
 
 s!=ARCH=!x86_64!
+s!=COPYRIGHT=!Copyright © 2003-2010 The CentOS Project. All rights reserved.!g
+s!=LICENSE=!The CentOS distribution is released as GPL.!
+s!=URL=!http://www.centos.org/!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g

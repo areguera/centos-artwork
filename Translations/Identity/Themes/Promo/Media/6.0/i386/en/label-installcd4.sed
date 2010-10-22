@@ -6,13 +6,15 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: label-installcd4.sed 4893 2010-03-13 17:06:33Z al $
+# $Id: label-installcd4.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 
 s!=TEXT=!Install CD 4/6!
 s!=ARCH=!for =ARCH= architectures!
 s!=ARCH=!i386!
+s!=COPYRIGHT=!Copyright © 2003-2010 The CentOS Project. All rights reserved.!g
+s!=LICENSE=!The CentOS distribution is released as GPL.!
 s!=URL=!http://www.centos.org/!
 
 # Release number information.
