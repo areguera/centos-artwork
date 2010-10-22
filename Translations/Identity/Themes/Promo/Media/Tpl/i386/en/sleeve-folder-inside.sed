@@ -31,6 +31,8 @@ s!=MESSAGE1_P3=!This results in a secure, low-maintenance, reliable,\
 predictable and reproducible environment.!
 
 s!=ARCH=!for =ARCH= architectures!
-s!=URL=!http://www.centos.org/!
 
 s!=ARCH=!i386!
+s!=COPYRIGHT=!Copyright © 2003-2010 The CentOS Project. All rights reserved.!g
+s!=LICENSE=!The CentOS distribution is released as GPL.!
+s!=URL=!http://www.centos.org/!
