@@ -6,14 +6,16 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: daysleft-6.sed 4894 2010-03-13 17:11:23Z al $
+# $Id: daysleft-6.sed 308 2010-10-21 18:57:44Z al $
 # ------------------------------------------------------------
 
 
 s/=MESSAGE1=/6 days left/
-s/=MESSAGE2=/to be released/
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!9!g
 s!=MAJOR_RELEASE=!4!g
+
+# Locale information.
+s!=LOCALE=!en!g

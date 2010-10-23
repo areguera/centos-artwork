@@ -4,4 +4,3 @@
 
 
 s/=MESSAGE1=/quedan 6 días/
-s/=MESSAGE2=/para su entrega/

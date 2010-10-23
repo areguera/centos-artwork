@@ -4,4 +4,3 @@
 
 
 s/=MESSAGE1=/11 days left/
-s/=MESSAGE2=/to be released/
