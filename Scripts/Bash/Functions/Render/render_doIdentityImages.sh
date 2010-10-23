@@ -95,11 +95,11 @@ function render_doIdentityImages {
 
             case "$ACTION" in
 
-                renderSyslinux:* )
+                renderSyslinux* )
                     render_doIdentityImageSyslinux $FILE "$ACTION"
                     ;;
 
-                renderGrub:* )
+                renderGrub* )
                     render_doIdentityImageGrub $FILE "$ACTION"
                     ;;
 
