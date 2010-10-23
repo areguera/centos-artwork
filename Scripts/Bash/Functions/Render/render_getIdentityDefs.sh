@@ -369,4 +369,7 @@ function render_getIdentityDefs {
 
     fi
 
+    # Replace common translation markers inside instance.
+    render_doTranslationMarkers
+
 }

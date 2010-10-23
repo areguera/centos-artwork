@@ -59,14 +59,6 @@ function render_doIdentityImages {
             WIDTH=''
         fi
 
-        # Check =THEME= translation marker existence inside design
-        # template instance and replace it with the name of the theme
-        # being rendered.
-        grep "=THEME=" $INSTANCE > /dev/null
-        if [[ $? -eq 0 ]];then
-            sed -i -e "s!=THEME=!$(cli_getThemeName)!g" $INSTANCE
-        fi
-
         # Check external files existence. External files are used when
         # reusing background images inside design templates. In these
         # cases external files point to images which contain the
