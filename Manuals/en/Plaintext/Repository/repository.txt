@@ -822,13 +822,71 @@ Image-based files always end up having the `.png' extension.
 3.3.1 Goals
 -----------
 
-   * ...
+This section exists to store digital typographies used by the CentOS
+project.
 
 3.3.2 Description
 -----------------
 
 3.3.3 Usage
 -----------
+
+The CentOS corporate identity is attached to DejaVu LGC font-family.
+Whatever artwork you design for CentOS project, that requires
+typography usage, must be done using DejaVu LGC font-family.
+
+*RULE-1:*
+     For screen desings (e.g., anything that final destination will
+     never be printed on paper or any medium outside computre screens)
+     use DejaVu LGC Sans font-family.
+
+*RULE-2:*
+     For non-screen designs (e.g., anything that final desition will be
+     printed paper or any medium outside computer screens) use DejaVu
+     LGC Serif font-family.
+
+   The only execption for the two rules above is the typography used
+inside CentOS logo. The CentOS logo is the main visual representation
+of the CentOS project so the typography used in must ever be the same
+no matter where it be shown. It also have be clear enough to dismiss
+any confussion between similar typefaces (e.g., the number one (1)
+sometimes is confuesed with the letter `el' (l) or letter `ai' (i)).
+
+   As CentOS logo typography convenction, the word `CentOS' uses
+`Denmark' typography as base, both for the word `CentOS' and the phrase
+`Community Enterprise Operating System'. The size of CentOS logo's
+phrase is half the size in poits the word `CentOS' has and it below
+`CentOS' word and aligned with it on the left.  The distance between
+`CentOS' word and phrase `Community Enterprise Operating System' is
+have the size in points the phrase has.
+
+   When the CentOS release brand is built, typography used for the
+release number is DejaVu LGC Serif Regular (not in bold, not in italic,
+not in anything else). The release number size is thirty points larger
+than default `CentOS' word. The separation between relase number and
+`CentOS' word is twice the size in points of separation between
+`CentOS' word and phrase `Community Enterprise Operating System'.
+
+   Another component inside CentOS logo is the trademark symbol (TM).
+This symbol specifies that the CentOS logo must be consider a product
+brand, even it is not a registered one. The trademark symbol uses
+DejaVu LGC Sans Regular typography. The trademark symbol is aligned
+right-top on the outter side of `CentOS' word. The trademark symbol
+must not exceed haf the distance, in points, between `CentOS' word and
+the release number on its right.
+
+   It would be very convenient for the CentOS Project and its community
+to to make a registered trademark (®) of CentOS logo. Make a register
+trademark of CentOS Logo prevents legal complications in the market
+place of brands. It grants the consistency, through time, of CentOS
+project corporate visual identity.
+
+     *Note* The information about trademarks and corporate identity is
+     my personal interpretation of
+     `http://en.wikipedia.org/Corporate_identity' and
+     `http://en.wikipedia.org/Trademark' description. If you have
+     practical experience in these affairs, please serve yourself to
+     improve this section with your reasons.
 
 3.3.4 See also
 --------------
@@ -4048,103 +4106,103 @@ Index
 *****
 
 branches:                                      See 1.        (line  376)
-Common translation files:                      See 3.53.2.5. (line 3472)
-How to render brands' translation files:       See 3.55.3.   (line 3777)
-How to render fonts' translation files:        See 3.57.3.   (line 3854)
-How to render translation files:               See 3.53.3.   (line 3642)
-Specific translation files:                    See 3.53.2.6. (line 3497)
+Common translation files:                      See 3.53.2.5. (line 3530)
+How to render brands' translation files:       See 3.55.3.   (line 3835)
+How to render fonts' translation files:        See 3.57.3.   (line 3912)
+How to render translation files:               See 3.53.3.   (line 3700)
+Specific translation files:                    See 3.53.2.6. (line 3555)
 tags:                                          See 2.        (line  379)
-Template translation files:                    See 3.53.2.4. (line 3302)
-Translation brands file names:                 See 3.55.2.1. (line 3734)
-Translation configuration scripts:             See 3.53.2.8. (line 3531)
-Translation entries:                           See 3.53.2.1. (line 3118)
-Translation files:                             See 3.53.2.3. (line 3234)
-Translation markers:                           See 3.53.2.2. (line 3199)
-Translation paths:                             See 3.53.2.1. (line 3118)
+Template translation files:                    See 3.53.2.4. (line 3360)
+Translation brands file names:                 See 3.55.2.1. (line 3792)
+Translation configuration scripts:             See 3.53.2.8. (line 3589)
+Translation entries:                           See 3.53.2.1. (line 3176)
+Translation files:                             See 3.53.2.3. (line 3292)
+Translation markers:                           See 3.53.2.2. (line 3257)
+Translation paths:                             See 3.53.2.1. (line 3176)
 Translation pre-rendering configuration scripts:See 3.53.2.8.
-                                                             (line 3531)
-Translation rendering:                         See 3.53.2.7. (line 3520)
-Translation rendering default functionality:   See 3.53.2.9. (line 3617)
+                                                             (line 3589)
+Translation rendering:                         See 3.53.2.7. (line 3578)
+Translation rendering default functionality:   See 3.53.2.9. (line 3675)
 trunk:                                         See 3.        (line  382)
 trunk Identity:                                See 3.1.      (line  385)
 trunk Identity Brands:                         See 3.2.      (line  805)
 trunk Identity Fonts:                          See 3.3.      (line  822)
-trunk Identity Icons:                          See 3.4.      (line  839)
-trunk Identity Isolinux:                       See 3.5.      (line  856)
-trunk Identity Models:                         See 3.6.      (line  873)
-trunk Identity Models Css:                     See 3.7.      (line  893)
-trunk Identity Models Html:                    See 3.8.      (line  915)
-trunk Identity Models Img Promo Web:           See 3.9.      (line  936)
-trunk Identity Models Tpl:                     See 3.10.     (line  957)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line  978)
-trunk Identity Models Xcf:                     See 3.12.     (line 1292)
-trunk Identity Release:                        See 3.13.     (line 1313)
-trunk Identity Themes:                         See 3.14.     (line 1330)
-trunk Identity Themes Models:                  See 3.15.     (line 1355)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1388)
-trunk Identity Themes Models Default:          See 3.17.     (line 1415)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1447)
+trunk Identity Icons:                          See 3.4.      (line  897)
+trunk Identity Isolinux:                       See 3.5.      (line  914)
+trunk Identity Models:                         See 3.6.      (line  931)
+trunk Identity Models Css:                     See 3.7.      (line  951)
+trunk Identity Models Html:                    See 3.8.      (line  973)
+trunk Identity Models Img Promo Web:           See 3.9.      (line  994)
+trunk Identity Models Tpl:                     See 3.10.     (line 1015)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1036)
+trunk Identity Models Xcf:                     See 3.12.     (line 1350)
+trunk Identity Release:                        See 3.13.     (line 1371)
+trunk Identity Themes:                         See 3.14.     (line 1388)
+trunk Identity Themes Models:                  See 3.15.     (line 1413)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1446)
+trunk Identity Themes Models Default:          See 3.17.     (line 1473)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1505)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1531)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1548)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1574)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1599)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1703)
+                                                             (line 1589)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1606)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1632)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1657)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1761)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.24.
-                                                             (line 1825)
+                                                             (line 1883)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.25.
-                                                             (line 1846)
+                                                             (line 1904)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.26.
-                                                             (line 1867)
+                                                             (line 1925)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.27.
-                                                             (line 1894)
-trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 1950)
-trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 1972)
+                                                             (line 1952)
+trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2008)
+trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2030)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.30.
-                                                             (line 1989)
-trunk Identity Widgets:                        See 3.31.     (line 2285)
-trunk Manuals:                                 See 3.32.     (line 2302)
-trunk Scripts:                                 See 3.33.     (line 2356)
-trunk Scripts Bash:                            See 3.34.     (line 2380)
-trunk Scripts Bash Config Identity:            See 3.35.     (line 2545)
-trunk Scripts Bash Config Translations:        See 3.36.     (line 2566)
-trunk Scripts Bash Functions:                  See 3.37.     (line 2587)
-trunk Scripts Bash Functions Config:           See 3.38.     (line 2608)
+                                                             (line 2047)
+trunk Identity Widgets:                        See 3.31.     (line 2343)
+trunk Manuals:                                 See 3.32.     (line 2360)
+trunk Scripts:                                 See 3.33.     (line 2414)
+trunk Scripts Bash:                            See 3.34.     (line 2438)
+trunk Scripts Bash Config Identity:            See 3.35.     (line 2603)
+trunk Scripts Bash Config Translations:        See 3.36.     (line 2624)
+trunk Scripts Bash Functions:                  See 3.37.     (line 2645)
+trunk Scripts Bash Functions Config:           See 3.38.     (line 2666)
 trunk Scripts Bash Functions Config cli_getActions.sh:See 3.40.
-                                                             (line 2621)
+                                                             (line 2679)
 trunk Scripts Bash Functions Config cli_getActionsIdentity.sh:See 3.39.
-                                                             (line 2614)
+                                                             (line 2672)
 trunk Scripts Bash Functions Config cli_getActionsTranslations.sh:See 3.41.
-                                                             (line 2627)
+                                                             (line 2685)
 trunk Scripts Bash Functions Config cli_getIdentityMatchinglist.sh:See 3.42.
-                                                             (line 2634)
+                                                             (line 2692)
 trunk Scripts Bash Functions Config repo_renderIdentitySyslinux.sh:See 3.43.
-                                                             (line 2643)
+                                                             (line 2701)
 trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh:See 3.44.
-                                                             (line 2664)
-trunk Scripts Bash Functions Render:           See 3.45.     (line 2685)
-trunk Scripts Bash Functions Render Config:    See 3.46.     (line 2706)
+                                                             (line 2722)
+trunk Scripts Bash Functions Render:           See 3.45.     (line 2743)
+trunk Scripts Bash Functions Render Config:    See 3.46.     (line 2764)
 trunk Scripts Bash Functions Render render_getActions.sh:See 3.48.
-                                                             (line 2905)
+                                                             (line 2963)
 trunk Scripts Bash Functions Render render_getActionsIdentity.sh:See 3.47.
-                                                             (line 2884)
+                                                             (line 2942)
 trunk Scripts Bash Functions Render render_getActionsTranslations.sh:See 3.49.
-                                                             (line 2926)
-trunk Scripts Bash Locale:                     See 3.50.     (line 2947)
-trunk Scripts Perl:                            See 3.51.     (line 3031)
-trunk Scripts Python:                          See 3.52.     (line 3048)
-trunk Translations:                            See 3.53.     (line 3069)
-trunk Translations Identity:                   See 3.54.     (line 3672)
-trunk Translations Identity Brands:            See 3.55.     (line 3693)
-trunk Translations Identity Brands Tpl:        See 3.56.     (line 3788)
-trunk Translations Identity Fonts:             See 3.57.     (line 3803)
-trunk Translations Identity Models:            See 3.58.     (line 3870)
-trunk Translations Identity Release:           See 3.59.     (line 3885)
-trunk Translations Identity Themes:            See 3.60.     (line 3900)
-trunk Translations Identity Themes Backgrounds:See 3.61.     (line 3915)
+                                                             (line 2984)
+trunk Scripts Bash Locale:                     See 3.50.     (line 3005)
+trunk Scripts Perl:                            See 3.51.     (line 3089)
+trunk Scripts Python:                          See 3.52.     (line 3106)
+trunk Translations:                            See 3.53.     (line 3127)
+trunk Translations Identity:                   See 3.54.     (line 3730)
+trunk Translations Identity Brands:            See 3.55.     (line 3751)
+trunk Translations Identity Brands Tpl:        See 3.56.     (line 3846)
+trunk Translations Identity Fonts:             See 3.57.     (line 3861)
+trunk Translations Identity Models:            See 3.58.     (line 3928)
+trunk Translations Identity Release:           See 3.59.     (line 3943)
+trunk Translations Identity Themes:            See 3.60.     (line 3958)
+trunk Translations Identity Themes Backgrounds:See 3.61.     (line 3973)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.62.
-                                                             (line 3936)
-trunk Translations Identity Widgets:           See 3.63.     (line 4029)
+                                                             (line 3994)
+trunk Translations Identity Widgets:           See 3.63.     (line 4087)
 List of Figures
 ***************
 
