@@ -142,7 +142,7 @@ function render_loadConfig {
             cli_printMessage $OPTIONVAL/$BOND/$FILE "AsLinkToLine"
             ln -sf $TRANSLATION $OPTIONVAL/$BOND/$FILE
 
-            echo '------------------------------------------------------------'
+            echo '----------------------------------------------------------------------'
 
         done
 
