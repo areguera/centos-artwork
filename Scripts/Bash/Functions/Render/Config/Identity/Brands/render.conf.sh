@@ -32,6 +32,7 @@ function render_loadConfig {
     # Define rendering actions.
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='POST:renderBrands: tif xpm pdf ppm'
+    ACTIONS[2]='POST:groupByType: png tif xpm pdf ppm'
 
     # Define matching list.
     MATCHINGLIST="\
