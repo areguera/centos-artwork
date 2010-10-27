@@ -126,19 +126,6 @@ Use this command to search repository entries that match
 @samp{path/to/dir1} @emph{or} @samp{path/to/dir2}, @emph{or}
 @samp{path/to/dirN} as in
 @samp{^.*(path/to/dir1|path/to/dir2|path/to/dirN).*$'}.
-
-@end table
-
-@subsubsection The @command{centos-art} @samp{path} action
-
-This feature is not supported yet.
-
-@table @samp
-@item centos-art path 'path/to/dir/' --copy-to='path/to/dir'
-@item centos-art path 'path/to/dir/' --copy-to='path/to/dir/filename'
-@item centos-art path 'path/to/dir/' --move-to='path/to/dir'
-@item centos-art path 'path/to/dir/' --move-to='path/to/dir/filename'
-@item centos-art path 'path/to/dir/' --remove
 @end table
 
 @subsubsection The @command{centos-art} @samp{locale-art} action

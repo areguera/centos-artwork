@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 22 2010 by texi2html 1.76 -->
+<!-- Created on October, 27 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.62 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress</title>
+<title>CentOS Artwork Repository: Index</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.62 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress">
-<meta name="keywords" content="CentOS Artwork Repository: 3.62 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress">
+<meta name="description" content="CentOS Artwork Repository: Index">
+<meta name="keywords" content="CentOS Artwork Repository: Index">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,134 +56,153 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_64.html#SEC339" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC341" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_64.html#SEC358" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC360" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC350" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC360" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC350" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="#SEC359" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Translations-Identity-Themes-Distro-Anaconda-Progress"></a>
-<a name="SEC340"></a>
-<h2 class="section"> 3.62 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress </h2>
-
-
-<a name="SEC341"></a>
-<h3 class="subsection"> 3.62.1 Goals </h3>
-
-<ul class="toc">
-<li> Organize Anaconda progress translation templates.
-</li><li> Organize Anaconda progress translation files in several
-languages and major releases of CentOS distribution.
-</li></ul>
-
-
-<a name="SEC342"></a>
-<h3 class="subsection"> 3.62.2 Description </h3>
-
-<p>Use the following command to produce translation files based:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
-`-- Tpl
-    |-- en
-    |   |-- 01-welcome.sed
-    |   |-- 02-donate.sed
-    |   `-- 03-yum.sed
-    `-- es
-        |-- 01-welcome.sed
-        |-- 02-donate.sed
-        `-- 03-yum.sed
-</pre></td></tr></table>
-<p>In order to produce the slide images in PNG format we need to have the
-translation files first. So we use the following commands to create
-translation files for CentOS 3, 4, and 5 major releases:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">centos-art render --translation --filter='3,4,5'
-</pre></td></tr></table>
-<p>The above commands will produce the following translation structure:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
-|-- 3
-|   |-- en
-|   |   |-- 01-welcome.sed
-|   |   |-- 02-donate.sed
-|   |   `-- 03-yum.sed
-|   `-- es
-|       |-- 01-welcome.sed
-|       |-- 02-donate.sed
-|       `-- 03-yum.sed
-|-- 4
-|   |-- en
-|   |   |-- 01-welcome.sed
-|   |   |-- 02-donate.sed
-|   |   `-- 03-yum.sed
-|   `-- es
-|       |-- 01-welcome.sed
-|       |-- 02-donate.sed
-|       `-- 03-yum.sed
-|-- 5
-|   |-- en
-|   |   |-- 01-welcome.sed
-|   |   |-- 02-donate.sed
-|   |   `-- 03-yum.sed
-|   `-- es
-|       |-- 01-welcome.sed
-|       |-- 02-donate.sed
-|       `-- 03-yum.sed
-`-- Tpl
-    |-- en
-    |   |-- 01-welcome.sed
-    |   |-- 02-donate.sed
-    |   `-- 03-yum.sed
-    `-- es
-        |-- 01-welcome.sed
-        |-- 02-donate.sed
-        `-- 03-yum.sed
-</pre></td></tr></table>
-<p>At this point we have all the translation files we need to produce
-Anaconda progress welcome, donate and yum slides images; in English
-and Spanish languages; for CentOS 3, CentOS 4, and CentOS 5. That is,
-a sum of 18 images around. 
-</p>
-<p>Now, with translation files in place, let's move to
-<tt>`trunk/Identity'</tt> structure and render them. 
-</p>
-<ul class="toc">
-<li> See section <a href="repository_30.html#SEC157">trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress</a>.
-</li></ul>
-
-
-<a name="SEC343"></a>
-<h3 class="subsection"> 3.62.3 Usage </h3>
-
-<p>Translation rendering is described in <samp>`trunk/Translations'</samp>
-documentation entry (see section <a href="repository_56.html#SEC282">trunk/Translations</a>).
-</p>
-
-
-<a name="SEC344"></a>
-<h3 class="subsection"> 3.62.4 See also </h3>
+<a name="Index"></a>
+<a name="SEC359"></a>
+<h1 class="unnumbered"> Index </h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC359_0" class="summary-letter"><b>B</b></a>
+ &nbsp; 
+<a href="#SEC359_1" class="summary-letter"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC359_2" class="summary-letter"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC359_3" class="summary-letter"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC359_4" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+<table border="0" class="index-cp">
+<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC359_0">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="repository_1.html#SEC1">branches</a></td><td valign="top"><a href="repository_1.html#SEC1">1. branches</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC359_1">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC298">Common translation files</a></td><td valign="top"><a href="repository_54.html#SEC298">3.51.2.5 Common Translation Files</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC359_2">H</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="repository_56.html#SEC316">How to render brands' translation files</a></td><td valign="top"><a href="repository_56.html#SEC316">3.53.3 Usage</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_58.html#SEC327">How to render fonts' translation files</a></td><td valign="top"><a href="repository_58.html#SEC327">3.55.3 Usage</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC303">How to render translation files</a></td><td valign="top"><a href="repository_54.html#SEC303">3.51.3 Usage</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC359_3">S</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC299">Specific translation files</a></td><td valign="top"><a href="repository_54.html#SEC299">3.51.2.6 Specific Translation Files</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+<tr><th><a name="SEC359_4">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="repository_2.html#SEC2">tags</a></td><td valign="top"><a href="repository_2.html#SEC2">2. tags</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC297">Template translation files</a></td><td valign="top"><a href="repository_54.html#SEC297">3.51.2.4 Template Translation Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_56.html#SEC313">Translation brands file names</a></td><td valign="top"><a href="repository_56.html#SEC313">3.53.2.1 Conventional file names</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_56.html#SEC314">Translation brands file names</a></td><td valign="top"><a href="repository_56.html#SEC314">3.53.2.2 Numeric file names</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC301">Translation configuration scripts</a></td><td valign="top"><a href="repository_54.html#SEC301">3.51.2.8 Translation (Pre-)Rendering Configuration Scripts</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC294">Translation entries</a></td><td valign="top"><a href="repository_54.html#SEC294">3.51.2.1 Translation Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC296">Translation files</a></td><td valign="top"><a href="repository_54.html#SEC296">3.51.2.3 Translation Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#IDX1">Translation markers</a></td><td valign="top"><a href="repository_54.html#SEC295">3.51.2.2 Translation Markers</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC294">Translation paths</a></td><td valign="top"><a href="repository_54.html#SEC294">3.51.2.1 Translation Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC301">Translation pre-rendering configuration scripts</a></td><td valign="top"><a href="repository_54.html#SEC301">3.51.2.8 Translation (Pre-)Rendering Configuration Scripts</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC300">Translation rendering</a></td><td valign="top"><a href="repository_54.html#SEC300">3.51.2.7 Translation Rendering</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC302">Translation rendering default functionality</a></td><td valign="top"><a href="repository_54.html#SEC302">3.51.2.9 Translation Rendering Default Functionality</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_3.html#SEC3">trunk</a></td><td valign="top"><a href="repository_3.html#SEC3">3. trunk</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_4.html#SEC4">trunk Identity</a></td><td valign="top"><a href="repository_4.html#SEC4">3.1 trunk/Identity</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_5.html#SEC20">trunk Identity Brands</a></td><td valign="top"><a href="repository_5.html#SEC20">3.2 trunk/Identity/Brands</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_6.html#SEC25">trunk Identity Fonts</a></td><td valign="top"><a href="repository_6.html#SEC25">3.3 trunk/Identity/Fonts</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_7.html#SEC30">trunk Identity Icons</a></td><td valign="top"><a href="repository_7.html#SEC30">3.4 trunk/Identity/Icons</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_8.html#SEC35">trunk Identity Isolinux</a></td><td valign="top"><a href="repository_8.html#SEC35">3.5 trunk/Identity/Isolinux</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_9.html#SEC40">trunk Identity Models</a></td><td valign="top"><a href="repository_9.html#SEC40">3.6 trunk/Identity/Models</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_10.html#SEC45">trunk Identity Models Css</a></td><td valign="top"><a href="repository_10.html#SEC45">3.7 trunk/Identity/Models/Css</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_11.html#SEC50">trunk Identity Models Html</a></td><td valign="top"><a href="repository_11.html#SEC50">3.8 trunk/Identity/Models/Html</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_12.html#SEC55">trunk Identity Models Img Promo Web</a></td><td valign="top"><a href="repository_12.html#SEC55">3.9 trunk/Identity/Models/Img/Promo/Web</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_13.html#SEC60">trunk Identity Models Tpl</a></td><td valign="top"><a href="repository_13.html#SEC60">3.10 trunk/Identity/Models/Tpl</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_14.html#SEC65">trunk Identity Models Tpl Promo Web</a></td><td valign="top"><a href="repository_14.html#SEC65">3.11 trunk/Identity/Models/Tpl/Promo/Web</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_15.html#SEC80">trunk Identity Models Xcf</a></td><td valign="top"><a href="repository_15.html#SEC80">3.12 trunk/Identity/Models/Xcf</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_16.html#SEC85">trunk Identity Release</a></td><td valign="top"><a href="repository_16.html#SEC85">3.13 trunk/Identity/Release</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_17.html#SEC90">trunk Identity Themes</a></td><td valign="top"><a href="repository_17.html#SEC90">3.14 trunk/Identity/Themes</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_18.html#SEC95">trunk Identity Themes Models</a></td><td valign="top"><a href="repository_18.html#SEC95">3.15 trunk/Identity/Themes/Models</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_19.html#SEC100">trunk Identity Themes Models Alternative</a></td><td valign="top"><a href="repository_19.html#SEC100">3.16 trunk/Identity/Themes/Models/Alternative</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_20.html#SEC105">trunk Identity Themes Models Default</a></td><td valign="top"><a href="repository_20.html#SEC105">3.17 trunk/Identity/Themes/Models/Default</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_21.html#SEC110">trunk Identity Themes Models Default Distro</a></td><td valign="top"><a href="repository_21.html#SEC110">3.18 trunk/Identity/Themes/Models/Default/Distro</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_22.html#SEC117">trunk Identity Themes Models Default Distro Anaconda</a></td><td valign="top"><a href="repository_22.html#SEC117">3.19 trunk/Identity/Themes/Models/Default/Distro/Anaconda</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_23.html#SEC122">trunk Identity Themes Models Default Promo</a></td><td valign="top"><a href="repository_23.html#SEC122">3.20 trunk/Identity/Themes/Models/Default/Promo</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_24.html#SEC127">trunk Identity Themes Models Default Web</a></td><td valign="top"><a href="repository_24.html#SEC127">3.21 trunk/Identity/Themes/Models/Default/Web</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_25.html#SEC132">trunk Identity Themes Motifs</a></td><td valign="top"><a href="repository_25.html#SEC132">3.22 trunk/Identity/Themes/Motifs</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_26.html#SEC137">trunk Identity Themes Motifs Modern Backgrounds</a></td><td valign="top"><a href="repository_26.html#SEC137">3.23 trunk/Identity/Themes/Motifs/Modern/Backgrounds</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_27.html#SEC142">trunk Identity Themes Motifs Modern Backgrounds Img</a></td><td valign="top"><a href="repository_27.html#SEC142">3.24 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_28.html#SEC147">trunk Identity Themes Motifs Modern Backgrounds Tpl</a></td><td valign="top"><a href="repository_28.html#SEC147">3.25 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_29.html#SEC152">trunk Identity Themes Motifs Modern Backgrounds Xcf</a></td><td valign="top"><a href="repository_29.html#SEC152">3.26 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_30.html#SEC157">trunk Identity Themes Motifs Modern Distro Anaconda Progress</a></td><td valign="top"><a href="repository_30.html#SEC157">3.27 trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_31.html#SEC162">trunk Identity Themes Motifs Modern Palettes</a></td><td valign="top"><a href="repository_31.html#SEC162">3.28 trunk/Identity/Themes/Motifs/Modern/Palettes</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_32.html#SEC167">trunk Identity Themes Motifs TreeFlower</a></td><td valign="top"><a href="repository_32.html#SEC167">3.29 trunk/Identity/Themes/Motifs/TreeFlower</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_33.html#SEC172">trunk Identity Themes Motifs TreeFlower Backgrounds</a></td><td valign="top"><a href="repository_33.html#SEC172">3.30 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_34.html#SEC180">trunk Identity Widgets</a></td><td valign="top"><a href="repository_34.html#SEC180">3.31 trunk/Identity/Widgets</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_35.html#SEC185">trunk Manuals</a></td><td valign="top"><a href="repository_35.html#SEC185">3.32 trunk/Manuals</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_36.html#SEC190">trunk Scripts</a></td><td valign="top"><a href="repository_36.html#SEC190">3.33 trunk/Scripts</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_37.html#SEC195">trunk Scripts Bash</a></td><td valign="top"><a href="repository_37.html#SEC195">3.34 trunk/Scripts/Bash</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_38.html#SEC206">trunk Scripts Bash Functions</a></td><td valign="top"><a href="repository_38.html#SEC206">3.35 trunk/Scripts/Bash/Functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_40.html#SEC216">trunk Scripts Bash Functions Config cli_getActions.sh</a></td><td valign="top"><a href="repository_40.html#SEC216">3.37 trunk/Scripts/Bash/Functions/Config/cli_getActions.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_39.html#SEC211">trunk Scripts Bash Functions Config cli_getActionsIdentity.sh</a></td><td valign="top"><a href="repository_39.html#SEC211">3.36 trunk/Scripts/Bash/Functions/Config/cli_getActionsIdentity.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_41.html#SEC221">trunk Scripts Bash Functions Config cli_getActionsTranslations.sh</a></td><td valign="top"><a href="repository_41.html#SEC221">3.38 trunk/Scripts/Bash/Functions/Config/cli_getActionsTranslations.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_42.html#SEC226">trunk Scripts Bash Functions Config cli_getIdentityMatchinglist.sh</a></td><td valign="top"><a href="repository_42.html#SEC226">3.39 trunk/Scripts/Bash/Functions/Config/cli_getIdentityMatchinglist.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_43.html#SEC231">trunk Scripts Bash Functions Config repo_renderIdentitySyslinux.sh</a></td><td valign="top"><a href="repository_43.html#SEC231">3.40 trunk/Scripts/Bash/Functions/Config/repo_renderIdentitySyslinux.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_44.html#SEC236">trunk Scripts Bash Functions Path</a></td><td valign="top"><a href="repository_44.html#SEC236">3.41 trunk/Scripts/Bash/Functions/Path</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_45.html#SEC241">trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh</a></td><td valign="top"><a href="repository_45.html#SEC241">3.42 trunk/Scripts/Bash/Functions/Prepare/prepare_forUsingPackages.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_46.html#SEC246">trunk Scripts Bash Functions Render</a></td><td valign="top"><a href="repository_46.html#SEC246">3.43 trunk/Scripts/Bash/Functions/Render</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_47.html#SEC251">trunk Scripts Bash Functions Render Config</a></td><td valign="top"><a href="repository_47.html#SEC251">3.44 trunk/Scripts/Bash/Functions/Render/Config</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_49.html#SEC264">trunk Scripts Bash Functions Render render_getActions.sh</a></td><td valign="top"><a href="repository_49.html#SEC264">3.46 trunk/Scripts/Bash/Functions/Render/render_getActions.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_48.html#SEC259">trunk Scripts Bash Functions Render render_getActionsIdentity.sh</a></td><td valign="top"><a href="repository_48.html#SEC259">3.45 trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_50.html#SEC269">trunk Scripts Bash Functions Render render_getActionsTranslations.sh</a></td><td valign="top"><a href="repository_50.html#SEC269">3.47 trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_51.html#SEC274">trunk Scripts Bash Locale</a></td><td valign="top"><a href="repository_51.html#SEC274">3.48 trunk/Scripts/Bash/Locale</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_52.html#SEC281">trunk Scripts Perl</a></td><td valign="top"><a href="repository_52.html#SEC281">3.49 trunk/Scripts/Perl</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_53.html#SEC286">trunk Scripts Python</a></td><td valign="top"><a href="repository_53.html#SEC286">3.50 trunk/Scripts/Python</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_54.html#SEC291">trunk Translations</a></td><td valign="top"><a href="repository_54.html#SEC291">3.51 trunk/Translations</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_55.html#SEC305">trunk Translations Identity</a></td><td valign="top"><a href="repository_55.html#SEC305">3.52 trunk/Translations/Identity</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_56.html#SEC310">trunk Translations Identity Brands</a></td><td valign="top"><a href="repository_56.html#SEC310">3.53 trunk/Translations/Identity/Brands</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_57.html#SEC318">trunk Translations Identity Brands Tpl</a></td><td valign="top"><a href="repository_57.html#SEC318">3.54 trunk/Translations/Identity/Brands/Tpl</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_58.html#SEC323">trunk Translations Identity Fonts</a></td><td valign="top"><a href="repository_58.html#SEC323">3.55 trunk/Translations/Identity/Fonts</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_59.html#SEC329">trunk Translations Identity Models</a></td><td valign="top"><a href="repository_59.html#SEC329">3.56 trunk/Translations/Identity/Models</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_60.html#SEC334">trunk Translations Identity Release</a></td><td valign="top"><a href="repository_60.html#SEC334">3.57 trunk/Translations/Identity/Release</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_61.html#SEC339">trunk Translations Identity Themes</a></td><td valign="top"><a href="repository_61.html#SEC339">3.58 trunk/Translations/Identity/Themes</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_62.html#SEC344">trunk Translations Identity Themes Backgrounds</a></td><td valign="top"><a href="repository_62.html#SEC344">3.59 trunk/Translations/Identity/Themes/Backgrounds</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_63.html#SEC349">trunk Translations Identity Themes Distro Anaconda Progress</a></td><td valign="top"><a href="repository_63.html#SEC349">3.60 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress</a></td></tr>
+<tr><td></td><td valign="top"><a href="repository_64.html#SEC354">trunk Translations Identity Widgets</a></td><td valign="top"><a href="repository_64.html#SEC354">3.61 trunk/Translations/Identity/Widgets</a></td></tr>
+<tr><td colspan="3"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC359_0" class="summary-letter"><b>B</b></a>
+ &nbsp; 
+<a href="#SEC359_1" class="summary-letter"><b>C</b></a>
+ &nbsp; 
+<a href="#SEC359_2" class="summary-letter"><b>H</b></a>
+ &nbsp; 
+<a href="#SEC359_3" class="summary-letter"><b>S</b></a>
+ &nbsp; 
+<a href="#SEC359_4" class="summary-letter"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC343" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_66.html#SEC345" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_64.html#SEC358" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC360" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC350" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC360" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 22 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 27 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
