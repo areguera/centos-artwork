@@ -51,12 +51,12 @@ function help_removeEntry {
         LOCATION=$(dirname $ENTRY)
     fi
 
-    # Look for dependent entries. In this contest, dependent entries
+    # Look for dependent entries. In this context, dependent entries
     # are all files ending in .texi which have a directory name that
     # matches the file name (without .texi extension) of the entry
     # being processed currently. See LOCATION default definition
-    # above.  If location directory doesn't exist is probably because
-    # there is no dependent entries.
+    # above.  If location directory doesn't exist it is probably
+    # because there is no dependent entries.
     if [[ -d $LOCATION ]];then
         for ENTRY in $(find $LOCATION -name '*.texi');do
             ENTRIES="$ENTRIES $ENTRY $(dirname $ENTRY)"
