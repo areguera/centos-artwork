@@ -212,139 +212,134 @@ CentOS Artwork Repository
     3.35.2 Description
     3.35.3 Usage
     3.35.4 See also
-  3.36 trunk/Scripts/Bash/Functions/Config/cli_getIdentityMatchinglist.sh
+  3.36 trunk/Scripts/Bash/Functions/Config/repo_renderIdentitySyslinux.sh
     3.36.1 Goals
     3.36.2 Description
     3.36.3 Usage
     3.36.4 See also
-  3.37 trunk/Scripts/Bash/Functions/Config/repo_renderIdentitySyslinux.sh
+  3.37 trunk/Scripts/Bash/Functions/Path
     3.37.1 Goals
     3.37.2 Description
     3.37.3 Usage
     3.37.4 See also
-  3.38 trunk/Scripts/Bash/Functions/Path
+  3.38 trunk/Scripts/Bash/Functions/Prepare/prepare_forUsingPackages.sh
     3.38.1 Goals
     3.38.2 Description
     3.38.3 Usage
     3.38.4 See also
-  3.39 trunk/Scripts/Bash/Functions/Prepare/prepare_forUsingPackages.sh
+  3.39 trunk/Scripts/Bash/Functions/Render
     3.39.1 Goals
     3.39.2 Description
     3.39.3 Usage
     3.39.4 See also
-  3.40 trunk/Scripts/Bash/Functions/Render
+  3.40 trunk/Scripts/Bash/Functions/Render/Config
     3.40.1 Goals
     3.40.2 Description
+      3.40.2.1 The `render.conf.sh' identity model
+      3.40.2.2 The `render.conf.sh' translation model
+      3.40.2.3 The `render.conf.sh' rendering actions
     3.40.3 Usage
     3.40.4 See also
-  3.41 trunk/Scripts/Bash/Functions/Render/Config
+  3.41 trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh
     3.41.1 Goals
     3.41.2 Description
-      3.41.2.1 The `render.conf.sh' identity model
-      3.41.2.2 The `render.conf.sh' translation model
-      3.41.2.3 The `render.conf.sh' rendering actions
     3.41.3 Usage
     3.41.4 See also
-  3.42 trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh
+  3.42 trunk/Scripts/Bash/Functions/Render/render_getActions.sh
     3.42.1 Goals
     3.42.2 Description
     3.42.3 Usage
     3.42.4 See also
-  3.43 trunk/Scripts/Bash/Functions/Render/render_getActions.sh
+  3.43 trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh
     3.43.1 Goals
     3.43.2 Description
     3.43.3 Usage
     3.43.4 See also
-  3.44 trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh
+  3.44 trunk/Scripts/Bash/Locale
     3.44.1 Goals
     3.44.2 Description
+      3.44.2.1 Configuration files
     3.44.3 Usage
+      3.44.3.1 The `centos-art' `locale-cli' action
     3.44.4 See also
-  3.45 trunk/Scripts/Bash/Locale
+  3.45 trunk/Scripts/Perl
     3.45.1 Goals
     3.45.2 Description
-      3.45.2.1 Configuration files
     3.45.3 Usage
-      3.45.3.1 The `centos-art' `locale-cli' action
     3.45.4 See also
-  3.46 trunk/Scripts/Perl
+  3.46 trunk/Scripts/Python
     3.46.1 Goals
     3.46.2 Description
     3.46.3 Usage
     3.46.4 See also
-  3.47 trunk/Scripts/Python
+  3.47 trunk/Translations
     3.47.1 Goals
     3.47.2 Description
+      3.47.2.1 Translation Entries
+      3.47.2.2 Translation Markers
+      3.47.2.3 Translation Files
+      3.47.2.4 Template Translation Files
+      3.47.2.5 Common Translation Files
+      3.47.2.6 Specific Translation Files
+      3.47.2.7 Translation Rendering
+      3.47.2.8 Translation (Pre-)Rendering Configuration Scripts
+      3.47.2.9 Translation Rendering Default Functionality
     3.47.3 Usage
     3.47.4 See also
-  3.48 trunk/Translations
+  3.48 trunk/Translations/Identity
     3.48.1 Goals
     3.48.2 Description
-      3.48.2.1 Translation Entries
-      3.48.2.2 Translation Markers
-      3.48.2.3 Translation Files
-      3.48.2.4 Template Translation Files
-      3.48.2.5 Common Translation Files
-      3.48.2.6 Specific Translation Files
-      3.48.2.7 Translation Rendering
-      3.48.2.8 Translation (Pre-)Rendering Configuration Scripts
-      3.48.2.9 Translation Rendering Default Functionality
     3.48.3 Usage
     3.48.4 See also
-  3.49 trunk/Translations/Identity
+  3.49 trunk/Translations/Identity/Brands
     3.49.1 Goals
     3.49.2 Description
+      3.49.2.1 Conventional file names
+      3.49.2.2 Numeric file names
+      3.49.2.3 Translation markers
     3.49.3 Usage
     3.49.4 See also
-  3.50 trunk/Translations/Identity/Brands
+  3.50 trunk/Translations/Identity/Brands/Tpl
     3.50.1 Goals
     3.50.2 Description
-      3.50.2.1 Conventional file names
-      3.50.2.2 Numeric file names
-      3.50.2.3 Translation markers
     3.50.3 Usage
     3.50.4 See also
-  3.51 trunk/Translations/Identity/Brands/Tpl
+  3.51 trunk/Translations/Identity/Fonts
     3.51.1 Goals
     3.51.2 Description
+      3.51.2.1 Translation Markers
     3.51.3 Usage
     3.51.4 See also
-  3.52 trunk/Translations/Identity/Fonts
+  3.52 trunk/Translations/Identity/Models
     3.52.1 Goals
     3.52.2 Description
-      3.52.2.1 Translation Markers
     3.52.3 Usage
     3.52.4 See also
-  3.53 trunk/Translations/Identity/Models
+  3.53 trunk/Translations/Identity/Release
     3.53.1 Goals
     3.53.2 Description
     3.53.3 Usage
     3.53.4 See also
-  3.54 trunk/Translations/Identity/Release
+  3.54 trunk/Translations/Identity/Themes
     3.54.1 Goals
     3.54.2 Description
     3.54.3 Usage
     3.54.4 See also
-  3.55 trunk/Translations/Identity/Themes
+  3.55 trunk/Translations/Identity/Themes/Backgrounds
     3.55.1 Goals
     3.55.2 Description
     3.55.3 Usage
     3.55.4 See also
-  3.56 trunk/Translations/Identity/Themes/Backgrounds
+  3.56 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
     3.56.1 Goals
     3.56.2 Description
     3.56.3 Usage
     3.56.4 See also
-  3.57 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
+  3.57 trunk/Translations/Identity/Widgets
     3.57.1 Goals
     3.57.2 Description
     3.57.3 Usage
     3.57.4 See also
-  3.58 trunk/Translations/Identity/Widgets
-    3.58.1 Goals
-    3.58.2 Description
-    3.58.3 Usage
-    3.58.4 See also
 Index
 List of Figures
 
@@ -2598,7 +2593,7 @@ This feature is supported through the following command:
 3.35.4 See also
 ---------------
 
-3.36 trunk/Scripts/Bash/Functions/Config/cli_getIdentityMatchinglist.sh
+3.36 trunk/Scripts/Bash/Functions/Config/repo_renderIdentitySyslinux.sh
 =======================================================================
 
 3.36.1 Goals
@@ -2619,31 +2614,10 @@ This feature is supported through the following command:
 3.36.4 See also
 ---------------
 
-3.37 trunk/Scripts/Bash/Functions/Config/repo_renderIdentitySyslinux.sh
-=======================================================================
-
-3.37.1 Goals
-------------
-
-   * ...
-
-3.37.2 Description
-------------------
-
-   * ...
-
-3.37.3 Usage
-------------
-
-   * ...
-
-3.37.4 See also
----------------
-
-3.38 trunk/Scripts/Bash/Functions/Path
+3.37 trunk/Scripts/Bash/Functions/Path
 ======================================
 
-3.38.1 Goals
+3.37.1 Goals
 ------------
 
 This section exists to organize files related to centos-art.sh path
@@ -2651,12 +2625,12 @@ functiontionality. The centos-art.sh path functionality standardizes
 file movements inside CentOS Artwork Repository. This helps to keep
 repository file system syncronized with documentation file system.
 
-3.38.2 Description
+3.37.2 Description
 ------------------
 
    * ...
 
-3.38.3 Usage
+3.37.3 Usage
 ------------
 
 This feature is not supported yet.
@@ -2671,11 +2645,32 @@ This feature is not supported yet.
 
 `centos-art path 'path/to/dir/' --remove'
 
+3.37.4 See also
+---------------
+
+3.38 trunk/Scripts/Bash/Functions/Prepare/prepare_forUsingPackages.sh
+=====================================================================
+
+3.38.1 Goals
+------------
+
+   * ...
+
+3.38.2 Description
+------------------
+
+   * ...
+
+3.38.3 Usage
+------------
+
+   * ...
+
 3.38.4 See also
 ---------------
 
-3.39 trunk/Scripts/Bash/Functions/Prepare/prepare_forUsingPackages.sh
-=====================================================================
+3.39 trunk/Scripts/Bash/Functions/Render
+========================================
 
 3.39.1 Goals
 ------------
@@ -2695,37 +2690,16 @@ This feature is not supported yet.
 3.39.4 See also
 ---------------
 
-3.40 trunk/Scripts/Bash/Functions/Render
-========================================
-
-3.40.1 Goals
-------------
-
-   * ...
-
-3.40.2 Description
-------------------
-
-   * ...
-
-3.40.3 Usage
-------------
-
-   * ...
-
-3.40.4 See also
----------------
-
-3.41 trunk/Scripts/Bash/Functions/Render/Config
+3.40 trunk/Scripts/Bash/Functions/Render/Config
 ===============================================
 
-3.41.1 Goals
+3.40.1 Goals
 ------------
 
 The `trunk/Scripts/Bash/Config' directory exists to oraganize
 pre-rendering configuration scripts.
 
-3.41.2 Description
+3.40.2 Description
 ------------------
 
 Pre-rendering configuration scripts let you customize the way
@@ -2739,7 +2713,7 @@ both on identity and translation repository entires.  Pre-rendering
 configuration entries are required for each identity entry, but not for
 translation entries.
 
-3.41.2.1 The `render.conf.sh' identity model
+3.40.2.1 The `render.conf.sh' identity model
 ............................................
 
 Inside CentOS Artwork Repository, we consider identity entries to all
@@ -2782,7 +2756,7 @@ extend both image-based and text-based pre-rendering configuration
 scripts using image-based and text-based post-rendering actions,
 respectively.
 
-3.41.2.2 The `render.conf.sh' translation model
+3.40.2.2 The `render.conf.sh' translation model
 ...............................................
 
 Translation pre-rendering configuration scripts take precedence before
@@ -2790,7 +2764,7 @@ default translation rendering action. Translation pre-rendering actions
 are useful when default translation rendering action do not fit itself
 to translation entry rendering requirements.
 
-3.41.2.3 The `render.conf.sh' rendering actions
+3.40.2.3 The `render.conf.sh' rendering actions
 ...............................................
 
 Inside both image-based and text-based identity pre-rendering
@@ -2864,7 +2838,7 @@ ACTIONS[0]='BASE:renderImage'
 ACTIONS[1]='POST:renderFormats: xpm jpg tif'
 ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
 
-3.41.3 Usage
+3.40.3 Usage
 ------------
 
 Use the following commands to administer both identity and translation
@@ -2891,11 +2865,32 @@ pre-rendering configuration scripts:
 directory path under `trunk/Identity' or `trunk/Translations'
 structures only.
 
+3.40.4 See also
+---------------
+
+3.41 trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh
+=====================================================================
+
+3.41.1 Goals
+------------
+
+   * ...
+
+3.41.2 Description
+------------------
+
+   * ...
+
+3.41.3 Usage
+------------
+
+   * ...
+
 3.41.4 See also
 ---------------
 
-3.42 trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh
-=====================================================================
+3.42 trunk/Scripts/Bash/Functions/Render/render_getActions.sh
+=============================================================
 
 3.42.1 Goals
 ------------
@@ -2915,8 +2910,8 @@ structures only.
 3.42.4 See also
 ---------------
 
-3.43 trunk/Scripts/Bash/Functions/Render/render_getActions.sh
-=============================================================
+3.43 trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh
+=========================================================================
 
 3.43.1 Goals
 ------------
@@ -2936,36 +2931,15 @@ structures only.
 3.43.4 See also
 ---------------
 
-3.44 trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh
-=========================================================================
+3.44 trunk/Scripts/Bash/Locale
+==============================
 
 3.44.1 Goals
 ------------
 
-   * ...
-
-3.44.2 Description
-------------------
-
-   * ...
-
-3.44.3 Usage
-------------
-
-   * ...
-
-3.44.4 See also
----------------
-
-3.45 trunk/Scripts/Bash/Locale
-==============================
-
-3.45.1 Goals
-------------
-
    * Organize `centos-art.sh' locale files.
 
-3.45.2 Description
+3.44.2 Description
 ------------------
 
 This command looks for `.sh' files inside Bash directory and extracts
@@ -3010,7 +2984,7 @@ favorite text editor. If no value is defined on EDITOR, the
    At this point, all translations you made in the PO file should be
 available to your language when runing `centos-art.sh' script.
 
-3.45.2.1 Configuration files
+3.44.2.1 Configuration files
 ............................
 
 In order to make the `centos-art.sh' internationalization, the
@@ -3024,10 +2998,10 @@ following files:
 
    * `trunk/Scripts/Bash/Functions/Help/cli_localeMessagesStatus.sh'
 
-3.45.3 Usage
+3.44.3 Usage
 ------------
 
-3.45.3.1 The `centos-art' `locale-cli' action
+3.44.3.1 The `centos-art' `locale-cli' action
 .............................................
 
 `centos-art locale-cli --edit'
@@ -3038,11 +3012,28 @@ following files:
 `centos-art locale-cli --list'
      Use this command to see the command-line interface locale report.
 
+3.44.4 See also
+---------------
+
+3.45 trunk/Scripts/Perl
+=======================
+
+3.45.1 Goals
+------------
+
+   * ...
+
+3.45.2 Description
+------------------
+
+3.45.3 Usage
+------------
+
 3.45.4 See also
 ---------------
 
-3.46 trunk/Scripts/Perl
-=======================
+3.46 trunk/Scripts/Python
+=========================
 
 3.46.1 Goals
 ------------
@@ -3052,37 +3043,20 @@ following files:
 3.46.2 Description
 ------------------
 
+   * ...
+
 3.46.3 Usage
 ------------
+
+   * ...
 
 3.46.4 See also
 ---------------
 
-3.47 trunk/Scripts/Python
-=========================
-
-3.47.1 Goals
-------------
-
-   * ...
-
-3.47.2 Description
-------------------
-
-   * ...
-
-3.47.3 Usage
-------------
-
-   * ...
-
-3.47.4 See also
----------------
-
-3.48 trunk/Translations
+3.47 trunk/Translations
 =======================
 
-3.48.1 Goals
+3.47.1 Goals
 ------------
 
 The `trunk/Translations' directory exists to:
@@ -3091,7 +3065,7 @@ The `trunk/Translations' directory exists to:
 
    * Organize translation templates used to produce translation files.
 
-3.48.2 Description
+3.47.2 Description
 ------------------
 
 When you create artwork for CentOS distribution you find that some
@@ -3128,7 +3102,7 @@ production line is stored under `trunk/Translations' directory.
 to organize artworks' "translation files" and artworks' "translation
 templates".
 
-3.48.2.1 Translation Entries
+3.47.2.1 Translation Entries
 ............................
 
 Translation entries exists for each artwork you want to produce.
@@ -3209,7 +3183,7 @@ Repository, graphic designers can concentrate their efforts in artworks
 look and feel (the identity entries), and translators in artworks
 translations (the translation entries).
 
-3.48.2.2 Translation Markers
+3.47.2.2 Translation Markers
 ............................
 
 Translation markers are used in "Theme Model Designs" and "Translation
@@ -3244,7 +3218,7 @@ reference for translators and graphic designers. To have translation
 markers well defined makes possible that translators and graphic
 designers can work together but independently one another.
 
-3.48.2.3 Translation Files
+3.47.2.3 Translation Files
 ..........................
 
 Translation files are text files with `sed''s commands inside,
@@ -3312,7 +3286,7 @@ release-specific translation files, run the translation rendering
 command with the release number you want to produce translation files
 for in the `--filter='release-number'' argument.
 
-3.48.2.4 Template Translation Files
+3.47.2.4 Template Translation Files
 ...................................
 
 Template translation files are translation files stored inside
@@ -3482,7 +3456,7 @@ replacement command is defined _after_ `=MAJOR_RELASE=' translation
 marker definition in the REPLACEMENT of `=TITLE=' translation marker
 replacement command.
 
-3.48.2.5 Common Translation Files
+3.47.2.5 Common Translation Files
 .................................
 
 Common translation files contain common translations or no translation
@@ -3507,7 +3481,7 @@ trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
 |   `-- splash-small.sed
 `-- firstboot-left.sed      <-- common translation file.
 
-3.48.2.6 Specific Translation Files
+3.47.2.6 Specific Translation Files
 ...................................
 
 Specific translation files contain specific translations for their
@@ -3530,7 +3504,7 @@ trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
 |   `-- splash-small.sed
 `-- firstboot-left.sed
 
-3.48.2.7 Translation Rendering
+3.47.2.7 Translation Rendering
 ..............................
 
 When rendering translations, the `centos-art' script checks the
@@ -3541,7 +3515,7 @@ files. If the translation template directory doesn't exist inside the
 translation entry the translation rendering fails. In this case the
 `centos-art' script outputs a message and quits script execution.
 
-3.48.2.8 Translation (Pre-)Rendering Configuration Scripts
+3.47.2.8 Translation (Pre-)Rendering Configuration Scripts
 ..........................................................
 
 When the `centos-art' script finds a translation template directory
@@ -3627,7 +3601,7 @@ pre-rendering configuration example, the translation pre-rendering
 configuration file that `centos-art' looks for, inside the above
 translation pre-rendering configuration directory, is `render.conf.sh'.
 
-3.48.2.9 Translation Rendering Default Functionality
+3.47.2.9 Translation Rendering Default Functionality
 ....................................................
 
 In the other hand, if the translation pre-rendering configuration file
@@ -3652,7 +3626,7 @@ commands.
      translation marker section (*note Translation Markers:
      trunk:Translations:TranslationMarkers.).
 
-3.48.3 Usage
+3.47.3 Usage
 ------------
 
 `centos-art render 'path/to/dir''
@@ -3670,7 +3644,7 @@ commands.
      you want to render translations for.
 
 
-3.48.4 See also
+3.47.4 See also
 ---------------
 
 ---------- Footnotes ----------
@@ -3682,36 +3656,36 @@ mainly based on CentOS 5 rebranding experience.
 
    (3) This value was taken from the `locale -a' command's output.
 
-3.49 trunk/Translations/Identity
+3.48 trunk/Translations/Identity
 ================================
 
-3.49.1 Goals
+3.48.1 Goals
 ------------
 
    * ...
 
-3.49.2 Description
+3.48.2 Description
 ------------------
 
    * ...
 
-3.49.3 Usage
+3.48.3 Usage
 ------------
 
    * ...
 
-3.49.4 See also
+3.48.4 See also
 ---------------
 
-3.50 trunk/Translations/Identity/Brands
+3.49 trunk/Translations/Identity/Brands
 =======================================
 
-3.50.1 Goals
+3.49.1 Goals
 ------------
 
    * Organize brands' translation files.
 
-3.50.2 Description
+3.49.2 Description
 ------------------
 
 Translation files, inside `trunk/Translations/Identity/Brands'
@@ -3744,7 +3718,7 @@ script considers translation symbolic links as translation files.
    Translation file names, inside brands' translation template (`Tpl')
 directory have special meaning:
 
-3.50.2.1 Conventional file names
+3.49.2.1 Conventional file names
 ................................
 
 Convenctional file names look like `blue.sed', `2c-a.sed', etc.
@@ -3752,7 +3726,7 @@ Replacement commands inside translation file are applied to design
 templates and translation file names are used as final image name.  The
 image dimensions use the same dimensions that design template has.
 
-3.50.2.2 Numeric file names
+3.49.2.2 Numeric file names
 ...........................
 
 Numeric file names look like `300.sed', `200.sed', etc.  Replacements
@@ -3773,7 +3747,7 @@ templates, the image size you produce is not limitted in size. You can
 use one design template produced in 400x200 pixels to produce larger or
 shorter PNG images using numeric translation files as described above.
 
-3.50.2.3 Translation markers
+3.49.2.3 Translation markers
 ............................
 
 Inside `trunk/Translations/Identity/Brands/', translation files combine
@@ -3787,7 +3761,7 @@ the following translation markers:
           point to template translation files, translation markers are
           defined inside template translation files.
 
-3.50.3 Usage
+3.49.3 Usage
 ------------
 
 To render brands' translation files, use the following command:
@@ -3795,33 +3769,33 @@ To render brands' translation files, use the following command:
 
 centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Brands
 
+3.49.4 See also
+---------------
+
+3.50 trunk/Translations/Identity/Brands/Tpl
+===========================================
+
+3.50.1 Goals
+------------
+
+3.50.2 Description
+------------------
+
+3.50.3 Usage
+------------
+
 3.50.4 See also
 ---------------
 
-3.51 trunk/Translations/Identity/Brands/Tpl
-===========================================
+3.51 trunk/Translations/Identity/Fonts
+======================================
 
 3.51.1 Goals
 ------------
 
-3.51.2 Description
-------------------
-
-3.51.3 Usage
-------------
-
-3.51.4 See also
----------------
-
-3.52 trunk/Translations/Identity/Fonts
-======================================
-
-3.52.1 Goals
-------------
-
    * Organize fonts' translation files.
 
-3.52.2 Description
+3.51.2 Description
 ------------------
 
 Translation files, inside `trunk/Translations/Fonts', have the
@@ -3847,7 +3821,7 @@ visual identity.
      someone needs to know which font-families are allowed to use
      inside CentOS visual identity.
 
-3.52.2.1 Translation Markers
+3.51.2.1 Translation Markers
 ............................
 
 Inside `trunk/Translations/Identity/Fonts', translation files combine
@@ -3864,7 +3838,7 @@ the following translation markers:
 `font-style:normal'
      Specify which font style to use when rendering font preview images.
 
-3.52.3 Usage
+3.51.3 Usage
 ------------
 
 Inside `trunk/Translations/Fonts' you use your favorite text editor to
@@ -3877,11 +3851,26 @@ type the following command:
 
 vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.sed
 
+3.51.4 See also
+---------------
+
+3.52 trunk/Translations/Identity/Models
+=======================================
+
+3.52.1 Goals
+------------
+
+3.52.2 Description
+------------------
+
+3.52.3 Usage
+------------
+
 3.52.4 See also
 ---------------
 
-3.53 trunk/Translations/Identity/Models
-=======================================
+3.53 trunk/Translations/Identity/Release
+========================================
 
 3.53.1 Goals
 ------------
@@ -3895,8 +3884,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 3.53.4 See also
 ---------------
 
-3.54 trunk/Translations/Identity/Release
-========================================
+3.54 trunk/Translations/Identity/Themes
+=======================================
 
 3.54.1 Goals
 ------------
@@ -3910,46 +3899,31 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 3.54.4 See also
 ---------------
 
-3.55 trunk/Translations/Identity/Themes
-=======================================
+3.55 trunk/Translations/Identity/Themes/Backgrounds
+===================================================
 
 3.55.1 Goals
 ------------
 
+   * ...
+
 3.55.2 Description
 ------------------
+
+   * ...
 
 3.55.3 Usage
 ------------
 
+   * ...
+
 3.55.4 See also
 ---------------
 
-3.56 trunk/Translations/Identity/Themes/Backgrounds
-===================================================
-
-3.56.1 Goals
-------------
-
-   * ...
-
-3.56.2 Description
-------------------
-
-   * ...
-
-3.56.3 Usage
-------------
-
-   * ...
-
-3.56.4 See also
----------------
-
-3.57 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
+3.56 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
 ================================================================
 
-3.57.1 Goals
+3.56.1 Goals
 ------------
 
    * Organize Anaconda progress translation templates.
@@ -3957,7 +3931,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
    * Organize Anaconda progress translation files in several languages
      and major releases of CentOS distribution.
 
-3.57.2 Description
+3.56.2 Description
 ------------------
 
 Use the following command to produce translation files based:
@@ -4030,129 +4004,127 @@ structure and render them.
    * *Note trunk Identity Themes Motifs Modern Distro Anaconda
      Progress::.
 
-3.57.3 Usage
+3.56.3 Usage
 ------------
 
 Translation rendering is described in `trunk/Translations'
 documentation entry (*note trunk Translations::).
 
-3.57.4 See also
+3.56.4 See also
 ---------------
 
-3.58 trunk/Translations/Identity/Widgets
+3.57 trunk/Translations/Identity/Widgets
 ========================================
 
-3.58.1 Goals
+3.57.1 Goals
 ------------
 
    * ...
 
-3.58.2 Description
+3.57.2 Description
 ------------------
 
    * ...
 
-3.58.3 Usage
+3.57.3 Usage
 ------------
 
    * ...
 
-3.58.4 See also
+3.57.4 See also
 ---------------
 
 Index
 *****
 
-branches:                                      See 1.        (line  370)
-Common translation files:                      See 3.48.2.5. (line 3488)
-How to render brands' translation files:       See 3.50.3.   (line 3793)
-How to render fonts' translation files:        See 3.52.3.   (line 3870)
-How to render translation files:               See 3.48.3.   (line 3658)
-Specific translation files:                    See 3.48.2.6. (line 3513)
-tags:                                          See 2.        (line  373)
-Template translation files:                    See 3.48.2.4. (line 3318)
-Translation brands file names:                 See 3.50.2.1. (line 3750)
-Translation configuration scripts:             See 3.48.2.8. (line 3547)
-Translation entries:                           See 3.48.2.1. (line 3134)
-Translation files:                             See 3.48.2.3. (line 3250)
-Translation markers:                           See 3.48.2.2. (line 3215)
-Translation paths:                             See 3.48.2.1. (line 3134)
-Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 3547)
-Translation rendering:                         See 3.48.2.7. (line 3536)
-Translation rendering default functionality:   See 3.48.2.9. (line 3633)
-trunk:                                         See 3.        (line  376)
-trunk Identity:                                See 3.1.      (line  379)
-trunk Identity Brands:                         See 3.2.      (line  799)
-trunk Identity Fonts:                          See 3.3.      (line  816)
-trunk Identity Icons:                          See 3.4.      (line  893)
-trunk Identity Isolinux:                       See 3.5.      (line  910)
-trunk Identity Models:                         See 3.6.      (line  927)
-trunk Identity Models Css:                     See 3.7.      (line  947)
-trunk Identity Models Html:                    See 3.8.      (line  969)
-trunk Identity Models Img Promo Web:           See 3.9.      (line  990)
-trunk Identity Models Tpl:                     See 3.10.     (line 1011)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1032)
-trunk Identity Models Xcf:                     See 3.12.     (line 1346)
-trunk Identity Release:                        See 3.13.     (line 1367)
-trunk Identity Themes:                         See 3.14.     (line 1384)
-trunk Identity Themes Models:                  See 3.15.     (line 1409)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1442)
-trunk Identity Themes Models Default:          See 3.17.     (line 1469)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1501)
+branches:                                      See 1.        (line  365)
+Common translation files:                      See 3.47.2.5. (line 3462)
+How to render brands' translation files:       See 3.49.3.   (line 3767)
+How to render fonts' translation files:        See 3.51.3.   (line 3844)
+How to render translation files:               See 3.47.3.   (line 3632)
+Specific translation files:                    See 3.47.2.6. (line 3487)
+tags:                                          See 2.        (line  368)
+Template translation files:                    See 3.47.2.4. (line 3292)
+Translation brands file names:                 See 3.49.2.1. (line 3724)
+Translation configuration scripts:             See 3.47.2.8. (line 3521)
+Translation entries:                           See 3.47.2.1. (line 3108)
+Translation files:                             See 3.47.2.3. (line 3224)
+Translation markers:                           See 3.47.2.2. (line 3189)
+Translation paths:                             See 3.47.2.1. (line 3108)
+Translation pre-rendering configuration scripts:See 3.47.2.8.
+                                                             (line 3521)
+Translation rendering:                         See 3.47.2.7. (line 3510)
+Translation rendering default functionality:   See 3.47.2.9. (line 3607)
+trunk:                                         See 3.        (line  371)
+trunk Identity:                                See 3.1.      (line  374)
+trunk Identity Brands:                         See 3.2.      (line  794)
+trunk Identity Fonts:                          See 3.3.      (line  811)
+trunk Identity Icons:                          See 3.4.      (line  888)
+trunk Identity Isolinux:                       See 3.5.      (line  905)
+trunk Identity Models:                         See 3.6.      (line  922)
+trunk Identity Models Css:                     See 3.7.      (line  942)
+trunk Identity Models Html:                    See 3.8.      (line  964)
+trunk Identity Models Img Promo Web:           See 3.9.      (line  985)
+trunk Identity Models Tpl:                     See 3.10.     (line 1006)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1027)
+trunk Identity Models Xcf:                     See 3.12.     (line 1341)
+trunk Identity Release:                        See 3.13.     (line 1362)
+trunk Identity Themes:                         See 3.14.     (line 1379)
+trunk Identity Themes Models:                  See 3.15.     (line 1404)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1437)
+trunk Identity Themes Models Default:          See 3.17.     (line 1464)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1496)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1585)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1602)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1628)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1653)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1757)
+                                                             (line 1580)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1597)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1623)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1648)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1752)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.24.
-                                                             (line 1879)
+                                                             (line 1874)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.25.
-                                                             (line 1900)
+                                                             (line 1895)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.26.
-                                                             (line 1921)
+                                                             (line 1916)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.27.
-                                                             (line 1948)
-trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2004)
-trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2026)
+                                                             (line 1943)
+trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 1999)
+trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2021)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.30.
-                                                             (line 2043)
-trunk Identity Widgets:                        See 3.31.     (line 2339)
-trunk Manuals:                                 See 3.32.     (line 2356)
-trunk Scripts:                                 See 3.33.     (line 2410)
-trunk Scripts Bash:                            See 3.34.     (line 2434)
-trunk Scripts Bash Functions:                  See 3.35.     (line 2583)
-trunk Scripts Bash Functions Config cli_getIdentityMatchinglist.sh:See 3.36.
-                                                             (line 2604)
-trunk Scripts Bash Functions Config repo_renderIdentitySyslinux.sh:See 3.37.
-                                                             (line 2625)
-trunk Scripts Bash Functions Path:             See 3.38.     (line 2646)
-trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh:See 3.39.
-                                                             (line 2680)
-trunk Scripts Bash Functions Render:           See 3.40.     (line 2701)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2722)
-trunk Scripts Bash Functions Render render_getActions.sh:See 3.43.
-                                                             (line 2921)
-trunk Scripts Bash Functions Render render_getActionsIdentity.sh:See 3.42.
-                                                             (line 2900)
-trunk Scripts Bash Functions Render render_getActionsTranslations.sh:See 3.44.
-                                                             (line 2942)
-trunk Scripts Bash Locale:                     See 3.45.     (line 2963)
-trunk Scripts Perl:                            See 3.46.     (line 3047)
-trunk Scripts Python:                          See 3.47.     (line 3064)
-trunk Translations:                            See 3.48.     (line 3085)
-trunk Translations Identity:                   See 3.49.     (line 3688)
-trunk Translations Identity Brands:            See 3.50.     (line 3709)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 3804)
-trunk Translations Identity Fonts:             See 3.52.     (line 3819)
-trunk Translations Identity Models:            See 3.53.     (line 3886)
-trunk Translations Identity Release:           See 3.54.     (line 3901)
-trunk Translations Identity Themes:            See 3.55.     (line 3916)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 3931)
-trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 3952)
-trunk Translations Identity Widgets:           See 3.58.     (line 4045)
+                                                             (line 2038)
+trunk Identity Widgets:                        See 3.31.     (line 2334)
+trunk Manuals:                                 See 3.32.     (line 2351)
+trunk Scripts:                                 See 3.33.     (line 2405)
+trunk Scripts Bash:                            See 3.34.     (line 2429)
+trunk Scripts Bash Functions:                  See 3.35.     (line 2578)
+trunk Scripts Bash Functions Config repo_renderIdentitySyslinux.sh:See 3.36.
+                                                             (line 2599)
+trunk Scripts Bash Functions Path:             See 3.37.     (line 2620)
+trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh:See 3.38.
+                                                             (line 2654)
+trunk Scripts Bash Functions Render:           See 3.39.     (line 2675)
+trunk Scripts Bash Functions Render Config:    See 3.40.     (line 2696)
+trunk Scripts Bash Functions Render render_getActions.sh:See 3.42.
+                                                             (line 2895)
+trunk Scripts Bash Functions Render render_getActionsIdentity.sh:See 3.41.
+                                                             (line 2874)
+trunk Scripts Bash Functions Render render_getActionsTranslations.sh:See 3.43.
+                                                             (line 2916)
+trunk Scripts Bash Locale:                     See 3.44.     (line 2937)
+trunk Scripts Perl:                            See 3.45.     (line 3021)
+trunk Scripts Python:                          See 3.46.     (line 3038)
+trunk Translations:                            See 3.47.     (line 3059)
+trunk Translations Identity:                   See 3.48.     (line 3662)
+trunk Translations Identity Brands:            See 3.49.     (line 3683)
+trunk Translations Identity Brands Tpl:        See 3.50.     (line 3778)
+trunk Translations Identity Fonts:             See 3.51.     (line 3793)
+trunk Translations Identity Models:            See 3.52.     (line 3860)
+trunk Translations Identity Release:           See 3.53.     (line 3875)
+trunk Translations Identity Themes:            See 3.54.     (line 3890)
+trunk Translations Identity Themes Backgrounds:See 3.55.     (line 3905)
+trunk Translations Identity Themes Distro Anaconda Progress:See 3.56.
+                                                             (line 3926)
+trunk Translations Identity Widgets:           See 3.57.     (line 4019)
 List of Figures
 ***************
 
