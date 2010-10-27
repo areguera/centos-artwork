@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_doIdentityImageBrands.sh -- This function provides
-# post-rendering actions for producing CentOS brands.
+# post-rendering actions to produce CentOS brands.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -26,10 +26,14 @@
 
 function render_doIdentityImageBrands {
 
-    # Get absolute path of PNG image file.
+    local SOURCEFILE=''
+    local TARGETDIR=''
+    local TARGETFILE=''
+
+    # Define absolute path to image file.
     local FILE="$1"
 
-    # Get image formats.
+    # Define image formats.
     local FORMATS="$2"
 
     # Create logo copy in defined formats.
@@ -37,7 +41,6 @@ function render_doIdentityImageBrands {
 
     # Create logo copy in 2 colors.
     cli_printMessage "${FILE}.xbm (`gettext "2 colors grayscale"`)" "AsSavedAsLine"
-
     convert -colorspace gray -colors 2 \
         ${FILE}.png \
         ${FILE}.xbm
@@ -47,5 +50,31 @@ function render_doIdentityImageBrands {
     convert -emboss 1 \
         ${FILE}.png \
         ${FILE}-emboss.png
+
+    # Move logo copy in 2 colors into its final location. This action
+    # complements groupByType post-rendering action.
+    SOURCEFILE=$FILE.xbm
+    TARGETDIR=$(dirname $FILE)/Xbm
+    TARGETFILE=$TARGETDIR/$(basename $SOURCEFILE)
+    # --- centos-art path $SOURCEFILE --move-to=$TARGETDIR
+    cli_printMessage "$TARGETFILE" 'AsMovedToLine'
+    cli_checkFiles $TARGETDIR 'd' '' '--quiet'
+    if [[ $? -ne 0 ]];then
+        mkdir -p $TARGETDIR
+    fi
+    mv ${SOURCEFILE} --target-directory=$TARGETDIR --force
+
+    # Move logo copy with emboss effect into its final location. This
+    # action complements groupByType post-rendering action.
+    SOURCEFILE=${FILE}-emboss.png
+    TARGETDIR=$(dirname $FILE)/Png
+    TARGETFILE=$TARGETDIR/$(basename $SOURCEFILE)
+    # --- centos-art path $SOURCEFILE --move-to=$TARGETDIR
+    cli_printMessage "$TARGETFILE" 'AsMovedToLine'
+    cli_checkFiles $TARGETDIR 'd' '' '--quiet'
+    if [[ $? -ne 0 ]];then
+        mkdir -p $TARGETDIR
+    fi
+    mv ${SOURCEFILE} --target-directory=$TARGETDIR --force
 
 }
