@@ -2,9 +2,9 @@
 #
 # cli_commitRepoChanges.sh -- This function looks for changes inside
 # absolute path passed as option value and ask you to commit them up
-# to central repository. Use this function wherever you make a change
-# to repository files. It is better to commit small changes than long
-# ones.
+# to central repository. Use this function at the end of whatever
+# function you make a change to repository files. It is better to
+# commit small changes than long ones.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
