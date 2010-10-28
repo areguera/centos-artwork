@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# svg.sh -- This function provides very basic SVG manipulations to
-# help maintain svg files inside the repository.
+# shell.sh -- This function provides very basic string manipulations
+# to help you maintain Bash scripts inside repository.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -24,19 +24,18 @@
 # $Id$
 # ----------------------------------------------------------------------
     
-function svg {
+function shell {
 
     local FILES=''
 
-    # Define list of scalable vector graphic files to process using
-    # option value as reference.
+    # Define list of files to process using option value as reference.
     if [[ -d $OPTIONVAL ]];then
-        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.svg$')
+        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.shell$')
     elif [[ -f $OPTIONVAL ]];then
         FILES=$OPTIONVAL
     fi
     
-    # Define command line interface for svg-based actions.
-    svg_getActions 
+    # Define command line interface.
+    shell_getActions 
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# svg_getActions.sh -- This function initializes SVG string
-# manipulation functionalities, using the option value of
+# shell_getActions.sh -- This function initializes very simple string
+# manipulations to Bash scripts (*.sh), using the option value of
 # centos-art.sh script as reference.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
@@ -25,16 +25,15 @@
 # $Id$
 # ----------------------------------------------------------------------
     
-function svg_getActions {
+function shell_getActions {
 
     # Evaluate option name and define which actions does centos-art.sh
     # script supports.
     case $OPTIONNAM in
 
-        '--update-metadata' )
-            # Update metadata inside svg files using metadata
-            # templates.
-            svg_updateMetadata
+        '--update-topcomment' )
+            # Update top comment inside shell scripts using templates.
+            shell_updateMetadata
             ;;
 
         * )
@@ -42,5 +41,5 @@ function svg_getActions {
             ;;
 
     esac
-    
+
 }
