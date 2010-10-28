@@ -23,7 +23,7 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: cli.sh 98 2010-09-19 16:01:53Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function cli {
@@ -108,7 +108,7 @@ function cli {
 
     # Define a unique string based on script name and process id used
     # to create temporal files under /tmp/.
-    FILEID="centos-art$$"
+    TMPFILE="/tmp/centos-art-$USER-$$"
 
     # Define text editor used to edit texinfo documentation. Predifine
     # possible editors paths here to avoid malevolent values. If we do
