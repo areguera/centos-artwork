@@ -19,12 +19,12 @@
         <dc:date>2010-06-15</dc:date>\
         <dc:creator>\
           <cc:Agent>\
-            <dc:title>The CentOS Project</dc:title>\
+            <dc:title>CentOS Artwork SIG</dc:title>\
           </cc:Agent>\
         </dc:creator>\
         <dc:rights>\
           <cc:Agent>\
-            <dc:title>The CentOS Project</dc:title>\
+            <dc:title>CentOS Artwork SIG</dc:title>\
           </cc:Agent>\
         </dc:rights>\
         <dc:publisher>\

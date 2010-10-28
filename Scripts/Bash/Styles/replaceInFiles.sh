@@ -10,7 +10,7 @@
 #
 #  first, and later
 #
-#  ~/artwork/trunk/Scripts/Bash/Style/replaceInFiles '.*\.svg$'
+#  ~/artwork/trunk/Scripts/Bash/Styles/replaceInFiles.sh '.*\.svg$'
 #
 # At this point you select the translation file you want to apply to
 # all files matching the regular expression you defined as first
@@ -22,7 +22,7 @@
 #
 #  svn diff | less
 #
-# Note that inside trunk/Scripts/Bash/Style/Tpl directory you can find
+# Note that inside trunk/Scripts/Bash/Styles/Tpl directory you can find
 # standard translation files that you can apply to files. In order to
 # have the appropriate result, it is important that you know what
 # translation file you apply to which file. As convenction each
@@ -51,10 +51,10 @@
 # ----------------------------------------------------------------------
 
 REGEX=$1
-TRANSLATIONS=~/artwork/trunk/Scripts/Bash/Style/Tpl
+TRANSLATIONS=~/artwork/trunk/Scripts/Bash/Styles/Tpl
 
 # Define translation file.
-cli_printMessage "`gettext "Select the translation you want to apply:"`"
+echo "`gettext "Select the translation you want to apply:"`"
 select TRANSLATION in $(ls $TRANSLATIONS);do
    TRANSLATION=$TRANSLATIONS/$TRANSLATION
    break
@@ -62,13 +62,13 @@ done
 
 # Check regular expression.
 if [ $REGEX == '' ];then
-   cli_printMessage "`gettext "You need to provide a regular expression as first argument."`"
+   echo "`gettext "You need to provide a regular expression as first argument."`"
    exit
 fi
 
 # Check translation file.
 if [ ! -f $TRANSLATION ];then
-   cli_printMessage "`gettext "You need to provide a valid translation file."`"
+   echo "`gettext "You need to provide a valid translation file."`"
    exit
 fi
 
@@ -82,10 +82,8 @@ SVG_KEYWORDS=$(\
    done)
 
 for FILE in $(find . -regextype posix-egrep -regex $REGEX);do
-   cli_printMessage $FILE "AsUpdatingLine"
+   echo "Updating: $FILE"
    sed -i -r -f $TRANSLATION $FILE
    sed -i -r -e /=KEYWORDS=/c\\"$SVG_KEYWORDS" $FILE
 done \
-   | awk 'BEGIN {FS=": "} \
-      { if ( $0 ~ /^-+$/ ) print $0; else \
-         printf "%s: \t%s\n", $1, $2 }'
+   | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
