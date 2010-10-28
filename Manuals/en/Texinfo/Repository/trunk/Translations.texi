@@ -228,7 +228,7 @@ to produce the image @file{firstboot-left.png} only. To produce
 translation files using the @command{centos-art} script as following:
 
 @verbatim
-centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Themes/BootUp/Firstboot --filter='3,4,5,6'
+centos-art render --entry=/home/centos/artwork/trunk/Translations/Identity/Themes/BootUp/Firstboot --filter='3,4,5,6'
 @end verbatim
 
 The above command produces the following translation entiry:
@@ -286,7 +286,7 @@ translation file and looks like:
 
 @verbatim
 # -------------------------------------
-# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# $Id: splash-small.sed 94 2010-09-18 10:59:42Z al $
 # -------------------------------------
 @end verbatim
 
@@ -305,7 +305,7 @@ translation file specific to CentOS 5, looks like the following:
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # -------------------------------------
-# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# $Id: splash-small.sed 94 2010-09-18 10:59:42Z al $
 # -------------------------------------
 
 # Release number information.
@@ -353,7 +353,7 @@ following:
 
 @verbatim
 # ------------------------------------------------------------
-# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# $Id: 01-welcome.sed 94 2010-09-18 10:59:42Z al $
 # ------------------------------------------------------------
 s/=TITLE=/Welcome to CentOS =MAJOR_RELEASE= !/
 s/=TEXT1=/Thank you for installing CentOS =MAJOR_RELEASE=./
@@ -377,7 +377,7 @@ look like the following:
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# $Id: 01-welcome.sed 94 2010-09-18 10:59:42Z al $
 # ------------------------------------------------------------
 
 s/=TITLE=/Welcome to CentOS =MAJOR_RELEASE= !/
@@ -531,7 +531,7 @@ following:
 @verbatim
 #!/bin/bash
 #
-# loadConfiguration.sh -- brief description here.
+# render_loadConfig.sh -- brief description here.
 #
 # Copyright (C) YEAR YOURNAME
 # 
@@ -551,10 +551,10 @@ following:
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: Translations.texi 94 2010-09-18 10:59:42Z al $
+# $Id: splash-small.sed 94 2010-09-18 10:59:42Z al $
 # ----------------------------------------------------------------------
 
-function loadConfiguration {
+function render_loadConfig {
 ...
 }
 @end verbatim
