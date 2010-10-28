@@ -1,6 +1,6 @@
-# This file is the metadata information used by The CentOS Project
-# entity on its svg files.  This files is used with the regular
-# expression '.*\.svg$' only.
+# This file is the metadata information used by CentOS Artwork SIG on
+# its scalable vector graphics (SVG) files.  This files is used with
+# the regular expression '.*\.svg$' only.
 # ---------------------------------------------------
 # $Id: svg-metadata-centos.sed 5964 2010-06-16 06:51:37Z al $
 # ---------------------------------------------------
@@ -15,21 +15,21 @@
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />\
         <cc:license\
            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />\
-        <dc:title>The CentOS Logo</dc:title>\
-        <dc:date>2010-06-15</dc:date>\
+        <dc:title>=TITLE=</dc:title>\
+        <dc:date>=DATE=</dc:date>\
         <dc:creator>\
           <cc:Agent>\
-            <dc:title>CentOS Artwork SIG</dc:title>\
+            <dc:title>=CREATOR=</dc:title>\
           </cc:Agent>\
         </dc:creator>\
         <dc:rights>\
           <cc:Agent>\
-            <dc:title>CentOS Artwork SIG</dc:title>\
+            <dc:title>=RIGHTS=</dc:title>\
           </cc:Agent>\
         </dc:rights>\
         <dc:publisher>\
           <cc:Agent>\
-            <dc:title>The CentOS Project</dc:title>\
+            <dc:title>=PUBLISHER=</dc:title>\
           </cc:Agent>\
         </dc:publisher>\
         <dc:identifier></dc:identifier>\
@@ -41,7 +41,7 @@
 =KEYWORDS=\
           </rdf:Bag>\
         </dc:subject>\
-        <dc:coverage>The CentOS Project</dc:coverage>\
+        <dc:coverage>=COVERAGE=</dc:coverage>\
         <dc:description />\
         <dc:contributor>\
           <cc:Agent>\
