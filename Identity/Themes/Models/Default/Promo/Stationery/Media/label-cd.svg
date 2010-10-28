@@ -21,6 +21,13 @@
    style="display:inline">
   <defs
      id="defs13685">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 372.04724 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1052.3622 : 372.04724 : 1"
+       inkscape:persp3d-origin="526.18109 : 248.03149 : 1"
+       id="perspective3731" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath4429">
@@ -34,42 +41,6 @@
            id="path4433" />
       </g>
     </clipPath>
-    <filter
-       inkscape:collect="always"
-       id="filter3448"
-       x="-0.057327166"
-       width="1.1146543"
-       y="-0.29222554"
-       height="1.5844511">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.8942486"
-         id="feGaussianBlur3450" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter3452"
-       x="-1.318594"
-       width="3.6371882"
-       y="-2.9907904"
-       height="6.9815807">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.8942486"
-         id="feGaussianBlur3454" />
-    </filter>
-    <filter
-       inkscape:collect="always"
-       id="filter3456"
-       x="-0.058573455"
-       width="1.1171468"
-       y="-0.50378197"
-       height="2.0075641">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.8942486"
-         id="feGaussianBlur3458" />
-    </filter>
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath3967">
@@ -78,6 +49,22 @@
          d="M 208.48112,2.3815405 C 94.349758,4.5531796 2.3564969,97.884121 2.3564969,212.56551 C 2.3564969,328.60678 96.471324,422.84033 212.47823,422.84033 C 328.48513,422.84033 422.69085,328.60678 422.69085,212.56551 C 422.69085,96.524237 328.48513,2.3815053 212.47823,2.3815405 C 211.11878,2.3815405 209.83443,2.3558019 208.48112,2.3815405 z M 212.02401,177.85288 C 212.17315,177.85098 212.32862,177.85288 212.47823,177.85288 C 231.62479,177.85288 247.18056,193.41325 247.18056,212.56551 C 247.18053,231.71773 231.62479,247.2781 212.47823,247.2781 C 193.33166,247.27813 177.77589,231.71773 177.77589,212.56551 C 177.77586,193.56293 193.08369,178.09314 212.02401,177.85288 z"
          style="opacity:1;fill:#204c8d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:4.71299982;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </clipPath>
+    <filter
+       inkscape:collect="always"
+       id="filter3296">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.0263707"
+         id="feGaussianBlur3298" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3338">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.63085477"
+         id="feGaussianBlur3340" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -86,11 +73,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="372.28442"
-     inkscape:cy="708.88376"
+     inkscape:zoom="0.67195768"
+     inkscape:cx="289.12984"
+     inkscape:cy="321.77689"
      inkscape:document-units="mm"
-     inkscape:current-layer="svg13683"
+     inkscape:current-layer="g8591"
      inkscape:window-width="1360"
      inkscape:window-height="693"
      inkscape:window-x="0"
@@ -144,6 +131,26 @@
        orientation="0,1"
        position="877.60623,538.58268"
        id="guide2569" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="255.25,133.625"
+       id="guide3929" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="335.25,126"
+       id="guide3931" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="223,325.98425"
+       id="guide2526" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="362,488.97638"
+       id="guide2568" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="368,162.99213"
+       id="guide2570" />
   </sodipodi:namedview>
   <metadata
      id="metadata3399">
@@ -192,8 +199,14 @@
 
 
 
+
+
+
 \
             <rdf:li>Themes</rdf:li>
+
+
+
 
 
 
@@ -448,119 +461,25 @@
        d="M 209.84391,142.8299 C 172.5717,144.24875 142.73323,174.97863 142.73323,212.61277 C 142.73323,251.15014 173.96475,282.39564 212.48484,282.39565 C 251.00492,282.39565 282.31412,251.15014 282.31412,212.61277 C 282.31412,174.07541 251.00492,142.8299 212.48484,142.8299 C 211.58199,142.8299 210.73842,142.79585 209.84391,142.8299 z M 211.70809,182.92785 C 211.96234,182.92141 212.22902,182.92785 212.48484,182.92785 C 228.85577,182.92782 242.15645,196.2345 242.15645,212.61277 C 242.15643,228.99104 228.85574,242.29768 212.48484,242.29768 C 196.11391,242.29767 182.81321,228.99104 182.81321,212.61277 C 182.8132,196.49043 195.69029,183.33429 211.70809,182.92785 z"
        style="opacity:1;fill:#153b73;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.15139651;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline"
        transform="translate(-242.57477,-559.98425)" />
-    <g
-       transform="translate(-194.55801,-559.38499)"
-       id="g10903">
-      <text
-         xml:space="preserve"
-         style="font-size:32.00096512px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:DejaVu LGC Serif Condensed;-inkscape-font-specification:DejaVu LGC Serif Condensed"
-         x="164.31841"
-         y="322.17664"
-         id="text10793"
-         sodipodi:linespacing="100%"><tspan
-           sodipodi:role="line"
-           id="tspan10795"
-           x="164.31841"
-           y="322.17664">=RELEASE=</tspan></text>
-      <text
-         id="text11307"
-         y="341.49902"
-         x="164.50691"
-         style="font-size:10.00046253px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:150%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:DejaVu LGC Serif;-inkscape-font-specification:DejaVu LGC Serif"
-         xml:space="preserve"
-         sodipodi:linespacing="150%"><tspan
-           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:150%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:DejaVu LGC Serif Condensed;-inkscape-font-specification:DejaVu LGC Serif Condensed"
-           y="341.49902"
-           x="165.97176"
-           sodipodi:role="line"
-           id="tspan3118">=TEXT= </tspan><tspan
-           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:150%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:DejaVu LGC Serif Condensed;-inkscape-font-specification:DejaVu LGC Serif Condensed"
-           y="359.49902"
-           x="164.50691"
-           sodipodi:role="line"
-           id="tspan10827">=ARCH=</tspan></text>
-    </g>
-    <g
-       id="g8574">
-      <text
-         clip-path="none"
-         sodipodi:linespacing="125%"
-         id="text2662"
-         y="387.60431"
-         x="172.79779"
-         style="font-size:21.48777771px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline;filter:url(#filter3448);font-family:Denmark;-inkscape-font-specification:Denmark Ultra-Light"
-         xml:space="preserve"
-         inkscape:label="#text2712"
-         transform="matrix(0.9903899,0,0,1.0097033,-242.57477,-559.98425)"><tspan
-           style="font-size:21.48777771px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;font-family:Denmark;-inkscape-font-specification:Denmark Ultra-Light"
-           y="387.60431"
-           x="172.79779"
-           id="tspan2664"
-           sodipodi:role="line">CentOS</tspan></text>
-      <text
-         transform="scale(0.9903899,1.0097033)"
-         inkscape:label="#text2712"
-         xml:space="preserve"
-         style="font-size:21.48777771px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline;font-family:Denmark;-inkscape-font-specification:Denmark Ultra-Light"
-         x="-72.13076"
-         y="-166.99846"
-         id="text11595"
-         sodipodi:linespacing="125%"
-         clip-path="none"><tspan
-           sodipodi:role="line"
-           id="tspan11597"
-           x="-72.13076"
-           y="-166.99846"
-           style="font-size:21.48777771px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;font-family:Denmark;-inkscape-font-specification:Denmark Ultra-Light">CentOS</tspan></text>
-      <text
-         transform="matrix(0.8572094,0,0,1.1665761,-242.57477,-559.98425)"
-         id="text2666"
-         y="324.64658"
-         x="291.23712"
-         style="font-size:5.38597536px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3452);font-family:DejaVu LGC Serif"
-         xml:space="preserve"><tspan
-           y="324.64658"
-           x="291.23712"
-           id="tspan2668"
-           sodipodi:role="line">™</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:5.38597535999999977px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;font-family:DejaVu LGC Sans Mono;-inkscape-font-specification:DejaVu LGC Sans Mono;font-stretch:normal;font-variant:normal"
-         x="8.2551947"
-         y="-155.3772"
-         id="text11599"
-         transform="scale(0.8572094,1.1665761)"><tspan
-           sodipodi:role="line"
-           id="tspan11601"
-           x="8.2551947"
-           y="-155.3772">™</tspan></text>
-      <text
-         id="text2670"
-         y="-154.30154"
-         x="-71.215469"
-         style="font-size:9.91492939px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter3456);font-family:DejaVu LGC Serif"
-         xml:space="preserve"><tspan
-           y="-154.30154"
-           x="-71.215469"
-           id="tspan2672"
-           sodipodi:role="line">www.centos.org</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:9.91492939px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:DejaVu LGC Serif"
-         x="-71.215469"
-         y="-154.30154"
-         id="text11603"><tspan
-           sodipodi:role="line"
-           id="tspan11605"
-           x="-71.215469"
-           y="-154.30154">www.centos.org</tspan></text>
-    </g>
+    <text
+       sodipodi:linespacing="150%"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:150%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans"
+       x="202.9035"
+       y="-118.80335"
+       id="text11307"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         x="202.9035"
+         y="-118.80335"
+         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:150%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans"
+         id="tspan2566">=TEXT= =ARCH=</tspan></text>
     <g
        inkscape:label="#g9335"
        inkscape:export-ydpi="28.883154"
        inkscape:export-xdpi="28.883154"
        inkscape:export-filename="/home/al/Desktop/CentOS/Symbol Construction/CentOSSymbol_20.png"
-       transform="matrix(7.5e-2,0,0,7.5e-2,-47.011148,-564.57414)"
+       transform="matrix(7.5e-2,0,0,7.5e-2,-91.302489,-566.57414)"
        id="g9335">
       <g
          inkscape:export-ydpi="50.799999"
@@ -718,6 +637,92 @@
         </g>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:7.09229994px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:DejaVu LGC Sans Mono;-inkscape-font-specification:DejaVu LGC Sans Mono"
+       x="15.180112"
+       y="-178.24643"
+       id="text2673"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2675"
+         x="15.180112"
+         y="-178.24643"
+         style="font-size:5.91025019px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:DejaVu LGC Sans Mono;-inkscape-font-specification:DejaVu LGC Sans Mono" /></text>
+    <g
+       id="g3256"
+       transform="matrix(1.0332868,0,0,1.0332868,3.3592096,0.7826579)">
+      <g
+         style="fill:#ffffff"
+         inkscape:label="#g3333"
+         id="g2552"
+         transform="matrix(0.3333333,0,0,0.3333333,-234.57684,-429.70081)">
+        <text
+           clip-path="none"
+           sodipodi:linespacing="125%"
+           id="text7691"
+           y="638.33246"
+           x="402.68958"
+           style="font-size:72.70574188px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline;font-family:Denmark;-inkscape-font-specification:Denmark Ultra-Light"
+           xml:space="preserve"
+           inkscape:label="#text2712"
+           transform="scale(0.9903873,1.009706)"><tspan
+             style="font-size:72.70574188px;font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;font-family:Denmark;-inkscape-font-specification:Denmark Ultra-Light"
+             y="638.33246"
+             x="402.68958"
+             id="tspan7693"
+             sodipodi:role="line">CentOS</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:DejaVu LGC Sans Mono;-inkscape-font-specification:DejaVu LGC Sans Mono"
+           x="415.83362"
+           y="39.326515"
+           id="text2556"
+           sodipodi:linespacing="125%"
+           transform="translate(276.96307,568.00889)"><tspan
+             sodipodi:role="line"
+             id="tspan2558"
+             x="415.83362"
+             y="39.326515"
+             style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:DejaVu LGC Sans Mono;-inkscape-font-specification:DejaVu LGC Sans Mono" /></text>
+        <text
+           transform="scale(0.9999922,1.0000078)"
+           xml:space="preserve"
+           style="font-size:156.09159851px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:0%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:URW Bookman L;-inkscape-font-specification:URW Bookman L"
+           x="698.26312"
+           y="645.40399"
+           id="text9583"
+           sodipodi:linespacing="0%"><tspan
+             sodipodi:role="line"
+             id="tspan9585"
+             x="698.26312"
+             y="645.40399"
+             style="font-size:156.09159851px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:0%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;font-family:URW Bookman L;-inkscape-font-specification:URW Bookman L">=RELEASE=</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18.26392365px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="730.67645"
+           y="546.64661"
+           id="text2562"
+           transform="scale(0.9092079,1.0998584)"><tspan
+             sodipodi:role="line"
+             id="tspan2564"
+             x="730.67645"
+             y="546.64661">™</tspan></text>
+      </g>
+      <text
+         id="text2576"
+         y="-198.73006"
+         x="-102.05981"
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:150%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans"
+         xml:space="preserve"
+         sodipodi:linespacing="150%"><tspan
+           id="tspan2578"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:150%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans"
+           y="-198.73006"
+           x="-102.05981"
+           sodipodi:role="line">=URL=</tspan></text>
+    </g>
   </g>
   <path
      style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99592775px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -746,7 +751,7 @@
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu LGC Serif Condensed;-inkscape-font-specification:DejaVu LGC Serif Condensed"
    id="tspan8637">Page:</tspan> A4 (Landscape); <tspan
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu LGC Serif Condensed;-inkscape-font-specification:DejaVu LGC Serif Condensed"
-   id="tspan8639">Font-family:</tspan> DejaVu LGC Serif Condensed, DejaVu LGC Serif, DejaVu LGC Sans Mono, Denmark</tspan></text>
+   id="tspan8639">Font-family:</tspan> DejaVu LGC, Denmark</tspan></text>
   <text
      xml:space="preserve"
      style="font-size:42px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:100%;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:DejaVu LGC Serif Condensed;-inkscape-font-specification:DejaVu LGC Serif Condensed"
