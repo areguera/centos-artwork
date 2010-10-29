@@ -1,20 +1,83 @@
 @subsection Goals
 
-@itemize
-@item ...
-@end itemize
+This section exists to organize files related to ``verify''
+functionality of centos-art.sh script.  The ``verify'' functionality
+of centos-art.sh script helps you to prepare the workstation you are
+planning to use centos-art.sh script.
 
 @subsection Description
 
-@itemize
-@item ...
-@end itemize
+The first time you download CentOS Artwork Repository you need to
+configure your workstation in order to use automation scripts.  These
+preliminar configurations are based mainly on auxiliar RPM packages
+installation, and some symbolic links creations.
+
+Installation of auxiliar RPM packages provides the software required
+to manipulate files inside the repository (e.g., image files,
+documentation files, translation files, script files, etc.). Most of
+RPM packages centos-art.sh script uses are shipped with CentOS
+distribution, and can be installed from CentOS base repository. The
+only exception is Inkscape, the package we use manipulate SVG files.
+The inkscape package is not inside CentOS distribution so it needs to
+be installed from third party repositories.
+
+Creation of symbolic links help to reuse components inside your
+repository working copy. For example, palettes of colors maintained
+inside CentOS artwork repository are not duplicated inside programs'
+configuration directories on your workstation. Instead, palettes of
+colors maintain inside CentOS artwork repository are linked from
+program configuration directories. In this configuration, when someone
+commits palette of colors changes up to central repository you can
+immediatly start using these changes the next time you update palette
+of colors in your repository working copy.
+
+Creation of symbolic links help to make automation scripts available
+to repository structures different to @file{trunk/}. This is useful if
+you need to render artworks under @file{branches/} repository
+structure using the same automation scripts you use inside
+@file{trunk/}. As this configuration consecuence, automation scripts
+cannot be branched under @file{branches/Scripts} repository structure.
+
+Creation of symbolic links help to create the @command{centos-art}
+command line to whatever script invokation you are using (e.g.,
+@file{centos-art.sh}, for Bash implementation; @file{centos-art.py},
+for Python implementation; @file{centos-art.pl}, for Perl
+implementation; and so on for other implementations). The command line
+definition takes place inside your personal binary (@file{~/bin/})
+directory.
+
+Definition of environment variables help to set default values you use
+along your user session. Environment variables definition takes place
+inside your personal @file{~/.bash_profile} file. You can use this
+file to define which is your default text editor (@var{EDITOR}), time
+zone (@var{TZ}) and any value you consider useful for your day-by-day
+working.
+
+Another convenction to consider is the system date/time representation
+we use. It would be very convenient if your workstation is configured
+to use Coordinated Universal Time (UTC), just as CentOS Artwork
+Repository server is configured. This way, both your repository
+working copy and the central repository will coordinate time
+information correctly.  Otherwise it would be difficult to find out
+when changes were committed exactly.
 
 @subsection Usage
 
-@itemize
-@item ...
-@end itemize
+@table @samp
+@item centos-art verify --packages
+This command verifies installed packages your workstation needs in
+order to run the @command{centos-art} command correctly. 
+
+@item centos-art verify --paths
+This command verifies required repository files your workstation needs
+in order to run the @command{centos-art} command correctly.
+@end table
+
+If this is the first time you run @command{centos-art} command, the
+appropriate way to execute ``verify'' action is not using the
+@command{centos-art} command, but the absolute path to
+@command{centos-art.sh} script instead (i.e.,
+@file{~/artwork/trunk/Scripts/Bash/centos-art.sh}).
 
 @subsection See also
 

@@ -202,10 +202,9 @@ CentOS Artwork Repository
       3.34.2.1 The identity matching list
       3.34.2.2 Adding new features
     3.34.3 Usage
-      3.34.3.1 The `centos-art' `check' action
-      3.34.3.2 The `centos-art' `search' action
-      3.34.3.3 The `centos-art' `locale-art' action
-      3.34.3.4 The `centos-art' `license' action
+      3.34.3.1 The `centos-art' `search' action
+      3.34.3.2 The `centos-art' `locale-art' action
+      3.34.3.3 The `centos-art' `license' action
     3.34.4 See also
   3.35 trunk/Scripts/Bash/Functions
     3.35.1 Goals
@@ -2536,23 +2535,7 @@ you want to add.
 3.34.3 Usage
 ------------
 
-3.34.3.1 The `centos-art' `check' action
-........................................
-
-This feature is supported through the following command:
-
-`centos-art check'
-     This command verifies paths, symbolic links, installed packages and
-     everything your workstation needs in order to run the `centos-art'
-     command correctly.
-
-          *Warning* If this is the first time you run `centos-art'
-          command, the appropriate way to execute check action is not
-          using the `centos-art' command, but the absolute path to
-          `centos-art.sh' script instead:
-          ~/artwork/trunk/Scripts/Bash/centos-art.sh check
-
-3.34.3.2 The `centos-art' `search' action
+3.34.3.1 The `centos-art' `search' action
 .........................................
 
 This feature is not supported yet.
@@ -2571,7 +2554,7 @@ This feature is not supported yet.
      `path/to/dir1' _or_ `path/to/dir2', _or_ `path/to/dirN' as in
      `^.*(path/to/dir1|path/to/dir2|path/to/dirN).*$''.
 
-3.34.3.3 The `centos-art' `locale-art' action
+3.34.3.2 The `centos-art' `locale-art' action
 .............................................
 
 This feature is not supported yet.
@@ -2584,7 +2567,7 @@ This feature is not supported yet.
 
 `centos-art locale-art 'path/to/dir' --list='filename''
 
-3.34.3.4 The `centos-art' `license' action
+3.34.3.3 The `centos-art' `license' action
 ..........................................
 
 This feature is supported through the following command:
@@ -3068,17 +3051,81 @@ are used by "svg" functionalities to introduce dynamic information
 3.48.1 Goals
 ------------
 
-   * ...
+This section exists to organize files related to "verify" functionality
+of centos-art.sh script.  The "verify" functionality of centos-art.sh
+script helps you to prepare the workstation you are planning to use
+centos-art.sh script.
 
 3.48.2 Description
 ------------------
 
-   * ...
+The first time you download CentOS Artwork Repository you need to
+configure your workstation in order to use automation scripts.  These
+preliminar configurations are based mainly on auxiliar RPM packages
+installation, and some symbolic links creations.
+
+   Installation of auxiliar RPM packages provides the software required
+to manipulate files inside the repository (e.g., image files,
+documentation files, translation files, script files, etc.). Most of
+RPM packages centos-art.sh script uses are shipped with CentOS
+distribution, and can be installed from CentOS base repository. The
+only exception is Inkscape, the package we use manipulate SVG files.
+The inkscape package is not inside CentOS distribution so it needs to
+be installed from third party repositories.
+
+   Creation of symbolic links help to reuse components inside your
+repository working copy. For example, palettes of colors maintained
+inside CentOS artwork repository are not duplicated inside programs'
+configuration directories on your workstation. Instead, palettes of
+colors maintain inside CentOS artwork repository are linked from
+program configuration directories. In this configuration, when someone
+commits palette of colors changes up to central repository you can
+immediatly start using these changes the next time you update palette
+of colors in your repository working copy.
+
+   Creation of symbolic links help to make automation scripts available
+to repository structures different to `trunk/'. This is useful if you
+need to render artworks under `branches/' repository structure using
+the same automation scripts you use inside `trunk/'. As this
+configuration consecuence, automation scripts cannot be branched under
+`branches/Scripts' repository structure.
+
+   Creation of symbolic links help to create the `centos-art' command
+line to whatever script invokation you are using (e.g.,
+`centos-art.sh', for Bash implementation; `centos-art.py', for Python
+implementation; `centos-art.pl', for Perl implementation; and so on for
+other implementations). The command line definition takes place inside
+your personal binary (`~/bin/') directory.
+
+   Definition of environment variables help to set default values you
+use along your user session. Environment variables definition takes
+place inside your personal `~/.bash_profile' file. You can use this
+file to define which is your default text editor (EDITOR), time zone
+(TZ) and any value you consider useful for your day-by-day working.
+
+   Another convenction to consider is the system date/time
+representation we use. It would be very convenient if your workstation
+is configured to use Coordinated Universal Time (UTC), just as CentOS
+Artwork Repository server is configured. This way, both your repository
+working copy and the central repository will coordinate time
+information correctly.  Otherwise it would be difficult to find out
+when changes were committed exactly.
 
 3.48.3 Usage
 ------------
 
-   * ...
+`centos-art verify --packages'
+     This command verifies installed packages your workstation needs in
+     order to run the `centos-art' command correctly.
+
+`centos-art verify --paths'
+     This command verifies required repository files your workstation
+     needs in order to run the `centos-art' command correctly.
+
+   If this is the first time you run `centos-art' command, the
+appropriate way to execute "verify" action is not using the
+`centos-art' command, but the absolute path to `centos-art.sh' script
+instead (i.e., `~/artwork/trunk/Scripts/Bash/centos-art.sh').
 
 3.48.4 See also
 ---------------
@@ -4189,98 +4236,98 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  390)
-Common translation files:                      See 3.52.2.5. (line 3614)
-How to render brands' translation files:       See 3.54.3.   (line 3919)
-How to render fonts' translation files:        See 3.56.3.   (line 3996)
-How to render translation files:               See 3.52.3.   (line 3784)
-Specific translation files:                    See 3.52.2.6. (line 3639)
-tags:                                          See 2.        (line  393)
-Template translation files:                    See 3.52.2.4. (line 3444)
-Translation brands file names:                 See 3.54.2.1. (line 3876)
-Translation configuration scripts:             See 3.52.2.8. (line 3673)
-Translation entries:                           See 3.52.2.1. (line 3260)
-Translation files:                             See 3.52.2.3. (line 3376)
-Translation markers:                           See 3.52.2.2. (line 3341)
-Translation paths:                             See 3.52.2.1. (line 3260)
+branches:                                      See 1.        (line  389)
+Common translation files:                      See 3.52.2.5. (line 3661)
+How to render brands' translation files:       See 3.54.3.   (line 3966)
+How to render fonts' translation files:        See 3.56.3.   (line 4043)
+How to render translation files:               See 3.52.3.   (line 3831)
+Specific translation files:                    See 3.52.2.6. (line 3686)
+tags:                                          See 2.        (line  392)
+Template translation files:                    See 3.52.2.4. (line 3491)
+Translation brands file names:                 See 3.54.2.1. (line 3923)
+Translation configuration scripts:             See 3.52.2.8. (line 3720)
+Translation entries:                           See 3.52.2.1. (line 3307)
+Translation files:                             See 3.52.2.3. (line 3423)
+Translation markers:                           See 3.52.2.2. (line 3388)
+Translation paths:                             See 3.52.2.1. (line 3307)
 Translation pre-rendering configuration scripts:See 3.52.2.8.
-                                                             (line 3673)
-Translation rendering:                         See 3.52.2.7. (line 3662)
-Translation rendering default functionality:   See 3.52.2.9. (line 3759)
-trunk:                                         See 3.        (line  396)
-trunk Identity:                                See 3.1.      (line  399)
-trunk Identity Brands:                         See 3.2.      (line  819)
-trunk Identity Fonts:                          See 3.3.      (line  836)
-trunk Identity Icons:                          See 3.4.      (line  912)
-trunk Identity Isolinux:                       See 3.5.      (line  929)
-trunk Identity Models:                         See 3.6.      (line  946)
-trunk Identity Models Css:                     See 3.7.      (line  966)
-trunk Identity Models Html:                    See 3.8.      (line  988)
-trunk Identity Models Img Promo Web:           See 3.9.      (line 1009)
-trunk Identity Models Tpl:                     See 3.10.     (line 1030)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1051)
-trunk Identity Models Xcf:                     See 3.12.     (line 1365)
-trunk Identity Release:                        See 3.13.     (line 1386)
-trunk Identity Themes:                         See 3.14.     (line 1403)
-trunk Identity Themes Models:                  See 3.15.     (line 1428)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1461)
-trunk Identity Themes Models Default:          See 3.17.     (line 1488)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1520)
+                                                             (line 3720)
+Translation rendering:                         See 3.52.2.7. (line 3709)
+Translation rendering default functionality:   See 3.52.2.9. (line 3806)
+trunk:                                         See 3.        (line  395)
+trunk Identity:                                See 3.1.      (line  398)
+trunk Identity Brands:                         See 3.2.      (line  818)
+trunk Identity Fonts:                          See 3.3.      (line  835)
+trunk Identity Icons:                          See 3.4.      (line  911)
+trunk Identity Isolinux:                       See 3.5.      (line  928)
+trunk Identity Models:                         See 3.6.      (line  945)
+trunk Identity Models Css:                     See 3.7.      (line  965)
+trunk Identity Models Html:                    See 3.8.      (line  987)
+trunk Identity Models Img Promo Web:           See 3.9.      (line 1008)
+trunk Identity Models Tpl:                     See 3.10.     (line 1029)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1050)
+trunk Identity Models Xcf:                     See 3.12.     (line 1364)
+trunk Identity Release:                        See 3.13.     (line 1385)
+trunk Identity Themes:                         See 3.14.     (line 1402)
+trunk Identity Themes Models:                  See 3.15.     (line 1427)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1460)
+trunk Identity Themes Models Default:          See 3.17.     (line 1487)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1519)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1604)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1621)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1647)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1672)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1776)
+                                                             (line 1603)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1620)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1646)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1671)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1775)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.24.
-                                                             (line 1898)
+                                                             (line 1897)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.25.
-                                                             (line 1919)
+                                                             (line 1918)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.26.
-                                                             (line 1940)
+                                                             (line 1939)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.27.
-                                                             (line 1967)
-trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2023)
-trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2045)
+                                                             (line 1966)
+trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2022)
+trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2044)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.30.
-                                                             (line 2062)
-trunk Identity Widgets:                        See 3.31.     (line 2358)
-trunk Manuals:                                 See 3.32.     (line 2375)
-trunk Scripts:                                 See 3.33.     (line 2429)
-trunk Scripts Bash:                            See 3.34.     (line 2453)
-trunk Scripts Bash Functions:                  See 3.35.     (line 2602)
-trunk Scripts Bash Functions Help:             See 3.36.     (line 2623)
-trunk Scripts Bash Functions Html:             See 3.37.     (line 2644)
-trunk Scripts Bash Functions Locale:           See 3.38.     (line 2665)
-trunk Scripts Bash Functions Path:             See 3.39.     (line 2686)
+                                                             (line 2061)
+trunk Identity Widgets:                        See 3.31.     (line 2357)
+trunk Manuals:                                 See 3.32.     (line 2374)
+trunk Scripts:                                 See 3.33.     (line 2428)
+trunk Scripts Bash:                            See 3.34.     (line 2452)
+trunk Scripts Bash Functions:                  See 3.35.     (line 2585)
+trunk Scripts Bash Functions Help:             See 3.36.     (line 2606)
+trunk Scripts Bash Functions Html:             See 3.37.     (line 2627)
+trunk Scripts Bash Functions Locale:           See 3.38.     (line 2648)
+trunk Scripts Bash Functions Path:             See 3.39.     (line 2669)
 trunk Scripts Bash Functions Prepare prepare_forUsingPackages.sh:See 3.40.
-                                                             (line 2720)
-trunk Scripts Bash Functions Render:           See 3.41.     (line 2741)
-trunk Scripts Bash Functions Render Config:    See 3.42.     (line 2762)
+                                                             (line 2703)
+trunk Scripts Bash Functions Render:           See 3.41.     (line 2724)
+trunk Scripts Bash Functions Render Config:    See 3.42.     (line 2745)
 trunk Scripts Bash Functions Render render_getActions.sh:See 3.44.
-                                                             (line 2961)
+                                                             (line 2944)
 trunk Scripts Bash Functions Render render_getActionsIdentity.sh:See 3.43.
-                                                             (line 2940)
+                                                             (line 2923)
 trunk Scripts Bash Functions Render render_getActionsTranslations.sh:See 3.45.
-                                                             (line 2982)
-trunk Scripts Bash Functions Shell:            See 3.46.     (line 3003)
-trunk Scripts Bash Functions Svg:              See 3.47.     (line 3024)
-trunk Scripts Bash Functions Verify:           See 3.48.     (line 3068)
-trunk Scripts Bash Locale:                     See 3.49.     (line 3089)
-trunk Scripts Perl:                            See 3.50.     (line 3173)
-trunk Scripts Python:                          See 3.51.     (line 3190)
-trunk Translations:                            See 3.52.     (line 3211)
-trunk Translations Identity:                   See 3.53.     (line 3814)
-trunk Translations Identity Brands:            See 3.54.     (line 3835)
-trunk Translations Identity Brands Tpl:        See 3.55.     (line 3930)
-trunk Translations Identity Fonts:             See 3.56.     (line 3945)
-trunk Translations Identity Models:            See 3.57.     (line 4012)
-trunk Translations Identity Release:           See 3.58.     (line 4027)
-trunk Translations Identity Themes:            See 3.59.     (line 4042)
-trunk Translations Identity Themes Backgrounds:See 3.60.     (line 4057)
+                                                             (line 2965)
+trunk Scripts Bash Functions Shell:            See 3.46.     (line 2986)
+trunk Scripts Bash Functions Svg:              See 3.47.     (line 3007)
+trunk Scripts Bash Functions Verify:           See 3.48.     (line 3051)
+trunk Scripts Bash Locale:                     See 3.49.     (line 3136)
+trunk Scripts Perl:                            See 3.50.     (line 3220)
+trunk Scripts Python:                          See 3.51.     (line 3237)
+trunk Translations:                            See 3.52.     (line 3258)
+trunk Translations Identity:                   See 3.53.     (line 3861)
+trunk Translations Identity Brands:            See 3.54.     (line 3882)
+trunk Translations Identity Brands Tpl:        See 3.55.     (line 3977)
+trunk Translations Identity Fonts:             See 3.56.     (line 3992)
+trunk Translations Identity Models:            See 3.57.     (line 4059)
+trunk Translations Identity Release:           See 3.58.     (line 4074)
+trunk Translations Identity Themes:            See 3.59.     (line 4089)
+trunk Translations Identity Themes Backgrounds:See 3.60.     (line 4104)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.61.
-                                                             (line 4078)
-trunk Translations Identity Widgets:           See 3.62.     (line 4171)
+                                                             (line 4125)
+trunk Translations Identity Widgets:           See 3.62.     (line 4218)
 List of Figures
 ***************
 

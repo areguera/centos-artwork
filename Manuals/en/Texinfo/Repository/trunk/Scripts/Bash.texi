@@ -83,27 +83,6 @@ required by the new feature you want to add.
 
 @subsection Usage
 
-@subsubsection The @command{centos-art} @samp{check} action
-
-This feature is supported through the following command:
-
-@table @samp
-@item centos-art check
-This command verifies paths, symbolic links, installed packages and
-everything your workstation needs in order to run the
-@command{centos-art} command correctly. 
-
-@quotation
-@strong{Warning} If this is the first time you run
-@command{centos-art} command, the appropriate way to execute check
-action is not using the @command{centos-art} command, but the absolute
-path to @command{centos-art.sh} script instead:
-@verbatim
-~/artwork/trunk/Scripts/Bash/centos-art.sh check
-@end verbatim
-@end quotation
-@end table
-
 @subsubsection The @command{centos-art} @samp{search} action
 
 This feature is not supported yet.
