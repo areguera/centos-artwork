@@ -82,8 +82,8 @@ workstation to use UTC too.  Otherwise it would be difficult for you
 to find out when changes were committed in time exactly.
 
 @quotation
-@strong{Tip} Coordinated Univeral Time (UTC) time representation can
-be configured when you install CentOS distribution, or later in your
+@strong{Tip} Coordinated Univeral Time (UTC) representation can be
+configured when you install CentOS distribution, or later in your
 graphical interface using the following command:
 @verbatim
 system-config-date
@@ -91,15 +91,14 @@ system-config-date
 @end quotation
 
 @quotation
-@strong{Note} If you set your system clock to use UTC time
-representation, you will need to set the @var{TZ} environment variable
-inside @file{~/.bash_profile} as follows:
+@strong{Note} If you set your system clock to use UTC representation,
+you also will need to set the @var{TZ} environment variable inside
+@file{~/.bash_profile} as follows:
 @verbatim
 export TZ=UTC
 @end verbatim
 This is required in order for your terminal to display the correct
-time information of your zone, taking UTC time representation as
-reference.
+time information of your zone, taking UTC representation as reference.
 @end quotation
 
 @subsection Usage
