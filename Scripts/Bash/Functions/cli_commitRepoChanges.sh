@@ -36,7 +36,7 @@ function cli_commitRepoChanges {
     FILES=$(svn status $OPTIONVAL | egrep '^M' | cut -d' ' -f7)
 
     # Define number of changed files.
-    COUNT=$(echo "$FILES" | wc | sed -r 's!^ *!!' | cut -d' ' -f1)
+    COUNT=$(echo "$FILES" | wc -l)
 
     # Check list of changed files and ask the user to commit changes
     # if there is any.
