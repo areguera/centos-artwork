@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# verify_getActions.sh -- This function defines prepare actions.
+# verify_doPackageReport.sh -- This function receives one list of
+# missing packages and another list of packages from third party
+# repository that were marked as missing packages.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -23,28 +25,26 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_getActions {
+function verify_doPackageReport {
 
-    case $OPTIONNAM in
+    local PACKAGE=''
+    local WARNING=''
 
-        --packages )
-            verify_doPackages
-            ;;
+    cli_printMessage "`ngettext "The following package needs to be installed" \
+        "The following packages need to be installed" \
+        "$PACKAGES_COUNT"`:"
 
-        --links )
-            verify_pathToCli
-            verify_pathToFonts
-            verify_pathToInkscape
-            ;;
+    for PACKAGE in ${PACKAGES_MISSING[@]};do
 
-        --environment )
-            ;;
+        # Is this package from third party?
+        if [[ $PACKAGE =~ $PACKAGES_THIRD_REGEX ]];then
+            WARNING=" (`gettext "requires third party repository!"`)"
+        fi
 
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`"
-            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "${PACKAGE}${WARNING}" 'AsResponseLine'
+        
+    done
 
-    esac
+    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
 
 }
-

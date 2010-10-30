@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# prepare.sh -- This function prepares your workstation for using
+# verify.sh -- This function verifies your workstation for using
 # centos-art.sh script.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
@@ -26,9 +26,9 @@
 
 function verify {
 
-    # Define prepare variables.
+    # Define global varibales.
 
-    # Define prepare actions.
+    # Define command-line interface.
     verify_getActions
 
 }

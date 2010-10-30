@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# verify_getActions.sh -- This function defines prepare actions.
+# verify_doPackages.sh -- This function receives a list of missing
+# list of packages to install and achieve the package installation
+# using `yum' command.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -23,28 +25,16 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_getActions {
+function verify_doPackageInstall {
 
-    case $OPTIONNAM in
+    # Verify `yum' command existence.
+    cli_checkFiles '/usr/bin/yum' 'f' '' '--quiet'
+    if [[ $? -ne 0 ]];then
+        cli_printMessage "`gettext "The yum package manager is not installed."`"
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
-        --packages )
-            verify_doPackages
-            ;;
-
-        --links )
-            verify_pathToCli
-            verify_pathToFonts
-            verify_pathToInkscape
-            ;;
-
-        --environment )
-            ;;
-
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`"
-            cli_printMessage "$(caller)" "AsToKnowMoreLine"
-
-    esac
+    # Use sudo to install packages in your system through yum.
+    sudo yum install ${PACKAGES_MISSING[*]}
 
 }
-

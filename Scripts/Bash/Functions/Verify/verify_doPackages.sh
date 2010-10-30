@@ -32,14 +32,13 @@ function verify_doPackages {
 
     local PACKAGES=''
     local PACKAGES_THIRD_REGEX=''
-    local PACKAGES_MISSING=''
-    local PACKAGES_THIRD=''
-    local COUNT=0
+    local -a PACKAGES_MISSING
+    local PACKAGES_COUNT=0
 
     # Define required packages needed by centos-art.sh script.
     PACKAGES="bash inkscape ImageMagick netpbm netpbm-progs
         syslinux gimp coreutils texinfo info tetex-latex tetex-fonts
-        tetex-doc tetex-xdvi tetex-dvips a b c gettext texi2html"
+        tetex-doc tetex-xdvi tetex-dvips gettext texi2html"
 
     # Define, from required packages, packages being from third
     # parties (i.e., packages not included in CentOS [base]
@@ -48,6 +47,13 @@ function verify_doPackages {
 
     verify_doPackageCheck
     verify_doPackageReport
-    # --- verify_doPackageInstall
+    verify_doPackageInstall
+
+    # At this point we need to recheck installed packages in order to
+    # be sure the user decided not to continue when there are still
+    # missing packages to be install.  For example this may happen
+    # when we try to install third party packages and there is no
+    # third party repository availabe to get those packages from.
+    verify_doPackages
 
 }
