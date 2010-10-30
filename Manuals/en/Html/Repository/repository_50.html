@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 29 2010 by texi2html 1.76 -->
+<!-- Created on October, 30 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -61,14 +61,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC362" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC362" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC361" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions-Verify"></a>
@@ -80,19 +80,29 @@ ul.toc {list-style: none}
 <h3 class="subsection"> 3.47.1 Goals </h3>
 
 <p>This section exists to organize files related to &quot;verify&quot;
-functionality of centos-art.sh script.  The &quot;verify&quot; functionality
-of centos-art.sh script helps you to prepare the workstation you are
-planning to use centos-art.sh script.
+functionality of <tt>`centos-art.sh'</tt> script.  The &quot;verify&quot;
+functionality of <tt>`centos-art.sh'</tt> script helps you to prepare the
+workstation you are planning to use <tt>`centos-art.sh'</tt> script.
 </p>
 
 <a name="SEC270"></a>
 <h3 class="subsection"> 3.47.2 Description </h3>
 
 <p>The first time you download CentOS Artwork Repository you need to
-configure your workstation in order to use automation scripts.  These
-preliminar configurations are based mainly on auxiliar RPM packages
-installation, symbolic links creations, and environment variables
-definitions.
+configure your workstation in order to use <tt>`centos-art.sh'</tt>
+script.  These preliminar configurations are based mainly on auxiliar
+RPM packages installation, symbolic links creations, and environment
+variables definitions.  The &quot;verify&quot; functionality of
+<tt>`centos-art.sh'</tt> script guides you through this preliminar
+configuration process.  
+</p>
+<p>If this is the first time you run <code>centos-art</code> command, the
+appropriate way to use its &quot;verify&quot; functionality is not using the
+<code>centos-art</code> command directly, but the absolute path to
+<code>centos-art.sh</code> script instead (i.e.,
+<tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).  This is necessary
+because <code>centos-art</code> symbolic link, under <tt>`~/bin/'</tt>
+directory, has not been created yet.
 </p>
 
 <a name="SEC271"></a>
@@ -101,11 +111,11 @@ definitions.
 <p>Installation of auxiliar RPM packages provides the software required
 to manipulate files inside the repository (e.g., image files,
 documentation files, translation files, script files, etc.). Most of
-RPM packages centos-art.sh script uses are shipped with CentOS
-distribution, and can be installed from CentOS base repository. The
-only exception is <samp>`inkscape'</samp>, the package we use to manipulate
-SVG files.  The <samp>`inkscape'</samp> package is not inside CentOS
-distribution so it needs to be installed from third party
+RPM packages <code>centos-art.sh</code> script uses are shipped with
+CentOS distribution, and can be installed from CentOS base repository.
+The only exception is <samp>`inkscape'</samp>, the package we use to
+manipulate SVG files.  The <samp>`inkscape'</samp> package is not inside
+CentOS distribution so it needs to be installed from third party
 repositories.
 </p>
 <blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Configuration of third party repositories inside CentOS
@@ -118,56 +128,80 @@ following URL:
 <a name="SEC272"></a>
 <h4 class="subsubsection"> 3.47.2.2 Links </h4>
 
-<p>Creation of symbolic links help us to reuse components inside
-repository working copies. For example, palettes of colors maintained
-inside your repository working copy are not duplicated inside
-program-specific configuration directories that uses them in your
-workstation.  Instead, a symbolic link is created for each one of
-them, from program-specific configuration directories to files in
-repository working copy.  In this configuration, when someone commits
-changes to palettes of colors up to central repository, they--the
-changes commited-- will be immediatly available to your programs the
-next time you update your repository working copy where such palettes
-of colors are.
-</p>
-<p>Creation of symbolic links help us to make automation scripts
-available outside <tt>`trunk/'</tt> repository directory structure, but at
-its same level it is in repository tree. This is useful if you need to
-use &quot;render&quot; functionality under <tt>`branches/'</tt> repository
-structure using the same automation scripts you use inside
-<tt>`trunk/'</tt> repository directory structure. As consequence of this
-configuration, automation scripts cannot be branched under
-<tt>`branches/Scripts'</tt> directory structure.
-</p>
-<p>Creation of symbolic links help us to alternate between different
+<p>Creation of symbolic links helps us to alternate between different
 implementations of <code>centos-art</code> command-line (e.g.,
 <tt>`centos-art.sh'</tt>, for Bash implementation; <tt>`centos-art.py'</tt>,
 for Python implementation; <tt>`centos-art.pl'</tt>, for Perl
 implementation; and so on for other implementations). The
 <code>centos-art</code> command-line definition takes place inside your
-personal binary (<tt>`~/bin/'</tt>) directory.
+personal binary (<tt>`~/bin/'</tt>) directory in order to make the script
+implementation --the one that <code>centos-art</code> links to--
+available to <var>PATH</var> environment variable.
+</p>
+<p>Creation of symbolic links helps us to reuse components from repository
+working copy. For example, color information files maintained inside
+your working copy must never be duplicated inside program-specific
+configuration directories that uses them in your workstation (e.g.,
+Gimp, Inkscape, etc.).  Instead, a symbolic link must be created for
+each one of them, from program-specific configuration directories to
+files in the working copy.  In this configuration, when someone
+commits changes to color information files up to central repository,
+they--the changes committed-- will be immediatly available to your
+programs the next time you update your working copy --the place
+inside your workstation those color information files are stored--.
+</p>
+<p>Creation of symbolic links helps us to make <tt>`centos-art.sh'</tt>
+script functionalities available outside <tt>`trunk/'</tt> repository
+directory structure, but at its same level in repository tree. This is
+useful if you need to use the &quot;render&quot; functionality of
+<code>centos-art.sh</code> under <tt>`branches/'</tt> repository directory
+structure as you usually do inside <tt>`trunk/'</tt> repository directory
+structure. As consequence of this configuration, automation scripts
+cannot be branched under <tt>`branches/Scripts'</tt> directory structure.
 </p>
 
 <a name="SEC273"></a>
 <h4 class="subsubsection"> 3.47.2.3 Environment variables </h4>
 
-<p>Definition of environment variables help us to set default values you
-use along your user session. Environment variables definition takes
-place inside your personal <tt>`~/.bash_profile'</tt> file. You can use
-<tt>`~/.bash_profile'</tt> file to define which is your default text
-editor (<var>EDITOR</var>), and any value you consider useful for your
-day-by-day working journey.
+<p>Definition of environemnt variables helps us to set default values to
+our user session life. The user session environment variable defintion
+takes place in the user's <tt>`~/.bash_profile'</tt> file.  The &quot;verify&quot;
+functionality of <tt>`centos-art.sh'</tt> script doesn't modify your
+<tt>`~/.bash_profile'</tt> file.  
 </p>
-
-<a name="SEC274"></a>
-<h4 class="subsubsection"> 3.47.2.4 Time coordination </h4>
-
-<p>Another convenction to consider is the time representation we use for
-both repository server and repository working copies.  The time
-representation in the repository server is set to Coordinated
-Universal Time (UTC). It would be very convenient if you set your
-workstation to use UTC too.  Otherwise it would be difficult for you
-to find out when changes were committed in time exactly.
+<p>The &quot;verify&quot; functionality of <tt>`centos-art.sh'</tt> script evaluates
+the following environment variables:
+</p>
+<dl compact="compact">
+<dt> <strong>Default text editor (<var>EDITOR</var>)</strong></dt>
+<dd>
+<p>The <var>EDITOR</var> environment variable defines your user session
+default text editor.
+</p>
+<p>If <var>EDITOR</var> environment variable is not set --or it uses one
+value other than <tt>`/usr/bin/vim'</tt>, <tt>`/usr/bin/emacs'</tt>, or
+<tt>`/usr/bin/nano'</tt>-- the <tt>`centos-art.sh'</tt> script uses
+<tt>`/usr/bin/vim'</tt> as default text editor.
+</p>
+<p>Default text editor is used by <tt>`centos-art.sh'</tt> script whenever it
+needs to edit text-based files (e.g., subversion's pre-commit
+messages, translation files, configuration files, script files, etc.)
+</p>
+</dd>
+<dt> <strong>Default time representation (<var>TZ</var>)</strong></dt>
+<dd>
+<p>The <var>TZ</var> environment variable defines your user session default
+time zone representation.  
+</p>
+<p>Time representation inside repository server is set to Coordinated
+Universal Time (UTC).  Time represetation inside repository working
+copies is set as their administrators personally define.  
+</p>
+<p>When repository working copies time representation be defined, it
+would be a very good convention to follow if working copies
+administrators would set their systems clock to use UTC.  Otherwise it
+would be difficult for working copies users to find out when changes
+were committed up to repository server exactly in time.
 </p>
 <blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Coordinated Univeral Time (UTC) representation can be
 configured when you install CentOS distribution, or later in your
@@ -176,42 +210,49 @@ graphical interface using the following command:
 </pre></blockquote>
 
 <blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> If you set your system clock to use UTC representation,
-you also will need to set the <var>TZ</var> environment variable inside
+you also need to set the <var>TZ</var> environment variable inside
 <tt>`~/.bash_profile'</tt> as follows:
 </p><pre class="verbatim">export TZ=UTC
 </pre><p>This is required in order for your terminal to display the correct
 time information of your zone, taking UTC representation as reference.
 </p></blockquote>
 
+</dd>
+</dl>
 
-<a name="SEC275"></a>
+
+<a name="SEC274"></a>
 <h3 class="subsection"> 3.47.3 Usage </h3>
 
-<p>If this is the first time you run <code>centos-art</code> command, the
-appropriate way to execute &quot;verify&quot; functionality is not using the
-<code>centos-art</code> command directly, but the absolute path to
-<code>centos-art.sh</code> script instead (i.e.,
-<tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).
-</p>
 <dl compact="compact">
 <dt> <samp>`centos-art verify --packages'</samp></dt>
 <dd><p>This command verifies required packages your workstation needs in
-order to run the <code>centos-art</code> command correctly. 
+order to run the <code>centos-art</code> command correctly.  If there are
+missing packages, the <tt>`centos-art.sh'</tt> script asks you to confirm
+their installation. When installing packages, the <tt>`centos-art.sh'</tt>
+script uses the <code>yum</code> application in order to achieve the
+task.
 </p>
 </dd>
 <dt> <samp>`centos-art verify --links'</samp></dt>
 <dd><p>This command verifies required links your workstation needs in order
-to run the <code>centos-art</code> command correctly.
+to run the <code>centos-art</code> command correctly. If there are
+missing links, the <tt>`centos-art.sh'</tt> script asks you to confirm
+their creation. When creating links, the <tt>`centos-art.sh'</tt> script
+uses the <code>ln</code> application in order to achieve the task.
 </p>
 </dd>
 <dt> <samp>`centos-art verify --environment'</samp></dt>
 <dd><p>This command verifies required environment variables your workstation
-needs in order to run <code>centos-art</code> command correctly.
+needs in order to run <code>centos-art</code> command correctly. If
+environment variables evaluated by <tt>`centos-art.sh'</tt> script are
+emtpy, the <tt>`centos-art.sh'</tt> script informs you about it and
+nothing else happens.
 </p></dd>
 </dl>
 
 
-<a name="SEC276"></a>
+<a name="SEC275"></a>
 <h3 class="subsection"> 3.47.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
@@ -221,16 +262,16 @@ needs in order to run <code>centos-art</code> command correctly.
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC275" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_51.html#SEC277" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC274" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_51.html#SEC276" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC268" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC362" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 29 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 30 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
