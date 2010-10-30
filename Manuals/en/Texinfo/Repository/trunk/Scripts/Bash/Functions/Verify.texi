@@ -42,6 +42,21 @@ following URL:
 @url{http://wiki.centos.org/AdditionalResources/Repositories}
 @end quotation
 
+Before installing packages, the @file{centos-art.sh} script uses
+@command{sudo} to request root privileges to execute @command{yum}'s
+installation functionality.  If your user isn't defined as a
+privileged user---at least to run @command{yum} commands--- inside
+@file{/etc/sudoers} configuration file, you will not be able to
+perform package installation tasks as set in @file{centos-art.sh}
+script ``verify'' functionality. 
+
+Setting sudo privileges to users is an administrative task you have to
+do by yourself. If you don't have experience with @command{sudo}
+command, please read its man page running the command: @command{man
+sudo}. This reading will be very useful, and with some practice, you
+will be able to configure your users to have @command{sudo}
+privileges.
+
 @subsubsection Links
 
 Creation of symbolic links helps us to alternate between different
