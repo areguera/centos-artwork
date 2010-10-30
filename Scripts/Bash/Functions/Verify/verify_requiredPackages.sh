@@ -1,9 +1,11 @@
 #!/bin/bash
 #
-# verify_requiredPackages.sh -- This function queries your system's
-# rpm database to verify centos-art.sh required packages existence.
-# If there is any missing package, leave a message and quit script
-# execution.
+# verify_doPackages.sh -- This function verifies required packages
+# your workstation needs in order to run the centos-art command
+# correctly. If there are missing packages, the `centos-art.sh' script
+# asks you to confirm their installation. When installing packages,
+# the `centos-art.sh' script uses the yum application in order to
+# achieve the task.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -26,26 +28,26 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_requiredPackages {
+function verify_doPackages {
 
-    # Define variables as local to avoid conflicts outside.
-    local PACKAGE=''
     local PACKAGES=''
-    local PACKAGE_INFO=''
+    local PACKAGES_THIRD_REGEX=''
+    local PACKAGES_MISSING=''
+    local PACKAGES_THIRD=''
+    local COUNT=0
 
     # Define required packages needed by centos-art.sh script.
     PACKAGES="bash inkscape ImageMagick netpbm netpbm-progs
         syslinux gimp coreutils texinfo info tetex-latex tetex-fonts
-        tetex-doc tetex-xdvi tetex-dvips gettext texi2html"
+        tetex-doc tetex-xdvi tetex-dvips a b c gettext texi2html"
 
     # Define, from required packages, packages being from third
-    # parties (i.e., packages not included in rhel, nor centos [base]
+    # parties (i.e., packages not included in CentOS [base]
     # repository.).
-    PACKAGES_FROM_THIRDS="(inkscape|blender)"
+    PACKAGES_THIRD_REGEX="(inkscape|blender)"
 
-    # Output table of packages needed by centos-art.sh script.
-    rpm -q --queryformat "%{NAME}: %{SUMMARY}\n" $PACKAGES \
-        | egrep -i $REGEX
+    verify_doPackageCheck
+    verify_doPackageReport
+    # --- verify_doPackageInstall
 
-    cli_printMessage "$(caller)" "AsToKnowMoreLine"
 }
