@@ -116,7 +116,7 @@ function cli {
     # than a text editor and in that case be executed when you try to
     # edit a documentation entry using the `centos-art help --edit'
     # command.
-    if [[ ! "$EDITOR" =~ '/usr/bin/(emacs|vim|nano)' ]];then
+    if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
         EDITOR='/usr/bin/vim'
     fi
 
