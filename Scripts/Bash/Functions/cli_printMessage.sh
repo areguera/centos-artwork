@@ -136,11 +136,8 @@ function cli_printMessage {
         'AsToKnowMoreLine' )
             # This option receives the output of bash's caller builtin
             # as message value, in order to produce the documentation
-            # entry automatically. As caller builtin outputs the
-            # caller file path, documentation entry built from here is
-            # a file documentation entry.
-            MESSAGE=$(echo $MESSAGE | cut -d ' ' -f2-)
-            MESSAGE="$(dirname $MESSAGE)' --filter='$(basename $MESSAGE)"
+            # entry automatically. 
+            MESSAGE=$(dirname $(echo $MESSAGE | cut -d ' ' -f2-))
             echo "----------------------------------------------------------------------"
             echo "`gettext "To know more, run the following command"`:"
             echo "centos-art help --read='$MESSAGE'"
