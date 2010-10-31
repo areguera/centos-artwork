@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 30 2010 by texi2html 1.76 -->
+<!-- Created on October, 31 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -24,10 +24,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.51 trunk/Translations</title>
+<title>CentOS Artwork Repository: 3.51 trunk/Translations/Identity</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.51 trunk/Translations">
-<meta name="keywords" content="CentOS Artwork Repository: 3.51 trunk/Translations">
+<meta name="description" content="CentOS Artwork Repository: 3.51 trunk/Translations/Identity">
+<meta name="keywords" content="CentOS Artwork Repository: 3.51 trunk/Translations/Identity">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,661 +56,65 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_53.html#SEC292" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC294" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_53.html#SEC301" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC303" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC356" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC361" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC356" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Translations"></a>
-<a name="SEC293"></a>
-<h2 class="section"> 3.51 trunk/Translations </h2>
-
-
-<a name="SEC294"></a>
-<h3 class="subsection"> 3.51.1 Goals </h3>
-
-<p>The <tt>`trunk/Translations'</tt> directory exists to:
-</p>
-<ul class="toc">
-<li> Organize translation files.
-</li><li> Organize translation templates used to produce translation files.
-</li></ul>
-
-
-<a name="SEC295"></a>
-<h3 class="subsection"> 3.51.2 Description </h3>
-
-<p>When you create artwork for CentOS distribution you find that some
-artworks need to be created for different major releases of CentOS
-distribution and inside each major release they need to be created for
-different locales. To get an approximate idea of how many files we are
-talking about, consider the followig approximate statistic:
-</p>
-<ul class="toc">
-<li> Inside CentOS distribution, there are around 30 images to
-rebrand.<a name="DOCF2" href="repository_fot.html#FOOT2">(2)</a>
-
-</li><li> There are near to four major releases of CentOS distribution to
-rebrand in parallel development.<a name="DOCF3" href="repository_fot.html#FOOT3">(3)</a> 
-
-</li><li> Each CentOS distribution in parallel development supports more
-than two hundreds locales.<a name="DOCF4" href="repository_fot.html#FOOT4">(4)</a>
-</li></ul>
-
-<p>In order to aliviate maintainance of artwork production for such
-environment, we divided artwork production in three production lines:
-</p>
-<ol>
-<li> See section <a href="repository_18.html#SEC95">trunk/Identity/Themes/Models</a>, to define artworks
-characteristics (e.g., dimensions, position on the screen, etc.).
-</li><li> See section <a href="repository_25.html#SEC132">trunk/Identity/Themes/Motifs</a>, to define artworks visual
-styles (e.g., the look and feel).
-</li><li> Translations, to define which major releases and locales
-artworks are produced for. 
-</li></ol>
-
-<p>Inside CentOS Artwork Repository, the artworks' translation production
-line is stored under <tt>`trunk/Translations'</tt> directory.
-</p>
-<p>Inside <tt>`trunk/Translations'</tt> directory, we use &quot;translation
-entries&quot; to organize artworks' &quot;translation files&quot; and artworks'
-&quot;translation templates&quot;.
-</p>
-
-<a name="SEC296"></a>
-<h4 class="subsubsection"> 3.51.2.1 Translation Entries </h4>
-
-<p>Translation entries exists for each artwork you want to produce.
-Translation entries can be empty directories, or directories
-containing translation files and translation templates.  
-</p>
-<p>When translation entries are empty directories, the identity entry is
-used as reference to create file names and directories layout for
-rendered files.  In this case, the <code>centos-art</code> script takes
-one design template and outputs one non-translated file for each
-design template available.  This configuration is mainly used to
-produce non-translatable artworks like themes' backgrounds.
-</p>
-<p>When translation entries contain translation files, the translation
-entry implements the CentOS release schema and is used as reference to
-create file names and directories layout for translated artworks. In
-this case, the <code>centos-art</code> script applies one translation
-file to one design template to create one translated instance which is
-used to output one translated file. When the translated file is
-rendered, the <code>centos-art</code> script remove the previous instance
-and takes the next file in the list of translation files to repate the
-whole process once again, and so on for all files in the list. This
-configuration is mainly used to produce translatable artworks like
-Anaconda's progress slide images.
-</p>
-<p>To find out correspondence between translation entries and identity
-entries, you need to look the path of both translation entries and
-identity entries. For example, if you are using the Modern's artisitic
-motif, the identity entry for Anaconda progress artwork is:
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
-</pre>
-<p>and its translation entry is:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
-</pre>
-<p>Note how the <tt>`Translations/'</tt> directory prefixes <tt>`Identity/'</tt>
-directory, also how static values (e.g., Identity, Themes, Distro,
-etc.) in the identity's entry path remain in translation's entry path,
-and how variable values like theme names (e.g., Modern) are stript out
-from translation's entry path. The same convenction can be applied to
-other identity entries in order to determine their translation
-entries, or to other translation entries to determine their identity
-entries.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Translation entries related to identity entries under
-<tt>`trunk/Identity/Themes/Motifs'</tt> do not use <tt>`Motifs/'</tt> in the
-path.  We've done this because <tt>`trunk/Identity/Themes/Models'</tt>
-structure, the other structure under <tt>`trunk/Identity/Themes'</tt>,
-doesn't require translation paths so far. So in the sake of saving
-characters space when building translation entries for
-<tt>`trunk/Identity/Themes/Motifs'</tt> structure, we organize Motifs
-translation entries under <tt>`trunk/Translations/Identity/Themes/'</tt>
-directly. 
-</p>
-<p>If for some reason <tt>`trunk/Identity/Themes/Models'</tt> structure
-requires translation entries, we need to re-oraganize the current
-directory structure accordingly.
-</p></blockquote>
-
-<p>Translation entries, as described above, can be re-used by similar
-identity entries. For example the following identity entries:
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress/
-trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Progress/
-trunk/Identity/Themes/Motifs/Mettle/Distro/Anaconda/Progress/
-</pre>
-<p>are all valid identity entries able to re-use translation files inside
-Anaconda progress translation entry (the one shown in our example
-above). This way, you can create several identity entries and maintain
-just one translation entry for all of them.  Once you change the
-translation files inside the common translation entry, changes inside
-identity entries will take effect inside the next you render them.
-</p>
-<p>Trying to make things plain and simple: inside CentOS Artwork
-Repository, graphic designers can concentrate their efforts in
-artworks look and feel (the identity entries), and translators in
-artworks translations (the translation entries).
-</p>
-
-<a name="SEC297"></a>
-<h4 class="subsubsection"> 3.51.2.2 Translation Markers </h4>
-<p><a name="trunk_003aTranslations_003aTranslationMarkers"></a>
-<a name="IDX1"></a>
-</p>
-<p>Translation markers are used in &quot;Theme Model Designs&quot; and
-&quot;Translation Files&quot; as replacement patterns to commit content
-translation.  When you are rendering content using
-<code>centos-art</code> script inisde <tt>`trunk/Identity'</tt> structure,
-artistic motifs and translation files are applied to model designs to
-produce translated content as result. In order to have the appropriate
-translation in content rendered, markers defintion in translation
-files should match markers in model designs exactly. 
-</p>
-<div class="float"><a name="fig_003atrunk_002fTranslations_002f1"></a>
-<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Png//renderImage.png" alt="Translation Markers">
-
-</p></div><p><strong>Figure 3.6: The image rendering flow.
-</strong>
-</p>
-<p>Translation markers can be whatever text you want, but as convenction
-we use the following to represent releases of CentOS distribution:
-</p>
-<dl compact="compact">
-<dt> <samp>`=MINOR_RELEASE='</samp></dt>
-<dd><p>Replace with minor release of CentOS distribution. In the schema M.N, the minor
-release is represented by the N letter.
-</p></dd>
-<dt> <samp>`=MAJOR_RELEASE='</samp></dt>
-<dd><p>Replace with major release of CentOS distribution. In the schema M.N,
-the major release is represented by the M letter.
-</p></dd>
-<dt> <samp>`=RELEASE='</samp></dt>
-<dd><p>Replace the full release of CentOS distribution. It is
-<samp>`=MAJOR_RELEASE=.=MINOR_RELEASE='</samp> basically. 
-</p></dd>
-</dl>
-
-<p>Specific translation markers convenctions are described inside
-specific translation entries. Read translation entries documentation
-to know more about supported translation markers.
-</p>
-<p>Translation markers standardization creates a common point of
-reference for translators and graphic designers. To have translation
-markers well defined makes possible that translators and graphic
-designers can work together but independently one another.
-</p>
-
-<a name="SEC298"></a>
-<h4 class="subsubsection"> 3.51.2.3 Translation Files </h4>
-
-<p>Translation files are text files with <code>sed</code>'s commands inside,
-replacement commands mainly. As convenction, translation file names
-end in <samp>`.sed'</samp>. Translation files are used by <code>centos-art</code>
-script to produce translated artworks for specific major releases of
-CentOS Distribution. There are common translation files, specific
-translation, and template translation files.
-</p>
-<p>For example, the Firstboot artwork of CentOS distribution uses the
-images <tt>`splash-small.png'</tt> and <tt>`firstboot-left.png'</tt> as based
-to control its visual style. The <tt>`splash-small.png'</tt> image
-contains, in its graphic design, the release number information of
-CentOS distribution. So the <tt>`splash-small.png'</tt> is
-release-specific. In the other hand, the <tt>`firstboot-left.png'</tt>
-doesn't contain release number information. So the
-<tt>`firstboot-left.png'</tt> is not release-specific.
-</p>
-<p>If we want to produce Firstboot artwork for different major releases
-of CentOS distribution, using a monolithic visual identity, all
-Firstboot images should have the same visual style and, at the same
-time, the release-specific information in the release-specific images. 
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> The monolithic visual identity is implemented using
-theme models (see section <a href="repository_18.html#SEC95">trunk/Identity/Themes/Models</a>) and artistic
-motifs (see section <a href="repository_25.html#SEC132">trunk/Identity/Themes/Motifs</a>).
-</p></blockquote>
-
-<p>Assuming that both theme models and theme motifs are ready for using,
-the initial translation entry to produce Firstboot artworks would look
-like the following:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
-|-- Tpl
-|   `-- splash-small.sed
-`-- firstboot-left.sed
-</pre>
-<p>With the translation entry above, <code>centos-art</code> command is able
-to produce the image <tt>`firstboot-left.png'</tt> only. To produce
-<tt>`splash-small.png'</tt> images for major releases (e.g., 3, 4, 5, and
-6) of CentOS distribution we need to produce the release-specific
-translation files using the <code>centos-art</code> script as following:
-</p>
-<pre class="verbatim">centos-art render --entry=/home/centos/artwork/trunk/Translations/Identity/Themes/BootUp/Firstboot --filter='3,4,5,6'
-</pre>
-<p>The above command produces the following translation entiry:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
-|-- 3
-|   `-- splash-small.sed
-|-- 4
-|   `-- splash-small.sed
-|-- 5
-|   `-- splash-small.sed
-|-- 6
-|   `-- splash-small.sed
-|-- Tpl
-|   `-- splash-small.sed
-`-- firstboot-left.sed
-</pre>
-<p>At this point <code>centos-art</code> is able to produce the Firstboot
-artwork images for major releases of CentOS distribution. To add new
-release-specific translation files, run the translation rendering
-command with the release number you want to produce translation files
-for in the <samp>`--filter='release-number''</samp> argument.
-</p>
-
-<a name="SEC299"></a>
-<h4 class="subsubsection"> 3.51.2.4 Template Translation Files </h4>
-
-<p>Template translation files are translation files stored inside
-translation template directory. Template translation files are used by
-<code>centos-art</code> script to produce specific translation files
-only. Template translation files may be empty or contain
-<code>sed</code>'s replacement commands. If template translation files
-are empty files, the final specifc translation file built from it
-contains release-specific replacement commands only. For example,
-see the following translation entry:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
-|-- 3
-|   `-- splash-small.sed
-|-- 4
-|   `-- splash-small.sed
-|-- 5
-|   `-- splash-small.sed
-|-- 6
-|   `-- splash-small.sed
-|-- Tpl
-|   `-- splash-small.sed    &lt;-- template translation file.
-`-- firstboot-left.sed
-</pre>
-<p>In the above exmaple, the <tt>`splash-small.sed'</tt> file is a template
-translation file and looks like:
-</p>
-<pre class="verbatim"># -------------------------------------
-# $Id: splash-small.sed 94 2010-09-18 10:59:42Z al $
-# -------------------------------------
-</pre>
-<p>In the above template translation file there are three comments lines,
-but when you render it, the <code>centos-art</code> adds the
-release-specific replacement commands. In our Firstboot example, after
-rendering Firstboot translation entry, the <tt>`splash-small.sed'</tt>
-translation file specific to CentOS 5, looks like the following:
-</p>
-<pre class="verbatim"># Warning: Do not modify this file directly. This file is created
-# automatically using 'centos-art' command line interface.  Any change
-# you do in this file will be lost the next time you update
-# translation files using 'centos-art' command line interface. If you
-# want to improve the content of this translation file, improve its
-# template file instead and run the 'centos-art' command line
-# interface later to propagate your changes.
-# -------------------------------------
-# $Id: splash-small.sed 94 2010-09-18 10:59:42Z al $
-# -------------------------------------
-
-# Release number information.
-s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
-s!=MINOR_RELEASE=!0!g
-s!=MAJOR_RELEASE=!5!g
-</pre>
-<p>If template translation files are not empty, replacement commands
-inside template translation files are preserved inside
-release-specific translation files.  For example, consider the English
-template translation file of Anaconda progress welcome slide.  The
-translation template directory structure looks like the following:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress/
-`-- Tpl
-    `-- en
-        `-- 01-welcome.sed
-</pre>
-<p>and if we render translation files for CentOS 4 and CentOS 5 major
-releases, the translation entry would look like the following:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress/
-|-- 4
-|   `-- en
-|       `-- 01-welcome.sed
-|-- 5
-|   `-- en
-|       `-- 01-welcome.sed
-`-- Tpl
-    `-- en
-        `-- 01-welcome.sed
-</pre>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Release-specific translation directories preserve
-template translation directory structure and file names.
-</p></blockquote>
-
-<p>In the example above, the template translation file looks like the
-following:
-</p>
-<pre class="verbatim"># ------------------------------------------------------------
-# $Id: 01-welcome.sed 94 2010-09-18 10:59:42Z al $
-# ------------------------------------------------------------
-s/=TITLE=/Welcome to CentOS =MAJOR_RELEASE= !/
-s/=TEXT1=/Thank you for installing CentOS =MAJOR_RELEASE=./
-s/=TEXT2=/CentOS is an enterprise-class Linux Distribution derived from sources freely provided to the public by a prominent North American Enterprise Linux vendor./
-s/=TEXT3=/CentOS conforms fully with the upstream vendors redistribution policy and aims to be 100% binary compatible. CentOS mainly changes packages to remove upstream vendor branding and artwork./
-s/=TEXT4=//
-s/=TEXT5=//
-s/=TEXT6=//
-s!=URL=!http://www.centos.org/!
-</pre>
-<p>and, after render the translation entry, specific translation files
-look like the following:
-</p>
-<pre class="verbatim"># Warning: Do not modify this file directly. This file is created
-# automatically using 'centos-art' command line interface.  Any change
-# you do in this file will be lost the next time you update
-# translation files using 'centos-art' command line interface. If you
-# want to improve the content of this translation file, improve its
-# template file instead and run the 'centos-art' command line
-# interface later to propagate your changes.
-# ------------------------------------------------------------
-# $Id: 01-welcome.sed 94 2010-09-18 10:59:42Z al $
-# ------------------------------------------------------------
-
-s/=TITLE=/Welcome to CentOS =MAJOR_RELEASE= !/
-s/=TEXT1=/Thank you for installing CentOS =MAJOR_RELEASE=./
-s/=TEXT2=/CentOS is an enterprise-class Linux Distribution derived from sources freely provided to the public by a prominen t North American Enterprise Linux vendor./
-s/=TEXT3=/CentOS conforms fully with the upstream vendors redistribution policy and aims to be 100% binary compatible. Cent OS mainly changes packages to remove upstream vendor branding and artwork./
-s/=TEXT4=//
-s/=TEXT5=//
-s/=TEXT6=//
-s!=URL=!http://www.centos.org/!
-
-# Release number information.
-s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
-s!=MINOR_RELEASE=!0!g
-s!=MAJOR_RELEASE=!5!g
-</pre>
-<p>In the example above, relevant lines begin with the <samp>`s'</samp> word
-followed by a separation character (e.g., <samp>`/'</samp>, <samp>`!'</samp>, etc.).
-These lines have the following format:
-</p>
-<pre class="verbatim">s/REGEXP/REPLACEMENT/FLAGS
-</pre>
-<p>The <samp>`/'</samp> characters may be uniformly replaced by any other single
-character within any given <code>s</code> command.  The <samp>`/'</samp>
-character (or whatever other character is used in its stead) can
-appear in the REGEXP or REPLACEMENT only if it is preceded by a
-<samp>`\'</samp> character.
-</p>
-<p>The <code>s</code> command is probably the most important in
-<code>sed</code> and has a lot of different options.  Its basic concept
-is simple: the <code>s</code> command attempts to match the pattern space
-against the supplied REGEXP; if the match is successful, then that
-portion of the pattern space which was matched is replaced with
-REPLACEMENT.
-</p>
-<p>In the context of our translation files, the REGEXP is where you
-define translation markers and REPLACEMENT where you define the
-translation text you want to have after artworks rendering.  Sometimes
-we use the FLAG component with the <samp>`g'</samp> command to apply the
-replacements globally.
-</p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> More information about how to use <code>sed</code>'s
-replacement commands and flags is available in <code>sed</code>'s
-documentation manual. To read sed's documentation manual type the
-following command: 
-</p><pre class="verbatim">info sed
-</pre></blockquote>
-
-<p>Inside translation files, you can use translation markers not only
-inside the REGEXP but in the REPLACEMENT too. In order for this
-configuration to work, the REPLACEMENT of translation markers needs to
-be define <em>after</em> its definition. For example, see in the
-release-specific translation file above, how the
-<samp>`s!=MAJOR_RELASE=!5!g'</samp> replacement command is defined
-<em>after</em> <samp>`=MAJOR_RELASE='</samp> translation marker definition in
-the REPLACEMENT of <samp>`=TITLE='</samp> translation marker replacement
-command.
-</p>
-
-<a name="SEC300"></a>
-<h4 class="subsubsection"> 3.51.2.5 Common Translation Files </h4>
-
-<p>Common translation files contain common translations or no
-translation at all for their related artworks.  They are in the root
-directory of the translation entry. Common translation files create
-common artworks for all major releases of CentOS Distribution. 
-</p>
-<p>Translation entries, with common translation files inside, look like
-the following:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
-|-- 3
-|   `-- splash-small.sed
-|-- 4
-|   `-- splash-small.sed
-|-- 5
-|   `-- splash-small.sed
-|-- 6
-|   `-- splash-small.sed
-|-- Tpl
-|   `-- splash-small.sed
-`-- firstboot-left.sed      &lt;-- common translation file.
-</pre>
-
-<a name="SEC301"></a>
-<h4 class="subsubsection"> 3.51.2.6 Specific Translation Files </h4>
-
-<p>Specific translation files contain specific translations for their
-related artworks. Specific translation files are not in the root
-directory of the translation entry, but inside directories which
-describe the type of translation they are doing. Specific translation
-files are produced automatically using the <code>centos-art</code>
-script.
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
-|-- 3
-|   `-- splash-small.sed    &lt;-- CentOS 3 specific translation file.
-|-- 4
-|   `-- splash-small.sed    &lt;-- CentOS 4 specific translation file.
-|-- 5
-|   `-- splash-small.sed    &lt;-- CentOS 5 specific translation file.
-|-- 6
-|   `-- splash-small.sed    &lt;-- CentOS 6 specific translation file.
-|-- Tpl
-|   `-- splash-small.sed
-`-- firstboot-left.sed
-</pre>
-
+<a name="trunk-Translations-Identity"></a>
 <a name="SEC302"></a>
-<h4 class="subsubsection"> 3.51.2.7 Translation Rendering </h4>
+<h2 class="section"> 3.51 trunk/Translations/Identity </h2>
 
-<p>When rendering translations, the <code>centos-art</code> script checks
-the translation entry to verify that it has a translation template
-directory inside. The translation template directory (<tt>`Tpl/'</tt>)
-contains common translation files used to build release-specific
-translation files. If the translation template directory doesn't exist
-inside the translation entry the translation rendering fails. In this
-case the <code>centos-art</code> script outputs a message and quits
-script execution.
-</p>
 
 <a name="SEC303"></a>
-<h4 class="subsubsection"> 3.51.2.8 Translation (Pre-)Rendering Configuration Scripts </h4>
+<h3 class="subsection"> 3.51.1 Goals </h3>
 
-<p>When the <code>centos-art</code> script finds a translation template
-directory inside translation entry, it looks for translations
-pre-rendering configuration scripts for that translation entry.
-Translation pre-rendering configuration scripts let you extend
-translation's default functionality (described below). 
-</p>
-<p>Translation pre-rendering configuration scripts are stored under
-<tt>`trunk/Scripts'</tt> directory, specifically under the appropriate
-language implementation. If you are using <code>centos-art</code> Bash's
-implementation, the translation pre-rendering scripts are store in the
-<tt>`trunk/Scripts/Bash/Config'</tt> location; if you are using
-<code>centos-art</code> Python's implementation, then translation
-pre-rendering scripts are stored in the
-<tt>`trunk/Scripts/Python/Config'</tt> location, and so on for other
-implementations.
-</p>
-<p>Bash's translation pre-rendering configuration scripts look like the
-following:
-</p>
-<pre class="verbatim">#!/bin/bash
-#
-# render_loadConfig.sh -- brief description here.
-#
-# Copyright (C) YEAR YOURNAME
-# 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
-# USA.
-# 
-# ----------------------------------------------------------------------
-# $Id: splash-small.sed 94 2010-09-18 10:59:42Z al $
-# ----------------------------------------------------------------------
+<ul class="toc">
+<li> ...
+</li></ul>
 
-function render_loadConfig {
-...
-}
-</pre>
-<p>Translation pre-rendering scripts are function scripts loaded and
-executed when rendering a translation entry. Translation pre-rendering
-scripts are loaded using the translation entry being rendered as
-reference. For example, suppose you are using the
-<code>centos-art</code> Bash's implementation, and you are rendering
-translations for CentOS brands, in this situation the translation
-entry would be:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/Brands
-</pre>
-<p>and the entry inside the translation pre-rendering configuration
-structure would be:
-</p>
-<pre class="verbatim">trunk/Scripts/Bash/Config/Identity/Brands
-</pre>
-<p>Once the <code>centos-art</code> script detects that translation
-pre-rendering configuration directory exists, the <code>centos-art</code>
-script looks for the translation pre-rendering configuration file.  If
-the translation pre-rendering configuration file exists, it is loaded
-and executed.  Once the translation pre-rendering configuration file
-has been executed the translation rendering process is over, and so
-the script execution.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Translation pre-rendering configuration files have the
-following form:
-</p><pre class="verbatim">render.conf.extension
-</pre><p>where <samp>`extension'</samp> refers the programming language implementation
-you are using. For example, <samp>`sh'</samp> for Bash's, <samp>`py'</samp> for
-Python's, <samp>`pl'</samp> for Perl's, and so on for other implementations.
-</p></blockquote>
-
-<p>As we are using Bash implementation to describe the translation
-pre-rendering configuration example, the translation pre-rendering
-configuration file that <code>centos-art</code> looks for, inside the
-above translation pre-rendering configuration directory, is
-<tt>`render.conf.sh'</tt>.
-</p>
 
 <a name="SEC304"></a>
-<h4 class="subsubsection"> 3.51.2.9 Translation Rendering Default Functionality </h4>
+<h3 class="subsection"> 3.51.2 Description </h3>
 
-<p>In the other hand, if the translation pre-rendering configuration file
-doesn't exist, or it isn't written as function script, the
-<code>centos-art</code> script ignore translation pre-rendering
-configuration functionality and passes to render translation using
-default functionality instead.
-</p>
-<p>The translation rendering default functionality takes template
-translation directory structure, duplicates it for each release number
-specified in the <samp>`--filter='release-number''</samp> argument and
-produces release-specific directories. As part of template translation
-duplication process take place, the <code>centos-art</code> script adds
-release-specific replacement commands to each specific translation
-file inside release-specific directories. As result, specific
-translation files, inside release-specific directories, contain
-template translation replacement commands <em>plus</em>,
-release-specific replacement commands.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Release-specific replacement commands are standardized
-inside <code>centos-art</code> script using predifined release
-translation markers. Release translation markers are described in the
-translation marker section
-(see <a href="#trunk_003aTranslations_003aTranslationMarkers">Translation Markers</a>).
-</p></blockquote>
-
+<ul class="toc">
+<li> ...
+</li></ul>
 
 
 <a name="SEC305"></a>
 <h3 class="subsection"> 3.51.3 Usage </h3>
 
-<dl compact="compact">
-<dt> <samp>`centos-art render 'path/to/dir''</samp> </dt>
-<dd>
-<p>When <samp>`path/to/dir'</samp> refers one directory under
-<samp>`trunk/Translations'</samp>, this command orverwrites available
-translation files using translation templates.
-</p>
-</dd>
-<dt> <samp>`centos-art render 'path/to/dir' --filter='pattern''</samp> </dt>
-<dd>
-<p>When <samp>`path/to/dir'</samp> refers one directory under
-<tt>`trunk/Translations'</tt>, this command renders release-specific
-translation files as you specify in the <samp>`--filter='pattern''</samp>
-argument. In this case, <samp>`pattern'</samp> not a regular expression but an
-number (e.g., <samp>`5'</samp>) or a list of numbers separated by commas
-(e.g., <samp>`3,4,5,6'</samp>) that specify the major release of CentOS
-distribution you want to render translations for.  
-</p>
-</dd>
-</dl>
+<ul class="toc">
+<li> ...
+</li></ul>
 
 
 <a name="SEC306"></a>
 <h3 class="subsection"> 3.51.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_56.html#SEC312">3.53 trunk/Translations/Identity/Brands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_55.html#SEC307">3.52 trunk/Translations/Identity/Brands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_58.html#SEC325">3.55 trunk/Translations/Identity/Fonts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_57.html#SEC320">3.54 trunk/Translations/Identity/Fonts</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_59.html#SEC331">3.56 trunk/Translations/Identity/Models</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_58.html#SEC326">3.55 trunk/Translations/Identity/Models</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_60.html#SEC336">3.57 trunk/Translations/Identity/Release</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_59.html#SEC331">3.56 trunk/Translations/Identity/Release</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_61.html#SEC341">3.58 trunk/Translations/Identity/Themes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_60.html#SEC336">3.57 trunk/Translations/Identity/Themes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_63.html#SEC351">3.60 trunk/Translations/Identity/Widgets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top"><a href="repository_4.html#SEC4">3.1 trunk/Identity</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -722,12 +126,12 @@ distribution you want to render translations for.
 <td valign="middle" align="left">[<a href="repository_55.html#SEC307" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC293" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC302" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC356" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 30 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>October, 31 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
