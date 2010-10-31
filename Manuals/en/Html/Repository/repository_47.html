@@ -231,7 +231,6 @@ you also need to set the <var>TZ</var> environment variable inside
 </pre><p>This is required in order for your terminal to display the correct
 time information of your zone, taking UTC representation as reference.
 </p></blockquote>
-
 </dd>
 </dl>
 
@@ -248,6 +247,10 @@ their installation. When installing packages, the <tt>`centos-art.sh'</tt>
 script uses the <code>yum</code> application in order to achieve the
 task.
 </p>
+<p>In case all packages required by <tt>`centos-art.sh'</tt> script are
+already installed in your workstation, the message <samp>`The required
+packages are already installed.'</samp> is output for you to know. 
+</p>
 </dd>
 <dt> <samp>`centos-art verify --links'</samp></dt>
 <dd><p>This command verifies required links your workstation needs in order
@@ -255,6 +258,10 @@ to run the <code>centos-art</code> command correctly. If there are
 missing links, the <tt>`centos-art.sh'</tt> script asks you to confirm
 their creation. When creating links, the <tt>`centos-art.sh'</tt> script
 uses the <code>ln</code> application in order to achieve the task.
+</p>
+<p>In case all links required by <tt>`centos-art.sh'</tt> script are already
+created in your workstation, the message <samp>`The required links are
+already installed.'</samp> is output for you to know. 
 </p>
 </dd>
 <dt> <samp>`centos-art verify --environment'</samp></dt>

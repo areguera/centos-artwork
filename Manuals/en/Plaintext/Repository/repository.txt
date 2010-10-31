@@ -3090,7 +3090,6 @@ following environment variables:
           correct time information of your zone, taking UTC
           representation as reference.
 
-
 3.44.3 Usage
 ------------
 
@@ -3101,12 +3100,20 @@ following environment variables:
      their installation. When installing packages, the `centos-art.sh'
      script uses the `yum' application in order to achieve the task.
 
+     In case all packages required by `centos-art.sh' script are
+     already installed in your workstation, the message `The required
+     packages are already installed.' is output for you to know.
+
 `centos-art verify --links'
      This command verifies required links your workstation needs in
      order to run the `centos-art' command correctly. If there are
      missing links, the `centos-art.sh' script asks you to confirm
      their creation. When creating links, the `centos-art.sh' script
      uses the `ln' application in order to achieve the task.
+
+     In case all links required by `centos-art.sh' script are already
+     created in your workstation, the message `The required links are
+     already installed.' is output for you to know.
 
 `centos-art verify --environment'
      This command verifies required environment variables your
@@ -4225,23 +4232,23 @@ Index
 *****
 
 branches:                                      See 1.        (line  372)
-Common translation files:                      See 3.48.2.5. (line 3649)
-How to render brands' translation files:       See 3.50.3.   (line 3954)
-How to render fonts' translation files:        See 3.52.3.   (line 4031)
-How to render translation files:               See 3.48.3.   (line 3819)
-Specific translation files:                    See 3.48.2.6. (line 3674)
+Common translation files:                      See 3.48.2.5. (line 3656)
+How to render brands' translation files:       See 3.50.3.   (line 3961)
+How to render fonts' translation files:        See 3.52.3.   (line 4038)
+How to render translation files:               See 3.48.3.   (line 3826)
+Specific translation files:                    See 3.48.2.6. (line 3681)
 tags:                                          See 2.        (line  375)
-Template translation files:                    See 3.48.2.4. (line 3479)
-Translation brands file names:                 See 3.50.2.1. (line 3911)
-Translation configuration scripts:             See 3.48.2.8. (line 3708)
-Translation entries:                           See 3.48.2.1. (line 3295)
-Translation files:                             See 3.48.2.3. (line 3411)
-Translation markers:                           See 3.48.2.2. (line 3376)
-Translation paths:                             See 3.48.2.1. (line 3295)
+Template translation files:                    See 3.48.2.4. (line 3486)
+Translation brands file names:                 See 3.50.2.1. (line 3918)
+Translation configuration scripts:             See 3.48.2.8. (line 3715)
+Translation entries:                           See 3.48.2.1. (line 3302)
+Translation files:                             See 3.48.2.3. (line 3418)
+Translation markers:                           See 3.48.2.2. (line 3383)
+Translation paths:                             See 3.48.2.1. (line 3302)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 3708)
-Translation rendering:                         See 3.48.2.7. (line 3697)
-Translation rendering default functionality:   See 3.48.2.9. (line 3794)
+                                                             (line 3715)
+Translation rendering:                         See 3.48.2.7. (line 3704)
+Translation rendering default functionality:   See 3.48.2.9. (line 3801)
 trunk:                                         See 3.        (line  378)
 trunk Identity:                                See 3.1.      (line  381)
 trunk Identity Brands:                         See 3.2.      (line  801)
@@ -4293,21 +4300,21 @@ trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2707)
 trunk Scripts Bash Functions Shell:            See 3.42.     (line 2885)
 trunk Scripts Bash Functions Svg:              See 3.43.     (line 2906)
 trunk Scripts Bash Functions Verify:           See 3.44.     (line 2950)
-trunk Scripts Bash Locale:                     See 3.45.     (line 3124)
-trunk Scripts Perl:                            See 3.46.     (line 3208)
-trunk Scripts Python:                          See 3.47.     (line 3225)
-trunk Translations:                            See 3.48.     (line 3246)
-trunk Translations Identity:                   See 3.49.     (line 3849)
-trunk Translations Identity Brands:            See 3.50.     (line 3870)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 3965)
-trunk Translations Identity Fonts:             See 3.52.     (line 3980)
-trunk Translations Identity Models:            See 3.53.     (line 4047)
-trunk Translations Identity Release:           See 3.54.     (line 4062)
-trunk Translations Identity Themes:            See 3.55.     (line 4077)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4092)
+trunk Scripts Bash Locale:                     See 3.45.     (line 3131)
+trunk Scripts Perl:                            See 3.46.     (line 3215)
+trunk Scripts Python:                          See 3.47.     (line 3232)
+trunk Translations:                            See 3.48.     (line 3253)
+trunk Translations Identity:                   See 3.49.     (line 3856)
+trunk Translations Identity Brands:            See 3.50.     (line 3877)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 3972)
+trunk Translations Identity Fonts:             See 3.52.     (line 3987)
+trunk Translations Identity Models:            See 3.53.     (line 4054)
+trunk Translations Identity Release:           See 3.54.     (line 4069)
+trunk Translations Identity Themes:            See 3.55.     (line 4084)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4099)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 4113)
-trunk Translations Identity Widgets:           See 3.58.     (line 4206)
+                                                             (line 4120)
+trunk Translations Identity Widgets:           See 3.58.     (line 4213)
 List of Figures
 ***************
 

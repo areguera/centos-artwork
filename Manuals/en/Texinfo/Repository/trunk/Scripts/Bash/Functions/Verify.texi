@@ -150,7 +150,6 @@ export TZ=UTC
 This is required in order for your terminal to display the correct
 time information of your zone, taking UTC representation as reference.
 @end quotation
-
 @end table
 
 @subsection Usage
@@ -164,12 +163,20 @@ their installation. When installing packages, the @file{centos-art.sh}
 script uses the @command{yum} application in order to achieve the
 task.
 
+In case all packages required by @file{centos-art.sh} script are
+already installed in your workstation, the message @samp{The required
+packages are already installed.} is output for you to know. 
+
 @item centos-art verify --links
 This command verifies required links your workstation needs in order
 to run the @command{centos-art} command correctly. If there are
 missing links, the @file{centos-art.sh} script asks you to confirm
 their creation. When creating links, the @file{centos-art.sh} script
 uses the @command{ln} application in order to achieve the task.
+
+In case all links required by @file{centos-art.sh} script are already
+created in your workstation, the message @samp{The required links are
+already installed.} is output for you to know. 
 
 @item centos-art verify --environment
 This command verifies required environment variables your workstation
