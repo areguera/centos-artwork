@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on October, 31 2010 by texi2html 1.76 -->
+<!-- Created on November, 1 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -253,16 +253,29 @@ packages are already installed.'</samp> is output for you to know.
 </p>
 </dd>
 <dt> <samp>`centos-art verify --links'</samp></dt>
-<dd><p>This command verifies required links your workstation needs in order
-to run the <code>centos-art</code> command correctly. If there are
-missing links, the <tt>`centos-art.sh'</tt> script asks you to confirm
-their creation. When creating links, the <tt>`centos-art.sh'</tt> script
-uses the <code>ln</code> application in order to achieve the task.
+<dd><p>This function verifies required links your workstation needs in order
+to run the centos-art command correctly.  If any required link is
+missing, the <code>centos-art.sh</code> script asks you to confirm their
+installation. To install required links, the <code>centos-art.sh</code>
+script uses the <code>ln</code> command.
 </p>
 <p>In case all links required by <tt>`centos-art.sh'</tt> script are already
 created in your workstation, the message <samp>`The required links are
 already installed.'</samp> is output for you to know. 
 </p>
+<p>In case a reuglar file exists with the same name of a required link,
+the <tt>`centos-art.sh'</tt> script outputs the <samp>`already exists as
+regular file.'</samp> message when listing required links that will be
+installed. Of course, as there is already a regular file where must be
+a link, no link is created. In such cases the <tt>`centos-art.sh'</tt>
+script will fall into a continue installation request for that missing
+link.  To end this continue request you can answer <samp>`No'</samp>, or just
+remove the existent regular file to let <tt>`centos-art.sh'</tt> script
+install the link.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Avoid regular file duplications inside your workstation.
+</p></blockquote>
+
 </dd>
 <dt> <samp>`centos-art verify --environment'</samp></dt>
 <dd><p>This command verifies required environment variables your workstation
@@ -293,7 +306,7 @@ nothing else happens.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>October, 31 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 1 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

@@ -168,15 +168,29 @@ already installed in your workstation, the message @samp{The required
 packages are already installed.} is output for you to know. 
 
 @item centos-art verify --links
-This command verifies required links your workstation needs in order
-to run the @command{centos-art} command correctly. If there are
-missing links, the @file{centos-art.sh} script asks you to confirm
-their creation. When creating links, the @file{centos-art.sh} script
-uses the @command{ln} application in order to achieve the task.
+This function verifies required links your workstation needs in order
+to run the centos-art command correctly.  If any required link is
+missing, the @command{centos-art.sh} script asks you to confirm their
+installation. To install required links, the @command{centos-art.sh}
+script uses the @command{ln} command.
 
 In case all links required by @file{centos-art.sh} script are already
 created in your workstation, the message @samp{The required links are
 already installed.} is output for you to know. 
+
+In case a reuglar file exists with the same name of a required link,
+the @file{centos-art.sh} script outputs the @samp{already exists as
+regular file.} message when listing required links that will be
+installed. Of course, as there is already a regular file where must be
+a link, no link is created. In such cases the @file{centos-art.sh}
+script will fall into a continue installation request for that missing
+link.  To end this continue request you can answer @samp{No}, or just
+remove the existent regular file to let @file{centos-art.sh} script
+install the link.
+
+@quotation
+@strong{Tip} Avoid regular file duplications inside your workstation.
+@end quotation
 
 @item centos-art verify --environment
 This command verifies required environment variables your workstation
