@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# verify_doPackageInstall.sh -- This function receives a list of
-# missing packages and installs them using sudo yum.
+# verify_doLinkReport.sh -- This function outputs information about
+# missing links that need to be installed and a confirmation question
+# for users to accept the installation action. 
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -24,16 +25,24 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doPackageInstall {
+function verify_doLinkReport {
 
-    # Verify `yum' command existence.
-    cli_checkFiles '/usr/bin/yum' 'f' '' '--quiet'
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "`gettext "The yum package manager is not installed."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    local LINK=''
+    local LINKS_MISSING_MAX=0
 
-    # Use sudo to install packages in your system through yum.
-    sudo yum install ${PACKAGES_MISSING[*]}
+    # Define max number of missing links.
+    LINKS_MISSING_MAX=${#LINKS_MISSING[*]}
+
+    # Output list header.
+    cli_printMessage "`ngettext "The following link will be installed" \
+        "The following links will be installed" "$LINKS_MISSING_MAX"`:"
+
+    # Output list body.
+    for LINK in ${LINKS_MISSING[@]};do
+        cli_printMessage "${LINK}" 'AsResponseLine' 
+    done
+
+    # Request confirmation for further link installation.
+    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
 
 }

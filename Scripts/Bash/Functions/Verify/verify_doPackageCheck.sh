@@ -54,7 +54,7 @@ function verify_doPackageCheck {
     # In there is no missing package, end script execution with a
     # descriptive output.
     if [[ ${#PACKAGES_MISSING[*]} -eq 0 ]];then
-        cli_printMessage "`gettext "There are not missing packages."`"
+        cli_printMessage "`gettext "The required packages are already installed."`"
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 

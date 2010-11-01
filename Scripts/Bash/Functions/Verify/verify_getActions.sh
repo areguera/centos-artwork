@@ -32,12 +32,15 @@ function verify_getActions {
             ;;
 
         --links )
-            verify_pathToCli
-            verify_pathToFonts
-            verify_pathToInkscape
+            verify_doLinks
             ;;
 
         --environment )
+            ;;
+
+        --all )
+            verify_doPackages
+            verify_doLinks
             ;;
 
         * )
