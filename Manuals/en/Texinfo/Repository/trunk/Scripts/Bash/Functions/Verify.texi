@@ -101,11 +101,10 @@ functionality of @file{centos-art.sh} script doesn't modify your
 The ``verify'' functionality of @file{centos-art.sh} script evaluates
 the following environment variables:
 
-@table @strong
-@item Default text editor (@var{EDITOR})
+@table @var
+@item EDITOR
 
-The @var{EDITOR} environment variable defines your user session
-default text editor.
+Default text editor.
 
 If @var{EDITOR} environment variable is not set ---or it uses one
 value other than @file{/usr/bin/vim}, @file{/usr/bin/emacs}, or
@@ -116,10 +115,9 @@ Default text editor is used by @file{centos-art.sh} script whenever it
 needs to edit text-based files (e.g., subversion's pre-commit
 messages, translation files, configuration files, script files, etc.)
 
-@item Default time representation (@var{TZ})
+@item TZ
 
-The @var{TZ} environment variable defines your user session default
-time zone representation.  
+Default time zone representation.
 
 Time representation inside repository server is set to Coordinated
 Universal Time (UTC).  Time represetation inside repository working
@@ -150,6 +148,23 @@ export TZ=UTC
 This is required in order for your terminal to display the correct
 time information of your zone, taking UTC representation as reference.
 @end quotation
+
+@item TEXTDOMAIN
+
+Default domain used to retrieve translated messages.  This value is
+set in @file{initFunctions.sh} and shouldn't be changed.
+
+@item TEXTDOMAINDIR
+
+Default directory used to retrieve translated messages. This value is
+set in @file{initFunctions.sh} and shouldn't be changed.
+
+@item LANG
+
+Default locale information. This value is set when you start your
+session and can be changed using the ``locale'' functionality of
+@file{centos-art.sh} script (@pxref{trunk Scripts Bash Functions
+Locale}, for more information).
 @end table
 
 @subsection Usage
@@ -189,11 +204,15 @@ remove the existent regular file to let @file{centos-art.sh} script
 install the link on its place.
 
 @item centos-art verify --environment
-This command verifies required environment variables your workstation
-needs in order to run @command{centos-art} command correctly. If
-environment variables evaluated by @file{centos-art.sh} script are
-emtpy, the @file{centos-art.sh} script informs you about it and
-nothing else happens.
+@itemx centos-art verify --environment --filter='regex'
+This command outputs a brief description of environment variables used
+by @file{centos-art.sh} script. 
+
+If @samp{--filter} option is provided, output is reduced as defined in
+the @samp{regex} regular expression value. If @samp{--filter} option
+is specified but @samp{regex} value is not, the @file{centos-art.sh}
+script outputs information as if @samp{--filter} option had not been
+provided at all.
 @end table
 
 @subsection See also

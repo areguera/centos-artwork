@@ -188,10 +188,9 @@ functionality of <tt>`centos-art.sh'</tt> script doesn't modify your
 the following environment variables:
 </p>
 <dl compact="compact">
-<dt> <strong>Default text editor (<var>EDITOR</var>)</strong></dt>
+<dt> <var>EDITOR</var></dt>
 <dd>
-<p>The <var>EDITOR</var> environment variable defines your user session
-default text editor.
+<p>Default text editor.
 </p>
 <p>If <var>EDITOR</var> environment variable is not set --or it uses one
 value other than <tt>`/usr/bin/vim'</tt>, <tt>`/usr/bin/emacs'</tt>, or
@@ -203,10 +202,9 @@ needs to edit text-based files (e.g., subversion's pre-commit
 messages, translation files, configuration files, script files, etc.)
 </p>
 </dd>
-<dt> <strong>Default time representation (<var>TZ</var>)</strong></dt>
+<dt> <var>TZ</var></dt>
 <dd>
-<p>The <var>TZ</var> environment variable defines your user session default
-time zone representation.  
+<p>Default time zone representation.
 </p>
 <p>Time representation inside repository server is set to Coordinated
 Universal Time (UTC).  Time represetation inside repository working
@@ -231,7 +229,26 @@ you also need to set the <var>TZ</var> environment variable inside
 </pre><p>This is required in order for your terminal to display the correct
 time information of your zone, taking UTC representation as reference.
 </p></blockquote>
+
 </dd>
+<dt> <var>TEXTDOMAIN</var></dt>
+<dd>
+<p>Default domain used to retrieve translated messages.  This value is
+set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
+</p>
+</dd>
+<dt> <var>TEXTDOMAINDIR</var></dt>
+<dd>
+<p>Default directory used to retrieve translated messages. This value is
+set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
+</p>
+</dd>
+<dt> <var>LANG</var></dt>
+<dd>
+<p>Default locale information. This value is set when you start your
+session and can be changed using the &quot;locale&quot; functionality of
+<tt>`centos-art.sh'</tt> script (see section <a href="repository_41.html#SEC220">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
+</p></dd>
 </dl>
 
 
@@ -275,11 +292,15 @@ install the link on its place.
 </p>
 </dd>
 <dt> <samp>`centos-art verify --environment'</samp></dt>
-<dd><p>This command verifies required environment variables your workstation
-needs in order to run <code>centos-art</code> command correctly. If
-environment variables evaluated by <tt>`centos-art.sh'</tt> script are
-emtpy, the <tt>`centos-art.sh'</tt> script informs you about it and
-nothing else happens.
+<dt> <samp>`centos-art verify --environment --filter='regex''</samp></dt>
+<dd><p>This command outputs a brief description of environment variables used
+by <tt>`centos-art.sh'</tt> script. 
+</p>
+<p>If <samp>`--filter'</samp> option is provided, output is reduced as defined in
+the <samp>`regex'</samp> regular expression value. If <samp>`--filter'</samp> option
+is specified but <samp>`regex'</samp> value is not, the <tt>`centos-art.sh'</tt>
+script outputs information as if <samp>`--filter'</samp> option had not been
+provided at all.
 </p></dd>
 </dl>
 
