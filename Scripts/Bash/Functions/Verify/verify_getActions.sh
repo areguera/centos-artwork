@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# verify_getActions.sh -- This function defines prepare actions.
+# verify_getActions.sh -- This function defines the ``verify''
+# command-line interface of centos-art.sh script.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -36,11 +37,7 @@ function verify_getActions {
             ;;
 
         --environment )
-            ;;
-
-        --all )
-            verify_doPackages
-            verify_doLinks
+            verify_doEnvironment 
             ;;
 
         * )
@@ -50,4 +47,3 @@ function verify_getActions {
     esac
 
 }
-
