@@ -56,27 +56,27 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_40.html#SEC219" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC221" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_40.html#SEC214" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC216" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC346" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC346" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions-Locale"></a>
-<a name="SEC220"></a>
+<a name="SEC215"></a>
 <h2 class="section"> 3.38 trunk/Scripts/Bash/Functions/Locale </h2>
 
 
-<a name="SEC221"></a>
+<a name="SEC216"></a>
 <h3 class="subsection"> 3.38.1 Goals </h3>
 
 <ul class="toc">
@@ -84,34 +84,99 @@ ul.toc {list-style: none}
 </li></ul>
 
 
-<a name="SEC222"></a>
+<a name="SEC217"></a>
 <h3 class="subsection"> 3.38.2 Description </h3>
 
+<p>This command looks for <samp>`.sh'</samp> files inside Bash directory and
+extracts translatable strings from files, using <code>xgettext</code>
+command, in order to create a portable object template
+(<tt>`centos-art.sh.pot'</tt>) file for them.
+</p>
+<p>With the <tt>`centos-art.sh.pot'</tt> file up to date, the
+<code>centos-art</code> command removes the temporal list of files sotred
+inside <tt>`/tmp'</tt> directory and checks the current language of your
+user's session to create a portable object file for it, in the
+location <tt>`$CLI_LANG/$CLI_LANG.po'</tt>. 
+</p>
+<p>The <var>CLI_LANG</var> variable discribes the locale language used to
+output messages inside <code>centos-art</code> command. The locale
+language used inside <code>centos-art</code> command is taken from the
+<var>LANG</var> environment variable.  The <var>CLI_LANG</var> variable has the
+<samp>`LL_CC'</samp> format, where <samp>`LL'</samp> is a language code from the
+ISO-639 standard, and <samp>`CC'</samp> a country code from the ISO-3166
+standard.
+</p>
+<p>The <var>LANG</var> environment variable is set when you do log in to your
+system. If you are using a graphical session, change language to your
+native language and do login. That would set and exoprt the <var>LANG</var>
+environment variable to the correct value. On the other side, if you
+are using a text session edit your <tt>`~/.bash_profile'</tt> file to set
+and export the <var>LANG</var> environment variable to your native locale
+as defines the <code>locale -a</code> command output; do logout, and do
+login again.
+</p>
+<p>At this point, the <var>LANG</var> environment variable has the appropriate
+value you need, in order to translate <code>centos-art.sh</code> messages
+to your native language (the one set in <var>LANG</var> environment
+variable). 
+</p>
+<p>With the <tt>`$CLI_LANG/$CLI_LANG.po'</tt> file up to date, the
+<code>centos-art</code> opens it for you to update translation strings.
+The <code>centos-art</code> command uses the value of <var>EDITOR</var>
+environment variable to determine your favorite text editor. If no
+value is defined on <var>EDITOR</var>, the <tt>`/usr/bin/vim'</tt> text editor
+is used as default.
+</p>
+<p>When you finish PO file's edition and quit text editor, the
+<code>centos-art</code> command creates the related machine object in the
+location <tt>`$CLI_LANG/LC_MESSAGES/$TEXTDOMAIN.mo'</tt>.
+</p>
+<p>At this point, all translations you made in the PO file should be
+available to your language when runing <code>centos-art.sh</code> script. 
+</p>
+<p>In order to make the <code>centos-art.sh</code> internationalization, the
+<code>centos-art.sh</code> script was modified as described in the
+<code>gettext</code> info documentation (<code>info gettext</code>).  You
+can find such modifications in the following files:
+</p>
+<ul class="toc">
+<li> <tt>`trunk/Scripts/Bash/initFunctions.sh'</tt>
+</li><li> <tt>`trunk/Scripts/Bash/Functions/Help/cli_localeMessages.sh'</tt>
+</li><li> <tt>`trunk/Scripts/Bash/Functions/Help/cli_localeMessagesStatus.sh'</tt>
+</li></ul>
+
 <ul class="toc">
 <li> ...
 </li></ul>
 
 
-<a name="SEC223"></a>
+<a name="SEC218"></a>
 <h3 class="subsection"> 3.38.3 Usage </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
+<dl compact="compact">
+<dt> <samp>`centos-art locale --edit'</samp></dt>
+<dd><p>Use this command to translate command-line interface output messages
+in the current system locale you are using (as specified in <var>LANG</var>
+environment variable).
+</p></dd>
+<dt> <samp>`centos-art locale --list'</samp></dt>
+<dd><p>Use this command to see the command-line interface locale report.
+</p></dd>
+</dl>
 
 
-<a name="SEC224"></a>
+<a name="SEC219"></a>
 <h3 class="subsection"> 3.38.4 See also </h3>
 
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC223" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_42.html#SEC225" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC218" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_42.html#SEC220" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC220" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC346" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC215" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">

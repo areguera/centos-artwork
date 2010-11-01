@@ -56,57 +56,57 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_46.html#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC254" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_46.html#SEC247" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC249" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC346" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC346" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions-Verify"></a>
-<a name="SEC253"></a>
+<a name="SEC248"></a>
 <h2 class="section"> 3.44 trunk/Scripts/Bash/Functions/Verify </h2>
 
 
-<a name="SEC254"></a>
+<a name="SEC249"></a>
 <h3 class="subsection"> 3.44.1 Goals </h3>
 
 <p>This section exists to organize files related to <tt>`centos-art.sh'</tt>
-script &quot;verify&quot; functionality.  The &quot;verify&quot; functionality of
-<tt>`centos-art.sh'</tt> script helps you to verify the workstation
-configuration you are planning to use as host for your working copy of
-CentOS Artwork Repository.
+script <samp>`verify'</samp> functionality.  The <samp>`verify'</samp>
+functionality of <tt>`centos-art.sh'</tt> script helps you to verify the
+workstation configuration you are planning to use as host for your
+working copy of CentOS Artwork Repository.
 </p>
 
-<a name="SEC255"></a>
+<a name="SEC250"></a>
 <h3 class="subsection"> 3.44.2 Description </h3>
 
 <p>The first time you download CentOS Artwork Repository you need to
 configure your workstation in order to use <tt>`centos-art.sh'</tt>
 script.  These preliminar configurations are based mainly on auxiliar
 RPM packages installation, symbolic links creations, and environment
-variables definitions.  The &quot;verify&quot; functionality of
+variables definitions.  The <samp>`verify'</samp> functionality of
 <tt>`centos-art.sh'</tt> script guides you through this preliminar
 configuration process.  
 </p>
 <p>If this is the first time you run <code>centos-art</code> command, the
-appropriate way to use its &quot;verify&quot; functionality is not using the
-<code>centos-art</code> command directly, but the absolute path to
+appropriate way to use its <samp>`verify'</samp> functionality is not using
+the <code>centos-art</code> command directly, but the absolute path to
 <code>centos-art.sh</code> script instead (i.e.,
 <tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).  This is necessary
 because <code>centos-art</code> symbolic link, under <tt>`~/bin/'</tt>
 directory, has not been created yet.
 </p>
 
-<a name="SEC256"></a>
+<a name="SEC251"></a>
 <h4 class="subsubsection"> 3.44.2.1 Packages </h4>
 
 <p>Installation of auxiliar RPM packages provides the software required
@@ -131,7 +131,7 @@ installation functionality.  If your user isn't defined as a
 privileged user--at least to run <code>yum</code> commands-- inside
 <tt>`/etc/sudoers'</tt> configuration file, you will not be able to
 perform package installation tasks as set in <tt>`centos-art.sh'</tt>
-script &quot;verify&quot; functionality. 
+script <samp>`verify'</samp> functionality. 
 </p>
 <p>Setting sudo privileges to users is an administrative task you have to
 do by yourself. If you don't have experience with <code>sudo</code>
@@ -141,7 +141,7 @@ will be able to configure your users to have <code>sudo</code>
 privileges.
 </p>
 
-<a name="SEC257"></a>
+<a name="SEC252"></a>
 <h4 class="subsubsection"> 3.44.2.2 Links </h4>
 
 <p>Creation of symbolic links helps us to alternate between different
@@ -176,17 +176,17 @@ structure. As consequence of this configuration, automation scripts
 cannot be branched under <tt>`branches/Scripts'</tt> directory structure.
 </p>
 
-<a name="SEC258"></a>
+<a name="SEC253"></a>
 <h4 class="subsubsection"> 3.44.2.3 Environment variables </h4>
 
 <p>Definition of environemnt variables helps us to set default values to
 our user session life. The user session environment variable defintion
-takes place in the user's <tt>`~/.bash_profile'</tt> file.  The &quot;verify&quot;
-functionality of <tt>`centos-art.sh'</tt> script doesn't modify your
-<tt>`~/.bash_profile'</tt> file.  
+takes place in the user's <tt>`~/.bash_profile'</tt> file.  The
+<samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script doesn't
+modify your <tt>`~/.bash_profile'</tt> file.  
 </p>
-<p>The &quot;verify&quot; functionality of <tt>`centos-art.sh'</tt> script evaluates
-the following environment variables:
+<p>The <samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script
+evaluates the following environment variables:
 </p>
 <dl compact="compact">
 <dt> <var>EDITOR</var></dt>
@@ -248,12 +248,12 @@ set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 <dd>
 <p>Default locale information. This value is set when you start your
 session and can be changed using the &quot;locale&quot; functionality of
-<tt>`centos-art.sh'</tt> script (see section <a href="repository_41.html#SEC220">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
+<tt>`centos-art.sh'</tt> script (see section <a href="repository_41.html#SEC215">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
 </p></dd>
 </dl>
 
 
-<a name="SEC259"></a>
+<a name="SEC254"></a>
 <h3 class="subsection"> 3.44.3 Usage </h3>
 
 <dl compact="compact">
@@ -306,24 +306,24 @@ provided at all.
 </dl>
 
 
-<a name="SEC260"></a>
+<a name="SEC255"></a>
 <h3 class="subsection"> 3.44.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="repository_37.html#SEC195">3.34 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_38.html#SEC205">3.35 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_38.html#SEC200">3.35 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_48.html#SEC261" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_48.html#SEC256" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC253" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC346" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC248" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">

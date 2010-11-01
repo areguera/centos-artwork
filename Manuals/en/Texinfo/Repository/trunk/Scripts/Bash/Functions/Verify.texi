@@ -1,10 +1,10 @@
 @subsection Goals
 
 This section exists to organize files related to @file{centos-art.sh}
-script ``verify'' functionality.  The ``verify'' functionality of
-@file{centos-art.sh} script helps you to verify the workstation
-configuration you are planning to use as host for your working copy of
-CentOS Artwork Repository.
+script @option{verify} functionality.  The @option{verify}
+functionality of @file{centos-art.sh} script helps you to verify the
+workstation configuration you are planning to use as host for your
+working copy of CentOS Artwork Repository.
 
 @subsection Description
 
@@ -12,13 +12,13 @@ The first time you download CentOS Artwork Repository you need to
 configure your workstation in order to use @file{centos-art.sh}
 script.  These preliminar configurations are based mainly on auxiliar
 RPM packages installation, symbolic links creations, and environment
-variables definitions.  The ``verify'' functionality of
+variables definitions.  The @option{verify} functionality of
 @file{centos-art.sh} script guides you through this preliminar
 configuration process.  
 
 If this is the first time you run @command{centos-art} command, the
-appropriate way to use its ``verify'' functionality is not using the
-@command{centos-art} command directly, but the absolute path to
+appropriate way to use its @option{verify} functionality is not using
+the @command{centos-art} command directly, but the absolute path to
 @command{centos-art.sh} script instead (i.e.,
 @file{~/artwork/trunk/Scripts/Bash/centos-art.sh}).  This is necessary
 because @command{centos-art} symbolic link, under @file{~/bin/}
@@ -49,7 +49,7 @@ installation functionality.  If your user isn't defined as a
 privileged user---at least to run @command{yum} commands--- inside
 @file{/etc/sudoers} configuration file, you will not be able to
 perform package installation tasks as set in @file{centos-art.sh}
-script ``verify'' functionality. 
+script @option{verify} functionality. 
 
 Setting sudo privileges to users is an administrative task you have to
 do by yourself. If you don't have experience with @command{sudo}
@@ -95,12 +95,12 @@ cannot be branched under @file{branches/Scripts} directory structure.
 
 Definition of environemnt variables helps us to set default values to
 our user session life. The user session environment variable defintion
-takes place in the user's @file{~/.bash_profile} file.  The ``verify''
-functionality of @file{centos-art.sh} script doesn't modify your
-@file{~/.bash_profile} file.  
+takes place in the user's @file{~/.bash_profile} file.  The
+@option{verify} functionality of @file{centos-art.sh} script doesn't
+modify your @file{~/.bash_profile} file.  
 
-The ``verify'' functionality of @file{centos-art.sh} script evaluates
-the following environment variables:
+The @option{verify} functionality of @file{centos-art.sh} script
+evaluates the following environment variables:
 
 @table @var
 @item EDITOR

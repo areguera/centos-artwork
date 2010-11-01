@@ -1,46 +1,82 @@
 @subsection Goals
 
-The @file{trunk/Scripts/Bash} directory exists to organize the
-``trunk'' development line of @command{centos-art.sh} automation
-script.  The @command{centos-art.sh} script standardizes frequent
-tasks inside your working copy of CentOS Artwork Repository.
+The @file{trunk/Scripts/Bash} directory exists to organize the trunk
+development line of @file{centos-art.sh} automation script.  The
+@file{centos-art.sh} script standardizes frequent tasks inside your
+working copy of CentOS Artwork Repository.
 
 @subsection Description
 
-The best way to understand @command{centos-art.sh} automation script
-is studying its source code. The @command{centos-art.sh} script is
-splited in several configuration and function files which are loaded
-when the @command{centos-art.sh} script is executed. This section
-describes the order in which @command{centos-art.sh} loads its
-configuration and function files.
+The best way to understand @file{centos-art.sh} automation script is
+studying its source code. The @file{centos-art.sh} script is splited
+in several configuration and function files which are loaded when the
+@file{centos-art.sh} script is executed. This section describes the
+order in which @file{centos-art.sh} loads its configuration and
+function files.
 
 When you type the @command{centos-art} command in your terminal, the
 operating system trys to execute that command. In order to execute the
 command, the operating system needs to know where it is, so the
 operating system uses the @var{PATH} environment variable to look for
 that command's location. If your system was prepared to use CentOS
-Artwork Repository correctly (see usage section above), you should
-have a symbolic link inside @file{~/bin/} directory that points to the
-@command{centos-art.sh} script file. As @file{~/bin/} directory is, by
-default, inside @var{PATH} environment variable, the execution of
-@command{centos-art} command runs the @file{centos-art.sh} script.
+Artwork Repository correctly (@pxref{trunk Scripts Bash Functions
+Verify}), you should have a symbolic link inside @file{~/bin/}
+directory that points to the @file{centos-art.sh} script file. As
+@file{~/bin/} directory is, by default, inside @var{PATH} environment
+variable, the execution of @command{centos-art} command runs the
+@file{centos-art.sh} script.
 
-When @command{centos-art.sh} script is executed, the first it does is
-execute the @file{trunk/Scripts/Bash/initFunctions.sh} file to
-initialize @command{gettext} variables and all function scripts inside
-@file{trunk/Scripts/Bash/Functions} directory. 
+When @file{centos-art.sh} script is executed, the first it does is
+executing the @file{trunk/Scripts/Bash/initFunctions.sh} script to
+initialize global variables (e.g., @command{gettext}'s variables) and
+global function scripts.  Global function scripts are located inside
+@file{trunk/Scripts/Bash/Functions} directory and their file names
+begin with @samp{cli}. Global function scripts provide common
+functionalities that can be used anywhere inside @file{centos-art.sh}
+script execution environment.
 
-Once @command{gettext} variables and all function scripts have been
-initialized, the @command{centos-art.sh} script initializes its
-environment variables using the @command{cli_getVariables} function.
-At this point the @command{centos-art.sh} script calls the
-@command{cli_getActions} function from @command{cli_getVariables}
-function's bottom. 
+Once global variables and function scripts have been loaded,
+@file{centos-art.sh} script executes the @command{cli} global function
+from @file{cli.sh} function script to retrive command-line arguments
+and define some default values that may be used later by specific
+function scripts (@pxref{trunk Scripts Bash Functions}).
 
-The @command{cli_getActions} function defines which actions the
-@command{centos-art.sh} script is able to perform. Inside
-@command{cli_getActions} function, actions are defined combining
-positional arguments and function calls.
+As convenction, the @file{centos-art.sh} command-line arguments have
+the following format:
+
+@verbatim
+centos-art arg1 --arg2=val2 --arg3=val3
+@end verbatim
+
+In the above example, @samp{centos-art} is the command you use to
+invoke @file{centos-art.sh} script. The @samp{arg1} represents the
+action you want to do (e.g., @option{verify}, @option{render},
+@option{locale}, @option{help}, etc.). The remaining arguments are
+modifiers to @option{arg1}. The @option{--arg2} definition is
+required.  The @option{--arg3} is optional. For example, if you want
+to render all anaconda progress slides, for all major releases of
+CentOS distribution, for all languages availabe using TreeFlower motif
+as background, you use the following command:
+
+@verbatim
+centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Progress
+@end verbatim
+
+Now, if you only want to render anaconda progress
+@file{01-welcome.png} slide, for CentOS distribution major release 5,
+in English language, you need to add the third argument as follows:
+
+@verbatim
+centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Progress --filter=5/en/01-welcome
+@end verbatim
+
+Once command-line arguments have been retrived, the
+@file{centos-art.sh} script loads specific functions using the
+@file{cli_getActions.sh} function script.  For example, if you run the
+command @command{centos-art render --entry}, the @file{centos-art.sh}
+script will look for @file{trunk/Scripts/Bash/Functions/Render}
+directory and will load the @file{render.sh} function script from it;
+this, in order to achive the rendering task as it defines.
 
 @float Figure,fig:trunk/Scripts/Bash:Initialization
 @verbatim
@@ -53,7 +89,7 @@ positional arguments and function calls.
     +---v---------------------------------v---+
     .   | initFunctions.sh                |   .
     .   +---------------------------------+   .
-    .   | cli_getVariables $@             |   .
+    .   | cli $@                          |   .
     .   +---v-------------------------v---+   .
     .   .   | cli_getActions          |   .   .
     .   .   +---v-----------------v---+   .   .
@@ -65,73 +101,18 @@ positional arguments and function calls.
     .   ...................................   .
     ...........................................
 @end verbatim
-@caption{The @command{centos-art.sh} initialization environment.}
+@caption{The @file{centos-art.sh} initialization environment.}
 @end float
-
-@subsubsection The identity matching list
-
-The identity matching list is used by identity rendering functions to
-define the relation between translation files and identity design
-templates. 
-
-@subsubsection Adding new features
-
-To add new features inside @command{centos-art.sh} script, you need to
-set positional arguments and function calls inside
-@command{cli_getActions} function for the new function or functions
-required by the new feature you want to add.
 
 @subsection Usage
 
-@subsubsection The @command{centos-art} @samp{search} action
-
-This feature is not supported yet.
-
-@table @samp
-@item centos-art search 'pattern' 
-
-Use this command to find directories and files that match exactly the
-posix-regular expression set in @samp{pattern} as in @samp{^pattern$}.
-
-@item centos-art search 'pattern1 pattern2 patternN' 
-
-Use this command to search repository entries that match pattern1
-@emph{or} patter2 @emph{or} patternN as in
-@samp{'^.*(pattern1|pattern2|patternN).*$'}.
-
-@item centos-art search 'path/to/dir1 path/to/dir2 path/to/dirN' 
-
-Use this command to search repository entries that match
-@samp{path/to/dir1} @emph{or} @samp{path/to/dir2}, @emph{or}
-@samp{path/to/dirN} as in
-@samp{^.*(path/to/dir1|path/to/dir2|path/to/dirN).*$'}.
-@end table
-
-@subsubsection The @command{centos-art} @samp{locale-art} action
-
-This feature is not supported yet.
-
-@table @samp
-@item centos-art locale-art 'path/to/dir' --edit
-@item centos-art locale-art 'path/to/dir' --edit='filename'
-@item centos-art locale-art 'path/to/dir' --list
-@item centos-art locale-art 'path/to/dir' --list='filename'
-@end table
-
-@subsubsection The @command{centos-art} @samp{license} action
-
-This feature is supported through the following command:
-
-@table @samp
-@item centos-art license
-Use this command to see a brief description of @command{centos-art}
-command its copyright and its license notes.
-@end table
+The @file{centos-art.sh} script usage information is described inside
+each specific function documentation (@pxref{trunk Scripts Bash
+Functions}).
 
 @subsection See also
 
 @menu
-* trunk Scripts Bash Functions::
-* trunk Scripts Bash Locale::
 * trunk Scripts::
+* trunk Scripts Bash Locale::
 @end menu
