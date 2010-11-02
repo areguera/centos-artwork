@@ -75,8 +75,9 @@ Once command-line arguments have been retrived, the
 @file{cli_getActions.sh} function script.  For example, if you run the
 command @command{centos-art render --entry}, the @file{centos-art.sh}
 script will look for @file{trunk/Scripts/Bash/Functions/Render}
-directory and will load the @file{render.sh} function script from it;
-this, in order to achive the rendering task as it defines.
+directory and will load the @command{render} function from
+@file{render.sh} function script; this, in order to achive the
+rendering task as it defines.
 
 @float Figure,fig:trunk/Scripts/Bash:Initialization
 @verbatim
@@ -114,5 +115,6 @@ Functions}).
 
 @menu
 * trunk Scripts::
+* trunk Scripts Bash Functions::
 * trunk Scripts Bash Locale::
 @end menu

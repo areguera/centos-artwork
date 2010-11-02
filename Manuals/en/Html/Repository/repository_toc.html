@@ -3,7 +3,7 @@
 <!--This manual describes what the CentOS Artwork Repository is and what
 can you do inside it.
 
-Copyright C 2009, 2010 CentOS Artwork SIG. All rights
+Copyright C 2009, 2010 Alain Reguera Delgado. All rights
 reserved.
 
 Permission is granted to copy, distribute and/or modify this document
@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 1 2010 by texi2html 1.76 -->
+<!-- Created on November, 2 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -59,7 +59,7 @@ ul.toc {list-style: none}
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC343" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1>Table of Contents</h1>
@@ -347,216 +347,224 @@ ul.toc {list-style: none}
     <li><a name="TOC200" href="repository_38.html#SEC200">3.35 trunk/Scripts/Bash/Functions</a>
     <ul class="toc">
       <li><a name="TOC201" href="repository_38.html#SEC201">3.35.1 Goals</a></li>
-      <li><a name="TOC202" href="repository_38.html#SEC202">3.35.2 Description</a></li>
-      <li><a name="TOC203" href="repository_38.html#SEC203">3.35.3 Usage</a></li>
-      <li><a name="TOC204" href="repository_38.html#SEC204">3.35.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC205" href="repository_39.html#SEC205">3.36 trunk/Scripts/Bash/Functions/Help</a>
-    <ul class="toc">
-      <li><a name="TOC206" href="repository_39.html#SEC206">3.36.1 Goals</a></li>
-      <li><a name="TOC207" href="repository_39.html#SEC207">3.36.2 Description</a></li>
-      <li><a name="TOC208" href="repository_39.html#SEC208">3.36.3 Usage</a></li>
-      <li><a name="TOC209" href="repository_39.html#SEC209">3.36.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC210" href="repository_40.html#SEC210">3.37 trunk/Scripts/Bash/Functions/Html</a>
-    <ul class="toc">
-      <li><a name="TOC211" href="repository_40.html#SEC211">3.37.1 Goals</a></li>
-      <li><a name="TOC212" href="repository_40.html#SEC212">3.37.2 Description</a></li>
-      <li><a name="TOC213" href="repository_40.html#SEC213">3.37.3 Usage</a></li>
-      <li><a name="TOC214" href="repository_40.html#SEC214">3.37.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC215" href="repository_41.html#SEC215">3.38 trunk/Scripts/Bash/Functions/Locale</a>
-    <ul class="toc">
-      <li><a name="TOC216" href="repository_41.html#SEC216">3.38.1 Goals</a></li>
-      <li><a name="TOC217" href="repository_41.html#SEC217">3.38.2 Description</a></li>
-      <li><a name="TOC218" href="repository_41.html#SEC218">3.38.3 Usage</a></li>
-      <li><a name="TOC219" href="repository_41.html#SEC219">3.38.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC220" href="repository_42.html#SEC220">3.39 trunk/Scripts/Bash/Functions/Path</a>
-    <ul class="toc">
-      <li><a name="TOC221" href="repository_42.html#SEC221">3.39.1 Goals</a></li>
-      <li><a name="TOC222" href="repository_42.html#SEC222">3.39.2 Description</a></li>
-      <li><a name="TOC223" href="repository_42.html#SEC223">3.39.3 Usage</a></li>
-      <li><a name="TOC224" href="repository_42.html#SEC224">3.39.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC225" href="repository_43.html#SEC225">3.40 trunk/Scripts/Bash/Functions/Render</a>
-    <ul class="toc">
-      <li><a name="TOC226" href="repository_43.html#SEC226">3.40.1 Goals</a></li>
-      <li><a name="TOC227" href="repository_43.html#SEC227">3.40.2 Description</a></li>
-      <li><a name="TOC228" href="repository_43.html#SEC228">3.40.3 Usage</a></li>
-      <li><a name="TOC229" href="repository_43.html#SEC229">3.40.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC230" href="repository_44.html#SEC230">3.41 trunk/Scripts/Bash/Functions/Render/Config</a>
-    <ul class="toc">
-      <li><a name="TOC231" href="repository_44.html#SEC231">3.41.1 Goals</a></li>
-      <li><a name="TOC232" href="repository_44.html#SEC232">3.41.2 Description</a>
+      <li><a name="TOC202" href="repository_38.html#SEC202">3.35.2 Description</a>
       <ul class="toc">
-        <li><a name="TOC233" href="repository_44.html#SEC233">3.41.2.1 The <tt>`render.conf.sh'</tt> identity model</a></li>
-        <li><a name="TOC234" href="repository_44.html#SEC234">3.41.2.2 The <tt>`render.conf.sh'</tt> translation model</a></li>
-        <li><a name="TOC235" href="repository_44.html#SEC235">3.41.2.3 The <tt>`render.conf.sh'</tt> rendering actions</a></li>
+        <li><a name="TOC203" href="repository_38.html#SEC203">3.35.2.1 Creating new specific functionalities</a></li>
       </ul></li>
-      <li><a name="TOC236" href="repository_44.html#SEC236">3.41.3 Usage</a></li>
-      <li><a name="TOC237" href="repository_44.html#SEC237">3.41.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC238" href="repository_45.html#SEC238">3.42 trunk/Scripts/Bash/Functions/Shell</a>
-    <ul class="toc">
-      <li><a name="TOC239" href="repository_45.html#SEC239">3.42.1 Goals</a></li>
-      <li><a name="TOC240" href="repository_45.html#SEC240">3.42.2 Description</a></li>
-      <li><a name="TOC241" href="repository_45.html#SEC241">3.42.3 Usage</a></li>
-      <li><a name="TOC242" href="repository_45.html#SEC242">3.42.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC243" href="repository_46.html#SEC243">3.43 trunk/Scripts/Bash/Functions/Svg</a>
-    <ul class="toc">
-      <li><a name="TOC244" href="repository_46.html#SEC244">3.43.1 Goals</a></li>
-      <li><a name="TOC245" href="repository_46.html#SEC245">3.43.2 Description</a></li>
-      <li><a name="TOC246" href="repository_46.html#SEC246">3.43.3 Usage</a></li>
-      <li><a name="TOC247" href="repository_46.html#SEC247">3.43.4 See also</a></li>
-    </ul></li>
-    <li><a name="TOC248" href="repository_47.html#SEC248">3.44 trunk/Scripts/Bash/Functions/Verify</a>
-    <ul class="toc">
-      <li><a name="TOC249" href="repository_47.html#SEC249">3.44.1 Goals</a></li>
-      <li><a name="TOC250" href="repository_47.html#SEC250">3.44.2 Description</a>
+      <li><a name="TOC204" href="repository_38.html#SEC204">3.35.3 Usage</a>
       <ul class="toc">
-        <li><a name="TOC251" href="repository_47.html#SEC251">3.44.2.1 Packages</a></li>
-        <li><a name="TOC252" href="repository_47.html#SEC252">3.44.2.2 Links</a></li>
-        <li><a name="TOC253" href="repository_47.html#SEC253">3.44.2.3 Environment variables</a></li>
+        <li><a name="TOC205" href="repository_38.html#SEC205">3.35.3.1 Global variables</a></li>
+        <li><a name="TOC206" href="repository_38.html#SEC206">3.35.3.2 Global functions</a></li>
+        <li><a name="TOC207" href="repository_38.html#SEC207">3.35.3.3 Specific functions</a></li>
       </ul></li>
-      <li><a name="TOC254" href="repository_47.html#SEC254">3.44.3 Usage</a></li>
-      <li><a name="TOC255" href="repository_47.html#SEC255">3.44.4 See also</a></li>
+      <li><a name="TOC208" href="repository_38.html#SEC208">3.35.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC256" href="repository_48.html#SEC256">3.45 trunk/Scripts/Bash/Locale</a>
+    <li><a name="TOC209" href="repository_39.html#SEC209">3.36 trunk/Scripts/Bash/Functions/Help</a>
     <ul class="toc">
-      <li><a name="TOC257" href="repository_48.html#SEC257">3.45.1 Goals</a></li>
-      <li><a name="TOC258" href="repository_48.html#SEC258">3.45.2 Description</a></li>
-      <li><a name="TOC259" href="repository_48.html#SEC259">3.45.3 Usage</a></li>
-      <li><a name="TOC260" href="repository_48.html#SEC260">3.45.4 See also</a></li>
+      <li><a name="TOC210" href="repository_39.html#SEC210">3.36.1 Goals</a></li>
+      <li><a name="TOC211" href="repository_39.html#SEC211">3.36.2 Description</a></li>
+      <li><a name="TOC212" href="repository_39.html#SEC212">3.36.3 Usage</a></li>
+      <li><a name="TOC213" href="repository_39.html#SEC213">3.36.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC261" href="repository_49.html#SEC261">3.46 trunk/Scripts/Perl</a>
+    <li><a name="TOC214" href="repository_40.html#SEC214">3.37 trunk/Scripts/Bash/Functions/Html</a>
     <ul class="toc">
-      <li><a name="TOC262" href="repository_49.html#SEC262">3.46.1 Goals</a></li>
-      <li><a name="TOC263" href="repository_49.html#SEC263">3.46.2 Description</a></li>
-      <li><a name="TOC264" href="repository_49.html#SEC264">3.46.3 Usage</a></li>
-      <li><a name="TOC265" href="repository_49.html#SEC265">3.46.4 See also</a></li>
+      <li><a name="TOC215" href="repository_40.html#SEC215">3.37.1 Goals</a></li>
+      <li><a name="TOC216" href="repository_40.html#SEC216">3.37.2 Description</a></li>
+      <li><a name="TOC217" href="repository_40.html#SEC217">3.37.3 Usage</a></li>
+      <li><a name="TOC218" href="repository_40.html#SEC218">3.37.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC266" href="repository_50.html#SEC266">3.47 trunk/Scripts/Python</a>
+    <li><a name="TOC219" href="repository_41.html#SEC219">3.38 trunk/Scripts/Bash/Functions/Locale</a>
     <ul class="toc">
-      <li><a name="TOC267" href="repository_50.html#SEC267">3.47.1 Goals</a></li>
-      <li><a name="TOC268" href="repository_50.html#SEC268">3.47.2 Description</a></li>
-      <li><a name="TOC269" href="repository_50.html#SEC269">3.47.3 Usage</a></li>
-      <li><a name="TOC270" href="repository_50.html#SEC270">3.47.4 See also</a></li>
+      <li><a name="TOC220" href="repository_41.html#SEC220">3.38.1 Goals</a></li>
+      <li><a name="TOC221" href="repository_41.html#SEC221">3.38.2 Description</a></li>
+      <li><a name="TOC222" href="repository_41.html#SEC222">3.38.3 Usage</a></li>
+      <li><a name="TOC223" href="repository_41.html#SEC223">3.38.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC271" href="repository_51.html#SEC271">3.48 trunk/Translations</a>
+    <li><a name="TOC224" href="repository_42.html#SEC224">3.39 trunk/Scripts/Bash/Functions/Path</a>
     <ul class="toc">
-      <li><a name="TOC272" href="repository_51.html#SEC272">3.48.1 Goals</a></li>
-      <li><a name="TOC273" href="repository_51.html#SEC273">3.48.2 Description</a>
+      <li><a name="TOC225" href="repository_42.html#SEC225">3.39.1 Goals</a></li>
+      <li><a name="TOC226" href="repository_42.html#SEC226">3.39.2 Description</a></li>
+      <li><a name="TOC227" href="repository_42.html#SEC227">3.39.3 Usage</a></li>
+      <li><a name="TOC228" href="repository_42.html#SEC228">3.39.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC229" href="repository_43.html#SEC229">3.40 trunk/Scripts/Bash/Functions/Render</a>
+    <ul class="toc">
+      <li><a name="TOC230" href="repository_43.html#SEC230">3.40.1 Goals</a></li>
+      <li><a name="TOC231" href="repository_43.html#SEC231">3.40.2 Description</a></li>
+      <li><a name="TOC232" href="repository_43.html#SEC232">3.40.3 Usage</a></li>
+      <li><a name="TOC233" href="repository_43.html#SEC233">3.40.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC234" href="repository_44.html#SEC234">3.41 trunk/Scripts/Bash/Functions/Render/Config</a>
+    <ul class="toc">
+      <li><a name="TOC235" href="repository_44.html#SEC235">3.41.1 Goals</a></li>
+      <li><a name="TOC236" href="repository_44.html#SEC236">3.41.2 Description</a>
       <ul class="toc">
-        <li><a name="TOC274" href="repository_51.html#SEC274">3.48.2.1 Translation Entries</a></li>
-        <li><a name="TOC275" href="repository_51.html#SEC275">3.48.2.2 Translation Markers</a></li>
-        <li><a name="TOC276" href="repository_51.html#SEC276">3.48.2.3 Translation Files</a></li>
-        <li><a name="TOC277" href="repository_51.html#SEC277">3.48.2.4 Template Translation Files</a></li>
-        <li><a name="TOC278" href="repository_51.html#SEC278">3.48.2.5 Common Translation Files</a></li>
-        <li><a name="TOC279" href="repository_51.html#SEC279">3.48.2.6 Specific Translation Files</a></li>
-        <li><a name="TOC280" href="repository_51.html#SEC280">3.48.2.7 Translation Rendering</a></li>
-        <li><a name="TOC281" href="repository_51.html#SEC281">3.48.2.8 Translation (Pre-)Rendering Configuration Scripts</a></li>
-        <li><a name="TOC282" href="repository_51.html#SEC282">3.48.2.9 Translation Rendering Default Functionality</a></li>
+        <li><a name="TOC237" href="repository_44.html#SEC237">3.41.2.1 The <tt>`render.conf.sh'</tt> identity model</a></li>
+        <li><a name="TOC238" href="repository_44.html#SEC238">3.41.2.2 The <tt>`render.conf.sh'</tt> translation model</a></li>
+        <li><a name="TOC239" href="repository_44.html#SEC239">3.41.2.3 The <tt>`render.conf.sh'</tt> rendering actions</a></li>
       </ul></li>
-      <li><a name="TOC283" href="repository_51.html#SEC283">3.48.3 Usage</a></li>
-      <li><a name="TOC284" href="repository_51.html#SEC284">3.48.4 See also</a></li>
+      <li><a name="TOC240" href="repository_44.html#SEC240">3.41.3 Usage</a></li>
+      <li><a name="TOC241" href="repository_44.html#SEC241">3.41.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC285" href="repository_52.html#SEC285">3.49 trunk/Translations/Identity</a>
+    <li><a name="TOC242" href="repository_45.html#SEC242">3.42 trunk/Scripts/Bash/Functions/Shell</a>
     <ul class="toc">
-      <li><a name="TOC286" href="repository_52.html#SEC286">3.49.1 Goals</a></li>
-      <li><a name="TOC287" href="repository_52.html#SEC287">3.49.2 Description</a></li>
-      <li><a name="TOC288" href="repository_52.html#SEC288">3.49.3 Usage</a></li>
-      <li><a name="TOC289" href="repository_52.html#SEC289">3.49.4 See also</a></li>
+      <li><a name="TOC243" href="repository_45.html#SEC243">3.42.1 Goals</a></li>
+      <li><a name="TOC244" href="repository_45.html#SEC244">3.42.2 Description</a></li>
+      <li><a name="TOC245" href="repository_45.html#SEC245">3.42.3 Usage</a></li>
+      <li><a name="TOC246" href="repository_45.html#SEC246">3.42.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC290" href="repository_53.html#SEC290">3.50 trunk/Translations/Identity/Brands</a>
+    <li><a name="TOC247" href="repository_46.html#SEC247">3.43 trunk/Scripts/Bash/Functions/Svg</a>
     <ul class="toc">
-      <li><a name="TOC291" href="repository_53.html#SEC291">3.50.1 Goals</a></li>
-      <li><a name="TOC292" href="repository_53.html#SEC292">3.50.2 Description</a>
+      <li><a name="TOC248" href="repository_46.html#SEC248">3.43.1 Goals</a></li>
+      <li><a name="TOC249" href="repository_46.html#SEC249">3.43.2 Description</a></li>
+      <li><a name="TOC250" href="repository_46.html#SEC250">3.43.3 Usage</a></li>
+      <li><a name="TOC251" href="repository_46.html#SEC251">3.43.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC252" href="repository_47.html#SEC252">3.44 trunk/Scripts/Bash/Functions/Verify</a>
+    <ul class="toc">
+      <li><a name="TOC253" href="repository_47.html#SEC253">3.44.1 Goals</a></li>
+      <li><a name="TOC254" href="repository_47.html#SEC254">3.44.2 Description</a>
       <ul class="toc">
-        <li><a name="TOC293" href="repository_53.html#SEC293">3.50.2.1 Conventional file names</a></li>
-        <li><a name="TOC294" href="repository_53.html#SEC294">3.50.2.2 Numeric file names</a></li>
-        <li><a name="TOC295" href="repository_53.html#SEC295">3.50.2.3 Translation markers</a></li>
+        <li><a name="TOC255" href="repository_47.html#SEC255">3.44.2.1 Packages</a></li>
+        <li><a name="TOC256" href="repository_47.html#SEC256">3.44.2.2 Links</a></li>
+        <li><a name="TOC257" href="repository_47.html#SEC257">3.44.2.3 Environment variables</a></li>
       </ul></li>
-      <li><a name="TOC296" href="repository_53.html#SEC296">3.50.3 Usage</a></li>
-      <li><a name="TOC297" href="repository_53.html#SEC297">3.50.4 See also</a></li>
+      <li><a name="TOC258" href="repository_47.html#SEC258">3.44.3 Usage</a></li>
+      <li><a name="TOC259" href="repository_47.html#SEC259">3.44.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC298" href="repository_54.html#SEC298">3.51 trunk/Translations/Identity/Brands/Tpl</a>
+    <li><a name="TOC260" href="repository_48.html#SEC260">3.45 trunk/Scripts/Bash/Locale</a>
     <ul class="toc">
-      <li><a name="TOC299" href="repository_54.html#SEC299">3.51.1 Goals</a></li>
-      <li><a name="TOC300" href="repository_54.html#SEC300">3.51.2 Description</a></li>
-      <li><a name="TOC301" href="repository_54.html#SEC301">3.51.3 Usage</a></li>
-      <li><a name="TOC302" href="repository_54.html#SEC302">3.51.4 See also</a></li>
+      <li><a name="TOC261" href="repository_48.html#SEC261">3.45.1 Goals</a></li>
+      <li><a name="TOC262" href="repository_48.html#SEC262">3.45.2 Description</a></li>
+      <li><a name="TOC263" href="repository_48.html#SEC263">3.45.3 Usage</a></li>
+      <li><a name="TOC264" href="repository_48.html#SEC264">3.45.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC303" href="repository_55.html#SEC303">3.52 trunk/Translations/Identity/Fonts</a>
+    <li><a name="TOC265" href="repository_49.html#SEC265">3.46 trunk/Scripts/Perl</a>
     <ul class="toc">
-      <li><a name="TOC304" href="repository_55.html#SEC304">3.52.1 Goals</a></li>
-      <li><a name="TOC305" href="repository_55.html#SEC305">3.52.2 Description</a>
+      <li><a name="TOC266" href="repository_49.html#SEC266">3.46.1 Goals</a></li>
+      <li><a name="TOC267" href="repository_49.html#SEC267">3.46.2 Description</a></li>
+      <li><a name="TOC268" href="repository_49.html#SEC268">3.46.3 Usage</a></li>
+      <li><a name="TOC269" href="repository_49.html#SEC269">3.46.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC270" href="repository_50.html#SEC270">3.47 trunk/Scripts/Python</a>
+    <ul class="toc">
+      <li><a name="TOC271" href="repository_50.html#SEC271">3.47.1 Goals</a></li>
+      <li><a name="TOC272" href="repository_50.html#SEC272">3.47.2 Description</a></li>
+      <li><a name="TOC273" href="repository_50.html#SEC273">3.47.3 Usage</a></li>
+      <li><a name="TOC274" href="repository_50.html#SEC274">3.47.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC275" href="repository_51.html#SEC275">3.48 trunk/Translations</a>
+    <ul class="toc">
+      <li><a name="TOC276" href="repository_51.html#SEC276">3.48.1 Goals</a></li>
+      <li><a name="TOC277" href="repository_51.html#SEC277">3.48.2 Description</a>
       <ul class="toc">
-        <li><a name="TOC306" href="repository_55.html#SEC306">3.52.2.1 Translation Markers</a></li>
+        <li><a name="TOC278" href="repository_51.html#SEC278">3.48.2.1 Translation Entries</a></li>
+        <li><a name="TOC279" href="repository_51.html#SEC279">3.48.2.2 Translation Markers</a></li>
+        <li><a name="TOC280" href="repository_51.html#SEC280">3.48.2.3 Translation Files</a></li>
+        <li><a name="TOC281" href="repository_51.html#SEC281">3.48.2.4 Template Translation Files</a></li>
+        <li><a name="TOC282" href="repository_51.html#SEC282">3.48.2.5 Common Translation Files</a></li>
+        <li><a name="TOC283" href="repository_51.html#SEC283">3.48.2.6 Specific Translation Files</a></li>
+        <li><a name="TOC284" href="repository_51.html#SEC284">3.48.2.7 Translation Rendering</a></li>
+        <li><a name="TOC285" href="repository_51.html#SEC285">3.48.2.8 Translation (Pre-)Rendering Configuration Scripts</a></li>
+        <li><a name="TOC286" href="repository_51.html#SEC286">3.48.2.9 Translation Rendering Default Functionality</a></li>
       </ul></li>
-      <li><a name="TOC307" href="repository_55.html#SEC307">3.52.3 Usage</a></li>
-      <li><a name="TOC308" href="repository_55.html#SEC308">3.52.4 See also</a></li>
+      <li><a name="TOC287" href="repository_51.html#SEC287">3.48.3 Usage</a></li>
+      <li><a name="TOC288" href="repository_51.html#SEC288">3.48.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC309" href="repository_56.html#SEC309">3.53 trunk/Translations/Identity/Models</a>
+    <li><a name="TOC289" href="repository_52.html#SEC289">3.49 trunk/Translations/Identity</a>
     <ul class="toc">
-      <li><a name="TOC310" href="repository_56.html#SEC310">3.53.1 Goals</a></li>
-      <li><a name="TOC311" href="repository_56.html#SEC311">3.53.2 Description</a></li>
-      <li><a name="TOC312" href="repository_56.html#SEC312">3.53.3 Usage</a></li>
-      <li><a name="TOC313" href="repository_56.html#SEC313">3.53.4 See also</a></li>
+      <li><a name="TOC290" href="repository_52.html#SEC290">3.49.1 Goals</a></li>
+      <li><a name="TOC291" href="repository_52.html#SEC291">3.49.2 Description</a></li>
+      <li><a name="TOC292" href="repository_52.html#SEC292">3.49.3 Usage</a></li>
+      <li><a name="TOC293" href="repository_52.html#SEC293">3.49.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC314" href="repository_57.html#SEC314">3.54 trunk/Translations/Identity/Release</a>
+    <li><a name="TOC294" href="repository_53.html#SEC294">3.50 trunk/Translations/Identity/Brands</a>
     <ul class="toc">
-      <li><a name="TOC315" href="repository_57.html#SEC315">3.54.1 Goals</a></li>
-      <li><a name="TOC316" href="repository_57.html#SEC316">3.54.2 Description</a></li>
-      <li><a name="TOC317" href="repository_57.html#SEC317">3.54.3 Usage</a></li>
-      <li><a name="TOC318" href="repository_57.html#SEC318">3.54.4 See also</a></li>
+      <li><a name="TOC295" href="repository_53.html#SEC295">3.50.1 Goals</a></li>
+      <li><a name="TOC296" href="repository_53.html#SEC296">3.50.2 Description</a>
+      <ul class="toc">
+        <li><a name="TOC297" href="repository_53.html#SEC297">3.50.2.1 Conventional file names</a></li>
+        <li><a name="TOC298" href="repository_53.html#SEC298">3.50.2.2 Numeric file names</a></li>
+        <li><a name="TOC299" href="repository_53.html#SEC299">3.50.2.3 Translation markers</a></li>
+      </ul></li>
+      <li><a name="TOC300" href="repository_53.html#SEC300">3.50.3 Usage</a></li>
+      <li><a name="TOC301" href="repository_53.html#SEC301">3.50.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC319" href="repository_58.html#SEC319">3.55 trunk/Translations/Identity/Themes</a>
+    <li><a name="TOC302" href="repository_54.html#SEC302">3.51 trunk/Translations/Identity/Brands/Tpl</a>
     <ul class="toc">
-      <li><a name="TOC320" href="repository_58.html#SEC320">3.55.1 Goals</a></li>
-      <li><a name="TOC321" href="repository_58.html#SEC321">3.55.2 Description</a></li>
-      <li><a name="TOC322" href="repository_58.html#SEC322">3.55.3 Usage</a></li>
-      <li><a name="TOC323" href="repository_58.html#SEC323">3.55.4 See also</a></li>
+      <li><a name="TOC303" href="repository_54.html#SEC303">3.51.1 Goals</a></li>
+      <li><a name="TOC304" href="repository_54.html#SEC304">3.51.2 Description</a></li>
+      <li><a name="TOC305" href="repository_54.html#SEC305">3.51.3 Usage</a></li>
+      <li><a name="TOC306" href="repository_54.html#SEC306">3.51.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC324" href="repository_59.html#SEC324">3.56 trunk/Translations/Identity/Themes/Backgrounds</a>
+    <li><a name="TOC307" href="repository_55.html#SEC307">3.52 trunk/Translations/Identity/Fonts</a>
     <ul class="toc">
-      <li><a name="TOC325" href="repository_59.html#SEC325">3.56.1 Goals</a></li>
-      <li><a name="TOC326" href="repository_59.html#SEC326">3.56.2 Description</a></li>
-      <li><a name="TOC327" href="repository_59.html#SEC327">3.56.3 Usage</a></li>
-      <li><a name="TOC328" href="repository_59.html#SEC328">3.56.4 See also</a></li>
+      <li><a name="TOC308" href="repository_55.html#SEC308">3.52.1 Goals</a></li>
+      <li><a name="TOC309" href="repository_55.html#SEC309">3.52.2 Description</a>
+      <ul class="toc">
+        <li><a name="TOC310" href="repository_55.html#SEC310">3.52.2.1 Translation Markers</a></li>
+      </ul></li>
+      <li><a name="TOC311" href="repository_55.html#SEC311">3.52.3 Usage</a></li>
+      <li><a name="TOC312" href="repository_55.html#SEC312">3.52.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC329" href="repository_60.html#SEC329">3.57 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress</a>
+    <li><a name="TOC313" href="repository_56.html#SEC313">3.53 trunk/Translations/Identity/Models</a>
     <ul class="toc">
-      <li><a name="TOC330" href="repository_60.html#SEC330">3.57.1 Goals</a></li>
-      <li><a name="TOC331" href="repository_60.html#SEC331">3.57.2 Description</a></li>
-      <li><a name="TOC332" href="repository_60.html#SEC332">3.57.3 Usage</a></li>
-      <li><a name="TOC333" href="repository_60.html#SEC333">3.57.4 See also</a></li>
+      <li><a name="TOC314" href="repository_56.html#SEC314">3.53.1 Goals</a></li>
+      <li><a name="TOC315" href="repository_56.html#SEC315">3.53.2 Description</a></li>
+      <li><a name="TOC316" href="repository_56.html#SEC316">3.53.3 Usage</a></li>
+      <li><a name="TOC317" href="repository_56.html#SEC317">3.53.4 See also</a></li>
     </ul></li>
-    <li><a name="TOC334" href="repository_61.html#SEC334">3.58 trunk/Translations/Identity/Widgets</a>
+    <li><a name="TOC318" href="repository_57.html#SEC318">3.54 trunk/Translations/Identity/Release</a>
     <ul class="toc">
-      <li><a name="TOC335" href="repository_61.html#SEC335">3.58.1 Goals</a></li>
-      <li><a name="TOC336" href="repository_61.html#SEC336">3.58.2 Description</a></li>
-      <li><a name="TOC337" href="repository_61.html#SEC337">3.58.3 Usage</a></li>
-      <li><a name="TOC338" href="repository_61.html#SEC338">3.58.4 See also</a></li>
+      <li><a name="TOC319" href="repository_57.html#SEC319">3.54.1 Goals</a></li>
+      <li><a name="TOC320" href="repository_57.html#SEC320">3.54.2 Description</a></li>
+      <li><a name="TOC321" href="repository_57.html#SEC321">3.54.3 Usage</a></li>
+      <li><a name="TOC322" href="repository_57.html#SEC322">3.54.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC323" href="repository_58.html#SEC323">3.55 trunk/Translations/Identity/Themes</a>
+    <ul class="toc">
+      <li><a name="TOC324" href="repository_58.html#SEC324">3.55.1 Goals</a></li>
+      <li><a name="TOC325" href="repository_58.html#SEC325">3.55.2 Description</a></li>
+      <li><a name="TOC326" href="repository_58.html#SEC326">3.55.3 Usage</a></li>
+      <li><a name="TOC327" href="repository_58.html#SEC327">3.55.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC328" href="repository_59.html#SEC328">3.56 trunk/Translations/Identity/Themes/Backgrounds</a>
+    <ul class="toc">
+      <li><a name="TOC329" href="repository_59.html#SEC329">3.56.1 Goals</a></li>
+      <li><a name="TOC330" href="repository_59.html#SEC330">3.56.2 Description</a></li>
+      <li><a name="TOC331" href="repository_59.html#SEC331">3.56.3 Usage</a></li>
+      <li><a name="TOC332" href="repository_59.html#SEC332">3.56.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC333" href="repository_60.html#SEC333">3.57 trunk/Translations/Identity/Themes/Distro/Anaconda/Progress</a>
+    <ul class="toc">
+      <li><a name="TOC334" href="repository_60.html#SEC334">3.57.1 Goals</a></li>
+      <li><a name="TOC335" href="repository_60.html#SEC335">3.57.2 Description</a></li>
+      <li><a name="TOC336" href="repository_60.html#SEC336">3.57.3 Usage</a></li>
+      <li><a name="TOC337" href="repository_60.html#SEC337">3.57.4 See also</a></li>
+    </ul></li>
+    <li><a name="TOC338" href="repository_61.html#SEC338">3.58 trunk/Translations/Identity/Widgets</a>
+    <ul class="toc">
+      <li><a name="TOC339" href="repository_61.html#SEC339">3.58.1 Goals</a></li>
+      <li><a name="TOC340" href="repository_61.html#SEC340">3.58.2 Description</a></li>
+      <li><a name="TOC341" href="repository_61.html#SEC341">3.58.3 Usage</a></li>
+      <li><a name="TOC342" href="repository_61.html#SEC342">3.58.4 See also</a></li>
     </ul>
 </li>
   </ul></li>
-  <li><a name="TOC339" href="repository_62.html#SEC339">Index</a></li>
-  <li><a name="TOC340" href="repository_63.html#SEC340">List of Figures</a></li>
+  <li><a name="TOC343" href="repository_62.html#SEC343">Index</a></li>
+  <li><a name="TOC344" href="repository_63.html#SEC344">List of Figures</a></li>
 </ul>
 </div>
 
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC339" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC343" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 1 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 2 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

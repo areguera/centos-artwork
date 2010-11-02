@@ -204,7 +204,11 @@ CentOS Artwork Repository
   3.35 trunk/Scripts/Bash/Functions
     3.35.1 Goals
     3.35.2 Description
+      3.35.2.1 Creating new specific functionalities
     3.35.3 Usage
+      3.35.3.1 Global variables
+      3.35.3.2 Global functions
+      3.35.3.3 Specific functions
     3.35.4 See also
   3.36 trunk/Scripts/Bash/Functions/Help
     3.36.1 Goals
@@ -350,7 +354,7 @@ CentOS Artwork Repository
 This manual describes what the CentOS Artwork Repository is and what
 can you do inside it.
 
-   Copyright (C) 2009, 2010 CentOS Artwork SIG. All rights reserved.
+   Copyright (C) 2009, 2010 Alain Reguera Delgado. All rights reserved.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
@@ -2498,8 +2502,8 @@ script loads specific functions using the `cli_getActions.sh' function
 script.  For example, if you run the command `centos-art render
 --entry', the `centos-art.sh' script will look for
 `trunk/Scripts/Bash/Functions/Render' directory and will load the
-`render.sh' function script from it; this, in order to achive the
-rendering task as it defines.
+`render' function from `render.sh' function script; this, in order to
+achive the rendering task as it defines.
 
 
 +------------------------------------------------------------------+
@@ -2540,17 +2544,378 @@ specific function documentation (*note trunk Scripts Bash Functions::).
 3.35.1 Goals
 ------------
 
-   * ...
+The `trunk/Scripts/Bash/Functions' directory exists to organize
+`centos-art.sh' specific functionalities.
 
 3.35.2 Description
 ------------------
 
-   * ...
+The specific functions of `centos-art.sh' script are designed with
+"Software Toolbox" philosophy (*note Toolbox introduction:
+(coreutils.info)Toolbox introduction.) in mind: each program "should do
+one thing well".  Inside `centos-art.sh' script, each specific
+functionality is considered a program that should do one thing well.
+Of course, if you find that they still don't do it, feel free to
+improve them in order for them to do so.
+
+   The specific functions of `centos-art.sh' script are organized
+inside specific directories under `trunk/Scripts/Bash/Functions'
+location. Each specific function directory should be named as the
+function it represents, with the first letter in uppercase. For
+example, if the function name is `render', the specific function
+directory for it would be `trunk/Scripts/Bash/Functions/Render'.
+
+   To better understand how specific functions of `centos-art.sh'
+script are designed, lets create one function which only goal is to
+output different kind of greetings to your screen.
+
+   When creating specific functions for `centos-art.sh' script it is
+crucial to know what these function will do exactly and if there is any
+function that already does what we intend to do. If there is no one, it
+is good time to create them then. Otherwise, if functionalities already
+available don't do what you exactly expect, contact their authors and
+work together to improve them.
+
+     *Tip* Most debates about CentOS Artwork Repository take place in
+     the CentOS art works (<centos-art@centos.org>) mailing list.
+
+   It is also worth to know what global functions we have available, so
+advantage can be taken from them. Global functions are stored
+immediatly under `trunk/Scripts/Bash/Functions' directory in files
+begining with `cli' prefix.
+
+3.35.2.1 Creating new specific functionalities
+..............................................
+
+OK, let's begin with our specific functionality example.
+
+   What function name do we use? Well, lets use `greet'. Note that
+`hello' is not a verb, but an expression, a kind of greeting, an
+interjection specifically. In contrast, `greet' is a verb and describes
+what we do when we say `Hello!', `Hi!', and so on.  So far, we've
+gathered the following function information:
+
+
+Name: greet
+Path: trunk/Scripts/Bash/Functions/Greet
+File: trunk/Scripts/Bash/Functions/Greet/greet.sh
+
+     *Note* Note how function name is used as reference to define
+     function path, function script, and function definition inside
+     function script.
+
+   As consistency convenction, files related to `greet' functionality
+are stored under its own function path. The `greet.sh' function script
+is the first file `centos-art.sh' script loads when the `greet'
+functionality is called using commands like `centos-art greet
+--hello='World''.
+
+   The `greet.sh' function script contains the `greet' function
+definition. Inside `centos-art.sh' script, each function definition has
+its own top commentary, followed by one blank line, and then one
+function defintion below it.
+
+   The function top commentary contains a brief description about what
+the function does, one-line for copyright note --with your personal
+information--, the license under which the function source code is
+released --the `centos-art.sh' script is released as GPL, so do all its
+functions--, and the subversion `$Id$' keyword. In our function
+example, the `greet.sh' top commentary would look like the following:
+
+
+#!/bin/bash
+#
+# greet.sh -- This function outputs different kind of greetings to
+# your screen. Use this function to understand how centos-art.sh
+# script specific functionalities work.
+#
+# Copyright (C) 2010 Alain Reguera Delgado
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+# USA.
+#
+# ----------------------------------------------------------------------
+# $Id: greet.sh 520 2010-11-02 09:44:26Z al $
+# ----------------------------------------------------------------------
+
+   The `greet' function defines variables that will be available along
+`greet' function execution environment. Later, as final definition, the
+`greet' function calls the `greet_getActions' function defined inside
+`greet_getActions.sh' function script.
+
+   In our example, the `greet' function definition would look as
+follows:
+
+
+function greet {
+
+    # Define global variables.
+
+    # Define command-line interface.
+    greet_getActions
+
+}
+
+   This time we didn't use global variables for `greet' functionality,
+so we left section for global variables definition empty.
+
+   The `greet_getActions' function defines the command-line interface
+of `greet' functionality. The command-line interface defines what to do
+with arguments passed to `centos-art.sh' script once `greet' has been
+specified as second argument.
+
+   In our function example, the `greet_getActions' function definition
+would look like the following:
+
+
+function greet_getActions {
+
+    case "$OPTIONNAM" in
+
+        --hello )
+            greet_doHello
+            ;;
+
+        --bye )
+            greet_doBye
+            ;;
+
+        * )
+            cli_printMessage "`gettext "The option provided is not valid."`"
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+
+    esac
+
+}
+
+   In the above example, we've defined a selection case based on second
+argument's option name (OPTIONNAM). In our selection case, we defined
+the `--hello' and `--bye' options as valid options. If no one of them
+is provided as second command-line argument, the `*' option is
+evaluated instead.
+
+   The `*' option and the two following lines, should always be present
+in `*_getActions.sh' function scripts, no matter what specific
+functionality you are creating. This convenction helps the user to find
+out documentation about the current functionality in use.  Of course,
+function documentation needs to be created first (*note trunk Scripts
+Bash Functions Help::, to know how), and that task is something you
+--as author of specific functions-- probably want to do personally.
+
+   Following with our example, the `greet_doHello', and `greet_doBye'
+functions are the core of `greet' specific functionality. In such
+functions is where we define what our function realy does --output
+different kinds of greetings, in the sake of our example--.
+
+
+function greet_doHello {
+
+    cli_printMessage "`gettext "Hello"` $OPTIONVAL"
+
+}
+
+
+function greet_doBye {
+
+    cli_printMessage "`gettext "Goodbye"` $OPTIONVAL"
+
+}
+
+   In both `greet_doHello' and `gree_doBye' function definitions, we
+used the OPTIONVAL variable. This variable is defined in `cli.sh'
+function script and contains the value passed after the equal sign
+(i.e., `=') inside second command-line argument. For example, if the
+second command-line argument is `--hello='World'', the value of
+OPTIONVAL variable is `World' without quotes.
+
+   Well, it seems that our example is rather complete by now. Let's see
+how its files are organized. For this, we use the `tree' command:
+
+
+trunk/Scripts/Bash/Functions/Greet
+|-- greet_doBye.sh
+|-- greet_doHello.sh
+|-- greet_getActions.sh
+`-- greet.sh
+
+   To try the `greet' specific functionality, you need to pass the
+`greet' as first argument to `centos-art.sh' script, and any of the
+valid options as second argument. Some examples are illustrated below:
+
+
+[centos@projects ~]$ centos-art greet --hello='World'
+Hello World
+[centos@projects ~]$ centos-art greet --bye='World'
+Goodbye World
+[centos@projects ~]$
+
+   The word `World' in the examples above, can be anything. In fact,
+change it to have a little fun :).
+
+   In `greet' example we've described so far, we only use the
+`cli_printMessage' global function in action specific functions, but
+more interesting things can be achieved inside them.  For example, if
+you pass a directory path as second argument option value, you could
+retrive a list of files from therein, and process them. If the list of
+files turns too long, you could add the third argument in the form
+`--filter='regex'' and reduce the amount of files to process using a
+regular expression pattern.
+
+   This description may serve you as an introduction to understand how
+specific functionalities work inside `centos-art.sh' script. With some
+of luck this introduction will also serve you as motivation to create
+your own specific functionalities.
+
+   By the way, the `greet' functionality doesn't exist inside
+`centos-art.sh' script. Would you like to create it?
 
 3.35.3 Usage
 ------------
 
-Usage of available functionalities is described in the following menu:
+3.35.3.1 Global variables
+.........................
+
+The following global variables of `centos-art.sh' script, are available
+for you to use inside specific functions:
+
+TEXTDOMAIN
+     Default domain used to retrieve translated messages. This value is
+     set in `initFunctions.sh' and shouldn't be changed.
+
+TEXTDOMAINDIR
+     Default directory used to retrieve translated messages. This value
+     is set in `initFunctions.sh' and shouldn't be changed.
+
+ACTION
+     Default action passed to `centos-art' command as first argument.
+     For example, in the command `centos-art render --entry=path/to/dir
+     --filter=regex', the action passed to `centos-art' is `render'.
+
+OPTIONNAM
+     Default option name passed to `centos-art' command as second
+     argument. For example, in the command `centos-art render
+     --entry=path/to/dir --filter=regex', the option name passed to
+     `centos-art' as second argument is `--entry'.
+
+OPTIONVAL
+     Default option value passed to `centos-art' command as second
+     argument. For example, in the command `centos-art render
+     --entry=path/to/dir --filter=regex', the option value passed to
+     `centos-art' as second argument is `path/to/dir'.
+
+REGEX
+     Default option value passed to `centos-art' command as third
+     argument. For example, in the command `centos-art render
+     --entry=path/to/dir --filter=regex', the option value passed to
+     `centos-art' as second argument is `regex'.
+
+     At present time, the option name passed as third argument is not
+     variable, as second argument option name is. The third argument
+     option name is stocked to `--filter' for whatever value it passed
+     at the right side of its equal sign. Generally, third argument
+     option value is used to pass regular expression patterns that
+     modify the list of files to process but this is not the only
+     feature it may serve to.
+
+ANSWER
+     Default answer for questions. As most questions are to request
+     confirmation about some specific action, default answer to this
+     variable is negative (i.e., `No'). Default answer value takes
+     place when no value is entered as response to confirmation
+     questions before pressing <RET> key.
+
+TMPFILE
+     Default location to store temporal files. This variable contains a
+     value with the format `/tmp/centos-art-$$'. The `$$' expands to
+     the process id of `centos-art' current execution.
+
+EDITOR
+     Default text editor. This variable contains the absolute path to
+     `centos-art.sh' script default text editor (i.e., `/usr/bin/vim').
+     If you want to use a different text editor set, and export this
+     variable in your `~/.bash_profile' file. The `centos-art.sh'
+     script recognizes one of the following text editors only:
+
+        * /usr/bin/vim
+
+        * /usr/bin/emacs
+
+        * /usr/bin/nano
+
+
+3.35.3.2 Global functions
+.........................
+
+The following global functions of `centos-art.sh' script, are available
+for you to use inside specific functions:
+
+`cli_checkFiles'
+     This function checks files (e.g., regular files, regular
+     directories, symbolic links, etc.) existence.
+
+`cli_getCountryCodes'
+     This function outputs a list with country codes as defined in
+     ISO3166 standard.
+
+`cli_getCountryNames'
+     This function reads one language locale code in the format LL_CC
+     and outputs the name of its related country.
+
+`cli_getCurrentLocale'
+     This function checks LANG environment variable and returns the
+     current locale from more specific to less specific. For example, if
+     the locale `en_GB' is the current one, it should be used instead
+     of just `en'.
+
+`cli_getLangCodes'
+     This function outputs a list of language codes as defined in ISO639
+     standard.
+
+`cli_getLangNames'
+     This function reads one language locale code in the format LL_CC
+     and outputs its language name as defined in ISO639 standard.
+
+`cli_getLocales'
+     This function outputs locale codes in LL and LL_CC format. Combine
+     both ISO639 and ISO3166 specification in order to build the final
+     locale list. This function defines which translation locales are
+     supported inside CentOS Artwork Repository.
+
+`cli_getRepoNames'
+     This function sets naming convenction. Inside CentOS Artowrk
+     Repository, regular files are written in lower case and directories
+     are written in lower case but with the first letter in upper case.
+     Use this function to sanitate the name of regular files and
+     directories you work with.
+
+`cli_getThemeName'
+     This function manipulates the current absolute path to extract the
+     theme name from it. If there is no theme in the path, this function
+     returns an empty string.
+
+`cli_printMessage'
+     This function outputs information in predifined formats. This
+     function (cli_printMessage) is the standard way to output
+     information inside `centos-art.sh' script. Use this function
+     whenever you need to output information from `centos-art.sh'.
+
+3.35.3.3 Specific functions
+...........................
+
+The following specific functions of `centos-art.sh' script, are
+available for you to use:
 
 3.35.4 See also
 ---------------
@@ -4234,90 +4599,90 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  365)
-Common translation files:                      See 3.48.2.5. (line 3659)
-How to render brands' translation files:       See 3.50.3.   (line 3964)
-How to render fonts' translation files:        See 3.52.3.   (line 4041)
-How to render translation files:               See 3.48.3.   (line 3829)
-Specific translation files:                    See 3.48.2.6. (line 3684)
-tags:                                          See 2.        (line  368)
-Template translation files:                    See 3.48.2.4. (line 3489)
-Translation brands file names:                 See 3.50.2.1. (line 3921)
-Translation configuration scripts:             See 3.48.2.8. (line 3718)
-Translation entries:                           See 3.48.2.1. (line 3305)
-Translation files:                             See 3.48.2.3. (line 3421)
-Translation markers:                           See 3.48.2.2. (line 3386)
-Translation paths:                             See 3.48.2.1. (line 3305)
+branches:                                      See 1.        (line  369)
+Common translation files:                      See 3.48.2.5. (line 4024)
+How to render brands' translation files:       See 3.50.3.   (line 4329)
+How to render fonts' translation files:        See 3.52.3.   (line 4406)
+How to render translation files:               See 3.48.3.   (line 4194)
+Specific translation files:                    See 3.48.2.6. (line 4049)
+tags:                                          See 2.        (line  372)
+Template translation files:                    See 3.48.2.4. (line 3854)
+Translation brands file names:                 See 3.50.2.1. (line 4286)
+Translation configuration scripts:             See 3.48.2.8. (line 4083)
+Translation entries:                           See 3.48.2.1. (line 3670)
+Translation files:                             See 3.48.2.3. (line 3786)
+Translation markers:                           See 3.48.2.2. (line 3751)
+Translation paths:                             See 3.48.2.1. (line 3670)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 3718)
-Translation rendering:                         See 3.48.2.7. (line 3707)
-Translation rendering default functionality:   See 3.48.2.9. (line 3804)
-trunk:                                         See 3.        (line  371)
-trunk Identity:                                See 3.1.      (line  374)
-trunk Identity Brands:                         See 3.2.      (line  794)
-trunk Identity Fonts:                          See 3.3.      (line  811)
-trunk Identity Icons:                          See 3.4.      (line  887)
-trunk Identity Isolinux:                       See 3.5.      (line  904)
-trunk Identity Models:                         See 3.6.      (line  921)
-trunk Identity Models Css:                     See 3.7.      (line  941)
-trunk Identity Models Html:                    See 3.8.      (line  963)
-trunk Identity Models Img Promo Web:           See 3.9.      (line  984)
-trunk Identity Models Tpl:                     See 3.10.     (line 1005)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1026)
-trunk Identity Models Xcf:                     See 3.12.     (line 1340)
-trunk Identity Release:                        See 3.13.     (line 1361)
-trunk Identity Themes:                         See 3.14.     (line 1378)
-trunk Identity Themes Models:                  See 3.15.     (line 1403)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1436)
-trunk Identity Themes Models Default:          See 3.17.     (line 1463)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1495)
+                                                             (line 4083)
+Translation rendering:                         See 3.48.2.7. (line 4072)
+Translation rendering default functionality:   See 3.48.2.9. (line 4169)
+trunk:                                         See 3.        (line  375)
+trunk Identity:                                See 3.1.      (line  378)
+trunk Identity Brands:                         See 3.2.      (line  798)
+trunk Identity Fonts:                          See 3.3.      (line  815)
+trunk Identity Icons:                          See 3.4.      (line  891)
+trunk Identity Isolinux:                       See 3.5.      (line  908)
+trunk Identity Models:                         See 3.6.      (line  925)
+trunk Identity Models Css:                     See 3.7.      (line  945)
+trunk Identity Models Html:                    See 3.8.      (line  967)
+trunk Identity Models Img Promo Web:           See 3.9.      (line  988)
+trunk Identity Models Tpl:                     See 3.10.     (line 1009)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1030)
+trunk Identity Models Xcf:                     See 3.12.     (line 1344)
+trunk Identity Release:                        See 3.13.     (line 1365)
+trunk Identity Themes:                         See 3.14.     (line 1382)
+trunk Identity Themes Models:                  See 3.15.     (line 1407)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1440)
+trunk Identity Themes Models Default:          See 3.17.     (line 1467)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1499)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1579)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1596)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1622)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1647)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1751)
+                                                             (line 1583)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1600)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1626)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1651)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1755)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.24.
-                                                             (line 1873)
+                                                             (line 1877)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.25.
-                                                             (line 1894)
+                                                             (line 1898)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.26.
-                                                             (line 1915)
+                                                             (line 1919)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.27.
-                                                             (line 1942)
-trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 1998)
-trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2020)
+                                                             (line 1946)
+trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2002)
+trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2024)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.30.
-                                                             (line 2037)
-trunk Identity Widgets:                        See 3.31.     (line 2333)
-trunk Manuals:                                 See 3.32.     (line 2350)
-trunk Scripts:                                 See 3.33.     (line 2404)
-trunk Scripts Bash:                            See 3.34.     (line 2428)
-trunk Scripts Bash Functions:                  See 3.35.     (line 2540)
-trunk Scripts Bash Functions Help:             See 3.36.     (line 2561)
-trunk Scripts Bash Functions Html:             See 3.37.     (line 2582)
-trunk Scripts Bash Functions Locale:           See 3.38.     (line 2603)
-trunk Scripts Bash Functions Path:             See 3.39.     (line 2683)
-trunk Scripts Bash Functions Render:           See 3.40.     (line 2717)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 2738)
-trunk Scripts Bash Functions Shell:            See 3.42.     (line 2916)
-trunk Scripts Bash Functions Svg:              See 3.43.     (line 2937)
-trunk Scripts Bash Functions Verify:           See 3.44.     (line 2981)
-trunk Scripts Bash Locale:                     See 3.45.     (line 3189)
-trunk Scripts Perl:                            See 3.46.     (line 3218)
-trunk Scripts Python:                          See 3.47.     (line 3235)
-trunk Translations:                            See 3.48.     (line 3256)
-trunk Translations Identity:                   See 3.49.     (line 3859)
-trunk Translations Identity Brands:            See 3.50.     (line 3880)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 3975)
-trunk Translations Identity Fonts:             See 3.52.     (line 3990)
-trunk Translations Identity Models:            See 3.53.     (line 4057)
-trunk Translations Identity Release:           See 3.54.     (line 4072)
-trunk Translations Identity Themes:            See 3.55.     (line 4087)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4102)
+                                                             (line 2041)
+trunk Identity Widgets:                        See 3.31.     (line 2337)
+trunk Manuals:                                 See 3.32.     (line 2354)
+trunk Scripts:                                 See 3.33.     (line 2408)
+trunk Scripts Bash:                            See 3.34.     (line 2432)
+trunk Scripts Bash Functions:                  See 3.35.     (line 2544)
+trunk Scripts Bash Functions Help:             See 3.36.     (line 2926)
+trunk Scripts Bash Functions Html:             See 3.37.     (line 2947)
+trunk Scripts Bash Functions Locale:           See 3.38.     (line 2968)
+trunk Scripts Bash Functions Path:             See 3.39.     (line 3048)
+trunk Scripts Bash Functions Render:           See 3.40.     (line 3082)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3103)
+trunk Scripts Bash Functions Shell:            See 3.42.     (line 3281)
+trunk Scripts Bash Functions Svg:              See 3.43.     (line 3302)
+trunk Scripts Bash Functions Verify:           See 3.44.     (line 3346)
+trunk Scripts Bash Locale:                     See 3.45.     (line 3554)
+trunk Scripts Perl:                            See 3.46.     (line 3583)
+trunk Scripts Python:                          See 3.47.     (line 3600)
+trunk Translations:                            See 3.48.     (line 3621)
+trunk Translations Identity:                   See 3.49.     (line 4224)
+trunk Translations Identity Brands:            See 3.50.     (line 4245)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 4340)
+trunk Translations Identity Fonts:             See 3.52.     (line 4355)
+trunk Translations Identity Models:            See 3.53.     (line 4422)
+trunk Translations Identity Release:           See 3.54.     (line 4437)
+trunk Translations Identity Themes:            See 3.55.     (line 4452)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4467)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 4123)
-trunk Translations Identity Widgets:           See 3.58.     (line 4216)
+                                                             (line 4488)
+trunk Translations Identity Widgets:           See 3.58.     (line 4581)
 List of Figures
 ***************
 
