@@ -64,14 +64,6 @@ function cli_printMessage {
             echo '----------------------------------------------------------------------'
             ;;
 
-        'AsHelpLine' )
-            echo '----------------------------------------------------------------------'
-            echo "$MESSAGE" | fmt --width=70
-            echo '----------------------------------------------------------------------'
-            cli_printMessage "`gettext "HELP"`: centos-art help --read=$OPTIONVAL" 
-            echo '----------------------------------------------------------------------'
-            ;;
-
         'AsUpdatingLine' )
             echo "`gettext "Updating"`: $MESSAGE" \
                 | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
