@@ -77,8 +77,10 @@ function cli_checkFiles {
 
         fh )
             # To exist, file should be a regular file or a symbolic link.
-            if [[ ! -f $FILE ]];then
-                if [[ ! -h $FILE ]];then
+            cli_checkFiles $FILE 'f' '' '--quiet'
+            if [[ $? -ne 0 ]];then
+                cli_checkFiles $FILE 'h' '' '--quiet'
+                if [[ $? -ne 0 ]];then
                     MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" doesn't exist."`"
                 fi
             fi
