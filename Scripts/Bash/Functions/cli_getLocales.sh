@@ -51,7 +51,7 @@ function cli_getLocales {
     # organize the final list of locales.
     LOCALES=$(echo $LOCALES | sed -r "s![[:space:]]+!\n!g")
 
-    # Output locales organized by name and avoiding duplication lines.
+    # Output locales organized by name and avoiding duplicated lines.
     echo "$LOCALES" | sort | uniq
 
 }
