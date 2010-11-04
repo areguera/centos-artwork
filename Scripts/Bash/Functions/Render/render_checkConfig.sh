@@ -81,7 +81,7 @@ function render_checkConfig {
 
     # Re-define theme model value using repository directory name
     # convenction.
-    THEMEMODEL=$(cli_getRepoName 'd' "$THEMEMODEL")
+    THEMEMODEL=$(cli_getRepoName "$THEMEMODEL" 'd')
 
     # Check theme model name.
     if [[ $THEMEMODEL == '' ]] \

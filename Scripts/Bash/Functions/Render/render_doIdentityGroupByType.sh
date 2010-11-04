@@ -102,7 +102,7 @@ function render_doIdentityGroupByType {
         PATTERNS[0]=$(echo "$FORMATS" | sed 's! !|!g')
 
         # Define pattern for directories.
-        PATTERNS[1]=$(echo $(for i in $FORMATS; do cli_getRepoName 'd' $i; done) | sed 's! !|!g')
+        PATTERNS[1]=$(echo $(for i in $FORMATS; do cli_getRepoName $i 'd'; done) | sed 's! !|!g')
 
         # Define pattern for path. The path pattern combines both file
         # extension and directories patterns. This pattern is what we
@@ -136,7 +136,7 @@ function render_doIdentityGroupByType {
 
             # Redifine file path to add file type directory
             SOURCE=${FILE}.${FORMAT}
-            TARGET=$(dirname $FILE)/$(cli_getRepoName 'd' "$FORMAT")
+            TARGET=$(dirname $FILE)/$(cli_getRepoName "$FORMAT" 'd')
 
             # Check existence of source file.
             cli_checkFiles $SOURCE 'f' '' '--quiet'

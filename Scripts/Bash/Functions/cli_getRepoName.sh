@@ -29,18 +29,18 @@
 
 function cli_getRepoName {
 
-   local ID="$1"
-   local NAME="$2"
+   local NAME="$1"
+   local TYPE="$2"
 
-   case $ID in
+   case $TYPE in
 
-      F | f | File | file )
+      f | regular-file )
       NAME=$(echo $NAME \
          | tr -s ' ' '_' \
          | tr '[:upper:]' '[:lower:]')
       ;;
 
-      D | d | Dir | dir | Directory | directory )
+      d | directory )
       NAME=$(echo $NAME \
          | tr -s ' ' '_' \
          | tr '[:upper:]' '[:lower:]' \

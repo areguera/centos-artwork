@@ -29,7 +29,7 @@
 function cli {
 
     # Define action variable using first argument (lowercase) value.
-    ACTION=$(cli_getRepoName 'f' "$1")
+    ACTION=$(cli_getRepoName "$1" 'f')
 
     # Define option name (OPTIONNAM) and option value (OPTIONVAL)
     # variables passed as second argument to the command line

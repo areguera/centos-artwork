@@ -38,7 +38,7 @@ function cli_getActions {
     REPOFUNDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions
 
     # Define action directory. 
-    ACTIONDIR=$(cli_getRepoName 'd' $ACTION)
+    ACTIONDIR=$(cli_getRepoName $ACTION 'd')
 
     # Define action file name.
     ACTIONSCRIPT=${REPOFUNDIR}/${ACTIONDIR}/${ACTION}.sh
