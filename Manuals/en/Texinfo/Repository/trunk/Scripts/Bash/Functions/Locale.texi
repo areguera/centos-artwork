@@ -20,23 +20,23 @@ location @file{$CLI_LANG/$CLI_LANG.po}.
 The @var{CLI_LANG} variable discribes the locale language used to
 output messages inside @command{centos-art} command. The locale
 language used inside @command{centos-art} command is taken from the
-@var{LANG} environment variable.  The @var{CLI_LANG} variable has the
+@env{LANG} environment variable.  The @var{CLI_LANG} variable has the
 @samp{LL_CC} format, where @samp{LL} is a language code from the
 ISO-639 standard, and @samp{CC} a country code from the ISO-3166
 standard.
 
-The @var{LANG} environment variable is set when you do log in to your
+The @env{LANG} environment variable is set when you do log in to your
 system. If you are using a graphical session, change language to your
-native language and do login. That would set and exoprt the @var{LANG}
+native language and do login. That would set and exoprt the @env{LANG}
 environment variable to the correct value. On the other side, if you
 are using a text session edit your @file{~/.bash_profile} file to set
-and export the @var{LANG} environment variable to your native locale
+and export the @env{LANG} environment variable to your native locale
 as defines the @command{locale -a} command output; do logout, and do
 login again.
 
-At this point, the @var{LANG} environment variable has the appropriate
+At this point, the @env{LANG} environment variable has the appropriate
 value you need, in order to translate @command{centos-art.sh} messages
-to your native language (the one set in @var{LANG} environment
+to your native language (the one set in @env{LANG} environment
 variable). 
 
 With the @file{$CLI_LANG/$CLI_LANG.po} file up to date, the
@@ -73,7 +73,7 @@ can find such modifications in the following files:
 @table @samp
 @item centos-art locale --edit
 Use this command to translate command-line interface output messages
-in the current system locale you are using (as specified in @var{LANG}
+in the current system locale you are using (as specified in @env{LANG}
 environment variable).
 @item centos-art locale --list
 Use this command to see the command-line interface locale report.

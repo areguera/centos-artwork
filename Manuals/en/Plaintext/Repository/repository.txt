@@ -2583,7 +2583,7 @@ advantage can be taken from them. Global functions are stored
 immediatly under `trunk/Scripts/Bash/Functions' directory in files
 begining with `cli' prefix.
 
-   OK, let's begin with our specific functionality example.
+   OK, let's begin with our `greet' specific functionality example.
 
    What function name do we use? Well, lets use `greet'. Note that
 `hello' is not a verb, but an expression, a kind of greeting, an
@@ -2597,28 +2597,24 @@ Name: greet
 Path: trunk/Scripts/Bash/Functions/Greet
 File: trunk/Scripts/Bash/Functions/Greet/greet.sh
 
-     *Note* Note how function name is used as reference to define
-     function path, function script, and function definition inside
-     function script.
+   The `greet.sh' function script is the first file `centos-art.sh'
+script loads when the `greet' functionality is called using commands
+like `centos-art greet --hello='World''.  The `greet.sh' function
+script contains the `greet' function definition.
 
-   As consistency convenction, files related to `greet' functionality
-are stored under its own function path. The `greet.sh' function script
-is the first file `centos-art.sh' script loads when the `greet'
-functionality is called using commands like `centos-art greet
---hello='World''.
-
-   The `greet.sh' function script contains the `greet' function
-definition. Inside `centos-art.sh' script, each function definition has
-its own top commentary, followed by one blank line, and then one
-function defintion below it.
+   Inside `centos-art.sh' script, each function definition has its own
+top commentary, followed by one blank line, and then one function
+defintion below it.
 
    The function top commentary contains a brief description about what
 the function does, one-line for copyright note --with your personal
 information--, the license under which the function source code is
 released --the `centos-art.sh' script is released as GPL, so do all its
 functions--, and the subversion `$Id$' keyword--which is later expanded
-when we do `svn propset' over `greet.sh' file--. In our function
-example, the `greet.sh' top commentary would look like the following:
+when we do `svn propset' over `greet.sh' file--.
+
+   In our `greet' function example, the `greet.sh' top commentary would
+look like the following:
 
 
 #!/bin/bash
@@ -2648,13 +2644,7 @@ example, the `greet.sh' top commentary would look like the following:
 # $Id$
 # ----------------------------------------------------------------------
 
-   The `greet' function defines variables that will be available along
-`greet' function execution environment. Later, as final definition, the
-`greet' function calls the `greet_getActions' function defined inside
-`greet_getActions.sh' function script.
-
-   In our example, the `greet' function definition would look as
-follows:
+   The `greet' function definition would look as follows:
 
 
 function greet {
@@ -2666,16 +2656,16 @@ function greet {
 
 }
 
-   This time we didn't use global variable definitions for `greet'
-execution environment, so we left the section empty.
+   The first definition inside `greet' function, are global variables
+that will be available along `greet' function execution environment.
+This time we didn't use global variable definitions for `greet'
+function execution environment, so we left that section empty.
 
-   The `greet_getActions' function defines the command-line interface
-of `greet' functionality. The command-line interface defines what to do
-with arguments passed to `centos-art.sh' script once `greet' has been
-specified as second argument.
-
-   In our function example, the `greet_getActions' function definition
-would look like the following:
+   Later, we call `greet_getActions' function to define the
+command-line interface of `greet' functionality. The command-line
+interface sets what we can do with arguments passed to `centos-art.sh'
+script, once `greet' has been specified as first argument in the
+command-line.
 
 
 function greet_getActions {
@@ -2698,25 +2688,27 @@ function greet_getActions {
 
 }
 
-   In the above example, we've defined a selection case based on second
-argument's option name (OPTIONNAM). In our selection case, we defined
-the `--hello' and `--bye' options as valid options. If no one of them
-is provided as second command-line argument, the `*' option is
-evaluated instead.
+   The OPTIONNAM global variable is defined in `cli.sh' function script
+and contains the value passed before the equal sign (i.e., `=') in the
+second command-line argument of `centos-art.sh' script. For example, if
+the second command-line argument is `--hello='World'', the value of
+OPTIONNAM variable would be `--hello'.  Using this configuration let us
+deside which action to perform based on the option name passed to
+`centos-art.sh' script as second argument.
 
-   The `*' option and the two following lines, should always be present
-in `*_getActions.sh' function scripts, no matter what specific
+   The `greet' specific function makes available two valid greetings
+through `--hello' and `--bye' options.  If no one of them is provided
+as second command-line argument, the `*' case is evaluated instead.
+
+   The `*' case and its two further lines should always be present in
+`_getActions.sh' function scripts, no matter what specific
 functionality you are creating. This convenction helps the user to find
-out documentation about the current functionality in use.  Of course,
-function documentation needs to be created first (*note trunk Scripts
-Bash Functions Help::, to know how), and that task is something you
---as author of specific functions-- probably want to do personally.
+out documentation about current functionality in use.
 
-   Following with our example, the `greet_doHello', and `greet_doBye'
-function definitions are the core of `greet' specific functionality.
-In such function definitions is where we define what our function realy
-does --output different kinds of greetings, in the sake of our
-example--.
+   The `greet_doHello' and `greet_doBye' function definitions are the
+core of `greet' specific functionality.  In such function definitions
+we set what our `greet' function really does: to output different kinds
+of greetings.
 
 
 function greet_doHello {
@@ -2742,16 +2734,15 @@ function greet_doBye {
 stored inside `greet''s function directory path (i.e.
 `trunk/Scripts/Bash/Functions/Greet').
 
-   In the examples above, we use the OPTIONVAL global variable.  The
-OPTIONVAL variable is defined in `cli.sh' function script and contains
-the value passed after the equal sign (i.e., `=') in the second
-command-line argument of `centos-art.sh' script. For example, if the
-second command-line argument is `--hello='World'', the value of
+   The OPTIONVAL global variable is defined in `cli.sh' function script
+and contains the value passed after the equal sign (i.e., `=') in the
+second command-line argument of `centos-art.sh' script. For example, if
+the second command-line argument is `--hello='World'', the value of
 OPTIONVAL variable would be `World' without quotes.
 
    Let's see how `greet' specific functionality files are organzied
-under `greet''s function directory. To see file organization, we use
-the `tree' command:
+under `greet''s function directory. To see file organization we use the
+`tree' command:
 
 
 trunk/Scripts/Bash/Functions/Greet
@@ -2760,9 +2751,10 @@ trunk/Scripts/Bash/Functions/Greet
 |-- greet_getActions.sh
 `-- greet.sh
 
-   To try the `greet' specific functionality, pass `greet' string as
-first argument to `centos-art.sh' script, and any of the valid options
-as second argument. Some examples are illustrated below:
+   To try the `greet' specific functionality, pass the function name
+(i.e., `greet') as first argument to `centos-art.sh' script, and any of
+the valid options as second argument. Some examples are illustrated
+below:
 
 
 [centos@projects ~]$ centos-art greet --hello='World'
@@ -2771,28 +2763,45 @@ Hello World
 Goodbye World
 [centos@projects ~]$
 
-   The word `World' in the examples above, can be anything. In fact,
-change it to have a little fun :).
+   The word `World' in the examples above can be anything. In fact,
+change it to have a little fun.
 
    Now that we have a specific function that works as we expect, it is
-time to document it. To document `greet' specific functionality, we
-need to use its directory path and the `help' functionality (*note
-trunk Scripts Bash Functions Help::) of `centos-art.sh' script, just as
-the following command illustrates:
+time to document it. To document `greet' specific functionality, we use
+its directory path and the `help' functionality (*note trunk Scripts
+Bash Functions Help::) of `centos-art.sh' script, just as the following
+command illustrates:
 
 
 centos-art help --edit=trunk/Scripts/Bash/Functions/Greet
 
+   Now that we have documented our function, it is time to translate its
+output messages to different languages. To translate specific
+functionality output messages to different languages we use the
+`locale' functionality (*note trunk Scripts Bash Functions Locale::) of
+`centos-art.sh' script, just as the following command illustrates:
+
+
+centos-art locale --edit
+
+     *Warning* To translate output messages in different languages,
+     your system locale information --as in `LANG' environment
+     variable-- must be set to that locale you want to produce
+     translated messages for. For example, if you want to produce
+     translated messages for Spanish language, your system locale
+     information must be set to `es_ES.UTF-8' or similar.
+
    Well, it seems that our example is rather complete by now.
 
-   In `greet' example we've described so far, we only use the
-`cli_printMessage' global function in action specific functions, but
-more interesting things can be achieved inside them.  For example, if
-you pass a directory path as second argument option value, you could
-retrive a list of files from therein, and process them. If the list of
-files turns too long, you could add the third argument in the form
-`--filter='regex'' and reduce the amount of files to process using a
-regular expression pattern.
+   In `greet' function example we've described so far, we only use
+`cli_printMessage' global function in action specific function
+definitions in order to print a message simply, but more interesting
+things can be achieved inside action specific function definitions.
+For example, if you pass a directory path as second argument option
+value, you could retrive a list of files from therein, and process
+them. If the list of files turns too long, you could add the third
+argument in the form `--filter='regex'' and reduce the amount of files
+to process using a regular expression pattern.
 
    This description may serve you as an introduction to understand how
 specific functionalities work inside `centos-art.sh' script. With some
@@ -2800,7 +2809,7 @@ of luck this introduction will also serve you as motivation to create
 your own specific functionalities.
 
    By the way, the `greet' functionality doesn't exist inside
-`centos-art.sh' script. Would you like to create it?
+`centos-art.sh' script yet. Would you like to create it?
 
 3.35.3 Usage
 ------------
@@ -2898,7 +2907,7 @@ for you to use inside specific functions:
 
      When TYPE is not specified, `cli_checkFiles' verifies FILE
      existence, no matter what kind of file it be.  If TYPE is
-     specified, it can take one of the following values:
+     specified, use one of the following values:
 
     `d'
     `directory'
@@ -2920,34 +2929,33 @@ for you to use inside specific functions:
 
      When ACTION is not specified, `cli_checkFiles' function uses
      `Checking' as default action message. The action message is used
-     on left-column as description for verification action. It may be
+     on left-column as description to action verification.  It may be
      cases where you need to change default action message with your
-     own. In that cases remember to use the `"`gettext "Your message"`"'
-     construction in order for `gettext' to know about it. This way
-     your action message can be translated to other languages too.
+     own.  In those cases remember to use the `"`gettext "Your
+     message"`"' construction in order for `gettext' to know about it.
+     This way your action message can be translated to other languages
+     too.  By default `cli_checkFiles' output information about FILE on
+     the right column.
 
-     By default `cli_checkFiles' output information about FILE on the
-     right column. When OPTIONS is specified, default behaivour is
-     modified as specified in OPTIONS. The OPTIONS can take any of the
-     following options:
+     When OPTIONS is specified, default behaivour is modified as
+     specified in OPTIONS. The OPTIONS can take any of the following
+     options:
     `--quiet'
-          If this option is specified, `cli_checkFiles' supresses
-          verification output.  This option is useful if you only want
-          to do file verifications but don't want to output any
-          information about it.
-
-
+          The `--quiet' option supresses verification output.
           cli_checkFiles $FILE 'f' '' '--quiet'
           if [[ $? -eq 0 ]];then
-              echo "File exists."
+              INFO="`gettext "The file exists."`"
           else
-              echo "File doesn't exist"
+              INFO="`gettext "The file doesn't exist."`"
           fi
+           Use `--quiet' option whenever you want to do file
+          verifications but don't want to output any information about
+          it.
 
  -- Function: cli_getCountryCodes [FILTER]
      `cli_getCountryCodes' function outputs a list with country codes
      as defined in ISO3166 standard. When FILTER is provided,
-     `cli_getCountryCodes' outpus country codes that match FILTER
+     `cli_getCountryCodes' outputs country codes that match FILTER
      regular expression pattern.
 
  -- Function: cli_getCountryNames [FILTER]
@@ -2957,10 +2965,27 @@ for you to use inside specific functions:
      FILTER, exactly, is returned.
 
  -- Function: cli_getCurrentLocale
-     `cli_getCurrentLocale' function checks LANG environment variable
-     and returns the current locale from more specific to less
-     specific. For example, if the locale `en_GB' is the current one,
-     it should be used instead of just `en'.
+     `cli_getCurrentLocale' function uses `LANG' environment variable
+     to build a locale pattern that is later applied to
+     `cli_getLocales' function output in order to return the current
+     locale that `centos-art.sh' script works with.
+
+     The current locale information, returned by
+     `cli_getCurrentLocale', is output from more specific to less
+     specific. For example, if `en_GB' locale exists in
+     `cli_getLocales' function output, the `en_GB' locale would take
+     precedence before `en' locale.
+
+     Locale precedence selection is quite important in order to define
+     the locale type we use for message translations. For example, if
+     `en_GB' is used, we are also saying that no common language
+     specification is used for English language (i.e., `en'). Instead,
+     we are using English non-common country-specific language
+     specifications like `en_AU', `en_BW', `en_GB', `en_US', etc., for
+     message translations.
+
+     Use `cli_getCurrentLocale' function to know what current locale
+     information to use inside `centos-art.sh' script.
 
  -- Function: cli_getLangCodes [FILTER]
      `cli_getLangCodes' function outputs a list of language codes as
@@ -2968,37 +2993,77 @@ for you to use inside specific functions:
      `cli_getLangCodes' outputs language codes that match FILTER
      regular expression pattern.
 
- -- Function: cli_getLangNames
-     `cli_getLangNames' function reads one language locale code in the
+ -- Function: cli_getLangName [FILTER]
+     `cli_getLangName' function reads one language locale code in the
      format LL_CC and outputs its language name as defined in ISO639
-     standard. If filter is specified, just the language name that
+     standard. If FILTER is specified, just the language name that
      matches FILTER, exactly, is returned.
 
  -- Function: cli_getLocales
-     `cli_getLocales' function outputs locale codes in LL and LL_CC
-     format. Combine both ISO639 and ISO3166 specification in order to
-     build the final locale list. The `cli_getLocales' function defines
-     which translation locales are supported inside CentOS Artwork
-     Repository.
+     `cli_getLocales' defines what locale codes does `centos-art.sh'
+     script support.
 
- -- Function: cli_getRepoNames
-     `cli_getRepoNames' function sets naming convenction inside CentOS
-     Artowrk Repository. As convenction, regular files are written in
-     lower case and directories are written in CamelCase. Use this
-     function to sanitate the name of regular files and directories you
-     work with.
+     Occasionally, you use `cli_getLocales' function to add locale
+     information in non-common country-specific language (`LL_CC')
+     format for those languages (e.g., `bn_IN', `pt_BR', etc.)  which
+     locale differences cannot be solved using common language
+     specifications (`LL') into one unique common locale specification
+     (e.g., `bn', `pt', etc.).
+
+ -- Function: cli_getRepoName NAME TYPE
+     `cli_getRepoName' function sets file names convenctions inside
+     `centos-art.sh' script. File name convenctions, as set by
+     `cli_getRepoName', are used by specific functionalities of
+     `centos-art.sh' script that rely on repository file system
+     organization to do the work they were initially conceived to do.
+     Consider `cli_getRepoName' function as a place to manage file name
+     convenction centrally.
+
+          *Warning* `cli_getRepoName' function doesn't verify file or
+          directory existence, for that purpose use `cli_checkFiles'
+          function instead.
+
+     The NAME variable contains the file name or directory name you
+     want to sanitate.
+
+     The TYPE variable can be one of the following values:
+    `d'
+    `directory'
+          Sanitate directory NAMEs.
+
+    `f'
+
+    `regular-file'
+          Sanitate regular file NAMEs.
+
+     Use `cli_getRepoName' function to sanitate file names and
+     directory names before their utilization.
+
+     Use `cli_getRepoName' when you need to change file name
+     convenction inside `centos-art.sh' script. When changing file name
+     convenctions inside `cli_getRepoName' what you are really changing
+     is the way functions interpret repository file system
+     organization. In order to a complete file name convenction change,
+     you also need to change file names and directory names inside
+     repository file system organization, just as you did in
+     `cli_getRepoName' function.
+
+          *Note* *Note trunk Scripts Bash Functions Path::, for more
+          information on how to rename files and directories massively
+          inside repository file system organization.
 
  -- Function: cli_getThemeName
-     `cli_getThemeName' function manipulates the current absolute path
-     to extract the theme name from it. If there is no theme in the
-     path, this function returns an empty string.
+     `cli_getThemeName' function evaluates OPTIONVAL global variable to
+     extract theme name from it. In order for `cli_getThemeName'
+     function to extract theme name correctly, the OPTIONVAL variable
+     must contain a directory path under
+     `trunk/Identity/Themes/Motifs/' directory structure. Otherwise,
+     `cli_getThemeName' returns an empty string.
 
  -- Function: cli_printMessage MESSAGE [FORMAT]
      `cli_printMessage' function outputs information in predifined
      formats. The `cli_printMessage' function is the standard way to
-     output information inside `centos-art.sh' script. Use this
-     function whenever you need to output information from
-     `centos-art.sh'.
+     output information inside `centos-art.sh' script.
 
      When FORMAT is not specified, `cli_printMessage' outputs
      information just as it was passed in MESSAGE variable.  Otherwise,
@@ -3121,6 +3186,8 @@ for you to use inside specific functions:
 
           Two-columns format definition is taken from
           `trunk/Scripts/Bash/Styles/output_forTwoColumns.awk' file.
+     Use `cli_printMessage' function whenever you need to output
+     information from `centos-art.sh'.
 
 3.35.3.3 Specific functions
 ...........................
@@ -3196,22 +3263,22 @@ create a portable object file for it, in the location
 
    The CLI_LANG variable discribes the locale language used to output
 messages inside `centos-art' command. The locale language used inside
-`centos-art' command is taken from the LANG environment variable.  The
-CLI_LANG variable has the `LL_CC' format, where `LL' is a language code
-from the ISO-639 standard, and `CC' a country code from the ISO-3166
-standard.
+`centos-art' command is taken from the `LANG' environment variable.
+The CLI_LANG variable has the `LL_CC' format, where `LL' is a language
+code from the ISO-639 standard, and `CC' a country code from the
+ISO-3166 standard.
 
-   The LANG environment variable is set when you do log in to your
+   The `LANG' environment variable is set when you do log in to your
 system. If you are using a graphical session, change language to your
-native language and do login. That would set and exoprt the LANG
+native language and do login. That would set and exoprt the `LANG'
 environment variable to the correct value. On the other side, if you
 are using a text session edit your `~/.bash_profile' file to set and
-export the LANG environment variable to your native locale as defines
+export the `LANG' environment variable to your native locale as defines
 the `locale -a' command output; do logout, and do login again.
 
-   At this point, the LANG environment variable has the appropriate
+   At this point, the `LANG' environment variable has the appropriate
 value you need, in order to translate `centos-art.sh' messages to your
-native language (the one set in LANG environment variable).
+native language (the one set in `LANG' environment variable).
 
    With the `$CLI_LANG/$CLI_LANG.po' file up to date, the `centos-art'
 opens it for you to update translation strings.  The `centos-art'
@@ -3245,7 +3312,7 @@ following files:
 `centos-art locale --edit'
      Use this command to translate command-line interface output
      messages in the current system locale you are using (as specified
-     in LANG environment variable).
+     in `LANG' environment variable).
 
 `centos-art locale --list'
      Use this command to see the command-line interface locale report.
@@ -3274,15 +3341,13 @@ repository file system syncronized with documentation file system.
 
 This feature is not supported yet.
 
-`centos-art path 'path/to/dir/' --copy-to='path/to/dir''
+`centos-art path --rename='old new' --filter='d''
+     Rename all occurences of `old' directory names with `new'
+     directory name, recursively under the current location.
 
-`centos-art path 'path/to/dir/' --copy-to='path/to/dir/filename''
-
-`centos-art path 'path/to/dir/' --move-to='path/to/dir''
-
-`centos-art path 'path/to/dir/' --move-to='path/to/dir/filename''
-
-`centos-art path 'path/to/dir/' --remove'
+`centos-art path --rename='old new' --filter='f''
+     Rename all occurences of `old' file names with `new' file name,
+     recursively under the current location.
 
 3.39.4 See also
 ---------------
@@ -3656,7 +3721,7 @@ functionality of `centos-art.sh' script doesn't modify your
    The `verify' functionality of `centos-art.sh' script evaluates the
 following environment variables:
 
-EDITOR
+`EDITOR'
      Default text editor.
 
      If EDITOR environment variable is not set --or it uses one value
@@ -3669,7 +3734,7 @@ EDITOR
      messages, translation files, configuration files, script files,
      etc.)
 
-TZ
+`TZ'
      Default time zone representation.
 
      Time representation inside repository server is set to Coordinated
@@ -3696,15 +3761,15 @@ TZ
           correct time information of your zone, taking UTC
           representation as reference.
 
-TEXTDOMAIN
+`TEXTDOMAIN'
      Default domain used to retrieve translated messages.  This value is
      set in `initFunctions.sh' and shouldn't be changed.
 
-TEXTDOMAINDIR
+`TEXTDOMAINDIR'
      Default directory used to retrieve translated messages. This value
      is set in `initFunctions.sh' and shouldn't be changed.
 
-LANG
+`LANG'
      Default locale information. This value is set when you start your
      session and can be changed using the "locale" functionality of
      `centos-art.sh' script (*note trunk Scripts Bash Functions
@@ -4811,23 +4876,23 @@ Index
 *****
 
 branches:                                      See 1.        (line  368)
-Common translation files:                      See 3.48.2.5. (line 4235)
-How to render brands' translation files:       See 3.50.3.   (line 4540)
-How to render fonts' translation files:        See 3.52.3.   (line 4617)
-How to render translation files:               See 3.48.3.   (line 4405)
-Specific translation files:                    See 3.48.2.6. (line 4260)
+Common translation files:                      See 3.48.2.5. (line 4300)
+How to render brands' translation files:       See 3.50.3.   (line 4605)
+How to render fonts' translation files:        See 3.52.3.   (line 4682)
+How to render translation files:               See 3.48.3.   (line 4470)
+Specific translation files:                    See 3.48.2.6. (line 4325)
 tags:                                          See 2.        (line  371)
-Template translation files:                    See 3.48.2.4. (line 4065)
-Translation brands file names:                 See 3.50.2.1. (line 4497)
-Translation configuration scripts:             See 3.48.2.8. (line 4294)
-Translation entries:                           See 3.48.2.1. (line 3881)
-Translation files:                             See 3.48.2.3. (line 3997)
-Translation markers:                           See 3.48.2.2. (line 3962)
-Translation paths:                             See 3.48.2.1. (line 3881)
+Template translation files:                    See 3.48.2.4. (line 4130)
+Translation brands file names:                 See 3.50.2.1. (line 4562)
+Translation configuration scripts:             See 3.48.2.8. (line 4359)
+Translation entries:                           See 3.48.2.1. (line 3946)
+Translation files:                             See 3.48.2.3. (line 4062)
+Translation markers:                           See 3.48.2.2. (line 4027)
+Translation paths:                             See 3.48.2.1. (line 3946)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 4294)
-Translation rendering:                         See 3.48.2.7. (line 4283)
-Translation rendering default functionality:   See 3.48.2.9. (line 4380)
+                                                             (line 4359)
+Translation rendering:                         See 3.48.2.7. (line 4348)
+Translation rendering default functionality:   See 3.48.2.9. (line 4445)
 trunk:                                         See 3.        (line  374)
 trunk Identity:                                See 3.1.      (line  377)
 trunk Identity Brands:                         See 3.2.      (line  797)
@@ -4870,30 +4935,30 @@ trunk Manuals:                                 See 3.32.     (line 2353)
 trunk Scripts:                                 See 3.33.     (line 2407)
 trunk Scripts Bash:                            See 3.34.     (line 2431)
 trunk Scripts Bash Functions:                  See 3.35.     (line 2543)
-trunk Scripts Bash Functions Help:             See 3.36.     (line 3137)
-trunk Scripts Bash Functions Html:             See 3.37.     (line 3158)
-trunk Scripts Bash Functions Locale:           See 3.38.     (line 3179)
-trunk Scripts Bash Functions Path:             See 3.39.     (line 3259)
-trunk Scripts Bash Functions Render:           See 3.40.     (line 3293)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3314)
-trunk Scripts Bash Functions Shell:            See 3.42.     (line 3492)
-trunk Scripts Bash Functions Svg:              See 3.43.     (line 3513)
-trunk Scripts Bash Functions Verify:           See 3.44.     (line 3557)
-trunk Scripts Bash Locale:                     See 3.45.     (line 3765)
-trunk Scripts Perl:                            See 3.46.     (line 3794)
-trunk Scripts Python:                          See 3.47.     (line 3811)
-trunk Translations:                            See 3.48.     (line 3832)
-trunk Translations Identity:                   See 3.49.     (line 4435)
-trunk Translations Identity Brands:            See 3.50.     (line 4456)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 4551)
-trunk Translations Identity Fonts:             See 3.52.     (line 4566)
-trunk Translations Identity Models:            See 3.53.     (line 4633)
-trunk Translations Identity Release:           See 3.54.     (line 4648)
-trunk Translations Identity Themes:            See 3.55.     (line 4663)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4678)
+trunk Scripts Bash Functions Help:             See 3.36.     (line 3204)
+trunk Scripts Bash Functions Html:             See 3.37.     (line 3225)
+trunk Scripts Bash Functions Locale:           See 3.38.     (line 3246)
+trunk Scripts Bash Functions Path:             See 3.39.     (line 3326)
+trunk Scripts Bash Functions Render:           See 3.40.     (line 3358)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3379)
+trunk Scripts Bash Functions Shell:            See 3.42.     (line 3557)
+trunk Scripts Bash Functions Svg:              See 3.43.     (line 3578)
+trunk Scripts Bash Functions Verify:           See 3.44.     (line 3622)
+trunk Scripts Bash Locale:                     See 3.45.     (line 3830)
+trunk Scripts Perl:                            See 3.46.     (line 3859)
+trunk Scripts Python:                          See 3.47.     (line 3876)
+trunk Translations:                            See 3.48.     (line 3897)
+trunk Translations Identity:                   See 3.49.     (line 4500)
+trunk Translations Identity Brands:            See 3.50.     (line 4521)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 4616)
+trunk Translations Identity Fonts:             See 3.52.     (line 4631)
+trunk Translations Identity Models:            See 3.53.     (line 4698)
+trunk Translations Identity Release:           See 3.54.     (line 4713)
+trunk Translations Identity Themes:            See 3.55.     (line 4728)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4743)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 4699)
-trunk Translations Identity Widgets:           See 3.58.     (line 4792)
+                                                             (line 4764)
+trunk Translations Identity Widgets:           See 3.58.     (line 4857)
 List of Figures
 ***************
 

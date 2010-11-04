@@ -17,7 +17,7 @@ The specific functions of @file{centos-art.sh} script are organized
 inside specific directories under @file{trunk/Scripts/Bash/Functions}
 location. Each specific function directory should be named as the
 function it represents, with the first letter in uppercase. For
-example, if the function name is @samp{render}, the specific function
+example, if the function name is @code{render}, the specific function
 directory for it would be @samp{trunk/Scripts/Bash/Functions/Render}.
 
 To better understand how specific functions of @file{centos-art.sh}
@@ -41,11 +41,11 @@ advantage can be taken from them. Global functions are stored
 immediatly under @file{trunk/Scripts/Bash/Functions} directory in
 files begining with @samp{cli} prefix.
 
-OK, let's begin with our specific functionality example.
+OK, let's begin with our @code{greet} specific functionality example.
 
 What function name do we use? Well, lets use @code{greet}. Note that
 @samp{hello} is not a verb, but an expression, a kind of greeting, an
-interjection specifically. In contrast, @code{greet} is a verb and
+interjection specifically. In contrast, @samp{greet} is a verb and
 describes what we do when we say @samp{Hello!}, @samp{Hi!}, and so on.
 
 So far, we've gathered the following function information:
@@ -56,22 +56,15 @@ Path: trunk/Scripts/Bash/Functions/Greet
 File: trunk/Scripts/Bash/Functions/Greet/greet.sh
 @end verbatim
 
-@quotation
-@strong{Note} Note how function name is used as reference to define
-function path, function script, and function definition inside
-function script.
-@end quotation
-
-As consistency convenction, files related to @code{greet}
-functionality are stored under its own function path. The
-@file{greet.sh} function script is the first file @file{centos-art.sh}
-script loads when the @code{greet} functionality is called using
-commands like @samp{centos-art greet --hello='World'}.
-
+The @file{greet.sh} function script is the first file
+@file{centos-art.sh} script loads when the @samp{greet} functionality
+is called using commands like @samp{centos-art greet --hello='World'}.
 The @file{greet.sh} function script contains the @code{greet} function
-definition. Inside @file{centos-art.sh} script, each function
-definition has its own top commentary, followed by one blank line, and
-then one function defintion below it.  
+definition. 
+
+Inside @file{centos-art.sh} script, each function definition has its
+own top commentary, followed by one blank line, and then one function
+defintion below it.  
 
 The function top commentary contains a brief description about what
 the function does, one-line for copyright note ---with your personal
@@ -79,8 +72,10 @@ information---, the license under which the function source code is
 released ---the @file{centos-art.sh} script is released as GPL, so do
 all its functions---, and the subversion @code{$Id$} keyword---which
 is later expanded when we do @command{svn propset} over
-@file{greet.sh} file---. In our function example, the @file{greet.sh}
-top commentary would look like the following:
+@file{greet.sh} file---. 
+
+In our @code{greet} function example, the @file{greet.sh} top
+commentary would look like the following:
 
 @verbatim
 #!/bin/bash
@@ -111,14 +106,7 @@ top commentary would look like the following:
 # ----------------------------------------------------------------------
 @end verbatim
 
-The @code{greet} function defines variables that will be available
-along @code{greet} function execution environment. Later, as final
-definition, the @code{greet} function calls the
-@file{greet_getActions} function defined inside
-@file{greet_getActions.sh} function script. 
-
-In our example, the @code{greet} function definition would look as
-follows:
+The @code{greet} function definition would look as follows:
 
 @verbatim
 function greet {
@@ -131,16 +119,17 @@ function greet {
 }
 @end verbatim
 
-This time we didn't use global variable definitions for @code{greet}
-execution environment, so we left the section empty.
+The first definition inside @code{greet} function, are global
+variables that will be available along @code{greet} function execution
+environment. This time we didn't use global variable definitions for
+@code{greet} function execution environment, so we left that section
+empty.
 
-The @code{greet_getActions} function defines the command-line
-interface of @code{greet} functionality. The command-line interface
-defines what to do with arguments passed to @file{centos-art.sh}
-script once @code{greet} has been specified as second argument.
-
-In our function example, the @code{greet_getActions} function
-definition would look like the following:
+Later, we call @code{greet_getActions} function to define the
+command-line interface of @code{greet} functionality. The command-line
+interface sets what we can do with arguments passed to
+@file{centos-art.sh} script, once @option{greet} has been specified as
+first argument in the command-line.
 
 @verbatim
 function greet_getActions {
@@ -164,26 +153,29 @@ function greet_getActions {
 }
 @end verbatim
 
-In the above example, we've defined a selection case based on second
-argument's option name (@var{OPTIONNAM}). In our selection case, we
-defined the @option{--hello} and @option{--bye} options as valid
-options. If no one of them is provided as second command-line
-argument, the @option{*} option is evaluated instead. 
+The @var{OPTIONNAM} global variable is defined in @file{cli.sh}
+function script and contains the value passed before the equal sign
+(i.e., @samp{=}) in the second command-line argument of
+@file{centos-art.sh} script. For example, if the second command-line
+argument is @option{--hello='World'}, the value of @var{OPTIONNAM}
+variable would be @samp{--hello}.  Using this configuration let us
+deside which action to perform based on the option name passed to
+@file{centos-art.sh} script as second argument. 
 
-The @samp{*} option and the two following lines, should always be
-present in @file{*_getActions.sh} function scripts, no matter what
-specific functionality you are creating. This convenction helps the
-user to find out documentation about the current functionality in use.
-Of course, function documentation needs to be created first
-(@pxref{trunk Scripts Bash Functions Help}, to know how), and that
-task is something you ---as author of specific functions--- probably
-want to do personally. 
+The @code{greet} specific function makes available two valid greetings
+through @option{--hello} and @option{--bye} options.  If no one of
+them is provided as second command-line argument, the @samp{*} case is
+evaluated instead. 
 
-Following with our example, the @code{greet_doHello}, and
-@code{greet_doBye} function definitions are the core of @code{greet}
-specific functionality.  In such function definitions is where we
-define what our function realy does ---output different kinds of
-greetings, in the sake of our example---. 
+The @samp{*} case and its two further lines should always be present
+in @file{_getActions.sh} function scripts, no matter what specific
+functionality you are creating. This convenction helps the user to
+find out documentation about current functionality in use.  
+
+The @code{greet_doHello} and @code{greet_doBye} function definitions
+are the core of @code{greet} specific functionality.  In such function
+definitions we set what our @code{greet} function really does: to
+output different kinds of greetings.
 
 @verbatim
 function greet_doHello {
@@ -211,16 +203,15 @@ Both @file{greet_doHello.sh} and @file{greet_doBye.sh} function
 scripts are stored inside @code{greet}'s function directory path (i.e.
 @file{trunk/Scripts/Bash/Functions/Greet}).
 
-In the examples above, we use the @var{OPTIONVAL} global variable.
-The @var{OPTIONVAL} variable is defined in @file{cli.sh} function
-script and contains the value passed after the equal sign (i.e.,
-@samp{=}) in the second command-line argument of @file{centos-art.sh}
-script. For example, if the second command-line argument is
-@option{--hello='World'}, the value of @var{OPTIONVAL} variable would
-be @samp{World} without quotes.
+The @var{OPTIONVAL} global variable is defined in @file{cli.sh}
+function script and contains the value passed after the equal sign
+(i.e., @samp{=}) in the second command-line argument of
+@file{centos-art.sh} script. For example, if the second command-line
+argument is @option{--hello='World'}, the value of @var{OPTIONVAL}
+variable would be @samp{World} without quotes.
 
 Let's see how @code{greet} specific functionality files are organzied
-under @code{greet}'s function directory. To see file organization, we
+under @code{greet}'s function directory. To see file organization we
 use the @command{tree} command:
 
 @verbatim
@@ -231,10 +222,10 @@ trunk/Scripts/Bash/Functions/Greet
 `-- greet.sh
 @end verbatim
 
-To try the @code{greet} specific functionality, pass @code{greet}
-string as first argument to @file{centos-art.sh} script, and any of
-the valid options as second argument. Some examples are illustrated
-below:
+To try the @code{greet} specific functionality, pass the function name
+(i.e., @samp{greet}) as first argument to @file{centos-art.sh} script,
+and any of the valid options as second argument. Some examples are
+illustrated below:
 
 @verbatim
 [centos@projects ~]$ centos-art greet --hello='World'
@@ -244,12 +235,12 @@ Goodbye World
 [centos@projects ~]$ 
 @end verbatim
 
-The word @samp{World} in the examples above, can be anything. In fact,
-change it to have a little fun :).
+The word @samp{World} in the examples above can be anything. In fact,
+change it to have a little fun.
 
 Now that we have a specific function that works as we expect, it is
 time to document it. To document @code{greet} specific functionality,
-we need to use its directory path and the @code{help} functionality
+we use its directory path and the @code{help} functionality
 (@pxref{trunk Scripts Bash Functions Help}) of @file{centos-art.sh}
 script, just as the following command illustrates: 
 
@@ -257,11 +248,32 @@ script, just as the following command illustrates:
 centos-art help --edit=trunk/Scripts/Bash/Functions/Greet
 @end verbatim
 
+Now that we have documented our function, it is time to translate its
+output messages to different languages. To translate specific
+functionality output messages to different languages we use the
+@code{locale} functionality (@pxref{trunk Scripts Bash Functions
+Locale}) of @file{centos-art.sh} script, just as the following command
+illustrates:
+
+@verbatim
+centos-art locale --edit
+@end verbatim
+
+@quotation
+@strong{Warning} To translate output messages in different languages,
+your system locale information ---as in @env{LANG} environment
+variable--- must be set to that locale you want to produce translated
+messages for. For example, if you want to produce translated messages
+for Spanish language, your system locale information must be set to
+@samp{es_ES.UTF-8} or similar.  
+@end quotation
+
 Well, it seems that our example is rather complete by now. 
 
-In @code{greet} example we've described so far, we only use the
-@command{cli_printMessage} global function in action specific
-functions, but more interesting things can be achieved inside them.
+In @code{greet} function example we've described so far, we only use
+@command{cli_printMessage} global function in action specific function
+definitions in order to print a message simply, but more interesting
+things can be achieved inside action specific function definitions.
 For example, if you pass a directory path as second argument option
 value, you could retrive a list of files from therein, and process
 them. If the list of files turns too long, you could add the third
@@ -274,7 +286,7 @@ some of luck this introduction will also serve you as motivation to
 create your own specific functionalities.
 
 By the way, the @code{greet} functionality doesn't exist inside
-@file{centos-art.sh} script. Would you like to create it?
+@file{centos-art.sh} script yet. Would you like to create it?
 
 @subsection Usage
 
@@ -380,7 +392,7 @@ verification as specified in @var{TYPE}.
 
 When @var{TYPE} is not specified, @code{cli_checkFiles} verifies
 @var{FILE} existence, no matter what kind of file it be.  If
-@var{TYPE} is specified, it can take one of the following values:
+@var{TYPE} is specified, use one of the following values:
 
 @table @option
 @item d
@@ -398,40 +410,39 @@ When @var{FILE} is neither a regular file or a symbolic link,
 @code{cli_checkFiles} considers @var{FILE} as unexistent file.
 @end table
 
-When @var{ACTION} is not specified, @code{cli_checkFiles} function uses
-@samp{Checking} as default action message. The action message is used
-on left-column as description for verification action. It may be cases
-where you need to change default action message with your own. In that
-cases remember to use the @code{"`gettext "Your message"`"}
+When @var{ACTION} is not specified, @code{cli_checkFiles} function
+uses @samp{Checking} as default action message. The action message is
+used on left-column as description to action verification.  It may be
+cases where you need to change default action message with your own.
+In those cases remember to use the @code{"`gettext "Your message"`"}
 construction in order for @command{gettext} to know about it. This way
-your action message can be translated to other languages too.
+your action message can be translated to other languages too.  By
+default @code{cli_checkFiles} output information about @var{FILE} on
+the right column. 
 
-By default @code{cli_checkFiles} output information about @var{FILE}
-on the right column. When @var{OPTIONS} is specified, default behaivour
-is modified as specified in @var{OPTIONS}. The @var{OPTIONS} can take
-any of the following options:
-@table @option
+When @var{OPTIONS} is specified, default behaivour is modified as
+specified in @var{OPTIONS}. The @var{OPTIONS} can take any of the
+following options: @table @option
 
 @item --quiet
-If this option is specified, @code{cli_checkFiles} supresses
-verification output.  This option is useful if you only want to do
-file verifications but don't want to output any information about it.
-
+The @option{--quiet} option supresses verification output.  
 @verbatim
 cli_checkFiles $FILE 'f' '' '--quiet'
 if [[ $? -eq 0 ]];then
-    echo "File exists."
+    INFO="`gettext "The file exists."`"
 else
-    echo "File doesn't exist"
+    INFO="`gettext "The file doesn't exist."`"
 fi
 @end verbatim
+Use @option{--quiet} option whenever you want to do file verifications
+but don't want to output any information about it.
 @end table
 @end defun
 
 @defun cli_getCountryCodes [FILTER]
 @code{cli_getCountryCodes} function outputs a list with country codes
 as defined in ISO3166 standard. When @var{FILTER} is provided,
-@code{cli_getCountryCodes} outpus country codes that match
+@code{cli_getCountryCodes} outputs country codes that match
 @var{FILTER} regular expression pattern.
 @end defun
 
@@ -443,10 +454,27 @@ ISO3166. If filter is specified, just the country name that matches
 @end defun
  
 @defun cli_getCurrentLocale
-@code{cli_getCurrentLocale} function checks @var{LANG} environment
-variable and returns the current locale from more specific to less
-specific. For example, if the locale @samp{en_GB} is the current one,
-it should be used instead of just @samp{en}.
+@code{cli_getCurrentLocale} function uses @env{LANG} environment
+variable to build a locale pattern that is later applied to
+@code{cli_getLocales} function output in order to return the current
+locale that @file{centos-art.sh} script works with. 
+
+The current locale information, returned by
+@code{cli_getCurrentLocale}, is output from more specific to less
+specific. For example, if @samp{en_GB} locale exists in
+@code{cli_getLocales} function output, the @samp{en_GB} locale would
+take precedence before @samp{en} locale.
+
+Locale precedence selection is quite important in order to define the
+locale type we use for message translations. For example, if
+@samp{en_GB} is used, we are also saying that no common language
+specification is used for English language (i.e., @samp{en}). Instead,
+we are using English non-common country-specific language
+specifications like @samp{en_AU}, @samp{en_BW}, @samp{en_GB},
+@samp{en_US}, etc., for message translations.  
+
+Use @code{cli_getCurrentLocale} function to know what current locale
+information to use inside @file{centos-art.sh} script.
 @end defun
 
 @defun cli_getLangCodes [FILTER]
@@ -456,40 +484,85 @@ defined in ISO639 standard. When @var{FILTER} is provided,
 regular expression pattern.
 @end defun
 
-@defun cli_getLangNames
-@code{cli_getLangNames} function reads one language locale code in the
+@defun cli_getLangName [FILTER]
+@code{cli_getLangName} function reads one language locale code in the
 format LL_CC and outputs its language name as defined in ISO639
-standard. If filter is specified, just the language name that matches
-@var{FILTER}, exactly, is returned.
+standard. If @var{FILTER} is specified, just the language name that
+matches @var{FILTER}, exactly, is returned.
 @end defun
 
 @defun cli_getLocales
-@code{cli_getLocales} function outputs locale codes in LL and LL_CC
-format. Combine both ISO639 and ISO3166 specification in order to
-build the final locale list. The @code{cli_getLocales} function
-defines which translation locales are supported inside CentOS Artwork
-Repository.
+@code{cli_getLocales} defines what locale codes does
+@file{centos-art.sh} script support.
+
+Occasionally, you use @code{cli_getLocales} function to add locale
+information in non-common country-specific language (@samp{LL_CC})
+format for those languages (e.g., @samp{bn_IN}, @samp{pt_BR}, etc.)
+which locale differences cannot be solved using common language
+specifications (@samp{LL}) into one unique common locale specification
+(e.g., @samp{bn}, @samp{pt}, etc.).  
 @end defun
 
-@defun cli_getRepoNames
-@code{cli_getRepoNames} function sets naming convenction inside CentOS
-Artowrk Repository. As convenction, regular files are written in lower
-case and directories are written in CamelCase. Use this function to
-sanitate the name of regular files and directories you work with.
+@defun cli_getRepoName NAME TYPE
+@code{cli_getRepoName} function sets file names convenctions inside
+@file{centos-art.sh} script. File name convenctions, as set by
+@code{cli_getRepoName}, are used by specific functionalities of
+@file{centos-art.sh} script that rely on repository file system
+organization to do the work they were initially conceived to do.
+Consider @code{cli_getRepoName} function as a place to manage file
+name convenction centrally.
+
+@quotation
+@strong{Warning} @code{cli_getRepoName} function doesn't verify file
+or directory existence, for that purpose use @code{cli_checkFiles}
+function instead.
+@end quotation
+
+The @var{NAME} variable contains the file name or directory name you
+want to sanitate.
+
+The @var{TYPE} variable can be one of the following values:
+@table @option
+@item d
+@itemx directory
+Sanitate directory @var{NAME}s.
+@item f
+@item regular-file
+Sanitate regular file @var{NAME}s.
+@end table
+
+Use @code{cli_getRepoName} function to sanitate file names and
+directory names before their utilization. 
+
+Use @code{cli_getRepoName} when you need to change file name
+convenction inside @file{centos-art.sh} script. When changing file
+name convenctions inside @code{cli_getRepoName} what you are really
+changing is the way functions interpret repository file system
+organization. In order to a complete file name convenction change, you
+also need to change file names and directory names inside repository
+file system organization, just as you did in @code{cli_getRepoName}
+function. 
+
+@quotation
+@strong{Note} @xref{trunk Scripts Bash Functions Path}, for more
+information on how to rename files and directories massively inside
+repository file system organization.
+@end quotation
 @end defun
 
 @defun cli_getThemeName
-@code{cli_getThemeName} function manipulates the current absolute path
-to extract the theme name from it. If there is no theme in the path,
-this function returns an empty string.
+@code{cli_getThemeName} function evaluates @var{OPTIONVAL} global
+variable to extract theme name from it. In order for
+@code{cli_getThemeName} function to extract theme name correctly, the
+@var{OPTIONVAL} variable must contain a directory path under
+@file{trunk/Identity/Themes/Motifs/} directory structure. Otherwise,
+@code{cli_getThemeName} returns an empty string.
 @end defun
 
 @defun cli_printMessage MESSAGE [FORMAT]
 @code{cli_printMessage} function outputs information in predifined
 formats. The @code{cli_printMessage} function is the standard way to
-output information inside @file{centos-art.sh} script. Use this
-function whenever you need to output information from
-@file{centos-art.sh}.
+output information inside @file{centos-art.sh} script. 
 
 When @var{FORMAT} is not specified, @code{cli_printMessage} outputs
 information just as it was passed in @var{MESSAGE} variable.
@@ -642,6 +715,8 @@ using two-columns format.
 Two-columns format definition is taken from
 @file{trunk/Scripts/Bash/Styles/output_forTwoColumns.awk} file.
 @end table
+Use @code{cli_printMessage} function whenever you need to output
+information from @file{centos-art.sh}.
 @end defun
 
 @subsubsection Specific functions

@@ -16,14 +16,17 @@ repository file system syncronized with documentation file system.
 This feature is not supported yet.
 
 @table @samp
-@item centos-art path 'path/to/dir/' --copy-to='path/to/dir'
-@item centos-art path 'path/to/dir/' --copy-to='path/to/dir/filename'
-@item centos-art path 'path/to/dir/' --move-to='path/to/dir'
-@item centos-art path 'path/to/dir/' --move-to='path/to/dir/filename'
-@item centos-art path 'path/to/dir/' --remove
+@item centos-art path --rename='old new' --filter='d'
+Rename all occurences of @samp{old} directory names with @samp{new}
+directory name, recursively under the current location. 
+
+@item centos-art path --rename='old new' --filter='f'
+Rename all occurences of @samp{old} file names with @samp{new} file
+name, recursively under the current location. 
 @end table
 
 @subsection See also
 
 @menu
+* trunk Scripts Bash Functions::
 @end menu
