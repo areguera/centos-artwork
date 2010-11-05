@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 4 2010 by texi2html 1.76 -->
+<!-- Created on November, 5 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -104,28 +104,30 @@ directory for it would be <samp>`trunk/Scripts/Bash/Functions/Render'</samp>.
 script are designed, lets create one function which only goal is to
 output different kind of greetings to your screen.
 </p>
-<p>When creating specific functions for <tt>`centos-art.sh'</tt> script it is
-crucial to know what these function will do exactly and if there is
-any function that already does what we intend to do. If there is no
+<p>When we create specific functions for <tt>`centos-art.sh'</tt> script it
+is crucial to know what these functions will do exactly and if there
+is any function that already does what we intend to do. If there is no
 one, it is good time to create them then. Otherwise, if
 functionalities already available don't do what you exactly expect,
 contact their authors and work together to improve them.
 </p>
 <blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Join CentOS developers mailing list
-(<a href="mailto:centos-devel@centos.org">centos-devel@centos.org</a>) to share your ideas.
+<a href="mailto:centos-art@centos.org">centos-art@centos.org</a> to share your ideas.
 </p></blockquote>
 
-<p>It is also worth to know what global functions we have available, so
-advantage can be taken from them. Global functions are stored
-immediatly under <tt>`trunk/Scripts/Bash/Functions'</tt> directory in
-files begining with <samp>`cli'</samp> prefix.
+<p>It is also worth to know what global functions do we have available
+inside <tt>`centos-art.sh'</tt> script, so advantage can be taken from
+them. Global functions are stored immediatly under
+<tt>`trunk/Scripts/Bash/Functions'</tt> directory in files begining with
+<samp>`cli'</samp> prefix.
 </p>
-<p>OK, let's begin with our <code>greet</code> specific functionality example.
+<p>OK, let's begin with our functionality example.
 </p>
 <p>What function name do we use? Well, lets use <code>greet</code>. Note that
-<samp>`hello'</samp> is not a verb, but an expression, a kind of greeting, an
-interjection specifically. In contrast, <samp>`greet'</samp> is a verb and
-describes what we do when we say <samp>`Hello!'</samp>, <samp>`Hi!'</samp>, and so on.
+<samp>`hello'</samp> word is not a verb; but an expression, a kind of
+greeting, an interjection specifically. In contrast, <samp>`greet'</samp> is a
+verb and describes what we do when we say <samp>`Hello!'</samp>, <samp>`Hi!'</samp>,
+and similar expressions.
 </p>
 <p>So far, we've gathered the following function information:
 </p>
@@ -139,20 +141,20 @@ is called using commands like <samp>`centos-art greet --hello='World''</samp>.
 The <tt>`greet.sh'</tt> function script contains the <code>greet</code> function
 definition. 
 </p>
-<p>Inside <tt>`centos-art.sh'</tt> script, each function definition has its
-own top commentary, followed by one blank line, and then one function
-defintion below it.  
+<p>Inside <tt>`centos-art.sh'</tt> script, as convenction, each function
+script has one top commentary, followed by one blank line, and then
+one function defintion below it only.
 </p>
-<p>The function top commentary contains a brief description about what
-the function does, one-line for copyright note --with your personal
-information--, the license under which the function source code is
-released --the <tt>`centos-art.sh'</tt> script is released as GPL, so do
-all its functions--, and the subversion <code>$Id$</code> keyword--which
-is later expanded when we do <code>svn propset</code> over
-<tt>`greet.sh'</tt> file--. 
+<p>Inside <tt>`centos-art.sh'</tt> script functions, top commentaries
+describe function definition in the following five components:
+one-line for copyright note with your personal information,  the
+license under which the function source code is released --the
+<tt>`centos-art.sh'</tt> script is released as GPL, so do all its
+functions--, subversion's <code>$Id$</code> keyword which is later expanded
+by <code>svn propset</code> command.
 </p>
-<p>In our <code>greet</code> function example, the <tt>`greet.sh'</tt> top
-commentary would look like the following:
+<p>In our <code>greet</code> function example, top commentary for
+<tt>`greet.sh'</tt> function script would look like the following:
 </p>
 <pre class="verbatim">#!/bin/bash
 #
@@ -181,7 +183,8 @@ commentary would look like the following:
 # $Id$
 # ----------------------------------------------------------------------
 </pre>
-<p>The <code>greet</code> function definition would look as follows:
+<p>After top commentary, separated by one blank line, the <code>greet</code>
+function definition would look like the following:
 </p>
 <pre class="verbatim">function greet {
 
@@ -199,10 +202,10 @@ environment. This time we didn't use global variable definitions for
 empty.
 </p>
 <p>Later, we call <code>greet_getActions</code> function to define the
-command-line interface of <code>greet</code> functionality. The command-line
-interface sets what we can do with arguments passed to
-<tt>`centos-art.sh'</tt> script, once <samp>`greet'</samp> has been specified as
-first argument in the command-line.
+command-line interface of <code>greet</code> functionality. The <code>greet</code>
+functionality command-line interface defines what and how actions are
+performed, based on arguments combination passed to
+<tt>`centos-art.sh'</tt> script.
 </p>
 <pre class="verbatim">function greet_getActions {
 
@@ -233,10 +236,10 @@ variable would be <samp>`--hello'</samp>.  Using this configuration let us
 deside which action to perform based on the option name passed to
 <tt>`centos-art.sh'</tt> script as second argument. 
 </p>
-<p>The <code>greet</code> specific function makes available two valid greetings
-through <samp>`--hello'</samp> and <samp>`--bye'</samp> options.  If no one of
-them is provided as second command-line argument, the <samp>`*'</samp> case is
-evaluated instead. 
+<p>The <code>greet</code> function definition makes available two valid
+greetings through <samp>`--hello'</samp> and <samp>`--bye'</samp> options.  If no
+one of them is provided as second command-line argument, the <samp>`*'</samp>
+case is evaluated instead. 
 </p>
 <p>The <samp>`*'</samp> case and its two further lines should always be present
 in <tt>`_getActions.sh'</tt> function scripts, no matter what specific
@@ -287,10 +290,10 @@ use the <code>tree</code> command:
 |-- greet_getActions.sh
 `-- greet.sh
 </pre>
-<p>To try the <code>greet</code> specific functionality, pass the function name
-(i.e., <samp>`greet'</samp>) as first argument to <tt>`centos-art.sh'</tt> script,
-and any of the valid options as second argument. Some examples are
-illustrated below:
+<p>To try the <code>greet</code> specific functionality we've just created,
+pass the function name (i.e., <samp>`greet'</samp>) as first argument to
+<tt>`centos-art.sh'</tt> script, and any of the valid options as second
+argument. Some examples are illustrated below:
 </p>
 <pre class="verbatim">[centos@projects ~]$ centos-art greet --hello='World'
 Hello World
@@ -333,14 +336,16 @@ definitions in order to print a message simply, but more interesting
 things can be achieved inside action specific function definitions.
 For example, if you pass a directory path as second argument option
 value, you could retrive a list of files from therein, and process
-them. If the list of files turns too long, you could add the third
-argument in the form <samp>`--filter='regex''</samp> and reduce the amount
-of files to process using a regular expression pattern.
+them. If the list of files turns too long or you just want to control
+which files to process, you could add the third argument in the form
+<samp>`--filter='regex''</samp> and reduce the amount of files to process
+using a regular expression pattern.
 </p>
-<p>This description may serve you as an introduction to understand how
-specific functionalities work inside <tt>`centos-art.sh'</tt> script. With
-some of luck this introduction will also serve you as motivation to
-create your own specific functionalities.
+<p>The <code>greet</code> function described in this section may serve you as
+an introduction to understand how specific functionalities work inside
+<tt>`centos-art.sh'</tt> script. With some of luck this introduction will
+also serve you as motivation to create your own <tt>`centos-art.sh'</tt>
+script specific functionalities.
 </p>
 <p>By the way, the <code>greet</code> functionality doesn't exist inside
 <tt>`centos-art.sh'</tt> script yet. Would you like to create it?
@@ -361,7 +366,7 @@ available for you to use inside specific functions:
 <a name="IDX1"></a>
 </dt>
 <dd><p>Default domain used to retrieve translated messages. This value is set
-in `initFunctions.sh' and shouldn't be changed.
+in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 </p></dd></dl>
 
 <dl>
@@ -369,93 +374,132 @@ in `initFunctions.sh' and shouldn't be changed.
 <a name="IDX2"></a>
 </dt>
 <dd><p>Default directory used to retrieve translated messages. This value is
-set in `initFunctions.sh' and shouldn't be changed.
+set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>ACTION</b>
 <a name="IDX3"></a>
 </dt>
-<dd><p>Default action passed to <code>centos-art</code> command as first
-argument. For example, in the command <samp>`centos-art render
---entry=path/to/dir --filter=regex'</samp>, the action passed to
-<code>centos-art</code> is <samp>`render'</samp>.
+<dd><p>Default action passed as first argument in <tt>`centos-art.sh'</tt>
+command-line interface. For example, in the command <samp>`centos-art
+render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTION</var> passed to
+<tt>`centos-art.sh'</tt> script is <samp>`render'</samp>.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>OPTIONNAM</b>
 <a name="IDX4"></a>
 </dt>
-<dd><p>Default option name passed to <code>centos-art</code> command as second
-argument. For example, in the command <samp>`centos-art render
---entry=path/to/dir --filter=regex'</samp>, the option name passed to
-<code>centos-art</code> as second argument is <samp>`--entry'</samp>.
+<dd><p>Default option name passed as second argument in <tt>`centos-art.sh'</tt>
+command-line interface. For example, in the command <samp>`centos-art
+render --entry=path/to/dir --filter=regex'</samp>, the <var>OPTIONNAM</var> passed
+to <tt>`centos-art.sh'</tt> script is <samp>`--entry'</samp>.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>OPTIONVAL</b>
 <a name="IDX5"></a>
 </dt>
-<dd><p>Default option value passed to <code>centos-art</code> command as second
-argument. For example, in the command <samp>`centos-art render
---entry=path/to/dir --filter=regex'</samp>, the option value passed to
-<code>centos-art</code> as second argument is <samp>`path/to/dir'</samp>.
+<dd><p>Default option value passed as second argument in <tt>`centos-art.sh'</tt>
+command-line interface. For example, in the command <samp>`centos-art
+render --entry=path/to/dir --filter=regex'</samp>, the <var>OPTIONVAL</var> passed
+to <tt>`centos-art.sh'</tt> script is <samp>`path/to/dir'</samp>.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>REGEX</b>
 <a name="IDX6"></a>
 </dt>
-<dd><p>Default option value passed to <code>centos-art</code> command as third
-argument. For example, in the command <samp>`centos-art render
---entry=path/to/dir --filter=regex'</samp>, the option value passed to
-<code>centos-art</code> as second argument is <samp>`regex'</samp>. 
+<dd><p>Default option value passed as third argument in <tt>`centos-art.sh'</tt>
+command-line interface. For example, in the command <samp>`centos-art
+render --entry=path/to/dir --filter=regex'</samp>, the <var>REGEX</var> passed to
+<tt>`centos-art.sh'</tt> is <samp>`regex'</samp>. 
 </p>
-<p>At present time, the option name passed as third argument is not
-variable, as second argument option name is. The third argument option
-name is stocked to <samp>`--filter'</samp> for whatever value it passed at
-the right side of its equal sign. Generally, third argument option
-value is used to pass regular expression patterns that modify the list
-of files to process but this is not the only feature it may serve to.
+<p>The third argument option name is not variable as second argument
+option name is. The third argument option name is stocked to
+<samp>`--filter'</samp> for whatever value it passed at the right side of
+its equal sign. 
+</p>
+<p>Generally, third argument option value is used to pass regular
+expression patterns that modify the list of files to process, but this
+is not the only feature <var>REGEX</var> may serve to.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>ANSWER</b>
 <a name="IDX7"></a>
 </dt>
-<dd><p>Default answer for questions. As most questions are to request
-confirmation about some specific action, default answer to this
-variable is negative (i.e., <samp>`No'</samp>). Default answer value takes
-place when no value is entered as response to confirmation questions
-before pressing <kbd>RET</kbd> key.
+<dd><p>Default answer to confirmation questions. 
+</p>
+<p>As most questions request confirmation to perform some action, default
+answer to <var>ANSWER</var> variable is negative (i.e., <samp>`No'</samp>).
+Default answer value takes place when no value is entered as response
+to confirmation questions before pressing <kbd>RET</kbd> key.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>TMPFILE</b>
 <a name="IDX8"></a>
 </dt>
-<dd><p>Default location to store temporal files. This variable contains a
-value with the format <samp>`/tmp/centos-art-$$'</samp>. The <samp>`$$'</samp> expands
-to the process id of <code>centos-art</code> current execution.
-</p></dd></dl>
+<dd><p>Default location to store temporal files. 
+</p>
+<p>The <var>TMPFILE</var> uses <tt>`/tmp'</tt> directory as source location to
+store temporal files, the <tt>`centos-art.sh'</tt> script name, and the
+process id of <tt>`centos-art.sh'</tt> script execution to let you run
+more than one <tt>`centos-art.sh'</tt> script simultaneously on the same
+user session.  For example, due the following temporal file defintion:
+</p>
+<pre class="verbatim">${TMPFILE}-${FILE}
+</pre>
+<p>If <var>FILE</var> name is <tt>`instance.svg'</tt> and process id is
+<samp>`3761'</samp>, the final temporal file built from previous temporal file
+definition would be:
+</p>
+<pre class="verbatim">/tmp/centos-art.sh-3761-instance.svg
+</pre>
+<p>When you use <var>TMPFILE</var> global variable to create temporal files,
+be sure to remove temporal files created once you've ended up with
+them.  For example, consider the following construction:
+</p>
+<pre class="verbatim">for FILE in $FILES;do
+
+    # Initialize temporal instance of file.
+    INSTANCE=${TMPFILE}-${FILE}
+
+    # Do something ... 
+
+    # Remove temporal instance of file.
+    if [[ -f $INSTANCE ]];then
+        rm $INSTANCE
+    fi
+
+done
+</pre></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>EDITOR</b>
 <a name="IDX9"></a>
 </dt>
-<dd><p>Default text editor. This variable contains the absolute path to
-<tt>`centos-art.sh'</tt> script default text editor (i.e.,
-<tt>`/usr/bin/vim'</tt>). If you want to use a different text editor set,
-and export this variable in your <tt>`~/.bash_profile'</tt> file. The
-<tt>`centos-art.sh'</tt> script recognizes one of the following text
-editors only:
+<dd><p>Default text editor. 
+</p>
+<p>The <tt>`centos-art.sh'</tt> script uses default text <code>EDITOR</code> to edit
+pre-commit subversion messages, translation files, configuration
+files, script files, and similar text-based files.
+</p>
+<p>If <code>EDITOR</code> environment variable is not set, <tt>`centos-art.sh'</tt>
+script uses <tt>`/usr/bin/vim'</tt> as default text editor. Otherwise, the
+following values are recognized by <tt>`centos-art.sh'</tt> script:
 </p>
 <ul class="toc">
-<li> /usr/bin/vim
-</li><li> /usr/bin/emacs
-</li><li> /usr/bin/nano
+<li> <tt>`/usr/bin/vim'</tt>
+</li><li> <tt>`/usr/bin/emacs'</tt>
+</li><li> <tt>`/usr/bin/nano'</tt>
 </li></ul>
-</dd></dl>
+
+<p>If no one of these values is set in <code>EDITOR</code> environment variable,
+<tt>`centos-art.sh'</tt> uses <tt>`/usr/bin/vim'</tt> text editor by default. 
+</p></dd></dl>
 
 
 <a name="SEC205"></a>
@@ -468,7 +512,9 @@ available for you to use inside specific functions:
 <dt><u>Function:</u> <b>cli_commitRepoChanges</b>
 <a name="IDX10"></a>
 </dt>
-<dd><p>The <code>cli_commitRepoChanges</code> function uses the list of files
+<dd><p>Commit recent changes up to central repository.
+</p>
+<p>The <code>cli_commitRepoChanges</code> function uses the list of files
 stored in the <var>FILES</var> variable and verifies changes inside your
 repository working copy, using subversion commands.  If
 <code>cli_commitRepoChanges</code> finds changes inside your working copy,
@@ -476,92 +522,91 @@ it asks you for confirmation to commit them up to central repository.
 </p>
 <p>Call <code>cli_commitRepoChanges</code> function after functions that modify
 files inside your repository working copy.
-</p>
-</dd></dl>
+</p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE [ACTION [OPTIONS]]]</i>
+<dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
 <a name="IDX11"></a>
 </dt>
-<dd><p><code>cli_checkFiles</code> receives a <var>FILE</var> absolute path and performs
-verification as specified in <var>TYPE</var>.  
+<dd><p>Verify files.
 </p>
-<p>When <var>TYPE</var> is not specified, <code>cli_checkFiles</code> verifies
-<var>FILE</var> existence, no matter what kind of file it be.  If
-<var>TYPE</var> is specified, use one of the following values:
+<p><code>cli_checkFiles</code> receives a <var>FILE</var> absolute path and performs
+file verification as specified in <var>TYPE</var>.  When <var>TYPE</var> is not
+specified, <code>cli_checkFiles</code> verifies <var>FILE</var> existence, no
+matter what kind of file it be.  If <var>TYPE</var> is specified, use one
+of the following values:
 </p>
 <dl compact="compact">
 <dt> <samp>`d'</samp></dt>
 <dt> <samp>`directory'</samp></dt>
-<dd><p>To evaluate <var>FILE</var> as directory.
-</p></dd>
+<dd><p>Ends script execution if <var>FILE</var> is not a directory.
+</p>
+<p>When you verify directories with cli_checkFiles, if directory doesn't
+exist, <tt>`centos-art.sh'</tt> script asks you for confirmation in order
+to create that directory. If you answer positively,
+<tt>`centos-art.sh'</tt> script creates that directory and continues
+script flows normally. Otherwise, if you answer negatively,
+<tt>`centos-art.sh'</tt> ends script execution with an error and
+documentation message.
+</p>
+</dd>
 <dt> <samp>`f'</samp></dt>
 <dt> <samp>`regular-file'</samp></dt>
-<dd><p>To evaluate <var>FILE</var> as regular file.
+<dd><p>Ends script execution if <var>FILE</var> is not a regular file.
 </p></dd>
 <dt> <samp>`h'</samp></dt>
 <dt> <samp>`symbolic-link'</samp></dt>
-<dd><p>To evaluate <var>FILE</var> as symbolic link.
+<dd><p>Ends script execution if <var>FILE</var> is not a symbolic link.
+</p></dd>
+<dt> <samp>`x'</samp></dt>
+<dt> <samp>`execution'</samp></dt>
+<dd><p>Ends script execution if <var>FILE</var> is not executable.
 </p></dd>
 <dt> <samp>`fh'</samp></dt>
-<dd><p>To evaluate <var>FILE</var> as regular file first and symbolic link later.
-When <var>FILE</var> is neither a regular file or a symbolic link,
-<code>cli_checkFiles</code> considers <var>FILE</var> as unexistent file.
+<dd><p>Ends script execution if <var>FILE</var> is neither a regular file or a
+symbolic link.
 </p></dd>
 </dl>
 
-<p>When <var>ACTION</var> is not specified, <code>cli_checkFiles</code> function
-uses <samp>`Checking'</samp> as default action message. The action message is
-used on left-column as description to action verification.  It may be
-cases where you need to change default action message with your own.
-In those cases remember to use the <code>&quot;`gettext &quot;Your message&quot;`&quot;</code>
-construction in order for <code>gettext</code> to know about it. This way
-your action message can be translated to other languages too.  By
-default <code>cli_checkFiles</code> output information about <var>FILE</var> on
-the right column. 
-</p>
-<p>When <var>OPTIONS</var> is specified, default behaivour is modified as
-specified in <var>OPTIONS</var>. The <var>OPTIONS</var> can take any of the
-following options: </p><dl compact="compact">
-<dt> <samp>`--quiet'</samp></dt>
-<dd><p>The <samp>`--quiet'</samp> option supresses verification output.  
-</p><pre class="verbatim">cli_checkFiles $FILE 'f' '' '--quiet'
-if [[ $? -eq 0 ]];then
-    INFO=&quot;`gettext &quot;The file exists.&quot;`&quot;
-else
-    INFO=&quot;`gettext &quot;The file doesn't exist.&quot;`&quot;
-fi
-</pre><p>Use <samp>`--quiet'</samp> option whenever you want to do file verifications
-but don't want to output any information about it.
-</p></dd>
-</dl>
-</dd></dl>
+<p>As default behaviour, if <var>FILE</var> passes all verifications,
+<tt>`centos-art.sh'</tt> script continues with its normal flow. 
+</p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
 <a name="IDX12"></a>
 </dt>
-<dd><p><code>cli_getCountryCodes</code> function outputs a list with country codes
-as defined in ISO3166 standard. When <var>FILTER</var> is provided,
+<dd><p>Output country codes.
+</p>
+<p>The <code>cli_getCountryCodes</code> function outputs a list with country
+codes as defined in ISO3166 standard. When <var>FILTER</var> is provided,
 <code>cli_getCountryCodes</code> outputs country codes that match
 <var>FILTER</var> regular expression pattern.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getCountryNames</b><i> [FILTER]</i>
+<dt><u>Function:</u> <b>cli_getCountryName</b><i> [FILTER]</i>
 <a name="IDX13"></a>
 </dt>
-<dd><p><code>cli_getCountryNames</code> function reads one language locale code in
-the format LL_CC and outputs the name of its related country as in
-ISO3166. If filter is specified, just the country name that matches
-<var>FILTER</var>, exactly, is returned. 
+<dd><p>Output country names.
+</p>
+<p>The <code>cli_getCountryName</code> function reads one language locale code
+in the format LL_CC and outputs the name of its related country as in
+ISO3166. If filter is specified, <code>cli_getCountryName</code> returns the
+country name that matches the locale code specified in <var>FILTER</var>,
+exactly.
+</p>
+<p>The <code>cli_getCountryName</code> function outputs country name supported
+by <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
  
 <dl>
 <dt><u>Function:</u> <b>cli_getCurrentLocale</b>
 <a name="IDX14"></a>
 </dt>
-<dd><p><code>cli_getCurrentLocale</code> function uses <code>LANG</code> environment
+<dd><p>Output current locale used by <tt>`centos-art.sh'</tt> script. 
+</p>
+<p>The <code>cli_getCurrentLocale</code> function uses <code>LANG</code> environment
 variable to build a locale pattern that is later applied to
 <code>cli_getLocales</code> function output in order to return the current
 locale that <tt>`centos-art.sh'</tt> script works with. 
@@ -582,34 +627,46 @@ specifications like <samp>`en_AU'</samp>, <samp>`en_BW'</samp>, <samp>`en_GB'</s
 </p>
 <p>Use <code>cli_getCurrentLocale</code> function to know what current locale
 information to use inside <tt>`centos-art.sh'</tt> script.
+</p>
+<p>The <code>cli_getCurrentLocale</code> function outputs current locale used
+by <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
 <a name="IDX15"></a>
 </dt>
-<dd><p><code>cli_getLangCodes</code> function outputs a list of language codes as
+<dd><p>Output language codes.
+</p>
+<p><code>cli_getLangCodes</code> function outputs a list of language codes as
 defined in ISO639 standard. When <var>FILTER</var> is provided,
 <code>cli_getLangCodes</code> outputs language codes that match <var>FILTER</var>
 regular expression pattern.
+</p>
+<p>The <code>cli_getLangCodes</code> function outputs language codes supported
+by <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangName</b><i> [FILTER]</i>
 <a name="IDX16"></a>
 </dt>
-<dd><p><code>cli_getLangName</code> function reads one language locale code in the
-format LL_CC and outputs its language name as defined in ISO639
-standard. If <var>FILTER</var> is specified, just the language name that
-matches <var>FILTER</var>, exactly, is returned.
+<dd><p>Output language names.
+</p>
+<p><code>cli_getLangName</code> function reads one language locale code in the
+format LL_CC and outputs the language related name as in ISO639. If
+filter is specified, <code>cli_getLangName</code> returns the language name
+that matches the locale code specified in <var>FILTER</var>, exactly.
+</p>
+<p>The <code>cli_getLangName</code> function outputs language names supported
+by <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLocales</b>
 <a name="IDX17"></a>
 </dt>
-<dd><p><code>cli_getLocales</code> defines what locale codes does
-<tt>`centos-art.sh'</tt> script support.
+<dd><p>Output locale codes supported by <tt>`centos-art.sh'</tt> script.
 </p>
 <p>Occasionally, you use <code>cli_getLocales</code> function to add locale
 information in non-common country-specific language (<samp>`LL_CC'</samp>)
@@ -623,13 +680,13 @@ specifications (<samp>`LL'</samp>) into one unique common locale specification
 <dt><u>Function:</u> <b>cli_getRepoName</b><i> NAME TYPE</i>
 <a name="IDX18"></a>
 </dt>
-<dd><p><code>cli_getRepoName</code> function sets file names convenctions inside
-<tt>`centos-art.sh'</tt> script. File name convenctions, as set by
-<code>cli_getRepoName</code>, are used by specific functionalities of
-<tt>`centos-art.sh'</tt> script that rely on repository file system
-organization to do the work they were initially conceived to do.
-Consider <code>cli_getRepoName</code> function as a place to manage file
-name convenction centrally.
+<dd><p>Sanitate file names.
+</p>
+<p>Inside <tt>`centos-art.sh'</tt> script, specific functionalities rely both
+in <code>cli_getRepoName</code> and repository file system organization to
+achieve their goals.  Consider <code>cli_getRepoName</code> function as
+central place to manage file name convenctions for other functions
+inside <tt>`centos-art.sh'</tt> script.
 </p>
 <blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> <code>cli_getRepoName</code> function doesn't verify file
 or directory existence, for that purpose use <code>cli_checkFiles</code>
@@ -655,13 +712,14 @@ want to sanitate.
 directory names before their utilization. 
 </p>
 <p>Use <code>cli_getRepoName</code> when you need to change file name
-convenction inside <tt>`centos-art.sh'</tt> script. When changing file
-name convenctions inside <code>cli_getRepoName</code> what you are really
-changing is the way functions interpret repository file system
-organization. In order to a complete file name convenction change, you
-also need to change file names and directory names inside repository
-file system organization, just as you did in <code>cli_getRepoName</code>
-function. 
+convenctions inside <tt>`centos-art.sh'</tt> script. 
+</p>
+<p>When changing file name convenctions inside <code>cli_getRepoName</code>
+what you are really changing is the way functions interpret repository
+file system organization. In order to a complete file name convenction
+change, you also need to change file names and directory names inside
+repository file system organization, just as you did in
+<code>cli_getRepoName</code> function. 
 </p>
 <blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> See section <a href="repository_42.html#SEC223">trunk/Scripts/Bash/Functions/Path</a>, for more
 information on how to rename files and directories massively inside
@@ -673,21 +731,19 @@ repository file system organization.
 <dt><u>Function:</u> <b>cli_getThemeName</b>
 <a name="IDX19"></a>
 </dt>
-<dd><p><code>cli_getThemeName</code> function evaluates <var>OPTIONVAL</var> global
-variable to extract theme name from it. In order for
-<code>cli_getThemeName</code> function to extract theme name correctly, the
-<var>OPTIONVAL</var> variable must contain a directory path under
-<tt>`trunk/Identity/Themes/Motifs/'</tt> directory structure. Otherwise,
-<code>cli_getThemeName</code> returns an empty string.
+<dd><p>Output theme name.
+</p>
+<p>In order for <code>cli_getThemeName</code> function to extract theme name
+correctly, the <var>OPTIONVAL</var> variable must contain a directory path
+under <tt>`trunk/Identity/Themes/Motifs/'</tt> directory structure.
+Otherwise, <code>cli_getThemeName</code> returns an empty string.  
 </p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_printMessage</b><i> MESSAGE [FORMAT]</i>
 <a name="IDX20"></a>
 </dt>
-<dd><p><code>cli_printMessage</code> function outputs information in predifined
-formats. The <code>cli_printMessage</code> function is the standard way to
-output information inside <tt>`centos-art.sh'</tt> script. 
+<dd><p>Give format to output messages.
 </p>
 <p>When <var>FORMAT</var> is not specified, <code>cli_printMessage</code> outputs
 information just as it was passed in <var>MESSAGE</var> variable.
@@ -695,85 +751,85 @@ Otherwise, <var>FORMAT</var> can take one of the following values:
 </p>
 <dl compact="compact">
 <dt> <samp>`AsHeadingLine'</samp></dt>
-<dd><p>To standardize heading messages.
+<dd><p>To print heading messages.
 </p><pre class="verbatim">----------------------------------------------------------------------
 $MESSAGE
 ----------------------------------------------------------------------
 </pre>
 </dd>
 <dt> <samp>`AsWarningLine'</samp></dt>
-<dd><p>To standardize warning messages.
+<dd><p>To print warning messages.
 </p><pre class="verbatim">----------------------------------------------------------------------
 WARNING: $MESSAGE
 ----------------------------------------------------------------------
 </pre>
 </dd>
 <dt> <samp>`AsNoteLine'</samp></dt>
-<dd><p>To standardize note messages.
+<dd><p>To print note messages.
 </p><pre class="verbatim">----------------------------------------------------------------------
 NOTE: $MESSAGE
 ----------------------------------------------------------------------
 </pre>
 </dd>
 <dt> <samp>`AsUpdatingLine'</samp></dt>
-<dd><p>To standardize <samp>`Updating'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Updating'</samp> messages using two-columns format.
 </p><pre class="verbatim">Updating        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsRemovingLine'</samp></dt>
-<dd><p>To standardize <samp>`Removing'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Removing'</samp> messages using two-columns format.
 </p><pre class="verbatim">Removing        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsCheckingLine'</samp></dt>
-<dd><p>To standardize <samp>`Checking'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Checking'</samp> messages using two-columns format.
 </p><pre class="verbatim">Checking        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsCreatingLine'</samp></dt>
-<dd><p>To standardize <samp>`Creating'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Creating'</samp> messages using two-columns format.
 </p><pre class="verbatim">Creating        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsSavedAsLine'</samp></dt>
-<dd><p>To standardize <samp>`Saved as'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Saved as'</samp> messages using two-columns format.
 </p><pre class="verbatim">Saved as        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsLinkToLine'</samp></dt>
-<dd><p>To standardize <samp>`Linked to'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Linked to'</samp> messages using two-columns format.
 </p><pre class="verbatim">Linked to       $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsMovedToLine'</samp></dt>
-<dd><p>To standardize <samp>`Moved to'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Moved to'</samp> messages using two-columns format.
 </p><pre class="verbatim">Moved to        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsTranslationLine'</samp></dt>
-<dd><p>To standardize <samp>`Translation'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Translation'</samp> messages using two-columns format.
 </p><pre class="verbatim">Translation     $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsConfigurationLine'</samp></dt>
-<dd><p>To standardize <samp>`Configuration'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Configuration'</samp> messages using two-columns format.
 </p><pre class="verbatim">Configuration   $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsResponseLine'</samp></dt>
-<dd><p>To standardize response messages using one-column format.
+<dd><p>To print response messages using one-column format.
 </p><pre class="verbatim">--&gt; $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsRequestLine'</samp></dt>
-<dd><p>To standardize request messages using one-column format. Request
-messages supress the trailing newline character from final output.
+<dd><p>To print request messages using one-column format. Request messages
+supress the trailing newline character from final output.
 </p><pre class="verbatim">$MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsYesOrNoRequestLine'</samp></dt>
-<dd><p>To standardize <samp>`yes or no'</samp> request messages using one-column
-format. If something different from <samp>`y'</samp> is answered (when using
+<dd><p>To print <samp>`yes or no'</samp> request messages using one-column format. If
+something different from <samp>`y'</samp> is answered (when using
 <code>en_US.UTF-8</code> locale), script execution ends immediatly.  
 </p>
 <pre class="verbatim">$MESSAGE [y/N]:
@@ -794,13 +850,12 @@ translation messages.
 </p>
 </dd>
 <dt> <samp>`AsToKnowMoreLine'</samp></dt>
-<dd>
-<p>To standardize <samp>`to know more, run the following command:'</samp>
+<dd><p>To standardize <samp>`to know more, run the following command:'</samp>
 messages. When the <samp>`AsToKnowMoreLine'</samp> option is used, the
 <var>MESSAGE</var> value should be set to <code>&quot;$(caller)&quot;</code>. <code>caller</code>
 is a Bash builtin that returns the context of the current subroutine
 call. <samp>`AsToKnowMoreLine'</samp> option uses <code>caller</code> builtin
-output to build documentation entry dynamically.
+output to build documentation entries dynamically.
 </p>
 <pre class="verbatim">----------------------------------------------------------------------
 To know more, run the following command:
@@ -817,13 +872,15 @@ script termination.
 <p>When <var>MESSAGE</var> contains a colon inside (e.g., <samp>`description:
 message'</samp>), the <code>cli_printMessage</code> function outputs <var>MESSAGE</var>
 using two-columns format. 
-</p>
-<p>Two-columns format definition is taken from
-<tt>`trunk/Scripts/Bash/Styles/output_forTwoColumns.awk'</tt> file.
 </p></dd>
 </dl>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> To improve two-columns format, change the following file:
+</p><pre class="verbatim">trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+</pre></blockquote>
+
 <p>Use <code>cli_printMessage</code> function whenever you need to output
-information from <tt>`centos-art.sh'</tt>.
+information from <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 
@@ -876,7 +933,7 @@ available for you to use:
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 4 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 5 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

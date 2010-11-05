@@ -1,7 +1,7 @@
 @subsection Goals
 
 This section exists to organize files related to @file{centos-art.sh}
-script @option{verify} functionality.  The @option{verify}
+script @samp{verify} functionality.  The @samp{verify}
 functionality of @file{centos-art.sh} script helps you to verify the
 workstation configuration you are planning to use as host for your
 working copy of CentOS Artwork Repository.
@@ -12,16 +12,16 @@ The first time you download CentOS Artwork Repository you need to
 configure your workstation in order to use @file{centos-art.sh}
 script.  These preliminar configurations are based mainly on auxiliar
 RPM packages installation, symbolic links creations, and environment
-variables definitions.  The @option{verify} functionality of
+variables definitions.  The @samp{verify} functionality of
 @file{centos-art.sh} script guides you through this preliminar
 configuration process.  
 
-If this is the first time you run @command{centos-art} command, the
-appropriate way to use its @option{verify} functionality is not using
-the @command{centos-art} command directly, but the absolute path to
+If this is the first time you run @file{centos-art.sh} script, the
+appropriate way to use its @samp{verify} functionality is not using
+the @file{centos-art.sh} script directly, but the absolute path to
 @command{centos-art.sh} script instead (i.e.,
 @file{~/artwork/trunk/Scripts/Bash/centos-art.sh}).  This is necessary
-because @command{centos-art} symbolic link, under @file{~/bin/}
+because @file{centos-art} symbolic link, under @file{~/bin/}
 directory, has not been created yet.
 
 @subsubsection Packages
@@ -49,7 +49,7 @@ installation functionality.  If your user isn't defined as a
 privileged user---at least to run @command{yum} commands--- inside
 @file{/etc/sudoers} configuration file, you will not be able to
 perform package installation tasks as set in @file{centos-art.sh}
-script @option{verify} functionality. 
+script @samp{verify} functionality. 
 
 Setting sudo privileges to users is an administrative task you have to
 do by yourself. If you don't have experience with @command{sudo}
@@ -61,14 +61,14 @@ privileges.
 @subsubsection Links
 
 Creation of symbolic links helps us to alternate between different
-implementations of @command{centos-art} command-line (e.g.,
+implementations of @file{centos-art.sh} script-line (e.g.,
 @file{centos-art.sh}, for Bash implementation; @file{centos-art.py},
 for Python implementation; @file{centos-art.pl}, for Perl
 implementation; and so on for other implementations). The
-@command{centos-art} command-line definition takes place inside your
+@file{centos-art.sh} script-line definition takes place inside your
 personal binary (@file{~/bin/}) directory in order to make the script
-implementation ---the one that @command{centos-art} links to---
-available to @var{PATH} environment variable.
+implementation ---the one that @file{centos-art} links to--- available
+to @var{PATH} environment variable.
 
 Creation of symbolic links helps us to reuse components from repository
 working copy. For example, color information files maintained inside
@@ -96,25 +96,32 @@ cannot be branched under @file{branches/Scripts} directory structure.
 Definition of environemnt variables helps us to set default values to
 our user session life. The user session environment variable defintion
 takes place in the user's @file{~/.bash_profile} file.  The
-@option{verify} functionality of @file{centos-art.sh} script doesn't
+@samp{verify} functionality of @file{centos-art.sh} script doesn't
 modify your @file{~/.bash_profile} file.  
 
-The @option{verify} functionality of @file{centos-art.sh} script
+The @samp{verify} functionality of @file{centos-art.sh} script
 evaluates the following environment variables:
 
 @table @env
 @item EDITOR
+Default text editor. 
 
-Default text editor.
+The @file{centos-art.sh} script uses default text @env{EDITOR} to edit
+pre-commit subversion messages, translation files, configuration
+files, script files, and similar text-based files.
 
-If @var{EDITOR} environment variable is not set ---or it uses one
-value other than @file{/usr/bin/vim}, @file{/usr/bin/emacs}, or
-@file{/usr/bin/nano}--- the @file{centos-art.sh} script uses
-@file{/usr/bin/vim} as default text editor.
+If @env{EDITOR} environment variable is not set, @file{centos-art.sh}
+script uses @file{/usr/bin/vim} as default text editor. Otherwise, the
+following values are recognized by @file{centos-art.sh} script:
 
-Default text editor is used by @file{centos-art.sh} script whenever it
-needs to edit text-based files (e.g., subversion's pre-commit
-messages, translation files, configuration files, script files, etc.)
+@itemize
+@item @file{/usr/bin/vim}
+@item @file{/usr/bin/emacs}
+@item @file{/usr/bin/nano}
+@end itemize
+
+If no one of these values is set in @env{EDITOR} environment variable,
+@file{centos-art.sh} uses @file{/usr/bin/vim} text editor by default. 
 
 @item TZ
 
@@ -132,16 +139,14 @@ were committed up to repository server exactly in time.
 
 @quotation
 @strong{Tip} Coordinated Univeral Time (UTC) representation can be
-configured when you install CentOS distribution, or later in your
-graphical interface using the following command:
-@verbatim
-system-config-date
-@end verbatim
+configured when you install CentOS distribution; or later, runing the
+@command{system-config-date} command at a shell prompt from your
+graphical interface.
 @end quotation
 
 @quotation
 @strong{Note} If you set your system clock to use UTC representation,
-you also need to set the @var{TZ} environment variable inside
+you also need to set the @env{TZ} environment variable inside
 @file{~/.bash_profile} as follows:
 @verbatim
 export TZ=UTC
@@ -163,7 +168,7 @@ set in @file{initFunctions.sh} and shouldn't be changed.
 @item LANG
 
 Default locale information. This value is set when you start your
-session and can be changed using the ``locale'' functionality of
+session and can be changed using the @samp{locale} functionality of
 @file{centos-art.sh} script (@pxref{trunk Scripts Bash Functions
 Locale}, for more information).
 @end table
@@ -172,10 +177,10 @@ Locale}, for more information).
 
 @table @samp
 @item centos-art verify --packages
-This command verifies required packages your workstation needs in
-order to run the @command{centos-art} command correctly.  If there are
-missing packages, the @file{centos-art.sh} script asks you to confirm
-their installation. When installing packages, the @file{centos-art.sh}
+Verify required packages your workstation needs in order to run the
+@file{centos-art.sh} script correctly.  If there are missing packages,
+the @file{centos-art.sh} script asks you to confirm their
+installation. When installing packages, the @file{centos-art.sh}
 script uses the @command{yum} application in order to achieve the
 task.
 
@@ -184,11 +189,11 @@ already installed in your workstation, the message @samp{The required
 packages are already installed.} is output for you to know. 
 
 @item centos-art verify --links
-This function verifies required links your workstation needs in order
-to run the centos-art command correctly.  If any required link is
-missing, the @command{centos-art.sh} script asks you to confirm their
-installation. To install required links, the @command{centos-art.sh}
-script uses the @command{ln} command.
+Verify required links your workstation needs in order to run the
+centos-art command correctly.  If any required link is missing, the
+@command{centos-art.sh} script asks you to confirm their installation.
+To install required links, the @command{centos-art.sh} script uses the
+@command{ln} command.
 
 In case all links required by @file{centos-art.sh} script are already
 created in your workstation, the message @samp{The required links are
@@ -206,8 +211,8 @@ install the link on its place.
 
 @item centos-art verify --environment
 @itemx centos-art verify --environment --filter='regex'
-This command outputs a brief description of environment variables used
-by @file{centos-art.sh} script. 
+Output a brief description of environment variables used by
+@file{centos-art.sh} script. 
 
 If @samp{--filter} option is provided, output is reduced as defined in
 the @samp{regex} regular expression value. If @samp{--filter} option

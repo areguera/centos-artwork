@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 4 2010 by texi2html 1.76 -->
+<!-- Created on November, 5 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -97,12 +97,12 @@ variables definitions.  The <samp>`verify'</samp> functionality of
 <tt>`centos-art.sh'</tt> script guides you through this preliminar
 configuration process.  
 </p>
-<p>If this is the first time you run <code>centos-art</code> command, the
+<p>If this is the first time you run <tt>`centos-art.sh'</tt> script, the
 appropriate way to use its <samp>`verify'</samp> functionality is not using
-the <code>centos-art</code> command directly, but the absolute path to
+the <tt>`centos-art.sh'</tt> script directly, but the absolute path to
 <code>centos-art.sh</code> script instead (i.e.,
 <tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).  This is necessary
-because <code>centos-art</code> symbolic link, under <tt>`~/bin/'</tt>
+because <tt>`centos-art'</tt> symbolic link, under <tt>`~/bin/'</tt>
 directory, has not been created yet.
 </p>
 
@@ -145,14 +145,14 @@ privileges.
 <h4 class="subsubsection"> 3.44.2.2 Links </h4>
 
 <p>Creation of symbolic links helps us to alternate between different
-implementations of <code>centos-art</code> command-line (e.g.,
+implementations of <tt>`centos-art.sh'</tt> script-line (e.g.,
 <tt>`centos-art.sh'</tt>, for Bash implementation; <tt>`centos-art.py'</tt>,
 for Python implementation; <tt>`centos-art.pl'</tt>, for Perl
 implementation; and so on for other implementations). The
-<code>centos-art</code> command-line definition takes place inside your
+<tt>`centos-art.sh'</tt> script-line definition takes place inside your
 personal binary (<tt>`~/bin/'</tt>) directory in order to make the script
-implementation --the one that <code>centos-art</code> links to--
-available to <var>PATH</var> environment variable.
+implementation --the one that <tt>`centos-art'</tt> links to-- available
+to <var>PATH</var> environment variable.
 </p>
 <p>Creation of symbolic links helps us to reuse components from repository
 working copy. For example, color information files maintained inside
@@ -190,17 +190,24 @@ evaluates the following environment variables:
 </p>
 <dl compact="compact">
 <dt> <code>EDITOR</code></dt>
-<dd>
-<p>Default text editor.
+<dd><p>Default text editor. 
 </p>
-<p>If <var>EDITOR</var> environment variable is not set --or it uses one
-value other than <tt>`/usr/bin/vim'</tt>, <tt>`/usr/bin/emacs'</tt>, or
-<tt>`/usr/bin/nano'</tt>-- the <tt>`centos-art.sh'</tt> script uses
-<tt>`/usr/bin/vim'</tt> as default text editor.
+<p>The <tt>`centos-art.sh'</tt> script uses default text <code>EDITOR</code> to edit
+pre-commit subversion messages, translation files, configuration
+files, script files, and similar text-based files.
 </p>
-<p>Default text editor is used by <tt>`centos-art.sh'</tt> script whenever it
-needs to edit text-based files (e.g., subversion's pre-commit
-messages, translation files, configuration files, script files, etc.)
+<p>If <code>EDITOR</code> environment variable is not set, <tt>`centos-art.sh'</tt>
+script uses <tt>`/usr/bin/vim'</tt> as default text editor. Otherwise, the
+following values are recognized by <tt>`centos-art.sh'</tt> script:
+</p>
+<ul class="toc">
+<li> <tt>`/usr/bin/vim'</tt>
+</li><li> <tt>`/usr/bin/emacs'</tt>
+</li><li> <tt>`/usr/bin/nano'</tt>
+</li></ul>
+
+<p>If no one of these values is set in <code>EDITOR</code> environment variable,
+<tt>`centos-art.sh'</tt> uses <tt>`/usr/bin/vim'</tt> text editor by default. 
 </p>
 </dd>
 <dt> <code>TZ</code></dt>
@@ -218,13 +225,13 @@ would be difficult for working copies users to find out when changes
 were committed up to repository server exactly in time.
 </p>
 <blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Coordinated Univeral Time (UTC) representation can be
-configured when you install CentOS distribution, or later in your
-graphical interface using the following command:
-</p><pre class="verbatim">system-config-date
-</pre></blockquote>
+configured when you install CentOS distribution; or later, runing the
+<code>system-config-date</code> command at a shell prompt from your
+graphical interface.
+</p></blockquote>
 
 <blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> If you set your system clock to use UTC representation,
-you also need to set the <var>TZ</var> environment variable inside
+you also need to set the <code>TZ</code> environment variable inside
 <tt>`~/.bash_profile'</tt> as follows:
 </p><pre class="verbatim">export TZ=UTC
 </pre><p>This is required in order for your terminal to display the correct
@@ -247,7 +254,7 @@ set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 <dt> <code>LANG</code></dt>
 <dd>
 <p>Default locale information. This value is set when you start your
-session and can be changed using the &quot;locale&quot; functionality of
+session and can be changed using the <samp>`locale'</samp> functionality of
 <tt>`centos-art.sh'</tt> script (see section <a href="repository_41.html#SEC218">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
 </p></dd>
 </dl>
@@ -258,10 +265,10 @@ session and can be changed using the &quot;locale&quot; functionality of
 
 <dl compact="compact">
 <dt> <samp>`centos-art verify --packages'</samp></dt>
-<dd><p>This command verifies required packages your workstation needs in
-order to run the <code>centos-art</code> command correctly.  If there are
-missing packages, the <tt>`centos-art.sh'</tt> script asks you to confirm
-their installation. When installing packages, the <tt>`centos-art.sh'</tt>
+<dd><p>Verify required packages your workstation needs in order to run the
+<tt>`centos-art.sh'</tt> script correctly.  If there are missing packages,
+the <tt>`centos-art.sh'</tt> script asks you to confirm their
+installation. When installing packages, the <tt>`centos-art.sh'</tt>
 script uses the <code>yum</code> application in order to achieve the
 task.
 </p>
@@ -271,11 +278,11 @@ packages are already installed.'</samp> is output for you to know.
 </p>
 </dd>
 <dt> <samp>`centos-art verify --links'</samp></dt>
-<dd><p>This function verifies required links your workstation needs in order
-to run the centos-art command correctly.  If any required link is
-missing, the <code>centos-art.sh</code> script asks you to confirm their
-installation. To install required links, the <code>centos-art.sh</code>
-script uses the <code>ln</code> command.
+<dd><p>Verify required links your workstation needs in order to run the
+centos-art command correctly.  If any required link is missing, the
+<code>centos-art.sh</code> script asks you to confirm their installation.
+To install required links, the <code>centos-art.sh</code> script uses the
+<code>ln</code> command.
 </p>
 <p>In case all links required by <tt>`centos-art.sh'</tt> script are already
 created in your workstation, the message <samp>`The required links are
@@ -294,8 +301,8 @@ install the link on its place.
 </dd>
 <dt> <samp>`centos-art verify --environment'</samp></dt>
 <dt> <samp>`centos-art verify --environment --filter='regex''</samp></dt>
-<dd><p>This command outputs a brief description of environment variables used
-by <tt>`centos-art.sh'</tt> script. 
+<dd><p>Output a brief description of environment variables used by
+<tt>`centos-art.sh'</tt> script. 
 </p>
 <p>If <samp>`--filter'</samp> option is provided, output is reduced as defined in
 the <samp>`regex'</samp> regular expression value. If <samp>`--filter'</samp> option
@@ -327,7 +334,7 @@ provided at all.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 4 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 5 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
