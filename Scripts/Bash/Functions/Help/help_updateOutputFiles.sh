@@ -80,7 +80,7 @@ function help_updateOutputFiles {
     texi2html ${MANUALS_FILE[1]} --output=${MANUALS_DIR[4]} --split section \
         --nosec-nav \
         --css-include=/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
-        --I=/home/centos/artwork/
+        --I=/home/centos/artwork
 
     # Apply html transformations.
     sed -r -i \
