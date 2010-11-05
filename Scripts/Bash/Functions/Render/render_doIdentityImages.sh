@@ -67,12 +67,9 @@ function render_doIdentityImages {
         EXTERNALFILES=$(egrep '(xlink:href|sodipodi:absref)="/home/centos/artwork/' $INSTANCE \
             | sed -r 's!^[[:space:]]+!!' \
             | sed -r 's!^(xlink:href|sodipodi:absref)="!!' \
-            | sed -r 's!".*$!!' | uniq)
+            | sed -r 's!".*$!!' | sort | uniq)
         for EXTERNALFILE in $EXTERNALFILES;do
             cli_checkFiles $EXTERNALFILE
-            if [[ $? -ne 0 ]];then
-                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-            fi
         done
 
         # Render template instance and modify the inkscape output to

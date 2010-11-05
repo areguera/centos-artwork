@@ -1,6 +1,13 @@
 #!/bin/bash
 #
-# cli_checkFiles.sh -- This function checks file existence.
+# cli_checkFiles.sh -- This function standardizes file verifications
+# inside centos-art.sh script.  If file verification fails in anyway,
+# centos-art.sh script complains about it and ends up script
+# execution.
+#
+#   Usage:
+#
+#       cli_checkFiles FILE [TYPE]
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -25,39 +32,38 @@
 
 function cli_checkFiles {
 
-    # Define variables as local to avoid conflicts outside.
+    # Get absolute path to file/directory.
     local FILE="$1"
+
+    # Get verification type.
     local TYPE="$2"
-    local ACTION="$3"
-    local OPTIONS="$4"
+
+    # Initialize message output.
     local MESSAGE=''
 
-    # Check amount of paramaters passed. At least one argument should
-    # be passed.
+    # Check number of paramaters passed to cli_checkFiles function. At
+    # least one argument should be passed.
     if [[ $# -lt 1 ]];then
         cli_printMessage "cli_checkFiles: `gettext "You need to provide one argument at least."`"
         cli_printMessages "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # Define default action to take, if it is not specified.
-    if [[ ! "$3" ]] || [[ "$3" == '' ]];then
-        ACTION=`gettext "Checking"`
-    fi
-
-    # Check file provided.
+    # Check value passed as file to cli_checkFiles function. The file
+    # value cannot be empty.
     if [[ $FILE == '' ]];then
-        MESSAGE="`gettext "Unknown"`"
-        cli_printMessage "${ACTION}: $MESSAGE" "AsRegularLine"
-        return 1
+        cli_printMessage "cli_checkFiles: `gettext "The first argument cannot be empty."`"
+        cli_printMessages "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # Check file types.
+    # Perform file verification using FILE and TYPE variables.
     case $TYPE in
 
         d | directory )
             # File exists and is a directory
             if [[ ! -d $FILE ]];then
-                MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
+                cli_printMessage "`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
+                cli_printMessage "`gettext "Do you want to create it now?"`" 'AsYesOrNoRequestLine'
+                mkdir -p $FILE
             fi
             ;;
 
@@ -75,12 +81,17 @@ function cli_checkFiles {
             fi
             ;;
 
+        x | execution )
+            # To exist, file should be executable.
+            if [[ ! -x $FILE ]];then
+                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`"
+            fi
+            ;;
+
         fh )
             # To exist, file should be a regular file or a symbolic link.
-            cli_checkFiles $FILE 'f' '' '--quiet'
-            if [[ $? -ne 0 ]];then
-                cli_checkFiles $FILE 'h' '' '--quiet'
-                if [[ $? -ne 0 ]];then
+            if [[ ! -f $FILE ]];then
+                if [[ ! -h $FILE ]];then
                     MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" doesn't exist."`"
                 fi
             fi
@@ -94,26 +105,12 @@ function cli_checkFiles {
 
     esac
 
-    # If there is some message print it when there is no `--quiet'
-    # option passed as fourth argument. 
-    if [[ "$MESSAGE" == '' ]];then
-        for OPTION in $OPTIONS;do 
-            case $OPTION in
-                '--quiet' )
-                    return 0
-            esac
-        done
-        cli_printMessage "${ACTION}: $FILE" "AsRegularLine"
-        return 0
-    else
-        for OPTION in $OPTIONS;do 
-            case $OPTION in
-                '--quiet' )
-                    return 1
-            esac
-        done
-        cli_printMessage "${ACTION}: $MESSAGE" "AsRegularLine"
-        return 1
+    # If file verification fails in anyway, output message information
+    # and end up script execution. Otherwise, continue with script
+    # normal flow.
+    if [[ "$MESSAGE" != '' ]];then
+        cli_printMessage "$MESSAGE" "AsRegularLine"
+        cli_printMessages "$(caller)" "AsToKnowMoreLine"
     fi
 
 }

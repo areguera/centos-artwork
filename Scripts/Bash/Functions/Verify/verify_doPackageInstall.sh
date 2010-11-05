@@ -27,11 +27,7 @@
 function verify_doPackageInstall {
 
     # Verify `yum' command existence.
-    cli_checkFiles '/usr/bin/yum' 'f' '' '--quiet'
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "`gettext "The yum package manager is not installed."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    cli_checkFiles '/usr/bin/yum' 'x'
 
     # Use sudo to install packages in your system through yum.
     sudo yum install ${PACKAGES_MISSING[*]}

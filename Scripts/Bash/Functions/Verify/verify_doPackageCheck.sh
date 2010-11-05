@@ -30,11 +30,7 @@ function verify_doPackageCheck {
     local PACKAGE=''
 
     # Check package manager command existance.
-    cli_checkFiles '/bin/rpm' 'f' '' '--quiet'
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "`gettext "The RPM package manager is not installed."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    cli_checkFiles '/bin/rpm' 'x'
 
     for PACKAGE in $PACKAGES;do
 

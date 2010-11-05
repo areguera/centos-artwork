@@ -139,16 +139,10 @@ function render_doIdentityGroupByType {
             TARGET=$(dirname $FILE)/$(cli_getRepoName "$FORMAT" 'd')
 
             # Check existence of source file.
-            cli_checkFiles $SOURCE 'f' '' '--quiet'
-            if [[ $? -ne 0 ]];then
-                continue
-            fi
+            cli_checkFiles $SOURCE 'f'
 
             # Check existence of target directory.
-            cli_checkFiles $TARGET 'd' '' '--quiet'
-            if [[ $? -ne 0 ]];then
-                mkdir $TARGET
-            fi
+            cli_checkFiles $TARGET 'd'
 
             # Redifine file path to add file and its type.
             TARGET=${TARGET}/$(basename $FILE).${FORMAT}

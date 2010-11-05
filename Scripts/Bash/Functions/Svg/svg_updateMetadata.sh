@@ -61,11 +61,7 @@ function svg_updateMetadata {
     done
 
     # Check metadata template file existence.
-    cli_checkFiles $TEMPLATE 'f' '' '--quiet'
-    if [[ $? -ne 0 ]];then
-       cli_printMessage "`gettext "The template file you provided doesn't exist."`"
-       cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    cli_checkFiles $TEMPLATE 'f'
 
     # Define metadata template instance.
     INSTANCE=${TMPFILE}-$(basename $TEMPLATE)
@@ -122,10 +118,8 @@ function svg_updateMetadata {
         sed -i -f $INSTANCE $FILE
 
         # Remove metadata template instance.
-        cli_checkFiles $INSTANCE 'f' '' '--quiet'
-        if [[ $? -eq 0 ]];then
-            rm $INSTANCE
-        fi
+        cli_checkFiles $INSTANCE 'f'
+        rm $INSTANCE
 
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk

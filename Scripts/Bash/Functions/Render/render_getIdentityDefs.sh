@@ -48,7 +48,8 @@ function render_getIdentityDefs {
     if [[ "$TRANSLATION" == 'None' ]];then
         cli_printMessage "`gettext "None"`" "AsTranslationLine"
     else
-        cli_checkFiles "$TRANSLATION" 'fh' `gettext "Translation"`
+        cli_checkFiles "$TRANSLATION" 'fh'
+        cli_printMessage "`gettext "Translation"`:" "$TRANSLATION"
     fi
     
     # Define the design template absolute path. This definition is
@@ -288,10 +289,8 @@ function render_getIdentityDefs {
     # Check existence of TEMPLATE file. If design template doesn't
     # exist we cannot render it; in such case, stop working for it and
     # try the next one in the list.
-    cli_checkFiles "$TEMPLATE" '' "`gettext "Design"`"
-    if [[ $? -gt 0 ]];then
-        continue
-    fi
+    cli_checkFiles "$TEMPLATE"  'f'
+    cli_printMessage "`gettext "Design"`: $TEMPLATE" 'AsRegularLine'
      
     # Get relative path to file. The path string (stored in FILE) has
     # two parts: 1. the variable path and 2. the common path.  The

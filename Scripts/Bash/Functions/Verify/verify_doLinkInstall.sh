@@ -35,22 +35,18 @@ function verify_doLinkInstall {
         # Verify parent directory of missing link names that have a
         # file as target. If the parent directory doesn't exist,
         # create it first before creating links inside it. Because
-        # links are not created yet, we use their targets as reference
-        # to determine what type of link we are creating.
+        # links are not created yet, we use their related targets as
+        # reference to determine what type of link we are creating.
         if [[ -f ${TARGETS[$ID]} ]];then
             LINKS_PARENT=$(dirname ${LINKS[$ID]})
-            cli_checkFiles $LINKS_PARENT 'd' '' '--quiet'
-            if [[ $? -ne 0 ]];then
-                mkdir -p $LINKS_PARENT
-            fi
+            cli_checkFiles $LINKS_PARENT 'd'
         fi
 
         # Verify missing link that already exists as regular file. If
         # a regular file exists with the same name of a required link,
         # warn the user about it and continue with the next file in
         # the list of missing links that need to be installed.
-        cli_checkFiles ${LINKS[$ID]} 'f' '' '--quiet'
-        if [[ $? -eq 0 ]];then
+        if [[ -f ${LINKS[$ID]} ]];then
             WARNING=" (`gettext "Already exists as regular file."`)"
             cli_printMessage "${LINKS[$ID]}${WARNING}" 'AsResponseLine'
             continue

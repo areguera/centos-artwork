@@ -58,7 +58,7 @@ function render_doIdentityImageBrands {
     TARGETFILE=$TARGETDIR/$(basename $SOURCEFILE)
     # --- centos-art path $SOURCEFILE --move-to=$TARGETDIR
     cli_printMessage "$TARGETFILE" 'AsMovedToLine'
-    cli_checkFiles $TARGETDIR 'd' '' '--quiet'
+    cli_checkFiles $TARGETDIR 'd'
     if [[ $? -ne 0 ]];then
         mkdir -p $TARGETDIR
     fi
@@ -71,7 +71,7 @@ function render_doIdentityImageBrands {
     TARGETFILE=$TARGETDIR/$(basename $SOURCEFILE)
     # --- centos-art path $SOURCEFILE --move-to=$TARGETDIR
     cli_printMessage "$TARGETFILE" 'AsMovedToLine'
-    cli_checkFiles $TARGETDIR 'd' '' '--quiet'
+    cli_checkFiles $TARGETDIR 'd'
     if [[ $? -ne 0 ]];then
         mkdir -p $TARGETDIR
     fi

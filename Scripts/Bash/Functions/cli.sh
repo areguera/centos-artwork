@@ -106,19 +106,16 @@ function cli {
     # Define default answer to questions.
     ANSWER=${N}
 
-    # Define a unique string based on script name and process id used
-    # to create temporal files under /tmp/.
-    TMPFILE="/tmp/centos-art-$USER-$$"
+    # Define prefix for temporal files.
+    TMPFILE="/tmp/centos-art-$$"
 
-    # Define text editor used to edit texinfo documentation. Predifine
-    # possible editors paths here to avoid malevolent values. If we do
-    # not create this restriction editor can be set to anything other
-    # than a text editor and in that case be executed when you try to
-    # edit a documentation entry using the `centos-art help --edit'
-    # command.
+    # Define default text editors used by centos-art.sh script.
     if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
         EDITOR='/usr/bin/vim'
     fi
+    
+    # Check text editor execution rights. 
+    cli_checkFiles $EDITOR 'x'
 
     # Go to defined actions. Keep the cli_getActions function calling
     # after all variables and arguments definitions. Reason? To make

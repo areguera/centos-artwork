@@ -74,10 +74,7 @@ function render_doIdentityImageDm {
     fi
 
     # Check absolute path to display manager design models.
-    cli_checkFiles $TPL 'd'
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    cli_checkFiles "$TPL" 'd'
 
     # Get screen resolutions passed from render.conf.sh pre-rendering
     # configuration script.
@@ -116,10 +113,7 @@ function render_doIdentityImageDm {
     # we are using CentOS symbol at 48x48 pixels. This value seems to
     # be the middle dimension that fits all situations.
     SYMBOL=/home/centos/artwork/trunk/Identity/Brands/Img/CentOS/Symbol/5c-a/Png/48.png
-    cli_checkFiles $SYMBOL 'f'
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    cli_checkFiles "$SYMBOL" 'f'
 
     for VERSION in $VERSIONS;do
 
@@ -129,19 +123,13 @@ function render_doIdentityImageDm {
         IMG=$OPTIONVAL/$VERSION/Img
 
         # Check existence of release-specific image directory.
-        cli_checkFiles $IMG '-d' '' '--quiet'
-        if [[ $? -ne 0 ]];then
-            mkdir -p $IMG
-        fi
+        cli_checkFiles "$IMG" 'd'
 
         # Define directory to store release-specific tar.gz files. 
         TGZ=$OPTIONVAL/$VERSION/Tgz
 
         # Check existence of release-specific tar.gz directory.
-        cli_checkFiles $TGZ 'd' '' '--quiet'
-        if [[ $? -ne 0 ]];then
-            mkdir -p $TGZ
-        fi
+        cli_checkFiles "$TGZ" 'd'
 
         # Move into working directory.
         pushd $TGZ > /dev/null
@@ -151,11 +139,7 @@ function render_doIdentityImageDm {
             cli_printMessage "$TGZ/${TMP}-${RESOLUTION}.tar.gz" "AsCreatingLine"
 
             # Check background existence for specified resolution.
-            cli_checkFiles $BGS/$RESOLUTION.png 'f' '' '--quiet'
-            if [[ $? -ne 0 ]];then
-                cli_printMessage "`eval_gettext "There is not background for \\\"\\\$RESOLUTION\\\" resolution."`"
-                cli_printMessage "$(caller)" "AsToKnowMoreLine"
-            fi
+            cli_checkFiles "$BGS/${RESOLUTION}.png" 'f'
 
             # Create temporal directory.
             if [[ ! -d $TMP ]]; then

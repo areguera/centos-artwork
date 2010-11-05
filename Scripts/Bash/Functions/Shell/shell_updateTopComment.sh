@@ -55,11 +55,7 @@ function shell_updateTopComment {
     done
 
     # Check template file existence.
-    cli_checkFiles $TEMPLATE 'f' '' '--quiet'
-    if [[ $? -ne 0 ]];then
-       cli_printMessage "`gettext "The template file you provided doesn't exist."`"
-       cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    cli_checkFiles $TEMPLATE 'f'
 
     # Define template instance name.
     INSTANCE=${TMPFILE}-$(basename $TEMPLATE)
@@ -80,10 +76,8 @@ function shell_updateTopComment {
         sed -i -f $INSTANCE $FILE
 
         # Remove template instance.
-        cli_checkFiles $INSTANCE 'f' '' '--quiet'
-        if [[ $? -eq 0 ]];then
-            rm $INSTANCE
-        fi
+        cli_checkFiles $INSTANCE 'f'
+        rm $INSTANCE
 
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
