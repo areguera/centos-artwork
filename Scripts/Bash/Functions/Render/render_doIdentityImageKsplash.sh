@@ -79,4 +79,7 @@ function render_doIdentityImageKsplash {
 
     done
 
+    # Output division rule.
+    echo '----------------------------------------------------------------------'
+
 }

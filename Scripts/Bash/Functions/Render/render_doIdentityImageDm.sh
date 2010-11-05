@@ -174,6 +174,9 @@ function render_doIdentityImageDm {
         # Return to where we were initially.
         popd > /dev/null
 
+        # Output division rule.
+        echo '----------------------------------------------------------------------'
+
     done
 
 }

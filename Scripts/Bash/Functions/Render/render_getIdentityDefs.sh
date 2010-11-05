@@ -49,7 +49,7 @@ function render_getIdentityDefs {
         cli_printMessage "`gettext "None"`" "AsTranslationLine"
     else
         cli_checkFiles "$TRANSLATION" 'fh'
-        cli_printMessage "`gettext "Translation"`:" "$TRANSLATION"
+        cli_printMessage "`gettext "Translation"`: $TRANSLATION"
     fi
     
     # Define the design template absolute path. This definition is
