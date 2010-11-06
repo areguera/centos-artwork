@@ -58,7 +58,7 @@ function shell_updateTopComment {
     cli_checkFiles $TEMPLATE 'f'
 
     # Define template instance name.
-    INSTANCE=${TMPFILE}-$(basename $TEMPLATE)
+    INSTANCE=$(cli_getTemporalFile $TEMPLATE)
 
     # Define the last year to use in the copyright note. As last year
     # we understand the last year in which the files were modified, or

@@ -64,7 +64,7 @@ function svg_updateMetadata {
     cli_checkFiles $TEMPLATE 'f'
 
     # Define metadata template instance.
-    INSTANCE=${TMPFILE}-$(basename $TEMPLATE)
+    INSTANCE=$(cli_getTemporalFile $TEMPLATE)
 
     # Define svg document date.
     DATE=$(date +%Y-%m-%d)

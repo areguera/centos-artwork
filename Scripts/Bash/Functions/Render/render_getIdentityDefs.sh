@@ -335,7 +335,7 @@ function render_getIdentityDefs {
     FILE=$IMG/$FILE
 
     # Define instance name.
-    INSTANCE=/tmp/$(basename $TEMPLATE)
+    INSTANCE=$(cli_getTemporalFile $TEMPLATE)
 
     # Remove template instance if it is already present.
     if [[ -a $INSTANCE ]];then
