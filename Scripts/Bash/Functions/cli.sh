@@ -28,6 +28,12 @@
 
 function cli {
 
+    # Initialize global variables.
+    local ACTION=''
+    local OPTIONNAM=''
+    local OPTIONVAL=''
+    local REGEX=''
+
     # Define action variable using first argument (lowercase) value.
     ACTION=$(cli_getRepoName "$1" 'f')
 
@@ -96,15 +102,6 @@ function cli {
     if [[ -f $OPTIONVAL/$REGEX ]];then
         OPTIONVAL=$OPTIONVAL/$REGEX
     fi
-
-    # Define positive answer.
-    Y="`gettext "y"`"
-
-    # Define negative answer.
-    N="`gettext "N"`"
-
-    # Define default answer to questions.
-    ANSWER=${N}
 
     # Define prefix for temporal files.
     TMPFILE="/tmp/centos-art-$$"

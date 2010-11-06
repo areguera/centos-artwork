@@ -34,7 +34,10 @@ function cli_printMessage {
     # Define variables as local to avoid conflicts outside.
     local MESSAGE="$1"
     local FORMAT="$2"
-
+    local Y=''
+    local N=''
+    local ANSWER=''
+    
     # Reduce paths inside output messages. The main purpose for this
     # is to free horizontal space in output messages.
     MESSAGE=$(echo "$MESSAGE" \
@@ -118,6 +121,16 @@ function cli_printMessage {
             ;;
 
         'AsYesOrNoRequestLine' )
+            # Define positive answer.
+            Y="`gettext "y"`"
+
+            # Define negative answer.
+            N="`gettext "N"`"
+
+            # Define default answer to questions.
+            ANSWER=${N}
+
+            # Define `yes or no' confirmation question.
             echo -n "$MESSAGE [${Y}/${N}]: "
             read ANSWER
             if [[ ! $ANSWER =~ "^${Y}" ]];then
