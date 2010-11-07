@@ -30,7 +30,7 @@ function shell {
 
     # Define list of files to process using option value as reference.
     if [[ -d $OPTIONVAL ]];then
-        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.shell$')
+        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.sh$')
     elif [[ -f $OPTIONVAL ]];then
         FILES=$OPTIONVAL
     fi

@@ -135,7 +135,7 @@ function html_updateHeadings {
             for TOCENTRY in "${TOCENTRIES[@]}";do
                 echo $TOCENTRY
             done \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/Styles/output_forHeadingsToc.awk)
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/Config/output_forHeadingsToc.awk)
 
         # Update table of contents inside the current file being
         # processed.

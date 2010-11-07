@@ -44,7 +44,7 @@ function shell_updateTopComment {
     local YEAR=''
 
     # Define absolute path to template files.
-    TEMPLATES=~/artwork/trunk/Scripts/Bash/Functions/Shell/Tpl
+    TEMPLATES=~/artwork/trunk/Scripts/Bash/Functions/Shell/Config
 
     # Define template file we want to apply. More than one template
     # file may exist, so let the user choose which one to use.
