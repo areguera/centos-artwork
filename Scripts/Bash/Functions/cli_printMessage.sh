@@ -117,7 +117,7 @@ function cli_printMessage {
             ;;
 
         'AsRequestLine' )
-            echo -n $MESSAGE
+            echo -n "${MESSAGE}: "
             ;;
 
         'AsYesOrNoRequestLine' )
