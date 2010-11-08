@@ -31,12 +31,18 @@ function svg {
     # Define list of scalable vector graphic files to process using
     # option value as reference.
     if [[ -d $OPTIONVAL ]];then
-        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex '.*/*.svg$')
-    elif [[ -f $OPTIONVAL ]];then
-        FILES=$OPTIONVAL
+        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex "^${REGEX}\.svg$")
     fi
-    
+
+    # Check list of files to process. If list of files is empty there
+    # is nothing to do except to print a message and end script
+    # execution.
+    if [[ $FILES == '' ]];then
+        cli_printMessage "`gettext "There is no file to process."`"
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
     # Define command line interface for svg-based actions.
-    svg_getActions 
+    svg_getActions
 
 }
