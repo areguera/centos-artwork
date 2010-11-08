@@ -2,7 +2,7 @@
 # its scalable vector graphics (SVG) files.  This files is used with
 # the regular expression '.*\.svg$' only.
 # ---------------------------------------------------
-# $Id: svg-metadata-centos.sed 5964 2010-06-16 06:51:37Z al $
+# $Id$
 # ---------------------------------------------------
 /<metadata/,/<\/metadata/c\
   <metadata\
@@ -32,20 +32,20 @@
             <dc:title>=PUBLISHER=</dc:title>\
           </cc:Agent>\
         </dc:publisher>\
-        <dc:identifier></dc:identifier>\
-        <dc:source></dc:source>\
-        <dc:relation></dc:relation>\
-        <dc:language>en</dc:language>\
+        <dc:identifier>=IDENTIFIER=</dc:identifier>\
+        <dc:source>=SOURCE=</dc:source>\
+        <dc:relation>=RELATION=</dc:relation>\
+        <dc:language>=LANGUAGE=</dc:language>\
         <dc:subject>\
           <rdf:Bag>\
 =KEYWORDS=\
           </rdf:Bag>\
         </dc:subject>\
         <dc:coverage>=COVERAGE=</dc:coverage>\
-        <dc:description />\
+        <dc:description>=DESCRIPTION=</dc:description>\
         <dc:contributor>\
           <cc:Agent>\
-            <dc:title>Alain Reguera Delgado</dc:title>\
+            <dc:title>=CONTRIBUTOR=</dc:title>\
           </cc:Agent>\
         </dc:contributor>\
       </cc:Work>\
