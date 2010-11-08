@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# svg_getActions.sh -- This function initializes SVG string
-# manipulation functionalities, using the option value of
-# centos-art.sh script as reference.
+# svg_vacuumDefs.sh -- This function removes all unused items from the
+# <lt>defs<gt> section of the SVG file massively.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -20,32 +19,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
-# 
+#
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
-    
-function svg_getActions {
 
-    # Evaluate option name and define which actions does centos-art.sh
-    # script supports.
-    case $OPTIONNAM in
+function svg_vacuumDefs {
 
-        '--update-metadata' )
-            # Update metadata inside svg files using metadata
-            # templates.
-            svg_updateMetadata
-            ;;
+    for FILE in $FILES;do
+        cli_printMessage "$FILE" 'AsUpdatingLine'
+        inkscape --vacuum-defs $FILE &> /dev/null
+    done
 
-        '--vacuum-defs' )
-            # Remove unused items inside svg files.
-            svg_vacuumDefs
-            ;;
-
-        * )
-            cli_printMessage "`eval_gettext "The option provided is not valid."`"
-            ;;
-
-    esac
-    
 }
