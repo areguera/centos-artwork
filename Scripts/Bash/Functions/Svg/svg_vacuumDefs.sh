@@ -27,8 +27,17 @@
 function svg_vacuumDefs {
 
     for FILE in $FILES;do
+
+        # Output action message.
         cli_printMessage "$FILE" 'AsUpdatingLine'
+
+        # Vacuum unused svg definition using inkscape.
         inkscape --vacuum-defs $FILE &> /dev/null
+
     done
+
+    # Check repository changes and ask user to commit them up to
+    # central repository.
+    cli_commitRepoChanges
 
 }
