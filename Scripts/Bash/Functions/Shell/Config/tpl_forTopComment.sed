@@ -3,10 +3,10 @@
 # note and the license under which the script is released.  This files
 # is used with the regular expression '.*\.sh$' only.
 # ---------------------------------------------------
-# $Id: svg-metadata-centos.sed 5962 2010-06-16 05:44:51Z al $
+# $Id$
 # ---------------------------------------------------
 /^# +Copyright .*$/a\
-# Copyright (C) 2009-=YEAR= =FULLNAME=\
+# Copyright (C) =YEAR1=-=YEAR2= =FULLNAME=\
 # \
 # This program is free software; you can redistribute it and/or\
 # modify it under the terms of the GNU General Public License as\
