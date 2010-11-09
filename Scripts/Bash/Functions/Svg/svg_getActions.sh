@@ -44,6 +44,7 @@ function svg_getActions {
 
         * )
             cli_printMessage "`eval_gettext "The option provided is not valid."`"
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
             ;;
 
     esac

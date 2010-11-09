@@ -32,6 +32,8 @@ function svg {
     # option value as reference.
     if [[ -d $OPTIONVAL ]];then
         FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex "^${REGEX}\.svg$")
+    elif [[ -f $OPTIONVAL ]];then
+        FILES=$OPTIONVAL
     fi
 
     # Check list of files to process. If list of files is empty there

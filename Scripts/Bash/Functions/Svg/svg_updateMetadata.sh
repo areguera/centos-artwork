@@ -38,18 +38,17 @@ function svg_updateMetadata {
     local -a TITLE
     local -a VALUE
     local -a PATTERN
+    local -a PATTERN_MSG
+    local -a MARKER
+    local -a DEFAULT
 
-    # Define metadata template file name.
+    # Define template file name.
     TEMPLATE="/home/centos/artwork/trunk/Scripts/Bash/Functions/Svg/Config/tpl_forMetadata.sed"
 
-    # Check metadata template file existence.
+    # Check template file existence.
     cli_checkFiles $TEMPLATE 'f'
 
-    # Define file name to metadata template instance.
-    INSTANCE=$(cli_getTemporalFile $TEMPLATE)
-
-    # Define metadata titles using Inkscape 0.46 metadata definition
-    # as reference.
+    # Define titles using Inkscape 0.46 metadata definition as reference.
     TITLE[0]="`gettext "Title"`"
     TITLE[1]="`gettext "Date"`"
     TITLE[2]="`gettext "Creator"`"
@@ -64,7 +63,22 @@ function svg_updateMetadata {
     TITLE[11]="`gettext "Description"`"
     TITLE[12]="`gettext "Contributor"`"
 
-    # Define metadata pattern. These values are used as regular
+    # Define markers. These values are used inside template.
+    MARKER[0]='=TITLE='
+    MARKER[1]='=DATE='
+    MARKER[2]='=CREATOR='
+    MARKER[3]='=RIGHTS='
+    MARKER[4]='=PUBLISHER='
+    MARKER[5]='=IDENTIFIER='
+    MARKER[6]='=SOURCE='
+    MARKER[7]='=RELATION='
+    MARKER[8]='=LANGUAGE='
+    MARKER[9]='=KEYWORDS='
+    MARKER[10]='=COVERAGE='
+    MARKER[11]='=DESCRIPTION='
+    MARKER[12]='=CONTRIBUTOR='
+
+    # Define pattern. These values are used as regular
     # expression patterns for user's input further verification.
     PATTERN[0]='^([[:alnum:] _-.]+)?$'
     PATTERN[1]='^([0-9]{4}-(0[1-9]|1[0-2])-([0-2][1-9]|3[0-1]))?$'
@@ -80,7 +94,7 @@ function svg_updateMetadata {
     PATTERN[11]=${PATTERN[0]}
     PATTERN[12]=${PATTERN[0]}
 
-    # Define metadata pattern message. These values are used as output
+    # Define pattern message. These values are used as output
     # message when user's input doesn't match the related pattern.
     PATTERN_MSG[0]="`gettext "Try using alphanumeric characters."`"
     PATTERN_MSG[1]="`gettext "Try using 'YYYY-MM-DD' date format."`"
@@ -96,7 +110,7 @@ function svg_updateMetadata {
     PATTERN_MSG[11]=${PATTERN_MSG[0]}
     PATTERN_MSG[12]=${PATTERN_MSG[0]}
 
-    # Define metadata common default values.
+    # Define common default values.
     DEFAULT[1]=$(date +%Y-%m-%d)
     DEFAULT[2]="The CentOS Project"
     DEFAULT[3]=${DEFAULT[2]}
@@ -104,15 +118,15 @@ function svg_updateMetadata {
     DEFAULT[8]=$(cli_getCurrentLocale)
     DEFAULT[10]=${DEFAULT[2]}
 
-    # Initialize metadata values using user's input.
-    cli_printMessage "`gettext "Enter metadata you want to apply:"`"
+    # Initialize values using user's input.
+    cli_printMessage "`gettext "Enter metadata information you want to apply:"`"
     while [[ $COUNT -ne ${#TITLE[*]} ]];do
 
-        # Request metadata value.
+        # Request value.
         cli_printMessage "${TITLE[$COUNT]}" 'AsRequestLine'
         read VALUE[$COUNT]
 
-        # Sanitate metadata values to exclude characters that could
+        # Sanitate values to exclude characters that could
         # introduce possible markup malformations to final SVG files.
         until [[ ${VALUE[$COUNT]} =~ ${PATTERN[$COUNT]} ]];do
             cli_printMessage "${PATTERN_MSG[$COUNT]}"
@@ -120,7 +134,7 @@ function svg_updateMetadata {
             read VALUE[$COUNT]
         done
 
-        # Set default value to metadata empty values. 
+        # Set default value to empty values. 
         if [[ ${VALUE[$COUNT]} == '' ]];then
             VALUE[$COUNT]=${DEFAULT[$COUNT]}
         fi
@@ -146,30 +160,33 @@ function svg_updateMetadata {
         KEYS=$(dirname $FILE | cut -d/ -f6- | tr '/' '\n')
 
         # Build keywords using SVG standard format. Note that this
-        # information is inserted inside metadata template file. The
-        # metadata template file is a replacement set of sed commands
+        # information is inserted inside template file. The
+        # template file is a replacement set of sed commands
         # so we need to escape the new line of each line using one
         # backslash (\). As we are doing this inside bash, it is
         # required to escape the backslash with another backslash so
-        # one of them passes literally to metadata template file.
+        # one of them passes literally to template file.
         KEYS=$(\
             for KEY in $KEYS;do
                 echo "            <rdf:li>$KEY</rdf:li>\\"
             done)
 
-        # Create metadata template instance.
+        # Redefine template instance file name.
+        INSTANCE=$(cli_getTemporalFile $TEMPLATE)
+
+        # Create template instance.
         cp $TEMPLATE $INSTANCE
 
-        # Check metadata template instance. We cannot continue if
-        # template instance couldn't be created.
+        # Check template instance. We cannot continue if the template
+        # instance couldn't be created.
         cli_checkFiles $INSTANCE 'f'
 
-        # Reset metadata counter.
+        # Reset counter.
         COUNT=0
 
         while [[ $COUNT -ne ${#TITLE[*]} ]];do
 
-            # Redefine file-specific metadata values.
+            # Redefine file-specific values.
             if [[ $COUNT -eq 0 ]];then
                 VALUE[$COUNT]=$NAM
             elif [[ $COUNT -eq 5 ]];then
@@ -182,34 +199,31 @@ function svg_updateMetadata {
                 VALUE[$COUNT]=$KEYS
             fi
 
-            # Define translation marker pattern.
-            PATTERN[$COUNT]=$(echo ${TITLE[$COUNT]} | tr '[[:lower:]]' '[[:upper:]]')
-
             # Apply translation marker replacement.
             if [[ $COUNT -eq 9 ]];then
-                sed -i -r "/=${PATTERN[$COUNT]}=/c\\${VALUE[$COUNT]}" $INSTANCE
+                sed -i -r "/${MARKER[$COUNT]}/c\\${VALUE[$COUNT]}" $INSTANCE
             else
-                sed -i -r "s!=${PATTERN[$COUNT]}=!${VALUE[$COUNT]}!g" $INSTANCE
+                sed -i -r "s!${MARKER[$COUNT]}!${VALUE[$COUNT]}!g" $INSTANCE
             fi
 
-            # Increase metadata counter.
+            # Increase counter.
             COUNT=$(($COUNT + 1))
 
         done
         
-        # Sanitate metadata template instance.
+        # Sanitate template instance.
         sed -i -r -e 's/>$/>\\/g' $INSTANCE
 
-        # Apply metadata template instance to scalable vector graphic
+        # Apply template instance to scalable vector graphic
         # file.
         sed -i -f $INSTANCE $FILE
 
-        # Sanitate scalable vector graphic.
-        sed -i -r '/^[[:space:]]*$/d' $FILE
-
-        # Remove metadata template instance.
+        # Remove template instance.
         cli_checkFiles "${INSTANCE}" 'f'
         rm $INSTANCE
+
+        # Sanitate scalable vector graphic.
+        sed -i -r '/^[[:space:]]*$/d' $FILE
 
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
