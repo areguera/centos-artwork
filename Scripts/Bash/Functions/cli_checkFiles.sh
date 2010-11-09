@@ -45,14 +45,14 @@ function cli_checkFiles {
     # least one argument should be passed.
     if [[ $# -lt 1 ]];then
         cli_printMessage "cli_checkFiles: `gettext "You need to provide one argument at least."`"
-        cli_printMessages "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Check value passed as file to cli_checkFiles function. The file
     # value cannot be empty.
     if [[ $FILE == '' ]];then
         cli_printMessage "cli_checkFiles: `gettext "The first argument cannot be empty."`"
-        cli_printMessages "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Perform file verification using FILE and TYPE variables.
@@ -110,7 +110,7 @@ function cli_checkFiles {
     # normal flow.
     if [[ "$MESSAGE" != '' ]];then
         cli_printMessage "$MESSAGE" "AsRegularLine"
-        cli_printMessages "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
 }
