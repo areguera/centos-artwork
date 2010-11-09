@@ -5,16 +5,6 @@
 # templates available. Use this function to maintain shell scripts top
 # comments inside repository.
 #
-#   Usage:
-#
-#   centos-art shell --update-topcomment=path/to/dir --filter=filename
-#
-# In the above usage example `path/to/dir' represents the parent
-# directory where shell scripts, you want to update top comment, are.
-# The `--filter=filename' argument is optional and if provided just
-# the file specificed is affected. Otherwise all files ending in `.sh'
-# are massively modified.
-#
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -36,53 +26,117 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function shell_updateTopComment {
+function shell_updateCopyright {
 
     local TEMPLATES=''
-    local TEMPLATE=''
     local INSTANCE=''
-    local YEAR=''
+    local COUNT=0
+    local -a TITLE
+    local -a VALUE
+    local -a PATTERN
+    local -a PATTERN_MSG
+    local -a DEFAULT
+    local -a MARKER
 
-    # Define absolute path to template files.
-    TEMPLATES=~/artwork/trunk/Scripts/Bash/Functions/Shell/Config
-
-    # Define template file we want to apply. More than one template
-    # file may exist, so let the user choose which one to use.
-    cli_printMessage "`gettext "Select the template you want to apply"`:"
-    select TEMPLATE in $(ls $TEMPLATES);do
-       TEMPLATE=$TEMPLATES/$TEMPLATE
-       break
-    done
+    # Define absolute path to template file.
+    TEMPLATE="/home/centos/artwork/trunk/Scripts/Bash/Functions/Shell/Config/tpl_forCopyright.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE 'f'
 
-    # Define template instance name.
+    # Define file name to template instance.
     INSTANCE=$(cli_getTemporalFile $TEMPLATE)
 
-    # Define the last year to use in the copyright note. As last year
-    # we understand the last year in which the files were modified, or
-    # what is the same, the present year in which this automation
-    # script was applied on.
-    YEAR=$(date +%Y)
+    # Define copyright information.
+    TITLE[0]="`gettext "Your full name"`"
+    TITLE[1]="`gettext "Year which you started working in"`"
+    TITLE[2]="`gettext "Year which you stopped working in"`"
+
+    # Define translation marker. These values are used inside
+    # template file.
+    MARKER[0]='=FULLNAME='
+    MARKER[1]='=YEAR1='
+    MARKER[2]='=YEAR2='
+
+    # Define pattern. These values are used as regular
+    # expression patterns for user's input further verification.
+    PATTERN[0]='^([[:alnum:] _-.]+)?$'
+    PATTERN[1]='^([[:digit:]]{4})?$'
+    PATTERN[2]=${PATTERN[1]}
+
+    # Define pattern message. These values are used as output
+    # message when user's input doesn't match the related pattern.
+    PATTERN_MSG[0]="`gettext "Try using alphanumeric characters."`"
+    PATTERN_MSG[1]="`gettext "Try using numeric characters."`"
+    PATTERN_MSG[2]=${PATTERN_MSG[1]}
+
+    # Define default values.
+    DEFAULT[0]="The CentOS Project"
+    DEFAULT[1]='2003'
+    DEFAULT[2]=$(date +%Y)
+
+    # Initialize values using user's input.
+    cli_printMessage "`gettext "Enter copyright information you want to apply:"`"
+    while [[ $COUNT -ne ${#TITLE[*]} ]];do
+
+        # Request value.
+        cli_printMessage "${TITLE[$COUNT]}" 'AsRequestLine'
+        read VALUE[$COUNT]
+
+        # Sanitate values to exclude characters that could
+        # introduce possible markup malformations to final SVG files.
+        until [[ ${VALUE[$COUNT]} =~ ${PATTERN[$COUNT]} ]];do
+            cli_printMessage "${PATTERN_MSG[$COUNT]}"
+            cli_printMessage "${TITLE[$COUNT]}" 'AsRequestLine'
+            read VALUE[$COUNT]
+        done
+
+        # Set default value to empty values. 
+        if [[ ${VALUE[$COUNT]} == '' ]];then
+            VALUE[$COUNT]=${DEFAULT[$COUNT]}
+        fi
+
+        # Increase counter.
+        COUNT=$(($COUNT + 1))
+
+    done
+
+    # Create template instance.
+    cp $TEMPLATE $INSTANCE
+
+    # Check template instance. We cannot continue if template instance
+    # couldn't be created.
+    cli_checkFiles $INSTANCE 'f'
+
+    # Reset counter.
+    COUNT=0
+
+    while [[ $COUNT -ne ${#TITLE[*]} ]];do
+
+        # Apply translation marker replacement.
+        sed -r -i "s!${MARKER[$COUNT]}!${VALUE[$COUNT]}!g" $INSTANCE
+
+        # Increase counter.
+        COUNT=$(($COUNT + 1))
+
+    done
 
     for FILE in $FILES;do
 
-        # Create template instance.
-        sed -r -e "s!=YEAR=!$YEAR!" \
-            $TEMPLATE > $INSTANCE
-
+        # Output action message.
+        cli_printMessage $FILE 'AsUpdatingLine'
+ 
         # Apply template instance to file.
-        sed -i -f $INSTANCE $FILE
-
-        # Remove template instance.
-        cli_checkFiles $INSTANCE 'f'
-        rm $INSTANCE
+        sed -r -i -f $INSTANCE $FILE
 
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 
-    # Check repository changes and ask user to commit them up to
+    # Remove template instance.
+    cli_checkFiles "${INSTANCE}" 'f'
+    rm $INSTANCE
+
+    # Check repository changes and ask you to commit them up to
     # central repository.
     cli_commitRepoChanges
 

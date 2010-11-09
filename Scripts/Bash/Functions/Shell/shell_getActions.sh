@@ -31,13 +31,14 @@ function shell_getActions {
     # script supports.
     case $OPTIONNAM in
 
-        '--update-topcomment' )
-            # Update top comment inside shell scripts using templates.
-            shell_updateMetadata
+        '--update-copyright' )
+            # Update copyright note inside top comments.
+            shell_updateCopyright
             ;;
 
         * )
             cli_printMessage "`eval_gettext "The option provided is not valid."`"
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
             ;;
 
     esac
