@@ -6,7 +6,7 @@
 # $Id: svg-metadata-centos.sed 5962 2010-06-16 05:44:51Z al $
 # ---------------------------------------------------
 /^# +Copyright .*$/a\
-# Copyright (C) 2009-=YEAR= Alain Reguera Delgado\
+# Copyright (C) 2009-=YEAR= =FULLNAME=\
 # \
 # This program is free software; you can redistribute it and/or\
 # modify it under the terms of the GNU General Public License as\
@@ -23,10 +23,10 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307\
 # USA.\
 # \
-#------------------------------------------------------------
+# ----------------------------------------------------------------------
 
 # Remove previous comments.
-/^# +Copyright .*$/,/^#-+$/{
+/^# +Copyright .*$/,/^# -+$/{
 d
 }
 
