@@ -51,30 +51,4 @@ function render_doIdentityImageBrands {
         ${FILE}.png \
         ${FILE}-emboss.png
 
-    # Move logo copy in 2 colors into its final location. This action
-    # complements groupByType post-rendering action.
-    SOURCEFILE=$FILE.xbm
-    TARGETDIR=$(dirname $FILE)/Xbm
-    TARGETFILE=$TARGETDIR/$(basename $SOURCEFILE)
-    # --- centos-art path $SOURCEFILE --move-to=$TARGETDIR
-    cli_printMessage "$TARGETFILE" 'AsMovedToLine'
-    cli_checkFiles $TARGETDIR 'd'
-    if [[ $? -ne 0 ]];then
-        mkdir -p $TARGETDIR
-    fi
-    mv ${SOURCEFILE} --target-directory=$TARGETDIR --force
-
-    # Move logo copy with emboss effect into its final location. This
-    # action complements groupByType post-rendering action.
-    SOURCEFILE=${FILE}-emboss.png
-    TARGETDIR=$(dirname $FILE)/Png
-    TARGETFILE=$TARGETDIR/$(basename $SOURCEFILE)
-    # --- centos-art path $SOURCEFILE --move-to=$TARGETDIR
-    cli_printMessage "$TARGETFILE" 'AsMovedToLine'
-    cli_checkFiles $TARGETDIR 'd'
-    if [[ $? -ne 0 ]];then
-        mkdir -p $TARGETDIR
-    fi
-    mv ${SOURCEFILE} --target-directory=$TARGETDIR --force
-
 }
