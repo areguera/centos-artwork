@@ -5,31 +5,31 @@
 # motifs, screen resolutions, and major releases of CentOS
 # distribution. 
 #
-#   Usage:
+# Usage:
 #
-#       ACTIONS[0]='BASE:renderImage'
-#       ACTIONS[1]='LAST:renderDm:TYPE:RESOLUTION'
+# ACTIONS[0]='BASE:renderImage'
+# ACTIONS[1]='LAST:renderDm:TYPE:RESOLUTION'
 #
-#   Where:
+# Where:
 #
-#            TYPE = GNOME or KDE
-#      RESOLUTION = Any screen resolution available as background
-#                   (e.g., 800x600, 1024x768, 2048x1536, etc.)
+# TYPE = GNOME or KDE
+# RESOLUTION = Any screen resolution available as background
+# (e.g., 800x600, 1024x768, 2048x1536, etc.)
 #
-#   For example, to produce GNOME display manager theme in 2048x1536,
-#   1360x768, and 3271x1227 screen resolutions, for all major releases
-#   available, use the following definition inside GDM pre-rendering
-#   configuration script:
+# For example, to produce GNOME display manager theme in 2048x1536,
+# 1360x768, and 3271x1227 screen resolutions, for all major releases
+# available, use the following definition inside GDM pre-rendering
+# configuration script:
 #
-#       ACTIONS[0]='BASE:renderImage'
-#       ACTIONS[1]='LAST:renderDm:GNOME:2048x1536 1360x768 3271x1227'
+# ACTIONS[0]='BASE:renderImage'
+# ACTIONS[1]='LAST:renderDm:GNOME:2048x1536 1360x768 3271x1227'
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of

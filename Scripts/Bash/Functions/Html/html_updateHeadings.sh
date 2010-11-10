@@ -3,26 +3,26 @@
 # html_updateHeadings.sh -- This function transforms html headings to
 # to make them accessible (e.g., through a table of contents).
 #
-#   - In order for this function to work, you need to put headings in
-#     just one line and they must have the following formats:
+# - In order for this function to work, you need to put headings in
+# just one line and they must have the following formats:
 #
-#       <h1><a name="">Title</a></h1>
-#       <h1><a href="">Title</a></h1>
-#       <h1><a name="" href="">Title</a></h1>
+# <h1><a name="">Title</a></h1>
+# <h1><a href="">Title</a></h1>
+# <h1><a name="" href="">Title</a></h1>
 #
-#     In the above examples, h1 alternates from h1 to h6. Closing tag
-#     must be present and match the one opentaging. The value of <a
-#     name=""> and <a href=""> options are the md5sum of page
-#     location, plus the 'head-' string, plus the heading string. If
-#     heading title or page location changes, the values of <a
-#     name=""> and <a href=""> options will change too.
+# In the above examples, h1 alternates from h1 to h6. Closing tag
+# must be present and match the one opentaging. The value of <a
+# name=""> and <a href=""> options are the md5sum of page
+# location, plus the 'head-' string, plus the heading string. If
+# heading title or page location changes, the values of <a
+# name=""> and <a href=""> options will change too.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of

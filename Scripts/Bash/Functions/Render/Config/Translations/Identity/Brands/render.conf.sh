@@ -9,56 +9,56 @@
 # components inside CentOS Artwork Repository. Relevant differences
 # are described below:
 #
-#  1) Translation files are not regular files, but symbolic links
-#  pointing to the common template translation structure, inside the
-#  translation template (`Tpl') directory.
+# 1) Translation files are not regular files, but symbolic links
+# pointing to the common template translation structure, inside the
+# translation template (`Tpl') directory.
 #
-#  2) Translation files are created using design templates as
-#  reference. This script creates a translation structure where the
-#  translation template (`Tpl') directory structure applies to each
-#  single design template available.
+# 2) Translation files are created using design templates as
+# reference. This script creates a translation structure where the
+# translation template (`Tpl') directory structure applies to each
+# single design template available.
 #
-#  For instance, if the translation template (`Tpl') directory
-#  structure has 30 translation files and there are 20 design
-#  templates, this script creates a translation structure of symbolic
-#  links where the 30 translation files apply the 20 design templates
-#  one by one, producing 600 images as result ---without counting
-#  possible formats convenction that may happen during the
-#  post-rendering actions---.
+# For instance, if the translation template (`Tpl') directory
+# structure has 30 translation files and there are 20 design
+# templates, this script creates a translation structure of symbolic
+# links where the 30 translation files apply the 20 design templates
+# one by one, producing 600 images as result ---without counting
+# possible formats convenction that may happen during the
+# post-rendering actions---.
 #
 # Translation file names inside translation template (`Tpl') directory
 # have special meaning:
 #
-#  1) Conventional file name (i.e. `blue.sed', `2c-a.sed', etc.): In
-#  this case, replacements inside translation file are applied to
-#  design template and the translation file name is used as final
-#  image name. The final image is saved with same dimensions that its
-#  design template has.
+# 1) Conventional file name (i.e. `blue.sed', `2c-a.sed', etc.): In
+# this case, replacements inside translation file are applied to
+# design template and the translation file name is used as final
+# image name. The final image is saved with same dimensions that its
+# design template has.
 #
-#  2) Numeric file name only (i.e. `300.sed', `200.sed', etc.): In
-#  this case, replacements inside translation files are applied to the
-#  design template, and the translation file name is used as final
-#  image name. The final image is saved using an specific `width'
-#  defined by the number part of the translation file name. The image
-#  `height' is automatically scaled based on the previous `width'
-#  definition to maintain the design template proportions. 
+# 2) Numeric file name only (i.e. `300.sed', `200.sed', etc.): In
+# this case, replacements inside translation files are applied to the
+# design template, and the translation file name is used as final
+# image name. The final image is saved using an specific `width'
+# defined by the number part of the translation file name. The image
+# `height' is automatically scaled based on the previous `width'
+# definition to maintain the design template proportions. 
 #
-#  For instance, if your design template has 400x200 pixels of
-#  dimension, and you apply a translation file named `300.sed' to it,
-#  the final image you get as result will have 300x100 pixels of
-#  dimension. 
+# For instance, if your design template has 400x200 pixels of
+# dimension, and you apply a translation file named `300.sed' to it,
+# the final image you get as result will have 300x100 pixels of
+# dimension. 
 #
-#  The same is true if you use higher numbers like `1024.sed',
-#  `2048.sed', etc. In these cases you have bigger images
-#  proportionally.
+# The same is true if you use higher numbers like `1024.sed',
+# `2048.sed', etc. In these cases you have bigger images
+# proportionally.
 #
-#  As we are using scalable vectorial graphics as source, image size
-#  definition starts to be a problem on very small generated images.
-#  Bigger images have better definition. As it is bigger, more is the
-#  image definition you have. But take care, too much definition for
-#  an image that was not designed for such a big dimension can result
-#  in something that looks different from what you expect. Just try,
-#  look, and decide by yourself.
+# As we are using scalable vectorial graphics as source, image size
+# definition starts to be a problem on very small generated images.
+# Bigger images have better definition. As it is bigger, more is the
+# image definition you have. But take care, too much definition for
+# an image that was not designed for such a big dimension can result
+# in something that looks different from what you expect. Just try,
+# look, and decide by yourself.
 #
 # Generally, translation files inside translation template (`Tpl')
 # directory structure contain color replacements only. The color used
@@ -69,12 +69,12 @@
 # translation files that renderImage needs, in order to produce CentOS
 # Brand images in different dimensions and colors.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of

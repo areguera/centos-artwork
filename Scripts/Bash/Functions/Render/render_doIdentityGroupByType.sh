@@ -4,15 +4,15 @@
 # post-rendering and last-rendering action to group file inside
 # directories named as their file type.
 #
-#   Usage:
-#   ------
-#   Post-rendering --> render_doIdentityGroupByTypes "$FILE" "$ACTION"
-#   Last-rendering --> render_doIdentityGroupByTypes "$ACTION"
+# Usage:
+# ------
+# Post-rendering --> render_doIdentityGroupByTypes "$FILE" "$ACTION"
+# Last-rendering --> render_doIdentityGroupByTypes "$ACTION"
 #
-#   Note that post-rendering uses 2 arguments ($FILE and $ACTION) and
-#   last-rendering just one ($ACTION). This function uses the amount
-#   of arguments to determine when it is acting as post-rendering and
-#   when as last-rendering.
+# Note that post-rendering uses 2 arguments ($FILE and $ACTION) and
+# last-rendering just one ($ACTION). This function uses the amount
+# of arguments to determine when it is acting as post-rendering and
+# when as last-rendering.
 #
 # This function create one directory for each different file type.
 # Later files are moved inside directories respectively.  For example:
@@ -31,10 +31,10 @@
 # Png, Jpg, Ppm, Xpm, Tif). Note that in the example, groupByType is
 # ivoked as post-rendering action. If you want to invoke it as
 # last-rendering action use LAST definition instead of POST.
-#     
-#   ACTIONS[0]='BASE:renderImage' 
-#   ACTIONS[1]='POST:renderFormats: jpg, ppm, xpm, tif' 
-#   ACTIONS[2]='POST:groupByType: png, jpg, ppm, xpm, tif'
+# 
+# ACTIONS[0]='BASE:renderImage' 
+# ACTIONS[1]='POST:renderFormats: jpg, ppm, xpm, tif' 
+# ACTIONS[2]='POST:groupByType: png, jpg, ppm, xpm, tif'
 #
 # groupByType function is generally used with renderFormats function.
 # Both definitions must match the file type you want to have rendered
@@ -43,12 +43,12 @@
 # be specified.  Otherwise png files will not be grouped inside a png
 # directory.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of

@@ -5,7 +5,7 @@
 # specific. For example, if the locale 'en_GB' is the current one, it
 # should be used instead of just 'en'.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

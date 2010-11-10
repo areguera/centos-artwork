@@ -4,7 +4,7 @@
 # absolute path to extract the theme name from it. If there is no
 # theme in the path, this function returns an empty string.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

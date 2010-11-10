@@ -5,38 +5,38 @@
 # this function whenever you need to retrive option values from
 # pre-rendering configuration script.
 #
-#   Usage:
+# Usage:
 #
-#       VAR=$(render_getConfOption "ACTION" "FIELD")
+# VAR=$(render_getConfOption "ACTION" "FIELD")
 #
-#   Where:
+# Where:
 #
-#       VAR is the name of the variable you want to store the option
-#       value retrived from your specification, using
-#       render_getConfOption's ACTION and FIELD arguments. If there is
-#       no variable assignment, the function outputs the option value
-#       to standard output without trailing newline.
+# VAR is the name of the variable you want to store the option
+# value retrived from your specification, using
+# render_getConfOption's ACTION and FIELD arguments. If there is
+# no variable assignment, the function outputs the option value
+# to standard output without trailing newline.
 #
-#       ACTION is the string definition set in the pre-rendering
-#       configuration script holding the action name and its options
-#       fields.
+# ACTION is the string definition set in the pre-rendering
+# configuration script holding the action name and its options
+# fields.
 #
-#       FIELD  is field number in the action string you want to
-#       retrive option from. By default options start from third field
-#       on. The first field is reserved for the action type (i.e.,
-#       BASE, POST, LAST), and the second field is reserved for the
-#       action itself (e.g., renderImage, renderFormats, etc.). Note
-#       that this convenction can be altered if the action string has
-#       been modified (e.g., you stript the BASE field from action
-#       string) and passed the modified action string to another
-#       function for processing.
+# FIELD  is field number in the action string you want to
+# retrive option from. By default options start from third field
+# on. The first field is reserved for the action type (i.e.,
+# BASE, POST, LAST), and the second field is reserved for the
+# action itself (e.g., renderImage, renderFormats, etc.). Note
+# that this convenction can be altered if the action string has
+# been modified (e.g., you stript the BASE field from action
+# string) and passed the modified action string to another
+# function for processing.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
