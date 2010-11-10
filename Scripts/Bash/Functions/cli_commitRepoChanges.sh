@@ -35,11 +35,17 @@ function cli_commitRepoChanges {
     local COUNT=0
     local UPDATEOUT=''
     local PREDICATE=''
+    local LOCALFILES=''
+    local CHNGDIRECTION=''
 
     # Update working copy.
     echo '----------------------------------------------------------------------'
-    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`"
+    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
     UPDATEOUT=$(svn update ${OPTIONVAL})
+
+    # Check working copy status.
+    cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
+    STATUSOUT=$(svn status ${OPTIONVAL})
     echo '----------------------------------------------------------------------'
 
     # Define path of files considered recent modifications from
@@ -49,7 +55,12 @@ function cli_commitRepoChanges {
     FILES[2]=$(echo "$UPDATEOUT" | egrep '^U' | cut -d' ' -f7)
     FILES[3]=$(echo "$UPDATEOUT" | egrep '^C' | cut -d' ' -f7)
     FILES[4]=$(echo "$UPDATEOUT" | egrep '^G' | cut -d' ' -f7)
-    FILES[5]=$(svn status "$OPTIONVAL" | egrep '^M' | cut -d' ' -f7)
+
+    # Define path fo files considered recent modifications from
+    # working copy up to central repository.
+    FILES[5]=$(echo "$STATUSOUT" | egrep '^M' | cut -d' ' -f7)
+    FILES[6]=$(echo "$STATUSOUT" | egrep '^\?' | cut -d' ' -f7)
+    FILES[7]=$(echo "$STATUSOUT" | egrep '^D' | cut -d' ' -f7)
 
     # Define description of files considered recent modifications from
     # central repository to working copy.
@@ -58,12 +69,17 @@ function cli_commitRepoChanges {
     INFO[2]="`gettext "Updated"`"
     INFO[3]="`gettext "Conflicted"`"
     INFO[4]="`gettext "Merged"`"
+
+    # Define description of files considered recent modifications from
+    # working copy up to central repository.
     INFO[5]="`gettext "Modified"`"
+    INFO[6]=${INFO[0]}
+    INFO[7]=${INFO[1]}
 
     while [[ $COUNT -ne ${#FILES[*]} ]];do
 
         # Get total number of files. Avoid counting empty line.
-        if [[ ${FILES[$COUNT]} == '' ]];then
+        if [[ "${FILES[$COUNT]}" == '' ]];then
             FILESNUM[$COUNT]=0
         else
             FILESNUM[$COUNT]=$(echo "${FILES[$COUNT]}" | wc -l)
@@ -72,13 +88,28 @@ function cli_commitRepoChanges {
         # Build report predicate. Use report predicate to show any
         # information specific to the number of files found. For
         # example, you can use this section to show warning messages,
-        # notes, and so on. By default we just output the word `file'
-        # or `files' at ngettext's consideration.
+        # notes, and so on. By default we use the word `file' or
+        # `files' at ngettext's consideration followed by change
+        # direction.
         if [[ ${FILESNUM[$COUNT]} -lt 1 ]];then
-            PREDICATE[$COUNT]=''
+            PREDICATE[$COUNT]=`gettext "file"`
         else
             PREDICATE[$COUNT]=`ngettext "file" "files" ${FILESNUM[$COUNT]}`
         fi
+
+        # Redefine report predicate to add direction of changes.
+        if [[ $COUNT -le 4 ]]; then
+            # Consider recent modifications from central repository
+            # down to working copy.
+            CHNGDIRECTION="`gettext "from the repository."`"
+        elif [[ $COUNT -gt 4 ]];then
+            # Consider recent modifications from working copy up to
+            # central repository.
+            CHNGDIRECTION="`gettext "from the working copy."`"
+        fi
+
+        # Redefine report predicate using change direction.
+        PREDICATE[$COUNT]="${PREDICATE[$COUNT]} ${CHNGDIRECTION}"
 
         # Output report line.
         cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}" 'AsRegularLine'
@@ -90,18 +121,36 @@ function cli_commitRepoChanges {
 
     echo '----------------------------------------------------------------------'
 
+    # Check list of local additions. If there are unversioned files in
+    # the working copy, mark them all as local additions so they can
+    # be sent up to central repository the next time a commit action
+    # be performed. As convenction, all file manipulations inside the
+    # working copy must be done with versioned files, and so, using
+    # subversion commands. 
+    if [[ ${FILESNUM[6]} -gt 0 ]];then
+        svn add ${FILES[6]} --quiet 
+    fi
+
+    # Unify local changes into a common variable so common actions can
+    # be applied to them.
+    COUNT=0
+    while [[ $COUNT -ne ${#FILES[*]} ]];do
+        LOCALFILES="$LOCALFILES ${FILES[$COUNT]}"
+        COUNT=$(($COUNT + 1 ))
+    done
+
     # Check list of changed files. If there are changes in the working
     # copy, ask the user to verify, and later, commit them up to
     # central repository.
-    if [[ ${FILESNUM[5]} -gt 0 ]];then
+    if [[ $LOCALFILES != '' ]];then
 
         # Verify changes.
         cli_printMessage "`gettext "Do you want to see changes now?"`" "AsYesOrNoRequestLine"
-        svn diff ${FILES[5]} | less
+        svn diff $LOCALFILES | less
 
         # Commit changes.
-        cli_printMessage "`gettext "Do you want commit changes now?"`" "AsYesOrNoRequestLine"
-        svn commit ${FILES[5]}
+        cli_printMessage "`gettext "Do you want to commit changes now?"`" "AsYesOrNoRequestLine"
+        svn commit $LOCALFILES
 
     fi
 
