@@ -462,13 +462,33 @@ available for you to use inside specific functions:
 <dt><u>Function:</u> <b>cli_commitRepoChanges</b>
 <a name="IDX8"></a>
 </dt>
-<dd><p>Commit recent changes up to central repository.
+<dd><p>Commit changes from the working copy up to the repository.
 </p>
+
 <p>The <code>cli_commitRepoChanges</code> function uses the value of
-<var>OPTIONVAL</var> variable as reference to perform subversion changes
-verifications inside working copy.  If <code>cli_commitRepoChanges</code>
-finds changes inside your working copy, it asks you for confirmation
-to commit them up to central repository.
+<var>OPTIONVAL</var> variable as reference to perform change verifications
+inside the working copy. 
+</p>
+<p>The <code>cli_commitRepoChanges</code> function brings changes from the
+repository to the working copy--using <code>svn update</code>--, check
+the working copy changes--using <code>svn status</code> command--,
+print status report--using both <code>svn update</code> and <code>svn
+status</code> commands output, and finally, commit recent changes from the
+working copy up to the repository--using <code>svn commit</code>
+command--.
+</p>
+<p>Previous to commit the working copy changes up to the repository, the
+<code>cli_commitRepoChanges</code> function asks you to verify changes, and
+later, another confirmation question is shown to be sure you really
+want to commit changes up to central repository.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Make small changes, document them very well, and commit
+them to the repository.
+</p></blockquote>
+
+<p>If <code>cli_commitRepoChanges</code> finds changes inside the working copy,
+it asks you for confirmation in order to commit them up to central
+repository.
 </p>
 <p>Call <code>cli_commitRepoChanges</code> function after functions that modify
 files inside your repository working copy.

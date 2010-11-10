@@ -375,13 +375,34 @@ The following global functions of @file{centos-art.sh} script, are
 available for you to use inside specific functions:
 
 @defun cli_commitRepoChanges
-Commit recent changes up to central repository.
+Commit changes from the working copy up to the repository.
+
 
 The @code{cli_commitRepoChanges} function uses the value of
-@var{OPTIONVAL} variable as reference to perform subversion changes
-verifications inside working copy.  If @code{cli_commitRepoChanges}
-finds changes inside your working copy, it asks you for confirmation
-to commit them up to central repository.
+@var{OPTIONVAL} variable as reference to perform change verifications
+inside the working copy. 
+
+The @code{cli_commitRepoChanges} function brings changes from the
+repository to the working copy---using @command{svn update}---, check
+the working copy changes---using @command{svn status} command---,
+print status report---using both @command{svn update} and @command{svn
+status} commands output, and finally, commit recent changes from the
+working copy up to the repository---using @command{svn commit}
+command---.
+
+Previous to commit the working copy changes up to the repository, the
+@code{cli_commitRepoChanges} function asks you to verify changes, and
+later, another confirmation question is shown to be sure you really
+want to commit changes up to central repository.
+
+@quotation
+@strong{Tip} Make small changes, document them very well, and commit
+them to the repository.
+@end quotation
+
+If @code{cli_commitRepoChanges} finds changes inside the working copy,
+it asks you for confirmation in order to commit them up to central
+repository.
 
 Call @code{cli_commitRepoChanges} function after functions that modify
 files inside your repository working copy.
