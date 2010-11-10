@@ -34,7 +34,7 @@ s!<blockquote><p><strong>Important</strong>!<blockquote class="orange"><img src=
 
 s!<blockquote><p><strong>Tip</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p>!g
 
-s!<blockquote><p><strong>Caution</strong>!<blockquote class="red"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p>!g
+s!<blockquote><p><strong>Caution</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p>!g
 
 s!<blockquote><p><strong>Redirection</strong>!<blockquote class="green"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-doc-redirect.png" alt="Redirection"><h3>Redirection</h3><p>!g
 
