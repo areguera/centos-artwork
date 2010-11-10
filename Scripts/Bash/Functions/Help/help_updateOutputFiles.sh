@@ -98,15 +98,16 @@ function help_updateOutputFiles {
     # Update plaintext output directory.
     /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} --plaintext --no-ifhtml
 
-    # Update central repository. Be sure to see changes before commit
-    # them up to central repository.
-    help_addNewFilesToWorkingCopy ${MANUALS_DIR[0]}
-    if [[ $(svn diff ${MANUALS_DIR[0]}) != '' ]];then
-        cli_printMessage "`gettext "The working copy has been updated."`"
-        cli_printMessage "`gettext "Do you want to see changes now?"`" "AsYesOrNoRequestLine"
-        eval svn diff ${MANUALS_DIR[0]} | less
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" "AsYesOrNoRequestLine"
-        eval svn commit ${MANUALS_DIR[0]}
-    fi
+    # Re-define output variable in order for cli_commitRepoChanges
+    # functionality to receive the correct location to apply
+    # subversion commands. Inside `help' functionality, the correct
+    # place to commit changes is not the initial value of OPTIONVAL
+    # but the directory path where documentation changes take place
+    # under.
+    OPTIONVAL=${MANUALS_DIR[0]}
+
+    # Update central repository. Be sure this is the last action
+    # you perform inside centos-art.sh script flow.
+    cli_commitRepoChanges
 
 }

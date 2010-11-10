@@ -35,7 +35,7 @@ function help_checkLanguageLayout {
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
         help_createLanguageLayout
-        help_addNewFilesToWorkingCopy ${MANUALS_DIR[1]}
+        cli_commitRepoChanges
 
     fi
 
