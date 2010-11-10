@@ -157,22 +157,22 @@ pre-rendering configuration scripts:
 
 @table @samp
 
-@item centos-art config 'path/to/dir/' --create
+@item centos-art config --create='path/to/dir/'
 
 Use this command to create @samp{path/to/dir} related pre-rendering
 configuration script.
 
-@item centos-art config 'path/to/dir/' --edit
+@item centos-art config --edit='path/to/dir/'
 
 Use this command to edit @samp{path/to/dir} related pre-rendering
 configuration script.  
 
-@item centos-art config 'path/to/dir/' --read
+@item centos-art config --read='path/to/dir/'
 
 Use this command to read @samp{path/to/dir} related pre-rendering
 configuration script.  
 
-@item centos-art config 'path/to/dir/' --remove
+@item centos-art config --remove='path/to/dir/'
 
 Use this command to remove @samp{path/to/dir} related pre-rendering
 configuration script.
@@ -187,4 +187,6 @@ directory path under @file{trunk/Identity} or
 
 @menu
 * trunk Scripts Bash::
+* trunk Scripts Bash Functions::
+* trunk Scripts Bash Functions Render::
 @end menu

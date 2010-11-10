@@ -13,7 +13,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 5 2010 by texi2html 1.76 -->
+<!-- Created on November, 10 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -61,14 +61,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC344" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC342" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC344" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions"></a>
@@ -115,10 +115,11 @@ contact their authors and work together to improve them.
 <a href="mailto:centos-art@centos.org">centos-art@centos.org</a> to share your ideas.
 </p></blockquote>
 
-<p>It is also worth to know what global functions do we have available
-inside <tt>`centos-art.sh'</tt> script, so advantage can be taken from
-them. Global functions are stored immediatly under
-<tt>`trunk/Scripts/Bash/Functions'</tt> directory in files begining with
+<p>It is also worth to know what global functions and variables do we
+have available inside <tt>`centos-art.sh'</tt> script, so advantage can be
+taken from them. Global variables are defined inside global function
+scripts. Global functions scripts are stored immediatly under
+<tt>`trunk/Scripts/Bash/Functions'</tt> directory, in files begining with
 <samp>`cli'</samp> prefix.
 </p>
 <p>OK, let's begin with our functionality example.
@@ -145,13 +146,13 @@ definition.
 script has one top commentary, followed by one blank line, and then
 one function defintion below it only.
 </p>
-<p>Inside <tt>`centos-art.sh'</tt> script functions, top commentaries
-describe function definition in the following five components:
-one-line for copyright note with your personal information,  the
-license under which the function source code is released --the
-<tt>`centos-art.sh'</tt> script is released as GPL, so do all its
-functions--, subversion's <code>$Id$</code> keyword which is later expanded
-by <code>svn propset</code> command.
+<p>Inside <tt>`centos-art.sh'</tt> script functions, top commentaries have
+the following components: the functionality description, one-line for
+copyright note with your personal information,  the license under
+which the function source code is released --the <tt>`centos-art.sh'</tt>
+script is released as GPL, so do all its functions--, subversion's
+<code>$Id$</code> keyword which is later expanded by <code>svn propset</code>
+command.
 </p>
 <p>In our <code>greet</code> function example, top commentary for
 <tt>`greet.sh'</tt> function script would look like the following:
@@ -417,69 +418,18 @@ render --entry=path/to/dir --filter=regex'</samp>, the <var>REGEX</var> passed t
 <tt>`centos-art.sh'</tt> is <samp>`regex'</samp>. 
 </p>
 <p>The third argument option name is not variable as second argument
-option name is. The third argument option name is stocked to
-<samp>`--filter'</samp> for whatever value it passed at the right side of
+option name is. The third argument option name is fixed to
+<samp>`--filter'</samp> for whatever value it passes at the right side of
 its equal sign. 
 </p>
 <p>Generally, third argument option value is used to pass regular
 expression patterns that modify the list of files to process, but this
-is not the only feature <var>REGEX</var> may serve to.
+is not the only feature <var>REGEX</var> global variable may serve to.
 </p></dd></dl>
-
-<dl>
-<dt><u>Variable:</u> <b>ANSWER</b>
-<a name="IDX7"></a>
-</dt>
-<dd><p>Default answer to confirmation questions. 
-</p>
-<p>As most questions request confirmation to perform some action, default
-answer to <var>ANSWER</var> variable is negative (i.e., <samp>`No'</samp>).
-Default answer value takes place when no value is entered as response
-to confirmation questions before pressing <kbd>RET</kbd> key.
-</p></dd></dl>
-
-<dl>
-<dt><u>Variable:</u> <b>TMPFILE</b>
-<a name="IDX8"></a>
-</dt>
-<dd><p>Default location to store temporal files. 
-</p>
-<p>The <var>TMPFILE</var> uses <tt>`/tmp'</tt> directory as source location to
-store temporal files, the <tt>`centos-art.sh'</tt> script name, and the
-process id of <tt>`centos-art.sh'</tt> script execution to let you run
-more than one <tt>`centos-art.sh'</tt> script simultaneously on the same
-user session.  For example, due the following temporal file defintion:
-</p>
-<pre class="verbatim">${TMPFILE}-${FILE}
-</pre>
-<p>If <var>FILE</var> name is <tt>`instance.svg'</tt> and process id is
-<samp>`3761'</samp>, the final temporal file built from previous temporal file
-definition would be:
-</p>
-<pre class="verbatim">/tmp/centos-art.sh-3761-instance.svg
-</pre>
-<p>When you use <var>TMPFILE</var> global variable to create temporal files,
-be sure to remove temporal files created once you've ended up with
-them.  For example, consider the following construction:
-</p>
-<pre class="verbatim">for FILE in $FILES;do
-
-    # Initialize temporal instance of file.
-    INSTANCE=${TMPFILE}-${FILE}
-
-    # Do something ... 
-
-    # Remove temporal instance of file.
-    if [[ -f $INSTANCE ]];then
-        rm $INSTANCE
-    fi
-
-done
-</pre></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>EDITOR</b>
-<a name="IDX9"></a>
+<a name="IDX7"></a>
 </dt>
 <dd><p>Default text editor. 
 </p>
@@ -510,15 +460,15 @@ available for you to use inside specific functions:
 </p>
 <dl>
 <dt><u>Function:</u> <b>cli_commitRepoChanges</b>
-<a name="IDX10"></a>
+<a name="IDX8"></a>
 </dt>
 <dd><p>Commit recent changes up to central repository.
 </p>
-<p>The <code>cli_commitRepoChanges</code> function uses the list of files
-stored in the <var>FILES</var> variable and verifies changes inside your
-repository working copy, using subversion commands.  If
-<code>cli_commitRepoChanges</code> finds changes inside your working copy,
-it asks you for confirmation to commit them up to central repository.
+<p>The <code>cli_commitRepoChanges</code> function uses the value of
+<var>OPTIONVAL</var> variable as reference to perform subversion changes
+verifications inside working copy.  If <code>cli_commitRepoChanges</code>
+finds changes inside your working copy, it asks you for confirmation
+to commit them up to central repository.
 </p>
 <p>Call <code>cli_commitRepoChanges</code> function after functions that modify
 files inside your repository working copy.
@@ -526,9 +476,9 @@ files inside your repository working copy.
 
 <dl>
 <dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
-<a name="IDX11"></a>
+<a name="IDX9"></a>
 </dt>
-<dd><p>Verify files.
+<dd><p>Verify files existence.
 </p>
 <p><code>cli_checkFiles</code> receives a <var>FILE</var> absolute path and performs
 file verification as specified in <var>TYPE</var>.  When <var>TYPE</var> is not
@@ -574,7 +524,7 @@ symbolic link.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
-<a name="IDX12"></a>
+<a name="IDX10"></a>
 </dt>
 <dd><p>Output country codes.
 </p>
@@ -586,7 +536,7 @@ codes as defined in ISO3166 standard. When <var>FILTER</var> is provided,
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryName</b><i> [FILTER]</i>
-<a name="IDX13"></a>
+<a name="IDX11"></a>
 </dt>
 <dd><p>Output country names.
 </p>
@@ -602,7 +552,7 @@ by <tt>`centos-art.sh'</tt> script.
  
 <dl>
 <dt><u>Function:</u> <b>cli_getCurrentLocale</b>
-<a name="IDX14"></a>
+<a name="IDX12"></a>
 </dt>
 <dd><p>Output current locale used by <tt>`centos-art.sh'</tt> script. 
 </p>
@@ -634,7 +584,7 @@ by <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
-<a name="IDX15"></a>
+<a name="IDX13"></a>
 </dt>
 <dd><p>Output language codes.
 </p>
@@ -649,7 +599,7 @@ by <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangName</b><i> [FILTER]</i>
-<a name="IDX16"></a>
+<a name="IDX14"></a>
 </dt>
 <dd><p>Output language names.
 </p>
@@ -664,7 +614,7 @@ by <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLocales</b>
-<a name="IDX17"></a>
+<a name="IDX15"></a>
 </dt>
 <dd><p>Output locale codes supported by <tt>`centos-art.sh'</tt> script.
 </p>
@@ -678,7 +628,7 @@ specifications (<samp>`LL'</samp>) into one unique common locale specification
 
 <dl>
 <dt><u>Function:</u> <b>cli_getRepoName</b><i> NAME TYPE</i>
-<a name="IDX18"></a>
+<a name="IDX16"></a>
 </dt>
 <dd><p>Sanitate file names.
 </p>
@@ -688,7 +638,7 @@ achieve their goals.  Consider <code>cli_getRepoName</code> function as
 central place to manage file name convenctions for other functions
 inside <tt>`centos-art.sh'</tt> script.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> <code>cli_getRepoName</code> function doesn't verify file
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> <code>cli_getRepoName</code> function doesn't verify file
 or directory existence, for that purpose use <code>cli_checkFiles</code>
 function instead.
 </p></blockquote>
@@ -728,8 +678,50 @@ repository file system organization.
 </dd></dl>
 
 <dl>
+<dt><u>Function:</u> <b>cli_getTemporalFile</b><i> <var>NAME</var></i>
+<a name="IDX17"></a>
+</dt>
+<dd><p>Output absolute path to temporal file <var>NAME</var>.
+</p>
+<p><code>cli_getTemporalFile</code> uses <tt>`/tmp'</tt> directory as source
+location to store temporal files, the <tt>`centos-art.sh'</tt> script
+name, and a random identification string to let you run more than one
+<tt>`centos-art.sh'</tt> script simultaneously on the same user session.
+For example, due the following temporal file defintion:
+</p>
+<pre class="verbatim">cli_getTemporalFile $FILE
+</pre>
+<p>If <var>FILE</var> name is <tt>`instance.svg'</tt> and unique random string is
+<samp>`f16f7b51-ac12-4b7f-9e66-72df847f12de'</samp>, the final temporal file,
+built from previous temporal file definition, would be:
+</p>
+<pre class="verbatim">/tmp/centos-art.sh-f16f7b51-ac12-4b7f-9e66-72df847f12de-instance.svg
+</pre>
+<p>When you use <code>cli_getTemporalFile</code> function to create temporal
+files, be sure to remove temporal files created once you've ended up
+with them.  For example, consider the following construction:
+</p>
+<pre class="verbatim">for FILE in $FILES;do
+
+    # Initialize temporal instance of file.
+    INSTANCE=$(cli_getTemporalFile $FILE)
+
+    # Do something ... 
+
+    # Remove temporal instance of file.
+    if [[ -f $INSTANCE ]];then
+        rm $INSTANCE
+    fi
+
+done
+</pre>
+<p>Use <code>cli_getTemporalFile</code> function whenever you need to create
+temporal files inside <tt>`centos-art.sh'</tt> script.
+</p></dd></dl>
+
+<dl>
 <dt><u>Function:</u> <b>cli_getThemeName</b>
-<a name="IDX19"></a>
+<a name="IDX18"></a>
 </dt>
 <dd><p>Output theme name.
 </p>
@@ -741,7 +733,7 @@ Otherwise, <code>cli_getThemeName</code> returns an empty string.
 
 <dl>
 <dt><u>Function:</u> <b>cli_printMessage</b><i> MESSAGE [FORMAT]</i>
-<a name="IDX20"></a>
+<a name="IDX19"></a>
 </dt>
 <dd><p>Give format to output messages.
 </p>
@@ -907,7 +899,7 @@ available for you to use:
 </td></tr>
 <tr><td align="left" valign="top"><a href="repository_46.html#SEC246">3.43 trunk/Scripts/Bash/Functions/Svg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_47.html#SEC251">3.44 trunk/Scripts/Bash/Functions/Verify</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_47.html#SEC253">3.44 trunk/Scripts/Bash/Functions/Verify</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -918,7 +910,7 @@ available for you to use:
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="repository_37.html#SEC195">3.34 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_48.html#SEC259">3.45 trunk/Scripts/Bash/Locale</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_48.html#SEC261">3.45 trunk/Scripts/Bash/Locale</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -929,11 +921,11 @@ available for you to use:
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC200" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC342" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC344" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 5 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 10 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

@@ -250,6 +250,8 @@ CentOS Artwork Repository
   3.43 trunk/Scripts/Bash/Functions/Svg
     3.43.1 Goals
     3.43.2 Description
+      3.43.2.1 Metadata maintainance
+      3.43.2.2 Unused definitions
     3.43.3 Usage
     3.43.4 See also
   3.44 trunk/Scripts/Bash/Functions/Verify
@@ -2516,7 +2518,7 @@ achive the rendering task as it defines.
     .   +---------------------------------+   .
     .   | cli $@                          |   .
     .   +---v-------------------------v---+   .
-    .   .   | cli_getActions          |   .   .
+    .   .   | cli_getActions $@       |   .   .
     .   .   +---v-----------------v---+   .   .
     .   .   .   | function call 1 |   .   .   .
     .   .   .   | function call 2 |   .   .   .
@@ -2578,10 +2580,11 @@ authors and work together to improve them.
      *Tip* Join CentOS developers mailing list <centos-art@centos.org>
      to share your ideas.
 
-   It is also worth to know what global functions do we have available
-inside `centos-art.sh' script, so advantage can be taken from them.
-Global functions are stored immediatly under
-`trunk/Scripts/Bash/Functions' directory in files begining with `cli'
+   It is also worth to know what global functions and variables do we
+have available inside `centos-art.sh' script, so advantage can be taken
+from them. Global variables are defined inside global function scripts.
+Global functions scripts are stored immediatly under
+`trunk/Scripts/Bash/Functions' directory, in files begining with `cli'
 prefix.
 
    OK, let's begin with our functionality example.
@@ -2607,8 +2610,8 @@ script contains the `greet' function definition.
 has one top commentary, followed by one blank line, and then one
 function defintion below it only.
 
-   Inside `centos-art.sh' script functions, top commentaries describe
-function definition in the following five components: one-line for
+   Inside `centos-art.sh' script functions, top commentaries have the
+following components: the functionality description, one-line for
 copyright note with your personal information,  the license under which
 the function source code is released --the `centos-art.sh' script is
 released as GPL, so do all its functions--, subversion's `$Id$' keyword
@@ -2857,59 +2860,13 @@ for you to use inside specific functions:
      `centos-art.sh' is `regex'.
 
      The third argument option name is not variable as second argument
-     option name is. The third argument option name is stocked to
-     `--filter' for whatever value it passed at the right side of its
+     option name is. The third argument option name is fixed to
+     `--filter' for whatever value it passes at the right side of its
      equal sign.
 
      Generally, third argument option value is used to pass regular
      expression patterns that modify the list of files to process, but
-     this is not the only feature REGEX may serve to.
-
- -- Variable: ANSWER
-     Default answer to confirmation questions.
-
-     As most questions request confirmation to perform some action,
-     default answer to ANSWER variable is negative (i.e., `No').
-     Default answer value takes place when no value is entered as
-     response to confirmation questions before pressing <RET> key.
-
- -- Variable: TMPFILE
-     Default location to store temporal files.
-
-     The TMPFILE uses `/tmp' directory as source location to store
-     temporal files, the `centos-art.sh' script name, and the process
-     id of `centos-art.sh' script execution to let you run more than
-     one `centos-art.sh' script simultaneously on the same user
-     session.  For example, due the following temporal file defintion:
-
-
-     ${TMPFILE}-${FILE}
-
-     If FILE name is `instance.svg' and process id is `3761', the final
-     temporal file built from previous temporal file definition would
-     be:
-
-
-     /tmp/centos-art.sh-3761-instance.svg
-
-     When you use TMPFILE global variable to create temporal files, be
-     sure to remove temporal files created once you've ended up with
-     them.  For example, consider the following construction:
-
-
-     for FILE in $FILES;do
-
-         # Initialize temporal instance of file.
-         INSTANCE=${TMPFILE}-${FILE}
-
-         # Do something ...
-
-         # Remove temporal instance of file.
-         if [[ -f $INSTANCE ]];then
-             rm $INSTANCE
-         fi
-
-     done
+     this is not the only feature REGEX global variable may serve to.
 
  -- Variable: EDITOR
      Default text editor.
@@ -2940,17 +2897,17 @@ for you to use inside specific functions:
  -- Function: cli_commitRepoChanges
      Commit recent changes up to central repository.
 
-     The `cli_commitRepoChanges' function uses the list of files stored
-     in the FILES variable and verifies changes inside your repository
-     working copy, using subversion commands.  If
-     `cli_commitRepoChanges' finds changes inside your working copy, it
-     asks you for confirmation to commit them up to central repository.
+     The `cli_commitRepoChanges' function uses the value of OPTIONVAL
+     variable as reference to perform subversion changes verifications
+     inside working copy.  If `cli_commitRepoChanges' finds changes
+     inside your working copy, it asks you for confirmation to commit
+     them up to central repository.
 
      Call `cli_commitRepoChanges' function after functions that modify
      files inside your repository working copy.
 
  -- Function: cli_checkFiles FILE [TYPE]
-     Verify files.
+     Verify files existence.
 
      `cli_checkFiles' receives a FILE absolute path and performs file
      verification as specified in TYPE.  When TYPE is not specified,
@@ -3078,7 +3035,7 @@ for you to use inside specific functions:
      central place to manage file name convenctions for other functions
      inside `centos-art.sh' script.
 
-          *Warning* `cli_getRepoName' function doesn't verify file or
+          *Important* `cli_getRepoName' function doesn't verify file or
           directory existence, for that purpose use `cli_checkFiles'
           function instead.
 
@@ -3111,6 +3068,47 @@ for you to use inside specific functions:
           *Note* *Note trunk Scripts Bash Functions Path::, for more
           information on how to rename files and directories massively
           inside repository file system organization.
+
+ -- Function: cli_getTemporalFile NAME
+     Output absolute path to temporal file NAME.
+
+     `cli_getTemporalFile' uses `/tmp' directory as source location to
+     store temporal files, the `centos-art.sh' script name, and a
+     random identification string to let you run more than one
+     `centos-art.sh' script simultaneously on the same user session.
+     For example, due the following temporal file defintion:
+
+
+     cli_getTemporalFile $FILE
+
+     If FILE name is `instance.svg' and unique random string is
+     `f16f7b51-ac12-4b7f-9e66-72df847f12de', the final temporal file,
+     built from previous temporal file definition, would be:
+
+
+     /tmp/centos-art.sh-f16f7b51-ac12-4b7f-9e66-72df847f12de-instance.svg
+
+     When you use `cli_getTemporalFile' function to create temporal
+     files, be sure to remove temporal files created once you've ended
+     up with them.  For example, consider the following construction:
+
+
+     for FILE in $FILES;do
+
+         # Initialize temporal instance of file.
+         INSTANCE=$(cli_getTemporalFile $FILE)
+
+         # Do something ...
+
+         # Remove temporal instance of file.
+         if [[ -f $INSTANCE ]];then
+             rm $INSTANCE
+         fi
+
+     done
+
+     Use `cli_getTemporalFile' function whenever you need to create
+     temporal files inside `centos-art.sh' script.
 
  -- Function: cli_getThemeName
      Output theme name.
@@ -3585,19 +3583,19 @@ ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
 Use the following commands to administer both identity and translation
 pre-rendering configuration scripts:
 
-`centos-art config 'path/to/dir/' --create'
+`centos-art config --create='path/to/dir/''
      Use this command to create `path/to/dir' related pre-rendering
      configuration script.
 
-`centos-art config 'path/to/dir/' --edit'
+`centos-art config --edit='path/to/dir/''
      Use this command to edit `path/to/dir' related pre-rendering
      configuration script.
 
-`centos-art config 'path/to/dir/' --read'
+`centos-art config --read='path/to/dir/''
      Use this command to read `path/to/dir' related pre-rendering
      configuration script.
 
-`centos-art config 'path/to/dir/' --remove'
+`centos-art config --remove='path/to/dir/''
      Use this command to remove `path/to/dir' related pre-rendering
      configuration script.
 
@@ -3615,17 +3613,165 @@ structures only.
 3.42.1 Goals
 ------------
 
-   * ...
+This section exists to organize files related to `shell' functionality
+of `centos-art.sh' script.
 
 3.42.2 Description
 ------------------
 
-   * ...
+The `shell' functionality of `centos-art.sh' script helps you to
+maintain bash scripts inside repository. For example, suppose you've
+created many functionalities for `centos-art.sh' script, and you want
+to use a common copyright and license note for consistency in all your
+script files. If you have a bunch of files, doing this one by one
+wouldn't be a big deal. In contrast, if the amount of files grows,
+updating the copyright and license note for all of them would be a task
+rather tedious. The `shell' functionality exists to solve maintainance
+tasks just as the one previously mentioned.
+
+   When you use `shell' functionality to update copyright inside script
+files, it is required that your script files contain (at least) the
+following top commentary structure:
+
+
+ 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| #
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|
+15| }
+
+   Relevant lines in the above structure are lines from 5 to 9.
+Everything else in the file is left immutable.
+
+   When you are updating copyright through `shell' functionality,  the
+`centos-art.sh' script replaces everything in-between line 5 --the
+first one matching `^# Copyright .+$' string-- and line 9--the first
+long dash separator matching `^# -+$'-- with the content of copyright
+template instance.
+
+     *Caution* Be sure to add the long dash separator that matches `^#
+     -+$' regular expression _before_ the function definition.
+     Otherwise, if the `Copyright' line is present but no long dash
+     separator exists, `centos-art.sh' will remove anything in-between
+     the `Copyright' line and the end of file. This way you may lost
+     your function definitions entirely.
+
+   The copyright template instance is created from one copyright
+template stored in the `Config/tpl_forCopyright.sed' file.  The template
+instance is created once, and later removed when no longer needed. At
+this moment, when template instance is created, the `centos-art.sh'
+script takes advantage of automation in order to set copyright full
+name and date dynamically.
+
+   When you use `shell' functionality to update copyright, the first
+thing `shell' functionality does is requesting copyright information to
+user, and later, if values were left empty (i.e., no value was typed
+before pressing <RET> key), the `shell' functionality uses its own
+default values.
+
+   When `shell' functionality uses its own default values, the final
+copyright note looks like the following:
+
+
+ 1| #!/bin/bash
+ 2| #
+ 3| # doSomthing.sh -- The function description goes here.
+ 4| #
+ 5| # Copyright (C) 2003, 2010 The CentOS Project
+ 6| #
+ 7| # This program is free software; you can redistribute it and/or modify
+ 8| # it under the terms of the GNU General Public License as published by
+ 9| # the Free Software Foundation; either version 2 of the License, or
+10| # (at your option) any later version.
+11| #
+12| # This program is distributed in the hope that it will be useful, but
+13| # WITHOUT ANY WARRANTY; without even the implied warranty of
+14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+15| # General Public License for more details.
+16| #
+17| # You should have received a copy of the GNU General Public License
+18| # along with this program; if not, write to the Free Software
+19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+20| # USA.
+21| #
+22| # ----------------------------------------------------------------------
+23| # $Id$
+24| # ----------------------------------------------------------------------
+25|
+26| function doSomething {
+27|
+28| }
+
+   Relevant lines in the above structure are lines from 5 to 22.  Pay
+attention how the copyright line was built, and how the license was
+added into the top comment where previously was just three dots.
+Everything else in the file was left immutable.
+
+   To change copyright information (i.e., full name or year
+information), run the `shell' functionality over the root directory
+containing the script files you want to update copyright in and enter
+the appropriate information when it be requested. You can run the
+`shell' functionality as many times as you need to.
+
+   To change copyright license (i.e., the text in-between lines 7 and
+20), you need to edit the `Config/tpl_forCopyright.sed' file, set the
+appropriate information, and run the `shell' functionality once again
+for changes to take effect over the files you specify.
+
+     *Important* The `centos-art.sh' script is released as:
+
+
+     GNU GENERAL PUBLIC LICENSE
+     Version 2, June 1991
+
+     Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+     59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+     Do not change the license information under which `centos-art.sh'
+     script is released. Instead, if you think a different license must
+     be used, please share your reasons at CentOS Developers mailing
+     list <centos-devel@centos-art.sh>.
 
 3.42.3 Usage
 ------------
 
-   * ...
+`centos-art sh --update-copyright='path/to/dir''
+
+`centos-art sh --update-copyright='path/to/dir' --filter='regex''
+     Use these commands to update copyright information in `.sh' files
+     under `path/to/dir' directory.
+
+   When you provide `--filter='regex'' argument, the list of files to
+process is reduced as specified in `regex' regular expression.  Inside
+`centos-art.sh' script, the `regex' regular expression is used in
+combination with `find' command to look for files matching the regular
+expression path pattern.
+
+     *Warning* In order for `regex' regular expression to match a file,
+     the `regex' regular expresion must match the whole file path not
+     just the file name.
+
+   For example, if you want to match all `render.conf.sh' files inside
+`path/to/dir', use the `.+/render.conf' regular expression.  Later,
+`centos-art.sh' script uses this value inside `^$REGEX\.sh$' expression
+in order to build the final regular expression (i.e.,
+`^.+/render.conf\.sh$') that is evaluated against available file paths
+inside the list of files to process.
+
+   Exceptionally, when you provide `--filter='regex'' in the way that
+`regex', appended to `path/to/dir/' (i.e.  `path/to/dir/regex'),
+matches a regular file; the `centos-art.sh' script uses the file
+matching as only file in the list of files to process.
 
 3.42.4 See also
 ---------------
@@ -3636,40 +3782,184 @@ structures only.
 3.43.1 Goals
 ------------
 
-This section exists to organize the "svg" functionality of
-centos-art.sh script.
+This section exists to organize files related to `svg' functionality of
+`centos-art.sh' script.
 
 3.43.2 Description
 ------------------
 
-The "svg" functionality of centos-art.sh script helps you to maintain
+The `svg' functionality of `centos-art.sh' script helps you to maintain
 scalable vector graphics (SVG) inside repository. For example, suppose
-you've been working in a set of (let's say 30) SVG files, and you want
-to set common metadata to all of them. Doing so file by file is a
-tedious task, so the centos-art.sh script provides the "svg"
-functionality to aid you maintain such actions.
+you've been working in CentOS default design models under
+`trunk/Identity/Themes/Models/', and you want to set common metadata to
+all of them, and later remove all unused SVG defintions from `*.svg'
+files. Doing so file by file may be a tedious task, so the
+`centos-art.sh' script provides the `svg' functionality to aid you
+maintain such actions.
 
-   Most "svg" actions take one opening tag (e.g., `<metadata'), and one
-closing tag (e.g., `</metadata') and replace everything in-between with
-the information you define. The information you need to define is
-inside template files as sed's replacement commands.  Template files
-are stored under `trunk/Scripts/Bash/Functions/Svg/Tpl/' directory and
-can contain translation markers.
+3.43.2.1 Metadata maintainance
+..............................
 
-   Translation markers have the form `=SOMETEXT='. Translation markers
-are used by "svg" functionalities to introduce dynamic information
-(e.g., dates, keywords based on path, etc.)
+The metadata used is defined by Inkscape 0.46 using the SVG standard
+markup. The `centos-art.sh' script replaces everything in-between
+`<metadata' and `</metadata>' tags with a predefined metadata template
+we've set for this purpose.
+
+   The metadata template was created using the metadata information of a
+file which, using Inkscape 0.46, all metadata fields were set. This
+created a complete markup representation of how SVG metadata would look
+like. Later, we replaced every single static value with a translation
+marker in the form `=SOMETEXT=', where `SOMETEXT' is the name of its
+main opening tag. Later, we transform the metadata template into a sed
+replacement set of commads escaping new lines at the end of each line.
+
+   With metadata template in place, the `centos-art.sh' script uses it
+to create a metadata template instance for the file being processed
+currently.  The metadata template instance contains the metadata
+portion of sed replacement commands with translation markers already
+traduced.  In this action, instance creation, is where we take
+advantage of automation and generate metadata values like title, date,
+keywords, source, identifier, and relation dynamically, based on the
+file path `centos-art.sh' script is currently creating metadata
+information for.
+
+   With metadata template instance in place, the `centos-art.sh' script
+uses it to replace real values inside all `.svg' files under the
+current location you're running the `centos-art.sh' script on.  Default
+behaviour is to ask user to enter each metadatum required, one by one.
+If user leaves metadatum empty, by pressing <RET> key, `centos-art.sh'
+uses its default value.
+
+   The `centos-art.sh' script modifies the following metadata:
+
+`Title'
+     Name by which this document is formally known. If no value is set
+     here, `centos-art.sh' script uses the file name as title.
+
+`Date'
+     Date associated with the creation of this document (YYYY-MM-DD).
+     If no value is set here, `centos-art.sh' script uses the current
+     date information as in `date +%Y-%m-%d'.
+
+`Creator'
+     Name of entity primarily responsible for making the content of this
+     document. If no value is set here, `centos-art.sh' script uses the
+     string `The CentOS Project'.
+
+`Rights'
+     Name of entity with rights to the intellectual Property of this
+     document. If no value is set here, `centos-art.sh' script uses the
+     string `The CentOS Project'.
+
+`Publisher'
+     Name of entity responsible for making this document available. If
+     no value is set here, `centos-art.sh' script uses the string `The
+     CentOS Project'.
+
+`Identifier'
+     Unique URI to reference this document. If no value is set here,
+     `centos-art.sh' script uses the current file path to build the
+     related url that points to current file location inside repository
+     central server.
+
+`Source'
+     Unique URI to reference the source of this document. If no value is
+     set here, `centos-art.sh' script uses current file path to build
+     the related url that points to current file location inside
+     repository central server.
+
+`Relation'
+     Unique URI to a related document. If no value is set here,
+     `centos-art.sh' script uses current file path to build the related
+     url that points to current file location inside repository central
+     server.
+
+`Language'
+     Two-letter language tag with optional subtags for the language of
+     this document. (e.g. `en-GB'). If no value is set here,
+     `centos-art.sh' script uses the current locale information as in
+     `cli_getCurrentLocale' function.
+
+`Keywords'
+     The topic of this document as comma-separated key words, prhases,
+     or classifications. If no value is set here, `centos-art.sh' script
+     uses file path to build
+
+`Coverage'
+     Extent or scope of this document. If no value is set here,
+     `centos-art.sh' script uses the string `The CentOS Project'.
+
+`Description'
+     Description about the document. If no value is set here,
+     `centos-art.sh' script uses uses empty value as default.
+
+`Contributors'
+     People that contributes in the creation/maintainance of the
+     document.  If no value is set here, `centos-art.sh' script uses
+     uses empty value as default.
+
+   The `License' metadatum is not set as a choise, by now. It is fixed
+Creative Common Attribution Share-Alike 3.0 License
+(http://creativecommons.org/licenses/by-sa/3.0/). This is done in order
+to grant license consistency among all SVG files we manage inside CentOS
+Artwork Repository.
+
+3.43.2.2 Unused definitions
+...........................
+
+As SVG files grow they may end up with unused definitions inside. For
+example, if you stop using a pattern or gradient, tags used to define
+them are considered unused definitions then. Inkscape 0.46 brings the
+`Vaccum Defs' feature to remove those unused definitions from SVG
+files. The `Vaccum Defs' feature is available both at graphical
+interface and command line interface.
+
+   If you have one or two couple of files, removing unused SVG
+definitions using graphical interface may be enough to you.  In
+contrast, if you have houndred of files to maintain it is not a fun
+task to use the gui interface to remove unused SVG definitions editing
+those files one by one.
+
+   To remove unused SVG definitions from several SVG files, the
+`centos-art.sh' script uses Inkscape's command-line interface,
+specifically with the `--vaccum-defs' option.
 
 3.43.3 Usage
 ------------
 
 `centos-art svg --update-metadata='path/to/dir''
-     Use this command to update metadata information to all `.svg'
-     files under `path/to/dir' as defined in the metadata template file.
 
-`centos-art svg --update-metadata='path/to/dir' --filter='filename''
-     Use this command to update metadata information to
-     `path/to/dir/filename', as defined in the metadata template file.
+`centos-art svg --update-metadata='path/to/dir' --filter='regex''
+     Use these commands to update metadata information to `.svg' files
+     under `path/to/dir' directory.
+
+`centos-art svg --vacuum-defs='path/to/dir''
+
+`centos-art svg --vacuum-defs='path/to/dir' --filter='regex''
+     Use these commands to remove unused definitions inside `.svg'
+     files under `path/to/dir' directory.
+
+   When you provide `--filter='regex'' argument, the list of files to
+process is reduced as specified in `regex' regular expression.  Inside
+`centos-art.sh' script, the `regex' regular expression is used in
+combination with `find' command to look for files matching the regular
+expression path pattern.
+
+     *Warning* In order for `regex' regular expression to match a file,
+     the `regex' regular expresion must match the whole file path not
+     just the file name.
+
+   For example, if you want to match all `summary.svg' files inside
+`path/to/dir', use the `.+/summary' regular expression.  Later,
+`centos-art.sh' script uses this value inside `^$REGEX\.svg$'
+expression in order to build the final regular expression (i.e.,
+`^.+/summary\.svg$') that is evaluated against available file paths
+inside the list of files to process.
+
+   Exceptionally, when you provide `--filter='regex'' in the way that
+`regex', appended to `path/to/dir/' (i.e.  `path/to/dir/regex'),
+matches a regular file; the `centos-art.sh' script uses the file
+matching as only file in the list of files to process.
 
 3.43.4 See also
 ---------------
@@ -4941,90 +5231,92 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  368)
-Common translation files:                      See 3.48.2.5. (line 4366)
-How to render brands' translation files:       See 3.50.3.   (line 4671)
-How to render fonts' translation files:        See 3.52.3.   (line 4748)
-How to render translation files:               See 3.48.3.   (line 4536)
-Specific translation files:                    See 3.48.2.6. (line 4391)
-tags:                                          See 2.        (line  371)
-Template translation files:                    See 3.48.2.4. (line 4196)
-Translation brands file names:                 See 3.50.2.1. (line 4628)
-Translation configuration scripts:             See 3.48.2.8. (line 4425)
-Translation entries:                           See 3.48.2.1. (line 4012)
-Translation files:                             See 3.48.2.3. (line 4128)
-Translation markers:                           See 3.48.2.2. (line 4093)
-Translation paths:                             See 3.48.2.1. (line 4012)
+branches:                                      See 1.        (line  370)
+Common translation files:                      See 3.48.2.5. (line 4656)
+How to render brands' translation files:       See 3.50.3.   (line 4961)
+How to render fonts' translation files:        See 3.52.3.   (line 5038)
+How to render translation files:               See 3.48.3.   (line 4826)
+Metadata maintainance:                         See 3.43.2.   (line 3800)
+Specific translation files:                    See 3.48.2.6. (line 4681)
+tags:                                          See 2.        (line  373)
+Template translation files:                    See 3.48.2.4. (line 4486)
+Translation brands file names:                 See 3.50.2.1. (line 4918)
+Translation configuration scripts:             See 3.48.2.8. (line 4715)
+Translation entries:                           See 3.48.2.1. (line 4302)
+Translation files:                             See 3.48.2.3. (line 4418)
+Translation markers:                           See 3.48.2.2. (line 4383)
+Translation paths:                             See 3.48.2.1. (line 4302)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 4425)
-Translation rendering:                         See 3.48.2.7. (line 4414)
-Translation rendering default functionality:   See 3.48.2.9. (line 4511)
-trunk:                                         See 3.        (line  374)
-trunk Identity:                                See 3.1.      (line  377)
-trunk Identity Brands:                         See 3.2.      (line  797)
-trunk Identity Fonts:                          See 3.3.      (line  814)
-trunk Identity Icons:                          See 3.4.      (line  890)
-trunk Identity Isolinux:                       See 3.5.      (line  907)
-trunk Identity Models:                         See 3.6.      (line  924)
-trunk Identity Models Css:                     See 3.7.      (line  944)
-trunk Identity Models Html:                    See 3.8.      (line  966)
-trunk Identity Models Img Promo Web:           See 3.9.      (line  987)
-trunk Identity Models Tpl:                     See 3.10.     (line 1008)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1029)
-trunk Identity Models Xcf:                     See 3.12.     (line 1343)
-trunk Identity Release:                        See 3.13.     (line 1364)
-trunk Identity Themes:                         See 3.14.     (line 1381)
-trunk Identity Themes Models:                  See 3.15.     (line 1406)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1439)
-trunk Identity Themes Models Default:          See 3.17.     (line 1466)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1498)
+                                                             (line 4715)
+Translation rendering:                         See 3.48.2.7. (line 4704)
+Translation rendering default functionality:   See 3.48.2.9. (line 4801)
+trunk:                                         See 3.        (line  376)
+trunk Identity:                                See 3.1.      (line  379)
+trunk Identity Brands:                         See 3.2.      (line  799)
+trunk Identity Fonts:                          See 3.3.      (line  816)
+trunk Identity Icons:                          See 3.4.      (line  892)
+trunk Identity Isolinux:                       See 3.5.      (line  909)
+trunk Identity Models:                         See 3.6.      (line  926)
+trunk Identity Models Css:                     See 3.7.      (line  946)
+trunk Identity Models Html:                    See 3.8.      (line  968)
+trunk Identity Models Img Promo Web:           See 3.9.      (line  989)
+trunk Identity Models Tpl:                     See 3.10.     (line 1010)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1031)
+trunk Identity Models Xcf:                     See 3.12.     (line 1345)
+trunk Identity Release:                        See 3.13.     (line 1366)
+trunk Identity Themes:                         See 3.14.     (line 1383)
+trunk Identity Themes Models:                  See 3.15.     (line 1408)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1441)
+trunk Identity Themes Models Default:          See 3.17.     (line 1468)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1500)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1582)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1599)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1625)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1650)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1754)
+                                                             (line 1584)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1601)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1627)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1652)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.23.    (line 1756)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.24.
-                                                             (line 1876)
+                                                             (line 1878)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.25.
-                                                             (line 1897)
+                                                             (line 1899)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.26.
-                                                             (line 1918)
+                                                             (line 1920)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.27.
-                                                             (line 1945)
-trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2001)
-trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2023)
+                                                             (line 1947)
+trunk Identity Themes Motifs Modern Palettes:  See 3.28.     (line 2003)
+trunk Identity Themes Motifs TreeFlower:       See 3.29.     (line 2025)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.30.
-                                                             (line 2040)
-trunk Identity Widgets:                        See 3.31.     (line 2336)
-trunk Manuals:                                 See 3.32.     (line 2353)
-trunk Scripts:                                 See 3.33.     (line 2407)
-trunk Scripts Bash:                            See 3.34.     (line 2431)
-trunk Scripts Bash Functions:                  See 3.35.     (line 2543)
-trunk Scripts Bash Functions Help:             See 3.36.     (line 3262)
-trunk Scripts Bash Functions Html:             See 3.37.     (line 3283)
-trunk Scripts Bash Functions Locale:           See 3.38.     (line 3304)
-trunk Scripts Bash Functions Path:             See 3.39.     (line 3384)
-trunk Scripts Bash Functions Render:           See 3.40.     (line 3416)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3437)
-trunk Scripts Bash Functions Shell:            See 3.42.     (line 3615)
-trunk Scripts Bash Functions Svg:              See 3.43.     (line 3636)
-trunk Scripts Bash Functions Verify:           See 3.44.     (line 3680)
-trunk Scripts Bash Locale:                     See 3.45.     (line 3896)
-trunk Scripts Perl:                            See 3.46.     (line 3925)
-trunk Scripts Python:                          See 3.47.     (line 3942)
-trunk Translations:                            See 3.48.     (line 3963)
-trunk Translations Identity:                   See 3.49.     (line 4566)
-trunk Translations Identity Brands:            See 3.50.     (line 4587)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 4682)
-trunk Translations Identity Fonts:             See 3.52.     (line 4697)
-trunk Translations Identity Models:            See 3.53.     (line 4764)
-trunk Translations Identity Release:           See 3.54.     (line 4779)
-trunk Translations Identity Themes:            See 3.55.     (line 4794)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 4809)
+                                                             (line 2042)
+trunk Identity Widgets:                        See 3.31.     (line 2338)
+trunk Manuals:                                 See 3.32.     (line 2355)
+trunk Scripts:                                 See 3.33.     (line 2409)
+trunk Scripts Bash:                            See 3.34.     (line 2433)
+trunk Scripts Bash Functions:                  See 3.35.     (line 2545)
+trunk Scripts Bash Functions Help:             See 3.36.     (line 3260)
+trunk Scripts Bash Functions Html:             See 3.37.     (line 3281)
+trunk Scripts Bash Functions Locale:           See 3.38.     (line 3302)
+trunk Scripts Bash Functions Path:             See 3.39.     (line 3382)
+trunk Scripts Bash Functions Render:           See 3.40.     (line 3414)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3435)
+trunk Scripts Bash Functions Shell:            See 3.42.     (line 3613)
+trunk Scripts Bash Functions Svg:              See 3.43.     (line 3782)
+trunk Scripts Bash Functions Verify:           See 3.44.     (line 3970)
+trunk Scripts Bash Locale:                     See 3.45.     (line 4186)
+trunk Scripts Perl:                            See 3.46.     (line 4215)
+trunk Scripts Python:                          See 3.47.     (line 4232)
+trunk Translations:                            See 3.48.     (line 4253)
+trunk Translations Identity:                   See 3.49.     (line 4856)
+trunk Translations Identity Brands:            See 3.50.     (line 4877)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 4972)
+trunk Translations Identity Fonts:             See 3.52.     (line 4987)
+trunk Translations Identity Models:            See 3.53.     (line 5054)
+trunk Translations Identity Release:           See 3.54.     (line 5069)
+trunk Translations Identity Themes:            See 3.55.     (line 5084)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5099)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 4830)
-trunk Translations Identity Widgets:           See 3.58.     (line 4923)
+                                                             (line 5120)
+trunk Translations Identity Widgets:           See 3.58.     (line 5213)
+Unused definitions:                            See 3.43.2.1. (line 3907)
 List of Figures
 ***************
 

@@ -36,10 +36,11 @@ contact their authors and work together to improve them.
 @email{centos-art@@centos.org} to share your ideas.
 @end quotation
 
-It is also worth to know what global functions do we have available
-inside @file{centos-art.sh} script, so advantage can be taken from
-them. Global functions are stored immediatly under
-@file{trunk/Scripts/Bash/Functions} directory in files begining with
+It is also worth to know what global functions and variables do we
+have available inside @file{centos-art.sh} script, so advantage can be
+taken from them. Global variables are defined inside global function
+scripts. Global functions scripts are stored immediatly under
+@file{trunk/Scripts/Bash/Functions} directory, in files begining with
 @samp{cli} prefix.
 
 OK, let's begin with our functionality example.
@@ -68,13 +69,13 @@ Inside @file{centos-art.sh} script, as convenction, each function
 script has one top commentary, followed by one blank line, and then
 one function defintion below it only.
 
-Inside @file{centos-art.sh} script functions, top commentaries
-describe function definition in the following five components:
-one-line for copyright note with your personal information,  the
-license under which the function source code is released ---the
-@file{centos-art.sh} script is released as GPL, so do all its
-functions---, subversion's @code{$Id$} keyword which is later expanded
-by @command{svn propset} command.
+Inside @file{centos-art.sh} script functions, top commentaries have
+the following components: the functionality description, one-line for
+copyright note with your personal information,  the license under
+which the function source code is released ---the @file{centos-art.sh}
+script is released as GPL, so do all its functions---, subversion's
+@code{$Id$} keyword which is later expanded by @command{svn propset}
+command.
 
 In our @code{greet} function example, top commentary for
 @file{greet.sh} function script would look like the following:
@@ -338,64 +339,13 @@ render --entry=path/to/dir --filter=regex}, the @var{REGEX} passed to
 @file{centos-art.sh} is @option{regex}. 
 
 The third argument option name is not variable as second argument
-option name is. The third argument option name is stocked to
-@option{--filter} for whatever value it passed at the right side of
+option name is. The third argument option name is fixed to
+@option{--filter} for whatever value it passes at the right side of
 its equal sign. 
 
 Generally, third argument option value is used to pass regular
 expression patterns that modify the list of files to process, but this
-is not the only feature @var{REGEX} may serve to.
-@end defvar
-
-@defvar ANSWER
-Default answer to confirmation questions. 
-
-As most questions request confirmation to perform some action, default
-answer to @var{ANSWER} variable is negative (i.e., @samp{No}).
-Default answer value takes place when no value is entered as response
-to confirmation questions before pressing @key{RET} key.
-@end defvar
-
-@defvar TMPFILE
-Default location to store temporal files. 
-
-The @var{TMPFILE} uses @file{/tmp} directory as source location to
-store temporal files, the @file{centos-art.sh} script name, and the
-process id of @file{centos-art.sh} script execution to let you run
-more than one @file{centos-art.sh} script simultaneously on the same
-user session.  For example, due the following temporal file defintion:
-
-@verbatim
-${TMPFILE}-${FILE}
-@end verbatim
-
-If @var{FILE} name is @file{instance.svg} and process id is
-@samp{3761}, the final temporal file built from previous temporal file
-definition would be:
-
-@verbatim
-/tmp/centos-art.sh-3761-instance.svg
-@end verbatim
-
-When you use @var{TMPFILE} global variable to create temporal files,
-be sure to remove temporal files created once you've ended up with
-them.  For example, consider the following construction:
-
-@verbatim
-for FILE in $FILES;do
-
-    # Initialize temporal instance of file.
-    INSTANCE=${TMPFILE}-${FILE}
-
-    # Do something ... 
-
-    # Remove temporal instance of file.
-    if [[ -f $INSTANCE ]];then
-        rm $INSTANCE
-    fi
-
-done
-@end verbatim
+is not the only feature @var{REGEX} global variable may serve to.
 @end defvar
 
 @defvar EDITOR 
@@ -427,18 +377,18 @@ available for you to use inside specific functions:
 @defun cli_commitRepoChanges
 Commit recent changes up to central repository.
 
-The @code{cli_commitRepoChanges} function uses the list of files
-stored in the @var{FILES} variable and verifies changes inside your
-repository working copy, using subversion commands.  If
-@code{cli_commitRepoChanges} finds changes inside your working copy,
-it asks you for confirmation to commit them up to central repository.
+The @code{cli_commitRepoChanges} function uses the value of
+@var{OPTIONVAL} variable as reference to perform subversion changes
+verifications inside working copy.  If @code{cli_commitRepoChanges}
+finds changes inside your working copy, it asks you for confirmation
+to commit them up to central repository.
 
 Call @code{cli_commitRepoChanges} function after functions that modify
 files inside your repository working copy.
 @end defun
 
 @defun cli_checkFiles FILE [TYPE]
-Verify files.
+Verify files existence.
 
 @code{cli_checkFiles} receives a @var{FILE} absolute path and performs
 file verification as specified in @var{TYPE}.  When @var{TYPE} is not
@@ -573,7 +523,7 @@ central place to manage file name convenctions for other functions
 inside @file{centos-art.sh} script.
 
 @quotation
-@strong{Warning} @code{cli_getRepoName} function doesn't verify file
+@strong{Important} @code{cli_getRepoName} function doesn't verify file
 or directory existence, for that purpose use @code{cli_checkFiles}
 function instead.
 @end quotation
@@ -609,6 +559,51 @@ repository file system organization, just as you did in
 information on how to rename files and directories massively inside
 repository file system organization.
 @end quotation
+@end defun
+
+@defun cli_getTemporalFile @var{NAME}
+Output absolute path to temporal file @var{NAME}.
+
+@code{cli_getTemporalFile} uses @file{/tmp} directory as source
+location to store temporal files, the @file{centos-art.sh} script
+name, and a random identification string to let you run more than one
+@file{centos-art.sh} script simultaneously on the same user session.
+For example, due the following temporal file defintion:
+
+@verbatim
+cli_getTemporalFile $FILE
+@end verbatim
+
+If @var{FILE} name is @file{instance.svg} and unique random string is
+@samp{f16f7b51-ac12-4b7f-9e66-72df847f12de}, the final temporal file,
+built from previous temporal file definition, would be:
+
+@verbatim
+/tmp/centos-art.sh-f16f7b51-ac12-4b7f-9e66-72df847f12de-instance.svg
+@end verbatim
+
+When you use @code{cli_getTemporalFile} function to create temporal
+files, be sure to remove temporal files created once you've ended up
+with them.  For example, consider the following construction:
+
+@verbatim
+for FILE in $FILES;do
+
+    # Initialize temporal instance of file.
+    INSTANCE=$(cli_getTemporalFile $FILE)
+
+    # Do something ... 
+
+    # Remove temporal instance of file.
+    if [[ -f $INSTANCE ]];then
+        rm $INSTANCE
+    fi
+
+done
+@end verbatim
+
+Use @code{cli_getTemporalFile} function whenever you need to create
+temporal files inside @file{centos-art.sh} script.
 @end defun
 
 @defun cli_getThemeName
