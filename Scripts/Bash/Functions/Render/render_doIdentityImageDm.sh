@@ -112,7 +112,7 @@ function render_doIdentityImageDm {
     # inside all CentOS art works (e.g., anaconda, firstboot, etc.),
     # we are using CentOS symbol at 48x48 pixels. This value seems to
     # be the middle dimension that fits all situations.
-    SYMBOL=/home/centos/artwork/trunk/Identity/Brands/Img/CentOS/Symbol/5c-a/Png/48.png
+    SYMBOL=/home/centos/artwork/trunk/Identity/Brands/Img/CentOS/Symbol/5c-a/48.png
     cli_checkFiles "$SYMBOL" 'f'
 
     for VERSION in $VERSIONS;do
