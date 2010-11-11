@@ -29,6 +29,7 @@ function render_loadConfig {
     # Define rendering actions.
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='POST:renderFormats: jpg'
+    ACTIONS[2]='POST:groupByType: png jpg'
 
     # Define matching list.
     MATCHINGLIST=''
