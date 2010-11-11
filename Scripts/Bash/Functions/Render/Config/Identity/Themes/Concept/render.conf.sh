@@ -28,8 +28,7 @@ function render_loadConfig {
 
     # Define rendering actions.
     ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderFormats: jpg pdf tif pnm'
-    ACTIONS[2]='POST:groupByType: png jpg pdf tif pnm'
+    ACTIONS[1]='POST:renderFormats: jpg pdf'
 
     # Define matching list.
     MATCHINGLIST=''
