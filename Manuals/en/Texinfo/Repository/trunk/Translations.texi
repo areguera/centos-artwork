@@ -637,13 +637,13 @@ translation marker section
 @cindex How to render translation files
 
 @table @samp
-@item centos-art render 'path/to/dir' 
+@item centos-art render --entry='path/to/dir' 
 
 When @samp{path/to/dir} refers one directory under
 @samp{trunk/Translations}, this command orverwrites available
 translation files using translation templates.
 
-@item centos-art render 'path/to/dir' --filter='pattern' 
+@item centos-art render --entry='path/to/dir' --filter='pattern' 
 
 When @samp{path/to/dir} refers one directory under
 @file{trunk/Translations}, this command renders release-specific
@@ -652,7 +652,6 @@ argument. In this case, @samp{pattern} not a regular expression but an
 number (e.g., @samp{5}) or a list of numbers separated by commas
 (e.g., @samp{3,4,5,6}) that specify the major release of CentOS
 distribution you want to render translations for.  
-
 @end table
 
 @subsection See also

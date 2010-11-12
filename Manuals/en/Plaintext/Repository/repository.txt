@@ -4834,12 +4834,12 @@ commands.
 3.48.3 Usage
 ------------
 
-`centos-art render 'path/to/dir''
+`centos-art render --entry='path/to/dir''
      When `path/to/dir' refers one directory under
      `trunk/Translations', this command orverwrites available
      translation files using translation templates.
 
-`centos-art render 'path/to/dir' --filter='pattern''
+`centos-art render --entry='path/to/dir' --filter='pattern''
      When `path/to/dir' refers one directory under
      `trunk/Translations', this command renders release-specific
      translation files as you specify in the `--filter='pattern''
@@ -4847,7 +4847,6 @@ commands.
      number (e.g., `5') or a list of numbers separated by commas (e.g.,
      `3,4,5,6') that specify the major release of CentOS distribution
      you want to render translations for.
-
 
 3.48.4 See also
 ---------------
@@ -5240,14 +5239,14 @@ Index
 
 branches:                                      See 1.        (line  370)
 Common translation files:                      See 3.48.2.5. (line 4667)
-How to render brands' translation files:       See 3.50.3.   (line 4972)
-How to render fonts' translation files:        See 3.52.3.   (line 5045)
+How to render brands' translation files:       See 3.50.3.   (line 4971)
+How to render fonts' translation files:        See 3.52.3.   (line 5044)
 How to render translation files:               See 3.48.3.   (line 4837)
 Metadata maintainance:                         See 3.43.2.   (line 3811)
 Specific translation files:                    See 3.48.2.6. (line 4692)
 tags:                                          See 2.        (line  373)
 Template translation files:                    See 3.48.2.4. (line 4497)
-Translation brands file names:                 See 3.50.2.1. (line 4929)
+Translation brands file names:                 See 3.50.2.1. (line 4928)
 Translation configuration scripts:             See 3.48.2.8. (line 4726)
 Translation entries:                           See 3.48.2.1. (line 4313)
 Translation files:                             See 3.48.2.3. (line 4429)
@@ -5312,17 +5311,17 @@ trunk Scripts Bash Locale:                     See 3.45.     (line 4197)
 trunk Scripts Perl:                            See 3.46.     (line 4226)
 trunk Scripts Python:                          See 3.47.     (line 4243)
 trunk Translations:                            See 3.48.     (line 4264)
-trunk Translations Identity:                   See 3.49.     (line 4867)
-trunk Translations Identity Brands:            See 3.50.     (line 4888)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 4983)
-trunk Translations Identity Fonts:             See 3.52.     (line 4998)
-trunk Translations Identity Models:            See 3.53.     (line 5061)
-trunk Translations Identity Release:           See 3.54.     (line 5076)
-trunk Translations Identity Themes:            See 3.55.     (line 5091)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5106)
+trunk Translations Identity:                   See 3.49.     (line 4866)
+trunk Translations Identity Brands:            See 3.50.     (line 4887)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 4982)
+trunk Translations Identity Fonts:             See 3.52.     (line 4997)
+trunk Translations Identity Models:            See 3.53.     (line 5060)
+trunk Translations Identity Release:           See 3.54.     (line 5075)
+trunk Translations Identity Themes:            See 3.55.     (line 5090)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5105)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 5127)
-trunk Translations Identity Widgets:           See 3.58.     (line 5220)
+                                                             (line 5126)
+trunk Translations Identity Widgets:           See 3.58.     (line 5219)
 Unused definitions:                            See 3.43.2.1. (line 3918)
 List of Figures
 ***************

@@ -677,14 +677,14 @@ translation marker section
 <h3 class="subsection"> 3.48.3 Usage </h3>
 
 <dl compact="compact">
-<dt> <samp>`centos-art render 'path/to/dir''</samp> </dt>
+<dt> <samp>`centos-art render --entry='path/to/dir''</samp> </dt>
 <dd>
 <p>When <samp>`path/to/dir'</samp> refers one directory under
 <samp>`trunk/Translations'</samp>, this command orverwrites available
 translation files using translation templates.
 </p>
 </dd>
-<dt> <samp>`centos-art render 'path/to/dir' --filter='pattern''</samp> </dt>
+<dt> <samp>`centos-art render --entry='path/to/dir' --filter='pattern''</samp> </dt>
 <dd>
 <p>When <samp>`path/to/dir'</samp> refers one directory under
 <tt>`trunk/Translations'</tt>, this command renders release-specific
@@ -693,8 +693,7 @@ argument. In this case, <samp>`pattern'</samp> not a regular expression but an
 number (e.g., <samp>`5'</samp>) or a list of numbers separated by commas
 (e.g., <samp>`3,4,5,6'</samp>) that specify the major release of CentOS
 distribution you want to render translations for.  
-</p>
-</dd>
+</p></dd>
 </dl>
 
 
