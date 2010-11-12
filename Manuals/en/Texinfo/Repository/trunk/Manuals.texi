@@ -13,26 +13,26 @@
 @subsection Usage
 
 @table @samp
-@item centos-art help 'path/to/dir'
+@item centos-art help --read='path/to/dir'
 Use this command to read directory documentation specified in
 @samp{path/to/dir}.
 
-@item centos-art help 'path/to/dir' --read='filename'
+@item centos-art help --read='path/to/dir' --filter='filename'
 Use this command to read file documentation as specified by
 @samp{path/to/dir/filename} combination. 
 
-@item centos-art help 'path/to/dir' --edit
+@item centos-art help --edit='path/to/dir'
 Use this command to edit directory documentation as specified in
 @samp{path/to/dir}.
 
-@item centos-art help 'path/to/dir' --edit='filename'
+@item centos-art help --edit='path/to/dir' --filter='filename'
 Use this command to edit file documentation as specified in
 @samp{path/to/dir/filename} combination.
 
-@item centos-art help 'path/to/dir' --update
+@item centos-art help --update='path/to/dir'
 Use this command to update documentation output files.
 
-@item centos-art help 'path/to/dir' --remove
+@item centos-art help --remove='path/to/dir'
 Use this command to remove directory documentation as specified in
 @samp{path/to/dir}.
 
@@ -50,8 +50,7 @@ svn revert path/to/dir --recursive
 @end verbatim
 @end quotation
 
-@item centos-art help 'path/to/dir' --remove='filename'
-
+@item centos-art help --remove='path/to/dir' --filter='filename'
 Use this command to remove file documentation as specified in
 @samp{path/to/dir/filename} combination.
 @end table

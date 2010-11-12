@@ -1,38 +1,39 @@
 @subsection Goals
 
-This section exists to store digital typographies used by the CentOS
-project.
+This section exists to organize digital typographies used by the
+CentOS project.
 
 @subsection Description
 
 @subsection Usage
 
-The CentOS corporate identity is attached to DejaVu LGC font-family.
-Whatever artwork you design for CentOS project, that requires
-typography usage, must be done using DejaVu LGC font-family.
+The CentOS corporate identity is attached to @samp{DejaVu LGC}
+font-family.  Whatever artwork you design for CentOS project, that
+requires typography usage, must be done using @samp{DejaVu LGC}
+font-family.
 
 @table @strong
-@item RULE-1: 
+@item Recommendation-1: 
 
 For screen desings (e.g., anything that final destination will never
-be printed on paper or any medium outside computre screens) use DejaVu
-LGC Sans font-family. 
+be printed on paper or any medium outside computer screens) use
+@samp{DejaVu LGC Sans} font-family. 
 
-@item RULE-2: 
+@item Recommendation-2: 
 
 For non-screen designs (e.g., anything that final desition will be
 printed on paper or any other medium outside computer screens) use
-DejaVu LGC Serif font-family. As convenction files described in this
-rule are stored under @samp{Stationery} directories.
+@samp{DejaVu LGC Serif} font-family. As convenction files described in
+this rule are stored under @samp{Stationery} directories.  
 @end table
 
-The only execption for the two rules above is the typography used
-inside CentOS logo. The CentOS logo is the main visual representation
-of the CentOS project so the typography used in it must be the same
-always, no matter where it be shown. It also has to be clear enough to
-dismiss any confussion between similar typefaces (e.g., the number one
-(1) sometimes is confuesed with the letter @samp{el} (l) or letter
-@samp{ai} (i)). 
+The only execption for the two recommendations above is the typography
+used inside CentOS logo. The CentOS logo is the main visual
+representation of the CentOS project so the typography used in it must
+be the same always, no matter where it be shown. It also has to be
+clear enough to dismiss any confussion between similar typefaces
+(e.g., the number one (1) sometimes is confuesed with the letter
+@samp{el} (l) or letter @samp{ai} (i)). 
 
 As CentOS logo typography convenction, the word @samp{CentOS} uses
 @samp{Denmark} typography as base, both for the word @samp{CentOS} and
@@ -42,10 +43,9 @@ has and it below @samp{CentOS} word and aligned with it on the left.
 The distance between @samp{CentOS} word and phrase @samp{Community
 Enterprise Operating System} have the size in points the phrase has.
 
-When the CentOS release brand is built, use ``URW Bookman L'' Normal
-(not in bold, not in italic, not in anything else) typography for the
-release number. The release number size is two times larger (in
-height) than default @samp{CentOS} word. The separation between
+When the CentOS release brand is built, use @samp{Denmark} typography
+for the release number. The release number size is two times larger
+(in height) than default @samp{CentOS} word. The separation between
 release number and @samp{CentOS} word is twice the size in points of
 separation between @samp{CentOS} word and phrase @samp{Community
 Enterprise Operating System}.
@@ -72,6 +72,23 @@ is my personal interpretation of
 practical experiences with these affairs, please serve yourself to
 improve this section with your reasons.
 @end quotation
+
+@ifnotinfo
+@float Figure,trunk/Identity/Brands/Img/CentOS/Type/Build/tmr
+@image{trunk/Identity/Brands/Img/CentOS/Type/Build/tm/697,,,CentOS Type,jpg}
+@caption{The CentOS Type.}
+@end float
+
+@float Figure,trunk/Identity/Brands/Img/CentOS/Type/Build/tmr4
+@image{trunk/Identity/Brands/Img/CentOS/Type/Build/tmr4/697,,,CentOS Release Brand,jpg}
+@caption{The CentOS Type plus release information (i.e., CentOS Release Brand).}
+@end float
+
+@float Figure,trunk/Identity/Brands/Img/CentOS/Type/Build/tmdr4
+@image{trunk/Identity/Brands/Img/CentOS/Type/Build/tmdr4/697,,,CentOS Release Brand with description,jpg}
+@caption{The CentOS Type plus release information plus description (i.e., CentOS Release Brand with description).}
+@end float
+@end ifnotinfo
 
 @subsection See also
 
