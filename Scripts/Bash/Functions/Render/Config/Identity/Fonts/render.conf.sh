@@ -28,7 +28,7 @@ function render_loadConfig {
 
     # Define rendering actions. 
     ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderFormats: ps pdf'
+    ACTIONS[1]='POST:renderFormats: jpg pdf'
 
     # Define matching list.
     MATCHINGLIST="fonts.svg"
