@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: 02-donate.sed 13 2010-09-10 09:55:59Z al $
+# $Id: 02-donate.sed 304 2010-10-21 18:18:03Z al $
 # ------------------------------------------------------------
 
 

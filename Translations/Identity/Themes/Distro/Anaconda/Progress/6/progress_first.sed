@@ -6,10 +6,10 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: progress_first.sed 13 2010-09-10 09:55:59Z al $
+# $Id: progress_first.sed 502 2010-11-12 13:40:26Z al $
 # ------------------------------------------------------------
 
-s!=COPYRIGHT=!Copyright © 2003-2010 The CentOS Project. All rights reserved.!
+s!=COPYRIGHT=!Copyright © 2003, 2010 The CentOS Project. All rights reserved.!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
