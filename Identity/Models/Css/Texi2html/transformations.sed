@@ -42,3 +42,6 @@ s!<blockquote><p><strong>Removed</strong>!<blockquote class="red"><img src="/hom
 
 # Headings
 s!<hr size="[[:digit:]]">!!g
+
+# Links
+s!<a href="(https|http|ftps|ftp)://!<a class="www" href="\1://!g
