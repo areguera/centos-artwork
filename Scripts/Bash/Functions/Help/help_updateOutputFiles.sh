@@ -26,16 +26,15 @@
 
 function help_updateOutputFiles {
 
-    # Output action message.
-    cli_printMessage "`gettext "Updating manual's output files"`"
-
     # -- .info ----------
+    cli_printMessage "`gettext "Updating manual's info output"`" 'AsResponseLine'
 
     # Check .info output directory 
     [[ ! -d ${MANUALS_DIR[3]} ]] &&  mkdir -p ${MANUALS_DIR[3]}
 
     # Update .info file
-    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]} --no-ifhtml
+    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]} \
+        -I=/home/centos/artwork
 
     # Check .info file. If the info file was not created then there
     # are errors to fix.
@@ -47,6 +46,7 @@ function help_updateOutputFiles {
     bzip2 -f ${MANUALS_FILE[4]}
 
     # -- .html ----------
+    cli_printMessage "`gettext "Updating manual's html output"`" 'AsResponseLine'
 
     # Check html output directory
     [[ ! -d ${MANUALS_DIR[4]} ]] && mkdir -p ${MANUALS_DIR[4]}
@@ -59,28 +59,28 @@ function help_updateOutputFiles {
     # Update html files.  At this point, we use texi2html to export
     # texinfo files to html using Modern's CSS definitions. We also
     # append image directories to the @include search path, using
-    # texi2html's '--I' option. Adding image directories to @include
+    # texi2html's '-I' option. Adding image directories to @include
     # search path is needed in order for texi2html to build html paths
     # correctly, once the html output is produced.  For exmample, if
     # you want to include the following image:
     #
-    #   /home/centos/artwork/trunk/Identity/Models/Img/en/Scripts/renderImage.png
+    #   /home/centos/artwork/trunk/Identity/Models/Img/Scripts/renderImage.png
     #
     # you add its directory path to @include search path using the
     # following command: 
     #
-    #   texi2html --I=/home/centos/artwork/trunk/Identity/Models/Img/en/Scripts
+    #   texi2html -I=/home/centos/artwork/trunk/Identity/Models/Img/en/Scripts
     #
     # Once the image directory path has been added to @include search
     # path, use the @image command inside texinfo files to include
-    # images available.  In order to include images correctly, do not
-    # include the image path in the first argument of @image command,
-    # use just the image name (without extension) instead (e.g.,
-    # @image{renderImage,,,,png}).
+    # images available.  In order to include images correctly, do
+    # include the image path (without extension) in the first argument
+    # of @image command, using the trunk/ directory structure as root
+    # (e.g., @image{trunk/Identity/Models/Img/Scripts/renderImage}).
     texi2html ${MANUALS_FILE[1]} --output=${MANUALS_DIR[4]} --split section \
         --nosec-nav \
         --css-include=/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
-        --I=/home/centos/artwork
+        -I=/home/centos/artwork
 
     # Apply html transformations.
     sed -r -i \
@@ -91,12 +91,15 @@ function help_updateOutputFiles {
     popd > /dev/null
 
     # -- .txt -----------
+    cli_printMessage "`gettext "Updating manual's plaintext output"`" 'AsResponseLine'
 
     # Check plaintext output directory.
     [[ ! -d ${MANUALS_DIR[5]} ]] &&  mkdir -p ${MANUALS_DIR[5]}
 
     # Update plaintext output directory.
-    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} --plaintext --no-ifhtml
+    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} \
+        --plaintext \
+        -I=/home/centos/artwork
 
     # Re-define output variable in order for cli_commitRepoChanges
     # functionality to receive the correct location to apply
