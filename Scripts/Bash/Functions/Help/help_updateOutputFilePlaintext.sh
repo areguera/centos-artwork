@@ -34,7 +34,6 @@ function help_updateOutputFilePlaintext {
 
     # Update plaintext output directory.
     /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} \
-        --plaintext \
-        -I=/home/centos/artwork
+        --plaintext
 
 }

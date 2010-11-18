@@ -33,8 +33,7 @@ function help_updateOutputFileInfo {
     [[ ! -d ${MANUALS_DIR[3]} ]] &&  mkdir -p ${MANUALS_DIR[3]}
 
     # Update info file.
-    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]} \
-        -I=/home/centos/artwork
+    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]}
 
     # Check info file. If the info file was not created then there are
     # errors to fix.
