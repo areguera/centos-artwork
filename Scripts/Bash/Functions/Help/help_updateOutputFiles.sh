@@ -69,7 +69,7 @@ function help_updateOutputFiles {
     # you add its directory path to @include search path using the
     # following command: 
     #
-    #   texi2html -I=/home/centos/artwork/trunk/Identity/Models/Img/en/Scripts
+    #   texi2html -I=/home/centos/artwork/trunk/Identity/Models/Img/Scripts
     #
     # Once the image directory path has been added to @include search
     # path, use the @image command inside texinfo files to include
