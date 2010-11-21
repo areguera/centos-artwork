@@ -1,7 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!--This manual describes what the CentOS Artwork Repository is and what
-can you do inside it.
+<!--This manual describes the CentOS Artwork Repository. 
+
+The CentOS Artwork Repository exists to organize and automate The
+CentOS Project corporate visual identity (, to
+start on).
 
 Copyright C 2009, 2010 Alain Reguera Delgado. All rights
 reserved.
@@ -13,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 12 2010 by texi2html 1.76 -->
+<!-- Created on November, 21 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -56,27 +59,27 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_46.html#SEC252" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC254" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_46.html#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC261" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC344" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC351" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC344" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC351" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions-Verify"></a>
-<a name="SEC253"></a>
+<a name="SEC260"></a>
 <h2 class="section"> 3.44 trunk/Scripts/Bash/Functions/Verify </h2>
 
 
-<a name="SEC254"></a>
+<a name="SEC261"></a>
 <h3 class="subsection"> 3.44.1 Goals </h3>
 
 <p>This section exists to organize files related to <tt>`centos-art.sh'</tt>
@@ -86,7 +89,7 @@ workstation configuration you are planning to use as host for your
 working copy of CentOS Artwork Repository.
 </p>
 
-<a name="SEC255"></a>
+<a name="SEC262"></a>
 <h3 class="subsection"> 3.44.2 Description </h3>
 
 <p>The first time you download CentOS Artwork Repository you need to
@@ -106,7 +109,7 @@ because <tt>`centos-art'</tt> symbolic link, under <tt>`~/bin/'</tt>
 directory, has not been created yet.
 </p>
 
-<a name="SEC256"></a>
+<a name="SEC263"></a>
 <h4 class="subsubsection"> 3.44.2.1 Packages </h4>
 
 <p>Installation of auxiliar RPM packages provides the software required
@@ -122,7 +125,7 @@ repositories.
 <blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Configuration of third party repositories inside CentOS
 distribution is described in CentOS wiki, specifically in the
 following URL:
-<a href="http://wiki.centos.org/AdditionalResources/Repositories">http://wiki.centos.org/AdditionalResources/Repositories</a>
+<a class="www" href="http://wiki.centos.org/AdditionalResources/Repositories">http://wiki.centos.org/AdditionalResources/Repositories</a>
 </p></blockquote>
 
 <p>Before installing packages, the <tt>`centos-art.sh'</tt> script uses
@@ -141,7 +144,7 @@ will be able to configure your users to have <code>sudo</code>
 privileges.
 </p>
 
-<a name="SEC257"></a>
+<a name="SEC264"></a>
 <h4 class="subsubsection"> 3.44.2.2 Links </h4>
 
 <p>Creation of symbolic links helps us to alternate between different
@@ -176,7 +179,7 @@ structure. As consequence of this configuration, automation scripts
 cannot be branched under <tt>`branches/Scripts'</tt> directory structure.
 </p>
 
-<a name="SEC258"></a>
+<a name="SEC265"></a>
 <h4 class="subsubsection"> 3.44.2.3 Environment variables </h4>
 
 <p>Definition of environemnt variables helps us to set default values to
@@ -255,12 +258,12 @@ set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 <dd>
 <p>Default locale information. This value is set when you start your
 session and can be changed using the <samp>`locale'</samp> functionality of
-<tt>`centos-art.sh'</tt> script (see section <a href="repository_41.html#SEC218">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
+<tt>`centos-art.sh'</tt> script (see section <a href="repository_41.html#SEC219">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
 </p></dd>
 </dl>
 
 
-<a name="SEC259"></a>
+<a name="SEC266"></a>
 <h3 class="subsection"> 3.44.3 Usage </h3>
 
 <dl compact="compact">
@@ -313,7 +316,7 @@ provided at all.
 </dl>
 
 
-<a name="SEC260"></a>
+<a name="SEC267"></a>
 <h3 class="subsection"> 3.44.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
@@ -325,16 +328,16 @@ provided at all.
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_48.html#SEC261" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC266" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_48.html#SEC268" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC253" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC344" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC260" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC351" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 12 2010</i> using <a href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 21 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
