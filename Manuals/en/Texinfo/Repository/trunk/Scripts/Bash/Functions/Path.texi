@@ -162,12 +162,11 @@ Parallel directories are useful to create branches, tags,
 translations, documentation, pre-rendering configuration script, and
 similar directory structures.
 
-Parallel directory structures take their structure from one unique
-parent directory structure. Inside CentOS Artwork Repository, this
-unique parent directory structure is under @file{trunk/Identity}
-directory. The @file{trunk/Identity} directory structure must be
-considered the reference for whatever information you plan to create
-inside the repository.
+Parallel directories take their structure from one unique parent
+directory. Inside CentOS Artwork Repository, this unique parent
+directory is under @file{trunk/Identity} location.  The
+@file{trunk/Identity} location must be considered the reference for
+whatever information you plan to create inside the repository.
 
 In some circumstances, parallel directories may be created removing
 uncommon information from their paths. Uncommon path information
@@ -180,12 +179,12 @@ build the parallel directory used to retrived translations, and
 pre-rendering configuration scripts required by @code{render}
 functionality.
 
-Another example where parallel directory information is built by
-removing the uncommon path information is when we use the @code{help}
-functionality. This time, @file{centos-art.sh} script uses parallel
-directory information (without uncommon directory levels) to build the
-documentation entry required by Texinfo to store directory
-documentation inside the repository.
+Another example where parallel directory removes the uncommon path
+information is when we use the @code{help} functionality. This time,
+@file{centos-art.sh} script uses parallel directory information
+(without uncommon directory levels) to build the documentation entry
+required by Texinfo to store documentation entries inside the
+repository.
 
 @float Figure, trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-3
 @image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3}
@@ -193,8 +192,8 @@ documentation inside the repository.
 @end float
 
 Othertimes, parallel directories may add uncommon information to their
-paths. This is the case of branches and tags creation. When we create
-branches and tags, a numerical identifier is added to parallel
+paths. This is the case we use to create branches and tags. When we
+create branches and tags, a numerical identifier is added to parallel
 directory structure path. The place where the numerical identifier is
 set on is relevant to corporate visual identity structure and should
 be carefully considered where it will be.
@@ -220,26 +219,26 @@ initially created for.
 @subsubsection Syncronizing path information
 
 Creating parallel directories is very useful to keep repository
-organized, but what would happen to functionalities like @code{help}
+organized. But, what would happen to functionalities like @code{help}
 (@pxref{trunk Scripts Bash Functions Help}) that rely on parent
 directory structures to create documentation entries (using parallel
 directory structures) if one of those parent directory structures
-suddenly change after the documentation entry has been already created
-for it? 
+suddenly changes after the documentation entry has been already
+created for it? 
 
 Well, at this point, functionalities like @code{help} may confuse
-themselves if path information is not syncronized correctly.  Such
-functionalities work with parent directory structure as reference; if
-a parent directory changes, the functionalities dont't even note it
-because they work with the last parent directory structure available
-in the repository, no matter what it is. 
+themselves if path information is not updated.  Such functionalities
+work with parent directory structure as reference; if a parent
+directory changes, the functionalities dont't even note it because
+they work with the last parent directory structure available in the
+repository, no matter what it is. 
 
 In the specific case of documentation (the @code{help} functionality),
 the problem mentioned above provokes that older parent directories,
 already documented, remain inside documentation directory structures
-in perpetuity, as long as you get your hands into the documentation
-directory structure (@file{trunk/Manuals}) and remove what must be
-removed to match the new parent directory structure.
+as long as you get your hands into the documentation directory
+structure (@file{trunk/Manuals}) and remove what must be removed to
+match the new parent directory structure.
 
 There is no way for @code{help}, and similar functionalities that use
 parent directories as reference, to know when and how directory
@@ -289,20 +288,21 @@ your own comprehension and so, make your propositions based on it.
 When looking the correct place to store new files, to bear in mind the
 corporate visual identity structure used inside the CentOS Artwork
 Repository (@pxref{trunk Identity}) would be probaly the best advice
-we could offer you, the rest is just matter of choosing appropriate
+we could offer to you, the rest is just matter of choosing appropriate
 names.  To illustrate this desition process let's consider the
 @file{trunk/Identity/Themes/Motifs/TreeFlower/Distro/} directory as
 example. It is the main development line of CentOS distribution visual
 manifestation, using TreeFlower's artistic motif, inside themes of
-CentOS corporate visual identity structure. 
+CentOS corporate visual identity. 
 
 When building parent directory structures, you may find that reaching
 an acceptable location may take some time, and as it happens most of
-time, it is not a definite solution. There are many concepts that you
-need to play with, in order to find a result that match the conceptual
-idea you try to implement in the new directory location. To know which
-these concepts are, split the location in words and read its
-documentation entry from less specific to more specific.
+time, when you find it, that may be not a definite solution. There are
+many concepts that you need to play with, in order to find a result
+that match the conceptual idea you try to implement in the new
+directory location. To know which these concepts are, split the
+location in words and read its documentation entry from less specific
+to more specific.
 
 For example, the
 @file{trunk/Identity/Themes/Motifs/TreeFlower/Distro/} location
@@ -327,20 +327,102 @@ concepts for.
 
 @subsection Usage
 
-These commands are not available yet.
-
 @table @command
-@item centos-art path --sync='path/to/dir'
-@item centos-art path --copy='path/to/oldfile path/to/newfile'
-@item centos-art path --move='path/to/oldfile path/to/newfile'
-Move @samp{path/to/oldfile} to @samp{path/to/newfile}.
-@item centos-art path --remove='path/to/file'
-@item centos-art path --create-tag-from='path/to/dir'
-@item centos-art path --create-branch-from='path/to/dir'
+@item centos-art path --copy='SRC DST'
+Use this command to duplicate @file{SRC} in working copy,
+remembering history. In this command, @file{SRC} and
+@file{DST} can each be either a working copy (WC) path or
+URL:
+
+@table @samp
+@item WC -> WC
+Copy and schedule for addition (with history).
+
+@item WC -> URL
+Immediately commit a copy of WC to URL.
+
+@item URL -> WC
+Check out URL into WC, schedule for addition.
+
+@item URL -> URL
+Complete server-side copy;  used to branch and tag.
+@end table
+
+This command is an interface for Subversion's @command{copy} command.
+Options related to Subversion's @command{copy} command can be passed
+from third argument on. For example to specify a log message use the
+@option{--message} option as follow:
+
+@verbatim
+centos-art path --copy='URL/SRC URL/DST' --message 'Copy url/src to url/dst'
+@end verbatim
+
+For more information on Subversion's @command{copy} functionality,
+run the command: @command{svn help copy | less}.
+
+@item centos-art path --move='SRC DST'
+Move and/or rename something in working copy or repository. In this
+command, SRC and DST can both be working copy (WC) paths or URLs: 
+
+@table @samp
+@item WC -> WC
+Move and schedule for addition (with history).
+@item URL -> URL
+Complete server-side rename.
+@end table
+
+This command is an interface for Subversion's @command{move} command.
+Options related to Subversion's @command{move} command can be passed
+from third argument on. For example to specify a log message use the
+@option{--message} option as follow:
+
+@verbatim
+centos-art path --move='URL/SRC URL/DST' --message 'Move url/src to url/dst'
+@end verbatim
+
+For more information on Subversion's @command{move} functionality,
+run the command: @command{svn help move | less}.
+
+@item centos-art path --delete='SRC'
+Use this command to remove files and directories from version control.
+In this command, @file{SRC} can be a working copy (WC) path or URL. 
+
+@table @samp
+@item WC
+Each item specified by a PATH is scheduled for deletion upon the next
+commit.  Files, and directories that have not been committed, are
+immediately removed from the working copy.  PATHs that are, or
+contain, unversioned or modified items will not be removed unless the
+@option{--force} option is given.
+
+@item URL
+Each item specified by a URL is deleted from the repository via an
+immediate commit.
+@end table
+
+This command is an interface for Subversion's @command{delete}
+command. Options related to Subversion's @command{delete} can be
+passed from third argument on. For example to specify a log message
+use the @option{--message} as follow:
+
+@verbatim
+centos-art path --delete='URL' --message 'Delete url.'
+@end verbatim
+
+For more information on Subversion's @command{delete} functionality,
+run the command: @command{svn help delete | less}.
+
+@item centos-art path --sync='SRC'
+Use this command to syncronize path information inside working copy.
+This command is automatically used after moving or renaming parent
+directories.  In this command, @file{SRC} is a working copy path
+inside @file{trunk/Identity/} location, considered the parent
+directory you want to syncronize path information for.
 @end table
 
 @subsection See also
 
 @menu
+* trunk Scripts Bash::
 * trunk Scripts Bash Functions::
 @end menu

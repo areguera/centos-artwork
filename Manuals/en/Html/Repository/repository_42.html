@@ -256,12 +256,11 @@ Parallel directories are useful to create branches, tags,
 translations, documentation, pre-rendering configuration script, and
 similar directory structures.
 </p>
-<p>Parallel directory structures take their structure from one unique
-parent directory structure. Inside CentOS Artwork Repository, this
-unique parent directory structure is under <tt>`trunk/Identity'</tt>
-directory. The <tt>`trunk/Identity'</tt> directory structure must be
-considered the reference for whatever information you plan to create
-inside the repository.
+<p>Parallel directories take their structure from one unique parent
+directory. Inside CentOS Artwork Repository, this unique parent
+directory is under <tt>`trunk/Identity'</tt> location.  The
+<tt>`trunk/Identity'</tt> location must be considered the reference for
+whatever information you plan to create inside the repository.
 </p>
 <p>In some circumstances, parallel directories may be created removing
 uncommon information from their paths. Uncommon path information
@@ -274,12 +273,12 @@ build the parallel directory used to retrived translations, and
 pre-rendering configuration scripts required by <code>render</code>
 functionality.
 </p>
-<p>Another example where parallel directory information is built by
-removing the uncommon path information is when we use the <code>help</code>
-functionality. This time, <tt>`centos-art.sh'</tt> script uses parallel
-directory information (without uncommon directory levels) to build the
-documentation entry required by Texinfo to store directory
-documentation inside the repository.
+<p>Another example where parallel directory removes the uncommon path
+information is when we use the <code>help</code> functionality. This time,
+<tt>`centos-art.sh'</tt> script uses parallel directory information
+(without uncommon directory levels) to build the documentation entry
+required by Texinfo to store documentation entries inside the
+repository.
 </p>
 <div class="float"><a name="trunk_002fIdentity_002fModels_002fImg_002fScripts_002fBash_002fFunctions_002fPaths_002ffigure_002d3"></a>
 <p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3">
@@ -288,8 +287,8 @@ documentation inside the repository.
 </strong>
 </p>
 <p>Othertimes, parallel directories may add uncommon information to their
-paths. This is the case of branches and tags creation. When we create
-branches and tags, a numerical identifier is added to parallel
+paths. This is the case we use to create branches and tags. When we
+create branches and tags, a numerical identifier is added to parallel
 directory structure path. The place where the numerical identifier is
 set on is relevant to corporate visual identity structure and should
 be carefully considered where it will be.
@@ -319,26 +318,26 @@ initially created for.
 <h4 class="subsubsection"> 3.39.2.5 Syncronizing path information </h4>
 
 <p>Creating parallel directories is very useful to keep repository
-organized, but what would happen to functionalities like <code>help</code>
+organized. But, what would happen to functionalities like <code>help</code>
 (see section <a href="repository_39.html#SEC208">trunk/Scripts/Bash/Functions/Help</a>) that rely on parent
 directory structures to create documentation entries (using parallel
 directory structures) if one of those parent directory structures
-suddenly change after the documentation entry has been already created
-for it? 
+suddenly changes after the documentation entry has been already
+created for it? 
 </p>
 <p>Well, at this point, functionalities like <code>help</code> may confuse
-themselves if path information is not syncronized correctly.  Such
-functionalities work with parent directory structure as reference; if
-a parent directory changes, the functionalities dont't even note it
-because they work with the last parent directory structure available
-in the repository, no matter what it is. 
+themselves if path information is not updated.  Such functionalities
+work with parent directory structure as reference; if a parent
+directory changes, the functionalities dont't even note it because
+they work with the last parent directory structure available in the
+repository, no matter what it is. 
 </p>
 <p>In the specific case of documentation (the <code>help</code> functionality),
 the problem mentioned above provokes that older parent directories,
 already documented, remain inside documentation directory structures
-in perpetuity, as long as you get your hands into the documentation
-directory structure (<tt>`trunk/Manuals'</tt>) and remove what must be
-removed to match the new parent directory structure.
+as long as you get your hands into the documentation directory
+structure (<tt>`trunk/Manuals'</tt>) and remove what must be removed to
+match the new parent directory structure.
 </p>
 <p>There is no way for <code>help</code>, and similar functionalities that use
 parent directories as reference, to know when and how directory
@@ -390,20 +389,21 @@ your own comprehension and so, make your propositions based on it.
 <p>When looking the correct place to store new files, to bear in mind the
 corporate visual identity structure used inside the CentOS Artwork
 Repository (see section <a href="repository_4.html#SEC4">trunk/Identity</a>) would be probaly the best advice
-we could offer you, the rest is just matter of choosing appropriate
+we could offer to you, the rest is just matter of choosing appropriate
 names.  To illustrate this desition process let's consider the
 <tt>`trunk/Identity/Themes/Motifs/TreeFlower/Distro/'</tt> directory as
 example. It is the main development line of CentOS distribution visual
 manifestation, using TreeFlower's artistic motif, inside themes of
-CentOS corporate visual identity structure. 
+CentOS corporate visual identity. 
 </p>
 <p>When building parent directory structures, you may find that reaching
 an acceptable location may take some time, and as it happens most of
-time, it is not a definite solution. There are many concepts that you
-need to play with, in order to find a result that match the conceptual
-idea you try to implement in the new directory location. To know which
-these concepts are, split the location in words and read its
-documentation entry from less specific to more specific.
+time, when you find it, that may be not a definite solution. There are
+many concepts that you need to play with, in order to find a result
+that match the conceptual idea you try to implement in the new
+directory location. To know which these concepts are, split the
+location in words and read its documentation entry from less specific
+to more specific.
 </p>
 <p>For example, the
 <tt>`trunk/Identity/Themes/Motifs/TreeFlower/Distro/'</tt> location
@@ -428,17 +428,103 @@ concepts for.
 <a name="SEC233"></a>
 <h3 class="subsection"> 3.39.3 Usage </h3>
 
-<p>These commands are not available yet.
+<dl compact="compact">
+<dt> <code>centos-art path --copy='SRC DST'</code></dt>
+<dd><p>Use this command to duplicate <tt>`SRC'</tt> in working copy,
+remembering history. In this command, <tt>`SRC'</tt> and
+<tt>`DST'</tt> can each be either a working copy (WC) path or
+URL:
 </p>
 <dl compact="compact">
-<dt> <code>centos-art path --sync='path/to/dir'</code></dt>
-<dt> <code>centos-art path --copy='path/to/oldfile path/to/newfile'</code></dt>
-<dt> <code>centos-art path --move='path/to/oldfile path/to/newfile'</code></dt>
-<dd><p>Move <samp>`path/to/oldfile'</samp> to <samp>`path/to/newfile'</samp>.
+<dt> <samp>`WC -&gt; WC'</samp></dt>
+<dd><p>Copy and schedule for addition (with history).
+</p>
+</dd>
+<dt> <samp>`WC -&gt; URL'</samp></dt>
+<dd><p>Immediately commit a copy of WC to URL.
+</p>
+</dd>
+<dt> <samp>`URL -&gt; WC'</samp></dt>
+<dd><p>Check out URL into WC, schedule for addition.
+</p>
+</dd>
+<dt> <samp>`URL -&gt; URL'</samp></dt>
+<dd><p>Complete server-side copy;  used to branch and tag.
 </p></dd>
-<dt> <code>centos-art path --remove='path/to/file'</code></dt>
-<dt> <code>centos-art path --create-tag-from='path/to/dir'</code></dt>
-<dt> <code>centos-art path --create-branch-from='path/to/dir'</code></dt>
+</dl>
+
+<p>This command is an interface for Subversion's <code>copy</code> command.
+Options related to Subversion's <code>copy</code> command can be passed
+from third argument on. For example to specify a log message use the
+<samp>`--message'</samp> option as follow:
+</p>
+<pre class="verbatim">centos-art path --copy='URL/SRC URL/DST' --message 'Copy url/src to url/dst'
+</pre>
+<p>For more information on Subversion's <code>copy</code> functionality,
+run the command: <code>svn help copy | less</code>.
+</p>
+</dd>
+<dt> <code>centos-art path --move='SRC DST'</code></dt>
+<dd><p>Move and/or rename something in working copy or repository. In this
+command, SRC and DST can both be working copy (WC) paths or URLs: 
+</p>
+<dl compact="compact">
+<dt> <samp>`WC -&gt; WC'</samp></dt>
+<dd><p>Move and schedule for addition (with history).
+</p></dd>
+<dt> <samp>`URL -&gt; URL'</samp></dt>
+<dd><p>Complete server-side rename.
+</p></dd>
+</dl>
+
+<p>This command is an interface for Subversion's <code>move</code> command.
+Options related to Subversion's <code>move</code> command can be passed
+from third argument on. For example to specify a log message use the
+<samp>`--message'</samp> option as follow:
+</p>
+<pre class="verbatim">centos-art path --move='URL/SRC URL/DST' --message 'Move url/src to url/dst'
+</pre>
+<p>For more information on Subversion's <code>move</code> functionality,
+run the command: <code>svn help move | less</code>.
+</p>
+</dd>
+<dt> <code>centos-art path --delete='SRC'</code></dt>
+<dd><p>Use this command to remove files and directories from version control.
+In this command, <tt>`SRC'</tt> can be a working copy (WC) path or URL. 
+</p>
+<dl compact="compact">
+<dt> <samp>`WC'</samp></dt>
+<dd><p>Each item specified by a PATH is scheduled for deletion upon the next
+commit.  Files, and directories that have not been committed, are
+immediately removed from the working copy.  PATHs that are, or
+contain, unversioned or modified items will not be removed unless the
+<samp>`--force'</samp> option is given.
+</p>
+</dd>
+<dt> <samp>`URL'</samp></dt>
+<dd><p>Each item specified by a URL is deleted from the repository via an
+immediate commit.
+</p></dd>
+</dl>
+
+<p>This command is an interface for Subversion's <code>delete</code>
+command. Options related to Subversion's <code>delete</code> can be
+passed from third argument on. For example to specify a log message
+use the <samp>`--message'</samp> as follow:
+</p>
+<pre class="verbatim">centos-art path --delete='URL' --message 'Delete url.'
+</pre>
+<p>For more information on Subversion's <code>delete</code> functionality,
+run the command: <code>svn help delete | less</code>.
+</p>
+</dd>
+<dt> <code>centos-art path --sync='SRC'</code></dt>
+<dd><p>Use this command to syncronize path information inside working copy.
+This command is automatically used after moving or renaming parent
+directories.  In this command, <tt>`SRC'</tt> is a working copy path
+inside <tt>`trunk/Identity/'</tt> location, considered the parent
+directory you want to syncronize path information for.
+</p></dd>
 </dl>
 
 
@@ -446,6 +532,8 @@ concepts for.
 <h3 class="subsection"> 3.39.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_37.html#SEC195">3.34 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 <tr><td align="left" valign="top"><a href="repository_38.html#SEC200">3.35 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
