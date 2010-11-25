@@ -26,7 +26,7 @@
 
 function locale_getActions {
 
-    case $OPTIONNAM in
+    case $ACTIONNAM in
 
         --status )
             locale_doMessagesStatus
