@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # svg.sh -- This function provides very basic SVG manipulations to
-# help maintain svg files inside the repository.
+# help you to maintain svg files inside the repository.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,25 +26,10 @@
     
 function svg {
 
+    # Define variables.
     local FILES=''
 
-    # Define list of scalable vector graphic files to process using
-    # option value as reference.
-    if [[ -d $OPTIONVAL ]];then
-        FILES=$(find $OPTIONVAL -regextype posix-egrep -type f -regex "^${REGEX}\.svg$")
-    elif [[ -f $OPTIONVAL ]];then
-        FILES=$OPTIONVAL
-    fi
-
-    # Check list of files to process. If list of files is empty there
-    # is nothing to do except to print a message and end script
-    # execution.
-    if [[ $FILES == '' ]];then
-        cli_printMessage "`gettext "There is no file to process."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
-
-    # Define command line interface for svg-based actions.
+    # Define command-line interface.
     svg_getActions
 
 }
