@@ -82,8 +82,7 @@ function html_updateHeadings {
         esac
     done
 
-    # Re-define regular expression in order to force matching to html
-    # files only.
+    # Re-define regular expression to match html files only.
     REGEX=$(echo "${REGEX}\.(html|htm)")
 
     # Define list of files to process.
