@@ -29,7 +29,7 @@ function html_getActions {
 
     # Evaluate option name and define which actions does centos-art.sh
     # script supports.
-    case $OPTIONNAM in
+    case $ACTIONNAM in
 
         '--update-headings' )
             # Update html headings to create table of content.
