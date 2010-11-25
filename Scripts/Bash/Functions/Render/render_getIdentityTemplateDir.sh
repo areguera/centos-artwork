@@ -28,7 +28,7 @@ function render_getIdentityTemplateDir {
 
     # By default design templates are stored in the artworks identity
     # entry, under Tpl/ directory.
-    SVG=$OPTIONVAL/Tpl
+    SVG=$ACTIONVAL/Tpl
 
     # If you are rendering theme motifs, design templates are not
     # stored inside Tpl directory. Instead, we use one common theme
@@ -37,7 +37,7 @@ function render_getIdentityTemplateDir {
     # to use before rendering artistic motifs.
     if [[ ! -d $SVG ]] \
         && [[ $SVG =~ "trunk/Identity/Themes/Motifs/$(cli_getThemeName)/" ]]; then 
-        SVG=$(echo "$OPTIONVAL" | sed "s!Motifs/$(cli_getThemeName)!Models/$THEMEMODEL!")
+        SVG=$(echo "$ACTIONVAL" | sed "s!Motifs/$(cli_getThemeName)!Models/$THEMEMODEL!")
     fi
 
 }

@@ -91,7 +91,7 @@ function render_doIdentityImageDm {
     # directories under
     # trunk/Translations/Identity/Themes/Distro/BootUp/ structure,
     # using the centos-art.sh script.
-    VERSIONS=$(find $OPTIONVAL -regextype posix-egrep \
+    VERSIONS=$(find $ACTIONVAL -regextype posix-egrep \
         -maxdepth 1 -type d -regex "^.*/${RELEASE_FORMAT}$" \
         | egrep $REGEX)
 
@@ -120,13 +120,13 @@ function render_doIdentityImageDm {
         VERSION=$(basename $VERSION)
 
         # Define directory to store release-specific images.
-        IMG=$OPTIONVAL/$VERSION/Img
+        IMG=$ACTIONVAL/$VERSION/Img
 
         # Check existence of release-specific image directory.
         cli_checkFiles "$IMG" 'd'
 
         # Define directory to store release-specific tar.gz files. 
-        TGZ=$OPTIONVAL/$VERSION/Tgz
+        TGZ=$ACTIONVAL/$VERSION/Tgz
 
         # Check existence of release-specific tar.gz directory.
         cli_checkFiles "$TGZ" 'd'

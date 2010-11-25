@@ -55,7 +55,7 @@ function render_getIdentityDefs {
     # Define the design template absolute path. This definition is
     # done by interpreting the matching list and translation path
     # information.  This defintion needs to be coherent with those
-    # defined in render_getIdentityFileslist function.
+    # defined in render_getFilesList function.
     if [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" == "" ]];then
     
@@ -345,7 +345,7 @@ function render_getIdentityDefs {
     # Create the design template instance. When building the instance,
     # take into account the matching list and translation path. It
     # should be coherent with previous definitions above and in
-    # render_getIdentityFileslist.
+    # render_getFilesList.
     if [[ "${MATCHINGLIST}" == "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
    

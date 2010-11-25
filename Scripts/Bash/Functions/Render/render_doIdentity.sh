@@ -49,11 +49,11 @@ function render_doIdentity {
     render_getIdentityOutputDir
 
     # Re-define parent directory for current workplace.
-    PARENTDIR=$(basename $OPTIONVAL)
+    PARENTDIR=$(basename $ACTIONVAL)
 
     # Re-define directory path used as reference to build the list of
     # files that will be rendered.
-    render_getIdentityFileslist
+    render_getFilesList
 
     # Define which type of features does centos-art.sh script is able
     # to performs.

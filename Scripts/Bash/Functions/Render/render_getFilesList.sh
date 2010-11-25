@@ -27,6 +27,31 @@
 
 function render_getFilesList {
 
+    # Define short options we want to support.
+    ARGSS=""
+
+    # Define long options we want to support.
+    ARGSL="filter:"
+
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
+
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
+
+    # Define action to take for each option passed.
+    while true; do
+        case "$1" in
+            --filter )
+               REGEX="$2" 
+               shift 2
+               ;;
+            * )
+                break
+        esac
+    done
+
     # Define source location to look files for. In order to define
     # source location we evaluate both matching list and translation
     # path information, and based on them, we set which is the source

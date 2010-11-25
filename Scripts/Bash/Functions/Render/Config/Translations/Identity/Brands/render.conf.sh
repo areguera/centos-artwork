@@ -128,7 +128,7 @@ function render_loadConfig {
             FILE=$(echo $FILE | sed -r 's!^.+/Tpl/!!')
 
             # Check output directory existence.
-            DIRNAME=$(dirname $OPTIONVAL/$BOND/$FILE)
+            DIRNAME=$(dirname $ACTIONVAL/$BOND/$FILE)
             if [ ! -d $DIRNAME ]; then
                mkdir -p $DIRNAME
             fi
@@ -139,8 +139,8 @@ function render_loadConfig {
             # This let us reuse translation files using symbolic links
             # and pointing them to translation template (`Tpl') files.
             cli_printMessage $TRANSLATION "AsTranslationLine"
-            cli_printMessage $OPTIONVAL/$BOND/$FILE "AsLinkToLine"
-            ln -sf $TRANSLATION $OPTIONVAL/$BOND/$FILE
+            cli_printMessage $ACTIONVAL/$BOND/$FILE "AsLinkToLine"
+            ln -sf $TRANSLATION $ACTIONVAL/$BOND/$FILE
 
             echo '----------------------------------------------------------------------'
 

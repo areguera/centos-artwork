@@ -28,16 +28,16 @@ function render_getIdentityOutputDir {
 
     # By default rendered identity artworks are stored immediatly
     # under identity entry structure.
-    IMG=$OPTIONVAL
+    IMG=$ACTIONVAL
 
     # But if Img/ directory exists, use it instead.
-    if [[ -d $OPTIONVAL/Img ]]; then
-        IMG=$OPTIONVAL/Img
+    if [[ -d $ACTIONVAL/Img ]]; then
+        IMG=$ACTIONVAL/Img
     fi
 
     # But if Txt/ directory exists, use it instead.
-    if [[ -d $OPTIONVAL/Txt ]]; then
-        IMG=$OPTIONVAL/Txt
+    if [[ -d $ACTIONVAL/Txt ]]; then
+        IMG=$ACTIONVAL/Txt
     fi
 
 }

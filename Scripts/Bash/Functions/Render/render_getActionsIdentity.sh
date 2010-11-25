@@ -50,8 +50,8 @@ function render_getActionsIdentity {
     # directory which currently doesn't exist there is nothing to do
     # here, so leave a message quit script execution.
     if [[ ! -d $ARTCONF ]];then
-        cli_printMessage "`gettext "The path provided can't be processed."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
     for FILE in $(find $ARTCONF -name 'render.conf.sh');do
@@ -81,16 +81,16 @@ function render_getActionsIdentity {
         # configuration scripts and make required transformations.
         render_checkConfig
 
-        # Re-define option value (OPTIONVAL) based on pre-rendering
+        # Re-define option value (ACTIONVAL) based on pre-rendering
         # configuration script path value. Otherwise massive rendering
         # may fail. Functions like renderImage need to know the exact
         # artwork path (that is, where images will be stored).
-        OPTIONVAL=$(dirname $(echo $FILE | sed -r \
+        ACTIONVAL=$(dirname $(echo $FILE | sed -r \
             -e 's!Scripts/Bash/Functions/Render/Config/Identity/!Identity/!' \
             -e "s!Themes/!Themes/Motifs/$(cli_getThemeName)/!"))
 
         # Re-define artwork identification.
-        ARTCOMP=$(echo $OPTIONVAL | cut -d/ -f6-)
+        ARTCOMP=$(echo $ACTIONVAL | cut -d/ -f6-)
 
         # Remove motif name from artwork identification in order to reuse
         # motif artwork identification. There is not need to create one

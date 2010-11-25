@@ -28,44 +28,38 @@ function render_getActions {
 
     # Evaluate option name and define which actions does centos-art.sh
     # script supports.
-    case $OPTIONNAM in
+    case $ACTIONNAM in
 
-        --entry )
+        --directory )
 
-            if [[ $OPTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Identity/.+$' ]];then
+            if [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Identity/.+$' ]];then
 
                 # Define identity rendering support.
                 render_getActionsIdentity
 
-            elif [[ $OPTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Translations/.+$' ]];then
+            elif [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Translations/.+$' ]];then
 
                 # Define translation rendering support.
                 render_getActionsTranslations
 
             else
 
-                cli_printMessage "`gettext "The path provided can't be processed."`"
-                cli_printMessage "trunk/Scripts/Bash" "AsToKnowMoreLine"
+                cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
+                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
 
             fi
             ;;
 
         * )
 
-            cli_printMessage "`eval_gettext "The option provided is not valid."`"
+            cli_printMessage "`eval_gettext "The option provided is not valid."`" 'AsErrorLine'
 
-            if [[ $OPTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Identity/.+$' ]];then
-
-                cli_printMessage "$OPTIONVAL" "AsToKnowMoreLine"
-
-            elif [[ $OPTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Translations/.+$' ]];then
-
-                cli_printMessage "$OPTIONVAL" "AsToKnowMoreLine"
-
+            if [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Identity/.+$' ]];then
+                cli_printMessage "$ACTIONVAL" 'AsToKnowMoreLine'
+            elif [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Translations/.+$' ]];then
+                cli_printMessage "$ACTIONVAL" 'AsToKnowMoreLine'
             else
-
-                cli_printMessage "$(caller)" "AsToKnowMoreLine"
-
+                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
             fi
             ;;
 

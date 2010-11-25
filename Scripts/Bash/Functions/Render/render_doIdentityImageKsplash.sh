@@ -31,7 +31,7 @@ function render_doIdentityImageKsplash {
     local RELDIR=''
     local KSPLASH_TOP=''
     local KSPLASH_PREVIEW=''
-    local RELDIRS=$(find $OPTIONVAL -regextype posix-egrep -maxdepth 1 \
+    local RELDIRS=$(find $ACTIONVAL -regextype posix-egrep -maxdepth 1 \
         -type d -regex "^.*/$RELEASE_FORMAT$" | egrep $REGEX)
 
     # Define font file used to render Preview.png bottom text.
@@ -41,8 +41,8 @@ function render_doIdentityImageKsplash {
     # images. Since we are building Preview with active and bottom
     # splash only, there is no need to include inactive bar on
     # checking.
-    local KSPLASH_ACTIVE_BAR="$OPTIONVAL/splash_active_bar.png"
-    local KSPLASH_BOTTOM="$OPTIONVAL/splash_bottom.png"
+    local KSPLASH_ACTIVE_BAR="$ACTIONVAL/splash_active_bar.png"
+    local KSPLASH_BOTTOM="$ACTIONVAL/splash_bottom.png"
 
     # Check existence of non-release-specific required image files.
     cli_checkFiles $KSPLASH_ACTIVE_BAR

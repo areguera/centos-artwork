@@ -32,7 +32,7 @@ function render_getActionsTranslations {
     # directory. Translation rendering is based on translation
     # templates inside 'Tpl/' directory. If that directory doesn't
     # exist leave a message and quit execution. 
-    if [[ ! -d $OPTIONVAL/Tpl ]];then
+    if [[ ! -d $ACTIONVAL/Tpl ]];then
         cli_printMessage "`gettext "Can't find translation templates in the directory provided."`"
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
@@ -98,7 +98,7 @@ function render_getActionsTranslations {
     # translations directories available in the current location will
     # be affected.
     if [[ $REGEX =~ "^$RELEASE_FORMAT$" ]];then
-        RELEASES=$OPTIONVAL/$REGEX
+        RELEASES=$ACTIONVAL/$REGEX
 
     # Re-define releases using regular expression value. If you need
     # to create/update two or more release-specific directories (e.g.,
@@ -113,8 +113,8 @@ function render_getActionsTranslations {
     # By default look for available release-specific directories and
     # use them all.
     else
-        RELEASES=$(find $OPTIONVAL -regextype posix-egrep \
-            -regex "^$OPTIONVAL/$RELEASE_FORMAT$" | sort)
+        RELEASES=$(find $ACTIONVAL -regextype posix-egrep \
+            -regex "^$ACTIONVAL/$RELEASE_FORMAT$" | sort)
     fi
 
     # At this point, if there isn't release-specific directories
@@ -157,7 +157,7 @@ function render_getActionsTranslations {
   
         # Get translation templates and process them using release
         # information previously defined.
-        for FILE in $(find $OPTIONVAL/Tpl -name '*.sed');do
+        for FILE in $(find $ACTIONVAL/Tpl -name '*.sed');do
 
             # Define translation file locale.
             LOCALE=$(echo $FILE | sed -r 's!^/.+/Tpl/([a-z]{2}|[a-z]{2}_[A-Z]{2})/.+$!\1!' )
