@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help_getNode.sh -- This function cleans up the option value
-# (OPTIONVAL) directory to make a node name from it.
+# (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,7 +26,7 @@
 
 function help_getNode {
 
-    local NODE=$(echo "$OPTIONVAL" \
+    local NODE=$(echo "$ACTIONVAL" \
         | sed -r 's!^/home/centos/artwork/!!' \
         | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
 

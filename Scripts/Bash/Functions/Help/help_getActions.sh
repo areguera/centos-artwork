@@ -28,7 +28,7 @@ function help_getActions {
 
     help_checkLanguageLayout
 
-    case $OPTIONNAM in
+    case $ACTIONNAM in
     
     --search )
         help_searchIndex

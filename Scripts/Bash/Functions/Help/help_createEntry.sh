@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help_createEntry.sh -- This function creates a new documentation
-# entry based on option value (OPTIONVAL).
+# entry based on option value (ACTIONVAL).
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 

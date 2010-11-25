@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help_getEntry.sh -- This function builds a documentation entry based
-# on option value (OPTIONVAL) variable.
+# on option value (ACTIONVAL) variable.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -32,12 +32,12 @@ function help_getEntry {
     local ENTRY=''
 
     # Build directory for documenation entry.
-    DIR=$(echo $OPTIONVAL | sed -r 's!^/home/centos/artwork/!!')
+    DIR=$(echo $ACTIONVAL | sed -r 's!^/home/centos/artwork/!!')
     DIR=$(dirname $DIR)
     DIR=${MANUALS_DIR[2]}/$DIR
 
     # Build file for documentation entry.
-    FILE=$(basename $OPTIONVAL).texi
+    FILE=$(basename $ACTIONVAL).texi
 
     # Combine both directory (DIR) and file (FILE) to build entry's
     # absolute path. When the entry's absolute path is built for the

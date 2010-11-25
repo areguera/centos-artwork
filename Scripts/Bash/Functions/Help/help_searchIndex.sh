@@ -26,29 +26,51 @@
 
 function help_searchIndex {
 
-    # Define search pattern format
+    # Define search pattern format.
     local PATTERN='^[[:alnum:],]+$'
 
-    # Re-define default REGEX value. If the regular expression was not
-    # provided in the third argument its value is set to '.+' which is
-    # not very useful in info --index-search contest. So, re-define
-    # this value to an empty value ('').
-    if [[ ! $REGEX =~ $PATTERN ]];then
-        cli_printMessage "`gettext "Enter the search pattern:"` " "AsRequestLine"
-        read REGEX
+    # Define default search string.
+    local SEARCH=''
+
+    # Define short options we want to support.
+    ARGSS=""
+
+    # Define long options we want to support.
+    ARGSL="filter:"
+
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
+
+    # reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
+
+    # Define action to take for each option passed.
+    while true; do
+        case "$1" in
+            --filter )
+               SEARCH="$2" 
+               shift 2
+               ;;
+            * )
+                break
+        esac
+    done
+
+    # Re-define default SEARCH value. If the search string is not
+    # provided as `--filter' argument, ask user to provide one. 
+    if [[ ! $SEARCH =~ $PATTERN ]];then
+        cli_printMessage "`gettext "Enter the search pattern"`" "AsRequestLine"
+        read SEARCH
     fi
 
-    # Validate search pattern. In this (help_searchIndex) function
-    # contest, the REGEX variable is used as info search pattern, not
-    # a regular expression pattern.
-    if [[ ! "$REGEX" =~ $PATTERN ]];then
-        cli_printMessage "`gettext "The search pattern is not valid."`"
+    # Validate search string using search pattern.
+    if [[ ! "$SEARCH" =~ $PATTERN ]];then
+        cli_printMessage "`gettext "The search pattern is not valid."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # There is no need to check the entry inside documentation
-    # structure here.  Just provide a word to look if there is any
-    # index matching in the info document.
-    /usr/bin/info --index-search="$REGEX" --file=${MANUALS_FILE[4]}
+    # Perform index search inside documentation info file.
+    /usr/bin/info --index-search="$SEARCH" --file=${MANUALS_FILE[4]}
 
 }

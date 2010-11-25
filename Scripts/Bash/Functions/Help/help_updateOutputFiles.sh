@@ -41,10 +41,10 @@ function help_updateOutputFiles {
     # Re-define output variable in order for cli_commitRepoChanges
     # functionality to receive the correct location to apply
     # subversion commands. Inside `help' functionality, the correct
-    # place to commit changes is not the initial value of OPTIONVAL
+    # place to commit changes is not the initial value of ACTIONVAL
     # but the directory path where documentation changes take place
     # under.
-    OPTIONVAL=${MANUALS_DIR[0]}
+    ACTIONVAL=${MANUALS_DIR[0]}
 
     # Update central repository. Be sure this is the last action
     # you perform inside centos-art.sh script flow.
