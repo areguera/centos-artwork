@@ -26,7 +26,7 @@
 
 function verify_getActions {
 
-    case $OPTIONNAM in
+    case $ACTIONNAM in
 
         --packages )
             verify_doPackages

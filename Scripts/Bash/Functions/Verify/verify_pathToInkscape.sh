@@ -40,11 +40,11 @@ function verify_pathToInkscape {
 
     # Define files required by the centos-art.sh script command line
     # interface.
-    REPOFILES=${REPODIRS[1]}/CentOS.gpl
+    REPOFILES[0]=${REPODIRS[1]}/CentOS.gpl
 
     # Define symbolic links required by the centos-art.sh script
     # command line interface.
-    REPOLINKS=${REPODIRS[0]}/CentOS.gpl
+    REPOLINKS[0]=${REPODIRS[0]}/CentOS.gpl
 
     # Check defined directories.
     for FILE in "${REPODIRS[@]}";do

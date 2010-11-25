@@ -40,10 +40,10 @@ function verify_pathToFonts {
     REPODIRS[1]=/home/centos/artwork/trunk/Identity/Fonts/Ttf
 
     # Define font related files.
-    REPOFILES=${REPODIRS[1]}/denmark.ttf
+    REPOFILES[0]=${REPODIRS[1]}/denmark.ttf
 
     # Define font related symbolic links.
-    REPOLINKS=${REPODIRS[0]}/denmark.ttf
+    REPOLINKS[0]=${REPODIRS[0]}/denmark.ttf
 
     # Check defined directories.
     for FILE in "${REPODIRS[@]}";do

@@ -39,11 +39,11 @@ function verify_pathToCli  {
 
     # Define files required by the centos-art.sh script command line
     # interface.
-    REPOFILES=${REPODIRS[2]}/centos-art.sh
+    REPOFILES[0]=${REPODIRS[2]}/centos-art.sh
 
     # Define symbolic links required by the centos-art.sh script
     # command line interface.
-    REPOLINKS=${REPODIRS[1]}/centos-art
+    REPOLINKS[0]=${REPODIRS[1]}/centos-art
 
     # Check defined directories.
     for FILE in "${REPODIRS[@]}";do
