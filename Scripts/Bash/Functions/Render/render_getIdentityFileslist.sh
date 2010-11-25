@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_getIdentityFileslist.sh -- This function re-defines list of
+# render_getFilesList.sh -- This function re-defines list of
 # files that will be rendered using matching list and translation path
 # information as reference.
 #
@@ -25,8 +25,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getIdentityFileslist {
+function render_getFilesList {
 
+    # Define source location to look files for. In order to define
+    # source location we evaluate both matching list and translation
+    # path information, and based on them, we set which is the source
+    # location and extension used as reference to build list of file
+    # names (without extension) to process for.
     if [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" == "" ]];then
 
@@ -56,7 +61,7 @@ function render_getIdentityFileslist {
         EXTENSION='sed'
     
     fi
-
+    
     # Re-define filter string to apply.
     FILTER="^$LOCATION/${REGEX}.*\.${EXTENSION}$"
 
