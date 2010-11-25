@@ -29,7 +29,7 @@ function shell_getActions {
 
     # Evaluate option name and define which actions does centos-art.sh
     # script supports.
-    case $OPTIONNAM in
+    case $ACTIONNAM in
 
         '--update-copyright' )
             # Update copyright note inside top comments.
