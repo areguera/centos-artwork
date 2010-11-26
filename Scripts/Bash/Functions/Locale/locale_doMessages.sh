@@ -77,4 +77,8 @@ function locale_doMessages {
     # Create machine object (.mo).
     msgfmt $PO_FILE --output=$MO_FILE
 
+    # Check repository changes and ask you to commit them up to
+    # central repository.
+    cli_commitRepoChanges "$TEXTDOMAINDIR"
+    
 }
