@@ -28,10 +28,10 @@
 function render_getFilesList {
 
     # Define short options we want to support.
-    ARGSS=""
+    local ARGSS=""
 
     # Define long options we want to support.
-    ARGSL="filter:"
+    local ARGSL="filter:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -87,10 +87,11 @@ function render_getFilesList {
     
     fi
     
-    # Re-define filter string to apply.
-    FILTER="^$LOCATION/${REGEX}.*\.${EXTENSION}$"
+    # Re-define regular expression to match files with specific
+    # extensions inside specific locations.
+    REGEX="^$LOCATION/${REGEX}.*\.${EXTENSION}$"
 
-    # Re-define list of file to render using filter string.
-    FILES=$(find $LOCATION -regextype posix-egrep -regex "$FILTER" | sort )
+    # Define list of files to process.
+    cli_getFilesList "$LOCATION"
 
 }
