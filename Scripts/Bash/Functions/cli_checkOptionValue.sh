@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_checkOptionValue.sh -- This function provides input validation
-# for the option value (OPTIONVAL) variable.
+# cli_checkActionArgument.sh -- This function provides input validation
+# for the action value (ACTIONVAL) variable.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -24,46 +24,79 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_checkOptionValue {
+function cli_checkActionArgument {
 
-    # Check option value before making an absolute path from it. 
-    if [[ $OPTIONVAL =~ '(\.\.(/)?)' ]];then
-        cli_printMessage "`gettext "The path provided can't be processed."`"
+    # Check action value before making an absolute path from it. 
+    if [[ $ACTIONVAL =~ '(\.\.(/)?)' ]];then
+        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
-    if [[ ! $OPTIONVAL =~ '^[A-Za-z0-9\./-]+$' ]];then
-        cli_printMessage "`gettext "The path provided can't be processed."`"
+    if [[ ! $ACTIONVAL =~ '^[A-Za-z0-9\.:/-]+$' ]];then
+        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # Re-define option value to match the correct absolute path. As we
-    # are removing /home/centos/artwork/ from all centos-art.sh output
-    # (in order to save space), we need to be sure that all strings
-    # begining with trunk/..., branches/..., and tags/... use the
-    # correct absolute path. That is, you can refer trunk's entries
-    # using both /home/centos/artwork/trunk/... or just trunk/..., the
-    # /home/centos/artwork/ part is automatically added here. 
-    if [[ $OPTIONVAL =~ '^(trunk|branches|tags)' ]];then
-        OPTIONVAL=/home/centos/artwork/$OPTIONVAL
+    # Re-define action value to build repository absolute path from
+    # repository top level on. As we are removing
+    # /home/centos/artwork/ from all centos-art.sh output (in order to
+    # save horizontal output space), we need to be sure that all
+    # strings begining with trunk/..., branches/..., and tags/... use
+    # the correct absolute path. That is, you can refer trunk's
+    # entries using both /home/centos/artwork/trunk/... or just
+    # trunk/..., the /home/centos/artwork/ part is automatically added
+    # here. 
+    if [[ $ACTIONVAL =~ '^(trunk|branches|tags)' ]];then
+        ACTIONVAL=/home/centos/artwork/$ACTIONVAL 
     fi
 
-    # Build absolute path from option value. It is required for the
-    # option value to point a valid directory. Otherwise leave a
-    # message and quit script execution.
-    if [[ -d $OPTIONVAL ]];then
+    # Re-define action value to build repository absolute path from
+    # repository relative paths. This let us to pass repository
+    # relative paths as action value.  Passing relative paths as
+    # action value may save us some typing; specially if we are stood
+    # a few levels up from the location we want to refer to as action
+    # value.  There is no need to pass the absolute path to it, just
+    # refere it relatively.
+    if [[ -d ${ACTIONVAL} ]];then
 
         # Add directory to the top of the directory stack.
-        pushd "$OPTIONVAL" > /dev/null
+        pushd "$ACTIONVAL" > /dev/null
 
-        # Re-define option value using absolute path.
-        OPTIONVAL=$(pwd)
+        # Check directory existence inside the repository.
+        if [[ $(pwd) =~ '^/home/centos/artwork/.+$' ]];then
+            # Re-define action value using absolute path.
+            ACTIONVAL=$(pwd)
+        else
+            cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
+            cli_printMessage "$caller" 'AsToKnowMoreLine'
+        fi
+
+        # Remove directory from the directory stack.
+        popd > /dev/null
+
+    elif [[ -f ${ACTIONVAL} ]];then
+
+        # Add directory to the top of the directory stack.
+        pushd "$(dirname $ACTIONVAL)" > /dev/null
+
+        # Check directory existence inside the repository.
+        if [[ $(pwd) =~ '^/home/centos/artwork/.+$' ]];then
+            # Re-define action value using absolute path.
+            ACTIONVAL=$(pwd)/$(basename $ACTIONVAL)
+        else
+            cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
+            cli_printMessage "$caller" 'AsToKnowMoreLine'
+        fi
 
         # Remove directory from the directory stack.
         popd > /dev/null
 
     else
-        cli_printMessage "`gettext "The path provided is not a valid directory."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+
+        # Check repository url.
+        if [[ ! $ACTIONVAL =~ '^(https|http)://projects.centos.org/svn/artwork/.+$' ]];then
+            cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
+            cli_printMessage "$caller" 'AsToKnowMoreLine'
+        fi
     fi
 
 }
