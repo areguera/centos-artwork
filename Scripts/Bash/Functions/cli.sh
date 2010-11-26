@@ -29,82 +29,30 @@
 function cli {
 
     # Initialize global variables.
-    local ACTION=''
-    local OPTIONNAM=''
-    local OPTIONVAL=''
+    local FUNCNAM=''
+    local ACTIONNAM=''
+    local ACTIONVAL=''
     local REGEX=''
+    local ARGUMENTS=''
+    local CLINAME=''
+    local CLIVERSION=''
+    local CLIDESCRIP=''
+    local CLICOPYRIGHT=''
 
-    # Define action variable using first argument (lowercase) value.
-    ACTION=$(cli_getRepoName "$1" 'f')
+    # Define centos-art.sh script personal information.
+    CLINAME='centos-art.sh'
+    CLIVERSION='Beta'
+    CLIDESCRIP="`gettext "Automate frequent tasks inside CentOS Artwork Repository."`"
+    CLICOPYRIGHT="Copyright (C) 2009, 2010 Alain Reguera Delgado"
 
-    # Define option name (OPTIONNAM) and option value (OPTIONVAL)
-    # variables passed as second argument to the command line
-    # interface when the format is `--option=value' without the value
-    # part.
-    if [[ "$2" =~ '^--[a-z-]+=.+$' ]];then
-        
-        # Define option name passed in the second argument.
-        OPTIONNAM=$(echo "$2" | cut -d = -f1)
+    # Redefine positional parameters stored inside ARGUMENTS variable.
+    cli_doParseArgumentsReDef "$@"
 
-        # Define option value passed in the second argument. 
-        OPTIONVAL=$(echo "$2" | cut -d = -f2-)
-
-        # Check option value passed in the second argument.
-        cli_checkOptionValue
-
-    # Define option name (OPTIONNAM), and option value (OPTIONVAL)
-    # variables passed as second argument to the command line
-    # interface when the format is `--option' without the value part.
-    elif [[ "$2" =~ '^--[a-z-]+=?$' ]];then
-
-        # Define option name passed in the second argument.
-        OPTIONNAM=$(echo "$2" | cut -d = -f1)
-
-        # Define option value passed in the second argument. Assume
-        # the local path. This saves you some typing when you are
-        # in the place you want to apply your action on.
-        if [[ $(pwd) =~ '^/home/centos/artwork/.+$' ]];then
-            OPTIONVAL=$(pwd)
-        else
-            OPTIONVAL='/home/centos/artwork/trunk'
-        fi
-
-    # Define default option name (OPTIONNAM), and default option value
-    # (OPTIONVAL) when no second argument is passed to the command
-    # line interface.
-    else
-
-        # Define default option name.
-        OPTIONNAM="default"
-
-        # Define default option value.
-        if [[ $(pwd) =~ '^/home/centos/artwork/.+$' ]];then
-            OPTIONVAL=$(pwd)
-        else
-            OPTIONVAL='/home/centos/artwork/trunk'
-        fi
-
-    fi
-
-    # Define regular expression (REGEX) used to reduce file
-    # processing. If no regular expression is defined, set regular
-    # expression to match everything.
-    if [[ "$3" =~ '^--filter=.+$' ]];then
-        REGEX=$(echo "$3" | cut -d '=' -f2-)
-    else
-        REGEX='.+'
-    fi
-
-    # If option value plus the filter value (REGEX) points to a valid
-    # file, re-define the option value (OPTIONVAL) using the
-    # directory/file absolute path combination instead. This let you
-    # create documentation entries for files too.
-    if [[ -f $OPTIONVAL/$REGEX ]];then
-        OPTIONVAL=$OPTIONVAL/$REGEX
-    fi
-
-    # Define prefix for temporal files.
-    TMPFILE="/tmp/centos-art-$$"
+    # Redefine action variables (i.e., FUNCNAM, ACTIONNAM, and
+    # ACTIONVAL).  As convenction we use the first command-line
+    # argument position to define FUNCNAM, and second argument
+    # position to define both ACTIONNAM and ACTIONVAL.
+    cli_getActionArgument
 
     # Define default text editors used by centos-art.sh script.
     if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
@@ -114,10 +62,15 @@ function cli {
     # Check text editor execution rights. 
     cli_checkFiles $EDITOR 'x'
 
+    # Initialize regular expression (REGEX) used to reduce file
+    # processing. If no regular expression is defined, set regular
+    # expression to match everything.
+    REGEX='.+'
+
     # Go to defined actions. Keep the cli_getActions function calling
     # after all variables and arguments definitions. Reason? To make
     # all variables and arguments definitions available inside
     # cli_Actions and subsequent function calls inside it.
-    cli_getActions "$@"
+    cli_getActions
 
 }
