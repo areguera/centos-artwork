@@ -38,25 +38,27 @@ function cli_commitRepoChanges {
     local LOCALFILES=''
     local CHNGDIRECTION=''
     local CHNGTOTAL=0
+    local LOCATION=''
 
     # If the first argument is provided to cli_commitRepoChanges is a
-    # valid regular file or directory, make ACTIONVAL local to this
-    # function and use the first argument as path location to work
-    # with. If first argument is not a file, nor a directory, or
-    # simply is not provided, the ACTIONVAL variable default value is
-    # used instead.
+    # valid regular file or directory, use the first argument as path
+    # location to work with. If first argument is not a file, nor a
+    # directory, or simply is not provided, the ACTIONVAL variable
+    # default value is used instead.
     if [[ -f "$1" || -d "$1" ]];then
-        local ACTIONVAL=$1
+        LOCATION="$1"
+    else
+        LOCATION="$ACTIONVAL"
     fi
 
     # Update working copy.
     echo '----------------------------------------------------------------------'
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
-    UPDATEOUT=$(svn update ${ACTIONVAL})
+    UPDATEOUT=$(svn update ${LOCATION})
 
     # Check working copy status.
     cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
-    STATUSOUT=$(svn status ${ACTIONVAL})
+    STATUSOUT=$(svn status ${LOCATION})
     echo '----------------------------------------------------------------------'
 
     # Define path of files considered recent modifications from
