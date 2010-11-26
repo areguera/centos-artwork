@@ -26,12 +26,42 @@
 
 function cli_getFilesList {
 
-    # Define list of html files to process using action value as
-    # reference.
-    if [[ -d $ACTIONVAL ]];then
-        FILES=$(find $ACTIONVAL -regextype posix-egrep -type f -regex "^${REGEX}$")
-    elif [[ -f $ACTIONVAL ]];then
-        FILES=$ACTIONVAL
+    local LOCATION=''
+
+    # If first argument is provided to cli_getFilesList, use it as
+    # default location. Otherwise, if first argument is not provided,
+    # location takes the action value (ACTIONVAL) as default.
+    if [[ "$1" != '' ]];then
+        LOCATION="$1"
+    else
+        LOCATION="$ACTIONVAL"
+    fi
+
+    # Re-define regular expression (REGEX) global variable to reduce
+    # the amount of characters we type in order to match find's
+    # output. When using regular expression with find, in order to
+    # reduce the amount files find, the regular expression is
+    # evaluated in the whole path. This way, when the regular
+    # expression is specified, we need to build it in a way that
+    # matches the whole path. Doing so each time we pass a `--filter'
+    # command-line argument may be a tedious task, so, in the sake of
+    # reducing some typing, we prepare the regular expression here to
+    # match the whole path using the regular expression provided by
+    # the user as pattern.
+    REGEX="^${LOCATION}/.*${REGEX}$"
+
+    # Define list of files to process.
+    if [[ -d $LOCATION ]];then
+        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${REGEX}")
+    elif [[ -f $LOCATION ]];then
+        FILES=$LOCATION
+    fi
+
+    # Check list of files to process. If we have an empty list of
+    # files, inform about it and stop script execution.
+    if [[ $FILES == '' ]];then
+        cli_printMessage "`gettext "No file found."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
 }
