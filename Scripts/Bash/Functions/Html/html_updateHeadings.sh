@@ -74,7 +74,7 @@ function html_updateHeadings {
     while true; do
         case "$1" in
             --filter )
-               REGEX="$2" 
+               REGEX="$2"
                shift 2
                ;;
             * )
@@ -83,7 +83,7 @@ function html_updateHeadings {
     done
 
     # Re-define regular expression to match html files only.
-    REGEX=$(echo "${REGEX}\.(html|htm)")
+    REGEX=$(echo "${REGEX}.*\.(html|htm)")
 
     # Define list of files to process.
     cli_getFilesList

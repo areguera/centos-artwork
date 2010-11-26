@@ -147,7 +147,7 @@ function shell_updateCopyright {
     done
 
     # Re-define regular expression to match shell files only.
-    REGEX=$(echo "${REGEX}\.(bash|shell|sh)")
+    REGEX=$(echo "${REGEX}.*\.(bash|shell|sh)")
 
     # Define list of files to process.
     cli_getFilesList

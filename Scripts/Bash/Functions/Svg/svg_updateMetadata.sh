@@ -171,7 +171,7 @@ function svg_updateMetadata {
 
     # Re-define regular expression to match scalable vector graphic
     # files only.
-    REGEX=$(echo "${REGEX}\.(svgz|svg)")
+    REGEX=$(echo "${REGEX}.*\.(svgz|svg)")
 
     # Define list of files to process.
     cli_getFilesList
