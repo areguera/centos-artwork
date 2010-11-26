@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # locale_getActions.sh -- This function initializes locale
-# functionalities, using option value as reference.
+# functionalities, using action value as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -37,7 +37,7 @@ function locale_getActions {
             ;;
 
         * )
-            cli_printMessage "`gettext "The option provided is not valid."`"
+            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
     esac
