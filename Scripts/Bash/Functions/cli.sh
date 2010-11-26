@@ -52,7 +52,7 @@ function cli {
     # ACTIONVAL).  As convenction we use the first command-line
     # argument position to define FUNCNAM, and second argument
     # position to define both ACTIONNAM and ACTIONVAL.
-    cli_getActionArgument
+    cli_getActionArguments
 
     # Define default text editors used by centos-art.sh script.
     if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
