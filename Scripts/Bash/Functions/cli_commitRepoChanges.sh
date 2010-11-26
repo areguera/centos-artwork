@@ -37,6 +37,7 @@ function cli_commitRepoChanges {
     local PREDICATE=''
     local LOCALFILES=''
     local CHNGDIRECTION=''
+    local CHNGTOTAL=0
 
     # If the first argument is provided to cli_commitRepoChanges is a
     # valid regular file or directory, make ACTIONVAL local to this
@@ -97,6 +98,9 @@ function cli_commitRepoChanges {
             FILESNUM[$COUNT]=$(echo "${FILES[$COUNT]}" | wc -l)
         fi
 
+        # Calculate total amount of changes.
+        CHNGTOTAL=$(($CHNGTOTAL + ${FILESNUM[$COUNT]}))
+
         # Build report predicate. Use report predicate to show any
         # information specific to the number of files found. For
         # example, you can use this section to show warning messages,
@@ -133,20 +137,18 @@ function cli_commitRepoChanges {
 
     echo '----------------------------------------------------------------------'
 
-    # Check list of local additions. If there are unversioned files in
-    # the working copy, mark them all as local additions so they can
-    # be sent up to central repository the next time a commit action
-    # be performed. As convenction, all file manipulations inside the
-    # working copy must be done with versioned files, and so, using
-    # subversion commands. --- That's true, but please, let the user
-    # to decide which file to add. Just print informative output. 
-    #if [[ ${FILESNUM[6]} -gt 0 ]];then
-    #    svn add ${FILES[6]} --quiet 
-    #fi
+    # Check total amount of changes. If there is no change, there is
+    # nothing more to do here except to return flow control to this
+    # function caller.
+    if [[ $CHNGTOTAL -eq 0 ]];then
+       return 0 
+    fi
+
+    # Reset counter.
+    COUNT=0
 
     # Unify local changes into a common variable so common actions can
     # be applied to them.
-    COUNT=0
     while [[ $COUNT -ne ${#FILES[*]} ]];do
         LOCALFILES="$LOCALFILES ${FILES[$COUNT]}"
         COUNT=$(($COUNT + 1 ))
