@@ -28,7 +28,7 @@
 function render_getActionsTranslations {
 
     # Check directory content. Translation rendering can be realized
-    # only if inside the option value directory there is a 'Tpl/'
+    # only if inside the action value directory there is a 'Tpl/'
     # directory. Translation rendering is based on translation
     # templates inside 'Tpl/' directory. If that directory doesn't
     # exist leave a message and quit execution. 
@@ -92,7 +92,7 @@ function render_getActionsTranslations {
     # Strip opening spaces from warning message output lines. 
     MESSAGE=$(echo "$MESSAGE" | sed 's!^[[:space:]]*!!')
 
-    # Re-define releases using option value. If there is an
+    # Re-define releases using action value. If there is an
     # --option=value arguments then use the value to create/update
     # release-specific directories.  Otherwise, all release-specific
     # translations directories available in the current location will

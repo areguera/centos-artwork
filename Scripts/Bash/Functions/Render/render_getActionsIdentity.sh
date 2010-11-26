@@ -81,7 +81,7 @@ function render_getActionsIdentity {
         # configuration scripts and make required transformations.
         render_checkConfig
 
-        # Re-define option value (ACTIONVAL) based on pre-rendering
+        # Re-define action value (ACTIONVAL) based on pre-rendering
         # configuration script path value. Otherwise massive rendering
         # may fail. Functions like renderImage need to know the exact
         # artwork path (that is, where images will be stored).

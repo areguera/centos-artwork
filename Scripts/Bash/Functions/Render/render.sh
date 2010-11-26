@@ -31,7 +31,7 @@ function render {
     local RELEASE_FORMAT='[[:digit:]]+(\.[[:digit:]]+){,1}'
 
     # Re-define root directory used to load pre-rendering
-    # configuration scripts based on option value.
+    # configuration scripts based on action value.
     local ARTCONF=$(echo "$ACTIONVAL" \
         | sed -r -e 's!/(Identity|Translations)!/Scripts/Bash/Functions/Render/Config/\1!' \
                  -e "s!Motifs/$(cli_getThemeName)/?!!")

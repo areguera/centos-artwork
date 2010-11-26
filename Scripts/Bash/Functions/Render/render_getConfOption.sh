@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # render_doIdentityImageDm.sh -- This function standardize the way of
-# retrive option values from pre-rendering configuration files. Use
-# this function whenever you need to retrive option values from
+# retrive action values from pre-rendering configuration files. Use
+# this function whenever you need to retrive action values from
 # pre-rendering configuration script.
 #
 # Usage:
@@ -14,7 +14,7 @@
 # VAR is the name of the variable you want to store the option
 # value retrived from your specification, using
 # render_getConfOption's ACTION and FIELD arguments. If there is
-# no variable assignment, the function outputs the option value
+# no variable assignment, the function outputs the action value
 # to standard output without trailing newline.
 #
 # ACTION is the string definition set in the pre-rendering
@@ -76,14 +76,14 @@ function render_getConfOption {
     # Get option from pre-rendering configuration action definition.
     VALUE=$(echo -n "$ACTION" | cut -d: -f${FIELD})
 
-    # Sanitate option value passed from pre-rendering configuration
+    # Sanitate action value passed from pre-rendering configuration
     # action definition.
     VALUE=$(echo -n "${VALUE}" \
         | sed -r 's!^ *!!g' \
         | sed -r 's!( |,|;) *! !g' \
         | sed -r 's! *$!!g')
 
-    # Output option value without trailing newline.
+    # Output action value without trailing newline.
     echo -n "$VALUE"
 
 }
