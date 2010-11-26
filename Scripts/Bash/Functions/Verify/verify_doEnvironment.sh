@@ -46,10 +46,10 @@ function verify_doEnvironment {
     INFO[4]="`gettext "Default locale information"`"
 
     # Define short options we want to support.
-    ARGSS=""
+    local ARGSS=""
 
     # Define long options we want to support.
-    ARGSL="filter:"
+    local ARGSL="filter:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments

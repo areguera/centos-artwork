@@ -26,18 +26,11 @@
 
 function path_doCopy {
 
-    local ARGSL
-    local ARGSS
+    # Define short options we want to support.
+    local ARGSS="t:r:m:F:"
 
-    # Define short options supported by copy command we want to
-    # support inside centos-art.sh script. The value of this variable
-    # is used as `getopt --options' option.
-    ARGSS="t:r:m:F:"
-
-    # Define long options supported by copy command we want to support
-    # inside centos-art.sh script. The value of this variable is used
-    # as defined by `getopt --longoptions' option.
-    ARGSL="to:,revision:,message:,file:,force-log,editor-cmd:,encoding:,username:,password:,no-auth-cache,non-interactive,config-dir:"
+    # Define long options we want to support.
+    local ARGSL="to:,revision:,message:,file:,force-log,editor-cmd:,encoding:,username:,password:,no-auth-cache,non-interactive,config-dir:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
