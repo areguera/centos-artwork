@@ -27,10 +27,10 @@
 function cli_getActions {
 
     # Define variables as local to avoid conflicts outside.
-    local ACTIONDIR=''
-    local ACTIONFILES=''
-    local ACTIONSCRIPT=''
-    local ACTIONFUN=''
+    local FUNCNAMDIR=''
+    local FUNCNAMFILES=''
+    local FUNCNAMSCRIPT=''
+    local FUNCNAMCALL=''
     local REPOFUNDIR=''
 
     # Define path to directory where actions are stored inside the
@@ -38,21 +38,21 @@ function cli_getActions {
     REPOFUNDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions
 
     # Define action directory. 
-    ACTIONDIR=$(cli_getRepoName $ACTION 'd')
+    FUNCNAMDIR=$(cli_getRepoName $FUNCNAM 'd')
 
     # Define action file name.
-    ACTIONSCRIPT=${REPOFUNDIR}/${ACTIONDIR}/${ACTION}.sh
+    FUNCNAMSCRIPT=${REPOFUNDIR}/${FUNCNAMDIR}/${FUNCNAM}.sh
 
     # Check action existence.
-    if [[ ! -f $ACTIONSCRIPT ]];then
+    if [[ ! -f $FUNCNAMSCRIPT ]];then
         cli_printMessage "`gettext "The action provided is not valid."`"
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # Build action-specifc script file list.
-    ACTIONFILES=$(ls ${REPOFUNDIR}/${ACTIONDIR}/${ACTION}*.sh)
+    FUNCNAMFILES=$(ls ${REPOFUNDIR}/${FUNCNAMDIR}/${FUNCNAM}*.sh)
 
-    for FILE in $ACTIONFILES;do
+    for FILE in $FUNCNAMFILES;do
 
         if [[ -x ${FILE} ]];then
 
@@ -61,8 +61,8 @@ function cli_getActions {
 
             # Export action-specific functions to current shell script
             # environment.
-            ACTIONFUN=$(grep '^function ' $FILE | cut -d' ' -f2)
-            export -f $ACTIONFUN
+            FUNCNAMCALL=$(grep '^function ' $FILE | cut -d' ' -f2)
+            export -f $FUNCNAMCALL
 
         else
 
@@ -74,6 +74,6 @@ function cli_getActions {
     done
 
     # Execute action passed to centos-art.sh script.
-    eval $ACTION
+    eval $FUNCNAM
 
 }
