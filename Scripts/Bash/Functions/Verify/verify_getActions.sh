@@ -41,7 +41,7 @@ function verify_getActions {
             ;;
 
         * )
-            cli_printMessage "`gettext "The option provided is not valid."`"
+            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
     esac
