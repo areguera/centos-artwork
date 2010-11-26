@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # cli_commitRepoChanges.sh -- This function looks for revision changes
-# inside absolute path passed as option value and ask you to commit
-# them up to central repository. Use this function at the end of
-# whatever function that makes changes to the working copy files. It
-# is better to commit small changes than long ones.
+# inside absolute path passed as action value and ask you to commit
+# them up to central repository. Use this function before or after
+# whatever function that makes changes to files inside the working
+# copy. It is better to commit small changes than long ones.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -38,14 +38,24 @@ function cli_commitRepoChanges {
     local LOCALFILES=''
     local CHNGDIRECTION=''
 
+    # If the first argument is provided to cli_commitRepoChanges is a
+    # valid regular file or directory, make ACTIONVAL local to this
+    # function and use the first argument as path location to work
+    # with. If first argument is not a file, nor a directory, or
+    # simply is not provided, the ACTIONVAL variable default value is
+    # used instead.
+    if [[ -f "$1" || -d "$1" ]];then
+        local ACTIONVAL=$1
+    fi
+
     # Update working copy.
     echo '----------------------------------------------------------------------'
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
-    UPDATEOUT=$(svn update ${OPTIONVAL})
+    UPDATEOUT=$(svn update ${ACTIONVAL})
 
     # Check working copy status.
     cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
-    STATUSOUT=$(svn status ${OPTIONVAL})
+    STATUSOUT=$(svn status ${ACTIONVAL})
     echo '----------------------------------------------------------------------'
 
     # Define path of files considered recent modifications from
@@ -61,6 +71,7 @@ function cli_commitRepoChanges {
     FILES[5]=$(echo "$STATUSOUT" | egrep '^M' | cut -d' ' -f7)
     FILES[6]=$(echo "$STATUSOUT" | egrep '^\?' | cut -d' ' -f7)
     FILES[7]=$(echo "$STATUSOUT" | egrep '^D' | cut -d' ' -f7)
+    FILES[8]=$(echo "$STATUSOUT" | egrep '^A' | cut -d' ' -f7)
 
     # Define description of files considered recent modifications from
     # central repository to working copy.
@@ -73,8 +84,9 @@ function cli_commitRepoChanges {
     # Define description of files considered recent modifications from
     # working copy up to central repository.
     INFO[5]="`gettext "Modified"`"
-    INFO[6]=${INFO[0]}
+    INFO[6]="`gettext "Unversioned"`"
     INFO[7]=${INFO[1]}
+    INFO[8]=${INFO[0]}
 
     while [[ $COUNT -ne ${#FILES[*]} ]];do
 
@@ -126,10 +138,11 @@ function cli_commitRepoChanges {
     # be sent up to central repository the next time a commit action
     # be performed. As convenction, all file manipulations inside the
     # working copy must be done with versioned files, and so, using
-    # subversion commands. 
-    if [[ ${FILESNUM[6]} -gt 0 ]];then
-        svn add ${FILES[6]} --quiet 
-    fi
+    # subversion commands. --- That's true, but please, let the user
+    # to decide which file to add. Just print informative output. 
+    #if [[ ${FILESNUM[6]} -gt 0 ]];then
+    #    svn add ${FILES[6]} --quiet 
+    #fi
 
     # Unify local changes into a common variable so common actions can
     # be applied to them.
