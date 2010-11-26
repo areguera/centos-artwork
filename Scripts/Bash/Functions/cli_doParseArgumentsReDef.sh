@@ -32,9 +32,11 @@ function cli_doParseArgumentsReDef {
     ARGUMENTS=''
 
     # Fill up arguments global variable with current positional
-    # parameter  information.
+    # parameter  information. To avoid interpretation problems, use
+    # single quotes to enclose each argument (ARG) from command-line
+    # idividually.
     for ARG in "$@"; do
-        ARGUMENTS="$ARGUMENTS \"$ARG\""
+        ARGUMENTS="$ARGUMENTS '$ARG'"
     done
 
 }
