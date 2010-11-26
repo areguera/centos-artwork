@@ -67,7 +67,7 @@ function cli_checkActionArgument {
             ACTIONVAL=$(pwd)
         else
             cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
-            cli_printMessage "$caller" 'AsToKnowMoreLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
 
         # Remove directory from the directory stack.
@@ -84,7 +84,7 @@ function cli_checkActionArgument {
             ACTIONVAL=$(pwd)/$(basename $ACTIONVAL)
         else
             cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
-            cli_printMessage "$caller" 'AsToKnowMoreLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
 
         # Remove directory from the directory stack.
@@ -95,7 +95,7 @@ function cli_checkActionArgument {
         # Check repository url.
         if [[ ! $ACTIONVAL =~ '^(https|http)://projects.centos.org/svn/artwork/.+$' ]];then
             cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
-            cli_printMessage "$caller" 'AsToKnowMoreLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
     fi
 
