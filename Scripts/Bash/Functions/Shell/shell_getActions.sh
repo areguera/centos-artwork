@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # shell_getActions.sh -- This function initializes very simple string
-# manipulations to Bash scripts (*.sh), using the option value of
+# manipulations to Bash scripts (*.sh), using the action value of
 # centos-art.sh script as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -27,7 +27,7 @@
     
 function shell_getActions {
 
-    # Evaluate option name and define which actions does centos-art.sh
+    # Evaluate action name and define which actions does centos-art.sh
     # script supports.
     case $ACTIONNAM in
 
@@ -37,7 +37,7 @@ function shell_getActions {
             ;;
 
         * )
-            cli_printMessage "`eval_gettext "The option provided is not valid."`"
+            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
             ;;
 
