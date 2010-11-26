@@ -2879,6 +2879,50 @@ for you to use inside specific functions:
      expression patterns that modify the list of files to process, but
      this is not the only feature REGEX global variable may serve to.
 
+ -- Variable: ARGUMENTS
+     Define optional arguments.
+
+     Inside `centos-art.sh' script, specifically inside `path'
+     functionality, we consider optional arguments as all command-line
+     arguments passed to `centos-art.sh' script, from third argument
+     position on.
+
+     Optional arguments are appended to commands in order for
+     `centos-art.sh' script to support them.  Such commands are
+     executed inside `centos-art.sh' script using Bash's `eval'
+     built-in.
+
+     If you provide unrecognized options to such commands, they will
+     complain just as they would do from the command-line.  Or what is
+     the same, final verification of which options are valid or not is
+     done inside the command options wered appended to, not by
+     `centos-art.sh' script.
+
+     When parsing ARGUMENTS, we may find short options (e.g., `-m') or
+     long options (e.g., `--message'). When using short options,
+     arguments are separated by one space from the option (e.g., `-m
+     'This is a commit message.'').  When using long options arguments
+     are separated by an equal sign (`=') (e.g., `--message='This is a
+     commit message''). To know which option have required arguments
+     let `centos-art.sh' script to know how to build the optional
+     argument string by quoting the option's argument.
+
+     Note that if we don't use `getopt' to parse the command-line
+     arguments it would complicate to determine when an argument is an
+     option argument and when it is not; when options' argument are
+     optional and where they are not. Inside getopt, required option
+     arguments are defined using the colon (`:') symbol after the
+     option (e.g., `-o m: -l message:').
+
+     As convenction we use long options as reference. We take the value
+     of ARGSLONG and split it using the comma (`,') character as
+     separator and check if the last character of the option is a colon
+     like in the regular expression `[[:alpha:]]+:,'.
+
+     Take care not to match two colons like in the regular expression
+     `[[:alpha:]]+::,', this construction is used to specify that
+     option can receive and argument but it is not required.
+
  -- Variable: EDITOR
      Default text editor.
 
@@ -2905,7 +2949,7 @@ for you to use inside specific functions:
 The following global functions of `centos-art.sh' script, are available
 for you to use inside specific functions:
 
- -- Function: cli_commitRepoChanges
+ -- Function: cli_commitRepoChanges [LOCATION]
      Commit changes from the working copy up to the repository.
 
      The `cli_commitRepoChanges' function uses the value of OPTIONVAL
@@ -2963,6 +3007,10 @@ for you to use inside specific functions:
     `fh'
           Ends script execution if FILE is neither a regular file or a
           symbolic link.
+
+    `fd'
+          Ends script execution if FILE is neither a regular file or a
+          directory.
 
      As default behaviour, if FILE passes all verifications,
      `centos-art.sh' script continues with its normal flow.
@@ -3742,7 +3790,7 @@ concepts for.
 3.39.3 Usage
 ------------
 
-`centos-art path --copy='SRC DST''
+`centos-art path --copy=SRC --to=DST'
      Use this command to duplicate `SRC' in working copy, remembering
      history. In this command, `SRC' and `DST' can each be either a
      working copy (WC) path or URL:
@@ -3765,12 +3813,12 @@ concepts for.
      `--message' option as follow:
 
 
-     centos-art path --copy='URL/SRC URL/DST' --message 'Copy url/src to url/dst'
+     centos-art path --copy=URL/SRC --to=URL/DST --message 'Copy url/src to url/dst'
 
      For more information on Subversion's `copy' functionality, run the
      command: `svn help copy | less'.
 
-`centos-art path --move='SRC DST''
+`centos-art path --move=SRC --to=DST'
      Move and/or rename something in working copy or repository. In this
      command, SRC and DST can both be working copy (WC) paths or URLs:
 
@@ -3786,7 +3834,7 @@ concepts for.
      `--message' option as follow:
 
 
-     centos-art path --move='URL/SRC URL/DST' --message 'Move url/src to url/dst'
+     centos-art path --move=URL/SRC --to=URL/DST --message 'Move url/src to url/dst'
 
      For more information on Subversion's `move' functionality, run the
      command: `svn help move | less'.
@@ -5646,24 +5694,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  380)
-Common translation files:                      See 3.48.2.5. (line 5075)
-How to render brands' translation files:       See 3.50.3.   (line 5379)
-How to render fonts' translation files:        See 3.52.3.   (line 5452)
-How to render translation files:               See 3.48.3.   (line 5245)
-Metadata maintainance:                         See 3.43.2.   (line 4219)
-Specific translation files:                    See 3.48.2.6. (line 5100)
+Common translation files:                      See 3.48.2.5. (line 5123)
+How to render brands' translation files:       See 3.50.3.   (line 5427)
+How to render fonts' translation files:        See 3.52.3.   (line 5500)
+How to render translation files:               See 3.48.3.   (line 5293)
+Metadata maintainance:                         See 3.43.2.   (line 4267)
+Specific translation files:                    See 3.48.2.6. (line 5148)
 tags:                                          See 2.        (line  383)
-Template translation files:                    See 3.48.2.4. (line 4905)
-Translation brands file names:                 See 3.50.2.1. (line 5336)
-Translation configuration scripts:             See 3.48.2.8. (line 5134)
-Translation entries:                           See 3.48.2.1. (line 4721)
-Translation files:                             See 3.48.2.3. (line 4837)
-Translation markers:                           See 3.48.2.2. (line 4802)
-Translation paths:                             See 3.48.2.1. (line 4721)
+Template translation files:                    See 3.48.2.4. (line 4953)
+Translation brands file names:                 See 3.50.2.1. (line 5384)
+Translation configuration scripts:             See 3.48.2.8. (line 5182)
+Translation entries:                           See 3.48.2.1. (line 4769)
+Translation files:                             See 3.48.2.3. (line 4885)
+Translation markers:                           See 3.48.2.2. (line 4850)
+Translation paths:                             See 3.48.2.1. (line 4769)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 5134)
-Translation rendering:                         See 3.48.2.7. (line 5123)
-Translation rendering default functionality:   See 3.48.2.9. (line 5220)
+                                                             (line 5182)
+Translation rendering:                         See 3.48.2.7. (line 5171)
+Translation rendering default functionality:   See 3.48.2.9. (line 5268)
 trunk:                                         See 3.        (line  386)
 trunk Identity:                                See 3.1.      (line  389)
 trunk Identity Brands:                         See 3.2.      (line  809)
@@ -5706,31 +5754,31 @@ trunk Manuals:                                 See 3.32.     (line 2366)
 trunk Scripts:                                 See 3.33.     (line 2420)
 trunk Scripts Bash:                            See 3.34.     (line 2444)
 trunk Scripts Bash Functions:                  See 3.35.     (line 2556)
-trunk Scripts Bash Functions Help:             See 3.36.     (line 3281)
-trunk Scripts Bash Functions Html:             See 3.37.     (line 3332)
-trunk Scripts Bash Functions Locale:           See 3.38.     (line 3353)
-trunk Scripts Bash Functions Path:             See 3.39.     (line 3433)
-trunk Scripts Bash Functions Render:           See 3.40.     (line 3834)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3855)
-trunk Scripts Bash Functions Shell:            See 3.42.     (line 4033)
-trunk Scripts Bash Functions Svg:              See 3.43.     (line 4201)
-trunk Scripts Bash Functions Verify:           See 3.44.     (line 4389)
-trunk Scripts Bash Locale:                     See 3.45.     (line 4605)
-trunk Scripts Perl:                            See 3.46.     (line 4634)
-trunk Scripts Python:                          See 3.47.     (line 4651)
-trunk Translations:                            See 3.48.     (line 4672)
-trunk Translations Identity:                   See 3.49.     (line 5274)
-trunk Translations Identity Brands:            See 3.50.     (line 5295)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 5390)
-trunk Translations Identity Fonts:             See 3.52.     (line 5405)
-trunk Translations Identity Models:            See 3.53.     (line 5468)
-trunk Translations Identity Release:           See 3.54.     (line 5483)
-trunk Translations Identity Themes:            See 3.55.     (line 5498)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5513)
+trunk Scripts Bash Functions Help:             See 3.36.     (line 3329)
+trunk Scripts Bash Functions Html:             See 3.37.     (line 3380)
+trunk Scripts Bash Functions Locale:           See 3.38.     (line 3401)
+trunk Scripts Bash Functions Path:             See 3.39.     (line 3481)
+trunk Scripts Bash Functions Render:           See 3.40.     (line 3882)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3903)
+trunk Scripts Bash Functions Shell:            See 3.42.     (line 4081)
+trunk Scripts Bash Functions Svg:              See 3.43.     (line 4249)
+trunk Scripts Bash Functions Verify:           See 3.44.     (line 4437)
+trunk Scripts Bash Locale:                     See 3.45.     (line 4653)
+trunk Scripts Perl:                            See 3.46.     (line 4682)
+trunk Scripts Python:                          See 3.47.     (line 4699)
+trunk Translations:                            See 3.48.     (line 4720)
+trunk Translations Identity:                   See 3.49.     (line 5322)
+trunk Translations Identity Brands:            See 3.50.     (line 5343)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 5438)
+trunk Translations Identity Fonts:             See 3.52.     (line 5453)
+trunk Translations Identity Models:            See 3.53.     (line 5516)
+trunk Translations Identity Release:           See 3.54.     (line 5531)
+trunk Translations Identity Themes:            See 3.55.     (line 5546)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5561)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 5534)
-trunk Translations Identity Widgets:           See 3.58.     (line 5627)
-Unused definitions:                            See 3.43.2.1. (line 4326)
+                                                             (line 5582)
+trunk Translations Identity Widgets:           See 3.58.     (line 5675)
+Unused definitions:                            See 3.43.2.1. (line 4374)
 List of Figures
 ***************
 

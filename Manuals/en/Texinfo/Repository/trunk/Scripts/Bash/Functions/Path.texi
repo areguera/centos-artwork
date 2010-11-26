@@ -328,7 +328,7 @@ concepts for.
 @subsection Usage
 
 @table @command
-@item centos-art path --copy='SRC DST'
+@item centos-art path --copy=SRC --to=DST
 Use this command to duplicate @file{SRC} in working copy,
 remembering history. In this command, @file{SRC} and
 @file{DST} can each be either a working copy (WC) path or
@@ -354,13 +354,13 @@ from third argument on. For example to specify a log message use the
 @option{--message} option as follow:
 
 @verbatim
-centos-art path --copy='URL/SRC URL/DST' --message 'Copy url/src to url/dst'
+centos-art path --copy=URL/SRC --to=URL/DST --message 'Copy url/src to url/dst'
 @end verbatim
 
 For more information on Subversion's @command{copy} functionality,
 run the command: @command{svn help copy | less}.
 
-@item centos-art path --move='SRC DST'
+@item centos-art path --move=SRC --to=DST
 Move and/or rename something in working copy or repository. In this
 command, SRC and DST can both be working copy (WC) paths or URLs: 
 
@@ -377,7 +377,7 @@ from third argument on. For example to specify a log message use the
 @option{--message} option as follow:
 
 @verbatim
-centos-art path --move='URL/SRC URL/DST' --message 'Move url/src to url/dst'
+centos-art path --move=URL/SRC --to=URL/DST --message 'Move url/src to url/dst'
 @end verbatim
 
 For more information on Subversion's @command{move} functionality,

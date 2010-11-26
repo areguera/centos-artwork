@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 21 2010 by texi2html 1.76 -->
+<!-- Created on November, 26 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -429,7 +429,7 @@ concepts for.
 <h3 class="subsection"> 3.39.3 Usage </h3>
 
 <dl compact="compact">
-<dt> <code>centos-art path --copy='SRC DST'</code></dt>
+<dt> <code>centos-art path --copy=SRC --to=DST</code></dt>
 <dd><p>Use this command to duplicate <tt>`SRC'</tt> in working copy,
 remembering history. In this command, <tt>`SRC'</tt> and
 <tt>`DST'</tt> can each be either a working copy (WC) path or
@@ -458,13 +458,13 @@ Options related to Subversion's <code>copy</code> command can be passed
 from third argument on. For example to specify a log message use the
 <samp>`--message'</samp> option as follow:
 </p>
-<pre class="verbatim">centos-art path --copy='URL/SRC URL/DST' --message 'Copy url/src to url/dst'
+<pre class="verbatim">centos-art path --copy=URL/SRC --to=URL/DST --message 'Copy url/src to url/dst'
 </pre>
 <p>For more information on Subversion's <code>copy</code> functionality,
 run the command: <code>svn help copy | less</code>.
 </p>
 </dd>
-<dt> <code>centos-art path --move='SRC DST'</code></dt>
+<dt> <code>centos-art path --move=SRC --to=DST</code></dt>
 <dd><p>Move and/or rename something in working copy or repository. In this
 command, SRC and DST can both be working copy (WC) paths or URLs: 
 </p>
@@ -482,7 +482,7 @@ Options related to Subversion's <code>move</code> command can be passed
 from third argument on. For example to specify a log message use the
 <samp>`--message'</samp> option as follow:
 </p>
-<pre class="verbatim">centos-art path --move='URL/SRC URL/DST' --message 'Move url/src to url/dst'
+<pre class="verbatim">centos-art path --move=URL/SRC --to=URL/DST --message 'Move url/src to url/dst'
 </pre>
 <p>For more information on Subversion's <code>move</code> functionality,
 run the command: <code>svn help move | less</code>.
@@ -549,7 +549,7 @@ directory you want to syncronize path information for.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 21 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 26 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

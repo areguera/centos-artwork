@@ -348,6 +348,51 @@ expression patterns that modify the list of files to process, but this
 is not the only feature @var{REGEX} global variable may serve to.
 @end defvar
 
+@defvar ARGUMENTS 
+Define optional arguments. 
+
+Inside @file{centos-art.sh} script, specifically inside @command{path}
+functionality, we consider optional arguments as all command-line
+arguments passed to @file{centos-art.sh} script, from third argument
+position on.  
+
+Optional arguments are appended to commands in order for
+@file{centos-art.sh} script to support them.  Such commands are
+executed inside @file{centos-art.sh} script using Bash's
+@command{eval} built-in.  
+
+If you provide unrecognized options to such commands, they will
+complain just as they would do from the command-line.  Or what is the
+same, final verification of which options are valid or not is done
+inside the command options wered appended to, not by
+@file{centos-art.sh} script.  
+
+When parsing @var{ARGUMENTS}, we may find short options (e.g.,
+@option{-m}) or long options (e.g., @option{--message}). When using
+short options, arguments are separated by one space from the option
+(e.g., @option{-m 'This is a commit message.'}).  When using long
+options arguments are separated by an equal sign (@samp{=}) (e.g.,
+@option{--message='This is a commit message'}). To know which option
+have required arguments let @file{centos-art.sh} script to know how to
+build the optional argument string by quoting the option's argument.  
+
+Note that if we don't use @command{getopt} to parse the command-line
+arguments it would complicate to determine when an argument is an
+option argument and when it is not; when options' argument are
+optional and where they are not. Inside getopt, required option
+arguments are defined using the colon (@samp{:}) symbol after the
+option (e.g., @option{-o m: -l message:}).
+
+As convenction we use long options as reference. We take the value of
+@var{ARGSLONG} and split it using the comma (@samp{,}) character as
+separator and check if the last character of the option is a colon
+like in the regular expression @code{[[:alpha:]]+:,}.
+
+Take care not to match two colons like in the regular expression
+@code{[[:alpha:]]+::,}, this construction is used to specify that
+option can receive and argument but it is not required.
+@end defvar
+
 @defvar EDITOR 
 Default text editor. 
 
@@ -374,7 +419,7 @@ If no one of these values is set in @env{EDITOR} environment variable,
 The following global functions of @file{centos-art.sh} script, are
 available for you to use inside specific functions:
 
-@defun cli_commitRepoChanges
+@defun cli_commitRepoChanges [LOCATION]
 Commit changes from the working copy up to the repository.
 
 The @code{cli_commitRepoChanges} function uses the value of
@@ -432,6 +477,9 @@ Ends script execution if @var{FILE} is not executable.
 @item fh
 Ends script execution if @var{FILE} is neither a regular file or a
 symbolic link.
+@item fd
+Ends script execution if @var{FILE} is neither a regular file or a
+directory.
 @end table
 
 As default behaviour, if @var{FILE} passes all verifications,

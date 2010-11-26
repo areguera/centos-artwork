@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 21 2010 by texi2html 1.76 -->
+<!-- Created on November, 26 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -431,8 +431,56 @@ is not the only feature <var>REGEX</var> global variable may serve to.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>EDITOR</b>
+<dt><u>Variable:</u> <b>ARGUMENTS</b>
 <a name="IDX7"></a>
+</dt>
+<dd><p>Define optional arguments. 
+</p>
+<p>Inside <tt>`centos-art.sh'</tt> script, specifically inside <code>path</code>
+functionality, we consider optional arguments as all command-line
+arguments passed to <tt>`centos-art.sh'</tt> script, from third argument
+position on.  
+</p>
+<p>Optional arguments are appended to commands in order for
+<tt>`centos-art.sh'</tt> script to support them.  Such commands are
+executed inside <tt>`centos-art.sh'</tt> script using Bash's
+<code>eval</code> built-in.  
+</p>
+<p>If you provide unrecognized options to such commands, they will
+complain just as they would do from the command-line.  Or what is the
+same, final verification of which options are valid or not is done
+inside the command options wered appended to, not by
+<tt>`centos-art.sh'</tt> script.  
+</p>
+<p>When parsing <var>ARGUMENTS</var>, we may find short options (e.g.,
+<samp>`-m'</samp>) or long options (e.g., <samp>`--message'</samp>). When using
+short options, arguments are separated by one space from the option
+(e.g., <samp>`-m 'This is a commit message.''</samp>).  When using long
+options arguments are separated by an equal sign (<samp>`='</samp>) (e.g.,
+<samp>`--message='This is a commit message''</samp>). To know which option
+have required arguments let <tt>`centos-art.sh'</tt> script to know how to
+build the optional argument string by quoting the option's argument.  
+</p>
+<p>Note that if we don't use <code>getopt</code> to parse the command-line
+arguments it would complicate to determine when an argument is an
+option argument and when it is not; when options' argument are
+optional and where they are not. Inside getopt, required option
+arguments are defined using the colon (<samp>`:'</samp>) symbol after the
+option (e.g., <samp>`-o m: -l message:'</samp>).
+</p>
+<p>As convenction we use long options as reference. We take the value of
+<var>ARGSLONG</var> and split it using the comma (<samp>`,'</samp>) character as
+separator and check if the last character of the option is a colon
+like in the regular expression <code>[[:alpha:]]+:,</code>.
+</p>
+<p>Take care not to match two colons like in the regular expression
+<code>[[:alpha:]]+::,</code>, this construction is used to specify that
+option can receive and argument but it is not required.
+</p></dd></dl>
+
+<dl>
+<dt><u>Variable:</u> <b>EDITOR</b>
+<a name="IDX8"></a>
 </dt>
 <dd><p>Default text editor. 
 </p>
@@ -462,8 +510,8 @@ following values are recognized by <tt>`centos-art.sh'</tt> script:
 available for you to use inside specific functions:
 </p>
 <dl>
-<dt><u>Function:</u> <b>cli_commitRepoChanges</b>
-<a name="IDX8"></a>
+<dt><u>Function:</u> <b>cli_commitRepoChanges</b><i> [LOCATION]</i>
+<a name="IDX9"></a>
 </dt>
 <dd><p>Commit changes from the working copy up to the repository.
 </p>
@@ -490,7 +538,7 @@ modify files or directories inside the working copy.
 
 <dl>
 <dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
-<a name="IDX9"></a>
+<a name="IDX10"></a>
 </dt>
 <dd><p>Verify files existence.
 </p>
@@ -530,6 +578,10 @@ documentation message.
 <dd><p>Ends script execution if <var>FILE</var> is neither a regular file or a
 symbolic link.
 </p></dd>
+<dt> <samp>`fd'</samp></dt>
+<dd><p>Ends script execution if <var>FILE</var> is neither a regular file or a
+directory.
+</p></dd>
 </dl>
 
 <p>As default behaviour, if <var>FILE</var> passes all verifications,
@@ -538,7 +590,7 @@ symbolic link.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
-<a name="IDX10"></a>
+<a name="IDX11"></a>
 </dt>
 <dd><p>Output country codes.
 </p>
@@ -550,7 +602,7 @@ codes as defined in ISO3166 standard. When <var>FILTER</var> is provided,
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryName</b><i> [FILTER]</i>
-<a name="IDX11"></a>
+<a name="IDX12"></a>
 </dt>
 <dd><p>Output country names.
 </p>
@@ -566,7 +618,7 @@ by <tt>`centos-art.sh'</tt> script.
  
 <dl>
 <dt><u>Function:</u> <b>cli_getCurrentLocale</b>
-<a name="IDX12"></a>
+<a name="IDX13"></a>
 </dt>
 <dd><p>Output current locale used by <tt>`centos-art.sh'</tt> script. 
 </p>
@@ -598,7 +650,7 @@ by <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
-<a name="IDX13"></a>
+<a name="IDX14"></a>
 </dt>
 <dd><p>Output language codes.
 </p>
@@ -613,7 +665,7 @@ by <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangName</b><i> [FILTER]</i>
-<a name="IDX14"></a>
+<a name="IDX15"></a>
 </dt>
 <dd><p>Output language names.
 </p>
@@ -628,7 +680,7 @@ by <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLocales</b>
-<a name="IDX15"></a>
+<a name="IDX16"></a>
 </dt>
 <dd><p>Output locale codes supported by <tt>`centos-art.sh'</tt> script.
 </p>
@@ -642,7 +694,7 @@ specifications (<samp>`LL'</samp>) into one unique common locale specification
 
 <dl>
 <dt><u>Function:</u> <b>cli_getRepoName</b><i> NAME TYPE</i>
-<a name="IDX16"></a>
+<a name="IDX17"></a>
 </dt>
 <dd><p>Sanitate file names.
 </p>
@@ -693,7 +745,7 @@ repository file system organization.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getTemporalFile</b><i> <var>NAME</var></i>
-<a name="IDX17"></a>
+<a name="IDX18"></a>
 </dt>
 <dd><p>Output absolute path to temporal file <var>NAME</var>.
 </p>
@@ -735,7 +787,7 @@ temporal files inside <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getThemeName</b>
-<a name="IDX18"></a>
+<a name="IDX19"></a>
 </dt>
 <dd><p>Output theme name.
 </p>
@@ -747,7 +799,7 @@ Otherwise, <code>cli_getThemeName</code> returns an empty string.
 
 <dl>
 <dt><u>Function:</u> <b>cli_printMessage</b><i> MESSAGE [FORMAT]</i>
-<a name="IDX19"></a>
+<a name="IDX20"></a>
 </dt>
 <dd><p>Give format to output messages.
 </p>
@@ -939,7 +991,7 @@ available for you to use:
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 21 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 26 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
