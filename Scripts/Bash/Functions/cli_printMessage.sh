@@ -138,6 +138,12 @@ function cli_printMessage {
             fi
             ;;
 
+        'AsErrorLine')
+            # Add script name to message. We want to know where
+            # messages come from.
+            echo "${CLINAME}: ${MESSAGE}"
+            ;;
+
         'AsToKnowMoreLine' )
             # This option receives the output of bash's caller builtin
             # as message value, in order to produce the documentation
