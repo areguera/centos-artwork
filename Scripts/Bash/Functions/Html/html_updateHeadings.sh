@@ -54,7 +54,7 @@ function html_updateHeadings {
     local -a LINK
 
     # Define html heading regular expression pattern. Use parenthisis
-    # to save html option name, option value, and heading title.
+    # to save html action name, action value, and heading title.
     PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
 
     # Define short options we want to support.
