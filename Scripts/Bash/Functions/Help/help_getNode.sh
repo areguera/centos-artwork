@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_getNode.sh -- This function cleans up the option value
+# help_getNode.sh -- This function cleans up the action value
 # (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado

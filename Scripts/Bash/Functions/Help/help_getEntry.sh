@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help_getEntry.sh -- This function builds a documentation entry based
-# on option value (ACTIONVAL) variable.
+# on action value (ACTIONVAL) variable.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 

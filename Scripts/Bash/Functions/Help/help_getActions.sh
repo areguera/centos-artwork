@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help_getActions.sh -- This function initializes documentation
-# functionalities, using option value as reference.
+# functionalities, using action value as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
