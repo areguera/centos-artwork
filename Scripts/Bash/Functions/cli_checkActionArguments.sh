@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_checkActionArgument.sh -- This function provides input validation
-# for the action value (ACTIONVAL) variable.
+# cli_checkActionArguments.sh -- This function provides input
+# validation for action value (ACTIONVAL) variable.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_checkActionArgument {
+function cli_checkActionArguments {
 
     # Check action value before making an absolute path from it. 
     if [[ $ACTIONVAL =~ '(\.\.(/)?)' ]];then
@@ -62,7 +62,7 @@ function cli_checkActionArgument {
         pushd "$ACTIONVAL" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ '^/home/centos/artwork/.+$' ]];then
+        if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
             # Re-define action value using absolute path.
             ACTIONVAL=$(pwd)
         else
@@ -79,7 +79,7 @@ function cli_checkActionArgument {
         pushd "$(dirname $ACTIONVAL)" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ '^/home/centos/artwork/.+$' ]];then
+        if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
             # Re-define action value using absolute path.
             ACTIONVAL=$(pwd)/$(basename $ACTIONVAL)
         else
