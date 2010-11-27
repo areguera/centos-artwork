@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 26 2010 by texi2html 1.76 -->
+<!-- Created on November, 27 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -213,7 +213,7 @@ performed, based on arguments combination passed to
 </p>
 <pre class="verbatim">function greet_getActions {
 
-    case &quot;$OPTIONNAM&quot; in
+    case &quot;$ACTIONNAM&quot; in
 
         --hello )
             greet_doHello
@@ -231,11 +231,11 @@ performed, based on arguments combination passed to
 
 }
 </pre>
-<p>The <var>OPTIONNAM</var> global variable is defined in <tt>`cli.sh'</tt>
+<p>The <var>ACTIONNAM</var> global variable is defined in <tt>`cli.sh'</tt>
 function script and contains the value passed before the equal sign
 (i.e., <samp>`='</samp>) in the second command-line argument of
 <tt>`centos-art.sh'</tt> script. For example, if the second command-line
-argument is <samp>`--hello='World''</samp>, the value of <var>OPTIONNAM</var>
+argument is <samp>`--hello='World''</samp>, the value of <var>ACTIONNAM</var>
 variable would be <samp>`--hello'</samp>.  Using this configuration let us
 deside which action to perform based on the option name passed to
 <tt>`centos-art.sh'</tt> script as second argument. 
@@ -257,7 +257,7 @@ output different kinds of greetings.
 </p>
 <pre class="verbatim">function greet_doHello {
 
-    cli_printMessage &quot;`gettext &quot;Hello&quot;` $OPTIONVAL&quot;
+    cli_printMessage &quot;`gettext &quot;Hello&quot;` $ACTIONVAL&quot;
 
 }
 </pre>
@@ -266,7 +266,7 @@ output different kinds of greetings.
 </p>
 <pre class="verbatim">function greet_doBye {
 
-    cli_printMessage &quot;`gettext &quot;Goodbye&quot;` $OPTIONVAL&quot;
+    cli_printMessage &quot;`gettext &quot;Goodbye&quot;` $ACTIONVAL&quot;
 
 }
 </pre>
@@ -277,11 +277,11 @@ output different kinds of greetings.
 scripts are stored inside <code>greet</code>'s function directory path (i.e.
 <tt>`trunk/Scripts/Bash/Functions/Greet'</tt>).
 </p>
-<p>The <var>OPTIONVAL</var> global variable is defined in <tt>`cli.sh'</tt>
+<p>The <var>ACTIONVAL</var> global variable is defined in <tt>`cli.sh'</tt>
 function script and contains the value passed after the equal sign
 (i.e., <samp>`='</samp>) in the second command-line argument of
 <tt>`centos-art.sh'</tt> script. For example, if the second command-line
-argument is <samp>`--hello='World''</samp>, the value of <var>OPTIONVAL</var>
+argument is <samp>`--hello='World''</samp>, the value of <var>ACTIONVAL</var>
 variable would be <samp>`World'</samp> without quotes.
 </p>
 <p>Let's see how <code>greet</code> specific functionality files are organzied
@@ -382,32 +382,32 @@ set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>ACTION</b>
+<dt><u>Variable:</u> <b>FUNCNAM</b>
 <a name="IDX3"></a>
 </dt>
-<dd><p>Default action passed as first argument in <tt>`centos-art.sh'</tt>
+<dd><p>Default function name passed as first argument in <tt>`centos-art.sh'</tt>
 command-line interface. For example, in the command <samp>`centos-art
 render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTION</var> passed to
 <tt>`centos-art.sh'</tt> script is <samp>`render'</samp>.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>OPTIONNAM</b>
+<dt><u>Variable:</u> <b>ACTIONNAM</b>
 <a name="IDX4"></a>
 </dt>
 <dd><p>Default option name passed as second argument in <tt>`centos-art.sh'</tt>
 command-line interface. For example, in the command <samp>`centos-art
-render --entry=path/to/dir --filter=regex'</samp>, the <var>OPTIONNAM</var> passed
+render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTIONNAM</var> passed
 to <tt>`centos-art.sh'</tt> script is <samp>`--entry'</samp>.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>OPTIONVAL</b>
+<dt><u>Variable:</u> <b>ACTIONVAL</b>
 <a name="IDX5"></a>
 </dt>
 <dd><p>Default option value passed as second argument in <tt>`centos-art.sh'</tt>
 command-line interface. For example, in the command <samp>`centos-art
-render --entry=path/to/dir --filter=regex'</samp>, the <var>OPTIONVAL</var> passed
+render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTIONVAL</var> passed
 to <tt>`centos-art.sh'</tt> script is <samp>`path/to/dir'</samp>.
 </p></dd></dl>
 
@@ -506,18 +506,20 @@ following values are recognized by <tt>`centos-art.sh'</tt> script:
 <a name="SEC205"></a>
 <h4 class="subsubsection"> 3.35.3.2 Global functions </h4>
 
-<p>The following global functions of <tt>`centos-art.sh'</tt> script, are
+<p>The following global functions of <tt>`centos-art.sh'</tt> script are
 available for you to use inside specific functions:
 </p>
 <dl>
 <dt><u>Function:</u> <b>cli_commitRepoChanges</b><i> [LOCATION]</i>
 <a name="IDX9"></a>
 </dt>
-<dd><p>Commit changes from the working copy up to the repository.
+<dd><p>Syncronize changes between repository and working copy.
 </p>
 <p>The <code>cli_commitRepoChanges</code> function uses the value of
-<var>OPTIONVAL</var> variable as reference to perform change verifications
-inside the working copy.
+<var>LOCATION</var> argument as reference to perform change verification
+inside the working copy using subversion commands. If <var>LOCATION</var>
+argument is not specified as <code>cli_commitRepoChanges</code> first
+argument, the <var>ACTIONVAL</var> variable is used as reference instead.
 </p>
 <p>The <code>cli_commitRepoChanges</code> function brings changes from the
 repository to the working copy--using <code>svn update</code>--, check
@@ -528,12 +530,33 @@ working copy up to the repository--using <code>svn commit</code>
 command--.
 </p>
 <p>Previous to commit the working copy changes up to the repository, the
-<code>cli_commitRepoChanges</code> function asks you to verify changes, and
-later, another confirmation question is shown to be sure you really
-want to commit changes up to central repository.
+<code>cli_commitRepoChanges</code> function asks you to verify
+changes--using <code>svn diff</code> command--, and later, another
+confirmation question is shown to be sure you really want to commit
+changes up to central repository.
 </p>
-<p>Call the <code>cli_commitRepoChanges</code> function after functions that
-modify files or directories inside the working copy.  
+<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fcli_005fcommitRepoChanges"></a>
+<pre class="verbatim">----------------------------------------------------------------------
+--&gt; Bringing changes from the repository into the working copy
+--&gt; Checking changes in the working copy
+----------------------------------------------------------------------
+Added           0 file from the repository.
+Deleted         0 file from the repository.
+Updated         0 file from the repository.
+Conflicted      0 file from the repository.
+Merged          0 file from the repository.
+Modified        4 files from the working copy.
+Unversioned     0 file from the working copy.
+Deleted         0 file from the working copy.
+Added           0 file from the working copy.
+----------------------------------------------------------------------
+</pre>
+</div><p><strong>Figure 3.9: The <code>cli_commitRepoChanges</code> function output.
+</strong>
+</p>
+<p>Call the <code>cli_commitRepoChanges</code> function before or/and after
+functions that modify files or directories inside the working copy as
+you may need to.  
 </p></dd></dl>
 
 <dl>
@@ -792,7 +815,7 @@ temporal files inside <tt>`centos-art.sh'</tt> script.
 <dd><p>Output theme name.
 </p>
 <p>In order for <code>cli_getThemeName</code> function to extract theme name
-correctly, the <var>OPTIONVAL</var> variable must contain a directory path
+correctly, the <var>ACTIONVAL</var> variable must contain a directory path
 under <tt>`trunk/Identity/Themes/Motifs/'</tt> directory structure.
 Otherwise, <code>cli_getThemeName</code> returns an empty string.  
 </p></dd></dl>
@@ -991,7 +1014,7 @@ available for you to use:
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 26 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 27 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

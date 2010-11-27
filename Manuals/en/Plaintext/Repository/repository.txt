@@ -2686,7 +2686,7 @@ script.
 
 function greet_getActions {
 
-    case "$OPTIONNAM" in
+    case "$ACTIONNAM" in
 
         --hello )
             greet_doHello
@@ -2704,11 +2704,11 @@ function greet_getActions {
 
 }
 
-   The OPTIONNAM global variable is defined in `cli.sh' function script
+   The ACTIONNAM global variable is defined in `cli.sh' function script
 and contains the value passed before the equal sign (i.e., `=') in the
 second command-line argument of `centos-art.sh' script. For example, if
 the second command-line argument is `--hello='World'', the value of
-OPTIONNAM variable would be `--hello'.  Using this configuration let us
+ACTIONNAM variable would be `--hello'.  Using this configuration let us
 deside which action to perform based on the option name passed to
 `centos-art.sh' script as second argument.
 
@@ -2729,7 +2729,7 @@ of greetings.
 
 function greet_doHello {
 
-    cli_printMessage "`gettext "Hello"` $OPTIONVAL"
+    cli_printMessage "`gettext "Hello"` $ACTIONVAL"
 
 }
 
@@ -2739,7 +2739,7 @@ function greet_doHello {
 
 function greet_doBye {
 
-    cli_printMessage "`gettext "Goodbye"` $OPTIONVAL"
+    cli_printMessage "`gettext "Goodbye"` $ACTIONVAL"
 
 }
 
@@ -2750,11 +2750,11 @@ function greet_doBye {
 stored inside `greet''s function directory path (i.e.
 `trunk/Scripts/Bash/Functions/Greet').
 
-   The OPTIONVAL global variable is defined in `cli.sh' function script
+   The ACTIONVAL global variable is defined in `cli.sh' function script
 and contains the value passed after the equal sign (i.e., `=') in the
 second command-line argument of `centos-art.sh' script. For example, if
 the second command-line argument is `--hello='World'', the value of
-OPTIONVAL variable would be `World' without quotes.
+ACTIONVAL variable would be `World' without quotes.
 
    Let's see how `greet' specific functionality files are organzied
 under `greet''s function directory. To see file organization we use the
@@ -2846,22 +2846,22 @@ for you to use inside specific functions:
      Default directory used to retrieve translated messages. This value
      is set in `initFunctions.sh' and shouldn't be changed.
 
- -- Variable: ACTION
-     Default action passed as first argument in `centos-art.sh'
+ -- Variable: FUNCNAM
+     Default function name passed as first argument in `centos-art.sh'
      command-line interface. For example, in the command `centos-art
      render --entry=path/to/dir --filter=regex', the ACTION passed to
      `centos-art.sh' script is `render'.
 
- -- Variable: OPTIONNAM
+ -- Variable: ACTIONNAM
      Default option name passed as second argument in `centos-art.sh'
      command-line interface. For example, in the command `centos-art
-     render --entry=path/to/dir --filter=regex', the OPTIONNAM passed
+     render --entry=path/to/dir --filter=regex', the ACTIONNAM passed
      to `centos-art.sh' script is `--entry'.
 
- -- Variable: OPTIONVAL
+ -- Variable: ACTIONVAL
      Default option value passed as second argument in `centos-art.sh'
      command-line interface. For example, in the command `centos-art
-     render --entry=path/to/dir --filter=regex', the OPTIONVAL passed
+     render --entry=path/to/dir --filter=regex', the ACTIONVAL passed
      to `centos-art.sh' script is `path/to/dir'.
 
  -- Variable: REGEX
@@ -2946,15 +2946,17 @@ for you to use inside specific functions:
 3.35.3.2 Global functions
 .........................
 
-The following global functions of `centos-art.sh' script, are available
+The following global functions of `centos-art.sh' script are available
 for you to use inside specific functions:
 
  -- Function: cli_commitRepoChanges [LOCATION]
-     Commit changes from the working copy up to the repository.
+     Syncronize changes between repository and working copy.
 
-     The `cli_commitRepoChanges' function uses the value of OPTIONVAL
-     variable as reference to perform change verifications inside the
-     working copy.
+     The `cli_commitRepoChanges' function uses the value of LOCATION
+     argument as reference to perform change verification inside the
+     working copy using subversion commands. If LOCATION argument is
+     not specified as `cli_commitRepoChanges' first argument, the
+     ACTIONVAL variable is used as reference instead.
 
      The `cli_commitRepoChanges' function brings changes from the
      repository to the working copy--using `svn update'--, check the
@@ -2964,12 +2966,32 @@ for you to use inside specific functions:
      repository--using `svn commit' command--.
 
      Previous to commit the working copy changes up to the repository,
-     the `cli_commitRepoChanges' function asks you to verify changes,
-     and later, another confirmation question is shown to be sure you
-     really want to commit changes up to central repository.
+     the `cli_commitRepoChanges' function asks you to verify
+     changes--using `svn diff' command--, and later, another
+     confirmation question is shown to be sure you really want to commit
+     changes up to central repository.
 
-     Call the `cli_commitRepoChanges' function after functions that
-     modify files or directories inside the working copy.
+
+     ----------------------------------------------------------------------
+     --> Bringing changes from the repository into the working copy
+     --> Checking changes in the working copy
+     ----------------------------------------------------------------------
+     Added           0 file from the repository.
+     Deleted         0 file from the repository.
+     Updated         0 file from the repository.
+     Conflicted      0 file from the repository.
+     Merged          0 file from the repository.
+     Modified        4 files from the working copy.
+     Unversioned     0 file from the working copy.
+     Deleted         0 file from the working copy.
+     Added           0 file from the working copy.
+     ----------------------------------------------------------------------
+
+     Figure 3.2: The `cli_commitRepoChanges' function output.
+
+        Call the `cli_commitRepoChanges' function before or/and after
+     functions that modify files or directories inside the working copy
+     as you may need to.
 
  -- Function: cli_checkFiles FILE [TYPE]
      Verify files existence.
@@ -3183,7 +3205,7 @@ for you to use inside specific functions:
      Output theme name.
 
      In order for `cli_getThemeName' function to extract theme name
-     correctly, the OPTIONVAL variable must contain a directory path
+     correctly, the ACTIONVAL variable must contain a directory path
      under `trunk/Identity/Themes/Motifs/' directory structure.
      Otherwise, `cli_getThemeName' returns an empty string.
 
@@ -3506,7 +3528,7 @@ and stop doing what we expect from them to do.
 and directories, related to CentOS corporate visual identity, under
 three top level directories named `trunk/', `branches/', and `tags/'.
 
- Figure 3.2: The CentOS Artwork Repository layout.
+ Figure 3.3: The CentOS Artwork Repository layout.
 
    The `trunk/' directory (*note trunk::) organizes the main
 development line of CentOS corporate visual identity. Inside `trunk/'
@@ -3592,7 +3614,7 @@ branch created from the same trunk development line.  Tags start at
 zero (i.e., `0') and increment one unit for each tag created from the
 same branch development line.
 
- Figure 3.3: Name convention for tags and branches creation.
+ Figure 3.4: Name convention for tags and branches creation.
 
    As proposition, it would be convenient not to freeze trunk
 development lines using tags or anything else.  If you think you need
@@ -3659,7 +3681,7 @@ information is when we use the `help' functionality. This time,
 uncommon directory levels) to build the documentation entry required by
 Texinfo to store documentation entries inside the repository.
 
- Figure 3.4: Parallel directories removing uncommon information.
+ Figure 3.5: Parallel directories removing uncommon information.
 
    Othertimes, parallel directories may add uncommon information to
 their paths. This is the case we use to create branches and tags. When
@@ -3668,7 +3690,7 @@ directory structure path. The place where the numerical identifier is
 set on is relevant to corporate visual identity structure and should be
 carefully considered where it will be.
 
- Figure 3.5: Parallel directories adding uncommon information.
+ Figure 3.6: Parallel directories adding uncommon information.
 
    When one parent directory changes, all their related parallel
 directories need to be changed too. This is required in order for
@@ -3678,7 +3700,7 @@ reason but to satisfy their parent directory structure. Liberal change
 of parallel directories may suppress the conceptual idea they were
 initially created for.
 
- Figure 3.6: Wrong construction of parallel directories.
+ Figure 3.7: Wrong construction of parallel directories.
 
 3.39.2.5 Syncronizing path information
 ......................................
@@ -5694,24 +5716,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  380)
-Common translation files:                      See 3.48.2.5. (line 5123)
-How to render brands' translation files:       See 3.50.3.   (line 5427)
-How to render fonts' translation files:        See 3.52.3.   (line 5500)
-How to render translation files:               See 3.48.3.   (line 5293)
-Metadata maintainance:                         See 3.43.2.   (line 4267)
-Specific translation files:                    See 3.48.2.6. (line 5148)
+Common translation files:                      See 3.48.2.5. (line 5145)
+How to render brands' translation files:       See 3.50.3.   (line 5449)
+How to render fonts' translation files:        See 3.52.3.   (line 5522)
+How to render translation files:               See 3.48.3.   (line 5315)
+Metadata maintainance:                         See 3.43.2.   (line 4289)
+Specific translation files:                    See 3.48.2.6. (line 5170)
 tags:                                          See 2.        (line  383)
-Template translation files:                    See 3.48.2.4. (line 4953)
-Translation brands file names:                 See 3.50.2.1. (line 5384)
-Translation configuration scripts:             See 3.48.2.8. (line 5182)
-Translation entries:                           See 3.48.2.1. (line 4769)
-Translation files:                             See 3.48.2.3. (line 4885)
-Translation markers:                           See 3.48.2.2. (line 4850)
-Translation paths:                             See 3.48.2.1. (line 4769)
+Template translation files:                    See 3.48.2.4. (line 4975)
+Translation brands file names:                 See 3.50.2.1. (line 5406)
+Translation configuration scripts:             See 3.48.2.8. (line 5204)
+Translation entries:                           See 3.48.2.1. (line 4791)
+Translation files:                             See 3.48.2.3. (line 4907)
+Translation markers:                           See 3.48.2.2. (line 4872)
+Translation paths:                             See 3.48.2.1. (line 4791)
 Translation pre-rendering configuration scripts:See 3.48.2.8.
-                                                             (line 5182)
-Translation rendering:                         See 3.48.2.7. (line 5171)
-Translation rendering default functionality:   See 3.48.2.9. (line 5268)
+                                                             (line 5204)
+Translation rendering:                         See 3.48.2.7. (line 5193)
+Translation rendering default functionality:   See 3.48.2.9. (line 5290)
 trunk:                                         See 3.        (line  386)
 trunk Identity:                                See 3.1.      (line  389)
 trunk Identity Brands:                         See 3.2.      (line  809)
@@ -5754,31 +5776,31 @@ trunk Manuals:                                 See 3.32.     (line 2366)
 trunk Scripts:                                 See 3.33.     (line 2420)
 trunk Scripts Bash:                            See 3.34.     (line 2444)
 trunk Scripts Bash Functions:                  See 3.35.     (line 2556)
-trunk Scripts Bash Functions Help:             See 3.36.     (line 3329)
-trunk Scripts Bash Functions Html:             See 3.37.     (line 3380)
-trunk Scripts Bash Functions Locale:           See 3.38.     (line 3401)
-trunk Scripts Bash Functions Path:             See 3.39.     (line 3481)
-trunk Scripts Bash Functions Render:           See 3.40.     (line 3882)
-trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3903)
-trunk Scripts Bash Functions Shell:            See 3.42.     (line 4081)
-trunk Scripts Bash Functions Svg:              See 3.43.     (line 4249)
-trunk Scripts Bash Functions Verify:           See 3.44.     (line 4437)
-trunk Scripts Bash Locale:                     See 3.45.     (line 4653)
-trunk Scripts Perl:                            See 3.46.     (line 4682)
-trunk Scripts Python:                          See 3.47.     (line 4699)
-trunk Translations:                            See 3.48.     (line 4720)
-trunk Translations Identity:                   See 3.49.     (line 5322)
-trunk Translations Identity Brands:            See 3.50.     (line 5343)
-trunk Translations Identity Brands Tpl:        See 3.51.     (line 5438)
-trunk Translations Identity Fonts:             See 3.52.     (line 5453)
-trunk Translations Identity Models:            See 3.53.     (line 5516)
-trunk Translations Identity Release:           See 3.54.     (line 5531)
-trunk Translations Identity Themes:            See 3.55.     (line 5546)
-trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5561)
+trunk Scripts Bash Functions Help:             See 3.36.     (line 3351)
+trunk Scripts Bash Functions Html:             See 3.37.     (line 3402)
+trunk Scripts Bash Functions Locale:           See 3.38.     (line 3423)
+trunk Scripts Bash Functions Path:             See 3.39.     (line 3503)
+trunk Scripts Bash Functions Render:           See 3.40.     (line 3904)
+trunk Scripts Bash Functions Render Config:    See 3.41.     (line 3925)
+trunk Scripts Bash Functions Shell:            See 3.42.     (line 4103)
+trunk Scripts Bash Functions Svg:              See 3.43.     (line 4271)
+trunk Scripts Bash Functions Verify:           See 3.44.     (line 4459)
+trunk Scripts Bash Locale:                     See 3.45.     (line 4675)
+trunk Scripts Perl:                            See 3.46.     (line 4704)
+trunk Scripts Python:                          See 3.47.     (line 4721)
+trunk Translations:                            See 3.48.     (line 4742)
+trunk Translations Identity:                   See 3.49.     (line 5344)
+trunk Translations Identity Brands:            See 3.50.     (line 5365)
+trunk Translations Identity Brands Tpl:        See 3.51.     (line 5460)
+trunk Translations Identity Fonts:             See 3.52.     (line 5475)
+trunk Translations Identity Models:            See 3.53.     (line 5538)
+trunk Translations Identity Release:           See 3.54.     (line 5553)
+trunk Translations Identity Themes:            See 3.55.     (line 5568)
+trunk Translations Identity Themes Backgrounds:See 3.56.     (line 5583)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.57.
-                                                             (line 5582)
-trunk Translations Identity Widgets:           See 3.58.     (line 5675)
-Unused definitions:                            See 3.43.2.1. (line 4374)
+                                                             (line 5604)
+trunk Translations Identity Widgets:           See 3.58.     (line 5697)
+Unused definitions:                            See 3.43.2.1. (line 4396)
 List of Figures
 ***************
 

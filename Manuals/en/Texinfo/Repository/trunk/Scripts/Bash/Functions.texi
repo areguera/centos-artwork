@@ -138,7 +138,7 @@ performed, based on arguments combination passed to
 @verbatim
 function greet_getActions {
 
-    case "$OPTIONNAM" in
+    case "$ACTIONNAM" in
 
         --hello )
             greet_doHello
@@ -157,11 +157,11 @@ function greet_getActions {
 }
 @end verbatim
 
-The @var{OPTIONNAM} global variable is defined in @file{cli.sh}
+The @var{ACTIONNAM} global variable is defined in @file{cli.sh}
 function script and contains the value passed before the equal sign
 (i.e., @samp{=}) in the second command-line argument of
 @file{centos-art.sh} script. For example, if the second command-line
-argument is @option{--hello='World'}, the value of @var{OPTIONNAM}
+argument is @option{--hello='World'}, the value of @var{ACTIONNAM}
 variable would be @samp{--hello}.  Using this configuration let us
 deside which action to perform based on the option name passed to
 @file{centos-art.sh} script as second argument. 
@@ -184,7 +184,7 @@ output different kinds of greetings.
 @verbatim
 function greet_doHello {
 
-    cli_printMessage "`gettext "Hello"` $OPTIONVAL"
+    cli_printMessage "`gettext "Hello"` $ACTIONVAL"
 
 }
 @end verbatim
@@ -195,7 +195,7 @@ The @code{greet_doHello} function definition is stored in
 @verbatim
 function greet_doBye {
 
-    cli_printMessage "`gettext "Goodbye"` $OPTIONVAL"
+    cli_printMessage "`gettext "Goodbye"` $ACTIONVAL"
 
 }
 @end verbatim
@@ -207,11 +207,11 @@ Both @file{greet_doHello.sh} and @file{greet_doBye.sh} function
 scripts are stored inside @code{greet}'s function directory path (i.e.
 @file{trunk/Scripts/Bash/Functions/Greet}).
 
-The @var{OPTIONVAL} global variable is defined in @file{cli.sh}
+The @var{ACTIONVAL} global variable is defined in @file{cli.sh}
 function script and contains the value passed after the equal sign
 (i.e., @samp{=}) in the second command-line argument of
 @file{centos-art.sh} script. For example, if the second command-line
-argument is @option{--hello='World'}, the value of @var{OPTIONVAL}
+argument is @option{--hello='World'}, the value of @var{ACTIONVAL}
 variable would be @samp{World} without quotes.
 
 Let's see how @code{greet} specific functionality files are organzied
@@ -311,24 +311,24 @@ Default directory used to retrieve translated messages. This value is
 set in @file{initFunctions.sh} and shouldn't be changed.
 @end defvar
 
-@defvar ACTION
-Default action passed as first argument in @file{centos-art.sh}
+@defvar FUNCNAM
+Default function name passed as first argument in @file{centos-art.sh}
 command-line interface. For example, in the command @samp{centos-art
 render --entry=path/to/dir --filter=regex}, the @var{ACTION} passed to
 @file{centos-art.sh} script is @option{render}.
 @end defvar
 
-@defvar OPTIONNAM
+@defvar ACTIONNAM
 Default option name passed as second argument in @file{centos-art.sh}
 command-line interface. For example, in the command @samp{centos-art
-render --entry=path/to/dir --filter=regex}, the @var{OPTIONNAM} passed
+render --entry=path/to/dir --filter=regex}, the @var{ACTIONNAM} passed
 to @file{centos-art.sh} script is @option{--entry}.
 @end defvar
 
-@defvar OPTIONVAL
+@defvar ACTIONVAL
 Default option value passed as second argument in @file{centos-art.sh}
 command-line interface. For example, in the command @samp{centos-art
-render --entry=path/to/dir --filter=regex}, the @var{OPTIONVAL} passed
+render --entry=path/to/dir --filter=regex}, the @var{ACTIONVAL} passed
 to @file{centos-art.sh} script is @option{path/to/dir}.
 @end defvar
 
@@ -416,15 +416,18 @@ If no one of these values is set in @env{EDITOR} environment variable,
 
 @subsubsection Global functions
 
-The following global functions of @file{centos-art.sh} script, are
+The following global functions of @file{centos-art.sh} script are
 available for you to use inside specific functions:
 
 @defun cli_commitRepoChanges [LOCATION]
-Commit changes from the working copy up to the repository.
+
+Syncronize changes between repository and working copy.
 
 The @code{cli_commitRepoChanges} function uses the value of
-@var{OPTIONVAL} variable as reference to perform change verifications
-inside the working copy.
+@var{LOCATION} argument as reference to perform change verification
+inside the working copy using subversion commands. If @var{LOCATION}
+argument is not specified as @code{cli_commitRepoChanges} first
+argument, the @var{ACTIONVAL} variable is used as reference instead.
 
 The @code{cli_commitRepoChanges} function brings changes from the
 repository to the working copy---using @command{svn update}---, check
@@ -435,12 +438,34 @@ working copy up to the repository---using @command{svn commit}
 command---.
 
 Previous to commit the working copy changes up to the repository, the
-@code{cli_commitRepoChanges} function asks you to verify changes, and
-later, another confirmation question is shown to be sure you really
-want to commit changes up to central repository.
+@code{cli_commitRepoChanges} function asks you to verify
+changes---using @command{svn diff} command---, and later, another
+confirmation question is shown to be sure you really want to commit
+changes up to central repository.
 
-Call the @code{cli_commitRepoChanges} function after functions that
-modify files or directories inside the working copy.  
+@float Figure, trunk/Scripts/Bash/Functions/cli_commitRepoChanges
+@verbatim
+----------------------------------------------------------------------
+--> Bringing changes from the repository into the working copy
+--> Checking changes in the working copy
+----------------------------------------------------------------------
+Added           0 file from the repository.
+Deleted         0 file from the repository.
+Updated         0 file from the repository.
+Conflicted      0 file from the repository.
+Merged          0 file from the repository.
+Modified        4 files from the working copy.
+Unversioned     0 file from the working copy.
+Deleted         0 file from the working copy.
+Added           0 file from the working copy.
+----------------------------------------------------------------------
+@end verbatim
+@caption{The @code{cli_commitRepoChanges} function output.}
+@end float
+
+Call the @code{cli_commitRepoChanges} function before or/and after
+functions that modify files or directories inside the working copy as
+you may need to.  
 @end defun
 
 @defun cli_checkFiles FILE [TYPE]
@@ -669,7 +694,7 @@ temporal files inside @file{centos-art.sh} script.
 Output theme name.
 
 In order for @code{cli_getThemeName} function to extract theme name
-correctly, the @var{OPTIONVAL} variable must contain a directory path
+correctly, the @var{ACTIONVAL} variable must contain a directory path
 under @file{trunk/Identity/Themes/Motifs/} directory structure.
 Otherwise, @code{cli_getThemeName} returns an empty string.  
 @end defun
