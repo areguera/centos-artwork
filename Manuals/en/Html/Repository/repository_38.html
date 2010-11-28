@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 27 2010 by texi2html 1.76 -->
+<!-- Created on November, 28 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -237,7 +237,7 @@ function script and contains the value passed before the equal sign
 <tt>`centos-art.sh'</tt> script. For example, if the second command-line
 argument is <samp>`--hello='World''</samp>, the value of <var>ACTIONNAM</var>
 variable would be <samp>`--hello'</samp>.  Using this configuration let us
-deside which action to perform based on the option name passed to
+deside which action to perform based on the action name passed to
 <tt>`centos-art.sh'</tt> script as second argument. 
 </p>
 <p>The <code>greet</code> function definition makes available two valid
@@ -385,49 +385,79 @@ set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 <dt><u>Variable:</u> <b>FUNCNAM</b>
 <a name="IDX3"></a>
 </dt>
-<dd><p>Default function name passed as first argument in <tt>`centos-art.sh'</tt>
+<dd><p>Define function name.
+</p>
+<p>Function names associate sets of actions. There is one set of actions
+for each unique function name inside <tt>`centos-art.sh'</tt> script.
+</p>
+<p>Dunction names are passed as first argument in <tt>`centos-art.sh'</tt>
 command-line interface. For example, in the command <samp>`centos-art
 render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTION</var> passed to
 <tt>`centos-art.sh'</tt> script is <samp>`render'</samp>.
+</p>
+<p>When first argument is not provided, the <tt>`centos-art.sh'</tt> script
+immediatly ends its execution.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>ACTIONNAM</b>
 <a name="IDX4"></a>
 </dt>
-<dd><p>Default option name passed as second argument in <tt>`centos-art.sh'</tt>
-command-line interface. For example, in the command <samp>`centos-art
-render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTIONNAM</var> passed
-to <tt>`centos-art.sh'</tt> script is <samp>`--entry'</samp>.
+<dd><p>Define action name.
+</p>
+<p>Each action name identifies an specific action to perform, inside an
+specific function.
+</p>
+<p>Action name names aare passed as second argument in
+<tt>`centos-art.sh'</tt> command-line interface. For example, in the
+command <samp>`centos-art render --entry=path/to/dir --filter=regex'</samp>,
+the <var>ACTIONNAM</var> passed to <tt>`centos-art.sh'</tt> script is
+<samp>`--entry'</samp>.
+</p>
+<p>When second argument is not provided, the <tt>`centos-art.sh'</tt> script
+immediatly ends its execution.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>ACTIONVAL</b>
 <a name="IDX5"></a>
 </dt>
-<dd><p>Default option value passed as second argument in <tt>`centos-art.sh'</tt>
-command-line interface. For example, in the command <samp>`centos-art
-render --entry=path/to/dir --filter=regex'</samp>, the <var>ACTIONVAL</var> passed
-to <tt>`centos-art.sh'</tt> script is <samp>`path/to/dir'</samp>.
+<dd><p>Define action value.
+</p>
+<p>Action values are associated to just one action name. Action values
+contain the repository entry over which its associated action will be
+performed in.  Repository entries can be directories, files, or URLs
+refering the repository structure.
+</p>
+<p>When action value is not specified as repository entry, the
+<tt>`centos-art.sh'</tt> script evaluates the current directory it was
+executed from. If such directory is under the repository structure
+(i.e., <tt>`/home/centos/artwork/'</tt>), the <tt>`centos-art.sh'</tt> script
+uses that directory as value to <var>ACTIONVAL</var> variable. Otherwise,
+if outside the repository structure, the <tt>`centos-art.sh'</tt> script
+prints the message <samp>`The path provided can't be processed.'</samp> and,
+after it, immediatly ends script execution.
+</p>
+<p>Default action value is passed as second argument in
+<tt>`centos-art.sh'</tt> command-line interface. For example, in the
+command <samp>`centos-art render --entry=path/to/dir --filter=regex'</samp>,
+the <var>ACTIONVAL</var> passed to <tt>`centos-art.sh'</tt> script is
+<samp>`path/to/dir'</samp>.
 </p></dd></dl>
 
 <dl>
 <dt><u>Variable:</u> <b>REGEX</b>
 <a name="IDX6"></a>
 </dt>
-<dd><p>Default option value passed as third argument in <tt>`centos-art.sh'</tt>
-command-line interface. For example, in the command <samp>`centos-art
-render --entry=path/to/dir --filter=regex'</samp>, the <var>REGEX</var> passed to
-<tt>`centos-art.sh'</tt> is <samp>`regex'</samp>. 
+<dd><p>Define regular expression used as pattern to build the list of files
+to process.
 </p>
-<p>The third argument option name is not variable as second argument
-option name is. The third argument option name is fixed to
-<samp>`--filter'</samp> for whatever value it passes at the right side of
-its equal sign. 
+<p>By default, <var>REGEX</var> variable is set to <code>.+</code> to match all
+files.
 </p>
-<p>Generally, third argument option value is used to pass regular
-expression patterns that modify the list of files to process, but this
-is not the only feature <var>REGEX</var> global variable may serve to.
+<p>Functions that need to build a list of files to process use the option
+<samp>`--filter'</samp> to redefine <var>REGEX</var> variable default value, and
+so, control the amount of files to process.
 </p></dd></dl>
 
 <dl>
@@ -522,12 +552,12 @@ argument is not specified as <code>cli_commitRepoChanges</code> first
 argument, the <var>ACTIONVAL</var> variable is used as reference instead.
 </p>
 <p>The <code>cli_commitRepoChanges</code> function brings changes from the
-repository to the working copy--using <code>svn update</code>--, check
+repository to the working copy--using <code>svn update</code>--, checks
 the working copy changes--using <code>svn status</code> command--,
-print status report--using both <code>svn update</code> and <code>svn
-status</code> commands output, and finally, commit recent changes from the
-working copy up to the repository--using <code>svn commit</code>
-command--.
+prints status report--using both <code>svn update</code> and
+<code>svn status</code> commands output, and finally, commits recent
+changes from the working copy up to the repository--using
+<code>svn commit</code> command--.
 </p>
 <p>Previous to commit the working copy changes up to the repository, the
 <code>cli_commitRepoChanges</code> function asks you to verify
@@ -600,10 +630,6 @@ documentation message.
 <dt> <samp>`fh'</samp></dt>
 <dd><p>Ends script execution if <var>FILE</var> is neither a regular file or a
 symbolic link.
-</p></dd>
-<dt> <samp>`fd'</samp></dt>
-<dd><p>Ends script execution if <var>FILE</var> is neither a regular file or a
-directory.
 </p></dd>
 </dl>
 
@@ -1014,7 +1040,7 @@ available for you to use:
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 27 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>November, 28 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
