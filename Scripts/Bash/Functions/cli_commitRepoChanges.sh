@@ -146,6 +146,19 @@ function cli_commitRepoChanges {
        return 0 
     fi
 
+    # In case new unversioned files exist, ask user to add them into
+    # the repository. This may happen when new documentation entries
+    # are created.
+    if [[ ${FILESNUM[6]} -gt 0 ]];then
+        cli_printMessage "`eval_gettext "The following file is unversioned" \
+        "The following files are unversioned" ${FILESNUM[6]}`:"
+        for FILE in "${FILES[6]}";do
+            cli_printMessage $FILE 'AsResponseLine'
+        done
+        cli_printMessage "`gettext "Do you want to add them now?"`" 'AsYesOrNoRequestLine'
+        svn add "${FILES[6]}"
+    fi
+
     # Reset counter.
     COUNT=0
 
