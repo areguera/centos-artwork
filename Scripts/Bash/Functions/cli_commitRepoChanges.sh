@@ -155,7 +155,8 @@ function cli_commitRepoChanges {
         for FILE in ${FILES[6]};do
             cli_printMessage $FILE 'AsResponseLine'
         done
-        cli_printMessage "`gettext "Do you want to add them now?"`" 'AsYesOrNoRequestLine'
+        cli_printMessage "`ngettext "Do you want to add it now?" \
+            "Do you want to add them now?" ${FILESNUM[6]}`" 'AsYesOrNoRequestLine'
         svn add "${FILES[6]}"
     fi
 
