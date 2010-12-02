@@ -31,6 +31,9 @@ function manual_removeEntry {
     local ENTRIES_COUNTER=0
     local LOCATION=''
 
+    # Check changes in the working copy.
+    cli_commitRepoChanges "$ENTRY"
+
     # Check if the entry has been already removed.
     if [[ ! -f $ENTRY ]];then
         cli_printMessage "`gettext "The following entry doesn't exist:"`"
@@ -69,8 +72,8 @@ function manual_removeEntry {
 
     # Show a verification message before doing anything.
     cli_printMessage "`ngettext "The following entry will be removed:" \
-                               "The following entries will be removed:" \
-                               $ENTRIES_COUNTER`"
+        "The following entries will be removed:" \
+        $ENTRIES_COUNTER`"
  
     # Show list of affected entries.
     for ENTRY in $ENTRIES;do
@@ -95,10 +98,9 @@ function manual_removeEntry {
             # of changes. Only if documentation entry is clean of
             # changes we can mark it for deletion. So use subversion's
             # `del' command to do so.
-            eval svn del "$ENTRY" --quiet
+            svn del "$ENTRY" --quiet
 
-        elif [[ "$(cli_getRepoStatus "$ENTRY")" == '?' ]] \
-            || [[ "$(cli_getRepoStatus "$ENTRY")"  == '' ]] ;then
+        elif [[ "$(cli_getRepoStatus "$ENTRY")" == '?' ]];then
 
             # Documentation entry is not under version control, so we
             # don't care about changes inside unversioned
@@ -122,10 +124,13 @@ function manual_removeEntry {
 
         fi
 
-        # Update section's menu and nodes to reflect the fact that
-        # documentation entry has been removed.
+        # Remove entry on section's menu and nodes to reflect the
+        # fact that documentation entry has been removed.
         manual_updateMenu "remove-entry"
         manual_updateNodes
+
+        # Remove entry cross references from documentation manual.
+        manual_removeCrossReferences
 
     done
  

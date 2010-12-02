@@ -35,4 +35,11 @@ function manual_createEntry {
     # Update chapter-nodes (based on chapter-menu).
     manual_updateNodes
 
+    # Update old missing cross references. If for some reason a
+    # documentation entry is removed by mistake, and that mistake is
+    # fixing by adding the removed documentation entry back into the
+    # repository, rebuild the missing cross reference message to use
+    # the correct link to the documentation section.
+    manual_restoreCrossReferences
+
 }
