@@ -97,6 +97,15 @@ function cli_checkFiles {
             fi
             ;;
 
+        fd )
+            # To exist, file should be a regular file or a directory.
+            if [[ ! -f $FILE ]];then
+                if [[ ! -d $FILE ]];then
+                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
+                fi
+            fi
+            ;;
+
         * )
             # File exists.
             if [[ ! -a $FILE ]];then
