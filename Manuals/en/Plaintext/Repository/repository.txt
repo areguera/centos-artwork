@@ -223,7 +223,6 @@ CentOS Artwork Repository
   3.38 trunk/Scripts/Bash/Functions/Help
     3.38.1 Goals
     3.38.2 Description
-      3.38.2.1 Output different formats
     3.38.3 Usage
     3.38.4 See also
   3.39 trunk/Scripts/Bash/Functions/Html
@@ -3645,36 +3644,6 @@ available for you to use:
 
    * ...
 
-3.38.2.1 Output different formats
-.................................
-
-Remove -I option from info and plaintext output. Before output info and
-plaintext information we moved inside /home/centos/artwork directory
-which is the base location for paths inside texinfo documentation
-files. There is no need for info and plaintext output commands to
-specify the -I options since the command already takes place in the
-correct location the path information is correctly built on.
-
-   Nevertheless, the -I option is still required for html output.  Once
-inside /home/centos/artwork we need to move up to html output directory
-in order to run texi2html output command from inthere. This make
-texi2html to set relative path to images when html output is generated.
-
-   Relative path to images under html output directory will fail since
-there is no image in such location. Instead, a different absolute
-location is used. So we need to build that absolute path in order for
-images can be shown as we expect.
-
-   So this why we still need to use the -I option. We use the -I option
-to append the location /home/centos/artwork to texi2html search path;
-and because we use `@image' definition using trunk/ as root location to
-define images location ... texi2html is able to find the correct path
-to image, no matter where you execute the centos-art.sh help command.
-
-   Note that we keep images and documentation output in two different
-absolute locations. This is intentional. Such configuration let us
-maintain documentation and images independently one another.
-
 3.38.3 Usage
 ------------
 
@@ -6002,94 +5971,94 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  391)
-Common translation files:                      See 3.50.2.5. (line 5432)
-How to render brands' translation files:       See 3.52.3.   (line 5736)
-How to render fonts' translation files:        See 3.54.3.   (line 5809)
-How to render translation files:               See 3.50.3.   (line 5602)
-Metadata maintainance:                         See 3.45.2.   (line 4576)
-Specific translation files:                    See 3.50.2.6. (line 5457)
-tags:                                          See 2.        (line  394)
-Template translation files:                    See 3.50.2.4. (line 5262)
-Translation brands file names:                 See 3.52.2.1. (line 5693)
-Translation configuration scripts:             See 3.50.2.8. (line 5491)
-Translation entries:                           See 3.50.2.1. (line 5078)
-Translation files:                             See 3.50.2.3. (line 5194)
-Translation markers:                           See 3.50.2.2. (line 5159)
-Translation paths:                             See 3.50.2.1. (line 5078)
+branches:                                      See 1.        (line  390)
+Common translation files:                      See 3.50.2.5. (line 5401)
+How to render brands' translation files:       See 3.52.3.   (line 5705)
+How to render fonts' translation files:        See 3.54.3.   (line 5778)
+How to render translation files:               See 3.50.3.   (line 5571)
+Metadata maintainance:                         See 3.45.2.   (line 4545)
+Specific translation files:                    See 3.50.2.6. (line 5426)
+tags:                                          See 2.        (line  393)
+Template translation files:                    See 3.50.2.4. (line 5231)
+Translation brands file names:                 See 3.52.2.1. (line 5662)
+Translation configuration scripts:             See 3.50.2.8. (line 5460)
+Translation entries:                           See 3.50.2.1. (line 5047)
+Translation files:                             See 3.50.2.3. (line 5163)
+Translation markers:                           See 3.50.2.2. (line 5128)
+Translation paths:                             See 3.50.2.1. (line 5047)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5491)
-Translation rendering:                         See 3.50.2.7. (line 5480)
-Translation rendering default functionality:   See 3.50.2.9. (line 5577)
-trunk:                                         See 3.        (line  397)
-trunk Identity:                                See 3.1.      (line  400)
-trunk Identity Brands:                         See 3.2.      (line  820)
-trunk Identity Fonts:                          See 3.3.      (line  837)
-trunk Identity Icons:                          See 3.4.      (line  914)
-trunk Identity Isolinux:                       See 3.5.      (line  931)
-trunk Identity Models:                         See 3.6.      (line  948)
-trunk Identity Models Css:                     See 3.7.      (line  968)
-trunk Identity Models Html:                    See 3.8.      (line  990)
-trunk Identity Models Img Promo Web:           See 3.9.      (line 1011)
-trunk Identity Models Tpl:                     See 3.10.     (line 1032)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1053)
-trunk Identity Models Xcf:                     See 3.12.     (line 1367)
-trunk Identity Release:                        See 3.13.     (line 1388)
-trunk Identity Themes:                         See 3.14.     (line 1405)
-trunk Identity Themes Models:                  See 3.15.     (line 1430)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1463)
-trunk Identity Themes Models Default:          See 3.17.     (line 1490)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1522)
+                                                             (line 5460)
+Translation rendering:                         See 3.50.2.7. (line 5449)
+Translation rendering default functionality:   See 3.50.2.9. (line 5546)
+trunk:                                         See 3.        (line  396)
+trunk Identity:                                See 3.1.      (line  399)
+trunk Identity Brands:                         See 3.2.      (line  819)
+trunk Identity Fonts:                          See 3.3.      (line  836)
+trunk Identity Icons:                          See 3.4.      (line  913)
+trunk Identity Isolinux:                       See 3.5.      (line  930)
+trunk Identity Models:                         See 3.6.      (line  947)
+trunk Identity Models Css:                     See 3.7.      (line  967)
+trunk Identity Models Html:                    See 3.8.      (line  989)
+trunk Identity Models Img Promo Web:           See 3.9.      (line 1010)
+trunk Identity Models Tpl:                     See 3.10.     (line 1031)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1052)
+trunk Identity Models Xcf:                     See 3.12.     (line 1366)
+trunk Identity Release:                        See 3.13.     (line 1387)
+trunk Identity Themes:                         See 3.14.     (line 1404)
+trunk Identity Themes Models:                  See 3.15.     (line 1429)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1462)
+trunk Identity Themes Models Default:          See 3.17.     (line 1489)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1521)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1606)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1623)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1649)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1674)
-trunk Identity Themes Motifs Flame:            See 3.23.     (line 1778)
-trunk Identity Themes Motifs Modern:           See 3.24.     (line 1964)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 1981)
+                                                             (line 1605)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1622)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1648)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1673)
+trunk Identity Themes Motifs Flame:            See 3.23.     (line 1777)
+trunk Identity Themes Motifs Modern:           See 3.24.     (line 1963)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 1980)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.26.
-                                                             (line 2103)
+                                                             (line 2102)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.27.
-                                                             (line 2124)
+                                                             (line 2123)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.28.
-                                                             (line 2145)
+                                                             (line 2144)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.29.
-                                                             (line 2172)
-trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2228)
-trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2250)
+                                                             (line 2171)
+trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2227)
+trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2249)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.32.
-                                                             (line 2267)
-trunk Identity Widgets:                        See 3.33.     (line 2563)
-trunk Manuals:                                 See 3.34.     (line 2580)
-trunk Scripts:                                 See 3.35.     (line 2634)
-trunk Scripts Bash:                            See 3.36.     (line 2658)
-trunk Scripts Bash Functions:                  See 3.37.     (line 2770)
-trunk Scripts Bash Functions Help:             See 3.38.     (line 3638)
-trunk Scripts Bash Functions Html:             See 3.39.     (line 3689)
-trunk Scripts Bash Functions Locale:           See 3.40.     (line 3710)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 3790)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4191)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4212)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4390)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4558)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 4746)
-trunk Scripts Bash Locale:                     See 3.47.     (line 4962)
-trunk Scripts Perl:                            See 3.48.     (line 4991)
-trunk Scripts Python:                          See 3.49.     (line 5008)
-trunk Translations:                            See 3.50.     (line 5029)
-trunk Translations Identity:                   See 3.51.     (line 5631)
-trunk Translations Identity Brands:            See 3.52.     (line 5652)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 5747)
-trunk Translations Identity Fonts:             See 3.54.     (line 5762)
-trunk Translations Identity Models:            See 3.55.     (line 5825)
-trunk Translations Identity Release:           See 3.56.     (line 5840)
-trunk Translations Identity Themes:            See 3.57.     (line 5855)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 5870)
+                                                             (line 2266)
+trunk Identity Widgets:                        See 3.33.     (line 2562)
+trunk Manuals:                                 See 3.34.     (line 2579)
+trunk Scripts:                                 See 3.35.     (line 2633)
+trunk Scripts Bash:                            See 3.36.     (line 2657)
+trunk Scripts Bash Functions:                  See 3.37.     (line 2769)
+trunk Scripts Bash Functions Help:             See 3.38.     (line 3637)
+trunk Scripts Bash Functions Html:             See 3.39.     (line 3658)
+trunk Scripts Bash Functions Locale:           See 3.40.     (line 3679)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 3759)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4160)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4181)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4359)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4527)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 4715)
+trunk Scripts Bash Locale:                     See 3.47.     (line 4931)
+trunk Scripts Perl:                            See 3.48.     (line 4960)
+trunk Scripts Python:                          See 3.49.     (line 4977)
+trunk Translations:                            See 3.50.     (line 4998)
+trunk Translations Identity:                   See 3.51.     (line 5600)
+trunk Translations Identity Brands:            See 3.52.     (line 5621)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 5716)
+trunk Translations Identity Fonts:             See 3.54.     (line 5731)
+trunk Translations Identity Models:            See 3.55.     (line 5794)
+trunk Translations Identity Release:           See 3.56.     (line 5809)
+trunk Translations Identity Themes:            See 3.57.     (line 5824)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 5839)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 5891)
-trunk Translations Identity Widgets:           See 3.60.     (line 5984)
-Unused definitions:                            See 3.45.2.1. (line 4683)
+                                                             (line 5860)
+trunk Translations Identity Widgets:           See 3.60.     (line 5953)
+Unused definitions:                            See 3.45.2.1. (line 4652)
 List of Figures
 ***************
 
