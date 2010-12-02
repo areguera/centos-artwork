@@ -26,6 +26,9 @@
 
 function help_updateOutputFiles {
 
+    # Add division line to differentiate action output visually.
+    echo '----------------------------------------------------------------------'
+
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
     # paths incorrectly.
