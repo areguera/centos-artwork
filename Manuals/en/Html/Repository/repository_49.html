@@ -27,10 +27,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Render/Config</title>
+<title>CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Shell</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Render/Config">
-<meta name="keywords" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Render/Config">
+<meta name="description" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Shell">
+<meta name="keywords" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Shell">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -59,222 +59,202 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_48.html#SEC265" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC267" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_48.html#SEC268" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC270" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC377" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC372" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC377" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC372" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash-Functions-Render-Config"></a>
-<a name="SEC266"></a>
-<h2 class="section"> 3.46 trunk/Scripts/Bash/Functions/Render/Config </h2>
-
-
-<a name="SEC267"></a>
-<h3 class="subsection"> 3.46.1 Goals </h3>
-
-<p>The <tt>`trunk/Scripts/Bash/Config'</tt> directory exists to oraganize
-pre-rendering configuration scripts.
-</p>
-
-<a name="SEC268"></a>
-<h3 class="subsection"> 3.46.2 Description </h3>
-
-<p>Pre-rendering configuration scripts let you customize the way
-<code>centos-art.sh</code> script renders identity and translation
-repository entries.  Pre-rendering configuration scripts are
-<tt>`render.conf.sh'</tt> files with <code>render_loadConfig</code> function
-definition inside. 
-</p>
-<p>There is one <tt>`render.conf.sh'</tt> file for each pre-rendering
-configuration entry. Pre-rendering configuration entries can be based
-both on identity and translation repository entires.  Pre-rendering
-configuration entries are required for each identity entry, but not
-for translation entries. 
-</p>
-
+<a name="trunk-Scripts-Bash-Functions-Shell"></a>
 <a name="SEC269"></a>
-<h4 class="subsubsection"> 3.46.2.1 The <tt>`render.conf.sh'</tt> identity model </h4>
+<h2 class="section"> 3.46 trunk/Scripts/Bash/Functions/Shell </h2>
 
-<p>Inside CentOS Artwork Repository, we consider identity entries to all
-directories under <tt>`trunk/Identity'</tt> directory. Identity entries can be
-image-based or text-based. When you render image-based identity
-entries you need to use image-based pre-rendering configuration
-scripts. Likewise, when you render text-based identity entries you
-need to use text-based pre-rendering configuration scripts.
-</p>
-<p>Inside identity pre-rendering configuration scripts, image-based
-pre-rendering configuration scripts look like the following:
-</p>
-<pre class="verbatim">#!/bin/bash
-
-function render_loadConfig {
-
-    # Define rendering actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderFormats: tif xpm pdf ppm'
-
-}
-</pre>
-<p>Inside identity pre-rendering configuration scripts, text-based
-pre-rendering configuration scripts look like the following:
-</p>
-<pre class="verbatim">#!/bin/bash
-
-function render_loadConfig {
-
-    # Define rendering actions.
-    ACTIONS[0]='BASE:renderText'
-    ACTIONS[1]='POST:formatText: --width=70 --uniform-spacing'
-
-}
-</pre>
-<p>When using identity pre-rendering configuration scripts, you can
-extend both image-based and text-based pre-rendering configuration
-scripts using image-based and text-based post-rendering actions,
-respectively. 
-</p>
 
 <a name="SEC270"></a>
-<h4 class="subsubsection"> 3.46.2.2 The <tt>`render.conf.sh'</tt> translation model </h4>
+<h3 class="subsection"> 3.46.1 Goals </h3>
 
-<p>Translation pre-rendering configuration scripts take precedence before
-default translation rendering action. Translation pre-rendering
-actions are useful when default translation rendering action do not
-fit itself to translation entry rendering requirements.
+<p>This section exists to organize files related to <code>shell</code>
+functionality of <tt>`centos-art.sh'</tt> script.
 </p>
 
 <a name="SEC271"></a>
-<h4 class="subsubsection"> 3.46.2.3 The <tt>`render.conf.sh'</tt> rendering actions </h4>
+<h3 class="subsection"> 3.46.2 Description </h3>
 
-<p>Inside both image-based and text-based identity pre-rendering
-configuration scripts, we use the <samp>`ACTIONS'</samp> array variable to
-define the way <code>centos-art.sh</code> script performs identity
-rendering.  Identity rendering is organized by one <samp>`BASE'</samp> action,
-and optional <samp>`POST'</samp> and <samp>`LAST'</samp> rendering actions.
+<p>The <code>shell</code> functionality of <tt>`centos-art.sh'</tt> script helps
+you to maintain bash scripts inside repository. For example, suppose
+you've created many functionalities for <tt>`centos-art.sh'</tt> script,
+and you want to use a common copyright and license note for
+consistency in all your script files. If you have a bunch of files,
+doing this one by one wouldn't be a big deal. In contrast, if the
+amount of files grows, updating the copyright and license note for all
+of them would be a task rather tedious. The <code>shell</code> functionality
+exists to solve maintainance tasks just as the one previously
+mentioned.
 </p>
-<p>The <samp>`BASE'</samp> action specifies what kind of rendering does the
-<code>centos-art.sh</code> script will perform with the files related to
-the pre-rendering configuration script. The <samp>`BASE'</samp> action is
-required. Possible values to <samp>`BASE'</samp> action are either
-<samp>`renderImage'</samp> or <samp>`renderText'</samp> only.
+<p>When you use <code>shell</code> functionality to update copyright inside
+script files, it is required that your script files contain (at least)
+the following top commentary structure:
 </p>
-<p>To specify the <samp>`BASE'</samp> action you need to set the <samp>`BASE:'</samp>
-string followed by one of the possible values. For example, if you
-want to render images, consider the following definition of
-<samp>`BASE'</samp> action:
-</p>
-<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| # 
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|     
+15| }
 </pre>
-<p>Only one <samp>`BASE'</samp> action must be specified. If more than one
-<samp>`BASE'</samp> action is specified, the last one is used. If no
-<samp>`BASE'</samp> action is specified at all, an error is triggered and the
-<code>centos-art.sh</code> script ends its execution.
+<p>Relevant lines in the above structure are lines from 5 to 9.
+Everything else in the file is left immutable.
 </p>
-<p>The <samp>`POST'</samp> action specifies which action to apply for
-each file rendered (at the rendering time). This action is optional.
-You can set many different <samp>`POST'</samp> actions to apply many different
-actions over the same already rendered file. Possible values to
-<samp>`POST'</samp> action are <samp>`renderFormats'</samp>, <samp>`renderSyslinux'</samp>,
-<samp>`renderGrub'</samp>, etc. 
+<p>When you are updating copyright through <code>shell</code>
+functionality,  the <tt>`centos-art.sh'</tt> script replaces everything
+in-between line 5 --the first one matching <samp>`^# Copyright .+$'</samp>
+string-- and line 9--the first long dash separator matching <samp>`^#
+-+$'</samp>-- with the content of copyright template instance.
 </p>
-<p>To specify the <samp>`POST'</samp> action, you need to use set the
-<samp>`POST:'</samp> followed by the function name of the action you want to
-perform.  The exact form depends on your needs. For example, consider
-the following example to produce <samp>`xpm'</samp>, <samp>`jpg'</samp>, and
-<samp>`tif'</samp> images, based on already rendered <samp>`png'</samp> image, and
-also organize the produced files in directories named as their own
-extensions:
-</p>
-<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
-ACTIONS[1]='POST:renderFormats: xpm jpg tif'
-ACTIONS[2]='POST:groupByFormat: png xpm jpg tif'
-</pre>
-<p>In the previous example, file organization takes place at the moment
-of rendering, just after producing the <samp>`png'</samp> base file and before
-going to the next file in the list of files to render. If you don't
-want to organized the produced files in directories named as their own
-extensions, just remove the <samp>`POST:groupByFormat'</samp> action line:
-</p>
-<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
-ACTIONS[1]='POST:renderFormats: xpm jpg tif'
-</pre>
-<p>The <samp>`LAST'</samp> action specifies which actions to apply once the last
-file in the list of files to process has been rendered. The
-<samp>`LAST'</samp> action is optional. Possible values for <samp>`LAST'</samp>
-actions may be <samp>`groupByFormat'</samp>, <samp>`renderGdmTgz'</samp>, etc.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> See section <a href="repository_48.html#SEC261">trunk/Scripts/Bash/Functions/Render</a>, to know more
-about possible values for <samp>`BASE'</samp>, <samp>`POST'</samp> and <samp>`LAST'</samp>
-action definitions.
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Be sure to add the long dash separator that matches
+<samp>`^# -+$'</samp> regular expression <em>before</em> the function
+definition. Otherwise, if the <samp>`Copyright'</samp> line is present but no
+long dash separator exists, <tt>`centos-art.sh'</tt> will remove anything
+in-between the <samp>`Copyright'</samp> line and the end of file. This way you
+may lost your function definitions entirely.
 </p></blockquote>
 
-<p>To specify the <samp>`LAST'</samp> action, you need to set the <samp>`LAST:'</samp>
-string followed by the function name of the action you want to
-perform.  For example, consider the following example if you want to
-render all files first and organize them later:
+<p>The copyright template instance is created from one copyright template
+stored in the <tt>`Config/tpl_forCopyright.sed'</tt> file.  The template
+instance is created once, and later removed when no longer needed. At
+this moment, when template instance is created, the
+<tt>`centos-art.sh'</tt> script takes advantage of automation in order to
+set copyright full name and date dynamically.
 </p>
-<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
-ACTIONS[1]='POST:renderFormats: xpm jpg tif'
-ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
+<p>When you use <code>shell</code> functionality to update copyright, the first
+thing <tt>`shell'</tt> functionality does is requesting copyright
+information to user, and later, if values were left empty (i.e., no
+value was typed before pressing <kbd>RET</kbd> key), the <tt>`shell'</tt>
+functionality uses its own default values.
+</p>
+<p>When <code>shell</code> functionality uses its own default values, the final
+copyright note looks like the following:
+</p>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomthing.sh -- The function description goes here.
+ 4| #
+ 5| # Copyright (C) 2003, 2010 The CentOS Project
+ 6| # 
+ 7| # This program is free software; you can redistribute it and/or modify
+ 8| # it under the terms of the GNU General Public License as published by
+ 9| # the Free Software Foundation; either version 2 of the License, or
+10| # (at your option) any later version.
+11| # 
+12| # This program is distributed in the hope that it will be useful, but
+13| # WITHOUT ANY WARRANTY; without even the implied warranty of
+14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+15| # General Public License for more details.
+16| #
+17| # You should have received a copy of the GNU General Public License
+18| # along with this program; if not, write to the Free Software
+19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+20| # USA.
+21| #
+22| # ----------------------------------------------------------------------
+23| # $Id$
+24| # ----------------------------------------------------------------------
+25|
+26| function doSomething {
+27|
+28| }
 </pre>
+<p>Relevant lines in the above structure are lines from 5 to 22.  Pay
+attention how the copyright line was built, and how the license was
+added into the top comment where previously was just three dots.
+Everything else in the file was left immutable. 
+</p>
+<p>To change copyright information (i.e., full name or year information),
+run the <code>shell</code> functionality over the root directory containing
+the script files you want to update copyright in and enter the
+appropriate information when it be requested. You can run the
+<code>shell</code> functionality as many times as you need to.
+</p>
+<p>To change copyright license (i.e., the text in-between lines 7 and
+20), you need to edit the <tt>`Config/tpl_forCopyright.sed'</tt> file, set
+the appropriate information, and run the <code>shell</code> functionality
+once again for changes to take effect over the files you specify.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> The <tt>`centos-art.sh'</tt> script is released as: 
+</p>
+<pre class="verbatim">GNU GENERAL PUBLIC LICENSE
+Version 2, June 1991
+
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+</pre>
+<p>Do not change the license information under which <tt>`centos-art.sh'</tt>
+script is released. Instead, if you think a different license must be
+used, please share your reasons at <a class="mailto" href="mailto:centos-devel@centos-art.sh">CentOS Developers mailing list</a>.
+</p></blockquote>
+
 
 <a name="SEC272"></a>
 <h3 class="subsection"> 3.46.3 Usage </h3>
 
-<p>Use the following commands to administer both identity and translation
-pre-rendering configuration scripts:
-</p>
 <dl compact="compact">
-<dt> <samp>`centos-art config --create='path/to/dir/''</samp></dt>
-<dd>
-<p>Use this command to create <samp>`path/to/dir'</samp> related pre-rendering
-configuration script.
-</p>
-</dd>
-<dt> <samp>`centos-art config --edit='path/to/dir/''</samp></dt>
-<dd>
-<p>Use this command to edit <samp>`path/to/dir'</samp> related pre-rendering
-configuration script.  
-</p>
-</dd>
-<dt> <samp>`centos-art config --read='path/to/dir/''</samp></dt>
-<dd>
-<p>Use this command to read <samp>`path/to/dir'</samp> related pre-rendering
-configuration script.  
-</p>
-</dd>
-<dt> <samp>`centos-art config --remove='path/to/dir/''</samp></dt>
-<dd>
-<p>Use this command to remove <samp>`path/to/dir'</samp> related pre-rendering
-configuration script.
-</p>
-</dd>
+<dt> <code>centos-art sh --update-copyright='path/to/dir'</code></dt>
+<dt> <code>centos-art sh --update-copyright='path/to/dir' --filter='regex'</code></dt>
+<dd><p>Use these commands to update copyright information in <samp>`.sh'</samp> files
+under <samp>`path/to/dir'</samp> directory. 
+</p></dd>
 </dl>
 
-<p>In the commands above, <samp>`path/to/dir'</samp> refers to one renderable
-directory path under <tt>`trunk/Identity'</tt> or
-<tt>`trunk/Translations'</tt> structures only. 
+<p>When you provide <samp>`--filter='regex''</samp> argument, the list of files
+to process is reduced as specified in <samp>`regex'</samp> regular expression.
+Inside <tt>`centos-art.sh'</tt> script, the <samp>`regex'</samp> regular
+expression is used in combination with <code>find</code> command to look
+for files matching the regular expression path pattern.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> In order for <samp>`regex'</samp> regular expression to match
+a file, the <samp>`regex'</samp> regular expresion must match the whole file
+path not just the file name. 
+</p></blockquote>
+
+<p>For example, if you want to match all <tt>`render.conf.sh'</tt> files
+inside <tt>`path/to/dir'</tt>, use the <code>.+/render.conf</code> regular
+expression.  Later, <tt>`centos-art.sh'</tt> script uses this value inside
+<code>^$REGEX\.sh$</code> expression in order to build the final regular
+expression (i.e., <code>^.+/render.conf\.sh$</code>) that is evaluated
+against available file paths inside the list of files to process.
+</p>
+<p>Exceptionally, when you provide <samp>`--filter='regex''</samp> in the way
+that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
+<samp>`path/to/dir/regex'</samp>), matches a regular file; the
+<tt>`centos-art.sh'</tt> script uses the file matching as only file in the
+list of files to process. 
 </p>
 
 <a name="SEC273"></a>
 <h3 class="subsection"> 3.46.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_42.html#SEC221">3.39 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_41.html#SEC216">3.38 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_43.html#SEC226">3.40 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_48.html#SEC261">3.45 trunk/Scripts/Bash/Functions/Render</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_42.html#SEC221">3.39 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -284,8 +264,8 @@ directory path under <tt>`trunk/Identity'</tt> or
 <td valign="middle" align="left">[<a href="repository_50.html#SEC274" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC266" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_67.html#SEC377" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC269" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC372" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
