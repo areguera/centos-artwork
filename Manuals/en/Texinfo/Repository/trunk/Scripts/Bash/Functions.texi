@@ -244,9 +244,9 @@ change it to have a little fun.
 
 Now that we have a specific function that works as we expect, it is
 time to document it. To document @code{greet} specific functionality,
-we use its directory path and the @code{help} functionality
-(@strong{WARNING:} @emph{The @samp{trunk Scripts Bash Functions Help} documentation entry no longer exists.}) of @file{centos-art.sh}
-script, just as the following command illustrates: 
+we use its directory path and the @code{manual} functionality () of
+@file{centos-art.sh} script, just as the following command
+illustrates: 
 
 @verbatim
 centos-art help --edit=trunk/Scripts/Bash/Functions/Greet
@@ -947,7 +947,6 @@ The following specific functions of @file{centos-art.sh} script, are
 available for you to use:
 
 @menu
-@c --- Removed: trunk Scripts Bash Functions Help
 * trunk Scripts Bash Functions Html::
 * trunk Scripts Bash Functions Locale::
 * trunk Scripts Bash Functions Path::
