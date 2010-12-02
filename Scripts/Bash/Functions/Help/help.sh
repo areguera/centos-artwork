@@ -72,10 +72,10 @@ function help {
     # and subsub section will not have their own files, they will be
     # written inside section files instead.
     ENTRYCHAPTER=$(echo $ENTRY | cut -d / -f-10)
-    
+
     # Define chapter name for this documentation entry.
     CHAPTERNAME=$(basename $ENTRYCHAPTER)
-    
+
     # Initialize documentation functions and path patterns.
     help_getActions
 

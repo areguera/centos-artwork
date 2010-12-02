@@ -85,24 +85,54 @@ function help_removeEntry {
         # Show which entry is being removed.
         cli_printMessage "$ENTRY" "AsRemovingLine"
 
-        # Try to remove it from working copy using subversion's
-        # del command.
-        eval svn del $ENTRY --force --quiet
+        # Remove documentation entry. At this point, documentation
+        # entry can be under version control or not versioned at all.
+        # Here we need to decide how to remove documentation entries
+        # based on whether they are under version control or not.
+        if [[ "$(cli_getRepoStatus "$ENTRY")" == ' ' ]];then
 
-    done
-        
-    # Update menu and nodes in order to produce output files
-    # correctly.
-    if [[ -d $ENTRYCHAPTER ]];then
-        # At this point the chapter directory was not removed but
-        # we need to update its menu and nodes to reflect the fact
-        # that some documentation entries were removed inside it.
+            # Documentation entry is under version control and clean
+            # of changes. Only if documentation entry is clean of
+            # changes we can mark it for deletion. So use subversion's
+            # `del' command to do so.
+            eval svn del "$ENTRY" --quiet
+
+        elif [[ "$(cli_getRepoStatus "$ENTRY")" == '?' ]] \
+            || [[ "$(cli_getRepoStatus "$ENTRY")"  == '' ]] ;then
+
+            # Documentation entry is not under version control, so we
+            # don't care about changes inside unversioned
+            # documentation entries at all. If you say centos-art.sh
+            # script to remove an unversion documentation entry it
+            # will do so, using convenctional `rm' command.
+            if [[ -d "$ENTRY" ]];then
+                rm -r "$ENTRY"
+            else
+                rm "$ENTRY"
+            fi
+
+        else
+
+            # Documentation entry is under version control and it does
+            # have changes. We don't remove a versioned documentation
+            # entry with changes. So print a message about it and stop
+            # script execution.
+            cli_printMessage "`gettext "The documentation entry cannot be removed."`" 'AsErrorLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+
+        fi
+
+        # Update section's menu and nodes to reflect the fact that
+        # documentation entry has been removed.
         help_updateMenu "remove-entry"
         help_updateNodes
-    else
-        # At this point the chapter directory and all its sections
-        # were removed. Update the menu and nodes in the master
-        # texinfo document to reflect that fact.
+
+    done
+ 
+    # Update chapter's menu and nodes in the master texinfo document.
+    # This is mainly applied when one of the chapters (e.g., trunk/,
+    # tags/, or branches/) is removed.
+    if [[ ! -d $ENTRYCHAPTER ]];then
         help_updateChaptersMenu 'remove-entry'
         help_updateChaptersNodes
     fi
