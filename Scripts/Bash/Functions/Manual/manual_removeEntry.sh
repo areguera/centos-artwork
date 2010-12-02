@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_removeEntry.sh -- This function removes a documentation entry
+# manual_removeEntry.sh -- This function removes a documentation entry
 # from your working copy documentation structure.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_removeEntry {
+function manual_removeEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRIES=''
@@ -46,7 +46,7 @@ function help_removeEntry {
 
     # Re-define location to match the chapter's root directory. This
     # applies when you try to remove the whole chapter from the
-    # working copy (e.g., centos-art help --remove=/home/centos/artwork/trunk/).
+    # working copy (e.g., centos-art manual --remove=/home/centos/artwork/trunk/).
     if [[ $ENTRY =~ "${MANUALS_FILE[7]}$" ]];then
         LOCATION=$(dirname $ENTRY)
     fi
@@ -124,8 +124,8 @@ function help_removeEntry {
 
         # Update section's menu and nodes to reflect the fact that
         # documentation entry has been removed.
-        help_updateMenu "remove-entry"
-        help_updateNodes
+        manual_updateMenu "remove-entry"
+        manual_updateNodes
 
     done
  
@@ -133,11 +133,11 @@ function help_removeEntry {
     # This is mainly applied when one of the chapters (e.g., trunk/,
     # tags/, or branches/) is removed.
     if [[ ! -d $ENTRYCHAPTER ]];then
-        help_updateChaptersMenu 'remove-entry'
-        help_updateChaptersNodes
+        manual_updateChaptersMenu 'remove-entry'
+        manual_updateChaptersNodes
     fi
 
     # Update manuals' related output files.
-    help_updateOutputFiles
+    manual_updateOutputFiles
 
 }

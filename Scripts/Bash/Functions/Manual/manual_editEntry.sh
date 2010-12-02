@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_editEntry.sh -- This function edits documentation entry based
+# manual_editEntry.sh -- This function edits documentation entry based
 # on entry pattern.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,21 +24,21 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_editEntry {
+function manual_editEntry {
 
     # Check chapter existence. In order to create/edit a section the
     # chapter of that section needs to exist first. If the chapter
     # hasn't been created, where are you going to store the section
     # files?  Put the chapter's checker here.
-    help_checkChapter
+    manual_checkChapter
 
     # Check section existence.
-    help_checkEntry
+    manual_checkEntry
 
     # Use default text editor to edit the documentation entry.
     eval $EDITOR $ENTRY
 
     # Re-build output files to propagate recent changes.
-    help_updateOutputFiles
+    manual_updateOutputFiles
 
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFileHtml.sh -- This function updates manuals' html
+# manual_updateOutputFileHtml.sh -- This function updates manuals' html
 # related output files.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileHtml {
+function manual_updateOutputFileHtml {
 
     # Output action message
     cli_printMessage "`gettext "Updating manual's html output"`" 'AsResponseLine'

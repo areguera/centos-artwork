@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_searchIndex.sh -- This function does an index search inside the
+# manual_searchIndex.sh -- This function does an index search inside the
 # info document.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_searchIndex {
+function manual_searchIndex {
 
     # Define search pattern format.
     local PATTERN='^[[:alnum:],]+$'

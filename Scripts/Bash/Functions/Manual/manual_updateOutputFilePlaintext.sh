@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFilePlaintext.sh -- This function updates manuals'
+# manual_updateOutputFilePlaintext.sh -- This function updates manuals'
 # plaintext related output file.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFilePlaintext {
+function manual_updateOutputFilePlaintext {
 
     # Output action message.
     cli_printMessage "`gettext "Updating manual's plaintext output"`" 'AsResponseLine'

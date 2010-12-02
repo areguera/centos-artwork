@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_createLanguageLayout.sh -- This function creates texinfo's main
+# manual_createLanguageLayout.sh -- This function creates texinfo's main
 # documentation structure for an specific language.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -22,7 +22,7 @@
 # 
 # ----------------------------------------------------------------------
 
-function help_createLanguageLayout {
+function manual_createLanguageLayout {
 
     # Define variables as local to avoid conflicts outside
     local COUNTER=0

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateChaptersNodes.sh - This function updates nodes of
+# manual_updateChaptersNodes.sh - This function updates nodes of
 # chapters based on menu of chapters.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateChaptersNodes {
+function manual_updateChaptersNodes {
 
     # Build list "nodes of chapters" based on menu of chapters.
     local CHAPTERNODES=$(cat ${MANUALS_FILE[2]} \

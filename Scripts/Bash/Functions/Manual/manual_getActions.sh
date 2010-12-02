@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_getActions.sh -- This function initializes documentation
+# manual_getActions.sh -- This function initializes documentation
 # functionalities, using action value as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,30 +24,30 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_getActions {
+function manual_getActions {
 
-    help_checkLanguageLayout
+    manual_checkLanguageLayout
 
     case $ACTIONNAM in
     
     --search )
-        help_searchIndex
+        manual_searchIndex
         ;;
     
     --edit )
-        help_editEntry
+        manual_editEntry
         ;;
     
     --remove )
-        help_removeEntry
+        manual_removeEntry
         ;;
     
     --update )
-        help_updateOutputFiles
+        manual_updateOutputFiles
         ;;
     
     --read )
-        help_searchNode
+        manual_searchNode
         ;;
 
     * )

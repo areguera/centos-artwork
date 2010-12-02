@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateChaptersMenu.sh - This function updates chapter menu.
+# manual_updateChaptersMenu.sh - This function updates chapter menu.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateChaptersMenu {
+function manual_updateChaptersMenu {
 
     local ACTION=$1
     local MENUCHAPTERS=''

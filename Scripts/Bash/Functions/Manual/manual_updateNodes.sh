@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateNodes.sh -- This function updates chapter's nodes
+# manual_updateNodes.sh -- This function updates chapter's nodes
 # definition using the chapter's menu as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateNodes {
+function manual_updateNodes {
 
     # Retrive nodes' entries from chapter-menu.texi file.
     local NODES=$(cat $ENTRYCHAPTER/${MANUALS_FILE[8]} \

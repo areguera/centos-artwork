@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFileInfo.sh -- This function updates manual's info
+# manual_updateOutputFileInfo.sh -- This function updates manual's info
 # output related file.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileInfo {
+function manual_updateOutputFileInfo {
 
     # Output action message.
     cli_printMessage "`gettext "Updating manual's info output"`" 'AsResponseLine'

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_searchNode.sh -- This function does a node search inside the
+# manual_searchNode.sh -- This function does a node search inside the
 # info document.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,15 +24,15 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_searchNode {
+function manual_searchNode {
 
     # Check entry inside documentation structure. If the entry
     # exits use the info reader to open the info file at the
     # specified node. Otherwise, ask the user for create it.
     if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="$(help_getNode)" --file=${MANUALS_FILE[4]}
+        /usr/bin/info --node="$(manual_getNode)" --file=${MANUALS_FILE[4]}
     else
-        help_editEntry
+        manual_editEntry
     fi
 
 }

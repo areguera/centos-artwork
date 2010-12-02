@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_checkChapter.sh -- This function checks chapter structure. If
+# manual_checkChapter.sh -- This function checks chapter structure. If
 # it doesn't exist, create it.  Inside CentOS Artwork Repository
 # chapters are the base structure used to organize documentation.
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_checkChapter {
+function manual_checkChapter {
 
     # Check chapter's directory existence.
     if [[ ! -d $ENTRYCHAPTER ]];then
@@ -34,9 +34,9 @@ function help_checkChapter {
         cli_printMessage "$ENTRYCHAPTER" "AsResponseLine"
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
-        help_updateChaptersFiles
-        help_updateChaptersMenu
-        help_updateChaptersNodes
+        manual_updateChaptersFiles
+        manual_updateChaptersMenu
+        manual_updateChaptersNodes
 
     fi
 

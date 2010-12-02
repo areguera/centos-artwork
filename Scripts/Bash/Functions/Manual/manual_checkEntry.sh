@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_checkEntry.sh -- This function checks the documentation entry
+# manual_checkEntry.sh -- This function checks the documentation entry
 # existence. 
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_checkEntry {
+function manual_checkEntry {
 
     # Check entry to edit and create it if it doesn't exist.
     if [[ ! -f $ENTRY ]];then
@@ -33,7 +33,7 @@ function help_checkEntry {
         cli_printMessage "$ENTRY" "AsResponseLine"
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
-        help_createEntry
+        manual_createEntry
 
     fi
 

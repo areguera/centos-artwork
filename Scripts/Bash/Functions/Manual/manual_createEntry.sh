@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_createEntry.sh -- This function creates a new documentation
+# manual_createEntry.sh -- This function creates a new documentation
 # entry based on action value (ACTIONVAL).
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,15 +24,15 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_createEntry {
+function manual_createEntry {
 
     # Check chapter structure for this entry.
-    help_checkChapter
+    manual_checkChapter
 
     # Update chapter-menu for this entry.
-    help_updateMenu
+    manual_updateMenu
 
     # Update chapter-nodes (based on chapter-menu).
-    help_updateNodes
+    manual_updateNodes
 
 }

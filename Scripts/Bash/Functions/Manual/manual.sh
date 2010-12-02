@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# help.sh -- This function provides documentation features to
+# manual.sh -- This function provides documentation features to
 # centos-art.sh script. Here we initialize documentation variables and
-# call help_getActions functions.
+# call manual_getActions functions.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
     
-function help {
+function manual {
     
     # Define documentation base directory structure.
     MANUALS_DIR[0]='/home/centos/artwork/trunk/Manuals'
@@ -58,7 +58,7 @@ function help {
     MANUALS_FILE[11]=${MANUALS_DIR[2]}/repository-chapter-index.texi
     
     # Define documentation entry.
-    ENTRY=$(help_getEntry)
+    ENTRY=$(manual_getEntry)
     
     # Define directory used to store chapter's documentation entries.
     # At this point, we need to take a desition about
@@ -77,6 +77,6 @@ function help {
     CHAPTERNAME=$(basename $ENTRYCHAPTER)
 
     # Initialize documentation functions and path patterns.
-    help_getActions
+    manual_getActions
 
 }

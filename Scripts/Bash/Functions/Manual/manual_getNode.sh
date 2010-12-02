@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_getNode.sh -- This function cleans up the action value
+# manual_getNode.sh -- This function cleans up the action value
 # (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_getNode {
+function manual_getNode {
 
     local NODE=$(echo "$ACTIONVAL" \
         | sed -r 's!^/home/centos/artwork/!!' \

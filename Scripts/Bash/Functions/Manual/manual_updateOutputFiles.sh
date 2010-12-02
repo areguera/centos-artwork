@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFiles.sh -- This function updates manuals' related
+# manual_updateOutputFiles.sh -- This function updates manuals' related
 # output files.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFiles {
+function manual_updateOutputFiles {
 
     # Add division line to differentiate action output visually.
     echo '----------------------------------------------------------------------'
@@ -34,16 +34,16 @@ function help_updateOutputFiles {
     # paths incorrectly.
     pushd /home/centos/artwork > /dev/null
 
-    help_updateOutputFileInfo
-    help_updateOutputFileHtml
-    help_updateOutputFilePlaintext
+    manual_updateOutputFileInfo
+    manual_updateOutputFileHtml
+    manual_updateOutputFilePlaintext
 
     # Remove the working copy root directory from directory stack.
     popd > /dev/null
 
     # Re-define output variable in order for cli_commitRepoChanges
     # functionality to receive the correct location to apply
-    # subversion commands. Inside `help' functionality, the correct
+    # subversion commands. Inside `manual' functionality, the correct
     # place to commit changes is not the initial value of ACTIONVAL
     # but the directory path where documentation changes take place
     # under.

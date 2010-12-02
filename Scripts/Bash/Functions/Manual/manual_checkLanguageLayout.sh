@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_checkLanguageLayout.sh -- This function checks the language
+# manual_checkLanguageLayout.sh -- This function checks the language
 # layout used to store texinfo documentation inside CentOS Artwork
 # Repository.  If the language layout doesn't exists inside the
 # documentation structure, ask the user to create it.  
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_checkLanguageLayout {
+function manual_checkLanguageLayout {
 
     if [[ ! -d ${MANUALS_DIR[2]} ]];then
 
@@ -34,7 +34,7 @@ function help_checkLanguageLayout {
         cli_printMessage "${MANUALS_DIR[2]}" "AsResponseLine"
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
-        help_createLanguageLayout
+        manual_createLanguageLayout
         cli_commitRepoChanges
 
     fi

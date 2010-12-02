@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_getEntry.sh -- This function builds a documentation entry based
+# manual_getEntry.sh -- This function builds a documentation entry based
 # on action value (ACTIONVAL) variable.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_getEntry {
+function manual_getEntry {
 
     # Define variables as local to avoid conflicts outside.
     local DIR=''
