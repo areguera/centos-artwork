@@ -37,22 +37,23 @@ function cli_getFilesList {
         LOCATION="$ACTIONVAL"
     fi
 
-    # Re-define regular expression (REGEX) global variable to reduce
-    # the amount of characters we type in order to match find's
-    # output. When using regular expression with find, in order to
-    # reduce the amount files find, the regular expression is
-    # evaluated in the whole path. This way, when the regular
-    # expression is specified, we need to build it in a way that
-    # matches the whole path. Doing so each time we pass a `--filter'
-    # command-line argument may be a tedious task, so, in the sake of
-    # reducing some typing, we prepare the regular expression here to
-    # match the whole path using the regular expression provided by
-    # the user as pattern.
-    REGEX="^${LOCATION}/.*${REGEX}$"
+    # Define regular expression (REGEX) local variable, using regular
+    # expression (REGEX) global variable, to reduce the amount of
+    # characters we type in order to match find's output. When using
+    # regular expression with find, in order to reduce the amount
+    # files found, the regular expression is evaluated against the
+    # whole file path. This way, when the regular expression is
+    # specified, we need to build it in a way that matches the whole
+    # path. Doing so each time we pass a `--filter' command-line
+    # argument may be a tedious task, so, in the sake of reducing some
+    # typing, we prepare the regular expression here to match the
+    # whole path using the regular expression provided by the user as
+    # pattern.
+    local REGEX="^${LOCATION}/${REGEX}$"
 
     # Define list of files to process.
     if [[ -d $LOCATION ]];then
-        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${REGEX}")
+        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${REGEX}" | sort)
     elif [[ -f $LOCATION ]];then
         FILES=$LOCATION
     fi
