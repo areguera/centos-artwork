@@ -86,10 +86,12 @@ function render_getFilesList {
         EXTENSION='sed'
     
     fi
-    
-    # Re-define regular expression to match files with specific
-    # extensions inside specific locations.
-    REGEX="^$LOCATION/${REGEX}.*\.${EXTENSION}$"
+
+    # Make regular expression (REGEX) variable local (to avoid
+    # concatenation the next time cli_getFilesList function be
+    # called), and redefine it to match files with specific extensions
+    # inside specific locations.
+    local REGEX="${REGEX}.*\.${EXTENSION}"
 
     # Define list of files to process.
     cli_getFilesList "$LOCATION"

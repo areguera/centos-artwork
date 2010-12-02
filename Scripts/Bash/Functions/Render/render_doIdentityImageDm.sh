@@ -91,9 +91,8 @@ function render_doIdentityImageDm {
     # directories under
     # trunk/Translations/Identity/Themes/Distro/BootUp/ structure,
     # using the centos-art.sh script.
-    VERSIONS=$(find $ACTIONVAL -regextype posix-egrep \
-        -maxdepth 1 -type d -regex "^.*/${RELEASE_FORMAT}$" \
-        | egrep $REGEX)
+    VERSIONS=$(find $ACTIONVAL -regextype posix-egrep -maxdepth 1 \
+        -type d -regex "^.*/${RELEASE_FORMAT}$")
 
     # Check release numbers list.
     if [[ "$VERSIONS" == '' ]];then
@@ -136,10 +135,14 @@ function render_doIdentityImageDm {
         
         for RESOLUTION in $RESOLUTIONS;do
 
-            cli_printMessage "$TGZ/${TMP}-${RESOLUTION}.tar.gz" "AsCreatingLine"
-
-            # Check background existence for specified resolution.
-            cli_checkFiles "$BGS/${RESOLUTION}.png" 'f'
+            # Check background existence for specified resolution. If
+            # the background resolution doesn't exist, skip it and
+            # continue with the next resolution in the list.
+            if [[ -f "$BGS/${RESOLUTION}-final.png" ]];then
+                cli_printMessage "$TGZ/${TMP}-${RESOLUTION}-final.tar.gz" "AsCreatingLine"
+            else
+                continue
+            fi
 
             # Create temporal directory.
             if [[ ! -d $TMP ]]; then
