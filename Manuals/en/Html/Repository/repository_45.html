@@ -27,10 +27,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.42 trunk/Scripts/Bash/Functions/Render</title>
+<title>CentOS Artwork Repository: 3.42 trunk/Scripts/Bash/Functions/Render/Config</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.42 trunk/Scripts/Bash/Functions/Render">
-<meta name="keywords" content="CentOS Artwork Repository: 3.42 trunk/Scripts/Bash/Functions/Render">
+<meta name="description" content="CentOS Artwork Repository: 3.42 trunk/Scripts/Bash/Functions/Render/Config">
+<meta name="keywords" content="CentOS Artwork Repository: 3.42 trunk/Scripts/Bash/Functions/Render/Config">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -64,61 +64,228 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_63.html#SEC356" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_63.html#SEC356" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash-Functions-Render"></a>
+<a name="trunk-Scripts-Bash-Functions-Render-Config"></a>
 <a name="SEC245"></a>
-<h2 class="section"> 3.42 trunk/Scripts/Bash/Functions/Render </h2>
+<h2 class="section"> 3.42 trunk/Scripts/Bash/Functions/Render/Config </h2>
 
 
 <a name="SEC246"></a>
 <h3 class="subsection"> 3.42.1 Goals </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
-
+<p>The <tt>`trunk/Scripts/Bash/Config'</tt> directory exists to oraganize
+pre-rendering configuration scripts.
+</p>
 
 <a name="SEC247"></a>
 <h3 class="subsection"> 3.42.2 Description </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
-
+<p>Pre-rendering configuration scripts let you customize the way
+<code>centos-art.sh</code> script renders identity and translation
+repository entries.  Pre-rendering configuration scripts are
+<tt>`render.conf.sh'</tt> files with <code>render_loadConfig</code> function
+definition inside. 
+</p>
+<p>There is one <tt>`render.conf.sh'</tt> file for each pre-rendering
+configuration entry. Pre-rendering configuration entries can be based
+both on identity and translation repository entires.  Pre-rendering
+configuration entries are required for each identity entry, but not
+for translation entries. 
+</p>
 
 <a name="SEC248"></a>
-<h3 class="subsection"> 3.42.3 Usage </h3>
+<h4 class="subsubsection"> 3.42.2.1 The <tt>`render.conf.sh'</tt> identity model </h4>
 
-<ul class="toc">
-<li> ...
-</li></ul>
+<p>Inside CentOS Artwork Repository, we consider identity entries to all
+directories under <tt>`trunk/Identity'</tt> directory. Identity entries can be
+image-based or text-based. When you render image-based identity
+entries you need to use image-based pre-rendering configuration
+scripts. Likewise, when you render text-based identity entries you
+need to use text-based pre-rendering configuration scripts.
+</p>
+<p>Inside identity pre-rendering configuration scripts, image-based
+pre-rendering configuration scripts look like the following:
+</p>
+<pre class="verbatim">#!/bin/bash
 
+function render_loadConfig {
+
+    # Define rendering actions.
+    ACTIONS[0]='BASE:renderImage'
+    ACTIONS[1]='POST:renderFormats: tif xpm pdf ppm'
+
+}
+</pre>
+<p>Inside identity pre-rendering configuration scripts, text-based
+pre-rendering configuration scripts look like the following:
+</p>
+<pre class="verbatim">#!/bin/bash
+
+function render_loadConfig {
+
+    # Define rendering actions.
+    ACTIONS[0]='BASE:renderText'
+    ACTIONS[1]='POST:formatText: --width=70 --uniform-spacing'
+
+}
+</pre>
+<p>When using identity pre-rendering configuration scripts, you can
+extend both image-based and text-based pre-rendering configuration
+scripts using image-based and text-based post-rendering actions,
+respectively. 
+</p>
 
 <a name="SEC249"></a>
+<h4 class="subsubsection"> 3.42.2.2 The <tt>`render.conf.sh'</tt> translation model </h4>
+
+<p>Translation pre-rendering configuration scripts take precedence before
+default translation rendering action. Translation pre-rendering
+actions are useful when default translation rendering action do not
+fit itself to translation entry rendering requirements.
+</p>
+
+<a name="SEC250"></a>
+<h4 class="subsubsection"> 3.42.2.3 The <tt>`render.conf.sh'</tt> rendering actions </h4>
+
+<p>Inside both image-based and text-based identity pre-rendering
+configuration scripts, we use the <samp>`ACTIONS'</samp> array variable to
+define the way <code>centos-art.sh</code> script performs identity
+rendering.  Identity rendering is organized by one <samp>`BASE'</samp> action,
+and optional <samp>`POST'</samp> and <samp>`LAST'</samp> rendering actions.
+</p>
+<p>The <samp>`BASE'</samp> action specifies what kind of rendering does the
+<code>centos-art.sh</code> script will perform with the files related to
+the pre-rendering configuration script. The <samp>`BASE'</samp> action is
+required. Possible values to <samp>`BASE'</samp> action are either
+<samp>`renderImage'</samp> or <samp>`renderText'</samp> only.
+</p>
+<p>To specify the <samp>`BASE'</samp> action you need to set the <samp>`BASE:'</samp>
+string followed by one of the possible values. For example, if you
+want to render images, consider the following definition of
+<samp>`BASE'</samp> action:
+</p>
+<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
+</pre>
+<p>Only one <samp>`BASE'</samp> action must be specified. If more than one
+<samp>`BASE'</samp> action is specified, the last one is used. If no
+<samp>`BASE'</samp> action is specified at all, an error is triggered and the
+<code>centos-art.sh</code> script ends its execution.
+</p>
+<p>The <samp>`POST'</samp> action specifies which action to apply for
+each file rendered (at the rendering time). This action is optional.
+You can set many different <samp>`POST'</samp> actions to apply many different
+actions over the same already rendered file. Possible values to
+<samp>`POST'</samp> action are <samp>`renderFormats'</samp>, <samp>`renderSyslinux'</samp>,
+<samp>`renderGrub'</samp>, etc. 
+</p>
+<p>To specify the <samp>`POST'</samp> action, you need to use set the
+<samp>`POST:'</samp> followed by the function name of the action you want to
+perform.  The exact form depends on your needs. For example, consider
+the following example to produce <samp>`xpm'</samp>, <samp>`jpg'</samp>, and
+<samp>`tif'</samp> images, based on already rendered <samp>`png'</samp> image, and
+also organize the produced files in directories named as their own
+extensions:
+</p>
+<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
+ACTIONS[1]='POST:renderFormats: xpm jpg tif'
+ACTIONS[2]='POST:groupByFormat: png xpm jpg tif'
+</pre>
+<p>In the previous example, file organization takes place at the moment
+of rendering, just after producing the <samp>`png'</samp> base file and before
+going to the next file in the list of files to render. If you don't
+want to organized the produced files in directories named as their own
+extensions, just remove the <samp>`POST:groupByFormat'</samp> action line:
+</p>
+<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
+ACTIONS[1]='POST:renderFormats: xpm jpg tif'
+</pre>
+<p>The <samp>`LAST'</samp> action specifies which actions to apply once the last
+file in the list of files to process has been rendered. The
+<samp>`LAST'</samp> action is optional. Possible values for <samp>`LAST'</samp>
+actions may be <samp>`groupByFormat'</samp>, <samp>`renderGdmTgz'</samp>, etc.
+</p>
+<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> See section <a href="repository_44.html#SEC240">trunk/Scripts/Bash/Functions/Render</a>, to know more
+about possible values for <samp>`BASE'</samp>, <samp>`POST'</samp> and <samp>`LAST'</samp>
+action definitions.
+</p></blockquote>
+
+<p>To specify the <samp>`LAST'</samp> action, you need to set the <samp>`LAST:'</samp>
+string followed by the function name of the action you want to
+perform.  For example, consider the following example if you want to
+render all files first and organize them later:
+</p>
+<pre class="verbatim">ACTIONS[0]='BASE:renderImage'
+ACTIONS[1]='POST:renderFormats: xpm jpg tif'
+ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
+</pre>
+
+<a name="SEC251"></a>
+<h3 class="subsection"> 3.42.3 Usage </h3>
+
+<p>Use the following commands to administer both identity and translation
+pre-rendering configuration scripts:
+</p>
+<dl compact="compact">
+<dt> <samp>`centos-art config --create='path/to/dir/''</samp></dt>
+<dd>
+<p>Use this command to create <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.
+</p>
+</dd>
+<dt> <samp>`centos-art config --edit='path/to/dir/''</samp></dt>
+<dd>
+<p>Use this command to edit <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.  
+</p>
+</dd>
+<dt> <samp>`centos-art config --read='path/to/dir/''</samp></dt>
+<dd>
+<p>Use this command to read <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.  
+</p>
+</dd>
+<dt> <samp>`centos-art config --remove='path/to/dir/''</samp></dt>
+<dd>
+<p>Use this command to remove <samp>`path/to/dir'</samp> related pre-rendering
+configuration script.
+</p>
+</dd>
+</dl>
+
+<p>In the commands above, <samp>`path/to/dir'</samp> refers to one renderable
+directory path under <tt>`trunk/Identity'</tt> or
+<tt>`trunk/Translations'</tt> structures only. 
+</p>
+
+<a name="SEC252"></a>
 <h3 class="subsection"> 3.42.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_46.html#SEC250">3.43 trunk/Scripts/Bash/Functions/Render/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_39.html#SEC206">3.36 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_40.html#SEC211">3.37 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_44.html#SEC240">3.41 trunk/Scripts/Bash/Functions/Render</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC248" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_46.html#SEC250" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_46.html#SEC253" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC245" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_63.html#SEC356" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
