@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on November, 28 2010 by texi2html 1.76 -->
+<!-- Created on December, 2 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -27,10 +27,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.36 trunk/Scripts/Bash/Functions/Help</title>
+<title>CentOS Artwork Repository: 3.36 trunk/Identity/Widgets</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.36 trunk/Scripts/Bash/Functions/Help">
-<meta name="keywords" content="CentOS Artwork Repository: 3.36 trunk/Scripts/Bash/Functions/Help">
+<meta name="description" content="CentOS Artwork Repository: 3.36 trunk/Identity/Widgets">
+<meta name="keywords" content="CentOS Artwork Repository: 3.36 trunk/Identity/Widgets">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -59,27 +59,27 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_38.html#SEC207" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC209" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_38.html#SEC205" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC207" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC351" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC377" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC351" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC377" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash-Functions-Help"></a>
-<a name="SEC208"></a>
-<h2 class="section"> 3.36 trunk/Scripts/Bash/Functions/Help </h2>
+<a name="trunk-Identity-Widgets"></a>
+<a name="SEC206"></a>
+<h2 class="section"> 3.36 trunk/Identity/Widgets </h2>
 
 
-<a name="SEC209"></a>
+<a name="SEC207"></a>
 <h3 class="subsection"> 3.36.1 Goals </h3>
 
 <ul class="toc">
@@ -87,72 +87,30 @@ ul.toc {list-style: none}
 </li></ul>
 
 
-<a name="SEC210"></a>
+<a name="SEC208"></a>
 <h3 class="subsection"> 3.36.2 Description </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
 
-
-<a name="SEC211"></a>
-<h4 class="subsubsection"> 3.36.2.1 Output different formats </h4>
-
-<p>Remove -I option from info and plaintext output. Before output info
-and plaintext information we moved inside /home/centos/artwork
-directory which is the base location for paths inside texinfo
-documentation files. There is no need for info and plaintext output
-commands to specify the -I options since the command already takes
-place in the correct location the path information is correctly built
-on.
-</p>
-<p>Nevertheless, the -I option is still required for html output.  Once
-inside /home/centos/artwork we need to move up to html output
-directory in order to run texi2html output command from inthere. This
-make texi2html to set relative path to images when html output is
-generated. 
-</p>
-<p>Relative path to images under html output directory will fail since
-there is no image in such location. Instead, a different absolute
-location is used. So we need to build that absolute path in order for
-images can be shown as we expect.
-</p>
-<p>So this why we still need to use the -I option. We use the -I option
-to append the location /home/centos/artwork to texi2html search path;
-and because we use <code>@image</code> definition using trunk/ as root
-location to define images location ... texi2html is able to find the
-correct path to image, no matter where you execute the centos-art.sh
-help command.
-</p>
-<p>Note that we keep images and documentation output in two different
-absolute locations. This is intentional. Such configuration let us
-maintain documentation and images independently one another.
-</p>
-
-<a name="SEC212"></a>
+<a name="SEC209"></a>
 <h3 class="subsection"> 3.36.3 Usage </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
 
-
-<a name="SEC213"></a>
+<a name="SEC210"></a>
 <h3 class="subsection"> 3.36.4 See also </h3>
 
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC212" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_40.html#SEC214" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC209" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_40.html#SEC211" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC208" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC351" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC206" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_67.html#SEC377" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>November, 28 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>December, 2 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

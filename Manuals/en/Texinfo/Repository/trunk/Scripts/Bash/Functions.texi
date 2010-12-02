@@ -381,46 +381,99 @@ so, control the amount of files to process.
 @defvar ARGUMENTS 
 Define optional arguments. 
 
-Inside @file{centos-art.sh} script, specifically inside @command{path}
-functionality, we consider optional arguments as all command-line
-arguments passed to @file{centos-art.sh} script, from third argument
-position on.  
+Optional arguments, inside @file{centos-art.sh} script, are considered
+as all command-line arguments passed to @file{centos-art.sh} script,
+from third argument position on. For example, in the command
+@samp{centos-art render --entry=path/to/dir --filter=regex} , the
+optional arguments are from @samp{--filter=regex} argument on.
 
-Optional arguments are appended to commands in order for
-@file{centos-art.sh} script to support them.  Such commands are
-executed inside @file{centos-art.sh} script using Bash's
-@command{eval} built-in.  
+Optional arguments are parsed using @command{getopt} command through
+the following base construction: 
 
-If you provide unrecognized options to such commands, they will
-complain just as they would do from the command-line.  Or what is the
-same, final verification of which options are valid or not is done
-inside the command options wered appended to, not by
-@file{centos-art.sh} script.  
+@verbatim
+# Define short options we want to support.
+local ARGSS=""
 
-When parsing @var{ARGUMENTS}, we may find short options (e.g.,
-@option{-m}) or long options (e.g., @option{--message}). When using
-short options, arguments are separated by one space from the option
-(e.g., @option{-m 'This is a commit message.'}).  When using long
-options arguments are separated by an equal sign (@samp{=}) (e.g.,
-@option{--message='This is a commit message'}). To know which option
-have required arguments let @file{centos-art.sh} script to know how to
-build the optional argument string by quoting the option's argument.  
+# Define long options we want to support.
+local ARGSL="filter:,to:"
 
-Note that if we don't use @command{getopt} to parse the command-line
-arguments it would complicate to determine when an argument is an
-option argument and when it is not; when options' argument are
-optional and where they are not. Inside getopt, required option
-arguments are defined using the colon (@samp{:}) symbol after the
-option (e.g., @option{-o m: -l message:}).
+# Parse arguments using getopt(1) command parser.
+cli_doParseArguments
 
-As convenction we use long options as reference. We take the value of
-@var{ARGSLONG} and split it using the comma (@samp{,}) character as
-separator and check if the last character of the option is a colon
-like in the regular expression @code{[[:alpha:]]+:,}.
+# Reset positional parameters using output from (getopt) argument
+# parser.
+eval set -- "$ARGUMENTS"
 
-Take care not to match two colons like in the regular expression
-@code{[[:alpha:]]+::,}, this construction is used to specify that
-option can receive and argument but it is not required.
+# Define action to take for each option passed.
+while true; do
+    case "$1" in
+        --filter )
+            REGEX="$2" 
+            shift 2
+            ;;
+        --to )
+            TARGET="$2" 
+            shift 2
+            ;;
+        * )
+            break
+    esac
+done
+@end verbatim
+
+Optional arguments provide support to command options inside
+@file{centos-art.sh} script. For instance, consider the Subversion
+(@command{svn}) command, where there are many options (e.g.,
+@option{copy}, @option{delete}, @option{move}, etc), and inside each
+option there are several modifiers (e.g., @samp{--revision},
+@samp{--message}, @samp{--username}, etc.) that can be combined one
+another in their short or long variants. 
+
+The @var{ARGUMENTS} variable is used to store arguments passed from
+command-line for later use inside @file{centos-art.sh} script. Storing
+arguments is specially useful when we want to run a command with some
+specific options from them. Consider the following command:
+
+@verbatim
+centos-art path --copy=SOURCE --to=TARGET --message="The commit message goes here." --username='johndoe'
+@end verbatim
+
+In the above command, the @option{--message}, and @option{--username}
+options are specific to @command{svn copy} command. In such cases,
+options are not interpreted by @file{centos-art.sh} script itself.
+Instead, the @file{centos-art.sh} script uses @command{getopt} to
+retrive them and stores them in the @var{ARGUMENT} variable for later
+use, as described in the following command:
+
+@verbatim
+# Build subversion command to duplicate locations inside the
+# workstation.
+eval svn copy $SOURCE $TARGET --quiet $ARGUMENTS
+@end verbatim
+
+When @command{getopt} parses @var{ARGUMENTS}, we may use short options
+(e.g., @option{-m}) or long options (e.g., @option{--message}). When
+we use short options, arguments are separated by one space from the
+option (e.g., @option{-m 'This is a commit message.'}).  When we use
+long options arguments are separated by an equal sign (@samp{=})
+(e.g., @option{--message='This is a commit message'}).
+
+In order for @command{getopt} to parse @var{ARGUMENTS} correctly, it
+is required to provide the short and long definition of options that
+will be passed or at least supported by the command performing the
+final action the function script exists for.
+
+As convenction, inside @file{centos-art.sh} script, short option
+definitions are set in the @var{ARGSS} variable; and long option
+definitions are set in the @var{ARGSL} variable.
+
+When you define short and long options, it may be needed to define
+which of these option arguments are required and which not. To define
+an option argument as required, you need to set one colon @samp{:}
+after the option definition (e.g., @option{-o m: -l message:}).  On
+the other hand, to define an option argument as not required, you need
+to set two colons @samp{::} after the option definition (e.g.,
+@option{-o m:: -l message::}).
 @end defvar
 
 @defvar EDITOR 

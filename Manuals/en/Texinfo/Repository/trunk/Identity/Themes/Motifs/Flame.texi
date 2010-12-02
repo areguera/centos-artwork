@@ -1,0 +1,202 @@
+The @emph{Flame} artistic motif was completly built using Gimp 2.2 in
+CentOS 5.5. In this section we describe the steps we followed through
+its construction. This information may be useful for anyone interested
+in reproducing the @emph{Flame} artistic motif, or in creating new
+artistic motifs for The CentOS Project corporate visual identity
+(@pxref{trunk Identity}).
+
+@image{trunk/Identity/Themes/Motifs/Flame/Concept/Img/motif,,,,jpg}
+
+@subsection Step 1: Set image size
+
+Create an empty image and fill the Background layer with black
+(@samp{000000}) color. Image dimensions depends on the final
+destination you plan to use the image for. For the sake of our
+construction example we used an image of 640x480 pixels and 300 pixels
+per inch (ppi).
+
+@image{trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/1,,,,jpg}
+
+@subsection Step 2: Add patterns
+
+Create a new layer named @samp{Paper}, place it over @samp{Background}
+layer and fill it with @samp{Paper (100x100)} pattern. 
+
+Add a mask to @samp{Paper} layer using radial gradient and blur it.
+You may need to repeat this step more than once in order to achieve a
+confortable black radial degradation on the right side of your design.
+In our image dimension, the central point of radial degradation is at
+430x296 approximately. Once you've done with black radial degradation,
+reduce the @samp{Paper} layer opacity to 20%.
+
+Duplicate @samp{Paper} layer and rename it @samp{Stripes}
+---duplicating the layer helps us to be sure the layer masks will be
+equal in both @samp{Paper} and @samp{Stripes} layers---.  Remove paper
+pattern from @samp{Stripes} layer. Fill @samp{Stripes} layer with
+@samp{Stripes (48x48)} pattern and reduce the @samp{Stripes} layer
+opacity to 15%:
+
+@image{trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/2,,,,jpg}
+
+@subsection Step 3: Add flame motif
+
+Create a new layer named @samp{Flame}. Set the foreground to white
+color (@code{ffffff}). Use the Gimp's flame filter (@samp{Filters >
+Render > Nature > Flame...}) to build the flame motif on @samp{Flame}
+layer.
+
+The flame filter can produce stunning, randomly generated fractal
+patterns. This feature of Gimp give us a great oportunity to grant the
+production of new artistic motifs very quickly because of its
+``randomly generated'' nature. Once the artistic motif be created, it
+is propagated through all visual manifestations of CentOS Project
+corporate visual identity using the @file{centos-art.sh} script
+(@pxref{trunk Scripts Bash}) inside the CentOS Artwork Repository.
+
+To set the time intervals between each new visual style production, we
+could reuse the CentOS distribution major release schema.  I.e., we
+could produce a new visual style, every two years, based on a new
+``randomly generated'' flame pattern, and publish the whole corporate
+visual identity (i.e., distribution stuff, promotion stuff, websites
+stuff, etc.) with the new major release of CentOS distribution all
+together at once.
+
+Producing a new visual style is not one day's task. Once we have the
+artistic motif defined, we need to propagate it through all visual
+manifestations of The CentOS Project corporate visual identity. When
+we say that we could produce one new visual style every two years we
+really mean: to work two years long in order to propagate a new visual
+style to all visual manifestations of The CentOS Project corporate
+visual identity.
+
+Obviously, in order to propagate one visual style to all different
+visual manifestations of The CentOS Project corporate visual identity,
+we need first to know which the visual manifestations are.  To define
+which visual manifestations are inside The CentOS Project corporate
+visual identity, is one of the goals the CentOS Artwork Repository and
+this documentation manual are both aimed to satisfy.
+
+Once we define which the visual manifestation are, it is possible to
+define how to produce them, and this way, organize the automation
+process. Such automation process is one of the goals of
+@file{centos-art.sh} script.
+
+With the combination of both CentOS Artwork Repository and
+@file{centos-art.sh} scripts we define work lines where translators,
+programmers, and graphic designers work together to distribute and
+reduce the amount of time employed to produce The CentOS Project
+monolithic corporate identity.
+
+From a monolithic corporate visual identity point of view, notice that
+we are producing a new visual style for the same theme (i.e.,
+@emph{Flame}). It would be another flame design but still a flame
+design. This idea is very important to be aware of, because we are
+somehow ``refreshing'' the theme, not changing it at all. 
+
+This way, as we are ``refreshing'' the theme, we still keep oursleves
+inside the monolithic conception we are trying to be attached to
+(i.e., one unique name, and one unique visual style for all visual
+manifestations).
+
+Producing artistic motifs is a creative process that may consume long
+time, specially for people without experienced knowlegde on graphic
+design land. Using ``randomly generated'' conception to produce
+artistic motifs could be, practically, a way for anyone to follow in
+order to produce maintainable artistic motifs in few steps. 
+
+Due to the ``randomly generated'' nature of Flame filter, you may find
+that the same pattern is not always used each time you use the Flame
+filter interface.
+
+Using the same pattern design for each visual manifestation is
+essential in order to maintain the visual connection among all visual
+manifestations inside the same theme.  Occasionally, we may introduce
+pattern variations in opacity, size, or even position but never change
+the pattern design itself, nor the color information used by images
+considered part of the same theme.
+
+@quotation
+@strong{Important}
+When we design background images, which are considered part of the
+same theme, it is essential to use the same design pattern always.
+This is what makes theme images to be visually connected among
+themeselves, and so, the reason we use to define the word ``theme''
+as: a set of images visually connected among themeselves.
+@end quotation
+
+In order to recreate the same flame pattern every time we may need to,
+the Flame filter interface provides the @samp{Save} and @samp{Open}
+options. The @samp{Save} option brings up a file save dialog that
+allows you to save the current Flame settings for the plug-in, so that
+you can recreate them later.  The @samp{Open} option brings up a file
+selector that allows you to open a previously saved Flame settings
+file.
+
+The Flame settings we used in our example are saved in the file:
+
+@verbatim
+trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
+@end verbatim
+
+@image{trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/3,,,,jpg}
+
+Ok. Now that we have created the flame motif, and also divagated a bit
+about it, lets continue with the construction steps. 
+
+Duplicate @samp{Flame} layer and rename it `Flame Blur'. Place `Flame
+Blur' below @samp{Flame} layer. Add gussian blur filter (@samp{Filters
+> Blur > Gussian Blur...}).
+
+@verbatim
+Horizontal:10.0
+Vertical:10.0
+@end verbatim
+
+Duplicate @samp{Flame} layer and rename it `Flame Softglow'. Place
+`Flame Softglow' above @samp{Flame} layer. Add Softglow filter
+(@samp{Filters > Artisitc > Softglow...}).
+
+@verbatim
+Glow radius: 10.00
+Brightness: 0.75
+Sharpness: 0.85
+@end verbatim
+
+Reduce flame layers opacity using the same value. The value used to
+reduce flame layers opacity may vary from one image to another,
+specifically, on the place the image will be finally placed on.  For
+example, images used as desktop background have the flame layers
+opacity reduced to 50% in order to reduce brightness.  Otherwise, the
+background image used in anaconda progress slides has flame layers
+opacity reduced to 20% in order to reduce brightness even more so text
+could look clean and readable over it.
+
+@image{trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/4,,,,jpg}
+
+@subsection Step 4: Add foreground color
+
+Create a new layer named @samp{Color}, place it on top of all visible
+layers and fill it with plain color (@code{4c005a}). Reduce
+@samp{Color} layer opacity to 10%. You can use the @samp{Color} layer
+to control the final color information you want to produce the image
+for.
+
+@image{trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/5,,,,jpg}
+
+When setting color information, remember that the same artistic motif
+needs to be reproduced in 14 and 16 colors for Grub and Syslinux
+visual manifestations respectively. Using many different colors in the
+artistic motif may reduce the possibility of your design to fix in all
+different situations.  Likewise, using more colors in one design, and
+less colors in another design will reduce the connectivity among your
+designs, since color information is relevant to visual identity. 
+
+It is up to you to find out justice and compromise among all possible
+variables you may face, when you propagate your artistic motif visual
+style to different visual manifestations of CentOS Project corporate
+visual identity.
+
+@subsection See also
+
+@menu
+@end menu
