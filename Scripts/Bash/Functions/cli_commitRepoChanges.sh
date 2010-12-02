@@ -157,7 +157,7 @@ function cli_commitRepoChanges {
         done
         cli_printMessage "`ngettext "Do you want to add it now?" \
             "Do you want to add them now?" ${FILESNUM[6]}`" 'AsYesOrNoRequestLine'
-        svn add "${FILES[6]}"
+        svn add ${FILES[6]} --quiet
     fi
 
     # Reset counter.
