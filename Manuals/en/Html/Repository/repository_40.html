@@ -735,10 +735,46 @@ function, and occasionally, farther redefined (by
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getActionArguments</b>
+<dt><u>Function:</u> <b>cli_getActionArguments</b><i> [$@]</i>
 <a name="IDX14"></a>
 </dt>
-</dl>
+<dd><p>Initialize function name (<var>FUNCNAM</var>), action name
+(<var>ACTIONNAM</var>), and action value (<var>ACTIONVAL</var>) global
+variables, using positional parameters passed in <var>$@</var> variable.
+</p>
+<p>The <code>cli_getActionsArguments</code> function is called from
+<code>cli.sh</code> function script. The <code>cli_getActionsArguments</code>
+function is call from <code>cli.sh</code> function script using <code>cli</code>
+function positional parameters (i.e., the positional parameters passed
+as arguments in the command-line) as first function argument. 
+</p>
+<p>Once command-line positional parameters are accesible,
+<code>cli-getActionsArguments</code> uses regular expression to retrive
+action variables from first and second argument. The first argument
+defines the value use as function name (<var>FUNCNAM</var>), and the second
+argument defines the value used as action name (<var>ACTIONNAM</var>) and
+action value (<var>ACTIONVAL</var>), respectively.
+</p>
+<p>The first argument is a word in lower case. This word specifies the
+name of the functionality you want to use (e.g., <samp>`render'</samp> to
+rener images, <samp>`manual'</samp> to work on documentation, and so on.)
+</p>
+<p>The second argument has a long option style (e.g.,
+<samp>`--option=value'</samp>). The <samp>`--option'</samp> represents the action name
+(<var>ACTIONNAM</var>), and the characters after the equal sign (<samp>`='</samp>),
+and before the first space character, are considered as the action
+value (<var>ACTIONVAL</var>). In order to provide action values with space
+characters you need to enclose it with quotes like in
+<samp>`--option='This is long value''</samp>. Generally, action values are
+used to specify paths over which the action name acts on.
+</p>
+<p>Once action related variables (i.e., <var>FUNCNAM</var>, <var>ACTIONNAM</var>,
+and <var>ACTIONVAL</var>) are defined and validated,
+<code>cli_getActionsArguments</code> shifts the positional arguments to
+remove the first two arguments passed (i.e., those one used to retrive
+action related variables) and redefine the arguments (<var>ARGUMENTS</var>)
+global variable with the new positional parameters information.
+</p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getActionBuild</b>

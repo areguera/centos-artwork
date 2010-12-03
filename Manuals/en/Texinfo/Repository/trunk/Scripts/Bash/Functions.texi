@@ -631,7 +631,44 @@ function, and occasionally, farther redefined (by
 @code{cli_doParseArgumentsReDef}) as far as it may be convenient.
 @end defun
 
-@defun cli_getActionArguments
+@defun cli_getActionArguments [$@@]
+
+Initialize function name (@var{FUNCNAM}), action name
+(@var{ACTIONNAM}), and action value (@var{ACTIONVAL}) global
+variables, using positional parameters passed in @var{$@@} variable.
+
+The @code{cli_getActionsArguments} function is called from
+@code{cli.sh} function script. The @code{cli_getActionsArguments}
+function is call from @code{cli.sh} function script using @code{cli}
+function positional parameters (i.e., the positional parameters passed
+as arguments in the command-line) as first function argument. 
+
+Once command-line positional parameters are accesible,
+@code{cli-getActionsArguments} uses regular expression to retrive
+action variables from first and second argument. The first argument
+defines the value use as function name (@var{FUNCNAM}), and the second
+argument defines the value used as action name (@var{ACTIONNAM}) and
+action value (@var{ACTIONVAL}), respectively.
+
+The first argument is a word in lower case. This word specifies the
+name of the functionality you want to use (e.g., @samp{render} to
+rener images, @samp{manual} to work on documentation, and so on.)
+
+The second argument has a long option style (e.g.,
+@samp{--option=value}). The @samp{--option} represents the action name
+(@var{ACTIONNAM}), and the characters after the equal sign (@samp{=}),
+and before the first space character, are considered as the action
+value (@var{ACTIONVAL}). In order to provide action values with space
+characters you need to enclose it with quotes like in
+@samp{--option='This is long value'}. Generally, action values are
+used to specify paths over which the action name acts on.
+
+Once action related variables (i.e., @var{FUNCNAM}, @var{ACTIONNAM},
+and @var{ACTIONVAL}) are defined and validated,
+@code{cli_getActionsArguments} shifts the positional arguments to
+remove the first two arguments passed (i.e., those one used to retrive
+action related variables) and redefine the arguments (@var{ARGUMENTS})
+global variable with the new positional parameters information.
 @end defun
 
 @defun cli_getActionBuild
