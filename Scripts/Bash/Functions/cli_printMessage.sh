@@ -151,7 +151,7 @@ function cli_printMessage {
             MESSAGE=$(dirname $(echo $MESSAGE | cut -d ' ' -f2-))
             echo "----------------------------------------------------------------------"
             echo "`gettext "To know more, run the following command"`:"
-            echo "centos-art help --read='$MESSAGE'"
+            echo "centos-art manual --read='$MESSAGE'"
             echo "----------------------------------------------------------------------"
             exit # <-- ATTENTION: Do not remove this line. We use this
                  #                case as convenction to end script
