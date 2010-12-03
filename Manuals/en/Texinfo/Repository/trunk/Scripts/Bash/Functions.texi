@@ -506,8 +506,11 @@ provides introductory information to global functions you can use
 inside @file{centos-art.sh} script.
 
 @defun cli_checkActionArguments
-Validate action value (ACTIONVAL) variable.
+Validate action value (@var{ACTIONVAL}) variable.
+
 @code{cli_checkActionArguments} is called from
+@code{cli_getActionArguments} function. Probably, there is not other
+use for @code{cli_checkActionArguments} but to be called from
 @code{cli_getActionArguments} function.
 @end defun
 
@@ -601,9 +604,31 @@ copy as you may need to.
 @end defun
 
 @defun cli_doParseArguments
+Redefines arguments (@var{ARGUMENTS}) global variable using
+@command{getopt} command output. For more information about how to use
+@code{cli_doParseArguments} function, see @var{ARGUMENTS} variable
+description above.
 @end defun
 
-@defun cli_doParseArgumentsReDef
+@defun cli_doParseArgumentsReDef [$@@]
+Initialize/reset arguments (@var{ARGUMENTS}) global variable using
+positional parameters variable (@var{$@@}) as reference.
+
+When you use @command{cli_doParseArgumentsReDef} inside some function,
+the positional parameters variable (@var{$@@}) is automatically reset
+to that function positional parameters, not the command-line
+positional parameters. 
+
+If you need to redefine specific positional parameters from one
+specific function, you need to call @code{cli_doParseArgumentsReDef}
+with the positional parameters variable (@var{$@@}), set as first
+argument, to that specific function you want to redefine positional
+parameters on.
+
+In order to use positional paramenters passed as command-line, we use
+the @var{ARGUMENTS} global variable which is defined at @code{cli}
+function, and ocasionally, farther redefined (by
+@code{cli_doParseArgumentsReDef}) as long as it may be convenient.
 @end defun
 
 @defun cli_getActionArguments
