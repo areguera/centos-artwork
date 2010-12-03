@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_doParseArguments.sh -- This function uses getopt(1) to parse
-# optional arguments passed to centos-art.sh script.
+# cli_doParseArguments.sh -- This function redefines arguments
+# (ARGUMENTS) global variable using getopt(1) output.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
