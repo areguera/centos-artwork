@@ -171,10 +171,10 @@ greetings through @option{--hello} and @option{--bye} options.  If no
 one of them is provided as second command-line argument, the @samp{*}
 case is evaluated instead. 
 
-The @samp{*} case and its two further lines should always be present
-in @file{_getActions.sh} function scripts, no matter what specific
-functionality you are creating. This convenction helps the user to
-find out documentation about current functionality in use.  
+The @samp{*} case and its two lines further on should always be
+present in @file{_getActions.sh} function scripts, no matter what
+specific functionality you are creating. This convenction helps the
+user to find out documentation about current functionality in use.  
 
 The @code{greet_doHello} and @code{greet_doBye} function definitions
 are the core of @code{greet} specific functionality.  In such function
@@ -249,7 +249,7 @@ we use its directory path and the @code{manual} functionality
 script, just as the following command illustrates: 
 
 @verbatim
-centos-art help --edit=trunk/Scripts/Bash/Functions/Greet
+centos-art manual --edit=trunk/Scripts/Bash/Functions/Greet
 @end verbatim
 
 Now that we have documented our function, it is time to translate its
@@ -497,34 +497,34 @@ If no one of these values is set in @env{EDITOR} environment variable,
 @file{centos-art.sh} uses @file{/usr/bin/vim} text editor by default. 
 @end defvar
 
-@subsubsection Global functions
+@subsubsection Functions
 
-The following global functions of @file{centos-art.sh} script are
-available for you to use inside specific functions:
+Functions defined under @file{trunk/Scripts/Bash/Functions/} directory
+are considered global. Global function can be used inside action
+specific functionalities and reused inside themselves. This section
+provides introductory information to global functions you can use
+inside @file{centos-art.sh} script.
 
 @defun cli_commitRepoChanges [LOCATION]
 
 Syncronize changes between repository and working copy.
 
-The @code{cli_commitRepoChanges} function uses the value of
-@var{LOCATION} argument as reference to perform change verification
-inside the working copy using subversion commands. If @var{LOCATION}
-argument is not specified as @code{cli_commitRepoChanges} first
-argument, the @var{ACTIONVAL} variable is used as reference instead.
-
 The @code{cli_commitRepoChanges} function brings changes from the
-repository to the working copy---using @command{svn update}---, checks
-the working copy changes---using @command{svn status} command---,
-prints status report---using both @command{svn update} and
-@command{svn status} commands output, and finally, commits recent
-changes from the working copy up to the repository---using
+central repository down to the working copy---using @command{svn
+update}---, checks the working copy changes---using @command{svn
+status} command---, prints status report---using both @command{svn
+update} and @command{svn status} commands output, and finally, commits
+recent changes from the working copy up to the repository---using
 @command{svn commit} command---.
 
-Previous to commit the working copy changes up to the repository, the
-@code{cli_commitRepoChanges} function asks you to verify
-changes---using @command{svn diff} command---, and later, another
-confirmation question is shown to be sure you really want to commit
-changes up to central repository.
+Previous to commit the working copy changes up to the central
+repository, the @code{cli_commitRepoChanges} function asks you to
+verify changes---using @command{svn diff} command---, and later,
+another confirmation question is shown to be sure you really want to
+commit changes up to central repository.
+
+If @var{LOCATION} argument is not specified, the value of
+@var{ACTIONVAL} variable is used as reference instead.
 
 @float Figure, trunk/Scripts/Bash/Functions/cli_commitRepoChanges
 @verbatim
@@ -547,8 +547,8 @@ Added           0 file from the working copy.
 @end float
 
 Call the @code{cli_commitRepoChanges} function before or/and after
-functions that modify files or directories inside the working copy as
-you may need to.  
+calling functions that modify files or directories inside the working
+copy as you may need to.  
 @end defun
 
 @defun cli_checkFiles FILE [TYPE]
@@ -583,8 +583,11 @@ Ends script execution if @var{FILE} is not a symbolic link.
 @itemx execution
 Ends script execution if @var{FILE} is not executable.
 @item fh
-Ends script execution if @var{FILE} is neither a regular file or a
+Ends script execution if @var{FILE} is neither a regular file nor a
 symbolic link.
+@item fd
+Ends script execution if @var{FILE} is neither a regular file nor a
+directory.
 @end table
 
 As default behaviour, if @var{FILE} passes all verifications,
@@ -592,7 +595,7 @@ As default behaviour, if @var{FILE} passes all verifications,
 @end defun
 
 @defun cli_getCountryCodes [FILTER]
-Output country codes.
+Output country codes supported by @file{centos-art.sh} script. 
 
 The @code{cli_getCountryCodes} function outputs a list with country
 codes as defined in ISO3166 standard. When @var{FILTER} is provided,
@@ -601,16 +604,13 @@ codes as defined in ISO3166 standard. When @var{FILTER} is provided,
 @end defun
 
 @defun cli_getCountryName [FILTER]
-Output country names.
+Outputs country name supported by @file{centos-art.sh} script.
 
 The @code{cli_getCountryName} function reads one language locale code
 in the format LL_CC and outputs the name of its related country as in
 ISO3166. If filter is specified, @code{cli_getCountryName} returns the
 country name that matches the locale code specified in @var{FILTER},
 exactly.
-
-The @code{cli_getCountryName} function outputs country name supported
-by @file{centos-art.sh} script.
 @end defun
  
 @defun cli_getCurrentLocale
@@ -629,41 +629,32 @@ take precedence before @samp{en} locale.
 
 Locale precedence selection is quite important in order to define the
 locale type we use for message translations. For example, if
-@samp{en_GB} is used, we are also saying that no common language
-specification is used for English language (i.e., @samp{en}). Instead,
-we are using English non-common country-specific language
-specifications like @samp{en_AU}, @samp{en_BW}, @samp{en_GB},
+@samp{en_GB} is used, we are also saying that the common language
+specification for English language (i.e., @samp{en}) is no longer
+used. Instead, we are using English non-common country-specific
+language specifications like @samp{en_AU}, @samp{en_BW}, @samp{en_GB},
 @samp{en_US}, etc., for message translations.  
 
 Use @code{cli_getCurrentLocale} function to know what current locale
 information to use inside @file{centos-art.sh} script.
-
-The @code{cli_getCurrentLocale} function outputs current locale used
-by @file{centos-art.sh} script.
 @end defun
 
 @defun cli_getLangCodes [FILTER]
-Output language codes.
+Outputs language codes supported by @file{centos-art.sh} script.
 
 @code{cli_getLangCodes} function outputs a list of language codes as
 defined in ISO639 standard. When @var{FILTER} is provided,
 @code{cli_getLangCodes} outputs language codes that match @var{FILTER}
 regular expression pattern.
-
-The @code{cli_getLangCodes} function outputs language codes supported
-by @file{centos-art.sh} script.
 @end defun
 
 @defun cli_getLangName [FILTER]
-Output language names.
+Outputs language names supported by @file{centos-art.sh} script.
 
 @code{cli_getLangName} function reads one language locale code in the
 format LL_CC and outputs the language related name as in ISO639. If
 filter is specified, @code{cli_getLangName} returns the language name
 that matches the locale code specified in @var{FILTER}, exactly.
-
-The @code{cli_getLangName} function outputs language names supported
-by @file{centos-art.sh} script.
 @end defun
 
 @defun cli_getLocales
@@ -695,7 +686,10 @@ function instead.
 The @var{NAME} variable contains the file name or directory name you
 want to sanitate.
 
-The @var{TYPE} variable can be one of the following values:
+The @var{TYPE} variable specifies what type of sanitation you want to
+perform on @var{NAME}. The @var{TYPE} can be one of the following
+values:
+
 @table @option
 @item d
 @itemx directory
@@ -915,7 +909,7 @@ output to build documentation entries dynamically.
 @verbatim
 ----------------------------------------------------------------------
 To know more, run the following command:
-centos-art help --read='path/to/dir'
+centos-art manual --read='path/to/dir'
 ----------------------------------------------------------------------
 @end verbatim
 

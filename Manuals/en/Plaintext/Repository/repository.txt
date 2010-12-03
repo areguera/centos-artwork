@@ -217,7 +217,7 @@ CentOS Artwork Repository
     3.37.2 Description
     3.37.3 Usage
       3.37.3.1 Global variables
-      3.37.3.2 Global functions
+      3.37.3.2 Functions
       3.37.3.3 Specific functions
     3.37.4 See also
   3.38 trunk/Scripts/Bash/Functions/Html
@@ -2929,8 +2929,8 @@ deside which action to perform based on the action name passed to
 through `--hello' and `--bye' options.  If no one of them is provided
 as second command-line argument, the `*' case is evaluated instead.
 
-   The `*' case and its two further lines should always be present in
-`_getActions.sh' function scripts, no matter what specific
+   The `*' case and its two lines further on should always be present
+in `_getActions.sh' function scripts, no matter what specific
 functionality you are creating. This convenction helps the user to find
 out documentation about current functionality in use.
 
@@ -3002,7 +3002,7 @@ Bash Functions Manual::) of `centos-art.sh' script, just as the
 following command illustrates:
 
 
-centos-art help --edit=trunk/Scripts/Bash/Functions/Greet
+centos-art manual --edit=trunk/Scripts/Bash/Functions/Greet
 
    Now that we have documented our function, it is time to translate its
 output messages to different languages. To translate specific
@@ -3233,33 +3233,33 @@ for you to use inside specific functions:
      If no one of these values is set in `EDITOR' environment variable,
      `centos-art.sh' uses `/usr/bin/vim' text editor by default.
 
-3.37.3.2 Global functions
-.........................
+3.37.3.2 Functions
+..................
 
-The following global functions of `centos-art.sh' script are available
-for you to use inside specific functions:
+Functions defined under `trunk/Scripts/Bash/Functions/' directory are
+considered global. Global function can be used inside action specific
+functionalities and reused inside themselves. This section provides
+introductory information to global functions you can use inside
+`centos-art.sh' script.
 
  -- Function: cli_commitRepoChanges [LOCATION]
      Syncronize changes between repository and working copy.
 
-     The `cli_commitRepoChanges' function uses the value of LOCATION
-     argument as reference to perform change verification inside the
-     working copy using subversion commands. If LOCATION argument is
-     not specified as `cli_commitRepoChanges' first argument, the
-     ACTIONVAL variable is used as reference instead.
-
      The `cli_commitRepoChanges' function brings changes from the
-     repository to the working copy--using `svn update'--, checks the
-     working copy changes--using `svn status' command--, prints status
-     report--using both `svn update' and `svn status' commands output,
-     and finally, commits recent changes from the working copy up to
-     the repository--using `svn commit' command--.
+     central repository down to the working copy--using `svn update'--,
+     checks the working copy changes--using `svn status' command--,
+     prints status report--using both `svn update' and `svn status'
+     commands output, and finally, commits recent changes from the
+     working copy up to the repository--using `svn commit' command--.
 
-     Previous to commit the working copy changes up to the repository,
-     the `cli_commitRepoChanges' function asks you to verify
-     changes--using `svn diff' command--, and later, another
-     confirmation question is shown to be sure you really want to commit
-     changes up to central repository.
+     Previous to commit the working copy changes up to the central
+     repository, the `cli_commitRepoChanges' function asks you to
+     verify changes--using `svn diff' command--, and later, another
+     confirmation question is shown to be sure you really want to
+     commit changes up to central repository.
+
+     If LOCATION argument is not specified, the value of ACTIONVAL
+     variable is used as reference instead.
 
 
      ----------------------------------------------------------------------
@@ -3280,8 +3280,8 @@ for you to use inside specific functions:
      Figure 3.2: The `cli_commitRepoChanges' function output.
 
         Call the `cli_commitRepoChanges' function before or/and after
-     functions that modify files or directories inside the working copy
-     as you may need to.
+     calling functions that modify files or directories inside the
+     working copy as you may need to.
 
  -- Function: cli_checkFiles FILE [TYPE]
      Verify files existence.
@@ -3317,14 +3317,18 @@ for you to use inside specific functions:
           Ends script execution if FILE is not executable.
 
     `fh'
-          Ends script execution if FILE is neither a regular file or a
+          Ends script execution if FILE is neither a regular file nor a
           symbolic link.
+
+    `fd'
+          Ends script execution if FILE is neither a regular file nor a
+          directory.
 
      As default behaviour, if FILE passes all verifications,
      `centos-art.sh' script continues with its normal flow.
 
  -- Function: cli_getCountryCodes [FILTER]
-     Output country codes.
+     Output country codes supported by `centos-art.sh' script.
 
      The `cli_getCountryCodes' function outputs a list with country
      codes as defined in ISO3166 standard. When FILTER is provided,
@@ -3332,16 +3336,13 @@ for you to use inside specific functions:
      regular expression pattern.
 
  -- Function: cli_getCountryName [FILTER]
-     Output country names.
+     Outputs country name supported by `centos-art.sh' script.
 
      The `cli_getCountryName' function reads one language locale code
      in the format LL_CC and outputs the name of its related country as
      in ISO3166. If filter is specified, `cli_getCountryName' returns
      the country name that matches the locale code specified in FILTER,
      exactly.
-
-     The `cli_getCountryName' function outputs country name supported
-     by `centos-art.sh' script.
 
  -- Function: cli_getCurrentLocale
      Output current locale used by `centos-art.sh' script.
@@ -3359,39 +3360,30 @@ for you to use inside specific functions:
 
      Locale precedence selection is quite important in order to define
      the locale type we use for message translations. For example, if
-     `en_GB' is used, we are also saying that no common language
-     specification is used for English language (i.e., `en'). Instead,
-     we are using English non-common country-specific language
+     `en_GB' is used, we are also saying that the common language
+     specification for English language (i.e., `en') is no longer used.
+     Instead, we are using English non-common country-specific language
      specifications like `en_AU', `en_BW', `en_GB', `en_US', etc., for
      message translations.
 
      Use `cli_getCurrentLocale' function to know what current locale
      information to use inside `centos-art.sh' script.
 
-     The `cli_getCurrentLocale' function outputs current locale used by
-     `centos-art.sh' script.
-
  -- Function: cli_getLangCodes [FILTER]
-     Output language codes.
+     Outputs language codes supported by `centos-art.sh' script.
 
      `cli_getLangCodes' function outputs a list of language codes as
      defined in ISO639 standard. When FILTER is provided,
      `cli_getLangCodes' outputs language codes that match FILTER
      regular expression pattern.
 
-     The `cli_getLangCodes' function outputs language codes supported
-     by `centos-art.sh' script.
-
  -- Function: cli_getLangName [FILTER]
-     Output language names.
+     Outputs language names supported by `centos-art.sh' script.
 
      `cli_getLangName' function reads one language locale code in the
      format LL_CC and outputs the language related name as in ISO639. If
      filter is specified, `cli_getLangName' returns the language name
      that matches the locale code specified in FILTER, exactly.
-
-     The `cli_getLangName' function outputs language names supported by
-     `centos-art.sh' script.
 
  -- Function: cli_getLocales
      Output locale codes supported by `centos-art.sh' script.
@@ -3419,7 +3411,9 @@ for you to use inside specific functions:
      The NAME variable contains the file name or directory name you
      want to sanitate.
 
-     The TYPE variable can be one of the following values:
+     The TYPE variable specifies what type of sanitation you want to
+     perform on NAME. The TYPE can be one of the following values:
+
     `d'
     `directory'
           Sanitate directory NAMEs.
@@ -3602,7 +3596,7 @@ for you to use inside specific functions:
 
           ----------------------------------------------------------------------
           To know more, run the following command:
-          centos-art help --read='path/to/dir'
+          centos-art manual --read='path/to/dir'
           ----------------------------------------------------------------------
 
           Use `AsToKnowMoreLine' option after errors and for intentional
@@ -5973,24 +5967,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  390)
-Common translation files:                      See 3.50.2.5. (line 5402)
-How to render brands' translation files:       See 3.52.3.   (line 5706)
-How to render fonts' translation files:        See 3.54.3.   (line 5779)
-How to render translation files:               See 3.50.3.   (line 5572)
-Metadata maintainance:                         See 3.45.2.   (line 4546)
-Specific translation files:                    See 3.50.2.6. (line 5427)
+Common translation files:                      See 3.50.2.5. (line 5396)
+How to render brands' translation files:       See 3.52.3.   (line 5700)
+How to render fonts' translation files:        See 3.54.3.   (line 5773)
+How to render translation files:               See 3.50.3.   (line 5566)
+Metadata maintainance:                         See 3.45.2.   (line 4540)
+Specific translation files:                    See 3.50.2.6. (line 5421)
 tags:                                          See 2.        (line  393)
-Template translation files:                    See 3.50.2.4. (line 5232)
-Translation brands file names:                 See 3.52.2.1. (line 5663)
-Translation configuration scripts:             See 3.50.2.8. (line 5461)
-Translation entries:                           See 3.50.2.1. (line 5048)
-Translation files:                             See 3.50.2.3. (line 5164)
-Translation markers:                           See 3.50.2.2. (line 5129)
-Translation paths:                             See 3.50.2.1. (line 5048)
+Template translation files:                    See 3.50.2.4. (line 5226)
+Translation brands file names:                 See 3.52.2.1. (line 5657)
+Translation configuration scripts:             See 3.50.2.8. (line 5455)
+Translation entries:                           See 3.50.2.1. (line 5042)
+Translation files:                             See 3.50.2.3. (line 5158)
+Translation markers:                           See 3.50.2.2. (line 5123)
+Translation paths:                             See 3.50.2.1. (line 5042)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5461)
-Translation rendering:                         See 3.50.2.7. (line 5450)
-Translation rendering default functionality:   See 3.50.2.9. (line 5547)
+                                                             (line 5455)
+Translation rendering:                         See 3.50.2.7. (line 5444)
+Translation rendering default functionality:   See 3.50.2.9. (line 5541)
 trunk:                                         See 3.        (line  396)
 trunk Identity:                                See 3.1.      (line  399)
 trunk Identity Brands:                         See 3.2.      (line  819)
@@ -6035,31 +6029,31 @@ trunk Manuals:                                 See 3.34.     (line 2579)
 trunk Scripts:                                 See 3.35.     (line 2633)
 trunk Scripts Bash:                            See 3.36.     (line 2657)
 trunk Scripts Bash Functions:                  See 3.37.     (line 2769)
-trunk Scripts Bash Functions Html:             See 3.38.     (line 3637)
-trunk Scripts Bash Functions Locale:           See 3.39.     (line 3658)
-trunk Scripts Bash Functions Manual:           See 3.40.     (line 3738)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 3759)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4161)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4182)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4360)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4528)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 4716)
-trunk Scripts Bash Locale:                     See 3.47.     (line 4932)
-trunk Scripts Perl:                            See 3.48.     (line 4961)
-trunk Scripts Python:                          See 3.49.     (line 4978)
-trunk Translations:                            See 3.50.     (line 4999)
-trunk Translations Identity:                   See 3.51.     (line 5601)
-trunk Translations Identity Brands:            See 3.52.     (line 5622)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 5717)
-trunk Translations Identity Fonts:             See 3.54.     (line 5732)
-trunk Translations Identity Models:            See 3.55.     (line 5795)
-trunk Translations Identity Release:           See 3.56.     (line 5810)
-trunk Translations Identity Themes:            See 3.57.     (line 5825)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 5840)
+trunk Scripts Bash Functions Html:             See 3.38.     (line 3631)
+trunk Scripts Bash Functions Locale:           See 3.39.     (line 3652)
+trunk Scripts Bash Functions Manual:           See 3.40.     (line 3732)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 3753)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4155)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4176)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4354)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4522)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 4710)
+trunk Scripts Bash Locale:                     See 3.47.     (line 4926)
+trunk Scripts Perl:                            See 3.48.     (line 4955)
+trunk Scripts Python:                          See 3.49.     (line 4972)
+trunk Translations:                            See 3.50.     (line 4993)
+trunk Translations Identity:                   See 3.51.     (line 5595)
+trunk Translations Identity Brands:            See 3.52.     (line 5616)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 5711)
+trunk Translations Identity Fonts:             See 3.54.     (line 5726)
+trunk Translations Identity Models:            See 3.55.     (line 5789)
+trunk Translations Identity Release:           See 3.56.     (line 5804)
+trunk Translations Identity Themes:            See 3.57.     (line 5819)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 5834)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 5861)
-trunk Translations Identity Widgets:           See 3.60.     (line 5954)
-Unused definitions:                            See 3.45.2.1. (line 4653)
+                                                             (line 5855)
+trunk Translations Identity Widgets:           See 3.60.     (line 5948)
+Unused definitions:                            See 3.45.2.1. (line 4647)
 List of Figures
 ***************
 
