@@ -628,7 +628,7 @@ parameters on.
 In order to use positional paramenters passed as command-line, we use
 the @var{ARGUMENTS} global variable which is defined at @code{cli}
 function, and occasionally, farther redefined (by
-@code{cli_doParseArgumentsReDef}) as long as it may be convenient.
+@code{cli_doParseArgumentsReDef}) as far as it may be convenient.
 @end defun
 
 @defun cli_getActionArguments
