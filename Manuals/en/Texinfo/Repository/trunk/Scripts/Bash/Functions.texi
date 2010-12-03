@@ -497,13 +497,62 @@ If no one of these values is set in @env{EDITOR} environment variable,
 @file{centos-art.sh} uses @file{/usr/bin/vim} text editor by default. 
 @end defvar
 
-@subsubsection Functions
+@subsubsection Global functions
 
 Functions defined under @file{trunk/Scripts/Bash/Functions/} directory
 are considered global. Global function can be used inside action
 specific functionalities and reused inside themselves. This section
 provides introductory information to global functions you can use
 inside @file{centos-art.sh} script.
+
+@defun cli_checkActionArguments
+Validate action value (ACTIONVAL) variable.
+@code{cli_checkActionArguments} is called from
+@code{cli_getActionArguments} function.
+@end defun
+
+@defun cli_checkFiles FILE [TYPE]
+Verify file existence.
+
+@code{cli_checkFiles} receives a @var{FILE} absolute path and performs
+file verification as specified in @var{TYPE}.  When @var{TYPE} is not
+specified, @code{cli_checkFiles} verifies @var{FILE} existence, no
+matter what kind of file it be.  If @var{TYPE} is specified, use one
+of the following values:
+
+@table @option
+@item d
+@itemx directory
+Ends script execution if @var{FILE} is not a directory.
+
+When you verify directories with cli_checkFiles, if directory doesn't
+exist, @file{centos-art.sh} script asks you for confirmation in order
+to create that directory. If you answer positively,
+@file{centos-art.sh} script creates that directory and continues
+script flows normally. Otherwise, if you answer negatively,
+@file{centos-art.sh} ends script execution with an error and
+documentation message.
+
+@item f
+@item regular-file
+Ends script execution if @var{FILE} is not a regular file.
+@item h
+@itemx symbolic-link
+Ends script execution if @var{FILE} is not a symbolic link.
+@item x
+@itemx execution
+Ends script execution if @var{FILE} is not executable.
+@item fh
+Ends script execution if @var{FILE} is neither a regular file nor a
+symbolic link.
+@item fd
+Ends script execution if @var{FILE} is neither a regular file nor a
+directory.
+@end table
+
+As default behaviour, if @var{FILE} passes all verifications,
+@file{centos-art.sh} script continues with its normal flow. 
+@end defun
 
 @defun cli_commitRepoChanges [LOCATION]
 
@@ -551,47 +600,19 @@ calling functions that modify files or directories inside the working
 copy as you may need to.  
 @end defun
 
-@defun cli_checkFiles FILE [TYPE]
-Verify files existence.
+@defun cli_doParseArguments
+@end defun
 
-@code{cli_checkFiles} receives a @var{FILE} absolute path and performs
-file verification as specified in @var{TYPE}.  When @var{TYPE} is not
-specified, @code{cli_checkFiles} verifies @var{FILE} existence, no
-matter what kind of file it be.  If @var{TYPE} is specified, use one
-of the following values:
+@defun cli_doParseArgumentsReDef
+@end defun
 
-@table @option
-@item d
-@itemx directory
-Ends script execution if @var{FILE} is not a directory.
+@defun cli_getActionArguments
+@end defun
 
-When you verify directories with cli_checkFiles, if directory doesn't
-exist, @file{centos-art.sh} script asks you for confirmation in order
-to create that directory. If you answer positively,
-@file{centos-art.sh} script creates that directory and continues
-script flows normally. Otherwise, if you answer negatively,
-@file{centos-art.sh} ends script execution with an error and
-documentation message.
+@defun cli_getActionBuild
+@end defun
 
-@item f
-@item regular-file
-Ends script execution if @var{FILE} is not a regular file.
-@item h
-@itemx symbolic-link
-Ends script execution if @var{FILE} is not a symbolic link.
-@item x
-@itemx execution
-Ends script execution if @var{FILE} is not executable.
-@item fh
-Ends script execution if @var{FILE} is neither a regular file nor a
-symbolic link.
-@item fd
-Ends script execution if @var{FILE} is neither a regular file nor a
-directory.
-@end table
-
-As default behaviour, if @var{FILE} passes all verifications,
-@file{centos-art.sh} script continues with its normal flow. 
+@defun cli_getActions
 @end defun
 
 @defun cli_getCountryCodes [FILTER]
@@ -637,6 +658,9 @@ language specifications like @samp{en_AU}, @samp{en_BW}, @samp{en_GB},
 
 Use @code{cli_getCurrentLocale} function to know what current locale
 information to use inside @file{centos-art.sh} script.
+@end defun
+
+@defun cli_getFilesList
 @end defun
 
 @defun cli_getLangCodes [FILTER]
@@ -705,18 +729,16 @@ directory names before their utilization.
 Use @code{cli_getRepoName} when you need to change file name
 convenctions inside @file{centos-art.sh} script. 
 
-When changing file name convenctions inside @code{cli_getRepoName}
-what you are really changing is the way functions interpret repository
-file system organization. In order to a complete file name convenction
-change, you also need to change file names and directory names inside
-repository file system organization, just as you did in
-@code{cli_getRepoName} function. 
+When we change file name convenctions inside @code{cli_getRepoName}
+what we are really changing is the way functions interpret repository
+file system organization. Notice that when we change a file name
+(e.g., a function name), it is necessary to update all files where
+such file name is placed on. This may require a massive substitution,
+each time we change name convenctions in the repository (@pxref{trunk
+Scripts Bash Functions Path}, for more information).
+@end defun
 
-@quotation
-@strong{Note} @xref{trunk Scripts Bash Functions Path}, for more
-information on how to rename files and directories massively inside
-repository file system organization.
-@end quotation
+@defun cli_getRepoStatus
 @end defun
 
 @defun cli_getTemporalFile @var{NAME}
@@ -774,7 +796,8 @@ Otherwise, @code{cli_getThemeName} returns an empty string.
 @end defun
 
 @defun cli_printMessage MESSAGE [FORMAT]
-Give format to output messages.
+Define standard output message definition supported by
+@file{centos-art.sh} script.
 
 When @var{FORMAT} is not specified, @code{cli_printMessage} outputs
 information just as it was passed in @var{MESSAGE} variable.
@@ -806,74 +829,75 @@ NOTE: $MESSAGE
 @end verbatim
 
 @item AsUpdatingLine
-To print @samp{Updating} messages using two-columns format.
+To print @samp{Updating} messages on two-columns format.
 @verbatim
 Updating        $MESSAGE
 @end verbatim
 
 @item AsRemovingLine
-To print @samp{Removing} messages using two-columns format.
+To print @samp{Removing} messages on two-columns format.
 @verbatim
 Removing        $MESSAGE
 @end verbatim
 
 @item AsCheckingLine
-To print @samp{Checking} messages using two-columns format.
+To print @samp{Checking} messages on two-columns format.
 @verbatim
 Checking        $MESSAGE
 @end verbatim
 
 @item AsCreatingLine
-To print @samp{Creating} messages using two-columns format.
+To print @samp{Creating} messages on two-columns format.
 @verbatim
 Creating        $MESSAGE
 @end verbatim
 
 @item AsSavedAsLine
-To print @samp{Saved as} messages using two-columns format.
+To print @samp{Saved as} messages on two-columns format.
 @verbatim
 Saved as        $MESSAGE
 @end verbatim
 
 @item AsLinkToLine
-To print @samp{Linked to} messages using two-columns format.
+To print @samp{Linked to} messages on two-columns format.
 @verbatim
 Linked to       $MESSAGE
 @end verbatim
 
 @item AsMovedToLine
-To print @samp{Moved to} messages using two-columns format.
+To print @samp{Moved to} messages on two-columns format.
 @verbatim
 Moved to        $MESSAGE
 @end verbatim
 
 @item AsTranslationLine
-To print @samp{Translation} messages using two-columns format.
+To print @samp{Translation} messages on two-columns format.
 @verbatim
 Translation     $MESSAGE
 @end verbatim
 
 @item AsConfigurationLine
-To print @samp{Configuration} messages using two-columns format.
+To print @samp{Configuration} messages on two-columns format.
 @verbatim
 Configuration   $MESSAGE
 @end verbatim
 
 @item AsResponseLine
-To print response messages using one-column format.
+To print response messages on one-column format.
 @verbatim
 --> $MESSAGE
 @end verbatim
 
 @item AsRequestLine
-To print request messages using one-column format. Request messages
-supress the trailing newline character from final output.
+To print request messages on one-column format. Request messages
+output messages with one colon (@samp{:}) and without trailing newline
+(@samp{\n}) at message end.
 @verbatim
-$MESSAGE
+$MESSAGE:
 @end verbatim
 
 @item AsYesOrNoRequestLine
-To print @samp{yes or no} request messages using one-column format. If
+To print @samp{yes or no} request messages on one-column format. If
 something different from @samp{y} is answered (when using
 @code{en_US.UTF-8} locale), script execution ends immediatly.  
 
@@ -881,9 +905,9 @@ something different from @samp{y} is answered (when using
 $MESSAGE [y/N]:
 @end verbatim
 
-When you are using @file{centos-art.sh} script in a locale different
-from @code{en_US.UTF-8}, confirmation answer may be different from
-@samp{y}. For example, if you are using @code{es_ES.UTF-8} locale, the
+When we use @file{centos-art.sh} script in a locale different from
+@code{en_US.UTF-8}, confirmation answer may be different from
+@samp{y}. For example, if you use @code{es_ES.UTF-8} locale, the
 confirmation question would look like:
 
 @verbatim
@@ -917,12 +941,15 @@ Use @option{AsToKnowMoreLine} option after errors and for intentional
 script termination. 
 
 @item AsRegularLine
-To standardize regular messages using one-column format. 
+To standardize regular messages on one-column format. 
 
 When @var{MESSAGE} contains a colon inside (e.g., @samp{description:
 message}), the @code{cli_printMessage} function outputs @var{MESSAGE}
-using two-columns format. 
+on two-columns format. 
 @end table
+
+Use @code{cli_printMessage} function whenever you need to output
+information from @file{centos-art.sh} script.
 
 @quotation
 @strong{Tip} To improve two-columns format, change the following file:
@@ -930,9 +957,6 @@ using two-columns format.
 trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 @end verbatim
 @end quotation
-
-Use @code{cli_printMessage} function whenever you need to output
-information from @file{centos-art.sh} script.
 @end defun
 
 @subsubsection Specific functions

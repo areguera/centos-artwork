@@ -581,7 +581,7 @@ following values are recognized by <tt>`centos-art.sh'</tt> script:
 
 
 <a name="SEC216"></a>
-<h4 class="subsubsection"> 3.37.3.2 Functions </h4>
+<h4 class="subsubsection"> 3.37.3.2 Global functions </h4>
 
 <p>Functions defined under <tt>`trunk/Scripts/Bash/Functions/'</tt> directory
 are considered global. Global function can be used inside action
@@ -590,57 +590,19 @@ provides introductory information to global functions you can use
 inside <tt>`centos-art.sh'</tt> script.
 </p>
 <dl>
-<dt><u>Function:</u> <b>cli_commitRepoChanges</b><i> [LOCATION]</i>
+<dt><u>Function:</u> <b>cli_checkActionArguments</b>
 <a name="IDX9"></a>
 </dt>
-<dd><p>Syncronize changes between repository and working copy.
-</p>
-<p>The <code>cli_commitRepoChanges</code> function brings changes from the
-central repository down to the working copy--using <code>svn
-update</code>--, checks the working copy changes--using <code>svn
-status</code> command--, prints status report--using both <code>svn
-update</code> and <code>svn status</code> commands output, and finally, commits
-recent changes from the working copy up to the repository--using
-<code>svn commit</code> command--.
-</p>
-<p>Previous to commit the working copy changes up to the central
-repository, the <code>cli_commitRepoChanges</code> function asks you to
-verify changes--using <code>svn diff</code> command--, and later,
-another confirmation question is shown to be sure you really want to
-commit changes up to central repository.
-</p>
-<p>If <var>LOCATION</var> argument is not specified, the value of
-<var>ACTIONVAL</var> variable is used as reference instead.
-</p>
-<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fcli_005fcommitRepoChanges"></a>
-<pre class="verbatim">----------------------------------------------------------------------
---&gt; Bringing changes from the repository into the working copy
---&gt; Checking changes in the working copy
-----------------------------------------------------------------------
-Added           0 file from the repository.
-Deleted         0 file from the repository.
-Updated         0 file from the repository.
-Conflicted      0 file from the repository.
-Merged          0 file from the repository.
-Modified        4 files from the working copy.
-Unversioned     0 file from the working copy.
-Deleted         0 file from the working copy.
-Added           0 file from the working copy.
-----------------------------------------------------------------------
-</pre>
-</div><p><strong>Figure 3.9: The <code>cli_commitRepoChanges</code> function output.
-</strong>
-</p>
-<p>Call the <code>cli_commitRepoChanges</code> function before or/and after
-calling functions that modify files or directories inside the working
-copy as you may need to.  
+<dd><p>Validate action value (ACTIONVAL) variable.
+<code>cli_checkActionArguments</code> is called from
+<code>cli_getActionArguments</code> function.
 </p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
 <a name="IDX10"></a>
 </dt>
-<dd><p>Verify files existence.
+<dd><p>Verify file existence.
 </p>
 <p><code>cli_checkFiles</code> receives a <var>FILE</var> absolute path and performs
 file verification as specified in <var>TYPE</var>.  When <var>TYPE</var> is not
@@ -689,8 +651,85 @@ directory.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
+<dt><u>Function:</u> <b>cli_commitRepoChanges</b><i> [LOCATION]</i>
 <a name="IDX11"></a>
+</dt>
+<dd><p>Syncronize changes between repository and working copy.
+</p>
+<p>The <code>cli_commitRepoChanges</code> function brings changes from the
+central repository down to the working copy--using <code>svn
+update</code>--, checks the working copy changes--using <code>svn
+status</code> command--, prints status report--using both <code>svn
+update</code> and <code>svn status</code> commands output, and finally, commits
+recent changes from the working copy up to the repository--using
+<code>svn commit</code> command--.
+</p>
+<p>Previous to commit the working copy changes up to the central
+repository, the <code>cli_commitRepoChanges</code> function asks you to
+verify changes--using <code>svn diff</code> command--, and later,
+another confirmation question is shown to be sure you really want to
+commit changes up to central repository.
+</p>
+<p>If <var>LOCATION</var> argument is not specified, the value of
+<var>ACTIONVAL</var> variable is used as reference instead.
+</p>
+<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fcli_005fcommitRepoChanges"></a>
+<pre class="verbatim">----------------------------------------------------------------------
+--&gt; Bringing changes from the repository into the working copy
+--&gt; Checking changes in the working copy
+----------------------------------------------------------------------
+Added           0 file from the repository.
+Deleted         0 file from the repository.
+Updated         0 file from the repository.
+Conflicted      0 file from the repository.
+Merged          0 file from the repository.
+Modified        4 files from the working copy.
+Unversioned     0 file from the working copy.
+Deleted         0 file from the working copy.
+Added           0 file from the working copy.
+----------------------------------------------------------------------
+</pre>
+</div><p><strong>Figure 3.9: The <code>cli_commitRepoChanges</code> function output.
+</strong>
+</p>
+<p>Call the <code>cli_commitRepoChanges</code> function before or/and after
+calling functions that modify files or directories inside the working
+copy as you may need to.  
+</p></dd></dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_doParseArguments</b>
+<a name="IDX12"></a>
+</dt>
+</dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_doParseArgumentsReDef</b>
+<a name="IDX13"></a>
+</dt>
+</dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_getActionArguments</b>
+<a name="IDX14"></a>
+</dt>
+</dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_getActionBuild</b>
+<a name="IDX15"></a>
+</dt>
+</dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_getActions</b>
+<a name="IDX16"></a>
+</dt>
+</dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
+<a name="IDX17"></a>
 </dt>
 <dd><p>Output country codes supported by <tt>`centos-art.sh'</tt> script. 
 </p>
@@ -702,7 +741,7 @@ codes as defined in ISO3166 standard. When <var>FILTER</var> is provided,
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryName</b><i> [FILTER]</i>
-<a name="IDX12"></a>
+<a name="IDX18"></a>
 </dt>
 <dd><p>Outputs country name supported by <tt>`centos-art.sh'</tt> script.
 </p>
@@ -715,7 +754,7 @@ exactly.
  
 <dl>
 <dt><u>Function:</u> <b>cli_getCurrentLocale</b>
-<a name="IDX13"></a>
+<a name="IDX19"></a>
 </dt>
 <dd><p>Output current locale used by <tt>`centos-art.sh'</tt> script. 
 </p>
@@ -743,8 +782,14 @@ information to use inside <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
+<dt><u>Function:</u> <b>cli_getFilesList</b>
+<a name="IDX20"></a>
+</dt>
+</dl>
+
+<dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
-<a name="IDX14"></a>
+<a name="IDX21"></a>
 </dt>
 <dd><p>Outputs language codes supported by <tt>`centos-art.sh'</tt> script.
 </p>
@@ -756,7 +801,7 @@ regular expression pattern.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangName</b><i> [FILTER]</i>
-<a name="IDX15"></a>
+<a name="IDX22"></a>
 </dt>
 <dd><p>Outputs language names supported by <tt>`centos-art.sh'</tt> script.
 </p>
@@ -768,7 +813,7 @@ that matches the locale code specified in <var>FILTER</var>, exactly.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLocales</b>
-<a name="IDX16"></a>
+<a name="IDX23"></a>
 </dt>
 <dd><p>Output locale codes supported by <tt>`centos-art.sh'</tt> script.
 </p>
@@ -782,7 +827,7 @@ specifications (<samp>`LL'</samp>) into one unique common locale specification
 
 <dl>
 <dt><u>Function:</u> <b>cli_getRepoName</b><i> NAME TYPE</i>
-<a name="IDX17"></a>
+<a name="IDX24"></a>
 </dt>
 <dd><p>Sanitate file names.
 </p>
@@ -821,22 +866,23 @@ directory names before their utilization.
 <p>Use <code>cli_getRepoName</code> when you need to change file name
 convenctions inside <tt>`centos-art.sh'</tt> script. 
 </p>
-<p>When changing file name convenctions inside <code>cli_getRepoName</code>
-what you are really changing is the way functions interpret repository
-file system organization. In order to a complete file name convenction
-change, you also need to change file names and directory names inside
-repository file system organization, just as you did in
-<code>cli_getRepoName</code> function. 
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> See section <a href="repository_44.html#SEC234">trunk/Scripts/Bash/Functions/Path</a>, for more
-information on how to rename files and directories massively inside
-repository file system organization.
-</p></blockquote>
-</dd></dl>
+<p>When we change file name convenctions inside <code>cli_getRepoName</code>
+what we are really changing is the way functions interpret repository
+file system organization. Notice that when we change a file name
+(e.g., a function name), it is necessary to update all files where
+such file name is placed on. This may require a massive substitution,
+each time we change name convenctions in the repository (see section <a href="repository_44.html#SEC234">trunk/Scripts/Bash/Functions/Path</a>, for more information).
+</p></dd></dl>
+
+<dl>
+<dt><u>Function:</u> <b>cli_getRepoStatus</b>
+<a name="IDX25"></a>
+</dt>
+</dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getTemporalFile</b><i> <var>NAME</var></i>
-<a name="IDX18"></a>
+<a name="IDX26"></a>
 </dt>
 <dd><p>Output absolute path to temporal file <var>NAME</var>.
 </p>
@@ -878,7 +924,7 @@ temporal files inside <tt>`centos-art.sh'</tt> script.
 
 <dl>
 <dt><u>Function:</u> <b>cli_getThemeName</b>
-<a name="IDX19"></a>
+<a name="IDX27"></a>
 </dt>
 <dd><p>Output theme name.
 </p>
@@ -890,9 +936,10 @@ Otherwise, <code>cli_getThemeName</code> returns an empty string.
 
 <dl>
 <dt><u>Function:</u> <b>cli_printMessage</b><i> MESSAGE [FORMAT]</i>
-<a name="IDX20"></a>
+<a name="IDX28"></a>
 </dt>
-<dd><p>Give format to output messages.
+<dd><p>Define standard output message definition supported by
+<tt>`centos-art.sh'</tt> script.
 </p>
 <p>When <var>FORMAT</var> is not specified, <code>cli_printMessage</code> outputs
 information just as it was passed in <var>MESSAGE</var> variable.
@@ -921,71 +968,72 @@ NOTE: $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsUpdatingLine'</samp></dt>
-<dd><p>To print <samp>`Updating'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Updating'</samp> messages on two-columns format.
 </p><pre class="verbatim">Updating        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsRemovingLine'</samp></dt>
-<dd><p>To print <samp>`Removing'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Removing'</samp> messages on two-columns format.
 </p><pre class="verbatim">Removing        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsCheckingLine'</samp></dt>
-<dd><p>To print <samp>`Checking'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Checking'</samp> messages on two-columns format.
 </p><pre class="verbatim">Checking        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsCreatingLine'</samp></dt>
-<dd><p>To print <samp>`Creating'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Creating'</samp> messages on two-columns format.
 </p><pre class="verbatim">Creating        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsSavedAsLine'</samp></dt>
-<dd><p>To print <samp>`Saved as'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Saved as'</samp> messages on two-columns format.
 </p><pre class="verbatim">Saved as        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsLinkToLine'</samp></dt>
-<dd><p>To print <samp>`Linked to'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Linked to'</samp> messages on two-columns format.
 </p><pre class="verbatim">Linked to       $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsMovedToLine'</samp></dt>
-<dd><p>To print <samp>`Moved to'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Moved to'</samp> messages on two-columns format.
 </p><pre class="verbatim">Moved to        $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsTranslationLine'</samp></dt>
-<dd><p>To print <samp>`Translation'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Translation'</samp> messages on two-columns format.
 </p><pre class="verbatim">Translation     $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsConfigurationLine'</samp></dt>
-<dd><p>To print <samp>`Configuration'</samp> messages using two-columns format.
+<dd><p>To print <samp>`Configuration'</samp> messages on two-columns format.
 </p><pre class="verbatim">Configuration   $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsResponseLine'</samp></dt>
-<dd><p>To print response messages using one-column format.
+<dd><p>To print response messages on one-column format.
 </p><pre class="verbatim">--&gt; $MESSAGE
 </pre>
 </dd>
 <dt> <samp>`AsRequestLine'</samp></dt>
-<dd><p>To print request messages using one-column format. Request messages
-supress the trailing newline character from final output.
-</p><pre class="verbatim">$MESSAGE
+<dd><p>To print request messages on one-column format. Request messages
+output messages with one colon (<samp>`:'</samp>) and without trailing newline
+(<samp>`\n'</samp>) at message end.
+</p><pre class="verbatim">$MESSAGE:
 </pre>
 </dd>
 <dt> <samp>`AsYesOrNoRequestLine'</samp></dt>
-<dd><p>To print <samp>`yes or no'</samp> request messages using one-column format. If
+<dd><p>To print <samp>`yes or no'</samp> request messages on one-column format. If
 something different from <samp>`y'</samp> is answered (when using
 <code>en_US.UTF-8</code> locale), script execution ends immediatly.  
 </p>
 <pre class="verbatim">$MESSAGE [y/N]:
 </pre>
-<p>When you are using <tt>`centos-art.sh'</tt> script in a locale different
-from <code>en_US.UTF-8</code>, confirmation answer may be different from
-<samp>`y'</samp>. For example, if you are using <code>es_ES.UTF-8</code> locale, the
+<p>When we use <tt>`centos-art.sh'</tt> script in a locale different from
+<code>en_US.UTF-8</code>, confirmation answer may be different from
+<samp>`y'</samp>. For example, if you use <code>es_ES.UTF-8</code> locale, the
 confirmation question would look like:
 </p>
 <pre class="verbatim">$MESSAGE [s/N]:
@@ -1016,21 +1064,21 @@ script termination.
 </p>
 </dd>
 <dt> <samp>`AsRegularLine'</samp></dt>
-<dd><p>To standardize regular messages using one-column format. 
+<dd><p>To standardize regular messages on one-column format. 
 </p>
 <p>When <var>MESSAGE</var> contains a colon inside (e.g., <samp>`description:
 message'</samp>), the <code>cli_printMessage</code> function outputs <var>MESSAGE</var>
-using two-columns format. 
+on two-columns format. 
 </p></dd>
 </dl>
 
+<p>Use <code>cli_printMessage</code> function whenever you need to output
+information from <tt>`centos-art.sh'</tt> script.
+</p>
 <blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> To improve two-columns format, change the following file:
 </p><pre class="verbatim">trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 </pre></blockquote>
-
-<p>Use <code>cli_printMessage</code> function whenever you need to output
-information from <tt>`centos-art.sh'</tt> script.
-</p></dd></dl>
+</dd></dl>
 
 
 <a name="SEC217"></a>
