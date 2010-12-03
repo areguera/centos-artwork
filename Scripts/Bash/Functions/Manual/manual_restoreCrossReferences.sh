@@ -1,13 +1,15 @@
 #!/bin/bash
 #
-# manual_restoreCrossReferences.sh -- This function restores old
-# missing cross references back into their link form. This function
-# applies in those cases where new documentation entries are added to
-# documentation structure. It is a verification looking for matching
-# documentation entries previously defined as missing. This function
-# relays in the missing message output produced by functions like
-# manual_removeCrossReferences, in order to return them back into the
-# link format. 
+# manual_restoreCrossReferences.sh -- This function looks inside
+# texinfo source files, from section level on, and restores any cross
+# reference related to a documentation entry. This function is used in
+# those cases where documentation entries are created/recreated to
+# documentation structure. It is a verification that looks for
+# matching documentation entries previously defined as removed by
+# manual_removeCrossReferences function. The
+# manual_restoreCrossReferences function relays in the removed message
+# format produced by manual_removeCrossReferences function, in order
+# to return them back into the link format. 
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -42,26 +44,29 @@ function manual_restoreCrossReferences {
         | tr '/' ' ' \
         | sed -r "s/(${MANUALS_FILE[7]}|\.texi)$//")
 
-    # Define regular expression patterns from
-    # message_removeCrossReferences function output.
+    # Define regular expression patterns to match removed message
+    # format produced by message_removeCrossReferences function.
     PATTERN[0]="--- @strong\{`gettext "Removed"`\}\((pxref|xref|ref):(${NODE})\) ---"
     PATTERN[1]="^@comment --- `gettext "Removed"`\((\* ${NODE}:(.*)?:(.*)?)\) ---$"
 
-    # Define replacement string for message_removeCrossReferences
-    # function output. Here is where we turn Removed messages back
-    # into links.
+    # Define replacement string to turn removed message back to cross
+    # reference link.
     REPLACE[0]='@\1{\2}'
     REPLACE[1]='\1'
 
-    # Sanitate messages built from broken cross reference messages
-    # produced by manual_removeCrossReferences function for section
-    # texinfo files. We don't toch chapter texinfo files because they
-    # are handled by manual_updateMenu, and manual_updateNode
-    # functions.  If we don't sanitate messages built from broken
-    # cross reference messages, they may become obsoletes since the
+    # Build list of source texinfo files to process, from section
+    # level on, and apply replacement string previously defined.  At
+    # this point we don't touch chapter related texinfo files (i.e.,
+    # repository-menu.texi and repository-nodes.texi) nor section
+    # related definition files (i.e., chapter-nodes.texi,
+    # chapter-menu.texi, chapter-index.texi) because they are handled
+    # by manual_updateChapterMenu, manual_updateChapterNode,
+    # manual_updateMenu, and manual_updateNodes functions
+    # respectively.  If we don't sanitate messages built from broken
+    # cross reference messages, they may become obsolete since the
     # documentation entry, they represent, can be recreated in the
-    # future and at that time the link wouldn't be broken any more, so
-    # we need to be aware of this.
+    # future and, at that time, the link wouldn't be broken any more,
+    # so we need to be aware of this.
     sed -r -i \
         -e "s!${PATTERN[0]}!${REPLACE[0]}!Mg" \
         -e "s!${PATTERN[1]}!${REPLACE[1]}!g" \
