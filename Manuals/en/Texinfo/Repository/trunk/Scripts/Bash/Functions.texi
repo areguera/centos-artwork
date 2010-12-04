@@ -672,6 +672,95 @@ global variable with the new positional parameters information.
 @end defun
 
 @defun cli_getActions
+Initialize funtionalities supported by @file{centos-art.sh} script.
+
+Functionalities supported by @file{centos-art.sh} script are organized
+in functionality directories under
+@file{trunk/Scripts/Bash/Functions/} directory. Each functionality
+directory stores function scripts to the functionality such directory
+was created for. Function scripts contain function definitions.
+Function definitions contain several commands focused on achieving one
+specific task only.
+
+Functionalities supported by @file{centos-art.sh} script are
+initialized and executed using the @file{centos-art.sh} script
+functionality name convenction as reference.
+
+In order to for @file{centos-art.sh} script to recognize a
+functionality, such functionality needs to be stored under
+@file{trunk/Scripts/Bash/Functions/} in a directory written
+capitalized (i.e., the whole name is written in lowercase except the
+first character which is in uppercase). The directory where one
+specific functionality is stored is known as the @samp{functionality
+directory}. 
+
+Inside each functionality directory, the functionalty itself is
+implemented through function scripts. Function scripts are organized
+in independent files written in @samp{camelCase} format with the
+function name as prefix.  Separation between prefix and description is
+done using underscore (@samp{_}) character.
+
+In order for @file{centos-art.sh} script to load functionalities
+correctly, function definition inside function scripts should be set
+using the @samp{function} reserved word, just as in the following
+example:
+
+@verbatim
+function prefix_doSomething {
+
+    # Do something here...
+
+}
+@end verbatim
+
+In order to keep visual consistency among function scripts, use the
+following function script design model as template to create your own
+function scripts:
+
+@verbatim
+#!/bin/bash
+#
+# prefix_doSomething.sh -- This function illustrates function scripts
+# design model you can use to create your own function scripts inside
+# centos-art.sh script.
+#
+# Copyright (C) YEAR YOURFULLNAME
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+# USA.
+# 
+# ----------------------------------------------------------------------
+# $Id$
+# ----------------------------------------------------------------------
+
+function prefix_doSomething {
+
+    # Do something here...
+
+}
+@end verbatim
+
+Once @file{centos-art.sh} script determines which functionality
+directory to use, function scripts are executed and function
+definitinos exported. This way, function definitions are made
+available inside @file{centos-art.sh} script execution evironment for
+further calls.  If the functionality specified in the command-line
+first argument doesn't have a functionality directory,
+@file{centos-art.sh} script considers the functionality provided in
+the command-line as invalid functionality and immediatly stops script
+execution with an informative message.
 @end defun
 
 @defun cli_getCountryCodes [FILTER]
