@@ -36,6 +36,8 @@ s!<blockquote><p><strong>Tip</strong>!<blockquote class="orange"><img src="/home
 
 s!<blockquote><p><strong>Caution</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p>!g
 
+s!<blockquote><p><strong>Convenction</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-ruler.png" alt="Convenction"><h3>Convenction</h3><p>!g
+
 s!<blockquote><p><strong>Redirection</strong>!<blockquote class="green"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-doc-redirect.png" alt="Redirection"><h3>Redirection</h3><p>!g
 
 s!<blockquote><p><strong>Removed</strong>!<blockquote class="red"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-doc-old.png" alt="Removed"><h3>Removed</h3><p>!g
@@ -45,3 +47,4 @@ s!<hr size="[[:digit:]]">!!g
 
 # Links
 s!<a href="(https|http|ftps|ftp)://!<a class="www" href="\1://!g
+s!<a href="mailto:!<a class="mailto" href="mailto:!g
