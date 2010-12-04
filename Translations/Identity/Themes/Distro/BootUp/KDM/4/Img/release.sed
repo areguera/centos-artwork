@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # ------------------------------------------------------------
-# $Id: release.sed 13 2010-09-10 09:55:59Z al $
+# $Id: release.sed 308 2010-10-21 18:57:44Z al $
 # ------------------------------------------------------------
 
 # Release number information.

@@ -13,10 +13,10 @@
 # 'render.sh' translation script later to propagate changes.
 # Mettle's blue theme definition.
 # ------------------------------------------------------------
-# $Id$
+# $Id: gnome-splash.sed 13 2010-09-10 09:55:59Z al $
 # ------------------------------------------------------------
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
-s!=MAJOR_RELEASE=!3!g
+s!=MAJOR_RELEASE=!7!g

@@ -6,7 +6,7 @@
 # template file instead and run the 'centos-art' command line
 # interface later to propagate your changes.
 # -------------------------------------
-# $Id: syslinux-splash.sed 5316 2010-04-04 04:42:12Z al $
+# $Id: syslinux-splash.sed 13 2010-09-10 09:55:59Z al $
 # -------------------------------------
 
 

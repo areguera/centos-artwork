@@ -15,4 +15,4 @@
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g
 s!=MINOR_RELEASE=!0!g
-s!=MAJOR_RELEASE=!3!g
+s!=MAJOR_RELEASE=!7!g
