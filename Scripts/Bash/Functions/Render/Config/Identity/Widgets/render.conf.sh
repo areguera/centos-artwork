@@ -44,10 +44,8 @@ function render_loadConfig {
     icon-admonition-alert.svg:      icon-admonition-alert.sed
     icon-admonition-info.svg:       icon-admonition-info.sed
     icon-admonition-attention.svg:  icon-admonition-attention.sed
-    icon-admonition-download.svg:   icon-admonition-download.sed
     icon-admonition-error.svg:      icon-admonition-error.sed
     icon-admonition-star.svg:       icon-admonition-star.sed
-    icon-admonition-svn.svg:        icon-admonition-svn.sed
     icon-admonition-idea.svg:       icon-admonition-idea.sed
     icon-admonition-doc-old.svg:      icon-admonition-doc-old.sed
     icon-admonition-doc-redirect.svg: icon-admonition-doc-redirect.sed
