@@ -27,10 +27,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Verify</title>
+<title>CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Svg</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Verify">
-<meta name="keywords" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Verify">
+<meta name="description" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Svg">
+<meta name="keywords" content="CentOS Artwork Repository: 3.46 trunk/Scripts/Bash/Functions/Svg">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -59,264 +59,235 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_48.html#SEC269" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC271" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_48.html#SEC267" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC269" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC366" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC366" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash-Functions-Verify"></a>
-<a name="SEC270"></a>
-<h2 class="section"> 3.46 trunk/Scripts/Bash/Functions/Verify </h2>
+<a name="trunk-Scripts-Bash-Functions-Svg"></a>
+<a name="SEC268"></a>
+<h2 class="section"> 3.46 trunk/Scripts/Bash/Functions/Svg </h2>
 
 
-<a name="SEC271"></a>
+<a name="SEC269"></a>
 <h3 class="subsection"> 3.46.1 Goals </h3>
 
-<p>This section exists to organize files related to <tt>`centos-art.sh'</tt>
-script <samp>`verify'</samp> functionality.  The <samp>`verify'</samp>
-functionality of <tt>`centos-art.sh'</tt> script helps you to verify the
-workstation configuration you are planning to use as host for your
-working copy of CentOS Artwork Repository.
+<p>This section exists to organize files related to <code>svg</code>
+functionality of <tt>`centos-art.sh'</tt> script.
 </p>
 
-<a name="SEC272"></a>
+<a name="SEC270"></a>
 <h3 class="subsection"> 3.46.2 Description </h3>
 
-<p>The first time you download CentOS Artwork Repository you need to
-configure your workstation in order to use <tt>`centos-art.sh'</tt>
-script.  These preliminar configurations are based mainly on auxiliar
-RPM packages installation, symbolic links creations, and environment
-variables definitions.  The <samp>`verify'</samp> functionality of
-<tt>`centos-art.sh'</tt> script guides you through this preliminar
-configuration process.  
+<p>The <code>svg</code> functionality of <tt>`centos-art.sh'</tt> script helps you
+to maintain scalable vector graphics (SVG) inside repository. For
+example, suppose you've been working in CentOS default design models
+under <tt>`trunk/Identity/Themes/Models/'</tt>, and you want to set common
+metadata to all of them, and later remove all unused SVG defintions
+from <samp>`*.svg'</samp> files. Doing so file by file may be a tedious task,
+so the <tt>`centos-art.sh'</tt> script provides the <code>svg</code>
+functionality to aid you maintain such actions.
 </p>
-<p>If this is the first time you run <tt>`centos-art.sh'</tt> script, the
-appropriate way to use its <samp>`verify'</samp> functionality is not using
-the <tt>`centos-art.sh'</tt> script directly, but the absolute path to
-<code>centos-art.sh</code> script instead (i.e.,
-<tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).  This is necessary
-because <tt>`centos-art'</tt> symbolic link, under <tt>`~/bin/'</tt>
-directory, has not been created yet.
+<a name="IDX28"></a>
+
+<a name="SEC271"></a>
+<h4 class="subsubsection"> 3.46.2.1 Metadata maintainance </h4>
+
+<p>The metadata used is defined by Inkscape 0.46 using the SVG standard
+markup. The <tt>`centos-art.sh'</tt> script replaces everything
+in-between <code>&lt;metadata</code> and <code>&lt;/metadata&gt;</code> tags with a
+predefined metadata template we've set for this purpose.
+</p>
+<p>The metadata template was created using the metadata information of a
+file which, using Inkscape 0.46, all metadata fields were set. This
+created a complete markup representation of how SVG metadata would
+look like. Later, we replaced every single static value with a
+translation marker in the form <samp>`=SOMETEXT='</samp>, where
+<code>SOMETEXT</code> is the name of its main opening tag. Later, we
+transform the metadata template into a sed replacement set of commads
+escaping new lines at the end of each line.
+</p>
+<p>With metadata template in place, the <tt>`centos-art.sh'</tt> script uses
+it to create a metadata template instance for the file being processed
+currently.  The metadata template instance contains the metadata
+portion of sed replacement commands with translation markers already
+traduced.  In this action, instance creation, is where we take
+advantage of automation and generate metadata values like title, date,
+keywords, source, identifier, and relation dynamically, based on the
+file path <tt>`centos-art.sh'</tt> script is currently creating metadata
+information for.
+</p>
+<p>With metadata template instance in place, the <tt>`centos-art.sh'</tt>
+script uses it to replace real values inside all <samp>`.svg'</samp> files
+under the current location you're running the <tt>`centos-art.sh'</tt>
+script on.  Default behaviour is to ask user to enter each metadatum
+required, one by one. If user leaves metadatum empty, by pressing
+<kbd>RET</kbd> key, <tt>`centos-art.sh'</tt> uses its default value.
+</p>
+<p>The <tt>`centos-art.sh'</tt> script modifies the following metadata:
+</p>
+<dl compact="compact">
+<dt> <samp>`Title'</samp></dt>
+<dd><p>Name by which this document is formally known. If no value is set
+here, <tt>`centos-art.sh'</tt> script uses the file name as title.
+</p>
+</dd>
+<dt> <samp>`Date'</samp></dt>
+<dd><p>Date associated with the creation of this document (YYYY-MM-DD). If no
+value is set here, <tt>`centos-art.sh'</tt> script uses the current date
+information as in <code>date +%Y-%m-%d</code>.
+</p>
+</dd>
+<dt> <samp>`Creator'</samp></dt>
+<dd><p>Name of entity primarily responsible for making the content of this
+document. If no value is set here, <tt>`centos-art.sh'</tt> script uses
+the string <samp>`The CentOS Project'</samp>.
+</p>
+</dd>
+<dt> <samp>`Rights'</samp></dt>
+<dd><p>Name of entity with rights to the intellectual Property of this
+document. If no value is set here, <tt>`centos-art.sh'</tt> script uses
+the string <samp>`The CentOS Project'</samp>.
+</p>
+</dd>
+<dt> <samp>`Publisher'</samp></dt>
+<dd><p>Name of entity responsible for making this document available. If no
+value is set here, <tt>`centos-art.sh'</tt> script uses the string
+<samp>`The CentOS Project'</samp>.
+</p>
+</dd>
+<dt> <samp>`Identifier'</samp></dt>
+<dd><p>Unique URI to reference this document. If no value is set here,
+<tt>`centos-art.sh'</tt> script uses the current file path to build the
+related url that points to current file location inside repository
+central server.
+</p>
+</dd>
+<dt> <samp>`Source'</samp></dt>
+<dd><p>Unique URI to reference the source of this document. If no value is
+set here, <tt>`centos-art.sh'</tt> script uses current file path to build
+the related url that points to current file location inside repository
+central server.
+</p>
+</dd>
+<dt> <samp>`Relation'</samp></dt>
+<dd><p>Unique URI to a related document. If no value is set here,
+<tt>`centos-art.sh'</tt> script uses current file path to build the
+related url that points to current file location inside repository
+central server.
+</p>
+</dd>
+<dt> <samp>`Language'</samp></dt>
+<dd><p>Two-letter language tag with optional subtags for the language of this
+document. (e.g. <samp>`en-GB'</samp>). If no value is set here,
+<tt>`centos-art.sh'</tt> script uses the current locale information as in
+<code>cli_getCurrentLocale</code> function.
+</p>
+</dd>
+<dt> <samp>`Keywords'</samp></dt>
+<dd><p>The topic of this document as comma-separated key words, prhases, or
+classifications. If no value is set here, <tt>`centos-art.sh'</tt> script
+uses file path to build 
+</p>
+</dd>
+<dt> <samp>`Coverage'</samp></dt>
+<dd><p>Extent or scope of this document. If no value is set here,
+<tt>`centos-art.sh'</tt> script uses the string <samp>`The CentOS Project'</samp>.
+</p>
+</dd>
+<dt> <samp>`Description'</samp></dt>
+<dd><p>Description about the document. If no value is set here,
+<tt>`centos-art.sh'</tt> script uses uses empty value as default.
+</p>
+</dd>
+<dt> <samp>`Contributors'</samp></dt>
+<dd><p>People that contributes in the creation/maintainance of the document.
+If no value is set here, <tt>`centos-art.sh'</tt> script uses uses empty
+value as default.
+</p></dd>
+</dl>
+
+<p>The <samp>`License'</samp> metadatum is not set as a choise, by now. It is
+fixed <a class="www" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution Share-Alike 3.0 License</a>. This is done in order to
+grant license consistency among all SVG files we manage inside CentOS
+Artwork Repository.
+</p>
+<a name="IDX29"></a>
+
+<a name="SEC272"></a>
+<h4 class="subsubsection"> 3.46.2.2 Unused definitions </h4>
+
+<p>As SVG files grow they may end up with unused definitions inside. For
+example, if you stop using a pattern or gradient, tags used to define
+them are considered unused definitions then. Inkscape 0.46 brings the
+<samp>`Vaccum Defs'</samp> feature to remove those unused definitions from SVG
+files. The <samp>`Vaccum Defs'</samp> feature is available both at graphical
+interface and command line interface.
+</p>
+<p>If you have one or two couple of files, removing unused SVG
+definitions using graphical interface may be enough to you.  In
+contrast, if you have houndred of files to maintain it is not a fun
+task to use the gui interface to remove unused SVG definitions editing
+those files one by one.
+</p>
+<p>To remove unused SVG definitions from several SVG files, the
+<tt>`centos-art.sh'</tt> script uses Inkscape's command-line interface,
+specifically with the <samp>`--vaccum-defs'</samp> option.
 </p>
 
 <a name="SEC273"></a>
-<h4 class="subsubsection"> 3.46.2.1 Packages </h4>
-
-<p>Installation of auxiliar RPM packages provides the software required
-to manipulate files inside the repository (e.g., image files,
-documentation files, translation files, script files, etc.). Most of
-RPM packages <code>centos-art.sh</code> script uses are shipped with
-CentOS distribution, and can be installed from CentOS base repository.
-The only exception is <samp>`inkscape'</samp>, the package we use to
-manipulate SVG files.  The <samp>`inkscape'</samp> package is not inside
-CentOS distribution so it needs to be installed from third party
-repositories.
-</p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Configuration of third party repositories inside CentOS
-distribution is described in CentOS wiki, specifically in the
-following URL:
-<a class="www" href="http://wiki.centos.org/AdditionalResources/Repositories">http://wiki.centos.org/AdditionalResources/Repositories</a>
-</p></blockquote>
-
-<p>Before installing packages, the <tt>`centos-art.sh'</tt> script uses
-<code>sudo</code> to request root privileges to execute <code>yum</code>'s
-installation functionality.  If your user isn't defined as a
-privileged user--at least to run <code>yum</code> commands-- inside
-<tt>`/etc/sudoers'</tt> configuration file, you will not be able to
-perform package installation tasks as set in <tt>`centos-art.sh'</tt>
-script <samp>`verify'</samp> functionality. 
-</p>
-<p>Setting sudo privileges to users is an administrative task you have to
-do by yourself. If you don't have experience with <code>sudo</code>
-command, please read its man page running the command: <code>man
-sudo</code>. This reading will be very useful, and with some practice, you
-will be able to configure your users to have <code>sudo</code>
-privileges.
-</p>
-
-<a name="SEC274"></a>
-<h4 class="subsubsection"> 3.46.2.2 Links </h4>
-
-<p>Creation of symbolic links helps us to alternate between different
-implementations of <tt>`centos-art.sh'</tt> script-line (e.g.,
-<tt>`centos-art.sh'</tt>, for Bash implementation; <tt>`centos-art.py'</tt>,
-for Python implementation; <tt>`centos-art.pl'</tt>, for Perl
-implementation; and so on for other implementations). The
-<tt>`centos-art.sh'</tt> script-line definition takes place inside your
-personal binary (<tt>`~/bin/'</tt>) directory in order to make the script
-implementation --the one that <tt>`centos-art'</tt> links to-- available
-to <var>PATH</var> environment variable.
-</p>
-<p>Creation of symbolic links helps us to reuse components from repository
-working copy. For example, color information files maintained inside
-your working copy must never be duplicated inside program-specific
-configuration directories that uses them in your workstation (e.g.,
-Gimp, Inkscape, etc.).  Instead, a symbolic link must be created for
-each one of them, from program-specific configuration directories to
-files in the working copy.  In this configuration, when someone
-commits changes to color information files up to central repository,
-they--the changes committed-- will be immediatly available to your
-programs the next time you update your working copy --the place
-inside your workstation those color information files are stored--.
-</p>
-<p>Creation of symbolic links helps us to make <tt>`centos-art.sh'</tt>
-script functionalities available outside <tt>`trunk/'</tt> repository
-directory structure, but at its same level in repository tree. This is
-useful if you need to use the &quot;render&quot; functionality of
-<code>centos-art.sh</code> under <tt>`branches/'</tt> repository directory
-structure as you usually do inside <tt>`trunk/'</tt> repository directory
-structure. As consequence of this configuration, automation scripts
-cannot be branched under <tt>`branches/Scripts'</tt> directory structure.
-</p>
-
-<a name="SEC275"></a>
-<h4 class="subsubsection"> 3.46.2.3 Environment variables </h4>
-
-<p>Definition of environemnt variables helps us to set default values to
-our user session life. The user session environment variable defintion
-takes place in the user's <tt>`~/.bash_profile'</tt> file.  The
-<samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script doesn't
-modify your <tt>`~/.bash_profile'</tt> file.  
-</p>
-<p>The <samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script
-evaluates the following environment variables:
-</p>
-<dl compact="compact">
-<dt> <code>EDITOR</code></dt>
-<dd><p>Default text editor. 
-</p>
-<p>The <tt>`centos-art.sh'</tt> script uses default text <code>EDITOR</code> to edit
-pre-commit subversion messages, translation files, configuration
-files, script files, and similar text-based files.
-</p>
-<p>If <code>EDITOR</code> environment variable is not set, <tt>`centos-art.sh'</tt>
-script uses <tt>`/usr/bin/vim'</tt> as default text editor. Otherwise, the
-following values are recognized by <tt>`centos-art.sh'</tt> script:
-</p>
-<ul class="toc">
-<li> <tt>`/usr/bin/vim'</tt>
-</li><li> <tt>`/usr/bin/emacs'</tt>
-</li><li> <tt>`/usr/bin/nano'</tt>
-</li></ul>
-
-<p>If no one of these values is set in <code>EDITOR</code> environment variable,
-<tt>`centos-art.sh'</tt> uses <tt>`/usr/bin/vim'</tt> text editor by default. 
-</p>
-</dd>
-<dt> <code>TZ</code></dt>
-<dd>
-<p>Default time zone representation.
-</p>
-<p>Time representation inside repository server is set to Coordinated
-Universal Time (UTC).  Time represetation inside repository working
-copies is set as their administrators personally define.  
-</p>
-<p>When repository working copies time representation be defined, it
-would be a very good convention to follow if working copies
-administrators would set their systems clock to use UTC.  Otherwise it
-would be difficult for working copies users to find out when changes
-were committed up to repository server exactly in time.
-</p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Coordinated Univeral Time (UTC) representation can be
-configured when you install CentOS distribution; or later, runing the
-<code>system-config-date</code> command at a shell prompt from your
-graphical interface.
-</p></blockquote>
-
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> If you set your system clock to use UTC representation,
-you also need to set the <code>TZ</code> environment variable inside
-<tt>`~/.bash_profile'</tt> as follows:
-</p><pre class="verbatim">export TZ=UTC
-</pre><p>This is required in order for your terminal to display the correct
-time information of your zone, taking UTC representation as reference.
-</p></blockquote>
-
-</dd>
-<dt> <code>TEXTDOMAIN</code></dt>
-<dd>
-<p>Default domain used to retrieve translated messages.  This value is
-set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
-</p>
-</dd>
-<dt> <code>TEXTDOMAINDIR</code></dt>
-<dd>
-<p>Default directory used to retrieve translated messages. This value is
-set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
-</p>
-</dd>
-<dt> <code>LANG</code></dt>
-<dd>
-<p>Default locale information. This value is set when you start your
-session and can be changed using the <samp>`locale'</samp> functionality of
-<tt>`centos-art.sh'</tt> script (see section <a href="repository_42.html#SEC224">trunk/Scripts/Bash/Functions/Locale</a>, for more information).
-</p></dd>
-</dl>
-
-
-<a name="SEC276"></a>
 <h3 class="subsection"> 3.46.3 Usage </h3>
 
 <dl compact="compact">
-<dt> <samp>`centos-art verify --packages'</samp></dt>
-<dd><p>Verify required packages your workstation needs in order to run the
-<tt>`centos-art.sh'</tt> script correctly.  If there are missing packages,
-the <tt>`centos-art.sh'</tt> script asks you to confirm their
-installation. When installing packages, the <tt>`centos-art.sh'</tt>
-script uses the <code>yum</code> application in order to achieve the
-task.
-</p>
-<p>In case all packages required by <tt>`centos-art.sh'</tt> script are
-already installed in your workstation, the message <samp>`The required
-packages are already installed.'</samp> is output for you to know. 
+<dt> <code>centos-art svg --update-metadata='path/to/dir'</code></dt>
+<dt> <code>centos-art svg --update-metadata='path/to/dir' --filter='regex'</code></dt>
+<dd><p>Use these commands to update metadata information to <samp>`.svg'</samp> files
+under <samp>`path/to/dir'</samp> directory.
 </p>
 </dd>
-<dt> <samp>`centos-art verify --links'</samp></dt>
-<dd><p>Verify required links your workstation needs in order to run the
-centos-art command correctly.  If any required link is missing, the
-<code>centos-art.sh</code> script asks you to confirm their installation.
-To install required links, the <code>centos-art.sh</code> script uses the
-<code>ln</code> command.
-</p>
-<p>In case all links required by <tt>`centos-art.sh'</tt> script are already
-created in your workstation, the message <samp>`The required links are
-already installed.'</samp> is output for you to know. 
-</p>
-<p>In case a regular file exists with the same name of a required link,
-the <tt>`centos-art.sh'</tt> script outputs the <samp>`Already exists as
-regular file.'</samp> message when listing required links that will be
-installed. Of course, as there is already a regular file where must be
-a link, no link is created. In such cases the <tt>`centos-art.sh'</tt>
-script will fall into a continue installation request for that missing
-link.  To end this continue request you can answer <samp>`No'</samp>, or
-remove the existent regular file to let <tt>`centos-art.sh'</tt> script
-install the link on its place.
-</p>
-</dd>
-<dt> <samp>`centos-art verify --environment'</samp></dt>
-<dt> <samp>`centos-art verify --environment --filter='regex''</samp></dt>
-<dd><p>Output a brief description of environment variables used by
-<tt>`centos-art.sh'</tt> script. 
-</p>
-<p>If <samp>`--filter'</samp> option is provided, output is reduced as defined in
-the <samp>`regex'</samp> regular expression value. If <samp>`--filter'</samp> option
-is specified but <samp>`regex'</samp> value is not, the <tt>`centos-art.sh'</tt>
-script outputs information as if <samp>`--filter'</samp> option had not been
-provided at all.
+<dt> <code>centos-art svg --vacuum-defs='path/to/dir'</code></dt>
+<dt> <code>centos-art svg --vacuum-defs='path/to/dir' --filter='regex'</code></dt>
+<dd><p>Use these commands to remove unused definitions inside <samp>`.svg'</samp>
+files under <samp>`path/to/dir'</samp> directory. 
 </p></dd>
 </dl>
 
+<p>When you provide <samp>`--filter='regex''</samp> argument, the list of files
+to process is reduced as specified in <samp>`regex'</samp> regular expression.
+Inside <tt>`centos-art.sh'</tt> script, the <samp>`regex'</samp> regular
+expression is used in combination with <code>find</code> command to look
+for files matching the regular expression path pattern.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> In order for <samp>`regex'</samp> regular expression to match
+a file, the <samp>`regex'</samp> regular expresion must match the whole file
+path not just the file name. 
+</p></blockquote>
 
-<a name="SEC277"></a>
+<p>For example, if you want to match all <tt>`summary.svg'</tt> files inside
+<tt>`path/to/dir'</tt>, use the <code>.+/summary</code> regular expression.
+Later, <tt>`centos-art.sh'</tt> script uses this value inside
+<code>^$REGEX\.svg$</code> expression in order to build the final regular
+expression (i.e., <code>^.+/summary\.svg$</code>) that is evaluated against
+available file paths inside the list of files to process.
+</p>
+<p>Exceptionally, when you provide <samp>`--filter='regex''</samp> in the way
+that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
+<samp>`path/to/dir/regex'</samp>), matches a regular file; the
+<tt>`centos-art.sh'</tt> script uses the file matching as only file in the
+list of files to process. 
+</p>
+
+<a name="SEC274"></a>
 <h3 class="subsection"> 3.46.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
@@ -328,12 +299,12 @@ provided at all.
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC276" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_50.html#SEC278" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC273" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_50.html#SEC275" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC270" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC268" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC366" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
