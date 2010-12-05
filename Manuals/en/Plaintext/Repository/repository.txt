@@ -4808,22 +4808,22 @@ Artwork Repository.
 3.45.2.2 Unused definitions
 ...........................
 
-As SVG files grow they may end up with unused definitions inside. For
-example, if you stop using a pattern or gradient, tags used to define
-them are considered unused definitions then. Inkscape 0.46 brings the
-`Vaccum Defs' feature to remove those unused definitions from SVG
-files. The `Vaccum Defs' feature is available both at graphical
-interface and command line interface.
+Many of the no-longer-used gradients, patterns, and markers (more
+precisely, those which you edited manually) remain in the corresponding
+palettes and can be reused for new objects. However if you want to
+optimize your document, use the `Vacuum Defs' command in `File' menu.
+It will remove any gradients, patterns, or markers which are not used
+by anything in the document, making the file smaller.
 
-   If you have one or two couple of files, removing unused SVG
-definitions using graphical interface may be enough to you.  In
-contrast, if you have houndred of files to maintain it is not a fun
-task to use the gui interface to remove unused SVG definitions editing
-those files one by one.
+   If you have one or two couple of files, removing unused definitions
+using the graphical interface may be enough to you.  In contrast, if
+you have dozens or even houndreds of scalable vector graphic files to
+maintain it is not a fun task to use the gui interface to remove unused
+definitions editing those files one by one.
 
-   To remove unused SVG definitions from several SVG files, the
-`centos-art.sh' script uses Inkscape's command-line interface,
-specifically with the `--vaccum-defs' option.
+   To remove unused definitions from several scalable vector graphic
+files, the `centos-art.sh' script uses Inkscape's command-line
+interface, specifically with the `--vaccum-defs' option.
 
 3.45.3 Usage
 ------------
