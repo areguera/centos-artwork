@@ -795,7 +795,7 @@ action name acts on.
 <p>Once action related variables (i.e., <var>FUNCNAM</var>, <var>ACTIONNAM</var>,
 and <var>ACTIONVAL</var>) are defined and validated,
 <code>cli_getActionsArguments</code> shifts the positional arguments to
-remove the first two arguments passed (i.e., those one used to retrive
+remove the first two arguments passed (i.e., those used to retrive
 action related variables) and redefine the arguments (<var>ARGUMENTS</var>)
 global variable with the new positional parameters information.
 </p></dd></dl>
@@ -812,14 +812,10 @@ in functionality directories under
 directory stores function scripts to the functionality such directory
 was created for. Function scripts contain function definitions.
 Function definitions contain several commands focused on achieving one
-specific task only.
+specific task only (i.e., the one such functionality was created for).
 </p>
-<p>Functionalities supported by <tt>`centos-art.sh'</tt> script are
-initialized and executed using the <tt>`centos-art.sh'</tt> script
-functionality name convenction as reference.
-</p>
-<p>In order to for <tt>`centos-art.sh'</tt> script to recognize a
-functionality, such functionality needs to be stored under
+<p>In order for <tt>`centos-art.sh'</tt> script to recognize a functionality,
+such functionality needs to be stored under
 <tt>`trunk/Scripts/Bash/Functions/'</tt> in a directory written
 capitalized (i.e., the whole name is written in lowercase except the
 first character which is in uppercase). The directory where one
@@ -828,9 +824,9 @@ directory'</samp>.
 </p>
 <p>Inside each functionality directory, the functionalty itself is
 implemented through function scripts. Function scripts are organized
-in independent files written in <samp>`camelCase'</samp> format with the
-function name as prefix.  Separation between prefix and description is
-done using underscore (<samp>`_'</samp>) character.
+in files independently one another and written in <samp>`camelCase'</samp>
+format with the function name as prefix.  Separation between prefix
+and description is done using underscore (<samp>`_'</samp>) character.
 </p>
 <p>In order for <tt>`centos-art.sh'</tt> script to load functionalities
 correctly, function definition inside function scripts should be set
@@ -843,9 +839,28 @@ example:
 
 }
 </pre>
-<p>In order to keep visual consistency among function scripts, use the
-following function script design model as template to create your own
-function scripts:
+<p>The above function definition is just a convenction we use, in order
+to make identification of function names easier read and automate by
+<tt>`centos-art.sh'</tt> script initialization commands, once
+<tt>`centos-art.sh'</tt> script determines which functionality directory
+to use.  Specifically, in order to initialize and export functions,
+<tt>`centos-art.sh'</tt> script executes all function scripts inside the
+functionality directory, and later <code>grep</code> on them using a
+regular expression pattern, where the <samp>`function'</samp> reserved word is
+used as reference to retrive the function names and export them to
+<tt>`centos-art.sh'</tt> script execution environment, and so, make
+function definitions --from function scripts inside the functionality
+directory-- available for further calls.
+</p>
+<p>If the functionality specified in the command-line first argument
+doesn't have a functionality directory, <tt>`centos-art.sh'</tt> script
+considers the functionality provided in the command-line as invalid
+functionality and immediatly stops script execution with an error
+message.
+</p>
+<p>In order to keep visual consistency among function scripts, please
+consider using the following function script design model as template
+for your own function scripts:
 </p>
 <pre class="verbatim">#!/bin/bash
 #
@@ -879,17 +894,7 @@ function prefix_doSomething {
     # Do something here...
 
 }
-</pre>
-<p>Once <tt>`centos-art.sh'</tt> script determines which functionality
-directory to use, function scripts are executed and function
-definitinos exported. This way, function definitions are made
-available inside <tt>`centos-art.sh'</tt> script execution evironment for
-further calls.  If the functionality specified in the command-line
-first argument doesn't have a functionality directory,
-<tt>`centos-art.sh'</tt> script considers the functionality provided in
-the command-line as invalid functionality and immediatly stops script
-execution with an informative message.
-</p></dd></dl>
+</pre></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
@@ -946,10 +951,39 @@ information to use inside <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getFilesList</b>
+<dt><u>Function:</u> <b>cli_getFilesList</b><i> [LOCATION]</i>
 <a name="IDX19"></a>
 </dt>
-</dl>
+<dd><p>Output list of files to process.
+</p>
+<p>The <code>cli_getFilesList</code> function uses <var>LOCATION</var> variable as
+source location to build a list of files just as specified by regular
+expression (<var>REGEX</var>) global variable.
+</p>
+<p>If <var>LOCATION</var> is not specified when <code>cli_getFilesList</code>
+function is called, the action value (<var>ACTIONVAL</var>) global variable
+is used instead.
+</p>
+<p>By default, if the regular expression (<var>REGEX</var>) global variable is
+not redefined after its first definition in <code>cli</code> function, all
+files as in <samp>`.+'</samp> regular expression will be added to the list of
+files to process. Otherwise, if you redefine the regular expression
+global variable after its first definition in <code>cli</code> and before
+calling <code>cli_getFilesList</code> function, the value you specifed is
+used instead.
+</p>
+<p>When you need customize the regular expression (<var>REGEX</var>) global
+variable value inside a function, do not redefine the global variable.
+Instead, make regular expression global variable as <samp>`local'</samp> to
+the function you need a customized regular expression value for.  If
+you don't redefine the regular expression global variable as local, or
+use another name (which is not convenient), you may experiment
+undesired concantenation issues that make your regular expression to
+be something different from that you expect them to be, specially if
+the function you are doing the redefinition is called several times
+during the script execution flow. 
+</p>
+</dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>

@@ -690,7 +690,7 @@ action name acts on.
 Once action related variables (i.e., @var{FUNCNAM}, @var{ACTIONNAM},
 and @var{ACTIONVAL}) are defined and validated,
 @code{cli_getActionsArguments} shifts the positional arguments to
-remove the first two arguments passed (i.e., those one used to retrive
+remove the first two arguments passed (i.e., those used to retrive
 action related variables) and redefine the arguments (@var{ARGUMENTS})
 global variable with the new positional parameters information.
 @end defun
@@ -704,14 +704,10 @@ in functionality directories under
 directory stores function scripts to the functionality such directory
 was created for. Function scripts contain function definitions.
 Function definitions contain several commands focused on achieving one
-specific task only.
+specific task only (i.e., the one such functionality was created for).
 
-Functionalities supported by @file{centos-art.sh} script are
-initialized and executed using the @file{centos-art.sh} script
-functionality name convenction as reference.
-
-In order to for @file{centos-art.sh} script to recognize a
-functionality, such functionality needs to be stored under
+In order for @file{centos-art.sh} script to recognize a functionality,
+such functionality needs to be stored under
 @file{trunk/Scripts/Bash/Functions/} in a directory written
 capitalized (i.e., the whole name is written in lowercase except the
 first character which is in uppercase). The directory where one
@@ -720,9 +716,9 @@ directory}.
 
 Inside each functionality directory, the functionalty itself is
 implemented through function scripts. Function scripts are organized
-in independent files written in @samp{camelCase} format with the
-function name as prefix.  Separation between prefix and description is
-done using underscore (@samp{_}) character.
+in files independently one another and written in @samp{camelCase}
+format with the function name as prefix.  Separation between prefix
+and description is done using underscore (@samp{_}) character.
 
 In order for @file{centos-art.sh} script to load functionalities
 correctly, function definition inside function scripts should be set
@@ -737,9 +733,28 @@ function prefix_doSomething {
 }
 @end verbatim
 
-In order to keep visual consistency among function scripts, use the
-following function script design model as template to create your own
-function scripts:
+The above function definition is just a convenction we use, in order
+to make identification of function names easier read and automate by
+@file{centos-art.sh} script initialization commands, once
+@file{centos-art.sh} script determines which functionality directory
+to use.  Specifically, in order to initialize and export functions,
+@file{centos-art.sh} script executes all function scripts inside the
+functionality directory, and later @command{grep} on them using a
+regular expression pattern, where the @samp{function} reserved word is
+used as reference to retrive the function names and export them to
+@file{centos-art.sh} script execution environment, and so, make
+function definitions ---from function scripts inside the functionality
+directory--- available for further calls.
+
+If the functionality specified in the command-line first argument
+doesn't have a functionality directory, @file{centos-art.sh} script
+considers the functionality provided in the command-line as invalid
+functionality and immediatly stops script execution with an error
+message.
+
+In order to keep visual consistency among function scripts, please
+consider using the following function script design model as template
+for your own function scripts:
 
 @verbatim
 #!/bin/bash
@@ -775,16 +790,6 @@ function prefix_doSomething {
 
 }
 @end verbatim
-
-Once @file{centos-art.sh} script determines which functionality
-directory to use, function scripts are executed and function
-definitinos exported. This way, function definitions are made
-available inside @file{centos-art.sh} script execution evironment for
-further calls.  If the functionality specified in the command-line
-first argument doesn't have a functionality directory,
-@file{centos-art.sh} script considers the functionality provided in
-the command-line as invalid functionality and immediatly stops script
-execution with an informative message.
 @end defun
 
 @defun cli_getCountryCodes [FILTER]
@@ -832,7 +837,36 @@ Use @code{cli_getCurrentLocale} function to know what current locale
 information to use inside @file{centos-art.sh} script.
 @end defun
 
-@defun cli_getFilesList
+@defun cli_getFilesList [LOCATION]
+Output list of files to process.
+
+The @code{cli_getFilesList} function uses @var{LOCATION} variable as
+source location to build a list of files just as specified by regular
+expression (@var{REGEX}) global variable.
+
+If @var{LOCATION} is not specified when @code{cli_getFilesList}
+function is called, the action value (@var{ACTIONVAL}) global variable
+is used instead.
+
+By default, if the regular expression (@var{REGEX}) global variable is
+not redefined after its first definition in @code{cli} function, all
+files as in @samp{.+} regular expression will be added to the list of
+files to process. Otherwise, if you redefine the regular expression
+global variable after its first definition in @code{cli} and before
+calling @code{cli_getFilesList} function, the value you specifed is
+used instead.
+
+When you need customize the regular expression (@var{REGEX}) global
+variable value inside a function, do not redefine the global variable.
+Instead, make regular expression global variable as @samp{local} to
+the function you need a customized regular expression value for.  If
+you don't redefine the regular expression global variable as local, or
+use another name (which is not convenient), you may experiment
+undesired concantenation issues that make your regular expression to
+be something different from that you expect them to be, specially if
+the function you are doing the redefinition is called several times
+during the script execution flow. 
+
 @end defun
 
 @defun cli_getLangCodes [FILTER]
