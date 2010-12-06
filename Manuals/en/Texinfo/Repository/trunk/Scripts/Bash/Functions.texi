@@ -842,31 +842,36 @@ Output list of files to process.
 
 The @code{cli_getFilesList} function uses @var{LOCATION} variable as
 source location to build a list of files just as specified by regular
-expression (@var{REGEX}) global variable.
+expression (@var{REGEX}) global variable. Essentially, what the
+@code{cli_getFilesList} function does is using @command{find} command
+to look for files in the location (@var{LOCATION}) just as posix-egrep
+regular expression (@var{REGEX}) specifies. 
 
 If @var{LOCATION} is not specified when @code{cli_getFilesList}
 function is called, the action value (@var{ACTIONVAL}) global variable
-is used instead.
+is used as location value instead.
 
 By default, if the regular expression (@var{REGEX}) global variable is
-not redefined after its first definition in @code{cli} function, all
-files as in @samp{.+} regular expression will be added to the list of
-files to process. Otherwise, if you redefine the regular expression
-global variable after its first definition in @code{cli} and before
-calling @code{cli_getFilesList} function, the value you specifed is
-used instead.
+not redefined after its first definition in the @code{cli} function,
+all files that match default regular expression value (i.e.,
+@samp{.+}) will be added to the list of files to process. Otherwise,
+if you redefine the regular expression global variable after its first
+definition in the @code{cli} function and before calling
+@code{cli_getFilesList} function, the value you specifed is used
+instead.
 
-When you need customize the regular expression (@var{REGEX}) global
-variable value inside a function, do not redefine the global variable.
-Instead, make regular expression global variable as @samp{local} to
-the function you need a customized regular expression value for.  If
-you don't redefine the regular expression global variable as local, or
-use another name (which is not convenient), you may experiment
-undesired concantenation issues that make your regular expression to
-be something different from that you expect them to be, specially if
-the function you are doing the redefinition is called several times
-during the script execution flow. 
-
+When you need to customize the regular expression (@var{REGEX}) global
+variable value inside a function, do not redefine the global variable
+(at least you be absolutly convinced you need to).  Instead, set the
+regular expression global variable as @samp{local} to the function you
+need a customized regular expression value for.  If we don't redefine
+the regular expression global variable as local to the function, or
+use another name for the regular expression variable (which is not
+very convenient in order to keep the amount of names to remember low),
+you may experiment undesired concantenation issues that make your
+regular expression to be something different from that you expect them
+to be, specially if the function you are doing the variable
+redefinition is called several times during the same script execution.
 @end defun
 
 @defun cli_getLangCodes [FILTER]

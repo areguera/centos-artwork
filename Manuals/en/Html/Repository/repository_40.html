@@ -958,32 +958,37 @@ information to use inside <tt>`centos-art.sh'</tt> script.
 </p>
 <p>The <code>cli_getFilesList</code> function uses <var>LOCATION</var> variable as
 source location to build a list of files just as specified by regular
-expression (<var>REGEX</var>) global variable.
+expression (<var>REGEX</var>) global variable. Essentially, what the
+<code>cli_getFilesList</code> function does is using <code>find</code> command
+to look for files in the location (<var>LOCATION</var>) just as posix-egrep
+regular expression (<var>REGEX</var>) specifies. 
 </p>
 <p>If <var>LOCATION</var> is not specified when <code>cli_getFilesList</code>
 function is called, the action value (<var>ACTIONVAL</var>) global variable
-is used instead.
+is used as location value instead.
 </p>
 <p>By default, if the regular expression (<var>REGEX</var>) global variable is
-not redefined after its first definition in <code>cli</code> function, all
-files as in <samp>`.+'</samp> regular expression will be added to the list of
-files to process. Otherwise, if you redefine the regular expression
-global variable after its first definition in <code>cli</code> and before
-calling <code>cli_getFilesList</code> function, the value you specifed is
-used instead.
+not redefined after its first definition in the <code>cli</code> function,
+all files that match default regular expression value (i.e.,
+<samp>`.+'</samp>) will be added to the list of files to process. Otherwise,
+if you redefine the regular expression global variable after its first
+definition in the <code>cli</code> function and before calling
+<code>cli_getFilesList</code> function, the value you specifed is used
+instead.
 </p>
-<p>When you need customize the regular expression (<var>REGEX</var>) global
-variable value inside a function, do not redefine the global variable.
-Instead, make regular expression global variable as <samp>`local'</samp> to
-the function you need a customized regular expression value for.  If
-you don't redefine the regular expression global variable as local, or
-use another name (which is not convenient), you may experiment
-undesired concantenation issues that make your regular expression to
-be something different from that you expect them to be, specially if
-the function you are doing the redefinition is called several times
-during the script execution flow. 
-</p>
-</dd></dl>
+<p>When you need to customize the regular expression (<var>REGEX</var>) global
+variable value inside a function, do not redefine the global variable
+(at least you be absolutly convinced you need to).  Instead, set the
+regular expression global variable as <samp>`local'</samp> to the function you
+need a customized regular expression value for.  If we don't redefine
+the regular expression global variable as local to the function, or
+use another name for the regular expression variable (which is not
+very convenient in order to keep the amount of names to remember low),
+you may experiment undesired concantenation issues that make your
+regular expression to be something different from that you expect them
+to be, specially if the function you are doing the variable
+redefinition is called several times during the same script execution.
+</p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
