@@ -857,7 +857,7 @@ all files that match default regular expression value (i.e.,
 @samp{.+}) will be added to the list of files to process. Otherwise,
 if you redefine the regular expression global variable after its first
 definition in the @code{cli} function and before calling
-@code{cli_getFilesList} function, the value you specifed is used
+@code{cli_getFilesList} function, the last value you specifed is used
 instead.
 
 When you need to customize the regular expression (@var{REGEX}) global
@@ -870,8 +870,39 @@ use another name for the regular expression variable (which is not
 very convenient in order to keep the amount of names to remember low),
 you may experiment undesired concantenation issues that make your
 regular expression to be something different from that you expect them
-to be, specially if the function you are doing the variable
+to be, specially if the function where you are doing the variable
 redefinition is called several times during the same script execution.
+
+As result, the @code{cli_getFilesList} re-defines the value of
+@var{FILES} variable with the list of files the @command{find} command
+returned. As example, consider the following construction:
+
+@verbatim
+function prefix_doSomething {
+
+    # Initialize the list of files to process.
+    local FILES=''
+
+    # Initialize location.
+    local LOCATION=/home/centos/artwork/trunk/Identity/Themes/Models/Default
+
+    # Re-define regular expression to match scalable vector graphic
+    # files only. Note how we use the global value of REGEX to build a
+    # new local REGEX value here.
+    local REGEX="${REGEX}.*\.(svgz|svg)"
+
+    # Redefine list of files to process.
+    cli_getFilesList $LOCATION
+
+    # Process list of files.
+    for FILE in $FILES;do
+        cli_printMessages "$FILE" 'AsResponseLine'
+        # Do something else here on...
+    done
+
+}
+@end verbatim
+
 @end defun
 
 @defun cli_getLangCodes [FILTER]

@@ -3580,7 +3580,7 @@ global functions you can use inside `centos-art.sh' script.
      will be added to the list of files to process. Otherwise, if you
      redefine the regular expression global variable after its first
      definition in the `cli' function and before calling
-     `cli_getFilesList' function, the value you specifed is used
+     `cli_getFilesList' function, the last value you specifed is used
      instead.
 
      When you need to customize the regular expression (REGEX) global
@@ -3594,8 +3594,38 @@ global functions you can use inside `centos-art.sh' script.
      the amount of names to remember low), you may experiment undesired
      concantenation issues that make your regular expression to be
      something different from that you expect them to be, specially if
-     the function you are doing the variable redefinition is called
-     several times during the same script execution.
+     the function where you are doing the variable redefinition is
+     called several times during the same script execution.
+
+     As result, the `cli_getFilesList' re-defines the value of FILES
+     variable with the list of files the `find' command returned. As
+     example, consider the following construction:
+
+
+     function prefix_doSomething {
+
+         # Initialize the list of files to process.
+         local FILES=''
+
+         # Initialize location.
+         local LOCATION=/home/centos/artwork/trunk/Identity/Themes/Models/Default
+
+         # Re-define regular expression to match scalable vector graphic
+         # files only. Note how we use the global value of REGEX to build a
+         # new local REGEX value here.
+         local REGEX="${REGEX}.*\.(svgz|svg)"
+
+         # Redefine list of files to process.
+         cli_getFilesList $LOCATION
+
+         # Process list of files.
+         for FILE in $FILES;do
+             cli_printMessages "$FILE" 'AsResponseLine'
+             # Do something else here on...
+         done
+
+     }
+
 
  -- Function: cli_getLangCodes [FILTER]
      Outputs language codes supported by `centos-art.sh' script.
@@ -6195,24 +6225,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  390)
-Common translation files:                      See 3.50.2.5. (line 5624)
-How to render brands' translation files:       See 3.52.3.   (line 5928)
-How to render fonts' translation files:        See 3.54.3.   (line 6001)
-How to render translation files:               See 3.50.3.   (line 5794)
-Metadata maintainance:                         See 3.45.2.   (line 4768)
-Specific translation files:                    See 3.50.2.6. (line 5649)
+Common translation files:                      See 3.50.2.5. (line 5654)
+How to render brands' translation files:       See 3.52.3.   (line 5958)
+How to render fonts' translation files:        See 3.54.3.   (line 6031)
+How to render translation files:               See 3.50.3.   (line 5824)
+Metadata maintainance:                         See 3.45.2.   (line 4798)
+Specific translation files:                    See 3.50.2.6. (line 5679)
 tags:                                          See 2.        (line  393)
-Template translation files:                    See 3.50.2.4. (line 5454)
-Translation brands file names:                 See 3.52.2.1. (line 5885)
-Translation configuration scripts:             See 3.50.2.8. (line 5683)
-Translation entries:                           See 3.50.2.1. (line 5270)
-Translation files:                             See 3.50.2.3. (line 5386)
-Translation markers:                           See 3.50.2.2. (line 5351)
-Translation paths:                             See 3.50.2.1. (line 5270)
+Template translation files:                    See 3.50.2.4. (line 5484)
+Translation brands file names:                 See 3.52.2.1. (line 5915)
+Translation configuration scripts:             See 3.50.2.8. (line 5713)
+Translation entries:                           See 3.50.2.1. (line 5300)
+Translation files:                             See 3.50.2.3. (line 5416)
+Translation markers:                           See 3.50.2.2. (line 5381)
+Translation paths:                             See 3.50.2.1. (line 5300)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5683)
-Translation rendering:                         See 3.50.2.7. (line 5672)
-Translation rendering default functionality:   See 3.50.2.9. (line 5769)
+                                                             (line 5713)
+Translation rendering:                         See 3.50.2.7. (line 5702)
+Translation rendering default functionality:   See 3.50.2.9. (line 5799)
 trunk:                                         See 3.        (line  396)
 trunk Identity:                                See 3.1.      (line  399)
 trunk Identity Brands:                         See 3.2.      (line  819)
@@ -6257,31 +6287,31 @@ trunk Manuals:                                 See 3.34.     (line 2579)
 trunk Scripts:                                 See 3.35.     (line 2633)
 trunk Scripts Bash:                            See 3.36.     (line 2657)
 trunk Scripts Bash Functions:                  See 3.37.     (line 2769)
-trunk Scripts Bash Functions Html:             See 3.38.     (line 3859)
-trunk Scripts Bash Functions Locale:           See 3.39.     (line 3880)
-trunk Scripts Bash Functions Manual:           See 3.40.     (line 3960)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 3981)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4383)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4404)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4582)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4750)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 4938)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5154)
-trunk Scripts Perl:                            See 3.48.     (line 5183)
-trunk Scripts Python:                          See 3.49.     (line 5200)
-trunk Translations:                            See 3.50.     (line 5221)
-trunk Translations Identity:                   See 3.51.     (line 5823)
-trunk Translations Identity Brands:            See 3.52.     (line 5844)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 5939)
-trunk Translations Identity Fonts:             See 3.54.     (line 5954)
-trunk Translations Identity Models:            See 3.55.     (line 6017)
-trunk Translations Identity Release:           See 3.56.     (line 6032)
-trunk Translations Identity Themes:            See 3.57.     (line 6047)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6062)
+trunk Scripts Bash Functions Html:             See 3.38.     (line 3889)
+trunk Scripts Bash Functions Locale:           See 3.39.     (line 3910)
+trunk Scripts Bash Functions Manual:           See 3.40.     (line 3990)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 4011)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4413)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4434)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4612)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4780)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 4968)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5184)
+trunk Scripts Perl:                            See 3.48.     (line 5213)
+trunk Scripts Python:                          See 3.49.     (line 5230)
+trunk Translations:                            See 3.50.     (line 5251)
+trunk Translations Identity:                   See 3.51.     (line 5853)
+trunk Translations Identity Brands:            See 3.52.     (line 5874)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 5969)
+trunk Translations Identity Fonts:             See 3.54.     (line 5984)
+trunk Translations Identity Models:            See 3.55.     (line 6047)
+trunk Translations Identity Release:           See 3.56.     (line 6062)
+trunk Translations Identity Themes:            See 3.57.     (line 6077)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6092)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6083)
-trunk Translations Identity Widgets:           See 3.60.     (line 6176)
-Unused definitions:                            See 3.45.2.1. (line 4875)
+                                                             (line 6113)
+trunk Translations Identity Widgets:           See 3.60.     (line 6206)
+Unused definitions:                            See 3.45.2.1. (line 4905)
 List of Figures
 ***************
 

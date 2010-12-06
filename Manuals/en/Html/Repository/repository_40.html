@@ -973,7 +973,7 @@ all files that match default regular expression value (i.e.,
 <samp>`.+'</samp>) will be added to the list of files to process. Otherwise,
 if you redefine the regular expression global variable after its first
 definition in the <code>cli</code> function and before calling
-<code>cli_getFilesList</code> function, the value you specifed is used
+<code>cli_getFilesList</code> function, the last value you specifed is used
 instead.
 </p>
 <p>When you need to customize the regular expression (<var>REGEX</var>) global
@@ -986,9 +986,38 @@ use another name for the regular expression variable (which is not
 very convenient in order to keep the amount of names to remember low),
 you may experiment undesired concantenation issues that make your
 regular expression to be something different from that you expect them
-to be, specially if the function you are doing the variable
+to be, specially if the function where you are doing the variable
 redefinition is called several times during the same script execution.
-</p></dd></dl>
+</p>
+<p>As result, the <code>cli_getFilesList</code> re-defines the value of
+<var>FILES</var> variable with the list of files the <code>find</code> command
+returned. As example, consider the following construction:
+</p>
+<pre class="verbatim">function prefix_doSomething {
+
+    # Initialize the list of files to process.
+    local FILES=''
+
+    # Initialize location.
+    local LOCATION=/home/centos/artwork/trunk/Identity/Themes/Models/Default
+
+    # Re-define regular expression to match scalable vector graphic
+    # files only. Note how we use the global value of REGEX to build a
+    # new local REGEX value here.
+    local REGEX=&quot;${REGEX}.*\.(svgz|svg)&quot;
+
+    # Redefine list of files to process.
+    cli_getFilesList $LOCATION
+
+    # Process list of files.
+    for FILE in $FILES;do
+        cli_printMessages &quot;$FILE&quot; 'AsResponseLine'
+        # Do something else here on...
+    done
+
+}
+</pre>
+</dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
