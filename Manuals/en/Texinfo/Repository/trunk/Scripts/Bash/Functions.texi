@@ -442,7 +442,7 @@ In the above command, the @option{--message}, and @option{--username}
 options are specific to @command{svn copy} command. In such cases,
 options are not interpreted by @file{centos-art.sh} script itself.
 Instead, the @file{centos-art.sh} script uses @command{getopt} to
-retrive them and store them in the @var{ARGUMENT} variable for later
+retrive them and store them in the @var{ARGUMENTS} variable for later
 use, as described in the following command:
 
 @verbatim
