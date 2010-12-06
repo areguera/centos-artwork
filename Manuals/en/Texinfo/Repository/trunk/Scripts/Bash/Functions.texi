@@ -499,9 +499,10 @@ If no one of these values is set in @env{EDITOR} environment variable,
 
 @subsubsection Global functions
 
-Functions defined under @file{trunk/Scripts/Bash/Functions/} directory
-are considered global. Global function can be used inside action
-specific functionalities and reused inside themselves. This section
+Functions scripts stored directly under
+@file{trunk/Scripts/Bash/Functions/} directory are used to define
+global functions.  Global function can be used inside action specific
+functionalities and or even be reused inside themselves. This section
 provides introductory information to global functions you can use
 inside @file{centos-art.sh} script.
 

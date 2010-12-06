@@ -3236,11 +3236,11 @@ for you to use inside specific functions:
 3.37.3.2 Global functions
 .........................
 
-Functions defined under `trunk/Scripts/Bash/Functions/' directory are
-considered global. Global function can be used inside action specific
-functionalities and reused inside themselves. This section provides
-introductory information to global functions you can use inside
-`centos-art.sh' script.
+Functions scripts stored directly under `trunk/Scripts/Bash/Functions/'
+directory are used to define global functions.  Global function can be
+used inside action specific functionalities and or even be reused
+inside themselves. This section provides introductory information to
+global functions you can use inside `centos-art.sh' script.
 
  -- Function: cli_checkActionArguments
      Validate action value (ACTIONVAL) variable.
