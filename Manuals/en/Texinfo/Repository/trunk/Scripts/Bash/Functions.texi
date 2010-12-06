@@ -499,9 +499,9 @@ If no one of these values is set in @env{EDITOR} environment variable,
 
 @subsubsection Global functions
 
-Functions scripts stored directly under
+Function scripts stored directly under
 @file{trunk/Scripts/Bash/Functions/} directory are used to define
-global functions.  Global function can be used inside action specific
+global functions.  Global functions can be used inside action specific
 functionalities and or even be reused inside themselves. This section
 provides introductory information to global functions you can use
 inside @file{centos-art.sh} script.
@@ -509,10 +509,32 @@ inside @file{centos-art.sh} script.
 @defun cli_checkActionArguments
 Validate action value (@var{ACTIONVAL}) variable.
 
+The action value variable can take one of the following values:
+
+@enumerate
+@item Path to one directory inside the local working copy,
+@item Path to one file inside the local working copy,
+@item URL to one directory inside the remote central repository,
+@item URL to one file inside the remote central repository.
+@end enumerate
+
+If another value different from that specified above is passed to
+action value variable, the @file{centos-art.sh} script prints an error
+message and ends script execution.  Notice that when you provide a URL
+there is no verification in order to determine the directory or file
+you refered on it is valid or not.  That verification is done by the
+command that receives the location inside the functionality. The only
+verification @file{centos-art.sh} script makes with URL is granting
+that they begin with @samp{https://projects.centos.org/svn/artwork}.
+
 @code{cli_checkActionArguments} is called from
-@code{cli_getActionArguments} function. Probably, there is not other
-use for @code{cli_checkActionArguments} but to be called from
+@code{cli_getActionArguments} function and, probably, there is not
+other use for @code{cli_checkActionArguments} but to be called from
 @code{cli_getActionArguments} function.
+
+Update @code{cli_checkActionArguments} function if you need to improve
+action value (@var{ACTIONVAL}) variable input validation.
+
 @end defun
 
 @defun cli_checkFiles FILE [TYPE]
@@ -605,7 +627,7 @@ copy as you may need to.
 @end defun
 
 @defun cli_doParseArguments
-Redefines arguments (@var{ARGUMENTS}) global variable using
+Redefine arguments (@var{ARGUMENTS}) global variable using
 @command{getopt} command output. For more information about how to use
 @code{cli_doParseArguments} function, see @var{ARGUMENTS} variable
 description above.
@@ -639,30 +661,31 @@ Initialize function name (@var{FUNCNAM}), action name
 variables, using positional parameters passed in @var{$@@} variable.
 
 The @code{cli_getActionsArguments} function is called from
-@code{cli.sh} function script. The @code{cli_getActionsArguments}
-function is call from @code{cli.sh} function script using @code{cli}
-function positional parameters (i.e., the positional parameters passed
-as arguments in the command-line) as first function argument. 
+@code{cli.sh} function script, using @code{cli} function's positional
+parameters (i.e., the positional parameters passed as arguments in the
+command-line) as first function argument. 
 
-Once command-line positional parameters are accesible,
-@code{cli-getActionsArguments} uses regular expression to retrive
+Once command-line positional parameters are accesible to
+@file{centos-art.sh} script execution evironment,
+@code{cli_getActionsArguments} uses regular expression to retrive
 action variables from first and second argument. The first argument
-defines the value use as function name (@var{FUNCNAM}), and the second
-argument defines the value used as action name (@var{ACTIONNAM}) and
-action value (@var{ACTIONVAL}), respectively.
+defines the value used as function name (@var{FUNCNAM}), and the
+second argument defines both values used as action name
+(@var{ACTIONNAM}) and action value (@var{ACTIONVAL}), respectively.
 
 The first argument is a word in lower case. This word specifies the
 name of the functionality you want to use (e.g., @samp{render} to
-rener images, @samp{manual} to work on documentation, and so on.)
+render images, @samp{manual} to work on documentation, and so on.)
 
 The second argument has a long option style (e.g.,
 @samp{--option=value}). The @samp{--option} represents the action name
-(@var{ACTIONNAM}), and the characters after the equal sign (@samp{=}),
-and before the first space character, are considered as the action
+(@var{ACTIONNAM}), and the characters inbetween the equal sign
+(@samp{=}) and the first space character, are considered as the action
 value (@var{ACTIONVAL}). In order to provide action values with space
-characters you need to enclose it with quotes like in
-@samp{--option='This is long value'}. Generally, action values are
-used to specify paths over which the action name acts on.
+characters inbetween you need to enclose action value with quotes like
+in @samp{--option='This is long value with spaces inbetween'}.
+Generally, action values are used to specify paths over which the
+action name acts on.
 
 Once action related variables (i.e., @var{FUNCNAM}, @var{ACTIONNAM},
 and @var{ACTIONVAL}) are defined and validated,

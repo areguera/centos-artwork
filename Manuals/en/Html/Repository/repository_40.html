@@ -583,9 +583,9 @@ following values are recognized by <tt>`centos-art.sh'</tt> script:
 <a name="SEC216"></a>
 <h4 class="subsubsection"> 3.37.3.2 Global functions </h4>
 
-<p>Functions scripts stored directly under
+<p>Function scripts stored directly under
 <tt>`trunk/Scripts/Bash/Functions/'</tt> directory are used to define
-global functions.  Global function can be used inside action specific
+global functions.  Global functions can be used inside action specific
 functionalities and or even be reused inside themselves. This section
 provides introductory information to global functions you can use
 inside <tt>`centos-art.sh'</tt> script.
@@ -596,11 +596,33 @@ inside <tt>`centos-art.sh'</tt> script.
 </dt>
 <dd><p>Validate action value (<var>ACTIONVAL</var>) variable.
 </p>
+<p>The action value variable can take one of the following values:
+</p>
+<ol>
+<li> Path to one directory inside the local working copy,
+</li><li> Path to one file inside the local working copy,
+</li><li> URL to one directory inside the remote central repository,
+</li><li> URL to one file inside the remote central repository.
+</li></ol>
+
+<p>If another value different from that specified above is passed to
+action value variable, the <tt>`centos-art.sh'</tt> script prints an error
+message and ends script execution.  Notice that when you provide a URL
+there is no verification in order to determine the directory or file
+you refered on it is valid or not.  That verification is done by the
+command that receives the location inside the functionality. The only
+verification <tt>`centos-art.sh'</tt> script makes with URL is granting
+that they begin with <samp>`https://projects.centos.org/svn/artwork'</samp>.
+</p>
 <p><code>cli_checkActionArguments</code> is called from
-<code>cli_getActionArguments</code> function. Probably, there is not other
-use for <code>cli_checkActionArguments</code> but to be called from
+<code>cli_getActionArguments</code> function and, probably, there is not
+other use for <code>cli_checkActionArguments</code> but to be called from
 <code>cli_getActionArguments</code> function.
-</p></dd></dl>
+</p>
+<p>Update <code>cli_checkActionArguments</code> function if you need to improve
+action value (<var>ACTIONVAL</var>) variable input validation.
+</p>
+</dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
@@ -705,7 +727,7 @@ copy as you may need to.
 <dt><u>Function:</u> <b>cli_doParseArguments</b>
 <a name="IDX12"></a>
 </dt>
-<dd><p>Redefines arguments (<var>ARGUMENTS</var>) global variable using
+<dd><p>Redefine arguments (<var>ARGUMENTS</var>) global variable using
 <code>getopt</code> command output. For more information about how to use
 <code>cli_doParseArguments</code> function, see <var>ARGUMENTS</var> variable
 description above.
@@ -744,30 +766,31 @@ function, and occasionally, farther redefined (by
 variables, using positional parameters passed in <var>$@</var> variable.
 </p>
 <p>The <code>cli_getActionsArguments</code> function is called from
-<code>cli.sh</code> function script. The <code>cli_getActionsArguments</code>
-function is call from <code>cli.sh</code> function script using <code>cli</code>
-function positional parameters (i.e., the positional parameters passed
-as arguments in the command-line) as first function argument. 
+<code>cli.sh</code> function script, using <code>cli</code> function's positional
+parameters (i.e., the positional parameters passed as arguments in the
+command-line) as first function argument. 
 </p>
-<p>Once command-line positional parameters are accesible,
-<code>cli-getActionsArguments</code> uses regular expression to retrive
+<p>Once command-line positional parameters are accesible to
+<tt>`centos-art.sh'</tt> script execution evironment,
+<code>cli_getActionsArguments</code> uses regular expression to retrive
 action variables from first and second argument. The first argument
-defines the value use as function name (<var>FUNCNAM</var>), and the second
-argument defines the value used as action name (<var>ACTIONNAM</var>) and
-action value (<var>ACTIONVAL</var>), respectively.
+defines the value used as function name (<var>FUNCNAM</var>), and the
+second argument defines both values used as action name
+(<var>ACTIONNAM</var>) and action value (<var>ACTIONVAL</var>), respectively.
 </p>
 <p>The first argument is a word in lower case. This word specifies the
 name of the functionality you want to use (e.g., <samp>`render'</samp> to
-rener images, <samp>`manual'</samp> to work on documentation, and so on.)
+render images, <samp>`manual'</samp> to work on documentation, and so on.)
 </p>
 <p>The second argument has a long option style (e.g.,
 <samp>`--option=value'</samp>). The <samp>`--option'</samp> represents the action name
-(<var>ACTIONNAM</var>), and the characters after the equal sign (<samp>`='</samp>),
-and before the first space character, are considered as the action
+(<var>ACTIONNAM</var>), and the characters inbetween the equal sign
+(<samp>`='</samp>) and the first space character, are considered as the action
 value (<var>ACTIONVAL</var>). In order to provide action values with space
-characters you need to enclose it with quotes like in
-<samp>`--option='This is long value''</samp>. Generally, action values are
-used to specify paths over which the action name acts on.
+characters inbetween you need to enclose action value with quotes like
+in <samp>`--option='This is long value with spaces inbetween''</samp>.
+Generally, action values are used to specify paths over which the
+action name acts on.
 </p>
 <p>Once action related variables (i.e., <var>FUNCNAM</var>, <var>ACTIONNAM</var>,
 and <var>ACTIONVAL</var>) are defined and validated,
