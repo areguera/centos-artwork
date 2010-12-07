@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getActions.sh -- This function loads funtionalities supported by
+# cli_getFunctions.sh -- This function loads funtionalities supported by
 # centos-art.sh script.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getActions {
+function cli_getFunctions {
 
     # Define variables as local to avoid conflicts outside.
     local FUNCNAMDIR=''

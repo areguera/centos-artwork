@@ -57,10 +57,8 @@ function cli {
     # expression to match everything.
     REGEX='.+'
 
-    # Go to defined actions. Keep the cli_getActions function calling
-    # after all variables and arguments definitions. Reason? To make
-    # all variables and arguments definitions available inside
-    # cli_Actions and subsequent function calls inside it.
-    cli_getActions
+    # Go for function initialization. Keep the cli_getFunctions
+    # function calling after all variables and arguments definitions.
+    cli_getFunctions
 
 }
