@@ -625,9 +625,9 @@ verification <tt>`centos-art.sh'</tt> script makes with URL is granting
 that they begin with <samp>`https://projects.centos.org/svn/artwork'</samp>.
 </p>
 <p><code>cli_checkActionArguments</code> is called from
-<code>cli_getActionArguments</code> function and, probably, there is not
+<code>cli_getArguments</code> function and, probably, there is not
 other use for <code>cli_checkActionArguments</code> but to be called from
-<code>cli_getActionArguments</code> function.
+<code>cli_getArguments</code> function.
 </p>
 <p>Update <code>cli_checkActionArguments</code> function if you need to improve
 action value (<var>ACTIONVAL</var>) variable input validation.
@@ -768,21 +768,21 @@ function, and occasionally, farther redefined (by
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getActionArguments</b><i> [$@]</i>
+<dt><u>Function:</u> <b>cli_getArguments</b><i> [$@]</i>
 <a name="IDX14"></a>
 </dt>
 <dd><p>Initialize function name (<var>FUNCNAM</var>), action name
 (<var>ACTIONNAM</var>), and action value (<var>ACTIONVAL</var>) global
 variables, using positional parameters passed in <var>$@</var> variable.
 </p>
-<p>The <code>cli_getActionsArguments</code> function is called from
-<code>cli.sh</code> function script, using <code>cli</code> function's positional
-parameters (i.e., the positional parameters passed as arguments in the
+<p>The <code>cli_getArguments</code> function is called from <code>cli.sh</code>
+function script, using <code>cli</code> function's positional parameters
+(i.e., the positional parameters passed as arguments in the
 command-line) as first function argument. 
 </p>
 <p>Once command-line positional parameters are accesible to
 <tt>`centos-art.sh'</tt> script execution evironment,
-<code>cli_getActionsArguments</code> uses regular expression to retrive
+<code>cli_getArguments</code> uses regular expression to retrive
 action variables from first and second argument. The first argument
 defines the value used as function name (<var>FUNCNAM</var>), and the
 second argument defines both values used as action name
@@ -804,14 +804,14 @@ action name acts on.
 </p>
 <p>Once action related variables (i.e., <var>FUNCNAM</var>, <var>ACTIONNAM</var>,
 and <var>ACTIONVAL</var>) are defined and validated,
-<code>cli_getActionsArguments</code> shifts the positional arguments to
-remove the first two arguments passed (i.e., those used to retrive
-action related variables) and redefine the arguments (<var>ARGUMENTS</var>)
-global variable with the new positional parameters information.
+<code>cli_getArguments</code> shifts the positional arguments to remove the
+first two arguments passed (i.e., those used to retrive action related
+variables) and redefine the arguments (<var>ARGUMENTS</var>) global
+variable with the new positional parameters information.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getActions</b>
+<dt><u>Function:</u> <b>cli_getFunctions</b>
 <a name="IDX15"></a>
 </dt>
 <dd><p>Initialize funtionalities supported by <tt>`centos-art.sh'</tt> script.
@@ -1112,8 +1112,10 @@ convenctions inside <tt>`centos-art.sh'</tt> script.
 what we are really changing is the way functions interpret repository
 file system organization. Notice that when we change a file name
 (e.g., a function name), it is necessary to update all files where
-such file name is placed on. This may require a massive substitution,
-each time we change name convenctions in the repository (see section <a href="repository_44.html#SEC234">trunk/Scripts/Bash/Functions/Path</a>, for more information).
+such file name is placed on. This may require a massive substitution
+inside the repository, each time we change name convenctions in the
+repository (see section <a href="repository_44.html#SEC234">trunk/Scripts/Bash/Functions/Path</a>, for more
+information).
 </p></dd></dl>
 
 <dl>
@@ -1122,10 +1124,12 @@ each time we change name convenctions in the repository (see section <a href="re
 </dt>
 <dd><p>Request repository status.
 </p>
-<p>This function requests the working copy using the <code>svn status</code>
-command and returns the first character in the output line, as
-described in <code>svn help status</code>, for the <var>LOCATION</var>
-specified.
+<p>This function requests the status of a <var>LOCATION</var> inside the
+working copy using the <code>svn status</code> command and returns the
+first character in the output line, just as described in <code>svn
+help status</code>. If <var>LOCATION</var> is not a regular file or a directory,
+inside the working copy, the <tt>`centos-art.sh'</tt> script prints a
+message and ends its execution.
 </p>
 <p>Use this function to perform verifications based a repository
 <var>LOCATION</var> status.

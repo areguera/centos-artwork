@@ -538,9 +538,9 @@ verification @file{centos-art.sh} script makes with URL is granting
 that they begin with @samp{https://projects.centos.org/svn/artwork}.
 
 @code{cli_checkActionArguments} is called from
-@code{cli_getActionArguments} function and, probably, there is not
+@code{cli_getArguments} function and, probably, there is not
 other use for @code{cli_checkActionArguments} but to be called from
-@code{cli_getActionArguments} function.
+@code{cli_getArguments} function.
 
 Update @code{cli_checkActionArguments} function if you need to improve
 action value (@var{ACTIONVAL}) variable input validation.
@@ -664,20 +664,20 @@ function, and occasionally, farther redefined (by
 @code{cli_doParseArgumentsReDef}) as far as it may be convenient.
 @end defun
 
-@defun cli_getActionArguments [$@@]
+@defun cli_getArguments [$@@]
 
 Initialize function name (@var{FUNCNAM}), action name
 (@var{ACTIONNAM}), and action value (@var{ACTIONVAL}) global
 variables, using positional parameters passed in @var{$@@} variable.
 
-The @code{cli_getActionsArguments} function is called from
-@code{cli.sh} function script, using @code{cli} function's positional
-parameters (i.e., the positional parameters passed as arguments in the
+The @code{cli_getArguments} function is called from @code{cli.sh}
+function script, using @code{cli} function's positional parameters
+(i.e., the positional parameters passed as arguments in the
 command-line) as first function argument. 
 
 Once command-line positional parameters are accesible to
 @file{centos-art.sh} script execution evironment,
-@code{cli_getActionsArguments} uses regular expression to retrive
+@code{cli_getArguments} uses regular expression to retrive
 action variables from first and second argument. The first argument
 defines the value used as function name (@var{FUNCNAM}), and the
 second argument defines both values used as action name
@@ -699,13 +699,13 @@ action name acts on.
 
 Once action related variables (i.e., @var{FUNCNAM}, @var{ACTIONNAM},
 and @var{ACTIONVAL}) are defined and validated,
-@code{cli_getActionsArguments} shifts the positional arguments to
-remove the first two arguments passed (i.e., those used to retrive
-action related variables) and redefine the arguments (@var{ARGUMENTS})
-global variable with the new positional parameters information.
+@code{cli_getArguments} shifts the positional arguments to remove the
+first two arguments passed (i.e., those used to retrive action related
+variables) and redefine the arguments (@var{ARGUMENTS}) global
+variable with the new positional parameters information.
 @end defun
 
-@defun cli_getActions
+@defun cli_getFunctions
 Initialize funtionalities supported by @file{centos-art.sh} script.
 
 Functionalities supported by @file{centos-art.sh} script are organized
@@ -985,18 +985,21 @@ When we change file name convenctions inside @code{cli_getRepoName}
 what we are really changing is the way functions interpret repository
 file system organization. Notice that when we change a file name
 (e.g., a function name), it is necessary to update all files where
-such file name is placed on. This may require a massive substitution,
-each time we change name convenctions in the repository (@pxref{trunk
-Scripts Bash Functions Path}, for more information).
+such file name is placed on. This may require a massive substitution
+inside the repository, each time we change name convenctions in the
+repository (@pxref{trunk Scripts Bash Functions Path}, for more
+information).
 @end defun
 
 @defun cli_getRepoStatus [LOCATION]
 Request repository status.
 
-This function requests the working copy using the @command{svn status}
-command and returns the first character in the output line, as
-described in @command{svn help status}, for the @var{LOCATION}
-specified.
+This function requests the status of a @var{LOCATION} inside the
+working copy using the @command{svn status} command and returns the
+first character in the output line, just as described in @command{svn
+help status}. If @var{LOCATION} is not a regular file or a directory,
+inside the working copy, the @file{centos-art.sh} script prints a
+message and ends its execution.
 
 Use this function to perform verifications based a repository
 @var{LOCATION} status.
