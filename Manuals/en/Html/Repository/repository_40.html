@@ -747,31 +747,22 @@ description above.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_doParseArgumentsReDef</b><i> [$@]</i>
+<dt><u>Function:</u> <b>cli_doParseArgumentsReDef</b><i> $@</i>
 <a name="IDX13"></a>
 </dt>
 <dd><p>Initialize/reset arguments (<var>ARGUMENTS</var>) global variable using
 positional parameters variable (<var>$@</var>) as reference.
 </p>
-<p>When you use <code>cli_doParseArgumentsReDef</code> inside some function,
-the positional parameters variable (<var>$@</var>) is automatically reset
-to that function positional parameters, not the command-line
-positional parameters. 
-</p>
-<p>If you need to redefine specific positional parameters from one
-specific function, you need to call <code>cli_doParseArgumentsReDef</code>
-with the positional parameters variable (<var>$@</var>), set as first
-argument, to that specific function you want to redefine positional
-parameters on.
-</p>
-<p>In order to use positional paramenters passed as command-line, we use
-the <var>ARGUMENTS</var> global variable which is defined at <code>cli</code>
-function, and occasionally, farther redefined (by
-<code>cli_doParseArgumentsReDef</code>) as far as it may be convenient.
+<p>When we work inside function definitions, positional parameters are
+reset to the last function definition positional parameters.  If you
+need to redefine positional parameters from one specific function, you
+need to call <code>cli_doParseArgumentsReDef</code> with the positional
+parameters variable (<var>$@</var>), set as first argument, to that
+specific function you want to redefine positional parameters at.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getArguments</b><i> [$@]</i>
+<dt><u>Function:</u> <b>cli_getArguments</b>
 <a name="IDX14"></a>
 </dt>
 <dd><p>Initialize function name (<var>FUNCNAM</var>), action name

@@ -645,28 +645,19 @@ Redefine arguments (@var{ARGUMENTS}) global variable using
 description above.
 @end defun
 
-@defun cli_doParseArgumentsReDef [$@@]
+@defun cli_doParseArgumentsReDef $@@
 Initialize/reset arguments (@var{ARGUMENTS}) global variable using
 positional parameters variable (@var{$@@}) as reference.
 
-When you use @command{cli_doParseArgumentsReDef} inside some function,
-the positional parameters variable (@var{$@@}) is automatically reset
-to that function positional parameters, not the command-line
-positional parameters. 
-
-If you need to redefine specific positional parameters from one
-specific function, you need to call @code{cli_doParseArgumentsReDef}
-with the positional parameters variable (@var{$@@}), set as first
-argument, to that specific function you want to redefine positional
-parameters on.
-
-In order to use positional paramenters passed as command-line, we use
-the @var{ARGUMENTS} global variable which is defined at @code{cli}
-function, and occasionally, farther redefined (by
-@code{cli_doParseArgumentsReDef}) as far as it may be convenient.
+When we work inside function definitions, positional parameters are
+reset to the last function definition positional parameters.  If you
+need to redefine positional parameters from one specific function, you
+need to call @code{cli_doParseArgumentsReDef} with the positional
+parameters variable (@var{$@@}), set as first argument, to that
+specific function you want to redefine positional parameters at.
 @end defun
 
-@defun cli_getArguments [$@@]
+@defun cli_getArguments
 
 Initialize function name (@var{FUNCNAM}), action name
 (@var{ACTIONNAM}), and action value (@var{ACTIONVAL}) global

@@ -3414,27 +3414,18 @@ global functions you can use inside `centos-art.sh' script.
      `cli_doParseArguments' function, see ARGUMENTS variable
      description above.
 
- -- Function: cli_doParseArgumentsReDef [$@]
+ -- Function: cli_doParseArgumentsReDef $@
      Initialize/reset arguments (ARGUMENTS) global variable using
      positional parameters variable ($@) as reference.
 
-     When you use `cli_doParseArgumentsReDef' inside some function, the
-     positional parameters variable ($@) is automatically reset to that
-     function positional parameters, not the command-line positional
-     parameters.
+     When we work inside function definitions, positional parameters are
+     reset to the last function definition positional parameters.  If
+     you need to redefine positional parameters from one specific
+     function, you need to call `cli_doParseArgumentsReDef' with the
+     positional parameters variable ($@), set as first argument, to that
+     specific function you want to redefine positional parameters at.
 
-     If you need to redefine specific positional parameters from one
-     specific function, you need to call `cli_doParseArgumentsReDef'
-     with the positional parameters variable ($@), set as first
-     argument, to that specific function you want to redefine positional
-     parameters on.
-
-     In order to use positional paramenters passed as command-line, we
-     use the ARGUMENTS global variable which is defined at `cli'
-     function, and occasionally, farther redefined (by
-     `cli_doParseArgumentsReDef') as far as it may be convenient.
-
- -- Function: cli_getArguments [$@]
+ -- Function: cli_getArguments
      Initialize function name (FUNCNAM), action name (ACTIONNAM), and
      action value (ACTIONVAL) global variables, using positional
      parameters passed in $@ variable.
@@ -6285,24 +6276,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  390)
-Common translation files:                      See 3.50.2.5. (line 5714)
-How to render brands' translation files:       See 3.52.3.   (line 6018)
-How to render fonts' translation files:        See 3.54.3.   (line 6091)
-How to render translation files:               See 3.50.3.   (line 5884)
-Metadata maintainance:                         See 3.45.2.   (line 4858)
-Specific translation files:                    See 3.50.2.6. (line 5739)
+Common translation files:                      See 3.50.2.5. (line 5705)
+How to render brands' translation files:       See 3.52.3.   (line 6009)
+How to render fonts' translation files:        See 3.54.3.   (line 6082)
+How to render translation files:               See 3.50.3.   (line 5875)
+Metadata maintainance:                         See 3.45.2.   (line 4849)
+Specific translation files:                    See 3.50.2.6. (line 5730)
 tags:                                          See 2.        (line  393)
-Template translation files:                    See 3.50.2.4. (line 5544)
-Translation brands file names:                 See 3.52.2.1. (line 5975)
-Translation configuration scripts:             See 3.50.2.8. (line 5773)
-Translation entries:                           See 3.50.2.1. (line 5360)
-Translation files:                             See 3.50.2.3. (line 5476)
-Translation markers:                           See 3.50.2.2. (line 5441)
-Translation paths:                             See 3.50.2.1. (line 5360)
+Template translation files:                    See 3.50.2.4. (line 5535)
+Translation brands file names:                 See 3.52.2.1. (line 5966)
+Translation configuration scripts:             See 3.50.2.8. (line 5764)
+Translation entries:                           See 3.50.2.1. (line 5351)
+Translation files:                             See 3.50.2.3. (line 5467)
+Translation markers:                           See 3.50.2.2. (line 5432)
+Translation paths:                             See 3.50.2.1. (line 5351)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5773)
-Translation rendering:                         See 3.50.2.7. (line 5762)
-Translation rendering default functionality:   See 3.50.2.9. (line 5859)
+                                                             (line 5764)
+Translation rendering:                         See 3.50.2.7. (line 5753)
+Translation rendering default functionality:   See 3.50.2.9. (line 5850)
 trunk:                                         See 3.        (line  396)
 trunk Identity:                                See 3.1.      (line  399)
 trunk Identity Brands:                         See 3.2.      (line  819)
@@ -6347,31 +6338,31 @@ trunk Manuals:                                 See 3.34.     (line 2579)
 trunk Scripts:                                 See 3.35.     (line 2633)
 trunk Scripts Bash:                            See 3.36.     (line 2657)
 trunk Scripts Bash Functions:                  See 3.37.     (line 2806)
-trunk Scripts Bash Functions Html:             See 3.38.     (line 3949)
-trunk Scripts Bash Functions Locale:           See 3.39.     (line 3970)
-trunk Scripts Bash Functions Manual:           See 3.40.     (line 4050)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 4071)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4473)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4494)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4672)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4840)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5028)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5244)
-trunk Scripts Perl:                            See 3.48.     (line 5273)
-trunk Scripts Python:                          See 3.49.     (line 5290)
-trunk Translations:                            See 3.50.     (line 5311)
-trunk Translations Identity:                   See 3.51.     (line 5913)
-trunk Translations Identity Brands:            See 3.52.     (line 5934)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6029)
-trunk Translations Identity Fonts:             See 3.54.     (line 6044)
-trunk Translations Identity Models:            See 3.55.     (line 6107)
-trunk Translations Identity Release:           See 3.56.     (line 6122)
-trunk Translations Identity Themes:            See 3.57.     (line 6137)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6152)
+trunk Scripts Bash Functions Html:             See 3.38.     (line 3940)
+trunk Scripts Bash Functions Locale:           See 3.39.     (line 3961)
+trunk Scripts Bash Functions Manual:           See 3.40.     (line 4041)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 4062)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4464)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4485)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4663)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4831)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5019)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5235)
+trunk Scripts Perl:                            See 3.48.     (line 5264)
+trunk Scripts Python:                          See 3.49.     (line 5281)
+trunk Translations:                            See 3.50.     (line 5302)
+trunk Translations Identity:                   See 3.51.     (line 5904)
+trunk Translations Identity Brands:            See 3.52.     (line 5925)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6020)
+trunk Translations Identity Fonts:             See 3.54.     (line 6035)
+trunk Translations Identity Models:            See 3.55.     (line 6098)
+trunk Translations Identity Release:           See 3.56.     (line 6113)
+trunk Translations Identity Themes:            See 3.57.     (line 6128)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6143)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6173)
-trunk Translations Identity Widgets:           See 3.60.     (line 6266)
-Unused definitions:                            See 3.45.2.1. (line 4965)
+                                                             (line 6164)
+trunk Translations Identity Widgets:           See 3.60.     (line 6257)
+Unused definitions:                            See 3.45.2.1. (line 4956)
 List of Figures
 ***************
 
