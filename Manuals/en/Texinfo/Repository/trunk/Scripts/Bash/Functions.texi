@@ -1008,27 +1008,27 @@ Use this function to perform verifications based a repository
 @defun cli_getTemporalFile @var{NAME}
 Output absolute path to temporal file @var{NAME}.
 
-@code{cli_getTemporalFile} uses @file{/tmp} directory as source
-location to store temporal files, the @file{centos-art.sh} script
-name, and a random identification string to let you run more than one
-@file{centos-art.sh} script simultaneously on the same user session.
-For example, due the following temporal file defintion:
+The @code{cli_getTemporalFile} function uses @file{/tmp} directory as
+source location to store temporal files, the @file{centos-art.sh}
+script name, and a random identification string to let you run more
+than one @file{centos-art.sh} script simultaneously on the same user
+session.  For example, due the following temporal file defintion:
 
 @verbatim
 cli_getTemporalFile $FILE
 @end verbatim
 
-If @var{FILE} name is @file{instance.svg} and unique random string is
-@samp{f16f7b51-ac12-4b7f-9e66-72df847f12de}, the final temporal file,
-built from previous temporal file definition, would be:
+If @var{FILE} name is @file{instance.svg} and the unique random string
+is @samp{f16f7b51-ac12-4b7f-9e66-72df847f12de}, the final temporal
+file, built from previous temporal file definition, would be:
 
 @verbatim
 /tmp/centos-art.sh-f16f7b51-ac12-4b7f-9e66-72df847f12de-instance.svg
 @end verbatim
 
-When you use @code{cli_getTemporalFile} function to create temporal
-files, be sure to remove temporal files created once you've ended up
-with them.  For example, consider the following construction:
+When you use the @code{cli_getTemporalFile} function to create
+temporal files, be sure to remove temporal files created once you've
+ended up with them.  For example, consider the following construction:
 
 @verbatim
 for FILE in $FILES;do
@@ -1046,8 +1046,8 @@ for FILE in $FILES;do
 done
 @end verbatim
 
-Use @code{cli_getTemporalFile} function whenever you need to create
-temporal files inside @file{centos-art.sh} script.
+Use the @code{cli_getTemporalFile} function whenever you need to
+create temporal files inside @file{centos-art.sh} script.
 @end defun
 
 @defun cli_getThemeName

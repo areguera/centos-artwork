@@ -3758,23 +3758,23 @@ global functions you can use inside `centos-art.sh' script.
  -- Function: cli_getTemporalFile NAME
      Output absolute path to temporal file NAME.
 
-     `cli_getTemporalFile' uses `/tmp' directory as source location to
-     store temporal files, the `centos-art.sh' script name, and a
-     random identification string to let you run more than one
+     The `cli_getTemporalFile' function uses `/tmp' directory as source
+     location to store temporal files, the `centos-art.sh' script name,
+     and a random identification string to let you run more than one
      `centos-art.sh' script simultaneously on the same user session.
      For example, due the following temporal file defintion:
 
 
      cli_getTemporalFile $FILE
 
-     If FILE name is `instance.svg' and unique random string is
+     If FILE name is `instance.svg' and the unique random string is
      `f16f7b51-ac12-4b7f-9e66-72df847f12de', the final temporal file,
      built from previous temporal file definition, would be:
 
 
      /tmp/centos-art.sh-f16f7b51-ac12-4b7f-9e66-72df847f12de-instance.svg
 
-     When you use `cli_getTemporalFile' function to create temporal
+     When you use the `cli_getTemporalFile' function to create temporal
      files, be sure to remove temporal files created once you've ended
      up with them.  For example, consider the following construction:
 
@@ -3793,7 +3793,7 @@ global functions you can use inside `centos-art.sh' script.
 
      done
 
-     Use `cli_getTemporalFile' function whenever you need to create
+     Use the `cli_getTemporalFile' function whenever you need to create
      temporal files inside `centos-art.sh' script.
 
  -- Function: cli_getThemeName

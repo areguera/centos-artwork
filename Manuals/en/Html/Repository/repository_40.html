@@ -1141,23 +1141,23 @@ message and ends its execution.
 </dt>
 <dd><p>Output absolute path to temporal file <var>NAME</var>.
 </p>
-<p><code>cli_getTemporalFile</code> uses <tt>`/tmp'</tt> directory as source
-location to store temporal files, the <tt>`centos-art.sh'</tt> script
-name, and a random identification string to let you run more than one
-<tt>`centos-art.sh'</tt> script simultaneously on the same user session.
-For example, due the following temporal file defintion:
+<p>The <code>cli_getTemporalFile</code> function uses <tt>`/tmp'</tt> directory as
+source location to store temporal files, the <tt>`centos-art.sh'</tt>
+script name, and a random identification string to let you run more
+than one <tt>`centos-art.sh'</tt> script simultaneously on the same user
+session.  For example, due the following temporal file defintion:
 </p>
 <pre class="verbatim">cli_getTemporalFile $FILE
 </pre>
-<p>If <var>FILE</var> name is <tt>`instance.svg'</tt> and unique random string is
-<samp>`f16f7b51-ac12-4b7f-9e66-72df847f12de'</samp>, the final temporal file,
-built from previous temporal file definition, would be:
+<p>If <var>FILE</var> name is <tt>`instance.svg'</tt> and the unique random string
+is <samp>`f16f7b51-ac12-4b7f-9e66-72df847f12de'</samp>, the final temporal
+file, built from previous temporal file definition, would be:
 </p>
 <pre class="verbatim">/tmp/centos-art.sh-f16f7b51-ac12-4b7f-9e66-72df847f12de-instance.svg
 </pre>
-<p>When you use <code>cli_getTemporalFile</code> function to create temporal
-files, be sure to remove temporal files created once you've ended up
-with them.  For example, consider the following construction:
+<p>When you use the <code>cli_getTemporalFile</code> function to create
+temporal files, be sure to remove temporal files created once you've
+ended up with them.  For example, consider the following construction:
 </p>
 <pre class="verbatim">for FILE in $FILES;do
 
@@ -1173,8 +1173,8 @@ with them.  For example, consider the following construction:
 
 done
 </pre>
-<p>Use <code>cli_getTemporalFile</code> function whenever you need to create
-temporal files inside <tt>`centos-art.sh'</tt> script.
+<p>Use the <code>cli_getTemporalFile</code> function whenever you need to
+create temporal files inside <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
