@@ -130,9 +130,9 @@ environment. This time we didn't use global variable definitions for
 empty.
 
 Later, we call @code{greet_getActions} function to define the
-command-line interface of @code{greet} functionality. The @code{greet}
-functionality command-line interface defines what and how actions are
-performed, based on arguments combination passed to
+command-line interface of @code{greet} functionality. The command-line
+interface of @code{greet} functionality defines what and how actions
+are performed, based on arguments combination passed to
 @file{centos-art.sh} script.
 
 @verbatim
@@ -174,7 +174,8 @@ case is evaluated instead.
 The @samp{*} case and its two lines further on should always be
 present in @file{_getActions.sh} function scripts, no matter what
 specific functionality you are creating. This convenction helps the
-user to find out documentation about current functionality in use.  
+user to find out documentation about current functionality in use,
+when no valid action is provided.
 
 The @code{greet_doHello} and @code{greet_doBye} function definitions
 are the core of @code{greet} specific functionality.  In such function
@@ -243,7 +244,7 @@ The word @samp{World} in the examples above can be anything. In fact,
 change it to have a little fun.
 
 Now that we have a specific function that works as we expect, it is
-time to document it. To document @code{greet} specific functionality,
+time to document it.  To document @code{greet} specific functionality,
 we use its directory path and the @code{manual} functionality
 (@pxref{trunk Scripts Bash Functions Manual}) of @file{centos-art.sh}
 script, just as the following command illustrates: 
@@ -251,6 +252,15 @@ script, just as the following command illustrates:
 @verbatim
 centos-art manual --edit=trunk/Scripts/Bash/Functions/Greet
 @end verbatim
+
+To have a well documented function helps user to understand how your
+function really works, and how it should be used.  When no valid
+action is passed to a function, the @file{centos-art.sh} script uses
+the function documentation entry as vehicle to let the user know which
+valid functions are. When no documentation entry exists for a
+funtcion, that user has provided an invalid action for, the
+@file{centos-art.sh} script informs that no documentation entry exists
+for such function and requests user to create it right at that time.
 
 Now that we have documented our function, it is time to translate its
 output messages to different languages. To translate specific
@@ -269,17 +279,17 @@ your system locale information ---as in @env{LANG} environment
 variable--- must be set to that locale you want to produce translated
 messages for. For example, if you want to produce translated messages
 for Spanish language, your system locale information must be set to
-@samp{es_ES.UTF-8} or similar.  
+@samp{es_ES.UTF-8}, or similar, first.
 @end quotation
 
 Well, it seems that our example is rather complete by now. 
 
 In @code{greet} function example we've described so far, we only use
 @command{cli_printMessage} global function in action specific function
-definitions in order to print a message simply, but more interesting
-things can be achieved inside action specific function definitions.
-For example, if you pass a directory path as second argument option
-value, you could retrive a list of files from therein, and process
+definitions in order to print messages, but more interesting things
+can be achieved inside action specific function definitions.  For
+example, if you pass a directory path as action value in second
+argument, you could retrive a list of files from therein, and process
 them. If the list of files turns too long or you just want to control
 which files to process, you could add the third argument in the form
 @option{--filter='regex'} and reduce the amount of files to process

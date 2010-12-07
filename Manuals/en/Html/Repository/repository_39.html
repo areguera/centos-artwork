@@ -92,11 +92,14 @@ working copy of CentOS Artwork Repository.
 <h3 class="subsection"> 3.36.2 Description </h3>
 
 <p>The best way to understand <tt>`centos-art.sh'</tt> automation script is
-studying its source code. The <tt>`centos-art.sh'</tt> script is splited
-in several configuration and function files which are loaded when the
-<tt>`centos-art.sh'</tt> script is executed. This section describes the
-order in which <tt>`centos-art.sh'</tt> loads its configuration and
-function files.
+studying its source code.  However, as start point, you may prefer to
+read an introductory resume before diving into the source code
+details.
+</p>
+<p>The <tt>`centos-art.sh'</tt> script is written in Bash. Most tasks, inside
+<tt>`centos-art.sh'</tt> script, have been organized in many specific
+functionalities that you can invoke from the <code>centos-art</code>
+command-line interface.
 </p>
 <p>When you type the <code>centos-art</code> command in your terminal, the
 operating system trys to execute that command. In order to execute the
@@ -110,7 +113,7 @@ variable, the execution of <code>centos-art</code> command runs the
 <tt>`centos-art.sh'</tt> script.
 </p>
 <p>When <tt>`centos-art.sh'</tt> script is executed, the first it does is
-executing the <tt>`trunk/Scripts/Bash/initFunctions.sh'</tt> script to
+executing the <tt>`trunk/Scripts/Bash/initEnvironment.sh'</tt> script to
 initialize global variables (e.g., <code>gettext</code>'s variables) and
 global function scripts.  Global function scripts are located inside
 <tt>`trunk/Scripts/Bash/Functions'</tt> directory and their file names
@@ -130,55 +133,91 @@ the following format:
 <pre class="verbatim">centos-art arg1 --arg2=val2 --arg3=val3
 </pre>
 <p>In the above example, <samp>`centos-art'</samp> is the command you use to
-invoke <tt>`centos-art.sh'</tt> script. The <samp>`arg1'</samp> represents the
-action you want to do (e.g., <samp>`verify'</samp>, <samp>`render'</samp>,
-<samp>`locale'</samp>, <samp>`help'</samp>, etc.). The remaining arguments are
-modifiers to <samp>`arg1'</samp>. The <samp>`--arg2'</samp> definition is
-required.  The <samp>`--arg3'</samp> is optional. For example, if you want
-to render all anaconda progress slides, for all major releases of
-CentOS distribution, for all languages availabe using TreeFlower motif
-as background, you use the following command:
+invoke <tt>`centos-art.sh'</tt> script. The <samp>`arg1'</samp> is required and
+represents the functionality you want to perform (e.g.,
+<samp>`verify'</samp>, <samp>`render'</samp>, <samp>`locale'</samp>, <samp>`manual'</samp>,
+etc.). The remaining arguments are modifiers to <samp>`arg1'</samp>. The
+<samp>`--arg2'</samp> definition is required and represets, specifically,
+the action inside the functionality you want to perform.  The
+<samp>`--arg3'</samp> and on, are optional.
 </p>
-<pre class="verbatim">centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Progress
-</pre>
-<p>Now, if you only want to render anaconda progress
-<tt>`01-welcome.png'</tt> slide, for CentOS distribution major release 5,
-in English language, you need to add the third argument as follows:
-</p>
-<pre class="verbatim">centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Progress --filter=5/en/01-welcome
-</pre>
 <p>Once command-line arguments have been retrived, the
-<tt>`centos-art.sh'</tt> script loads specific functions using the
-<tt>`cli_getActions.sh'</tt> function script.  For example, if you run the
-command <code>centos-art render --entry</code>, the <tt>`centos-art.sh'</tt>
-script will look for <tt>`trunk/Scripts/Bash/Functions/Render'</tt>
-directory and will load the <code>render</code> function from
-<tt>`render.sh'</tt> function script; this, in order to achive the
-rendering task as it defines.
+<tt>`centos-art.sh'</tt> script loads specific functionalities using the
+<tt>`cli_getFunctions.sh'</tt> function script. Only one specific
+functionality can be loaded at one script execution I.e., you run
+<code>centos-art.sh</code> script to run just one functionality.
 </p>
 <div class="float"><a name="fig_003atrunk_002fScripts_002fBash_003aInitialization"></a>
-<pre class="verbatim">+------------------------------------------------------------------+
-| [centos@host]$ centos-art action 'path/to/dir' --option='value'  |
-+------------------------------------------------------------------+
-| ~/bin/centos-art --&gt; ~/artwork/trunk/Scripts/Bash/centos-art.sh  |
-+---v-----------------------------------------v--------------------+
+<pre class="verbatim">+----------------------------------------------------------------------+
+| [centos@host]$ centos-art function --action='value' --option='value' |
++----------------------------------------------------------------------+
+| ~/bin/centos-art --&gt; ~/artwork/trunk/Scripts/Bash/centos-art.sh      |
++---v-----------------------------------------v------------------------+
     | centos-art.sh                           |
     +---v---------------------------------v---+
-    .   | initFunctions.sh                |   .
+    .   | initEnvironment.sh              |   .
     .   +---------------------------------+   .
     .   | cli $@                          |   .
     .   +---v-------------------------v---+   .
-    .   .   | cli_getActions $@       |   .   .
+    .   .   | cli_getFunctions        |   .   .
     .   .   +---v-----------------v---+   .   .
-    .   .   .   | function call 1 |   .   .   .
-    .   .   .   | function call 2 |   .   .   .
-    .   .   .   | function call n |   .   .   .
+    .   .   .   | function1       |   .   .   .
+    .   .   .   | function2       |   .   .   .
+    .   .   .   | function3       |   .   .   .
     .   .   .   +-----------------+   .   .   .
     .   .   ...........................   .   .
     .   ...................................   .
     ...........................................
 </pre>
-</div><p><strong>Figure 3.8: The <tt>`centos-art.sh'</tt> initialization environment.
+</div><p><strong>Figure 3.8: The functionalities initialization environment.
+</strong>
+</p>
+<p>Functionalities are implemented by means of actions.  Once the
+functionality has been initiazalized, actions initialization take
+place for that functionality. Actions initialization model is very
+similar to functions initialization model. But with the difference,
+that actions are loaded inside function environment, and so, share
+variables and functions defined inside function environment.
+</p>
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_003aInitialization"></a>
+<pre class="verbatim">+--------------------------------------+
+| cli_getFunctions                     |
++---v------------------------------v---+
+.   | function1                    |   .
+.   +---v----------------------v---+   .
+.   .   | function1_getActions |   .   .
+.   .   +---v--------------v---+   .   .
+.   .   .   | action 1     |   .   .   .
+.   .   .   | action 2     |   .   .   .
+.   .   .   | action n     |   .   .   .
+.   .   .   +--------------+   .   .   .
+.   .   ........................   .   .
+.   ................................   .
+.   +------------------------------+   .
+.   | function2                    |   .
+.   +---v----------------------v---+   .
+.   .   | function_getActions  |   .   .
+.   .   +---v--------------v---+   .   .
+.   .   .   | action 1     |   .   .   .
+.   .   .   | action 2     |   .   .   .
+.   .   .   | action n     |   .   .   .
+.   .   .   +--------------+   .   .   .
+.   .   ........................   .   .
+.   ................................   .
+.   +------------------------------+   .
+.   | function3                    |   .
+.   +---v----------------------v---+   .
+.   .   | function3_getActions |   .   .
+.   .   +---v--------------v---+   .   .
+.   .   .   | action 1     |   .   .   .
+.   .   .   | action 2     |   .   .   .
+.   .   .   | action n     |   .   .   .
+.   .   .   +--------------+   .   .   .
+.   .   ........................   .   .
+.   ................................   .
+........................................
+</pre>
+</div><p><strong>Figure 3.9: The actions initialization environment.
 </strong>
 </p>
 

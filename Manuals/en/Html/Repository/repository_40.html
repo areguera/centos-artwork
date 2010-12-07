@@ -206,9 +206,9 @@ environment. This time we didn't use global variable definitions for
 empty.
 </p>
 <p>Later, we call <code>greet_getActions</code> function to define the
-command-line interface of <code>greet</code> functionality. The <code>greet</code>
-functionality command-line interface defines what and how actions are
-performed, based on arguments combination passed to
+command-line interface of <code>greet</code> functionality. The command-line
+interface of <code>greet</code> functionality defines what and how actions
+are performed, based on arguments combination passed to
 <tt>`centos-art.sh'</tt> script.
 </p>
 <pre class="verbatim">function greet_getActions {
@@ -248,7 +248,8 @@ case is evaluated instead.
 <p>The <samp>`*'</samp> case and its two lines further on should always be
 present in <tt>`_getActions.sh'</tt> function scripts, no matter what
 specific functionality you are creating. This convenction helps the
-user to find out documentation about current functionality in use.  
+user to find out documentation about current functionality in use,
+when no valid action is provided.
 </p>
 <p>The <code>greet_doHello</code> and <code>greet_doBye</code> function definitions
 are the core of <code>greet</code> specific functionality.  In such function
@@ -309,13 +310,22 @@ Goodbye World
 change it to have a little fun.
 </p>
 <p>Now that we have a specific function that works as we expect, it is
-time to document it. To document <code>greet</code> specific functionality,
+time to document it.  To document <code>greet</code> specific functionality,
 we use its directory path and the <code>manual</code> functionality
 (see section <a href="repository_43.html#SEC229">trunk/Scripts/Bash/Functions/Manual</a>) of <tt>`centos-art.sh'</tt>
 script, just as the following command illustrates: 
 </p>
 <pre class="verbatim">centos-art manual --edit=trunk/Scripts/Bash/Functions/Greet
 </pre>
+<p>To have a well documented function helps user to understand how your
+function really works, and how it should be used.  When no valid
+action is passed to a function, the <tt>`centos-art.sh'</tt> script uses
+the function documentation entry as vehicle to let the user know which
+valid functions are. When no documentation entry exists for a
+funtcion, that user has provided an invalid action for, the
+<tt>`centos-art.sh'</tt> script informs that no documentation entry exists
+for such function and requests user to create it right at that time.
+</p>
 <p>Now that we have documented our function, it is time to translate its
 output messages to different languages. To translate specific
 functionality output messages to different languages we use the
@@ -329,17 +339,17 @@ your system locale information --as in <code>LANG</code> environment
 variable-- must be set to that locale you want to produce translated
 messages for. For example, if you want to produce translated messages
 for Spanish language, your system locale information must be set to
-<samp>`es_ES.UTF-8'</samp> or similar.  
+<samp>`es_ES.UTF-8'</samp>, or similar, first.
 </p></blockquote>
 
 <p>Well, it seems that our example is rather complete by now. 
 </p>
 <p>In <code>greet</code> function example we've described so far, we only use
 <code>cli_printMessage</code> global function in action specific function
-definitions in order to print a message simply, but more interesting
-things can be achieved inside action specific function definitions.
-For example, if you pass a directory path as second argument option
-value, you could retrive a list of files from therein, and process
+definitions in order to print messages, but more interesting things
+can be achieved inside action specific function definitions.  For
+example, if you pass a directory path as action value in second
+argument, you could retrive a list of files from therein, and process
 them. If the list of files turns too long or you just want to control
 which files to process, you could add the third argument in the form
 <samp>`--filter='regex''</samp> and reduce the amount of files to process
@@ -715,7 +725,7 @@ Deleted         0 file from the working copy.
 Added           0 file from the working copy.
 ----------------------------------------------------------------------
 </pre>
-</div><p><strong>Figure 3.9: The <code>cli_commitRepoChanges</code> function output.
+</div><p><strong>Figure 3.10: The <code>cli_commitRepoChanges</code> function output.
 </strong>
 </p>
 <p>Call the <code>cli_commitRepoChanges</code> function before or/and after
