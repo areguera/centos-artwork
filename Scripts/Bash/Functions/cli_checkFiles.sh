@@ -106,6 +106,13 @@ function cli_checkFiles {
             fi
             ;;
 
+        isInWorkingCopy )
+            # To exist, file should be inside the working copy.
+            if [[ $FILE =~ "^/home/centos/artwork/.+$" ]];then
+                MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist inside the working copy."`"
+            fi
+            ;;
+
         * )
             # File exists.
             if [[ ! -a $FILE ]];then

@@ -35,12 +35,13 @@ function cli_getRepoStatus {
     # Define regular expression pattern to retrive first column,
     # returned by subversion status command. This column is one
     # character column as describes `svn help status' command.
-    local PATTERN="^( |A|C|D|I|M|R|X|\?|!|~]).+$"
+    local PATTERN="^( |A|C|D|I|M|R|X|\?|!|~).+$"
 
     # Verify the file used as source to retrive its status
     # information. We only use regular files or directories inside the
     # working copy.
     cli_checkFiles "$LOCATION" 'fd'
+    cli_checkFiles "$LOCATION" 'isInWorkingCopy'
 
     # Use subversion `status' command to retrive the first character
     # in the output.
