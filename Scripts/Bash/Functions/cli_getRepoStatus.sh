@@ -1,9 +1,10 @@
 #!/bin/bash
 #
 # cli_getRepoStatus.sh -- This function requests the working copy
-# using the `svn status' command to return the first character on each
-# output line, as described in `svn help status`. Use this function to
-# know which status, the first argument passed to this function, has.
+# using the svn status command and returns the first character in the
+# output line, as described in svn help status, for the LOCATION
+# specified. Use this function to perform verification based a
+# repository LOCATION status. 
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
