@@ -34,16 +34,6 @@ function cli {
     local ACTIONVAL=''
     local REGEX=''
     local ARGUMENTS=''
-    local CLINAME=''
-    local CLIVERSION=''
-    local CLIDESCRIP=''
-    local CLICOPYRIGHT=''
-
-    # Define centos-art.sh script personal information.
-    CLINAME='centos-art.sh'
-    CLIVERSION='Beta'
-    CLIDESCRIP="`gettext "Automate frequent tasks inside CentOS Artwork Repository."`"
-    CLICOPYRIGHT="Copyright (C) 2009, 2010 Alain Reguera Delgado"
 
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"

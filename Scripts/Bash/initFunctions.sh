@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# initFunctions.sh -- Initializes functions and sets environment
-# variables used by centos-art.sh scripts.
+# initFunctions.sh -- Initializes environment variables and functions
+# used by centos-art.sh scripts.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -24,35 +24,32 @@
 # $Id: initFunctions.sh 80 2010-09-18 06:57:26Z al $
 # ----------------------------------------------------------------------
 
-# Initizalize gettext internazionalization.
+# Initizalize centos-art.sh gettext internazionalization.
 . gettext.sh
 export TEXTDOMAIN=centos-art.sh
 export TEXTDOMAINDIR=/home/centos/artwork/trunk/Scripts/Bash/Locale
 
-# Initialize centos-art.sh script functions.
+# Initialize centos-art.sh personal information.
+export CLINAME='centos-art.sh'
+export CLIVERSION='Beta'
+export CLIDESCRIP="`gettext "Automate frequent tasks inside CentOS Artwork Repository."`"
+export CLICOPYRIGHT="Copyright (C) 2009-2010 Alain Reguera Delgado"
+
+# Initialize centos-art.sh function scripts.
 FILES=$(ls /home/centos/artwork/trunk/Scripts/Bash/Functions/{cli,cli_*}.sh)
-MISSINGFILES=''
 for FILE in $FILES;do
     if [[ -x $FILE ]];then
         . $FILE
         FUNCTION=$(grep '^function ' $FILE | cut -d' ' -f2)
         export -f $FUNCTION
     else
-        MISSINGFILES="$FILE $MISSINGFILES"
+        echo `gettext "The $FILE needs to have execution rights."`
+        exit
     fi
 done
 
-if [[ $MISSINGFILES != '' ]];then
-    for FILE in $MISSINGFILES;do
-        echo `gettext "The $FILE needs to have execution rights."`
-    done
-    exit
-fi
-
-# Unset all except gettext's initialization variables in order to
-# start cli execution with a clean environment. Only gettext's
-# initialization variables are required to pass.
+# Unset all variables not considered global in order to start cli
+# execution with a clean environment.
 unset FILE
 unset FILES
-unset MISSINGFILES
 unset FUNCTION
