@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getActionArguments.sh -- This function initializes the action
+# cli_getArguments.sh -- This function initializes the action
 # name and value used by functionalities to perform their goals.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getActionArguments {
+function cli_getArguments {
 
     # Set command-line arguments for processing using positional
     # parameters variables.
