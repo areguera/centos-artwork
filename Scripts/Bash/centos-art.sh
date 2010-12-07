@@ -30,7 +30,7 @@
 # ----------------------------------------------------------------------
 
 # Initialize function scripts.
-. /home/centos/artwork/trunk/Scripts/Bash/initFunctions.sh
+. /home/centos/artwork/trunk/Scripts/Bash/initEnvironment.sh
 
 # Initialize command line interface.
 cli "$@"
