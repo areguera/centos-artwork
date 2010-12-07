@@ -28,7 +28,7 @@
 
 function cli_getRepoStatus {
 
-    local FILE="$1"
+    local LOCATION="$1"
     local STATUS=''
 
     # Define regular expression pattern to retrive first column,
@@ -39,11 +39,11 @@ function cli_getRepoStatus {
     # Verify the file used as source to retrive its status
     # information. We only use regular files or directories inside the
     # working copy.
-    cli_checkFiles "$FILE" 'fd'
+    cli_checkFiles "$LOCATION" 'fd'
 
     # Use subversion `status' command to retrive the first character
     # in the output.
-    STATUS="$(svn status "$FILE" --quiet | sed -r "s/${PATTER}/\1/")"
+    STATUS="$(svn status "$LOCATION" --quiet | sed -r "s/${PATTER}/\1/")"
 
     # Sanitate status output.
     if [[ "$STATUS" == '' ]];then
