@@ -256,7 +256,7 @@ centos-art manual --edit=trunk/Scripts/Bash/Functions/Greet
 To have a well documented function helps user to understand how your
 function really works, and how it should be used.  When no valid
 action is passed to a function, the @file{centos-art.sh} script uses
-the function documentation entry as vehicle to let the user know which
+the function documentation entry as vehicle to communicate which the
 valid functions are. When no documentation entry exists for a
 funtcion, that user has provided an invalid action for, the
 @file{centos-art.sh} script informs that no documentation entry exists
