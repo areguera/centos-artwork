@@ -584,6 +584,8 @@ symbolic link.
 @item fd
 Ends script execution if @var{FILE} is neither a regular file nor a
 directory.
+@item isInWorkingCopy
+Ends script execution if @var{FILE} is not inside the working copy.
 @end table
 
 As default behaviour, if @var{FILE} passes all verifications,
