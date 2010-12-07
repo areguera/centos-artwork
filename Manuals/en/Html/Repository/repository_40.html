@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on December, 6 2010 by texi2html 1.76 -->
+<!-- Created on December, 7 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -1107,10 +1107,19 @@ each time we change name convenctions in the repository (see section <a href="re
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getRepoStatus</b>
+<dt><u>Function:</u> <b>cli_getRepoStatus</b><i> [LOCATION]</i>
 <a name="IDX24"></a>
 </dt>
-</dl>
+<dd><p>Request repository status.
+</p>
+<p>This function requests the working copy using the <code>svn status</code>
+command and returns the first character in the output line, as
+described in <code>svn help status</code>, for the <var>LOCATION</var>
+specified.
+</p>
+<p>Use this function to perform verifications based a repository
+<var>LOCATION</var> status.
+</p></dd></dl>
 
 <dl>
 <dt><u>Function:</u> <b>cli_getTemporalFile</b><i> <var>NAME</var></i>
@@ -1362,7 +1371,7 @@ available for you to use:
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>December, 6 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>December, 7 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

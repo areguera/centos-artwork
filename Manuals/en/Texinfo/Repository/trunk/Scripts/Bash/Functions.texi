@@ -980,7 +980,16 @@ each time we change name convenctions in the repository (@pxref{trunk
 Scripts Bash Functions Path}, for more information).
 @end defun
 
-@defun cli_getRepoStatus
+@defun cli_getRepoStatus [LOCATION]
+Request repository status.
+
+This function requests the working copy using the @command{svn status}
+command and returns the first character in the output line, as
+described in @command{svn help status}, for the @var{LOCATION}
+specified.
+
+Use this function to perform verifications based a repository
+@var{LOCATION} status.
 @end defun
 
 @defun cli_getTemporalFile @var{NAME}
