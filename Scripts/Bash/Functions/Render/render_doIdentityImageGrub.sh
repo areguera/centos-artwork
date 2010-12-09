@@ -59,13 +59,18 @@ function render_doIdentityImageGrub {
         fi
     done
 
-    # Define Motif's palette location. We do this relatively.
-    local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
-
+    # Define motif's palette location.
+    local PALETTES=$(cli_getRepoTopLevelPath)/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
+    
     # Define the Netpbm color palettes used when reducing colors.
     # These palettes should be 14 colors based. For more information
     # on this see the GRUB's documentation.
     local PALETTE_PPM=$PALETTES/grub.ppm
+
+    # Print which palette of colors centos-art.sh script is using to
+    # produce grub content. This is relevant in order to know if we
+    # are using wether trunk or branches palette of colors.
+    cli_printMessage "$PALETTE_PPM" 'AsPaletteLine'
 
     # Check GRUB's palettes existence:  If there is no palette assume
     # that this is the first time you are rendering GRUB images. If
