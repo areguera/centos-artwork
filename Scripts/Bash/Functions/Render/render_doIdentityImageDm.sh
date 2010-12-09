@@ -102,10 +102,14 @@ function render_doIdentityImageDm {
 
     # Define directory storing different screen resolution backgrounds
     # images used to build display manager in different resolutions.
-    BGS=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Backgrounds/Img/Png
+    BGS=$(cli_getRepoTopLevelPath)/Identity/Themes/Motifs/$(cli_getThemeName)/Backgrounds/Img/Png
 
-    # Define directory where temporal files are stored.
-    TMP=$(cli_getThemeName)
+    # Define directory where temporal files are stored. Remember that
+    # cli_getThemeName may return branch enumeration if we are
+    # rendering under branches/ directory structure. In order to build
+    # the theme directory we only use the thame name, not the numerial
+    # information, so be sure to remove it here.
+    TMP=$(cli_getThemeName | cut -d/ -f1)
 
     # Define png image file used as CentOS symbol. As convenction,
     # inside all CentOS art works (e.g., anaconda, firstboot, etc.),
