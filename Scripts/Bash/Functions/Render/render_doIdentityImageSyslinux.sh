@@ -59,8 +59,8 @@ function render_doIdentityImageSyslinux {
         PREFIX="${PREFIX}-floyd"
     fi
 
-    # Define absolute location to motif's palette of colors.
-    local PALETTES=/home/centos/artwork/trunk/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
+    # Define motif's palette location.
+    local PALETTES=$(cli_getRepoTopLevelPath)/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
    
     # Define the Netpbm color palette used when reducing colors. This
     # palette should be 16 colors based. For more information on this
@@ -71,6 +71,12 @@ function render_doIdentityImageSyslinux {
     # information and order used on PALETTE_HEX and PALETTE_PPM should
     # match exactly.
     local PALETTE_HEX=$PALETTES/syslinux.hex
+
+    # Print which palette of colors centos-art.sh script is using to
+    # produce grub content. This is relevant in order to know if we
+    # are using wether trunk or branches palette of colors.
+    cli_printMessage "$PALETTE_PPM" 'AsPaletteLine'
+    cli_printMessage "$PALETTE_HEX" 'AsPaletteLine'
 
     # Check syslinux's palettes existence:  If there is no palette
     # assume that this is the first time you are rendering syslinux
