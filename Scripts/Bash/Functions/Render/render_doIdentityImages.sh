@@ -58,7 +58,7 @@ function render_doIdentityImages {
         else
             WIDTH=''
         fi
-
+        
         # Check external files existence. External files are used when
         # reusing background images inside design templates. In these
         # cases external files point to images which contain the
