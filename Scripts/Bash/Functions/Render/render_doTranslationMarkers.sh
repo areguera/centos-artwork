@@ -30,9 +30,6 @@
 function render_doTranslationMarkers {
 
     # Replace theme translation marker with appropriate theme name.
-    grep "=THEME=" $INSTANCE > /dev/null
-    if [[ $? -eq 0 ]];then
-        sed -i -e "s!=THEME=!$(cli_getThemeName)!g" $INSTANCE
-    fi
+    sed -i -e "s!=THEME=!$(cli_getThemeName)!g" $INSTANCE
 
 }
