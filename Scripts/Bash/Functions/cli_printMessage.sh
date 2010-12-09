@@ -112,6 +112,11 @@ function cli_printMessage {
                 | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
+        'AsPaletteLine' )
+            echo "`gettext "Palette"`: $MESSAGE" \
+                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            ;;
+
         'AsResponseLine' )
             echo "--> $MESSAGE"
             ;;
