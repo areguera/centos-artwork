@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on December, 7 2010 by texi2html 1.76 -->
+<!-- Created on December, 17 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -64,80 +64,46 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Identity-Themes-Motifs-Flame"></a>
 <a name="SEC137"></a>
 <h2 class="section"> 3.23 trunk/Identity/Themes/Motifs/Flame </h2>
 
-<p>The <em>Flame</em> artistic motif was completly built using Gimp 2.2 in
-CentOS 5.5. In this section we describe the steps we followed through
-its construction. This information may be useful for anyone interested
-in reproducing the <em>Flame</em> artistic motif, or in creating new
-artistic motifs for The CentOS Project corporate visual identity
-(see section <a href="repository_4.html#SEC4">trunk/Identity</a>).
+
+<a name="SEC138"></a>
+<h3 class="subsection"> 3.23.1 Goals </h3>
+
+<p>This section describes the steps we followed to construct the
+<em>Flame</em> artistic motif. This section may be useful for anyone
+interested in reproducing the <em>Flame</em> artistic motif, or in
+creating new artistic motifs for The CentOS Project corporate visual
+identity (see section <a href="repository_4.html#SEC4">trunk/Identity</a>).
 </p>
 <p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Concept/Img/motif.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Concept/Img/motif">
 </p>
 
-<a name="SEC138"></a>
-<h3 class="subsection"> 3.23.1 Step 1: Set image size </h3>
-
-<p>Create an empty image and fill the Background layer with black
-(<samp>`000000'</samp>) color. Image dimensions depends on the final
-destination you plan to use the image for. For the sake of our
-construction example we used an image of 640x480 pixels and 300 pixels
-per inch (ppi).
-</p>
-<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/1.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/1">
-</p>
-
 <a name="SEC139"></a>
-<h3 class="subsection"> 3.23.2 Step 2: Add patterns </h3>
+<h3 class="subsection"> 3.23.2 Description </h3>
 
-<p>Create a new layer named <samp>`Paper'</samp>, place it over <samp>`Background'</samp>
-layer and fill it with <samp>`Paper (100x100)'</samp> pattern. 
+<p>The <em>Flame</em> artistic motif was built using the flame filter of
+Gimp 2.2 in CentOS 5.5.
 </p>
-<p>Add a mask to <samp>`Paper'</samp> layer using radial gradient and blur it.
-You may need to repeat this step more than once in order to achieve a
-confortable black radial degradation on the right side of your design.
-In our image dimension, the central point of radial degradation is at
-430x296 approximately. Once you've done with black radial degradation,
-reduce the <samp>`Paper'</samp> layer opacity to 20%.
-</p>
-<p>Duplicate <samp>`Paper'</samp> layer and rename it <samp>`Stripes'</samp>
---duplicating the layer helps us to be sure the layer masks will be
-equal in both <samp>`Paper'</samp> and <samp>`Stripes'</samp> layers--.  Remove paper
-pattern from <samp>`Stripes'</samp> layer. Fill <samp>`Stripes'</samp> layer with
-<samp>`Stripes (48x48)'</samp> pattern and reduce the <samp>`Stripes'</samp> layer
-opacity to 15%:
-</p>
-<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/2.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/2">
-</p>
-
-<a name="SEC140"></a>
-<h3 class="subsection"> 3.23.3 Step 3: Add flame motif </h3>
-
-<p>Create a new layer named <samp>`Flame'</samp>. Set the foreground to white
-color (<code>ffffff</code>). Use the Gimp's flame filter (<samp>`Filters &gt;
-Render &gt; Nature &gt; Flame...'</samp>) to build the flame motif on <samp>`Flame'</samp>
-layer.
-</p>
-<p>The flame filter can produce stunning, randomly generated fractal
-patterns. This feature of Gimp give us a great oportunity to grant the
-production of new artistic motifs very quickly because of its
+<p>The Gimp's flame filter can produce stunning, randomly generated
+fractal patterns. The Gimp's flame filter gives us a great oportunity
+to reduce the time used to produce new artistic motifs, because of its
 &quot;randomly generated&quot; nature. Once the artistic motif be created, it
 is propagated through all visual manifestations of CentOS Project
 corporate visual identity using the <tt>`centos-art.sh'</tt> script
-(see section <a href="repository_39.html#SEC206">trunk/Scripts/Bash</a>) inside the CentOS Artwork Repository.
+(see section <a href="repository_39.html#SEC209">trunk/Scripts/Bash</a>) inside the CentOS Artwork Repository.
 </p>
 <p>To set the time intervals between each new visual style production, we
 could reuse the CentOS distribution major release schema.  I.e., we
@@ -147,8 +113,8 @@ visual identity (i.e., distribution stuff, promotion stuff, websites
 stuff, etc.) with the new major release of CentOS distribution all
 together at once.
 </p>
-<p>Producing a new visual style is not one day's task. Once we have the
-artistic motif defined, we need to propagate it through all visual
+<p>Producing a new visual style is not one day's task. Once we have
+defined the artistic motif, we need to propagate it through all visual
 manifestations of The CentOS Project corporate visual identity. When
 we say that we could produce one new visual style every two years we
 really mean: to work two years long in order to propagate a new visual
@@ -159,7 +125,7 @@ visual identity.
 visual manifestations of The CentOS Project corporate visual identity,
 we need first to know which the visual manifestations are.  To define
 which visual manifestations are inside The CentOS Project corporate
-visual identity, is one of the goals the CentOS Artwork Repository and
+visual identity is one of the goals the CentOS Artwork Repository and
 this documentation manual are both aimed to satisfy.
 </p>
 <p>Once we define which the visual manifestation are, it is possible to
@@ -185,7 +151,7 @@ inside the monolithic conception we are trying to be attached to
 manifestations).
 </p>
 <p>Producing artistic motifs is a creative process that may consume long
-time, specially for people without experienced knowlegde on graphic
+time, specially for people without experienced knowledge on graphic
 design land. Using &quot;randomly generated&quot; conception to produce
 artistic motifs could be, practically, a way for anyone to follow in
 order to produce maintainable artistic motifs in few steps. 
@@ -221,79 +187,142 @@ file.
 </p>
 <pre class="verbatim">trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
 </pre>
-<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/3.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/3">
-</p>
-<p>Ok. Now that we have created the flame motif, and also divagated a bit
-about it, lets continue with the construction steps. 
-</p>
-<p>Duplicate <samp>`Flame'</samp> layer and rename it `Flame Blur'. Place `Flame
-Blur' below <samp>`Flame'</samp> layer. Add gussian blur filter (<samp>`Filters
-&gt; Blur &gt; Gussian Blur...'</samp>).
-</p>
-<pre class="verbatim">Horizontal:10.0
-Vertical:10.0
-</pre>
-<p>Duplicate <samp>`Flame'</samp> layer and rename it `Flame Softglow'. Place
-`Flame Softglow' above <samp>`Flame'</samp> layer. Add Softglow filter
-(<samp>`Filters &gt; Artisitc &gt; Softglow...'</samp>).
-</p>
-<pre class="verbatim">Glow radius: 10.00
-Brightness: 0.75
-Sharpness: 0.85
-</pre>
-<p>Reduce flame layers opacity using the same value. The value used to
-reduce flame layers opacity may vary from one image to another,
-specifically, on the place the image will be finally placed on.  For
-example, images used as desktop background have the flame layers
-opacity reduced to 50% in order to reduce brightness.  Otherwise, the
-background image used in anaconda progress slides has flame layers
-opacity reduced to 20% in order to reduce brightness even more so text
-could look clean and readable over it.
-</p>
-<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/4.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/4">
-</p>
+
+<a name="SEC140"></a>
+<h3 class="subsection"> 3.23.3 Construction </h3>
+
 
 <a name="SEC141"></a>
-<h3 class="subsection"> 3.23.4 Step 4: Add foreground color </h3>
+<h4 class="subsubsection"> 3.23.3.1 Step 1: Set image size </h4>
 
-<p>Create a new layer named <samp>`Color'</samp>, place it on top of all visible
-layers and fill it with plain color (<code>4c005a</code>). Reduce
-<samp>`Color'</samp> layer opacity to 10%. You can use the <samp>`Color'</samp> layer
-to control the final color information you want to produce the image
-for.
+<p>Create an empty image and fill the <samp>`Background'</samp> layer with black
+(<code>000000</code>) color. Image dimensions depend on the final
+destination you plan to use the image for. For the sake of our
+construction example we used an image of 640x480 pixels and 300 pixels
+per inch (ppi).
 </p>
-<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/5.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/5">
-</p>
-<p>When setting color information, remember that the same artistic motif
-needs to be reproduced in 14 and 16 colors for Grub and Syslinux
-visual manifestations respectively. Using many different colors in the
-artistic motif may reduce the possibility of your design to fix in all
-different situations.  Likewise, using more colors in one design, and
-less colors in another design will reduce the connectivity among your
-designs, since color information is relevant to visual identity. 
-</p>
-<p>It is up to you to find out justice and compromise among all possible
-variables you may face, when you propagate your artistic motif visual
-style to different visual manifestations of CentOS Project corporate
-visual identity.
+<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/1.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/1">
 </p>
 
 <a name="SEC142"></a>
-<h3 class="subsection"> 3.23.5 See also </h3>
+<h4 class="subsubsection"> 3.23.3.2 Step 2: Add base color and pattern information </h4>
 
+<p>Create a new layer named <samp>`Base'</samp>, place it over <samp>`Background'</samp>
+layer and fill it with the base color (<code>7800ff</code>) you want to have
+your background image set in.  Add a mask to <samp>`Base'</samp> layer using
+radial gradient and blur it.  You may need to repeat this step more
+than once in order to achieve a confortable black radial degradation
+on the right side of your design.
+</p>
+<p>Duplicate <samp>`Base'</samp> layer and name it <samp>`Paper'</samp>. Place
+<samp>`Paper'</samp> layer over <samp>`Base'</samp> layer. Remove content of
+<samp>`Paper'</samp> layer and fill it with <samp>`Paper (100x100)'</samp> pattern.
+Once you've done with black radial degradation, reduce the
+<samp>`Paper'</samp> layer opacity to 20%. 
+</p>
+<p>Notice that when we duplicate one layer, the information related to
+layer's mask is preserved from one layer to another. This saves some
+time when you want to have different layers with the same mask
+information on them.
+</p>
+<p>Duplicate <samp>`Paper'</samp> layer and rename it <samp>`Stripes'</samp>. Remove
+paper pattern from <samp>`Stripes'</samp> layer. Fill <samp>`Stripes'</samp> layer
+with <samp>`Stripes (48x48)'</samp> pattern and reduce the <samp>`Stripes'</samp>
+layer opacity to 15%.
+</p>
+<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/2.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/2">
+</p>
+
+<a name="SEC143"></a>
+<h4 class="subsubsection"> 3.23.3.3 Step 3: Add flame motif </h4>
+
+<p>Create a new layer named <samp>`Flame'</samp>. Set the foreground
+(<code>003cff</code>) and background (<code>0084ff</code>) colors to the gradient
+you want to build the flame motif. 
+</p>
+<p>To build flame motif, use the Gimp's flame filter (<samp>`Filters &gt;
+Render &gt; Nature &gt; Flame...'</samp>) on <samp>`Flame'</samp> layer. We used a layer
+mask, with a radial gradient on it to control the boundaries of flame
+motif on <samp>`Flame'</samp> layer.
+</p>
+<p>Duplicate <samp>`Flame'</samp> layer and rename it `Flame Blur'. Place `Flame
+Blur' below <samp>`Flame'</samp> layer. Apply Gussian blur filter
+(<samp>`Filters &gt; Blur &gt; Gussian Blur...'</samp>) until reaching the desiered
+effect.
+</p>
+<p>The opacity value, in <samp>`Flame'</samp> layers, may vary from one image to
+another based on the place the image will be finally placed on.  For
+example, images used as desktop background have the <samp>`Flame'</samp> layer
+opacity set at 100% but <samp>`Flame Blur'</samp> is set to 70%.  However, you
+may find that background images used in anaconda progress slides have
+opacity reduced differently, in order to reduce brightness in a way
+that texts could look clean and readable over it.
+</p>
+<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/3.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/3">
+</p>
+
+<a name="SEC144"></a>
+<h4 class="subsubsection"> 3.23.3.4 Step 4: Add foreground color </h4>
+
+<p>Create a new layer named <samp>`Color'</samp>, place it on top of all visible
+layers and fill it with plain color (<code>4c005a</code>). Reduce
+<samp>`Color'</samp> layer opacity to 20%. You can use the <samp>`Color'</samp> layer
+to control the right side color information you want to produce the
+image for.
+</p>
+<p>Duplicate <samp>`Flame'</samp> layer and create a new layer named
+<samp>`Color#1'</samp>. Place <samp>`Color#1'</samp> layer on top of layer named
+<samp>`Color'</samp>. Remove the mask information from <samp>`Color#1'</samp> layer
+and recreate a new one using an inverted alpha channel as reference.
+Remove <samp>`Color#1'</samp> layer content and fill it back with plain black
+(<code>000000</code>) color. Reduce <samp>`Color#1'</samp> opacity to 20%.  In this
+step we created a mask to protect the flame artistic motif from black
+color, so when we decrement or increment layer's opacity, the flame
+artistic motif wouldn't be affected, just the environment suround it.
+</p>
+<p><img src="/home/centos/artwork/trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/5.jpg" alt="trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/5">
+</p>
+<p>When you set color information, remember that the same artistic motif
+needs to be indexed to 14 and 16 colors, in order to produce Grub and
+Syslinux visual manifestations respectively. Using many different
+colors in the artistic motif may reduce the possibility of your design
+to fix all different situations in.  Likewise, using more colors in
+one design, and less colors in another design will reduce the
+connectivity among your designs, since color information is relevant
+to visual identity. 
+</p>
+<p>When you propagate your artistic motif visual style to different
+visual manifestations of CentOS Project corporate visual identity, it
+is up to you to find out justice and compromise among all possible
+variables you may face.
+</p>
+
+<a name="SEC145"></a>
+<h3 class="subsection"> 3.23.4 See also </h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_25.html#SEC132">3.22 trunk/Identity/Themes/Motifs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_17.html#SEC90">3.14 trunk/Identity/Themes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_4.html#SEC4">3.1 trunk/Identity</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_3.html#SEC3">3. trunk</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_27.html#SEC143" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC144" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_27.html#SEC146" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC137" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC361" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>December, 7 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>December, 17 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
