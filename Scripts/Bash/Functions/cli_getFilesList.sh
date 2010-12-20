@@ -61,7 +61,7 @@ function cli_getFilesList {
     # Check list of files to process. If we have an empty list of
     # files, inform about it and stop script execution.
     if [[ $FILES == '' ]];then
-        cli_printMessage "`gettext "No file found."`" 'AsErrorLine'
+        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
