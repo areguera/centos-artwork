@@ -246,7 +246,7 @@ CentOS Artwork Repository
       3.41.2.3 Repository work flow
       3.41.2.4 Parallel directories
       3.41.2.5 Syncronizing path information
-      3.41.2.6 What is the right location to store it?
+      3.41.2.6 What is the right place to store it?
     3.41.3 Usage
     3.41.4 See also
   3.42 trunk/Scripts/Bash/Functions/Render
@@ -4167,16 +4167,17 @@ Repository.
 cycle.
 
    Initially, we start working themes on their trunk development line
-(e.g., `trunk/Identity/Themes/Motifs/TreeFlower/'), here we design
-background images and propagate them to different visual manifestations
-using one theme's model as reference.
+(e.g., `trunk/Identity/Themes/Motifs/TreeFlower/'), here we organize
+information that cannot be produced automatically (i.e., background
+images, concepts, color information, screenshots, etc.).
 
-   Later, when the theme is considered "ready" for implementation (i.e.
-all visual manifestations have been already set), we create a branch
-for it (e.g., `branches/Identity/Themes/Motifs/TreeFlower/1/').  Once
-the branch has been created, we forget that branch and continue working
-the trunk development line while others (e.g., an artwork quality
-assurance team) test the new branch for tunning it up.
+   Later, when theme trunk development line is considered "ready" for
+implementation (e.g.,  all required backgrounds have been designed), we
+create a branch for it (e.g.,
+`branches/Identity/Themes/Motifs/TreeFlower/1/').  Once the branch has
+been created, we forget that branch and continue working the trunk
+development line while others (e.g., an artwork quality assurance team)
+test the new branch for tunning it up.
 
    Once the branch has been tunned up, and considered "ready" for
 release, it is freezed under `tags/' directory (e.g.,
@@ -4193,16 +4194,15 @@ same branch development line.
 
  Figure 3.5: Name convention for tags and branches creation.
 
-   As proposition, it would be convenient not to freeze trunk
-development lines using tags or anything else.  If you think you need
-to freeze a trunk development line, create a branch for it and then
-freeze that branch instead.
+     *Convenction* Do not freeze trunk development lines using tags
+     directly.  If you think you need to freeze a trunk development
+     line, create a branch for it and then freeze that branch instead.
 
    The trunk development line may introduce problems we cannot see
 immediatly. Certainly, the high changable nature of trunk development
 line complicates finding and fixing such problems. On the other hand,
-the branched development lines provides a less changable area where
-only small fixes/corrections are commited up to repository.
+the branched development lines provide a more predictable area where
+only fixes/corrections to current content are commited up to repository.
 
    If others find and fix bugs inside the branched development line, we
 could merge such changes/experiences back to trunk development line
@@ -4218,13 +4218,15 @@ a theme need in order to cover CentOS distribution artwork
 requirements. At this point, is where CentOS Artwork Repository comes
 up to scene.
 
-   Before releasing a new major release of CentOS distribution you can
-create a branch for one of several theme development lines available
-inside the CentOS Artwork Repository, perform quality assurance on it,
-and later, freeze that branch using tags. Once a the theme branch has
-been frozen (under `tags/' directory), CentOS Packagers (the persons
-who build CentOS distribution) can use that frozen branch as source
-location to fulfill CentOS distribution artwork needs.
+   Before releasing a new major release of CentOS distribution we create
+a branch for one of several theme development lines available inside
+the CentOS Artwork Repository, perform quality assurance on it, and
+later, freeze that branch using tags. Once a the theme branch has been
+frozen (under `tags/' directory), CentOS Packagers (the persons whom
+build CentOS distribution) can use that frozen branch as source
+location to fulfill CentOS distribution artwork needs. The same applies
+to CentOS Webmasters (the persons whom build CentOS websites), and any
+other visual manifestation required by the project.
 
 3.41.2.4 Parallel directories
 .............................
@@ -4256,7 +4258,7 @@ by `render' functionality.
 information is when we use the `manual' functionality. This time,
 `centos-art.sh' script uses parallel directory information (without
 uncommon directory levels) to build the documentation entry required by
-Texinfo to store documentation entries inside the repository.
+Texinfo documentation system, inside the repository.
 
  Figure 3.6: Parallel directories removing uncommon information.
 
@@ -4271,11 +4273,12 @@ carefully considered where it will be.
 
    When one parent directory changes, all their related parallel
 directories need to be changed too. This is required in order for
-parallel directories to match the new parent directory structure.  In
-the other hand, parallel directories should never be modified by no
-reason but to satisfy their parent directory structure. Liberal change
-of parallel directories may suppress the conceptual idea they were
-initially created for.
+parallel directories to retain their relation with the parent directory
+structure.  In the other hand, parallel directories should never be
+modified under no reason but to satisfy the relation to their parent
+directory structure.  Liberal change of parallel directories may
+suppresses the conceptual idea they were initially created for; and
+certainly, things may stop working the way they should do.
 
  Figure 3.8: Wrong construction of parallel directories.
 
@@ -4283,24 +4286,26 @@ initially created for.
 ......................................
 
 Creating parallel directories is very useful to keep repository
-organized. But, what would happen to functionalities like `manual'
-(`trunk Scripts Bash Functions Manual') that rely on parent directory
-structures to create documentation entries (using parallel directory
-structures) if one of those parent directory structures suddenly
-changes after the documentation entry has been already created for it?
+organized but introduce some complications.  For instance, consider
+what would happen to functionalities like `manual' (`trunk Scripts Bash
+Functions Manual') that rely on parent directory structures to create
+documentation entries (using parallel directory structures) if one of
+those parent directory structures suddenly changes after the
+documentation entry has been already created for it?
 
-   Well, at this point, functionalities like `manual' may confuse
-themselves if path information is not updated.  Such functionalities
-work with parent directory structure as reference; if a parent
-directory changes, the functionalities dont't even note it because they
-work with the last parent directory structure available in the
-repository, no matter what it is.
+   If that is the case, functionalities like `manual' may confuse
+themselves if path information is not updated to reflect the relation
+with its parent directory.  Such functionalities work with parent
+directory structure as reference; if a parent directory changes, the
+functionalities dont't even note it because they work with the last
+parent directory structure available in the repository, no matter what
+it is.
 
    In the specific case of documentation (the `manual' functionality),
 the problem mentioned above provokes that older parent directories,
 already documented, remain inside documentation directory structures as
 long as you get your hands into the documentation directory structure
-(`trunk/Manuals') and remove what must be removed to match the new
+(`trunk/Manuals') and change what must be changed to match the new
 parent directory structure.
 
    There is no way for `manual', and similar functionalities that use
@@ -4334,45 +4339,46 @@ related files. Updating path references inside related files is
 specially important for documentation files where documentation nodes
 are built using repository path information as reference.
 
-3.41.2.6 What is the right location to store it?
-................................................
+3.41.2.6 What is the right place to store it?
+.............................................
 
 Occasionly, you may find that new corporate visual identity components
 need to be added to the repository. If that is your case, the first
 question you need to ask yourself, before start to create directories
-blindly all over, is: What is the right location to store it?
+blindly all over, is: What is the right place to store it?
 
-   The CentOS Community (`http://wiki.centos.org/GettingHelp') is the
-best place to find answers to your question, but going there with hands
-empty is not good idea. It may give the impression you don't really
-care about. Instead, consider the following suggestions to find your
-own comprehension and so, make your propositions based on it.
+   The CentOS Community different free support vains (see:
+`http://wiki.centos.org/GettingHelp') are the best place to find
+answers to your question, but going there with hands empty is not good
+idea. It may give the impression you don't really care about. Instead,
+consider the following suggestions to find your own comprehension and
+so, make your propositions based on it.
 
-   When looking the correct place to store new files, to bear in mind
-the corporate visual identity structure used inside the CentOS Artwork
-Repository (*note trunk Identity::) would be probaly the best advice we
-could offer to you, the rest is just matter of choosing appropriate
+   When we are looking for the correct place to store new files, to bear
+in mind the corporate visual identity structure used inside the CentOS
+Artwork Repository (*note trunk Identity::) would be probaly the best
+advice we could offer, the rest is just matter of choosing appropriate
 names.  To illustrate this desition process let's consider the
-`trunk/Identity/Themes/Motifs/TreeFlower/Distro/' directory as example.
-It is the main development line of CentOS distribution visual
-manifestation, using TreeFlower's artistic motif, inside themes of
-CentOS corporate visual identity.
+`trunk/Identity/Themes/Motifs/TreeFlower' directory as example. It is
+the trunk development line of TreeFlower's artistic motif. Artistic
+motifs are considered part of themes, which in turn are considered part
+of CentOS corporate visual identity.
 
    When building parent directory structures, you may find that reaching
-an acceptable location may take some time, and as it happens most of
-time, when you find it, that may be not a definite solution. There are
-many concepts that you need to play with, in order to find a result
-that match the conceptual idea you try to implement in the new
+an acceptable location may take some time, and as it uses to happen
+most of time; once you've find it, that may be not a definite solution.
+There are many concepts that you need to play with, in order to find a
+result that match the conceptual idea you try to implement in the new
 directory location. To know which these concepts are, split the
 location in words and read its documentation entry from less specific
 to more specific.
 
-   For example, the `trunk/Identity/Themes/Motifs/TreeFlower/Distro/'
-location evolved through several months of contant work and there is no
-certain it won't change in the future, even it fixes quite well the
-concept we are trying to implement.  The concepts used in
-`trunk/Identity/Themes/Distro/Motifs/TreeFlower/Distro/' location are
-described in the following commands, respectively:
+   For example, the `trunk/Identity/Themes/Motifs/TreeFlower' location
+evolved through several months of contant work and there is no certain
+it won't change in the future, even it fixes quite well the concept we
+are trying to implement.  The concepts used in
+`trunk/Identity/Themes/Distro/Motifs/TreeFlower' location are described
+in the following commands, respectively:
 
 
 centos-art manual --read=turnk/
@@ -4380,7 +4386,6 @@ centos-art manual --read=turnk/Identity/
 centos-art manual --read=turnk/Identity/Themes/
 centos-art manual --read=turnk/Identity/Themes/Motifs/
 centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
-centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/Distro/
 
    Other location concepts can be found similary as we did above, just
 change the location we used above by the one you are trying to know
@@ -6293,24 +6298,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  393)
-Common translation files:                      See 3.50.2.5. (line 5722)
-How to render brands' translation files:       See 3.52.3.   (line 6026)
-How to render fonts' translation files:        See 3.54.3.   (line 6099)
-How to render translation files:               See 3.50.3.   (line 5892)
-Metadata maintainance:                         See 3.45.2.   (line 4866)
-Specific translation files:                    See 3.50.2.6. (line 5747)
+Common translation files:                      See 3.50.2.5. (line 5727)
+How to render brands' translation files:       See 3.52.3.   (line 6031)
+How to render fonts' translation files:        See 3.54.3.   (line 6104)
+How to render translation files:               See 3.50.3.   (line 5897)
+Metadata maintainance:                         See 3.45.2.   (line 4871)
+Specific translation files:                    See 3.50.2.6. (line 5752)
 tags:                                          See 2.        (line  396)
-Template translation files:                    See 3.50.2.4. (line 5552)
-Translation brands file names:                 See 3.52.2.1. (line 5983)
-Translation configuration scripts:             See 3.50.2.8. (line 5781)
-Translation entries:                           See 3.50.2.1. (line 5368)
-Translation files:                             See 3.50.2.3. (line 5484)
-Translation markers:                           See 3.50.2.2. (line 5449)
-Translation paths:                             See 3.50.2.1. (line 5368)
+Template translation files:                    See 3.50.2.4. (line 5557)
+Translation brands file names:                 See 3.52.2.1. (line 5988)
+Translation configuration scripts:             See 3.50.2.8. (line 5786)
+Translation entries:                           See 3.50.2.1. (line 5373)
+Translation files:                             See 3.50.2.3. (line 5489)
+Translation markers:                           See 3.50.2.2. (line 5454)
+Translation paths:                             See 3.50.2.1. (line 5373)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5781)
-Translation rendering:                         See 3.50.2.7. (line 5770)
-Translation rendering default functionality:   See 3.50.2.9. (line 5867)
+                                                             (line 5786)
+Translation rendering:                         See 3.50.2.7. (line 5775)
+Translation rendering default functionality:   See 3.50.2.9. (line 5872)
 trunk:                                         See 3.        (line  399)
 trunk Identity:                                See 3.1.      (line  402)
 trunk Identity Brands:                         See 3.2.      (line  822)
@@ -6359,27 +6364,27 @@ trunk Scripts Bash Functions Html:             See 3.38.     (line 3958)
 trunk Scripts Bash Functions Locale:           See 3.39.     (line 3979)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 4059)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 4080)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4481)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4502)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4680)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4848)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5036)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5252)
-trunk Scripts Perl:                            See 3.48.     (line 5281)
-trunk Scripts Python:                          See 3.49.     (line 5298)
-trunk Translations:                            See 3.50.     (line 5319)
-trunk Translations Identity:                   See 3.51.     (line 5921)
-trunk Translations Identity Brands:            See 3.52.     (line 5942)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6037)
-trunk Translations Identity Fonts:             See 3.54.     (line 6052)
-trunk Translations Identity Models:            See 3.55.     (line 6115)
-trunk Translations Identity Release:           See 3.56.     (line 6130)
-trunk Translations Identity Themes:            See 3.57.     (line 6145)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6160)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4486)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4507)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4685)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4853)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5041)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5257)
+trunk Scripts Perl:                            See 3.48.     (line 5286)
+trunk Scripts Python:                          See 3.49.     (line 5303)
+trunk Translations:                            See 3.50.     (line 5324)
+trunk Translations Identity:                   See 3.51.     (line 5926)
+trunk Translations Identity Brands:            See 3.52.     (line 5947)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6042)
+trunk Translations Identity Fonts:             See 3.54.     (line 6057)
+trunk Translations Identity Models:            See 3.55.     (line 6120)
+trunk Translations Identity Release:           See 3.56.     (line 6135)
+trunk Translations Identity Themes:            See 3.57.     (line 6150)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6165)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6181)
-trunk Translations Identity Widgets:           See 3.60.     (line 6274)
-Unused definitions:                            See 3.45.2.1. (line 4973)
+                                                             (line 6186)
+trunk Translations Identity Widgets:           See 3.60.     (line 6279)
+Unused definitions:                            See 3.45.2.1. (line 4978)
 List of Figures
 ***************
 
