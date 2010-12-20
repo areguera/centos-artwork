@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_getIdentityTemplateDir.sh -- This function re-defines absolute
-# path to artwork's related design templates directory. 
+# path to artwork's related design templates directory.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,27 +26,34 @@
 
 function render_getIdentityTemplateDir {
 
+    # Initialize design models location using action value as
+    # reference.
     SVG=$ACTIONVAL
 
-    # Be sure design models are always pointing to trunk. This is
-    # useful to let centos-art.sh script do render under branches
-    # directory structure.
+    # Sanitate design models location.  Be sure design models do
+    # always point to trunk directory structure. This is useful to let
+    # `centos-art.sh' script do rendering under branches directory
+    # structure, reusing design models under trunk directory
+    # structure.
     SVG=$(echo "$SVG" | sed "s!/branches/!/trunk/!")
 
-    # By default design templates are stored directly under theme
-    # model directory structure. The Tpl/ directory is no longer used,
-    # except some specific cases that, for organization sake, it is
-    # convenient to use them.
+    # Sanitate design models location.
     if [[ -d $SVG/Tpl ]];then
+        # Using Tpl/ directory is an obsolete practice that should be
+        # avoided. The concept of Tpl/ directory per artwork directory
+        # has been replaced by a common design model directory
+        # structure where we centralize design models for all
+        # different artistic motifs.  However, there are some cases
+        # that we may need to use Tpl/ directory still, so we verify
+        # its existence and use it if present.
         SVG=$SVG/Tpl
+    else
+        # Redefine design model location based on theme model
+        # (THEMEMODEL) variable value. The theme model variable is
+        # defined in the associated pre-rendering configuration script
+        # and can be used to set which design model to use among a
+        # list of different design models that we can choose from.
+        SVG=$(echo "$SVG" | sed "s!Motifs/$(cli_getThemeName)!Models/$THEMEMODEL!")
     fi
-
-    # If you are rendering theme motifs, design templates are not
-    # stored inside Tpl directory. Instead, we use one common theme
-    # model structure for all artistic motifs. Inside the common theme
-    # model structure, there are several design models that user can
-    # alternate among, using the THEMEMODEL variable available on
-    # pre-rendering configuration scripts.
-    SVG=$(echo "$SVG" | sed "s!Motifs/$(cli_getThemeName)!Models/$THEMEMODEL!")
 
 }
