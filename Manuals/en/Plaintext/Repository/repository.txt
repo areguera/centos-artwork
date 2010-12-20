@@ -4253,7 +4253,7 @@ retrived translations, and pre-rendering configuration scripts required
 by `render' functionality.
 
    Another example where parallel directory removes the uncommon path
-information is when we use the `help' functionality. This time,
+information is when we use the `manual' functionality. This time,
 `centos-art.sh' script uses parallel directory information (without
 uncommon directory levels) to build the documentation entry required by
 Texinfo to store documentation entries inside the repository.
@@ -4283,28 +4283,27 @@ initially created for.
 ......................................
 
 Creating parallel directories is very useful to keep repository
-organized. But, what would happen to functionalities like `help'
-(*WARNING:* _The `trunk Scripts Bash Functions Help' documentation
-entry no longer exists._) that rely on parent directory structures to
-create documentation entries (using parallel directory structures) if
-one of those parent directory structures suddenly changes after the
-documentation entry has been already created for it?
+organized. But, what would happen to functionalities like `manual'
+(`trunk Scripts Bash Functions Manual') that rely on parent directory
+structures to create documentation entries (using parallel directory
+structures) if one of those parent directory structures suddenly
+changes after the documentation entry has been already created for it?
 
-   Well, at this point, functionalities like `help' may confuse
+   Well, at this point, functionalities like `manual' may confuse
 themselves if path information is not updated.  Such functionalities
 work with parent directory structure as reference; if a parent
 directory changes, the functionalities dont't even note it because they
 work with the last parent directory structure available in the
 repository, no matter what it is.
 
-   In the specific case of documentation (the `help' functionality),
+   In the specific case of documentation (the `manual' functionality),
 the problem mentioned above provokes that older parent directories,
 already documented, remain inside documentation directory structures as
 long as you get your hands into the documentation directory structure
 (`trunk/Manuals') and remove what must be removed to match the new
 parent directory structure.
 
-   There is no way for `help', and similar functionalities that use
+   There is no way for `manual', and similar functionalities that use
 parent directories as reference, to know when and how directory
 movements take place inside the repository. Such information is
 available only when movement actions, like thoses achived by `rm' or
@@ -4376,12 +4375,12 @@ concept we are trying to implement.  The concepts used in
 described in the following commands, respectively:
 
 
-centos-art help --read=turnk/
-centos-art help --read=turnk/Identity/
-centos-art help --read=turnk/Identity/Themes/
-centos-art help --read=turnk/Identity/Themes/Motifs/
-centos-art help --read=turnk/Identity/Themes/Motifs/TreeFlower/
-centos-art help --read=turnk/Identity/Themes/Motifs/TreeFlower/Distro/
+centos-art manual --read=turnk/
+centos-art manual --read=turnk/Identity/
+centos-art manual --read=turnk/Identity/Themes/
+centos-art manual --read=turnk/Identity/Themes/Motifs/
+centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
+centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/Distro/
 
    Other location concepts can be found similary as we did above, just
 change the location we used above by the one you are trying to know
@@ -6294,24 +6293,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  393)
-Common translation files:                      See 3.50.2.5. (line 5723)
-How to render brands' translation files:       See 3.52.3.   (line 6027)
-How to render fonts' translation files:        See 3.54.3.   (line 6100)
-How to render translation files:               See 3.50.3.   (line 5893)
-Metadata maintainance:                         See 3.45.2.   (line 4867)
-Specific translation files:                    See 3.50.2.6. (line 5748)
+Common translation files:                      See 3.50.2.5. (line 5722)
+How to render brands' translation files:       See 3.52.3.   (line 6026)
+How to render fonts' translation files:        See 3.54.3.   (line 6099)
+How to render translation files:               See 3.50.3.   (line 5892)
+Metadata maintainance:                         See 3.45.2.   (line 4866)
+Specific translation files:                    See 3.50.2.6. (line 5747)
 tags:                                          See 2.        (line  396)
-Template translation files:                    See 3.50.2.4. (line 5553)
-Translation brands file names:                 See 3.52.2.1. (line 5984)
-Translation configuration scripts:             See 3.50.2.8. (line 5782)
-Translation entries:                           See 3.50.2.1. (line 5369)
-Translation files:                             See 3.50.2.3. (line 5485)
-Translation markers:                           See 3.50.2.2. (line 5450)
-Translation paths:                             See 3.50.2.1. (line 5369)
+Template translation files:                    See 3.50.2.4. (line 5552)
+Translation brands file names:                 See 3.52.2.1. (line 5983)
+Translation configuration scripts:             See 3.50.2.8. (line 5781)
+Translation entries:                           See 3.50.2.1. (line 5368)
+Translation files:                             See 3.50.2.3. (line 5484)
+Translation markers:                           See 3.50.2.2. (line 5449)
+Translation paths:                             See 3.50.2.1. (line 5368)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5782)
-Translation rendering:                         See 3.50.2.7. (line 5771)
-Translation rendering default functionality:   See 3.50.2.9. (line 5868)
+                                                             (line 5781)
+Translation rendering:                         See 3.50.2.7. (line 5770)
+Translation rendering default functionality:   See 3.50.2.9. (line 5867)
 trunk:                                         See 3.        (line  399)
 trunk Identity:                                See 3.1.      (line  402)
 trunk Identity Brands:                         See 3.2.      (line  822)
@@ -6360,27 +6359,27 @@ trunk Scripts Bash Functions Html:             See 3.38.     (line 3958)
 trunk Scripts Bash Functions Locale:           See 3.39.     (line 3979)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 4059)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 4080)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4482)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4503)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4681)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4849)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5037)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5253)
-trunk Scripts Perl:                            See 3.48.     (line 5282)
-trunk Scripts Python:                          See 3.49.     (line 5299)
-trunk Translations:                            See 3.50.     (line 5320)
-trunk Translations Identity:                   See 3.51.     (line 5922)
-trunk Translations Identity Brands:            See 3.52.     (line 5943)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6038)
-trunk Translations Identity Fonts:             See 3.54.     (line 6053)
-trunk Translations Identity Models:            See 3.55.     (line 6116)
-trunk Translations Identity Release:           See 3.56.     (line 6131)
-trunk Translations Identity Themes:            See 3.57.     (line 6146)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6161)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4481)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4502)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4680)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4848)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5036)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5252)
+trunk Scripts Perl:                            See 3.48.     (line 5281)
+trunk Scripts Python:                          See 3.49.     (line 5298)
+trunk Translations:                            See 3.50.     (line 5319)
+trunk Translations Identity:                   See 3.51.     (line 5921)
+trunk Translations Identity Brands:            See 3.52.     (line 5942)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6037)
+trunk Translations Identity Fonts:             See 3.54.     (line 6052)
+trunk Translations Identity Models:            See 3.55.     (line 6115)
+trunk Translations Identity Release:           See 3.56.     (line 6130)
+trunk Translations Identity Themes:            See 3.57.     (line 6145)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6160)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6182)
-trunk Translations Identity Widgets:           See 3.60.     (line 6275)
-Unused definitions:                            See 3.45.2.1. (line 4974)
+                                                             (line 6181)
+trunk Translations Identity Widgets:           See 3.60.     (line 6274)
+Unused definitions:                            See 3.45.2.1. (line 4973)
 List of Figures
 ***************
 
