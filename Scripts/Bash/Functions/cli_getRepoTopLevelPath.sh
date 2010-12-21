@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# cli_getRepoTopLevelPath.sh -- This function returns the repository
-# top level absolute path. The repository top level absolute path may
-# be /home/centos/artwork/trunk, /home/centos/artwork/branches, or
+# cli_getRepoTLDir.sh -- This function returns the repository top
+# level absolute path. The repository top level absolute path may be
+# /home/centos/artwork/trunk, /home/centos/artwork/branches, or
 # /home/centos/artwork/tags. This function uses action value to
 # determine which is the top level absolute path being used.
 #
@@ -27,13 +27,9 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getRepoTopLevelPath {
+function cli_getRepoTLDir {
 
-    local TOPLEVELPATH=''
-
-    TOPLEVELPATH=$(echo $ACTIONVAL | sed -r \
+    echo $ACTIONVAL | sed -r \
         -e 's!^(/home/centos/artwork/(trunk|branches|tags)).+$!\1!')
-
-    echo $TOPLEVELPATH
 
 }
