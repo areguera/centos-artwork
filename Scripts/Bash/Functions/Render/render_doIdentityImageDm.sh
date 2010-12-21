@@ -102,7 +102,7 @@ function render_doIdentityImageDm {
 
     # Define directory storing different screen resolution backgrounds
     # images used to build display manager in different resolutions.
-    BGS=$(cli_getRepoTopLevelPath)/Identity/Themes/Motifs/$(cli_getThemeName)/Backgrounds/Img/Png
+    BGS=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getThemeName)/Backgrounds/Img/Png
 
     # Define directory where temporal files are stored. Remember that
     # cli_getThemeName may return branch enumeration if we are

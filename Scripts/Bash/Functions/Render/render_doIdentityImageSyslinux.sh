@@ -60,7 +60,7 @@ function render_doIdentityImageSyslinux {
     fi
 
     # Define motif's palette location.
-    local PALETTES=$(cli_getRepoTopLevelPath)/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
+    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
    
     # Define the Netpbm color palette used when reducing colors. This
     # palette should be 16 colors based. For more information on this
