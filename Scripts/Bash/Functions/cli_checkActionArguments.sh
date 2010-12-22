@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_checkActionArguments.sh -- This function provides input
-# validation for action value (ACTIONVAL) variable.
+# cli_checkRepoDirSource.sh -- This function provides input validation
+# to repository entries considered as source locations.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -24,9 +24,9 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_checkActionArguments {
+function cli_checkRepoDirSource {
 
-    # Check action value before making an absolute path from it. 
+    # Check source value before making an absolute path from it.
     if [[ $ACTIONVAL =~ '(\.\.(/)?)' ]];then
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
@@ -36,7 +36,7 @@ function cli_checkActionArguments {
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # Re-define action value to build repository absolute path from
+    # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing
     # /home/centos/artwork/ from all centos-art.sh output (in order to
     # save horizontal output space), we need to be sure that all
@@ -49,11 +49,11 @@ function cli_checkActionArguments {
         ACTIONVAL=/home/centos/artwork/$ACTIONVAL 
     fi
 
-    # Re-define action value to build repository absolute path from
+    # Re-define source value to build repository absolute path from
     # repository relative paths. This let us to pass repository
-    # relative paths as action value.  Passing relative paths as
-    # action value may save us some typing; specially if we are stood
-    # a few levels up from the location we want to refer to as action
+    # relative paths as source value.  Passing relative paths as
+    # source value may save us some typing; specially if we are stood
+    # a few levels up from the location we want to refer to as source
     # value.  There is no need to pass the absolute path to it, just
     # refere it relatively.
     if [[ -d ${ACTIONVAL} ]];then
@@ -63,7 +63,7 @@ function cli_checkActionArguments {
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
-            # Re-define action value using absolute path.
+            # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)
         else
             cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
@@ -80,7 +80,7 @@ function cli_checkActionArguments {
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
-            # Re-define action value using absolute path.
+            # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)/$(basename $ACTIONVAL)
         else
             cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
@@ -90,13 +90,24 @@ function cli_checkActionArguments {
         # Remove directory from the directory stack.
         popd > /dev/null
 
-    else
+    elif [[ ${ACTIONVAL} =~ '^(https|http)://' ]];then
 
-        # Check repository url.
-        if [[ ! $ACTIONVAL =~ '^(https|http)://projects.centos.org/svn/artwork/.+$' ]];then
-            cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
+        # At this point files and directories have been discarded.
+        # Take care of repository urls. 
+        if [[ ! ${ACTIONVAL} =~ '^(https|http)://projects.centos.org/svn/artwork/.+$' ]];then
+            cli_printMessage "`gettext "The location provided is not valid exists."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
+ 
+    else
+
+        # At this there is no existent working copy entry, nor a valid
+        # url. The source value can only be considered as such if it
+        # is an existent working copy or valid url. So, print a
+        # message and stop script execution.
+        cli_printMessage "`gettext "The location provided is not valid exists."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+
     fi
 
 }
