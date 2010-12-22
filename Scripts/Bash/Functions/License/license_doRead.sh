@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# license.sh -- This function outputs centos-art.sh license message.
+# license_doRead.sh -- This function provide the interface to read
+# license information.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -20,12 +21,27 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id$
+# $Id: license_doRead.sh 538 2010-11-26 11:12:33Z al $
 # ----------------------------------------------------------------------
 
-function license {
 
-    # Define command-line interface.
-    license_getActions
+function license_doRead {
+
+    local GPL_LARGE="/home/centos/artwork/trunk/Scripts/Bash/Functions/License/GPL"
+    local GPL_SHORT="/home/centos/artwork/trunk/Scripts/Bash/Functions/License/GPL-short"
+
+    # Build license message.
+    local CLILICENSE="$CLINAME ($CLIVERSION) -- $CLIDESCRIP
+
+        $CLICOPYRIGHT
+
+        $(cat $GPL_SHORT)"
+
+    # Output brief license message.
+    cli_printMessage "$CLILICENSE" "AsHeadingLine"
+
+    # Output full license message.
+    cli_printMessage "`gettext "Do you want to read the full license?"`" 'AsYesOrNoRequestLine'
+    less $GPL_LARGE
 
 }

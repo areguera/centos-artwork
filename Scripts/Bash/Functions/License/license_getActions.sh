@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# license.sh -- This function outputs centos-art.sh license message.
+# license_getActions.sh -- This function initializes license
+# functionalities, using the action value of centos-art.sh script as
+# reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -20,12 +22,23 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id$
+# $Id: license_getActions.sh 538 2010-11-26 11:12:33Z al $
 # ----------------------------------------------------------------------
+    
+function license_getActions {
 
-function license {
+    # Evaluate action name and define which actions does centos-art.sh
+    # script supports.
+    case $ACTIONNAM in
 
-    # Define command-line interface.
-    license_getActions
+        '--read' )
+            license_doRead
+            ;;
 
+        * )
+            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
+            ;;
+
+    esac
+    
 }
