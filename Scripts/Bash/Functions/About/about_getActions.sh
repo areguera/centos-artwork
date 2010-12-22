@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# license_doRead.sh -- This function provide the interface to read
-# license information.
+# license_getActions.sh -- This function initializes license
+# functionalities, using the action value of centos-art.sh script as
+# reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -21,27 +22,23 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: license_doRead.sh 538 2010-11-26 11:12:33Z al $
+# $Id: license_getActions.sh 538 2010-11-26 11:12:33Z al $
 # ----------------------------------------------------------------------
+    
+function license_getActions {
 
+    # Evaluate action name and define which actions does centos-art.sh
+    # script supports.
+    case $ACTIONNAM in
 
-function license_doRead {
+        '--license' )
+            about_doLicense
+            ;;
 
-    local GPL_LARGE="/home/centos/artwork/trunk/Scripts/Bash/Functions/License/GPL"
-    local GPL_SHORT="/home/centos/artwork/trunk/Scripts/Bash/Functions/License/GPL-short"
+        * )
+            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
+            ;;
 
-    # Build license message.
-    local CLILICENSE="$CLINAME ($CLIVERSION) -- $CLIDESCRIP
-
-        $CLICOPYRIGHT
-
-        $(cat $GPL_SHORT)"
-
-    # Output brief license message.
-    cli_printMessage "$CLILICENSE" "AsHeadingLine"
-
-    # Output full license message.
-    cli_printMessage "`gettext "Do you want to read the full license?"`" 'AsYesOrNoRequestLine'
-    less $GPL_LARGE
-
+    esac
+    
 }
