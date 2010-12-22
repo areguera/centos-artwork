@@ -23,9 +23,9 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function license {
+function about {
 
     # Define command-line interface.
-    license_getActions
+    about_getActions
 
 }

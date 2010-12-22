@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# license_getActions.sh -- This function initializes license
+# about_getActions.sh -- This function initializes license
 # functionalities, using the action value of centos-art.sh script as
 # reference.
 #
@@ -22,10 +22,10 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: license_getActions.sh 538 2010-11-26 11:12:33Z al $
+# $Id: about_getActions.sh 538 2010-11-26 11:12:33Z al $
 # ----------------------------------------------------------------------
     
-function license_getActions {
+function about_getActions {
 
     # Evaluate action name and define which actions does centos-art.sh
     # script supports.

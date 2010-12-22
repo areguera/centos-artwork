@@ -27,8 +27,8 @@
 
 function about_doLicense {
 
-    local GPL_LARGE="/home/centos/artwork/trunk/Scripts/Bash/Functions/License/GPL"
-    local GPL_SHORT="/home/centos/artwork/trunk/Scripts/Bash/Functions/License/GPL-short"
+    local GPL_LARGE="/home/centos/artwork/trunk/Scripts/Bash/Functions/About/GPL"
+    local GPL_SHORT="/home/centos/artwork/trunk/Scripts/Bash/Functions/About/GPL-short"
 
     # Build license message.
     local CLILICENSE="$CLINAME ($CLIVERSION) -- $CLIDESCRIP
