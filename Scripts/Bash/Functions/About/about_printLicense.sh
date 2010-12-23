@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# about_doLicense.sh -- This function provide the interface to read
+# about_printLicense.sh -- This function provide the interface to read
 # license information.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -21,27 +21,27 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: about_doLicense.sh 538 2010-11-26 11:12:33Z al $
+# $Id: about_printLicense.sh 538 2010-11-26 11:12:33Z al $
 # ----------------------------------------------------------------------
 
 
-function about_doLicense {
+function about_printLicense {
 
-    local GPL_LARGE="/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/copying"
-    local GPL_SHORT="/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/copying-short"
+    local -a FILES
 
-    # Build license message.
-    local CLILICENSE="$CLINAME ($CLIVERSION) -- $CLIDESCRIP
+    # Define absolute paths to copying information.
+    FILES[0]="/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/copying.txt"
+    FILES[1]="/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/copying-short.txt"
+
+    # Output brief license message.
+    cli_printMessage "$CLINAME ($CLIVERSION) -- $CLIDESCRIP
 
         $CLICOPYRIGHT
 
-        $(cat $GPL_SHORT)"
-
-    # Output brief license message.
-    cli_printMessage "$CLILICENSE" "AsHeadingLine"
+        $(cat ${FILES[1]})" 'AsHeadingLine'
 
     # Output full license message.
     cli_printMessage "`gettext "Do you want to read the full license?"`" 'AsYesOrNoRequestLine'
-    less $GPL_LARGE
+    less ${FILES[0]}
 
 }

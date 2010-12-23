@@ -27,18 +27,25 @@
     
 function about_getActions {
 
+    local -a FILES
+
     # Evaluate action name and define which actions does centos-art.sh
     # script supports.
     case $ACTIONNAM in
 
         '--license' )
-            about_doLicense
+            about_printLicense
             ;;
-
+        '--history' )
+            about_printHistory
+            ;;
+        '--authors' )
+            about_printAuthors
+            ;;
         * )
             cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
             ;;
-
     esac
-    
+
 }
