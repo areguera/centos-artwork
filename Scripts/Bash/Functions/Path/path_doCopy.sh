@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# path_doCopy.sh -- This function implements duplication of files
-# inside the working copy.
+# path_doCopy.sh -- This function duplicates files inside the working
+# copy using subversion commands.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,45 +26,75 @@
 
 function path_doCopy {
 
-    # Define short options we want to support.
-    local ARGSS="t:r:m:F:"
+    local -a SRC
+    local -a DST
+    local COUNT=0
+ 
+    # Define source locations.
+    SRC[0]=$SOURCE
+    SRC[1]=$(cli_getRepoDirParallel ${SRC[0]} "$(cli_getRepoTLDir)/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir '--basename')").texi
+    SRC[2]=$(cli_getRepoDirParallel ${SRC[0]} "$(cli_getRepoTLDir)/Scripts/Bash/Functions/Render/Config")
+    SRC[3]=$(cli_getRepoDirParallel ${SRC[0]} "$(cli_getRepoTLDir)/Translations")
 
-    # Define long options we want to support.
-    local ARGSL="to:,revision:,message:,file:,force-log,editor-cmd:,encoding:,username:,password:,no-auth-cache,non-interactive,config-dir:"
+    # Define target locations.
+    DST[0]=$TARGET
+    DST[1]=$(cli_getRepoDirParallel ${DST[0]} "$(cli_getRepoTLDir)/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir '--basename')").texi
+    DST[2]=$(cli_getRepoDirParallel ${DST[0]} "$(cli_getRepoTLDir)/Scripts/Bash/Functions/Render/Config")
+    DST[3]=$(cli_getRepoDirParallel ${DST[0]} "$(cli_getRepoTLDir)/Translations")
 
-    # Parse arguments using getopt(1) command parser.
-    cli_doParseArguments
+    # Syncronize changes between working copy and central repository.
+    cli_commitRepoChanges "${SRC[@]} ${DST[@]}"
 
-    # Reset positional parameters using output from (getopt) argument
-    # parser.
-    eval set -- "$ARGUMENTS"
-
-    # Define target locations using positonal parameters as
-    # reference.
-    while true; do
-        case "$1" in
-            -t|--to )
-                TARGET="$2"
-                shift 2
-                ;;
-            * )
-                break 
-        esac
+    # Output entries affected by action.
+    cli_printMessage "`ngettext "The following entry will be created:" \
+        "The following entries will be created:" \
+        "${#DST[*]}"`"
+    while [[ $COUNT -lt ${#SRC[*]} ]];do
+        cli_printMessage "${DST[$COUNT]}" 'AsResponseLine'
+        COUNT=$(($COUNT + 1))
     done
 
-    # Redefine positional parameters stored inside ARGUMENTS variable.
-    cli_doParseArgumentsReDef "$@"
+    # Request confirmation to perform action.
+    cli_printMessage "`gettext "Do you want to continue?"`" 'AsYesOrNoRequestLine'
 
-    # Parse positional parameters sotred inside ARGUMENTS variable.
-    cli_doParseArguments
+    # Reset counter.
+    COUNT=0
 
-    # Build subversion command to duplicate locations inside the
-    # workstation.
-    eval svn copy $SOURCE $TARGET --quiet $ARGUMENTS
+    # Perform action.
+    while [[ $COUNT -lt ${#SRC[*]} ]];do
 
-    # Output action results.
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
-    
+        cli_printMessage ${DST[$COUNT]} 'AsCreatingLine'
+
+        # Verify repository entry. We cannot duplicate an entry if its
+        # parent directory doesn't exist as entry inside the working
+        # copy.
+        if [[ -f ${SRC[$COUNT]} ]];then
+            if [[ -d $(dirname ${SRC[$COUNT]}) ]];then
+                if [[ ! -d $(dirname ${DST[$COUNT]}) ]];then
+                    mkdir -p $(dirname ${DST[$COUNT]})
+                    svn add $(dirname ${DST[$COUNT]}) --quiet
+                fi
+            fi
+        elif [[ -d ${SRC[$COUNT]} ]];then
+            if [[ -d ${DST[$COUNT]} ]];then
+                cli_printMessage "`gettext "cannot create "` \`${DST[$COUNT]}': `gettext "Directory already exists."`" 'AsErrorLine'
+                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            fi
+        fi
+
+        # Copy using subversion command.
+        svn copy ${SRC[$COUNT]} ${DST[$COUNT]} --quiet
+
+        # Increase counter.
+        COUNT=$(($COUNT + 1))
+
+    done
+
+    # Update documentation chapter, menu and nodes inside Texinfo
+    # documentation structure.
+    . ~/bin/centos-art manual --update-structure=${DST[0]}
+
+    # Syncronize changes between working copy and central repository.
+    cli_commitRepoChanges "${DST[@]}"
+
 }

@@ -29,6 +29,39 @@ function path_getActions {
     # Define source location we are going to work with.
     local SOURCE="$ACTIONVAL"
 
+    # Define short options we want to support.
+    local ARGSS="r:m:t:"
+
+    # Define long options we want to support.
+    local ARGSL="revision:,message:,to:"
+
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
+
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
+
+    # Define target locations using positonal parameters as
+    # reference.
+    while true; do
+        case "$1" in
+            -t|--to )
+                TARGET="$2"
+                cli_checkRepoDirTarget
+                shift 2
+                ;;
+            * )
+                break 
+        esac
+    done
+
+    # Redefine positional parameters stored inside ARGUMENTS variable.
+    cli_doParseArgumentsReDef "$@"
+
+    # Parse positional parameters stored inside ARGUMENTS variable.
+    cli_doParseArguments
+
     # Evaluate action name and define which actions does centos-art.sh
     # script supports.
     while true; do
@@ -38,7 +71,6 @@ function path_getActions {
                 # Duplicate something in working copy or repository,
                 # remembering history.
                 path_doCopy
-                break
                 ;;
 
             '--move' )
@@ -58,7 +90,7 @@ function path_getActions {
                 ;;
 
             * )
-                cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
+                cli_printMessage "`gettext "The action provided is not valid."`" 'AsErrorLine'
                 cli_printMessage "$(caller)" 'AsToKnowMoreLine'
                 ;;
 
