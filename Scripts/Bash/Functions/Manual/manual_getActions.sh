@@ -46,6 +46,16 @@ function manual_getActions {
         manual_updateOutputFiles
         ;;
     
+    --update-structure )
+        # This option is mainly used from path functionality,
+        # specifically when documentation entries are copied, removed,
+        # or renamed. We want to keep documentation structure
+        # syncronized with such changes.
+        manual_updateMenu
+        manual_updateNodes
+        manual_restoreCrossReferences
+        ;;
+
     --read )
         manual_searchNode
         ;;
