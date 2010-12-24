@@ -20,6 +20,7 @@ When you use @code{shell} functionality to update copyright inside
 script files, it is required that your script files contain (at least)
 the following top commentary structure:
 
+@float Figure,fig:trunk/Scripts/Bash/Functions/Shell:1
 @verbatim
  1| #!/bin/bash
  2| #
@@ -37,6 +38,8 @@ the following top commentary structure:
 14|     
 15| }
 @end verbatim
+@caption{The functions script base comment structure}
+@end float
 
 Relevant lines in the above structure are lines from 5 to 9.
 Everything else in the file is left immutable.
@@ -72,6 +75,7 @@ functionality uses its own default values.
 When @code{shell} functionality uses its own default values, the final
 copyright note looks like the following:
 
+@float Figure,fig:trunk/Scripts/Bash/Functions/Shell:2
 @verbatim
  1| #!/bin/bash
  2| #
@@ -102,6 +106,8 @@ copyright note looks like the following:
 27|
 28| }
 @end verbatim
+@caption{The function script comment example}
+@end float
 
 Relevant lines in the above structure are lines from 5 to 22.  Pay
 attention how the copyright line was built, and how the license was
