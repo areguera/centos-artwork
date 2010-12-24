@@ -27,25 +27,31 @@
     
 function about_getActions {
 
-    local -a FILES
+    local FILE=''
 
     # Evaluate action name and define which actions does centos-art.sh
     # script supports.
     case $ACTIONNAM in
 
         '--license' )
-            about_printLicense
+            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/license.txt'
             ;;
         '--history' )
-            about_printHistory
+            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/history.txt'
             ;;
         '--authors' )
-            about_printAuthors
+            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/authors.txt'
+            ;;
+        '--copying' )
+            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/copying.txt'
             ;;
         * )
             cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
             ;;
     esac
+
+    # Print file for user to read.
+    less $FILE
 
 }
