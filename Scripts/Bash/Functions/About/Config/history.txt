@@ -30,31 +30,36 @@ Artwork Repository and to produce slide images in their own languages.
 
 -- 2009 --
 
-It is very difficult for Alain Reguera Delgado to have Internet access
-but continues developing the rendering script off-line.  From that
-time on, the rendering script starts to evolve into centos-art.sh
-script, a command-line interface to manipulate the CentOS Artwork
-Repository.
+The rendering script starts to evolve into centos-art.sh script, a
+command-line interface to manipulate the CentOS Artwork Repository.
 
 Corporate identity concepts taken from Wikipedia and related books are
 introduced as development reference. The main goal of centos-art.sh
-becomes: automating production of a monolithic corporate visual
+turns to: automate production of a monolithic corporate visual
 identity structure based on CentOS Mission and CentOS Release Schema. 
 
-LaTeX-based documentation begins to take form.
+Alain Reguera Delgado is out of Internet for an undefined amount of
+time, but continues developing CentOS Artwork Repository and its
+automation tool (i.e., the centos-art.sh script) off-line.
+
+Documentation begins to take form in LaTeX format.
 
 -- 2010 -- 
 
-Inside centos-art.sh script, start to get identified internal
-functionalities and separate them one from another. For example, when
-images are rendered, there is no need to load manual functionality.
+Inside centos-art.sh script, functionalities start to get identified
+and separated one from another. For example, when images are rendered,
+there is no need to load manual functionality. There are now common
+functionalities and specific functionalities. Common functionalities
+are loaded when the script is initiated and are available to specific
+functionalities.
 
-The directory structure is optimized to corporate identity concepts
-and centos-art.sh script.  The CentOS Artwork Repository directory
-structure places the organizational convenctions that centos-art.sh
-script needs to do what we expect from it to do.
+The directory structure is optimized to implements the corporate
+identity concepts and the centos-art.sh script.  The CentOS Artwork
+Repository directory structure places the organizational convenctions
+that centos-art.sh script needs to do what we expect from it to do.
 
-The following functionalities start to take form:
+The following functionalities start to take form as part of
+centos-art.sh script:
 
     Render
     ------
@@ -63,9 +68,13 @@ The following functionalities start to take form:
 
     Manual
     ------
-    To administer repository documentation using Texinfo and
-    texi2html. This made possible to migrate almost all documentation
-    from LaTeX-based to Texinfo-based.
+    To administer repository documentation using Texinfo. Almost all
+    LaTeX-based documentation was moved to this functionality. Texinfo is a
+    documentation system that uses a single source file to produce both online
+    information and printed output.  This means that instead of writing two
+    different documents, one for the online information and the other for a
+    printed work, you need write only one document.  Therefore, when the work
+    is revised, you need revise only that one document.
      
     Locale 
     ------
