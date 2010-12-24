@@ -34,6 +34,7 @@ function manual {
     MANUALS_DIR[3]=${MANUALS_DIR[1]}/Info/Repository
     MANUALS_DIR[4]=${MANUALS_DIR[1]}/Html/Repository
     MANUALS_DIR[5]=${MANUALS_DIR[1]}/Plaintext/Repository
+    MANUALS_DIR[7]=${MANUALS_DIR[1]}/Pdf/Repository
     
     # Define template directory for texinfo files.
     MANUALS_DIR[6]=${MANUALS_DIR[0]}/en/Texinfo/Tpl

@@ -36,6 +36,7 @@ function manual_updateOutputFiles {
 
     manual_updateOutputFileInfo
     manual_updateOutputFileHtml
+    manual_updateOutputFilePdf
     manual_updateOutputFilePlaintext
 
     # Remove the working copy root directory from directory stack.
