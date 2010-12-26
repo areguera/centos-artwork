@@ -16,7 +16,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on December, 24 2010 by texi2html 1.76 -->
+<!-- Created on December, 26 2010 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -361,6 +361,12 @@ as reference, and later, use the new path information to move each old
 parallel directory from its old location to its new location based on
 an updated path information.
 </p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> Even Subversion supports URL to refere sources and
+destinations of resources inside the central repository, the
+<tt>`centos-art.sh'</tt> script does not.  The <tt>`centos-art.sh'</tt> script
+is designed to work inside working copies only.
+</p></blockquote>
+
 <p>As CentOS Artwork Repository is built over a version control system,
 file movements inside the repository are considered repository
 changes. In order for these repository changes to be versioned, we
@@ -444,53 +450,30 @@ URL:
 <dd><p>Copy and schedule for addition (with history).
 </p>
 </dd>
-<dt> <samp>`WC -&gt; URL'</samp></dt>
+<dt> <samp>`WC -&gt; URL <em>(Not supported)</em>'</samp></dt>
 <dd><p>Immediately commit a copy of WC to URL.
 </p>
 </dd>
-<dt> <samp>`URL -&gt; WC'</samp></dt>
+<dt> <samp>`URL -&gt; WC <em>(Not supported)</em>'</samp></dt>
 <dd><p>Check out URL into WC, schedule for addition.
 </p>
 </dd>
-<dt> <samp>`URL -&gt; URL'</samp></dt>
+<dt> <samp>`URL -&gt; URL <em>(Not supported)</em>'</samp></dt>
 <dd><p>Complete server-side copy;  used to branch and tag.
 </p></dd>
 </dl>
 
-<p>This command is an interface for Subversion's <code>copy</code> command.
-Options related to Subversion's <code>copy</code> command can be passed
-from third argument on. For example to specify a log message use the
-<samp>`--message'</samp> option as follow:
-</p>
-<pre class="verbatim">centos-art path --copy=URL/SRC --to=URL/DST --message 'Copy url/src to url/dst'
-</pre>
-<p>For more information on Subversion's <code>copy</code> functionality,
-run the command: <code>svn help copy | less</code>.
-</p>
 </dd>
 <dt> <code>centos-art path --move=SRC --to=DST</code></dt>
-<dd><p>Move and/or rename something in working copy or repository. In this
-command, SRC and DST can both be working copy (WC) paths or URLs: 
-</p>
-<dl compact="compact">
+<dd><dl compact="compact">
 <dt> <samp>`WC -&gt; WC'</samp></dt>
 <dd><p>Move and schedule for addition (with history).
 </p></dd>
-<dt> <samp>`URL -&gt; URL'</samp></dt>
+<dt> <samp>`URL -&gt; URL <em>(Not supported)</em>'</samp></dt>
 <dd><p>Complete server-side rename.
 </p></dd>
 </dl>
 
-<p>This command is an interface for Subversion's <code>move</code> command.
-Options related to Subversion's <code>move</code> command can be passed
-from third argument on. For example to specify a log message use the
-<samp>`--message'</samp> option as follow:
-</p>
-<pre class="verbatim">centos-art path --move=URL/SRC --to=URL/DST --message 'Move url/src to url/dst'
-</pre>
-<p>For more information on Subversion's <code>move</code> functionality,
-run the command: <code>svn help move | less</code>.
-</p>
 </dd>
 <dt> <code>centos-art path --delete='SRC'</code></dt>
 <dd><p>Use this command to remove files and directories from version control.
@@ -505,30 +488,12 @@ contain, unversioned or modified items will not be removed unless the
 <samp>`--force'</samp> option is given.
 </p>
 </dd>
-<dt> <samp>`URL'</samp></dt>
+<dt> <samp>`URL <em>(Not supported)</em>'</samp></dt>
 <dd><p>Each item specified by a URL is deleted from the repository via an
 immediate commit.
 </p></dd>
 </dl>
-
-<p>This command is an interface for Subversion's <code>delete</code>
-command. Options related to Subversion's <code>delete</code> can be
-passed from third argument on. For example to specify a log message
-use the <samp>`--message'</samp> as follow:
-</p>
-<pre class="verbatim">centos-art path --delete='URL' --message 'Delete url.'
-</pre>
-<p>For more information on Subversion's <code>delete</code> functionality,
-run the command: <code>svn help delete | less</code>.
-</p>
 </dd>
-<dt> <code>centos-art path --sync='SRC'</code></dt>
-<dd><p>Use this command to syncronize path information inside working copy.
-This command is automatically used after moving or renaming parent
-directories.  In this command, <tt>`SRC'</tt> is a working copy path
-inside <tt>`trunk/Identity/'</tt> location, considered the parent
-directory you want to syncronize path information for.
-</p></dd>
 </dl>
 
 
@@ -553,7 +518,7 @@ directory you want to syncronize path information for.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>December, 24 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>December, 26 2010</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

@@ -263,6 +263,13 @@ as reference, and later, use the new path information to move each old
 parallel directory from its old location to its new location based on
 an updated path information.
 
+@quotation
+@strong{Warning} Even Subversion supports URL to refere sources and
+destinations of resources inside the central repository, the
+@file{centos-art.sh} script does not.  The @file{centos-art.sh} script
+is designed to work inside working copies only.
+@end quotation
+
 As CentOS Artwork Repository is built over a version control system,
 file movements inside the repository are considered repository
 changes. In order for these repository changes to be versioned, we
@@ -343,50 +350,23 @@ URL:
 @item WC -> WC
 Copy and schedule for addition (with history).
 
-@item WC -> URL
+@item WC -> URL @emph{(Not supported)}
 Immediately commit a copy of WC to URL.
 
-@item URL -> WC
+@item URL -> WC @emph{(Not supported)}
 Check out URL into WC, schedule for addition.
 
-@item URL -> URL
+@item URL -> URL @emph{(Not supported)}
 Complete server-side copy;  used to branch and tag.
 @end table
 
-This command is an interface for Subversion's @command{copy} command.
-Options related to Subversion's @command{copy} command can be passed
-from third argument on. For example to specify a log message use the
-@option{--message} option as follow:
-
-@verbatim
-centos-art path --copy=URL/SRC --to=URL/DST --message 'Copy url/src to url/dst'
-@end verbatim
-
-For more information on Subversion's @command{copy} functionality,
-run the command: @command{svn help copy | less}.
-
 @item centos-art path --move=SRC --to=DST
-Move and/or rename something in working copy or repository. In this
-command, SRC and DST can both be working copy (WC) paths or URLs: 
-
 @table @samp
 @item WC -> WC
 Move and schedule for addition (with history).
-@item URL -> URL
+@item URL -> URL @emph{(Not supported)}
 Complete server-side rename.
 @end table
-
-This command is an interface for Subversion's @command{move} command.
-Options related to Subversion's @command{move} command can be passed
-from third argument on. For example to specify a log message use the
-@option{--message} option as follow:
-
-@verbatim
-centos-art path --move=URL/SRC --to=URL/DST --message 'Move url/src to url/dst'
-@end verbatim
-
-For more information on Subversion's @command{move} functionality,
-run the command: @command{svn help move | less}.
 
 @item centos-art path --delete='SRC'
 Use this command to remove files and directories from version control.
@@ -400,29 +380,10 @@ immediately removed from the working copy.  PATHs that are, or
 contain, unversioned or modified items will not be removed unless the
 @option{--force} option is given.
 
-@item URL
+@item URL @emph{(Not supported)}
 Each item specified by a URL is deleted from the repository via an
 immediate commit.
 @end table
-
-This command is an interface for Subversion's @command{delete}
-command. Options related to Subversion's @command{delete} can be
-passed from third argument on. For example to specify a log message
-use the @option{--message} as follow:
-
-@verbatim
-centos-art path --delete='URL' --message 'Delete url.'
-@end verbatim
-
-For more information on Subversion's @command{delete} functionality,
-run the command: @command{svn help delete | less}.
-
-@item centos-art path --sync='SRC'
-Use this command to syncronize path information inside working copy.
-This command is automatically used after moving or renaming parent
-directories.  In this command, @file{SRC} is a working copy path
-inside @file{trunk/Identity/} location, considered the parent
-directory you want to syncronize path information for.
 @end table
 
 @subsection See also

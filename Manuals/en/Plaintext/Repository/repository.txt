@@ -4364,6 +4364,11 @@ as reference, and later, use the new path information to move each old
 parallel directory from its old location to its new location based on
 an updated path information.
 
+     *Warning* Even Subversion supports URL to refere sources and
+     destinations of resources inside the central repository, the
+     `centos-art.sh' script does not.  The `centos-art.sh' script is
+     designed to work inside working copies only.
+
    As CentOS Artwork Repository is built over a version control system,
 file movements inside the repository are considered repository changes.
 In order for these repository changes to be versioned, we need to,
@@ -4442,46 +4447,22 @@ concepts for.
     `WC -> WC'
           Copy and schedule for addition (with history).
 
-    `WC -> URL'
+    `WC -> URL _(Not supported)_'
           Immediately commit a copy of WC to URL.
 
-    `URL -> WC'
+    `URL -> WC _(Not supported)_'
           Check out URL into WC, schedule for addition.
 
-    `URL -> URL'
+    `URL -> URL _(Not supported)_'
           Complete server-side copy;  used to branch and tag.
 
-     This command is an interface for Subversion's `copy' command.
-     Options related to Subversion's `copy' command can be passed from
-     third argument on. For example to specify a log message use the
-     `--message' option as follow:
-
-
-     centos-art path --copy=URL/SRC --to=URL/DST --message 'Copy url/src to url/dst'
-
-     For more information on Subversion's `copy' functionality, run the
-     command: `svn help copy | less'.
-
 `centos-art path --move=SRC --to=DST'
-     Move and/or rename something in working copy or repository. In this
-     command, SRC and DST can both be working copy (WC) paths or URLs:
 
     `WC -> WC'
           Move and schedule for addition (with history).
 
-    `URL -> URL'
+    `URL -> URL _(Not supported)_'
           Complete server-side rename.
-
-     This command is an interface for Subversion's `move' command.
-     Options related to Subversion's `move' command can be passed from
-     third argument on. For example to specify a log message use the
-     `--message' option as follow:
-
-
-     centos-art path --move=URL/SRC --to=URL/DST --message 'Move url/src to url/dst'
-
-     For more information on Subversion's `move' functionality, run the
-     command: `svn help move | less'.
 
 `centos-art path --delete='SRC''
      Use this command to remove files and directories from version
@@ -4495,27 +4476,9 @@ concepts for.
           PATHs that are, or contain, unversioned or modified items
           will not be removed unless the `--force' option is given.
 
-    `URL'
+    `URL _(Not supported)_'
           Each item specified by a URL is deleted from the repository
           via an immediate commit.
-
-     This command is an interface for Subversion's `delete' command.
-     Options related to Subversion's `delete' can be passed from third
-     argument on. For example to specify a log message use the
-     `--message' as follow:
-
-
-     centos-art path --delete='URL' --message 'Delete url.'
-
-     For more information on Subversion's `delete' functionality, run
-     the command: `svn help delete | less'.
-
-`centos-art path --sync='SRC''
-     Use this command to syncronize path information inside working
-     copy.  This command is automatically used after moving or renaming
-     parent directories.  In this command, `SRC' is a working copy path
-     inside `trunk/Identity/' location, considered the parent directory
-     you want to syncronize path information for.
 
 3.41.4 See also
 ---------------
@@ -6342,24 +6305,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  393)
-Common translation files:                      See 3.50.2.5. (line 5771)
-How to render brands' translation files:       See 3.52.3.   (line 6075)
-How to render fonts' translation files:        See 3.54.3.   (line 6148)
-How to render translation files:               See 3.50.3.   (line 5941)
-Metadata maintainance:                         See 3.45.2.   (line 4915)
-Specific translation files:                    See 3.50.2.6. (line 5796)
+Common translation files:                      See 3.50.2.5. (line 5734)
+How to render brands' translation files:       See 3.52.3.   (line 6038)
+How to render fonts' translation files:        See 3.54.3.   (line 6111)
+How to render translation files:               See 3.50.3.   (line 5904)
+Metadata maintainance:                         See 3.45.2.   (line 4878)
+Specific translation files:                    See 3.50.2.6. (line 5759)
 tags:                                          See 2.        (line  396)
-Template translation files:                    See 3.50.2.4. (line 5601)
-Translation brands file names:                 See 3.52.2.1. (line 6032)
-Translation configuration scripts:             See 3.50.2.8. (line 5830)
-Translation entries:                           See 3.50.2.1. (line 5417)
-Translation files:                             See 3.50.2.3. (line 5533)
-Translation markers:                           See 3.50.2.2. (line 5498)
-Translation paths:                             See 3.50.2.1. (line 5417)
+Template translation files:                    See 3.50.2.4. (line 5564)
+Translation brands file names:                 See 3.52.2.1. (line 5995)
+Translation configuration scripts:             See 3.50.2.8. (line 5793)
+Translation entries:                           See 3.50.2.1. (line 5380)
+Translation files:                             See 3.50.2.3. (line 5496)
+Translation markers:                           See 3.50.2.2. (line 5461)
+Translation paths:                             See 3.50.2.1. (line 5380)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5830)
-Translation rendering:                         See 3.50.2.7. (line 5819)
-Translation rendering default functionality:   See 3.50.2.9. (line 5916)
+                                                             (line 5793)
+Translation rendering:                         See 3.50.2.7. (line 5782)
+Translation rendering default functionality:   See 3.50.2.9. (line 5879)
 trunk:                                         See 3.        (line  399)
 trunk Identity:                                See 3.1.      (line  402)
 trunk Identity Brands:                         See 3.2.      (line  822)
@@ -6408,27 +6371,27 @@ trunk Scripts Bash Functions Html:             See 3.38.     (line 3988)
 trunk Scripts Bash Functions Locale:           See 3.39.     (line 4009)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 4089)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 4110)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4526)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4547)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4725)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4897)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5085)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5301)
-trunk Scripts Perl:                            See 3.48.     (line 5330)
-trunk Scripts Python:                          See 3.49.     (line 5347)
-trunk Translations:                            See 3.50.     (line 5368)
-trunk Translations Identity:                   See 3.51.     (line 5970)
-trunk Translations Identity Brands:            See 3.52.     (line 5991)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6086)
-trunk Translations Identity Fonts:             See 3.54.     (line 6101)
-trunk Translations Identity Models:            See 3.55.     (line 6164)
-trunk Translations Identity Release:           See 3.56.     (line 6179)
-trunk Translations Identity Themes:            See 3.57.     (line 6194)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6209)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4489)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4510)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4688)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4860)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5048)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5264)
+trunk Scripts Perl:                            See 3.48.     (line 5293)
+trunk Scripts Python:                          See 3.49.     (line 5310)
+trunk Translations:                            See 3.50.     (line 5331)
+trunk Translations Identity:                   See 3.51.     (line 5933)
+trunk Translations Identity Brands:            See 3.52.     (line 5954)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6049)
+trunk Translations Identity Fonts:             See 3.54.     (line 6064)
+trunk Translations Identity Models:            See 3.55.     (line 6127)
+trunk Translations Identity Release:           See 3.56.     (line 6142)
+trunk Translations Identity Themes:            See 3.57.     (line 6157)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6172)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6230)
-trunk Translations Identity Widgets:           See 3.60.     (line 6323)
-Unused definitions:                            See 3.45.2.1. (line 5022)
+                                                             (line 6193)
+trunk Translations Identity Widgets:           See 3.60.     (line 6286)
+Unused definitions:                            See 3.45.2.1. (line 4985)
 List of Figures
 ***************
 
