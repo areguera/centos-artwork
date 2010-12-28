@@ -38,43 +38,53 @@ function cli_commitRepoChanges {
     local LOCALFILES=''
     local CHNGDIRECTION=''
     local CHNGTOTAL=0
-    local LOCATION=''
+    local LOCATIONS=''
 
-    # If the first argument is provided to cli_commitRepoChanges is a
-    # valid regular file or directory, use the first argument as path
-    # location to work with. If first argument is not a file, nor a
-    # directory, or simply is not provided, the ACTIONVAL variable
-    # default value is used instead.
-    if [[ -f "$1" || -d "$1" ]];then
-        LOCATION="$1"
+    # Define location. If function arguments are provided to
+    # cli_commitRepoChanges assume them as path location to work with.
+    # Function arguments can contain more than one path enclosed by
+    # quotation mark. In that case all paths are used as location to
+    # work with.  If function arguments are not provided, the
+    # ACTIONVAL variable default value is used instead.
+    if [[ "$@" != '' ]];then
+        LOCATIONS="$@"
     else
-        LOCATION="$ACTIONVAL"
+        LOCATIONS="$ACTIONVAL"
     fi
 
-    # Update working copy.
-    echo '----------------------------------------------------------------------'
-    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
-    UPDATEOUT=$(svn update ${LOCATION})
+    # Verify locations. The location value may point to the working
+    # copy in the workstation, or to a URL in the central repository.
+    # The cli_commitRepoChanges function performs actions over working
+    # copy files only. So, we need to exclude all URL from location
+    # inside this function. Whatever action you perform over URL will
+    # take place immediatly through direct commit.
+    LOCATIONS=$(echo -e "$LOCATIONS" | sed -r "s! +!\n!g" \
+        | egrep '^/home/centos/artwork/(trunk|branches|tags)/.+$')
 
-    # Check working copy status.
+    echo '----------------------------------------------------------------------'
+    # Update working copy.
+    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
+    UPDATEOUT=$(svn update ${LOCATIONS})
+
+    # Check working copy.
     cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
-    STATUSOUT=$(svn status ${LOCATION})
+    STATUSOUT=$(svn status ${LOCATIONS})
     echo '----------------------------------------------------------------------'
 
     # Define path of files considered recent modifications from
     # central repository to working copy.
-    FILES[0]=$(echo "$UPDATEOUT" | egrep '^A' | cut -d' ' -f7)
-    FILES[1]=$(echo "$UPDATEOUT" | egrep '^D' | cut -d' ' -f7)
-    FILES[2]=$(echo "$UPDATEOUT" | egrep '^U' | cut -d' ' -f7)
-    FILES[3]=$(echo "$UPDATEOUT" | egrep '^C' | cut -d' ' -f7)
-    FILES[4]=$(echo "$UPDATEOUT" | egrep '^G' | cut -d' ' -f7)
+    FILES[0]=$(echo "$UPDATEOUT" | egrep "^A.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[1]=$(echo "$UPDATEOUT" | egrep "^D.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[2]=$(echo "$UPDATEOUT" | egrep "^U.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[3]=$(echo "$UPDATEOUT" | egrep "^C.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[4]=$(echo "$UPDATEOUT" | egrep "^G.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
 
     # Define path fo files considered recent modifications from
     # working copy up to central repository.
-    FILES[5]=$(echo "$STATUSOUT" | egrep '^M' | cut -d' ' -f7)
-    FILES[6]=$(echo "$STATUSOUT" | egrep '^\?' | cut -d' ' -f7)
-    FILES[7]=$(echo "$STATUSOUT" | egrep '^D' | cut -d' ' -f7)
-    FILES[8]=$(echo "$STATUSOUT" | egrep '^A' | cut -d' ' -f7)
+    FILES[5]=$(echo "$STATUSOUT" | egrep "^M.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[6]=$(echo "$STATUSOUT" | egrep "^\?.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[7]=$(echo "$STATUSOUT" | egrep "^D.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[8]=$(echo "$STATUSOUT" | egrep "^A.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
 
     # Define description of files considered recent modifications from
     # central repository to working copy.
