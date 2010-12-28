@@ -28,73 +28,82 @@ function path_doCopy {
 
     local -a SRC
     local -a DST
+    local -a DOC
     local COUNT=0
- 
-    # Define source locations.
-    SRC[0]=$SOURCE
-    SRC[1]=$(cli_getRepoDirParallel ${SRC[0]} "$(cli_getRepoTLDir)/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir '--basename')").texi
-    SRC[2]=$(cli_getRepoDirParallel ${SRC[0]} "$(cli_getRepoTLDir)/Scripts/Bash/Functions/Render/Config")
-    SRC[3]=$(cli_getRepoDirParallel ${SRC[0]} "$(cli_getRepoTLDir)/Translations")
 
-    # Define target locations.
+    # Verify target variable. We can't continue if target is empty.
+    if [[ $TARGET == '' ]];then
+        cli_printMessage "`gettext "There is no target to work with."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
+    # Define source locations. Start with parent directory at position
+    # zero and continue with parent directory related parallel
+    # directories.
+    SRC[0]=$ACTIONVAL
+    SRC[1]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${SRC[0]}" "--relative")").texi
+    SRC[2]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Scripts/Bash/Functions/Render/Config")
+    SRC[3]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Translations")
+
+    # Define target locations. Start with parent directory at position
+    # zero and continue with parent directory related parallel
+    # directories.
     DST[0]=$TARGET
-    DST[1]=$(cli_getRepoDirParallel ${DST[0]} "$(cli_getRepoTLDir)/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir '--basename')").texi
-    DST[2]=$(cli_getRepoDirParallel ${DST[0]} "$(cli_getRepoTLDir)/Scripts/Bash/Functions/Render/Config")
-    DST[3]=$(cli_getRepoDirParallel ${DST[0]} "$(cli_getRepoTLDir)/Translations")
+    DST[1]=$(cli_getRepoDirParallel "${DST[0]}" "$(cli_getRepoTLDir "${DST[0]}")/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${DST[0]}" "--relative")").texi
+    DST[2]=$(cli_getRepoDirParallel "${DST[0]}" "$(cli_getRepoTLDir "${DST[0]}")/Scripts/Bash/Functions/Render/Config")
+    DST[3]=$(cli_getRepoDirParallel "${DST[0]}" "$(cli_getRepoTLDir "${DST[0]}")/Translations")
+
+    # Define documentation files that need to be counted inside
+    # changes commited up to central repository.
+    DOC[0]=/home/centos/artwork/trunk/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${DST[0]}" '--relative')/chapter-menu.texi
+    DOC[1]=/home/centos/artwork/trunk/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${DST[0]}" '--relative')/chapter-nodes.texi
 
     # Syncronize changes between working copy and central repository.
-    cli_commitRepoChanges "${SRC[@]} ${DST[@]}"
+    cli_commitRepoChanges "${SRC[@]} ${DST[@]} ${DOC[@]}"
 
-    # Output entries affected by action.
-    cli_printMessage "`ngettext "The following entry will be created:" \
-        "The following entries will be created:" \
-        "${#DST[*]}"`"
-    while [[ $COUNT -lt ${#SRC[*]} ]];do
+    # Print preamble with affected entries.
+    cli_printMessage "`ngettext "The following entry will be created" \
+        "The following entries will be created" "${#DST[*]}"`"
+    while [[ $COUNT -lt ${#DST[*]} ]];do
+        # Print affected entry.
         cli_printMessage "${DST[$COUNT]}" 'AsResponseLine'
+        # Increment counter.
         COUNT=$(($COUNT + 1))
     done
 
-    # Request confirmation to perform action.
-    cli_printMessage "`gettext "Do you want to continue?"`" 'AsYesOrNoRequestLine'
+    # Request confirmation question to continue with action.
+    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
 
     # Reset counter.
     COUNT=0
 
-    # Perform action.
-    while [[ $COUNT -lt ${#SRC[*]} ]];do
+    while [[ $COUNT -lt ${#DST[*]} ]];do
 
-        cli_printMessage ${DST[$COUNT]} 'AsCreatingLine'
-
-        # Verify repository entry. We cannot duplicate an entry if its
-        # parent directory doesn't exist as entry inside the working
-        # copy.
+        # Verify relation between source and target locations. We
+        # cannot duplicate an entry if its parent directory doesn't
+        # exist as entry inside the working copy.
         if [[ -f ${SRC[$COUNT]} ]];then
-            if [[ -d $(dirname ${SRC[$COUNT]}) ]];then
-                if [[ ! -d $(dirname ${DST[$COUNT]}) ]];then
-                    mkdir -p $(dirname ${DST[$COUNT]})
-                    svn add $(dirname ${DST[$COUNT]}) --quiet
-                fi
-            fi
-        elif [[ -d ${SRC[$COUNT]} ]];then
-            if [[ -d ${DST[$COUNT]} ]];then
-                cli_printMessage "`gettext "cannot create "` \`${DST[$COUNT]}': `gettext "Directory already exists."`" 'AsErrorLine'
-                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            if [[ ! -d $(dirname ${DST[$COUNT]}) ]];then
+                mkdir -p $(dirname ${DST[$COUNT]})
+                svn add $(dirname ${DST[$COUNT]}) --quiet
             fi
         fi
 
-        # Copy using subversion command.
+        # Print action message.
+        cli_printMessage "${DST[$COUNT]}" 'AsCreatingLine'
+
+        # Perform action.
         svn copy ${SRC[$COUNT]} ${DST[$COUNT]} --quiet
 
         # Increase counter.
         COUNT=$(($COUNT + 1))
 
-    done
+    done 
 
-    # Update documentation chapter, menu and nodes inside Texinfo
-    # documentation structure.
-    . ~/bin/centos-art manual --update-structure=${DST[0]}
+    # Update texinfo documentation structure.
+    . /home/centos/bin/centos-art manual --update-structure="${DST[0]}"
 
     # Syncronize changes between working copy and central repository.
-    cli_commitRepoChanges "${DST[@]}"
+    cli_commitRepoChanges "${SRC[@]} ${DST[@]} ${DOC[@]}"
 
 }

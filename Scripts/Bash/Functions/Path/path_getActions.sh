@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# path_getActions.sh -- This function defines the command-line
-# interface used to manipulate repository files.
+# path_getActions.sh -- This function interpretes arguments passed to
+# `path' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,14 +26,11 @@
     
 function path_getActions {
 
-    # Define source location we are going to work with.
-    local SOURCE="$ACTIONVAL"
-
     # Define short options we want to support.
-    local ARGSS="r:m:t:"
+    local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="revision:,message:,to:"
+    local ARGSL="copy:,move:,delete:,to:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -42,59 +39,121 @@ function path_getActions {
     # parser.
     eval set -- "$ARGUMENTS"
 
-    # Define target locations using positonal parameters as
-    # reference.
+    # Define action to take for each option passed.
     while true; do
         case "$1" in
-            -t|--to )
-                TARGET="$2"
-                cli_checkRepoDirTarget
-                shift 2
+
+            --copy )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_doCopy"
+
+                # Look for related sub-options.
+                while true; do
+                    case "$3" in
+
+                        --to )
+
+                            # Redefine target directory.
+                            TARGET="$4"
+
+                            # Verify target directory.
+                            cli_checkRepoDirTarget
+
+                            # Rotate positional parameters.
+                            shift 4
+                            ;;
+
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
+
+                # Break options loop.
+                break
                 ;;
+
+            --move )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_doMove"
+
+                # Look for related sub-options.
+                while true; do
+                    case "$3" in
+
+                        --to )
+
+                            # Redefine target directory.
+                            TARGET="$4"
+
+                            # Verify target directory.
+                            cli_checkRepoDirTarget
+
+                            # Rotate positional parameters.
+                            shift 4
+                            ;;
+
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
+
+                # Break options loop.
+                break
+                ;;
+
+            --delete )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_doDelete"
+
+                # Break options loop.
+                break
+                ;;
+
             * )
-                break 
+                # Break options loop.
+                break
         esac
     done
 
-    # Redefine positional parameters stored inside ARGUMENTS variable.
-    cli_doParseArgumentsReDef "$@"
+    # Verify action value variable.
+    if [[ $ACTIONVAL == '' ]];then
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
-    # Parse positional parameters stored inside ARGUMENTS variable.
-    cli_doParseArguments
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
-    # Evaluate action name and define which actions does centos-art.sh
-    # script supports.
-    while true; do
-        case "$ACTIONNAM" in
-
-            '--copy' )
-                # Duplicate something in working copy or repository,
-                # remembering history.
-                path_doCopy
-                ;;
-
-            '--move' )
-                # Move and/or rename something in working copy or
-                # repository.
-                # --- path_doMove
-                ;;
-
-            '--delete' )
-                # Remove files and directories from version control.
-                # --- path_doDelete
-                ;;
-    
-            '--sync' )
-                # Syncronize parallel dirctories with parent directory.
-                # --- path_doSync
-                ;;
-
-            * )
-                cli_printMessage "`gettext "The action provided is not valid."`" 'AsErrorLine'
-                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-                ;;
-
-        esac
-    done
-    
 }

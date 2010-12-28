@@ -26,8 +26,6 @@
     
 function path {
 
-    # Define global variables.
-
     # Define command-line interface.
     path_getActions
 
