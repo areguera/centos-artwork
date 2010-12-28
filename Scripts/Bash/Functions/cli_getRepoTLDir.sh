@@ -3,8 +3,7 @@
 # cli_getRepoTLDir.sh -- This function returns the repository top
 # level absolute path. The repository top level absolute path may be
 # /home/centos/artwork/trunk, /home/centos/artwork/branches, or
-# /home/centos/artwork/tags. This function uses action value to
-# determine which is the top level absolute path being used.
+# /home/centos/artwork/tags.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -29,7 +28,37 @@
 
 function cli_getRepoTLDir {
 
-    echo $ACTIONVAL | sed -r \
-        -e 's!^(/home/centos/artwork/(trunk|branches|tags)).+$!\1!')
+    local PATTERN=''
+    local REPLACE=''
+    local LOCATION=''
+    
+    # Define location. If first argument is provided use it as default
+    # location.  Otherwise, if first argument is not provided,
+    # location takes the action value (ACTIONVAL) as default.
+    if [[ "$1" != '' ]];then
+        LOCATION="$1"
+    else
+        LOCATION="$ACTIONVAL"
+    fi
+
+    # Verify location.
+    if [[ $LOCATION =~ '^/home/centos/artwork/(trunk|branches|tags)/.+$' ]];then
+        case "$2" in
+            -r|--relative )
+                PATTERN='^/home/centos/artwork/(trunk|branches|tags)/.+$'
+                REPLACE='\1'
+                ;;
+            -a|--absolute|* )
+                PATTERN='^(/home/centos/artwork/(trunk|branches|tags))/.+$'
+                REPLACE='\1'
+                ;;
+        esac
+    else
+        cli_printMessage "cli_getRepoTLDir: `eval_gettext "The location \\\`\\\$LOCATION' is not valid."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
+    # Print location.
+    echo $LOCATION | sed -r "s!${PATTERN}!${REPLACE}!g"
 
 }
