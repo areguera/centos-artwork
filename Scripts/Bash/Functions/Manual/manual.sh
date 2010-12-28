@@ -26,7 +26,7 @@
 # ----------------------------------------------------------------------
     
 function manual {
-    
+
     # Define documentation base directory structure.
     MANUALS_DIR[0]='/home/centos/artwork/trunk/Manuals'
     MANUALS_DIR[1]=${MANUALS_DIR[0]}/$(cli_getCurrentLocale)
@@ -58,26 +58,7 @@ function manual {
     MANUALS_FILE[10]=${MANUALS_DIR[6]}/repository-chapter-section.texi
     MANUALS_FILE[11]=${MANUALS_DIR[2]}/repository-chapter-index.texi
     
-    # Define documentation entry.
-    ENTRY=$(manual_getEntry)
-    
-    # Define directory used to store chapter's documentation entries.
-    # At this point, we need to take a desition about
-    # documentation-design, in order to answer the question: How do we
-    # assign chapters, sections and subsections automatically, based
-    # on the repository structure? 
-    #
-    # One solution would be: to use three chapters only to represent
-    # the repository's first level structure (i.e., trunk,
-    # branches, and tags) and handle everything else as sections. Sub
-    # and subsub section will not have their own files, they will be
-    # written inside section files instead.
-    ENTRYCHAPTER=$(echo $ENTRY | cut -d / -f-10)
-
-    # Define chapter name for this documentation entry.
-    CHAPTERNAME=$(basename $ENTRYCHAPTER)
-
-    # Initialize documentation functions and path patterns.
+    # Define command-line interface.
     manual_getActions
 
 }

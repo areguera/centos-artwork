@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_getActions.sh -- This function initializes documentation
-# functionalities, using action value as reference.
+# manual_getActions.sh -- This function interpretes arguments passed
+# to `manual' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,45 +26,151 @@
 
 function manual_getActions {
 
+    # Verify language layout.
     manual_checkLanguageLayout
 
-    case $ACTIONNAM in
-    
-    --search )
-        manual_searchIndex
-        ;;
-    
-    --edit )
-        manual_editEntry
-        ;;
-    
-    --remove )
-        manual_removeEntry
-        ;;
-    
-    --update )
-        manual_updateOutputFiles
-        ;;
-    
-    --update-structure )
-        # This option is mainly used from path functionality,
-        # specifically when documentation entries are copied, removed,
-        # or renamed. We want to keep documentation structure
-        # syncronized with such changes.
-        manual_updateMenu
-        manual_updateNodes
-        manual_restoreCrossReferences
-        ;;
+    # Define short options we want to support.
+    local ARGSS=""
 
-    --read )
-        manual_searchNode
-        ;;
+    # Define long options we want to support.
+    local ARGSL="search:,edit:,delete:,update-output,update-structure:,read:"
 
-    * )
-        cli_printMessage "`gettext "The option provided is not valid."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-        ;;
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
+
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
+
+    # Define action to take for each option passed.
+    while true; do
+        case "$1" in
+
+            --search )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_searchIndex"
+
+                # Break options loop.
+                break
+                ;;
     
-    esac
+            --edit )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_editEntry"
+
+                # Break options loop.
+                break
+                ;;
+    
+            --delete )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name.
+                ACTIONNAM="${FUNCNAM}_removeEntry"
+
+                # Break options loop.
+                break
+                ;;
+    
+            --update-output )
+
+                # Execute action name. There is no need of action
+                # value here, so let's execute the action right now.
+                manual_updateOutputFiles
+
+                # Break options loop.
+                break
+                ;;
+    
+            --update-structure )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_updateTexinfoStructure"
+
+                # Break options loop.
+                break
+                ;;
+
+            --read )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line
+                # using source directory definition as reference.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_searchNode"
+
+                # Break options loop.
+                break
+                ;;
+
+            * )
+                break
+        esac
+    done
+
+    # Verify action value variable. 
+    if [[ $ACTIONVAL == '' ]];then
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
+    # Define documentation entry.
+    ENTRY=$(manual_getEntry)
+
+    # Define directory used to store chapter's documentation entries.
+    # At this point, we need to take a desition about
+    # documentation-design, in order to answer the question: How do we
+    # assign chapters, sections and subsections automatically, based
+    # on the repository structure? 
+    #
+    # One solution would be: to use three chapters only to represent
+    # the repository's first level structure (i.e., trunk,
+    # branches, and tags) and handle everything else as sections. Sub
+    # and subsub section will not have their own files, they will be
+    # written inside section files instead.
+    ENTRYCHAPTER=$(echo $ENTRY | cut -d / -f-10)
+
+    # Define chapter name for this documentation entry.
+    CHAPTERNAME=$(basename $ENTRYCHAPTER)
+
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
 }
