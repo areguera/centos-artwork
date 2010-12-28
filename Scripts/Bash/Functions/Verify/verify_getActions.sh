@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# verify_getActions.sh -- This function defines the ``verify''
-# command-line interface of centos-art.sh script.
+# verify_getActions.sh -- This function interpretes arguments passed
+# to `verify' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,24 +26,126 @@
 
 function verify_getActions {
 
-    case $ACTIONNAM in
+    # Define short options we want to support.
+    local ARGSS=""
 
-        --packages )
-            verify_doPackages
-            ;;
+    # Define long options we want to support.
+    local ARGSL="packages,links,environment,filter:"
 
-        --links )
-            verify_doLinks
-            ;;
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
 
-        --environment )
-            verify_doEnvironment 
-            ;;
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
 
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+    # Look for options passed through command-line.
+    while true; do
 
-    esac
+        case "$1" in
+
+            --packages )
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_doPackages"
+
+                # Look for sub-options passed through command-line.
+                while true; do
+
+                    case "$2" in
+
+                        --filter )
+
+                            # Redefine regular expression.
+                            REGEX="$3"
+
+                            # Rotate positional parameters.
+                            shift 3
+                            ;;
+
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
+
+                # Break options loop.
+                break
+                ;;
+
+            --links )
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_doLinks"
+
+                # Look for sub-options passed through command-line.
+                while true; do
+
+                    case "$2" in
+
+                        --filter )
+
+                            # Redefine regular expression.
+                            REGEX="$3"
+
+                            # Rotate positional parameters.
+                            shift 3
+                            ;;
+
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
+
+                # Break options loop.
+                break
+                ;;
+
+            --environment )
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_doEnvironment"
+
+                # Look for sub-options passed through command-line.
+                while true; do
+
+                    case "$2" in
+
+                        --filter )
+
+                            # Redefine regular expression.
+                            REGEX="$3"
+
+                            # Rotate positional parameters
+                            shift 3
+                            ;;
+
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
+
+                # Break options loop.
+                break
+                ;;
+
+            * )
+                # Break options loop.
+                break
+        esac
+    done
+
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
 }

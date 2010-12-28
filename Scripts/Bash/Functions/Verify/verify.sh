@@ -26,8 +26,6 @@
 
 function verify {
 
-    # Define global variables.
-
     # Define command-line interface.
     verify_getActions
 

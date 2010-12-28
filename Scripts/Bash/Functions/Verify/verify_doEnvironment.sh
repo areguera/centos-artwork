@@ -45,31 +45,6 @@ function verify_doEnvironment {
     INFO[3]="`gettext "Default directory used to retrive translated messages"`"
     INFO[4]="`gettext "Default locale information"`"
 
-    # Define short options we want to support.
-    local ARGSS=""
-
-    # Define long options we want to support.
-    local ARGSL="filter:"
-
-    # Parse arguments using getopt(1) command parser.
-    cli_doParseArguments
-
-    # Reset positional parameters using output from (getopt) argument
-    # parser.
-    eval set -- "$ARGUMENTS"
-
-    # Define action to take for each option passed.
-    while true; do
-        case "$1" in
-            --filter )
-               REGEX="$2" 
-               shift 2
-               ;;
-            * )
-                break
-        esac
-    done
-
     until [[ $COUNT -eq ${#VARS[*]} ]];do
 
         # Let user to reduce output using regular expression as
