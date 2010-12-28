@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# locale_getActions.sh -- This function initializes locale
-# functionalities, using action value as reference.
+# locale_getActions.sh -- This function interprets arguments passed to
+# `locale' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,20 +26,85 @@
 
 function locale_getActions {
 
-    case $ACTIONNAM in
+    # Define short options we want to support.
+    local ARGSS="f:"
 
-        --status )
-            locale_doMessagesStatus
-            ;;
+    # Define long options we want to support.
+    local ARGSL="filter:,status,edit"
 
-        --edit )
-            locale_doMessages
-            ;;
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
 
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
 
-    esac
+    # Define action to take for each option passed.
+    while true; do
+        case "$1" in
+
+            --status )
+
+                # Redefine action name.
+                ACTIONNAM="${FUNCNAM}_doMessagesStatus"
+
+                # Redefine action value. There is no action value to
+                # verify here.
+
+                # Look for related sub-options.
+                while true; do
+                    case "$2" in
+
+                        -f|--filter )
+
+                            # Redefine regular expression.
+                            REGEX="$3"
+
+                            # Rotate positional parameters
+                            shift 3
+                            ;;
+
+                        * )
+                            break
+                            ;;
+
+                    esac
+                done
+
+                # Break while loop.
+                break
+                ;;
+
+            --edit )
+
+                # Redefine action name.
+                ACTIONNAM="${FUNCNAM}_doMessages"
+
+                # Redefine action value. It is required for
+                # cli_commitRepoChanges to know where locale changes
+                # are.
+                ACTIONVAL=/home/centos/artwork/trunk/Scripts/Bash/Locale
+
+                # Verify action value variable.
+                if [[ $ACTIONVAL == '' ]];then
+                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                fi
+
+                # Break while loop.
+                break
+                ;;
+
+            * )
+                break
+        esac
+    done
+
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
 }

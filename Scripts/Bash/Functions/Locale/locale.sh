@@ -26,9 +26,7 @@
 
 function locale {
 
-    # Define locale variables.
-
-    # Define locale functions and parameters.
+    # Define the command-line interface.
     locale_getActions
 
 }
