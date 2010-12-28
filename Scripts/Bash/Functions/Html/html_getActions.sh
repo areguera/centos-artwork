@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# html_getActions.sh -- This function initializes HTML string
-# manipulation functionalities, using the action value of
-# centos-art.sh script as reference.
+# html_getActions.sh -- This function interprets arguments passed to
+# `html' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -27,19 +26,70 @@
     
 function html_getActions {
 
-    # Evaluate action name and define which actions does centos-art.sh
-    # script supports.
-    case $ACTIONNAM in
+    # Define short options we want to support.
+    local ARGSS="f:"
 
-        '--update-headings' )
-            # Update html headings to create table of content.
-            html_updateHeadings
-            ;;
+    # Define long options we want to support.
+    local ARGSL="filter:,update-headings:"
 
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
-            ;;
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
 
-    esac
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
+
+    # Define action to take for each option passed.
+    while true; do
+        case "$1" in
+
+            --update-headings )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Check action value passed through the command-line.
+                cli_checkRepoDirSource
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_updateHeadings"
+
+                # Look for sub-options passed through command-line.
+                while true; do
+                    case "$3" in
+                        -f|--filter )
+                            # Redefine regular expression.
+                            REGEX="$4"
+                            # Rotate positional parameters
+                            shift 4
+                            ;;
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
+
+                # Break options loop.
+                break
+                ;;
+
+            * )
+                break
+        esac
+    done
+
+    # Verify action value variable.
+    if [[ $ACTIONVAL == '' ]];then
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
     
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
 }
