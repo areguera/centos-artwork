@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_doParseArgumentsReDef.sh -- This function initializes/reset
+# cli_doParseArgumentsReDef.sh -- This function initiates/reset
 # positional parameters based on `$@' variable.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
