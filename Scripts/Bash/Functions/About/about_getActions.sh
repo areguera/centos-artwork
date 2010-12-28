@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# about_getActions.sh -- This function initializes license
-# functionalities, using the action value of centos-art.sh script as
-# reference.
+# about_getActions.sh -- This function interpretes arguments passed to
+# about functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -27,31 +26,54 @@
     
 function about_getActions {
 
-    local FILE=''
+    # Define short options we want to support.
+    local ARGSS=""
 
-    # Evaluate action name and define which actions does centos-art.sh
-    # script supports.
-    case $ACTIONNAM in
+    # Define long options we want to support.
+    local ARGSL="license,history,authors,copying"
 
-        '--license' )
-            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/license.txt'
-            ;;
-        '--history' )
-            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/history.txt'
-            ;;
-        '--authors' )
-            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/authors.txt'
-            ;;
-        '--copying' )
-            FILE='/home/centos/artwork/trunk/Scripts/Bash/Functions/About/Config/copying.txt'
-            ;;
-        * )
-            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-            ;;
-    esac
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
 
-    # Print file for user to read.
-    less $FILE
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
+
+    # Look for options passed through command-line.
+    while true; do
+        case "$1" in
+
+            --license )
+                ACTIONVAL="${FUNCCONFIG}/license.txt"
+                break
+                ;;
+
+            --history )
+                ACTIONVAL="${FUNCCONFIG}/history.txt"
+                break
+                ;;
+
+            --authors )
+                ACTIONVAL="${FUNCCONFIG}/authors.txt"
+                break
+                ;;
+
+            --copying )
+                ACTIONVAL="${FUNCCONFIG}/copying.txt"
+                break
+                ;;
+
+            * )
+                break
+        esac
+    done
+
+    # Execute action name.
+    if [[ -f $ACTIONVAL ]];then
+        less $ACTIONVAL
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
 }
