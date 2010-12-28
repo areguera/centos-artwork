@@ -25,14 +25,12 @@
 # ----------------------------------------------------------------------
 
 function cli_checkRepoDirSource {
-
+                
     # Check source value before making an absolute path from it.
-    if [[ $ACTIONVAL =~ '(\.\.(/)?)' ]];then
-        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
-    if [[ ! $ACTIONVAL =~ '^[A-Za-z0-9\.:/-]+$' ]];then
-        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
+    if [[ $ACTIONVAL == '' ]] \
+        || [[ $ACTIONVAL =~ '(\.\.(/)?)' ]] \
+        || [[ ! $ACTIONVAL =~ '^[A-Za-z0-9\.:/-]+$' ]];then
+        cli_printMessage "`eval_gettext "The value \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
@@ -66,7 +64,7 @@ function cli_checkRepoDirSource {
             # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)
         else
-            cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
+            cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
 
@@ -83,29 +81,20 @@ function cli_checkRepoDirSource {
             # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)/$(basename $ACTIONVAL)
         else
-            cli_printMessage "`gettext "The location provided is not valid."`" 'AsErrorLine'
+            cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
 
         # Remove directory from the directory stack.
         popd > /dev/null
 
-    elif [[ ${ACTIONVAL} =~ '^(https|http)://' ]];then
-
-        # At this point files and directories have been discarded.
-        # Take care of repository urls. 
-        if [[ ! ${ACTIONVAL} =~ '^(https|http)://projects.centos.org/svn/artwork/.+$' ]];then
-            cli_printMessage "`gettext "The location provided is not valid exists."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-        fi
- 
     else
 
         # At this there is no existent working copy entry, nor a valid
         # url. The source value can only be considered as such if it
         # is an existent working copy or valid url. So, print a
         # message and stop script execution.
-        cli_printMessage "`gettext "The location provided is not valid exists."`" 'AsErrorLine'
+        cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
 
     fi
