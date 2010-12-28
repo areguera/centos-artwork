@@ -27,32 +27,13 @@
 function cli_getFunctions {
 
     # Define variables as local to avoid conflicts outside.
-    local FUNCNAMDIR=''
-    local FUNCNAMFILES=''
-    local FUNCNAMSCRIPT=''
     local FUNCNAMCALL=''
-    local REPOFUNDIR=''
-
-    # Define path to directory where actions are stored inside the
-    # repository.
-    REPOFUNDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions
-
-    # Define action directory. 
-    FUNCNAMDIR=$(cli_getRepoName $FUNCNAM 'd')
-
-    # Define action file name.
-    FUNCNAMSCRIPT=${REPOFUNDIR}/${FUNCNAMDIR}/${FUNCNAM}.sh
-
-    # Check action existence.
-    if [[ ! -f $FUNCNAMSCRIPT ]];then
-        cli_printMessage "`gettext "The action provided is not valid."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    local FUNCFILES=''
 
     # Build action-specifc script file list.
-    FUNCNAMFILES=$(ls ${REPOFUNDIR}/${FUNCNAMDIR}/${FUNCNAM}*.sh)
+    FUNCFILES=$(ls ${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}*.sh)
 
-    for FILE in $FUNCNAMFILES;do
+    for FILE in $FUNCFILES;do
 
         if [[ -x ${FILE} ]];then
 
@@ -66,7 +47,7 @@ function cli_getFunctions {
 
         else
 
-            cli_printMessage "`eval_gettext "The \\\$FILE hasn't execution rights."`"
+            cli_printMessage "`eval_gettext "The \\\$FILE hasn't execution rights."`" 'AsErrorLine'
             cli_printMessage "$(caller)" "AsToKnowMoreLine"
 
         fi
