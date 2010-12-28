@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# render_getActionsIdentity.sh -- This function initializes rendering
+# render_getActionsIdentity.sh -- This function initiates rendering
 # configuration functions and executes them to perform the rendering
-# action specified in the variable `$ACTIONS[0]'. Function
+# action specified in the `ACTIONS' array variable. Function
 # initialization and execution is based on the absolute path
 # convenction defined by ARTCONF variable.
 #
@@ -42,7 +42,7 @@ function render_getActionsIdentity {
     # sharing the same name (without the extension). This produces one
     # translated design for each translation file available.
     # Matching list definitions where translation files need to be
-    # applied to specific design templates are be defined inside
+    # applied to specific design templates are defined inside
     # artwork-specific pre-rendering configuration scripts.
     local MATCHINGLIST=''
 
@@ -62,7 +62,8 @@ function render_getActionsIdentity {
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
-        # render_doIdentityImages execution.
+        # render_doIdentityImages execution. Otherwise, undesired
+        # concatenations may occur.
         local -a ACTIONS
         local -a BASEACTIONS
         local -a POSTACTIONS
@@ -81,20 +82,22 @@ function render_getActionsIdentity {
         # configuration scripts and make required transformations.
         render_checkConfig
 
-        # Re-define action value (ACTIONVAL) based on pre-rendering
-        # configuration script path value. Otherwise massive rendering
-        # may fail. Functions like renderImage need to know the exact
-        # artwork path (that is, where images will be stored).
+        # Redefine action value (ACTIONVAL) based on pre-rendering
+        # configuration script path value. Otherwise, massive
+        # rendering may fail. Functions like renderImage need to know
+        # the exact artwork path (that is, where images will be
+        # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
             -e 's!Scripts/Bash/Functions/Render/Config/Identity/!Identity/!' \
             -e "s!Themes/!Themes/Motifs/$(cli_getThemeName)/!"))
 
-        # Re-define artwork identification.
+        # Redefine artwork identification.
         ARTCOMP=$(echo $ACTIONVAL | cut -d/ -f6-)
 
-        # Remove motif name from artwork identification in order to reuse
-        # motif artwork identification. There is not need to create one
-        # artwork identification for each motif directory structure.
+        # Remove motif name from artwork identification in order to
+        # reuse motif artwork identification. There is not need to
+        # create one artwork identification for each motif directory
+        # structure if we can reuse just one.
         if [[ $ARTCOMP =~ "Themes/Motifs/$(cli_getThemeName)/" ]];then
             ARTCOMP=$(echo $ARTCOMP | sed -r "s!Themes/Motifs/$(cli_getThemeName)/!Themes/!")
         fi
@@ -103,7 +106,7 @@ function render_getActionsIdentity {
         # configuration file.
         render_doIdentity
 
-        # Unset artwork-specific actions so they can be re-defined by
+        # Unset artwork-specific actions so they can be redefined by
         # artwork-specific pre-rendering configuration scripts. This
         # is required in massive rendering. For example, if you say
         # centos-art.sh to render the whole Distro directory it first

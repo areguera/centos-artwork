@@ -30,13 +30,10 @@ function render_getIdentityOutputDir {
     # under identity entry structure.
     IMG=$ACTIONVAL
 
-    # But if Img/ directory exists, use it instead.
+    # But if Img/ or Txt/ directory exists, use it instead.
     if [[ -d $ACTIONVAL/Img ]]; then
         IMG=$ACTIONVAL/Img
-    fi
-
-    # But if Txt/ directory exists, use it instead.
-    if [[ -d $ACTIONVAL/Txt ]]; then
+    elif [[ -d $ACTIONVAL/Txt ]]; then
         IMG=$ACTIONVAL/Txt
     fi
 

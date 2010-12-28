@@ -41,10 +41,10 @@ function render_getIdentityDefs {
         TRANSLATION=`gettext "None"`
     fi
 
-    # Check translation file existence. This may seems silly
+    # Check translation file existence. This may seem unnecessary
     # because we already built the file list using existent files.
-    # But what happen if any of the files already loaded are
-    # removed after being loaded? well, just skip it.
+    # But what happen if any of the files already loaded are removed
+    # after being loaded? well, just skip it.
     if [[ "$TRANSLATION" == 'None' ]];then
         cli_printMessage "`gettext "None"`" "AsTranslationLine"
     else
@@ -184,8 +184,9 @@ function render_getIdentityDefs {
   
         # Possible configuration 2.1: If not design template was found
         # with the .svg extension, lets try design template without
-        # extension. This configuration is useful for when rendering
-        # some plain text files.
+        # extension. This configuration is useful for rendering plain
+        # text files that doesn't use an extension (e.g., see inside
+        # `trunk/Identity/Release' directory structure).
         #
         #  template: \
         #     translation1.sed \
@@ -235,8 +236,7 @@ function render_getIdentityDefs {
         # prevent an empty template from being used. It is a missing
         # assignment definition in the pre-rendering script surely.
         if [[ "$TEMPLATE" == '' ]];then
-            cli_printMessage "`eval_gettext "No template defined for \\\$FILE."`"
-            cli_printMessage "`gettext "Check the matching list (render_getIdentityMatchinglist) script."`"
+            cli_printMessage "`eval_gettext "There is no design template defined for \\\`\\\$FILE'."`" 'AsErrorLine'
             cli_printMessage "$(caller)" "AsToKnowMoreLine"
         fi
     
@@ -270,7 +270,7 @@ function render_getIdentityDefs {
          fi
     fi
     
-    # Re-define design template using absolute path.
+    # Redefine design template using absolute path.
     if [[ -f $SVG/$(basename $TEMPLATE) ]];then
         # Generally, template files are stored one level inside
         # Tpl/ directory.

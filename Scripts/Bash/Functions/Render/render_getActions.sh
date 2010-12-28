@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_getActions.sh -- This function initializes documentation
-# functionalities, using action value as reference.
+# render_getActions.sh -- This function interprets arguments passed to
+# render functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -26,43 +26,89 @@
 
 function render_getActions {
 
-    # Evaluate action name and define which actions does centos-art.sh
-    # script supports.
-    case $ACTIONNAM in
+    # Define short options we want to support.
+    local ARGSS="d:f:"
 
-        --directory )
+    # Define long options we want to support.
+    local ARGSL="directory:,filter:"
 
-            if [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Identity/.+$' ]];then
+    # Parse arguments using getopt(1) command parser.
+    cli_doParseArguments
 
-                # Define identity rendering support.
-                render_getActionsIdentity
+    # Reset positional parameters using output from (getopt) argument
+    # parser.
+    eval set -- "$ARGUMENTS"
 
-            elif [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Translations/.+$' ]];then
+    # Look for options passed through command-line.
+    while true; do
 
-                # Define translation rendering support.
-                render_getActionsTranslations
+        case "$1" in
 
-            else
+            -d|--directory )
 
-                cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
-                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                # Define action value.
+                ACTIONVAL="$2"
 
-            fi
-            ;;
+                # Check action value. Be sure the action value matches
+                # the convenctions defined for source locations inside
+                # the working copy.
+                cli_checkRepoDirSource
 
-        * )
+                # Define action name using action value as reference.
+                if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/.+$" ]];then
+                    ACTIONNAM="${FUNCNAM}_getActionsIdentity"
+                elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Translations/.+$" ]];then
+                    ACTIONNAM="${FUNCNAM}_getActionsTranslations"
+                else
+                    cli_printMessage "`eval_gettext "Cannot process the path \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
+                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                fi
 
-            cli_printMessage "`gettext "The option provided is not valid."`" 'AsErrorLine'
+                # Look for sub-options passed through command-line.
+                while true; do
+                    case "$3" in
+                        -f|--filter )
+                            # Redefine regular expression.
+                            REGEX="$4"
+                            # Rotate positional parameters
+                            shift 4
+                            ;;
+                        * )
+                            # Break sub-options loop.
+                            break
+                            ;;
+                    esac
+                done
 
-            if [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Identity/.+$' ]];then
-                cli_printMessage "$ACTIONVAL" 'AsToKnowMoreLine'
-            elif [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/Translations/.+$' ]];then
-                cli_printMessage "$ACTIONVAL" 'AsToKnowMoreLine'
-            else
-                cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-            fi
-            ;;
+                # Break options loop.
+                break
+                ;;
 
-    esac
+            * )
+                # Break options loop.
+                break
+        esac
+    done
+
+    # Verify action value variable.
+    if [[ $ACTIONVAL == '' ]];then
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
+    # Redefine pre-rendering configuration directory. Pre-rendering
+    # configuration directory is where we store render.conf.sh
+    # scripts. The render.conf.sh scripts define how each artwork is
+    # rendered.
+    local ARTCONF=$(echo "$ACTIONVAL" \
+        | sed -r -e 's!/(Identity|Translations)!/Scripts/Bash/Functions/Render/Config/\1!' \
+                 -e "s!Motifs/$(cli_getThemeName)/?!!")
+
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`eval_gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
 }

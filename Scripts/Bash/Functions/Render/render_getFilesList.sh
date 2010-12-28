@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_getFilesList.sh -- This function re-defines list of
-# files that will be rendered using matching list and translation path
+# render_getFilesList.sh -- This function redefines the list of files
+# that will be rendered using matching list and translation path
 # information as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -26,31 +26,6 @@
 # ----------------------------------------------------------------------
 
 function render_getFilesList {
-
-    # Define short options we want to support.
-    local ARGSS=""
-
-    # Define long options we want to support.
-    local ARGSL="filter:"
-
-    # Parse arguments using getopt(1) command parser.
-    cli_doParseArguments
-
-    # Reset positional parameters using output from (getopt) argument
-    # parser.
-    eval set -- "$ARGUMENTS"
-
-    # Define action to take for each option passed.
-    while true; do
-        case "$1" in
-            --filter )
-               REGEX="$2" 
-               shift 2
-               ;;
-            * )
-                break
-        esac
-    done
 
     # Define source location to look files for. In order to define
     # source location we evaluate both matching list and translation

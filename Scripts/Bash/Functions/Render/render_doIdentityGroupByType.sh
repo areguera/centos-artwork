@@ -81,7 +81,7 @@ function render_doIdentityGroupByType {
         # Define file types for last-rendering action.
         FORMATS=$2
     else
-        cli_printMessage "`gettext "groupByType: Wrong invokation."`"
+        cli_printMessage "`gettext "groupByType: Wrong invokation."`" 'AsErrorLine'
         cli_printMessage $(caller) "AsToKnowMoreLine"
     fi
 
@@ -92,7 +92,7 @@ function render_doIdentityGroupByType {
     # Check file types passed from render.conf.sh pre-rendering
     # configuration script.
     if [[ "$FORMATS" == "" ]];then
-        cli_printMessage "`gettext "There is no file type information to process."`"
+        cli_printMessage "`gettext "There is no file type information to process."`" 'AsErrorLine'
         cli_printMessage $(caller) "AsToKnowMoreLine"
     fi
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityTextFormats.sh -- This function give format to
+# render_doIdentityTextFormats.sh -- This function gives format to
 # text files.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
@@ -26,8 +26,11 @@
 
 function render_doIdentityTextFormats {
 
-   # Get file path.
+   # Define file path.
    local FILE="$1"
+
+   # Define temporal file path.
+   local TMPFILE=$(cli_getTemporalFile "${FILE}")
 
    # Get action to do over text file.
    local OPTIONS=$(render_getConfOption "$2" '2-')
@@ -48,8 +51,8 @@ function render_doIdentityTextFormats {
       # Apply OPTIONS to plain text files. Doing the same with html
       # (and similar) files can mess up the markup, so apply format
       # options to plain text only.
-      cat $FILE | fmt $(echo -n "$OPTIONS") > ${FILE}.fmt
-      mv ${FILE}.fmt $FILE
+      cat $FILE | fmt $(echo -n "$OPTIONS") > ${TMPFILE}
+      mv ${TMPFILE} ${FILE}
       ;;
 
    esac

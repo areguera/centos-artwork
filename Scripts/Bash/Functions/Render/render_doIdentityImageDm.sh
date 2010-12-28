@@ -69,7 +69,7 @@ function render_doIdentityImageDm {
     elif [[ $DM =~ '^KDE$' ]];then
         TPL=/home/centos/artwork/trunk/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/KDM
     else
-        cli_printMessage "`eval_gettext "The display manager \\\"\\\$DM\\\" is not supported."`"
+        cli_printMessage "`eval_gettext "The display manager \\\`\\\$DM' is not supported."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
@@ -82,7 +82,7 @@ function render_doIdentityImageDm {
 
     # Check sanitated screen resolutions.
     if [[ "$RESOLUTIONS" == '' ]];then
-        cli_printMessage "`gettext "There is no resolution information to process."`"
+        cli_printMessage "`gettext "There is no resolution information to process."`" 'AsErrorLine'
         cli_printMessage $(caller) "AsToKnowMoreLine"
     fi
 
@@ -96,7 +96,7 @@ function render_doIdentityImageDm {
 
     # Check release numbers list.
     if [[ "$VERSIONS" == '' ]];then
-        cli_printMessage "`gettext "There is no release number to work with"`" 
+        cli_printMessage "`gettext "There is no release number to work with"`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 

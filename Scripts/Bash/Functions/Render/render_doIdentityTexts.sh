@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_doIdentityTexts.sh -- This function provides text rendering
-# feature to centos-art.sh script.
+# render_doIdentityTexts.sh -- This function renders text-based
+# identity contents.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 

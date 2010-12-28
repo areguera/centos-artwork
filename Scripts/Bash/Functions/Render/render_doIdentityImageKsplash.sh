@@ -32,7 +32,7 @@ function render_doIdentityImageKsplash {
     local KSPLASH_TOP=''
     local KSPLASH_PREVIEW=''
     local RELDIRS=$(find $ACTIONVAL -regextype posix-egrep -maxdepth 1 \
-        -type d -regex "^.*/$RELEASE_FORMAT$" | egrep $REGEX)
+        -type d -regex "^.*/${RELEASE_FORMAT}$" | egrep $REGEX)
 
     # Define font file used to render Preview.png bottom text.
     local KSPLASH_PREVIEW_FONT=/home/centos/artwork/trunk/Identity/Fonts/Ttf/DejaVuLGCSans-Bold.ttf

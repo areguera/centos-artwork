@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_doIdentity.sh -- This function provides identity
-# rendering features for centos-art.sh script.
+# render_doIdentity.sh -- This function initiates rendering features
+# taking BASEACTIONS as reference.
 #
 # Copyright (C) 2009, 2010 Alain Reguera Delgado
 # 
@@ -36,27 +36,27 @@ function render_doIdentity {
     local FILTER=''
     local FILES=''
 
-    # Re-define absolute path to artwork's related translation entry.
+    # Redefine absolute path to artwork's related translation entry.
     render_getIdentityTranslationDir
 
-    # Re-define absolute path to artwork's related design template
+    # Redefine absolute path to artwork's related design template
     # directory. By default design templates are stored in the Tpl/
     # directory which is stored in the workplace's root. 
     render_getIdentityTemplateDir
 
-    # Re-define absolute path to artwork's related final output
+    # Redefine absolute path to artwork's related final output
     # directory. 
     render_getIdentityOutputDir
 
-    # Re-define parent directory for current workplace.
+    # Redefine parent directory for current workplace.
     PARENTDIR=$(basename $ACTIONVAL)
 
-    # Re-define directory path used as reference to build the list of
+    # Redefine directory path used as reference to build the list of
     # files that will be rendered.
     render_getFilesList
 
     # Define which type of features does centos-art.sh script is able
-    # to performs.
+    # to perform.
     for ACTION in "${BASEACTIONS[@]}"; do
 
         case $ACTION in
@@ -73,6 +73,6 @@ function render_doIdentity {
 
         esac
 
-    done 
+    done
 
 }

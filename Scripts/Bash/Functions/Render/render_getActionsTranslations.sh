@@ -43,8 +43,8 @@ function render_getActionsTranslations {
     # processing already has render.conf.sh configuration scripts,
     # inside its trunk/Scripts/Bash/Config/... asociated strucutre. If
     # such directory entry exists, the translation rendering should
-    # end immediatly on at this point because it is surely not a
-    # release-specif translation rendering.
+    # end immediatly at this point because it is surely not a
+    # release-specific translation rendering.
     if [[ -d $ARTCONF ]];then
         for FILE in $(find $ARTCONF -name 'render.conf.sh');do
             # Initialize configuration function.
@@ -52,13 +52,13 @@ function render_getActionsTranslations {
             # Execute configuration function
             render_loadConfig
         done
-        # In this point, an entry inside trunk/Scripts/Bash/Config/...
+        # At this point, an entry inside trunk/Scripts/Bash/Config/...
         # was found for the directory being processed. If the
         # render.conf.sh files were there, they were executed. Because
         # render.conf.sh has to do with very specificy translation
         # rendering features (e.g., brands translation rendering),
         # that doesn't match release-specifc rendering translation
-        # (the one done after this block), we need to end the
+        # (the one done after this block). So, we need to end the
         # translation rendering right here.
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
@@ -77,7 +77,7 @@ function render_getActionsTranslations {
     local TRANSLATION=''
     local FILE=''
 
-    # Define warnning message about the nature of release notes
+    # Define warning message about the nature of release notes
     # translation files. This message is included in the very top of
     # every translation file.
     local MESSAGE="\
@@ -97,7 +97,7 @@ function render_getActionsTranslations {
     # release-specific directories.  Otherwise, all release-specific
     # translations directories available in the current location will
     # be affected.
-    if [[ $REGEX =~ "^$RELEASE_FORMAT$" ]];then
+    if [[ $REGEX =~ "^${RELEASE_FORMAT}$" ]];then
         RELEASES=$ACTIONVAL/$REGEX
 
     # Re-define releases using regular expression value. If you need
@@ -105,7 +105,7 @@ function render_getActionsTranslations {
     # 5, 5.1, 5.2, and 6.0), you can use a command similar to
     # 'centos-art render --translation=./ --filter=5,5.1,5.2,6.0' to
     # create them all using just one command.
-    elif [[ $REGEX =~ "^($RELEASE_FORMAT,?)+" ]];then
+    elif [[ $REGEX =~ "^(${RELEASE_FORMAT},?)+" ]];then
         for RELEASE in $(echo $REGEX | tr ',' ' ');do
             RELEASES="$RELEASES $RELEASE"
         done
@@ -114,7 +114,7 @@ function render_getActionsTranslations {
     # use them all.
     else
         RELEASES=$(find $ACTIONVAL -regextype posix-egrep \
-            -regex "^$ACTIONVAL/$RELEASE_FORMAT$" | sort)
+            -regex "^${ACTIONVAL}/${RELEASE_FORMAT}$" | sort)
     fi
 
     # At this point, if there isn't release-specific directories
