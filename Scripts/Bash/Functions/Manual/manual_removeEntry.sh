@@ -28,7 +28,7 @@ function manual_removeEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRIES=''
-    local ENTRIES_COUNTER=0
+    local ENTRIES_COUNTER=1
     local LOCATION=''
 
     # Check changes in the working copy.
@@ -36,8 +36,7 @@ function manual_removeEntry {
 
     # Check if the entry has been already removed.
     if [[ ! -f $ENTRY ]];then
-        cli_printMessage "`gettext "The following entry doesn't exist:"`"
-        cli_printMessage "$ENTRY" "AsResponseLine"
+        cli_printMessage "`eval_gettext "The entry \\\`\\\$ENTRY' doesn't exist."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
@@ -71,9 +70,8 @@ function manual_removeEntry {
     ENTRIES=$(echo "$ENTRIES" | tr ' ' "\n" | sort -r | uniq)
 
     # Show a verification message before doing anything.
-    cli_printMessage "`ngettext "The following entry will be removed:" \
-        "The following entries will be removed:" \
-        $ENTRIES_COUNTER`"
+    cli_printMessage "`ngettext "The following entry will be deleted" \
+        "The following entries will be deleted" $ENTRIES_COUNTER`:"
  
     # Show list of affected entries.
     for ENTRY in $ENTRIES;do
@@ -86,7 +84,7 @@ function manual_removeEntry {
     for ENTRY in $ENTRIES;do
 
         # Show which entry is being removed.
-        cli_printMessage "$ENTRY" "AsRemovingLine"
+        cli_printMessage "$ENTRY" "AsDeletingLine"
 
         # Remove documentation entry. At this point, documentation
         # entry can be under version control or not versioned at all.
@@ -119,7 +117,7 @@ function manual_removeEntry {
             # have changes. We don't remove a versioned documentation
             # entry with changes. So print a message about it and stop
             # script execution.
-            cli_printMessage "`gettext "The documentation entry cannot be removed."`" 'AsErrorLine'
+            cli_printMessage "`eval_gettext "The entry \\\`\\\$ENTRY' cannot be deleted."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
 
         fi
