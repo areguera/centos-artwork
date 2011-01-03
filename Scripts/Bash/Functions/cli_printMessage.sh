@@ -72,8 +72,8 @@ function cli_printMessage {
                 | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
-        'AsRemovingLine' )
-            echo "`gettext "Removing"`: $MESSAGE" \
+        'AsDeletingLine' )
+            echo "`gettext "Deleting"`: $MESSAGE" \
                 | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
             ;;
 
