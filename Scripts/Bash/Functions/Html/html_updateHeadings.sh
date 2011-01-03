@@ -57,9 +57,6 @@ function html_updateHeadings {
     # to save html action name, action value, and heading title.
     PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
 
-    # Redefine regular expression to match html files only.
-    REGEX=$(echo "${REGEX}.*\.(html|htm)")
-
     # Define list of files to process.
     cli_getFilesList
 

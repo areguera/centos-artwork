@@ -83,7 +83,10 @@ function html_getActions {
     if [[ $ACTIONVAL == '' ]];then
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
-    
+
+    # Redefine regular expression to match html files only.
+    REGEX=$(echo "${REGEX}.*\.(html|htm)")
+
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
