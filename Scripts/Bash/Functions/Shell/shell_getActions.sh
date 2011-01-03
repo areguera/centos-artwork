@@ -3,7 +3,7 @@
 # shell_getActions.sh -- This function interpretes arguments passed to
 # `shell' functionality and calls actions accordingly.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -87,6 +87,9 @@ function shell_getActions {
     if [[ $ACTIONVAL == '' ]];then
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Re-define regular expression to match shell files only.
+    REGEX=$(echo "${REGEX}.*\.(bash|shell|sh)")
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
