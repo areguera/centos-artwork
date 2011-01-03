@@ -32,8 +32,8 @@ export TEXTDOMAINDIR=/home/centos/artwork/trunk/Scripts/Bash/Locale
 # Initialize centos-art.sh personal information.
 export CLINAME='centos-art.sh'
 export CLIVERSION='Beta'
-export CLIDESCRIP="`gettext "Automate frequent tasks inside CentOS Artwork Repository."`"
-export CLICOPYRIGHT="Copyright (C) 2009-2010 Alain Reguera Delgado"
+export CLIDESCRIP="`gettext "The CentOS Artwork Repository automation tool."`"
+export CLICOPYRIGHT="Copyright (C) 2009-2011 Alain Reguera Delgado"
 
 # Initialize centos-art.sh function scripts.
 FILES=$(ls /home/centos/artwork/trunk/Scripts/Bash/Functions/{cli,cli_*}.sh)
