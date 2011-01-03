@@ -123,60 +123,73 @@ following values are recognized by @file{centos-art.sh} script:
 If no one of these values is set in @env{EDITOR} environment variable,
 @file{centos-art.sh} uses @file{/usr/bin/vim} text editor by default. 
 
-@item TZ
-
-Default time zone representation.
-
-Time representation inside repository server is set to Coordinated
-Universal Time (UTC).  Time represetation inside repository working
-copies is set as their administrators personally define.  
-
-When repository working copies time representation be defined, it
-would be a very good convention to follow if working copies
-administrators would set their systems clock to use UTC.  Otherwise it
-would be difficult for working copies users to find out when changes
-were committed up to repository server exactly in time.
-
-@quotation
-@strong{Tip} Coordinated Univeral Time (UTC) representation can be
-configured when you install CentOS distribution; or later, runing the
-@command{system-config-date} command at a shell prompt from your
-graphical interface.
-@end quotation
-
-@quotation
-@strong{Note} If you set your system clock to use UTC representation,
-you also need to set the @env{TZ} environment variable inside
-@file{~/.bash_profile} as follows:
-@verbatim
-export TZ=UTC
-@end verbatim
-This is required in order for your terminal to display the correct
-time information of your zone, taking UTC representation as reference.
-@end quotation
-
 @item TEXTDOMAIN
 
-Default domain used to retrieve translated messages.  This value is
+Default domain used to retrieve translated messages.  This variable is
 set in @file{initFunctions.sh} and shouldn't be changed.
 
 @item TEXTDOMAINDIR
 
-Default directory used to retrieve translated messages. This value is
-set in @file{initFunctions.sh} and shouldn't be changed.
+Default directory used to retrieve translated messages.  This variable
+is set in @file{initFunctions.sh} and shouldn't be changed.
 
 @item LANG
 
-Default locale information. This value is set when you start your
-session and can be changed using the @samp{locale} functionality of
-@file{centos-art.sh} script (@pxref{trunk Scripts Bash Functions
-Locale}, for more information).
+Default locale information.
+
+This variable is initially set in the configuration process of CentOS
+distribution installer (i.e., Anaconda), specifically in the
+@samp{Language} step; or once installed using the
+@command{system-config-language} tool.
+
+The @file{centos-art.sh} script uses the @var{LANG} environment
+variable to know in which language the script messages are printed
+out.
+
+@item TZ
+
+Default time zone representation.
+
+This variable is initially set in the configuration process of CentOS
+distribution installer (i.e., Anaconda), specifically in the
+@samp{Date and time} step; or once installed using the
+@command{system-config-date} tool.
+
+The @file{centos-art.sh} script doesn't use the @var{TZ} environment
+variable information at all. Instead, this variable is used by the
+system shell to show the time information according to your phisical
+location on planet Earth.  
+
+Inside your computer, the time information is firstly set in the BIOS
+clock (which may need correction), and later in the configuration
+process of CentOS distribution installer (or later, by any of the
+related configuration tools inside CentOS distribution).  Generally,
+setting time information is a straight-forward task and configuration
+tools available do cover most relevant location. However, if you need
+a time precision not provided by the configuration tools available
+inside CentOS distribution then, using @var{TZ} variable may be
+necessary.
+
+@quotation
+@strong{Convenction} In order to keep changes syncronized between
+central repository and its working copies: configure both repository
+server and workstations (i.e., the place where each working copy is
+set on) to use Coordinated Universal Time (UTC) as base time
+representation.  Later, correct the time information for your specific
+location using time zone correction.
+@end quotation
+
+The format of @var{TZ} environment variable is described in
+@file{tzset(3)} manual page.
+
 @end table
 
 @subsection Usage
 
-@table @samp
+@table @command
+
 @item centos-art verify --packages
+
 Verify required packages your workstation needs in order to run the
 @file{centos-art.sh} script correctly.  If there are missing packages,
 the @file{centos-art.sh} script asks you to confirm their
@@ -189,6 +202,7 @@ already installed in your workstation, the message @samp{The required
 packages are already installed.} is output for you to know. 
 
 @item centos-art verify --links
+
 Verify required links your workstation needs in order to run the
 centos-art command correctly.  If any required link is missing, the
 @command{centos-art.sh} script asks you to confirm their installation.
@@ -211,6 +225,7 @@ install the link on its place.
 
 @item centos-art verify --environment
 @itemx centos-art verify --environment --filter='regex'
+
 Output a brief description of environment variables used by
 @file{centos-art.sh} script. 
 
@@ -218,7 +233,8 @@ If @samp{--filter} option is provided, output is reduced as defined in
 the @samp{regex} regular expression value. If @samp{--filter} option
 is specified but @samp{regex} value is not, the @file{centos-art.sh}
 script outputs information as if @samp{--filter} option had not been
-provided at all.
+provided at all.  
+
 @end table
 
 @subsection See also

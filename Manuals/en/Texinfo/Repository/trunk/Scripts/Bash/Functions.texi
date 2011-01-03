@@ -336,6 +336,18 @@ When first argument is not provided, the @file{centos-art.sh} script
 immediatly ends its execution.
 @end defvar
 
+@defvar FUNCDIR
+@end defvar
+
+@defvar FUNCDIRNAME
+@end defvar
+
+@defvar FUNCSCRIPT
+@end defvar
+
+@defvar FUNCCONFIG
+@end defvar
+
 @defvar ACTIONNAM
 Define action name.
 
@@ -356,24 +368,9 @@ immediatly ends its execution.
 Define action value.
 
 Action values are associated to just one action name. Action values
-contain the repository entry over which its associated action will be
-performed in.  Repository entries can be directories, files, or URLs
-refering the repository structure.
-
-When action value is not specified as repository entry, the
-@file{centos-art.sh} script evaluates the current directory it was
-executed from. If such directory is under the repository structure
-(i.e., @file{/home/centos/artwork/}), the @file{centos-art.sh} script
-uses that directory as value to @var{ACTIONVAL} variable. Otherwise,
-if outside the repository structure, the @file{centos-art.sh} script
-prints the message @samp{The path provided can't be processed.} and,
-after it, immediatly ends script execution.
-
-Default action value is passed as second argument in
-@file{centos-art.sh} command-line interface. For example, in the
-command @samp{centos-art render --entry=path/to/dir --filter=regex},
-the @var{ACTIONVAL} passed to @file{centos-art.sh} script is
-@option{path/to/dir}.
+contain the working copy entry over which its associated action will be
+performed in.  Working copy entries can be files or directories inside
+the working copy.
 @end defvar
 
 @defvar REGEX
@@ -524,27 +521,11 @@ The action value variable can take one of the following values:
 @enumerate
 @item Path to one directory inside the local working copy,
 @item Path to one file inside the local working copy,
-@item URL to one directory inside the remote central repository,
-@item URL to one file inside the remote central repository.
 @end enumerate
 
 If another value different from that specified above is passed to
 action value variable, the @file{centos-art.sh} script prints an error
-message and ends script execution.  Notice that when you provide a URL
-there is no verification in order to determine the directory or file
-you refered on it is valid or not.  That verification is done by the
-command that receives the location inside the functionality. The only
-verification @file{centos-art.sh} script makes with URL is granting
-that they begin with @samp{https://projects.centos.org/svn/artwork}.
-
-@code{cli_checkActionArguments} is called from
-@code{cli_getArguments} function and, probably, there is not
-other use for @code{cli_checkActionArguments} but to be called from
-@code{cli_getArguments} function.
-
-Update @code{cli_checkActionArguments} function if you need to improve
-action value (@var{ACTIONVAL}) variable input validation.
-
+message and ends script execution.
 @end defun
 
 @defun cli_checkFiles FILE [TYPE]
