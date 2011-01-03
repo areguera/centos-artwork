@@ -38,16 +38,14 @@ function path_doCopy {
     fi
 
     # Define source locations. Start with parent directory at position
-    # zero and continue with parent directory related parallel
-    # directories.
+    # zero and continue with related parallel directories.
     SRC[0]=$ACTIONVAL
     SRC[1]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${SRC[0]}" "--relative")").texi
     SRC[2]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Scripts/Bash/Functions/Render/Config")
     SRC[3]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Translations")
 
     # Define target locations. Start with parent directory at position
-    # zero and continue with parent directory related parallel
-    # directories.
+    # zero and continue with related parallel directories.
     DST[0]=$TARGET
     DST[1]=$(cli_getRepoDirParallel "${DST[0]}" "$(cli_getRepoTLDir "${DST[0]}")/Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${DST[0]}" "--relative")").texi
     DST[2]=$(cli_getRepoDirParallel "${DST[0]}" "$(cli_getRepoTLDir "${DST[0]}")/Scripts/Bash/Functions/Render/Config")
@@ -71,7 +69,7 @@ function path_doCopy {
         COUNT=$(($COUNT + 1))
     done
 
-    # Request confirmation question to continue with action.
+    # Request confirmation before continue with action.
     cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
 
     # Reset counter.
