@@ -61,7 +61,7 @@ function path_doCopy {
 
     # Print preamble with affected entries.
     cli_printMessage "`ngettext "The following entry will be created" \
-        "The following entries will be created" "${#DST[*]}"`"
+        "The following entries will be created" "${#DST[*]}"`:"
     while [[ $COUNT -lt ${#DST[*]} ]];do
         # Print affected entry.
         cli_printMessage "${DST[$COUNT]}" 'AsResponseLine'
@@ -83,8 +83,8 @@ function path_doCopy {
         if [[ -f ${SRC[$COUNT]} ]];then
             if [[ ! -d $(dirname ${DST[$COUNT]}) ]];then
                 mkdir -p $(dirname ${DST[$COUNT]})
-                svn add $(dirname ${DST[$COUNT]}) --quiet
             fi
+            svn add $(dirname ${DST[$COUNT]}) --quiet
         fi
 
         # Print action message.
