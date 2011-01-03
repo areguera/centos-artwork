@@ -3,7 +3,7 @@
 # verify_doLinkInstall.sh -- This function receives a list of missing
 # links and installs them using `ln'.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

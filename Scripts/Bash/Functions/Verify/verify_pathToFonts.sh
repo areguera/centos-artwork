@@ -6,7 +6,7 @@
 # come with CentOS distribution so create a symbolic link (from the
 # one we have inside repository) to make it available if it isn't yet.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

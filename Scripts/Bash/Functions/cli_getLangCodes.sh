@@ -3,7 +3,7 @@
 # cli_getLangCodes.sh -- This function outputs a list with language
 # codes as defined in ISO639 standard.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

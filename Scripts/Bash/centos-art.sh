@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# centos-art.sh -- The CentOS Artwork Repository command line util. 
+# centos-art.sh -- The CentOS Artwork Repository automation tool.
 #
 # This is the first script that centos-art command initiates. This
 # script contains a serie of desition about which configuration script
@@ -8,12 +8,12 @@
 # absolute path from which the command centos-art was initially called
 # is used as reference.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
 # 
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of

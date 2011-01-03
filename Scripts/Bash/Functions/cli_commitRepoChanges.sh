@@ -6,7 +6,7 @@
 # whatever function that makes changes to files inside the working
 # copy. It is better to commit small changes than long ones.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

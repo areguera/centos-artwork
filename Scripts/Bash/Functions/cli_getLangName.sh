@@ -3,7 +3,7 @@
 # cli_getLangName.sh -- This function reads one language locale code
 # in the format LL_CC and outputs its language name.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

@@ -5,7 +5,7 @@
 # function is useful to keep documentation structure syncronized with
 # repository directory structure. 
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

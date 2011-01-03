@@ -5,7 +5,7 @@
 # languages the centos-art.sh script is available in, the last
 # translators and revision dates.
 #
-# Copyright (C) 2009, 2010 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
