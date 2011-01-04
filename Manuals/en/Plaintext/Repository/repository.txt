@@ -4259,15 +4259,15 @@ levels from path, in order to build the parallel directory used to
 retrived translations, and pre-rendering configuration scripts required
 by `render' functionality.
 
-   Another example where parallel directory removes the uncommon path
-information is when we use the `manual' functionality. This time,
-`centos-art.sh' script uses parallel directory information (without
-uncommon directory levels) to build the documentation entry required by
-Texinfo documentation system, inside the repository.
-
 
 
 Figure 3.17: Parallel directories removing uncommon information.
+
+   Another example of parallel directory is the documentation structure
+created by `manual' functionality. This time, `centos-art.sh' script
+uses parallel directory information with uncommon directory levels to
+build the documentation entry required by Texinfo documentation system,
+inside the repository.
 
    Othertimes, parallel directories may add uncommon information to
 their paths. This is the case we use to create branches and tags. When
@@ -4296,18 +4296,18 @@ Figure 3.19: Wrong construction of parallel directories.
 3.41.2.5 Syncronizing path information
 ......................................
 
-Creating parallel directories is very useful to keep repository
-organized but introduce some complications.  For instance, consider
-what would happen to functionalities like `manual' (`trunk Scripts Bash
-Functions Manual') that rely on parent directory structures to create
+Parallel directories are very useful to keep repository organized but
+introduce some complications.  For instance, consider what would happen
+to functionalities like `manual' (`trunk Scripts Bash Functions
+Manual') that rely on parent directory structures to create
 documentation entries (using parallel directory structures) if one of
 those parent directory structures suddenly changes after the
 documentation entry has been already created for it?
 
-   If that is the case, functionalities like `manual' may confuse
-themselves if path information is not updated to reflect the relation
-with its parent directory.  Such functionalities work with parent
-directory structure as reference; if a parent directory changes, the
+   In such cases, functionalities like `manual' may confuse themselves
+if path information is not updated to reflect the relation with its
+parent directory.  Such functionalities work with parent directory
+structure as reference; if a parent directory changes, the
 functionalities dont't even note it because they work with the last
 parent directory structure available in the repository, no matter what
 it is.
@@ -4319,41 +4319,34 @@ long as you get your hands into the documentation directory structure
 (`trunk/Manuals') and change what must be changed to match the new
 parent directory structure.
 
-   There is no way for `manual', and similar functionalities that use
-parent directories as reference, to know when and how directory
-movements take place inside the repository. Such information is
-available only when movement actions, like thoses achived by `rm' or
-`mv' commands, take place inside the repository. So, is there, at the
-moment of moving files, when we need to syncronize parallel directories
-with their unique parent directory structure.
+   There is no immediate way for `manual', and similar functionalities
+that use parent directories as reference, to know when and how
+directory movements take place inside the repository. Such information
+is available only when the file movement itself takes place inside the
+repository. So, is there, at the moment of moving files, when we need
+to syncronize parallel directories with their unique parent directory
+structure.
 
-   Syncronizing parallel directories with their respecitive parent
-directory implies moving files inside the repository, i.e. we need to,
-firstly, rebuild the path information for each parallel directory
-inside the repository, using the current path of its parent directory
-as reference, and later, use the new path information to move each old
-parallel directory from its old location to its new location based on
-an updated path information.
-
-     *Warning* Even Subversion supports URL to refere sources and
-     destinations of resources inside the central repository, the
-     `centos-art.sh' script does not.  The `centos-art.sh' script is
-     designed to work inside working copies only.
+     *Warning* There is not support for URL reference inside
+     `centos-art.sh' script.  The `centos-art.sh' script is designed to
+     work with local files inside the working copy only.
 
    As CentOS Artwork Repository is built over a version control system,
 file movements inside the repository are considered repository changes.
 In order for these repository changes to be versioned, we need to,
-firstly, add changes related files into version control system, and
-later, use commands from the version control system to move those files
-already versioned.  This configuration makes possible for everyone to
-know about changes details inside the repository; and if needed, revert
-or update them back to a previous revision.
+firstly, add changes into the version control system, commit them, and
+later, perform movement actions using version control system commands.
+This configuration makes possible for everyone to know about changes
+details inside the repository; and if needed, revert or update them
+back to a previous revision.
 
-   Finally, once all file corrections have been already made, the
-syncronization action takes care of updating path references inside
-related files. Updating path references inside related files is
-specially important for documentation files where documentation nodes
-are built using repository path information as reference.
+   Finally, once all path information has been corrected, it is time to
+take care of information inside the files. For instance, considere what
+would happen if you make a reference to a documentation node, and later
+the documentation node you refere to is deleted. That would make
+Texinfo to produce error messages at export time. So, the
+`centos-art.sh' script needs to know when such changes happen, in a way
+they could be noted and handled without producing errors.
 
 3.41.2.6 What is the right place to store it?
 .............................................
@@ -4410,46 +4403,16 @@ concepts for.
 3.41.3 Usage
 ------------
 
-`centos-art path --copy=SRC --to=DST'
-     Use this command to duplicate `SRC' in working copy, remembering
-     history. In this command, `SRC' and `DST' can each be either a
-     working copy (WC) path or URL:
-
-    `WC -> WC'
-          Copy and schedule for addition (with history).
-
-    `WC -> URL _(Not supported)_'
-          Immediately commit a copy of WC to URL.
-
-    `URL -> WC _(Not supported)_'
-          Check out URL into WC, schedule for addition.
-
-    `URL -> URL _(Not supported)_'
-          Complete server-side copy;  used to branch and tag.
-
-`centos-art path --move=SRC --to=DST'
-
-    `WC -> WC'
-          Move and schedule for addition (with history).
-
-    `URL -> URL _(Not supported)_'
-          Complete server-side rename.
+`centos-art path --copy='SRC' --to='DST''
+     Copy `SRC' to `DST' and schedule `DST' for addition (with
+     history).  In this command, `SRC' and `DST' are both working copy
+     (WC) entries.
 
 `centos-art path --delete='SRC''
-     Use this command to remove files and directories from version
-     control.  In this command, `SRC' can be a working copy (WC) path
-     or URL.
+     Delete `DST'. In order for this command to work the file or
+     directory you intend to delete should be under version control
+     first.  In this command, `SRC' is a working copy (WC) entry.
 
-    `WC'
-          Each item specified by a PATH is scheduled for deletion upon
-          the next commit.  Files, and directories that have not been
-          committed, are immediately removed from the working copy.
-          PATHs that are, or contain, unversioned or modified items
-          will not be removed unless the `--force' option is given.
-
-    `URL _(Not supported)_'
-          Each item specified by a URL is deleted from the repository
-          via an immediate commit.
 
 3.41.4 See also
 ---------------
@@ -6290,24 +6253,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  389)
-Common translation files:                      See 3.50.2.5. (line 5719)
-How to render brands' translation files:       See 3.52.3.   (line 6023)
-How to render fonts' translation files:        See 3.54.3.   (line 6096)
-How to render translation files:               See 3.50.3.   (line 5889)
-Metadata maintainance:                         See 3.45.2.   (line 4849)
-Specific translation files:                    See 3.50.2.6. (line 5744)
+Common translation files:                      See 3.50.2.5. (line 5682)
+How to render brands' translation files:       See 3.52.3.   (line 5986)
+How to render fonts' translation files:        See 3.54.3.   (line 6059)
+How to render translation files:               See 3.50.3.   (line 5852)
+Metadata maintainance:                         See 3.45.2.   (line 4812)
+Specific translation files:                    See 3.50.2.6. (line 5707)
 tags:                                          See 2.        (line  392)
-Template translation files:                    See 3.50.2.4. (line 5549)
-Translation brands file names:                 See 3.52.2.1. (line 5980)
-Translation configuration scripts:             See 3.50.2.8. (line 5778)
-Translation entries:                           See 3.50.2.1. (line 5365)
-Translation files:                             See 3.50.2.3. (line 5481)
-Translation markers:                           See 3.50.2.2. (line 5446)
-Translation paths:                             See 3.50.2.1. (line 5365)
+Template translation files:                    See 3.50.2.4. (line 5512)
+Translation brands file names:                 See 3.52.2.1. (line 5943)
+Translation configuration scripts:             See 3.50.2.8. (line 5741)
+Translation entries:                           See 3.50.2.1. (line 5328)
+Translation files:                             See 3.50.2.3. (line 5444)
+Translation markers:                           See 3.50.2.2. (line 5409)
+Translation paths:                             See 3.50.2.1. (line 5328)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5778)
-Translation rendering:                         See 3.50.2.7. (line 5767)
-Translation rendering default functionality:   See 3.50.2.9. (line 5864)
+                                                             (line 5741)
+Translation rendering:                         See 3.50.2.7. (line 5730)
+Translation rendering default functionality:   See 3.50.2.9. (line 5827)
 trunk:                                         See 3.        (line  395)
 trunk Identity:                                See 3.1.      (line  398)
 trunk Identity Brands:                         See 3.2.      (line  818)
@@ -6356,27 +6319,27 @@ trunk Scripts Bash Functions Html:             See 3.38.     (line 3959)
 trunk Scripts Bash Functions Locale:           See 3.39.     (line 3980)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 4060)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 4081)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4460)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4481)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4659)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4831)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5019)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5249)
-trunk Scripts Perl:                            See 3.48.     (line 5278)
-trunk Scripts Python:                          See 3.49.     (line 5295)
-trunk Translations:                            See 3.50.     (line 5316)
-trunk Translations Identity:                   See 3.51.     (line 5918)
-trunk Translations Identity Brands:            See 3.52.     (line 5939)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6034)
-trunk Translations Identity Fonts:             See 3.54.     (line 6049)
-trunk Translations Identity Models:            See 3.55.     (line 6112)
-trunk Translations Identity Release:           See 3.56.     (line 6127)
-trunk Translations Identity Themes:            See 3.57.     (line 6142)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6157)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4423)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4444)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4622)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4794)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 4982)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5212)
+trunk Scripts Perl:                            See 3.48.     (line 5241)
+trunk Scripts Python:                          See 3.49.     (line 5258)
+trunk Translations:                            See 3.50.     (line 5279)
+trunk Translations Identity:                   See 3.51.     (line 5881)
+trunk Translations Identity Brands:            See 3.52.     (line 5902)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 5997)
+trunk Translations Identity Fonts:             See 3.54.     (line 6012)
+trunk Translations Identity Models:            See 3.55.     (line 6075)
+trunk Translations Identity Release:           See 3.56.     (line 6090)
+trunk Translations Identity Themes:            See 3.57.     (line 6105)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6120)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6178)
-trunk Translations Identity Widgets:           See 3.60.     (line 6271)
-Unused definitions:                            See 3.45.2.1. (line 4956)
+                                                             (line 6141)
+trunk Translations Identity Widgets:           See 3.60.     (line 6234)
+Unused definitions:                            See 3.45.2.1. (line 4919)
 List of Figures
 ***************
 
