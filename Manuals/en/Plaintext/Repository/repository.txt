@@ -4082,9 +4082,9 @@ following files:
 ------------
 
 This section exists to organize files related to `path'
-functiontionality of `centos-art.sh' script.  The `path' functionality
-of `centos-art.sh' script standardizes movement, syncronization,
-branching, tagging, and general file maintainance inside the repository.
+functiontionality.  The `path' functionality standardizes movement,
+syncronization, branching, tagging, and general file maintainance
+inside the repository.
 
 3.41.2 Description
 ------------------
@@ -4103,8 +4103,8 @@ layout changes unexpectedly, automation scripts may confuse themselves
 and stop doing what we expect from them to do.
 
    As convenction, inside CentOS Artwork Repository, we organize files
-and directories, related to CentOS corporate visual identity, under
-three top level directories named `trunk/', `branches/', and `tags/'.
+and directories related to CentOS corporate visual identity under three
+top level directories named: `trunk/', `branches/', and `tags/'.
 
 
 
@@ -4115,15 +4115,16 @@ development line of CentOS corporate visual identity. Inside `trunk/'
 directory structure, the CentOS corporate visual identity concepts are
 implemented using directories.  There is one directory level for each
 relevant concept inside the repository. The `trunk/' directory
-structure is mainly used to develop CentOS corporate visual identity.
+structure is mainly used to perform development tasks related to CentOS
+corporate visual identity.
 
    The `branches/' directory (*note branches::) oranizes parallel
 development lines to `trunk/' directory. The `branches/' directory is
 used to set points in time where develpment lines are devided one from
 another taking separte and idependent lives that share a common past
 from the point they were devided on. The `branches/' directory is
-mainly used to perform quality assurance on CentOS corporate visual
-identity.
+mainly used to perform quality assurance tasks related to CentOS
+corporate visual identity.
 
    The `tags/' directory (*note tags::) organizes parallel frozen lines
 to `branches/' directory.  The parallel frozen lines are immutable,
@@ -6253,24 +6254,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  389)
-Common translation files:                      See 3.50.2.5. (line 5682)
-How to render brands' translation files:       See 3.52.3.   (line 5986)
-How to render fonts' translation files:        See 3.54.3.   (line 6059)
-How to render translation files:               See 3.50.3.   (line 5852)
-Metadata maintainance:                         See 3.45.2.   (line 4812)
-Specific translation files:                    See 3.50.2.6. (line 5707)
+Common translation files:                      See 3.50.2.5. (line 5683)
+How to render brands' translation files:       See 3.52.3.   (line 5987)
+How to render fonts' translation files:        See 3.54.3.   (line 6060)
+How to render translation files:               See 3.50.3.   (line 5853)
+Metadata maintainance:                         See 3.45.2.   (line 4813)
+Specific translation files:                    See 3.50.2.6. (line 5708)
 tags:                                          See 2.        (line  392)
-Template translation files:                    See 3.50.2.4. (line 5512)
-Translation brands file names:                 See 3.52.2.1. (line 5943)
-Translation configuration scripts:             See 3.50.2.8. (line 5741)
-Translation entries:                           See 3.50.2.1. (line 5328)
-Translation files:                             See 3.50.2.3. (line 5444)
-Translation markers:                           See 3.50.2.2. (line 5409)
-Translation paths:                             See 3.50.2.1. (line 5328)
+Template translation files:                    See 3.50.2.4. (line 5513)
+Translation brands file names:                 See 3.52.2.1. (line 5944)
+Translation configuration scripts:             See 3.50.2.8. (line 5742)
+Translation entries:                           See 3.50.2.1. (line 5329)
+Translation files:                             See 3.50.2.3. (line 5445)
+Translation markers:                           See 3.50.2.2. (line 5410)
+Translation paths:                             See 3.50.2.1. (line 5329)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5741)
-Translation rendering:                         See 3.50.2.7. (line 5730)
-Translation rendering default functionality:   See 3.50.2.9. (line 5827)
+                                                             (line 5742)
+Translation rendering:                         See 3.50.2.7. (line 5731)
+Translation rendering default functionality:   See 3.50.2.9. (line 5828)
 trunk:                                         See 3.        (line  395)
 trunk Identity:                                See 3.1.      (line  398)
 trunk Identity Brands:                         See 3.2.      (line  818)
@@ -6319,27 +6320,27 @@ trunk Scripts Bash Functions Html:             See 3.38.     (line 3959)
 trunk Scripts Bash Functions Locale:           See 3.39.     (line 3980)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 4060)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 4081)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4423)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4444)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4622)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4794)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 4982)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5212)
-trunk Scripts Perl:                            See 3.48.     (line 5241)
-trunk Scripts Python:                          See 3.49.     (line 5258)
-trunk Translations:                            See 3.50.     (line 5279)
-trunk Translations Identity:                   See 3.51.     (line 5881)
-trunk Translations Identity Brands:            See 3.52.     (line 5902)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 5997)
-trunk Translations Identity Fonts:             See 3.54.     (line 6012)
-trunk Translations Identity Models:            See 3.55.     (line 6075)
-trunk Translations Identity Release:           See 3.56.     (line 6090)
-trunk Translations Identity Themes:            See 3.57.     (line 6105)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6120)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4424)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4445)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4623)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4795)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 4983)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5213)
+trunk Scripts Perl:                            See 3.48.     (line 5242)
+trunk Scripts Python:                          See 3.49.     (line 5259)
+trunk Translations:                            See 3.50.     (line 5280)
+trunk Translations Identity:                   See 3.51.     (line 5882)
+trunk Translations Identity Brands:            See 3.52.     (line 5903)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 5998)
+trunk Translations Identity Fonts:             See 3.54.     (line 6013)
+trunk Translations Identity Models:            See 3.55.     (line 6076)
+trunk Translations Identity Release:           See 3.56.     (line 6091)
+trunk Translations Identity Themes:            See 3.57.     (line 6106)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6121)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6141)
-trunk Translations Identity Widgets:           See 3.60.     (line 6234)
-Unused definitions:                            See 3.45.2.1. (line 4919)
+                                                             (line 6142)
+trunk Translations Identity Widgets:           See 3.60.     (line 6235)
+Unused definitions:                            See 3.45.2.1. (line 4920)
 List of Figures
 ***************
 
