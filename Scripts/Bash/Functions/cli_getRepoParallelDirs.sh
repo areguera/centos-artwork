@@ -4,7 +4,7 @@
 # directories related to the first positional paramenter passed as
 # parent directory. 
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -51,12 +51,12 @@ function cli_getRepoParallelDirs {
     PDIRS[2]=Translations
 
     # Redefine bond string without its top level directory structure.
-    BOND=$(echo $BOND | sed -r "s!^${TDIR}/.+!!")
+    BOND=$(echo $BOND | sed -r "s,^${TDIR}/(.+)$,\1,")
 
     # Concatenate repository top level directory, parallel directory
     # base structure, and bond information; in order to produce the
     # final parallel directory path.
-    for PDIR in ${PDIRS[*]};do
+    for PDIR in "${PDIRS[@]}";do
         echo ${TDIR}/${PDIR}/${BOND}
     done
 
