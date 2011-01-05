@@ -5,7 +5,7 @@
 # functions. The cli function is the first script executed by
 # centos-art command-line onces invoked.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -38,6 +38,16 @@ function cli {
     local ACTIONVAL=''
     local REGEX=''
     local ARGUMENTS=''
+
+    # Define default value to verbosity flag. The verbosity flag
+    # (--quiet) controls wether centos-art.sh script prints messages
+    # or not.
+    local FLAG_QUIET='false'
+    
+    # Define default value to answer flag. The answer flag (--yes)
+    # controls wether centos-art.sh script does or does not pass
+    # confirmation request points.
+    local FLAG_YES='false'
 
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"
