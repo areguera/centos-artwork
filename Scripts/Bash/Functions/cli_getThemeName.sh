@@ -5,7 +5,7 @@
 # theme name from it. If theme name is found on absolute path, this
 # function returns an empty string. 
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
