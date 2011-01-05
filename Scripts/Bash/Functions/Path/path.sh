@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # path.sh -- This function provides file manipulations to aliviate
-# maintain of paths inside the repository.
+# path maintainance inside the repository.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -25,6 +25,16 @@
 # ----------------------------------------------------------------------
     
 function path {
+
+    # Define deafult value to target flag. The target flag (--to)
+    # controls final destination used by copy related actions.
+    local FLAG_TO=''
+
+    # Define default value to syncronization flag. The syncronization
+    # flag (--sync) controls wether centos-art.sh script calls itself
+    # to create/delete parallel directories at the moment of
+    # create/delte action itself.
+    local FLAG_SYNC='false'
 
     # Define command-line interface.
     path_getActions

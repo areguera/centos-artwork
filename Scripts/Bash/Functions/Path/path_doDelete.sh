@@ -3,7 +3,7 @@
 # path_doDelete.sh -- This function deletes files inside the working
 # copy using subversion commands.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -26,9 +26,7 @@
 
 function path_doDelete {
 
-    local -a SRC
-    local -a DOC
-    local COUNT=0
+    local PDIR
 
     # Verify target variable. We can't continue if target is empty.
     if [[ $ACTIONVAL == '' ]];then
@@ -36,45 +34,21 @@ function path_doDelete {
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
-    # Update texinfo related entry documentation.
+    # Print action preamble.
+    cli_printActionPreamble "$ACTIONVAL" 'doDelete' 'AsResponseLine'
+
+    # Syncronize parallel directories related to action value.
     . /home/centos/bin/centos-art manual --delete="$ACTIONVAL"
+    . /home/centos/bin/centos-art render --delete="$ACTIONVAL"
+    . /home/centos/bin/centos-art locale --delete="$ACTIONVAL"
 
-    # Define source locations. Start with parent directory at position
-    # zero and continue with related parallel directories.
-    SRC[0]=$ACTIONVAL
-    SRC[1]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Scripts/Bash/Functions/Render/Config")
-    SRC[2]=$(cli_getRepoDirParallel "${SRC[0]}" "$(cli_getRepoTLDir "${SRC[0]}")/Translations")
+    # Print action message.
+    cli_printMessage "${ACTIONVAL}" 'AsDeletingLine'
 
-    # Print preamble with affected entries.
-    cli_printMessage "`ngettext "The following entry will be deleted" \
-        "The following entries will be deleted" "${#SRC[*]}"`:"
-    while [[ $COUNT -lt ${#SRC[*]} ]];do
-        # Print affected entry.
-        cli_printMessage "${SRC[$COUNT]}" 'AsResponseLine'
-        # Increment counter.
-        COUNT=$(($COUNT + 1))
-    done
-
-    # Request confirmation before continue with action.
-    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
-
-    # Reset counter.
-    COUNT=0
-
-    while [[ $COUNT -lt ${#SRC[*]} ]];do
-
-        # Print action message.
-        cli_printMessage "${SRC[$COUNT]}" 'AsDeletingLine'
-
-        # Perform action.
-        svn del ${SRC[$COUNT]} --quiet
-
-        # Increase counter.
-        COUNT=$(($COUNT + 1))
-
-    done 
+    # Perform action.
+    svn del ${ACTIONVAL} --quiet
 
     # Syncronize changes between working copy and central repository.
-    cli_commitRepoChanges "${SRC[@]}"
+    cli_commitRepoChanges "$ACTIONVAL $(cli_getRepoParallelDirs "$ACTIONVAL")"
 
 }

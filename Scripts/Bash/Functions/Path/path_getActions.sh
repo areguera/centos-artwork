@@ -3,7 +3,7 @@
 # path_getActions.sh -- This function interpretes arguments passed to
 # `path' functionality and calls actions accordingly.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -30,7 +30,7 @@ function path_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="copy:,move:,delete:,to:"
+    local ARGSL="copy:,move:,delete:,to:,quiet,sync,yes"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -48,77 +48,11 @@ function path_getActions {
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_doCopy"
 
-                # Look for related sub-options.
-                while true; do
-                    case "$3" in
-
-                        --to )
-
-                            # Redefine target directory.
-                            TARGET="$4"
-
-                            # Verify target directory.
-                            cli_checkRepoDirTarget
-
-                            # Rotate positional parameters.
-                            shift 4
-                            ;;
-
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
-                break
-                ;;
-
-            --move )
-
-                # Define action value passed through the command-line.
-                ACTIONVAL="$2"
-
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
-                # Define action name using action value as reference.
-                ACTIONNAM="${FUNCNAM}_doMove"
-
-                # Look for related sub-options.
-                while true; do
-                    case "$3" in
-
-                        --to )
-
-                            # Redefine target directory.
-                            TARGET="$4"
-
-                            # Verify target directory.
-                            cli_checkRepoDirTarget
-
-                            # Rotate positional parameters.
-                            shift 4
-                            ;;
-
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
 
             --delete )
@@ -126,15 +60,50 @@ function path_getActions {
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_doDelete"
 
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
+                ;;
+
+            --to )
+
+                # Redefine target flag.
+                FLAG_TO="$2"
+
+                # Verify target directory.
+                cli_checkRepoDirTarget
+
+                # Rotate positional parameters.
+                shift 2
+                ;;
+
+            --sync )
+
+                # Redefine syncronization flag.
+                FLAG_SYNC='true'
+
+                # Rotate positional parameters.
+                shift 1
+                ;;
+
+            --quiet )
+
+                # Redefine verbosity flag.
+                FLAG_QUIET='true'
+
+                # Rotate positional parameters.
+                shift 1
+                ;;
+
+            --yes )
+
+                # Redefine answer flag.
+                FLAG_YES='true'
+
+                # Rotate positional parameters.
+                shift 1
                 ;;
 
             * )
@@ -147,6 +116,10 @@ function path_getActions {
     if [[ $ACTIONVAL == '' ]];then
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Check action value (ACTIONVAL) passed through the command-line
+    # using source directory definition as reference.
+    cli_checkRepoDirSource
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
