@@ -182,16 +182,16 @@ function cli_printMessage {
 
         'AsErrorLine' )
             # Add script name to message. We want to know where
-            # messages come from.
-            if [[ $FLAG_QUIET == 'false' ]];then
-                echo "${CLINAME}: ${MESSAGE}"
-            fi
+            # messages come from. The `--quiet' flag doesn't suppress
+            # error messages.
+            echo "${CLINAME}: ${MESSAGE}"
             ;;
 
         'AsToKnowMoreLine' )
             # This option receives the output of bash's caller builtin
             # as message value, in order to produce the documentation
-            # entry automatically.
+            # entry automatically. The `--quiet' flag doesn't suppress
+            # `as to know more' messages.
             MESSAGE=$(dirname $(echo $MESSAGE | cut -d ' ' -f2-))
             echo "----------------------------------------------------------------------"
             echo "`gettext "To know more, run the following command"`:"
