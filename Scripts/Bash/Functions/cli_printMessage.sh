@@ -8,7 +8,7 @@
 # $1 --> The message you want to output.
 # $2 --> The message format.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -37,7 +37,7 @@ function cli_printMessage {
     local Y=''
     local N=''
     local ANSWER=''
-    
+
     # Reduce paths inside output messages. The main purpose for this
     # is to free horizontal space in output messages.
     MESSAGE=$(echo "$MESSAGE" \
@@ -50,79 +50,109 @@ function cli_printMessage {
     case $FORMAT in
 
         'AsHeadingLine' )
-            echo '----------------------------------------------------------------------'
-            echo "$MESSAGE" | fmt --width=70
-            echo '----------------------------------------------------------------------'
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo '----------------------------------------------------------------------'
+                echo "$MESSAGE" | fmt --width=70
+                echo '----------------------------------------------------------------------'
+            fi
             ;;
 
         'AsWarningLine' )
-            echo '----------------------------------------------------------------------'
-            echo "`gettext "WARNING"`: $MESSAGE" | fmt --width=70
-            echo '----------------------------------------------------------------------'
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo '----------------------------------------------------------------------'
+                echo "`gettext "WARNING"`: $MESSAGE" | fmt --width=70
+                echo '----------------------------------------------------------------------'
+            fi
             ;;
 
         'AsNoteLine' )
-            echo '----------------------------------------------------------------------'
-            echo "`gettext "NOTE"`: $MESSAGE" | fmt --width=70
-            echo '----------------------------------------------------------------------'
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo '----------------------------------------------------------------------'
+                echo "`gettext "NOTE"`: $MESSAGE" | fmt --width=70
+                echo '----------------------------------------------------------------------'
+            fi
             ;;
 
         'AsUpdatingLine' )
-            echo "`gettext "Updating"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Updating"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsDeletingLine' )
-            echo "`gettext "Deleting"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Deleting"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsCheckingLine' )
-            echo "`gettext "Checking"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Checking"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsCreatingLine' )
-            echo "`gettext "Creating"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Creating"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsSavedAsLine' )
-            echo "`gettext "Saved as"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Saved as"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsLinkToLine' )
-            echo "`gettext "Linked to"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Linked to"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsMovedToLine' )
-            echo "`gettext "Moved to"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Moved to"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsTranslationLine' )
-            echo "`gettext "Translation"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Translation"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsConfigurationLine' )
-            echo "`gettext "Configuration"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Configuration"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsPaletteLine' )
-            echo "`gettext "Palette"`: $MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Palette"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         'AsResponseLine' )
-            echo "--> $MESSAGE"
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "--> $MESSAGE"
+            fi
             ;;
 
         'AsRequestLine' )
-            echo -n "${MESSAGE}: "
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo -n "${MESSAGE}: "
+            fi
             ;;
 
         'AsYesOrNoRequestLine' )
@@ -132,27 +162,36 @@ function cli_printMessage {
             # Define negative answer.
             N="`gettext "N"`"
 
-            # Define default answer to questions.
-            ANSWER=${N}
-
             # Define `yes or no' confirmation question.
-            echo -n "$MESSAGE [${Y}/${N}]: "
-            read ANSWER
+            if [[ $FLAG_QUIET == 'false' ]] \
+                && [[ $FLAG_YES == 'false' ]];then
+                echo -n "$MESSAGE [${Y}/${N}]: "
+                read ANSWER
+            fi
+
+            # Redefine answer based on answer flag.
+            if [[ $FLAG_YES == 'true' ]];then
+                ANSWER=${Y}
+            fi
+
+            # Verify answer.
             if [[ ! $ANSWER =~ "^${Y}" ]];then
                 exit
             fi
             ;;
 
-        'AsErrorLine')
+        'AsErrorLine' )
             # Add script name to message. We want to know where
             # messages come from.
-            echo "${CLINAME}: ${MESSAGE}"
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "${CLINAME}: ${MESSAGE}"
+            fi
             ;;
 
         'AsToKnowMoreLine' )
             # This option receives the output of bash's caller builtin
             # as message value, in order to produce the documentation
-            # entry automatically. 
+            # entry automatically.
             MESSAGE=$(dirname $(echo $MESSAGE | cut -d ' ' -f2-))
             echo "----------------------------------------------------------------------"
             echo "`gettext "To know more, run the following command"`:"
@@ -164,12 +203,16 @@ function cli_printMessage {
             ;;
 
         'AsRegularLine' )
-            echo "$MESSAGE" \
-                | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "$MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
             ;;
 
         * )
-            echo "$MESSAGE"
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "$MESSAGE"
+            fi
             ;;
 
     esac
