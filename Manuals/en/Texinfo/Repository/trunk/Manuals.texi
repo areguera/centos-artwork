@@ -12,48 +12,9 @@
 
 @subsection Usage
 
-@table @samp
-@item centos-art help --read='path/to/dir'
-Use this command to read directory documentation specified in
-@samp{path/to/dir}.
-
-@item centos-art help --read='path/to/dir' --filter='filename'
-Use this command to read file documentation as specified by
-@samp{path/to/dir/filename} combination. 
-
-@item centos-art help --edit='path/to/dir'
-Use this command to edit directory documentation as specified in
-@samp{path/to/dir}.
-
-@item centos-art help --edit='path/to/dir' --filter='filename'
-Use this command to edit file documentation as specified in
-@samp{path/to/dir/filename} combination.
-
-@item centos-art help --update='path/to/dir'
-Use this command to update documentation output files.
-
-@item centos-art help --remove='path/to/dir'
-Use this command to remove directory documentation as specified in
-@samp{path/to/dir}.
-
-@quotation
-@strong{Caution} When directory documentation is removed all
-documentation under it is also removed.
-@end quotation
-
-@quotation
-@strong{Tip} To recover from directory documentation lost, try the
-following command (before commit local changes up to central
-repository): 
-@verbatim
-svn revert path/to/dir --recursive
-@end verbatim
-@end quotation
-
-@item centos-art help --remove='path/to/dir' --filter='filename'
-Use this command to remove file documentation as specified in
-@samp{path/to/dir/filename} combination.
-@end table
+@itemize
+@item ...
+@end itemize
 
 @subsection See also
 
