@@ -3,7 +3,7 @@
 # render_getIdentityOutputDir.sh -- This function re-defines final
 # output directory used to store rendered identity artworks.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

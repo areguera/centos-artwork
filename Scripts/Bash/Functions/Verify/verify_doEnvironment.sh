@@ -3,7 +3,7 @@
 # verify_doEnvironment.sh -- This function outputs a brief description
 # of environment variables used by `centos-art.sh' script.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

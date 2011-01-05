@@ -3,7 +3,7 @@
 # verify_doPackageInstall.sh -- This function receives a list of
 # missing packages and installs them using sudo yum.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

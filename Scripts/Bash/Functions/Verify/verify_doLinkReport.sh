@@ -4,7 +4,7 @@
 # missing links that need to be installed and a confirmation question
 # for users to accept the installation action. 
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

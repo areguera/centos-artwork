@@ -3,7 +3,7 @@
 # html_getActions.sh -- This function interprets arguments passed to
 # `html' functionality and calls actions accordingly.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

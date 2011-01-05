@@ -4,7 +4,7 @@
 # KSplash Preview.png image. Use this function as last-rendering
 # function to KSplash base-rendering.  
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as

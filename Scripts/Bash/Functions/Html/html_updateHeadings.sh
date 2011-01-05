@@ -17,7 +17,7 @@
 # heading title or page location changes, the values of <a
 # name=""> and <a href=""> options will change too.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
