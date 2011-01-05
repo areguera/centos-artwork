@@ -22,10 +22,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>The CentOS Artwork Repository: 3.41 trunk/Scripts/Bash/Functions/Manual</title>
+<title>The CentOS Artwork Repository: 3.41 trunk/Scripts/Bash/Functions/Path</title>
 
-<meta name="description" content="The CentOS Artwork Repository: 3.41 trunk/Scripts/Bash/Functions/Manual">
-<meta name="keywords" content="The CentOS Artwork Repository: 3.41 trunk/Scripts/Bash/Functions/Manual">
+<meta name="description" content="The CentOS Artwork Repository: 3.41 trunk/Scripts/Bash/Functions/Path">
+<meta name="keywords" content="The CentOS Artwork Repository: 3.41 trunk/Scripts/Bash/Functions/Path">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -59,57 +59,406 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC369" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC369" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash-Functions-Manual"></a>
+<a name="trunk-Scripts-Bash-Functions-Path"></a>
 <a name="SEC237"></a>
-<h2 class="section"> 3.41 trunk/Scripts/Bash/Functions/Manual </h2>
+<h2 class="section"> 3.41 trunk/Scripts/Bash/Functions/Path </h2>
 
 
 <a name="SEC238"></a>
 <h3 class="subsection"> 3.41.1 Goals </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
-
+<p>This section exists to organize files related to <code>path</code>
+functiontionality.  The <code>path</code> functionality standardizes
+movement, syncronization, branching, tagging, and general file
+maintainance inside the repository. 
+</p>
 
 <a name="SEC239"></a>
 <h3 class="subsection"> 3.41.2 Description </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
-
+<p><em>&quot;CentOS like trees, has roots, trunk, branches, leaves and
+flowers.  Day by day they work together in freedom, ruled by the laws
+of nature and open standards, to show the beauty of its existence.&quot;</em>
+</p>
 
 <a name="SEC240"></a>
-<h3 class="subsection"> 3.41.3 Usage </h3>
+<h4 class="subsubsection"> 3.41.2.1 Repository layout </h4>
 
-<ul class="toc">
-<li> ...
-</li></ul>
+<p>The repository layout describes organization of files and directories
+inside the repository. The repository layout provides the standard
+backend required for automation scripts to work correctly. If such
+layout changes unexpectedly, automation scripts may confuse themselves
+and stop doing what we expect from them to do.
+</p>
+<p>As convenction, inside CentOS Artwork Repository, we organize files
+and directories related to CentOS corporate visual identity under
+three top level directories named: <tt>`trunk/'</tt>, <tt>`branches/'</tt>,
+and <tt>`tags/'</tt>. 
+</p>
+<div class="float"><a name="trunk_002fIdentity_002fModels_002fImg_002fScripts_002fBash_002fFunctions_002fPaths_002ffigure_002d6"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-6.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-6">
 
+</p></div><p><strong>Figure 3.15: The CentOS Artwork Repository layout.
+</strong>
+</p>
+<p>The <tt>`trunk/'</tt> directory (see section <a href="repository_3.html#SEC3">trunk</a>) organizes the main
+development line of CentOS corporate visual identity. Inside
+<tt>`trunk/'</tt> directory structure, the CentOS corporate visual
+identity concepts are implemented using directories.  There is one
+directory level for each relevant concept inside the repository. The
+<tt>`trunk/'</tt> directory structure is mainly used to perform
+development tasks related to CentOS corporate visual identity.
+</p>
+<p>The <tt>`branches/'</tt> directory (see section <a href="repository_1.html#SEC1">branches</a>) oranizes parallel
+development lines to <tt>`trunk/'</tt> directory. The <tt>`branches/'</tt>
+directory is used to set points in time where develpment lines are
+devided one from another taking separte and idependent lives that
+share a common past from the point they were devided on. The
+<tt>`branches/'</tt> directory is mainly used to perform quality assurance
+tasks related to CentOS corporate visual identity.
+</p>
+<p>The <tt>`tags/'</tt> directory (see section <a href="repository_2.html#SEC2">tags</a>) organizes parallel frozen
+lines to <tt>`branches/'</tt> directory.  The parallel frozen lines are
+immutable, nothing change inside them once they has been created.  The
+<tt>`tags/'</tt> directory is mainly used to publish final releases of
+CentOS corporate visual identity.
+</p>
+<p>The CentOS Artwork Repository layout is firmly grounded on a
+Subversion base.  Subversion (<a class="www" href="http://subversion.tigris.org">http://subversion.tigris.org</a>) is a
+version control system, which allows you to keep old versions of files
+and directories (usually source code), keep a log of who, when, and
+why changes occurred, etc., like CVS, RCS or SCCS.  Subversion keeps a
+single copy of the master sources.  This copy  is called the source
+&quot;repository&quot;; it contains all the information to permit extracting
+previous versions of those files at any time.
+</p>
 
 <a name="SEC241"></a>
+<h4 class="subsubsection"> 3.41.2.2 Repository name convenctions </h4>
+
+<p>Repository name convenctions help us to maintain consistency of names
+inside the repository.
+</p>
+<p>Repository name convenctions are applied to files and directories
+inside the repository layout. As convenction, inside the repository
+layout, file names are all written in lowercase
+(<samp>`01-welcome.png'</samp>, <samp>`splash.png'</samp>, <samp>`anaconda_header.png'</samp>,
+etc.) and directory names are all written capitalized (e.g.,
+<samp>`Identity'</samp>, <samp>`Themes'</samp>, <samp>`Motifs'</samp>, <samp>`TreeFlower'</samp>,
+etc.).
+</p>
+<p>Repository name convenctions are implemented inside the
+<code>cli_getRepoName</code> function of <tt>`centos-art.sh'</tt> script. With
+<code>cli_getRepoName</code> function we reduce the amount of commands and
+convenctions to remember, concentrating them in just one single place
+to look for fixes and improvements.
+</p>
+
+<a name="SEC242"></a>
+<h4 class="subsubsection"> 3.41.2.3 Repository work flow </h4>
+
+<p>Repository work flow describes the steps and time intervals used to
+produce CentOS corporate visual identity inside CentOS Artwork
+Repository.  
+</p>
+<p>To illustrate repository work flow let's consider themes' development
+cycle. 
+</p>
+<p>Initially, we start working themes on their trunk development line
+(e.g., <tt>`trunk/Identity/Themes/Motifs/TreeFlower/'</tt>), here we
+organize information that cannot be produced automatically (i.e.,
+background images, concepts, color information, screenshots, etc.).
+</p>
+<p>Later, when theme trunk development line is considered &quot;ready&quot; for
+implementation (e.g.,  all required backgrounds have been designed),
+we create a branch for it (e.g.,
+<tt>`branches/Identity/Themes/Motifs/TreeFlower/1/'</tt>).  Once the
+branch has been created, we forget that branch and continue working
+the trunk development line while others (e.g., an artwork quality
+assurance team) test the new branch for tunning it up. 
+</p>
+<p>Once the branch has been tunned up, and considered &quot;ready&quot; for
+release, it is freezed under <tt>`tags/'</tt> directory (e.g.,
+<tt>`tags/Identity/Themes/Motifs/TreeFower/1.0/'</tt>) for packagers,
+webmasters, promoters, and anyone who needs images from that CentOS
+theme the tag was created for.
+</p>
+<p>Both branches and tags, inside CentOS Artwork Repository, use
+numerical values to identify themselves under the same location.
+Branches start at one (i.e., <samp>`1'</samp>) and increment one unit for each
+branch created from the same trunk development line.  Tags start at
+zero (i.e., <samp>`0'</samp>) and increment one unit for each tag created from
+the same branch development line.
+</p>
+<div class="float"><a name="trunk_002fIdentity_002fModels_002fImg_002fScripts_002fBash_002fFunctions_002fPaths_002ffigure_002d1"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1">
+
+</p></div><p><strong>Figure 3.16: Name convention for tags and branches creation.
+</strong>
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-ruler.png" alt="Convenction"><h3>Convenction</h3><p> Do not freeze trunk development lines using tags
+directly.  If you think you need to freeze a trunk development line,
+create a branch for it and then freeze that branch instead.
+</p></blockquote>
+
+<p>The trunk development line may introduce problems we cannot see
+immediatly. Certainly, the high changable nature of trunk development
+line complicates finding and fixing such problems. On the other hand,
+the branched development lines provide a more predictable area where
+only fixes/corrections to current content are commited up to
+repository. 
+</p>
+<p>If others find and fix bugs inside the branched development line, we
+could merge such changes/experiences back to trunk development line
+(not visversa) in order for future branches, created from trunk, to
+benefit.
+</p>
+<p>Time intervals used to create branches and tags may vary, just as
+different needs may arrive. For example, consider the release schema
+of CentOS distribution: one major release every 2 years, security
+updates every 6 months, support for 7 years long. Each time a CentOS
+distribution is released, specially if it is a major release, there is
+a theme need in order to cover CentOS distribution artwork
+requirements. At this point, is where CentOS Artwork Repository comes
+up to scene. 
+</p>
+<p>Before releasing a new major release of CentOS distribution we create
+a branch for one of several theme development lines available inside
+the CentOS Artwork Repository, perform quality assurance on it, and
+later, freeze that branch using tags. Once a the theme branch has been
+frozen (under <tt>`tags/'</tt> directory), CentOS Packagers (the persons
+whom build CentOS distribution) can use that frozen branch as source
+location to fulfill CentOS distribution artwork needs. The same
+applies to CentOS Webmasters (the persons whom build CentOS websites),
+and any other visual manifestation required by the project.
+</p>
+
+<a name="SEC243"></a>
+<h4 class="subsubsection"> 3.41.2.4 Parallel directories </h4>
+
+<p>Inside CentOS Artwork Repository, parallel directories are simple
+directory entries built from a common parent directory and placed in a
+location different to that, the common parent directory is placed on.
+Parallel directories are useful to create branches, tags,
+translations, documentation, pre-rendering configuration script, and
+similar directory structures.
+</p>
+<p>Parallel directories take their structure from one unique parent
+directory. Inside CentOS Artwork Repository, this unique parent
+directory is under <tt>`trunk/Identity'</tt> location.  The
+<tt>`trunk/Identity'</tt> location must be considered the reference for
+whatever information you plan to create inside the repository.
+</p>
+<p>In some circumstances, parallel directories may be created removing
+uncommon information from their paths. Uncommon path information
+refers to those directory levels in the path which are not common for
+other parallel directories.  For example, when rendering
+<tt>`trunk/Identity/Themes/Motifs/TreeFlower/Distro'</tt> directory
+structure, the <tt>`centos-art.sh'</tt> script removes the
+<tt>`Motifs/TreeFlower/'</tt> directory levels from path, in order to
+build the parallel directory used to retrived translations, and
+pre-rendering configuration scripts required by <code>render</code>
+functionality.
+</p>
+<div class="float"><a name="trunk_002fIdentity_002fModels_002fImg_002fScripts_002fBash_002fFunctions_002fPaths_002ffigure_002d3"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3">
+
+</p></div><p><strong>Figure 3.17: Parallel directories removing uncommon information.
+</strong>
+</p>
+<p>Another example of parallel directory is the documentation structure
+created by <code>manual</code> functionality. This time,
+<tt>`centos-art.sh'</tt> script uses parallel directory information with
+uncommon directory levels to build the documentation entry required by
+Texinfo documentation system, inside the repository.
+</p>
+<p>Othertimes, parallel directories may add uncommon information to their
+paths. This is the case we use to create branches and tags. When we
+create branches and tags, a numerical identifier is added to parallel
+directory structure path. The place where the numerical identifier is
+set on is relevant to corporate visual identity structure and should
+be carefully considered where it will be.
+</p>
+<div class="float"><a name="trunk_002fIdentity_002fModels_002fImg_002fScripts_002fBash_002fFunctions_002fPaths_002ffigure_002d4"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-4.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-4">
+
+</p></div><p><strong>Figure 3.18: Parallel directories adding uncommon information.
+</strong>
+</p>
+<p>When one parent directory changes, all their related parallel
+directories need to be changed too. This is required in order for
+parallel directories to retain their relation with the parent
+directory structure.  In the other hand, parallel directories should
+never be modified under no reason but to satisfy the relation to their
+parent directory structure.  Liberal change of parallel directories
+may suppresses the conceptual idea they were initially created for;
+and certainly, things may stop working the way they should do.
+</p>
+<div class="float"><a name="trunk_002fIdentity_002fModels_002fImg_002fScripts_002fBash_002fFunctions_002fPaths_002ffigure_002d5"></a>
+<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-5.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-5">
+
+</p></div><p><strong>Figure 3.19: Wrong construction of parallel directories.
+</strong>
+</p>
+
+<a name="SEC244"></a>
+<h4 class="subsubsection"> 3.41.2.5 Syncronizing path information </h4>
+
+<p>Parallel directories are very useful to keep repository organized but
+introduce some complications.  For instance, consider what would
+happen to functionalities like <code>manual</code> (<samp>`trunk Scripts Bash
+Functions Manual'</samp>) that rely on parent directory structures to create
+documentation entries (using parallel directory structures) if one of
+those parent directory structures suddenly changes after the
+documentation entry has been already created for it? 
+</p>
+<p>In such cases, functionalities like <code>manual</code> may confuse
+themselves if path information is not updated to reflect the relation
+with its parent directory.  Such functionalities work with parent
+directory structure as reference; if a parent directory changes, the
+functionalities dont't even note it because they work with the last
+parent directory structure available in the repository, no matter what
+it is. 
+</p>
+<p>In the specific case of documentation (the <code>manual</code>
+functionality), the problem mentioned above provokes that older parent
+directories, already documented, remain inside documentation directory
+structures as long as you get your hands into the documentation
+directory structure (<tt>`trunk/Manuals'</tt>) and change what must be
+changed to match the new parent directory structure.
+</p>
+<p>There is no immediate way for <code>manual</code>, and similar
+functionalities that use parent directories as reference, to know when
+and how directory movements take place inside the repository. Such
+information is available only when the file movement itself takes
+place inside the repository. So, is there, at the moment of moving
+files, when we need to syncronize parallel directories with their
+unique parent directory structure.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> There is not support for URL reference inside
+<tt>`centos-art.sh'</tt> script.  The <tt>`centos-art.sh'</tt> script is
+designed to work with local files inside the working copy only.
+</p></blockquote>
+
+<p>As CentOS Artwork Repository is built over a version control system,
+file movements inside the repository are considered repository
+changes. In order for these repository changes to be versioned, we
+need to, firstly, add changes into the version control system, commit
+them, and later, perform movement actions using version control system
+commands. This configuration makes possible for everyone to know about
+changes details inside the repository; and if needed, revert or update
+them back to a previous revision.
+</p>
+<p>Finally, once all path information has been corrected, it is time to
+take care of information inside the files. For instance, considere
+what would happen if you make a reference to a documentation node, and
+later the documentation node you refere to is deleted. That would make
+Texinfo to produce error messages at export time. So, the
+<tt>`centos-art.sh'</tt> script needs to know when such changes happen, in
+a way they could be noted and handled without producing errors.
+</p>
+
+<a name="SEC245"></a>
+<h4 class="subsubsection"> 3.41.2.6 What is the right place to store it? </h4>
+
+<p>Occasionly, you may find that new corporate visual identity components
+need to be added to the repository. If that is your case, the first
+question you need to ask yourself, before start to create directories
+blindly all over, is: What is the right place to store it?
+</p>
+<p>The CentOS Community different free support vains (see:
+<a class="www" href="http://wiki.centos.org/GettingHelp">http://wiki.centos.org/GettingHelp</a>) are the best place to find
+answers to your question, but going there with hands empty is not good
+idea. It may give the impression you don't really care about. Instead,
+consider the following suggestions to find your own comprehension and
+so, make your propositions based on it.
+</p>
+<p>When we are looking for the correct place to store new files, to bear
+in mind the corporate visual identity structure used inside the CentOS
+Artwork Repository (see section <a href="repository_4.html#SEC4">trunk/Identity</a>) would be probaly the best
+advice we could offer, the rest is just matter of choosing appropriate
+names.  To illustrate this desition process let's consider the
+<tt>`trunk/Identity/Themes/Motifs/TreeFlower'</tt> directory as
+example. It is the trunk development line of TreeFlower's artistic
+motif. Artistic motifs are considered part of themes, which in turn
+are considered part of CentOS corporate visual identity.
+</p>
+<p>When building parent directory structures, you may find that reaching
+an acceptable location may take some time, and as it uses to happen
+most of time; once you've find it, that may be not a definite
+solution.  There are many concepts that you need to play with, in
+order to find a result that match the conceptual idea you try to
+implement in the new directory location. To know which these concepts
+are, split the location in words and read its documentation entry from
+less specific to more specific.
+</p>
+<p>For example, the <tt>`trunk/Identity/Themes/Motifs/TreeFlower'</tt>
+location evolved through several months of contant work and there is
+no certain it won't change in the future, even it fixes quite well the
+concept we are trying to implement.  The concepts used in
+<tt>`trunk/Identity/Themes/Distro/Motifs/TreeFlower'</tt> location are
+described in the following commands, respectively:
+</p>
+<pre class="verbatim">centos-art manual --read=turnk/
+centos-art manual --read=turnk/Identity/
+centos-art manual --read=turnk/Identity/Themes/
+centos-art manual --read=turnk/Identity/Themes/Motifs/
+centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
+</pre>
+<p>Other location concepts can be found similary as we did above, just
+change the location we used above by the one you are trying to know
+concepts for.
+</p>
+
+<a name="SEC246"></a>
+<h3 class="subsection"> 3.41.3 Usage </h3>
+
+<dl compact="compact">
+<dt> <code>centos-art path --copy='SRC' --to='DST'</code></dt>
+<dd>
+<p>Copy <samp>`SRC'</samp> to <samp>`DST'</samp> and schedule <samp>`DST'</samp> for
+addition (with history).  In this command, <tt>`SRC'</tt> and <tt>`DST'</tt>
+are both working copy (WC) entries.
+</p>
+</dd>
+<dt> <code>centos-art path --delete='SRC'</code></dt>
+<dd>
+<p>Delete <samp>`DST'</samp>. In order for this command to work the file or
+directory you intend to delete should be under version control first.
+In this command, <tt>`SRC'</tt> is a working copy (WC) entry.  
+</p>
+</dd>
+</dl>
+
+
+<a name="SEC247"></a>
 <h3 class="subsection"> 3.41.4 See also </h3>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_39.html#SEC209">3.36 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_40.html#SEC214">3.37 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC240" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_45.html#SEC242" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC246" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_45.html#SEC248" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC237" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC369" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
