@@ -3,7 +3,7 @@
 # cli_checkRepoDirTarget.sh -- This function provides input validation
 # to repository entries considered as target location.
 #
-# Copyright (C) 2009-2011  Alain Reguera Delgado
+# Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -27,11 +27,11 @@
 function cli_checkRepoDirTarget {
 
     # Check target value before making an absolute path from it. 
-    if [[ $TARGET =~ '(\.\.(/)?)' ]];then
+    if [[ $FLAG_TO =~ '(\.\.(/)?)' ]];then
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
-    if [[ ! $TARGET =~ '^[A-Za-z0-9\.:/-]+$' ]];then
+    if [[ ! $FLAG_TO =~ '^[A-Za-z0-9\.:/-]+$' ]];then
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
@@ -45,17 +45,17 @@ function cli_checkRepoDirTarget {
     # entries using both /home/centos/artwork/trunk/... or just
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
-    if [[ $TARGET =~ '^(trunk|branches|tags)/.+$' ]];then
-        TARGET=/home/centos/artwork/$TARGET 
+    if [[ $FLAG_TO =~ '^(trunk|branches|tags)/.+$' ]];then
+        FLAG_TO=/home/centos/artwork/$FLAG_TO 
     fi
 
     # Check target value.
-    if [[ -a ${TARGET} ]];then
+    if [[ -a ${FLAG_TO} ]];then
 
         # At this point target value does existent as working copy
         # entry. We don't use existent locations as target.  So, print
         # a message and stop script execution.
-        cli_printMessage "`eval_gettext "The location \\\`\\\$TARGET' already exists."`" 'AsErrorLine'
+        cli_printMessage "`eval_gettext "The location \\\`\\\$FLAG_TO' already exists."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
 
     else
@@ -66,12 +66,12 @@ function cli_checkRepoDirTarget {
         # for it.
 
         # Add directory to the top of the directory stack.
-        pushd "$(dirname $TARGET)" > /dev/null
+        pushd "$(dirname $FLAG_TO)" > /dev/null
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
             # Re-define target value using absolute path.
-            TARGET=$(pwd)/$(basename $TARGET)
+            FLAG_TO=$(pwd)/$(basename $FLAG_TO)
         fi
 
         # Remove directory from the directory stack.
@@ -87,8 +87,8 @@ function cli_checkRepoDirTarget {
         # directly.  Consider manipulation of parallel directories as
         # a consequence of a previous manipulation of Identity parent
         # directory structure.
-        if [[ ! ${TARGET} =~ '^.+/(trunk|branches|tags)/Identity/.+$' ]];then
-            cli_printMessage "`eval_gettext "cannot create \\\`\\\$TARGET': It isn't an identity directory structure."`" 'AsErrorLine'
+        if [[ ! ${FLAG_TO} =~ '^.+/(trunk|branches|tags)/Identity/.+$' ]];then
+            cli_printMessage "`eval_gettext "cannot create \\\`\\\$FLAG_TO': It isn't an identity directory structure."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
     fi
