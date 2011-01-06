@@ -27,6 +27,10 @@
     
 function manual {
 
+    # Define default value to target flag. The target flag (--to)
+    # controls final destination used by copy related actions.
+    local FLAG_TO=''
+
     # Define documentation base directory structure.
     MANUALS_DIR[0]='/home/centos/artwork/trunk/Manuals'
     MANUALS_DIR[1]=${MANUALS_DIR[0]}/$(cli_getCurrentLocale)

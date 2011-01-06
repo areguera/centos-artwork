@@ -1,7 +1,9 @@
 #!/bin/bash
 #
 # manual_getEntry.sh -- This function builds a documentation entry based
-# on action value (ACTIONVAL) variable.
+# on a location specified. Location specification can be both action
+# value (ACTIONVAL) variable or a value passed as first positional
+# parameter.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -30,14 +32,24 @@ function manual_getEntry {
     local DIR=''
     local FILE=''
     local ENTRY=''
+    local LOCATION=''
+
+    # Redefine location in order to make this function reusable not
+    # just for action value variable but whatever value passed as
+    # first possitional argument.
+    if [[ "$1" != '' ]];then
+        LOCATION="$1"
+    else
+        LOCATION="$ACTIONVAL"
+    fi
 
     # Build directory for documenation entry.
-    DIR=$(echo $ACTIONVAL | sed -r 's!^/home/centos/artwork/!!')
+    DIR=$(echo $LOCATION | sed -r 's!^/home/centos/artwork/!!')
     DIR=$(dirname $DIR)
     DIR=${MANUALS_DIR[2]}/$DIR
 
     # Build file for documentation entry.
-    FILE=$(basename $ACTIONVAL).texi
+    FILE=$(basename $LOCATION).texi
 
     # Combine both directory (DIR) and file (FILE) to build entry's
     # absolute path. When the entry's absolute path is built for the

@@ -28,17 +28,10 @@ function manual_removeEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRIES=''
-    local ENTRIES_COUNTER=1
     local LOCATION=''
 
-    # Check changes in the working copy.
-    cli_commitRepoChanges "$ENTRY"
-
     # Check if the entry has been already removed.
-    if [[ ! -f $ENTRY ]];then
-        cli_printMessage "`eval_gettext "The entry \\\`\\\$ENTRY' doesn't exist."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    cli_checkFiles $ENTRY 'f'
 
     # Define entries. Start with the one being processed currently.
     ENTRIES=$ENTRY
@@ -46,9 +39,9 @@ function manual_removeEntry {
     # Define root location to look for entries.
     LOCATION=$(echo $ENTRY | sed -r 's!\.texi$!!')
 
-    # Re-define location to match the chapter's root directory. This
+    # Redefine location to match the chapter's root directory. This
     # applies when you try to remove the whole chapter from the
-    # working copy (e.g., centos-art manual --remove=/home/centos/artwork/trunk/).
+    # working copy (e.g., centos-art manual --delete=/home/centos/artwork/trunk/).
     if [[ $ENTRY =~ "${MANUALS_FILE[7]}$" ]];then
         LOCATION=$(dirname $ENTRY)
     fi
@@ -62,63 +55,53 @@ function manual_removeEntry {
     if [[ -d $LOCATION ]];then
         for ENTRY in $(find $LOCATION -name '*.texi');do
             ENTRIES="$ENTRIES $ENTRY $(dirname $ENTRY)"
-            ENTRIES_COUNTER=$(($ENTRIES_COUNTER + 1))
         done
     fi
 
     # Remove duplicated lines from entries list.
     ENTRIES=$(echo "$ENTRIES" | tr ' ' "\n" | sort -r | uniq)
 
-    # Show a verification message before doing anything.
-    cli_printMessage "`ngettext "The following entry will be deleted" \
-        "The following entries will be deleted" $ENTRIES_COUNTER`:"
- 
-    # Show list of affected entries.
-    for ENTRY in $ENTRIES;do
-        cli_printMessage "$ENTRY" "AsResponseLine"
-    done
+    # Print action preamble.
+    cli_printActionPreamble "$ENTRIES" 'doDelete' 'AsResponseLine'
 
-    cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
-
-    # Re-define ENTRY using affected entries as reference.
+    # Redefine ENTRY using affected entries as reference.
     for ENTRY in $ENTRIES;do
 
-        # Show which entry is being removed.
-        cli_printMessage "$ENTRY" "AsDeletingLine"
+        # Verify entry inside the working copy. 
+        if [[ $(cli_getRepoStatus "$ENTRY") =~ '^( |\?)' ]];then
+
+            # Print action message.
+            cli_printMessage "$ENTRY" "AsDeletingLine"
+
+        else
+
+            # Do not remove a versioned documentation entry with
+            # changes inside. Print a message about it and stop script
+            # execution instead.
+            cli_printMessage "`gettext "There are pendent changes that need to be committed first."`" 'AsErrorLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+
+        fi
 
         # Remove documentation entry. At this point, documentation
         # entry can be under version control or not versioned at all.
         # Here we need to decide how to remove documentation entries
-        # based on whether they are under version control or not.
+        # based on wether they are under version control or not.
         if [[ "$(cli_getRepoStatus "$ENTRY")" == ' ' ]];then
 
-            # Documentation entry is under version control and clean
-            # of changes. Only if documentation entry is clean of
-            # changes we can mark it for deletion. So use subversion's
-            # `del' command to do so.
+            # Documentation entry is under version control and there
+            # is no change to be commited up to central repository. We
+            # are safe to schedule it for deletion.
             svn del "$ENTRY" --quiet
 
         elif [[ "$(cli_getRepoStatus "$ENTRY")" == '?' ]];then
 
             # Documentation entry is not under version control, so we
-            # don't care about changes inside unversioned
-            # documentation entries at all. If you say centos-art.sh
-            # script to remove an unversion documentation entry it
-            # will do so, using convenctional `rm' command.
-            if [[ -d "$ENTRY" ]];then
-                rm -r "$ENTRY"
-            else
-                rm "$ENTRY"
-            fi
-
-        else
-
-            # Documentation entry is under version control and it does
-            # have changes. We don't remove a versioned documentation
-            # entry with changes. So print a message about it and stop
-            # script execution.
-            cli_printMessage "`eval_gettext "The entry \\\`\\\$ENTRY' cannot be deleted."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            # don't care about changes inside it. If you say
+            # centos-art.sh script to remove an unversion
+            # documentation entry it will do so, using convenctional
+            # `rm' command.
+            rm -r "$ENTRY"
 
         fi
 
@@ -139,8 +122,5 @@ function manual_removeEntry {
         manual_updateChaptersMenu 'remove-entry'
         manual_updateChaptersNodes
     fi
-
-    # Update manuals' related output files.
-    manual_updateOutputFiles
 
 }

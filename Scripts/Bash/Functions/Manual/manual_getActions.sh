@@ -33,7 +33,7 @@ function manual_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="search:,edit:,delete:,update-output,update-structure:,read:"
+    local ARGSL="read:,search:,edit:,delete:,update,copy:,to:,quiet,yes"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -46,20 +46,28 @@ function manual_getActions {
     while true; do
         case "$1" in
 
+            --read )
+
+                # Define action value passed through the command-line.
+                ACTIONVAL="$2"
+
+                # Define action name using action value as reference.
+                ACTIONNAM="${FUNCNAM}_searchNode"
+
+                # Rotate positional parameters.
+                shift 2
+                ;;
+
             --search )
 
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_searchIndex"
 
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
     
             --edit )
@@ -67,15 +75,11 @@ function manual_getActions {
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_editEntry"
 
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
     
             --delete )
@@ -83,18 +87,14 @@ function manual_getActions {
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
                 # Define action name.
                 ACTIONNAM="${FUNCNAM}_removeEntry"
 
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
     
-            --update-output )
+            --update )
 
                 # Execute action name. There is no need of action
                 # value here, so let's execute the action right now.
@@ -104,47 +104,54 @@ function manual_getActions {
                 break
                 ;;
     
-            --update-structure )
+            --copy )
 
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
-                ACTIONNAM="${FUNCNAM}_updateTexinfoStructure"
+                ACTIONNAM="${FUNCNAM}_copyEntry"
 
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
 
-            --read )
+            --to )
+                
+                # Redefine target flag.
+                FLAG_TO="$2"
 
-                # Define action value passed through the command-line.
-                ACTIONVAL="$2"
+                # Rotate positional parameters.
+                shift 2
+                ;;
 
-                # Check action value passed through the command-line
-                # using source directory definition as reference.
-                cli_checkRepoDirSource
+            --quiet )
+                
+                # Redefine target flag.
+                FLAG_QUIET='true'
 
-                # Define action name using action value as reference.
-                ACTIONNAM="${FUNCNAM}_searchNode"
+                # Rotate positional parameters.
+                shift 1
+                ;;
 
-                # Break options loop.
-                break
+            --yes )
+                
+                # Redefine target flag.
+                FLAG_YES='true'
+
+                # Rotate positional parameters.
+                shift 1
                 ;;
 
             * )
+                # Break options loop.
                 break
         esac
     done
 
-    # Verify action value variable. 
-    if [[ $ACTIONVAL == '' ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Check action value passed through the command-line using source
+    # directory definition as reference.
+    cli_checkRepoDirSource
 
     # Define documentation entry.
     ENTRY=$(manual_getEntry)
