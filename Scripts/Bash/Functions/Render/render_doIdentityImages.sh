@@ -44,7 +44,7 @@ function render_doIdentityImages {
         # Check export id inside design templates.
         grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
         if [[ $? -gt 0 ]];then
-            cli_printMessage "`eval_gettext "The export id (\\\$EXPORTID) was not found inside \\\$TEMPLATE."`" "AsErrorLine"
+            cli_printMessage "`eval_gettext "Can't found the export id (\\\$EXPORTID) inside \\\$TEMPLATE."`" "AsErrorLine"
             cli_printMessage '-' 'AsSeparatorLine'
             continue
         fi
@@ -63,8 +63,13 @@ function render_doIdentityImages {
         # reusing background images inside design templates. In these
         # cases external files point to images which contain the
         # appropriate background image used by design template to
-        # propagate theme's artistic motif.
-        EXTERNALFILES=$(egrep '(xlink:href|sodipodi:absref)="/home/centos/artwork/' $INSTANCE \
+        # propagate theme's artistic motif. If you render inside
+        # trunk, background images inside trunk are evaluated,
+        # likewise if you render inside branches, background images
+        # inside branches are evaluated. There is no possible rendition
+        # inside tags.
+        EXTERNALFILES=$(egrep "(xlink:href|sodipodi:absref)=\"\
+            $(cli_getRepoTLDir $INSTANCE)" $INSTANCE \
             | sed -r 's!^[[:space:]]+!!' \
             | sed -r 's!^(xlink:href|sodipodi:absref)="!!' \
             | sed -r 's!".*$!!' | sort | uniq)
@@ -75,12 +80,12 @@ function render_doIdentityImages {
         # Render template instance and modify the inkscape output to
         # reduce the amount of characters used in description column
         # at final output.
-        inkscape $INSTANCE \
-            --export-id=$EXPORTID $WIDTH \
-            --export-png=$FILE.png \
-                | sed -r -e "s!Area !`gettext "Area"`: !" \
-                -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
-                -e "s!Bitmap saved as:.+/(trunk|branches|tags)/!`gettext "Saved as"`: \1/!"
+        cli_printMessage "$(inkscape $INSTANCE \
+            --export-id=$EXPORTID $WIDTH --export-png=$FILE.png | sed -r \
+            -e "s!Area !`gettext "Area"`: !" \
+            -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
+            -e "s!Bitmap saved as:!`gettext "Saved as"`:!")" \
+            'AsRegularLine'
 
         # Remove template instance. 
         if [[ -a $INSTANCE ]];then
@@ -93,15 +98,15 @@ function render_doIdentityImages {
             case "$ACTION" in
 
                 renderSyslinux* )
-                    render_doIdentityImageSyslinux $FILE "$ACTION"
+                    render_doIdentityImageSyslinux "$FILE" "$ACTION"
                     ;;
 
                 renderGrub* )
-                    render_doIdentityImageGrub $FILE "$ACTION"
+                    render_doIdentityImageGrub "$FILE" "$ACTION"
                     ;;
 
                 renderFormats:* )
-                    render_doIdentityImageFormats $FILE "$ACTION"
+                    render_doIdentityImageFormats "$FILE" "$ACTION"
                     ;;
 
                 renderBrands:* )
@@ -119,10 +124,9 @@ function render_doIdentityImages {
         # Output separator line.
         cli_printMessage '-' 'AsSeparatorLine'
 
-    done \
-        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+    done
 
-    # Define and execute posible last-rendition actions for image
+    # Define and execute possible last-rendition actions for image
     # rendeirng base action.
     for ACTION in "${LASTACTIONS[@]}"; do
 
