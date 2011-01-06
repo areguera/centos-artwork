@@ -155,6 +155,25 @@ function cli_printMessage {
             fi
             ;;
 
+        'AsSeparatorLine' )
+
+            # Define separator lenght.
+            local MAX=70
+
+            if [[ $FLAG_QUIET == 'false' ]];then
+
+                # Draw separator line.
+                until [[ $MAX -eq 0 ]];do
+                    echo -n "${MESSAGE}"
+                    MAX=$(($MAX - 1))
+                done
+
+                # Output newline to end separator.
+                echo
+
+            fi
+            ;;
+
         'AsYesOrNoRequestLine' )
             # Define positive answer.
             Y="`gettext "y"`"
