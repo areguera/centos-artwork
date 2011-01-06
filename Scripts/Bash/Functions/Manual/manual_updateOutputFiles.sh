@@ -50,8 +50,7 @@ function manual_updateOutputFiles {
     # under.
     ACTIONVAL=${MANUALS_DIR[0]}
 
-    # Update central repository. Be sure this is the last action
-    # you perform inside centos-art.sh script flow.
+    # Syncronize changes between working copy and central repository.
     cli_commitRepoChanges
 
 }
