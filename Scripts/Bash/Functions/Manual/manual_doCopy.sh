@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-# manual_updateTexinfoStructure.sh -- This function updates texinfo
-# documentation structure based on a documentation entry. This
-# function is useful to keep documentation structure syncronized with
-# repository directory structure. 
+# manual_doCopy.sh -- This function copies documentation entries and
+# update documentation structure to reflect changes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,7 +24,30 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_updateTexinfoStructure {
+function manual_doCopy {
+
+    # Verify target directory.
+    cli_checkRepoDirTarget
+
+    # Transform FLAG_TO path into a documentation entry.
+    FLAG_TO=$(manual_getEntry "${FLAG_TO}")
+
+    # Print action preamble.
+    cli_printActionPreamble "${FLAG_TO}" 'doCreate' 'AsResponeLine'
+
+    # Print action message.
+    cli_printMessage "$FLAG_TO" 'AsCreatingLine'
+
+    # Copy documentation entry.
+    svn cp "${ENTRY}" "${FLAG_TO}" --quiet
+
+    # Redefine documentation ENTRY variable in order to update
+    # documentation structure based on the new documentation entry
+    # specified by FLAG_TO path. At this point the new documentation
+    # entry should be created and available inside the working copy,
+    # so we are safe to update documentation structure using the new
+    # documentation entry as regular documentation entry.
+    ENTRY="${FLAG_TO}"
 
     # Update Texinfo menu information.
     manual_updateMenu
@@ -36,8 +57,5 @@ function manual_updateTexinfoStructure {
 
     # Update Texinfo cross-reference information.
     manual_restoreCrossReferences
-
-    # Update Texinfo output.
-    manual_updateOutputFiles
 
 }
