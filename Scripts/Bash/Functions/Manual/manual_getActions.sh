@@ -100,8 +100,9 @@ function manual_getActions {
                 # value here, so let's execute the action right now.
                 manual_updateOutputFiles
 
-                # Break options loop.
-                break
+                # End script execution flow. There is nothing else to
+                # do after updating documentation output.
+                exit
                 ;;
     
             --copy )
