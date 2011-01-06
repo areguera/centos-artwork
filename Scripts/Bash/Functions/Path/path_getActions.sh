@@ -112,11 +112,6 @@ function path_getActions {
         esac
     done
 
-    # Verify action value variable.
-    if [[ $ACTIONVAL == '' ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
-
     # Check action value (ACTIONVAL) passed through the command-line
     # using source directory definition as reference.
     cli_checkRepoDirSource

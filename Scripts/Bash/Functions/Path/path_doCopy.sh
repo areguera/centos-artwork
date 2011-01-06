@@ -26,11 +26,8 @@
 
 function path_doCopy {
 
-    # Verify target variable. We can't continue if target is empty.
-    if [[ $FLAG_TO == '' ]];then
-        cli_printMessage "`gettext "There is no target to work with."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Verify target directory.
+    cli_checkRepoDirTarget
 
     # Print action preamble.
     cli_printActionPreamble "${FLAG_TO}" 'doCreate' 'AsResponseLine'

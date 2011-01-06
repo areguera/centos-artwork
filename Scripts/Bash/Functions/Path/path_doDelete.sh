@@ -26,13 +26,8 @@
 
 function path_doDelete {
 
-    local PDIR
-
-    # Verify target variable. We can't continue if target is empty.
-    if [[ $ACTIONVAL == '' ]];then
-        cli_printMessage "`gettext "There is no source to work with."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Verify target directory.
+    cli_checkRepoDirTarget
 
     # Print action preamble.
     cli_printActionPreamble "$ACTIONVAL" 'doDelete' 'AsResponseLine'
