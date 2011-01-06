@@ -34,7 +34,7 @@ function render_doIdentityTexts {
         render_getIdentityDefs
 
         # Render text file.
-        cli_printMessage "`gettext "Saved as"`: $FILE"
+        cli_printMessage "$FILE" 'AsSavedAsLine'
         cat $INSTANCE > $FILE
 
         # Remove template instance.
