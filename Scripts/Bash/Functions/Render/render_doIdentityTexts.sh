@@ -26,7 +26,7 @@
 
 function render_doIdentityTexts {
 
-    # Start processing the base rendering list of FILES. Fun part
+    # Start processing the base rendition list of FILES. Fun part
     # approching :-).
     for FILE in $FILES; do
 
@@ -42,7 +42,7 @@ function render_doIdentityTexts {
             rm $INSTANCE
         fi
 
-        # Execute post-rendering actions.
+        # Execute post-rendition actions.
         for ACTION in "${POSTACTIONS[@]}"; do
 
             case "$ACTION" in
@@ -55,12 +55,13 @@ function render_doIdentityTexts {
 
         done
 
-        echo '----------------------------------------------------------------------'
+        # Output separator line.
+        cli_printMessage '-' 'AsSeparatorLine'
 
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 
-    # Execute last-rendering actions.
+    # Execute last-rendition actions.
     #for ACTION in "${LASTACTIONS[@]}"; do
     #
     #    case "$ACTION" in

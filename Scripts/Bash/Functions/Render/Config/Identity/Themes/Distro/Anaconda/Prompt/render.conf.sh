@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_loadConfig.sh -- This function defines Anaconda prompt
-# (syslinux)'s pre-rendering configuration script.
+# (syslinux)'s pre-rendition configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,7 +26,7 @@
 
 function render_loadConfig {
 
-    # Define rendering actions.
+    # Define rendition actions.
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='POST:renderSyslinux:'
     ACTIONS[2]='POST:renderSyslinux:-floyd'

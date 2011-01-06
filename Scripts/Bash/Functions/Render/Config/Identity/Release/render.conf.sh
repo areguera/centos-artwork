@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_loadConfig.sh -- This function defines release pre-rendering
+# render_loadConfig.sh -- This function defines release pre-rendition
 # configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -26,7 +26,7 @@
 
 function render_loadConfig {
 
-    # Define rendering actions.
+    # Define rendition actions.
     ACTIONS[0]='BASE:renderText'
     ACTIONS[1]='POST:formatText: --width=70 --uniform-spacing'
 

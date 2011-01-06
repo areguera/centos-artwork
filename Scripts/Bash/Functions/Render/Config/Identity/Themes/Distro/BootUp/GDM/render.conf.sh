@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_loadConfig.sh -- This function defines GNOME display manager
-# (GDM) pre-rendering configuration script.
+# (GDM) pre-rendition configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,7 +26,7 @@
 
 function render_loadConfig {
 
-    # Define rendering actions. 
+    # Define rendition actions. 
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]="LAST:renderDm:GNOME:800x600 1024x768 1280x1024 1360x768 \
         1680x1050 2048x1536 2560x960 2560x1240 3271x1227"

@@ -1,8 +1,7 @@
 #!/bin/bash
 #
 # render_getIdentityDefs.sh -- This function provides shared variables
-# re-definition for all rendering features inside centos-art.sh
-# script.
+# re-definition for all rendition actions inside centos-art.sh script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -60,10 +59,9 @@ function render_getIdentityDefs {
         && [[ "${TRANSLATIONPATH}" == "" ]];then
     
         # Remove the template (`Tpl/') string from FILE for those
-        # rendering images based on design templates. This avoids
-        # the creation of an extra `Tpl' directory under Img. We
-        # want to save primary PNG file structure directly under
-        # Img/ not Img/Tpl/.
+        # images based on design templates. This avoids the creation
+        # of an extra `Tpl' directory under Img. We want to save
+        # primary PNG file structure directly under Img/ not Img/Tpl/.
         FILE=$(echo $FILE | sed -r "s!^${SVG}/!!")
     
         # In this case just one primary image is rendered.
@@ -75,10 +73,9 @@ function render_getIdentityDefs {
         && [[ "${TRANSLATIONPATH}" == "" ]];then
     
         # Remove the template (`Tpl/') string from FILE for those
-        # rendering images based on design templates. This avoids
-        # the creation of an extra `Tpl' directory under Img. We
-        # want to save primary PNG file structure directly under
-        # Img/ not Img/Tpl/.
+        # images based on design templates. This avoids the creation
+        # of an extra `Tpl' directory under Img. We want to save
+        # primary PNG file structure directly under Img/ not Img/Tpl/.
         FILE=$(echo $FILE | sed -r "s!^${SVG}/!!")
     
         # In this case one primary image is rendered for each
@@ -102,7 +99,7 @@ function render_getIdentityDefs {
         && [[ "${TRANSLATIONPATH}" != "" ]];then
     
         # Create a template and translation matching list.  With this
-        # configuration we can optimize the rendering process for
+        # configuration we can optimize the rendition process for
         # artworks like Anaconda progress slides and installation
         # media, where many translation files apply one unique design
         # template file.
@@ -115,7 +112,7 @@ function render_getIdentityDefs {
         #
         # The idea is to create a link and customizable relation
         # between translation files and design template files in
-        # pre-rendering configuration scripts and then interpret it
+        # pre-rendition configuration scripts and then interpret it
         # here.
         #
         # This way we pretend to eliminate duplicated design templates
@@ -132,9 +129,9 @@ function render_getIdentityDefs {
         #
         #  1. There are too many translation files to apply to a
         #  single design template. This is the case of Brands
-        #  artworks (see: trunk/Identity/Brands) rendering, where
-        #  it is very difficult to maintain the relation list of
-        #  design templates and translation files. E.g.:
+        #  artworks (see: trunk/Identity/Brands) rendition, where it
+        #  is very difficult to maintain the relation list of design
+        #  templates and translation files. E.g.:
         #
         #  bond/path/template.svg: \
         #     bond/path/translation1.sed \
@@ -171,7 +168,7 @@ function render_getIdentityDefs {
         # configuration as much as possible.  Note that it is much
         # more flexible than possible configuration 1.
         #
-        # In this configuration, the pre-rendering configuration takes
+        # In this configuration, the pre-rendition configuration takes
         # the following form:
         #
         #  template.svg: \
@@ -184,8 +181,8 @@ function render_getIdentityDefs {
   
         # Possible configuration 2.1: If not design template was found
         # with the .svg extension, lets try design template without
-        # extension. This configuration is useful for rendering plain
-        # text files that doesn't use an extension (e.g., see inside
+        # extension. This configuration is useful to render plain text
+        # files that doesn't use an extension (e.g., see inside
         # `trunk/Identity/Release' directory structure).
         #
         #  template: \
@@ -234,7 +231,7 @@ function render_getIdentityDefs {
         
         # If there is no template found at this point, we need to
         # prevent an empty template from being used. It is a missing
-        # assignment definition in the pre-rendering script surely.
+        # assignment definition in the pre-rendition script surely.
         if [[ "$TEMPLATE" == '' ]];then
             cli_printMessage "`eval_gettext "There is no design template defined for \\\`\\\$FILE'."`" 'AsErrorLine'
             cli_printMessage "$(caller)" "AsToKnowMoreLine"
@@ -314,7 +311,7 @@ function render_getIdentityDefs {
     # Instead we assign the appropriate file extension when defining
     # file name.
     #
-    # When rendering using renderImage function, the structure of
+    # When we render using renderImage function, the structure of
     # files under Img/ directory will be the same of that used after
     # the common point in its related Translations or Template
     # directory depending in which one was taken as reference when

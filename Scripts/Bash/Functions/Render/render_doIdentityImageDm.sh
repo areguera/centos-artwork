@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityImageDm.sh -- This function porvides last-rendering
+# render_doIdentityImageDm.sh -- This function porvides last-rendition
 # action to create gdm or kdm themes tar.gz files for different
 # motifs, screen resolutions, and major releases of CentOS
 # distribution. 
@@ -18,7 +18,7 @@
 #
 # For example, to produce GNOME display manager theme in 2048x1536,
 # 1360x768, and 3271x1227 screen resolutions, for all major releases
-# available, use the following definition inside GDM pre-rendering
+# available, use the following definition inside GDM pre-rendition
 # configuration script:
 #
 # ACTIONS[0]='BASE:renderImage'
@@ -55,7 +55,7 @@ function render_doIdentityImageDm {
     local SYMBOL=''
     local DM=''
 
-    # Get display manager passed from render.conf.sh pre-rendering
+    # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
     DM=$(render_getConfOption "$1" '2')
 
@@ -63,7 +63,7 @@ function render_doIdentityImageDm {
     # path to display manager design models (i.e., the place where
     # GdmGreeterTheme.xml and GdmGreeterTheme.desktop files are
     # stored) using display manager information passed from
-    # render.conf.sh pre-rendering configuration script.
+    # render.conf.sh pre-rendition configuration script.
     if [[ $DM =~ '^GNOME$' ]];then
         TPL=/home/centos/artwork/trunk/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/GDM
     elif [[ $DM =~ '^KDE$' ]];then
@@ -76,7 +76,7 @@ function render_doIdentityImageDm {
     # Check absolute path to display manager design models.
     cli_checkFiles "$TPL" 'd'
 
-    # Get screen resolutions passed from render.conf.sh pre-rendering
+    # Get screen resolutions passed from render.conf.sh pre-rendition
     # configuration script.
     RESOLUTIONS=$(render_getConfOption "$1" '3')
 
@@ -106,7 +106,7 @@ function render_doIdentityImageDm {
 
     # Define directory where temporal files are stored. Remember that
     # cli_getThemeName may return branch enumeration if we are
-    # rendering under branches/ directory structure. In order to build
+    # rendition under branches/ directory structure. In order to build
     # the theme directory we only use the thame name, not the numerial
     # information, so be sure to remove it here.
     TMP=$(cli_getThemeName | cut -d/ -f1)
@@ -182,7 +182,7 @@ function render_doIdentityImageDm {
         popd > /dev/null
 
         # Output division rule.
-        echo '----------------------------------------------------------------------'
+        cli_printMessage '-' 'AsSeparatorLine'
 
     done
 

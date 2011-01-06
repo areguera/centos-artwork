@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # render_doIdentityImageKsplash.sh -- This function renders 
-# KSplash Preview.png image. Use this function as last-rendering
-# function to KSplash base-rendering.  
+# KSplash Preview.png image. Use this function as last-rendition
+# function to KSplash base-rendition.  
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -79,7 +79,7 @@ function render_doIdentityImageKsplash {
 
     done
 
-    # Output division rule.
-    echo '----------------------------------------------------------------------'
+    # Output separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentity.sh -- This function initiates rendering features
+# render_doIdentity.sh -- This function initiates rendition features
 # taking BASEACTIONS as reference.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -62,12 +62,12 @@ function render_doIdentity {
         case $ACTION in
 
             renderText )
-                # Provides text rendering feature.
+                # Provides text rendition feature.
                 render_doIdentityTexts
                 ;;
 
             renderImage )
-                # Provides image rendering feature.
+                # Provides image rendition feature.
                 render_doIdentityImages
                 ;;
 

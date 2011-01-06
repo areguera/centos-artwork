@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # render_loadConfig.sh -- This function defines CentOS brands
-# pre-rendering configuration script. This function is used to produce
+# pre-rendition configuration script. This function is used to produce
 # CentOS brands translation files.
 #
-# The rendering process used to produce CentOS Brands translation
+# The rendition process used to produce CentOS Brands translation
 # files is a bit different to that commonly found in other artwork
 # components inside CentOS Artwork Repository. Relevant differences
 # are described below:
@@ -24,7 +24,7 @@
 # links where the 30 translation files apply the 20 design templates
 # one by one, producing 600 images as result ---without counting
 # possible formats convenction that may happen during the
-# post-rendering actions---.
+# post-rendition actions---.
 #
 # Translation file names inside translation template (`Tpl') directory
 # have special meaning:
@@ -64,7 +64,7 @@
 # directory structure contain color replacements only. The color used
 # as replacement pattern is black (#000000).
 #
-# Using CentOS Brand translation files rendering script, CentOS Brand
+# Using CentOS Brand translation files rendition script, CentOS Brand
 # designers can work freely and use this script to generate the
 # translation files that renderImage needs, in order to produce CentOS
 # Brand images in different dimensions and colors.

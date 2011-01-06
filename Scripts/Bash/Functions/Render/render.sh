@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render.sh -- This function provides rendering features to
-# centos-art.sh script. Here we initialize rendering variables and
+# render.sh -- This function provides rendition features to
+# centos-art.sh script. Here we initialize rendition variables and
 # call render_getActions functions.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -27,10 +27,14 @@
 
 function render {
 
-    # Define rendering variables.
+    # Define default value to target flag. The target flag (--to)
+    # controls final destination used by copy related actions.
+    local FLAG_TO=''
+
+    # Define rendition variables.
     local RELEASE_FORMAT='[[:digit:]]+(\.[[:digit:]]+){,1}'
 
-    # Define rendering actions.
+    # Define rendition actions.
     render_getActions
 
 }

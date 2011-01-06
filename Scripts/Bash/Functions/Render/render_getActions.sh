@@ -27,10 +27,10 @@
 function render_getActions {
 
     # Define short options we want to support.
-    local ARGSS="d:f:"
+    local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="directory:,filter:"
+    local ARGSL="identity:,translation:,filter:,copy:,to:,quiet,yes"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -44,44 +44,76 @@ function render_getActions {
 
         case "$1" in
 
-            -d|--directory )
+            --identity )
 
-                # Define action value.
+                # Redefine action value.
                 ACTIONVAL="$2"
 
-                # Check action value. Be sure the action value matches
-                # the convenctions defined for source locations inside
-                # the working copy.
-                cli_checkRepoDirSource
+                # Redefine action name.
+                ACTIONNAM="${FUNCNAM}_getActionsIdentity"
 
-                # Define action name using action value as reference.
-                if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/.+$" ]];then
-                    ACTIONNAM="${FUNCNAM}_getActionsIdentity"
-                elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Translations/.+$" ]];then
-                    ACTIONNAM="${FUNCNAM}_getActionsTranslations"
-                else
-                    cli_printMessage "`eval_gettext "Cannot process the path \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
-                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-                fi
+                # Rotate positional parameters
+                shift 2
+                ;;
 
-                # Look for sub-options passed through command-line.
-                while true; do
-                    case "$3" in
-                        -f|--filter )
-                            # Redefine regular expression.
-                            REGEX="$4"
-                            # Rotate positional parameters
-                            shift 4
-                            ;;
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
+            --translation )
 
-                # Break options loop.
-                break
+                # Redefine action value.
+                ACTIONVAL="$2"
+
+                # Redefine action name.
+                ACTIONNAM="${FUNCNAM}_getActionsTranslations"
+
+                # Rotate positional parameters
+                shift 2
+                ;;
+
+            --filter )
+
+                # Redefine filter (regular expression) flag.
+                REGEX="$2"
+                
+                # Rotate positional parameters
+                shift 2
+                ;;
+
+            --copy )
+            
+                # Redefine action value variable.
+                ACTIONVAL="$2"
+
+                # Redefine action name variable.
+                ACTIONNAM="${FUNCNAME}_doCopy"
+
+                # Rotate positional parameters
+                shift 2
+                ;;
+
+            --to )
+            
+                # Redefine target value flag.
+                FLAG_TO="$2"
+
+                # Rotate positional parameters
+                shift 2
+                ;;
+
+            --quiet )
+
+                # Redefine quiet flag.
+                FLAG_QUIET='true'
+
+                # Rotate positional parameters
+                shift 1
+                ;;
+
+            --yes )
+
+                # Redefine answer flag.
+                FLAG_YES='true'
+
+                # Rotate positional parameters
+                shift 1
                 ;;
 
             * )
@@ -90,12 +122,12 @@ function render_getActions {
         esac
     done
 
-    # Verify action value variable.
-    if [[ $ACTIONVAL == '' ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Check action value. Be sure the action value matches the
+    # convenctions defined for source locations inside the working
+    # copy.
+    cli_checkRepoDirSource
 
-    # Redefine pre-rendering configuration directory. Pre-rendering
+    # Redefine pre-rendition configuration directory. Pre-rendition
     # configuration directory is where we store render.conf.sh
     # scripts. The render.conf.sh scripts define how each artwork is
     # rendered.

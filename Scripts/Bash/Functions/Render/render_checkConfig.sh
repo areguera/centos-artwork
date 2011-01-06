@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_checkConfig.sh -- This function checks/validates variables
-# passed from artwork-specific pre-rendering configuration files.
+# passed from artwork-specific pre-rendition configuration files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -36,19 +36,19 @@ function render_checkConfig {
     # call.
     for ACTION in "${ACTIONS[@]}"; do
 
-        # Define base-rendering actions.
+        # Define base-rendition actions.
         if [[ $ACTION =~ '^BASE:render(Text|Image)$' ]];then
             ACTION=$(render_getConfOption "$ACTION" '2-')
             BASEACTIONS[$BASECOUNT]="$ACTION"
             BASECOUNT=$(($BASECOUNT + 1))
 
-        # Define post-rendering actions.
+        # Define post-rendition actions.
         elif [[ $ACTION =~ '^POST:' ]];then
             ACTION=$(render_getConfOption "$ACTION" '2-')
             POSTACTIONS[$POSTCOUNT]="$ACTION"
             POSTCOUNT=$(($POSTCOUNT + 1))
 
-        # Define last-rendering actions.
+        # Define last-rendition actions.
         elif [[ $ACTION =~ '^LAST:' ]];then
             ACTION=$(render_getConfOption "$ACTION" '2-')
             LASTACTIONS[$LASTCOUNT]="$ACTION"
@@ -57,10 +57,10 @@ function render_checkConfig {
 
     done
 
-    # Check base-rendering actions. The base-rendering action defines
-    # what kind of rendering does centos-art.sh script performs.
-    # Presently, we only support image rendering (renderImage) and
-    # text rendering (renderText) as base-rendering actions. 
+    # Check base-rendition actions. The base-rendition action defines
+    # what kind of rendition does centos-art.sh script performs.
+    # Presently, we only support image rendition (renderImage) and
+    # text rendition (renderText) as base-rendition actions. 
     if [[ ${#BASEACTIONS[*]} -lt 1 ]];then
         cli_printMessage "`gettext "The BASE action is not defined."`"
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
@@ -69,11 +69,11 @@ function render_checkConfig {
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # Check post-rendering actions. Validation of post-rendering
-    # actions is action-specific. So, validation of post-rendering
+    # Check post-rendition actions. Validation of post-rendition
+    # actions is action-specific. So, validation of post-rendition
     # actions is not here, but inside action-specific functions. See
     # render_doIdentityImages and render_doIdentityTexts to see
-    # validation of renderImage and renderText post-rendering actions,
+    # validation of renderImage and renderText post-rendition actions,
     # respectively.
 
     # Re-define matching list to reduce the amount of empty spaces.

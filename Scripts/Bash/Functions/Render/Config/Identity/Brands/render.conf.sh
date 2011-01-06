@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_loadConfig.sh -- This function defines brands pre-rendering
+# render_loadConfig.sh -- This function defines brands pre-rendition
 # configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -29,7 +29,7 @@ function render_loadConfig {
     local TRANSLATION=''
     local TEMPLATE=''
 
-    # Define rendering actions.
+    # Define rendition actions.
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='POST:renderBrands: tif xpm pdf ppm'
 

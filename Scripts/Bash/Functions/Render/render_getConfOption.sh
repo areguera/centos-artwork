@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # render_doIdentityImageDm.sh -- This function standardize the way of
-# retrive action values from pre-rendering configuration files. Use
+# retrive action values from pre-rendition configuration files. Use
 # this function whenever you need to retrive action values from
-# pre-rendering configuration script.
+# pre-rendition configuration script.
 #
 # Usage:
 #
@@ -17,7 +17,7 @@
 # no variable assignment, the function outputs the action value
 # to standard output without trailing newline.
 #
-# ACTION is the string definition set in the pre-rendering
+# ACTION is the string definition set in the pre-rendition
 # configuration script holding the action name and its options
 # fields.
 #
@@ -73,10 +73,10 @@ function render_getConfOption {
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
-    # Get option from pre-rendering configuration action definition.
+    # Get option from pre-rendition configuration action definition.
     VALUE=$(echo -n "$ACTION" | cut -d: -f${FIELD})
 
-    # Sanitate action value passed from pre-rendering configuration
+    # Sanitate action value passed from pre-rendition configuration
     # action definition.
     VALUE=$(echo -n "${VALUE}" \
         | sed -r 's!^ *!!g' \

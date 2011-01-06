@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_getActionsIdentity.sh -- This function initiates rendering
-# configuration functions and executes them to perform the rendering
+# render_getActionsIdentity.sh -- This function initiates rendition
+# configuration functions and executes them to perform the rendition
 # action specified in the `ACTIONS' array variable. Function
 # initialization and execution is based on the absolute path
 # convenction defined by ARTCONF variable.
@@ -29,6 +29,15 @@
 
 function render_getActionsIdentity {
 
+    # Check parent directory. Identity rendition takes place under
+    # trunk/Identity directory structure only. Be sure action value
+    # referes an identity directory structure before perform identity
+    # rendition.
+    if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir $ACTIONVAL)/Identity/.+$" ]];then
+        cli_printMessage "`eval_gettext "Can't do identity rendition at \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+    fi
+
     # Define variables as local to avoid conflicts outside.
     local ARTCOMP=''
 
@@ -43,7 +52,7 @@ function render_getActionsIdentity {
     # translated design for each translation file available.
     # Matching list definitions where translation files need to be
     # applied to specific design templates are defined inside
-    # artwork-specific pre-rendering configuration scripts.
+    # artwork-specific pre-rendition configuration scripts.
     local MATCHINGLIST=''
 
     # Check current scripts path value. If scripts path points to a
@@ -58,7 +67,7 @@ function render_getActionsIdentity {
 
         # Output action message.
         cli_printMessage $FILE 'AsConfigurationLine'
-        echo '----------------------------------------------------------------------'
+        cli_printMessage '-' 'AsSeparatorLine'
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
@@ -69,22 +78,22 @@ function render_getActionsIdentity {
         local -a POSTACTIONS
         local -a LASTACTIONS
   
-        # Initialize artwork-specific pre-rendering configuration
+        # Initialize artwork-specific pre-rendition configuration
         # (function) scripts.
         . $FILE
 
-        # Execute artwork-specific pre-rendering configuration
+        # Execute artwork-specific pre-rendition configuration
         # (function) scripts to re-define artwork-specific ACTIONS and
         # MATCHINGLIST variables. 
         render_loadConfig
 
-        # Check variables passed from artwork-specific pre-rendering
+        # Check variables passed from artwork-specific pre-rendition
         # configuration scripts and make required transformations.
         render_checkConfig
 
-        # Redefine action value (ACTIONVAL) based on pre-rendering
+        # Redefine action value (ACTIONVAL) based on pre-rendition
         # configuration script path value. Otherwise, massive
-        # rendering may fail. Functions like renderImage need to know
+        # rendition may fail. Functions like renderImage need to know
         # the exact artwork path (that is, where images will be
         # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
@@ -102,21 +111,21 @@ function render_getActionsIdentity {
             ARTCOMP=$(echo $ARTCOMP | sed -r "s!Themes/Motifs/$(cli_getThemeName)/!Themes/!")
         fi
 
-        # Start rendering as defined in artwork-specific pre-rendering
+        # Start rendition as defined in artwork-specific pre-rendition
         # configuration file.
         render_doIdentity
 
         # Unset artwork-specific actions so they can be redefined by
-        # artwork-specific pre-rendering configuration scripts. This
-        # is required in massive rendering. For example, if you say
+        # artwork-specific pre-rendition configuration scripts. This
+        # is required in massive rendition. For example, if you say
         # centos-art.sh to render the whole Distro directory it first
         # renders Prompt entry, which defines the renderSyslinux
-        # post-rendering action, and later Progress entry which does
-        # not defines post-rendering actions. If we do not unset the
-        # ACTIONS variable, post-rendering actions defined in Prompt
+        # post-rendition action, and later Progress entry which does
+        # not defines post-rendition actions. If we do not unset the
+        # ACTIONS variable, post-rendition actions defined in Prompt
         # entry remain for Progress entry and that is not desired. We
         # want ACTIONS to do what we exactly tell it to do inside each
-        # artwork-specific pre-rendering configuration script.
+        # artwork-specific pre-rendition configuration script.
         unset ACTIONS
         unset BASEACTIONS
         unset POSTACTIONS

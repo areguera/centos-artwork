@@ -32,7 +32,7 @@ function render_getIdentityTemplateDir {
 
     # Sanitate design models location.  Be sure design models do
     # always point to trunk directory structure. This is useful to let
-    # `centos-art.sh' script do rendering under branches directory
+    # `centos-art.sh' script do rendition under branches directory
     # structure, reusing design models under trunk directory
     # structure.
     SVG=$(echo "$SVG" | sed "s!/branches/!/trunk/!")
@@ -50,7 +50,7 @@ function render_getIdentityTemplateDir {
     else
         # Redefine design model location based on theme model
         # (THEMEMODEL) variable value. The theme model variable is
-        # defined in the associated pre-rendering configuration script
+        # defined in the associated pre-rendition configuration script
         # and can be used to set which design model to use among a
         # list of different design models that we can choose from.
         SVG=$(echo "$SVG" | sed "s!Motifs/$(cli_getThemeName)!Models/$THEMEMODEL!")

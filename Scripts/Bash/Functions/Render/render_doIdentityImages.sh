@@ -34,7 +34,7 @@ function render_doIdentityImages {
     # design area we want to export.
     EXPORTID='CENTOSARTWORK'
 
-    # Start processing the base rendering list of FILES. Fun part
+    # Start processing the base rendition list of FILES. Fun part
     # approching :-).
     for FILE in $FILES; do
 
@@ -45,7 +45,7 @@ function render_doIdentityImages {
         grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
         if [[ $? -gt 0 ]];then
             cli_printMessage "`eval_gettext "The export id (\\\$EXPORTID) was not found inside \\\$TEMPLATE."`" "AsErrorLine"
-            echo '----------------------------------------------------------------------'
+            cli_printMessage '-' 'AsSeparatorLine'
             continue
         fi
 
@@ -87,7 +87,7 @@ function render_doIdentityImages {
             rm $INSTANCE
         fi
 
-        # Execute post-rendering actions.
+        # Execute post-rendition actions.
         for ACTION in "${POSTACTIONS[@]}"; do
 
             case "$ACTION" in
@@ -116,12 +116,13 @@ function render_doIdentityImages {
 
         done
 
-        echo '----------------------------------------------------------------------'
+        # Output separator line.
+        cli_printMessage '-' 'AsSeparatorLine'
 
     done \
         | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 
-    # Define and execute posible last-rendering actions for image
+    # Define and execute posible last-rendition actions for image
     # rendeirng base action.
     for ACTION in "${LASTACTIONS[@]}"; do
 

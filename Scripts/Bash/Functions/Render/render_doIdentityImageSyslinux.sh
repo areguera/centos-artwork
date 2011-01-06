@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_doIdentityImageSyslinux.sh -- This function provides
-# post-rendering action used to produce syslinux images.
+# post-rendition action used to produce syslinux images.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -33,7 +33,7 @@ function render_doIdentityImageSyslinux {
     # Define 16 colors images default file name prefix.
     local PREFIX='-16c'
 
-    # Define options using those passed to actions from pre-rendering
+    # Define options using those passed to actions from pre-rendition
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
@@ -79,13 +79,13 @@ function render_doIdentityImageSyslinux {
     cli_printMessage "$PALETTE_HEX" 'AsPaletteLine'
 
     # Check syslinux's palettes existence:  If there is no palette
-    # assume that this is the first time you are rendering syslinux
+    # assume that this is the first time you are rendition syslinux
     # images. If that is the case the script will provide you with the
     # PNG format which should be used as base to produce (using GIMP)
     # the .gpl palette.  The .gpl palette information is used to
     # produced (using GIMP) the colormap (.ppm) which is used to
     # automate the syslinux's 16 colors image (syslinux-splash.png)
-    # rendering.  If there is no palette available, do not apply color
+    # rendition.  If there is no palette available, do not apply color
     # reduction, show a message, and continue.
     cli_checkFiles $PALETTE_PPM
     cli_checkFiles $PALETTE_HEX

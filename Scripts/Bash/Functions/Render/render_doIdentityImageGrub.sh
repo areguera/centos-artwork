@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_doIdentityImageGrub.sh -- This function provides
-# post-rendering action used to produce GRUB images.
+# post-rendition action used to produce GRUB images.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -33,7 +33,7 @@ function render_doIdentityImageGrub {
     # Define 16 colors images default file name prefix.
     local PREFIX='-14c'
 
-    # Define options using those passed to actions from pre-rendering
+    # Define options using those passed to actions from pre-rendition
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
@@ -73,12 +73,12 @@ function render_doIdentityImageGrub {
     cli_printMessage "$PALETTE_PPM" 'AsPaletteLine'
 
     # Check GRUB's palettes existence:  If there is no palette assume
-    # that this is the first time you are rendering GRUB images. If
+    # that this is the first time you are rendition GRUB images. If
     # that is the case the script will provide you with the PNG format
     # which should be used as base to produce (using GIMP) the .gpl
     # palette.  The .gpl palette information is used to produced
     # (using GIMP) the colormap (.ppm) which is used to automate the
-    # GRUB's 14 colors image (splash.png) rendering.  If there is no
+    # GRUB's 14 colors image (splash.png) rendition.  If there is no
     # palette available, do not apply color reduction, show a message,
     # and continue.
     cli_checkFiles $PALETTE_PPM

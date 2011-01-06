@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_doIdentityImageBrands.sh -- This function provides
-# post-rendering actions to produce CentOS brands.
+# post-rendition actions to produce CentOS brands.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 

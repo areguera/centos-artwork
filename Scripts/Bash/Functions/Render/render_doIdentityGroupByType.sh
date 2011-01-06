@@ -1,18 +1,18 @@
 #!/bin/bash
 #
 # render_doIdentityGroupByTypes.sh -- This function provides
-# post-rendering and last-rendering action to group file inside
+# post-rendition and last-rendition action to group file inside
 # directories named as their file type.
 #
 # Usage:
 # ------
-# Post-rendering --> render_doIdentityGroupByTypes "$FILE" "$ACTION"
-# Last-rendering --> render_doIdentityGroupByTypes "$ACTION"
+# Post-rendition --> render_doIdentityGroupByTypes "$FILE" "$ACTION"
+# Last-rendition --> render_doIdentityGroupByTypes "$ACTION"
 #
-# Note that post-rendering uses 2 arguments ($FILE and $ACTION) and
-# last-rendering just one ($ACTION). This function uses the amount
-# of arguments to determine when it is acting as post-rendering and
-# when as last-rendering.
+# Note that post-rendition uses 2 arguments ($FILE and $ACTION) and
+# last-rendition just one ($ACTION). This function uses the amount
+# of arguments to determine when it is acting as post-rendition and
+# when as last-rendition.
 #
 # This function create one directory for each different file type.
 # Later files are moved inside directories respectively.  For example:
@@ -21,7 +21,7 @@
 # Jpg/ directory, and so on.
 #
 # For this function to work correctly, you need to specify which file
-# type you want to group. This is done in the post-rendering ACTIONS
+# type you want to group. This is done in the post-rendition ACTIONS
 # array inside the appropriate `render.conf.sh' pre-configuration
 # script. 
 #
@@ -29,8 +29,8 @@
 # xpm, and tif file for each png file available and groups them all by
 # its file type, inside directories named as their file type (i.e.
 # Png, Jpg, Ppm, Xpm, Tif). Note that in the example, groupByType is
-# ivoked as post-rendering action. If you want to invoke it as
-# last-rendering action use LAST definition instead of POST.
+# ivoked as post-rendition action. If you want to invoke it as
+# last-rendition action use LAST definition instead of POST.
 # 
 # ACTIONS[0]='BASE:renderImage' 
 # ACTIONS[1]='POST:renderFormats: jpg, ppm, xpm, tif' 
@@ -75,21 +75,21 @@ function render_doIdentityGroupByType {
     local COUNT=0
 
     if [[ $# -eq 1 ]];then
-        # Define file types for post-rendering action.
+        # Define file types for post-rendition action.
         FORMATS=$1
     elif [[ $# -eq 2 ]];then
-        # Define file types for last-rendering action.
+        # Define file types for last-rendition action.
         FORMATS=$2
     else
         cli_printMessage "`gettext "groupByType: Wrong invokation."`" 'AsErrorLine'
         cli_printMessage $(caller) "AsToKnowMoreLine"
     fi
 
-    # Sanitate file types passed from render.conf.sh pre-rendering
+    # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
     FORMATS=$(render_getConfOption "$FORMATS" '2-')
 
-    # Check file types passed from render.conf.sh pre-rendering
+    # Check file types passed from render.conf.sh pre-rendition
     # configuration script.
     if [[ "$FORMATS" == "" ]];then
         cli_printMessage "`gettext "There is no file type information to process."`" 'AsErrorLine'
@@ -110,7 +110,7 @@ function render_doIdentityGroupByType {
         PATTERNS[2]="^.*[^(${PATTERNS[1]})]/[[:alpha:]_-]+\.(${PATTERNS[0]})$"
 
         # Define list of files to process when acting as
-        # last-rendering action. There may be many different files to
+        # last-rendition action. There may be many different files to
         # process here, so we need to build a list with them all
         # (without duplications).
         for FILE in $(find $ACTIONVAL -regextype posix-egrep -type f -regex ${PATTERNS[2]} \
@@ -123,7 +123,7 @@ function render_doIdentityGroupByType {
     elif [[ $# -eq 2 ]];then
 
         # Define list of files to process when action as
-        # post-rendering action. There is just one value to process
+        # post-rendition action. There is just one value to process
         # here, the one being currently rendered.
         FILES[0]="$1"
         

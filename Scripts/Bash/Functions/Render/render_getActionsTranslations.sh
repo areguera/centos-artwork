@@ -27,13 +27,22 @@
 
 function render_getActionsTranslations {
 
-    # Check directory content. Translation rendering can be realized
+    # Check parent directory. Translation rendition takes place under
+    # trunk/Translations directory structure only. Be sure action
+    # value referes a translation directory structure before perform
+    # translation rendition.
+    if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir $ACTIONVAL)/Translations/.+$" ]];then
+        cli_printMessage "`eval_gettext "Can't do translation rendition at \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+    fi
+
+    # Check directory content. Translation rendition can be realized
     # only if inside the action value directory there is a 'Tpl/'
-    # directory. Translation rendering is based on translation
+    # directory. Translation rendition is based on translation
     # templates inside 'Tpl/' directory. If that directory doesn't
     # exist leave a message and quit execution. 
     if [[ ! -d $ACTIONVAL/Tpl ]];then
-        cli_printMessage "`gettext "Can't find translation templates in the directory provided."`"
+        cli_printMessage "`gettext "Can't find translation templates in the directory provided."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
@@ -42,9 +51,9 @@ function render_getActionsTranslations {
     # previous checks, it is time to check if the directory you are
     # processing already has render.conf.sh configuration scripts,
     # inside its trunk/Scripts/Bash/Config/... asociated strucutre. If
-    # such directory entry exists, the translation rendering should
+    # such directory entry exists, the translation rendition should
     # end immediatly at this point because it is surely not a
-    # release-specific translation rendering.
+    # release-specific translation rendition.
     if [[ -d $ARTCONF ]];then
         for FILE in $(find $ARTCONF -name 'render.conf.sh');do
             # Initialize configuration function.
@@ -56,15 +65,15 @@ function render_getActionsTranslations {
         # was found for the directory being processed. If the
         # render.conf.sh files were there, they were executed. Because
         # render.conf.sh has to do with very specificy translation
-        # rendering features (e.g., brands translation rendering),
-        # that doesn't match release-specifc rendering translation
+        # rendition features (e.g., brands translation rendition),
+        # that doesn't match release-specifc translation rendition
         # (the one done after this block). So, we need to end the
-        # translation rendering right here.
+        # translation rendition right here.
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
     # -------------------------------------------------------------
-    # - release-specific translation rendering stuff from this point on.
+    # - release-specific translation rendition stuff from this point on.
     # -------------------------------------------------------------
 
     # Initialize variables as local to avoid conflicts in other places.
@@ -214,7 +223,8 @@ function render_getActionsTranslations {
                 LOCALES_INFO=''
             fi
 
-            echo "------------------------------------------------------------"
+            # Output separator line.
+            cli_printMessage '-' "AsSeparatorLine"
 
         done
 

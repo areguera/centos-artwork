@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_doIdentityImageFormats.sh -- This function provides
-# post-rendering action used to convert images from PNG to different
+# post-rendition action used to convert images from PNG to different
 # image formats.  This function uses ImageMagick command line image
 # manipulation tool set to convert the base PNG image to as many
 # formats as ImageMagick supports.
