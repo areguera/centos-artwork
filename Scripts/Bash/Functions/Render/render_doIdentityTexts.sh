@@ -58,8 +58,7 @@ function render_doIdentityTexts {
         # Output separator line.
         cli_printMessage '-' 'AsSeparatorLine'
 
-    done \
-        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+    done
 
     # Execute last-rendition actions.
     #for ACTION in "${LASTACTIONS[@]}"; do
