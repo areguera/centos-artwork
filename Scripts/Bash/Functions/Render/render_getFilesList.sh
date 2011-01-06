@@ -62,11 +62,11 @@ function render_getFilesList {
     
     fi
 
-    # Make regular expression (REGEX) variable local (to avoid
+    # Make regular expression (FLAG_FILTER) variable local (to avoid
     # concatenation the next time cli_getFilesList function be
     # called), and redefine it to match files with specific extensions
     # inside specific locations.
-    local REGEX="${REGEX}.*\.${EXTENSION}"
+    local FLAG_FILTER="${FLAG_FILTER}.*\.${EXTENSION}"
 
     # Define list of files to process.
     cli_getFilesList "$LOCATION"

@@ -37,8 +37,8 @@ function cli_getFilesList {
         LOCATION="$ACTIONVAL"
     fi
 
-    # Define regular expression (REGEX) local variable, using regular
-    # expression (REGEX) global variable, to reduce the amount of
+    # Define regular expression (FLAG_FILTER) local variable, using regular
+    # expression (FLAG_FILTER) global variable, to reduce the amount of
     # characters we type in order to match find's output. When using
     # regular expression with find, in order to reduce the amount
     # files found, the regular expression is evaluated against the
@@ -49,11 +49,11 @@ function cli_getFilesList {
     # typing, we prepare the regular expression here to match the
     # whole path using the regular expression provided by the user as
     # pattern.
-    local REGEX="^${LOCATION}/${REGEX}$"
+    local FLAG_FILTER="^${LOCATION}/${FLAG_FILTER}$"
 
     # Define list of files to process.
     if [[ -d $LOCATION ]];then
-        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${REGEX}" | sort)
+        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${FLAG_FILTER}" | sort)
     elif [[ -f $LOCATION ]];then
         FILES=$LOCATION
     fi

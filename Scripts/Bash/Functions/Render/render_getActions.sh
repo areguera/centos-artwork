@@ -71,7 +71,7 @@ function render_getActions {
             --filter )
 
                 # Redefine filter (regular expression) flag.
-                REGEX="$2"
+                FLAG_FILTER="$2"
                 
                 # Rotate positional parameters
                 shift 2

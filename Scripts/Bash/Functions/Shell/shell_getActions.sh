@@ -62,7 +62,7 @@ function shell_getActions {
                     case "$3" in
                         --filter )
                             # Redefine regular expression.
-                            REGEX="$4"
+                            FLAG_FILTER="$4"
                             # Rotate positional parameters
                             shift 4
                             ;;
@@ -89,7 +89,7 @@ function shell_getActions {
     fi
 
     # Re-define regular expression to match shell files only.
-    REGEX=$(echo "${REGEX}.*\.(bash|shell|sh)")
+    FLAG_FILTER=$(echo "${FLAG_FILTER}.*\.(bash|shell|sh)")
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

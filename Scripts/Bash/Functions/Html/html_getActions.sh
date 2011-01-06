@@ -59,7 +59,7 @@ function html_getActions {
                     case "$3" in
                         -f|--filter )
                             # Redefine regular expression.
-                            REGEX="$4"
+                            FLAG_FILTER="$4"
                             # Rotate positional parameters
                             shift 4
                             ;;
@@ -85,7 +85,7 @@ function html_getActions {
     fi
 
     # Redefine regular expression to match html files only.
-    REGEX=$(echo "${REGEX}.*\.(html|htm)")
+    FLAG_FILTER=$(echo "${FLAG_FILTER}.*\.(html|htm)")
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

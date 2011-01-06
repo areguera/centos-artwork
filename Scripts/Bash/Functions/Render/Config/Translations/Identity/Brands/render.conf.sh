@@ -119,7 +119,7 @@ function render_loadConfig {
         # can reduce the amount of translation templates to process
         # using the string regex as pattern. 
         for FILE in $(find $TXT/Tpl -regextype posix-egrep \
-            -regex "^.+/$REGEX\.sed$" | sort );do
+            -regex "^.+/$FLAG_FILTER\.sed$" | sort );do
 
             # Define translation path.
             TRANSLATION=$FILE

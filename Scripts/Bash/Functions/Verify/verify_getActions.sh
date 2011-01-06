@@ -57,7 +57,7 @@ function verify_getActions {
                         --filter )
 
                             # Redefine regular expression.
-                            REGEX="$3"
+                            FLAG_FILTER="$3"
 
                             # Rotate positional parameters.
                             shift 3
@@ -87,7 +87,7 @@ function verify_getActions {
                         --filter )
 
                             # Redefine regular expression.
-                            REGEX="$3"
+                            FLAG_FILTER="$3"
 
                             # Rotate positional parameters.
                             shift 3
@@ -117,7 +117,7 @@ function verify_getActions {
                         --filter )
 
                             # Redefine regular expression.
-                            REGEX="$3"
+                            FLAG_FILTER="$3"
 
                             # Rotate positional parameters
                             shift 3

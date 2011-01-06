@@ -106,16 +106,16 @@ function render_getActionsTranslations {
     # release-specific directories.  Otherwise, all release-specific
     # translations directories available in the current location will
     # be affected.
-    if [[ $REGEX =~ "^${RELEASE_FORMAT}$" ]];then
-        RELEASES=$ACTIONVAL/$REGEX
+    if [[ $FLAG_FILTER =~ "^${RELEASE_FORMAT}$" ]];then
+        RELEASES=$ACTIONVAL/$FLAG_FILTER
 
     # Re-define releases using regular expression value. If you need
     # to create/update two or more release-specific directories (e.g.,
     # 5, 5.1, 5.2, and 6.0), you can use a command similar to
     # 'centos-art render --translation=./ --filter=5,5.1,5.2,6.0' to
     # create them all using just one command.
-    elif [[ $REGEX =~ "^(${RELEASE_FORMAT},?)+" ]];then
-        for RELEASE in $(echo $REGEX | tr ',' ' ');do
+    elif [[ $FLAG_FILTER =~ "^(${RELEASE_FORMAT},?)+" ]];then
+        for RELEASE in $(echo $FLAG_FILTER | tr ',' ' ');do
             RELEASES="$RELEASES $RELEASE"
         done
 

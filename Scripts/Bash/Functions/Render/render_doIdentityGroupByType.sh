@@ -115,7 +115,7 @@ function render_doIdentityGroupByType {
         # (without duplications).
         for FILE in $(find $ACTIONVAL -regextype posix-egrep -type f -regex ${PATTERNS[2]} \
             | sed -r 's!\.[[:alpha:]]{1,4}$!!' | sort | uniq \
-            | egrep $REGEX);do
+            | egrep $FLAG_FILTER);do
             FILES[$COUNT]="$FILE"
             COUNT=$(($COUNT + 1))
         done

@@ -37,7 +37,7 @@ function verify_doPackageReport {
     for PACKAGE in ${PACKAGES_MISSING[@]};do
 
         # Is this package from third party?
-        if [[ $PACKAGE =~ $PACKAGES_THIRD_REGEX ]];then
+        if [[ $PACKAGE =~ $PACKAGES_THIRD_FLAG_FILTER ]];then
             WARNING=" (`gettext "requires third party repository!"`)"
         fi
 

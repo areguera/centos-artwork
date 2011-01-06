@@ -36,18 +36,24 @@ function cli {
     local FUNCCONFIG=''
     local ACTIONNAM=''
     local ACTIONVAL=''
-    local REGEX=''
     local ARGUMENTS=''
 
-    # Define default value to verbosity flag. The verbosity flag
+    # Initialize default value to verbosity flag. The verbosity flag
     # (--quiet) controls wether centos-art.sh script prints messages
     # or not.
     local FLAG_QUIET='false'
     
-    # Define default value to answer flag. The answer flag (--yes)
+    # Initialize default value to answer flag. The answer flag (--yes)
     # controls wether centos-art.sh script does or does not pass
     # confirmation request points.
     local FLAG_YES='false'
+
+    # Initialize default value to filter flag. The filter flag
+    # (--filter) is used mainly to reduce the number of files to
+    # process. The value of this variable is interpreted as
+    # egrep-posix regular expression.  As initial value, we use a
+    # regular expression that matches everything.
+    local FLAG_FILTER='.+'
 
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"
@@ -97,11 +103,6 @@ function cli {
     
     # Check text editor execution rights. 
     cli_checkFiles $EDITOR 'x'
-
-    # Initialize regular expression (REGEX) used to reduce file
-    # processing. If no regular expression is defined, set regular
-    # expression to match everything.
-    REGEX='.+'
 
     # Go for function initialization. Keep the cli_getFunctions
     # function calling after all variables and arguments definitions.

@@ -65,7 +65,7 @@ function svg_getActions {
                         --filter )
 
                             # Redefine regular expression.
-                            REGEX="$4"
+                            FLAG_FILTER="$4"
 
                             # Rotate positional parameters.
                             shift 4
@@ -103,7 +103,7 @@ function svg_getActions {
                         --filter )
 
                             # Redefine regular expression.
-                            REGEX="$4"
+                            FLAG_FILTER="$4"
 
                             # Rotate positional parameters.
                             shift 4
@@ -133,7 +133,7 @@ function svg_getActions {
 
     # Re-define regular expression to match scalable vector graphic
     # files only.
-    REGEX=$(echo "${REGEX}.*\.(svgz|svg)")
+    FLAG_FILTER=$(echo "${FLAG_FILTER}.*\.(svgz|svg)")
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

@@ -49,7 +49,7 @@ function verify_doEnvironment {
 
         # Let user to reduce output using regular expression as
         # reference.
-        if [[ ${VARS[$COUNT]} =~ $REGEX ]];then
+        if [[ ${VARS[$COUNT]} =~ $FLAG_FILTER ]];then
 
             # Output list of environment variables using indirect
             # expansion (what a beautiful feature!) to output variable

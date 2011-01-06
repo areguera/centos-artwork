@@ -31,7 +31,7 @@
 function verify_doPackages {
 
     local PACKAGES=''
-    local PACKAGES_THIRD_REGEX=''
+    local PACKAGES_THIRD_FLAG_FILTER=''
     local -a PACKAGES_MISSING
     local PACKAGES_COUNT=0
 
@@ -43,7 +43,7 @@ function verify_doPackages {
     # Define, from required packages, packages being from third
     # parties (i.e., packages not included in CentOS [base]
     # repository.).
-    PACKAGES_THIRD_REGEX="(inkscape|blender)"
+    PACKAGES_THIRD_FLAG_FILTER="(inkscape|blender)"
 
     verify_doPackageCheck
     verify_doPackageReport

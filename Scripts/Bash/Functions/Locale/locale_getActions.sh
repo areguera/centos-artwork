@@ -58,7 +58,7 @@ function locale_getActions {
                         -f|--filter )
 
                             # Redefine regular expression.
-                            REGEX="$3"
+                            FLAG_FILTER="$3"
 
                             # Rotate positional parameters
                             shift 3
