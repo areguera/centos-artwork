@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# manual_doCopy.sh -- This function copies documentation entries and
+# manual_copyEntry.sh -- This function copies documentation entries and
 # update documentation structure to reflect changes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_doCopy {
+function manual_copyEntry {
 
     # Verify target directory.
     cli_checkRepoDirTarget
