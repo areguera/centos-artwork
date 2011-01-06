@@ -33,7 +33,7 @@ function manual_copyEntry {
     FLAG_TO=$(manual_getEntry "${FLAG_TO}")
 
     # Print action preamble.
-    cli_printActionPreamble "${FLAG_TO}" 'doCreate' 'AsResponeLine'
+    cli_printActionPreamble "${FLAG_TO}" 'doCreate' 'AsResponseLine'
 
     # Print action message.
     cli_printMessage "$FLAG_TO" 'AsCreatingLine'
