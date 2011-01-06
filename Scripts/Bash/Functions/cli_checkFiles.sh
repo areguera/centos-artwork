@@ -61,9 +61,7 @@ function cli_checkFiles {
         d | directory )
             # File exists and is a directory
             if [[ ! -d $FILE ]];then
-                cli_printMessage "`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
-                cli_printMessage "`gettext "Do you want to create it now?"`" 'AsYesOrNoRequestLine'
-                mkdir -p $FILE
+                MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
             fi
             ;;
 
