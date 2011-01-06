@@ -39,13 +39,24 @@ function cli_printActionPreamble {
     local FORMAT="$3"
     local COUNT_DIRS=0
 
-    # Redefine directories using both parent and parallel directories.
-    for DIR in $(echo $PARENT);do
-       DIRS="$DIRS $DIR $(cli_getRepoParallelDirs $DIR)"
-    done
+    # Redefine directories using both parent and parallel directories
+    # if PARENT path is only inside trunk/Identity structure.
+    # Otherwise do not resolve parallel directories just parent ones.
+    # This make possible to reuse cli_printActionPreamble in
+    # functionalities that act on non-parent directory structures like
+    # documentation (trunk/Manuals). 
+    if [[ $PARENT =~ "^$(cli_getRepoTLDir ${PARENT})/Identity/.+$" ]];then
+        for DIR in $(echo $PARENT);do
+           DIRS="$DIRS $DIR $(cli_getRepoParallelDirs $DIR)"
+        done
+    else
+        for DIR in $(echo $PARENT);do
+           DIRS="$DIRS $DIR"
+        done
+    fi
 
-    # Redefine total amount of directories.
-    COUNT_DIRS=$(echo "$DIRS" | wc -l)
+    # Redefine total number of directories.
+    COUNT_DIRS=$(echo "$DIRS" | sed -r "s! +!\n!g" | wc -l)
 
     # Redefine preamble messages based on action.
     case $ACTION in
