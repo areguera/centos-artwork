@@ -88,7 +88,7 @@ function manual_getActions {
                 ACTIONVAL="$2"
 
                 # Define action name.
-                ACTIONNAM="${FUNCNAM}_removeEntry"
+                ACTIONNAM="${FUNCNAM}_deleteEntry"
 
                 # Rotate positional parameters.
                 shift 2

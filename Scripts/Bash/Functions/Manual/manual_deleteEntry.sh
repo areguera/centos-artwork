@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# manual_removeEntry.sh -- This function removes a documentation entry
+# manual_deleteEntry.sh -- This function removes a documentation entry
 # from your working copy documentation structure.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_removeEntry {
+function manual_deleteEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRIES=''
@@ -111,7 +111,7 @@ function manual_removeEntry {
         manual_updateNodes
 
         # Remove entry cross references from documentation manual.
-        manual_removeCrossReferences
+        manual_deleteCrossReferences
 
     done
  

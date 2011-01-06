@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# manual_removeCrossReferences.sh -- This function looks inside
+# manual_deleteCrossReferences.sh -- This function looks inside
 # texinfo source files, from section level on, and removes all cross
 # referece definitions related to a documentation entry. Use this
-# function in coordination with manual_removeEntry function, in order
+# function in coordination with manual_deleteEntry function, in order
 # to keep cross reference information, inside the documentation
 # manual, syncronized.
 #
@@ -28,7 +28,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_removeCrossReferences {
+function manual_deleteCrossReferences {
 
     local -a PATTERN
     local -a REPLACE

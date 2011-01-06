@@ -6,9 +6,9 @@
 # those cases where documentation entries are created/recreated to
 # documentation structure. It is a verification that looks for
 # matching documentation entries previously defined as removed by
-# manual_removeCrossReferences function. The
+# manual_deleteCrossReferences function. The
 # manual_restoreCrossReferences function relays in the removed message
-# format produced by manual_removeCrossReferences function, in order
+# format produced by manual_deleteCrossReferences function, in order
 # to return them back into the link format. 
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
