@@ -78,7 +78,7 @@ function manual_deleteEntry {
             # Do not remove a versioned documentation entry with
             # changes inside. Print a message about it and stop script
             # execution instead.
-            cli_printMessage "`gettext "There are pendent changes that need to be committed first."`" 'AsErrorLine'
+            cli_printMessage "`gettext "There are changes that need to be committed first."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
 
         fi
