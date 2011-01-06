@@ -68,7 +68,7 @@ function manual_deleteEntry {
     for ENTRY in $ENTRIES;do
 
         # Verify entry inside the working copy. 
-        if [[ $(cli_getRepoStatus "$ENTRY") =~ '^( |\?)' ]];then
+        if [[ $(cli_getRepoStatus "$ENTRY") =~ '^(\?)?$' ]];then
 
             # Print action message.
             cli_printMessage "$ENTRY" "AsDeletingLine"
@@ -87,11 +87,11 @@ function manual_deleteEntry {
         # entry can be under version control or not versioned at all.
         # Here we need to decide how to remove documentation entries
         # based on wether they are under version control or not.
-        if [[ "$(cli_getRepoStatus "$ENTRY")" == ' ' ]];then
+        if [[ "$(cli_getRepoStatus "$ENTRY")" == '' ]];then
 
             # Documentation entry is under version control and there
-            # is no change to be commited up to central repository. We
-            # are safe to schedule it for deletion.
+            # is no change to be committed up to central repository.
+            # We are safe to schedule it for deletion.
             svn del "$ENTRY" --quiet
 
         elif [[ "$(cli_getRepoStatus "$ENTRY")" == '?' ]];then
