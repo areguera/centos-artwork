@@ -11,7 +11,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on January, 6 2011 by texi2html 1.76 -->
+<!-- Created on January, 7 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -59,14 +59,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions-Render"></a>
@@ -85,12 +85,244 @@ ul.toc {list-style: none}
 <a name="SEC250"></a>
 <h3 class="subsection"> 3.42.2 Description </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
-
 
 <a name="SEC251"></a>
+<h4 class="subsubsection"> 3.42.2.1 Renderable layout 1 </h4>
+
+<p>Design models (<tt>`Tpl/'</tt>) and design images (<tt>`Img/'</tt>)
+directories share a common parent directory under `trunk/Identity'
+directory structure.
+</p>
+<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fRender_003a1"></a>
+<pre class="verbatim">trunk/Identity/Widgets
+|-- Tpl
+|   `-- file.svg
+`-- Img
+    `-- file.png
+
+trunk/Translations/Identity/Widgets
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+</pre>
+</div><p><strong>Figure 3.20: Example of renderable layout 1.
+</strong>
+</p>
+
+<a name="SEC252"></a>
+<h4 class="subsubsection"> 3.42.2.2 Renderable layout 2 </h4>
+
+<p>Design models and design images don't share a common parent directory.
+Instead, design models (<tt>`Models/'</tt>) and design images
+(<tt>`Motifs/'</tt>) are stored separately on another inside different
+directory structures under <tt>`trunk/Identity/Themes/'</tt>. 
+</p>  
+<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fRender_003a2"></a>
+<pre class="verbatim">trunk/Identity/Themes/Models/Default/Distro/
+`-- Anaconda
+    `-- Header
+        `-- anaconda_header.svg
+
+trunk/Identity/Themes/Motifs/TreeFlower/Distro/
+`-- Anaconda
+    `-- Header
+        `-- anaconda_header.png
+
+trunk/Translations/Identity/Themes/Distro/Anaconda/Header/
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Header/
+</pre>
+</div><p><strong>Figure 3.21: Example of renderable layout 2.
+</strong>
+</p>
+<p>The &quot;Renderable layout 2&quot; emerged from &quot;Renderable layout 1&quot; to satisfy a
+need that &quot;Renderable layout 1&quot; cannot (and should not) satisfy: Produce
+images using a combination of different design models and different
+visual styles.
+</p>
+<p>The &quot;Renderable layout 2&quot; layout is used at the following directory
+structures only:
+</p>
+<dl compact="compact">
+<dt> <tt>`trunk/Identity/Themes/Motifs/$THEMENAME/'</tt></dt>
+<dd>
+<p>This directory structure controls the main development area of themes
+artistic motifs. In this directory structure we find components that
+cannot be produced automatically (e.g., Backgrouds, Concepts, Color
+information, theme Screenshots, etc.).
+</p>
+</dd>
+<dt> <tt>`turnk/Identity/Themes/Models/$THEMEMODEL/'</tt></dt>
+<dd>
+<p>This directory structure controls the main development are of themes
+design models. In this directory structure we found design components
+that specify <em>how</em> artistic motifs' backgrounds are applied to
+each image design that need to be produced. Inside design models you
+find translation markers used by translation files in order to
+translate images in different languages, releases, and architectures.
+</p>
+</dd>
+<dt> <tt>`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/'</tt></dt>
+<dd>
+<p>This directory structure controls the secondary development of theme
+artistic motifs. In this directory structure we find components that
+connot be produced automatically <em>plus</em> components that are
+produced automatically (e.g., Anaconda stuff, Bootup stuff, Promotion
+stuff, etc.).
+</p>
+</dd>
+<dt> <tt>`branches/Identity/Themes/Model/$THEMEMODEL/'</tt></dt>
+<dd>
+<p>This directory structure does't exist, and it never would. Theme
+design models are concentrated in just one place
+(<tt>`trunk/Identity/Themes/Models/'</tt>).
+</p>
+</dd>
+<dt> <tt>`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/$TAGNUM/'</tt></dt>
+<dd>
+<p>This directory structure 
+</p>
+</dd>
+<dt> <tt>`tags/Identity/Themes/Model/$THEMEMODEL/'</tt></dt>
+<dd>
+<p>This directory structure does't exist, and it never would. Theme
+design models are concentrated in just one place
+(<tt>`trunk/Identity/Themes/Models/'</tt>).
+</p></dd>
+</dl>
+
+
+<a name="SEC253"></a>
+<h4 class="subsubsection"> 3.42.2.3 Duplicate renderable layouts </h4>
+
+<p>A renderable layout is formed by design models, design images,
+pre-rendition configuration scripts and translations files. This way,
+when we say to duplicate rendition stuff we are saying to duplicate
+these four directory structures (i.e., design models, design images,
+pre-rendition configuration scripts, and related translations files).
+</p>
+<p>When we duplicate directories, inside `trunk/Identity' directory
+structure, we need to be aware of renderable layout described above
+and the source location used to perform the duplication action. 
+</p>
+<p>The source location is relevant to centos-art.sh script in order to
+determine the required auxiliar information inside directory
+structures that need to be copied too (otherwise we may end up with
+orphan directory structures unable to be rendered, due the absence of
+required information).
+</p>
+<p>In order for a renderable directory structure to be valid, the new
+directory structure copied should match the following conditions:
+</p>
+<ol>
+<li> To have a unique directory structure under
+<tt>`trunk/Identity'</tt>, organized by any one of the above
+organizational designs above.
+
+</li><li> To have a unique directory structure under
+<tt>`trunk/Translations'</tt> to store translation files.
+
+</li><li> To have a unique directory structure under
+<tt>`trunk/Scripts/Bash/Functions/Render/Config'</tt> to set pre-rendition
+configuration script.
+</li></ol>
+
+<p>As convenction, the <code>render_doCopy</code> function uses
+<tt>`trunk/Identity'</tt> directory structure as source location.  Once
+the <tt>`trunk/Identity'</tt> directory structure has been specified and
+verified, the related path information is built from it and copied
+automatically to the new location specified by <var>FLAG_TO</var> variable.
+</p>
+<p>Renderable layout 1:
+</p>
+<p>Command:
+- centos-art render -copy=trunk/Identity/Widgets -to=trunk/Identity/NewDirName
+</p>
+<p>Sources:
+- trunk/Identity/Widgets
+- trunk/Translations/Identity/Widgets
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+</p>
+<p>Targets:
+- trunk/Identity/NewDirName
+- trunk/Translations/Identity/NewDirName
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/NewDirName
+</p>
+<p>Renderable layout 2:
+</p>
+<p>Command:
+- centos-art render -copy=trunk/Identity/Themes/Motifs/TreeFlower \
+                    -to=trunk/Identity/Themes/Motifs/NewDirName
+</p>
+<p>Sources:
+- trunk/Identity/Themes/Motifs/TreeFlower
+- trunk/Translations/Identity/Themes
+- trunk/Translations/Identity/Themes/Motifs/TreeFlower
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Motifs/TreeFlower
+</p>
+<p>Targets:
+- trunk/Identity/Themes/Motifs/NewDirName
+- trunk/Translations/Identity/Themes
+- trunk/Translations/Identity/Themes/Motifs/NewDirName
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Motifs/NewDirName
+</p>
+<p>Notice that design models are not included in source or target
+locations. This is intentional. In &quot;Renderable layout 2&quot;, design
+models live by their own, they just exist, they are there, available
+for any artistic motif to use. By default `Themes/Models/Default'
+design model directory structure is used, but other design models
+directory structures (under Themes/Models/) can be created and used
+changing the value of THEMEMODEL variable inside the pre-rendition
+configuration script of the artistic motif source location you want to
+produce.
+</p>
+<p>Notice how translations and pre-rendition configuration scripts may
+both be equal in source and target. This is because such structures
+are common to all artistic motifs (the default values to use when no
+specific values are provided).
+</p>
+<p>- The common directory structures are not copied or deleted. We cannot
+  copy a directory structure to itself.
+</p>
+<p>- The common directory structures represent the default value to use
+  when no specific translations and/or pre-rendition configuration
+  script are provided inside source location.
+</p>
+<p>- The specific directory structures, if present, are both copiable and
+  removable. This is, when you perform a copy or delete action from
+  source, that source specific auxiliar directories are transfered in
+  the copy action to a new location (that specified by FLAG_TO
+  variable).
+</p>
+<p>- When translations and/or pre-rendition configuration scripts are
+  found inside the source directory structure, the centos-art.sh
+  script loads common auxiliar directories first and later specific
+  auxiliar directories.  This way, identity rendition of source
+  locations can be customized idividually over the base of common
+  default values.
+</p>
+<p>- The specific auxiliar directories are optional.
+</p>
+<p>- The common auxiliar directories should be present always. This is,
+  in order to provide the information required by render functionality
+  (i.e., to make it functional in the more basic level of its
+  existence).
+</p>
+<p>Notice how the duplication process is done from `trunk/Identity' on,
+not the oposite. If you try to duplicate a translation structure (or
+similar auxiliar directory structures like pre-rendition configuration
+scripts), the `trunk/Identity' for that translation is not created.
+This limitation is impossed by the fact that many `trunk/Identity'
+directory structures may reuse/share the same translation directory
+structure. We cannot delete one translation (or similar) directory
+structures while a related `trunk/Identity/' directory structure is
+still in need of it.
+</p>
+<p>The `render_doCopy' functionality does duplicate directory structures
+directly involved in rendition process only. Once such directories
+have been duplicated, the functionality stops thereat. 
+</p>
+
+<a name="SEC254"></a>
 <h3 class="subsection"> 3.42.3 Usage </h3>
 
 <ul class="toc">
@@ -98,26 +330,26 @@ ul.toc {list-style: none}
 </li></ul>
 
 
-<a name="SEC252"></a>
+<a name="SEC255"></a>
 <h3 class="subsection"> 3.42.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_46.html#SEC253">3.43 trunk/Scripts/Bash/Functions/Render/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_46.html#SEC256">3.43 trunk/Scripts/Bash/Functions/Render/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_46.html#SEC253" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_46.html#SEC256" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC248" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>January, 6 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>January, 7 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

@@ -252,6 +252,9 @@ CentOS Artwork Repository
   3.42 trunk/Scripts/Bash/Functions/Render
     3.42.1 Goals
     3.42.2 Description
+      3.42.2.1 Renderable layout 1
+      3.42.2.2 Renderable layout 2
+      3.42.2.3 Duplicate renderable layouts
     3.42.3 Usage
     3.42.4 See also
   3.43 trunk/Scripts/Bash/Functions/Render/Config
@@ -4396,7 +4399,213 @@ concepts for.
 3.42.2 Description
 ------------------
 
-   * ...
+3.42.2.1 Renderable layout 1
+............................
+
+Design models (`Tpl/') and design images (`Img/') directories share a
+common parent directory under `trunk/Identity' directory structure.
+
+
+trunk/Identity/Widgets
+|-- Tpl
+|   `-- file.svg
+`-- Img
+    `-- file.png
+
+trunk/Translations/Identity/Widgets
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+
+Figure 3.20: Example of renderable layout 1.
+
+3.42.2.2 Renderable layout 2
+............................
+
+Design models and design images don't share a common parent directory.
+Instead, design models (`Models/') and design images (`Motifs/') are
+stored separately on another inside different directory structures
+under `trunk/Identity/Themes/'.
+
+
+trunk/Identity/Themes/Models/Default/Distro/
+`-- Anaconda
+    `-- Header
+        `-- anaconda_header.svg
+
+trunk/Identity/Themes/Motifs/TreeFlower/Distro/
+`-- Anaconda
+    `-- Header
+        `-- anaconda_header.png
+
+trunk/Translations/Identity/Themes/Distro/Anaconda/Header/
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Header/
+
+Figure 3.21: Example of renderable layout 2.
+
+   The "Renderable layout 2" emerged from "Renderable layout 1" to
+satisfy a need that "Renderable layout 1" cannot (and should not)
+satisfy: Produce images using a combination of different design models
+and different visual styles.
+
+   The "Renderable layout 2" layout is used at the following directory
+structures only:
+
+`trunk/Identity/Themes/Motifs/$THEMENAME/'
+     This directory structure controls the main development area of
+     themes artistic motifs. In this directory structure we find
+     components that cannot be produced automatically (e.g.,
+     Backgrouds, Concepts, Color information, theme Screenshots, etc.).
+
+`turnk/Identity/Themes/Models/$THEMEMODEL/'
+     This directory structure controls the main development are of
+     themes design models. In this directory structure we found design
+     components that specify _how_ artistic motifs' backgrounds are
+     applied to each image design that need to be produced. Inside
+     design models you find translation markers used by translation
+     files in order to translate images in different languages,
+     releases, and architectures.
+
+`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/'
+     This directory structure controls the secondary development of
+     theme artistic motifs. In this directory structure we find
+     components that connot be produced automatically _plus_ components
+     that are produced automatically (e.g., Anaconda stuff, Bootup
+     stuff, Promotion stuff, etc.).
+
+`branches/Identity/Themes/Model/$THEMEMODEL/'
+     This directory structure does't exist, and it never would. Theme
+     design models are concentrated in just one place
+     (`trunk/Identity/Themes/Models/').
+
+`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/$TAGNUM/'
+     This directory structure
+
+`tags/Identity/Themes/Model/$THEMEMODEL/'
+     This directory structure does't exist, and it never would. Theme
+     design models are concentrated in just one place
+     (`trunk/Identity/Themes/Models/').
+
+3.42.2.3 Duplicate renderable layouts
+.....................................
+
+A renderable layout is formed by design models, design images,
+pre-rendition configuration scripts and translations files. This way,
+when we say to duplicate rendition stuff we are saying to duplicate
+these four directory structures (i.e., design models, design images,
+pre-rendition configuration scripts, and related translations files).
+
+   When we duplicate directories, inside `trunk/Identity' directory
+structure, we need to be aware of renderable layout described above and
+the source location used to perform the duplication action.
+
+   The source location is relevant to centos-art.sh script in order to
+determine the required auxiliar information inside directory structures
+that need to be copied too (otherwise we may end up with orphan
+directory structures unable to be rendered, due the absence of required
+information).
+
+   In order for a renderable directory structure to be valid, the new
+directory structure copied should match the following conditions:
+
+  1. To have a unique directory structure under `trunk/Identity',
+     organized by any one of the above organizational designs above.
+
+  2. To have a unique directory structure under `trunk/Translations' to
+     store translation files.
+
+  3. To have a unique directory structure under
+     `trunk/Scripts/Bash/Functions/Render/Config' to set pre-rendition
+     configuration script.
+
+   As convenction, the `render_doCopy' function uses `trunk/Identity'
+directory structure as source location.  Once the `trunk/Identity'
+directory structure has been specified and verified, the related path
+information is built from it and copied automatically to the new
+location specified by FLAG_TO variable.
+
+   Renderable layout 1:
+
+   Command: - centos-art render -copy=trunk/Identity/Widgets
+-to=trunk/Identity/NewDirName
+
+   Sources: - trunk/Identity/Widgets -
+trunk/Translations/Identity/Widgets -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+
+   Targets: - trunk/Identity/NewDirName -
+trunk/Translations/Identity/NewDirName -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/NewDirName
+
+   Renderable layout 2:
+
+   Command: - centos-art render
+-copy=trunk/Identity/Themes/Motifs/TreeFlower \
+-to=trunk/Identity/Themes/Motifs/NewDirName
+
+   Sources: - trunk/Identity/Themes/Motifs/TreeFlower -
+trunk/Translations/Identity/Themes -
+trunk/Translations/Identity/Themes/Motifs/TreeFlower -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Motifs/TreeFlower
+
+   Targets: - trunk/Identity/Themes/Motifs/NewDirName -
+trunk/Translations/Identity/Themes -
+trunk/Translations/Identity/Themes/Motifs/NewDirName -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Motifs/NewDirName
+
+   Notice that design models are not included in source or target
+locations. This is intentional. In "Renderable layout 2", design models
+live by their own, they just exist, they are there, available for any
+artistic motif to use. By default `Themes/Models/Default' design model
+directory structure is used, but other design models directory
+structures (under Themes/Models/) can be created and used changing the
+value of THEMEMODEL variable inside the pre-rendition configuration
+script of the artistic motif source location you want to produce.
+
+   Notice how translations and pre-rendition configuration scripts may
+both be equal in source and target. This is because such structures are
+common to all artistic motifs (the default values to use when no
+specific values are provided).
+
+   - The common directory structures are not copied or deleted. We
+cannot   copy a directory structure to itself.
+
+   - The common directory structures represent the default value to use
+ when no specific translations and/or pre-rendition configuration
+script are provided inside source location.
+
+   - The specific directory structures, if present, are both copiable
+and   removable. This is, when you perform a copy or delete action from
+ source, that source specific auxiliar directories are transfered in
+the copy action to a new location (that specified by FLAG_TO
+variable).
+
+   - When translations and/or pre-rendition configuration scripts are
+found inside the source directory structure, the centos-art.sh   script
+loads common auxiliar directories first and later specific   auxiliar
+directories.  This way, identity rendition of source   locations can be
+customized idividually over the base of common   default values.
+
+   - The specific auxiliar directories are optional.
+
+   - The common auxiliar directories should be present always. This is,
+ in order to provide the information required by render functionality
+(i.e., to make it functional in the more basic level of its
+existence).
+
+   Notice how the duplication process is done from `trunk/Identity' on,
+not the oposite. If you try to duplicate a translation structure (or
+similar auxiliar directory structures like pre-rendition configuration
+scripts), the `trunk/Identity' for that translation is not created.
+This limitation is impossed by the fact that many `trunk/Identity'
+directory structures may reuse/share the same translation directory
+structure. We cannot delete one translation (or similar) directory
+structures while a related `trunk/Identity/' directory structure is
+still in need of it.
+
+   The `render_doCopy' functionality does duplicate directory structures
+directly involved in rendition process only. Once such directories have
+been duplicated, the functionality stops thereat.
 
 3.42.3 Usage
 ------------
@@ -4627,7 +4836,7 @@ following top commentary structure:
 14|
 15| }
 
-Figure 3.20: The functions script base comment structure
+Figure 3.22: The functions script base comment structure
 
    Relevant lines in the above structure are lines from 5 to 9.
 Everything else in the file is left immutable.
@@ -4691,7 +4900,7 @@ copyright note looks like the following:
 27|
 28| }
 
-Figure 3.21: The function script comment example
+Figure 3.23: The function script comment example
 
    Relevant lines in the above structure are lines from 5 to 22.  Pay
 attention how the copyright line was built, and how the license was
@@ -6220,94 +6429,94 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  389)
-Common translation files:                      See 3.50.2.5. (line 5650)
-How to render brands' translation files:       See 3.52.3.   (line 5954)
-How to render fonts' translation files:        See 3.54.3.   (line 6027)
-How to render translation files:               See 3.50.3.   (line 5820)
-Metadata maintainance:                         See 3.45.2.   (line 4780)
-Specific translation files:                    See 3.50.2.6. (line 5675)
-tags:                                          See 2.        (line  392)
-Template translation files:                    See 3.50.2.4. (line 5480)
-Translation brands file names:                 See 3.52.2.1. (line 5911)
-Translation configuration scripts:             See 3.50.2.8. (line 5709)
-Translation entries:                           See 3.50.2.1. (line 5296)
-Translation files:                             See 3.50.2.3. (line 5412)
-Translation markers:                           See 3.50.2.2. (line 5377)
-Translation paths:                             See 3.50.2.1. (line 5296)
+branches:                                      See 1.        (line  392)
+Common translation files:                      See 3.50.2.5. (line 5859)
+How to render brands' translation files:       See 3.52.3.   (line 6163)
+How to render fonts' translation files:        See 3.54.3.   (line 6236)
+How to render translation files:               See 3.50.3.   (line 6029)
+Metadata maintainance:                         See 3.45.2.   (line 4989)
+Specific translation files:                    See 3.50.2.6. (line 5884)
+tags:                                          See 2.        (line  395)
+Template translation files:                    See 3.50.2.4. (line 5689)
+Translation brands file names:                 See 3.52.2.1. (line 6120)
+Translation configuration scripts:             See 3.50.2.8. (line 5918)
+Translation entries:                           See 3.50.2.1. (line 5505)
+Translation files:                             See 3.50.2.3. (line 5621)
+Translation markers:                           See 3.50.2.2. (line 5586)
+Translation paths:                             See 3.50.2.1. (line 5505)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5709)
-Translation rendering:                         See 3.50.2.7. (line 5698)
-Translation rendering default functionality:   See 3.50.2.9. (line 5795)
-trunk:                                         See 3.        (line  395)
-trunk Identity:                                See 3.1.      (line  398)
-trunk Identity Brands:                         See 3.2.      (line  818)
-trunk Identity Fonts:                          See 3.3.      (line  835)
-trunk Identity Icons:                          See 3.4.      (line  912)
-trunk Identity Isolinux:                       See 3.5.      (line  929)
-trunk Identity Models:                         See 3.6.      (line  946)
-trunk Identity Models Css:                     See 3.7.      (line  966)
-trunk Identity Models Html:                    See 3.8.      (line  988)
-trunk Identity Models Img Promo Web:           See 3.9.      (line 1009)
-trunk Identity Models Tpl:                     See 3.10.     (line 1030)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1051)
-trunk Identity Models Xcf:                     See 3.12.     (line 1381)
-trunk Identity Release:                        See 3.13.     (line 1402)
-trunk Identity Themes:                         See 3.14.     (line 1419)
-trunk Identity Themes Models:                  See 3.15.     (line 1444)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1477)
-trunk Identity Themes Models Default:          See 3.17.     (line 1504)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1536)
+                                                             (line 5918)
+Translation rendering:                         See 3.50.2.7. (line 5907)
+Translation rendering default functionality:   See 3.50.2.9. (line 6004)
+trunk:                                         See 3.        (line  398)
+trunk Identity:                                See 3.1.      (line  401)
+trunk Identity Brands:                         See 3.2.      (line  821)
+trunk Identity Fonts:                          See 3.3.      (line  838)
+trunk Identity Icons:                          See 3.4.      (line  915)
+trunk Identity Isolinux:                       See 3.5.      (line  932)
+trunk Identity Models:                         See 3.6.      (line  949)
+trunk Identity Models Css:                     See 3.7.      (line  969)
+trunk Identity Models Html:                    See 3.8.      (line  991)
+trunk Identity Models Img Promo Web:           See 3.9.      (line 1012)
+trunk Identity Models Tpl:                     See 3.10.     (line 1033)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1054)
+trunk Identity Models Xcf:                     See 3.12.     (line 1384)
+trunk Identity Release:                        See 3.13.     (line 1405)
+trunk Identity Themes:                         See 3.14.     (line 1422)
+trunk Identity Themes Models:                  See 3.15.     (line 1447)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1480)
+trunk Identity Themes Models Default:          See 3.17.     (line 1507)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1539)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1620)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1637)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1663)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1688)
-trunk Identity Themes Motifs Flame:            See 3.23.     (line 1792)
-trunk Identity Themes Motifs Modern:           See 3.24.     (line 2003)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 2022)
+                                                             (line 1623)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1640)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1666)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1691)
+trunk Identity Themes Motifs Flame:            See 3.23.     (line 1795)
+trunk Identity Themes Motifs Modern:           See 3.24.     (line 2006)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 2025)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.26.
-                                                             (line 2144)
+                                                             (line 2147)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.27.
-                                                             (line 2165)
+                                                             (line 2168)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.28.
-                                                             (line 2186)
+                                                             (line 2189)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.29.
-                                                             (line 2213)
-trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2269)
-trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2291)
+                                                             (line 2216)
+trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2272)
+trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2294)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.32.
-                                                             (line 2310)
-trunk Identity Widgets:                        See 3.33.     (line 2606)
-trunk Manuals:                                 See 3.34.     (line 2623)
-trunk Scripts:                                 See 3.35.     (line 2644)
-trunk Scripts Bash:                            See 3.36.     (line 2668)
-trunk Scripts Bash Functions:                  See 3.37.     (line 2817)
-trunk Scripts Bash Functions Html:             See 3.38.     (line 3926)
-trunk Scripts Bash Functions Locale:           See 3.39.     (line 3947)
-trunk Scripts Bash Functions Manual:           See 3.40.     (line 4027)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 4048)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4391)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4412)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4590)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4762)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 4950)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5180)
-trunk Scripts Perl:                            See 3.48.     (line 5209)
-trunk Scripts Python:                          See 3.49.     (line 5226)
-trunk Translations:                            See 3.50.     (line 5247)
-trunk Translations Identity:                   See 3.51.     (line 5849)
-trunk Translations Identity Brands:            See 3.52.     (line 5870)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 5965)
-trunk Translations Identity Fonts:             See 3.54.     (line 5980)
-trunk Translations Identity Models:            See 3.55.     (line 6043)
-trunk Translations Identity Release:           See 3.56.     (line 6058)
-trunk Translations Identity Themes:            See 3.57.     (line 6073)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6088)
+                                                             (line 2313)
+trunk Identity Widgets:                        See 3.33.     (line 2609)
+trunk Manuals:                                 See 3.34.     (line 2626)
+trunk Scripts:                                 See 3.35.     (line 2647)
+trunk Scripts Bash:                            See 3.36.     (line 2671)
+trunk Scripts Bash Functions:                  See 3.37.     (line 2820)
+trunk Scripts Bash Functions Html:             See 3.38.     (line 3929)
+trunk Scripts Bash Functions Locale:           See 3.39.     (line 3950)
+trunk Scripts Bash Functions Manual:           See 3.40.     (line 4030)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 4051)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4394)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4621)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4799)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4971)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5159)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5389)
+trunk Scripts Perl:                            See 3.48.     (line 5418)
+trunk Scripts Python:                          See 3.49.     (line 5435)
+trunk Translations:                            See 3.50.     (line 5456)
+trunk Translations Identity:                   See 3.51.     (line 6058)
+trunk Translations Identity Brands:            See 3.52.     (line 6079)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6174)
+trunk Translations Identity Fonts:             See 3.54.     (line 6189)
+trunk Translations Identity Models:            See 3.55.     (line 6252)
+trunk Translations Identity Release:           See 3.56.     (line 6267)
+trunk Translations Identity Themes:            See 3.57.     (line 6282)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6297)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6109)
-trunk Translations Identity Widgets:           See 3.60.     (line 6202)
-Unused definitions:                            See 3.45.2.1. (line 4887)
+                                                             (line 6318)
+trunk Translations Identity Widgets:           See 3.60.     (line 6411)
+Unused definitions:                            See 3.45.2.1. (line 5096)
 List of Figures
 ***************
 

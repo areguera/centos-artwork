@@ -6,9 +6,231 @@
 
 @subsection Description
 
-@itemize
-@item ...
-@end itemize
+@subsubsection Renderable layout 1
+
+Design models (@file{Tpl/}) and design images (@file{Img/})
+directories share a common parent directory under `trunk/Identity'
+directory structure.
+
+@float Figure,trunk/Scripts/Bash/Functions/Render:1
+@verbatim
+trunk/Identity/Widgets
+|-- Tpl
+|   `-- file.svg
+`-- Img
+    `-- file.png
+
+trunk/Translations/Identity/Widgets
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+@end verbatim
+@caption{Example of renderable layout 1.}
+@end float
+
+@subsubsection Renderable layout 2
+
+Design models and design images don't share a common parent directory.
+Instead, design models (@file{Models/}) and design images
+(@file{Motifs/}) are stored separately on another inside different
+directory structures under @file{trunk/Identity/Themes/}. 
+  
+@float Figure,trunk/Scripts/Bash/Functions/Render:2
+@verbatim
+trunk/Identity/Themes/Models/Default/Distro/
+`-- Anaconda
+    `-- Header
+        `-- anaconda_header.svg
+
+trunk/Identity/Themes/Motifs/TreeFlower/Distro/
+`-- Anaconda
+    `-- Header
+        `-- anaconda_header.png
+
+trunk/Translations/Identity/Themes/Distro/Anaconda/Header/
+trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Header/
+@end verbatim
+@caption{Example of renderable layout 2.}
+@end float
+
+The ``Renderable layout 2'' emerged from ``Renderable layout 1'' to satisfy a
+need that ``Renderable layout 1'' cannot (and should not) satisfy: Produce
+images using a combination of different design models and different
+visual styles.
+
+The ``Renderable layout 2'' layout is used at the following directory
+structures only:
+
+@table @file
+@item trunk/Identity/Themes/Motifs/$THEMENAME/
+
+This directory structure controls the main development area of themes
+artistic motifs. In this directory structure we find components that
+cannot be produced automatically (e.g., Backgrouds, Concepts, Color
+information, theme Screenshots, etc.).
+
+@item turnk/Identity/Themes/Models/$THEMEMODEL/
+
+This directory structure controls the main development are of themes
+design models. In this directory structure we found design components
+that specify @emph{how} artistic motifs' backgrounds are applied to
+each image design that need to be produced. Inside design models you
+find translation markers used by translation files in order to
+translate images in different languages, releases, and architectures.
+
+@item branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/
+
+This directory structure controls the secondary development of theme
+artistic motifs. In this directory structure we find components that
+connot be produced automatically @emph{plus} components that are
+produced automatically (e.g., Anaconda stuff, Bootup stuff, Promotion
+stuff, etc.).
+
+@item branches/Identity/Themes/Model/$THEMEMODEL/
+
+This directory structure does't exist, and it never would. Theme
+design models are concentrated in just one place
+(@file{trunk/Identity/Themes/Models/}).
+
+@item branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/$TAGNUM/
+
+This directory structure 
+
+@item tags/Identity/Themes/Model/$THEMEMODEL/
+
+This directory structure does't exist, and it never would. Theme
+design models are concentrated in just one place
+(@file{trunk/Identity/Themes/Models/}).
+@end table
+
+@subsubsection Duplicate renderable layouts
+
+A renderable layout is formed by design models, design images,
+pre-rendition configuration scripts and translations files. This way,
+when we say to duplicate rendition stuff we are saying to duplicate
+these four directory structures (i.e., design models, design images,
+pre-rendition configuration scripts, and related translations files).
+
+When we duplicate directories, inside `trunk/Identity' directory
+structure, we need to be aware of renderable layout described above
+and the source location used to perform the duplication action. 
+
+The source location is relevant to centos-art.sh script in order to
+determine the required auxiliar information inside directory
+structures that need to be copied too (otherwise we may end up with
+orphan directory structures unable to be rendered, due the absence of
+required information).
+
+In order for a renderable directory structure to be valid, the new
+directory structure copied should match the following conditions:
+
+@enumerate
+@item To have a unique directory structure under
+@file{trunk/Identity}, organized by any one of the above
+organizational designs above.
+
+@item To have a unique directory structure under
+@file{trunk/Translations} to store translation files.
+
+@item To have a unique directory structure under
+@file{trunk/Scripts/Bash/Functions/Render/Config} to set pre-rendition
+configuration script.
+@end enumerate
+
+As convenction, the @code{render_doCopy} function uses
+@file{trunk/Identity} directory structure as source location.  Once
+the @file{trunk/Identity} directory structure has been specified and
+verified, the related path information is built from it and copied
+automatically to the new location specified by @var{FLAG_TO} variable.
+
+Renderable layout 1:
+
+Command:
+- centos-art render --copy=trunk/Identity/Widgets --to=trunk/Identity/NewDirName
+
+Sources:
+- trunk/Identity/Widgets
+- trunk/Translations/Identity/Widgets
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+
+Targets:
+- trunk/Identity/NewDirName
+- trunk/Translations/Identity/NewDirName
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/NewDirName
+
+Renderable layout 2:
+
+Command:
+- centos-art render --copy=trunk/Identity/Themes/Motifs/TreeFlower \
+                    --to=trunk/Identity/Themes/Motifs/NewDirName
+
+Sources:
+- trunk/Identity/Themes/Motifs/TreeFlower
+- trunk/Translations/Identity/Themes
+- trunk/Translations/Identity/Themes/Motifs/TreeFlower
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Motifs/TreeFlower
+
+Targets:
+- trunk/Identity/Themes/Motifs/NewDirName
+- trunk/Translations/Identity/Themes
+- trunk/Translations/Identity/Themes/Motifs/NewDirName
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Motifs/NewDirName
+
+Notice that design models are not included in source or target
+locations. This is intentional. In ``Renderable layout 2'', design
+models live by their own, they just exist, they are there, available
+for any artistic motif to use. By default `Themes/Models/Default'
+design model directory structure is used, but other design models
+directory structures (under Themes/Models/) can be created and used
+changing the value of THEMEMODEL variable inside the pre-rendition
+configuration script of the artistic motif source location you want to
+produce.
+
+Notice how translations and pre-rendition configuration scripts may
+both be equal in source and target. This is because such structures
+are common to all artistic motifs (the default values to use when no
+specific values are provided).
+
+- The common directory structures are not copied or deleted. We cannot
+  copy a directory structure to itself.
+
+- The common directory structures represent the default value to use
+  when no specific translations and/or pre-rendition configuration
+  script are provided inside source location.
+
+- The specific directory structures, if present, are both copiable and
+  removable. This is, when you perform a copy or delete action from
+  source, that source specific auxiliar directories are transfered in
+  the copy action to a new location (that specified by FLAG_TO
+  variable).
+
+- When translations and/or pre-rendition configuration scripts are
+  found inside the source directory structure, the centos-art.sh
+  script loads common auxiliar directories first and later specific
+  auxiliar directories.  This way, identity rendition of source
+  locations can be customized idividually over the base of common
+  default values.
+
+- The specific auxiliar directories are optional.
+
+- The common auxiliar directories should be present always. This is,
+  in order to provide the information required by render functionality
+  (i.e., to make it functional in the more basic level of its
+  existence).
+
+Notice how the duplication process is done from `trunk/Identity' on,
+not the oposite. If you try to duplicate a translation structure (or
+similar auxiliar directory structures like pre-rendition configuration
+scripts), the `trunk/Identity' for that translation is not created.
+This limitation is impossed by the fact that many `trunk/Identity'
+directory structures may reuse/share the same translation directory
+structure. We cannot delete one translation (or similar) directory
+structures while a related `trunk/Identity/' directory structure is
+still in need of it.
+
+The `render_doCopy' functionality does duplicate directory structures
+directly involved in rendition process only. Once such directories
+have been duplicated, the functionality stops thereat. 
 
 @subsection Usage
 
