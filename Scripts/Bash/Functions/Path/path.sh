@@ -31,7 +31,7 @@ function path {
     local FLAG_TO=''
 
     # Define default value to syncronization flag. The syncronization
-    # flag (--sync) controls wether centos-art.sh script calls itself
+    # flag (--sync) controls whether centos-art.sh script calls itself
     # to create/delete parallel directories at the moment of
     # create/delte action itself.
     local FLAG_SYNC='false'

@@ -69,7 +69,7 @@ function render_doIdentityImageGrub {
 
     # Print which palette of colors centos-art.sh script is using to
     # produce grub content. This is relevant in order to know if we
-    # are using wether trunk or branches palette of colors.
+    # are using whether trunk or branches palette of colors.
     cli_printMessage "$PALETTE_PPM" 'AsPaletteLine'
 
     # Check GRUB's palettes existence:  If there is no palette assume

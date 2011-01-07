@@ -39,12 +39,12 @@ function cli {
     local ARGUMENTS=''
 
     # Initialize default value to verbosity flag. The verbosity flag
-    # (--quiet) controls wether centos-art.sh script prints messages
+    # (--quiet) controls whether centos-art.sh script prints messages
     # or not.
     local FLAG_QUIET='false'
     
     # Initialize default value to answer flag. The answer flag (--yes)
-    # controls wether centos-art.sh script does or does not pass
+    # controls whether centos-art.sh script does or does not pass
     # confirmation request points.
     local FLAG_YES='false'
 

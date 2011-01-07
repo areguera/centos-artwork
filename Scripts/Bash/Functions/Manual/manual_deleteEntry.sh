@@ -86,7 +86,7 @@ function manual_deleteEntry {
         # Remove documentation entry. At this point, documentation
         # entry can be under version control or not versioned at all.
         # Here we need to decide how to remove documentation entries
-        # based on wether they are under version control or not.
+        # based on whether they are under version control or not.
         if [[ "$(cli_getRepoStatus "$ENTRY")" == '' ]];then
 
             # Documentation entry is under version control and there
