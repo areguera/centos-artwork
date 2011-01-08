@@ -11,7 +11,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on January, 7 2011 by texi2html 1.76 -->
+<!-- Created on January, 8 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -149,12 +149,12 @@ rendered, the <code>centos-art</code> script remove the previous instance
 and takes the next file in the list of translation files to repate the
 whole process once again, and so on for all files in the list. This
 configuration is mainly used to produce translatable artworks like
-Anaconda's progress slide images.
+Anaconda progress slide images.
 </p>
 <p>To find out correspondence between translation entries and identity
 entries, you need to look the path of both translation entries and
-identity entries. For example, if you are using the Modern's artisitic
-motif, the identity entry for Anaconda progress artwork is:
+identity entries. For example, if you are using the <em>Modern</em>
+artisitic motif, the identity entry for Anaconda progress artwork is:
 </p>
 <pre class="verbatim">trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
 </pre>
@@ -164,10 +164,10 @@ motif, the identity entry for Anaconda progress artwork is:
 </pre>
 <p>Note how the <tt>`Translations/'</tt> directory prefixes <tt>`Identity/'</tt>
 directory, also how static values (e.g., Identity, Themes, Distro,
-etc.) in the identity's entry path remain in translation's entry path,
-and how variable values like theme names (e.g., Modern) are stript out
-from translation's entry path. The same convenction can be applied to
-other identity entries in order to determine their translation
+etc.) in the identity entry path remain in translation entry path, and
+how variable values like theme names (e.g., <em>Modern</em>) are stript
+out from translation entry path. The same convenction can be applied
+to other identity entries in order to determine their translation
 entries, or to other translation entries to determine their identity
 entries.
 </p>
@@ -257,7 +257,7 @@ designers can work together but independently one another.
 <a name="SEC304"></a>
 <h4 class="subsubsection"> 3.50.2.3 Translation Files </h4>
 
-<p>Translation files are text files with <code>sed</code>'s commands inside,
+<p>Translation files are text files with <code>sed</code> commands inside,
 replacement commands mainly. As convenction, translation file names
 end in <samp>`.sed'</samp>. Translation files are used by <code>centos-art</code>
 script to produce translated artworks for specific major releases of
@@ -328,11 +328,11 @@ for in the <samp>`--filter='release-number''</samp> argument.
 <p>Template translation files are translation files stored inside
 translation template directory. Template translation files are used by
 <code>centos-art</code> script to produce specific translation files
-only. Template translation files may be empty or contain
-<code>sed</code>'s replacement commands. If template translation files
-are empty files, the final specifc translation file built from it
-contains release-specific replacement commands only. For example,
-see the following translation entry:
+only. Template translation files may be empty or contain <code>sed</code>
+replacement commands. If template translation files are empty files,
+the final specifc translation file built from it contains
+release-specific replacement commands only. For example, see the
+following translation entry:
 </p>
 <pre class="verbatim">trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
 |-- 3
@@ -473,10 +473,10 @@ translation text you want to have after artworks rendering.  Sometimes
 we use the FLAG component with the <samp>`g'</samp> command to apply the
 replacements globally.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> More information about how to use <code>sed</code>'s
-replacement commands and flags is available in <code>sed</code>'s
-documentation manual. To read sed's documentation manual type the
-following command: 
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> More information about how to use <code>sed</code>
+replacement commands and flags is available in <code>sed</code>
+documentation manual. To read <code>sed</code> documentation manual type
+the following command: 
 </p><pre class="verbatim">info sed
 </pre></blockquote>
 
@@ -560,19 +560,19 @@ script execution.
 directory inside translation entry, it looks for translations
 pre-rendering configuration scripts for that translation entry.
 Translation pre-rendering configuration scripts let you extend
-translation's default functionality (described below). 
+translation default functionality (described below). 
 </p>
 <p>Translation pre-rendering configuration scripts are stored under
 <tt>`trunk/Scripts'</tt> directory, specifically under the appropriate
-language implementation. If you are using <code>centos-art</code> Bash's
+language implementation. If you are using <code>centos-art</code> Bash
 implementation, the translation pre-rendering scripts are store in the
 <tt>`trunk/Scripts/Bash/Config'</tt> location; if you are using
-<code>centos-art</code> Python's implementation, then translation
+<code>centos-art</code> Python implementation, then translation
 pre-rendering scripts are stored in the
 <tt>`trunk/Scripts/Python/Config'</tt> location, and so on for other
 implementations.
 </p>
-<p>Bash's translation pre-rendering configuration scripts look like the
+<p>Bash translation pre-rendering configuration scripts look like the
 following:
 </p>
 <pre class="verbatim">#!/bin/bash
@@ -608,7 +608,7 @@ function render_loadConfig {
 executed when rendering a translation entry. Translation pre-rendering
 scripts are loaded using the translation entry being rendered as
 reference. For example, suppose you are using the
-<code>centos-art</code> Bash's implementation, and you are rendering
+<code>centos-art</code> Bash implementation, and you are rendering
 translations for CentOS brands, in this situation the translation
 entry would be:
 </p>
@@ -631,8 +631,8 @@ the script execution.
 following form:
 </p><pre class="verbatim">render.conf.extension
 </pre><p>where <samp>`extension'</samp> refers the programming language implementation
-you are using. For example, <samp>`sh'</samp> for Bash's, <samp>`py'</samp> for
-Python's, <samp>`pl'</samp> for Perl's, and so on for other implementations.
+you are using. For example, <samp>`sh'</samp> for Bash, <samp>`py'</samp> for Python,
+<samp>`pl'</samp> for Perl, and so on for other implementations.
 </p></blockquote>
 
 <p>As we are using Bash implementation to describe the translation
@@ -724,7 +724,7 @@ distribution you want to render translations for.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>January, 7 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>January, 8 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

@@ -872,11 +872,11 @@ letter `ai' (i)).
 
    As CentOS logo typography convenction, the word `CentOS' uses
 `Denmark' typography as base, both for the word `CentOS' and the phrase
-`Community Enterprise Operating System'. The size of CentOS logo's
-phrase is half the size in poits the word `CentOS' has and it below
-`CentOS' word and aligned with it on the left.  The distance between
-`CentOS' word and phrase `Community Enterprise Operating System' have
-the size in points the phrase has.
+`Community Enterprise Operating System'. The phrase size of CentOS logo
+is half the size in poits the word `CentOS' has and it below `CentOS'
+word and aligned with it on the left.  The distance between `CentOS'
+word and phrase `Community Enterprise Operating System' have the size
+in points the phrase has.
 
    When the CentOS release brand is built, use `Denmark' typography for
 the release number. The release number size is two times larger (in
@@ -1095,8 +1095,8 @@ their own visual styles. For example: MoinMoin, the web application
 used to support the CentOS wiki (`http://wiki.centos.org/') is highly
 customizable but Mailman (in its 2.x.x serie), the web application used
 to support the CentOS mailing list, doesn't support(1) a customization
-system that separates presentation from logic, similar to MoinMoin's
-one.
+system that separates presentation from logic, similar to that used by
+MoinMoin.
 
    This visual style diversity complicates our goal of one unique visual
 style for all web applications. So, if we want one unique visual style
@@ -1268,9 +1268,9 @@ below:
      the place where you customize the visual style of `webapp1-0.0.1/'
      web application.
 
-          *Tip* Use Subversion's `diff' between CentOS customization
-          and upstream development lines to know what you are changing
-          exactly.
+          *Tip* Use the `diff' command of Subversion between CentOS
+          customization and upstream development lines to know what you
+          are changing exactly.
 
 *Build packages*
      When web application has been customized, build the web application
@@ -1375,7 +1375,7 @@ CentOS [base] and CentOS [updates] repositories.
 
 ---------- Footnotes ----------
 
-   (1) Mailman's theme support may be introduced in mailman-3.x.x
+   (1) The theme support of Mailman may be introduced in mailman-3.x.x
 release.
 
 3.12 trunk/Identity/Models/Xcf
@@ -1507,8 +1507,8 @@ are maintained by CentOS Community.
 3.17.1 Goals
 ------------
 
-This location stores CentOS default theme model. The CentOS default
-theme model is used in all visual manifestations of CentOS Project's
+This location stores CentOS default theme model. The default theme
+model of CentOS is used in all visual manifestations of CentOS Project
 corporate visual identity (e.g., distributions, web sites, promotion,
 etc.).
 
@@ -1699,7 +1699,7 @@ The `trunk/Identity/Themes/Motifs' directory exists to:
 ------------------
 
 The artistic motif of theme is a graphic design component that provides
-theme's visual style, it is used as pattern to connect all visual
+the visual style of themes, it is used as pattern to connect all visual
 manifestations inside one unique theme.
 
    Artistic motifs are based on conceptual ideas. Conceptual ideas bring
@@ -1719,10 +1719,10 @@ anything, and art works don't escape from it.
 you want to create a new artistic motif for CentOS. To create a new
 artistic motif you need to create a directory under
 `Identity/Themes/Motifs/' using a name coherent with your conceptual
-idea. That name will be your artistic motif's name. If possible, when
-creating new conceptual ideas for CentOS, think about what CentOS means
-for you, what does it makes you feel, take your time, think deep, and
-share; you can improve the idea as time goes on.
+idea. That name will be the name of your artistic motif. If possible,
+when creating new conceptual ideas for CentOS, think about what CentOS
+means for you, what does it makes you feel, take your time, think deep,
+and share; you can improve the idea as time goes on.
 
    Once you have defined a name for your theme, you need to create the
 motif structure of your theme. The motif structure is the basic
@@ -1735,9 +1735,9 @@ directory as described below:
 
      centos-art add --motif=ThemeName
 
-   The previous command will create the motif's basic structure for you.
-The basic structure produced by `centos-art' command is illustrated in
-the following figure:
+   The previous command will create the basic structure of themes for
+you.  The basic structure produced by `centos-art' command is
+illustrated in the following figure:
 
      trunk/Identity/Themes/Motifs/$ThemeName/
      |-- Backgrounds
@@ -1764,17 +1764,16 @@ recommendations:
      your work. If it doesn't exist create it. Note that this require
      you to have previous commit access in CentOS Artwork Repository.
 
-   * The CentOS Project is using the blue color (#204c8d) as base for
-     its corporate visual identity. Use the CentOS Project's base
-     corporate color as much as possible in your artistic motif designs.
+   * The CentOS Project is using the blue color (#204c8d) as base color
+     for its corporate visual identity. Use such base corporate color
+     information as much as possible in your artistic motif designs.
 
    * Try to make your design fit one of the theme models.
 
    * Feel free to make your art enterprise-level and beautiful.
 
-   * Add the following information on your art work (both in a visible
-     design area, and inside Inkscape's document metadata section
-     wherever it be possible):
+   * Add the following information on your artwork (both in a visible
+     design area and document metadata):
 
         * The name (or logo) of your artistic motif.
 
@@ -1809,8 +1808,8 @@ Identity::).
 The _Flame_ artistic motif was built using the flame filter of Gimp 2.2
 in CentOS 5.5.
 
-   The Gimp's flame filter can produce stunning, randomly generated
-fractal patterns. The Gimp's flame filter gives us a great oportunity
+   The flame filter of Gimp can produce stunning, randomly generated
+fractal patterns. The flame filter of Gimp gives us a great oportunity
 to reduce the time used to produce new artistic motifs, because of its
 "randomly generated" nature. Once the artistic motif be created, it is
 propagated through all visual manifestations of CentOS Project
@@ -1825,7 +1824,7 @@ visual identity (i.e., distribution stuff, promotion stuff, websites
 stuff, etc.) with the new major release of CentOS distribution all
 together at once.
 
-   Producing a new visual style is not one day's task. Once we have
+   Producing a new visual style is not one day's time task. Once we have
 defined the artistic motif, we need to propagate it through all visual
 manifestations of The CentOS Project corporate visual identity. When we
 say that we could produce one new visual style every two years we
@@ -1926,10 +1925,10 @@ your design.
 (100x100)' pattern.  Once you've done with black radial degradation,
 reduce the `Paper' layer opacity to 20%.
 
-   Notice that when we duplicate one layer, the information related to
-layer's mask is preserved from one layer to another. This saves some
-time when you want to have different layers with the same mask
-information on them.
+   Notice that when we duplicate one layer, the mask information related
+to layer is preserved from one layer to another. This saves some time
+when you want to have different layers with the same mask information
+on them.
 
    Duplicate `Paper' layer and rename it `Stripes'. Remove paper
 pattern from `Stripes' layer. Fill `Stripes' layer with `Stripes
@@ -1944,8 +1943,8 @@ Create a new layer named `Flame'. Set the foreground (`003cff') and
 background (`0084ff') colors to the gradient you want to build the
 flame motif.
 
-   To build flame motif, use the Gimp's flame filter (`Filters > Render
-> Nature > Flame...') on `Flame' layer. We used a layer mask, with a
+   To build flame motif, use the flame filter (`Filters > Render >
+Nature > Flame...') on `Flame' layer. We used a layer mask, with a
 radial gradient on it to control the boundaries of flame motif on
 `Flame' layer.
 
@@ -1977,8 +1976,8 @@ information from `Color#1' layer and recreate a new one using an
 inverted alpha channel as reference.  Remove `Color#1' layer content
 and fill it back with plain black (`000000') color. Reduce `Color#1'
 opacity to 20%.  In this step we created a mask to protect the flame
-artistic motif from black color, so when we decrement or increment
-layer's opacity, the flame artistic motif wouldn't be affected, just
+artistic motif from black color, so when we decrement or increment the
+opacity of layer, the flame artistic motif wouldn't be affected, just
 the environment suround it.
 
  Figure 3.9: The Flame artistic motif construction step 4.
@@ -2030,10 +2029,10 @@ variables you may face.
 3.25.2 Description
 ------------------
 
-Inside motif's `Backgrounds/' directory you can create vectorial
-designs using Inkscape and background images using Gimp. Later, you can
-export background images as `.png' and load them in your vectorial
-design project using Inkscape's import feautre.
+Inside `Motifs' directory, the `Backgrounds/' directory is used to
+create vectorial designs using Inkscape and background images using
+Gimp. Later, you can export background images as `.png' and load them
+in your vectorial design project using the import feautre of Inkscape.
 
    You may need to repeat this technic for different screen resoluions.
 In that case you need to create one file for each screen resolution and
@@ -2058,7 +2057,7 @@ following file:
    The `img/800x600.png' background image is produced automatically by
 means of rendering scripts.
 
-   In other cases, like Anaconda's, it is possible that you need to make
+   In other cases (e.g. Anaconda), it is possible that you need to make
 some variations to one background image that don't want to appear on
 regular background images of the same resolution. In this case you need
 to create a new and specific background image for that art component.
@@ -2086,16 +2085,15 @@ and 640x480 pixels so you need to create a 640x480 background image for
 it, and take the color limitation into account when designing it.
 
    Background images without artistic motif are generally used as based
-to build the Background images that do contain the theme's artistic
-motif.
+to build the Background images that do contain the theme artistic motif.
 
-   Background images are linked (using Inkscape's import feature)
+   Background images are linked (using the import feature of Inkscape)
 inside almost all theme art works. This structure let you make
 centralized changes on the visual identity and propagate them quickly
 to other areas.
 
    In this structure you design background images for different screen
-resolutions based on theme's artistic motif.
+resolutions based on the theme artistic motif.
 
    You may create different artistic motifs propositions based on the
 same conceptual idea. The conceptual idea is what defines a theme.
@@ -2122,8 +2120,8 @@ you design an artistic motif for CentOS you concentrate on its visual
 style, and eventualy, use the `centos-art' command line interface to
 render the visual style, you are currently producing, against an
 already-made theme model in order to produce the final result.  Final
-images are stored under the motif's name directory using the model
-directory structure as reference.
+images are stored under `Motifs/' directory using the model name, and
+the model directory structure as reference.
 
    The artistic motif base structure is used by `centos-art' to produce
 images automatically. This section describes each directory of CentOS
@@ -2132,11 +2130,11 @@ artistic motif base structure.
 3.25.3 Usage
 ------------
 
-The motif's `Backgrounds/' directory is probably the motif's core
-component.  Inside motif's `Backgrounds/' directory you produce
-background images used by almost all theme models (e.g., Distribution,
-Websites, Promotion, etc.).  The motif's `Backgrounds/' directory can
-contain subdirectories to help you organize the design process.
+The `Backgrounds/' directory is probably the core component, inside
+`Motifs/' directory structure.  Inside `Backgrounds/' directory you
+produce background images used by almost all theme models (e.g.,
+Distribution, Websites, Promotion, etc.).  The `Backgrounds/' directory
+can contain subdirectories to help you organize the design process.
 
 3.25.4 See also
 ---------------
@@ -2199,12 +2197,12 @@ line interface.
 3.28.3 Usage
 ------------
 
-In this directory is where you store Gimp's project files (e.g, .xcf).
-This directory is not required by `centos-art' command line interface.
-If you can create a beautiful background images using scalable vector
-graphics only, then there is no need to use the `Xcf/' directory to
-store Gimp's background projects. Of course, you can merge Gimp's power
-with Inkscape's power to produce images based on them.  In this last
+In this directory is where you store the project files (e.g, .xcf) of
+Gimp.  This directory is not required by `centos-art' command line
+interface. If you can create a beautiful background images using
+scalable vector graphics only, then there is no need to use the `Xcf/'
+directory to store background projects. Of course, you can merge both
+Gimp and Inkscape power to produce images based on them.  In this last
 case you need the `Xcf/' directory.
 
 3.28.4 See also
@@ -2224,7 +2222,7 @@ case you need the `Xcf/' directory.
 3.29.3 Usage
 ------------
 
-To render Anaconda progress slide images using the Modern's artistic
+To render Anaconda progress slide images using the _Modern_ artistic
 motif design, the Default theme model, and available translation files
 (*note trunk Translations Identity Themes Distro Anaconda Progress::);
 use the following commands:
@@ -2283,7 +2281,7 @@ use the following commands:
 Here is where graphic designers define theme palettes for color-limited
 art works. Theme palettes contain the color information that rendering
 functions need, in order to produce images with color limitations.
-Theme palettes contain theme's unique color information.
+Theme palettes contain the unique color information required by theme.
 
 3.30.4 See also
 ---------------
@@ -2313,7 +2311,8 @@ Theme palettes contain theme's unique color information.
 3.32.1 Goals
 ------------
 
-This section exists to orgnize TreeFlower's backgrounds.
+This section exists to orgnize backgrounds of _TreeFlower_ artistic
+motif.
 
 3.32.2 Description
 ------------------
@@ -2328,7 +2327,7 @@ the following:
 
    Open the png version with GIMP.
 
-   Save the png version as gimp's project inside
+   Save the png version as a project of GIMP inside
 `trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Xcf' directory,
 using the same name of your vectorial design but with the `.xcf'
 extension.
@@ -2337,7 +2336,7 @@ extension.
 pattern, another for colors, and so on until you find yourself
 confortable with your artwork. For example,  the following layer
 distribution (from bottom to top) was used to build revision 285 of
-file `1360x768.xcf' using TreeFlower's artistic motif at revision 241.
+file `1360x768.xcf' using _TreeFlower_ artistic motif at revision 241.
 
 *Layer 1: Background*
      The first thing we did with GIMP was to create a layer named
@@ -2395,9 +2394,9 @@ file `1360x768.xcf' using TreeFlower's artistic motif at revision 241.
      *Note* There is no definite combination. To get the appropriate
      visual design is a matter of constant testing and personal taste.
 
-   Finally, use the GIMP's `Save as copy ...' option to export the
-final design. To export the final design use the same name of your
-vectorial design plus `-final.png' extension.
+   Finally, use `Save as copy ...' option to export the final design.
+To export the final design use the same name of your vectorial design
+plus `-final.png' extension.
 
    You can repeat these steps to create images for other screen
 resolutions.
@@ -2471,8 +2470,8 @@ information found with this composition produces an acceptable 16 color
 image. Of course this is something we haven't seen yet.
 
    To define the color information of our current coposition, save the
-syslinux GIMP's background composition we've done using GIMP's `File >
-Save as Copy ...' option in the following location:
+syslinux background composition we've done using `File > Save as Copy
+...' option in the following location:
 
 
 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/Png/640x300-final.png
@@ -2490,11 +2489,12 @@ contain the wrong information because we haven't defined yet the
 correct color information to use.
 
    Open one `syslinux-splash.png' file with GIMP and use the `Image >
-Mode > Indexed' to reduce image colors up to 16 colors, using GIMP's
-`Generate optimum palette' feature.  If the image looks aceptable after
-reducing colors, use GIMP's `Palettes' menu (Ctrl+P) to import a new
-palette from file and name it `CentOS-TreeFlower-Syslinux'. Once you've
-saved the palette, the color information is stored at:
+Mode > Indexed' to reduce image colors up to 16 colors, using the
+`Generate optimum palette' feature of GIMP.  If the image looks
+aceptable after reducing colors, use the `Palettes' menu (Ctrl+P) of
+GIMP to import a new palette from file and name it
+`CentOS-TreeFlower-Syslinux'. Once you've saved the palette, the color
+information is stored at:
 
 
 ~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
@@ -2692,7 +2692,7 @@ interface.
 operating system trys to execute that command. In order to execute the
 command, the operating system needs to know where it is, so the
 operating system uses the PATH environment variable to look for that
-command's location. If your system was prepared to use CentOS Artwork
+command location. If your system was prepared to use CentOS Artwork
 Repository correctly (*note trunk Scripts Bash Functions Verify::), you
 should have a symbolic link inside `~/bin/' directory that points to
 the `centos-art.sh' script file. As `~/bin/' directory is, by default,
@@ -2701,7 +2701,7 @@ runs the `centos-art.sh' script.
 
    When `centos-art.sh' script is executed, the first it does is
 executing the `trunk/Scripts/Bash/initEnvironment.sh' script to
-initialize global variables (e.g., `gettext''s variables) and global
+initialize global variables (e.g., `gettext' variables) and global
 function scripts.  Global function scripts are located inside
 `trunk/Scripts/Bash/Functions' directory and their file names begin
 with `cli'. Global function scripts provide common functionalities that
@@ -2889,8 +2889,8 @@ function defintion below it only.
 following components: the functionality description, one-line for
 copyright note with your personal information,  the license under which
 the function source code is released --the `centos-art.sh' script is
-released as GPL, so do all its functions--, subversion's `$Id$' keyword
-which is later expanded by `svn propset' command.
+released as GPL, so do all its functions--, the `$Id$' keyword of
+Subversion is later expanded by `svn propset' command.
 
    In our `greet' function example, top commentary for `greet.sh'
 function script would look like the following:
@@ -3012,7 +3012,7 @@ function greet_doBye {
 `greet_doBye.sh' function script.
 
    Both `greet_doHello.sh' and `greet_doBye.sh' function scripts are
-stored inside `greet''s function directory path (i.e.
+stored inside `greet' function directory path (i.e.
 `trunk/Scripts/Bash/Functions/Greet').
 
    The ACTIONVAL global variable is defined in `cli.sh' function script
@@ -3022,7 +3022,7 @@ the second command-line argument is `--hello='World'', the value of
 ACTIONVAL variable would be `World' without quotes.
 
    Let's see how `greet' specific functionality files are organzied
-under `greet''s function directory. To see file organization we use the
+under `greet' function directory. To see file organization we use the
 `tree' command:
 
 
@@ -3420,7 +3420,7 @@ global functions you can use inside `centos-art.sh' script.
      parameters passed in $@ variable.
 
      The `cli_getArguments' function is called from `cli.sh' function
-     script, using `cli' function's positional parameters (i.e., the
+     script, using `cli' function positional parameters (i.e., the
      positional parameters passed as arguments in the command-line) as
      first function argument.
 
@@ -3990,7 +3990,7 @@ command uses the value of EDITOR environment variable to determine your
 favorite text editor. If no value is defined on EDITOR, the
 `/usr/bin/vim' text editor is used as default.
 
-   When you finish PO file's edition and quit text editor, the
+   When you finishd PO file edition and quit text editor, the
 `centos-art' command creates the related machine object in the location
 `$CLI_LANG/LC_MESSAGES/$TEXTDOMAIN.mo'.
 
@@ -4339,8 +4339,8 @@ in mind the corporate visual identity structure used inside the CentOS
 Artwork Repository (*note trunk Identity::) would be probaly the best
 advice we could offer, the rest is just matter of choosing appropriate
 names.  To illustrate this desition process let's consider the
-`trunk/Identity/Themes/Motifs/TreeFlower' directory as example. It is
-the trunk development line of TreeFlower's artistic motif. Artistic
+`trunk/Identity/Themes/Motifs/TreeFlower' directory as example.  It is
+the trunk development line of _TreeFlower_ artistic motif.  Artistic
 motifs are considered part of themes, which in turn are considered part
 of CentOS corporate visual identity.
 
@@ -4495,13 +4495,11 @@ pre-rendition configuration scripts, and related translations files).
 
    When we duplicate directories, inside `trunk/Identity' directory
 structure, we need to be aware of renderable layout described above and
-the source location used to perform the duplication action.
-
-   The source location is relevant to centos-art.sh script in order to
-determine the required auxiliar information inside directory structures
-that need to be copied too (otherwise we may end up with orphan
-directory structures unable to be rendered, due the absence of required
-information).
+the source location used to perform the duplication action.  The source
+location is relevant to centos-art.sh script in order to determine the
+required auxiliar information inside directory structures that need to
+be copied too (otherwise we may end up with orphan directory structures
+unable to be rendered, due the absence of required information).
 
    In order for a renderable directory structure to be valid, the new
 directory structure copied should match the following conditions:
@@ -5110,8 +5108,8 @@ maintain it is not a fun task to use the graphical interface to remove
 unused definitions editing those files one by one.
 
    To remove unused definitions from several scalable vector graphics
-files, the `centos-art.sh' script uses Inkscape's command-line
-interface, specifically with the `--vaccum-defs' option.
+files, the `centos-art.sh' script uses Inkscape command-line interface,
+specifically with the `--vaccum-defs' option.
 
 3.45.3 Usage
 ------------
@@ -5201,11 +5199,11 @@ needs to be installed from third party repositories.
      `http://wiki.centos.org/AdditionalResources/Repositories'
 
    Before installing packages, the `centos-art.sh' script uses `sudo'
-to request root privileges to execute `yum''s installation
-functionality.  If your user isn't defined as a privileged user--at
-least to run `yum' commands-- inside `/etc/sudoers' configuration file,
-you will not be able to perform package installation tasks as set in
-`centos-art.sh' script `verify' functionality.
+to request root privileges to execute `yum' installation functionality.
+If your user isn't defined as a privileged user--at least to run `yum'
+commands-- inside `/etc/sudoers' configuration file, you will not be
+able to perform package installation tasks as set in `centos-art.sh'
+script `verify' functionality.
 
    Setting sudo privileges to users is an administrative task you have
 to do by yourself. If you don't have experience with `sudo' command,
@@ -5522,12 +5520,12 @@ output one translated file. When the translated file is rendered, the
 `centos-art' script remove the previous instance and takes the next
 file in the list of translation files to repate the whole process once
 again, and so on for all files in the list. This configuration is
-mainly used to produce translatable artworks like Anaconda's progress
+mainly used to produce translatable artworks like Anaconda progress
 slide images.
 
    To find out correspondence between translation entries and identity
 entries, you need to look the path of both translation entries and
-identity entries. For example, if you are using the Modern's artisitic
+identity entries. For example, if you are using the _Modern_ artisitic
 motif, the identity entry for Anaconda progress artwork is:
 
 
@@ -5540,9 +5538,9 @@ trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
 
    Note how the `Translations/' directory prefixes `Identity/'
 directory, also how static values (e.g., Identity, Themes, Distro,
-etc.) in the identity's entry path remain in translation's entry path,
-and how variable values like theme names (e.g., Modern) are stript out
-from translation's entry path. The same convenction can be applied to
+etc.) in the identity entry path remain in translation entry path, and
+how variable values like theme names (e.g., _Modern_) are stript out
+from translation entry path. The same convenction can be applied to
 other identity entries in order to determine their translation entries,
 or to other translation entries to determine their identity entries.
 
@@ -5618,7 +5616,7 @@ designers can work together but independently one another.
 3.50.2.3 Translation Files
 ..........................
 
-Translation files are text files with `sed''s commands inside,
+Translation files are text files with `sed' commands inside,
 replacement commands mainly. As convenction, translation file names end
 in `.sed'. Translation files are used by `centos-art' script to produce
 translated artworks for specific major releases of CentOS Distribution.
@@ -5689,7 +5687,7 @@ for in the `--filter='release-number'' argument.
 Template translation files are translation files stored inside
 translation template directory. Template translation files are used by
 `centos-art' script to produce specific translation files only.
-Template translation files may be empty or contain `sed''s replacement
+Template translation files may be empty or contain `sed' replacement
 commands. If template translation files are empty files, the final
 specifc translation file built from it contains release-specific
 replacement commands only. For example, see the following translation
@@ -5839,9 +5837,9 @@ translation text you want to have after artworks rendering.  Sometimes
 we use the FLAG component with the `g' command to apply the
 replacements globally.
 
-     *Tip* More information about how to use `sed''s replacement
-     commands and flags is available in `sed''s documentation manual.
-     To read sed's documentation manual type the following command:
+     *Tip* More information about how to use `sed' replacement commands
+     and flags is available in `sed' documentation manual. To read
+     `sed' documentation manual type the following command:
      info sed
 
    Inside translation files, you can use translation markers not only
@@ -5918,19 +5916,19 @@ translation entry the translation rendering fails. In this case the
 When the `centos-art' script finds a translation template directory
 inside translation entry, it looks for translations pre-rendering
 configuration scripts for that translation entry.  Translation
-pre-rendering configuration scripts let you extend translation's
-default functionality (described below).
+pre-rendering configuration scripts let you extend translation default
+functionality (described below).
 
    Translation pre-rendering configuration scripts are stored under
 `trunk/Scripts' directory, specifically under the appropriate language
-implementation. If you are using `centos-art' Bash's implementation,
-the translation pre-rendering scripts are store in the
+implementation. If you are using `centos-art' Bash implementation, the
+translation pre-rendering scripts are store in the
 `trunk/Scripts/Bash/Config' location; if you are using `centos-art'
-Python's implementation, then translation pre-rendering scripts are
+Python implementation, then translation pre-rendering scripts are
 stored in the `trunk/Scripts/Python/Config' location, and so on for
 other implementations.
 
-   Bash's translation pre-rendering configuration scripts look like the
+   Bash translation pre-rendering configuration scripts look like the
 following:
 
 
@@ -5966,7 +5964,7 @@ function render_loadConfig {
    Translation pre-rendering scripts are function scripts loaded and
 executed when rendering a translation entry. Translation pre-rendering
 scripts are loaded using the translation entry being rendered as
-reference. For example, suppose you are using the `centos-art' Bash's
+reference. For example, suppose you are using the `centos-art' Bash
 implementation, and you are rendering translations for CentOS brands,
 in this situation the translation entry would be:
 
@@ -5990,8 +5988,8 @@ the translation rendering process is over, and so the script execution.
      following form:
      render.conf.extension
       where `extension' refers the programming language implementation
-     you are using. For example, `sh' for Bash's, `py' for Python's,
-     `pl' for Perl's, and so on for other implementations.
+     you are using. For example, `sh' for Bash, `py' for Python, `pl'
+     for Perl, and so on for other implementations.
 
    As we are using Bash implementation to describe the translation
 pre-rendering configuration example, the translation pre-rendering
@@ -6050,7 +6048,7 @@ mainly based on CentOS 5 rebranding experience.
 
    (2) This value was taken from CentOS release schema.
 
-   (3) This value was taken from the `locale -a' command's output.
+   (3) This value was taken from the output of `locale -a' command.
 
 3.51 trunk/Translations/Identity
 ================================
@@ -6130,7 +6128,7 @@ commands inside translation files are applied to design templates, and
 translation file names are used as final image name.  The final image
 is saved using an specific `width' defined by the number part of the
 translation file name. The image `height' is automatically scaled based
-on the previous `width' definition to maintain the design's ratio.
+on the previous `width' definition to maintain the designing ratio.
 
    For example, if your design template has 400x200 pixels of dimension,
 and you apply a translation file named `300.sed' to it, the final image
@@ -6208,7 +6206,7 @@ translation file for each font-family we use somewhere inside CentOS
 visual identity.
 
      *Important* Do not create translation files for font-families not
-     used somewhere inside CentOS visual identity. The font's identity
+     used somewhere inside CentOS visual identity. The identity of font
      entry (*note trunk Identity Fonts::) is used as reference when
      someone needs to know which font-families are allowed to use
      inside CentOS visual identity.
@@ -6430,24 +6428,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  392)
-Common translation files:                      See 3.50.2.5. (line 5859)
-How to render brands' translation files:       See 3.52.3.   (line 6163)
-How to render fonts' translation files:        See 3.54.3.   (line 6236)
-How to render translation files:               See 3.50.3.   (line 6029)
-Metadata maintainance:                         See 3.45.2.   (line 4989)
-Specific translation files:                    See 3.50.2.6. (line 5884)
+Common translation files:                      See 3.50.2.5. (line 5857)
+How to render brands' translation files:       See 3.52.3.   (line 6161)
+How to render fonts' translation files:        See 3.54.3.   (line 6234)
+How to render translation files:               See 3.50.3.   (line 6027)
+Metadata maintainance:                         See 3.45.2.   (line 4987)
+Specific translation files:                    See 3.50.2.6. (line 5882)
 tags:                                          See 2.        (line  395)
-Template translation files:                    See 3.50.2.4. (line 5689)
-Translation brands file names:                 See 3.52.2.1. (line 6120)
-Translation configuration scripts:             See 3.50.2.8. (line 5918)
-Translation entries:                           See 3.50.2.1. (line 5505)
-Translation files:                             See 3.50.2.3. (line 5621)
-Translation markers:                           See 3.50.2.2. (line 5586)
-Translation paths:                             See 3.50.2.1. (line 5505)
+Template translation files:                    See 3.50.2.4. (line 5687)
+Translation brands file names:                 See 3.52.2.1. (line 6118)
+Translation configuration scripts:             See 3.50.2.8. (line 5916)
+Translation entries:                           See 3.50.2.1. (line 5503)
+Translation files:                             See 3.50.2.3. (line 5619)
+Translation markers:                           See 3.50.2.2. (line 5584)
+Translation paths:                             See 3.50.2.1. (line 5503)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5918)
-Translation rendering:                         See 3.50.2.7. (line 5907)
-Translation rendering default functionality:   See 3.50.2.9. (line 6004)
+                                                             (line 5916)
+Translation rendering:                         See 3.50.2.7. (line 5905)
+Translation rendering default functionality:   See 3.50.2.9. (line 6002)
 trunk:                                         See 3.        (line  398)
 trunk Identity:                                See 3.1.      (line  401)
 trunk Identity Brands:                         See 3.2.      (line  821)
@@ -6472,21 +6470,21 @@ trunk Identity Themes Models Default Distro Anaconda:See 3.19.
 trunk Identity Themes Models Default Promo:    See 3.20.     (line 1640)
 trunk Identity Themes Models Default Web:      See 3.21.     (line 1666)
 trunk Identity Themes Motifs:                  See 3.22.     (line 1691)
-trunk Identity Themes Motifs Flame:            See 3.23.     (line 1795)
-trunk Identity Themes Motifs Modern:           See 3.24.     (line 2006)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 2025)
+trunk Identity Themes Motifs Flame:            See 3.23.     (line 1794)
+trunk Identity Themes Motifs Modern:           See 3.24.     (line 2005)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 2024)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.26.
-                                                             (line 2147)
+                                                             (line 2145)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.27.
-                                                             (line 2168)
+                                                             (line 2166)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.28.
-                                                             (line 2189)
+                                                             (line 2187)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.29.
-                                                             (line 2216)
-trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2272)
-trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2294)
+                                                             (line 2214)
+trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2270)
+trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2292)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.32.
-                                                             (line 2313)
+                                                             (line 2311)
 trunk Identity Widgets:                        See 3.33.     (line 2609)
 trunk Manuals:                                 See 3.34.     (line 2626)
 trunk Scripts:                                 See 3.35.     (line 2647)
@@ -6497,26 +6495,26 @@ trunk Scripts Bash Functions Locale:           See 3.39.     (line 3950)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 4030)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 4051)
 trunk Scripts Bash Functions Render:           See 3.42.     (line 4394)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4621)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4799)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4971)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5159)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5389)
-trunk Scripts Perl:                            See 3.48.     (line 5418)
-trunk Scripts Python:                          See 3.49.     (line 5435)
-trunk Translations:                            See 3.50.     (line 5456)
-trunk Translations Identity:                   See 3.51.     (line 6058)
-trunk Translations Identity Brands:            See 3.52.     (line 6079)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6174)
-trunk Translations Identity Fonts:             See 3.54.     (line 6189)
-trunk Translations Identity Models:            See 3.55.     (line 6252)
-trunk Translations Identity Release:           See 3.56.     (line 6267)
-trunk Translations Identity Themes:            See 3.57.     (line 6282)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6297)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4619)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4797)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 4969)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5157)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5387)
+trunk Scripts Perl:                            See 3.48.     (line 5416)
+trunk Scripts Python:                          See 3.49.     (line 5433)
+trunk Translations:                            See 3.50.     (line 5454)
+trunk Translations Identity:                   See 3.51.     (line 6056)
+trunk Translations Identity Brands:            See 3.52.     (line 6077)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6172)
+trunk Translations Identity Fonts:             See 3.54.     (line 6187)
+trunk Translations Identity Models:            See 3.55.     (line 6250)
+trunk Translations Identity Release:           See 3.56.     (line 6265)
+trunk Translations Identity Themes:            See 3.57.     (line 6280)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6295)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6318)
-trunk Translations Identity Widgets:           See 3.60.     (line 6411)
-Unused definitions:                            See 3.45.2.1. (line 5096)
+                                                             (line 6316)
+trunk Translations Identity Widgets:           See 3.60.     (line 6409)
+Unused definitions:                            See 3.45.2.1. (line 5094)
 List of Figures
 ***************
 
