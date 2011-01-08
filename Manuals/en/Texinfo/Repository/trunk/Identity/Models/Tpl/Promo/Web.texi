@@ -41,9 +41,9 @@ their own visual styles. For example: MoinMoin, the web application
 used to support the CentOS wiki (@url{http://wiki.centos.org/}) is
 highly customizable but Mailman (in its 2.x.x serie), the web
 application used to support the CentOS mailing list, doesn't
-support@footnote{Mailman's theme support may be introduced in
+support@footnote{The theme support of Mailman may be introduced in
 mailman-3.x.x release.} a customization system that separates
-presentation from logic, similar to MoinMoin's one.
+presentation from logic, similar to that used by MoinMoin.
 
 This visual style diversity complicates our goal of one unique visual
 style for all web applications. So, if we want one unique visual style
@@ -230,9 +230,9 @@ the place where you customize the visual style of
 @file{webapp1-0.0.1/} web application. 
 
 @quotation
-@strong{Tip} Use Subversion's @command{diff} between CentOS
-customization and upstream development lines to know what you are
-changing exactly.
+@strong{Tip} Use the @command{diff} command of Subversion between
+CentOS customization and upstream development lines to know what you
+are changing exactly.
 @end quotation
 
 @item Build packages

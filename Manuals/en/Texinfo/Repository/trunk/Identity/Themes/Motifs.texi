@@ -9,8 +9,8 @@ The @file{trunk/Identity/Themes/Motifs} directory exists to:
 @subsection Description
 
 The artistic motif of theme is a graphic design component that
-provides theme's visual style, it is used as pattern to connect all
-visual manifestations inside one unique theme.
+provides the visual style of themes, it is used as pattern to connect
+all visual manifestations inside one unique theme.
 
 Artistic motifs are based on conceptual ideas. Conceptual ideas bring
 the motivation, they are fuel for the engines of human imagination.
@@ -30,7 +30,7 @@ If you have new conceptual ideas for CentOS, then you can say that you
 want to create a new artistic motif for CentOS. To create a new
 artistic motif you need to create a directory under
 @file{Identity/Themes/Motifs/} using a name coherent with your
-conceptual idea. That name will be your artistic motif's name. If
+conceptual idea. That name will be the name of your artistic motif. If
 possible, when creating new conceptual ideas for CentOS, think about
 what CentOS means for you, what does it makes you feel, take your
 time, think deep, and share; you can improve the idea as time goes on.
@@ -48,8 +48,8 @@ use the @command{centos-art} command line in the
 centos-art add --motif=ThemeName
 @end example
 
-The previous command will create the motif's basic structure for you.
-The basic structure produced by @command{centos-art} command is
+The previous command will create the basic structure of themes for
+you.  The basic structure produced by @command{centos-art} command is
 illustrated in the following figure:
 
 @example
@@ -79,18 +79,16 @@ inspiration and concepts behind your work.
 store your work. If it doesn't exist create it. Note that this require
 you to have previous commit access in CentOS Artwork Repository.
 
-@item The CentOS Project is using the blue color (@b{#204c8d})
-as base for its corporate visual identity. Use the CentOS Project's
-base corporate color as much as possible in your artistic motif
-designs.
+@item The CentOS Project is using the blue color (@b{#204c8d}) as base
+color for its corporate visual identity. Use such base corporate color
+information as much as possible in your artistic motif designs.
 
 @item Try to make your design fit one of the theme models.
 
 @item Feel free to make your art enterprise-level and beautiful.
 
-@item Add the following information on your art work (both in a visible
-design area, and inside Inkscape's document metadata section wherever
-it be possible):
+@item Add the following information on your artwork (both in a visible
+design area and document metadata):
 
 @itemize
 

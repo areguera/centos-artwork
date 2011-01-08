@@ -73,8 +73,8 @@ Inside @file{centos-art.sh} script functions, top commentaries have
 the following components: the functionality description, one-line for
 copyright note with your personal information,  the license under
 which the function source code is released ---the @file{centos-art.sh}
-script is released as GPL, so do all its functions---, subversion's
-@code{$Id$} keyword which is later expanded by @command{svn propset}
+script is released as GPL, so do all its functions---, the @code{$Id$}
+keyword of Subversion is later expanded by @command{svn propset}
 command.
 
 In our @code{greet} function example, top commentary for
@@ -205,7 +205,7 @@ The @code{greet_doBye} function definition is stored in the
 @file{greet_doBye.sh} function script. 
 
 Both @file{greet_doHello.sh} and @file{greet_doBye.sh} function
-scripts are stored inside @code{greet}'s function directory path (i.e.
+scripts are stored inside @code{greet} function directory path (i.e.
 @file{trunk/Scripts/Bash/Functions/Greet}).
 
 The @var{ACTIONVAL} global variable is defined in @file{cli.sh}
@@ -216,8 +216,8 @@ argument is @option{--hello='World'}, the value of @var{ACTIONVAL}
 variable would be @samp{World} without quotes.
 
 Let's see how @code{greet} specific functionality files are organzied
-under @code{greet}'s function directory. To see file organization we
-use the @command{tree} command:
+under @code{greet} function directory. To see file organization we use
+the @command{tree} command:
 
 @verbatim
 trunk/Scripts/Bash/Functions/Greet
@@ -645,7 +645,7 @@ Initialize function name (@var{FUNCNAM}), action name
 variables, using positional parameters passed in @var{$@@} variable.
 
 The @code{cli_getArguments} function is called from @code{cli.sh}
-function script, using @code{cli} function's positional parameters
+function script, using @code{cli} function positional parameters
 (i.e., the positional parameters passed as arguments in the
 command-line) as first function argument. 
 

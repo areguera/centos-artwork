@@ -26,7 +26,7 @@ CentOS release schema.}
 
 @item Each CentOS distribution in parallel development supports more
 than two hundreds locales.@footnote{This value was taken from the
-@command{locale -a} command's output.}
+output of @command{locale -a} command.}
 @end itemize
 
 In order to aliviate maintainance of artwork production for such
@@ -73,12 +73,12 @@ rendered, the @command{centos-art} script remove the previous instance
 and takes the next file in the list of translation files to repate the
 whole process once again, and so on for all files in the list. This
 configuration is mainly used to produce translatable artworks like
-Anaconda's progress slide images.
+Anaconda progress slide images.
 
 To find out correspondence between translation entries and identity
 entries, you need to look the path of both translation entries and
-identity entries. For example, if you are using the Modern's artisitic
-motif, the identity entry for Anaconda progress artwork is:
+identity entries. For example, if you are using the @emph{Modern}
+artisitic motif, the identity entry for Anaconda progress artwork is:
 
 @verbatim
 trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
@@ -92,10 +92,10 @@ trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
 
 Note how the @file{Translations/} directory prefixes @file{Identity/}
 directory, also how static values (e.g., Identity, Themes, Distro,
-etc.) in the identity's entry path remain in translation's entry path,
-and how variable values like theme names (e.g., Modern) are stript out
-from translation's entry path. The same convenction can be applied to
-other identity entries in order to determine their translation
+etc.) in the identity entry path remain in translation entry path, and
+how variable values like theme names (e.g., @emph{Modern}) are stript
+out from translation entry path. The same convenction can be applied
+to other identity entries in order to determine their translation
 entries, or to other translation entries to determine their identity
 entries.
 
@@ -183,7 +183,7 @@ designers can work together but independently one another.
 @subsubsection Translation Files
 @cindex Translation files
 
-Translation files are text files with @command{sed}'s commands inside,
+Translation files are text files with @command{sed} commands inside,
 replacement commands mainly. As convenction, translation file names
 end in @samp{.sed}. Translation files are used by @command{centos-art}
 script to produce translated artworks for specific major releases of
@@ -260,11 +260,11 @@ for in the @samp{--filter='release-number'} argument.
 Template translation files are translation files stored inside
 translation template directory. Template translation files are used by
 @command{centos-art} script to produce specific translation files
-only. Template translation files may be empty or contain
-@command{sed}'s replacement commands. If template translation files
-are empty files, the final specifc translation file built from it
-contains release-specific replacement commands only. For example,
-see the following translation entry:
+only. Template translation files may be empty or contain @command{sed}
+replacement commands. If template translation files are empty files,
+the final specifc translation file built from it contains
+release-specific replacement commands only. For example, see the
+following translation entry:
 
 @verbatim
 trunk/Translations/Identity/Themes/Distro/BootUp/Firstboot/
@@ -423,10 +423,10 @@ we use the FLAG component with the @samp{g} command to apply the
 replacements globally.
 
 @quotation
-@strong{Tip} More information about how to use @command{sed}'s
-replacement commands and flags is available in @command{sed}'s
-documentation manual. To read sed's documentation manual type the
-following command: 
+@strong{Tip} More information about how to use @command{sed}
+replacement commands and flags is available in @command{sed}
+documentation manual. To read @command{sed} documentation manual type
+the following command: 
 @verbatim
 info sed
 @end verbatim
@@ -513,19 +513,19 @@ When the @command{centos-art} script finds a translation template
 directory inside translation entry, it looks for translations
 pre-rendering configuration scripts for that translation entry.
 Translation pre-rendering configuration scripts let you extend
-translation's default functionality (described below). 
+translation default functionality (described below). 
 
 Translation pre-rendering configuration scripts are stored under
 @file{trunk/Scripts} directory, specifically under the appropriate
-language implementation. If you are using @command{centos-art} Bash's
+language implementation. If you are using @command{centos-art} Bash
 implementation, the translation pre-rendering scripts are store in the
 @file{trunk/Scripts/Bash/Config} location; if you are using
-@command{centos-art} Python's implementation, then translation
+@command{centos-art} Python implementation, then translation
 pre-rendering scripts are stored in the
 @file{trunk/Scripts/Python/Config} location, and so on for other
 implementations.
 
-Bash's translation pre-rendering configuration scripts look like the
+Bash translation pre-rendering configuration scripts look like the
 following:
 
 @verbatim
@@ -563,7 +563,7 @@ Translation pre-rendering scripts are function scripts loaded and
 executed when rendering a translation entry. Translation pre-rendering
 scripts are loaded using the translation entry being rendered as
 reference. For example, suppose you are using the
-@command{centos-art} Bash's implementation, and you are rendering
+@command{centos-art} Bash implementation, and you are rendering
 translations for CentOS brands, in this situation the translation
 entry would be:
 
@@ -593,8 +593,8 @@ following form:
 render.conf.extension
 @end verbatim
 where @samp{extension} refers the programming language implementation
-you are using. For example, @samp{sh} for Bash's, @samp{py} for
-Python's, @samp{pl} for Perl's, and so on for other implementations.
+you are using. For example, @samp{sh} for Bash, @samp{py} for Python,
+@samp{pl} for Perl, and so on for other implementations.
 @end quotation
 
 As we are using Bash implementation to describe the translation

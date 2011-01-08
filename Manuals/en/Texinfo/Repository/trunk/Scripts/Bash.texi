@@ -21,7 +21,7 @@ When you type the @command{centos-art} command in your terminal, the
 operating system trys to execute that command. In order to execute the
 command, the operating system needs to know where it is, so the
 operating system uses the @var{PATH} environment variable to look for
-that command's location. If your system was prepared to use CentOS
+that command location. If your system was prepared to use CentOS
 Artwork Repository correctly (@pxref{trunk Scripts Bash Functions
 Verify}), you should have a symbolic link inside @file{~/bin/}
 directory that points to the @file{centos-art.sh} script file. As
@@ -31,7 +31,7 @@ variable, the execution of @command{centos-art} command runs the
 
 When @file{centos-art.sh} script is executed, the first it does is
 executing the @file{trunk/Scripts/Bash/initEnvironment.sh} script to
-initialize global variables (e.g., @command{gettext}'s variables) and
+initialize global variables (e.g., @command{gettext} variables) and
 global function scripts.  Global function scripts are located inside
 @file{trunk/Scripts/Bash/Functions} directory and their file names
 begin with @samp{cli}. Global function scripts provide common

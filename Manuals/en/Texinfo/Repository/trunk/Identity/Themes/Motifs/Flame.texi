@@ -16,8 +16,8 @@ identity (@pxref{trunk Identity}).
 The @emph{Flame} artistic motif was built using the flame filter of
 Gimp 2.2 in CentOS 5.5.
 
-The Gimp's flame filter can produce stunning, randomly generated
-fractal patterns. The Gimp's flame filter gives us a great oportunity
+The flame filter of Gimp can produce stunning, randomly generated
+fractal patterns. The flame filter of Gimp gives us a great oportunity
 to reduce the time used to produce new artistic motifs, because of its
 ``randomly generated'' nature. Once the artistic motif be created, it
 is propagated through all visual manifestations of CentOS Project
@@ -32,7 +32,7 @@ visual identity (i.e., distribution stuff, promotion stuff, websites
 stuff, etc.) with the new major release of CentOS distribution all
 together at once.
 
-Producing a new visual style is not one day's task. Once we have
+Producing a new visual style is not one day's time task. Once we have
 defined the artistic motif, we need to propagate it through all visual
 manifestations of The CentOS Project corporate visual identity. When
 we say that we could produce one new visual style every two years we
@@ -139,10 +139,10 @@ Duplicate @samp{Base} layer and name it @samp{Paper}. Place
 Once you've done with black radial degradation, reduce the
 @samp{Paper} layer opacity to 20%. 
 
-Notice that when we duplicate one layer, the information related to
-layer's mask is preserved from one layer to another. This saves some
-time when you want to have different layers with the same mask
-information on them.
+Notice that when we duplicate one layer, the mask information related
+to layer is preserved from one layer to another. This saves some time
+when you want to have different layers with the same mask information
+on them.
 
 Duplicate @samp{Paper} layer and rename it @samp{Stripes}. Remove
 paper pattern from @samp{Stripes} layer. Fill @samp{Stripes} layer
@@ -160,10 +160,10 @@ Create a new layer named @samp{Flame}. Set the foreground
 (@code{003cff}) and background (@code{0084ff}) colors to the gradient
 you want to build the flame motif. 
 
-To build flame motif, use the Gimp's flame filter (@samp{Filters >
-Render > Nature > Flame...}) on @samp{Flame} layer. We used a layer
-mask, with a radial gradient on it to control the boundaries of flame
-motif on @samp{Flame} layer.
+To build flame motif, use the flame filter (@samp{Filters > Render >
+Nature > Flame...}) on @samp{Flame} layer. We used a layer mask, with
+a radial gradient on it to control the boundaries of flame motif on
+@samp{Flame} layer.
 
 Duplicate @samp{Flame} layer and rename it `Flame Blur'. Place `Flame
 Blur' below @samp{Flame} layer. Apply Gussian blur filter
@@ -198,8 +198,9 @@ and recreate a new one using an inverted alpha channel as reference.
 Remove @samp{Color#1} layer content and fill it back with plain black
 (@code{000000}) color. Reduce @samp{Color#1} opacity to 20%.  In this
 step we created a mask to protect the flame artistic motif from black
-color, so when we decrement or increment layer's opacity, the flame
-artistic motif wouldn't be affected, just the environment suround it.
+color, so when we decrement or increment the opacity of layer, the
+flame artistic motif wouldn't be affected, just the environment
+suround it.
 
 @float Figure, fig:Motifs:Flame:Construction:4
 @image{trunk/Identity/Themes/Motifs/Flame/Screenshots/Construction/5,400pt,,,jpg}

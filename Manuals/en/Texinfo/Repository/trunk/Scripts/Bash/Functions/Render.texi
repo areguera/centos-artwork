@@ -111,9 +111,8 @@ pre-rendition configuration scripts, and related translations files).
 
 When we duplicate directories, inside `trunk/Identity' directory
 structure, we need to be aware of renderable layout described above
-and the source location used to perform the duplication action. 
-
-The source location is relevant to centos-art.sh script in order to
+and the source location used to perform the duplication action.  The
+source location is relevant to centos-art.sh script in order to
 determine the required auxiliar information inside directory
 structures that need to be copied too (otherwise we may end up with
 orphan directory structures unable to be rendered, due the absence of

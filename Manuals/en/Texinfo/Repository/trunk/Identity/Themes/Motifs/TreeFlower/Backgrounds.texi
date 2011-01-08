@@ -1,6 +1,7 @@
 @subsection Goals
 
-This section exists to orgnize TreeFlower's backgrounds.
+This section exists to orgnize backgrounds of @emph{TreeFlower}
+artistic motif.
 
 @subsection Description
 
@@ -13,7 +14,7 @@ vectorial design do the following:
 
 Open the png version with GIMP.
 
-Save the png version as gimp's project inside
+Save the png version as a project of GIMP inside
 @file{trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Xcf}
 directory, using the same name of your vectorial design but with the
 @samp{.xcf} extension.  
@@ -22,8 +23,8 @@ Now use GIMP to improve your design.  Here you may add one layer for
 pattern, another for colors, and so on until you find yourself
 confortable with your artwork. For example,  the following layer
 distribution (from bottom to top) was used to build revision 285 of
-file @file{1360x768.xcf} using TreeFlower's artistic motif at revision
-241.
+file @file{1360x768.xcf} using @emph{TreeFlower} artistic motif at
+revision 241.
 
 @table @strong
 @item Layer 1: Background 
@@ -95,9 +96,9 @@ opacity.
 visual design is a matter of constant testing and personal taste.
 @end quotation
 
-Finally, use the GIMP's @samp{Save as copy ...} option to export the
-final design. To export the final design use the same name of your
-vectorial design plus @samp{-final.png} extension. 
+Finally, use @samp{Save as copy ...} option to export the final
+design. To export the final design use the same name of your vectorial
+design plus @samp{-final.png} extension. 
 
 You can repeat these steps to create images for other screen
 resolutions.
@@ -176,8 +177,8 @@ color information found with this composition produces an acceptable
 16 color image. Of course this is something we haven't seen yet.
 
 To define the color information of our current coposition, save the
-syslinux GIMP's background composition we've done using GIMP's
-@samp{File > Save as Copy ...} option in the following location:
+syslinux background composition we've done using @samp{File > Save as
+Copy ...} option in the following location:
 
 @verbatim
 trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/Png/640x300-final.png
@@ -198,9 +199,9 @@ the correct color information to use.
 
 Open one @file{syslinux-splash.png} file with GIMP and use the
 @samp{Image > Mode > Indexed} to reduce image colors up to 16 colors,
-using GIMP's @samp{Generate optimum palette} feature.  If the image
-looks aceptable after reducing colors, use GIMP's @samp{Palettes} menu
-(Ctrl+P) to import a new palette from file and name it
+using the @samp{Generate optimum palette} feature of GIMP.  If the
+image looks aceptable after reducing colors, use the @samp{Palettes}
+menu (Ctrl+P) of GIMP to import a new palette from file and name it
 @samp{CentOS-TreeFlower-Syslinux}. Once you've saved the palette, the
 color information is stored at:
 

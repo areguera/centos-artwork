@@ -44,7 +44,7 @@ following URL:
 @end quotation
 
 Before installing packages, the @file{centos-art.sh} script uses
-@command{sudo} to request root privileges to execute @command{yum}'s
+@command{sudo} to request root privileges to execute @command{yum}
 installation functionality.  If your user isn't defined as a
 privileged user---at least to run @command{yum} commands--- inside
 @file{/etc/sudoers} configuration file, you will not be able to
