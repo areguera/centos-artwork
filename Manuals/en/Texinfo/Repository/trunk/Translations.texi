@@ -11,7 +11,7 @@ The @file{trunk/Translations} directory exists to:
 
 When you create artwork for CentOS distribution you find that some
 artworks need to be created for different major releases of CentOS
-distribution and inside each major release they need to be created for
+distribution and inside each major release that needs to be created for
 different locales. To get an approximate idea of how many files we are
 talking about, consider the followig approximate statistic:
 
@@ -617,7 +617,7 @@ translation directory structure, duplicates it for each release number
 specified in the @samp{--filter='release-number'} argument and
 produces release-specific directories. As part of template translation
 duplication process take place, the @command{centos-art} script adds
-release-specific replacement commands to each specific translation
+release-specific replacement commands for each specific translation
 file inside release-specific directories. As result, specific
 translation files, inside release-specific directories, contain
 template translation replacement commands @emph{plus},
