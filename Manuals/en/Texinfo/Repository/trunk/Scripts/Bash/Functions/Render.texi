@@ -20,28 +20,41 @@ Identity directory structures are the starting point of identity
 rendition. Whenever we want to render a component of CentOS corporate
 visual identity we need to point @file{centos-art.sh} to an identity
 directory structure. If such identity directory structure doesn't
-exists, then it is good time to created. Each identity directory
+exist, then it is good time to create it. Each identity directory
 structure represents one visual manifestation of CentOS corporate
 visual identity. @xref{trunk Identity}, for more information.
 
 The first requirement for an identity directory structure to be
-considered a renderable identity directory structure is its location,
+considered a renderable identity directory structure is its location
 inside the working copy: it should be under @file{trunk/Identity/} or
 @file{branches/Identity/} directory structure.
 
 The second requirement for an identity directory structure to be
 considered a renderable identity directory structure is its directory
-structure: it needs to have one (@file{Tpl/}) directory to store
-design templates files, one @file{Img/} directory to store files
-produced as rendition result, one translation directory structure to
-store translation files and one script directory to store
-pre-rendition configuration scripts.  All these directory structures
-are connected among themselves by a common component in their path
-that bonds them altogether.  @xref{trunk Scripts Bash Functions Path},
-for more information.
+structure: it needs to have one @file{Tpl/} directory to store design
+templates files, one @file{Img/} directory to store files produced as
+rendition result, one translation directory structure to store
+translation files and one script directory to store pre-rendition
+configuration scripts.  All these directory structures are connected
+among themselves by a common component in their path that bonds them
+altogether.  @xref{trunk Scripts Bash Functions Path}, for more
+information.
 
 Inside renderable identity directory structures, @file{centos-art.sh}
-can render image-based and text-based files. 
+can render both image-based and text-based files. Specification of
+whether a renderable identity directory structure produces image-based
+or text-based content is a configuration action that takes place in
+the pre-rendition configuration script of that renderable identity
+directory structure. @xref{trunk Scripts Bash Functions Render
+Config}, for more information.
+
+Inside renderable identity directory structures, content production is
+organized in different configurations. A content production
+configuration is a unique combination of the components that make an
+identity directory structure renderable. One content production
+configuration does one thing only (e.g., to produce untranslated
+images), but it can be extended (e.g., adding translation files) to
+achieve different needs (e.g., to produce translated images).
 
 @subsubsection Design template without translation
 

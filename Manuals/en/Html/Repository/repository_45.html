@@ -11,7 +11,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on January, 13 2011 by texi2html 1.76 -->
+<!-- Created on January, 14 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -101,28 +101,40 @@ structures&quot; with special directories inside.
 rendition. Whenever we want to render a component of CentOS corporate
 visual identity we need to point <tt>`centos-art.sh'</tt> to an identity
 directory structure. If such identity directory structure doesn't
-exists, then it is good time to created. Each identity directory
+exist, then it is good time to create it. Each identity directory
 structure represents one visual manifestation of CentOS corporate
 visual identity. See section <a href="repository_4.html#SEC4">trunk/Identity</a>, for more information.
 </p>
 <p>The first requirement for an identity directory structure to be
-considered a renderable identity directory structure is its location,
+considered a renderable identity directory structure is its location
 inside the working copy: it should be under <tt>`trunk/Identity/'</tt> or
 <tt>`branches/Identity/'</tt> directory structure.
 </p>
 <p>The second requirement for an identity directory structure to be
 considered a renderable identity directory structure is its directory
-structure: it needs to have one (<tt>`Tpl/'</tt>) directory to store
-design templates files, one <tt>`Img/'</tt> directory to store files
-produced as rendition result, one translation directory structure to
-store translation files and one script directory to store
-pre-rendition configuration scripts.  All these directory structures
-are connected among themselves by a common component in their path
-that bonds them altogether.  See section <a href="repository_44.html#SEC230">trunk/Scripts/Bash/Functions/Path</a>,
-for more information.
+structure: it needs to have one <tt>`Tpl/'</tt> directory to store design
+templates files, one <tt>`Img/'</tt> directory to store files produced as
+rendition result, one translation directory structure to store
+translation files and one script directory to store pre-rendition
+configuration scripts.  All these directory structures are connected
+among themselves by a common component in their path that bonds them
+altogether.  See section <a href="repository_44.html#SEC230">trunk/Scripts/Bash/Functions/Path</a>, for more
+information.
 </p>
 <p>Inside renderable identity directory structures, <tt>`centos-art.sh'</tt>
-can render image-based and text-based files. 
+can render both image-based and text-based files. Specification of
+whether a renderable identity directory structure produces image-based
+or text-based content is a configuration action that takes place in
+the pre-rendition configuration script of that renderable identity
+directory structure. See section <a href="repository_46.html#SEC253">trunk/Scripts/Bash/Functions/Render/Config</a>, for more information.
+</p>
+<p>Inside renderable identity directory structures, content production is
+organized in different configurations. A content production
+configuration is a unique combination of the components that make an
+identity directory structure renderable. One content production
+configuration does one thing only (e.g., to produce untranslated
+images), but it can be extended (e.g., adding translation files) to
+achieve different needs (e.g., to produce translated images).
 </p>
 
 <a name="SEC245"></a>
@@ -799,7 +811,7 @@ have been duplicated, the functionality stops thereat.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>January, 13 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>January, 14 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
