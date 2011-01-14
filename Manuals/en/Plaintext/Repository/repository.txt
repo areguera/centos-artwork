@@ -9,18 +9,11 @@ CentOS Artwork Repository
     3.1.1 Goals
     3.1.2 Description
     3.1.3 Usage
-    3.1.4 Renderable directories
-      3.1.4.1 Layout 1: Simple image rendering
-      3.1.4.2 Layout 2: Simple image rendering (extended)
-      3.1.4.3 Layout 3: Language specific image rendering
-      3.1.4.4 Layout 4: Release and language specific image rendering
-      3.1.4.5 Layout 5: Brands specific image rendering
-      3.1.4.6 Layout 6: Themes specific image rendering
-    3.1.5 File name convenctions
-      3.1.5.1 When text-based files are rendered
-      3.1.5.2 When image-based files are rendered
-    3.1.6 See also
-    3.1.7 References
+    3.1.4 File name convenctions
+      3.1.4.1 When text-based files are rendered
+      3.1.4.2 When image-based files are rendered
+    3.1.5 See also
+    3.1.6 References
   3.2 trunk/Identity/Brands
     3.2.1 Goals
     3.2.2 Description
@@ -252,11 +245,15 @@ CentOS Artwork Repository
   3.42 trunk/Scripts/Bash/Functions/Render
     3.42.1 Goals
     3.42.2 Description
-      3.42.2.1 Renderable layout 1
-      3.42.2.2 Renderable layout 2
-      3.42.2.3 Duplicate renderable layouts
-    3.42.3 Usage
-    3.42.4 See also
+    3.42.3 Renderable identity directory structures
+      3.42.3.1 Design template without translation
+      3.42.3.2 Design template with translation (one-to-one)
+      3.42.3.3 Design template with translation (optimized)
+      3.42.3.4 Design template with translation (optimized+flexibility)
+    3.42.4 Renderable translation directory structures
+    3.42.5 Copying renderable directory structures
+    3.42.6 Usage
+    3.42.7 See also
   3.43 trunk/Scripts/Bash/Functions/Render/Config
     3.43.1 Goals
     3.43.2 Description
@@ -434,12 +431,11 @@ visual style (The CentOS Default Theme) in all its manifestations.
      *Note trunk Identity Brands::, for more information.
 
 *The CentOS Themes*
-     The CentOS themes are a set of image files connected by one unique
-     visual style. The CentOS themes implements CentOS project corporate
-     visual identity in each visual manifestation of CentOS project
-     (e.g., distributions, websites, promotion stuff, etc.).
-
-     *Note trunk Identity Themes::, for more information.
+     The CentOS themes are a set of image files connected all together
+     by one unique visual style. Each theme is organized in different
+     visual manifestations, in order to cover each visual manifestation
+     of The CentOS Project (i.e., distributions, websites, promotion
+     stuff, etc.).  *Note trunk Identity Themes::, for more information.
 
    Inside a monolithic corporate visual identity structure, internal and
 external stakeholders use to feel a strong sensation of uniformity,
@@ -479,310 +475,7 @@ To produce identity artworks, use the following commands:
      extension. It is removed from translation path before applying the
      pattern, so it doesn't count here.
 
-3.1.4 Renderable directories
-----------------------------
-
-Inside `trunk/Identity', renderable directories should have one of the
-following directory layouts:
-
-3.1.4.1 Layout 1: Simple image rendering
-........................................
-
-This directory layout contains one `Img/' directory (to store final
-images), one `Tpl/' directory to store design templates, and the
-translation entry is empty (there isn't translation files in this
-configuration).  In this configuration, one design template produces
-one untranslated PNG image, just as it is in the template.
-
-
-trunk/Identity/path/to/dir
-|-- Img
-|   |-- anaconda_header_fig1.png
-|   |-- anaconda_header_fig2.png
-|   `-- anaconda_header_summary.png
-`-- Tpl
-    |-- anaconda_header_fig1.svg
-    |-- anaconda_header_fig2.svg
-    `-- anaconda_header_summary.svg
-
-3.1.4.2 Layout 2: Simple image rendering (extended)
-...................................................
-
-This directory layout contains one `Img/' directory (to store final
-images), one `Tpl/' directory to store design templates, and the
-translation entry is empty (there isn't translation files in this
-configuration).  When images are rendered, the `Img/' directory
-structure is created automatically using the `Tpl/' directory structure
-as reference.  In this configuration, one design template produces one
-untranslated PNG image, just as it is in the template.
-
-
-trunk/Identity/path/to/dir
-|-- Img
-|   |-- Corporate
-|   |   `-- monolithic.png
-|   `-- Distro
-|       `-- Anaconda
-|           `-- Header
-|               |-- fig1.png
-|               |-- fig2.png
-|               `-- summary.png
-`-- Tpl
-    |-- Corporate
-    |   `-- monolithic.svg
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.svg
-                |-- fig2.svg
-                `-- summary.svg
-
-3.1.4.3 Layout 3: Language specific image rendering
-...................................................
-
-This directory layout extends previous one in order to produce
-language-specific images.  This directory layout contains one `Img/'
-directory (to store final images), one `Tpl/' directory to store design
-templates, and the translation entry contains translation files inside
-(organized by language codes).
-
-
-trunk/Translations/Identity/path/to/dir
-|-- en
-|   |-- Corporate
-|   |   `-- monolithic.sed
-|   `-- Distro
-|       `-- Anaconda
-|           `-- Header
-|               |-- fig1.sed
-|               |-- fig2.sed
-|               `-- summary.sed
-`-- es
-    |-- Corporate
-    |   `-- monolithic.sed
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.sed
-                |-- fig2.sed
-                `-- summary.sed
-
-   When images are rendered, the `Img/' directory structure is created
-automatically using the translation entry structure as reference (see
-above).
-
-
-trunk/Identity/path/to/dir
-|-- Img
-|   |-- en
-|   |   |-- Corporate
-|   |   |   `-- monolithic.png
-|   |   `-- Distro
-|   |       `-- Anaconda
-|   |           `-- Header
-|   |               |-- fig1.png
-|   |               |-- fig2.png
-|   |               `-- summary.png
-|   `-- es
-|       |-- Corporate
-|       |   `-- monolithic.png
-|       `-- Distro
-|           `-- Anaconda
-|               `-- Header
-|                   |-- fig1.png
-|                   |-- fig2.png
-|                   `-- summary.png
-`-- Tpl
-    |-- Corporate
-    |   `-- monolithic.svg
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.svg
-                |-- fig2.svg
-                `-- summary.svg
-
-   In this configuration, one language-specific file is applied to one
-design tempalate to produce one translated PNG image. The relation
-between language-specific translation file and design template is done
-removing the language-specific directory from translation path, and the
-one design template path that matches it is used.
-
-   If no design template is found for one translation file, the final
-PNG image for that translation file is not produced and the next
-translation file in the list is evaluated.
-
-   For example, in this configuration the following translation files:
-
-
-trunk/Translations/Identity/path/to/dir/en/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/es/Corporate/monolithic.sed
-
-   match the same design template file:
-
-
-trunk/Identity/path/to/dir/Tpl/Corporate/monolithic.svg
-
-   in order to produce the following PNG image files:
-
-
-trunk/Identity/path/to/dir/Img/en/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/es/Corporate/monolithic.png
-
-3.1.4.4 Layout 4: Release and language specific image rendering
-...............................................................
-
-This directory layout extends previous one in order to produce
-language-specific images for different major releases of CentOS
-distribution (as CentOS release schema describes).
-
-   This directory layout contains one `Img/' directory (to store final
-images), one `Tpl/' directory to store design templates, and the
-translation entry contains translation files inside (organized by
-language codes and major release numbers).
-
-
-trunk/Translations/Identity/path/to/dir
-|-- 5
-|   |-- en
-|   |   |-- Corporate
-|   |   |   `-- monolithic.sed
-|   |   `-- Distro
-|   |       `-- Anaconda
-|   |           `-- Header
-|   |               |-- fig1.sed
-|   |               |-- fig2.sed
-|   |               `-- summary.sed
-|   `-- es
-|       |-- Corporate
-|       |   `-- monolithic.sed
-|       `-- Distro
-|           `-- Anaconda
-|               `-- Header
-|                   |-- fig1.sed
-|                   |-- fig2.sed
-|                   `-- summary.sed
-`-- 6
-    |-- en
-    |   |-- Corporate
-    |   |   `-- monolithic.sed
-    |   `-- Distro
-    |       `-- Anaconda
-    |           `-- Header
-    |               |-- fig1.sed
-    |               |-- fig2.sed
-    |               `-- summary.sed
-    `-- es
-        |-- Corporate
-        |   `-- monolithic.sed
-        `-- Distro
-            `-- Anaconda
-                `-- Header
-                    |-- fig1.sed
-                    |-- fig2.sed
-                    `-- summary.sed
-
-   When images are rendered, the `Img/' directory structure is created
-automatically using the translation entry structure as reference (see
-above).
-
-
-trunk/Identity/path/to/dir
-|-- Img
-|   |-- 5
-|   |   |-- en
-|   |   |   |-- Corporate
-|   |   |   |   `-- monolithic.png
-|   |   |   `-- Distro
-|   |   |       `-- Anaconda
-|   |   |           `-- Header
-|   |   |               |-- fig1.png
-|   |   |               |-- fig2.png
-|   |   |               `-- summary.png
-|   |   `-- es
-|   |       |-- Corporate
-|   |       |   `-- monolithic.png
-|   |       `-- Distro
-|   |           `-- Anaconda
-|   |               `-- Header
-|   |                   |-- fig1.png
-|   |                   |-- fig2.png
-|   |                   `-- summary.png
-|   `-- 6
-|       |-- en
-|       |   |-- Corporate
-|       |   |   `-- monolithic.png
-|       |   `-- Distro
-|       |       `-- Anaconda
-|       |           `-- Header
-|       |               |-- fig1.png
-|       |               |-- fig2.png
-|       |               `-- summary.png
-|       `-- es
-|           |-- Corporate
-|           |   `-- monolithic.png
-|           `-- Distro
-|               `-- Anaconda
-|                   `-- Header
-|                           |-- fig1.png
-|                           |-- fig2.png
-|                           `-- summary.png
-`-- Tpl
-    |-- Corporate
-    |   `-- monolithic.svg
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.svg
-                |-- fig2.svg
-                `-- summary.svg
-
-   In this configuration, one language-specific file,  is applied to one
-design tempalate to produce one translated PNG image for each major
-release specified in the translation entry.  The relation among
-release-specific and language-specific translation files, and design
-template is done removing the release-specific and language-specific
-directories from translation path, and looking for the one design
-template path that matches.
-
-   If no design template matches the translation file, the final PNG
-image for that translation file is not produced and the next
-translation file in the list is evaluated.
-
-   For example, in this configuration, the following translation files:
-
-
-trunk/Translations/Identity/path/to/dir/5/en/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/5/es/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/6/en/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/6/es/Corporate/monolithic.sed
-
-   match the same design template file:
-
-
-trunk/Identity/path/to/dir/Tpl/Corporate/monolithic.svg
-
-   in order to produce the following PNG image files:
-
-
-trunk/Identity/path/to/dir/Img/5/en/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/5/es/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/6/en/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/6/es/Corporate/monolithic.png
-
-3.1.4.5 Layout 5: Brands specific image rendering
-.................................................
-
-*Note trunk Identity Brands::, for more information about themes
-specific image rendering and directory layout.
-
-3.1.4.6 Layout 6: Themes specific image rendering
-.................................................
-
-*Note trunk Identity Themes::, for more information about themes
-specific image rendering and directory layout.
-
-3.1.5 File name convenctions
+3.1.4 File name convenctions
 ----------------------------
 
 As file name convenction, inside CentOS Artwork Repository, both
@@ -790,13 +483,13 @@ text-based and image-based file name produced by `centos-art.sh' script
 has the same name of their translation files without the `.sed'
 extension. The file extension is set as follow:
 
-3.1.5.1 When text-based files are rendered
+3.1.4.1 When text-based files are rendered
 ..........................................
 
 Text-based files end up having the same extension of their design
 template file.
 
-3.1.5.2 When image-based files are rendered
+3.1.4.2 When image-based files are rendered
 ...........................................
 
 Image-based files always end up having the `.png' extension.
@@ -807,10 +500,10 @@ Image-based files always end up having the `.png' extension.
 
      *Note trunk Scripts Bash::, for more information.
 
-3.1.6 See also
+3.1.5 See also
 --------------
 
-3.1.7 References
+3.1.6 References
 ----------------
 
    * `http://en.wikipedia.org/Corporate_identity' (and related links).
@@ -1824,7 +1517,7 @@ visual identity (i.e., distribution stuff, promotion stuff, websites
 stuff, etc.) with the new major release of CentOS distribution all
 together at once.
 
-   Producing a new visual style is not one day's time task. Once we have
+   Producing a new visual style is not one day's task. Once we have
 defined the artistic motif, we need to propagate it through all visual
 manifestations of The CentOS Project corporate visual identity. When we
 say that we could produce one new visual style every two years we
@@ -1867,9 +1560,9 @@ design land. Using "randomly generated" conception to produce artistic
 motifs could be, practically, a way for anyone to follow in order to
 produce maintainable artistic motifs in few steps.
 
-   Due to the "randomly generated" nature of Flame filter, you may find
-that the same pattern is not always used each time you use the Flame
-filter interface.
+   Due to the "randomly generated" nature of Flame filter, we find that
+_Flame_ pattern is not always the same when we use _Flame_ filter
+interface.
 
    Using the same pattern design for each visual manifestation is
 essential in order to maintain the visual connection among all visual
@@ -1885,12 +1578,12 @@ considered part of the same theme.
      the word "theme" as: a set of images visually connected among
      themeselves.
 
-   In order to recreate the same flame pattern every time we may need
-to, the Flame filter interface provides the `Save' and `Open' options.
-The `Save' option brings up a file save dialog that allows you to save
-the current Flame settings for the plug-in, so that you can recreate
-them later.  The `Open' option brings up a file selector that allows
-you to open a previously saved Flame settings file.
+   In order for us to reproduce the same flame pattern always, _Flame_
+filter interface provides the `Save' and `Open' options. The `Save'
+option brings up a file save dialog that allows you to save the current
+Flame settings for the plug-in, so that you can recreate them later.
+The `Open' option brings up a file selector that allows you to open a
+previously saved Flame settings file.
 
    The Flame settings we used in our example are saved in the file:
 
@@ -1926,9 +1619,9 @@ your design.
 reduce the `Paper' layer opacity to 20%.
 
    Notice that when we duplicate one layer, the mask information related
-to layer is preserved from one layer to another. This saves some time
-when you want to have different layers with the same mask information
-on them.
+to layer is preserved from previous to next layer. This saves us some
+of the time required to produce different layers with the same mask
+information on them.
 
    Duplicate `Paper' layer and rename it `Stripes'. Remove paper
 pattern from `Stripes' layer. Fill `Stripes' layer with `Stripes
@@ -2102,7 +1795,7 @@ Artistic motifs are interpretations of that idea.
    Inside this directory artistic motifs are organized by name (e.g.,
 TreeFlower, Modern, etc.).
 
-   Inside each motif directories represent just one unique artistic
+   Each artistic motif directory represents just one unique artistic
 motif.
 
    The artistic motif is graphic design used as common pattern to
@@ -4394,98 +4087,549 @@ concepts for.
 3.42.1 Goals
 ------------
 
-   * ...
+The `render' functionality exists to automate production of files
+inside the working copy. The `render' functionality is aimed to satisfy
+different file types (e.g., text-based and image-based) production
+needs in different information levels (e.g., different languages,
+release numbers, different architectures, etc.).
 
 3.42.2 Description
 ------------------
 
-3.42.2.1 Renderable layout 1
-............................
+The `render' functionality relies on "renderable directory structures"
+to produce files. Renderable directory structures can be either
+"identity directory structures" or "translation directory structures"
+with special directories inside.
 
-Design models (`Tpl/') and design images (`Img/') directories share a
-common parent directory under `trunk/Identity' directory structure.
+3.42.3 Renderable identity directory structures
+-----------------------------------------------
+
+Identity directory structures are the starting point of identity
+rendition. Whenever we want to render a component of CentOS corporate
+visual identity we need to point `centos-art.sh' to an identity
+directory structure. If such identity directory structure doesn't
+exists, then it is good time to created. Each identity directory
+structure represents one visual manifestation of CentOS corporate
+visual identity. *Note trunk Identity::, for more information.
+
+   The first requirement for an identity directory structure to be
+considered a renderable identity directory structure is its location,
+inside the working copy: it should be under `trunk/Identity/' or
+`branches/Identity/' directory structure.
+
+   The second requirement for an identity directory structure to be
+considered a renderable identity directory structure is its directory
+structure: it needs to have one (`Tpl/') directory to store design
+templates files, one `Img/' directory to store files produced as
+rendition result, one translation directory structure to store
+translation files and one script directory to store pre-rendition
+configuration scripts.  All these directory structures are connected
+among themselves by a common component in their path that bonds them
+altogether.  *Note trunk Scripts Bash Functions Path::, for more
+information.
+
+   Inside renderable identity directory structures, `centos-art.sh' can
+render image-based and text-based files.
+
+3.42.3.1 Design template without translation
+............................................
+
+The design template without translation configuration is based on a
+renderable identity directory structure with an empty translation
+directory structure. In this configuration, one design template
+produces one untranslated file. Both design templates and final
+untranslated files share the same file name, but they differ one
+another in the file-type itself and the file-extension used to describe
+the file type.
+
+   Design templates are based on SVG (Scalable Vector Graphics) and use
+the extension `.svg'.  Files produced as rendition result (i.e., the
+final files translated or not) may be text-based files with arbitrary
+extensions, or PNG (Portable Network Graphics) files with the extension
+`.png'.  Definition of whether a final file is text-based or
+image-based is set in the pre-rendition configuration script of the
+renderable directory structure we want to produce files for.
+
+   For example, to produce images without translations (there is no much
+use in producing text-based files without translations), consider the
+following configuration:
+
+*One renderable identity directory structure:*
+     Specify the identity component we want to produce images for.
 
 
-trunk/Identity/Widgets
-|-- Tpl
-|   `-- file.svg
-`-- Img
-    `-- file.png
+     trunk/Identity/DirName
+     |-- Tpl
+     |   `-- file.svg
+     `-- Img
+         `-- file.png
 
-trunk/Translations/Identity/Widgets
-trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+     Inside design template directory, design template files can be
+     organized using several directory levels.  Using several levels of
+     directories inside design template directory let us to create very
+     simple but extensible configurations, specially if translated
+     images are not required.
 
-Figure 3.20: Example of renderable layout 1.
+          *Note* When we use a "design template without translation"
+          configuration,  `centos-art.sh' creates the `Img/' directory
+          structure automatically taking the `Tpl/' directory structure
+          as reference at rendition time.
 
-3.42.2.2 Renderable layout 2
-............................
+     In order for SVG (Scalable Vector Graphics) files to be considered
+     "design template" files, they should be placed under the design
+     template directory and to have set a `CENTOSARTWORK' object id
+     inside.
 
-Design models and design images don't share a common parent directory.
-Instead, design models (`Models/') and design images (`Motifs/') are
-stored separately on another inside different directory structures
-under `trunk/Identity/Themes/'.
+     The `CENTOSARTWORK' word itself is a convenction name we use to
+     define which object/design area, inside a design template, the
+     `centos-art.sh' script will use to export as PNG image at
+     rendition time.  Whithout such object id specification, the
+     `centos-art.sh' script cannot know what object/design area you (as
+     designer) want to export as PNG image file.
+
+     Inside the working copy, you can find an example of "design
+     template without translation" configuration at
+     `trunk/Identity/Models/'.
+
+     *Note trunk Identity::, for more information.
+
+*One translation directory structure:*
+     In order for an identity entry to be considered an identity
+     renderable directory structure, it should have a translation
+     entry. The content of the translation entry is relevant to
+     determine how the identity renderable directory entry is processed.
+
+     If the translation entry is empty (i.e., there is no file inside
+     it), `centos-art.sh' interprets the identity renderable directory
+     structure as a "design templates without translation"
+     configuration.
 
 
-trunk/Identity/Themes/Models/Default/Distro/
-`-- Anaconda
-    `-- Header
-        `-- anaconda_header.svg
+     trunk/Translations/Identity/DirName
+     `-- (empty)
 
-trunk/Identity/Themes/Motifs/TreeFlower/Distro/
-`-- Anaconda
-    `-- Header
-        `-- anaconda_header.png
+     If the translation entry is not empty, `centos-art.sh' can
+     interpret the identity renderable directory structure as any of the
+     following configuration: "design templates with translations
+     (one-to-one)" or "design templates with translations (optimized)".
+     Which one of these configuration is used depends on the value
+     assigned to the matching list (MATCHINGLIST) variable.
 
-trunk/Translations/Identity/Themes/Distro/Anaconda/Header/
-trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Header/
+     If the matching list variable is empty (as it is by default), then
+     "design templates with translations (one-to-one)" configuration is
+     used. In this configuration it is required that both design
+     templates and translation files have the same file names.
 
-Figure 3.21: Example of renderable layout 2.
+     If the matching list variable is not empty (because you redefine
+     it in the pre-rendition configuration script), then "design
+     templates with translations (optimized)" configuration is used
+     instead. In this configuration, design templates and translation
+     files don't need to have the same names since such relation
+     between them is specified in the matching list properly.
 
-   The "Renderable layout 2" emerged from "Renderable layout 1" to
-satisfy a need that "Renderable layout 1" cannot (and should not)
-satisfy: Produce images using a combination of different design models
-and different visual styles.
+     *Note trunk Translations::, for more information.
 
-   The "Renderable layout 2" layout is used at the following directory
-structures only:
+*One pre-rendition configuration script:*
+     In order to make an identity entry renderable, a pre-rendition
+     configuration script should exist for it.  The pre-rendition
+     configuration script specifies what type of rendition does
+     `centos-art.sh' will perform and the way it does it.
 
-`trunk/Identity/Themes/Motifs/$THEMENAME/'
-     This directory structure controls the main development area of
-     themes artistic motifs. In this directory structure we find
-     components that cannot be produced automatically (e.g.,
-     Backgrouds, Concepts, Color information, theme Screenshots, etc.).
 
-`turnk/Identity/Themes/Models/$THEMEMODEL/'
-     This directory structure controls the main development are of
-     themes design models. In this directory structure we found design
-     components that specify _how_ artistic motifs' backgrounds are
-     applied to each image design that need to be produced. Inside
-     design models you find translation markers used by translation
-     files in order to translate images in different languages,
-     releases, and architectures.
+     trunk/Scripts/Bash/Functions/Render/Config/Identity/DirName
+     `-- render.conf.sh
 
-`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/'
-     This directory structure controls the secondary development of
-     theme artistic motifs. In this directory structure we find
-     components that connot be produced automatically _plus_ components
-     that are produced automatically (e.g., Anaconda stuff, Bootup
-     stuff, Promotion stuff, etc.).
+     In this configuration the pre-rendition configuration script
+     (`render.conf.sh') would look like the following:
 
-`branches/Identity/Themes/Model/$THEMEMODEL/'
-     This directory structure does't exist, and it never would. Theme
-     design models are concentrated in just one place
-     (`trunk/Identity/Themes/Models/').
 
-`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/$TAGNUM/'
-     This directory structure
+     function render_loadConfig {
 
-`tags/Identity/Themes/Model/$THEMEMODEL/'
-     This directory structure does't exist, and it never would. Theme
-     design models are concentrated in just one place
-     (`trunk/Identity/Themes/Models/').
+         # Define rendition actions.
+         ACTIONS[0]='BASE:renderImage'
 
-3.42.2.3 Duplicate renderable layouts
-.....................................
+     }
+
+     To produce untranslated images, `centos-art.sh' takes one design
+     template and creates one temporal instance from it. Later,
+     `centos-art.sh' uses the temporal design template instance as
+     source file to export the final untranslated image. The export
+     action is possible thanks to Inkscape's command-line interface and
+     the `CENTOSARTWORK' object id we set inside design templates.
+
+
+     centos-art.sh render --identity=trunk/Identity/DirName
+     -------------------------------------------------
+     0 | Execute centos-art.sh on renderable identity directory structure.
+     --v----------------------------------------------
+     trunk/Identity/DirName/Tpl/file.svg
+     -------------------------------------------------
+     1 | Create instance from design template.
+     --v----------------------------------------------
+     /tmp/centos-art.sh-a07e824a-5953-4c21-90ae-f5e8e9781f5f-file.svg
+     -------------------------------------------------
+     2 | Render untranslated image from design template instance.
+     --v----------------------------------------------
+     trunk/Identity/NewDir/Img/file.png
+     -------------------------------------------------
+     3 | Remove design template instance.
+
+     Finally, when the untranslated image has been created, the temporal
+     design template instance is removed. At this point, the next design
+     template in the list is taken to repeat the production flow once
+     again and so on, until all design templates be processed.
+
+     *Note trunk Scripts Bash Functions Render Config::, for more
+     information.
+
+3.42.3.2 Design template with translation (one-to-one)
+......................................................
+
+Producing untranslated images is fine in many cases, but not always.
+Sometimes it is required to produce images in different languages and
+that is something that untrasnlated image production cannot achieve.
+However, if we fill its empty translation entry with translation files
+(one for each design template) we extend the production flow from
+untranslated image production to translated image production.
+
+   In order for `centos-art.sh' to produce images correctly, each
+design template should have one translation file and each translation
+file should have one design template.  Otherwise, if there is a missing
+design template or a missing translation file, `centos-art.sh' will not
+produce the final image related to the missing component.
+
+   In order for `centos-art.sh' to know which is the relation between
+translation files and design templates the translation directory
+structure is taken as reference.  For example, the
+`trunk/Translations/Identity/DirName/file.sed' translation file does
+match `trunk/Identity/DirName/Tpl/file.svg' design template, but it
+doesn't match `trunk/Identity/DirName/File.svg' or
+`trunk/Identity/DirName/Tpl/File.svg' or
+`trunk/Identity/DirName/Tpl/SubDir/file.svg' design templates.
+
+   The pre-rendition configuration script used to produce untranslated
+images is the same we use to produce translated images. There is no
+need to modify it. So, as we are using the same pre-rendition
+configuration script, we can say that translated image production is
+somehow an extended/improved version of untranslated image production.
+
+     *Note* If we use no translation file in the translation entry
+     (i.e., an empty directory), `centos-art.sh' assumes the
+     untranslated image production. If we fill the translation entry
+     with translation files, `centos-art.sh' assumes the translated
+     image production.
+
+   To produce final images, `centos-art.sh' applies one translation
+file to one design template and produce a translated design template
+instance. Later, `centos-art.sh' uses the translated template instance
+to produce the translated image. Finally, when the translated image has
+been produced, `centos-art.sh' removes the translated design template
+instance. This production flow is repeated for each translation file
+available in the translatio entry.
+
+
+centos-art.sh render --identity=trunk/Identity/DirName
+-------------------------------------------------
+0 | Execute centos-art.sh on directory structure.
+--v----------------------------------------------
+trunk/Translations/Identity/DirName/file.sed
+-------------------------------------------------
+1 | Apply translation to design template.
+--v----------------------------------------------
+trunk/Identity/DirName/Tpl/file.svg
+-------------------------------------------------
+2 | Create design template instance.
+--v----------------------------------------------
+/tmp/centos-art.sh-a07e824a-5953-4c21-90ae-f5e8e9781f5f-file.svg
+-------------------------------------------------
+3 | Render PNG image from template instance.
+--v----------------------------------------------
+trunk/Identity/NewDir/Img/file.png
+-------------------------------------------------
+4 | Remove design template instance.
+
+3.42.3.3 Design template with translation (optimized)
+.....................................................
+
+Producing translated images satisfies almost all our production images
+needs, but there is still a pitfall in them. In order to produce
+translated images as in the "one-to-one" configuration describes
+previously, it is required that one translation file has one design
+template. That's useful in many cases, but what would happen if we need
+to apply many different translation files to the same design template?
+Should we have to duplicate the same design template file for each
+translation file, in order to satisfy the "one-to-one" relation? What
+if we need to assign translation files to design templates arbitrarily?
+
+   Certenly, that's something the "one-to-one" configuration cannot
+handle.  So, that's why we had to "optimize" it. The optimized
+configuration consists on using a matching list (MATCHINGLIST) variable
+that specifies the relationship between translation files and design
+templates in an arbitrary way. Using such matching list between
+translation files and design templates let us use as many assignment
+combinations as translation files and design templates we are working
+with.
+
+   The MATCHINGLIST variable is set in the pre-rendition configuration
+script of the component we want to produce images for.  By default, the
+MATCHINGLIST variable is empty which means no matching list is used.
+Otherwise, if MATCHINGLIST variable has a value different to empty
+value then, `centos-art.sh' interprets the matching list in order to
+know how translation files are applied to design templates.
+
+   For example, consider the following configuration:
+
+*One entry under `trunk/Identity/':*
+     In this configuration we want to produce three images using a
+     paragraph-based style, controlled by `paragraph.svg' design
+     template; and one image using a list-based style, controlled by
+     `list.svg' design template.
+
+
+     trunk/Identity/DirName
+     |-- Tpl
+     |   |-- paragraph.svg
+     |   `-- list.svg
+     `-- Img
+         |-- 01-welcome.png
+         |-- 02-donate.png
+         |-- 03-docs.png
+         `-- 04-support.png
+
+*One entry under `trunk/Translations/':*
+     In order to produce translated images we need to have one
+     translation file for each translated image we want to produce.
+     Notice how translation names do match final image file names, but
+     how translation names do not match design template names. When we
+     use matching list there is no need for translation files to match
+     the names of design templates, such name relation is set inside
+     the matching list itself.
+
+
+     trunk/Translations/Identity/DirName
+     |-- 01-welcome.sed
+     |-- 02-donate.sed
+     |-- 03-docs.sed
+     `-- 04-support.sed
+
+*One entry under `trunk/trunk/Scripts/Bash/Functions/Render/Config/':*
+     In order to produce different translated images using specific
+     design templates, we need to specify the relation between
+     translation files and design templates in a way that
+     `centos-art.sh' could know exactly what translation file to apply
+     to what design template. This relation between translation files
+     and design templates is set using the matching list MATCHINGLIST
+     variable inside the pre-rendition configuration script of the
+     component we want to produce images for.
+
+
+     trunk/Scripts/Bash/Functions/Render/Config/Identity/DirName
+     `-- render.conf.sh
+
+     In this configuration the pre-rendition configuration script
+     (`render.conf.sh') would look like the following:
+
+
+     function render_loadConfig {
+
+         # Define rendition actions.
+         ACTIONS[0]='BASE:renderImage'
+
+         # Define matching list.
+         MATCHINGLIST="\
+         paragraph.svg:\
+             01-welcome.sed\
+             02-donate.sed\
+             04-support.sed
+         list.svg:\
+             03-docs.sed
+         "
+
+     }
+
+     As result, `centos-art.sh' will produce `01-welcome.png',
+     `02-donate.png' and `04-support.png' using the paragraph-based
+     design template, but `03-docs.png' using the list-based design
+     template.
+
+3.42.3.4 Design template with translation (optimized+flexibility)
+.................................................................
+
+In the production models we've seen so far, there are design templates
+to produce untranslated images and translation files which combiend
+with design templates produce translated images. That may seems like
+all our needs are covered, doesn't it? Well, it _almost_ does.
+
+   Generally, we use design templates to define how final images will
+look like. Generally, each renderable directory structure has one
+`Tpl/' directory where we organize design templates for that identity
+component. So, we can say that there is only one unique design template
+definition for each identity component; or what is the same, said
+differently, identity components can be produced in one way only, the
+way its own design template directory specifies.  This is not enough
+for theme production. It is a limitation, indeed.
+
+   Initially, to create one theme, we created one renderable directory
+structure for each theme component. When we found ourselves with many
+themes, and components inside them, it was obvious that the same design
+model was duplicated inside each theme. As design models were
+independently one another, if we changed one theme's design model, that
+change was useless to other themes. So, in order to reuse design model
+changes, we unified design models into one common directory structure.
+
+   With design models unified in a common structure, another problem
+rose up. As design models also had the visual style of theme components,
+there was no difference between themes, so there was no apparent need
+to have an independent theme directory structure for each different
+theme.  So, it was also needed to separate visual styles from design
+models.
+
+   At this point there are two independent worklines: one directory
+structure to store design models (the final image characteristics
+[i.e., dimensions, translation markers, etc.]) and one directory
+structure to store visual styles (the final image visual style [i.e.,
+the image look and feel]).  So, it is possible to handle both different
+design models and different visual styles independtly one another and
+later create combinations among them using `centos-art.sh'.
+
+   For example, consider the following configuration:
+
+*One entry under `trunk/Identity/Themes/Models/':*
+     The design model entry exists to organize design model files
+     (similar to design templates). Both design models and design
+     templates are very similar; they both should have the
+     `CENTOSARTWORK' export id present to identify the exportation
+     area, translation marks, etc.  However, design models do use
+     dynamic backgrounds inclusion while design templates don't.
+
+
+                             THEMEMODEL | | Design model component
+                                  |<----| |--------------------->|
+     trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/
+     |-- paragraph.svg
+     `-- list.svg
+
+     Inisde design models, dynamic backgrounds are required in order for
+     different artistic motifs to reuse common design models. Firstly,
+     in order to create dynamic backgrounds inside design models, we
+     import a bitmap to cover design model's background and later,
+     update design model's path information to replace fixed values to
+     dynamic values.
+
+*One entry under `trunk/Identity/Themes/Motifs/':*
+     The artistic motif entry defines the visual style we want to
+     produce images for, only. Final images (i.e., those built from
+     combining both design models and artistic motif backrounds) are
+     not stored here, but under branches directory structure. In the
+     artistic motif entry, we only define those images that cannot be
+     produced automatically by `centos-art.sh' (e.g., Backgrounds,
+     Color information, Screenshots, etc.).
+
+
+                       Artistic motif name | | Artistic motif backgrounds
+                                  |<-------| |-------->|
+     trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/
+     |-- Img
+     |   |-- Png
+     |   |   |-- 510x300.png
+     |   |   `-- 510x300-final.png
+     |   `-- Jpg
+     |       |-- 510x300.jpg
+     |       `-- 510x300-final.jpg
+     |-- Tpl
+     |   `-- 510x300.svg
+     `-- Xcf
+         `-- 510x300.xcf
+
+*One entry under `trunk/Translations/':*
+     The translation entry specifies, by means of translation files, the
+     language-specific information we want to produce image for. When we
+     create the translation entry we don't use the name of neither
+     design model nor artistic motif, just the design model component
+     we want to produce images for.
+
+
+                                        | Design model component
+                                        |--------------------->|
+     trunk/Translations/Identity/Themes/Distro/Anaconda/Progress/
+     `-- 5
+         |-- en
+         |   |-- 01-welcome.sed
+         |   |-- 02-donate.sed
+         |   `-- 03-docs.sed
+         `-- es
+             |-- 01-welcome.sed
+             |-- 02-donate.sed
+             `-- 03-docs.sed
+
+*One entry under `trunk/Scripts/Bash/Functions/Render/Config/':*
+     There is one pre-rendition configuration script for each theme
+     component. So, each time a theme component is rendered, its
+     pre-rendition configuration script is evaluated to teach
+     `centos-art.sh' how to render the component.
+
+
+     trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/
+     `-- render.conf.sh
+
+     In this configuration the pre-rendition configuration script
+     (`render.conf.sh') would look like the following:
+
+
+     function render_loadConfig {
+
+         # Define rendition actions.
+         ACTIONS[0]='BASE:renderImage'
+
+         # Define matching list.
+         MATCHINGLIST="\
+         paragraph.svg:\
+             01-welcome.sed\
+             02-donate.sed
+         list.svg:\
+             03-docs.sed
+             "
+
+         # Deifne theme model.
+         THEMEMODEL='Default'
+
+     }
+
+   The production flow of "optimize+flexibility" configuration...
+
+3.42.4 Renderable translation directory structures
+--------------------------------------------------
+
+Translation directory structures are auxiliar structures of renderable
+identity directory structures. There is one translation directory
+structure for each renderable identity directory structure.  Inside
+translation directory structures we organize translation files used by
+renderable identity directory structures that produce translated
+images. Renderable identity directory structures that produce
+untranslated images don't use translation files, but they do use a
+translation directory structure, an empty translation directory
+structure, to be precise.
+
+   In order to aliviate production of translation file, we made
+translation directory structures renderable adding a template (`Tpl/')
+directory structure to handle common content inside translation files.
+This way, we work on translation templates and later use
+`centos-art.sh' to produce specific translation files (based on
+translation templates) for different information (e.g., languages,
+release numbers, architectures, etc.).
+
+   If for some reason, translation files get far from translation
+templates and translation templates become incovenient to produce such
+translation files then, care should be taken to avoid replacing the
+content of translation files with the content of translation templates
+when `centos-art.sh' is executed to produce translation files from
+translation templates.
+
+   Inside renderable translation directory structures, `centos-art.sh'
+can produce text-based files only.
+
+3.42.5 Copying renderable directory structures
+----------------------------------------------
 
 A renderable layout is formed by design models, design images,
 pre-rendition configuration scripts and translations files. This way,
@@ -4520,14 +4664,14 @@ directory structure has been specified and verified, the related path
 information is built from it and copied automatically to the new
 location specified by FLAG_TO variable.
 
-   Renderable layout 1:
+   Design templates + No translation:
 
-   Command: - centos-art render -copy=trunk/Identity/Widgets
+   Command: - centos-art render -copy=trunk/Identity/DirName
 -to=trunk/Identity/NewDirName
 
-   Sources: - trunk/Identity/Widgets -
-trunk/Translations/Identity/Widgets -
-trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+   Sources: - trunk/Identity/DirName -
+trunk/Translations/Identity/DirName -
+trunk/Scripts/Bash/Functions/Render/Config/Identity/DirName
 
    Targets: - trunk/Identity/NewDirName -
 trunk/Translations/Identity/NewDirName -
@@ -4605,12 +4749,12 @@ still in need of it.
 directly involved in rendition process only. Once such directories have
 been duplicated, the functionality stops thereat.
 
-3.42.3 Usage
+3.42.6 Usage
 ------------
 
    * ...
 
-3.42.4 See also
+3.42.7 See also
 ---------------
 
 3.43 trunk/Scripts/Bash/Functions/Render/Config
@@ -4834,7 +4978,7 @@ following top commentary structure:
 14|
 15| }
 
-Figure 3.22: The functions script base comment structure
+Figure 3.20: The functions script base comment structure
 
    Relevant lines in the above structure are lines from 5 to 9.
 Everything else in the file is left immutable.
@@ -4898,7 +5042,7 @@ copyright note looks like the following:
 27|
 28| }
 
-Figure 3.23: The function script comment example
+Figure 3.21: The function script comment example
 
    Relevant lines in the above structure are lines from 5 to 22.  Pay
 attention how the copyright line was built, and how the license was
@@ -5465,7 +5609,7 @@ The `trunk/Translations' directory exists to:
 
 When you create artwork for CentOS distribution you find that some
 artworks need to be created for different major releases of CentOS
-distribution and inside each major release they need to be created for
+distribution and inside each major release that needs to be created for
 different locales. To get an approximate idea of how many files we are
 talking about, consider the followig approximate statistic:
 
@@ -6009,11 +6153,11 @@ translation directory structure, duplicates it for each release number
 specified in the `--filter='release-number'' argument and produces
 release-specific directories. As part of template translation
 duplication process take place, the `centos-art' script adds
-release-specific replacement commands to each specific translation file
-inside release-specific directories. As result, specific translation
-files, inside release-specific directories, contain template
-translation replacement commands _plus_, release-specific replacement
-commands.
+release-specific replacement commands for each specific translation
+file inside release-specific directories. As result, specific
+translation files, inside release-specific directories, contain
+template translation replacement commands _plus_, release-specific
+replacement commands.
 
      *Note* Release-specific replacement commands are standardized
      inside `centos-art' script using predifined release translation
@@ -6427,94 +6571,94 @@ documentation entry (*note trunk Translations::).
 Index
 *****
 
-branches:                                      See 1.        (line  392)
-Common translation files:                      See 3.50.2.5. (line 5857)
-How to render brands' translation files:       See 3.52.3.   (line 6161)
-How to render fonts' translation files:        See 3.54.3.   (line 6234)
-How to render translation files:               See 3.50.3.   (line 6027)
-Metadata maintainance:                         See 3.45.2.   (line 4987)
-Specific translation files:                    See 3.50.2.6. (line 5882)
-tags:                                          See 2.        (line  395)
-Template translation files:                    See 3.50.2.4. (line 5687)
-Translation brands file names:                 See 3.52.2.1. (line 6118)
-Translation configuration scripts:             See 3.50.2.8. (line 5916)
-Translation entries:                           See 3.50.2.1. (line 5503)
-Translation files:                             See 3.50.2.3. (line 5619)
-Translation markers:                           See 3.50.2.2. (line 5584)
-Translation paths:                             See 3.50.2.1. (line 5503)
+branches:                                      See 1.        (line  389)
+Common translation files:                      See 3.50.2.5. (line 6001)
+How to render brands' translation files:       See 3.52.3.   (line 6305)
+How to render fonts' translation files:        See 3.54.3.   (line 6378)
+How to render translation files:               See 3.50.3.   (line 6171)
+Metadata maintainance:                         See 3.45.2.   (line 5131)
+Specific translation files:                    See 3.50.2.6. (line 6026)
+tags:                                          See 2.        (line  392)
+Template translation files:                    See 3.50.2.4. (line 5831)
+Translation brands file names:                 See 3.52.2.1. (line 6262)
+Translation configuration scripts:             See 3.50.2.8. (line 6060)
+Translation entries:                           See 3.50.2.1. (line 5647)
+Translation files:                             See 3.50.2.3. (line 5763)
+Translation markers:                           See 3.50.2.2. (line 5728)
+Translation paths:                             See 3.50.2.1. (line 5647)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 5916)
-Translation rendering:                         See 3.50.2.7. (line 5905)
-Translation rendering default functionality:   See 3.50.2.9. (line 6002)
-trunk:                                         See 3.        (line  398)
-trunk Identity:                                See 3.1.      (line  401)
-trunk Identity Brands:                         See 3.2.      (line  821)
-trunk Identity Fonts:                          See 3.3.      (line  838)
-trunk Identity Icons:                          See 3.4.      (line  915)
-trunk Identity Isolinux:                       See 3.5.      (line  932)
-trunk Identity Models:                         See 3.6.      (line  949)
-trunk Identity Models Css:                     See 3.7.      (line  969)
-trunk Identity Models Html:                    See 3.8.      (line  991)
-trunk Identity Models Img Promo Web:           See 3.9.      (line 1012)
-trunk Identity Models Tpl:                     See 3.10.     (line 1033)
-trunk Identity Models Tpl Promo Web:           See 3.11.     (line 1054)
-trunk Identity Models Xcf:                     See 3.12.     (line 1384)
-trunk Identity Release:                        See 3.13.     (line 1405)
-trunk Identity Themes:                         See 3.14.     (line 1422)
-trunk Identity Themes Models:                  See 3.15.     (line 1447)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1480)
-trunk Identity Themes Models Default:          See 3.17.     (line 1507)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1539)
+                                                             (line 6060)
+Translation rendering:                         See 3.50.2.7. (line 6049)
+Translation rendering default functionality:   See 3.50.2.9. (line 6146)
+trunk:                                         See 3.        (line  395)
+trunk Identity:                                See 3.1.      (line  398)
+trunk Identity Brands:                         See 3.2.      (line  514)
+trunk Identity Fonts:                          See 3.3.      (line  531)
+trunk Identity Icons:                          See 3.4.      (line  608)
+trunk Identity Isolinux:                       See 3.5.      (line  625)
+trunk Identity Models:                         See 3.6.      (line  642)
+trunk Identity Models Css:                     See 3.7.      (line  662)
+trunk Identity Models Html:                    See 3.8.      (line  684)
+trunk Identity Models Img Promo Web:           See 3.9.      (line  705)
+trunk Identity Models Tpl:                     See 3.10.     (line  726)
+trunk Identity Models Tpl Promo Web:           See 3.11.     (line  747)
+trunk Identity Models Xcf:                     See 3.12.     (line 1077)
+trunk Identity Release:                        See 3.13.     (line 1098)
+trunk Identity Themes:                         See 3.14.     (line 1115)
+trunk Identity Themes Models:                  See 3.15.     (line 1140)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1173)
+trunk Identity Themes Models Default:          See 3.17.     (line 1200)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1232)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1623)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1640)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1666)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1691)
-trunk Identity Themes Motifs Flame:            See 3.23.     (line 1794)
-trunk Identity Themes Motifs Modern:           See 3.24.     (line 2005)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 2024)
+                                                             (line 1316)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1333)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1359)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1384)
+trunk Identity Themes Motifs Flame:            See 3.23.     (line 1487)
+trunk Identity Themes Motifs Modern:           See 3.24.     (line 1698)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 1717)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.26.
-                                                             (line 2145)
+                                                             (line 1838)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.27.
-                                                             (line 2166)
+                                                             (line 1859)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.28.
-                                                             (line 2187)
+                                                             (line 1880)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.29.
-                                                             (line 2214)
-trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 2270)
-trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 2292)
+                                                             (line 1907)
+trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 1963)
+trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 1985)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.32.
-                                                             (line 2311)
-trunk Identity Widgets:                        See 3.33.     (line 2609)
-trunk Manuals:                                 See 3.34.     (line 2626)
-trunk Scripts:                                 See 3.35.     (line 2647)
-trunk Scripts Bash:                            See 3.36.     (line 2671)
-trunk Scripts Bash Functions:                  See 3.37.     (line 2820)
-trunk Scripts Bash Functions Html:             See 3.38.     (line 3929)
-trunk Scripts Bash Functions Locale:           See 3.39.     (line 3950)
-trunk Scripts Bash Functions Manual:           See 3.40.     (line 4030)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 4051)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4394)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4619)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4797)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 4969)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5157)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5387)
-trunk Scripts Perl:                            See 3.48.     (line 5416)
-trunk Scripts Python:                          See 3.49.     (line 5433)
-trunk Translations:                            See 3.50.     (line 5454)
-trunk Translations Identity:                   See 3.51.     (line 6056)
-trunk Translations Identity Brands:            See 3.52.     (line 6077)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6172)
-trunk Translations Identity Fonts:             See 3.54.     (line 6187)
-trunk Translations Identity Models:            See 3.55.     (line 6250)
-trunk Translations Identity Release:           See 3.56.     (line 6265)
-trunk Translations Identity Themes:            See 3.57.     (line 6280)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6295)
+                                                             (line 2004)
+trunk Identity Widgets:                        See 3.33.     (line 2302)
+trunk Manuals:                                 See 3.34.     (line 2319)
+trunk Scripts:                                 See 3.35.     (line 2340)
+trunk Scripts Bash:                            See 3.36.     (line 2364)
+trunk Scripts Bash Functions:                  See 3.37.     (line 2513)
+trunk Scripts Bash Functions Html:             See 3.38.     (line 3622)
+trunk Scripts Bash Functions Locale:           See 3.39.     (line 3643)
+trunk Scripts Bash Functions Manual:           See 3.40.     (line 3723)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 3744)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4087)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4763)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4941)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 5113)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5301)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5531)
+trunk Scripts Perl:                            See 3.48.     (line 5560)
+trunk Scripts Python:                          See 3.49.     (line 5577)
+trunk Translations:                            See 3.50.     (line 5598)
+trunk Translations Identity:                   See 3.51.     (line 6200)
+trunk Translations Identity Brands:            See 3.52.     (line 6221)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6316)
+trunk Translations Identity Fonts:             See 3.54.     (line 6331)
+trunk Translations Identity Models:            See 3.55.     (line 6394)
+trunk Translations Identity Release:           See 3.56.     (line 6409)
+trunk Translations Identity Themes:            See 3.57.     (line 6424)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6439)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6316)
-trunk Translations Identity Widgets:           See 3.60.     (line 6409)
-Unused definitions:                            See 3.45.2.1. (line 5094)
+                                                             (line 6460)
+trunk Translations Identity Widgets:           See 3.60.     (line 6553)
+Unused definitions:                            See 3.45.2.1. (line 5238)
 List of Figures
 ***************
 

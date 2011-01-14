@@ -11,7 +11,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on January, 8 2011 by texi2html 1.76 -->
+<!-- Created on January, 13 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -54,143 +54,594 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_44.html#SEC247" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC249" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_44.html#SEC240" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC242" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Scripts-Bash-Functions-Render"></a>
-<a name="SEC248"></a>
+<a name="SEC241"></a>
 <h2 class="section"> 3.42 trunk/Scripts/Bash/Functions/Render </h2>
 
 
-<a name="SEC249"></a>
+<a name="SEC242"></a>
 <h3 class="subsection"> 3.42.1 Goals </h3>
 
-<ul class="toc">
-<li> ...
-</li></ul>
+<p>The <code>render</code> functionality exists to automate production of files
+inside the working copy. The <code>render</code> functionality is aimed to
+satisfy different file types (e.g., text-based and image-based)
+production needs in different information levels (e.g., different
+languages, release numbers, different architectures, etc.).
+</p>
 
-
-<a name="SEC250"></a>
+<a name="SEC243"></a>
 <h3 class="subsection"> 3.42.2 Description </h3>
 
 
-<a name="SEC251"></a>
-<h4 class="subsubsection"> 3.42.2.1 Renderable layout 1 </h4>
-
-<p>Design models (<tt>`Tpl/'</tt>) and design images (<tt>`Img/'</tt>)
-directories share a common parent directory under `trunk/Identity'
-directory structure.
+<p>The <code>render</code> functionality relies on &quot;renderable directory
+structures&quot; to produce files. Renderable directory structures can be
+either &quot;identity directory structures&quot; or &quot;translation directory
+structures&quot; with special directories inside. 
 </p>
-<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fRender_003a1"></a>
-<pre class="verbatim">trunk/Identity/Widgets
+
+<a name="SEC244"></a>
+<h3 class="subsection"> 3.42.3 Renderable identity directory structures </h3>
+
+<p>Identity directory structures are the starting point of identity
+rendition. Whenever we want to render a component of CentOS corporate
+visual identity we need to point <tt>`centos-art.sh'</tt> to an identity
+directory structure. If such identity directory structure doesn't
+exists, then it is good time to created. Each identity directory
+structure represents one visual manifestation of CentOS corporate
+visual identity. See section <a href="repository_4.html#SEC4">trunk/Identity</a>, for more information.
+</p>
+<p>The first requirement for an identity directory structure to be
+considered a renderable identity directory structure is its location,
+inside the working copy: it should be under <tt>`trunk/Identity/'</tt> or
+<tt>`branches/Identity/'</tt> directory structure.
+</p>
+<p>The second requirement for an identity directory structure to be
+considered a renderable identity directory structure is its directory
+structure: it needs to have one (<tt>`Tpl/'</tt>) directory to store
+design templates files, one <tt>`Img/'</tt> directory to store files
+produced as rendition result, one translation directory structure to
+store translation files and one script directory to store
+pre-rendition configuration scripts.  All these directory structures
+are connected among themselves by a common component in their path
+that bonds them altogether.  See section <a href="repository_44.html#SEC230">trunk/Scripts/Bash/Functions/Path</a>,
+for more information.
+</p>
+<p>Inside renderable identity directory structures, <tt>`centos-art.sh'</tt>
+can render image-based and text-based files. 
+</p>
+
+<a name="SEC245"></a>
+<h4 class="subsubsection"> 3.42.3.1 Design template without translation </h4>
+
+<p>The design template without translation configuration is based on a
+renderable identity directory structure with an empty translation
+directory structure. In this configuration, one design template
+produces one untranslated file. Both design templates and final
+untranslated files share the same file name, but they differ one
+another in the file-type itself and the file-extension used to
+describe the file type.
+</p>
+<p>Design templates are based on <acronym title="Scalable Vector Graphics">SVG</acronym> (Scalable Vector Graphics)
+and use the extension <code>.svg</code>.  Files produced as rendition result
+(i.e., the final files translated or not) may be text-based files with
+arbitrary extensions, or <acronym title="Portable Network Graphics">PNG</acronym> (Portable Network Graphics) files
+with the extension <code>.png</code>.  Definition of whether a final file is
+text-based or image-based is set in the pre-rendition configuration
+script of the renderable directory structure we want to produce files
+for.
+</p>
+<p>For example, to produce images without translations (there is no much
+use in producing text-based files without translations), consider the
+following configuration:
+</p>
+<dl compact="compact">
+<dt> <strong>One renderable identity directory structure:</strong></dt>
+<dd>
+<p>Specify the identity component we want to produce images for.
+</p>
+<pre class="verbatim">trunk/Identity/DirName
 |-- Tpl
 |   `-- file.svg
 `-- Img
     `-- file.png
-
-trunk/Translations/Identity/Widgets
-trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
 </pre>
-</div><p><strong>Figure 3.20: Example of renderable layout 1.
-</strong>
+<p>Inside design template directory, design template files can be
+organized using several directory levels.  Using several levels of
+directories inside design template directory let us to create very
+simple but extensible configurations, specially if translated images
+are not required.
 </p>
+<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> When we use a &quot;design template without translation&quot;
+configuration,  <tt>`centos-art.sh'</tt> creates the <tt>`Img/'</tt> directory
+structure automatically taking the <tt>`Tpl/'</tt> directory structure as
+reference at rendition time.
+</p></blockquote>
 
-<a name="SEC252"></a>
-<h4 class="subsubsection"> 3.42.2.2 Renderable layout 2 </h4>
-
-<p>Design models and design images don't share a common parent directory.
-Instead, design models (<tt>`Models/'</tt>) and design images
-(<tt>`Motifs/'</tt>) are stored separately on another inside different
-directory structures under <tt>`trunk/Identity/Themes/'</tt>. 
-</p>  
-<div class="float"><a name="trunk_002fScripts_002fBash_002fFunctions_002fRender_003a2"></a>
-<pre class="verbatim">trunk/Identity/Themes/Models/Default/Distro/
-`-- Anaconda
-    `-- Header
-        `-- anaconda_header.svg
-
-trunk/Identity/Themes/Motifs/TreeFlower/Distro/
-`-- Anaconda
-    `-- Header
-        `-- anaconda_header.png
-
-trunk/Translations/Identity/Themes/Distro/Anaconda/Header/
-trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Header/
+<p>In order for <acronym title="Scalable Vector Graphics">SVG</acronym> (Scalable Vector Graphics) files to be
+considered &quot;design template&quot; files, they should be placed under the
+design template directory and to have set a <code>CENTOSARTWORK</code>
+object id inside.
+</p>
+<p>The <code>CENTOSARTWORK</code> word itself is a convenction name we use to
+define which object/design area, inside a design template, the
+<tt>`centos-art.sh'</tt> script will use to export as PNG image at
+rendition time.  Whithout such object id specification, the
+<tt>`centos-art.sh'</tt> script cannot know what object/design area you
+(as designer) want to export as PNG image file.
+</p>
+<p>Inside the working copy, you can find an example of &quot;design template
+without translation&quot; configuration at <tt>`trunk/Identity/Models/'</tt>.
+</p>
+<p>See section <a href="repository_4.html#SEC4">trunk/Identity</a>, for more information.
+</p>
+</dd>
+<dt> <strong>One translation directory structure:</strong></dt>
+<dd>
+<p>In order for an identity entry to be considered an identity renderable
+directory structure, it should have a translation entry. The content
+of the translation entry is relevant to determine how the identity
+renderable directory entry is processed.
+</p>
+<p>If the translation entry is empty (i.e., there is no file inside it),
+<tt>`centos-art.sh'</tt> interprets the identity renderable directory
+structure as a &quot;design templates without translation&quot; configuration.
+</p>
+<pre class="verbatim">trunk/Translations/Identity/DirName
+`-- (empty)
 </pre>
-</div><p><strong>Figure 3.21: Example of renderable layout 2.
-</strong>
+<p>If the translation entry is not empty, <tt>`centos-art.sh'</tt> can
+interpret the identity renderable directory structure as any of the
+following configuration: &quot;design templates with translations
+(one-to-one)&quot; or &quot;design templates with translations (optimized)&quot;.
+Which one of these configuration is used depends on the value assigned
+to the matching list (<var>MATCHINGLIST</var>) variable.
 </p>
-<p>The &quot;Renderable layout 2&quot; emerged from &quot;Renderable layout 1&quot; to satisfy a
-need that &quot;Renderable layout 1&quot; cannot (and should not) satisfy: Produce
-images using a combination of different design models and different
-visual styles.
+<p>If the matching list variable is empty (as it is by default), then
+&quot;design templates with translations (one-to-one)&quot; configuration is
+used. In this configuration it is required that both design templates
+and translation files have the same file names. 
 </p>
-<p>The &quot;Renderable layout 2&quot; layout is used at the following directory
-structures only:
+<p>If the matching list variable is not empty (because you redefine it in
+the pre-rendition configuration script), then &quot;design templates with
+translations (optimized)&quot; configuration is used instead. In this
+configuration, design templates and translation files don't need to
+have the same names since such relation between them is specified in
+the matching list properly.
 </p>
-<dl compact="compact">
-<dt> <tt>`trunk/Identity/Themes/Motifs/$THEMENAME/'</tt></dt>
-<dd>
-<p>This directory structure controls the main development area of themes
-artistic motifs. In this directory structure we find components that
-cannot be produced automatically (e.g., Backgrouds, Concepts, Color
-information, theme Screenshots, etc.).
-</p>
-</dd>
-<dt> <tt>`turnk/Identity/Themes/Models/$THEMEMODEL/'</tt></dt>
-<dd>
-<p>This directory structure controls the main development are of themes
-design models. In this directory structure we found design components
-that specify <em>how</em> artistic motifs' backgrounds are applied to
-each image design that need to be produced. Inside design models you
-find translation markers used by translation files in order to
-translate images in different languages, releases, and architectures.
+<p>See section <a href="repository_53.html#SEC296">trunk/Translations</a>, for more information.
 </p>
 </dd>
-<dt> <tt>`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/'</tt></dt>
+<dt> <strong>One pre-rendition configuration script:</strong></dt>
 <dd>
-<p>This directory structure controls the secondary development of theme
-artistic motifs. In this directory structure we find components that
-connot be produced automatically <em>plus</em> components that are
-produced automatically (e.g., Anaconda stuff, Bootup stuff, Promotion
-stuff, etc.).
+<p>In order to make an identity entry renderable, a pre-rendition
+configuration script should exist for it.  The pre-rendition
+configuration script specifies what type of rendition does
+<tt>`centos-art.sh'</tt> will perform and the way it does it.
 </p>
-</dd>
-<dt> <tt>`branches/Identity/Themes/Model/$THEMEMODEL/'</tt></dt>
-<dd>
-<p>This directory structure does't exist, and it never would. Theme
-design models are concentrated in just one place
-(<tt>`trunk/Identity/Themes/Models/'</tt>).
+<pre class="verbatim">trunk/Scripts/Bash/Functions/Render/Config/Identity/DirName
+`-- render.conf.sh
+</pre>
+<p>In this configuration the pre-rendition configuration script
+(<tt>`render.conf.sh'</tt>) would look like the following:
 </p>
-</dd>
-<dt> <tt>`branches/Identity/Themes/Motifs/$THEMENAME/$BRANCHNUM/$TAGNUM/'</tt></dt>
-<dd>
-<p>This directory structure 
+<pre class="verbatim">function render_loadConfig {
+
+    # Define rendition actions.
+    ACTIONS[0]='BASE:renderImage'
+
+}
+</pre>
+<p>To produce untranslated images, <tt>`centos-art.sh'</tt> takes one design
+template and creates one temporal instance from it. Later,
+<tt>`centos-art.sh'</tt> uses the temporal design template instance as
+source file to export the final untranslated image. The export action
+is possible thanks to Inkscape's command-line interface and the
+<code>CENTOSARTWORK</code> object id we set inside design templates.
 </p>
-</dd>
-<dt> <tt>`tags/Identity/Themes/Model/$THEMEMODEL/'</tt></dt>
-<dd>
-<p>This directory structure does't exist, and it never would. Theme
-design models are concentrated in just one place
-(<tt>`trunk/Identity/Themes/Models/'</tt>).
+<pre class="verbatim">centos-art.sh render --identity=trunk/Identity/DirName
+-------------------------------------------------
+0 | Execute centos-art.sh on renderable identity directory structure.
+--v----------------------------------------------
+trunk/Identity/DirName/Tpl/file.svg
+-------------------------------------------------
+1 | Create instance from design template.
+--v----------------------------------------------
+/tmp/centos-art.sh-a07e824a-5953-4c21-90ae-f5e8e9781f5f-file.svg
+-------------------------------------------------
+2 | Render untranslated image from design template instance.
+--v----------------------------------------------
+trunk/Identity/NewDir/Img/file.png
+-------------------------------------------------
+3 | Remove design template instance.
+</pre>
+<p>Finally, when the untranslated image has been created, the temporal
+design template instance is removed. At this point, the next design
+template in the list is taken to repeat the production flow once again
+and so on, until all design templates be processed.
+</p>
+<p>See section <a href="repository_46.html#SEC253">trunk/Scripts/Bash/Functions/Render/Config</a>, for more
+information.
 </p></dd>
 </dl>
 
 
-<a name="SEC253"></a>
-<h4 class="subsubsection"> 3.42.2.3 Duplicate renderable layouts </h4>
+<a name="SEC246"></a>
+<h4 class="subsubsection"> 3.42.3.2 Design template with translation (one-to-one) </h4>
+
+<p>Producing untranslated images is fine in many cases, but not always.
+Sometimes it is required to produce images in different languages and
+that is something that untrasnlated image production cannot achieve.
+However, if we fill its empty translation entry with translation files
+(one for each design template) we extend the production flow from
+untranslated image production to translated image production.
+</p>
+<p>In order for <tt>`centos-art.sh'</tt> to produce images correctly, each
+design template should have one translation file and each translation
+file should have one design template.  Otherwise, if there is a
+missing design template or a missing translation file,
+<tt>`centos-art.sh'</tt> will not produce the final image related to the
+missing component.
+</p>
+<p>In order for <tt>`centos-art.sh'</tt> to know which is the relation
+between translation files and design templates the translation
+directory structure is taken as reference.  For example, the
+<tt>`trunk/Translations/Identity/DirName/file.sed'</tt> translation file
+does match <tt>`trunk/Identity/DirName/Tpl/file.svg'</tt> design template,
+but it doesn't match <tt>`trunk/Identity/DirName/File.svg'</tt> or
+<tt>`trunk/Identity/DirName/Tpl/File.svg'</tt> or
+<tt>`trunk/Identity/DirName/Tpl/SubDir/file.svg'</tt> design templates.
+</p>
+<p>The pre-rendition configuration script used to produce untranslated
+images is the same we use to produce translated images. There is no
+need to modify it. So, as we are using the same pre-rendition
+configuration script, we can say that translated image production is
+somehow an extended/improved version of untranslated image production.
+</p>
+<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> If we use no translation file in the translation entry
+(i.e., an empty directory), <tt>`centos-art.sh'</tt> assumes the
+untranslated image production. If we fill the translation entry with
+translation files, <tt>`centos-art.sh'</tt> assumes the translated image
+production.  
+</p></blockquote>
+
+<p>To produce final images, <tt>`centos-art.sh'</tt> applies one translation
+file to one design template and produce a translated design template
+instance. Later, <tt>`centos-art.sh'</tt> uses the translated template
+instance to produce the translated image. Finally, when the translated
+image has been produced, <tt>`centos-art.sh'</tt> removes the translated
+design template instance. This production flow is repeated for each
+translation file available in the translatio entry. 
+</p>
+<pre class="verbatim">centos-art.sh render --identity=trunk/Identity/DirName
+-------------------------------------------------
+0 | Execute centos-art.sh on directory structure.
+--v----------------------------------------------
+trunk/Translations/Identity/DirName/file.sed
+-------------------------------------------------
+1 | Apply translation to design template.
+--v----------------------------------------------
+trunk/Identity/DirName/Tpl/file.svg
+-------------------------------------------------
+2 | Create design template instance.
+--v----------------------------------------------
+/tmp/centos-art.sh-a07e824a-5953-4c21-90ae-f5e8e9781f5f-file.svg
+-------------------------------------------------
+3 | Render PNG image from template instance.
+--v----------------------------------------------
+trunk/Identity/NewDir/Img/file.png
+-------------------------------------------------
+4 | Remove design template instance.
+</pre>
+
+<a name="SEC247"></a>
+<h4 class="subsubsection"> 3.42.3.3 Design template with translation (optimized) </h4>
+
+<p>Producing translated images satisfies almost all our production images
+needs, but there is still a pitfall in them. In order to produce
+translated images as in the &quot;one-to-one&quot; configuration describes
+previously, it is required that one translation file has one design
+template. That's useful in many cases, but what would happen if we
+need to apply many different translation files to the same design
+template?  Should we have to duplicate the same design template file
+for each translation file, in order to satisfy the &quot;one-to-one&quot;
+relation? What if we need to assign translation files to design
+templates arbitrarily?
+</p>
+<p>Certenly, that's something the &quot;one-to-one&quot; configuration cannot
+handle.  So, that's why we had to &quot;optimize&quot; it. The optimized
+configuration consists on using a matching list (<var>MATCHINGLIST</var>)
+variable that specifies the relationship between translation files and
+design templates in an arbitrary way. Using such matching list between
+translation files and design templates let us use as many assignment
+combinations as translation files and design templates we are working
+with.
+</p>
+<p>The <var>MATCHINGLIST</var> variable is set in the pre-rendition
+configuration script of the component we want to produce images for.
+By default, the <var>MATCHINGLIST</var> variable is empty which means no
+matching list is used. Otherwise, if <var>MATCHINGLIST</var> variable has a
+value different to empty value then, <tt>`centos-art.sh'</tt> interprets
+the matching list in order to know how translation files are applied
+to design templates.
+</p>
+<p>For example, consider the following configuration:
+</p>
+<dl compact="compact">
+<dt> <strong>One entry under <tt>`trunk/Identity/'</tt>:</strong></dt>
+<dd>
+<p>In this configuration we want to produce three images using a
+paragraph-based style, controlled by <tt>`paragraph.svg'</tt> design
+template; and one image using a list-based style, controlled by
+<tt>`list.svg'</tt> design template.
+</p>
+<pre class="verbatim">trunk/Identity/DirName
+|-- Tpl
+|   |-- paragraph.svg
+|   `-- list.svg
+`-- Img
+    |-- 01-welcome.png
+    |-- 02-donate.png
+    |-- 03-docs.png
+    `-- 04-support.png
+</pre>
+</dd>
+<dt> <strong>One entry under <tt>`trunk/Translations/'</tt>:</strong></dt>
+<dd>
+<p>In order to produce translated images we need to have one translation
+file for each translated image we want to produce. Notice how
+translation names do match final image file names, but how translation
+names do not match design template names. When we use matching list
+there is no need for translation files to match the names of design
+templates, such name relation is set inside the matching list itself.
+</p>
+<pre class="verbatim">trunk/Translations/Identity/DirName
+|-- 01-welcome.sed
+|-- 02-donate.sed
+|-- 03-docs.sed
+`-- 04-support.sed
+</pre>
+</dd>
+<dt> <strong>One entry under <tt>`trunk/trunk/Scripts/Bash/Functions/Render/Config/'</tt>:</strong></dt>
+<dd>
+<p>In order to produce different translated images using specific design
+templates, we need to specify the relation between translation files
+and design templates in a way that <tt>`centos-art.sh'</tt> could know
+exactly what translation file to apply to what design template. This
+relation between translation files and design templates is set using
+the matching list <var>MATCHINGLIST</var> variable inside the pre-rendition
+configuration script of the component we want to produce images for.  
+</p>
+<pre class="verbatim">trunk/Scripts/Bash/Functions/Render/Config/Identity/DirName
+`-- render.conf.sh
+</pre>
+<p>In this configuration the pre-rendition configuration script
+(<tt>`render.conf.sh'</tt>) would look like the following:
+</p>
+<pre class="verbatim">function render_loadConfig {
+
+    # Define rendition actions.
+    ACTIONS[0]='BASE:renderImage'
+
+    # Define matching list.
+    MATCHINGLIST=&quot;\
+    paragraph.svg:\
+        01-welcome.sed\
+        02-donate.sed\
+        04-support.sed
+    list.svg:\
+        03-docs.sed
+    &quot;
+
+}
+</pre>
+<p>As result, <tt>`centos-art.sh'</tt> will produce <tt>`01-welcome.png'</tt>,
+<tt>`02-donate.png'</tt> and <tt>`04-support.png'</tt> using the
+paragraph-based design template, but <tt>`03-docs.png'</tt> using the
+list-based design template.
+</p></dd>
+</dl>
+
+
+<a name="SEC248"></a>
+<h4 class="subsubsection"> 3.42.3.4 Design template with translation (optimized+flexibility) </h4>
+
+<p>In the production models we've seen so far, there are design templates
+to produce untranslated images and translation files which combiend
+with design templates produce translated images. That may seems like
+all our needs are covered, doesn't it? Well, it <em>almost</em> does.
+</p>
+<p>Generally, we use design templates to define how final images will
+look like. Generally, each renderable directory structure has one
+<tt>`Tpl/'</tt> directory where we organize design templates for that
+identity component. So, we can say that there is only one unique
+design template definition for each identity component; or what is the
+same, said differently, identity components can be produced in one way
+only, the way its own design template directory specifies.  This is
+not enough for theme production. It is a limitation, indeed.
+</p>
+<p>Initially, to create one theme, we created one renderable directory
+structure for each theme component. When we found ourselves with many
+themes, and components inside them, it was obvious that the same
+design model was duplicated inside each theme. As design models were
+independently one another, if we changed one theme's design model,
+that change was useless to other themes. So, in order to reuse design
+model changes, we unified design models into one common directory
+structure.
+</p>
+<p>With design models unified in a common structure, another problem rose
+up. As design models also had the visual style of theme components,
+there was no difference between themes, so there was no apparent need
+to have an independent theme directory structure for each different
+theme.  So, it was also needed to separate visual styles from design
+models.
+</p>
+<p>At this point there are two independent worklines: one directory
+structure to store design models (the final image characteristics
+[i.e., dimensions, translation markers, etc.]) and one directory
+structure to store visual styles (the final image visual style [i.e.,
+the image look and feel]).  So, it is possible to handle both
+different design models and different visual styles independtly one
+another and later create combinations among them using
+<tt>`centos-art.sh'</tt>. 
+</p>
+<p>For example, consider the following configuration:
+</p>
+<dl compact="compact">
+<dt> <strong>One entry under <tt>`trunk/Identity/Themes/Models/'</tt>:</strong></dt>
+<dd>
+<p>The design model entry exists to organize design model files (similar
+to design templates). Both design models and design templates are very
+similar; they both should have the <code>CENTOSARTWORK</code> export id
+present to identify the exportation area, translation marks, etc.
+However, design models do use dynamic backgrounds inclusion while
+design templates don't.
+</p>
+<pre class="verbatim">                        THEMEMODEL | | Design model component
+                             |&lt;----| |---------------------&gt;|
+trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/
+|-- paragraph.svg
+`-- list.svg
+</pre>
+<p>Inisde design models, dynamic backgrounds are required in order for
+different artistic motifs to reuse common design models. Firstly, in
+order to create dynamic backgrounds inside design models, we import a
+bitmap to cover design model's background and later, update design
+model's path information to replace fixed values to dynamic values.
+</p>
+</dd>
+<dt> <strong>One entry under <tt>`trunk/Identity/Themes/Motifs/'</tt>:</strong></dt>
+<dd>
+<p>The artistic motif entry defines the visual style we want to produce
+images for, only. Final images (i.e., those built from combining both
+design models and artistic motif backrounds) are not stored here, but
+under branches directory structure. In the artistic motif entry, we
+only define those images that cannot be produced automatically by
+<tt>`centos-art.sh'</tt> (e.g., Backgrounds, Color information,
+Screenshots, etc.).
+</p>
+<pre class="verbatim">                  Artistic motif name | | Artistic motif backgrounds
+                             |&lt;-------| |--------&gt;|
+trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/
+|-- Img
+|   |-- Png
+|   |   |-- 510x300.png
+|   |   `-- 510x300-final.png
+|   `-- Jpg
+|       |-- 510x300.jpg
+|       `-- 510x300-final.jpg
+|-- Tpl
+|   `-- 510x300.svg
+`-- Xcf
+    `-- 510x300.xcf
+</pre>
+</dd>
+<dt> <strong>One entry under <tt>`trunk/Translations/'</tt>:</strong></dt>
+<dd>
+<p>The translation entry specifies, by means of translation files, the
+language-specific information we want to produce image for. When we
+create the translation entry we don't use the name of neither design
+model nor artistic motif, just the design model component we want to
+produce images for.
+</p>
+<pre class="verbatim">                                   | Design model component
+                                   |---------------------&gt;|
+trunk/Translations/Identity/Themes/Distro/Anaconda/Progress/
+`-- 5
+    |-- en
+    |   |-- 01-welcome.sed
+    |   |-- 02-donate.sed
+    |   `-- 03-docs.sed
+    `-- es
+        |-- 01-welcome.sed
+        |-- 02-donate.sed
+        `-- 03-docs.sed
+</pre>
+</dd>
+<dt> <strong>One entry under <tt>`trunk/Scripts/Bash/Functions/Render/Config/'</tt>:</strong></dt>
+<dd>
+<p>There is one pre-rendition configuration script for each theme
+component. So, each time a theme component is rendered, its
+pre-rendition configuration script is evaluated to teach
+<tt>`centos-art.sh'</tt> how to render the component.
+</p>
+<pre class="verbatim">trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/
+`-- render.conf.sh
+</pre>
+<p>In this configuration the pre-rendition configuration script
+(<tt>`render.conf.sh'</tt>) would look like the following:
+</p>
+<pre class="verbatim">function render_loadConfig {
+
+    # Define rendition actions.
+    ACTIONS[0]='BASE:renderImage'
+
+    # Define matching list.
+    MATCHINGLIST=&quot;\
+    paragraph.svg:\
+        01-welcome.sed\
+        02-donate.sed
+    list.svg:\
+        03-docs.sed
+        &quot;
+
+    # Deifne theme model.
+    THEMEMODEL='Default'
+
+}
+</pre></dd>
+</dl>
+
+<p>The production flow of &quot;optimize+flexibility&quot; configuration&hellip;
+</p>
+<a name="SEC249"></a>
+<h3 class="subsection"> 3.42.4 Renderable translation directory structures </h3>
+
+<p>Translation directory structures are auxiliar structures of renderable
+identity directory structures. There is one translation directory
+structure for each renderable identity directory structure.  Inside
+translation directory structures we organize translation files used by
+renderable identity directory structures that produce translated
+images. Renderable identity directory structures that produce
+untranslated images don't use translation files, but they do use a
+translation directory structure, an empty translation directory
+structure, to be precise.
+</p>
+<p>In order to aliviate production of translation file, we made
+translation directory structures renderable adding a template
+(<tt>`Tpl/'</tt>) directory structure to handle common content inside
+translation files.  This way, we work on translation templates and
+later use <tt>`centos-art.sh'</tt> to produce specific translation files
+(based on translation templates) for different information (e.g.,
+languages, release numbers, architectures, etc.).  
+</p>
+<p>If for some reason, translation files get far from translation
+templates and translation templates become incovenient to produce such
+translation files then, care should be taken to avoid replacing the
+content of translation files with the content of translation templates
+when <tt>`centos-art.sh'</tt> is executed to produce translation files
+from translation templates.
+</p>
+<p>Inside renderable translation directory structures,
+<tt>`centos-art.sh'</tt> can produce text-based files only.
+</p>
+
+<a name="SEC250"></a>
+<h3 class="subsection"> 3.42.5 Copying renderable directory structures </h3>
 
 <p>A renderable layout is formed by design models, design images,
 pre-rendition configuration scripts and translations files. This way,
@@ -229,15 +680,15 @@ the <tt>`trunk/Identity'</tt> directory structure has been specified and
 verified, the related path information is built from it and copied
 automatically to the new location specified by <var>FLAG_TO</var> variable.
 </p>
-<p>Renderable layout 1:
+<p>Design templates + No translation:
 </p>
 <p>Command:
-- centos-art render -copy=trunk/Identity/Widgets -to=trunk/Identity/NewDirName
+- centos-art render -copy=trunk/Identity/DirName -to=trunk/Identity/NewDirName
 </p>
 <p>Sources:
-- trunk/Identity/Widgets
-- trunk/Translations/Identity/Widgets
-- trunk/Scripts/Bash/Functions/Render/Config/Identity/Widgets
+- trunk/Identity/DirName
+- trunk/Translations/Identity/DirName
+- trunk/Scripts/Bash/Functions/Render/Config/Identity/DirName
 </p>
 <p>Targets:
 - trunk/Identity/NewDirName
@@ -321,34 +772,34 @@ directly involved in rendition process only. Once such directories
 have been duplicated, the functionality stops thereat. 
 </p>
 
-<a name="SEC254"></a>
-<h3 class="subsection"> 3.42.3 Usage </h3>
+<a name="SEC251"></a>
+<h3 class="subsection"> 3.42.6 Usage </h3>
 
 <ul class="toc">
 <li> ...
 </li></ul>
 
 
-<a name="SEC255"></a>
-<h3 class="subsection"> 3.42.4 See also </h3>
+<a name="SEC252"></a>
+<h3 class="subsection"> 3.42.7 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_46.html#SEC256">3.43 trunk/Scripts/Bash/Functions/Render/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_46.html#SEC253">3.43 trunk/Scripts/Bash/Functions/Render/Config</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC254" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_46.html#SEC256" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC251" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_46.html#SEC253" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC248" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC241" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>January, 8 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>January, 13 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

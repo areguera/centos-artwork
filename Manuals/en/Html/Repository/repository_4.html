@@ -11,7 +11,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on January, 8 2011 by texi2html 1.76 -->
+<!-- Created on January, 13 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -59,14 +59,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="trunk-Identity"></a>
@@ -110,16 +110,16 @@ with their products. In this case, the producer is The CentOS Project
 and the products are the CentOS distributions, the CentOS web sites,
 the CentOS promotion stuff, etc. 
 </p>
-<p>See section <a href="repository_5.html#SEC20">trunk/Identity/Brands</a>, for more information.
+<p>See section <a href="repository_5.html#SEC13">trunk/Identity/Brands</a>, for more information.
 </p>
 </dd>
 <dt> <strong>The CentOS Themes</strong></dt>
-<dd><p>The CentOS themes are a set of image files connected by one unique
-visual style. The CentOS themes implements CentOS project corporate
-visual identity in each visual manifestation of CentOS project (e.g.,
-distributions, websites, promotion stuff, etc.).
-</p>
-<p>See section <a href="repository_17.html#SEC90">trunk/Identity/Themes</a>, for more information.
+<dd>
+<p>The CentOS themes are a set of image files connected all together by
+one unique visual style. Each theme is organized in different visual
+manifestations, in order to cover each visual manifestation of The
+CentOS Project (i.e., distributions, websites, promotion stuff, etc.).
+See section <a href="repository_17.html#SEC83">trunk/Identity/Themes</a>, for more information.
 </p></dd>
 </dl>
 
@@ -172,306 +172,7 @@ the pattern, so it doesn't count here.
 
 
 <a name="SEC8"></a>
-<h3 class="subsection"> 3.1.4 Renderable directories </h3>
-
-<p>Inside <tt>`trunk/Identity'</tt>, renderable directories should have one
-of the following directory layouts:
-</p>
-
-<a name="SEC9"></a>
-<h4 class="subsubsection"> 3.1.4.1 Layout 1: Simple image rendering </h4>
-
-<p>This directory layout contains one <tt>`Img/'</tt> directory (to store
-final images), one <tt>`Tpl/'</tt> directory to store design templates,
-and the translation entry is empty (there isn't translation files in
-this configuration).  In this configuration, one design template
-produces one untranslated PNG image, just as it is in the template.
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir
-|-- Img
-|   |-- anaconda_header_fig1.png
-|   |-- anaconda_header_fig2.png
-|   `-- anaconda_header_summary.png
-`-- Tpl
-    |-- anaconda_header_fig1.svg
-    |-- anaconda_header_fig2.svg
-    `-- anaconda_header_summary.svg
-</pre>
-
-<a name="SEC10"></a>
-<h4 class="subsubsection"> 3.1.4.2 Layout 2: Simple image rendering (extended) </h4>
-
-<p>This directory layout contains one <tt>`Img/'</tt> directory (to store
-final images), one <tt>`Tpl/'</tt> directory to store design templates,
-and the translation entry is empty (there isn't translation files in
-this configuration).  When images are rendered, the <tt>`Img/'</tt>
-directory structure is created automatically using the <tt>`Tpl/'</tt>
-directory structure as reference.  In this configuration, one design
-template produces one untranslated PNG image, just as it is in the
-template.
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir
-|-- Img
-|   |-- Corporate
-|   |   `-- monolithic.png
-|   `-- Distro
-|       `-- Anaconda
-|           `-- Header
-|               |-- fig1.png
-|               |-- fig2.png
-|               `-- summary.png
-`-- Tpl
-    |-- Corporate
-    |   `-- monolithic.svg
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.svg
-                |-- fig2.svg
-                `-- summary.svg
-</pre>
-
-<a name="SEC11"></a>
-<h4 class="subsubsection"> 3.1.4.3 Layout 3: Language specific image rendering </h4>
-
-<p>This directory layout extends previous one in order to produce
-language-specific images.  This directory layout contains one
-<tt>`Img/'</tt> directory (to store final images), one <tt>`Tpl/'</tt>
-directory to store design templates, and the translation entry
-contains translation files inside (organized by language codes). 
-</p>
-<pre class="verbatim">trunk/Translations/Identity/path/to/dir
-|-- en
-|   |-- Corporate
-|   |   `-- monolithic.sed
-|   `-- Distro
-|       `-- Anaconda
-|           `-- Header
-|               |-- fig1.sed
-|               |-- fig2.sed
-|               `-- summary.sed
-`-- es
-    |-- Corporate
-    |   `-- monolithic.sed
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.sed
-                |-- fig2.sed
-                `-- summary.sed
-</pre>
-<p>When images are rendered, the <tt>`Img/'</tt> directory structure is
-created automatically using the translation entry structure as
-reference (see above).  
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir
-|-- Img
-|   |-- en
-|   |   |-- Corporate
-|   |   |   `-- monolithic.png
-|   |   `-- Distro
-|   |       `-- Anaconda
-|   |           `-- Header
-|   |               |-- fig1.png
-|   |               |-- fig2.png
-|   |               `-- summary.png
-|   `-- es
-|       |-- Corporate
-|       |   `-- monolithic.png
-|       `-- Distro
-|           `-- Anaconda
-|               `-- Header
-|                   |-- fig1.png
-|                   |-- fig2.png
-|                   `-- summary.png
-`-- Tpl
-    |-- Corporate
-    |   `-- monolithic.svg
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.svg
-                |-- fig2.svg
-                `-- summary.svg
-</pre>
-<p>In this configuration, one language-specific file is applied to one
-design tempalate to produce one translated PNG image. The relation
-between language-specific translation file and design template is done
-removing the language-specific directory from translation path, and
-the one design template path that matches it is used.  
-</p>
-<p>If no design template is found for one translation file, the final PNG
-image for that translation file is not produced and the next
-translation file in the list is evaluated.
-</p>
-<p>For example, in this configuration the following translation files:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/path/to/dir/en/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/es/Corporate/monolithic.sed
-</pre>
-<p>match the same design template file:
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir/Tpl/Corporate/monolithic.svg
-</pre>
-<p>in order to produce the following PNG image files:
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir/Img/en/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/es/Corporate/monolithic.png
-</pre>
-
-<a name="SEC12"></a>
-<h4 class="subsubsection"> 3.1.4.4 Layout 4: Release and language specific image rendering </h4>
-
-<p>This directory layout extends previous one in order to produce
-language-specific images for different major releases of CentOS
-distribution (as CentOS release schema describes).
-</p>
-<p>This directory layout contains one <tt>`Img/'</tt> directory (to store
-final images), one <tt>`Tpl/'</tt> directory to store design templates,
-and the translation entry contains translation files inside (organized
-by language codes and major release numbers). 
-</p>
-<pre class="verbatim">trunk/Translations/Identity/path/to/dir
-|-- 5
-|   |-- en
-|   |   |-- Corporate
-|   |   |   `-- monolithic.sed
-|   |   `-- Distro
-|   |       `-- Anaconda
-|   |           `-- Header
-|   |               |-- fig1.sed
-|   |               |-- fig2.sed
-|   |               `-- summary.sed
-|   `-- es
-|       |-- Corporate
-|       |   `-- monolithic.sed
-|       `-- Distro
-|           `-- Anaconda
-|               `-- Header
-|                   |-- fig1.sed
-|                   |-- fig2.sed
-|                   `-- summary.sed
-`-- 6
-    |-- en
-    |   |-- Corporate
-    |   |   `-- monolithic.sed
-    |   `-- Distro
-    |       `-- Anaconda
-    |           `-- Header
-    |               |-- fig1.sed
-    |               |-- fig2.sed
-    |               `-- summary.sed
-    `-- es
-        |-- Corporate
-        |   `-- monolithic.sed
-        `-- Distro
-            `-- Anaconda
-                `-- Header
-                    |-- fig1.sed
-                    |-- fig2.sed
-                    `-- summary.sed
-</pre>
-<p>When images are rendered, the <tt>`Img/'</tt> directory structure is
-created automatically using the translation entry structure as
-reference (see above).  
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir
-|-- Img
-|   |-- 5
-|   |   |-- en
-|   |   |   |-- Corporate
-|   |   |   |   `-- monolithic.png
-|   |   |   `-- Distro
-|   |   |       `-- Anaconda
-|   |   |           `-- Header
-|   |   |               |-- fig1.png
-|   |   |               |-- fig2.png
-|   |   |               `-- summary.png
-|   |   `-- es
-|   |       |-- Corporate
-|   |       |   `-- monolithic.png
-|   |       `-- Distro
-|   |           `-- Anaconda
-|   |               `-- Header
-|   |                   |-- fig1.png
-|   |                   |-- fig2.png
-|   |                   `-- summary.png
-|   `-- 6
-|       |-- en
-|       |   |-- Corporate
-|       |   |   `-- monolithic.png
-|       |   `-- Distro
-|       |       `-- Anaconda
-|       |           `-- Header
-|       |               |-- fig1.png
-|       |               |-- fig2.png
-|       |               `-- summary.png
-|       `-- es
-|           |-- Corporate
-|           |   `-- monolithic.png
-|           `-- Distro
-|               `-- Anaconda
-|                   `-- Header
-|                           |-- fig1.png
-|                           |-- fig2.png
-|                           `-- summary.png
-`-- Tpl
-    |-- Corporate
-    |   `-- monolithic.svg
-    `-- Distro
-        `-- Anaconda
-            `-- Header
-                |-- fig1.svg
-                |-- fig2.svg
-                `-- summary.svg
-</pre>
-<p>In this configuration, one language-specific file,  is applied to one
-design tempalate to produce one translated PNG image for each major
-release specified in the translation entry.  The relation among
-release-specific and language-specific translation files, and design
-template is done removing the release-specific and language-specific
-directories from translation path, and looking for the one design
-template path that matches.  
-</p>
-<p>If no design template matches the translation file, the final PNG
-image for that translation file is not produced and the next
-translation file in the list is evaluated.
-</p>
-<p>For example, in this configuration, the following translation files:
-</p>
-<pre class="verbatim">trunk/Translations/Identity/path/to/dir/5/en/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/5/es/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/6/en/Corporate/monolithic.sed
-trunk/Translations/Identity/path/to/dir/6/es/Corporate/monolithic.sed
-</pre>
-<p>match the same design template file:
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir/Tpl/Corporate/monolithic.svg
-</pre>
-<p>in order to produce the following PNG image files:
-</p>
-<pre class="verbatim">trunk/Identity/path/to/dir/Img/5/en/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/5/es/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/6/en/Corporate/monolithic.png
-trunk/Identity/path/to/dir/Img/6/es/Corporate/monolithic.png
-</pre>
-
-<a name="SEC13"></a>
-<h4 class="subsubsection"> 3.1.4.5 Layout 5: Brands specific image rendering </h4>
-
-<p>See section <a href="repository_5.html#SEC20">trunk/Identity/Brands</a>, for more information about themes
-specific image rendering and directory layout.
-</p>
-
-<a name="SEC14"></a>
-<h4 class="subsubsection"> 3.1.4.6 Layout 6: Themes specific image rendering </h4>
-
-<p>See section <a href="repository_17.html#SEC90">trunk/Identity/Themes</a>, for more information about themes
-specific image rendering and directory layout.
-</p>
-
-<a name="SEC15"></a>
-<h3 class="subsection"> 3.1.5 File name convenctions </h3>
+<h3 class="subsection"> 3.1.4 File name convenctions </h3>
 
 <p>As file name convenction, inside CentOS Artwork Repository, both
 text-based and image-based file name produced by <code>centos-art.sh</code>
@@ -479,15 +180,15 @@ script has the same name of their translation files without
 the <samp>`.sed'</samp> extension. The file extension is set as follow:
 </p>
 
-<a name="SEC16"></a>
-<h4 class="subsubsection"> 3.1.5.1 When text-based files are rendered </h4>
+<a name="SEC9"></a>
+<h4 class="subsubsection"> 3.1.4.1 When text-based files are rendered </h4>
 
 <p>Text-based files end up having the same extension of their design
 template file.
 </p>
 
-<a name="SEC17"></a>
-<h4 class="subsubsection"> 3.1.5.2 When image-based files are rendered </h4>
+<a name="SEC10"></a>
+<h4 class="subsubsection"> 3.1.4.2 When image-based files are rendered </h4>
 
 <p>Image-based files always end up having the <tt>`.png'</tt> extension. 
 </p>
@@ -496,21 +197,21 @@ may be created using the <code>renderFormats</code> post-rendering
 action, inside the image-based related pre-rendering configuration
 script.
 </p>
-<p>See section <a href="repository_39.html#SEC209">trunk/Scripts/Bash</a>, for more information.
+<p>See section <a href="repository_39.html#SEC202">trunk/Scripts/Bash</a>, for more information.
 </p></blockquote>
 
 
-<a name="SEC18"></a>
-<h3 class="subsection"> 3.1.6 See also </h3>
+<a name="SEC11"></a>
+<h3 class="subsection"> 3.1.5 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_53.html#SEC299">3.50 trunk/Translations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_53.html#SEC296">3.50 trunk/Translations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
-<a name="SEC19"></a>
-<h3 class="subsection"> 3.1.7 References </h3>
+<a name="SEC12"></a>
+<h3 class="subsection"> 3.1.6 References </h3>
 
 <ul class="toc">
 <li> <a class="www" href="http://en.wikipedia.org/Corporate_identity">http://en.wikipedia.org/Corporate_identity</a> (and related
@@ -520,16 +221,16 @@ links).
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC18" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_5.html#SEC20" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC11" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_5.html#SEC13" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC367" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_64.html#SEC364" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>January, 8 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>January, 13 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
