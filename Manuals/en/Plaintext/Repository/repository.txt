@@ -4082,11 +4082,9 @@ concepts for.
 3.42 trunk/Scripts/Bash/Functions/Render
 ========================================
 
-The `render' functionality exists to automate production of files
-inside the working copy. Specifically, the `render' functionality is
-aimed to produce text-based and image-based files in different
-information levels (i.e., different languages, release numbers,
-architectures, etc.).
+The `render' functionality exists to produce both identity and
+translation files on different levels of information (i.e., different
+languages, release numbers, architectures, etc.).
 
    The `render' functionality relies on "renderable directory
 structures" to produce files. Renderable directory structures can be
@@ -4096,28 +4094,17 @@ structures" with special directories inside.
 3.42.1 Renderable identity directory structures
 -----------------------------------------------
 
-Identity directory structures are the starting point of identity
-rendition. Whenever we want to render a component of CentOS corporate
-visual identity we need to point `centos-art.sh' to an identity
-directory structure. If such identity directory structure doesn't
-exist, then it is good time to create it. Each identity directory
-structure represents one visual manifestation of CentOS corporate
-visual identity.
+Renderable identity directory structures are the starting point of
+identity rendition. Whenever we want to render a component of CentOS
+corporate visual identity, we need to point `centos-art.sh' to a
+renderable identity directory structure. If such renderable identity
+directory structure doesn't exist, then it is good time to create it.
 
-   The first requirement for an identity directory structure to be
-considered a renderable identity directory structure is its location
-inside the working copy: it should be under `trunk/Identity/' or
-`branches/Identity/' directory structure.
-
-   The second requirement for an identity directory structure to be
-considered a renderable identity directory structure is its directory
-structure: it needs to have one `Tpl/' directory to store design
-template files, one `Img/' directory to store files produced as
-rendition result, one translation directory structure to store
-translation files and one script directory to store pre-rendition
-configuration scripts.  All these directory structures are connected
-among themselves by a common component in their path that bonds them
-altogether.
+   Inside the working copy, one renderable identity directory structures
+represents one visual manifestation of CentOS corporate visual
+identity, or said differently, each visual manifestation of CentOS
+corporate visual identity should have one renderable identity directory
+structure.
 
    Inside renderable identity directory structures, `centos-art.sh' can
 render both image-based and text-based files. Specification of whether
@@ -6605,24 +6592,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  387)
-Common translation files:                      See 3.50.2.5. (line 6034)
-How to render brands' translation files:       See 3.52.3.   (line 6338)
-How to render fonts' translation files:        See 3.54.3.   (line 6411)
-How to render translation files:               See 3.50.3.   (line 6204)
-Metadata maintainance:                         See 3.45.2.   (line 5164)
-Specific translation files:                    See 3.50.2.6. (line 6059)
+Common translation files:                      See 3.50.2.5. (line 6021)
+How to render brands' translation files:       See 3.52.3.   (line 6325)
+How to render fonts' translation files:        See 3.54.3.   (line 6398)
+How to render translation files:               See 3.50.3.   (line 6191)
+Metadata maintainance:                         See 3.45.2.   (line 5151)
+Specific translation files:                    See 3.50.2.6. (line 6046)
 tags:                                          See 2.        (line  390)
-Template translation files:                    See 3.50.2.4. (line 5864)
-Translation brands file names:                 See 3.52.2.1. (line 6295)
-Translation configuration scripts:             See 3.50.2.8. (line 6093)
-Translation entries:                           See 3.50.2.1. (line 5680)
-Translation files:                             See 3.50.2.3. (line 5796)
-Translation markers:                           See 3.50.2.2. (line 5761)
-Translation paths:                             See 3.50.2.1. (line 5680)
+Template translation files:                    See 3.50.2.4. (line 5851)
+Translation brands file names:                 See 3.52.2.1. (line 6282)
+Translation configuration scripts:             See 3.50.2.8. (line 6080)
+Translation entries:                           See 3.50.2.1. (line 5667)
+Translation files:                             See 3.50.2.3. (line 5783)
+Translation markers:                           See 3.50.2.2. (line 5748)
+Translation paths:                             See 3.50.2.1. (line 5667)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 6093)
-Translation rendering:                         See 3.50.2.7. (line 6082)
-Translation rendering default functionality:   See 3.50.2.9. (line 6179)
+                                                             (line 6080)
+Translation rendering:                         See 3.50.2.7. (line 6069)
+Translation rendering default functionality:   See 3.50.2.9. (line 6166)
 trunk:                                         See 3.        (line  393)
 trunk Identity:                                See 3.1.      (line  396)
 trunk Identity Brands:                         See 3.2.      (line  512)
@@ -6672,26 +6659,26 @@ trunk Scripts Bash Functions Locale:           See 3.39.     (line 3641)
 trunk Scripts Bash Functions Manual:           See 3.40.     (line 3721)
 trunk Scripts Bash Functions Path:             See 3.41.     (line 3742)
 trunk Scripts Bash Functions Render:           See 3.42.     (line 4085)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4796)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4974)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 5146)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5334)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5564)
-trunk Scripts Perl:                            See 3.48.     (line 5593)
-trunk Scripts Python:                          See 3.49.     (line 5610)
-trunk Translations:                            See 3.50.     (line 5631)
-trunk Translations Identity:                   See 3.51.     (line 6233)
-trunk Translations Identity Brands:            See 3.52.     (line 6254)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6349)
-trunk Translations Identity Fonts:             See 3.54.     (line 6364)
-trunk Translations Identity Models:            See 3.55.     (line 6427)
-trunk Translations Identity Release:           See 3.56.     (line 6442)
-trunk Translations Identity Themes:            See 3.57.     (line 6457)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6472)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4783)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4961)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 5133)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5321)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5551)
+trunk Scripts Perl:                            See 3.48.     (line 5580)
+trunk Scripts Python:                          See 3.49.     (line 5597)
+trunk Translations:                            See 3.50.     (line 5618)
+trunk Translations Identity:                   See 3.51.     (line 6220)
+trunk Translations Identity Brands:            See 3.52.     (line 6241)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6336)
+trunk Translations Identity Fonts:             See 3.54.     (line 6351)
+trunk Translations Identity Models:            See 3.55.     (line 6414)
+trunk Translations Identity Release:           See 3.56.     (line 6429)
+trunk Translations Identity Themes:            See 3.57.     (line 6444)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6459)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6493)
-trunk Translations Identity Widgets:           See 3.60.     (line 6586)
-Unused definitions:                            See 3.45.2.1. (line 5271)
+                                                             (line 6480)
+trunk Translations Identity Widgets:           See 3.60.     (line 6573)
+Unused definitions:                            See 3.45.2.1. (line 5258)
 List of Figures
 ***************
 

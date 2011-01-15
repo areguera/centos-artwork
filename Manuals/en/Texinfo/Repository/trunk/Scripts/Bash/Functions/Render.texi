@@ -1,38 +1,25 @@
-The @code{render} functionality exists to automate production of files
-inside the working copy. Specifically, the @code{render} functionality
-is aimed to produce text-based and image-based files in different
-information levels (i.e., different languages, release numbers,
-architectures, etc.).
+The @code{render} functionality exists to produce both identity and
+translation files on different levels of information (i.e., different
+languages, release numbers, architectures, etc.).
 
 The @code{render} functionality relies on ``renderable directory
 structures'' to produce files. Renderable directory structures can be
 either ``identity directory structures'' or ``translation directory
-structures'' with special directories inside. 
+structures'' with special directories inside.
 
 @subsection Renderable identity directory structures
 
-Identity directory structures are the starting point of identity
-rendition. Whenever we want to render a component of CentOS corporate
-visual identity we need to point @file{centos-art.sh} to an identity
-directory structure. If such identity directory structure doesn't
-exist, then it is good time to create it. Each identity directory
-structure represents one visual manifestation of CentOS corporate
-visual identity.
+Renderable identity directory structures are the starting point of
+identity rendition. Whenever we want to render a component of CentOS
+corporate visual identity, we need to point @file{centos-art.sh} to a
+renderable identity directory structure. If such renderable identity
+directory structure doesn't exist, then it is good time to create it. 
 
-The first requirement for an identity directory structure to be
-considered a renderable identity directory structure is its location
-inside the working copy: it should be under @file{trunk/Identity/} or
-@file{branches/Identity/} directory structure.
-
-The second requirement for an identity directory structure to be
-considered a renderable identity directory structure is its directory
-structure: it needs to have one @file{Tpl/} directory to store design
-template files, one @file{Img/} directory to store files produced as
-rendition result, one translation directory structure to store
-translation files and one script directory to store pre-rendition
-configuration scripts.  All these directory structures are connected
-among themselves by a common component in their path that bonds them
-altogether.
+Inside the working copy, one renderable identity directory structures
+represents one visual manifestation of CentOS corporate visual
+identity, or said differently, each visual manifestation of CentOS
+corporate visual identity should have one renderable identity
+directory structure.
 
 Inside renderable identity directory structures, @file{centos-art.sh}
 can render both image-based and text-based files. Specification of
