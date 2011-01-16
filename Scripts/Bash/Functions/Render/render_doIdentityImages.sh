@@ -59,17 +59,14 @@ function render_doIdentityImages {
             WIDTH=''
         fi
         
-        # Check external files existence. External files are used when
-        # reusing background images inside design templates. In these
-        # cases external files point to images which contain the
-        # appropriate background image used by design template to
-        # propagate theme's artistic motif. If you render inside
-        # trunk, background images inside trunk are evaluated,
-        # likewise if you render inside branches, background images
-        # inside branches are evaluated. There is no possible rendition
-        # inside tags.
-        EXTERNALFILES=$(egrep "(xlink:href|sodipodi:absref)=\"\
-            $(cli_getRepoTLDir $INSTANCE)" $INSTANCE \
+        # Check existence of external files. In order for design
+        # templates to point different artistic motifs, design
+        # templates make use of external files that point to specific
+        # artistic motif background images. If such external files
+        # doesn't exist, print a message and stop script execution.
+        # We cannot continue wihtout the background information.
+        EXTERNALFILES="(xlink:href|sodipodi:absref)=\"$(cli_getRepoTLDir $TEMPLATE)"
+        EXTERNALFILES=$(egrep "${EXTERNALFILES}" "${INSTANCE}" \
             | sed -r 's!^[[:space:]]+!!' \
             | sed -r 's!^(xlink:href|sodipodi:absref)="!!' \
             | sed -r 's!".*$!!' | sort | uniq)
