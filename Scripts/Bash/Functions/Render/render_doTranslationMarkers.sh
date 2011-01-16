@@ -29,7 +29,31 @@
 
 function render_doTranslationMarkers {
 
-    # Replace theme translation marker with appropriate theme name.
-    sed -i -e "s!=THEME=!$(cli_getThemeName)!g" $INSTANCE
+    # Initialize theme replacements.
+    local -a SRC
+    local -a DST
+    local COUNT=0
+
+    # Redefine theme translation markers.
+    SRC[0]='=THEME='
+    SRC[1]='=COPYRIGHT='
+    SRC[2]='=DESCRIPTION='
+    SRC[3]='=LICENSE='
+    SRC[4]='=NAME='
+    SRC[5]='=RELEASE='
+
+    # Redefine theme replacements.
+    DST[0]="$(cli_getThemeName)"
+    DST[1]="${CLICOPYRIGHT}"
+    DST[2]="`gettext "=NAME= is an artistic motif and theme for The CentOS Project corporate visual identity."`"
+    DST[3]="`gettext "=NAME= artistic motif and theme are released under Creative Common Attribution-ShareAlike 3.0 License."`"
+    DST[4]="$(cli_getThemeName '--name')"
+    DST[5]="$(cli_getThemeName '--release')"
+
+    # Replace translation markes with theme values.
+    while [[ ${COUNT} -lt ${#SRC[*]} ]];do
+        sed -r -i "s!${SRC[$COUNT]}!${DST[$COUNT]}!g" $INSTANCE
+        COUNT=$(($COUNT + 1))
+    done
 
 }
