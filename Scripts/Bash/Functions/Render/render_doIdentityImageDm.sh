@@ -125,14 +125,20 @@ function render_doIdentityImageDm {
         # Define directory to store release-specific images.
         IMG=$ACTIONVAL/$VERSION/Img
 
-        # Check existence of release-specific image directory.
-        cli_checkFiles "$IMG" 'd'
+        # Check existence of release-specific image directory. If it
+        # doesn't exist, create it.
+        if [[ ! -d $IMG ]];then 
+            mkdir -p $IMG
+        fi
 
         # Define directory to store release-specific tar.gz files. 
         TGZ=$ACTIONVAL/$VERSION/Tgz
 
-        # Check existence of release-specific tar.gz directory.
-        cli_checkFiles "$TGZ" 'd'
+        # Check existence of release-specific tar.gz directory. If
+        # it doesn't exist, create it.
+        if [[ ! -d $TGZ ]];then 
+            mkdir -p $TGZ
+        fi
 
         # Move into working directory.
         pushd $TGZ > /dev/null
