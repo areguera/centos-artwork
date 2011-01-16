@@ -31,49 +31,145 @@ function cli_getThemeName {
     # Initialize regular expression pattern.
     local PATTERN=''
 
-    if [[ $ACTIONVAL =~ '^/home/centos/artwork/trunk/.*$' ]];then
+    if [[ $ACTIONVAL =~ '^/home/centos/artwork/(trunk|branches|tags)/.*$' ]];then
 
-        # Define theme name for trunk development line.  There is no
-        # enumeration schema for themes stored under trunk development
-        # line. Inside trunk development line, theme names are stored
-        # in directories immediatly under Themes/Motifs/ directory and
-        # and can be named using letters and numbers.
-        PATTERN='^.+/Identity/Themes/Motifs/([A-Za-z0-9]+)/.+$'
-
-    elif [[ $ACTIONVAL =~ '^/home/centos/artwork/branches/.*$' ]];then
-
-        # Define theme name for branches development line.  Branch
-        # enumeration starts at number one and increments one unit
-        # each time a new branch is created from the same trunk
-        # development line.  If a branch is created from another brach
-        # then a new directory is created inside the source branch,
-        # using the same enumeration schema.  So, we may end up with
-        # paths like branches/.../Themes/Motifs/Flame/1,
-        # branches/.../Themes/Motifs/Flame/1/1,
-        # branches/.../Themes/Motifs/Flame/1/2,
-        # branches/.../Themes/Motifs/Flame/2,
-        # branches/.../Themes/Motifs/Flame/2/1, and so on.  In all
-        # previous examples the theme name holds the branch
-        # enumeration schema too.
-        PATTERN="^.+/Identity/Themes/Motifs/(([A-Za-z0-9]+)(/${RELEASE_FORMAT})+)/.+$"
-
-    elif [[ $ACTIONVAL =~ '^/home/centos/artwork/tags/.*$' ]];then
-
-        # Define theme name for tags frozen lines.  Branch enumeration
-        # starts at number zero and increments one unit each time a
-        # new tab is created from the same branch development line.
-        # Tags are never created from trunk, if you need to create a
-        # tag from trunk, you need to create a branch first and later
-        # a tag. In contrast with branches enumeration schema, tags
-        # enumeration schema uses dots. So, we may end up with paths
-        # like tags/.../Themes/Motifs/Flame/1.0,
-        # tags/.../Themes/Motifs/Flame/1.1.0,
-        # tags/.../Themes/Motifs/Flame/1.2.0,
-        # tags/.../Themes/Motifs/Flame/2.0,
-        # tags/.../Themes/Motifs/Flame/2.1.0, and so on. In all
-        # previous examples the theme name holds the branch
-        # enumeration schame too.
-        PATTERN="^.+/Identity/Themes/Motifs/(([A-Za-z0-9]+)(\.${RELEASE_FORMAT})+)/.+$"
+        # Define theme name for trunk, branches, and tags directory
+        # structures.
+        #
+        # trunk:
+        # ------
+        # Themes are made of `Models' and `Motifs'. `Models' controls
+        # the `Motifs' characteristcs and it is not rendereable. On
+        # the other hand, `Motifs' controls the theme visual style and
+        # do is renderable. Since we only need to know the theme name
+        # when we render something, we take the `Motifs' directory
+        # structure as reference to find out the theme name we are
+        # producing images for.
+        #
+        # `Motifs' are organized by names, so when we say `a theme
+        # name' we are really saying `the artistic motif name of a
+        # theme', but for short `theme name' is used instead. `Models'
+        # are also organized by names, but we do never use model names
+        # to name a thame. We always say the `theme models' or `the
+        # models of the theme` to refere the theme component that
+        # controls the characteristics of artistic motifs. We never
+        # name a thame as its model. We use artistic motifs name for
+        # such purpose.
+        #
+        # Inside artistic motif names, we organize different versions
+        # of the same artistic motif by means of numerical worklines.
+        # Worklines, inside trunk, have an integer numerical form and
+        # begin at `1'. They increment one unit each time a new/fresh
+        # visual style ---for the same artistic motif--- is conceived.
+        #
+        # For example, the Flame theme uses the flame filter of Gimp
+        # to produce different fractal patterns randomly. We use the
+        # flame filter to produce different visual styles under the
+        # same theme since all patterns we produce are based on the
+        # same pattern (i.e., the random fractal pattern of Gimp's
+        # flame filter). This way, if you no longer want to produce
+        # visual styles from flame filter, it is time to create a new
+        # artistic motif name for it.
+        #
+        # This schema is very convenient for designers and packagers,
+        # since different designers can create their own worklines and
+        # go on with them until CentOS distribution release date is
+        # close. At that time, a workline is selected and tagged for
+        # packaging. Translators and programmers can continue working
+        # indepently, and without affection, in their own directory
+        # structures.
+        #
+        #   Example:
+        #                               +------> theme name
+        #                           |-->| 
+        #   trunk/.../Themes/Motifs/Flame/1
+        #   trunk/.../Themes/Motifs/Flame/2 
+        #   trunk/.../Themes/Motifs/Flame/3
+        #                                 |
+        #                                 +----> theme release version
+        #
+        # Sometimes we only need to retrive the theme name, but
+        # othertimes both the theme name and its work-line is
+        # required as well.
+        #
+        # branches:
+        # ---------
+        # The branch development line is treated just as trunk
+        # development line does, but we rarely use it since it could
+        # be confusing to know whether a tag was created from trunk or
+        # branches.
+        #
+        # Conceive an enumeration schema in order to differentiate
+        # branches from trunk is not convenient either, it would
+        # introduce an intermediate point to the final production of
+        # tags we would need to be aware of.  Instead of such
+        # configuration, we prefer to go straightforward from trunk to
+        # tags.
+        #
+        # Intermediate branches for quality assurance might be good in
+        # some situations, but not when we produce themes. We need a
+        # simple structure, where we could design, render content
+        # (using centos-art.sh), and release for testing (through
+        # tags).  If something goes wrong in the released tag, it
+        # would be fixed in trunk and later released in another tagged
+        # relase.
+        #
+        # Of course, care should be taken to avoid making of trunk
+        # development line a chaotic place.  Everbody should know
+        # exactly what they are doing therein. We need to design
+        # protections to isolate possible damages and that way, we
+        # could know exactly what and where we need to concentrate in
+        # and put our time on.
+        #
+        # In resume, do not use branches if you don't need to.  Use
+        # trunk development line instead.
+        #
+        # tags:
+        # -----
+        # The tag frozen line is mainly used to perform theme
+        # releases.
+        #
+        #   Example:
+        #                                  +------> theme name
+        #                              |-->| 
+        #       tags/.../Themes/Motifs/Flame/1.0
+        #      trunk/.../Themes/Motifs/Flame/1 |--> minor update
+        #                                    |----> major udpate
+        #
+        # Tags have the format X.Z, where X is the first number in the
+        # name (e.g., `1') and represents the trunk/branches artistic
+        # motif version. The Z represents the second number in the
+        # name (e.g., `0') which is the tag version itself.  
+        #
+        # Tag versions start at `0' and increment one unit each time a
+        # new tag is created from the same artistic motif version.
+        # When a new tag is created for the same artistic motif
+        # version, the first number in the tag name remains intact.
+        # The first number in the tag name only changes when we create
+        # a new tag for a new artistic motif version.
+        #
+        #   Consider the following relations: 
+        #
+        #       trunk/.../Themes/Motifs/Flame/1
+        #       tags/.../Themes/Motifs/Flame/1.0
+        #       tags/.../Themes/Motifs/Flame/1.1
+        #       tags/.../Themes/Motifs/Flame/1.2
+        #
+        #       trunk/.../Themes/Motifs/Flame/2
+        #       tags/.../Themes/Motifs/Flame/2.0
+        #       tags/.../Themes/Motifs/Flame/2.1
+        #       tags/.../Themes/Motifs/Flame/2.2
+        #
+        #       trunk/.../Themes/Motifs/TreeFlower/1
+        #       tags/.../Themes/Motifs/TreeFlower/1.0
+        #       tags/.../Themes/Motifs/TreeFlower/1.1
+        #       ...
+        #       and so on. 
+        #
+        # Tag versions are created to release fixes and improvements,
+        # Tags are immutable (i.e., once tags are created, they
+        # shouldn't be modified.).
+        PATTERN="^.+/Identity/Themes/Motifs/(([A-Za-z0-9]+)/(${RELEASE_FORMAT})).+$"
 
     else
         cli_printMessage "`gettext "The working copy parent directory structure is incorrect."`" 'AsErrorLine'
@@ -81,8 +177,19 @@ function cli_getThemeName {
     fi
 
     # Print theme name to standard output.
-    if [[ $PATTERN != '' ]];then
-        echo $ACTIONVAL | sed -r "s!${PATTERN}!\1!"
-    fi
+    case "$1" in
+        '--name' )
+            echo $ACTIONVAL | sed -r "s!${PATTERN}!\2!"
+            ;;
+        '--release' )
+            echo $ACTIONVAL | sed -r "s!${PATTERN}!\3!"
+            ;;
+        '--none' )
+            echo $ACTIONVAL | sed -r "s!${PATTERN}!!"
+            ;;
+        '--both'|* )
+            echo $ACTIONVAL | sed -r "s!${PATTERN}!\1!"
+            ;;
+    esac
 
 }
