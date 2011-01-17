@@ -203,7 +203,7 @@ function cli_printMessage {
             # Add script name to message. We want to know where
             # messages come from. The `--quiet' flag doesn't suppress
             # error messages.
-            echo "${CLINAME}: ${MESSAGE}"
+            echo "centos-art: ${MESSAGE}"
             ;;
 
         'AsToKnowMoreLine' )
