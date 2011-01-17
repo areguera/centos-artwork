@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# license.sh -- This function outputs centos-art.sh license message.
+# license.sh -- This function outputs centos-art.sh about messages.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
