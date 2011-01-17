@@ -9,7 +9,6 @@
 # $Id: first-lowres.sed 502 2010-11-12 13:40:26Z al $
 # ------------------------------------------------------------
 
-s!=COPYRIGHT=!Copyright © 2003, 2010 The CentOS Project. All rights reserved.!
 
 # Release number information.
 s!=RELEASE=!=MAJOR_RELEASE=.=MINOR_RELEASE=!g

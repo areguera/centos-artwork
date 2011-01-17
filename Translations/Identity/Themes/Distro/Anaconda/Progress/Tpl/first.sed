@@ -2,4 +2,3 @@
 # $Id$
 # ------------------------------------------------------------
 
-s!=COPYRIGHT=!Copyright © 2003, 2010 The CentOS Project. All rights reserved.!
