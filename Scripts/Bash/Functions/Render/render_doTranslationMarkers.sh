@@ -44,9 +44,9 @@ function render_doTranslationMarkers {
 
     # Redefine theme replacements.
     DST[0]="$(cli_getThemeName)"
-    DST[1]="${CLICOPYRIGHT}"
-    DST[2]="`gettext "=NAME= is an artistic motif and theme for The CentOS Project corporate visual identity."`"
-    DST[3]="`gettext "=NAME= artistic motif and theme are released under Creative Common Attribution-ShareAlike 3.0 License."`"
+    DST[1]="$(cli_getCopyrightInfo)"
+    DST[2]="`gettext "=NAME= is an artistic motif for The CentOS Project corporate visual identity."`"
+    DST[3]="`gettext "=NAME= artistic motif is released under Creative Common Attribution-ShareAlike 3.0 License."`"
     DST[4]="$(cli_getThemeName '--name')"
     DST[5]="$(cli_getThemeName '--release')"
 
