@@ -29,6 +29,9 @@
 export TEXTDOMAIN=centos-art.sh
 export TEXTDOMAINDIR=/home/centos/artwork/trunk/Scripts/Bash/Locale
 
+# Initialize centos-art.sh personal information.
+export CLINAME='centos-art'
+
 # Initialize centos-art.sh function scripts.
 FILES=$(ls /home/centos/artwork/trunk/Scripts/Bash/Functions/{cli,cli_*}.sh)
 for FILE in $FILES;do
