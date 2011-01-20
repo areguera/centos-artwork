@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_readFileContent.sh -- This function outputs content files, passed
-# as first argument, to standard output as specified by second
+# cli_readFileContent.sh -- This function outputs content of files,
+# passed as first argument, to standard output as specified by second
 # argument.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -29,7 +29,7 @@ function cli_readFileContent {
 
     local FILES="$1"
 
-    # Verify existence of files.
+    # Verify existence of files but don't stop if it doesn't exist.
     cli_checkFiles "$FILES"
 
     # Print content of files to standard output. 
