@@ -6,5 +6,4 @@
 s!=TEXT=!CD instalador 4/6!
 s!=ARCH=!para arquitecturas =ARCH=!
 s!=ARCH=!x86_64!
-s!=LICENSE=!La distribución CentOS es liberada como GPL.!
 s!=URL=!http://www.centos.org/!

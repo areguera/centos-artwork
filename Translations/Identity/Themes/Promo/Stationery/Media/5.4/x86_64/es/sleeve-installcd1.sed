@@ -29,7 +29,6 @@ confiable, predecible y reproducible.!
 
 s!=ARCH=!x86_64!
 
-s!=LICENSE=!La distribución CentOS es liberada como GPL.!
 s!=URL=!http://www.centos.org/!
 
 # Release number information.

@@ -28,7 +28,6 @@ s!=MESSAGE1_P3=!Esto resulta un entorno seguro, de baja mantención,\
 confiable, predecible y reproducible.!
 
 s!=ARCH=!i386!
-s!=LICENSE=!La distribución CentOS es liberada como GPL.!
 s!=URL=!http://www.centos.org/!
 
 # Release number information.
