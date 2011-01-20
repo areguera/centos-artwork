@@ -157,13 +157,13 @@ function cli_getCopyrightInfo {
             # Define license information for directory structures that
             # don't match default license information.
             NOTES[0]="=NAME= artistic motif and theme are released under ${NOTE}"
-            NOTES[1]="The CentOS distribution is released as GPL."
+            NOTES[1]="`gettext "The CentOS distribution is released as GPL."`"
             ;;
 
         '--copyright' | * )
     
             # Define default copyright information.
-            NOTE="Copyright © 2003-$(date +%Y) The CentOS Project. All rights reserved."
+            NOTE="Copyright © 2003-$(date +%Y) The CentOS Project. `gettext "All rights reserved."`"
 
             # Define copyright information for directory structures
             # that don't match default copyright information.
