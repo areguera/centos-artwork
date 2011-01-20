@@ -41,6 +41,7 @@ function render_doTranslationMarkers {
     SRC[3]='=LICENSE='
     SRC[4]='=NAME='
     SRC[5]='=RELEASE='
+    SRC[6]='=URL='
 
     # Redefine theme replacements.
     DST[0]="$(cli_getThemeName)"
@@ -49,6 +50,7 @@ function render_doTranslationMarkers {
     DST[3]="$(cli_getCopyrightInfo '--license')"
     DST[4]="$(cli_getThemeName '--name')"
     DST[5]="$(cli_getThemeName '--release')"
+    DST[6]="http://www.centos.org/"
 
     # Replace translation markes with theme values.
     while [[ ${COUNT} -lt ${#SRC[*]} ]];do
