@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-25 16:37+0000\n"
+"POT-Creation-Date: 2011-01-20 11:16-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/initEnvironment.sh:35
-msgid "CentOS Artwork Repository automation tool."
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Bash/Styles/renameFile.sh:29
 msgid "Syntax: ./update-filenames.sh <PATH> <FILTER> <PATTERN> <VALUE>"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Shell/shell_getActions.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_getActions.sh:93
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Svg/svg_getActions.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_getActions.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_getActions.sh:44
-msgid "The action provided is not valid."
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Shell/shell_getActions.sh:98
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_getActions.sh:123
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/About/about_getActions.sh:73
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Svg/svg_getActions.sh:142
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActions.sh:142
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_getActions.sh:180
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_getActions.sh:94
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_getActions.sh:106
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_getActions.sh:147
+#, sh-format
+msgid "A valid action is required."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Shell/shell_updateCopyright.sh:51
@@ -58,30 +59,7 @@ msgstr ""
 msgid "Enter copyright information you want to apply:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_doCopy.sh:49
-msgid "The following entry will be created:"
-msgid_plural "The following entries will be created:"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_doCopy.sh:58
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkEntry.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_removeEntry.sh:83
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkChapter.sh:35
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkLanguageLayout.sh:35
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_doMessages.sh:43
-msgid "Do you want to continue?"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_doCopy.sh:80
-msgid "cannot create "
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_doCopy.sh:80
-msgid "Directory already exists."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getThemeName.sh:79
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getThemeName.sh:175
 msgid "The working copy parent directory structure is incorrect."
 msgstr ""
 
@@ -1047,17 +1025,34 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/About/about_getActions.sh:79
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getArguments.sh:74
-msgid "A valid option is required."
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getTemporalFile.sh:32
 msgid "First argument is required."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getTemporalFile.sh:42
 msgid "First argument cannot be empty."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:64
+msgid "The following entry will be created"
+msgid_plural "The following entries will be created"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:69
+msgid "The following entry will be deleted"
+msgid_plural "The following entries will be deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:74
+msgid "The second argument is not valid."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:84
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doLinkReport.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doPackageReport.sh:48
+msgid "Do you want to continue"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Svg/svg_updateMetadata.sh:52
@@ -1131,32 +1126,19 @@ msgstr ""
 msgid "Enter metadata information you want to apply:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:48
 msgid "None"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:52
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:106
-msgid "Translation"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:238
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:236
 #, sh-format
-msgid "No template defined for $FILE."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:239
-msgid "Check the matching list (render_getIdentityMatchinglist) script."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:293
-msgid "Design"
+msgid "There is no design template defined for `$FILE'."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageDm.sh:72
 #, sh-format
-msgid "The display manager \"$DM\" is not supported."
+msgid "The display manager `$DM' is not supported."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageDm.sh:85
@@ -1198,24 +1180,31 @@ msgstr ""
 msgid "The $OPTION option is already used."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActions.sh:101
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:31
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:35
-msgid "The path provided can't be processed."
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:35
+#, sh-format
+msgid "Can't do translation rendition at `$ACTIONVAL'."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:36
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:45
 msgid "Can't find translation templates in the directory provided."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:124
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:133
 msgid "There is not release-specific directory in the translation entry."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:135
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:144
 #, sh-format
 msgid "The \"$RELEASE\" release number isn't valid."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:37
+#, sh-format
+msgid "Can't do identity rendition at `$ACTIONVAL'."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:62
+msgid "The path provided can't be processed."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityGroupByType.sh:84
@@ -1228,20 +1217,19 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:47
 #, sh-format
-msgid "The export id ($EXPORTID) was not found inside $TEMPLATE."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:81
-msgid "Area"
+msgid "Can't found the export id ($EXPORTID) inside $TEMPLATE."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:82
-msgid "Background"
+msgid "Area"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:83
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityTexts.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:91
+msgid "Background"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:84
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:106
 msgid "Saved as"
 msgstr ""
 
@@ -1267,6 +1255,13 @@ msgstr ""
 msgid "Updating manual's pdf output"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_deleteCrossReferences.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_deleteCrossReferences.sh:58
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_restoreCrossReferences.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_restoreCrossReferences.sh:50
+msgid "Removed"
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_updateNodes.sh:54
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_updateChaptersFiles.sh:56
 msgid "Goals"
@@ -1285,6 +1280,13 @@ msgstr ""
 msgid "The following documentation section will be created:"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkEntry.sh:34
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkChapter.sh:35
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkLanguageLayout.sh:35
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_doMessages.sh:43
+msgid "Do you want to continue?"
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_updateChaptersFiles.sh:58
 msgid "Concepts"
 msgstr ""
@@ -1293,29 +1295,12 @@ msgstr ""
 msgid "Directories"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_deleteEntry.sh:81
+msgid "There are changes that need to be committed first."
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_updateOutputFileHtml.sh:30
 msgid "Updating manual's html output"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_removeEntry.sh:39
-msgid "The following entry doesn't exist:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_removeEntry.sh:74
-msgid "The following entry will be removed:"
-msgid_plural "The following entries will be removed:"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_removeEntry.sh:122
-msgid "The documentation entry cannot be removed."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_restoreCrossReferences.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_restoreCrossReferences.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_removeCrossReferences.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_removeCrossReferences.sh:58
-msgid "Removed"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_checkChapter.sh:33
@@ -1366,18 +1351,27 @@ msgstr ""
 msgid "The \"$LANGNAME\" documentation structure has been created."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_updateHeadings.sh:141
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_updateHeadings.sh:138
 msgid "Table of contents"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:58
-msgid "The location provided already exists."
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:31
+msgid "There is no destination to work with."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:66
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:100
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:36
 #, sh-format
-msgid "cannot create `$TARGET': It isn't an identity directory structure."
+msgid "The value `$FLAG_TO' is not valid destination value."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:59
+#, sh-format
+msgid "The location `$FLAG_TO' already exists."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:92
+#, sh-format
+msgid "cannot create `$FLAG_TO': It isn't an identity directory structure."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:33
@@ -1387,8 +1381,7 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:67
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:84
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:96
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:106
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:97
 #, sh-format
 msgid "The location `$ACTIONVAL' is not valid."
 msgstr ""
@@ -1421,7 +1414,7 @@ msgstr ""
 msgid "The following translation files will be updated:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli.sh:87
 #, sh-format
 msgid "The function `$FUNCNAM' is not valid."
 msgstr ""
@@ -1429,6 +1422,14 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getFunctions.sh:50
 #, sh-format
 msgid "The $FILE hasn't execution rights."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:160
+msgid "The CentOS distribution is released as GPL."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:166
+msgid "All rights reserved."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getLangName.sh:35
@@ -2181,11 +2182,6 @@ msgid_plural "The following links will be installed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doLinkReport.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doPackageReport.sh:48
-msgid "Do you want to continue"
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doEnvironment.sh:42
 msgid "Default text editor"
 msgstr ""
@@ -2220,130 +2216,143 @@ msgstr[1] ""
 msgid "requires third party repository!"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getRepoParallelDirs.sh:41
+msgid "The bond string is required."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:66
 msgid "Bringing changes from the repository into the working copy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:61
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:70
 msgid "Checking changes in the working copy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:82
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:91
 msgid "Added"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:83
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:92
 msgid "Deleted"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:84
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:93
 msgid "Updated"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:85
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:94
 msgid "Conflicted"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:86
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:95
 msgid "Merged"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:90
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:99
 msgid "Modified"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:91
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:100
 msgid "Unversioned"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:114
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:116
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:123
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:125
 msgid "file"
 msgid_plural "files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:123
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:132
 msgid "from the repository."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:127
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:136
 msgid "from the working copy."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:154
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:163
 msgid "The following file is unversioned"
 msgid_plural "The following files are unversioned"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:159
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:168
 msgid "Do you want to add it now?"
 msgid_plural "Do you want to add them now?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:180
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:189
 msgid "Do you want to see changes now?"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:184
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:193
 msgid "Do you want to commit changes now?"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getRepoTLDir.sh:57
+#, sh-format
+msgid "The location `$LOCATION' is not valid."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getFilesList.sh:64
 msgid "There is no file to process."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:63
 msgid "WARNING"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:66
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:71
 msgid "NOTE"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:71
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:78
 msgid "Updating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:76
-msgid "Removing"
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:85
+msgid "Deleting"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:81
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:92
 msgid "Checking"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:86
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:99
 msgid "Creating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:96
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:113
 msgid "Linked to"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:101
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:120
 msgid "Moved to"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:111
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:127
+msgid "Translation"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:134
 msgid "Configuration"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:116
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:141
 msgid "Palette"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:130
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:179
 msgid "y"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:133
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:182
 msgid "N"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:158
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printMessage.sh:216
 msgid "To know more, run the following command"
 msgstr ""
 
@@ -2360,33 +2369,29 @@ msgstr ""
 msgid "The directory \"$FILE\" doesn't exist."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:65
-msgid "Do you want to create it now?"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:73
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:71
 #, sh-format
 msgid "The file \"$FILE\" is not a regular file."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:80
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:78
 #, sh-format
 msgid "The file \"$FILE\" is not a symbolic link."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:87
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:85
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:95
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:104
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:119
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:93
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:102
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:117
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:112
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:110
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist inside the working copy."
 msgstr ""
