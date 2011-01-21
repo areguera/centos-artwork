@@ -71,7 +71,7 @@ function locale_doMessagesStatus {
         echo "$LOCALECODE | $LANG_NAME | $LANG_COUNTRY | $PO_STATUS | $PO_REVDATE | $PO_LASTAUTHOR"
 
     done \
-        | egrep -i $FLAG_FILTER \
+        | egrep -i "$FLAG_FILTER" \
         | awk 'BEGIN {FS="|"; format ="%7s\t%-15s\t%-15s\t%-12s\t%-12s\t%-s\n"
                       printf "--------------------------------------------------------------------------------\n"
                       printf format, "'`gettext "Code"`'", " '`gettext "Language"`'", " '`gettext "Country"`'",\

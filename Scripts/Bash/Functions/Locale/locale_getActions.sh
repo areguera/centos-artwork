@@ -52,7 +52,7 @@ function locale_getActions {
                 # verify here.
 
                 # Break while loop.
-                break
+                shift 1
                 ;;
 
             --edit )
@@ -71,7 +71,7 @@ function locale_getActions {
                 fi
 
                 # Break while loop.
-                break
+                shift 1
                 ;;
 
             --filter )
