@@ -27,7 +27,7 @@
 # Initizalize centos-art.sh gettext internazionalization.
 . gettext.sh
 export TEXTDOMAIN=centos-art.sh
-export TEXTDOMAINDIR=/home/centos/artwork/trunk/Scripts/Bash/Locale
+export TEXTDOMAINDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/Config
 
 # Initialize centos-art.sh personal information.
 export CLINAME='centos-art'

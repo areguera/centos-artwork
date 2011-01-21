@@ -51,26 +51,6 @@ function locale_getActions {
                 # Redefine action value. There is no action value to
                 # verify here.
 
-                # Look for related sub-options.
-                while true; do
-                    case "$2" in
-
-                        -f|--filter )
-
-                            # Redefine regular expression.
-                            FLAG_FILTER="$3"
-
-                            # Rotate positional parameters
-                            shift 3
-                            ;;
-
-                        * )
-                            break
-                            ;;
-
-                    esac
-                done
-
                 # Break while loop.
                 break
                 ;;
@@ -92,6 +72,15 @@ function locale_getActions {
 
                 # Break while loop.
                 break
+                ;;
+
+            --filter )
+
+                # Redefine filter (regular expression) flag.
+                FLAG_FILTER="$2"
+                
+                # Rotate positional parameters
+                shift 2
                 ;;
 
             * )
