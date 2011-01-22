@@ -56,18 +56,6 @@ function render_getActions {
                 shift 2
                 ;;
 
-            --translation )
-
-                # Redefine action value.
-                ACTIONVAL="$2"
-
-                # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_getActionsTranslations"
-
-                # Rotate positional parameters
-                shift 2
-                ;;
-
             --filter )
 
                 # Redefine filter (regular expression) flag.
