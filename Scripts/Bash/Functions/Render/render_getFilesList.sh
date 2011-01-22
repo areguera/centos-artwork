@@ -51,14 +51,14 @@ function render_getFilesList {
         
         # Use translations as source location.
         LOCATION="${TRANSLATIONPATH}"
-        EXTENSION='sed'
+        EXTENSION='png\.sh'
     
     elif [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
     
         # Use translations as source location.
         LOCATION="${TRANSLATIONPATH}"
-        EXTENSION='sed'
+        EXTENSION='png\.sh'
     
     fi
 
