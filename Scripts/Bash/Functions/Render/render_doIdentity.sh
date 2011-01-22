@@ -89,7 +89,7 @@ function render_doIdentity {
 
         # Check variables passed from artwork-specific pre-rendition
         # configuration scripts and make required transformations.
-        render_checkConfig
+        render_getIdentityConfig
 
         # Redefine action value (ACTIONVAL) based on pre-rendition
         # configuration script path value. Otherwise, massive

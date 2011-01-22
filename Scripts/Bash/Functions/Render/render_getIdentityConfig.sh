@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_checkConfig.sh -- This function checks/validates variables
+# render_getIdentityConfig.sh -- This function checks/validates variables
 # passed from artwork-specific pre-rendition configuration files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_checkConfig {
+function render_getIdentityConfig {
 
     local BASECOUNT=0
     local POSTCOUNT=0
