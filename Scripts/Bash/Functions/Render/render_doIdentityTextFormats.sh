@@ -33,7 +33,7 @@ function render_doIdentityTextFormats {
    local TMPFILE=$(cli_getTemporalFile "${FILE}")
 
    # Get action to do over text file.
-   local OPTIONS=$(render_getConfOption "$2" '2-')
+   local OPTIONS=$(render_getIdentityConfigOption "$2" '2-')
 
    # Remove some fmt's options. As we are applying fmt's options to a
    # file directly, there are some options like --version and --help

@@ -57,7 +57,7 @@ function render_doIdentityImageDm {
 
     # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
-    DM=$(render_getConfOption "$1" '2')
+    DM=$(render_getIdentityConfigOption "$1" '2')
 
     # Sanitate display manager possible values and define absolute
     # path to display manager design models (i.e., the place where
@@ -78,7 +78,7 @@ function render_doIdentityImageDm {
 
     # Get screen resolutions passed from render.conf.sh pre-rendition
     # configuration script.
-    RESOLUTIONS=$(render_getConfOption "$1" '3')
+    RESOLUTIONS=$(render_getIdentityConfigOption "$1" '3')
 
     # Check sanitated screen resolutions.
     if [[ "$RESOLUTIONS" == '' ]];then

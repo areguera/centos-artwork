@@ -38,19 +38,19 @@ function render_getIdentityConfig {
 
         # Define base-rendition actions.
         if [[ $ACTION =~ '^BASE:render(Text|Image)$' ]];then
-            ACTION=$(render_getConfOption "$ACTION" '2-')
+            ACTION=$(render_getIdentityConfigOption "$ACTION" '2-')
             BASEACTIONS[$BASECOUNT]="$ACTION"
             BASECOUNT=$(($BASECOUNT + 1))
 
         # Define post-rendition actions.
         elif [[ $ACTION =~ '^POST:' ]];then
-            ACTION=$(render_getConfOption "$ACTION" '2-')
+            ACTION=$(render_getIdentityConfigOption "$ACTION" '2-')
             POSTACTIONS[$POSTCOUNT]="$ACTION"
             POSTCOUNT=$(($POSTCOUNT + 1))
 
         # Define last-rendition actions.
         elif [[ $ACTION =~ '^LAST:' ]];then
-            ACTION=$(render_getConfOption "$ACTION" '2-')
+            ACTION=$(render_getIdentityConfigOption "$ACTION" '2-')
             LASTACTIONS[$LASTCOUNT]="$ACTION"
             LASTCOUNT=$(($LASTCOUNT + 1))
         fi

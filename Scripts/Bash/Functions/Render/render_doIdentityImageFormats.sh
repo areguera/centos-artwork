@@ -33,7 +33,7 @@ function render_doIdentityImageFormats {
     local FILE="$1"
 
     # Get image formats.
-    local FORMATS=$(render_getConfOption "$2" '2-')
+    local FORMATS=$(render_getIdentityConfigOption "$2" '2-')
 
     # Check base file existence.
     if [[ -f ${FILE}.png ]];then
