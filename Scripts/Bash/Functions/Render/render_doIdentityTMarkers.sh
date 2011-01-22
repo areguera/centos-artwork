@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doTranslationMarkers.sh -- This function standardizes
+# render_doIdentityTMarkers.sh -- This function standardizes
 # replacements for both specific and common translation markers.  This
 # function must be called from render_getIdentityDefs.sh function
 # (after instance creation and before final file creation).
@@ -28,12 +28,12 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doTranslationMarkers {
+function render_doIdentityTMarkers {
 
     # Apply specific replacements for specific translation markers.
-    render_doTranslationMarkersSpecifics
+    render_doIdentityTMarkersSpecifics
 
     # Apply common replacements for common translation markers.
-    render_doTranslationMarkersCommons
+    render_doIdentityTMarkersCommons
 
 }
