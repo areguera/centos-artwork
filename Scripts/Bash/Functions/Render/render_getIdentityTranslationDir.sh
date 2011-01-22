@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# render_getIdentityTranslationDir.sh -- This function re-defines
-# absolute path to artwork's related translation entry.  Be sure there
+# render_getIdentityTranslationDir.sh -- This function re-defines the
+# absolute path of artwork related translation entries.  Be sure there
 # is at least one translation file inside it.  Otherwise consider
-# artwork's translation entry as empty.  
+# the artwork translation entry as empty value.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -28,9 +28,9 @@
 
 function render_getIdentityTranslationDir {
 
-    TRANSLATIONPATH=/home/centos/artwork/trunk/Translations/$ARTCOMP
+    TRANSLATIONPATH=${FUNCDIR}/${FUNCDIRNAM}/Config/$ARTCOMP
 
-    if [[ "$(find $TRANSLATIONPATH -name '*.sed')" == '' ]];then
+    if [[ "$(find $TRANSLATIONPATH -name '*.png.sh')" == '' ]];then
         TRANSLATIONPATH=''
     fi
 
