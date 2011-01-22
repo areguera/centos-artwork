@@ -28,7 +28,7 @@
 function locale_doMessages {
 
     # Define variables as local to avoid conflicts outside.
-    local POT_FILE=$TEXTDOMAINDIR/$TEXTDOMAIN.pot
+    local POT_FILE=$TEXTDOMAINDIR/$(cli_getCurrentLocale)/$TEXTDOMAIN.pot
     local PO_FILE=$TEXTDOMAINDIR/$(cli_getCurrentLocale)/$TEXTDOMAIN.po
     local MO_FILE=$TEXTDOMAINDIR/$(cli_getCurrentLocale)/LC_MESSAGES/$TEXTDOMAIN.mo
     local LANGNAME=$(cli_getLangName $(cli_getCurrentLocale))
