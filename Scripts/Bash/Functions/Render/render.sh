@@ -31,9 +31,6 @@ function render {
     # controls final destination used by copy related actions.
     local FLAG_TO=''
 
-    # Define rendition variables.
-    local RELEASE_FORMAT='[[:digit:]]+(\.[[:digit:]]+){,1}'
-
     # Define rendition actions.
     render_getActions
 
