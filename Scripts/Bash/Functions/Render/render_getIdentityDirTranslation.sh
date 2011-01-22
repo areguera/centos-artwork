@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_getIdentityTranslationDir.sh -- This function re-defines the
+# render_getIdentityDirTranslation.sh -- This function re-defines the
 # absolute path of artwork related translation entries.  Be sure there
 # is at least one translation file inside it.  Otherwise consider
 # the artwork translation entry as empty value.
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getIdentityTranslationDir {
+function render_getIdentityDirTranslation {
 
     TRANSLATIONPATH=${FUNCDIR}/${FUNCDIRNAM}/Config/$ARTCOMP
 

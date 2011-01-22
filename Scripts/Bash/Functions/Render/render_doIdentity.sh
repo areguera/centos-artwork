@@ -24,7 +24,7 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id$
+# $Id: render_doIdentity.sh 824 2011-01-06 20:54:52Z al $
 # ----------------------------------------------------------------------
 
 function render_doIdentity {
@@ -113,7 +113,7 @@ function render_doIdentity {
 
         # Start rendition as defined in artwork-specific pre-rendition
         # configuration file.
-        render_doIdentityBase
+        render_getIdentityBase
 
         # Unset artwork-specific actions so they can be redefined by
         # artwork-specific pre-rendition configuration scripts. This

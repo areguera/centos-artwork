@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityBase.sh -- This function initiates rendition features
+# render_getIdentityBase.sh -- This function initiates rendition features
 # taking BASEACTIONS as reference.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doIdentityBase {
+function render_getIdentityBase {
 
     # Define variables as local to avoid conflicts outside.
     local TRANSLATIONPATH=''
@@ -37,16 +37,16 @@ function render_doIdentityBase {
     local FILES=''
 
     # Redefine absolute path to artwork's related translation entry.
-    render_getIdentityTranslationDir
+    render_getIdentityDirTranslation
 
     # Redefine absolute path to artwork's related design template
     # directory. By default design templates are stored in the Tpl/
     # directory which is stored in the workplace's root. 
-    render_getIdentityTemplateDir
+    render_getIdentityDirTemplate
 
     # Redefine absolute path to artwork's related final output
     # directory. 
-    render_getIdentityOutputDir
+    render_getIdentityDirOutput
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename $ACTIONVAL)

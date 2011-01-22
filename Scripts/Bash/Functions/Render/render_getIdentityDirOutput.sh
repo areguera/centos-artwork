@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_getIdentityOutputDir.sh -- This function re-defines final
+# render_getIdentityDirOutput.sh -- This function re-defines final
 # output directory used to store rendered identity artworks.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getIdentityOutputDir {
+function render_getIdentityDirOutput {
 
     # By default rendered identity artworks are stored immediatly
     # under identity entry structure.
