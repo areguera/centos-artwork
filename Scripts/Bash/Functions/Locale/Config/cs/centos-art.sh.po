@@ -1,21 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Czech translations for centos-art.sh package.
+# Copyright (C) 2011 The CentOS Project.
+# This file is distributed under the same license as the centos-art.sh
+# package. <centos-docs@centos.org>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-21 22:09-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: centos-art.sh 1.0\n"
+"Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
+"POT-Creation-Date: 2011-01-22 12:32-0500\n"
+"PO-Revision-Date: 2011-01-22 12:32-0500\n"
+"Last-Translator: CentOS Documentation SIG <centos-docs@centos.org>\n"
+"Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Styles/renameFile.sh:29
 msgid "Syntax: ./update-filenames.sh <PATH> <FILTER> <PATTERN> <VALUE>"
@@ -25,7 +24,7 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_getActions.sh:123
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/About/about_getActions.sh:73
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Svg/svg_getActions.sh:142
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActions.sh:142
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActions.sh:130
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_getActions.sh:180
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_getActions.sh:94
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_getActions.sh:95
@@ -1038,12 +1037,14 @@ msgid "The following entry will be created"
 msgid_plural "The following entries will be created"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:69
 msgid "The following entry will be deleted"
 msgid_plural "The following entries will be deleted"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:74
 msgid "The second argument is not valid."
@@ -1154,29 +1155,8 @@ msgstr ""
 msgid "There is no release number to work with"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getConfOption.sh:65
-msgid "There is no action to work with."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getConfOption.sh:72
-msgid "The field specified is not valid."
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageBrands.sh:43
 msgid "2 colors grayscale"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:65
-msgid "The BASE action is not defined."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:68
-msgid "Just one definition for BASE action is supported."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_checkConfig.sh:90
-#, sh-format
-msgid "The \"$THEMEMODEL\" theme model doesn't exist."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageSyslinux.sh:49
@@ -1185,35 +1165,12 @@ msgstr ""
 msgid "The $OPTION option is already used."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doTranslationMarkersSpecifics.sh:43
-#, sh-format
-msgid "The $TRANSLATION hasn't execution rights."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:35
-#, sh-format
-msgid "Can't do translation rendition at `$ACTIONVAL'."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:45
-msgid "Can't find translation templates in the directory provided."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:133
-msgid "There is not release-specific directory in the translation entry."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsTranslations.sh:144
-#, sh-format
-msgid "The \"$RELEASE\" release number isn't valid."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:37
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:37
 #, sh-format
 msgid "Can't do identity rendition at `$ACTIONVAL'."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActionsIdentity.sh:62
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:62
 msgid "The path provided can't be processed."
 msgstr ""
 
@@ -1223,6 +1180,14 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityGroupByType.sh:95
 msgid "There is no file type information to process."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityConfigOption.sh:57
+msgid "There is no action to work with."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityConfigOption.sh:64
+msgid "The field specified is not valid."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:47
@@ -1243,6 +1208,24 @@ msgstr ""
 msgid "Saved as"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityTMarkersSpecifics.sh:43
+#, sh-format
+msgid "The $TRANSLATION hasn't execution rights."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityConfig.sh:65
+msgid "The BASE action is not defined."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityConfig.sh:68
+msgid "Just one definition for BASE action is supported."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityConfig.sh:90
+#, sh-format
+msgid "The \"$THEMEMODEL\" theme model doesn't exist."
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-symbols.sh:31
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-icon-themes.sh:31
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-logos.sh:31
@@ -1254,277 +1237,330 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:39
 msgid "Help with CentOS"
-msgstr ""
+msgstr "Podpora a pomoc CentOS"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:41
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:41
-msgid ""
-"You can get help with CentOS in several ways,\n"
-"    including:"
-msgstr ""
+msgid "You can get help with CentOS in several ways, including:"
+msgstr "Je několik způsobů, jak se dobrat podpory k CentOS:"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:43
 msgid ""
-"<flowSpan style=\"font-weight:bold\">Internet\n"
-"    Relay Chat (IRC)</flowSpan> - #centos, #centos-social and\n"
+"<flowSpan style=\"font-weight:bold\">Internet Relay Chat (IRC)</flowSpan> - "
+"#centos, #centos-social and\n"
 "    #centos-devel on irc.freenode.net."
 msgstr ""
+"<flowSpan style=\"font-weight:bold\">Internet Relay Chat(IRC)</flowSpan> - "
+"#centos, #centos-social a #centos-devel nairc.freenode.net"
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:46
+msgid ""
+"<flowSpan style=\"font-weight:bold\">Mailing Lists</flowSpan> - CentOS, "
+"CentOS-Devel, CentOS-Annouces and non-English localized language lists from "
+"http://centos.org/."
+msgstr ""
+"<flowSpan style=\"font-weight:bold\">Konference</flowSpan> - CentOS,CentOS-"
+"Devel, CentOS-Announce a několik neanglických, včetně českékonference, viz "
+"http://lists.centos.org/"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:48
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:48
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:48
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:48
 msgid ""
-"<flowSpan style=\"font-weight:bold\">Mailing\n"
-"    Lists</flowSpan> - CentOS, CentOS-Devel, CentOS-Annouces and\n"
-"    non-English localized language lists from http://centos.org/."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:52
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:52
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:52
-msgid ""
 "<flowSpan\n"
-"    style=\"font-weight:bold\">Forums</flowSpan> - Available at\n"
-"    http://centos.org/forums/."
+"    style=\"font-weight:bold\">Forums</flowSpan> - Available at http://"
+"centos.org/forums/."
 msgstr ""
+"<flowSpan style=\"font-weight:bold\">Forums</flowSpan> - Vizhttp://centos."
+"org/forums/."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:56
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:56
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:56
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:51
 msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">Wiki</flowSpan> - Available at\n"
-"    http://centos.org/wiki/."
+"<flowSpan style=\"font-weight:bold\">Wiki</flowSpan> - Available at http://"
+"centos.org/wiki/."
 msgstr ""
+"<flowSpan style=\"font-weight:bold\">Wiki</flowSpan>: Vizhttp://centos.org/"
+"wiki/."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:39
 msgid "CentOS Donations"
-msgstr ""
+msgstr "Dary pro CentOS"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:41
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:41
 msgid ""
-"The organization that produces CentOS is named\n"
-"    The CentOS Project. We are not affiliated with any other\n"
-"    organization."
+"The organization that produces CentOS is named The CentOS Project. We are "
+"not affiliated with any other organization."
 msgstr ""
+"The CentOS Projekt je organizace vydávající CentOS. Tato organizacenení "
+"napojena na žádnou další organizaci."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:43
+msgid ""
+"Our only source of hardware or funding to distribute CentOS is by donations."
+msgstr ""
+"Veškerý hardware, jakož i výdaje na distribuci a vývoj CentOSpocházejí z "
+"darů, které jsou jediným zdrojem našich příjmů."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:45
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:45
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:45
 msgid ""
-"Our only source of hardware or funding to\n"
-"    distribute CentOS is by donations."
+"Please consider donating to the CentOS Project if you find CentOS useful."
 msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:48
-msgid ""
-"Please consider donating to the CentOS Project\n"
-"    if you find CentOS useful."
-msgstr ""
+"Pokud je pro vás CentOS užitečný, prosím zvažte podporu CentOSvyjádřenou ve "
+"formě peněžních či nepeněžních darů."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:38
 msgid "Managing Software with Yum"
-msgstr ""
+msgstr "Správa balíčků pomocí Yum"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:40
 msgid ""
-"The recommended way to install or upgrade CentOS\n"
-"    is to use <flowSpan style=\"font-weight:bold\">Yum</flowSpan>\n"
-"    (Yellow Dog Updater, Modified)"
+"The recommended way to install or upgrade CentOS is to use <flowSpan style="
+"\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater, Modified)"
 msgstr ""
+"Doporučený způsob instalace či upgradu je pomocí programu <flowSpanstyle="
+"\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater,Modified)."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:42
+msgid ""
+"See the guide entitled: \"Managing Software with Yum\" at the documentation "
+"link below."
+msgstr "Viz: \"Managing Software with Yum\" na odkaze uvedeném níže."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:44
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:44
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:44
 msgid ""
-"See the guide entitled: \"Managing Software\n"
-"    with Yum\" at the documentation link below."
+"<flowSpan style=\"font-weight:bold\">YumEx</flowSpan>, a graphical front end "
+"for Yum, is also available from the CentOS Extras repository."
 msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:47
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">YumEx</flowSpan>, a graphical front\n"
-"    end for Yum, is also available from the CentOS Extras\n"
-"    repository."
-msgstr ""
+"K dispozici je rovněž <flowSpanstyle=\"font-weight:bold\">YumEx</flowSpan>, "
+"což je grafickérozhraní pro Yum. Naleznete jej v sekci CentOS Extras."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:38
 msgid "CentOS Repositories"
-msgstr ""
+msgstr "CentOS software"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:40
-msgid ""
-"The following repositories exist in CentOS to\n"
-"    install software from:"
-msgstr ""
+msgid "The following repositories exist in CentOS to install software from:"
+msgstr "Software pro CentOS můžete instalovat z následujících zdrojů:"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:42
 msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">[base]</flowSpan> (aka <flowSpan\n"
-"    style=\"font-weight:bold\">[os]</flowSpan>) - The RPMS\n"
-"    released on a CentOS ISO."
+"<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (aka <flowSpan style="
+"\"font-weight:bold\">[os]</flowSpan>) - The RPMS released on a CentOS ISO."
 msgstr ""
+"<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (jakož<flowSpan style="
+"\"font-weight:bold\">[os]</flowSpan>) - RPM balíčkyvydané v rámci CentOS ISO."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:44
+msgid ""
+"<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - Updates to the "
+"[base] repository."
+msgstr ""
+"<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - Opravy[base] "
+"sekce."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:46
+msgid ""
+"<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Items by CentOS "
+"that are not upstream (does not upgrade [base])."
+msgstr ""
+"<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Balíčkynedodávané "
+"nadřazeným vydavatelem (neupravuje [base])."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:48
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:48
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:48
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:48
 msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">[updates]</flowSpan> - Updates to\n"
-"    the [base] repository."
+"<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - Items by "
+"CentOS that are not upstream (does upgrade [base])"
 msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:52
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:52
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:52
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">[extras]</flowSpan> - Items by\n"
-"    CentOS that are not upstream (does not upgrade [base])."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:56
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:56
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:56
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">[centosplus]</flowSpan> - Items by\n"
-"    CentOS that are not upstream (does upgrade [base])"
-msgstr ""
+"<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - "
+"Balíčkynedodávané nadřazeným vydavatelem (upravuje [base])."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:39
 msgid "Virtualization on CentOS =MAJOR_RELEASE="
-msgstr ""
+msgstr "Virtualizace na CentOS =MAJOR_RELEASE="
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:41
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:41
 msgid ""
-"CentOS =MAJOR_RELEASE= provides virtualization\n"
-"    via Xen for the i386 and x86_64 architectures in both fully\n"
-"    virtualized and para virtualized modes."
+"CentOS =MAJOR_RELEASE= provides virtualization via Xen for the i386 and "
+"x86_64 architectures in both fully virtualized and para virtualized modes."
 msgstr ""
+"Na CentOS =MAJOR_RELEASE= i386 a x86_64 je možné provozovatvirtualizaci "
+"pomocí software Xen, a to jak plnou virtualizaci, takparavirtualizaci."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:43
 msgid ""
-"The Virtualization Guide and Virtual Server\n"
-"    Administration Guide are provided for help with CentOS\n"
-"    =MAJOR_RELEASE= virtualization at the link below."
+"The Virtualization Guide and Virtual Server Administration Guide are "
+"provided for help with CentOS =MAJOR_RELEASE= virtualization at the link "
+"below."
 msgstr ""
+"The Virtualization Guide a Virtual Server Administration Guidenaleznete na "
+"níže uvedeném odkazu."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:39
 msgid "CentOS Plus Repository"
-msgstr ""
+msgstr "CentOS Plus zdroj"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:41
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:41
 msgid ""
-"This repository is for items that actually\n"
-"    upgrade certain base CentOS components. This repo will change\n"
-"    CentOS to not be exactly like the upstream providers content."
+"This repository is for items that actually upgrade certain base CentOS "
+"components. This repo will change CentOS to not be exactly like the upstream "
+"providers content."
 msgstr ""
+"V tomto zdroji jsou distribuovány RPM balíčky, které mohou nahraditzákladní "
+"balíčky systému. Při jejich použití nebude již CentOStotožný s nadřazeným "
+"produktem."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:43
+msgid ""
+"The CentOS development team has tested every item in this repo, and they "
+"build and work under CentOS =MAJOR_RELEASE=. They have not been tested by "
+"the upstream provider, and are not available in the upstream products."
+msgstr ""
+"Veškeré balíčky z tohoto zdroje byly řádně otestovány CentOS teamemtak, aby "
+"byla zaručena jejich kompilace a běh pod CentOS=MAJOR_RELEASE=. Balíčky však "
+"nebyly testovány u nadřazenéhovydavatele, jakož nejsou součástí produktů "
+"nadřazeného vydavatele."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:45
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:45
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:45
 msgid ""
-"The CentOS development team has tested every\n"
-"    item in this repo, and they build and work under CentOS\n"
-"    =MAJOR_RELEASE=. They have not been tested by the upstream\n"
-"    provider, and are not available in the upstream products."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:50
-msgid ""
-"You should understand that use of the components\n"
-"    removes the 100% binary compatibility with the upstream\n"
+"You should understand that use of the components removes the 100% binary "
+"compatibility with the upstream\n"
 "    products."
 msgstr ""
+"Uvědomte si, že použití těchto balíčků naruší 100% binárníkompatibilitu s "
+"nadřazeným produktem."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:38
 msgid "CentOS Wiki"
-msgstr ""
+msgstr "CentOS Wiki"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:40
 msgid ""
-"The CentOS wiki is available with Frequently\n"
-"    Asked Questions, HowTos, Tips and Tricks on a number of CentOS\n"
-"    related topics including software installation, upgrades,\n"
-"    repository configuration and much more."
+"The CentOS wiki is available with Frequently Asked Questions, HowTos, Tips "
+"and Tricks on a number of CentOS related topics including software "
+"installation, upgrades, repository configuration and much more."
 msgstr ""
+"Na CentOS Wiki naleznete často kladené dotazy (FAQ), návody, tipy ačlánky "
+"pokrývající široké spektrum témat, jako je instalacesoftware, aktualizace "
+"OS, nastavení RPM zdrojů, a pod."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:42
 msgid ""
-"The wiki also contains information on CentOS\n"
-"    Events in your area and CentOS media sightings."
+"The wiki also contains information on CentOS Events in your area and CentOS "
+"media sightings."
 msgstr ""
+"Wiki obsahuje taktéž informace o událostech týkající se CentOS,které vás "
+"mohou zajímat a upoutávky na informace o CentOS v médiích."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:48
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:44
 msgid ""
-"In conjuntion with the CentOS-Docs mailing list,\n"
-"    contributors can obtain permission to post articles, tips and\n"
-"    HowTos on the CentOS Wiki. So contribute today!"
+"In conjuntion with the CentOS-Docs mailing list, contributors can obtain "
+"permission to post articles, tips and HowTos on the CentOS Wiki. So "
+"contribute today!"
 msgstr ""
+"Přihlaste se do konference CentOS-Docs. Začnete tvořit tipy ačlánky, "
+"dostanete práva na zápis do Wiki ... Neváhejte a začnetepřispívat do Wiki "
+"ještě dnes!"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:38
 msgid "CentOS Documentation"
-msgstr ""
+msgstr "Dokumentace pro CentOS"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:39
 msgid "The following documentation is available for CentOS:"
-msgstr ""
+msgstr "Následující dokumentace pro CentOS je dostupná (v angličtině):"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:40
@@ -1615,7 +1651,7 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:39
 msgid "Welcome to CentOS =MAJOR_RELEASE=!"
-msgstr ""
+msgstr "Děkujeme, že si instalujete CentOS =MAJOR_RELEASE=!"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:41
@@ -1625,194 +1661,38 @@ msgid "Thank you for installing CentOS =MAJOR_RELEASE=."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:43
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:43
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:43
-msgid ""
-"CentOS is an enterprise-class Linux Distribution\n"
-"    derived from sources freely provided to the public by a prominent\n"
-"    North American Enterprise Linux vendor."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:47
-msgid ""
-"CentOS conforms fully with the upstream vendors\n"
-"    redistribution policy and aims to be 100% binary compatible."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:50
-msgid ""
-"CentOS mainly changes packages to remove\n"
-"    upstream vendor branding and artwork."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:41
-msgid "You can get help with CentOS in several ways, including:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:43
-msgid ""
-"<flowSpan style=\"font-weight:bold\">Internet Relay Chat (IRC)</flowSpan> - "
-"#centos, #centos-social and\n"
-"    #centos-devel on irc.freenode.net."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:46
-msgid ""
-"<flowSpan style=\"font-weight:bold\">Mailing Lists</flowSpan> - CentOS, "
-"CentOS-Devel, CentOS-Annouces and non-English localized language lists from "
-"http://centos.org/."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:48
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">Forums</flowSpan> - Available at http://"
-"centos.org/forums/."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:51
-msgid ""
-"<flowSpan style=\"font-weight:bold\">Wiki</flowSpan> - Available at http://"
-"centos.org/wiki/."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:41
-msgid ""
-"The organization that produces CentOS is named The CentOS Project. We are "
-"not affiliated with any other organization."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:43
-msgid ""
-"Our only source of hardware or funding to distribute CentOS is by donations."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:45
-msgid ""
-"Please consider donating to the CentOS Project if you find CentOS useful."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:40
-msgid ""
-"The recommended way to install or upgrade CentOS is to use <flowSpan style="
-"\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater, Modified)"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:42
-msgid ""
-"See the guide entitled: \"Managing Software with Yum\" at the documentation "
-"link below."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:44
-msgid ""
-"<flowSpan style=\"font-weight:bold\">YumEx</flowSpan>, a graphical front end "
-"for Yum, is also available from the CentOS Extras repository."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:40
-msgid "The following repositories exist in CentOS to install software from:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:42
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (aka <flowSpan style="
-"\"font-weight:bold\">[os]</flowSpan>) - The RPMS released on a CentOS ISO."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:44
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - Updates to the "
-"[base] repository."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:46
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Items by CentOS "
-"that are not upstream (does not upgrade [base])."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:48
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - Items by "
-"CentOS that are not upstream (does upgrade [base])"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:41
-msgid ""
-"CentOS =MAJOR_RELEASE= provides virtualization via Xen for the i386 and "
-"x86_64 architectures in both fully virtualized and para virtualized modes."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:43
-msgid ""
-"The Virtualization Guide and Virtual Server Administration Guide are "
-"provided for help with CentOS =MAJOR_RELEASE= virtualization at the link "
-"below."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:41
-msgid ""
-"This repository is for items that actually upgrade certain base CentOS "
-"components. This repo will change CentOS to not be exactly like the upstream "
-"providers content."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:43
-msgid ""
-"The CentOS development team has tested every item in this repo, and they "
-"build and work under CentOS =MAJOR_RELEASE=. They have not been tested by "
-"the upstream provider, and are not available in the upstream products."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:45
-msgid ""
-"You should understand that use of the components removes the 100% binary "
-"compatibility with the upstream\n"
-"    products."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:40
-msgid ""
-"The CentOS wiki is available with Frequently Asked Questions, HowTos, Tips "
-"and Tricks on a number of CentOS related topics including software "
-"installation, upgrades, repository configuration and much more."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:42
-msgid ""
-"The wiki also contains information on CentOS Events in your area and CentOS "
-"media sightings."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:44
-msgid ""
-"In conjuntion with the CentOS-Docs mailing list, contributors can obtain "
-"permission to post articles, tips and HowTos on the CentOS Wiki. So "
-"contribute today!"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:43
 msgid ""
 "CentOS is an enterprise-class Linux Distribution derived from sources freely "
 "provided to the public by a prominent North American Enterprise Linux vendor."
 msgstr ""
+"Centos je Enterprise Linux distribuce, postavená na volně "
+"dostupnýchzdrojových kódech významného severoamerického vydavatele "
+"EnterpriseLinux distribuce."
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:45
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:45
 msgid ""
 "CentOS conforms fully with the upstream vendors redistribution policy and "
 "aims to be 100% binary compatible."
 msgstr ""
+"CentOS má shodnou politiku distribuce jako nadřazený vydavatel a je100% "
+"binárně kompatibilní."
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:47
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:47
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:47
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:47
 msgid ""
 "CentOS mainly changes packages to remove upstream vendor branding and "
 "artwork."
 msgstr ""
+"Změny balíčků ze strany CentOS povětšinou zahrnují pouze změnuvýtvarné části "
+"či ochranné známky nadřazenéhovydavatele."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_updateOutputFileInfo.sh:30
 msgid "Updating manual's info output"
@@ -2756,6 +2636,7 @@ msgid "The following link will be installed"
 msgid_plural "The following links will be installed"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doEnvironment.sh:42
 msgid "Default text editor"
@@ -2786,6 +2667,7 @@ msgid "The following package needs to be installed"
 msgid_plural "The following packages need to be installed"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doPackageReport.sh:41
 msgid "requires third party repository!"
@@ -2837,6 +2719,7 @@ msgid "file"
 msgid_plural "files"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:132
 msgid "from the repository."
@@ -2851,12 +2734,14 @@ msgid "The following file is unversioned"
 msgid_plural "The following files are unversioned"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:168
 msgid "Do you want to add it now?"
 msgid_plural "Do you want to add them now?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:189
 msgid "Do you want to see changes now?"
