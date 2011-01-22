@@ -26,15 +26,10 @@
 
 function render_getIdentityDefs {
 
-    # Do not render translation template directories (Tpl/).
-    if [[ $FILE =~ '/Tpl/.+\.sed$' ]];then
-        continue
-    fi
-
     # Define the translation file absolute path. Only if we have a
-    # .sed extension at file's end we can consider that file as a
+    # .png.sh extension at file's end we can consider that file as a
     # translation file.  Otherwise there is not translation file.
-    if [[ $FILE =~ '\.sed$' ]];then
+    if [[ $FILE =~ '\.png\.sh$' ]];then
         TRANSLATION=$FILE
     else
         TRANSLATION=`gettext "None"`
@@ -89,11 +84,11 @@ function render_getIdentityDefs {
         # In this case translation files are applied to design
         # templates with the same name (without extension). One
         # primary image is rendered for each translation file
-        # matching.  Template and translation files use the same
-        # path and name relative to their PARENTDIR. Translations
-        # use .sed extension and templates .svg extension.
+        # matching.  Template and translation files use the same path
+        # and name relative to their PARENTDIR. Translations use
+        # .png.sh extension and templates .svg extension.
         TEMPLATE=$(echo $FILE | sed -r "s!.*/${PARENTDIR}/(.*)!\1!" \
-            | sed 's!\.sed$!.svg!')
+            | sed -r 's!\.png\.sh$!.svg!')
     
     elif [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
@@ -116,10 +111,10 @@ function render_getIdentityDefs {
         # here.
         #
         # This way we pretend to eliminate duplicated design templates
-        # saying something like translation 1.sed, 2.sed, 3.sed,
-        # 4.sed, and 5.sed apply to the single design template A.svg.
-        # Or, 1.sed, 3.sed, 4.sed to A.svg and 2.sed and 5.sed to
-        # B.svg.
+        # saying something like translation 1.png.sh, 2.png.sh,
+        # 3.png.sh, 4.png.sh, and 5.png.sh apply to the single design
+        # template A.svg.  Or, 1.png.sh, 3.png.sh, 4.png.sh to A.svg
+        # and 2.png.sh and 5.png.sh to B.svg.
         #
         # Possible configuration 1: In this first case,
         # translation files and design templates share a common
@@ -134,8 +129,8 @@ function render_getIdentityDefs {
         #  templates and translation files. E.g.:
         #
         #  bond/path/template.svg: \
-        #     bond/path/translation1.sed \
-        #     bond/path/translation2.sed
+        #     bond/path/translation1.png.sh \
+        #     bond/path/translation2.png.sh
         #
         #  2. Translation files are under a directory with the same
         #  name of that used in the design template. All translation
@@ -144,10 +139,10 @@ function render_getIdentityDefs {
         #  containing the translation files. E.g.:
         #
         #  bond/path/green.svg: \
-        #     bond/path/green/translation1.sed \
-        #     bond/path/green/translation2.sed
+        #     bond/path/green/translation1.png.sh \
+        #     bond/path/green/translation2.png.sh
         #
-        BOND=$(echo $TRANSLATION | sed -r "s/^.*\/$PARENTDIR\/(.+)\/.*\.sed$/\1/")
+        BOND=$(echo $TRANSLATION | sed -r "s/^.*\/$PARENTDIR\/(.+)\/.*\.png\.sh$/\1/")
 
         # If there is no template at this point, start reducing the
         # bond path and try to use the result as template.  This is
@@ -172,8 +167,8 @@ function render_getIdentityDefs {
         # the following form:
         #
         #  template.svg: \
-        #     translation1.sed \
-        #     translation2.sed
+        #     translation1.png.sh \
+        #     translation2.png.sh
         #
         if [[ ! -f "$SVG/${BOND}.svg" ]];then
             BOND=$(basename $TRANSLATION)
@@ -186,8 +181,8 @@ function render_getIdentityDefs {
         # `trunk/Identity/Release' directory structure).
         #
         #  template: \
-        #     translation1.sed \
-        #     translation2.sed
+        #     translation1.png.sh \
+        #     translation2.png.sh
         #
         if [[ ! -f "$SVG/${BOND}.svg" ]] \
             && [[ ! -f $SVG/{$BOND} ]];then
@@ -206,12 +201,12 @@ function render_getIdentityDefs {
         # to many differnt design templates at the same time.  This
         # way we need to reduce the design templates found to just
         # one, the one matching the BOND translation path exactly,
-        # without .sed extension.
+        # without .png.sh extension.
         if [[ $(echo "$TEMPLATE" | wc -l ) -gt 1 ]];then
         
-            # Remove `.sed' extension from BOND. This is required in
-            # order to build the BOND design template correctly.
-            BOND=$(echo $BOND | sed 's!\.sed$!!')
+            # Remove `.png.sh' extension from BOND. This is required
+            # in order to build the BOND design template correctly.
+            BOND=$(echo $BOND | sed -r 's!\.png\.sh$!!')
         
             # Reduce template designs found to match BOND design
             # template. Take into account design templates extensions.
@@ -287,7 +282,7 @@ function render_getIdentityDefs {
     # exist we cannot render it; in such case, stop working for it and
     # try the next one in the list.
     cli_checkFiles "$TEMPLATE"  'f'
-    cli_printMessage "$TEMPLATE" 'AsSavedAsLine'
+    cli_printMessage "$TEMPLATE" 'AsDesignLine'
      
     # Get relative path to file. The path string (stored in FILE) has
     # two parts: 1. the variable path and 2. the common path.  The
@@ -296,18 +291,18 @@ function render_getIdentityDefs {
     # common point is the name of the parent directory (stored in
     # PARENTDIR).
     #
-    # ... trunk/Translations/.../Firstboot/3/splash-small.sed
+    # trunk/Script/Bas.../Config/Firstboot/3/splash-small.png.sh
     # -------------------------^| the     |^------------^
     # variable path             | common  |    common path
     # -------------------------v| point   |    v------------v
-    # ... trunk/Identity/Them.../Firstboot/Img/3/splash-small
+    # trunk/Identity/Themes/M.../Firstboot/Img/3/splash-small.png
     #
     # What we do here is remove the varibale path, the common point,
     # and the file extension parts in the string holding the path
     # retrived from translations structure. Then we use the common
     # path as relative path to the image file.
     #
-    # The .sed file extension is removed from the common path.
+    # The .png.sh file extension is removed from the common path.
     # Instead we assign the appropriate file extension when defining
     # file name.
     #
@@ -318,10 +313,10 @@ function render_getIdentityDefs {
     # LOCATION variable was defined. 
     FILE=$(echo $FILE \
         | sed -r "s!.*${PARENTDIR}/!!" \
-        | sed -r 's!\.(sed|svg|html|htm)$!!')
+        | sed -r 's!\.(png\.sh|svg|html|htm)$!!')
     
     # Re-define absolute path to directory holding image file.
-    DIRNAME=$IMG/$(dirname $FILE)
+    DIRNAME=$IMG/$(dirname $FILE)/$(cli_getCurrentLocale)
     
     # Check existence of output image directory.
     if [[ ! -d $DIRNAME ]];then
@@ -329,7 +324,7 @@ function render_getIdentityDefs {
     fi
     
     # Define absolute path to file.
-    FILE=$IMG/$FILE
+    FILE=$DIRNAME/$(basename $FILE)
 
     # Define instance name.
     INSTANCE=$(cli_getTemporalFile $TEMPLATE)
@@ -339,33 +334,10 @@ function render_getIdentityDefs {
         rm $INSTANCE
     fi
 
-    # Create the design template instance. When building the instance,
-    # take into account the matching list and translation path. It
-    # should be coherent with previous definitions above and in
-    # render_getFilesList.
-    if [[ "${MATCHINGLIST}" == "" ]] \
-        && [[ "${TRANSLATIONPATH}" != "" ]];then
+    # Create the design template instance.
+    cat $TEMPLATE > $INSTANCE
    
-        sed -f $TRANSLATION $TEMPLATE > $INSTANCE
-   
-    elif [[ "${MATCHINGLIST}" == "" ]] \
-        && [[ "${TRANSLATIONPATH}" == "" ]];then
-   
-        cat $TEMPLATE > $INSTANCE
-   
-    elif [[ "${MATCHINGLIST}" != "" ]] \
-        && [[ "${TRANSLATIONPATH}" == "" ]];then
-   
-        cat $TEMPLATE > $INSTANCE
-   
-    elif [[ "${MATCHINGLIST}" != "" ]] \
-        && [[ "${TRANSLATIONPATH}" != "" ]];then
-   
-        sed -f $TRANSLATION $TEMPLATE > $INSTANCE
-
-    fi
-
-    # Replace common translation markers inside instance.
+    # Replace translation markers with appropriate information.
     render_doTranslationMarkers
 
 }
