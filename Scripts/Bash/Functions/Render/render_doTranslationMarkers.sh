@@ -1,10 +1,11 @@
 #!/bin/bash
 #
 # render_doTranslationMarkers.sh -- This function standardizes
-# replacements for common translation markers.  This function must be
-# called from render_getIdentityDefs.sh function (after instance
-# creation and before final file creation).  Raplacements are applied
-# to temporal instances used to produced the final file.
+# replacements for both specific and common translation markers.  This
+# function must be called from render_getIdentityDefs.sh function
+# (after instance creation and before final file creation).
+# Raplacements are applied to temporal instances used to produce the
+# final file.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -29,38 +30,10 @@
 
 function render_doTranslationMarkers {
 
-    # Initialize theme replacements.
-    local -a SRC
-    local -a DST
-    local COUNT=0
+    # Apply specific replacements for specific translation markers.
+    render_doTranslationMarkersSpecifics
 
-    # Redefine theme translation markers.
-    SRC[0]='=THEME='
-    SRC[1]='=COPYRIGHT='
-    SRC[2]='=DESCRIPTION='
-    SRC[3]='=LICENSE='
-    SRC[4]='=NAME='
-    SRC[5]='=RELEASE='
-    SRC[6]='=URL='
-
-    # Redefine theme replacements.
-    DST[0]="$(cli_getThemeName)"
-    DST[1]="$(cli_getCopyrightInfo '--copyright')"
-    DST[2]="$(cli_getCopyrightInfo '--description')"
-    DST[3]="$(cli_getCopyrightInfo '--license')"
-    DST[4]="$(cli_getThemeName '--name')"
-    DST[5]="$(cli_getThemeName '--release')"
-    DST[6]="http://www.centos.org/"
-
-    # Replace translation markes with theme values.
-    while [[ ${COUNT} -lt ${#SRC[*]} ]];do
-
-        # Replace translation markers.
-        sed -r -i "s!${SRC[$COUNT]}!${DST[$COUNT]}!g" $INSTANCE
-
-        # Increment counter.
-        COUNT=$(($COUNT + 1))
-
-    done
+    # Apply common replacements for common translation markers.
+    render_doTranslationMarkersCommons
 
 }
