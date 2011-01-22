@@ -1,35 +1,27 @@
 #!/bin/bash
 #
-# render_doIdentityImageDm.sh -- This function standardize the way of
-# retrive action values from pre-rendition configuration files. Use
+# render_getConfOption.sh -- This function standardizes the way action
+# values are retrived from pre-rendition configuration files.  Use
 # this function whenever you need to retrive action values from
 # pre-rendition configuration script.
 #
-# Usage:
+# Usage: VAR=$(render_getConfOption "ACTION" "FIELD")
 #
-# VAR=$(render_getConfOption "ACTION" "FIELD")
-#
-# Where:
-#
-# VAR is the name of the variable you want to store the option
-# value retrived from your specification, using
-# render_getConfOption's ACTION and FIELD arguments. If there is
-# no variable assignment, the function outputs the action value
-# to standard output without trailing newline.
+# VAR is the name of the variable where we store the option named
+# returned by render_getConfOption. 
 #
 # ACTION is the string definition set in the pre-rendition
-# configuration script holding the action name and its options
+# configuration script that holds the action name and its options
 # fields.
 #
-# FIELD  is field number in the action string you want to
-# retrive option from. By default options start from third field
-# on. The first field is reserved for the action type (i.e.,
-# BASE, POST, LAST), and the second field is reserved for the
-# action itself (e.g., renderImage, renderFormats, etc.). Note
-# that this convenction can be altered if the action string has
-# been modified (e.g., you stript the BASE field from action
-# string) and passed the modified action string to another
-# function for processing.
+# FIELD is the field number in the action string we want to retrive
+# option from. By default options start from third field on. The first
+# field is reserved for the action type (i.e., BASE, POST or LAST), and
+# the second field is reserved for the action itself (e.g.,
+# renderImage, renderFormats, etc.). Note that this convenction can be
+# altered if the action string has been modified (e.g., you stript the
+# BASE field from action string) and passed the modified action string
+# to another function for processing.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
