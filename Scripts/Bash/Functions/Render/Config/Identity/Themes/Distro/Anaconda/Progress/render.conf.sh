@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_loadConfig.sh -- This function defines Anaconda progress
+# render_loadConfig.png.sh -- This function defines Anaconda progress
 # pre-rendition configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -29,25 +29,26 @@ function render_loadConfig {
     # Define rendition actions.
     ACTIONS[0]='BASE:renderImage'
 
-    # Define matching list.
+    # Define matching list between design models and translation
+    # files.
     MATCHINGLIST="\
     first-lowres.svg:\
-       first-lowres.sed\
-        progress_first-lowres.sed
+       first-lowres.png.sh\
+        progress_first-lowres.png.sh
     first.svg:\
-        first.sed\
-        progress_first.sed
+        first.png.sh\
+        progress_first.png.sh
     paragraph.svg:\
-        01-welcome.sed\
-        02-donate.sed\
-        03-yum.sed\
-        04-repos.sed\
-        05-centosplus.sed\
-        06-support.sed\
-        08-wiki.sed\
-        09-virtualization.sed
+        01-welcome.png.sh\
+        02-donate.png.sh\
+        03-yum.png.sh\
+        04-repos.png.sh\
+        05-centosplus.png.sh\
+        06-support.png.sh\
+        08-wiki.png.sh\
+        09-virtualization.png.sh
     list.svg:\
-        07-docs.sed
+        07-docs.png.sh
         "
 
     # Deifne theme model.
