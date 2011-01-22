@@ -50,7 +50,7 @@ function render_getActions {
                 ACTIONVAL="$2"
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_getActionsIdentity"
+                ACTIONNAM="${FUNCNAM}_doIdentity"
 
                 # Rotate positional parameters
                 shift 2
