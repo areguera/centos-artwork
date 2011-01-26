@@ -42,7 +42,7 @@ function cli_getCurrentLocale {
     PATTERNS[2]=$(echo $LANG | sed -r 's!^([a-z]{2,3}).+$!\1!')
 
     # Define which system locale to use as centos-art.sh script
-    # current locale. Take care with pattern order, it is relevant for
+    # current locale. Take care of pattern order, it is relevant for
     # this function to work as expected.
     for PATTERN in "${PATTERNS[@]}";do
         CURRENTLOCALE=$(cli_getLocales | egrep $PATTERN)
