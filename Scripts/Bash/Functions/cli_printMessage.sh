@@ -129,6 +129,13 @@ function cli_printMessage {
             fi
             ;;
 
+        'AsDesignLine' )
+            if [[ $FLAG_QUIET == 'false' ]];then
+                echo "`gettext "Design"`: $MESSAGE" \
+                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+            fi
+            ;;
+
         'AsConfigurationLine' )
             if [[ $FLAG_QUIET == 'false' ]];then
                 echo "`gettext "Configuration"`: $MESSAGE" \
