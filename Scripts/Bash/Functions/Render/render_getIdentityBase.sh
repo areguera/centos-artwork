@@ -26,15 +26,15 @@
 
 function render_getIdentityBase {
 
-    # Define variables as local to avoid conflicts outside.
     local TRANSLATIONPATH=''
     local SVG=''
     local IMG=''
     local PARENTDIR=''
+    local FILES=''
+    local FILTER=''
     local LOCATION=''
     local EXTENSION=''
-    local FILTER=''
-    local FILES=''
+    local -a COMMONDIRS
 
     # Redefine absolute path to artwork's related translation entry.
     render_getIdentityDirTranslation

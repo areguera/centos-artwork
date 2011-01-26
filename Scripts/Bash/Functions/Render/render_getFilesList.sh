@@ -27,6 +27,9 @@
 
 function render_getFilesList {
 
+    local COMMONDIR=''
+    local COMMONDIRCOUNT=0
+
     # Define source location to look files for. In order to define
     # source location we evaluate both matching list and translation
     # path information, and based on them, we set which is the source
@@ -70,5 +73,14 @@ function render_getFilesList {
 
     # Define list of files to process.
     cli_getFilesList "$LOCATION"
+
+    # Define common absolute paths in order to know when centos-art.sh
+    # is leaving a directory structure and entering into another. This
+    # information is required in order for centos-art.sh to know when
+    # to apply last-rendition actions.
+    for COMMONDIR in $(dirname "$FILES" | sort | uniq);do
+        COMMONDIRS[$COMMONDIRCOUNT]=$(dirname $COMMONDIR)
+        COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
+    done
 
 }

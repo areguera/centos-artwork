@@ -29,6 +29,7 @@ function render_doIdentityImages {
     local EXPORTID=''
     local EXTERNALFILES=''
     local EXTERNALFILE=''
+    local COMMONDIRCOUNT=0
 
     # Export id used inside design templates. This value defines the
     # design area we want to export.
@@ -121,27 +122,50 @@ function render_doIdentityImages {
         # Output separator line.
         cli_printMessage '-' 'AsSeparatorLine'
 
-    done
+        # Apply last-rendition actions. As convenction, last-rendition
+        # actions are applied after all images inside the same
+        # directory structure have been produced. Notice that, in
+        # order to apply last-rendition actions correctly,
+        # centos-art.sh needs to "predict" what the last file in the
+        # same directory structure would be. There is no magic here,
+        # so we need to previously define which are the common
+        # directory structures centos-art.sh could produce content
+        # for inside an array variable. Later, using the index of that
+        # array variable we could check the next item in the array
+        # against the file being currently produced. If they match, we
+        # haven't reached the end of the same directory structure, but
+        # if they don't match, we do have reach the end of the same
+        # directory structure and it is time for last-rendition
+        # actions to be evaluated before go producing the next
+        # directory structure in the list of files to process.
+        if [[ ${COMMONDIRS[$((COMMONDIRCOUNT + 1))]} != $(dirname $TRANSLATION) ]];then
+            # At this point centos-art.sh is producing the last file
+            # from the same unique directory structure, so, before
+            # producing images for the next directory structure lets
+            # evaluate last-rendition actions for the current
+            # directory structure. 
+            for ACTION in "${LASTACTIONS[@]}"; do
 
-    # Define and execute possible last-rendition actions for image
-    # rendeirng base action.
-    for ACTION in "${LASTACTIONS[@]}"; do
+                case "$ACTION" in
 
-        case "$ACTION" in
+                    renderKSplash )
+                        render_doIdentityImageKsplash
+                        ;;
 
-            renderKSplash )
-                render_doIdentityImageKsplash
-                ;;
+                    renderDm:* )
+                        render_doIdentityImageDm "$ACTION"
+                        ;;
 
-            renderDm:* )
-                render_doIdentityImageDm "$ACTION"
-                ;;
+                    groupByType:* )
+                        render_doIdentityGroupByType "$ACTION"
+                        ;;
 
-            groupByType:* )
-                render_doIdentityGroupByType "$ACTION"
-                ;;
+                esac
+            done
+        fi
 
-        esac
+        # Increment common directory counter.
+        COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
 
     done
 
