@@ -31,7 +31,9 @@
 function render_doIdentityTMarkers {
 
     # Apply specific replacements for specific translation markers.
-    render_doIdentityTMarkersSpecifics
+    if [[ -f $TRANSLATION ]];then
+        render_doIdentityTMarkersSpecifics
+    fi
 
     # Apply common replacements for common translation markers.
     render_doIdentityTMarkersCommons
