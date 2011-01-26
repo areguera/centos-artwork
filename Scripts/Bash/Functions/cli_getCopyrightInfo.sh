@@ -128,13 +128,13 @@ function cli_getCopyrightInfo {
     local COUNT=0
 
     # Define directory structures that don't use default information.
-    DIRS[0]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getThemeName)/Concept"
-    DIRS[1]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getThemeName)/Promo"
+    DIRS[0]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Concept"
+    DIRS[1]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Promo"
 
     # Define absolute path to file from which we retrive copyright
     # information for directory structures that don't use default
     # information. 
-    FILES[0]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getThemeName '--name')/copyright.txt"
+    FILES[0]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme-name')/copyright.txt"
 
     case "$1" in
 
