@@ -315,16 +315,24 @@ function render_getIdentityDefs {
         | sed -r "s!.*${PARENTDIR}/!!" \
         | sed -r 's!\.(png\.sh|svg|html|htm)$!!')
     
-    # Re-define absolute path to directory holding image file.
-    DIRNAME=$IMG/$(dirname $FILE)/$(cli_getCurrentLocale)
+    # Re-define directory absolute path of final output directory. As
+    # convenction, when we produce content in English language, we do
+    # not add a laguage directory to organize content. However, when
+    # we produce content in a language different from English we do
+    # use language-specific directory to organize content.
+    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
+        DIRNAME=$IMG/$(dirname $FILE)
+    else
+        DIRNAME=$IMG/$(dirname $FILE)/$(cli_getCurrentLocale)
+    fi
     
     # Check existence of output image directory.
     if [[ ! -d $DIRNAME ]];then
         mkdir -p $DIRNAME
     fi
-    
+
     # Define absolute path to file.
-    FILE=$DIRNAME/$(basename $FILE)
+    FILE=$(echo $DIRNAME/$(basename $FILE) | sed -r 's!/\./!/!')
 
     # Define instance name.
     INSTANCE=$(cli_getTemporalFile $TEMPLATE)
@@ -336,7 +344,7 @@ function render_getIdentityDefs {
 
     # Create the design template instance.
     cat $TEMPLATE > $INSTANCE
-   
+
     # Replace translation markers with appropriate information.
     render_doIdentityTMarkers
 
