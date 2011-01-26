@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# render_doIdentityImageKsplash.sh -- This function renders 
-# KSplash Preview.png image. Use this function as last-rendition
-# function to KSplash base-rendition.  
+# render_doIdentityImageKsplash.sh -- This function collects KDE
+# splash (KSplash) required files and creates a tar.gz package that
+# groups them all together. Use this function as last-rendition
+# action for KSplash base-rendition action.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,59 +28,50 @@
 
 function render_doIdentityImageKsplash {
 
-    # Define variables as local to avoid conflicts outside.
-    local RELDIR=''
-    local KSPLASH_TOP=''
-    local KSPLASH_PREVIEW=''
-    local RELDIRS=$(find $ACTIONVAL -regextype posix-egrep -maxdepth 1 \
-        -type d -regex "^.*/${RELEASE_FORMAT}$" | egrep $FLAG_FILTER)
+    local -a SRC
+    local -a DST
+    local FONT=''
+    local COUNT=0
 
-    # Define font file used to render Preview.png bottom text.
-    local KSPLASH_PREVIEW_FONT=/home/centos/artwork/trunk/Identity/Fonts/Ttf/DejaVuLGCSans-Bold.ttf
+    # Define font used to print bottom splash message.
+    FONT=$(cli_getRepoTLDir)/Identity/Fonts/Ttf/DejaVuLGCSans-Bold.ttf
 
-    # Define relative location to splash_active_bar and splash_bottom
-    # images. Since we are building Preview with active and bottom
-    # splash only, there is no need to include inactive bar on
-    # checking.
-    local KSPLASH_ACTIVE_BAR="$ACTIONVAL/splash_active_bar.png"
-    local KSPLASH_BOTTOM="$ACTIONVAL/splash_bottom.png"
+    # Check existence of font file.
+    cli_checkFiles "$FONT" 'f'
 
-    # Check existence of non-release-specific required image files.
-    cli_checkFiles $KSPLASH_ACTIVE_BAR
-    cli_checkFiles $KSPLASH_BOTTOM
-    cli_checkFiles $KSPLASH_PREVIEW_FONT
+    # Define absolute source location of files.
+    SRC[0]="${DIRNAME}/splash_top.png"
+    SRC[1]="${DIRNAME}/splash_active_bar.png"
+    SRC[2]="${DIRNAME}/splash_inactive_bar.png"
+    SRC[3]="${DIRNAME}/splash_bottom.png"
+    SRC[4]="$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/KSplash/Theme.rc"
 
-    # Look for release specific directories.
-    for RELDIR in $RELDIRS;do
+    # Check absolute source location of files.
+    cli_checkFiles "${SRC[@]}" 'f'
 
-        # Define release-specific files.
-        KSPLASH_TOP="${RELDIR}/splash_top.png"
-        KSPLASH_PREVIEW="${RELDIR}/Preview.png"
+    # Define relative target location of files.
+    DST[0]="${DIRNAME}/splash_top.png"
+    DST[1]="${DIRNAME}/splash_active_bar.png"
+    DST[2]="${DIRNAME}/splash_inactive_bar.png"
+    DST[3]="${DIRNAME}/splash_bottom.png"
+    DST[4]="${DIRNAME}/Theme.rc"
 
-        # Check existence of release-specific required image files.
-        cli_checkFiles $KSPLASH_TOP
+    # Create `Preview.png' image.
+    convert -append ${SRC[0]} ${SRC[1]} ${SRC[3]} ${DIRNAME}/Preview.png
 
-        # Create Preview.png image.
-        convert -append \
-            $KSPLASH_TOP \
-            $KSPLASH_ACTIVE_BAR \
-            $KSPLASH_BOTTOM \
-            $KSPLASH_PREVIEW
+    # Add bottom text to Preview.png image. The text position was set
+    # inside an image of 400x300 pixels. If you change the final
+    # preview image dimension, you probably need to change the text
+    # position too.
+    mogrify -draw 'text 6,295 "KDE is up and running."' \
+        -fill \#ffffff \
+        -font $FONT \
+        ${DIRNAME}/Preview.png
 
-        # Add bottom text to Preview.png image. The text position was
-        # set inside an image of 400x300 pixels. If you change the
-        # final preview image dimension, you need to change the text
-        # position too.
-        mogrify -draw 'text 6,295 "KDE is up and running."' \
-            -fill \#ffffff \
-            -font $KSPLASH_PREVIEW_FONT \
-            $KSPLASH_PREVIEW
+    # Copy `Theme.rc' file.
+    cp ${SRC[4]} ${DST[4]}
 
-        cli_printMessage "$KSPLASH_PREVIEW" "AsSavedAsLine"
-
-    done
-
-    # Output separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    # Apply common translation markers to Theme.rc file.
+    render_doIdentityTMarkersCommons "${DST[4]}"
 
 }
