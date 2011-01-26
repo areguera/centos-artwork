@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# cli_getLocales.sh -- This function outputs locale codes in LL and
-# LL_CC format. Combine both ISO639 and ISO3166 specification in order
-# to build the final locale list. This function defines which
+# cli_getLocales.sh -- This function outputs/verifies locale codes in
+# LL and LL_CC format. Combine both ISO639 and ISO3166 specification
+# in order to build the final locale list. This function defines which
 # translation locales are supported inside CentOS Artwork Repository.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -43,7 +43,7 @@ function cli_getLocales {
     # country-specific language locale specification in the following
     # list using the format LL_CC, where LL is the language code and
     # CC the country code.
-    LOCALES="$LOCALES pt_BR bn_IN"
+    LOCALES="$LOCALES pt_BR pt_PT bn_IN"
 
     # Replace spaces by new lines in order to transform the space
     # separated list of locales into a newline separated list of
@@ -51,7 +51,10 @@ function cli_getLocales {
     # organize the final list of locales.
     LOCALES=$(echo $LOCALES | sed -r "s![[:space:]]+!\n!g")
 
-    # Output locales organized by name and avoiding duplicated lines.
-    echo "$LOCALES" | sort | uniq
+    # Organize locales by name and avoid using duplicates values.
+    LOCALES=$(echo "${LOCALES}" | sort | uniq)
+
+    # Print locales supported by centos-art.sh script.
+    echo "$LOCALES"
 
 }
