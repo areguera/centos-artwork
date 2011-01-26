@@ -27,12 +27,7 @@
 function cli_checkRepoDirSource {
                 
     # Check source value before making an absolute path from it.
-    if [[ $ACTIONVAL == '' ]] \
-        || [[ $ACTIONVAL =~ '(\.\.(/)?)' ]] \
-        || [[ ! $ACTIONVAL =~ '^[A-Za-z0-9\.:/-]+$' ]];then
-        cli_printMessage "`eval_gettext "The value \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    cli_checkPathComponents "$ACTIONVAL" '--default'
 
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing

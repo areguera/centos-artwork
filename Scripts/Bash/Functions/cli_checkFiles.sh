@@ -49,11 +49,8 @@ function cli_checkFiles {
     fi
 
     # Check value passed as file to cli_checkFiles function. The file
-    # value cannot be empty.
-    if [[ $FILE == '' ]];then
-        cli_printMessage "cli_checkFiles: `gettext "The first argument cannot be empty."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    # value cannot be empty nor have extrange values.
+    cli_checkPathComponent "$FILE" '--default'
 
     # Perform file verification using FILE and TYPE variables.
     case $TYPE in

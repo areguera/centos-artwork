@@ -27,15 +27,7 @@
 function cli_checkRepoDirTarget {
 
     # Check target value before making an absolute path from it. 
-    if [[ $FLAG_TO == '' ]];then
-        cli_printMessage "`gettext "There is no destination to work with."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
-    if [[ $FLAG_TO =~ '(\.\.(/)?)' ]] \
-        || [[ ! $FLAG_TO =~ '^[A-Za-z0-9\.:/-]+$' ]];then
-        cli_printMessage "`eval_gettext "The value \\\`\\\$FLAG_TO' is not valid destination value."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    cli_checkPathComponent "$FLAG_TO" '--default'
 
     # Redefine target value to build repository absolute path from
     # repository top level on. As we are removing
