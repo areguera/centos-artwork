@@ -27,8 +27,20 @@
 function cli_getFromPath {
 
     local -a PATTERN
-    local LOCATION="$1"
-    local OPTION="$2"
+    local LOCATION=''
+    local OPTION=''
+
+    # Define location from which we retrive information. 
+    if [[ "$#" -eq 1 ]];then
+        LOCATION="$ACTIONVAL"
+        OPTION="$1"
+    elif [[ "$#" -eq 2 ]];then
+        LOCATION="$1"
+        OPTION="$2"
+    else
+       cli_printMessage "cli_getFromPath: `gettext "Invalid arguments."`" 'AsErrorLine'
+       cli_printMessage "$(caller)" 'AsToKnowMoreLine' 
+    fi
 
     # Define release pattern.
     PATTERN[0]="(([[:digit:]]+)(\.([[:digit:]]+)){,1})"
