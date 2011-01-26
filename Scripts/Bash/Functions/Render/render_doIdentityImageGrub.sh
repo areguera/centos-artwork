@@ -60,7 +60,7 @@ function render_doIdentityImageGrub {
     done
 
     # Define motif's palette location.
-    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getThemeName)/Colors
+    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Colors
     
     # Define the Netpbm color palettes used when reducing colors.
     # These palettes should be 14 colors based. For more information

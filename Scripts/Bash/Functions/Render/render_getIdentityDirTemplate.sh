@@ -53,7 +53,7 @@ function render_getIdentityDirTemplate {
         # defined in the associated pre-rendition configuration script
         # and can be used to set which design model to use among a
         # list of different design models that we can choose from.
-        SVG=$(echo "$SVG" | sed "s!Motifs/$(cli_getThemeName)!Models/$THEMEMODEL!")
+        SVG=$(echo "$SVG" | sed "s!Motifs/$(cli_getPathComponent '--theme')!Models/$THEMEMODEL!")
     fi
 
 }

@@ -121,7 +121,7 @@ function render_getActions {
     # rendered.
     local ARTCONF=$(echo "$ACTIONVAL" \
         | sed -r -e 's!/(Identity|Translations)!/Scripts/Bash/Functions/Render/Config/\1!' \
-                 -e "s!Motifs/$(cli_getThemeName)/?!!")
+                 -e "s!Motifs/$(cli_getPathComponent '--theme')/?!!")
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

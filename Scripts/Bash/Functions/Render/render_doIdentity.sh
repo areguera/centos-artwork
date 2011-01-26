@@ -98,7 +98,7 @@ function render_doIdentity {
         # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
             -e 's!Scripts/Bash/Functions/Render/Config/Identity/!Identity/!' \
-            -e "s!Themes/!Themes/Motifs/$(cli_getThemeName)/!"))
+            -e "s!Themes/!Themes/Motifs/$(cli_getPathComponent '--theme')/!"))
 
         # Redefine artwork identification.
         ARTCOMP=$(echo $ACTIONVAL | cut -d/ -f6-)
@@ -107,8 +107,8 @@ function render_doIdentity {
         # reuse motif artwork identification. There is not need to
         # create one artwork identification for each motif directory
         # structure if we can reuse just one.
-        if [[ $ARTCOMP =~ "Themes/Motifs/$(cli_getThemeName)/" ]];then
-            ARTCOMP=$(echo $ARTCOMP | sed -r "s!Themes/Motifs/$(cli_getThemeName)/!Themes/!")
+        if [[ $ARTCOMP =~ "Themes/Motifs/$(cli_getPathComponent '--theme')/" ]];then
+            ARTCOMP=$(echo $ARTCOMP | sed -r "s!Themes/Motifs/$(cli_getPathComponent '--theme')/!Themes/!")
         fi
 
         # Start rendition as defined in artwork-specific pre-rendition
