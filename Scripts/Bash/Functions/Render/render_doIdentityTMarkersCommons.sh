@@ -31,48 +31,65 @@ function render_doIdentityTMarkersCommons {
     local -a SRC
     local -a DST
     local COUNT=0
+    local LOCATION=''
+
+    # Define source location on which sed replacements take place. By
+    # default we use the value of INSTANCE variable, but if $1 is not
+    # empty assume $1 as source location on which sed replacements
+    # take place. This makes possible to reuse this function on
+    # different source locations.
+    if [[ "$1" != '' ]];then
+        LOCATION="$1" 
+    else
+        LOCATION="${INSTANCE}" 
+    fi
+
+    # Verify source location file.
+    cli_checkFiles "$LOCATION" 'f'
 
     # Define translation markers.
     SRC[0]='=THEME='
-    SRC[1]='=COPYRIGHT='
-    SRC[2]='=DESCRIPTION='
-    SRC[3]='=LICENSE='
-    SRC[4]='=NAME='
-    SRC[5]='=RELEASE='
-    SRC[6]='=URL='
-    SRC[7]='=RELEASE='
-    SRC[8]='=MAJOR_RELEASE='
-    SRC[9]='=MINOR_RELEASE='
+    SRC[1]='=THEMENAME='
+    SRC[2]='=THEMERELEASE='
+    SRC[3]='=RELEASE='
+    SRC[4]='=MAJOR_RELEASE='
+    SRC[5]='=MINOR_RELEASE='
+    SRC[6]='=COPYRIGHT='
+    SRC[7]='=DESCRIPTION='
+    SRC[8]='=LICENSE='
+    SRC[9]='=URL='
     SRC[10]='=URLLOCALE='
+    SRC[11]='=ARCH='
 
     # Define replacements for translation markers.
-    DST[0]="$(cli_getThemeName)"
-    DST[1]="$(cli_getCopyrightInfo '--copyright')"
-    DST[2]="$(cli_getCopyrightInfo '--description')"
-    DST[3]="$(cli_getCopyrightInfo '--license')"
-    DST[4]="$(cli_getThemeName '--name')"
-    DST[5]="$(cli_getThemeName '--release')"
-    DST[6]="http://www.centos.org"
-    DST[7]="$(cli_getRelease "$FILE")"
-    DST[8]="$(cli_getRelease "$FILE" '--major')"
-    DST[9]="$(cli_getRelease "$FILE" '--minor')"
+    DST[0]="$(cli_getPathComponent "$FILE" '--theme')"
+    DST[1]="$(cli_getPathComponent "$FILE" '--theme-name')"
+    DST[2]="$(cli_getPathComponent "$FILE" '--theme-release')"
+    DST[3]="$(cli_getPathComponent "$FILE" '--release')"
+    DST[4]="$(cli_getPathComponent "$FILE" '--release-major')"
+    DST[5]="$(cli_getPathComponent "$FILE" '--release-minor')"
+    DST[6]="$(cli_getCopyrightInfo '--copyright')"
+    DST[7]="$(cli_getCopyrightInfo '--description')"
+    DST[8]="$(cli_getCopyrightInfo '--license')"
+    DST[9]="http://www.centos.org"
     # Define url locale information. We don't want to show locale
     # information inside url for English language. English is the
     # default locale and no locale level is used for it.  However, if
-    # we are rendering for a language different from English, the
-    # locale level in the url should be present.
+    # we are rendering a language different from English, the locale
+    # information should be present in the url.
     if [[ $(cli_getCurrentLocale) == 'en' ]];then
         DST[10]=''
     else
         DST[10]="$(cli_getCurrentLocale)/"
     fi
+    DST[11]="$(cli_getPathComponent "$FILE" '--architecture')"
 
     # Apply replacements for translation markers.
     while [[ ${COUNT} -lt ${#SRC[*]} ]];do
 
         # Use sed to replace translation markers inside the design
         # model instance.
-        sed -r -i "s!${SRC[$COUNT]}!${DST[$COUNT]}!g" ${INSTANCE}
+        sed -r -i "s!${SRC[$COUNT]}!${DST[$COUNT]}!g" ${LOCATION}
 
         # Increment counter.
         COUNT=$(($COUNT + 1))
