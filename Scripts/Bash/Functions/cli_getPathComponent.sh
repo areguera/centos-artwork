@@ -1,7 +1,13 @@
 #!/bin/bash
 #
-# cli_getFromPath.sh -- This function outputs different parts from
-# path string. By default the full release information is output.
+# cli_getPathComponent.sh -- This function evaluates one repository
+# path and output parts/components from it. Generally, the path
+# information is passed to the function's first positional argument
+# and the part/component we want to retrive is passed to the
+# function's second positional argument. If second argument is not
+# passed, then first argument is assumed to be the part/component we
+# want to retrive, and action value (ACTIONVAL) variable is used
+# instead as source path information.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,13 +30,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getFromPath {
+function cli_getPathComponent {
 
     local -a PATTERN
     local LOCATION=''
     local OPTION=''
 
-    # Define location from which we retrive information. 
+    # Define location which we retrive information from.
     if [[ "$#" -eq 1 ]];then
         LOCATION="$ACTIONVAL"
         OPTION="$1"
@@ -38,7 +44,7 @@ function cli_getFromPath {
         LOCATION="$1"
         OPTION="$2"
     else
-       cli_printMessage "cli_getFromPath: `gettext "Invalid arguments."`" 'AsErrorLine'
+       cli_printMessage "cli_getPathComponent: `gettext "Invalid arguments."`" 'AsErrorLine'
        cli_printMessage "$(caller)" 'AsToKnowMoreLine' 
     fi
 
