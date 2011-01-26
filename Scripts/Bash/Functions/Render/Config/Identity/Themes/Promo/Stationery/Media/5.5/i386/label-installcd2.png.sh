@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# render_loadConfig.sh -- This function defines installation media
-# promotion pre-rendition configuration script.
+# render_loadConfig.sh -- This function specifies translation markers
+# and replacements for installation media labels.
 #
-# Copyright (C) 2009-2011 Alain Reguera Delgado
+# Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -19,33 +19,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
-# 
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
 
 function render_loadConfig {
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
+    # Define specific translation markers.
+    SRC[0]='=TEXT='
+    SRC[1]='=ARCH='
 
-    # Define matching list.
-    MATCHINGLIST="\
-    label-cd.svg: \
-        label-installcd1.png.sh label-installcd2.png.sh\
-        label-installcd3.png.sh label-installcd4.png.sh\
-        label-installcd5.png.sh label-installcd6.png.sh\
-        label-installdvd.png.sh label-livecd.png.sh\
-        label-livedvd.png.sh
-    sleeve-cd.svg: \
-        sleeve-installcd1.png.sh sleeve-installcd2.png.sh\
-        sleeve-installcd3.png.sh sleeve-installcd4.png.sh\
-        sleeve-installcd5.png.sh sleeve-installcd6.png.sh\
-        sleeve-installdvd.png.sh sleeve-livecd.png.sh\
-        sleeve-livedvd.png.sh
-        "
-
-    # Deifne theme model.
-    #THEMEMODEL='Default'
+    # Define replacement for specitif translation markers.
+    DST[0]="`gettext "Install CD 2 of 6"`"
+    DST[1]="`gettext "for =ARCH= architectures"`"
 
 }
