@@ -36,13 +36,11 @@ function render_doIdentityTMarkersSpecifics {
     # Initialize specific translation markers (SRC) variable, and
     # replacement (DST) variable using the appropriate translation
     # file as reference.
-    if [[ -x ${TRANSLATION} ]];then
-        # Initialize action-specific functions.
-        . $TRANSLATION
-    else
-        cli_printMessage "`eval_gettext "The \\\$TRANSLATION hasn't execution rights."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    cli_checkFiles ${TRANSLATION} 'f'
+    cli_checkFiles ${TRANSLATION} 'x'
+
+    # Initialize action-specific functions.
+    . $TRANSLATION
 
     # Execute function to retrive specific translation markers and
     # specific replacement values.
