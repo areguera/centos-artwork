@@ -47,30 +47,34 @@ function render_doIdentityTMarkersCommons {
     # Verify source location file.
     cli_checkFiles "$LOCATION" 'f'
 
-    # Define translation markers.
-    SRC[0]='=THEME='
-    SRC[1]='=THEMENAME='
-    SRC[2]='=THEMERELEASE='
-    SRC[3]='=RELEASE='
-    SRC[4]='=MAJOR_RELEASE='
-    SRC[5]='=MINOR_RELEASE='
-    SRC[6]='=COPYRIGHT='
-    SRC[7]='=DESCRIPTION='
-    SRC[8]='=LICENSE='
+    # Define translation markers. The translation marker definition
+    # order is important. Note that when we render concept directory
+    # structure, we make two replacements to produce the final
+    # copyright note. First, we replace =COPYRIGHT= translation marker
+    # and later the =THEMENAME= translation maker (not the oposite).
+    SRC[0]='=COPYRIGHT='
+    SRC[1]='=DESCRIPTION='
+    SRC[2]='=LICENSE='
+    SRC[3]='=THEME='
+    SRC[4]='=THEMENAME='
+    SRC[5]='=THEMERELEASE='
+    SRC[6]='=RELEASE='
+    SRC[7]='=MAJOR_RELEASE='
+    SRC[8]='=MINOR_RELEASE='
     SRC[9]='=URL='
     SRC[10]='=URLLOCALE='
     SRC[11]='=ARCH='
 
     # Define replacements for translation markers.
-    DST[0]="$(cli_getPathComponent "$FILE" '--theme')"
-    DST[1]="$(cli_getPathComponent "$FILE" '--theme-name')"
-    DST[2]="$(cli_getPathComponent "$FILE" '--theme-release')"
-    DST[3]="$(cli_getPathComponent "$FILE" '--release')"
-    DST[4]="$(cli_getPathComponent "$FILE" '--release-major')"
-    DST[5]="$(cli_getPathComponent "$FILE" '--release-minor')"
-    DST[6]="$(cli_getCopyrightInfo '--copyright')"
-    DST[7]="$(cli_getCopyrightInfo '--description')"
-    DST[8]="$(cli_getCopyrightInfo '--license')"
+    DST[0]="$(cli_getCopyrightInfo '--copyright')"
+    DST[1]="$(cli_getCopyrightInfo '--description')"
+    DST[2]="$(cli_getCopyrightInfo '--license')"
+    DST[3]="$(cli_getPathComponent "$FILE" '--theme')"
+    DST[4]="$(cli_getPathComponent "$FILE" '--theme-name')"
+    DST[5]="$(cli_getPathComponent "$FILE" '--theme-release')"
+    DST[6]="$(cli_getPathComponent "$FILE" '--release')"
+    DST[7]="$(cli_getPathComponent "$FILE" '--release-major')"
+    DST[8]="$(cli_getPathComponent "$FILE" '--release-minor')"
     DST[9]="http://www.centos.org"
     # Define url locale information. We don't want to show locale
     # information inside url for English language. English is the

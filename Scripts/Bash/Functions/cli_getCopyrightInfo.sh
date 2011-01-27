@@ -145,7 +145,7 @@ function cli_getCopyrightInfo {
 
             # Define description information for directory structures
             # that don't use default description information.
-            NOTES[0]="=NAME= is an artistic motif and theme for ${NOTE}"
+            NOTES[0]="=THEMENAME= is an artistic motif and theme for ${NOTE}"
             ;;
 
         '--license' )
@@ -156,7 +156,7 @@ function cli_getCopyrightInfo {
 
             # Define license information for directory structures that
             # don't match default license information.
-            NOTES[0]="=NAME= artistic motif and theme are released under ${NOTE}"
+            NOTES[0]="=THEMENAME= artistic motif and theme are released under ${NOTE}"
             NOTES[1]="`gettext "The CentOS distribution is released as GPL."`"
             ;;
 
