@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 10:41-0500\n"
+"POT-Creation-Date: 2011-01-31 15:22-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1021,6 +1021,11 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getPathComponent.sh:47
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkPathComponent.sh:48
+msgid "Invalid arguments."
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getTemporalFile.sh:32
 msgid "First argument is required."
 msgstr ""
@@ -1127,7 +1132,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:231
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:232
 #, sh-format
 msgid "There is no design template defined for `$FILE'."
 msgstr ""
@@ -1206,6 +1211,71 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-icon-themes.sh:31
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-logos.sh:31
 msgid "You need to run this script as root user."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:49
+msgid "CentOS =RELEASE= Release Notes"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:51
+msgid ""
+"The CentOS project welcomes you to CentOS\n"
+"    =RELEASE=."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:54
+msgid ""
+"The complete release notes for CentOS =RELEASE=\n"
+"    can be found online at: =LINK="
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:57
+msgid ""
+"A list of frequently asked questions and answers\n"
+"    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:60
+#, sh-format
+msgid ""
+"If you are looking for help with CentOS, we\n"
+"    recommend you start at =LINK= for pointers to the different\n"
+"    sources where you can get help."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:64
+msgid ""
+"For more information about The CentOS Project in\n"
+"    general please visit our homepage at: =LINK=."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:67
+msgid ""
+"If you would like to contribute to the CentOS\n"
+"    Project, see =LINK= for areas where you could help."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:37
+msgid "CentOS =RELEASE= EULA"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:39
+msgid ""
+"CentOS =RELEASE= comes with no guarantees or\n"
+"    warranties of any sorts, either written or implied."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:42
+msgid ""
+"The Distribution is released as GPL. Individual\n"
+"    packages in the distribution come with their own licences."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:39
@@ -1926,37 +1996,19 @@ msgstr ""
 msgid "Table of contents"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getFromPath.sh:41
-msgid "Invalid arguments."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:31
-msgid "There is no destination to work with."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:36
-#, sh-format
-msgid "The value `$FLAG_TO' is not valid destination value."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:59
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:51
 #, sh-format
 msgid "The location `$FLAG_TO' already exists."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:92
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirTarget.sh:84
 #, sh-format
 msgid "cannot create `$FLAG_TO': It isn't an identity directory structure."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:33
-#, sh-format
-msgid "The value `$ACTIONVAL' is not valid."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:84
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:97
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:62
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:79
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkRepoDirSource.sh:92
 #, sh-format
 msgid "The location `$ACTIONVAL' is not valid."
 msgstr ""
@@ -2003,7 +2055,7 @@ msgstr ""
 msgid "The CentOS distribution is released as GPL."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:166
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:178
 msgid "All rights reserved."
 msgstr ""
 
@@ -2743,6 +2795,26 @@ msgstr ""
 msgid "Zulu"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkPathComponent.sh:62
+#, sh-format
+msgid "The release `$LOCATION' is not valid."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkPathComponent.sh:68
+#, sh-format
+msgid "The architecture `$LOCATION' is not valid."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkPathComponent.sh:74
+#, sh-format
+msgid "The theme `$LOCATION' is not valid."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkPathComponent.sh:82
+#, sh-format
+msgid "The value `$LOCATION' is not valid."
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doLinkCheck.sh:72
 msgid "The required links are already installed."
 msgstr ""
@@ -2939,39 +3011,34 @@ msgstr ""
 msgid "You need to provide one argument at least."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:56
-#, sh-format
-msgid "The value `$FILE' is not valid."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:66
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:61
 #, sh-format
 msgid "The directory \"$FILE\" doesn't exist."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:73
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:68
 #, sh-format
 msgid "The file \"$FILE\" is not a regular file."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:80
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:75
 #, sh-format
 msgid "The file \"$FILE\" is not a symbolic link."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:87
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:82
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:95
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:104
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:119
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:90
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:99
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:114
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:112
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_checkFiles.sh:107
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist inside the working copy."
 msgstr ""
