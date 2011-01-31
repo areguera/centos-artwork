@@ -39,8 +39,8 @@ function render_loadConfig {
     # Define and build URLs for replacements.
     URLS[0]=''
     URLS[1]=''
-    URLS[2]='=URL_WIKI=Manuals/ReleaseNotes/CentOS=RELEASE=/'
-    URLS[3]='=URL_WIKI=FAQs/CentOS=MAJOR_RELEASE=/'
+    URLS[2]='=URL_WIKI=Manuals/ReleaseNotes/=RELEASE=/'
+    URLS[3]='=URL_WIKI=FAQs/=MAJOR_RELEASE=/'
     URLS[4]='=URL_WIKI=Help/'
     URLS[5]='=URL_WIKI=Contribute/'
     URLS[6]='=URL='
@@ -55,7 +55,7 @@ function render_loadConfig {
     can be found online at: =LINK="`"
 
     DST[3]="`gettext "A list of frequently asked questions and answers
-    about CentOS =MAJOR_RELEASE= can be found here: =LINK="`"
+    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="`"
 
     DST[4]="`eval_gettext "If you are looking for help with CentOS, we
     recommend you start at =LINK= for pointers to the different
@@ -68,5 +68,12 @@ function render_loadConfig {
     Project, see =LINK= for areas where you could help."`"
 
     DST[7]="$(cli_getCurrentLocale)"
+
+    # Redefine replacements in order to convert urls into html links.
+    while [[ $COUNT -lt ${#URLS[*]} ]];do
+        DST[$COUNT]=$(echo ${DST[$COUNT]} \
+            | sed -r "s!=LINK=!${URLS[$COUNT]}!g")
+        COUNT=$(($COUNT + 1))
+    done
 
 }
