@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh 1.0\n"
 "Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2011-01-27 21:41-0500\n"
-"PO-Revision-Date: 2011-01-27 21:42-0500\n"
+"POT-Creation-Date: 2011-01-31 15:41-0500\n"
+"PO-Revision-Date: 2011-01-31 15:41-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1132,7 +1132,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:231
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:232
 #, sh-format
 msgid "There is no design template defined for `$FILE'."
 msgstr ""
@@ -1211,6 +1211,82 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-icon-themes.sh:31
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-logos.sh:31
 msgid "You need to run this script as root user."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:49
+msgid "CentOS =RELEASE= Release Notes"
+msgstr "CentOS =RELEASE= Release Notes"
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:51
+msgid ""
+"The CentOS project welcomes you to CentOS\n"
+"    =RELEASE=."
+msgstr "Das CentOS Projekt heißt Sie willkommen bei CentOS =RELEASE=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:54
+msgid ""
+"The complete release notes for CentOS =RELEASE=\n"
+"    can be found online at: =LINK="
+msgstr ""
+"Die vollständigen Release Notes für CentOS =RELEASE= finden Sie Online unter "
+"=LINK=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:57
+msgid ""
+"A list of frequently asked questions and answers\n"
+"    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="
+msgstr ""
+"Eine Liste der am häufigsten gestellten Fragen (FAQs) zu CentOS "
+"=MAJOR_RELEASE= ist hier verfügbar: =LINK=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:60
+#, sh-format
+msgid ""
+"If you are looking for help with CentOS, we\n"
+"    recommend you start at =LINK= for pointers to the different\n"
+"    sources where you can get help."
+msgstr ""
+"Wenn Sie Hilfe für CentOS benötigen, dann finden Sie unter =LINK= eine "
+"Übersicht der verschiedenen Hilfequellen, die für CentOS existieren."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:64
+msgid ""
+"For more information about The CentOS Project in\n"
+"    general please visit our homepage at: =LINK=."
+msgstr ""
+"Um weitere allgemeine Informationen über das CentOS Projekt zu erhalten, "
+"besuchen Sie bitte die Homepage auf =LINK=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:67
+msgid ""
+"If you would like to contribute to the CentOS\n"
+"    Project, see =LINK= for areas where you could help."
+msgstr ""
+"Wenn Sie sich am CentOS Projekt beteiligen wollen, schlagen Sie bitte =LINK= "
+"nach. Dort sind Aufgaben gelistet bei denen Sie das CentOS Projekt "
+"unterstützen können."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:37
+msgid "CentOS =RELEASE= EULA"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:39
+msgid ""
+"CentOS =RELEASE= comes with no guarantees or\n"
+"    warranties of any sorts, either written or implied."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:42
+msgid ""
+"The Distribution is released as GPL. Individual\n"
+"    packages in the distribution come with their own licences."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:39
@@ -2049,7 +2125,7 @@ msgstr ""
 msgid "The CentOS distribution is released as GPL."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:166
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:178
 msgid "All rights reserved."
 msgstr ""
 
