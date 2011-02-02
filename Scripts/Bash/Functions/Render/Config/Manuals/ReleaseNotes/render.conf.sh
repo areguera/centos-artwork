@@ -32,11 +32,11 @@ function render_loadConfig {
 
     # Defines matching list.
     MATCHINGLIST="\
-    release-notes: \
+    release-notes.txt: \
         release-notes.txt.sh
     release-notes.html: \
         release-notes.html.sh
-    eula: \
+    eula.txt: \
         eula.txt.sh
     "
 }
