@@ -59,19 +59,19 @@ function cli_checkPathComponent {
 
         '--release' )
             if [[ $LOCATION =~ ${PATTERN[0]} ]];then
-                MESSAGE="`gettext "The release \\\`\\\$LOCATION' is not valid."`"
+                MESSAGE="`eval_gettext "The release \\\`\\\$LOCATION' is not valid."`"
             fi
             ;;
 
         '--architecture' )
             if [[ $LOCATION =~ ${PATTERN[1]} ]];then
-                MESSAGE="`gettext "The architecture \\\`\\\$LOCATION' is not valid."`"
+                MESSAGE="`eval_gettext "The architecture \\\`\\\$LOCATION' is not valid."`"
             fi
             ;;
 
         '--theme' )
             if [[ $LOCATION =~ ${PATTERN[2]} ]];then
-                MESSAGE="`gettext "The theme \\\`\\\$LOCATION' is not valid."`"
+                MESSAGE="`eval_gettext "The theme \\\`\\\$LOCATION' is not valid."`"
             fi
             ;;
 
@@ -79,7 +79,7 @@ function cli_checkPathComponent {
             if [[ $LOCATION == '' ]] \
                 || [[ $LOCATION =~ '(\.\.(/)?)' ]] \
                 || [[ ! $LOCATION =~ '^[A-Za-z0-9\.:/_-]+$' ]];then
-                    MESSAGE="`gettext "The value \\\`\\\$LOCATION' is not valid."`"
+                    MESSAGE="`eval_gettext "The value \\\`\\\$LOCATION' is not valid."`"
             fi
             ;;
 
