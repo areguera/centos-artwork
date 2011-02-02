@@ -46,4 +46,6 @@ function render_loadConfig {
     DST[5]=''
     DST[6]=''
 
+    DST[7]="=URL_DOCS==MAJOR_RELEASE=/" 
+
 }
