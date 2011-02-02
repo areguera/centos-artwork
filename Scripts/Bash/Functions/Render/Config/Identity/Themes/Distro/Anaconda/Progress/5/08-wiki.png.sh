@@ -47,6 +47,6 @@ function render_loadConfig {
     DST[5]=''
     DST[6]=''
 
-    DST[7]="=URL_WIKI=GettingHelp/"
+    DST[7]="=URL_WIKI="
 
 }
