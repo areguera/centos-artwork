@@ -41,9 +41,9 @@ function render_loadConfig {
     URLS[1]=''
     URLS[2]='=URL_WIKI=Manuals/ReleaseNotes/=RELEASE=/'
     URLS[3]='=URL_WIKI=FAQs/=MAJOR_RELEASE=/'
-    URLS[4]='=URL_WIKI=Help/'
-    URLS[5]='=URL_WIKI=Contribute/'
-    URLS[6]='=URL='
+    URLS[4]='=URL_WIKI=GettingHelp/'
+    URLS[5]='=URL='
+    URLS[6]='=URL_WIKI=Contribute/'
 
     # Define replacements for translation markers.
     DST[0]="`gettext "CentOS =RELEASE= Release Notes"`"
