@@ -47,6 +47,6 @@ function render_loadConfig {
     DST[5]=''
     DST[6]=''
 
-    DST[7]="=URL_WIKI=Manuals/Docs/=MAJOR_RELEASE=/"
+    DST[7]="=URL_WIKI==MAJOR_RELEASE=/"
 
 }
