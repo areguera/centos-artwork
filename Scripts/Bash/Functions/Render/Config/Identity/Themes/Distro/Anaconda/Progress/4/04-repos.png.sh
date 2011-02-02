@@ -32,9 +32,10 @@ function render_loadConfig {
     for INDEX in {1..6};do
         SRC[$INDEX]="=TEXT${INDEX}="
     done
+    SRC[7]='=URL='
 
     # Define replacements for translation markers.
-    DST[0]="`gettext "CentOS Repositories"`"
+    DST[0]="`gettext "CentOS Repositories/"`"
 
     DST[1]="`gettext "The following repositories exist in CentOS to install software from:"`"
 
@@ -48,5 +49,6 @@ function render_loadConfig {
 
     DST[6]=''
 
+    DST[7]="=URL_WIKI=AdditionalResources/Repositories/"
 
 }

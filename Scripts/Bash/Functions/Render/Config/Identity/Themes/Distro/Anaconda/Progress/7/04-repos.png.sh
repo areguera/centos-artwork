@@ -34,7 +34,7 @@ function render_loadConfig {
     done
 
     # Define replacements for translation markers.
-    DST[0]="`gettext "CentOS Repositories"`"
+    DST[0]="`gettext "CentOS Repositories/"`"
 
     DST[1]="`gettext "The following repositories exist in CentOS to install software from:"`"
 

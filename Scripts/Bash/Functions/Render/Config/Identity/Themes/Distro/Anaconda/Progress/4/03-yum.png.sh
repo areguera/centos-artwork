@@ -32,6 +32,7 @@ function render_loadConfig {
     for INDEX in {1..6};do
         SRC[$INDEX]="=TEXT${INDEX}="
     done
+    SRC[7]='=URL='
 
     # Define replacements for translation markers.
     DST[0]="`gettext "Managing Software with Yum"`"
@@ -45,5 +46,7 @@ function render_loadConfig {
     DST[4]=''
     DST[5]=''
     DST[6]=''
+
+    DST[7]="=URL_WIKI=Manuals/Docs/=MAJOR_RELEASE=/"
 
 }

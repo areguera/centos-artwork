@@ -32,6 +32,7 @@ function render_loadConfig {
     for INDEX in {1..17};do
         SRC[$INDEX]="=TEXT${INDEX}="
     done
+    SRC[18]='=URL='
 
     # Define replacements for translation markers.
     DST[0]="`gettext "CentOS Documentation"`"
@@ -54,5 +55,6 @@ function render_loadConfig {
     DST[16]=''
     DST[17]=''
 
+    DST[18]="=URL_WIKI=GettingHelp/"
 
 }
