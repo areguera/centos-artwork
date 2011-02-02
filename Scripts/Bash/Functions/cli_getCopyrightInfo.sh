@@ -159,6 +159,18 @@ function cli_getCopyrightInfo {
             NOTES[0]="=THEMENAME= artistic motif and theme are released under ${NOTE}"
             NOTES[1]="`gettext "The CentOS distribution is released as GPL."`"
             ;;
+        
+        '--license-url' )
+
+            # Define default license url used by all image-based
+            # creations inside CentOS Artwork Repository.
+            NOTE="http://creativecommons.org/licenses/by-sa/3.0/"
+
+            # Define license  url for directory structures that don't
+            # match default license information.
+            NOTES[0]="${NOTE}"
+            NOTES[1]="http://opensource.org/licenses/gpl-license.php"
+            ;;
 
         '--copyright' | * )
     
