@@ -30,26 +30,5 @@ function render_loadConfig {
     ACTIONS[0]='BASE:renderImage'
 
     # Define matching list.
-    MATCHINGLIST="\
-    poweredby.svg: \
-        poweredby-1.sed poweredby-2.sed poweredby-3.sed\
-        poweredby-4.sed poweredby-5.sed poweredby-6.sed
-    icon-arrow.svg: \
-        icon-arrow-right-blue.sed\
-        icon-arrow-right-green.sed\
-        icon-arrow-right-orange.sed\
-        icon-arrow-right-violet.sed\
-        icon-arrow-right-red.sed\
-        icon-arrow-right.sed
-    icon-admonition-alert.svg:      icon-admonition-alert.sed
-    icon-admonition-info.svg:       icon-admonition-info.sed
-    icon-admonition-attention.svg:  icon-admonition-attention.sed
-    icon-admonition-error.svg:      icon-admonition-error.sed
-    icon-admonition-star.svg:       icon-admonition-star.sed
-    icon-admonition-idea.svg:       icon-admonition-idea.sed
-    icon-admonition-doc-old.svg:      icon-admonition-doc-old.sed
-    icon-admonition-doc-redirect.svg: icon-admonition-doc-redirect.sed
-    icon-admonition-success.svg: icon-admonition-success.sed
-    icon-admonition-ruler.svg: icon-admonition-ruler.sed
-    "
+    #MATCHINGLIST=""
 }
