@@ -303,12 +303,8 @@ function render_getIdentityDefs {
     # retrived from translations structure. Then we use the common
     # path as relative path to the image file.
     #
-    # The `.sh' file extension is removed from the common path.
-    # Instead we use the previous extension, defined in the
-    # translation files, as file extension. For example, if the
-    # translation file is file.png.sh, the final file would be
-    # file.png. Likewise, if the translation file is file.txt.sh, the
-    # final file would be file.txt.
+    # The file extension is removed from the common path.  Instead we
+    # set the extension when we create the final file.
     #
     # When we render using renderImage function, the structure of
     # files under Img/ directory will be the same of that used after
@@ -317,7 +313,7 @@ function render_getIdentityDefs {
     # LOCATION variable was defined. 
     FILE=$(echo ${FILE} \
         | sed -r "s!.*${PARENTDIR}/!!" \
-        | sed -r "s/\.sh$//")
+        | sed -r "s/\.${EXTENSION}$//")
     
     # Re-define directory absolute path of final output directory. As
     # convenction, when we produce content in English language, we do
@@ -350,6 +346,8 @@ function render_getIdentityDefs {
     cat $TEMPLATE > $INSTANCE
 
     # Replace translation markers with appropriate information.
-    render_doIdentityTMarkers
+    if [[ $TRANSLATIONPATH != '' ]];then
+        render_doIdentityTMarkers
+    fi
 
 }
