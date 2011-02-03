@@ -33,16 +33,4 @@ function render_loadConfig {
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='POST:renderBrands: tif xpm pdf ppm'
 
-    # Define matching list.
-    MATCHINGLIST="\
-    $(for TEMPLATE in $(find /home/centos/artwork/trunk/Identity/Brands/Tpl \
-        -name '*.svg' | sed -r 's!.*/Brands/Tpl/(.*)$!\1!' | sort );do
-        TRANSLATION=$(find /home/centos/artwork/trunk/Translations/Identity/Brands/$(echo $TEMPLATE \
-            | sed 's!\.svg!!') -name '*.sed' \
-            | sed -r 's!^.*/Brands/(.*)$!\1!' \
-            | sort | tr '\n' ' ');
-        echo $TEMPLATE: $TRANSLATION
-    done)
-    "
-
 }
