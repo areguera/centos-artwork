@@ -29,7 +29,7 @@ function render_getIdentityDefs {
     # Define the translation file absolute path. Only if we have a
     # .png.sh extension at file's end we can consider that file as a
     # translation file.  Otherwise there is not translation file.
-    if [[ ${FILE} =~ "\.${EXTENSION}$" ]];then
+    if [[ $TRANSLATIONPATH != '' ]];then
         TRANSLATION=${FILE}
     else
         TRANSLATION=`gettext "None"`
