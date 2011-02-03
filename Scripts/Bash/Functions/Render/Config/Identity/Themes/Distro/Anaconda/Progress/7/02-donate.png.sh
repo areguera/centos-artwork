@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bas
 #
 # render_loadConfig.sh -- This function specifies translation
 # markers and replacements for anaconda progress `02-donate.png'
@@ -33,6 +33,7 @@ function render_loadConfig {
     for INDEX in {1..6};do
         SRC[$INDEX]="=TEXT${INDEX}="
     done
+    SRC[7]='=URL='
 
     # Define replacements for translation markers.
     DST[0]="`gettext "CentOS Donations"`"
@@ -46,6 +47,8 @@ function render_loadConfig {
     DST[4]=''
     DST[5]=''
     DST[6]=''
+
+    DST[7]='=URL_WIKI=Dontate'
 
 
 }
