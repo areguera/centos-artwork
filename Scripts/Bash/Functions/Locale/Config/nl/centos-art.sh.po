@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh 1.0\n"
 "Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2011-01-31 21:18-0500\n"
-"PO-Revision-Date: 2011-01-31 21:23-0500\n"
+"POT-Creation-Date: 2011-02-02 21:13-0500\n"
+"PO-Revision-Date: 2011-02-02 21:14-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -1127,6 +1127,7 @@ msgid "Enter metadata information you want to apply:"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:35
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:42
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:43
 msgid "None"
 msgstr ""
@@ -1142,6 +1143,10 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageBrands.sh:43
 msgid "2 colors grayscale"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDirTranslation.sh:34
+msgid ")"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageSyslinux.sh:49
@@ -1212,83 +1217,6 @@ msgstr ""
 msgid "You need to run this script as root user."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:49
-msgid "CentOS =RELEASE= Release Notes"
-msgstr "CentOS =RELEASE= Release Notes"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:51
-msgid ""
-"The CentOS project welcomes you to CentOS\n"
-"    =RELEASE=."
-msgstr ""
-"Het CentOS project verwelkomt je bij CentOS =RELEASE=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:54
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:54
-msgid ""
-"The complete release notes for CentOS =RELEASE=\n"
-"    can be found online at: =LINK="
-msgstr ""
-"De volledige aantekeningen voor CentOS =RELEASE= kunt u online "
-"vinden op =LINK=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:57
-msgid ""
-"A list of frequently asked questions and answers\n"
-"    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="
-msgstr ""
-"Een lijst van veel gestelde vragen en antwoorden kunt u hier vinden "
-"=LINK=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:60
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:60
-#, sh-format
-msgid ""
-"If you are looking for help with CentOS, we\n"
-"    recommend you start at =LINK= for pointers to the different\n"
-"    sources where you can get help."
-msgstr ""
-"Als u op zoek bent naar hulp voor CentOS, raden we u aan =LINK= te "
-"lezen voor verwijzingen naar verschillende informatiebronnen die u "
-"verder kunnen helpen."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:64
-msgid ""
-"For more information about The CentOS Project in\n"
-"    general please visit our homepage at: =LINK=."
-msgstr ""
-"Voor meer algemene informatie over het CentOS project kunt u onze "
-"website bezoeken op =LINK=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.txt.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/release-notes.html.sh:67
-msgid ""
-"If you would like to contribute to the CentOS\n"
-"    Project, see =LINK= for areas where you could help."
-msgstr ""
-"Als u graag wilt meehelpen aan het CentOS project, zie =LINK= voor "
-"manieren waarop u dit kunt doen."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:37
-msgid "CentOS =RELEASE= EULA"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:39
-msgid ""
-"CentOS =RELEASE= comes with no guarantees or\n"
-"    warranties of any sorts, either written or implied."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Release/5/eula.txt.sh:42
-msgid ""
-"The Distribution is released as GPL. Individual\n"
-"    packages in the distribution come with their own licences."
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:39
@@ -1300,54 +1228,61 @@ msgstr "Hulp voor CentOS"
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:41
-msgid "You can get help with CentOS in several ways, including:"
+msgid ""
+"You can get help with CentOS in several ways,\n"
+"    including:"
 msgstr "U kunt op verschillende manieren hulp krijgen voor CentOS, zoals:"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:44
 msgid ""
-"<flowSpan style=\"font-weight:bold\">Internet Relay Chat (IRC)</flowSpan> - "
-"#centos, #centos-social and\n"
-"    #centos-devel on irc.freenode.net."
+"<flowSpan\n"
+"    style=\"font-weight:bold\">Internet Relay Chat\n"
+"    (IRC)</flowSpan> - #centos, #centos-social and #centos-devel on\n"
+"    irc.freenode.net."
 msgstr ""
 "<flowSpan style=\"font-weight:bold\">Internet Relay Chat(IRC)</flowSpan> - "
 "#centos en #centos-devel op irc.freenode.net"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:49
 msgid ""
-"<flowSpan style=\"font-weight:bold\">Mailing Lists</flowSpan> - CentOS, "
-"CentOS-Devel, CentOS-Annouces and non-English localized language lists from "
-"http://centos.org/."
+"<flowSpan style=\"font-weight:bold\">Mailing\n"
+"    Lists</flowSpan> - CentOS, CentOS-Devel, CentOS-Annouces and\n"
+"    non-English localized language lists from =URL_LISTS=."
 msgstr ""
 "<flowSpan style=\"font-weight:bold\">Mailing lijsten</flowSpan> - centos, "
-"centos-devel, centos-announce en mailing lijsten in andere talen via http://"
-"centos.org/lists/"
+"centos-devel, centos-announce en mailing lijsten in andere talen via "
+"=URL_LISTS=."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:48
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:53
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:53
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:53
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:53
 msgid ""
 "<flowSpan\n"
-"    style=\"font-weight:bold\">Forums</flowSpan> - Available at http://"
-"centos.org/forums/."
+"    style=\"font-weight:bold\">Forums</flowSpan> - Available at\n"
+"    =URL_FORUMS=."
 msgstr ""
 "<flowSpan style=\"font-weight:bold\">Forums</flowSpan> - beschikbaar op "
-"http://centos.org/forums/."
+"=URL_FORUMS=."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:57
 msgid ""
-"<flowSpan style=\"font-weight:bold\">Wiki</flowSpan> - Available at http://"
-"centos.org/wiki/."
+"<flowSpan\n"
+"    style=\"font-weight:bold\">Wiki</flowSpan> - Available at\n"
+"    =URL_WIKI=."
 msgstr ""
+"<flowSpan style=\"font-weight:bold\">Forums</flowSpan> - beschikbaar op "
+"=URL_WIKI=."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:39
@@ -1489,14 +1424,14 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:39
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:39
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:38
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:39
 msgid "Virtualization on CentOS =MAJOR_RELEASE="
 msgstr "Virtualisatie met CentOS =MAJOR_RELEASE="
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:41
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:41
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:40
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:41
 msgid ""
 "CentOS =MAJOR_RELEASE= provides virtualization via Xen for the i386 and "
@@ -1508,7 +1443,7 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:43
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:42
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:43
 msgid ""
 "The Virtualization Guide and Virtual Server Administration Guide are "
@@ -1705,24 +1640,24 @@ msgstr ""
 msgid "Release notes for all software"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:39
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:38
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:38
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:38
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:38
 msgid "Welcome to CentOS =MAJOR_RELEASE=!"
 msgstr "Welkom bij CentOS =MAJOR_RELEASE=!"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:41
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:40
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:40
 msgid "Thank you for installing CentOS =MAJOR_RELEASE=."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:42
 msgid ""
 "CentOS is an enterprise-class Linux Distribution derived from sources freely "
 "provided to the public by a prominent North American Enterprise Linux vendor."
@@ -1731,10 +1666,10 @@ msgstr ""
 "die vrij beschikbaar is gesteld aan het publiek door eenbekende Noord-"
 "Amerikaanse Enterprise Linux-leverancier (ook\"upstream\" genoemd)."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:44
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:44
 msgid ""
 "CentOS conforms fully with the upstream vendors redistribution policy and "
 "aims to be 100% binary compatible."
@@ -1742,10 +1677,10 @@ msgstr ""
 "CentOS conformeert volledig met het distributiebeleid van dezeleverancier, "
 "en heeft tot doel honderd procent compatibel te zijn."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:47
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:46
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:46
 msgid ""
 "CentOS mainly changes packages to remove upstream vendor branding and "
 "artwork."
@@ -1946,6 +1881,115 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-livedvd.png.sh:33
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:37
 msgid "Live DVD"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:49
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:49
+msgid "CentOS =RELEASE= Release Notes"
+msgstr "CentOS =RELEASE= Release Notes"
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:51
+msgid ""
+"The CentOS project welcomes you to CentOS\n"
+"    =RELEASE=."
+msgstr "Het CentOS project verwelkomt je bij CentOS =RELEASE=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:54
+msgid ""
+"The complete release notes for CentOS =RELEASE=\n"
+"    can be found online at: =LINK="
+msgstr ""
+"De volledige aantekeningen voor CentOS =RELEASE= kunt u online vinden op "
+"=LINK=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:57
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:57
+msgid ""
+"A list of frequently asked questions and answers\n"
+"    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="
+msgstr ""
+"Een lijst van veel gestelde vragen en antwoorden kunt u hier vinden =LINK=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:60
+#, sh-format
+msgid ""
+"If you are looking for help with CentOS, we\n"
+"    recommend you start at =LINK= for pointers to the different\n"
+"    sources where you can get help."
+msgstr ""
+"Als u op zoek bent naar hulp voor CentOS, raden we u aan =LINK= te lezen "
+"voor verwijzingen naar verschillende informatiebronnen die u verder kunnen "
+"helpen."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:64
+msgid ""
+"For more information about The CentOS Project in\n"
+"    general please visit our homepage at: =LINK=."
+msgstr ""
+"Voor meer algemene informatie over het CentOS project kunt u onze website "
+"bezoeken op =LINK=."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:67
+msgid ""
+"If you would like to contribute to the CentOS\n"
+"    Project, see =LINK= for areas where you could help."
+msgstr ""
+"Als u graag wilt meehelpen aan het CentOS project, zie =LINK= voor manieren "
+"waarop u dit kunt doen."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/eula.txt.sh:37
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/eula.txt.sh:37
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/eula.txt.sh:37
+msgid "CentOS =RELEASE= EULA"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/eula.txt.sh:39
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/eula.txt.sh:39
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/eula.txt.sh:39
+msgid ""
+"CentOS =RELEASE= comes with no guarantees or\n"
+"    warranties of any sorts, either written or implied."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/eula.txt.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/eula.txt.sh:42
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/eula.txt.sh:42
+msgid ""
+"The Distribution is released as GPL. Individual\n"
+"    packages in the distribution come with their own licences."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_updateOutputFileInfo.sh:30
