@@ -26,7 +26,7 @@
 
 function render_doIdentityImageSyslinux {
 
-    local FILE=$1
+    local FILE="$1"
     local ACTION="$2"
     local OPTIONS=''
 
@@ -93,18 +93,16 @@ function render_doIdentityImageSyslinux {
     # Create Netpbm superformat (PNM). PNM file is created from the
     # PNG image rendered previously. PNM is a common point for image
     # manipulation using Netpbm tools.
-    cli_printMessage "$FILE.pnm" "AsSavedAsLine"
-        pngtopnm -verbose \
-        < $FILE.png \
-        2>$FILE.log > $FILE.pnm
+    cli_printMessage "${FILE}.pnm" "AsSavedAsLine"
+    pngtopnm -verbose \
+        < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
    
     # Reduce colors. Here we use the Netpbm color $PALETTE_PPM to
     # enforce the color position in the image index and the
     # Floyd-Steinberg dithering in order to improve color reduction.
-    cli_printMessage "$FILE${PREFIX}.pnm" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.pnm" "AsSavedAsLine"
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
-        < $FILE.pnm \
-        2>>$FILE.log > $FILE${PREFIX}.pnm
+        < ${FILE}.pnm 2>> ${FILE}.log > ${FILE}${PREFIX}.pnm
 
     # Create LSS16 image. As specified in isolinux documentation the
     # background color should be indexed on position 0 and forground
@@ -116,26 +114,21 @@ function render_doIdentityImageSyslinux {
     # with the color information as described in isolinux
     # documentation (i.e #RRGGBB=0 #RRGGBB=1 ... [all values in the
     # same line]).
-    cli_printMessage "$FILE${PREFIX}.lss" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.lss" "AsSavedAsLine"
     PALETTE_HEX=$(cat $PALETTE_HEX | tr "\n" ' ' | tr -s ' ')
     ppmtolss16 $PALETTE_HEX \
-        < $FILE${PREFIX}.pnm \
-        2>>$FILE.log \
-        > $FILE${PREFIX}.lss
+        < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.lss
      
     # Create the PPM image indexed to 16 colors. Also the colormap
-    # used in the LSS16 image is saved on $FILE.log; this is useful to
+    # used in the LSS16 image is saved on ${FILE}.log; this is useful to
     # verify the correct order of colors in the image index.
-    cli_printMessage "$FILE${PREFIX}.ppm" "AsSavedAsLine"
-    lss16toppm -map < $FILE${PREFIX}.lss \
-       2>>$FILE.log \
-       > $FILE${PREFIX}.ppm
+    cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
+    lss16toppm -map \
+        < ${FILE}${PREFIX}.lss 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
       
     # Create the 16 colors PNG image.
-    cli_printMessage "$FILE${PREFIX}.png" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.png" "AsSavedAsLine"
     pnmtopng -verbose -palette=$PALETTE_PPM \
-       < $FILE${PREFIX}.pnm \
-       2>>$FILE.log \
-       > $FILE${PREFIX}.png
+        < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.png
    
 }

@@ -120,7 +120,7 @@ function render_getActions {
     # scripts. The render.conf.sh scripts define how each artwork is
     # rendered.
     local ARTCONF=$(echo "$ACTIONVAL" \
-        | sed -r -e 's!/(Identity|Translations)!/Scripts/Bash/Functions/Render/Config/\1!' \
+        | sed -r -e 's!/(Identity|Manuals)!/Scripts/Bash/Functions/Render/Config/\1!' \
                  -e "s!Motifs/$(cli_getPathComponent '--theme')/?!!")
 
     # Execute action name.

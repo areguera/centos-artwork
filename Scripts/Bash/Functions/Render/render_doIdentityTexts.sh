@@ -35,7 +35,7 @@ function render_doIdentityTexts {
 
         # Render text file.
         cli_printMessage "$FILE" 'AsSavedAsLine'
-        cat $INSTANCE > $FILE
+        cat $INSTANCE > ${FILE}
 
         # Remove template instance.
         if [[ -a $INSTANCE ]];then

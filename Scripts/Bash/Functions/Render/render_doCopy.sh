@@ -1,12 +1,12 @@
 #!/bin/bash
 #
 # render_doCopy.sh -- This function duplicates rendition stuff.
-# Rendition stuff is formed by design models, design images,
-# pre-rendition configuration scripts and translations files. This
-# way, when we say to duplicate rendition stuff we are saying to
-# duplicate these four directory structures (i.e., design models,
-# design images, pre-rendition configuration scripts, and related
-# translations files).
+# Rendition stuff is formed by design models, design images and
+# pre-rendition configuration scripts (which includes translations
+# files). This way, when we say to duplicate rendition stuff we are
+# saying to duplicate these four directory structures (i.e., design
+# models, design images, pre-rendition configuration scripts, and
+# related translations files).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 

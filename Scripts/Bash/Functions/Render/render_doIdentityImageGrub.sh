@@ -26,7 +26,7 @@
 
 function render_doIdentityImageGrub {
 
-    local FILE=$1
+    local FILE="$1"
     local ACTION="$2"
     local OPTIONS=''
 
@@ -86,26 +86,20 @@ function render_doIdentityImageGrub {
     # Create Netpbm superformat (PNM). PNM file is created from the
     # PNG image rendered previously. PNM is a common point for image
     # manipulation using Netpbm tools.
-    cli_printMessage "$FILE.pnm" "AsSavedAsLine"
+    cli_printMessage "${FILE}.pnm" "AsSavedAsLine"
     pngtopnm -verbose \
-        < $FILE.png \
-        2>$FILE.log \
-        > $FILE.pnm
+        < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
 
     # Reduce colors as specified in ppm palette of colors.
     cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
-        < $FILE.pnm \
-        2>>$FILE.log \
-        > ${FILE}${PREFIX}.ppm
+        < ${FILE}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
 
     # Create the 14 colors xpm.gz file.
     cli_printMessage "${FILE}${PREFIX}.xpm.gz" "AsSavedAsLine"
     ppmtoxpm \
-        < ${FILE}${PREFIX}.ppm \
-        2>>$FILE.log \
-        > $FILE.xpm \
-        && gzip --force $FILE.xpm \
-        && mv $FILE.xpm.gz ${FILE}${PREFIX}.xpm.gz
+        < ${FILE}${PREFIX}.ppm 2>>${FILE}.log > ${FILE}.xpm \
+        && gzip --force ${FILE}.xpm \
+        && mv ${FILE}.xpm.gz ${FILE}${PREFIX}.xpm.gz
 
 }

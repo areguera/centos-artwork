@@ -29,8 +29,8 @@ function render_getIdentityDefs {
     # Define the translation file absolute path. Only if we have a
     # .png.sh extension at file's end we can consider that file as a
     # translation file.  Otherwise there is not translation file.
-    if [[ $FILE =~ '\.png\.sh$' ]];then
-        TRANSLATION=$FILE
+    if [[ ${FILE} =~ "\.${EXTENSION}$" ]];then
+        TRANSLATION=${FILE}
     else
         TRANSLATION=`gettext "None"`
     fi
@@ -39,7 +39,7 @@ function render_getIdentityDefs {
     # because we already built the file list using existent files.
     # But what happen if any of the files already loaded are removed
     # after being loaded? well, just skip it.
-    if [[ "$TRANSLATION" == 'None' ]];then
+    if [[ "$TRANSLATION" == `gettext "None"` ]];then
         cli_printMessage "`gettext "None"`" "AsTranslationLine"
     else
         cli_checkFiles "$TRANSLATION" 'fh'
@@ -57,7 +57,7 @@ function render_getIdentityDefs {
         # images based on design templates. This avoids the creation
         # of an extra `Tpl' directory under Img. We want to save
         # primary PNG file structure directly under Img/ not Img/Tpl/.
-        FILE=$(echo $FILE | sed -r "s!^${SVG}/!!")
+        FILE=$(echo ${FILE} | sed -r "s!^${SVG}/!!")
     
         # In this case just one primary image is rendered.
         # Template points to the value passed in the template
@@ -71,12 +71,12 @@ function render_getIdentityDefs {
         # images based on design templates. This avoids the creation
         # of an extra `Tpl' directory under Img. We want to save
         # primary PNG file structure directly under Img/ not Img/Tpl/.
-        FILE=$(echo $FILE | sed -r "s!^${SVG}/!!")
+        FILE=$(echo ${FILE} | sed -r "s!^${SVG}/!!")
     
         # In this case one primary image is rendered for each
         # design template. Template absolute path points to a
         # design template (see LOCATION's definition).
-        TEMPLATE=$FILE
+        TEMPLATE=${FILE}
         
     elif [[ "${MATCHINGLIST}" == "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
@@ -87,12 +87,12 @@ function render_getIdentityDefs {
         # matching.  Template and translation files use the same path
         # and name relative to their PARENTDIR. Translations use
         # .png.sh extension and templates .svg extension.
-        TEMPLATE=$(echo $FILE | sed -r "s!.*/${PARENTDIR}/(.*)!\1!" \
-            | sed -r 's!\.png\.sh$!.svg!')
+        TEMPLATE=$(echo ${FILE} | sed -r "s!.*/${PARENTDIR}/(.*)!\1!" \
+            | sed -r "s/\.${EXTENSION}$/.svg/")
     
     elif [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
-    
+
         # Create a template and translation matching list.  With this
         # configuration we can optimize the rendition process for
         # artworks like Anaconda progress slides and installation
@@ -142,7 +142,8 @@ function render_getIdentityDefs {
         #     bond/path/green/translation1.png.sh \
         #     bond/path/green/translation2.png.sh
         #
-        BOND=$(echo $TRANSLATION | sed -r "s/^.*\/$PARENTDIR\/(.+)\/.*\.png\.sh$/\1/")
+        BOND=$(echo $TRANSLATION \
+            | sed -r "s/^.*\/$PARENTDIR\/(.+)\/.*\.${EXTENSION}$/\1/")
 
         # If there is no template at this point, start reducing the
         # bond path and try to use the result as template.  This is
@@ -206,12 +207,12 @@ function render_getIdentityDefs {
         
             # Remove `.png.sh' extension from BOND. This is required
             # in order to build the BOND design template correctly.
-            BOND=$(echo $BOND | sed -r 's!\.png\.sh$!!')
+            BOND=$(echo $BOND | sed -r "s/\.${EXTENSION}$//")
         
             # Reduce template designs found to match BOND design
             # template. Take into account design templates extensions.
             TEMPLATE=$(echo "$TEMPLATE" \
-                | egrep "${BOND}(\.svg|\.html|\.htm)?$")
+                | egrep "${BOND}(\.${EXTENSION})?$")
         
         fi
  
@@ -228,7 +229,7 @@ function render_getIdentityDefs {
         # prevent an empty template from being used. It is a missing
         # assignment definition in the pre-rendition script surely.
         if [[ "$TEMPLATE" == '' ]];then
-            cli_printMessage "`eval_gettext "There is no design template defined for \\\`\\\$FILE'."`" 'AsErrorLine'
+            cli_printMessage "`eval_gettext "There is no design template defined for \\\`\\\${FILE}'."`" 'AsErrorLine'
             cli_printMessage "$(caller)" "AsToKnowMoreLine"
         fi
     
@@ -240,7 +241,7 @@ function render_getIdentityDefs {
     # possible to match many release-specific translations to the same
     # design template. There is no need to duplicate the release
     # structure inside design template structure.
-    TEMPLATE=$(echo $TEMPLATE | sed -r "s!^${RELEASE_FORMAT}/!!")
+    TEMPLATE=$(echo $TEMPLATE | sed -r "s!^$(cli_getPathComponent '--release-pattern')/!!")
     
     # Remove any language from design template's path. Language
     # code directories are used under Translation structure only.
@@ -261,7 +262,7 @@ function render_getIdentityDefs {
     
          fi
     fi
-    
+
     # Redefine design template using absolute path.
     if [[ -f $SVG/$(basename $TEMPLATE) ]];then
         # Generally, template files are stored one level inside
@@ -277,7 +278,7 @@ function render_getIdentityDefs {
         TEMPLATE=$(find $SVG -regextype posix-egrep -regex \
             ".*/${TEMPLATE}" | sort | head -n 1)
     fi
-    
+
     # Check existence of TEMPLATE file. If design template doesn't
     # exist we cannot render it; in such case, stop working for it and
     # try the next one in the list.
@@ -302,18 +303,21 @@ function render_getIdentityDefs {
     # retrived from translations structure. Then we use the common
     # path as relative path to the image file.
     #
-    # The .png.sh file extension is removed from the common path.
-    # Instead we assign the appropriate file extension when defining
-    # file name.
+    # The `.sh' file extension is removed from the common path.
+    # Instead we use the previous extension, defined in the
+    # translation files, as file extension. For example, if the
+    # translation file is file.png.sh, the final file would be
+    # file.png. Likewise, if the translation file is file.txt.sh, the
+    # final file would be file.txt.
     #
     # When we render using renderImage function, the structure of
     # files under Img/ directory will be the same of that used after
     # the common point in its related Translations or Template
     # directory depending in which one was taken as reference when
     # LOCATION variable was defined. 
-    FILE=$(echo $FILE \
+    FILE=$(echo ${FILE} \
         | sed -r "s!.*${PARENTDIR}/!!" \
-        | sed -r 's!\.(png\.sh|svg|html|htm)$!!')
+        | sed -r "s/\.sh$//")
     
     # Re-define directory absolute path of final output directory. As
     # convenction, when we produce content in English language, we do
@@ -321,9 +325,9 @@ function render_getIdentityDefs {
     # we produce content in a language different from English we do
     # use language-specific directory to organize content.
     if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
-        DIRNAME=$IMG/$(dirname $FILE)
+        DIRNAME=$IMG/$(dirname ${FILE})
     else
-        DIRNAME=$IMG/$(dirname $FILE)/$(cli_getCurrentLocale)
+        DIRNAME=$IMG/$(dirname ${FILE})/$(cli_getCurrentLocale)
     fi
     
     # Check existence of output image directory.
@@ -332,7 +336,7 @@ function render_getIdentityDefs {
     fi
 
     # Define absolute path to file.
-    FILE=$(echo $DIRNAME/$(basename $FILE) | sed -r 's!/\./!/!')
+    FILE=$(echo $DIRNAME/$(basename ${FILE}) | sed -r 's!/\./!/!')
 
     # Define instance name.
     INSTANCE=$(cli_getTemporalFile $TEMPLATE)

@@ -33,36 +33,32 @@ function render_getFilesList {
     # Define source location to look files for. In order to define
     # source location we evaluate both matching list and translation
     # path information, and based on them, we set which is the source
-    # location and extension used as reference to build list of file
-    # names (without extension) to process for.
+    # location we use to build the list of file names (without
+    # extension) we want to process.
     if [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" == "" ]];then
 
         # Use design template as source location.
         LOCATION="$SVG"
-        EXTENSION='svg'
 
     elif [[ "${MATCHINGLIST}" == "" ]] \
         && [[ "${TRANSLATIONPATH}" == "" ]];then
           
         # Use design template as source location.
         LOCATION="$SVG"
-        EXTENSION='svg'
     
     elif [[ "${MATCHINGLIST}" == "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
         
         # Use translations as source location.
         LOCATION="${TRANSLATIONPATH}"
-        EXTENSION='png\.sh'
     
     elif [[ "${MATCHINGLIST}" != "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
     
         # Use translations as source location.
         LOCATION="${TRANSLATIONPATH}"
-        EXTENSION='png\.sh'
-    
+
     fi
 
     # Make regular expression (FLAG_FILTER) variable local (to avoid

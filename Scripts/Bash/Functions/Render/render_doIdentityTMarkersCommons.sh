@@ -31,6 +31,8 @@ function render_doIdentityTMarkersCommons {
     local -a SRC
     local -a DST
     local COUNT=0
+    local COUNTSRC=0
+    local COUNTDST=0
     local LOCATION=''
 
     # Define source location on which sed replacements take place. By
@@ -55,38 +57,73 @@ function render_doIdentityTMarkersCommons {
     SRC[0]='=COPYRIGHT='
     SRC[1]='=DESCRIPTION='
     SRC[2]='=LICENSE='
-    SRC[3]='=THEME='
-    SRC[4]='=THEMENAME='
-    SRC[5]='=THEMERELEASE='
-    SRC[6]='=RELEASE='
-    SRC[7]='=MAJOR_RELEASE='
-    SRC[8]='=MINOR_RELEASE='
-    SRC[9]='=URL='
-    SRC[10]='=URLLOCALE='
+    SRC[3]='=LICENSE_URL='
+    SRC[4]='=THEME='
+    SRC[5]='=THEMENAME='
+    SRC[6]='=THEMERELEASE='
+    SRC[7]='=RELEASE='
+    SRC[8]='=MAJOR_RELEASE='
+    SRC[9]='=MINOR_RELEASE='
+    SRC[10]='=URL='
     SRC[11]='=ARCH='
+    SRC[12]='=URL_WIKI='
+    SRC[13]='=URL_LISTS='
+    SRC[14]='=URL_FORUMS='
+    SRC[15]='=URL_MIRRORS='
+    SRC[16]='=URL_DOCS='
 
     # Define replacements for translation markers.
     DST[0]="$(cli_getCopyrightInfo '--copyright')"
     DST[1]="$(cli_getCopyrightInfo '--description')"
     DST[2]="$(cli_getCopyrightInfo '--license')"
-    DST[3]="$(cli_getPathComponent "$FILE" '--theme')"
-    DST[4]="$(cli_getPathComponent "$FILE" '--theme-name')"
-    DST[5]="$(cli_getPathComponent "$FILE" '--theme-release')"
-    DST[6]="$(cli_getPathComponent "$FILE" '--release')"
-    DST[7]="$(cli_getPathComponent "$FILE" '--release-major')"
-    DST[8]="$(cli_getPathComponent "$FILE" '--release-minor')"
-    DST[9]="http://www.centos.org"
-    # Define url locale information. We don't want to show locale
-    # information inside url for English language. English is the
-    # default locale and no locale level is used for it.  However, if
-    # we are rendering a language different from English, the locale
-    # information should be present in the url.
-    if [[ $(cli_getCurrentLocale) == 'en' ]];then
-        DST[10]=''
-    else
-        DST[10]="$(cli_getCurrentLocale)/"
-    fi
+    DST[3]="$(cli_getCopyrightInfo '--license-url')"
+    DST[4]="$(cli_getPathComponent "$FILE" '--theme')"
+    DST[5]="$(cli_getPathComponent "$FILE" '--theme-name')"
+    DST[6]="$(cli_getPathComponent "$FILE" '--theme-release')"
+    DST[7]="$(cli_getPathComponent "$FILE" '--release')"
+    DST[8]="$(cli_getPathComponent "$FILE" '--release-major')"
+    DST[9]="$(cli_getPathComponent "$FILE" '--release-minor')"
+    DST[10]="http://$(cli_getCurrentLocale).centos.org/"
     DST[11]="$(cli_getPathComponent "$FILE" '--architecture')"
+    DST[12]="=URL=wiki/"
+    DST[13]="=URL=lists/"
+    DST[14]="=URL=forums/"
+    DST[15]="=URL=mirrors/"
+    DST[16]="=URL=docs/"
+
+    # Do replacement of nested translation markers.
+    while [[ $COUNTDST -lt ${#DST[@]} ]];do
+
+        # Verify existence of translation markers. If there is no
+        # translation marker on replacement, continue with the next
+        # one in the list.
+        if [[ ! ${DST[$COUNTDST]} =~ '=[A-Z_]+=' ]];then
+            # Increment destination counter.
+            COUNTDST=$(($COUNTDST + 1))
+            # The current replacement value doesn't have translation
+            # marker inside, so skip it and evaluate the next
+            # replacement value in the list.
+            continue
+        fi
+
+        while [[ $COUNTSRC -lt ${#SRC[*]} ]];do
+
+            # Update replacements.
+            DST[$COUNTDST]=$(echo ${DST[$COUNTDST]} \
+                | sed -r "s!${SRC[$COUNTSRC]}!${DST[$COUNTSRC]}!g")
+
+            # Increment source counter.
+            COUNTSRC=$(($COUNTSRC + 1))
+
+        done
+
+        # Reset source counter
+        COUNTSRC=0
+
+        # Increment destination counter.
+        COUNTDST=$(($COUNTDST + 1))
+
+    done
 
     # Apply replacements for translation markers.
     while [[ ${COUNT} -lt ${#SRC[*]} ]];do

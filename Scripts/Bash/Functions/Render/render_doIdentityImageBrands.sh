@@ -41,14 +41,10 @@ function render_doIdentityImageBrands {
 
     # Create logo copy in 2 colors.
     cli_printMessage "${FILE}.xbm (`gettext "2 colors grayscale"`)" "AsSavedAsLine"
-    convert -colorspace gray -colors 2 \
-        ${FILE}.png \
-        ${FILE}.xbm
+    convert -colorspace gray -colors 2 ${FILE}.png ${FILE}.xbm
 
     # Create logo copy in emboss effect.
     cli_printMessage "${FILE}-emboss.png" "AsSavedAsLine"
-    convert -emboss 1 \
-        ${FILE}.png \
-        ${FILE}-emboss.png
+    convert -emboss 1 ${FILE} ${FILE}-emboss.png
 
 }

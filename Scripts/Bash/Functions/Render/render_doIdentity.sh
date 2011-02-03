@@ -29,12 +29,11 @@
 
 function render_doIdentity {
 
-    # Check parent directory. Identity rendition takes place under
-    # trunk/Identity directory structure only. Be sure action value
-    # referes an identity directory structure before perform identity
-    # rendition.
-    if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir $ACTIONVAL)/Identity/.+$" ]];then
-        cli_printMessage "`eval_gettext "Can't do identity rendition at \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
+    # Define rendition parent directories. This is, where we can run
+    # the `render' functionality to produce files from translation
+    # files and/or design models.
+    if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir $ACTIONVAL)/(Identity|Manuals)/.+$" ]];then
+        cli_printMessage "`eval_gettext "Can't render files under \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
@@ -97,7 +96,7 @@ function render_doIdentity {
         # the exact artwork path (that is, where images will be
         # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
-            -e 's!Scripts/Bash/Functions/Render/Config/Identity/!Identity/!' \
+            -e 's!Scripts/Bash/Functions/Render/Config/(Identity|Manuals)/!\1/!' \
             -e "s!Themes/!Themes/Motifs/$(cli_getPathComponent '--theme')/!"))
 
         # Redefine artwork identification.
@@ -107,9 +106,8 @@ function render_doIdentity {
         # reuse motif artwork identification. There is not need to
         # create one artwork identification for each motif directory
         # structure if we can reuse just one.
-        if [[ $ARTCOMP =~ "Themes/Motifs/$(cli_getPathComponent '--theme')/" ]];then
-            ARTCOMP=$(echo $ARTCOMP | sed -r "s!Themes/Motifs/$(cli_getPathComponent '--theme')/!Themes/!")
-        fi
+        ARTCOMP=$(echo $ARTCOMP \
+            | sed -r "s!Themes/Motifs/$(cli_getPathComponent '--theme')/!Themes/!")
 
         # Start rendition as defined in artwork-specific pre-rendition
         # configuration file.

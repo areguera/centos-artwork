@@ -36,6 +36,10 @@ function render_getIdentityBase {
     local EXTENSION=''
     local -a COMMONDIRS
 
+    # Define extension pattern of rendition-related files (e.g.,
+    # translation files and design models).
+    EXTENSION='(svg|txt|html|htm|png)(\.sh)?'
+
     # Redefine absolute path to artwork's related translation entry.
     render_getIdentityDirTranslation
 

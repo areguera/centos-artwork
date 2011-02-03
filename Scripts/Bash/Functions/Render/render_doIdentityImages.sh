@@ -37,7 +37,7 @@ function render_doIdentityImages {
 
     # Start processing the base rendition list of FILES. Fun part
     # approching :-).
-    for FILE in $FILES; do
+    for FILE in ${FILES}; do
 
         # Call shared variable re-definitions.
         render_getIdentityDefs
@@ -45,7 +45,7 @@ function render_doIdentityImages {
         # Check export id inside design templates.
         grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
         if [[ $? -gt 0 ]];then
-            cli_printMessage "`eval_gettext "Can't found the export id (\\\$EXPORTID) inside \\\$TEMPLATE."`" "AsErrorLine"
+            cli_printMessage "`eval_gettext "There is no export id (\\\$EXPORTID) inside \\\$TEMPLATE."`" "AsErrorLine"
             cli_printMessage '-' 'AsSeparatorLine'
             continue
         fi
@@ -53,7 +53,7 @@ function render_doIdentityImages {
         # Define final image width. If FILE name is a number, asume it
         # as the width value of the image being rendered. Otherwise
         # use design template default width value.
-        WIDTH=$(basename $FILE)
+        WIDTH=$(basename ${FILE})
         if [[ $WIDTH =~ '^[0-9]+$' ]];then
             WIDTH="--export-width=$WIDTH" 
         else
@@ -79,7 +79,7 @@ function render_doIdentityImages {
         # reduce the amount of characters used in description column
         # at final output.
         cli_printMessage "$(inkscape $INSTANCE \
-            --export-id=$EXPORTID $WIDTH --export-png=$FILE.png | sed -r \
+            --export-id=$EXPORTID $WIDTH --export-png=${FILE} | sed -r \
             -e "s!Area !`gettext "Area"`: !" \
             -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
             -e "s!Bitmap saved as:!`gettext "Saved as"`:!")" \
@@ -90,29 +90,33 @@ function render_doIdentityImages {
             rm $INSTANCE
         fi
 
+        # Stript extension from file. This is required in order to
+        # assign different extensions to the same name of file.
+        FILE=$(echo ${FILE} | sed -r "s/\.${EXTENSION}$//")
+
         # Execute post-rendition actions.
         for ACTION in "${POSTACTIONS[@]}"; do
 
             case "$ACTION" in
 
                 renderSyslinux* )
-                    render_doIdentityImageSyslinux "$FILE" "$ACTION"
+                    render_doIdentityImageSyslinux "${FILE}" "$ACTION"
                     ;;
 
                 renderGrub* )
-                    render_doIdentityImageGrub "$FILE" "$ACTION"
+                    render_doIdentityImageGrub "${FILE}" "$ACTION"
                     ;;
 
                 renderFormats:* )
-                    render_doIdentityImageFormats "$FILE" "$ACTION"
+                    render_doIdentityImageFormats "${FILE}" "$ACTION"
                     ;;
 
                 renderBrands:* )
-                    render_doIdentityImageBrands "$FILE" "$ACTION"
+                    render_doIdentityImageBrands "${FILE}" "$ACTION"
                     ;;
 
                 groupByType:* )
-                    render_doIdentityGroupByType "$FILE" "$ACTION"
+                    render_doIdentityGroupByType "${FILE}" "$ACTION"
                     ;;
 
             esac

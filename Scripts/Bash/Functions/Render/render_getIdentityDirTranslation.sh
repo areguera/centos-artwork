@@ -30,7 +30,8 @@ function render_getIdentityDirTranslation {
 
     TRANSLATIONPATH=${FUNCDIR}/${FUNCDIRNAM}/Config/$ARTCOMP
 
-    if [[ "$(find $TRANSLATIONPATH -name '*.png.sh')" == '' ]];then
+    if [[ "$(find $TRANSLATIONPATH -regextype posix-egrep \
+        -regex ".+\.${EXTENSION}$")" == '' ]];then
         TRANSLATIONPATH=''
     fi
 
