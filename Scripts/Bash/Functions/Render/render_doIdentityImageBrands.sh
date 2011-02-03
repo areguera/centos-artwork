@@ -45,6 +45,6 @@ function render_doIdentityImageBrands {
 
     # Create logo copy in emboss effect.
     cli_printMessage "${FILE}-emboss.png" "AsSavedAsLine"
-    convert -emboss 1 ${FILE} ${FILE}-emboss.png
+    convert -emboss 1 ${FILE}.png ${FILE}-emboss.png
 
 }
