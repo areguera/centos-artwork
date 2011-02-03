@@ -79,7 +79,7 @@ function render_doIdentityImages {
         # reduce the amount of characters used in description column
         # at final output.
         cli_printMessage "$(inkscape $INSTANCE \
-            --export-id=$EXPORTID $WIDTH --export-png=${FILE} | sed -r \
+            --export-id=$EXPORTID $WIDTH --export-png=${FILE}.png | sed -r \
             -e "s!Area !`gettext "Area"`: !" \
             -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
             -e "s!Bitmap saved as:!`gettext "Saved as"`:!")" \
@@ -89,10 +89,6 @@ function render_doIdentityImages {
         if [[ -a $INSTANCE ]];then
             rm $INSTANCE
         fi
-
-        # Stript extension from file. This is required in order to
-        # assign different extensions to the same name of file.
-        FILE=$(echo ${FILE} | sed -r "s/\.${EXTENSION}$//")
 
         # Execute post-rendition actions.
         for ACTION in "${POSTACTIONS[@]}"; do
