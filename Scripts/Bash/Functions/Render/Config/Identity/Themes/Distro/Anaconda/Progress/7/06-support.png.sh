@@ -38,17 +38,25 @@ function render_loadConfig {
     # Define replacements for translation markers.
     DST[0]="`gettext "Help with CentOS"`"
 
-    DST[1]="`gettext "You can get help with CentOS in several ways, including:"`"
+    DST[1]="`gettext "You can get help with CentOS in several ways,
+    including:"`"
 
-    DST[2]="`gettext "<flowSpan style=\\\"font-weight:bold\\\">Internet Relay Chat (IRC)</flowSpan> - #centos, #centos-social and
-    #centos-devel on irc.freenode.net."`"
+    DST[2]="`gettext "<flowSpan
+    style=\\\"font-weight:bold\\\">Internet Relay Chat
+    (IRC)</flowSpan> - #centos, #centos-social and #centos-devel on
+    irc.freenode.net."`"
 
-    DST[3]="`gettext "<flowSpan style=\\\"font-weight:bold\\\">Mailing Lists</flowSpan> - CentOS, CentOS-Devel, CentOS-Annouces and non-English localized language lists from http://centos.org/."`"
+    DST[3]="`gettext "<flowSpan style=\\\"font-weight:bold\\\">Mailing
+    Lists</flowSpan> - CentOS, CentOS-Devel, CentOS-Annouces and
+    non-English localized language lists from =URL_LISTS=."`"
 
     DST[4]="`gettext "<flowSpan
-    style=\\\"font-weight:bold\\\">Forums</flowSpan> - Available at http://centos.org/forums/."`"
+    style=\\\"font-weight:bold\\\">Forums</flowSpan> - Available at
+    =URL_FORUMS=."`"
     
-    DST[5]="`gettext "<flowSpan style=\\\"font-weight:bold\\\">Wiki</flowSpan> - Available at http://centos.org/wiki/."`"
+    DST[5]="`gettext "<flowSpan
+    style=\\\"font-weight:bold\\\">Wiki</flowSpan> - Available at
+    =URL_WIKI=."`"
 
     DST[6]=''
 
