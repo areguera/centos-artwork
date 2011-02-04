@@ -75,11 +75,19 @@ function cli_checkPathComponent {
             fi
             ;;
 
-        '--default' | * )
+        '--default-filesystem' | * )
             if [[ $LOCATION == '' ]] \
                 || [[ $LOCATION =~ '(\.\.(/)?)' ]] \
-                || [[ ! $LOCATION =~ '^[A-Za-z0-9\.:/_-]+$' ]];then
-                    MESSAGE="`eval_gettext "The value \\\`\\\$LOCATION' is not valid."`"
+                || [[ ! $LOCATION =~ '^[A-Za-z0-9\.:/_-]+$' ]]; then 
+                MESSAGE="`eval_gettext "The value \\\`\\\$LOCATION' is not valid."`"
+            fi
+            ;;
+
+        '--default-repo-filesystem' )
+            cli_checkPathComponent "$LOCATION" '--default-filesystem'
+            if [[ ! "$(dirname $LOCATION)" =~ "^$(cli_getRepoName $LOCATION 'd')$" ]] \
+                || [[ ! "$(basename $LOCATION)" =~ "^$(cli_getRepoName $LOCATION 'f')$" ]];then
+                MESSAGE="`eval_gettext "The value \\\`\\\$LOCATION' is not valid."`"
             fi
             ;;
 
