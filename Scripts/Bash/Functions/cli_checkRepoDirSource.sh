@@ -27,7 +27,7 @@
 function cli_checkRepoDirSource {
                 
     # Check source value before making an absolute path from it.
-    cli_checkPathComponent "$ACTIONVAL" '--default'
+    cli_checkPathComponent "$ACTIONVAL" '--default-repo-filesystem'
 
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing
@@ -69,12 +69,12 @@ function cli_checkRepoDirSource {
     elif [[ -f ${ACTIONVAL} ]];then
 
         # Add directory to the top of the directory stack.
-        pushd "$(dirname $ACTIONVAL)" > /dev/null
+        pushd "$(dirname "$ACTIONVAL")" > /dev/null
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
             # Re-define source value using absolute path.
-            ACTIONVAL=$(pwd)/$(basename $ACTIONVAL)
+            ACTIONVAL=$(pwd)/$(basename "$ACTIONVAL")
         else
             cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
