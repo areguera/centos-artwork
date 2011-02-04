@@ -27,7 +27,7 @@
 function cli_checkRepoDirTarget {
 
     # Check target value before making an absolute path from it. 
-    cli_checkPathComponent "$FLAG_TO" '--default'
+    cli_checkPathComponent "$FLAG_TO" '--default-repo-filesystem'
 
     # Redefine target value to build repository absolute path from
     # repository top level on. As we are removing
@@ -59,12 +59,12 @@ function cli_checkRepoDirTarget {
         # for it.
 
         # Add directory to the top of the directory stack.
-        pushd "$(dirname $FLAG_TO)" > /dev/null
+        pushd "$(dirname "$FLAG_TO")" > /dev/null
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
             # Re-define target value using absolute path.
-            FLAG_TO=$(pwd)/$(basename $FLAG_TO)
+            FLAG_TO=$(pwd)/$(basename "$FLAG_TO")
         fi
 
         # Remove directory from the directory stack.
