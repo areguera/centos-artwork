@@ -27,7 +27,7 @@
 function cli_checkRepoDirSource {
                 
     # Check source value before making an absolute path from it.
-    cli_checkPathComponent "$ACTIONVAL" '--default-repo-filesystem'
+    cli_checkPathComponent "$ACTIONVAL" '--repo-directory'
 
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing
