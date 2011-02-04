@@ -171,7 +171,7 @@ function manual_getActions {
     ENTRYCHAPTER=$(echo $ENTRY | cut -d / -f-10)
 
     # Define chapter name for this documentation entry.
-    CHAPTERNAME=$(basename $ENTRYCHAPTER)
+    CHAPTERNAME=$(basename "$ENTRYCHAPTER")
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
