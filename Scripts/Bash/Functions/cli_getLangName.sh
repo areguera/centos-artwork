@@ -26,7 +26,7 @@
 
 function cli_getLangName {
 
-   local LANGCODE="$(echo $1 | cut -d_ -f1)"
+   local LANGCODE="$(echo "$1" | cut -d_ -f1 | tr '[:upper:]' '[:lower:]')"
    local LANGNAME=''
 
    case $LANGCODE in
