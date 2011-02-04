@@ -218,7 +218,7 @@ function cli_printMessage {
             # as message value, in order to produce the documentation
             # entry automatically. The `--quiet' flag doesn't suppress
             # `as to know more' messages.
-            MESSAGE=$(dirname $(echo $MESSAGE | cut -d ' ' -f2-))
+            MESSAGE=$(cli_getRepoName "$(echo $MESSAGE | cut -d ' ' -f2-)" 'd')
             echo "----------------------------------------------------------------------"
             echo "`gettext "To know more, run the following command"`:"
             echo "centos-art manual --read='$MESSAGE'"
