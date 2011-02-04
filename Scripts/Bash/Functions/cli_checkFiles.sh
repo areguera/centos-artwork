@@ -50,7 +50,7 @@ function cli_checkFiles {
 
     # Check value passed as file to cli_checkFiles function. The file
     # value cannot be empty nor have extrange values.
-    cli_checkPathComponent "$FILE" '--default'
+    cli_checkPathComponent "$FILE" '--default-filesystem'
 
     # Perform file verification using FILE and TYPE variables.
     case $TYPE in
