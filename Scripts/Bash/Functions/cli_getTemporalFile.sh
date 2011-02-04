@@ -42,7 +42,7 @@ function cli_getTemporalFile {
         cli_printMessage "cli_getTemporalFile: `gettext "First argument cannot be empty."`"
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     else
-        NAME="-$(basename $1)" 
+        NAME="-$(cli_getRepoName "$1" 'f')" 
     fi
 
     # Define default source location where temporal files will be stored.
