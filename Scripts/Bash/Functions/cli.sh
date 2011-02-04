@@ -69,7 +69,7 @@ function cli {
     if [[ "$FUNCNAM" =~ '^[a-z]+$' ]];then
 
         # Define function directory. 
-        FUNCDIRNAM=$(cli_getRepoName $FUNCNAM 'd')
+        FUNCDIRNAM=$(cli_getRepoName "$FUNCNAM" 'd')
 
         # Define function file name.
         FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}.sh
