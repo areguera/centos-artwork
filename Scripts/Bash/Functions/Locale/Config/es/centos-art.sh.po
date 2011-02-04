@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2011-02-02 20:55-0500\n"
-"PO-Revision-Date: 2011-02-02 20:55-0500\n"
+"POT-Creation-Date: 2011-02-04 14:49-0500\n"
+"PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -1136,14 +1136,14 @@ msgstr "No hay"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:232
 #, sh-format
-msgid "There is no design template defined for `$FILE'."
-msgstr "No hay plantilla de diseño definida para $FILE."
+msgid "There is no design template defined for `${FILE}'."
+msgstr "No hay plantilla de diseño definida para ${FILE}."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageDm.sh:79
 msgid "There is no resolution information to process."
 msgstr "No hay información de resolución a procesar."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageBrands.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageBrands.sh:63
 msgid "2 colors grayscale"
 msgstr "2 colores escala de grices."
 
@@ -1157,12 +1157,12 @@ msgstr ""
 msgid "The $OPTION option is already used."
 msgstr "La opción $OPTION ya se encuentra en uso."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:37
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:36
 #, sh-format
-msgid "Can't do identity rendition at `$ACTIONVAL'."
-msgstr ""
+msgid "Can't render files under `$ACTIONVAL'."
+msgstr "No se puede generar traducción bajo `$ACTIONVAL'."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:62
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:61
 msgid "The path provided can't be processed."
 msgstr "El camino suministrado no puede ser procesado."
 
@@ -1184,10 +1184,9 @@ msgstr "El campo suministrado no es válido."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:48
 #, sh-format
-msgid "Can't found the export id ($EXPORTID) inside $TEMPLATE."
+msgid "There is no export id ($EXPORTID) inside $TEMPLATE."
 msgstr ""
-"El identificador de exrtación ($EXPORTID) no fué encontrado dentro de "
-"$TEMPLATE."
+"El identificador de exrtación ($EXPORTID) no existe en $TEMPLATE."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:83
 msgid "Area"
@@ -3225,9 +3224,6 @@ msgstr "El camino \"$FILE\" no existe dentro de la copia de trabajo."
 
 #~ msgid "The $TRANSLATION hasn't execution rights."
 #~ msgstr "El fichero `$TRANSLATION' no tiene derechos de ejecución."
-
-#~ msgid "Can't do translation rendition at `$ACTIONVAL'."
-#~ msgstr "No se puede generar traducción en `$ACTIONVAL'."
 
 #~ msgid "Can't find translation templates in the directory provided."
 #~ msgstr ""

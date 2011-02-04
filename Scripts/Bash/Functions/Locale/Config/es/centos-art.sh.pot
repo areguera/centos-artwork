@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 20:55-0500\n"
+"POT-Creation-Date: 2011-02-04 14:49-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1135,14 +1135,14 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getIdentityDefs.sh:232
 #, sh-format
-msgid "There is no design template defined for `$FILE'."
+msgid "There is no design template defined for `${FILE}'."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageDm.sh:79
 msgid "There is no resolution information to process."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageBrands.sh:43
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImageBrands.sh:63
 msgid "2 colors grayscale"
 msgstr ""
 
@@ -1156,12 +1156,12 @@ msgstr ""
 msgid "The $OPTION option is already used."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:37
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:36
 #, sh-format
-msgid "Can't do identity rendition at `$ACTIONVAL'."
+msgid "Can't render files under `$ACTIONVAL'."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:62
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:61
 msgid "The path provided can't be processed."
 msgstr ""
 
@@ -1183,7 +1183,7 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:48
 #, sh-format
-msgid "Can't found the export id ($EXPORTID) inside $TEMPLATE."
+msgid "There is no export id ($EXPORTID) inside $TEMPLATE."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentityImages.sh:83
