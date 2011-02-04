@@ -72,9 +72,9 @@ function manual_createLanguageLayout {
         > ${MANUALS_DIR[2]}/repository.texi
 
     # Copy menu and nodes from template to texinfo document structure.
-    cp ${MANUALS_DIR[6]}/$(basename ${MANUALS_FILE[2]}) ${MANUALS_DIR[2]}/
-    cp ${MANUALS_DIR[6]}/$(basename ${MANUALS_FILE[3]}) ${MANUALS_DIR[2]}/
-    cp ${MANUALS_DIR[6]}/$(basename ${MANUALS_FILE[11]}) ${MANUALS_DIR[2]}/
+    cp ${MANUALS_DIR[6]}/$(basename "${MANUALS_FILE[2]}") ${MANUALS_DIR[2]}/
+    cp ${MANUALS_DIR[6]}/$(basename "${MANUALS_FILE[3]}") ${MANUALS_DIR[2]}/
+    cp ${MANUALS_DIR[6]}/$(basename "${MANUALS_FILE[11]}") ${MANUALS_DIR[2]}/
 
     # Translate English words. As we are creating texinfo
     # documentation from an English template, it is needed to
