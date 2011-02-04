@@ -34,14 +34,14 @@ function manual_updateNodes {
     # Re-build node structure based on menu information.
     for NODE in $NODES;do
 
-        NODE=$(echo $NODE | sed -r 's!:! !g')
-        SECT=$(echo $NODE | sed -r 's! !/!g')
-        INCL=$(echo $NODE | sed -r 's! !/!g').texi
-        CIND=$(echo $NODE)
+        NODE=$(echo "$NODE" | sed -r 's!:! !g')
+        SECT=$(echo "$NODE" | sed -r 's! !/!g')
+        INCL=$(echo "$NODE" | sed -r 's! !/!g').texi
+        CIND=$(echo "$NODE")
 
         # Create an emtpy directory to store texinfo files.
-        if [[ ! -d ${MANUALS_DIR[2]}/$(dirname $INCL) ]];then
-             mkdir -p ${MANUALS_DIR[2]}/$(dirname $INCL)
+        if [[ ! -d ${MANUALS_DIR[2]}/$(dirname "$INCL") ]];then
+             mkdir -p ${MANUALS_DIR[2]}/$(dirname "$INCL")
         fi
 
         # Create texinfo section file using its template.
