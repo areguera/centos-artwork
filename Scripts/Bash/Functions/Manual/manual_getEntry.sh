@@ -43,20 +43,31 @@ function manual_getEntry {
         LOCATION="$ACTIONVAL"
     fi
 
-    # Build directory for documenation entry.
+    # Build directory to store documenation entry.
     DIR=$(echo $LOCATION | sed -r 's!^/home/centos/artwork/!!')
-    DIR=$(dirname $DIR)
+    DIR=$(dirname "$DIR")
     DIR=${MANUALS_DIR[2]}/$DIR
 
-    # Build file for documentation entry.
-    FILE=$(basename $LOCATION).texi
+    # Build file for documentation entry. Notice that directory
+    # structure convenction is not used here through cli_getRepoName.
+    # This is because documentation structures mirror other directory
+    # structures inside the repository. So, if we are documenting
+    # trunk/Identity/Brands/ directory we don't want to have the
+    # trunk/Identity/brands.texi documentation entry, but
+    # trunk/Identity/Brands.texi in order to reflect the fact that we
+    # are documenting a directory structure. Something similar occurs
+    # with files, but using repository file convenction instead. This
+    # way we just use basename to find out the last component in the
+    # path without sanitation. We assume it has been already
+    # sanitated.
+    FILE=$(basename "$LOCATION").texi
 
     # Combine both directory (DIR) and file (FILE) to build entry's
     # absolute path. When the entry's absolute path is built for the
-    # current location, the string "." is returned by dirname and used
-    # as current directory to store the .texi file.  This is not
-    # desirable because we are using absolute path already and the "."
-    # string adds another level in the path (e.g.,
+    # current location, the string "." is returned by cli_getRepoName
+    # and used as current directory to store the .texi file.  This is
+    # not desirable because we are using absolute path already and the
+    # "." string adds another level in the path (e.g.,
     # /home/centos/artwork/trunk/Manuals/Texinfo/en/./trunk/chapter.texi).
     # This extra level in the path confuses the script when it tries
     # to find out where the chapter's directory is. In the example
