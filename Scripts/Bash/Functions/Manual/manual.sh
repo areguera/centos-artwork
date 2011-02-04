@@ -34,14 +34,17 @@ function manual {
     # Define documentation base directory structure.
     MANUALS_DIR[0]='/home/centos/artwork/trunk/Manuals'
     MANUALS_DIR[1]=${MANUALS_DIR[0]}/Repository/$(cli_getCurrentLocale)
-    MANUALS_DIR[2]=${MANUALS_DIR[1]}/Texinfo/
-    MANUALS_DIR[3]=${MANUALS_DIR[1]}/Info/
-    MANUALS_DIR[4]=${MANUALS_DIR[1]}/Html/
-    MANUALS_DIR[5]=${MANUALS_DIR[1]}/Plaintext/
-    MANUALS_DIR[7]=${MANUALS_DIR[1]}/Pdf/
+    MANUALS_DIR[2]=${MANUALS_DIR[1]}/Texinfo
+    MANUALS_DIR[3]=${MANUALS_DIR[1]}/Info
+    MANUALS_DIR[4]=${MANUALS_DIR[1]}/Html
+    MANUALS_DIR[5]=${MANUALS_DIR[1]}/Plaintext
+    MANUALS_DIR[7]=${MANUALS_DIR[1]}/Pdf
     
-    # Define template directory for texinfo files.
-    MANUALS_DIR[6]=${MANUALS_DIR[1]}/Texinfo/Tpl
+    # Define storing directory of Texinfo template files. Texinfo
+    # template files are set inside English directory structure and
+    # reused by other languages by means of translation markers and
+    # gettext translation messages.
+    MANUALS_DIR[6]=${MANUALS_DIR[0]}/Repository/en/Texinfo/Tpl
     
     # Define location for texinfo files.
     MANUALS_FILE[1]=${MANUALS_DIR[2]}/repository.texi
