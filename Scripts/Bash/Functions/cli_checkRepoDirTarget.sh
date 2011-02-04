@@ -27,7 +27,7 @@
 function cli_checkRepoDirTarget {
 
     # Check target value before making an absolute path from it. 
-    cli_checkPathComponent "$FLAG_TO" '--default-repo-filesystem'
+    cli_checkPathComponent "$FLAG_TO" '--repo-directory'
 
     # Redefine target value to build repository absolute path from
     # repository top level on. As we are removing
