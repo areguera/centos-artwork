@@ -43,7 +43,7 @@ function manual_deleteEntry {
     # applies when you try to remove the whole chapter from the
     # working copy (e.g., centos-art manual --delete=/home/centos/artwork/trunk/).
     if [[ $ENTRY =~ "${MANUALS_FILE[7]}$" ]];then
-        LOCATION=$(dirname $ENTRY)
+        LOCATION=$(dirname "$ENTRY")
     fi
 
     # Look for dependent entries. In this context, dependent entries
@@ -54,7 +54,7 @@ function manual_deleteEntry {
     # because there is no dependent entries.
     if [[ -d $LOCATION ]];then
         for ENTRY in $(find $LOCATION -name '*.texi');do
-            ENTRIES="$ENTRIES $ENTRY $(dirname $ENTRY)"
+            ENTRIES="$ENTRIES $ENTRY $(dirname "$ENTRY")"
         done
     fi
 
