@@ -52,7 +52,7 @@ for FILE in $TRG/redhat*;do
    PROP=`identify $FILE`
 
    # Define image name.
-   NAME=`basename $FILE`
+   NAME=$(basename $FILE)
 
    # Define image width.
    WIDTH=`echo $PROP | cut -d' ' -f3 | cut -dx -f1`
