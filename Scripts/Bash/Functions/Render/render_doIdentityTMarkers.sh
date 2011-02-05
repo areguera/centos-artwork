@@ -31,7 +31,7 @@
 function render_doIdentityTMarkers {
 
     # Apply specific replacements for specific translation markers.
-    if [[ -f $TRANSLATION ]];then
+    if [[ $TRANSLATIONPATH != '' ]] && [[ -f $TRANSLATION ]];then
         render_doIdentityTMarkersSpecifics
     fi
 
