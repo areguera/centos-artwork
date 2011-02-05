@@ -75,7 +75,7 @@ function render_getFilesList {
     # information is required in order for centos-art.sh to know when
     # to apply last-rendition actions.
     for COMMONDIR in $(dirname "$FILES" | sort | uniq);do
-        COMMONDIRS[$COMMONDIRCOUNT]=$(dirname $COMMONDIR)
+        COMMONDIRS[$COMMONDIRCOUNT]=$(dirname "$COMMONDIR")
         COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
     done
 
