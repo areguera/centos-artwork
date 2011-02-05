@@ -36,10 +36,10 @@ function path_doCopy {
     # duplicate an entry if its parent directory doesn't exist as
     # entry inside the working copy.
     if [[ -f ${ACTIONVAL} ]];then
-        if [[ ! -d $(dirname ${FLAG_TO}) ]];then
-           mkdir -p $(dirname ${FLAG_TO})
+        if [[ ! -d $(dirname "${FLAG_TO}") ]];then
+           mkdir -p $(dirname "${FLAG_TO}")
         fi
-        svn add $(dirname ${FLAG_TO}) --quiet
+        svn add $(dirname "${FLAG_TO}") --quiet
     fi
 
     # Print action message.
