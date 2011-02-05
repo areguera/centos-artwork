@@ -128,7 +128,7 @@ function render_loadConfig {
             FILE=$(echo $FILE | sed -r 's!^.+/Tpl/!!')
 
             # Check output directory existence.
-            DIRNAME=$(dirname $ACTIONVAL/$BOND/$FILE)
+            DIRNAME=$(dirname "$ACTIONVAL/$BOND/$FILE")
             if [ ! -d $DIRNAME ]; then
                mkdir -p $DIRNAME
             fi
