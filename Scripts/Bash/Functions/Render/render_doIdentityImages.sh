@@ -53,7 +53,7 @@ function render_doIdentityImages {
         # Define final image width. If FILE name is a number, asume it
         # as the width value of the image being rendered. Otherwise
         # use design template default width value.
-        WIDTH=$(basename ${FILE})
+        WIDTH=$(basename "${FILE}")
         if [[ $WIDTH =~ '^[0-9]+$' ]];then
             WIDTH="--export-width=$WIDTH" 
         else
@@ -107,10 +107,6 @@ function render_doIdentityImages {
                     render_doIdentityImageFormats "${FILE}" "$ACTION"
                     ;;
 
-                renderBrands:* )
-                    render_doIdentityImageBrands "${FILE}" "$ACTION"
-                    ;;
-
                 groupByType:* )
                     render_doIdentityGroupByType "${FILE}" "$ACTION"
                     ;;
@@ -138,7 +134,7 @@ function render_doIdentityImages {
         # directory structure and it is time for last-rendition
         # actions to be evaluated before go producing the next
         # directory structure in the list of files to process.
-        if [[ ${COMMONDIRS[$((COMMONDIRCOUNT + 1))]} != $(dirname $TRANSLATION) ]];then
+        if [[ ${COMMONDIRS[$((COMMONDIRCOUNT + 1))]} != $(dirname "$TRANSLATION") ]];then
             # At this point centos-art.sh is producing the last file
             # from the same unique directory structure, so, before
             # producing images for the next directory structure lets
@@ -159,6 +155,10 @@ function render_doIdentityImages {
                     groupByType:* )
                         render_doIdentityGroupByType "$ACTION"
                         ;;
+
+                renderBrands )
+                    render_doIdentityImageBrands "${FILE}" "$ACTION"
+                    ;;
 
                 esac
             done
