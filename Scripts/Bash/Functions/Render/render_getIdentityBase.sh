@@ -53,7 +53,7 @@ function render_getIdentityBase {
     render_getIdentityDirOutput
 
     # Redefine parent directory for current workplace.
-    PARENTDIR=$(basename $ACTIONVAL)
+    PARENTDIR=$(basename "$ACTIONVAL")
 
     # Redefine directory path used as reference to build the list of
     # files that will be rendered.
