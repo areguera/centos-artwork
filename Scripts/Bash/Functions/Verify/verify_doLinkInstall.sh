@@ -38,7 +38,7 @@ function verify_doLinkInstall {
         # links are not created yet, we use their related targets as
         # reference to determine what type of link we are creating.
         if [[ -f ${TARGETS[$ID]} ]];then
-            LINKS_PARENT=$(dirname ${LINKS[$ID]})
+            LINKS_PARENT=$(dirname "${LINKS[$ID]}")
             cli_checkFiles $LINKS_PARENT 'd'
         fi
 
