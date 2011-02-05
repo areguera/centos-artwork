@@ -66,27 +66,20 @@ function cli {
     # argument.  As convenction we use the first argument to determine
     # the exact name of functionality to call.
     FUNCNAM=$(cli_getRepoName "$1" 'f')
-    if [[ "$FUNCNAM" =~ '^[a-z]+$' ]];then
 
-        # Define function directory. 
-        FUNCDIRNAM=$(cli_getRepoName "$FUNCNAM" 'd')
+    # Define function directory. 
+    FUNCDIRNAM=$(cli_getRepoName "$FUNCNAM" 'd')
 
-        # Define function file name.
-        FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}.sh
+    # Define function file name.
+    FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}.sh
 
-        # Define function configuration directory. The function
-        # configuration directory is used to store functionality's
-        # related files.
-        FUNCCONFIG=${FUNCDIR}/${FUNCDIRNAM}/Config
+    # Check function script existence.
+    cli_checkFiles $FUNCSCRIPT 'f'
 
-        # Check function script existence.
-        cli_checkFiles $FUNCSCRIPT 'f'
-
-    else
-        # Print an error message and stop script execution.
-        cli_printMessage "`eval_gettext "The function \\\`\\\$FUNCNAM' is not valid."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Define function configuration directory. The function
+    # configuration directory is used to store functionality's
+    # related files.
+    FUNCCONFIG=${FUNCDIR}/${FUNCDIRNAM}/Config
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
