@@ -154,14 +154,14 @@ function svg_updateMetadata {
         cli_printMessage $FILE 'AsUpdatingLine'
 
         # Build title from file path.
-        NAM=$(basename $FILE)
+        NAM=$(basename "$FILE")
 
         # Build url from file path.
         URL=$(echo $FILE | sed 's!/home/centos!https://projects.centos.org/svn!')
 
         # Build keywords from file path. Do not include filename, it
         # is already on title.
-        KEYS=$(dirname $FILE | cut -d/ -f6- | tr '/' '\n')
+        KEYS=$(dirname "$FILE" | cut -d/ -f6- | tr '/' '\n')
 
         # Build keywords using SVG standard format. Note that this
         # information is inserted inside template file. The
