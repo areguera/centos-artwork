@@ -77,7 +77,7 @@ function render_getIdentityDefs {
         # design template. Template absolute path points to a
         # design template (see LOCATION's definition).
         TEMPLATE=${FILE}
-        
+
     elif [[ "${MATCHINGLIST}" == "" ]] \
         && [[ "${TRANSLATIONPATH}" != "" ]];then
     
@@ -154,7 +154,7 @@ function render_getIdentityDefs {
         if [[ ! -f "$SVG/${BOND}.svg" ]];then
             until [[ -f "$SVG/${BOND}.svg" ]] ;do
                 [[ $BOND =~ '^(\.|/)$' ]] && break
-                BOND=$(dirname $BOND)
+                BOND=$(dirname "$BOND")
             done
         fi
 
@@ -172,7 +172,7 @@ function render_getIdentityDefs {
         #     translation2.png.sh
         #
         if [[ ! -f "$SVG/${BOND}.svg" ]];then
-            BOND=$(basename $TRANSLATION)
+            BOND=$(basename "$TRANSLATION")
         fi
   
         # Possible configuration 2.1: If not design template was found
@@ -187,7 +187,7 @@ function render_getIdentityDefs {
         #
         if [[ ! -f "$SVG/${BOND}.svg" ]] \
             && [[ ! -f $SVG/{$BOND} ]];then
-            BOND=$(basename $TRANSLATION)
+            BOND=$(basename "$TRANSLATION")
         fi
         
         # Define design template applying bond filtering.
@@ -242,7 +242,7 @@ function render_getIdentityDefs {
     # design template. There is no need to duplicate the release
     # structure inside design template structure.
     TEMPLATE=$(echo $TEMPLATE | sed -r "s!^$(cli_getPathComponent '--release-pattern')/!!")
-    
+ 
     # Remove any language from design template's path. Language
     # code directories are used under Translation structure only.
     # Removing language code directories from design template path
@@ -264,10 +264,10 @@ function render_getIdentityDefs {
     fi
 
     # Redefine design template using absolute path.
-    if [[ -f $SVG/$(basename $TEMPLATE) ]];then
+    if [[ -f $SVG/$(basename "$TEMPLATE") ]];then
         # Generally, template files are stored one level inside
         # Tpl/ directory.
-        TEMPLATE=$SVG/$(basename $TEMPLATE)
+        TEMPLATE=$SVG/$(basename "$TEMPLATE")
     else
         # Others, template designs may be stored some levels inside
         # the template structure. At this point, we look deeper inside
@@ -321,18 +321,22 @@ function render_getIdentityDefs {
     # we produce content in a language different from English we do
     # use language-specific directory to organize content.
     if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
-        DIRNAME=$IMG/$(dirname ${FILE})
+        DIRNAME=$IMG/$(dirname "${FILE}")
     else
-        DIRNAME=$IMG/$(dirname ${FILE})/$(cli_getCurrentLocale)
+        DIRNAME=$IMG/$(dirname "${FILE}")/$(cli_getCurrentLocale)
     fi
-    
+
+    # Remove leading `/.' string from directory path. This is required
+    # in order to define the final file absolute path.
+    DIRNAME=$(echo $DIRNAME | sed -r 's!/\.!!')
+
     # Check existence of output image directory.
     if [[ ! -d $DIRNAME ]];then
         mkdir -p $DIRNAME
     fi
 
     # Define absolute path to file.
-    FILE=$(echo $DIRNAME/$(basename ${FILE}) | sed -r 's!/\./!/!')
+    FILE=$(echo $DIRNAME/$(basename "${FILE}"))
 
     # Define instance name.
     INSTANCE=$(cli_getTemporalFile $TEMPLATE)
@@ -346,8 +350,6 @@ function render_getIdentityDefs {
     cat $TEMPLATE > $INSTANCE
 
     # Replace translation markers with appropriate information.
-    if [[ $TRANSLATIONPATH != '' ]];then
-        render_doIdentityTMarkers
-    fi
+    render_doIdentityTMarkers
 
 }
