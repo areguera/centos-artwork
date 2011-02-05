@@ -31,6 +31,6 @@ function render_loadConfig {
 
     # Define rendition actions.
     ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderBrands: tif xpm pdf ppm'
+    ACTIONS[1]='LAST:renderBrands'
 
 }
