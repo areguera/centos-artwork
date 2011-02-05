@@ -93,11 +93,13 @@ function cli_getRepoName {
 
             for DIR in $DIRS;do
 
-                # Sanitate path component.
-                DIR=$(echo ${DIR} \
-                    | tr -s ' ' '_' \
-                    | tr '[:upper:]' '[:lower:]' \
-                    | sed -r 's/^([[:alpha:]])/\u\1/')
+                # Sanitate directory component.
+                if [[ ! $DIR =~ '^[A-Z]{1}' ]];then
+                    DIR=$(echo ${DIR} \
+                        | tr -s ' ' '_' \
+                        | tr '[:upper:]' '[:lower:]' \
+                        | sed -r 's/^([[:alpha:]])/\u\1/')
+                fi
 
                 # Rebuild path using sanitated values.
                 CLEANDIRS="${CLEANDIRS}/$DIR"
