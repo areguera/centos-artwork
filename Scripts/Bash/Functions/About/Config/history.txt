@@ -1,104 +1,138 @@
--- 2008 --
+$Id$
+This file records noteworthy changes of CentOS Artwork Repository.
 
-The CentOS Artwork Repository started at CentOS Developers mailing list.
+  Copyright (C) 2003-2011 The CentOS Project.
 
-Alain Reguera Delgado shares ideas in a thread about Anaconda progress
-slide images and the possibility of automating their construction.
+  Copying and distribution of this file, with or without modification, are
+  permitted in any medium without royalty provided the copyright notice and
+  this notice are preserved.
 
-Ralph Angenendt rises up his hand asking: Do you have something to
-show?
+-------------------------------------------------------------------------------
 
-Alain Reguera Delgado posts a Bash script to produce slide images in
-different languages ---together with the proposition of creating a
-Subversion centralized repository where translations and image
-production could be distributed inside CentOS Community---.
+(2011)
 
-Karanbirn Sighn considers the idea intresting and provides the
-infrastructure to support the effort as the CentOS Artwork SIG.
+  - The trunk/Translation directory structure is removed. The
+    trunk/Scripts/Bash/Functions/Locale/Config directory structure is used
+    instead to store locale information. 
+      
+  - The production of both documentation manuals and images is updated to
+    handle information in different languages by means of `xml2po' and
+    `gettext' locale procedures. 
+      
+    Basically, we create one XML file with the information of the file we want
+    to have translations for (e.g., in the case of documentation manuals we
+    use DocBook, but in the case of images very simple XML files are used
+    instead with very simple structures just to cover image translatios
+    needs).  The XML file contains the pattern information in English
+    language.  Later, using `xml2po' program we produce POT and PO files that
+    end up in translated XML files.  Finally, we use the appropriate commands
+    and the XML files to produce different outputs files (e.g., PDF, HTML,
+    PNG, etc.) in different languages.
 
-    https://projects.centos.org/svn/artwork/
-    https://projects.centos.org/trac/artwork/
+    In the very specific case of documentation, we use Texinfo as first source
+    of documenting and use `--docbook' option of makeinfo to produce the
+    DocBook XML file we pass to `xml2po' to produce translated contents of the
+    documentation we've written on using Texinfo. Sadly, `--docbook' output on
+    Texinfo 4.8 seems to be incomplete (e.g., when a chapter is created the
+    title tag is not set inside. Instead the <para> tag is used instead which
+    make commands like 'docbook2pdf' to fail). I'm pretty sure this will be
+    fixed in the feature, so I keep planing relaying in the fact that Texinfo
+    will produce '--docbook' output correctly.
 
-Alain Reguera Delagdo uploads the rendering script to CentOS Artwork
-Repository.
+    In the very specific case of images, we use the SVG structure as first
+    source of image translation.
 
-Ralph Angenendt documents the rendering script.
+-------------------------------------------------------------------------------
 
-With the rendering script and its documentation available, translators start
-to download working copies of CentOS Artwork Repository to produce slide
-images in their own languages.
+(2010)
 
--- 2009 --
+  - Inside centos-art.sh script, functionalities start to get identified and
+    separated one from another. For example, when images are rendered, there
+    is no need to load manual functionality. There are now common
+    functionalities and specific functionalities. Common functionalities are
+    loaded when the script is initiated and are available to specific
+    functionalities.
 
-The rendering script starts to evolve into centos-art.sh script, a
-command-line interface to manipulate the CentOS Artwork Repository.
+  - The directory structure is optimized to implements the corporate identity
+    concepts and the centos-art.sh script.  The CentOS Artwork Repository
+    directory structure places the organizational convenctions that
+    centos-art.sh script needs to do what we expect from it to do.
 
-Corporate identity concepts taken from Wikipedia and related books are
-introduced as development reference. The main goal of centos-art.sh
-turns to: automate production of a monolithic corporate visual
-identity structure based on CentOS Mission and CentOS Release Schema. 
+  - The following functionalities start to take form as part of centos-art.sh
+    script:
 
-Alain Reguera Delgado is out of Internet for an undefined amount of
-time, but continues developing CentOS Artwork Repository and its
-automation tool (i.e., the centos-art.sh script) off-line.
+    - `Functions/Render/render.sh'  : To produce translated images using
+                                      Inkscape and Sed replacement commands.
 
-Documentation begins to take form in LaTeX format.
-
--- 2010 -- 
-
-Inside centos-art.sh script, functionalities start to get identified
-and separated one from another. For example, when images are rendered,
-there is no need to load manual functionality. There are now common
-functionalities and specific functionalities. Common functionalities
-are loaded when the script is initiated and are available to specific
-functionalities.
-
-The directory structure is optimized to implements the corporate
-identity concepts and the centos-art.sh script.  The CentOS Artwork
-Repository directory structure places the organizational convenctions
-that centos-art.sh script needs to do what we expect from it to do.
-
-The following functionalities start to take form as part of
-centos-art.sh script:
-
-    Render
-    ------
-    To produce translated images using Inkscape and Sed replacement
-    commands.
-
-    Manual
-    ------
-    To administer repository documentation using Texinfo. Almost all
-    LaTeX-based documentation was moved to this functionality. Texinfo is a
-    documentation system that uses a single source file to produce both online
-    information and printed output.  This means that instead of writing two
-    different documents, one for the online information and the other for a
-    printed work, you need write only one document.  Therefore, when the work
-    is revised, you need revise only that one document.
+    - `Functions/Manual/manual.sh'  : To produce documentation using Texinfo.
+                                      Almost all LaTeX-based documents were
+                                      moved to Texinfo format and handled by
+                                      manual functionality. 
      
-    Locale 
-    ------
-    To translate centos-art.sh command-line interface messages using
-    gettext.
+    - `Functions/Locale/locale.sh'  : To translate centos-art.sh command-line
+                                      interface messages using gettext.
 
-    Shell  
-    -----
-    To perform massive actions inside shell scripts.
+    - `Functions/Shell/shell.sh'    : To perform massive actions inside shell
+                                      scripts. For example, update
+                                      top-commentaries massively.
     
-    Svg
-    ---
-    To perform massive actions inside SVG files.
+    - `Functions/Svg/svg.sh'        : To perform massive actions inside SVG
+                                      files.
 
-    Html
-    ----
-    To perform massive actions inside HTML files.
+    - `Functions/Html/html.sh'      : To perform massive actions inside HTML
+                                      files.
 
-    Path
-    ----
-    To automate manipulation of files, branches, and tags. 
+    - `Functions/Path/path.sh'      : To automate manipulation of files,
+                                      branches, and tags. 
 
-    About
-    -----
-    To print license, authors, history, copying, etc.
+    - `Functions/About/about.sh'    : To print license, authors, history,
+                                      copying, etc.
 
-2011 -- 
+-------------------------------------------------------------------------------
+
+(2009)
+
+    - The rendering script starts to evolve into centos-art.sh script, a
+      command-line interface to manipulate the CentOS Artwork Repository.
+
+    - Corporate identity concepts taken from Wikipedia and related books are
+      introduced as development reference. The main goal of centos-art.sh
+      turns to: automate production of a monolithic corporate visual identity
+      structure based on CentOS Mission and CentOS Release Schema. 
+
+    - Alain Reguera Delgado is out of Internet for an undefined amount of
+      time, but continues developing CentOS Artwork Repository and its
+      automation tool (i.e., the centos-art.sh script) off-line.
+
+    - Documentation begins to take form in LaTeX format.
+
+-------------------------------------------------------------------------------
+
+(2008)
+
+    - The CentOS Artwork Repository started at CentOS Developers mailing list.
+
+    - Alain Reguera Delgado shares ideas in a thread about Anaconda progress
+      slide images and the possibility of automating their construction.
+
+    - Ralph Angenendt rises up his hand asking: Do you have something to show?
+
+    - Alain Reguera Delgado posts a Bash script to produce slide images in
+      different languages ---together with the proposition of creating a
+      Subversion centralized repository where translations and image
+      production could be distributed inside CentOS Community---.
+
+    - Karanbirn Sighn considers the idea intresting and provides the
+      infrastructure to support the effort as the CentOS Artwork SIG.
+
+        https://projects.centos.org/svn/artwork/
+        https://projects.centos.org/trac/artwork/
+
+    - Alain Reguera Delagdo uploads the rendering script to CentOS Artwork
+      Repository.
+
+    - Ralph Angenendt documents the rendering script.
+
+    - With the rendering script and its documentation available, translators
+      start to download working copies of CentOS Artwork Repository to produce
+      slide images in their own languages.
