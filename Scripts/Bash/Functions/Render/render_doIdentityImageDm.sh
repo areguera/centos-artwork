@@ -81,7 +81,7 @@ function render_doIdentityImageDm {
     fi
 
     # Define source files using absolute paths.
-    SRC[0]=$(cli_getRepoTLDir)/Identity/Brands/Img/CentOS/Symbol/5c-a/48.png
+    SRC[0]=$(cli_getRepoTLDir)/Identity/Brands/Img/Symbol/48.png
     SRC[1]=${DIRNAME}/release.png
     SRC[2]=${DIRNAME}/screenshot.png
     SRC[3]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/GdmGreeterTheme.xml
