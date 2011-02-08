@@ -30,7 +30,7 @@ function locale_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,stats:,edit:,update:"
+    local ARGSL="filter:,report:,edit:,update:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -46,7 +46,7 @@ function locale_getActions {
             --update )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_updateMessages"
+                ACTIONNAM="${FUNCNAM}_doUpdate"
 
                 # Redefine action value.
                 ACTIONVAL="$2"
@@ -58,7 +58,7 @@ function locale_getActions {
             --edit )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_editMessages"
+                ACTIONNAM="${FUNCNAM}_doEdit"
 
                 # Redefine action value.
                 ACTIONVAL="$2"
@@ -70,7 +70,7 @@ function locale_getActions {
             --stats )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_getStats"
+                ACTIONNAM="${FUNCNAM}_doReport"
 
                 # Redefine action value.
                 ACTIONVAL="$2"

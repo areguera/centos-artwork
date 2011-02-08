@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# locale_doMessagesStatus.sh -- This function outputs the
-# centos-art.sh translations table. Use this function to know how many
-# languages the centos-art.sh script is available in, the last
-# translators and revision dates.
+# locale_doReport.sh -- This function outputs the centos-art.sh
+# translations table. Use this function to know how many languages the
+# centos-art.sh script is available in, the last translators and
+# revision dates.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function locale_doMessagesStatus {
+function locale_doReport {
 
     # Define variables as local to avoid conflicts outside.
     local LOCALESLIST=''

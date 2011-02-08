@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# locale_updateMessages.sh -- This function standardize centos-art.sh
+# locale_doUpdate.sh -- This function standardize centos-art.sh
 # internationalization processes using xml2po and gettext commands.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function locale_updateMessages {
+function locale_doUpdate {
 
     # Define variables as local to avoid conflicts outside.
     local POT_FILE=$TEXTDOMAINDIR/$(cli_getCurrentLocale)/$TEXTDOMAIN.pot
