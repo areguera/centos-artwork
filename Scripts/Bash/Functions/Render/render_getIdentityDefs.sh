@@ -350,6 +350,6 @@ function render_getIdentityDefs {
     cat $TEMPLATE > $INSTANCE
 
     # Replace translation markers with appropriate information.
-    render_doIdentityTMarkers
+    cli_doTMarkers
 
 }

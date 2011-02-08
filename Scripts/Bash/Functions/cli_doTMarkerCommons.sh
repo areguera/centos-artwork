@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityTMarkersCommons.sh -- This function standardizes
+# cli_doTMarkers.sh -- This function standardizes
 # replacements for common translation markers. Raplacements are
 # applied to temporal instances used to produce the final file.
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doIdentityTMarkersCommons {
+function cli_doTMarkersCommons {
 
     # Initialize variables.
     local -a SRC

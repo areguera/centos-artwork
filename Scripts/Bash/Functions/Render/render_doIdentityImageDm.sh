@@ -155,7 +155,7 @@ function render_doIdentityImageDm {
             # Replace common translation markers from design model
             # files with appropriate information.
             if [[ $COUNT =~ '^(3|4)$'  ]];then
-                render_doIdentityTMarkersCommons "${DST[$COUNT]}"
+                cli_doTMarkersCommons "${DST[$COUNT]}"
             fi
 
             # Increment counter.

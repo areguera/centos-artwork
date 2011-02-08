@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityTMarkersSpecifics.sh -- This function
+# cli_doTMarkersSpecifics.sh -- This function
 # standardizes replacements for specific translation markers.
 # Raplacements are applied to temporal instances used to produce the
 # final file.
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doIdentityTMarkersSpecifics {
+function cli_doTMarkersSpecifics {
 
     # Initialize variables.
     local -a SRC
