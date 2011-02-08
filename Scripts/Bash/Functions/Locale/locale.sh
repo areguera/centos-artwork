@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# locale.sh -- This function provides locale features to centos-art.sh
-# script. 
+# locale.sh -- This function provides internationalization features to
+# centos-art.sh script by means of gettext.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 

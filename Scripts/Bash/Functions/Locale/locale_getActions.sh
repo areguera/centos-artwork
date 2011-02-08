@@ -27,10 +27,10 @@
 function locale_getActions {
 
     # Define short options we want to support.
-    local ARGSS="f:"
+    local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,status,edit"
+    local ARGSL="filter:,stats:,edit:,update:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -43,35 +43,40 @@ function locale_getActions {
     while true; do
         case "$1" in
 
-            --status )
+            --update )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_doMessagesStatus"
+                ACTIONNAM="${FUNCNAM}_updateMessages"
 
-                # Redefine action value. There is no action value to
-                # verify here.
+                # Redefine action value.
+                ACTIONVAL="$2"
 
                 # Break while loop.
-                shift 1
+                shift 2
                 ;;
 
             --edit )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_doMessages"
+                ACTIONNAM="${FUNCNAM}_editMessages"
 
-                # Redefine action value. It is required for
-                # cli_commitRepoChanges to know where locale changes
-                # are.
-                ACTIONVAL=/home/centos/artwork/trunk/Scripts/Bash/Locale
-
-                # Verify action value variable.
-                if [[ $ACTIONVAL == '' ]];then
-                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-                fi
+                # Redefine action value.
+                ACTIONVAL="$2"
 
                 # Break while loop.
-                shift 1
+                shift 2
+                ;;
+
+            --stats )
+
+                # Redefine action name.
+                ACTIONNAM="${FUNCNAM}_getStats"
+
+                # Redefine action value.
+                ACTIONVAL="$2"
+
+                # Break while loop.
+                shift 2
                 ;;
 
             --filter )
@@ -87,6 +92,11 @@ function locale_getActions {
                 break
         esac
     done
+
+    # Check action value. Be sure the action value matches the
+    # convenctions defined for source locations inside the working
+    # copy.
+    cli_checkRepoDirSource
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

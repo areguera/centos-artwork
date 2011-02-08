@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# locale_doMessages.sh -- This function standardize centos-art.sh
-# localization process using gettext commands.  All messages inside
-# centos-art.sh script are written in English language.
+# locale_updateMessages.sh -- This function standardize centos-art.sh
+# internationalization processes using xml2po and gettext commands.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function locale_doMessages {
+function locale_updateMessages {
 
     # Define variables as local to avoid conflicts outside.
     local POT_FILE=$TEXTDOMAINDIR/$(cli_getCurrentLocale)/$TEXTDOMAIN.pot
