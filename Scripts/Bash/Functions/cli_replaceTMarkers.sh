@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_doTMarkers.sh -- This function standardizes
+# cli_replaceTMarkers.sh -- This function standardizes
 # replacements for common translation markers. Raplacements are
 # applied to temporal instances used to produce the final file.
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_doTMarkersCommons {
+function cli_replaceTMarkers {
 
     # Initialize variables.
     local -a SRC

@@ -72,6 +72,6 @@ function render_doIdentityImageKsplash {
     cp ${SRC[4]} ${DST[4]}
 
     # Apply common translation markers to Theme.rc file.
-    cli_doTMarkersCommons "${DST[4]}"
+    cli_replaceTMarkers "${DST[4]}"
 
 }
