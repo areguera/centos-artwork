@@ -35,18 +35,10 @@ function cli_replaceTMarkers {
     local COUNTDST=0
     local LOCATION=''
 
-    # Define source location on which sed replacements take place. By
-    # default we use the value of INSTANCE variable, but if $1 is not
-    # empty assume $1 as source location on which sed replacements
-    # take place. This makes possible to reuse this function on
-    # different source locations.
-    if [[ "$1" != '' ]];then
-        LOCATION="$1" 
-    else
-        LOCATION="${INSTANCE}" 
-    fi
+    # Define source location on which sed replacements take place.
+    LOCATION="$1" 
 
-    # Verify source location file.
+    # Verify file source location.
     cli_checkFiles "$LOCATION" 'f'
 
     # Define translation markers. The translation marker definition
