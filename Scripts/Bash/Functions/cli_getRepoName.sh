@@ -38,7 +38,7 @@ function cli_getRepoName {
 
     case $TYPE in
 
-        f | basename )
+        'f' | 'basename' )
 
             # Reduce the path passed to use just the non-directory
             # part of it (i.e., the last component in the path; _not_
@@ -51,7 +51,7 @@ function cli_getRepoName {
                 | tr '[:upper:]' '[:lower:]')
             ;;
 
-        d | dirname )
+        'd' | 'dirname' )
 
             # Reduce path information passed to use just the directory
             # part of it.  Of course, this is applied only if there is
@@ -59,7 +59,7 @@ function cli_getRepoName {
             # directory part but there is a non-empty value in the
             # path, assume that value as directory part and clean it
             # up.
-            if [[ $NAME =~ '/.+' ]];then
+            if [[ $NAME =~ '.+/.+' ]];then
 
                 # When path information is reduced, we need to take
                 # into account that absolute path may be provided.
@@ -94,7 +94,7 @@ function cli_getRepoName {
             for DIR in $DIRS;do
 
                 # Sanitate directory component.
-                if [[ ! $DIR =~ '^[A-Z]{1}' ]];then
+                if [[ $DIR =~ '^[a-z]' ]];then
                     DIR=$(echo ${DIR} \
                         | tr -s ' ' '_' \
                         | tr '[:upper:]' '[:lower:]' \
@@ -116,7 +116,7 @@ function cli_getRepoName {
             fi
             ;;
 
-        fd | basename-to-dirname )
+        'fd' | 'basename-to-dirname' )
 
             # Retrive non-directory part.
             NAME=$(cli_getRepoName $NAME 'f')
@@ -125,14 +125,26 @@ function cli_getRepoName {
             NAME=$(cli_getRepoName $NAME 'd')
             ;;
 
-        df | dirname-to-basename )
+        'df' | 'dirname-to-basename' )
 
             # Retrive cleaned directory part from non-directory part.
             NAME=$(cli_getRepoName $NAME 'd')
 
             # Retrive non-directory part.
             NAME=$(cli_getRepoName $NAME 'f')
+            ;;
     
+        'dfd' | 'dirname-to-basename-to-dirname' )
+
+            # Retrive cleaned directory part from non-directory part.
+            NAME=$(cli_getRepoName $NAME 'd')
+
+            # Retrive non-directory part.
+            NAME=$(cli_getRepoName $NAME 'f')
+
+            # Retrive cleaned directory part from non-directory part.
+            NAME=$(cli_getRepoName $NAME 'd')
+            ;;
     esac
 
     # Output clean path information.
