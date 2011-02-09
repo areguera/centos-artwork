@@ -70,6 +70,11 @@ function cli_printActionPreamble {
             "The following entries will be deleted" $COUNT_DIRS`:"
             ;;
 
+        'doLocale' )
+            ACTION="`ngettext "Translatable strings will be retrived from the following entry:" \
+            "Translatable strings will be retrived from the following entries" $COUNT_DIRS`:"
+            ;;
+
         * )
             cli_printMessage "cli_printActionPreamble: `gettext "The second argument is not valid."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine'
