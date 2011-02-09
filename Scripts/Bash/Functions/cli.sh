@@ -89,6 +89,10 @@ function cli {
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"
 
+    # Parse positional parameters to retrive the value of common
+    # arguments (e.g., --answer-yes, --filter, --quiet, etc.).
+    cli_doParseArgumentsCommon
+
     # Define default text editors used by centos-art.sh script.
     if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
         EDITOR='/usr/bin/vim'
