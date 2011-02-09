@@ -165,7 +165,11 @@ function cli_doParseArgumentsCommon {
     # Redefine ARGUMENTS to use no-common arguments. Common arguments
     # has been already parsed, so free specific functions from parsing
     # them (there is no need to parse them twice).
-    eval set -- "$(echo $ARGUMENTS_DEFAULT | sed -r "s!${COMMONS}!!g")"
+    if [[ $COMMONS != '' ]];then
+        eval set -- "$(echo $ARGUMENTS_DEFAULT | sed -r "s!${COMMONS}!!g")"
+    else
+        eval set -- "${ARGUMENTS_DEFAULT}"
+    fi
 
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"
