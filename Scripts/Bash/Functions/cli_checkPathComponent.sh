@@ -75,13 +75,6 @@ function cli_checkPathComponent {
             fi
             ;;
 
-        '--repo-directory' )
-            cli_checkPathComponent "$LOCATION" '--default'
-            if [[ $(dirname $LOCATION) != $(cli_getRepoName $LOCATION 'd') ]]; then
-                MESSAGE="`eval_gettext "The value \\\`\\\$LOCATION' is not a valid repository directory."`"
-            fi
-            ;;
-
         '--default' | * )
             if [[ $LOCATION == '' ]] \
                 || [[ $LOCATION =~ '(\.\.(/)?)' ]] \
