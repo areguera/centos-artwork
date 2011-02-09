@@ -71,7 +71,7 @@ function cli_doParseArgumentsCommon {
     # Build list of common arguments.
     for ARGUMENT in $ARGUMENTS_DEFAULT;do
         while [[ $COUNT -lt ${#LONG[*]} ]];do
-            if [[ $ARGUMENT =~ "^'(--${LONG[$COUNT]}|-${SHORT[$COUNT]} )" ]];then
+            if [[ $ARGUMENT =~ "^'(--${LONG[$COUNT]}=|-${SHORT[$COUNT]} )" ]];then
                 if [[ $COMMONS == '' ]];then
                     COMMONS="${ARGUMENT}"
                 else
