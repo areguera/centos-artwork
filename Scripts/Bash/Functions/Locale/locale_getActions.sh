@@ -99,6 +99,15 @@ function locale_getActions {
     # copy.
     cli_checkRepoDirSource
 
+    # Redefine action value variable in order to transform
+    # `trunk/Identity/' and `trunk/Manuals/' parent directory
+    # structures into `trunk/Locales' parallel directory structures.
+    # This way we can use parent directory paths to update related
+    # entries inside `trunk/Locales/' directory structures.
+    ACTIONVAL=$(echo $ACTIONVAL | sed -r \
+            -e 's!trunk/(Identity|Manuals|Scripts)/!trunk/Locales/\1/!' \
+            -e "s!Motifs/$(cli_getPathComponent '--theme')/?!!")
+            
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
