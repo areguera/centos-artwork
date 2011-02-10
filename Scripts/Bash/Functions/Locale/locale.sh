@@ -26,6 +26,12 @@
 
 function locale {
 
+    # Initialize default value to create/update machine object flag.
+    # The machine object flag (--create-mo) controls whether
+    # centos-art.sh script creates/updates the machine object related
+    # to portable object or not.
+    local FLAG_DONT_MODIFY_MO='false'
+
     # Define the command-line interface.
     locale_getActions
 
