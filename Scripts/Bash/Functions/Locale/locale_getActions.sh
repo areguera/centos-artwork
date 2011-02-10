@@ -30,7 +30,7 @@ function locale_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,report:,edit:,update:"
+    local ARGSL="update:,edit:,report:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -46,7 +46,7 @@ function locale_getActions {
             --update )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_doUpdate"
+                ACTIONNAM="${FUNCNAM}_updateMessages"
 
                 # Redefine action value.
                 ACTIONVAL="$2"
@@ -58,7 +58,7 @@ function locale_getActions {
             --edit )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_doEdit"
+                ACTIONNAM="${FUNCNAM}_editMessages"
 
                 # Redefine action value.
                 ACTIONVAL="$2"
@@ -67,29 +67,21 @@ function locale_getActions {
                 shift 2
                 ;;
 
-            --stats )
+            --report )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_doReport"
+                ACTIONNAM="${FUNCNAM}_printTranslationReport"
 
                 # Redefine action value.
                 ACTIONVAL="$2"
 
                 # Break while loop.
-                shift 2
-                ;;
-
-            --filter )
-
-                # Redefine filter (regular expression) flag.
-                FLAG_FILTER="$2"
-                
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             * )
                 break
+                ;;
         esac
     done
 
