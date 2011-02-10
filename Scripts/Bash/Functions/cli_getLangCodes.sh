@@ -28,7 +28,7 @@ function cli_getLangCodes {
 
     local FILTER="$(echo $1 | cut -d_ -f1)"
 
-    LANGCODES='aa
+    LANGCODES="aa
         ab 
         ae 
         af 
@@ -212,10 +212,10 @@ function cli_getLangCodes {
         yo 
         za 
         zh 
-        zu'
+        zu"
 
     if [[ $FILTER != '' ]];then
-        echo $LANGCODES | egrep "$FILTER"
+        echo "$LANGCODES" | egrep "$FILTER" | sed -r 's![[:space:]]+!!g'
     else
         echo "$LANGCODES"
     fi
