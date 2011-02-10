@@ -27,7 +27,7 @@
 function locale_updateMessageBinary {
 
     # Verify machine object creation flag.
-    if [[ ${FLAG_DONT_MODIFY_MO} == 'true' ]];then
+    if [[ ${FLAG_DONT_CREATE_MO} == 'true' ]];then
         return
     fi
 

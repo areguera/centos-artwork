@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# locale_updateMessageXml.sh -- This function parses scalable vector
-# graphics files, retrives translatable strings and creates/update
-# portable object templates for each one of them.
+# locale_updateMessageXml.sh -- This function parses XML-based files
+# (e.g., scalable vector graphics), retrives translatable strings and
+# creates/update portable objects.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,25 +27,19 @@
 
 function locale_updateMessageXml {
 
-    # Redefine filter pattern in order to reduce match to scalable
-    # vector graphics only.
-    local FLAG_FILTER="${FLAG_FILTER}.*\.(xml|svg)"
-
-    # Define location where XML-based files (e.g., scalable vector
-    # graphics), we want to have translation for, are place in.
-    local LOCATION="${ACTIONVAL}"
-
     # Define name of file used to create both portable object
     # templates (.pot) and portable objects (.po) files.
     local FILE="${ACTIONVAL}/$(cli_getCurrentLocale)"
 
+    # Redefine filter pattern in order to reduce match to scalable
+    # vector graphics only.
+    local FLAG_FILTER="${FLAG_FILTER}.*\.(xml|svg)"
+
     # Build list of XML-base files which we want retrive translatable
     # strings from.
-    cli_getFilesList "${LOCATION}"
+    cli_getFilesList
 
-    # Print out action preamble. Since the `--filter' option can be
-    # supplied, it is useful to know which files we are getting
-    # translatable strings from.
+    # Print action preamble.
     cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
     
     # Print action message.

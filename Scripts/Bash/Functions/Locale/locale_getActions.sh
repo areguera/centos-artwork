@@ -30,7 +30,7 @@ function locale_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="update:,edit:,report:,dont-modify-mo"
+    local ARGSL="update:,edit:,report:,dont-create-mo"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -79,10 +79,10 @@ function locale_getActions {
                 shift 2
                 ;;
 
-            --dont-modify-mo )
+            --dont-create-mo )
 
                 # Redefine create machine object flag.
-                FLAG_DONT_MODIFY_MO="true"
+                FLAG_DONT_CREATE_MO="true"
 
                 # Break while loop.
                 shift 1

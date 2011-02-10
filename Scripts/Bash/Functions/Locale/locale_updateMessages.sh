@@ -36,23 +36,29 @@ function locale_updateMessages {
 
     # Syncronize changes between the working copy and the central
     # repository.
-    cli_commitRepoChanges "${ACTIONDIR}"
+    cli_commitRepoChanges
 
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
     if [[ $ACTIONVAL =~ "^${ACTIONDIR}/(Identity|Manuals)/.+$" ]];then
+
         # Update translatable strings inside portable object templates
         # for XML-based files (e.g., scalable vector graphics).
         ACTIONNAM="${FUNCNAM}_updateMessageXml" 
+
     elif [[ $ACTIONVAL =~ "^${ACTIONDIR}/Scripts/.+$" ]];then
+
         # Update translatable strings inside portable object templates
         # for shell scripts (e.g., centos-art.sh script).
         ACTIONNAM="${FUNCNAM}_updateMessageShell"
+
     else
+
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+
     fi
 
     # Execute action name.
@@ -62,6 +68,6 @@ function locale_updateMessages {
 
     # Syncronize changes between the working copy and the central
     # repository.
-    cli_commitRepoChanges "${ACTIONDIR}"
+    cli_commitRepoChanges
 
 }
