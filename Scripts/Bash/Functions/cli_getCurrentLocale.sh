@@ -1,9 +1,8 @@
 #!/bin/bash
 #
 # cli_getCurrentLocale.sh -- This function checks LANG environment
-# variable and returns the current locale from more specific to less
-# specific. For example, if the locale 'en_GB' is the current one, it
-# should be used instead of just 'en'.
+# variable and returns the current locale information in the LL_CC
+# format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -28,37 +27,19 @@
 
 function cli_getCurrentLocale {
 
-    local -a PATTERNS
-    local PATTERN=''
     local CURRENTLOCALE=''
 
-    # Define pattern for current locale using LL_CC.ENCODING format.
-    PATTERNS[0]=$LANG
-
-    # Define pattern for current locale using LL_CC format.
-    PATTERNS[1]=$(echo $LANG | sed -r 's!(^[a-z]{2,3}_[A-Z]{2}).+$!\1!')
-
-    # Define pattern for current locale using LL format.
-    PATTERNS[2]=$(echo $LANG | sed -r 's!^([a-z]{2,3}).+$!\1!')
-
-    # Define which system locale to use as centos-art.sh script
-    # current locale. Take care of pattern order, it is relevant for
-    # this function to work as expected.
-    for PATTERN in "${PATTERNS[@]}";do
-        CURRENTLOCALE=$(cli_getLocales | egrep $PATTERN)
-        if [[ $CURRENTLOCALE != '' ]];then
-            break
-        fi
-    done
+    # Redefine current locale using LL_CC format.
+    CURRENTLOCALE=$(echo $LANG | sed -r 's!(^[a-z]{2,3}_[A-Z]{2}).+$!\1!')
 
     # Define centos-art.sh script default current locale. If
     # centos-art.sh script doesn't support current system locale, use
-    # English (en) as default current locale.
+    # English language from United States as default current locale.
     if [[ $CURRENTLOCALE == '' ]];then
-        CURRENTLOCALE='en'
+        CURRENTLOCALE='en_US'
     fi
 
-    # Output current locale. Be sure that just one value is output.
-    echo $CURRENTLOCALE | sort | uniq | head -n1
+    # Output current locale.    
+    echo "${CURRENTLOCALE}"
 
 }
