@@ -189,8 +189,7 @@ function cli_printMessage {
             N="`gettext "N"`"
 
             # Define `yes or no' confirmation question.
-            if [[ $FLAG_QUIET == 'false' ]] \
-                && [[ $FLAG_YES == 'false' ]];then
+            if [[ $FLAG_QUIET == 'false' ]] && [[ $FLAG_YES == 'false' ]];then
                 echo -n "$MESSAGE [${Y}/${N}]: "
                 read ANSWER
             fi
