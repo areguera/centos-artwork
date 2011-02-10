@@ -28,33 +28,7 @@
 
 function cli_getLocales {
 
-    local LOCALES=''
-
-    # Add to locale list language codes (not country-specific).
-    # Sometimes one language is spoken in many different countries
-    # with almost irrelevant differences. For these cases using a
-    # common language locale specification is convenient and help
-    # locale maintainance.
-    LOCALES=$(cli_getLangCodes)
-
-    # Add to locale list language codes for some specific countries.
-    # Sometimes one language is spoken in many different countires
-    # with highly relevant differences. For these cases use
-    # country-specific language locale specification in the following
-    # list using the format LL_CC, where LL is the language code and
-    # CC the country code.
-    LOCALES="$LOCALES pt_BR pt_PT bn_IN"
-
-    # Replace spaces by new lines in order to transform the space
-    # separated list of locales into a newline separated list of
-    # locales. This let us apply commands like sort and uniq to
-    # organize the final list of locales.
-    LOCALES=$(echo $LOCALES | sed -r "s![[:space:]]+!\n!g")
-
-    # Organize locales by name and avoid using duplicates values.
-    LOCALES=$(echo "${LOCALES}" | sort | uniq)
-
     # Print locales supported by centos-art.sh script.
-    echo "$LOCALES"
+    locale -a | egrep '^[a-z]{2,3}_[A-Z]{2}$' | sort | uniq
 
 }
