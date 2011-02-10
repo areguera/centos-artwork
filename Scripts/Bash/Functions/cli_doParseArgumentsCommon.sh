@@ -42,6 +42,7 @@ function cli_doParseArgumentsCommon {
     local COMMON=''
     local ARGSS=''
     local ARGSL=''
+    local PATTERN=''
     local COUNT=0
 
     # Define local array to store short definition of common arguments.
@@ -70,18 +71,37 @@ function cli_doParseArgumentsCommon {
 
     # Build list of common arguments.
     for ARGUMENT in $ARGUMENTS_DEFAULT;do
+
         while [[ $COUNT -lt ${#LONG[*]} ]];do
-            if [[ $ARGUMENT =~ "^'(--${LONG[$COUNT]}=|-${SHORT[$COUNT]} )" ]];then
+
+            # Be specific about the pattern used to match both long
+            # and short arguments. Notice that when arguments values
+            # are required we add an equal sign (`=') and a space (`
+            # ') character to the end of pattern in order to match
+            # both long and short arguments respectively.
+            if [[ ${REQUIRED[$COUNT]} =~ '^:$' ]];then
+                PATTERN="^'(--${LONG[$COUNT]}=|-${SHORT[$COUNT]} )"
+            else
+                PATTERN="^'(--${LONG[$COUNT]}|-${SHORT[$COUNT]})"
+            fi
+
+            # Check argument against common argument pattern.
+            if [[ $ARGUMENT =~ "${PATTERN}" ]];then
                 if [[ $COMMONS == '' ]];then
                     COMMONS="${ARGUMENT}"
                 else
                     COMMONS="${COMMONS} ${ARGUMENT}"
                 fi
             fi
+
+            # Increment counter.
             COUNT=$(($COUNT + 1))
+
         done
+
         # Reset counter.
         COUNT=0
+
     done
 
     # Reset positional paramenters to start using common arguments and
@@ -150,7 +170,7 @@ function cli_doParseArgumentsCommon {
             --answer-yes )
 
                 # Redefine flag.
-                FLAG_YES="yes"
+                FLAG_YES="true"
 
                 # Break while loop.
                 shift 1
@@ -166,9 +186,21 @@ function cli_doParseArgumentsCommon {
     # has been already parsed, so free specific functions from parsing
     # them (there is no need to parse them twice).
     if [[ $COMMONS != '' ]];then
+
+        # Escape special regular expression characters that might be
+        # passed through common arguments like `--filter' in order to
+        # interpreted them literally. Otherwise they might be
+        # interpreted when they be stript out from default arguments.
+        COMMONS=$(echo $COMMONS | sed -r 's!(\[|\{|\.|\+|\*)!\\\1!g')
+
+        # Stript out common arguments from default arguments. 
         eval set -- "$(echo $ARGUMENTS_DEFAULT | sed -r "s!${COMMONS}!!g")"
+
     else
+
+        # Use just default arguments. No common argument was passed.
         eval set -- "${ARGUMENTS_DEFAULT}"
+
     fi
 
     # Redefine positional parameters stored inside ARGUMENTS variable.
