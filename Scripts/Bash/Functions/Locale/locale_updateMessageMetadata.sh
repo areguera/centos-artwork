@@ -41,32 +41,30 @@ function locale_updateMessageMetadata {
     # Define language name from current locale.
     local LANGNAME=$(cli_getLangName ${CURRENTLOCALE})
 
-    # Define language code from current locale.
-    local LANGCODE=$(cli_getLangCodes ${CURRENTLOCALE})
-
     # Check existence of file before work with it.
     cli_checkFiles "${FILE}" 'f'
 
-    # Define comment patterns. Comment patterns are put inside
-    # portable objects when they are built using xgettext or xml2po
-    # commands.
+    # Define patterns line. The pattern lines are put inside portable
+    # objects through xgettext and xml2po commands .
     SRC[0]='Project-Id-Version:'
-    SRC[1]='Last-Translator:'
-    SRC[2]='Language-Team:'
+    SRC[1]='Report-Msgid-Bugs-To:'
+    SRC[2]='Last-Translator:'
+    SRC[3]='Language-Team:'
 
-    # Define comment replacements. Comment replacements is the
-    # convenction we use inside centos-art.sh to set standard
-    # information related to CentOS (e.g., URLs, mail addresses,
-    # release numbers, etc.).
-    DST[0]="\"Project-Id-Version: $(cli_getRepoName "${FILE}" 'dfd')\\\n\""
-    DST[1]="\"Last-Translator: CentOS Documentation SIG <centos-docs@centos.org>\\\n\""
-    DST[2]="\"Language-Team: ${LANGNAME} <centos-docs@${LANGCODE}.centos.org>\\\n\""
+    # Define replacement line for pattern line.
+    DST[0]="\"Project-Id-Version: ${CLINAME} (${CURRENTLOCALE})\\\n\""
+    DST[1]="\"Report-Msgid-Bugs-To: =MAIL_DOCS=\\\n\""
+    DST[2]="\"Last-Translator: CentOS Documentation SIG\\\n\""
+    DST[3]="\"Language-Team: ${LANGNAME}\\\n\""
 
-    # Replace comment patterns with comment replacements.
+    # Change pattern lines with their replacement lines.
     while [[ $COUNT -lt ${#SRC[*]} ]];do
         sed -i -r "/${SRC[$COUNT]}/c${DST[$COUNT]}" ${FILE}
         COUNT=$(($COUNT + 1))
     done
+
+    # Replace package information using gettext domain information.
+    sed -i -r "s/PACKAGE/${TEXTDOMAIN}/g" ${FILE}
 
     # Apply common replacements to sanitated patterns.
     cli_replaceTMarkers "${FILE}"
