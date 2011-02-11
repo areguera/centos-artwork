@@ -1,7 +1,7 @@
 $Id$
 This file records noteworthy changes of CentOS Artwork Repository.
 
-  Copyright (C) 2003-2011 The CentOS Project.
+  Copyright (C) 2009-2011 Alain Reguera Delgado
 
   Copying and distribution of this file, with or without modification, are
   permitted in any medium without royalty provided the copyright notice and
@@ -11,65 +11,18 @@ This file records noteworthy changes of CentOS Artwork Repository.
 (2011)
 
     - The `trunk/Translation' directory structure is removed. The
-      `trunk/Scripts/Bash/Functions/Locale/Config' directory structure
-      is used instead to store locale information. 
+      `trunk/Locales' directory structure is used instead to store locale
+      information. 
       
-    - The production of both documentation manuals and images is
-      updated to handle information in different languages by means of
-      `xml2po' and `gettext' locale procedures. 
-      
-      Basically, we create one XML file with the information of the
-      file we want to have translations for (e.g., in the case of
-      documentation manuals we use DocBook, but in the case of images
-      very simple XML files are used instead with very simple
-      structures just to cover image translatios needs).  The XML file
-      contains the pattern information in English language.  Later,
-      using `xml2po' program we produce POT and PO files that end up
-      in translated XML files.  Finally, we use the appropriate
-      commands and the XML files to produce different outputs files
-      (e.g., PDF, HTML, PNG, etc.) in different languages.
+    - Start using XML-based files to handle both documentation (Docbook) and
+      images (SVG) translation files. Translation take place by means of
+      xml2po and gettext standard procedures for translation.
 
-      In the very specific case of documentation files, we use Texinfo
-      as first source of documenting and use `--docbook' option of
-      makeinfo to produce the DocBook XML file we pass to `xml2po' to
-      produce translated contents of the documentation we've written
-      on using Texinfo. Sadly, `--docbook' output on Texinfo 4.8 seems
-      to be incomplete (e.g., when a chapter is created the title tag
-      is not set inside. Instead the <para> tag is used instead which
-      make commands like 'docbook2pdf' to fail). I'm pretty sure this
-      will be fixed in the feature, so I keep planing relaying in the
-      fact that Texinfo will produce '--docbook' output correctly.
-
-      In the very specific case of image files, we use SVG structure
-      as first source of image translation. SVG files are XML based so
-      `xml2po' can be applied to them, build pot and po files and
-      finally create a temporal SVG instance with language-specific
-      transaltions.
-
-        centos-art locale --edit=Identity/Themes/Distro/Anaconda/Progress
-
-      In the very specific case of plain-text files, we cannot use
-      gettext directly (we need to mark translatable strings first).
-      So, in order to translate plain-text files, we set translation
-      markers inside plain-text files and use Bash scripts to relate
-      both translation markers with the replacement string. The
-      replacement string is passed to gettext, as we usually do, to
-      retrive language-specific information at rendition time.
-
-        centos-art locale --edit
-
-    - Documentation design models were moved to
-      `trunk/Scripts/Bash/Functions/Manuals/Config' in order to make
-      them reusable by other manuals. For example, if you need to
-      create a new manual inside CentOS Artwork Repository, execute
-      the following command:
-
-        centos-art manual --create-manual='ManualName'
-
-      The above command will use the Default manual design model
-      (i.e., `trunk/Scripts/Bash/Functions/Manuals/Config), which is
-      texinfo-based and will prepare the manual directory structure
-      under trunk/Manuals directory structure.
+    - Since the command-line point of view, unify common arguments for all
+      specific functionalities (e.g, --answer-yes, --quiet, --filter, etc.)
+      and leave just specific arguments for specific functions to parse. There
+      is no need to duplicate common arguments definitions inside every
+      specific functionality.
 
 -------------------------------------------------------------------------------
 (2010)
