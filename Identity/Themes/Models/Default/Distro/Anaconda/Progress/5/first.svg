@@ -9,16 +9,23 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="800"
-   height="600"
+   width="510"
+   height="300"
    id="svg18808"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
-   sodipodi:docname="first-lowres.svg"
+   sodipodi:docname="first.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs18810">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 300 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="800 : 300 : 1"
+       inkscape:persp3d-origin="400 : 200 : 1"
+       id="perspective2809" />
     <filter
        inkscape:collect="always"
        id="filter3729">
@@ -62,7 +69,7 @@
        id="filter5460"
        x="-0.013247768"
        width="1.0264955"
-       y="-0.12740607"
+       y="-0.12740608"
        height="1.2548121">
       <feGaussianBlur
          inkscape:collect="always"
@@ -88,9 +95,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.58925565"
-     inkscape:cx="590.32789"
-     inkscape:cy="356.66442"
+     inkscape:zoom="1.6666667"
+     inkscape:cx="255"
+     inkscape:cy="150"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -103,48 +110,52 @@
      inkscape:guide-bbox="true">
     <sodipodi:guide
        orientation="1,0"
-       position="655.2,400.8"
-       id="guide30871" />
-    <sodipodi:guide
-       orientation="1,0"
        position="0,372.9636"
        id="guide30873" />
     <sodipodi:guide
        orientation="0,1"
-       position="643,194"
-       id="guide6907" />
+       position="294,0"
+       id="guide2469" />
     <sodipodi:guide
        orientation="0,1"
-       position="716.4,484.8"
-       id="guide6909" />
+       position="-84,300"
+       id="guide2471" />
     <sodipodi:guide
        orientation="1,0"
-       position="155,282"
-       id="guide5690" />
+       position="510,246"
+       id="guide2473" />
     <sodipodi:guide
        orientation="1,0"
-       position="175,343.2"
-       id="guide2904" />
+       position="10,165.6"
+       id="guide2475" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="30,153.6"
+       id="guide2477" />
     <sodipodi:guide
        orientation="0,1"
-       position="286.8,464.8"
-       id="guide2906" />
+       position="195.6,10"
+       id="guide2479" />
     <sodipodi:guide
        orientation="0,1"
-       position="436.8,214"
-       id="guide3953" />
+       position="255.6,30"
+       id="guide2481" />
     <sodipodi:guide
        orientation="0,1"
-       position="132,224"
-       id="guide3021" />
+       position="248.4,290"
+       id="guide2483" />
     <sodipodi:guide
        orientation="0,1"
-       position="324.98627,204"
-       id="guide3248" />
+       position="232.8,280"
+       id="guide2485" />
     <sodipodi:guide
-       orientation="0,1"
-       position="214.46548,232.921"
-       id="guide3250" />
+       orientation="1,0"
+       position="500,338.4"
+       id="guide2487" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="490,325.2"
+       id="guide2489" />
   </sodipodi:namedview>
   <metadata
      id="metadata3399">
@@ -156,7 +167,7 @@
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
-        <dc:title>first-lowres.svg</dc:title>
+        <dc:title>first.svg</dc:title>
         <dc:date>2010-11-11</dc:date>
         <dc:creator>
           <cc:Agent>
@@ -173,9 +184,9 @@
             <dc:title>The CentOS Project</dc:title>
           </cc:Agent>
         </dc:publisher>
-        <dc:identifier>https://projects.centos.org/svn/artwork/trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/first-lowres.svg</dc:identifier>
-        <dc:source>https://projects.centos.org/svn/artwork/trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/first-lowres.svg</dc:source>
-        <dc:relation>https://projects.centos.org/svn/artwork/trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/first-lowres.svg</dc:relation>
+        <dc:identifier>https://projects.centos.org/svn/artwork/trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/first.svg</dc:identifier>
+        <dc:source>https://projects.centos.org/svn/artwork/trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/first.svg</dc:source>
+        <dc:relation>https://projects.centos.org/svn/artwork/trunk/Identity/Themes/Models/Default/Distro/Anaconda/Progress/first.svg</dc:relation>
         <dc:language>en</dc:language>
         <dc:subject>
           <rdf:Bag>
@@ -189,7 +200,7 @@
           </rdf:Bag>
         </dc:subject>
         <dc:coverage>The CentOS Project</dc:coverage>
-        <dc:description></dc:description>
+        <dc:description />
         <dc:contributor>
           <cc:Agent>
             <dc:title>Alain Reguera Delgado</dc:title>
@@ -216,7 +227,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-145,-116.49965)">
     <rect
        style="opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline;filter:url(#filter3729)"
        id="rect13517"
@@ -229,7 +241,7 @@
        inkscape:label="#rect2941"
        rx="9.7999992"
        ry="6.8965516"
-       transform="matrix(0.6670675,0,0,0.938937,48.271191,65.71253)" />
+       transform="matrix(1.0006013,0,0,1.4084055,-9.3213e-2,-109.68103)" />
     <image
        y="111.49966"
        x="150"
@@ -238,79 +250,12 @@
        width="510"
        sodipodi:absref="/home/centos/artwork/trunk/Identity/Themes/Motifs/=THEME=/Backgrounds/Img/Png/510x300-final.png"
        xlink:href="/home/centos/artwork/trunk/Identity/Themes/Motifs/=THEME=/Backgrounds/Img/Png/510x300-final.png"
-       clip-path="url(#clipPath3017)"
-       transform="matrix(0.6666667,0,0,0.6666667,48.333333,138.83322)" />
-    <g
-       transform="translate(0,-1)"
-       style="display:inline"
-       id="g6910">
-      <rect
-         y="89.000015"
-         x="-70"
-         height="357"
-         width="60"
-         id="rect8530"
-         style="opacity:1;fill:#245596;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline" />
-      <rect
-         style="opacity:1;fill:#557db2;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline"
-         id="rect22309"
-         width="60"
-         height="155"
-         x="-70"
-         y="446" />
-      <text
-         xml:space="preserve"
-         style="font-size:14.28337002px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans Bold"
-         x="-523.99518"
-         y="-43.727764"
-         id="text11041"
-         sodipodi:linespacing="125%"
-         transform="matrix(0,-1,1,0,0,0)"><tspan
-           id="tspan11079"
-           sodipodi:role="line"
-           x="-523.99518"
-           y="-43.727764">ACTION /</tspan><tspan
-           id="tspan6908"
-           sodipodi:role="line"
-           x="-523.99518"
-           y="-25.873552">NAVIGATION</tspan></text>
-      <text
-         transform="matrix(0,-1,1,0,0,0)"
-         sodipodi:linespacing="125%"
-         id="text11049"
-         y="-34.800659"
-         x="-267.35007"
-         style="font-size:14.28337002px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans Bold"
-         xml:space="preserve"><tspan
-           id="tspan11075"
-           y="-34.800659"
-           x="-267.35007"
-           sodipodi:role="line">CONTENTS</tspan></text>
-      <rect
-         y="0.99962997"
-         x="-70"
-         height="88"
-         width="60"
-         id="rect6192"
-         style="opacity:1;fill:#204575;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline" />
-      <text
-         transform="matrix(0,-1,1,0,0,0)"
-         sodipodi:linespacing="125%"
-         id="text6194"
-         y="-34.793682"
-         x="-44.371944"
-         style="font-size:14.28337002px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans Bold"
-         xml:space="preserve"><tspan
-           id="tspan6202"
-           y="-34.793682"
-           x="-44.371944"
-           sodipodi:role="line">HEADER</tspan></text>
-    </g>
+       clip-path="url(#clipPath3017)" />
     <g
        style="display:inline"
        inkscape:label="#g5213"
        id="g11963"
-       transform="matrix(0.2597834,0,0,0.2597834,153.10766,382.53375)">
+       transform="matrix(0.3896751,0,0,0.3896751,157.16149,365.5508)">
       <g
          id="g11965"
          transform="matrix(0,-0.7752767,0.7752767,0,-1374.6711,-273.90881)"
@@ -464,16 +409,16 @@
     <rect
        style="fill:none;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline"
        id="CENTOSARTWORK"
-       width="340"
-       height="200"
+       width="510"
+       height="300"
        x="145"
-       y="216.49965"
-       rx="11.525424"
-       ry="8.9965391"
+       y="116.49965"
+       rx="17.288136"
+       ry="13.494809"
        inkscape:label="#rect15537" />
     <g
        id="g3252"
-       transform="matrix(0.6666667,0,0,0.6666667,48.333333,133.0918)">
+       transform="translate(0,-8.6121216)">
       <text
          xml:space="preserve"
          style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;opacity:0.5;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter5460);font-family:DejaVu LGC Sans;-inkscape-font-specification:DejaVu LGC Sans"
@@ -513,7 +458,7 @@
        style="fill:#000000;fill-opacity:1;filter:url(#filter4229)"
        inkscape:label="#g3333"
        id="g3702"
-       transform="matrix(0.4013827,0,0,0.4013827,4.0540413,124.49654)">
+       transform="matrix(0.602074,0,0,0.602074,-66.418938,-21.505009)">
       <text
          clip-path="none"
          sodipodi:linespacing="125%"
@@ -568,7 +513,7 @@
            y="546.64661">™</tspan></text>
     </g>
     <g
-       transform="matrix(0.4013827,0,0,0.4013827,4.0540413,124.49654)"
+       transform="matrix(0.602074,0,0,0.602074,-66.418938,-21.505009)"
        id="g3690"
        inkscape:label="#g3333"
        style="fill:#ffffff">
