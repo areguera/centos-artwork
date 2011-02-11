@@ -28,6 +28,7 @@
 function cli_getCurrentLocale {
 
     local CURRENTLOCALE=''
+    local OPTION="$1"
 
     # Redefine current locale using LL_CC format.
     CURRENTLOCALE=$(echo $LANG | sed -r 's!(^[a-z]{2,3}_[A-Z]{2}).+$!\1!')
@@ -40,6 +41,14 @@ function cli_getCurrentLocale {
     fi
 
     # Output current locale.    
-    echo "${CURRENTLOCALE}"
+    case $OPTION in
 
+        '--langcode-only' )
+            echo "${CURRENTLOCALE}" | cut -d_ -f1
+            ;;
+
+        '--langcode-and-countrycode'| * )
+            echo "${CURRENTLOCALE}"
+            ;;
+    esac
 }
