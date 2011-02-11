@@ -30,8 +30,7 @@ function render_getIdentityDirTranslation {
 
     TRANSLATIONPATH=${FUNCDIR}/${FUNCDIRNAM}/Config/$ARTCOMP
 
-    if [[ "$(find $TRANSLATIONPATH -regextype posix-egrep \
-        -regex ".+\.${EXTENSION}$")" == '' ]];then
+    if [[ $(find $TRANSLATIONPATH -regextype posix-egrep -regex ".+\.${EXTENSION}$") == '' ]];then
         TRANSLATIONPATH=''
     fi
 
