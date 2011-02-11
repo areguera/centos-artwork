@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 16:34-0500\n"
+"POT-Creation-Date: 2011-02-11 10:03-0500\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/About/about_getActions.sh:73
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Html/html_getActions.sh:94
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_getActions.sh:106
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_getActions.sh:115
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Manual/manual_getActions.sh:180
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Path/path_getActions.sh:123
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_getActions.sh:130
@@ -68,7 +68,7 @@ msgstr "Estatus"
 msgid "The .pot `$FILE' could not be created."
 msgstr "El `$FILE' .pot no pudo ser creado."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_updateMessages.sh:54
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/locale_updateMessages.sh:59
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:61
 msgid "The path provided can't be processed."
 msgstr "El camino suministrado no puede ser procesado."
@@ -189,800 +189,11 @@ msgstr "Actualizando la salida pdf del manual"
 msgid "Updating manual's plaintext output"
 msgstr "Actualizando la salida texto-plano del manual"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:38
-msgid "Welcome to CentOS =MAJOR_RELEASE=!"
-msgstr "Bienvenido a CentOS =MAJOR_RELEASE=!"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:40
-msgid "Thank you for installing CentOS =MAJOR_RELEASE=."
-msgstr "Gracias por instalar CentOS."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:42
-msgid ""
-"CentOS is an enterprise-class Linux Distribution derived from sources freely "
-"provided to the public by a prominent North American Enterprise Linux vendor."
-msgstr ""
-"CentOS es una distribución Linux de clase empresarial derivado de fuentes "
-"libremente disponibles al público por un prominente vendedor Norteamericano "
-"de Linux Empresarial."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:44
-msgid ""
-"CentOS conforms fully with the upstream vendors redistribution policy and "
-"aims to be 100% binary compatible."
-msgstr ""
-"CentOS es compatible 100% con las políticas de distribución del proveedor y "
-"su objetivo es ser 100% compatible binario."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/01-welcome.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/01-welcome.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/01-welcome.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/01-welcome.png.sh:46
-msgid ""
-"CentOS mainly changes packages to remove upstream vendor branding and "
-"artwork."
-msgstr ""
-"CentOS realiza cambios en los paquetes para fundamentalmente eliminar las "
-"marcas y demás referencias comerciales del proveedor."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:39
-msgid "CentOS Donations"
-msgstr "Donaciones para CentOS"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:41
-msgid ""
-"The organization that produces CentOS is named The CentOS Project. We are "
-"not affiliated with any other organization."
-msgstr ""
-"La organización que produce CentOS se llama The CentOS Project. The CentOS "
-"Project no está afiliada con ninguna otra organización."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:43
-msgid ""
-"Our only source of hardware or funding to distribute CentOS is by donations."
-msgstr ""
-"La donación es nuestra única fuente de hardware y financiamento para "
-"distribuir CentOS."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/02-donate.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/02-donate.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/02-donate.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/02-donate.png.sh:45
-msgid ""
-"Please consider donating to the CentOS Project if you find CentOS useful."
-msgstr ""
-"Si usted encuentra a CentOS de utilidad, por favor considere realizar una "
-"donación al proyecto."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:38
-msgid "Managing Software with Yum"
-msgstr "Gestión de paquetes con Yum"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:40
-msgid ""
-"The recommended way to install or upgrade CentOS is to use <flowSpan style="
-"\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater, Modified)"
-msgstr ""
-"La forma recomendada para instalar o actualizar CentOS es usar <flowSpan "
-"style=\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater, Modified)."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:42
-msgid ""
-"See the guide entitled: \"Managing Software with Yum\" at the documentation "
-"link below."
-msgstr ""
-"Vea la guía titulada: \"Managing Software with Yum\" en el enlace a la "
-"documentación siguiente."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/03-yum.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/03-yum.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/03-yum.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/03-yum.png.sh:44
-msgid ""
-"<flowSpan style=\"font-weight:bold\">YumEx</flowSpan>, a graphical front end "
-"for Yum, is also available from the CentOS Extras repository."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">YumEx</flowSpan>, una interfase gráfica "
-"para Yum, también está disponible en el repositorio CentOS Extras."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:38
-msgid "CentOS Repositories"
-msgstr "Repositorios de software"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:40
-msgid "The following repositories exist in CentOS to install software from:"
-msgstr ""
-"Los siguientes repositorios existen en CentOS desde los cuales se pueden "
-"instalar aplicaciones:"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:42
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (aka <flowSpan style="
-"\"font-weight:bold\">[os]</flowSpan>) - The RPMS released on a CentOS ISO."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (alias <flowSpan "
-"style=\"font-weight:bold\">[os]</flowSpan>) - RPMS presentes en los ficheros "
-"ISO de CentOS."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:44
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - Updates to the "
-"[base] repository."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - Actualizaciones "
-"al repositorio [base]."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:46
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Items by CentOS "
-"that are not upstream (does not upgrade [base])."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Paquetes que no "
-"están presentes en el proveedor (no mejoran paquetes de [base])."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/04-repos.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/04-repos.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/04-repos.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/04-repos.png.sh:48
-msgid ""
-"<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - Items by "
-"CentOS that are not upstream (does upgrade [base])"
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - Paquetes que "
-"no están presentes en el proveedor (mejoran paquetes de [base])."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:39
-msgid "CentOS Plus Repository"
-msgstr "Repositorio CentOS Plus"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:41
-msgid ""
-"This repository is for items that actually upgrade certain base CentOS "
-"components. This repo will change CentOS to not be exactly like the upstream "
-"providers content."
-msgstr ""
-"Este repositorio es para paquetes que actualizarán ciertos componentes del "
-"repositorio base. Este repo cambiará a CentOS de forma tal que ya no será "
-"exactamente como los contenidos del proveedor."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:43
-msgid ""
-"The CentOS development team has tested every item in this repo, and they "
-"build and work under CentOS =MAJOR_RELEASE=. They have not been tested by "
-"the upstream provider, and are not available in the upstream products."
-msgstr ""
-"El equipo de desarrollo de CentOS ha probado cada paquete de este "
-"repositorio, y cada uno compila y trabaja bajo CentOS =MAJOR_RELEASE=. Estos "
-"mismos paquetes no han sido probados por el proveedor ni están disponibles "
-"entre sus productos."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/05-centosplus.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/05-centosplus.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/05-centosplus.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/05-centosplus.png.sh:45
-msgid ""
-"You should understand that use of the components removes the 100% binary "
-"compatibility with the upstream\n"
-"    products."
-msgstr ""
-"El uso de estos paquetes elimina la compatibilidad binaria del 100% respecto "
-"a los paquetes del proveedor."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:39
-msgid "Help with CentOS"
-msgstr "Ayuda con CentOS"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:41
-msgid ""
-"You can get help with CentOS in several ways,\n"
-"    including:"
-msgstr "Usted puede obtener ayuda con CentOS de varias maneras, incluyendo:"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:44
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">Internet Relay Chat\n"
-"    (IRC)</flowSpan> - #centos, #centos-social and #centos-devel on\n"
-"    irc.freenode.net."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">Internet Relay Chat (IRC)</flowSpan> - "
-"canales #centos, #centos-social y #centos-devel en irc.freenode.net."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:49
-msgid ""
-"<flowSpan style=\"font-weight:bold\">Mailing\n"
-"    Lists</flowSpan> - CentOS, CentOS-Devel, CentOS-Annouces and\n"
-"    non-English localized language lists from =URL_LISTS=."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">Listas de Correo</flowSpan> - CentOS, "
-"CentOS-Devel, CentOS-Announce y en las listas expecíficas de otros idiomas "
-"que aparecen en =URL_LISTS=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:53
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">Forums</flowSpan> - Available at\n"
-"    =URL_FORUMS=."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">Foros</flowSpan> - Disponibles en "
-"=URL_FORUMS=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/06-support.png.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/06-support.png.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/06-support.png.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/06-support.png.sh:57
-msgid ""
-"<flowSpan\n"
-"    style=\"font-weight:bold\">Wiki</flowSpan> - Available at\n"
-"    =URL_WIKI=."
-msgstr ""
-"<flowSpan style=\"font-weight:bold\">Wiki</flowSpan> - Disponibles en "
-"=URL_WIKI=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:38
-msgid "CentOS Documentation"
-msgstr "Documentación para CentOS"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:39
-msgid "The following documentation is available for CentOS:"
-msgstr "La siguiente documentación esta disponible para CentOS:"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:40
-msgid "Deployment Guide"
-msgstr "Guía de desarrollo"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:41
-msgid "Installation Guide"
-msgstr "Guía de instalación"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:42
-msgid "Virtualization Guide"
-msgstr "Guía de virtualización"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:43
-msgid "Cluster Suite Overview"
-msgstr "Introducción a la suite de cluster"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:44
-msgid "Cluster Administration"
-msgstr "Administración de cluster"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:45
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:45
-msgid "Cluster Logical Volume Manager"
-msgstr "Administrador de volúmenes lógicos de cluster"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:46
-msgid "Global File System"
-msgstr "Sistema de fichero global"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:47
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:47
-msgid "Global Network Block Device"
-msgstr "Dispositivo de bloque de red global"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:48
-msgid "Virtual Server Administration"
-msgstr "Administración de serividor virtual"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:49
-msgid "Managing Software with yum"
-msgstr "Administrado software con yum"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:50
-msgid "Using YumEx"
-msgstr "Usando Yumex"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/07-docs.png.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/07-docs.png.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/07-docs.png.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/07-docs.png.sh:51
-msgid "Release notes for all software"
-msgstr "Notas de entrega de los programas"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:38
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:38
-msgid "CentOS Wiki"
-msgstr "Wiki de CentOS"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:40
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:40
-msgid ""
-"The CentOS wiki is available with Frequently Asked Questions, HowTos, Tips "
-"and Tricks on a number of CentOS related topics including software "
-"installation, upgrades, repository configuration and much more."
-msgstr ""
-"El wiki de CentOS está disponible con: Preguntas Más Frecuentes (FAQs, PMF), "
-"COMOs (HowTos), Tips y Artículos en varios asuntos relacionados con CentOS "
-"que incluyen instalación de aplicaciones, actualizaciones, configuración de "
-"repositorios y mucho más."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:42
-msgid ""
-"The wiki also contains information on CentOS Events in your area and CentOS "
-"media sightings."
-msgstr ""
-"El wiki también contiene información de Eventos de CentOS en su localidad y "
-"CentOS en los medios."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/08-wiki.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/08-wiki.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/08-wiki.png.sh:44
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/08-wiki.png.sh:44
-msgid ""
-"In conjuntion with the CentOS-Docs mailing list, contributors can obtain "
-"permission to post articles, tips and HowTos on the CentOS Wiki. So "
-"contribute today!"
-msgstr ""
-"En colaboración con las lista de correo CentOS-Docs, los contribuyentes "
-"pueden obtener permiso para publicar artículos, sugerencias y COMOs (HowTos) "
-"en el wiki de CentOS ... así que contribuye hoy mismo!"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:38
-msgid "Virtualization on CentOS =MAJOR_RELEASE="
-msgstr "Virtualización en CentOS =MAJOR_RELEASE="
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:40
-msgid ""
-"CentOS =MAJOR_RELEASE= provides virtualization via Xen for the i386 and "
-"x86_64 architectures in both fully virtualized and para virtualized modes."
-msgstr ""
-"CentOS =MAJOR_RELEASE= ofrece Virtualización vía Xen para las plataformas "
-"i386 y x86_64 en ambos modos: virtualización completa y paravirtualización."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/4/09-virtualization.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/5/09-virtualization.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/6/09-virtualization.png.sh:43
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/Anaconda/Progress/7/09-virtualization.png.sh:42
-msgid ""
-"The Virtualization Guide and Virtual Server Administration Guide are "
-"provided for help with CentOS =MAJOR_RELEASE= virtualization at the link "
-"below."
-msgstr ""
-"La Guía de Virtualización y las Guía para la Administración de un Servidor "
-"Virtual ofrecen información sobre la virtualización en CentOS "
-"=MAJOR_RELEASE=."
-
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-icon-themes.sh:31
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-logos.sh:31
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Distro/rebrand-symbols.sh:31
 msgid "You need to run this script as root user."
 msgstr "Neceista ejecutar este guión como el usuario root."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd1.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd1.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd1.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd1.png.sh:37
-msgid "Install CD 1 of 6"
-msgstr "CD instalador 1 de 6"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd1.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd2.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd3.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd4.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd5.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd6.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installdvd.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-livecd.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-livedvd.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd1.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd2.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd3.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd4.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd5.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd6.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installdvd.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livecd.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd1.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd2.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd3.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd4.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd5.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd6.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installdvd.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-livecd.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-livedvd.png.sh:34
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd1.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd2.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd3.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd4.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd5.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd6.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installdvd.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livecd.png.sh:53
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livedvd.png.sh:53
-msgid "for =ARCH= architectures"
-msgstr "para architecturas =ARCH="
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd2.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd2.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd2.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd2.png.sh:37
-msgid "Install CD 2 of 6"
-msgstr "CD instalador 2 de 6"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd3.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd3.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd3.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd3.png.sh:37
-msgid "Install CD 3 of 6"
-msgstr "CD instalador 3 de 6"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd4.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd4.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd4.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd4.png.sh:37
-msgid "Install CD 4 of 6"
-msgstr "CD instalador 4 de 6"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd5.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd5.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd5.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd5.png.sh:37
-msgid "Install CD 5 of 6"
-msgstr "CD instalador 5 de 6"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installcd6.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd6.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installcd6.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd6.png.sh:37
-msgid "Install CD 6 of 6"
-msgstr "CD instalador 6 de 6"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-installdvd.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installdvd.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-installdvd.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installdvd.png.sh:37
-msgid "Install DVD"
-msgstr "DVD instalador"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-livecd.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livecd.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-livecd.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livecd.png.sh:37
-msgid "Live CD"
-msgstr "CD vivo"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/label-livedvd.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/label-livedvd.png.sh:33
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livedvd.png.sh:37
-msgid "Live DVD"
-msgstr "DVD vivo"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd1.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd2.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd3.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd4.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd5.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd6.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installdvd.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livecd.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd1.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd2.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd3.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd4.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd5.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd6.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installdvd.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livecd.png.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livedvd.png.sh:39
-msgid "What is CentOS?"
-msgstr "¿Qué es CentOS?"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd1.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd2.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd3.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd4.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd5.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd6.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installdvd.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livecd.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd1.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd2.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd3.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd4.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd5.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd6.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installdvd.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livecd.png.sh:41
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livedvd.png.sh:41
-msgid ""
-"CentOS is an Enterprise Linux distribution based\n"
-"    on the freely available sources from Red Hat Enterprise Linux.\n"
-"    Each CentOS version is supported for 7 years (by means of\n"
-"    security updates)."
-msgstr ""
-"CentOS es una distribución de Linux Empresarial basada en los paquetes "
-"fuentes libremente disponibles de Red Hat Enterprise Linux. Cada versión de "
-"CentOS es manteninda durante 7 años (por medio de actualizaciones de "
-"seguridad)."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd1.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd2.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd3.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd4.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd5.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd6.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installdvd.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livecd.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd1.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd2.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd3.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd4.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd5.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd6.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installdvd.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livecd.png.sh:46
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livedvd.png.sh:46
-msgid ""
-"A new CentOS version is released every 2 years\n"
-"    and each CentOS version is regularly updated (every 6 months) to\n"
-"    support newer hardware."
-msgstr ""
-"Una versión nueva de CentOS es liberada cada 2 años y cada versión de CentOS "
-"es actualizada regularmente (cada 6 meses) para mantener hardware nuevo."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd1.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd2.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd3.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd4.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd5.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installcd6.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-installdvd.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livecd.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/i386/sleeve-livedvd.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd1.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd2.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd3.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd4.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd5.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installcd6.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-installdvd.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livecd.png.sh:50
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Identity/Themes/Promo/Stationery/Media/5.5/x86_64/sleeve-livedvd.png.sh:50
-msgid ""
-"This results in a secure, low-maintenance,\n"
-"    reliable, predictable and reproducible environment."
-msgstr ""
-"Esto resulta un entorno seguro, de baja mantención, confiable, predecible y "
-"reproducible."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/eula.txt.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/eula.txt.sh:37
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/eula.txt.sh:37
-msgid "CentOS =RELEASE= EULA"
-msgstr "CentOS =RELEASE= EULA"
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/eula.txt.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/eula.txt.sh:39
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/eula.txt.sh:39
-msgid ""
-"CentOS =RELEASE= comes with no guarantees or\n"
-"    warranties of any sorts, either written or implied."
-msgstr ""
-"CentOS =RELEASE= viene sin garantías o respaldos escritos o implícitos de "
-"ningún tipo."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/eula.txt.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/eula.txt.sh:42
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/eula.txt.sh:42
-msgid ""
-"The Distribution is released as GPL. Individual\n"
-"    packages in the distribution come with their own licences."
-msgstr ""
-"La distribución es liberada bajo los términos de la licencia GPL. Los "
-"paquetes individuales dentro de la distribución vienen con sus propias "
-"licencias."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:49
-msgid "CentOS =RELEASE= Release Notes"
-msgstr "Notas de la publicación de CentOS =RELEASE="
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:51
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:51
-msgid ""
-"The CentOS project welcomes you to CentOS\n"
-"    =RELEASE=."
-msgstr "El proyecto CentOS le da la bienvenida a CentOS =RELEASE=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:54
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:54
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:54
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:54
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:54
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:54
-msgid ""
-"The complete release notes for CentOS =RELEASE=\n"
-"    can be found online at: =LINK="
-msgstr "Las notas completas para esta versión puede encontrarse en: =LINK=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:57
-msgid ""
-"A list of frequently asked questions and answers\n"
-"    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="
-msgstr ""
-"Una lista de las preguntas y respuestas más frecuentes acerca de CentOS "
-"=MAJOR_RELEASE= puede encontrarse en: =LINK=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:60
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:60
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:60
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:60
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:60
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:60
-#, sh-format
-msgid ""
-"If you are looking for help with CentOS, we\n"
-"    recommend you start at =LINK= for pointers to the different\n"
-"    sources where you can get help."
-msgstr ""
-"Si usted está buscando ayuda con CentOS nosotros le recomendamos empezar "
-"visitando la página =LINK=, allí encontrará indicaciones sobre dónde y cómo "
-"obtener ayuda."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:64
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:64
-msgid ""
-"For more information about The CentOS Project in\n"
-"    general please visit our homepage at: =LINK=."
-msgstr ""
-"Para mayor información acerca de El Proyecto CentOS en general le "
-"recomendamos visitar nuestra página web =LINK=."
-
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.html.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/4/release-notes.txt.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.html.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/5/release-notes.txt.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.html.sh:67
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/Config/Manuals/ReleaseNotes/6/release-notes.txt.sh:67
-msgid ""
-"If you would like to contribute to the CentOS\n"
-"    Project, see =LINK= for areas where you could help."
-msgstr ""
-"Si usted desea contribuir al Proyecto CentOS, busque en =LINK= tópicos o "
-"áreas donde usted puede ayudar."
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Render/render_doIdentity.sh:36
 #, sh-format
@@ -1184,7 +395,7 @@ msgstr[1] "Los enlaces siguientes serán instalados"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doLinkReport.sh:46
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/Verify/verify_doPackageReport.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:93
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:78
 msgid "Do you want to continue"
 msgstr "¿Desea continuar?"
 
@@ -1351,6 +562,10 @@ msgstr "¿Desea ver los cambios ahora?"
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_commitRepoChanges.sh:193
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
+
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:144
+msgid "The CentOS Project corporate visual identity."
+msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_getCopyrightInfo.sh:160
 msgid "The CentOS distribution is released as GPL."
@@ -3084,33 +2299,32 @@ msgstr "El primer argumento es obligatorio."
 msgid "First argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:64
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:48
 msgid "The following entry will be created"
 msgid_plural "The following entries will be created"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:69
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:53
 msgid "The following entry will be deleted"
 msgid_plural "The following entries will be deleted"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:74
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:58
 msgid "Translatable strings will be retrived from the following entry"
 msgid_plural "Translatable strings will be retrived from the following entries"
-msgstr[0] ""
-"Las cadenas traducibles serán recuperadas de la entrada siguiente"
+msgstr[0] "Las cadenas traducibles serán recuperadas de la entrada siguiente"
 msgstr[1] ""
 "Las cadenas traducibles serán recuperadas de las entradas siguientes"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:79
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:63
 msgid "The following file will be edited"
 msgid_plural "The following files will be edited"
 msgstr[0] "El fichero siguiente será editado"
 msgstr[1] "Los ficheros siguientes serán editados"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:83
+#: /home/centos/artwork/trunk/Scripts/Bash/Functions/cli_printActionPreamble.sh:68
 msgid "The second argument is not valid."
 msgstr "El segundo argumento no es válido."
 
@@ -3177,6 +2391,404 @@ msgstr "Para conocer más, ejecute el command siguiente"
 #: /home/centos/artwork/trunk/Scripts/Bash/Styles/renameFile.sh:29
 msgid "Syntax: ./update-filenames.sh <PATH> <FILTER> <PATTERN> <VALUE>"
 msgstr "Sintáxis: ./update-filenames <CAMINO> <FILTRO> <PATRÓN> <VALOR>"
+
+#~ msgid "Welcome to CentOS =MAJOR_RELEASE=!"
+#~ msgstr "Bienvenido a CentOS =MAJOR_RELEASE=!"
+
+#~ msgid "Thank you for installing CentOS =MAJOR_RELEASE=."
+#~ msgstr "Gracias por instalar CentOS."
+
+#~ msgid ""
+#~ "CentOS is an enterprise-class Linux Distribution derived from sources "
+#~ "freely provided to the public by a prominent North American Enterprise "
+#~ "Linux vendor."
+#~ msgstr ""
+#~ "CentOS es una distribución Linux de clase empresarial derivado de fuentes "
+#~ "libremente disponibles al público por un prominente vendedor "
+#~ "Norteamericano de Linux Empresarial."
+
+#~ msgid ""
+#~ "CentOS conforms fully with the upstream vendors redistribution policy and "
+#~ "aims to be 100% binary compatible."
+#~ msgstr ""
+#~ "CentOS es compatible 100% con las políticas de distribución del proveedor "
+#~ "y su objetivo es ser 100% compatible binario."
+
+#~ msgid ""
+#~ "CentOS mainly changes packages to remove upstream vendor branding and "
+#~ "artwork."
+#~ msgstr ""
+#~ "CentOS realiza cambios en los paquetes para fundamentalmente eliminar las "
+#~ "marcas y demás referencias comerciales del proveedor."
+
+#~ msgid "CentOS Donations"
+#~ msgstr "Donaciones para CentOS"
+
+#~ msgid ""
+#~ "The organization that produces CentOS is named The CentOS Project. We are "
+#~ "not affiliated with any other organization."
+#~ msgstr ""
+#~ "La organización que produce CentOS se llama The CentOS Project. The "
+#~ "CentOS Project no está afiliada con ninguna otra organización."
+
+#~ msgid ""
+#~ "Our only source of hardware or funding to distribute CentOS is by "
+#~ "donations."
+#~ msgstr ""
+#~ "La donación es nuestra única fuente de hardware y financiamento para "
+#~ "distribuir CentOS."
+
+#~ msgid ""
+#~ "Please consider donating to the CentOS Project if you find CentOS useful."
+#~ msgstr ""
+#~ "Si usted encuentra a CentOS de utilidad, por favor considere realizar una "
+#~ "donación al proyecto."
+
+#~ msgid "Managing Software with Yum"
+#~ msgstr "Gestión de paquetes con Yum"
+
+#~ msgid ""
+#~ "The recommended way to install or upgrade CentOS is to use <flowSpan "
+#~ "style=\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater, Modified)"
+#~ msgstr ""
+#~ "La forma recomendada para instalar o actualizar CentOS es usar <flowSpan "
+#~ "style=\"font-weight:bold\">Yum</flowSpan> (Yellow Dog Updater, Modified)."
+
+#~ msgid ""
+#~ "See the guide entitled: \"Managing Software with Yum\" at the "
+#~ "documentation link below."
+#~ msgstr ""
+#~ "Vea la guía titulada: \"Managing Software with Yum\" en el enlace a la "
+#~ "documentación siguiente."
+
+#~ msgid ""
+#~ "<flowSpan style=\"font-weight:bold\">YumEx</flowSpan>, a graphical front "
+#~ "end for Yum, is also available from the CentOS Extras repository."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">YumEx</flowSpan>, una interfase "
+#~ "gráfica para Yum, también está disponible en el repositorio CentOS Extras."
+
+#~ msgid "CentOS Repositories"
+#~ msgstr "Repositorios de software"
+
+#~ msgid "The following repositories exist in CentOS to install software from:"
+#~ msgstr ""
+#~ "Los siguientes repositorios existen en CentOS desde los cuales se pueden "
+#~ "instalar aplicaciones:"
+
+#~ msgid ""
+#~ "<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (aka <flowSpan "
+#~ "style=\"font-weight:bold\">[os]</flowSpan>) - The RPMS released on a "
+#~ "CentOS ISO."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">[base]</flowSpan> (alias <flowSpan "
+#~ "style=\"font-weight:bold\">[os]</flowSpan>) - RPMS presentes en los "
+#~ "ficheros ISO de CentOS."
+
+#~ msgid ""
+#~ "<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - Updates to "
+#~ "the [base] repository."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">[updates]</flowSpan> - "
+#~ "Actualizaciones al repositorio [base]."
+
+#~ msgid ""
+#~ "<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Items by "
+#~ "CentOS that are not upstream (does not upgrade [base])."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">[extras]</flowSpan> - Paquetes que "
+#~ "no están presentes en el proveedor (no mejoran paquetes de [base])."
+
+#~ msgid ""
+#~ "<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - Items by "
+#~ "CentOS that are not upstream (does upgrade [base])"
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">[centosplus]</flowSpan> - Paquetes "
+#~ "que no están presentes en el proveedor (mejoran paquetes de [base])."
+
+#~ msgid "CentOS Plus Repository"
+#~ msgstr "Repositorio CentOS Plus"
+
+#~ msgid ""
+#~ "This repository is for items that actually upgrade certain base CentOS "
+#~ "components. This repo will change CentOS to not be exactly like the "
+#~ "upstream providers content."
+#~ msgstr ""
+#~ "Este repositorio es para paquetes que actualizarán ciertos componentes "
+#~ "del repositorio base. Este repo cambiará a CentOS de forma tal que ya no "
+#~ "será exactamente como los contenidos del proveedor."
+
+#~ msgid ""
+#~ "The CentOS development team has tested every item in this repo, and they "
+#~ "build and work under CentOS =MAJOR_RELEASE=. They have not been tested by "
+#~ "the upstream provider, and are not available in the upstream products."
+#~ msgstr ""
+#~ "El equipo de desarrollo de CentOS ha probado cada paquete de este "
+#~ "repositorio, y cada uno compila y trabaja bajo CentOS =MAJOR_RELEASE=. "
+#~ "Estos mismos paquetes no han sido probados por el proveedor ni están "
+#~ "disponibles entre sus productos."
+
+#~ msgid ""
+#~ "You should understand that use of the components removes the 100% binary "
+#~ "compatibility with the upstream\n"
+#~ "    products."
+#~ msgstr ""
+#~ "El uso de estos paquetes elimina la compatibilidad binaria del 100% "
+#~ "respecto a los paquetes del proveedor."
+
+#~ msgid "Help with CentOS"
+#~ msgstr "Ayuda con CentOS"
+
+#~ msgid ""
+#~ "You can get help with CentOS in several ways,\n"
+#~ "    including:"
+#~ msgstr "Usted puede obtener ayuda con CentOS de varias maneras, incluyendo:"
+
+#~ msgid ""
+#~ "<flowSpan\n"
+#~ "    style=\"font-weight:bold\">Internet Relay Chat\n"
+#~ "    (IRC)</flowSpan> - #centos, #centos-social and #centos-devel on\n"
+#~ "    irc.freenode.net."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">Internet Relay Chat (IRC)</flowSpan> "
+#~ "- canales #centos, #centos-social y #centos-devel en irc.freenode.net."
+
+#~ msgid ""
+#~ "<flowSpan style=\"font-weight:bold\">Mailing\n"
+#~ "    Lists</flowSpan> - CentOS, CentOS-Devel, CentOS-Annouces and\n"
+#~ "    non-English localized language lists from =URL_LISTS=."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">Listas de Correo</flowSpan> - "
+#~ "CentOS, CentOS-Devel, CentOS-Announce y en las listas expecíficas de "
+#~ "otros idiomas que aparecen en =URL_LISTS=."
+
+#~ msgid ""
+#~ "<flowSpan\n"
+#~ "    style=\"font-weight:bold\">Forums</flowSpan> - Available at\n"
+#~ "    =URL_FORUMS=."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">Foros</flowSpan> - Disponibles en "
+#~ "=URL_FORUMS=."
+
+#~ msgid ""
+#~ "<flowSpan\n"
+#~ "    style=\"font-weight:bold\">Wiki</flowSpan> - Available at\n"
+#~ "    =URL_WIKI=."
+#~ msgstr ""
+#~ "<flowSpan style=\"font-weight:bold\">Wiki</flowSpan> - Disponibles en "
+#~ "=URL_WIKI=."
+
+#~ msgid "CentOS Documentation"
+#~ msgstr "Documentación para CentOS"
+
+#~ msgid "The following documentation is available for CentOS:"
+#~ msgstr "La siguiente documentación esta disponible para CentOS:"
+
+#~ msgid "Deployment Guide"
+#~ msgstr "Guía de desarrollo"
+
+#~ msgid "Installation Guide"
+#~ msgstr "Guía de instalación"
+
+#~ msgid "Virtualization Guide"
+#~ msgstr "Guía de virtualización"
+
+#~ msgid "Cluster Suite Overview"
+#~ msgstr "Introducción a la suite de cluster"
+
+#~ msgid "Cluster Administration"
+#~ msgstr "Administración de cluster"
+
+#~ msgid "Cluster Logical Volume Manager"
+#~ msgstr "Administrador de volúmenes lógicos de cluster"
+
+#~ msgid "Global File System"
+#~ msgstr "Sistema de fichero global"
+
+#~ msgid "Global Network Block Device"
+#~ msgstr "Dispositivo de bloque de red global"
+
+#~ msgid "Virtual Server Administration"
+#~ msgstr "Administración de serividor virtual"
+
+#~ msgid "Managing Software with yum"
+#~ msgstr "Administrado software con yum"
+
+#~ msgid "Using YumEx"
+#~ msgstr "Usando Yumex"
+
+#~ msgid "Release notes for all software"
+#~ msgstr "Notas de entrega de los programas"
+
+#~ msgid "CentOS Wiki"
+#~ msgstr "Wiki de CentOS"
+
+#~ msgid ""
+#~ "The CentOS wiki is available with Frequently Asked Questions, HowTos, "
+#~ "Tips and Tricks on a number of CentOS related topics including software "
+#~ "installation, upgrades, repository configuration and much more."
+#~ msgstr ""
+#~ "El wiki de CentOS está disponible con: Preguntas Más Frecuentes (FAQs, "
+#~ "PMF), COMOs (HowTos), Tips y Artículos en varios asuntos relacionados con "
+#~ "CentOS que incluyen instalación de aplicaciones, actualizaciones, "
+#~ "configuración de repositorios y mucho más."
+
+#~ msgid ""
+#~ "The wiki also contains information on CentOS Events in your area and "
+#~ "CentOS media sightings."
+#~ msgstr ""
+#~ "El wiki también contiene información de Eventos de CentOS en su localidad "
+#~ "y CentOS en los medios."
+
+#~ msgid ""
+#~ "In conjuntion with the CentOS-Docs mailing list, contributors can obtain "
+#~ "permission to post articles, tips and HowTos on the CentOS Wiki. So "
+#~ "contribute today!"
+#~ msgstr ""
+#~ "En colaboración con las lista de correo CentOS-Docs, los contribuyentes "
+#~ "pueden obtener permiso para publicar artículos, sugerencias y COMOs "
+#~ "(HowTos) en el wiki de CentOS ... así que contribuye hoy mismo!"
+
+#~ msgid "Virtualization on CentOS =MAJOR_RELEASE="
+#~ msgstr "Virtualización en CentOS =MAJOR_RELEASE="
+
+#~ msgid ""
+#~ "CentOS =MAJOR_RELEASE= provides virtualization via Xen for the i386 and "
+#~ "x86_64 architectures in both fully virtualized and para virtualized modes."
+#~ msgstr ""
+#~ "CentOS =MAJOR_RELEASE= ofrece Virtualización vía Xen para las plataformas "
+#~ "i386 y x86_64 en ambos modos: virtualización completa y "
+#~ "paravirtualización."
+
+#~ msgid ""
+#~ "The Virtualization Guide and Virtual Server Administration Guide are "
+#~ "provided for help with CentOS =MAJOR_RELEASE= virtualization at the link "
+#~ "below."
+#~ msgstr ""
+#~ "La Guía de Virtualización y las Guía para la Administración de un "
+#~ "Servidor Virtual ofrecen información sobre la virtualización en CentOS "
+#~ "=MAJOR_RELEASE=."
+
+#~ msgid "Install CD 1 of 6"
+#~ msgstr "CD instalador 1 de 6"
+
+#~ msgid "for =ARCH= architectures"
+#~ msgstr "para architecturas =ARCH="
+
+#~ msgid "Install CD 2 of 6"
+#~ msgstr "CD instalador 2 de 6"
+
+#~ msgid "Install CD 3 of 6"
+#~ msgstr "CD instalador 3 de 6"
+
+#~ msgid "Install CD 4 of 6"
+#~ msgstr "CD instalador 4 de 6"
+
+#~ msgid "Install CD 5 of 6"
+#~ msgstr "CD instalador 5 de 6"
+
+#~ msgid "Install CD 6 of 6"
+#~ msgstr "CD instalador 6 de 6"
+
+#~ msgid "Install DVD"
+#~ msgstr "DVD instalador"
+
+#~ msgid "Live CD"
+#~ msgstr "CD vivo"
+
+#~ msgid "Live DVD"
+#~ msgstr "DVD vivo"
+
+#~ msgid "What is CentOS?"
+#~ msgstr "¿Qué es CentOS?"
+
+#~ msgid ""
+#~ "CentOS is an Enterprise Linux distribution based\n"
+#~ "    on the freely available sources from Red Hat Enterprise Linux.\n"
+#~ "    Each CentOS version is supported for 7 years (by means of\n"
+#~ "    security updates)."
+#~ msgstr ""
+#~ "CentOS es una distribución de Linux Empresarial basada en los paquetes "
+#~ "fuentes libremente disponibles de Red Hat Enterprise Linux. Cada versión "
+#~ "de CentOS es manteninda durante 7 años (por medio de actualizaciones de "
+#~ "seguridad)."
+
+#~ msgid ""
+#~ "A new CentOS version is released every 2 years\n"
+#~ "    and each CentOS version is regularly updated (every 6 months) to\n"
+#~ "    support newer hardware."
+#~ msgstr ""
+#~ "Una versión nueva de CentOS es liberada cada 2 años y cada versión de "
+#~ "CentOS es actualizada regularmente (cada 6 meses) para mantener hardware "
+#~ "nuevo."
+
+#~ msgid ""
+#~ "This results in a secure, low-maintenance,\n"
+#~ "    reliable, predictable and reproducible environment."
+#~ msgstr ""
+#~ "Esto resulta un entorno seguro, de baja mantención, confiable, predecible "
+#~ "y reproducible."
+
+#~ msgid "CentOS =RELEASE= EULA"
+#~ msgstr "CentOS =RELEASE= EULA"
+
+#~ msgid ""
+#~ "CentOS =RELEASE= comes with no guarantees or\n"
+#~ "    warranties of any sorts, either written or implied."
+#~ msgstr ""
+#~ "CentOS =RELEASE= viene sin garantías o respaldos escritos o implícitos de "
+#~ "ningún tipo."
+
+#~ msgid ""
+#~ "The Distribution is released as GPL. Individual\n"
+#~ "    packages in the distribution come with their own licences."
+#~ msgstr ""
+#~ "La distribución es liberada bajo los términos de la licencia GPL. Los "
+#~ "paquetes individuales dentro de la distribución vienen con sus propias "
+#~ "licencias."
+
+#~ msgid "CentOS =RELEASE= Release Notes"
+#~ msgstr "Notas de la publicación de CentOS =RELEASE="
+
+#~ msgid ""
+#~ "The CentOS project welcomes you to CentOS\n"
+#~ "    =RELEASE=."
+#~ msgstr "El proyecto CentOS le da la bienvenida a CentOS =RELEASE=."
+
+#~ msgid ""
+#~ "The complete release notes for CentOS =RELEASE=\n"
+#~ "    can be found online at: =LINK="
+#~ msgstr "Las notas completas para esta versión puede encontrarse en: =LINK=."
+
+#~ msgid ""
+#~ "A list of frequently asked questions and answers\n"
+#~ "    about CentOS =MAJOR_RELEASE= can be found online at: =LINK="
+#~ msgstr ""
+#~ "Una lista de las preguntas y respuestas más frecuentes acerca de CentOS "
+#~ "=MAJOR_RELEASE= puede encontrarse en: =LINK=."
+
+#~ msgid ""
+#~ "If you are looking for help with CentOS, we\n"
+#~ "    recommend you start at =LINK= for pointers to the different\n"
+#~ "    sources where you can get help."
+#~ msgstr ""
+#~ "Si usted está buscando ayuda con CentOS nosotros le recomendamos empezar "
+#~ "visitando la página =LINK=, allí encontrará indicaciones sobre dónde y "
+#~ "cómo obtener ayuda."
+
+#~ msgid ""
+#~ "For more information about The CentOS Project in\n"
+#~ "    general please visit our homepage at: =LINK=."
+#~ msgstr ""
+#~ "Para mayor información acerca de El Proyecto CentOS en general le "
+#~ "recomendamos visitar nuestra página web =LINK=."
+
+#~ msgid ""
+#~ "If you would like to contribute to the CentOS\n"
+#~ "    Project, see =LINK= for areas where you could help."
+#~ msgstr ""
+#~ "Si usted desea contribuir al Proyecto CentOS, busque en =LINK= tópicos o "
+#~ "áreas donde usted puede ayudar."
 
 #~ msgid "The following translation files will be updated:"
 #~ msgstr "Los ficheros de traducción siguientes serán actualizados:"
