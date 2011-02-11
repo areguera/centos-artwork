@@ -66,9 +66,6 @@ function locale_updateMessageMetadata {
     # Replace package information using gettext domain information.
     sed -i -r "s/PACKAGE/${TEXTDOMAIN}/g" ${FILE}
 
-    # Apply common replacements to sanitated patterns.
-    cli_replaceTMarkers "${FILE}"
-
     # Unset array variables to avoid undesired concatenations.
     unset SRC
     unset DST
