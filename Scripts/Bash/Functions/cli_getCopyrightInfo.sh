@@ -141,22 +141,22 @@ function cli_getCopyrightInfo {
         '--description' )
 
             # Define default description information.
-            NOTE="The CentOS Project corporate visual identity."
+            NOTE="`gettext "The CentOS Project corporate visual identity."`"
 
             # Define description information for directory structures
             # that don't use default description information.
-            NOTES[0]="=THEMENAME= is an artistic motif and theme for ${NOTE}"
+            NOTES[0]="`gettext "=THEMENAME= is an artistic motif and theme for ${NOTE}"`"
             ;;
 
         '--license' )
 
             # Define default license information used by all
             # image-based creations inside CentOS Artwork Repository.
-            NOTE="Creative Common Attribution-ShareAlike 3.0 License."
+            NOTE="Creative Common Attribution-ShareAlike 3.0"
 
             # Define license information for directory structures that
             # don't match default license information.
-            NOTES[0]="=THEMENAME= artistic motif and theme are released under ${NOTE}"
+            NOTES[0]="`eval_gettext "=THEMENAME= artistic motif and theme are released under ${NOTE}"`"
             NOTES[1]="`gettext "The CentOS distribution is released as GPL."`"
             ;;
         
