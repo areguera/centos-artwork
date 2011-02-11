@@ -33,33 +33,17 @@
 function cli_printActionPreamble {
 
     local DIR=''
-    local DIRS=''
-    local PARENT="$1"
+    local DIRS="$1"
     local ACTION="$2"
     local FORMAT="$3"
     local COUNT_DIRS=0
-
-    # Redefine directories using both parent and parallel directories
-    # if PARENT path is only inside trunk/Identity structure.
-    # Otherwise do not resolve parallel directories just parent ones.
-    # This make possible to reuse cli_printActionPreamble in
-    # functionalities that act on non-parent directory structures like
-    # documentation (trunk/Manuals). 
-    if [[ $PARENT =~ "^$(cli_getRepoTLDir ${PARENT})/Identity/.+$" ]];then
-        for DIR in $(echo $PARENT);do
-           DIRS="$DIRS $DIR $(cli_getRepoParallelDirs $DIR)"
-        done
-    else
-        for DIR in $(echo $PARENT);do
-           DIRS="$DIRS $DIR"
-        done
-    fi
 
     # Redefine total number of directories.
     COUNT_DIRS=$(echo "$DIRS" | sed -r "s! +!\n!g" | wc -l)
 
     # Redefine preamble messages based on action.
     case $ACTION in
+
         'doCreate' )
             ACTION="`ngettext "The following entry will be created" \
             "The following entries will be created" $COUNT_DIRS`:"
@@ -71,8 +55,13 @@ function cli_printActionPreamble {
             ;;
 
         'doLocale' )
-            ACTION="`ngettext "Translatable strings will be retrived from the following entry:" \
+            ACTION="`ngettext "Translatable strings will be retrived from the following entry" \
             "Translatable strings will be retrived from the following entries" $COUNT_DIRS`:"
+            ;;
+
+        'doEdit' )
+            ACTION="`ngettext "The following file will be edited" \
+            "The following files will be edited" $COUNT_DIRS`:"
             ;;
 
         * )
