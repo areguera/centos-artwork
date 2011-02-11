@@ -63,6 +63,7 @@ function cli_replaceTMarkers {
     SRC[14]='=URL_FORUMS='
     SRC[15]='=URL_MIRRORS='
     SRC[16]='=URL_DOCS='
+    SRC[17]='=MAIL_DOCS='
 
     # Define replacements for translation markers.
     DST[0]="$(cli_getCopyrightInfo '--copyright')"
@@ -75,13 +76,14 @@ function cli_replaceTMarkers {
     DST[7]="$(cli_getPathComponent "$FILE" '--release')"
     DST[8]="$(cli_getPathComponent "$FILE" '--release-major')"
     DST[9]="$(cli_getPathComponent "$FILE" '--release-minor')"
-    DST[10]="http://$(cli_getCurrentLocale).centos.org/"
+    DST[10]="http://$(cli_getCurrentLocale '--langcode-only').centos.org/"
     DST[11]="$(cli_getPathComponent "$FILE" '--architecture')"
     DST[12]="=URL=wiki/"
     DST[13]="=URL=lists/"
     DST[14]="=URL=forums/"
     DST[15]="=URL=mirrors/"
     DST[16]="=URL=docs/"
+    DST[17]="centos-docs@$(cli_getCurrentLocale '--langcode-only').centos.org"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
