@@ -44,14 +44,14 @@ function locale_updateMessageMetadata {
     # Check existence of file before work with it.
     cli_checkFiles "${FILE}" 'f'
 
-    # Define patterns line. The pattern lines are put inside portable
+    # Define pattern lines. The pattern lines are put inside portable
     # objects through xgettext and xml2po commands .
     SRC[0]='Project-Id-Version:'
     SRC[1]='Report-Msgid-Bugs-To:'
     SRC[2]='Last-Translator:'
     SRC[3]='Language-Team:'
 
-    # Define replacement line for pattern line.
+    # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${CLINAME} (${CURRENTLOCALE})\\\n\""
     DST[1]="\"Report-Msgid-Bugs-To: =MAIL_DOCS=\\\n\""
     DST[2]="\"Last-Translator: CentOS Documentation SIG\\\n\""

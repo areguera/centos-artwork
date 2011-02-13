@@ -29,13 +29,17 @@ function locale_updateMessageXml {
 
     # Define name of file used to create both portable object
     # templates (.pot) and portable objects (.po) files.
-    local FILE="${ACTIONVAL}/$(cli_getCurrentLocale)"
+    local FILE="${WORKDIR}/$(cli_getCurrentLocale)"
 
-    # Redefine filter pattern in order to reduce match to scalable
-    # vector graphics only.
-    local FLAG_FILTER="${FLAG_FILTER}.*\.(xml|svg)"
+    # Redefine filtering pattern in order to get XML-based files only
+    # using repository directory structures as reference.
+    if [[ $ACTIONVAL =~ 'trunk/Identity/.+' ]];then
+        FLAG_FILTER="${FLAG_FILTER}.*\.svg"
+    else
+        FLAG_FILTER="${FLAG_FILTER}.*\.xml"
+    fi
 
-    # Build list of XML-base files which we want retrive translatable
+    # Build list of XML-base files we want retrive translatable
     # strings from.
     cli_getFilesList
 

@@ -3,7 +3,7 @@
 # locale_updateMessageShell.sh -- This function parses shell scripts
 # under action value, retrives translatable strings and
 # creates/updates both portable object templates (.pot) and portable
-# objects (.po). 
+# objects (.po).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -28,28 +28,35 @@
 
 function locale_updateMessageShell {
 
-    # Redefine filter pattern in order to reduce match to scalable
-    # vector graphics only.
-    local FLAG_FILTER="${FLAG_FILTER}.*\.(sh|py|pl)"
+    # Redefine locales work directory to store locale-specific files.
+    # The redefinition should be done locally to avoid undesired
+    # concatenations.
+    local WORKDIR=${WORKDIR}/$(cli_getCurrentLocale)
 
-    # Define location where shell script files (e.g., Bash, Python,
-    # Perl, etc.), we want to have translation for, are place in.
-    local LOCATION="$(echo ${ACTIONVAL} \
-        | sed -r "s!trunk/Locales/Scripts!trunk/Scripts!")"
+    # Create locales work directory if it doesn't exist.
+    if [[ ! -d ${WORKDIR} ]];then
+        mkdir -p ${WORKDIR}
+    fi
 
-    # Define name of file used to create both portable object
-    # templates (.pot) and portable objects (.po) files.
-    local FILE="${ACTIONVAL}/$(cli_getCurrentLocale)/${TEXTDOMAIN}"
+    # Define file-name used as reference to create portable object
+    # templates (.pot), portable objects (.po) and machine objects
+    # (.mo).
+    local FILE="${WORKDIR}/${TEXTDOMAIN}"
 
-    # Verify existence of directory where .pot, .po, and .mo files
-    # will be stored.
-    if [[ ! -d $(dirname $FILE) ]];then
-        mkdir -p $(dirname $FILE)
+    # Redefine filter pattern in order to get shell scripts only.
+    # Since centos-art.sh is written in Bash, centos-art.sh does
+    # retrive translatable strings from shell scripts written in Bash
+    # only.
+    if [[ $ACTIONVAL =~ "$(cli_getRepoTLDir)/Scripts/Bash/.*$" ]];then
+        FLAG_FILTER="${FLAG_FILTER}.*\.sh"
+    else
+        cli_printMessage "`gettext "The path provided can't be processed."`"
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
     # Build list of XML-base files which we want retrive translatable
     # strings from.
-    cli_getFilesList "${LOCATION}"
+    cli_getFilesList
 
     # Print out action preamble. Since the `--filter' option can be
     # supplied, it is useful to know which files we are getting

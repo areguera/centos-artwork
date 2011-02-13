@@ -1,9 +1,11 @@
 #!/bin/bash
 #
-# locale_updateMessages.sh -- This function updates translatable
-# strings inside portable object templates (.pot) and creates portable
-# objects (.po) from it. Translatable strings are taken from both
-# XML-based  files (using xml2po) and shell scripts (using xgettext).
+# locale_updateMessages.sh -- This function extracts translatable
+# strings from both XML-based files (using xml2po) and shell scripts
+# (using xgettext). Translatable strings are initially stored in
+# portable objects templates (.pot) which are later merged into
+# portable objects (.po) in order to be optionally converted as
+# machine objects (.mo).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -30,25 +32,17 @@ function locale_updateMessages {
 
     local ACTIONNAM=''
 
-    # Define base directory structure where locale files (.pot, .po,
-    # .mo) are stored using parallel directories layout.
-    local ACTIONDIR="$(cli_getRepoTLDir)/Locales"
-
-    # Syncronize changes between the working copy and the central
-    # repository.
-    cli_commitRepoChanges
-
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $ACTIONVAL =~ "^${ACTIONDIR}/(Identity|Manuals)/.+$" ]];then
+    if [[ $WORKDIR =~ "^${BASEDIR}/(Identity|Manuals)/.+$" ]];then
 
         # Update translatable strings inside portable object templates
         # for XML-based files (e.g., scalable vector graphics).
         ACTIONNAM="${FUNCNAM}_updateMessageXml" 
 
-    elif [[ $ACTIONVAL =~ "^${ACTIONDIR}/Scripts/.+$" ]];then
+    elif [[ $WORKDIR =~ "^${BASEDIR}/Scripts/.+$" ]];then
 
         # Update translatable strings inside portable object templates
         # for shell scripts (e.g., centos-art.sh script).
@@ -65,9 +59,5 @@ function locale_updateMessages {
     if [[ $ACTIONNAM != '' ]];then
         eval $ACTIONNAM
     fi
-
-    # Syncronize changes between the working copy and the central
-    # repository.
-    cli_commitRepoChanges
 
 }

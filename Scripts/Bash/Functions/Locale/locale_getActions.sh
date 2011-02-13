@@ -30,7 +30,7 @@ function locale_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="update:,edit:,report:,dont-create-mo"
+    local ARGSL="update:,edit:,dont-create-mo"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -39,7 +39,7 @@ function locale_getActions {
     # parser.
     eval set -- "$ARGUMENTS"
 
-    # Define action to take for each option passed.
+    # Look for options passed through command-line.
     while true; do
         case "$1" in
 
@@ -51,7 +51,7 @@ function locale_getActions {
                 # Redefine action value.
                 ACTIONVAL="$2"
 
-                # Break while loop.
+                # Rotate positional parameters
                 shift 2
                 ;;
 
@@ -63,19 +63,7 @@ function locale_getActions {
                 # Redefine action value.
                 ACTIONVAL="$2"
 
-                # Break while loop.
-                shift 2
-                ;;
-
-            --report )
-
-                # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_printTranslationReport"
-
-                # Redefine action value.
-                ACTIONVAL="$2"
-
-                # Break while loop.
+                # Rotate positional parameters
                 shift 2
                 ;;
 
@@ -84,7 +72,7 @@ function locale_getActions {
                 # Redefine create machine object flag.
                 FLAG_DONT_CREATE_MO="true"
 
-                # Break while loop.
+                # Rotate positional parameters
                 shift 1
                 ;;
 
@@ -99,15 +87,24 @@ function locale_getActions {
     # copy.
     cli_checkRepoDirSource
 
-    # Redefine action value variable in order to transform
-    # `trunk/Identity/' and `trunk/Manuals/' parent directory
-    # structures into `trunk/Locales' parallel directory structures.
-    # This way we can use parent directory paths to update related
-    # entries inside `trunk/Locales/' directory structures.
-    ACTIONVAL=$(echo $ACTIONVAL | sed -r \
+    # Define locales base directory where locale directory structures
+    # are stored in.
+    local BASEDIR="$(cli_getRepoTLDir)/Locales"
+
+    # Define locales work directory. This is the place where locale
+    # files (e.g., .po, .pot, .mo), for a specific parent directories,
+    # are stored in. There is one locale work directory for each
+    # parent directory or said differently, each parent directory has
+    # a parallel directory under `trunk/Locales' to store its
+    # translation messages.
+    local WORKDIR=$(echo $ACTIONVAL | sed -r \
             -e 's!trunk/(Identity|Manuals|Scripts)/!trunk/Locales/\1/!' \
-            -e "s!Motifs/$(cli_getPathComponent '--theme')/?!!")
-            
+            -e "s!Models/([A-Za-z0-9]+)/?!!")
+   
+    # Syncronize changes between the working copy and the central
+    # repository.
+    cli_commitRepoChanges "${WORKDIR}"
+
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
@@ -115,5 +112,9 @@ function locale_getActions {
         cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Syncronize changes between the working copy and the central
+    # repository.
+    cli_commitRepoChanges "${WORKDIR}"
 
 }

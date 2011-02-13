@@ -48,7 +48,7 @@ function locale_updateMessageBinary {
         MO=$(dirname ${PO})/LC_MESSAGES/$(basename ${PO} | sed -r 's!\.po$!.mo!')
 
         # Print action message.
-        if [[ -f ${FILE} ]];then
+        if [[ -f ${MO} ]];then
             cli_printMessage "${MO}" 'AsUpdatingLine'
         else
             cli_printMessage "${MO}" 'AsCreatingLine'
@@ -57,8 +57,8 @@ function locale_updateMessageBinary {
         # Define directory used to store machine object.
         MODIR=$(dirname ${MO})
 
-        # Verify existence of directory used to store machine object
-        # files.
+        # Create directory to store machine object, if it doesn't
+        # exist.
         if [[ ! -d ${MODIR} ]];then
             mkdir -p ${MODIR}
         fi

@@ -26,16 +26,11 @@
 
 function locale_editMessages {
 
-    # Syncronize changes between the working copy and the central
-    # repository.
-    cli_commitRepoChanges
-
-    # Redefine filter pattern in order to reduce match to portable
-    # objects only.
+    # Redefine filter pattern in order to get portable objects only.
     local FLAG_FILTER="${FLAG_FILTER}.*\.po"
 
     # Build list of portable objects which we want to edit.
-    cli_getFilesList
+    cli_getFilesList "${WORKDIR}"
 
     # Print action preamble. 
     cli_printActionPreamble "${FILES}" "doEdit" 'AsResponseLine'
@@ -45,9 +40,5 @@ function locale_editMessages {
 
     # Update machine object (.mo) from portable object (.po).
     locale_updateMessageBinary ${FILES}
-
-    # Syncronize changes between the working copy and the central
-    # repository.
-    cli_commitRepoChanges
 
 }

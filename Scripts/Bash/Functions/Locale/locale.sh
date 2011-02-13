@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # locale.sh -- This function provides internationalization features to
-# centos-art.sh script by means of gettext.
+# centos-art.sh script through gettext standard processes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,9 +27,9 @@
 function locale {
 
     # Initialize default value to create/update machine object flag.
-    # The machine object flag (--create-mo) controls whether
-    # centos-art.sh script creates/updates the machine object related
-    # to portable object or not.
+    # The machine object flag (--dont-create-mo) controls whether
+    # centos-art.sh script does create/update the machine object
+    # related object or not.
     local FLAG_DONT_CREATE_MO='false'
 
     # Define the command-line interface.
