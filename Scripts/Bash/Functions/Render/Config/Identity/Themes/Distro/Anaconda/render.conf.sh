@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_loadConfig.sh -- This function defines Anaconda splash
-# pre-rendition configuration script.
+# render_loadConfig.sh -- This function defines Anaconda pre-rendition
+# configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
