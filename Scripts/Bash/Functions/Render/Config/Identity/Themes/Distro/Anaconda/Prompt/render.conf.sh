@@ -31,9 +31,6 @@ function render_loadConfig {
     ACTIONS[1]='POST:renderSyslinux:'
     ACTIONS[2]='POST:renderSyslinux:-floyd'
 
-    # Define matching list.
-    MATCHINGLIST=''
-
     # Deifne theme model.
     #THEMEMODEL='Default'
 

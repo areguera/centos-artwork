@@ -30,9 +30,6 @@ function render_loadConfig {
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='LAST:renderKSplash'
 
-    # Define matching list.
-    MATCHINGLIST=''
-
     # Deifne theme model.
     #THEMEMODEL='Default'
 

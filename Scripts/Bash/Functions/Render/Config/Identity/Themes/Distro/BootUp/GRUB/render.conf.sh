@@ -31,9 +31,6 @@ function render_loadConfig {
     ACTIONS[1]='POST:renderGrub:'
     ACTIONS[2]='POST:renderGrub:-floyd'
 
-    # Define matching list.
-    #MATCHINGLIST=''
-
     # Deifne theme model.
     #THEMEMODEL='Default'
 

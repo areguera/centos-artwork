@@ -29,9 +29,6 @@ function render_loadConfig {
     # Define rendition actions.
     ACTIONS[0]='BASE:renderImage'
 
-    # Define matching list.
-    MATCHINGLIST="release.svg"
-
     # Deifne theme model.
     #THEMEMODEL='Default'
 

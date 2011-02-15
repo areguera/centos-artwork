@@ -30,7 +30,4 @@ function render_loadConfig {
     ACTIONS[0]='BASE:renderImage'
     ACTIONS[1]='POST:renderFormats: pdf jpg'
 
-    # Define matching list.
-    MATCHINGLIST=''
-
 }

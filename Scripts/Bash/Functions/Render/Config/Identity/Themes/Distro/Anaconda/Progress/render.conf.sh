@@ -29,28 +29,6 @@ function render_loadConfig {
     # Define rendition actions.
     ACTIONS[0]='BASE:renderImage'
 
-    # Define matching list between design models and translation
-    # files.
-    MATCHINGLIST="\
-    first-lowres.svg:\
-       first-lowres.png.sh\
-        progress_first-lowres.png.sh
-    first.svg:\
-        first.png.sh\
-        progress_first.png.sh
-    paragraph.svg:\
-        01-welcome.png.sh\
-        02-donate.png.sh\
-        03-yum.png.sh\
-        04-repos.png.sh\
-        05-centosplus.png.sh\
-        06-support.png.sh\
-        08-wiki.png.sh\
-        09-virtualization.png.sh
-    list.svg:\
-        07-docs.png.sh
-        "
-
     # Deifne theme model.
     #THEMEMODEL='Default'
 

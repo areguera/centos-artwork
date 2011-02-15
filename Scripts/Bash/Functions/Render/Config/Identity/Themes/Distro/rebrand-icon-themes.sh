@@ -79,7 +79,7 @@ for FILE in $FILES;do
    done
 done
 
-# SVG Files.
+# TEMPLATE Files.
 cp -v $SRC_LOGOS/Tpl/centos/symbols/kmenu.svgz \
    /usr/share/icons/crystalsvg/scalable/apps/kmenu.svgz
 
