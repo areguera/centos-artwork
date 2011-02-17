@@ -26,7 +26,15 @@
 
 function svg_vacuumDefs {
 
-    # Define list of files to process.
+    local FILE=''
+    local FILES=''
+
+    # Redefine filter flag to specify the extension of scalable vector
+    # graphics files we want to update metadata in.  Use action value
+    # as reference to find out different shell files.
+    FLAG_FILTER=".*${FLAG_FILTER}.*\.(svgz|svg)"
+
+    # Build list of files to process.
     cli_getFilesList
 
     # Process list of files.
@@ -39,9 +47,5 @@ function svg_vacuumDefs {
         inkscape --vacuum-defs $FILE &> /dev/null
 
     done
-
-    # Check repository changes and ask user to commit them up to
-    # central repository.
-    cli_commitRepoChanges
 
 }

@@ -26,9 +26,6 @@
     
 function svg {
 
-    # Define variables.
-    local FILES=''
-
     # Define command-line interface.
     svg_getActions
 
