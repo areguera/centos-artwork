@@ -27,10 +27,10 @@
 function html_getActions {
 
     # Define short options we want to support.
-    local ARGSS="f:"
+    local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,update-headings:"
+    local ARGSL="update-headings:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -48,30 +48,11 @@ function html_getActions {
                 # Define action value passed through the command-line.
                 ACTIONVAL="$2"
 
-                # Check action value passed through the command-line.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_updateHeadings"
 
-                # Look for sub-options passed through command-line.
-                while true; do
-                    case "$3" in
-                        -f|--filter )
-                            # Redefine regular expression.
-                            FLAG_FILTER="$4"
-                            # Rotate positional parameters
-                            shift 4
-                            ;;
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
 
             * )
@@ -79,13 +60,14 @@ function html_getActions {
         esac
     done
 
-    # Verify action value variable.
-    if [[ $ACTIONVAL == '' ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Check action value. Be sure the action value matches the
+    # convenctions defined for source locations inside the working
+    # copy.
+    cli_checkRepoDirSource
 
-    # Redefine regular expression to match html files only.
-    FLAG_FILTER=$(echo "${FLAG_FILTER}.*\.(html|htm)")
+    # Syncronize changes between the working copy and the central
+    # repository to bring down changes.
+    cli_commitRepoChanges "${WORKDIR}"
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -94,5 +76,9 @@ function html_getActions {
         cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Syncronize changes between the working copy and the central
+    # repository to commit up changes.
+    cli_commitRepoChanges "${WORKDIR}"
 
 }
