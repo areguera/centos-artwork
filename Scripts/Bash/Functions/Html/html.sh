@@ -26,9 +26,6 @@
     
 function html {
 
-    # Define variables.
-    local FILES=''
-
     # Define command-line interface.
     html_getActions 
 
