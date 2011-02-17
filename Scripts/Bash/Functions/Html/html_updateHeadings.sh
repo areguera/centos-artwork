@@ -42,6 +42,8 @@ function html_updateHeadings {
 
     # Define variables as local to avoid conflicts outside.
     local COUNT=0
+    local FILE=''
+    local FILES=''
     local PREVCOUNT=0
     local PATTERN=''
     local -a FINAL
@@ -56,6 +58,13 @@ function html_updateHeadings {
     # Define html heading regular expression pattern. Use parenthisis
     # to save html action name, action value, and heading title.
     PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
+
+    # Redefine filter flag to specify the extension of html files the
+    # headings and table of content are built for and so limiting the
+    # list of files to process to the number of files we want to
+    # produce headings and table of content for. Use action value as
+    # reference to find out different shell files.
+    FLAG_FILTER=".*${FLAG_FILTER}.*\.(xhtml|html|htm)"
 
     # Define list of files to process.
     cli_getFilesList
