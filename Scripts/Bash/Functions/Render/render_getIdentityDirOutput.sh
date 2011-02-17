@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# render_getIdentityDirOutput.sh -- This function re-defines final
-# output directory used to store rendered identity artworks.
+# render_getIdentityDirOutput.sh -- This function defines the absolute
+# directory path of identity contents final output. This is, the place
+# where content produced will be stored in.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,15 +27,34 @@
 
 function render_getIdentityDirOutput {
 
-    # By default rendered identity artworks are stored immediatly
-    # under identity entry structure.
-    IMG=$ACTIONVAL
-
+    # Define base output directory. By default rendered identity
+    # artworks are stored immediatly under identity entry structure.
     # But if Img/ or Txt/ directory exists, use it instead.
-    if [[ -d $ACTIONVAL/Img ]]; then
-        IMG=$ACTIONVAL/Img
-    elif [[ -d $ACTIONVAL/Txt ]]; then
-        IMG=$ACTIONVAL/Txt
+    if [[ -d ${ACTIONVAL}/Img ]]; then
+        OUTPUT=${ACTIONVAL}/Img
+    elif [[ -d ${ACTIONVAL}/Txt ]]; then
+        OUTPUT=${ACTIONVAL}/Txt
+    else
+        OUTPUT=${ACTIONVAL}
+    fi
+
+    # Define final output directory. As convenction, when we produce
+    # content in English language, we do not add a laguage-specific
+    # directory to organize content.  However, when we produce content
+    # in a language different from English we do use language-specific
+    # directory to organize content.
+    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
+        OUTPUT=${OUTPUT}/$(dirname "${FILE}")
+    else
+        OUTPUT=${OUTPUT}/$(dirname "${FILE}")/$(cli_getCurrentLocale)
+    fi
+
+    # Remove leading `/.' string from path to final output directory.
+    OUTPUT=$(echo ${OUTPUT} | sed -r 's!/\.!!')
+
+    # Create final output directory, if it doesn't exist yet.
+    if [[ ! -d ${OUTPUT} ]];then
+        mkdir -p ${OUTPUT}
     fi
 
 }
