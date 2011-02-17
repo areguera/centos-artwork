@@ -67,7 +67,7 @@ function html_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_commitRepoChanges "${WORKDIR}"
+    cli_commitRepoChanges
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -79,6 +79,6 @@ function html_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to commit up changes.
-    cli_commitRepoChanges "${WORKDIR}"
+    cli_commitRepoChanges
 
 }
