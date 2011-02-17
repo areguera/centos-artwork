@@ -30,7 +30,7 @@ function path_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="copy:,move:,delete:,to:,quiet,sync,yes"
+    local ARGSL="copy:,move:,delete:,to:,sync"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -88,24 +88,6 @@ function path_getActions {
                 shift 1
                 ;;
 
-            --quiet )
-
-                # Redefine verbosity flag.
-                FLAG_QUIET='true'
-
-                # Rotate positional parameters.
-                shift 1
-                ;;
-
-            --yes )
-
-                # Redefine answer flag.
-                FLAG_YES='true'
-
-                # Rotate positional parameters.
-                shift 1
-                ;;
-
             * )
                 # Break options loop.
                 break
@@ -116,6 +98,10 @@ function path_getActions {
     # using source directory definition as reference.
     cli_checkRepoDirSource
 
+    # Syncronize changes between the working copy and the central
+    # repository to bring down changes.
+    cli_commitRepoChanges "${ACTIOVAL} ${FLAG_TO}"
+
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
@@ -123,5 +109,9 @@ function path_getActions {
         cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Syncronize changes between the working copy and the central
+    # repository to commit up changes.
+    cli_commitRepoChanges "${ACTIOVAL} ${FLAG_TO}"
 
 }

@@ -56,14 +56,6 @@ function path_doCopy {
         . /home/centos/bin/centos-art render --copy="$ACTIONVAL" --to="$FLAG_TO"
         . /home/centos/bin/centos-art locale --copy="$ACTIONVAL" --to="$FLAG_TO"
 
-        # Syncronize changes from working copy to central repository.
-        cli_commitRepoChanges "$ACTIONVAL $FLAG_TO $(cli_getRepoParallelDirs "$FLAG_TO")"
-
-    else
-
-        # Syncronize changes from working copy to central repository.
-        cli_commitRepoChanges "$ACTIONVAL $FLAG_TO"
-
     fi
 
 }

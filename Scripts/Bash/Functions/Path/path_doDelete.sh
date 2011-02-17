@@ -43,7 +43,4 @@ function path_doDelete {
     # Perform action.
     svn del ${ACTIONVAL} --quiet
 
-    # Syncronize changes between working copy and central repository.
-    cli_commitRepoChanges "$ACTIONVAL $(cli_getRepoParallelDirs "$ACTIONVAL")"
-
 }
