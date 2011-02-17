@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# render_checkAbsolutePaths.sh -- This function retrives absolute
+# files and checks their existence. In order for design templates to
+# point different artistic motifs, design templates make use of
+# external files that point to specific artistic motif background
+# images. If such external files doesn't exist, print a message and
+# stop script execution.  We cannot continue without background
+# information.
+#
+# Copyright (C) 2009-2011 Alain Reguera Delgado
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+# USA.
+# 
+# ----------------------------------------------------------------------
+# $Id$
+# ----------------------------------------------------------------------
+
+function render_checkAbsolutePaths {
+
+    local FILE=''
+    local ABSPATHS=''
+
+    # Define absolute path of file we need to retrive absolute paths
+    # from.
+    FILE="$1"
+
+    # Verify existence of file we need to retrive absolute paths from.
+    cli_checkFiles $FILE 'f'
+
+    # Retrive absolute paths from file.
+    ABSPATHS=$(egrep '="/[a-zA-Z0-9_./-]+" ' $FILE \
+        | sed -r "s/ /\n/g" | egrep '(sodipodi:absref|xlink:href)=' \
+        | sed -r "s/.+=\"(\/.+)\"/\1/" | sort | uniq)
+
+    # Verify absolute paths retrived from file.
+    for FILE in $ABSPATHS;do
+        cli_checkFiles $FILE
+    done
+
+}
