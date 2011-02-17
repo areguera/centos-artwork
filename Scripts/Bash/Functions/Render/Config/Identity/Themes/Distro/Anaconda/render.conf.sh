@@ -26,10 +26,12 @@
 
 function render_loadConfig {
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-
     # Deifne theme model.
     #THEMEMODEL='Default'
+
+    # Define rendition actions.
+    #ACTIONS[0]=''
+
+    return
 
 }

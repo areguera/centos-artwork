@@ -26,12 +26,13 @@
 
 function render_loadConfig {
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderSyslinux:'
-    ACTIONS[2]='POST:renderSyslinux:-floyd'
-
     # Deifne theme model.
     #THEMEMODEL='Default'
+
+    # Define rendition actions.
+    ACTIONS[0]='POST:renderSyslinux:'
+    ACTIONS[1]='POST:renderSyslinux:-floyd'
+
+    return
 
 }

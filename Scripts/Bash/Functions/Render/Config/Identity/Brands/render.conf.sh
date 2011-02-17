@@ -26,11 +26,12 @@
 
 function render_loadConfig {
     
-    local TRANSLATION=''
-    local TEMPLATE=''
+    # Deifne theme model.
+    #THEMEMODEL='Default'
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='LAST:renderBrands'
+    # Define rendition actions. 
+    ACTIONS[0]='LAST:renderBrands'
+
+    return
 
 }

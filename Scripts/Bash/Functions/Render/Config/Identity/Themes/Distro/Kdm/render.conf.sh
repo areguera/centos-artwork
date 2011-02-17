@@ -26,12 +26,13 @@
 
 function render_loadConfig {
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]="LAST:renderDm:KDM:800x600 1024x768 1280x1024 1360x768 \
-        1680x1050 2048x1536 2560x960 2560x1240 3271x1227"
-
     # Deifne theme model.
     #THEMEMODEL='Default'
+
+    # Define rendition actions.
+    ACTIONS[0]="LAST:renderDm:Kdm:800x600 1024x768 1280x1024 1360x768 \
+        1680x1050 2048x1536 2560x960 2560x1240 3271x1227"
+
+    return
 
 }

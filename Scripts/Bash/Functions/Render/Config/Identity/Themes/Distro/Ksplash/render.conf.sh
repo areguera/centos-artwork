@@ -26,11 +26,12 @@
 
 function render_loadConfig {
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='LAST:renderKSplash'
-
     # Deifne theme model.
     #THEMEMODEL='Default'
+
+    # Define rendition actions.
+    ACTIONS[0]='LAST:renderKSplash'
+
+    return
 
 }

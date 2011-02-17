@@ -26,12 +26,13 @@
 
 function render_loadConfig {
 
-    # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderGrub:'
-    ACTIONS[2]='POST:renderGrub:-floyd'
-
     # Deifne theme model.
     #THEMEMODEL='Default'
+
+    # Define rendition actions.
+    ACTIONS[0]='POST:renderGrub:'
+    ACTIONS[1]='POST:renderGrub:-floyd'
+
+    return
 
 }

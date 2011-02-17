@@ -26,9 +26,13 @@
 
 function render_loadConfig {
 
+    # Deifne theme model.
+    #THEMEMODEL='Default'
+
     # Define rendition actions.
-    ACTIONS[0]='BASE:renderImage'
-    ACTIONS[1]='POST:renderFormats: jpg'
-    ACTIONS[2]='POST:groupByType: png jpg'
+    ACTIONS[0]='POST:renderFormats: jpg'
+    ACTIONS[1]='POST:groupByType: png jpg'
+
+    return
 
 }
