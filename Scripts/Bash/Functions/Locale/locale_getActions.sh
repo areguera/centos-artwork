@@ -98,11 +98,11 @@ function locale_getActions {
     # a parallel directory under `trunk/Locales' to store its
     # translation messages.
     local WORKDIR=$(echo $ACTIONVAL | sed -r \
-            -e 's!trunk/(Identity|Manuals|Scripts)/!trunk/Locales/\1/!' \
+            -e 's!trunk/(Identity|Manuals|Scripts)!trunk/Locales/\1!' \
             -e "s!Models/([A-Za-z0-9]+)/?!!")
    
     # Syncronize changes between the working copy and the central
-    # repository.
+    # repository to bring down changes.
     cli_commitRepoChanges "${WORKDIR}"
 
     # Execute action name.
@@ -114,7 +114,7 @@ function locale_getActions {
     fi
 
     # Syncronize changes between the working copy and the central
-    # repository.
+    # repository to commit up changes.
     cli_commitRepoChanges "${WORKDIR}"
 
 }
