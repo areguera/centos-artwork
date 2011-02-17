@@ -26,16 +26,28 @@
 
 function locale_editMessages {
 
-    # Redefine filter pattern in order to get portable objects only.
-    local FLAG_FILTER="${FLAG_FILTER}.*\.po"
+    local FILE=''
+    local FILES=''
 
-    # Build list of portable objects which we want to edit.
+    # Redefine filter flag to specify the extension of files
+    # translator guys need to edit. By default the current locale
+    # information is used to determine which portable object to edit.
+    # If filter flag is set to something different but its default
+    # value (i.e., it was specified in the command line), the value
+    # entered is used instead.
+    if [[ $FLAG_FILTER == '.+' ]];then
+        FLAG_FILTER=".*$(cli_getCurrentLocale).*\.po"
+    else
+        FLAG_FILTER=".*${FLAG_FILTER}.*\.po"
+    fi
+
+    # Define list of files to process.
     cli_getFilesList "${WORKDIR}"
 
-    # Print action preamble. 
+    # Print action preamble.
     cli_printActionPreamble "${FILES}" "doEdit" 'AsResponseLine'
 
-    # Use default text editor to edit portable objects.
+    # Use default text editor to edit files.
     eval ${EDITOR} ${FILES}
 
     # Update machine object (.mo) from portable object (.po).
