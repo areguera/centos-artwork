@@ -6,7 +6,7 @@
 # $Id$
 # ---------------------------------------------------
 /^# +Copyright .*$/a\
-# Copyright (C) =YEAR1=-=YEAR2= =FULLNAME=\
+# Copyright (C) =COPYRIGHT_YEAR== =COPYRIGHT_HOLDER=\
 # \
 # This program is free software; you can redistribute it and/or\
 # modify it under the terms of the GNU General Public License as\

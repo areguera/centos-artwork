@@ -28,9 +28,11 @@
 
 function shell_updateCopyright {
 
-    local TEMPLATES=''
-    local INSTANCE=''
+    local FILE=''
     local COUNT=0
+    local FILES=''
+    local INSTANCE=''
+    local TEMPLATES=''
     local -a TITLE
     local -a VALUE
     local -a PATTERN
@@ -48,35 +50,30 @@ function shell_updateCopyright {
     INSTANCE=$(cli_getTemporalFile $TEMPLATE)
 
     # Define copyright information.
-    TITLE[0]="`gettext "Your full name"`"
-    TITLE[1]="`gettext "Year which you started working in"`"
-    TITLE[2]="`gettext "Year which you stopped working in"`"
+    TITLE[0]="`gettext "Copyright holder"`"
+    TITLE[1]="`gettext "Copyright year"`"
 
     # Define translation marker. These values are used inside
     # template file.
-    MARKER[0]='=FULLNAME='
-    MARKER[1]='=YEAR1='
-    MARKER[2]='=YEAR2='
+    MARKER[0]='=COPYRIGHT_HOLDER='
+    MARKER[1]='=COPYRIGHT_YEAR='
 
     # Define pattern. These values are used as regular
     # expression patterns for user's input further verification.
     PATTERN[0]='^([[:alnum:] _-.]+)?$'
     PATTERN[1]='^([[:digit:]]{4})?$'
-    PATTERN[2]=${PATTERN[1]}
 
     # Define pattern message. These values are used as output
     # message when user's input doesn't match the related pattern.
     PATTERN_MSG[0]="`gettext "Try using alphanumeric characters."`"
     PATTERN_MSG[1]="`gettext "Try using numeric characters."`"
-    PATTERN_MSG[2]=${PATTERN_MSG[1]}
 
     # Define default values.
-    DEFAULT[0]="The CentOS Project"
-    DEFAULT[1]='2003'
-    DEFAULT[2]=$(date +%Y)
+    DEFAULT[0]="The CentOS Project. `gettext "All rights reserved."`"
+    DEFAULT[1]=$(date +%Y)
 
     # Initialize values using user's input.
-    cli_printMessage "`gettext "Enter copyright information you want to apply:"`"
+    cli_printMessage "`gettext "Enter the information you want to apply:"`"
     while [[ $COUNT -ne ${#TITLE[*]} ]];do
 
         # Request value.
@@ -121,8 +118,18 @@ function shell_updateCopyright {
 
     done
 
-    # Define list of files to process.
+    # Redefine filter flag to specify the extension of shell scripts
+    # we want to update copyright information on. Use action value as
+    # reference to find out different shell files.
+    FLAG_FILTER=".*${FLAG_FILTER}.*\.sh"
+
+    # Define list of shell scripts to be processed.
     cli_getFilesList
+
+    # Print out action preamble. Since the `--filter' option can be
+    # supplied, it is useful to know which files we are getting
+    # translatable strings from.
+    cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
 
     # Process list of files.
     for FILE in $FILES;do
@@ -133,15 +140,11 @@ function shell_updateCopyright {
         # Apply template instance to file.
         sed -r -i -f $INSTANCE $FILE
 
-    done \
-        | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
+    done
 
     # Remove template instance.
-    cli_checkFiles "${INSTANCE}" 'f'
-    rm $INSTANCE
-
-    # Check repository changes and ask you to commit them up to
-    # central repository.
-    cli_commitRepoChanges
+    if [[ -f ${INSTANCE} ]];then
+        rm ${INSTANCE} 
+    fi
 
 }

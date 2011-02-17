@@ -26,9 +26,6 @@
     
 function shell {
 
-    # Define variables.
-    local FILES=''
-
     # Define command-line interface.
     shell_getActions
 

@@ -30,7 +30,7 @@ function shell_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,update-copyright:"
+    local ARGSL="update-copyright:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -49,32 +49,11 @@ function shell_getActions {
                 # Define action value.
                 ACTIONVAL="$2"
 
-                # Check action value. Be sure the action value matches
-                # the convenctions defined for source locations inside
-                # the working copy.
-                cli_checkRepoDirSource
-
                 # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_updateCopyright"
 
-                # Look for sub-options passed through command-line.
-                while true; do
-                    case "$3" in
-                        --filter )
-                            # Redefine regular expression.
-                            FLAG_FILTER="$4"
-                            # Rotate positional parameters
-                            shift 4
-                            ;;
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
-                break
+                # Rotate positional parameters.
+                shift 2
                 ;;
 
             * )
@@ -83,20 +62,25 @@ function shell_getActions {
         esac
     done
 
-    # Verify action value variable.
-    if [[ $ACTIONVAL == '' ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Check action value. Be sure the action value matches the
+    # convenctions defined for source locations inside the working
+    # copy.
+    cli_checkRepoDirSource
 
-    # Re-define regular expression to match shell files only.
-    FLAG_FILTER=$(echo "${FLAG_FILTER}.*\.(bash|shell|sh)")
+    # Syncronize changes between the working copy and the central
+    # repository to bring down changes.
+    cli_commitRepoChanges
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
     else
-        cli_printMessage "`eval_gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Syncronize changes between the working copy and the central
+    # repository to commit up changes.
+    cli_commitRepoChanges
 
 }
