@@ -31,6 +31,11 @@ function render {
     # controls final destination used by copy related actions.
     local FLAG_TO=''
 
+    # Define release number flag. The relesase number flag (--release)
+    # specifies the release number identity images are rendered for.
+    # By default no release information is used.
+    local FLAG_RELEASE=''
+
     # Define rendition actions.
     render_getActions
 
