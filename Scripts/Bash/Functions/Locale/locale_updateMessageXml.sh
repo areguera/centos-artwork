@@ -2,7 +2,7 @@
 #
 # locale_updateMessageXml.sh -- This function parses XML-based files
 # (e.g., scalable vector graphics), retrives translatable strings and
-# creates/update portable objects.
+# creates/update gettext portable objects.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,20 +27,28 @@
 
 function locale_updateMessageXml {
 
-    # Define name of file used to create both portable object
-    # templates (.pot) and portable objects (.po) files.
-    local FILE="${WORKDIR}/$(cli_getCurrentLocale)"
+    local FILE=''
+    local FILES=''
 
-    # Redefine filtering pattern in order to get XML-based files only
-    # using repository directory structures as reference.
-    if [[ $ACTIONVAL =~ 'trunk/Identity/.+' ]];then
-        FLAG_FILTER="${FLAG_FILTER}.*\.svg"
+    # Define filename used to create both portable object templates
+    # (.pot) and portable objects (.po) files.
+    FILE="${WORKDIR}/$(cli_getCurrentLocale)"
+
+    # Redefine filter flag to specify the extension of files the
+    # translatable messages are retrived from and so limiting the
+    # list of files to process to the number of files we want to
+    # retrive translatable messages from. Use action value as
+    # reference to find out different shell files.
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/.+" ]];then
+        FLAG_FILTER=".*${FLAG_FILTER}.*\.svg"
+    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals/.+" ]];then
+        FLAG_FILTER=".*${FLAG_FILTER}.*\.xml"
     else
-        FLAG_FILTER="${FLAG_FILTER}.*\.xml"
+        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
-    # Build list of XML-base files we want retrive translatable
-    # strings from.
+    # Build list of files to process.
     cli_getFilesList
 
     # Print action preamble.
@@ -50,32 +58,11 @@ function locale_updateMessageXml {
     cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
 
     # Retrive translatable strings from XML-based files and
-    # create the portable object template (.pot) for them.
-    /usr/bin/xml2po ${FILES} \
-        | msgcat --output=${FILE}.pot --width=70 --sort-by-file -
+    # create the portable object template (.pot) from them.
+    /usr/bin/xml2po ${FILES} | msgcat --output=${FILE}.pot --width=70 --sort-by-file -
 
-    if [[ ! -f ${FILE}.po ]];then
-
-        # Create portable object using portable object template, at
-        # the same time we use output to print the action message.
-        # There is no --quiet option for msginit command that let to
-        # separate both printing action message and creation command
-        # apart one from another).
-        cli_printMessage $(msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
-            --no-translator 2>&1 | cut -d' ' -f2 | sed -r 's!\.$!!') 'AsCreatingLine'
-
-        # Sanitate portable object metadata.
-        locale_updateMessageMetadata "${FILE}.po"
-
-    else
-
-        # Print action message.
-        cli_printMessage "${FILE}.po" 'AsUpdatingLine'
-
-        # Update portable object merging both portable object and
-        # portable object template.
-        msgmerge --output="${FILE}.po" "${FILE}.po" "${FILE}.pot" --quiet
-
-    fi
+    # Verify, initialize or merge portable objects from portable
+    # object templates.
+    locale_updateMessagePObjects "${FILE}"
 
 }
