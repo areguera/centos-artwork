@@ -28,78 +28,49 @@
 
 function locale_updateMessageShell {
 
-    # Redefine locales work directory to store locale-specific files.
-    # The redefinition should be done locally to avoid undesired
-    # concatenations.
-    local WORKDIR=${WORKDIR}/$(cli_getCurrentLocale)
+    local FILE=''
+    local FILES=''
 
-    # Create locales work directory if it doesn't exist.
-    if [[ ! -d ${WORKDIR} ]];then
-        mkdir -p ${WORKDIR}
-    fi
-
-    # Define file-name used as reference to create portable object
+    # Define file name used as reference to create portable object
     # templates (.pot), portable objects (.po) and machine objects
     # (.mo).
-    local FILE="${WORKDIR}/${TEXTDOMAIN}"
+    FILE="${WORKDIR}/$(cli_getCurrentLocale)/${TEXTDOMAIN}"
 
-    # Redefine filter pattern in order to get shell scripts only.
-    # Since centos-art.sh is written in Bash, centos-art.sh does
-    # retrive translatable strings from shell scripts written in Bash
-    # only.
-    if [[ $ACTIONVAL =~ "$(cli_getRepoTLDir)/Scripts/Bash/.*$" ]];then
-        FLAG_FILTER="${FLAG_FILTER}.*\.sh"
+    # Verify directory used to store locale-specific translation
+    # messages. If it doesn't exist, create it.
+    if [[ ! -d $(dirname ${FILE}) ]];then
+        mkdir -p $(dirname ${FILE})
+    fi
+
+    # Redefine filter flag to specify the extension of files the
+    # translatable messages are retrived from and so limiting the
+    # list of files to process to the number of files we want to
+    # retrive translatable messages from. Use action value as
+    # reference to find out different shell files.
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash" ]];then
+        FLAG_FILTER=".*${FLAG_FILTER}.*\.sh"
     else
-        cli_printMessage "`gettext "The path provided can't be processed."`"
+        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
-    # Build list of XML-base files which we want retrive translatable
-    # strings from.
+    # Build list of files to process.
     cli_getFilesList
 
-    # Print out action preamble. Since the `--filter' option can be
-    # supplied, it is useful to know which files we are getting
-    # translatable strings from.
+    # Print action preamble.
     cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
     
     # Print action message.
     cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
 
-    # Retrive translatable strings from XML-based files and
-    # create the portable object template (.pot) for them.
+    # Retrive translatable strings from shell script files and create
+    # the portable object template (.pot) from them.
     /usr/bin/xgettext --output=${FILE}.pot \
         --copyright-holder="CentOS Documentation SIG" \
         --width=70 --sort-by-file ${FILES}
 
-    # Verify xgettext exit status.
-    if [[ $? != 0 ]];then
-        cli_printMessage "`eval_gettext "The .pot \\\`\\\$FILE' could not be created."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
-
-    if [[ ! -f ${FILE}.po ]];then
-
-        # Create portable object using portable object template, at
-        # the same time we use output to print the action message.
-        # There is no --quiet option for msginit command that let to
-        # separate both printing action message and creation command
-        # apart one from another).
-        cli_printMessage $(msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
-            --no-translator 2>&1 | cut -d' ' -f2 | sed -r 's!\.$!!') 'AsCreatingLine'
-
-        # Sanitate portable object metadata.
-        locale_updateMessageMetadata "${FILE}.po"
-
-    else
-
-        # Print action message.
-        cli_printMessage "${FILE}.po" 'AsUpdatingLine'
-
-        # Update portable object merging both portable object and
-        # portable object template.
-        msgmerge --output="${FILE}.po" "${FILE}.po" "${FILE}.pot" --quiet
-
-    fi
+    # Verify, initialize or update portable objects from portable
+    # object templates.
+    locale_updateMessagePObjects "${FILE}"
 
 }
