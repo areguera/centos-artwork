@@ -27,6 +27,8 @@
 function cli_getFilesList {
 
     local LOCATION=''
+    local FILTER=''
+    local FILES=''
 
     # If first argument is provided to cli_getFilesList, use it as
     # default location. Otherwise, if first argument is not provided,
@@ -37,32 +39,34 @@ function cli_getFilesList {
         LOCATION="$ACTIONVAL"
     fi
 
-    # Define regular expression (FLAG_FILTER) local variable, using regular
-    # expression (FLAG_FILTER) global variable, to reduce the amount of
-    # characters we type in order to match find's output. When using
-    # regular expression with find, in order to reduce the amount
-    # files found, the regular expression is evaluated against the
-    # whole file path. This way, when the regular expression is
+    # If second argument is provided to cli_getFilesList, use it as
+    # default extension to look for files. Otherwise, if second
+    # argument is not provided, use flag filter instead.
+    if [[ "$2" != '' ]];then
+        FILTER="$2"
+    else
+        FILTER="$FLAG_FILTER"
+    fi
+
+    # Define filter as regular expression pattern. When we use regular
+    # expressions with find, regular expressions are evaluated against
+    # the whole file path.  This way, when the regular expression is
     # specified, we need to build it in a way that matches the whole
-    # path. Doing so each time we pass a `--filter' command-line
-    # argument may be a tedious task, so, in the sake of reducing some
-    # typing, we prepare the regular expression here to match the
-    # whole path using the regular expression provided by the user as
-    # pattern.
-    local FLAG_FILTER="^${LOCATION}/${FLAG_FILTER}$"
+    # path. Doing so, everytime we pass the `--filter' option in the
+    # command-line might be a tedious task. Instead, in the sake of
+    # reducing some typing, we prepare the regular expression here to
+    # match the whole path using the regular expression provided by
+    # the user as pattern.
+    FILTER="^${LOCATION}/${FILTER}$"
 
     # Define list of files to process.
     if [[ -d $LOCATION ]];then
-        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${FLAG_FILTER}" | sort)
+        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${FILTER}" | sort)
     elif [[ -f $LOCATION ]];then
         FILES=$LOCATION
     fi
 
-    # Check list of files to process. If we have an empty list of
-    # files, inform about it and stop script execution.
-    if [[ $FILES == '' ]];then
-        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Output list of files.
+    echo "$FILES"
 
 }
