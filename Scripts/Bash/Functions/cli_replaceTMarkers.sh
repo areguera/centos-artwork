@@ -46,8 +46,8 @@ function cli_replaceTMarkers {
     # structure, we make two replacements to produce the final
     # copyright note. First, we replace =COPYRIGHT= translation marker
     # and later the =THEMENAME= translation maker (not the oposite).
-    SRC[0]='=COPYRIGHT='
-    SRC[1]='=DESCRIPTION='
+    SRC[0]='=COPYRIGHT_YEAR='
+    SRC[1]='=COPYRIGHT_HOLDER='
     SRC[2]='=LICENSE='
     SRC[3]='=LICENSE_URL='
     SRC[4]='=THEME='
@@ -64,26 +64,28 @@ function cli_replaceTMarkers {
     SRC[15]='=URL_MIRRORS='
     SRC[16]='=URL_DOCS='
     SRC[17]='=MAIL_DOCS='
+    SRC[18]='=LOCALE_LL='
 
     # Define replacements for translation markers.
-    DST[0]="$(cli_getCopyrightInfo '--copyright')"
-    DST[1]="$(cli_getCopyrightInfo '--description')"
+    DST[0]="$(cli_getCopyrightInfo '--copyright-year')"
+    DST[1]="$(cli_getCopyrightInfo '--copyright-holder')"
     DST[2]="$(cli_getCopyrightInfo '--license')"
     DST[3]="$(cli_getCopyrightInfo '--license-url')"
-    DST[4]="$(cli_getPathComponent "$FILE" '--theme')"
-    DST[5]="$(cli_getPathComponent "$FILE" '--theme-name')"
-    DST[6]="$(cli_getPathComponent "$FILE" '--theme-release')"
-    DST[7]="$(cli_getPathComponent "$FILE" '--release')"
-    DST[8]="$(cli_getPathComponent "$FILE" '--release-major')"
-    DST[9]="$(cli_getPathComponent "$FILE" '--release-minor')"
-    DST[10]="http://$(cli_getCurrentLocale '--langcode-only').centos.org/"
-    DST[11]="$(cli_getPathComponent "$FILE" '--architecture')"
+    DST[4]="$(cli_getPathComponent "$OUTPUT" '--theme')"
+    DST[5]="$(cli_getPathComponent "$OUTPUT" '--theme-name')"
+    DST[6]="$(cli_getPathComponent "$OUTPUT" '--theme-release')"
+    DST[7]="$(cli_getPathComponent "$FLAG_RELEASE" '--release')"
+    DST[8]="$(cli_getPathComponent "$FLAG_RELEASE" '--release-major')"
+    DST[9]="$(cli_getPathComponent "$FLAG_RELEASE" '--release-minor')"
+    DST[10]="http://=LOCALE_LL=.centos.org/"
+    DST[11]="$(cli_getPathComponent "$FLAG_ARCHITECTURE" '--architecture')"
     DST[12]="=URL=wiki/"
     DST[13]="=URL=lists/"
     DST[14]="=URL=forums/"
     DST[15]="=URL=mirrors/"
     DST[16]="=URL=docs/"
     DST[17]="centos-docs@$(cli_getCurrentLocale '--langcode-only').centos.org"
+    DST[18]="$(cli_getCurrentLocale '--langcode-only')"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
