@@ -49,11 +49,13 @@ function cli_doParseArgumentsCommon {
     SHORT[0]='f'
     SHORT[1]='q'
     SHORT[2]='y'
+    SHORT[3]='c'
 
     # Define local array to store long definition of common arguments.
     LONG[0]='filter'
     LONG[1]='quiet'
     LONG[2]='answer-yes'
+    LONG[3]='dont-commit-changes'
 
     # Define local array to store definition of whether the common
     # argument is required [one colon], optional [two colons] or not
@@ -61,6 +63,7 @@ function cli_doParseArgumentsCommon {
     REQUIRED[0]=':'
     REQUIRED[1]=''
     REQUIRED[2]=''
+    REQUIRED[3]=''
 
     # Save default arguments passed to centos-art.sh command-line.
     # Since ARGUMENTS variable is used as convenction when arguments
@@ -150,29 +153,22 @@ function cli_doParseArgumentsCommon {
         case "$1" in
 
             --filter )
-
-                # Redefine flag.
                 FLAG_FILTER="$2"
-
-                # Break while loop.
                 shift 2
                 ;;
 
             --quiet )
-
-                # Redefine flag.
                 FLAG_QUIET="true"
-
-                # Break while loop.
                 shift 1
                 ;;
 
             --answer-yes )
-
-                # Redefine flag.
                 FLAG_YES="true"
+                shift 1
+                ;;
 
-                # Break while loop.
+            --dont-commit-changes )
+                FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
@@ -185,23 +181,25 @@ function cli_doParseArgumentsCommon {
     # Redefine ARGUMENTS to use no-common arguments. Common arguments
     # has been already parsed, so free specific functions from parsing
     # them (there is no need to parse them twice).
-    if [[ $COMMONS != '' ]];then
+    if [[ ${COMMONS} != '' ]];then
 
         # Escape special regular expression characters that might be
         # passed through common arguments like `--filter' in order to
         # interpreted them literally. Otherwise they might be
         # interpreted when they be stript out from default arguments.
-        COMMONS=$(echo $COMMONS | sed -r 's!(\[|\{|\.|\+|\*)!\\\1!g')
+        COMMONS=$(echo ${COMMONS} | sed -r 's!(\(|\[|\{|\.|\+|\*)!\\\1!g')
 
-        # Stript out common arguments from default arguments. 
-        eval set -- "$(echo $ARGUMENTS_DEFAULT | sed -r "s!${COMMONS}!!g")"
-
-    else
-
-        # Use just default arguments. No common argument was passed.
-        eval set -- "${ARGUMENTS_DEFAULT}"
+        # Stript out common arguments from default arguments one by
+        # one to avoid order restrictions when removing them from
+        # string of default arguments.
+        for COMMON in ${COMMONS};do
+            ARGUMENTS_DEFAULT=$(echo ${ARGUMENTS_DEFAULT} | sed -r "s!${COMMON}!!g")
+        done
 
     fi
+
+    # Use just default arguments. No common argument was passed.
+    eval set -- "${ARGUMENTS_DEFAULT}"
 
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"
