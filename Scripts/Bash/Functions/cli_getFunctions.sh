@@ -55,6 +55,8 @@ function cli_getFunctions {
     done
 
     # Execute action passed to centos-art.sh script.
-    eval $FUNCNAM
+    if [[ $FUNCNAM != '' ]];then
+        eval $FUNCNAM
+    fi
 
 }
