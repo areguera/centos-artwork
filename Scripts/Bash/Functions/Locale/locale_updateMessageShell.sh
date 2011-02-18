@@ -42,22 +42,15 @@ function locale_updateMessageShell {
         mkdir -p $(dirname ${FILE})
     fi
 
-    # Redefine filter flag to specify the extension of files the
-    # translatable messages are retrived from and so limiting the
-    # list of files to process to the number of files we want to
-    # retrive translatable messages from. Use action value as
-    # reference to find out different shell files.
+    # Build list of files to process.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash" ]];then
-        FLAG_FILTER=".*${FLAG_FILTER}.*\.sh"
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.sh")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
-    # Build list of files to process.
-    cli_getFilesList
-
-    # Print action preamble.
+    # Set action preamble.
     cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
     
     # Print action message.

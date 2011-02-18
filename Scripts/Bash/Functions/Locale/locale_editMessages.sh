@@ -26,25 +26,21 @@
 
 function locale_editMessages {
 
-    local FILE=''
     local FILES=''
 
-    # Redefine filter flag to specify the extension of files
-    # translator guys need to edit. By default the current locale
-    # information is used to determine which portable object to edit.
-    # If filter flag is set to something different but its default
-    # value (i.e., it was specified in the command line), the value
-    # entered is used instead.
+    # Define list of files to process.  In order to make edition
+    # easier for translators, the current locale information is used
+    # to determine which portable object to edit.  If filter flag is
+    # set to something else but its default value (i.e., it was
+    # specified in the command line), the value entered is used
+    # instead.
     if [[ $FLAG_FILTER == '.+' ]];then
-        FLAG_FILTER=".*$(cli_getCurrentLocale).*\.po"
+        FILES=$(cli_getFilesList "${WORKDIR}" "$(cli_getCurrentLocale).*\.po")
     else
-        FLAG_FILTER=".*${FLAG_FILTER}.*\.po"
+        FILES=$(cli_getFilesList "${WORKDIR}" "${FLAG_FILTER}.*\.po")
     fi
 
-    # Define list of files to process.
-    cli_getFilesList "${WORKDIR}"
-
-    # Print action preamble.
+    # Set action preamble.
     cli_printActionPreamble "${FILES}" "doEdit" 'AsResponseLine'
 
     # Use default text editor to edit files.
