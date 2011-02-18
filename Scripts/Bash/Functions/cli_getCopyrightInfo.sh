@@ -1,11 +1,14 @@
 #!/bin/bash
 #
 # cli_getCopyrightInfo.sh -- This function outputs copyright
-# information based on action value (ACTIONVAL) variable.
+# information defined by design model the artistic motif images are
+# produced from. As convenction, we use the file `copyright.txt' to
+# store design model copyright information, in the root directory of
+# design model directory structure.
 #
-# The copyright information is printed to show the fact that one
+# The copyright information is printed to show the fact that the
 # person how creates something has the creation rights over that
-# something he/she created. An so, the legal power to release his/her
+# something he/she creates. An so, the legal power to release his/her
 # creation under the ethical terms of whatever license he/she
 # considers more appropriate, in order to distribute his/her creation.
 #
@@ -49,7 +52,7 @@
 #      Project over its creation (i.e., The CentOS Distribution) not
 #      The CentOS Theme itself.
 # 
-# At this point, we've defined who own the creation rights of image
+# At this point, we've defined who owns the creation rights of image
 # components. Now, it is important to remark that if we need to show
 # one creation copyright, in different places, all references to the
 # same cration copyright information should be the same. Cannot be any
@@ -121,82 +124,64 @@
 
 function cli_getCopyrightInfo {
 
-    local -a DIRS
-    local -a FILES
-    local -a NOTES
-    local NOTE=''
-    local COUNT=0
-
-    # Define directory structures that don't use default information.
-    DIRS[0]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Concept"
-    DIRS[1]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Promo"
-
-    # Define absolute path to file from which we retrive copyright
-    # information for directory structures that don't use default
-    # information. 
-    FILES[0]="$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme-name')/copyright.txt"
-
     case "$1" in
-
-        '--description' )
-
-            # Define default description information.
-            NOTE="`gettext "The CentOS Project corporate visual identity."`"
-
-            # Define description information for directory structures
-            # that don't use default description information.
-            NOTES[0]="`gettext "=THEMENAME= is an artistic motif and theme for ${NOTE}"`"
-            ;;
 
         '--license' )
 
-            # Define default license information used by all
-            # image-based creations inside CentOS Artwork Repository.
-            NOTE="Creative Common Attribution-ShareAlike 3.0"
-
-            # Define license information for directory structures that
-            # don't match default license information.
-            NOTES[0]="`eval_gettext "=THEMENAME= artistic motif and theme are released under ${NOTE}"`"
-            NOTES[1]="`gettext "The CentOS distribution is released as GPL."`"
+            # Output default license name used by all image-based
+            # creations inside CentOS Artwork Repository.
+            echo "Creative Common Attribution-ShareAlike 3.0"
             ;;
-        
+
         '--license-url' )
 
-            # Define default license url used by all image-based
+            # Ouput default license url used by all image-based
             # creations inside CentOS Artwork Repository.
-            NOTE="http://creativecommons.org/licenses/by-sa/3.0/"
-
-            # Define license  url for directory structures that don't
-            # match default license information.
-            NOTES[0]="${NOTE}"
-            NOTES[1]="http://opensource.org/licenses/gpl-license.php"
+            echo "http://creativecommons.org/licenses/by-sa/3.0/"
             ;;
 
-        '--copyright' | * )
+        '--copyright-year' )
+
+            local FILE=''
+            local YEAR=''
+
+            # Define default copyright file. The place the copyright
+            # information is retrived from.
+            FILE="$(echo $TEMPLATE \
+                | sed -r "s!(Themes/Models/${THEMEMODEL}).+!\1/copyright.txt!")"
+
+            # Define default copyright year.
+            if [[ -f $FILE ]];then
+                YEAR=$(cli_readFileContent "${FILE}" '--copyright-year')
+            else
+                YEAR=$(date +%Y)
+            fi
+
+            # Output default copyright year.
+            echo $YEAR
+            ;;
     
-            # Define default copyright information.
-            NOTE="Copyright © 2003-$(date +%Y) The CentOS Project. `gettext "All rights reserved."`"
+        '--copyright-holder' | * )
+            
+            local FILE=''
+            local HOLDER=''
 
-            # Define copyright information for directory structures
-            # that don't match default copyright information.
-            if [[ -f ${FILES[0]} ]];then
-                NOTES[0]=$(cli_readFileContent "${FILES[0]}" '--copyright')
+            # Define default copyright file. The place the copyright
+            # information is retrived from.
+            FILE="$(echo $TEMPLATE \
+                | sed -r "s!(Themes/Models/${THEMEMODEL}).+!\1/copyright.txt!")"
+
+            # Define default copyright holder.
+            if [[ -f $FILE ]];then 
+                HOLDER=$(cli_readFileContent "${FILE}" '--copyright-holder')
+            else 
+                HOLDER="The CentOS Project. `gettext "All rights reserved."`"
             fi
+
+            # Output default copyright holder.
+            echo $HOLDER
             ;;
+
     esac
-
-    # Redefine information of directory structures that don't use
-    # default copyright information.
-    while [[ ${COUNT} -lt ${#DIRS[*]} ]];do
-        if [[ $ACTIONVAL =~ "${DIRS[$COUNT]}" ]];then
-            if [[ "${NOTES[$COUNT]}" != '' ]];then
-                NOTE="${NOTES[$COUNT]}"
-            fi
-        fi
-        COUNT=$(($COUNT + 1))
-    done
-
-    # Print information.
-    echo "$NOTE"
 
 }
