@@ -29,6 +29,11 @@
 
 function cli_commitRepoChanges {
 
+    # Verify don't commit changes flag.
+    if [[ $FLAG_DONT_COMMIT_CHANGES == 'true' ]];then
+        return
+    fi
+
     local -a FILES
     local -a INFO
     local -a FILESNUM
