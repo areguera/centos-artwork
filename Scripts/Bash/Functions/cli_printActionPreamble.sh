@@ -32,48 +32,61 @@
 
 function cli_printActionPreamble {
 
-    local DIR=''
-    local DIRS="$1"
+    local FILES="$1"
     local ACTION="$2"
     local FORMAT="$3"
-    local COUNT_DIRS=0
+
+    # Check list of files to process. If we have an empty list of
+    # files, inform about it and stop script execution.
+    if [[ "$FILES" == '' ]];then
+        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
+
+    # Verify function parameters. If no action or format is passed to
+    # this function there is nothing else to do here. This
+    # verification should be _after_ checking list of files to
+    # process, so checking list of files to process take place even if
+    # no preamble message is printed out.
+    if [[ $# -lt 2 ]];then
+        return
+    fi
+
+    local FILE=''
+    local COUNT=0
 
     # Redefine total number of directories.
-    COUNT_DIRS=$(echo "$DIRS" | sed -r "s! +!\n!g" | wc -l)
+    COUNT=$(echo "$FILES" | sed -r "s! +!\n!g" | wc -l)
 
     # Redefine preamble messages based on action.
     case $ACTION in
 
         'doCreate' )
             ACTION="`ngettext "The following entry will be created" \
-            "The following entries will be created" $COUNT_DIRS`:"
+            "The following entries will be created" $COUNT`:"
             ;;
 
         'doDelete' )
             ACTION="`ngettext "The following entry will be deleted" \
-            "The following entries will be deleted" $COUNT_DIRS`:"
+            "The following entries will be deleted" $COUNT`:"
             ;;
 
         'doLocale' )
             ACTION="`ngettext "Translatable strings will be retrived from the following entry" \
-            "Translatable strings will be retrived from the following entries" $COUNT_DIRS`:"
+            "Translatable strings will be retrived from the following entries" $COUNT`:"
             ;;
 
         'doEdit' )
             ACTION="`ngettext "The following file will be edited" \
-            "The following files will be edited" $COUNT_DIRS`:"
+            "The following files will be edited" $COUNT`:"
             ;;
 
-        * )
-            cli_printMessage "cli_printActionPreamble: `gettext "The second argument is not valid."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-            ;;
     esac
 
     # Print preamble message.
     cli_printMessage "$ACTION"
-    for DIR in $(echo $DIRS);do
-        cli_printMessage "$DIR" "$FORMAT"
+    for FILE in $FILES;do
+        cli_printMessage "$FILE" "$FORMAT"
     done
     cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
 
