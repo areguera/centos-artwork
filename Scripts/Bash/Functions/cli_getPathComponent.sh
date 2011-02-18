@@ -51,8 +51,9 @@ function cli_getPathComponent {
     # Define release pattern.
     PATTERN[0]="(([[:digit:]]+)(\.([[:digit:]]+)){,1})"
 
-    # Define architecture pattern.
-    PATTERN[1]="^.+/${PATTERN[0]}/(i386|x86_64)/.*$"
+    # Define architecture pattern. Make it match the architectures the
+    # CentOS distribution is able to be installed on.
+    PATTERN[1]="(i386|x86_64)"
 
     # Define theme pattern for trunk, branches, and tags directory
     # structures.
@@ -185,15 +186,15 @@ function cli_getPathComponent {
     case "$OPTION" in
 
         '--release' )
-            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/.*!\1!"
+            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/?!\1!"
             ;;
 
         '--release-major' )
-            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/.*!\2!"
+            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/?!\2!"
             ;;
 
         '--release-minor' )
-            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/.*!\4!"
+            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/?!\4!"
             ;;
 
         '--release-pattern' )
@@ -201,7 +202,7 @@ function cli_getPathComponent {
             ;;
 
         '--architecture' )
-            echo "$LOCATION" | sed -r "s!${PATTERN[1]}!\5!"
+            echo "$LOCATION" | sed -r "s!${PATTERN[1]}!\1!"
             ;;
 
         '--architecture-pattern' )
