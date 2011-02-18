@@ -55,6 +55,12 @@ function cli {
     # regular expression that matches everything.
     local FLAG_FILTER='.+'
 
+    # Initialize default value to don't commit changes flag. The don't
+    # commit changes flag (--dont-commit-changes) controls whether
+    # centos-art.sh script syncronizes changes between Subversion
+    # central repository and working copy.
+    local FLAG_DONT_COMMIT_CHANGES='false'
+
     # Redefine positional parameters stored inside ARGUMENTS variable.
     cli_doParseArgumentsReDef "$@"
 
