@@ -30,7 +30,7 @@ function verify_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="packages,links,environment,filter:"
+    local ARGSL="packages,links,environment"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -41,101 +41,24 @@ function verify_getActions {
 
     # Look for options passed through command-line.
     while true; do
-
         case "$1" in
 
             --packages )
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_doPackages"
-
-                # Look for sub-options passed through command-line.
-                while true; do
-
-                    case "$2" in
-
-                        --filter )
-
-                            # Redefine regular expression.
-                            FLAG_FILTER="$3"
-
-                            # Rotate positional parameters.
-                            shift 3
-                            ;;
-
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
                 break
                 ;;
 
             --links )
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_doLinks"
-
-                # Look for sub-options passed through command-line.
-                while true; do
-
-                    case "$2" in
-
-                        --filter )
-
-                            # Redefine regular expression.
-                            FLAG_FILTER="$3"
-
-                            # Rotate positional parameters.
-                            shift 3
-                            ;;
-
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
                 break
                 ;;
 
             --environment )
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_doEnvironment"
-
-                # Look for sub-options passed through command-line.
-                while true; do
-
-                    case "$2" in
-
-                        --filter )
-
-                            # Redefine regular expression.
-                            FLAG_FILTER="$3"
-
-                            # Rotate positional parameters
-                            shift 3
-                            ;;
-
-                        * )
-                            # Break sub-options loop.
-                            break
-                            ;;
-                    esac
-                done
-
-                # Break options loop.
                 break
                 ;;
 
             * )
-                # Break options loop.
                 break
         esac
     done
