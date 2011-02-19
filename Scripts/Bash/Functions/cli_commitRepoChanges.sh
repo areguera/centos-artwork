@@ -66,7 +66,9 @@ function cli_commitRepoChanges {
     LOCATIONS=$(echo -e "$LOCATIONS" | sed -r "s! +!\n!g" \
         | egrep '^/home/centos/artwork/(trunk|branches|tags)/.+$')
 
-    echo '----------------------------------------------------------------------'
+    # Outout separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     # Update working copy.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
     UPDATEOUT=$(svn update ${LOCATIONS})
@@ -74,7 +76,9 @@ function cli_commitRepoChanges {
     # Check working copy.
     cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
     STATUSOUT=$(svn status ${LOCATIONS})
-    echo '----------------------------------------------------------------------'
+
+    # Outout separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
     # Define path of files considered recent modifications from
     # central repository to working copy.
@@ -152,7 +156,8 @@ function cli_commitRepoChanges {
 
     done
 
-    echo '----------------------------------------------------------------------'
+    # Outout separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
     # Check total amount of changes. If there is no change, there is
     # nothing more to do here except to return flow control to this
