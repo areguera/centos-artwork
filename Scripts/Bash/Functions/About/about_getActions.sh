@@ -58,7 +58,7 @@ function about_getActions {
                 break
                 ;;
 
-            --copying | *)
+            --copying | * )
                 ACTIONVAL="${FUNCCONFIG}/copying.txt"
                 break
                 ;;

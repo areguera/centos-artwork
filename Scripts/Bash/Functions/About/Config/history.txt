@@ -10,20 +10,23 @@ This file records noteworthy changes of CentOS Artwork Repository.
 -------------------------------------------------------------------------------
 (2011)
 
+    - Unify common arguments for all specific functionalities (e.g, --answer,
+      --quiet, --filter, etc.) and leave just specific arguments for specific
+      functions to parse. There is no need to duplicate common arguments
+      definitions inside every specific functionality.
+
+    - The `.sed' translation files are no longer used, scalable vector
+      graphics are used instead.  Translation messages take place by means of
+      xml2po and gettext. With xml2po translatable strings are retrived from
+      `.svg' files and stored inside gettext `.pot' and `.po' files for
+      translators to edit. Finally, xml2po is used again to build the temporal
+      design model translated instance which the final `.png' image is built
+      from.
+
     - The `trunk/Translation' directory structure is removed. The
       `trunk/Locales' directory structure is used instead to store locale
       information. 
       
-    - Start using XML-based files to handle both documentation (Docbook) and
-      images (SVG) translation files. Translation take place by means of
-      xml2po and gettext standard procedures for translation.
-
-    - Since the command-line point of view, unify common arguments for all
-      specific functionalities (e.g, --answer-yes, --quiet, --filter, etc.)
-      and leave just specific arguments for specific functions to parse. There
-      is no need to duplicate common arguments definitions inside every
-      specific functionality.
-
 -------------------------------------------------------------------------------
 (2010)
 
@@ -84,20 +87,19 @@ This file records noteworthy changes of CentOS Artwork Repository.
 -------------------------------------------------------------------------------
 (2009)
 
-- The rendering script starts to evolve into centos-art.sh script, a
-  command-line interface to manipulate the CentOS Artwork Repository.
+    - The rendering script starts to evolve into centos-art.sh script, a
+      command-line interface to manipulate the CentOS Artwork Repository.
 
-- Corporate identity concepts taken from Wikipedia and related books
-  are introduced as development reference. The main goal of
-  centos-art.sh turns to: automate production of a monolithic
-  corporate visual identity structure based on CentOS Mission and
-  CentOS Release Schema. 
+    - Corporate identity concepts taken from Wikipedia and related books are
+      introduced as development reference. The main goal of centos-art.sh
+      turns to: automate production of a monolithic corporate visual identity
+      structure based on CentOS Mission and CentOS Release Schema. 
 
-- Alain Reguera Delgado is out of Internet for an undefined amount of
-  time, but continues developing CentOS Artwork Repository and its
-  automation tool (i.e., the centos-art.sh script) off-line.
+    - Alain Reguera Delgado is out of Internet for an undefined amount of
+      time, but continues developing CentOS Artwork Repository and its
+      automation tool (i.e., the centos-art.sh script) off-line.
 
-- Documentation begins to take form in LaTeX format.
+    - Documentation begins to take form in LaTeX format.
 
 -------------------------------------------------------------------------------
 (2008)
