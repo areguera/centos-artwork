@@ -118,18 +118,11 @@ function shell_updateCopyright {
 
     done
 
-    # Redefine filter flag to specify the extension of shell scripts
-    # we want to update copyright information on. Use action value as
-    # reference to find out different shell files.
-    FLAG_FILTER=".*${FLAG_FILTER}.*\.sh"
+    # Define list of files to process
+    FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.sh")
 
-    # Define list of shell scripts to be processed.
-    cli_getFilesList
-
-    # Print out action preamble. Since the `--filter' option can be
-    # supplied, it is useful to know which files we are getting
-    # translatable strings from.
-    cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
+    # Set action preamble.
+    cli_printActionPreamble "${FILES}"
 
     # Process list of files.
     for FILE in $FILES;do
