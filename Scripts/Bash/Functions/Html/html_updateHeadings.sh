@@ -59,15 +59,11 @@ function html_updateHeadings {
     # to save html action name, action value, and heading title.
     PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
 
-    # Redefine filter flag to specify the extension of html files the
-    # headings and table of content are built for and so limiting the
-    # list of files to process to the number of files we want to
-    # produce headings and table of content for. Use action value as
-    # reference to find out different shell files.
-    FLAG_FILTER=".*${FLAG_FILTER}.*\.(xhtml|html|htm)"
-
     # Define list of files to process.
-    cli_getFilesList
+    FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.(xhtml|html|htm)")
+
+    # Set action preamble.
+    cli_printActionPreamble "${FILES}"
 
     # Process list of files.
     for FILE in $FILES;do
