@@ -43,10 +43,10 @@ function cli {
     # or not.
     local FLAG_QUIET='false'
     
-    # Initialize default value to answer flag. The answer flag (--yes)
-    # controls whether centos-art.sh script does or does not pass
-    # confirmation request points.
-    local FLAG_YES='false'
+    # Initialize default value to answer flag. The answer flag
+    # (--answer) controls whether centos-art.sh script does or does
+    # not pass confirmation request points. By default it doesn't.
+    local FLAG_ANSWER='false'
 
     # Initialize default value to filter flag. The filter flag
     # (--filter) is used mainly to reduce the number of files to

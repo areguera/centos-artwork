@@ -54,7 +54,7 @@ function cli_doParseArgumentsCommon {
     # Define local array to store long definition of common arguments.
     LONG[0]='filter'
     LONG[1]='quiet'
-    LONG[2]='answer-yes'
+    LONG[2]='answer'
     LONG[3]='dont-commit-changes'
 
     # Define local array to store definition of whether the common
@@ -62,7 +62,7 @@ function cli_doParseArgumentsCommon {
     # required at all [empty]).
     REQUIRED[0]=':'
     REQUIRED[1]=''
-    REQUIRED[2]=''
+    REQUIRED[2]=':'
     REQUIRED[3]=''
 
     # Save default arguments passed to centos-art.sh command-line.
@@ -162,9 +162,9 @@ function cli_doParseArgumentsCommon {
                 shift 1
                 ;;
 
-            --answer-yes )
-                FLAG_YES="true"
-                shift 1
+            --answer )
+                FLAG_ANSWER="$2"
+                shift 2
                 ;;
 
             --dont-commit-changes )
