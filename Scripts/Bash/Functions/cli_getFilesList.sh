@@ -66,7 +66,14 @@ function cli_getFilesList {
         FILES=$LOCATION
     fi
 
-    # Output list of files.
-    echo "$FILES"
+    # Check list of files to process. If we have an empty list of
+    # files, inform about it and stop script execution. Otherwise
+    # print list of files.
+    if [[ "$FILES" == '' ]];then
+        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    else
+        echo "$FILES"
+    fi
 
 }

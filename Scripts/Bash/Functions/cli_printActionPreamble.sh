@@ -32,28 +32,11 @@
 
 function cli_printActionPreamble {
 
+    local FILE=''
+    local COUNT=0
     local FILES="$1"
     local ACTION="$2"
     local FORMAT="$3"
-
-    # Check list of files to process. If we have an empty list of
-    # files, inform about it and stop script execution.
-    if [[ "$FILES" == '' ]];then
-        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
-
-    # Verify function parameters. If no action or format is passed to
-    # this function there is nothing else to do here. This
-    # verification should be _after_ checking list of files to
-    # process, so checking list of files to process take place even if
-    # no preamble message is printed out.
-    if [[ $# -lt 2 ]];then
-        return
-    fi
-
-    local FILE=''
-    local COUNT=0
 
     # Redefine total number of directories.
     COUNT=$(echo "$FILES" | sed -r "s! +!\n!g" | wc -l)
