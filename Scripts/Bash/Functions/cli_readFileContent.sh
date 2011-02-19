@@ -28,34 +28,38 @@
 function cli_readFileContent {
 
     local FILES="$1"
+    local PATTERN='Copyright (\(C\)|©) [0-9]+(-[0-9]+)? .+'
 
     # Verify existence of files but don't stop if it doesn't exist.
     cli_checkFiles "$FILES"
 
-    # Print content of files to standard output. 
+    # Print content of files to standard output.
     case "$2" in
 
-        '--first-line' )
-            cat "$FILES" | head -n 1
+        '--copyright-line' )
+            cat "$FILES" | egrep "^ +${PATTERN}$" | head -n 1 | sed -r 's!^ +!!'
             ;;
 
         '--last-line' )
             cat "$FILES" | tail -n 1
             ;;
 
-        '--copyright' )
-            # This option prints the first line of a file, if it has a
-            # copyright format. This option is mainly used to retrive
-            # artistic motif author copyright note from artistic
-            # motifs `authors.txt' file.
-            local PATTERN='^Copyright (\(C\)|©) [0-9]+(-[0-9]+)? .+$'
-            if [[ $(cli_readFileContent "$FILES" '--first-line') =~ "${PATTERN}" ]];then
-                cli_readFileContent "$FILES" '--first-line'
+        '--copyright-year' )
+            if [[ $(cli_readFileContent "$FILES" '--copyright-line') =~ "^${PATTERN}$" ]];then
+                cli_readFileContent "$FILES" '--copyright-line' | cut -d' ' -f3
+            fi
+            ;;
+
+        '--copyright-holder' )
+            if [[ $(cli_readFileContent "$FILES" '--copyright-line') =~ "^${PATTERN}$" ]];then
+                cli_readFileContent "$FILES" '--copyright-line' | cut -d' ' -f4-
             fi
             ;;
 
         '--all-lines' | * )
             cat "$FILES"
+            ;;
+
     esac
 
 }
