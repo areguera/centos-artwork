@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_checkAbsolutePaths.sh -- This function retrives absolute
+# identity_renderAbsolutePaths.sh -- This function retrives absolute
 # files and checks their existence. In order for design templates to
 # point different artistic motifs, design templates make use of
 # external files that point to specific artistic motif background
@@ -29,7 +29,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_checkAbsolutePaths {
+function identity_renderAbsolutePaths {
 
     local FILE=''
     local ABSPATHS=''
