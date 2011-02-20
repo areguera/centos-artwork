@@ -25,24 +25,6 @@
 # array inside the appropriate `render.conf.sh' pre-configuration
 # script. 
 #
-# For example, the following three lines will create one jpg, ppm,
-# xpm, and tif file for each png file available and groups them all by
-# its file type, inside directories named as their file type (i.e.
-# Png, Jpg, Ppm, Xpm, Tif). Note that in the example, groupByType is
-# ivoked as post-rendition action. If you want to invoke it as
-# last-rendition action use LAST definition instead of POST.
-# 
-# ACTIONS[0]='BASE:renderImage' 
-# ACTIONS[1]='POST:renderFormats: jpg, ppm, xpm, tif' 
-# ACTIONS[2]='POST:groupByType: png, jpg, ppm, xpm, tif'
-#
-# groupByType function is generally used with renderFormats function.
-# Both definitions must match the file type you want to have rendered
-# and grouped. You don't need to specify the png file type in
-# renderFormats' definition, but in groupByType's definition it must
-# be specified.  Otherwise png files will not be grouped inside a png
-# directory.
-#
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or
@@ -87,7 +69,7 @@ function identity_renderGroupByType {
 
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
-    FORMATS=$(identity_getConfigOption "$FORMATS" '2-')
+    FORMATS=$(identity_renderConfigOption "$FORMATS" '2-')
 
     # Check file types passed from render.conf.sh pre-rendition
     # configuration script.

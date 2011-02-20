@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# identity_getConfigOption.sh -- This function standardizes the way action
-# values are retrived from pre-rendition configuration files.  Use
-# this function whenever you need to retrive action values from
+# identity_renderConfigOption.sh -- This function standardizes the way
+# action values are retrived from pre-rendition configuration files.
+# Use this function whenever you need to retrive action values from
 # pre-rendition configuration script.
 #
-# Usage: VAR=$(identity_getConfigOption "ACTION" "FIELD")
+# Usage: VAR=$(identity_renderConfigOption "ACTION" "FIELD")
 #
 # VAR is the name of the variable where we store the option named
-# returned by identity_getConfigOption. 
+# returned by identity_renderConfigOption. 
 #
 # ACTION is the string definition set in the pre-rendition
 # configuration script that holds the action name and its options
@@ -16,12 +16,9 @@
 #
 # FIELD is the field number in the action string we want to retrive
 # option from. By default options start from third field on. The first
-# field is reserved for the action type (i.e., BASE, POST or LAST), and
-# the second field is reserved for the action itself (e.g.,
-# renderImage, renderFormats, etc.). Note that this convenction can be
-# altered if the action string has been modified (e.g., you stript the
-# BASE field from action string) and passed the modified action string
-# to another function for processing.
+# field is reserved for the action type (i.e., POST or LAST), and the
+# second field is reserved for the action itself (e.g., renderFormats,
+# renderSyslinux, renderKsplash, etc.).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -44,7 +41,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getConfigOption {
+function identity_renderConfigOption {
 
     local ACTION="$1"
     local FIELD="$2"

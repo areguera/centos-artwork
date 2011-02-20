@@ -37,7 +37,7 @@ function identity_renderGrub {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    OPTIONS=$(identity_getConfigOption "$ACTION" '2-')
+    OPTIONS=$(identity_renderConfigOption "$ACTION" '2-')
 
     # Re-define 16 colors images default file name prefix using
     # options as reference. This is useful to differenciate final

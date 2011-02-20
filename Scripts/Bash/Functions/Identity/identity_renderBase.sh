@@ -43,7 +43,7 @@ function identity_renderBase {
     PARENTDIR=$(basename "$ACTIONVAL")
 
     # Define base location of template files.
-    identity_getDirTemplate
+    identity_renderDirTemplate
     
     # Define list of files to process. 
     FILES=$(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.(svgz|svg)")
@@ -90,7 +90,7 @@ function identity_renderBase {
         fi
  
         # Define final location of output directory.
-        identity_getDirOutput
+        identity_renderDirOutput
 
         # Get relative path to file. The path string (stored in FILE)
         # has two parts: 1. the variable path and 2. the common path.

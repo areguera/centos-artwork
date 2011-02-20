@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_getConfig.sh -- This function checks/validates variables
+# identity_renderConfig.sh -- This function checks/validates variables
 # passed from artwork-specific pre-rendition configuration files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getConfig {
+function identity_renderConfig {
 
     local POSTCOUNT=0
     local LASTCOUNT=0
@@ -37,13 +37,13 @@ function identity_getConfig {
 
         # Define post-rendition actions.
         if [[ $ACTION =~ '^POST:' ]];then
-            ACTION=$(identity_getConfigOption "$ACTION" '2-')
+            ACTION=$(identity_renderConfigOption "$ACTION" '2-')
             POSTACTIONS[$POSTCOUNT]="$ACTION"
             POSTCOUNT=$(($POSTCOUNT + 1))
 
         # Define last-rendition actions.
         elif [[ $ACTION =~ '^LAST:' ]];then
-            ACTION=$(identity_getConfigOption "$ACTION" '2-')
+            ACTION=$(identity_renderConfigOption "$ACTION" '2-')
             LASTACTIONS[$LASTCOUNT]="$ACTION"
             LASTCOUNT=$(($LASTCOUNT + 1))
         fi

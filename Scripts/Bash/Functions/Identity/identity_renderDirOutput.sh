@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_getDirOutput.sh -- This function defines the final
+# identity_renderDirOutput.sh -- This function defines the final
 # absolute path the centos-art.sh script uses to store identity
 # contents produced at rendition time.
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getDirOutput {
+function identity_renderDirOutput {
 
     # Define base output directory using design model path as reference.
     OUTPUT=$(dirname $FILE | sed -r \
