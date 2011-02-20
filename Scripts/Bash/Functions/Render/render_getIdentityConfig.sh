@@ -26,7 +26,6 @@
 
 function render_getIdentityConfig {
 
-    local BASECOUNT=0
     local POSTCOUNT=0
     local LASTCOUNT=0
 
@@ -36,14 +35,8 @@ function render_getIdentityConfig {
     # call.
     for ACTION in "${ACTIONS[@]}"; do
 
-        # Define base-rendition actions.
-        if [[ $ACTION =~ '^BASE:render(Text|Image)$' ]];then
-            ACTION=$(render_getIdentityConfigOption "$ACTION" '2-')
-            BASEACTIONS[$BASECOUNT]="$ACTION"
-            BASECOUNT=$(($BASECOUNT + 1))
-
         # Define post-rendition actions.
-        elif [[ $ACTION =~ '^POST:' ]];then
+        if [[ $ACTION =~ '^POST:' ]];then
             ACTION=$(render_getIdentityConfigOption "$ACTION" '2-')
             POSTACTIONS[$POSTCOUNT]="$ACTION"
             POSTCOUNT=$(($POSTCOUNT + 1))
@@ -57,18 +50,6 @@ function render_getIdentityConfig {
 
     done
 
-    # Check base-rendition actions. The base-rendition action defines
-    # what kind of rendition does centos-art.sh script performs.
-    # Presently, we only support image rendition (renderImage) and
-    # text rendition (renderText) as base-rendition actions. 
-    if [[ ${#BASEACTIONS[*]} -lt 1 ]];then
-        cli_printMessage "`gettext "The BASE action is not defined."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    elif [[ ${#BASEACTIONS[*]} -gt 1 ]];then
-        cli_printMessage "`gettext "Just one definition for BASE action is supported."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
-
     # Check post-rendition actions. Validation of post-rendition
     # actions is action-specific. So, validation of post-rendition
     # actions is not here, but inside action-specific functions. See
@@ -76,20 +57,11 @@ function render_getIdentityConfig {
     # validation of renderImage and renderText post-rendition actions,
     # respectively.
 
-    # Re-define matching list to reduce the amount of empty spaces.
-    MATCHINGLIST=$(echo "$MATCHINGLIST" | tr -s '  ' | sed 's!^ !!')
-
-    # Re-define theme model value using repository directory name
+    # Sanitate theme model value using repository directory name
     # convenction.
     THEMEMODEL=$(cli_getRepoName "$THEMEMODEL" 'd')
 
-    # Check theme model name.
-    if [[ $THEMEMODEL == '' ]] \
-        || [[ ! -d "/home/centos/artwork/trunk/Identity/Themes/Models/$THEMEMODEL" ]];then
-
-        cli_printMessage "`eval_gettext "The \\\"\\\$THEMEMODEL\\\" theme model doesn't exist."`"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-
-    fi
+    # Check theme model directory.
+    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}" 'd'
 
 }
