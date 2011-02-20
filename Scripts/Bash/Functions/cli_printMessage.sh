@@ -129,14 +129,14 @@ function cli_printMessage {
                 # Wait for user's answer to be entered.
                 cli_printMessage "FLAG_ANSWER" 'AsReadLine'
 
-                # Verify user's answer. Only positive answer let the
-                # script flow to continue. Otherwise, if something
-                # different from possitive answer is passed, the
-                # script terminates its execution immediatly.
-                if [[ ! ${FLAG_ANSWER} =~ "^${Y}" ]];then
-                    exit
-                fi
+            fi
 
+            # Verify user's answer. Only positive answer let the
+            # script flow to continue. Otherwise, if something
+            # different from possitive answer is passed, the
+            # script terminates its execution immediatly.
+            if [[ ! ${FLAG_ANSWER} =~ "^${Y}" ]];then
+                exit
             fi
             ;;
 
