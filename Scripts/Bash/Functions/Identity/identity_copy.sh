@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderCopy.sh -- This function duplicates rendition stuff.
+# identity_copy.sh -- This function duplicates rendition stuff.
 # Rendition stuff is formed by design models, design images and
 # pre-rendition configuration scripts (which includes translations
 # files). This way, when we say to duplicate rendition stuff we are
@@ -29,7 +29,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderCopy {
+function identity_copy {
 
     # Verify target directory.
     cli_checkRepoDirTarget
