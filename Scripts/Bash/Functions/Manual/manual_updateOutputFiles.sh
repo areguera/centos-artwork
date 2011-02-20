@@ -27,7 +27,7 @@
 function manual_updateOutputFiles {
 
     # Add division line to differentiate action output visually.
-    echo '----------------------------------------------------------------------'
+    cli_printMessage '-' 'AsSeparatorLine'
 
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
@@ -41,16 +41,5 @@ function manual_updateOutputFiles {
 
     # Remove the working copy root directory from directory stack.
     popd > /dev/null
-
-    # Re-define output variable in order for cli_commitRepoChanges
-    # functionality to receive the correct location to apply
-    # subversion commands. Inside `manual' functionality, the correct
-    # place to commit changes is not the initial value of ACTIONVAL
-    # but the directory path where documentation changes take place
-    # under.
-    ACTIONVAL=${MANUALS_DIR[0]}
-
-    # Syncronize changes between working copy and central repository.
-    cli_commitRepoChanges
 
 }
