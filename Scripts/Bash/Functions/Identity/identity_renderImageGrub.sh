@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_doImageGrub.sh -- This function provides
+# identity_renderImageGrub.sh -- This function provides
 # post-rendition action used to produce GRUB images.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_doImageGrub {
+function identity_renderImageGrub {
 
     local FILE="$1"
     local ACTION="$2"

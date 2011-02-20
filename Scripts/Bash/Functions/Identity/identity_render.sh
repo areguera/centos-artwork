@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_do.sh -- This function initiates rendition configuration
+# identity_render.sh -- This function initiates rendition configuration
 # functions and executes them to perform the rendition action
 # specified in the `ACTIONS' array variable. Function initialization
 # and execution is based on the absolute path convenction defined by
@@ -24,10 +24,10 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: identity_do.sh 824 2011-01-06 20:54:52Z al $
+# $Id: identity_render.sh 824 2011-01-06 20:54:52Z al $
 # ----------------------------------------------------------------------
 
-function identity_do {
+function identity_render {
 
     local FILE=''
 
@@ -51,7 +51,7 @@ function identity_do {
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
-        # identity_doImages execution. Otherwise, undesired
+        # identity_renderImages execution. Otherwise, undesired
         # concatenations may occur.
         local -a ACTIONS
         local -a POSTACTIONS

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_doImages.sh -- This function renders image-based
+# identity_renderImages.sh -- This function renders image-based
 # identity contents.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_doImages {
+function identity_renderImages {
 
     local FILE=''
     local OUTPUT=''
@@ -163,19 +163,19 @@ function identity_doImages {
             case "$ACTION" in
 
                 renderSyslinux* )
-                    identity_doImageSyslinux "${FILE}" "$ACTION"
+                    identity_renderImageSyslinux "${FILE}" "$ACTION"
                     ;;
 
                 renderGrub* )
-                    identity_doImageGrub "${FILE}" "$ACTION"
+                    identity_renderImageGrub "${FILE}" "$ACTION"
                     ;;
 
                 renderFormats:* )
-                    identity_doImageFormats "${FILE}" "$ACTION"
+                    identity_renderImageFormats "${FILE}" "$ACTION"
                     ;;
 
                 groupByType:* )
-                    identity_doGroupByType "${FILE}" "$ACTION"
+                    identity_renderGroupByType "${FILE}" "$ACTION"
                     ;;
 
             esac
@@ -213,19 +213,19 @@ function identity_doImages {
                 case "$ACTION" in
 
                     renderKSplash )
-                        identity_doImageKsplash
+                        identity_renderImageKsplash
                         ;;
 
                     renderDm:* )
-                        identity_doImageDm "$ACTION"
+                        identity_renderImageDm "$ACTION"
                         ;;
 
                     groupByType:* )
-                        identity_doGroupByType "$ACTION"
+                        identity_renderGroupByType "$ACTION"
                         ;;
 
                     renderBrands )
-                        identity_doImageBrands "${FILE}" "$ACTION"
+                        identity_renderImageBrands "${FILE}" "$ACTION"
                         ;;
 
                 esac

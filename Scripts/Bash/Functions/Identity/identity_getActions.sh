@@ -47,7 +47,7 @@ function identity_getActions {
             --render )
 
                 # Redefine action name.
-                ACTIONNAM="${FUNCNAM}_do"
+                ACTIONNAM="${FUNCNAM}_render"
 
                 # Redefine action value.
                 ACTIONVAL="$2"

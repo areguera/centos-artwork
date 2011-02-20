@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_doImageDm.sh -- This function collects Display
+# identity_renderImageDm.sh -- This function collects Display
 # Manager (DM) required files and creates a tar.gz package that groups
 # them all together. Use this function as last-rendition action for
 # Gdm and Kdm base-rendition actions.
@@ -47,7 +47,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_doImageDm {
+function identity_renderImageDm {
 
     local -a SRC
     local -a DST

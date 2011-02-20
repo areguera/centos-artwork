@@ -55,6 +55,6 @@ function identity_getBase {
     done
 
     # Execute base-rendition action.
-    identity_doImages
+    identity_renderImages
 
 }

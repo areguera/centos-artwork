@@ -53,7 +53,7 @@ function identity_getConfig {
     # Check post-rendition actions. Validation of post-rendition
     # actions is action-specific. So, validation of post-rendition
     # actions is not here, but inside action-specific functions. See
-    # identity_doImages and identity_doIdentityTexts to see
+    # identity_renderImages and identity_renderIdentityTexts to see
     # validation of renderImage and renderText post-rendition actions,
     # respectively.
 
