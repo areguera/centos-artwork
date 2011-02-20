@@ -3,7 +3,7 @@
 # render_doIdentityImageDm.sh -- This function collects Display
 # Manager (DM) required files and creates a tar.gz package that groups
 # them all together. Use this function as last-rendition action for
-# GDM and KDM base-rendition actions.
+# Gdm and Kdm base-rendition actions.
 #
 # Usage:
 #
@@ -12,7 +12,7 @@
 #
 # Where:
 #
-#   TYPE can be either `GDM' or `KDM'. These values correspond to the
+#   TYPE can be either `Gdm' or `Kdm'. These values correspond to the
 #   directory names used to store related design models.
 #
 #   RESOLUTION represents the screen resolution tar.gz files are
@@ -51,7 +51,6 @@ function render_doIdentityImageDm {
 
     local -a SRC
     local -a DST
-    local -a COMMANDS
     local DM=''
     local TGZ=''
     local COUNT=0
@@ -61,13 +60,13 @@ function render_doIdentityImageDm {
     # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
     DM=$(render_getIdentityConfigOption "$1" '2')
-   
+ 
     # Sanitate display manager passed from render.conf.sh
     # pre-rendition configuration script. Whatever value be retrived
     # as display manager configuration option is converted to
-    # uppercase in order to match either GDM or KDM design model
+    # uppercase in order to match either Gdm or Kdm design model
     # directory structures.
-    DM=$(echo $DM | tr '[:lower:]' '[:upper:]')
+    DM=$(cli_getRepoName "$DM" 'd')
 
     # Get screen resolutions passed from render.conf.sh pre-rendition
     # configuration script.
@@ -82,15 +81,15 @@ function render_doIdentityImageDm {
 
     # Define source files using absolute paths.
     SRC[0]=$(cli_getRepoTLDir)/Identity/Brands/Img/Symbol/48.png
-    SRC[1]=${DIRNAME}/release.png
-    SRC[2]=${DIRNAME}/screenshot.png
-    SRC[3]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/GdmGreeterTheme.xml
-    SRC[4]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/GdmGreeterTheme.desktop
+    SRC[1]=${OUTPUT}/release.png
+    SRC[2]=${OUTPUT}/screenshot.png
+    SRC[3]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/GdmGreeterTheme.xml
+    SRC[4]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/GdmGreeterTheme.desktop
     SRC[5]=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Backgrounds/Img/Png
-    SRC[6]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/icon-language.png
-    SRC[7]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/icon-reboot.png
-    SRC[8]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/icon-session.png
-    SRC[9]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/${DM}/icon-shutdown.png
+    SRC[6]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-language.png
+    SRC[7]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-reboot.png
+    SRC[8]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-session.png
+    SRC[9]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-shutdown.png
 
     # Define name used as temporal holder to build tar.gz file. 
     TGZ=$(cli_getPathComponent '--theme-name')
@@ -108,7 +107,7 @@ function render_doIdentityImageDm {
     DST[9]=${TGZ}/icon-shutdown.png
 
     # Move into the working directory.
-    pushd $DIRNAME > /dev/null
+    pushd ${OUTPUT} > /dev/null
 
     # Create directory used as temporal holder to build tar.gz file.
     if [[ ! -d ${TGZ} ]];then
@@ -136,10 +135,10 @@ function render_doIdentityImageDm {
         
             elif [[ $COUNT =~ '^[6-9]$' ]];then
 
-                # If display manager is KDM, then increment counter and
-                # resume the next iteration. Icons aren't used on KDM,
+                # If display manager is Kdm, then increment counter and
+                # resume the next iteration. Icons aren't used on Kdm,
                 # so there's no need to have them inside it.
-                if [[ $DM =~ '^KDM$' ]];then
+                if [[ $DM =~ '^Kdm$' ]];then
                     COUNT=$(($COUNT + 1))
                     continue
                 fi
@@ -166,7 +165,8 @@ function render_doIdentityImageDm {
         # Reset counter.
         COUNT=0
 
-        cli_printMessage "${DIRNAME}/${RESOLUTION}.tar.gz" "AsCreatingLine"
+        # Print action message.
+        cli_printMessage "${OUTPUT}/${RESOLUTION}.tar.gz" "AsCreatingLine"
 
         # Create tar.gz file.
         tar -czf "${RESOLUTION}.tar.gz" $TGZ
