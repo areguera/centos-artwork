@@ -2,7 +2,7 @@
 #
 # render.sh -- This function provides rendition features to
 # centos-art.sh script. Here we initialize rendition variables and
-# call render_getActions functions.
+# call identity_getActions functions.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -42,6 +42,6 @@ function render {
     local FLAG_ARCHITECTURE=''
 
     # Define rendition actions.
-    render_getActions
+    identity_getActions
 
 }

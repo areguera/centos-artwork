@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityImageBrands.sh -- This function provides
+# identity_doIdentityImageBrands.sh -- This function provides
 # last-rendition actions to produce CentOS brands. This function takes
 # both The CentOS Symbol and The CentOS Type images and produces
 # variation of them in different dimensions and formats using
@@ -27,7 +27,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doIdentityImageBrands {
+function identity_doIdentityImageBrands {
 
     local SOURCEFILE=''
     local TARGETDIR=''

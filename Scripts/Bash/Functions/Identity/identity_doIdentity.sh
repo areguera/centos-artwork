@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentity.sh -- This function initiates rendition
+# identity_doIdentity.sh -- This function initiates rendition
 # configuration functions and executes them to perform the rendition
 # action specified in the `ACTIONS' array variable. Function
 # initialization and execution is based on the absolute path
@@ -24,10 +24,10 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: render_doIdentity.sh 824 2011-01-06 20:54:52Z al $
+# $Id: identity_doIdentity.sh 824 2011-01-06 20:54:52Z al $
 # ----------------------------------------------------------------------
 
-function render_doIdentity {
+function identity_doIdentity {
 
     local FILE=''
 
@@ -51,7 +51,7 @@ function render_doIdentity {
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
-        # render_doIdentityImages execution. Otherwise, undesired
+        # identity_doIdentityImages execution. Otherwise, undesired
         # concatenations may occur.
         local -a ACTIONS
         local -a POSTACTIONS
@@ -63,11 +63,11 @@ function render_doIdentity {
 
         # Execute artwork-specific pre-rendition configuration
         # (function) scripts to re-define artwork-specific ACTIONS.
-        render_loadConfig
+        identity_loadConfig
 
         # Check variables passed from artwork-specific pre-rendition
         # configuration scripts and make required transformations.
-        render_getIdentityConfig
+        identity_getIdentityConfig
 
         # Redefine action value (ACTIONVAL) based on pre-rendition
         # configuration script path value. Otherwise, massive
@@ -91,7 +91,7 @@ function render_doIdentity {
 
         # Start rendition as defined in artwork-specific pre-rendition
         # configuration file.
-        render_getIdentityBase
+        identity_getIdentityBase
 
         # Unset artwork-specific actions so they can be redefined by
         # artwork-specific pre-rendition configuration scripts. This

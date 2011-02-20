@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_loadConfig.sh -- This function defines firstboot
+# identity_loadConfig.sh -- This function defines firstboot
 # pre-rendition configuration script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_loadConfig {
+function identity_loadConfig {
 
     # Deifne theme model.
     #THEMEMODEL='Default'

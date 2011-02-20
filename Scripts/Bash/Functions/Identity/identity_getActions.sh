@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_getActions.sh -- This function interprets arguments passed to
+# identity_getActions.sh -- This function interprets arguments passed to
 # render functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getActions {
+function identity_getActions {
 
     # Define short options we want to support.
     local ARGSS=""

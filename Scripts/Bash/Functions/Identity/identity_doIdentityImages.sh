@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doIdentityImages.sh -- This function renders image-based
+# identity_doIdentityImages.sh -- This function renders image-based
 # identity contents.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doIdentityImages {
+function identity_doIdentityImages {
 
     local FILE=''
     local OUTPUT=''
@@ -65,7 +65,7 @@ function render_doIdentityImages {
         fi
  
         # Define final location of output directory.
-        render_getIdentityDirOutput
+        identity_getIdentityDirOutput
 
         # Get relative path to file. The path string (stored in FILE)
         # has two parts: 1. the variable path and 2. the common path.
@@ -140,7 +140,7 @@ function render_doIdentityImages {
         # artistic motif background images. If such external files
         # doesn't exist, print a message and stop script execution.
         # We cannot continue without background information.
-        render_checkAbsolutePaths "$INSTANCE"
+        identity_checkAbsolutePaths "$INSTANCE"
 
         # Render template instance and modify the inkscape output to
         # reduce the amount of characters used in description column
@@ -163,19 +163,19 @@ function render_doIdentityImages {
             case "$ACTION" in
 
                 renderSyslinux* )
-                    render_doIdentityImageSyslinux "${FILE}" "$ACTION"
+                    identity_doIdentityImageSyslinux "${FILE}" "$ACTION"
                     ;;
 
                 renderGrub* )
-                    render_doIdentityImageGrub "${FILE}" "$ACTION"
+                    identity_doIdentityImageGrub "${FILE}" "$ACTION"
                     ;;
 
                 renderFormats:* )
-                    render_doIdentityImageFormats "${FILE}" "$ACTION"
+                    identity_doIdentityImageFormats "${FILE}" "$ACTION"
                     ;;
 
                 groupByType:* )
-                    render_doIdentityGroupByType "${FILE}" "$ACTION"
+                    identity_doIdentityGroupByType "${FILE}" "$ACTION"
                     ;;
 
             esac
@@ -213,19 +213,19 @@ function render_doIdentityImages {
                 case "$ACTION" in
 
                     renderKSplash )
-                        render_doIdentityImageKsplash
+                        identity_doIdentityImageKsplash
                         ;;
 
                     renderDm:* )
-                        render_doIdentityImageDm "$ACTION"
+                        identity_doIdentityImageDm "$ACTION"
                         ;;
 
                     groupByType:* )
-                        render_doIdentityGroupByType "$ACTION"
+                        identity_doIdentityGroupByType "$ACTION"
                         ;;
 
                     renderBrands )
-                        render_doIdentityImageBrands "${FILE}" "$ACTION"
+                        identity_doIdentityImageBrands "${FILE}" "$ACTION"
                         ;;
 
                 esac

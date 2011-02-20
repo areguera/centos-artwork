@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# render_doIdentityGroupByTypes.sh -- This function provides
+# identity_doIdentityGroupByTypes.sh -- This function provides
 # post-rendition and last-rendition action to group file inside
 # directories named as their file type.
 #
 # Usage:
 # ------
-# Post-rendition --> render_doIdentityGroupByTypes "$FILE" "$ACTION"
-# Last-rendition --> render_doIdentityGroupByTypes "$ACTION"
+# Post-rendition --> identity_doIdentityGroupByTypes "$FILE" "$ACTION"
+# Last-rendition --> identity_doIdentityGroupByTypes "$ACTION"
 #
 # Note that post-rendition uses 2 arguments ($FILE and $ACTION) and
 # last-rendition just one ($ACTION). This function uses the amount
@@ -64,7 +64,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doIdentityGroupByType {
+function identity_doIdentityGroupByType {
 
     local FILE=''
     local -a FILES
@@ -87,7 +87,7 @@ function render_doIdentityGroupByType {
 
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
-    FORMATS=$(render_getIdentityConfigOption "$FORMATS" '2-')
+    FORMATS=$(identity_getIdentityConfigOption "$FORMATS" '2-')
 
     # Check file types passed from render.conf.sh pre-rendition
     # configuration script.
