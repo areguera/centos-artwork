@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# identity_do.sh -- This function initiates rendition
-# configuration functions and executes them to perform the rendition
-# action specified in the `ACTIONS' array variable. Function
-# initialization and execution is based on the absolute path
-# convenction defined by ARTCONF variable.
+# identity_do.sh -- This function initiates rendition configuration
+# functions and executes them to perform the rendition action
+# specified in the `ACTIONS' array variable. Function initialization
+# and execution is based on the absolute path convenction defined by
+# ARTCONF variable.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -75,7 +75,7 @@ function identity_do {
         # the exact artwork path (that is, where images will be
         # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
-            -e 's!Scripts/Bash/Functions/Render/Config/(Identity)/!\1/!' \
+            -e 's!Scripts/Bash/Functions/Identity/Config/(Identity)/!\1/!' \
             -e "s!Themes/!Themes/Motifs/$(cli_getPathComponent '--theme')/!"))
 
         # Redefine artwork identification using redefined action
