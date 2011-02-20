@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_renderImageSyslinux.sh -- This function provides
-# post-rendition action used to produce syslinux images.
+# identity_renderSyslinux.sh -- This function provides post-rendition
+# action used to produce syslinux images.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderImageSyslinux {
+function identity_renderSyslinux {
 
     local FILE="$1"
     local ACTION="$2"

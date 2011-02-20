@@ -188,15 +188,15 @@ function identity_renderBase {
             case "$ACTION" in
 
                 renderSyslinux* )
-                    identity_renderImageSyslinux "${FILE}" "$ACTION"
+                    identity_renderSyslinux "${FILE}" "$ACTION"
                     ;;
 
                 renderGrub* )
-                    identity_renderImageGrub "${FILE}" "$ACTION"
+                    identity_renderGrub "${FILE}" "$ACTION"
                     ;;
 
                 renderFormats:* )
-                    identity_renderImageFormats "${FILE}" "$ACTION"
+                    identity_renderFormats "${FILE}" "$ACTION"
                     ;;
 
                 groupByType:* )
@@ -238,11 +238,11 @@ function identity_renderBase {
                 case "$ACTION" in
 
                     renderKSplash )
-                        identity_renderImageKsplash
+                        identity_renderKsplash
                         ;;
 
                     renderDm:* )
-                        identity_renderImageDm "$ACTION"
+                        identity_renderDm "$ACTION"
                         ;;
 
                     groupByType:* )
@@ -250,7 +250,7 @@ function identity_renderBase {
                         ;;
 
                     renderBrands )
-                        identity_renderImageBrands "${FILE}" "$ACTION"
+                        identity_renderBrands "${FILE}" "$ACTION"
                         ;;
 
                 esac

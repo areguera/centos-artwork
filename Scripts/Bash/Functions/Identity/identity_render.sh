@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# identity_render.sh -- This function initiates rendition configuration
-# functions and executes them to perform the rendition action
-# specified in the `ACTIONS' array variable. Function initialization
-# and execution is based on the absolute path convenction defined by
-# ARTCONF variable.
+# identity_render.sh -- This function initiates rendition
+# configuration functions and executes them to perform the rendition
+# action specified in the `ACTIONS' array variable. Function
+# initialization and execution is based on the absolute path
+# convenction defined by ARTCONF variable.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -51,7 +51,7 @@ function identity_render {
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
-        # identity_renderImages execution. Otherwise, undesired
+        # identity_renders execution. Otherwise, undesired
         # concatenations may occur.
         local -a ACTIONS
         local -a POSTACTIONS

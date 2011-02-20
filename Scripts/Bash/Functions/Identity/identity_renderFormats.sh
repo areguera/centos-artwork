@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# identity_renderImageFormats.sh -- This function provides
-# post-rendition action used to convert images from PNG to different
-# image formats.  This function uses ImageMagick command line image
-# manipulation tool set to convert the base PNG image to as many
-# formats as ImageMagick supports.
+# identity_renderFormats.sh -- This function provides post-rendition
+# action used to convert images from PNG to different image formats.
+# This function uses ImageMagick command line image manipulation tool
+# set to convert the base PNG image to as many formats as ImageMagick
+# supports.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,7 +27,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderImageFormats {
+function identity_renderFormats {
 
     # Get absolute path of PNG image file.
     local FILE="$1"

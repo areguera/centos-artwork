@@ -50,13 +50,6 @@ function identity_getConfig {
 
     done
 
-    # Check post-rendition actions. Validation of post-rendition
-    # actions is action-specific. So, validation of post-rendition
-    # actions is not here, but inside action-specific functions. See
-    # identity_renderImages and identity_renderIdentityTexts to see
-    # validation of renderImage and renderText post-rendition actions,
-    # respectively.
-
     # Sanitate theme model value using repository directory name
     # convenction.
     THEMEMODEL=$(cli_getRepoName "$THEMEMODEL" 'd')
