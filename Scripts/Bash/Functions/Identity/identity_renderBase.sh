@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_getBase.sh -- This function initiates rendition features
-# taking BASEACTIONS as reference.
+# identity_renderBase.sh -- This function initiates base rendition
+# using pre-rendition configuration files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getBase {
+function identity_renderBase {
 
     local FILES=''
     local PARENTDIR=''

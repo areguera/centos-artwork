@@ -89,9 +89,9 @@ function identity_render {
         ARTCOMP=$(echo $ARTCOMP \
             | sed -r "s!Themes/Motifs/$(cli_getPathComponent '--theme')/!Themes/!")
 
-        # Start rendition as defined in artwork-specific pre-rendition
-        # configuration file.
-        identity_getBase
+        # Initiate base rendition using pre-rendition configuration
+        # files.
+        identity_renderBase
 
         # Unset artwork-specific actions so they can be redefined by
         # artwork-specific pre-rendition configuration scripts. This
