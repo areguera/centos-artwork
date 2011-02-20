@@ -1,10 +1,7 @@
 #!/bin/bash
 #
-# identity_renderFormats.sh -- This function provides post-rendition
-# action used to convert images from PNG to different image formats.
-# This function uses ImageMagick command line image manipulation tool
-# set to convert the base PNG image to as many formats as ImageMagick
-# supports.
+# identity_renderLastActions.sh -- This function executes
+# last-rendition actions.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,26 +24,27 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderFormats {
+function identity_renderLastActions {
 
-    # Get image formats.
-    local FORMATS=$(identity_renderConfigOption "$2" '2-')
+    local ACTION=''
 
-    # Check base file existence.
-    if [[ -f ${FILE}.png ]];then
+    for ACTION in "${LASTACTIONS[@]}"; do
 
-        # Check image formats.
-        if [[ "$FORMATS" != "" ]];then
+        case "${ACTION}" in
 
-            # Loop through image formats and do format convertion using
-            # PNG file as base.
-            for FORMAT in $FORMATS;do
-                cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
-                convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
-            done
+            renderKSplash )
+                identity_renderKsplash
+                ;;
 
-        fi
+            renderDm:* )
+                identity_renderDm
+                ;;
 
-    fi
+            groupByType:* )
+                identity_renderGroupByType
+                ;;
+        esac
+
+    done
 
 }

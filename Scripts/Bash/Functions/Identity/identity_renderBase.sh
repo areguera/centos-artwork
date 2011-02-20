@@ -40,7 +40,7 @@ function identity_renderBase {
     local -a COMMONDIRS
 
     # Redefine parent directory for current workplace.
-    PARENTDIR=$(basename "$ACTIONVAL")
+    PARENTDIR=$(basename "${ACTIONVAL}")
 
     # Define base location of template files.
     identity_renderDirTemplate
@@ -59,6 +59,9 @@ function identity_renderBase {
         COMMONDIRS[$COMMONDIRCOUNT]=$(dirname "$COMMONDIR")
         COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
     done
+
+    # Reset common directory counter.
+    COMMONDIRCOUNT=0
 
     # Define export id used inside design templates. This value
     # defines the design area we want to export.
@@ -183,42 +186,21 @@ function identity_renderBase {
         fi
 
         # Execute post-rendition actions.
-        for ACTION in "${POSTACTIONS[@]}"; do
-
-            case "$ACTION" in
-
-                renderSyslinux* )
-                    identity_renderSyslinux "${FILE}" "$ACTION"
-                    ;;
-
-                renderGrub* )
-                    identity_renderGrub "${FILE}" "$ACTION"
-                    ;;
-
-                renderFormats:* )
-                    identity_renderFormats "${FILE}" "$ACTION"
-                    ;;
-
-                groupByType:* )
-                    identity_renderGroupByType "${FILE}" "$ACTION"
-                    ;;
-
-            esac
-
-        done
+        identity_renderPostActions
 
         # Output separator line.
         cli_printMessage '-' 'AsSeparatorLine'
 
-        # Apply last-rendition actions. As convenction, last-rendition
+        # Verify position of file being produced in the list of files
+        # been currently processed.  As convenction, last-rendition
         # actions are applied after all images inside the same
-        # directory structure have been produced. Notice that, in
+        # directory structure have being produced. Notice that, in
         # order to apply last-rendition actions correctly,
         # centos-art.sh needs to "predict" what the last file in the
         # same directory structure would be. There is no magic here,
         # so we need to previously define which are the common
-        # directory structures centos-art.sh could produce content
-        # for inside an array variable. Later, using the index of that
+        # directory structures centos-art.sh could produce content for
+        # inside an array variable. Later, using the index of that
         # array variable we could check the next item in the array
         # against the file being currently produced. If they match, we
         # haven't reached the end of the same directory structure, but
@@ -231,34 +213,15 @@ function identity_renderBase {
             # At this point centos-art.sh should be producing the last
             # file from the same unique directory structure, so,
             # before producing images for the next directory structure
-            # lets evaluate last-rendition actions for the current
+            # lets execute last-rendition actions for the current
             # directory structure. 
-            for ACTION in "${LASTACTIONS[@]}"; do
+            identity_renderLastActions
 
-                case "$ACTION" in
-
-                    renderKSplash )
-                        identity_renderKsplash
-                        ;;
-
-                    renderDm:* )
-                        identity_renderDm "$ACTION"
-                        ;;
-
-                    groupByType:* )
-                        identity_renderGroupByType "$ACTION"
-                        ;;
-
-                    renderBrands )
-                        identity_renderBrands "${FILE}" "$ACTION"
-                        ;;
-
-                esac
-            done
         fi
 
         # Increment common directory counter.
         COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
 
     done
+
 }
