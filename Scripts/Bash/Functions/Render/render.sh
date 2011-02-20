@@ -33,8 +33,13 @@ function render {
 
     # Define release number flag. The relesase number flag (--release)
     # specifies the release number identity images are rendered for.
-    # By default no release information is used.
+    # By default no release number is used.
     local FLAG_RELEASE=''
+
+    # Define architecture flag. The architecture flag (--architecture)
+    # specifies the architecture type identity images are rendered
+    # for.  By default no architecture type is used.
+    local FLAG_ARCHITECTURE=''
 
     # Define rendition actions.
     render_getActions
