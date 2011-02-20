@@ -168,7 +168,7 @@ function identity_renderBase {
         # artistic motif background images. If such external files
         # doesn't exist, print a message and stop script execution.
         # We cannot continue without background information.
-        identity_renderAbsolutePaths "$INSTANCE"
+        identity_checkAbsolutePaths "$INSTANCE"
 
         # Render template instance and modify the inkscape output to
         # reduce the amount of characters used in description column
