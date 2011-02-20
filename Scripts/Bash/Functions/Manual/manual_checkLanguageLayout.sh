@@ -35,7 +35,6 @@ function manual_checkLanguageLayout {
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
         manual_createLanguageLayout
-        cli_commitRepoChanges
 
     fi
 
