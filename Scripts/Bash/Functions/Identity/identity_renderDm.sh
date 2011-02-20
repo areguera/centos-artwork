@@ -58,7 +58,7 @@ function identity_renderDm {
 
     # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
-    DM=$(identity_renderConfigOption "${ACTION}" '2')
+    DM=$(identity_getConfigOption "${ACTION}" '2')
  
     # Sanitate display manager passed from render.conf.sh
     # pre-rendition configuration script. Whatever value be retrived
@@ -69,7 +69,7 @@ function identity_renderDm {
 
     # Get screen resolutions passed from render.conf.sh pre-rendition
     # configuration script.
-    RESOLUTIONS=$(identity_renderConfigOption "${ACTION}" '3')
+    RESOLUTIONS=$(identity_getConfigOption "${ACTION}" '3')
 
     # Check screen resolutions passed from render.conf.sh
     # pre-rendition configuration script.

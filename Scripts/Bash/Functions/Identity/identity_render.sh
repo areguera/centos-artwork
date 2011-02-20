@@ -67,7 +67,7 @@ function identity_render {
 
         # Check variables passed from artwork-specific pre-rendition
         # configuration scripts and make required transformations.
-        identity_renderConfig
+        identity_getConfig
 
         # Redefine action value (ACTIONVAL) based on pre-rendition
         # configuration script path value. Otherwise, massive

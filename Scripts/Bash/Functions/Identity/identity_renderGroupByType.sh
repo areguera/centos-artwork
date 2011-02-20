@@ -69,7 +69,7 @@ function identity_renderGroupByType {
 
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
-    FORMATS=$(identity_renderConfigOption "$FORMATS" '2-')
+    FORMATS=$(identity_getConfigOption "$FORMATS" '2-')
 
     # Check file types passed from render.conf.sh pre-rendition
     # configuration script.
