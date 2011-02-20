@@ -40,24 +40,27 @@ function render_doIdentityImageKsplash {
     cli_checkFiles "$FONT" 'f'
 
     # Define absolute source location of files.
-    SRC[0]="${DIRNAME}/splash_top.png"
-    SRC[1]="${DIRNAME}/splash_active_bar.png"
-    SRC[2]="${DIRNAME}/splash_inactive_bar.png"
-    SRC[3]="${DIRNAME}/splash_bottom.png"
-    SRC[4]="$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/BootUp/KSplash/Theme.rc"
+    SRC[0]="${OUTPUT}/splash_top.png"
+    SRC[1]="${OUTPUT}/splash_active_bar.png"
+    SRC[2]="${OUTPUT}/splash_inactive_bar.png"
+    SRC[3]="${OUTPUT}/splash_bottom.png"
+    SRC[4]="$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/Ksplash/Theme.rc"
 
     # Check absolute source location of files.
     cli_checkFiles "${SRC[@]}" 'f'
 
     # Define relative target location of files.
-    DST[0]="${DIRNAME}/splash_top.png"
-    DST[1]="${DIRNAME}/splash_active_bar.png"
-    DST[2]="${DIRNAME}/splash_inactive_bar.png"
-    DST[3]="${DIRNAME}/splash_bottom.png"
-    DST[4]="${DIRNAME}/Theme.rc"
+    DST[0]="${OUTPUT}/splash_top.png"
+    DST[1]="${OUTPUT}/splash_active_bar.png"
+    DST[2]="${OUTPUT}/splash_inactive_bar.png"
+    DST[3]="${OUTPUT}/splash_bottom.png"
+    DST[4]="${OUTPUT}/Theme.rc"
+
+    # Print action message.
+    cli_printMessage "${OUTPUT}/Preview.png" 'AsCreatingLine'
 
     # Create `Preview.png' image.
-    convert -append ${SRC[0]} ${SRC[1]} ${SRC[3]} ${DIRNAME}/Preview.png
+    convert -append ${SRC[0]} ${SRC[1]} ${SRC[3]} ${OUTPUT}/Preview.png
 
     # Add bottom text to Preview.png image. The text position was set
     # inside an image of 400x300 pixels. If you change the final
@@ -66,12 +69,15 @@ function render_doIdentityImageKsplash {
     mogrify -draw 'text 6,295 "KDE is up and running."' \
         -fill \#ffffff \
         -font $FONT \
-        ${DIRNAME}/Preview.png
+        ${OUTPUT}/Preview.png
 
     # Copy `Theme.rc' file.
     cp ${SRC[4]} ${DST[4]}
 
     # Apply common translation markers to Theme.rc file.
     cli_replaceTMarkers "${DST[4]}"
+
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
 }
