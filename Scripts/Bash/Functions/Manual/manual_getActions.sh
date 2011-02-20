@@ -33,7 +33,7 @@ function manual_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="read:,search:,edit:,delete:,update,copy:,to:,quiet,yes"
+    local ARGSL="read:,search:,edit:,delete:,update,copy:,to:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -126,24 +126,6 @@ function manual_getActions {
                 shift 2
                 ;;
 
-            --quiet )
-                
-                # Redefine target flag.
-                FLAG_QUIET='true'
-
-                # Rotate positional parameters.
-                shift 1
-                ;;
-
-            --yes )
-                
-                # Redefine target flag.
-                FLAG_YES='true'
-
-                # Rotate positional parameters.
-                shift 1
-                ;;
-
             * )
                 # Break options loop.
                 break
@@ -173,6 +155,10 @@ function manual_getActions {
     # Define chapter name for this documentation entry.
     CHAPTERNAME=$(basename "$ENTRYCHAPTER")
 
+    # Syncronize changes between the working copy and the central
+    # repository to bring down changes.
+    cli_commitRepoChanges ${MANUALS_DIR[0]}
+
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
@@ -180,5 +166,9 @@ function manual_getActions {
         cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Syncronize changes between the working copy and the central
+    # repository to commit up changes.
+    cli_commitRepoChanges "${MANUALS_DIR[0]}"
 
 }
