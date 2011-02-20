@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_getIdentityBase.sh -- This function initiates rendition features
+# identity_getBase.sh -- This function initiates rendition features
 # taking BASEACTIONS as reference.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getIdentityBase {
+function identity_getBase {
 
     local FILES=''
     local PARENTDIR=''
@@ -37,7 +37,7 @@ function identity_getIdentityBase {
     PARENTDIR=$(basename "$ACTIONVAL")
 
     # Define base location of template files.
-    identity_getIdentityDirTemplate
+    identity_getDirTemplate
     
     # Define list of files to process. 
     FILES=$(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.(svgz|svg)")
@@ -55,6 +55,6 @@ function identity_getIdentityBase {
     done
 
     # Execute base-rendition action.
-    identity_doIdentityImages
+    identity_doImages
 
 }

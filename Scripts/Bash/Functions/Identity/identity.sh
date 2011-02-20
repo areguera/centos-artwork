@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render {
+function identity {
 
     # Define default value to target flag. The target flag (--to)
     # controls final destination used by copy related actions.

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_getIdentityDirTemplate.sh -- This function re-defines absolute
+# identity_getDirTemplate.sh -- This function re-defines absolute
 # path to artwork's related design templates directory.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getIdentityDirTemplate {
+function identity_getDirTemplate {
 
     # Initialize design models location using action value as
     # reference.

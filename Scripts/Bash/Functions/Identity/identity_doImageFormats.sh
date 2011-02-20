@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_doIdentityImageFormats.sh -- This function provides
+# identity_doImageFormats.sh -- This function provides
 # post-rendition action used to convert images from PNG to different
 # image formats.  This function uses ImageMagick command line image
 # manipulation tool set to convert the base PNG image to as many
@@ -27,13 +27,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_doIdentityImageFormats {
+function identity_doImageFormats {
 
     # Get absolute path of PNG image file.
     local FILE="$1"
 
     # Get image formats.
-    local FORMATS=$(identity_getIdentityConfigOption "$2" '2-')
+    local FORMATS=$(identity_getConfigOption "$2" '2-')
 
     # Check base file existence.
     if [[ -f ${FILE}.png ]];then

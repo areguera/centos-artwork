@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_doIdentity.sh -- This function initiates rendition
+# identity_do.sh -- This function initiates rendition
 # configuration functions and executes them to perform the rendition
 # action specified in the `ACTIONS' array variable. Function
 # initialization and execution is based on the absolute path
@@ -24,10 +24,10 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: identity_doIdentity.sh 824 2011-01-06 20:54:52Z al $
+# $Id: identity_do.sh 824 2011-01-06 20:54:52Z al $
 # ----------------------------------------------------------------------
 
-function identity_doIdentity {
+function identity_do {
 
     local FILE=''
 
@@ -51,7 +51,7 @@ function identity_doIdentity {
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
-        # identity_doIdentityImages execution. Otherwise, undesired
+        # identity_doImages execution. Otherwise, undesired
         # concatenations may occur.
         local -a ACTIONS
         local -a POSTACTIONS
@@ -67,7 +67,7 @@ function identity_doIdentity {
 
         # Check variables passed from artwork-specific pre-rendition
         # configuration scripts and make required transformations.
-        identity_getIdentityConfig
+        identity_getConfig
 
         # Redefine action value (ACTIONVAL) based on pre-rendition
         # configuration script path value. Otherwise, massive
@@ -91,7 +91,7 @@ function identity_doIdentity {
 
         # Start rendition as defined in artwork-specific pre-rendition
         # configuration file.
-        identity_getIdentityBase
+        identity_getBase
 
         # Unset artwork-specific actions so they can be redefined by
         # artwork-specific pre-rendition configuration scripts. This

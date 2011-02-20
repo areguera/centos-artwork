@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_getIdentityConfig.sh -- This function checks/validates variables
+# identity_getConfig.sh -- This function checks/validates variables
 # passed from artwork-specific pre-rendition configuration files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getIdentityConfig {
+function identity_getConfig {
 
     local POSTCOUNT=0
     local LASTCOUNT=0
@@ -37,13 +37,13 @@ function identity_getIdentityConfig {
 
         # Define post-rendition actions.
         if [[ $ACTION =~ '^POST:' ]];then
-            ACTION=$(identity_getIdentityConfigOption "$ACTION" '2-')
+            ACTION=$(identity_getConfigOption "$ACTION" '2-')
             POSTACTIONS[$POSTCOUNT]="$ACTION"
             POSTCOUNT=$(($POSTCOUNT + 1))
 
         # Define last-rendition actions.
         elif [[ $ACTION =~ '^LAST:' ]];then
-            ACTION=$(identity_getIdentityConfigOption "$ACTION" '2-')
+            ACTION=$(identity_getConfigOption "$ACTION" '2-')
             LASTACTIONS[$LASTCOUNT]="$ACTION"
             LASTCOUNT=$(($LASTCOUNT + 1))
         fi
@@ -53,7 +53,7 @@ function identity_getIdentityConfig {
     # Check post-rendition actions. Validation of post-rendition
     # actions is action-specific. So, validation of post-rendition
     # actions is not here, but inside action-specific functions. See
-    # identity_doIdentityImages and identity_doIdentityTexts to see
+    # identity_doImages and identity_doIdentityTexts to see
     # validation of renderImage and renderText post-rendition actions,
     # respectively.
 

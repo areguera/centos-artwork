@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_doIdentityImages.sh -- This function renders image-based
+# identity_doImages.sh -- This function renders image-based
 # identity contents.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_doIdentityImages {
+function identity_doImages {
 
     local FILE=''
     local OUTPUT=''
@@ -65,7 +65,7 @@ function identity_doIdentityImages {
         fi
  
         # Define final location of output directory.
-        identity_getIdentityDirOutput
+        identity_getDirOutput
 
         # Get relative path to file. The path string (stored in FILE)
         # has two parts: 1. the variable path and 2. the common path.
@@ -163,19 +163,19 @@ function identity_doIdentityImages {
             case "$ACTION" in
 
                 renderSyslinux* )
-                    identity_doIdentityImageSyslinux "${FILE}" "$ACTION"
+                    identity_doImageSyslinux "${FILE}" "$ACTION"
                     ;;
 
                 renderGrub* )
-                    identity_doIdentityImageGrub "${FILE}" "$ACTION"
+                    identity_doImageGrub "${FILE}" "$ACTION"
                     ;;
 
                 renderFormats:* )
-                    identity_doIdentityImageFormats "${FILE}" "$ACTION"
+                    identity_doImageFormats "${FILE}" "$ACTION"
                     ;;
 
                 groupByType:* )
-                    identity_doIdentityGroupByType "${FILE}" "$ACTION"
+                    identity_doGroupByType "${FILE}" "$ACTION"
                     ;;
 
             esac
@@ -213,19 +213,19 @@ function identity_doIdentityImages {
                 case "$ACTION" in
 
                     renderKSplash )
-                        identity_doIdentityImageKsplash
+                        identity_doImageKsplash
                         ;;
 
                     renderDm:* )
-                        identity_doIdentityImageDm "$ACTION"
+                        identity_doImageDm "$ACTION"
                         ;;
 
                     groupByType:* )
-                        identity_doIdentityGroupByType "$ACTION"
+                        identity_doGroupByType "$ACTION"
                         ;;
 
                     renderBrands )
-                        identity_doIdentityImageBrands "${FILE}" "$ACTION"
+                        identity_doImageBrands "${FILE}" "$ACTION"
                         ;;
 
                 esac
