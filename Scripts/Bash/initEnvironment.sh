@@ -27,10 +27,11 @@
 # Initizalize centos-art.sh gettext internazionalization.
 . gettext.sh
 export TEXTDOMAIN=centos-art.sh
-export TEXTDOMAINDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions/Locale/Config
+export TEXTDOMAINDIR=/home/centos/artwork/trunk/Locales/Scripts/Bash/
 
 # Initialize centos-art.sh personal information.
 export CLINAME='centos-art'
+export CLIVERSION='1.0 (beta)'
 
 # Initialize centos-art.sh function scripts.
 FILES=$(ls /home/centos/artwork/trunk/Scripts/Bash/Functions/{cli,cli_*}.sh)
