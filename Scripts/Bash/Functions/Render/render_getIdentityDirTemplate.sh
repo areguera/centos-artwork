@@ -28,17 +28,17 @@ function render_getIdentityDirTemplate {
 
     # Initialize design models location using action value as
     # reference.
-    SVG=$ACTIONVAL
+    TEMPLATE=$ACTIONVAL
 
     # Sanitate design models location.  Be sure design models do
     # always point to trunk directory structure. This is useful to let
     # `centos-art.sh' script do rendition under branches directory
     # structure, reusing design models under trunk directory
     # structure.
-    SVG=$(echo "$SVG" | sed "s!/branches/!/trunk/!")
+    TEMPLATE=$(echo "$TEMPLATE" | sed "s!/branches/!/trunk/!")
 
-    # Sanitate design models location.
-    if [[ -d $SVG/Tpl ]];then
+    # Sanitate design models location using or not Tpl/ directory.
+    if [[ -d $TEMPLATE/Tpl ]];then
         # Using Tpl/ directory is an obsolete practice that should be
         # avoided. The concept of Tpl/ directory per artwork directory
         # has been replaced by a common design model directory
@@ -46,14 +46,15 @@ function render_getIdentityDirTemplate {
         # different artistic motifs.  However, there are some cases
         # that we may need to use Tpl/ directory still, so we verify
         # its existence and use it if present.
-        SVG=$SVG/Tpl
+        TEMPLATE=$TEMPLATE/Tpl
     else
         # Redefine design model location based on theme model
         # (THEMEMODEL) variable value. The theme model variable is
         # defined in the associated pre-rendition configuration script
         # and can be used to set which design model to use among a
         # list of different design models that we can choose from.
-        SVG=$(echo "$SVG" | sed "s!Motifs/$(cli_getPathComponent "$SVG" '--theme')!Models/$THEMEMODEL!")
+        TEMPLATE=$(echo "$TEMPLATE" \
+            | sed "s!Motifs/$(cli_getPathComponent "$TEMPLATE" '--theme')!Models/$THEMEMODEL!")
     fi
 
 }
