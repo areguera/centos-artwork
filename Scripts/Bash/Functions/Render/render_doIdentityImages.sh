@@ -26,9 +26,13 @@
 
 function render_doIdentityImages {
 
+    local FILE=''
+    local OUTPUT=''
     local EXPORTID=''
-    local EXTERNALFILES=''
+    local TEMPLATE=''
+    local TRANSLATION=''
     local EXTERNALFILE=''
+    local EXTERNALFILES=''
     local COMMONDIRCOUNT=0
 
     # Export id used inside design templates. This value defines the
@@ -37,9 +41,9 @@ function render_doIdentityImages {
 
     # Start processing the base rendition list of FILES. Fun part
     # approching :-).
-    for FILE in ${FILES}; do
+    for FILE in $FILES; do
 
-        # Call shared variable re-definitions.
+        # Get common definitions for all identity rendition actions.
         render_getIdentityDefs
 
         # Check export id inside design templates.
@@ -50,36 +54,19 @@ function render_doIdentityImages {
             continue
         fi
 
-        # Define final image width. If FILE name is a number, asume it
-        # as the width value of the image being rendered. Otherwise
-        # use design template default width value.
-        WIDTH=$(basename "${FILE}")
-        if [[ $WIDTH =~ '^[0-9]+$' ]];then
-            WIDTH="--export-width=$WIDTH" 
-        else
-            WIDTH=''
-        fi
-        
         # Check existence of external files. In order for design
         # templates to point different artistic motifs, design
         # templates make use of external files that point to specific
         # artistic motif background images. If such external files
         # doesn't exist, print a message and stop script execution.
-        # We cannot continue wihtout the background information.
-        EXTERNALFILES="(xlink:href|sodipodi:absref)=\"$(cli_getRepoTLDir $TEMPLATE)"
-        EXTERNALFILES=$(egrep "${EXTERNALFILES}" "${INSTANCE}" \
-            | sed -r 's!^[[:space:]]+!!' \
-            | sed -r 's!^(xlink:href|sodipodi:absref)="!!' \
-            | sed -r 's!".*$!!' | sort | uniq)
-        for EXTERNALFILE in $EXTERNALFILES;do
-            cli_checkFiles $EXTERNALFILE
-        done
+        # We cannot continue without background information.
+        render_checkAbsolutePaths "$INSTANCE"
 
         # Render template instance and modify the inkscape output to
         # reduce the amount of characters used in description column
         # at final output.
         cli_printMessage "$(inkscape $INSTANCE \
-            --export-id=$EXPORTID $WIDTH --export-png=${FILE}.png | sed -r \
+            --export-id=$EXPORTID --export-png=${FILE}.png | sed -r \
             -e "s!Area !`gettext "Area"`: !" \
             -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
             -e "s!Bitmap saved as:!`gettext "Saved as"`:!")" \
@@ -134,11 +121,12 @@ function render_doIdentityImages {
         # directory structure and it is time for last-rendition
         # actions to be evaluated before go producing the next
         # directory structure in the list of files to process.
-        if [[ ${COMMONDIRS[$((COMMONDIRCOUNT + 1))]} != $(dirname "$TRANSLATION") ]];then
-            # At this point centos-art.sh is producing the last file
-            # from the same unique directory structure, so, before
-            # producing images for the next directory structure lets
-            # evaluate last-rendition actions for the current
+        if [[ $(dirname "$TEMPLATE") != ${COMMONDIRS[$(($COMMONDIRCOUNT + 1))]} ]];then
+
+            # At this point centos-art.sh should be producing the last
+            # file from the same unique directory structure, so,
+            # before producing images for the next directory structure
+            # lets evaluate last-rendition actions for the current
             # directory structure. 
             for ACTION in "${LASTACTIONS[@]}"; do
 
@@ -156,9 +144,9 @@ function render_doIdentityImages {
                         render_doIdentityGroupByType "$ACTION"
                         ;;
 
-                renderBrands )
-                    render_doIdentityImageBrands "${FILE}" "$ACTION"
-                    ;;
+                    renderBrands )
+                        render_doIdentityImageBrands "${FILE}" "$ACTION"
+                        ;;
 
                 esac
             done
