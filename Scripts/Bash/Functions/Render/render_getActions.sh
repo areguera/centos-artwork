@@ -30,7 +30,7 @@ function render_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="identity:,translation:,filter:,copy:,to:,quiet,yes"
+    local ARGSL="render:,release:,architecture:,copy:,to:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -44,23 +44,14 @@ function render_getActions {
 
         case "$1" in
 
-            --identity )
-
-                # Redefine action value.
-                ACTIONVAL="$2"
+            --render )
 
                 # Redefine action name.
                 ACTIONNAM="${FUNCNAM}_doIdentity"
 
-                # Rotate positional parameters
-                shift 2
-                ;;
+                # Redefine action value.
+                ACTIONVAL="$2"
 
-            --filter )
-
-                # Redefine filter (regular expression) flag.
-                FLAG_FILTER="$2"
-                
                 # Rotate positional parameters
                 shift 2
                 ;;
@@ -77,6 +68,36 @@ function render_getActions {
                 shift 2
                 ;;
 
+            --release )
+            
+                # Redefine release number flag.
+                FLAG_RELEASE="$2"
+
+                # Verify release number flag.
+                if [[ ! $FLAG_RELEASE =~ $(cli_getPathComponent '--release-pattern') ]];then
+                    cli_printMessage "`gettext "The release number provided is not supported."`" 'AsErrorLine'
+                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                fi
+
+                # Rotate positional parameters
+                shift 2
+                ;;
+
+            --architecture )
+            
+                # Redefine architecture flag.
+                FLAG_ARCHITECTURE="$2"
+
+                # Verify architecture flag.
+                if [[ ! $FLAG_ARCHITECTURE =~ $(cli_getPathComponent '--architecture-pattern') ]];then
+                    cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
+                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                fi
+
+                # Rotate positional parameters
+                shift 2
+                ;;
+
             --to )
             
                 # Redefine target value flag.
@@ -84,24 +105,6 @@ function render_getActions {
 
                 # Rotate positional parameters
                 shift 2
-                ;;
-
-            --quiet )
-
-                # Redefine quiet flag.
-                FLAG_QUIET='true'
-
-                # Rotate positional parameters
-                shift 1
-                ;;
-
-            --yes )
-
-                # Redefine answer flag.
-                FLAG_YES='true'
-
-                # Rotate positional parameters
-                shift 1
                 ;;
 
             * )
@@ -115,20 +118,31 @@ function render_getActions {
     # copy.
     cli_checkRepoDirSource
 
-    # Redefine pre-rendition configuration directory. Pre-rendition
+    # Define pre-rendition configuration directory. Pre-rendition
     # configuration directory is where we store render.conf.sh
-    # scripts. The render.conf.sh scripts define how each artwork is
-    # rendered.
+    # scripts. The render.conf.sh script defines how each identity
+    # content is rendered.
     local ARTCONF=$(echo "$ACTIONVAL" \
-        | sed -r -e 's!/(Identity|Manuals)!/Scripts/Bash/Functions/Render/Config/\1!' \
+        | sed -r -e 's!/(Identity)!/Scripts/Bash/Functions/Render/Config/\1!' \
                  -e "s!Motifs/$(cli_getPathComponent '--theme')/?!!")
+
+    # Check directory of pre-rendition configuration script.
+    cli_checkFiles "$ARTCONF" 'd'
+
+    # Syncronize changes between the working copy and the central
+    # repository to bring down changes.
+    cli_commitRepoChanges
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
     else
-        cli_printMessage "`eval_gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
+
+    # Syncronize changes between the working copy and the central
+    # repository to commit up changes.
+    cli_commitRepoChanges
 
 }
