@@ -29,51 +29,31 @@
 
 function render_doIdentity {
 
-    # Define rendition parent directories. This is, where we can run
-    # the `render' functionality to produce files from translation
-    # files and/or design models.
-    if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir $ACTIONVAL)/(Identity|Manuals)/.+$" ]];then
-        cli_printMessage "`eval_gettext "Can't render files under \\\`\\\$ACTIONVAL'."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    local FILE=''
 
-    # Define variables as local to avoid conflicts outside.
+    # Initialize artwork identification.
     local ARTCOMP=''
 
-    # Define default theme model to use.  
+    # Define default theme model.
     local THEMEMODEL='Default'
 
-    # Define default artworks matching list. The artworks matching
-    # list lets you customize how translation files are applied to
-    # design templates. When matching list is empty (the default
-    # value), translation files are applied to design templates
-    # sharing the same name (without the extension). This produces one
-    # translated design for each translation file available.
-    # Matching list definitions where translation files need to be
-    # applied to specific design templates are defined inside
-    # artwork-specific pre-rendition configuration scripts.
-    local MATCHINGLIST=''
+    # Build list of files to process.
+    local FILES=$(cli_getFilesList "$ARTCONF" ".*/?render\.conf\.sh")
 
-    # Check current scripts path value. If scripts path points to a
-    # directory which currently doesn't exist there is nothing to do
-    # here, so leave a message quit script execution.
-    if [[ ! -d $ARTCONF ]];then
-        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    # Set action preamble.
+    cli_printActionPreamble "${FILES}"
 
-    for FILE in $(find $ARTCONF -name 'render.conf.sh');do
+    # Process list of files.
+    for FILE in $FILES;do
 
         # Output action message.
         cli_printMessage $FILE 'AsConfigurationLine'
-        cli_printMessage '-' 'AsSeparatorLine'
 
         # Define artwork-specific action arrays. We need to do this
         # here because ACTIONS variable is unset after
         # render_doIdentityImages execution. Otherwise, undesired
         # concatenations may occur.
         local -a ACTIONS
-        local -a BASEACTIONS
         local -a POSTACTIONS
         local -a LASTACTIONS
   
@@ -82,8 +62,7 @@ function render_doIdentity {
         . $FILE
 
         # Execute artwork-specific pre-rendition configuration
-        # (function) scripts to re-define artwork-specific ACTIONS and
-        # MATCHINGLIST variables. 
+        # (function) scripts to re-define artwork-specific ACTIONS.
         render_loadConfig
 
         # Check variables passed from artwork-specific pre-rendition
@@ -96,10 +75,11 @@ function render_doIdentity {
         # the exact artwork path (that is, where images will be
         # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
-            -e 's!Scripts/Bash/Functions/Render/Config/(Identity|Manuals)/!\1/!' \
+            -e 's!Scripts/Bash/Functions/Render/Config/(Identity)/!\1/!' \
             -e "s!Themes/!Themes/Motifs/$(cli_getPathComponent '--theme')/!"))
 
-        # Redefine artwork identification.
+        # Redefine artwork identification using redefined action
+        # value.
         ARTCOMP=$(echo $ACTIONVAL | cut -d/ -f6-)
 
         # Remove motif name from artwork identification in order to
@@ -125,7 +105,6 @@ function render_doIdentity {
         # want ACTIONS to do what we exactly tell it to do inside each
         # artwork-specific pre-rendition configuration script.
         unset ACTIONS
-        unset BASEACTIONS
         unset POSTACTIONS
         unset LASTACTIONS
 
