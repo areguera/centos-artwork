@@ -106,11 +106,20 @@ function render_doIdentityImages {
         INSTANCE=$(cli_getTemporalFile ${TEMPLATE})
 
         if [[ -f ${TRANSLATION} ]];then
+
             # Create translated instance from design model.
-            /usr/bin/xml2po -p ${TRANSLATION} -o ${INSTANCE} ${TEMPLATE}
+            /usr/bin/xml2po -p ${TRANSLATION} ${TEMPLATE} > ${INSTANCE}
+
+            # Remove .xml2po.mo temporal file.
+            if [[ -f ${PWD}/.xml2po.mo ]];then
+                rm ${PWD}/.xml2po.mo
+            fi
+
         else
+
             # Create non-translated instance form design model.
             /bin/cat ${TEMPLATE} > ${INSTANCE}    
+
         fi
 
         # Apply replacement of translation markers to design model
