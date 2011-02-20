@@ -26,57 +26,35 @@
 
 function render_getIdentityBase {
 
-    local TRANSLATIONPATH=''
-    local SVG=''
-    local IMG=''
-    local PARENTDIR=''
     local FILES=''
-    local FILTER=''
-    local LOCATION=''
-    local EXTENSION=''
+    local PARENTDIR=''
+    local TEMPLATE=''
+    local COMMONDIR=''
+    local COMMONDIRCOUNT=0
     local -a COMMONDIRS
-
-    # Define extension pattern of rendition-related files (e.g.,
-    # translation files and design models).
-    EXTENSION='(svg|txt|html|htm|png)(\.sh)?'
-
-    # Redefine absolute path to artwork's related translation entry.
-    render_getIdentityDirTranslation
-
-    # Redefine absolute path to artwork's related design template
-    # directory. By default design templates are stored in the Tpl/
-    # directory which is stored in the workplace's root. 
-    render_getIdentityDirTemplate
-
-    # Redefine absolute path to artwork's related final output
-    # directory. 
-    render_getIdentityDirOutput
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "$ACTIONVAL")
 
-    # Redefine directory path used as reference to build the list of
-    # files that will be rendered.
-    render_getFilesList
+    # Define base location of template files.
+    render_getIdentityDirTemplate
+    
+    # Define list of files to process. 
+    FILES=$(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.(svgz|svg)")
 
-    # Define which type of features does centos-art.sh script is able
-    # to perform.
-    for ACTION in "${BASEACTIONS[@]}"; do
+    # Set action preamble.
+    cli_printActionPreamble "${FILES}"
 
-        case $ACTION in
-
-            renderText )
-                # Provides text rendition feature.
-                render_doIdentityTexts
-                ;;
-
-            renderImage )
-                # Provides image rendition feature.
-                render_doIdentityImages
-                ;;
-
-        esac
-
+    # Define common absolute paths in order to know when centos-art.sh
+    # is leaving a directory structure and entering into another. This
+    # information is required in order for centos-art.sh to know when
+    # to apply last-rendition actions.
+    for COMMONDIR in $(dirname "$FILES" | sort | uniq);do
+        COMMONDIRS[$COMMONDIRCOUNT]=$(dirname "$COMMONDIR")
+        COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
     done
+
+    # Execute base-rendition action.
+    render_doIdentityImages
 
 }
