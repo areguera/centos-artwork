@@ -44,7 +44,7 @@ function render_checkAbsolutePaths {
     # Retrive absolute paths from file.
     ABSPATHS=$(egrep '="/[a-zA-Z0-9_./-]+" ' $FILE \
         | sed -r "s/ /\n/g" | egrep '(sodipodi:absref|xlink:href)=' \
-        | sed -r "s/.+=\"(\/.+)\"/\1/" | sort | uniq)
+        | sed -r "s/.+=\"(\/.+)\".*/\1/" | sort | uniq)
 
     # Verify absolute paths retrived from file.
     for FILE in $ABSPATHS;do
