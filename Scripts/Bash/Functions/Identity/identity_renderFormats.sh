@@ -30,7 +30,7 @@
 function identity_renderFormats {
 
     # Get image formats.
-    local FORMATS=$(identity_getConfigOption "$2" '2-')
+    local FORMATS=$(identity_getConfigOption "$ACTION" '2-')
 
     # Check base file existence.
     if [[ -f ${FILE}.png ]];then
