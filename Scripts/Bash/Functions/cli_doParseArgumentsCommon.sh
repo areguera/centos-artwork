@@ -77,16 +77,8 @@ function cli_doParseArgumentsCommon {
 
         while [[ $COUNT -lt ${#LONG[*]} ]];do
 
-            # Be specific about the pattern used to match both long
-            # and short arguments. Notice that when arguments values
-            # are required we add an equal sign (`=') and a space (`
-            # ') character to the end of pattern in order to match
-            # both long and short arguments respectively.
-            if [[ ${REQUIRED[$COUNT]} =~ '^:$' ]];then
-                PATTERN="^'(--${LONG[$COUNT]}=|-${SHORT[$COUNT]} )"
-            else
-                PATTERN="^'(--${LONG[$COUNT]}|-${SHORT[$COUNT]})"
-            fi
+            # Define option pattern.
+            PATTERN="^'(--${LONG[$COUNT]}|-${SHORT[$COUNT]})"
 
             # Check argument against common argument pattern.
             if [[ $ARGUMENT =~ "${PATTERN}" ]];then
