@@ -1,29 +1,15 @@
 #!/bin/bash
 #
 # identity_renderGroupByTypes.sh -- This function provides
-# post-rendition and last-rendition action to group file inside
-# directories named as their file type.
-#
-# Usage:
-# ------
-# Post-rendition --> identity_renderGroupByTypes "$FILE" "$ACTION"
-# Last-rendition --> identity_renderGroupByTypes "$ACTION"
-#
-# Note that post-rendition uses 2 arguments ($FILE and $ACTION) and
-# last-rendition just one ($ACTION). This function uses the amount
-# of arguments to determine when it is acting as post-rendition and
-# when as last-rendition.
-#
-# This function create one directory for each different file type.
-# Later files are moved inside directories respectively.  For example:
-# if the current file is a .png file, it is moved inside a Png/
-# directory; if the current file is a .jpg file, it is stored inside a
-# Jpg/ directory, and so on.
+# post-rendition action to group files inside directories named as
+# their file extensions.  For example: if the current file is a .png
+# file, it is moved inside a Png/ directory; if the current file is a
+# .jpg file, it is stored inside a Jpg/ directory, and so on.
 #
 # For this function to work correctly, you need to specify which file
 # type you want to group. This is done in the post-rendition ACTIONS
 # array inside the appropriate `render.conf.sh' pre-configuration
-# script. 
+# script. This function cannot be used as last-rendition action.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -48,97 +34,36 @@
 
 function identity_renderGroupByType {
 
-    local FILE=''
-    local -a FILES
-    local -a PATTERNS
-    local FORMATS=''
     local SOURCE=''
     local TARGET=''
-    local COUNT=0
-
-    if [[ $# -eq 1 ]];then
-        # Define file types for post-rendition action.
-        FORMATS=$1
-    elif [[ $# -eq 2 ]];then
-        # Define file types for last-rendition action.
-        FORMATS=$2
-    else
-        cli_printMessage "`gettext "groupByType: Wrong invokation."`" 'AsErrorLine'
-        cli_printMessage $(caller) "AsToKnowMoreLine"
-    fi
 
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
-    FORMATS=$(identity_getConfigOption "$FORMATS" '2-')
+    local FORMATS=$(identity_getConfigOption "$ACTION" '2-')
 
-    # Check file types passed from render.conf.sh pre-rendition
-    # configuration script.
-    if [[ "$FORMATS" == "" ]];then
-        cli_printMessage "`gettext "There is no file type information to process."`" 'AsErrorLine'
-        cli_printMessage $(caller) "AsToKnowMoreLine"
-    fi
+    for FORMAT in $FORMATS;do
 
-    if [[ $# -eq 1 ]];then
+        # Redifine source file we want to move.
+        SOURCE=${FILE}.${FORMAT}
 
-        # Define pattern for file extensions.
-        PATTERNS[0]=$(echo "$FORMATS" | sed 's! !|!g')
+        # Define target directory where source file will be moved
+        # into.
+        TARGET=$(dirname "$FILE")/$(cli_getRepoName "$FORMAT" 'd')
 
-        # Define pattern for directories.
-        PATTERNS[1]=$(echo $(for i in $FORMATS; do cli_getRepoName "$i" 'd'; done) | sed 's! !|!g')
+        # Check existence of source file.
+        cli_checkFiles $SOURCE 'f'
 
-        # Define pattern for path. The path pattern combines both file
-        # extension and directories patterns. This pattern is what we
-        # use to match rendered file.
-        PATTERNS[2]="^.*[^(${PATTERNS[1]})]/[[:alpha:]_-]+\.(${PATTERNS[0]})$"
+        # Check existence of target directory.
+        if [[ ! -d $TARGET ]];then
+            mkdir -p $TARGET
+        fi
 
-        # Define list of files to process when acting as
-        # last-rendition action. There may be many different files to
-        # process here, so we need to build a list with them all
-        # (without duplications).
-        for FILE in $(find $ACTIONVAL -regextype posix-egrep -type f -regex ${PATTERNS[2]} \
-            | sed -r 's!\.[[:alpha:]]{1,4}$!!' | sort | uniq \
-            | egrep $FLAG_FILTER);do
-            FILES[$COUNT]="$FILE"
-            COUNT=$(($COUNT + 1))
-        done
+        # Redifine file path to add file and its type.
+        TARGET=${TARGET}/$(cli_getRepoName "$FILE" 'f').${FORMAT}
 
-    elif [[ $# -eq 2 ]];then
-
-        # Define list of files to process when action as
-        # post-rendition action. There is just one value to process
-        # here, the one being currently rendered.
-        FILES[0]="$1"
-        
-    fi
-
-    # Start processing list of files.
-    for FILE in "${FILES[@]}";do
-
-        for FORMAT in $FORMATS;do
-
-            # Redifine source file we want to move.
-            SOURCE=${FILE}.${FORMAT}
-
-            # Define target directory where source file will be moved
-            # into.
-            TARGET=$(dirname "$FILE")/$(cli_getRepoName "$FORMAT" 'd')
-
-            # Check existence of source file.
-            cli_checkFiles $SOURCE 'f'
-
-            # Check existence of target directory.
-            if [[ ! -d $TARGET ]];then
-                mkdir -p $TARGET
-            fi
-
-            # Redifine file path to add file and its type.
-            TARGET=${TARGET}/$(cli_getRepoName "$FILE" 'f').${FORMAT}
-
-            # Move file into its final location.
-            cli_printMessage "$TARGET" 'AsMovedToLine'
-            mv ${SOURCE} ${TARGET}
-
-      done
+        # Move file into its final location.
+        cli_printMessage "$TARGET" 'AsMovedToLine'
+        mv ${SOURCE} ${TARGET}
 
     done
 
