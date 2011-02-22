@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # manual_deleteEntry.sh -- This function removes a documentation entry
-# from your working copy documentation structure.
+# from documentation directory structure.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,15 +26,12 @@
 
 function manual_deleteEntry {
 
-    # Define variables as local to avoid conflicts outside.
     local ENTRIES=''
+    local ENTRYSTATUS=''
     local LOCATION=''
 
     # Check if the entry has been already removed.
     cli_checkFiles $ENTRY 'f'
-
-    # Define entries. Start with the one being processed currently.
-    ENTRIES=$ENTRY
 
     # Define root location to look for entries.
     LOCATION=$(echo $ENTRY | sed -r 's!\.texi$!!')
@@ -42,33 +39,46 @@ function manual_deleteEntry {
     # Redefine location to match the chapter's root directory. This
     # applies when you try to remove the whole chapter from the
     # working copy (e.g., centos-art manual --delete=/home/centos/artwork/trunk/).
-    if [[ $ENTRY =~ "${MANUALS_FILE[7]}$" ]];then
+    if [[ $ENTRY =~ "chapter-intro\.texi$" ]];then
         LOCATION=$(dirname "$ENTRY")
     fi
 
-    # Look for dependent entries. In this context, dependent entries
-    # are all files ending in .texi which have a directory name that
-    # matches the file name (without .texi extension) of the entry
-    # being processed currently. See LOCATION default definition
-    # above.  If location directory doesn't exist it is probably
-    # because there is no dependent entries.
+    # Define list of dependent entries. Dependent entries are stored
+    # inside a directory with the same name of the entry you are
+    # trying to remove. If such directory location doesn't exists, the
+    # related entry doesn't have dependent entries either.
     if [[ -d $LOCATION ]];then
-        for ENTRY in $(find $LOCATION -name '*.texi');do
-            ENTRIES="$ENTRIES $ENTRY $(dirname "$ENTRY")"
-        done
+        ENTRIES=$(cli_getFilesList $LOCATION ".*\.texi")
     fi
+    
+    # Add entry being currently processed to list of files to precess.
+    ENTRIES="${ENTRIES} ${ENTRY}"
 
-    # Remove duplicated lines from entries list.
+    # Remove duplicated lines from entries list, be sure there is just
+    # one path per line and they are ordered in reverse. At this
+    # point, it is hard to find duplicated lines since the list of
+    # entries is built from files and it is not possible to have two
+    # files in the very same directory using the same name exactly, so
+    # this could be considered a bit paranoid. ~:-)
     ENTRIES=$(echo "$ENTRIES" | tr ' ' "\n" | sort -r | uniq)
 
     # Print action preamble.
     cli_printActionPreamble "$ENTRIES" 'doDelete' 'AsResponseLine'
 
-    # Redefine ENTRY using affected entries as reference.
+    # Process list of entries.
     for ENTRY in $ENTRIES;do
 
+        # Define the versioning status of entry.
+        if [[ -d $(dirname $ENTRY)/.svn ]];then
+            ENTRYSTATUS=$(cli_getRepoStatus "$ENTRY")
+        else
+            # At this point we don't know what the entry versioning
+            # status is, so consider the entry an unversion file.
+            ENTRYSTATUS='?'
+        fi
+
         # Verify entry inside the working copy. 
-        if [[ $(cli_getRepoStatus "$ENTRY") =~ '^(\?)?$' ]];then
+        if [[ "$ENTRYSTATUS" =~ '^(\?)?$' ]];then
 
             # Print action message.
             cli_printMessage "$ENTRY" "AsDeletingLine"
@@ -87,14 +97,14 @@ function manual_deleteEntry {
         # entry can be under version control or not versioned at all.
         # Here we need to decide how to remove documentation entries
         # based on whether they are under version control or not.
-        if [[ "$(cli_getRepoStatus "$ENTRY")" == '' ]];then
+        if [[ "$ENTRYSTATUS" == ' ' ]];then
 
             # Documentation entry is under version control and there
             # is no change to be committed up to central repository.
             # We are safe to schedule it for deletion.
             svn del "$ENTRY" --quiet
 
-        elif [[ "$(cli_getRepoStatus "$ENTRY")" == '?' ]];then
+        elif [[ "$ENTRYSTATUS" == '?' ]];then
 
             # Documentation entry is not under version control, so we
             # don't care about changes inside it. If you say
@@ -118,9 +128,12 @@ function manual_deleteEntry {
     # Update chapter's menu and nodes in the master texinfo document.
     # This is mainly applied when one of the chapters (e.g., trunk/,
     # tags/, or branches/) is removed.
-    if [[ ! -d $ENTRYCHAPTER ]];then
+    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
         manual_updateChaptersMenu 'remove-entry'
         manual_updateChaptersNodes
     fi
+
+    # Update documentation output-related files.
+    manual_updateOutputFiles
 
 }

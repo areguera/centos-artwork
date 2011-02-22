@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFiles.sh -- This function updates manuals' related
-# output files.
+# manual_updateOutputFiles.sh -- This function exports documentation
+# manual to different output formats.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,7 +26,10 @@
 
 function manual_updateOutputFiles {
 
-    # Add division line to differentiate action output visually.
+    # Verify documentation manual base file structure.
+    cli_checkFiles ${MANUAL_BASEFILE}.texi 'f'
+
+    # Ouput separator line.
     cli_printMessage '-' 'AsSeparatorLine'
 
     # Add the working copy root directory to directory stack to make
@@ -36,10 +39,14 @@ function manual_updateOutputFiles {
 
     manual_updateOutputFileInfo
     manual_updateOutputFileHtml
+    manual_updateOutputFileXml
     manual_updateOutputFilePdf
     manual_updateOutputFilePlaintext
 
     # Remove the working copy root directory from directory stack.
     popd > /dev/null
+
+    # Output separator.
+    cli_printMessage "-" 'AsSeparatorLine'
 
 }

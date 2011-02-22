@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFileInfo.sh -- This function updates manual's info
-# output related file.
+# manual_updateOutputFileInfo.sh -- This function exports
+# documentation manual to info format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,21 +27,14 @@
 function manual_updateOutputFileInfo {
 
     # Output action message.
-    cli_printMessage "`gettext "Updating manual's info output"`" 'AsResponseLine'
-
-    # Check info output directory.
-    [[ ! -d ${MANUALS_DIR[3]} ]] &&  mkdir -p ${MANUALS_DIR[3]}
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsUpdatingLine'
 
     # Update info file.
-    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[4]}
-
-    # Check info file. If the info file was not created then there are
-    # errors to fix.
-    if [[ ! -f ${MANUALS_FILE[4]} ]];then
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
-    fi
+    /usr/bin/makeinfo ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.info
 
     # Compress info file.
-    bzip2 -f ${MANUALS_FILE[4]}
+    if [[ $? -eq 0 ]];then
+        bzip2 -f ${MANUAL_BASEFILE}.info
+    fi
 
 }

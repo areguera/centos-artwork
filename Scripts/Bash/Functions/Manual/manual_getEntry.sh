@@ -29,8 +29,6 @@
 function manual_getEntry {
 
     # Define variables as local to avoid conflicts outside.
-    local DIR=''
-    local FILE=''
     local ENTRY=''
     local LOCATION=''
 
@@ -43,48 +41,41 @@ function manual_getEntry {
         LOCATION="$ACTIONVAL"
     fi
 
-    # Build directory to store documenation entry.
-    DIR=$(echo $LOCATION | sed -r 's!^/home/centos/artwork/!!')
-    DIR=$(dirname "$DIR")
-    DIR=${MANUALS_DIR[2]}/$DIR
+    # Define relative path of entry, from trunk directory on.
+    ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
 
-    # Build file for documentation entry. Notice that directory
-    # structure convenction is not used here through cli_getRepoName.
-    # This is because documentation structures mirror other directory
-    # structures inside the repository. So, if we are documenting
-    # trunk/Identity/Brands/ directory we don't want to have the
-    # trunk/Identity/brands.texi documentation entry, but
-    # trunk/Identity/Brands.texi in order to reflect the fact that we
-    # are documenting a directory structure. Something similar occurs
-    # with files, but using repository file convenction instead. This
-    # way we just use basename to find out the last component in the
-    # path without sanitation. We assume it has been already
-    # sanitated.
-    FILE=$(basename "$LOCATION").texi
+    # Verify the entry relative path to find out which documentation
+    # manual we are acting on. As convenction, whatever documentation
+    # entry you provide outside trunk/Manuals/ directory structure is
+    # considered as you are documenting the repository directory
+    # structure. Otherwise, if an entry inside trunk/Manuals/ is
+    # provided, the directory structure provided is used as default
+    # documentation manual for actions like `--create' and `--update'
+    # to take place on. Other options like `--edit', `--delete' and
+    # `--read' cannot be applied to paths provided is inside
+    # trunk/Manuals/ such actions made manually.
+    if [[ ${ENTRY} =~ '^trunk/Manuals/.+$' ]];then
+        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
+    else
+        ENTRY=$(dirname Repository/${ENTRY})/$(basename $LOCATION).texi
+    fi
 
-    # Combine both directory (DIR) and file (FILE) to build entry's
-    # absolute path. When the entry's absolute path is built for the
-    # current location, the string "." is returned by cli_getRepoName
-    # and used as current directory to store the .texi file.  This is
-    # not desirable because we are using absolute path already and the
-    # "." string adds another level in the path (e.g.,
-    # /home/centos/artwork/trunk/Manuals/Texinfo/en/./trunk/chapter.texi).
-    # This extra level in the path confuses the script when it tries
-    # to find out where the chapter's directory is. In the example
-    # above, the chapter's directory is "trunk/" not "./". So, remove
-    # the string './' from entry's absolute path in order to build the
-    # entry's absolute path correctly.
-    ENTRY=$(echo $DIR/$FILE | sed -r 's!\./!!')
+    # Re-define entry to set absolute path to manuals base directory
+    # structure.
+    ENTRY=${MANUAL_BASEDIR}/${ENTRY}
 
-    # Re-define documentation entry if it is the chapter entry.
+    # Re-define documentation entry to handle chapter entries. Chapter
+    # entries are handled inside the chapter it refers to, not outside
+    # it. To store chapter-specific information, the special file
+    # chapter-intro.texi is used inside the chapter.  
     # TODO: automate the verification, in order to accept any other
     # structure in the first level.
-    if [[ $ENTRY =~ "(trunk|branches|tags)\.texi$" ]];then
-        ENTRY=$(echo $ENTRY \
-            | sed -r "s/(trunk|branches|tags)\.texi$/\1\/${MANUALS_FILE[7]}/")
+    if [[ ${ENTRY} =~ "(trunk|branches|tags)\.texi$" ]];then
+        ENTRY=$(echo ${ENTRY} \
+            | sed -r "s/(trunk|branches|tags)\.texi$/\1\/chapter-intro.texi/")
     fi
 
     # Output entry's absolute path.
-    echo $ENTRY
+    echo ${ENTRY}
 
 }

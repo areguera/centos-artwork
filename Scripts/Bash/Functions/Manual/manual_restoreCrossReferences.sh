@@ -40,7 +40,7 @@ function manual_restoreCrossReferences {
     # Build the node string using global entry (ENTRY) variable being
     # processed currently.
     local NODE=$(echo "$ENTRY" \
-        | cut -d / -f10- \
+        | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r "s/(${MANUALS_FILE[7]}|\.texi)$//")
 
@@ -67,9 +67,12 @@ function manual_restoreCrossReferences {
     # documentation entry, they represent, can be recreated in the
     # future and, at that time, the link wouldn't be broken any more,
     # so we need to be aware of this.
-    sed -r -i \
-        -e "s!${PATTERN[0]}!${REPLACE[0]}!Mg" \
-        -e "s!${PATTERN[1]}!${REPLACE[1]}!g" \
-        $(find ${MANUALS_DIR[2]} -mindepth 3 -name '*.texi')
+    local ENTRIES=$(cli_getFilesList "${MANUAL_DIR}" '.*\.texi')
+    if [[ $ENTRIES != '' ]];then
+        sed -r -i \
+            -e "s!${PATTERN[0]}!${REPLACE[0]}!Mg" \
+            -e "s!${PATTERN[1]}!${REPLACE[1]}!g" \
+            $ENTRIES
+    fi
 
 }

@@ -28,10 +28,10 @@
 function manual_checkChapter {
 
     # Check chapter's directory existence.
-    if [[ ! -d $ENTRYCHAPTER ]];then
+    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
 
         cli_printMessage "`gettext "The following documentation chapter will be created:"`"
-        cli_printMessage "$ENTRYCHAPTER" "AsResponseLine"
+        cli_printMessage "$MANUAL_DIR_CHAPTER" "AsResponseLine"
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
         manual_updateChaptersFiles

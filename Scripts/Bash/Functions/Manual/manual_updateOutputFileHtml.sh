@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFileHtml.sh -- This function updates manuals' html
-# related output files.
+# manual_updateOutputFileHtml.sh -- This function exports
+# documentation manual to HTML format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,20 +26,20 @@
 
 function manual_updateOutputFileHtml {
 
-    # Output action message
-    cli_printMessage "`gettext "Updating manual's html output"`" 'AsResponseLine'
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}-html" 'AsUpdatingLine'
 
     # Check html output directory
-    [[ ! -d ${MANUALS_DIR[4]} ]] && mkdir -p ${MANUALS_DIR[4]}
+    [[ ! -d ${MANUAL_BASEFILE}-html ]] && mkdir -p ${MANUAL_BASEFILE}-html
 
     # Add html output directory into directory stack to make it the
     # current working directory. Otherwise texi2html may produce
     # incorrect paths to images included.
-    pushd ${MANUALS_DIR[4]} > /dev/null
+    pushd ${MANUAL_BASEFILE}-html > /dev/null
 
     # Update html files.  Use texi2html to export from texinfo file
     # format to html using CentOS Web default visual style.
-    texi2html ${MANUALS_FILE[1]} --output=${MANUALS_DIR[4]} --split section \
+    texi2html ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}-html --split section \
         --nosec-nav \
         --css-include=/home/centos/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
         -I=/home/centos/artwork
@@ -51,7 +51,7 @@ function manual_updateOutputFileHtml {
     # Texi2html default html output.
     sed -r -i \
         -f /home/centos/artwork/trunk/Identity/Models/Css/Texi2html/transformations.sed \
-        ${MANUALS_DIR[4]}/*.html
+        ${MANUAL_BASEFILE}-html/*.html
 
     # Remove html output directory from directory stack.
     popd > /dev/null

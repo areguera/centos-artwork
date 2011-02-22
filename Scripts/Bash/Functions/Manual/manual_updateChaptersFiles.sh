@@ -28,34 +28,29 @@ function manual_updateChaptersFiles {
 
     # Define chapter's generic structure. 
     local CHAPTERBODY="\
-        @node $CHAPTERNAME
-        @chapter $CHAPTERNAME
-        @cindex $(echo $CHAPTERNAME | tr '[[:upper:]]' '[[:lower:]]')
-        @include $CHAPTERNAME/${MANUALS_FILE[7]}
-        @include $CHAPTERNAME/${MANUALS_FILE[8]}
-        @include $CHAPTERNAME/${MANUALS_FILE[9]}"
+        @node $MANUAL_CHA_NAME
+        @chapter $MANUAL_CHA_NAME
+        @cindex $(echo $MANUAL_CHA_NAME | tr '[[:upper:]]' '[[:lower:]]')
+        @include $MANUAL_CHA_NAME/chapter-intro.texi
+        @include $MANUAL_CHA_NAME/chapter-menu.texi
+        @include $MANUAL_CHA_NAME/chapter-nodes.texi"
 
     # Remove any space/tabs at the begining of @... lines.
     CHAPTERBODY=$(echo "$CHAPTERBODY" | sed -r 's!^[[:space:]]+@!@!')
 
     # Create directory to store chapter files.
-    if [[ ! -d $ENTRYCHAPTER ]];then
-        mkdir $ENTRYCHAPTER
+    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
+        mkdir $MANUAL_DIR_CHAPTER
     fi
 
     # Create files to store chapter information. If chapter files
     # already exist, they will be re-written and any previous
     # information inside them will be lost.
-    echo "$CHAPTERBODY" > $ENTRYCHAPTER/${MANUALS_FILE[6]}
-    echo "" > $ENTRYCHAPTER/${MANUALS_FILE[8]}
-    echo "" > $ENTRYCHAPTER/${MANUALS_FILE[9]}
+    echo "$CHAPTERBODY" > $MANUAL_DIR_CHAPTER/chapter.texi
+    echo "" > $MANUAL_DIR_CHAPTER/chapter-menu.texi
+    echo "" > $MANUAL_DIR_CHAPTER/chapter-nodes.texi
 
     # Initialize chapter instroduction using template file.
-    cp ${MANUALS_DIR[6]}/repository-chapter-intro.texi $ENTRYCHAPTER/${MANUALS_FILE[7]}
-    sed -r -i \
-        -e "s!=GOALS=!`gettext "Goals"`!g" \
-        -e "s!=USAGE=!`gettext "Usage"`!g" \
-        -e "s!=CONCEPTS=!`gettext "Concepts"`!g" \
-        -e "s!=DIRECTORIES=!`gettext "Directories"`!g" \
-        $ENTRYCHAPTER/${MANUALS_FILE[7]}
+    cp ${FUNCCONFIG}/manual-cha-intro.texi $MANUAL_DIR_CHAPTER/chapter-intro.texi
+
 }

@@ -27,44 +27,15 @@
     
 function manual {
 
+    # Define manuals base directory. This is the place where
+    # documentation manuals base directory structures are stored and
+    # organized in.
+    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manuals"
+
     # Define default value to target flag. The target flag (--to)
     # controls final destination used by copy related actions.
     local FLAG_TO=''
 
-    # Define documentation base directory structure.
-    MANUALS_DIR[0]='/home/centos/artwork/trunk/Manuals'
-    MANUALS_DIR[1]=${MANUALS_DIR[0]}/Repository/$(cli_getCurrentLocale)
-    MANUALS_DIR[2]=${MANUALS_DIR[1]}/Texinfo
-    MANUALS_DIR[3]=${MANUALS_DIR[1]}/Info
-    MANUALS_DIR[4]=${MANUALS_DIR[1]}/Html
-    MANUALS_DIR[5]=${MANUALS_DIR[1]}/Plaintext
-    MANUALS_DIR[7]=${MANUALS_DIR[1]}/Pdf
-    
-    # Define storing directory of Texinfo template files. Texinfo
-    # template files are set inside English directory structure and
-    # reused by other languages by means of translation markers and
-    # gettext translation messages.
-    MANUALS_DIR[6]=${MANUALS_DIR[0]}/Repository/en/Texinfo/Tpl
-    
-    # Define location for texinfo files.
-    MANUALS_FILE[1]=${MANUALS_DIR[2]}/repository.texi
-    MANUALS_FILE[2]=${MANUALS_DIR[2]}/repository-chapter-menu.texi
-    MANUALS_FILE[3]=${MANUALS_DIR[2]}/repository-chapter-nodes.texi
-    
-    # Define location for texinfo output files.
-    MANUALS_FILE[4]=${MANUALS_DIR[3]}/repository.info
-    MANUALS_FILE[5]=${MANUALS_DIR[5]}/repository.txt
-    
-    # Define chapter's file names.
-    MANUALS_FILE[6]=chapter.texi
-    MANUALS_FILE[7]=chapter-intro.texi
-    MANUALS_FILE[8]=chapter-menu.texi
-    MANUALS_FILE[9]=chapter-nodes.texi
-    
-    # Define texinfo template to initialize new sections.
-    MANUALS_FILE[10]=${MANUALS_DIR[6]}/repository-chapter-section.texi
-    MANUALS_FILE[11]=${MANUALS_DIR[2]}/repository-chapter-index.texi
-    
     # Define command-line interface.
     manual_getActions
 

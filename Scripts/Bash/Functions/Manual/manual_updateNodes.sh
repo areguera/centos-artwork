@@ -27,7 +27,7 @@
 function manual_updateNodes {
 
     # Retrive nodes' entries from chapter-menu.texi file.
-    local NODES=$(cat $ENTRYCHAPTER/${MANUALS_FILE[8]} \
+    local NODES=$(cat $MANUAL_DIR_CHAPTER/chapter-menu.texi \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
         | egrep -v '^@(end )?menu$' | sed -r 's! !:!g' | sort | uniq)
 
@@ -39,24 +39,14 @@ function manual_updateNodes {
         INCL=$(echo "$NODE" | sed -r 's! !/!g').texi
         CIND=$(echo "$NODE")
 
-        # Create an emtpy directory to store texinfo files.
-        if [[ ! -d ${MANUALS_DIR[2]}/$(dirname "$INCL") ]];then
-             mkdir -p ${MANUALS_DIR[2]}/$(dirname "$INCL")
+        # Create an empty directory to store texinfo files.
+        if [[ ! -d ${MANUAL_DIR}/$(dirname "$INCL") ]];then
+             mkdir -p ${MANUAL_DIR}/$(dirname "$INCL")
         fi
 
         # Create texinfo section file using its template.
-        if [[ ! -f ${MANUALS_DIR[2]}/$INCL ]];then
-
-            cp ${MANUALS_FILE[10]} ${MANUALS_DIR[2]}/$INCL
-
-            # Translate template instance.
-            sed -r -i \
-                -e "s!=GOALS=!`gettext "Goals"`!g" \
-                -e "s!=USAGE=!`gettext "Usage"`!g" \
-                -e "s!=DESCRIPTION=!`gettext "Description"`!g" \
-                -e "s!=SEEALSO=!`gettext "See also"`!g" \
-                ${MANUALS_DIR[2]}/$INCL
-
+        if [[ ! -f ${MANUAL_DIR}/$INCL ]];then
+            cp ${FUNCCONFIG}/manual-section.texi ${MANUAL_DIR}/$INCL
         fi
 
         # Output node information based on texinfo menu.
@@ -67,7 +57,7 @@ function manual_updateNodes {
         echo ""
 
     # Dump node information into chapter node file.
-    done > $ENTRYCHAPTER/${MANUALS_FILE[9]}
+    done > $MANUAL_DIR_CHAPTER/chapter-nodes.texi
 
 }
 

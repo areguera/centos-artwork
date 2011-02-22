@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFilePdf.sh -- This function updates manuals' pdf
-# related output file.
+# manual_updateOutputFilePdf.sh -- This function exports documentation
+# manual to PDF format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,11 +27,10 @@
 function manual_updateOutputFilePdf {
 
     # Output action message.
-    cli_printMessage "`gettext "Updating manual's pdf output"`" 'AsResponseLine'
-
-    # Check plaintext output directory.
-    [[ ! -d ${MANUALS_DIR[7]} ]] &&  mkdir -p ${MANUALS_DIR[7]}
+    cli_printMessage "${MANUAL_BASEFILE}.pdf" 'AsUpdatingLine'
 
     # Update plaintext output directory.
-    /usr/bin/texi2pdf ${MANUALS_FILE[1]} --output=${MANUALS_DIR[7]} --quiet
+    /usr/bin/texi2pdf --quiet \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.pdf
+
 }

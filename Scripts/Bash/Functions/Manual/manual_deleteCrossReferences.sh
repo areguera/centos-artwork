@@ -36,9 +36,9 @@ function manual_deleteCrossReferences {
     # Build the node string using global entry (ENTRY) variable being
     # processed currently.
     local NODE=$(echo "$ENTRY" \
-        | cut -d / -f10- \
+        | cut -d / -f8- \
         | tr '/' ' ' \
-        | sed -r "s/(${MANUALS_FILE[7]}|\.texi)$//")
+        | sed -r "s/(chapter-intro\.texi|\.texi)$//")
 
     # Define regular expression patterns for texinfo cross reference
     # commands.
@@ -64,9 +64,12 @@ function manual_deleteCrossReferences {
     # sanitate missing cross refereces before info file is created,
     # errors are displayed since makeinfo don't produce info output
     # with broken cross refereces.
-    sed -r -i \
-        -e "s!${PATTERN[0]}!${REPLACE[0]}!Mg" \
-        -e "s!${PATTERN[1]}!${REPLACE[1]}!g" \
-        $(find ${MANUALS_DIR[2]} -mindepth 3 -name '*.texi')
+    local ENTRIES=$(cli_getFilesList "${MANUAL_DIR}" '.*\.texi')
+    if [[ $ENTRIES != '' ]];then
+        sed -r -i \
+            -e "s!${PATTERN[0]}!${REPLACE[0]}!Mg" \
+            -e "s!${PATTERN[1]}!${REPLACE[1]}!g" \
+            $ENTRIES
+    fi
 
 }

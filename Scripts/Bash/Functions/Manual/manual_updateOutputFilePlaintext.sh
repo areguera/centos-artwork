@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFilePlaintext.sh -- This function updates manuals'
-# plaintext related output file.
+# manual_updateOutputFilePlaintext.sh -- This function exports
+# documentation manual to plain-text format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,13 +27,10 @@
 function manual_updateOutputFilePlaintext {
 
     # Output action message.
-    cli_printMessage "`gettext "Updating manual's plaintext output"`" 'AsResponseLine'
-
-    # Check plaintext output directory.
-    [[ ! -d ${MANUALS_DIR[5]} ]] &&  mkdir -p ${MANUALS_DIR[5]}
+    cli_printMessage "${MANUAL_BASEFILE}.txt" 'AsUpdatingLine'
 
     # Update plaintext output directory.
-    /usr/bin/makeinfo ${MANUALS_FILE[1]} --output=${MANUALS_FILE[5]} \
-        --plaintext
+    /usr/bin/makeinfo --plaintext \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
 
 }

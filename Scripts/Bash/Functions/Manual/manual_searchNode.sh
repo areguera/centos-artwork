@@ -30,7 +30,7 @@ function manual_searchNode {
     # exits use the info reader to open the info file at the
     # specified node. Otherwise, ask the user for create it.
     if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="$(manual_getNode)" --file=${MANUALS_FILE[4]}
+        /usr/bin/info --node="$(manual_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
     else
         manual_editEntry
     fi

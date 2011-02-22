@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_searchIndex.sh -- This function does an index search inside the
-# info document.
+# manual_updateOutputFileXml.sh -- This function exports documentation
+# manual to XML format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,8 +24,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_searchIndex {
+function manual_updateOutputFileXml {
 
-    /usr/bin/info --index-search="$FLAG_FILTER" --file=${MANUAL_BASEFILE}.info.bz2
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.xml" 'AsUpdatingLine'
+
+    # Update plaintext output directory.
+    /usr/bin/makeinfo --xml \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.xml \
 
 }

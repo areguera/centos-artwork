@@ -33,46 +33,46 @@ function manual_updateChaptersMenu {
     # file (repository.texi). To create the final .info file
     # correctly, the Index line in the menu should remain, even no
     # other node exist.
-    if [[ -f ${MANUALS_FILE[2]} ]];then
-        MENUCHAPTERS=$(cat ${MANUALS_FILE[2]} \
-            | egrep -v "^(@(end )?menu$|\* `gettext "Index"`::.*)$")
+    if [[ -f ${MANUAL_BASEFILE}-menu.texi ]];then
+        MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.texi \
+            | egrep -v "^(@(end )?menu$|\* Index::.*)$")
     fi
 
     # Re-defined menu of chapters based on action.
     case $ACTION in
         'remove-entry' )
             # Remove chapter from menu.
-            MENUCHAPTERS=$(echo "$MENUCHAPTERS" \
-                | egrep -v "^\* ${CHAPTERNAME}::[[:print:]]*$")
+            MENUCHAPTERS=$(echo "${MENUCHAPTERS}" \
+                | egrep -v "^\* ${MANUAL_CHA_NAME}::[[:print:]]*$")
             ;;
         'update-entry' | * )
             # Update chapter menu using texinfo format.
-            MENUCHAPTERS="$MENUCHAPTERS
-                * $CHAPTERNAME::"
+            MENUCHAPTERS="${MENUCHAPTERS}
+                * ${MANUAL_CHA_NAME}::"
             ;;
     esac
 
     # Remove opening spaces/tabs and empty line from the menu of
     # chapters. Empty lines may occur the first time the menu of
     # chapters is created.
-    MENUCHAPTERS=$(echo "$MENUCHAPTERS" | sed -r 's!^[[:space:]]+!!' \
+    MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sed -r 's!^[[:space:]]+!!' \
         | egrep -v '^[[:space:]]*$')
 
     # Organize menu of chapters alphabetically and verify that no
     # duplicated line be included on the list.
-    MENUCHAPTERS=$(echo "$MENUCHAPTERS" | sort | uniq )
+    MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sort | uniq )
 
     # Give format to final menu output.
     MENUCHAPTERS="@menu
-    $MENUCHAPTERS
-    * `gettext "Index"`::
+    ${MENUCHAPTERS}
+    * Index::
     @end menu"
 
     # Strip opening space/tabs from final menu of chapters.
-    MENUCHAPTERS=$(echo "$MENUCHAPTERS" | sed -r 's!^[[:space:]]+!!' \
+    MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sed -r 's!^[[:space:]]+!!' \
         | egrep -v '^[[:space:]]*$')
 
     # Dump organized menu of chapters into file.
-    echo "$MENUCHAPTERS" > ${MANUALS_FILE[2]}
+    echo "${MENUCHAPTERS}" > ${MANUAL_BASEFILE}-menu.texi
 
 }

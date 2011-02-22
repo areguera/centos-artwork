@@ -38,16 +38,16 @@ function manual_updateMenu {
     # Build the menu line related to the entry being processed
     # currently.
     local MENULINE=$(echo "$ENTRY" \
-        | cut -d / -f10- \
+        | cut -d / -f8- \
         | tr '/' ' ' \
-        | sed -r "s/(${MANUALS_FILE[7]}|\.texi)$//")
+        | sed -r "s/(chapter-intro\.texi|\.texi)$//")
 
     # Give format to menu line using texinfo style.
     MENULINE="* $MENULINE::"
 
     # Define chapter's menu. Remove `@menu', `@end menu', and empty lines
     # from output.
-    local MENU=$(cat $ENTRYCHAPTER/${MANUALS_FILE[8]} \
+    local MENU=$(cat $MANUAL_DIR_CHAPTER/chapter-menu.texi \
         | egrep -v '^[[:space:]]*$' | egrep -v '^@(end )?menu') 
 
     # Re-defined chapter's menu based on action.
@@ -80,6 +80,6 @@ function manual_updateMenu {
     MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g')
 
     # Dump final menu structure back into chapter's menu file.
-    echo "$MENU" > $ENTRYCHAPTER/${MANUALS_FILE[8]}
+    echo "$MENU" > $MANUAL_DIR_CHAPTER/chapter-menu.texi
 
 }

@@ -27,7 +27,7 @@
 function manual_updateChaptersNodes {
 
     # Build list "nodes of chapters" based on menu of chapters.
-    local CHAPTERNODES=$(cat ${MANUALS_FILE[2]} \
+    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.texi \
         | egrep -v '^@(end )?menu$' \
         | egrep -v "^\* `gettext "Index"`::[[:print:]]*$" \
         | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
@@ -35,9 +35,9 @@ function manual_updateChaptersNodes {
 
     # Build list of texinfo inclusions to load chapters' nodes.
     local FILENODE=$(\
-    for CHAPTERNODE in $CHAPTERNODES;do
+    for CHAPTERNODE in ${CHAPTERNODES};do
 
-        INCL=$(echo $CHAPTERNODE | sed -r "s!(${CHAPTERNODE})!\1/chapter\.texi!")
+        INCL=$(echo ${CHAPTERNODE} | sed -r "s!(${CHAPTERNODE})!\1/chapter\.texi!")
 
         # Output inclusion line using texinfo format.
         echo "@include $INCL"
@@ -45,6 +45,6 @@ function manual_updateChaptersNodes {
     done)
 
     # Dump organized nodes of chapters into file.
-    echo "$FILENODE" > ${MANUALS_FILE[3]}
+    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.texi
 
 }

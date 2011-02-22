@@ -26,14 +26,11 @@
 
 function manual_getActions {
 
-    # Verify language layout.
-    manual_checkLanguageLayout
-
     # Define short options we want to support.
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="read:,search:,edit:,delete:,update,copy:,to:"
+    local ARGSL="read:,search:,edit:,delete:,update:,copy:,to:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -47,82 +44,43 @@ function manual_getActions {
         case "$1" in
 
             --read )
-
-                # Define action value passed through the command-line.
                 ACTIONVAL="$2"
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_searchNode"
-
-                # Rotate positional parameters.
                 shift 2
                 ;;
 
             --search )
-
-                # Define action value passed through the command-line.
                 ACTIONVAL="$2"
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_searchIndex"
-
-                # Rotate positional parameters.
                 shift 2
                 ;;
     
             --edit )
-
-                # Define action value passed through the command-line.
                 ACTIONVAL="$2"
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_editEntry"
-
-                # Rotate positional parameters.
                 shift 2
                 ;;
     
             --delete )
-
-                # Define action value passed through the command-line.
                 ACTIONVAL="$2"
-
-                # Define action name.
                 ACTIONNAM="${FUNCNAM}_deleteEntry"
-
-                # Rotate positional parameters.
                 shift 2
                 ;;
     
             --update )
-
-                # Execute action name. There is no need of action
-                # value here, so let's execute the action right now.
-                manual_updateOutputFiles
-
-                # End script execution flow. There is nothing else to
-                # do after updating documentation output.
-                exit
+                ACTIONVAL="$2"
+                ACTIONNAM="${FUNCNAM}_updateOutputFiles"
+                shift 2
                 ;;
     
             --copy )
-
-                # Define action value passed through the command-line.
                 ACTIONVAL="$2"
-
-                # Define action name using action value as reference.
                 ACTIONNAM="${FUNCNAM}_copyEntry"
-
-                # Rotate positional parameters.
                 shift 2
                 ;;
 
             --to )
-                
-                # Redefine target flag.
                 FLAG_TO="$2"
-
-                # Rotate positional parameters.
                 shift 2
                 ;;
 
@@ -139,25 +97,37 @@ function manual_getActions {
     # Define documentation entry.
     ENTRY=$(manual_getEntry)
 
-    # Define directory used to store chapter's documentation entries.
-    # At this point, we need to take a desition about
-    # documentation-design, in order to answer the question: How do we
-    # assign chapters, sections and subsections automatically, based
-    # on the repository structure? 
+    # Define directory for documentation manual. This is the place the
+    # specific documentation manual we are working with is stored in.
+    MANUAL_DIR=$(echo $ENTRY | cut -d / -f-7)
+
+    # Define directory to store documentation entries.  At this point,
+    # we need to take a desition about documentation design, in order
+    # to answer the question: How do we assign chapters, sections and
+    # subsections automatically, based on the repository structure?
+    # and also, how such design could be adapted to changes in the
+    # repository structure?
     #
-    # One solution would be: to use three chapters only to represent
-    # the repository's first level structure (i.e., trunk,
-    # branches, and tags) and handle everything else as sections. Sub
+    # One solution would be: represent the repository's first level
+    # structure in three chapters only (i.e., trunk, branches, and
+    # tags) and handle everything else inside them as sections. Sub
     # and subsub section will not have their own files, they will be
     # written inside section files instead.
-    ENTRYCHAPTER=$(echo $ENTRY | cut -d / -f-10)
+    MANUAL_DIR_CHAPTER=$(echo $ENTRY | cut -d / -f-8)
 
-    # Define chapter name for this documentation entry.
-    CHAPTERNAME=$(basename "$ENTRYCHAPTER")
+    # Define chapter name for the documentation entry we are working
+    # with.
+    MANUAL_CHA_NAME=$(basename "$MANUAL_DIR_CHAPTER")
+
+    # Define base name for documentation manual files. This is the
+    # main file name used to build texinfo related files (.info, .pdf,
+    # .xml, etc.).
+    MANUAL_BASEFILE=$(echo $ENTRY | cut -d / -f-7)
+    MANUAL_BASEFILE=${MANUAL_BASEFILE}/$(cli_getRepoName "${MANUAL_BASEFILE}" 'f')
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_commitRepoChanges ${MANUALS_DIR[0]}
+    cli_commitRepoChanges ${MANUAL_DIR}
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -169,6 +139,6 @@ function manual_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to commit up changes.
-    cli_commitRepoChanges "${MANUALS_DIR[0]}"
+    cli_commitRepoChanges ${MANUAL_DIR}
 
 }
