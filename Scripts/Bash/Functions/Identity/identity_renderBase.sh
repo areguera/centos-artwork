@@ -49,7 +49,7 @@ function identity_renderBase {
     FILES=$(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.(svgz|svg)")
 
     # Set action preamble.
-    # Do not print action preamble here, it prevents massive rendition.
+    cli_printActionPreamble "$FILES"
 
     # Define common absolute paths in order to know when centos-art.sh
     # is leaving a directory structure and entering into another. This

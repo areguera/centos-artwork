@@ -41,7 +41,7 @@ function identity_render {
     local FILES=$(cli_getFilesList "$ARTCONF" ".*/?render\.conf\.sh")
 
     # Set action preamble.
-    # Do not print action preamble here, it prevents massive rendition.
+    cli_printAction Preamble "$FILES"
 
     # Process list of files.
     for FILE in $FILES;do
