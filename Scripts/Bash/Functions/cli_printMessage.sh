@@ -96,7 +96,7 @@ function cli_printMessage {
 
         'AsErrorLine' )
             # This option is used to print error messsages.
-            cli_printMessage "${CLINAME}: ${MESSAGE}"
+            echo "${CLINAME}: ${MESSAGE}" > /dev/stderr
             ;;
 
         'AsToKnowMoreLine' )
@@ -127,7 +127,7 @@ function cli_printMessage {
                 cli_printMessage "$MESSAGE [${Y}/${N}]: " 'AsNoTrailingNewLine'
 
                 # Wait for user's answer to be entered.
-                cli_printMessage "FLAG_ANSWER" 'AsReadLine'
+                read FLAG_ANSWER
 
             fi
 
@@ -140,14 +140,6 @@ function cli_printMessage {
             fi
             ;;
 
-        'AsReadLine' )
-            if [[ $FLAG_QUIET == 'false' ]];then
-                # Use variable indirect expantion to redefine the
-                # value of the variable of name passed as message.
-                read ${!MESSAGE}
-            fi
-            ;;
-
         'AsSeparatorLine' )
 
             if [[ "$FLAG_QUIET" == 'false' ]];then
@@ -157,12 +149,12 @@ function cli_printMessage {
 
                 # Draw separator.
                 until [[ $MAX -eq 0 ]];do
-                    printf "${MESSAGE}"
+                    printf "${MESSAGE}" > /dev/stderr
                     MAX=$(($MAX - 1))
                 done
 
                 # Output newline to end separator.
-                echo ""
+                echo "" > /dev/stderr
 
             fi
             ;;
