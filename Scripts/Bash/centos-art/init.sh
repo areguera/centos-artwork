@@ -32,15 +32,15 @@
 # empty or malformed.
 [[ ! $HOME =~ '^/home/[[:alnum:]]+' ]] && HOME='/home/centos'
 
-# Initizalize internazionalization through gettext.
-. gettext.sh
-export TEXTDOMAIN=centos-art.sh
-export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts/Bash/centos-art
-
 # Initialize personal information.
 export CLI_PROGRAM='centos-art'
 export CLI_VERSION='1.0 (beta)'
 export CLI_BASEDIR="${HOME}/artwork/trunk/Scripts/Bash/${CLI_PROGRAM}"
+
+# Initizalize internazionalization through gettext.
+. gettext.sh
+export TEXTDOMAIN=${CLI_PROGRAM}.sh
+export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts/Bash
 
 # Initialize common function scripts.
 FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)
