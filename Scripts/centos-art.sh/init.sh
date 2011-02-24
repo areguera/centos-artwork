@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# centos-art.sh -- The CentOS Artwork Repository automation tool.
+# centos-art.sh -- The CentOS Artwork Repository automation tool
+# initialization script.
 #
 # This is the first script that centos-art command initiates. This
 # script contains a serie of desition about which configuration script
