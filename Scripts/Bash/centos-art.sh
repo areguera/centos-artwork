@@ -29,8 +29,33 @@
 # $Id: centos-art.sh 70 2010-09-18 04:38:43Z al $
 # ----------------------------------------------------------------------
 
-# Initialize function scripts.
-. /home/centos/artwork/trunk/Scripts/Bash/initEnvironment.sh
+# Initizalize centos-art.sh gettext internazionalization.
+. gettext.sh
+export TEXTDOMAIN=centos-art.sh
+export TEXTDOMAINDIR=/home/centos/artwork/trunk/Locales/Scripts/centos-art.sh/
+
+# Initialize centos-art.sh personal information.
+export CLINAME='centos-art'
+export CLIVERSION='1.0 (beta)'
+
+# Initialize centos-art.sh function scripts.
+FILES=$(ls /home/centos/artwork/trunk/Scripts/Bash/Functions/{cli,cli_*}.sh)
+for FILE in $FILES;do
+    if [[ -x $FILE ]];then
+        . $FILE
+        FUNCTION=$(grep '^function ' $FILE | cut -d' ' -f2)
+        export -f $FUNCTION
+    else
+        echo `gettext "The $FILE needs to have execution rights."`
+        exit
+    fi
+done
+
+# Unset all variables not considered global in order to start cli
+# execution with a clean environment.
+unset FILE
+unset FILES
+unset FUNCTION
 
 # Initialize command line interface.
 cli "$@"
