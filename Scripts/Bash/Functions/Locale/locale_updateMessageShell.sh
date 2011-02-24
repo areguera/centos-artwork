@@ -44,7 +44,7 @@ function locale_updateMessageShell {
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.sh")
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.sh")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
@@ -55,6 +55,11 @@ function locale_updateMessageShell {
     
     # Print action message.
     cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
+
+    # Prepare directory structure to receive .po files.
+    if [[ ! -d $(dirname ${FILE}) ]];then
+        mkdir -p $(dirname ${FILE})
+    fi
 
     # Retrive translatable strings from shell script files and create
     # the portable object template (.pot) from them.

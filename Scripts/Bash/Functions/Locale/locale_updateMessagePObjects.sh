@@ -31,7 +31,7 @@ function locale_updateMessagePObjects {
 
     # Verify the portable object template. The portable object
     # template is used to create the portable object. 
-    cli_checkFiles "${FILE}.pot"
+    cli_checkFiles "${FILE}.pot" 'f'
 
     # Verify existence of portable object. The portable object is the
     # file translators edit in order to make translation works.

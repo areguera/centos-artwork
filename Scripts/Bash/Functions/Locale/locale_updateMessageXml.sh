@@ -36,9 +36,9 @@ function locale_updateMessageXml {
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/.+" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.svg")
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.svg")
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals/.+" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.xml")
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.xml")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
@@ -46,9 +46,14 @@ function locale_updateMessageXml {
 
     # Set action preamble.
     cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
-    
+
     # Print action message.
     cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
+
+    # Prepare directory structure to receive .po files.
+    if [[ ! -d $(dirname ${FILE}) ]];then
+        mkdir -p $(dirname ${FILE})
+    fi
 
     # Retrive translatable strings from XML-based files and
     # create the portable object template (.pot) from them.
