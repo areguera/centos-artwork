@@ -52,7 +52,7 @@ function locale_updateMessageMetadata {
     SRC[3]='Language-Team:'
 
     # Define replacement lines for pattern line.
-    DST[0]="\"Project-Id-Version: ${CLINAME} (${CURRENTLOCALE})\\\n\""
+    DST[0]="\"Project-Id-Version: ${CLI_PROGRAM} (${CURRENTLOCALE})\\\n\""
     DST[1]="\"Report-Msgid-Bugs-To: =MAIL_DOCS=\\\n\""
     DST[2]="\"Last-Translator: CentOS Documentation SIG\\\n\""
     DST[3]="\"Language-Team: ${LANGNAME}\\\n\""

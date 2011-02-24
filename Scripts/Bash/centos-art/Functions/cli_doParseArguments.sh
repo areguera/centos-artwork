@@ -51,7 +51,7 @@ function cli_doParseArguments {
     eval set -- "$ARGUMENTS"
 
     # Parse optional arguments using getopt.
-    ARGUMENTS=$(getopt -o "$ARGSS" -l "$ARGSL" -n $CLINAME -- "$@")
+    ARGUMENTS=$(getopt -o "$ARGSS" -l "$ARGSL" -n $CLI_PROGRAM -- "$@")
 
     # Be sure getout parsed arguments successfully.
     if [[ $? != 0 ]]; then 

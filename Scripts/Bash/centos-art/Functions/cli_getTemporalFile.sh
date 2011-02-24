@@ -49,7 +49,7 @@ function cli_getTemporalFile {
     local TMPDIR='/tmp'
 
     # Define default prefix for temporal file.
-    local PREFIX='centos-art.sh-'
+    local PREFIX="${CLI_PROGRAM}-"
 
     # Define unique identifier for temporal file.
     local UUID=$(cat /proc/sys/kernel/random/uuid)

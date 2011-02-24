@@ -66,7 +66,7 @@ function cli {
 
     # Define function directory (FUNCDIR). The directory path where
     # functionalities are stored inside the repository.
-    FUNCDIR=/home/centos/artwork/trunk/Scripts/Bash/Functions
+    FUNCDIR=${CLI_BASEDIR}/Functions
 
     # Define function name (FUNCNAM) variable from first command-line
     # argument.  As convenction we use the first argument to determine

@@ -64,7 +64,7 @@ function cli_commitRepoChanges {
     # inside this function. Whatever action you perform over URL will
     # take place immediatly through direct commit.
     LOCATIONS=$(echo -e "$LOCATIONS" | sed -r "s! +!\n!g" \
-        | egrep '^/home/centos/artwork/(trunk|branches|tags)/.+$')
+        | egrep "^${HOME}/artwork/(trunk|branches|tags)/.+$")
 
     # Outout separator line.
     cli_printMessage '-' 'AsSeparatorLine'

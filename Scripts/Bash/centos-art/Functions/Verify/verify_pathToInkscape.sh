@@ -35,8 +35,8 @@ function verify_pathToInkscape {
 
     # Define directories required by the centos-art.sh script command
     # line interface. 
-    REPODIRS[0]=/home/centos/.inkscape/palettes
-    REPODIRS[1]=/home/centos/artwork/trunk/Identity/Colors
+    REPODIRS[0]=${HOME}/.inkscape/palettes
+    REPODIRS[1]=$(cli_getRepoTLDir)/Identity/Colors
 
     # Define files required by the centos-art.sh script command line
     # interface.

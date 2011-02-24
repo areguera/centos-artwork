@@ -35,11 +35,11 @@ function verify_pathToCli  {
     # line interface. 
     REPODIRS[0]=/home/centos
     REPODIRS[1]=/home/centos/bin
-    REPODIRS[2]=/home/centos/artwork/trunk/Scripts/Bash
+    REPODIRS[2]=${CLI_BASEDIR}
 
     # Define files required by the centos-art.sh script command line
     # interface.
-    REPOFILES[0]=${REPODIRS[2]}/centos-art.sh
+    REPOFILES[0]=${REPODIRS[2]}/init.sh
 
     # Define symbolic links required by the centos-art.sh script
     # command line interface.

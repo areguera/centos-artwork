@@ -35,20 +35,20 @@ function verify_doLinks {
     local LINKS_MISSING_ID=''
 
     # Define link names.
-    LINKS[0]=/home/centos/bin/centos-art
-    LINKS[1]=/home/centos/.fonts/denmark.ttf
-    LINKS[2]=/home/centos/.inkscape/palettes/CentOS.gpl
-    LINKS[3]=/home/centos/.$(rpm -q gimp | cut -d. -f-2)/palettes/CentOS.gpl
-    LINKS[4]=/home/centos/artwork/branches/Scripts
+    LINKS[0]=${HOME}/bin/centos-art
+    LINKS[1]=${HOME}/.fonts/denmark.ttf
+    LINKS[2]=${HOME}/.inkscape/palettes/CentOS.gpl
+    LINKS[3]=${HOME}/.$(rpm -q gimp | cut -d. -f-2)/palettes/CentOS.gpl
+    LINKS[4]=${HOME}/artwork/branches/Scripts
 
     # Define link targets. Use array index as reference to know
     # relation between link names and targets. Be sure both link names
     # and link targets use the same array index value.
-    TARGETS[0]=/home/centos/artwork/trunk/Scripts/Bash/centos-art.sh
-    TARGETS[1]=/home/centos/artwork/trunk/Identity/Fonts/Ttf/denmark.ttf
-    TARGETS[2]=/home/centos/artwork/trunk/Identity/Colors/CentOS.gpl
+    TARGETS[0]=${CLI_BASEDIR}/init.sh
+    TARGETS[1]=$(cli_getRepoTLDir)/Identity/Fonts/Ttf/denmark.ttf
+    TARGETS[2]=$(cli_getRepoTLDir)/Identity/Colors/CentOS.gpl
     TARGETS[3]=${TARGETS[2]}
-    TARGETS[4]=/home/centos/artwork/trunk/Scripts/
+    TARGETS[4]=$(cli_getRepoTLDir)/Scripts/
 
     verify_doLinkCheck
     verify_doLinkReport

@@ -36,8 +36,8 @@ function verify_pathToFonts {
     local FILE=''
 
     # Define font related directories.
-    REPODIRS[0]=/home/centos/.fonts
-    REPODIRS[1]=/home/centos/artwork/trunk/Identity/Fonts/Ttf
+    REPODIRS[0]=${HOME}/.fonts
+    REPODIRS[1]=$(cli_getRepoTLDir)/Identity/Fonts/Ttf
 
     # Define font related files.
     REPOFILES[0]=${REPODIRS[1]}/denmark.ttf

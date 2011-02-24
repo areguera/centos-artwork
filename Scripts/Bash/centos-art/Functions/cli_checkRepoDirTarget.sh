@@ -39,7 +39,7 @@ function cli_checkRepoDirTarget {
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
     if [[ $FLAG_TO =~ '^(trunk|branches|tags)/.+$' ]];then
-        FLAG_TO=/home/centos/artwork/$FLAG_TO 
+        FLAG_TO=${HOME}/artwork/$FLAG_TO 
     fi
 
     # Check target value.
@@ -62,7 +62,7 @@ function cli_checkRepoDirTarget {
         pushd "$(dirname "$FLAG_TO")" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
+        if [[ $(pwd) =~ "^${HOME}/artwork" ]];then
             # Re-define target value using absolute path.
             FLAG_TO=$(pwd)/$(basename "$FLAG_TO")
         fi

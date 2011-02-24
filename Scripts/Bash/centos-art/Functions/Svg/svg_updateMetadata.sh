@@ -45,7 +45,7 @@ function svg_updateMetadata {
     local -a DEFAULT
 
     # Define template file name.
-    TEMPLATE="/home/centos/artwork/trunk/Scripts/Bash/Functions/Svg/Config/tpl_forMetadata.sed"
+    TEMPLATE="${CLI_BASEDIR}/Functions/Svg/Config/tpl_forMetadata.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE 'f'

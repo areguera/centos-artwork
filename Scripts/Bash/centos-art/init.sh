@@ -1,13 +1,7 @@
 #!/bin/bash
 #
-# centos-art.sh -- The CentOS Artwork Repository automation tool
-# initialization script.
-#
-# This is the first script that centos-art command initiates. This
-# script contains a serie of desition about which configuration script
-# to load based. To determine which configuration script to load, the
-# absolute path from which the command centos-art was initially called
-# is used as reference.
+# init.sh -- This file is the centos-art initialization script, the
+# first script the centos-art command executes.
 #
 # Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
@@ -27,27 +21,36 @@
 # USA.
 # 
 # ----------------------------------------------------------------------
-# $Id: centos-art.sh 70 2010-09-18 04:38:43Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
-# Initizalize centos-art.sh gettext internazionalization.
+# Most paths are built from HOME variable on, so we need to make our
+# best to make it contain a valid value before any path be built from
+# it. Using HOME variable gives us some flexibility to store the
+# repository filesystem in a location different from `/home/centos',
+# the default home directory centos-art assumes if HOME variable is
+# empty or malformed.
+[[ ! $HOME =~ '^/home/[[:alnum:]]+' ]] && HOME='/home/centos'
+
+# Initizalize internazionalization through gettext.
 . gettext.sh
 export TEXTDOMAIN=centos-art.sh
-export TEXTDOMAINDIR=/home/centos/artwork/trunk/Locales/Scripts/centos-art.sh/
+export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts/Bash/centos-art
 
-# Initialize centos-art.sh personal information.
-export CLINAME='centos-art'
-export CLIVERSION='1.0 (beta)'
+# Initialize personal information.
+export CLI_PROGRAM='centos-art'
+export CLI_VERSION='1.0 (beta)'
+export CLI_BASEDIR="${HOME}/artwork/trunk/Scripts/Bash/${CLI_PROGRAM}"
 
-# Initialize centos-art.sh function scripts.
-FILES=$(ls /home/centos/artwork/trunk/Scripts/Bash/Functions/{cli,cli_*}.sh)
-for FILE in $FILES;do
-    if [[ -x $FILE ]];then
-        . $FILE
-        FUNCTION=$(grep '^function ' $FILE | cut -d' ' -f2)
-        export -f $FUNCTION
+# Initialize common function scripts.
+FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)
+for FILE in ${FILES};do
+    if [[ -x ${FILE} ]];then
+        . ${FILE}
+        FUNCTION=$(grep '^function ' ${FILE} | cut -d' ' -f2)
+        export -f ${FUNCTION}
     else
-        echo `gettext "The $FILE needs to have execution rights."`
+        echo `gettext "The ${FILE} needs to have execution rights."` > /dev/stderr
         exit
     fi
 done
@@ -58,5 +61,5 @@ unset FILE
 unset FILES
 unset FUNCTION
 
-# Initialize command line interface.
+# Initialize command-line interface.
 cli "$@"

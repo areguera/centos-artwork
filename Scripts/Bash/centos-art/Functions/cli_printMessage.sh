@@ -33,7 +33,7 @@ function cli_printMessage {
     # Reduce paths inside output messages. The main purpose for this
     # is to free horizontal space in output messages.
     MESSAGE=$(echo "$MESSAGE" \
-        | sed -r 's!/home/centos/artwork/(trunk|branches|tags)/!\1/!g')
+        | sed -r "s!^${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
 
     # Remove blank spaces from lines' begining.
     MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
@@ -96,7 +96,7 @@ function cli_printMessage {
 
         'AsErrorLine' )
             # This option is used to print error messsages.
-            echo "${CLINAME}: ${MESSAGE}" > /dev/stderr
+            echo "${CLI_PROGRAM}: ${MESSAGE}" > /dev/stderr
             ;;
 
         'AsToKnowMoreLine' )
@@ -168,7 +168,7 @@ function cli_printMessage {
         'AsRegularLine' | * )
             if [[ "$FLAG_QUIET" == 'false' ]];then
                 echo "$MESSAGE" \
-                    | awk -f /home/centos/artwork/trunk/Scripts/Bash/Styles/output_forTwoColumns.awk \
+                    | awk -f ${CLI_BASEDIR}/Styles/output_forTwoColumns.awk \
                     > /dev/stderr
             fi
             ;;

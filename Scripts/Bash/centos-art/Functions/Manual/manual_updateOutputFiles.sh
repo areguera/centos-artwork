@@ -35,7 +35,7 @@ function manual_updateOutputFiles {
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
     # paths incorrectly.
-    pushd /home/centos/artwork > /dev/null
+    pushd ${HOME}/artwork > /dev/null
 
     manual_updateOutputFileInfo
     manual_updateOutputFileHtml

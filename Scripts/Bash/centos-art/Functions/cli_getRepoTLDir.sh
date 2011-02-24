@@ -42,14 +42,14 @@ function cli_getRepoTLDir {
     fi
 
     # Verify location.
-    if [[ $LOCATION =~ '^/home/centos/artwork/(trunk|branches|tags)/.+$' ]];then
+    if [[ $LOCATION =~ "^${HOME}/artwork/(trunk|branches|tags)/.+$" ]];then
         case "$2" in
             -r|--relative )
-                PATTERN='^/home/centos/artwork/(trunk|branches|tags)/.+$'
+                PATTERN="^${HOME}/artwork/(trunk|branches|tags)/.+$"
                 REPLACE='\1'
                 ;;
             -a|--absolute|* )
-                PATTERN='^(/home/centos/artwork/(trunk|branches|tags))/.+$'
+                PATTERN="^(${HOME}/artwork/(trunk|branches|tags))/.+$"
                 REPLACE='\1'
                 ;;
         esac

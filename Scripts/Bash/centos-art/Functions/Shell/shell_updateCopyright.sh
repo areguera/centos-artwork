@@ -41,7 +41,7 @@ function shell_updateCopyright {
     local -a MARKER
 
     # Define absolute path to template file.
-    TEMPLATE="/home/centos/artwork/trunk/Scripts/Bash/Functions/Shell/Config/tpl_forCopyright.sed"
+    TEMPLATE="${CLI_BASEDIR}/Functions/Shell/Config/tpl_forCopyright.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE 'f'

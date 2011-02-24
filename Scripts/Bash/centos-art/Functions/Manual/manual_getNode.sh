@@ -27,7 +27,7 @@
 function manual_getNode {
 
     local NODE=$(echo "$ACTIONVAL" \
-        | sed -r 's!^/home/centos/artwork/!!' \
+        | sed -r "s!^${HOME}/artwork/!!" \
         | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
 
     echo "$NODE"

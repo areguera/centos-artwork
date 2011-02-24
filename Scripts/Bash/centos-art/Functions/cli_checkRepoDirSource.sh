@@ -40,7 +40,7 @@ function cli_checkRepoDirSource {
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
     if [[ $ACTIONVAL =~ '^(trunk|branches|tags)' ]];then
-        ACTIONVAL=/home/centos/artwork/$ACTIONVAL 
+        ACTIONVAL=${HOME}/artwork/$ACTIONVAL 
     fi
 
     # Re-define source value to build repository absolute path from
@@ -56,7 +56,7 @@ function cli_checkRepoDirSource {
         pushd "$ACTIONVAL" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
+        if [[ $(pwd) =~ "^${HOME}/artwork" ]];then
             # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)
         else
@@ -73,7 +73,7 @@ function cli_checkRepoDirSource {
         pushd "$(dirname "$ACTIONVAL")" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ '^/home/centos/artwork' ]];then
+        if [[ $(pwd) =~ "^${HOME}/artwork" ]];then
             # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)/$(basename "$ACTIONVAL")
         else
