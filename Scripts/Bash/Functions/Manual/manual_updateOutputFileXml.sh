@@ -26,10 +26,10 @@
 
 function manual_updateOutputFileXml {
 
-    # Output action message.
+    # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.xml" 'AsUpdatingLine'
 
-    # Update plaintext output directory.
+    # Update xml output format.
     /usr/bin/makeinfo --xml \
         ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.xml \
 
