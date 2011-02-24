@@ -2,7 +2,7 @@
 <!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.8//EN" "http://www.gnu.org/software/texinfo/dtd/4.8/texinfo.dtd">
 <texinfo xml:lang="en">
   <setfilename>repository.xml</setfilename>
-  <settitle>The CentOS Artwork Repository</settitle>
+  <settitle>centos-art.sh</settitle>
 <!-- %**end of header -->
 <!--  Summary Description and Copyright - -->
   <para>The CentOS Artwork Repository user guide.</para>
@@ -10,9 +10,10 @@
   <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License. 
 <!--  Titlepage, Contents, Copyright - --></para>
   <titlepage>
-    <booktitle>The CentOS Artwork Repository</booktitle>
-    <booksubtitle>User guide</booksubtitle>
-    <author>Alain Reguera Delgado (&lt;email>&lt;emailaddress>alain.reguera@gmail.com&lt;/emailaddress>&lt;/email>)</author>
+    <booktitle>centos-art.sh</booktitle>
+    <booksubtitle>The CentOS artwork repository automation script.</booksubtitle>
+    <booksubtitle>23 February 2011.</booksubtitle>
+    <author>Alain Reguera Delgado</author>
 <!-- The following two commands start the copyright page. -->
     <para>The CentOS Artwork Repository user guide.</para>
     <para>Copyright &copyright; 2009, 2010, 2011  Alain Reguera Delgado</para>
@@ -904,32 +905,14 @@
 
         <subsubsection>
           <title>Design model (without ads)</title>
-          <float name="fig:turnk/Identity/Models/Tpl/Promo/Web/customization">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Promo/Web/Concepts/customization" extension=""><alttext>The CentOS web customization design model</alttext></inlineimage></para>
-            <caption>The CentOS web customization design model.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
           <title>Design model (with ads)</title>
-          <float name="fig:turnk/Identity/Models/Tpl/Promo/Web/customization-with-ads">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Promo/Web/Concepts/customization-with-ads" extension=""><alttext>The CentOS web customization design model using promotion</alttext></inlineimage></para>
-            <caption>The CentOS web customization using promotion design model.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
           <title>HTML definitions</title>
-          <float name="fig:turnk/Identity/Models/Tpl/Promo/Web/webenv-html-defs">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Promo/Web/Concepts/webenv-html-defs" extension=""><alttext>Web environment html defintions</alttext></inlineimage></para>
-            <caption>Web environment html definitions</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
@@ -974,12 +957,6 @@ centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Backgrounds --filt
         <subsubsection>
           <title>Navigation</title>
           <para>Inside CentOS web environment, the one-step navegation between web applications is addressed using the web environment navigation bar. The web environment navigation bar contains links to main applications and is always visible no matter where you are inside the web environment.</para>
-          <float name="fig:turnk/Identity/Models/Tpl/Promo/Web/navigation">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="" height="" name="trunk/Identity/Models/Img/Promo/Web/Concepts/navigation" extension=""><alttext>The CentOS web navigation design model</alttext></inlineimage></para>
-            <caption>The CentOS web navigation design model.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
@@ -1690,12 +1667,6 @@ priority=10
       <subsection>
         <title>Goals</title>
         <para>This section describes the steps we followed to construct the <emph>Flame</emph> artistic motif. This section may be useful for anyone interested in reproducing the <emph>Flame</emph> artistic motif, or in creating new artistic motifs for The CentOS Project corporate visual identity (see <xref><xrefnodename>trunk Identity</xrefnodename></xref>).</para>
-        <float name="fig:Motifs:Flame">
-          <floattype>Figure</floattype>
-          <floatpos></floatpos>
-          <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/Flame/2/Concept/motif" extension="jpg"><alttext></alttext></image>
-          <caption>The Flame artistic motif.</caption>
-        </float>
       </subsection>
 
       <subsection>
@@ -1727,12 +1698,6 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
         <subsubsection>
           <title>Step 1: Set image size</title>
           <para>Create an empty image and fill the <samp>Background</samp> layer with black (<code>000000</code>) color. Image dimensions depend on the final destination you plan to use the image for. For the sake of our construction example we used an image of 640x480 pixels and 300 pixels per inch (ppi).</para>
-          <float name="fig:Motifs:Flame:Construction:1">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/1" extension="jpg"><alttext></alttext></image>
-            <caption>The Flame artistic motif construction step 1.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
@@ -1741,12 +1706,6 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
           <para>Duplicate <samp>Base</samp> layer and name it <samp>Paper</samp>. Place <samp>Paper</samp> layer over <samp>Base</samp> layer. Remove content of <samp>Paper</samp> layer and fill it with <samp>Paper (100x100)</samp> pattern. Once you've done with black radial degradation, reduce the <samp>Paper</samp> layer opacity to 20%.</para>
           <para>Notice that when we duplicate one layer, the mask information related to layer is preserved from previous to next layer. This saves us some of the time required to produce different layers with the same mask information on them.</para>
           <para>Duplicate <samp>Paper</samp> layer and rename it <samp>Stripes</samp>. Remove paper pattern from <samp>Stripes</samp> layer. Fill <samp>Stripes</samp> layer with <samp>Stripes (48x48)</samp> pattern and reduce the <samp>Stripes</samp> layer opacity to 15%.</para>
-          <float name="fig:Motifs:Flame:Construction:2">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/3" extension="jpg"><alttext></alttext></image>
-            <caption>The Flame artistic motif construction step 2.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
@@ -1755,24 +1714,12 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
           <para>To build flame motif, use the flame filter (<samp>Filters &gt; Render &gt; Nature &gt; Flame...</samp>) on <samp>Flame</samp> layer. We used a layer mask, with a radial gradient on it to control the boundaries of flame motif on <samp>Flame</samp> layer.</para>
           <para>Duplicate <samp>Flame</samp> layer and rename it `Flame Blur'. Place `Flame Blur' below <samp>Flame</samp> layer. Apply Gussian blur filter (<samp>Filters &gt; Blur &gt; Gussian Blur...</samp>) until reaching the desiered effect.</para>
           <para>The opacity value, in <samp>Flame</samp> layers, may vary from one image to another based on the place the image will be finally placed on.  For example, images used as desktop background have the <samp>Flame</samp> layer opacity set at 100% but <samp>Flame Blur</samp> is set to 70%.  However, you may find that background images used in anaconda progress slides have opacity reduced differently, in order to reduce brightness in a way that texts could look clean and readable over it.</para>
-          <float name="fig:Motifs:Flame:Construction:3">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/4" extension="jpg"><alttext></alttext></image>
-            <caption>The Flame artistic motif construction step 3.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
           <title>Step 4: Add foreground color</title>
           <para>Create a new layer named <samp>Color</samp>, place it on top of all visible layers and fill it with plain color (<code>4c005a</code>). Reduce <samp>Color</samp> layer opacity to 20%. You can use the <samp>Color</samp> layer to control the right side color information you want to produce the image for.</para>
           <para>Duplicate <samp>Flame</samp> layer and create a new layer named <samp>Color#1</samp>. Place <samp>Color#1</samp> layer on top of layer named <samp>Color</samp>. Remove the mask information from <samp>Color#1</samp> layer and recreate a new one using an inverted alpha channel as reference. Remove <samp>Color#1</samp> layer content and fill it back with plain black (<code>000000</code>) color. Reduce <samp>Color#1</samp> opacity to 20%.  In this step we created a mask to protect the flame artistic motif from black color, so when we decrement or increment the opacity of layer, the flame artistic motif wouldn't be affected, just the environment suround it.</para>
-          <float name="fig:Motifs:Flame:Construction:4">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/5" extension="jpg"><alttext></alttext></image>
-            <caption>The Flame artistic motif construction step 4.</caption>
-          </float>
           <para>When you set color information, remember that the same artistic motif needs to be indexed to 14 and 16 colors, in order to produce Grub and Syslinux visual manifestations respectively. Using many different colors in the artistic motif may reduce the possibility of your design to fix all different situations in.  Likewise, using more colors in one design, and less colors in another design will reduce the connectivity among your designs, since color information is relevant to visual identity.</para>
           <para>When you propagate your artistic motif visual style to different visual manifestations of CentOS Project corporate visual identity, it is up to you to find out justice and compromise among all possible variables you may face.</para>
         </subsubsection>
@@ -1815,12 +1762,6 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
       <para><indexterm index="cp">trunk Identity Themes Motifs Modern</indexterm></para>
       <subsection>
         <title>Presentation</title>
-        <float name="fig:trunk/Identity/Themes/Motifs/Modern/Concept">
-          <floattype>Figure</floattype>
-          <floatpos></floatpos>
-          <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/Modern/Concept/Img/motif" extension="jpg"><alttext></alttext></image>
-          <caption>The Modern artistic motif.</caption>
-        </float>
       </subsection>
 
       <subsection>
@@ -2154,12 +2095,6 @@ centos-art render --identity</example>
 
       <subsection>
         <title>Description</title>
-        <float name="fig:Motifs:TreeFlower">
-          <floattype>Figure</floattype>
-          <floatpos></floatpos>
-          <image width="400pt" height="" name="trunk/Identity/Themes/Motifs/TreeFlower/3/Concept/motif" extension="jpg"><alttext>TreeFlower theme</alttext></image>
-          <caption>The TreeFlower artistic motif.</caption>
-        </float>
       </subsection>
 
       <subsection>
@@ -3858,12 +3793,6 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <title>Repository layout</title>
           <para>The repository layout describes organization of files and directories inside the repository. The repository layout provides the standard backend required for automation scripts to work correctly. If such layout changes unexpectedly, automation scripts may confuse themselves and stop doing what we expect from them to do.</para>
           <para>As convenction, inside CentOS Artwork Repository, we organize files and directories related to CentOS corporate visual identity under three top level directories named: <file>trunk/</file>, <file>branches/</file>, and <file>tags/</file>.</para>
-          <float name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-6">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="" height="" name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-6" extension=""><alttext></alttext></inlineimage></para>
-            <caption>The CentOS Artwork Repository layout.</caption>
-          </float>
           <para>The <file>trunk/</file> directory (see <xref><xrefnodename>trunk</xrefnodename></xref>) organizes the main development line of CentOS corporate visual identity. Inside <file>trunk/</file> directory structure, the CentOS corporate visual identity concepts are implemented using directories.  There is one directory level for each relevant concept inside the repository. The <file>trunk/</file> directory structure is mainly used to perform development tasks related to CentOS corporate visual identity.</para>
           <para>The <file>branches/</file> directory (see <xref><xrefnodename>branches</xrefnodename></xref>) oranizes parallel development lines to <file>trunk/</file> directory. The <file>branches/</file> directory is used to set points in time where develpment lines are devided one from another taking separte and idependent lives that share a common past from the point they were devided on. The <file>branches/</file> directory is mainly used to perform quality assurance tasks related to CentOS corporate visual identity.</para>
           <para>The <file>tags/</file> directory (see <xref><xrefnodename>tags</xrefnodename></xref>) organizes parallel frozen lines to <file>branches/</file> directory.  The parallel frozen lines are immutable, nothing change inside them once they has been created.  The <file>tags/</file> directory is mainly used to publish final releases of CentOS corporate visual identity.</para>
@@ -3885,12 +3814,6 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <para>Later, when theme trunk development line is considered &ldquo;ready&rdquo; for implementation (e.g.,  all required backgrounds have been designed), we create a branch for it (e.g., <file>branches/Identity/Themes/Motifs/TreeFlower/1/</file>).  Once the branch has been created, we forget that branch and continue working the trunk development line while others (e.g., an artwork quality assurance team) test the new branch for tunning it up.</para>
           <para>Once the branch has been tunned up, and considered &ldquo;ready&rdquo; for release, it is freezed under <file>tags/</file> directory (e.g., <file>tags/Identity/Themes/Motifs/TreeFower/1.0/</file>) for packagers, webmasters, promoters, and anyone who needs images from that CentOS theme the tag was created for.</para>
           <para>Both branches and tags, inside CentOS Artwork Repository, use numerical values to identify themselves under the same location. Branches start at one (i.e., <samp>1</samp>) and increment one unit for each branch created from the same trunk development line.  Tags start at zero (i.e., <samp>0</samp>) and increment one unit for each tag created from the same branch development line.</para>
-          <float name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-1">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1" extension=""><alttext></alttext></inlineimage></para>
-            <caption>Name convention for tags and branches creation.</caption>
-          </float>
           <quotation>
             <para><strong>Convenction</strong> Do not freeze trunk development lines using tags directly.  If you think you need to freeze a trunk development line, create a branch for it and then freeze that branch instead.</para>
           </quotation>
@@ -3905,27 +3828,9 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <para>Inside CentOS Artwork Repository, parallel directories are simple directory entries built from a common parent directory and placed in a location different to that, the common parent directory is placed on. Parallel directories are useful to create branches, tags, translations, documentation, pre-rendering configuration script, and similar directory structures.</para>
           <para>Parallel directories take their structure from one unique parent directory. Inside CentOS Artwork Repository, this unique parent directory is under <file>trunk/Identity</file> location.  The <file>trunk/Identity</file> location must be considered the reference for whatever information you plan to create inside the repository.</para>
           <para>In some circumstances, parallel directories may be created removing uncommon information from their paths. Uncommon path information refers to those directory levels in the path which are not common for other parallel directories.  For example, when rendering <file>trunk/Identity/Themes/Motifs/TreeFlower/Distro</file> directory structure, the <file>centos-art.sh</file> script removes the <file>Motifs/TreeFlower/</file> directory levels from path, in order to build the parallel directory used to retrived translations, and pre-rendering configuration scripts required by <code>render</code> functionality.</para>
-          <float name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-3">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3" extension=""><alttext></alttext></inlineimage></para>
-            <caption>Parallel directories removing uncommon information.</caption>
-          </float>
           <para>Another example of parallel directory is the documentation structure created by <code>manual</code> functionality. This time, <file>centos-art.sh</file> script uses parallel directory information with uncommon directory levels to build the documentation entry required by Texinfo documentation system, inside the repository.</para>
           <para>Othertimes, parallel directories may add uncommon information to their paths. This is the case we use to create branches and tags. When we create branches and tags, a numerical identifier is added to parallel directory structure path. The place where the numerical identifier is set on is relevant to corporate visual identity structure and should be carefully considered where it will be.</para>
-          <float name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-4">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-4" extension=""><alttext></alttext></inlineimage></para>
-            <caption>Parallel directories adding uncommon information.</caption>
-          </float>
           <para>When one parent directory changes, all their related parallel directories need to be changed too. This is required in order for parallel directories to retain their relation with the parent directory structure.  In the other hand, parallel directories should never be modified under no reason but to satisfy the relation to their parent directory structure.  Liberal change of parallel directories may suppresses the conceptual idea they were initially created for; and certainly, things may stop working the way they should do.</para>
-          <float name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-5">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <para role="continues"><inlineimage width="400pt" height="" name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-5" extension=""><alttext></alttext></inlineimage></para>
-            <caption>Wrong construction of parallel directories.</caption>
-          </float>
         </subsubsection>
 
         <subsubsection>
@@ -5154,12 +5059,6 @@ trunk/Identity/Themes/Motifs/Mettle/Distro/Anaconda/Progress/
         <subsubsection>
           <title>Translation Markers</title>
           <para><anchor name="trunk:Translations:TranslationMarkers"></anchor> <indexterm index="cp">Translation markers</indexterm> Translation markers are used in &ldquo;Theme Model Designs&rdquo; and &ldquo;Translation Files&rdquo; as replacement patterns to commit content translation.  When you are rendering content using <command>centos-art</command> script inisde <file>trunk/Identity</file> structure, artistic motifs and translation files are applied to model designs to produce translated content as result. In order to have the appropriate translation in content rendered, markers defintion in translation files should match markers in model designs exactly.</para>
-          <float name="fig:trunk/Translations/1">
-            <floattype>Figure</floattype>
-            <floatpos></floatpos>
-            <image width="" height="" name="trunk/Identity/Models/Img/Scripts/renderImage" extension=""><alttext>Translation Markers</alttext></image>
-            <caption>The image rendering flow.</caption>
-          </float>
           <para>Translation markers can be whatever text you want, but as convenction we use the following to represent releases of CentOS distribution:</para>
           <table>
             <tableitem>

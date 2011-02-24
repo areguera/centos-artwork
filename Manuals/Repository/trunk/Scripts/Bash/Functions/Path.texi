@@ -24,11 +24,6 @@ and directories related to CentOS corporate visual identity under
 three top level directories named: @file{trunk/}, @file{branches/},
 and @file{tags/}. 
 
-@float Figure, trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-6
-@noindent @image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-6}
-@caption{The CentOS Artwork Repository layout.}
-@end float
-
 The @file{trunk/} directory (@pxref{trunk}) organizes the main
 development line of CentOS corporate visual identity. Inside
 @file{trunk/} directory structure, the CentOS corporate visual
@@ -114,11 +109,6 @@ branch created from the same trunk development line.  Tags start at
 zero (i.e., @samp{0}) and increment one unit for each tag created from
 the same branch development line.
 
-@float Figure, trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-1
-@noindent @image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1,400pt}
-@caption{Name convention for tags and branches creation.}
-@end float
-
 @quotation
 @strong{Convenction} Do not freeze trunk development lines using tags
 directly.  If you think you need to freeze a trunk development line,
@@ -182,11 +172,6 @@ build the parallel directory used to retrived translations, and
 pre-rendering configuration scripts required by @code{render}
 functionality.
 
-@float Figure, trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-3
-@noindent @image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-3,400pt}
-@caption{Parallel directories removing uncommon information.}
-@end float
-
 Another example of parallel directory is the documentation structure
 created by @code{manual} functionality. This time,
 @file{centos-art.sh} script uses parallel directory information with
@@ -200,11 +185,6 @@ directory structure path. The place where the numerical identifier is
 set on is relevant to corporate visual identity structure and should
 be carefully considered where it will be.
 
-@float Figure, trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-4
-@noindent @image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-4,400pt}
-@caption{Parallel directories adding uncommon information.}
-@end float
-
 When one parent directory changes, all their related parallel
 directories need to be changed too. This is required in order for
 parallel directories to retain their relation with the parent
@@ -213,11 +193,6 @@ never be modified under no reason but to satisfy the relation to their
 parent directory structure.  Liberal change of parallel directories
 may suppresses the conceptual idea they were initially created for;
 and certainly, things may stop working the way they should do.
-
-@float Figure, trunk/Identity/Models/Img/Scripts/Bash/Functions/Paths/figure-5
-@noindent @image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-5,400pt}
-@caption{Wrong construction of parallel directories.}
-@end float
 
 @subsubsection Syncronizing path information
 

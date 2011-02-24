@@ -813,23 +813,11 @@ repository to store CentOS web environment customized web applications.
 3.11.2.1 Design model (without ads)
 ...................................
 
-
-
-Figure 3.1: The CentOS web customization design model.
-
 3.11.2.2 Design model (with ads)
 ................................
 
-
-
-Figure 3.2: The CentOS web customization using promotion design model.
-
 3.11.2.3 HTML definitions
 .........................
-
-
-
-Figure 3.3: Web environment html definitions
 
 3.11.2.4 Controlling visual style
 .................................
@@ -882,10 +870,6 @@ applications is addressed using the web environment navigation bar.
 The web environment navigation bar contains links to main applications
 and is always visible no matter where you are inside the web
 environment.
-
-
-
-Figure 3.4: The CentOS web navigation design model.
 
 3.11.2.7 Development and release cycle
 ......................................
@@ -1490,8 +1474,6 @@ reproducing the _Flame_ artistic motif, or in creating new artistic
 motifs for The CentOS Project corporate visual identity (*note trunk
 Identity::).
 
- Figure 3.5: The Flame artistic motif.
-
 3.23.2 Description
 ------------------
 
@@ -1598,8 +1580,6 @@ Create an empty image and fill the `Background' layer with black
 plan to use the image for. For the sake of our construction example we
 used an image of 640x480 pixels and 300 pixels per inch (ppi).
 
- Figure 3.6: The Flame artistic motif construction step 1.
-
 3.23.3.2 Step 2: Add base color and pattern information
 .......................................................
 
@@ -1623,8 +1603,6 @@ information on them.
    Duplicate `Paper' layer and rename it `Stripes'. Remove paper
 pattern from `Stripes' layer. Fill `Stripes' layer with `Stripes
 (48x48)' pattern and reduce the `Stripes' layer opacity to 15%.
-
- Figure 3.7: The Flame artistic motif construction step 2.
 
 3.23.3.3 Step 3: Add flame motif
 ................................
@@ -1650,8 +1628,6 @@ find that background images used in anaconda progress slides have
 opacity reduced differently, in order to reduce brightness in a way
 that texts could look clean and readable over it.
 
- Figure 3.8: The Flame artistic motif construction step 3.
-
 3.23.3.4 Step 4: Add foreground color
 .....................................
 
@@ -1669,8 +1645,6 @@ opacity to 20%.  In this step we created a mask to protect the flame
 artistic motif from black color, so when we decrement or increment the
 opacity of layer, the flame artistic motif wouldn't be affected, just
 the environment suround it.
-
- Figure 3.9: The Flame artistic motif construction step 4.
 
    When you set color information, remember that the same artistic motif
 needs to be indexed to 14 and 16 colors, in order to produce Grub and
@@ -1694,8 +1668,6 @@ variables you may face.
 
 3.24.1 Presentation
 -------------------
-
- Figure 3.10: The Modern artistic motif.
 
 3.24.2 Construction
 -------------------
@@ -1986,8 +1958,6 @@ Theme palettes contain the unique color information required by theme.
 
 3.31.2 Description
 ------------------
-
- Figure 3.11: The TreeFlower artistic motif.
 
 3.31.3 Usage
 ------------
@@ -2446,7 +2416,7 @@ functionality.
     .   ...................................   .
     ...........................................
 
-Figure 3.12: The functionalities initialization environment.
+Figure 3.1: The functionalities initialization environment.
 
    Functionalities are implemented by means of actions.  Once the
 functionality has been initiazalized, actions initialization take place
@@ -2493,7 +2463,7 @@ functions defined inside function environment.
 .   ................................   .
 ........................................
 
-Figure 3.13: The actions initialization environment.
+Figure 3.2: The actions initialization environment.
 
 3.36.3 Usage
 ------------
@@ -3081,7 +3051,7 @@ global functions you can use inside `centos-art.sh' script.
      Added           0 file from the working copy.
      ----------------------------------------------------------------------
 
-     Figure 3.14: The `cli_commitRepoChanges' function output.
+     Figure 3.3: The `cli_commitRepoChanges' function output.
 
         Call the `cli_commitRepoChanges' function before or/and after
      calling functions that modify files or directories inside the
@@ -3766,10 +3736,6 @@ and stop doing what we expect from them to do.
 and directories related to CentOS corporate visual identity under three
 top level directories named: `trunk/', `branches/', and `tags/'.
 
-
-
-Figure 3.15: The CentOS Artwork Repository layout.
-
    The `trunk/' directory (*note trunk::) organizes the main
 development line of CentOS corporate visual identity. Inside `trunk/'
 directory structure, the CentOS corporate visual identity concepts are
@@ -3856,10 +3822,6 @@ branch created from the same trunk development line.  Tags start at
 zero (i.e., `0') and increment one unit for each tag created from the
 same branch development line.
 
-
-
-Figure 3.16: Name convention for tags and branches creation.
-
      *Convenction* Do not freeze trunk development lines using tags
      directly.  If you think you need to freeze a trunk development
      line, create a branch for it and then freeze that branch instead.
@@ -3920,10 +3882,6 @@ levels from path, in order to build the parallel directory used to
 retrived translations, and pre-rendering configuration scripts required
 by `render' functionality.
 
-
-
-Figure 3.17: Parallel directories removing uncommon information.
-
    Another example of parallel directory is the documentation structure
 created by `manual' functionality. This time, `centos-art.sh' script
 uses parallel directory information with uncommon directory levels to
@@ -3937,10 +3895,6 @@ directory structure path. The place where the numerical identifier is
 set on is relevant to corporate visual identity structure and should be
 carefully considered where it will be.
 
-
-
-Figure 3.18: Parallel directories adding uncommon information.
-
    When one parent directory changes, all their related parallel
 directories need to be changed too. This is required in order for
 parallel directories to retain their relation with the parent directory
@@ -3949,10 +3903,6 @@ modified under no reason but to satisfy the relation to their parent
 directory structure.  Liberal change of parallel directories may
 suppresses the conceptual idea they were initially created for; and
 certainly, things may stop working the way they should do.
-
-
-
-Figure 3.19: Wrong construction of parallel directories.
 
 3.41.2.5 Syncronizing path information
 ......................................
@@ -4997,7 +4947,7 @@ following top commentary structure:
 14|
 15| }
 
-Figure 3.20: The functions script base comment structure
+Figure 3.4: The functions script base comment structure
 
    Relevant lines in the above structure are lines from 5 to 9.
 Everything else in the file is left immutable.
@@ -5061,7 +5011,7 @@ copyright note looks like the following:
 27|
 28| }
 
-Figure 3.21: The function script comment example
+Figure 3.5: The function script comment example
 
    Relevant lines in the above structure are lines from 5 to 22.  Pay
 attention how the copyright line was built, and how the license was
@@ -6591,24 +6541,24 @@ Index
 *****
 
 branches:                                      See 1.        (line  387)
-Common translation files:                      See 3.50.2.5. (line 6020)
-How to render brands' translation files:       See 3.52.3.   (line 6324)
-How to render fonts' translation files:        See 3.54.3.   (line 6397)
-How to render translation files:               See 3.50.3.   (line 6190)
-Metadata maintainance:                         See 3.45.2.   (line 5150)
-Specific translation files:                    See 3.50.2.6. (line 6045)
+Common translation files:                      See 3.50.2.5. (line 5970)
+How to render brands' translation files:       See 3.52.3.   (line 6274)
+How to render fonts' translation files:        See 3.54.3.   (line 6347)
+How to render translation files:               See 3.50.3.   (line 6140)
+Metadata maintainance:                         See 3.45.2.   (line 5100)
+Specific translation files:                    See 3.50.2.6. (line 5995)
 tags:                                          See 2.        (line  390)
-Template translation files:                    See 3.50.2.4. (line 5850)
-Translation brands file names:                 See 3.52.2.1. (line 6281)
-Translation configuration scripts:             See 3.50.2.8. (line 6079)
-Translation entries:                           See 3.50.2.1. (line 5666)
-Translation files:                             See 3.50.2.3. (line 5782)
-Translation markers:                           See 3.50.2.2. (line 5747)
-Translation paths:                             See 3.50.2.1. (line 5666)
+Template translation files:                    See 3.50.2.4. (line 5800)
+Translation brands file names:                 See 3.52.2.1. (line 6231)
+Translation configuration scripts:             See 3.50.2.8. (line 6029)
+Translation entries:                           See 3.50.2.1. (line 5616)
+Translation files:                             See 3.50.2.3. (line 5732)
+Translation markers:                           See 3.50.2.2. (line 5697)
+Translation paths:                             See 3.50.2.1. (line 5616)
 Translation pre-rendering configuration scripts:See 3.50.2.8.
-                                                             (line 6079)
-Translation rendering:                         See 3.50.2.7. (line 6068)
-Translation rendering default functionality:   See 3.50.2.9. (line 6165)
+                                                             (line 6029)
+Translation rendering:                         See 3.50.2.7. (line 6018)
+Translation rendering default functionality:   See 3.50.2.9. (line 6115)
 trunk:                                         See 3.        (line  393)
 trunk Identity:                                See 3.1.      (line  396)
 trunk Identity Brands:                         See 3.2.      (line  512)
@@ -6621,63 +6571,63 @@ trunk Identity Models Html:                    See 3.8.      (line  682)
 trunk Identity Models Img Promo Web:           See 3.9.      (line  703)
 trunk Identity Models Tpl:                     See 3.10.     (line  724)
 trunk Identity Models Tpl Promo Web:           See 3.11.     (line  745)
-trunk Identity Models Xcf:                     See 3.12.     (line 1075)
-trunk Identity Release:                        See 3.13.     (line 1096)
-trunk Identity Themes:                         See 3.14.     (line 1113)
-trunk Identity Themes Models:                  See 3.15.     (line 1137)
-trunk Identity Themes Models Alternative:      See 3.16.     (line 1170)
-trunk Identity Themes Models Default:          See 3.17.     (line 1197)
-trunk Identity Themes Models Default Distro:   See 3.18.     (line 1229)
+trunk Identity Models Xcf:                     See 3.12.     (line 1059)
+trunk Identity Release:                        See 3.13.     (line 1080)
+trunk Identity Themes:                         See 3.14.     (line 1097)
+trunk Identity Themes Models:                  See 3.15.     (line 1121)
+trunk Identity Themes Models Alternative:      See 3.16.     (line 1154)
+trunk Identity Themes Models Default:          See 3.17.     (line 1181)
+trunk Identity Themes Models Default Distro:   See 3.18.     (line 1213)
 trunk Identity Themes Models Default Distro Anaconda:See 3.19.
-                                                             (line 1313)
-trunk Identity Themes Models Default Promo:    See 3.20.     (line 1330)
-trunk Identity Themes Models Default Web:      See 3.21.     (line 1356)
-trunk Identity Themes Motifs:                  See 3.22.     (line 1381)
-trunk Identity Themes Motifs Flame:            See 3.23.     (line 1484)
-trunk Identity Themes Motifs Modern:           See 3.24.     (line 1695)
-trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 1714)
+                                                             (line 1297)
+trunk Identity Themes Models Default Promo:    See 3.20.     (line 1314)
+trunk Identity Themes Models Default Web:      See 3.21.     (line 1340)
+trunk Identity Themes Motifs:                  See 3.22.     (line 1365)
+trunk Identity Themes Motifs Flame:            See 3.23.     (line 1468)
+trunk Identity Themes Motifs Modern:           See 3.24.     (line 1669)
+trunk Identity Themes Motifs Modern Backgrounds:See 3.25.    (line 1686)
 trunk Identity Themes Motifs Modern Backgrounds Img:See 3.26.
-                                                             (line 1835)
+                                                             (line 1807)
 trunk Identity Themes Motifs Modern Backgrounds Tpl:See 3.27.
-                                                             (line 1856)
+                                                             (line 1828)
 trunk Identity Themes Motifs Modern Backgrounds Xcf:See 3.28.
-                                                             (line 1877)
+                                                             (line 1849)
 trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 3.29.
-                                                             (line 1904)
-trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 1960)
-trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 1982)
+                                                             (line 1876)
+trunk Identity Themes Motifs Modern Palettes:  See 3.30.     (line 1932)
+trunk Identity Themes Motifs TreeFlower:       See 3.31.     (line 1954)
 trunk Identity Themes Motifs TreeFlower Backgrounds:See 3.32.
-                                                             (line 2001)
-trunk Identity Widgets:                        See 3.33.     (line 2299)
-trunk Manuals:                                 See 3.34.     (line 2316)
-trunk Scripts:                                 See 3.35.     (line 2337)
-trunk Scripts Bash:                            See 3.36.     (line 2361)
-trunk Scripts Bash Functions:                  See 3.37.     (line 2510)
-trunk Scripts Bash Functions Html:             See 3.38.     (line 3619)
-trunk Scripts Bash Functions Locale:           See 3.39.     (line 3640)
-trunk Scripts Bash Functions Manual:           See 3.40.     (line 3720)
-trunk Scripts Bash Functions Path:             See 3.41.     (line 3741)
-trunk Scripts Bash Functions Render:           See 3.42.     (line 4084)
-trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4782)
-trunk Scripts Bash Functions Shell:            See 3.44.     (line 4960)
-trunk Scripts Bash Functions Svg:              See 3.45.     (line 5132)
-trunk Scripts Bash Functions Verify:           See 3.46.     (line 5320)
-trunk Scripts Bash Locale:                     See 3.47.     (line 5550)
-trunk Scripts Perl:                            See 3.48.     (line 5579)
-trunk Scripts Python:                          See 3.49.     (line 5596)
-trunk Translations:                            See 3.50.     (line 5617)
-trunk Translations Identity:                   See 3.51.     (line 6219)
-trunk Translations Identity Brands:            See 3.52.     (line 6240)
-trunk Translations Identity Brands Tpl:        See 3.53.     (line 6335)
-trunk Translations Identity Fonts:             See 3.54.     (line 6350)
-trunk Translations Identity Models:            See 3.55.     (line 6413)
-trunk Translations Identity Release:           See 3.56.     (line 6428)
-trunk Translations Identity Themes:            See 3.57.     (line 6443)
-trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6458)
+                                                             (line 1971)
+trunk Identity Widgets:                        See 3.33.     (line 2269)
+trunk Manuals:                                 See 3.34.     (line 2286)
+trunk Scripts:                                 See 3.35.     (line 2307)
+trunk Scripts Bash:                            See 3.36.     (line 2331)
+trunk Scripts Bash Functions:                  See 3.37.     (line 2480)
+trunk Scripts Bash Functions Html:             See 3.38.     (line 3589)
+trunk Scripts Bash Functions Locale:           See 3.39.     (line 3610)
+trunk Scripts Bash Functions Manual:           See 3.40.     (line 3690)
+trunk Scripts Bash Functions Path:             See 3.41.     (line 3711)
+trunk Scripts Bash Functions Render:           See 3.42.     (line 4034)
+trunk Scripts Bash Functions Render Config:    See 3.43.     (line 4732)
+trunk Scripts Bash Functions Shell:            See 3.44.     (line 4910)
+trunk Scripts Bash Functions Svg:              See 3.45.     (line 5082)
+trunk Scripts Bash Functions Verify:           See 3.46.     (line 5270)
+trunk Scripts Bash Locale:                     See 3.47.     (line 5500)
+trunk Scripts Perl:                            See 3.48.     (line 5529)
+trunk Scripts Python:                          See 3.49.     (line 5546)
+trunk Translations:                            See 3.50.     (line 5567)
+trunk Translations Identity:                   See 3.51.     (line 6169)
+trunk Translations Identity Brands:            See 3.52.     (line 6190)
+trunk Translations Identity Brands Tpl:        See 3.53.     (line 6285)
+trunk Translations Identity Fonts:             See 3.54.     (line 6300)
+trunk Translations Identity Models:            See 3.55.     (line 6363)
+trunk Translations Identity Release:           See 3.56.     (line 6378)
+trunk Translations Identity Themes:            See 3.57.     (line 6393)
+trunk Translations Identity Themes Backgrounds:See 3.58.     (line 6408)
 trunk Translations Identity Themes Distro Anaconda Progress:See 3.59.
-                                                             (line 6479)
-trunk Translations Identity Widgets:           See 3.60.     (line 6572)
-Unused definitions:                            See 3.45.2.1. (line 5257)
+                                                             (line 6429)
+trunk Translations Identity Widgets:           See 3.60.     (line 6522)
+Unused definitions:                            See 3.45.2.1. (line 5207)
 List of Figures
 ***************
 

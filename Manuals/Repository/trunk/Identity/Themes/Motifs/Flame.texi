@@ -6,11 +6,6 @@ interested in reproducing the @emph{Flame} artistic motif, or in
 creating new artistic motifs for The CentOS Project corporate visual
 identity (@pxref{trunk Identity}).
 
-@float Figure, fig:Motifs:Flame
-@image{trunk/Identity/Themes/Motifs/Flame/2/Concept/motif,400pt,,,jpg}
-@caption{The Flame artistic motif.}
-@end float
-
 @subsection Description
 
 The @emph{Flame} artistic motif was built using the flame filter of
@@ -119,11 +114,6 @@ destination you plan to use the image for. For the sake of our
 construction example we used an image of 640x480 pixels and 300 pixels
 per inch (ppi).
 
-@float Figure, fig:Motifs:Flame:Construction:1
-@image{trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/1,400pt,,,jpg}
-@caption{The Flame artistic motif construction step 1.}
-@end float
-
 @subsubsection Step 2: Add base color and pattern information 
 
 Create a new layer named @samp{Base}, place it over @samp{Background}
@@ -149,11 +139,6 @@ paper pattern from @samp{Stripes} layer. Fill @samp{Stripes} layer
 with @samp{Stripes (48x48)} pattern and reduce the @samp{Stripes}
 layer opacity to 15%.
 
-@float Figure, fig:Motifs:Flame:Construction:2
-@image{trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/3,400pt,,,jpg}
-@caption{The Flame artistic motif construction step 2.}
-@end float
-
 @subsubsection Step 3: Add flame motif
 
 Create a new layer named @samp{Flame}. Set the foreground
@@ -178,11 +163,6 @@ may find that background images used in anaconda progress slides have
 opacity reduced differently, in order to reduce brightness in a way
 that texts could look clean and readable over it.
 
-@float Figure, fig:Motifs:Flame:Construction:3
-@image{trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/4,400pt,,,jpg}
-@caption{The Flame artistic motif construction step 3.}
-@end float
-
 @subsubsection Step 4: Add foreground color
 
 Create a new layer named @samp{Color}, place it on top of all visible
@@ -201,11 +181,6 @@ step we created a mask to protect the flame artistic motif from black
 color, so when we decrement or increment the opacity of layer, the
 flame artistic motif wouldn't be affected, just the environment
 suround it.
-
-@float Figure, fig:Motifs:Flame:Construction:4
-@image{trunk/Identity/Themes/Motifs/Flame/2/Screenshots/Construction/5,400pt,,,jpg}
-@caption{The Flame artistic motif construction step 4.}
-@end float
 
 When you set color information, remember that the same artistic motif
 needs to be indexed to 14 and 16 colors, in order to produce Grub and
