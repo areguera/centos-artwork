@@ -35,9 +35,9 @@ function locale_editMessages {
     # specified in the command line), the value entered is used
     # instead.
     if [[ $FLAG_FILTER == '.+' ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" "$(cli_getCurrentLocale).*\.po")
+        FILES=$(cli_getFilesList "${WORKDIR}" "${TEXTDOMAIN}\.po")
     else
-        FILES=$(cli_getFilesList "${WORKDIR}" "${FLAG_FILTER}.*\.po")
+        FILES=$(cli_getFilesList "${WORKDIR}" "${FLAG_FILTER}\.po")
     fi
 
     # Set action preamble.
