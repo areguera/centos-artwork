@@ -38,17 +38,6 @@ function cli_printActionPreamble {
     local ACTION="$2"
     local FORMAT="$3"
 
-    # Check list of files to process.  If we have an empty list of
-    # files, inform about that and stop the script execution.
-    # Otherwise, check all files in the list to be sure they are
-    # regular files.
-    if [[ "$FILES" == '' ]];then
-        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    else
-        cli_checkFiles "${FILES}" 'f'
-    fi
-
     # Verify that all function parameters are passed. If they are not,
     # there is nothing else to do here.
     if [[ $# -ne 3 ]];then
