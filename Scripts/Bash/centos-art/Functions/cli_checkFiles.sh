@@ -32,13 +32,9 @@
 
 function cli_checkFiles {
 
-    # Get absolute path to file/directory.
-    local FILE="$1"
-
-    # Get verification type.
+    local FILE=''
+    local FILES="$1"
     local TYPE="$2"
-
-    # Initialize message output.
     local MESSAGE=''
 
     # Check number of paramaters passed to cli_checkFiles function. At
@@ -48,73 +44,77 @@ function cli_checkFiles {
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
-    # Check value passed as file to cli_checkFiles function. The file
-    # value cannot be empty nor have extrange values.
-    cli_checkPathComponent "$FILE" '--default'
+    for FILE in $FILES;do
 
-    # Perform file verification using FILE and TYPE variables.
-    case $TYPE in
+        # Check value passed as file to cli_checkFiles function. The
+        # file value cannot be empty nor have extrange values.
+        cli_checkPathComponent "$FILE" '--default'
 
-        d | directory )
-            # File exists and is a directory
-            if [[ ! -d $FILE ]];then
-                MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
-            fi
-            ;;
+        # Perform file verification using FILE and TYPE variables.
+        case $TYPE in
 
-        f | regular-file )
-            # File exists and is a regular file.
-            if [[ ! -f $FILE ]];then
-                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`"
-            fi
-            ;;
-
-        h | symbolic-link )
-            # File exists and is a symbolic link.
-            if [[ ! -h $FILE ]];then
-                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`"
-            fi
-            ;;
-
-        x | execution )
-            # To exist, file should be executable.
-            if [[ ! -x $FILE ]];then
-                MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`"
-            fi
-            ;;
-
-        fh )
-            # To exist, file should be a regular file or a symbolic link.
-            if [[ ! -f $FILE ]];then
-                if [[ ! -h $FILE ]];then
-                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
-                fi
-            fi
-            ;;
-
-        fd )
-            # To exist, file should be a regular file or a directory.
-            if [[ ! -f $FILE ]];then
+            d | directory )
+                # File exists and is a directory
                 if [[ ! -d $FILE ]];then
+                    MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
+                fi
+                ;;
+
+            f | regular-file )
+                # File exists and is a regular file.
+                if [[ ! -f $FILE ]];then
+                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`"
+                fi
+                ;;
+
+            h | symbolic-link )
+                # File exists and is a symbolic link.
+                if [[ ! -h $FILE ]];then
+                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`"
+                fi
+                ;;
+
+            x | execution )
+                # To exist, file should be executable.
+                if [[ ! -x $FILE ]];then
+                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`"
+                fi
+                ;;
+
+            fh )
+                # To exist, file should be a regular file or a symbolic link.
+                if [[ ! -f $FILE ]];then
+                    if [[ ! -h $FILE ]];then
+                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
+                    fi
+                fi
+                ;;
+
+            fd )
+                # To exist, file should be a regular file or a directory.
+                if [[ ! -f $FILE ]];then
+                    if [[ ! -d $FILE ]];then
+                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
+                    fi
+                fi
+                ;;
+
+            isInWorkingCopy )
+                # To exist, file should be inside the working copy.
+                if [[ ! $FILE =~ "^/home/centos/artwork/.+$" ]];then
+                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist inside the working copy."`"
+                fi
+                ;;
+
+            * )
+                # File exists.
+                if [[ ! -a $FILE ]];then
                     MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
                 fi
-            fi
-            ;;
 
-        isInWorkingCopy )
-            # To exist, file should be inside the working copy.
-            if [[ ! $FILE =~ "^/home/centos/artwork/.+$" ]];then
-                MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist inside the working copy."`"
-            fi
-            ;;
+        esac
 
-        * )
-            # File exists.
-            if [[ ! -a $FILE ]];then
-                MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
-            fi
-
-    esac
+    done
 
     # If file verification fails in anyway, output message information
     # and end up script execution. Otherwise, continue with script
