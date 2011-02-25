@@ -99,7 +99,8 @@ function locale_getActions {
     # translation messages.
     local WORKDIR=$(echo $ACTIONVAL | sed -r \
             -e 's!trunk/(Identity|Manuals|Scripts)!trunk/Locales/\1!' \
-            -e "s!/${CLI_PROGRAM}!/$(cli_getCurrentLocale)!") 
+            -e "s!/(Bash)!/\1/$(cli_getCurrentLocale)!" \
+            -e "s!/${CLI_PROGRAM}!!") 
   
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
