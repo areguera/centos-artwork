@@ -26,8 +26,9 @@
 
 function manual_updateOutputFiles {
 
-    # Verify documentation manual base file structure.
-    cli_checkFiles ${MANUAL_BASEFILE}.texi 'f'
+    # Remove extension from manual's base file. This way it is
+    # possible to reuse the same filename on different types of files.
+    MANUAL_BASEFILE=$(echo ${MANUAL_BASEFILE} | sed -r 's!\.texi!!')
 
     # Ouput separator line.
     cli_printMessage '-' 'AsSeparatorLine'
