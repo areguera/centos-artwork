@@ -1,0 +1,62 @@
+@subsection Goals
+
+This section exists to organize fonts translation files.
+@subsection Description
+
+Translation files, inside @file{trunk/Translations/Fonts}, have the
+following structure:
+
+@verbatim
+s!font-family:Denmark!font-family:DejaVu LGC Sans!
+s!font-weight:normal!font-weight:bold!
+s!font-style:normal!font-style:italic!
+@end verbatim
+
+Inside @file{trunk/Translations/Fonts}, there is one translation file
+for each font preview image you want to produce. This way, we create
+one translation file for each font-family we use somewhere inside
+CentOS visual identity.
+
+@quotation 
+@strong{Important} Do not create translation files for
+font-families not used somewhere inside CentOS visual identity. The
+identity of font entry (@pxref{trunk Identity Fonts}) is used as
+reference when someone needs to know which font-families are allowed
+to use inside CentOS visual identity.
+@end quotation
+
+@subsubsection Translation Markers
+
+Inside @file{trunk/Translations/Identity/Fonts}, translation files
+combine the following translation markers:
+
+@table @samp
+@item font-family:Denmark
+Specify which font family to use when rendering font preview images.
+@item font-weight:normal
+Specify which font weight to use when rendering font preview images.
+@item font-style:normal
+Specify which font style to use when rendering font preview images.
+@end table
+
+@subsection Usage
+@cindex How to render fonts' translation files
+
+Inside @file{trunk/Translations/Fonts} you use your favorite text
+editor to create translation files.  Inside
+@file{trunk/Translations/Fonts} there is not translation template
+directory (@file{Tpl/}), nor translation rendering using
+@command{centos-art} script.  For example, to create the
+@file{dejavu_lgc_sans-boldoblique.sed} translation file using
+@command{vim} editor, type the following command:
+
+@verbatim
+vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.sed
+@end verbatim
+
+@subsection See also
+
+@menu
+* trunk Identity Fonts::
+@end menu
+
