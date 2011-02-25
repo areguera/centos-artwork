@@ -28,16 +28,14 @@ function locale_editMessages {
 
     local FILES=''
 
-    # Define list of files to process.  In order to make edition
-    # easier for translators, the current locale information is used
-    # to determine which portable object to edit.  If filter flag is
-    # set to something else but its default value (i.e., it was
-    # specified in the command line), the value entered is used
-    # instead.
-    if [[ $FLAG_FILTER == '.+' ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" "${TEXTDOMAIN}\.po")
+    # Define list of files to process. In this case the `--filter'
+    # option (FLAG_FILTER) does not affect find's result. Instead, the
+    # filter pattern is set explicitly based on the working directory
+    # where translation messages are sotred in.
+    if [[ ${WORKDIR} =~ 'trunk/Locales/Scripts' ]];then
+        FILES=$(cli_getFilesList "${WORKDIR}" ".*${TEXTDOMAIN}\.po")
     else
-        FILES=$(cli_getFilesList "${WORKDIR}" "${FLAG_FILTER}\.po")
+        FILES=$(cli_getFilesList "${WORKDIR}" ".*$(cli_getCurrentLocale)\.po")
     fi
 
     # Set action preamble.
