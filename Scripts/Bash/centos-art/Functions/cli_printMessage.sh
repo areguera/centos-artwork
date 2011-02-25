@@ -33,7 +33,7 @@ function cli_printMessage {
     # Reduce paths inside output messages. The main purpose for this
     # is to free horizontal space in output messages.
     MESSAGE=$(echo "$MESSAGE" \
-        | sed -r "s!^${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
+        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
 
     # Remove blank spaces from lines' begining.
     MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
@@ -103,7 +103,7 @@ function cli_printMessage {
             # This option receives the output of bash's caller
             # built-in as message value and produces the documentation
             # entry from it.
-            MESSAGE=$(cli_getRepoName "$(echo $MESSAGE | cut -d ' ' -f2-)" 'd')
+            MESSAGE=$(dirname "$(echo $MESSAGE | cut -d ' ' -f2-)")
             cli_printMessage '-' 'AsSeparatorLine'
             cli_printMessage "`gettext "To know more, run the following command"`:"
             cli_printMessage "centos-art manual --read='$MESSAGE'"
