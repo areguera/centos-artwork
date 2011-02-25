@@ -101,6 +101,10 @@ function manual_getActions {
     # specific documentation manual we are working with is stored in.
     MANUAL_DIR=$(echo $ENTRY | cut -d / -f-7)
 
+    # Define file name for documentation manual. This is the file used
+    # to initiate the structure of documentation manual.
+    MANUAL_NAME=$(cli_getRepoName ${MANUAL_DIR} 'f')
+
     # Define directory to store documentation entries.  At this point,
     # we need to take a desition about documentation design, in order
     # to answer the question: How do we assign chapters, sections and
@@ -122,8 +126,10 @@ function manual_getActions {
     # Define base name for documentation manual files. This is the
     # main file name used to build texinfo related files (.info, .pdf,
     # .xml, etc.).
-    MANUAL_BASEFILE=$(echo $ENTRY | cut -d / -f-7)
-    MANUAL_BASEFILE=${MANUAL_BASEFILE}/$(cli_getRepoName "${MANUAL_BASEFILE}" 'f')
+    MANUAL_BASEFILE=$(cli_getFilesList "${MANUAL_DIR}" ".+/${MANUAL_NAME}\.texi")
+
+    # Set action preable.
+    cli_printActionPreamble "$MANUAL_BASEFILE"
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
