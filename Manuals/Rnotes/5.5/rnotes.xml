@@ -9,7 +9,7 @@
 <!--  Titlepage, Contents, Copyright - --></para>
   <titlepage>
     <booktitle>CentOS 5.5 Release Notes</booktitle>
-    <booksubtitle>24 February 2011</booksubtitle>
+    <booksubtitle>25 February 2011</booksubtitle>
     <author>The CentOS Project</author>
     <para>Copyright &copyright; 2011 The CentOS Project.</para>
     <para>Permission is granted to copy, distribute and/or modify this document under the terms of the a Creative Commons Attribution–Share Alike 3.0 Unported license (&ldquo;CC-BY-SA&rdquo;). An explanation of CC-BY-SA is available at <uref><urefurl>http://creativecommons.org/licenses/by-sa/3.0/</urefurl></uref>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.</para>
@@ -25,18 +25,110 @@
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the a Creative Commons Attribution–Share Alike 3.0 Unported license (&ldquo;CC-BY-SA&rdquo;). An explanation of CC-BY-SA is available at <uref><urefurl>http://creativecommons.org/licenses/by-sa/3.0/</urefurl></uref>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.</para>
       <menu>
         <menuentry>
+          <menunode>Overview</menunode>
+          <menutitle>Overview</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Verifications</menunode>
+          <menutitle>Verifications</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Packages</menunode>
+          <menutitle>Packages</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Index</menunode>
           <menutitle>Index</menutitle>
           <menucomment></menucomment>
         </menuentry>
       </menu>
 <!--  The Body of the Document - -->
-<!--  The End of the Document - -->
     </unnumbered>
   </node>
   <node>
-    <nodename>Index</nodename>
+    <nodename>Overview</nodename>
+    <nodenext>Verifications</nodenext>
     <nodeprev>Top</nodeprev>
+    <nodeup>Top</nodeup>
+    <chapter>
+      <title>Overview</title>
+      <para><indexterm index="cp">Overview</indexterm></para>
+      <menu>
+        <menuentry>
+          <menunode>A</menunode>
+          <menutitle>A</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+      </menu>
+    </chapter>
+  </node>
+  <node>
+    <nodename>A</nodename>
+    <nodeup>Overview</nodeup>
+    <section>
+      <title>A</title>
+      <para><indexterm index="cp">A</indexterm> This is a section.</para>
+    </section>
+  </node>
+  <node>
+    <nodename>Verifications</nodename>
+    <nodenext>Packages</nodenext>
+    <nodeprev>Overview</nodeprev>
+    <nodeup>Top</nodeup>
+    <chapter>
+      <title>Verifications</title>
+      <para><indexterm index="cp">Verifications</indexterm></para>
+      <menu>
+        <menuentry>
+          <menunode>Md5sum</menunode>
+          <menutitle>Md5sum</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Sha1sum</menunode>
+          <menutitle>Sha1sum</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+      </menu>
+    </chapter>
+  </node>
+  <node>
+    <nodename>Md5sum</nodename>
+    <nodenext>Sha1sum</nodenext>
+    <nodeup>Verifications</nodeup>
+    <section>
+      <title>Md5sum Iso Verification</title>
+      <para><indexterm index="cp">Md5sum iso verification</indexterm> This is a section.</para>
+    </section>
+  </node>
+  <node>
+    <nodename>Sha1sum</nodename>
+    <nodeprev>Md5sum</nodeprev>
+    <nodeup>Verifications</nodeup>
+    <section>
+      <title>Sha1sum Iso Verification</title>
+      <para><indexterm index="cp">Sha1sum iso verification</indexterm> This is another section.</para>
+    </section>
+  </node>
+  <node>
+    <nodename>Packages</nodename>
+    <nodenext>Index</nodenext>
+    <nodeprev>Verifications</nodeprev>
+    <nodeup>Top</nodeup>
+    <chapter>
+      <title>Packages</title>
+      <para><indexterm index="cp">Packages</indexterm></para>
+      <menu>
+      </menu>
+<!--  The End of the Document - -->
+    </chapter>
+  </node>
+  <node>
+    <nodename>Index</nodename>
+    <nodeprev>Packages</nodeprev>
     <nodeup>Top</nodeup>
     <unnumbered>
       <title>Index</title>
