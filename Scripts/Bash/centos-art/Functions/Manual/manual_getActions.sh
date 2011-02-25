@@ -126,7 +126,7 @@ function manual_getActions {
     # Define base name for documentation manual files. This is the
     # main file name used to build texinfo related files (.info, .pdf,
     # .xml, etc.).
-    MANUAL_BASEFILE=$(cli_getFilesList "${MANUAL_DIR}" ".+/${MANUAL_NAME}\.texi")
+    MANUAL_BASEFILE=$(cli_getFilesList "${MANUAL_DIR}" ".*${MANUAL_NAME}\.texi")
 
     # Set action preable.
     cli_printActionPreamble "$MANUAL_BASEFILE"
