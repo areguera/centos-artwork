@@ -121,13 +121,16 @@ function cli_printMessage {
             # Define negative answer.
             local N="`gettext "no"`"
 
-            if [[ $FLAG_ANSWER == 'false' ]];then
+            # Define default answer.
+            local ANSWER=${FLAG_ANSWER}
+
+            if [[ $ANSWER == 'false' ]];then
 
                 # Print the question.
                 cli_printMessage "$MESSAGE [${Y}/${N}]: " 'AsNoTrailingNewLine'
 
-                # Wait for user's answer to be entered.
-                read FLAG_ANSWER
+                # Redefine default answer based on user's input.
+                read ANSWER
 
             fi
 
@@ -135,7 +138,7 @@ function cli_printMessage {
             # script flow to continue. Otherwise, if something
             # different from possitive answer is passed, the
             # script terminates its execution immediatly.
-            if [[ ! ${FLAG_ANSWER} =~ "^${Y}" ]];then
+            if [[ ! ${ANSWER} =~ "^${Y}" ]];then
                 exit
             fi
             ;;
