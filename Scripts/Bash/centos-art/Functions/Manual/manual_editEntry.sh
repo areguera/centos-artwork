@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_editEntry.sh -- This function edits documentation entry based
-# on entry pattern.
+# manual_editEntry.sh -- This function implements the edition flow of
+# documentation entries inside the working copy.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,19 +26,71 @@
 
 function manual_editEntry {
 
-    # Check chapter existence. In order to create/edit a section the
-    # chapter of that section needs to exist first. If the chapter
-    # hasn't been created, where are you going to store the section
-    # files?  Put the chapter's checker here.
-    manual_checkChapter
+    # Verify definition of manual chapters. Definition of manual
+    # chapters sets how many chapters does the manual has and the
+    # directory and file structure required to make them active part
+    # of a texinfo manual.
+    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
 
-    # Check section existence.
-    manual_checkEntry
+        # Print confirmation question.
+        cli_printMessage "`gettext "The following documentation chapter will be created:"`"
+        cli_printMessage "$MANUAL_DIR_CHAPTER" "AsResponseLine"
+        cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
+
+        # Update manual chapter related files.
+        manual_updateChaptersFiles
+
+        # Update manual chapter related menu.
+        manual_updateChaptersMenu
+
+        # Update manual chapter related nodes (based on chapter
+        # related menu).
+        manual_updateChaptersNodes
+
+    fi
+
+    # Verify definition of chapter sections. Definition of chapter
+    # sections sets how many sections does each chapter, inside the
+    # manual, has.
+    if [[ ! -f $ENTRY ]];then
+
+        # Print confirmation question. 
+        cli_printMessage "`gettext "The following documentation section will be created:"`"
+        cli_printMessage "$ENTRY" "AsResponseLine"
+        cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
+
+        # Print action message.
+        cli_printMessage "$ENTRY" 'AsCreatingLine'
+
+        # Update chapter section related menu.
+        manual_updateMenu
+
+        # Update chapter section related nodes (based on chapter
+        # section related menu).
+        manual_updateNodes
+
+        # Update old missing cross references. If for some reason a
+        # documentation entry is removed by mistake, and that mistake
+        # is fixing by adding the removed documentation entry back
+        # into the repository, rebuild the missing cross reference
+        # message to use the correct link to the documentation
+        # section.
+        manual_restoreCrossReferences
+
+    else
+
+        # Print action message.
+        cli_printMessage "$ENTRY" 'AsUpdatingLine'
+
+    fi
 
     # Use default text editor to edit the documentation entry.
     eval $EDITOR $ENTRY
 
-    # Re-build output files to propagate recent changes.
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Rebuild output files to propagate recent changes.
     manual_updateOutputFiles
 
 }
