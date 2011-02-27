@@ -46,7 +46,7 @@ function cli_printActionPreamble {
         cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     else
-        cli_checkFiles "${FILES}" 'f'
+        cli_checkFiles "${FILES}"
     fi
 
     # Verify that all function parameters are passed. If they are not,
