@@ -93,6 +93,11 @@
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>trunk Identity Budokan</menunode>
+          <menutitle>trunk Identity Budokan</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>trunk Identity Fonts</menunode>
           <menutitle>trunk Identity Fonts</menutitle>
           <menucomment></menucomment>
@@ -481,7 +486,7 @@
   </node>
   <node>
     <nodename>trunk Identity Brands</nodename>
-    <nodenext>trunk Identity Fonts</nodenext>
+    <nodenext>trunk Identity Budokan</nodenext>
     <nodeprev>trunk Identity</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
@@ -513,9 +518,54 @@
     </section>
   </node>
   <node>
+    <nodename>trunk Identity Budokan</nodename>
+    <nodenext>trunk Identity Fonts</nodenext>
+    <nodeprev>trunk Identity Brands</nodeprev>
+    <nodeup>trunk</nodeup>
+    <section>
+      <title>trunk/Identity/Budokan</title>
+      <para><indexterm index="cp">trunk Identity Budokan</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>Test page.</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>trunk Identity Fonts</nodename>
     <nodenext>trunk Identity Icons</nodenext>
-    <nodeprev>trunk Identity Brands</nodeprev>
+    <nodeprev>trunk Identity Budokan</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
       <title>trunk/Identity/Fonts</title>
