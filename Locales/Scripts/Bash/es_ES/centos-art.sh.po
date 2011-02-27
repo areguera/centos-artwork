@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-24 15:52-0500\n"
+"POT-Creation-Date: 2011-02-26 20:58-0500\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -20,8 +20,8 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/About/about_getActions.sh:73
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Html/html_getActions.sh:76
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Identity/identity_getActions.sh:140
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Locale/locale_getActions.sh:112
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_getActions.sh:136
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Locale/locale_getActions.sh:113
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_getActions.sh:149
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Path/path_getActions.sh:109
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Shell/shell_getActions.sh:78
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Svg/svg_getActions.sh:90
@@ -105,16 +105,20 @@ msgstr "¿Desea continuar?"
 msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteCrossReferences.sh:57
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteCrossReferences.sh:58
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_restoreCrossReferences.sh:49
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_restoreCrossReferences.sh:50
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteCrossReferences.sh:59
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteCrossReferences.sh:60
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_restoreCrossReferences.sh:51
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_restoreCrossReferences.sh:52
 msgid "Removed"
 msgstr "Eliminando"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteEntry.sh:91
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteEntry.sh:63
 msgid "There are changes that need to be committed first."
 msgstr "Existen cambios que necesitan ser enviados primero."
+
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_deleteEntry.sh:98
+msgid "Updating menus, nodes and cross references in the manual"
+msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Manual/manual_updateChaptersNodes.sh:32
 msgid "Index"
@@ -252,7 +256,7 @@ msgstr[1] "Los enlaces siguientes serán instalados"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Verify/verify_doLinkReport.sh:46
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/Verify/verify_doPackageReport.sh:48
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:88
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:91
 msgid "Do you want to continue"
 msgstr "¿Desea continuar?"
 
@@ -270,38 +274,38 @@ msgstr[1] "Los paquetes siguientes necesitan ser instaldos"
 msgid "requires third party repository!"
 msgstr "¡necesita repositorio the terceros!"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:47
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:43
 msgid "You need to provide one argument at least."
 msgstr "Necesita suministrar al menos un argumento."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:61
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:59
 #, sh-format
 msgid "The directory \"$FILE\" doesn't exist."
 msgstr "El directorio \"$FILE\" no existe."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:68
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:66
 #, sh-format
 msgid "The file \"$FILE\" is not a regular file."
 msgstr "El fichero \"$FILE\" no es un fichero regular."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:75
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:73
 #, sh-format
 msgid "The file \"$FILE\" is not a symbolic link."
 msgstr "El fichero \"$FILE\" no es un enlace simbólico."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:82
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:80
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr "El fichero \"$FILE\" no es ejecutable."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:90
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:99
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:114
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:88
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:97
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:112
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist."
 msgstr "El camino \"$FILE\" no existe."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:107
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_checkFiles.sh:105
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist inside the working copy."
 msgstr "El camino \"$FILE\" no existe dentro de la copia de trabajo."
@@ -2145,30 +2149,30 @@ msgstr "El primer argumento es obligatorio."
 msgid "First argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:45
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:46
 msgid "There is no file to process."
 msgstr "No hay fichero alguno que procesar."
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:62
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:65
 msgid "The following entry will be created"
 msgid_plural "The following entries will be created"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:67
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:70
 msgid "The following entry will be deleted"
 msgid_plural "The following entries will be deleted"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:72
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:75
 msgid "Translatable strings will be retrived from the following entry"
 msgid_plural "Translatable strings will be retrived from the following entries"
 msgstr[0] "Las cadenas traducibles serán recuperadas de la entrada siguiente"
 msgstr[1] ""
 "Las cadenas traducibles serán recuperadas de las entradas siguientes"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:77
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printActionPreamble.sh:80
 msgid "The following file will be edited"
 msgid_plural "The following files will be edited"
 msgstr[0] "El fichero siguiente será editado"
@@ -2211,18 +2215,23 @@ msgid "Configuration"
 msgstr "Configuración"
 
 #: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:86
+#, fuzzy
+msgid "Reading"
+msgstr "Eliminando"
+
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:90
 msgid "Palette"
 msgstr "Paleta"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:108
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:112
 msgid "To know more, run the following command"
 msgstr "Para conocer más, ejecute el command siguiente"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:119
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:123
 msgid "yes"
 msgstr "sí"
 
-#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:122
+#: /home/centos/artwork/trunk/Scripts/Bash/centos-art/Functions/cli_printMessage.sh:126
 msgid "no"
 msgstr "no"
 
@@ -3036,9 +3045,6 @@ msgstr "Sintáxis: ./update-filenames <CAMINO> <FILTRO> <PATRÓN> <VALOR>"
 
 #~ msgid "The documentation entry cannot be removed."
 #~ msgstr "La entrada de documentación no puede ser creada."
-
-#~ msgid "Removing"
-#~ msgstr "Eliminando"
 
 #~ msgid "Do you want to create it now?"
 #~ msgstr "¿Desea crearlo ahora?"
