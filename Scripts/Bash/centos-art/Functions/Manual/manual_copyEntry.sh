@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # manual_copyEntry.sh -- This function copies documentation entries and
-# update documentation structure to reflect changes.
+# updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,36 +26,45 @@
 
 function manual_copyEntry {
 
-    # Verify target directory.
-    cli_checkRepoDirTarget
+    # Print action message.
+    cli_printMessage "${FLAG_TO}" 'AsCreatingLine'
 
-    # Transform FLAG_TO path into a documentation entry.
-    FLAG_TO=$(manual_getEntry "${FLAG_TO}")
+    # Copy main documentation entry.
+    if [[ ! -f $FLAG_TO ]];then
+        svn cp "${ENTRY}" "${FLAG_TO}" --quiet
+    fi
 
-    # Print action preamble.
-    cli_printActionPreamble "${FLAG_TO}" 'doCreate' 'AsResponseLine'
+    # Define target location of directory holding dependent
+    # documentation entries.
+    local ENTRY_DIR_DST=$(echo ${FLAG_TO} | sed -r 's!\.texi$!!')
 
     # Print action message.
-    cli_printMessage "$FLAG_TO" 'AsCreatingLine'
+    cli_printMessage "${ENTRY_DIR_DST}" 'AsCreatingLine'
 
-    # Copy documentation entry.
-    svn cp "${ENTRY}" "${FLAG_TO}" --quiet
+    # Copy dependent documentation entries.
+    if [[ ! -d $ENTRY_DIR_DST ]];then
+        svn cp "${ENTRY_DIR}/${ENTRY_FILE}" "${ENTRY_DIR_DST}" --quiet
+    fi
+                
+    # Define list of files to process.
+    ENTRIES=$(cli_getFilesList "$(dirname ${ENTRY_DIR_DST})" "$(basename ${ENTRY_DIR_DST}).*\.texi")
 
-    # Redefine documentation ENTRY variable in order to update
-    # documentation structure based on the new documentation entry
-    # specified by FLAG_TO path. At this point the new documentation
-    # entry should be created and available inside the working copy,
-    # so we are safe to update documentation structure using the new
-    # documentation entry as regular documentation entry.
-    ENTRY="${FLAG_TO}"
+    # Set action preamble.
+    cli_printActionPreamble "${ENTRIES}"
 
-    # Update Texinfo menu information.
-    manual_updateMenu
+    # Redefine ENTRY variable in order to update documentation
+    # structure, taking recently created entries as reference.
+    for ENTRY in ${ENTRIES};do
 
-    # Update Texinfo nodes information.
-    manual_updateNodes
+        # Update menu and node definitions from manual sections to
+        # reflect the changes.
+        manual_updateMenu
+        manual_updateNodes
 
-    # Update Texinfo cross-reference information.
-    manual_restoreCrossReferences
+        # Update cross reference definitions from manual to reflect
+        # the changes.
+        manual_restoreCrossReferences
+
+    done
 
 }
