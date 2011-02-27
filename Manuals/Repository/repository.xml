@@ -538,6 +538,9 @@
             <para>Test page.</para>
           </item>
         </itemize>
+        <para>This is a cross reference link using two lines See <xref><xrefnodename>trunk Identity Budokan Ozzy</xrefnodename></xref>, which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
+        <para>This is a cross reference link using two lines (see <xref><xrefnodename>trunk Identity Budokan Ozzy</xrefnodename></xref>) which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
+        <para>This is a cross reference link using two lines <xref><xrefnodename>trunk Identity Budokan Ozzy</xrefnodename></xref>, which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
       </subsection>
 
       <subsection>
@@ -563,6 +566,11 @@
       <subsection>
         <title>See also</title>
         <menu>
+          <menuentry>
+            <menunode>trunk Identity Budokan Ozzy</menunode>
+            <menutitle>trunk Identity Budokan Ozzy</menutitle>
+            <menucomment>Test link on menu format.</menucomment>
+          </menuentry>
         </menu>
       </subsection>
     </section>
