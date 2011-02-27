@@ -98,11 +98,6 @@
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Identity Budokan Ozzy</menunode>
-          <menutitle>trunk Identity Budokan Ozzy</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>trunk Identity Fonts</menunode>
           <menutitle>trunk Identity Fonts</menutitle>
           <menucomment></menucomment>
@@ -524,7 +519,7 @@
   </node>
   <node>
     <nodename>trunk Identity Budokan</nodename>
-    <nodenext>trunk Identity Budokan Ozzy</nodenext>
+    <nodenext>trunk Identity Fonts</nodenext>
     <nodeprev>trunk Identity Brands</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
@@ -538,9 +533,9 @@
             <para>Test page.</para>
           </item>
         </itemize>
-        <para>This is a cross reference link using two lines See <xref><xrefnodename>trunk Identity Budokan Ozzy</xrefnodename></xref>, which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
-        <para>This is a cross reference link using two lines (see <xref><xrefnodename>trunk Identity Budokan Ozzy</xrefnodename></xref>) which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
-        <para>This is a cross reference link using two lines <xref><xrefnodename>trunk Identity Budokan Ozzy</xrefnodename></xref>, which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
+        <para>This is a cross reference link using two lines &mdash; <strong>Removed</strong>(xref:trunk Identity Budokan Ozzy) &mdash;, which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
+        <para>This is a cross reference link using two lines (&mdash; <strong>Removed</strong>(pxref:trunk Identity Budokan Ozzy) &mdash;) which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
+        <para>This is a cross reference link using two lines &mdash; <strong>Removed</strong>(ref:trunk Identity Budokan Ozzy) &mdash;, which help me to test manual_updateCrossReferences, manual_deleteCrossReferences, manual_updateMenu and manual_updateNodes functionalities.</para>
       </subsection>
 
       <subsection>
@@ -566,56 +561,7 @@
       <subsection>
         <title>See also</title>
         <menu>
-          <menuentry>
-            <menunode>trunk Identity Budokan Ozzy</menunode>
-            <menutitle>trunk Identity Budokan Ozzy</menutitle>
-            <menucomment>Test link on menu format.</menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>trunk Identity Budokan Ozzy</nodename>
-    <nodenext>trunk Identity Fonts</nodenext>
-    <nodeprev>trunk Identity Budokan</nodeprev>
-    <nodeup>trunk</nodeup>
-    <section>
-      <title>trunk/Identity/Budokan/Ozzy</title>
-      <para><indexterm index="cp">trunk Identity Budokan Ozzy</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>Another test page.</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
+<!--  Removed(* trunk Identity Budokan Ozzy:: Test link on menu format.) - -->
         </menu>
       </subsection>
     </section>
@@ -623,7 +569,7 @@
   <node>
     <nodename>trunk Identity Fonts</nodename>
     <nodenext>trunk Identity Icons</nodenext>
-    <nodeprev>trunk Identity Budokan Ozzy</nodeprev>
+    <nodeprev>trunk Identity Budokan</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
       <title>trunk/Identity/Fonts</title>
