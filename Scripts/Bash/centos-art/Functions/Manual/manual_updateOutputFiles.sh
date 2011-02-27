@@ -30,9 +30,6 @@ function manual_updateOutputFiles {
     # possible to reuse the same filename on different types of files.
     MANUAL_BASEFILE=$(echo ${MANUAL_BASEFILE} | sed -r 's!\.texi!!')
 
-    # Ouput separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
     # paths incorrectly.
@@ -46,8 +43,5 @@ function manual_updateOutputFiles {
 
     # Remove the working copy root directory from directory stack.
     popd > /dev/null
-
-    # Output separator.
-    cli_printMessage "-" 'AsSeparatorLine'
 
 }
