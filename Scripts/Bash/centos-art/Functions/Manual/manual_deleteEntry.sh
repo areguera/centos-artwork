@@ -27,113 +27,104 @@
 function manual_deleteEntry {
 
     local ENTRIES=''
-    local ENTRYSTATUS=''
-    local LOCATION=''
 
     # Check if the entry has been already removed.
     cli_checkFiles $ENTRY 'f'
 
-    # Define root location to look for entries.
-    LOCATION=$(echo $ENTRY | sed -r 's!\.texi$!!')
+    # Initiate list of entries to remove using the entry specified in
+    # the command line.
+    ENTRIES=${ENTRY}
 
-    # Redefine location to match the chapter's root directory. This
-    # applies when you try to remove the whole chapter from the
-    # working copy (e.g., centos-art manual --delete=/home/centos/artwork/trunk/).
-    if [[ $ENTRY =~ "chapter-intro\.texi$" ]];then
-        LOCATION=$(dirname "$ENTRY")
+    # Verify existence of dependent entries.  Dependent entries are
+    # stored inside a directory with the same name of the entry you
+    # are trying to remove.
+    if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]];then
+
+        # If such directory doesn't exists, the related entry doesn't
+        # have dependent entries, but if it exists is because there is
+        # at least one dependent entry inside it, in this case add
+        # dependent all dependent entries. This is required in order
+        # for menus, nodes and cross-references to be updated correctly.
+        ENTRIES="${ENTRIES} $(cli_getFilesList "${ENTRY_DIR}/${ENTRY_FILE}" ".*\.texi")"
+
+        # Also, add the directory that stores dependent entries. This
+        # is required since directories by themselves are not
+        # considered entries by themselves and so they aren't put on
+        # the list of entries. We don't want to have dependent
+        # directories still there, when there is no parent entry for
+        # them.        
+        ENTRIES="${ENTRIES} ${ENTRY_DIR}/${ENTRY_FILE}"
+
     fi
 
-    # Define list of dependent entries. Dependent entries are stored
-    # inside a directory with the same name of the entry you are
-    # trying to remove. If such directory location doesn't exists, the
-    # related entry doesn't have dependent entries either.
-    if [[ -d $LOCATION ]];then
-        ENTRIES=$(cli_getFilesList $LOCATION ".*\.texi")
-    fi
+    # Prepare list of entries for action preamble.
+    ENTRIES=$(echo $ENTRIES | tr ' ' "\n" | sort | uniq)
     
-    # Add entry being currently processed to list of files to precess.
-    ENTRIES="${ENTRIES} ${ENTRY}"
-
-    # Remove duplicated lines from entries list, be sure there is just
-    # one path per line and they are ordered in reverse. At this
-    # point, it is hard to find duplicated lines since the list of
-    # entries is built from files and it is not possible to have two
-    # files in the very same directory using the same name exactly, so
-    # this could be considered a bit paranoid. ~:-)
-    ENTRIES=$(echo "$ENTRIES" | tr ' ' "\n" | sort -r | uniq)
-
     # Print action preamble.
     cli_printActionPreamble "$ENTRIES" 'doDelete' 'AsResponseLine'
 
-    # Process list of entries.
+    # Process list of entries in order to remove files.
     for ENTRY in $ENTRIES;do
 
-        # Define the versioning status of entry.
-        if [[ -d $(dirname $ENTRY)/.svn ]];then
-            ENTRYSTATUS=$(cli_getRepoStatus "$ENTRY")
-        else
-            # At this point we don't know what the entry versioning
-            # status is, so consider the entry an unversion file.
-            ENTRYSTATUS='?'
-        fi
+        # Print action message.
+        cli_printMessage "$ENTRY" "AsDeletingLine"
 
-        # Verify entry inside the working copy. 
-        if [[ "$ENTRYSTATUS" =~ '^(\?)?$' ]];then
+        # Remove documentation entry using regular subversion
+        # commands.  Do not use regular rm command here, use
+        # subversion del command instead. Otherwise, even the file is
+        # removed, it will be brought back when the final
+        # cli_commitRepoChange be executed. Remember there is a
+        # subversion update there, no matter what you remove using
+        # regular commands, when you do update the directory structure
+        # on the working copy the removed files (not removed in the
+        # repository, nor marked to be removed) are brought down to
+        # the working copy again.
+        svn del "$ENTRY" --quiet
 
-            # Print action message.
-            cli_printMessage "$ENTRY" "AsDeletingLine"
+    done
 
-        else
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
-            # Do not remove a versioned documentation entry with
-            # changes inside. Print a message about it and stop script
-            # execution instead.
-            cli_printMessage "`gettext "There are changes that need to be committed first."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    # Print action message.
+    cli_printMessage "Updating definition of menus, nodes and cross-references." 'AsResponseLine'
 
-        fi
+    # Process list of entries in order to update menus, nodes and
+    # cross references. Since we are verifying entry status before
+    # remove the we cannot update the information in the same loop we
+    # remove files. This would modify some file before be removed and
+    # that would stop script execution. Similary, if we do update
+    # menus, nodes and cross references before removing files it would
+    # be needed to remove farther status verification in order for the
+    # script to continue its execution. Thereby, I can't see a
+    # different way but removing files first using status verification
+    # and later go through entities list again to update menus, nodes
+    # and cross references from remaining files.
+    for ENTRY in $ENTRIES;do
 
-        # Remove documentation entry. At this point, documentation
-        # entry can be under version control or not versioned at all.
-        # Here we need to decide how to remove documentation entries
-        # based on whether they are under version control or not.
-        if [[ "$ENTRYSTATUS" == ' ' ]];then
-
-            # Documentation entry is under version control and there
-            # is no change to be committed up to central repository.
-            # We are safe to schedule it for deletion.
-            svn del "$ENTRY" --quiet
-
-        elif [[ "$ENTRYSTATUS" == '?' ]];then
-
-            # Documentation entry is not under version control, so we
-            # don't care about changes inside it. If you say
-            # centos-art.sh script to remove an unversion
-            # documentation entry it will do so, using convenctional
-            # `rm' command.
-            rm -r "$ENTRY"
-
-        fi
-
-        # Remove entry on section's menu and nodes to reflect the
-        # fact that documentation entry has been removed.
+        # Update menu and node definitions from manual sections to
+        # reflect the changes.
         manual_updateMenu "remove-entry"
         manual_updateNodes
 
-        # Remove entry cross references from documentation manual.
+        # Update cross reference definitions from manual to reflect
+        # the changes.
         manual_deleteCrossReferences
 
     done
  
-    # Update chapter's menu and nodes in the master texinfo document.
-    # This is mainly applied when one of the chapters (e.g., trunk/,
-    # tags/, or branches/) is removed.
+    # Remove entry menus and nodes from chapter definition to reflect
+    # the fact it has been removed.  This is mainly applied when one
+    # of the chapters (e.g., trunk/, tags/, or branches/) is removed.
     if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
         manual_updateChaptersMenu 'remove-entry'
         manual_updateChaptersNodes
     fi
 
-    # Update documentation output-related files.
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Rebuild output files to propagate recent changes.
     manual_updateOutputFiles
 
 }
