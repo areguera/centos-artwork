@@ -80,7 +80,7 @@ function manual_getActions {
                 ;;
 
             --to )
-                FLAG_TO="$2"
+                FLAG_TO="$(manual_getEntry "$2")"
                 shift 2
                 ;;
 
@@ -96,6 +96,13 @@ function manual_getActions {
 
     # Define documentation entry.
     ENTRY=$(manual_getEntry)
+
+    # Define documentation entry directory. This is the directory
+    # where the entry file is stored.
+    ENTRY_DIR=$(dirname ${ENTRY} | sed -r 's!\.texi$!!')
+
+    # Define documentation entry file (without extension).
+    ENTRY_FILE=$(basename ${ENTRY} | sed -r 's!\.texi$!!')
 
     # Define directory for documentation manual. This is the place the
     # specific documentation manual we are working with is stored in.
@@ -123,13 +130,13 @@ function manual_getActions {
     # with.
     MANUAL_CHA_NAME=$(basename "$MANUAL_DIR_CHAPTER")
 
-    # Define base name for documentation manual files. This is the
-    # main file name used to build texinfo related files (.info, .pdf,
-    # .xml, etc.).
-    MANUAL_BASEFILE=$(cli_getFilesList "${MANUAL_DIR}" ".*${MANUAL_NAME}\.texi")
+    # Define base name for documentation manual files (without
+    # extension). This is the main file name used to build texinfo
+    # related files (.info, .pdf, .xml, etc.).
+    MANUAL_BASEFILE=$(cli_getFilesList "${MANUAL_DIR}" ".*${MANUAL_NAME}\.texi" | sed 's!\.texi$!!' )
 
     # Set action preable.
-    cli_printActionPreamble "$MANUAL_BASEFILE"
+    cli_printActionPreamble "${MANUAL_BASEFILE}.texi"
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
