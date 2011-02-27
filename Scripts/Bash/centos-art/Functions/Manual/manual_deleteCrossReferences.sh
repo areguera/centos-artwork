@@ -38,7 +38,9 @@ function manual_deleteCrossReferences {
     local NODE=$(echo "$ENTRY" \
         | cut -d / -f8- \
         | tr '/' ' ' \
-        | sed -r "s/(chapter-intro\.texi|\.texi)$//")
+        | sed -r \
+            -e "s/(chapter-intro\.texi|\.texi)$//" \
+            -e 's! !( |\\n)!g')
 
     # Define regular expression patterns for texinfo cross reference
     # commands.
@@ -57,19 +59,27 @@ function manual_deleteCrossReferences {
     REPLACE[0]='--- @strong{'`gettext "Removed"`'}(\1:\2) ---'
     REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
 
-    # Sanitate all missing cross references, related to entry, in
-    # section texinfo files. Missing cross references, related to
-    # entry, in chapter texinfo files are already handled by
-    # manual_updateMenu, and manual_updateNode functions. If we don't
-    # sanitate missing cross refereces before info file is created,
-    # errors are displayed since makeinfo don't produce info output
-    # with broken cross refereces.
+    # Define list of entries to process.
     local ENTRIES=$(cli_getFilesList "${MANUAL_DIR}" '.*\.texi')
-    if [[ $ENTRIES != '' ]];then
-        sed -r -i \
-            -e "s!${PATTERN[0]}!${REPLACE[0]}!Mg" \
-            -e "s!${PATTERN[1]}!${REPLACE[1]}!g" \
-            $ENTRIES
-    fi
+
+    # Set action preamble.
+    cli_printActionPreamble "$ENTRIES"
+
+    # Update node-related cross references. The node-related cross
+    # reference definition, long ones specially, could require more
+    # than one line to be set. By default, GNU sed does not matches 
+    # newline characters in the pattern space, so we need to make use
+    # of `label' feature and the `N' command in order to build a
+    # pattern space that includes the newline character in it. Here we
+    # use the `a' letter to name the label we use, followed by N
+    # command to expand the pattern space, the s command to make the
+    # pattern replacement using the `g' flag to make it global and
+    # finaly the command `b' to branch label named `a'.
+    sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${ENTRIES}
+
+    # Update menu-related cross references. Menu-related cross
+    # references hardly appear in more than one line, so there is no
+    # need to complicate the replacement command.
+    sed -r -i "s!${PATTERN[1]}!${REPLACE[1]}!" ${ENTRIES}
 
 }
