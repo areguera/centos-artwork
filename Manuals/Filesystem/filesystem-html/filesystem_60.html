@@ -9,7 +9,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on February, 27 2011 by texi2html 1.76 -->
+<!-- Created on February, 28 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -20,10 +20,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository - Filesystem: 3.57 trunk/Scripts/Bash/Functions/Verify</title>
+<title>CentOS Artwork Repository - Filesystem: 3.57 trunk/Scripts/Bash/Functions/Shell</title>
 
-<meta name="description" content="CentOS Artwork Repository - Filesystem: 3.57 trunk/Scripts/Bash/Functions/Verify">
-<meta name="keywords" content="CentOS Artwork Repository - Filesystem: 3.57 trunk/Scripts/Bash/Functions/Verify">
+<meta name="description" content="CentOS Artwork Repository - Filesystem: 3.57 trunk/Scripts/Bash/Functions/Shell">
+<meta name="keywords" content="CentOS Artwork Repository - Filesystem: 3.57 trunk/Scripts/Bash/Functions/Shell">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -52,304 +52,225 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="filesystem_59.html#SEC338" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC340" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="filesystem_59.html#SEC319" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC321" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="filesystem_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="filesystem_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="filesystem_64.html#SEC362" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="filesystem_66.html#SEC355" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="filesystem.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="filesystem_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="filesystem_64.html#SEC362" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="filesystem_66.html#SEC355" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="filesystem_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Scripts-Bash-Functions-Verify"></a>
-<a name="SEC339"></a>
-<h2 class="section"> 3.57 trunk/Scripts/Bash/Functions/Verify </h2>
+<a name="trunk-Scripts-Bash-Functions-Shell"></a>
+<a name="SEC320"></a>
+<h2 class="section"> 3.57 trunk/Scripts/Bash/Functions/Shell </h2>
 
 
-<a name="SEC340"></a>
+<a name="SEC321"></a>
 <h3 class="subsection"> 3.57.1 Goals </h3>
 
-<p>This section exists to organize files related to <tt>`centos-art.sh'</tt>
-script <samp>`verify'</samp> functionality.  The <samp>`verify'</samp>
-functionality of <tt>`centos-art.sh'</tt> script helps you to verify the
-workstation configuration you are planning to use as host for your
-working copy of CentOS Artwork Repository.
+<p>This section exists to organize files related to <code>shell</code>
+functionality of <tt>`centos-art.sh'</tt> script.
 </p>
 
-<a name="SEC341"></a>
+<a name="SEC322"></a>
 <h3 class="subsection"> 3.57.2 Description </h3>
 
-<p>The first time you download CentOS Artwork Repository you need to
-configure your workstation in order to use <tt>`centos-art.sh'</tt>
-script.  These preliminar configurations are based mainly on auxiliar
-RPM packages installation, symbolic links creations, and environment
-variables definitions.  The <samp>`verify'</samp> functionality of
-<tt>`centos-art.sh'</tt> script guides you through this preliminar
-configuration process.  
+<p>The <code>shell</code> functionality of <tt>`centos-art.sh'</tt> script helps
+you to maintain bash scripts inside repository. For example, suppose
+you've created many functionalities for <tt>`centos-art.sh'</tt> script,
+and you want to use a common copyright and license note for
+consistency in all your script files. If you have a bunch of files,
+doing this one by one wouldn't be a big deal. In contrast, if the
+amount of files grows, updating the copyright and license note for all
+of them would be a task rather tedious. The <code>shell</code> functionality
+exists to solve maintainance tasks just as the one previously
+mentioned.
 </p>
-<p>If this is the first time you run <tt>`centos-art.sh'</tt> script, the
-appropriate way to use its <samp>`verify'</samp> functionality is not using
-the <tt>`centos-art.sh'</tt> script directly, but the absolute path to
-<code>centos-art.sh</code> script instead (i.e.,
-<tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).  This is necessary
-because <tt>`centos-art'</tt> symbolic link, under <tt>`~/bin/'</tt>
-directory, has not been created yet.
+<p>When you use <code>shell</code> functionality to update copyright inside
+script files, it is required that your script files contain (at least)
+the following top commentary structure:
 </p>
-
-<a name="SEC342"></a>
-<h4 class="subsubsection"> 3.57.2.1 Packages </h4>
-
-<p>Installation of auxiliar RPM packages provides the software required
-to manipulate files inside the repository (e.g., image files,
-documentation files, translation files, script files, etc.). Most of
-RPM packages <code>centos-art.sh</code> script uses are shipped with
-CentOS distribution, and can be installed from CentOS base repository.
-The only exception is <samp>`inkscape'</samp>, the package we use to
-manipulate SVG files.  The <samp>`inkscape'</samp> package is not inside
-CentOS distribution so it needs to be installed from third party
-repositories.
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a1"></a>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| # 
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|     
+15| }
+</pre>
+</div><p><strong>Figure 3.4: The functions script base comment structure
+</strong>
 </p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Configuration of third party repositories inside CentOS
-distribution is described in CentOS wiki, specifically in the
-following URL:
-<a class="www" href="http://wiki.centos.org/AdditionalResources/Repositories">http://wiki.centos.org/AdditionalResources/Repositories</a>
+<p>Relevant lines in the above structure are lines from 5 to 9.
+Everything else in the file is left immutable.
+</p>
+<p>When you are updating copyright through <code>shell</code>
+functionality,  the <tt>`centos-art.sh'</tt> script replaces everything
+in-between line 5 --the first one matching <samp>`^# Copyright .+$'</samp>
+string-- and line 9--the first long dash separator matching <samp>`^#
+-+$'</samp>-- with the content of copyright template instance.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Be sure to add the long dash separator that matches
+<samp>`^# -+$'</samp> regular expression <em>before</em> the function
+definition. Otherwise, if the <samp>`Copyright'</samp> line is present but no
+long dash separator exists, <tt>`centos-art.sh'</tt> will remove anything
+in-between the <samp>`Copyright'</samp> line and the end of file. This way you
+may lost your function definitions entirely.
 </p></blockquote>
 
-<p>Before installing packages, the <tt>`centos-art.sh'</tt> script uses
-<code>sudo</code> to request root privileges to execute <code>yum</code>
-installation functionality.  If your user isn't defined as a
-privileged user--at least to run <code>yum</code> commands-- inside
-<tt>`/etc/sudoers'</tt> configuration file, you will not be able to
-perform package installation tasks as set in <tt>`centos-art.sh'</tt>
-script <samp>`verify'</samp> functionality. 
+<p>The copyright template instance is created from one copyright template
+stored in the <tt>`Config/tpl_forCopyright.sed'</tt> file.  The template
+instance is created once, and later removed when no longer needed. At
+this moment, when template instance is created, the
+<tt>`centos-art.sh'</tt> script takes advantage of automation in order to
+set copyright full name and date dynamically.
 </p>
-<p>Setting sudo privileges to users is an administrative task you have to
-do by yourself. If you don't have experience with <code>sudo</code>
-command, please read its man page running the command: <code>man
-sudo</code>. This reading will be very useful, and with some practice, you
-will be able to configure your users to have <code>sudo</code>
-privileges.
+<p>When you use <code>shell</code> functionality to update copyright, the first
+thing <tt>`shell'</tt> functionality does is requesting copyright
+information to user, and later, if values were left empty (i.e., no
+value was typed before pressing <kbd>RET</kbd> key), the <tt>`shell'</tt>
+functionality uses its own default values.
 </p>
+<p>When <code>shell</code> functionality uses its own default values, the final
+copyright note looks like the following:
+</p>
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a2"></a>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomthing.sh -- The function description goes here.
+ 4| #
+ 5| # Copyright (C) 2003, 2010 The CentOS Project
+ 6| # 
+ 7| # This program is free software; you can redistribute it and/or modify
+ 8| # it under the terms of the GNU General Public License as published by
+ 9| # the Free Software Foundation; either version 2 of the License, or
+10| # (at your option) any later version.
+11| # 
+12| # This program is distributed in the hope that it will be useful, but
+13| # WITHOUT ANY WARRANTY; without even the implied warranty of
+14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+15| # General Public License for more details.
+16| #
+17| # You should have received a copy of the GNU General Public License
+18| # along with this program; if not, write to the Free Software
+19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+20| # USA.
+21| #
+22| # ----------------------------------------------------------------------
+23| # $Id$
+24| # ----------------------------------------------------------------------
+25|
+26| function doSomething {
+27|
+28| }
+</pre>
+</div><p><strong>Figure 3.5: The function script comment example
+</strong>
+</p>
+<p>Relevant lines in the above structure are lines from 5 to 22.  Pay
+attention how the copyright line was built, and how the license was
+added into the top comment where previously was just three dots.
+Everything else in the file was left immutable. 
+</p>
+<p>To change copyright information (i.e., full name or year information),
+run the <code>shell</code> functionality over the root directory containing
+the script files you want to update copyright in and enter the
+appropriate information when it be requested. You can run the
+<code>shell</code> functionality as many times as you need to.
+</p>
+<p>To change copyright license (i.e., the text in-between lines 7 and
+20), you need to edit the <tt>`Config/tpl_forCopyright.sed'</tt> file, set
+the appropriate information, and run the <code>shell</code> functionality
+once again for changes to take effect over the files you specify.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> The <tt>`centos-art.sh'</tt> script is released as: 
+</p>
+<pre class="verbatim">GNU GENERAL PUBLIC LICENSE
+Version 2, June 1991
 
-<a name="SEC343"></a>
-<h4 class="subsubsection"> 3.57.2.2 Links </h4>
-
-<p>Creation of symbolic links helps us to alternate between different
-implementations of <tt>`centos-art.sh'</tt> script-line (e.g.,
-<tt>`centos-art.sh'</tt>, for Bash implementation; <tt>`centos-art.py'</tt>,
-for Python implementation; <tt>`centos-art.pl'</tt>, for Perl
-implementation; and so on for other implementations). The
-<tt>`centos-art.sh'</tt> script-line definition takes place inside your
-personal binary (<tt>`~/bin/'</tt>) directory in order to make the script
-implementation --the one that <tt>`centos-art'</tt> links to-- available
-to <var>PATH</var> environment variable.
-</p>
-<p>Creation of symbolic links helps us to reuse components from repository
-working copy. For example, color information files maintained inside
-your working copy must never be duplicated inside program-specific
-configuration directories that uses them in your workstation (e.g.,
-Gimp, Inkscape, etc.).  Instead, a symbolic link must be created for
-each one of them, from program-specific configuration directories to
-files in the working copy.  In this configuration, when someone
-commits changes to color information files up to central repository,
-they--the changes committed-- will be immediatly available to your
-programs the next time you update your working copy --the place
-inside your workstation those color information files are stored--.
-</p>
-<p>Creation of symbolic links helps us to make <tt>`centos-art.sh'</tt>
-script functionalities available outside <tt>`trunk/'</tt> repository
-directory structure, but at its same level in repository tree. This is
-useful if you need to use the &quot;render&quot; functionality of
-<code>centos-art.sh</code> under <tt>`branches/'</tt> repository directory
-structure as you usually do inside <tt>`trunk/'</tt> repository directory
-structure. As consequence of this configuration, automation scripts
-cannot be branched under <tt>`branches/Scripts'</tt> directory structure.
-</p>
-
-<a name="SEC344"></a>
-<h4 class="subsubsection"> 3.57.2.3 Environment variables </h4>
-
-<p>Definition of environemnt variables helps us to set default values to
-our user session life. The user session environment variable defintion
-takes place in the user's <tt>`~/.bash_profile'</tt> file.  The
-<samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script doesn't
-modify your <tt>`~/.bash_profile'</tt> file.  
-</p>
-<p>The <samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script
-evaluates the following environment variables:
-</p>
-<dl compact="compact">
-<dt> <code>EDITOR</code></dt>
-<dd><p>Default text editor. 
-</p>
-<p>The <tt>`centos-art.sh'</tt> script uses default text <code>EDITOR</code> to edit
-pre-commit subversion messages, translation files, configuration
-files, script files, and similar text-based files.
-</p>
-<p>If <code>EDITOR</code> environment variable is not set, <tt>`centos-art.sh'</tt>
-script uses <tt>`/usr/bin/vim'</tt> as default text editor. Otherwise, the
-following values are recognized by <tt>`centos-art.sh'</tt> script:
-</p>
-<ul class="toc">
-<li> <tt>`/usr/bin/vim'</tt>
-</li><li> <tt>`/usr/bin/emacs'</tt>
-</li><li> <tt>`/usr/bin/nano'</tt>
-</li></ul>
-
-<p>If no one of these values is set in <code>EDITOR</code> environment variable,
-<tt>`centos-art.sh'</tt> uses <tt>`/usr/bin/vim'</tt> text editor by default. 
-</p>
-</dd>
-<dt> <code>TEXTDOMAIN</code></dt>
-<dd>
-<p>Default domain used to retrieve translated messages.  This variable is
-set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
-</p>
-</dd>
-<dt> <code>TEXTDOMAINDIR</code></dt>
-<dd>
-<p>Default directory used to retrieve translated messages.  This variable
-is set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
-</p>
-</dd>
-<dt> <code>LANG</code></dt>
-<dd>
-<p>Default locale information.
-</p>
-<p>This variable is initially set in the configuration process of CentOS
-distribution installer (i.e., Anaconda), specifically in the
-<samp>`Language'</samp> step; or once installed using the
-<code>system-config-language</code> tool.
-</p>
-<p>The <tt>`centos-art.sh'</tt> script uses the <var>LANG</var> environment
-variable to know in which language the script messages are printed
-out.
-</p>
-</dd>
-<dt> <code>TZ</code></dt>
-<dd>
-<p>Default time zone representation.
-</p>
-<p>This variable is initially set in the configuration process of CentOS
-distribution installer (i.e., Anaconda), specifically in the
-<samp>`Date and time'</samp> step; or once installed using the
-<code>system-config-date</code> tool.
-</p>
-<p>The <tt>`centos-art.sh'</tt> script doesn't use the <var>TZ</var> environment
-variable information at all. Instead, this variable is used by the
-system shell to show the time information according to your phisical
-location on planet Earth.  
-</p>
-<p>Inside your computer, the time information is firstly set in the BIOS
-clock (which may need correction), and later in the configuration
-process of CentOS distribution installer (or later, by any of the
-related configuration tools inside CentOS distribution).  Generally,
-setting time information is a straight-forward task and configuration
-tools available do cover most relevant location. However, if you need
-a time precision not provided by the configuration tools available
-inside CentOS distribution then, using <var>TZ</var> variable may be
-necessary.
-</p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-ruler.png" alt="Convenction"><h3>Convenction</h3><p> In order to keep changes syncronized between
-central repository and its working copies: configure both repository
-server and workstations (i.e., the place where each working copy is
-set on) to use Coordinated Universal Time (UTC) as base time
-representation.  Later, correct the time information for your specific
-location using time zone correction.
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+</pre>
+<p>Do not change the license information under which <tt>`centos-art.sh'</tt>
+script is released. Instead, if you think a different license must be
+used, please share your reasons at <a class="mailto" href="mailto:centos-devel@centos-art.sh">CentOS Developers mailing list</a>.
 </p></blockquote>
 
-<p>The format of <var>TZ</var> environment variable is described in
-<tt>`tzset(3)'</tt> manual page.
-</p>
-</dd>
-</dl>
 
-
-<a name="SEC345"></a>
+<a name="SEC323"></a>
 <h3 class="subsection"> 3.57.3 Usage </h3>
 
 <dl compact="compact">
-<dt> <code>centos-art verify --packages</code></dt>
-<dd>
-<p>Verify required packages your workstation needs in order to run the
-<tt>`centos-art.sh'</tt> script correctly.  If there are missing packages,
-the <tt>`centos-art.sh'</tt> script asks you to confirm their
-installation. When installing packages, the <tt>`centos-art.sh'</tt>
-script uses the <code>yum</code> application in order to achieve the
-task.
-</p>
-<p>In case all packages required by <tt>`centos-art.sh'</tt> script are
-already installed in your workstation, the message <samp>`The required
-packages are already installed.'</samp> is output for you to know. 
-</p>
-</dd>
-<dt> <code>centos-art verify --links</code></dt>
-<dd>
-<p>Verify required links your workstation needs in order to run the
-centos-art command correctly.  If any required link is missing, the
-<code>centos-art.sh</code> script asks you to confirm their installation.
-To install required links, the <code>centos-art.sh</code> script uses the
-<code>ln</code> command.
-</p>
-<p>In case all links required by <tt>`centos-art.sh'</tt> script are already
-created in your workstation, the message <samp>`The required links are
-already installed.'</samp> is output for you to know. 
-</p>
-<p>In case a regular file exists with the same name of a required link,
-the <tt>`centos-art.sh'</tt> script outputs the <samp>`Already exists as
-regular file.'</samp> message when listing required links that will be
-installed. Of course, as there is already a regular file where must be
-a link, no link is created. In such cases the <tt>`centos-art.sh'</tt>
-script will fall into a continue installation request for that missing
-link.  To end this continue request you can answer <samp>`No'</samp>, or
-remove the existent regular file to let <tt>`centos-art.sh'</tt> script
-install the link on its place.
-</p>
-</dd>
-<dt> <code>centos-art verify --environment</code></dt>
-<dt> <code>centos-art verify --environment --filter='regex'</code></dt>
-<dd>
-<p>Output a brief description of environment variables used by
-<tt>`centos-art.sh'</tt> script. 
-</p>
-<p>If <samp>`--filter'</samp> option is provided, output is reduced as defined in
-the <samp>`regex'</samp> regular expression value. If <samp>`--filter'</samp> option
-is specified but <samp>`regex'</samp> value is not, the <tt>`centos-art.sh'</tt>
-script outputs information as if <samp>`--filter'</samp> option had not been
-provided at all.  
-</p>
-</dd>
+<dt> <code>centos-art sh --update-copyright='path/to/dir'</code></dt>
+<dt> <code>centos-art sh --update-copyright='path/to/dir' --filter='regex'</code></dt>
+<dd><p>Use these commands to update copyright information in <samp>`.sh'</samp> files
+under <samp>`path/to/dir'</samp> directory. 
+</p></dd>
 </dl>
 
+<p>When you provide <samp>`--filter='regex''</samp> argument, the list of files
+to process is reduced as specified in <samp>`regex'</samp> regular expression.
+Inside <tt>`centos-art.sh'</tt> script, the <samp>`regex'</samp> regular
+expression is used in combination with <code>find</code> command to look
+for files matching the regular expression path pattern.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> In order for <samp>`regex'</samp> regular expression to match
+a file, the <samp>`regex'</samp> regular expresion must match the whole file
+path not just the file name. 
+</p></blockquote>
 
-<a name="SEC346"></a>
+<p>For example, if you want to match all <tt>`render.conf.sh'</tt> files
+inside <tt>`path/to/dir'</tt>, use the <code>.+/render.conf</code> regular
+expression.  Later, <tt>`centos-art.sh'</tt> script uses this value inside
+<code>^$REGEX\.sh$</code> expression in order to build the final regular
+expression (i.e., <code>^.+/render.conf\.sh$</code>) that is evaluated
+against available file paths inside the list of files to process.
+</p>
+<p>Exceptionally, when you provide <samp>`--filter='regex''</samp> in the way
+that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
+<samp>`path/to/dir/regex'</samp>), matches a regular file; the
+<tt>`centos-art.sh'</tt> script uses the file matching as only file in the
+list of files to process. 
+</p>
+
+<a name="SEC324"></a>
 <h3 class="subsection"> 3.57.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="filesystem_50.html#SEC270">3.47 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="filesystem_50.html#SEC257">3.47 trunk/Scripts/Bash</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="filesystem_51.html#SEC275">3.48 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="filesystem_53.html#SEC268">3.50 trunk/Scripts/Bash/Functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC345" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="filesystem_61.html#SEC347" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC323" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="filesystem_61.html#SEC325" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="filesystem_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC339" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="filesystem_64.html#SEC362" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC320" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="filesystem_66.html#SEC355" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>February, 27 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>February, 28 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
