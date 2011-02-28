@@ -383,11 +383,6 @@
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Perl</menunode>
-          <menutitle>trunk Scripts Perl</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>trunk Scripts Python</menunode>
           <menutitle>trunk Scripts Python</menutitle>
           <menucomment></menucomment>
@@ -5360,48 +5355,12 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
   </node>
   <node>
     <nodename>trunk Scripts Bash Locale</nodename>
-    <nodenext>trunk Scripts Perl</nodenext>
+    <nodenext>trunk Scripts Python</nodenext>
     <nodeprev>trunk Scripts Bash centos-art Functions Verify</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
       <title>trunk/Scripts/Bash/Locale</title>
       <para><indexterm index="cp">trunk Scripts Bash Locale</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <para>This section exists to organize translation messages and templates used by <file>centos-art.sh</file> script.</para>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <para>Translated messages of <file>centos-art.sh</file> script are managed using GNU <command>gettext</command> utilities. Most translation actions have been automated through <file>centos-art.sh</file> script &ldquo;locale&rdquo; functionality (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Locale) &mdash;).</para>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <para>The content of <file>trunk/Scripts/Bash/Locale</file> directory should not be managed manually. Instead, use the &ldquo;locale&rdquo; functionality of <file>centos-art.sh</file> script.  &mdash; <strong>Removed</strong>(xref:trunk Scripts Bash Functions Locale) &mdash;, for more information on how to use <file>centos-art.sh</file> &ldquo;locale&rdquo; functionality.</para>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-<!--  Removed(* trunk Scripts Bash Functions::) - -->
-          <menuentry>
-            <menunode>trunk Scripts</menunode>
-            <menutitle>trunk Scripts</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>trunk Scripts Perl</nodename>
-    <nodenext>trunk Scripts Python</nodenext>
-    <nodeprev>trunk Scripts Bash Locale</nodeprev>
-    <nodeup>trunk</nodeup>
-    <section>
-      <title>trunk/Scripts/Perl</title>
-      <para><indexterm index="cp">trunk Scripts Perl</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5414,10 +5373,22 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
 
       <subsection>
         <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
       </subsection>
 
       <subsection>
         <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
       </subsection>
 
       <subsection>
@@ -5429,7 +5400,7 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
   </node>
   <node>
     <nodename>trunk Scripts Python</nodename>
-    <nodeprev>trunk Scripts Perl</nodeprev>
+    <nodeprev>trunk Scripts Bash Locale</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
       <title>trunk/Scripts/Python</title>
