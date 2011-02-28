@@ -246,7 +246,7 @@ change it to have a little fun.
 Now that we have a specific function that works as we expect, it is
 time to document it.  To document @code{greet} specific functionality,
 we use its directory path and the @code{manual} functionality
-(@pxref{trunk Scripts Bash Functions Manual}) of @file{centos-art.sh}
+(--- @strong{Removed}(pxref:trunk Scripts Bash Functions Manual) ---) of @file{centos-art.sh}
 script, just as the following command illustrates: 
 
 @verbatim
@@ -265,8 +265,8 @@ create it right at that time.
 Now that we have documented our function, it is time to translate its
 output messages to different languages. To translate specific
 functionality output messages to different languages we use the
-@code{locale} functionality (@pxref{trunk Scripts Bash Functions
-Locale}) of @file{centos-art.sh} script, just as the following command
+@code{locale} functionality (--- @strong{Removed}(pxref:trunk Scripts Bash Functions
+Locale) ---) of @file{centos-art.sh} script, just as the following command
 illustrates:
 
 @verbatim
@@ -961,7 +961,7 @@ file system organization. Notice that when we change a file name
 (e.g., a function name), it is necessary to update all files where
 such file name is placed on. This may require a massive substitution
 inside the repository, each time we change name convenctions in the
-repository (@pxref{trunk Scripts Bash Functions Path}, for more
+repository (--- @strong{Removed}(pxref:trunk Scripts Bash Functions Path) ---, for more
 information).
 @end defun
 
@@ -1156,8 +1156,8 @@ and the confirmation answer would be @samp{s}, as it is on Spanish
 @samp{sí} word.
 
 Definition of which confirmation word to use is set on translation
-messages for your specific locale information. @xref{trunk Scripts
-Bash Functions Locale}, for more information about locale-specific
+messages for your specific locale information. --- @strong{Removed}(xref:trunk Scripts
+Bash Functions Locale) ---, for more information about locale-specific
 translation messages.
 
 @item AsToKnowMoreLine
@@ -1203,15 +1203,15 @@ The following specific functions of @file{centos-art.sh} script, are
 available for you to use:
 
 @menu
-* trunk Scripts Bash Functions Html::
-* trunk Scripts Bash Functions Locale::
-* trunk Scripts Bash Functions Manual::
-* trunk Scripts Bash Functions Path::
-* trunk Scripts Bash Functions Render::
-* trunk Scripts Bash Functions Render Config::
-* trunk Scripts Bash Functions Shell::
-* trunk Scripts Bash Functions Svg::
-* trunk Scripts Bash Functions Verify::
+@comment --- Removed(* trunk Scripts Bash Functions Html::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Locale::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Manual::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Path::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Render::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Render Config::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Shell::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Svg::) ---
+@comment --- Removed(* trunk Scripts Bash Functions Verify::) ---
 @end menu
 
 @subsection See also

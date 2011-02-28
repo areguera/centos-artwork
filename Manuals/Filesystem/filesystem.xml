@@ -328,53 +328,53 @@
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions</menunode>
-          <menutitle>trunk Scripts Bash Functions</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Help</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Help</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Html</menunode>
-          <menutitle>trunk Scripts Bash Functions Html</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Html</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Html</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Locale</menunode>
-          <menutitle>trunk Scripts Bash Functions Locale</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Locale</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Locale</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Manual</menunode>
-          <menutitle>trunk Scripts Bash Functions Manual</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Manual</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Manual</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Path</menunode>
-          <menutitle>trunk Scripts Bash Functions Path</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Path</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Path</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Render</menunode>
-          <menutitle>trunk Scripts Bash Functions Render</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Render</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Render</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Render Config</menunode>
-          <menutitle>trunk Scripts Bash Functions Render Config</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Render Config</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Render Config</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Shell</menunode>
-          <menutitle>trunk Scripts Bash Functions Shell</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Shell</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Shell</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Svg</menunode>
-          <menutitle>trunk Scripts Bash Functions Svg</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Svg</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Svg</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>trunk Scripts Bash Functions Verify</menunode>
-          <menutitle>trunk Scripts Bash Functions Verify</menutitle>
+          <menunode>trunk Scripts Bash centos-art Functions Verify</menunode>
+          <menutitle>trunk Scripts Bash centos-art Functions Verify</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -2995,9 +2995,9 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
         <title>Description</title>
         <para>The best way to understand <file>centos-art.sh</file> automation script is studying its source code.  However, as start point, you may prefer to read an introductory resume before diving into the source code details.</para>
         <para>The <file>centos-art.sh</file> script is written in Bash. Most tasks, inside <file>centos-art.sh</file> script, have been organized in many specific functionalities that you can invoke from the <command>centos-art</command> command-line interface.</para>
-        <para>When you type the <command>centos-art</command> command in your terminal, the operating system trys to execute that command. In order to execute the command, the operating system needs to know where it is, so the operating system uses the <var>PATH</var> environment variable to look for that command location. If your system was prepared to use CentOS Artwork Repository correctly (see <xref><xrefnodename>trunk Scripts Bash Functions Verify</xrefnodename></xref>), you should have a symbolic link inside <file>~/bin/</file> directory that points to the <file>centos-art.sh</file> script file. As <file>~/bin/</file> directory is, by default, inside <var>PATH</var> environment variable, the execution of <command>centos-art</command> command runs the <file>centos-art.sh</file> script.</para>
+        <para>When you type the <command>centos-art</command> command in your terminal, the operating system trys to execute that command. In order to execute the command, the operating system needs to know where it is, so the operating system uses the <var>PATH</var> environment variable to look for that command location. If your system was prepared to use CentOS Artwork Repository correctly (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Verify) &mdash;), you should have a symbolic link inside <file>~/bin/</file> directory that points to the <file>centos-art.sh</file> script file. As <file>~/bin/</file> directory is, by default, inside <var>PATH</var> environment variable, the execution of <command>centos-art</command> command runs the <file>centos-art.sh</file> script.</para>
         <para>When <file>centos-art.sh</file> script is executed, the first it does is executing the <file>trunk/Scripts/Bash/initEnvironment.sh</file> script to initialize global variables (e.g., <command>gettext</command> variables) and global function scripts.  Global function scripts are located inside <file>trunk/Scripts/Bash/Functions</file> directory and their file names begin with <samp>cli</samp>. Global function scripts provide common functionalities that can be used anywhere inside <file>centos-art.sh</file> script execution environment.</para>
-        <para>Once global variables and function scripts have been loaded, <file>centos-art.sh</file> script executes the <command>cli</command> global function from <file>cli.sh</file> function script to retrive command-line arguments and define some default values that may be used later by specific function scripts (see <xref><xrefnodename>trunk Scripts Bash Functions</xrefnodename></xref>).</para>
+        <para>Once global variables and function scripts have been loaded, <file>centos-art.sh</file> script executes the <command>cli</command> global function from <file>cli.sh</file> function script to retrive command-line arguments and define some default values that may be used later by specific function scripts (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions) &mdash;).</para>
         <para>As convenction, the <file>centos-art.sh</file> command-line arguments have the following format:</para>
         <verbatim xml:space="preserve"><![CDATA[
 centos-art arg1 --arg2=val2 --arg3=val3
@@ -3079,7 +3079,7 @@ centos-art arg1 --arg2=val2 --arg3=val3
 
       <subsection>
         <title>Usage</title>
-        <para>The <file>centos-art.sh</file> script usage information is described inside each specific function documentation (see <xref><xrefnodename>trunk Scripts Bash Functions</xrefnodename></xref>).</para>
+        <para>The <file>centos-art.sh</file> script usage information is described inside each specific function documentation (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions) &mdash;).</para>
       </subsection>
 
       <subsection>
@@ -3088,12 +3088,8 @@ centos-art arg1 --arg2=val2 --arg3=val3
           <menuentry>
             <menunode>trunk Scripts</menunode>
             <menutitle>trunk Scripts</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
+            <menucomment>
+<!-- Removed(* trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
           <menuentry>
             <menunode>trunk Scripts Bash Locale</menunode>
@@ -3116,57 +3112,12 @@ centos-art arg1 --arg2=val2 --arg3=val3
   </node>
   <node>
     <nodename>trunk Scripts Bash centos-art Functions</nodename>
-    <nodenext>trunk Scripts Bash Functions</nodenext>
+    <nodenext>trunk Scripts Bash centos-art Functions Help</nodenext>
     <nodeprev>trunk Scripts Bash centos-art</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
       <title>trunk/Scripts/Bash/centos-art/Functions</title>
       <para><indexterm index="cp">trunk Scripts Bash centos-art Functions</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>trunk Scripts Bash Functions</nodename>
-    <nodenext>trunk Scripts Bash Functions Html</nodenext>
-    <nodeprev>trunk Scripts Bash centos-art Functions</nodeprev>
-    <nodeup>trunk</nodeup>
-    <section>
-      <title>trunk/Scripts/Bash/Functions</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash/Functions</file> directory exists to organize <file>centos-art.sh</file> specific functionalities.</para>
@@ -3295,12 +3246,12 @@ Goodbye World
 [centos@projects ~]$ 
 ]]></verbatim>
         <para>The word <samp>World</samp> in the examples above can be anything. In fact, change it to have a little fun.</para>
-        <para>Now that we have a specific function that works as we expect, it is time to document it.  To document <code>greet</code> specific functionality, we use its directory path and the <code>manual</code> functionality (see <xref><xrefnodename>trunk Scripts Bash Functions Manual</xrefnodename></xref>) of <file>centos-art.sh</file> script, just as the following command illustrates:</para>
+        <para>Now that we have a specific function that works as we expect, it is time to document it.  To document <code>greet</code> specific functionality, we use its directory path and the <code>manual</code> functionality (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Manual) &mdash;) of <file>centos-art.sh</file> script, just as the following command illustrates:</para>
         <verbatim xml:space="preserve"><![CDATA[
 centos-art manual --edit=trunk/Scripts/Bash/Functions/Greet
 ]]></verbatim>
         <para>To have a well documented function helps user to understand how your function really works, and how it should be used.  When no valid action is passed to a function, the <file>centos-art.sh</file> script uses the function documentation entry as vehicle to communicate which the valid functions are. When no documentation entry exists for a function, the <file>centos-art.sh</file> script informs that no documentation entry exists for such function and requests user to create it right at that time.</para>
-        <para>Now that we have documented our function, it is time to translate its output messages to different languages. To translate specific functionality output messages to different languages we use the <code>locale</code> functionality (see <xref><xrefnodename>trunk Scripts Bash Functions Locale</xrefnodename></xref>) of <file>centos-art.sh</file> script, just as the following command illustrates:</para>
+        <para>Now that we have documented our function, it is time to translate its output messages to different languages. To translate specific functionality output messages to different languages we use the <code>locale</code> functionality (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Locale) &mdash;) of <file>centos-art.sh</file> script, just as the following command illustrates:</para>
         <verbatim xml:space="preserve"><![CDATA[
 centos-art locale --edit
 ]]></verbatim>
@@ -3852,7 +3803,7 @@ function prefix_doSomething {
               </table>
               <para>Use <code>cli_getRepoName</code> function to sanitate file names and directory names before their utilization.</para>
               <para>Use <code>cli_getRepoName</code> when you need to change file name convenctions inside <file>centos-art.sh</file> script.</para>
-              <para>When we change file name convenctions inside <code>cli_getRepoName</code> what we are really changing is the way functions interpret repository file system organization. Notice that when we change a file name (e.g., a function name), it is necessary to update all files where such file name is placed on. This may require a massive substitution inside the repository, each time we change name convenctions in the repository (see <xref><xrefnodename>trunk Scripts Bash Functions Path</xrefnodename></xref>, for more information).</para>
+              <para>When we change file name convenctions inside <code>cli_getRepoName</code> what we are really changing is the way functions interpret repository file system organization. Notice that when we change a file name (e.g., a function name), it is necessary to update all files where such file name is placed on. This may require a massive substitution inside the repository, each time we change name convenctions in the repository (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Path) &mdash;, for more information).</para>
             </definitionitem>
           </definition>
           <definition>
@@ -4071,7 +4022,7 @@ $MESSAGE [y/N]:
 $MESSAGE [s/N]:
 ]]></verbatim>
                     <para>and the confirmation answer would be <samp>s</samp>, as it is on Spanish <samp>sí</samp> word.</para>
-                    <para>Definition of which confirmation word to use is set on translation messages for your specific locale information. See <xref><xrefnodename>trunk Scripts Bash Functions Locale</xrefnodename></xref>, for more information about locale-specific translation messages.</para>
+                    <para>Definition of which confirmation word to use is set on translation messages for your specific locale information. &mdash; <strong>Removed</strong>(xref:trunk Scripts Bash Functions Locale) &mdash;, for more information about locale-specific translation messages.</para>
                   </item>
                 </tableitem>
                 <tableitem>
@@ -4110,51 +4061,15 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <title>Specific functions</title>
           <para>The following specific functions of <file>centos-art.sh</file> script, are available for you to use:</para>
           <menu>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Html</menunode>
-              <menutitle>trunk Scripts Bash Functions Html</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Locale</menunode>
-              <menutitle>trunk Scripts Bash Functions Locale</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Manual</menunode>
-              <menutitle>trunk Scripts Bash Functions Manual</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Path</menunode>
-              <menutitle>trunk Scripts Bash Functions Path</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Render</menunode>
-              <menutitle>trunk Scripts Bash Functions Render</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Render Config</menunode>
-              <menutitle>trunk Scripts Bash Functions Render Config</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Shell</menunode>
-              <menutitle>trunk Scripts Bash Functions Shell</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Svg</menunode>
-              <menutitle>trunk Scripts Bash Functions Svg</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
-            <menuentry>
-              <menunode>trunk Scripts Bash Functions Verify</menunode>
-              <menutitle>trunk Scripts Bash Functions Verify</menutitle>
-              <menucomment></menucomment>
-            </menuentry>
+<!--  Removed(* trunk Scripts Bash Functions Html::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Locale::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Manual::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Path::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Render::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Render Config::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Shell::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Svg::) - -->
+<!--  Removed(* trunk Scripts Bash Functions Verify::) - -->
           </menu>
         </subsubsection>
       </subsection>
@@ -4177,13 +4092,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Html</nodename>
-    <nodenext>trunk Scripts Bash Functions Locale</nodenext>
-    <nodeprev>trunk Scripts Bash Functions</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Help</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Html</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Html</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Html</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Help</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Help</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -4222,13 +4137,58 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Locale</nodename>
-    <nodenext>trunk Scripts Bash Functions Manual</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Html</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Html</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Locale</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Help</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Locale</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Locale</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Html</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Html</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
+    <nodename>trunk Scripts Bash centos-art Functions Locale</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Manual</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Html</nodeprev>
+    <nodeup>trunk</nodeup>
+    <section>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Locale</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Locale</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -4296,13 +4256,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Manual</nodename>
-    <nodenext>trunk Scripts Bash Functions Path</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Locale</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Manual</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Path</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Locale</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Manual</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Manual</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Manual</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Manual</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -4341,13 +4301,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Path</nodename>
-    <nodenext>trunk Scripts Bash Functions Render</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Manual</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Path</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Render</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Manual</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Path</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Path</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Path</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Path</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>path</code> functiontionality.  The <code>path</code> functionality standardizes movement, syncronization, branching, tagging, and general file maintainance inside the repository.</para>
@@ -4456,25 +4416,21 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
           <menuentry>
             <menunode>trunk Scripts Bash</menunode>
             <menutitle>trunk Scripts Bash</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
+            <menucomment>
+<!-- Removed(* trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Render</nodename>
-    <nodenext>trunk Scripts Bash Functions Render Config</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Path</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Render</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Render Config</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Path</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Render</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Render</indexterm>The <code>render</code> functionality exists to produce both identity and translation files on different levels of information (i.e., different languages, release numbers, architectures, etc.).</para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Render</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Render</indexterm>The <code>render</code> functionality exists to produce both identity and translation files on different levels of information (i.e., different languages, release numbers, architectures, etc.).</para>
       <para>The <code>render</code> functionality relies on &ldquo;renderable directory structures&rdquo; to produce files. Renderable directory structures can be either &ldquo;identity directory structures&rdquo; or &ldquo;translation directory structures&rdquo; with special directories inside.</para>
 
       <subsection>
@@ -4510,7 +4466,7 @@ trunk/Identity/Path/To/Dir  <-- Renderable identity directory structure.
                 <quotation>
                   <para><strong>Note</strong> At rendition time, the content of <file>Img/</file> directory structure is produced by <file>centos-art.sh</file> automatically.</para>
                 </quotation>
-                <para>When a renderable identity directory structure is configured to produce image-based content, <file>centos-art.sh</file> produces <acronym><acronymword>PNG</acronymword><acronymdesc>Portable Network Graphics</acronymdesc></acronym> files with the <code>.png</code> extension. Once the base image format has been produced, it is possible for <file>centos-art.sh</file> to use it in order to automatically create other image formats that may be needed (see <xref><xrefnodename>trunk Scripts Bash Functions Render Config</xrefnodename></xref>).</para>
+                <para>When a renderable identity directory structure is configured to produce image-based content, <file>centos-art.sh</file> produces <acronym><acronymword>PNG</acronymword><acronymdesc>Portable Network Graphics</acronymdesc></acronym> files with the <code>.png</code> extension. Once the base image format has been produced, it is possible for <file>centos-art.sh</file> to use it in order to automatically create other image formats that may be needed (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Render Config) &mdash;).</para>
                 <para>Inside the working copy, you can find an example of &ldquo;design template without translation&rdquo; configuration at <file>trunk/Identity/Models/</file>.</para>
                 <para>See <xref><xrefnodename>trunk Identity</xrefnodename></xref>, for more information.</para>
               </item>
@@ -4571,7 +4527,7 @@ trunk/Identity/NewDir/Img/file.png
 3 | Remove design template instance.
 ]]></verbatim>
                 <para>Finally, when the untranslated image has been created, the temporal design template instance is removed. At this point, <file>centos-art.sh</file> takes the next design template and repeats the whole production flow once again (design template by design template), until all design templates be processed.</para>
-                <para>See <xref><xrefnodename>trunk Scripts Bash Functions Render Config</xrefnodename></xref>, for more information.</para>
+                <para>&mdash; <strong>Removed</strong>(xref:trunk Scripts Bash Functions Render Config) &mdash;, for more information.</para>
               </item>
             </tableitem>
           </table>
@@ -4839,23 +4795,19 @@ function render_loadConfig {
       <subsection>
         <title>See also</title>
         <menu>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions Render Config</menunode>
-            <menutitle>trunk Scripts Bash Functions Render Config</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
+<!--  Removed(* trunk Scripts Bash Functions Render Config::) - -->
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Render Config</nodename>
-    <nodenext>trunk Scripts Bash Functions Shell</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Render</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Render Config</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Shell</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Render</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Render/Config</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Render Config</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Render/Config</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Render Config</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash/Config</file> directory exists to oraganize pre-rendering configuration scripts.</para>
@@ -4924,7 +4876,7 @@ ACTIONS[1]='POST:renderFormats: xpm jpg tif'
 ]]></verbatim>
           <para>The <samp>LAST</samp> action specifies which actions to apply once the last file in the list of files to process has been rendered. The <samp>LAST</samp> action is optional. Possible values for <samp>LAST</samp> actions may be <samp>groupByFormat</samp>, <samp>renderGdmTgz</samp>, etc.</para>
           <quotation>
-            <para><strong>Note</strong> See <xref><xrefnodename>trunk Scripts Bash Functions Render</xrefnodename></xref>, to know more about possible values for <samp>BASE</samp>, <samp>POST</samp> and <samp>LAST</samp> action definitions.</para>
+            <para><strong>Note</strong> &mdash; <strong>Removed</strong>(xref:trunk Scripts Bash Functions Render) &mdash;, to know more about possible values for <samp>BASE</samp>, <samp>POST</samp> and <samp>LAST</samp> action definitions.</para>
           </quotation>
           <para>To specify the <samp>LAST</samp> action, you need to set the <samp>LAST:</samp> string followed by the function name of the action you want to perform.  For example, consider the following example if you want to render all files first and organize them later:</para>
           <verbatim xml:space="preserve"><![CDATA[
@@ -4973,30 +4925,22 @@ ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
           <menuentry>
             <menunode>trunk Scripts Bash</menunode>
             <menutitle>trunk Scripts Bash</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions Render</menunode>
-            <menutitle>trunk Scripts Bash Functions Render</menutitle>
-            <menucomment></menucomment>
+            <menucomment>
+<!-- Removed(* trunk Scripts Bash Functions::) - -->
+<!-- Removed(* trunk Scripts Bash Functions Render::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Shell</nodename>
-    <nodenext>trunk Scripts Bash Functions Svg</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Render Config</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Shell</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Svg</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Render Config</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Shell</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Shell</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Shell</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Shell</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>shell</code> functionality of <file>centos-art.sh</file> script.</para>
@@ -5112,25 +5056,21 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
           <menuentry>
             <menunode>trunk Scripts Bash</menunode>
             <menutitle>trunk Scripts Bash</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
+            <menucomment>
+<!-- Removed(* trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Svg</nodename>
-    <nodenext>trunk Scripts Bash Functions Verify</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Shell</nodeprev>
+    <nodename>trunk Scripts Bash centos-art Functions Svg</nodename>
+    <nodenext>trunk Scripts Bash centos-art Functions Verify</nodenext>
+    <nodeprev>trunk Scripts Bash centos-art Functions Shell</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Svg</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Svg</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Svg</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Svg</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>svg</code> functionality of <file>centos-art.sh</file> script.</para>
@@ -5271,25 +5211,21 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
           <menuentry>
             <menunode>trunk Scripts Bash</menunode>
             <menutitle>trunk Scripts Bash</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
+            <menucomment>
+<!-- Removed(* trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>trunk Scripts Bash Functions Verify</nodename>
+    <nodename>trunk Scripts Bash centos-art Functions Verify</nodename>
     <nodenext>trunk Scripts Bash Locale</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Svg</nodeprev>
+    <nodeprev>trunk Scripts Bash centos-art Functions Svg</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
-      <title>trunk/Scripts/Bash/Functions/Verify</title>
-      <para><indexterm index="cp">trunk Scripts Bash Functions Verify</indexterm></para>
+      <title>trunk/Scripts/Bash/centos-art/Functions/Verify</title>
+      <para><indexterm index="cp">trunk Scripts Bash centos-art Functions Verify</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <file>centos-art.sh</file> script <samp>verify</samp> functionality.  The <samp>verify</samp> functionality of <file>centos-art.sh</file> script helps you to verify the workstation configuration you are planning to use as host for your working copy of CentOS Artwork Repository.</para>
@@ -5415,12 +5351,8 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
           <menuentry>
             <menunode>trunk Scripts Bash</menunode>
             <menutitle>trunk Scripts Bash</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
+            <menucomment>
+<!-- Removed(* trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
@@ -5429,7 +5361,7 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
   <node>
     <nodename>trunk Scripts Bash Locale</nodename>
     <nodenext>trunk Scripts Perl</nodenext>
-    <nodeprev>trunk Scripts Bash Functions Verify</nodeprev>
+    <nodeprev>trunk Scripts Bash centos-art Functions Verify</nodeprev>
     <nodeup>trunk</nodeup>
     <section>
       <title>trunk/Scripts/Bash/Locale</title>
@@ -5441,22 +5373,18 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
 
       <subsection>
         <title>Description</title>
-        <para>Translated messages of <file>centos-art.sh</file> script are managed using GNU <command>gettext</command> utilities. Most translation actions have been automated through <file>centos-art.sh</file> script &ldquo;locale&rdquo; functionality (see <xref><xrefnodename>trunk Scripts Bash Functions Locale</xrefnodename></xref>).</para>
+        <para>Translated messages of <file>centos-art.sh</file> script are managed using GNU <command>gettext</command> utilities. Most translation actions have been automated through <file>centos-art.sh</file> script &ldquo;locale&rdquo; functionality (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Locale) &mdash;).</para>
       </subsection>
 
       <subsection>
         <title>Usage</title>
-        <para>The content of <file>trunk/Scripts/Bash/Locale</file> directory should not be managed manually. Instead, use the &ldquo;locale&rdquo; functionality of <file>centos-art.sh</file> script.  See <xref><xrefnodename>trunk Scripts Bash Functions Locale</xrefnodename></xref>, for more information on how to use <file>centos-art.sh</file> &ldquo;locale&rdquo; functionality.</para>
+        <para>The content of <file>trunk/Scripts/Bash/Locale</file> directory should not be managed manually. Instead, use the &ldquo;locale&rdquo; functionality of <file>centos-art.sh</file> script.  &mdash; <strong>Removed</strong>(xref:trunk Scripts Bash Functions Locale) &mdash;, for more information on how to use <file>centos-art.sh</file> &ldquo;locale&rdquo; functionality.</para>
       </subsection>
 
       <subsection>
         <title>See also</title>
         <menu>
-          <menuentry>
-            <menunode>trunk Scripts Bash Functions</menunode>
-            <menutitle>trunk Scripts Bash Functions</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
+<!--  Removed(* trunk Scripts Bash Functions::) - -->
           <menuentry>
             <menunode>trunk Scripts</menunode>
             <menutitle>trunk Scripts</menutitle>

@@ -22,8 +22,8 @@ operating system trys to execute that command. In order to execute the
 command, the operating system needs to know where it is, so the
 operating system uses the @var{PATH} environment variable to look for
 that command location. If your system was prepared to use CentOS
-Artwork Repository correctly (@pxref{trunk Scripts Bash Functions
-Verify}), you should have a symbolic link inside @file{~/bin/}
+Artwork Repository correctly (--- @strong{Removed}(pxref:trunk Scripts Bash Functions
+Verify) ---), you should have a symbolic link inside @file{~/bin/}
 directory that points to the @file{centos-art.sh} script file. As
 @file{~/bin/} directory is, by default, inside @var{PATH} environment
 variable, the execution of @command{centos-art} command runs the
@@ -42,7 +42,7 @@ Once global variables and function scripts have been loaded,
 @file{centos-art.sh} script executes the @command{cli} global function
 from @file{cli.sh} function script to retrive command-line arguments
 and define some default values that may be used later by specific
-function scripts (@pxref{trunk Scripts Bash Functions}).
+function scripts (--- @strong{Removed}(pxref:trunk Scripts Bash Functions) ---).
 
 As convenction, the @file{centos-art.sh} command-line arguments have
 the following format:
@@ -144,13 +144,13 @@ variables and functions defined inside function environment.
 @subsection Usage
 
 The @file{centos-art.sh} script usage information is described inside
-each specific function documentation (@pxref{trunk Scripts Bash
-Functions}).
+each specific function documentation (--- @strong{Removed}(pxref:trunk Scripts Bash
+Functions) ---).
 
 @subsection See also
 
 @menu
 * trunk Scripts::
-* trunk Scripts Bash Functions::
+@comment --- Removed(* trunk Scripts Bash Functions::) ---
 * trunk Scripts Bash Locale::
 @end menu

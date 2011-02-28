@@ -106,8 +106,8 @@ produce image-based content, @file{centos-art.sh} produces
 @acronym{PNG,Portable Network Graphics} files with the @code{.png}
 extension. Once the base image format has been produced, it is
 possible for @file{centos-art.sh} to use it in order to automatically
-create other image formats that may be needed (@pxref{trunk Scripts
-Bash Functions Render Config}).
+create other image formats that may be needed (--- @strong{Removed}(pxref:trunk Scripts
+Bash Functions Render Config) ---).
 
 Inside the working copy, you can find an example of ``design template
 without translation'' configuration at @file{trunk/Identity/Models/}.
@@ -221,7 +221,7 @@ design template instance is removed. At this point,
 whole production flow once again (design template by design template),
 until all design templates be processed.
 
-@xref{trunk Scripts Bash Functions Render Config}, for more
+--- @strong{Removed}(xref:trunk Scripts Bash Functions Render Config) ---, for more
 information.
 @end table
 
@@ -732,5 +732,5 @@ have been duplicated, the functionality stops thereat.
 @subsection See also
 
 @menu
-* trunk Scripts Bash Functions Render Config::
+@comment --- Removed(* trunk Scripts Bash Functions Render Config::) ---
 @end menu
