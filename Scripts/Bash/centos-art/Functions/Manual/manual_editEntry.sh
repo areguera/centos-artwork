@@ -30,11 +30,11 @@ function manual_editEntry {
     # chapters sets how many chapters does the manual has and the
     # directory and file structure required to make them active part
     # of a texinfo manual.
-    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
+    if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
 
         # Print confirmation question.
         cli_printMessage "`gettext "The following documentation chapter will be created:"`"
-        cli_printMessage "$MANUAL_DIR_CHAPTER" "AsResponseLine"
+        cli_printMessage "$MANUAL_CHAPTER_DIR" "AsResponseLine"
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
         # Update manual chapter related files.

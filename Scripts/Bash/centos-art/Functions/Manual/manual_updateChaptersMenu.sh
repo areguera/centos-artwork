@@ -43,12 +43,12 @@ function manual_updateChaptersMenu {
         'remove-entry' )
             # Remove chapter from menu.
             MENUCHAPTERS=$(echo "${MENUCHAPTERS}" \
-                | egrep -v "^\* ${MANUAL_CHA_NAME}::[[:print:]]*$")
+                | egrep -v "^\* ${MANUAL_CHAPTER_NAME}::[[:print:]]*$")
             ;;
         'update-entry' | * )
             # Update chapter menu using texinfo format.
             MENUCHAPTERS="${MENUCHAPTERS}
-                * ${MANUAL_CHA_NAME}::"
+                * ${MANUAL_CHAPTER_NAME}::"
             ;;
     esac
 

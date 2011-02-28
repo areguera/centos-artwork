@@ -47,7 +47,7 @@ function manual_updateMenu {
 
     # Define chapter's menu. Remove `@menu', `@end menu', and empty lines
     # from output.
-    local MENU=$(cat $MANUAL_DIR_CHAPTER/chapter-menu.texi \
+    local MENU=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.texi \
         | egrep -v '^[[:space:]]*$' | egrep -v '^@(end )?menu') 
 
     # Re-defined chapter's menu based on action.
@@ -80,6 +80,6 @@ function manual_updateMenu {
     MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g')
 
     # Dump final menu structure back into chapter's menu file.
-    echo "$MENU" > $MANUAL_DIR_CHAPTER/chapter-menu.texi
+    echo "$MENU" > $MANUAL_CHAPTER_DIR/chapter-menu.texi
 
 }

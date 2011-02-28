@@ -27,7 +27,7 @@
 function manual_updateNodes {
 
     # Retrive nodes' entries from chapter-menu.texi file.
-    local NODES=$(cat $MANUAL_DIR_CHAPTER/chapter-menu.texi \
+    local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.texi \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
         | egrep -v '^@(end )?menu$' | sed -r 's! !:!g' | sort | uniq)
 
@@ -57,7 +57,7 @@ function manual_updateNodes {
         echo ""
 
     # Dump node information into chapter node file.
-    done > $MANUAL_DIR_CHAPTER/chapter-nodes.texi
+    done > $MANUAL_CHAPTER_DIR/chapter-nodes.texi
 
 }
 

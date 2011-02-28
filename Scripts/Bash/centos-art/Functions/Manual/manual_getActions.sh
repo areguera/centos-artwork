@@ -124,11 +124,11 @@ function manual_getActions {
     # tags) and handle everything else inside them as sections. Sub
     # and subsub section will not have their own files, they will be
     # written inside section files instead.
-    MANUAL_DIR_CHAPTER=$(echo $ENTRY | cut -d / -f-8)
+    MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-8)
 
     # Define chapter name for the documentation entry we are working
     # with.
-    MANUAL_CHA_NAME=$(basename "$MANUAL_DIR_CHAPTER")
+    MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build texinfo

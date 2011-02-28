@@ -116,7 +116,7 @@ function manual_deleteEntry {
     # Remove entry menus and nodes from chapter definition to reflect
     # the fact it has been removed.  This is mainly applied when one
     # of the chapters (e.g., trunk/, tags/, or branches/) is removed.
-    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
+    if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
         manual_updateChaptersMenu 'remove-entry'
         manual_updateChaptersNodes
     fi

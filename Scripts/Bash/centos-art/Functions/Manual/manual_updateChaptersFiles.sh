@@ -28,29 +28,29 @@ function manual_updateChaptersFiles {
 
     # Define chapter's generic structure. 
     local CHAPTERBODY="\
-        @node $MANUAL_CHA_NAME
-        @chapter $MANUAL_CHA_NAME
-        @cindex $(echo $MANUAL_CHA_NAME | tr '[[:upper:]]' '[[:lower:]]')
-        @include $MANUAL_CHA_NAME/chapter-intro.texi
-        @include $MANUAL_CHA_NAME/chapter-menu.texi
-        @include $MANUAL_CHA_NAME/chapter-nodes.texi"
+        @node $MANUAL_CHAPTER_NAME
+        @chapter $MANUAL_CHAPTER_NAME
+        @cindex $(echo $MANUAL_CHAPTER_NAME | tr '[[:upper:]]' '[[:lower:]]')
+        @include $MANUAL_CHAPTER_NAME/chapter-intro.texi
+        @include $MANUAL_CHAPTER_NAME/chapter-menu.texi
+        @include $MANUAL_CHAPTER_NAME/chapter-nodes.texi"
 
     # Remove any space/tabs at the begining of @... lines.
     CHAPTERBODY=$(echo "$CHAPTERBODY" | sed -r 's!^[[:space:]]+@!@!')
 
     # Create directory to store chapter files.
-    if [[ ! -d $MANUAL_DIR_CHAPTER ]];then
-        mkdir $MANUAL_DIR_CHAPTER
+    if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
+        mkdir $MANUAL_CHAPTER_DIR
     fi
 
     # Create files to store chapter information. If chapter files
     # already exist, they will be re-written and any previous
     # information inside them will be lost.
-    echo "$CHAPTERBODY" > $MANUAL_DIR_CHAPTER/chapter.texi
-    echo "" > $MANUAL_DIR_CHAPTER/chapter-menu.texi
-    echo "" > $MANUAL_DIR_CHAPTER/chapter-nodes.texi
+    echo "$CHAPTERBODY" > $MANUAL_CHAPTER_DIR/chapter.texi
+    echo "" > $MANUAL_CHAPTER_DIR/chapter-menu.texi
+    echo "" > $MANUAL_CHAPTER_DIR/chapter-nodes.texi
 
     # Initialize chapter instroduction using template file.
-    cp ${FUNCCONFIG}/manual-cha-intro.texi $MANUAL_DIR_CHAPTER/chapter-intro.texi
+    cp ${FUNCCONFIG}/manual-cha-intro.texi $MANUAL_CHAPTER_DIR/chapter-intro.texi
 
 }
