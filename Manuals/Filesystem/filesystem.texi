@@ -1,7 +1,7 @@
 \input texinfo   @c -*-texinfo-*-
 @c $Id: repository.texi 33 2010-09-13 11:36:41Z al $
-@setfilename repository-fs.info
-@settitle CentOS Artwork Repository - Filesystem
+@setfilename filesystem.info
+@settitle CentOS Artwork Repository
 @afourpaper
 @finalout
 
@@ -34,19 +34,19 @@ Documentation License.
 
 @ifnottex
 @node Top
-@top CentOS Artwork Repository - Filesystem
+@top Filesystem
 
 @insertcopying
 @end ifnottex
 
-@include repository-fs-menu.texi
+@include filesystem-menu.texi
 
 @c -- The Body of the Document --------------------------------
 
-@include repository-fs-nodes.texi
+@include filesystem-nodes.texi
 
 @c -- The End of the Document ---------------------------------
 
-@include repository-fs-index.texi
+@include filesystem-index.texi
 
 @bye
