@@ -20,10 +20,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 1.60 The trunk/Scripts/Bash/Cli/Functions/Svg Directory</title>
+<title>CentOS Artwork Repository: 1.60 The trunk/Scripts/Bash/Cli/Functions/Shell Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 1.60 The trunk/Scripts/Bash/Cli/Functions/Svg Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 1.60 The trunk/Scripts/Bash/Cli/Functions/Svg Directory">
+<meta name="description" content="CentOS Artwork Repository: 1.60 The trunk/Scripts/Bash/Cli/Functions/Shell Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 1.60 The trunk/Scripts/Bash/Cli/Functions/Shell Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -57,202 +57,170 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC349" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC354" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC350" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC355" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Filesystem-trunk-Scripts-Bash-Cli-Functions-Svg"></a>
+<a name="Filesystem-trunk-Scripts-Bash-Cli-Functions-Shell"></a>
 <a name="SEC329"></a>
-<h2 class="section"> 1.60 The <tt>`trunk/Scripts/Bash/Cli/Functions/Svg'</tt> Directory </h2>
+<h2 class="section"> 1.60 The <tt>`trunk/Scripts/Bash/Cli/Functions/Shell'</tt> Directory </h2>
 
 
 <a name="SEC330"></a>
 <h3 class="subsection"> 1.60.1 Goals </h3>
 
-<p>This section exists to organize files related to <code>svg</code>
+<p>This section exists to organize files related to <code>shell</code>
 functionality of <tt>`centos-art.sh'</tt> script.
 </p>
 
 <a name="SEC331"></a>
 <h3 class="subsection"> 1.60.2 Description </h3>
 
-<p>The <code>svg</code> functionality of <tt>`centos-art.sh'</tt> script helps you
-to maintain scalable vector graphics (SVG) inside repository. For
-example, suppose you've been working in CentOS default design models
-under <tt>`trunk/Identity/Themes/Models/'</tt>, and you want to set common
-metadata to all of them, and later remove all unused SVG defintions
-from <samp>`*.svg'</samp> files. Doing so file by file may be a tedious task,
-so the <tt>`centos-art.sh'</tt> script provides the <code>svg</code>
-functionality to aid you maintain such actions.
+<p>The <code>shell</code> functionality of <tt>`centos-art.sh'</tt> script helps
+you to maintain bash scripts inside repository. For example, suppose
+you've created many functionalities for <tt>`centos-art.sh'</tt> script,
+and you want to use a common copyright and license note for
+consistency in all your script files. If you have a bunch of files,
+doing this one by one wouldn't be a big deal. In contrast, if the
+amount of files grows, updating the copyright and license note for all
+of them would be a task rather tedious. The <code>shell</code> functionality
+exists to solve maintainance tasks just as the one previously
+mentioned.
 </p>
-<a name="IDX32"></a>
+<p>When you use <code>shell</code> functionality to update copyright inside
+script files, it is required that your script files contain (at least)
+the following top commentary structure:
+</p>
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a1"></a>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| # 
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|     
+15| }
+</pre>
+</div><p><strong>Figure 1.4: The functions script base comment structure
+</strong>
+</p>
+<p>Relevant lines in the above structure are lines from 5 to 9.
+Everything else in the file is left immutable.
+</p>
+<p>When you are updating copyright through <code>shell</code>
+functionality,  the <tt>`centos-art.sh'</tt> script replaces everything
+in-between line 5 --the first one matching <samp>`^# Copyright .+$'</samp>
+string-- and line 9--the first long dash separator matching <samp>`^#
+-+$'</samp>-- with the content of copyright template instance.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Be sure to add the long dash separator that matches
+<samp>`^# -+$'</samp> regular expression <em>before</em> the function
+definition. Otherwise, if the <samp>`Copyright'</samp> line is present but no
+long dash separator exists, <tt>`centos-art.sh'</tt> will remove anything
+in-between the <samp>`Copyright'</samp> line and the end of file. This way you
+may lost your function definitions entirely.
+</p></blockquote>
+
+<p>The copyright template instance is created from one copyright template
+stored in the <tt>`Config/tpl_forCopyright.sed'</tt> file.  The template
+instance is created once, and later removed when no longer needed. At
+this moment, when template instance is created, the
+<tt>`centos-art.sh'</tt> script takes advantage of automation in order to
+set copyright full name and date dynamically.
+</p>
+<p>When you use <code>shell</code> functionality to update copyright, the first
+thing <tt>`shell'</tt> functionality does is requesting copyright
+information to user, and later, if values were left empty (i.e., no
+value was typed before pressing <kbd>RET</kbd> key), the <tt>`shell'</tt>
+functionality uses its own default values.
+</p>
+<p>When <code>shell</code> functionality uses its own default values, the final
+copyright note looks like the following:
+</p>
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a2"></a>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomthing.sh -- The function description goes here.
+ 4| #
+ 5| # Copyright (C) 2003, 2010 The CentOS Project
+ 6| # 
+ 7| # This program is free software; you can redistribute it and/or modify
+ 8| # it under the terms of the GNU General Public License as published by
+ 9| # the Free Software Foundation; either version 2 of the License, or
+10| # (at your option) any later version.
+11| # 
+12| # This program is distributed in the hope that it will be useful, but
+13| # WITHOUT ANY WARRANTY; without even the implied warranty of
+14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+15| # General Public License for more details.
+16| #
+17| # You should have received a copy of the GNU General Public License
+18| # along with this program; if not, write to the Free Software
+19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+20| # USA.
+21| #
+22| # ----------------------------------------------------------------------
+23| # $Id$
+24| # ----------------------------------------------------------------------
+25|
+26| function doSomething {
+27|
+28| }
+</pre>
+</div><p><strong>Figure 1.5: The function script comment example
+</strong>
+</p>
+<p>Relevant lines in the above structure are lines from 5 to 22.  Pay
+attention how the copyright line was built, and how the license was
+added into the top comment where previously was just three dots.
+Everything else in the file was left immutable. 
+</p>
+<p>To change copyright information (i.e., full name or year information),
+run the <code>shell</code> functionality over the root directory containing
+the script files you want to update copyright in and enter the
+appropriate information when it be requested. You can run the
+<code>shell</code> functionality as many times as you need to.
+</p>
+<p>To change copyright license (i.e., the text in-between lines 7 and
+20), you need to edit the <tt>`Config/tpl_forCopyright.sed'</tt> file, set
+the appropriate information, and run the <code>shell</code> functionality
+once again for changes to take effect over the files you specify.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> The <tt>`centos-art.sh'</tt> script is released as: 
+</p>
+<pre class="verbatim">GNU GENERAL PUBLIC LICENSE
+Version 2, June 1991
+
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+</pre>
+<p>Do not change the license information under which <tt>`centos-art.sh'</tt>
+script is released. Instead, if you think a different license must be
+used, please share your reasons at <a class="mailto" href="mailto:centos-devel@centos-art.sh">CentOS Developers mailing list</a>.
+</p></blockquote>
+
 
 <a name="SEC332"></a>
-<h4 class="subsubsection"> 1.60.2.1 Metadata maintainance </h4>
-
-<p>The metadata used is defined by Inkscape 0.46 using the SVG standard
-markup. The <tt>`centos-art.sh'</tt> script replaces everything
-in-between <code>&lt;metadata</code> and <code>&lt;/metadata&gt;</code> tags with a
-predefined metadata template we've set for this purpose.
-</p>
-<p>The metadata template was created using the metadata information of a
-file which, using Inkscape 0.46, all metadata fields were set. This
-created a complete markup representation of how SVG metadata would
-look like. Later, we replaced every single static value with a
-translation marker in the form <samp>`=SOMETEXT='</samp>, where
-<code>SOMETEXT</code> is the name of its main opening tag. Later, we
-transform the metadata template into a sed replacement set of commads
-escaping new lines at the end of each line.
-</p>
-<p>With metadata template in place, the <tt>`centos-art.sh'</tt> script uses
-it to create a metadata template instance for the file being processed
-currently.  The metadata template instance contains the metadata
-portion of sed replacement commands with translation markers already
-traduced.  In this action, instance creation, is where we take
-advantage of automation and generate metadata values like title, date,
-keywords, source, identifier, and relation dynamically, based on the
-file path <tt>`centos-art.sh'</tt> script is currently creating metadata
-information for.
-</p>
-<p>With metadata template instance in place, the <tt>`centos-art.sh'</tt>
-script uses it to replace real values inside all <samp>`.svg'</samp> files
-under the current location you're running the <tt>`centos-art.sh'</tt>
-script on.  Default behaviour is to ask user to enter each metadatum
-required, one by one. If user leaves metadatum empty, by pressing
-<kbd>RET</kbd> key, <tt>`centos-art.sh'</tt> uses its default value.
-</p>
-<p>The <tt>`centos-art.sh'</tt> script modifies the following metadata:
-</p>
-<dl compact="compact">
-<dt> <samp>`Title'</samp></dt>
-<dd><p>Name by which this document is formally known. If no value is set
-here, <tt>`centos-art.sh'</tt> script uses the file name as title.
-</p>
-</dd>
-<dt> <samp>`Date'</samp></dt>
-<dd><p>Date associated with the creation of this document (YYYY-MM-DD). If no
-value is set here, <tt>`centos-art.sh'</tt> script uses the current date
-information as in <code>date +%Y-%m-%d</code>.
-</p>
-</dd>
-<dt> <samp>`Creator'</samp></dt>
-<dd><p>Name of entity primarily responsible for making the content of this
-document. If no value is set here, <tt>`centos-art.sh'</tt> script uses
-the string <samp>`The CentOS Project'</samp>.
-</p>
-</dd>
-<dt> <samp>`Rights'</samp></dt>
-<dd><p>Name of entity with rights to the intellectual Property of this
-document. If no value is set here, <tt>`centos-art.sh'</tt> script uses
-the string <samp>`The CentOS Project'</samp>.
-</p>
-</dd>
-<dt> <samp>`Publisher'</samp></dt>
-<dd><p>Name of entity responsible for making this document available. If no
-value is set here, <tt>`centos-art.sh'</tt> script uses the string
-<samp>`The CentOS Project'</samp>.
-</p>
-</dd>
-<dt> <samp>`Identifier'</samp></dt>
-<dd><p>Unique URI to reference this document. If no value is set here,
-<tt>`centos-art.sh'</tt> script uses the current file path to build the
-related url that points to current file location inside repository
-central server.
-</p>
-</dd>
-<dt> <samp>`Source'</samp></dt>
-<dd><p>Unique URI to reference the source of this document. If no value is
-set here, <tt>`centos-art.sh'</tt> script uses current file path to build
-the related url that points to current file location inside repository
-central server.
-</p>
-</dd>
-<dt> <samp>`Relation'</samp></dt>
-<dd><p>Unique URI to a related document. If no value is set here,
-<tt>`centos-art.sh'</tt> script uses current file path to build the
-related url that points to current file location inside repository
-central server.
-</p>
-</dd>
-<dt> <samp>`Language'</samp></dt>
-<dd><p>Two-letter language tag with optional subtags for the language of this
-document. (e.g. <samp>`en-GB'</samp>). If no value is set here,
-<tt>`centos-art.sh'</tt> script uses the current locale information as in
-<code>cli_getCurrentLocale</code> function.
-</p>
-</dd>
-<dt> <samp>`Keywords'</samp></dt>
-<dd><p>The topic of this document as comma-separated key words, prhases, or
-classifications. If no value is set here, <tt>`centos-art.sh'</tt> script
-uses file path to build 
-</p>
-</dd>
-<dt> <samp>`Coverage'</samp></dt>
-<dd><p>Extent or scope of this document. If no value is set here,
-<tt>`centos-art.sh'</tt> script uses the string <samp>`The CentOS Project'</samp>.
-</p>
-</dd>
-<dt> <samp>`Description'</samp></dt>
-<dd><p>Description about the document. If no value is set here,
-<tt>`centos-art.sh'</tt> script uses uses empty value as default.
-</p>
-</dd>
-<dt> <samp>`Contributors'</samp></dt>
-<dd><p>People that contributes in the creation/maintainance of the document.
-If no value is set here, <tt>`centos-art.sh'</tt> script uses uses empty
-value as default.
-</p></dd>
-</dl>
-
-<p>The <samp>`License'</samp> metadatum is not set as a choise, by now. It is
-fixed <a class="www" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Attribution Share-Alike 3.0 License</a>. This is done in order to
-grant license consistency among all SVG files we manage inside CentOS
-Artwork Repository.
-</p>
-<a name="IDX33"></a>
-
-<a name="SEC333"></a>
-<h4 class="subsubsection"> 1.60.2.2 Unused definitions </h4>
-
-<p>Many of the no-longer-used gradients, patterns, and markers (more
-precisely, those which you edited manually) remain in the
-corresponding palettes and can be reused for new objects. However if
-you want to optimize your document, use the <samp>`Vacuum Defs'</samp> command
-in <samp>`File'</samp> menu. It will remove any gradients, patterns, or
-markers which are not used by anything in the document, making the
-file smaller. 
-</p>
-<p>If you have one or two couple of files, removing unused definitions
-using the graphical interface may be enough to you.  In contrast, if
-you have dozens or even houndreds of scalable vector graphics files to
-maintain it is not a fun task to use the graphical interface to remove
-unused definitions editing those files one by one.
-</p>
-<p>To remove unused definitions from several scalable vector graphics
-files, the <tt>`centos-art.sh'</tt> script uses Inkscape command-line
-interface, specifically with the <samp>`--vaccum-defs'</samp> option.
-</p>
-
-<a name="SEC334"></a>
 <h3 class="subsection"> 1.60.3 Usage </h3>
 
 <dl compact="compact">
-<dt> <code>centos-art svg --update-metadata='path/to/dir'</code></dt>
-<dt> <code>centos-art svg --update-metadata='path/to/dir' --filter='regex'</code></dt>
-<dd><p>Use these commands to update metadata information to <samp>`.svg'</samp> files
-under <samp>`path/to/dir'</samp> directory.
-</p>
-</dd>
-<dt> <code>centos-art svg --vacuum-defs='path/to/dir'</code></dt>
-<dt> <code>centos-art svg --vacuum-defs='path/to/dir' --filter='regex'</code></dt>
-<dd><p>Use these commands to remove unused definitions inside <samp>`.svg'</samp>
-files under <samp>`path/to/dir'</samp> directory. 
+<dt> <code>centos-art sh --update-copyright='path/to/dir'</code></dt>
+<dt> <code>centos-art sh --update-copyright='path/to/dir' --filter='regex'</code></dt>
+<dd><p>Use these commands to update copyright information in <samp>`.sh'</samp> files
+under <samp>`path/to/dir'</samp> directory. 
 </p></dd>
 </dl>
 
@@ -267,12 +235,12 @@ a file, the <samp>`regex'</samp> regular expresion must match the whole file
 path not just the file name. 
 </p></blockquote>
 
-<p>For example, if you want to match all <tt>`summary.svg'</tt> files inside
-<tt>`path/to/dir'</tt>, use the <code>.+/summary</code> regular expression.
-Later, <tt>`centos-art.sh'</tt> script uses this value inside
-<code>^$REGEX\.svg$</code> expression in order to build the final regular
-expression (i.e., <code>^.+/summary\.svg$</code>) that is evaluated against
-available file paths inside the list of files to process.
+<p>For example, if you want to match all <tt>`render.conf.sh'</tt> files
+inside <tt>`path/to/dir'</tt>, use the <code>.+/render.conf</code> regular
+expression.  Later, <tt>`centos-art.sh'</tt> script uses this value inside
+<code>^$REGEX\.sh$</code> expression in order to build the final regular
+expression (i.e., <code>^.+/render.conf\.sh$</code>) that is evaluated
+against available file paths inside the list of files to process.
 </p>
 <p>Exceptionally, when you provide <samp>`--filter='regex''</samp> in the way
 that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
@@ -281,22 +249,22 @@ that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
 list of files to process. 
 </p>
 
-<a name="SEC335"></a>
+<a name="SEC333"></a>
 <h3 class="subsection"> 1.60.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_50.html#SEC261">1.49 The <tt>`trunk/Scripts/Bash'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_51.html#SEC266">1.50 The <tt>`trunk/Scripts/Bash'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC334" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_62.html#SEC336" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC332" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_62.html#SEC334" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC329" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC349" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC354" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">

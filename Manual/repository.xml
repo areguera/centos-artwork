@@ -53,6 +53,11 @@
       <para><indexterm index="cp">File system</indexterm></para>
       <menu>
         <menuentry>
+          <menunode>Filesystem branches</menunode>
+          <menutitle>Filesystem branches</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Filesystem tags</menunode>
           <menutitle>Filesystem tags</menutitle>
           <menucomment></menucomment>
@@ -366,8 +371,53 @@
     </chapter>
   </node>
   <node>
+    <nodename>Filesystem branches</nodename>
+    <nodenext>Filesystem tags</nodenext>
+    <nodeup>Filesystem</nodeup>
+    <section>
+      <title>The <file>branches</file> Directory</title>
+      <para><indexterm index="cp">Filesystem branches</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Filesystem tags</nodename>
     <nodenext>Filesystem trunk</nodenext>
+    <nodeprev>Filesystem branches</nodeprev>
     <nodeup>Filesystem</nodeup>
     <section>
       <title>The <file>tags</file> Directory</title>

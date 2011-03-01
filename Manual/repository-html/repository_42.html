@@ -20,10 +20,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 1.41 The trunk/Locales/Identity/Models Directory</title>
+<title>CentOS Artwork Repository: 1.41 The trunk/Locales/Identity/Fonts Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 1.41 The trunk/Locales/Identity/Models Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 1.41 The trunk/Locales/Identity/Models Directory">
+<meta name="description" content="CentOS Artwork Repository: 1.41 The trunk/Locales/Identity/Fonts Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 1.41 The trunk/Locales/Identity/Fonts Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -52,40 +52,94 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_41.html#SEC220" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC222" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_41.html#SEC219" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC221" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC349" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC354" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_65.html#SEC350" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC355" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Filesystem-trunk-Locales-Identity-Models"></a>
+<a name="Filesystem-trunk-Locales-Identity-Fonts"></a>
+<a name="SEC220"></a>
+<h2 class="section"> 1.41 The <tt>`trunk/Locales/Identity/Fonts'</tt> Directory </h2>
+
+
 <a name="SEC221"></a>
-<h2 class="section"> 1.41 The <tt>`trunk/Locales/Identity/Models'</tt> Directory </h2>
-
-
-<a name="SEC222"></a>
 <h3 class="subsection"> 1.41.1 Goals </h3>
+
+<p>This section exists to organize fonts translation files.
+</p>
+<a name="SEC222"></a>
+<h3 class="subsection"> 1.41.2 Description </h3>
+
+<p>Translation files, inside <tt>`trunk/Translations/Fonts'</tt>, have the
+following structure:
+</p>
+<pre class="verbatim">s!font-family:Denmark!font-family:DejaVu LGC Sans!
+s!font-weight:normal!font-weight:bold!
+s!font-style:normal!font-style:italic!
+</pre>
+<p>Inside <tt>`trunk/Translations/Fonts'</tt>, there is one translation file
+for each font preview image you want to produce. This way, we create
+one translation file for each font-family we use somewhere inside
+CentOS visual identity.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> Do not create translation files for
+font-families not used somewhere inside CentOS visual identity. The
+identity of font entry (see section <a href="repository_7.html#SEC27">The <tt>`trunk/Identity/Fonts'</tt> Directory</a>) is used as
+reference when someone needs to know which font-families are allowed
+to use inside CentOS visual identity.
+</p></blockquote>
 
 
 <a name="SEC223"></a>
-<h3 class="subsection"> 1.41.2 Description </h3>
+<h4 class="subsubsection"> 1.41.2.1 Translation Markers </h4>
+
+<p>Inside <tt>`trunk/Translations/Identity/Fonts'</tt>, translation files
+combine the following translation markers:
+</p>
+<dl compact="compact">
+<dt> <samp>`font-family:Denmark'</samp></dt>
+<dd><p>Specify which font family to use when rendering font preview images.
+</p></dd>
+<dt> <samp>`font-weight:normal'</samp></dt>
+<dd><p>Specify which font weight to use when rendering font preview images.
+</p></dd>
+<dt> <samp>`font-style:normal'</samp></dt>
+<dd><p>Specify which font style to use when rendering font preview images.
+</p></dd>
+</dl>
 
 
 <a name="SEC224"></a>
 <h3 class="subsection"> 1.41.3 Usage </h3>
 
+<p>Inside <tt>`trunk/Translations/Fonts'</tt> you use your favorite text
+editor to create translation files.  Inside
+<tt>`trunk/Translations/Fonts'</tt> there is not translation template
+directory (<tt>`Tpl/'</tt>), nor translation rendering using
+<code>centos-art</code> script.  For example, to create the
+<tt>`dejavu_lgc_sans-boldoblique.sed'</tt> translation file using
+<code>vim</code> editor, type the following command:
+</p>
+<pre class="verbatim">vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.sed
+</pre>
 
 <a name="SEC225"></a>
 <h3 class="subsection"> 1.41.4 See also </h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_7.html#SEC27">1.6 The <tt>`trunk/Identity/Fonts'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 
 
@@ -94,8 +148,8 @@ ul.toc {list-style: none}
 <td valign="middle" align="left">[<a href="repository_43.html#SEC226" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC221" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC349" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC220" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_65.html#SEC354" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
