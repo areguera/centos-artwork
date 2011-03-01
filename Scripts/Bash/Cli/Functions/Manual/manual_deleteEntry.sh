@@ -70,6 +70,9 @@ function manual_deleteEntry {
     # the repository, nor marked to be removed) are brought down to
     # the working copy again.
     svn del ${ENTRIES} --quiet
+    if [[ $? -ne 0 ]];then
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
     # Print separator line.
     cli_printMessage '-' 'AsSeparatorLine'
