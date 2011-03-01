@@ -34,8 +34,8 @@ function manual_updateNodes {
     # Re-build node structure based on menu information.
     for NODE in $NODES;do
 
-        NODE=$(echo "$NODE" | sed -r 's!:! !g')
-        SECT=$(echo "$NODE" | sed -r 's! !/!g')
+        NODE=$(echo "${NODE}" | sed -r 's!:! !g')
+        SECT=$(echo "$NODE" | sed -r 's! !/!g' | sed "s!${MANUAL_CHAPTER_NAME}/!!")
         INCL=$(echo "$NODE" | sed -r 's! !/!g').texi
         CIND=$(echo "$NODE")
 
@@ -51,7 +51,7 @@ function manual_updateNodes {
 
         # Output node information based on texinfo menu.
         echo "@node $NODE"
-        echo "@section $SECT"
+        echo "@section `eval_gettext "The @file{\\\$SECT} Directory"`"
         echo "@cindex $CIND"
         echo "@include $INCL"
         echo ""
