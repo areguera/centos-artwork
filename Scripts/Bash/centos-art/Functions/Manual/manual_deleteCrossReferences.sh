@@ -32,10 +32,19 @@ function manual_deleteCrossReferences {
 
     local -a PATTERN
     local -a REPLACE
+    local LOCATION=''
 
-    # Build the node string using global entry (ENTRY) variable being
-    # processed currently.
-    local NODE=$(echo "$ENTRY" \
+    # Define entry location. Verify first argument to make this
+    # function reusable. If no value is passed as first argument use
+    # entry global information value as default value instead.
+    if [[ "$1" != '' ]];then
+        LOCATION="$1"
+    else
+        LOCATION="$ENTRY"
+    fi
+
+    # Build the node string using entry location.
+    local NODE=$(echo "$LOCATION" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
@@ -72,9 +81,9 @@ function manual_deleteCrossReferences {
     # of `label' feature and the `N' command in order to build a
     # pattern space that includes the newline character in it. Here we
     # use the `a' letter to name the label we use, followed by N
-    # command to expand the pattern space, the s command to make the
-    # pattern replacement using the `g' flag to make it global and
-    # finaly the command `b' to branch label named `a'.
+    # command to add a newline to the pattern space, the s command to
+    # make the pattern replacement using the `g' flag to make it
+    # global and finaly the command `b' to branch label named `a'.
     sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${ENTRIES}
 
     # Update menu-related cross references. Menu-related cross
