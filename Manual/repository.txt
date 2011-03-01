@@ -4,13 +4,13 @@ Table of Contents
 CentOS Artwork Repository
 1 Introduction
 2 File System
-  2.1 The `branches' Directory
+  2.1 branches
     2.1.1 Goals
     2.1.2 Description
     2.1.3 Usage
     2.1.4 See also
-  2.2 The `trunk' Directory
-  2.3 The `trunk/Identity' Directory
+  2.2 Filesystem/trunk
+  2.3 Filesystem/trunk/Identity
     2.3.1 Goals
     2.3.2 Description
     2.3.3 Usage
@@ -19,52 +19,52 @@ CentOS Artwork Repository
       2.3.4.2 When image-based files are rendered
     2.3.5 See also
     2.3.6 References
-  2.4 The `trunk/Identity/Brands' Directory
+  2.4 Filesystem/trunk/Identity/Brands
     2.4.1 Goals
     2.4.2 Description
     2.4.3 Usage
     2.4.4 See also
-  2.5 The `trunk/Identity/Fonts' Directory
+  2.5 Filesystem/trunk/Identity/Fonts
     2.5.1 Goals
     2.5.2 Description
     2.5.3 Usage
     2.5.4 See also
-  2.6 The `trunk/Identity/Icons' Directory
+  2.6 Filesystem/trunk/Identity/Icons
     2.6.1 Goals
     2.6.2 Description
     2.6.3 Usage
     2.6.4 See also
-  2.7 The `trunk/Identity/Isolinux' Directory
+  2.7 Filesystem/trunk/Identity/Isolinux
     2.7.1 Goals
     2.7.2 Description
     2.7.3 Usage
     2.7.4 See also
-  2.8 The `trunk/Identity/Models' Directory
+  2.8 Filesystem/trunk/Identity/Models
     2.8.1 Goals
     2.8.2 Description
     2.8.3 Usage
     2.8.4 See also
-  2.9 The `trunk/Identity/Models/Css' Directory
+  2.9 Filesystem/trunk/Identity/Models/Css
     2.9.1 Goals
     2.9.2 Description
     2.9.3 Usage
     2.9.4 See also
-  2.10 The `trunk/Identity/Models/Html' Directory
+  2.10 Filesystem/trunk/Identity/Models/Html
     2.10.1 Goals
     2.10.2 Description
     2.10.3 Usage
     2.10.4 See also
-  2.11 The `trunk/Identity/Models/Img/Promo/Web' Directory
+  2.11 Filesystem/trunk/Identity/Models/Img/Promo/Web
     2.11.1 Goals
     2.11.2 Description
     2.11.3 Usage
     2.11.4 See also
-  2.12 The `trunk/Identity/Models/Tpl' Directory
+  2.12 Filesystem/trunk/Identity/Models/Tpl
     2.12.1 Goals
     2.12.2 Description
     2.12.3 Usage
     2.12.4 See also
-  2.13 The `trunk/Identity/Models/Tpl/Promo/Web' Directory
+  2.13 Filesystem/trunk/Identity/Models/Tpl/Promo/Web
     2.13.1 Goals
     2.13.2 The CentOS web environment
       2.13.2.1 Design model (without ads)
@@ -79,64 +79,64 @@ CentOS Artwork Repository
       2.13.2.10 Priority configuration
     2.13.3 Usage
     2.13.4 See also
-  2.14 The `trunk/Identity/Models/Xcf' Directory
+  2.14 Filesystem/trunk/Identity/Models/Xcf
     2.14.1 Goals
     2.14.2 Description
     2.14.3 Usage
     2.14.4 See also
-  2.15 The `trunk/Identity/Release' Directory
+  2.15 Filesystem/trunk/Identity/Release
     2.15.1 Goals
     2.15.2 Description
     2.15.3 Usage
     2.15.4 See also
-  2.16 The `trunk/Identity/Themes' Directory
+  2.16 Filesystem/trunk/Identity/Themes
     2.16.1 Goals
     2.16.2 Description
     2.16.3 Usage
     2.16.4 See also
-  2.17 The `trunk/Identity/Themes/Models' Directory
+  2.17 Filesystem/trunk/Identity/Themes/Models
     2.17.1 Goals
     2.17.2 Description
     2.17.3 Usage
     2.17.4 See also
-  2.18 The `trunk/Identity/Themes/Models/Alternative' Directory
+  2.18 Filesystem/trunk/Identity/Themes/Models/Alternative
     2.18.1 Goals
     2.18.2 Description
     2.18.3 Usage
     2.18.4 See also
-  2.19 The `trunk/Identity/Themes/Models/Default' Directory
+  2.19 Filesystem/trunk/Identity/Themes/Models/Default
     2.19.1 Goals
     2.19.2 Description
     2.19.3 Usage
     2.19.4 See also
-  2.20 The `trunk/Identity/Themes/Models/Default/Distro' Directory
+  2.20 Filesystem/trunk/Identity/Themes/Models/Default/Distro
     2.20.1 Goals
     2.20.2 Description
       2.20.2.1 One theme for all major releases
       2.20.2.2 One theme for each major release
     2.20.3 Usage
     2.20.4 See also
-  2.21 The `trunk/Identity/Themes/Models/Default/Distro/Anaconda' Directory
+  2.21 Filesystem/trunk/Identity/Themes/Models/Default/Distro/Anaconda
     2.21.1 Goals
     2.21.2 Description
     2.21.3 Usage
     2.21.4 See also
-  2.22 The `trunk/Identity/Themes/Models/Default/Promo' Directory
+  2.22 Filesystem/trunk/Identity/Themes/Models/Default/Promo
     2.22.1 Goals
     2.22.2 Description
     2.22.3 Usage
     2.22.4 See also
-  2.23 The `trunk/Identity/Themes/Models/Default/Web' Directory
+  2.23 Filesystem/trunk/Identity/Themes/Models/Default/Web
     2.23.1 Goals
     2.23.2 Description
     2.23.3 Usage
     2.23.4 See also
-  2.24 The `trunk/Identity/Themes/Motifs' Directory
+  2.24 Filesystem/trunk/Identity/Themes/Motifs
     2.24.1 Goals
     2.24.2 Description
     2.24.3 Usage
     2.24.4 See also
-  2.25 The `trunk/Identity/Themes/Motifs/Flame' Directory
+  2.25 Filesystem/trunk/Identity/Themes/Motifs/Flame
     2.25.1 Goals
     2.25.2 Description
     2.25.3 Construction
@@ -145,47 +145,47 @@ CentOS Artwork Repository
       2.25.3.3 Step 3: Add flame motif
       2.25.3.4 Step 4: Add foreground color
     2.25.4 See also
-  2.26 The `trunk/Identity/Themes/Motifs/Modern' Directory
+  2.26 Filesystem/trunk/Identity/Themes/Motifs/Modern
     2.26.1 Presentation
     2.26.2 Construction
     2.26.3 Usage
     2.26.4 See also
-  2.27 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds' Directory
+  2.27 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds
     2.27.1 Goals
     2.27.2 Description
     2.27.3 Usage
     2.27.4 See also
-  2.28 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img' Directory
+  2.28 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img
     2.28.1 Goals
     2.28.2 Description
     2.28.3 Usage
     2.28.4 See also
-  2.29 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl' Directory
+  2.29 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl
     2.29.1 Goals
     2.29.2 Description
     2.29.3 Usage
     2.29.4 See also
-  2.30 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf' Directory
+  2.30 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf
     2.30.1 Goals
     2.30.2 Description
     2.30.3 Usage
     2.30.4 See also
-  2.31 The `trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress' Directory
+  2.31 Filesystem/trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
     2.31.1 Goals
     2.31.2 Description
     2.31.3 Usage
     2.31.4 See also
-  2.32 The `trunk/Identity/Themes/Motifs/Modern/Palettes' Directory
+  2.32 Filesystem/trunk/Identity/Themes/Motifs/Modern/Palettes
     2.32.1 Goals
     2.32.2 Description
     2.32.3 Usage
     2.32.4 See also
-  2.33 The `trunk/Identity/Themes/Motifs/TreeFlower' Directory
+  2.33 Filesystem/trunk/Identity/Themes/Motifs/TreeFlower
     2.33.1 Goals
     2.33.2 Description
     2.33.3 Usage
     2.33.4 See also
-  2.34 The `trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds' Directory
+  2.34 Filesystem/trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds
     2.34.1 Goals
     2.34.2 Description
       2.34.2.1 Desktop background
@@ -193,18 +193,18 @@ CentOS Artwork Repository
       2.34.2.3 Grub background
     2.34.3 Usage
     2.34.4 See also
-  2.35 The `trunk/Identity/Widgets' Directory
+  2.35 Filesystem/trunk/Identity/Widgets
     2.35.1 Goals
     2.35.2 Description
     2.35.3 Usage
     2.35.4 See also
-  2.36 The `trunk/Locales' Directory
-  2.37 The `trunk/Locales/Identity' Directory
+  2.36 Filesystem/trunk/Locales
+  2.37 Filesystem/trunk/Locales/Identity
     2.37.1 Goals
     2.37.2 Description
     2.37.3 Usage
     2.37.4 See also
-  2.38 The `trunk/Locales/Identity/Brands' Directory
+  2.38 Filesystem/trunk/Locales/Identity/Brands
     2.38.1 Goals
     2.38.2 Description
       2.38.2.1 Conventional file names
@@ -212,64 +212,64 @@ CentOS Artwork Repository
       2.38.2.3 Translation markers
     2.38.3 Usage
     2.38.4 See also
-  2.39 The `trunk/Locales/Identity/Brands/Tpl' Directory
+  2.39 Filesystem/trunk/Locales/Identity/Brands/Tpl
     2.39.1 Goals
     2.39.2 Description
     2.39.3 Usage
     2.39.4 See also
-  2.40 The `trunk/Locales/Identity/Fonts' Directory
+  2.40 Filesystem/trunk/Locales/Identity/Fonts
     2.40.1 Goals
     2.40.2 Description
       2.40.2.1 Translation Markers
     2.40.3 Usage
     2.40.4 See also
-  2.41 The `trunk/Locales/Identity/Models' Directory
+  2.41 Filesystem/trunk/Locales/Identity/Models
     2.41.1 Goals
     2.41.2 Description
     2.41.3 Usage
     2.41.4 See also
-  2.42 The `trunk/Locales/Identity/Release' Directory
+  2.42 Filesystem/trunk/Locales/Identity/Release
     2.42.1 Goals
     2.42.2 Description
     2.42.3 Usage
     2.42.4 See also
-  2.43 The `trunk/Locales/Identity/Themes' Directory
+  2.43 Filesystem/trunk/Locales/Identity/Themes
     2.43.1 Goals
     2.43.2 Description
     2.43.3 Usage
     2.43.4 See also
-  2.44 The `trunk/Locales/Identity/Themes/Backgrounds' Directory
+  2.44 Filesystem/trunk/Locales/Identity/Themes/Backgrounds
     2.44.1 Goals
     2.44.2 Description
     2.44.3 Usage
     2.44.4 See also
-  2.45 The `trunk/Locales/Identity/Themes/Distro/Anaconda/Progress' Directory
+  2.45 Filesystem/trunk/Locales/Identity/Themes/Distro/Anaconda/Progress
     2.45.1 Goals
     2.45.2 Description
     2.45.3 Usage
     2.45.4 See also
-  2.46 The `trunk/Locales/Identity/Widgets' Directory
+  2.46 Filesystem/trunk/Locales/Identity/Widgets
     2.46.1 Goals
     2.46.2 Description
     2.46.3 Usage
     2.46.4 See also
-  2.47 The `trunk/Manuals' Directory
+  2.47 Filesystem/trunk/Manuals
     2.47.1 Goals
     2.47.2 Description
     2.47.3 Usage
     2.47.4 See also
-  2.48 The `trunk/Scripts' Directory
+  2.48 Filesystem/trunk/Scripts
     2.48.1 Goals
     2.48.2 Description
     2.48.3 Usage
     2.48.4 See also
-  2.49 The `trunk/Scripts/Bash' Directory
+  2.49 Filesystem/trunk/Scripts/Bash
     2.49.1 Goals
     2.49.2 Description
     2.49.3 Usage
     2.49.4 See also
-  2.50 The `trunk/Scripts/Bash/Cli' Directory
-  2.51 The `trunk/Scripts/Bash/Cli/Functions' Directory
+  2.50 Filesystem/trunk/Scripts/Bash/Cli
+  2.51 Filesystem/trunk/Scripts/Bash/Cli/Functions
     2.51.1 Goals
     2.51.2 Description
     2.51.3 Usage
@@ -277,27 +277,27 @@ CentOS Artwork Repository
       2.51.3.2 Global functions
       2.51.3.3 Specific functions
     2.51.4 See also
-  2.52 The `trunk/Scripts/Bash/Cli/Functions/Help' Directory
+  2.52 Filesystem/trunk/Scripts/Bash/Cli/Functions/Help
     2.52.1 Goals
     2.52.2 Description
     2.52.3 Usage
     2.52.4 See also
-  2.53 The `trunk/Scripts/Bash/Cli/Functions/Html' Directory
+  2.53 Filesystem/trunk/Scripts/Bash/Cli/Functions/Html
     2.53.1 Goals
     2.53.2 Description
     2.53.3 Usage
     2.53.4 See also
-  2.54 The `trunk/Scripts/Bash/Cli/Functions/Locale' Directory
+  2.54 Filesystem/trunk/Scripts/Bash/Cli/Functions/Locale
     2.54.1 Goals
     2.54.2 Description
     2.54.3 Usage
     2.54.4 See also
-  2.55 The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory
+  2.55 Filesystem/trunk/Scripts/Bash/Cli/Functions/Manual
     2.55.1 Goals
     2.55.2 Description
     2.55.3 Usage
     2.55.4 See also
-  2.56 The `trunk/Scripts/Bash/Cli/Functions/Path' Directory
+  2.56 Filesystem/trunk/Scripts/Bash/Cli/Functions/Path
     2.56.1 Goals
     2.56.2 Description
       2.56.2.1 Repository layout
@@ -308,7 +308,7 @@ CentOS Artwork Repository
       2.56.2.6 What is the right place to store it?
     2.56.3 Usage
     2.56.4 See also
-  2.57 The `trunk/Scripts/Bash/Cli/Functions/Render' Directory
+  2.57 Filesystem/trunk/Scripts/Bash/Cli/Functions/Render
     2.57.1 Renderable identity directory structures
       2.57.1.1 Design template without translation
       2.57.1.2 Design template with translation (one-to-one)
@@ -318,7 +318,7 @@ CentOS Artwork Repository
     2.57.3 Copying renderable directory structures
     2.57.4 Usage
     2.57.5 See also
-  2.58 The `trunk/Scripts/Bash/Cli/Functions/Render/Config' Directory
+  2.58 Filesystem/trunk/Scripts/Bash/Cli/Functions/Render/Config
     2.58.1 Goals
     2.58.2 Description
       2.58.2.1 The `render.conf.sh' identity model
@@ -326,19 +326,19 @@ CentOS Artwork Repository
       2.58.2.3 The `render.conf.sh' rendering actions
     2.58.3 Usage
     2.58.4 See also
-  2.59 The `trunk/Scripts/Bash/Cli/Functions/Shell' Directory
+  2.59 Filesystem/trunk/Scripts/Bash/Cli/Functions/Shell
     2.59.1 Goals
     2.59.2 Description
     2.59.3 Usage
     2.59.4 See also
-  2.60 The `trunk/Scripts/Bash/Cli/Functions/Svg' Directory
+  2.60 Filesystem/trunk/Scripts/Bash/Cli/Functions/Svg
     2.60.1 Goals
     2.60.2 Description
       2.60.2.1 Metadata maintainance
       2.60.2.2 Unused definitions
     2.60.3 Usage
     2.60.4 See also
-  2.61 The `trunk/Scripts/Bash/Cli/Functions/Verify' Directory
+  2.61 Filesystem/trunk/Scripts/Bash/Cli/Functions/Verify
     2.61.1 Goals
     2.61.2 Description
       2.61.2.1 Packages
@@ -346,16 +346,11 @@ CentOS Artwork Repository
       2.61.2.3 Environment variables
     2.61.3 Usage
     2.61.4 See also
-  2.62 The `trunk/Scripts/Python' Directory
+  2.62 Filesystem/trunk/Scripts/Python
     2.62.1 Goals
     2.62.2 Description
     2.62.3 Usage
     2.62.4 See also
-  2.63 The `tags' Directory
-    2.63.1 Goals
-    2.63.2 Description
-    2.63.3 Usage
-    2.63.4 See also
 Index
 
 
@@ -379,8 +374,8 @@ Welcome to CentOS Artwork Repository.
 2 File System
 *************
 
-2.1 The `branches' Directory
-============================
+2.1 branches
+============
 
 2.1.1 Goals
 -----------
@@ -400,11 +395,11 @@ Welcome to CentOS Artwork Repository.
 2.1.4 See also
 --------------
 
-2.2 The `trunk' Directory
-=========================
+2.2 Filesystem/trunk
+====================
 
-2.3 The `trunk/Identity' Directory
-==================================
+2.3 Filesystem/trunk/Identity
+=============================
 
 2.3.1 Goals
 -----------
@@ -520,8 +515,8 @@ Image-based files always end up having the `.png' extension.
 
    * `http://en.wikipedia.org/Corporate_identity' (and related links).
 
-2.4 The `trunk/Identity/Brands' Directory
-=========================================
+2.4 Filesystem/trunk/Identity/Brands
+====================================
 
 2.4.1 Goals
 -----------
@@ -537,8 +532,8 @@ Image-based files always end up having the `.png' extension.
 2.4.4 See also
 --------------
 
-2.5 The `trunk/Identity/Fonts' Directory
-========================================
+2.5 Filesystem/trunk/Identity/Fonts
+===================================
 
 2.5.1 Goals
 -----------
@@ -614,8 +609,8 @@ CentOS project corporate visual identity.
 2.5.4 See also
 --------------
 
-2.6 The `trunk/Identity/Icons' Directory
-========================================
+2.6 Filesystem/trunk/Identity/Icons
+===================================
 
 2.6.1 Goals
 -----------
@@ -631,8 +626,8 @@ CentOS project corporate visual identity.
 2.6.4 See also
 --------------
 
-2.7 The `trunk/Identity/Isolinux' Directory
-===========================================
+2.7 Filesystem/trunk/Identity/Isolinux
+======================================
 
 2.7.1 Goals
 -----------
@@ -648,8 +643,8 @@ CentOS project corporate visual identity.
 2.7.4 See also
 --------------
 
-2.8 The `trunk/Identity/Models' Directory
-=========================================
+2.8 Filesystem/trunk/Identity/Models
+====================================
 
 2.8.1 Goals
 -----------
@@ -668,8 +663,8 @@ build artworks.
 2.8.4 See also
 --------------
 
-2.9 The `trunk/Identity/Models/Css' Directory
-=============================================
+2.9 Filesystem/trunk/Identity/Models/Css
+========================================
 
 2.9.1 Goals
 -----------
@@ -690,8 +685,8 @@ to HTML design models.
 2.9.4 See also
 --------------
 
-2.10 The `trunk/Identity/Models/Html' Directory
-===============================================
+2.10 Filesystem/trunk/Identity/Models/Html
+==========================================
 
 2.10.1 Goals
 ------------
@@ -711,8 +706,8 @@ to HTML design models.
 2.10.4 See also
 ---------------
 
-2.11 The `trunk/Identity/Models/Img/Promo/Web' Directory
-========================================================
+2.11 Filesystem/trunk/Identity/Models/Img/Promo/Web
+===================================================
 
 2.11.1 Goals
 ------------
@@ -732,8 +727,8 @@ to HTML design models.
 2.11.4 See also
 ---------------
 
-2.12 The `trunk/Identity/Models/Tpl' Directory
-==============================================
+2.12 Filesystem/trunk/Identity/Models/Tpl
+=========================================
 
 2.12.1 Goals
 ------------
@@ -753,8 +748,8 @@ to HTML design models.
 2.12.4 See also
 ---------------
 
-2.13 The `trunk/Identity/Models/Tpl/Promo/Web' Directory
-========================================================
+2.13 Filesystem/trunk/Identity/Models/Tpl/Promo/Web
+===================================================
 
 2.13.1 Goals
 ------------
@@ -1067,8 +1062,8 @@ CentOS [base] and CentOS [updates] repositories.
    (1) The theme support of Mailman may be introduced in mailman-3.x.x
 release.
 
-2.14 The `trunk/Identity/Models/Xcf' Directory
-==============================================
+2.14 Filesystem/trunk/Identity/Models/Xcf
+=========================================
 
 2.14.1 Goals
 ------------
@@ -1088,8 +1083,8 @@ release.
 2.14.4 See also
 ---------------
 
-2.15 The `trunk/Identity/Release' Directory
-===========================================
+2.15 Filesystem/trunk/Identity/Release
+======================================
 
 2.15.1 Goals
 ------------
@@ -1105,8 +1100,8 @@ release.
 2.15.4 See also
 ---------------
 
-2.16 The `trunk/Identity/Themes' Directory
-==========================================
+2.16 Filesystem/trunk/Identity/Themes
+=====================================
 
 2.16.1 Goals
 ------------
@@ -1129,8 +1124,8 @@ CentOS themes are maintained by CentOS community.
 2.16.4 See also
 ---------------
 
-2.17 The `trunk/Identity/Themes/Models' Directory
-=================================================
+2.17 Filesystem/trunk/Identity/Themes/Models
+============================================
 
 2.17.1 Goals
 ------------
@@ -1163,8 +1158,8 @@ ready-to-use theme models.
 2.17.4 See also
 ---------------
 
-2.18 The `trunk/Identity/Themes/Models/Alternative' Directory
-=============================================================
+2.18 Filesystem/trunk/Identity/Themes/Models/Alternative
+========================================================
 
 2.18.1 Goals
 ------------
@@ -1190,8 +1185,8 @@ are maintained by CentOS Community.
 2.18.4 See also
 ---------------
 
-2.19 The `trunk/Identity/Themes/Models/Default' Directory
-=========================================================
+2.19 Filesystem/trunk/Identity/Themes/Models/Default
+====================================================
 
 2.19.1 Goals
 ------------
@@ -1223,8 +1218,8 @@ Motifs.
 2.19.4 See also
 ---------------
 
-2.20 The `trunk/Identity/Themes/Models/Default/Distro' Directory
-================================================================
+2.20 Filesystem/trunk/Identity/Themes/Models/Default/Distro
+===========================================================
 
 2.20.1 Goals
 ------------
@@ -1307,8 +1302,8 @@ the CentOS brand will exonerate user form visual isolation.
 2.20.4 See also
 ---------------
 
-2.21 The `trunk/Identity/Themes/Models/Default/Distro/Anaconda' Directory
-=========================================================================
+2.21 Filesystem/trunk/Identity/Themes/Models/Default/Distro/Anaconda
+====================================================================
 
 2.21.1 Goals
 ------------
@@ -1324,8 +1319,8 @@ the CentOS brand will exonerate user form visual isolation.
 2.21.4 See also
 ---------------
 
-2.22 The `trunk/Identity/Themes/Models/Default/Promo' Directory
-===============================================================
+2.22 Filesystem/trunk/Identity/Themes/Models/Default/Promo
+==========================================================
 
 2.22.1 Goals
 ------------
@@ -1350,8 +1345,8 @@ examples of promotion designs.
 2.22.4 See also
 ---------------
 
-2.23 The `trunk/Identity/Themes/Models/Default/Web' Directory
-=============================================================
+2.23 Filesystem/trunk/Identity/Themes/Models/Default/Web
+========================================================
 
 2.23.1 Goals
 ------------
@@ -1375,8 +1370,8 @@ standards should be consider here.
 2.23.4 See also
 ---------------
 
-2.24 The `trunk/Identity/Themes/Motifs' Directory
-=================================================
+2.24 Filesystem/trunk/Identity/Themes/Motifs
+============================================
 
 2.24.1 Goals
 ------------
@@ -1478,8 +1473,8 @@ recommendations:
 2.24.4 See also
 ---------------
 
-2.25 The `trunk/Identity/Themes/Motifs/Flame' Directory
-=======================================================
+2.25 Filesystem/trunk/Identity/Themes/Motifs/Flame
+==================================================
 
 2.25.1 Goals
 ------------
@@ -1679,8 +1674,8 @@ variables you may face.
 2.25.4 See also
 ---------------
 
-2.26 The `trunk/Identity/Themes/Motifs/Modern' Directory
-========================================================
+2.26 Filesystem/trunk/Identity/Themes/Motifs/Modern
+===================================================
 
 2.26.1 Presentation
 -------------------
@@ -1696,8 +1691,8 @@ variables you may face.
 2.26.4 See also
 ---------------
 
-2.27 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds' Directory
-====================================================================
+2.27 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds
+===============================================================
 
 2.27.1 Goals
 ------------
@@ -1817,8 +1812,8 @@ can contain subdirectories to help you organize the design process.
 2.27.4 See also
 ---------------
 
-2.28 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img' Directory
-========================================================================
+2.28 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img
+===================================================================
 
 2.28.1 Goals
 ------------
@@ -1838,8 +1833,8 @@ line interface.
 2.28.4 See also
 ---------------
 
-2.29 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl' Directory
-========================================================================
+2.29 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl
+===================================================================
 
 2.29.1 Goals
 ------------
@@ -1859,8 +1854,8 @@ line interface.
 2.29.4 See also
 ---------------
 
-2.30 The `trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf' Directory
-========================================================================
+2.30 Filesystem/trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf
+===================================================================
 
 2.30.1 Goals
 ------------
@@ -1886,8 +1881,8 @@ case you need the `Xcf/' directory.
 2.30.4 See also
 ---------------
 
-2.31 The `trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress' Directory
-=================================================================================
+2.31 Filesystem/trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress
+============================================================================
 
 2.31.1 Goals
 ------------
@@ -1942,8 +1937,8 @@ Progress) --); use the following commands:
 2.31.4 See also
 ---------------
 
-2.32 The `trunk/Identity/Themes/Motifs/Modern/Palettes' Directory
-=================================================================
+2.32 Filesystem/trunk/Identity/Themes/Motifs/Modern/Palettes
+============================================================
 
 2.32.1 Goals
 ------------
@@ -1964,8 +1959,8 @@ Theme palettes contain the unique color information required by theme.
 2.32.4 See also
 ---------------
 
-2.33 The `trunk/Identity/Themes/Motifs/TreeFlower' Directory
-============================================================
+2.33 Filesystem/trunk/Identity/Themes/Motifs/TreeFlower
+=======================================================
 
 2.33.1 Goals
 ------------
@@ -1981,8 +1976,8 @@ Theme palettes contain the unique color information required by theme.
 2.33.4 See also
 ---------------
 
-2.34 The `trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds' Directory
-========================================================================
+2.34 Filesystem/trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds
+===================================================================
 
 2.34.1 Goals
 ------------
@@ -2279,8 +2274,8 @@ following `syslinux.hex' file:
 2.34.4 See also
 ---------------
 
-2.35 The `trunk/Identity/Widgets' Directory
-===========================================
+2.35 Filesystem/trunk/Identity/Widgets
+======================================
 
 2.35.1 Goals
 ------------
@@ -2296,8 +2291,8 @@ following `syslinux.hex' file:
 2.35.4 See also
 ---------------
 
-2.36 The `trunk/Locales' Directory
-==================================
+2.36 Filesystem/trunk/Locales
+=============================
 
 The `trunk/Locales' directory exists to store the translation messages
 used to produce content in different languages.
@@ -2349,8 +2344,8 @@ that contain the translation messages themselves.
    Automation of localization tasks is achived through the `locale'
 functionality of command-line interface.
 
-2.37 The `trunk/Locales/Identity' Directory
-===========================================
+2.37 Filesystem/trunk/Locales/Identity
+======================================
 
 2.37.1 Goals
 ------------
@@ -2370,8 +2365,8 @@ functionality of command-line interface.
 2.37.4 See also
 ---------------
 
-2.38 The `trunk/Locales/Identity/Brands' Directory
-==================================================
+2.38 Filesystem/trunk/Locales/Identity/Brands
+=============================================
 
 2.38.1 Goals
 ------------
@@ -2465,8 +2460,8 @@ centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity
 2.38.4 See also
 ---------------
 
-2.39 The `trunk/Locales/Identity/Brands/Tpl' Directory
-======================================================
+2.39 Filesystem/trunk/Locales/Identity/Brands/Tpl
+=================================================
 
 2.39.1 Goals
 ------------
@@ -2480,8 +2475,8 @@ centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity
 2.39.4 See also
 ---------------
 
-2.40 The `trunk/Locales/Identity/Fonts' Directory
-=================================================
+2.40 Filesystem/trunk/Locales/Identity/Fonts
+============================================
 
 2.40.1 Goals
 ------------
@@ -2543,8 +2538,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 2.40.4 See also
 ---------------
 
-2.41 The `trunk/Locales/Identity/Models' Directory
-==================================================
+2.41 Filesystem/trunk/Locales/Identity/Models
+=============================================
 
 2.41.1 Goals
 ------------
@@ -2558,8 +2553,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 2.41.4 See also
 ---------------
 
-2.42 The `trunk/Locales/Identity/Release' Directory
-===================================================
+2.42 Filesystem/trunk/Locales/Identity/Release
+==============================================
 
 2.42.1 Goals
 ------------
@@ -2573,8 +2568,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 2.42.4 See also
 ---------------
 
-2.43 The `trunk/Locales/Identity/Themes' Directory
-==================================================
+2.43 Filesystem/trunk/Locales/Identity/Themes
+=============================================
 
 2.43.1 Goals
 ------------
@@ -2588,8 +2583,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 2.43.4 See also
 ---------------
 
-2.44 The `trunk/Locales/Identity/Themes/Backgrounds' Directory
-==============================================================
+2.44 Filesystem/trunk/Locales/Identity/Themes/Backgrounds
+=========================================================
 
 2.44.1 Goals
 ------------
@@ -2609,8 +2604,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 2.44.4 See also
 ---------------
 
-2.45 The `trunk/Locales/Identity/Themes/Distro/Anaconda/Progress' Directory
-===========================================================================
+2.45 Filesystem/trunk/Locales/Identity/Themes/Distro/Anaconda/Progress
+======================================================================
 
 2.45.1 Goals
 ------------
@@ -2702,8 +2697,8 @@ documentation entry (-- *Removed*(pxref:trunk Translations) --).
 2.45.4 See also
 ---------------
 
-2.46 The `trunk/Locales/Identity/Widgets' Directory
-===================================================
+2.46 Filesystem/trunk/Locales/Identity/Widgets
+==============================================
 
 2.46.1 Goals
 ------------
@@ -2723,8 +2718,8 @@ documentation entry (-- *Removed*(pxref:trunk Translations) --).
 2.46.4 See also
 ---------------
 
-2.47 The `trunk/Manuals' Directory
-==================================
+2.47 Filesystem/trunk/Manuals
+=============================
 
 2.47.1 Goals
 ------------
@@ -2744,8 +2739,8 @@ documentation entry (-- *Removed*(pxref:trunk Translations) --).
 2.47.4 See also
 ---------------
 
-2.48 The `trunk/Scripts' Directory
-==================================
+2.48 Filesystem/trunk/Scripts
+=============================
 
 2.48.1 Goals
 ------------
@@ -2768,8 +2763,8 @@ The `trunk/Scripts' directory exists to:
 2.48.4 See also
 ---------------
 
-2.49 The `trunk/Scripts/Bash' Directory
-=======================================
+2.49 Filesystem/trunk/Scripts/Bash
+==================================
 
 2.49.1 Goals
 ------------
@@ -2918,11 +2913,11 @@ Functions) --).
 2.49.4 See also
 ---------------
 
-2.50 The `trunk/Scripts/Bash/Cli' Directory
-===========================================
+2.50 Filesystem/trunk/Scripts/Bash/Cli
+======================================
 
-2.51 The `trunk/Scripts/Bash/Cli/Functions' Directory
-=====================================================
+2.51 Filesystem/trunk/Scripts/Bash/Cli/Functions
+================================================
 
 2.51.1 Goals
 ------------
@@ -4031,8 +4026,8 @@ available for you to use:
 2.51.4 See also
 ---------------
 
-2.52 The `trunk/Scripts/Bash/Cli/Functions/Help' Directory
-==========================================================
+2.52 Filesystem/trunk/Scripts/Bash/Cli/Functions/Help
+=====================================================
 
 2.52.1 Goals
 ------------
@@ -4052,8 +4047,8 @@ available for you to use:
 2.52.4 See also
 ---------------
 
-2.53 The `trunk/Scripts/Bash/Cli/Functions/Html' Directory
-==========================================================
+2.53 Filesystem/trunk/Scripts/Bash/Cli/Functions/Html
+=====================================================
 
 2.53.1 Goals
 ------------
@@ -4073,8 +4068,8 @@ available for you to use:
 2.53.4 See also
 ---------------
 
-2.54 The `trunk/Scripts/Bash/Cli/Functions/Locale' Directory
-============================================================
+2.54 Filesystem/trunk/Scripts/Bash/Cli/Functions/Locale
+=======================================================
 
 2.54.1 Goals
 ------------
@@ -4153,8 +4148,8 @@ following files:
 2.54.4 See also
 ---------------
 
-2.55 The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory
-============================================================
+2.55 Filesystem/trunk/Scripts/Bash/Cli/Functions/Manual
+=======================================================
 
 2.55.1 Goals
 ------------
@@ -4174,8 +4169,8 @@ following files:
 2.55.4 See also
 ---------------
 
-2.56 The `trunk/Scripts/Bash/Cli/Functions/Path' Directory
-==========================================================
+2.56 Filesystem/trunk/Scripts/Bash/Cli/Functions/Path
+=====================================================
 
 2.56.1 Goals
 ------------
@@ -4221,11 +4216,11 @@ from the point they were devided on. The `branches/' directory is
 mainly used to perform quality assurance tasks related to CentOS
 corporate visual identity.
 
-   The `tags/' directory (*note tags::) organizes parallel frozen lines
-to `branches/' directory.  The parallel frozen lines are immutable,
-nothing change inside them once they has been created.  The `tags/'
-directory is mainly used to publish final releases of CentOS corporate
-visual identity.
+   The `tags/' directory (-- *Removed*(pxref:tags) --) organizes
+parallel frozen lines to `branches/' directory.  The parallel frozen
+lines are immutable, nothing change inside them once they has been
+created.  The `tags/' directory is mainly used to publish final
+releases of CentOS corporate visual identity.
 
    The CentOS Artwork Repository layout is firmly grounded on a
 Subversion base.  Subversion (`http://subversion.tigris.org') is a
@@ -4497,8 +4492,8 @@ concepts for.
 2.56.4 See also
 ---------------
 
-2.57 The `trunk/Scripts/Bash/Cli/Functions/Render' Directory
-============================================================
+2.57 Filesystem/trunk/Scripts/Bash/Cli/Functions/Render
+=======================================================
 
 The `render' functionality exists to produce both identity and
 translation files on different levels of information (i.e., different
@@ -5195,8 +5190,8 @@ been duplicated, the functionality stops thereat.
 2.57.5 See also
 ---------------
 
-2.58 The `trunk/Scripts/Bash/Cli/Functions/Render/Config' Directory
-===================================================================
+2.58 Filesystem/trunk/Scripts/Bash/Cli/Functions/Render/Config
+==============================================================
 
 2.58.1 Goals
 ------------
@@ -5373,8 +5368,8 @@ structures only.
 2.58.4 See also
 ---------------
 
-2.59 The `trunk/Scripts/Bash/Cli/Functions/Shell' Directory
-===========================================================
+2.59 Filesystem/trunk/Scripts/Bash/Cli/Functions/Shell
+======================================================
 
 2.59.1 Goals
 ------------
@@ -5545,8 +5540,8 @@ matching as only file in the list of files to process.
 2.59.4 See also
 ---------------
 
-2.60 The `trunk/Scripts/Bash/Cli/Functions/Svg' Directory
-=========================================================
+2.60 Filesystem/trunk/Scripts/Bash/Cli/Functions/Svg
+====================================================
 
 2.60.1 Goals
 ------------
@@ -5733,8 +5728,8 @@ matching as only file in the list of files to process.
 2.60.4 See also
 ---------------
 
-2.61 The `trunk/Scripts/Bash/Cli/Functions/Verify' Directory
-============================================================
+2.61 Filesystem/trunk/Scripts/Bash/Cli/Functions/Verify
+=======================================================
 
 2.61.1 Goals
 ------------
@@ -5963,8 +5958,8 @@ following environment variables:
 2.61.4 See also
 ---------------
 
-2.62 The `trunk/Scripts/Python' Directory
-=========================================
+2.62 Filesystem/trunk/Scripts/Python
+====================================
 
 2.62.1 Goals
 ------------
@@ -5984,112 +5979,90 @@ following environment variables:
 2.62.4 See also
 ---------------
 
-2.63 The `tags' Directory
-=========================
-
-2.63.1 Goals
-------------
-
-   * ...
-
-2.63.2 Description
-------------------
-
-   * ...
-
-2.63.3 Usage
-------------
-
-   * ...
-
-2.63.4 See also
----------------
-
 Index
 *****
 
-branches:                                      See 2.1.      (line  385)
-File system:                                   See 2.        (line  382)
-Filesystem trunk:                              See 2.2.      (line  406)
-Filesystem trunk Identity:                     See 2.3.      (line  409)
-Filesystem trunk Identity Brands:              See 2.4.      (line  526)
-Filesystem trunk Identity Fonts:               See 2.5.      (line  543)
-Filesystem trunk Identity Icons:               See 2.6.      (line  620)
-Filesystem trunk Identity Isolinux:            See 2.7.      (line  637)
-Filesystem trunk Identity Models:              See 2.8.      (line  654)
-Filesystem trunk Identity Models Css:          See 2.9.      (line  674)
-Filesystem trunk Identity Models Html:         See 2.10.     (line  696)
-Filesystem trunk Identity Models Img Promo Web:See 2.11.     (line  717)
-Filesystem trunk Identity Models Tpl:          See 2.12.     (line  738)
-Filesystem trunk Identity Models Tpl Promo Web:See 2.13.     (line  759)
-Filesystem trunk Identity Models Xcf:          See 2.14.     (line 1073)
-Filesystem trunk Identity Release:             See 2.15.     (line 1094)
-Filesystem trunk Identity Themes:              See 2.16.     (line 1111)
-Filesystem trunk Identity Themes Models:       See 2.17.     (line 1135)
+branches:                                      See 2.1.      (line  380)
+File system:                                   See 2.        (line  377)
+Filesystem trunk:                              See 2.2.      (line  401)
+Filesystem trunk Identity:                     See 2.3.      (line  404)
+Filesystem trunk Identity Brands:              See 2.4.      (line  521)
+Filesystem trunk Identity Fonts:               See 2.5.      (line  538)
+Filesystem trunk Identity Icons:               See 2.6.      (line  615)
+Filesystem trunk Identity Isolinux:            See 2.7.      (line  632)
+Filesystem trunk Identity Models:              See 2.8.      (line  649)
+Filesystem trunk Identity Models Css:          See 2.9.      (line  669)
+Filesystem trunk Identity Models Html:         See 2.10.     (line  691)
+Filesystem trunk Identity Models Img Promo Web:See 2.11.     (line  712)
+Filesystem trunk Identity Models Tpl:          See 2.12.     (line  733)
+Filesystem trunk Identity Models Tpl Promo Web:See 2.13.     (line  754)
+Filesystem trunk Identity Models Xcf:          See 2.14.     (line 1068)
+Filesystem trunk Identity Release:             See 2.15.     (line 1089)
+Filesystem trunk Identity Themes:              See 2.16.     (line 1106)
+Filesystem trunk Identity Themes Models:       See 2.17.     (line 1130)
 Filesystem trunk Identity Themes Models Alternative:See 2.18.
-                                                             (line 1169)
-Filesystem trunk Identity Themes Models Default:See 2.19.    (line 1196)
+                                                             (line 1164)
+Filesystem trunk Identity Themes Models Default:See 2.19.    (line 1191)
 Filesystem trunk Identity Themes Models Default Distro:See 2.20.
-                                                             (line 1229)
+                                                             (line 1224)
 Filesystem trunk Identity Themes Models Default Distro Anaconda:See 2.21.
-                                                             (line 1313)
+                                                             (line 1308)
 Filesystem trunk Identity Themes Models Default Promo:See 2.22.
-                                                             (line 1330)
+                                                             (line 1325)
 Filesystem trunk Identity Themes Models Default Web:See 2.23.
-                                                             (line 1356)
-Filesystem trunk Identity Themes Motifs:       See 2.24.     (line 1381)
-Filesystem trunk Identity Themes Motifs Flame: See 2.25.     (line 1484)
-Filesystem trunk Identity Themes Motifs Modern:See 2.26.     (line 1685)
+                                                             (line 1351)
+Filesystem trunk Identity Themes Motifs:       See 2.24.     (line 1376)
+Filesystem trunk Identity Themes Motifs Flame: See 2.25.     (line 1479)
+Filesystem trunk Identity Themes Motifs Modern:See 2.26.     (line 1680)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds:See 2.27.
-                                                             (line 1702)
+                                                             (line 1697)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Img:See 2.28.
-                                                             (line 1823)
+                                                             (line 1818)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl:See 2.29.
-                                                             (line 1844)
+                                                             (line 1839)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf:See 2.30.
-                                                             (line 1865)
+                                                             (line 1860)
 Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 2.31.
-                                                             (line 1892)
+                                                             (line 1887)
 Filesystem trunk Identity Themes Motifs Modern Palettes:See 2.32.
-                                                             (line 1948)
-Filesystem trunk Identity Themes Motifs TreeFlower:See 2.33. (line 1970)
+                                                             (line 1943)
+Filesystem trunk Identity Themes Motifs TreeFlower:See 2.33. (line 1965)
 Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds:See 2.34.
-                                                             (line 1987)
-Filesystem trunk Identity Widgets:             See 2.35.     (line 2285)
-Filesystem trunk Locales:                      See 2.36.     (line 2302)
-Filesystem trunk Locales Identity:             See 2.37.     (line 2355)
-Filesystem trunk Locales Identity Brands:      See 2.38.     (line 2376)
-Filesystem trunk Locales Identity Brands Tpl:  See 2.39.     (line 2471)
-Filesystem trunk Locales Identity Fonts:       See 2.40.     (line 2486)
-Filesystem trunk Locales Identity Models:      See 2.41.     (line 2549)
-Filesystem trunk Locales Identity Release:     See 2.42.     (line 2564)
-Filesystem trunk Locales Identity Themes:      See 2.43.     (line 2579)
+                                                             (line 1982)
+Filesystem trunk Identity Widgets:             See 2.35.     (line 2280)
+Filesystem trunk Locales:                      See 2.36.     (line 2297)
+Filesystem trunk Locales Identity:             See 2.37.     (line 2350)
+Filesystem trunk Locales Identity Brands:      See 2.38.     (line 2371)
+Filesystem trunk Locales Identity Brands Tpl:  See 2.39.     (line 2466)
+Filesystem trunk Locales Identity Fonts:       See 2.40.     (line 2481)
+Filesystem trunk Locales Identity Models:      See 2.41.     (line 2544)
+Filesystem trunk Locales Identity Release:     See 2.42.     (line 2559)
+Filesystem trunk Locales Identity Themes:      See 2.43.     (line 2574)
 Filesystem trunk Locales Identity Themes Backgrounds:See 2.44.
-                                                             (line 2594)
+                                                             (line 2589)
 Filesystem trunk Locales Identity Themes Distro Anaconda Progress:See 2.45.
-                                                             (line 2615)
-Filesystem trunk Locales Identity Widgets:     See 2.46.     (line 2708)
-Filesystem trunk Manuals:                      See 2.47.     (line 2729)
-Filesystem trunk Scripts:                      See 2.48.     (line 2750)
-Filesystem trunk Scripts Bash:                 See 2.49.     (line 2774)
-Filesystem trunk Scripts Bash Cli:             See 2.50.     (line 2924)
-Filesystem trunk Scripts Bash Cli Functions:   See 2.51.     (line 2927)
-Filesystem trunk Scripts Bash Cli Functions Help:See 2.52.   (line 4037)
-Filesystem trunk Scripts Bash Cli Functions Html:See 2.53.   (line 4058)
-Filesystem trunk Scripts Bash Cli Functions Locale:See 2.54. (line 4079)
-Filesystem trunk Scripts Bash Cli Functions Manual:See 2.55. (line 4159)
-Filesystem trunk Scripts Bash Cli Functions Path:See 2.56.   (line 4180)
-Filesystem trunk Scripts Bash Cli Functions Render:See 2.57. (line 4503)
+                                                             (line 2610)
+Filesystem trunk Locales Identity Widgets:     See 2.46.     (line 2703)
+Filesystem trunk Manuals:                      See 2.47.     (line 2724)
+Filesystem trunk Scripts:                      See 2.48.     (line 2745)
+Filesystem trunk Scripts Bash:                 See 2.49.     (line 2769)
+Filesystem trunk Scripts Bash Cli:             See 2.50.     (line 2919)
+Filesystem trunk Scripts Bash Cli Functions:   See 2.51.     (line 2922)
+Filesystem trunk Scripts Bash Cli Functions Help:See 2.52.   (line 4032)
+Filesystem trunk Scripts Bash Cli Functions Html:See 2.53.   (line 4053)
+Filesystem trunk Scripts Bash Cli Functions Locale:See 2.54. (line 4074)
+Filesystem trunk Scripts Bash Cli Functions Manual:See 2.55. (line 4154)
+Filesystem trunk Scripts Bash Cli Functions Path:See 2.56.   (line 4175)
+Filesystem trunk Scripts Bash Cli Functions Render:See 2.57. (line 4498)
 Filesystem trunk Scripts Bash Cli Functions Render Config:See 2.58.
-                                                             (line 5201)
-Filesystem trunk Scripts Bash Cli Functions Shell:See 2.59.  (line 5379)
-Filesystem trunk Scripts Bash Cli Functions Svg:See 2.60.    (line 5551)
-Filesystem trunk Scripts Bash Cli Functions Verify:See 2.61. (line 5739)
-Filesystem trunk Scripts Python:               See 2.62.     (line 5969)
-How to render brands' translation files:       See 2.38.3.   (line 2460)
-How to render fonts' translation files:        See 2.40.3.   (line 2533)
-Introduction:                                  See 1.        (line  377)
-Metadata maintainance:                         See 2.60.2.   (line 5569)
-tags:                                          See 2.63.     (line 5990)
-Translation brands file names:                 See 2.38.2.1. (line 2417)
-Unused definitions:                            See 2.60.2.1. (line 5676)
+                                                             (line 5196)
+Filesystem trunk Scripts Bash Cli Functions Shell:See 2.59.  (line 5374)
+Filesystem trunk Scripts Bash Cli Functions Svg:See 2.60.    (line 5546)
+Filesystem trunk Scripts Bash Cli Functions Verify:See 2.61. (line 5734)
+Filesystem trunk Scripts Python:               See 2.62.     (line 5964)
+How to render brands' translation files:       See 2.38.3.   (line 2455)
+How to render fonts' translation files:        See 2.40.3.   (line 2528)
+Introduction:                                  See 1.        (line  372)
+Metadata maintainance:                         See 2.60.2.   (line 5564)
+Translation brands file names:                 See 2.38.2.1. (line 2412)
+Unused definitions:                            See 2.60.2.1. (line 5671)
