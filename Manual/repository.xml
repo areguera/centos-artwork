@@ -56,7 +56,37 @@
     <chapter>
       <title>Introduction</title>
       <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository.</para>
+      <menu>
+        <menuentry>
+          <menunode>Convenctions</menunode>
+          <menutitle>Convenctions</menutitle>
+          <menucomment>Document Convenctions</menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Feedback</menunode>
+          <menutitle>Feedback</menutitle>
+          <menucomment>Send in Your Feedback</menucomment>
+        </menuentry>
+      </menu>
     </chapter>
+  </node>
+  <node>
+    <nodename>Convenctions</nodename>
+    <nodenext>Feedback</nodenext>
+    <nodeup>Introduction</nodeup>
+    <section>
+      <title>Document Convenctions</title>
+      <para><indexterm index="cp">Document convenctions</indexterm></para>
+    </section>
+  </node>
+  <node>
+    <nodename>Feedback</nodename>
+    <nodeprev>Convenctions</nodeprev>
+    <nodeup>Introduction</nodeup>
+    <section>
+      <title>Send in Your Feedback</title>
+      <para><indexterm index="cp">Feedback</indexterm></para>
+    </section>
   </node>
   <node>
     <nodename>Filesystem</nodename>
