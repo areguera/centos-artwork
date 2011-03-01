@@ -25,13 +25,13 @@
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License.</para>
       <menu>
         <menuentry>
-          <menunode>Filesystem</menunode>
-          <menutitle>Filesystem</menutitle>
+          <menunode>Introduction</menunode>
+          <menutitle>Introduction</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Introduction</menunode>
-          <menutitle>Introduction</menutitle>
+          <menunode>Filesystem</menunode>
+          <menutitle>Filesystem</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -44,9 +44,19 @@
     </unnumbered>
   </node>
   <node>
-    <nodename>Filesystem</nodename>
-    <nodenext>Introduction</nodenext>
+    <nodename>Introduction</nodename>
+    <nodenext>Filesystem</nodenext>
     <nodeprev>Top</nodeprev>
+    <nodeup>Top</nodeup>
+    <chapter>
+      <title>Introduction</title>
+      <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository.</para>
+    </chapter>
+  </node>
+  <node>
+    <nodename>Filesystem</nodename>
+    <nodenext>Index</nodenext>
+    <nodeprev>Introduction</nodeprev>
     <nodeup>Top</nodeup>
     <chapter>
       <title>File System</title>
@@ -5473,23 +5483,13 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
         </menu>
+<!--  The End of the Document - -->
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Introduction</nodename>
-    <nodenext>Index</nodenext>
-    <nodeprev>Filesystem</nodeprev>
-    <nodeup>Top</nodeup>
-    <chapter>
-      <title>Introduction</title>
-      <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository.</para>
-<!--  The End of the Document - -->
-    </chapter>
-  </node>
-  <node>
     <nodename>Index</nodename>
-    <nodeprev>Introduction</nodeprev>
+    <nodeprev>Filesystem</nodeprev>
     <nodeup>Top</nodeup>
     <unnumbered>
       <title>Index</title>
