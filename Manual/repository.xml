@@ -39,6 +39,11 @@
           <menutitle>Index</menutitle>
           <menucomment></menucomment>
         </menuentry>
+        <menuentry>
+          <menunode>List of Figures</menunode>
+          <menutitle>List of Figures</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
       </menu>
 <!--  The Body of the Document - -->
     </unnumbered>
@@ -59,8 +64,8 @@
     <nodeprev>Introduction</nodeprev>
     <nodeup>Top</nodeup>
     <chapter>
-      <title>File System</title>
-      <para><indexterm index="cp">File system</indexterm></para>
+      <title>Repository File System</title>
+      <para><indexterm index="cp">Repository file system</indexterm></para>
       <menu>
         <menuentry>
           <menunode>Filesystem branches</menunode>
@@ -5489,14 +5494,21 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
   </node>
   <node>
     <nodename>Index</nodename>
+    <nodenext>List of Figures</nodenext>
     <nodeprev>Filesystem</nodeprev>
     <nodeup>Top</nodeup>
     <unnumbered>
       <title>Index</title>
       <printindex>cp</printindex>
-<!-- @node List of Figures -->
-<!-- @unnumbered List of Figures -->
-<!-- @listoffloats Figure -->
+    </unnumbered>
+  </node>
+  <node>
+    <nodename>List of Figures</nodename>
+    <nodeprev>Index</nodeprev>
+    <nodeup>Top</nodeup>
+    <unnumbered>
+      <title>List of Figures</title>
+      <listoffloats type="Figure"></listoffloats>
     </unnumbered>
   </node>
 </texinfo>
