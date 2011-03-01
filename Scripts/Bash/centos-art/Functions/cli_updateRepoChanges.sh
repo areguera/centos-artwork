@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# cli_commitRepoChanges.sh -- This function realizes a subversion
-# commit command agains the workgin copy in order to send local
-# changes up to central repository.
+# cli_updateRepoChanges.sh -- This function realizes a subversion
+# update command against the working copy in order to bring changes
+# from the central repository into the working copy.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_commitRepoChanges {
+function cli_updateRepoChanges {
 
     # Verify don't commit changes flag.
     if [[ $FLAG_DONT_COMMIT_CHANGES != 'false' ]];then
@@ -36,12 +36,12 @@ function cli_commitRepoChanges {
     local -a INFO
     local -a FILESNUM
     local COUNT=0
-    local STATUSOUT=''
+    local UPDATEOUT=''
     local PREDICATE=''
     local CHNGTOTAL=0
     local LOCATIONS=''
 
-    # Define source location the subversion status action will take
+    # Define source location the subversion update action will take
     # place on. If arguments are provided use them as srouce location.
     # Otherwise use action value as default source location.
     if [[ "$@" != '' ]];then
@@ -58,26 +58,28 @@ function cli_commitRepoChanges {
     # Outout separator line.
     cli_printMessage '-' 'AsSeparatorLine'
 
-    # Check working copy.
-    cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
-    STATUSOUT=$(svn status ${LOCATIONS})
+    # Update working copy and retrive update output.
+    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
+    UPDATEOUT=$(svn update ${LOCATIONS})
 
     # Outout separator line.
     cli_printMessage '-' 'AsSeparatorLine'
 
-    # Define path fo files considered recent modifications from
-    # working copy up to central repository.
-    FILES[0]=$(echo "$STATUSOUT" | egrep "^M.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[2]=$(echo "$STATUSOUT" | egrep "^D.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[3]=$(echo "$STATUSOUT" | egrep "^A.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    # Define path of files considered recent modifications from
+    # central repository to working copy.
+    FILES[0]=$(echo "$UPDATEOUT" | egrep "^A.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[1]=$(echo "$UPDATEOUT" | egrep "^D.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[2]=$(echo "$UPDATEOUT" | egrep "^U.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[3]=$(echo "$UPDATEOUT" | egrep "^C.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[4]=$(echo "$UPDATEOUT" | egrep "^G.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
 
     # Define description of files considered recent modifications from
-    # working copy up to central repository.
-    INFO[0]="`gettext "Modified"`"
-    INFO[1]="`gettext "Unversioned"`"
-    INFO[2]="`gettext "Deleted"`"
-    INFO[3]="`gettext "Added"`"
+    # central repository to working copy.
+    INFO[0]="`gettext "Added"`"
+    INFO[1]="`gettext "Deleted"`"
+    INFO[2]="`gettext "Updated"`"
+    INFO[3]="`gettext "Conflicted"`"
+    INFO[4]="`gettext "Merged"`"
 
     while [[ $COUNT -ne ${#FILES[*]} ]];do
 
@@ -108,35 +110,5 @@ function cli_commitRepoChanges {
 
     done
 
-    # Outout separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
-    # In case new unversioned files exist, ask the user to add them
-    # into the repository. This may happen when new documentation
-    # entries are created.
-    if [[ ${FILESNUM[1]} -gt 0 ]];then
-        cli_printMessage "`ngettext "The following file is unversioned" \
-            "The following files are unversioned" ${FILESNUM[1]}`:"
-        for FILE in ${FILES[1]};do
-            cli_printMessage $FILE 'AsResponseLine'
-        done
-        cli_printMessage "`ngettext "Do you want to add it now?" \
-            "Do you want to add them now?" ${FILESNUM[2]}`" 'AsYesOrNoRequestLine'
-        svn add ${FILES[1]} --quiet
-    fi
-
-    # Check total amount of changes and, if any, check differences and
-    # commit them up to central repository.
-    if [[ $CHNGTOTAL -gt 0 ]];then
-
-        # Verify changes.
-        cli_printMessage "`gettext "Do you want to see changes now?"`" "AsYesOrNoRequestLine"
-        svn diff ${FILES[*]} | less
-
-        # Commit changes.
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" "AsYesOrNoRequestLine"
-        svn commit ${FILES[*]}
-
-    fi
-
 }
+
