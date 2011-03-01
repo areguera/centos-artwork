@@ -54,10 +54,10 @@ function manual_getEntry {
     # to take place on. Other options like `--edit', `--delete' and
     # `--read' cannot be applied to paths provided is inside
     # trunk/Manuals/ such actions made manually.
-    if [[ ${ENTRY} =~ '^trunk/Manuals/.+$' ]];then
-        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
+    if [[ ${ENTRY} =~ '^trunk/Manual' ]];then
+        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manual/!!')
     else
-        ENTRY=$(dirname Repository/${ENTRY})/$(basename $LOCATION).texi
+        ENTRY=$(dirname Filesystem/${ENTRY})/$(basename $LOCATION).texi
     fi
 
     # Re-define entry to set absolute path to manuals base directory

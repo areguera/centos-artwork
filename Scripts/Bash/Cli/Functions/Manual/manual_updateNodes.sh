@@ -40,13 +40,13 @@ function manual_updateNodes {
         CIND=$(echo "$NODE")
 
         # Create an empty directory to store texinfo files.
-        if [[ ! -d ${MANUAL_DIR}/$(dirname "$INCL") ]];then
-             mkdir -p ${MANUAL_DIR}/$(dirname "$INCL")
+        if [[ ! -d ${MANUAL_BASEDIR}/$(dirname "$INCL") ]];then
+             mkdir -p ${MANUAL_BASEDIR}/$(dirname "$INCL")
         fi
 
         # Create texinfo section file using its template.
-        if [[ ! -f ${MANUAL_DIR}/$INCL ]];then
-            cp ${FUNCCONFIG}/manual-section.texi ${MANUAL_DIR}/$INCL
+        if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]];then
+            cp ${FUNCCONFIG}/manual-section.texi ${MANUAL_BASEDIR}/$INCL
         fi
 
         # Output node information based on texinfo menu.

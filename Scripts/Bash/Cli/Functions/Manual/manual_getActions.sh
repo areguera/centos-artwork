@@ -110,13 +110,9 @@ function manual_getActions {
     # Define documentation entry file (without extension).
     ENTRY_FILE=$(basename ${ENTRY} | sed -r 's!\.texi$!!')
 
-    # Define directory for documentation manual. This is the place the
-    # specific documentation manual we are working with is stored in.
-    MANUAL_DIR=$(echo $ENTRY | cut -d / -f-7)
-
     # Define file name for documentation manual. This is the file used
     # to initiate the structure of documentation manual.
-    MANUAL_NAME=$(cli_getRepoName ${MANUAL_DIR} 'f')
+    MANUAL_NAME=repository
 
     # Define directory to store documentation entries.  At this point,
     # we need to take a desition about documentation design, in order
@@ -125,12 +121,12 @@ function manual_getActions {
     # and also, how such design could be adapted to changes in the
     # repository structure?
     #
-    # One solution would be: represent the repository's first level
-    # structure in three chapters only (i.e., trunk, branches, and
-    # tags) and handle everything else inside them as sections. Sub
-    # and subsub section will not have their own files, they will be
-    # written inside section files instead.
-    MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-8)
+    # One solution would be: represent the repository's directory
+    # structure as sections inside a chapter named Filesystem or
+    # something similar. Subsections and subsubsections will not have
+    # their own files, they all will be written inside the same
+    # section file that represents the repository directory.
+    MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-7)
 
     # Define chapter name for the documentation entry we are working
     # with.
@@ -139,14 +135,14 @@ function manual_getActions {
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build texinfo
     # related files (.info, .pdf, .xml, etc.).
-    MANUAL_BASEFILE=$(cli_getFilesList "${MANUAL_DIR}" ".*${MANUAL_NAME}\.texi" | sed 's!\.texi$!!' )
+    MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
     # Set action preable.
     cli_printActionPreamble "${MANUAL_BASEFILE}.texi"
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_syncroRepoChanges ${MANUAL_DIR}
+    cli_syncroRepoChanges ${MANUAL_BASEDIR}
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -158,6 +154,6 @@ function manual_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to commit up changes.
-    cli_commitRepoChanges ${MANUAL_DIR}
+    cli_commitRepoChanges ${MANUAL_BASEDIR}
 
 }

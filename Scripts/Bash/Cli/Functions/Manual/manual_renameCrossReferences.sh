@@ -64,7 +64,7 @@ function manual_renameCrossReferences {
     NODE_DST=$(echo $NODE_DST | sed -r 's!\\[[:digit:]]$!!')
 
     # Define list of entries to process.
-    ENTRIES=$(cli_getFilesList "${MANUAL_DIR}" '.*\.texi')
+    ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')
 
     # Set action preamble.
     cli_printActionPreamble "$ENTRIES"

@@ -30,7 +30,7 @@ function manual {
     # Define manuals base directory. This is the place where
     # documentation manuals base directory structures are stored and
     # organized in.
-    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manuals"
+    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
 
     # Define default value to target flag. The target flag (--to)
     # controls final destination used by copy related actions.
