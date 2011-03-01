@@ -30,7 +30,7 @@ function manual_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="read:,search:,edit:,delete:,update:,copy:,to:"
+    local ARGSL="read:,search:,edit:,delete:,update:,copy:,rename:,to:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -76,6 +76,12 @@ function manual_getActions {
             --copy )
                 ACTIONVAL="$2"
                 ACTIONNAM="${FUNCNAM}_copyEntry"
+                shift 2
+                ;;
+
+            --rename )
+                ACTIONVAL="$2"
+                ACTIONNAM="${FUNCNAM}_renameEntry"
                 shift 2
                 ;;
 
@@ -140,7 +146,7 @@ function manual_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_commitRepoChanges ${MANUAL_DIR}
+    cli_syncroRepoChanges ${MANUAL_DIR}
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
