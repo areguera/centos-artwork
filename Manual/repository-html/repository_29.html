@@ -20,10 +20,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 3.26 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img</title>
+<title>CentOS Artwork Repository: 2.27 The trunk/Identity/Themes/Motifs/Modern/Backgrounds Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 3.26 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img">
-<meta name="keywords" content="CentOS Artwork Repository: 3.26 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img">
+<meta name="description" content="CentOS Artwork Repository: 2.27 The trunk/Identity/Themes/Motifs/Modern/Backgrounds Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.27 The trunk/Identity/Themes/Motifs/Modern/Backgrounds Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -55,46 +55,158 @@ ul.toc {list-style: none}
 <tr><td valign="middle" align="left">[<a href="repository_28.html#SEC148" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC150" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC345" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_2.html#SEC2" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC355" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC345" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC355" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="trunk-Identity-Themes-Motifs-Modern-Backgrounds-Img"></a>
+<a name="Filesystem-trunk-Identity-Themes-Motifs-Modern-Backgrounds"></a>
 <a name="SEC149"></a>
-<h2 class="section"> 3.26 trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img </h2>
+<h2 class="section"> 2.27 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds'</tt> Directory </h2>
 
 
 <a name="SEC150"></a>
-<h3 class="subsection"> 3.26.1 Goals </h3>
+<h3 class="subsection"> 2.27.1 Goals </h3>
 
 <ul class="toc">
-<li> ...
+<li> Organize background images for Modern theme.
 </li></ul>
 
 
 <a name="SEC151"></a>
-<h3 class="subsection"> 3.26.2 Description </h3>
+<h3 class="subsection"> 2.27.2 Description </h3>
 
+<p>Inside <tt>`Motifs'</tt> directory, the <tt>`Backgrounds/'</tt> directory is
+used to create vectorial designs using Inkscape and background images
+using Gimp. Later, you can export background images as <tt>`.png'</tt> and
+load them in your vectorial design project using the import feautre of
+Inkscape.
+</p>
+<p>You may need to repeat this technic for different screen resoluions.
+In that case you need to create one file for each screen resolution
+and do the appropriate linking inside .svg to .png files.  For example
+if you need to produce background images in 800x600 you need to create
+the following file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">xcf/800x600.xcf
+</pre></td></tr></table>
+<p>to produce the background image:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600-bg.png
+</pre></td></tr></table>
+<p>which is loaded in: 
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">svg/800x600.svg
+</pre></td></tr></table>
+<p>to produce the final background image:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600.png         
+</pre></td></tr></table>
+<p>The <tt>`img/800x600.png'</tt> background image is produced automatically
+by means of rendering scripts.
+</p>
+<p>In other cases (e.g. Anaconda), it is possible that you need to make
+some variations to one background image that don't want to appear on
+regular background images of the same resolution. In this case you
+need to create a new and specific background image for that art
+component.  For example, if you need to produce the background image
+used by Anconda (800x600) art works you create the file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">xcf/800x600-anaconda.xcf
+</pre></td></tr></table>
+<p>to produce the background image:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600-anaconda-bg.png
+</pre></td></tr></table>
+<p>which is loaded in: 
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">svg/800x600-anaconda.svg
+</pre></td></tr></table>
+<p>to produce the file:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600-anaconda.png
+</pre></td></tr></table>
+<p>The 800x600-anaconda.png file is used by all Anaconda art works
+sharing a common 800x600 screen resolution (e.g., Header, Progress,
+Splash, Firstboot, etc.). The Anaconda Prompt is indexed to 16 colors
+and 640x480 pixels so you need to create a 640x480 background image
+for it, and take the color limitation into account when designing it.
+</p>
+<p>Background images without artistic motif are generally used as based
+to build the Background images that do contain the theme artistic
+motif. 
+</p>
+<p>Background images are linked (using the <b>import</b> feature of
+Inkscape) inside almost all theme art works. This structure let you
+make centralized changes on the visual identity and propagate them
+quickly to other areas. 
+</p>
+<p>In this structure you design background images for different screen
+resolutions based on the theme artistic motif.
+</p>
+<p>You may create different artistic motifs propositions based
+on the same conceptual idea. The conceptual idea is what defines a
+theme. Artistic motifs are interpretations of that idea.
+</p>
+<p>Inside this directory artistic motifs are organized by name (e.g.,
+TreeFlower, Modern, etc.).
+</p>
+<p>Each artistic motif directory represents just one unique artistic
+motif. 
+</p>
+<p>The artistic motif is graphic design used as common pattern to connect
+all visual manifestations inside one unique theme.  The artistic motif
+is based on a conceptual idea.  Artistic motifs provide visual style
+to themes.
+</p>
+<p>Designing artistic motifs is for anyone interested in creating
+beautiful themes for CentOS.  When building a theme for CentOS, the
+first design you need to define is the artistic motif. 
+</p>
+
+<p>Inside CentOS Artwork Repository, theme visual styles (Motifs) and
+theme visual structures (Models) are two different working lines.
+When you design an artistic motif for CentOS you concentrate on its
+visual style, and eventualy, use the <code>centos-art</code> command line
+interface to render the visual style, you are currently producing,
+against an already-made theme model in order to produce the final
+result.  Final images are stored under <tt>`Motifs/'</tt> directory using
+the model name, and the model directory structure as reference.
+</p>
+<p>The artistic motif base structure is used by <code>centos-art</code> to
+produce images automatically. This section describes each directory of
+CentOS artistic motif base structure.
+</p>
 
 <a name="SEC152"></a>
-<h3 class="subsection"> 3.26.3 Usage </h3>
+<h3 class="subsection"> 2.27.3 Usage </h3>
 
-<p>In this directory is where you store all background images (e.g.,
-.png, .jpg, .xpm, etc.).  This directory is required by
-<tt>`centos-art'</tt> command line interface.
+<p>The <tt>`Backgrounds/'</tt> directory is probably the core component,
+inside <tt>`Motifs/'</tt> directory structure.  Inside <tt>`Backgrounds/'</tt>
+directory you produce background images used by almost all theme
+models (e.g., Distribution, Websites, Promotion, etc.).  The
+<tt>`Backgrounds/'</tt> directory can contain subdirectories to help you
+organize the design process. 
 </p>
 
 <a name="SEC153"></a>
-<h3 class="subsection"> 3.26.4 See also </h3>
+<h3 class="subsection"> 2.27.4 See also </h3>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_30.html#SEC154">2.28 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_31.html#SEC159">2.29 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="repository_32.html#SEC164">2.30 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 
 
@@ -102,9 +214,9 @@ ul.toc {list-style: none}
 <tr><td valign="middle" align="left">[<a href="#SEC152" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_30.html#SEC154" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_2.html#SEC2" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC149" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_64.html#SEC345" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_66.html#SEC355" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
