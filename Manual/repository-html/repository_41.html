@@ -20,10 +20,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 2.37 The trunk/Locales Directory</title>
+<title>CentOS Artwork Repository: 2.36 The trunk/Identity/Widgets Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 2.37 The trunk/Locales Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 2.37 The trunk/Locales Directory">
+<meta name="description" content="CentOS Artwork Repository: 2.36 The trunk/Identity/Widgets Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.36 The trunk/Identity/Widgets Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -52,91 +52,54 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_40.html#SEC203" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_42.html#SEC205" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_40.html#SEC207" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC209" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_5.html#SEC13" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_5.html#SEC13" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_69.html#SEC366" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_69.html#SEC366" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Filesystem-trunk-Locales"></a>
-<a name="SEC204"></a>
-<h2 class="section"> 2.37 The <tt>`trunk/Locales'</tt> Directory </h2>
+<a name="Filesystem-trunk-Identity-Widgets"></a>
+<a name="SEC208"></a>
+<h2 class="section"> 2.36 The <tt>`trunk/Identity/Widgets'</tt> Directory </h2>
 
-<p>The <tt>`trunk/Locales'</tt> directory exists to store the translation
-messages used to produce content in different languages.
-</p>
-<p>Translation messages are organized using the directory structure of
-the component being translated. For example, if we want to provide
-translation messages for <tt>`trunk/Manuals/Filesystem'</tt>, then the
-<tt>`trunk/Locales/Manuals/Filesystem'</tt> directory needs to be created.
-</p>
-<p>Once the locale directory exists for the component we want to provide
-translation messages for, it is necessary to create the translation
-files where translation messages are. The translation files follows
-the concepts of <code>xml2po</code> and GNU <code>gettext</code> tools.
-</p>
-<p>The basic translation process is as follow: first, translatable
-strings are extracted from files and a portable object template (.pot)
-is created or updated with the information. Using the portable object
-template, a portable object (.po) is created or updated for translator
-to locale the messages retrived.  Finally, a machine object (.mo) is
-created from portable object to sotore the translated messages.
-</p>
-<p>Inside the repository there are two ways to retrive translatable
-strings from files. The first one is through <code>xml2po</code> command
-and the second through <code>xgettext</code> command. The <code>xml2po</code>
-is used to retrive translatable strings from XML files (e.g., Scalable
-Vector Graphics, DocBook, etc.) and the <code>xgettext</code> command is
-used to retrive translatable strings from shell scripts files (e.g.,
-the files that make the <code>centos-art.sh</code> command-line
-interface).
-</p>
-<p>When translatable strings are retrived from XML files, using the
-<code>xml2po</code> command, there is no need to create the machine
-object as we do when translatable strings ar retrived from shell
-files, using the <code>xgettext</code> command. The <code>xml2po</code>
-produces a temporal machine object in order to create a translated XML
-file. Once the translated XML file has been created the machine object
-is no longer needed. On the other hand, the machine object produced by
-the <code>xgettext</code> command is required by the system in order for
-the show shell script localized messages.
-</p>
-<p>Another difference between <code>xml2po</code> and <code>xgettext</code> we
-need to be aware of is the directory structure used to store machine
-objects. In <code>xml2po</code>, the machine object is created in the
-current working directory as <tt>`.xml2po.mo'</tt> and can be safetly
-removed once the translated XML file has been created. In the case of
-<code>xgettext</code>, the machine object needs to be stored in the
-<tt>`$TEXTDOMAIN/$LOCALE/LL_MESSAGES/$TEXTDOMAIN.mo'</tt> file in order
-for the system to interpret it and should not be removed since it is
-the file that contain the translation messages themselves.
-</p>
-<p>Automation of localization tasks is achived through the <code>locale</code>
-functionality of command-line interface.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_59.html#SEC293">2.55 The <tt>`trunk/Scripts/Bash/Cli/Functions/Locale'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+
+<a name="SEC209"></a>
+<h3 class="subsection"> 2.36.1 Goals </h3>
+
+<ul class="toc">
+<li> ...
+</li></ul>
+
+
+<a name="SEC210"></a>
+<h3 class="subsection"> 2.36.2 Description </h3>
+
+
+<a name="SEC211"></a>
+<h3 class="subsection"> 2.36.3 Usage </h3>
+
+
+<a name="SEC212"></a>
+<h3 class="subsection"> 2.36.4 See also </h3>
 
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_40.html#SEC203" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_42.html#SEC205" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC211" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_42.html#SEC213" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_5.html#SEC13" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC208" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_69.html#SEC366" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
