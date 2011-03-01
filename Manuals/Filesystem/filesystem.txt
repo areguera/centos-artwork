@@ -263,8 +263,8 @@ CentOS Artwork Repository - Filesystem
     3.47.2 Description
     3.47.3 Usage
     3.47.4 See also
-  3.48 trunk/Scripts/Bash/cli
-  3.49 trunk/Scripts/Bash/cli/Functions
+  3.48 trunk/Scripts/Bash/Cli
+  3.49 trunk/Scripts/Bash/Cli/Functions
     3.49.1 Goals
     3.49.2 Description
     3.49.3 Usage
@@ -272,27 +272,27 @@ CentOS Artwork Repository - Filesystem
       3.49.3.2 Global functions
       3.49.3.3 Specific functions
     3.49.4 See also
-  3.50 trunk/Scripts/Bash/cli/Functions/Help
+  3.50 trunk/Scripts/Bash/Cli/Functions/Help
     3.50.1 Goals
     3.50.2 Description
     3.50.3 Usage
     3.50.4 See also
-  3.51 trunk/Scripts/Bash/cli/Functions/Html
+  3.51 trunk/Scripts/Bash/Cli/Functions/Html
     3.51.1 Goals
     3.51.2 Description
     3.51.3 Usage
     3.51.4 See also
-  3.52 trunk/Scripts/Bash/cli/Functions/Locale
+  3.52 trunk/Scripts/Bash/Cli/Functions/Locale
     3.52.1 Goals
     3.52.2 Description
     3.52.3 Usage
     3.52.4 See also
-  3.53 trunk/Scripts/Bash/cli/Functions/Manual
+  3.53 trunk/Scripts/Bash/Cli/Functions/Manual
     3.53.1 Goals
     3.53.2 Description
     3.53.3 Usage
     3.53.4 See also
-  3.54 trunk/Scripts/Bash/cli/Functions/Path
+  3.54 trunk/Scripts/Bash/Cli/Functions/Path
     3.54.1 Goals
     3.54.2 Description
       3.54.2.1 Repository layout
@@ -303,7 +303,7 @@ CentOS Artwork Repository - Filesystem
       3.54.2.6 What is the right place to store it?
     3.54.3 Usage
     3.54.4 See also
-  3.55 trunk/Scripts/Bash/cli/Functions/Render
+  3.55 trunk/Scripts/Bash/Cli/Functions/Render
     3.55.1 Renderable identity directory structures
       3.55.1.1 Design template without translation
       3.55.1.2 Design template with translation (one-to-one)
@@ -313,7 +313,7 @@ CentOS Artwork Repository - Filesystem
     3.55.3 Copying renderable directory structures
     3.55.4 Usage
     3.55.5 See also
-  3.56 trunk/Scripts/Bash/cli/Functions/Render/Config
+  3.56 trunk/Scripts/Bash/Cli/Functions/Render/Config
     3.56.1 Goals
     3.56.2 Description
       3.56.2.1 The `render.conf.sh' identity model
@@ -321,19 +321,19 @@ CentOS Artwork Repository - Filesystem
       3.56.2.3 The `render.conf.sh' rendering actions
     3.56.3 Usage
     3.56.4 See also
-  3.57 trunk/Scripts/Bash/cli/Functions/Shell
+  3.57 trunk/Scripts/Bash/Cli/Functions/Shell
     3.57.1 Goals
     3.57.2 Description
     3.57.3 Usage
     3.57.4 See also
-  3.58 trunk/Scripts/Bash/cli/Functions/Svg
+  3.58 trunk/Scripts/Bash/Cli/Functions/Svg
     3.58.1 Goals
     3.58.2 Description
       3.58.2.1 Metadata maintainance
       3.58.2.2 Unused definitions
     3.58.3 Usage
     3.58.4 See also
-  3.59 trunk/Scripts/Bash/cli/Functions/Verify
+  3.59 trunk/Scripts/Bash/Cli/Functions/Verify
     3.59.1 Goals
     3.59.2 Description
       3.59.2.1 Packages
@@ -2883,10 +2883,10 @@ Functions) --).
 3.47.4 See also
 ---------------
 
-3.48 trunk/Scripts/Bash/cli
+3.48 trunk/Scripts/Bash/Cli
 ===========================
 
-3.49 trunk/Scripts/Bash/cli/Functions
+3.49 trunk/Scripts/Bash/Cli/Functions
 =====================================
 
 3.49.1 Goals
@@ -3996,7 +3996,7 @@ available for you to use:
 3.49.4 See also
 ---------------
 
-3.50 trunk/Scripts/Bash/cli/Functions/Help
+3.50 trunk/Scripts/Bash/Cli/Functions/Help
 ==========================================
 
 3.50.1 Goals
@@ -4017,7 +4017,7 @@ available for you to use:
 3.50.4 See also
 ---------------
 
-3.51 trunk/Scripts/Bash/cli/Functions/Html
+3.51 trunk/Scripts/Bash/Cli/Functions/Html
 ==========================================
 
 3.51.1 Goals
@@ -4038,7 +4038,7 @@ available for you to use:
 3.51.4 See also
 ---------------
 
-3.52 trunk/Scripts/Bash/cli/Functions/Locale
+3.52 trunk/Scripts/Bash/Cli/Functions/Locale
 ============================================
 
 3.52.1 Goals
@@ -4118,7 +4118,7 @@ following files:
 3.52.4 See also
 ---------------
 
-3.53 trunk/Scripts/Bash/cli/Functions/Manual
+3.53 trunk/Scripts/Bash/Cli/Functions/Manual
 ============================================
 
 3.53.1 Goals
@@ -4139,7 +4139,7 @@ following files:
 3.53.4 See also
 ---------------
 
-3.54 trunk/Scripts/Bash/cli/Functions/Path
+3.54 trunk/Scripts/Bash/Cli/Functions/Path
 ==========================================
 
 3.54.1 Goals
@@ -4462,7 +4462,7 @@ concepts for.
 3.54.4 See also
 ---------------
 
-3.55 trunk/Scripts/Bash/cli/Functions/Render
+3.55 trunk/Scripts/Bash/Cli/Functions/Render
 ============================================
 
 The `render' functionality exists to produce both identity and
@@ -5160,7 +5160,7 @@ been duplicated, the functionality stops thereat.
 3.55.5 See also
 ---------------
 
-3.56 trunk/Scripts/Bash/cli/Functions/Render/Config
+3.56 trunk/Scripts/Bash/Cli/Functions/Render/Config
 ===================================================
 
 3.56.1 Goals
@@ -5338,7 +5338,7 @@ structures only.
 3.56.4 See also
 ---------------
 
-3.57 trunk/Scripts/Bash/cli/Functions/Shell
+3.57 trunk/Scripts/Bash/Cli/Functions/Shell
 ===========================================
 
 3.57.1 Goals
@@ -5510,7 +5510,7 @@ matching as only file in the list of files to process.
 3.57.4 See also
 ---------------
 
-3.58 trunk/Scripts/Bash/cli/Functions/Svg
+3.58 trunk/Scripts/Bash/Cli/Functions/Svg
 =========================================
 
 3.58.1 Goals
@@ -5698,7 +5698,7 @@ matching as only file in the list of files to process.
 3.58.4 See also
 ---------------
 
-3.59 trunk/Scripts/Bash/cli/Functions/Verify
+3.59 trunk/Scripts/Bash/Cli/Functions/Verify
 ============================================
 
 3.59.1 Goals
@@ -6013,18 +6013,18 @@ trunk Locales Identity Widgets:                See 3.44.     (line 2673)
 trunk Manuals:                                 See 3.45.     (line 2694)
 trunk Scripts:                                 See 3.46.     (line 2715)
 trunk Scripts Bash:                            See 3.47.     (line 2739)
-trunk Scripts Bash cli:                        See 3.48.     (line 2889)
-trunk Scripts Bash cli Functions:              See 3.49.     (line 2892)
-trunk Scripts Bash cli Functions Help:         See 3.50.     (line 4002)
-trunk Scripts Bash cli Functions Html:         See 3.51.     (line 4023)
-trunk Scripts Bash cli Functions Locale:       See 3.52.     (line 4044)
-trunk Scripts Bash cli Functions Manual:       See 3.53.     (line 4124)
-trunk Scripts Bash cli Functions Path:         See 3.54.     (line 4145)
-trunk Scripts Bash cli Functions Render:       See 3.55.     (line 4468)
-trunk Scripts Bash cli Functions Render Config:See 3.56.     (line 5166)
-trunk Scripts Bash cli Functions Shell:        See 3.57.     (line 5344)
-trunk Scripts Bash cli Functions Svg:          See 3.58.     (line 5516)
-trunk Scripts Bash cli Functions Verify:       See 3.59.     (line 5704)
+trunk Scripts Bash Cli:                        See 3.48.     (line 2889)
+trunk Scripts Bash Cli Functions:              See 3.49.     (line 2892)
+trunk Scripts Bash Cli Functions Help:         See 3.50.     (line 4002)
+trunk Scripts Bash Cli Functions Html:         See 3.51.     (line 4023)
+trunk Scripts Bash Cli Functions Locale:       See 3.52.     (line 4044)
+trunk Scripts Bash Cli Functions Manual:       See 3.53.     (line 4124)
+trunk Scripts Bash Cli Functions Path:         See 3.54.     (line 4145)
+trunk Scripts Bash Cli Functions Render:       See 3.55.     (line 4468)
+trunk Scripts Bash Cli Functions Render Config:See 3.56.     (line 5166)
+trunk Scripts Bash Cli Functions Shell:        See 3.57.     (line 5344)
+trunk Scripts Bash Cli Functions Svg:          See 3.58.     (line 5516)
+trunk Scripts Bash Cli Functions Verify:       See 3.59.     (line 5704)
 trunk Scripts Python:                          See 3.60.     (line 5934)
 Unused definitions:                            See 3.58.2.1. (line 5641)
 List of Figures
