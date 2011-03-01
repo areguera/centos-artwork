@@ -57,7 +57,7 @@ function manual_getEntry {
     if [[ ${ENTRY} =~ '^trunk/Manuals/.+$' ]];then
         ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
     else
-        ENTRY=$(dirname Filesystem/${ENTRY})/$(basename $LOCATION).texi
+        ENTRY=$(dirname Repository/${ENTRY})/$(basename $LOCATION).texi
     fi
 
     # Re-define entry to set absolute path to manuals base directory
