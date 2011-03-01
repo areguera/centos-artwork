@@ -1,0 +1,47 @@
+In this manual, certain words are represented in different fonts,
+typefaces, sizes, and weights. This highlighting is systematic;
+different words are represented in the same style to indicate their
+inclusion in a specific category. The types of words that are
+represented this way include the following:
+
+@command{command}
+
+Linux commands (and other operating system commands, when used) are
+represented this way. This style should indicate to you that you can
+type the word or phrase on the command line and press Enter to invoke
+a command. Sometimes a command contains words that would be displayed
+in a different style on their own (such as file names). In these
+cases, they are considered to be part of the command, so the entire
+phrase is displayed as a command. For example:
+
+Use the @command{cat testfile} command to view the contents of a file,
+named testfile, in the current working directory.
+
+@file{file name}
+
+File names, directory names, paths, and RPM package names are
+represented this way. This style indicates that a particular file or
+directory exists with that name on your system. Examples:
+
+The @file{.bashrc} file in your home directory contains bash shell
+definitions and aliases for your own use.
+
+The @file{/etc/fstab} file contains information about different system
+devices and file systems.
+
+Install the @file{webalizer} RPM if you want to use a Web server log
+file analysis program.
+
+@key{key}
+
+A key on the keyboard is shown in this style. For example:
+
+To use @key{TAB} completion to list particular files in a directory,
+type @command{ls}, then a character, and finally the Tab key. Your
+terminal displays the list of files in the working directory that
+begin with that character.  key-combination
+
+A combination of keystrokes is represented in this way. For example:
+
+The @key{Ctrl-Alt-Backspace} key combination exits your graphical
+session and returns you to the graphical login screen or the console.
