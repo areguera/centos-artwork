@@ -25,39 +25,28 @@
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License.</para>
       <menu>
         <menuentry>
-          <menunode>Introduction</menunode>
-          <menutitle>Introduction</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>Filesystem</menunode>
           <menutitle>Filesystem</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Introduction</menunode>
+          <menutitle>Introduction</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Index</menunode>
           <menutitle>Index</menutitle>
-          <menucomment>
-<!-- * List of Figures:: --></menucomment>
+          <menucomment></menucomment>
         </menuentry>
       </menu>
 <!--  The Body of the Document - -->
     </unnumbered>
   </node>
   <node>
-    <nodename>Introduction</nodename>
-    <nodenext>Filesystem</nodenext>
-    <nodeprev>Top</nodeprev>
-    <nodeup>Top</nodeup>
-    <chapter>
-      <title>Introduction</title>
-      <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository.</para>
-    </chapter>
-  </node>
-  <node>
     <nodename>Filesystem</nodename>
-    <nodenext>Index</nodenext>
-    <nodeprev>Introduction</nodeprev>
+    <nodenext>Introduction</nodenext>
+    <nodeprev>Top</nodeprev>
     <nodeup>Top</nodeup>
     <chapter>
       <title>File System</title>
@@ -4357,8 +4346,8 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <para>The repository layout describes organization of files and directories inside the repository. The repository layout provides the standard backend required for automation scripts to work correctly. If such layout changes unexpectedly, automation scripts may confuse themselves and stop doing what we expect from them to do.</para>
           <para>As convenction, inside CentOS Artwork Repository, we organize files and directories related to CentOS corporate visual identity under three top level directories named: <file>trunk/</file>, <file>branches/</file>, and <file>tags/</file>.</para>
           <para>The <file>trunk/</file> directory (see <xref><xrefnodename>Filesystem trunk</xrefnodename></xref>) organizes the main development line of CentOS corporate visual identity. Inside <file>trunk/</file> directory structure, the CentOS corporate visual identity concepts are implemented using directories.  There is one directory level for each relevant concept inside the repository. The <file>trunk/</file> directory structure is mainly used to perform development tasks related to CentOS corporate visual identity.</para>
-          <para>The <file>branches/</file> directory (see <xref><xrefnodename>branches</xrefnodename></xref>) oranizes parallel development lines to <file>trunk/</file> directory. The <file>branches/</file> directory is used to set points in time where develpment lines are devided one from another taking separte and idependent lives that share a common past from the point they were devided on. The <file>branches/</file> directory is mainly used to perform quality assurance tasks related to CentOS corporate visual identity.</para>
-          <para>The <file>tags/</file> directory (see <xref><xrefnodename>tags</xrefnodename></xref>) organizes parallel frozen lines to <file>branches/</file> directory.  The parallel frozen lines are immutable, nothing change inside them once they has been created.  The <file>tags/</file> directory is mainly used to publish final releases of CentOS corporate visual identity.</para>
+          <para>The <file>branches/</file> directory () oranizes parallel development lines to <file>trunk/</file> directory. The <file>branches/</file> directory is used to set points in time where develpment lines are devided one from another taking separte and idependent lives that share a common past from the point they were devided on. The <file>branches/</file> directory is mainly used to perform quality assurance tasks related to CentOS corporate visual identity.</para>
+          <para>The <file>tags/</file> directory (see <xref><xrefnodename>Filesystem tags</xrefnodename></xref>) organizes parallel frozen lines to <file>branches/</file> directory.  The parallel frozen lines are immutable, nothing change inside them once they has been created.  The <file>tags/</file> directory is mainly used to publish final releases of CentOS corporate visual identity.</para>
           <para>The CentOS Artwork Repository layout is firmly grounded on a Subversion base.  Subversion (<uref><urefurl>http://subversion.tigris.org</urefurl></uref>) is a version control system, which allows you to keep old versions of files and directories (usually source code), keep a log of who, when, and why changes occurred, etc., like CVS, RCS or SCCS.  Subversion keeps a single copy of the master sources.  This copy  is called the source &ldquo;repository&rdquo;; it contains all the information to permit extracting previous versions of those files at any time.</para>
         </subsubsection>
 
@@ -5434,13 +5423,23 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
         </menu>
-<!--  The End of the Document - -->
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Index</nodename>
+    <nodename>Introduction</nodename>
+    <nodenext>Index</nodenext>
     <nodeprev>Filesystem</nodeprev>
+    <nodeup>Top</nodeup>
+    <chapter>
+      <title>Introduction</title>
+      <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository.</para>
+<!--  The End of the Document - -->
+    </chapter>
+  </node>
+  <node>
+    <nodename>Index</nodename>
+    <nodeprev>Introduction</nodeprev>
     <nodeup>Top</nodeup>
     <unnumbered>
       <title>Index</title>
