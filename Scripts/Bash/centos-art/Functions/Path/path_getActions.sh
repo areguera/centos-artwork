@@ -100,7 +100,7 @@ function path_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_commitRepoChanges "${ACTIOVAL} ${FLAG_TO}"
+    cli_syncroRepoChanges "${ACTIOVAL} ${FLAG_TO}"
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

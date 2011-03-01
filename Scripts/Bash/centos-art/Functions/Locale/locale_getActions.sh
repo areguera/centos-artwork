@@ -104,7 +104,7 @@ function locale_getActions {
   
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_commitRepoChanges "${WORKDIR}"
+    cli_syncroRepoChanges "${WORKDIR}"
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

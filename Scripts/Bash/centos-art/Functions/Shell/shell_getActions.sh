@@ -69,7 +69,7 @@ function shell_getActions {
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
-    cli_commitRepoChanges
+    cli_syncroRepoChanges
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
