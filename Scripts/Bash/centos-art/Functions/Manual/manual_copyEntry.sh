@@ -26,31 +26,40 @@
 
 function manual_copyEntry {
 
+    local ENTRY_SRC=${ENTRY}
+    local ENTRY_DST=${FLAG_TO}
+    local ENTRIES=''
+    local ENTRY=''
+
     # Print action message.
-    cli_printMessage "${FLAG_TO}" 'AsCreatingLine'
+    cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
 
     # Copy main documentation entry.
-    if [[ ! -f $FLAG_TO ]];then
-        svn cp "${ENTRY}" "${FLAG_TO}" --quiet
+    if [[ ! -f ${ENTRY_DST} ]];then
+        svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
     fi
 
     # Define target location of directory holding dependent
     # documentation entries.
-    local ENTRY_DIR_DST=$(echo ${FLAG_TO} | sed -r 's!\.texi$!!')
+    ENTRY_DST=$(echo ${ENTRY_DST} | sed -r 's!\.texi$!!')
 
-    # Print action message.
-    cli_printMessage "${ENTRY_DIR_DST}" 'AsCreatingLine'
-
-    # Copy dependent documentation entries.
-    if [[ ! -d $ENTRY_DIR_DST ]];then
-        svn cp "${ENTRY_DIR}/${ENTRY_FILE}" "${ENTRY_DIR_DST}" --quiet
+    # Copy dependent documentation entries, if any.
+    if [[ ! -d ${ENTRY_DST} ]];then
+        cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
+        svn cp "${ENTRY_DIR}/${ENTRY_FILE}" "${ENTRY_DST}" --quiet
     fi
                 
     # Define list of files to process.
-    ENTRIES=$(cli_getFilesList "$(dirname ${ENTRY_DIR_DST})" "$(basename ${ENTRY_DIR_DST}).*\.texi")
+    ENTRIES=$(cli_getFilesList "$(dirname ${ENTRY_DST})" "$(basename ${ENTRY_DST}).*\.texi")
 
     # Set action preamble.
     cli_printActionPreamble "${ENTRIES}"
+
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Print action message.
+    cli_printMessage "Updating manual menus, nodes and cross-references." 'AsResponseLine'
 
     # Redefine ENTRY variable in order to update documentation
     # structure, taking recently created entries as reference.
