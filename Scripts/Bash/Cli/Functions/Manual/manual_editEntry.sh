@@ -62,27 +62,26 @@ function manual_editEntry {
         # Print action message.
         cli_printMessage "$ENTRY" 'AsCreatingLine'
 
-        # Update chapter section related menu.
-        manual_updateMenu
-
-        # Update chapter section related nodes (based on chapter
-        # section related menu).
-        manual_updateNodes
-
-        # Update old missing cross references. If for some reason a
-        # documentation entry is removed by mistake, and that mistake
-        # is fixing by adding the removed documentation entry back
-        # into the repository, rebuild the missing cross reference
-        # message to use the correct link to the documentation
-        # section.
-        manual_restoreCrossReferences
-
     else
 
         # Print action message.
         cli_printMessage "$ENTRY" 'AsUpdatingLine'
 
     fi
+
+    # Update chapter section related menu.
+    manual_updateMenu
+
+    # Update chapter section related nodes (based on chapter section
+    # related menu).
+    manual_updateNodes
+
+    # Update old missing cross references. If for some reason a
+    # documentation entry is removed by mistake, and that mistake is
+    # fixing by adding the removed documentation entry back into the
+    # repository, rebuild the missing cross reference message to use
+    # the correct link to the documentation section.
+    manual_restoreCrossReferences
 
     # Use default text editor to edit the documentation entry.
     eval $EDITOR $ENTRY
