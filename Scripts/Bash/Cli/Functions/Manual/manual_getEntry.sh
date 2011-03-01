@@ -64,17 +64,6 @@ function manual_getEntry {
     # structure.
     ENTRY=${MANUAL_BASEDIR}/${ENTRY}
 
-    # Re-define documentation entry to handle chapter entries. Chapter
-    # entries are handled inside the chapter it refers to, not outside
-    # it. To store chapter-specific information, the special file
-    # chapter-intro.texi is used inside the chapter.  
-    # TODO: automate the verification, in order to accept any other
-    # structure in the first level.
-    if [[ ${ENTRY} =~ "(trunk|branches|tags)\.texi$" ]];then
-        ENTRY=$(echo ${ENTRY} \
-            | sed -r "s/(trunk|branches|tags)\.texi$/\1\/chapter-intro.texi/")
-    fi
-
     # Output entry's absolute path.
     echo ${ENTRY}
 
