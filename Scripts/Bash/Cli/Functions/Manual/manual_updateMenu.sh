@@ -35,15 +35,13 @@ function manual_updateMenu {
     # Specify which action to do inside chapter's menu.
     local ACTION="$1"
 
-    # Build the menu line related to the entry being processed
+    # Build the menu node related to the entry being processed
     # currently.
-    local MENULINE=$(echo "$ENTRY" \
-        | cut -d / -f8- \
-        | tr '/' ' ' \
-        | sed -r "s/(chapter-intro\.texi|\.texi)$//")
+    local MENUNODE=$(echo "$ENTRY" | cut -d / -f8- | tr '/' ' ' \
+        | sed 's!\.texi$!!')
 
     # Give format to menu line using texinfo style.
-    MENULINE="* $MENULINE::"
+    local MENULINE="* ${MANUAL_CHAPTER_NAME} $MENUNODE::" 
 
     # Define chapter's menu. Remove `@menu', `@end menu', and empty lines
     # from output.
