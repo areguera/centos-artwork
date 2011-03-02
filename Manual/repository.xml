@@ -123,6 +123,22 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           </item>
         </tableitem>
       </table>
+      <para>Additionally, we use several different strategies to draw your attention to certain pieces of information. In order of urgency, these items are marked as a note, tip, important, caution, or warning. For example:</para>
+      <quotation>
+        <para><strong>Note</strong> Remember that Linux is case sensitive. In other words, a rose is not a ROSE is not a rOsE.</para>
+      </quotation>
+      <quotation>
+        <para><strong>Tip</strong> The directory <file>/usr/share/doc/</file> contains additional documentation for packages installed on your system.</para>
+      </quotation>
+      <quotation>
+        <para><strong>Important</strong> If you modify the DHCP configuration file, the changes do not take effect until you restart the DHCP daemon.</para>
+      </quotation>
+      <quotation>
+        <para><strong>Caution</strong> Do not perform routine tasks as root &mdash; use a regulr user account unless you need to use the root account for system administration tasks.</para>
+      </quotation>
+      <quotation>
+        <para><strong>Warning</strong> Be careful to remove only the necessary partitions. Removing other partitions could result in data loss or a corrupted system environment.</para>
+      </quotation>
     </section>
   </node>
   <node>

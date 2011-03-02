@@ -69,3 +69,35 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 The output returned in response to the command (in this case, the
 contents of the directory) is shown in this style.
 @end table
+
+Additionally, we use several different strategies to draw your
+attention to certain pieces of information. In order of urgency, these
+items are marked as a note, tip, important, caution, or warning. For
+example:
+
+@quotation
+@strong{Note} Remember that Linux is case sensitive. In other words, a
+rose is not a ROSE is not a rOsE. 
+@end quotation
+
+@quotation
+@strong{Tip} The directory @file{/usr/share/doc/} contains additional
+documentation for packages installed on your system. 
+@end quotation
+
+@quotation
+@strong{Important} If you modify the DHCP configuration file, the
+changes do not take effect until you restart the DHCP daemon. 
+@end quotation
+
+@quotation
+@strong{Caution} Do not perform routine tasks as root --- use a regulr
+user account unless you need to use the root account for system
+administration tasks.
+@end quotation
+
+@quotation
+@strong{Warning} Be careful to remove only the necessary partitions.
+Removing other partitions could result in data loss or a corrupted
+system environment.
+@end quotation
