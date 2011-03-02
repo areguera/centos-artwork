@@ -36,9 +36,7 @@ function locale_updateMessageXml {
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/.+" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.svg")
-    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals/.+" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.xml")
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.(svg|xml)")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
