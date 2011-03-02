@@ -123,7 +123,7 @@ function identity_getActions {
     # scripts. The render.conf.sh script defines how each identity
     # content is rendered.
     local ARTCONF=$(echo "$ACTIONVAL" \
-        | sed -r -e 's!/(Identity)!/Scripts/Bash/Functions/Identity/Config/\1!' \
+        | sed -r -e 's!/(Identity)!/Scripts/Bash/Cli/Functions/Identity/Config/\1!' \
                  -e "s!Motifs/$(cli_getPathComponent '--theme')/?!!")
 
     # Check directory of pre-rendition configuration script.

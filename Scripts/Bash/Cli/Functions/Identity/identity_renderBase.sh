@@ -71,6 +71,9 @@ function identity_renderBase {
     # approching :-).
     for FILE in $FILES; do
 
+        # Print separator line.
+        cli_printMessage '-' 'AsSeparatorLine'
+
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
            | sed -r 's!/trunk/(Identity/)!/trunk/Locales/\1!')/$(cli_getCurrentLocale).po
@@ -187,9 +190,6 @@ function identity_renderBase {
 
         # Execute post-rendition actions.
         identity_renderPostActions
-
-        # Output separator line.
-        cli_printMessage '-' 'AsSeparatorLine'
 
         # Verify position of file being produced in the list of files
         # been currently processed.  As convenction, last-rendition
