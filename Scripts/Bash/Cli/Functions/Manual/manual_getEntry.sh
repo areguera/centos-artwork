@@ -54,7 +54,7 @@ function manual_getEntry {
     # to take place on. Other options like `--edit', `--delete' and
     # `--read' cannot be applied to paths provided is inside
     # trunk/Manuals/ such actions made manually.
-    if [[ ${ENTRY} =~ '^trunk/Manual' ]];then
+    if [[ ${ENTRY} =~ '\.texi$' ]];then
         ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manual/!!')
     else
         ENTRY=$(dirname Filesystem/${ENTRY})/$(basename $LOCATION).texi
