@@ -60,16 +60,11 @@
         <menuentry>
           <menunode>Convenctions</menunode>
           <menutitle>Convenctions</menutitle>
-          <menucomment>Document Convenctions</menucomment>
+          <menucomment></menucomment>
         </menuentry>
         <menuentry>
           <menunode>Feedback</menunode>
           <menutitle>Feedback</menutitle>
-          <menucomment>Send in Your Feedback</menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Introduction convenctions</menunode>
-          <menutitle>Introduction convenctions</menutitle>
           <menucomment></menucomment>
         </menuentry>
       </menu>
@@ -80,110 +75,48 @@
     <nodenext>Feedback</nodenext>
     <nodeup>Introduction</nodeup>
     <section>
-      <title>The <file>Convenctions</file> Directory</title>
-      <para><indexterm index="cp">Convenctions</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
+      <title>Document Convenctions</title>
+      <para><indexterm index="cp">Document convenctions</indexterm>In this manual, certain words are represented in different fonts, typefaces, sizes, and weights. This highlighting is systematic; different words are represented in the same style to indicate their inclusion in a specific category. The types of words that are represented this way include the following:</para>
+      <table>
+        <tableitem>
+          <tableterm><command>command</command></tableterm>
           <item>
-            <para>...</para>
+            <para>Linux commands (and other operating system commands, when used) are represented this way. This style should indicate to you that you can type the word or phrase on the command line and press Enter to invoke a command. Sometimes a command contains words that would be displayed in a different style on their own (such as file names). In these cases, they are considered to be part of the command, so the entire phrase is displayed as a command. For example:</para>
+            <para>Use the <command>cat testfile</command> command to view the contents of a file, named testfile, in the current working directory.</para>
           </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
+        </tableitem>
+      </table>
+      <table>
+        <tableitem>
+          <tableterm><file>file name</file></tableterm>
           <item>
-            <para>...</para>
+            <para>File names, directory names, paths, and RPM package names are represented this way. This style indicates that a particular file or directory exists with that name on your system. Examples:</para>
+            <para>The <file>.bashrc</file> file in your home directory contains bash shell definitions and aliases for your own use.</para>
+            <para>The <file>/etc/fstab</file> file contains information about different system devices and file systems.</para>
+            <para>Install the <file>webalizer</file> RPM if you want to use a Web server log file analysis program.</para>
           </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
+        </tableitem>
+      </table>
+      <table>
+        <tableitem>
+          <tableterm><key>key</key></tableterm>
           <item>
-            <para>...</para>
+            <para>A key on the keyboard is shown in this style. For example:</para>
+            <para>To use <key>TAB</key> completion to list particular files in a directory, type <command>ls</command>, then a character, and finally the Tab key. Your terminal displays the list of files in the working directory that begin with that character.  key-combination</para>
+            <para>A combination of keystrokes is represented in this way. For example:</para>
+            <para>The <key>Ctrl-Alt-Backspace</key> key combination exits your graphical session and returns you to the graphical login screen or the console.</para>
           </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
+        </tableitem>
+      </table>
     </section>
   </node>
   <node>
     <nodename>Feedback</nodename>
-    <nodenext>Introduction convenctions</nodenext>
     <nodeprev>Convenctions</nodeprev>
     <nodeup>Introduction</nodeup>
     <section>
-      <title>The <file>Feedback</file> Directory</title>
+      <title>Send in Your Feedback</title>
       <para><indexterm index="cp">Feedback</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Introduction convenctions</nodename>
-    <nodeprev>Feedback</nodeprev>
-    <nodeup>Introduction</nodeup>
-    <section>
-      <title>The <file>convenctions</file> Directory</title>
-      <para><indexterm index="cp">Introduction convenctions</indexterm>In this manual, certain words are represented in different fonts, typefaces, sizes, and weights. This highlighting is systematic; different words are represented in the same style to indicate their inclusion in a specific category. The types of words that are represented this way include the following:</para>
-      <para><command>command</command></para>
-      <para>Linux commands (and other operating system commands, when used) are represented this way. This style should indicate to you that you can type the word or phrase on the command line and press Enter to invoke a command. Sometimes a command contains words that would be displayed in a different style on their own (such as file names). In these cases, they are considered to be part of the command, so the entire phrase is displayed as a command. For example:</para>
-      <para>Use the <command>cat testfile</command> command to view the contents of a file, named testfile, in the current working directory.</para>
-      <para><file>file name</file></para>
-      <para>File names, directory names, paths, and RPM package names are represented this way. This style indicates that a particular file or directory exists with that name on your system. Examples:</para>
-      <para>The <file>.bashrc</file> file in your home directory contains bash shell definitions and aliases for your own use.</para>
-      <para>The <file>/etc/fstab</file> file contains information about different system devices and file systems.</para>
-      <para>Install the <file>webalizer</file> RPM if you want to use a Web server log file analysis program.</para>
-      <para><key>key</key></para>
-      <para>A key on the keyboard is shown in this style. For example:</para>
-      <para>To use <key>TAB</key> completion to list particular files in a directory, type <command>ls</command>, then a character, and finally the Tab key. Your terminal displays the list of files in the working directory that begin with that character.  key-combination</para>
-      <para>A combination of keystrokes is represented in this way. For example:</para>
-      <para>The <key>Ctrl-Alt-Backspace</key> key combination exits your graphical session and returns you to the graphical login screen or the console.</para>
     </section>
   </node>
   <node>

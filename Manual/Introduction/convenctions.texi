@@ -4,7 +4,8 @@ different words are represented in the same style to indicate their
 inclusion in a specific category. The types of words that are
 represented this way include the following:
 
-@command{command}
+@table @command
+@item command
 
 Linux commands (and other operating system commands, when used) are
 represented this way. This style should indicate to you that you can
@@ -16,8 +17,10 @@ phrase is displayed as a command. For example:
 
 Use the @command{cat testfile} command to view the contents of a file,
 named testfile, in the current working directory.
+@end table
 
-@file{file name}
+@table @file
+@item file name
 
 File names, directory names, paths, and RPM package names are
 represented this way. This style indicates that a particular file or
@@ -31,8 +34,10 @@ devices and file systems.
 
 Install the @file{webalizer} RPM if you want to use a Web server log
 file analysis program.
+@end table
 
-@key{key}
+@table @key
+@item key
 
 A key on the keyboard is shown in this style. For example:
 
@@ -45,3 +50,4 @@ A combination of keystrokes is represented in this way. For example:
 
 The @key{Ctrl-Alt-Backspace} key combination exits your graphical
 session and returns you to the graphical login screen or the console.
+@end table
