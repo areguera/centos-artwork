@@ -102,6 +102,11 @@ function locale_getActions {
             -e "s!/(Bash)!/\1/$(cli_getCurrentLocale)!" \
             -e "s!/${CLI_PROGRAM}!!") 
   
+    # Create work directory, if it doesn't exist.
+    if [[ ! -d $WORKDIR ]];then
+        mkdir -p $WORKDIR
+    fi
+
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.
     cli_syncroRepoChanges "${WORKDIR}"
