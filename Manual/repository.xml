@@ -4,6 +4,7 @@
   <setfilename>repository.xml</setfilename>
   <settitle>CentOS Artwork Repository</settitle>
 <!--  Summary Description and Copyright - -->
+  <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
   <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
   <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License. 
 <!--  Titlepage, Contents, Copyright - --></para>
@@ -11,6 +12,7 @@
     <booktitle>CentOS Artwork Repository</booktitle>
     <booksubtitle>Manual</booksubtitle>
     <author>Alain Reguera Delgado</author>
+    <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
     <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
     <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License.</para>
   </titlepage>
@@ -21,6 +23,7 @@
     <nodeup>(dir)</nodeup>
     <unnumbered>
       <title>CentOS Artwork Repository</title>
+      <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
       <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License.</para>
       <menu>
@@ -55,7 +58,29 @@
     <nodeup>Top</nodeup>
     <chapter>
       <title>Introduction</title>
-      <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository.</para>
+      <para><indexterm index="cp">Introduction</indexterm>Welcome to the <emph>CentOS Artwork Repository Manual</emph>.</para>
+      <para>The CentOS Artwork Repository Manual contains information on how to produce the CentOS Corporate Visual Identity inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>). If you are looking for a comprehensive, task-oriented guide for understanding how the CentOS Corporate Visual Identity is produced, this is the manual for you.</para>
+      <para>This manual discusses the following intermedite topics:</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>The CentOS Brand</para>
+        </item>
+        <item>
+          <para>The CentOS Corporate Visual Structure</para>
+        </item>
+        <item>
+          <para>The CentOS Corporate Visual Style</para>
+        </item>
+      </itemize>
+      <para>This manual is divided into the following main categories:</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>The Repository File System</para>
+        </item>
+      </itemize>
+      <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can find help.</para>
       <menu>
         <menuentry>
           <menunode>Convenctions</menunode>
@@ -82,7 +107,7 @@
           <tableterm><command>command</command></tableterm>
           <item>
             <para>Linux commands (and other operating system commands, when used) are represented this way. This style should indicate to you that you can type the word or phrase on the command line and press Enter to invoke a command. Sometimes a command contains words that would be displayed in a different style on their own (such as file names). In these cases, they are considered to be part of the command, so the entire phrase is displayed as a command. For example:</para>
-            <para>Use the <command>cat testfile</command> command to view the contents of a file, named testfile, in the current working directory.</para>
+            <para>Use the <command>centos-art identity --render='path/to/dir'</command> command to produce contents inside the <file>trunk/Identity</file> directory structure.</para>
           </item>
         </tableitem>
       </table>
@@ -91,9 +116,8 @@
           <tableterm><file>file name</file></tableterm>
           <item>
             <para>File names, directory names, paths, and RPM package names are represented this way. This style indicates that a particular file or directory exists with that name on your system. Examples:</para>
-            <para>The <file>.bashrc</file> file in your home directory contains bash shell definitions and aliases for your own use.</para>
-            <para>The <file>/etc/fstab</file> file contains information about different system devices and file systems.</para>
-            <para>Install the <file>webalizer</file> RPM if you want to use a Web server log file analysis program.</para>
+            <para>The <file>init.sh</file> file in <file>trunk/Scripts/Bash/Cli/</file> directory is the initialization script, written in Bash, used to automate most of tasks in the repository.</para>
+            <para>The <command>centos-art</command> command uses the <file>ImageMagick</file> RPM package to convert images from PNG format to many different formats.</para>
           </item>
         </tableitem>
       </table>
@@ -102,7 +126,14 @@
           <tableterm><key>key</key></tableterm>
           <item>
             <para>A key on the keyboard is shown in this style. For example:</para>
-            <para>To use <key>TAB</key> completion to list particular files in a directory, type <command>ls</command>, then a character, and finally the Tab key. Your terminal displays the list of files in the working directory that begin with that character.  key-combination</para>
+            <para>To use <key>TAB</key> completion to list particular files in a directory, type <command>ls</command>, then a character, and finally the Tab key. Your terminal displays the list of files in the working directory that begin with that character.</para>
+          </item>
+        </tableitem>
+      </table>
+      <table>
+        <tableitem>
+          <tableterm><key>key-combination</key></tableterm>
+          <item>
             <para>A combination of keystrokes is represented in this way. For example:</para>
             <para>The <key>Ctrl-Alt-Backspace</key> key combination exits your graphical session and returns you to the graphical login screen or the console.</para>
           </item>
@@ -110,7 +141,7 @@
       </table>
       <table>
         <tableitem>
-          <tableterm><command>computer output</command></tableterm>
+          <tableterm><code>computer output</code></tableterm>
           <item>
             <para>Text in this style indicates text displayed to a shell prompt such as error messages and responses to commands. For example:</para>
             <para>The <command>ls</command> command displays the contents of a directory. For example:</para>
@@ -147,7 +178,7 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     <nodeup>Introduction</nodeup>
     <section>
       <title>Send in Your Feedback</title>
-      <para><indexterm index="cp">Feedback</indexterm> If you find an error in the <emph>CentOS Artwork Repository</emph>, or if  you have thought of a way to make this manual better, we would like  to hear from you! Create a new ticket in artwork project  (<uref><urefurl>http://projects.centos.org/trac/artwork/</urefurl></uref>).</para>
+      <para><indexterm index="cp">Feedback</indexterm> If you find an error in the <emph>CentOS Artwork Repository Manual</emph>,  or if you have thought of a way to make this manual better, we would  like to hear from you! Create a new ticket in artwork project  (<uref><urefurl>https://projects.centos.org/trac/artwork/</urefurl></uref>).</para>
  
       <para>If you have a suggestion for improving the documentation, try to be  as specific as possible. If you have found an error, include the  section number and some of the surrounding text so we can find it  easily.</para>
     </section>

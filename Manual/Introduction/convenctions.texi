@@ -15,8 +15,9 @@ in a different style on their own (such as file names). In these
 cases, they are considered to be part of the command, so the entire
 phrase is displayed as a command. For example:
 
-Use the @command{cat testfile} command to view the contents of a file,
-named testfile, in the current working directory.
+Use the @command{centos-art identity --render='path/to/dir'} command
+to produce contents inside the @file{trunk/Identity} directory
+structure.
 @end table
 
 @table @file
@@ -26,14 +27,12 @@ File names, directory names, paths, and RPM package names are
 represented this way. This style indicates that a particular file or
 directory exists with that name on your system. Examples:
 
-The @file{.bashrc} file in your home directory contains bash shell
-definitions and aliases for your own use.
+The @file{init.sh} file in @file{trunk/Scripts/Bash/Cli/} directory is
+the initialization script, written in Bash, used to automate most of
+tasks in the repository.
 
-The @file{/etc/fstab} file contains information about different system
-devices and file systems.
-
-Install the @file{webalizer} RPM if you want to use a Web server log
-file analysis program.
+The @command{centos-art} command uses the @file{ImageMagick} RPM
+package to convert images from PNG format to many different formats.
 @end table
 
 @table @key
@@ -44,15 +43,18 @@ A key on the keyboard is shown in this style. For example:
 To use @key{TAB} completion to list particular files in a directory,
 type @command{ls}, then a character, and finally the Tab key. Your
 terminal displays the list of files in the working directory that
-begin with that character.  key-combination
+begin with that character.  
+@end table
 
+@table @key
+@item key-combination
 A combination of keystrokes is represented in this way. For example:
 
 The @key{Ctrl-Alt-Backspace} key combination exits your graphical
 session and returns you to the graphical login screen or the console.
 @end table
 
-@table @command
+@table @code
 @item computer output
 
 Text in this style indicates text displayed to a shell prompt such as

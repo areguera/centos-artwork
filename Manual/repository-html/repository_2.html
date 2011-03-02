@@ -1,6 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!--Copyright C 2009-2011 Alain Reguera Delgado
+<!--This manuals documents relevant information regarding the deployment,
+organization, and administration of CentOS Artwork Repository.
+
+Copyright C 2009-2011 Alain Reguera Delgado
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
@@ -88,8 +91,9 @@ in a different style on their own (such as file names). In these
 cases, they are considered to be part of the command, so the entire
 phrase is displayed as a command. For example:
 </p>
-<p>Use the <code>cat testfile</code> command to view the contents of a file,
-named testfile, in the current working directory.
+<p>Use the <code>centos-art identity --render='path/to/dir'</code> command
+to produce contents inside the <tt>`trunk/Identity'</tt> directory
+structure.
 </p></dd>
 </dl>
 
@@ -100,14 +104,12 @@ named testfile, in the current working directory.
 represented this way. This style indicates that a particular file or
 directory exists with that name on your system. Examples:
 </p>
-<p>The <tt>`.bashrc'</tt> file in your home directory contains bash shell
-definitions and aliases for your own use.
+<p>The <tt>`init.sh'</tt> file in <tt>`trunk/Scripts/Bash/Cli/'</tt> directory is
+the initialization script, written in Bash, used to automate most of
+tasks in the repository.
 </p>
-<p>The <tt>`/etc/fstab'</tt> file contains information about different system
-devices and file systems.
-</p>
-<p>Install the <tt>`webalizer'</tt> RPM if you want to use a Web server log
-file analysis program.
+<p>The <code>centos-art</code> command uses the <tt>`ImageMagick'</tt> RPM
+package to convert images from PNG format to many different formats.
 </p></dd>
 </dl>
 
@@ -119,9 +121,13 @@ file analysis program.
 <p>To use <kbd>TAB</kbd> completion to list particular files in a directory,
 type <code>ls</code>, then a character, and finally the Tab key. Your
 terminal displays the list of files in the working directory that
-begin with that character.  key-combination
-</p>
-<p>A combination of keystrokes is represented in this way. For example:
+begin with that character.  
+</p></dd>
+</dl>
+
+<dl compact="compact">
+<dt> <kbd>key-combination</kbd></dt>
+<dd><p>A combination of keystrokes is represented in this way. For example:
 </p>
 <p>The <kbd>Ctrl-Alt-Backspace</kbd> key combination exits your graphical
 session and returns you to the graphical login screen or the console.
