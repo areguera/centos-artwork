@@ -26,10 +26,7 @@
 
 function manual_editEntry {
 
-    # Verify definition of manual chapters. Definition of manual
-    # chapters sets how many chapters does the manual has and the
-    # directory and file structure required to make them active part
-    # of a texinfo manual.
+    # Verify chapter definition inside manual.
     if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
 
         # Print confirmation question.
@@ -49,9 +46,7 @@ function manual_editEntry {
 
     fi
 
-    # Verify definition of chapter sections. Definition of chapter
-    # sections sets how many sections does each chapter, inside the
-    # manual, has.
+    # Verify section definition inside chapters. 
     if [[ ! -f $ENTRY ]];then
 
         # Print confirmation question. 
@@ -59,8 +54,20 @@ function manual_editEntry {
         cli_printMessage "$ENTRY" "AsResponseLine"
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
-        # Print action message.
-        cli_printMessage "$ENTRY" 'AsCreatingLine'
+        # Update chapter section related menu.
+        manual_updateMenu
+
+        # Update chapter section related nodes (based on chapter
+        # section related menu).
+        manual_updateNodes
+
+        # Update old missing cross references. If for some reason a
+        # documentation entry is removed by mistake, and that mistake
+        # is fixing by adding the removed documentation entry back
+        # into the repository, rebuild the missing cross reference
+        # message to use the correct link to the documentation
+        # section.
+        manual_restoreCrossReferences
 
     else
 
@@ -68,20 +75,6 @@ function manual_editEntry {
         cli_printMessage "$ENTRY" 'AsUpdatingLine'
 
     fi
-
-    # Update chapter section related menu.
-    manual_updateMenu
-
-    # Update chapter section related nodes (based on chapter section
-    # related menu).
-    manual_updateNodes
-
-    # Update old missing cross references. If for some reason a
-    # documentation entry is removed by mistake, and that mistake is
-    # fixing by adding the removed documentation entry back into the
-    # repository, rebuild the missing cross reference message to use
-    # the correct link to the documentation section.
-    manual_restoreCrossReferences
 
     # Use default text editor to edit the documentation entry.
     eval $EDITOR $ENTRY
