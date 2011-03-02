@@ -59,7 +59,7 @@
     <chapter>
       <title>Introduction</title>
       <para><indexterm index="cp">Introduction</indexterm>Welcome to the <emph>CentOS Artwork Repository Manual</emph>.</para>
-      <para>The CentOS Artwork Repository Manual contains information on how to produce the CentOS Corporate Visual Identity inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>). If you are looking for a comprehensive, task-oriented guide for understanding how the CentOS Corporate Visual Identity is produced, this is the manual for you.</para>
+      <para>The CentOS Artwork Repository Manual contains information on how to produce the CentOS Corporate Visual Identity in the working copies of CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>). If you are looking for a comprehensive, task-oriented guide for understanding how the CentOS Corporate Visual Identity is produced, this is the manual for you.</para>
       <para>This manual discusses the following intermedite topics:</para>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -73,14 +73,9 @@
           <para>The CentOS Corporate Visual Style</para>
         </item>
       </itemize>
-      <para>This manual is divided into the following main categories:</para>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>The Repository File System</para>
-        </item>
-      </itemize>
-      <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can find help.</para>
+      <para>This manual is organized in the same way the CentOS Artwork Repository file system does. In the CentOS Artwork Repository we use directories to store conceptual ideas of CentOS Corporate Visual Identity.  For this manual sake, each directory in the CentOS Artwork Repository has its own documentation section to describe the related conceptual ideas. See <xref><xrefnodename>Filesystem</xrefnodename><xrefprinteddesc>Repository File System</xrefprinteddesc></xref>, for more information.</para>
+      <para>This manual is structured dynamically through <command>centos-art</command> command-line.  The <command>centos-art</command> command-line provides an interface for writers to document directories in the working copies of CentOS Artwork Repository using a predefined Texinfo documentation structure. The <command>centos-art</command> command-line, also, takes care of updating menus, nodes and cross-references inside the documentation structure when documentation sections are added to or removed from the manual.  See <xref><xrefnodename>Filesystem trunk Scripts Bash Cli Functions Manual</xrefnodename><xrefprinteddesc>The <file>trunk/Scripts/Bash/Cli/Functions/Manual</file> Directory</xrefprinteddesc></xref>, for more information.</para>
+      <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can go to look for help.</para>
       <menu>
         <menuentry>
           <menunode>Convenctions</menunode>
@@ -123,7 +118,7 @@
       </table>
       <table>
         <tableitem>
-          <tableterm><key>key</key></tableterm>
+          <tableterm><key><key>key</key></key></tableterm>
           <item>
             <para>A key on the keyboard is shown in this style. For example:</para>
             <para>To use <key>TAB</key> completion to list particular files in a directory, type <command>ls</command>, then a character, and finally the Tab key. Your terminal displays the list of files in the working directory that begin with that character.</para>
@@ -132,7 +127,7 @@
       </table>
       <table>
         <tableitem>
-          <tableterm><key>key-combination</key></tableterm>
+          <tableterm><key><key>key-combination</key></key></tableterm>
           <item>
             <para>A combination of keystrokes is represented in this way. For example:</para>
             <para>The <key>Ctrl-Alt-Backspace</key> key combination exits your graphical session and returns you to the graphical login screen or the console.</para>
@@ -141,7 +136,7 @@
       </table>
       <table>
         <tableitem>
-          <tableterm><code>computer output</code></tableterm>
+          <tableterm><code><code>computer output</code></code></tableterm>
           <item>
             <para>Text in this style indicates text displayed to a shell prompt such as error messages and responses to commands. For example:</para>
             <para>The <command>ls</command> command displays the contents of a directory. For example:</para>
@@ -626,23 +621,24 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <title>Description</title>
         <para>The CentOS Project corporate identity is the &ldquo;persona&rdquo; of the organization known as The CentOS Project.  The CentOS Project corporate identity plays a significant role in the way the CentOS Project, as organization, presents itself to both internal and external stakeholders. In general terms, the CentOS Project corporate visual identity expresses the values and ambitions of the CentOS Project organization, its business, and its characteristics.</para>
         <para>The CentOS Project corporate identity provides visibility, recognizability, reputation, structure and identification to the CentOS Project organization by means of corporate design, corporate communication, and corporate behaviour.</para>
-        <para>The CentOS Project settles down its corporate visual identity on a &ldquo;monolithic corporate visual identity structure&rdquo;. In this structure The CentOS Project uses one unique name (The CentOS Brand) and one unique visual style (The CentOS Default Theme) in all its manifestations.</para>
+        <para>The CentOS Project settles down its corporate visual identity on a <emph>&ldquo;monolithic corporate visual identity structure&rdquo;</emph>. In this structure The CentOS Project uses one unique name (The CentOS Brand) and one unique visual style (The CentOS Default Theme) in all its manifestations.</para>
         <table>
           <tableitem>
             <tableterm><strong>The CentOS Brands</strong></tableterm>
             <item>
-              <para>The CentOS brand is the name or trademark that conncects the producer with their products. In this case, the producer is The CentOS Project and the products are the CentOS distributions, the CentOS web sites, the CentOS promotion stuff, etc.</para>
+              <para>The CentOS Brand is the name or trademark that conncects the producer with their products. In this case, the producer is The CentOS Project and the product is the CentOS Distributions. The CentOS Brand connects, also, different media (e.g., web sites, promotion stuff) used to backup the CentOS Distribution, in a way The CentOS Project visual connection remains through them.</para>
               <para>See <xref><xrefnodename>Filesystem trunk Identity Brands</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
-            <tableterm><strong>The CentOS Themes</strong></tableterm>
+            <tableterm><strong>The CentOS Corporate Visual Identity</strong></tableterm>
             <item>
-              <para>The CentOS themes are a set of image files connected all together by one unique visual style. Each theme is organized in different visual manifestations, in order to cover each visual manifestation of The CentOS Project (i.e., distributions, websites, promotion stuff, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes</xrefnodename></xref>, for more information.</para>
+              <para>The CentOS Corporate Visual Identity is implemented by mean of <emph>CentOS Themes</emph>. CentOS themes are made of <emph>CentOS Models</emph> and <emph>CentOS Motifs</emph>. CentOS Models implement the structural part of corporate identity and CentOS Motifs implement the visual style part of corporate identity.</para>
+              <para>See <xref><xrefnodename>Filesystem trunk Identity Themes</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
         </table>
-        <para>Inside a monolithic corporate visual identity structure, internal and external stakeholders use to feel a strong sensation of uniformity, orientation, and identification with the organization. No matter if you are visiting websites, using the distribution, or acting on social events, the one unique name and one unique visual style conect them all to say: Hey! we are all parts of the CentOS project.  And, probably, some vister will say: Can I join the party?  Yes you can, it is free. :)</para>
+        <para>Inside a monolithic corporate visual identity structure, internal and external stakeholders use to feel a strong sensation of uniformity, orientation, and identification with the organization. No matter if you are visiting websites, using the distribution, or acting on social events, the one unique name and one unique visual style conect them all to say: Hey! we are all parts of the CentOS project.  And, probably, some vister will say: Can I join the party?  Yes you can, it is free.</para>
       </subsection>
 
       <subsection>

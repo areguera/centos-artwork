@@ -1,11 +1,12 @@
 Welcome to the @emph{CentOS Artwork Repository Manual}.
 
 The CentOS Artwork Repository Manual contains information on how to
-produce the CentOS Corporate Visual Identity inside the CentOS Artwork
-Repository (@url{https://projects.centos.org/svn/artwork/}). If you
-are looking for a comprehensive, task-oriented guide for understanding
-how the CentOS Corporate Visual Identity is produced, this is the
-manual for you.
+produce the CentOS Corporate Visual Identity in the working copies of
+CentOS Artwork Repository
+(@url{https://projects.centos.org/svn/artwork/}). If you are looking
+for a comprehensive, task-oriented guide for understanding how the
+CentOS Corporate Visual Identity is produced, this is the manual for
+you.
 
 This manual discusses the following intermedite topics: 
 
@@ -15,13 +16,25 @@ This manual discusses the following intermedite topics:
 @item The CentOS Corporate Visual Style
 @end itemize
 
-This manual is divided into the following main categories:
+This manual is organized in the same way the CentOS Artwork Repository
+file system does. In the CentOS Artwork Repository we use directories
+to store conceptual ideas of CentOS Corporate Visual Identity.  For
+this manual sake, each directory in the CentOS Artwork Repository has
+its own documentation section to describe the related conceptual
+ideas. @xref{Filesystem,,Repository File System}, for more information.
 
-@itemize
-@item The Repository File System
-@end itemize
+This manual is structured dynamically through @command{centos-art}
+command-line.  The @command{centos-art} command-line provides an
+interface for writers to document directories in the working copies of
+CentOS Artwork Repository using a predefined Texinfo documentation
+structure. The @command{centos-art} command-line, also, takes care of
+updating menus, nodes and cross-references inside the documentation
+structure when documentation sections are added to or removed from the
+manual.  @xref{Filesystem trunk Scripts Bash Cli Functions Manual,,The
+@file{trunk/Scripts/Bash/Cli/Functions/Manual} Directory}, for more
+information.
 
 This guide assumes you have a basic understanding of your CentOS
 system. If you need help with CentOS, refer to the help page on the
 CentOS Wiki (@url{http://wiki.centos.org/Help}) for a list of
-different places you can find help.
+different places you can go to look for help.
