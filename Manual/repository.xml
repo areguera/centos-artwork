@@ -108,6 +108,21 @@
           </item>
         </tableitem>
       </table>
+      <table>
+        <tableitem>
+          <tableterm><command>computer output</command></tableterm>
+          <item>
+            <para>Text in this style indicates text displayed to a shell prompt such as error messages and responses to commands. For example:</para>
+            <para>The <command>ls</command> command displays the contents of a directory. For example:</para>
+            <verbatim xml:space="preserve"><![CDATA[
+Config                           manual_renameEntry.sh
+manual_copyEntry.sh              manual_restoreCrossReferences.sh
+manual_deleteCrossReferences.sh  manual_searchIndex.sh
+]]></verbatim>
+            <para>The output returned in response to the command (in this case, the contents of the directory) is shown in this style.</para>
+          </item>
+        </tableitem>
+      </table>
     </section>
   </node>
   <node>

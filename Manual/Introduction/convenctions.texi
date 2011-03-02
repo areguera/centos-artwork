@@ -51,3 +51,21 @@ A combination of keystrokes is represented in this way. For example:
 The @key{Ctrl-Alt-Backspace} key combination exits your graphical
 session and returns you to the graphical login screen or the console.
 @end table
+
+@table @command
+@item computer output
+
+Text in this style indicates text displayed to a shell prompt such as
+error messages and responses to commands. For example:
+
+The @command{ls} command displays the contents of a directory. For example:
+
+@verbatim
+Config                           manual_renameEntry.sh
+manual_copyEntry.sh              manual_restoreCrossReferences.sh
+manual_deleteCrossReferences.sh  manual_searchIndex.sh
+@end verbatim
+
+The output returned in response to the command (in this case, the
+contents of the directory) is shown in this style.
+@end table
