@@ -167,7 +167,7 @@ function identity_renderBase {
 
         else
             # Create non-translated instance form design model.
-            /bin/cat ${TEMPLATE} > ${INSTANCE}    
+            /bin/cp ${TEMPLATE} ${INSTANCE}    
         fi
 
         # Apply translation markers replacements to template instance.
@@ -186,10 +186,10 @@ function identity_renderBase {
             # Perform last-rendition action for svg files.
             identity_renderSvgLastActions
             
-        #elif [[ $INSTANCE =~ '\.docbook$' ]];then
+        elif [[ $INSTANCE =~ '\.docbook$' ]];then
 
             # Perform base-rendition action for docbook files.
-            #identity_renderDocbook
+            identity_renderDocbook
 
             # Perform post-rendition action for docbook files.
             #identity_renderDocbookPostActions
