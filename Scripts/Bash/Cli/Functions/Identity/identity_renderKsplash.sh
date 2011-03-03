@@ -77,7 +77,4 @@ function identity_renderKsplash {
     # Apply common translation markers to Theme.rc file.
     cli_replaceTMarkers "${DST[4]}"
 
-    # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
 }

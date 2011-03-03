@@ -56,6 +56,9 @@ function identity_renderDm {
     local RESOLUTION=''
     local RESOLUTIONS=''
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
     DM=$(identity_getConfigOption "${ACTION}" '2')
@@ -184,8 +187,5 @@ function identity_renderDm {
 
     # Return to where we were initially.
     popd > /dev/null
-
-    # Output division rule.
-    cli_printMessage '-' 'AsSeparatorLine'
 
 }

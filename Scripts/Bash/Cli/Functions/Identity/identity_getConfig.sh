@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_getConfig.sh -- This function checks/validates variables
-# passed from artwork-specific pre-rendition configuration files.
+# identity_getConfig.sh -- This function retrives values set in
+# pre-rendition configuration files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,8 +26,7 @@
 
 function identity_getConfig {
 
-    local POSTCOUNT=0
-    local LASTCOUNT=0
+    local COUNT=0
 
     # Re-define action variables in separated array variables. Once
     # verification is done, we remove the BASE, POST, LAST parts from
@@ -35,18 +34,19 @@ function identity_getConfig {
     # call.
     for ACTION in "${ACTIONS[@]}"; do
 
-        # Define post-rendition actions.
         if [[ $ACTION =~ '^POST:' ]];then
-            ACTION=$(identity_getConfigOption "$ACTION" '2-')
-            POSTACTIONS[$POSTCOUNT]="$ACTION"
-            POSTCOUNT=$(($POSTCOUNT + 1))
-
-        # Define last-rendition actions.
+            # Define post-rendition action.
+            POSTACTIONS[$COUNT]=$(identity_getConfigOption "$ACTION" '2-')
         elif [[ $ACTION =~ '^LAST:' ]];then
-            ACTION=$(identity_getConfigOption "$ACTION" '2-')
-            LASTACTIONS[$LASTCOUNT]="$ACTION"
-            LASTCOUNT=$(($LASTCOUNT + 1))
+            # Define last-rendition action.
+            LASTACTIONS[$COUNT]=$(identity_getConfigOption "$ACTION" '2-')
+        else
+            cli_printMessage "`gettext "The base-rendition action you specified is not supported yet."`" 'AsErrorLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
         fi
+
+        # Increment counter.
+        COUNT=$(($COUNT + 1))
 
     done
 

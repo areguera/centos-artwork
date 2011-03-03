@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_renderLastActions.sh -- This function executes
-# last-rendition actions.
+# identity_renderLastActions.sh -- This function performs
+# last-rendition actions for all files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -28,23 +28,26 @@ function identity_renderLastActions {
 
     local ACTION=''
 
-    for ACTION in "${LASTACTIONS[@]}"; do
+    # Verify position of file being produced in the list of files been
+    # currently processed.
+    if [[ $THIS_FILE_DIR != $NEXT_FILE_DIR ]];then
 
-        case "${ACTION}" in
+        # At this point centos-art.sh should be producing the last
+        # file from the same unique directory structure, so, before
+        # producing images for the next directory structure lets
+        # execute last-rendition actions for the current directory
+        # structure. 
+        for ACTION in "${LASTACTIONS[@]}"; do
 
-            renderKSplash )
-                identity_renderKsplash
-                ;;
+            case "${ACTION}" in
 
-            renderDm:* )
-                identity_renderDm
-                ;;
+                groupByType:* )
+                    identity_renderGroupByType
+                    ;;
+            esac
 
-            groupByType:* )
-                identity_renderGroupByType
-                ;;
-        esac
+        done
 
-    done
+    fi
 
 }

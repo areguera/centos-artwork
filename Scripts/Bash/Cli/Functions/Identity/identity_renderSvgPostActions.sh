@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_renderPostActions.sh -- This function performs
-# post-rendition actions for all files.
+# identity_renderSvgPostActions.sh -- This function performs
+# post-rendition actions for SVG files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderPostActions {
+function identity_renderSvgPostActions {
 
     local ACTION=''
 
@@ -32,8 +32,20 @@ function identity_renderPostActions {
 
         case "${ACTION}" in
 
-            groupByType:* )
-                identity_renderGroupByType 
+            renderSyslinux* )
+                identity_renderSyslinux 
+                ;;
+
+            renderGrub* )
+                identity_renderGrub 
+                ;;
+
+            renderFormats:* )
+                identity_renderFormats 
+                ;;
+
+            renderBrands )
+                identity_renderBrands 
                 ;;
 
         esac

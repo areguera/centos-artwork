@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_renderBase.sh -- This function initiates base rendition
-# using pre-rendition configuration files.
+# identity_renderBase.sh -- This function performs base-rendition
+# action for all files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,18 +26,24 @@
 
 function identity_renderBase {
 
+    local -a FILES
     local FILE=''
-    local FILES=''
     local OUTPUT=''
-    local EXPORTID=''
     local TEMPLATE=''
-    local COMMONDIR=''
     local PARENTDIR=''
+    local EXTENSION=''
     local TRANSLATION=''
     local EXTERNALFILE=''
     local EXTERNALFILES=''
-    local COMMONDIRCOUNT=0
-    local -a COMMONDIRS
+    local THIS_FILE_DIR=''
+    local NEXT_FILE_DIR=''
+    local COUNT=0
+
+    # Define the extension pattern for template files. This is the
+    # file extensions that centos-art will look for in order to build
+    # the list of files to process. The list of files to process
+    # contains the files that match this extension pattern.
+    EXTENSION='\.(svgz|svg|docbook)'
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
@@ -45,31 +51,42 @@ function identity_renderBase {
     # Define base location of template files.
     identity_getDirTemplate
     
-    # Define list of files to process. 
-    FILES=$(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.(svgz|svg)")
-
-    # Set action preamble.
-    cli_printActionPreamble "$FILES"
-
-    # Define common absolute paths in order to know when centos-art.sh
-    # is leaving a directory structure and entering into another. This
-    # information is required in order for centos-art.sh to know when
-    # to apply last-rendition actions.
-    for COMMONDIR in $(dirname "$FILES" | sort | uniq);do
-        COMMONDIRS[$COMMONDIRCOUNT]=$(dirname "$COMMONDIR")
-        COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
+    # Define list of files to process as array variable. This make
+    # posible to realize verifications like: is the current base
+    # directory equal to the next one in the list of files to process?
+    # This is used to know when centos-art.sh is leaving a directory
+    # structure and entering into another. This information is
+    # required in order for centos-art.sh to know when to apply
+    # last-rendition actions.
+    for FILE in $(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*${EXTENSION}");do
+        FILES[$COUNT]=$FILE
+        COUNT=$(($COUNT + 1))
     done
 
-    # Reset common directory counter.
-    COMMONDIRCOUNT=0
+    # Set action preamble.
+    cli_printActionPreamble "${FILES[@]}"
 
-    # Define export id used inside design templates. This value
-    # defines the design area we want to export.
-    EXPORTID='CENTOSARTWORK'
+    # Reset common directory counter.
+    COUNT=0
 
     # Start processing the base rendition list of FILES. Fun part
     # approching :-).
-    for FILE in $FILES; do
+    while [[ $COUNT -lt ${#FILES[*]} ]];do
+
+        # Define base file.
+        FILE=${FILES[$COUNT]}
+
+        # Define the base directory path for the current file being
+        # process.
+        THIS_FILE_DIR=$(dirname ${FILES[$COUNT]})
+
+        # Define the base directory path for the next file that will
+        # be process.
+        if [[ $(($COUNT + 1)) -lt ${#FILES[*]} ]];then
+            NEXT_FILE_DIR=$(dirname ${FILES[$(($COUNT + 1))]})
+        else
+            NEXT_FILE_DIR=''
+        fi
 
         # Print separator line.
         cli_printMessage '-' 'AsSeparatorLine'
@@ -128,7 +145,7 @@ function identity_renderBase {
         # structure.
         FILE=$(echo ${FILE} \
             | sed -r "s!.*${PARENTDIR}/!!" \
-            | sed -r "s/\.(svgz|svg)$//")
+            | sed -r "s/${EXTENSION}$//")
 
         # Define absolute path to final file (without extension).
         FILE=${OUTPUT}/$(basename "${FILE}")
@@ -136,6 +153,8 @@ function identity_renderBase {
         # Define instance name from design model.
         INSTANCE=$(cli_getTemporalFile ${TEMPLATE})
 
+        # Verify translation file existence and create template
+        # instance accordingly.
         if [[ -f ${TRANSLATION} ]];then
 
             # Create translated instance from design model.
@@ -147,80 +166,55 @@ function identity_renderBase {
             fi
 
         else
-
             # Create non-translated instance form design model.
             /bin/cat ${TEMPLATE} > ${INSTANCE}    
-
         fi
 
-        # Apply replacement of translation markers to design model
-        # translated instance.
+        # Apply translation markers replacements to template instance.
         cli_replaceTMarkers ${INSTANCE}
 
-        # Check export id inside design templates.
-        grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
-        if [[ $? -gt 0 ]];then
-            cli_printMessage "`eval_gettext "There is no export id (\\\$EXPORTID) inside \\\$TEMPLATE."`" "AsErrorLine"
-            cli_printMessage '-' 'AsSeparatorLine'
-            continue
+        # Verify the extension of template instance and render content
+        # accordingly.
+        if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
+
+            # Perform base-rendition action for svg files.
+            identity_renderSvg
+
+            # Perform post-rendition action for svg files.
+            identity_renderSvgPostActions
+
+            # Perform last-rendition action for svg files.
+            identity_renderSvgLastActions
+            
+        #elif [[ $INSTANCE =~ '\.docbook$' ]];then
+
+            # Perform base-rendition action for docbook files.
+            #identity_renderDocbook
+
+            # Perform post-rendition action for docbook files.
+            #identity_renderDocbookPostActions
+
+            # Perform base-rendition action for docbook files.
+            #identity_renderDocbookLastActions
+
+        else
+            cli_printMessage "`gettext "The template extension you try to render is not supported yet."`" 'AsErrorLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine' 
         fi
 
-        # Check existence of external files. In order for design
-        # templates to point different artistic motifs, design
-        # templates make use of external files that point to specific
-        # artistic motif background images. If such external files
-        # doesn't exist, print a message and stop script execution.
-        # We cannot continue without background information.
-        identity_checkAbsolutePaths "$INSTANCE"
-
-        # Render template instance and modify the inkscape output to
-        # reduce the amount of characters used in description column
-        # at final output.
-        cli_printMessage "$(inkscape $INSTANCE \
-            --export-id=$EXPORTID --export-png=${FILE}.png | sed -r \
-            -e "s!Area !`gettext "Area"`: !" \
-            -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
-            -e "s!Bitmap saved as:!`gettext "Saved as"`:!")" \
-            'AsRegularLine'
-
         # Remove template instance. 
-        if [[ -a $INSTANCE ]];then
+        if [[ -f $INSTANCE ]];then
             rm $INSTANCE
         fi
 
-        # Execute post-rendition actions.
+        # Perform post-rendition actions for all files.
         identity_renderPostActions
 
-        # Verify position of file being produced in the list of files
-        # been currently processed.  As convenction, last-rendition
-        # actions are applied after all images inside the same
-        # directory structure have being produced. Notice that, in
-        # order to apply last-rendition actions correctly,
-        # centos-art.sh needs to "predict" what the last file in the
-        # same directory structure would be. There is no magic here,
-        # so we need to previously define which are the common
-        # directory structures centos-art.sh could produce content for
-        # inside an array variable. Later, using the index of that
-        # array variable we could check the next item in the array
-        # against the file being currently produced. If they match, we
-        # haven't reached the end of the same directory structure, but
-        # if they don't match, we do have reach the end of the same
-        # directory structure and it is time for last-rendition
-        # actions to be evaluated before go producing the next
-        # directory structure in the list of files to process.
-        if [[ $(dirname "$TEMPLATE") != ${COMMONDIRS[$(($COMMONDIRCOUNT + 1))]} ]];then
+        # Perform last-rendition actions for all files.
+        identity_renderLastActions
 
-            # At this point centos-art.sh should be producing the last
-            # file from the same unique directory structure, so,
-            # before producing images for the next directory structure
-            # lets execute last-rendition actions for the current
-            # directory structure. 
-            identity_renderLastActions
-
-        fi
-
-        # Increment common directory counter.
-        COMMONDIRCOUNT=$(($COMMONDIRCOUNT + 1))
+        # Increment file counter.
+        COUNT=$(($COUNT + 1))
 
     done
 
