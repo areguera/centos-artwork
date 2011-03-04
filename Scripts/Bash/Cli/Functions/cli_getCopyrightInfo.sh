@@ -142,44 +142,14 @@ function cli_getCopyrightInfo {
 
         '--copyright-year' )
 
-            local FILE=''
-            local YEAR=''
-
-            # Define default copyright file. The place the copyright
-            # information is retrived from.
-            FILE="$(echo $TEMPLATE \
-                | sed -r "s!(Themes/Models/${THEMEMODEL}).+!\1/copyright.txt!")"
-
-            # Define default copyright year.
-            if [[ -f $FILE ]];then
-                YEAR=$(cli_readFileContent "${FILE}" '--copyright-year')
-            else
-                YEAR=$(date +%Y)
-            fi
-
             # Output default copyright year.
-            echo $YEAR
+            date +%Y
             ;;
     
         '--copyright-holder' | * )
             
-            local FILE=''
-            local HOLDER=''
-
-            # Define default copyright file. The place the copyright
-            # information is retrived from.
-            FILE="$(echo $TEMPLATE \
-                | sed -r "s!(Themes/Models/${THEMEMODEL}).+!\1/copyright.txt!")"
-
-            # Define default copyright holder.
-            if [[ -f $FILE ]];then 
-                HOLDER=$(cli_readFileContent "${FILE}" '--copyright-holder')
-            else 
-                HOLDER="The CentOS Project. `gettext "All rights reserved."`"
-            fi
-
             # Output default copyright holder.
-            echo $HOLDER
+            echo "The CentOS Project"
             ;;
 
     esac
