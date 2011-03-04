@@ -1,105 +1,18 @@
 #!/bin/bash
 #
-# cli_getCopyrightInfo.sh -- This function outputs copyright
-# information defined by design model the artistic motif images are
-# produced from. As convenction, we use the file `copyright.txt' to
-# store design model copyright information, in the root directory of
-# design model directory structure.
+# cli_getCopyrightInfo.sh -- This function outputs the copyright
+# information of content produced by the centos-art command-line
+# interface.
 #
-# The copyright information is printed to show the fact that the
-# person how creates something has the creation rights over that
-# something he/she creates. An so, the legal power to release his/her
-# creation under the ethical terms of whatever license he/she
-# considers more appropriate, in order to distribute his/her creation.
+# As I understand, the copyright exists to make people create more.
+# The copyright gives creators the legal power over their creations
+# and so the freedom to distribute them under the ethical terms the
+# creator considers better. 
 #
-# Inside CentOS Artwork Repository, we print copyright information in
-# the following image-related components:
-#
-#   1. The artistic motifs, to define the visual style of themes.
-#
-#      The copyright information of artistic motifs is owned by the
-#      person who creates the artistic motif (i.e., the artistic motif
-#      author). The copyright information of artistic motifs is
-#      specified in the `authors.txt' file placed inside the artistic
-#      motif directory structure. The copyright information of
-#      artistic motifs is printed in imagesunder
-#      trunk/Identity/Themes/Motifs/$THEME/Concept directory structure
-#      only.
-# 
-#   2. The design models, to define the characteristics of themes.
-# 
-#      The copyright information of design models is owned by the
-#      person who creates the design model (i.e., the design model
-#      author). The copyright information of design models is
-#      specified in the metadata of each scalable vector graphic that
-#      make a design model on its own. The copyright information of
-#      design models is not printed in images.
-#
-#   3. The CentOS themes, to cover each visual manifestation of The
-#      CentOS Project corporate visual identity.  A CentOS theme is
-#      made of many different images connected among themselves by
-#      mean of a uniform visual pattern (artistic motif + design
-#      model).
-#
-#      The copyright information of CentOS themes is owned by The
-#      CentOS Project. Instead of printing the copyright information
-#      over all images inside one CentOS theme, the copyright
-#      information of CentOS themes is printed only on images related
-#      to Anaconda progress first slides.
-#
-#      The copyright information printed on Anaconda progress first
-#      slides is used to print the creation rights of The CentOS
-#      Project over its creation (i.e., The CentOS Distribution) not
-#      The CentOS Theme itself.
-# 
-# At this point, we've defined who owns the creation rights of image
-# components. Now, it is important to remark that if we need to show
-# one creation copyright, in different places, all references to the
-# same cration copyright information should be the same. Cannot be any
-# ambiguity among them. The best way to reach this is having just one
-# unique definition, and build images using that unique copyright
-# definition as reference.
-#     
-# Another relevant point, we need to be aware of, is that related to
-# the licenses. As creators has the creation rights, they have the
-# right to distribute their work as their consideration.  If creators
-# release their creations under the terms of a privatizing license,
-# that creation will be almost useless for The CentOS Community. So,
-# in order for creations to be useful in The CentOS Community,
-# creators should distribution their creations under the terms of a
-# license that grants the freedom of using, studying, changing and
-# releasing improved versions of them. Likewise, the license should
-# prevent any privatizing practice or any kind of darkness that put in
-# risk the freedom of The CentOS Community.
-# 
-# What license should be used to distribute images (and the components
-# used to build them) is a decision for The CentOS Community to take.
-# The license adopted, by The CentOS Community, specifies the ethical
-# terms The CentOS Community is agree to work with. It is a reference
-# we all have to agree with and follow in the sake of our community
-# and ourselves freedom.  That's why license selection has to be a
-# collective decision, and also be constantly in question.
-#
-# I'm not a lawyer. So, I can't give details of something I don't know
-# certainly.  All I've done so far is using my intuition and basic
-# understanding of what copyright and license is. So, if you have a
-# deeper understanding and experience in such legal topics, please
-# feel free to make your own revisions to ideas described here.
-#         
-# In the sake of covering copyright information and license needs
-# inside centos-art.sh script, all images produced by `centos-art.sh'
-# script will be released using the copyright information of his/her
-# creator (see above) and the license Creative Common
-# Attribution-ShareAlike 3.0 License
-# (http://creativecommons.org/licenses/by-sa/3.0/).  
-#
-# The Creative Common Attribution-ShareAlike 3.0 License has been
-# adopted in The CentOS Wiki (http://wiki.centos.org/) and seems to be
-# good as well to distribute image-specific creations under CentOS
-# Artwork Repository. Of course, as licenses are always questionable,
-# the one we've choosed could be changed in the future after a
-# collective discussion in the CentOS mailing list, in order to better
-# reflect the ethical feelings of our community.
+# At this moment I don't feel very sure about this legal affairs, but
+# need to decide what copyright information the centos-art will
+# output. So, I'm taking the wiki (wiki.centos.org) copyright
+# information as reference.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
