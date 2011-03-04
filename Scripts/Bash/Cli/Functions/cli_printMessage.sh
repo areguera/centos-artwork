@@ -79,7 +79,6 @@ function cli_printMessage {
 
         'AsConfigurationLine' )
             cli_printMessage "`gettext "Configuration"`: $MESSAGE"
-            cli_printMessage '-' 'AsSeparatorLine'
             ;;
 
         'AsPaletteLine' )
