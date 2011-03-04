@@ -77,15 +77,19 @@ function cli_replaceTMarkers {
     DST[7]="$(cli_getPathComponent "$FLAG_RELEASE" '--release')"
     DST[8]="$(cli_getPathComponent "$FLAG_RELEASE" '--release-major')"
     DST[9]="$(cli_getPathComponent "$FLAG_RELEASE" '--release-minor')"
-    DST[10]="http://=LOCALE_LL=.centos.org/"
+    DST[10]="http://www.centos.org/=LOCALE_LL="
     DST[11]="$(cli_getPathComponent "$FLAG_ARCHITECTURE" '--architecture')"
-    DST[12]="=URL=wiki/"
-    DST[13]="=URL=lists/"
-    DST[14]="=URL=forums/"
-    DST[15]="=URL=mirrors/"
-    DST[16]="=URL=docs/"
-    DST[17]="centos-docs@$(cli_getCurrentLocale '--langcode-only').centos.org"
-    DST[18]="$(cli_getCurrentLocale '--langcode-only')"
+    DST[12]="http://wiki.centos.org/=LOCALE_LL="
+    DST[13]="http://lists.centos.org/=LOCALE_LL="
+    DST[14]="http://forums.centos.org/=LOCALE_LL="
+    DST[15]="http://mirrors.centos.org/=LOCALE_LL="
+    DST[16]="http://docs.centos.org/=LOCALE_LL="
+    DST[17]="centos-docs@=LOCALE_LL=.centos.org"
+    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
+        DST[18]="$(cli_getCurrentLocale '--langcode-only')/"
+    else
+        DST[18]=''
+    fi
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
