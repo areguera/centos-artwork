@@ -186,15 +186,15 @@ function cli_getPathComponent {
     case "$OPTION" in
 
         '--release' )
-            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/?!\1!"
+            echo "$LOCATION" | sed -r "s!.*/${PATTERN[0]}/.*!\1!"
             ;;
 
         '--release-major' )
-            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/?!\2!"
+            echo "$LOCATION" | sed -r "s!.*/${PATTERN[0]}/.*!\2!"
             ;;
 
         '--release-minor' )
-            echo "$LOCATION" | sed -r "s!.+/${PATTERN[0]}/?!\4!"
+            echo "$LOCATION" | sed -r "s!.*/${PATTERN[0]}/.*!\4!"
             ;;
 
         '--release-pattern' )
