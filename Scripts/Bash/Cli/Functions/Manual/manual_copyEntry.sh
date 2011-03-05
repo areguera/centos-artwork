@@ -53,7 +53,7 @@ function manual_copyEntry {
     ENTRIES=$(cli_getFilesList "$(dirname ${ENTRY_DST})" "$(basename ${ENTRY_DST}).*\.texi")
 
     # Set action preamble.
-    cli_printActionPreamble "${ENTRIES}"
+    cli_printActionPreamble "${ENTRIES}" '' ''
 
     # Print separator line.
     cli_printMessage '-' 'AsSeparatorLine'

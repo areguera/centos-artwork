@@ -138,7 +138,7 @@ function manual_getActions {
     MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
     # Set action preable.
-    cli_printActionPreamble "${MANUAL_BASEFILE}.texi"
+    cli_printActionPreamble "${MANUAL_BASEFILE}.texi" '' ''
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.

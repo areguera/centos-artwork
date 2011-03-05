@@ -64,7 +64,7 @@ function identity_renderBase {
     done
 
     # Set action preamble.
-    cli_printActionPreamble "${FILES[@]}"
+    cli_printActionPreamble "${FILES[@]}" '' ''
 
     # Reset common directory counter.
     COUNT=0

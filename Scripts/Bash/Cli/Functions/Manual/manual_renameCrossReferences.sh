@@ -67,7 +67,7 @@ function manual_renameCrossReferences {
     ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')
 
     # Set action preamble.
-    cli_printActionPreamble "$ENTRIES"
+    cli_printActionPreamble "$ENTRIES" '' ''
 
     # Update node-related cross-references. The node-related cross
     # reference definition, long ones specially, could require more

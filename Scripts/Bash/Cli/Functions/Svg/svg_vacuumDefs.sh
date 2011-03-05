@@ -33,7 +33,7 @@ function svg_vacuumDefs {
     FILES=$(cli_getFilesList "${ACTIONVAL}" "${FLAG_FILTER}.*\.(svgz|svg)")
 
     # Set action preamble.
-    cli_printActionPreamble "${FILES}"
+    cli_printActionPreamble "${FILES}" '' ''
 
     # Process list of files.
     for FILE in $FILES;do

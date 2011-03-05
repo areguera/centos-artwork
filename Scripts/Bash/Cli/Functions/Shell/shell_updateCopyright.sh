@@ -122,7 +122,7 @@ function shell_updateCopyright {
     FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.sh")
 
     # Set action preamble.
-    cli_printActionPreamble "${FILES}"
+    cli_printActionPreamble "${FILES}" '' ''
 
     # Process list of files.
     for FILE in $FILES;do
