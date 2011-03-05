@@ -41,10 +41,13 @@ function identity_render {
     local FILES=$(cli_getFilesList "$ARTCONF" ".*/?render\.conf\.sh")
 
     # Set action preamble.
-    cli_printActionPreamble "$FILES"
+    cli_printActionPreamble "$FILES" '' ''
 
     # Process list of files.
     for FILE in $FILES;do
+
+        # Print separator line.
+        cli_printMessage '-' 'AsSeparatorLine'
 
         # Output action message.
         cli_printMessage $FILE 'AsConfigurationLine'
@@ -75,8 +78,8 @@ function identity_render {
         # the exact artwork path (that is, where images will be
         # stored).
         ACTIONVAL=$(dirname $(echo $FILE | sed -r \
-            -e 's!Scripts/Bash/Cli/Functions/Identity/Config/(Identity)/!\1/!' \
-            -e "s!Themes/!Themes/Motifs/$(cli_getPathComponent '--theme')/!"))
+            -e 's!/Scripts/Bash/Cli/Functions/Identity/Config/(Identity)!/\1!' \
+            -e "s!/Themes!/Themes/Motifs/$(cli_getPathComponent '--theme')!" ))
 
         # Redefine artwork identification using redefined action
         # value.
