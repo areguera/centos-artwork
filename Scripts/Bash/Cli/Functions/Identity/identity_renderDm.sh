@@ -85,13 +85,13 @@ function identity_renderDm {
     SRC[0]=$(cli_getRepoTLDir)/Identity/Brands/Img/Symbol/48.png
     SRC[1]=${OUTPUT}/release.png
     SRC[2]=${OUTPUT}/screenshot.png
-    SRC[3]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/GdmGreeterTheme.xml
-    SRC[4]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/GdmGreeterTheme.desktop
+    SRC[3]=$(dirname $TEMPLATE)/GdmGreeterTheme.xml
+    SRC[4]=$(dirname $TEMPLATE)/GdmGreeterTheme.desktop
     SRC[5]=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Backgrounds/Img/Png
-    SRC[6]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-language.png
-    SRC[7]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-reboot.png
-    SRC[8]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-session.png
-    SRC[9]=$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/${DM}/icon-shutdown.png
+    SRC[6]=$(dirname $TEMPLATE)/icon-language.png
+    SRC[7]=$(dirname $TEMPLATE)/icon-reboot.png
+    SRC[8]=$(dirname $TEMPLATE)/icon-session.png
+    SRC[9]=$(dirname $TEMPLATE)/icon-shutdown.png
 
     # Define name used as temporal holder to build tar.gz file. 
     TGZ=$(cli_getPathComponent '--theme-name')
