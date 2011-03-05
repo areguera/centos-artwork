@@ -49,9 +49,10 @@ function cli_printActionPreamble {
         cli_checkFiles "${FILES}"
     fi
 
-    # Verify that all function parameters are passed. If they are not,
-    # there is nothing else to do here.
-    if [[ $# -ne 3 ]];then
+    # Verify that action argument be passed. The action value is
+    # required in order decide which action to perform. If it is not
+    # passed there is nothing else to do here.
+    if [[ $ACTION == '' ]];then
         return
     fi
 
