@@ -44,7 +44,7 @@ function identity_renderKsplash {
     SRC[1]="${OUTPUT}/splash_active_bar.png"
     SRC[2]="${OUTPUT}/splash_inactive_bar.png"
     SRC[3]="${OUTPUT}/splash_bottom.png"
-    SRC[4]="$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}/Distro/Ksplash/Theme.rc"
+    SRC[4]="$(dirname $TEMPLATE)/Theme.rc"
 
     # Check absolute source location of files.
     cli_checkFiles "${SRC[@]}" 'f'
