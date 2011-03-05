@@ -1,83 +1,125 @@
-@subsection Goals
+This directory organizes CentOS Distribution default design models in
+the following categories:
 
-@itemize
-@item ...
-@end itemize
+@table @strong
+@item Syslinux
+Contains design models for syslinux, the program used to boot the
+CentOS Distribution installation media. @xref{Filesystem trunk
+Identity Themes Models Default Distro Syslinux}, for more information.
 
-@subsection Description
+@item Anaconda  
+Contains design models for Anaconda, the program used to install
+CentOS Distribution.  @xref{Filesystem trunk Identity Themes Models
+Default Distro Anaconda}, for more information.
 
-It applies to all major releases of CentOS distribution.
+@item Firstboot  
+Contains design models for the first boot program used to configure
+the maching onece installed.  @xref{Filesystem trunk Identity Themes
+Models Default Distro Firstboot}, for more information.
 
-@subsubsection One theme for all major releases
+@item Rhgb
+Contains design models for CentOS Graphical Boot, the program used to
+show the boot process from Grub to Display Manager.  @xref{Filesystem
+trunk Identity Themes Models Default Distro Rhgb}, for more
+information.
 
-Sometimes, specific visual manifestations are formed by common
-components which have internal differences. That is the case of CentOS
-distribution visual manifestation.  
+@item Gdm  
+Contains design models for GNOME Display Manager, the program used to
+log into the manchine once installed and configured. @xref{Filesystem
+trunk Identity Themes Models Default Distro Gdm}, for more
+information.
 
-Since a visual style point of view, the CentOS distributions share
-common artwork components like Anaconda ---to cover the CentOS
-distribution installation---, BootUp ---to cover the CentOS
-distribution start up---, and Backgrounds ---to cover the CentOS
-distribution desktop---.  Now, since a technical point of view, those
-common artwork components are made of software improved constantly.
-So, we need to find a way to keep one unique name and one unique
-visual style in artwork components that have internal difference and
-also remark internal difference as well.
+@item Kdm  
+Contains design models for KDE Display Manager, the program used to
+log into the manchine once installed and configured. @xref{Filesystem
+trunk Identity Themes Models Default Distro Kdm}, for more
+information.
+
+@item Grub 
+Contains design models for GRUB (Grand Unified Boot Loader), the
+program used to boot the machine into an operating system.
+@xref{Filesystem trunk Identity Themes Models Default Distro Kdm}, for
+more information.
+
+@item Gsplash 
+Contains design models for GNOME splash, the program used to show the
+progress information while user's graphical session is loading.
+@xref{Filesystem trunk Identity Themes Models Default Distro Gsplash},
+for more information.
+
+@item Ksplash  
+Contains design models for KDE splash, the program used to show the
+progress information while user's graphical session is loading.
+@xref{Filesystem trunk Identity Themes Models Default Distro Ksplash},
+for more information.
+@end table
+
+The CentOS Project maintains near to four different major releases of
+CentOS Distribution. Each major release of CentOS Distribution has
+internal differences that make them unique and, at the same time, each
+CentOS Distribution individually is tagged into the one unique visual
+manifestation (i.e., a CentOS Distribution). So, how could we
+implement the monolithic visual structure in one visual manifestation
+that has internal difference?
+
+To answer this question we broke the question in two parts and later
+combined the resultant answers to build a possible solution. 
+
+@table @strong
+@item How to visually remark the internal differences?
+
+Merge both The CentOS Project Release Schema into The CentOS Project
+Trademark to build The CentOS Project Release Trademark.  The CentOS
+Project Release Trademark remarks two things: first, the image is from
+The CentOS Project and second, the major release of CentOS
+Distribution the image belongs to.
+
+@xref{Filesystem trunk Identity Models Tpl Brands}, for more
+information on how to develop and improve The CentOS Project Brand.
+
+@item How to remark the visual resemblance?
+
+Use a common artistic motif as background for all CentOS Distribution
+images.
+
+@xref{Filesystem trunk Identity Themes Motifs}, for more information.
+
+@item So, combining answers above, we could conclude that:
+
+In order to implement the CentOS Monolithic Visual Structure
+(@pxref{Filesystem trunk Identity}) on CentOS Distribution visual
+manifestations, a CentOS Release Trademark and a common background
+(based on one unique artistic motif) should be used.
+@end table
 
 @quotation
 @strong{Important} Remarking the CentOS release schema inside each
-major release of CentOS distribution ---or similar visual
+major release of CentOS Distribution ---or similar visual
 manifestation--- takes @emph{high attention} inside The CentOS Project
-corporate visual identity. It should be very clear for people which
-major release of CentOS distribution they are using.
+corporate visual identity. It should be very clear for everyone which
+major release of CentOS Distribution they are using.
 @end quotation
 
-In order to remark the CentOS release schema, the CentOS Artwork SIG
-uses a release-specific brand design named ``The CentOS Release
-Brand''. The CentOS release brand is compossed by the CentOS logotype
-@emph{and} the CentOS major release number (as specified in CentOS
-release schema definition). In this solution, the CentOS release brand
-is set inside all release-specific artworks (e.g., distribution,
-installation media, etc.) in remarkable way.   The CentOS release
-brand is the design component that lets us remark the CentOS release
-schema inside the monolithic corporate visual identity structure we
-propose to use.
+Other recommendation that have being discussed is that of producing
+one unique visual style for @emph{each} major release of CentOS
+Distribution.  That is, if we have 4 different major releases of
+CentOS Distribution, we need to provide 4 different visual styles to
+cover each CentOS Distribution art work needs.  Even such schema could
+be produced inside CentOS Artwork Repository, using one unique theme
+for @emph{each} major release of CentOS Distribution would introduce
+visual isolation to CentOS Distribution, as visual manifestation of
+The CentOS Project.
 
-@subsubsection One theme for each major release
+As previously said, The CentOS Project maintains near to 4 different
+major releases of CentOS Distribution in parallel, and that fact
+creates a complete different perspective since the structural point of
+view. Consider the following: If we use one unique visual style for
+@emph{each} major release of CentOS Distribution, which one of those
+visual styles does we use to cover other CentOS visual manifestations,
+like web sites and promotion stuff?
 
-Other way we've been using to remark CentOS release schema is
-applying one unique theme for @emph{each} major release of CentOS
-distribution.  That is, if we have 4 major releases of CentOS
-distribution, we need to provide 4 different themes to cover each
-CentOS distribution available.
-
-Inside CentOS Artwork Repository, you can create many themes and that
-is very convenient. But using one unique theme for @emph{each} major
-release of CentOS distribution would bring visual isolation among
-distributions, websites and promotion visual manifestations. If the
-CentOS project would maintain just one CentOS distribution (and many
-experienced graphic designers ready to create beautiful artworks) this
-model would be nice. Indeed, this model looks quite similar to that
-one used by Fedora project, doesn't it. But no, the CentOS project
-maintains near to 4 major releases of CentOS distribution in parallel,
-and that fact makes a huge difference since the corporate visual
-identity point of view.
-
-If we use one unique theme for @emph{each} major release of CentOS
-distribution, which one of those themes, does we use to cover other
-CentOS visual manifestations, like websites and promotion stuff? 
-
-In whatever case you choose some release-specific distribution user
-will be visually isolated from other CentOS visual manifestations like
-websites and promotion stuff, even if the CentOS brand is present in
-all visual manifestations. In such a case, probably, users will end up
-asking themselves, why my CentOS distribution has this design and the
-CentOS website another one? Isn't them on the same project? With luck
-the CentOS brand will exonerate user form visual isolation.
-
-@subsection Usage
-
-@subsection See also
-
-@menu
-@end menu
+Some persons may end up asking themselves, why the CentOS Distribution
+I am using has this visual style tnd he CentOS web sites a different
+one?  Isn't them all part of the same project?  Furtunely, the
+presence of the CentOS Brand could exonerate those persons form
+complete visual isolation.

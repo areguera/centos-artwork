@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 2 2011 by texi2html 1.76 -->
+<!-- Created on March, 4 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -23,10 +23,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 2.21 The trunk/Identity/Themes/Models/Default/Distro Directory</title>
+<title>CentOS Artwork Repository: 2.21 The trunk/Identity/Themes/Models/Default Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 2.21 The trunk/Identity/Themes/Models/Default/Distro Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 2.21 The trunk/Identity/Themes/Models/Default/Distro Directory">
+<meta name="description" content="CentOS Artwork Repository: 2.21 The trunk/Identity/Themes/Models/Default Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.21 The trunk/Identity/Themes/Models/Default Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,129 +56,70 @@ ul.toc {list-style: none}
 
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository_24.html#SEC114" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC116" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_26.html#SEC116" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_78.html#SEC397" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_78.html#SEC397" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Filesystem-trunk-Identity-Themes-Models-Default-Distro"></a>
+<a name="Filesystem-trunk-Identity-Themes-Models-Default"></a>
 <a name="SEC115"></a>
-<h2 class="section"> 2.21 The <tt>`trunk/Identity/Themes/Models/Default/Distro'</tt> Directory </h2>
+<h2 class="section"> 2.21 The <tt>`trunk/Identity/Themes/Models/Default'</tt> Directory </h2>
 
-
-<a name="SEC116"></a>
-<h3 class="subsection"> 2.21.1 Goals </h3>
-
-<ul class="toc">
-<li> ...
-</li></ul>
-
-
-<a name="SEC117"></a>
-<h3 class="subsection"> 2.21.2 Description </h3>
-
-<p>It applies to all major releases of CentOS distribution.
+<p>This directory implements the concept of <em>Default Design Models
+for CentOS Themes</em>.  Default Design Models for CentOS Themes provide
+the common structural information (e.g., image dimensions, translation
+markers, trademark position, etc.) the <code>centos-art</code> script
+uses to produce images when no other design model is specified.
 </p>
-
-<a name="SEC118"></a>
-<h4 class="subsubsection"> 2.21.2.1 One theme for all major releases </h4>
-
-<p>Sometimes, specific visual manifestations are formed by common
-components which have internal differences. That is the case of CentOS
-distribution visual manifestation.  
+<p>Deisgn models in this directory do use the CentOS Release Brand. The
+CentOS Release Brand is a combination of both The CentOS Type and The
+CentOS Release Schema used to illustrate the major release of CentOS
+Distribution the image produced belongs to.  See section <a href="repository_18.html#SEC70">The <tt>`trunk/Identity/Models/Tpl/Brands'</tt> Directory</a>, for more information.
 </p>
-<p>Since a visual style point of view, the CentOS distributions share
-common artwork components like Anaconda --to cover the CentOS
-distribution installation--, BootUp --to cover the CentOS
-distribution start up--, and Backgrounds --to cover the CentOS
-distribution desktop--.  Now, since a technical point of view, those
-common artwork components are made of software improved constantly.
-So, we need to find a way to keep one unique name and one unique
-visual style in artwork components that have internal difference and
-also remark internal difference as well.
+<p>Default Design Models for CentOS Themes provide design models for the
+following components:
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> Remarking the CentOS release schema inside each
-major release of CentOS distribution --or similar visual
-manifestation-- takes <em>high attention</em> inside The CentOS Project
-corporate visual identity. It should be very clear for people which
-major release of CentOS distribution they are using.
-</p></blockquote>
-
-<p>In order to remark the CentOS release schema, the CentOS Artwork SIG
-uses a release-specific brand design named &quot;The CentOS Release
-Brand&quot;. The CentOS release brand is compossed by the CentOS logotype
-<em>and</em> the CentOS major release number (as specified in CentOS
-release schema definition). In this solution, the CentOS release brand
-is set inside all release-specific artworks (e.g., distribution,
-installation media, etc.) in remarkable way.   The CentOS release
-brand is the design component that lets us remark the CentOS release
-schema inside the monolithic corporate visual identity structure we
-propose to use.
+<dl compact="compact">
+<dt> <strong>Distribution</strong></dt>
+<dd><p>Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm,
+Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.).
+See section <a href="repository_27.html#SEC121">The <tt>`trunk/Identity/Themes/Models/Default/Distro'</tt> Directory</a>, for
+more information.
 </p>
-
-<a name="SEC119"></a>
-<h4 class="subsubsection"> 2.21.2.2 One theme for each major release </h4>
-
-<p>Other way we've been using to remark CentOS release schema is
-applying one unique theme for <em>each</em> major release of CentOS
-distribution.  That is, if we have 4 major releases of CentOS
-distribution, we need to provide 4 different themes to cover each
-CentOS distribution available.
+</dd>
+<dt> <strong>Concept</strong></dt>
+<dd><p>Design models to illustrate Artistic Motifs Concepts.
+See section <a href="repository_26.html#SEC116">The <tt>`trunk/Identity/Themes/Models/Default/Concept'</tt> Directory</a>, for
+more information.
 </p>
-<p>Inside CentOS Artwork Repository, you can create many themes and that
-is very convenient. But using one unique theme for <em>each</em> major
-release of CentOS distribution would bring visual isolation among
-distributions, websites and promotion visual manifestations. If the
-CentOS project would maintain just one CentOS distribution (and many
-experienced graphic designers ready to create beautiful artworks) this
-model would be nice. Indeed, this model looks quite similar to that
-one used by Fedora project, doesn't it. But no, the CentOS project
-maintains near to 4 major releases of CentOS distribution in parallel,
-and that fact makes a huge difference since the corporate visual
-identity point of view.
-</p>
-<p>If we use one unique theme for <em>each</em> major release of CentOS
-distribution, which one of those themes, does we use to cover other
-CentOS visual manifestations, like websites and promotion stuff? 
-</p>
-<p>In whatever case you choose some release-specific distribution user
-will be visually isolated from other CentOS visual manifestations like
-websites and promotion stuff, even if the CentOS brand is present in
-all visual manifestations. In such a case, probably, users will end up
-asking themselves, why my CentOS distribution has this design and the
-CentOS website another one? Isn't them on the same project? With luck
-the CentOS brand will exonerate user form visual isolation.
-</p>
-
-<a name="SEC120"></a>
-<h3 class="subsection"> 2.21.3 Usage </h3>
-
-
-<a name="SEC121"></a>
-<h3 class="subsection"> 2.21.4 See also </h3>
-
+</dd>
+<dt> <strong>Promotion</strong> </dt>
+<dd><p>Design models for CentOS Promotion stuff (e.g., installation media,
+posters, etc.). See section <a href="repository_37.html#SEC167">The <tt>`trunk/Identity/Themes/Models/Default/Promo'</tt> Directory</a>, for more information.  
+</p></dd>
+</dl>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_26.html#SEC122" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_24.html#SEC114" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_26.html#SEC116" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC115" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_78.html#SEC397" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 2 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 4 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

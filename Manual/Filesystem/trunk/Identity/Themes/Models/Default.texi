@@ -1,27 +1,32 @@
-@subsection Goals
+This directory implements the concept of @emph{Default Design Models
+for CentOS Themes}.  Default Design Models for CentOS Themes provide
+the common structural information (e.g., image dimensions, translation
+markers, trademark position, etc.) the @command{centos-art} script
+uses to produce images when no other design model is specified.
 
-This location stores CentOS default theme model. The default theme
-model of CentOS is used in all visual manifestations of CentOS Project
-corporate visual identity (e.g., distributions, web sites, promotion,
-etc.).
+Deisgn models in this directory do use the CentOS Release Brand. The
+CentOS Release Brand is a combination of both The CentOS Type and The
+CentOS Release Schema used to illustrate the major release of CentOS
+Distribution the image produced belongs to.  @xref{Filesystem trunk
+Identity Models Tpl Brands}, for more information.
 
-@subsection Description
+Default Design Models for CentOS Themes provide design models for the
+following components:
 
-@subsection Usage
+@table @strong
+@item Distribution
+Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm,
+Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.).
+@xref{Filesystem trunk Identity Themes Models Default Distro}, for
+more information.
 
-Changing CentOS default theme is not very convenient because that
-affects the ``recognition'' of CentOS Project.  Nevertheless, we are
-interested on seeing your art work propositions.  Specially if your
-art work is an improvement to the base idea behind CentOS default
-theme (@strong{Modern}, squares and circles flowing up.).
+@item Concept
+Design models to illustrate Artistic Motifs Concepts.
+@xref{Filesystem trunk Identity Themes Models Default Concept}, for
+more information.
 
-If you are not happy with CentOS default theme, you can look inside
-CentOS alternative themes and download the one you are interested in.
-If you are not happy with any of the CentOS alternative themes
-available, then go and design your own CentOS alternative theme as
-described in @xref{Filesystem trunk Identity Themes Motifs, Theme Motifs}.
-
-@subsection See also
-
-@menu
-@end menu
+@item Promotion 
+Design models for CentOS Promotion stuff (e.g., installation media,
+posters, etc.). @xref{Filesystem trunk Identity Themes Models Default
+Promo}, for more information.  
+@end table

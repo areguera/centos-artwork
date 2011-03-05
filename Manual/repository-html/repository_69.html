@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 2 2011 by texi2html 1.76 -->
+<!-- Created on March, 4 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -23,10 +23,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: List of Figures</title>
+<title>CentOS Artwork Repository: 2.65 The trunk/Scripts/Bash/Cli/Functions/Locale Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: List of Figures">
-<meta name="keywords" content="CentOS Artwork Repository: List of Figures">
+<meta name="description" content="CentOS Artwork Repository: 2.65 The trunk/Scripts/Bash/Cli/Functions/Locale Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.65 The trunk/Scripts/Bash/Cli/Functions/Locale Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -55,49 +55,131 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[ &gt; ]</td>
+<tr><td valign="middle" align="left">[<a href="repository_68.html#SEC332" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC334" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_78.html#SEC397" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_78.html#SEC397" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="List-of-Figures"></a>
-<a name="SEC358"></a>
-<h1 class="unnumbered"> List of Figures </h1>
-<dl class="listoffloats">
-<dt><a href="repository_54.html#fig_003atrunk_002fScripts_002fBash_003aInitialization">Figure 2.1</a></dt><dd><p>The functionalities initialization environment.
+<a name="Filesystem-trunk-Scripts-Bash-Cli-Functions-Locale"></a>
+<a name="SEC333"></a>
+<h2 class="section"> 2.65 The <tt>`trunk/Scripts/Bash/Cli/Functions/Locale'</tt> Directory </h2>
+
+
+<a name="SEC334"></a>
+<h3 class="subsection"> 2.65.1 Goals </h3>
+
+<ul class="toc">
+<li> ...
+</li></ul>
+
+
+<a name="SEC335"></a>
+<h3 class="subsection"> 2.65.2 Description </h3>
+
+<p>This command looks for <samp>`.sh'</samp> files inside Bash directory and
+extracts translatable strings from files, using <code>xgettext</code>
+command, in order to create a portable object template
+(<tt>`centos-art.sh.pot'</tt>) file for them.
+</p>
+<p>With the <tt>`centos-art.sh.pot'</tt> file up to date, the
+<code>centos-art</code> command removes the temporal list of files sotred
+inside <tt>`/tmp'</tt> directory and checks the current language of your
+user's session to create a portable object file for it, in the
+location <tt>`$CLI_LANG/$CLI_LANG.po'</tt>. 
+</p>
+<p>The <var>CLI_LANG</var> variable discribes the locale language used to
+output messages inside <code>centos-art</code> command. The locale
+language used inside <code>centos-art</code> command is taken from the
+<code>LANG</code> environment variable.  The <var>CLI_LANG</var> variable has the
+<samp>`LL_CC'</samp> format, where <samp>`LL'</samp> is a language code from the
+ISO-639 standard, and <samp>`CC'</samp> a country code from the ISO-3166
+standard.
+</p>
+<p>The <code>LANG</code> environment variable is set when you do log in to your
+system. If you are using a graphical session, change language to your
+native language and do login. That would set and exoprt the <code>LANG</code>
+environment variable to the correct value. On the other side, if you
+are using a text session edit your <tt>`~/.bash_profile'</tt> file to set
+and export the <code>LANG</code> environment variable to your native locale
+as defines the <code>locale -a</code> command output; do logout, and do
+login again.
+</p>
+<p>At this point, the <code>LANG</code> environment variable has the appropriate
+value you need, in order to translate <code>centos-art.sh</code> messages
+to your native language (the one set in <code>LANG</code> environment
+variable). 
+</p>
+<p>With the <tt>`$CLI_LANG/$CLI_LANG.po'</tt> file up to date, the
+<code>centos-art</code> opens it for you to update translation strings.
+The <code>centos-art</code> command uses the value of <var>EDITOR</var>
+environment variable to determine your favorite text editor. If no
+value is defined on <var>EDITOR</var>, the <tt>`/usr/bin/vim'</tt> text editor
+is used as default.
+</p>
+<p>When you finishd PO file edition and quit text editor, the
+<code>centos-art</code> command creates the related machine object in the
+location <tt>`$CLI_LANG/LC_MESSAGES/$TEXTDOMAIN.mo'</tt>.
+</p>
+<p>At this point, all translations you made in the PO file should be
+available to your language when runing <code>centos-art.sh</code> script. 
+</p>
+<p>In order to make the <code>centos-art.sh</code> internationalization, the
+<code>centos-art.sh</code> script was modified as described in the
+<code>gettext</code> info documentation (<code>info gettext</code>).  You
+can find such modifications in the following files:
+</p>
+<ul class="toc">
+<li> <tt>`trunk/Scripts/Bash/initFunctions.sh'</tt>
+</li><li> <tt>`trunk/Scripts/Bash/Functions/Help/cli_localeMessages.sh'</tt>
+</li><li> <tt>`trunk/Scripts/Bash/Functions/Help/cli_localeMessagesStatus.sh'</tt>
+</li></ul>
+
+<ul class="toc">
+<li> ...
+</li></ul>
+
+
+<a name="SEC336"></a>
+<h3 class="subsection"> 2.65.3 Usage </h3>
+
+<dl compact="compact">
+<dt> <samp>`centos-art locale --edit'</samp></dt>
+<dd><p>Use this command to translate command-line interface output messages
+in the current system locale you are using (as specified in <code>LANG</code>
+environment variable).
 </p></dd>
-<dt><a href="repository_54.html#fig_003atrunk_002fScripts_002fBash_002fFunctions_003aInitialization">Figure 2.2</a></dt><dd><p>The actions initialization environment.
-</p></dd>
-<dt><a href="repository_56.html#trunk_002fScripts_002fBash_002fFunctions_002fcli_005fcommitRepoChanges">Figure 2.3</a></dt><dd><p>The <code>cli_commitRepoChanges</code> function output.
-</p></dd>
-<dt><a href="repository_64.html#fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a1">Figure 2.4</a></dt><dd><p>The functions script base comment structure
-</p></dd>
-<dt><a href="repository_64.html#fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a2">Figure 2.5</a></dt><dd><p>The function script comment example
+<dt> <samp>`centos-art locale --list'</samp></dt>
+<dd><p>Use this command to see the command-line interface locale report.
 </p></dd>
 </dl>
 
 
+<a name="SEC337"></a>
+<h3 class="subsection"> 2.65.4 See also </h3>
+
+
+
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[ &gt; ]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC336" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_70.html#SEC338" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_68.html#SEC357" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC333" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_78.html#SEC397" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 2 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 4 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 
