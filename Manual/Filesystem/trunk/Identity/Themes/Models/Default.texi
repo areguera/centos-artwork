@@ -1,14 +1,4 @@
-This directory implements the concept of @emph{Default Design Models
-for CentOS Themes}.  Default Design Models for CentOS Themes provide
-the common structural information (e.g., image dimensions, translation
-markers, trademark position, etc.) the @command{centos-art} script
-uses to produce images when no other design model is specified.
-
-Deisgn models in this directory do use the CentOS Release Brand. The
-CentOS Release Brand is a combination of both The CentOS Type and The
-CentOS Release Schema used to illustrate the major release of CentOS
-Distribution the image produced belongs to.  @xref{Filesystem trunk
-Identity Models Tpl Brands}, for more information.
+@subsection Goals
 
 Default Design Models for CentOS Themes provide design models for the
 following components:
@@ -30,3 +20,118 @@ Design models for CentOS Promotion stuff (e.g., installation media,
 posters, etc.). @xref{Filesystem trunk Identity Themes Models Default
 Promo}, for more information.  
 @end table
+
+@subsection Description
+
+This directory implements the concept of @emph{Default Design Models
+for CentOS Themes}.  Default Design Models for CentOS Themes provide
+the common structural information (e.g., image dimensions, translation
+markers, trademark position, etc.) the @command{centos-art} script
+uses to produce images when no other design model is specified.
+
+Deisgn models in this directory do use the @emph{CentOS Release
+Brand}. The CentOS Release Brand is a combination of both The CentOS
+Type and The CentOS Release Schema used to illustrate the major
+release of CentOS Distribution the image produced belongs to.
+@xref{Filesystem trunk Identity Models Tpl Brands}, for more
+information.
+
+@subsection Usage
+
+The CentOS Project maintains near to four different major releases of
+CentOS Distribution. Each major release of CentOS Distribution has
+internal differences that make them unique and, at the same time, each
+CentOS Distribution individually is tagged into the one unique visual
+manifestation (i.e., Distribution). So, how could we implement the
+monolithic visual structure in one visual manifestation that has
+internal difference?
+
+To answer this question we broke the question in two parts and later
+combined the resultant answers to build a possible solution. 
+
+@table @strong
+@item How to remark the internal differences visually?
+
+Merge both The CentOS Project Release Schema into The CentOS Project
+Trademark to build The CentOS Project Release Trademark.  The CentOS
+Project Release Trademark remarks two things: first, it remarks the
+image is from The CentOS Project and second, it remarks which major
+release of CentOS Distribution does the image belongs to.
+@xref{Filesystem trunk Identity Models Tpl Brands}, for more
+information on how to develop and improve The CentOS Project Brand.
+
+@item How to remark the visual resemblance?
+
+Use a common artistic motifs as background for all CentOS Distribution
+images.  @xref{Filesystem trunk Identity Themes Motifs}, for more
+information.
+
+@item So, combining answers above, we could conclude that:
+
+In order to implement the CentOS Monolithic Visual Structure on CentOS
+Distribution visual manifestations, a CentOS Release Trademark and a
+background information based on one unique artistic motif should be
+used in all remarkable images The CentOS Distribution visual
+manifestation is made of.  
+@end table
+
+@quotation
+@strong{Important} Remarking the CentOS Release Schema inside each
+major release of CentOS Distribution ---or similar visual
+manifestations--- takes @emph{high attention} inside The CentOS
+Project corporate visual identity. It should be very clear for
+everyone which major release of CentOS Distribution is being used.
+@end quotation
+
+Other recommendations have been discussed in CentOS Developers mailing
+list (@email{centos-devel@@centos.org}). One of them is producing one
+unique visual style for @emph{each} major release of CentOS
+Distribution.  That is, if we have four different major releases of
+CentOS Distribution, we need to provide four different visual styles
+to cover each CentOS Distribution artistic needs.  Even such schema
+could be produced inside CentOS Artwork Repository, using it could
+introduce visual isolation to different visual manifestations of The
+CentOS Project.
+
+As previously said, The CentOS Project maintains near to four
+different major releases of CentOS Distribution in parallel and that
+fact creates a complete different perspective since the structural
+point of view. If one unique visual style is used for @emph{each}
+major release of CentOS Distribution, which one of those different
+visual styles would be used to cover other visual manifestations, like
+The CentOS Web sites and The CentOS Promotion stuff?
+
+Some persons may end up asking themselves, why the CentOS Distribution
+I am using has this visual style and the CentOS Web sites a different
+one?  Isn't them all part of the same project?
+
+Creating a linear and uniform visual style for all visual
+manifestations of The CentOS Project does create a strong feeling of
+integrity, order and property on persons interacting with the project
+through its manifestations. Every single detail, in every
+manifestation The CentOS Project expresses out its existence say what
+The CentOS Project is.
+
+I don't think The CentOS Project as an ambiguous project, but a direct
+and very pragmatic project where its community makes the central axis
+of movement. A manifestation of freedom to people to use computers and
+share as natural right. A manifestation of people kindness whose make
+the best they know to do in favor of themselves as manifestation of
+everyone else.  In such feeling there is no space for contradictions
+or ununiform visual structures, but very uniform visual structures
+that can be altered by anyone to fit personal needs.
+
+I strongly believe that The CentOS Project, as social organization,
+should be that way uniform and provide the means to let everyone do
+customzations in their own basis whenever it be clear that once such
+uniformity has been changed by someone differnt to The CentOS Project,
+it is no longer a visual manifestation of The CentOS Project, but a
+modified visual manifestation of The CentOS Project.
+
+@subsection See also
+
+@menu
+* Filesystem trunk Identity Themes::
+* Filesystem trunk Identity Themes Models::
+* Filesystem trunk Identity Themes Motifs::
+@end menu

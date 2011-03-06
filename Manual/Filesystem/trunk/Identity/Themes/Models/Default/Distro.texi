@@ -1,5 +1,7 @@
-This directory organizes CentOS Distribution default design models in
-the following categories:
+@subsection Goals
+
+This directory provides design models to produce image files for the
+following CentOS Distribution components:
 
 @table @strong
 @item Syslinux
@@ -53,73 +55,52 @@ progress information while user's graphical session is loading.
 @xref{Filesystem trunk Identity Themes Models Default Distro Ksplash},
 for more information.
 @end table
+@subsection Description
 
-The CentOS Project maintains near to four different major releases of
-CentOS Distribution. Each major release of CentOS Distribution has
-internal differences that make them unique and, at the same time, each
-CentOS Distribution individually is tagged into the one unique visual
-manifestation (i.e., a CentOS Distribution). So, how could we
-implement the monolithic visual structure in one visual manifestation
-that has internal difference?
+The CentOS Distribution visual style is controlled by image files.
+These image files are packaged inside The CentOS Distribution and made
+visible once such packages are installed and executed. The way to go
+for changing The CentOS Distribution visual style is changing all
+those image files to add the desired visual style first and later,
+repackage them to make them available inside the final iso files of
+CentOS Distribution.
 
-To answer this question we broke the question in two parts and later
-combined the resultant answers to build a possible solution. 
+@subsection Usage
 
-@table @strong
-@item How to visually remark the internal differences?
+This directory provides organizationl structure to store default
+design models for CentOS Themes of CentOS Distribution and so it
+should be considered to be used.
 
-Merge both The CentOS Project Release Schema into The CentOS Project
-Trademark to build The CentOS Project Release Trademark.  The CentOS
-Project Release Trademark remarks two things: first, the image is from
-The CentOS Project and second, the major release of CentOS
-Distribution the image belongs to.
+When a new component is added to CentOS Distribution, this is the
+directory you need to go for specifying design models for image files
+inside such component. 
 
-@xref{Filesystem trunk Identity Models Tpl Brands}, for more
-information on how to develop and improve The CentOS Project Brand.
+The procedure to follow is creatig a directory for each component
+using its very same name (e.g., the directory @file{Anaconda} stores
+image files for Anaconda component, the installer program). Inside the
+directory, you need to create one scalable vector graphic for each
+image file inside the component you want to produce images for. This,
+in order to set image dimensions, image file-name, position of
+trademarks in the final image, translation markers and whatever common
+information you need to have specified in them when rendered by
+@command{centos-art} script.
 
-@item How to remark the visual resemblance?
+Sometimes, between major releases, image files inside packages can be
+added, removed or just change their names. In order to describe such
+image files variations, the design models directory structure is
+organized in the same way the file variations are introduced (i.e.,
+through The CentOS Project Release Schema).  So, each major release of
+CentOS Distribution does have its own design model directory structure
+in this directory.
 
-Use a common artistic motif as background for all CentOS Distribution
-images.
+When a whole package is removed from one or all CentOS Distribution
+major releases, the design models directory structure releated to it
+is no longer used.  However it could be very useful for historical
+reasons.  Also, someone could feel motivated enough to keep himself
+documenting it or supporting it for whatever reason.
 
-@xref{Filesystem trunk Identity Themes Motifs}, for more information.
+@subsection See also
 
-@item So, combining answers above, we could conclude that:
-
-In order to implement the CentOS Monolithic Visual Structure
-(@pxref{Filesystem trunk Identity}) on CentOS Distribution visual
-manifestations, a CentOS Release Trademark and a common background
-(based on one unique artistic motif) should be used.
-@end table
-
-@quotation
-@strong{Important} Remarking the CentOS release schema inside each
-major release of CentOS Distribution ---or similar visual
-manifestation--- takes @emph{high attention} inside The CentOS Project
-corporate visual identity. It should be very clear for everyone which
-major release of CentOS Distribution they are using.
-@end quotation
-
-Other recommendation that have being discussed is that of producing
-one unique visual style for @emph{each} major release of CentOS
-Distribution.  That is, if we have 4 different major releases of
-CentOS Distribution, we need to provide 4 different visual styles to
-cover each CentOS Distribution art work needs.  Even such schema could
-be produced inside CentOS Artwork Repository, using one unique theme
-for @emph{each} major release of CentOS Distribution would introduce
-visual isolation to CentOS Distribution, as visual manifestation of
-The CentOS Project.
-
-As previously said, The CentOS Project maintains near to 4 different
-major releases of CentOS Distribution in parallel, and that fact
-creates a complete different perspective since the structural point of
-view. Consider the following: If we use one unique visual style for
-@emph{each} major release of CentOS Distribution, which one of those
-visual styles does we use to cover other CentOS visual manifestations,
-like web sites and promotion stuff?
-
-Some persons may end up asking themselves, why the CentOS Distribution
-I am using has this visual style tnd he CentOS web sites a different
-one?  Isn't them all part of the same project?  Furtunely, the
-presence of the CentOS Brand could exonerate those persons form
-complete visual isolation.
+@menu
+* Filesystem trunk Identity Themes Models Default::
+@end menu

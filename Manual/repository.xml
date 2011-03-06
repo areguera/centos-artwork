@@ -1649,29 +1649,93 @@ priority=10
     <nodeup>Filesystem</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default</indexterm>This directory implements the concept of <emph>Default Design Models for CentOS Themes</emph>.  Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
-      <para>Deisgn models in this directory do use the CentOS Release Brand. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to.  See <xref><xrefnodename>Filesystem trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information.</para>
-      <para>Default Design Models for CentOS Themes provide design models for the following components:</para>
-      <table>
-        <tableitem>
-          <tableterm><strong>Distribution</strong></tableterm>
-          <item>
-            <para>Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm, Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Concept</strong></tableterm>
-          <item>
-            <para>Design models to illustrate Artistic Motifs Concepts. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Concept</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Promotion</strong></tableterm>
-          <item>
-            <para>Design models for CentOS Promotion stuff (e.g., installation media, posters, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Promo</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-      </table>
+      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <para>Default Design Models for CentOS Themes provide design models for the following components:</para>
+        <table>
+          <tableitem>
+            <tableterm><strong>Distribution</strong></tableterm>
+            <item>
+              <para>Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm, Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Concept</strong></tableterm>
+            <item>
+              <para>Design models to illustrate Artistic Motifs Concepts. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Concept</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Promotion</strong></tableterm>
+            <item>
+              <para>Design models for CentOS Promotion stuff (e.g., installation media, posters, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Promo</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+        </table>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <para>This directory implements the concept of <emph>Default Design Models for CentOS Themes</emph>.  Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
+        <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to. See <xref><xrefnodename>Filesystem trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information.</para>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <para>The CentOS Project maintains near to four different major releases of CentOS Distribution. Each major release of CentOS Distribution has internal differences that make them unique and, at the same time, each CentOS Distribution individually is tagged into the one unique visual manifestation (i.e., Distribution). So, how could we implement the monolithic visual structure in one visual manifestation that has internal difference?</para>
+        <para>To answer this question we broke the question in two parts and later combined the resultant answers to build a possible solution.</para>
+        <table>
+          <tableitem>
+            <tableterm><strong>How to remark the internal differences visually?</strong></tableterm>
+            <item>
+              <para>Merge both The CentOS Project Release Schema into The CentOS Project Trademark to build The CentOS Project Release Trademark.  The CentOS Project Release Trademark remarks two things: first, it remarks the image is from The CentOS Project and second, it remarks which major release of CentOS Distribution does the image belongs to. See <xref><xrefnodename>Filesystem trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information on how to develop and improve The CentOS Project Brand.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>How to remark the visual resemblance?</strong></tableterm>
+            <item>
+              <para>Use a common artistic motifs as background for all CentOS Distribution images.  See <xref><xrefnodename>Filesystem trunk Identity Themes Motifs</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>So, combining answers above, we could conclude that:</strong></tableterm>
+            <item>
+              <para>In order to implement the CentOS Monolithic Visual Structure on CentOS Distribution visual manifestations, a CentOS Release Trademark and a background information based on one unique artistic motif should be used in all remarkable images The CentOS Distribution visual manifestation is made of.</para>
+            </item>
+          </tableitem>
+        </table>
+        <quotation>
+          <para><strong>Important</strong> Remarking the CentOS Release Schema inside each major release of CentOS Distribution &mdash;or similar visual manifestations&mdash; takes <emph>high attention</emph> inside The CentOS Project corporate visual identity. It should be very clear for everyone which major release of CentOS Distribution is being used.</para>
+        </quotation>
+        <para>Other recommendations have been discussed in CentOS Developers mailing list (<email><emailaddress>centos-devel@centos.org</emailaddress></email>). One of them is producing one unique visual style for <emph>each</emph> major release of CentOS Distribution.  That is, if we have four different major releases of CentOS Distribution, we need to provide four different visual styles to cover each CentOS Distribution artistic needs.  Even such schema could be produced inside CentOS Artwork Repository, using it could introduce visual isolation to different visual manifestations of The CentOS Project.</para>
+        <para>As previously said, The CentOS Project maintains near to four different major releases of CentOS Distribution in parallel and that fact creates a complete different perspective since the structural point of view. If one unique visual style is used for <emph>each</emph> major release of CentOS Distribution, which one of those different visual styles would be used to cover other visual manifestations, like The CentOS Web sites and The CentOS Promotion stuff?</para>
+        <para>Some persons may end up asking themselves, why the CentOS Distribution I am using has this visual style and the CentOS Web sites a different one?  Isn't them all part of the same project?</para>
+        <para>Creating a linear and uniform visual style for all visual manifestations of The CentOS Project does create a strong feeling of integrity, order and property on persons interacting with the project through its manifestations. Every single detail, in every manifestation The CentOS Project expresses out its existence say what The CentOS Project is.</para>
+        <para>I don't think The CentOS Project as an ambiguous project, but a direct and very pragmatic project where its community makes the central axis of movement. A manifestation of freedom to people to use computers and share as natural right. A manifestation of people kindness whose make the best they know to do in favor of themselves as manifestation of everyone else.  In such feeling there is no space for contradictions or ununiform visual structures, but very uniform visual structures that can be altered by anyone to fit personal needs.</para>
+        <para>I strongly believe that The CentOS Project, as social organization, should be that way uniform and provide the means to let everyone do customzations in their own basis whenever it be clear that once such uniformity has been changed by someone differnt to The CentOS Project, it is no longer a visual manifestation of The CentOS Project, but a modified visual manifestation of The CentOS Project.</para>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+          <menuentry>
+            <menunode>Filesystem trunk Identity Themes</menunode>
+            <menutitle>Filesystem trunk Identity Themes</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
+          <menuentry>
+            <menunode>Filesystem trunk Identity Themes Models</menunode>
+            <menutitle>Filesystem trunk Identity Themes Models</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
+          <menuentry>
+            <menunode>Filesystem trunk Identity Themes Motifs</menunode>
+            <menutitle>Filesystem trunk Identity Themes Motifs</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
+        </menu>
+      </subsection>
     </section>
   </node>
   <node>
@@ -1726,93 +1790,92 @@ priority=10
     <nodeup>Filesystem</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro</indexterm>This directory organizes CentOS Distribution default design models in the following categories:</para>
-      <table>
-        <tableitem>
-          <tableterm><strong>Syslinux</strong></tableterm>
-          <item>
-            <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Syslinux</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Anaconda</strong></tableterm>
-          <item>
-            <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Anaconda</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Firstboot</strong></tableterm>
-          <item>
-            <para>Contains design models for the first boot program used to configure the maching onece installed.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Firstboot</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Rhgb</strong></tableterm>
-          <item>
-            <para>Contains design models for CentOS Graphical Boot, the program used to show the boot process from Grub to Display Manager.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Rhgb</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Gdm</strong></tableterm>
-          <item>
-            <para>Contains design models for GNOME Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Gdm</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Kdm</strong></tableterm>
-          <item>
-            <para>Contains design models for KDE Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Grub</strong></tableterm>
-          <item>
-            <para>Contains design models for GRUB (Grand Unified Boot Loader), the program used to boot the machine into an operating system. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Gsplash</strong></tableterm>
-          <item>
-            <para>Contains design models for GNOME splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Gsplash</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Ksplash</strong></tableterm>
-          <item>
-            <para>Contains design models for KDE splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Ksplash</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-      </table>
-      <para>The CentOS Project maintains near to four different major releases of CentOS Distribution. Each major release of CentOS Distribution has internal differences that make them unique and, at the same time, each CentOS Distribution individually is tagged into the one unique visual manifestation (i.e., a CentOS Distribution). So, how could we implement the monolithic visual structure in one visual manifestation that has internal difference?</para>
-      <para>To answer this question we broke the question in two parts and later combined the resultant answers to build a possible solution.</para>
-      <table>
-        <tableitem>
-          <tableterm><strong>How to visually remark the internal differences?</strong></tableterm>
-          <item>
-            <para>Merge both The CentOS Project Release Schema into The CentOS Project Trademark to build The CentOS Project Release Trademark.  The CentOS Project Release Trademark remarks two things: first, the image is from The CentOS Project and second, the major release of CentOS Distribution the image belongs to.</para>
-            <para>See <xref><xrefnodename>Filesystem trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information on how to develop and improve The CentOS Project Brand.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>How to remark the visual resemblance?</strong></tableterm>
-          <item>
-            <para>Use a common artistic motif as background for all CentOS Distribution images.</para>
-            <para>See <xref><xrefnodename>Filesystem trunk Identity Themes Motifs</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>So, combining answers above, we could conclude that:</strong></tableterm>
-          <item>
-            <para>In order to implement the CentOS Monolithic Visual Structure (see <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>) on CentOS Distribution visual manifestations, a CentOS Release Trademark and a common background (based on one unique artistic motif) should be used.</para>
-          </item>
-        </tableitem>
-      </table>
-      <quotation>
-        <para><strong>Important</strong> Remarking the CentOS release schema inside each major release of CentOS Distribution &mdash;or similar visual manifestation&mdash; takes <emph>high attention</emph> inside The CentOS Project corporate visual identity. It should be very clear for everyone which major release of CentOS Distribution they are using.</para>
-      </quotation>
-      <para>Other recommendation that have being discussed is that of producing one unique visual style for <emph>each</emph> major release of CentOS Distribution.  That is, if we have 4 different major releases of CentOS Distribution, we need to provide 4 different visual styles to cover each CentOS Distribution art work needs.  Even such schema could be produced inside CentOS Artwork Repository, using one unique theme for <emph>each</emph> major release of CentOS Distribution would introduce visual isolation to CentOS Distribution, as visual manifestation of The CentOS Project.</para>
-      <para>As previously said, The CentOS Project maintains near to 4 different major releases of CentOS Distribution in parallel, and that fact creates a complete different perspective since the structural point of view. Consider the following: If we use one unique visual style for <emph>each</emph> major release of CentOS Distribution, which one of those visual styles does we use to cover other CentOS visual manifestations, like web sites and promotion stuff?</para>
-      <para>Some persons may end up asking themselves, why the CentOS Distribution I am using has this visual style tnd he CentOS web sites a different one?  Isn't them all part of the same project?  Furtunely, the presence of the CentOS Brand could exonerate those persons form complete visual isolation.</para>
+      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <para>This directory provides design models to produce image files for the following CentOS Distribution components:</para>
+        <table>
+          <tableitem>
+            <tableterm><strong>Syslinux</strong></tableterm>
+            <item>
+              <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Syslinux</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Anaconda</strong></tableterm>
+            <item>
+              <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Anaconda</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Firstboot</strong></tableterm>
+            <item>
+              <para>Contains design models for the first boot program used to configure the maching onece installed.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Firstboot</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Rhgb</strong></tableterm>
+            <item>
+              <para>Contains design models for CentOS Graphical Boot, the program used to show the boot process from Grub to Display Manager.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Rhgb</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Gdm</strong></tableterm>
+            <item>
+              <para>Contains design models for GNOME Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Gdm</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Kdm</strong></tableterm>
+            <item>
+              <para>Contains design models for KDE Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Grub</strong></tableterm>
+            <item>
+              <para>Contains design models for GRUB (Grand Unified Boot Loader), the program used to boot the machine into an operating system. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Gsplash</strong></tableterm>
+            <item>
+              <para>Contains design models for GNOME splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Gsplash</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Ksplash</strong></tableterm>
+            <item>
+              <para>Contains design models for KDE splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Ksplash</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+        </table>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <para>The CentOS Distribution visual style is controlled by image files. These image files are packaged inside The CentOS Distribution and made visible once such packages are installed and executed. The way to go for changing The CentOS Distribution visual style is changing all those image files to add the desired visual style first and later, repackage them to make them available inside the final iso files of CentOS Distribution.</para>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <para>This directory provides organizationl structure to store default design models for CentOS Themes of CentOS Distribution and so it should be considered to be used.</para>
+        <para>When a new component is added to CentOS Distribution, this is the directory you need to go for specifying design models for image files inside such component.</para>
+        <para>The procedure to follow is creatig a directory for each component using its very same name (e.g., the directory <file>Anaconda</file> stores image files for Anaconda component, the installer program). Inside the directory, you need to create one scalable vector graphic for each image file inside the component you want to produce images for. This, in order to set image dimensions, image file-name, position of trademarks in the final image, translation markers and whatever common information you need to have specified in them when rendered by <command>centos-art</command> script.</para>
+        <para>Sometimes, between major releases, image files inside packages can be added, removed or just change their names. In order to describe such image files variations, the design models directory structure is organized in the same way the file variations are introduced (i.e., through The CentOS Project Release Schema).  So, each major release of CentOS Distribution does have its own design model directory structure in this directory.</para>
+        <para>When a whole package is removed from one or all CentOS Distribution major releases, the design models directory structure releated to it is no longer used.  However it could be very useful for historical reasons.  Also, someone could feel motivated enough to keep himself documenting it or supporting it for whatever reason.</para>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+          <menuentry>
+            <menunode>Filesystem trunk Identity Themes Models Default</menunode>
+            <menutitle>Filesystem trunk Identity Themes Models Default</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
+        </menu>
+      </subsection>
     </section>
   </node>
   <node>
