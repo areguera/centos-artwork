@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# render.sh -- This function provides rendition features to
-# centos-art.sh script. Here we initialize rendition variables and
-# call identity_getActions functions.
+# identity.sh -- This function initializes rendition variables and
+# actions to centos-art.sh script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -40,6 +39,10 @@ function identity {
     # specifies the architecture type identity images are rendered
     # for.  By default no architecture type is used.
     local FLAG_ARCHITECTURE=''
+
+    # Define theme model flag. The theme model flag (--theme-model)
+    # specifies the theme model used when no one is specified.
+    local FLAG_THEME_MODEL='Default'
 
     # Define rendition actions.
     identity_getActions

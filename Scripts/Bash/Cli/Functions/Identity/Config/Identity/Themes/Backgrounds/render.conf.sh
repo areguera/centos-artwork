@@ -27,7 +27,7 @@
 function identity_loadConfig {
 
     # Deifne theme model.
-    #THEMEMODEL='Default'
+    #FLAG_THEME_MODEL='Default'
 
     # Define rendition actions.
     ACTIONS[0]='POST:renderFormats: jpg'

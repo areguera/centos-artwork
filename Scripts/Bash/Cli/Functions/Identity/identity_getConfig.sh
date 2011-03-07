@@ -52,9 +52,9 @@ function identity_getConfig {
 
     # Sanitate theme model value using repository directory name
     # convenction.
-    THEMEMODEL=$(cli_getRepoName "$THEMEMODEL" 'd')
+    FLAG_THEME_MODEL=$(cli_getRepoName "$THEMEMODEL" 'd')
 
     # Check theme model directory.
-    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${THEMEMODEL}" 'd'
+    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${FLAG_THEME_MODEL}" 'd'
 
 }

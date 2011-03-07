@@ -49,12 +49,12 @@ function identity_getDirTemplate {
         TEMPLATE=$TEMPLATE/Tpl
     else
         # Redefine design model location based on theme model
-        # (THEMEMODEL) variable value. The theme model variable is
+        # (FLAG_THEME_MODEL) variable value. The theme model variable is
         # defined in the associated pre-rendition configuration script
         # and can be used to set which design model to use among a
         # list of different design models that we can choose from.
         TEMPLATE=$(echo "$TEMPLATE" \
-            | sed "s!Motifs/$(cli_getPathComponent "$TEMPLATE" '--theme')!Models/$THEMEMODEL!")
+            | sed "s!Motifs/$(cli_getPathComponent "$TEMPLATE" '--theme')!Models/$FLAG_THEME_MODEL!")
     fi
 
 }

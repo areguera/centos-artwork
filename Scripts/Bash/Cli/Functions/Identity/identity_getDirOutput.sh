@@ -32,7 +32,7 @@ function identity_getDirOutput {
     # immediatly under identity entry structure,  but if `Img/'
     # directory exists use it instead.
     OUTPUT=$(dirname $FILE | sed -r \
-        -e "s!/Models/${THEMEMODEL}!/Motifs/$(cli_getPathComponent "$ACTIONVAL" "--theme")!" \
+        -e "s!/Models/${FLAG_THEME_MODEL}!/Motifs/$(cli_getPathComponent "$ACTIONVAL" "--theme")!" \
         -e "s!/Tpl!/Img!")
 
     # Redefine base output directory to introduce specific information

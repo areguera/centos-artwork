@@ -27,7 +27,7 @@
 function identity_loadConfig {
 
     # Deifne theme model.
-    #THEMEMODEL='Default'
+    #FLAG_THEME_MODEL='Default'
 
     # Define rendition actions. 
     ACTIONS[0]="LAST:renderDm:Gdm:800x600 1024x768 1280x1024 1360x768 \
