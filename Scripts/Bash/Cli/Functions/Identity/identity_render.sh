@@ -66,7 +66,7 @@ function identity_render {
     # required in order for centos-art.sh to know when to apply
     # last-rendition actions.
     for FILE in $(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*${EXTENSION}");do
-        FILES[$((${#FILES[*]} - 1 + 1))]=$FILE
+        FILES[((++${#FILES[*]}))]=$FILE
     done
 
     # Set action preamble.

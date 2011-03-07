@@ -40,16 +40,16 @@ function identity_renderSvgPostActions {
     # combinations each time you need to produce images inside the
     # repository.
     if [[ $TEMPLATE =~ "Distro/Backgrounds/.+\.svg$" ]];then
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderFormats: jpg'
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='groupByFormat: png jpg'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderFormats: jpg'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupByFormat: png jpg'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderSyslinux'
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderSyslinux:-floyd'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux:-floyd'
     elif [[ $TEMPLATE =~ "Grub" ]];then
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderGrub'
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderGrub:-floyd'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderGrub'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderGrub:-floyd'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
-        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderKsplash'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderKsplash'
     fi
     
     for ACTION in "${POSTACTIONS[@]}"; do
