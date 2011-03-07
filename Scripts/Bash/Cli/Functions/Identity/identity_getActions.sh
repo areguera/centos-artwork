@@ -26,11 +26,16 @@
 
 function identity_getActions {
 
+    # Initialize actions array variable, the place used to
+    # to store post-rendition and last-rendition action definitions
+    # retrived from command-line interface.
+    local -a ACTIONS
+
     # Define short options we want to support.
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="render:,release:,architecture:,copy:,to:"
+    local ARGSL="render:,release:,architecture:,copy:,to:,syslinux,grub,gdm,kdm,ksplash,format:,group-by-type:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -45,65 +50,74 @@ function identity_getActions {
         case "$1" in
 
             --render )
-
-                # Redefine action name.
                 ACTIONNAM="${FUNCNAM}_render"
-
-                # Redefine action value.
                 ACTIONVAL="$2"
-
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             --copy )
-            
-                # Redefine action value variable.
                 ACTIONVAL="$2"
-
-                # Redefine action name variable.
                 ACTIONNAM="${FUNCNAME}_doCopy"
-
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             --release )
-            
-                # Redefine release number flag.
                 FLAG_RELEASE="$2"
-
-                # Verify release number flag.
                 if [[ ! $FLAG_RELEASE =~ $(cli_getPathComponent '--release-pattern') ]];then
                     cli_printMessage "`gettext "The release number provided is not supported."`" 'AsErrorLine'
                     cli_printMessage "$(caller)" 'AsToKnowMoreLine'
                 fi
-
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             --architecture )
-            
-                # Redefine architecture flag.
                 FLAG_ARCHITECTURE="$2"
-
-                # Verify architecture flag.
                 if [[ ! $FLAG_ARCHITECTURE =~ $(cli_getPathComponent '--architecture-pattern') ]];then
                     cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
                     cli_printMessage "$(caller)" 'AsToKnowMoreLine'
                 fi
-
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             --to )
-            
-                # Redefine target value flag.
                 FLAG_TO="$2"
+                shift 2
+                ;;
 
-                # Rotate positional parameters
+            --syslinux )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderSyslinux:'
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderSyslinux:-floyd'
+                shift 1
+                ;;
+
+            --grub )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderGrub:'
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderGrub:-floyd'
+                shift 1
+                ;;
+
+            --ksplash )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='LAST:renderKsplash'
+                shift 1
+                ;;
+
+            --gdm )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='LAST:renderDm:Gdm:800x600 1024x768 1280x1024 1360x768 1680x1050 2048x1536 2560x960 2560x1240 3271x1227'
+                shift 1
+                ;;
+
+            --kdm )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]='LAST:renderDm:Kdm:800x600 1024x768 1280x1024 1360x768 1680x1050 2048x1536 2560x960 2560x1240 3271x1227'
+                shift 1
+                ;;
+
+            --group-by-type )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]="POST:groupByType:$2"
+                shift 2
+                ;;
+
+            --format )
+                ACTIONS[$((${#ACTIONS[*]} + 1))]="POST:renderFormats:$2"
                 shift 2
                 ;;
 
@@ -117,17 +131,6 @@ function identity_getActions {
     # convenctions defined for source locations inside the working
     # copy.
     cli_checkRepoDirSource
-
-    # Define pre-rendition configuration directory. Pre-rendition
-    # configuration directory is where we store render.conf.sh
-    # scripts. The render.conf.sh script defines how each identity
-    # content is rendered.
-    local ARTCONF=$(echo "$ACTIONVAL" \
-        | sed -r -e 's!/(Identity)!/Scripts/Bash/Cli/Functions/Identity/Config/\1!' \
-                 -e "s!/Motifs/$(cli_getPathComponent '--theme')!!" )
-
-    # Check directory of pre-rendition configuration script.
-    cli_checkFiles "$ARTCONF" 'd'
 
     # Syncronize changes between the working copy and the central
     # repository to bring down changes.

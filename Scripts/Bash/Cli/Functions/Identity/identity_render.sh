@@ -39,6 +39,12 @@ function identity_render {
     local NEXT_FILE_DIR=''
     local COUNT=0
 
+    # Define post-rendition and last-rendition array variables from
+    # actions array variable.
+    local -a POSTACTIONS
+    local -a LASTACTIONS
+    identity_getConfig
+
     # Define the extension pattern for template files. This is the
     # file extensions that centos-art will look for in order to build
     # the list of files to process. The list of files to process
@@ -198,7 +204,7 @@ function identity_render {
             #identity_renderDocbookLastActions
 
         else
-            cli_printMessage "`gettext "The template extension you try to render is not supported yet."`" 'AsErrorLine'
+            cli_printMessage "`gettext "The template file you try to render is not supported yet."`" 'AsErrorLine'
             cli_printMessage "$(caller)" 'AsToKnowMoreLine' 
         fi
 
