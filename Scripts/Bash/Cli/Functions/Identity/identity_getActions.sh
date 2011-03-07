@@ -26,16 +26,14 @@
 
 function identity_getActions {
 
-    # Initialize actions array variable, the place used to
-    # to store post-rendition and last-rendition action definitions
-    # retrived from command-line interface.
-    local -a ACTIONS
+    # Initialize post-rendition actions passed from command-line.
+    local -a POSTACTIONS
 
     # Define short options we want to support.
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="render:,release:,architecture:,copy:,to:,syslinux,grub,gdm,kdm,ksplash,format:,group-by-type:"
+    local ARGSL="render:,releasever:,basearch:,copy:,to:,convert-to:,grouped-by:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -61,16 +59,16 @@ function identity_getActions {
                 shift 2
                 ;;
 
-            --release )
+            --releasever )
                 FLAG_RELEASE="$2"
                 if [[ ! $FLAG_RELEASE =~ $(cli_getPathComponent '--release-pattern') ]];then
-                    cli_printMessage "`gettext "The release number provided is not supported."`" 'AsErrorLine'
+                    cli_printMessage "`gettext "The release version provided is not supported."`" 'AsErrorLine'
                     cli_printMessage "$(caller)" 'AsToKnowMoreLine'
                 fi
                 shift 2
                 ;;
 
-            --architecture )
+            --basearch )
                 FLAG_ARCHITECTURE="$2"
                 if [[ ! $FLAG_ARCHITECTURE =~ $(cli_getPathComponent '--architecture-pattern') ]];then
                     cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
@@ -84,40 +82,13 @@ function identity_getActions {
                 shift 2
                 ;;
 
-            --syslinux )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderSyslinux:'
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderSyslinux:-floyd'
-                shift 1
-                ;;
-
-            --grub )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderGrub:'
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='POST:renderGrub:-floyd'
-                shift 1
-                ;;
-
-            --ksplash )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='LAST:renderKsplash'
-                shift 1
-                ;;
-
-            --gdm )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='LAST:renderDm:Gdm:800x600 1024x768 1280x1024 1360x768 1680x1050 2048x1536 2560x960 2560x1240 3271x1227'
-                shift 1
-                ;;
-
-            --kdm )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]='LAST:renderDm:Kdm:800x600 1024x768 1280x1024 1360x768 1680x1050 2048x1536 2560x960 2560x1240 3271x1227'
-                shift 1
-                ;;
-
-            --group-by-type )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]="POST:groupByType:$2"
+            --convert-to )
+                POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]="renderFormats:$2"
                 shift 2
                 ;;
 
-            --format )
-                ACTIONS[$((${#ACTIONS[*]} + 1))]="POST:renderFormats:$2"
+            --grouped-by )
+                POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]="groupByType:$2"
                 shift 2
                 ;;
 

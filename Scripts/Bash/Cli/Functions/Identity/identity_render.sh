@@ -39,11 +39,12 @@ function identity_render {
     local NEXT_FILE_DIR=''
     local COUNT=0
 
-    # Define post-rendition and last-rendition array variables from
-    # actions array variable.
-    local -a POSTACTIONS
-    local -a LASTACTIONS
-    identity_getConfig
+    # Sanitate theme model value using repository directory name
+    # convenction.
+    FLAG_THEME_MODEL=$(cli_getRepoName "$FLAG_THEME_MODEL" 'd')
+
+    # Check theme model directory.
+    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${FLAG_THEME_MODEL}" 'd'
 
     # Define the extension pattern for template files. This is the
     # file extensions that centos-art will look for in order to build
@@ -65,15 +66,11 @@ function identity_render {
     # required in order for centos-art.sh to know when to apply
     # last-rendition actions.
     for FILE in $(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*${EXTENSION}");do
-        FILES[$COUNT]=$FILE
-        COUNT=$(($COUNT + 1))
+        FILES[$((${#FILES[*]} - 1 + 1))]=$FILE
     done
 
     # Set action preamble.
     cli_printActionPreamble "${FILES[*]}" '' ''
-
-    # Reset common directory counter.
-    COUNT=0
 
     # Start processing the base rendition list of FILES. Fun part
     # approching :-).

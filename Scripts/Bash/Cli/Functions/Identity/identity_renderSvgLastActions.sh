@@ -30,30 +30,47 @@ function identity_renderSvgLastActions {
 
     # Verify position of file being produced in the list of files been
     # currently processed.
-    if [[ $THIS_FILE_DIR != $NEXT_FILE_DIR ]];then
-
-        # At this point centos-art.sh should be producing the last
-        # file from the same unique directory structure, so, before
-        # producing images for the next directory structure lets
-        # execute last-rendition actions for the current directory
-        # structure. 
-        for ACTION in "${LASTACTIONS[@]}"; do
-
-            case "${ACTION}" in
-
-                renderKSplash )
-                    identity_renderKsplash
-                    ;;
-
-                renderDm:* )
-                    identity_renderDm
-                    ;;
-
-            esac
-
-        done
-
+    if [[ $THIS_FILE_DIR == $NEXT_FILE_DIR ]];then
+        return
     fi
 
-}
+    # Define SVG-directory-specific last-rendition actions processing
+    # as local to this function. Otherwise it may confuse command-line
+    # last-rendition actions.
+    local -a LASTACTIONS
 
+    # Add directory-specific last-rendition actions to the list of
+    # post actions and last actions. This is required in order to
+    # provide a predictable way of producing content inside the
+    # repository and save you the time of writing long option
+    # combinations each time you need to produce images inside the
+    # repository.
+    if [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Gdm/.+\.svg$" ]];then
+        LASTACTIONS[$((${#LASTACTIONS[*]} - 1 + 1))]='renderDm:Gdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Kdm/.+\.svg$" ]];then
+        LASTACTIONS[$((${#LASTACTIONS[*]} - 1 + 1))]='renderDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
+        LASTACTIONS[$((${#LASTACTIONS[*]} - 1 + 1))]='renderKsplash'
+    fi
+
+    # At this point centos-art.sh should be producing the last file
+    # from the same unique directory structure, so, before producing
+    # images for the next directory structure lets execute
+    # last-rendition actions for the current directory structure. 
+    for ACTION in "${LASTACTIONS[@]}"; do
+
+        case "${ACTION}" in
+
+            renderKsplash )
+                identity_renderKsplash
+                ;;
+
+            renderDm:* )
+                identity_renderDm
+                ;;
+
+        esac
+
+    done
+
+}

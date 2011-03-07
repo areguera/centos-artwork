@@ -32,6 +32,10 @@ function identity_renderPostActions {
 
         case "${ACTION}" in
 
+            renderFormats:* )
+                identity_renderFormats 
+                ;;
+
             groupByType:* )
                 identity_renderGroupByType 
                 ;;

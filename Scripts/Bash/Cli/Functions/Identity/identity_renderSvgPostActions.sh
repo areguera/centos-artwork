@@ -28,6 +28,30 @@ function identity_renderSvgPostActions {
 
     local ACTION=''
 
+    # Define SVG-directory-specific post-rendition actions processing
+    # as local to this function. Otherwise it may confuse command-line
+    # post-rendition actions.
+    local -a POSTACTIONS
+
+    # Execute SVG-directory-specific post-rendition actions to the
+    # list of post actions and last actions. This is required in order
+    # to provide a predictable way of producing content inside the
+    # repository and save you the time of writing long option
+    # combinations each time you need to produce images inside the
+    # repository.
+    if [[ $TEMPLATE =~ "Distro/Backgrounds/.+\.svg$" ]];then
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderFormats: jpg'
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='groupByFormat: png jpg'
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderSyslinux'
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderSyslinux:-floyd'
+    elif [[ $TEMPLATE =~ "Grub" ]];then
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderGrub'
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderGrub:-floyd'
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
+        POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]='renderKsplash'
+    fi
+    
     for ACTION in "${POSTACTIONS[@]}"; do
 
         case "${ACTION}" in
@@ -38,10 +62,6 @@ function identity_renderSvgPostActions {
 
             renderGrub* )
                 identity_renderGrub 
-                ;;
-
-            renderFormats:* )
-                identity_renderFormats 
                 ;;
 
             renderBrands )
