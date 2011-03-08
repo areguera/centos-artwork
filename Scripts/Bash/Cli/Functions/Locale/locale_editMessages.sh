@@ -28,10 +28,7 @@ function locale_editMessages {
 
     local FILES=''
 
-    # Define list of files to process. In this case the `--filter'
-    # option (FLAG_FILTER) does not affect find's result. Instead, the
-    # filter pattern is set explicitly based on the working directory
-    # where translation messages are sotred in.
+    # Define list of files to process.
     if [[ ${WORKDIR} =~ 'trunk/Locales/Scripts' ]];then
         FILES=$(cli_getFilesList "${WORKDIR}" ".*${TEXTDOMAIN}\.po")
     else
