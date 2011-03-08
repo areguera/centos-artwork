@@ -26,14 +26,11 @@
 
 function identity_getActions {
 
-    # Initialize post-rendition actions passed from command-line.
-    local -a POSTACTIONS
-
     # Define short options we want to support.
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="render:,releasever:,basearch:,copy:,to:,convert-to:,grouped-by:"
+    local ARGSL="render:,releasever:,basearch:,copy:,to:,convert-to:,grouped-by:,theme-model:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -55,7 +52,7 @@ function identity_getActions {
 
             --copy )
                 ACTIONVAL="$2"
-                ACTIONNAM="${FUNCNAME}_doCopy"
+                ACTIONNAM="${FUNCNAME}_copy"
                 shift 2
                 ;;
 
@@ -83,12 +80,17 @@ function identity_getActions {
                 ;;
 
             --convert-to )
-                POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]="renderFormats:$2"
+                FLAG_CONVERT_TO="$2"
                 shift 2
                 ;;
 
             --grouped-by )
-                POSTACTIONS[$((${#POSTACTIONS[*]} - 1 + 1))]="groupByType:$2"
+                FLAG_GROUPED_BY="$2"
+                shift 2
+                ;;
+
+            --theme-model )
+                FLAG_THEME_MODEL=$(cli_getRepoName "$2" 'd')
                 shift 2
                 ;;
 
