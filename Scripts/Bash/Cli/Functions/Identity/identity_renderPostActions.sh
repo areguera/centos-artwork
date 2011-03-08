@@ -32,7 +32,7 @@ function identity_renderPostActions {
 
         case "${ACTION}" in
 
-            groupByFormat:* )
+            groupSimilarFiles:* )
                 identity_groupSimilarFiles
                 ;;
 

@@ -41,7 +41,7 @@ function identity_renderSvgPostActions {
     # repository.
     if [[ $TEMPLATE =~ "Distro/Backgrounds/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupByFormat: png jpg'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupSimilarFiles: png jpg'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux:-floyd'
