@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_convertHtml2Text.sh -- This function takes one HTML file
+# identity_convertHtmlToText.sh -- This function takes one HTML file
 # and produces one plain-text file (i.e., without markup inside).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
