@@ -46,14 +46,14 @@ function locale_updateMessagePObjects {
 
     else
 
-        # Print action message and initiate portable object using
-        # portable object template.  There is no `--quiet' option for
-        # msginit command that let to separate both printing action
-        # message and creation command apart one from another so we
-        # have to play with stderr and stdout outputs to print the
-        # action message as we usually do.
-        cli_printMessage $(msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
-            --no-translator 2>&1 | cut -d' ' -f2 | sed -r 's!\.$!!') 'AsCreatingLine'
+        # Print action message.
+        cli_printMessage "${FILE}.po" 'AsCreatingLine'
+
+        # Initiate portable object using portable object template.
+        # Do not print msginit sterr output, use centos-art action
+        # message instead.
+        msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
+            --no-translator 2> /dev/null
 
         # Sanitate portable object metadata. This is the first time
         # the portable object is created so some modifications are
