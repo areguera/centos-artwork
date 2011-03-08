@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_convertDocbook2Xhtml.sh -- This function produces XHTML
+# identity_convertDocbookToXhtml.sh -- This function produces XHTML
 # output from docbook template instance using XSL stylesheets as
 # reference.
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_convertDocbook2Xhtml {
+function identity_convertDocbookToXhtml {
 
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
