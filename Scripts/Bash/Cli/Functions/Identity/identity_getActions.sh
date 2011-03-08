@@ -30,7 +30,7 @@ function identity_getActions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="render:,releasever:,basearch:,copy:,to:,convert-to:,grouped-by:,theme-model:"
+    local ARGSL="render:,releasever:,basearch:,copy:,to:,convert-to:,group-by:,theme-model:"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -84,7 +84,7 @@ function identity_getActions {
                 shift 2
                 ;;
 
-            --grouped-by )
+            --group-by )
                 FLAG_GROUPED_BY="$2"
                 shift 2
                 ;;
