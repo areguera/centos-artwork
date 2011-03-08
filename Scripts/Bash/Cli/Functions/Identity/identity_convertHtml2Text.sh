@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderHtmlPlaintext.sh -- This function takes one HTML file
+# identity_convertHtml2Text.sh -- This function takes one HTML file
 # and produces one plain-text file (i.e., without markup inside).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderHtmlPlaintext {
+function identity_convertHtml2Text {
 
     # Verify existence of HTML file.
     cli_checkFiles ${FILE}.xhtml 'f'

@@ -31,6 +31,6 @@ function identity_renderDocbook {
     identity_renderDocbookXhtml
 
     # Produce plaintext output from html outout.
-    identity_renderHtmlPlaintext
+    identity_convertHtml2Text
 
 }
