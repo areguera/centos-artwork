@@ -44,7 +44,7 @@ function identity_renderSvg {
     # background information is not available the image is produced
     # without background information. This is something that need to
     # be avoided.
-    identity_checkAbsolutePaths "$INSTANCE"
+    identity_checkSvgAbsref "$INSTANCE"
 
     # Render template instance using inkscape. Modify the inkscape
     # output to reduce the amount of characters used in description

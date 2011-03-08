@@ -1,12 +1,11 @@
 #!/bin/bash
 #
-# identity_checkAbsolutePaths.sh -- This function retrives absolute
-# files and checks their existence. In order for design templates to
-# point different artistic motifs, design templates make use of
-# external files that point to specific artistic motif background
-# images. If such external files doesn't exist, print a message and
-# stop script execution.  We cannot continue without background
-# information.
+# identity_checkSvgAbsref.sh -- This function retrives absolute files
+# and checks their existence. In order for design templates to point
+# different artistic motifs, design templates make use of external
+# files that point to specific artistic motif background images. If
+# such external files doesn't exist, print a message and stop script
+# execution.  We cannot continue without background information.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -29,7 +28,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_checkAbsolutePaths {
+function identity_checkSvgAbsref {
 
     local FILE=''
     local ABSPATHS=''
