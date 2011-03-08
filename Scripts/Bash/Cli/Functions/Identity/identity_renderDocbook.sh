@@ -28,7 +28,7 @@ function identity_renderDocbook {
 
     # Produce xhtml output from docbook template instance using XSL
     # stylesheets as reference.
-    identity_renderDocbookXhtml
+    identity_convertDocbook2Xhtml
 
     # Produce plaintext output from html outout.
     identity_convertHtml2Text
