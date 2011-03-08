@@ -108,13 +108,14 @@ function cli_commitRepoChanges {
 
     done
 
-    # Outout separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # In case new unversioned files exist, ask the user to add them
     # into the repository. This may happen when new documentation
     # entries are created.
     if [[ ${FILESNUM[1]} -gt 0 ]];then
+
+        # Outout separator line.
+        cli_printMessage '-' 'AsSeparatorLine'
+
         cli_printMessage "`ngettext "The following file is unversioned" \
             "The following files are unversioned" ${FILESNUM[1]}`:"
         for FILE in ${FILES[1]};do
@@ -128,6 +129,9 @@ function cli_commitRepoChanges {
     # Check total amount of changes and, if any, check differences and
     # commit them up to central repository.
     if [[ $CHNGTOTAL -gt 0 ]];then
+
+        # Outout separator line.
+        cli_printMessage '-' 'AsSeparatorLine'
 
         # Verify changes.
         cli_printMessage "`gettext "Do you want to see changes now?"`" "AsYesOrNoRequestLine"
