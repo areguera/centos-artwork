@@ -44,35 +44,19 @@ function locale_getActions {
         case "$1" in
 
             --update )
-
-                # Redefine action name.
                 ACTIONNAM="${FUNCNAM}_updateMessages"
-
-                # Redefine action value.
                 ACTIONVAL="$2"
-
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             --edit )
-
-                # Redefine action name.
                 ACTIONNAM="${FUNCNAM}_editMessages"
-
-                # Redefine action value.
                 ACTIONVAL="$2"
-
-                # Rotate positional parameters
                 shift 2
                 ;;
 
             --dont-create-mo )
-
-                # Redefine create machine object flag.
                 FLAG_DONT_CREATE_MO="true"
-
-                # Rotate positional parameters
                 shift 1
                 ;;
 
