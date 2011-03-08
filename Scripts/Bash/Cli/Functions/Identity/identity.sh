@@ -44,6 +44,16 @@ function identity {
     # specifies the theme model used when no one is specified.
     local FLAG_THEME_MODEL='Default'
 
+    # Define convert-to flag. The convert-to flag (--convert-to)
+    # specifies the post-rendition image convertion action to perform
+    # upon PNG images.  By default there is no image convertion.
+    local FLAG_CONVERT_TO=''
+
+    # Define grouped-by flag. The grouped-by flag (--grouped-by)
+    # specifies the post-rendition image grouping action to perform
+    # upon images produced. By default there is no grouping action.
+    local FLAG_GROUPED_BY=''
+
     # Define rendition actions.
     identity_getActions
 
