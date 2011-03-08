@@ -42,7 +42,7 @@ function identity_renderLastActions {
             case "${ACTION}" in
 
                 groupByType:* )
-                    identity_renderGroupByType
+                    identity_groupSimilarFiles
                     ;;
             esac
 

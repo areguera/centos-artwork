@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderGroupByTypes.sh -- This function provides
+# identity_groupSimilarFiles.sh -- This function provides
 # post-rendition action to group files inside directories named as
 # their file extensions.  For example: if the current file is a .png
 # file, it is moved inside a Png/ directory; if the current file is a
@@ -32,7 +32,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderGroupByType {
+function identity_groupSimilarFiles {
 
     local SOURCE=''
     local TARGET=''

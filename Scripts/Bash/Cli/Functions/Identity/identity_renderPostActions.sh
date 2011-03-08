@@ -37,7 +37,7 @@ function identity_renderPostActions {
                 ;;
 
             groupByFormat:* )
-                identity_renderGroupByType
+                identity_groupSimilarFiles
                 ;;
 
         esac
