@@ -56,9 +56,6 @@ function identity_render {
 
     # Verify post-rendition actions passed from command-line and add
     # them, if any, to post-rendition list of actions.
-    if [[ $FLAG_CONVERT_TO != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="renderFormats:${FLAG_CONVERT_TO}"
-    fi
     if [[ $FLAG_GROUPED_BY != '' ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]="groupByFormat:${FLAG_GROUPED_BY}"
     fi

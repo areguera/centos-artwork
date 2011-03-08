@@ -32,10 +32,6 @@ function identity_renderPostActions {
 
         case "${ACTION}" in
 
-            renderFormats:* )
-                identity_convertPngTo
-                ;;
-
             groupByFormat:* )
                 identity_groupSimilarFiles
                 ;;

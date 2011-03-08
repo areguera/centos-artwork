@@ -33,14 +33,14 @@ function identity_renderSvgPostActions {
     # post-rendition actions.
     local -a POSTACTIONS
 
-    # Execute SVG-directory-specific post-rendition actions to the
+    # Execute SVG directory-specific post-rendition actions to the
     # list of post actions and last actions. This is required in order
     # to provide a predictable way of producing content inside the
     # repository and save you the time of writing long option
     # combinations each time you need to produce images inside the
     # repository.
     if [[ $TEMPLATE =~ "Distro/Backgrounds/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderFormats: jpg'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupByFormat: png jpg'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux'
@@ -51,10 +51,21 @@ function identity_renderSvgPostActions {
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderKsplash'
     fi
-    
+
+    # Execute SVG command-line-specific post-rendition actions passed
+    # from command-line and add them, if any, to post-rendition list
+    # of actions.
+    if [[ $FLAG_CONVERT_TO != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngTo:${FLAG_CONVERT_TO}"
+    fi
+
     for ACTION in "${POSTACTIONS[@]}"; do
 
         case "${ACTION}" in
+
+            convertPngTo:* )
+                identity_convertPngTo
+                ;;
 
             renderSyslinux* )
                 identity_renderSyslinux 

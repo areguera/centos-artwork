@@ -17,7 +17,7 @@
 # FIELD is the field number in the action string we want to retrive
 # option from. By default options start from third field on. The first
 # field is reserved for the action type (i.e., POST or LAST), and the
-# second field is reserved for the action itself (e.g., renderFormats,
+# second field is reserved for the action itself (e.g., convertPngTo,
 # renderSyslinux, renderKsplash, etc.).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
