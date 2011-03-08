@@ -39,12 +39,29 @@ function identity_render {
     local NEXT_FILE_DIR=''
     local COUNT=0
 
-    # Sanitate theme model value using repository directory name
-    # convenction.
-    FLAG_THEME_MODEL=$(cli_getRepoName "$FLAG_THEME_MODEL" 'd')
+    # Initialize post-rendition list of actions,  the specification of
+    # what actions does centos-art execute immediatly after producing
+    # the base file in the same directory structure. 
+    local -a POSTACTIONS
+    
+    # Initialize last-rendition list of actions, the specification of
+    # what actions does centos-art execute once all base files in the
+    # same directory structure have been produced, this is just
+    # immediatly before passing to produce the next directory
+    # structure.
+    local -a LASTACTIONS
 
-    # Check theme model directory.
+    # Check theme model directory structure.
     cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${FLAG_THEME_MODEL}" 'd'
+
+    # Verify post-rendition actions passed from command-line and add
+    # them, if any, to post-rendition list of actions.
+    if [[ $FLAG_CONVERT_TO != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="renderFormats:${FLAG_CONVERT_TO}"
+    fi
+    if [[ $FLAG_GROUPED_BY != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="groupByFormat:${FLAG_GROUPED_BY}"
+    fi
 
     # Define the extension pattern for template files. This is the
     # file extensions that centos-art will look for in order to build
