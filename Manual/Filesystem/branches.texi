@@ -1,22 +1,71 @@
 @subsection Goals
 
-@itemize
-@item ...
-@end itemize
+This directory implements the Subversion's branches concept in a
+trunk, branches, tags repository structure.
 
 @subsection Description
 
-@itemize
-@item ...
-@end itemize
+The @file{branches/} directory structure is an intermediate space
+between @file{trunk/} directory structure and @file{tags/} directory
+structure.
 
 @subsection Usage
 
-@itemize
-@item ...
-@end itemize
+If changes committed to the main develpment line are all predictable
+(e.g., there is just one person committing changes), there is no a big
+need of using @file{branches/} directory structure, in this case we
+can go straight from @file{trunk/} to @file{tags/}.  However, when
+there is no way to predict changes in the main development directory
+structure (e.g., there are many people working at it at the same time)
+it is required to find out a space when changes can occur in
+predictable ways. 
+
+At this point several options may arise to work with branches. Let's
+see a few ones:
+
+@subsubsection Temporal Branch
+
+The branched directory is created temporaly to fix a problem and when
+it is done, it is merged back into @file{trunk/} directory structure
+and removed from the repository.
+
+@subsubsection Major Release Branch
+
+The branched directory is created to implement the concept of major
+release. In this configuration we frequently take a functional
+instance of @file{trunk/} directory structure and create branch for
+it. While @file{trunk/} directory structure can receive new
+functionalities or remove old ones, the branched instance of it does
+not. The branched instance can receive updates for available files
+only but not introduce new ones or remove old ones as it is done in
+@file{trunk/} directory structure.
+
+The frequency each branched directory is created depends on how long
+can the branched directory could be on its state before consider it as
+dated and also the time we want to provide it as stable for everyone
+to use as expected. The exact time depends on the sort of information
+such branched directory structure contains.
+
+To illustrate this concept consider the @file{trunk/Scripts/Bash/Cli}
+directory structure. This directory contains the main development line
+of @command{centos-art} command-line internface. If there are several
+people working on it and you find a problem in it, it could be very
+frustrating for you try to solve it in an environment when other
+changes could be introduced unexpectedly, specially if such change you
+need to do is considerable long. For that reasing it is much better to
+commit small changes frequently to fix small things, but if you
+absolutly need to make a long change (e.g., you want to implement a
+new functionality) it is necessary you create branch of @file{trunk/}
+directory structure (or any other branch or tag already created) to be
+on the safe side while you implement your functionality.
+
+In order to keep branch creation organized, we use the @file{trunk}
+directory structure as reference and add a numerical identifier to the
+end of the path that increments one unit for each branch created.
 
 @subsection See also
 
 @menu
+* Filesystem trunk::
+* Filesystem tags::
 @end menu

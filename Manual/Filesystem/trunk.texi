@@ -1,0 +1,123 @@
+@subsection Goals
+
+This directory implements the Subversion's trunk concept in a
+trunk, branches, tags repository structure.
+
+@subsection Description
+
+The @file{trunk/} directory structure is the main development line
+inside the CentOS Artwork Repository. Here is where we produce the
+information required by The CentOS Project corporate visual identity.
+Additionally, here is where documentation and automation scripts are
+conceived to make both understanding and using of CentOS Artwork
+Repository easier for everyone.
+
+The @file{trunk/} directory structure covers the following topics:
+
+@table @strong
+@item Identity
+This directory organizes the production of images in different formats
+and some non-image formats like XHTML and text files, as well. This is
+the perfect place to consolidate @emph{The CentOS Artwork SIG}. If you
+are interested in producing art works for The CentOS Project, this
+place is for you. 
+
+@xref{Filesystem trunk Identity}, for more information.
+
+@item Documentation
+This directory organizes the production of @emph{CentOS Artwork
+Repository Manual} (i.e., the place where the documentation you are
+reading right now is stored in).  If you are interested on improving
+The CentOS Artwork Repository Manual, in this place you'll find the
+Texinfo documentation structure you need to work with.
+
+@xref{Filesystem trunk Manual}, for more information.
+
+@item Localization
+This directory organizes translation messages specifically produced to
+satisfy internationalization needs inside the CentOS Artwork
+Repository. This place is perfect to consolidate @emph{The CentOS
+Translation SIG}. If you love translating, you'll find lot of messages
+waiting for you to translate here.  
+
+@xref{Filesystem trunk Locales}, for more information.
+
+@item Automation
+This directory organizes the production of @command{centos-art}, a
+command-line interface specially designed to automate most frequent
+tasks in the repository (e.g., image rendition, documenting directory
+structures, translating content, etc.).  If you can't resist the idea
+of automating repeatable tasks, then take a look here.
+
+@xref{Filesystem trunk Scripts}, for more information.
+@end table
+
+@subsection Usage
+
+When we need to create branches or tags, the @file{trunk/} directory
+structure is the one used as reference to build them. Take a look at
+the following directory structure construction and notice how the
+@file{/Scripts/Bash/Cli} string is repeated in the paths and how it is
+put on it:
+
+@table @file
+@item trunk/Scripts/Bash/Cli
+
+This directory structure provides the main development line of the
+@file{centos-art} command-line interface written in bash. In this
+directory changes may occur pretty fast and in unpredicted ways. This
+configuration could provoke that the @file{centos-art} command-line
+stop working in a manner unprediceted due the way changes are
+introduced to it.
+
+@item branches/Scripts/Bash/Cli/1
+
+This directory structure, however, provides an intermediate place for
+less unpredicted changes and that way to provide more stability than
+@file{trunk/} directory structure is able to provide. 
+
+Notice that we used a number to identify the branch (the number `1' in
+this case).  Changing this number we could create several branches
+that could be maintained at the same time to fix specific problems
+simultaneausly otherwise difficult to fix in an unpredictable area
+like that provided by @file{trunk/} directory structure.  Once the
+specific problems has been fixed, the branch is merged into
+@file{trunk/} and removed from the repository file system.
+
+If you are the only person working in the repository, you probably
+don't want to worry about creating branches at all and prefer going
+straight from trunk to tags. Ask yourself: If I'm the only person
+working in the trunk directory structure whom else could introduce
+unpredictable changes but myself? In that case, such changes wouldn't
+be unpredictable at all, don't you think? 
+
+@item tags/Scripts/Bash/Cli/1.0
+
+Instead of removing the branch directory structure from the repository
+file system, it could be very convenient to create a check-point in
+time with such problems fixed and so providing a predictable release
+of the @file{centos-art} command-line interface.
+
+Notice that we used the number 1.0 to store the tag. These means that
+we are creating the tag number 0 from the branch numbered as 1 (i.e.,
+the first number before the dot represents the branch number and the
+second number after the dot represents the tag number).  
+
+Using the @file{centos-art} command-line from tags diectory structure
+does provide more stable results than those from branches or trunk
+directory structures. The tags directory structure doesn't introduce
+changes at all, so you are safe to get what you expect after reading
+the release notes for that tag. This configuration is not possible
+supported on trunk nor branches since they do change through time.
+@end table
+
+It seems to be no other immediate use for this directory but those
+described above.
+
+@subsection See also
+
+@menu
+* Filesystem branches::
+* Filesystem tags::
+@end menu
+

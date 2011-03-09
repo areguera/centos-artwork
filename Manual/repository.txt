@@ -10,6 +10,8 @@ CentOS Artwork Repository
     2.1.1 Goals
     2.1.2 Description
     2.1.3 Usage
+      2.1.3.1 Temporal Branch
+      2.1.3.2 Major Release Branch
     2.1.4 See also
   2.2 The `tags' Directory
     2.2.1 Goals
@@ -17,6 +19,10 @@ CentOS Artwork Repository
     2.2.3 Usage
     2.2.4 See also
   2.3 The `trunk' Directory
+    2.3.1 Goals
+    2.3.2 Description
+    2.3.3 Usage
+    2.3.4 See also
   2.4 The `trunk/Identity' Directory
     2.4.1 Goals
     2.4.2 Description
@@ -308,104 +314,109 @@ CentOS Artwork Repository
     2.57.2 Description
     2.57.3 Usage
     2.57.4 See also
-  2.58 The `trunk/Manuals' Directory
+  2.58 The `trunk/Manual' Directory
     2.58.1 Goals
     2.58.2 Description
     2.58.3 Usage
     2.58.4 See also
-  2.59 The `trunk/Scripts' Directory
+  2.59 The `trunk/Manuals' Directory
     2.59.1 Goals
     2.59.2 Description
     2.59.3 Usage
     2.59.4 See also
-  2.60 The `trunk/Scripts/Bash' Directory
+  2.60 The `trunk/Scripts' Directory
     2.60.1 Goals
     2.60.2 Description
     2.60.3 Usage
     2.60.4 See also
-  2.61 The `trunk/Scripts/Bash/Cli' Directory
-  2.62 The `trunk/Scripts/Bash/Cli/Functions' Directory
-    2.62.1 Goals
-    2.62.2 Description
-    2.62.3 Usage
-      2.62.3.1 Global variables
-      2.62.3.2 Global functions
-      2.62.3.3 Specific functions
-    2.62.4 See also
-  2.63 The `trunk/Scripts/Bash/Cli/Functions/Help' Directory
+  2.61 The `trunk/Scripts/Bash' Directory
+    2.61.1 Goals
+    2.61.2 Description
+    2.61.3 Usage
+    2.61.4 See also
+  2.62 The `trunk/Scripts/Bash/Cli' Directory
+  2.63 The `trunk/Scripts/Bash/Cli/Functions' Directory
     2.63.1 Goals
     2.63.2 Description
     2.63.3 Usage
+      2.63.3.1 Global variables
+      2.63.3.2 Global functions
+      2.63.3.3 Specific functions
     2.63.4 See also
-  2.64 The `trunk/Scripts/Bash/Cli/Functions/Html' Directory
+  2.64 The `trunk/Scripts/Bash/Cli/Functions/Help' Directory
     2.64.1 Goals
     2.64.2 Description
     2.64.3 Usage
     2.64.4 See also
-  2.65 The `trunk/Scripts/Bash/Cli/Functions/Locale' Directory
+  2.65 The `trunk/Scripts/Bash/Cli/Functions/Html' Directory
     2.65.1 Goals
     2.65.2 Description
     2.65.3 Usage
     2.65.4 See also
-  2.66 The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory
+  2.66 The `trunk/Scripts/Bash/Cli/Functions/Locale' Directory
     2.66.1 Goals
     2.66.2 Description
     2.66.3 Usage
     2.66.4 See also
-  2.67 The `trunk/Scripts/Bash/Cli/Functions/Path' Directory
+  2.67 The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory
     2.67.1 Goals
     2.67.2 Description
-      2.67.2.1 Repository layout
-      2.67.2.2 Repository name convenctions
-      2.67.2.3 Repository work flow
-      2.67.2.4 Parallel directories
-      2.67.2.5 Syncronizing path information
-      2.67.2.6 What is the right place to store it?
     2.67.3 Usage
     2.67.4 See also
-  2.68 The `trunk/Scripts/Bash/Cli/Functions/Render' Directory
-    2.68.1 Renderable identity directory structures
-      2.68.1.1 Design template without translation
-      2.68.1.2 Design template with translation (one-to-one)
-      2.68.1.3 Design template with translation (optimized)
-      2.68.1.4 Design template with translation (optimized+flexibility)
-    2.68.2 Renderable translation directory structures
-    2.68.3 Copying renderable directory structures
-    2.68.4 Usage
-    2.68.5 See also
-  2.69 The `trunk/Scripts/Bash/Cli/Functions/Render/Config' Directory
-    2.69.1 Goals
-    2.69.2 Description
-      2.69.2.1 The `render.conf.sh' identity model
-      2.69.2.2 The `render.conf.sh' translation model
-      2.69.2.3 The `render.conf.sh' rendering actions
-    2.69.3 Usage
-    2.69.4 See also
-  2.70 The `trunk/Scripts/Bash/Cli/Functions/Shell' Directory
+  2.68 The `trunk/Scripts/Bash/Cli/Functions/Path' Directory
+    2.68.1 Goals
+    2.68.2 Description
+      2.68.2.1 Repository layout
+      2.68.2.2 Repository name convenctions
+      2.68.2.3 Repository work flow
+      2.68.2.4 Parallel directories
+      2.68.2.5 Syncronizing path information
+      2.68.2.6 What is the right place to store it?
+    2.68.3 Usage
+    2.68.4 See also
+  2.69 The `trunk/Scripts/Bash/Cli/Functions/Render' Directory
+    2.69.1 Renderable identity directory structures
+      2.69.1.1 Design template without translation
+      2.69.1.2 Design template with translation (one-to-one)
+      2.69.1.3 Design template with translation (optimized)
+      2.69.1.4 Design template with translation (optimized+flexibility)
+    2.69.2 Renderable translation directory structures
+    2.69.3 Copying renderable directory structures
+    2.69.4 Usage
+    2.69.5 See also
+  2.70 The `trunk/Scripts/Bash/Cli/Functions/Render/Config' Directory
     2.70.1 Goals
     2.70.2 Description
+      2.70.2.1 The `render.conf.sh' identity model
+      2.70.2.2 The `render.conf.sh' translation model
+      2.70.2.3 The `render.conf.sh' rendering actions
     2.70.3 Usage
     2.70.4 See also
-  2.71 The `trunk/Scripts/Bash/Cli/Functions/Svg' Directory
+  2.71 The `trunk/Scripts/Bash/Cli/Functions/Shell' Directory
     2.71.1 Goals
     2.71.2 Description
-      2.71.2.1 Metadata maintainance
-      2.71.2.2 Unused definitions
     2.71.3 Usage
     2.71.4 See also
-  2.72 The `trunk/Scripts/Bash/Cli/Functions/Verify' Directory
+  2.72 The `trunk/Scripts/Bash/Cli/Functions/Svg' Directory
     2.72.1 Goals
     2.72.2 Description
-      2.72.2.1 Packages
-      2.72.2.2 Links
-      2.72.2.3 Environment variables
+      2.72.2.1 Metadata maintainance
+      2.72.2.2 Unused definitions
     2.72.3 Usage
     2.72.4 See also
-  2.73 The `trunk/Scripts/Python' Directory
+  2.73 The `trunk/Scripts/Bash/Cli/Functions/Verify' Directory
     2.73.1 Goals
     2.73.2 Description
+      2.73.2.1 Packages
+      2.73.2.2 Links
+      2.73.2.3 Environment variables
     2.73.3 Usage
     2.73.4 See also
+  2.74 The `trunk/Scripts/Python' Directory
+    2.74.1 Goals
+    2.74.2 Description
+    2.74.3 Usage
+    2.74.4 See also
 Index
 List of Figures
 
@@ -446,32 +457,31 @@ this is the manual for you.
    * The CentOS Corporate Visual Style
 
    This manual is organized in the same way the CentOS Artwork
-Repository file system does. In the CentOS Artwork Repository we use
-directories to store conceptual ideas of CentOS Corporate Visual
+Repository directory structure does. In the CentOS Artwork Repository
+we use directories to store conceptual ideas of CentOS Corporate Visual
 Identity.  For this manual sake, each directory in the CentOS Artwork
 Repository has its own documentation section to describe the related
-conceptual ideas. *Note Repository File System: Filesystem, for more
-information.
+conceptual ideas of it.
 
-   This manual is structured dynamically through `centos-art'
-command-line.  The `centos-art' command-line provides an interface for
-writers to document directories in the working copies of CentOS Artwork
-Repository using a predefined Texinfo documentation structure. The
-`centos-art' command-line, also, takes care of updating menus, nodes
-and cross-references inside the documentation structure when
-documentation sections are added to or removed from the manual.  *Note
-The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory: Filesystem
-trunk Scripts Bash Cli Functions Manual, for more information.
+   This manual uses Texinfo as base documentation system. The Texinfo
+documentation structure is controlled by the `centos-art' script which
+is used to perform most common documentation tasks (e.g., edition,
+deletion, renaming, updating nodes, menus and cross references) in a
+standard way.
 
    This guide assumes you have a basic understanding of your CentOS
 system. If you need help with CentOS, refer to the help page on the
 CentOS Wiki (`http://wiki.centos.org/Help') for a list of different
-places you can go to look for help.
+places you can find help.
 
 1.1 Document Convenctions
 =========================
 
-In this manual, certain words are represented in different fonts,
+In this manual the word _we_, as personal pronoun, is used to repesent
+_The CentOS Artwork SIG_, the group of persons building the CentOS
+Artwork Repository.
+
+   In this manual, certain words are represented in different fonts,
 typefaces, sizes, and weights. This highlighting is systematic;
 different words are represented in the same style to indicate their
 inclusion in a specific category. The types of words that are
@@ -499,7 +509,7 @@ represented this way include the following:
      tasks in the repository.
 
      The `centos-art' command uses the `ImageMagick' RPM package to
-     convert images from PNG format to many different formats.
+     convert images from PNG format to other formats.
 
 <<key>>
      A key on the keyboard is shown in this style. For example:
@@ -556,18 +566,28 @@ example:
 1.2 Send in Your Feedback
 =========================
 
-If you find an error in the _CentOS Artwork Repository Manual_,  or if
-you have thought of a way to make this manual better, we would  like to
-hear from you! Create a new ticket in artwork project
+If you find an error in the _CentOS Artwork Repository Manual_, or if
+you have thought of a way to make this manual better, we would like to
+hear from you! Create a new ticket in The CentOS Artwork SIG web site
 (`https://projects.centos.org/trac/artwork/').
 
    If you have a suggestion for improving the documentation, try to be
-as specific as possible. If you have found an error, include the
-section number and some of the surrounding text so we can find it
-easily.
+as specific as possible. If you have found an error, include the section
+number and some of the surrounding text so we can find it easily.
 
 2 Repository File System
 ************************
+
+The CentOS Artwork Repsotiroy File System is the place where we
+organize The CentOS Project Corporate Visual Identity. The CentOS
+Artwork Repository uses directories to organize files and describe
+conceptual idea about corporate identity. Such conceptual ideas are
+explained in each directory related documentation entry.
+
+   In this chapter you'll learn what each directory inside The CentOS
+Artwork Repository is for and so, how you can make use of them. For
+that purpose, the following list of directories is available for you to
+explore:
 
 2.1 The `branches' Directory
 ============================
@@ -575,17 +595,69 @@ easily.
 2.1.1 Goals
 -----------
 
-   * ...
+This directory implements the Subversion's branches concept in a trunk,
+branches, tags repository structure.
 
 2.1.2 Description
 -----------------
 
-   * ...
+The `branches/' directory structure is an intermediate space between
+`trunk/' directory structure and `tags/' directory structure.
 
 2.1.3 Usage
 -----------
 
-   * ...
+If changes committed to the main develpment line are all predictable
+(e.g., there is just one person committing changes), there is no a big
+need of using `branches/' directory structure, in this case we can go
+straight from `trunk/' to `tags/'.  However, when there is no way to
+predict changes in the main development directory structure (e.g.,
+there are many people working at it at the same time) it is required to
+find out a space when changes can occur in predictable ways.
+
+   At this point several options may arise to work with branches. Let's
+see a few ones:
+
+2.1.3.1 Temporal Branch
+.......................
+
+The branched directory is created temporaly to fix a problem and when
+it is done, it is merged back into `trunk/' directory structure and
+removed from the repository.
+
+2.1.3.2 Major Release Branch
+............................
+
+The branched directory is created to implement the concept of major
+release. In this configuration we frequently take a functional instance
+of `trunk/' directory structure and create branch for it. While
+`trunk/' directory structure can receive new functionalities or remove
+old ones, the branched instance of it does not. The branched instance
+can receive updates for available files only but not introduce new ones
+or remove old ones as it is done in `trunk/' directory structure.
+
+   The frequency each branched directory is created depends on how long
+can the branched directory could be on its state before consider it as
+dated and also the time we want to provide it as stable for everyone to
+use as expected. The exact time depends on the sort of information such
+branched directory structure contains.
+
+   To illustrate this concept consider the `trunk/Scripts/Bash/Cli'
+directory structure. This directory contains the main development line
+of `centos-art' command-line internface. If there are several people
+working on it and you find a problem in it, it could be very
+frustrating for you try to solve it in an environment when other
+changes could be introduced unexpectedly, specially if such change you
+need to do is considerable long. For that reasing it is much better to
+commit small changes frequently to fix small things, but if you
+absolutly need to make a long change (e.g., you want to implement a new
+functionality) it is necessary you create branch of `trunk/' directory
+structure (or any other branch or tag already created) to be on the
+safe side while you implement your functionality.
+
+   In order to keep branch creation organized, we use the `trunk'
+directory structure as reference and add a numerical identifier to the
+end of the path that increments one unit for each branch created.
 
 2.1.4 See also
 --------------
@@ -613,6 +685,126 @@ easily.
 
 2.3 The `trunk' Directory
 =========================
+
+2.3.1 Goals
+-----------
+
+This directory implements the Subversion's trunk concept in a trunk,
+branches, tags repository structure.
+
+2.3.2 Description
+-----------------
+
+The `trunk/' directory structure is the main development line inside
+the CentOS Artwork Repository. Here is where we produce the information
+required by The CentOS Project corporate visual identity.
+Additionally, here is where documentation and automation scripts are
+conceived to make both understanding and using of CentOS Artwork
+Repository easier for everyone.
+
+   The `trunk/' directory structure covers the following topics:
+
+*Identity*
+     This directory organizes the production of images in different
+     formats and some non-image formats like XHTML and text files, as
+     well. This is the perfect place to consolidate _The CentOS Artwork
+     SIG_. If you are interested in producing art works for The CentOS
+     Project, this place is for you.
+
+     *Note Filesystem trunk Identity::, for more information.
+
+*Documentation*
+     This directory organizes the production of _CentOS Artwork
+     Repository Manual_ (i.e., the place where the documentation you are
+     reading right now is stored in).  If you are interested on
+     improving The CentOS Artwork Repository Manual, in this place
+     you'll find the Texinfo documentation structure you need to work
+     with.
+
+     *Note Filesystem trunk Manual::, for more information.
+
+*Localization*
+     This directory organizes translation messages specifically
+     produced to satisfy internationalization needs inside the CentOS
+     Artwork Repository. This place is perfect to consolidate _The
+     CentOS Translation SIG_. If you love translating, you'll find lot
+     of messages waiting for you to translate here.
+
+     *Note Filesystem trunk Locales::, for more information.
+
+*Automation*
+     This directory organizes the production of `centos-art', a
+     command-line interface specially designed to automate most frequent
+     tasks in the repository (e.g., image rendition, documenting
+     directory structures, translating content, etc.).  If you can't
+     resist the idea of automating repeatable tasks, then take a look
+     here.
+
+     *Note Filesystem trunk Scripts::, for more information.
+
+2.3.3 Usage
+-----------
+
+When we need to create branches or tags, the `trunk/' directory
+structure is the one used as reference to build them. Take a look at
+the following directory structure construction and notice how the
+`/Scripts/Bash/Cli' string is repeated in the paths and how it is put
+on it:
+
+`trunk/Scripts/Bash/Cli'
+     This directory structure provides the main development line of the
+     `centos-art' command-line interface written in bash. In this
+     directory changes may occur pretty fast and in unpredicted ways.
+     This configuration could provoke that the `centos-art' command-line
+     stop working in a manner unprediceted due the way changes are
+     introduced to it.
+
+`branches/Scripts/Bash/Cli/1'
+     This directory structure, however, provides an intermediate place
+     for less unpredicted changes and that way to provide more
+     stability than `trunk/' directory structure is able to provide.
+
+     Notice that we used a number to identify the branch (the number
+     `1' in this case).  Changing this number we could create several
+     branches that could be maintained at the same time to fix specific
+     problems simultaneausly otherwise difficult to fix in an
+     unpredictable area like that provided by `trunk/' directory
+     structure.  Once the specific problems has been fixed, the branch
+     is merged into `trunk/' and removed from the repository file
+     system.
+
+     If you are the only person working in the repository, you probably
+     don't want to worry about creating branches at all and prefer going
+     straight from trunk to tags. Ask yourself: If I'm the only person
+     working in the trunk directory structure whom else could introduce
+     unpredictable changes but myself? In that case, such changes
+     wouldn't be unpredictable at all, don't you think?
+
+`tags/Scripts/Bash/Cli/1.0'
+     Instead of removing the branch directory structure from the
+     repository file system, it could be very convenient to create a
+     check-point in time with such problems fixed and so providing a
+     predictable release of the `centos-art' command-line interface.
+
+     Notice that we used the number 1.0 to store the tag. These means
+     that we are creating the tag number 0 from the branch numbered as
+     1 (i.e., the first number before the dot represents the branch
+     number and the second number after the dot represents the tag
+     number).
+
+     Using the `centos-art' command-line from tags diectory structure
+     does provide more stable results than those from branches or trunk
+     directory structures. The tags directory structure doesn't
+     introduce changes at all, so you are safe to get what you expect
+     after reading the release notes for that tag. This configuration
+     is not possible supported on trunk nor branches since they do
+     change through time.
+
+   It seems to be no other immediate use for this directory but those
+described above.
+
+2.3.4 See also
+--------------
 
 2.4 The `trunk/Identity' Directory
 ==================================
@@ -3277,8 +3469,8 @@ documentation entry (-- *Removed*(pxref:trunk Translations) --).
 2.57.4 See also
 ---------------
 
-2.58 The `trunk/Manuals' Directory
-==================================
+2.58 The `trunk/Manual' Directory
+=================================
 
 2.58.1 Goals
 ------------
@@ -3298,16 +3490,13 @@ documentation entry (-- *Removed*(pxref:trunk Translations) --).
 2.58.4 See also
 ---------------
 
-2.59 The `trunk/Scripts' Directory
+2.59 The `trunk/Manuals' Directory
 ==================================
 
 2.59.1 Goals
 ------------
 
-The `trunk/Scripts' directory exists to:
-
-   * Organize the "trunk" development line of automation scripts by
-     programming language.
+   * ...
 
 2.59.2 Description
 ------------------
@@ -3322,10 +3511,34 @@ The `trunk/Scripts' directory exists to:
 2.59.4 See also
 ---------------
 
-2.60 The `trunk/Scripts/Bash' Directory
-=======================================
+2.60 The `trunk/Scripts' Directory
+==================================
 
 2.60.1 Goals
+------------
+
+The `trunk/Scripts' directory exists to:
+
+   * Organize the "trunk" development line of automation scripts by
+     programming language.
+
+2.60.2 Description
+------------------
+
+   * ...
+
+2.60.3 Usage
+------------
+
+   * ...
+
+2.60.4 See also
+---------------
+
+2.61 The `trunk/Scripts/Bash' Directory
+=======================================
+
+2.61.1 Goals
 ------------
 
 The `trunk/Scripts/Bash' directory exists to organize the trunk
@@ -3333,7 +3546,7 @@ development line of `centos-art.sh' automation script.  The
 `centos-art.sh' script standardizes frequent tasks inside your working
 copy of CentOS Artwork Repository.
 
-2.60.2 Description
+2.61.2 Description
 ------------------
 
 The best way to understand `centos-art.sh' automation script is
@@ -3462,29 +3675,29 @@ functions defined inside function environment.
 
 Figure 2.2: The actions initialization environment.
 
-2.60.3 Usage
+2.61.3 Usage
 ------------
 
 The `centos-art.sh' script usage information is described inside each
 specific function documentation (-- *Removed*(pxref:trunk Scripts Bash
 Functions) --).
 
-2.60.4 See also
+2.61.4 See also
 ---------------
 
-2.61 The `trunk/Scripts/Bash/Cli' Directory
+2.62 The `trunk/Scripts/Bash/Cli' Directory
 ===========================================
 
-2.62 The `trunk/Scripts/Bash/Cli/Functions' Directory
+2.63 The `trunk/Scripts/Bash/Cli/Functions' Directory
 =====================================================
 
-2.62.1 Goals
+2.63.1 Goals
 ------------
 
 The `trunk/Scripts/Bash/Functions' directory exists to organize
 `centos-art.sh' specific functionalities.
 
-2.62.2 Description
+2.63.2 Description
 ------------------
 
 The specific functions of `centos-art.sh' script are designed with
@@ -3764,10 +3977,10 @@ specific functionalities.
    By the way, the `greet' functionality doesn't exist inside
 `centos-art.sh' script yet. Would you like to create it?
 
-2.62.3 Usage
+2.63.3 Usage
 ------------
 
-2.62.3.1 Global variables
+2.63.3.1 Global variables
 .........................
 
 The following global variables of `centos-art.sh' script, are available
@@ -3949,7 +4162,7 @@ for you to use inside specific functions:
      If no one of these values is set in `EDITOR' environment variable,
      `centos-art.sh' uses `/usr/bin/vim' text editor by default.
 
-2.62.3.2 Global functions
+2.63.3.2 Global functions
 .........................
 
 Function scripts stored directly under `trunk/Scripts/Bash/Functions/'
@@ -4576,37 +4789,16 @@ global functions you can use inside `centos-art.sh' script.
           file:
           trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 
-2.62.3.3 Specific functions
+2.63.3.3 Specific functions
 ...........................
 
 The following specific functions of `centos-art.sh' script, are
 available for you to use:
 
-2.62.4 See also
----------------
-
-2.63 The `trunk/Scripts/Bash/Cli/Functions/Help' Directory
-==========================================================
-
-2.63.1 Goals
-------------
-
-   * ...
-
-2.63.2 Description
-------------------
-
-   * ...
-
-2.63.3 Usage
-------------
-
-   * ...
-
 2.63.4 See also
 ---------------
 
-2.64 The `trunk/Scripts/Bash/Cli/Functions/Html' Directory
+2.64 The `trunk/Scripts/Bash/Cli/Functions/Help' Directory
 ==========================================================
 
 2.64.1 Goals
@@ -4627,8 +4819,8 @@ available for you to use:
 2.64.4 See also
 ---------------
 
-2.65 The `trunk/Scripts/Bash/Cli/Functions/Locale' Directory
-============================================================
+2.65 The `trunk/Scripts/Bash/Cli/Functions/Html' Directory
+==========================================================
 
 2.65.1 Goals
 ------------
@@ -4636,6 +4828,27 @@ available for you to use:
    * ...
 
 2.65.2 Description
+------------------
+
+   * ...
+
+2.65.3 Usage
+------------
+
+   * ...
+
+2.65.4 See also
+---------------
+
+2.66 The `trunk/Scripts/Bash/Cli/Functions/Locale' Directory
+============================================================
+
+2.66.1 Goals
+------------
+
+   * ...
+
+2.66.2 Description
 ------------------
 
 This command looks for `.sh' files inside Bash directory and extracts
@@ -4693,7 +4906,7 @@ following files:
 
    * ...
 
-2.65.3 Usage
+2.66.3 Usage
 ------------
 
 `centos-art locale --edit'
@@ -4704,34 +4917,34 @@ following files:
 `centos-art locale --list'
      Use this command to see the command-line interface locale report.
 
-2.65.4 See also
+2.66.4 See also
 ---------------
 
-2.66 The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory
+2.67 The `trunk/Scripts/Bash/Cli/Functions/Manual' Directory
 ============================================================
 
-2.66.1 Goals
+2.67.1 Goals
 ------------
 
    * ...
 
-2.66.2 Description
+2.67.2 Description
 ------------------
 
    * ...
 
-2.66.3 Usage
+2.67.3 Usage
 ------------
 
    * ...
 
-2.66.4 See also
+2.67.4 See also
 ---------------
 
-2.67 The `trunk/Scripts/Bash/Cli/Functions/Path' Directory
+2.68 The `trunk/Scripts/Bash/Cli/Functions/Path' Directory
 ==========================================================
 
-2.67.1 Goals
+2.68.1 Goals
 ------------
 
 This section exists to organize files related to `path'
@@ -4739,14 +4952,14 @@ functiontionality.  The `path' functionality standardizes movement,
 syncronization, branching, tagging, and general file maintainance
 inside the repository.
 
-2.67.2 Description
+2.68.2 Description
 ------------------
 
 _"CentOS like trees, has roots, trunk, branches, leaves and flowers.
 Day by day they work together in freedom, ruled by the laws of nature
 and open standards, to show the beauty of its existence."_
 
-2.67.2.1 Repository layout
+2.68.2.1 Repository layout
 ..........................
 
 The repository layout describes organization of files and directories
@@ -4789,7 +5002,7 @@ single copy of the master sources.  This copy  is called the source
 "repository"; it contains all the information to permit extracting
 previous versions of those files at any time.
 
-2.67.2.2 Repository name convenctions
+2.68.2.2 Repository name convenctions
 .....................................
 
 Repository name convenctions help us to maintain consistency of names
@@ -4808,7 +5021,7 @@ etc.).
 convenctions to remember, concentrating them in just one single place
 to look for fixes and improvements.
 
-2.67.2.3 Repository work flow
+2.68.2.3 Repository work flow
 .............................
 
 Repository work flow describes the steps and time intervals used to
@@ -4878,7 +5091,7 @@ location to fulfill CentOS distribution artwork needs. The same applies
 to CentOS Webmasters (the persons whom build CentOS websites), and any
 other visual manifestation required by the project.
 
-2.67.2.4 Parallel directories
+2.68.2.4 Parallel directories
 .............................
 
 Inside CentOS Artwork Repository, parallel directories are simple
@@ -4926,7 +5139,7 @@ directory structure.  Liberal change of parallel directories may
 suppresses the conceptual idea they were initially created for; and
 certainly, things may stop working the way they should do.
 
-2.67.2.5 Syncronizing path information
+2.68.2.5 Syncronizing path information
 ......................................
 
 Parallel directories are very useful to keep repository organized but
@@ -4981,7 +5194,7 @@ Texinfo to produce error messages at export time. So, the
 `centos-art.sh' script needs to know when such changes happen, in a way
 they could be noted and handled without producing errors.
 
-2.67.2.6 What is the right place to store it?
+2.68.2.6 What is the right place to store it?
 .............................................
 
 Occasionly, you may find that new corporate visual identity components
@@ -5033,7 +5246,7 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
 change the location we used above by the one you are trying to know
 concepts for.
 
-2.67.3 Usage
+2.68.3 Usage
 ------------
 
 `centos-art path --copy='SRC' --to='DST''
@@ -5047,10 +5260,10 @@ concepts for.
      first.  In this command, `SRC' is a working copy (WC) entry.
 
 
-2.67.4 See also
+2.68.4 See also
 ---------------
 
-2.68 The `trunk/Scripts/Bash/Cli/Functions/Render' Directory
+2.69 The `trunk/Scripts/Bash/Cli/Functions/Render' Directory
 ============================================================
 
 The `render' functionality exists to produce both identity and
@@ -5062,7 +5275,7 @@ structures" to produce files. Renderable directory structures can be
 either "identity directory structures" or "translation directory
 structures" with special directories inside.
 
-2.68.1 Renderable identity directory structures
+2.69.1 Renderable identity directory structures
 -----------------------------------------------
 
 Renderable identity directory structures are the starting point of
@@ -5092,7 +5305,7 @@ configuration does one thing only (e.g., to produce untranslated
 images), but it can be extended (e.g., adding translation files) to
 achieve different needs (e.g., to produce translated images).
 
-2.68.1.1 Design template without translation
+2.69.1.1 Design template without translation
 ............................................
 
 The design template without translation configuration is based on a
@@ -5273,7 +5486,7 @@ following configuration:
      -- *Removed*(xref:trunk Scripts Bash Functions Render Config) --,
      for more information.
 
-2.68.1.2 Design template with translation (one-to-one)
+2.69.1.2 Design template with translation (one-to-one)
 ......................................................
 
 Producing untranslated images is fine in many cases, but not always.
@@ -5339,7 +5552,7 @@ trunk/Identity/NewDir/Img/file.png
 -------------------------------------------------
 4 | Remove design template instance.
 
-2.68.1.3 Design template with translation (optimized)
+2.69.1.3 Design template with translation (optimized)
 .....................................................
 
 Producing translated images satisfies almost all our production images
@@ -5443,7 +5656,7 @@ know how translation files are applied to design templates.
      design template, but `03-docs.png' using the list-based design
      template.
 
-2.68.1.4 Design template with translation (optimized+flexibility)
+2.69.1.4 Design template with translation (optimized+flexibility)
 .................................................................
 
 In the production models we've seen so far, there are design templates
@@ -5588,7 +5801,7 @@ later create combinations among them using `centos-art.sh'.
 
    The production flow of "optimize+flexibility" configuration...
 
-2.68.2 Renderable translation directory structures
+2.69.2 Renderable translation directory structures
 --------------------------------------------------
 
 Translation directory structures are auxiliar structures of renderable
@@ -5619,7 +5832,7 @@ translation templates.
    Inside renderable translation directory structures, `centos-art.sh'
 can produce text-based files only.
 
-2.68.3 Copying renderable directory structures
+2.69.3 Copying renderable directory structures
 ----------------------------------------------
 
 A renderable layout is formed by design models, design images,
@@ -5740,24 +5953,24 @@ still in need of it.
 directly involved in rendition process only. Once such directories have
 been duplicated, the functionality stops thereat.
 
-2.68.4 Usage
+2.69.4 Usage
 ------------
 
    * ...
 
-2.68.5 See also
+2.69.5 See also
 ---------------
 
-2.69 The `trunk/Scripts/Bash/Cli/Functions/Render/Config' Directory
+2.70 The `trunk/Scripts/Bash/Cli/Functions/Render/Config' Directory
 ===================================================================
 
-2.69.1 Goals
+2.70.1 Goals
 ------------
 
 The `trunk/Scripts/Bash/Config' directory exists to oraganize
 pre-rendering configuration scripts.
 
-2.69.2 Description
+2.70.2 Description
 ------------------
 
 Pre-rendering configuration scripts let you customize the way
@@ -5771,7 +5984,7 @@ both on identity and translation repository entires.  Pre-rendering
 configuration entries are required for each identity entry, but not for
 translation entries.
 
-2.69.2.1 The `render.conf.sh' identity model
+2.70.2.1 The `render.conf.sh' identity model
 ............................................
 
 Inside CentOS Artwork Repository, we consider identity entries to all
@@ -5814,7 +6027,7 @@ extend both image-based and text-based pre-rendering configuration
 scripts using image-based and text-based post-rendering actions,
 respectively.
 
-2.69.2.2 The `render.conf.sh' translation model
+2.70.2.2 The `render.conf.sh' translation model
 ...............................................
 
 Translation pre-rendering configuration scripts take precedence before
@@ -5822,7 +6035,7 @@ default translation rendering action. Translation pre-rendering actions
 are useful when default translation rendering action do not fit itself
 to translation entry rendering requirements.
 
-2.69.2.3 The `render.conf.sh' rendering actions
+2.70.2.3 The `render.conf.sh' rendering actions
 ...............................................
 
 Inside both image-based and text-based identity pre-rendering
@@ -5896,7 +6109,7 @@ ACTIONS[0]='BASE:renderImage'
 ACTIONS[1]='POST:renderFormats: xpm jpg tif'
 ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
 
-2.69.3 Usage
+2.70.3 Usage
 ------------
 
 Use the following commands to administer both identity and translation
@@ -5923,19 +6136,19 @@ pre-rendering configuration scripts:
 directory path under `trunk/Identity' or `trunk/Translations'
 structures only.
 
-2.69.4 See also
+2.70.4 See also
 ---------------
 
-2.70 The `trunk/Scripts/Bash/Cli/Functions/Shell' Directory
+2.71 The `trunk/Scripts/Bash/Cli/Functions/Shell' Directory
 ===========================================================
 
-2.70.1 Goals
+2.71.1 Goals
 ------------
 
 This section exists to organize files related to `shell' functionality
 of `centos-art.sh' script.
 
-2.70.2 Description
+2.71.2 Description
 ------------------
 
 The `shell' functionality of `centos-art.sh' script helps you to
@@ -6065,7 +6278,7 @@ for changes to take effect over the files you specify.
      be used, please share your reasons at CentOS Developers mailing
      list <centos-devel@centos-art.sh>.
 
-2.70.3 Usage
+2.71.3 Usage
 ------------
 
 `centos-art sh --update-copyright='path/to/dir''
@@ -6095,19 +6308,19 @@ inside the list of files to process.
 matches a regular file; the `centos-art.sh' script uses the file
 matching as only file in the list of files to process.
 
-2.70.4 See also
+2.71.4 See also
 ---------------
 
-2.71 The `trunk/Scripts/Bash/Cli/Functions/Svg' Directory
+2.72 The `trunk/Scripts/Bash/Cli/Functions/Svg' Directory
 =========================================================
 
-2.71.1 Goals
+2.72.1 Goals
 ------------
 
 This section exists to organize files related to `svg' functionality of
 `centos-art.sh' script.
 
-2.71.2 Description
+2.72.2 Description
 ------------------
 
 The `svg' functionality of `centos-art.sh' script helps you to maintain
@@ -6119,7 +6332,7 @@ files. Doing so file by file may be a tedious task, so the
 `centos-art.sh' script provides the `svg' functionality to aid you
 maintain such actions.
 
-2.71.2.1 Metadata maintainance
+2.72.2.1 Metadata maintainance
 ..............................
 
 The metadata used is defined by Inkscape 0.46 using the SVG standard
@@ -6226,7 +6439,7 @@ Creative Common Attribution Share-Alike 3.0 License
 to grant license consistency among all SVG files we manage inside CentOS
 Artwork Repository.
 
-2.71.2.2 Unused definitions
+2.72.2.2 Unused definitions
 ...........................
 
 Many of the no-longer-used gradients, patterns, and markers (more
@@ -6246,7 +6459,7 @@ unused definitions editing those files one by one.
 files, the `centos-art.sh' script uses Inkscape command-line interface,
 specifically with the `--vaccum-defs' option.
 
-2.71.3 Usage
+2.72.3 Usage
 ------------
 
 `centos-art svg --update-metadata='path/to/dir''
@@ -6283,13 +6496,13 @@ inside the list of files to process.
 matches a regular file; the `centos-art.sh' script uses the file
 matching as only file in the list of files to process.
 
-2.71.4 See also
+2.72.4 See also
 ---------------
 
-2.72 The `trunk/Scripts/Bash/Cli/Functions/Verify' Directory
+2.73 The `trunk/Scripts/Bash/Cli/Functions/Verify' Directory
 ============================================================
 
-2.72.1 Goals
+2.73.1 Goals
 ------------
 
 This section exists to organize files related to `centos-art.sh' script
@@ -6298,7 +6511,7 @@ script helps you to verify the workstation configuration you are
 planning to use as host for your working copy of CentOS Artwork
 Repository.
 
-2.72.2 Description
+2.73.2 Description
 ------------------
 
 The first time you download CentOS Artwork Repository you need to
@@ -6316,7 +6529,7 @@ appropriate way to use its `verify' functionality is not using the
 because `centos-art' symbolic link, under `~/bin/' directory, has not
 been created yet.
 
-2.72.2.1 Packages
+2.73.2.1 Packages
 .................
 
 Installation of auxiliar RPM packages provides the software required to
@@ -6346,7 +6559,7 @@ please read its man page running the command: `man sudo'. This reading
 will be very useful, and with some practice, you will be able to
 configure your users to have `sudo' privileges.
 
-2.72.2.2 Links
+2.73.2.2 Links
 ..............
 
 Creation of symbolic links helps us to alternate between different
@@ -6380,7 +6593,7 @@ you need to use the "render" functionality of `centos-art.sh' under
 configuration, automation scripts cannot be branched under
 `branches/Scripts' directory structure.
 
-2.72.2.3 Environment variables
+2.73.2.3 Environment variables
 ..............................
 
 Definition of environemnt variables helps us to set default values to
@@ -6466,7 +6679,7 @@ following environment variables:
      manual page.
 
 
-2.72.3 Usage
+2.73.3 Usage
 ------------
 
 `centos-art verify --packages'
@@ -6513,145 +6726,146 @@ following environment variables:
      at all.
 
 
-2.72.4 See also
+2.73.4 See also
 ---------------
 
-2.73 The `trunk/Scripts/Python' Directory
+2.74 The `trunk/Scripts/Python' Directory
 =========================================
 
-2.73.1 Goals
+2.74.1 Goals
 ------------
 
    * ...
 
-2.73.2 Description
+2.74.2 Description
 ------------------
 
    * ...
 
-2.73.3 Usage
+2.74.3 Usage
 ------------
 
    * ...
 
-2.73.4 See also
+2.74.4 See also
 ---------------
 
 Index
 *****
 
-Document convenctions:                         See 1.1.      (line  474)
-Feedback:                                      See 1.2.      (line  559)
-Filesystem branches:                           See 2.1.      (line  575)
-Filesystem tags:                               See 2.2.      (line  596)
-Filesystem trunk:                              See 2.3.      (line  617)
-Filesystem trunk Identity:                     See 2.4.      (line  620)
-Filesystem trunk Identity Brands:              See 2.5.      (line  741)
-Filesystem trunk Identity Fonts:               See 2.6.      (line  758)
-Filesystem trunk Identity Icons:               See 2.7.      (line  835)
-Filesystem trunk Identity Isolinux:            See 2.8.      (line  852)
-Filesystem trunk Identity Models:              See 2.9.      (line  869)
-Filesystem trunk Identity Models Css:          See 2.10.     (line  889)
-Filesystem trunk Identity Models Html:         See 2.11.     (line  911)
-Filesystem trunk Identity Models Img Promo Web:See 2.12.     (line  932)
-Filesystem trunk Identity Models Tpl:          See 2.13.     (line  953)
-Filesystem trunk Identity Models Tpl Brands:   See 2.14.     (line  974)
-Filesystem trunk Identity Models Tpl Promo Web:See 2.15.     (line  995)
-Filesystem trunk Identity Models Xcf:          See 2.16.     (line 1309)
-Filesystem trunk Identity Release:             See 2.17.     (line 1330)
-Filesystem trunk Identity Themes:              See 2.18.     (line 1347)
-Filesystem trunk Identity Themes Models:       See 2.19.     (line 1371)
+Document convenctions:                         See 1.1.      (line  480)
+Feedback:                                      See 1.2.      (line  569)
+Filesystem branches:                           See 2.1.      (line  595)
+Filesystem tags:                               See 2.2.      (line  668)
+Filesystem trunk:                              See 2.3.      (line  689)
+Filesystem trunk Identity:                     See 2.4.      (line  812)
+Filesystem trunk Identity Brands:              See 2.5.      (line  933)
+Filesystem trunk Identity Fonts:               See 2.6.      (line  950)
+Filesystem trunk Identity Icons:               See 2.7.      (line 1027)
+Filesystem trunk Identity Isolinux:            See 2.8.      (line 1044)
+Filesystem trunk Identity Models:              See 2.9.      (line 1061)
+Filesystem trunk Identity Models Css:          See 2.10.     (line 1081)
+Filesystem trunk Identity Models Html:         See 2.11.     (line 1103)
+Filesystem trunk Identity Models Img Promo Web:See 2.12.     (line 1124)
+Filesystem trunk Identity Models Tpl:          See 2.13.     (line 1145)
+Filesystem trunk Identity Models Tpl Brands:   See 2.14.     (line 1166)
+Filesystem trunk Identity Models Tpl Promo Web:See 2.15.     (line 1187)
+Filesystem trunk Identity Models Xcf:          See 2.16.     (line 1501)
+Filesystem trunk Identity Release:             See 2.17.     (line 1522)
+Filesystem trunk Identity Themes:              See 2.18.     (line 1539)
+Filesystem trunk Identity Themes Models:       See 2.19.     (line 1563)
 Filesystem trunk Identity Themes Models Alternative:See 2.20.
-                                                             (line 1405)
-Filesystem trunk Identity Themes Models Default:See 2.21.    (line 1432)
+                                                             (line 1597)
+Filesystem trunk Identity Themes Models Default:See 2.21.    (line 1624)
 Filesystem trunk Identity Themes Models Default Concept:See 2.22.
-                                                             (line 1568)
+                                                             (line 1760)
 Filesystem trunk Identity Themes Models Default Distro:See 2.23.
-                                                             (line 1589)
+                                                             (line 1781)
 Filesystem trunk Identity Themes Models Default Distro Anaconda:See 2.24.
-                                                             (line 1699)
+                                                             (line 1891)
 Filesystem trunk Identity Themes Models Default Distro Firstboot:See 2.25.
-                                                             (line 1716)
+                                                             (line 1908)
 Filesystem trunk Identity Themes Models Default Distro Gdm:See 2.26.
-                                                             (line 1737)
+                                                             (line 1929)
 Filesystem trunk Identity Themes Models Default Distro Grub:See 2.27.
-                                                             (line 1758)
+                                                             (line 1950)
 Filesystem trunk Identity Themes Models Default Distro Gsplash:See 2.28.
-                                                             (line 1779)
+                                                             (line 1971)
 Filesystem trunk Identity Themes Models Default Distro Kdm:See 2.29.
-                                                             (line 1800)
+                                                             (line 1992)
 Filesystem trunk Identity Themes Models Default Distro Ksplash:See 2.30.
-                                                             (line 1821)
+                                                             (line 2013)
 Filesystem trunk Identity Themes Models Default Distro Rhgb:See 2.31.
-                                                             (line 1842)
+                                                             (line 2034)
 Filesystem trunk Identity Themes Models Default Distro Syslinux:See 2.32.
-                                                             (line 1863)
+                                                             (line 2055)
 Filesystem trunk Identity Themes Models Default Promo:See 2.33.
-                                                             (line 1884)
+                                                             (line 2076)
 Filesystem trunk Identity Themes Models Default Web:See 2.34.
-                                                             (line 1910)
-Filesystem trunk Identity Themes Motifs:       See 2.35.     (line 1935)
-Filesystem trunk Identity Themes Motifs Flame: See 2.36.     (line 2038)
-Filesystem trunk Identity Themes Motifs Modern:See 2.37.     (line 2239)
+                                                             (line 2102)
+Filesystem trunk Identity Themes Motifs:       See 2.35.     (line 2127)
+Filesystem trunk Identity Themes Motifs Flame: See 2.36.     (line 2230)
+Filesystem trunk Identity Themes Motifs Modern:See 2.37.     (line 2431)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds:See 2.38.
-                                                             (line 2256)
+                                                             (line 2448)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Img:See 2.39.
-                                                             (line 2377)
+                                                             (line 2569)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl:See 2.40.
-                                                             (line 2398)
+                                                             (line 2590)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf:See 2.41.
-                                                             (line 2419)
+                                                             (line 2611)
 Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 2.42.
-                                                             (line 2446)
+                                                             (line 2638)
 Filesystem trunk Identity Themes Motifs Modern Palettes:See 2.43.
-                                                             (line 2502)
-Filesystem trunk Identity Themes Motifs TreeFlower:See 2.44. (line 2524)
+                                                             (line 2694)
+Filesystem trunk Identity Themes Motifs TreeFlower:See 2.44. (line 2716)
 Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds:See 2.45.
-                                                             (line 2541)
-Filesystem trunk Identity Widgets:             See 2.46.     (line 2839)
-Filesystem trunk Locales:                      See 2.47.     (line 2856)
-Filesystem trunk Locales Identity:             See 2.48.     (line 2909)
-Filesystem trunk Locales Identity Brands:      See 2.49.     (line 2930)
-Filesystem trunk Locales Identity Brands Tpl:  See 2.50.     (line 3025)
-Filesystem trunk Locales Identity Fonts:       See 2.51.     (line 3040)
-Filesystem trunk Locales Identity Models:      See 2.52.     (line 3103)
-Filesystem trunk Locales Identity Release:     See 2.53.     (line 3118)
-Filesystem trunk Locales Identity Themes:      See 2.54.     (line 3133)
+                                                             (line 2733)
+Filesystem trunk Identity Widgets:             See 2.46.     (line 3031)
+Filesystem trunk Locales:                      See 2.47.     (line 3048)
+Filesystem trunk Locales Identity:             See 2.48.     (line 3101)
+Filesystem trunk Locales Identity Brands:      See 2.49.     (line 3122)
+Filesystem trunk Locales Identity Brands Tpl:  See 2.50.     (line 3217)
+Filesystem trunk Locales Identity Fonts:       See 2.51.     (line 3232)
+Filesystem trunk Locales Identity Models:      See 2.52.     (line 3295)
+Filesystem trunk Locales Identity Release:     See 2.53.     (line 3310)
+Filesystem trunk Locales Identity Themes:      See 2.54.     (line 3325)
 Filesystem trunk Locales Identity Themes Backgrounds:See 2.55.
-                                                             (line 3148)
+                                                             (line 3340)
 Filesystem trunk Locales Identity Themes Distro Anaconda Progress:See 2.56.
-                                                             (line 3169)
-Filesystem trunk Locales Identity Widgets:     See 2.57.     (line 3262)
-Filesystem trunk Manuals:                      See 2.58.     (line 3283)
-Filesystem trunk Scripts:                      See 2.59.     (line 3304)
-Filesystem trunk Scripts Bash:                 See 2.60.     (line 3328)
-Filesystem trunk Scripts Bash Cli:             See 2.61.     (line 3478)
-Filesystem trunk Scripts Bash Cli Functions:   See 2.62.     (line 3481)
-Filesystem trunk Scripts Bash Cli Functions Help:See 2.63.   (line 4591)
-Filesystem trunk Scripts Bash Cli Functions Html:See 2.64.   (line 4612)
-Filesystem trunk Scripts Bash Cli Functions Locale:See 2.65. (line 4633)
-Filesystem trunk Scripts Bash Cli Functions Manual:See 2.66. (line 4713)
-Filesystem trunk Scripts Bash Cli Functions Path:See 2.67.   (line 4734)
-Filesystem trunk Scripts Bash Cli Functions Render:See 2.68. (line 5056)
-Filesystem trunk Scripts Bash Cli Functions Render Config:See 2.69.
-                                                             (line 5754)
-Filesystem trunk Scripts Bash Cli Functions Shell:See 2.70.  (line 5932)
-Filesystem trunk Scripts Bash Cli Functions Svg:See 2.71.    (line 6104)
-Filesystem trunk Scripts Bash Cli Functions Verify:See 2.72. (line 6292)
-Filesystem trunk Scripts Python:               See 2.73.     (line 6522)
-How to render brands' translation files:       See 2.49.3.   (line 3014)
-How to render fonts' translation files:        See 2.51.3.   (line 3087)
-Introduction:                                  See 1.        (line  431)
-Metadata maintainance:                         See 2.71.2.   (line 6122)
-Repository file system:                        See 2.        (line  572)
-Translation brands file names:                 See 2.49.2.1. (line 2971)
-Unused definitions:                            See 2.71.2.1. (line 6229)
+                                                             (line 3361)
+Filesystem trunk Locales Identity Widgets:     See 2.57.     (line 3454)
+Filesystem trunk Manual:                       See 2.58.     (line 3475)
+Filesystem trunk Manuals:                      See 2.59.     (line 3496)
+Filesystem trunk Scripts:                      See 2.60.     (line 3517)
+Filesystem trunk Scripts Bash:                 See 2.61.     (line 3541)
+Filesystem trunk Scripts Bash Cli:             See 2.62.     (line 3691)
+Filesystem trunk Scripts Bash Cli Functions:   See 2.63.     (line 3694)
+Filesystem trunk Scripts Bash Cli Functions Help:See 2.64.   (line 4804)
+Filesystem trunk Scripts Bash Cli Functions Html:See 2.65.   (line 4825)
+Filesystem trunk Scripts Bash Cli Functions Locale:See 2.66. (line 4846)
+Filesystem trunk Scripts Bash Cli Functions Manual:See 2.67. (line 4926)
+Filesystem trunk Scripts Bash Cli Functions Path:See 2.68.   (line 4947)
+Filesystem trunk Scripts Bash Cli Functions Render:See 2.69. (line 5269)
+Filesystem trunk Scripts Bash Cli Functions Render Config:See 2.70.
+                                                             (line 5967)
+Filesystem trunk Scripts Bash Cli Functions Shell:See 2.71.  (line 6145)
+Filesystem trunk Scripts Bash Cli Functions Svg:See 2.72.    (line 6317)
+Filesystem trunk Scripts Bash Cli Functions Verify:See 2.73. (line 6505)
+Filesystem trunk Scripts Python:               See 2.74.     (line 6735)
+How to render brands' translation files:       See 2.49.3.   (line 3206)
+How to render fonts' translation files:        See 2.51.3.   (line 3279)
+Introduction:                                  See 1.        (line  442)
+Metadata maintainance:                         See 2.72.2.   (line 6335)
+Repository file system:                        See 2.        (line  581)
+Translation brands file names:                 See 2.49.2.1. (line 3163)
+Unused definitions:                            See 2.72.2.1. (line 6442)
 List of Figures
 ***************
 
-Figure 2.1: The functionalities ...            See 2.60.2.
-Figure 2.2: The actions initialization ...     See 2.60.2.
-Figure 2.3: The `cli_commitRepoChanges' ...    See 2.62.3.2.
-Figure 2.4: The functions script base ...      See 2.70.2.
-Figure 2.5: The function script comment ...    See 2.70.2.
+Figure 2.1: The functionalities ...            See 2.61.2.
+Figure 2.2: The actions initialization ...     See 2.61.2.
+Figure 2.3: The `cli_commitRepoChanges' ...    See 2.63.3.2.
+Figure 2.4: The functions script base ...      See 2.71.2.
+Figure 2.5: The function script comment ...    See 2.71.2.
 
