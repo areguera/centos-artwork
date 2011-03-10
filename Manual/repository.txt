@@ -10,8 +10,6 @@ CentOS Artwork Repository
     2.1.1 Goals
     2.1.2 Description
     2.1.3 Usage
-      2.1.3.1 Temporal Branch
-      2.1.3.2 Major Release Branch
     2.1.4 See also
   2.2 The `tags' Directory
     2.2.1 Goals
@@ -607,57 +605,85 @@ The `branches/' directory structure is an intermediate space between
 2.1.3 Usage
 -----------
 
-If changes committed to the main develpment line are all predictable
+If changes committed up to the main develpment line are all predictable
 (e.g., there is just one person committing changes), there is no a big
 need of using `branches/' directory structure, in this case we can go
 straight from `trunk/' to `tags/'.  However, when there is no way to
-predict changes in the main development directory structure (e.g.,
-there are many people working at it at the same time) it is required to
-find out a space when changes can occur in predictable ways.
+predict changes in the main development line (e.g., there are many
+people working at it at the same time) it is needed to find out a
+different place for changes to occur in more predictable ways.
 
-   At this point several options may arise to work with branches. Let's
-see a few ones:
+   At this point, several options may arise to create branches. In the
+CentOS Artwork Repository we prefer to use the idea of separating the
+main development line into different major development lines whose
+receive frequent update in a fixed period of time. In this
+configuration, a major development line is a directory structure
+branched from `trunk/' directory structure. That is, we take a
+functional instance of `trunk/' directory structure and store it under
+`branches/' directory structure using a branch identifier and the same
+hierarchy the main development line uses.
 
-2.1.3.1 Temporal Branch
-.......................
+   When we create separete development lines, this way, we are creating
+a major development line that will receive minor updates to current
+functionalities but won't introduce new functionalities nor remove old
+ones. This is very importat if you need to have a predictable behaviour
+for that branch content through a period of time. When that period of
+time is gone, a new major development line is created to introduce new
+functionalities from `trunk/' directory structure and so repeating the
+whole production cycle.
 
-The branched directory is created temporaly to fix a problem and when
-it is done, it is merged back into `trunk/' directory structure and
-removed from the repository.
+   In order to create branches inside the CentOS Artwork Repository the
+whole repository structure must be considered. This is because all
+directory structures stored under `trunk/' directory structure are
+connected among themselves. This way, we create branches for the whole
+`trunk/' directory structure and never to individual components inside
+it. On the other hand, creating branches for the whole `trunk/'
+directory structure duplicates lots of files and demands a considerable
+amount of storage space which is not convenient. As an intermediate
+solution, we do not create branches for the `trunk/Identity/' directory
+structure, but the `trunk/Manual', `trunk/Scripts' and `trunk/Locales'
+directory structures only. This way, we create documentation,
+automation scripts and locale information for specific revisions of
+`turnk/Identity' directory structure.
 
-2.1.3.2 Major Release Branch
-............................
+   A good reason to create a major development line could be
+documentation.  Consider how hard it could be build a documentation
+manual if the target of it is changing unpredictably; what are we
+documenting? Something similar happens with `centos-art' command-line,
+if the directory structure the `centos-art' was design to work with
+changes unexpectedly it is very hard to implement a path-based
+functionality in that environment; where are we retriving files from or
+saving them to?
 
-The branched directory is created to implement the concept of major
-release. In this configuration we frequently take a functional instance
-of `trunk/' directory structure and create branch for it. While
-`trunk/' directory structure can receive new functionalities or remove
-old ones, the branched instance of it does not. The branched instance
-can receive updates for available files only but not introduce new ones
-or remove old ones as it is done in `trunk/' directory structure.
+   Assuming there is no way to predict changes in main development line,
+the creation of new `branches' inside the CentOS Artwork Repository
+uses The CentOS Project Release Schema.  This is, a new major
+development line is created every 2 years using `trunk/' directory
+structure as reference. Each major development line is updated regulary
+in order to create frozen lines under `tags/' directory structure every
+6 months.
 
-   The frequency each branched directory is created depends on how long
-can the branched directory could be on its state before consider it as
-dated and also the time we want to provide it as stable for everyone to
-use as expected. The exact time depends on the sort of information such
-branched directory structure contains.
+   The updates commited up to individual major development lines need to
+be merged into the `trunk/' directory structure in order for further
+major development lines to benefit from previous major development
+lines improvements.  The appropriate moment to commit from major
+development lines to `trunk/' directory structure is when the frozen
+line of a major development line is been created.  This way, the main
+development line is the central place for changes, a place to
+concentrate changes from different major development lines that may be
+or not being developed at the same time.
 
-   To illustrate this concept consider the `trunk/Scripts/Bash/Cli'
-directory structure. This directory contains the main development line
-of `centos-art' command-line internface. If there are several people
-working on it and you find a problem in it, it could be very
-frustrating for you try to solve it in an environment when other
-changes could be introduced unexpectedly, specially if such change you
-need to do is considerable long. For that reasing it is much better to
-commit small changes frequently to fix small things, but if you
-absolutly need to make a long change (e.g., you want to implement a new
-functionality) it is necessary you create branch of `trunk/' directory
-structure (or any other branch or tag already created) to be on the
-safe side while you implement your functionality.
-
-   In order to keep branch creation organized, we use the `trunk'
-directory structure as reference and add a numerical identifier to the
-end of the path that increments one unit for each branch created.
+   As general convenction, when a new major development line is created,
+functionalities from previous major development lines are included into
+the new development line. However, improvements for components included
+from previous major development lines are not handled inside the new
+major development line which imported them. Such improvements are
+handled by the previous development line and merged up to main
+development line to improve the main development line, in the same way
+the new major development line merges the improvements of the new
+functionalities it was created for. As final resault, both changes
+merged from new and previous major development lines will be included
+into the next major development line.
 
 2.1.4 See also
 --------------
@@ -6753,113 +6779,113 @@ following environment variables:
 Index
 *****
 
-Document convenctions:                         See 1.1.      (line  480)
-Feedback:                                      See 1.2.      (line  569)
-Filesystem branches:                           See 2.1.      (line  595)
-Filesystem tags:                               See 2.2.      (line  668)
-Filesystem trunk:                              See 2.3.      (line  689)
-Filesystem trunk Identity:                     See 2.4.      (line  812)
-Filesystem trunk Identity Brands:              See 2.5.      (line  933)
-Filesystem trunk Identity Fonts:               See 2.6.      (line  950)
-Filesystem trunk Identity Icons:               See 2.7.      (line 1027)
-Filesystem trunk Identity Isolinux:            See 2.8.      (line 1044)
-Filesystem trunk Identity Models:              See 2.9.      (line 1061)
-Filesystem trunk Identity Models Css:          See 2.10.     (line 1081)
-Filesystem trunk Identity Models Html:         See 2.11.     (line 1103)
-Filesystem trunk Identity Models Img Promo Web:See 2.12.     (line 1124)
-Filesystem trunk Identity Models Tpl:          See 2.13.     (line 1145)
-Filesystem trunk Identity Models Tpl Brands:   See 2.14.     (line 1166)
-Filesystem trunk Identity Models Tpl Promo Web:See 2.15.     (line 1187)
-Filesystem trunk Identity Models Xcf:          See 2.16.     (line 1501)
-Filesystem trunk Identity Release:             See 2.17.     (line 1522)
-Filesystem trunk Identity Themes:              See 2.18.     (line 1539)
-Filesystem trunk Identity Themes Models:       See 2.19.     (line 1563)
+Document convenctions:                         See 1.1.      (line  478)
+Feedback:                                      See 1.2.      (line  567)
+Filesystem branches:                           See 2.1.      (line  593)
+Filesystem tags:                               See 2.2.      (line  694)
+Filesystem trunk:                              See 2.3.      (line  715)
+Filesystem trunk Identity:                     See 2.4.      (line  838)
+Filesystem trunk Identity Brands:              See 2.5.      (line  959)
+Filesystem trunk Identity Fonts:               See 2.6.      (line  976)
+Filesystem trunk Identity Icons:               See 2.7.      (line 1053)
+Filesystem trunk Identity Isolinux:            See 2.8.      (line 1070)
+Filesystem trunk Identity Models:              See 2.9.      (line 1087)
+Filesystem trunk Identity Models Css:          See 2.10.     (line 1107)
+Filesystem trunk Identity Models Html:         See 2.11.     (line 1129)
+Filesystem trunk Identity Models Img Promo Web:See 2.12.     (line 1150)
+Filesystem trunk Identity Models Tpl:          See 2.13.     (line 1171)
+Filesystem trunk Identity Models Tpl Brands:   See 2.14.     (line 1192)
+Filesystem trunk Identity Models Tpl Promo Web:See 2.15.     (line 1213)
+Filesystem trunk Identity Models Xcf:          See 2.16.     (line 1527)
+Filesystem trunk Identity Release:             See 2.17.     (line 1548)
+Filesystem trunk Identity Themes:              See 2.18.     (line 1565)
+Filesystem trunk Identity Themes Models:       See 2.19.     (line 1589)
 Filesystem trunk Identity Themes Models Alternative:See 2.20.
-                                                             (line 1597)
-Filesystem trunk Identity Themes Models Default:See 2.21.    (line 1624)
+                                                             (line 1623)
+Filesystem trunk Identity Themes Models Default:See 2.21.    (line 1650)
 Filesystem trunk Identity Themes Models Default Concept:See 2.22.
-                                                             (line 1760)
+                                                             (line 1786)
 Filesystem trunk Identity Themes Models Default Distro:See 2.23.
-                                                             (line 1781)
+                                                             (line 1807)
 Filesystem trunk Identity Themes Models Default Distro Anaconda:See 2.24.
-                                                             (line 1891)
+                                                             (line 1917)
 Filesystem trunk Identity Themes Models Default Distro Firstboot:See 2.25.
-                                                             (line 1908)
+                                                             (line 1934)
 Filesystem trunk Identity Themes Models Default Distro Gdm:See 2.26.
-                                                             (line 1929)
+                                                             (line 1955)
 Filesystem trunk Identity Themes Models Default Distro Grub:See 2.27.
-                                                             (line 1950)
+                                                             (line 1976)
 Filesystem trunk Identity Themes Models Default Distro Gsplash:See 2.28.
-                                                             (line 1971)
+                                                             (line 1997)
 Filesystem trunk Identity Themes Models Default Distro Kdm:See 2.29.
-                                                             (line 1992)
+                                                             (line 2018)
 Filesystem trunk Identity Themes Models Default Distro Ksplash:See 2.30.
-                                                             (line 2013)
+                                                             (line 2039)
 Filesystem trunk Identity Themes Models Default Distro Rhgb:See 2.31.
-                                                             (line 2034)
+                                                             (line 2060)
 Filesystem trunk Identity Themes Models Default Distro Syslinux:See 2.32.
-                                                             (line 2055)
+                                                             (line 2081)
 Filesystem trunk Identity Themes Models Default Promo:See 2.33.
-                                                             (line 2076)
-Filesystem trunk Identity Themes Models Default Web:See 2.34.
                                                              (line 2102)
-Filesystem trunk Identity Themes Motifs:       See 2.35.     (line 2127)
-Filesystem trunk Identity Themes Motifs Flame: See 2.36.     (line 2230)
-Filesystem trunk Identity Themes Motifs Modern:See 2.37.     (line 2431)
+Filesystem trunk Identity Themes Models Default Web:See 2.34.
+                                                             (line 2128)
+Filesystem trunk Identity Themes Motifs:       See 2.35.     (line 2153)
+Filesystem trunk Identity Themes Motifs Flame: See 2.36.     (line 2256)
+Filesystem trunk Identity Themes Motifs Modern:See 2.37.     (line 2457)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds:See 2.38.
-                                                             (line 2448)
+                                                             (line 2474)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Img:See 2.39.
-                                                             (line 2569)
+                                                             (line 2595)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl:See 2.40.
-                                                             (line 2590)
+                                                             (line 2616)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf:See 2.41.
-                                                             (line 2611)
+                                                             (line 2637)
 Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 2.42.
-                                                             (line 2638)
+                                                             (line 2664)
 Filesystem trunk Identity Themes Motifs Modern Palettes:See 2.43.
-                                                             (line 2694)
-Filesystem trunk Identity Themes Motifs TreeFlower:See 2.44. (line 2716)
+                                                             (line 2720)
+Filesystem trunk Identity Themes Motifs TreeFlower:See 2.44. (line 2742)
 Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds:See 2.45.
-                                                             (line 2733)
-Filesystem trunk Identity Widgets:             See 2.46.     (line 3031)
-Filesystem trunk Locales:                      See 2.47.     (line 3048)
-Filesystem trunk Locales Identity:             See 2.48.     (line 3101)
-Filesystem trunk Locales Identity Brands:      See 2.49.     (line 3122)
-Filesystem trunk Locales Identity Brands Tpl:  See 2.50.     (line 3217)
-Filesystem trunk Locales Identity Fonts:       See 2.51.     (line 3232)
-Filesystem trunk Locales Identity Models:      See 2.52.     (line 3295)
-Filesystem trunk Locales Identity Release:     See 2.53.     (line 3310)
-Filesystem trunk Locales Identity Themes:      See 2.54.     (line 3325)
+                                                             (line 2759)
+Filesystem trunk Identity Widgets:             See 2.46.     (line 3057)
+Filesystem trunk Locales:                      See 2.47.     (line 3074)
+Filesystem trunk Locales Identity:             See 2.48.     (line 3127)
+Filesystem trunk Locales Identity Brands:      See 2.49.     (line 3148)
+Filesystem trunk Locales Identity Brands Tpl:  See 2.50.     (line 3243)
+Filesystem trunk Locales Identity Fonts:       See 2.51.     (line 3258)
+Filesystem trunk Locales Identity Models:      See 2.52.     (line 3321)
+Filesystem trunk Locales Identity Release:     See 2.53.     (line 3336)
+Filesystem trunk Locales Identity Themes:      See 2.54.     (line 3351)
 Filesystem trunk Locales Identity Themes Backgrounds:See 2.55.
-                                                             (line 3340)
+                                                             (line 3366)
 Filesystem trunk Locales Identity Themes Distro Anaconda Progress:See 2.56.
-                                                             (line 3361)
-Filesystem trunk Locales Identity Widgets:     See 2.57.     (line 3454)
-Filesystem trunk Manual:                       See 2.58.     (line 3475)
-Filesystem trunk Manuals:                      See 2.59.     (line 3496)
-Filesystem trunk Scripts:                      See 2.60.     (line 3517)
-Filesystem trunk Scripts Bash:                 See 2.61.     (line 3541)
-Filesystem trunk Scripts Bash Cli:             See 2.62.     (line 3691)
-Filesystem trunk Scripts Bash Cli Functions:   See 2.63.     (line 3694)
-Filesystem trunk Scripts Bash Cli Functions Help:See 2.64.   (line 4804)
-Filesystem trunk Scripts Bash Cli Functions Html:See 2.65.   (line 4825)
-Filesystem trunk Scripts Bash Cli Functions Locale:See 2.66. (line 4846)
-Filesystem trunk Scripts Bash Cli Functions Manual:See 2.67. (line 4926)
-Filesystem trunk Scripts Bash Cli Functions Path:See 2.68.   (line 4947)
-Filesystem trunk Scripts Bash Cli Functions Render:See 2.69. (line 5269)
+                                                             (line 3387)
+Filesystem trunk Locales Identity Widgets:     See 2.57.     (line 3480)
+Filesystem trunk Manual:                       See 2.58.     (line 3501)
+Filesystem trunk Manuals:                      See 2.59.     (line 3522)
+Filesystem trunk Scripts:                      See 2.60.     (line 3543)
+Filesystem trunk Scripts Bash:                 See 2.61.     (line 3567)
+Filesystem trunk Scripts Bash Cli:             See 2.62.     (line 3717)
+Filesystem trunk Scripts Bash Cli Functions:   See 2.63.     (line 3720)
+Filesystem trunk Scripts Bash Cli Functions Help:See 2.64.   (line 4830)
+Filesystem trunk Scripts Bash Cli Functions Html:See 2.65.   (line 4851)
+Filesystem trunk Scripts Bash Cli Functions Locale:See 2.66. (line 4872)
+Filesystem trunk Scripts Bash Cli Functions Manual:See 2.67. (line 4952)
+Filesystem trunk Scripts Bash Cli Functions Path:See 2.68.   (line 4973)
+Filesystem trunk Scripts Bash Cli Functions Render:See 2.69. (line 5295)
 Filesystem trunk Scripts Bash Cli Functions Render Config:See 2.70.
-                                                             (line 5967)
-Filesystem trunk Scripts Bash Cli Functions Shell:See 2.71.  (line 6145)
-Filesystem trunk Scripts Bash Cli Functions Svg:See 2.72.    (line 6317)
-Filesystem trunk Scripts Bash Cli Functions Verify:See 2.73. (line 6505)
-Filesystem trunk Scripts Python:               See 2.74.     (line 6735)
-How to render brands' translation files:       See 2.49.3.   (line 3206)
-How to render fonts' translation files:        See 2.51.3.   (line 3279)
-Introduction:                                  See 1.        (line  442)
-Metadata maintainance:                         See 2.72.2.   (line 6335)
-Repository file system:                        See 2.        (line  581)
-Translation brands file names:                 See 2.49.2.1. (line 3163)
-Unused definitions:                            See 2.72.2.1. (line 6442)
+                                                             (line 5993)
+Filesystem trunk Scripts Bash Cli Functions Shell:See 2.71.  (line 6171)
+Filesystem trunk Scripts Bash Cli Functions Svg:See 2.72.    (line 6343)
+Filesystem trunk Scripts Bash Cli Functions Verify:See 2.73. (line 6531)
+Filesystem trunk Scripts Python:               See 2.74.     (line 6761)
+How to render brands' translation files:       See 2.49.3.   (line 3232)
+How to render fonts' translation files:        See 2.51.3.   (line 3305)
+Introduction:                                  See 1.        (line  440)
+Metadata maintainance:                         See 2.72.2.   (line 6361)
+Repository file system:                        See 2.        (line  579)
+Translation brands file names:                 See 2.49.2.1. (line 3189)
+Unused definitions:                            See 2.72.2.1. (line 6468)
 List of Figures
 ***************
 
