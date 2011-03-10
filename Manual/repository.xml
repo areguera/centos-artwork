@@ -214,6 +214,11 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Filesystem trunk Identity Colors</menunode>
+          <menutitle>Filesystem trunk Identity Colors</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Filesystem trunk Identity Fonts</menunode>
           <menutitle>Filesystem trunk Identity Fonts</menutitle>
           <menucomment></menucomment>
@@ -514,6 +519,11 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Filesystem trunk Scripts Bash Cli Functions Identity</menunode>
+          <menutitle>Filesystem trunk Scripts Bash Cli Functions Identity</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Filesystem trunk Scripts Bash Cli Functions Locale</menunode>
           <menutitle>Filesystem trunk Scripts Bash Cli Functions Locale</menutitle>
           <menucomment></menucomment>
@@ -575,36 +585,28 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
       <subsection>
         <title>Description</title>
-        <para>The <file>branches/</file> directory structure is an intermediate space between <file>trunk/</file> directory structure and <file>tags/</file> directory structure.</para>
+        <para>The <file>branches/</file> directory structre provides the intermediate space for creating several instances of <file>trunk/</file> directory structure for parallel development and later merging changes back to <file>trunk/</file> in the same parallel basis.</para>
       </subsection>
 
       <subsection>
         <title>Usage</title>
-        <para>If changes committed up to the main develpment line are all predictable (e.g., there is just one person committing changes), there is no a big need of using <file>branches/</file> directory structure, in this case we can go straight from <file>trunk/</file> to <file>tags/</file>. However, when there is no way to predict changes in the main development line (e.g., there are many people working at it at the same time) it is needed to find out a different place for changes to occur in more predictable ways.</para>
-        <para>At this point, several options may arise to create branches. In the CentOS Artwork Repository we prefer to use the idea of separating the main development line into different major development lines whose receive frequent update in a fixed period of time. In this configuration, a major development line is a directory structure branched from <file>trunk/</file> directory structure. That is, we take a functional instance of <file>trunk/</file> directory structure and store it under <file>branches/</file> directory structure using a branch identifier and the same hierarchy the main development line uses.</para>
-        <para>When we create separete development lines, this way, we are creating a major development line that will receive minor updates to current functionalities but won't introduce new functionalities nor remove old ones. This is very importat if you need to have a predictable behaviour for that branch content through a period of time. When that period of time is gone, a new major development line is created to introduce new functionalities from <file>trunk/</file> directory structure and so repeating the whole production cycle.</para>
-        <para>In order to create branches inside the CentOS Artwork Repository the whole repository structure must be considered. This is because all directory structures stored under <file>trunk/</file> directory structure are connected among themselves. This way, we create branches for the whole <file>trunk/</file> directory structure and never to individual components inside it. On the other hand, creating branches for the whole <file>trunk/</file> directory structure duplicates lots of files and demands a considerable amount of storage space which is not convenient. As an intermediate solution, we do not create branches for the <file>trunk/Identity/</file> directory structure, but the <file>trunk/Manual</file>, <file>trunk/Scripts</file> and <file>trunk/Locales</file> directory structures only. This way, we create documentation, automation scripts and locale information for specific revisions of <file>turnk/Identity</file> directory structure.</para>
-        <para>A good reason to create a major development line could be documentation.  Consider how hard it could be build a documentation manual if the target of it is changing unpredictably; what are we documenting? Something similar happens with <command>centos-art</command> command-line, if the directory structure the <command>centos-art</command> was design to work with changes unexpectedly it is very hard to implement a path-based functionality in that environment; where are we retriving files from or saving them to?</para>
-        <para>Assuming there is no way to predict changes in main development line, the creation of new <file>branches</file> inside the CentOS Artwork Repository uses The CentOS Project Release Schema.  This is, a new major development line is created every 2 years using <file>trunk/</file> directory structure as reference. Each major development line is updated regulary in order to create frozen lines under <file>tags/</file> directory structure every 6 months.</para>
-        <image width="400pt" height="" name="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1" extension=""><alttext></alttext></image>
-        <para>The updates commited up to individual major development lines need to be merged into the <file>trunk/</file> directory structure in order for further major development lines to benefit from previous major development lines improvements.  The appropriate moment to commit from major development lines to <file>trunk/</file> directory structure is when the frozen line of a major development line is been created.  This way, the main development line is the central place for changes, a place to concentrate changes from different major development lines that may be or not being developed at the same time.</para>
-        <para>As general convenction, when a new major development line is created, functionalities from previous major development lines are included into the new development line. However, improvements for components included from previous major development lines are not handled inside the new major development line which imported them. Such improvements are handled by the previous development line and merged up to main development line to improve the main development line, in the same way the new major development line merges the improvements of the new functionalities it was created for. As final resault, both changes merged from new and previous major development lines will be included into the next major development line.</para>
+        <para>The <file>branches/</file> directory structure is unused, so far.</para>
       </subsection>
 
       <subsection>
         <title>See also</title>
-        <menu>
-          <menuentry>
-            <menunode>Filesystem trunk</menunode>
-            <menutitle>Filesystem trunk</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>Filesystem tags</menunode>
-            <menutitle>Filesystem tags</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>See <xref><xrefnodename>Filesystem tags</xrefnodename></xref>.</para>
+          </item>
+          <item>
+            <para>See <xref><xrefnodename>Filesystem trunk</xrefnodename></xref>.</para>
+          </item>
+          <item>
+            <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
+          </item>
+        </itemize>
       </subsection>
     </section>
   </node>
@@ -618,38 +620,33 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
       <para><indexterm index="cp">Filesystem tags</indexterm></para>
       <subsection>
         <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
+        <para>This directory implements the Subversion's tags concept in a trunk, branches, tags repository structure.</para>
       </subsection>
 
       <subsection>
         <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
+        <para>The <file>tags/</file> directory structre provides frozen branches. Generally, we use frozen branches to make check-points in time for development lines under <file>branches/</file> or <file>trunk/</file> directory structure.</para>
       </subsection>
 
       <subsection>
         <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
+        <para>The <file>tags/</file> directory structure is unused, so far.</para>
       </subsection>
 
       <subsection>
         <title>See also</title>
-        <menu>
-        </menu>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>See <xref><xrefnodename>Filesystem branches</xrefnodename></xref>.</para>
+          </item>
+          <item>
+            <para>See <xref><xrefnodename>Filesystem trunk</xrefnodename></xref>.</para>
+          </item>
+          <item>
+            <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
+          </item>
+        </itemize>
       </subsection>
     </section>
   </node>
@@ -668,35 +665,34 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
       <subsection>
         <title>Description</title>
-        <para>The <file>trunk/</file> directory structure is the main development line inside the CentOS Artwork Repository. Here is where we produce the information required by The CentOS Project corporate visual identity. Additionally, here is where documentation and automation scripts are conceived to make both understanding and using of CentOS Artwork Repository easier for everyone.</para>
-        <para>The <file>trunk/</file> directory structure covers the following topics:</para>
+        <para>The <file>trunk/</file> directory structure is the main development line inside the CentOS Artwork Repository and organizes the following sections:</para>
         <table>
           <tableitem>
             <tableterm><strong>Identity</strong></tableterm>
             <item>
-              <para>This directory organizes the production of images in different formats and some non-image formats like XHTML and text files, as well. This is the perfect place to consolidate <emph>The CentOS Artwork SIG</emph>. If you are interested in producing art works for The CentOS Project, this place is for you.</para>
+              <para>This section organizes image production in different formats and some non-image formats like XHTML and text files, as well. This is the perfect place to consolidate <emph>The CentOS Artwork SIG</emph>. If you are interested in producing art works for The CentOS Project, this place is for you.</para>
               <para>See <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
-            <tableterm><strong>Documentation</strong></tableterm>
+            <tableterm><strong>Manual</strong></tableterm>
             <item>
-              <para>This directory organizes the production of <emph>CentOS Artwork Repository Manual</emph> (i.e., the place where the documentation you are reading right now is stored in).  If you are interested on improving The CentOS Artwork Repository Manual, in this place you'll find the Texinfo documentation structure you need to work with.</para>
+              <para>This section organizes the <emph>CentOS Artwork Repository Manual</emph> (i.e., the documentation manual you're reading right now).  If you are interested on improving The CentOS Artwork Repository Manual, in this place you'll find the Texinfo documentation structure you need to work with.</para>
               <para>See <xref><xrefnodename>Filesystem trunk Manual</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
-            <tableterm><strong>Localization</strong></tableterm>
+            <tableterm><strong>Scripts</strong></tableterm>
             <item>
-              <para>This directory organizes translation messages specifically produced to satisfy internationalization needs inside the CentOS Artwork Repository. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Locales</xrefnodename></xref>, for more information.</para>
+              <para>This section organizes production of automation scripts specially designed to automate most frequent tasks in the repository (e.g., image rendition, documenting directory structures, translating content, etc.).  If you can't resist the idea of automating repeatable tasks, then take a look here.</para>
+              <para>See <xref><xrefnodename>Filesystem trunk Scripts</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
-            <tableterm><strong>Automation</strong></tableterm>
+            <tableterm><strong>Locales</strong></tableterm>
             <item>
-              <para>This directory organizes the production of <command>centos-art</command>, a command-line interface specially designed to automate most frequent tasks in the repository (e.g., image rendition, documenting directory structures, translating content, etc.).  If you can't resist the idea of automating repeatable tasks, then take a look here.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Scripts</xrefnodename></xref>, for more information.</para>
+              <para>This section organizes production of translation messages for <emph>Identity</emph>, <emph>Documentation</emph> and <emph>Scripts</emph>. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
+              <para>See <xref><xrefnodename>Filesystem trunk Locales</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
         </table>
@@ -704,48 +700,23 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
       <subsection>
         <title>Usage</title>
-        <para>When we need to create branches or tags, the <file>trunk/</file> directory structure is the one used as reference to build them. Take a look at the following directory structure construction and notice how the <file>/Scripts/Bash/Cli</file> string is repeated in the paths and how it is put on it:</para>
-        <table>
-          <tableitem>
-            <tableterm><file>trunk/Scripts/Bash/Cli</file></tableterm>
-            <item>
-              <para>This directory structure provides the main development line of the <file>centos-art</file> command-line interface written in bash. In this directory changes may occur pretty fast and in unpredicted ways. This configuration could provoke that the <file>centos-art</file> command-line stop working in a manner unprediceted due the way changes are introduced to it.</para>
-            </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><file>branches/Scripts/Bash/Cli/1</file></tableterm>
-            <item>
-              <para>This directory structure, however, provides an intermediate place for less unpredicted changes and that way to provide more stability than <file>trunk/</file> directory structure is able to provide.</para>
-              <para>Notice that we used a number to identify the branch (the number `1' in this case).  Changing this number we could create several branches that could be maintained at the same time to fix specific problems simultaneausly otherwise difficult to fix in an unpredictable area like that provided by <file>trunk/</file> directory structure.  Once the specific problems has been fixed, the branch is merged into <file>trunk/</file> and removed from the repository file system.</para>
-              <para>If you are the only person working in the repository, you probably don't want to worry about creating branches at all and prefer going straight from trunk to tags. Ask yourself: If I'm the only person working in the trunk directory structure whom else could introduce unpredictable changes but myself? In that case, such changes wouldn't be unpredictable at all, don't you think?</para>
-            </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><file>tags/Scripts/Bash/Cli/1.0</file></tableterm>
-            <item>
-              <para>Instead of removing the branch directory structure from the repository file system, it could be very convenient to create a check-point in time with such problems fixed and so providing a predictable release of the <file>centos-art</file> command-line interface.</para>
-              <para>Notice that we used the number 1.0 to store the tag. These means that we are creating the tag number 0 from the branch numbered as 1 (i.e., the first number before the dot represents the branch number and the second number after the dot represents the tag number).</para>
-              <para>Using the <file>centos-art</file> command-line from tags diectory structure does provide more stable results than those from branches or trunk directory structures. The tags directory structure doesn't introduce changes at all, so you are safe to get what you expect after reading the release notes for that tag. This configuration is not possible supported on trunk nor branches since they do change through time.</para>
-            </item>
-          </tableitem>
-        </table>
-        <para>It seems to be no other immediate use for this directory but those described above.</para>
+        <para>It seems to be no other use for this directory but to organize the sections described above.</para>
       </subsection>
 
       <subsection>
         <title>See also</title>
-        <menu>
-          <menuentry>
-            <menunode>Filesystem branches</menunode>
-            <menutitle>Filesystem branches</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>Filesystem tags</menunode>
-            <menutitle>Filesystem tags</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>See <xref><xrefnodename>Filesystem branches</xrefnodename></xref>.</para>
+          </item>
+          <item>
+            <para>See <xref><xrefnodename>Filesystem tags</xrefnodename></xref>.</para>
+          </item>
+          <item>
+            <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
+          </item>
+        </itemize>
       </subsection>
     </section>
   </node>
@@ -759,95 +730,108 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
       <para><indexterm index="cp">Filesystem trunk Identity</indexterm></para>
       <subsection>
         <title>Goals</title>
-        <para>The <file>trunk/Identity</file> directory exists to organize CentOS corporate identity artworks.</para>
+        <para>The <file>trunk/Identity</file> directory structure implements <emph>The CentOS Project Corporate Identity</emph>.</para>
       </subsection>
 
       <subsection>
         <title>Description</title>
         <para>The CentOS Project corporate identity is the &ldquo;persona&rdquo; of the organization known as The CentOS Project.  The CentOS Project corporate identity plays a significant role in the way the CentOS Project, as organization, presents itself to both internal and external stakeholders. In general terms, the CentOS Project corporate visual identity expresses the values and ambitions of the CentOS Project organization, its business, and its characteristics.</para>
-        <para>The CentOS Project corporate identity provides visibility, recognizability, reputation, structure and identification to the CentOS Project organization by means of corporate design, corporate communication, and corporate behaviour.</para>
-        <para>The CentOS Project settles down its corporate visual identity on a <emph>&ldquo;monolithic corporate visual identity structure&rdquo;</emph>. In this structure The CentOS Project uses one unique name (The CentOS Brand) and one unique visual style (The CentOS Default Theme) in all its manifestations.</para>
-        <table>
-          <tableitem>
-            <tableterm><strong>The CentOS Brands</strong></tableterm>
+        <para>The CentOS Project corporate identity provides visibility, recognizability, reputation, structure and identification to The CentOS Project organization by means of <emph>Corporate Design</emph>, <emph>Corporate Communication</emph>, and <emph>Corporate Behaviour</emph>.</para>
+
+        <subsubsection>
+          <title>Corporate Design</title>
+          <para>The CentOS Project corporate design is applied to every single visual manifestations The CentOS Project as organization wants to express its existence. Examples of the most relevant visual manifestations inside The CentOS Project are <emph>The CentOS Distribution</emph>, <emph>The CentOS Web</emph> and <emph>The CentOS Stationery</emph>.</para>
+          <para>The CentOS Project corporate design is organized in the following work-lines:</para>
+          <table>
+            <tableitem>
+              <tableterm><strong>The CentOS Brand</strong></tableterm>
+              <item>
+                <para>The CentOS Brand is the name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
+                <para>See <xref><xrefnodename>Filesystem trunk Identity Brands</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>The CentOS Colors</strong></tableterm>
+              <item>
+                <para>The CentOS Fonts provides the color information used along The CentOS Project visual manifestations.</para>
+                <para>See <xref><xrefnodename>Filesystem trunk Identity Colors</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>The CentOS Fonts</strong></tableterm>
+              <item>
+                <para>The CentOS Fonts provides the typography information used along The CentOS Project visual manifestations.</para>
+                <para>See <xref><xrefnodename>Filesystem trunk Identity Fonts</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>The CentOS Themes</strong></tableterm>
+              <item>
+                <para>The CentOS Themes provides structural information and visual style information, as well, used along The CentOS Project visual manifestations.</para>
+                <para>See <xref><xrefnodename>Filesystem trunk Identity Themes</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+          </table>
+        </subsubsection>
+
+        <subsubsection>
+          <title>Corporate Communication</title>
+          <para>The CentOS Project corporate communication is based on community communication.  In that sake, the following media are available for corporate communication:</para>
+          <itemize>
+            <itemfunction>&bullet;</itemfunction>
             <item>
-              <para>The CentOS Brand is the name or trademark that conncects the producer with their products. In this case, the producer is The CentOS Project and the product is the CentOS Distributions. The CentOS Brand connects, also, different media (e.g., web sites, promotion stuff) used to backup the CentOS Distribution, in a way The CentOS Project visual connection remains through them.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Identity Brands</xrefnodename></xref>, for more information.</para>
+              <para>The CentOS Mailing Lists (<uref><urefurl>http://lists.centos.org/</urefurl></uref>).</para>
             </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><strong>The CentOS Corporate Visual Identity</strong></tableterm>
             <item>
-              <para>The CentOS Corporate Visual Identity is implemented by mean of <emph>CentOS Themes</emph>. CentOS themes are made of <emph>CentOS Models</emph> and <emph>CentOS Motifs</emph>. CentOS Models implement the structural part of corporate identity and CentOS Motifs implement the visual style part of corporate identity.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Identity Themes</xrefnodename></xref>, for more information.</para>
+              <para>The CentOS Forums (<uref><urefurl>http://forums.centos.org/</urefurl></uref>).</para>
             </item>
-          </tableitem>
-        </table>
-        <para>Inside a monolithic corporate visual identity structure, internal and external stakeholders use to feel a strong sensation of uniformity, orientation, and identification with the organization. No matter if you are visiting websites, using the distribution, or acting on social events, the one unique name and one unique visual style conect them all to say: Hey! we are all parts of the CentOS project.  And, probably, some vister will say: Can I join the party?  Yes you can, it is free.</para>
+          </itemize>
+        </subsubsection>
+
+        <subsubsection>
+          <title>Corporate Behaviour</title>
+          <para>The CentOS Project corporate behaviour is based on community behaviour.</para>
+        </subsubsection>
+
+        <subsubsection>
+          <title>Corporate Structure</title>
+          <para>The CentOS Project corporate structure is based on a <emph>&ldquo;monolithic corporate structure&rdquo;</emph>. In this structure, we use one unique name (The CentOS Brand) and one unique visual style (The CentOS Theme) in all The CentOS Project visual manifestations.</para>
+          <para>Inside a monolithic corporate visual identity structure, internal and external stakeholders use to feel a strong sensation of uniformity, orientation, and identification with the organization. No matter if you are visiting web sites, using the distribution, or acting on social events, the one unique name and one unique visual style connects them all to say: <emph>Hey! we are all part of The CentOS Project</emph>.</para>
+          <para>Other corporate structures have been considered as well, but they introduce visual contradictions we consider important to be aware of. In that sake, lets describe the idea of: <emph>Producing one different visual style for each major release of CentOS distribution</emph>.</para>
+          <para>The CentOS Project maintains near to four different major releases of CentOS distribution parallely in time and that fact makes one part of The CentOS Project structural design, but not the complete design.  In order to produce the correct corporate structure for The CentOS Project we need to concider all the visual manifestations The CentOS Project is made of, not just one of them.</para>
+          <para>If one different visual style is used for each major release of CentOS distribution, which one of those different visual styles would be the one used to cover other visual manifestations, like The CentOS Webs and The CentOS Stationery? Why The CentOS Distribution we are using shows one visual style and The CentOS Web sites a completly different one?  Isn't them all part of the same project?</para>
+          <para>Obviously, having just one visual style in all visual manifestations for eternity would be a very boring thing and also would give the idea of a visually dead project. So, there is no problem on creating a brand new visual style for each new major release of CentOS distribution, in order to refresh the CentOS distribution visual style; the problem does is in not propagating the brand new visual style created for the new release of CentOS Distribution to all other visual manifestations The CentOS Project is made of, in a way The CentOS Project could be recognized no matter what visual manifestation be in front of us. Such lack of uniformity is what introduces the visual contradition we are precisely trying to solve by mean of themes in the CentOS Artwork Repository.</para>
+        </subsubsection>
       </subsection>
 
       <subsection>
         <title>Usage</title>
-        <para>To produce identity artworks, use the following commands:</para>
-        <table>
-          <tableitem>
-            <tableterm><samp>centos-art render 'path/to/dir'</samp></tableterm>
-            <item>
-              <para>When <samp>path/to/dir</samp> refers to one renderable directory under <file>trunk/Identity</file>, this command renders identity artworks using both related design models and related translation files.</para>
-            </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><samp>centos-art render 'path/to/dir' --filter='pattern'</samp></tableterm>
-            <item>
-              <para>When <samp>path/to/dir</samp> refers to one renderable directory under <file>trunk/Identity</file>, this command renders identity artworks using both related design models and related translation files that match the regular expression passed in <samp>--filter='pattern'</samp> argument.</para>
-              <para>To control the number of files produced by <command>centos-art</command> command, you need to look into the translation path and provide a regular expression pattern that matches the translation path, or paths, related to the file, or files, you want to produce.</para>
-              <para>The regular expression pattern you provide to <command>centos-art</command> command is applied to the translation path from its very beginning. It is not the same to say <samp>5/en/01-welcome</samp> that <samp>01-welcome</samp>, the frist expression matches but the last one does not.</para>
-              <para>When using <samp>--filter='pattern'</samp> you don't need to specify the file extension. It is removed from translation path before applying the pattern, so it doesn't count here.</para>
-            </item>
-          </tableitem>
-        </table>
-      </subsection>
-
-      <subsection>
-        <title>File name convenctions</title>
-        <para>As file name convenction, inside CentOS Artwork Repository, both text-based and image-based file name produced by <command>centos-art.sh</command> script has the same name of their translation files without the <samp>.sed</samp> extension. The file extension is set as follow:</para>
-
-        <subsubsection>
-          <title>When text-based files are rendered</title>
-          <para>Text-based files end up having the same extension of their design template file.</para>
-        </subsubsection>
-
-        <subsubsection>
-          <title>When image-based files are rendered</title>
-          <para>Image-based files always end up having the <file>.png</file> extension.</para>
-          <quotation>
-            <para><strong>Tip</strong> Once <file>.png</file> images are created, other image formats may be created using the <command>renderFormats</command> post-rendering action, inside the image-based related pre-rendering configuration script.</para>
-            <para>See <xref><xrefnodename>Filesystem trunk Scripts Bash</xrefnodename></xref>, for more information.</para>
-          </quotation>
-        </subsubsection>
+        <para>The <file>trunk/</file> directory structure is organize in renderable and non-renderable directories. Generally, renderable directories contain two non-renderable directories, one to store design templates (the <file>Tpl/</file> directory), and another to store the content produced (the <file>Img/</file> directory).</para>
+        <para>In order to produce content inside the rendereble directories, you can use the following command:</para>
+        <verbatim xml:space="preserve"><![CDATA[
+centos-art identity --render='trunk/Identity/Path/To/Dir'
+]]></verbatim>
+        <quotation>
+          <para><strong>Warning</strong> If the <command>centos-art</command> command-line is not found in your workstation, it is probably because you haven't prepared it for using The CentOS Artwork Repository yet. See <xref><xrefnodename>Filesystem trunk Scripts Bash Cli Functions Verify</xrefnodename></xref>, for more information.</para>
+        </quotation>
+        <para>This command takes one design template and creates an instance of it in order to apply translation messages, if any. Later, using the design template instance the command renders the final content based on whether the design template instance is a SVG file or a Docbook file. If the design template instace is a SVG file, the final content produced is a PNG image. On the other hand, if the design template instance is a Docbook file, the final content produced is a XHTML file.</para>
+        <para>Additionally to base-rendition flow, the <command>centos-art</command> provides the <emph>post-rendition</emph> and <emph>last-rendition</emph> rendition features.</para>
+        <para>The post-rendition is applied to base file produced in the same directory structure. For example, you can use post-rendition action to render PNG base output into different outputs (e.g., JPG, PDF, etc.) before passing to process the next file in the same directory structure.</para>
+        <para>On the other hand, the last-rendition is applied to all files produces by both base-rendition and post-rendition in the same directory structure, just before passing to process a different directory structure.  For example, the <file>Preview.png</file> image from Ksplash component is made of three images. In order to build the <file>Preview.png</file> image as part of <command>centos-art</command> rendition flow, we need to wait for all the required images the <file>Preview.png</file> image is made of in order to combine them all together.  This is something we can't do using post-rendition actions.</para>
+        <para>Another rendition feature you can find inside the <file>trunk/Identity</file> directory structure is the <emph>directory-specific rendition</emph> feature. The directory-specific rendition feature combines both the post-rendition feature and the last-rendition feature in order to render specific directory structures in specific ways, automatically. This configuration can speed up production of different components like Syslinux, Grub, Gdm, Kdm and Ksplash that require intermediate formats or even several independent files, in order to reach its final construction. This is a way to programmatically describe how specific art works are built in and organized inside The CentOS Artwork Repository.  Such descriptions has beign added to <command>centos-art</command> command-line to let you produce them all with just one single command, as fast as your CPU could handle it.</para>
+        <para>See <xref><xrefnodename>Filesystem trunk Scripts Bash Cli Functions Identity</xrefnodename></xref>, for more information about the <command>identity</command> functionality of <command>centos-art</command> command-line interface.</para>
       </subsection>
 
       <subsection>
         <title>See also</title>
-        <menu>
-<!--  Removed(* Filesystem trunk Translations::) - -->
-        </menu>
-      </subsection>
-
-      <subsection>
-        <title>References</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para><uref><urefurl>http://en.wikipedia.org/Corporate_identity</urefurl></uref> (and related links).</para>
-          </item>
-        </itemize>
+        <para>Specially useful has been, and keep being, the book <emph>Corporate Identity</emph> by Wally Olins (1989). This is the main conceptual material we've been using to build The CentOS Artwork Repository.</para>
+        <para>See <uref><urefurl>http://en.wikipedia.org/Corporate_identity</urefurl></uref> (and related links), for general information on corporate identity.</para>
       </subsection>
     </section>
   </node>
   <node>
     <nodename>Filesystem trunk Identity Brands</nodename>
-    <nodenext>Filesystem trunk Identity Fonts</nodenext>
+    <nodenext>Filesystem trunk Identity Colors</nodenext>
     <nodeprev>Filesystem trunk Identity</nodeprev>
     <nodeup>Filesystem</nodeup>
     <section>
@@ -879,9 +863,54 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     </section>
   </node>
   <node>
+    <nodename>Filesystem trunk Identity Colors</nodename>
+    <nodenext>Filesystem trunk Identity Fonts</nodenext>
+    <nodeprev>Filesystem trunk Identity Brands</nodeprev>
+    <nodeup>Filesystem</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Colors</file> Directory</title>
+      <para><indexterm index="cp">Filesystem trunk Identity Colors</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Filesystem trunk Identity Fonts</nodename>
     <nodenext>Filesystem trunk Identity Icons</nodenext>
-    <nodeprev>Filesystem trunk Identity Brands</nodeprev>
+    <nodeprev>Filesystem trunk Identity Colors</nodeprev>
     <nodeup>Filesystem</nodeup>
     <section>
       <title>The <file>trunk/Identity/Fonts</file> Directory</title>
@@ -1803,12 +1832,6 @@ priority=10
         <quotation>
           <para><strong>Important</strong> Remarking the CentOS Release Schema inside each major release of CentOS Distribution &mdash;or similar visual manifestations&mdash; takes <emph>high attention</emph> inside The CentOS Project corporate visual identity. It should be very clear for everyone which major release of CentOS Distribution is being used.</para>
         </quotation>
-        <para>Other recommendations have been discussed in CentOS Developers mailing list (<email><emailaddress>centos-devel@centos.org</emailaddress></email>). One of them is producing one unique visual style for <emph>each</emph> major release of CentOS Distribution.  That is, if we have four different major releases of CentOS Distribution, we need to provide four different visual styles to cover each CentOS Distribution artistic needs.  Even such schema could be produced inside CentOS Artwork Repository, using it could introduce visual isolation to different visual manifestations of The CentOS Project.</para>
-        <para>As previously said, The CentOS Project maintains near to four different major releases of CentOS Distribution in parallel and that fact creates a complete different perspective since the structural point of view. If one unique visual style is used for <emph>each</emph> major release of CentOS Distribution, which one of those different visual styles would be used to cover other visual manifestations, like The CentOS Web sites and The CentOS Promotion stuff?</para>
-        <para>Some persons may end up asking themselves, why the CentOS Distribution I am using has this visual style and the CentOS Web sites a different one?  Isn't them all part of the same project?</para>
-        <para>Creating a linear and uniform visual style for all visual manifestations of The CentOS Project does create a strong feeling of integrity, order and property on persons interacting with the project through its manifestations. Every single detail, in every manifestation The CentOS Project expresses out its existence say what The CentOS Project is.</para>
-        <para>I don't think The CentOS Project as an ambiguous project, but a direct and very pragmatic project where its community makes the central axis of movement. A manifestation of freedom to people to use computers and share as natural right. A manifestation of people kindness whose make the best they know to do in favor of themselves as manifestation of everyone else.  In such feeling there is no space for contradictions or ununiform visual structures, but very uniform visual structures that can be altered by anyone to fit personal needs.</para>
-        <para>I strongly believe that The CentOS Project, as social organization, should be that way uniform and provide the means to let everyone do customzations in their own basis whenever it be clear that once such uniformity has been changed by someone differnt to The CentOS Project, it is no longer a visual manifestation of The CentOS Project, but a modified visual manifestation of The CentOS Project.</para>
       </subsection>
 
       <subsection>
@@ -5092,7 +5115,7 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
   </node>
   <node>
     <nodename>Filesystem trunk Scripts Bash Cli Functions Html</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Locale</nodenext>
+    <nodenext>Filesystem trunk Scripts Bash Cli Functions Identity</nodenext>
     <nodeprev>Filesystem trunk Scripts Bash Cli Functions Help</nodeprev>
     <nodeup>Filesystem</nodeup>
     <section>
@@ -5136,9 +5159,54 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
+    <nodename>Filesystem trunk Scripts Bash Cli Functions Identity</nodename>
+    <nodenext>Filesystem trunk Scripts Bash Cli Functions Locale</nodenext>
+    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Html</nodeprev>
+    <nodeup>Filesystem</nodeup>
+    <section>
+      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Identity</file> Directory</title>
+      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Identity</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Filesystem trunk Scripts Bash Cli Functions Locale</nodename>
     <nodenext>Filesystem trunk Scripts Bash Cli Functions Manual</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Html</nodeprev>
+    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Identity</nodeprev>
     <nodeup>Filesystem</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Locale</file> Directory</title>

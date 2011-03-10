@@ -5,99 +5,19 @@ trunk, branches, tags repository structure.
 
 @subsection Description
 
-The @file{branches/} directory structure is an intermediate space
-between @file{trunk/} directory structure and @file{tags/} directory
-structure.
+The @file{branches/} directory structre provides the intermediate
+space for creating several instances of @file{trunk/} directory
+structure for parallel development and later merging changes back to
+@file{trunk/} in the same parallel basis.
 
 @subsection Usage
 
-If changes committed up to the main develpment line are all
-predictable (e.g., there is just one person committing changes), there
-is no a big need of using @file{branches/} directory structure, in
-this case we can go straight from @file{trunk/} to @file{tags/}.
-However, when there is no way to predict changes in the main
-development line (e.g., there are many people working at it at the
-same time) it is needed to find out a different place for changes to
-occur in more predictable ways. 
-
-At this point, several options may arise to create branches. In the
-CentOS Artwork Repository we prefer to use the idea of separating the
-main development line into different major development lines whose
-receive frequent update in a fixed period of time. In this
-configuration, a major development line is a directory structure
-branched from @file{trunk/} directory structure. That is, we take a
-functional instance of @file{trunk/} directory structure and store it
-under @file{branches/} directory structure using a branch identifier
-and the same hierarchy the main development line uses.
-
-When we create separete development lines, this way, we are creating a
-major development line that will receive minor updates to current
-functionalities but won't introduce new functionalities nor remove old
-ones. This is very importat if you need to have a predictable
-behaviour for that branch content through a period of time. When that
-period of time is gone, a new major development line is created to
-introduce new functionalities from @file{trunk/} directory structure
-and so repeating the whole production cycle.
-
-In order to create branches inside the CentOS Artwork Repository the
-whole repository structure must be considered. This is because all
-directory structures stored under @file{trunk/} directory structure
-are connected among themselves. This way, we create branches for the
-whole @file{trunk/} directory structure and never to individual
-components inside it. On the other hand, creating branches for the
-whole @file{trunk/} directory structure duplicates lots of files and
-demands a considerable amount of storage space which is not
-convenient. As an intermediate solution, we do not create branches for
-the @file{trunk/Identity/} directory structure, but the
-@file{trunk/Manual}, @file{trunk/Scripts} and @file{trunk/Locales}
-directory structures only. This way, we create documentation,
-automation scripts and locale information for specific revisions of
-@file{turnk/Identity} directory structure.
-
-A good reason to create a major development line could be
-documentation.  Consider how hard it could be build a documentation
-manual if the target of it is changing unpredictably; what are we
-documenting? Something similar happens with @command{centos-art}
-command-line, if the directory structure the @command{centos-art} was
-design to work with changes unexpectedly it is very hard to implement
-a path-based functionality in that environment; where are we retriving
-files from or saving them to?
-
-Assuming there is no way to predict changes in main development line,
-the creation of new @file{branches} inside the CentOS Artwork
-Repository uses The CentOS Project Release Schema.  This is, a new
-major development line is created every 2 years using @file{trunk/}
-directory structure as reference. Each major development line is
-updated regulary in order to create frozen lines under @file{tags/}
-directory structure every 6 months.
-
-@image{trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1,400pt}
-
-The updates commited up to individual major development lines need to
-be merged into the @file{trunk/} directory structure in order for
-further major development lines to benefit from previous major
-development lines improvements.  The appropriate moment to commit from
-major development lines to @file{trunk/} directory structure is when
-the frozen line of a major development line is been created.  This
-way, the main development line is the central place for changes, a
-place to concentrate changes from different major development lines
-that may be or not being developed at the same time.
-
-As general convenction, when a new major development line is created,
-functionalities from previous major development lines are included
-into the new development line. However, improvements for components
-included from previous major development lines are not handled inside
-the new major development line which imported them. Such improvements
-are handled by the previous development line and merged up to main
-development line to improve the main development line, in the same way
-the new major development line merges the improvements of the new
-functionalities it was created for. As final resault, both changes
-merged from new and previous major development lines will be included
-into the next major development line.
+The @file{branches/} directory structure is unused, so far.
 
 @subsection See also
 
-@menu
-* Filesystem trunk::
-* Filesystem tags::
-@end menu
+@itemize
+@item @xref{Filesystem tags}.
+@item @xref{Filesystem trunk}.
+@item Subversion's book (@url{http://svnbook.red-bean.com/}).
+@end itemize

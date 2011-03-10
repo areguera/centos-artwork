@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 9 2011 by texi2html 1.76 -->
+<!-- Created on March, 10 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -60,14 +60,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Filesystem-branches"></a>
@@ -85,108 +85,26 @@ trunk, branches, tags repository structure.
 <a name="SEC7"></a>
 <h3 class="subsection"> 2.1.2 Description </h3>
 
-<p>The <tt>`branches/'</tt> directory structure is an intermediate space
-between <tt>`trunk/'</tt> directory structure and <tt>`tags/'</tt> directory
-structure.
+<p>The <tt>`branches/'</tt> directory structre provides the intermediate
+space for creating several instances of <tt>`trunk/'</tt> directory
+structure for parallel development and later merging changes back to
+<tt>`trunk/'</tt> in the same parallel basis.
 </p>
 
 <a name="SEC8"></a>
 <h3 class="subsection"> 2.1.3 Usage </h3>
 
-<p>If changes committed up to the main develpment line are all
-predictable (e.g., there is just one person committing changes), there
-is no a big need of using <tt>`branches/'</tt> directory structure, in
-this case we can go straight from <tt>`trunk/'</tt> to <tt>`tags/'</tt>.
-However, when there is no way to predict changes in the main
-development line (e.g., there are many people working at it at the
-same time) it is needed to find out a different place for changes to
-occur in more predictable ways. 
-</p>
-<p>At this point, several options may arise to create branches. In the
-CentOS Artwork Repository we prefer to use the idea of separating the
-main development line into different major development lines whose
-receive frequent update in a fixed period of time. In this
-configuration, a major development line is a directory structure
-branched from <tt>`trunk/'</tt> directory structure. That is, we take a
-functional instance of <tt>`trunk/'</tt> directory structure and store it
-under <tt>`branches/'</tt> directory structure using a branch identifier
-and the same hierarchy the main development line uses.
-</p>
-<p>When we create separete development lines, this way, we are creating a
-major development line that will receive minor updates to current
-functionalities but won't introduce new functionalities nor remove old
-ones. This is very importat if you need to have a predictable
-behaviour for that branch content through a period of time. When that
-period of time is gone, a new major development line is created to
-introduce new functionalities from <tt>`trunk/'</tt> directory structure
-and so repeating the whole production cycle.
-</p>
-<p>In order to create branches inside the CentOS Artwork Repository the
-whole repository structure must be considered. This is because all
-directory structures stored under <tt>`trunk/'</tt> directory structure
-are connected among themselves. This way, we create branches for the
-whole <tt>`trunk/'</tt> directory structure and never to individual
-components inside it. On the other hand, creating branches for the
-whole <tt>`trunk/'</tt> directory structure duplicates lots of files and
-demands a considerable amount of storage space which is not
-convenient. As an intermediate solution, we do not create branches for
-the <tt>`trunk/Identity/'</tt> directory structure, but the
-<tt>`trunk/Manual'</tt>, <tt>`trunk/Scripts'</tt> and <tt>`trunk/Locales'</tt>
-directory structures only. This way, we create documentation,
-automation scripts and locale information for specific revisions of
-<tt>`turnk/Identity'</tt> directory structure.
-</p>
-<p>A good reason to create a major development line could be
-documentation.  Consider how hard it could be build a documentation
-manual if the target of it is changing unpredictably; what are we
-documenting? Something similar happens with <code>centos-art</code>
-command-line, if the directory structure the <code>centos-art</code> was
-design to work with changes unexpectedly it is very hard to implement
-a path-based functionality in that environment; where are we retriving
-files from or saving them to?
-</p>
-<p>Assuming there is no way to predict changes in main development line,
-the creation of new <tt>`branches'</tt> inside the CentOS Artwork
-Repository uses The CentOS Project Release Schema.  This is, a new
-major development line is created every 2 years using <tt>`trunk/'</tt>
-directory structure as reference. Each major development line is
-updated regulary in order to create frozen lines under <tt>`tags/'</tt>
-directory structure every 6 months.
-</p>
-<p><img src="/home/centos/artwork/trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1.png" alt="trunk/Identity/Models/Img/Scripts/Bash/Functions/Path/figure-1">
-</p>
-<p>The updates commited up to individual major development lines need to
-be merged into the <tt>`trunk/'</tt> directory structure in order for
-further major development lines to benefit from previous major
-development lines improvements.  The appropriate moment to commit from
-major development lines to <tt>`trunk/'</tt> directory structure is when
-the frozen line of a major development line is been created.  This
-way, the main development line is the central place for changes, a
-place to concentrate changes from different major development lines
-that may be or not being developed at the same time.
-</p>
-<p>As general convenction, when a new major development line is created,
-functionalities from previous major development lines are included
-into the new development line. However, improvements for components
-included from previous major development lines are not handled inside
-the new major development line which imported them. Such improvements
-are handled by the previous development line and merged up to main
-development line to improve the main development line, in the same way
-the new major development line merges the improvements of the new
-functionalities it was created for. As final resault, both changes
-merged from new and previous major development lines will be included
-into the next major development line.
+<p>The <tt>`branches/'</tt> directory structure is unused, so far.
 </p>
 
 <a name="SEC9"></a>
 <h3 class="subsection"> 2.1.4 See also </h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_7.html#SEC15">2.3 The <tt>`trunk'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_6.html#SEC10">2.2 The <tt>`tags'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+<ul class="toc">
+<li> See section <a href="repository_6.html#SEC10">The <tt>`tags'</tt> Directory</a>.
+</li><li> See section <a href="repository_7.html#SEC15">The <tt>`trunk'</tt> Directory</a>.
+</li><li> Subversion's book (<a class="www" href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a>).
+</li></ul>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
@@ -195,11 +113,11 @@ into the next major development line.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC5" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 9 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 10 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

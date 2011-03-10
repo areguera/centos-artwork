@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 9 2011 by texi2html 1.76 -->
+<!-- Created on March, 10 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -60,14 +60,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Filesystem-trunk"></a>
@@ -86,53 +86,48 @@ trunk, branches, tags repository structure.
 <h3 class="subsection"> 2.3.2 Description </h3>
 
 <p>The <tt>`trunk/'</tt> directory structure is the main development line
-inside the CentOS Artwork Repository. Here is where we produce the
-information required by The CentOS Project corporate visual identity.
-Additionally, here is where documentation and automation scripts are
-conceived to make both understanding and using of CentOS Artwork
-Repository easier for everyone.
-</p>
-<p>The <tt>`trunk/'</tt> directory structure covers the following topics:
+inside the CentOS Artwork Repository and organizes the following
+sections:
 </p>
 <dl compact="compact">
 <dt> <strong>Identity</strong></dt>
-<dd><p>This directory organizes the production of images in different formats
-and some non-image formats like XHTML and text files, as well. This is
-the perfect place to consolidate <em>The CentOS Artwork SIG</em>. If you
-are interested in producing art works for The CentOS Project, this
-place is for you. 
+<dd><p>This section organizes image production in different formats and some
+non-image formats like XHTML and text files, as well. This is the
+perfect place to consolidate <em>The CentOS Artwork SIG</em>. If you are
+interested in producing art works for The CentOS Project, this place
+is for you. 
 </p>
 <p>See section <a href="repository_8.html#SEC20">The <tt>`trunk/Identity'</tt> Directory</a>, for more information.
 </p>
 </dd>
-<dt> <strong>Documentation</strong></dt>
-<dd><p>This directory organizes the production of <em>CentOS Artwork
-Repository Manual</em> (i.e., the place where the documentation you are
-reading right now is stored in).  If you are interested on improving
-The CentOS Artwork Repository Manual, in this place you'll find the
-Texinfo documentation structure you need to work with.
+<dt> <strong>Manual</strong></dt>
+<dd><p>This section organizes the <em>CentOS Artwork Repository Manual</em>
+(i.e., the documentation manual you're reading right now).  If you are
+interested on improving The CentOS Artwork Repository Manual, in this
+place you'll find the Texinfo documentation structure you need to work
+with.
 </p>
-<p>See section <a href="repository_62.html#SEC311">The <tt>`trunk/Manual'</tt> Directory</a>, for more information.
-</p>
-</dd>
-<dt> <strong>Localization</strong></dt>
-<dd><p>This directory organizes translation messages specifically produced to
-satisfy internationalization needs inside the CentOS Artwork
-Repository. This place is perfect to consolidate <em>The CentOS
-Translation SIG</em>. If you love translating, you'll find lot of messages
-waiting for you to translate here.  
-</p>
-<p>See section <a href="repository_51.html#SEC256">The <tt>`trunk/Locales'</tt> Directory</a>, for more information.
+<p>See section <a href="repository_63.html#SEC316">The <tt>`trunk/Manual'</tt> Directory</a>, for more information.
 </p>
 </dd>
-<dt> <strong>Automation</strong></dt>
-<dd><p>This directory organizes the production of <code>centos-art</code>, a
-command-line interface specially designed to automate most frequent
-tasks in the repository (e.g., image rendition, documenting directory
-structures, translating content, etc.).  If you can't resist the idea
-of automating repeatable tasks, then take a look here.
+<dt> <strong>Scripts</strong></dt>
+<dd><p>This section organizes production of automation scripts specially
+designed to automate most frequent tasks in the repository (e.g.,
+image rendition, documenting directory structures, translating
+content, etc.).  If you can't resist the idea of automating repeatable
+tasks, then take a look here.
 </p>
-<p>See section <a href="repository_64.html#SEC321">The <tt>`trunk/Scripts'</tt> Directory</a>, for more information.
+<p>See section <a href="repository_65.html#SEC326">The <tt>`trunk/Scripts'</tt> Directory</a>, for more information.
+</p>
+</dd>
+<dt> <strong>Locales</strong></dt>
+<dd><p>This section organizes production of translation messages for
+<em>Identity</em>, <em>Documentation</em> and <em>Scripts</em>. This place
+is perfect to consolidate <em>The CentOS Translation SIG</em>. If you
+love translating, you'll find lot of messages waiting for you to
+translate here.  
+</p>
+<p>See section <a href="repository_52.html#SEC261">The <tt>`trunk/Locales'</tt> Directory</a>, for more information.
 </p></dd>
 </dl>
 
@@ -140,79 +135,18 @@ of automating repeatable tasks, then take a look here.
 <a name="SEC18"></a>
 <h3 class="subsection"> 2.3.3 Usage </h3>
 
-<p>When we need to create branches or tags, the <tt>`trunk/'</tt> directory
-structure is the one used as reference to build them. Take a look at
-the following directory structure construction and notice how the
-<tt>`/Scripts/Bash/Cli'</tt> string is repeated in the paths and how it is
-put on it:
-</p>
-<dl compact="compact">
-<dt> <tt>`trunk/Scripts/Bash/Cli'</tt></dt>
-<dd>
-<p>This directory structure provides the main development line of the
-<tt>`centos-art'</tt> command-line interface written in bash. In this
-directory changes may occur pretty fast and in unpredicted ways. This
-configuration could provoke that the <tt>`centos-art'</tt> command-line
-stop working in a manner unprediceted due the way changes are
-introduced to it.
-</p>
-</dd>
-<dt> <tt>`branches/Scripts/Bash/Cli/1'</tt></dt>
-<dd>
-<p>This directory structure, however, provides an intermediate place for
-less unpredicted changes and that way to provide more stability than
-<tt>`trunk/'</tt> directory structure is able to provide. 
-</p>
-<p>Notice that we used a number to identify the branch (the number `1' in
-this case).  Changing this number we could create several branches
-that could be maintained at the same time to fix specific problems
-simultaneausly otherwise difficult to fix in an unpredictable area
-like that provided by <tt>`trunk/'</tt> directory structure.  Once the
-specific problems has been fixed, the branch is merged into
-<tt>`trunk/'</tt> and removed from the repository file system.
-</p>
-<p>If you are the only person working in the repository, you probably
-don't want to worry about creating branches at all and prefer going
-straight from trunk to tags. Ask yourself: If I'm the only person
-working in the trunk directory structure whom else could introduce
-unpredictable changes but myself? In that case, such changes wouldn't
-be unpredictable at all, don't you think? 
-</p>
-</dd>
-<dt> <tt>`tags/Scripts/Bash/Cli/1.0'</tt></dt>
-<dd>
-<p>Instead of removing the branch directory structure from the repository
-file system, it could be very convenient to create a check-point in
-time with such problems fixed and so providing a predictable release
-of the <tt>`centos-art'</tt> command-line interface.
-</p>
-<p>Notice that we used the number 1.0 to store the tag. These means that
-we are creating the tag number 0 from the branch numbered as 1 (i.e.,
-the first number before the dot represents the branch number and the
-second number after the dot represents the tag number).  
-</p>
-<p>Using the <tt>`centos-art'</tt> command-line from tags diectory structure
-does provide more stable results than those from branches or trunk
-directory structures. The tags directory structure doesn't introduce
-changes at all, so you are safe to get what you expect after reading
-the release notes for that tag. This configuration is not possible
-supported on trunk nor branches since they do change through time.
-</p></dd>
-</dl>
-
-<p>It seems to be no other immediate use for this directory but those
-described above.
+<p>It seems to be no other use for this directory but to organize the
+sections described above.
 </p>
 
 <a name="SEC19"></a>
 <h3 class="subsection"> 2.3.4 See also </h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_5.html#SEC5">2.1 The <tt>`branches'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top"><a href="repository_6.html#SEC10">2.2 The <tt>`tags'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
+<ul class="toc">
+<li> See section <a href="repository_5.html#SEC5">The <tt>`branches'</tt> Directory</a>.
+</li><li> See section <a href="repository_6.html#SEC10">The <tt>`tags'</tt> Directory</a>.
+</li><li> Subversion's book (<a class="www" href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a>).
+</li></ul>
 
 
 
@@ -222,11 +156,11 @@ described above.
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC15" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 9 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 10 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

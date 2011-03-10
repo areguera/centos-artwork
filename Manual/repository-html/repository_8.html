@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 9 2011 by texi2html 1.76 -->
+<!-- Created on March, 10 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -60,14 +60,14 @@ ul.toc {list-style: none}
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <a name="Filesystem-trunk-Identity"></a>
@@ -78,8 +78,8 @@ ul.toc {list-style: none}
 <a name="SEC21"></a>
 <h3 class="subsection"> 2.4.1 Goals </h3>
 
-<p>The <tt>`trunk/Identity'</tt> directory exists to organize CentOS
-corporate identity artworks. 
+<p>The <tt>`trunk/Identity'</tt> directory structure implements <em>The
+CentOS Project Corporate Identity</em>.
 </p>
 
 <a name="SEC22"></a>
@@ -94,133 +94,204 @@ visual identity expresses the values and ambitions of the CentOS
 Project organization, its business, and its characteristics.  
 </p>
 <p>The CentOS Project corporate identity provides visibility,
-recognizability, reputation, structure and identification to the
-CentOS Project organization by means of corporate design, corporate
-communication, and corporate behaviour.
+recognizability, reputation, structure and identification to The
+CentOS Project organization by means of <em>Corporate Design</em>,
+<em>Corporate Communication</em>, and <em>Corporate Behaviour</em>.
 </p>
-<p>The CentOS Project settles down its corporate visual identity on a
-<em>&quot;monolithic corporate visual identity structure&quot;</em>. In this
-structure The CentOS Project uses one unique name (The CentOS Brand)
-and one unique visual style (The CentOS Default Theme) in all its
-manifestations. 
+
+<a name="SEC23"></a>
+<h4 class="subsubsection"> 2.4.2.1 Corporate Design </h4>
+
+<p>The CentOS Project corporate design is applied to every single visual
+manifestations The CentOS Project as organization wants to express its
+existence. Examples of the most relevant visual manifestations inside
+The CentOS Project are <em>The CentOS Distribution</em>, <em>The
+CentOS Web</em> and <em>The CentOS Stationery</em>.
+</p>
+<p>The CentOS Project corporate design is organized in the following
+work-lines:
 </p>
 <dl compact="compact">
-<dt> <strong>The CentOS Brands</strong></dt>
-<dd>
-<p>The CentOS Brand is the name or trademark that conncects the producer
+<dt> <strong>The CentOS Brand</strong></dt>
+<dd><p>The CentOS Brand is the name or trademark that connects the producer
 with their products. In this case, the producer is The CentOS Project
-and the product is the CentOS Distributions. The CentOS Brand
-connects, also, different media (e.g., web sites, promotion stuff)
-used to backup the CentOS Distribution, in a way The CentOS Project
-visual connection remains through them.
+and the products are The CentOS Project visual manifestations. 
 </p>
 <p>See section <a href="repository_9.html#SEC29">The <tt>`trunk/Identity/Brands'</tt> Directory</a>, for more information.
 </p>
 </dd>
-<dt> <strong>The CentOS Corporate Visual Identity</strong></dt>
+<dt> <strong>The CentOS Colors</strong></dt>
 <dd>
-<p>The CentOS Corporate Visual Identity is implemented by mean of
-<em>CentOS Themes</em>. CentOS themes are made of <em>CentOS Models</em>
-and <em>CentOS Motifs</em>. CentOS Models implement the structural part
-of corporate identity and CentOS Motifs implement the visual style
-part of corporate identity.
+<p>The CentOS Fonts provides the color information used along The CentOS
+Project visual manifestations.
 </p>
-<p>See section <a href="repository_22.html#SEC104">The <tt>`trunk/Identity/Themes'</tt> Directory</a>, for more information.
+<p>See section <a href="repository_10.html#SEC34">The <tt>`trunk/Identity/Colors'</tt> Directory</a>, for more information.
 </p></dd>
-</dl>
-
-<p>Inside a monolithic corporate visual identity structure, internal and
-external stakeholders use to feel a strong sensation of uniformity,
-orientation, and identification with the organization. No matter if
-you are visiting websites, using the distribution, or acting on social
-events, the one unique name and one unique visual style conect them
-all to say: Hey! we are all parts of the CentOS project.  And,
-probably, some vister will say: Can I join the party?  Yes you can, it
-is free.
-</p>
-
-<a name="SEC23"></a>
-<h3 class="subsection"> 2.4.3 Usage </h3>
-
-<p>To produce identity artworks, use the following commands:
-</p>
-<dl compact="compact">
-<dt> <samp>`centos-art render 'path/to/dir''</samp> </dt>
+<dt> <strong>The CentOS Fonts</strong></dt>
 <dd>
-<p>When <samp>`path/to/dir'</samp> refers to one renderable directory under
-<tt>`trunk/Identity'</tt>, this command renders identity artworks using
-both related design models and related translation files.
+<p>The CentOS Fonts provides the typography information used along The
+CentOS Project visual manifestations.
 </p>
-</dd>
-<dt> <samp>`centos-art render 'path/to/dir' --filter='pattern''</samp> </dt>
+<p>See section <a href="repository_11.html#SEC39">The <tt>`trunk/Identity/Fonts'</tt> Directory</a>, for more information.
+</p></dd>
+<dt> <strong>The CentOS Themes</strong></dt>
 <dd>
-<p>When <samp>`path/to/dir'</samp> refers to one renderable directory under
-<tt>`trunk/Identity'</tt>, this command renders identity artworks using
-both related design models and related translation files that match
-the regular expression passed in <samp>`--filter='pattern''</samp> argument.
+<p>The CentOS Themes provides structural information and visual style
+information, as well, used along The CentOS Project visual
+manifestations.
 </p>
-<p>To control the number of files produced by <code>centos-art</code>
-command, you need to look into the translation path and provide a
-regular expression pattern that matches the translation path, or
-paths, related to the file, or files, you want to produce.  
-</p>
-<p>The regular expression pattern you provide to <code>centos-art</code>
-command is applied to the translation path from its very beginning.
-It is not the same to say <samp>`5/en/01-welcome'</samp> that
-<samp>`01-welcome'</samp>, the frist expression matches but the last one does
-not.
-</p>
-<p>When using <samp>`--filter='pattern''</samp> you don't need to specify the
-file extension. It is removed from translation path before applying
-the pattern, so it doesn't count here.
+<p>See section <a href="repository_23.html#SEC109">The <tt>`trunk/Identity/Themes'</tt> Directory</a>, for more information.
 </p></dd>
 </dl>
 
 
 <a name="SEC24"></a>
-<h3 class="subsection"> 2.4.4 File name convenctions </h3>
+<h4 class="subsubsection"> 2.4.2.2 Corporate Communication </h4>
 
-<p>As file name convenction, inside CentOS Artwork Repository, both
-text-based and image-based file name produced by <code>centos-art.sh</code>
-script has the same name of their translation files without
-the <samp>`.sed'</samp> extension. The file extension is set as follow:
+<p>The CentOS Project corporate communication is based on community
+communication.  In that sake, the following media are available for
+corporate communication:
 </p>
-
-<a name="SEC25"></a>
-<h4 class="subsubsection"> 2.4.4.1 When text-based files are rendered </h4>
-
-<p>Text-based files end up having the same extension of their design
-template file.
-</p>
-
-<a name="SEC26"></a>
-<h4 class="subsubsection"> 2.4.4.2 When image-based files are rendered </h4>
-
-<p>Image-based files always end up having the <tt>`.png'</tt> extension. 
-</p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Once <tt>`.png'</tt> images are created, other image formats
-may be created using the <code>renderFormats</code> post-rendering
-action, inside the image-based related pre-rendering configuration
-script.
-</p>
-<p>See section <a href="repository_65.html#SEC326">The <tt>`trunk/Scripts/Bash'</tt> Directory</a>, for more information.
-</p></blockquote>
-
-
-<a name="SEC27"></a>
-<h3 class="subsection"> 2.4.5 See also </h3>
-
-
-
-<a name="SEC28"></a>
-<h3 class="subsection"> 2.4.6 References </h3>
-
 <ul class="toc">
-<li> <a class="www" href="http://en.wikipedia.org/Corporate_identity">http://en.wikipedia.org/Corporate_identity</a> (and related
-links).
+<li> The CentOS Mailing Lists (<a class="www" href="http://lists.centos.org/">http://lists.centos.org/</a>).
+</li><li> The CentOS Forums (<a class="www" href="http://forums.centos.org/">http://forums.centos.org/</a>).
 </li></ul>
 
 
+<a name="SEC25"></a>
+<h4 class="subsubsection"> 2.4.2.3 Corporate Behaviour </h4>
+
+<p>The CentOS Project corporate behaviour is based on community
+behaviour.
+</p>
+
+<a name="SEC26"></a>
+<h4 class="subsubsection"> 2.4.2.4 Corporate Structure </h4>
+
+<p>The CentOS Project corporate structure is based on a
+<em>&quot;monolithic corporate structure&quot;</em>. In this structure, we use
+one unique name (The CentOS Brand) and one unique visual style (The
+CentOS Theme) in all The CentOS Project visual manifestations.
+</p>
+<p>Inside a monolithic corporate visual identity structure, internal and
+external stakeholders use to feel a strong sensation of uniformity,
+orientation, and identification with the organization. No matter if
+you are visiting web sites, using the distribution, or acting on
+social events, the one unique name and one unique visual style
+connects them all to say: <em>Hey! we are all part of The CentOS
+Project</em>.
+</p>
+<p>Other corporate structures have been considered as well, but they
+introduce visual contradictions we consider important to be aware of.
+In that sake, lets describe the idea of: <em>Producing one different
+visual style for each major release of CentOS distribution</em>.
+</p>
+<p>The CentOS Project maintains near to four different major releases of
+CentOS distribution parallely in time and that fact makes one part of
+The CentOS Project structural design, but not the complete design.  In
+order to produce the correct corporate structure for The CentOS
+Project we need to concider all the visual manifestations The CentOS
+Project is made of, not just one of them.
+</p>
+<p>If one different visual style is used for each major release of CentOS
+distribution, which one of those different visual styles would be the
+one used to cover other visual manifestations, like The CentOS Webs
+and The CentOS Stationery? Why The CentOS Distribution we are using
+shows one visual style and The CentOS Web sites a completly different
+one?  Isn't them all part of the same project?
+</p>
+<p>Obviously, having just one visual style in all visual manifestations
+for eternity would be a very boring thing and also would give the idea
+of a visually dead project. So, there is no problem on creating a
+brand new visual style for each new major release of CentOS
+distribution, in order to refresh the CentOS distribution visual
+style; the problem does is in not propagating the brand new visual
+style created for the new release of CentOS Distribution to all other
+visual manifestations The CentOS Project is made of, in a way The
+CentOS Project could be recognized no matter what visual manifestation
+be in front of us. Such lack of uniformity is what introduces the
+visual contradition we are precisely trying to solve by mean of themes
+in the CentOS Artwork Repository.
+</p>
+
+<a name="SEC27"></a>
+<h3 class="subsection"> 2.4.3 Usage </h3>
+
+<p>The <tt>`trunk/'</tt> directory structure is organize in renderable and
+non-renderable directories. Generally, renderable directories contain
+two non-renderable directories, one to store design templates (the
+<tt>`Tpl/'</tt> directory), and another to store the content produced (the
+<tt>`Img/'</tt> directory).
+</p>
+<p>In order to produce content inside the rendereble directories, you can
+use the following command:
+</p>
+<pre class="verbatim">centos-art identity --render='trunk/Identity/Path/To/Dir'
+</pre>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> If the <code>centos-art</code> command-line is not found
+in your workstation, it is probably because you haven't prepared it
+for using The CentOS Artwork Repository yet. See section <a href="repository_79.html#SEC411">The <tt>`trunk/Scripts/Bash/Cli/Functions/Verify'</tt> Directory</a>, for more information.
+</p></blockquote>
+
+<p>This command takes one design template and creates an instance of it
+in order to apply translation messages, if any. Later, using the
+design template instance the command renders the final content based
+on whether the design template instance is a SVG file or a Docbook
+file. If the design template instace is a SVG file, the final content
+produced is a PNG image. On the other hand, if the design template
+instance is a Docbook file, the final content produced is a XHTML
+file.
+</p>
+<p>Additionally to base-rendition flow, the <code>centos-art</code> provides
+the <em>post-rendition</em> and <em>last-rendition</em> rendition
+features.
+</p>
+<p>The post-rendition is applied to base file produced in the same
+directory structure. For example, you can use post-rendition action to
+render PNG base output into different outputs (e.g., JPG, PDF, etc.)
+before passing to process the next file in the same directory
+structure.
+</p>
+<p>On the other hand, the last-rendition is applied to all files produces
+by both base-rendition and post-rendition in the same directory
+structure, just before passing to process a different directory
+structure.  For example, the <tt>`Preview.png'</tt> image from Ksplash
+component is made of three images. In order to build the
+<tt>`Preview.png'</tt> image as part of <code>centos-art</code> rendition
+flow, we need to wait for all the required images the
+<tt>`Preview.png'</tt> image is made of in order to combine them all
+together.  This is something we can't do using post-rendition actions.
+</p>
+<p>Another rendition feature you can find inside the
+<tt>`trunk/Identity'</tt> directory structure is the
+<em>directory-specific rendition</em> feature. The directory-specific
+rendition feature combines both the post-rendition feature and the
+last-rendition feature in order to render specific directory
+structures in specific ways, automatically. This configuration can
+speed up production of different components like Syslinux, Grub, Gdm,
+Kdm and Ksplash that require intermediate formats or even several
+independent files, in order to reach its final construction. This is a
+way to programmatically describe how specific art works are built in
+and organized inside The CentOS Artwork Repository.  Such descriptions
+has beign added to <code>centos-art</code> command-line to let you
+produce them all with just one single command, as fast as your CPU
+could handle it. 
+</p>
+<p>See section <a href="repository_71.html#SEC355">The <tt>`trunk/Scripts/Bash/Cli/Functions/Identity'</tt> Directory</a>, for more
+information about the <code>identity</code> functionality of
+<code>centos-art</code> command-line interface.
+</p>
+
+<a name="SEC28"></a>
+<h3 class="subsection"> 2.4.4 See also </h3>
+
+<p>Specially useful has been, and keep being, the book <em>Corporate
+Identity</em> by Wally Olins (1989). This is the main conceptual material
+we've been using to build The CentOS Artwork Repository.
+</p>
+<p>See <a class="www" href="http://en.wikipedia.org/Corporate_identity">http://en.wikipedia.org/Corporate_identity</a> (and related
+links), for general information on corporate identity. 
+</p>
 
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC27" title="Previous section in reading order"> &lt; </a>]</td>
@@ -228,11 +299,11 @@ links).
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC20" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_79.html#SEC414" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 9 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 10 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 9 2011 by texi2html 1.76 -->
+<!-- Created on March, 10 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -23,10 +23,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: Index</title>
+<title>CentOS Artwork Repository: 2.75 The trunk/Scripts/Bash/Cli/Functions/Verify Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: Index">
-<meta name="keywords" content="CentOS Artwork Repository: Index">
+<meta name="description" content="CentOS Artwork Repository: 2.75 The trunk/Scripts/Bash/Cli/Functions/Verify Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.75 The trunk/Scripts/Bash/Cli/Functions/Verify Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -55,175 +55,302 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_78.html#SEC413" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.html#SEC415" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_78.html#SEC410" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC412" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.html#SEC415" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="#SEC414" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Index"></a>
+<a name="Filesystem-trunk-Scripts-Bash-Cli-Functions-Verify"></a>
+<a name="SEC411"></a>
+<h2 class="section"> 2.75 The <tt>`trunk/Scripts/Bash/Cli/Functions/Verify'</tt> Directory </h2>
+
+
+<a name="SEC412"></a>
+<h3 class="subsection"> 2.75.1 Goals </h3>
+
+<p>This section exists to organize files related to <tt>`centos-art.sh'</tt>
+script <samp>`verify'</samp> functionality.  The <samp>`verify'</samp>
+functionality of <tt>`centos-art.sh'</tt> script helps you to verify the
+workstation configuration you are planning to use as host for your
+working copy of CentOS Artwork Repository.
+</p>
+
+<a name="SEC413"></a>
+<h3 class="subsection"> 2.75.2 Description </h3>
+
+<p>The first time you download CentOS Artwork Repository you need to
+configure your workstation in order to use <tt>`centos-art.sh'</tt>
+script.  These preliminar configurations are based mainly on auxiliar
+RPM packages installation, symbolic links creations, and environment
+variables definitions.  The <samp>`verify'</samp> functionality of
+<tt>`centos-art.sh'</tt> script guides you through this preliminar
+configuration process.  
+</p>
+<p>If this is the first time you run <tt>`centos-art.sh'</tt> script, the
+appropriate way to use its <samp>`verify'</samp> functionality is not using
+the <tt>`centos-art.sh'</tt> script directly, but the absolute path to
+<code>centos-art.sh</code> script instead (i.e.,
+<tt>`~/artwork/trunk/Scripts/Bash/centos-art.sh'</tt>).  This is necessary
+because <tt>`centos-art'</tt> symbolic link, under <tt>`~/bin/'</tt>
+directory, has not been created yet.
+</p>
+
 <a name="SEC414"></a>
-<h1 class="unnumbered"> Index </h1>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC414_0" class="summary-letter"><b>D</b></a>
- &nbsp; 
-<a href="#SEC414_1" class="summary-letter"><b>F</b></a>
- &nbsp; 
-<a href="#SEC414_2" class="summary-letter"><b>H</b></a>
- &nbsp; 
-<a href="#SEC414_3" class="summary-letter"><b>I</b></a>
- &nbsp; 
-<a href="#SEC414_4" class="summary-letter"><b>M</b></a>
- &nbsp; 
-<a href="#SEC414_5" class="summary-letter"><b>R</b></a>
- &nbsp; 
-<a href="#SEC414_6" class="summary-letter"><b>T</b></a>
- &nbsp; 
-<a href="#SEC414_7" class="summary-letter"><b>U</b></a>
- &nbsp; 
-</td></tr></table>
-<table border="0" class="index-cp">
-<tr><td></td><th align="left">Index Entry</th><th align="left"> Section</th></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_0">D</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_2.html#SEC2">Document convenctions</a></td><td valign="top"><a href="repository_2.html#SEC2">1.1 Document Convenctions</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_1">F</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_3.html#SEC3">Feedback</a></td><td valign="top"><a href="repository_3.html#SEC3">1.2 Send in Your Feedback</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_5.html#SEC5">Filesystem branches</a></td><td valign="top"><a href="repository_5.html#SEC5">2.1 The <tt>`branches'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_6.html#SEC10">Filesystem tags</a></td><td valign="top"><a href="repository_6.html#SEC10">2.2 The <tt>`tags'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_7.html#SEC15">Filesystem trunk</a></td><td valign="top"><a href="repository_7.html#SEC15">2.3 The <tt>`trunk'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_8.html#SEC20">Filesystem trunk Identity</a></td><td valign="top"><a href="repository_8.html#SEC20">2.4 The <tt>`trunk/Identity'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_9.html#SEC29">Filesystem trunk Identity Brands</a></td><td valign="top"><a href="repository_9.html#SEC29">2.5 The <tt>`trunk/Identity/Brands'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_10.html#SEC34">Filesystem trunk Identity Fonts</a></td><td valign="top"><a href="repository_10.html#SEC34">2.6 The <tt>`trunk/Identity/Fonts'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_11.html#SEC39">Filesystem trunk Identity Icons</a></td><td valign="top"><a href="repository_11.html#SEC39">2.7 The <tt>`trunk/Identity/Icons'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_12.html#SEC44">Filesystem trunk Identity Isolinux</a></td><td valign="top"><a href="repository_12.html#SEC44">2.8 The <tt>`trunk/Identity/Isolinux'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_13.html#SEC49">Filesystem trunk Identity Models</a></td><td valign="top"><a href="repository_13.html#SEC49">2.9 The <tt>`trunk/Identity/Models'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_14.html#SEC54">Filesystem trunk Identity Models Css</a></td><td valign="top"><a href="repository_14.html#SEC54">2.10 The <tt>`trunk/Identity/Models/Css'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_15.html#SEC59">Filesystem trunk Identity Models Html</a></td><td valign="top"><a href="repository_15.html#SEC59">2.11 The <tt>`trunk/Identity/Models/Html'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_16.html#SEC64">Filesystem trunk Identity Models Img Promo Web</a></td><td valign="top"><a href="repository_16.html#SEC64">2.12 The <tt>`trunk/Identity/Models/Img/Promo/Web'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_17.html#SEC69">Filesystem trunk Identity Models Tpl</a></td><td valign="top"><a href="repository_17.html#SEC69">2.13 The <tt>`trunk/Identity/Models/Tpl'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_18.html#SEC74">Filesystem trunk Identity Models Tpl Brands</a></td><td valign="top"><a href="repository_18.html#SEC74">2.14 The <tt>`trunk/Identity/Models/Tpl/Brands'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_19.html#SEC79">Filesystem trunk Identity Models Tpl Promo Web</a></td><td valign="top"><a href="repository_19.html#SEC79">2.15 The <tt>`trunk/Identity/Models/Tpl/Promo/Web'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_20.html#SEC94">Filesystem trunk Identity Models Xcf</a></td><td valign="top"><a href="repository_20.html#SEC94">2.16 The <tt>`trunk/Identity/Models/Xcf'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_21.html#SEC99">Filesystem trunk Identity Release</a></td><td valign="top"><a href="repository_21.html#SEC99">2.17 The <tt>`trunk/Identity/Release'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_22.html#SEC104">Filesystem trunk Identity Themes</a></td><td valign="top"><a href="repository_22.html#SEC104">2.18 The <tt>`trunk/Identity/Themes'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_23.html#SEC109">Filesystem trunk Identity Themes Models</a></td><td valign="top"><a href="repository_23.html#SEC109">2.19 The <tt>`trunk/Identity/Themes/Models'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_24.html#SEC114">Filesystem trunk Identity Themes Models Alternative</a></td><td valign="top"><a href="repository_24.html#SEC114">2.20 The <tt>`trunk/Identity/Themes/Models/Alternative'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_25.html#SEC119">Filesystem trunk Identity Themes Models Default</a></td><td valign="top"><a href="repository_25.html#SEC119">2.21 The <tt>`trunk/Identity/Themes/Models/Default'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_26.html#SEC124">Filesystem trunk Identity Themes Models Default Concept</a></td><td valign="top"><a href="repository_26.html#SEC124">2.22 The <tt>`trunk/Identity/Themes/Models/Default/Concept'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_27.html#SEC129">Filesystem trunk Identity Themes Models Default Distro</a></td><td valign="top"><a href="repository_27.html#SEC129">2.23 The <tt>`trunk/Identity/Themes/Models/Default/Distro'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_28.html#SEC134">Filesystem trunk Identity Themes Models Default Distro Anaconda</a></td><td valign="top"><a href="repository_28.html#SEC134">2.24 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Anaconda'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_29.html#SEC139">Filesystem trunk Identity Themes Models Default Distro Firstboot</a></td><td valign="top"><a href="repository_29.html#SEC139">2.25 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Firstboot'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_30.html#SEC144">Filesystem trunk Identity Themes Models Default Distro Gdm</a></td><td valign="top"><a href="repository_30.html#SEC144">2.26 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Gdm'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_31.html#SEC149">Filesystem trunk Identity Themes Models Default Distro Grub</a></td><td valign="top"><a href="repository_31.html#SEC149">2.27 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Grub'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_32.html#SEC154">Filesystem trunk Identity Themes Models Default Distro Gsplash</a></td><td valign="top"><a href="repository_32.html#SEC154">2.28 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Gsplash'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_33.html#SEC159">Filesystem trunk Identity Themes Models Default Distro Kdm</a></td><td valign="top"><a href="repository_33.html#SEC159">2.29 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Kdm'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_34.html#SEC164">Filesystem trunk Identity Themes Models Default Distro Ksplash</a></td><td valign="top"><a href="repository_34.html#SEC164">2.30 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Ksplash'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_35.html#SEC169">Filesystem trunk Identity Themes Models Default Distro Rhgb</a></td><td valign="top"><a href="repository_35.html#SEC169">2.31 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Rhgb'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_36.html#SEC174">Filesystem trunk Identity Themes Models Default Distro Syslinux</a></td><td valign="top"><a href="repository_36.html#SEC174">2.32 The <tt>`trunk/Identity/Themes/Models/Default/Distro/Syslinux'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_37.html#SEC179">Filesystem trunk Identity Themes Models Default Promo</a></td><td valign="top"><a href="repository_37.html#SEC179">2.33 The <tt>`trunk/Identity/Themes/Models/Default/Promo'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_38.html#SEC184">Filesystem trunk Identity Themes Models Default Web</a></td><td valign="top"><a href="repository_38.html#SEC184">2.34 The <tt>`trunk/Identity/Themes/Models/Default/Web'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_39.html#SEC189">Filesystem trunk Identity Themes Motifs</a></td><td valign="top"><a href="repository_39.html#SEC189">2.35 The <tt>`trunk/Identity/Themes/Motifs'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_40.html#SEC194">Filesystem trunk Identity Themes Motifs Flame</a></td><td valign="top"><a href="repository_40.html#SEC194">2.36 The <tt>`trunk/Identity/Themes/Motifs/Flame'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_41.html#SEC203">Filesystem trunk Identity Themes Motifs Modern</a></td><td valign="top"><a href="repository_41.html#SEC203">2.37 The <tt>`trunk/Identity/Themes/Motifs/Modern'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_42.html#SEC208">Filesystem trunk Identity Themes Motifs Modern Backgrounds</a></td><td valign="top"><a href="repository_42.html#SEC208">2.38 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_43.html#SEC213">Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</a></td><td valign="top"><a href="repository_43.html#SEC213">2.39 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_44.html#SEC218">Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</a></td><td valign="top"><a href="repository_44.html#SEC218">2.40 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_45.html#SEC223">Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</a></td><td valign="top"><a href="repository_45.html#SEC223">2.41 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_46.html#SEC228">Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</a></td><td valign="top"><a href="repository_46.html#SEC228">2.42 The <tt>`trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_47.html#SEC233">Filesystem trunk Identity Themes Motifs Modern Palettes</a></td><td valign="top"><a href="repository_47.html#SEC233">2.43 The <tt>`trunk/Identity/Themes/Motifs/Modern/Palettes'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_48.html#SEC238">Filesystem trunk Identity Themes Motifs TreeFlower</a></td><td valign="top"><a href="repository_48.html#SEC238">2.44 The <tt>`trunk/Identity/Themes/Motifs/TreeFlower'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_49.html#SEC243">Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</a></td><td valign="top"><a href="repository_49.html#SEC243">2.45 The <tt>`trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_50.html#SEC251">Filesystem trunk Identity Widgets</a></td><td valign="top"><a href="repository_50.html#SEC251">2.46 The <tt>`trunk/Identity/Widgets'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_51.html#SEC256">Filesystem trunk Locales</a></td><td valign="top"><a href="repository_51.html#SEC256">2.47 The <tt>`trunk/Locales'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_52.html#SEC257">Filesystem trunk Locales Identity</a></td><td valign="top"><a href="repository_52.html#SEC257">2.48 The <tt>`trunk/Locales/Identity'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_53.html#SEC262">Filesystem trunk Locales Identity Brands</a></td><td valign="top"><a href="repository_53.html#SEC262">2.49 The <tt>`trunk/Locales/Identity/Brands'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_54.html#SEC270">Filesystem trunk Locales Identity Brands Tpl</a></td><td valign="top"><a href="repository_54.html#SEC270">2.50 The <tt>`trunk/Locales/Identity/Brands/Tpl'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_55.html#SEC275">Filesystem trunk Locales Identity Fonts</a></td><td valign="top"><a href="repository_55.html#SEC275">2.51 The <tt>`trunk/Locales/Identity/Fonts'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_56.html#SEC281">Filesystem trunk Locales Identity Models</a></td><td valign="top"><a href="repository_56.html#SEC281">2.52 The <tt>`trunk/Locales/Identity/Models'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_57.html#SEC286">Filesystem trunk Locales Identity Release</a></td><td valign="top"><a href="repository_57.html#SEC286">2.53 The <tt>`trunk/Locales/Identity/Release'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_58.html#SEC291">Filesystem trunk Locales Identity Themes</a></td><td valign="top"><a href="repository_58.html#SEC291">2.54 The <tt>`trunk/Locales/Identity/Themes'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_59.html#SEC296">Filesystem trunk Locales Identity Themes Backgrounds</a></td><td valign="top"><a href="repository_59.html#SEC296">2.55 The <tt>`trunk/Locales/Identity/Themes/Backgrounds'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_60.html#SEC301">Filesystem trunk Locales Identity Themes Distro Anaconda Progress</a></td><td valign="top"><a href="repository_60.html#SEC301">2.56 The <tt>`trunk/Locales/Identity/Themes/Distro/Anaconda/Progress'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_61.html#SEC306">Filesystem trunk Locales Identity Widgets</a></td><td valign="top"><a href="repository_61.html#SEC306">2.57 The <tt>`trunk/Locales/Identity/Widgets'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_62.html#SEC311">Filesystem trunk Manual</a></td><td valign="top"><a href="repository_62.html#SEC311">2.58 The <tt>`trunk/Manual'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_63.html#SEC316">Filesystem trunk Manuals</a></td><td valign="top"><a href="repository_63.html#SEC316">2.59 The <tt>`trunk/Manuals'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_64.html#SEC321">Filesystem trunk Scripts</a></td><td valign="top"><a href="repository_64.html#SEC321">2.60 The <tt>`trunk/Scripts'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_65.html#SEC326">Filesystem trunk Scripts Bash</a></td><td valign="top"><a href="repository_65.html#SEC326">2.61 The <tt>`trunk/Scripts/Bash'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_66.html#SEC331">Filesystem trunk Scripts Bash Cli</a></td><td valign="top"><a href="repository_66.html#SEC331">2.62 The <tt>`trunk/Scripts/Bash/Cli'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_67.html#SEC332">Filesystem trunk Scripts Bash Cli Functions</a></td><td valign="top"><a href="repository_67.html#SEC332">2.63 The <tt>`trunk/Scripts/Bash/Cli/Functions'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_68.html#SEC340">Filesystem trunk Scripts Bash Cli Functions Help</a></td><td valign="top"><a href="repository_68.html#SEC340">2.64 The <tt>`trunk/Scripts/Bash/Cli/Functions/Help'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_69.html#SEC345">Filesystem trunk Scripts Bash Cli Functions Html</a></td><td valign="top"><a href="repository_69.html#SEC345">2.65 The <tt>`trunk/Scripts/Bash/Cli/Functions/Html'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_70.html#SEC350">Filesystem trunk Scripts Bash Cli Functions Locale</a></td><td valign="top"><a href="repository_70.html#SEC350">2.66 The <tt>`trunk/Scripts/Bash/Cli/Functions/Locale'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_71.html#SEC355">Filesystem trunk Scripts Bash Cli Functions Manual</a></td><td valign="top"><a href="repository_71.html#SEC355">2.67 The <tt>`trunk/Scripts/Bash/Cli/Functions/Manual'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_72.html#SEC360">Filesystem trunk Scripts Bash Cli Functions Path</a></td><td valign="top"><a href="repository_72.html#SEC360">2.68 The <tt>`trunk/Scripts/Bash/Cli/Functions/Path'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_73.html#SEC371">Filesystem trunk Scripts Bash Cli Functions Render</a></td><td valign="top"><a href="repository_73.html#SEC371">2.69 The <tt>`trunk/Scripts/Bash/Cli/Functions/Render'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_74.html#SEC381">Filesystem trunk Scripts Bash Cli Functions Render Config</a></td><td valign="top"><a href="repository_74.html#SEC381">2.70 The <tt>`trunk/Scripts/Bash/Cli/Functions/Render/Config'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_75.html#SEC389">Filesystem trunk Scripts Bash Cli Functions Shell</a></td><td valign="top"><a href="repository_75.html#SEC389">2.71 The <tt>`trunk/Scripts/Bash/Cli/Functions/Shell'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_76.html#SEC394">Filesystem trunk Scripts Bash Cli Functions Svg</a></td><td valign="top"><a href="repository_76.html#SEC394">2.72 The <tt>`trunk/Scripts/Bash/Cli/Functions/Svg'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_77.html#SEC401">Filesystem trunk Scripts Bash Cli Functions Verify</a></td><td valign="top"><a href="repository_77.html#SEC401">2.73 The <tt>`trunk/Scripts/Bash/Cli/Functions/Verify'</tt> Directory</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_78.html#SEC409">Filesystem trunk Scripts Python</a></td><td valign="top"><a href="repository_78.html#SEC409">2.74 The <tt>`trunk/Scripts/Python'</tt> Directory</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_2">H</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_53.html#SEC268">How to render brands' translation files</a></td><td valign="top"><a href="repository_53.html#SEC268">2.49.3 Usage</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_55.html#SEC279">How to render fonts' translation files</a></td><td valign="top"><a href="repository_55.html#SEC279">2.51.3 Usage</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_3">I</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_1.html#SEC1">Introduction</a></td><td valign="top"><a href="repository_1.html#SEC1">1. Introduction</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_4">M</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_76.html#IDX32">Metadata maintainance</a></td><td valign="top"><a href="repository_76.html#SEC396">2.72.2 Description</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_5">R</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_4.html#SEC4">Repository file system</a></td><td valign="top"><a href="repository_4.html#SEC4">2. Repository File System</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_6">T</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_53.html#SEC265">Translation brands file names</a></td><td valign="top"><a href="repository_53.html#SEC265">2.49.2.1 Conventional file names</a></td></tr>
-<tr><td></td><td valign="top"><a href="repository_53.html#SEC266">Translation brands file names</a></td><td valign="top"><a href="repository_53.html#SEC266">2.49.2.2 Numeric file names</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
-<tr><th><a name="SEC414_7">U</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="repository_76.html#IDX33">Unused definitions</a></td><td valign="top"><a href="repository_76.html#SEC397">2.72.2.1 Metadata maintainance</a></td></tr>
-<tr><td colspan="3"> <hr></td></tr>
+<h4 class="subsubsection"> 2.75.2.1 Packages </h4>
+
+<p>Installation of auxiliar RPM packages provides the software required
+to manipulate files inside the repository (e.g., image files,
+documentation files, translation files, script files, etc.). Most of
+RPM packages <code>centos-art.sh</code> script uses are shipped with
+CentOS distribution, and can be installed from CentOS base repository.
+The only exception is <samp>`inkscape'</samp>, the package we use to
+manipulate SVG files.  The <samp>`inkscape'</samp> package is not inside
+CentOS distribution so it needs to be installed from third party
+repositories.
+</p>
+<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Configuration of third party repositories inside CentOS
+distribution is described in CentOS wiki, specifically in the
+following URL:
+<a class="www" href="http://wiki.centos.org/AdditionalResources/Repositories">http://wiki.centos.org/AdditionalResources/Repositories</a>
+</p></blockquote>
+
+<p>Before installing packages, the <tt>`centos-art.sh'</tt> script uses
+<code>sudo</code> to request root privileges to execute <code>yum</code>
+installation functionality.  If your user isn't defined as a
+privileged user--at least to run <code>yum</code> commands-- inside
+<tt>`/etc/sudoers'</tt> configuration file, you will not be able to
+perform package installation tasks as set in <tt>`centos-art.sh'</tt>
+script <samp>`verify'</samp> functionality. 
+</p>
+<p>Setting sudo privileges to users is an administrative task you have to
+do by yourself. If you don't have experience with <code>sudo</code>
+command, please read its man page running the command: <code>man
+sudo</code>. This reading will be very useful, and with some practice, you
+will be able to configure your users to have <code>sudo</code>
+privileges.
+</p>
+
+<a name="SEC415"></a>
+<h4 class="subsubsection"> 2.75.2.2 Links </h4>
+
+<p>Creation of symbolic links helps us to alternate between different
+implementations of <tt>`centos-art.sh'</tt> script-line (e.g.,
+<tt>`centos-art.sh'</tt>, for Bash implementation; <tt>`centos-art.py'</tt>,
+for Python implementation; <tt>`centos-art.pl'</tt>, for Perl
+implementation; and so on for other implementations). The
+<tt>`centos-art.sh'</tt> script-line definition takes place inside your
+personal binary (<tt>`~/bin/'</tt>) directory in order to make the script
+implementation --the one that <tt>`centos-art'</tt> links to-- available
+to <var>PATH</var> environment variable.
+</p>
+<p>Creation of symbolic links helps us to reuse components from repository
+working copy. For example, color information files maintained inside
+your working copy must never be duplicated inside program-specific
+configuration directories that uses them in your workstation (e.g.,
+Gimp, Inkscape, etc.).  Instead, a symbolic link must be created for
+each one of them, from program-specific configuration directories to
+files in the working copy.  In this configuration, when someone
+commits changes to color information files up to central repository,
+they--the changes committed-- will be immediatly available to your
+programs the next time you update your working copy --the place
+inside your workstation those color information files are stored--.
+</p>
+<p>Creation of symbolic links helps us to make <tt>`centos-art.sh'</tt>
+script functionalities available outside <tt>`trunk/'</tt> repository
+directory structure, but at its same level in repository tree. This is
+useful if you need to use the &quot;render&quot; functionality of
+<code>centos-art.sh</code> under <tt>`branches/'</tt> repository directory
+structure as you usually do inside <tt>`trunk/'</tt> repository directory
+structure. As consequence of this configuration, automation scripts
+cannot be branched under <tt>`branches/Scripts'</tt> directory structure.
+</p>
+
+<a name="SEC416"></a>
+<h4 class="subsubsection"> 2.75.2.3 Environment variables </h4>
+
+<p>Definition of environemnt variables helps us to set default values to
+our user session life. The user session environment variable defintion
+takes place in the user's <tt>`~/.bash_profile'</tt> file.  The
+<samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script doesn't
+modify your <tt>`~/.bash_profile'</tt> file.  
+</p>
+<p>The <samp>`verify'</samp> functionality of <tt>`centos-art.sh'</tt> script
+evaluates the following environment variables:
+</p>
+<dl compact="compact">
+<dt> <code>EDITOR</code></dt>
+<dd><p>Default text editor. 
+</p>
+<p>The <tt>`centos-art.sh'</tt> script uses default text <code>EDITOR</code> to edit
+pre-commit subversion messages, translation files, configuration
+files, script files, and similar text-based files.
+</p>
+<p>If <code>EDITOR</code> environment variable is not set, <tt>`centos-art.sh'</tt>
+script uses <tt>`/usr/bin/vim'</tt> as default text editor. Otherwise, the
+following values are recognized by <tt>`centos-art.sh'</tt> script:
+</p>
+<ul class="toc">
+<li> <tt>`/usr/bin/vim'</tt>
+</li><li> <tt>`/usr/bin/emacs'</tt>
+</li><li> <tt>`/usr/bin/nano'</tt>
+</li></ul>
+
+<p>If no one of these values is set in <code>EDITOR</code> environment variable,
+<tt>`centos-art.sh'</tt> uses <tt>`/usr/bin/vim'</tt> text editor by default. 
+</p>
+</dd>
+<dt> <code>TEXTDOMAIN</code></dt>
+<dd>
+<p>Default domain used to retrieve translated messages.  This variable is
+set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
+</p>
+</dd>
+<dt> <code>TEXTDOMAINDIR</code></dt>
+<dd>
+<p>Default directory used to retrieve translated messages.  This variable
+is set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
+</p>
+</dd>
+<dt> <code>LANG</code></dt>
+<dd>
+<p>Default locale information.
+</p>
+<p>This variable is initially set in the configuration process of CentOS
+distribution installer (i.e., Anaconda), specifically in the
+<samp>`Language'</samp> step; or once installed using the
+<code>system-config-language</code> tool.
+</p>
+<p>The <tt>`centos-art.sh'</tt> script uses the <var>LANG</var> environment
+variable to know in which language the script messages are printed
+out.
+</p>
+</dd>
+<dt> <code>TZ</code></dt>
+<dd>
+<p>Default time zone representation.
+</p>
+<p>This variable is initially set in the configuration process of CentOS
+distribution installer (i.e., Anaconda), specifically in the
+<samp>`Date and time'</samp> step; or once installed using the
+<code>system-config-date</code> tool.
+</p>
+<p>The <tt>`centos-art.sh'</tt> script doesn't use the <var>TZ</var> environment
+variable information at all. Instead, this variable is used by the
+system shell to show the time information according to your phisical
+location on planet Earth.  
+</p>
+<p>Inside your computer, the time information is firstly set in the BIOS
+clock (which may need correction), and later in the configuration
+process of CentOS distribution installer (or later, by any of the
+related configuration tools inside CentOS distribution).  Generally,
+setting time information is a straight-forward task and configuration
+tools available do cover most relevant location. However, if you need
+a time precision not provided by the configuration tools available
+inside CentOS distribution then, using <var>TZ</var> variable may be
+necessary.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-ruler.png" alt="Convenction"><h3>Convenction</h3><p> In order to keep changes syncronized between
+central repository and its working copies: configure both repository
+server and workstations (i.e., the place where each working copy is
+set on) to use Coordinated Universal Time (UTC) as base time
+representation.  Later, correct the time information for your specific
+location using time zone correction.
+</p></blockquote>
+
+<p>The format of <var>TZ</var> environment variable is described in
+<tt>`tzset(3)'</tt> manual page.
+</p>
+</dd>
+</dl>
+
+
+<a name="SEC417"></a>
+<h3 class="subsection"> 2.75.3 Usage </h3>
+
+<dl compact="compact">
+<dt> <code>centos-art verify --packages</code></dt>
+<dd>
+<p>Verify required packages your workstation needs in order to run the
+<tt>`centos-art.sh'</tt> script correctly.  If there are missing packages,
+the <tt>`centos-art.sh'</tt> script asks you to confirm their
+installation. When installing packages, the <tt>`centos-art.sh'</tt>
+script uses the <code>yum</code> application in order to achieve the
+task.
+</p>
+<p>In case all packages required by <tt>`centos-art.sh'</tt> script are
+already installed in your workstation, the message <samp>`The required
+packages are already installed.'</samp> is output for you to know. 
+</p>
+</dd>
+<dt> <code>centos-art verify --links</code></dt>
+<dd>
+<p>Verify required links your workstation needs in order to run the
+centos-art command correctly.  If any required link is missing, the
+<code>centos-art.sh</code> script asks you to confirm their installation.
+To install required links, the <code>centos-art.sh</code> script uses the
+<code>ln</code> command.
+</p>
+<p>In case all links required by <tt>`centos-art.sh'</tt> script are already
+created in your workstation, the message <samp>`The required links are
+already installed.'</samp> is output for you to know. 
+</p>
+<p>In case a regular file exists with the same name of a required link,
+the <tt>`centos-art.sh'</tt> script outputs the <samp>`Already exists as
+regular file.'</samp> message when listing required links that will be
+installed. Of course, as there is already a regular file where must be
+a link, no link is created. In such cases the <tt>`centos-art.sh'</tt>
+script will fall into a continue installation request for that missing
+link.  To end this continue request you can answer <samp>`No'</samp>, or
+remove the existent regular file to let <tt>`centos-art.sh'</tt> script
+install the link on its place.
+</p>
+</dd>
+<dt> <code>centos-art verify --environment</code></dt>
+<dt> <code>centos-art verify --environment --filter='regex'</code></dt>
+<dd>
+<p>Output a brief description of environment variables used by
+<tt>`centos-art.sh'</tt> script. 
+</p>
+<p>If <samp>`--filter'</samp> option is provided, output is reduced as defined in
+the <samp>`regex'</samp> regular expression value. If <samp>`--filter'</samp> option
+is specified but <samp>`regex'</samp> value is not, the <tt>`centos-art.sh'</tt>
+script outputs information as if <samp>`--filter'</samp> option had not been
+provided at all.  
+</p>
+</dd>
+</dl>
+
+
+<a name="SEC418"></a>
+<h3 class="subsection"> 2.75.4 See also </h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="repository_66.html#SEC331">2.62 The <tt>`trunk/Scripts/Bash'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a href="#SEC414_0" class="summary-letter"><b>D</b></a>
- &nbsp; 
-<a href="#SEC414_1" class="summary-letter"><b>F</b></a>
- &nbsp; 
-<a href="#SEC414_2" class="summary-letter"><b>H</b></a>
- &nbsp; 
-<a href="#SEC414_3" class="summary-letter"><b>I</b></a>
- &nbsp; 
-<a href="#SEC414_4" class="summary-letter"><b>M</b></a>
- &nbsp; 
-<a href="#SEC414_5" class="summary-letter"><b>R</b></a>
- &nbsp; 
-<a href="#SEC414_6" class="summary-letter"><b>T</b></a>
- &nbsp; 
-<a href="#SEC414_7" class="summary-letter"><b>U</b></a>
- &nbsp; 
-</td></tr></table>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_78.html#SEC413" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.html#SEC415" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC417" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_80.html#SEC419" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.html#SEC415" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC411" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 9 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 10 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

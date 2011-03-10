@@ -1,7 +1,7 @@
 @subsection Goals
 
-The @file{trunk/Identity} directory exists to organize CentOS
-corporate identity artworks. 
+The @file{trunk/Identity} directory structure implements @emph{The
+CentOS Project Corporate Identity}.
 
 @subsection Description
 
@@ -14,118 +14,188 @@ visual identity expresses the values and ambitions of the CentOS
 Project organization, its business, and its characteristics.  
 
 The CentOS Project corporate identity provides visibility,
-recognizability, reputation, structure and identification to the
-CentOS Project organization by means of corporate design, corporate
-communication, and corporate behaviour.
+recognizability, reputation, structure and identification to The
+CentOS Project organization by means of @emph{Corporate Design},
+@emph{Corporate Communication}, and @emph{Corporate Behaviour}.
 
-The CentOS Project settles down its corporate visual identity on a
-@emph{``monolithic corporate visual identity structure''}. In this
-structure The CentOS Project uses one unique name (The CentOS Brand)
-and one unique visual style (The CentOS Default Theme) in all its
-manifestations. 
+@subsubsection Corporate Design
+
+The CentOS Project corporate design is applied to every single visual
+manifestations The CentOS Project as organization wants to express its
+existence. Examples of the most relevant visual manifestations inside
+The CentOS Project are @emph{The CentOS Distribution}, @emph{The
+CentOS Web} and @emph{The CentOS Stationery}.
+
+The CentOS Project corporate design is organized in the following
+work-lines:
 
 @table @strong
-
-@item The CentOS Brands
-
-The CentOS Brand is the name or trademark that conncects the producer
+@item The CentOS Brand
+The CentOS Brand is the name or trademark that connects the producer
 with their products. In this case, the producer is The CentOS Project
-and the product is the CentOS Distributions. The CentOS Brand
-connects, also, different media (e.g., web sites, promotion stuff)
-used to backup the CentOS Distribution, in a way The CentOS Project
-visual connection remains through them.
+and the products are The CentOS Project visual manifestations. 
 
 @xref{Filesystem trunk Identity Brands}, for more information.
 
-@item The CentOS Corporate Visual Identity
+@item The CentOS Colors
 
-The CentOS Corporate Visual Identity is implemented by mean of
-@emph{CentOS Themes}. CentOS themes are made of @emph{CentOS Models}
-and @emph{CentOS Motifs}. CentOS Models implement the structural part
-of corporate identity and CentOS Motifs implement the visual style
-part of corporate identity.
+The CentOS Fonts provides the color information used along The CentOS
+Project visual manifestations.
+
+@xref{Filesystem trunk Identity Colors}, for more information.
+@item The CentOS Fonts
+
+The CentOS Fonts provides the typography information used along The
+CentOS Project visual manifestations.
+
+@xref{Filesystem trunk Identity Fonts}, for more information.
+@item The CentOS Themes
+
+The CentOS Themes provides structural information and visual style
+information, as well, used along The CentOS Project visual
+manifestations.
 
 @xref{Filesystem trunk Identity Themes}, for more information.
 @end table
 
+@subsubsection Corporate Communication
+
+The CentOS Project corporate communication is based on community
+communication.  In that sake, the following media are available for
+corporate communication:
+
+@itemize
+@item The CentOS Mailing Lists (@url{http://lists.centos.org/}).
+@item The CentOS Forums (@url{http://forums.centos.org/}).
+@end itemize
+
+@subsubsection Corporate Behaviour
+
+The CentOS Project corporate behaviour is based on community
+behaviour.
+
+@subsubsection Corporate Structure
+
+The CentOS Project corporate structure is based on a
+@emph{``monolithic corporate structure''}. In this structure, we use
+one unique name (The CentOS Brand) and one unique visual style (The
+CentOS Theme) in all The CentOS Project visual manifestations.
+
 Inside a monolithic corporate visual identity structure, internal and
 external stakeholders use to feel a strong sensation of uniformity,
 orientation, and identification with the organization. No matter if
-you are visiting websites, using the distribution, or acting on social
-events, the one unique name and one unique visual style conect them
-all to say: Hey! we are all parts of the CentOS project.  And,
-probably, some vister will say: Can I join the party?  Yes you can, it
-is free.
+you are visiting web sites, using the distribution, or acting on
+social events, the one unique name and one unique visual style
+connects them all to say: @emph{Hey! we are all part of The CentOS
+Project}.
+
+Other corporate structures have been considered as well, but they
+introduce visual contradictions we consider important to be aware of.
+In that sake, lets describe the idea of: @emph{Producing one different
+visual style for each major release of CentOS distribution}.
+
+The CentOS Project maintains near to four different major releases of
+CentOS distribution parallely in time and that fact makes one part of
+The CentOS Project structural design, but not the complete design.  In
+order to produce the correct corporate structure for The CentOS
+Project we need to concider all the visual manifestations The CentOS
+Project is made of, not just one of them.
+
+If one different visual style is used for each major release of CentOS
+distribution, which one of those different visual styles would be the
+one used to cover other visual manifestations, like The CentOS Webs
+and The CentOS Stationery? Why The CentOS Distribution we are using
+shows one visual style and The CentOS Web sites a completly different
+one?  Isn't them all part of the same project?
+
+Obviously, having just one visual style in all visual manifestations
+for eternity would be a very boring thing and also would give the idea
+of a visually dead project. So, there is no problem on creating a
+brand new visual style for each new major release of CentOS
+distribution, in order to refresh the CentOS distribution visual
+style; the problem does is in not propagating the brand new visual
+style created for the new release of CentOS Distribution to all other
+visual manifestations The CentOS Project is made of, in a way The
+CentOS Project could be recognized no matter what visual manifestation
+be in front of us. Such lack of uniformity is what introduces the
+visual contradition we are precisely trying to solve by mean of themes
+in the CentOS Artwork Repository.
 
 @subsection Usage
 
-To produce identity artworks, use the following commands:
+The @file{trunk/} directory structure is organize in renderable and
+non-renderable directories. Generally, renderable directories contain
+two non-renderable directories, one to store design templates (the
+@file{Tpl/} directory), and another to store the content produced (the
+@file{Img/} directory).
 
-@table @samp
-@item centos-art render 'path/to/dir' 
+In order to produce content inside the rendereble directories, you can
+use the following command:
 
-When @samp{path/to/dir} refers to one renderable directory under
-@file{trunk/Identity}, this command renders identity artworks using
-both related design models and related translation files.
-
-@item centos-art render 'path/to/dir' --filter='pattern' 
-
-When @samp{path/to/dir} refers to one renderable directory under
-@file{trunk/Identity}, this command renders identity artworks using
-both related design models and related translation files that match
-the regular expression passed in @samp{--filter='pattern'} argument.
-
-To control the number of files produced by @command{centos-art}
-command, you need to look into the translation path and provide a
-regular expression pattern that matches the translation path, or
-paths, related to the file, or files, you want to produce.  
-
-The regular expression pattern you provide to @command{centos-art}
-command is applied to the translation path from its very beginning.
-It is not the same to say @samp{5/en/01-welcome} that
-@samp{01-welcome}, the frist expression matches but the last one does
-not.
-
-When using @samp{--filter='pattern'} you don't need to specify the
-file extension. It is removed from translation path before applying
-the pattern, so it doesn't count here.
-@end table
-
-@subsection File name convenctions
-
-As file name convenction, inside CentOS Artwork Repository, both
-text-based and image-based file name produced by @command{centos-art.sh}
-script has the same name of their translation files without
-the @samp{.sed} extension. The file extension is set as follow:
-
-@subsubsection When text-based files are rendered
-
-Text-based files end up having the same extension of their design
-template file.
-
-@subsubsection When image-based files are rendered
-
-Image-based files always end up having the @file{.png} extension. 
+@verbatim
+centos-art identity --render='trunk/Identity/Path/To/Dir'
+@end verbatim
 
 @quotation
-@strong{Tip} Once @file{.png} images are created, other image formats
-may be created using the @command{renderFormats} post-rendering
-action, inside the image-based related pre-rendering configuration
-script.
-
-@xref{Filesystem trunk Scripts Bash}, for more information.
+@strong{Warning} If the @command{centos-art} command-line is not found
+in your workstation, it is probably because you haven't prepared it
+for using The CentOS Artwork Repository yet. @xref{Filesystem trunk
+Scripts Bash Cli Functions Verify}, for more information.
 @end quotation
+
+This command takes one design template and creates an instance of it
+in order to apply translation messages, if any. Later, using the
+design template instance the command renders the final content based
+on whether the design template instance is a SVG file or a Docbook
+file. If the design template instace is a SVG file, the final content
+produced is a PNG image. On the other hand, if the design template
+instance is a Docbook file, the final content produced is a XHTML
+file.
+
+Additionally to base-rendition flow, the @command{centos-art} provides
+the @emph{post-rendition} and @emph{last-rendition} rendition
+features.
+
+The post-rendition is applied to base file produced in the same
+directory structure. For example, you can use post-rendition action to
+render PNG base output into different outputs (e.g., JPG, PDF, etc.)
+before passing to process the next file in the same directory
+structure.
+
+On the other hand, the last-rendition is applied to all files produces
+by both base-rendition and post-rendition in the same directory
+structure, just before passing to process a different directory
+structure.  For example, the @file{Preview.png} image from Ksplash
+component is made of three images. In order to build the
+@file{Preview.png} image as part of @command{centos-art} rendition
+flow, we need to wait for all the required images the
+@file{Preview.png} image is made of in order to combine them all
+together.  This is something we can't do using post-rendition actions.
+
+Another rendition feature you can find inside the
+@file{trunk/Identity} directory structure is the
+@emph{directory-specific rendition} feature. The directory-specific
+rendition feature combines both the post-rendition feature and the
+last-rendition feature in order to render specific directory
+structures in specific ways, automatically. This configuration can
+speed up production of different components like Syslinux, Grub, Gdm,
+Kdm and Ksplash that require intermediate formats or even several
+independent files, in order to reach its final construction. This is a
+way to programmatically describe how specific art works are built in
+and organized inside The CentOS Artwork Repository.  Such descriptions
+has beign added to @command{centos-art} command-line to let you
+produce them all with just one single command, as fast as your CPU
+could handle it. 
+
+@xref{Filesystem trunk Scripts Bash Cli Functions Identity}, for more
+information about the @command{identity} functionality of
+@command{centos-art} command-line interface.
 
 @subsection See also
 
-@menu
-@comment --- Removed(* Filesystem trunk Translations::) ---
-@end menu
+Specially useful has been, and keep being, the book @emph{Corporate
+Identity} by Wally Olins (1989). This is the main conceptual material
+we've been using to build The CentOS Artwork Repository.
 
-@subsection References
-
-@itemize
-@item @url{http://en.wikipedia.org/Corporate_identity} (and related
-links).
-@end itemize
-
+See @url{http://en.wikipedia.org/Corporate_identity} (and related
+links), for general information on corporate identity. 

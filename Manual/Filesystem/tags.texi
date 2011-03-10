@@ -1,22 +1,24 @@
 @subsection Goals
 
-@itemize
-@item ...
-@end itemize
+This directory implements the Subversion's tags concept in a trunk,
+branches, tags repository structure.
 
 @subsection Description
 
-@itemize
-@item ...
-@end itemize
+The @file{tags/} directory structre provides frozen branches.
+Generally, we use frozen branches to make check-points in time for
+development lines under @file{branches/} or @file{trunk/} directory
+structure.
 
 @subsection Usage
 
-@itemize
-@item ...
-@end itemize
+The @file{tags/} directory structure is unused, so far.
 
 @subsection See also
 
-@menu
-@end menu
+@itemize
+@item @xref{Filesystem branches}.
+@item @xref{Filesystem trunk}.
+@item Subversion's book (@url{http://svnbook.red-bean.com/}).
+@end itemize
+
