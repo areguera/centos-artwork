@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_do {
+function render_doBaseActions {
 
     local -a FILES
     local FILE=''
