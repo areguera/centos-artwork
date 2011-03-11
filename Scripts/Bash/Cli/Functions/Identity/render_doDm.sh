@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderDm.sh -- This function collects Display Manager (DM)
+# render_doDm.sh -- This function collects Display Manager (DM)
 # required files and creates a tar.gz package that groups them all
 # together. Use this function as last-rendition action for Gdm and Kdm
 # base-rendition actions.
@@ -46,7 +46,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderDm {
+function render_doDm {
 
     local -a SRC
     local -a DST
@@ -61,7 +61,7 @@ function identity_renderDm {
 
     # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
-    DM=$(identity_getConfigOption "${ACTION}" '2')
+    DM=$(render_getConfigOption "${ACTION}" '2')
  
     # Sanitate display manager passed from render.conf.sh
     # pre-rendition configuration script. Whatever value be retrived
@@ -72,7 +72,7 @@ function identity_renderDm {
 
     # Get screen resolutions passed from render.conf.sh pre-rendition
     # configuration script.
-    RESOLUTIONS=$(identity_getConfigOption "${ACTION}" '3')
+    RESOLUTIONS=$(render_getConfigOption "${ACTION}" '3')
 
     # Check screen resolutions passed from render.conf.sh
     # pre-rendition configuration script.

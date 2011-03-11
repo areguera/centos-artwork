@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity.sh -- This function initializes rendition variables and
+# render.sh -- This function initializes rendition variables and
 # actions to centos-art.sh script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity {
+function render {
 
     # Define default value to target flag. The target flag (--to)
     # controls final destination used by copy related actions.
@@ -55,6 +55,6 @@ function identity {
     local FLAG_GROUPED_BY=''
 
     # Define rendition actions.
-    identity_getActions
+    render_getActions
 
 }

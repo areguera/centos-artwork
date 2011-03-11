@@ -1,12 +1,8 @@
 #!/bin/bash
 #
-# identity_copy.sh -- This function duplicates rendition stuff.
-# Rendition stuff is formed by design models, design images and
-# pre-rendition configuration scripts (which includes translations
-# files). This way, when we say to duplicate rendition stuff we are
-# saying to duplicate these four directory structures (i.e., design
-# models, design images, pre-rendition configuration scripts, and
-# related translations files).
+# render_convertDocbookToXhtml.sh -- This function produces XHTML
+# output from docbook template instance using XSL stylesheets as
+# reference.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -29,11 +25,20 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_copy {
+function render_convertDocbookToXhtml {
 
-    # Verify target directory.
-    cli_checkRepoDirTarget
+    # Print action message.
+    if [[ -f ${FILE}.xhtml ]];then
+        cli_printMessage "${FILE}.xhtml" 'AsUpdatingLine'
+    else
+        cli_printMessage "${FILE}.xhtml" 'AsCreatingLine'
+    fi
 
-    # Determine what directory structure we are duplicating.
+    # Define list of XSL stylesheets.
+    local XSL='/usr/share/sgml/docbook/xsl-stylesheets/xhtml/docbook.xsl'
+
+    # Produce xhtml output from docbook template instance using XSL
+    # stylesheets as reference.
+    xsltproc ${XSL} $INSTANCE > ${FILE}.xhtml
 
 }

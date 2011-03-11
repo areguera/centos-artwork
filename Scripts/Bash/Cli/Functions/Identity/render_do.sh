@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_render.sh -- This function performs base-rendition action
+# render_do.sh -- This function performs base-rendition action
 # for all files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_render {
+function render_do {
 
     local -a FILES
     local FILE=''
@@ -70,7 +70,7 @@ function identity_render {
     PARENTDIR=$(basename "${ACTIONVAL}")
 
     # Define base location of template files.
-    identity_getDirTemplate
+    render_getDirTemplate
     
     # Define list of files to process as array variable. This make
     # posible to realize verifications like: is the current base
@@ -130,7 +130,7 @@ function identity_render {
         fi
  
         # Define final location of output directory.
-        identity_getDirOutput
+        render_getDirOutput
 
         # Get relative path to file. The path string (stored in FILE)
         # has two parts: 1. the variable path and 2. the common path.
@@ -195,24 +195,24 @@ function identity_render {
         if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
 
             # Perform base-rendition action for svg files.
-            identity_renderSvg
+            render_doSvg
 
             # Perform post-rendition action for svg files.
-            identity_renderSvgPostActions
+            render_doSvgPostActions
 
             # Perform last-rendition action for svg files.
-            identity_renderSvgLastActions
+            render_doSvgLastActions
             
         elif [[ $INSTANCE =~ '\.docbook$' ]];then
 
             # Perform base-rendition action for docbook files.
-            identity_renderDocbook
+            render_doDocbook
 
             # Perform post-rendition action for docbook files.
-            #identity_renderDocbookPostActions
+            #render_doDocbookPostActions
 
             # Perform base-rendition action for docbook files.
-            #identity_renderDocbookLastActions
+            #render_doDocbookLastActions
 
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" 'AsErrorLine'
@@ -225,10 +225,10 @@ function identity_render {
         fi
 
         # Perform post-rendition actions for all files.
-        identity_renderPostActions
+        render_doPostActions
 
         # Perform last-rendition actions for all files.
-        identity_renderLastActions
+        render_doLastActions
 
         # Increment file counter.
         COUNT=$(($COUNT + 1))

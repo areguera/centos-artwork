@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# identity_convertDocbookToXhtml.sh -- This function produces XHTML
-# output from docbook template instance using XSL stylesheets as
-# reference.
+# render_doDocbook.sh -- This function performs base-rendition
+# action for DocBook files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,20 +24,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_convertDocbookToXhtml {
-
-    # Print action message.
-    if [[ -f ${FILE}.xhtml ]];then
-        cli_printMessage "${FILE}.xhtml" 'AsUpdatingLine'
-    else
-        cli_printMessage "${FILE}.xhtml" 'AsCreatingLine'
-    fi
-
-    # Define list of XSL stylesheets.
-    local XSL='/usr/share/sgml/docbook/xsl-stylesheets/xhtml/docbook.xsl'
+function render_doDocbook {
 
     # Produce xhtml output from docbook template instance using XSL
     # stylesheets as reference.
-    xsltproc ${XSL} $INSTANCE > ${FILE}.xhtml
+    render_convertDocbookToXhtml
+
+    # Produce plaintext output from html outout.
+    render_convertHtml2Text
 
 }

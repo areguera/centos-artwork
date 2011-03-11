@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderSvg.sh -- This function performs base-rendition
+# render_doSvg.sh -- This function performs base-rendition
 # action for SVG files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderSvg {
+function render_doSvg {
 
     # Define export id used inside design templates. This value
     # defines the design area we want to export.
@@ -44,7 +44,7 @@ function identity_renderSvg {
     # background information is not available the image is produced
     # without background information. This is something that need to
     # be avoided.
-    identity_checkSvgAbsref "$INSTANCE"
+    render_checkSvgAbsref "$INSTANCE"
 
     # Render template instance using inkscape. Modify the inkscape
     # output to reduce the amount of characters used in description

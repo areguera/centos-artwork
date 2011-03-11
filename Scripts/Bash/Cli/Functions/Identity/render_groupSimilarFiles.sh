@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_groupSimilarFiles.sh -- This function provides
+# render_groupSimilarFiles.sh -- This function provides
 # post-rendition action to group files inside directories named as
 # their file extensions.  For example: if the current file is a .png
 # file, it is moved inside a Png/ directory; if the current file is a
@@ -32,14 +32,14 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_groupSimilarFiles {
+function render_groupSimilarFiles {
 
     local SOURCE=''
     local TARGET=''
 
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
-    local FORMATS=$(identity_getConfigOption "$ACTION" '2-')
+    local FORMATS=$(render_getConfigOption "$ACTION" '2-')
 
     for FORMAT in $FORMATS;do
 

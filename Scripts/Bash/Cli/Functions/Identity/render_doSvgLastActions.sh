@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderSvgLastActions.sh -- This function performs
+# render_doSvgLastActions.sh -- This function performs
 # last-rendition actions for SVG files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderSvgLastActions {
+function render_doSvgLastActions {
 
     local ACTION=''
 
@@ -62,11 +62,11 @@ function identity_renderSvgLastActions {
         case "${ACTION}" in
 
             renderKsplash )
-                identity_renderKsplash
+                render_doKsplash
                 ;;
 
             renderDm:* )
-                identity_renderDm
+                render_doDm
                 ;;
 
         esac

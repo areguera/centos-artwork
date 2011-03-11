@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# identity_renderPostActions.sh -- This function performs
-# post-rendition actions for all files.
+# render_doLastActions.sh -- This function performs
+# last-rendition actions for all files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,20 +24,30 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderPostActions {
+function render_doLastActions {
 
     local ACTION=''
 
-    for ACTION in "${POSTACTIONS[@]}"; do
+    # Verify position of file being produced in the list of files been
+    # currently processed.
+    if [[ $THIS_FILE_DIR != $NEXT_FILE_DIR ]];then
 
-        case "${ACTION}" in
+        # At this point centos-art.sh should be producing the last
+        # file from the same unique directory structure, so, before
+        # producing images for the next directory structure lets
+        # execute last-rendition actions for the current directory
+        # structure. 
+        for ACTION in "${LASTACTIONS[@]}"; do
 
-            groupSimilarFiles:* )
-                identity_groupSimilarFiles
-                ;;
+            case "${ACTION}" in
 
-        esac
+                groupSimilarFiles:* )
+                    render_groupSimilarFiles
+                    ;;
+            esac
 
-    done
+        done
+
+    fi
 
 }

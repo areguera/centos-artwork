@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderGrub.sh -- This function provides post-rendition
+# render_doGrub.sh -- This function provides post-rendition
 # action used to produce GRUB images.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderGrub {
+function render_doGrub {
 
     # Define 16 colors images default file name prefix.
     local PREFIX='-14c'
@@ -33,7 +33,7 @@ function identity_renderGrub {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    local OPTIONS=$(identity_getConfigOption "$ACTION" '2-')
+    local OPTIONS=$(render_getConfigOption "$ACTION" '2-')
 
     # Re-define 16 colors images default file name prefix using
     # options as reference. This is useful to differenciate final

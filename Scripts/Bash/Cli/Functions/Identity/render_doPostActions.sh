@@ -1,10 +1,7 @@
 #!/bin/bash
 #
-# identity_convertPngTo.sh -- This function provides post-rendition
-# action used to convert images from PNG to different image formats.
-# This function uses ImageMagick command line image manipulation tool
-# set to convert the base PNG image to as many formats as ImageMagick
-# supports.
+# render_doPostActions.sh -- This function performs
+# post-rendition actions for all files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,26 +24,20 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_convertPngTo {
+function render_doPostActions {
 
-    # Get image formats.
-    local FORMATS=$(identity_getConfigOption "$ACTION" '2-')
+    local ACTION=''
 
-    # Check base file existence.
-    if [[ -f ${FILE}.png ]];then
+    for ACTION in "${POSTACTIONS[@]}"; do
 
-        # Check image formats.
-        if [[ "$FORMATS" != "" ]];then
+        case "${ACTION}" in
 
-            # Loop through image formats and do format convertion using
-            # PNG file as base.
-            for FORMAT in $FORMATS;do
-                cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
-                convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
-            done
+            groupSimilarFiles:* )
+                render_groupSimilarFiles
+                ;;
 
-        fi
+        esac
 
-    fi
+    done
 
 }

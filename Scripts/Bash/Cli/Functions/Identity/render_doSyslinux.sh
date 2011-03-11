@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderSyslinux.sh -- This function provides post-rendition
+# render_doSyslinux.sh -- This function provides post-rendition
 # action used to produce syslinux images.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderSyslinux {
+function render_doSyslinux {
 
     # Define 16 colors images default file name prefix.
     local PREFIX='-16c'
@@ -33,7 +33,7 @@ function identity_renderSyslinux {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    local OPTIONS=$(identity_getConfigOption "$ACTION" '2-')
+    local OPTIONS=$(render_getConfigOption "$ACTION" '2-')
 
     # Check options passed to action. This is required in order to
     # aviod using options used already in this script. For example

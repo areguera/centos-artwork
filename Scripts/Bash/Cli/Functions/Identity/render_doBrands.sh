@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderBrands.sh -- This function provides last-rendition
+# render_doBrands.sh -- This function provides last-rendition
 # actions to produce CentOS brands. This function takes both The
 # CentOS Symbol and The CentOS Type images and produces variation of
 # them in different dimensions and formats using ImageMagick tool-set.
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderBrands {
+function render_doBrands {
 
     local SOURCEFILE=''
     local TARGETDIR=''

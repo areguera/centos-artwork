@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# identity_getConfigOption.sh -- This function standardizes the way
+# render_getConfigOption.sh -- This function standardizes the way
 # action values are retrived from pre-rendition configuration files.
 # Use this function whenever you need to retrive action values from
 # pre-rendition configuration script.
 #
-# Usage: VAR=$(identity_getConfigOption "ACTION" "FIELD")
+# Usage: VAR=$(render_getConfigOption "ACTION" "FIELD")
 #
 # VAR is the name of the variable where we store the option named
-# returned by identity_getConfigOption. 
+# returned by render_getConfigOption. 
 #
 # ACTION is the string definition set in the pre-rendition
 # configuration script that holds the action name and its options
@@ -41,7 +41,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_getConfigOption {
+function render_getConfigOption {
 
     local ACTION="$1"
     local FIELD="$2"

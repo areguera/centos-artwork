@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# identity_renderKsplash.sh -- This function collects KDE splash
+# render_doKsplash.sh -- This function collects KDE splash
 # (KSplash) required files and creates a tar.gz package that groups
 # them all together. Use this function as last-rendition action for
 # KSplash base-rendition action.
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderKsplash {
+function render_doKsplash {
 
     local -a SRC
     local -a DST

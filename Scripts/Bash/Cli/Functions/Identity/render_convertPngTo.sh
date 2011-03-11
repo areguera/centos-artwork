@@ -1,7 +1,10 @@
 #!/bin/bash
 #
-# identity_renderLastActions.sh -- This function performs
-# last-rendition actions for all files.
+# render_convertPngTo.sh -- This function provides post-rendition
+# action used to convert images from PNG to different image formats.
+# This function uses ImageMagick command line image manipulation tool
+# set to convert the base PNG image to as many formats as ImageMagick
+# supports.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,29 +27,25 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderLastActions {
+function render_convertPngTo {
 
-    local ACTION=''
+    # Get image formats.
+    local FORMATS=$(render_getConfigOption "$ACTION" '2-')
 
-    # Verify position of file being produced in the list of files been
-    # currently processed.
-    if [[ $THIS_FILE_DIR != $NEXT_FILE_DIR ]];then
+    # Check base file existence.
+    if [[ -f ${FILE}.png ]];then
 
-        # At this point centos-art.sh should be producing the last
-        # file from the same unique directory structure, so, before
-        # producing images for the next directory structure lets
-        # execute last-rendition actions for the current directory
-        # structure. 
-        for ACTION in "${LASTACTIONS[@]}"; do
+        # Check image formats.
+        if [[ "$FORMATS" != "" ]];then
 
-            case "${ACTION}" in
+            # Loop through image formats and do format convertion using
+            # PNG file as base.
+            for FORMAT in $FORMATS;do
+                cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
+                convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
+            done
 
-                groupSimilarFiles:* )
-                    identity_groupSimilarFiles
-                    ;;
-            esac
-
-        done
+        fi
 
     fi
 

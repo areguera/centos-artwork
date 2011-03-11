@@ -1,7 +1,12 @@
 #!/bin/bash
 #
-# identity_renderDocbook.sh -- This function performs base-rendition
-# action for DocBook files.
+# render_copy.sh -- This function duplicates rendition stuff.
+# Rendition stuff is formed by design models, design images and
+# pre-rendition configuration scripts (which includes translations
+# files). This way, when we say to duplicate rendition stuff we are
+# saying to duplicate these four directory structures (i.e., design
+# models, design images, pre-rendition configuration scripts, and
+# related translations files).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,13 +29,11 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function identity_renderDocbook {
+function render_copy {
 
-    # Produce xhtml output from docbook template instance using XSL
-    # stylesheets as reference.
-    identity_convertDocbookToXhtml
+    # Verify target directory.
+    cli_checkRepoDirTarget
 
-    # Produce plaintext output from html outout.
-    identity_convertHtml2Text
+    # Determine what directory structure we are duplicating.
 
 }
