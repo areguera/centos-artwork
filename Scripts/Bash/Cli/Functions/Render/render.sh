@@ -55,6 +55,6 @@ function render {
     local FLAG_GROUPED_BY=''
 
     # Define rendition actions.
-    render_getActions
+    render_getArguments
 
 }

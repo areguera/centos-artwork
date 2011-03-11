@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_getActions.sh -- This function interprets arguments passed to
+# render_getArguments.sh -- This function interprets arguments passed to
 # render functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getActions {
+function render_getArguments {
 
     # Define short options we want to support.
     local ARGSS=""
@@ -105,7 +105,7 @@ function render_getActions {
         # repository to bring down changes.
         cli_syncroRepoChanges
 
-        # Execute action name.
+        # Execute base-rendition flow.
         eval ${FUNCNAM}_doBaseActions
 
         # Syncronize changes between the working copy and the central
