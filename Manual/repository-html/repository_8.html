@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 10 2011 by texi2html 1.76 -->
+<!-- Created on March, 11 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -168,10 +168,10 @@ behaviour.
 <a name="SEC26"></a>
 <h4 class="subsubsection"> 2.4.2.4 Corporate Structure </h4>
 
-<p>The CentOS Project corporate structure is based on a
-<em>&quot;monolithic corporate structure&quot;</em>. In this structure, we use
-one unique name (The CentOS Brand) and one unique visual style (The
-CentOS Theme) in all The CentOS Project visual manifestations.
+<p>The CentOS Project corporate structure is based on a <em>monolithic</em>
+corporate visual identity structure. In this structure, we use one
+unique name (The CentOS Brand) and one unique visual style (The CentOS
+Theme) in all The CentOS Project visual manifestations.
 </p>
 <p>Inside a monolithic corporate visual identity structure, internal and
 external stakeholders use to feel a strong sensation of uniformity,
@@ -182,100 +182,121 @@ connects them all to say: <em>Hey! we are all part of The CentOS
 Project</em>.
 </p>
 <p>Other corporate structures have been considered as well, but they
-introduce visual contradictions we consider important to be aware of.
-In that sake, lets describe the idea of: <em>Producing one different
-visual style for each major release of CentOS distribution</em>.
+introduce visual contradictions we need to be aware of.  In that sake,
+lets describe the idea of: <em>Producing one different visual style
+for each major release of The CentOS Distribution</em>.
 </p>
 <p>The CentOS Project maintains near to four different major releases of
-CentOS distribution parallely in time and that fact makes one part of
-The CentOS Project structural design, but not the complete design.  In
-order to produce the correct corporate structure for The CentOS
-Project we need to concider all the visual manifestations The CentOS
-Project is made of, not just one of them.
+The CentOS Distribution parallely in time and that fact makes one part
+of The CentOS Project structural design, but just one part, not the
+complete structural design.  In order to produce the correct corporate
+structure for The CentOS Project we need to concider all the visual
+manifestations The CentOS Project is made of, not just one of them.
 </p>
-<p>If one different visual style is used for each major release of CentOS
-distribution, which one of those different visual styles would be the
-one used to cover other visual manifestations, like The CentOS Webs
-and The CentOS Stationery? Why The CentOS Distribution we are using
-shows one visual style and The CentOS Web sites a completly different
-one?  Isn't them all part of the same project?
+<p>If one different visual style is used for each major release of The
+CentOS Distribution, which one of those different visual styles would
+be used to cover the remaining visual manifestations The CentOS
+Project is made of. Would we end up with four different visual styles,
+one for each distribution?  In that case, why The CentOS Distribution
+we use shows one visual style, The CentOS Web sites another and The
+CentOS Stationery even another completly different one?  Isn't them
+all part of the same project?
+</p>
+<p>Probably you be thinking, that's right, but The CentOS Brand connects
+them all already, why would we need to join them up into the same
+visual style too, isn't it more work to do, and harder to maintain?
+</p>
+<p>Harder to maintain, more work to do, it is probably. Specially when
+you consider that The CentOS Project has proven stability and
+consistency through time and that, certainly, didn't come through
+swinging magical wangs or something but hardly working out to automate
+tasks and so providing maintainance through time. Said that, we
+consider that The CentOS Project visual structure should be consequent
+with such stability and consistency tradition. It is true The CentOS
+Brand does connect all the visual manifestations it is present on, but
+that connection would be stronger if one unique visual style backups
+it.  In fact, whatever thing you do to strength the visual connection
+among The CentOS Project visual manifestations would be very good in
+favor of The CentOS Project recognition.
 </p>
 <p>Obviously, having just one visual style in all visual manifestations
-for eternity would be a very boring thing and also would give the idea
-of a visually dead project. So, there is no problem on creating a
-brand new visual style for each new major release of CentOS
-distribution, in order to refresh the CentOS distribution visual
-style; the problem does is in not propagating the brand new visual
-style created for the new release of CentOS Distribution to all other
-visual manifestations The CentOS Project is made of, in a way The
-CentOS Project could be recognized no matter what visual manifestation
-be in front of us. Such lack of uniformity is what introduces the
-visual contradition we are precisely trying to solve by mean of themes
-in the CentOS Artwork Repository.
+for eternity would be a very boring thing and would give the idea of a
+visually dead project. So, there is no problem on creating a brand new
+visual style for each new major release of The CentOS Distribution, in
+order to refresh The CentOS Distribution visual style; the problem
+does is in not propagating the brand new visual style created for the
+new release of CentOS Distribution to all other visual manifestations
+The CentOS Project is made of, in a way The CentOS Project could be
+recognized no matter what visual manifestation be in front of us. Such
+lack of uniformity is what introduces the visual contradition we are
+precisely trying to solve by mean of themes production in the CentOS
+Artwork Repository.
 </p>
 
 <a name="SEC27"></a>
 <h3 class="subsection"> 2.4.3 Usage </h3>
 
-<p>The <tt>`trunk/'</tt> directory structure is organize in renderable and
-non-renderable directories. Generally, renderable directories contain
-two non-renderable directories, one to store design templates (the
-<tt>`Tpl/'</tt> directory), and another to store the content produced (the
-<tt>`Img/'</tt> directory).
+<p>The <tt>`trunk/'</tt> directory structure is organized in
+<em>renderable</em> and <em>non-renderable</em> directories. Generally,
+renderable directories contain two non-renderable directories inside,
+one to store design templates (the <tt>`Tpl/'</tt> directory), and other
+to store the content produced (the <tt>`Img/'</tt> directory).
 </p>
-<p>In order to produce content inside the rendereble directories, you can
-use the following command:
+<p>In order to produce content inside rendereble directories, you can use
+the following command:
 </p>
 <pre class="verbatim">centos-art identity --render='trunk/Identity/Path/To/Dir'
 </pre>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> If the <code>centos-art</code> command-line is not found
-in your workstation, it is probably because you haven't prepared it
-for using The CentOS Artwork Repository yet. See section <a href="repository_79.html#SEC411">The <tt>`trunk/Scripts/Bash/Cli/Functions/Verify'</tt> Directory</a>, for more information.
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> If the <code>centos-art</code> command-line
+is not found in your workstation, it is probably because you haven't
+prepared it for using The CentOS Artwork Repository yet.
+See section <a href="repository_79.html#SEC411">The <tt>`trunk/Scripts/Bash/Cli/Functions/Verify'</tt> Directory</a>, for more
+information.  
 </p></blockquote>
 
-<p>This command takes one design template and creates an instance of it
-in order to apply translation messages, if any. Later, using the
-design template instance the command renders the final content based
-on whether the design template instance is a SVG file or a Docbook
-file. If the design template instace is a SVG file, the final content
-produced is a PNG image. On the other hand, if the design template
-instance is a Docbook file, the final content produced is a XHTML
-file.
+<p>This command takes one design template from the template directory and
+creates an instance of it in order to apply translation messages on
+it, if any. Later, using the design template instance, the command
+renders the final content based on whether the design template
+instance is a SVG file or a Docbook file. If the design template
+instace is a SVG file, the final content produced is a PNG image. On
+the other hand, if the design template instance is a Docbook file, the
+final content produced is a XHTML file. Final content is stored in the
+image directory using the design template directory paths as referece.
+The rendition flow described so far is known as the
+<em>base-rendition</em> flow.
 </p>
-<p>Additionally to base-rendition flow, the <code>centos-art</code> provides
-the <em>post-rendition</em> and <em>last-rendition</em> rendition
-features.
+<p>Besides the base-rendition flow, the <code>centos-art</code> provides the
+<em>post-rendition</em> and <em>last-rendition</em> flows.  The
+post-rendition flow is applied to files produced as result of
+base-rendition flow under the same directory structure. For example,
+you can use post-rendition action to convert the PNG base output into
+different outputs (e.g., JPG, PDF, etc.) before passing to process the
+next file in the same directory structure.  The last-rendition flow is
+applied to all files produced as result of both base-rendition and
+post-rendition flows in the same directory structure, just before
+passing to process a different directory structure.  For example, the
+<tt>`Preview.png'</tt> image from Ksplash component is made of three
+images. In order to build the <tt>`Preview.png'</tt> image through
+<code>centos-art</code> we need to wait for all the three images the
+<tt>`Preview.png'</tt> image is made of to be rendered, so we can combine
+them all together into just one image (i.e., the <tt>`Preview.png'</tt>
+image).  This is something we can't do using post-rendition flow.
 </p>
-<p>The post-rendition is applied to base file produced in the same
-directory structure. For example, you can use post-rendition action to
-render PNG base output into different outputs (e.g., JPG, PDF, etc.)
-before passing to process the next file in the same directory
-structure.
-</p>
-<p>On the other hand, the last-rendition is applied to all files produces
-by both base-rendition and post-rendition in the same directory
-structure, just before passing to process a different directory
-structure.  For example, the <tt>`Preview.png'</tt> image from Ksplash
-component is made of three images. In order to build the
-<tt>`Preview.png'</tt> image as part of <code>centos-art</code> rendition
-flow, we need to wait for all the required images the
-<tt>`Preview.png'</tt> image is made of in order to combine them all
-together.  This is something we can't do using post-rendition actions.
-</p>
-<p>Another rendition feature you can find inside the
-<tt>`trunk/Identity'</tt> directory structure is the
-<em>directory-specific rendition</em> feature. The directory-specific
-rendition feature combines both the post-rendition feature and the
-last-rendition feature in order to render specific directory
-structures in specific ways, automatically. This configuration can
-speed up production of different components like Syslinux, Grub, Gdm,
-Kdm and Ksplash that require intermediate formats or even several
-independent files, in order to reach its final construction. This is a
-way to programmatically describe how specific art works are built in
-and organized inside The CentOS Artwork Repository.  Such descriptions
-has beign added to <code>centos-art</code> command-line to let you
-produce them all with just one single command, as fast as your CPU
-could handle it. 
+<p>Inside <tt>`trunk/Identity'</tt> directory structure, you can find that
+base-rendition, post-rendition and last-rendition flows can be
+combined to build <em>directory-specific</em> rendition.  The
+directory-specific rendition exists to automatically process specific
+renderable directories in very specific ways. Using directory-specific
+rendition speeds up production of different components like Syslinux,
+Grub, Gdm, Kdm and Ksplash that require intermediate formats or even
+several independent files, in order to reach its final construction.
+Directory-specific rendition is a way to programmatically describe how
+specific art works are built in and organized inside The CentOS
+Artwork Repository.  Such descriptions have been added to
+<code>centos-art</code> command-line to let you produce them all with
+just one single command, as fast as your machine can be able to handle
+it. 
 </p>
 <p>See section <a href="repository_71.html#SEC355">The <tt>`trunk/Scripts/Bash/Cli/Functions/Identity'</tt> Directory</a>, for more
 information about the <code>identity</code> functionality of
@@ -285,12 +306,12 @@ information about the <code>identity</code> functionality of
 <a name="SEC28"></a>
 <h3 class="subsection"> 2.4.4 See also </h3>
 
-<p>Specially useful has been, and keep being, the book <em>Corporate
-Identity</em> by Wally Olins (1989). This is the main conceptual material
-we've been using to build The CentOS Artwork Repository.
-</p>
 <p>See <a class="www" href="http://en.wikipedia.org/Corporate_identity">http://en.wikipedia.org/Corporate_identity</a> (and related
 links), for general information on corporate identity. 
+</p>
+<p>Specially useful has been, and still be, the book <em>Corporate
+Identity</em> by Wally Olins (1989). This book provides many conceptual
+ideas we've used as base to build The CentOS Artwork Repository. 
 </p>
 
 <table cellpadding="1" cellspacing="1" border="0">
@@ -303,7 +324,7 @@ links), for general information on corporate identity.
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 10 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 11 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

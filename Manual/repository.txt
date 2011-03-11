@@ -807,10 +807,10 @@ The CentOS Project corporate behaviour is based on community behaviour.
 2.4.2.4 Corporate Structure
 ...........................
 
-The CentOS Project corporate structure is based on a _"monolithic
-corporate structure"_. In this structure, we use one unique name (The
-CentOS Brand) and one unique visual style (The CentOS Theme) in all The
-CentOS Project visual manifestations.
+The CentOS Project corporate structure is based on a _monolithic_
+corporate visual identity structure. In this structure, we use one
+unique name (The CentOS Brand) and one unique visual style (The CentOS
+Theme) in all The CentOS Project visual manifestations.
 
    Inside a monolithic corporate visual identity structure, internal and
 external stakeholders use to feel a strong sensation of uniformity,
@@ -820,96 +820,117 @@ events, the one unique name and one unique visual style connects them
 all to say: _Hey! we are all part of The CentOS Project_.
 
    Other corporate structures have been considered as well, but they
-introduce visual contradictions we consider important to be aware of.
-In that sake, lets describe the idea of: _Producing one different
-visual style for each major release of CentOS distribution_.
+introduce visual contradictions we need to be aware of.  In that sake,
+lets describe the idea of: _Producing one different visual style for
+each major release of The CentOS Distribution_.
 
    The CentOS Project maintains near to four different major releases of
-CentOS distribution parallely in time and that fact makes one part of
-The CentOS Project structural design, but not the complete design.  In
-order to produce the correct corporate structure for The CentOS Project
-we need to concider all the visual manifestations The CentOS Project is
-made of, not just one of them.
+The CentOS Distribution parallely in time and that fact makes one part
+of The CentOS Project structural design, but just one part, not the
+complete structural design.  In order to produce the correct corporate
+structure for The CentOS Project we need to concider all the visual
+manifestations The CentOS Project is made of, not just one of them.
 
-   If one different visual style is used for each major release of
-CentOS distribution, which one of those different visual styles would
-be the one used to cover other visual manifestations, like The CentOS
-Webs and The CentOS Stationery? Why The CentOS Distribution we are using
-shows one visual style and The CentOS Web sites a completly different
-one?  Isn't them all part of the same project?
+   If one different visual style is used for each major release of The
+CentOS Distribution, which one of those different visual styles would
+be used to cover the remaining visual manifestations The CentOS Project
+is made of. Would we end up with four different visual styles, one for
+each distribution?  In that case, why The CentOS Distribution we use
+shows one visual style, The CentOS Web sites another and The CentOS
+Stationery even another completly different one?  Isn't them all part
+of the same project?
+
+   Probably you be thinking, that's right, but The CentOS Brand connects
+them all already, why would we need to join them up into the same
+visual style too, isn't it more work to do, and harder to maintain?
+
+   Harder to maintain, more work to do, it is probably. Specially when
+you consider that The CentOS Project has proven stability and
+consistency through time and that, certainly, didn't come through
+swinging magical wangs or something but hardly working out to automate
+tasks and so providing maintainance through time. Said that, we
+consider that The CentOS Project visual structure should be consequent
+with such stability and consistency tradition. It is true The CentOS
+Brand does connect all the visual manifestations it is present on, but
+that connection would be stronger if one unique visual style backups
+it.  In fact, whatever thing you do to strength the visual connection
+among The CentOS Project visual manifestations would be very good in
+favor of The CentOS Project recognition.
 
    Obviously, having just one visual style in all visual manifestations
-for eternity would be a very boring thing and also would give the idea
-of a visually dead project. So, there is no problem on creating a brand
-new visual style for each new major release of CentOS distribution, in
-order to refresh the CentOS distribution visual style; the problem does
+for eternity would be a very boring thing and would give the idea of a
+visually dead project. So, there is no problem on creating a brand new
+visual style for each new major release of The CentOS Distribution, in
+order to refresh The CentOS Distribution visual style; the problem does
 is in not propagating the brand new visual style created for the new
 release of CentOS Distribution to all other visual manifestations The
 CentOS Project is made of, in a way The CentOS Project could be
 recognized no matter what visual manifestation be in front of us. Such
 lack of uniformity is what introduces the visual contradition we are
-precisely trying to solve by mean of themes in the CentOS Artwork
-Repository.
+precisely trying to solve by mean of themes production in the CentOS
+Artwork Repository.
 
 2.4.3 Usage
 -----------
 
-The `trunk/' directory structure is organize in renderable and
-non-renderable directories. Generally, renderable directories contain
-two non-renderable directories, one to store design templates (the
-`Tpl/' directory), and another to store the content produced (the
+The `trunk/' directory structure is organized in _renderable_ and
+_non-renderable_ directories. Generally, renderable directories contain
+two non-renderable directories inside, one to store design templates
+(the `Tpl/' directory), and other to store the content produced (the
 `Img/' directory).
 
-   In order to produce content inside the rendereble directories, you
-can use the following command:
+   In order to produce content inside rendereble directories, you can
+use the following command:
 
 
 centos-art identity --render='trunk/Identity/Path/To/Dir'
 
      *Warning* If the `centos-art' command-line is not found in your
      workstation, it is probably because you haven't prepared it for
-     using The CentOS Artwork Repository yet. *Note Filesystem trunk
+     using The CentOS Artwork Repository yet.  *Note Filesystem trunk
      Scripts Bash Cli Functions Verify::, for more information.
 
-   This command takes one design template and creates an instance of it
-in order to apply translation messages, if any. Later, using the design
-template instance the command renders the final content based on
-whether the design template instance is a SVG file or a Docbook file.
-If the design template instace is a SVG file, the final content
-produced is a PNG image. On the other hand, if the design template
-instance is a Docbook file, the final content produced is a XHTML file.
+   This command takes one design template from the template directory
+and creates an instance of it in order to apply translation messages on
+it, if any. Later, using the design template instance, the command
+renders the final content based on whether the design template instance
+is a SVG file or a Docbook file. If the design template instace is a
+SVG file, the final content produced is a PNG image. On the other hand,
+if the design template instance is a Docbook file, the final content
+produced is a XHTML file. Final content is stored in the image
+directory using the design template directory paths as referece.  The
+rendition flow described so far is known as the _base-rendition_ flow.
 
-   Additionally to base-rendition flow, the `centos-art' provides the
-_post-rendition_ and _last-rendition_ rendition features.
+   Besides the base-rendition flow, the `centos-art' provides the
+_post-rendition_ and _last-rendition_ flows.  The post-rendition flow
+is applied to files produced as result of base-rendition flow under the
+same directory structure. For example, you can use post-rendition
+action to convert the PNG base output into different outputs (e.g.,
+JPG, PDF, etc.) before passing to process the next file in the same
+directory structure.  The last-rendition flow is applied to all files
+produced as result of both base-rendition and post-rendition flows in
+the same directory structure, just before passing to process a
+different directory structure.  For example, the `Preview.png' image
+from Ksplash component is made of three images. In order to build the
+`Preview.png' image through `centos-art' we need to wait for all the
+three images the `Preview.png' image is made of to be rendered, so we
+can combine them all together into just one image (i.e., the
+`Preview.png' image).  This is something we can't do using
+post-rendition flow.
 
-   The post-rendition is applied to base file produced in the same
-directory structure. For example, you can use post-rendition action to
-render PNG base output into different outputs (e.g., JPG, PDF, etc.)
-before passing to process the next file in the same directory structure.
-
-   On the other hand, the last-rendition is applied to all files
-produces by both base-rendition and post-rendition in the same directory
-structure, just before passing to process a different directory
-structure.  For example, the `Preview.png' image from Ksplash component
-is made of three images. In order to build the `Preview.png' image as
-part of `centos-art' rendition flow, we need to wait for all the
-required images the `Preview.png' image is made of in order to combine
-them all together.  This is something we can't do using post-rendition
-actions.
-
-   Another rendition feature you can find inside the `trunk/Identity'
-directory structure is the _directory-specific rendition_ feature. The
-directory-specific rendition feature combines both the post-rendition
-feature and the last-rendition feature in order to render specific
-directory structures in specific ways, automatically. This
-configuration can speed up production of different components like
-Syslinux, Grub, Gdm, Kdm and Ksplash that require intermediate formats
-or even several independent files, in order to reach its final
-construction. This is a way to programmatically describe how specific
-art works are built in and organized inside The CentOS Artwork
-Repository.  Such descriptions has beign added to `centos-art'
+   Inside `trunk/Identity' directory structure, you can find that
+base-rendition, post-rendition and last-rendition flows can be combined
+to build _directory-specific_ rendition.  The directory-specific
+rendition exists to automatically process specific renderable
+directories in very specific ways. Using directory-specific rendition
+speeds up production of different components like Syslinux, Grub, Gdm,
+Kdm and Ksplash that require intermediate formats or even several
+independent files, in order to reach its final construction.
+Directory-specific rendition is a way to programmatically describe how
+specific art works are built in and organized inside The CentOS Artwork
+Repository.  Such descriptions have been added to `centos-art'
 command-line to let you produce them all with just one single command,
-as fast as your CPU could handle it.
+as fast as your machine can be able to handle it.
 
    *Note Filesystem trunk Scripts Bash Cli Functions Identity::, for
 more information about the `identity' functionality of `centos-art'
@@ -918,12 +939,12 @@ command-line interface.
 2.4.4 See also
 --------------
 
-Specially useful has been, and keep being, the book _Corporate
-Identity_ by Wally Olins (1989). This is the main conceptual material
-we've been using to build The CentOS Artwork Repository.
+See `http://en.wikipedia.org/Corporate_identity' (and related links),
+for general information on corporate identity.
 
-   See `http://en.wikipedia.org/Corporate_identity' (and related
-links), for general information on corporate identity.
+   Specially useful has been, and still be, the book _Corporate
+Identity_ by Wally Olins (1989). This book provides many conceptual
+ideas we've used as base to build The CentOS Artwork Repository.
 
 2.5 The `trunk/Identity/Brands' Directory
 =========================================
@@ -6754,110 +6775,110 @@ Filesystem branches:                           See 2.1.      (line  603)
 Filesystem tags:                               See 2.2.      (line  634)
 Filesystem trunk:                              See 2.3.      (line  664)
 Filesystem trunk Identity:                     See 2.4.      (line  730)
-Filesystem trunk Identity Brands:              See 2.5.      (line  931)
-Filesystem trunk Identity Colors:              See 2.6.      (line  948)
-Filesystem trunk Identity Fonts:               See 2.7.      (line  969)
-Filesystem trunk Identity Icons:               See 2.8.      (line 1046)
-Filesystem trunk Identity Isolinux:            See 2.9.      (line 1063)
-Filesystem trunk Identity Models:              See 2.10.     (line 1080)
-Filesystem trunk Identity Models Css:          See 2.11.     (line 1100)
-Filesystem trunk Identity Models Html:         See 2.12.     (line 1122)
-Filesystem trunk Identity Models Img Promo Web:See 2.13.     (line 1143)
-Filesystem trunk Identity Models Tpl:          See 2.14.     (line 1164)
-Filesystem trunk Identity Models Tpl Brands:   See 2.15.     (line 1185)
-Filesystem trunk Identity Models Tpl Promo Web:See 2.16.     (line 1206)
-Filesystem trunk Identity Models Xcf:          See 2.17.     (line 1520)
-Filesystem trunk Identity Release:             See 2.18.     (line 1541)
-Filesystem trunk Identity Themes:              See 2.19.     (line 1558)
-Filesystem trunk Identity Themes Models:       See 2.20.     (line 1582)
+Filesystem trunk Identity Brands:              See 2.5.      (line  952)
+Filesystem trunk Identity Colors:              See 2.6.      (line  969)
+Filesystem trunk Identity Fonts:               See 2.7.      (line  990)
+Filesystem trunk Identity Icons:               See 2.8.      (line 1067)
+Filesystem trunk Identity Isolinux:            See 2.9.      (line 1084)
+Filesystem trunk Identity Models:              See 2.10.     (line 1101)
+Filesystem trunk Identity Models Css:          See 2.11.     (line 1121)
+Filesystem trunk Identity Models Html:         See 2.12.     (line 1143)
+Filesystem trunk Identity Models Img Promo Web:See 2.13.     (line 1164)
+Filesystem trunk Identity Models Tpl:          See 2.14.     (line 1185)
+Filesystem trunk Identity Models Tpl Brands:   See 2.15.     (line 1206)
+Filesystem trunk Identity Models Tpl Promo Web:See 2.16.     (line 1227)
+Filesystem trunk Identity Models Xcf:          See 2.17.     (line 1541)
+Filesystem trunk Identity Release:             See 2.18.     (line 1562)
+Filesystem trunk Identity Themes:              See 2.19.     (line 1579)
+Filesystem trunk Identity Themes Models:       See 2.20.     (line 1603)
 Filesystem trunk Identity Themes Models Alternative:See 2.21.
-                                                             (line 1616)
-Filesystem trunk Identity Themes Models Default:See 2.22.    (line 1643)
+                                                             (line 1637)
+Filesystem trunk Identity Themes Models Default:See 2.22.    (line 1664)
 Filesystem trunk Identity Themes Models Default Concept:See 2.23.
-                                                             (line 1734)
-Filesystem trunk Identity Themes Models Default Distro:See 2.24.
                                                              (line 1755)
+Filesystem trunk Identity Themes Models Default Distro:See 2.24.
+                                                             (line 1776)
 Filesystem trunk Identity Themes Models Default Distro Anaconda:See 2.25.
-                                                             (line 1865)
+                                                             (line 1886)
 Filesystem trunk Identity Themes Models Default Distro Firstboot:See 2.26.
-                                                             (line 1882)
-Filesystem trunk Identity Themes Models Default Distro Gdm:See 2.27.
                                                              (line 1903)
-Filesystem trunk Identity Themes Models Default Distro Grub:See 2.28.
+Filesystem trunk Identity Themes Models Default Distro Gdm:See 2.27.
                                                              (line 1924)
-Filesystem trunk Identity Themes Models Default Distro Gsplash:See 2.29.
+Filesystem trunk Identity Themes Models Default Distro Grub:See 2.28.
                                                              (line 1945)
-Filesystem trunk Identity Themes Models Default Distro Kdm:See 2.30.
+Filesystem trunk Identity Themes Models Default Distro Gsplash:See 2.29.
                                                              (line 1966)
-Filesystem trunk Identity Themes Models Default Distro Ksplash:See 2.31.
+Filesystem trunk Identity Themes Models Default Distro Kdm:See 2.30.
                                                              (line 1987)
-Filesystem trunk Identity Themes Models Default Distro Rhgb:See 2.32.
+Filesystem trunk Identity Themes Models Default Distro Ksplash:See 2.31.
                                                              (line 2008)
-Filesystem trunk Identity Themes Models Default Distro Syslinux:See 2.33.
+Filesystem trunk Identity Themes Models Default Distro Rhgb:See 2.32.
                                                              (line 2029)
-Filesystem trunk Identity Themes Models Default Promo:See 2.34.
+Filesystem trunk Identity Themes Models Default Distro Syslinux:See 2.33.
                                                              (line 2050)
+Filesystem trunk Identity Themes Models Default Promo:See 2.34.
+                                                             (line 2071)
 Filesystem trunk Identity Themes Models Default Web:See 2.35.
-                                                             (line 2076)
-Filesystem trunk Identity Themes Motifs:       See 2.36.     (line 2101)
-Filesystem trunk Identity Themes Motifs Flame: See 2.37.     (line 2204)
-Filesystem trunk Identity Themes Motifs Modern:See 2.38.     (line 2405)
+                                                             (line 2097)
+Filesystem trunk Identity Themes Motifs:       See 2.36.     (line 2122)
+Filesystem trunk Identity Themes Motifs Flame: See 2.37.     (line 2225)
+Filesystem trunk Identity Themes Motifs Modern:See 2.38.     (line 2426)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds:See 2.39.
-                                                             (line 2422)
+                                                             (line 2443)
 Filesystem trunk Identity Themes Motifs Modern Backgrounds Img:See 2.40.
-                                                             (line 2543)
-Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl:See 2.41.
                                                              (line 2564)
-Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf:See 2.42.
+Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl:See 2.41.
                                                              (line 2585)
+Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf:See 2.42.
+                                                             (line 2606)
 Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress:See 2.43.
-                                                             (line 2612)
+                                                             (line 2633)
 Filesystem trunk Identity Themes Motifs Modern Palettes:See 2.44.
-                                                             (line 2668)
-Filesystem trunk Identity Themes Motifs TreeFlower:See 2.45. (line 2690)
+                                                             (line 2689)
+Filesystem trunk Identity Themes Motifs TreeFlower:See 2.45. (line 2711)
 Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds:See 2.46.
-                                                             (line 2707)
-Filesystem trunk Identity Widgets:             See 2.47.     (line 3005)
-Filesystem trunk Locales:                      See 2.48.     (line 3022)
-Filesystem trunk Locales Identity:             See 2.49.     (line 3075)
-Filesystem trunk Locales Identity Brands:      See 2.50.     (line 3096)
-Filesystem trunk Locales Identity Brands Tpl:  See 2.51.     (line 3191)
-Filesystem trunk Locales Identity Fonts:       See 2.52.     (line 3206)
-Filesystem trunk Locales Identity Models:      See 2.53.     (line 3269)
-Filesystem trunk Locales Identity Release:     See 2.54.     (line 3284)
-Filesystem trunk Locales Identity Themes:      See 2.55.     (line 3299)
+                                                             (line 2728)
+Filesystem trunk Identity Widgets:             See 2.47.     (line 3026)
+Filesystem trunk Locales:                      See 2.48.     (line 3043)
+Filesystem trunk Locales Identity:             See 2.49.     (line 3096)
+Filesystem trunk Locales Identity Brands:      See 2.50.     (line 3117)
+Filesystem trunk Locales Identity Brands Tpl:  See 2.51.     (line 3212)
+Filesystem trunk Locales Identity Fonts:       See 2.52.     (line 3227)
+Filesystem trunk Locales Identity Models:      See 2.53.     (line 3290)
+Filesystem trunk Locales Identity Release:     See 2.54.     (line 3305)
+Filesystem trunk Locales Identity Themes:      See 2.55.     (line 3320)
 Filesystem trunk Locales Identity Themes Backgrounds:See 2.56.
-                                                             (line 3314)
-Filesystem trunk Locales Identity Themes Distro Anaconda Progress:See 2.57.
                                                              (line 3335)
-Filesystem trunk Locales Identity Widgets:     See 2.58.     (line 3428)
-Filesystem trunk Manual:                       See 2.59.     (line 3449)
-Filesystem trunk Manuals:                      See 2.60.     (line 3470)
-Filesystem trunk Scripts:                      See 2.61.     (line 3491)
-Filesystem trunk Scripts Bash:                 See 2.62.     (line 3515)
-Filesystem trunk Scripts Bash Cli:             See 2.63.     (line 3665)
-Filesystem trunk Scripts Bash Cli Functions:   See 2.64.     (line 3668)
-Filesystem trunk Scripts Bash Cli Functions Help:See 2.65.   (line 4778)
-Filesystem trunk Scripts Bash Cli Functions Html:See 2.66.   (line 4799)
+Filesystem trunk Locales Identity Themes Distro Anaconda Progress:See 2.57.
+                                                             (line 3356)
+Filesystem trunk Locales Identity Widgets:     See 2.58.     (line 3449)
+Filesystem trunk Manual:                       See 2.59.     (line 3470)
+Filesystem trunk Manuals:                      See 2.60.     (line 3491)
+Filesystem trunk Scripts:                      See 2.61.     (line 3512)
+Filesystem trunk Scripts Bash:                 See 2.62.     (line 3536)
+Filesystem trunk Scripts Bash Cli:             See 2.63.     (line 3686)
+Filesystem trunk Scripts Bash Cli Functions:   See 2.64.     (line 3689)
+Filesystem trunk Scripts Bash Cli Functions Help:See 2.65.   (line 4799)
+Filesystem trunk Scripts Bash Cli Functions Html:See 2.66.   (line 4820)
 Filesystem trunk Scripts Bash Cli Functions Identity:See 2.67.
-                                                             (line 4820)
-Filesystem trunk Scripts Bash Cli Functions Locale:See 2.68. (line 4841)
-Filesystem trunk Scripts Bash Cli Functions Manual:See 2.69. (line 4921)
-Filesystem trunk Scripts Bash Cli Functions Path:See 2.70.   (line 4942)
-Filesystem trunk Scripts Bash Cli Functions Render:See 2.71. (line 5264)
+                                                             (line 4841)
+Filesystem trunk Scripts Bash Cli Functions Locale:See 2.68. (line 4862)
+Filesystem trunk Scripts Bash Cli Functions Manual:See 2.69. (line 4942)
+Filesystem trunk Scripts Bash Cli Functions Path:See 2.70.   (line 4963)
+Filesystem trunk Scripts Bash Cli Functions Render:See 2.71. (line 5285)
 Filesystem trunk Scripts Bash Cli Functions Render Config:See 2.72.
-                                                             (line 5962)
-Filesystem trunk Scripts Bash Cli Functions Shell:See 2.73.  (line 6140)
-Filesystem trunk Scripts Bash Cli Functions Svg:See 2.74.    (line 6312)
-Filesystem trunk Scripts Bash Cli Functions Verify:See 2.75. (line 6500)
-Filesystem trunk Scripts Python:               See 2.76.     (line 6730)
-How to render brands' translation files:       See 2.50.3.   (line 3180)
-How to render fonts' translation files:        See 2.52.3.   (line 3253)
+                                                             (line 5983)
+Filesystem trunk Scripts Bash Cli Functions Shell:See 2.73.  (line 6161)
+Filesystem trunk Scripts Bash Cli Functions Svg:See 2.74.    (line 6333)
+Filesystem trunk Scripts Bash Cli Functions Verify:See 2.75. (line 6521)
+Filesystem trunk Scripts Python:               See 2.76.     (line 6751)
+How to render brands' translation files:       See 2.50.3.   (line 3201)
+How to render fonts' translation files:        See 2.52.3.   (line 3274)
 Introduction:                                  See 1.        (line  450)
-Metadata maintainance:                         See 2.74.2.   (line 6330)
+Metadata maintainance:                         See 2.74.2.   (line 6351)
 Repository file system:                        See 2.        (line  589)
-Translation brands file names:                 See 2.50.2.1. (line 3137)
-Unused definitions:                            See 2.74.2.1. (line 6437)
+Translation brands file names:                 See 2.50.2.1. (line 3158)
+Unused definitions:                            See 2.74.2.1. (line 6458)
 List of Figures
 ***************
 
