@@ -106,7 +106,7 @@ function render_getActions {
         cli_syncroRepoChanges
 
         # Execute action name.
-        eval ${FUNCNAM}_render
+        eval ${FUNCNAM}_doBaseActions
 
         # Syncronize changes between the working copy and the central
         # repository to commit up changes.
