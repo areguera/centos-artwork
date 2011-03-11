@@ -44,18 +44,6 @@ function identity_getActions {
 
         case "$1" in
 
-            --render )
-                ACTIONNAM="${FUNCNAM}_render"
-                ACTIONVAL="$2"
-                shift 2
-                ;;
-
-            --copy )
-                ACTIONVAL="$2"
-                ACTIONNAM="${FUNCNAME}_copy"
-                shift 2
-                ;;
-
             --releasever )
                 FLAG_RELEASE="$2"
                 if [[ ! $FLAG_RELEASE =~ $(cli_getPathComponent '--release-pattern') ]];then
@@ -100,25 +88,30 @@ function identity_getActions {
         esac
     done
 
-    # Check action value. Be sure the action value matches the
-    # convenctions defined for source locations inside the working
-    # copy.
-    cli_checkRepoDirSource
+    # Read remaining arguments and build the action value from them.
+    # At this point all options should be processed.
+    for ACTIONVAL in "$@";do
+        
+        if [[ $ACTIONVAL == '--' ]];then
+            continue
+        fi
 
-    # Syncronize changes between the working copy and the central
-    # repository to bring down changes.
-    cli_syncroRepoChanges
+        # Check action value. Be sure the action value matches the
+        # convenctions defined for source locations inside the working
+        # copy.
+        cli_checkRepoDirSource
 
-    # Execute action name.
-    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
-        eval $ACTIONNAM
-    else
-        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+        # Syncronize changes between the working copy and the central
+        # repository to bring down changes.
+        cli_syncroRepoChanges
 
-    # Syncronize changes between the working copy and the central
-    # repository to commit up changes.
-    cli_commitRepoChanges
+        # Execute action name.
+        eval ${FUNCNAM}_render
+
+        # Syncronize changes between the working copy and the central
+        # repository to commit up changes.
+        cli_commitRepoChanges
+
+    done
 
 }
