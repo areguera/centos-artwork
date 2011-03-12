@@ -30,7 +30,7 @@ function locale_getArguments {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter,quiet,answer,dont-commit-changes,update:,edit:,dont-create-mo"
+    local ARGSL="filter:,quiet,answer:,dont-commit-changes,update,edit,dont-create-mo"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
