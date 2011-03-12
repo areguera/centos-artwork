@@ -34,7 +34,7 @@ function locale_updateMessageShell {
     # Define file name used as reference to create portable object
     # templates (.pot), portable objects (.po) and machine objects
     # (.mo).
-    FILE="${WORKDIR}/${TEXTDOMAIN}"
+    FILE="${WORKDIR}/$(cli_getCurrentLocale)/${TEXTDOMAIN}"
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^${CLI_BASEDIR}" ]];then
