@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify.sh -- This function verifies your workstation for using
+# prepare.sh -- This function verifies your workstation for using
 # centos-art.sh script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,9 +24,9 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify {
+function prepare {
 
     # Define command-line interface.
-    prepare_getActions
+    prepare_getArguments
 
 }
