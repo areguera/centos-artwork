@@ -32,7 +32,7 @@ function locale_updateMessages {
 
     local ACTIONNAM=''
 
-    # Evaluate action value to determine whether to use xml2po to
+    # Evaluate working directory to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
@@ -40,7 +40,7 @@ function locale_updateMessages {
 
         # Update translatable strings inside portable object templates
         # for XML-based files (e.g., scalable vector graphics).
-        ACTIONNAM="${FUNCNAM}_updateMessageXml" 
+        ACTIONNAM="${FUNCNAM}_updateMessageXml"
 
     elif [[ $WORKDIR =~ "^${BASEDIR}/Scripts/.+$" ]];then
 
@@ -49,15 +49,16 @@ function locale_updateMessages {
         ACTIONNAM="${FUNCNAM}_updateMessageShell"
 
     else
-
-        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
+        cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-
     fi
 
     # Execute action name.
-    if [[ $ACTIONNAM != '' ]];then
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
 }
