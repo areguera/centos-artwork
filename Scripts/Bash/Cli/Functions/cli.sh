@@ -34,7 +34,6 @@ function cli {
     local FUNCDIRNAM=''
     local FUNCSCRIPT=''
     local FUNCCONFIG=''
-    local ACTIONVAL=''
     local ARGUMENTS=''
 
     # Initialize default value to filter flag. The filter flag
