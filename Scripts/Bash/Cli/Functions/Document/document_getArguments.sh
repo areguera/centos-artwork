@@ -30,7 +30,7 @@ function document_getArguments {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter,quiet,answer,dont-commit-changes,read,search,edit,update"
+    local ARGSL="filter:,quiet,answer:,dont-commit-changes,read,search,edit,update"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
