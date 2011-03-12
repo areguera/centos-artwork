@@ -62,6 +62,10 @@ function cli_printMessage {
             cli_printMessage "`gettext "Creating"`: $MESSAGE"
             ;;
 
+        'AsReadingLine' )
+            cli_printMessage "`gettext "Reading"`: $MESSAGE"
+            ;;
+
         'AsSavedAsLine' )
             cli_printMessage "`gettext "Saved as"`: $MESSAGE"
             ;;
