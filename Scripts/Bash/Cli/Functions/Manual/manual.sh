@@ -43,9 +43,14 @@ function manual {
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
 
-    # Read arguments and build the action value from them. As
-    # convenction, we use non-option arguments to define the action
-    # value (ACTIONVAL) variable.
+    # Define action name. It does matter what option be passed to
+    # centos-art, there are many different actions to perform based on
+    # the option passed (e.g., `--edit', `--read', `--search', etc.).
+    # In that sake, we defined action name inside manual_getArguments,
+    # at the moment of interpreting options.
+
+    # Define action value. As convenction, we use non-option arguments
+    # to define the action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
 
         if [[ $ACTIONVAL == '--' ]];then
