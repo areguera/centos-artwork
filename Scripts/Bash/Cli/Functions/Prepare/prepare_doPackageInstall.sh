@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# verify_doPackageReport.sh -- This function receives one list of
-# missing packages and another list of packages from third party
-# repository that were marked as missing packages.
+# prepare_doPackageInstall.sh -- This function receives a list of
+# missing packages and installs them using sudo yum.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,26 +24,12 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doPackageReport {
+function prepare_doPackageInstall {
 
-    local PACKAGE=''
-    local WARNING=''
+    # Verify `yum' command existence.
+    cli_checkFiles '/usr/bin/yum' 'x'
 
-    cli_printMessage "`ngettext "The following package needs to be installed" \
-        "The following packages need to be installed" \
-        "$PACKAGES_COUNT"`:"
-
-    for PACKAGE in ${PACKAGES_MISSING[@]};do
-
-        # Is this package from third party?
-        if [[ $PACKAGE =~ $PACKAGES_THIRD_FLAG_FILTER ]];then
-            WARNING=" (`gettext "requires third party repository!"`)"
-        fi
-
-        cli_printMessage "${PACKAGE}${WARNING}" 'AsResponseLine'
-        
-    done
-
-    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
+    # Use sudo to install packages in your system through yum.
+    sudo yum install ${PACKAGES_MISSING[*]}
 
 }

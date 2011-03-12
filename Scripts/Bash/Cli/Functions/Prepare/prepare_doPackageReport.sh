@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# verify_doPackageCheck.sh -- This function receives a list of
-# packages and verifies if they are currently installed in your
-# system. Third party package verification is also done here.
+# prepare_doPackageReport.sh -- This function receives one list of
+# missing packages and another list of packages from third party
+# repository that were marked as missing packages.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,33 +25,26 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doPackageCheck {
+function prepare_doPackageReport {
 
     local PACKAGE=''
+    local WARNING=''
 
-    # Check package manager command existance.
-    cli_checkFiles '/bin/rpm' 'x'
+    cli_printMessage "`ngettext "The following package needs to be installed" \
+        "The following packages need to be installed" \
+        "$PACKAGES_COUNT"`:"
 
-    for PACKAGE in $PACKAGES;do
+    for PACKAGE in ${PACKAGES_MISSING[@]};do
 
-        # Query your system's RPM database.
-        rpm -q --queryformat "%{NAME}\n" $PACKAGE --quiet
-
-        # Define missing packages.
-        if [[ $? -ne 0 ]];then
-            PACKAGES_MISSING[$PACKAGES_COUNT]=$PACKAGE
+        # Is this package from third party?
+        if [[ $PACKAGE =~ $PACKAGES_THIRD_FLAG_FILTER ]];then
+            WARNING=" (`gettext "requires third party repository!"`)"
         fi
 
-        # Increase package counter.
-        PACKAGES_COUNT=$(($PACKAGES_COUNT + 1))
-
+        cli_printMessage "${PACKAGE}${WARNING}" 'AsResponseLine'
+        
     done
 
-    # In there is no missing package, end script execution with a
-    # descriptive output.
-    if [[ ${#PACKAGES_MISSING[*]} -eq 0 ]];then
-        cli_printMessage "`gettext "The required packages are already installed."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
+    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
 
 }

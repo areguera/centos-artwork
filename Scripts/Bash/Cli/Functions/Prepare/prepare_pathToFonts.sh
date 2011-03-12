@@ -1,8 +1,10 @@
 #!/bin/bash
 #
-# verify_pathToInkscape.sh -- This function prepares user's
-# ~/.inkscape configurations directory to use CentOS defaults (e.g.,
-# palettes, patterns, etc).
+# prepare_pathToFonts.sh -- This function checks user's fonts
+# directory. In order for some artworks to be rendered correctly,
+# denmark font needs to be available. By default, denmark font doesn't
+# come with CentOS distribution so create a symbolic link (from the
+# one we have inside repository) to make it available if it isn't yet.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,7 +27,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_pathToInkscape {
+function prepare_pathToFonts {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS
@@ -33,18 +35,15 @@ function verify_pathToInkscape {
     local -a REPOLINKS
     local FILE=''
 
-    # Define directories required by the centos-art.sh script command
-    # line interface. 
-    REPODIRS[0]=${HOME}/.inkscape/palettes
-    REPODIRS[1]=$(cli_getRepoTLDir)/Identity/Colors
+    # Define font related directories.
+    REPODIRS[0]=${HOME}/.fonts
+    REPODIRS[1]=$(cli_getRepoTLDir)/Identity/Fonts/Ttf
 
-    # Define files required by the centos-art.sh script command line
-    # interface.
-    REPOFILES[0]=${REPODIRS[1]}/CentOS.gpl
+    # Define font related files.
+    REPOFILES[0]=${REPODIRS[1]}/denmark.ttf
 
-    # Define symbolic links required by the centos-art.sh script
-    # command line interface.
-    REPOLINKS[0]=${REPODIRS[0]}/CentOS.gpl
+    # Define font related symbolic links.
+    REPOLINKS[0]=${REPODIRS[0]}/denmark.ttf
 
     # Check defined directories.
     for FILE in "${REPODIRS[@]}";do

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_doLinks.sh -- This function verifies required links your
+# prepare_doLinks.sh -- This function verifies required links your
 # workstation needs in order to run the centos-art command correctly.
 # If any required link is missing, the `centos-art.sh' script asks you
 # to confirm their installation. When installing links, the
@@ -27,7 +27,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doLinks {
+function prepare_doLinks {
 
     local -a LINKS
     local -a TARGETS
@@ -50,12 +50,12 @@ function verify_doLinks {
     TARGETS[3]=${TARGETS[2]}
     TARGETS[4]=$(cli_getRepoTLDir)/Scripts/
 
-    verify_doLinkCheck
-    verify_doLinkReport
-    verify_doLinkInstall
+    prepare_doLinkCheck
+    prepare_doLinkReport
+    prepare_doLinkInstall
 
     # At this point all required links must be installed. To confirm
     # required links installation let's verify them once more.
-    verify_doLinks
+    prepare_doLinks
 
 }

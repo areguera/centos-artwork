@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_doEnvironment.sh -- This function outputs a brief description
+# prepare_doEnvironment.sh -- This function outputs a brief description
 # of environment variables used by `centos-art.sh' script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doEnvironment {
+function prepare_doEnvironment {
 
     local -a VARS
     local -a INFO

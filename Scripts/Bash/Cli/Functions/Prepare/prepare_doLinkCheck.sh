@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# verify_doLinkCheck.sh -- This function receives a list of required
+# prepare_doLinkCheck.sh -- This function receives a list of required
 # symbolic links and verifies them. This function enforces relation
 # between link names and their targets (previously defined in
-# verify_doLinks.sh function).
+# prepare_doLinks.sh function).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doLinkCheck {
+function prepare_doLinkCheck {
 
     local -a LINKS_TARGET
     local LINKS_COUNT=0

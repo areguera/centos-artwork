@@ -1,6 +1,8 @@
 #!/bin/bash
 #
-# verify_pathToCli.sh -- This function 
+# prepare_pathToInkscape.sh -- This function prepares user's
+# ~/.inkscape configurations directory to use CentOS defaults (e.g.,
+# palettes, patterns, etc).
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -23,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_pathToCli  {
+function prepare_pathToInkscape {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS
@@ -33,17 +35,16 @@ function verify_pathToCli  {
 
     # Define directories required by the centos-art.sh script command
     # line interface. 
-    REPODIRS[0]=/home/centos
-    REPODIRS[1]=/home/centos/bin
-    REPODIRS[2]=${CLI_BASEDIR}
+    REPODIRS[0]=${HOME}/.inkscape/palettes
+    REPODIRS[1]=$(cli_getRepoTLDir)/Identity/Colors
 
     # Define files required by the centos-art.sh script command line
     # interface.
-    REPOFILES[0]=${REPODIRS[2]}/init.sh
+    REPOFILES[0]=${REPODIRS[1]}/CentOS.gpl
 
     # Define symbolic links required by the centos-art.sh script
     # command line interface.
-    REPOLINKS[0]=${REPODIRS[1]}/centos-art
+    REPOLINKS[0]=${REPODIRS[0]}/CentOS.gpl
 
     # Check defined directories.
     for FILE in "${REPODIRS[@]}";do

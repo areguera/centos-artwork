@@ -27,6 +27,6 @@
 function verify {
 
     # Define command-line interface.
-    verify_getActions
+    prepare_getActions
 
 }

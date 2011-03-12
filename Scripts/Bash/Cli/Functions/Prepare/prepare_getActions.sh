@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_getActions.sh -- This function interpretes arguments passed
+# prepare_getActions.sh -- This function interpretes arguments passed
 # to `verify' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_getActions {
+function prepare_getActions {
 
     # Define short options we want to support.
     local ARGSS=""

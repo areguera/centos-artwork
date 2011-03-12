@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_doLinkInstall.sh -- This function receives a list of missing
+# prepare_doLinkInstall.sh -- This function receives a list of missing
 # links and installs them using `ln'.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doLinkInstall {
+function prepare_doLinkInstall {
 
     local ID=0
     local LINKS_PARENT=''

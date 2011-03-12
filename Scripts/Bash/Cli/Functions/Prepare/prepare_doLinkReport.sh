@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# verify_doLinkReport.sh -- This function outputs information about
+# prepare_doLinkReport.sh -- This function outputs information about
 # missing links that need to be installed and a confirmation question
 # for users to accept the installation action. 
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_doLinkReport {
+function prepare_doLinkReport {
 
     local LINK=''
     local LINKS_MISSING_MAX=0

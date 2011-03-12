@@ -1,10 +1,6 @@
 #!/bin/bash
 #
-# verify_pathToFonts.sh -- This function checks user's fonts
-# directory. In order for some artworks to be rendered correctly,
-# denmark font needs to be available. By default, denmark font doesn't
-# come with CentOS distribution so create a symbolic link (from the
-# one we have inside repository) to make it available if it isn't yet.
+# prepare_pathToCli.sh -- This function 
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function verify_pathToFonts {
+function prepare_pathToCli  {
 
     # Define variables as local to avoid conflicts outside.
     local -a REPODIRS
@@ -35,15 +31,19 @@ function verify_pathToFonts {
     local -a REPOLINKS
     local FILE=''
 
-    # Define font related directories.
-    REPODIRS[0]=${HOME}/.fonts
-    REPODIRS[1]=$(cli_getRepoTLDir)/Identity/Fonts/Ttf
+    # Define directories required by the centos-art.sh script command
+    # line interface. 
+    REPODIRS[0]=/home/centos
+    REPODIRS[1]=/home/centos/bin
+    REPODIRS[2]=${CLI_BASEDIR}
 
-    # Define font related files.
-    REPOFILES[0]=${REPODIRS[1]}/denmark.ttf
+    # Define files required by the centos-art.sh script command line
+    # interface.
+    REPOFILES[0]=${REPODIRS[2]}/init.sh
 
-    # Define font related symbolic links.
-    REPOLINKS[0]=${REPODIRS[0]}/denmark.ttf
+    # Define symbolic links required by the centos-art.sh script
+    # command line interface.
+    REPOLINKS[0]=${REPODIRS[1]}/centos-art
 
     # Check defined directories.
     for FILE in "${REPODIRS[@]}";do
