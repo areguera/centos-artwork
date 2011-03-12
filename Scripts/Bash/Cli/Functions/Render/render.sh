@@ -26,6 +26,8 @@
 
 function render {
 
+    local ACTIONVAL=''
+
     # Define release number flag. The relesase number flag
     # (--releasever) specifies the release number identity images are
     # rendered for.  By default no release number is used.
