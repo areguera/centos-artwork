@@ -30,7 +30,7 @@ function locale_editMessages {
 
     # Define list of files to process.
     if [[ ${WORKDIR} =~ 'trunk/Locales/Scripts' ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" ".*${TEXTDOMAIN}\.po")
+        FILES=$(cli_getFilesList "${WORKDIR}" ".*$(cli_getCurrentLocale)/${TEXTDOMAIN}\.po")
     else
         FILES=$(cli_getFilesList "${WORKDIR}" ".*$(cli_getCurrentLocale)\.po")
     fi
