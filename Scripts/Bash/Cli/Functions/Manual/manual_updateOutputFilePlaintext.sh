@@ -27,10 +27,15 @@
 function manual_updateOutputFilePlaintext {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.txt" 'AsUpdatingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" 'AsUpdatingLine'
 
     # Update plaintext output directory.
     /usr/bin/makeinfo --plaintext \
         ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
+
+    # Compress plaintext output file.
+    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
+        bzip2 ${MANUAL_BASEFILE}.txt --force
+    fi
 
 }
