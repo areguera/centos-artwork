@@ -66,8 +66,8 @@ function render {
     # base-rendition flow).
     ACTIONNAM="${FUNCNAME}_doBaseActions"
 
-    # Define action value. As convenction, we use non-option arguments
-    # to define the action value (ACTIONVAL) variable.
+    # Define action value. We use non-option arguments to define the
+    # action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
         
         if [[ $ACTIONVAL == '--' ]];then
