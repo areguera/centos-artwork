@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# manual_updateOutputFileHtml.sh -- This function exports
+# document_updateOutputFileHtml.sh -- This function exports
 # documentation manual to HTML format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_updateOutputFileHtml {
+function document_updateOutputFileHtml {
 
     # Output action message.
     cli_printMessage "${MANUAL_BASEFILE}-html" 'AsUpdatingLine'

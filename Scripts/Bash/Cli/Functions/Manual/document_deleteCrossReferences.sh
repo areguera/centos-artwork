@@ -1,15 +1,11 @@
 #!/bin/bash
 #
-# manual_restoreCrossReferences.sh -- This function looks inside
-# texinfo source files, from section level on, and restores any cross
-# reference related to a documentation entry. This function is used in
-# those cases where documentation entries are created/recreated to
-# documentation structure. It is a verification that looks for
-# matching documentation entries previously defined as removed by
-# manual_deleteCrossReferences function. The
-# manual_restoreCrossReferences function relays in the removed message
-# format produced by manual_deleteCrossReferences function, in order
-# to return them back into the link format. 
+# document_deleteCrossReferences.sh -- This function looks inside
+# texinfo source files, from section level on, and removes all cross
+# referece definitions related to a documentation entry. Use this
+# function in coordination with document_deleteEntry function, in order
+# to keep cross reference information, inside the documentation
+# manual, syncronized.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -32,7 +28,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_restoreCrossReferences {
+function document_deleteCrossReferences {
 
     local -a PATTERN
     local -a REPLACE
@@ -55,15 +51,22 @@ function manual_restoreCrossReferences {
             -e "s/(chapter-intro\.texi|\.texi)$//" \
             -e 's! !( |\\n)!g')
 
-    # Define regular expression patterns to match removed message
-    # format produced by message_removeCrossReferences function.
-    PATTERN[0]="--- @strong\{`gettext "Removed"`\}\((pxref|xref|ref):(${NODE})\) ---"
-    PATTERN[1]="^@comment --- `gettext "Removed"`\((\* ${NODE}:(.*)?:(.*)?)\) ---$"
+    # Define regular expression patterns for texinfo cross reference
+    # commands.
+    PATTERN[0]="@(pxref|xref|ref)\{(${NODE})\}"
+    PATTERN[1]="^(\* ${NODE}:(.*)?:(.*)?)$"
 
-    # Define replacement string to turn removed message back to cross
-    # reference link.
-    REPLACE[0]='@\1{\2}'
-    REPLACE[1]='\1'
+    # Define replacement string for missing entries. It is convenient
+    # to keep missing entries in documentation for documentation team
+    # to know. Removing the missing cross reference may intorudce
+    # confussion. Imagine that! you are spending lots of hours in an
+    # article and suddenly one of your cross refereces disappears with
+    # no visible reason, with the next working copy update you
+    # perform. That's frustrating. Instead, when centos-art.sh script
+    # finds a missing cross reference it removes the link and remark
+    # the issue for you to act on it.
+    REPLACE[0]='--- @strong{'`gettext "Removed"`'}(\1:\2) ---'
+    REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
 
     # Define list of entries to process.
     local ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')

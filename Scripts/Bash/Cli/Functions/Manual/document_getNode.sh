@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_searchNode.sh -- This function does a node search inside the
-# info document.
+# document_getNode.sh -- This function cleans up the action value
+# (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,18 +24,12 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_searchNode {
+function document_getNode {
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
+    local NODE=$(echo "$ACTIONVAL" \
+        | sed -r "s!^${HOME}/artwork/!!" \
+        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
 
-    # Check entry inside documentation structure. If the entry
-    # exits use the info reader to open the info file at the
-    # specified node. Otherwise, ask the user for create it.
-    if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="Filesystem $(manual_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
-    else
-        manual_editEntry
-    fi
-
+    echo "$NODE"
 }
+

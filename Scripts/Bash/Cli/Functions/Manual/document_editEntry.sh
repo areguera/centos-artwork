@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# manual_editEntry.sh -- This function implements the edition flow of
+# document_editEntry.sh -- This function implements the edition flow of
 # documentation entries inside the working copy.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_editEntry {
+function document_editEntry {
 
     # Verify chapter definition inside manual.
     if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
@@ -35,14 +35,14 @@ function manual_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
         # Update manual chapter related files.
-        manual_updateChaptersFiles
+        document_updateChaptersFiles
 
         # Update manual chapter related menu.
-        manual_updateChaptersMenu
+        document_updateChaptersMenu
 
         # Update manual chapter related nodes (based on chapter
         # related menu).
-        manual_updateChaptersNodes
+        document_updateChaptersNodes
 
     fi
 
@@ -55,11 +55,11 @@ function manual_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
 
         # Update chapter section related menu.
-        manual_updateMenu
+        document_updateMenu
 
         # Update chapter section related nodes (based on chapter
         # section related menu).
-        manual_updateNodes
+        document_updateNodes
 
         # Update old missing cross references. If for some reason a
         # documentation entry is removed by mistake, and that mistake
@@ -67,7 +67,7 @@ function manual_editEntry {
         # into the repository, rebuild the missing cross reference
         # message to use the correct link to the documentation
         # section.
-        manual_restoreCrossReferences
+        document_restoreCrossReferences
 
     else
 
@@ -83,6 +83,6 @@ function manual_editEntry {
     cli_printMessage '-' 'AsSeparatorLine'
 
     # Rebuild output files to propagate recent changes.
-    manual_updateOutputFiles
+    document_updateOutputFiles
 
 }

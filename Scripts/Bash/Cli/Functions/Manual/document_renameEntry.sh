@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFiles.sh -- This function exports documentation
-# manual to different output formats.
+# document_renameEntry.sh -- This function renames documentation entries
+# and updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,24 +24,23 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_updateOutputFiles {
+function document_renameEntry {
 
-    # Remove extension from manual's base file. This way it is
-    # possible to reuse the same filename on different types of files.
-    MANUAL_BASEFILE=$(echo ${MANUAL_BASEFILE} | sed -r 's!\.texi!!')
+    # Copy source documentation entry.
+    document_copyEntry
 
-    # Add the working copy root directory to directory stack to make
-    # path construction correctly. Otherwise, makeinfo may produce
-    # paths incorrectly.
-    pushd ${HOME}/artwork > /dev/null
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
-    manual_updateOutputFileInfo
-    manual_updateOutputFileHtml
-    manual_updateOutputFileXml
-    manual_updateOutputFilePdf
-    manual_updateOutputFilePlaintext
+    # Delete source documentation entry. The source documentation
+    # entry has been copied already, so to create the rename effect
+    # delete it from repository filesystem.
+    document_deleteEntry
 
-    # Remove the working copy root directory from directory stack.
-    popd > /dev/null
+    # At this point, source documentation entry has been removed and
+    # all menu, nodes and cross-references have been commented. So,
+    # replace commented menu, nodes and cross-reference information
+    # from source to target documentation entry.
+    document_renameCrossReferences 
 
 }

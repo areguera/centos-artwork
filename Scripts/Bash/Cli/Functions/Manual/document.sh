@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# manual.sh -- This function provides documentation features to
+# document.sh -- This function provides documentation features to
 # centos-art.sh script. Here we initialize documentation variables and
-# call manual_getArguments functions.
+# call document_getArguments functions.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
     
-function manual {
+function document {
 
     local ACTIONNAM=''
     local ACTIONVAL=''
@@ -36,7 +36,7 @@ function manual {
     MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
 
     # Interpret arguments and options passed through command-line.
-    manual_getArguments
+    document_getArguments
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -46,7 +46,7 @@ function manual {
     # Define action name. It does matter what option be passed to
     # centos-art, there are many different actions to perform based on
     # the option passed (e.g., `--edit', `--read', `--search', etc.).
-    # In that sake, we defined action name inside manual_getArguments,
+    # In that sake, we defined action name inside document_getArguments,
     # at the moment of interpreting options.
 
     # Define action value. As convenction, we use non-option arguments
@@ -62,7 +62,7 @@ function manual {
         cli_checkRepoDirSource
 
         # Define documentation entry.
-        ENTRY=$(manual_getEntry)
+        ENTRY=$(document_getEntry)
 
         # Define documentation entry directory. This is the directory
         # where the entry file is stored.

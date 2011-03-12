@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# manual_updateChaptersFiles.sh -- This function updates chapter related
+# document_updateChaptersFiles.sh -- This function updates chapter related
 # files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_updateChaptersFiles {
+function document_updateChaptersFiles {
 
     # Define chapter's generic structure. 
     local CHAPTERBODY="\

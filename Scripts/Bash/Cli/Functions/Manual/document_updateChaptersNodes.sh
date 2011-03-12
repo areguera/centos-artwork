@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_renameEntry.sh -- This function renames documentation entries
-# and updates documentation structure to reflect changes.
+# document_updateChaptersNodes.sh - This function updates nodes of
+# chapters based on menu of chapters.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,23 +24,27 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_renameEntry {
+function document_updateChaptersNodes {
 
-    # Copy source documentation entry.
-    manual_copyEntry
+    # Build list "nodes of chapters" based on menu of chapters.
+    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.texi \
+        | egrep -v '^@(end )?menu$' \
+        | egrep -v "^\* `gettext "Index"`::[[:print:]]*$" \
+        | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
+        | sed -r 's! !_!g' | sort | uniq )
 
-    # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    # Build list of texinfo inclusions to load chapters' nodes.
+    local FILENODE=$(\
+    for CHAPTERNODE in ${CHAPTERNODES};do
 
-    # Delete source documentation entry. The source documentation
-    # entry has been copied already, so to create the rename effect
-    # delete it from repository filesystem.
-    manual_deleteEntry
+        INCL=$(echo ${CHAPTERNODE} | sed -r "s!(${CHAPTERNODE})!\1/chapter\.texi!")
 
-    # At this point, source documentation entry has been removed and
-    # all menu, nodes and cross-references have been commented. So,
-    # replace commented menu, nodes and cross-reference information
-    # from source to target documentation entry.
-    manual_renameCrossReferences 
+        # Output inclusion line using texinfo format.
+        echo "@include $INCL"
+
+    done)
+
+    # Dump organized nodes of chapters into file.
+    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.texi
 
 }

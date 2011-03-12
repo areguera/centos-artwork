@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_getNode.sh -- This function cleans up the action value
-# (ACTIONVAL) directory to make a node name from it.
+# document_updateOutputFileInfo.sh -- This function exports
+# documentation manual to info format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,12 +24,17 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_getNode {
+function document_updateOutputFileInfo {
 
-    local NODE=$(echo "$ACTIONVAL" \
-        | sed -r "s!^${HOME}/artwork/!!" \
-        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsUpdatingLine'
 
-    echo "$NODE"
+    # Update info file.
+    /usr/bin/makeinfo ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.info
+
+    # Compress info file.
+    if [[ $? -eq 0 ]];then
+        bzip2 -f ${MANUAL_BASEFILE}.info
+    fi
+
 }
-

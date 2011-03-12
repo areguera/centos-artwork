@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFileXml.sh -- This function exports documentation
-# manual to XML format.
+# document_updateOutputFilePlaintext.sh -- This function exports
+# documentation manual to plain-text format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,13 +24,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_updateOutputFileXml {
+function document_updateOutputFilePlaintext {
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xml" 'AsUpdatingLine'
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" 'AsUpdatingLine'
 
-    # Update xml output format.
-    /usr/bin/makeinfo --xml \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.xml \
+    # Update plaintext output directory.
+    /usr/bin/makeinfo --plaintext \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
+
+    # Compress plaintext output file.
+    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
+        bzip2 ${MANUAL_BASEFILE}.txt --force
+    fi
 
 }

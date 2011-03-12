@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# manual_searchIndex.sh -- This function does an index search inside the
+# document_searchIndex.sh -- This function does an index search inside the
 # info document.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_searchIndex {
+function document_searchIndex {
 
     # Check flag filter. By default flag filter has the `.+' value
     # which is not very descriptive in the sake of an index-search.

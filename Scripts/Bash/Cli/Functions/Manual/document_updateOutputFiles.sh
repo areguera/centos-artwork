@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# manual_updateOutputFilePdf.sh -- This function exports documentation
-# manual to PDF format.
+# document_updateOutputFiles.sh -- This function exports documentation
+# manual to different output formats.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,13 +24,24 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function manual_updateOutputFilePdf {
+function document_updateOutputFiles {
 
-    # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" 'AsUpdatingLine'
+    # Remove extension from manual's base file. This way it is
+    # possible to reuse the same filename on different types of files.
+    MANUAL_BASEFILE=$(echo ${MANUAL_BASEFILE} | sed -r 's!\.texi!!')
 
-    # Update plaintext output directory.
-    /usr/bin/texi2pdf --quiet \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.pdf
+    # Add the working copy root directory to directory stack to make
+    # path construction correctly. Otherwise, makeinfo may produce
+    # paths incorrectly.
+    pushd ${HOME}/artwork > /dev/null
+
+    document_updateOutputFileInfo
+    document_updateOutputFileHtml
+    document_updateOutputFileXml
+    document_updateOutputFilePdf
+    document_updateOutputFilePlaintext
+
+    # Remove the working copy root directory from directory stack.
+    popd > /dev/null
 
 }
