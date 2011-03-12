@@ -26,6 +26,7 @@
 
 function render {
 
+    local ACTIONNAM=''
     local ACTIONVAL=''
 
     # Define release number flag. The relesase number flag
@@ -60,9 +61,13 @@ function render {
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
 
-    # Read arguments and build the action value from them. As
-    # convenction, we use non-option arguments to define the action
-    # value (ACTIONVAL) variable.
+    # Define action name. No matter what option be passed to
+    # centos-art, there is only one action to perform (i.e., the
+    # base-rendition flow).
+    ACTIONNAM="${FUNCNAME}_doBaseActions"
+
+    # Define action value. As convenction, we use non-option arguments
+    # to define the action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
         
         if [[ $ACTIONVAL == '--' ]];then
@@ -80,8 +85,13 @@ function render {
         # repository.
         cli_syncroRepoChanges
 
-        # Execute base-rendition flow.
-        eval ${FUNCNAM}_doBaseActions
+        # Execute action name.
+        if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+            eval $ACTIONNAM
+        else
+            cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        fi
 
         # Commit changes from working copy to central repository only.
         # At this point, changes in the repository are not merged in
