@@ -34,34 +34,32 @@ function cli {
     local FUNCDIRNAM=''
     local FUNCSCRIPT=''
     local FUNCCONFIG=''
-    local ACTIONNAM=''
     local ACTIONVAL=''
     local ARGUMENTS=''
-
-    # Initialize default value to verbosity flag. The verbosity flag
-    # (--quiet) controls whether centos-art.sh script prints messages
-    # or not.
-    local FLAG_QUIET='false'
-    
-    # Initialize default value to answer flag. The answer flag
-    # (--answer) controls whether centos-art.sh script does or does
-    # not pass confirmation request points. By default it doesn't.
-    local FLAG_ANSWER='false'
 
     # Initialize default value to filter flag. The filter flag
     # (--filter) is used mainly to reduce the number of files to
     # process. The value of this variable is interpreted as
-    # egrep-posix regular expression.  As initial value, we use a
-    # regular expression that matches everything.
+    # egrep-posix regular expression.  By default, everything matches.
     local FLAG_FILTER='.+'
+
+    # Initialize default value to verbosity flag. The verbosity flag
+    # (--quiet) controls whether centos-art.sh script prints messages
+    # or not. By default, all messages are printed out.
+    local FLAG_QUIET='false'
+    
+    # Initialize default value to answer flag. The answer flag
+    # (--answer) controls whether centos-art.sh script does or does
+    # not pass confirmation request points. By default, it doesn't.
+    local FLAG_ANSWER='false'
 
     # Initialize default value to don't commit changes flag. The don't
     # commit changes flag (--dont-commit-changes) controls whether
-    # centos-art.sh script syncronizes changes between Subversion
-    # central repository and working copy.
+    # centos-art.sh script syncronizes changes between the central
+    # repository and the working copy. By default, it does.
     local FLAG_DONT_COMMIT_CHANGES='false'
 
-    # Redefine positional parameters stored inside ARGUMENTS variable.
+    # Redefine ARGUMENTS variable using current positional parameters. 
     cli_doParseArgumentsReDef "$@"
 
     # Define function directory (FUNCDIR). The directory path where
@@ -79,8 +77,8 @@ function cli {
     # Define function file name.
     FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}.sh
 
-    # Check function script existence.
-    cli_checkFiles $FUNCSCRIPT 'f'
+    # Check function script execution rights.
+    cli_checkFiles $FUNCSCRIPT 'x'
 
     # Define function configuration directory. The function
     # configuration directory is used to store functionality's
@@ -92,19 +90,15 @@ function cli {
     # start counting from second argument (inclusive) on.
     shift 1
 
-    # Redefine positional parameters stored inside ARGUMENTS variable.
+    # Redefine ARGUMENTS using current positional parameters.
     cli_doParseArgumentsReDef "$@"
-
-    # Parse positional parameters to retrive the value of common
-    # arguments (e.g., --answer-yes, --filter, --quiet, etc.).
-    cli_doParseArgumentsCommon
 
     # Define default text editors used by centos-art.sh script.
     if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
         EDITOR='/usr/bin/vim'
     fi
     
-    # Check text editor execution rights. 
+    # Check text editor execution rights.
     cli_checkFiles $EDITOR 'x'
 
     # Go for function initialization. Keep the cli_getFunctions

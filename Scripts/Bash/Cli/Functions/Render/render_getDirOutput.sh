@@ -37,7 +37,7 @@ function render_getDirOutput {
 
     # Redefine base output directory to introduce specific information
     # like release number, architecture, etc.
-    OUTPUT=${OUTPUT}/${FLAG_RELEASE}/${FLAG_ARCHITECTURE}
+    OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
 
     # Define whether to use or not locale-specific directory to store
     # content, using current locale information as reference. As

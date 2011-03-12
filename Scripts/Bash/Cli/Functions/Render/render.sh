@@ -26,19 +26,15 @@
 
 function render {
 
-    # Define default value to target flag. The target flag (--to)
-    # controls final destination used by copy related actions.
-    local FLAG_TO=''
+    # Define release number flag. The relesase number flag
+    # (--releasever) specifies the release number identity images are
+    # rendered for.  By default no release number is used.
+    local FLAG_RELEASEVER=''
 
-    # Define release number flag. The relesase number flag (--release)
-    # specifies the release number identity images are rendered for.
-    # By default no release number is used.
-    local FLAG_RELEASE=''
-
-    # Define architecture flag. The architecture flag (--architecture)
+    # Define architecture flag. The architecture flag (--basearch)
     # specifies the architecture type identity images are rendered
     # for.  By default no architecture type is used.
-    local FLAG_ARCHITECTURE=''
+    local FLAG_BASEARCH=''
 
     # Define theme model flag. The theme model flag (--theme-model)
     # specifies the theme model used when no one is specified.
@@ -54,7 +50,43 @@ function render {
     # upon images produced. By default there is no grouping action.
     local FLAG_GROUPED_BY=''
 
-    # Define rendition actions.
+    # Interpret arguments and options passed through command-line.
     render_getArguments
+
+    # Redefine positional parameters using ARGUMENTS. At this point,
+    # option arguments have been removed from ARGUMENTS variable and
+    # only non-option arguments remain in it. 
+    eval set -- "$ARGUMENTS"
+
+    # Read arguments and build the action value from them. As
+    # convenction, we use non-option arguments to define the action
+    # value (ACTIONVAL) variable.
+    for ACTIONVAL in "$@";do
+        
+        if [[ $ACTIONVAL == '--' ]];then
+            continue
+        fi
+
+        # Check action value. Be sure the action value matches the
+        # convenctions defined for source locations inside the working
+        # copy.
+        cli_checkRepoDirSource
+
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository.
+        cli_syncroRepoChanges
+
+        # Execute base-rendition flow.
+        eval ${FUNCNAM}_doBaseActions
+
+        # Commit changes from working copy to central repository only.
+        # At this point, changes in the repository are not merged in
+        # the working copy, but chages in the working copy do are
+        # committed up to repository.
+        cli_commitRepoChanges
+
+    done
 
 }

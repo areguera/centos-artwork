@@ -30,13 +30,12 @@ function render_getArguments {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="render:,releasever:,basearch:,copy:,to:,convert-to:,group-by:,theme-model:"
+    local ARGSL="filter:,quiet,answer:,dont-commit-changes,releasever:,basearch:,convert-to:,group-by:,theme-model:"
 
-    # Parse arguments using getopt(1) command parser.
+    # Redefine ARGUMENTS variable using getopt output.
     cli_doParseArguments
 
-    # Reset positional parameters using output from (getopt) argument
-    # parser.
+    # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
 
     # Look for options passed through command-line.
@@ -44,9 +43,30 @@ function render_getArguments {
 
         case "$1" in
 
+            --filter )
+                FLAG_FILTER="$2"
+                shift 2
+                ;;
+
+            --quiet )
+                FLAG_QUIET="true"
+                FLAG_DONT_COMMIT_CHANGES="true"
+                shift 1
+                ;;
+
+            --answer )
+                FLAG_ANSWER="$2"
+                shift 2
+                ;;
+
+            --dont-commit-changes )
+                FLAG_DONT_COMMIT_CHANGES="true"
+                shift 1
+                ;;
+
             --releasever )
-                FLAG_RELEASE="$2"
-                if [[ ! $FLAG_RELEASE =~ $(cli_getPathComponent '--release-pattern') ]];then
+                FLAG_RELEASEVER="$2"
+                if [[ ! $FLAG_RELEASEVER =~ $(cli_getPathComponent '--release-pattern') ]];then
                     cli_printMessage "`gettext "The release version provided is not supported."`" 'AsErrorLine'
                     cli_printMessage "$(caller)" 'AsToKnowMoreLine'
                 fi
@@ -54,16 +74,11 @@ function render_getArguments {
                 ;;
 
             --basearch )
-                FLAG_ARCHITECTURE="$2"
-                if [[ ! $FLAG_ARCHITECTURE =~ $(cli_getPathComponent '--architecture-pattern') ]];then
+                FLAG_BASEARCH="$2"
+                if [[ ! $FLAG_BASEARCH =~ $(cli_getPathComponent '--architecture-pattern') ]];then
                     cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
                     cli_printMessage "$(caller)" 'AsToKnowMoreLine'
                 fi
-                shift 2
-                ;;
-
-            --to )
-                FLAG_TO="$2"
                 shift 2
                 ;;
 
@@ -83,35 +98,11 @@ function render_getArguments {
                 ;;
 
             * )
-                # Break options loop.
                 break
         esac
     done
 
-    # Read remaining arguments and build the action value from them.
-    # At this point all options should be processed.
-    for ACTIONVAL in "$@";do
-        
-        if [[ $ACTIONVAL == '--' ]];then
-            continue
-        fi
-
-        # Check action value. Be sure the action value matches the
-        # convenctions defined for source locations inside the working
-        # copy.
-        cli_checkRepoDirSource
-
-        # Syncronize changes between the working copy and the central
-        # repository to bring down changes.
-        cli_syncroRepoChanges
-
-        # Execute base-rendition flow.
-        eval ${FUNCNAM}_doBaseActions
-
-        # Syncronize changes between the working copy and the central
-        # repository to commit up changes.
-        cli_commitRepoChanges
-
-    done
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
 
 }

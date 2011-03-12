@@ -27,6 +27,11 @@
 
 function cli_printMessage {
 
+    # Verify `--quiet' option.
+    if [[ "$FLAG_QUIET" == 'true' ]];then
+        return
+    fi
+
     local MESSAGE="$1"
     local FORMAT="$2"
 
@@ -144,35 +149,27 @@ function cli_printMessage {
 
         'AsSeparatorLine' )
 
-            if [[ "$FLAG_QUIET" == 'false' ]];then
+            # Define separator width.
+            local MAX=70
 
-                # Define separator width.
-                local MAX=70
+            # Draw separator.
+            until [[ $MAX -eq 0 ]];do
+                printf "${MESSAGE}" > /dev/stderr
+                MAX=$(($MAX - 1))
+            done
 
-                # Draw separator.
-                until [[ $MAX -eq 0 ]];do
-                    printf "${MESSAGE}" > /dev/stderr
-                    MAX=$(($MAX - 1))
-                done
-
-                # Output newline to end separator.
-                echo "" > /dev/stderr
-
-            fi
+            # Output newline to end separator.
+            echo "" > /dev/stderr
             ;;
 
         'AsNoTrailingNewLine' )
-            if [[ "$FLAG_QUIET" == 'false' ]];then
-                printf "$MESSAGE" > /dev/stderr
-            fi
+            printf "$MESSAGE" > /dev/stderr
             ;;
 
         'AsRegularLine' | * )
-            if [[ "$FLAG_QUIET" == 'false' ]];then
-                echo "$MESSAGE" \
-                    | awk -f ${CLI_BASEDIR}/Styles/output_forTwoColumns.awk \
-                    > /dev/stderr
-            fi
+            echo "$MESSAGE" \
+                | awk -f ${CLI_BASEDIR}/Styles/output_forTwoColumns.awk \
+                > /dev/stderr
             ;;
 
     esac
