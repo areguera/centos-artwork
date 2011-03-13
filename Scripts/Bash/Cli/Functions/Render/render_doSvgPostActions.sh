@@ -39,7 +39,7 @@ function render_doSvgPostActions {
     # repository and save you the time of writing long option
     # combinations each time you need to produce images inside the
     # repository.
-    if [[ $TEMPLATE =~ "Distro/Backgrounds/.+\.svg$" ]];then
+    if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupSimilarFiles: png jpg'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
@@ -77,6 +77,10 @@ function render_doSvgPostActions {
 
             renderBrands )
                 render_doBrands 
+                ;;
+
+            groupSimilarFiles:* )
+                render_groupSimilarFiles
                 ;;
 
         esac
