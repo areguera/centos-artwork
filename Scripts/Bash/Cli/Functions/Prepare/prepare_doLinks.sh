@@ -43,18 +43,25 @@ function prepare_doLinks {
     local COUNT=0
     local WARNING=''
     local LINKS_MISSING_ID=''
+    local GIMP_USERDIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
 
     # Define link sources.
     LINKS_SRC[0]=${HOME}/bin/$CLI_PROGRAM
     LINKS_SRC[1]=${HOME}/.fonts/denmark.ttf
     LINKS_SRC[2]=${HOME}/.inkscape/palettes/CentOS.gpl
-    LINKS_SRC[3]=${HOME}/.$(rpm -q gimp | cut -d. -f-2)/palettes/CentOS.gpl
+    LINKS_SRC[3]=${GIMP_USERDIR}/palettes/CentOS.gpl
 
     # Define link targets.
     LINKS_DST[0]=${CLI_BASEDIR}/init.sh
     LINKS_DST[1]=${HOME}/artwork/trunk/Identity/Fonts/denmark.ttf
     LINKS_DST[2]=${HOME}/artwork/trunk/Identity/Colors/CentOS.gpl
     LINKS_DST[3]=${LINKS_DST[2]}
+
+    # Define both source and target location for Gimp brushes.
+    for FILE in $(find ${HOME}/artwork/trunk/Identity/Models/Gbr/ -name '*.gbr');do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USERDIR}/brushes/$(basename $FILE)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=$FILE
+    done
 
     # Print action message.
     cli_printMessage "`gettext "Symbolic links"`" 'AsCheckingLine'
