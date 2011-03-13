@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # prepare_getArguments.sh -- This function interpretes arguments passed
-# to `verify' functionality and calls actions accordingly.
+# to `prepare' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -44,31 +44,23 @@ function prepare_getArguments {
         case "$1" in
 
             --packages )
-                ACTIONNAM="${FUNCNAM}_doPackages"
-                break
+                FLAG_PACKAGES="true"
+                shift 1
                 ;;
 
             --links )
-                ACTIONNAM="${FUNCNAM}_doLinks"
-                break
+                FLAG_LINKS="true"
+                shift 1
                 ;;
 
             --environment )
-                ACTIONNAM="${FUNCNAM}_doEnvironment"
-                break
+                FLAG_ENVIRONMENT="true"
+                shift 1
                 ;;
 
             * )
                 break
         esac
     done
-
-    # Execute action name.
-    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
-        eval $ACTIONNAM
-    else
-        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    fi
 
 }

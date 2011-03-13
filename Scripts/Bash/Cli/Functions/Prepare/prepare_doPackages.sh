@@ -1,11 +1,10 @@
 #!/bin/bash
 #
-# prepare_doPackages.sh -- This function verifies required packages
-# your workstation needs in order to run the centos-art command
-# correctly. If there are missing packages, the `centos-art.sh' script
-# asks you to confirm their installation. When installing packages,
-# the `centos-art.sh' script uses the yum application in order to
-# achieve the task.
+# prepare_doPackages.sh -- This function verifies the required
+# packages your workstation needs to have installed in order for
+# centos-art command to run correctly. If there is one or more missing
+# packages, the `centos-art.sh' script asks you to confirm their
+# installation through yum.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -30,30 +29,88 @@
 
 function prepare_doPackages {
 
+    # Verify `--packages' option.
+    if [[ $FLAG_PACKAGES == 'false' ]];then
+        return
+    fi
+
+    # Print line separator.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    local PACKAGE=''
+    local WARNING=''
     local PACKAGES=''
-    local PACKAGES_THIRD_FLAG_FILTER=''
+    local PACKAGES_THIRDS=''
     local -a PACKAGES_MISSING
-    local PACKAGES_COUNT=0
+    local RPM='/bin/rpm'
+    local YUM='/usr/bin/yum'
+
+    # Check execution rights of package managers.
+    cli_checkFiles $RPM 'x'
+    cli_checkFiles $YUM 'x'
 
     # Define required packages needed by centos-art.sh script.
-    PACKAGES="bash inkscape ImageMagick netpbm netpbm-progs
-        syslinux gimp coreutils texinfo info tetex-latex tetex-fonts
-        tetex-doc tetex-xdvi tetex-dvips gettext texi2html"
+    PACKAGES="inkscape ImageMagick netpbm netpbm-progs syslinux gimp
+        coreutils texinfo info tetex-latex tetex-fonts tetex-xdvi
+        tetex-dvips gettext texi2html gnome-doc-utils elinks
+        docbook-style-xsl docbook-utils docbook-dtds
+        docbook-style-dsssl docbook-simple docbook-utils-pdf
+        docbook-slides firefox sudo yum rpm"
 
-    # Define, from required packages, packages being from third
-    # parties (i.e., packages not included in CentOS [base]
-    # repository.).
-    PACKAGES_THIRD_FLAG_FILTER="(inkscape|blender)"
+    # Define packages from third party repositories (i.e., packages
+    # not included in CentOS [base] repository.) required by
+    # centos-art to work as expected.
+    PACKAGES_THIRDS="(inkscape|blender)"
 
-    prepare_doPackageCheck
-    prepare_doPackageReport
-    prepare_doPackageInstall
+    # Print action message.
+    cli_printMessage "`gettext "RPM packages"`" 'AsCheckingLine'
+
+    # Build list of missing packages.
+    for PACKAGE in $PACKAGES;do
+        $RPM -q --queryformat "%{NAME}\n" $PACKAGE --quiet
+        if [[ $? -ne 0 ]];then
+            PACKAGES_MISSING[((++${#PACKAGES_MISSING[*]}))]=$PACKAGE
+        fi
+    done
+
+    # Print line separator.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Is there any package missing?
+    if [[ ${#PACKAGES_MISSING[*]} -eq 0 ]];then
+        cli_printMessage "`gettext "The required packages has been already installed."`"
+        return
+    fi
+
+    # At this point there is one or more missing packages that need to
+    # be installed in the workstation. Report this issue and specify
+    # which these packages are.
+    cli_printMessage "`ngettext "The following package needs to be installed" \
+        "The following packages need to be installed" \
+        "${#PACKAGES_MISSING[*]}"`:"
+
+    # Build report of missing packages and remark those comming from
+    # third party repository.
+    for PACKAGE in ${PACKAGES_MISSING[@]};do
+        if [[ $PACKAGE =~ $PACKAGES_THIRDS ]];then
+            WARNING=" (`gettext "requires third party repository!"`)"
+        fi
+        cli_printMessage "${PACKAGE}${WARNING}" 'AsResponseLine'
+    done
+
+    # Print confirmation request.
+    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
+
+    # Use sudo to install the missing packages in your system through
+    # yum.
+    sudo ${YUM} install ${PACKAGES_MISSING[*]}
 
     # At this point we need to recheck installed packages in order to
     # be sure the user decided not to continue when there are still
     # missing packages to be install.  For example this may happen
-    # when we try to install third party packages and there is no
-    # third party repository availabe to get those packages from.
+    # when we try to install third party packages but there is no
+    # third party repository configured in the workstation for yum to
+    # retrive those packages from.
     prepare_doPackages
 
 }
