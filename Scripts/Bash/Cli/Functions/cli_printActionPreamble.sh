@@ -32,29 +32,13 @@
 
 function cli_printActionPreamble {
 
-    local FILE=''
-    local COUNT=0
     local FILES="$1"
     local ACTION="$2"
     local FORMAT="$3"
-
-    # Check list of files to process.  If we have an empty list of
-    # files, inform about that and stop the script execution.
-    # Otherwise, check all files in the list to be sure they are
-    # regular files.
-    if [[ "$FILES" == '' ]];then
-        cli_printMessage "`gettext "There is no file to process."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    else
-        cli_checkFiles "${FILES}"
-    fi
-
-    # Verify that action argument be passed. The action value is
-    # required in order decide which action to perform. If it is not
-    # passed there is nothing else to do here.
-    if [[ $ACTION == '' ]];then
-        return
-    fi
+    local FILE=''
+    local NEGATIVE=''
+    local POSITIVE=''
+    local COUNT=0
 
     # Redefine total number of directories.
     COUNT=$(echo "$FILES" | sed -r "s! +!\n!g" | wc -l)
@@ -63,32 +47,61 @@ function cli_printActionPreamble {
     case $ACTION in
 
         'doCreate' )
-            ACTION="`ngettext "The following entry will be created" \
-            "The following entries will be created" $COUNT`:"
+            if [[ $FILES == '' ]];then
+                NEGATIVE="`gettext "There is no entry to create."`"
+            else
+                POSITIVE="`ngettext "The following entry will be created" \
+                    "The following entries will be created" $COUNT`:"
+            fi
             ;;
 
         'doDelete' )
-            ACTION="`ngettext "The following entry will be deleted" \
-            "The following entries will be deleted" $COUNT`:"
+            if [[ $FILES == '' ]];then
+                NEGATIVE="`gettext "There is no file to delete."`"
+            else
+                POSITIVE="`ngettext "The following entry will be deleted" \
+                    "The following entries will be deleted" $COUNT`:"
+            fi
             ;;
 
         'doLocale' )
-            ACTION="`ngettext "Translatable strings will be retrived from the following entry" \
-            "Translatable strings will be retrived from the following entries" $COUNT`:"
+            if [[ $FILES == '' ]];then
+                NEGATIVE="`gettext "There is no file to locale."`"
+            else
+                POSITIVE="`ngettext "Translatable strings will be retrived from the following entry" \
+                    "Translatable strings will be retrived from the following entries" $COUNT`:"
+            fi
             ;;
 
         'doEdit' )
-            ACTION="`ngettext "The following file will be edited" \
-            "The following files will be edited" $COUNT`:"
+            if [[ $FILES == '' ]];then
+                NEGATIVE="`gettext "There is no file to edit."`"
+            else
+                POSITIVE="`ngettext "The following file will be edited" \
+                    "The following files will be edited" $COUNT`:"
+            fi
+            ;;
+
+        * )
+            # Check list of files to process.  If we have an empty
+            # list of files, inform about that and stop the script
+            # execution.  Otherwise, check all files in the list to be
+            # sure they are regular files.
+            if [[ "$FILES" == '' ]];then
+                NEGATIVE="`gettext "There is no file to process."`" 'AsErrorLine'
+            fi
             ;;
 
     esac
 
     # Print preamble message.
-    cli_printMessage "$ACTION"
-    for FILE in $FILES;do
-        cli_printMessage "$FILE" "$FORMAT"
-    done
-    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
+    if [[ $NEGATIVE == '' ]];then
+        cli_printMessage "$POSITIVE"
+        cli_printMessage "$FILES" "$FORMAT"
+        cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
+    else
+        cli_printMessage "$NEGATIVE"
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
 }
