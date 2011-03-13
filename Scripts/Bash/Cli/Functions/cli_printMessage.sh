@@ -32,150 +32,159 @@ function cli_printMessage {
         return
     fi
 
-    local MESSAGE="$1"
+    local MESSAGES="$1"
     local FORMAT="$2"
+    local MESSAGE=''
 
-    # Reduce paths inside output messages. The main purpose for this
-    # is to free horizontal space in output messages.
-    MESSAGE=$(echo "$MESSAGE" \
-        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
+    # Let processing more than one message.  There is no need to
+    # create loops outside this function to process more than one
+    # message. Instead, pass the list of messages to this function.
+    # This may save some memory when the `--quiet' option is used.
+    for MESSAGE in "$MESSAGES";do
 
-    # Remove blank spaces from lines' begining.
-    MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
+        # Reduce paths inside output messages. The main purpose for
+        # this is to free horizontal space in output messages.
+        MESSAGE=$(echo "$MESSAGE" \
+            | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
 
-    # Define message formats.
-    case $FORMAT in
+        # Remove blank spaces from lines' begining.
+        MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
 
-        'AsUpdatingLine' )
-            cli_printMessage "`gettext "Updating"`: $MESSAGE"
-            ;;
+        # Define message formats.
+        case $FORMAT in
 
-        'AsDeletingLine' )
-            cli_printMessage "`gettext "Deleting"`: $MESSAGE"
-            ;;
+            'AsUpdatingLine' )
+                cli_printMessage "`gettext "Updating"`: $MESSAGE"
+                ;;
 
-        'AsCheckingLine' )
-            cli_printMessage "`gettext "Checking"`: $MESSAGE"
-            ;;
+            'AsDeletingLine' )
+                cli_printMessage "`gettext "Deleting"`: $MESSAGE"
+                ;;
 
-        'AsCreatingLine' )
-            cli_printMessage "`gettext "Creating"`: $MESSAGE"
-            ;;
+            'AsCheckingLine' )
+                cli_printMessage "`gettext "Checking"`: $MESSAGE"
+                ;;
 
-        'AsReadingLine' )
-            cli_printMessage "`gettext "Reading"`: $MESSAGE"
-            ;;
+            'AsCreatingLine' )
+                cli_printMessage "`gettext "Creating"`: $MESSAGE"
+                ;;
 
-        'AsSavedAsLine' )
-            cli_printMessage "`gettext "Saved as"`: $MESSAGE"
-            ;;
+            'AsReadingLine' )
+                cli_printMessage "`gettext "Reading"`: $MESSAGE"
+                ;;
 
-        'AsLinkToLine' )
-            cli_printMessage "`gettext "Linked to"`: $MESSAGE"
-            ;;
+            'AsSavedAsLine' )
+                cli_printMessage "`gettext "Saved as"`: $MESSAGE"
+                ;;
 
-        'AsMovedToLine' )
-            cli_printMessage "`gettext "Moved to"`: $MESSAGE"
-            ;;
+            'AsLinkToLine' )
+                cli_printMessage "`gettext "Linked to"`: $MESSAGE"
+                ;;
 
-        'AsTranslationLine' )
-            cli_printMessage "`gettext "Translation"`: $MESSAGE"
-            ;;
+            'AsMovedToLine' )
+                cli_printMessage "`gettext "Moved to"`: $MESSAGE"
+                ;;
 
-        'AsDesignLine' )
-            cli_printMessage "`gettext "Design"`: $MESSAGE"
-            ;;
+            'AsTranslationLine' )
+                cli_printMessage "`gettext "Translation"`: $MESSAGE"
+                ;;
 
-        'AsConfigurationLine' )
-            cli_printMessage "`gettext "Configuration"`: $MESSAGE"
-            ;;
+            'AsDesignLine' )
+                cli_printMessage "`gettext "Design"`: $MESSAGE"
+                ;;
 
-        'AsPaletteLine' )
-            cli_printMessage "`gettext "Palette"`: $MESSAGE"
-            ;;
+            'AsConfigurationLine' )
+                cli_printMessage "`gettext "Configuration"`: $MESSAGE"
+                ;;
 
-        'AsResponseLine' )
-            cli_printMessage "--> $MESSAGE"
-            ;;
+            'AsPaletteLine' )
+                cli_printMessage "`gettext "Palette"`: $MESSAGE"
+                ;;
 
-        'AsRequestLine' )
-            cli_printMessage "${MESSAGE}: " 'AsNoTrailingNewLine'
-            ;;
+            'AsResponseLine' )
+                cli_printMessage "--> $MESSAGE"
+                ;;
 
-        'AsErrorLine' )
-            # This option is used to print error messsages.
-            echo "${CLI_PROGRAM}: ${MESSAGE}" > /dev/stderr
-            ;;
+            'AsRequestLine' )
+                cli_printMessage "${MESSAGE}: " 'AsNoTrailingNewLine'
+                ;;
 
-        'AsToKnowMoreLine' )
-            # This option receives the output of bash's caller
-            # built-in as message value and produces the documentation
-            # entry from it.
-            MESSAGE=$(dirname "$(echo $MESSAGE | cut -d ' ' -f2-)")
-            cli_printMessage '-' 'AsSeparatorLine'
-            cli_printMessage "`gettext "To know more, run the following command"`:"
-            cli_printMessage "centos-art manual --read='$MESSAGE'"
-            cli_printMessage '-' 'AsSeparatorLine'
-            exit # <-- ATTENTION: Do not remove this line. We use this
-                 #                option as convenction to end script
-                 #                execution.
-            ;;
+            'AsErrorLine' )
+                # This option is used to print error messsages.
+                echo "${CLI_PROGRAM}: ${MESSAGE}" > /dev/stderr
+                ;;
 
-        'AsYesOrNoRequestLine' )
+            'AsToKnowMoreLine' )
+                # This option receives the output of bash's caller
+                # built-in as message value and produces the documentation
+                # entry from it.
+                MESSAGE=$(dirname "$(echo $MESSAGE | cut -d ' ' -f2-)")
+                cli_printMessage '-' 'AsSeparatorLine'
+                cli_printMessage "`gettext "To know more, run the following command"`:"
+                cli_printMessage "centos-art manual --read='$MESSAGE'"
+                cli_printMessage '-' 'AsSeparatorLine'
+                exit # <-- ATTENTION: Do not remove this line. We use this
+                     #                option as convenction to end script
+                     #                execution.
+                ;;
+    
+            'AsYesOrNoRequestLine' )
 
-            # Define positive answer.
-            local Y="`gettext "yes"`"
+                # Define positive answer.
+                local Y="`gettext "yes"`"
 
-            # Define negative answer.
-            local N="`gettext "no"`"
+                # Define negative answer.
+                local N="`gettext "no"`"
 
-            # Define default answer.
-            local ANSWER=${FLAG_ANSWER}
+                # Define default answer.
+                local ANSWER=${FLAG_ANSWER}
 
-            if [[ $ANSWER == 'false' ]];then
+                if [[ $ANSWER == 'false' ]];then
 
-                # Print the question.
-                cli_printMessage "$MESSAGE [${Y}/${N}]: " 'AsNoTrailingNewLine'
+                    # Print the question.
+                    cli_printMessage "$MESSAGE [${Y}/${N}]: " 'AsNoTrailingNewLine'
 
-                # Redefine default answer based on user's input.
-                read ANSWER
+                    # Redefine default answer based on user's input.
+                    read ANSWER
 
-            fi
+                fi
 
-            # Verify user's answer. Only positive answer let the
-            # script flow to continue. Otherwise, if something
-            # different from possitive answer is passed, the
-            # script terminates its execution immediatly.
-            if [[ ! ${ANSWER} =~ "^${Y}" ]];then
-                exit
-            fi
-            ;;
+                # Verify user's answer. Only positive answer let the
+                # script flow to continue. Otherwise, if something
+                # different from possitive answer is passed, the
+                # script terminates its execution immediatly.
+                if [[ ! ${ANSWER} =~ "^${Y}" ]];then
+                    exit
+                fi
+                ;;
 
-        'AsSeparatorLine' )
+            'AsSeparatorLine' )
 
-            # Define separator width.
-            local MAX=70
+                # Define separator width.
+                local MAX=70
 
-            # Draw separator.
-            until [[ $MAX -eq 0 ]];do
-                printf "${MESSAGE}" > /dev/stderr
-                MAX=$(($MAX - 1))
-            done
+                # Draw separator.
+                until [[ $MAX -eq 0 ]];do
+                    printf "${MESSAGE}" > /dev/stderr
+                    MAX=$(($MAX - 1))
+                done
 
-            # Output newline to end separator.
-            echo "" > /dev/stderr
-            ;;
+                # Output newline to end separator.
+                echo "" > /dev/stderr
+                ;;
 
-        'AsNoTrailingNewLine' )
-            printf "$MESSAGE" > /dev/stderr
-            ;;
+            'AsNoTrailingNewLine' )
+                printf "$MESSAGE" > /dev/stderr
+                ;;
 
-        'AsRegularLine' | * )
-            echo "$MESSAGE" \
-                | awk -f ${CLI_BASEDIR}/Styles/output_forTwoColumns.awk \
-                > /dev/stderr
-            ;;
+            'AsRegularLine' | * )
+                echo "$MESSAGE" \
+                    | awk -f ${CLI_BASEDIR}/Styles/output_forTwoColumns.awk \
+                    > /dev/stderr
+                ;;
 
-    esac
+        esac
+
+    done
 
 }
