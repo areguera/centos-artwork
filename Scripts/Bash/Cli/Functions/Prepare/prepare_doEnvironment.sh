@@ -26,6 +26,14 @@
 
 function prepare_doEnvironment {
 
+    # Verify `--packages' option.
+    if [[ $FLAG_PACKAGES == 'false' ]];then
+        return
+    fi
+
+    # Print line separator.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     local -a VARS
     local -a INFO
     local COUNT=0
@@ -44,6 +52,12 @@ function prepare_doEnvironment {
     INFO[2]="`gettext "Default domain used to retrieve translated messages"`"
     INFO[3]="`gettext "Default directory used to retrive translated messages"`"
     INFO[4]="`gettext "Default locale information"`"
+
+    # Print action message.
+    cli_printMessage "`gettext "Environment variables"`" 'AsCheckingLine'
+
+    # Print line separator.
+    cli_printMessage '-' 'AsSeparatorLine'
 
     until [[ $COUNT -eq ${#VARS[*]} ]];do
 
