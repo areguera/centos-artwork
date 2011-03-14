@@ -56,7 +56,7 @@ function render_doSyslinux {
     fi
 
     # Define motif's palette location.
-    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Colors
+    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
    
     # Define the Netpbm color palette used when reducing colors. This
     # palette should be 16 colors based. For more information on this
