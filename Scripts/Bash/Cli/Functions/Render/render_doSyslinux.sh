@@ -57,16 +57,16 @@ function render_doSyslinux {
 
     # Define motif's palette location.
     local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
-   
+
     # Define the Netpbm color palette used when reducing colors. This
     # palette should be 16 colors based. For more information on this
     # see the isolinux documentation.
-    local PALETTE_PPM=$PALETTES/syslinux.ppm
+    local PALETTE_PPM=$(cli_getFilesList $PALETTES '.+syslinux\.ppm$')
 
     # Define hexadecimal color information used by ppmtolss16.  Color
     # information and order used on PALETTE_HEX and PALETTE_PPM should
     # match exactly.
-    local PALETTE_HEX=$PALETTES/syslinux.hex
+    local PALETTE_HEX=$(cli_getFilesList $PALETTES '.+syslinux\.hex$')
 
     # Print which palette of colors centos-art.sh script is using to
     # produce grub content. This is relevant in order to know if we
