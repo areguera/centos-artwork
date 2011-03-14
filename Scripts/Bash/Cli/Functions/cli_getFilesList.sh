@@ -53,20 +53,24 @@ function cli_getFilesList {
     # the whole file path.  This way, when the regular expression is
     # specified, we need to build it in a way that matches the whole
     # path. Doing so, everytime we pass the `--filter' option in the
-    # command-line might be a tedious task. Instead, in the sake of
+    # command-line could be a tedious task. Instead, in the sake of
     # reducing some typing, we prepare the regular expression here to
     # match the whole path using the regular expression provided by
-    # the user as pattern.
-    FILTER="^${LOCATION}/${FILTER}$"
+    # the user as pattern. Do not use LOCATION variable as part of
+    # regular expresion so it could be possible to use path expansion.
+    # Using path expansion reduce the amount of places to find out
+    # things and so the time required to finish the task.
+    FILTER="^.+/${FILTER}$"
 
-    # Define list of files to process.
-    if [[ -d $LOCATION ]];then
-        FILES=$(find $LOCATION -regextype posix-egrep -type f -regex "${FILTER}" | sort)
-    elif [[ -f $LOCATION ]];then
-        FILES=$LOCATION
-    fi
+    # Define list of files to process. At this point we cannot verify
+    # whether the LOCATION is a directory or a file since path
+    # expansion coul be introduced to it. The best we can do is
+    # verifying exit status and go on.
+    FILES=$(find ${LOCATION} -regextype posix-egrep -regex "${FILTER}" | sort | uniq)
 
     # Output list of files to process.
-    echo "$FILES"
+    if [[ $? -eq 0 ]];then
+        echo "$FILES"
+    fi
 
 }
