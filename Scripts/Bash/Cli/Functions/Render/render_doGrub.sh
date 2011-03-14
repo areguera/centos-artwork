@@ -57,11 +57,11 @@ function render_doGrub {
 
     # Define motif's palette location.
     local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
-    
+
     # Define the Netpbm color palettes used when reducing colors.
     # These palettes should be 14 colors based. For more information
     # on this see the GRUB's documentation.
-    local PALETTE_PPM=$PALETTES/grub.ppm
+    local PALETTE_PPM=$(cli_getFilesList $PALETTES '.+grub\.ppm$')
 
     # Print which palette of colors centos-art.sh script is using to
     # produce grub content. This is relevant in order to know if we
