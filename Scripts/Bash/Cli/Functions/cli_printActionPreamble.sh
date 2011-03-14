@@ -88,7 +88,7 @@ function cli_printActionPreamble {
             # execution.  Otherwise, check all files in the list to be
             # sure they are regular files.
             if [[ "$FILES" == '' ]];then
-                NEGATIVE="`gettext "There is no file to process."`" 'AsErrorLine'
+                NEGATIVE="`gettext "There is no file to process."`"
             fi
             ;;
 
@@ -100,7 +100,7 @@ function cli_printActionPreamble {
         cli_printMessage "$FILES" "$FORMAT"
         cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
     elif [[ $POSITIVE == '' ]] &&  [[ $NEGATIVE != '' ]];then
-        cli_printMessage "$NEGATIVE"
+        cli_printMessage "$NEGATIVE" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
