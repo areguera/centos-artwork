@@ -37,6 +37,12 @@ function prepare_doPackages {
     # Print line separator.
     cli_printMessage '-' 'AsSeparatorLine'
 
+    # Print action message.
+    cli_printMessage "`gettext "Checking required packages"`" 'AsResponseLine'
+
+    # Print line separator.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     local PACKAGE=''
     local WARNING=''
     local PACKAGES=''
@@ -62,9 +68,6 @@ function prepare_doPackages {
     # centos-art to work as expected.
     PACKAGES_THIRDS="(inkscape|blender)"
 
-    # Print action message.
-    cli_printMessage "`gettext "RPM packages"`" 'AsCheckingLine'
-
     # Build list of missing packages.
     for PACKAGE in $PACKAGES;do
         $RPM -q --queryformat "%{NAME}\n" $PACKAGE --quiet
@@ -72,9 +75,6 @@ function prepare_doPackages {
             PACKAGES_MISSING[((++${#PACKAGES_MISSING[*]}))]=$PACKAGE
         fi
     done
-
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
 
     # Is there any package missing?
     if [[ ${#PACKAGES_MISSING[*]} -eq 0 ]];then
@@ -104,13 +104,5 @@ function prepare_doPackages {
     # Use sudo to install the missing packages in your system through
     # yum.
     sudo ${YUM} install ${PACKAGES_MISSING[*]}
-
-    # At this point we need to recheck installed packages in order to
-    # be sure the user decided not to continue when there are still
-    # missing packages to be install.  For example this may happen
-    # when we try to install third party packages but there is no
-    # third party repository configured in the workstation for yum to
-    # retrive those packages from.
-    prepare_doPackages
 
 }
