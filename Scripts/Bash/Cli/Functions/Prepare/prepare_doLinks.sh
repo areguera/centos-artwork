@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# prepare_doLinks.sh -- This function verifies the required symbolic
-# links your workstation needs to have installed in order for
-# centos-art command to run correctly.
+# prepare_doLinks.sh -- This function installs the symbolic links your
+# workstation needs to have in order for centos-art command to run
+# correctly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -35,120 +35,110 @@ function prepare_doLinks {
     # Print line separator.
     cli_printMessage '-' 'AsSeparatorLine'
 
-    local -a LINKS_SRC
-    local -a LINKS_SRC_MISSING
-    local -a LINKS_DST
-    local -a LINKS_DST_UNKNOWN
-    local ID=''
-    local COUNT=0
-    local WARNING=''
-    local LINKS_MISSING_ID=''
-    local GIMP_USERDIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
-
-    # Define link sources.
-    LINKS_SRC[0]=${HOME}/bin/$CLI_PROGRAM
-    LINKS_SRC[1]=${HOME}/.fonts/denmark.ttf
-    LINKS_SRC[2]=${HOME}/.inkscape/palettes/CentOS.gpl
-    LINKS_SRC[3]=${GIMP_USERDIR}/palettes/CentOS.gpl
-
-    # Define link targets.
-    LINKS_DST[0]=${CLI_BASEDIR}/init.sh
-    LINKS_DST[1]=${HOME}/artwork/trunk/Identity/Fonts/denmark.ttf
-    LINKS_DST[2]=${HOME}/artwork/trunk/Identity/Colors/CentOS.gpl
-    LINKS_DST[3]=${LINKS_DST[2]}
-
-    # Define both source and target location for Gimp brushes.
-    for FILE in $(find ${HOME}/artwork/trunk/Identity/Models/Gbr/ -name '*.gbr');do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USERDIR}/brushes/$(basename $FILE)
-        LINKS_DST[((++${#LINKS_DST[*]}))]=$FILE
-    done
-
     # Print action message.
-    cli_printMessage "`gettext "Symbolic links"`" 'AsCheckingLine'
+    cli_printMessage "`gettext "Checking symbolic links"`" 'AsResponseLine'
 
-    # Define which links are missing from the list of source links.
-    until [[ $COUNT -eq ${#LINKS_SRC[*]} ]];do
-
-        if [[ -h ${LINKS_SRC[$COUNT]} ]]; then
-
-            # At this point the required link does exist but we don't
-            # know if its target is the one it should be. Get target
-            # from required link in order to check it later.
-            LINKS_DST_UNKNOWN[$COUNT]=$(stat --format='%N' ${LINKS_SRC[$COUNT]} \
-                | tr '`' ' ' | tr "'" ' ' | tr -s ' ' | cut -d' ' -f4)
-
-            # Check required target from required link in order to
-            # know if it is indeed the one it should be. Otherwise add
-            # required link to list of missing links.
-            if [[ ${LINKS_DST_UNKNOWN[$COUNT]} != ${LINKS_DST[$COUNT]} ]] ;then
-                LINKS_MISSING_ID="$COUNT $LINKS_MISSING_ID"
-            fi
-
-        else
-
-            # Add required link to list of missing links.  At this
-            # point the required link doesn't exist at all.
-            LINKS_MISSING_ID="$COUNT $LINKS_MISSING_ID"
-
-        fi
-
-        # Increase link counter.
-        COUNT=$(($COUNT + 1))
-        
-    done
-
-    # Print separator line.
+    # Print line separator.
     cli_printMessage '-' 'AsSeparatorLine'
 
-    # Is there any link missing?
-    if [[ $LINKS_MISSING_ID == '' ]];then
-        cli_printMessage "`gettext "The required links has been already created."`"
-        return
-    fi
+    local -a LINKS_SRC
+    local -a LINKS_DST
+    local -a USERFILES
+    local PALETTE=''
+    local BRUSH=''
+    local PATTERN=''
+    local FONT=''
+    local FILE=''
+    local COUNT=0
 
-    # Sort the list of missing links identifications.
-    LINKS_MISSING_ID=$(echo $LINKS_MISSING_ID | tr ' ' "\n" | sort )
+    # Define user-specific directory for Gimp.
+    local GIMP_USER_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
 
-    # Define number of missing links. This is required for gettext to
-    # set the plural form of messages.
-    LINKS_MISSING_ID_COUNT=$(echo $LINKS_MISSING_ID | wc -l)
+    # Define user-specific directory for Inkscape.
+    local INKS_USER_DIR=${HOME}/.inkscape
 
-    # At this point there is one or more missing links that need to be
-    # created in the workstation. Report this issue and specify which
-    # these links are.
-    cli_printMessage "`ngettext "The following link needs to be created" \
-        "The following links need to be created" \
-        "$LINKS_MISSING_ID_COUNT"`:"
+    # Define both source and target location for centos-art command.
+    LINKS_SRC[0]=${HOME}/bin/$CLI_PROGRAM
+    LINKS_DST[0]=${CLI_BASEDIR}/init.sh
 
-    # Build report of missing packages and remark those comming from
-    # third party repository.
-    for ID in $LINKS_MISSING_ID;do
-        # Consider missing link that already exists as regular file. If
-        # a regular file exists with the same name of a required link,
-        # warn the user about it and continue with the next file in
-        # the list of missing links that need to be created.
-        if [[ -f ${LINKS_SRC[$ID]} ]];then
-            WARNING=" (`gettext "Caution! It already exists as regular file."`)"
+    # Define both source and target location for fonts.
+    local FONTS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf')
+    for FONT in $FONTS;do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.fonts/$(basename $FONT)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=$FONT
+    done
+
+    # Define both source and target location for Gimp and Inkscape
+    # palettes.
+    local PALETTES=$(cli_getFilesList "$HOME/artwork/trunk/Identity/Themes/Motifs/*/*/Palettes
+        ${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
+    for PALETTE in $PALETTES;do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/$(basename $PALETTE)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/$(basename $PALETTE)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
+    done
+
+    # Define both source and target location for Gimp brushes.
+    local BRUSHES=$(cli_getFilesList \
+        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Brushes" \
+        ".+\.(gbr|ghi)")
+    for BRUSH in $BRUSHES;do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/$(basename $BRUSH)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
+    done
+
+    # Define both source and target location for Gimp patterns.
+    local PATTERNS=$(cli_getFilesList \
+        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Patterns" \
+        ".+\.png")
+    for PATTERN in $PATTERNS;do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/$(basename $PATTERN)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
+    done
+
+    # Define information installed inside user-specific directories
+    # that need to be cleaned up in order to make a fresh installation
+    # of patterns, palettes and brushes from repository by mean of
+    # symbolic links.
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf')
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${HOME}/bin" '.+\.sh')
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/palettes" '.+\.gpl')
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/brushes" '.+\.(gbr|ghi)')
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/patterns" '.+\.png')
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${INKS_USER_DIR}/palettes" '.+\.gpl')
+
+    # Print action preamble.
+    cli_printActionPreamble "${USERFILES[*]}" 'doDelete' 'AsResponseLine'
+
+    # Remove installed inside user-specific directories.
+    for FILE in ${USERFILES[@]};do
+        cli_printMessage "${FILE}" 'AsDeletingLine'
+        rm -r $FILE
+    done
+
+    # Print action preamble.
+    cli_printActionPreamble "${LINKS_SRC[*]}" 'doCreate' 'AsResponseLine'
+
+    # Create symbolic links. In case the the symbolic link parent
+    # directory isn't created, it will be created in order to make
+    # link creation possible.
+    while [[ $COUNT -lt ${#LINKS_SRC[*]} ]];do
+
+        if [[ -f ${LINKS_SRC[$COUNT]} ]];then
+            cli_printMessage "${LINKS_SRC[$COUNT]}" 'AsUpdatingLine'
+        else
+            cli_printMessage "${LINKS_SRC[$COUNT]}" 'AsCreatingLine'
         fi
-        cli_printMessage "${LINKS_SRC[$ID]}${WARNING}" 'AsResponseLine'
-    done
 
-    # Print confirmation request.
-    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
+        if [[ ! -d $(dirname ${LINKS_SRC[$COUNT]}) ]];then
+            mkdir -p $(dirname ${LINKS_SRC[$COUNT]})
+        fi
 
-    # Create symbolic links using their identifications.
-    for ID in $LINKS_MISSING_ID;do
+        ln ${LINKS_DST[$COUNT]} ${LINKS_SRC[$COUNT]} --symbolic --force
 
-        # Print action message.
-        cli_printMessage "${LINKS_SRC[$ID]}" 'AsCreatingLine'
-
-        # Create the symbolic link.
-        ln ${LINKS_DST[$ID]} ${LINKS_SRC[$ID]} --force --symbolic
+        COUNT=$(($COUNT + 1))
 
     done
-
-    # At this point all required links must be installed. To confirm
-    # required links installation let's verify them once more.
-    prepare_doLinks
 
 }
