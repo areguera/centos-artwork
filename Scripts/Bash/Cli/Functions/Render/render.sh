@@ -29,28 +29,40 @@ function render {
     local ACTIONNAM=''
     local ACTIONVAL=''
 
-    # Define release number flag. The relesase number flag
-    # (--releasever) specifies the release number identity images are
-    # rendered for.  By default no release number is used.
+    # Initialize `--releasever' option. The release version option
+    # controls the release number used to produce release-specific
+    # content.  By default no release number is used.
     local FLAG_RELEASEVER=''
 
-    # Define architecture flag. The architecture flag (--basearch)
-    # specifies the architecture type identity images are rendered
-    # for.  By default no architecture type is used.
+    # Initialize `--basearch' option. The base architecture option
+    # controls the architecture type used to produce
+    # architecture-specific content. By default no architecture type
+    # is used.
     local FLAG_BASEARCH=''
 
-    # Define theme model flag. The theme model flag (--theme-model)
-    # specifies the theme model used when no one is specified.
+    # Initialize `--theme-model' option. The theme model option
+    # specifies the the theme model name used to produce theme
+    # artistic motifs.
     local FLAG_THEME_MODEL='Default'
 
-    # Define convert-to flag. The convert-to flag (--convert-to)
-    # specifies the post-rendition image convertion action to perform
-    # upon PNG images.  By default there is no image convertion.
-    local FLAG_CONVERT_TO=''
+    # Initialize `--convert' option. The convert option controls
+    # whether convert or not content produced by centos-art
+    # base-rendition. By default there is no content convertion.
+    local FLAG_CONVERT=''
 
-    # Define grouped-by flag. The grouped-by flag (--grouped-by)
-    # specifies the post-rendition image grouping action to perform
-    # upon images produced. By default there is no grouping action.
+    # Initialize `--rotate' option. The rotate option controls whether
+    # rotate or not image content produced by centos-art
+    # base-rendition.  By default there is no content rotation.
+    local FLAG_ROTATE=''
+
+    # Initialize `--resize' option. The resize option controls whether
+    # resize or not content produced by centos-art base-rendition. By
+    # default there is no content resizing.
+    local FLAG_RESIZE=''
+
+    # Initialize `--group-by' option. The grouped-by option specifies
+    # whether grouping or not content produced by centos-art
+    # base-rendition. By default there is no content grouping.
     local FLAG_GROUPED_BY=''
 
     # Interpret arguments and options passed through command-line.

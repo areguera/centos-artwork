@@ -1,10 +1,7 @@
 #!/bin/bash
 #
 # render_convertPngTo.sh -- This function provides post-rendition
-# action used to convert images from PNG to different image formats.
-# This function uses ImageMagick command line image manipulation tool
-# set to convert the base PNG image to as many formats as ImageMagick
-# supports.
+# to convert images images produced by centos-art base-rendition.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -33,19 +30,14 @@ function render_convertPngTo {
     local FORMATS=$(render_getConfigOption "$ACTION" '2-')
 
     # Check base file existence.
-    if [[ -f ${FILE}.png ]];then
+    cli_checkFiles ${FILE}.png 'f'
 
-        # Check image formats.
-        if [[ "$FORMATS" != "" ]];then
-
-            # Loop through image formats and do format convertion using
-            # PNG file as base.
-            for FORMAT in $FORMATS;do
-                cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
-                convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
-            done
-
-        fi
+    # Check image formats and do convertion.
+    if [[ "$FORMATS" != "" ]];then
+        for FORMAT in $FORMATS;do
+            cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
+            convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
+        done
 
     fi
 

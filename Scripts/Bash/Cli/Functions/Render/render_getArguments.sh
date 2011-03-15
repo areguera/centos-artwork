@@ -30,7 +30,7 @@ function render_getArguments {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer:,dont-commit-changes,releasever:,basearch:,convert-to:,group-by:,theme-model:"
+    local ARGSL="filter:,quiet,answer:,dont-commit-changes,releasever:,basearch:,convert:,rotate:,resize:,group-by:,theme-model:"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_doParseArguments
@@ -82,8 +82,18 @@ function render_getArguments {
                 shift 2
                 ;;
 
-            --convert-to )
-                FLAG_CONVERT_TO="$2"
+            --convert )
+                FLAG_CONVERT="$2"
+                shift 2
+                ;;
+
+            --rotate )
+                FLAG_ROTATE="$2"
+                shift 2
+                ;;
+
+            --resize )
+                FLAG_RESIZE="$2"
                 shift 2
                 ;;
 

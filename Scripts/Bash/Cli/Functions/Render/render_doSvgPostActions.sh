@@ -52,19 +52,34 @@ function render_doSvgPostActions {
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderKsplash'
     fi
 
-    # Execute SVG command-line-specific post-rendition actions passed
-    # from command-line and add them, if any, to post-rendition list
-    # of actions.
-    if [[ $FLAG_CONVERT_TO != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngTo:${FLAG_CONVERT_TO}"
+    # Verify svg-related post-rendition actions passed from
+    # command-line and add them, if any, to post-rendition list of
+    # actions.
+    if [[ $FLAG_CONVERT != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngTo:${FLAG_CONVERT}"
+    fi
+    if [[ $FLAG_ROTATE != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="rotatePngTo:${FLAG_ROTATE}"
+    fi
+    if [[ $FLAG_RESIZE != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="resizePngTo:${FLAG_RESIZE}"
     fi
 
+    # Execute post-rendition actions.
     for ACTION in "${POSTACTIONS[@]}"; do
 
         case "${ACTION}" in
 
             convertPngTo:* )
                 render_convertPngTo
+                ;;
+
+            rotatePngTo:* )
+                render_rotatePngTo
+                ;;
+
+            resizePngTo:* )
+                render_resizePngTo
                 ;;
 
             renderSyslinux* )
