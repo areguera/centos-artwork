@@ -33,6 +33,13 @@
 function cli_printActionPreamble {
 
     local FILES="$1"
+
+    # Verify amount of files to process. If there is no one then there
+    # is nothing else to do here.
+    if [[ $FILES == '' ]];then
+        return
+    fi
+
     local ACTION="$2"
     local FORMAT="$3"
     local FILE=''
@@ -40,10 +47,15 @@ function cli_printActionPreamble {
     local POSITIVE=''
     local COUNT=0
 
-    # Redefine total number of directories.
-    COUNT=$(echo "$FILES" | sed -r "s! +!\n!g" | wc -l)
+    # Replace spaces by new line.
+    FILES=$(echo "$FILES" | sed -r "s! +!\n!g")
 
-    # Redefine preamble messages based on action.
+    # Redefine total number of directories.
+    COUNT=$(echo "$FILES" | wc -l)
+
+    # Redefine preamble messages based on action. At this point seems
+    # to be some files to process so lets read ACTION to know what to
+    # do with them.
     case $ACTION in
 
         'doCreate' )
@@ -97,7 +109,9 @@ function cli_printActionPreamble {
     # Print preamble message.
     if [[ $POSITIVE != '' ]] &&  [[ $NEGATIVE == '' ]];then
         cli_printMessage "$POSITIVE"
-        cli_printMessage "$FILES" "$FORMAT"
+        for FILE in $FILES;do
+            cli_printMessage "$FILE" "$FORMAT"
+        done
         cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
     elif [[ $POSITIVE == '' ]] &&  [[ $NEGATIVE != '' ]];then
         cli_printMessage "$NEGATIVE" 'AsErrorLine'
