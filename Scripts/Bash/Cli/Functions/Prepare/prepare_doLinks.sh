@@ -82,7 +82,7 @@ function prepare_doLinks {
     # Define both source and target location for Gimp brushes.
     local BRUSHES=$(cli_getFilesList \
         "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Brushes" \
-        ".+\.(gbr|ghi)")
+        ".+\.(gbr|gih)")
     for BRUSH in $BRUSHES;do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
@@ -104,7 +104,7 @@ function prepare_doLinks {
     USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf')
     USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${HOME}/bin" '.+\.sh')
     USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/palettes" '.+\.gpl')
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/brushes" '.+\.(gbr|ghi)')
+    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/brushes" '.+\.(gbr|gih)')
     USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/patterns" '.+\.png')
     USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${INKS_USER_DIR}/palettes" '.+\.gpl')
 
