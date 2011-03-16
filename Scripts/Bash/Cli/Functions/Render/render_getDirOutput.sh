@@ -28,12 +28,17 @@
 function render_getDirOutput {
 
     # Define base output directory using design model path as
-    # reference.  By default rendered identity content is stored
-    # immediatly under identity entry structure,  but if `Img/'
-    # directory exists use it instead.
+    # reference.  
     OUTPUT=$(dirname $FILE | sed -r \
         -e "s!/Models/${FLAG_THEME_MODEL}!/Motifs/$(cli_getPathComponent "$ACTIONVAL" "--theme")!" \
-        -e "s!/Tpl!/Img!")
+        -e "s!/Tpl!!")
+
+    # By default rendered identity content is stored immediatly under
+    # identity entry structure,  but if `Img/' directory exists use it
+    # instead.
+    if [[ -d "${OUTPUT}/Img" ]];then
+        OUTPUT=${OUTPUT}/Img
+    fi
 
     # Redefine base output directory to introduce specific information
     # like release number, architecture, etc.
