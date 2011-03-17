@@ -32,6 +32,7 @@ function render_checkSvgAbsref {
 
     local FILE=''
     local ABSPATHS=''
+    local ABSPATH=''
 
     # Define absolute path of file we need to retrive absolute paths
     # from.
@@ -41,13 +42,14 @@ function render_checkSvgAbsref {
     cli_checkFiles $FILE 'f'
 
     # Retrive absolute paths from file.
-    ABSPATHS=$(egrep '="/[a-zA-Z0-9_./-]+" ' $FILE \
-        | sed -r "s/ /\n/g" | egrep '(sodipodi:absref|xlink:href)=' \
-        | sed -r "s/.+=\"(\/.+)\".*/\1/" | sort | uniq)
+    ABSPATHS=$(egrep '(sodipodi:absref|xlink:href)=' $FILE \
+        | sort | uniq \
+        | sed -r "s/ /\n/g" \
+        | sed -r "s/.+=\"(\/.+)\".*/\1/")
 
     # Verify absolute paths retrived from file.
-    for FILE in $ABSPATHS;do
-        cli_checkFiles $FILE
+    for ABSPATH in $ABSPATHS;do
+        cli_checkFiles "$ABSPATH" 'f'
     done
 
 }
