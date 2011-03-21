@@ -26,22 +26,14 @@
 
 function render_doGrub {
 
-    # Define 16 colors images default file name prefix.
-    local PREFIX='-14c'
+    # Define number of colors the images will be produced on.
+    local COLOR_NUMBER='14'
 
     # Define options using those passed to actions from pre-rendition
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
     local OPTIONS=$(render_getConfigOption "$ACTION" '2-')
-
-    # Re-define 16 colors images default file name prefix using
-    # options as reference. This is useful to differenciate final
-    # files produced using Floyd-Steinberg dithering and files which
-    # do not.
-    if [[ "$OPTIONS" =~ '-floyd' ]];then
-        PREFIX="${PREFIX}-floyd"
-    fi
 
     # Check options passed to action. This is required in order to
     # aviod using options used already in this script. For example
@@ -55,41 +47,58 @@ function render_doGrub {
         fi
     done
 
-    # Define motif's palette location.
+    # Define file name prefix.
+    local PREFIX="-${COLOR_NUMBER}c"
+
+    # Redefine file name prefix using options as reference. This is
+    # useful to differenciate final files produced using
+    # Floyd-Steinberg dithering and files which are not.
+    if [[ "$OPTIONS" =~ '-floyd' ]];then
+        PREFIX="${PREFIX}-floyd"
+    fi
+
+    # Define theme-specific palettes directory. 
     local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
 
-    # Define the Netpbm color palettes used when reducing colors.
-    # These palettes should be 14 colors based. For more information
-    # on this see the GRUB's documentation.
-    local PALETTE_PPM=$(cli_getFilesList $PALETTES '.+grub\.ppm$')
+    # Define absolute path to GPL palette.  This palettes should have
+    # 14 colors only. For more information on this see the GRUB's
+    # documentation.
+    local PALETTE_GPL=${PALETTES}/grub.gpl
 
-    # Print which palette of colors centos-art.sh script is using to
-    # produce grub content. This is relevant in order to know if we
-    # are using whether trunk or branches palette of colors.
-    cli_printMessage "$PALETTE_PPM" 'AsPaletteLine'
+    # Verify GPL palette existence.
+    cli_checkFiles $PALETTE_GPL 'f'
 
-    # Check GRUB's palettes existence:  If there is no palette assume
-    # that this is the first time you are rendition GRUB images. If
-    # that is the case the script will provide you with the PNG format
-    # which should be used as base to produce (using GIMP) the .gpl
-    # palette.  The .gpl palette information is used to produced
-    # (using GIMP) the colormap (.ppm) which is used to automate the
-    # GRUB's 14 colors image (splash.png) rendition.  If there is no
-    # palette available, do not apply color reduction, show a message,
-    # and continue.
-    cli_checkFiles $PALETTE_PPM
+    # Define absolute path to PPM palette. The PPM palette is built
+    # from source palette (PALETTE_GPL) and provides the color
+    # information understood by `ppmremap', the program used to
+    # produce images in a specific amount of colors.
+    local PALETTE_PPM=$(cli_getTemporalFile "grub.ppm")
 
-    # Create Netpbm superformat (PNM). PNM file is created from the
-    # PNG image rendered previously. PNM is a common point for image
-    # manipulation using Netpbm tools.
+    # Create image in Netpbm superformat (PNM). The PNM image file is
+    # created from the PNG image rendered previously as centos-art
+    # base-rendition output. The PNM image is an intermediate format
+    # used to manipulate images through Netpbm tools.
     cli_printMessage "${FILE}.pnm" "AsSavedAsLine"
     pngtopnm -verbose \
         < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
 
-    # Reduce colors as specified in ppm palette of colors.
+    # Print the path to GPL palette.
+    cli_printMessage "$PALETTE_GPL" 'AsPaletteLine'
+
+    # Create PPM palette using GPL palette.
+    render_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
+
+    # Reduce colors as specified in PPM palette.  Here we use the PPM
+    # palette to enforce the color position in the image index and the
+    # Floyd-Steinberg dithering in order to improve color reduction.
     cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
         < ${FILE}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
+
+    # Remove PPM palette. It is no longer needed.
+    if [[ -f ${PALETTE_PPM} ]];then
+        rm $PALETTE_PPM
+    fi
 
     # Create the 14 colors xpm.gz file.
     cli_printMessage "${FILE}${PREFIX}.xpm.gz" "AsSavedAsLine"
