@@ -38,7 +38,7 @@ function cli_getRepoParallelDirs {
     elif [[ "$ACTIONVAL" != '' ]];then
         BOND="$ACTIONVAL"
     else
-        cli_printMessage "cli_getRepoParallelDirs: `gettext "The bond string is required."`" 'AsErrorLine'
+        cli_printMessage "${FUNCNAME}: `gettext "The bond string is required."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
     fi
 
