@@ -44,7 +44,7 @@ function cli_getPathComponent {
         LOCATION="$1"
         OPTION="$2"
     else
-       cli_printMessage "cli_getPathComponent: `gettext "Invalid arguments."`" 'AsErrorLine'
+       cli_printMessage "${FUNCNAM}: `gettext "Invalid arguments."`" 'AsErrorLine'
        cli_printMessage "$(caller)" 'AsToKnowMoreLine' 
     fi
 
