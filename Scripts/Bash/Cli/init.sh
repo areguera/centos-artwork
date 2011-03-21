@@ -40,7 +40,7 @@ export CLI_BASEDIR="${HOME}/artwork/trunk/Scripts/Bash/Cli"
 # Initizalize internazionalization through gettext.
 . gettext.sh
 export TEXTDOMAIN=${CLI_PROGRAM}.sh
-export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts/Bash
+export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts/Bash/Cli
 
 # Initialize common function scripts.
 FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)
