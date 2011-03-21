@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# cli_getTemporalFile.sh -- This function returns absolute path to
-# temporal file. Use this function whenever you need to create
-# temporal files inside centos-art.sh script.
+# cli_getTemporalFile.sh -- This function returns the absolute path
+# you need to use to create temporal files. Use this function whenever
+# you need to create temporal files inside centos-art.sh script.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -27,36 +27,28 @@
 
 function cli_getTemporalFile {
 
-    # Check amount arguments passed to this function.
-    if [[ $# -ne 1 ]];then
-        cli_printMessage "cli_getTemporalFile: `gettext "First argument is required."`"
-        cli_printMessage "$(caller)" 'ToKnowMoreLine'
-    fi
+    # Define base name for temporal file. This is required when svg
+    # instances are created previous to be parsed by inkscape in order
+    # to be exported as png. In such cases .svg file exention is
+    # required in order to avoid complains from inkscape.
+    local NAME="$(cli_getRepoName "$1" 'f')"
 
-    # Define default basename for temporal file. This is required when
-    # svg instances are created previous to be parsed by inkscape in
-    # order to be exported as png. In such cases .svg file exention is
-    # required in order to avoid inkscape complains.
-    local NAME="$1"
+    # Check default base name for temporal file, it can't be an empty
+    # value.
     if [[ "$NAME" == '' ]];then
-        cli_printMessage "cli_getTemporalFile: `gettext "First argument cannot be empty."`"
+        cli_printMessage "${FUNCNAME}: `gettext "First argument cannot be empty."`"
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
-    else
-        NAME="-$(cli_getCurrentLocale)-$(cli_getRepoName "$1" 'f')" 
     fi
 
-    # Define default source location where temporal files will be stored.
+    # Define source location where temporal files will be stored.
     local TMPDIR='/tmp'
-
-    # Define default prefix for temporal file.
-    local PREFIX="${CLI_PROGRAM}-"
 
     # Define unique identifier for temporal file.
     local UUID=$(cat /proc/sys/kernel/random/uuid)
 
-    # Join default source location and filename to build final
-    # temporal file absolute path.
-    local TMPFILE=$(echo -n "${TMPDIR}/${PREFIX}${UUID}${NAME}")
+    # Define absolute path for temporal file using the program name,
+    # the current locale, the unique identifier and the file name. 
+    local TMPFILE="${TMPDIR}/${CLI_PROGRAM}-$(cli_getCurrentLocale)-${UUID}-${NAME}"
 
     # Output absolute path to final temporal file.
     echo $TMPFILE
