@@ -36,7 +36,7 @@ function cli_printActionPreamble {
 
     # Verify amount of files to process. If there is no one then there
     # is nothing else to do here.
-    if [[ $FILES == '' ]];then
+    if [[ "$FILES" == '' ]];then
         return
     fi
 
