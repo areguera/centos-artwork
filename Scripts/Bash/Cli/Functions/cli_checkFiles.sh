@@ -40,7 +40,7 @@ function cli_checkFiles {
     # Check number of paramaters passed to cli_checkFiles function. At
     # least one argument should be passed.
     if [[ $# -lt 1 ]];then
-        cli_printMessage "cli_checkFiles: `gettext "You need to provide one argument at least."`" 'AsErrorLine'
+        cli_printMessage "${FUNCNAME}: `gettext "You need to provide one argument at least."`" 'AsErrorLine'
         cli_printMessage "$(caller)" "AsToKnowMoreLine"
     fi
 
