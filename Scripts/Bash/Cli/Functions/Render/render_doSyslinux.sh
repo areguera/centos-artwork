@@ -1,7 +1,54 @@
 #!/bin/bash
 #
 # render_doSyslinux.sh -- This function provides post-rendition
-# action used to produce syslinux images.
+# action used to produce LSS16 images, the images used by isolinux.
+#
+# This function uses three different formats to handle the same color
+# information. Initially, the color information is defined with GIMP
+# (The GNU Image Manipulation Program) as a palette of color. This
+# palette of colors contains 16 colors only and is saved in a file
+# named `syslinux.gpl.
+#
+# The `syslinux.gpl' file is used to build two other files: the
+# `syslinux.ppm' file and the `syslinux.hex' file. The `syslinux.ppm'
+# file is used to reduce a full color PNG image to the amount of
+# colors it specifies (i.e., 16 colors). Later, with the 16 color
+# image already created, the `syslinux.hex' file is used to build the
+# LSS16 image.
+#
+# In order to produce images in LSS16 format correctly, it is needed
+# that both the `syslinux.ppm' and `syslinux.hex' files contain the
+# same color information. This is, both `syslinux.ppm' and
+# `syslinux.hex' shoud represent the same color values and the same
+# color index.
+#
+# This function save you the work of preparing both `syslinux.ppm' and
+# `syslinux.hex'. Instead, you only need to prepare the `syslinux.gpl'
+# file with the color information you want to produce images.
+#
+# In order for this function to work, the `syslinux.gpl' file should
+# have a format similar to the following:
+#
+#   GIMP Palette
+#   Name: TreeFlower-4-Syslinux
+#   Columns: 16
+#   #
+#    10  22  40     0a1628
+#     9  28  52     091c34
+#    16  34  63     10223f
+#    20  37  67     142543
+#    15  39  74     0f274a
+#    12  45  85     0c2d55
+#    20  43  78     142b4e
+#   255 255 255     ffffff
+#    21  51  95     15335f
+#    41  52  70     293446
+#    32  76 141     204c8d
+#    77  90 107     4d5a6b
+#   143 154 167     8f9aa7
+#   128 179 255     80b3ff
+#   194 200 202     c2c8ca
+#   231 241 255     e7f1ff
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -26,8 +73,8 @@
 
 function render_doSyslinux {
 
-    # Define 16 colors images default file name prefix.
-    local PREFIX='-16c'
+    # Define number of colors the images will be produced on.
+    local COLOR_NUMBER='16'
 
     # Define options using those passed to actions from pre-rendition
     # configuration script. These options are applied to pnmremap when
@@ -36,7 +83,7 @@ function render_doSyslinux {
     local OPTIONS=$(render_getConfigOption "$ACTION" '2-')
 
     # Check options passed to action. This is required in order to
-    # aviod using options used already in this script. For example
+    # aviod using options already used in this script. For example
     # -verbose and -mapfile options.
     for OPTION in $OPTIONS;do
         # Remove anything after equal sign inside option.
@@ -47,6 +94,9 @@ function render_doSyslinux {
         fi
     done
 
+    # Define default file name prefix for 16 colors images.
+    local PREFIX="-${COLOR_NUMBER}c"
+
     # Re-define 16 colors images default file name prefix using
     # options as reference. This is useful to differenciate final
     # files produced using Floyd-Steinberg dithering and final files
@@ -55,66 +105,70 @@ function render_doSyslinux {
         PREFIX="${PREFIX}-floyd"
     fi
 
-    # Define motif's palette location.
+    # Define theme-specific palettes directory. 
     local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
 
-    # Define the Netpbm color palette used when reducing colors. This
-    # palette should be 16 colors based. For more information on this
-    # see the isolinux documentation.
-    local PALETTE_PPM=$(cli_getFilesList $PALETTES '.+syslinux\.ppm$')
+    # Define absolute path to GPL palette. The GPL palette defines the
+    # color information used to build syslinux images.  This palette
+    # should be set to 16 colors and, as specified in isolinux
+    # documentation, the background color should be indexed on
+    # position 0 and the forground in position 7 (see
+    # /usr/share/doc/syslinux-X.XX/isolinux.doc, for more
+    # information.)
+    local PALETTE_GPL=${PALETTES}/syslinux.gpl
 
-    # Define hexadecimal color information used by ppmtolss16.  Color
-    # information and order used on PALETTE_HEX and PALETTE_PPM should
-    # match exactly.
-    local PALETTE_HEX=$(cli_getFilesList $PALETTES '.+syslinux\.hex$')
+    # Verify GPL palette existence.
+    cli_checkFiles $PALETTE_GPL 'f'
 
-    # Print which palette of colors centos-art.sh script is using to
-    # produce grub content. This is relevant in order to know if we
-    # are using whether trunk or branches palette of colors.
-    cli_printMessage "$PALETTE_PPM" 'AsPaletteLine'
-    cli_printMessage "$PALETTE_HEX" 'AsPaletteLine'
+    # Define absolute path to PPM palette. The PPM palette is built
+    # from source palette (PALETTE_GPL) and provides the color
+    # information understood by `ppmremap', the program used to
+    # produce images in a specific amount of colors.
+    local PALETTE_PPM=$(cli_getTemporalFile "syslinux.ppm")
 
-    # Check syslinux's palettes existence:  If there is no palette
-    # assume that this is the first time you are rendition syslinux
-    # images. If that is the case the script will provide you with the
-    # PNG format which should be used as base to produce (using GIMP)
-    # the .gpl palette.  The .gpl palette information is used to
-    # produced (using GIMP) the colormap (.ppm) which is used to
-    # automate the syslinux's 16 colors image (syslinux-splash.png)
-    # rendition.  If there is no palette available, do not apply color
-    # reduction, show a message, and continue.
-    cli_checkFiles $PALETTE_PPM
-    cli_checkFiles $PALETTE_HEX
+    # Define the HEX palette. The HEX palette is built from source
+    # palette (PALETTE_GPL) and provides the color information in the
+    # format understood by `ppmtolss16', the program used to produce
+    # images in LSS16 format.  The HEX palette stores just one line
+    # with the color information as described in isolinux
+    # documentation (i.e #RRGGBB=0 #RRGGBB=1 ... [all values in the
+    # same line])
+    local PALETTE_HEX=$(cli_getTemporalFile "syslinux.hex")
 
-    # Create Netpbm superformat (PNM). PNM file is created from the
-    # PNG image rendered previously. PNM is a common point for image
-    # manipulation using Netpbm tools.
+    # Create image in Netpbm superformat (PNM). The PNM image file is
+    # created from the PNG image rendered previously as centos-art
+    # base-rendition output. The PNM image is an intermediate format
+    # used to manipulate images through Netpbm tools.
     cli_printMessage "${FILE}.pnm" "AsSavedAsLine"
     pngtopnm -verbose \
         < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
-   
-    # Reduce colors. Here we use the Netpbm color $PALETTE_PPM to
-    # enforce the color position in the image index and the
+
+    # Print the path to GPL palette.
+    cli_printMessage "$PALETTE_GPL" 'AsPaletteLine'
+
+    # Create PPM palette using GPL palette.
+    render_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
+ 
+    # Create HEX palette using GPL palette.
+    render_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLOR_NUMBER"
+
+    # Reduce colors as specified in PPM palette.  Here we use the PPM
+    # palette to enforce the color position in the image index and the
     # Floyd-Steinberg dithering in order to improve color reduction.
     cli_printMessage "${FILE}${PREFIX}.pnm" "AsSavedAsLine"
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
         < ${FILE}.pnm 2>> ${FILE}.log > ${FILE}${PREFIX}.pnm
 
-    # Create LSS16 image. As specified in isolinux documentation the
-    # background color should be indexed on position 0 and forground
-    # in position 7 (see /usr/share/doc/syslinux-X.XX/isolinux.doc).
-    # This order of colors is specified in $PALETTE_PPM and redefined
-    # here again for the LSS16 image format. Both $PALETTE_PPM and
-    # LSS16 color map redefinition ($PALETTE_HEX) should have the same
-    # colors and index order. PALETTE_HEX should return just one line
-    # with the color information as described in isolinux
-    # documentation (i.e #RRGGBB=0 #RRGGBB=1 ... [all values in the
-    # same line]).
+    # Create LSS16 image. 
     cli_printMessage "${FILE}${PREFIX}.lss" "AsSavedAsLine"
-    PALETTE_HEX=$(cat $PALETTE_HEX | tr "\n" ' ' | tr -s ' ')
-    ppmtolss16 $PALETTE_HEX \
+    ppmtolss16 $(cat $PALETTE_HEX) \
         < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.lss
      
+    # Remove HEX palette. It is no longer needed.
+    if [[ -f ${PALETTE_HEX} ]];then
+        rm $PALETTE_HEX
+    fi
+
     # Create the PPM image indexed to 16 colors. Also the colormap
     # used in the LSS16 image is saved on ${FILE}.log; this is useful to
     # verify the correct order of colors in the image index.
@@ -127,4 +181,9 @@ function render_doSyslinux {
     pnmtopng -verbose -palette=$PALETTE_PPM \
         < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.png
    
+    # Remove PPM palette. It is no longer needed.
+    if [[ -f ${PALETTE_PPM} ]];then
+        rm $PALETTE_PPM
+    fi
+
 }
