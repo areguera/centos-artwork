@@ -43,13 +43,20 @@ function prepare_doLinks {
 
     local -a LINKS_SRC
     local -a LINKS_DST
-    local -a USERFILES
+    local USERFILES=''
     local PALETTE=''
     local BRUSH=''
     local PATTERN=''
     local FONT=''
     local FILE=''
     local COUNT=0
+
+    # Initialize file prefix. Since we are taking the same file names
+    # from different theme directory and putting them into the same
+    # directory structure it is required to identify them some way in
+    # that common directory structure. For this we use the theme path
+    # identifier.
+    local PREFIX=''
 
     # Define user-specific directory for Gimp.
     local GIMP_USER_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
@@ -73,9 +80,12 @@ function prepare_doLinks {
     local PALETTES=$(cli_getFilesList "$HOME/artwork/trunk/Identity/Themes/Motifs/*/*/Palettes
         ${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
     for PALETTE in $PALETTES;do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/$(basename $PALETTE)
+        if [[ $PALETTE =~ $(cli_getPathComponent '--theme-pattern') ]];then
+            PREFIX="$(cli_getPathComponent "$PALETTE" '--theme-name')-$(cli_getPathComponent "$PALETTE" '--theme-release')-"
+        fi
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/${PREFIX}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/${PREFIX}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
     done
 
@@ -84,7 +94,8 @@ function prepare_doLinks {
         "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Brushes" \
         ".+\.(gbr|gih)")
     for BRUSH in $BRUSHES;do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/$(basename $BRUSH)
+        PREFIX="$(cli_getPathComponent "$BRUSH" '--theme-name')-$(cli_getPathComponent "$BRUSH" '--theme-release')"
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/${PREFIX}-$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
 
@@ -93,36 +104,34 @@ function prepare_doLinks {
         "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Patterns" \
         ".+\.png")
     for PATTERN in $PATTERNS;do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/$(basename $PATTERN)
+        PREFIX="$(cli_getPathComponent "$PATTERN" '--theme-name')-$(cli_getPathComponent "$PATTERN" '--theme-release')"
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/${PREFIX}-$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
 
-    # Define information installed inside user-specific directories
-    # that need to be cleaned up in order to make a fresh installation
-    # of patterns, palettes and brushes from repository by mean of
-    # symbolic links.
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf')
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${HOME}/bin" '.+\.sh')
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/palettes" '.+\.gpl')
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/brushes" '.+\.(gbr|gih)')
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${GIMP_USER_DIR}/patterns" '.+\.png')
-    USERFILES[((++${#USERFILES[*]}))]=$(cli_getFilesList "${INKS_USER_DIR}/palettes" '.+\.gpl')
+    # Define files inside user-specific directories that need to be
+    # removed in order to make a fresh installation of patterns,
+    # palettes and brushes using symbolic links from the repository.
+    USERFILES=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf';
+        cli_getFilesList "${HOME}/bin" '.+\.sh';
+        cli_getFilesList "${GIMP_USER_DIR}/palettes" '.+\.gpl';
+        cli_getFilesList "${GIMP_USER_DIR}/brushes" '.+\.(gbr|gih)';
+        cli_getFilesList "${GIMP_USER_DIR}/patterns" '.+\.png';
+        cli_getFilesList "${INKS_USER_DIR}/palettes" '.+\.gpl')
 
-    # Print action preamble.
-    cli_printActionPreamble "${USERFILES[*]}" 'doDelete' 'AsResponseLine'
-
-    # Remove installed inside user-specific directories.
-    for FILE in ${USERFILES[@]};do
-        cli_printMessage "${FILE}" 'AsDeletingLine'
-        rm -r $FILE
-    done
-
-    # Print action preamble.
-    cli_printActionPreamble "${LINKS_SRC[*]}" 'doCreate' 'AsResponseLine'
+    # Remove installed files inside user-specific directories.
+    if [[ "$USERFILES" != '' ]];then
+        cli_printActionPreamble "${USERFILES[*]}" 'doDelete' 'AsResponseLine'
+        for FILE in ${USERFILES[@]};do
+            cli_printMessage "${FILE}" 'AsDeletingLine'
+            rm -r $FILE
+        done
+    fi
 
     # Create symbolic links. In case the the symbolic link parent
     # directory isn't created, it will be created in order to make
-    # link creation possible.
+    # the link creation possible.
+    cli_printActionPreamble "${LINKS_SRC[*]}" 'doCreate' 'AsResponseLine'
     while [[ $COUNT -lt ${#LINKS_SRC[*]} ]];do
 
         if [[ -f ${LINKS_SRC[$COUNT]} ]];then
