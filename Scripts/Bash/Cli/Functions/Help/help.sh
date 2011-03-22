@@ -35,6 +35,15 @@ function help {
     # organized in.
     MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
 
+    # Define file name for documentation manual. This is the file used
+    # to initiate the structure of documentation manual.
+    MANUAL_NAME=repository
+
+    # Define base name for documentation manual files (without
+    # extension). This is the main file name used to build texinfo
+    # related files (.info, .pdf, .xml, etc.).
+    MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
+
     # Interpret arguments and options passed through command-line.
     help_getArguments
 
@@ -48,6 +57,13 @@ function help {
     # the option passed (e.g., `--edit', `--read', `--search', etc.).
     # In that sake, we defined action name inside help_getArguments,
     # at the moment of interpreting options.
+
+    # Define default manual node shown when no argument is provided to
+    # help functionality.  By default, the Top node of repository
+    # manual is called.
+    if [[ $ACTIONNAM == '' ]] && [[ $ACTIONVAL == '' ]];then
+        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
+    fi
 
     # Define action value. As convenction, we use non-option arguments
     # to define the action value (ACTIONVAL) variable.
@@ -71,10 +87,6 @@ function help {
         # Define documentation entry file (without extension).
         ENTRY_FILE=$(basename ${ENTRY} | sed -r 's!\.texi$!!')
 
-        # Define file name for documentation manual. This is the file
-        # used to initiate the structure of documentation manual.
-        MANUAL_NAME=repository
-
         # Define directory to store documentation entries.  At this
         # point, we need to take a desition about documentation
         # design, in order to answer the question: How do we assign
@@ -92,11 +104,6 @@ function help {
         # Define chapter name for the documentation entry we are
         # working with.
         MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
-
-        # Define base name for documentation manual files (without
-        # extension). This is the main file name used to build texinfo
-        # related files (.info, .pdf, .xml, etc.).
-        MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
         # Set action preable.
         cli_printActionPreamble "${MANUAL_BASEFILE}.texi" '' ''
