@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 11 2011 by texi2html 1.76 -->
+<!-- Created on March, 22 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -23,10 +23,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 2.1 The branches Directory</title>
+<title>CentOS Artwork Repository: 1.4 Document Convenctions</title>
 
-<meta name="description" content="CentOS Artwork Repository: 2.1 The branches Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 2.1 The branches Directory">
+<meta name="description" content="CentOS Artwork Repository: 1.4 Document Convenctions">
+<meta name="keywords" content="CentOS Artwork Repository: 1.4 Document Convenctions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -55,69 +55,158 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC6" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_4.html#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_6.html#SEC11" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_84.html#SEC432" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Filesystem-branches"></a>
-<a name="SEC5"></a>
-<h2 class="section"> 2.1 The <tt>`branches'</tt> Directory </h2>
+<a name="Convenctions"></a>
+<a name="SEC10"></a>
+<h2 class="section"> 1.4 Document Convenctions </h2>
 
-
-<a name="SEC6"></a>
-<h3 class="subsection"> 2.1.1 Goals </h3>
-
-<p>This directory implements the Subversion's branches concept in a
-trunk, branches, tags repository structure.
+<p>In this manual the personal pronoun <em>we</em> is used to repesent
+<em>The CentOS Artwork SIG</em>. This is, the group of persons building
+the CentOS Artwork Repository.
 </p>
-
-<a name="SEC7"></a>
-<h3 class="subsection"> 2.1.2 Description </h3>
-
-<p>The <tt>`branches/'</tt> directory structre provides the intermediate
-space for creating several instances of <tt>`trunk/'</tt> directory
-structure for parallel development and later merging changes back to
-<tt>`trunk/'</tt> in the same parallel basis.
+<p>In this manual the phrase &quot;CentOS Artwork Repository&quot; is used to
+refer the very specific organization of files we use to store The
+CentOS Project corporate visual identity.  It is the source location
+The CentOS Community uses to retrive The CentOS Project branded images
+used to build different visual manifestations like The CentOS
+Distribution, The CentOS Webs and The CentOS Stationery.
 </p>
-
-<a name="SEC8"></a>
-<h3 class="subsection"> 2.1.3 Usage </h3>
-
-<p>The <tt>`branches/'</tt> directory structure is unused, so far.
+<p>In this manual the word &quot;<code>centos-art</code>&quot; is used to refer the
+command-line interface of <code>centos-art.sh</code> script.  The
+<code>centos-art.sh</code> script is the the automation tool we use to
+realize most of the frequent tasks inside the CentOS Artwork
+Repository.
 </p>
+<p>In this manual, certain words are represented in different fonts,
+typefaces, sizes, and weights. This highlighting is systematic;
+different words are represented in the same style to indicate their
+inclusion in a specific category. The types of words that are
+represented this way include the following:
+</p>
+<dl compact="compact">
+<dt> <code>command</code></dt>
+<dd>
+<p>Linux commands (and other operating system commands, when used) are
+represented this way. This style should indicate to you that you can
+type the word or phrase on the command line and press Enter to invoke
+a command. Sometimes a command contains words that would be displayed
+in a different style on their own (such as file names). In these
+cases, they are considered to be part of the command, so the entire
+phrase is displayed as a command. For example:
+</p>
+<p>Use the <code>centos-art identity --render='path/to/dir'</code> command
+to produce contents inside the <tt>`trunk/Identity'</tt> directory
+structure.
+</p></dd>
+</dl>
 
-<a name="SEC9"></a>
-<h3 class="subsection"> 2.1.4 See also </h3>
+<dl compact="compact">
+<dt> <tt>`file name'</tt></dt>
+<dd>
+<p>File names, directory names, paths, and RPM package names are
+represented this way. This style indicates that a particular file or
+directory exists with that name on your system. Examples:
+</p>
+<p>The <tt>`init.sh'</tt> file in <tt>`trunk/Scripts/Bash/Cli/'</tt> directory is
+the initialization script, written in Bash, used to automate most of
+tasks in the repository.
+</p>
+<p>The <code>centos-art</code> command uses the <tt>`ImageMagick'</tt> RPM
+package to convert images from PNG format to other formats.
+</p></dd>
+</dl>
 
-<ul class="toc">
-<li> See section <a href="repository_6.html#SEC10">The <tt>`tags'</tt> Directory</a>.
-</li><li> See section <a href="repository_7.html#SEC15">The <tt>`trunk'</tt> Directory</a>.
-</li><li> Subversion's book (<a class="www" href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a>).
-</li></ul>
+<dl compact="compact">
+<dt> <kbd><kbd>key</kbd></kbd></dt>
+<dd>
+<p>A key on the keyboard is shown in this style. For example:
+</p>
+<p>To use <kbd>TAB</kbd> completion to list particular files in a directory,
+type <code>ls</code>, then a character, and finally the Tab key. Your
+terminal displays the list of files in the working directory that
+begin with that character.  
+</p></dd>
+</dl>
+
+<dl compact="compact">
+<dt> <kbd><kbd>key-combination</kbd></kbd></dt>
+<dd><p>A combination of keystrokes is represented in this way. For example:
+</p>
+<p>The <kbd>Ctrl-Alt-Backspace</kbd> key combination exits your graphical
+session and returns you to the graphical login screen or the console.
+</p></dd>
+</dl>
+
+<dl compact="compact">
+<dt> <code><code>computer output</code></code></dt>
+<dd>
+<p>Text in this style indicates text displayed to a shell prompt such as
+error messages and responses to commands. For example:
+</p>
+<p>The <code>ls</code> command displays the contents of a directory. For example:
+</p>
+<pre class="verbatim">Config                           manual_renameEntry.sh
+manual_copyEntry.sh              manual_restoreCrossReferences.sh
+manual_deleteCrossReferences.sh  manual_searchIndex.sh
+</pre>
+<p>The output returned in response to the command (in this case, the
+contents of the directory) is shown in this style.
+</p></dd>
+</dl>
+
+<p>Additionally, we use several different strategies to draw your
+attention to certain pieces of information. In order of urgency, these
+items are marked as a note, tip, important, caution, or warning. For
+example:
+</p>
+<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Remember that Linux is case sensitive. In other words, a
+rose is not a ROSE is not a rOsE. 
+</p></blockquote>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> The directory <tt>`/usr/share/doc/'</tt> contains additional
+documentation for packages installed on your system. 
+</p></blockquote>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> If you modify the DHCP configuration file, the
+changes do not take effect until you restart the DHCP daemon. 
+</p></blockquote>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Do not perform routine tasks as root -- use a
+regular user account unless you need to use the root account for
+system administration tasks.
+</p></blockquote>
+
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> Be careful to remove only the necessary partitions.
+Removing other partitions could result in data loss or a corrupted
+system environment.
+</p></blockquote>
 
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC8" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_6.html#SEC10" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_4.html#SEC9" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_6.html#SEC11" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC5" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 11 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 22 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

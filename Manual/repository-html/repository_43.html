@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 11 2011 by texi2html 1.76 -->
+<!-- Created on March, 22 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -23,10 +23,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 2.39 The trunk/Identity/Themes/Motifs/Modern/Backgrounds Directory</title>
+<title>CentOS Artwork Repository: 2.36 The trunk/Identity/Themes/Motifs Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 2.39 The trunk/Identity/Themes/Motifs/Modern/Backgrounds Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 2.39 The trunk/Identity/Themes/Motifs/Modern/Backgrounds Directory">
+<meta name="description" content="CentOS Artwork Repository: 2.36 The trunk/Identity/Themes/Motifs Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.36 The trunk/Identity/Themes/Motifs Directory">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -55,175 +55,160 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_42.html#SEC212" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC214" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_42.html#SEC201" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC203" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_84.html#SEC432" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_84.html#SEC432" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Filesystem-trunk-Identity-Themes-Motifs-Modern-Backgrounds"></a>
-<a name="SEC213"></a>
-<h2 class="section"> 2.39 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds'</tt> Directory </h2>
+<a name="Filesystem-trunk-Identity-Themes-Motifs"></a>
+<a name="SEC202"></a>
+<h2 class="section"> 2.36 The <tt>`trunk/Identity/Themes/Motifs'</tt> Directory </h2>
 
 
-<a name="SEC214"></a>
-<h3 class="subsection"> 2.39.1 Goals </h3>
+<a name="SEC203"></a>
+<h3 class="subsection"> 2.36.1 Goals </h3>
 
+<p>The <tt>`trunk/Identity/Themes/Motifs'</tt> directory exists to:
+</p>
 <ul class="toc">
-<li> Organize background images for Modern theme.
+<li> Organize CentOS themes' artistic motifs. 
 </li></ul>
 
 
-<a name="SEC215"></a>
-<h3 class="subsection"> 2.39.2 Description </h3>
 
-<p>Inside <tt>`Motifs'</tt> directory, the <tt>`Backgrounds/'</tt> directory is
-used to create vectorial designs using Inkscape and background images
-using Gimp. Later, you can export background images as <tt>`.png'</tt> and
-load them in your vectorial design project using the import feautre of
-Inkscape.
-</p>
-<p>You may need to repeat this technic for different screen resoluions.
-In that case you need to create one file for each screen resolution
-and do the appropriate linking inside .svg to .png files.  For example
-if you need to produce background images in 800x600 you need to create
-the following file:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">xcf/800x600.xcf
-</pre></td></tr></table>
-<p>to produce the background image:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600-bg.png
-</pre></td></tr></table>
-<p>which is loaded in: 
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">svg/800x600.svg
-</pre></td></tr></table>
-<p>to produce the final background image:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600.png         
-</pre></td></tr></table>
-<p>The <tt>`img/800x600.png'</tt> background image is produced automatically
-by means of rendering scripts.
-</p>
-<p>In other cases (e.g. Anaconda), it is possible that you need to make
-some variations to one background image that don't want to appear on
-regular background images of the same resolution. In this case you
-need to create a new and specific background image for that art
-component.  For example, if you need to produce the background image
-used by Anconda (800x600) art works you create the file:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">xcf/800x600-anaconda.xcf
-</pre></td></tr></table>
-<p>to produce the background image:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600-anaconda-bg.png
-</pre></td></tr></table>
-<p>which is loaded in: 
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">svg/800x600-anaconda.svg
-</pre></td></tr></table>
-<p>to produce the file:
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">img/800x600-anaconda.png
-</pre></td></tr></table>
-<p>The 800x600-anaconda.png file is used by all Anaconda art works
-sharing a common 800x600 screen resolution (e.g., Header, Progress,
-Splash, Firstboot, etc.). The Anaconda Prompt is indexed to 16 colors
-and 640x480 pixels so you need to create a 640x480 background image
-for it, and take the color limitation into account when designing it.
-</p>
-<p>Background images without artistic motif are generally used as based
-to build the Background images that do contain the theme artistic
-motif. 
-</p>
-<p>Background images are linked (using the <b>import</b> feature of
-Inkscape) inside almost all theme art works. This structure let you
-make centralized changes on the visual identity and propagate them
-quickly to other areas. 
-</p>
-<p>In this structure you design background images for different screen
-resolutions based on the theme artistic motif.
-</p>
-<p>You may create different artistic motifs propositions based
-on the same conceptual idea. The conceptual idea is what defines a
-theme. Artistic motifs are interpretations of that idea.
-</p>
-<p>Inside this directory artistic motifs are organized by name (e.g.,
-TreeFlower, Modern, etc.).
-</p>
-<p>Each artistic motif directory represents just one unique artistic
-motif. 
-</p>
-<p>The artistic motif is graphic design used as common pattern to connect
-all visual manifestations inside one unique theme.  The artistic motif
-is based on a conceptual idea.  Artistic motifs provide visual style
-to themes.
-</p>
-<p>Designing artistic motifs is for anyone interested in creating
-beautiful themes for CentOS.  When building a theme for CentOS, the
-first design you need to define is the artistic motif. 
-</p>
+<a name="SEC204"></a>
+<h3 class="subsection"> 2.36.2 Description </h3>
 
-<p>Inside CentOS Artwork Repository, theme visual styles (Motifs) and
-theme visual structures (Models) are two different working lines.
-When you design an artistic motif for CentOS you concentrate on its
-visual style, and eventualy, use the <code>centos-art</code> command line
-interface to render the visual style, you are currently producing,
-against an already-made theme model in order to produce the final
-result.  Final images are stored under <tt>`Motifs/'</tt> directory using
-the model name, and the model directory structure as reference.
+<p>The artistic motif of theme is a graphic design component that
+provides the visual style of themes, it is used as pattern to connect
+all visual manifestations inside one unique theme.
 </p>
-<p>The artistic motif base structure is used by <code>centos-art</code> to
-produce images automatically. This section describes each directory of
-CentOS artistic motif base structure.
+<p>Artistic motifs are based on conceptual ideas. Conceptual ideas bring
+the motivation, they are fuel for the engines of human imagination.
+Good conceptual ideas may produce good motivation to produce almost
+anything, and art works don't escape from it.
 </p>
+<dl compact="compact">
+<dt> <samp>`TreeFlower'</samp> </dt>
+<dd><p>CentOS like trees, has roots, trunk, branches, leaves and flowers. Day
+by day they work together in freedom, ruled by the laws of nature and
+open standards, to show the beauty of its existence.
+</p></dd>
+<dt> <samp>`Modern'</samp> </dt>
+<dd><p>Modern, squares and circles flowing up.
+</p></dd>
+</dl>
 
-<a name="SEC216"></a>
-<h3 class="subsection"> 2.39.3 Usage </h3>
-
-<p>The <tt>`Backgrounds/'</tt> directory is probably the core component,
-inside <tt>`Motifs/'</tt> directory structure.  Inside <tt>`Backgrounds/'</tt>
-directory you produce background images used by almost all theme
-models (e.g., Distribution, Websites, Promotion, etc.).  The
-<tt>`Backgrounds/'</tt> directory can contain subdirectories to help you
-organize the design process. 
+<p>If you have new conceptual ideas for CentOS, then you can say that you
+want to create a new artistic motif for CentOS. To create a new
+artistic motif you need to create a directory under
+<tt>`Identity/Themes/Motifs/'</tt> using a name coherent with your
+conceptual idea. That name will be the name of your artistic motif. If
+possible, when creating new conceptual ideas for CentOS, think about
+what CentOS means for you, what does it makes you feel, take your
+time, think deep, and share; you can improve the idea as time goes on.
 </p>
+<p>Once you have defined a name for your theme, you need to create the
+motif structure of your theme. The motif structure is the basic
+direcotry structure you'll use to work your ideas. Here is where you
+organize your graphic design projects.
+</p>
+<p>To add a new motif structure to CentOS Artwork Repository, you need to
+use the <code>centos-art</code> command line in the
+<tt>`Identity/Themes/Motifs/'</tt> directory as described below:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">centos-art add --motif=ThemeName
+</pre></td></tr></table>
+<p>The previous command will create the basic structure of themes for
+you.  The basic structure produced by <code>centos-art</code> command is
+illustrated in the following figure:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">trunk/Identity/Themes/Motifs/$ThemeName/
+|-- Backgrounds
+|   |-- Img
+|   `-- Tpl
+|-- Info
+|   |-- Img
+|   `-- Tpl
+|-- Palettes
+`-- Screenshots
+</pre></td></tr></table>
 
-<a name="SEC217"></a>
-<h3 class="subsection"> 2.39.4 See also </h3>
+<a name="SEC205"></a>
+<h3 class="subsection"> 2.36.3 Usage </h3>
+
+<p>When designing artistic motifs for CentOS, consider the following
+recommendations:
+</p>
+<ul class="toc">
+<li> Give a unique (case-sensitive) name to your Motif. This name is
+used as value wherever theme variable (<b>$THEME</b>) or translation marker
+(<b>=THEME=</b>) is.  Optionally, you can add a description about
+inspiration and concepts behind your work.
+
+</li><li> Use the location <tt>`trunk/Identity/Themes/Motifs/$THEME/'</tt> to
+store your work. If it doesn't exist create it. Note that this require
+you to have previous commit access in CentOS Artwork Repository.
+
+</li><li> The CentOS Project is using the blue color (<b>#204c8d</b>) as base
+color for its corporate visual identity. Use such base corporate color
+information as much as possible in your artistic motif designs.
+
+</li><li> Try to make your design fit one of the theme models.
+
+</li><li> Feel free to make your art enterprise-level and beautiful.
+
+</li><li> Add the following information on your artwork (both in a visible
+design area and document metadata):
+
+<ul class="toc">
+<li> The name (or logo) of your artistic motif.
+
+</li><li> The copyright sentence: <b>Copyright (C) YEAR YOURNAME</b>
+
+</li><li> The license under which the work is released. All CentOS Art
+works are released under
+<a class="www" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Common Share-Alike License 3.0</a>
+(<a class="www" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>).
+
+</li></ul>
+</li></ul>
+
+
+<a name="SEC206"></a>
+<h3 class="subsection"> 2.36.4 See also </h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_44.html#SEC218">2.40 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_26.html#SEC117">2.19 The <tt>`trunk/Identity/Themes'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_45.html#SEC223">2.41 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_11.html#SEC28">2.4 The <tt>`trunk/Identity'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top"><a href="repository_46.html#SEC228">2.42 The <tt>`trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_10.html#SEC23">2.3 The <tt>`trunk'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
 
-
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC216" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_44.html#SEC218" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC205" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_44.html#SEC207" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC213" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC202" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_84.html#SEC432" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 11 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 22 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

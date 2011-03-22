@@ -12,7 +12,7 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled GNU Free
 Documentation License.  
 -->
-<!-- Created on March, 11 2011 by texi2html 1.76 -->
+<!-- Created on March, 22 2011 by texi2html 1.76 -->
 <!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -23,10 +23,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <head>
-<title>CentOS Artwork Repository: 1.1 Document Convenctions</title>
+<title>CentOS Artwork Repository: 1.1 History</title>
 
-<meta name="description" content="CentOS Artwork Repository: 1.1 Document Convenctions">
-<meta name="keywords" content="CentOS Artwork Repository: 1.1 Document Convenctions">
+<meta name="description" content="CentOS Artwork Repository: 1.1 History">
+<meta name="keywords" content="CentOS Artwork Repository: 1.1 History">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.76">
@@ -56,144 +56,166 @@ ul.toc {list-style: none}
 
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_3.html#SEC7" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_81.html#SEC424" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_84.html#SEC432" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Convenctions"></a>
+<a name="History"></a>
 <a name="SEC2"></a>
-<h2 class="section"> 1.1 Document Convenctions </h2>
+<h2 class="section"> 1.1 History </h2>
 
-<p>In this manual the word <em>we</em>, as personal pronoun, is used to
-repesent <em>The CentOS Artwork SIG</em>, the group of persons building
-the CentOS Artwork Repository.
+<p>This section records noteworthy changes of CentOS Artwork Repository.
 </p>
-<p>In this manual, certain words are represented in different fonts,
-typefaces, sizes, and weights. This highlighting is systematic;
-different words are represented in the same style to indicate their
-inclusion in a specific category. The types of words that are
-represented this way include the following:
-</p>
-<dl compact="compact">
-<dt> <code>command</code></dt>
-<dd>
-<p>Linux commands (and other operating system commands, when used) are
-represented this way. This style should indicate to you that you can
-type the word or phrase on the command line and press Enter to invoke
-a command. Sometimes a command contains words that would be displayed
-in a different style on their own (such as file names). In these
-cases, they are considered to be part of the command, so the entire
-phrase is displayed as a command. For example:
-</p>
-<p>Use the <code>centos-art identity --render='path/to/dir'</code> command
-to produce contents inside the <tt>`trunk/Identity'</tt> directory
-structure.
-</p></dd>
-</dl>
+<a name="SEC3"></a>
+<h3 class="subheading"> 2008 </h3>
 
-<dl compact="compact">
-<dt> <tt>`file name'</tt></dt>
-<dd>
-<p>File names, directory names, paths, and RPM package names are
-represented this way. This style indicates that a particular file or
-directory exists with that name on your system. Examples:
+<p>The CentOS Artwork Repository started at CentOS Developers mailing
+list (<a class="mailto" href="mailto:centos-devel@centos.org">centos-devel@centos.org</a>) during a discussion about how
+to automate the slide images of Anaconda. In such discussion, Ralph
+Angenendt rose up his hand to ask: Do you have something to show? 
 </p>
-<p>The <tt>`init.sh'</tt> file in <tt>`trunk/Scripts/Bash/Cli/'</tt> directory is
-the initialization script, written in Bash, used to automate most of
-tasks in the repository.
+<p>To answer the question, Alain Reguera Delgado posted a bash script to
+produce slide images in different languages --together with the
+proposition of creating a Subversion centralized repository where
+translations and image production could be distributed inside The
+CentOS Community--.
 </p>
-<p>The <code>centos-art</code> command uses the <tt>`ImageMagick'</tt> RPM
-package to convert images from PNG format to other formats.
-</p></dd>
-</dl>
+<p>Karanbirn Sighn considered the idea intresting and provides the
+infrastructure to support the effort. This way both the CentOS Artwork
+SIG and the CentOS Artwork Repository were created.
+</p>
+<ul class="toc">
+<li> <a class="www" href="https://projects.centos.org/svn/artwork/">https://projects.centos.org/svn/artwork/</a>
+</li><li> <a class="www" href="https://projects.centos.org/trac/artwork/">https://projects.centos.org/trac/artwork/</a>
+</li></ul>
 
-<dl compact="compact">
-<dt> <kbd><kbd>key</kbd></kbd></dt>
-<dd>
-<p>A key on the keyboard is shown in this style. For example:
+<p>Once the CentOS Artwork Repository was available, Alain Reguera
+Delagdo uploaded the bash script for rendering Anaconda slides and
+Ralph Angenendt documented the script very well.
 </p>
-<p>To use <kbd>TAB</kbd> completion to list particular files in a directory,
-type <code>ls</code>, then a character, and finally the Tab key. Your
-terminal displays the list of files in the working directory that
-begin with that character.  
-</p></dd>
-</dl>
+<p>Once the rendition script and its documentation were available online,
+translators started to download working copies of CentOS Artwork
+Repository to produce slide images in their own languages.
+</p>
+<a name="SEC4"></a>
+<h3 class="subheading"> 2009 </h3>
 
-<dl compact="compact">
-<dt> <kbd><kbd>key-combination</kbd></kbd></dt>
-<dd><p>A combination of keystrokes is represented in this way. For example:
+<p>The rendition script is designed to take one SVG file, apply one SED
+file with replacement command inside to produce one SVG translated
+instance that is used to produce one translated PNG image by means of
+Inkscape program.  The rendition script was named <code>render.sh</code>
+and it is copied to each directory structure that requires such
+process to produce images. 
 </p>
-<p>The <kbd>Ctrl-Alt-Backspace</kbd> key combination exits your graphical
-session and returns you to the graphical login screen or the console.
-</p></dd>
-</dl>
+<p>Furthermore, functionalies are centralized in a common placed and
+linked from different directory structures. There is no need to have
+the same code in different directory structures if can have it in just
+one place and then create links to it.
+</p>
+<p>Start to implement concepts about corporate identity. As referece it
+is used Wikipedia (<a class="www" href="http://en.wikipedia.org/Corporate_identity">http://en.wikipedia.org/Corporate_identity</a>)
+and the book <em>Corporate Identity</em> by Wally Olins (1989). The main
+goal of <code>render.sh</code> becomes to: automate production of a
+monolithic corporate visual identity structure based on The CentOS
+Mission and The CentOS Release Schema. 
+</p>
+<p>Around March, Alain Reguera Delgado is out of Internet for an
+undefined amount of time, but continues developing the idea of CentOS
+Artwork Repository and the rendition script off-line. 
+</p>
+<p>Most of the work I propose from this time on is my own responsability.
+I keep myself thinking to be part of the CentOS Artwork SIG and in
+that sake, I use the personal pronoun <em>we</em> to refer what I do as
+part of the group hoping someday to share this work with you again and
+improve it together.
+</p>
+<p>The CentOS Artwork Repository documentation starts to take form in
+LaTeX format.
+</p>
+<a name="SEC5"></a>
+<h3 class="subheading"> 2010 </h3>
 
-<dl compact="compact">
-<dt> <code><code>computer output</code></code></dt>
-<dd>
-<p>Text in this style indicates text displayed to a shell prompt such as
-error messages and responses to commands. For example:
+<p>The <code>render.sh</code> is removed from the repository directory
+structures and the <code>centos-art.sh</code> script is used instead. The
+<code>centos-art.sh</code> is created to be a command-line interface that
+automate most frequent tasks inside the repository and can be called
+anywhere inside the repository or outside it; whenever it points to a
+directory structure inside the repository. At the very first moments
+of using <code>centos-art.sh</code> command-line, it used to have the
+following using form:
 </p>
-<p>The <code>ls</code> command displays the contents of a directory. For example:
-</p>
-<pre class="verbatim">Config                           manual_renameEntry.sh
-manual_copyEntry.sh              manual_restoreCrossReferences.sh
-manual_deleteCrossReferences.sh  manual_searchIndex.sh
+<pre class="verbatim">centos-art function --action=path/to/dir
 </pre>
-<p>The output returned in response to the command (in this case, the
-contents of the directory) is shown in this style.
-</p></dd>
-</dl>
-
-<p>Additionally, we use several different strategies to draw your
-attention to certain pieces of information. In order of urgency, these
-items are marked as a note, tip, important, caution, or warning. For
-example:
+<p>Inside the rendition script, functionalities started to get identified
+and separated one another. For example, when images are rendered,
+there is no need to load manual functionality. There are now common
+functionalities and specific functionalities. Common functionalities
+are loaded when the script is initiated and are available to specific
+functionalities.
 </p>
-<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p> Remember that Linux is case sensitive. In other words, a
-rose is not a ROSE is not a rOsE. 
-</p></blockquote>
+<p>Start using <code>getopt</code> to handle command-line options. 
+</p>
+<p>The repository directory structure is optimized to continue
+implementing corporate identity concepts and the <code>centos-art</code>
+command-line.
+</p>
+<a name="SEC6"></a>
+<h3 class="subheading"> 2011 </h3>
 
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> The directory <tt>`/usr/share/doc/'</tt> contains additional
-documentation for packages installed on your system. 
-</p></blockquote>
-
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> If you modify the DHCP configuration file, the
-changes do not take effect until you restart the DHCP daemon. 
-</p></blockquote>
-
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Do not perform routine tasks as root -- use a
-regular user account unless you need to use the root account for
-system administration tasks.
-</p></blockquote>
-
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> Be careful to remove only the necessary partitions.
-Removing other partitions could result in data loss or a corrupted
-system environment.
-</p></blockquote>
-
+<p>The `trunk/Translation' directory structure is removed. The
+`trunk/Locales' directory structure is used instead to store locale
+information. 
+</p>
+<p>The `.sed' translation files are no longer used, scalable vector
+graphics are used instead.  Translation messages take place by means
+of xml2po and gettext. With xml2po translatable strings are retrived
+from `.svg' files and stored inside gettext `.pot' and `.po' files for
+translators to edit. Finally, xml2po is used again to build the
+temporal design model translated instance which the final `.png' image
+is built from.
+</p>
+<p>Inside <code>centos-art.sh</code>, update command-line arguments and
+options parsing. Keep using <code>getopt</code> to parse options passed
+in the command-line, but change the way <code>centos-art.sh</code> is
+called from. The following form is used:
+</p>
+<pre class="verbatim">centos-art function path/to/dir --options
+</pre>
+<p>Start using verbs to name the <code>centos-art.sh</code> functionalities.
+</p>
+<p>Organize <code>centos-art.sh</code> functionalities in &quot;administrative&quot;
+functions and &quot;productive&quot; functions.  Administrative functions
+cover actions like: copying, deleting and renaming directory
+structures. Also, preparing your workstation for using
+<code>centos-art</code> command-line, make backups of the distribution
+theme currently installed,  installing themes created inside The
+CentOS Artwork repository and restoring themes from backup.  On the
+other hand, productive functions cover actions like: content
+rendition, content localization, content documentation and content
+maintainance.
+</p>
 
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_3.html#SEC3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_3.html#SEC7" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_1.html#SEC1" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_4.html#SEC4" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.html#SEC12" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated on <i>March, 11 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+  This document was generated on <i>March, 22 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
  </font>
  <br>
 

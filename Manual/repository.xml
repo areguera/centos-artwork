@@ -78,6 +78,21 @@
       <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can find help.</para>
       <menu>
         <menuentry>
+          <menunode>History</menunode>
+          <menutitle>History</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Authors</menunode>
+          <menutitle>Authors</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Copying Conditions</menunode>
+          <menutitle>Copying Conditions</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Convenctions</menunode>
           <menutitle>Convenctions</menutitle>
           <menucomment></menucomment>
@@ -91,12 +106,100 @@
     </chapter>
   </node>
   <node>
+    <nodename>History</nodename>
+    <nodenext>Authors</nodenext>
+    <nodeup>Introduction</nodeup>
+    <section>
+      <title>History</title>
+      <para><indexterm index="cp">History</indexterm>This section records noteworthy changes of CentOS Artwork Repository.</para>
+      <subheading>2008</subheading>
+      <para>The CentOS Artwork Repository started at CentOS Developers mailing list (<email><emailaddress>centos-devel@centos.org</emailaddress></email>) during a discussion about how to automate the slide images of Anaconda. In such discussion, Ralph Angenendt rose up his hand to ask: Do you have something to show?</para>
+      <para>To answer the question, Alain Reguera Delgado posted a bash script to produce slide images in different languages &mdash;together with the proposition of creating a Subversion centralized repository where translations and image production could be distributed inside The CentOS Community&mdash;.</para>
+      <para>Karanbirn Sighn considered the idea intresting and provides the infrastructure to support the effort. This way both the CentOS Artwork SIG and the CentOS Artwork Repository were created.</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref></para>
+        </item>
+        <item>
+          <para><uref><urefurl>https://projects.centos.org/trac/artwork/</urefurl></uref></para>
+        </item>
+      </itemize>
+      <para>Once the CentOS Artwork Repository was available, Alain Reguera Delagdo uploaded the bash script for rendering Anaconda slides and Ralph Angenendt documented the script very well.</para>
+      <para>Once the rendition script and its documentation were available online, translators started to download working copies of CentOS Artwork Repository to produce slide images in their own languages.</para>
+      <subheading>2009</subheading>
+      <para>The rendition script is designed to take one SVG file, apply one SED file with replacement command inside to produce one SVG translated instance that is used to produce one translated PNG image by means of Inkscape program.  The rendition script was named <command>render.sh</command> and it is copied to each directory structure that requires such process to produce images.</para>
+      <para>Furthermore, functionalies are centralized in a common placed and linked from different directory structures. There is no need to have the same code in different directory structures if can have it in just one place and then create links to it.</para>
+      <para>Start to implement concepts about corporate identity. As referece it is used Wikipedia (<uref><urefurl>http://en.wikipedia.org/Corporate_identity</urefurl></uref>) and the book <emph>Corporate Identity</emph> by Wally Olins (1989). The main goal of <command>render.sh</command> becomes to: automate production of a monolithic corporate visual identity structure based on The CentOS Mission and The CentOS Release Schema.</para>
+      <para>Around March, Alain Reguera Delgado is out of Internet for an undefined amount of time, but continues developing the idea of CentOS Artwork Repository and the rendition script off-line.</para>
+      <para>Most of the work I propose from this time on is my own responsability. I keep myself thinking to be part of the CentOS Artwork SIG and in that sake, I use the personal pronoun <emph>we</emph> to refer what I do as part of the group hoping someday to share this work with you again and improve it together.</para>
+      <para>The CentOS Artwork Repository documentation starts to take form in &latex; format.</para>
+      <subheading>2010</subheading>
+      <para>The <command>render.sh</command> is removed from the repository directory structures and the <command>centos-art.sh</command> script is used instead. The <command>centos-art.sh</command> is created to be a command-line interface that automate most frequent tasks inside the repository and can be called anywhere inside the repository or outside it; whenever it points to a directory structure inside the repository. At the very first moments of using <command>centos-art.sh</command> command-line, it used to have the following using form:</para>
+      <verbatim xml:space="preserve"><![CDATA[
+centos-art function --action=path/to/dir
+]]></verbatim>
+      <para>Inside the rendition script, functionalities started to get identified and separated one another. For example, when images are rendered, there is no need to load manual functionality. There are now common functionalities and specific functionalities. Common functionalities are loaded when the script is initiated and are available to specific functionalities.</para>
+      <para>Start using <command>getopt</command> to handle command-line options.</para>
+      <para>The repository directory structure is optimized to continue implementing corporate identity concepts and the <command>centos-art</command> command-line.</para>
+      <subheading>2011</subheading>
+      <para>The `trunk/Translation' directory structure is removed. The `trunk/Locales' directory structure is used instead to store locale information.</para>
+      <para>The `.sed' translation files are no longer used, scalable vector graphics are used instead.  Translation messages take place by means of xml2po and gettext. With xml2po translatable strings are retrived from `.svg' files and stored inside gettext `.pot' and `.po' files for translators to edit. Finally, xml2po is used again to build the temporal design model translated instance which the final `.png' image is built from.</para>
+      <para>Inside <command>centos-art.sh</command>, update command-line arguments and options parsing. Keep using <command>getopt</command> to parse options passed in the command-line, but change the way <command>centos-art.sh</command> is called from. The following form is used:</para>
+      <verbatim xml:space="preserve"><![CDATA[
+centos-art function path/to/dir --options
+]]></verbatim>
+      <para>Start using verbs to name the <command>centos-art.sh</command> functionalities.</para>
+      <para>Organize <command>centos-art.sh</command> functionalities in &ldquo;administrative&rdquo; functions and &ldquo;productive&rdquo; functions.  Administrative functions cover actions like: copying, deleting and renaming directory structures. Also, preparing your workstation for using <command>centos-art</command> command-line, make backups of the distribution theme currently installed,  installing themes created inside The CentOS Artwork repository and restoring themes from backup.  On the other hand, productive functions cover actions like: content rendition, content localization, content documentation and content maintainance.</para>
+    </section>
+  </node>
+  <node>
+    <nodename>Authors</nodename>
+    <nodenext>Copying Conditions</nodenext>
+    <nodeprev>History</nodeprev>
+    <nodeup>Introduction</nodeup>
+    <section>
+      <title>Authors</title>
+      <para><indexterm index="cp">Authors</indexterm>This section records authoring information of CentOS Artwork Repository, in alphabetical order.</para>
+      <verbatim xml:space="preserve"><![CDATA[
+Ralph Angenendt <ralph@centos.org>
+Marcus Moeller <marcus@moeller.org>
+Alain Reguera Delgado <al@localhost>, 2009, 2010, 2011
+Karanbirn Singh <karan@centos.org>
+]]></verbatim>
+    </section>
+  </node>
+  <node>
+    <nodename>Copying Conditions</nodename>
+    <nodenext>Convenctions</nodenext>
+    <nodeprev>Authors</nodeprev>
+    <nodeup>Introduction</nodeup>
+    <section>
+      <title>Copying Conditions</title>
+      <para><indexterm index="cp">Copying conditions</indexterm>Inside the CentOS Artwork Repository you can find content branded by The CentOS Project and content not branded at all. Contents branded by The CentOS Project contain either The CentOS Trademark, The CentOS Logo or The CentOS Symbol.  Content branded by The CentOS Project cannot be redistributed without previous conversation with The CentOS Project.  However, you can study and modify both content branded by The CentOS Project and content not branded at all in the sake of proposing improvements to The CentOS Project corporate visual identity.</para>
+      <para>If you are using the CentOS Artwork Repository for producing your own corporate visual identity, you should remove all The CentOS Trademarks from your contents and rename the repository to something other than CentOS Artwork Repository.</para>
+      <para>The CentOS Artwork Repository organizes files in a very specific way to implement The CentOS Project corporate visual identity. This very specific organization of files is part of <command>centos-art.sh</command> script, a bash script that automates most of the frequent tasks inside the repository.</para>
+
+      <subsection>
+        <title>The <command>centos-art.sh</command> script</title>
+        <para>The <command>centos-art.sh</command> script and the organization of files it needs to work are not in the public domain; they are copyrighted and there are restrictions on their distribution, but these restrictions are designed to permit everything that a good cooperating citizen would want to do.  What is not allowed is to try to prevent others from further sharing any version of this program that they might get from you.</para>
+        <para>Specifically, we want to make sure that you have the right to give away copies of <command>centos-art.sh</command> script, that you receive source code or else can get it if you want it, that you can change this program or use pieces of it in new free programs, and that you know you can do these things.</para>
+        <para>To make sure that everyone has such rights, we have to forbid you to deprive anyone else of these rights.  For example, if you distribute copies of the <command>centos-art.sh</command> script, you must give the recipients all the rights that you have.  You must make sure that they, too, receive or can get the source code.  And you must tell them their rights.</para>
+        <para>Also, for our own protection, we must make certain that everyone finds out that there is no warranty for the <command>centos-art.sh</command> script. If this program is modified by someone else and passed on, we want their recipients to know that what they have is not what we distributed, so that any problems introduced by others will not reflect on our reputation.</para>
+        <para>The precise conditions of the license for the <command>centos-art.sh</command> script are found in the General Public Licenses that accompany it. This manual specifically is covered by the GNU Free Documentation License.</para>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Convenctions</nodename>
     <nodenext>Feedback</nodenext>
+    <nodeprev>Copying Conditions</nodeprev>
     <nodeup>Introduction</nodeup>
     <section>
       <title>Document Convenctions</title>
-      <para><indexterm index="cp">Document convenctions</indexterm>In this manual the word <emph>we</emph>, as personal pronoun, is used to repesent <emph>The CentOS Artwork SIG</emph>, the group of persons building the CentOS Artwork Repository.</para>
+      <para><indexterm index="cp">Document convenctions</indexterm>In this manual the personal pronoun <emph>we</emph> is used to repesent <emph>The CentOS Artwork SIG</emph>. This is, the group of persons building the CentOS Artwork Repository.</para>
+      <para>In this manual the phrase &ldquo;CentOS Artwork Repository&rdquo; is used to refer the very specific organization of files we use to store The CentOS Project corporate visual identity.  It is the source location The CentOS Community uses to retrive The CentOS Project branded images used to build different visual manifestations like The CentOS Distribution, The CentOS Webs and The CentOS Stationery.</para>
+      <para>In this manual the word &ldquo;<command>centos-art</command>&rdquo; is used to refer the command-line interface of <command>centos-art.sh</command> script.  The <command>centos-art.sh</command> script is the the automation tool we use to realize most of the frequent tasks inside the CentOS Artwork Repository.</para>
       <para>In this manual, certain words are represented in different fonts, typefaces, sizes, and weights. This highlighting is systematic; different words are represented in the same style to indicate their inclusion in a specific category. The types of words that are represented this way include the following:</para>
       <table>
         <tableitem>
@@ -811,7 +914,7 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <para>The <file>trunk/</file> directory structure is organized in <emph>renderable</emph> and <emph>non-renderable</emph> directories. Generally, renderable directories contain two non-renderable directories inside, one to store design templates (the <file>Tpl/</file> directory), and other to store the content produced (the <file>Img/</file> directory).</para>
         <para>In order to produce content inside rendereble directories, you can use the following command:</para>
         <verbatim xml:space="preserve"><![CDATA[ 
-centos-art identity --render='trunk/Identity/Path/To/Dir'
+centos-art render trunk/Identity/Path/To/Dir
 ]]></verbatim>
         <quotation>
           <para><strong>Warning</strong> If the <command>centos-art</command> command-line is not found in your workstation, it is probably because you haven't prepared it for using The CentOS Artwork Repository yet. See <xref><xrefnodename>Filesystem trunk Scripts Bash Cli Functions Verify</xrefnodename></xref>, for more information.</para>
