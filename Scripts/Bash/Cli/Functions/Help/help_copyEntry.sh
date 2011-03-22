@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# document_copyEntry.sh -- This function copies documentation entries and
+# help_copyEntry.sh -- This function copies documentation entries and
 # updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_copyEntry {
+function help_copyEntry {
 
     local ENTRY_SRC=${ENTRY}
     local ENTRY_DST=${FLAG_TO}
@@ -67,12 +67,12 @@ function document_copyEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        document_updateMenu
-        document_updateNodes
+        help_updateMenu
+        help_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        document_restoreCrossReferences
+        help_restoreCrossReferences
 
     done
 

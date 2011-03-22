@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# document_updateOutputFilePlaintext.sh -- This function exports
-# documentation manual to plain-text format.
+# help_renameEntry.sh -- This function renames documentation entries
+# and updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,18 +24,23 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_updateOutputFilePlaintext {
+function help_renameEntry {
 
-    # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" 'AsUpdatingLine'
+    # Copy source documentation entry.
+    help_copyEntry
 
-    # Update plaintext output directory.
-    /usr/bin/makeinfo --plaintext \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
 
-    # Compress plaintext output file.
-    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
-        bzip2 ${MANUAL_BASEFILE}.txt --force
-    fi
+    # Delete source documentation entry. The source documentation
+    # entry has been copied already, so to create the rename effect
+    # delete it from repository filesystem.
+    help_deleteEntry
+
+    # At this point, source documentation entry has been removed and
+    # all menu, nodes and cross-references have been commented. So,
+    # replace commented menu, nodes and cross-reference information
+    # from source to target documentation entry.
+    help_renameCrossReferences 
 
 }

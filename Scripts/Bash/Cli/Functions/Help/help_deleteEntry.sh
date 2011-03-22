@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# document_deleteEntry.sh -- This function removes a documentation entry
+# help_deleteEntry.sh -- This function removes a documentation entry
 # from documentation directory structure.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_deleteEntry {
+function help_deleteEntry {
 
     local ENTRY_SRC=${ENTRY}
     local ENTRIES=''
@@ -102,12 +102,12 @@ function document_deleteEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        document_updateMenu "remove-entry"
-        document_updateNodes
+        help_updateMenu "remove-entry"
+        help_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        document_deleteCrossReferences
+        help_deleteCrossReferences
 
     done
  
@@ -115,8 +115,8 @@ function document_deleteEntry {
     # the fact it has been removed.  This is mainly applied when one
     # of the chapters (e.g., trunk/, tags/, or branches/) is removed.
     if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
-        document_updateChaptersMenu 'remove-entry'
-        document_updateChaptersNodes
+        help_updateChaptersMenu 'remove-entry'
+        help_updateChaptersNodes
     fi
 
 }

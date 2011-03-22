@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# document_getNode.sh -- This function cleans up the action value
-# (ACTIONVAL) directory to make a node name from it.
+# help_updateChaptersNodes.sh - This function updates nodes of
+# chapters based on menu of chapters.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,12 +24,27 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_getNode {
+function help_updateChaptersNodes {
 
-    local NODE=$(echo "$ACTIONVAL" \
-        | sed -r "s!^${HOME}/artwork/!!" \
-        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
+    # Build list "nodes of chapters" based on menu of chapters.
+    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.texi \
+        | egrep -v '^@(end )?menu$' \
+        | egrep -v "^\* `gettext "Index"`::[[:print:]]*$" \
+        | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
+        | sed -r 's! !_!g' | sort | uniq )
 
-    echo "$NODE"
+    # Build list of texinfo inclusions to load chapters' nodes.
+    local FILENODE=$(\
+    for CHAPTERNODE in ${CHAPTERNODES};do
+
+        INCL=$(echo ${CHAPTERNODE} | sed -r "s!(${CHAPTERNODE})!\1/chapter\.texi!")
+
+        # Output inclusion line using texinfo format.
+        echo "@include $INCL"
+
+    done)
+
+    # Dump organized nodes of chapters into file.
+    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.texi
+
 }
-

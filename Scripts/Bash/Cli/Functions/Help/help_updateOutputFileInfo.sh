@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# document_searchNode.sh -- This function does a node search inside the
-# info document.
+# help_updateOutputFileInfo.sh -- This function exports
+# documentation manual to info format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,18 +24,17 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_searchNode {
+function help_updateOutputFileInfo {
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsUpdatingLine'
 
-    # Check entry inside documentation structure. If the entry
-    # exits use the info reader to open the info file at the
-    # specified node. Otherwise, ask the user for create it.
-    if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="Filesystem $(document_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
-    else
-        document_editEntry
+    # Update info file.
+    /usr/bin/makeinfo ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.info
+
+    # Compress info file.
+    if [[ $? -eq 0 ]];then
+        bzip2 -f ${MANUAL_BASEFILE}.info
     fi
 
 }

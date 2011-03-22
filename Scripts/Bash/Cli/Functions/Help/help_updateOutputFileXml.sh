@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# document_updateOutputFileXml.sh -- This function exports documentation
+# help_updateOutputFileXml.sh -- This function exports documentation
 # manual to XML format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_updateOutputFileXml {
+function help_updateOutputFileXml {
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.xml" 'AsUpdatingLine'

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# document_updateOutputFilePdf.sh -- This function exports documentation
-# manual to PDF format.
+# help_searchNode.sh -- This function does a node search inside the
+# info document.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,13 +24,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_updateOutputFilePdf {
+function help_searchNode {
 
-    # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" 'AsUpdatingLine'
+    # Print action message.
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
 
-    # Update plaintext output directory.
-    /usr/bin/texi2pdf --quiet \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.pdf
+    # Check entry inside documentation structure. If the entry
+    # exits use the info reader to open the info file at the
+    # specified node. Otherwise, ask the user for create it.
+    if [[ -f "$ENTRY" ]];then
+        /usr/bin/info --node="Filesystem $(help_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
+    else
+        help_editEntry
+    fi
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# document_searchIndex.sh -- This function does an index search inside the
-# info document.
+# help_updateOutputFilePlaintext.sh -- This function exports
+# documentation manual to plain-text format.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,21 +24,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_searchIndex {
+function help_updateOutputFilePlaintext {
 
-    # Check flag filter. By default flag filter has the `.+' value
-    # which is not very descriptive in the sake of an index-search.
-    # So, when no value is passed through --filter option use top node
-    # as default value for index-search.
-    if [[ "$FLAG_FILTER" == '.+' ]];then
-        cli_printMessage "`gettext "Use the \\\`--filter' option to define the search pattern."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" 'AsUpdatingLine'
+
+    # Update plaintext output directory.
+    /usr/bin/makeinfo --plaintext \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
+
+    # Compress plaintext output file.
+    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
+        bzip2 ${MANUAL_BASEFILE}.txt --force
     fi
-
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
-
-    # Execute info command to perform an index-search.
-    /usr/bin/info --index-search="$FLAG_FILTER" --file=${MANUAL_BASEFILE}.info.bz2
 
 }

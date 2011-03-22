@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# document_renameCrossReferences.sh -- This function replaces a node
+# help_renameCrossReferences.sh -- This function replaces a node
 # pattern with a node replacement and updates cross-reference
 # definitions to reflect the changes.
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_renameCrossReferences {
+function help_renameCrossReferences {
 
     local NODE=''
     local COUNT=1
@@ -84,6 +84,6 @@ function document_renameCrossReferences {
     # At this point, source documentation entry has been renamed from
     # source to target documentation entry, but they are still
     # commented. So, restore target documentation entries.
-    document_restoreCrossReferences "${FLAG_TO}"
+    help_restoreCrossReferences "${FLAG_TO}"
 
 }

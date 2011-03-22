@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# document_updateOutputFiles.sh -- This function exports documentation
-# manual to different output formats.
+# help_searchIndex.sh -- This function does an index search inside the
+# info document.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,24 +24,21 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_updateOutputFiles {
+function help_searchIndex {
 
-    # Remove extension from manual's base file. This way it is
-    # possible to reuse the same filename on different types of files.
-    MANUAL_BASEFILE=$(echo ${MANUAL_BASEFILE} | sed -r 's!\.texi!!')
+    # Check flag filter. By default flag filter has the `.+' value
+    # which is not very descriptive in the sake of an index-search.
+    # So, when no value is passed through --filter option use top node
+    # as default value for index-search.
+    if [[ "$FLAG_FILTER" == '.+' ]];then
+        cli_printMessage "`gettext "Use the \\\`--filter' option to define the search pattern."`" 'AsErrorLine'
+        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+    fi
 
-    # Add the working copy root directory to directory stack to make
-    # path construction correctly. Otherwise, makeinfo may produce
-    # paths incorrectly.
-    pushd ${HOME}/artwork > /dev/null
+    # Print action message.
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
 
-    document_updateOutputFileInfo
-    document_updateOutputFileHtml
-    document_updateOutputFileXml
-    document_updateOutputFilePdf
-    document_updateOutputFilePlaintext
-
-    # Remove the working copy root directory from directory stack.
-    popd > /dev/null
+    # Execute info command to perform an index-search.
+    /usr/bin/info --index-search="$FLAG_FILTER" --file=${MANUAL_BASEFILE}.info.bz2
 
 }

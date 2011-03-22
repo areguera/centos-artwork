@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# document_getEntry.sh -- This function builds a documentation entry based
+# help_getEntry.sh -- This function builds a documentation entry based
 # on a location specified. Location specification can be both action
 # value (ACTIONVAL) variable or a value passed as first positional
 # parameter.
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_getEntry {
+function help_getEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRY=''

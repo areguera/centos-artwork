@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# document_getArguments.sh -- This function interpretes arguments passed
+# help_getArguments.sh -- This function interpretes arguments passed
 # to `manual' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function document_getArguments {
+function help_getArguments {
 
     # Define short options we want to support.
     local ARGSS=""
