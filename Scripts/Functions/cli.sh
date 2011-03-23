@@ -65,6 +65,15 @@ function cli {
     # functionalities are stored inside the repository.
     FUNCDIR=${CLI_BASEDIR}/Functions
 
+    # Check function name. The function name is critical for
+    # centos-art.sh script to do something coherent. If it is not
+    # provided, execute the help functionality and end script
+    # execution.
+    if [[ "$1" == '' ]];then
+        exec ${CLI_BASEDIR}/centos-art.sh help
+        exit
+    fi
+
     # Define function name (FUNCNAM) variable from first command-line
     # argument.  As convenction we use the first argument to determine
     # the exact name of functionality to call.
