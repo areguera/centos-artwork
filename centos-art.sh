@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# init.sh -- This file is the centos-art initialization script, the
-# first script the centos-art command executes.
+# centos-art.sh -- This file is the initialization script, the first
+# script the centos-art command executes.
 #
 # Copyright (C) 2009-2011  Alain Reguera Delgado
 # 
@@ -35,12 +35,12 @@
 # Initialize personal information.
 export CLI_PROGRAM='centos-art'
 export CLI_VERSION='1.0 (beta)'
-export CLI_BASEDIR="${HOME}/artwork/trunk/Scripts/Bash/Cli"
+export CLI_BASEDIR="${HOME}/artwork/trunk"
 
 # Initizalize internazionalization through gettext.
 . gettext.sh
 export TEXTDOMAIN=${CLI_PROGRAM}.sh
-export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts/Bash/Cli
+export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales
 
 # Initialize common function scripts.
 FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)
