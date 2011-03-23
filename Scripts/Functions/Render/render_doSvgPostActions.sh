@@ -27,17 +27,16 @@
 function render_doSvgPostActions {
 
     local ACTION=''
-
+    
     # Define SVG-directory-specific post-rendition actions processing
     # as local to this function. Otherwise it may confuse command-line
     # post-rendition actions.
     local -a POSTACTIONS
 
-    # Write copyright information to all PNG images produced as result
-    # of base-rendition action. The copyright information is written
-    # in the image datastream using the PNG commentary tag.
+    # Write commentary to PNG images datastream to let everyone know
+    # where the image was created in.
     if [[ $TEMPLATE =~ 'trunk/Identity/.+\.svg$' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="renderComment: $(cli_getCopyrightInfo)" 
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="renderComment" 
     fi
 
     # Execute SVG directory-specific post-rendition actions to the
@@ -101,7 +100,7 @@ function render_doSvgPostActions {
                 render_doBrands 
                 ;;
 
-            renderComment:* )
+            renderComment )
                 render_mogrifyCommentToPng
                 ;;
 
