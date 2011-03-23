@@ -29,15 +29,13 @@
 
 function render_mogrifyCommentToPng {
 
-    # Get commentary.
-    local COMMENT=$(render_getConfigOption "$ACTION" '2-')
+    # Define commentary you want to write on PNG images.
+    local COMMENT="`gettext "Created in CentOS Artwork Repository"` (https://projects.centos.org/svn/artwork/)."
 
     # Check base file existence.
     cli_checkFiles ${FILE}.png 'f'
 
-    # Check commentary and write commentary.
-    if [[ "$COMMENT" != "" ]];then
-        mogrify -comment "$COMMENT" ${FILE}.png
-    fi
+    # Write commentary to PNG image.
+    mogrify -comment "$COMMENT" ${FILE}.png
 
 }
