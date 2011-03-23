@@ -32,11 +32,11 @@ function locale_updateMessageXml {
 
     # Define filename used to create both portable object templates
     # (.pot) and portable objects (.po) files.
-    FILE="${WORKDIR}/$(cli_getCurrentLocale)"
+    FILE="${WORKDIR}/messages"
 
     # Build list of files to process.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/.+" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.(svg|docbook)")
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Identity|Manual)" ]];then
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.(svg|xml|docbook)")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
