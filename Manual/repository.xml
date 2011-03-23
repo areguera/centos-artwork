@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.8//EN" "http://www.gnu.org/software/texinfo/dtd/4.8/texinfo.dtd">
 <texinfo xml:lang="en">
-  <setfilename>centos-art.sh.xml</setfilename>
-  <settitle>centos-art.sh</settitle>
+  <setfilename>repository.xml</setfilename>
+  <settitle>CentOS Artwork Repository</settitle>
 <!--  Summary Description and Copyright - -->
   <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
   <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
   <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License. 
 <!--  Titlepage, Contents, Copyright - --></para>
   <titlepage>
-    <booktitle>centos-art.sh</booktitle>
-    <booksubtitle>The CentOS Artwork Repository automation tool</booksubtitle>
-    <booksubtitle>for centos-art.sh 1.0, 22 March 2011</booksubtitle>
+    <booktitle>CentOS Artwork Repository</booktitle>
+    <booksubtitle>Manual</booksubtitle>
     <author>Alain Reguera Delgado</author>
     <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
     <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
@@ -23,7 +22,7 @@
     <nodename>Top</nodename>
     <nodeup>(dir)</nodeup>
     <unnumbered>
-      <title>centos-art.sh</title>
+      <title>CentOS Artwork Repository</title>
       <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
       <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License.</para>
@@ -34,8 +33,8 @@
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem</menunode>
-          <menutitle>Filesystem</menutitle>
+          <menunode>Directories</menunode>
+          <menutitle>Directories</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -54,13 +53,13 @@
   </node>
   <node>
     <nodename>Introduction</nodename>
-    <nodenext>Filesystem</nodenext>
+    <nodenext>Directories</nodenext>
     <nodeprev>Top</nodeprev>
     <nodeup>Top</nodeup>
     <chapter>
       <title>Introduction</title>
       <para><indexterm index="cp">Introduction</indexterm>Welcome to <command>centos-art.sh</command> script manual.</para>
-      <para>The <command>centos-art.sh</command> manual contains information on how to use the <command>centos-art.sh</command> script to help you achieve high production levels when you work on The CentOS Project corporate visual identity inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>).  If you are looking for a comprehensive, task-oriented guide for understanding how The CentOS Project corporate visual identity is produced, this is the manual for you.</para>
+      <para>The <command>centos-art.sh</command> manual contains information on how to use the <command>centos-art.sh</command> script to help you achieve high production levels when you work on The CentOS Project Corporate Visual Identity inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>).  If you are looking for a comprehensive, task-oriented guide for understanding how The CentOS Project corporate visual identity is produced, this is the manual for you.</para>
       <para>This manual discusses the following intermedite topics:</para>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -74,6 +73,8 @@
           <para>The CentOS Corporate Visual Style</para>
         </item>
       </itemize>
+      <para>This manual is organized in the same way of CentOS Artwork Repository directory structure. In the CentOS Artwork Repository we use directories to store conceptual ideas of The CentOS Project Corporate Visual Identity.  For this manual sake, each directory in CentOS Artwork Repository has its own documentation section to describe the related conceptual ideas it is based on.</para>
+      <para>This manual uses Texinfo as base documentation system. The Texinfo documentation structure is controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script.</para>
       <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can find help.</para>
       <menu>
         <menuentry>
@@ -279,405 +280,405 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     </section>
   </node>
   <node>
-    <nodename>Filesystem</nodename>
+    <nodename>Directories</nodename>
     <nodenext>Index</nodenext>
     <nodeprev>Introduction</nodeprev>
     <nodeup>Top</nodeup>
     <chapter>
-      <title>Repository File System</title>
-      <para><indexterm index="cp">Repository file system</indexterm>The CentOS Artwork Repsotiroy File System is the place where we organize The CentOS Project Corporate Visual Identity. The CentOS Artwork Repository uses directories to organize files and describe conceptual idea about corporate identity. Such conceptual ideas are explained in each directory related documentation entry.</para>
+      <title>The Repository Directories</title>
+      <para><indexterm index="cp">Repository directories</indexterm>The CentOS Artwork Repository uses directories to organize files and describe conceptual idea about corporate identity. Such conceptual ideas are explained in each directory related documentation entry.</para>
       <para>In this chapter you'll learn what each directory inside The CentOS Artwork Repository is for and so, how you can make use of them. For that purpose, the following list of directories is available for you to explore:</para>
       <menu>
         <menuentry>
-          <menunode>Filesystem branches</menunode>
-          <menutitle>Filesystem branches</menutitle>
+          <menunode>Directories branches</menunode>
+          <menutitle>Directories branches</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem tags</menunode>
-          <menutitle>Filesystem tags</menutitle>
+          <menunode>Directories tags</menunode>
+          <menutitle>Directories tags</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk</menunode>
-          <menutitle>Filesystem trunk</menutitle>
+          <menunode>Directories trunk</menunode>
+          <menutitle>Directories trunk</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity</menunode>
-          <menutitle>Filesystem trunk Identity</menutitle>
+          <menunode>Directories trunk Identity</menunode>
+          <menutitle>Directories trunk Identity</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Brands</menunode>
-          <menutitle>Filesystem trunk Identity Brands</menutitle>
+          <menunode>Directories trunk Identity Brands</menunode>
+          <menutitle>Directories trunk Identity Brands</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Colors</menunode>
-          <menutitle>Filesystem trunk Identity Colors</menutitle>
+          <menunode>Directories trunk Identity Colors</menunode>
+          <menutitle>Directories trunk Identity Colors</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Fonts</menunode>
-          <menutitle>Filesystem trunk Identity Fonts</menutitle>
+          <menunode>Directories trunk Identity Fonts</menunode>
+          <menutitle>Directories trunk Identity Fonts</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Icons</menunode>
-          <menutitle>Filesystem trunk Identity Icons</menutitle>
+          <menunode>Directories trunk Identity Icons</menunode>
+          <menutitle>Directories trunk Identity Icons</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Isolinux</menunode>
-          <menutitle>Filesystem trunk Identity Isolinux</menutitle>
+          <menunode>Directories trunk Identity Isolinux</menunode>
+          <menutitle>Directories trunk Identity Isolinux</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models</menunode>
-          <menutitle>Filesystem trunk Identity Models</menutitle>
+          <menunode>Directories trunk Identity Models</menunode>
+          <menutitle>Directories trunk Identity Models</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Css</menunode>
-          <menutitle>Filesystem trunk Identity Models Css</menutitle>
+          <menunode>Directories trunk Identity Models Css</menunode>
+          <menutitle>Directories trunk Identity Models Css</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Html</menunode>
-          <menutitle>Filesystem trunk Identity Models Html</menutitle>
+          <menunode>Directories trunk Identity Models Html</menunode>
+          <menutitle>Directories trunk Identity Models Html</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Img Promo Web</menunode>
-          <menutitle>Filesystem trunk Identity Models Img Promo Web</menutitle>
+          <menunode>Directories trunk Identity Models Img Promo Web</menunode>
+          <menutitle>Directories trunk Identity Models Img Promo Web</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Tpl</menunode>
-          <menutitle>Filesystem trunk Identity Models Tpl</menutitle>
+          <menunode>Directories trunk Identity Models Tpl</menunode>
+          <menutitle>Directories trunk Identity Models Tpl</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Tpl Brands</menunode>
-          <menutitle>Filesystem trunk Identity Models Tpl Brands</menutitle>
+          <menunode>Directories trunk Identity Models Tpl Brands</menunode>
+          <menutitle>Directories trunk Identity Models Tpl Brands</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Tpl Promo Web</menunode>
-          <menutitle>Filesystem trunk Identity Models Tpl Promo Web</menutitle>
+          <menunode>Directories trunk Identity Models Tpl Promo Web</menunode>
+          <menutitle>Directories trunk Identity Models Tpl Promo Web</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Models Xcf</menunode>
-          <menutitle>Filesystem trunk Identity Models Xcf</menutitle>
+          <menunode>Directories trunk Identity Models Xcf</menunode>
+          <menutitle>Directories trunk Identity Models Xcf</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Release</menunode>
-          <menutitle>Filesystem trunk Identity Release</menutitle>
+          <menunode>Directories trunk Identity Release</menunode>
+          <menutitle>Directories trunk Identity Release</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes</menunode>
-          <menutitle>Filesystem trunk Identity Themes</menutitle>
+          <menunode>Directories trunk Identity Themes</menunode>
+          <menutitle>Directories trunk Identity Themes</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models</menutitle>
+          <menunode>Directories trunk Identity Themes Models</menunode>
+          <menutitle>Directories trunk Identity Themes Models</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Alternative</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Alternative</menutitle>
+          <menunode>Directories trunk Identity Themes Models Alternative</menunode>
+          <menutitle>Directories trunk Identity Themes Models Alternative</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Concept</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Concept</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Concept</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Concept</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Anaconda</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Anaconda</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Anaconda</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Anaconda</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Firstboot</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Firstboot</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Firstboot</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Firstboot</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Gdm</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Gdm</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Gdm</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Gdm</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Grub</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Grub</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Grub</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Grub</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Gsplash</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Gsplash</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Gsplash</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Gsplash</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Kdm</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Kdm</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Kdm</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Kdm</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Ksplash</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Ksplash</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Ksplash</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Ksplash</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Rhgb</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Rhgb</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Rhgb</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Rhgb</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Distro Syslinux</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Distro Syslinux</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro Syslinux</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro Syslinux</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Promo</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Promo</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Promo</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Promo</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Models Default Web</menunode>
-          <menutitle>Filesystem trunk Identity Themes Models Default Web</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Web</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Web</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Flame</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Flame</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Flame</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Flame</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds Img</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds Img</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs Modern Palettes</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs Modern Palettes</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs Modern Palettes</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs Modern Palettes</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs TreeFlower</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs TreeFlower</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs TreeFlower</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs TreeFlower</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</menunode>
-          <menutitle>Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</menutitle>
+          <menunode>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Identity Widgets</menunode>
-          <menutitle>Filesystem trunk Identity Widgets</menutitle>
+          <menunode>Directories trunk Identity Widgets</menunode>
+          <menutitle>Directories trunk Identity Widgets</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales</menunode>
-          <menutitle>Filesystem trunk Locales</menutitle>
+          <menunode>Directories trunk Locales</menunode>
+          <menutitle>Directories trunk Locales</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity</menunode>
-          <menutitle>Filesystem trunk Locales Identity</menutitle>
+          <menunode>Directories trunk Locales Identity</menunode>
+          <menutitle>Directories trunk Locales Identity</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Brands</menunode>
-          <menutitle>Filesystem trunk Locales Identity Brands</menutitle>
+          <menunode>Directories trunk Locales Identity Brands</menunode>
+          <menutitle>Directories trunk Locales Identity Brands</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Brands Tpl</menunode>
-          <menutitle>Filesystem trunk Locales Identity Brands Tpl</menutitle>
+          <menunode>Directories trunk Locales Identity Brands Tpl</menunode>
+          <menutitle>Directories trunk Locales Identity Brands Tpl</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Fonts</menunode>
-          <menutitle>Filesystem trunk Locales Identity Fonts</menutitle>
+          <menunode>Directories trunk Locales Identity Fonts</menunode>
+          <menutitle>Directories trunk Locales Identity Fonts</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Models</menunode>
-          <menutitle>Filesystem trunk Locales Identity Models</menutitle>
+          <menunode>Directories trunk Locales Identity Models</menunode>
+          <menutitle>Directories trunk Locales Identity Models</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Release</menunode>
-          <menutitle>Filesystem trunk Locales Identity Release</menutitle>
+          <menunode>Directories trunk Locales Identity Release</menunode>
+          <menutitle>Directories trunk Locales Identity Release</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Themes</menunode>
-          <menutitle>Filesystem trunk Locales Identity Themes</menutitle>
+          <menunode>Directories trunk Locales Identity Themes</menunode>
+          <menutitle>Directories trunk Locales Identity Themes</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Themes Backgrounds</menunode>
-          <menutitle>Filesystem trunk Locales Identity Themes Backgrounds</menutitle>
+          <menunode>Directories trunk Locales Identity Themes Backgrounds</menunode>
+          <menutitle>Directories trunk Locales Identity Themes Backgrounds</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Themes Distro Anaconda Progress</menunode>
-          <menutitle>Filesystem trunk Locales Identity Themes Distro Anaconda Progress</menutitle>
+          <menunode>Directories trunk Locales Identity Themes Distro Anaconda Progress</menunode>
+          <menutitle>Directories trunk Locales Identity Themes Distro Anaconda Progress</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Locales Identity Widgets</menunode>
-          <menutitle>Filesystem trunk Locales Identity Widgets</menutitle>
+          <menunode>Directories trunk Locales Identity Widgets</menunode>
+          <menutitle>Directories trunk Locales Identity Widgets</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Manual</menunode>
-          <menutitle>Filesystem trunk Manual</menutitle>
+          <menunode>Directories trunk Manual</menunode>
+          <menutitle>Directories trunk Manual</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Manuals</menunode>
-          <menutitle>Filesystem trunk Manuals</menutitle>
+          <menunode>Directories trunk Manuals</menunode>
+          <menutitle>Directories trunk Manuals</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts</menunode>
-          <menutitle>Filesystem trunk Scripts</menutitle>
+          <menunode>Directories trunk Scripts</menunode>
+          <menutitle>Directories trunk Scripts</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash</menunode>
-          <menutitle>Filesystem trunk Scripts Bash</menutitle>
+          <menunode>Directories trunk Scripts Bash</menunode>
+          <menutitle>Directories trunk Scripts Bash</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Help</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Help</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Help</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Help</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Html</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Html</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Html</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Html</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Identity</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Identity</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Identity</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Identity</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Locale</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Locale</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Locale</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Locale</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Manual</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Manual</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Manual</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Manual</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Path</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Path</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Path</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Path</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Render</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Render</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Render</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Render</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Render Config</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Render Config</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Render Config</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Render Config</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Shell</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Shell</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Shell</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Shell</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Svg</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Svg</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Svg</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Svg</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Verify</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Verify</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Verify</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Verify</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Python</menunode>
-          <menutitle>Filesystem trunk Scripts Python</menutitle>
+          <menunode>Directories trunk Scripts Python</menunode>
+          <menutitle>Directories trunk Scripts Python</menutitle>
           <menucomment></menucomment>
         </menuentry>
       </menu>
     </chapter>
   </node>
   <node>
-    <nodename>Filesystem branches</nodename>
-    <nodenext>Filesystem tags</nodenext>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories branches</nodename>
+    <nodenext>Directories tags</nodenext>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>branches</file> Directory</title>
-      <para><indexterm index="cp">Filesystem branches</indexterm></para>
+      <para><indexterm index="cp">Directories branches</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This directory implements the Subversion's branches concept in a trunk, branches, tags repository structure.</para>
@@ -698,10 +699,10 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <itemize>
           <itemfunction>&bullet;</itemfunction>
           <item>
-            <para>See <xref><xrefnodename>Filesystem tags</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories tags</xrefnodename></xref>.</para>
           </item>
           <item>
-            <para>See <xref><xrefnodename>Filesystem trunk</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
           </item>
           <item>
             <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
@@ -711,13 +712,13 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     </section>
   </node>
   <node>
-    <nodename>Filesystem tags</nodename>
-    <nodenext>Filesystem trunk</nodenext>
-    <nodeprev>Filesystem branches</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories tags</nodename>
+    <nodenext>Directories trunk</nodenext>
+    <nodeprev>Directories branches</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>tags</file> Directory</title>
-      <para><indexterm index="cp">Filesystem tags</indexterm></para>
+      <para><indexterm index="cp">Directories tags</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This directory implements the Subversion's tags concept in a trunk, branches, tags repository structure.</para>
@@ -738,10 +739,10 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <itemize>
           <itemfunction>&bullet;</itemfunction>
           <item>
-            <para>See <xref><xrefnodename>Filesystem branches</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories branches</xrefnodename></xref>.</para>
           </item>
           <item>
-            <para>See <xref><xrefnodename>Filesystem trunk</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
           </item>
           <item>
             <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
@@ -751,13 +752,13 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk</nodename>
-    <nodenext>Filesystem trunk Identity</nodenext>
-    <nodeprev>Filesystem tags</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk</nodename>
+    <nodenext>Directories trunk Identity</nodenext>
+    <nodeprev>Directories tags</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk</indexterm></para>
+      <para><indexterm index="cp">Directories trunk</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This directory implements the Subversion's trunk concept in a trunk, branches, tags repository structure.</para>
@@ -771,28 +772,28 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
             <tableterm><strong>Identity</strong></tableterm>
             <item>
               <para>This section organizes image production in different formats and some non-image formats like XHTML and text files, as well. This is the perfect place to consolidate <emph>The CentOS Artwork SIG</emph>. If you are interested in producing art works for The CentOS Project, this place is for you.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>, for more information.</para>
+              <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Manual</strong></tableterm>
             <item>
               <para>This section organizes the <emph>CentOS Artwork Repository Manual</emph> (i.e., the documentation manual you're reading right now).  If you are interested on improving The CentOS Artwork Repository Manual, in this place you'll find the Texinfo documentation structure you need to work with.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Manual</xrefnodename></xref>, for more information.</para>
+              <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Scripts</strong></tableterm>
             <item>
               <para>This section organizes production of automation scripts specially designed to automate most frequent tasks in the repository (e.g., image rendition, documenting directory structures, translating content, etc.).  If you can't resist the idea of automating repeatable tasks, then take a look here.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Scripts</xrefnodename></xref>, for more information.</para>
+              <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Locales</strong></tableterm>
             <item>
               <para>This section organizes production of translation messages for <emph>Identity</emph>, <emph>Documentation</emph> and <emph>Scripts</emph>. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
-              <para>See <xref><xrefnodename>Filesystem trunk Locales</xrefnodename></xref>, for more information.</para>
+              <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
         </table>
@@ -808,10 +809,10 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <itemize>
           <itemfunction>&bullet;</itemfunction>
           <item>
-            <para>See <xref><xrefnodename>Filesystem branches</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories branches</xrefnodename></xref>.</para>
           </item>
           <item>
-            <para>See <xref><xrefnodename>Filesystem tags</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories tags</xrefnodename></xref>.</para>
           </item>
           <item>
             <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
@@ -821,13 +822,13 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity</nodename>
-    <nodenext>Filesystem trunk Identity Brands</nodenext>
-    <nodeprev>Filesystem trunk</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity</nodename>
+    <nodenext>Directories trunk Identity Brands</nodenext>
+    <nodeprev>Directories trunk</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Identity</file> directory structure implements <emph>The CentOS Project Corporate Identity</emph>.</para>
@@ -847,28 +848,28 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
               <tableterm><strong>The CentOS Brand</strong></tableterm>
               <item>
                 <para>The CentOS Brand is the name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Filesystem trunk Identity Brands</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity Brands</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
               <tableterm><strong>The CentOS Colors</strong></tableterm>
               <item>
                 <para>The CentOS Fonts provides the color information used along The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Filesystem trunk Identity Colors</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity Colors</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
               <tableterm><strong>The CentOS Fonts</strong></tableterm>
               <item>
                 <para>The CentOS Fonts provides the typography information used along The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Filesystem trunk Identity Fonts</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity Fonts</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
               <tableterm><strong>The CentOS Themes</strong></tableterm>
               <item>
                 <para>The CentOS Themes provides structural information and visual style information, as well, used along The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Filesystem trunk Identity Themes</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity Themes</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
           </table>
@@ -914,12 +915,12 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 centos-art render trunk/Identity/Path/To/Dir
 ]]></verbatim>
         <quotation>
-          <para><strong>Warning</strong> If the <command>centos-art</command> command-line is not found in your workstation, it is probably because you haven't prepared it for using The CentOS Artwork Repository yet. See <xref><xrefnodename>Filesystem trunk Scripts Bash Cli Functions Verify</xrefnodename></xref>, for more information.</para>
+          <para><strong>Warning</strong> If the <command>centos-art</command> command-line is not found in your workstation, it is probably because you haven't prepared it for using The CentOS Artwork Repository yet. See <xref><xrefnodename>Directories trunk Scripts Bash Cli Functions Verify</xrefnodename></xref>, for more information.</para>
         </quotation>
         <para>This command takes one design template from the template directory and creates an instance of it in order to apply translation messages on it, if any. Later, using the design template instance, the command renders the final content based on whether the design template instance is a SVG file or a Docbook file. If the design template instace is a SVG file, the final content produced is a PNG image. On the other hand, if the design template instance is a Docbook file, the final content produced is a XHTML file. Final content is stored in the image directory using the design template directory paths as referece. The rendition flow described so far is known as the <emph>base-rendition</emph> flow.</para>
         <para>Besides the base-rendition flow, the <command>centos-art</command> provides the <emph>post-rendition</emph> and <emph>last-rendition</emph> flows.  The post-rendition flow is applied to files produced as result of base-rendition flow under the same directory structure. For example, you can use post-rendition action to convert the PNG base output into different outputs (e.g., JPG, PDF, etc.) before passing to process the next file in the same directory structure.  The last-rendition flow is applied to all files produced as result of both base-rendition and post-rendition flows in the same directory structure, just before passing to process a different directory structure.  For example, the <file>Preview.png</file> image from Ksplash component is made of three images. In order to build the <file>Preview.png</file> image through <command>centos-art</command> we need to wait for all the three images the <file>Preview.png</file> image is made of to be rendered, so we can combine them all together into just one image (i.e., the <file>Preview.png</file> image).  This is something we can't do using post-rendition flow.</para>
         <para>Inside <file>trunk/Identity</file> directory structure, you can find that base-rendition, post-rendition and last-rendition flows can be combined to build <emph>directory-specific</emph> rendition.  The directory-specific rendition exists to automatically process specific renderable directories in very specific ways. Using directory-specific rendition speeds up production of different components like Syslinux, Grub, Gdm, Kdm and Ksplash that require intermediate formats or even several independent files, in order to reach its final construction. Directory-specific rendition is a way to programmatically describe how specific art works are built in and organized inside The CentOS Artwork Repository.  Such descriptions have been added to <command>centos-art</command> command-line to let you produce them all with just one single command, as fast as your machine can be able to handle it.</para>
-        <para>See <xref><xrefnodename>Filesystem trunk Scripts Bash Cli Functions Identity</xrefnodename></xref>, for more information about the <command>identity</command> functionality of <command>centos-art</command> command-line interface.</para>
+        <para>See <xref><xrefnodename>Directories trunk Scripts Bash Cli Functions Identity</xrefnodename></xref>, for more information about the <command>identity</command> functionality of <command>centos-art</command> command-line interface.</para>
       </subsection>
 
       <subsection>
@@ -930,13 +931,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Brands</nodename>
-    <nodenext>Filesystem trunk Identity Colors</nodenext>
-    <nodeprev>Filesystem trunk Identity</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Brands</nodename>
+    <nodenext>Directories trunk Identity Colors</nodenext>
+    <nodeprev>Directories trunk Identity</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Brands</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Brands</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Brands</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -963,13 +964,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Colors</nodename>
-    <nodenext>Filesystem trunk Identity Fonts</nodenext>
-    <nodeprev>Filesystem trunk Identity Brands</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Colors</nodename>
+    <nodenext>Directories trunk Identity Fonts</nodenext>
+    <nodeprev>Directories trunk Identity Brands</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Colors</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Colors</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Colors</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1008,13 +1009,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Fonts</nodename>
-    <nodenext>Filesystem trunk Identity Icons</nodenext>
-    <nodeprev>Filesystem trunk Identity Colors</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Fonts</nodename>
+    <nodenext>Directories trunk Identity Icons</nodenext>
+    <nodeprev>Directories trunk Identity Colors</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Fonts</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Fonts</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Fonts</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize digital typographies used by the CentOS project.</para>
@@ -1059,13 +1060,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Icons</nodename>
-    <nodenext>Filesystem trunk Identity Isolinux</nodenext>
-    <nodeprev>Filesystem trunk Identity Fonts</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Icons</nodename>
+    <nodenext>Directories trunk Identity Isolinux</nodenext>
+    <nodeprev>Directories trunk Identity Fonts</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Icons</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Icons</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Icons</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1092,13 +1093,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Isolinux</nodename>
-    <nodenext>Filesystem trunk Identity Models</nodenext>
-    <nodeprev>Filesystem trunk Identity Icons</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Isolinux</nodename>
+    <nodenext>Directories trunk Identity Models</nodenext>
+    <nodeprev>Directories trunk Identity Icons</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Isolinux</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Isolinux</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Isolinux</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1125,13 +1126,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models</nodename>
-    <nodenext>Filesystem trunk Identity Models Css</nodenext>
-    <nodeprev>Filesystem trunk Identity Isolinux</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models</nodename>
+    <nodenext>Directories trunk Identity Models Css</nodenext>
+    <nodeprev>Directories trunk Identity Isolinux</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize design models.</para>
@@ -1150,23 +1151,23 @@ centos-art render trunk/Identity/Path/To/Dir
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Models Html</menunode>
-            <menutitle>Filesystem trunk Identity Models Html</menutitle>
+            <menunode>Directories trunk Identity Models Html</menunode>
+            <menutitle>Directories trunk Identity Models Html</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Models Css</menunode>
-            <menutitle>Filesystem trunk Identity Models Css</menutitle>
+            <menunode>Directories trunk Identity Models Css</menunode>
+            <menutitle>Directories trunk Identity Models Css</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Models Tpl</menunode>
-            <menutitle>Filesystem trunk Identity Models Tpl</menutitle>
+            <menunode>Directories trunk Identity Models Tpl</menunode>
+            <menutitle>Directories trunk Identity Models Tpl</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Models Xcf</menunode>
-            <menutitle>Filesystem trunk Identity Models Xcf</menutitle>
+            <menunode>Directories trunk Identity Models Xcf</menunode>
+            <menutitle>Directories trunk Identity Models Xcf</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -1174,13 +1175,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Css</nodename>
-    <nodenext>Filesystem trunk Identity Models Html</nodenext>
-    <nodeprev>Filesystem trunk Identity Models</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Css</nodename>
+    <nodenext>Directories trunk Identity Models Html</nodenext>
+    <nodeprev>Directories trunk Identity Models</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Css</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Css</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Css</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This directory exists to provide common style sheets (CSS) definitions to HTML design models.</para>
@@ -1214,13 +1215,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Html</nodename>
-    <nodenext>Filesystem trunk Identity Models Img Promo Web</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Css</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Html</nodename>
+    <nodenext>Directories trunk Identity Models Img Promo Web</nodenext>
+    <nodeprev>Directories trunk Identity Models Css</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Html</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Html</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Html</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1259,13 +1260,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Img Promo Web</nodename>
-    <nodenext>Filesystem trunk Identity Models Tpl</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Html</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Img Promo Web</nodename>
+    <nodenext>Directories trunk Identity Models Tpl</nodenext>
+    <nodeprev>Directories trunk Identity Models Html</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Img/Promo/Web</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Img Promo Web</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Img Promo Web</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1300,8 +1301,8 @@ centos-art render trunk/Identity/Path/To/Dir
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Models Tpl Promo Web</menunode>
-            <menutitle>Filesystem trunk Identity Models Tpl Promo Web</menutitle>
+            <menunode>Directories trunk Identity Models Tpl Promo Web</menunode>
+            <menutitle>Directories trunk Identity Models Tpl Promo Web</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -1309,13 +1310,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Tpl</nodename>
-    <nodenext>Filesystem trunk Identity Models Tpl Brands</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Img Promo Web</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Tpl</nodename>
+    <nodenext>Directories trunk Identity Models Tpl Brands</nodenext>
+    <nodeprev>Directories trunk Identity Models Img Promo Web</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Tpl</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Tpl</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Tpl</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1354,13 +1355,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Tpl Brands</nodename>
-    <nodenext>Filesystem trunk Identity Models Tpl Promo Web</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Tpl</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Tpl Brands</nodename>
+    <nodenext>Directories trunk Identity Models Tpl Promo Web</nodenext>
+    <nodeprev>Directories trunk Identity Models Tpl</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Tpl/Brands</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Tpl Brands</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Tpl Brands</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1399,13 +1400,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Tpl Promo Web</nodename>
-    <nodenext>Filesystem trunk Identity Models Xcf</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Tpl Brands</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Tpl Promo Web</nodename>
+    <nodenext>Directories trunk Identity Models Xcf</nodenext>
+    <nodeprev>Directories trunk Identity Models Tpl Brands</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Tpl/Promo/Web</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Tpl Promo Web</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Tpl Promo Web</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>Organize scalable vector graphics (svg) to help describe the CentOS web environment.</para>
@@ -1427,7 +1428,7 @@ centos-art render trunk/Identity/Path/To/Dir
             <para>High degree of customization to change the visual style of all web applications with few changes (e.g, updating just two or three images plus common style sheet [CSS] definitions).</para>
           </item>
         </itemize>
-        <para>The CentOS project is attached to a monolithic corporate visual identity (see <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>), where all visual manifestations have one unique name and one unique visual style. This way, the CentOS web environment has one unique name (the CentOS brand) and one unique visual style (the CentOS default theme) for all its visual manifestations, the web applications in this case.</para>
+        <para>The CentOS project is attached to a monolithic corporate visual identity (see <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>), where all visual manifestations have one unique name and one unique visual style. This way, the CentOS web environment has one unique name (the CentOS brand) and one unique visual style (the CentOS default theme) for all its visual manifestations, the web applications in this case.</para>
         <para>Since a maintainance point of view, achiving the one unique visual style inside CentOS web environment is not a simple task. The CentOS web environment is built upon many different web applications which have different visual styles and different internal ways to customize their own visual styles. For example: MoinMoin, the web application used to support the CentOS wiki (<uref><urefurl>http://wiki.centos.org/</urefurl></uref>) is highly customizable but Mailman (in its 2.x.x serie), the web application used to support the CentOS mailing list, doesn't support<footnote><para>The theme support of Mailman may be introduced in mailman-3.x.x release.</para></footnote> a customization system that separates presentation from logic, similar to that used by MoinMoin.</para>
         <para>This visual style diversity complicates our goal of one unique visual style for all web applications. So, if we want one unique visual style for all web applications used, it is innevitable to modify the web applications in order to implement the CentOS one unique visual style customization in them. Direct modification of upstream applications is not convenient because upstream applications come with their one visual style and administrators take the risk of loosing all customization changes the next time the application be updated (since not all upstream web applications, used in CentOS web environment, separate presentation from logic).</para>
         <para>To solve the &ldquo;one unique visual style&rdquo; issue, installation and actualization of web applications &mdash;used inside CentOS web environment&mdash; need to be independent from upstream web applications development line; in a way that CentOS web environment administrators can install and update web applications freely without risk of loosing the one unique visual style customization changes.</para>
@@ -1653,8 +1654,8 @@ priority=10
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Models Img Promo Web</menunode>
-            <menutitle>Filesystem trunk Identity Models Img Promo Web</menutitle>
+            <menunode>Directories trunk Identity Models Img Promo Web</menunode>
+            <menutitle>Directories trunk Identity Models Img Promo Web</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -1662,13 +1663,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Models Xcf</nodename>
-    <nodenext>Filesystem trunk Identity Release</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Tpl Promo Web</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Models Xcf</nodename>
+    <nodenext>Directories trunk Identity Release</nodenext>
+    <nodeprev>Directories trunk Identity Models Tpl Promo Web</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Xcf</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Models Xcf</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Models Xcf</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1707,13 +1708,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Release</nodename>
-    <nodenext>Filesystem trunk Identity Themes</nodenext>
-    <nodeprev>Filesystem trunk Identity Models Xcf</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Release</nodename>
+    <nodenext>Directories trunk Identity Themes</nodenext>
+    <nodeprev>Directories trunk Identity Models Xcf</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Release</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Release</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Release</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1740,13 +1741,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models</nodenext>
-    <nodeprev>Filesystem trunk Identity Release</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes</nodename>
+    <nodenext>Directories trunk Identity Themes Models</nodenext>
+    <nodeprev>Directories trunk Identity Release</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Identity/Themes/</file> directory exists to organize production of CentOS themes.</para>
@@ -1761,13 +1762,13 @@ priority=10
         <para>In this location themes are organized in &ldquo;Models&rdquo; &mdash;to store common information&mdash; and &ldquo;Motifs&rdquo;&mdash;to store unique information.  At rendering time, both motifs and models are combined to produce the final CentOS themes.  CentOS themes can be tagged as &ldquo;Default&rdquo; or &ldquo;Alternative&rdquo;. CentOS themes are maintained by CentOS community.</para>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Models</menunode>
-            <menutitle>Filesystem trunk Identity Themes Models</menutitle>
+            <menunode>Directories trunk Identity Themes Models</menunode>
+            <menutitle>Directories trunk Identity Themes Models</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Motifs</menunode>
-            <menutitle>Filesystem trunk Identity Themes Motifs</menutitle>
+            <menunode>Directories trunk Identity Themes Motifs</menunode>
+            <menutitle>Directories trunk Identity Themes Motifs</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -1777,13 +1778,13 @@ priority=10
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity</menunode>
-            <menutitle>Filesystem trunk Identity</menutitle>
+            <menunode>Directories trunk Identity</menunode>
+            <menutitle>Directories trunk Identity</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk</menunode>
-            <menutitle>Filesystem trunk</menutitle>
+            <menunode>Directories trunk</menunode>
+            <menutitle>Directories trunk</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -1791,13 +1792,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Alternative</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models</nodename>
+    <nodenext>Directories trunk Identity Themes Models Alternative</nodenext>
+    <nodeprev>Directories trunk Identity Themes</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1816,7 +1817,7 @@ priority=10
 
       <subsection>
         <title>Usage</title>
-        <para>Inside the framework location above, you find theme models organized by name. You can add your own theme models to the structure by adding a directory to the list. By default you have the `See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default</xrefnodename><xrefinfoname>Default</xrefinfoname></xref>,' and `See <xref><xrefnodename>Filesystem trunk Identity Themes Models Alternative</xrefnodename><xrefinfoname>Alternative</xrefinfoname></xref>,' ready-to-use theme models.</para>
+        <para>Inside the framework location above, you find theme models organized by name. You can add your own theme models to the structure by adding a directory to the list. By default you have the `See <xref><xrefnodename>Directories trunk Identity Themes Models Default</xrefnodename><xrefinfoname>Default</xrefinfoname></xref>,' and `See <xref><xrefnodename>Directories trunk Identity Themes Models Alternative</xrefnodename><xrefinfoname>Alternative</xrefinfoname></xref>,' ready-to-use theme models.</para>
       </subsection>
 
       <subsection>
@@ -1827,13 +1828,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Alternative</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Alternative</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Alternative</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Alternative</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Alternative</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1867,13 +1868,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Concept</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Alternative</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Concept</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Alternative</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>Default Design Models for CentOS Themes provide design models for the following components:</para>
@@ -1881,19 +1882,19 @@ priority=10
           <tableitem>
             <tableterm><strong>Distribution</strong></tableterm>
             <item>
-              <para>Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm, Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro</xrefnodename></xref>, for more information.</para>
+              <para>Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm, Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.). See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Concept</strong></tableterm>
             <item>
-              <para>Design models to illustrate Artistic Motifs Concepts. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Concept</xrefnodename></xref>, for more information.</para>
+              <para>Design models to illustrate Artistic Motifs Concepts. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Concept</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Promotion</strong></tableterm>
             <item>
-              <para>Design models for CentOS Promotion stuff (e.g., installation media, posters, etc.). See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Promo</xrefnodename></xref>, for more information.</para>
+              <para>Design models for CentOS Promotion stuff (e.g., installation media, posters, etc.). See <xref><xrefnodename>Directories trunk Identity Themes Models Default Promo</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
         </table>
@@ -1902,7 +1903,7 @@ priority=10
       <subsection>
         <title>Description</title>
         <para>This directory implements the concept of <emph>Default Design Models for CentOS Themes</emph>.  Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
-        <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to. See <xref><xrefnodename>Filesystem trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information.</para>
+        <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to. See <xref><xrefnodename>Directories trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information.</para>
       </subsection>
 
       <subsection>
@@ -1913,13 +1914,13 @@ priority=10
           <tableitem>
             <tableterm><strong>How to remark the internal differences visually?</strong></tableterm>
             <item>
-              <para>Merge both The CentOS Project Release Schema into The CentOS Project Trademark to build The CentOS Project Release Trademark.  The CentOS Project Release Trademark remarks two things: first, it remarks the image is from The CentOS Project and second, it remarks which major release of CentOS Distribution does the image belongs to. See <xref><xrefnodename>Filesystem trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information on how to develop and improve The CentOS Project Brand.</para>
+              <para>Merge both The CentOS Project Release Schema into The CentOS Project Trademark to build The CentOS Project Release Trademark.  The CentOS Project Release Trademark remarks two things: first, it remarks the image is from The CentOS Project and second, it remarks which major release of CentOS Distribution does the image belongs to. See <xref><xrefnodename>Directories trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information on how to develop and improve The CentOS Project Brand.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>How to remark the visual resemblance?</strong></tableterm>
             <item>
-              <para>Use a common artistic motifs as background for all CentOS Distribution images.  See <xref><xrefnodename>Filesystem trunk Identity Themes Motifs</xrefnodename></xref>, for more information.</para>
+              <para>Use a common artistic motifs as background for all CentOS Distribution images.  See <xref><xrefnodename>Directories trunk Identity Themes Motifs</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
@@ -1939,26 +1940,26 @@ priority=10
         <itemize>
           <itemfunction>&bullet;</itemfunction>
           <item>
-            <para><xref><xrefnodename>Filesystem trunk Identity Themes</xrefnodename></xref></para>
+            <para><xref><xrefnodename>Directories trunk Identity Themes</xrefnodename></xref></para>
           </item>
           <item>
-            <para><xref><xrefnodename>Filesystem trunk Identity Themes Models</xrefnodename></xref></para>
+            <para><xref><xrefnodename>Directories trunk Identity Themes Models</xrefnodename></xref></para>
           </item>
           <item>
-            <para><xref><xrefnodename>Filesystem trunk Identity Themes Motifs</xrefnodename></xref></para>
+            <para><xref><xrefnodename>Directories trunk Identity Themes Motifs</xrefnodename></xref></para>
           </item>
         </itemize>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Concept</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Concept</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Concept</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Concept</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Concept</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1997,13 +1998,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Anaconda</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Concept</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Anaconda</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Concept</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This directory provides design models to produce image files for the following CentOS Distribution components:</para>
@@ -2011,55 +2012,55 @@ priority=10
           <tableitem>
             <tableterm><strong>Syslinux</strong></tableterm>
             <item>
-              <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Syslinux</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Syslinux</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Anaconda</strong></tableterm>
             <item>
-              <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Anaconda</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Anaconda</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Firstboot</strong></tableterm>
             <item>
-              <para>Contains design models for the first boot program used to configure the maching onece installed.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Firstboot</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for the first boot program used to configure the maching onece installed.  See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Firstboot</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Rhgb</strong></tableterm>
             <item>
-              <para>Contains design models for CentOS Graphical Boot, the program used to show the boot process from Grub to Display Manager.  See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Rhgb</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for CentOS Graphical Boot, the program used to show the boot process from Grub to Display Manager.  See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Rhgb</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Gdm</strong></tableterm>
             <item>
-              <para>Contains design models for GNOME Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Gdm</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for GNOME Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Gdm</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Kdm</strong></tableterm>
             <item>
-              <para>Contains design models for KDE Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for KDE Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Grub</strong></tableterm>
             <item>
-              <para>Contains design models for GRUB (Grand Unified Boot Loader), the program used to boot the machine into an operating system. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for GRUB (Grand Unified Boot Loader), the program used to boot the machine into an operating system. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Gsplash</strong></tableterm>
             <item>
-              <para>Contains design models for GNOME splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Gsplash</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for GNOME splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Gsplash</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><strong>Ksplash</strong></tableterm>
             <item>
-              <para>Contains design models for KDE splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Filesystem trunk Identity Themes Models Default Distro Ksplash</xrefnodename></xref>, for more information.</para>
+              <para>Contains design models for KDE splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Ksplash</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
         </table>
@@ -2083,8 +2084,8 @@ priority=10
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Models Default</menunode>
-            <menutitle>Filesystem trunk Identity Themes Models Default</menutitle>
+            <menunode>Directories trunk Identity Themes Models Default</menunode>
+            <menutitle>Directories trunk Identity Themes Models Default</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -2092,13 +2093,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Anaconda</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Firstboot</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Anaconda</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Firstboot</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Anaconda</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Anaconda</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Anaconda</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2125,13 +2126,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Firstboot</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Gdm</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Anaconda</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Firstboot</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Gdm</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Anaconda</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Firstboot</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Firstboot</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Firstboot</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2170,13 +2171,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Gdm</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Grub</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Firstboot</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Gdm</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Grub</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Firstboot</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Gdm</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Gdm</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Gdm</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2215,13 +2216,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Grub</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Gsplash</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Gdm</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Grub</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Gsplash</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Gdm</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Grub</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Grub</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Grub</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2260,13 +2261,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Gsplash</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Kdm</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Grub</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Gsplash</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Kdm</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Grub</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Gsplash</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Gsplash</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Gsplash</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2305,13 +2306,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Kdm</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Ksplash</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Gsplash</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Kdm</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Ksplash</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Gsplash</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Kdm</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Kdm</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Kdm</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2350,13 +2351,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Ksplash</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Rhgb</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Kdm</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Ksplash</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Rhgb</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Kdm</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Ksplash</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Ksplash</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Ksplash</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2395,13 +2396,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Rhgb</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Distro Syslinux</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Ksplash</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Rhgb</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Syslinux</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Ksplash</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Rhgb</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Rhgb</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Rhgb</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2440,13 +2441,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Distro Syslinux</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Promo</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Rhgb</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Distro Syslinux</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Promo</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Rhgb</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Syslinux</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Distro Syslinux</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Syslinux</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2485,13 +2486,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Promo</nodename>
-    <nodenext>Filesystem trunk Identity Themes Models Default Web</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Distro Syslinux</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Promo</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Web</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Syslinux</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Promo</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Promo</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Promo</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2531,13 +2532,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Models Default Web</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Promo</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Models Default Web</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Promo</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Web</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Models Default Web</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Web</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2577,13 +2578,13 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Flame</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Models Default Web</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Flame</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Web</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Identity/Themes/Motifs</file> directory exists to:</para>
@@ -2671,18 +2672,18 @@ priority=10
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes</menunode>
-            <menutitle>Filesystem trunk Identity Themes</menutitle>
+            <menunode>Directories trunk Identity Themes</menunode>
+            <menutitle>Directories trunk Identity Themes</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity</menunode>
-            <menutitle>Filesystem trunk Identity</menutitle>
+            <menunode>Directories trunk Identity</menunode>
+            <menutitle>Directories trunk Identity</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk</menunode>
-            <menutitle>Filesystem trunk</menutitle>
+            <menunode>Directories trunk</menunode>
+            <menutitle>Directories trunk</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -2690,22 +2691,22 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Flame</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Flame</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Flame</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Flame</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Flame</indexterm></para>
       <subsection>
         <title>Goals</title>
-        <para>This section describes the steps we followed to construct the <emph>Flame</emph> artistic motif. This section may be useful for anyone interested in reproducing the <emph>Flame</emph> artistic motif, or in creating new artistic motifs for The CentOS Project corporate visual identity (see <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>).</para>
+        <para>This section describes the steps we followed to construct the <emph>Flame</emph> artistic motif. This section may be useful for anyone interested in reproducing the <emph>Flame</emph> artistic motif, or in creating new artistic motifs for The CentOS Project corporate visual identity (see <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>).</para>
       </subsection>
 
       <subsection>
         <title>Description</title>
         <para>The <emph>Flame</emph> artistic motif was built using the flame filter of Gimp 2.2 in CentOS 5.5.</para>
-        <para>The flame filter of Gimp can produce stunning, randomly generated fractal patterns. The flame filter of Gimp gives us a great oportunity to reduce the time used to produce new artistic motifs, because of its &ldquo;randomly generated&rdquo; nature. Once the artistic motif be created, it is propagated through all visual manifestations of CentOS Project corporate visual identity using the <file>centos-art.sh</file> script (see <xref><xrefnodename>Filesystem trunk Scripts Bash</xrefnodename></xref>) inside the CentOS Artwork Repository.</para>
+        <para>The flame filter of Gimp can produce stunning, randomly generated fractal patterns. The flame filter of Gimp gives us a great oportunity to reduce the time used to produce new artistic motifs, because of its &ldquo;randomly generated&rdquo; nature. Once the artistic motif be created, it is propagated through all visual manifestations of CentOS Project corporate visual identity using the <file>centos-art.sh</file> script (see <xref><xrefnodename>Directories trunk Scripts Bash</xrefnodename></xref>) inside the CentOS Artwork Repository.</para>
         <para>To set the time intervals between each new visual style production, we could reuse the CentOS distribution major release schema.  I.e., we could produce a new visual style, every two years, based on a new &ldquo;randomly generated&rdquo; flame pattern, and publish the whole corporate visual identity (i.e., distribution stuff, promotion stuff, websites stuff, etc.) with the new major release of CentOS distribution all together at once.</para>
         <para>Producing a new visual style is not one day's task. Once we have defined the artistic motif, we need to propagate it through all visual manifestations of The CentOS Project corporate visual identity. When we say that we could produce one new visual style every two years we really mean: to work two years long in order to propagate a new visual style to all visual manifestations of The CentOS Project corporate visual identity.</para>
         <para>Obviously, in order to propagate one visual style to all different visual manifestations of The CentOS Project corporate visual identity, we need first to know which the visual manifestations are.  To define which visual manifestations are inside The CentOS Project corporate visual identity is one of the goals the CentOS Artwork Repository and this documentation manual are both aimed to satisfy.</para>
@@ -2762,23 +2763,23 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Motifs</menunode>
-            <menutitle>Filesystem trunk Identity Themes Motifs</menutitle>
+            <menunode>Directories trunk Identity Themes Motifs</menunode>
+            <menutitle>Directories trunk Identity Themes Motifs</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes</menunode>
-            <menutitle>Filesystem trunk Identity Themes</menutitle>
+            <menunode>Directories trunk Identity Themes</menunode>
+            <menutitle>Directories trunk Identity Themes</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity</menunode>
-            <menutitle>Filesystem trunk Identity</menutitle>
+            <menunode>Directories trunk Identity</menunode>
+            <menutitle>Directories trunk Identity</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk</menunode>
-            <menutitle>Filesystem trunk</menutitle>
+            <menunode>Directories trunk</menunode>
+            <menutitle>Directories trunk</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -2786,13 +2787,13 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern Backgrounds</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Flame</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern Backgrounds</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Flame</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern</indexterm></para>
       <subsection>
         <title>Presentation</title>
       </subsection>
@@ -2819,13 +2820,13 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern Backgrounds</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern Backgrounds</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern Backgrounds Img</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern/Backgrounds</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern Backgrounds</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern Backgrounds</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2878,33 +2879,33 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</menunode>
-            <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</menutitle>
+            <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds Img</menunode>
+            <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds Img</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</menunode>
-            <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</menutitle>
+            <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</menunode>
+            <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</menutitle>
             <menucomment></menucomment>
           </menuentry>
           <menuentry>
-            <menunode>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</menunode>
-            <menutitle>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</menutitle>
+            <menunode>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</menunode>
+            <menutitle>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Translations Identity Themes Backgrounds::) - --></menucomment>
+<!-- Removed(* Directories trunk Translations Identity Themes Backgrounds::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern Backgrounds</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern Backgrounds Img</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern Backgrounds</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern/Backgrounds/Img</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern Backgrounds Img</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2932,13 +2933,13 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern Backgrounds Img</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern Backgrounds Img</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern/Backgrounds/Tpl</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -2966,13 +2967,13 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern Backgrounds Tpl</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern Backgrounds Tpl</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern/Backgrounds/Xcf</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3006,13 +3007,13 @@ trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs Modern Palettes</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern Backgrounds Xcf</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs Modern Palettes</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern Backgrounds Xcf</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern/Distro/Anaconda/Progress</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3071,13 +3072,13 @@ centos-art render --identity</example>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs Modern Palettes</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs TreeFlower</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs Modern Palettes</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs TreeFlower</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/Modern/Palettes</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs Modern Palettes</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs Modern Palettes</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3105,13 +3106,13 @@ centos-art render --identity</example>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs TreeFlower</nodename>
-    <nodenext>Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs Modern Palettes</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs TreeFlower</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs Modern Palettes</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/TreeFlower</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs TreeFlower</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs TreeFlower</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3138,13 +3139,13 @@ centos-art render --identity</example>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</nodename>
-    <nodenext>Filesystem trunk Identity Widgets</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs TreeFlower</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodename>
+    <nodenext>Directories trunk Identity Widgets</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs TreeFlower</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs TreeFlower Backgrounds</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to orgnize backgrounds of <emph>TreeFlower</emph> artistic motif.</para>
@@ -3371,13 +3372,13 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Identity Widgets</nodename>
-    <nodenext>Filesystem trunk Locales</nodenext>
-    <nodeprev>Filesystem trunk Identity Themes Motifs TreeFlower Backgrounds</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Identity Widgets</nodename>
+    <nodenext>Directories trunk Locales</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Widgets</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Identity Widgets</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Identity Widgets</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3404,14 +3405,14 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales</nodename>
-    <nodenext>Filesystem trunk Locales Identity</nodenext>
-    <nodeprev>Filesystem trunk Identity Widgets</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales</nodename>
+    <nodenext>Directories trunk Locales Identity</nodenext>
+    <nodeprev>Directories trunk Identity Widgets</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales</indexterm>The <file>trunk/Locales</file> directory exists to store the translation messages used to produce content in different languages.</para>
-      <para>Translation messages are organized using the directory structure of the component being translated. For example, if we want to provide translation messages for <file>trunk/Manuals/Filesystem</file>, then the <file>trunk/Locales/Manuals/Filesystem</file> directory needs to be created.</para>
+      <para><indexterm index="cp">Directories trunk Locales</indexterm>The <file>trunk/Locales</file> directory exists to store the translation messages used to produce content in different languages.</para>
+      <para>Translation messages are organized using the directory structure of the component being translated. For example, if we want to provide translation messages for <file>trunk/Manuals/Repository</file>, then the <file>trunk/Locales/Manuals/Repository</file> directory needs to be created.</para>
       <para>Once the locale directory exists for the component we want to provide translation messages for, it is necessary to create the translation files where translation messages are. The translation files follows the concepts of <command>xml2po</command> and GNU <command>gettext</command> tools.</para>
       <para>The basic translation process is as follow: first, translatable strings are extracted from files and a portable object template (.pot) is created or updated with the information. Using the portable object template, a portable object (.po) is created or updated for translator to locale the messages retrived.  Finally, a machine object (.mo) is created from portable object to sotore the translated messages.</para>
       <para>Inside the repository there are two ways to retrive translatable strings from files. The first one is through <command>xml2po</command> command and the second through <command>xgettext</command> command. The <command>xml2po</command> is used to retrive translatable strings from XML files (e.g., Scalable Vector Graphics, DocBook, etc.) and the <command>xgettext</command> command is used to retrive translatable strings from shell scripts files (e.g., the files that make the <command>centos-art.sh</command> command-line interface).</para>
@@ -3420,21 +3421,21 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
       <para>Automation of localization tasks is achived through the <code>locale</code> functionality of command-line interface.</para>
       <menu>
         <menuentry>
-          <menunode>Filesystem trunk Scripts Bash Cli Functions Locale</menunode>
-          <menutitle>Filesystem trunk Scripts Bash Cli Functions Locale</menutitle>
+          <menunode>Directories trunk Scripts Bash Cli Functions Locale</menunode>
+          <menutitle>Directories trunk Scripts Bash Cli Functions Locale</menutitle>
           <menucomment></menucomment>
         </menuentry>
       </menu>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity</nodename>
-    <nodenext>Filesystem trunk Locales Identity Brands</nodenext>
-    <nodeprev>Filesystem trunk Locales</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity</nodename>
+    <nodenext>Directories trunk Locales Identity Brands</nodenext>
+    <nodeprev>Directories trunk Locales</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3468,15 +3469,15 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Filesystem trunk Translations Identity Brands::) - -->
-<!--  Removed(* Filesystem trunk Translations Identity Fonts::) - -->
-<!--  Removed(* Filesystem trunk Translations Identity Models::) - -->
-<!--  Removed(* Filesystem trunk Translations Identity Release::) - -->
-<!--  Removed(* Filesystem trunk Translations Identity Themes::) - -->
-<!--  Removed(* Filesystem trunk Translations Identity Widgets::) - -->
+<!--  Removed(* Directories trunk Translations Identity Brands::) - -->
+<!--  Removed(* Directories trunk Translations Identity Fonts::) - -->
+<!--  Removed(* Directories trunk Translations Identity Models::) - -->
+<!--  Removed(* Directories trunk Translations Identity Release::) - -->
+<!--  Removed(* Directories trunk Translations Identity Themes::) - -->
+<!--  Removed(* Directories trunk Translations Identity Widgets::) - -->
           <menuentry>
-            <menunode>Filesystem trunk Identity</menunode>
-            <menutitle>Filesystem trunk Identity</menutitle>
+            <menunode>Directories trunk Identity</menunode>
+            <menutitle>Directories trunk Identity</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -3484,13 +3485,13 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Brands</nodename>
-    <nodenext>Filesystem trunk Locales Identity Brands Tpl</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Brands</nodename>
+    <nodenext>Directories trunk Locales Identity Brands Tpl</nodenext>
+    <nodeprev>Directories trunk Locales Identity</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Brands</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Brands</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Brands</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3552,10 +3553,10 @@ centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Filesystem trunk Translations Identity Brands Tpl::) - -->
+<!--  Removed(* Directories trunk Translations Identity Brands Tpl::) - -->
           <menuentry>
-            <menunode>Filesystem trunk Identity Brands</menunode>
-            <menutitle>Filesystem trunk Identity Brands</menutitle>
+            <menunode>Directories trunk Identity Brands</menunode>
+            <menutitle>Directories trunk Identity Brands</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -3563,13 +3564,13 @@ centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Brands Tpl</nodename>
-    <nodenext>Filesystem trunk Locales Identity Fonts</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Brands</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Brands Tpl</nodename>
+    <nodenext>Directories trunk Locales Identity Fonts</nodenext>
+    <nodeprev>Directories trunk Locales Identity Brands</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Brands/Tpl</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Brands Tpl</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Brands Tpl</indexterm></para>
       <subsection>
         <title>Goals</title>
       </subsection>
@@ -3590,13 +3591,13 @@ centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Fonts</nodename>
-    <nodenext>Filesystem trunk Locales Identity Models</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Brands Tpl</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Fonts</nodename>
+    <nodenext>Directories trunk Locales Identity Models</nodenext>
+    <nodeprev>Directories trunk Locales Identity Brands Tpl</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Fonts</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Fonts</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Fonts</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize fonts translation files.</para>
@@ -3612,7 +3613,7 @@ s!font-style:normal!font-style:italic!
 ]]></verbatim>
         <para>Inside <file>trunk/Translations/Fonts</file>, there is one translation file for each font preview image you want to produce. This way, we create one translation file for each font-family we use somewhere inside CentOS visual identity.</para>
         <quotation>
-          <para><strong>Important</strong> Do not create translation files for font-families not used somewhere inside CentOS visual identity. The identity of font entry (see <xref><xrefnodename>Filesystem trunk Identity Fonts</xrefnodename></xref>) is used as reference when someone needs to know which font-families are allowed to use inside CentOS visual identity.</para>
+          <para><strong>Important</strong> Do not create translation files for font-families not used somewhere inside CentOS visual identity. The identity of font entry (see <xref><xrefnodename>Directories trunk Identity Fonts</xrefnodename></xref>) is used as reference when someone needs to know which font-families are allowed to use inside CentOS visual identity.</para>
         </quotation>
 
         <subsubsection>
@@ -3653,8 +3654,8 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Identity Fonts</menunode>
-            <menutitle>Filesystem trunk Identity Fonts</menutitle>
+            <menunode>Directories trunk Identity Fonts</menunode>
+            <menutitle>Directories trunk Identity Fonts</menutitle>
             <menucomment></menucomment>
           </menuentry>
         </menu>
@@ -3662,13 +3663,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Models</nodename>
-    <nodenext>Filesystem trunk Locales Identity Release</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Fonts</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Models</nodename>
+    <nodenext>Directories trunk Locales Identity Release</nodenext>
+    <nodeprev>Directories trunk Locales Identity Fonts</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Models</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Models</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Models</indexterm></para>
       <subsection>
         <title>Goals</title>
       </subsection>
@@ -3689,13 +3690,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Release</nodename>
-    <nodenext>Filesystem trunk Locales Identity Themes</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Models</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Release</nodename>
+    <nodenext>Directories trunk Locales Identity Themes</nodenext>
+    <nodeprev>Directories trunk Locales Identity Models</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Release</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Release</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Release</indexterm></para>
       <subsection>
         <title>Goals</title>
       </subsection>
@@ -3716,13 +3717,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Themes</nodename>
-    <nodenext>Filesystem trunk Locales Identity Themes Backgrounds</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Release</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Themes</nodename>
+    <nodenext>Directories trunk Locales Identity Themes Backgrounds</nodenext>
+    <nodeprev>Directories trunk Locales Identity Release</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Themes</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Themes</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Themes</indexterm></para>
       <subsection>
         <title>Goals</title>
       </subsection>
@@ -3743,13 +3744,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Themes Backgrounds</nodename>
-    <nodenext>Filesystem trunk Locales Identity Themes Distro Anaconda Progress</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Themes</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Themes Backgrounds</nodename>
+    <nodenext>Directories trunk Locales Identity Themes Distro Anaconda Progress</nodenext>
+    <nodeprev>Directories trunk Locales Identity Themes</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Themes/Backgrounds</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Themes Backgrounds</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Themes Backgrounds</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3788,13 +3789,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Themes Distro Anaconda Progress</nodename>
-    <nodenext>Filesystem trunk Locales Identity Widgets</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Themes Backgrounds</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Themes Distro Anaconda Progress</nodename>
+    <nodenext>Directories trunk Locales Identity Widgets</nodenext>
+    <nodeprev>Directories trunk Locales Identity Themes Backgrounds</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Themes/Distro/Anaconda/Progress</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Themes Distro Anaconda Progress</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Themes Distro Anaconda Progress</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3866,7 +3867,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
         <itemize>
           <itemfunction>&bullet;</itemfunction>
           <item>
-            <para>See <xref><xrefnodename>Filesystem trunk Identity Themes Motifs Modern Distro Anaconda Progress</xrefnodename></xref>.</para>
+            <para>See <xref><xrefnodename>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</xrefnodename></xref>.</para>
           </item>
         </itemize>
       </subsection>
@@ -3882,13 +3883,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Locales Identity Widgets</nodename>
-    <nodenext>Filesystem trunk Manual</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Themes Distro Anaconda Progress</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Locales Identity Widgets</nodename>
+    <nodenext>Directories trunk Manual</nodenext>
+    <nodeprev>Directories trunk Locales Identity Themes Distro Anaconda Progress</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales/Identity/Widgets</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Locales Identity Widgets</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Locales Identity Widgets</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3922,19 +3923,19 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Filesystem trunk Translations Identity Widgets::) - -->
+<!--  Removed(* Directories trunk Translations Identity Widgets::) - -->
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Manual</nodename>
-    <nodenext>Filesystem trunk Manuals</nodenext>
-    <nodeprev>Filesystem trunk Locales Identity Widgets</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Manual</nodename>
+    <nodenext>Directories trunk Manuals</nodenext>
+    <nodeprev>Directories trunk Locales Identity Widgets</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Manual</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Manual</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Manual</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -3973,13 +3974,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Manuals</nodename>
-    <nodenext>Filesystem trunk Scripts</nodenext>
-    <nodeprev>Filesystem trunk Manual</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Manuals</nodename>
+    <nodenext>Directories trunk Scripts</nodenext>
+    <nodeprev>Directories trunk Manual</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Manuals</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Manuals</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Manuals</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -4018,13 +4019,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts</nodename>
-    <nodenext>Filesystem trunk Scripts Bash</nodenext>
-    <nodeprev>Filesystem trunk Manuals</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts</nodename>
+    <nodenext>Directories trunk Scripts Bash</nodenext>
+    <nodeprev>Directories trunk Manuals</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts</file> directory exists to:</para>
@@ -4064,13 +4065,13 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli</nodenext>
-    <nodeprev>Filesystem trunk Scripts</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli</nodenext>
+    <nodeprev>Directories trunk Scripts</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash</file> directory exists to organize the trunk development line of <file>centos-art.sh</file> automation script.  The <file>centos-art.sh</file> script standardizes frequent tasks inside your working copy of CentOS Artwork Repository.</para>
@@ -4171,34 +4172,34 @@ centos-art arg1 --arg2=val2 --arg3=val3
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts</menunode>
-            <menutitle>Filesystem trunk Scripts</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Functions::) - -->
-<!-- Removed(* Filesystem trunk Scripts Bash Locale::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Functions::) - -->
+<!-- Removed(* Directories trunk Scripts Bash Locale::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions</nodenext>
+    <nodeprev>Directories trunk Scripts Bash</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli</indexterm></para>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Help</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Help</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash/Functions</file> directory exists to organize <file>centos-art.sh</file> specific functionalities.</para>
@@ -5142,15 +5143,15 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <title>Specific functions</title>
           <para>The following specific functions of <file>centos-art.sh</file> script, are available for you to use:</para>
           <menu>
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Html::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Locale::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Manual::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Path::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Render::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Render Config::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Shell::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Svg::) - -->
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Verify::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Html::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Locale::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Manual::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Path::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Render::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Render Config::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Shell::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Svg::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Verify::) - -->
           </menu>
         </subsubsection>
       </subsection>
@@ -5159,23 +5160,23 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts Bash</menunode>
-            <menutitle>Filesystem trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts Bash</menunode>
+            <menutitle>Directories trunk Scripts Bash</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Locale::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Locale::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Help</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Html</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Help</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Html</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Help</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Help</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Help</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5214,13 +5215,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Html</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Identity</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Help</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Html</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Identity</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Help</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Html</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Html</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Html</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5259,13 +5260,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Identity</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Locale</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Html</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Identity</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Locale</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Html</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Identity</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Identity</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Identity</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5304,13 +5305,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Locale</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Manual</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Identity</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Locale</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Manual</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Identity</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Locale</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Locale</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Locale</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5378,13 +5379,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Manual</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Path</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Locale</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Manual</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Path</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Locale</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Manual</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Manual</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Manual</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5423,13 +5424,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Path</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Render</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Manual</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Path</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Render</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Manual</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Path</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Path</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Path</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>path</code> functiontionality.  The <code>path</code> functionality standardizes movement, syncronization, branching, tagging, and general file maintainance inside the repository.</para>
@@ -5443,9 +5444,9 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <title>Repository layout</title>
           <para>The repository layout describes organization of files and directories inside the repository. The repository layout provides the standard backend required for automation scripts to work correctly. If such layout changes unexpectedly, automation scripts may confuse themselves and stop doing what we expect from them to do.</para>
           <para>As convenction, inside CentOS Artwork Repository, we organize files and directories related to CentOS corporate visual identity under three top level directories named: <file>trunk/</file>, <file>branches/</file>, and <file>tags/</file>.</para>
-          <para>The <file>trunk/</file> directory (see <xref><xrefnodename>Filesystem trunk</xrefnodename></xref>) organizes the main development line of CentOS corporate visual identity. Inside <file>trunk/</file> directory structure, the CentOS corporate visual identity concepts are implemented using directories.  There is one directory level for each relevant concept inside the repository. The <file>trunk/</file> directory structure is mainly used to perform development tasks related to CentOS corporate visual identity.</para>
+          <para>The <file>trunk/</file> directory (see <xref><xrefnodename>Directories trunk</xrefnodename></xref>) organizes the main development line of CentOS corporate visual identity. Inside <file>trunk/</file> directory structure, the CentOS corporate visual identity concepts are implemented using directories.  There is one directory level for each relevant concept inside the repository. The <file>trunk/</file> directory structure is mainly used to perform development tasks related to CentOS corporate visual identity.</para>
           <para>The <file>branches/</file> directory () oranizes parallel development lines to <file>trunk/</file> directory. The <file>branches/</file> directory is used to set points in time where develpment lines are devided one from another taking separte and idependent lives that share a common past from the point they were devided on. The <file>branches/</file> directory is mainly used to perform quality assurance tasks related to CentOS corporate visual identity.</para>
-          <para>The <file>tags/</file> directory (see <xref><xrefnodename>Filesystem tags</xrefnodename></xref>) organizes parallel frozen lines to <file>branches/</file> directory.  The parallel frozen lines are immutable, nothing change inside them once they has been created.  The <file>tags/</file> directory is mainly used to publish final releases of CentOS corporate visual identity.</para>
+          <para>The <file>tags/</file> directory (see <xref><xrefnodename>Directories tags</xrefnodename></xref>) organizes parallel frozen lines to <file>branches/</file> directory.  The parallel frozen lines are immutable, nothing change inside them once they has been created.  The <file>tags/</file> directory is mainly used to publish final releases of CentOS corporate visual identity.</para>
           <para>The CentOS Artwork Repository layout is firmly grounded on a Subversion base.  Subversion (<uref><urefurl>http://subversion.tigris.org</urefurl></uref>) is a version control system, which allows you to keep old versions of files and directories (usually source code), keep a log of who, when, and why changes occurred, etc., like CVS, RCS or SCCS.  Subversion keeps a single copy of the master sources.  This copy  is called the source &ldquo;repository&rdquo;; it contains all the information to permit extracting previous versions of those files at any time.</para>
         </subsubsection>
 
@@ -5500,7 +5501,7 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <title>What is the right place to store it?</title>
           <para>Occasionly, you may find that new corporate visual identity components need to be added to the repository. If that is your case, the first question you need to ask yourself, before start to create directories blindly all over, is: What is the right place to store it?</para>
           <para>The CentOS Community different free support vains (see: <uref><urefurl>http://wiki.centos.org/GettingHelp</urefurl></uref>) are the best place to find answers to your question, but going there with hands empty is not good idea. It may give the impression you don't really care about. Instead, consider the following suggestions to find your own comprehension and so, make your propositions based on it.</para>
-          <para>When we are looking for the correct place to store new files, to bear in mind the corporate visual identity structure used inside the CentOS Artwork Repository (see <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>) would be probaly the best advice we could offer, the rest is just matter of choosing appropriate names.  To illustrate this desition process let's consider the <file>trunk/Identity/Themes/Motifs/TreeFlower</file> directory as example. It is the trunk development line of <emph>TreeFlower</emph> artistic motif. Artistic motifs are considered part of themes, which in turn are considered part of CentOS corporate visual identity.</para>
+          <para>When we are looking for the correct place to store new files, to bear in mind the corporate visual identity structure used inside the CentOS Artwork Repository (see <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>) would be probaly the best advice we could offer, the rest is just matter of choosing appropriate names.  To illustrate this desition process let's consider the <file>trunk/Identity/Themes/Motifs/TreeFlower</file> directory as example. It is the trunk development line of <emph>TreeFlower</emph> artistic motif. Artistic motifs are considered part of themes, which in turn are considered part of CentOS corporate visual identity.</para>
           <para>When building parent directory structures, you may find that reaching an acceptable location may take some time, and as it uses to happen most of time; once you've find it, that may be not a definite solution.  There are many concepts that you need to play with, in order to find a result that match the conceptual idea you try to implement in the new directory location. To know which these concepts are, split the location in words and read its documentation entry from less specific to more specific.</para>
           <para>For example, the <file>trunk/Identity/Themes/Motifs/TreeFlower</file> location evolved through several months of contant work and there is no certain it won't change in the future, even it fixes quite well the concept we are trying to implement.  The concepts used in <file>trunk/Identity/Themes/Distro/Motifs/TreeFlower</file> location are described in the following commands, respectively:</para>
           <verbatim xml:space="preserve"><![CDATA[
@@ -5536,23 +5537,23 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts Bash</menunode>
-            <menutitle>Filesystem trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts Bash</menunode>
+            <menutitle>Directories trunk Scripts Bash</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Render</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Render Config</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Path</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Render</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Render Config</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Path</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Render</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Render</indexterm>The <code>render</code> functionality exists to produce both identity and translation files on different levels of information (i.e., different languages, release numbers, architectures, etc.).</para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Render</indexterm>The <code>render</code> functionality exists to produce both identity and translation files on different levels of information (i.e., different languages, release numbers, architectures, etc.).</para>
       <para>The <code>render</code> functionality relies on &ldquo;renderable directory structures&rdquo; to produce files. Renderable directory structures can be either &ldquo;identity directory structures&rdquo; or &ldquo;translation directory structures&rdquo; with special directories inside.</para>
 
       <subsection>
@@ -5590,7 +5591,7 @@ trunk/Identity/Path/To/Dir  <-- Renderable identity directory structure.
                 </quotation>
                 <para>When a renderable identity directory structure is configured to produce image-based content, <file>centos-art.sh</file> produces <acronym><acronymword>PNG</acronymword><acronymdesc>Portable Network Graphics</acronymdesc></acronym> files with the <code>.png</code> extension. Once the base image format has been produced, it is possible for <file>centos-art.sh</file> to use it in order to automatically create other image formats that may be needed (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions Render Config) &mdash;).</para>
                 <para>Inside the working copy, you can find an example of &ldquo;design template without translation&rdquo; configuration at <file>trunk/Identity/Models/</file>.</para>
-                <para>See <xref><xrefnodename>Filesystem trunk Identity</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
@@ -5917,19 +5918,19 @@ function render_loadConfig {
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Filesystem trunk Scripts Bash Functions Render Config::) - -->
+<!--  Removed(* Directories trunk Scripts Bash Functions Render Config::) - -->
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Render Config</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Shell</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Render</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Render Config</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Shell</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Render</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Render/Config</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Render Config</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Render Config</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash/Config</file> directory exists to oraganize pre-rendering configuration scripts.</para>
@@ -6045,24 +6046,24 @@ ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts Bash</menunode>
-            <menutitle>Filesystem trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts Bash</menunode>
+            <menutitle>Directories trunk Scripts Bash</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Functions::) - -->
-<!-- Removed(* Filesystem trunk Scripts Bash Functions Render::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Functions::) - -->
+<!-- Removed(* Directories trunk Scripts Bash Functions Render::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Shell</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Svg</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Render Config</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Shell</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Svg</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Render Config</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Shell</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Shell</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Shell</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>shell</code> functionality of <file>centos-art.sh</file> script.</para>
@@ -6176,23 +6177,23 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts Bash</menunode>
-            <menutitle>Filesystem trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts Bash</menunode>
+            <menutitle>Directories trunk Scripts Bash</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Svg</nodename>
-    <nodenext>Filesystem trunk Scripts Bash Cli Functions Verify</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Shell</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Svg</nodename>
+    <nodenext>Directories trunk Scripts Bash Cli Functions Verify</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Shell</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Svg</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Svg</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Svg</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>svg</code> functionality of <file>centos-art.sh</file> script.</para>
@@ -6331,23 +6332,23 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts Bash</menunode>
-            <menutitle>Filesystem trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts Bash</menunode>
+            <menutitle>Directories trunk Scripts Bash</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Bash Cli Functions Verify</nodename>
-    <nodenext>Filesystem trunk Scripts Python</nodenext>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Svg</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Bash Cli Functions Verify</nodename>
+    <nodenext>Directories trunk Scripts Python</nodenext>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Svg</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Bash/Cli/Functions/Verify</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Bash Cli Functions Verify</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Verify</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <file>centos-art.sh</file> script <samp>verify</samp> functionality.  The <samp>verify</samp> functionality of <file>centos-art.sh</file> script helps you to verify the workstation configuration you are planning to use as host for your working copy of CentOS Artwork Repository.</para>
@@ -6471,22 +6472,22 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Filesystem trunk Scripts Bash</menunode>
-            <menutitle>Filesystem trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts Bash</menunode>
+            <menutitle>Directories trunk Scripts Bash</menutitle>
             <menucomment>
-<!-- Removed(* Filesystem trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Filesystem trunk Scripts Python</nodename>
-    <nodeprev>Filesystem trunk Scripts Bash Cli Functions Verify</nodeprev>
-    <nodeup>Filesystem</nodeup>
+    <nodename>Directories trunk Scripts Python</nodename>
+    <nodeprev>Directories trunk Scripts Bash Cli Functions Verify</nodeprev>
+    <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts/Python</file> Directory</title>
-      <para><indexterm index="cp">Filesystem trunk Scripts Python</indexterm></para>
+      <para><indexterm index="cp">Directories trunk Scripts Python</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -6528,7 +6529,7 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
   <node>
     <nodename>Index</nodename>
     <nodenext>List of Figures</nodenext>
-    <nodeprev>Filesystem</nodeprev>
+    <nodeprev>Directories</nodeprev>
     <nodeup>Top</nodeup>
     <unnumbered>
       <title>Index</title>
