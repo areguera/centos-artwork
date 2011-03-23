@@ -37,7 +37,7 @@ function help {
 
     # Define file name for documentation manual. This is the file used
     # to initiate the structure of documentation manual.
-    MANUAL_NAME=${TEXTDOMAIN}
+    MANUAL_NAME=repository
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build texinfo
