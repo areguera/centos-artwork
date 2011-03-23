@@ -110,10 +110,10 @@ function cli_printMessage {
     'AsToKnowMoreLine' )
         # This option receives the output of bash's caller built-in as
         # message value and produces the documentation entry from it.
-        MESSAGE=$(dirname "$(echo $MESSAGE | cut -d ' ' -f2-)")
+        MESSAGE="trunk/Scripts/Functions/$MESSAGE"
         cli_printMessage '-' 'AsSeparatorLine'
         cli_printMessage "`gettext "To know more, run the following command"`:"
-        cli_printMessage "centos-art manual --read='$MESSAGE'"
+        cli_printMessage "centos-art help $MESSAGE"
         cli_printMessage '-' 'AsSeparatorLine'
         exit # <-- ATTENTION: Do not remove this line. We use this
              #                option as convenction to end script
