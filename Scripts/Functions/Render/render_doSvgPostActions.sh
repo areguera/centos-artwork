@@ -33,6 +33,13 @@ function render_doSvgPostActions {
     # post-rendition actions.
     local -a POSTACTIONS
 
+    # Write copyright information to all PNG images produced as result
+    # of base-rendition action. The copyright information is written
+    # in the image datastream using the PNG commentary tag.
+    if [[ $TEMPLATE =~ 'trunk/Identity/.+\.svg$' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="renderComment: $(cli_getCopyrightInfo)" 
+    fi
+
     # Execute SVG directory-specific post-rendition actions to the
     # list of post actions and last actions. This is required in order
     # to provide a predictable way of producing content inside the
@@ -45,7 +52,7 @@ function render_doSvgPostActions {
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux:-floyd'
-    elif [[ $TEMPLATE =~ "Grub" ]];then
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Grub/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderGrub'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderGrub:-floyd'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
@@ -92,6 +99,10 @@ function render_doSvgPostActions {
 
             renderBrands )
                 render_doBrands 
+                ;;
+
+            renderComment:* )
+                render_mogrifyCommentToPng
                 ;;
 
             groupSimilarFiles:* )
