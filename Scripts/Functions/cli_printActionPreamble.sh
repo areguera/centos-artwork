@@ -115,7 +115,7 @@ function cli_printActionPreamble {
         cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
     elif [[ $POSITIVE == '' ]] &&  [[ $NEGATIVE != '' ]];then
         cli_printMessage "$NEGATIVE" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
 }

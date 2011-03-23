@@ -35,7 +35,7 @@ function locale_editMessages {
         FILES=$(cli_getFilesList "${WORKDIR}" ".*/messages\.po")
     else
         cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Set action preamble.

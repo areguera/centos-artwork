@@ -55,7 +55,7 @@ function cli_getRepoTLDir {
         esac
     else
         cli_printMessage "${FUNCNAME}: `eval_gettext "The location \\\`\\\$LOCATION' is not valid."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Print location.

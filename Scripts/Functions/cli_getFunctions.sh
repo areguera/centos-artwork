@@ -48,7 +48,7 @@ function cli_getFunctions {
         else
 
             cli_printMessage "`eval_gettext "The \\\$FILE hasn't execution rights."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+            cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
 
         fi
 

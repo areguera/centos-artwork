@@ -71,7 +71,7 @@ function help_deleteEntry {
     # the working copy again.
     svn del ${ENTRIES} --quiet
     if [[ $? -ne 0 ]];then
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Print separator line.

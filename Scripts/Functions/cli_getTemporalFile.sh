@@ -37,7 +37,7 @@ function cli_getTemporalFile {
     # value.
     if [[ "$NAME" == '' ]];then
         cli_printMessage "${FUNCNAME}: `gettext "First argument cannot be empty."`"
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Define source location where temporal files will be stored.

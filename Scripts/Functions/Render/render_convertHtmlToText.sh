@@ -61,7 +61,7 @@ function render_convertHtml2Text {
 
     else
         cli_printMessage "`gettext "No way to convert from HTML to plain-text found."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
 }

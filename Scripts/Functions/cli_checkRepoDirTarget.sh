@@ -49,7 +49,7 @@ function cli_checkRepoDirTarget {
         # entry. We don't use existent locations as target.  So, print
         # a message and stop script execution.
         cli_printMessage "`eval_gettext "The location \\\`\\\$FLAG_TO' already exists."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
 
     else
 
@@ -82,7 +82,7 @@ function cli_checkRepoDirTarget {
         # directory structure.
         if [[ ! ${FLAG_TO} =~ '^.+/(trunk|branches|tags)/Identity/.+$' ]];then
             cli_printMessage "`eval_gettext "cannot create \\\`\\\$FLAG_TO': It isn't an identity directory structure."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
         fi
     fi
 

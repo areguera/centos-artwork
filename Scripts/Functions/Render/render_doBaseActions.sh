@@ -110,7 +110,7 @@ function render_doBaseActions {
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
-           | sed -r 's!/trunk/(Identity/)!/trunk/Locales/\1!')/$(cli_getCurrentLocale).po
+           | sed -r 's!/trunk/(Identity/)!/trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
@@ -216,7 +216,7 @@ function render_doBaseActions {
 
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine' 
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine' 
         fi
 
         # Remove template instance. 

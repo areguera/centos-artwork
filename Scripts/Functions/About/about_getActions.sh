@@ -71,7 +71,7 @@ function about_getActions {
         less $ACTIONVAL
     else
         cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
 }

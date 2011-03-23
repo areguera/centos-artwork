@@ -43,7 +43,7 @@ function render_doGrub {
         OPTION=$(echo -n $OPTION | cut -d'=' -f1)
         if [[ "$OPTION" =~ "-(mapfile|verbose)" ]];then
             cli_printMessage "`eval_gettext "The \\\$OPTION option is already used."`"
-            cli_printMessage "$(caller)" "AsToKnowMoreLine"
+            cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
         fi
     done
 

@@ -32,7 +32,7 @@ function help_searchIndex {
     # as default value for index-search.
     if [[ "$FLAG_FILTER" == '.+' ]];then
         cli_printMessage "`gettext "Use the \\\`--filter' option to define the search pattern."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Print action message.

@@ -119,7 +119,7 @@ function help {
             eval $ACTIONNAM
         else
             cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
         fi
 
         # Commit changes from working copy to central repository only.

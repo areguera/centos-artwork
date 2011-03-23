@@ -88,7 +88,7 @@ function svg_getActions {
         eval $ACTIONNAM
     else
         cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Syncronize changes between the working copy and the central

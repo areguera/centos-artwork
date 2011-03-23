@@ -41,7 +41,7 @@ function cli_checkFiles {
     # least one argument should be passed.
     if [[ $# -lt 1 ]];then
         cli_printMessage "${FUNCNAME}: `gettext "You need to provide one argument at least."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
     fi
 
     for FILE in $FILES;do
@@ -121,7 +121,7 @@ function cli_checkFiles {
     # normal flow.
     if [[ "$MESSAGE" != '' ]];then
         cli_printMessage "$MESSAGE" "AsErrorLine"
-        cli_printMessage "$(caller)" "AsToKnowMoreLine"
+        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
     fi
 
 }

@@ -39,7 +39,7 @@ function cli_getRepoParallelDirs {
         BOND="$ACTIONVAL"
     else
         cli_printMessage "${FUNCNAME}: `gettext "The bond string is required."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Define repository top level directory.

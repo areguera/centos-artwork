@@ -78,7 +78,7 @@ function render_doDm {
     # pre-rendition configuration script.
     if [[ "$RESOLUTIONS" == '' ]];then
         cli_printMessage "`gettext "There is no resolution information to process."`" 'AsErrorLine'
-        cli_printMessage $(caller) "AsToKnowMoreLine"
+        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
     fi
 
     # Define source files using absolute paths.

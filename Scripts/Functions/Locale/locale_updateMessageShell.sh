@@ -41,7 +41,7 @@ function locale_updateMessageShell {
         FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.sh")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Set action preamble.

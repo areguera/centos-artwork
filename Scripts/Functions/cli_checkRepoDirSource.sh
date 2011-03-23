@@ -61,7 +61,7 @@ function cli_checkRepoDirSource {
             ACTIONVAL=$(pwd)
         else
             cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
         fi
 
         # Remove directory from the directory stack.
@@ -78,7 +78,7 @@ function cli_checkRepoDirSource {
             ACTIONVAL=$(pwd)/$(basename "$ACTIONVAL")
         else
             cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-            cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
         fi
 
         # Remove directory from the directory stack.
@@ -91,7 +91,7 @@ function cli_checkRepoDirSource {
         # is an existent working copy or valid url. So, print a
         # message and stop script execution.
         cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-        cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
 
     fi
 

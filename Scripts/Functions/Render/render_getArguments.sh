@@ -68,7 +68,7 @@ function render_getArguments {
                 FLAG_RELEASEVER="$2"
                 if [[ ! $FLAG_RELEASEVER =~ $(cli_getPathComponent '--release-pattern') ]];then
                     cli_printMessage "`gettext "The release version provided is not supported."`" 'AsErrorLine'
-                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                    cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
                 fi
                 shift 2
                 ;;
@@ -77,7 +77,7 @@ function render_getArguments {
                 FLAG_BASEARCH="$2"
                 if [[ ! $FLAG_BASEARCH =~ $(cli_getPathComponent '--architecture-pattern') ]];then
                     cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
-                    cli_printMessage "$(caller)" 'AsToKnowMoreLine'
+                    cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
                 fi
                 shift 2
                 ;;
