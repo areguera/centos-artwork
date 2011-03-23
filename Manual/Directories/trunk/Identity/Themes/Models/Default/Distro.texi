@@ -1,0 +1,106 @@
+@subsection Goals
+
+This directory provides design models to produce image files for the
+following CentOS Distribution components:
+
+@table @strong
+@item Syslinux
+Contains design models for syslinux, the program used to boot the
+CentOS Distribution installation media. @xref{Directories trunk
+Identity Themes Models Default Distro Syslinux}, for more information.
+
+@item Anaconda  
+Contains design models for Anaconda, the program used to install
+CentOS Distribution.  @xref{Directories trunk Identity Themes Models
+Default Distro Anaconda}, for more information.
+
+@item Firstboot  
+Contains design models for the first boot program used to configure
+the maching onece installed.  @xref{Directories trunk Identity Themes
+Models Default Distro Firstboot}, for more information.
+
+@item Rhgb
+Contains design models for CentOS Graphical Boot, the program used to
+show the boot process from Grub to Display Manager.  @xref{Directories
+trunk Identity Themes Models Default Distro Rhgb}, for more
+information.
+
+@item Gdm  
+Contains design models for GNOME Display Manager, the program used to
+log into the manchine once installed and configured. @xref{Directories
+trunk Identity Themes Models Default Distro Gdm}, for more
+information.
+
+@item Kdm  
+Contains design models for KDE Display Manager, the program used to
+log into the manchine once installed and configured. @xref{Directories
+trunk Identity Themes Models Default Distro Kdm}, for more
+information.
+
+@item Grub 
+Contains design models for GRUB (Grand Unified Boot Loader), the
+program used to boot the machine into an operating system.
+@xref{Directories trunk Identity Themes Models Default Distro Kdm}, for
+more information.
+
+@item Gsplash 
+Contains design models for GNOME splash, the program used to show the
+progress information while user's graphical session is loading.
+@xref{Directories trunk Identity Themes Models Default Distro Gsplash},
+for more information.
+
+@item Ksplash  
+Contains design models for KDE splash, the program used to show the
+progress information while user's graphical session is loading.
+@xref{Directories trunk Identity Themes Models Default Distro Ksplash},
+for more information.
+@end table
+@subsection Description
+
+The CentOS Distribution visual style is controlled by image files.
+These image files are packaged inside The CentOS Distribution and made
+visible once such packages are installed and executed. The way to go
+for changing The CentOS Distribution visual style is changing all
+those image files to add the desired visual style first and later,
+repackage them to make them available inside the final iso files of
+CentOS Distribution.
+
+@subsection Usage
+
+This directory provides organizationl structure to store default
+design models for CentOS Themes of CentOS Distribution and so it
+should be considered to be used.
+
+When a new component is added to CentOS Distribution, this is the
+directory you need to go for specifying design models for image files
+inside such component. 
+
+The procedure to follow is creatig a directory for each component
+using its very same name (e.g., the directory @file{Anaconda} stores
+image files for Anaconda component, the installer program). Inside the
+directory, you need to create one scalable vector graphic for each
+image file inside the component you want to produce images for. This,
+in order to set image dimensions, image file-name, position of
+trademarks in the final image, translation markers and whatever common
+information you need to have specified in them when rendered by
+@command{centos-art} script.
+
+Sometimes, between major releases, image files inside packages can be
+added, removed or just change their names. In order to describe such
+image files variations, the design models directory structure is
+organized in the same way the file variations are introduced (i.e.,
+through The CentOS Project Release Schema).  So, each major release of
+CentOS Distribution does have its own design model directory structure
+in this directory.
+
+When a whole package is removed from one or all CentOS Distribution
+major releases, the design models directory structure releated to it
+is no longer used.  However it could be very useful for historical
+reasons.  Also, someone could feel motivated enough to keep himself
+documenting it or supporting it for whatever reason.
+
+@subsection See also
+
+@menu
+* Directories trunk Identity Themes Models Default::
+@end menu

@@ -1,0 +1,327 @@
+@subsection Goals
+
+This section exists to organize files related to @code{path}
+functiontionality.  The @code{path} functionality standardizes
+movement, syncronization, branching, tagging, and general file
+maintainance inside the repository. 
+
+@subsection Description
+
+@emph{''CentOS like trees, has roots, trunk, branches, leaves and
+flowers.  Day by day they work together in freedom, ruled by the laws
+of nature and open standards, to show the beauty of its existence.''}
+
+@subsubsection Repository layout
+
+The repository layout describes organization of files and directories
+inside the repository. The repository layout provides the standard
+backend required for automation scripts to work correctly. If such
+layout changes unexpectedly, automation scripts may confuse themselves
+and stop doing what we expect from them to do.
+
+As convenction, inside CentOS Artwork Repository, we organize files
+and directories related to CentOS corporate visual identity under
+three top level directories named: @file{trunk/}, @file{branches/},
+and @file{tags/}. 
+
+The @file{trunk/} directory (@pxref{Directories trunk}) organizes the main
+development line of CentOS corporate visual identity. Inside
+@file{trunk/} directory structure, the CentOS corporate visual
+identity concepts are implemented using directories.  There is one
+directory level for each relevant concept inside the repository. The
+@file{trunk/} directory structure is mainly used to perform
+development tasks related to CentOS corporate visual identity.
+
+The @file{branches/} directory () oranizes
+parallel development lines to @file{trunk/} directory. The
+@file{branches/} directory is used to set points in time where
+develpment lines are devided one from another taking separte and
+idependent lives that share a common past from the point they were
+devided on. The @file{branches/} directory is mainly used to perform
+quality assurance tasks related to CentOS corporate visual identity.
+
+The @file{tags/} directory (@pxref{Directories tags}) organizes parallel frozen
+lines to @file{branches/} directory.  The parallel frozen lines are
+immutable, nothing change inside them once they has been created.  The
+@file{tags/} directory is mainly used to publish final releases of
+CentOS corporate visual identity.
+
+The CentOS Artwork Repository layout is firmly grounded on a
+Subversion base.  Subversion (@url{http://subversion.tigris.org}) is a
+version control system, which allows you to keep old versions of files
+and directories (usually source code), keep a log of who, when, and
+why changes occurred, etc., like CVS, RCS or SCCS.  Subversion keeps a
+single copy of the master sources.  This copy  is called the source
+``repository''; it contains all the information to permit extracting
+previous versions of those files at any time.
+
+@subsubsection Repository name convenctions
+
+Repository name convenctions help us to maintain consistency of names
+inside the repository.
+
+Repository name convenctions are applied to files and directories
+inside the repository layout. As convenction, inside the repository
+layout, file names are all written in lowercase
+(@samp{01-welcome.png}, @samp{splash.png}, @samp{anaconda_header.png},
+etc.) and directory names are all written capitalized (e.g.,
+@samp{Identity}, @samp{Themes}, @samp{Motifs}, @samp{TreeFlower},
+etc.).
+
+Repository name convenctions are implemented inside the
+@code{cli_getRepoName} function of @file{centos-art.sh} script. With
+@code{cli_getRepoName} function we reduce the amount of commands and
+convenctions to remember, concentrating them in just one single place
+to look for fixes and improvements.
+
+@subsubsection Repository work flow
+
+Repository work flow describes the steps and time intervals used to
+produce CentOS corporate visual identity inside CentOS Artwork
+Repository.  
+
+To illustrate repository work flow let's consider themes' development
+cycle. 
+
+Initially, we start working themes on their trunk development line
+(e.g., @file{trunk/Identity/Themes/Motifs/TreeFlower/}), here we
+organize information that cannot be produced automatically (i.e.,
+background images, concepts, color information, screenshots, etc.).
+
+Later, when theme trunk development line is considered ``ready'' for
+implementation (e.g.,  all required backgrounds have been designed),
+we create a branch for it (e.g.,
+@file{branches/Identity/Themes/Motifs/TreeFlower/1/}).  Once the
+branch has been created, we forget that branch and continue working
+the trunk development line while others (e.g., an artwork quality
+assurance team) test the new branch for tunning it up. 
+
+Once the branch has been tunned up, and considered ``ready'' for
+release, it is freezed under @file{tags/} directory (e.g.,
+@file{tags/Identity/Themes/Motifs/TreeFower/1.0/}) for packagers,
+webmasters, promoters, and anyone who needs images from that CentOS
+theme the tag was created for.
+
+Both branches and tags, inside CentOS Artwork Repository, use
+numerical values to identify themselves under the same location.
+Branches start at one (i.e., @samp{1}) and increment one unit for each
+branch created from the same trunk development line.  Tags start at
+zero (i.e., @samp{0}) and increment one unit for each tag created from
+the same branch development line.
+
+@quotation
+@strong{Convenction} Do not freeze trunk development lines using tags
+directly.  If you think you need to freeze a trunk development line,
+create a branch for it and then freeze that branch instead.
+@end quotation
+
+The trunk development line may introduce problems we cannot see
+immediatly. Certainly, the high changable nature of trunk development
+line complicates finding and fixing such problems. On the other hand,
+the branched development lines provide a more predictable area where
+only fixes/corrections to current content are commited up to
+repository. 
+
+If others find and fix bugs inside the branched development line, we
+could merge such changes/experiences back to trunk development line
+(not visversa) in order for future branches, created from trunk, to
+benefit.
+
+Time intervals used to create branches and tags may vary, just as
+different needs may arrive. For example, consider the release schema
+of CentOS distribution: one major release every 2 years, security
+updates every 6 months, support for 7 years long. Each time a CentOS
+distribution is released, specially if it is a major release, there is
+a theme need in order to cover CentOS distribution artwork
+requirements. At this point, is where CentOS Artwork Repository comes
+up to scene. 
+
+Before releasing a new major release of CentOS distribution we create
+a branch for one of several theme development lines available inside
+the CentOS Artwork Repository, perform quality assurance on it, and
+later, freeze that branch using tags. Once a the theme branch has been
+frozen (under @file{tags/} directory), CentOS Packagers (the persons
+whom build CentOS distribution) can use that frozen branch as source
+location to fulfill CentOS distribution artwork needs. The same
+applies to CentOS Webmasters (the persons whom build CentOS websites),
+and any other visual manifestation required by the project.
+
+@subsubsection Parallel directories
+
+Inside CentOS Artwork Repository, parallel directories are simple
+directory entries built from a common parent directory and placed in a
+location different to that, the common parent directory is placed on.
+Parallel directories are useful to create branches, tags,
+translations, documentation, pre-rendering configuration script, and
+similar directory structures.
+
+Parallel directories take their structure from one unique parent
+directory. Inside CentOS Artwork Repository, this unique parent
+directory is under @file{trunk/Identity} location.  The
+@file{trunk/Identity} location must be considered the reference for
+whatever information you plan to create inside the repository.
+
+In some circumstances, parallel directories may be created removing
+uncommon information from their paths. Uncommon path information
+refers to those directory levels in the path which are not common for
+other parallel directories.  For example, when rendering
+@file{trunk/Identity/Themes/Motifs/TreeFlower/Distro} directory
+structure, the @file{centos-art.sh} script removes the
+@file{Motifs/TreeFlower/} directory levels from path, in order to
+build the parallel directory used to retrived translations, and
+pre-rendering configuration scripts required by @code{render}
+functionality.
+
+Another example of parallel directory is the documentation structure
+created by @code{manual} functionality. This time,
+@file{centos-art.sh} script uses parallel directory information with
+uncommon directory levels to build the documentation entry required by
+Texinfo documentation system, inside the repository.
+
+Othertimes, parallel directories may add uncommon information to their
+paths. This is the case we use to create branches and tags. When we
+create branches and tags, a numerical identifier is added to parallel
+directory structure path. The place where the numerical identifier is
+set on is relevant to corporate visual identity structure and should
+be carefully considered where it will be.
+
+When one parent directory changes, all their related parallel
+directories need to be changed too. This is required in order for
+parallel directories to retain their relation with the parent
+directory structure.  In the other hand, parallel directories should
+never be modified under no reason but to satisfy the relation to their
+parent directory structure.  Liberal change of parallel directories
+may suppresses the conceptual idea they were initially created for;
+and certainly, things may stop working the way they should do.
+
+@subsubsection Syncronizing path information
+
+Parallel directories are very useful to keep repository organized but
+introduce some complications.  For instance, consider what would
+happen to functionalities like @code{manual} (@samp{trunk Scripts Bash
+Functions Manual}) that rely on parent directory structures to create
+documentation entries (using parallel directory structures) if one of
+those parent directory structures suddenly changes after the
+documentation entry has been already created for it? 
+
+In such cases, functionalities like @code{manual} may confuse
+themselves if path information is not updated to reflect the relation
+with its parent directory.  Such functionalities work with parent
+directory structure as reference; if a parent directory changes, the
+functionalities dont't even note it because they work with the last
+parent directory structure available in the repository, no matter what
+it is. 
+
+In the specific case of documentation (the @code{manual}
+functionality), the problem mentioned above provokes that older parent
+directories, already documented, remain inside documentation directory
+structures as long as you get your hands into the documentation
+directory structure (@file{trunk/Manuals}) and change what must be
+changed to match the new parent directory structure.
+
+There is no immediate way for @code{manual}, and similar
+functionalities that use parent directories as reference, to know when
+and how directory movements take place inside the repository. Such
+information is available only when the file movement itself takes
+place inside the repository. So, is there, at the moment of moving
+files, when we need to syncronize parallel directories with their
+unique parent directory structure.
+
+@quotation
+@strong{Warning} There is not support for URL reference inside
+@file{centos-art.sh} script.  The @file{centos-art.sh} script is
+designed to work with local files inside the working copy only.
+@end quotation
+
+As CentOS Artwork Repository is built over a version control system,
+file movements inside the repository are considered repository
+changes. In order for these repository changes to be versioned, we
+need to, firstly, add changes into the version control system, commit
+them, and later, perform movement actions using version control system
+commands. This configuration makes possible for everyone to know about
+changes details inside the repository; and if needed, revert or update
+them back to a previous revision.
+
+Finally, once all path information has been corrected, it is time to
+take care of information inside the files. For instance, considere
+what would happen if you make a reference to a documentation node, and
+later the documentation node you refere to is deleted. That would make
+Texinfo to produce error messages at export time. So, the
+@file{centos-art.sh} script needs to know when such changes happen, in
+a way they could be noted and handled without producing errors.
+
+@subsubsection What is the right place to store it?
+
+Occasionly, you may find that new corporate visual identity components
+need to be added to the repository. If that is your case, the first
+question you need to ask yourself, before start to create directories
+blindly all over, is: What is the right place to store it?
+
+The CentOS Community different free support vains (see:
+@url{http://wiki.centos.org/GettingHelp}) are the best place to find
+answers to your question, but going there with hands empty is not good
+idea. It may give the impression you don't really care about. Instead,
+consider the following suggestions to find your own comprehension and
+so, make your propositions based on it.
+
+When we are looking for the correct place to store new files, to bear
+in mind the corporate visual identity structure used inside the CentOS
+Artwork Repository (@pxref{Directories trunk Identity}) would be probaly the best
+advice we could offer, the rest is just matter of choosing appropriate
+names.  To illustrate this desition process let's consider the
+@file{trunk/Identity/Themes/Motifs/TreeFlower} directory as example.
+It is the trunk development line of @emph{TreeFlower} artistic motif.
+Artistic motifs are considered part of themes, which in turn are
+considered part of CentOS corporate visual identity.
+
+When building parent directory structures, you may find that reaching
+an acceptable location may take some time, and as it uses to happen
+most of time; once you've find it, that may be not a definite
+solution.  There are many concepts that you need to play with, in
+order to find a result that match the conceptual idea you try to
+implement in the new directory location. To know which these concepts
+are, split the location in words and read its documentation entry from
+less specific to more specific.
+
+For example, the @file{trunk/Identity/Themes/Motifs/TreeFlower}
+location evolved through several months of contant work and there is
+no certain it won't change in the future, even it fixes quite well the
+concept we are trying to implement.  The concepts used in
+@file{trunk/Identity/Themes/Distro/Motifs/TreeFlower} location are
+described in the following commands, respectively:
+
+@verbatim
+centos-art manual --read=turnk/
+centos-art manual --read=turnk/Identity/
+centos-art manual --read=turnk/Identity/Themes/
+centos-art manual --read=turnk/Identity/Themes/Motifs/
+centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
+@end verbatim
+
+Other location concepts can be found similary as we did above, just
+change the location we used above by the one you are trying to know
+concepts for.
+
+@subsection Usage
+
+@table @command
+@item centos-art path --copy='SRC' --to='DST'
+
+Copy @option{SRC} to @option{DST} and schedule @option{DST} for
+addition (with history).  In this command, @file{SRC} and @file{DST}
+are both working copy (WC) entries.
+
+@item centos-art path --delete='SRC'
+
+Delete @option{DST}. In order for this command to work the file or
+directory you intend to delete should be under version control first.
+In this command, @file{SRC} is a working copy (WC) entry.  
+
+@end table
+
+@subsection See also
+
+@menu
+* Directories trunk Scripts Bash::
+@comment --- Removed(* Directories trunk Scripts Bash Functions::) ---
+@end menu
