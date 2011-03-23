@@ -3,10 +3,10 @@ pngtopnm: truecolor+alpha, not interlaced, base filter
 pngtopnm: background {index, gray, red, green, blue} = {0, 0, 0, 0, 0}
 pngtopnm: tRNS chunk (transparency): not present
 pngtopnm: gAMA chunk (image gamma): not present
-pngtopnm: sBIT chunk: present
+pngtopnm: sBIT chunk: not present
 pngtopnm: cHRM chunk: not present
 pngtopnm: PLTE chunk: not present
-pngtopnm: bKGD chunk: not present
+pngtopnm: bKGD chunk: present
 pngtopnm: hIST chunk: not present
 pngtopnm: pHYs chunk: present
 pngtopnm: oFFs chunk: not present
@@ -16,7 +16,7 @@ pngtopnm: sRGB chunk: not present
 pngtopnm: writing a PPM file (maxval=255)
 pnmremap: 16 colors found in colormap
 pnmremap: 0 pixels not matched in color map
-192000 pixels, 88289 bytes, (8.03% compression)
+192000 pixels, 88267 bytes, (8.06% compression)
 #081428=0
 #081c35=1
 #10203d=2
