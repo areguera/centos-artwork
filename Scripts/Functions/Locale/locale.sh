@@ -62,20 +62,24 @@ function locale {
         # copy.
         cli_checkRepoDirSource
 
-        # Define locales base directory where locale directory structures
-        # are stored in.
-        local BASEDIR="$(cli_getRepoTLDir)/Locales"
+        # Define base directory where locale directory structures will
+        # be stored in.
+        BASEDIR="$(cli_getRepoTLDir)/Locales"
 
-        # Define locales work directory. This is the place where
-        # locale files (e.g., .po, .pot, .mo), for a specific parent
-        # directories, are stored in. There is one locale work
-        # directory for each parent directory or said differently,
-        # each parent directory has a parallel directory under
-        # `trunk/Locales' to store its translation messages.
-        local WORKDIR=$(echo ${ACTIONVAL} \
-            | sed -r -e 's!trunk/(Identity|Manuals|Scripts)!trunk/Locales/\1!')
-  
-        # Create work directory, if it doesn't exist.
+        # Define work directory. This is the place where locales
+        # directories will be stored in.
+        WORKDIR=$(echo ${ACTIONVAL} \
+            | sed -r -e "s!.+/trunk/(Identity|Manual|Scripts)!${BASEDIR}/\1!")
+
+        # Add current locale to work directory. This is the place
+        # where parent directories specific translation messages
+        # (e.g., the .po, .pot and .mo files) will be stored in.  The
+        # `locale' functionality creates translation messages for all
+        # translatable files inside the parent directory and never for
+        # individual files inside the same parent directory.
+        WORKDIR=$WORKDIR/$(cli_getCurrentLocale)
+
+        # Create work directory if it doesn't exist.
         if [[ ! -d $WORKDIR ]];then
             mkdir -p $WORKDIR
         fi
