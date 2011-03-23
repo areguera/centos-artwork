@@ -171,8 +171,14 @@ function cli_printMessage {
 
     'AsRegularLine' | * )
         echo "$MESSAGE" \
-            | awk -f ${CLI_BASEDIR}/Styles/output_forTwoColumns.awk \
-            > /dev/stderr
+            | awk 'BEGIN { FS=": " }
+                    { 
+                    if ( $0 ~ /^-+$/ ) 
+                        print $0
+                    else
+                        printf "%-15s\t%s\n", $1, $2 
+                    }
+                    END {}' > /dev/stderr
         ;;
 
     esac
