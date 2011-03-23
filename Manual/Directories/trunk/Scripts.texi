@@ -48,7 +48,7 @@ As convenction, the @file{centos-art.sh} command-line arguments have
 the following format:
 
 @verbatim
-centos-art arg1 --arg2=val2 --arg3=val3
+centos-art function path/to/dir --options
 @end verbatim
 
 In the above example, @samp{centos-art} is the command you use to
@@ -71,7 +71,7 @@ functionality can be loaded at one script execution I.e., you run
 +----------------------------------------------------------------------+
 | [centos@host]$ centos-art function --action='value' --option='value' |
 +----------------------------------------------------------------------+
-| ~/bin/centos-art --> ~/artwork/trunk/Scripts/Bash/centos-art.sh      |
+| ~/bin/centos-art --> ~/artwork/trunk/Scripts/centos-art.sh           |
 +---v-----------------------------------------v------------------------+
     | centos-art.sh                           |
     +---v---------------------------------v---+
@@ -105,36 +105,36 @@ variables and functions defined inside function environment.
 | cli_getFunctions                     |
 +---v------------------------------v---+
 .   | function1                    |   .
-.   +---v----------------------v---+   .
-.   .   | function1_getActions |   .   .
-.   .   +---v--------------v---+   .   .
-.   .   .   | action 1     |   .   .   .
-.   .   .   | action 2     |   .   .   .
-.   .   .   | action n     |   .   .   .
-.   .   .   +--------------+   .   .   .
-.   .   ........................   .   .
+.   +---v------------------------v-+   .
+.   .   | function1_getArguments | .   .
+.   .   +---v--------------v-----+ .   .
+.   .   .   | action 1     |     . .   .
+.   .   .   | action 2     |     . .   .
+.   .   .   | action n     |     . .   .
+.   .   .   +--------------+     . .   .
+.   .   .......................... .   .
 .   ................................   .
 .   +------------------------------+   .
 .   | function2                    |   .
-.   +---v----------------------v---+   .
-.   .   | function2_getActions |   .   .
-.   .   +---v--------------v---+   .   .
-.   .   .   | action 1     |   .   .   .
-.   .   .   | action 2     |   .   .   .
-.   .   .   | action n     |   .   .   .
-.   .   .   +--------------+   .   .   .
-.   .   ........................   .   .
+.   +---v------------------------v-+   .
+.   .   | function2_getArguments | .   .
+.   .   +---v--------------v-----+ .   .
+.   .   .   | action 1     |     . .   .
+.   .   .   | action 2     |     . .   .
+.   .   .   | action n     |     . .   .
+.   .   .   +--------------+     . .   .
+.   .   .......................... .   .
 .   ................................   .
 .   +------------------------------+   .
 .   | function3                    |   .
-.   +---v----------------------v---+   .
-.   .   | function3_getActions |   .   .
-.   .   +---v--------------v---+   .   .
-.   .   .   | action 1     |   .   .   .
-.   .   .   | action 2     |   .   .   .
-.   .   .   | action n     |   .   .   .
-.   .   .   +--------------+   .   .   .
-.   .   ........................   .   .
+.   +---v------------------------v-+   .
+.   .   | function3_getArguments | .   .
+.   .   +---v--------------v-----+ .   .
+.   .   .   | action 1     |     . .   .
+.   .   .   | action 2     |     . .   .
+.   .   .   | action n     |     . .   .
+.   .   .   +--------------+     . .   .
+.   .   .......................... .   .
 .   ................................   .
 ........................................
 @end verbatim
@@ -151,7 +151,7 @@ Functions) ---).
 
 @menu
 * Directories trunk Scripts::
-@comment --- Removed(* Directories trunk Scripts Bash Functions::) ---
-@comment --- Removed(* Directories trunk Scripts Bash Locale::) ---
+@comment --- Removed(* Directories trunk Scripts Functions::) ---
+@comment --- Removed(* Directories trunk Scripts Locale::) ---
 @end menu
 

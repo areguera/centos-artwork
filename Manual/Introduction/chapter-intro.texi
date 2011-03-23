@@ -1,13 +1,11 @@
-Welcome to @command{centos-art.sh} script manual.
+Welcome to CentOS Artwork Repository Manual.
 
-The @command{centos-art.sh} manual contains information on how to use
-the @command{centos-art.sh} script to help you achieve high production
-levels when you work on The CentOS Project Corporate Visual Identity
-inside the CentOS Artwork Repository
-(@url{https://projects.centos.org/svn/artwork/}).  If you are looking
-for a comprehensive, task-oriented guide for understanding how The
-CentOS Project corporate visual identity is produced, this is the
-manual for you.
+The CentOS Artwork Repository Manual describes how The CentOS Project
+Corporate Visual Identity is organized and produced inside the CentOS
+Artwork Repository (@url{https://projects.centos.org/svn/artwork/}).
+If you are looking for a comprehensive, task-oriented guide for
+understanding how The CentOS Project Corporate Visual Identity is
+produced, this is the manual for you.
 
 This manual discusses the following intermedite topics: 
 
@@ -26,10 +24,13 @@ related conceptual ideas it is based on.
 
 This manual uses Texinfo as base documentation system. The Texinfo
 documentation structure is controlled by the @code{help} functionality
-of @command{centos-art.sh} script.
+of @command{centos-art.sh} script. Through this functionality you can
+create documentation sections for each directory structure inside the
+repository and edit those already created, as well. @xref{Directories
+trunk Scripts Functions Help}, for more information on how to use the
+@command{help} functionality of @command{centos-art.sh} script.
 
 This guide assumes you have a basic understanding of your CentOS
 system. If you need help with CentOS, refer to the help page on the
 CentOS Wiki (@url{http://wiki.centos.org/Help}) for a list of
 different places you can find help.
-

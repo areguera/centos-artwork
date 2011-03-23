@@ -58,8 +58,8 @@
     <nodeup>Top</nodeup>
     <chapter>
       <title>Introduction</title>
-      <para><indexterm index="cp">Introduction</indexterm>Welcome to <command>centos-art.sh</command> script manual.</para>
-      <para>The <command>centos-art.sh</command> manual contains information on how to use the <command>centos-art.sh</command> script to help you achieve high production levels when you work on The CentOS Project Corporate Visual Identity inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>).  If you are looking for a comprehensive, task-oriented guide for understanding how The CentOS Project corporate visual identity is produced, this is the manual for you.</para>
+      <para><indexterm index="cp">Introduction</indexterm>Welcome to CentOS Artwork Repository Manual.</para>
+      <para>The CentOS Artwork Repository Manual describes how The CentOS Project Corporate Visual Identity is organized and produced inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>). If you are looking for a comprehensive, task-oriented guide for understanding how The CentOS Project Corporate Visual Identity is produced, this is the manual for you.</para>
       <para>This manual discusses the following intermedite topics:</para>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -74,7 +74,7 @@
         </item>
       </itemize>
       <para>This manual is organized in the same way of CentOS Artwork Repository directory structure. In the CentOS Artwork Repository we use directories to store conceptual ideas of The CentOS Project Corporate Visual Identity.  For this manual sake, each directory in CentOS Artwork Repository has its own documentation section to describe the related conceptual ideas it is based on.</para>
-      <para>This manual uses Texinfo as base documentation system. The Texinfo documentation structure is controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script.</para>
+      <para>This manual uses Texinfo as base documentation system. The Texinfo documentation structure is controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script. Through this functionality you can create documentation sections for each directory structure inside the repository and edit those already created, as well. See <xref><xrefnodename>Directories trunk Scripts Functions Help</xrefnodename></xref>, for more information on how to use the <command>help</command> functionality of <command>centos-art.sh</command> script.</para>
       <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can find help.</para>
       <menu>
         <menuentry>
@@ -585,88 +585,68 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Manuals</menunode>
-          <menutitle>Directories trunk Manuals</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>Directories trunk Scripts</menunode>
           <menutitle>Directories trunk Scripts</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash</menunode>
-          <menutitle>Directories trunk Scripts Bash</menutitle>
+          <menunode>Directories trunk Scripts Functions</menunode>
+          <menutitle>Directories trunk Scripts Functions</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli</menutitle>
+          <menunode>Directories trunk Scripts Functions Help</menunode>
+          <menutitle>Directories trunk Scripts Functions Help</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions</menutitle>
+          <menunode>Directories trunk Scripts Functions Html</menunode>
+          <menutitle>Directories trunk Scripts Functions Html</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Help</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Help</menutitle>
+          <menunode>Directories trunk Scripts Functions Identity</menunode>
+          <menutitle>Directories trunk Scripts Functions Identity</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Html</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Html</menutitle>
+          <menunode>Directories trunk Scripts Functions Locale</menunode>
+          <menutitle>Directories trunk Scripts Functions Locale</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Identity</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Identity</menutitle>
+          <menunode>Directories trunk Scripts Functions Manual</menunode>
+          <menutitle>Directories trunk Scripts Functions Manual</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Locale</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Locale</menutitle>
+          <menunode>Directories trunk Scripts Functions Path</menunode>
+          <menutitle>Directories trunk Scripts Functions Path</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Manual</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Manual</menutitle>
+          <menunode>Directories trunk Scripts Functions Render</menunode>
+          <menutitle>Directories trunk Scripts Functions Render</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Path</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Path</menutitle>
+          <menunode>Directories trunk Scripts Functions Render Config</menunode>
+          <menutitle>Directories trunk Scripts Functions Render Config</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Render</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Render</menutitle>
+          <menunode>Directories trunk Scripts Functions Shell</menunode>
+          <menutitle>Directories trunk Scripts Functions Shell</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Render Config</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Render Config</menutitle>
+          <menunode>Directories trunk Scripts Functions Svg</menunode>
+          <menutitle>Directories trunk Scripts Functions Svg</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Shell</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Shell</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Svg</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Svg</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Verify</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Verify</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Scripts Python</menunode>
-          <menutitle>Directories trunk Scripts Python</menutitle>
+          <menunode>Directories trunk Scripts Functions Verify</menunode>
+          <menutitle>Directories trunk Scripts Functions Verify</menutitle>
           <menucomment></menucomment>
         </menuentry>
       </menu>
@@ -915,12 +895,12 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 centos-art render trunk/Identity/Path/To/Dir
 ]]></verbatim>
         <quotation>
-          <para><strong>Warning</strong> If the <command>centos-art</command> command-line is not found in your workstation, it is probably because you haven't prepared it for using The CentOS Artwork Repository yet. See <xref><xrefnodename>Directories trunk Scripts Bash Cli Functions Verify</xrefnodename></xref>, for more information.</para>
+          <para><strong>Warning</strong> If the <command>centos-art</command> command-line is not found in your workstation, it is probably because you haven't prepared it for using The CentOS Artwork Repository yet. See <xref><xrefnodename>Directories trunk Scripts Functions Verify</xrefnodename></xref>, for more information.</para>
         </quotation>
         <para>This command takes one design template from the template directory and creates an instance of it in order to apply translation messages on it, if any. Later, using the design template instance, the command renders the final content based on whether the design template instance is a SVG file or a Docbook file. If the design template instace is a SVG file, the final content produced is a PNG image. On the other hand, if the design template instance is a Docbook file, the final content produced is a XHTML file. Final content is stored in the image directory using the design template directory paths as referece. The rendition flow described so far is known as the <emph>base-rendition</emph> flow.</para>
         <para>Besides the base-rendition flow, the <command>centos-art</command> provides the <emph>post-rendition</emph> and <emph>last-rendition</emph> flows.  The post-rendition flow is applied to files produced as result of base-rendition flow under the same directory structure. For example, you can use post-rendition action to convert the PNG base output into different outputs (e.g., JPG, PDF, etc.) before passing to process the next file in the same directory structure.  The last-rendition flow is applied to all files produced as result of both base-rendition and post-rendition flows in the same directory structure, just before passing to process a different directory structure.  For example, the <file>Preview.png</file> image from Ksplash component is made of three images. In order to build the <file>Preview.png</file> image through <command>centos-art</command> we need to wait for all the three images the <file>Preview.png</file> image is made of to be rendered, so we can combine them all together into just one image (i.e., the <file>Preview.png</file> image).  This is something we can't do using post-rendition flow.</para>
         <para>Inside <file>trunk/Identity</file> directory structure, you can find that base-rendition, post-rendition and last-rendition flows can be combined to build <emph>directory-specific</emph> rendition.  The directory-specific rendition exists to automatically process specific renderable directories in very specific ways. Using directory-specific rendition speeds up production of different components like Syslinux, Grub, Gdm, Kdm and Ksplash that require intermediate formats or even several independent files, in order to reach its final construction. Directory-specific rendition is a way to programmatically describe how specific art works are built in and organized inside The CentOS Artwork Repository.  Such descriptions have been added to <command>centos-art</command> command-line to let you produce them all with just one single command, as fast as your machine can be able to handle it.</para>
-        <para>See <xref><xrefnodename>Directories trunk Scripts Bash Cli Functions Identity</xrefnodename></xref>, for more information about the <command>identity</command> functionality of <command>centos-art</command> command-line interface.</para>
+        <para>See <xref><xrefnodename>Directories trunk Scripts Functions Identity</xrefnodename></xref>, for more information about the <command>identity</command> functionality of <command>centos-art</command> command-line interface.</para>
       </subsection>
 
       <subsection>
@@ -2706,7 +2686,7 @@ priority=10
       <subsection>
         <title>Description</title>
         <para>The <emph>Flame</emph> artistic motif was built using the flame filter of Gimp 2.2 in CentOS 5.5.</para>
-        <para>The flame filter of Gimp can produce stunning, randomly generated fractal patterns. The flame filter of Gimp gives us a great oportunity to reduce the time used to produce new artistic motifs, because of its &ldquo;randomly generated&rdquo; nature. Once the artistic motif be created, it is propagated through all visual manifestations of CentOS Project corporate visual identity using the <file>centos-art.sh</file> script (see <xref><xrefnodename>Directories trunk Scripts Bash</xrefnodename></xref>) inside the CentOS Artwork Repository.</para>
+        <para>The flame filter of Gimp can produce stunning, randomly generated fractal patterns. The flame filter of Gimp gives us a great oportunity to reduce the time used to produce new artistic motifs, because of its &ldquo;randomly generated&rdquo; nature. Once the artistic motif be created, it is propagated through all visual manifestations of CentOS Project corporate visual identity using the <file>centos-art.sh</file> script (see <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>) inside the CentOS Artwork Repository.</para>
         <para>To set the time intervals between each new visual style production, we could reuse the CentOS distribution major release schema.  I.e., we could produce a new visual style, every two years, based on a new &ldquo;randomly generated&rdquo; flame pattern, and publish the whole corporate visual identity (i.e., distribution stuff, promotion stuff, websites stuff, etc.) with the new major release of CentOS distribution all together at once.</para>
         <para>Producing a new visual style is not one day's task. Once we have defined the artistic motif, we need to propagate it through all visual manifestations of The CentOS Project corporate visual identity. When we say that we could produce one new visual style every two years we really mean: to work two years long in order to propagate a new visual style to all visual manifestations of The CentOS Project corporate visual identity.</para>
         <para>Obviously, in order to propagate one visual style to all different visual manifestations of The CentOS Project corporate visual identity, we need first to know which the visual manifestations are.  To define which visual manifestations are inside The CentOS Project corporate visual identity is one of the goals the CentOS Artwork Repository and this documentation manual are both aimed to satisfy.</para>
@@ -3421,8 +3401,8 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
       <para>Automation of localization tasks is achived through the <code>locale</code> functionality of command-line interface.</para>
       <menu>
         <menuentry>
-          <menunode>Directories trunk Scripts Bash Cli Functions Locale</menunode>
-          <menutitle>Directories trunk Scripts Bash Cli Functions Locale</menutitle>
+          <menunode>Directories trunk Scripts Functions Locale</menunode>
+          <menutitle>Directories trunk Scripts Functions Locale</menutitle>
           <menucomment></menucomment>
         </menuentry>
       </menu>
@@ -3930,7 +3910,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
   </node>
   <node>
     <nodename>Directories trunk Manual</nodename>
-    <nodenext>Directories trunk Manuals</nodenext>
+    <nodenext>Directories trunk Scripts</nodenext>
     <nodeprev>Directories trunk Locales Identity Widgets</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -3974,107 +3954,16 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Manuals</nodename>
-    <nodenext>Directories trunk Scripts</nodenext>
-    <nodeprev>Directories trunk Manual</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Manuals</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Manuals</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Scripts</nodename>
-    <nodenext>Directories trunk Scripts Bash</nodenext>
-    <nodeprev>Directories trunk Manuals</nodeprev>
+    <nodenext>Directories trunk Scripts Functions</nodenext>
+    <nodeprev>Directories trunk Manual</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Scripts</indexterm></para>
       <subsection>
         <title>Goals</title>
-        <para>The <file>trunk/Scripts</file> directory exists to:</para>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>Organize the &ldquo;trunk&rdquo; development line of automation scripts by programming language.</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Scripts Bash</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli</nodenext>
-    <nodeprev>Directories trunk Scripts</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Scripts/Bash</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <para>The <file>trunk/Scripts/Bash</file> directory exists to organize the trunk development line of <file>centos-art.sh</file> automation script.  The <file>centos-art.sh</file> script standardizes frequent tasks inside your working copy of CentOS Artwork Repository.</para>
+        <para>The <file>trunk/Scripts</file> directory exists to organize the trunk development line of <file>centos-art.sh</file> automation script.  The <file>centos-art.sh</file> script standardizes tasks you need to do frequently inside CentOS Artwork Repository.</para>
       </subsection>
 
       <subsection>
@@ -4086,7 +3975,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
         <para>Once global variables and function scripts have been loaded, <file>centos-art.sh</file> script executes the <command>cli</command> global function from <file>cli.sh</file> function script to retrive command-line arguments and define some default values that may be used later by specific function scripts (&mdash; <strong>Removed</strong>(pxref:trunk Scripts Bash Functions) &mdash;).</para>
         <para>As convenction, the <file>centos-art.sh</file> command-line arguments have the following format:</para>
         <verbatim xml:space="preserve"><![CDATA[
-centos-art arg1 --arg2=val2 --arg3=val3
+centos-art function path/to/dir --options
 ]]></verbatim>
         <para>In the above example, <samp>centos-art</samp> is the command you use to invoke <file>centos-art.sh</file> script. The <samp>arg1</samp> is required and represents the functionality you want to perform (e.g., <option>verify</option>, <option>render</option>, <option>locale</option>, <option>manual</option>, etc.). The remaining arguments are modifiers to <option>arg1</option>. The <option>--arg2</option> definition is required and represets, specifically, the action inside the functionality you want to perform.  The <option>--arg3</option> and on, are optional.</para>
         <para>Once command-line arguments have been retrived, the <file>centos-art.sh</file> script loads specific functionalities using the <file>cli_getFunctions.sh</file> function script. Only one specific functionality can be loaded at one script execution I.e., you run <command>centos-art.sh</command> script to run just one functionality.</para>
@@ -4097,7 +3986,7 @@ centos-art arg1 --arg2=val2 --arg3=val3
 +----------------------------------------------------------------------+
 | [centos@host]$ centos-art function --action='value' --option='value' |
 +----------------------------------------------------------------------+
-| ~/bin/centos-art --> ~/artwork/trunk/Scripts/Bash/centos-art.sh      |
+| ~/bin/centos-art --> ~/artwork/trunk/Scripts/centos-art.sh           |
 +---v-----------------------------------------v------------------------+
     | centos-art.sh                           |
     +---v---------------------------------v---+
@@ -4126,36 +4015,36 @@ centos-art arg1 --arg2=val2 --arg3=val3
 | cli_getFunctions                     |
 +---v------------------------------v---+
 .   | function1                    |   .
-.   +---v----------------------v---+   .
-.   .   | function1_getActions |   .   .
-.   .   +---v--------------v---+   .   .
-.   .   .   | action 1     |   .   .   .
-.   .   .   | action 2     |   .   .   .
-.   .   .   | action n     |   .   .   .
-.   .   .   +--------------+   .   .   .
-.   .   ........................   .   .
+.   +---v------------------------v-+   .
+.   .   | function1_getArguments | .   .
+.   .   +---v--------------v-----+ .   .
+.   .   .   | action 1     |     . .   .
+.   .   .   | action 2     |     . .   .
+.   .   .   | action n     |     . .   .
+.   .   .   +--------------+     . .   .
+.   .   .......................... .   .
 .   ................................   .
 .   +------------------------------+   .
 .   | function2                    |   .
-.   +---v----------------------v---+   .
-.   .   | function2_getActions |   .   .
-.   .   +---v--------------v---+   .   .
-.   .   .   | action 1     |   .   .   .
-.   .   .   | action 2     |   .   .   .
-.   .   .   | action n     |   .   .   .
-.   .   .   +--------------+   .   .   .
-.   .   ........................   .   .
+.   +---v------------------------v-+   .
+.   .   | function2_getArguments | .   .
+.   .   +---v--------------v-----+ .   .
+.   .   .   | action 1     |     . .   .
+.   .   .   | action 2     |     . .   .
+.   .   .   | action n     |     . .   .
+.   .   .   +--------------+     . .   .
+.   .   .......................... .   .
 .   ................................   .
 .   +------------------------------+   .
 .   | function3                    |   .
-.   +---v----------------------v---+   .
-.   .   | function3_getActions |   .   .
-.   .   +---v--------------v---+   .   .
-.   .   .   | action 1     |   .   .   .
-.   .   .   | action 2     |   .   .   .
-.   .   .   | action n     |   .   .   .
-.   .   .   +--------------+   .   .   .
-.   .   ........................   .   .
+.   +---v------------------------v-+   .
+.   .   | function3_getArguments | .   .
+.   .   +---v--------------v-----+ .   .
+.   .   .   | action 1     |     . .   .
+.   .   .   | action 2     |     . .   .
+.   .   .   | action n     |     . .   .
+.   .   .   +--------------+     . .   .
+.   .   .......................... .   .
 .   ................................   .
 ........................................
 ]]></verbatim>
@@ -4175,31 +4064,21 @@ centos-art arg1 --arg2=val2 --arg3=val3
             <menunode>Directories trunk Scripts</menunode>
             <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Functions::) - -->
-<!-- Removed(* Directories trunk Scripts Bash Locale::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Functions::) - -->
+<!-- Removed(* Directories trunk Scripts Locale::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions</nodenext>
-    <nodeprev>Directories trunk Scripts Bash</nodeprev>
+    <nodename>Directories trunk Scripts Functions</nodename>
+    <nodenext>Directories trunk Scripts Functions Help</nodenext>
+    <nodeprev>Directories trunk Scripts</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli</indexterm></para>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Help</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash/Functions</file> directory exists to organize <file>centos-art.sh</file> specific functionalities.</para>
@@ -5143,15 +5022,15 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <title>Specific functions</title>
           <para>The following specific functions of <file>centos-art.sh</file> script, are available for you to use:</para>
           <menu>
-<!--  Removed(* Directories trunk Scripts Bash Functions Html::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Locale::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Manual::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Path::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Render::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Render Config::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Shell::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Svg::) - -->
-<!--  Removed(* Directories trunk Scripts Bash Functions Verify::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Html::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Locale::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Manual::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Path::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Render::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Render Config::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Shell::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Svg::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Verify::) - -->
           </menu>
         </subsubsection>
       </subsection>
@@ -5160,23 +5039,23 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Directories trunk Scripts Bash</menunode>
-            <menutitle>Directories trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Locale::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Locale::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Help</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Html</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions</nodeprev>
+    <nodename>Directories trunk Scripts Functions Help</nodename>
+    <nodenext>Directories trunk Scripts Functions Html</nodenext>
+    <nodeprev>Directories trunk Scripts Functions</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Help</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Help</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Help</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Help</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5215,13 +5094,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Html</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Identity</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Help</nodeprev>
+    <nodename>Directories trunk Scripts Functions Html</nodename>
+    <nodenext>Directories trunk Scripts Functions Identity</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Help</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Html</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Html</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Html</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Html</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5260,13 +5139,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Identity</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Locale</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Html</nodeprev>
+    <nodename>Directories trunk Scripts Functions Identity</nodename>
+    <nodenext>Directories trunk Scripts Functions Locale</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Html</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Identity</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Identity</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Identity</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Identity</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5305,13 +5184,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Locale</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Manual</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Identity</nodeprev>
+    <nodename>Directories trunk Scripts Functions Locale</nodename>
+    <nodenext>Directories trunk Scripts Functions Manual</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Identity</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Locale</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Locale</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Locale</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Locale</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5379,13 +5258,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Manual</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Path</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Locale</nodeprev>
+    <nodename>Directories trunk Scripts Functions Manual</nodename>
+    <nodenext>Directories trunk Scripts Functions Path</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Locale</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Manual</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Manual</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Manual</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Manual</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -5424,13 +5303,13 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Path</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Render</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Manual</nodeprev>
+    <nodename>Directories trunk Scripts Functions Path</nodename>
+    <nodenext>Directories trunk Scripts Functions Render</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Manual</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Path</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Path</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Path</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Path</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>path</code> functiontionality.  The <code>path</code> functionality standardizes movement, syncronization, branching, tagging, and general file maintainance inside the repository.</para>
@@ -5537,23 +5416,23 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Directories trunk Scripts Bash</menunode>
-            <menutitle>Directories trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Render</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Render Config</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Path</nodeprev>
+    <nodename>Directories trunk Scripts Functions Render</nodename>
+    <nodenext>Directories trunk Scripts Functions Render Config</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Path</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Render</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Render</indexterm>The <code>render</code> functionality exists to produce both identity and translation files on different levels of information (i.e., different languages, release numbers, architectures, etc.).</para>
+      <title>The <file>trunk/Scripts/Functions/Render</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Render</indexterm>The <code>render</code> functionality exists to produce both identity and translation files on different levels of information (i.e., different languages, release numbers, architectures, etc.).</para>
       <para>The <code>render</code> functionality relies on &ldquo;renderable directory structures&rdquo; to produce files. Renderable directory structures can be either &ldquo;identity directory structures&rdquo; or &ldquo;translation directory structures&rdquo; with special directories inside.</para>
 
       <subsection>
@@ -5918,19 +5797,19 @@ function render_loadConfig {
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Directories trunk Scripts Bash Functions Render Config::) - -->
+<!--  Removed(* Directories trunk Scripts Functions Render Config::) - -->
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Render Config</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Shell</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Render</nodeprev>
+    <nodename>Directories trunk Scripts Functions Render Config</nodename>
+    <nodenext>Directories trunk Scripts Functions Shell</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Render</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Render/Config</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Render Config</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Render/Config</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Render Config</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>The <file>trunk/Scripts/Bash/Config</file> directory exists to oraganize pre-rendering configuration scripts.</para>
@@ -6046,24 +5925,24 @@ ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Directories trunk Scripts Bash</menunode>
-            <menutitle>Directories trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Functions::) - -->
-<!-- Removed(* Directories trunk Scripts Bash Functions Render::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Functions::) - -->
+<!-- Removed(* Directories trunk Scripts Functions Render::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Shell</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Svg</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Render Config</nodeprev>
+    <nodename>Directories trunk Scripts Functions Shell</nodename>
+    <nodenext>Directories trunk Scripts Functions Svg</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Render Config</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Shell</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Shell</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Shell</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Shell</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>shell</code> functionality of <file>centos-art.sh</file> script.</para>
@@ -6177,23 +6056,23 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Directories trunk Scripts Bash</menunode>
-            <menutitle>Directories trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Svg</nodename>
-    <nodenext>Directories trunk Scripts Bash Cli Functions Verify</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Shell</nodeprev>
+    <nodename>Directories trunk Scripts Functions Svg</nodename>
+    <nodenext>Directories trunk Scripts Functions Verify</nodenext>
+    <nodeprev>Directories trunk Scripts Functions Shell</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Svg</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Svg</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Svg</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Svg</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <code>svg</code> functionality of <file>centos-art.sh</file> script.</para>
@@ -6332,23 +6211,22 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Directories trunk Scripts Bash</menunode>
-            <menutitle>Directories trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Functions::) - --></menucomment>
           </menuentry>
         </menu>
       </subsection>
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Scripts Bash Cli Functions Verify</nodename>
-    <nodenext>Directories trunk Scripts Python</nodenext>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Svg</nodeprev>
+    <nodename>Directories trunk Scripts Functions Verify</nodename>
+    <nodeprev>Directories trunk Scripts Functions Svg</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Scripts/Bash/Cli/Functions/Verify</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Bash Cli Functions Verify</indexterm></para>
+      <title>The <file>trunk/Scripts/Functions/Verify</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Scripts Functions Verify</indexterm></para>
       <subsection>
         <title>Goals</title>
         <para>This section exists to organize files related to <file>centos-art.sh</file> script <samp>verify</samp> functionality.  The <samp>verify</samp> functionality of <file>centos-art.sh</file> script helps you to verify the workstation configuration you are planning to use as host for your working copy of CentOS Artwork Repository.</para>
@@ -6472,55 +6350,11 @@ Copyright (C) 1989, 1991 Free Software Foundation, Inc.
         <title>See also</title>
         <menu>
           <menuentry>
-            <menunode>Directories trunk Scripts Bash</menunode>
-            <menutitle>Directories trunk Scripts Bash</menutitle>
+            <menunode>Directories trunk Scripts</menunode>
+            <menutitle>Directories trunk Scripts</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Bash Functions::) - --></menucomment>
+<!-- Removed(* Directories trunk Scripts Functions::) - --></menucomment>
           </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Scripts Python</nodename>
-    <nodeprev>Directories trunk Scripts Bash Cli Functions Verify</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Scripts/Python</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Scripts Python</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
         </menu>
 <!--  The End of the Document - -->
       </subsection>
