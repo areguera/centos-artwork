@@ -33,7 +33,7 @@ function help_searchNode {
     # exits use the info reader to open the info file at the
     # specified node. Otherwise, ask the user for create it.
     if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="Filesystem $(help_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
+        /usr/bin/info --node="Repository $(help_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
     else
         help_editEntry
     fi
