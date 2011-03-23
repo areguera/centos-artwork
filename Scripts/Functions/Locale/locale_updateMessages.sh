@@ -36,13 +36,13 @@ function locale_updateMessages {
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $WORKDIR =~ "^${BASEDIR}/(Identity|Manuals)/.+$" ]];then
+    if [[ $WORKDIR =~ "^${BASEDIR}/(Identity|Manual)/$(cli_getCurrentLocale)" ]];then
 
         # Update translatable strings inside portable object templates
         # for XML-based files (e.g., scalable vector graphics).
         ACTIONNAM="${FUNCNAM}_updateMessageXml"
 
-    elif [[ $WORKDIR =~ "^${BASEDIR}/Scripts/.+$" ]];then
+    elif [[ $WORKDIR =~ "^${BASEDIR}/Scripts/$(cli_getCurrentLocale)" ]];then
 
         # Update translatable strings inside portable object templates
         # for shell scripts (e.g., centos-art.sh script).
