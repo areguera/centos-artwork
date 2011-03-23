@@ -64,11 +64,6 @@ function help_getArguments {
                 shift 1
                 ;;
 
-            --read )
-                ACTIONNAM="${FUNCNAM}_searchNode"
-                shift 1
-                ;;
-
             --search )
                 ACTIONNAM="${FUNCNAM}_searchIndex"
                 shift 1
@@ -84,8 +79,11 @@ function help_getArguments {
                 shift 1
                 ;;
     
-            * )
+            --read | * )
+                ACTIONNAM="${FUNCNAM}_searchNode"
+                FLAG_DONT_COMMIT_CHANGES='true'
                 break
+                ;;
         esac
     done
 
