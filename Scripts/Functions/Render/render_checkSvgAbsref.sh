@@ -43,7 +43,7 @@ function render_checkSvgAbsref {
 
     # Retrive absolute paths from file.
     ABSPATHS=$(egrep "(sodipodi:absref|xlink:href)=\"${HOME}.+" $FILE \
-        | sed -r "s,.+=\"(${HOME}.+)\".*,\1,")
+        | sed -r "s,.+=\"(${HOME}.+\.png)\".*,\1,")
 
     # Verify absolute paths retrived from file.
     for ABSPATH in $ABSPATHS;do
