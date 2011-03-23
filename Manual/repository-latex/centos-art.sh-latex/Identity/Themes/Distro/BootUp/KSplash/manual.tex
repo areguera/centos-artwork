@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{pdfauthor={CentOS Documentation SIG},%
+            pdftitle={KDE Splash)},%
+            pdfsubject={CentOS Corporate Visual Identity}%
+            }
+
+\title{KDE Splash}
+\author{CentOS Documentation SIG}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+
+This article describes the KDE Splash Visual Style for CentOS
+Distribution.  This image is displayed after login screen, while KDE
+session is being loaded. 
+
+Copyright \copyright\ 2010\ The CentOS Project. Permission is
+granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.2 or any later
+version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License''.  
+\end{abstract}
+
+\tableofcontents
+
+
+\section{Workplace}
+\begin{itemize}
+\item SVN:trunk/Identity/Themes/\$THEME/Distro/BootUp/KSplash/
+\item SVN:trunk/Translations/Identity/Themes/Distro/BootUp/KSplash/
+\item SVN:trunk/Scripts/Identity/Themes/Distro/BootUp/KSplash/
+\end{itemize}
+
+\section{Theme}
+
+\input{table-theme.tex}
+
+\section{Design}
+
+KDE Splash Preview.png and splash\_top\_bar.png images are rendered
+for each major release of CentOS Distribution.  Each image is based in
+the same Artistic Motif and has the following components:
+
+\begin{enumerate}
+\item The CentOS Symbol.
+\item The CentOS Release Brand.
+\item The CentOS Default Artistic Motif.
+\end{enumerate}
+
+KDE Splash splash\_inactive\_bar.png and splash\_active\_bar.png are
+used to create the progress effect while loading. They both have the
+same background color.
+
+KDE Splash splash\_bottom\_bar.png is used to as background to the
+label shown in the bottom. This image has the same background color of
+splas\_inactive\_bar.png and splash\_active\_bar.png.
+
+KDE Splash theme definitions are in the file Theme.rc. Among available
+definitions are the splash  name, description, version, author,
+engine, icons flashing, always show progress, and label foreground.
+
+Image rendering is done using the script render.sh available in the
+workplace.  This script creates the appropriate PNG images under
+img/\$VERSION/.
+
+There is no color limitation in this section.
+
+\section{Configuration}
+
+\input{table-config.tex}
+
+\begin{description}
+
+\item[Theme]: Defines the default splash theme. The name should match
+a directory name under /usr/share/ksplash/Themes/.
+
+\texttt{Theme=Modern}
+\end{description}
+
+\section{Rendering}
+\section{Testing}
+\section{Issues}
+
+% License section
+\input{../../../../../Licenses/GFDL.tex}
+
+\end{document}

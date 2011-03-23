@@ -1,0 +1,89 @@
+The Backgrounds directory is probably the Themes' core compoent.
+Inside Backgrounds/ directory you produce background images that are
+reused by almost all theme's art works (e.g., Distribution, Websites,
+Promotion, etc.).  
+
+The Backgrounds/ directory structure can contain directories to help
+you organize the design process. 
+
+    Img/: In this directory is where you store all background images
+          (e.g., .png, .jpg, .xpm, etc.).  This directory is required
+          by rendering scripts.
+
+    Tpl/: In this directory is where you store all scalable vector
+          graphics (e.g., .svg) files. This directory is required by
+          rendering scripts.
+
+    Xcf/: In this directory is where you store all Gimp's project
+          files (e.g, .xcf). This directory is optional. If you can
+          create a beautiful background images using scalable vector
+          graphics only, then there is no need to use Gimp to produce
+          background images. Of course, you can merge Gimp's power
+          with Inkscape's power to produce images based on them.  In
+          this last case you need this directory.
+
+Inside Backgrounds/ you can create your vectorial designs using
+Inkscape and your background images using Gimp. Later you can export
+your background image as png and load it in your vectorial design
+using Inkscape's import feautre.  Note that you may need to repeat
+this technic for different screen resoluions. In that case you need to
+create one file for each screen resolution and do the appropriate
+linking inside .svg to .png files.  For example if you need to produce
+background images in 800x600 you need to create the following file:
+
+    xcf/800x600.xcf
+
+to produce the background image:
+
+    img/800x600-bg.png
+
+which is loaded in: 
+
+    svg/800x600.svg
+
+to produce the final background image:
+
+    img/800x600.png         
+
+The img/800x600.png background image is produced automatically by
+means of rendering scripts.
+
+In other cases, like Anaconda's, it is possible that you need to make
+some variations to one background image that don't want to appear on
+regular background images of the same resolution. In this case you
+need to create a new and specific background image for that art
+component.  For example, if you need to produce the background image
+used by Anconda (800x600) art works you create the file:
+
+    xcf/800x600-anaconda.xcf
+
+to produce the background image:
+
+    img/800x600-anaconda-bg.png
+
+which is loaded in: 
+
+    svg/800x600-anaconda.svg
+
+to produce the file:
+
+    img/800x600-anaconda.png
+
+The 800x600-anaconda.png file is used by all Anaconda art works
+sharing a common 800x600 screen resolution (e.g., Header, Progress,
+Splash, Firstboot, etc.). The Anaconda Prompt is indexed to 16 colors
+and 640x480 pixels so you need to create a 640x480 background image
+for it, and take the color limitation into account when designing it.
+
+Background images without artistic motif are generally used as based
+to build the Background images that do contain the theme's artistic
+motif. 
+
+Background images are linked (using Inkscape's \textit{import}
+feature) inside almost all theme art works. This structure let you
+make centralized changes on the visual identity and propagate them
+quickly to other areas. 
+
+In this structure you design background images for different screen
+resolutions based on theme's artistic motif.
+

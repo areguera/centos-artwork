@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{pdfauthor={Alain Reguera Delgado},%
+            pdftitle={Anaconda Header Visual Style},%
+            pdfsubject={CentOS Corporate Visual Identity}%
+            }
+
+% Tell LaTeX how to hyphenate a word. Don't hyphenate the following
+% words:
+\hyphenation{CentOS CENTOSARTWORK}
+
+\title{Anaconda Header Visual Style}
+\author{Alain Reguera Delgado}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+
+This article describes the visual style of Anaconda Header. Anaconda
+is the name of the install program used by CentOS.  It is python-based
+with some custom modules written in C. The anaconda installer works on
+a wide variety of Linux-based computing architectures (ia32, Itanium,
+Alpha, S/390, PowerPC), and is designed to make it easy to add
+platforms.
+
+Copyright (C) 2010 The CentOS Project. Permission is granted to copy,
+distribute and/or modify this document under the terms of the GNU Free
+Documentation License, Version 1.2 or any later version published by
+the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts. A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.  
+
+\end{abstract}
+
+\tableofcontents
+
+\input{sections/introduction.tex}
+\input{../../../../../installation.tex}
+\input{../../../../../configuration.tex}
+\input{sections/framework.tex}
+\input{sections/rebranding.tex}
+
+\input{../../../../../Licenses/GFDL.tex}
+
+\end{document}

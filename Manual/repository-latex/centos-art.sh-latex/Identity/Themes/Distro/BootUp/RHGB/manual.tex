@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\hypersetup{pdfauthor={CentOS Documentation SIG},%
+            pdftitle={Graphic Boot (RHGB))},%
+            pdfsubject={CentOS Corporate Visual Identity}%
+            }
+
+\title{Graphic Boot (RHGB)}
+\author{CentOS Documentation SIG}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+
+This article describes the RHGB Visual Style for CentOS Distribution.
+This screen is shown as the machine starts up. Users can toggle
+between graphic ``Hide Detail'' mode text ``Show Detail'' mode.
+
+Copyright \copyright\ 2010\ The CentOS Project. Permission is
+granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.2 or any later
+version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License''.  
+\end{abstract}
+
+\tableofcontents
+
+\section{Workplace}
+
+\begin{itemize}
+\item SVN:trunk/Identity/Themes/\$THEME/Distro/BootUp/RHGB/
+\item SVN:trunk/Translations/Identity/Themes/Distro/BootUp/RHGB/
+\item SVN:trunk/Scripts/Identity/Themes/Distro/BootUp/RHGB/
+\end{itemize}
+
+\section{Theme}
+
+\input{table-theme.tex}
+
+The system-logo.png image is rendered for each major release of
+CentOS. This task is done using the script render.sh available in the
+workplace.  This script creates the appropriate PNG images under
+img/\$VERSION/ directory. 
+
+\section{Design}
+\section{Configuration}
+\section{Rendering}
+\section{Testing}
+\section{Issues}
+
+% License section
+\input{../../../../../Licenses/GFDL.tex}
+
+\end{document}
