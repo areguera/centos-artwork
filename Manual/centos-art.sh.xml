@@ -1,16 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.8//EN" "http://www.gnu.org/software/texinfo/dtd/4.8/texinfo.dtd">
 <texinfo xml:lang="en">
-  <setfilename>repository.xml</setfilename>
-  <settitle>CentOS Artwork Repository</settitle>
+  <setfilename>centos-art.sh.xml</setfilename>
+  <settitle>centos-art.sh</settitle>
 <!--  Summary Description and Copyright - -->
   <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
   <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
   <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License. 
 <!--  Titlepage, Contents, Copyright - --></para>
   <titlepage>
-    <booktitle>CentOS Artwork Repository</booktitle>
-    <booksubtitle>Manual</booksubtitle>
+    <booktitle>centos-art.sh</booktitle>
+    <booksubtitle>The CentOS Artwork Repository automation tool</booksubtitle>
+    <booksubtitle>for centos-art.sh 1.0, 22 March 2011</booksubtitle>
     <author>Alain Reguera Delgado</author>
     <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
     <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
@@ -22,7 +23,7 @@
     <nodename>Top</nodename>
     <nodeup>(dir)</nodeup>
     <unnumbered>
-      <title>CentOS Artwork Repository</title>
+      <title>centos-art.sh</title>
       <para>This manuals documents relevant information regarding the deployment, organization, and administration of CentOS Artwork Repository.</para>
       <para>Copyright &copyright; 2009-2011 Alain Reguera Delgado</para>
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled GNU Free Documentation License.</para>
@@ -58,8 +59,8 @@
     <nodeup>Top</nodeup>
     <chapter>
       <title>Introduction</title>
-      <para><indexterm index="cp">Introduction</indexterm>Welcome to the <emph>CentOS Artwork Repository Manual</emph>.</para>
-      <para>The CentOS Artwork Repository Manual contains information on how to produce the CentOS Corporate Visual Identity in the working copies of CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>). If you are looking for a comprehensive, task-oriented guide for understanding how the CentOS Corporate Visual Identity is produced, this is the manual for you.</para>
+      <para><indexterm index="cp">Introduction</indexterm>Welcome to <command>centos-art.sh</command> script manual.</para>
+      <para>The <command>centos-art.sh</command> manual contains information on how to use the <command>centos-art.sh</command> script to help you achieve high production levels when you work on The CentOS Project corporate visual identity inside the CentOS Artwork Repository (<uref><urefurl>https://projects.centos.org/svn/artwork/</urefurl></uref>).  If you are looking for a comprehensive, task-oriented guide for understanding how The CentOS Project corporate visual identity is produced, this is the manual for you.</para>
       <para>This manual discusses the following intermedite topics:</para>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -73,8 +74,6 @@
           <para>The CentOS Corporate Visual Style</para>
         </item>
       </itemize>
-      <para>This manual is organized in the same way the CentOS Artwork Repository directory structure does. In the CentOS Artwork Repository we use directories to store conceptual ideas of CentOS Corporate Visual Identity.  For this manual sake, each directory in the CentOS Artwork Repository has its own documentation section to describe the related conceptual ideas of it.</para>
-      <para>This manual uses Texinfo as base documentation system. The Texinfo documentation structure is controlled by the <command>centos-art</command> script which is used to perform most common documentation tasks (e.g., edition, deletion, renaming, updating nodes, menus and cross references) in a standard way.</para>
       <para>This guide assumes you have a basic understanding of your CentOS system. If you need help with CentOS, refer to the help page on the CentOS Wiki (<uref><urefurl>http://wiki.centos.org/Help</urefurl></uref>) for a list of different places you can find help.</para>
       <menu>
         <menuentry>
@@ -186,7 +185,7 @@ Karanbirn Singh <karan@centos.org>
         <para>Specifically, we want to make sure that you have the right to give away copies of <command>centos-art.sh</command> script, that you receive source code or else can get it if you want it, that you can change this program or use pieces of it in new free programs, and that you know you can do these things.</para>
         <para>To make sure that everyone has such rights, we have to forbid you to deprive anyone else of these rights.  For example, if you distribute copies of the <command>centos-art.sh</command> script, you must give the recipients all the rights that you have.  You must make sure that they, too, receive or can get the source code.  And you must tell them their rights.</para>
         <para>Also, for our own protection, we must make certain that everyone finds out that there is no warranty for the <command>centos-art.sh</command> script. If this program is modified by someone else and passed on, we want their recipients to know that what they have is not what we distributed, so that any problems introduced by others will not reflect on our reputation.</para>
-        <para>The precise conditions of the license for the <command>centos-art.sh</command> script are found in the General Public Licenses that accompany it. This manual specifically is covered by the GNU Free Documentation License.</para>
+        <para>The precise conditions of the license for the <command>centos-art.sh</command> script are found in the General Public Licenses that accompany it (see <file>trunk/COPYING</file> file).  This manual specifically is covered by the GNU Free Documentation License.</para>
       </subsection>
     </section>
   </node>
@@ -198,8 +197,6 @@ Karanbirn Singh <karan@centos.org>
     <section>
       <title>Document Convenctions</title>
       <para><indexterm index="cp">Document convenctions</indexterm>In this manual the personal pronoun <emph>we</emph> is used to repesent <emph>The CentOS Artwork SIG</emph>. This is, the group of persons building the CentOS Artwork Repository.</para>
-      <para>In this manual the phrase &ldquo;CentOS Artwork Repository&rdquo; is used to refer the very specific organization of files we use to store The CentOS Project corporate visual identity.  It is the source location The CentOS Community uses to retrive The CentOS Project branded images used to build different visual manifestations like The CentOS Distribution, The CentOS Webs and The CentOS Stationery.</para>
-      <para>In this manual the word &ldquo;<command>centos-art</command>&rdquo; is used to refer the command-line interface of <command>centos-art.sh</command> script.  The <command>centos-art.sh</command> script is the the automation tool we use to realize most of the frequent tasks inside the CentOS Artwork Repository.</para>
       <para>In this manual, certain words are represented in different fonts, typefaces, sizes, and weights. This highlighting is systematic; different words are represented in the same style to indicate their inclusion in a specific category. The types of words that are represented this way include the following:</para>
       <table>
         <tableitem>

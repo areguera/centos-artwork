@@ -1,0 +1,62 @@
+@subsection Goals
+
+This directory implements the Subversion's trunk concept in a
+trunk, branches, tags repository structure.
+
+@subsection Description
+
+The @file{trunk/} directory structure is the main development line
+inside the CentOS Artwork Repository and organizes the following
+sections:
+
+@table @strong
+@item Identity
+This section organizes image production in different formats and some
+non-image formats like XHTML and text files, as well. This is the
+perfect place to consolidate @emph{The CentOS Artwork SIG}. If you are
+interested in producing art works for The CentOS Project, this place
+is for you. 
+
+@xref{Repository trunk Identity}, for more information.
+
+@item Manual
+This section organizes the @emph{CentOS Artwork Repository Manual}
+(i.e., the documentation manual you're reading right now).  If you are
+interested on improving The CentOS Artwork Repository Manual, in this
+place you'll find the Texinfo documentation structure you need to work
+with.
+
+@xref{Repository trunk Manual}, for more information.
+
+@item Scripts
+This section organizes production of automation scripts specially
+designed to automate most frequent tasks in the repository (e.g.,
+image rendition, documenting directory structures, translating
+content, etc.).  If you can't resist the idea of automating repeatable
+tasks, then take a look here.
+
+@xref{Repository trunk Scripts}, for more information.
+
+@item Locales
+This section organizes production of translation messages for
+@emph{Identity}, @emph{Documentation} and @emph{Scripts}. This place
+is perfect to consolidate @emph{The CentOS Translation SIG}. If you
+love translating, you'll find lot of messages waiting for you to
+translate here.  
+
+@xref{Repository trunk Locales}, for more information.
+@end table
+
+@subsection Usage
+
+It seems to be no other use for this directory but to organize the
+sections described above.
+
+@subsection See also
+
+@itemize
+@item @xref{Repository branches}.
+@item @xref{Repository tags}.
+@item Subversion's book (@url{http://svnbook.red-bean.com/}).
+@end itemize
+

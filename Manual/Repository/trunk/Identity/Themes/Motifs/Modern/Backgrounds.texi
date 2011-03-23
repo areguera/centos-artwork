@@ -1,0 +1,143 @@
+@subsection Goals
+
+@itemize
+@item Organize background images for Modern theme.
+@end itemize
+
+@subsection Description
+
+Inside @file{Motifs} directory, the @file{Backgrounds/} directory is
+used to create vectorial designs using Inkscape and background images
+using Gimp. Later, you can export background images as @file{.png} and
+load them in your vectorial design project using the import feautre of
+Inkscape.
+
+You may need to repeat this technic for different screen resoluions.
+In that case you need to create one file for each screen resolution
+and do the appropriate linking inside .svg to .png files.  For example
+if you need to produce background images in 800x600 you need to create
+the following file:
+
+@example
+xcf/800x600.xcf
+@end example
+
+to produce the background image:
+
+@example
+img/800x600-bg.png
+@end example
+
+which is loaded in: 
+
+@example
+svg/800x600.svg
+@end example
+
+to produce the final background image:
+
+@example
+img/800x600.png         
+@end example
+
+The @file{img/800x600.png} background image is produced automatically
+by means of rendering scripts.
+
+In other cases (e.g. Anaconda), it is possible that you need to make
+some variations to one background image that don't want to appear on
+regular background images of the same resolution. In this case you
+need to create a new and specific background image for that art
+component.  For example, if you need to produce the background image
+used by Anconda (800x600) art works you create the file:
+
+@example
+xcf/800x600-anaconda.xcf
+@end example
+
+to produce the background image:
+
+@example
+img/800x600-anaconda-bg.png
+@end example
+
+which is loaded in: 
+
+@example
+svg/800x600-anaconda.svg
+@end example
+
+to produce the file:
+
+@example
+img/800x600-anaconda.png
+@end example
+
+The 800x600-anaconda.png file is used by all Anaconda art works
+sharing a common 800x600 screen resolution (e.g., Header, Progress,
+Splash, Firstboot, etc.). The Anaconda Prompt is indexed to 16 colors
+and 640x480 pixels so you need to create a 640x480 background image
+for it, and take the color limitation into account when designing it.
+
+Background images without artistic motif are generally used as based
+to build the Background images that do contain the theme artistic
+motif. 
+
+Background images are linked (using the @b{import} feature of
+Inkscape) inside almost all theme art works. This structure let you
+make centralized changes on the visual identity and propagate them
+quickly to other areas. 
+
+In this structure you design background images for different screen
+resolutions based on the theme artistic motif.
+
+You may create different artistic motifs propositions based
+on the same conceptual idea. The conceptual idea is what defines a
+theme. Artistic motifs are interpretations of that idea.
+
+Inside this directory artistic motifs are organized by name (e.g.,
+TreeFlower, Modern, etc.).
+
+Each artistic motif directory represents just one unique artistic
+motif. 
+
+The artistic motif is graphic design used as common pattern to connect
+all visual manifestations inside one unique theme.  The artistic motif
+is based on a conceptual idea.  Artistic motifs provide visual style
+to themes.
+
+Designing artistic motifs is for anyone interested in creating
+beautiful themes for CentOS.  When building a theme for CentOS, the
+first design you need to define is the artistic motif. 
+
+
+Inside CentOS Artwork Repository, theme visual styles (Motifs) and
+theme visual structures (Models) are two different working lines.
+When you design an artistic motif for CentOS you concentrate on its
+visual style, and eventualy, use the @command{centos-art} command line
+interface to render the visual style, you are currently producing,
+against an already-made theme model in order to produce the final
+result.  Final images are stored under @file{Motifs/} directory using
+the model name, and the model directory structure as reference.
+
+The artistic motif base structure is used by @command{centos-art} to
+produce images automatically. This section describes each directory of
+CentOS artistic motif base structure.
+
+@subsection Usage
+
+The @file{Backgrounds/} directory is probably the core component,
+inside @file{Motifs/} directory structure.  Inside @file{Backgrounds/}
+directory you produce background images used by almost all theme
+models (e.g., Distribution, Websites, Promotion, etc.).  The
+@file{Backgrounds/} directory can contain subdirectories to help you
+organize the design process. 
+
+@subsection See also
+
+@menu
+* Repository trunk Identity Themes Motifs Modern Backgrounds Img::
+* Repository trunk Identity Themes Motifs Modern Backgrounds Tpl::
+* Repository trunk Identity Themes Motifs Modern Backgrounds Xcf::
+@comment --- Removed(* Repository trunk Translations Identity Themes Backgrounds::) ---
+@end menu
+

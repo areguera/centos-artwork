@@ -1,7 +1,7 @@
 \input texinfo   @c -*-texinfo-*-
 @c $Id$
-@setfilename repository.info
-@settitle CentOS Artwork Repository
+@setfilename centos-art.sh.info
+@settitle centos-art.sh
 @afourpaper
 @finalout
 
@@ -23,8 +23,9 @@ Documentation License.
 @c -- Titlepage, Contents, Copyright ---------------------------
 
 @titlepage
-@title CentOS Artwork Repository
-@subtitle Manual
+@title centos-art.sh
+@subtitle The CentOS Artwork Repository automation tool
+@subtitle for centos-art.sh 1.0, @today{}
 @author Alain Reguera Delgado
 @page
 @vskip 0pt plus 1filll
@@ -37,18 +38,18 @@ Documentation License.
 
 @ifnottex
 @node Top
-@top CentOS Artwork Repository
+@top centos-art.sh
 @insertcopying
 @end ifnottex
 
-@include repository-menu.texi
+@include centos-art.sh-menu.texi
 
 @c -- The Body of the Document --------------------------------
 
-@include repository-nodes.texi
+@include centos-art.sh-nodes.texi
 
 @c -- The End of the Document ---------------------------------
 
-@include repository-index.texi
+@include centos-art.sh-index.texi
 
 @bye

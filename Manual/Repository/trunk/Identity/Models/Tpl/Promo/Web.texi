@@ -1,0 +1,329 @@
+@subsection Goals
+
+Organize scalable vector graphics (svg) to help describe the CentOS
+web environment.
+
+@subsection The CentOS web environment
+
+Inside CentOS corporate identity, the CentOS web environment is
+considered a promotion component. The CentOS web environment is formed
+by a central web application ---to cover base needs (e.g., per-major
+release information like release notes, lifetime, downloads,
+documentation, support, security advisories, bugs, etc.)--- and many
+different free web applications ---to cover specific needs (e.g.,
+wiki, mailing lists, etc.)---. 
+
+The CentOS web environment is addressed to solve the following issues:
+
+@itemize
+@item One unique name and one unique visual style to all web
+applications used inside the web environment.
+
+@item One-step navigation to web applications inside the environment.
+
+@item High degree of customization to change the visual style of all
+web applications with few changes (e.g, updating just two or three
+images plus common style sheet [CSS] definitions).
+@end itemize
+
+The CentOS project is attached to a monolithic corporate visual
+identity (@pxref{Repository trunk Identity}), where all visual manifestations
+have one unique name and one unique visual style. This way, the CentOS
+web environment has one unique name (the CentOS brand) and one unique
+visual style (the CentOS default theme) for all its visual
+manifestations, the web applications in this case.
+
+Since a maintainance point of view, achiving the one unique visual
+style inside CentOS web environment is not a simple task. The CentOS
+web environment is built upon many different web applications which
+have different visual styles and different internal ways to customize
+their own visual styles. For example: MoinMoin, the web application
+used to support the CentOS wiki (@url{http://wiki.centos.org/}) is
+highly customizable but Mailman (in its 2.x.x serie), the web
+application used to support the CentOS mailing list, doesn't
+support@footnote{The theme support of Mailman may be introduced in
+mailman-3.x.x release.} a customization system that separates
+presentation from logic, similar to that used by MoinMoin.
+
+This visual style diversity complicates our goal of one unique visual
+style for all web applications. So, if we want one unique visual style
+for all web applications used, it is innevitable to modify the web
+applications in order to implement the CentOS one unique visual style
+customization in them. Direct modification of upstream applications is
+not convenient because upstream applications come with their one
+visual style and administrators take the risk of loosing all
+customization changes the next time the application be updated (since
+not all upstream web applications, used in CentOS web environment,
+separate presentation from logic).
+
+To solve the ``one unique visual style'' issue, installation and
+actualization of web applications ---used inside CentOS web
+environment--- need to be independent from upstream web applications
+development line; in a way that CentOS web environment administrators
+can install and update web applications freely without risk of loosing
+the one unique visual style customization changes. 
+
+At the surface of this issue we can see the need of one specific yum
+repository to store CentOS web environment customized web applications.
+
+@subsubsection Design model (without ads)
+
+@subsubsection Design model (with ads)
+
+@subsubsection HTML definitions
+
+@subsubsection Controlling visual style
+
+Inside CentOS web environment, the visual style is controlled by the
+following compenents:
+
+@table @strong
+@item Webenv header background
+@verbatim
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
+@end verbatim
+
+@item CSS definitions
+@verbatim
+trunk/Identity/Themes/Models/Default/Promo/Web/CSS/stylesheet.css
+@end verbatim
+@end table
+
+@subsubsection Producing visual style
+
+The visual style of CentOS web environment is defined in the following
+files:
+
+@verbatim
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Xcf/1024x250.xcf
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250-bg.png
+trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Tpl/1024x250.svg
+@end verbatim
+
+As graphic designer you use @file{1024x250.xcf} file to produce
+@file{1024x250-bg.png} file. Later, inside @file{1024x250.svg} file,
+you use the @file{1024x250-bg.png} file as background layer to draw
+your vectorial design. When you consider you artwork ready, use the
+@command{centos-art.sh} script, as described below, to produce the
+visual style controller images of CentOS web environment.
+
+@verbatim
+centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Backgrounds --filter='1024x250'
+@end verbatim
+
+Once you have rendered required image files, changing the visual style
+of CentOS web environment is a matter of replacing old image files
+with new ones, inside webenv repository file system structure. The
+visual style changes will take effect the next time customization line
+of CentOS web applications be packaged, uploded, and installed from
+[webenv] or [webenv-test] repositories.
+
+@subsubsection Navigation
+
+Inside CentOS web environment, the one-step navegation between web
+applications is addressed using the web environment navigation bar.
+The web environment navigation bar contains links to main applications
+and is always visible no matter where you are inside the web
+environment.
+
+@subsubsection Development and release cycle
+
+The CentOS web environment development and relase cycle is described
+below: 
+
+@table @strong
+
+@item Download
+
+The first action is download the source code of web applications we
+want to use inside CentOS web environment.
+
+@quotation
+@strong{Important} The source location from which web application are
+downloaded is very important. Use SRPMs from CentOS @strong{[base]}
+and @strong{[updates]} repositories as first choise, and third party
+repositories (e.g. RPMForge, EPEL, etc.) as last resource.
+@end quotation
+
+@item Prepare 
+
+Once web application source code has been downloaded, our duty is
+organize its files inside @samp{webenv} version controlled repository.
+
+When preparing the structure keep in mind that different web
+applications have different visual styles, and also different ways to
+implement it. A convenient way to organize the file system structure
+would be create one development line for each web application we use
+inside CentOS web environment. For example, consider the following
+file system structure:
+
+@verbatim
+https://projects.centos.org/svn/webenv/trunk/
+|-- WebApp1/
+|   |-- Sources/
+|   |   `-- webapp1-0.0.1/
+|   |-- Rpms/
+|   |   `-- webapp1-0.0.1.rpm
+|   |-- Srpms/
+|   |   `-- webapp1-0.0.1.srpm
+|   `-- Specs/
+|       `-- webapp1-0.0.1.spec
+|-- WebApp2/
+`-- WebAppN/
+@end verbatim
+
+@item Customize
+
+Once web applications have been organized inside the version
+controlled repository file system, use subversion to create the CentOS
+customization development line of web applications source code.  For
+example, using the above file system structure, you can create the
+customization development line of @file{webapp1-0.0.1/} with the
+following command:
+
+@verbatim
+svn cp trunk/WebApp1/Sources/webapp1-0.0.1 trunk/WebApp1/Sources/webapp1-0.0.1-webenv
+@end verbatim
+
+The command above creates the following structure:
+
+@verbatim
+https://projects.centos.org/svn/webenv/trunk/
+|-- WebApp1/
+|   |-- Sources/
+|   |   |-- webapp1-0.0.1/
+|   |   `-- webapp1-0.0.1-webenv/
+|   |-- Rpms/
+|   |   `-- webapp1-0.0.1.rpm
+|   |-- Srpms/
+|   |   `-- webapp1-0.0.1.srpm
+|   `-- Specs/
+|       `-- webapp1-0.0.1.spec
+|-- WebApp2/
+`-- WebAppN/
+@end verbatim
+
+In the above structure, the @file{webapp1-0.0.1-webenv/} directory is
+the place where you customize the visual style of
+@file{webapp1-0.0.1/} web application. 
+
+@quotation
+@strong{Tip} Use the @command{diff} command of Subversion between
+CentOS customization and upstream development lines to know what you
+are changing exactly.
+@end quotation
+
+@item Build packages
+
+When web application has been customized, build the web application
+RPM and SRPM using the source location with @samp{-webenv} prefix. 
+
+@verbatim
+https://projects.centos.org/svn/webenv/trunk/
+|-- WebApp1/
+|   |-- Sources/
+|   |   |-- webapp1-0.0.1/
+|   |   `-- webapp1-0.0.1-webenv/
+|   |-- Rpms/
+|   |   |-- webapp1-0.0.1.rpm
+|   |   `-- webapp1-0.0.1-webenv.rpm
+|   |-- Srpms/
+|   |   |-- webapp1-0.0.1.srpm
+|   |   `-- webapp1-0.0.1-webenv.srpm
+|   `-- Specs/
+|       |-- webapp1-0.0.1.spec
+|       `-- webapp1-0.0.1-webenv.spec
+|-- WebApp2/
+`-- WebAppN/
+@end verbatim
+
+@item Release for testing
+
+When the customized web application has been packaged, make packages
+available for testing and quality assurance. This can be achives using
+a [webenv-test] yum repository. 
+
+@quotation
+@strong{Note} The [webenv-test] repository is not shipped inside
+CentOS distribution default yum configuraiton. In order to use
+[webenv-test] repository you need to configure it first.
+@end quotation
+
+If some problem is found to install/update/use the customized version
+of web application, the problem is notified somewhere (a bugtracker
+maybe) and the customization face is repated in order to fix the
+problem. To release the new package add a number after @samp{-webenv}
+prefix. For example, if some problem is found in
+@file{webapp1-0.0.1-webenv.rpm}, when it be fixed the new package will
+be named @file{webapp1-0.0.1-webenv-1.rpm}. If a problem is found in
+@file{webapp1-0.0.1-webenv-1.rpm}, when it be fixed the new package
+will be named @file{webapp1-0.0.1-webenv-2.rpm}, and so on.
+
+The ``customization --- release for testing'' process is repeated
+until CentOS quality assurance team considers the package is ready for
+production.
+
+@item Release for production
+
+When customized web application packages are considered ready for
+production they are moved from [webenv-test] to [webenv] repository.
+This action is commited by CentOS quality assurance team.
+
+@quotation
+@strong{Note} The [webenv] repository is not shipped inside CentOS
+distribution default yum configuraiton. In order to use [webenv]
+repository you need to configure it first.
+@end quotation
+@end table
+
+@subsubsection The [webenv-test] repository
+
+@verbatim
+/etc/yum.repos.d/CentOS-Webenv-test.repo
+@end verbatim
+
+@verbatim
+[webenv-test]
+name=CentOS-$releasever - Webenv-test
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=webenv-test
+#baseurl=http://mirror.centos.org/centos/$releasever/webenv-test/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
+enabled=1
+priority=10
+@end verbatim
+
+@subsubsection The [webenv] repository
+
+@verbatim
+/etc/yum.repos.d/CentOS-Webenv.repo
+@end verbatim
+
+@verbatim
+[webenv]
+name=CentOS-$releasever - Webenv
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=webenv
+#baseurl=http://mirror.centos.org/centos/$releasever/webenv/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-$releasever
+enabled=1
+priority=10
+@end verbatim
+
+@subsubsection Priority configuration
+
+Both [webenv] and [webenv-test] repositories update packages inside
+CentOS [base] and CentOS [updates] repositories.
+
+@subsection Usage
+
+@itemize
+@item ...
+@end itemize
+
+@subsection See also
+
+@menu
+* Repository trunk Identity Models Img Promo Web::
+@end menu

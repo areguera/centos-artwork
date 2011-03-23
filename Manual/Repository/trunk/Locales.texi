@@ -1,0 +1,56 @@
+The @file{trunk/Locales} directory exists to store the translation
+messages used to produce content in different languages.
+
+Translation messages are organized using the directory structure of
+the component being translated. For example, if we want to provide
+translation messages for @file{trunk/Manuals/Repository}, then the
+@file{trunk/Locales/Manuals/Repository} directory needs to be created.
+
+Once the locale directory exists for the component we want to provide
+translation messages for, it is necessary to create the translation
+files where translation messages are. The translation files follows
+the concepts of @command{xml2po} and GNU @command{gettext} tools.
+
+The basic translation process is as follow: first, translatable
+strings are extracted from files and a portable object template (.pot)
+is created or updated with the information. Using the portable object
+template, a portable object (.po) is created or updated for translator
+to locale the messages retrived.  Finally, a machine object (.mo) is
+created from portable object to sotore the translated messages.
+
+Inside the repository there are two ways to retrive translatable
+strings from files. The first one is through @command{xml2po} command
+and the second through @command{xgettext} command. The @command{xml2po}
+is used to retrive translatable strings from XML files (e.g., Scalable
+Vector Graphics, DocBook, etc.) and the @command{xgettext} command is
+used to retrive translatable strings from shell scripts files (e.g.,
+the files that make the @command{centos-art.sh} command-line
+interface).
+
+When translatable strings are retrived from XML files, using the
+@command{xml2po} command, there is no need to create the machine
+object as we do when translatable strings ar retrived from shell
+files, using the @command{xgettext} command. The @command{xml2po}
+produces a temporal machine object in order to create a translated XML
+file. Once the translated XML file has been created the machine object
+is no longer needed. On the other hand, the machine object produced by
+the @command{xgettext} command is required by the system in order for
+the show shell script localized messages.
+
+Another difference between @command{xml2po} and @command{xgettext} we
+need to be aware of is the directory structure used to store machine
+objects. In @command{xml2po}, the machine object is created in the
+current working directory as @file{.xml2po.mo} and can be safetly
+removed once the translated XML file has been created. In the case of
+@command{xgettext}, the machine object needs to be stored in the
+@file{$TEXTDOMAIN/$LOCALE/LL_MESSAGES/$TEXTDOMAIN.mo} file in order
+for the system to interpret it and should not be removed since it is
+the file that contain the translation messages themselves.
+
+Automation of localization tasks is achived through the @code{locale}
+functionality of command-line interface.
+
+@menu
+* Repository trunk Scripts Bash Cli Functions Locale::
+@end menu
+
