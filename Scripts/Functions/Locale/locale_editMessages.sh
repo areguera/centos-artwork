@@ -30,9 +30,9 @@ function locale_editMessages {
 
     # Define list of files to process.
     if [[ ${WORKDIR} =~ 'trunk/Locales/Scripts' ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" ".*$(cli_getCurrentLocale)/${TEXTDOMAIN}\.po")
+        FILES=$(cli_getFilesList "${WORKDIR}" ".*/${TEXTDOMAIN}\.po")
     elif [[ ${WORKDIR} =~ 'trunk/Locales/.+' ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" ".*$(cli_getCurrentLocale)\.po")
+        FILES=$(cli_getFilesList "${WORKDIR}" ".*/messages\.po")
     else
         cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
         cli_printMessage "$(caller)" 'AsToKnowMoreLine'
