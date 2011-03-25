@@ -79,13 +79,35 @@ function help_getArguments {
                 shift 1
                 ;;
     
-            --read | * )
+            --read )
                 ACTIONNAM="${FUNCNAM}_searchNode"
                 FLAG_DONT_COMMIT_CHANGES='true'
+                shift 1
+                ;;
+
+            -- )
+                # Remove the `--' argument from the list of arguments
+                # in order for processing non-option arguments
+                # correctly. At this point all option arguments have
+                # been processed already but the `--' argument still
+                # remains to mark ending of option arguments and
+                # begining of non-option arguments. The `--' argument
+                # needs to be removed here in order to avoid
+                # centos-art.sh script to process it as a path inside
+                # the repository, which obviously is not.
+                shift 1
                 break
                 ;;
         esac
     done
+
+    # Define default action for help functionality.  This is, the
+    # action performed when no non-option argument is passed to
+    # centos-art.sh script command-line internface.
+    if [[ $# -eq 0 ]];then
+        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
+        exit
+    fi
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_doParseArgumentsReDef "$@"
