@@ -59,10 +59,16 @@ function cli_getCopyrightInfo {
             date +%Y
             ;;
     
-        '--copyright-holder' | * )
+        '--copyright-holder' )
             
             # Output default copyright holder.
             echo "The CentOS Project"
+            ;;
+
+        '--copyright' | * )
+            local YEAR=$(cli_getCopyrightInfo '--copyright-year')
+            local HOLDER=$(cli_getCopyrightInfo '--copyright-holder')
+            echo "Copyright © $YEAR $HOLDER"
             ;;
 
     esac
