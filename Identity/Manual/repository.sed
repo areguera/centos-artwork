@@ -1,8 +1,7 @@
 #!/bin/sed 
 #
-# transformations.sed -- This file replace some HTML texi2html outputs
-# in order to make Modern's CSS definitions usable by texi2html
-# output.
+# repository.sed -- This file replaces texi2html outputs in order to
+# make The CentOS Project CSS definitions usable by texi2html output.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
@@ -26,21 +25,17 @@
 # ----------------------------------------------------------------------
 
 # Quotations.
-s!<blockquote><p><strong>Note</strong>!<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-info.png" alt="info"><h3>Note</h3><p>!g
+s!<blockquote><p><strong>Note</strong>!<blockquote class="blue"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-info.png" alt="info"><h3>Note</h3><p>!g
 
-s!<blockquote><p><strong>Warning</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p>!g
+s!<blockquote><p><strong>Warning</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p>!g
 
-s!<blockquote><p><strong>Important</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-star.png" alt="Important"><h3>Important</h3><p>!g
+s!<blockquote><p><strong>Important</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important"><h3>Important</h3><p>!g
 
-s!<blockquote><p><strong>Tip</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p>!g
+s!<blockquote><p><strong>Tip</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p>!g
 
-s!<blockquote><p><strong>Caution</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p>!g
+s!<blockquote><p><strong>Caution</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p>!g
 
-s!<blockquote><p><strong>Convenction</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-ruler.png" alt="Convenction"><h3>Convenction</h3><p>!g
-
-s!<blockquote><p><strong>Redirection</strong>!<blockquote class="green"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-doc-redirect.png" alt="Redirection"><h3>Redirection</h3><p>!g
-
-s!<blockquote><p><strong>Removed</strong>!<blockquote class="red"><img src="/home/centos/artwork/trunk/Identity/Widgets/Img/icon-admonition-doc-old.png" alt="Removed"><h3>Removed</h3><p>!g
+s!<blockquote><p><strong>Convenction</strong>!<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-ruler.png" alt="Convenction"><h3>Convenction</h3><p>!g
 
 # Headings
 s!<hr size="[[:digit:]]">!!g
