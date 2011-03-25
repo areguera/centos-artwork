@@ -62,14 +62,10 @@ function locale {
         # copy.
         cli_checkRepoDirSource
 
-        # Define base directory where locale directory structures will
-        # be stored in.
-        BASEDIR="$(cli_getRepoTLDir)/Locales"
-
         # Define work directory. This is the place where locales
         # directories will be stored in.
         WORKDIR=$(echo ${ACTIONVAL} \
-            | sed -r -e "s!.+/trunk/(Identity|Manual|Scripts)!${BASEDIR}/\1!")
+            | sed -r -e "s!(Identity|Scripts)(.*)!\1/Locales\2!")
 
         # Add current locale to work directory. This is the place
         # where parent directories specific translation messages
@@ -78,11 +74,6 @@ function locale {
         # translatable files inside the parent directory and never for
         # individual files inside the same parent directory.
         WORKDIR=$WORKDIR/$(cli_getCurrentLocale)
-
-        # Create work directory if it doesn't exist.
-        if [[ ! -d $WORKDIR ]];then
-            mkdir -p $WORKDIR
-        fi
 
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
