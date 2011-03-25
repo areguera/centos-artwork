@@ -28,11 +28,12 @@ function locale_editMessages {
 
     local FILES=''
 
-    # Define list of files to process.
-    if [[ ${WORKDIR} =~ 'trunk/Locales/Scripts' ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" ".*/${TEXTDOMAIN}\.po")
-    elif [[ ${WORKDIR} =~ 'trunk/Locales/.+' ]];then
+    # Define list of locale files to process using action value as
+    # reference.
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Manual|Models/.+)$" ]];then
         FILES=$(cli_getFilesList "${WORKDIR}" ".*/messages\.po")
+    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
+        FILES=$(cli_getFilesList "${WORKDIR}" ".*/${TEXTDOMAIN}\.po")
     else
         cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
