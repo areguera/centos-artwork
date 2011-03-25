@@ -41,7 +41,7 @@ function help_updateOutputFileHtml {
     # format to html using CentOS Web default visual style.
     texi2html ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}-html --split section \
         --nosec-nav \
-        --css-include=${HOME}/artwork/trunk/Identity/Models/Css/Texi2html/stylesheet.css \
+        --css-include=${HOME}/artwork/trunk/Identity/Manual/repository-html/stylesheet.css \
         -I=${HOME}/artwork
 
     # Apply html transformations. Html transformations rely on
@@ -50,7 +50,7 @@ function help_updateOutputFileHtml {
     # specific css definitions. This way we extend the visual style of
     # Texi2html default html output.
     sed -r -i \
-        -f ${HOME}/artwork/trunk/Identity/Models/Css/Texi2html/transformations.sed \
+        -f ${HOME}/artwork/trunk/Identity/Manual/repository.sed \
         ${MANUAL_BASEFILE}-html/*.html
 
     # Remove html output directory from directory stack.
