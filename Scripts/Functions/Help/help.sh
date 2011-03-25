@@ -33,7 +33,7 @@ function help {
     # Define manuals base directory. This is the place where
     # documentation manuals base directory structures are stored and
     # organized in.
-    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
+    MANUAL_BASEDIR="${HOME}/artwork/trunk/Identity/Manual"
 
     # Define file name for documentation manual. This is the file used
     # to initiate the structure of documentation manual.
@@ -58,20 +58,9 @@ function help {
     # In that sake, we defined action name inside help_getArguments,
     # at the moment of interpreting options.
 
-    # Define default manual node shown when no argument is provided to
-    # help functionality.  By default, the Top node of repository
-    # manual is called.
-    if [[ $ACTIONNAM == '' ]] && [[ $ACTIONVAL == '' ]];then
-        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
-    fi
-
     # Define action value. As convenction, we use non-option arguments
     # to define the action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
-
-        if [[ $ACTIONVAL == '--' ]];then
-            continue
-        fi
 
         # Check action value passed through the command-line using
         # source directory definition as reference.
