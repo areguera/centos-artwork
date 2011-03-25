@@ -99,13 +99,13 @@ function cli_getPathComponent {
     # without affection, in their own directory structures.
     #
     #   Example:
-    #                               +------> theme name
-    #                           |-->| 
-    #   trunk/.../Themes/Motifs/Flame/1
-    #   trunk/.../Themes/Motifs/Flame/2 
-    #   trunk/.../Themes/Motifs/Flame/3
-    #                                 |
-    #                                 +----> theme release version
+    #                                +------> theme name
+    #                                |-->| 
+    #   trunk/Identity/Images/Themes/Flame/1
+    #   trunk/Identity/Images/Themes/Flame/2 
+    #   trunk/Identity/Images/Themes/Flame/3
+    #                                      |
+    #                                      +----> theme version
     #
     # Sometimes we only need to retrive the theme name, but othertimes
     # both the theme name and its work-line is required as well.
@@ -143,11 +143,11 @@ function cli_getPathComponent {
     # The tag frozen line is mainly used to perform theme releases.
     #
     #   Example:
-    #                                  +------> theme name
-    #                              |-->| 
-    #       tags/.../Themes/Motifs/Flame/1.0
-    #      trunk/.../Themes/Motifs/Flame/1 |--> minor update
-    #                                    |----> major udpate
+    #                                   +------> theme name
+    #                                   |-->| 
+    #       tags/Identity/Images/Themes/Flame/1.0
+    #      trunk/Identity/Images/Themes/Flame/1 |--> minor update
+    #                                         |----> major udpate
     #
     # Tags have the format X.Z, where X is the first number in the
     # name (e.g., `1') and represents the trunk/branches artistic
@@ -163,38 +163,38 @@ function cli_getPathComponent {
     #
     #   Consider the following relations: 
     #
-    #       trunk/.../Themes/Motifs/Flame/1
-    #       tags/.../Themes/Motifs/Flame/1.0
-    #       tags/.../Themes/Motifs/Flame/1.1
-    #       tags/.../Themes/Motifs/Flame/1.2
+    #       trunk/Identity/Images/Themes/Flame/1
+    #       tags/Identity/Images/Themes/Flame/1.0
+    #       tags/Identity/Images/Themes/Flame/1.1
+    #       tags/Identity/Images/Themes/Flame/1.2
     #
-    #       trunk/.../Themes/Motifs/Flame/2
-    #       tags/.../Themes/Motifs/Flame/2.0
-    #       tags/.../Themes/Motifs/Flame/2.1
-    #       tags/.../Themes/Motifs/Flame/2.2
+    #       trunk/Identity/Images/Themes/Flame/2
+    #       tags/Identity/Images/Themes/Flame/2.0
+    #       tags/Identity/Images/Themes/Flame/2.1
+    #       tags/Identity/Images/Themes/Flame/2.2
     #
-    #       trunk/.../Themes/Motifs/TreeFlower/1
+    #       trunk/Identity/Images/Themes/TreeFlower/1
     #       ...
     #       and so on. 
     #
     # Tag versions are created to release fixes and improvements, Tags
     # are immutable (i.e., once tags are created, they shouldn't be
     # modified.).
-    PATTERN[2]="^.+/Identity/Themes/Motifs/(([A-Za-z0-9]+)/${PATTERN[0]})/.+$"
+    PATTERN[2]="^.+/Identity/Images/Themes/(([A-Za-z0-9]+)/(${PATTERN[0]}))/.+$"
 
     # Identify which part of the release we want to output.
     case "$OPTION" in
 
         '--release' )
-            echo "$LOCATION" | sed -r "s!.*/${PATTERN[0]}/.*!\1!"
+            echo "$LOCATION" | egrep "${PATTERN[0]}" | sed -r "s!.*/${PATTERN[0]}/.*!\1!"
             ;;
 
         '--release-major' )
-            echo "$LOCATION" | sed -r "s!.*/${PATTERN[0]}/.*!\2!"
+            echo "$LOCATION" | egrep "${PATTERN[0]}" | sed -r "s!.*/${PATTERN[0]}/.*!\2!"
             ;;
 
         '--release-minor' )
-            echo "$LOCATION" | sed -r "s!.*/${PATTERN[0]}/.*!\4!"
+            echo "$LOCATION" | egrep "${PATTERN[0]}" | sed -r "s!.*/${PATTERN[0]}/.*!\4!"
             ;;
 
         '--release-pattern' )
@@ -202,7 +202,7 @@ function cli_getPathComponent {
             ;;
 
         '--architecture' )
-            echo "$LOCATION" | sed -r "s!${PATTERN[1]}!\1!"
+            echo "$LOCATION" | egrep "${PATTERN[1]}" | sed -r "s!${PATTERN[1]}!\1!"
             ;;
 
         '--architecture-pattern' )
@@ -210,15 +210,15 @@ function cli_getPathComponent {
             ;;
 
         '--theme' )
-            echo "$LOCATION" | sed -r "s!${PATTERN[2]}!\1!"
+            echo "$LOCATION" | egrep "${PATTERN[2]}" | sed -r "s!${PATTERN[2]}!\1!"
             ;;
 
         '--theme-name' )
-            echo "$LOCATION" | sed -r "s!${PATTERN[2]}!\2!"
+            echo "$LOCATION" | egrep "${PATTERN[2]}" | sed -r "s!${PATTERN[2]}!\2!"
             ;;
 
         '--theme-release' )
-            echo "$LOCATION" | sed -r "s!${PATTERN[2]}!\3!"
+            echo "$LOCATION" | egrep "${PATTERN[2]}" | sed -r "s!${PATTERN[2]}!\3!"
             ;;
 
         '--theme-pattern' )
