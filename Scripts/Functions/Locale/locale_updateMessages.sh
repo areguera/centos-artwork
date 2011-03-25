@@ -32,17 +32,17 @@ function locale_updateMessages {
 
     local ACTIONNAM=''
 
-    # Evaluate working directory to determine whether to use xml2po to
+    # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $WORKDIR =~ "^${BASEDIR}/(Identity|Manual)" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Manual|Models/.+)$" ]];then
 
         # Update translatable strings inside portable object templates
         # for XML-based files (e.g., scalable vector graphics).
         ACTIONNAM="${FUNCNAM}_updateMessageXml"
 
-    elif [[ $WORKDIR =~ "^${BASEDIR}/Scripts" ]];then
+    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
 
         # Update translatable strings inside portable object templates
         # for shell scripts (e.g., centos-art.sh script).
