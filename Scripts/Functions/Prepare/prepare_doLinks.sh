@@ -66,7 +66,7 @@ function prepare_doLinks {
 
     # Define both source and target location for centos-art command.
     LINKS_SRC[0]=${HOME}/bin/$CLI_PROGRAM
-    LINKS_DST[0]=${CLI_BASEDIR}/init.sh
+    LINKS_DST[0]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
 
     # Define both source and target location for fonts.
     local FONTS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf')
@@ -77,35 +77,52 @@ function prepare_doLinks {
 
     # Define both source and target location for Gimp and Inkscape
     # palettes.
-    local PALETTES=$(cli_getFilesList "$HOME/artwork/trunk/Identity/Themes/Motifs/*/*/Palettes
-        ${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
+    local PALETTES=$(cli_getFilesList \
+        "${HOME}/artwork/trunk/Identity/Images/Themes/*/*/Palettes
+         ${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
     for PALETTE in $PALETTES;do
-        if [[ $PALETTE =~ $(cli_getPathComponent '--theme-pattern') ]];then
-            PREFIX="$(cli_getPathComponent "$PALETTE" '--theme-name')-$(cli_getPathComponent "$PALETTE" '--theme-release')-"
+        if [[ "$PALETTE" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
+            NAME="$(cli_getRepoName "$(cli_getPathComponent "$PALETTE" '--theme-name')" 'f')-"
+            VERS="$(cli_getPathComponent "$PALETTE" '--theme-release')-"
+        else
+            NAME=''
+            VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/${PREFIX}$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/${PREFIX}$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
     done
 
     # Define both source and target location for Gimp brushes.
     local BRUSHES=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Brushes" \
-        ".+\.(gbr|gih)")
+        "${HOME}/artwork/trunk/Identity/Images/Themes/*/*/Brushes
+         ${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)")
     for BRUSH in $BRUSHES;do
-        PREFIX="$(cli_getPathComponent "$BRUSH" '--theme-name')-$(cli_getPathComponent "$BRUSH" '--theme-release')"
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/${PREFIX}-$(basename $BRUSH)
+        if [[ "$BRUSH" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
+            NAME="$(cli_getRepoName "$(cli_getPathComponent "$BRUSH" '--theme-name')" 'f')-"
+            VERS="$(cli_getPathComponent "$BRUSH" '--theme-release')-"
+        else
+            NAME=''
+            VERS=''
+        fi
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/${NAME}${VERS}$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
 
     # Define both source and target location for Gimp patterns.
     local PATTERNS=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Patterns" \
-        ".+\.png")
+        "${HOME}/artwork/trunk/Identity/Images/Themes/*/*/Patterns
+         ${HOME}/artwork/trunk/Identity/Patterns" ".+\.png")
     for PATTERN in $PATTERNS;do
-        PREFIX="$(cli_getPathComponent "$PATTERN" '--theme-name')-$(cli_getPathComponent "$PATTERN" '--theme-release')"
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/${PREFIX}-$(basename $PATTERN)
+        if [[ "$PATTERN" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
+            NAME="$(cli_getRepoName "$(cli_getPathComponent "$PATTERN" '--theme-name')" 'f')-"
+            VERS="$(cli_getPathComponent "$PATTERN" '--theme-release')-"
+        else
+            NAME=''
+            VERS=''
+        fi
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/${NAME}${VERS}$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
 
