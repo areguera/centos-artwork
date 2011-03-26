@@ -78,7 +78,7 @@ function prepare_doLinks {
     # Define both source and target location for Gimp and Inkscape
     # palettes.
     local PALETTES=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Images/Themes/*/*/Palettes
+        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Palettes
          ${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
     for PALETTE in $PALETTES;do
         if [[ "$PALETTE" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
@@ -96,7 +96,7 @@ function prepare_doLinks {
 
     # Define both source and target location for Gimp brushes.
     local BRUSHES=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Images/Themes/*/*/Brushes
+        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Brushes
          ${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)")
     for BRUSH in $BRUSHES;do
         if [[ "$BRUSH" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
@@ -112,7 +112,7 @@ function prepare_doLinks {
 
     # Define both source and target location for Gimp patterns.
     local PATTERNS=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Images/Themes/*/*/Patterns
+        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Patterns
          ${HOME}/artwork/trunk/Identity/Patterns" ".+\.png")
     for PATTERN in $PATTERNS;do
         if [[ "$PATTERN" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
