@@ -77,31 +77,31 @@ div#page-body a.nonexistent:hover { color: gray; }
 
 div#page-body a.www:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/a-www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.http:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/a-www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.https:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/a-www.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.mailto:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/a-mail.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-mail.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.attachment:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/a-attach.png); 
+    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-attach.png); 
     margin: 0 0.2em; 
     }
 
@@ -281,7 +281,7 @@ div.page-line.white {
 -----------------------------------------------*/
 
 div#page-body ul { 
-    list-style: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/ul.png") circle; 
+    list-style: url("/home/centos/artwork/trunk/Identity/Images/Webenv/ul.png") circle; 
     } 
 
 div#page-body div#content-links ul {
@@ -307,7 +307,7 @@ div#page-body div#content-links ul li.current {
 
 div#page-body div.toc {
 	border: 1px solid #CCCCCC;
-	background: #FFF url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/toc-bg.png") right repeat-y; 
+	background: #FFF url("/home/centos/artwork/trunk/Identity/Images/Webenv/toc-bg.png") right repeat-y; 
 	font-size: small;
 	text-align:left;
 	margin-left: 1.5em;
@@ -316,7 +316,7 @@ div#page-body div.toc {
 
 div#page-body div.toc h3 {
     margin-top: 0;
-    background: #FFF url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/h2-bg.png");
+    background: #FFF url("/home/centos/artwork/trunk/Identity/Patterns/centos-header-2.png");
     }
 
 div#page-body div.toc ul {
@@ -331,7 +331,7 @@ div#page-body div.toc ul ul {
 -----------------------------------------------*/
 
 div#page-body blockquote {
-    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/msg-bg-gray.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-gray.png");
 	}
 
 div#page-body blockquote h3 {
@@ -361,7 +361,7 @@ div#page-body blockquote.message {
 	}
 
 div#page-body blockquote.blue {
-    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/msg-bg-blue.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-blue.png");
 	border-color: #D2E0F6; 
 	background-color: #ECF4FF;
 	}
@@ -369,25 +369,25 @@ div#page-body blockquote.blue {
 div#page-body blockquote.orange {
     border-color: #F6E7D2; 
     background-color: #FFF8EC;
-    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/msg-bg-orange.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-orange.png");
 	}
 
 div#page-body blockquote.violet {
     border-color: #F6D2F6; 
     background-color: #FFECFF;
-    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/msg-bg-violet.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-violet.png");
 	}	
 
 div#page-body blockquote.red {
     border-color: #E0B7B7;
     background-color: #FFECEC;
-    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/msg-bg-red.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-red.png");
 	}
 
 div#page-body blockquote.green {
     border-color: #D6F6D2;
     background-color: #EEFFEC;
-    background-image: url("/home/centos/artwork/trunk/Identity/Models/Img/Promo/Web/msg-bg-green.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-green.png");
 	}
 
 /* Forms
