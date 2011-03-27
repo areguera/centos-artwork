@@ -82,14 +82,19 @@ function render {
     # action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
         
-        if [[ $ACTIONVAL == '--' ]];then
-            continue
-        fi
-
         # Check action value. Be sure the action value matches the
         # convenctions defined for source locations inside the working
         # copy.
         cli_checkRepoDirSource
+
+        # Define the renderable top directory structure. This is, the
+        # place where renderable directory structures are stored.
+        # Directory structures outside this directory won't be
+        # processed.
+        if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Identity/Images|$(cli_getPathComponent '--theme-pattern'))" ]];then
+            cli_printMessage "`gettext "The path provided doesn't support rendition."`" 'AsErrorLine'
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        fi
 
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
