@@ -79,7 +79,17 @@ function locale_getArguments {
                 shift 1
                 ;;
 
-            * )
+            -- )
+                # Remove the `--' argument from the list of arguments
+                # in order for processing non-option arguments
+                # correctly. At this point all option arguments have
+                # been processed already but the `--' argument still
+                # remains to mark ending of option arguments and
+                # begining of non-option arguments. The `--' argument
+                # needs to be removed here in order to avoid
+                # centos-art.sh script to process it as a path inside
+                # the repository, which obviously is not.
+                shift 1
                 break
                 ;;
         esac
