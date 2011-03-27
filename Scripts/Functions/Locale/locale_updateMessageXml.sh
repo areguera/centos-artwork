@@ -34,9 +34,13 @@ function locale_updateMessageXml {
     # (.pot) and portable objects (.po) files.
     FILE="${WORKDIR}/messages"
 
+    # Define regular expression to match extensions of XML files we
+    # use inside the repository.
+    local EXTENSIONS='(svg|xml|xhtml|docbook)'
+
     # Build list of files to process.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Identity|Manual)" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.(svg|xml|docbook)")
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.${EXTENSIONS}")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
