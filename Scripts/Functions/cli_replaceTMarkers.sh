@@ -64,7 +64,9 @@ function cli_replaceTMarkers {
     SRC[15]='=URL_MIRRORS='
     SRC[16]='=URL_DOCS='
     SRC[17]='=MAIL_DOCS='
-    SRC[18]='=LOCALE_LL='
+    SRC[18]='=URL_LL='
+    SRC[19]='=DOMAIN_LL='
+    SRC[20]='=URL_IRC='
 
     # Define replacements for translation markers.
     DST[0]="$(cli_getCopyrightInfo '--copyright-year')"
@@ -77,19 +79,25 @@ function cli_replaceTMarkers {
     DST[7]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release')"
     DST[8]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-major')"
     DST[9]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-minor')"
-    DST[10]="http://www.centos.org/=LOCALE_LL="
+    DST[10]="http://www.centos.org/=URL_LL="
     DST[11]="$(cli_getPathComponent "$FLAG_BASEARCH" '--architecture')"
-    DST[12]="http://wiki.centos.org/=LOCALE_LL="
-    DST[13]="http://lists.centos.org/=LOCALE_LL="
-    DST[14]="http://forums.centos.org/=LOCALE_LL="
-    DST[15]="http://mirrors.centos.org/=LOCALE_LL="
-    DST[16]="http://docs.centos.org/=LOCALE_LL="
-    DST[17]="centos-docs@=LOCALE_LL=.centos.org"
+    DST[12]="http://wiki.centos.org/=URL_LL="
+    DST[13]="http://lists.centos.org/=URL_LL="
+    DST[14]="http://forums.centos.org/=URL_LL="
+    DST[15]="http://mirrors.centos.org/=URL_LL="
+    DST[16]="http://docs.centos.org/=URL_LL="
+    DST[17]="centos-docs@=LOCALE=.centos.org"
     if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
         DST[18]="$(cli_getCurrentLocale '--langcode-only')/"
     else
-        DST[18]=''
+        DST[18]=""
     fi
+    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
+        DST[19]="$(cli_getCurrentLocale '--langcode-only')."
+    else
+        DST[19]=""
+    fi
+    DST[20]='http://www.centos.org/modules/tinycontent/index.php?id=8'
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
