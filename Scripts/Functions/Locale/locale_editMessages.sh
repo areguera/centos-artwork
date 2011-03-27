@@ -30,7 +30,7 @@ function locale_editMessages {
 
     # Define list of locale files to process using action value as
     # reference.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Manual|Models/.+)$" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
         FILES=$(cli_getFilesList "${WORKDIR}" ".*/messages\.po")
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
         FILES=$(cli_getFilesList "${WORKDIR}" ".*/${TEXTDOMAIN}\.po")
