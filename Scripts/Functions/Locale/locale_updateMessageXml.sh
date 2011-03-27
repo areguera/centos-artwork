@@ -36,11 +36,11 @@ function locale_updateMessageXml {
 
     # Define regular expression to match extensions of XML files we
     # use inside the repository.
-    local EXTENSIONS='(svg|xml|xhtml|docbook)'
+    local EXTENSION='(svg|xml|xhtml|docbook)'
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.${EXTENSIONS}")
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.${EXTENSION}")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
