@@ -53,10 +53,6 @@ function locale {
     # to define the action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
 
-        if [[ $ACTIONVAL == '--' ]];then
-            continue
-        fi
-
         # Check action value. Be sure the action value matches the
         # convenctions defined for source locations inside the working
         # copy.
