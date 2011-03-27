@@ -46,7 +46,7 @@ div#page-header,
 div#wrap,
 div#page-body,
 div#page-footer {
-    min-width: 650px;
+    min-width: 730px;
     }
 
 div#page-body {
@@ -67,6 +67,103 @@ div#page-header div#logo img {
 	float: left;
     margin: 5px;
 	}
+
+/* Headings
+-----------------------------------------------*/
+
+div#page-body h1 {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1.9em;
+        margin-top: 0.9em;
+        margin-bottom: 0.9em;
+        padding-left: 0.7em;
+        color: #FFF;
+        border: none;
+        background: #204C8D url("/home/centos/artwork/trunk/Identity/Patterns/centos-header-1.png");
+        }
+
+div#page-body h2 {
+        font-size: 1.4em;
+        line-height: 1.8em;
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        padding-left: 0.7em;
+        background: #FFF url("/home/centos/artwork/trunk/Identity/Patterns/centos-header-2.png");
+        border: none;
+        color: #072B61;
+        }
+
+div#page-body h3 {
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #DADADA;
+        }
+
+div#page-body h4 {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        border-bottom: none;
+        }
+
+div#page-body h5 {
+        font-size: 1.1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+div#page-body h6 {
+        font-size: 1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em;
+        color: #072B61;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+div#page-body h1 a:link  { text-decoration: none; color: #FFF }
+div#page-body h1 a:hover { text-decoration: none; color: #FFF; }
+div#page-body h1 a:active { text-decoration: underline; color: #FFF; }
+div#page-body h1 a:visited { text-decoration: none; color: #FFF; }
+div#page-body h1 a:visited:hover { text-decoration: none; color: #FFF; }
+
+div#page-body h2 a:link, div#page-body h2 a:visited, div#page-body h2 a:hover, 
+div#page-body h2 a:active, div#page-body h2 a:visited:hover, 
+div#page-body h3 a:link, div#page-body h3 a:visited, div#page-body h3 a:hover,
+div#page-body h3 a:active, div#page-body h3 a:visited:hover, 
+div#page-body h4 a:link, div#page-body h4 a:visited, div#page-body h4 a:hover,
+div#page-body h4 a:active, div#page-body h4 a:visited:hover, 
+div#page-body h5 a:link, div#page-body h5 a:visited, div#page-body h5 a:hover,
+div#page-body h5 a:active, div#page-body h5 a:visited:hover, 
+div#page-body h6 a:link, div#page-body h6 a:visited, div#page-body h6 a:hover,
+div#page-body h6 a:active, div#page-body h6 a:visited:hover {
+	color: #072B61; 
+	text-decoration: none;
+}
+
+/* Paragraphs
+-----------------------------------------------*/
+
+p {
+    margin-left: 1.5em;
+    }
 
 /* Links 
 -----------------------------------------------*/
@@ -164,105 +261,6 @@ div#page-body div#content div.trail span:after {
 div#page-header div.links div.trail span.last:after,
 div#page-body div#content div.trail span.last:after {
 	content: none;
-	}
-
-/* Headings
------------------------------------------------*/
-
-div#page-body h1 {
-        font-size: 1.7em;
-        font-weight: bold;
-        line-height: 1.9em;
-        margin-top: 0.9em;
-        margin-bottom: 0.9em;
-        padding-left: 0.7em;
-        color: #FFF;
-        border: none;
-        background: #204C8D url("/home/centos/artwork/trunk/Identity/Patterns/centos-header-1.png");
-        }
-
-div#page-body h2 {
-        font-size: 1.4em;
-        line-height: 1.8em;
-        margin-top: 1.6em;
-        margin-bottom: 0.8em;
-        padding-left: 0.7em;
-        background: #FFF url("/home/centos/artwork/trunk/Identity/Patterns/centos-header-2.png");
-        border: none;
-        color: #072B61;
-        }
-
-div#page-body h3 {
-        font-size: 1.25em;
-        line-height: 1.6em;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        padding-left: 0.7em;
-        color: #072B61;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        border-bottom-color: #DADADA;
-        }
-
-div#page-body h4 {
-        font-size: 1.2em;
-        line-height: 1.4em;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        padding-left: 0.7em;
-        color: #072B61;
-        border-bottom: none;
-        }
-
-div#page-body h5 {
-        font-size: 1.1em;
-        line-height: 1.1em;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        padding-left: 0.7em;
-        color: #072B61;
-        font-weight: bold;
-        border-bottom: none;
-        }
-
-div#page-body h6 {
-        font-size: 1em;
-        line-height: 1.1em;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-        padding-left: 0.7em;
-        color: #072B61;
-        font-weight: bold;
-        border-bottom: none;
-        }
-
-div#page-body h1 a:link  { text-decoration: none; color: #FFF }
-div#page-body h1 a:hover { text-decoration: none; color: #FFF; }
-div#page-body h1 a:active { text-decoration: underline; color: #FFF; }
-div#page-body h1 a:visited { text-decoration: none; color: #FFF; }
-div#page-body h1 a:visited:hover { text-decoration: none; color: #FFF; }
-
-div#page-body h2 a:link, div#page-body h2 a:visited, div#page-body h2 a:hover, 
-div#page-body h2 a:active, div#page-body h2 a:visited:hover, 
-div#page-body h3 a:link, div#page-body h3 a:visited, div#page-body h3 a:hover,
-div#page-body h3 a:active, div#page-body h3 a:visited:hover, 
-div#page-body h4 a:link, div#page-body h4 a:visited, div#page-body h4 a:hover,
-div#page-body h4 a:active, div#page-body h4 a:visited:hover, 
-div#page-body h5 a:link, div#page-body h5 a:visited, div#page-body h5 a:hover,
-div#page-body h5 a:active, div#page-body h5 a:visited:hover, 
-div#page-body h6 a:link, div#page-body h6 a:visited, div#page-body h6 a:hover,
-div#page-body h6 a:active, div#page-body h6 a:visited:hover {
-	color: #072B61; 
-	text-decoration: none;
-}
-
-/* Paragraphs
------------------------------------------------*/
-
-div#page-body p {
-	margin: 1em;
-	margin-left: 1.5em;
-	line-height: 1.5em;
 	}
 
 /* Page Lines
