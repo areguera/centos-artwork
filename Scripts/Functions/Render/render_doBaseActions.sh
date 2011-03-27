@@ -51,7 +51,7 @@ function render_doBaseActions {
     # structure.
     local -a LASTACTIONS
 
-    # Check theme model directory structure.
+    # Verify default directory where design models are stored in.
     cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${FLAG_THEME_MODEL}" 'd'
 
     # Verify post-rendition actions passed from command-line and add
@@ -64,7 +64,7 @@ function render_doBaseActions {
     # file extensions that centos-art will look for in order to build
     # the list of files to process. The list of files to process
     # contains the files that match this extension pattern.
-    EXTENSION='\.(svgz|svg|docbook)'
+    EXTENSION='(svgz|svg|xml|xhtml|docbook)'
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
@@ -72,14 +72,14 @@ function render_doBaseActions {
     # Define base location of template files.
     render_getDirTemplate
     
-    # Define list of files to process as array variable. This make
-    # posible to realize verifications like: is the current base
-    # directory equal to the next one in the list of files to process?
-    # This is used to know when centos-art.sh is leaving a directory
-    # structure and entering into another. This information is
-    # required in order for centos-art.sh to know when to apply
-    # last-rendition actions.
-    for FILE in $(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*${EXTENSION}");do
+    # Define list of files to process. Use an array variable to store
+    # the list of files to process. This make posible to realize
+    # verifications like: is the current base directory equal to the
+    # next one in the list of files to process?  This is used to know
+    # when centos-art.sh is leaving a directory structure and entering
+    # into another. This information is required in order for
+    # centos-art.sh to know when to apply last-rendition actions.
+    for FILE in $(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.${EXTENSION}");do
         FILES[((++${#FILES[*]}))]=$FILE
     done
 
@@ -110,7 +110,7 @@ function render_doBaseActions {
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
-           | sed -r 's!/trunk/(Identity/)!/trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
+           | sed -r 's!/trunk/Identity/(Models|Themes/Models)!/trunk/Identity/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
@@ -139,11 +139,11 @@ function render_doBaseActions {
         # path string. The common point is the name of the parent
         # directory (stored in PARENTDIR).
         #
-        # trunk/Locales/Identity/.../Firstboot/3/splash-small.svg
+        # Identity/Themes/Models/.../Firstboot/3/splash-small.svg
         # -------------------------^| the     |^------------^
         # variable path             | common  |    common path
         # -------------------------v| point   |    v------------v
-        # trunk/Identity/Themes/M.../Firstboot/Img/3/splash-small.png
+        # Identity/Themes/Motifs/.../Firstboot/Img/3/splash-small.png
         #
         # What we do here is remove the varibale path, the common
         # point, and the file extension parts in the string holding
@@ -156,13 +156,13 @@ function render_doBaseActions {
         # configuration let us use different extensions for the same
         # file name.
         #
-        # When we render using renderImage function, the structure of
+        # When we render using base-rendition action, the structure of
         # files under the output directory will be the same used after
         # the common point in the related design model directory
         # structure.
         FILE=$(echo ${FILE} \
             | sed -r "s!.*${PARENTDIR}/!!" \
-            | sed -r "s/${EXTENSION}$//")
+            | sed -r "s/\.${EXTENSION}$//")
 
         # Define absolute path to final file (without extension).
         FILE=${OUTPUT}/$(basename "${FILE}")
@@ -205,14 +205,25 @@ function render_doBaseActions {
             
         elif [[ $INSTANCE =~ '\.docbook$' ]];then
 
-            # Perform base-rendition action for docbook files.
+            # Perform base-rendition action for Docbook files.
             render_doDocbook
 
-            # Perform post-rendition action for docbook files.
+            # Perform post-rendition action for Docbook files.
             #render_doDocbookPostActions
 
-            # Perform base-rendition action for docbook files.
+            # Perform base-rendition action for Docbook files.
             #render_doDocbookLastActions
+
+        elif [[ $INSTANCE =~ '\.xhtml$' ]];then
+
+            # Perform base-rendition action for XHTML files.
+            render_doXhtml
+
+            # Perform post-rendition action for Docbook files.
+            #render_doXhtmlPostActions
+
+            # Perform base-rendition action for Xhtml files.
+            #render_doXhtmlLastActions
 
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" 'AsErrorLine'
