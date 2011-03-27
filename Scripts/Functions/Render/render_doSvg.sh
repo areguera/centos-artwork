@@ -34,8 +34,7 @@ function render_doSvg {
     grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
     if [[ $? -gt 0 ]];then
         cli_printMessage "`eval_gettext "There is no export id (\\\$EXPORTID) inside \\\$TEMPLATE."`" "AsErrorLine"
-        cli_printMessage '-' 'AsSeparatorLine'
-        continue
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
     # Check existence of external files. Inside design templates and
