@@ -67,6 +67,7 @@ function cli_replaceTMarkers {
     SRC[18]='=URL_LL='
     SRC[19]='=DOMAIN_LL='
     SRC[20]='=URL_IRC='
+    SRC[21]='=LOCALE_LL='
 
     # Define replacements for translation markers.
     DST[0]="$(cli_getCopyrightInfo '--copyright-year')"
@@ -86,7 +87,7 @@ function cli_replaceTMarkers {
     DST[14]="http://forums.centos.org/=URL_LL="
     DST[15]="http://mirrors.centos.org/=URL_LL="
     DST[16]="http://docs.centos.org/=URL_LL="
-    DST[17]="centos-docs@=LOCALE=.centos.org"
+    DST[17]="centos-docs@centos.org"
     if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
         DST[18]="$(cli_getCurrentLocale '--langcode-only')/"
     else
@@ -98,6 +99,7 @@ function cli_replaceTMarkers {
         DST[19]=""
     fi
     DST[20]='http://www.centos.org/modules/tinycontent/index.php?id=8'
+    DST[21]="$(cli_getCurrentLocale '--langcode-only')"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
