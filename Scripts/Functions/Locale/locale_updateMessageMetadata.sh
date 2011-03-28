@@ -53,8 +53,8 @@ function locale_updateMessageMetadata {
 
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${CLI_PROGRAM} (${CURRENTLOCALE})\\\n\""
-    DST[1]="\"Report-Msgid-Bugs-To: =MAIL_DOCS=\\\n\""
-    DST[2]="\"Last-Translator: CentOS Documentation SIG\\\n\""
+    DST[1]="\"Report-Msgid-Bugs-To: CentOS Documentation SIG <=MAIL_DOCS=>\\\n\""
+    DST[2]="\"Last-Translator: CentOS Documentation SIG <=MAIL_DOCS=>\\\n\""
     DST[3]="\"Language-Team: ${LANGNAME}\\\n\""
 
     # Change pattern lines with their replacement lines.
@@ -63,8 +63,21 @@ function locale_updateMessageMetadata {
         COUNT=$(($COUNT + 1))
     done
 
+    # When the .pot file is created using xml2po the
+    # `Report-Msgid-Bugs-To:' metadata field isn't created like it
+    # does when xgettext is used. So, in order to have such metadata
+    # field in all .pot files, verify its existence and add it if it
+    # doesn't exist.
+    egrep "^\"${SRC[1]}" $FILE > /dev/null
+    if [[ $? -ne 0 ]];then
+        sed -i -r "/^\"${SRC[0]}/a${DST[1]}" $FILE
+    fi
+
     # Replace package information using gettext domain information.
     sed -i -r "s/PACKAGE/${TEXTDOMAIN}/g" ${FILE}
+
+    # Expand translation markers inside file.
+    cli_replaceTMarkers ${FILE}
 
     # Unset array variables to avoid undesired concatenations.
     unset SRC
