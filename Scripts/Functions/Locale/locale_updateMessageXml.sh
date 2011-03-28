@@ -59,7 +59,7 @@ function locale_updateMessageXml {
 
     # Retrive translatable strings from XML-based files and
     # create the portable object template (.pot) from them.
-    /usr/bin/xml2po ${FILES} | msgcat --output=${FILE}.pot --width=70 --sort-by-file -
+    /usr/bin/xml2po -a ${FILES} | msgcat --output=${FILE}.pot --width=70 --sort-by-file -
 
     # Verify, initialize or merge portable objects from portable
     # object templates.
