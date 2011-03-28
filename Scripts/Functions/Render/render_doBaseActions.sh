@@ -175,7 +175,7 @@ function render_doBaseActions {
         if [[ -f ${TRANSLATION} ]];then
 
             # Create translated instance from design model.
-            /usr/bin/xml2po -p ${TRANSLATION} ${TEMPLATE} > ${INSTANCE}
+            /usr/bin/xml2po -a -p ${TRANSLATION} ${TEMPLATE} > ${INSTANCE}
 
             # Remove .xml2po.mo temporal file.
             if [[ -f ${PWD}/.xml2po.mo ]];then
