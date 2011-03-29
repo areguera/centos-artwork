@@ -46,7 +46,7 @@ div#page-header,
 div#wrap,
 div#page-body,
 div#page-footer {
-    min-width: 730px;
+    min-width: 680px;
     }
 
 div#page-body {
@@ -539,3 +539,10 @@ div#page-body div.records-list ul li.title {
     border-bottom: 1px #AAA solid;
     }
 
+/* Google advertisement (468x60px)
+-----------------------------------------------*/
+div#page-header div.advertisement {
+    float: right;
+    margin: 5px;
+    margin-bottom: 1px;
+    }
