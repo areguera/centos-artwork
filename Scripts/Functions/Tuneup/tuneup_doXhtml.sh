@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# html.sh -- This function provides very basic HTML manipulations to
-# help maintain html files inside the repository.
+# tuneup_doXhtml.sh -- This function performs maintainance tasks for
+# XHTML files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -23,10 +23,11 @@
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
-    
-function html {
 
-    # Define command-line interface.
-    html_getActions 
+function tuneup_doXhtml {
+
+    # Transforms html headings to make them accessible (e.g., through
+    # a table of contents).
+    tuneup_doXhtmlHeadings
 
 }
