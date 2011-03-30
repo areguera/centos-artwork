@@ -1,7 +1,7 @@
 #!/usr/bin/gawk
 #
 # output_forHadingsToc.awk -- This file provides the output format
-# required by html_updateHeadings.sh function, inside centos-art.sh
+# required by tuneup_doXhtmlHeadings function, inside centos-art.sh
 # script.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
