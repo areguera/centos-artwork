@@ -1,21 +1,20 @@
 #!/bin/bash
 #
 # html_updateHeadings.sh -- This function transforms html headings to
-# to make them accessible (e.g., through a table of contents).
-#
-# - In order for this function to work, you need to put headings in
-# just one line and they must have the following formats:
+# to make them accessible (e.g., through a table of contents).  In
+# order for this function to work, you need to put headings in just
+# one line and they must have one of the following formats:
 #
 # <h1><a name="">Title</a></h1>
 # <h1><a href="">Title</a></h1>
 # <h1><a name="" href="">Title</a></h1>
 #
-# In the above examples, h1 alternates from h1 to h6. Closing tag
-# must be present and match the one opentaging. The value of <a
-# name=""> and <a href=""> options are the md5sum of page
-# location, plus the 'head-' string, plus the heading string. If
-# heading title or page location changes, the values of <a
-# name=""> and <a href=""> options will change too.
+# In the above examples, h1 can vary from h1 to h6. Closing tag must
+# be present and match the openning tag. The value of <a name=""> and
+# <a href=""> options are the md5sum of page location, plus the
+# 'head-' string, plus the heading string. If heading title or page
+# location changes, the values of <a name=""> and <a href=""> options
+# will change too.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -38,12 +37,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function html_updateHeadings {
+function tuneup_doXhtmlHeadings {
 
     # Define variables as local to avoid conflicts outside.
     local COUNT=0
-    local FILE=''
-    local FILES=''
     local PREVCOUNT=0
     local PATTERN=''
     local -a FINAL
@@ -57,113 +54,101 @@ function html_updateHeadings {
 
     # Define html heading regular expression pattern. Use parenthisis
     # to save html action name, action value, and heading title.
-    PATTERN="<h([1-9])>(<a.*[^\>]>)(.*[^<])</a></h[1-9]>"
+    PATTERN="<h([1-6])>(<a.*[^\>]>)(.*[^<])</a></h[1-6]>"
 
-    # Define list of files to process.
-    FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.(xhtml|html|htm)")
+    # Verify list of html files. Are files really html files? If they
+    # don't, continue with the next one in the list.
+    if [[ ! $(file --brief $FILE) =~ '^(XHTML|HTML|XML)' ]];then
+        continue
+    fi
 
-    # Set action preamble.
-    cli_printActionPreamble "${FILES}" '' ''
+    # Output action message.
+    cli_printMessage $FILE 'AsUpdatingLine'
 
-    # Process list of files.
-    for FILE in $FILES;do
+    # Define list of headings to process. When building the heading,
+    # it is required to change spaces characters from its current
+    # decimal output to something different (e.g., its \040 octal
+    # alternative). This is required because the space character is
+    # used as egrep default field separator and spaces can be present
+    # inside heading strings we don't want to separate.
+    for HEADING in $(egrep "$PATTERN" $FILE \
+        | sed -r -e 's!^[[:space:]]+!!' -e "s! !\\\040!g");do
 
-        # Verify list of html files. Are files really html files? If
-        # they don't, continue with the next one in the list.
-        if [[ ! $(file --brief $FILE) =~ '^(XHTML|HTML|XML)' ]];then
-            continue
+        # Define previous counter value using current counter
+        # value as reference.
+        if [[ $COUNT -ne 0 ]];then
+            PREVCOUNT=$(($COUNT-1))
         fi
 
-        # Output action message.
-        cli_printMessage $FILE 'AsUpdatingLine'
+        # Define initial heading information.
+        FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\\\040! !g")
+        TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\3!")
+        MD5SM[$COUNT]=$(echo "${FILE}${FIRST[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
+        OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
+        LEVEL[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\1!")
+        PARENT[$COUNT]=${LEVEL[$PREVCOUNT]}
 
-        # Define list of headings to process. When building the
-        # heading, it is required to change spaces characters from its
-        # current decimal output to something different (e.g., its
-        # \040 octal alternative). This is required because the space
-        # character is used as egrep default field separator and
-        # spaces can be present inside heading strings we don't want
-        # to separate.
-        for HEADING in $(egrep "$PATTERN" $FILE \
-            | sed -r -e 's!^[[:space:]]+!!' -e "s! !\\\040!g");do
+        # Transform heading information using initial heading
+        # information as reference.
+        if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)="(.*)" (href|name)="(.*)">$' ]];then
+            OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'" href="#head-'${MD5SM[$COUNT]}'">'
+        elif [[ ${OPTNS[$COUNT]} =~ '^<a name="(.*)">$' ]];then 
+            OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'">'
+        elif [[ ${OPTNS[$COUNT]} =~ '^<a href="(.*)">$' ]];then
+            OPTNS[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'
+        fi
 
-            # Define previous counter value using current counter
-            # value as reference.
-            if [[ $COUNT -ne 0 ]];then
-                PREVCOUNT=$(($COUNT-1))
-            fi
+        # Build final html heading structure.
+        FINAL[$COUNT]='<h'${LEVEL[$COUNT]}'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'${LEVEL[$COUNT]}'>'
 
-            # Define initial heading information.
-            FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\\\040! !g")
-            TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\3!")
-            MD5SM[$COUNT]=$(echo "${FILE}${FIRST[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
-            OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
-            LEVEL[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\1!")
-            PARENT[$COUNT]=${LEVEL[$PREVCOUNT]}
+        # Build html heading link structure. These links are used by
+        # the table of contents later.
+        LINK[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'${TITLE[$COUNT]}'</a>'
 
-            # Transform heading information using initial heading
-            # information as reference.
-            if [[ ${OPTNS[$COUNT]} =~ '^<a (href|name)="(.*)" (href|name)="(.*)">$' ]];then
-                OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'" href="#head-'${MD5SM[$COUNT]}'">'
-            elif [[ ${OPTNS[$COUNT]} =~ '^<a name="(.*)">$' ]];then 
-                OPTNS[$COUNT]='<a name="head-'${MD5SM[$COUNT]}'">'
-            elif [[ ${OPTNS[$COUNT]} =~ '^<a href="(.*)">$' ]];then
-                OPTNS[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'
-            fi
+        # Build table of contents entry with numerical
+        # identifications. The numerical identification is what we use
+        # to determine the correct position of each heading link on
+        # the table of content.
+        TOCENTRIES[$COUNT]="$COUNT:${LEVEL[$COUNT]}:${PARENT[$COUNT]}:${LINK[$COUNT]}"
 
-            # Build final html heading structure.
-            FINAL[$COUNT]='<h'${LEVEL[$COUNT]}'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'${LEVEL[$COUNT]}'>'
+        # Update heading information inside the current file being
+        # processed. Use the first and final heading information.
+        sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
 
-            # Build html heading link structure. These links are used
-            # by the table of contents later.
-            LINK[$COUNT]='<a href="#head-'${MD5SM[$COUNT]}'">'${TITLE[$COUNT]}'</a>'
-
-            # Build table of contents entry with numerical
-            # identifications. The numerical identification is what we
-            # use to determine the correct position of each heading
-            # link on the table of content.
-            TOCENTRIES[$COUNT]="$COUNT:${LEVEL[$COUNT]}:${PARENT[$COUNT]}:${LINK[$COUNT]}"
-
-            # Update heading information inside the current file being
-            # processed. Use the first and final heading information.
-            sed -i -r "s!${FIRST[$COUNT]}!${FINAL[$COUNT]}!" $FILE
-
-            # Increase heading counter.
-            COUNT=$(($COUNT + 1))
-
-        done
-
-        # Build the table of contents using heading numerical
-        # identifications as reference. The numerical identification
-        # describes the order of headings in one html file. This
-        # information is processed by awk to make the appropriate
-        # replacements. Finnally, the result is stored in the TOC
-        # variable.
-        TOC=$(echo '<div class="toc">'
-            echo "<h3>`gettext "Table of contents"`</h3>"
-            for TOCENTRY in "${TOCENTRIES[@]}";do
-                echo $TOCENTRY
-            done \
-                | awk -f ${CLI_BASEDIR}/Functions/Html/Config/output_forHeadingsToc.awk)
-
-        # Update table of contents inside the current file being
-        # processed.
-        sed -i -r '/<div class="toc">(.*)<\/div>/c'"$(echo -e $TOC)" $FILE
-
-        # Reset counters.
-        COUNT=0
-        PREVCOUNT=0
-
-        # Clean up variables to receive the next file.
-        unset FINAL
-        unset TITLE
-        unset MD5SM
-        unset OPTNS
-        unset LEVEL
-        unset PARENT
-        unset TOCENTRIES
-        unset LINK
+        # Increase heading counter.
+        COUNT=$(($COUNT + 1))
 
     done
+
+    # Build the table of contents using heading numerical
+    # identifications as reference. The numerical identification
+    # describes the order of headings in one html file. This
+    # information is processed by awk to make the appropriate
+    # replacements. Finnally, the result is stored in the TOC
+    # variable.
+    TOC=$(echo '<div class="toc">'
+        echo "<h3>`gettext "Table of contents"`</h3>"
+        for TOCENTRY in "${TOCENTRIES[@]}";do
+            echo $TOCENTRY
+        done \
+            | awk -f ${FUNCCONFIG}/output_forHeadingsToc.awk)
+
+    # Update table of contents inside the current file being
+    # processed.
+    sed -i -r '/<div class="toc">[^<\/div].*<\/div>/c'"$(echo -e $TOC)" $FILE
+
+    # Reset counters.
+    COUNT=0
+    PREVCOUNT=0
+
+    # Clean up variables to receive the next file.
+    unset FINAL
+    unset TITLE
+    unset MD5SM
+    unset OPTNS
+    unset LEVEL
+    unset PARENT
+    unset TOCENTRIES
+    unset LINK
 
 }
