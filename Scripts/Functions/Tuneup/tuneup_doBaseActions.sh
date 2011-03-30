@@ -1,8 +1,7 @@
 #!/bin/bash
 #
 # tuneup_doBaseActions.sh -- This function builds the list of files to
-# process, determines the their extensions and performs maintainance
-# tasks file by file them accordingly.
+# process and performs maintainance tasks, file by file.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -50,6 +49,7 @@ function tuneup_doBaseActions {
         # Print action message.
         cli_printMessage $FILE 'AsTuningLine'
 
+        # Define what to do based on file extension.
         if [[ $FILE =~ '\.svg$' ]];then
             ${FUNCNAM}_doSvg
         elif [[ $FILE =~ '\.xhtml$' ]];then
