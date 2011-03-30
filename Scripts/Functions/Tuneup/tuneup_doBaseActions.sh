@@ -48,7 +48,7 @@ function tuneup_doBaseActions {
     for FILE in $FILES;do
 
         # Print action message.
-        cli_printMessage $FILE 'AsTunningLine'
+        cli_printMessage $FILE 'AsTuningLine'
 
         if [[ $FILE =~ '\.svg$' ]];then
             ${FUNCNAM}_doSvg
