@@ -45,6 +45,9 @@ function tuneup_doBaseActions {
     # accordingly.
     for FILE in $FILES;do
 
+        # Print action message.
+        cli_printMessage $FILE 'AsTunningLine'
+
         if [[ $FILE =~ '\.svg$' ]];then
             ${FUNCNAM}_doSvg
         elif [[ $FILE =~ '\.xhtml$' ]];then

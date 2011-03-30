@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# svg_vacuumDefs.sh -- This function removes all unused items from the
-# <lt>defs<gt> section of the SVG file massively.
+# tuneup_doSvgUnusedItems.sh -- This function removes all unused items
+# from the <lt>defs<gt> section of the SVG file.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -24,26 +24,9 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_vacuumDefs {
+function tuneup_doSvgUnusedItems {
 
-    local FILE=''
-    local FILES=''
-
-    # Build list of files to process.
-    FILES=$(cli_getFilesList "${ACTIONVAL}" "${FLAG_FILTER}.*\.(svgz|svg)")
-
-    # Set action preamble.
-    cli_printActionPreamble "${FILES}" '' ''
-
-    # Process list of files.
-    for FILE in $FILES;do
-
-        # Output action message.
-        cli_printMessage "$FILE" 'AsUpdatingLine'
-
-        # Vacuum unused svg definition using inkscape.
-        inkscape --vacuum-defs $FILE &> /dev/null
-
-    done
+    # Vacuum unused svg definition using inkscape.
+    inkscape --vacuum-defs $FILE &> /dev/null
 
 }

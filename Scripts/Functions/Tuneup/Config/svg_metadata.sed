@@ -6,7 +6,7 @@
 # ---------------------------------------------------
 /<metadata/,/<\/metadata/c\
   <metadata\
-     id="metadata3399">\
+     id="CENTOSMETADATA">\
     <rdf:RDF>\
       <cc:Work\
          rdf:about="">\
@@ -19,35 +19,31 @@
         <dc:date>=DATE=</dc:date>\
         <dc:creator>\
           <cc:Agent>\
-            <dc:title>=CREATOR=</dc:title>\
+            <dc:title>=COPYRIGHT_HOLDER=</dc:title>\
           </cc:Agent>\
         </dc:creator>\
         <dc:rights>\
           <cc:Agent>\
-            <dc:title>=RIGHTS=</dc:title>\
+            <dc:title>=COPYRIGHT_HOLDER=</dc:title>\
           </cc:Agent>\
         </dc:rights>\
         <dc:publisher>\
           <cc:Agent>\
-            <dc:title>=PUBLISHER=</dc:title>\
+            <dc:title>=COPYRIGHT_HOLDER=</dc:title>\
           </cc:Agent>\
         </dc:publisher>\
-        <dc:identifier>=IDENTIFIER=</dc:identifier>\
-        <dc:source>=SOURCE=</dc:source>\
-        <dc:relation>=RELATION=</dc:relation>\
-        <dc:language>=LANGUAGE=</dc:language>\
+        <dc:identifier>=URL=</dc:identifier>\
+        <dc:source>=URL=</dc:source>\
+        <dc:relation>=URL=</dc:relation>\
+        <dc:language>=LOCALE=</dc:language>\
         <dc:subject>\
           <rdf:Bag>\
 =KEYWORDS=\
           </rdf:Bag>\
         </dc:subject>\
-        <dc:coverage>=COVERAGE=</dc:coverage>\
-        <dc:description>=DESCRIPTION=</dc:description>\
-        <dc:contributor>\
-          <cc:Agent>\
-            <dc:title>=CONTRIBUTOR=</dc:title>\
-          </cc:Agent>\
-        </dc:contributor>\
+        <dc:coverage>=COPYRIGHT_HOLDER=</dc:coverage>\
+        <dc:description />\
+        <dc:contributor />\
       </cc:Work>\
       <cc:License\
          rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">\

@@ -62,9 +62,6 @@ function tuneup_doXhtmlHeadings {
         continue
     fi
 
-    # Output action message.
-    cli_printMessage $FILE 'AsUpdatingLine'
-
     # Define list of headings to process. When building the heading,
     # it is required to change spaces characters from its current
     # decimal output to something different (e.g., its \040 octal

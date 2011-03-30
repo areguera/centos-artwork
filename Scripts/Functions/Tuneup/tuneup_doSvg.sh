@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# svg.sh -- This function provides very basic SVG manipulations to
-# help you to maintain svg files inside the repository.
+# tuneup_doSvg.sh -- This function performs maintainance tasks for
+# SVG files.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -23,10 +23,13 @@
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
-    
-function svg {
 
-    # Define command-line interface.
-    svg_getActions
+function tuneup_doSvg {
+
+    # Update metadata information.
+    tuneup_doSvgMetadata
+
+    # Remove all unused items.
+    tuneup_doSvgUnusedItems
 
 }
