@@ -49,8 +49,8 @@ function cli_printMessage {
         cli_printMessage "`gettext "Updating"`: $MESSAGE"
         ;;
 
-    'AsTunningLine' )
-        cli_printMessage "`gettext "Tunning"`: $MESSAGE"
+    'AsTuningLine' )
+        cli_printMessage "`gettext "Tuning"`: $MESSAGE"
         ;;
 
     'AsDeletingLine' )
