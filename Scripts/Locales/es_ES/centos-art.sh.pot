@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-23 14:33-0400\n"
+"POT-Creation-Date: 2011-03-30 00:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,2246 +17,2161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/About/about_getActions.sh:73
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:121
-#: /home/centos/artwork/trunk/Scripts/Functions/Html/html_getActions.sh:76
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:97
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:60
-#: /home/centos/artwork/trunk/Scripts/Functions/Path/path_getActions.sh:109
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:104
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_getActions.sh:78
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_getActions.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/About/about_getActions.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:109
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:83
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:59
+#: /home/centos/artwork/trunk/Scripts/Functions/Path/path_getActions.sh:108
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:108
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:64
 msgid "A valid action is required."
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:67
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:68
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:69
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:59
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:60
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:61
 msgid "Removed"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:33
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:32
 msgid "The following documentation chapter will be created:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:35
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:55
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:34
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:54
 msgid "Do you want to continue?"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:53
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:52
 msgid "The following documentation section will be created:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_searchIndex.sh:34
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_searchIndex.sh:33
 msgid "Use the `--filter' option to define the search pattern."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateChaptersNodes.sh:32
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateChaptersNodes.sh:31
 msgid "Index"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateNodes.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateNodes.sh:53
 #, sh-format
 msgid "The @file{$SECT} Directory"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Html/html_updateHeadings.sh:143
-msgid "Table of contents"
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_editMessages.sh:37
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:52
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:51
 msgid "The path provided doesn't support localization."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageShell.sh:43
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageXml.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageShell.sh:42
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageXml.sh:44
 msgid "The path provided can't be processed."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:37
 msgid "Checking environment variables"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:56
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:55
 msgid "Default text editor"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:57
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:56
 msgid "Default time zone representation"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:57
 msgid "Default domain used to retrieve translated messages"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:59
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:58
 msgid "Default directory used to retrive translated messages"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:60
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:59
 msgid "Default locale information"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doLinks.sh:39
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doLinks.sh:38
 msgid "Checking symbolic links"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:40
 msgid "Checking required packages"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:81
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:80
 msgid "The required packages has been already installed."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:88
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:87
 msgid "The following package needs to be installed"
 msgid_plural "The following packages need to be installed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:96
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:95
 msgid "requires third party repository!"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:102
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:115
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doPackages.sh:101
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:114
 msgid "Do you want to continue"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:51
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:49
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:94
+msgid "The path provided doesn't support rendition."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:50
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:48
 #, sh-format
 msgid "Reducing image to `$COLOR_NUMBER' colors is not supported."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:60
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:59
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:57
 msgid "The palette doesn't have the correct number of colors."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:67
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:65
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:64
 #, sh-format
 msgid "The `$COLOR' string isn't a valid color code."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertHtmlToText.sh:63
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertHtmlToText.sh:62
 msgid "No way to convert from HTML to plain-text found."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:117
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:127
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:116
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:126
 msgid "None"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:218
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:228
 msgid "The template file you try to render is not supported yet."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBrands.sh:73
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBrands.sh:72
 msgid "2 colors grayscale"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doDm.sh:80
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doDm.sh:79
 msgid "There is no resolution information to process."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doGrub.sh:45
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSyslinux.sh:92
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doGrub.sh:44
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSyslinux.sh:91
 #, sh-format
 msgid "The $OPTION option is already used."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:36
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:35
 #, sh-format
 msgid "There is no export id ($EXPORTID) inside $TEMPLATE."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:52
 msgid "Area"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:55
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:53
 msgid "Background"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:56
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:70
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:73
 msgid "Saved as"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getArguments.sh:70
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getArguments.sh:69
 msgid "The release version provided is not supported."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getArguments.sh:79
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getArguments.sh:78
 msgid "The architecture provided is not supported."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:53
 msgid "There is no action to work with."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:60
 msgid "The field specified is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_updateCopyright.sh:53
-msgid "Copyright holder"
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_mogrifyCommentToPng.sh:32
+msgid "Created in CentOS Artwork Repository"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_updateCopyright.sh:54
-msgid "Copyright year"
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_doXhtmlHeadings.sh:126
+msgid "Table of contents"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_updateCopyright.sh:68
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:101
-msgid "Try using alphanumeric characters."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_updateCopyright.sh:69
-msgid "Try using numeric characters."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_updateCopyright.sh:72
-msgid "All rights reserved."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Shell/shell_updateCopyright.sh:76
-msgid "Enter the information you want to apply:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:54
-msgid "Title"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:55
-msgid "Date"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:56
-msgid "Creator"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:57
-msgid "Rights"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:58
-msgid "Publisher"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:59
-msgid "Identifier"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:60
-msgid "Source"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:61
-msgid "Relation"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:62
-msgid "Language"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:63
-msgid "Keywords"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:64
-msgid "Coverage"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:65
-msgid "Description"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:66
-msgid "Contributor"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:102
-msgid "Try using 'YYYY-MM-DD' date format."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:106
-msgid ""
-"Only locations under https://projects.centos.ort/svn/artwork are "
-"supported."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:109
-msgid "Try using 'LL' or 'LL_CC' locale format."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Svg/svg_updateMetadata.sh:124
-msgid "Enter metadata information you want to apply:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:43
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:42
 msgid "You need to provide one argument at least."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:59
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:58
 #, sh-format
 msgid "The directory \"$FILE\" doesn't exist."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:65
 #, sh-format
 msgid "The file \"$FILE\" is not a regular file."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:73
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:72
 #, sh-format
 msgid "The file \"$FILE\" is not a symbolic link."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:80
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:79
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:88
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:97
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:112
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:87
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:96
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:111
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:105
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:104
 #, sh-format
 msgid "The path \"$FILE\" doesn't exist inside the working copy."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:48
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getPathComponent.sh:47
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:47
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getPathComponent.sh:46
 msgid "Invalid arguments."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:61
 #, sh-format
 msgid "The release `$LOCATION' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:68
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:67
 #, sh-format
 msgid "The architecture `$LOCATION' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:74
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:73
 #, sh-format
 msgid "The theme `$LOCATION' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:82
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:81
 #, sh-format
 msgid "The value `$LOCATION' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:63
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:80
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:93
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:79
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:92
 #, sh-format
 msgid "The location `$ACTIONVAL' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:51
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:50
 #, sh-format
 msgid "The location `$FLAG_TO' already exists."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:84
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:83
 #, sh-format
 msgid ""
 "cannot create `$FLAG_TO': It isn't an identity directory structure."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:61
 msgid "Checking changes in the working copy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:77
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:76
 msgid "Modified"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:77
 msgid "Unversioned"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:79
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:79
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:78
 msgid "Deleted"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:80
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:79
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:77
 msgid "Added"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:100
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:102
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:99
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:101
 msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:119
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:118
 msgid "The following file is unversioned"
 msgid_plural "The following files are unversioned"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:124
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:123
 msgid "Do you want to add it now?"
 msgid_plural "Do you want to add them now?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:137
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:136
 msgid "Do you want to see changes now?"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:141
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:140
 msgid "Do you want to commit changes now?"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:36
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:35
 msgid "Andorra"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:39
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:38
 msgid "United Arab Emirates"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:42
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:41
 msgid "Afghanistan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:45
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:44
 msgid "Antigua and Barbuda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:48
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:47
 msgid "Anguilla"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:51
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:50
 msgid "Albania"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:53
 msgid "Armenia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:57
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:56
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:60
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:59
 msgid "Angola"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:63
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:62
 msgid "Antarctica"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:65
 msgid "Argentina"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:69
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:68
 msgid "Samoa (American)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:71
 msgid "Austria"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:75
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:74
 msgid "Australia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:77
 msgid "Aruba"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:81
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:80
 msgid "Azerbaijan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:84
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:83
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:87
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:86
 msgid "Barbados"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:89
 msgid "Bangladesh"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:93
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:92
 msgid "Belgium"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:96
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:95
 msgid "Burkina Faso"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:99
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:98
 msgid "Bulgaria"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:102
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:101
 msgid "Bahrain"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:105
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:104
 msgid "Burundi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:108
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:107
 msgid "Benin"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:111
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:110
 msgid "Bermuda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:114
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:113
 msgid "Brunei"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:117
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:116
 msgid "Bolivia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:120
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:119
 msgid "Brazil"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:123
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:122
 msgid "Bahamas"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:126
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:125
 msgid "Bhutan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:129
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:128
 msgid "Bouvet Island"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:132
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:131
 msgid "Botswana"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:135
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:134
 msgid "Belarus"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:138
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:137
 msgid "Belize"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:141
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:140
 msgid "Canada"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:144
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:143
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:147
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:146
 msgid "Congo (Dem. Rep.)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:150
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:149
 msgid "Central African Rep."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:153
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:152
 msgid "Congo (Rep.)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:156
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:155
 msgid "Switzerland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:159
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:158
 msgid "Co^te d'Ivoire"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:162
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:161
 msgid "Cook Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:165
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:164
 msgid "Chile"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:168
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:167
 msgid "Cameroon"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:171
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:170
 msgid "China"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:174
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:173
 msgid "Colombia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:177
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:176
 msgid "Costa Rica"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:180
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:179
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:183
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:182
 msgid "Cuba"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:186
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:185
 msgid "Cape Verde"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:189
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:188
 msgid "Christmas Island"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:192
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:191
 msgid "Cyprus"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:195
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:194
 msgid "Czech Republic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:198
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:197
 msgid "Germany"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:201
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:200
 msgid "Djibouti"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:204
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:203
 msgid "Denmark"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:207
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:206
 msgid "Dominica"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:210
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:209
 msgid "Dominican Republic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:213
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:212
 msgid "Algeria"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:216
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:215
 msgid "Ecuador"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:219
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:218
 msgid "Estonia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:222
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:221
 msgid "Egypt"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:225
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:224
 msgid "Western Sahara"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:228
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:227
 msgid "Eritrea"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:231
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:230
 msgid "Spain"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:234
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:233
 msgid "Ethiopia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:237
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:236
 msgid "Finland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:240
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:239
 msgid "Fiji"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:243
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:242
 msgid "Falkland Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:246
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:245
 msgid "Micronesia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:249
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:248
 msgid "Faeroe Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:252
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:251
 msgid "France"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:255
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:254
 msgid "Gabon"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:258
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:257
 msgid "Britain (UK)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:261
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:260
 msgid "Grenada"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:264
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:263
 msgid "Georgia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:267
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:266
 msgid "French Guiana"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:270
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:269
 msgid "Ghana"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:273
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:272
 msgid "Gibraltar"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:276
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:275
 msgid "Greenland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:279
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:278
 msgid "Gambia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:282
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:281
 msgid "Guinea"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:285
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:284
 msgid "Guadeloupe"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:288
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:287
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:291
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:290
 msgid "Greece"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:294
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:293
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:297
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:296
 msgid "Guatemala"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:300
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:299
 msgid "Guam"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:303
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:302
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:306
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:305
 msgid "Guyana"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:309
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:308
 msgid "Hong Kong"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:312
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:311
 msgid "Heard Island and McDonald Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:315
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:314
 msgid "Honduras"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:318
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:317
 msgid "Croatia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:321
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:320
 msgid "Haiti"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:324
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:323
 msgid "Hungary"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:327
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:326
 msgid "Indonesia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:330
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:329
 msgid "Ireland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:333
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:332
 msgid "Israel"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:336
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:335
 msgid "India"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:339
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:338
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:342
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:341
 msgid "Iraq"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:345
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:344
 msgid "Iran"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:348
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:347
 msgid "Iceland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:351
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:350
 msgid "Italy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:354
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:353
 msgid "Jamaica"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:357
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:356
 msgid "Jordan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:360
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:359
 msgid "Japan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:363
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:362
 msgid "Kenya"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:366
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:365
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:369
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:368
 msgid "Cambodia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:372
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:371
 msgid "Kiribati"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:375
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:374
 msgid "Comoros"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:378
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:377
 msgid "St Kitts and Nevis"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:381
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:380
 msgid "Korea (North)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:384
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:383
 msgid "Korea (South)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:387
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:386
 msgid "Kuwait"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:390
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:389
 msgid "Cayman Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:393
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:392
 msgid "Kazakhstan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:396
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:395
 msgid "Laos"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:399
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:398
 msgid "Lebanon"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:402
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:401
 msgid "St Lucia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:405
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:404
 msgid "Liechtenstein"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:408
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:407
 msgid "Sri Lanka"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:411
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:410
 msgid "Liberia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:414
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:413
 msgid "Lesotho"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:417
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:416
 msgid "Lithuania"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:420
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:419
 msgid "Luxembourg"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:423
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:422
 msgid "Latvia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:426
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:425
 msgid "Libya"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:429
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:428
 msgid "Morocco"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:432
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:431
 msgid "Monaco"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:435
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:434
 msgid "Moldova"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:438
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:437
 msgid "Madagascar"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:441
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:440
 msgid "Marshall Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:444
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:443
 msgid "Macedonia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:447
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:446
 msgid "Mali"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:450
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:449
 msgid "Myanmar (Burma)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:453
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:452
 msgid "Mongolia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:456
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:455
 msgid "Macao"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:459
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:458
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:462
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:461
 msgid "Martinique"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:465
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:464
 msgid "Mauritania"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:468
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:467
 msgid "Montserrat"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:471
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:470
 msgid "Malta"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:474
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:473
 msgid "Mauritius"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:477
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:476
 msgid "Maldives"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:480
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:479
 msgid "Malawi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:483
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:482
 msgid "Mexico"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:486
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:485
 msgid "Malaysia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:489
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:488
 msgid "Mozambique"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:492
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:491
 msgid "Namibia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:495
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:494
 msgid "New Caledonia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:498
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:497
 msgid "Niger"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:501
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:500
 msgid "Norfolk Island"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:504
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:503
 msgid "Nigeria"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:507
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:506
 msgid "Nicaragua"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:510
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:509
 msgid "Netherlands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:513
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:512
 msgid "Norway"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:516
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:515
 msgid "Nepal"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:519
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:478
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:518
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:477
 msgid "Nauru"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:522
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:521
 msgid "Niue"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:525
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:524
 msgid "New Zealand"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:528
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:527
 msgid "Oman"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:531
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:530
 msgid "Panama"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:534
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:533
 msgid "Peru"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:537
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:536
 msgid "French Polynesia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:540
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:539
 msgid "Papua New Guinea"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:543
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:542
 msgid "Philippines"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:546
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:545
 msgid "Pakistan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:549
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:548
 msgid "Poland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:552
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:551
 msgid "St Pierre and Miquelon"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:555
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:554
 msgid "Pitcairn"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:558
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:557
 msgid "Puerto Rico"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:561
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:560
 msgid "Palestine"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:564
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:563
 msgid "Portugal"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:567
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:566
 msgid "Palau"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:570
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:569
 msgid "Paraguay"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:573
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:572
 msgid "Qatar"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:576
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:575
 msgid "Reunion"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:579
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:578
 msgid "Romania"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:582
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:581
 msgid "Russia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:585
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:584
 msgid "Rwanda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:588
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:587
 msgid "Saudi Arabia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:591
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:590
 msgid "Solomon Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:594
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:593
 msgid "Seychelles"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:597
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:596
 msgid "Sudan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:600
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:599
 msgid "Sweden"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:603
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:602
 msgid "Singapore"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:606
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:605
 msgid "St Helena"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:609
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:608
 msgid "Slovenia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:612
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:611
 msgid "Svalbard and Jan Mayen"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:615
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:614
 msgid "Slovakia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:618
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:617
 msgid "Sierra Leone"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:621
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:620
 msgid "San Marino"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:624
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:623
 msgid "Senegal"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:627
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:626
 msgid "Somalia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:630
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:629
 msgid "Suriname"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:633
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:632
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:636
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:635
 msgid "El Salvador"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:639
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:638
 msgid "Syria"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:642
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:641
 msgid "Swaziland"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:645
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:644
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:648
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:647
 msgid "Chad"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:651
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:650
 msgid "French Southern and Antarctic Lands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:654
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:653
 msgid "Togo"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:657
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:656
 msgid "Thailand"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:660
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:659
 msgid "Tajikistan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:663
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:662
 msgid "Tokelau"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:666
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:665
 msgid "Timor-Leste"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:669
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:668
 msgid "Turkmenistan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:672
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:671
 msgid "Tunisia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:675
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:674
 msgid "Tonga"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:678
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:677
 msgid "Turkey"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:681
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:680
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:684
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:683
 msgid "Tuvalu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:687
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:686
 msgid "Taiwan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:690
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:689
 msgid "Tanzania"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:693
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:692
 msgid "Ukraine"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:696
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:695
 msgid "Uganda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:699
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:698
 msgid "US minor outlying islands"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:702
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:701
 msgid "United States"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:705
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:704
 msgid "Uruguay"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:708
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:707
 msgid "Uzbekistan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:711
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:710
 msgid "Vatican City"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:714
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:713
 msgid "St Vincent"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:717
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:716
 msgid "Venezuela"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:720
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:719
 msgid "Virgin Islands (UK)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:723
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:722
 msgid "Virgin Islands (US)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:726
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:725
 msgid "Vietnam"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:729
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:728
 msgid "Vanuatu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:732
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:731
 msgid "Wallis and Futuna"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:735
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:734
 msgid "Samoa (Western)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:738
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:737
 msgid "Yemen"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:741
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:740
 msgid "Mayotte"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:744
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:743
 msgid "South Africa"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:747
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:746
 msgid "Zambia"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:750
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:749
 msgid "Zimbabwe"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:753
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:775
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:752
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:774
 msgid "Unknown"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getFunctions.sh:50
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getFunctions.sh:49
 #, sh-format
 msgid "The $FILE hasn't execution rights."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:35
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:34
 msgid "Afar"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:39
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:38
 msgid "Abkhazian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:43
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:42
 msgid "Avestan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:47
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:46
 msgid "Afrikaans"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:51
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:50
 msgid "Akan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:55
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:54
 msgid "Amharic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:59
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:58
 msgid "Aragonese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:63
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:62
 msgid "Arabic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:67
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:66
 msgid "Assamese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:71
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:70
 msgid "Avaric"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:75
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:74
 msgid "Aymara"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:79
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:78
 msgid "Azerbaijani"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:83
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:82
 msgid "Bashkir"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:87
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:86
 msgid "Byelorussian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:91
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:90
 msgid "Bulgarian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:95
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:94
 msgid "Bihari"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:99
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:98
 msgid "Bislama"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:103
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:102
 msgid "Bambara"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:107
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:106
 msgid "Bengali"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:111
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:110
 msgid "Tibetan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:115
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:114
 msgid "Breton"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:119
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:118
 msgid "Bosnian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:123
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:122
 msgid "Catalan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:127
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:126
 msgid "Chechen"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:131
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:130
 msgid "Chamorro"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:135
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:134
 msgid "Corsican"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:139
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:138
 msgid "Cree"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:143
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:142
 msgid "Czech"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:147
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:146
 msgid "Church Slavic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:151
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:150
 msgid "Chuvash"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:155
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:154
 msgid "Welsh"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:159
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:158
 msgid "Danish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:163
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:162
 msgid "German"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:167
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:166
 msgid "Divehi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:171
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:170
 msgid "Dzongkha"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:175
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:174
 msgid "E'we"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:179
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:178
 msgid "Greek"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:183
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:182
 msgid "English"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:187
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:186
 msgid "Esperanto"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:191
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:190
 msgid "Spanish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:195
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:194
 msgid "Estonian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:199
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:198
 msgid "Basque"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:202
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:201
 msgid "Persian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:206
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:205
 msgid "Fulah"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:210
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:209
 msgid "Finnish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:214
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:213
 msgid "Fijian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:218
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:217
 msgid "Faroese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:222
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:221
 msgid "French"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:226
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:225
 msgid "Frisian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:230
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:229
 msgid "Irish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:234
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:233
 msgid "Scots"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:238
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:237
 msgid "Gallegan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:242
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:241
 msgid "Guarani"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:246
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:245
 msgid "Gujarati"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:250
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:249
 msgid "Manx"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:254
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:253
 msgid "Hausa"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:258
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:257
 msgid "Hebrew"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:262
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:261
 msgid "Hindi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:266
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:265
 msgid "Hiri Motu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:270
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:269
 msgid "Croatian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:274
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:273
 msgid "Haitian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:278
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:277
 msgid "Hungarian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:282
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:281
 msgid "Armenian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:286
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:285
 msgid "Herero"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:290
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:289
 msgid "Interlingua"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:294
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:293
 msgid "Indonesian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:298
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:297
 msgid "Interlingue"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:302
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:301
 msgid "Igbo"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:306
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:305
 msgid "Sichuan Yi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:310
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:309
 msgid "Inupiak"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:314
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:313
 msgid "Ido"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:318
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:317
 msgid "Icelandic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:322
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:321
 msgid "Italian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:326
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:325
 msgid "Inuktitut"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:330
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:329
 msgid "Japanese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:334
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:333
 msgid "Javanese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:338
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:337
 msgid "Georgian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:342
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:341
 msgid "Kongo"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:346
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:345
 msgid "Kikuyu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:350
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:349
 msgid "Kuanyama"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:354
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:353
 msgid "Kazakh"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:358
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:357
 msgid "Kalaallisut"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:362
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:361
 msgid "Khmer"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:366
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:365
 msgid "Kannada"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:370
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:369
 msgid "Korean"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:374
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:373
 msgid "Kanuri"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:378
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:377
 msgid "Kashmiri"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:382
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:381
 msgid "Kurdish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:386
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:385
 msgid "Komi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:390
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:389
 msgid "Cornish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:394
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:393
 msgid "Kirghiz"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:398
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:397
 msgid "Latin"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:402
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:401
 msgid "Letzeburgesch"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:406
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:405
 msgid "Ganda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:410
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:409
 msgid "Limburgish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:414
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:413
 msgid "Lingala"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:418
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:417
 msgid "Lao"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:422
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:421
 msgid "Lithuanian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:426
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:425
 msgid "Luba-Katanga"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:430
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:429
 msgid "Latvian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:434
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:433
 msgid "Malagasy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:438
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:437
 msgid "Marshall"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:442
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:441
 msgid "Maori"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:446
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:445
 msgid "Macedonian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:450
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:449
 msgid "Malayalam"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:454
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:453
 msgid "Mongolian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:458
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:457
 msgid "Moldavian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:462
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:461
 msgid "Marathi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:466
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:465
 msgid "Malay"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:470
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:469
 msgid "Maltese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:474
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:473
 msgid "Burmese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:482
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:481
 msgid "Norwegian Bokmaal"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:486
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:485
 msgid "Ndebele, North"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:490
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:489
 msgid "Nepali"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:494
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:493
 msgid "Ndonga"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:498
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:497
 msgid "Dutch"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:502
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:501
 msgid "Norwegian Nynorsk"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:506
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:505
 msgid "Norwegian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:510
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:509
 msgid "Ndebele, South"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:514
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:513
 msgid "Navajo"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:518
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:517
 msgid "Chichewa"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:522
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:521
 msgid "Occitan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:526
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:525
 msgid "Ojibwa"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:530
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:529
 msgid "(Afan) Oromo"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:534
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:533
 msgid "Oriya"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:538
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:537
 msgid "Ossetian; Ossetic"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:542
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:541
 msgid "Panjabi; Punjabi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:546
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:545
 msgid "Pali"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:550
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:549
 msgid "Polish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:554
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:553
 msgid "Pashto, Pushto"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:558
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:557
 msgid "Portuguese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:562
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:561
 msgid "Quechua"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:566
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:565
 msgid "Rhaeto-Romance"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:570
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:569
 msgid "Rundi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:574
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:573
 msgid "Romanian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:578
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:577
 msgid "Russian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:582
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:581
 msgid "Kinyarwanda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:586
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:585
 msgid "Sanskrit"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:590
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:589
 msgid "Sardinian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:594
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:593
 msgid "Sindhi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:598
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:597
 msgid "Northern Sami"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:602
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:601
 msgid "Sango; Sangro"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:606
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:605
 msgid "Sinhalese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:610
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:609
 msgid "Slovak"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:614
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:613
 msgid "Slovenian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:618
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:617
 msgid "Samoan"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:622
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:621
 msgid "Shona"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:626
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:625
 msgid "Somali"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:630
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:629
 msgid "Albanian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:634
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:633
 msgid "Serbian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:638
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:637
 msgid "Swati; Siswati"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:642
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:641
 msgid "Sesotho; Sotho, Southern"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:646
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:645
 msgid "Sundanese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:650
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:649
 msgid "Swedish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:654
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:653
 msgid "Swahili"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:658
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:657
 msgid "Tamil"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:662
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:661
 msgid "Telugu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:666
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:665
 msgid "Tajik"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:670
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:669
 msgid "Thai"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:674
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:673
 msgid "Tigrinya"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:678
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:677
 msgid "Turkmen"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:682
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:681
 msgid "Tagalog"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:686
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:685
 msgid "Tswana; Setswana"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:690
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:689
 msgid "Tonga (?)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:694
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:693
 msgid "Turkish"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:698
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:697
 msgid "Tsonga"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:703
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:702
 msgid "Tatar"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:707
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:706
 msgid "Twi"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:711
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:710
 msgid "Tahitian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:715
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:714
 msgid "Uighur"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:719
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:718
 msgid "Ukrainian"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:723
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:722
 msgid "Urdu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:727
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:726
 msgid "Uzbek"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:731
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:730
 msgid "Venda"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:735
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:734
 msgid "Vietnamese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:739
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:738
 msgid "Volapuk; Volapuk"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:743
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:742
 msgid "Walloon"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:747
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:746
 msgid "Wolof"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:751
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:750
 msgid "Xhosa"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:755
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:754
 msgid "Yiddish (formerly ji)"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:759
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:758
 msgid "Yoruba"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:763
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:762
 msgid "Zhuang"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:767
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:766
 msgid "Chinese"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:771
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:770
 msgid "Zulu"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoParallelDirs.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoParallelDirs.sh:40
 msgid "The bond string is required."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:57
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:56
 #, sh-format
 msgid "The location `$LOCATION' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getTemporalFile.sh:39
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getTemporalFile.sh:38
 msgid "First argument cannot be empty."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:63
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:62
 msgid "There is no entry to create."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:65
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:64
 msgid "The following entry will be created"
 msgid_plural "The following entries will be created"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:71
 msgid "There is no file to delete."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:74
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:73
 msgid "The following entry will be deleted"
 msgid_plural "The following entries will be deleted"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:81
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:80
 msgid "There is no file to locale."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:83
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:82
 msgid "Translatable strings will be retrived from the following entry"
 msgid_plural ""
 "Translatable strings will be retrived from the following entries"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:89
 msgid "There is no file to edit."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:92
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:91
 msgid "The following file will be edited"
 msgid_plural "The following files will be edited"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:103
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:102
 msgid "There is no file to process."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:50
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:49
 msgid "Updating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:53
+msgid "Tuning"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:57
 msgid "Deleting"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:61
 msgid "Checking"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:65
 msgid "Creating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:69
 msgid "Reading"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:74
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:77
 msgid "Linked to"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:81
 msgid "Moved to"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:82
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:85
 msgid "Translation"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:86
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:89
 msgid "Design"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:93
 msgid "Configuration"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:94
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:97
 msgid "Palette"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:115
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:118
 msgid "To know more, run the following command"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:126
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:129
 msgid "yes"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:129
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:132
 msgid "no"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:61
 msgid "Bringing changes from the repository into the working copy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:80
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:79
 msgid "Updated"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:81
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:80
 msgid "Conflicted"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:82
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:81
 msgid "Merged"
 msgstr ""
