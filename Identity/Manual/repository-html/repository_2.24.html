@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manuals documents relevant information regarding the deployment,
+organization, and administration of CentOS Artwork Repository.
+
+Copyright C 2009-2011 Alain Reguera Delgado
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
+copy of the license is included in the section entitled GNU Free
+Documentation License.  
+-->
+<!-- Created on March, 30 2011 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>CentOS Artwork Repository: 2.24 The trunk/Identity/Themes/Models/Default/Distro Directory</title>
+
+<meta name="description" content="CentOS Artwork Repository: 2.24 The trunk/Identity/Themes/Models/Default/Distro Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.24 The trunk/Identity/Themes/Models/Default/Distro Directory">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.76">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+/* CSS
+ *
+ * repository.css -- This file provides visual style for repository
+ * documentation manual in HTML format, as output by Texi2html
+ * program.
+ *
+ * Copyright (C) 2009-2011 Alain Reguera Delgado
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ * USA.
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/base.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/base-app.css");
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="repository_2.23.html#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC143" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="repository_U.0.html#SEC416" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Directories-trunk-Identity-Themes-Models-Default-Distro"></a>
+<a name="SEC142"></a>
+<h2 class="section"> 2.24 The <tt>`trunk/Identity/Themes/Models/Default/Distro'</tt> Directory </h2>
+<ul>
+<a href="#SEC143">2.24.1 Goals</a> <br>
+<a href="#SEC144">2.24.2 Description</a> <br>
+<a href="#SEC145">2.24.3 Usage</a> <br>
+<a href="#SEC146">2.24.4 See also</a> <br>
+</ul>
+
+
+<a name="SEC143"></a>
+<h3 class="subsection"> 2.24.1 Goals </h3>
+
+<p>This directory provides design models to produce image files for the
+following CentOS Distribution components:
+</p>
+<dl compact="compact">
+<dt> <strong>Syslinux</strong></dt>
+<dd><p>Contains design models for syslinux, the program used to boot the
+CentOS Distribution installation media. See section <a href="repository_2.33.html#SEC187">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Syslinux'</tt> Directory</a>, for more information.
+</p>
+</dd>
+<dt> <strong>Anaconda</strong>  </dt>
+<dd><p>Contains design models for Anaconda, the program used to install
+CentOS Distribution.  See section <a href="repository_2.25.html#SEC147">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Anaconda'</tt> Directory</a>, for more information.
+</p>
+</dd>
+<dt> <strong>Firstboot</strong>  </dt>
+<dd><p>Contains design models for the first boot program used to configure
+the maching onece installed.  See section <a href="repository_2.26.html#SEC152">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Firstboot'</tt> Directory</a>, for more information.
+</p>
+</dd>
+<dt> <strong>Rhgb</strong></dt>
+<dd><p>Contains design models for CentOS Graphical Boot, the program used to
+show the boot process from Grub to Display Manager.  See section <a href="repository_2.32.html#SEC182">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Rhgb'</tt> Directory</a>, for more
+information.
+</p>
+</dd>
+<dt> <strong>Gdm</strong>  </dt>
+<dd><p>Contains design models for GNOME Display Manager, the program used to
+log into the manchine once installed and configured. See section <a href="repository_2.27.html#SEC157">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Gdm'</tt> Directory</a>, for more
+information.
+</p>
+</dd>
+<dt> <strong>Kdm</strong>  </dt>
+<dd><p>Contains design models for KDE Display Manager, the program used to
+log into the manchine once installed and configured. See section <a href="repository_2.30.html#SEC172">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Kdm'</tt> Directory</a>, for more
+information.
+</p>
+</dd>
+<dt> <strong>Grub</strong> </dt>
+<dd><p>Contains design models for GRUB (Grand Unified Boot Loader), the
+program used to boot the machine into an operating system.
+See section <a href="repository_2.30.html#SEC172">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Kdm'</tt> Directory</a>, for
+more information.
+</p>
+</dd>
+<dt> <strong>Gsplash</strong> </dt>
+<dd><p>Contains design models for GNOME splash, the program used to show the
+progress information while user's graphical session is loading.
+See section <a href="repository_2.29.html#SEC167">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Gsplash'</tt> Directory</a>,
+for more information.
+</p>
+</dd>
+<dt> <strong>Ksplash</strong>  </dt>
+<dd><p>Contains design models for KDE splash, the program used to show the
+progress information while user's graphical session is loading.
+See section <a href="repository_2.31.html#SEC177">The <tt>`trunk/Identity/Themes/Models/Default/Distro/Ksplash'</tt> Directory</a>,
+for more information.
+</p></dd>
+</dl>
+
+<a name="SEC144"></a>
+<h3 class="subsection"> 2.24.2 Description </h3>
+
+<p>The CentOS Distribution visual style is controlled by image files.
+These image files are packaged inside The CentOS Distribution and made
+visible once such packages are installed and executed. The way to go
+for changing The CentOS Distribution visual style is changing all
+those image files to add the desired visual style first and later,
+repackage them to make them available inside the final iso files of
+CentOS Distribution.
+</p>
+
+<a name="SEC145"></a>
+<h3 class="subsection"> 2.24.3 Usage </h3>
+
+<p>This directory provides organizationl structure to store default
+design models for CentOS Themes of CentOS Distribution and so it
+should be considered to be used.
+</p>
+<p>When a new component is added to CentOS Distribution, this is the
+directory you need to go for specifying design models for image files
+inside such component. 
+</p>
+<p>The procedure to follow is creatig a directory for each component
+using its very same name (e.g., the directory <tt>`Anaconda'</tt> stores
+image files for Anaconda component, the installer program). Inside the
+directory, you need to create one scalable vector graphic for each
+image file inside the component you want to produce images for. This,
+in order to set image dimensions, image file-name, position of
+trademarks in the final image, translation markers and whatever common
+information you need to have specified in them when rendered by
+<code>centos-art</code> script.
+</p>
+<p>Sometimes, between major releases, image files inside packages can be
+added, removed or just change their names. In order to describe such
+image files variations, the design models directory structure is
+organized in the same way the file variations are introduced (i.e.,
+through The CentOS Project Release Schema).  So, each major release of
+CentOS Distribution does have its own design model directory structure
+in this directory.
+</p>
+<p>When a whole package is removed from one or all CentOS Distribution
+major releases, the design models directory structure releated to it
+is no longer used.  However it could be very useful for historical
+reasons.  Also, someone could feel motivated enough to keep himself
+documenting it or supporting it for whatever reason.
+</p>
+
+<a name="SEC146"></a>
+<h3 class="subsection"> 2.24.4 See also </h3>
+
+
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="repository_U.0.html#SEC416" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>March, 30 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

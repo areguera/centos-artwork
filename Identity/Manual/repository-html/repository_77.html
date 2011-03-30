@@ -1,59 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
-<html>
-<!--This manuals documents relevant information regarding the deployment,
-organization, and administration of CentOS Artwork Repository.
-
-Copyright C 2009-2011 Alain Reguera Delgado
-
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.2 or
-any later version published by the Free Software Foundation; with no
-Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
-copy of the license is included in the section entitled GNU Free
-Documentation License.  
--->
-<!-- Created on March, 24 2011 by texi2html 1.76 -->
-<!--
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
-            Karl Berry  <karl@freefriends.org>
-            Olaf Bachmann <obachman@mathematik.uni-kl.de>
-            and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- Created on March, 30 2011 by texi2html 1.76 -->
 <head>
 <title>CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="texi2html 1.76">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-<!--
-@import "/home/centos/artwork/trunk/Identity/Manual/repository.css";
+    <meta name="description" content="CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory" />
+    <meta name="keywords" content="CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="generator" content="texi2html 1.76" />
+    <meta name="copyright" content="2009-2011 Alain Reguera Delgado" />
 
-a.summary-letter {text-decoration: none}
-pre.display {font-family: serif}
-pre.format {font-family: serif}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: serif; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: serif; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
--->
-</style>
-
+    <link href="/home/centos/artwork/trunk/Identity/Manual/repository.css" rel="stylesheet" type="text/css" media="screen projection"/>
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body>
 
+<a name="top" />
+
+<div id="wrap">
+
+    <!--
+    Start page body definitions.
+    -->
+
+    <div id="page-body">
+
+        <div id="content">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository_76.html#SEC395" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC397" title="Next section in reading order"> &gt; </a>]</td>
@@ -74,14 +51,14 @@ ul.toc {list-style: none}
 <a name="SEC396"></a>
 <h2 class="section"> 2.70 The <tt>`trunk/Scripts/Functions/Shell'</tt> Directory </h2>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC397"></a>
 <h3 class="subsection"> 2.70.1 Goals </h3>
 
 <p>This section exists to organize files related to <code>shell</code>
 functionality of <tt>`centos-art.sh'</tt> script.
 </p>
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC398"></a>
 <h3 class="subsection"> 2.70.2 Description </h3>
 
@@ -129,7 +106,7 @@ in-between line 5 --the first one matching <samp>`^# Copyright .+$'</samp>
 string-- and line 9--the first long dash separator matching <samp>`^#
 -+$'</samp>-- with the content of copyright template instance.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Be sure to add the long dash separator that matches
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-attention.png" alt="Caution" /><h3>Caution</h3><p> Be sure to add the long dash separator that matches
 <samp>`^# -+$'</samp> regular expression <em>before</em> the function
 definition. Otherwise, if the <samp>`Copyright'</samp> line is present but no
 long dash separator exists, <tt>`centos-art.sh'</tt> will remove anything
@@ -202,7 +179,7 @@ appropriate information when it be requested. You can run the
 the appropriate information, and run the <code>shell</code> functionality
 once again for changes to take effect over the files you specify.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> The <tt>`centos-art.sh'</tt> script is released as: 
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important" /><h3>Important</h3><p> The <tt>`centos-art.sh'</tt> script is released as: 
 </p>
 <pre class="verbatim">GNU GENERAL PUBLIC LICENSE
 Version 2, June 1991
@@ -215,7 +192,7 @@ script is released. Instead, if you think a different license must be
 used, please share your reasons at <a class="mailto" href="mailto:centos-devel@centos-art.sh">CentOS Developers mailing list</a>.
 </p></blockquote>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC399"></a>
 <h3 class="subsection"> 2.70.3 Usage </h3>
 
@@ -233,7 +210,7 @@ Inside <tt>`centos-art.sh'</tt> script, the <samp>`regex'</samp> regular
 expression is used in combination with <code>find</code> command to look
 for files matching the regular expression path pattern.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> In order for <samp>`regex'</samp> regular expression to match
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning" /><h3>Warning</h3><p> In order for <samp>`regex'</samp> regular expression to match
 a file, the <samp>`regex'</samp> regular expresion must match the whole file
 path not just the file name. 
 </p></blockquote>
@@ -251,7 +228,7 @@ that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
 <tt>`centos-art.sh'</tt> script uses the file matching as only file in the
 list of files to process. 
 </p>
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC400"></a>
 <h3 class="subsection"> 2.70.4 See also </h3>
 
@@ -260,7 +237,7 @@ list of files to process.
 </td></tr>
 </table>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC399" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_78.html#SEC401" title="Next section in reading order"> &gt; </a>]</td>
@@ -269,12 +246,23 @@ list of files to process.
 <td valign="middle" align="left">[<a href="#SEC396" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="repository_80.html#SEC416" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
-<p>
- <font size="-1">
-  This document was generated on <i>March, 24 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
- </font>
- <br>
 
-</p>
+            <!--
+            The content of left column ends here.
+            -->
+            <div class="page-line"><hr style="display:none;" /></div>
+
+        </div>
+
+    </div>
+
+    <!--
+    Start page footer definitions.
+    -->
+    <div class="page-line white"><hr style="display:none;" /></div>
+
+</div>
+
 </body>
+
 </html>

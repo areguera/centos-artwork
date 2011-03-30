@@ -1,59 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
-<html>
-<!--This manuals documents relevant information regarding the deployment,
-organization, and administration of CentOS Artwork Repository.
-
-Copyright C 2009-2011 Alain Reguera Delgado
-
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.2 or
-any later version published by the Free Software Foundation; with no
-Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
-copy of the license is included in the section entitled GNU Free
-Documentation License.  
--->
-<!-- Created on March, 24 2011 by texi2html 1.76 -->
-<!--
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
-            Karl Berry  <karl@freefriends.org>
-            Olaf Bachmann <obachman@mathematik.uni-kl.de>
-            and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- Created on March, 30 2011 by texi2html 1.76 -->
 <head>
 <title>CentOS Artwork Repository: 2.61 The trunk/Scripts/Functions Directory</title>
 
-<meta name="description" content="CentOS Artwork Repository: 2.61 The trunk/Scripts/Functions Directory">
-<meta name="keywords" content="CentOS Artwork Repository: 2.61 The trunk/Scripts/Functions Directory">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="texi2html 1.76">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-<!--
-@import "/home/centos/artwork/trunk/Identity/Manual/repository.css";
+    <meta name="description" content="CentOS Artwork Repository: 2.61 The trunk/Scripts/Functions Directory" />
+    <meta name="keywords" content="CentOS Artwork Repository: 2.61 The trunk/Scripts/Functions Directory" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="generator" content="texi2html 1.76" />
+    <meta name="copyright" content="2009-2011 Alain Reguera Delgado" />
 
-a.summary-letter {text-decoration: none}
-pre.display {font-family: serif}
-pre.format {font-family: serif}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: serif; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: serif; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.sansserif {font-family:sans-serif; font-weight:normal;}
-ul.toc {list-style: none}
--->
-</style>
-
+    <link href="/home/centos/artwork/trunk/Identity/Manual/repository.css" rel="stylesheet" type="text/css" media="screen projection"/>
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body>
 
+<a name="top" />
+
+<div id="wrap">
+
+    <!--
+    Start page body definitions.
+    -->
+
+    <div id="page-body">
+
+        <div id="content">
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository_67.html#SEC333" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC335" title="Next section in reading order"> &gt; </a>]</td>
@@ -74,14 +51,14 @@ ul.toc {list-style: none}
 <a name="SEC334"></a>
 <h2 class="section"> 2.61 The <tt>`trunk/Scripts/Functions'</tt> Directory </h2>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC335"></a>
 <h3 class="subsection"> 2.61.1 Goals </h3>
 
 <p>The <tt>`trunk/Scripts/Bash/Functions'</tt> directory exists to organize
 <tt>`centos-art.sh'</tt> specific functionalities.
 </p>
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC336"></a>
 <h3 class="subsection"> 2.61.2 Description </h3>
 
@@ -110,7 +87,7 @@ one, it is good time to create them then. Otherwise, if
 functionalities already available don't do what you exactly expect,
 contact their authors and work together to improve them.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> Join CentOS developers mailing list
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-idea.png" alt="Idea" /><h3>Tip</h3><p> Join CentOS developers mailing list
 <a class="mailto" href="mailto:centos-art@centos.org">centos-art@centos.org</a> to share your ideas.
 </p></blockquote>
 
@@ -331,7 +308,7 @@ illustrates:
 </p>
 <pre class="verbatim">centos-art locale --edit
 </pre>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> To translate output messages in different languages,
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning" /><h3>Warning</h3><p> To translate output messages in different languages,
 your system locale information --as in <code>LANG</code> environment
 variable-- must be set to that locale you want to produce translated
 messages for. For example, if you want to produce translated messages
@@ -361,11 +338,11 @@ script specific functionalities.
 <p>By the way, the <code>greet</code> functionality doesn't exist inside
 <tt>`centos-art.sh'</tt> script yet. Would you like to create it?
 </p>
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC337"></a>
 <h3 class="subsection"> 2.61.3 Usage </h3>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC338"></a>
 <h4 class="subsubsection"> 2.61.3.1 Global variables </h4>
 
@@ -373,7 +350,7 @@ script specific functionalities.
 available for you to use inside specific functions:
 </p>
 <dl>
-<dt><u>Variable:</u> <b>TEXTDOMAIN</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>TEXTDOMAIN</b>
 <a name="IDX1"></a>
 </dt>
 <dd><p>Default domain used to retrieve translated messages. This value is set
@@ -381,7 +358,7 @@ in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>TEXTDOMAINDIR</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>TEXTDOMAINDIR</b>
 <a name="IDX2"></a>
 </dt>
 <dd><p>Default directory used to retrieve translated messages. This value is
@@ -389,7 +366,7 @@ set in <tt>`initFunctions.sh'</tt> and shouldn't be changed.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>FUNCNAM</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>FUNCNAM</b>
 <a name="IDX3"></a>
 </dt>
 <dd><p>Define function name.
@@ -407,31 +384,31 @@ immediatly ends its execution.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>FUNCDIR</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>FUNCDIR</b>
 <a name="IDX4"></a>
 </dt>
 </dl>
 
 <dl>
-<dt><u>Variable:</u> <b>FUNCDIRNAME</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>FUNCDIRNAME</b>
 <a name="IDX5"></a>
 </dt>
 </dl>
 
 <dl>
-<dt><u>Variable:</u> <b>FUNCSCRIPT</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>FUNCSCRIPT</b>
 <a name="IDX6"></a>
 </dt>
 </dl>
 
 <dl>
-<dt><u>Variable:</u> <b>FUNCCONFIG</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>FUNCCONFIG</b>
 <a name="IDX7"></a>
 </dt>
 </dl>
 
 <dl>
-<dt><u>Variable:</u> <b>ACTIONNAM</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>ACTIONNAM</b>
 <a name="IDX8"></a>
 </dt>
 <dd><p>Define action name.
@@ -450,7 +427,7 @@ immediatly ends its execution.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>ACTIONVAL</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>ACTIONVAL</b>
 <a name="IDX9"></a>
 </dt>
 <dd><p>Define action value.
@@ -462,7 +439,7 @@ the working copy.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>REGEX</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>REGEX</b>
 <a name="IDX10"></a>
 </dt>
 <dd><p>Define regular expression used as pattern to build the list of files
@@ -477,7 +454,7 @@ so, control the amount of files to process.
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>ARGUMENTS</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>ARGUMENTS</b>
 <a name="IDX11"></a>
 </dt>
 <dd><p>Define optional arguments. 
@@ -572,7 +549,7 @@ to set two colons <samp>`::'</samp> after the option definition (e.g.,
 </p></dd></dl>
 
 <dl>
-<dt><u>Variable:</u> <b>EDITOR</b>
+<dt><span style="text-decoration: underline">Variable:</span> <b>EDITOR</b>
 <a name="IDX12"></a>
 </dt>
 <dd><p>Default text editor. 
@@ -595,7 +572,7 @@ following values are recognized by <tt>`centos-art.sh'</tt> script:
 <tt>`centos-art.sh'</tt> uses <tt>`/usr/bin/vim'</tt> text editor by default. 
 </p></dd></dl>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC339"></a>
 <h4 class="subsubsection"> 2.61.3.2 Global functions </h4>
 
@@ -607,7 +584,7 @@ provides introductory information to global functions you can use
 inside <tt>`centos-art.sh'</tt> script.
 </p>
 <dl>
-<dt><u>Function:</u> <b>cli_checkActionArguments</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_checkActionArguments</b>
 <a name="IDX13"></a>
 </dt>
 <dd><p>Validate action value (<var>ACTIONVAL</var>) variable.
@@ -625,7 +602,7 @@ message and ends script execution.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_checkFiles</b><i> FILE [TYPE]</i>
 <a name="IDX14"></a>
 </dt>
 <dd><p>Verify file existence.
@@ -680,7 +657,7 @@ directory.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_commitRepoChanges</b><i> [LOCATION]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_commitRepoChanges</b><i> [LOCATION]</i>
 <a name="IDX15"></a>
 </dt>
 <dd><p>Syncronize changes between repository and working copy.
@@ -727,7 +704,7 @@ copy as you may need to.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_doParseArguments</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_doParseArguments</b>
 <a name="IDX16"></a>
 </dt>
 <dd><p>Redefine arguments (<var>ARGUMENTS</var>) global variable using
@@ -737,7 +714,7 @@ description above.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_doParseArgumentsReDef</b><i> $@</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_doParseArgumentsReDef</b><i> $@</i>
 <a name="IDX17"></a>
 </dt>
 <dd><p>Initialize/reset arguments (<var>ARGUMENTS</var>) global variable using
@@ -752,7 +729,7 @@ specific function you want to redefine positional parameters at.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getArguments</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getArguments</b>
 <a name="IDX18"></a>
 </dt>
 <dd><p>Initialize function name (<var>FUNCNAM</var>), action name
@@ -795,7 +772,7 @@ variable with the new positional parameters information.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getFunctions</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getFunctions</b>
 <a name="IDX19"></a>
 </dt>
 <dd><p>Initialize funtionalities supported by <tt>`centos-art.sh'</tt> script.
@@ -891,7 +868,7 @@ function prefix_doSomething {
 </pre></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getCountryCodes</b><i> [FILTER]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getCountryCodes</b><i> [FILTER]</i>
 <a name="IDX20"></a>
 </dt>
 <dd><p>Output country codes supported by <tt>`centos-art.sh'</tt> script. 
@@ -903,7 +880,7 @@ codes as defined in ISO3166 standard. When <var>FILTER</var> is provided,
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getCountryName</b><i> [FILTER]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getCountryName</b><i> [FILTER]</i>
 <a name="IDX21"></a>
 </dt>
 <dd><p>Outputs country name supported by <tt>`centos-art.sh'</tt> script.
@@ -916,7 +893,7 @@ exactly.
 </p></dd></dl>
  
 <dl>
-<dt><u>Function:</u> <b>cli_getCurrentLocale</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getCurrentLocale</b>
 <a name="IDX22"></a>
 </dt>
 <dd><p>Output current locale used by <tt>`centos-art.sh'</tt> script. 
@@ -945,7 +922,7 @@ information to use inside <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getFilesList</b><i> [LOCATION]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getFilesList</b><i> [LOCATION]</i>
 <a name="IDX23"></a>
 </dt>
 <dd><p>Output list of files to process.
@@ -1014,7 +991,7 @@ returned. As example, consider the following construction:
 </dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getLangCodes</b><i> [FILTER]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getLangCodes</b><i> [FILTER]</i>
 <a name="IDX24"></a>
 </dt>
 <dd><p>Outputs language codes supported by <tt>`centos-art.sh'</tt> script.
@@ -1026,7 +1003,7 @@ regular expression pattern.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getLangName</b><i> [FILTER]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getLangName</b><i> [FILTER]</i>
 <a name="IDX25"></a>
 </dt>
 <dd><p>Outputs language names supported by <tt>`centos-art.sh'</tt> script.
@@ -1038,7 +1015,7 @@ that matches the locale code specified in <var>FILTER</var>, exactly.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getLocales</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getLocales</b>
 <a name="IDX26"></a>
 </dt>
 <dd><p>Output locale codes supported by <tt>`centos-art.sh'</tt> script.
@@ -1052,7 +1029,7 @@ specifications (<samp>`LL'</samp>) into one unique common locale specification
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getRepoName</b><i> NAME TYPE</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getRepoName</b><i> NAME TYPE</i>
 <a name="IDX27"></a>
 </dt>
 <dd><p>Sanitate file names.
@@ -1063,7 +1040,7 @@ achieve their goals.  Consider <code>cli_getRepoName</code> function as
 central place to manage file name convenctions for other functions
 inside <tt>`centos-art.sh'</tt> script.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> <code>cli_getRepoName</code> function doesn't verify file
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important" /><h3>Important</h3><p> <code>cli_getRepoName</code> function doesn't verify file
 or directory existence, for that purpose use <code>cli_checkFiles</code>
 function instead.
 </p></blockquote>
@@ -1103,7 +1080,7 @@ information).
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getRepoStatus</b><i> [LOCATION]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getRepoStatus</b><i> [LOCATION]</i>
 <a name="IDX28"></a>
 </dt>
 <dd><p>Request repository status.
@@ -1120,7 +1097,7 @@ message and ends its execution.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getTemporalFile</b><i> <var>NAME</var></i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getTemporalFile</b><i> <var>NAME</var></i>
 <a name="IDX29"></a>
 </dt>
 <dd><p>Output absolute path to temporal file <var>NAME</var>.
@@ -1162,7 +1139,7 @@ create temporal files inside <tt>`centos-art.sh'</tt> script.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_getThemeName</b>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_getThemeName</b>
 <a name="IDX30"></a>
 </dt>
 <dd><p>Output theme name.
@@ -1174,7 +1151,7 @@ Otherwise, <code>cli_getThemeName</code> returns an empty string.
 </p></dd></dl>
 
 <dl>
-<dt><u>Function:</u> <b>cli_printMessage</b><i> MESSAGE [FORMAT]</i>
+<dt><span style="text-decoration: underline">Function:</span> <b>cli_printMessage</b><i> MESSAGE [FORMAT]</i>
 <a name="IDX31"></a>
 </dt>
 <dd><p>Define standard output message definition supported by
@@ -1315,12 +1292,12 @@ on two-columns format.
 <p>Use <code>cli_printMessage</code> function whenever you need to output
 information from <tt>`centos-art.sh'</tt> script.
 </p>
-<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-idea.png" alt="Info"><h3>Tip</h3><p> To improve two-columns format, change the following file:
+<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-idea.png" alt="Idea" /><h3>Tip</h3><p> To improve two-columns format, change the following file:
 </p><pre class="verbatim">trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 </pre></blockquote>
 </dd></dl>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC340"></a>
 <h4 class="subsubsection"> 2.61.3.3 Specific functions </h4>
 
@@ -1328,7 +1305,7 @@ information from <tt>`centos-art.sh'</tt> script.
 available for you to use:
 </p>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC341"></a>
 <h3 class="subsection"> 2.61.4 See also </h3>
 
@@ -1337,7 +1314,7 @@ available for you to use:
 </td></tr>
 </table>
 
-
+<div class="page-line white"><hr style="display:none;" /></div>
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#SEC340" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_69.html#SEC342" title="Next section in reading order"> &gt; </a>]</td>
@@ -1346,12 +1323,23 @@ available for you to use:
 <td valign="middle" align="left">[<a href="#SEC334" title="Up section"> Up </a>]</td>
 <td valign="middle" align="left">[<a href="repository_80.html#SEC416" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
-<p>
- <font size="-1">
-  This document was generated on <i>March, 24 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
- </font>
- <br>
 
-</p>
+            <!--
+            The content of left column ends here.
+            -->
+            <div class="page-line"><hr style="display:none;" /></div>
+
+        </div>
+
+    </div>
+
+    <!--
+    Start page footer definitions.
+    -->
+    <div class="page-line white"><hr style="display:none;" /></div>
+
+</div>
+
 </body>
+
 </html>

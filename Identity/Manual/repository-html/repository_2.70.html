@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!--This manuals documents relevant information regarding the deployment,
+organization, and administration of CentOS Artwork Repository.
+
+Copyright C 2009-2011 Alain Reguera Delgado
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
+copy of the license is included in the section entitled GNU Free
+Documentation License.  
+-->
+<!-- Created on March, 30 2011 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<head>
+<title>CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory</title>
+
+<meta name="description" content="CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory">
+<meta name="keywords" content="CentOS Artwork Repository: 2.70 The trunk/Scripts/Functions/Shell Directory">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.76">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+/* CSS
+ *
+ * repository.css -- This file provides visual style for repository
+ * documentation manual in HTML format, as output by Texi2html
+ * program.
+ *
+ * Copyright (C) 2009-2011 Alain Reguera Delgado
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ * USA.
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/base.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/base-app.css");
+
+a.summary-letter {text-decoration: none}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="repository_2.69.html#SEC395" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC397" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="repository_U.0.html#SEC416" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Directories-trunk-Scripts-Functions-Shell"></a>
+<a name="SEC396"></a>
+<h2 class="section"> 2.70 The <tt>`trunk/Scripts/Functions/Shell'</tt> Directory </h2>
+<ul>
+<a href="#SEC397">2.70.1 Goals</a> <br>
+<a href="#SEC398">2.70.2 Description</a> <br>
+<a href="#SEC399">2.70.3 Usage</a> <br>
+<a href="#SEC400">2.70.4 See also</a> <br>
+</ul>
+
+
+<a name="SEC397"></a>
+<h3 class="subsection"> 2.70.1 Goals </h3>
+
+<p>This section exists to organize files related to <code>shell</code>
+functionality of <tt>`centos-art.sh'</tt> script.
+</p>
+
+<a name="SEC398"></a>
+<h3 class="subsection"> 2.70.2 Description </h3>
+
+<p>The <code>shell</code> functionality of <tt>`centos-art.sh'</tt> script helps
+you to maintain bash scripts inside repository. For example, suppose
+you've created many functionalities for <tt>`centos-art.sh'</tt> script,
+and you want to use a common copyright and license note for
+consistency in all your script files. If you have a bunch of files,
+doing this one by one wouldn't be a big deal. In contrast, if the
+amount of files grows, updating the copyright and license note for all
+of them would be a task rather tedious. The <code>shell</code> functionality
+exists to solve maintainance tasks just as the one previously
+mentioned.
+</p>
+<p>When you use <code>shell</code> functionality to update copyright inside
+script files, it is required that your script files contain (at least)
+the following top commentary structure:
+</p>
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a1"></a>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| # 
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|     
+15| }
+</pre>
+</div><p><strong>Figure 2.4: The functions script base comment structure
+</strong>
+</p>
+<p>Relevant lines in the above structure are lines from 5 to 9.
+Everything else in the file is left immutable.
+</p>
+<p>When you are updating copyright through <code>shell</code>
+functionality,  the <tt>`centos-art.sh'</tt> script replaces everything
+in-between line 5 --the first one matching <samp>`^# Copyright .+$'</samp>
+string-- and line 9--the first long dash separator matching <samp>`^#
+-+$'</samp>-- with the content of copyright template instance.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-attention.png" alt="Caution"><h3>Caution</h3><p> Be sure to add the long dash separator that matches
+<samp>`^# -+$'</samp> regular expression <em>before</em> the function
+definition. Otherwise, if the <samp>`Copyright'</samp> line is present but no
+long dash separator exists, <tt>`centos-art.sh'</tt> will remove anything
+in-between the <samp>`Copyright'</samp> line and the end of file. This way you
+may lost your function definitions entirely.
+</p></blockquote>
+
+<p>The copyright template instance is created from one copyright template
+stored in the <tt>`Config/tpl_forCopyright.sed'</tt> file.  The template
+instance is created once, and later removed when no longer needed. At
+this moment, when template instance is created, the
+<tt>`centos-art.sh'</tt> script takes advantage of automation in order to
+set copyright full name and date dynamically.
+</p>
+<p>When you use <code>shell</code> functionality to update copyright, the first
+thing <tt>`shell'</tt> functionality does is requesting copyright
+information to user, and later, if values were left empty (i.e., no
+value was typed before pressing <kbd>RET</kbd> key), the <tt>`shell'</tt>
+functionality uses its own default values.
+</p>
+<p>When <code>shell</code> functionality uses its own default values, the final
+copyright note looks like the following:
+</p>
+<div class="float"><a name="fig_003atrunk_002fScripts_002fBash_002fFunctions_002fShell_003a2"></a>
+<pre class="verbatim"> 1| #!/bin/bash
+ 2| #
+ 3| # doSomthing.sh -- The function description goes here.
+ 4| #
+ 5| # Copyright (C) 2003, 2010 The CentOS Project
+ 6| # 
+ 7| # This program is free software; you can redistribute it and/or modify
+ 8| # it under the terms of the GNU General Public License as published by
+ 9| # the Free Software Foundation; either version 2 of the License, or
+10| # (at your option) any later version.
+11| # 
+12| # This program is distributed in the hope that it will be useful, but
+13| # WITHOUT ANY WARRANTY; without even the implied warranty of
+14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+15| # General Public License for more details.
+16| #
+17| # You should have received a copy of the GNU General Public License
+18| # along with this program; if not, write to the Free Software
+19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+20| # USA.
+21| #
+22| # ----------------------------------------------------------------------
+23| # $Id$
+24| # ----------------------------------------------------------------------
+25|
+26| function doSomething {
+27|
+28| }
+</pre>
+</div><p><strong>Figure 2.5: The function script comment example
+</strong>
+</p>
+<p>Relevant lines in the above structure are lines from 5 to 22.  Pay
+attention how the copyright line was built, and how the license was
+added into the top comment where previously was just three dots.
+Everything else in the file was left immutable. 
+</p>
+<p>To change copyright information (i.e., full name or year information),
+run the <code>shell</code> functionality over the root directory containing
+the script files you want to update copyright in and enter the
+appropriate information when it be requested. You can run the
+<code>shell</code> functionality as many times as you need to.
+</p>
+<p>To change copyright license (i.e., the text in-between lines 7 and
+20), you need to edit the <tt>`Config/tpl_forCopyright.sed'</tt> file, set
+the appropriate information, and run the <code>shell</code> functionality
+once again for changes to take effect over the files you specify.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important"><h3>Important</h3><p> The <tt>`centos-art.sh'</tt> script is released as: 
+</p>
+<pre class="verbatim">GNU GENERAL PUBLIC LICENSE
+Version 2, June 1991
+
+Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+</pre>
+<p>Do not change the license information under which <tt>`centos-art.sh'</tt>
+script is released. Instead, if you think a different license must be
+used, please share your reasons at <a class="mailto" href="mailto:centos-devel@centos-art.sh">CentOS Developers mailing list</a>.
+</p></blockquote>
+
+
+<a name="SEC399"></a>
+<h3 class="subsection"> 2.70.3 Usage </h3>
+
+<dl compact="compact">
+<dt> <code>centos-art sh --update-copyright='path/to/dir'</code></dt>
+<dt> <code>centos-art sh --update-copyright='path/to/dir' --filter='regex'</code></dt>
+<dd><p>Use these commands to update copyright information in <samp>`.sh'</samp> files
+under <samp>`path/to/dir'</samp> directory. 
+</p></dd>
+</dl>
+
+<p>When you provide <samp>`--filter='regex''</samp> argument, the list of files
+to process is reduced as specified in <samp>`regex'</samp> regular expression.
+Inside <tt>`centos-art.sh'</tt> script, the <samp>`regex'</samp> regular
+expression is used in combination with <code>find</code> command to look
+for files matching the regular expression path pattern.
+</p>
+<blockquote class="orange"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning"><h3>Warning</h3><p> In order for <samp>`regex'</samp> regular expression to match
+a file, the <samp>`regex'</samp> regular expresion must match the whole file
+path not just the file name. 
+</p></blockquote>
+
+<p>For example, if you want to match all <tt>`render.conf.sh'</tt> files
+inside <tt>`path/to/dir'</tt>, use the <code>.+/render.conf</code> regular
+expression.  Later, <tt>`centos-art.sh'</tt> script uses this value inside
+<code>^$REGEX\.sh$</code> expression in order to build the final regular
+expression (i.e., <code>^.+/render.conf\.sh$</code>) that is evaluated
+against available file paths inside the list of files to process.
+</p>
+<p>Exceptionally, when you provide <samp>`--filter='regex''</samp> in the way
+that <samp>`regex'</samp>, appended to <samp>`path/to/dir/'</samp> (i.e.
+<samp>`path/to/dir/regex'</samp>), matches a regular file; the
+<tt>`centos-art.sh'</tt> script uses the file matching as only file in the
+list of files to process. 
+</p>
+
+<a name="SEC400"></a>
+<h3 class="subsection"> 2.70.4 See also </h3>
+
+
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="repository_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="repository_U.0.html#SEC416" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>March, 30 2011</i> using <a class="www" href="http://texi2html.cvshome.org/"><i>texi2html 1.76</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
