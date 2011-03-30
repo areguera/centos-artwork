@@ -7,15 +7,15 @@
 #
 # Usage:
 #
-#   ACTIONS[1]='LAST:renderDm:TYPE:RESOLUTION'
+# ACTIONS[1]='LAST:renderDm:TYPE:RESOLUTION'
 #
 # Where:
 #
-#   TYPE can be either `Gdm' or `Kdm'. These values correspond to the
-#   directory names used to store related design models.
+# TYPE can be either `Gdm' or `Kdm'. These values correspond to the
+# directory names used to store related design models.
 #
-#   RESOLUTION represents the screen resolution tar.gz files are
-#   produced for (e.g., 800x600, 1024x768, 2048x1536, etc.). 
+# RESOLUTION represents the screen resolution tar.gz files are
+# produced for (e.g., 800x600, 1024x768, 2048x1536, etc.). 
 #
 # In order to produce tar.gz files correctly, both screen resolution
 # definition inside pre-rendition configuration script and background
@@ -26,12 +26,12 @@
 # evaluated.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
-# 
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License as
-# published by the Free Software Foundation; either version 2 of the
-# License, or (at your option) any later version.
-# 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -41,7 +41,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
-# 
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------

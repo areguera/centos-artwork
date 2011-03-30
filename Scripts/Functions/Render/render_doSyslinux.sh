@@ -29,34 +29,34 @@
 # In order for this function to work, the `syslinux.gpl' file should
 # have a format similar to the following:
 #
-#   GIMP Palette
-#   Name: TreeFlower-4-Syslinux
-#   Columns: 16
-#   #
-#    10  22  40     0a1628
-#     9  28  52     091c34
-#    16  34  63     10223f
-#    20  37  67     142543
-#    15  39  74     0f274a
-#    12  45  85     0c2d55
-#    20  43  78     142b4e
-#   255 255 255     ffffff
-#    21  51  95     15335f
-#    41  52  70     293446
-#    32  76 141     204c8d
-#    77  90 107     4d5a6b
-#   143 154 167     8f9aa7
-#   128 179 255     80b3ff
-#   194 200 202     c2c8ca
-#   231 241 255     e7f1ff
+# GIMP Palette
+# Name: TreeFlower-4-Syslinux
+# Columns: 16
+# #
+# 10  22  40     0a1628
+# 9  28  52     091c34
+# 16  34  63     10223f
+# 20  37  67     142543
+# 15  39  74     0f274a
+# 12  45  85     0c2d55
+# 20  43  78     142b4e
+# 255 255 255     ffffff
+# 21  51  95     15335f
+# 41  52  70     293446
+# 32  76 141     204c8d
+# 77  90 107     4d5a6b
+# 143 154 167     8f9aa7
+# 128 179 255     80b3ff
+# 194 200 202     c2c8ca
+# 231 241 255     e7f1ff
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
-# 
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License as
-# published by the Free Software Foundation; either version 2 of the
-# License, or (at your option) any later version.
-# 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -66,7 +66,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
-# 
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
