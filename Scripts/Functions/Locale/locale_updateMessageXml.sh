@@ -39,7 +39,7 @@ function locale_updateMessageXml {
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}\.${EXTENSION}")
+        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.${EXTENSION}")
     else
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
