@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# tuneup.sh -- This function groups maintainance tasks which are
-# applied to files based on their extension.
+# tuneup.sh -- This function groups maintainance tasks for files
+# inside the repository. What task to performed to what file is
+# defined using the file extension as reference.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
