@@ -35,7 +35,7 @@ function help_updateOutputFiles {
     pushd ${HOME}/artwork > /dev/null
 
     help_updateOutputFileInfo
-    help_updateOutputFileHtml
+    help_updateOutputFileXhtml
     help_updateOutputFileXml
     help_updateOutputFilePdf
     help_updateOutputFilePlaintext
