@@ -26,22 +26,21 @@
 function help_updateOutputFileHtml {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}-html" 'AsUpdatingLine'
+    cli_printMessage "${MANUAL_BASEFILE}-xhtml" 'AsUpdatingLine'
 
     # Check html output directory
-    [[ ! -d ${MANUAL_BASEFILE}-html ]] && mkdir -p ${MANUAL_BASEFILE}-html
+    [[ ! -d ${MANUAL_BASEFILE}-xhtml ]] && mkdir -p ${MANUAL_BASEFILE}-xhtml
 
     # Add html output directory into directory stack to make it the
     # current working directory. Otherwise texi2html may produce
     # incorrect paths to images included.
-    pushd ${MANUAL_BASEFILE}-html > /dev/null
+    pushd ${MANUAL_BASEFILE}-xhtml > /dev/null
 
     # Update html files.  Use texi2html to export from texinfo file
     # format to html using CentOS Web default visual style.
-    texi2html ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}-html --split section \
-        --nosec-nav \
-        --css-include=${HOME}/artwork/trunk/Identity/Manual/repository-html/stylesheet.css \
-        -I=${HOME}/artwork
+    texi2html --init-file=${MANUAL_BASEDIR}/repository.init \
+        --output=${MANUAL_BASEDIR}/repository-xhtml \
+        ${MANUAL_BASEFILE}.texi
 
     # Apply html transformations. Html transformations rely on
     # Texi2html default html output. The main goal of these html
@@ -50,7 +49,7 @@ function help_updateOutputFileHtml {
     # Texi2html default html output.
     sed -r -i \
         -f ${HOME}/artwork/trunk/Identity/Manual/repository.sed \
-        ${MANUAL_BASEFILE}-html/*.html
+        ${MANUAL_BASEFILE}-xhtml/*.xhtml
 
     # Remove html output directory from directory stack.
     popd > /dev/null
