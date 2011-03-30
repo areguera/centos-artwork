@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# shell.sh -- This function provides very basic string manipulations
-# to help you maintain Bash scripts inside repository.
+# tuneup_doShellTopComment.sh -- This function tunnes up the top
+# comment section inside shell scripts (*.sh) using a predefined
+# template.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 # 
@@ -23,10 +24,34 @@
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
-    
-function shell {
 
-    # Define command-line interface.
-    shell_getActions
+function tuneup_doShellTopComment {
+
+    # Define absolute path to template file.
+    local TEMPLATE="${FUNCCONFIG}/shell_topcomment.sed"
+
+    # Check template file existence.
+    cli_checkFiles $TEMPLATE 'f'
+
+    # Define file name to template instance.
+    local INSTANCE=$(cli_getTemporalFile $TEMPLATE)
+
+    # Create template instance.
+    cp $TEMPLATE $INSTANCE
+
+    # Check template instance. We cannot continue if template instance
+    # couldn't be created.
+    cli_checkFiles $INSTANCE 'f'
+
+    # Expand translation markers in template instance.
+    cli_replaceTMarkers $INSTANCE
+
+    # Apply template instance to file.
+    sed -r -i -f $INSTANCE $FILE
+
+    # Remove template instance.
+    if [[ -f ${INSTANCE} ]];then
+        rm ${INSTANCE} 
+    fi
 
 }

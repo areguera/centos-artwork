@@ -41,6 +41,9 @@ function tuneup_doBaseActions {
     # Verify list of files.
     cli_printActionPreamble "$FILES" '' ''
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     # Process list of files and perform maintainance tasks
     # accordingly.
     for FILE in $FILES;do
