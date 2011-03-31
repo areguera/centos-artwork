@@ -533,6 +533,16 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Directories trunk Identity Themes Motifs TreeFlower-2</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs TreeFlower-2</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Motifs TreeFlower-2 Backgrounds</menunode>
+          <menutitle>Directories trunk Identity Themes Motifs TreeFlower-2 Backgrounds</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</menunode>
           <menutitle>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</menutitle>
           <menucomment></menucomment>
@@ -3105,7 +3115,7 @@ centos-art render --identity</example>
   </node>
   <node>
     <nodename>Directories trunk Identity Themes Motifs TreeFlower</nodename>
-    <nodenext>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodenext>
+    <nodenext>Directories trunk Identity Themes Motifs TreeFlower-2</nodenext>
     <nodeprev>Directories trunk Identity Themes Motifs Modern Palettes</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -3137,9 +3147,275 @@ centos-art render --identity</example>
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Identity Themes Motifs TreeFlower-2</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs TreeFlower-2 Backgrounds</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs TreeFlower</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Motifs/TreeFlower-2</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs TreeFlower-2</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Motifs TreeFlower-2 Backgrounds</nodename>
+    <nodenext>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodenext>
+    <nodeprev>Directories trunk Identity Themes Motifs TreeFlower-2</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Motifs/TreeFlower-2/Backgrounds</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Motifs TreeFlower-2 Backgrounds</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <para>This section exists to orgnize backgrounds of <emph>TreeFlower</emph> artistic motif.</para>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <subsubsection>
+          <title>Desktop background</title>
+          <para>Once you have defined the vectorial artistic motif design, use the <command>centos-art.sh</command> script (as described in usage section below) to produce the png version of it. With the png version of your vectorial design do the following:</para>
+          <para>Open the png version with GIMP.</para>
+          <para>Save the png version as a project of GIMP inside <file>trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Xcf</file> directory, using the same name of your vectorial design but with the <samp>.xcf</samp> extension.</para>
+          <para>Now use GIMP to improve your design.  Here you may add one layer for pattern, another for colors, and so on until you find yourself confortable with your artwork. For example,  the following layer distribution (from bottom to top) was used to build revision 285 of file <file>1360x768.xcf</file> using <emph>TreeFlower</emph> artistic motif at revision 241.</para>
+          <table>
+            <tableitem>
+              <tableterm><strong>Layer 1: Background</strong></tableterm>
+              <item>
+                <para>The first thing we did with GIMP was to create a layer named <samp>Background</samp> to store the artistic motif (File &gt; Open as layer). This layer is the lowest layer in the image.  Later, we started to create layers one upon another to change the artistic motif visual style.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 2: Shadow#1</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Background</samp> and contains a linear gradient from left (000000) to right (transparent) covering the whole image. This layer masks the artistic motif to avoid the effect of linear gradient. This layer is 100% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 3: Shadow#2</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Shadow#1</samp> and contains a linear gradient from left (000000) to right (transparent) covering just the 70% of the whole image aproximatly. This layer doesn't mask the artistic motif which make the left part of it fall into the dark of linear gradient. This layer is 100% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 4: Pattern (Paper)</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Shadow#2</samp> an contains the paper pattern shipped with GIMP 2.2. This layer doesn't mask the artistic motif so the pattern is applied over the whole image. This layer is set to 15% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 5: Pattern (Stripes)</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Pattern (Paper)</samp> and contains the stripes used over the artistic motif. This layer do masks the artistic motif so the stripes are only applied to it. This layer is set to 10% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 6: Shadow#3</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Pattern (Stripes)</samp> and contains a linear gradient from right (6600ff) to left (transparent).  This layer masks the artistic motif so the linear gradient doesn't affect it. This layer is set to 15% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 7: Shadow#4</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Shadow#3</samp> and contains a linear gradient from left (000000) to right (transparent). This layer do masks the artistic motif so the linear gradient doesn't affect it. This layer is set to 10% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 8: Color#1</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Shadow#4</samp> and is filled with orange (ffae00) color over the whole image. This layer is set to 10% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 9: Color#2</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Color#1</samp> and is filled with blue (010a88) color over the whole image. This layer is set to 10% of opacity.</para>
+              </item>
+            </tableitem>
+          </table>
+          <quotation>
+            <para><strong>Note</strong> There is no definite combination. To get the appropriate visual design is a matter of constant testing and personal taste.</para>
+          </quotation>
+          <para>Finally, use <samp>Save as copy ...</samp> option to export the final design. To export the final design use the same name of your vectorial design plus <samp>-final.png</samp> extension.</para>
+          <para>You can repeat these steps to create images for other screen resolutions.</para>
+        </subsubsection>
+
+        <subsubsection>
+          <title>Anaconda Prompt (syslinux) background</title>
+          <para>When building syslinux backgrounds it is needed to take into account that the final image is reduced to 16 colors. In desktop background there is no color limitation but syslinux does have. The goal of this section is achieving a final syslinux background as close as possible to desktop backgrounds using 16 colors only.</para>
+          <para>Another point to consider is the forground and background definition used by syslinux. The syslinux documentation says that the color set in position 0 is the background and color set in position 7 is the forground. The final palette of color used by our background will match that specification. For great contrast we'll use black as background and white as forground. At this poing we have black (000000) and white (ffffff) colors in our syslinux palette, which left us with 14 colors to play with.</para>
+          <para>Let's begin with <file>Xcf/640x300.xcf</file> layer distribution from bottom to top:</para>
+          <table>
+            <tableitem>
+              <tableterm><strong>Layer 1: Background</strong></tableterm>
+              <item>
+                <para>This layer is the lowest layer in the image composition and contains the artistic motif image rendered for the same resolution (i.e., <file>Img/Png/640x300.png</file>). This layer is set to 100% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 2: Pattern (Paper)</strong></tableterm>
+              <item>
+                <para>This layer is placed above <samp>Background</samp> layer and contains the paper pattern shipped with GIMP 2.2. This layer doesn't mask the artistic motif. This layer is set to 30% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 3: Pattern (Stripes)</strong></tableterm>
+              <item>
+                <para>This layer is placed above <samp>Pattern (Paper)</samp> layer and contains the stripes pattern shipped with GIMP 2.2. This layer does mask the artistic motif in order to apply the stripes over it only. The background is not affected by the stripes pattern just the artistic motif. This layer is set to 20% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 4: Shadow#1</strong></tableterm>
+              <item>
+                <para>This layer is placed above <samp>Pattern (Stripes)</samp> layer and fills the entire layer area with violet (6600ff) color. This layer do mask the artistic motif in order to applied the violet color to the background area outside the artistic motif only. This layer is set to 15% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 5: Color#1</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Shadow#1</samp> and is filled with orange (ffae00) color to cover the whole image. This layer is set to 10% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 6: Color#2</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Color#1</samp> and is filled with blue (010a88) color to cover the whole image. This layer is set to 10% of opacity.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Layer 7: Shadow#2</strong></tableterm>
+              <item>
+                <para>This layer is above <samp>Color#1</samp> and contains a linear gradient from left (000000) to right (transparent) covering 70% of the image approximately.</para>
+              </item>
+            </tableitem>
+          </table>
+          <para>At this point we have the composition and should look like the desktop backgrounds. Compared with desktop backgrounds there are some differences in opacity. This is because in our testings the final color information found with this composition produces an acceptable 16 color image. Of course this is something we haven't seen yet.</para>
+          <para>To define the color information of our current coposition, save the syslinux background composition we've done using <samp>File &gt; Save as Copy ...</samp> option in the following location:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/Png/640x300-final.png
+]]></verbatim>
+          <para>Now, create the final png version of syslinux backgrounds using the following command:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Prompt
+]]></verbatim>
+          <para>This command will create syslinux-splash final images for all major releases of CentOS distribution the repository has been configured to. The important files here are <file>syslinux-splash.png</file>, other files may contain the wrong information because we haven't defined yet the correct color information to use.</para>
+          <para>Open one <file>syslinux-splash.png</file> file with GIMP and use the <samp>Image &gt; Mode &gt; Indexed</samp> to reduce image colors up to 16 colors, using the <samp>Generate optimum palette</samp> feature of GIMP.  If the image looks aceptable after reducing colors, use the <samp>Palettes</samp> menu (Ctrl+P) of GIMP to import a new palette from file and name it <samp>CentOS-TreeFlower-Syslinux</samp>. Once you've saved the palette, the color information is stored at:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
+]]></verbatim>
+          <para>You need to edit <file>CentOS-TreeFlower-Syslinux.gpl</file> file in order to set the appropriate order of colors.  Remember black (000000) in position 0, and white (ffffff) in position 7. Other positions are irrelevant. When editing this file you may find that color reduction did not set black and white colors to their respective values exactly. Change that manually. For example, consider the following palette:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+GIMP Palette
+Name: CentOS-TreeFlower-Syslinux
+Columns: 16
+#
+  0   0   0	Background (black)
+ 23  20  35	Untitled
+ 34  25  48	Untitled
+ 37  35  60	Untitled
+ 47  36  68	Untitled
+ 37  54  86	Untitled
+ 60  48  90	Untitled
+255 255 255	Foreground (white)
+ 66  54  99	Untitled
+ 74  61  98	Untitled
+ 49  78 126	Untitled
+ 43  87 151	Untitled
+ 92  89  95	Untitled
+ 54 104 183	Untitled
+158 153 156	Untitled
+201 196 195	Untitled
+]]></verbatim>
+          <para>Update the <samp>Palettes</samp> menu to get the new color positions from the file you just edited and open the palette with double click.</para>
+          <para>Update the <file>syslinux.gpl</file> file copying the following file:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
+]]></verbatim>
+          <para>to</para>
+          <verbatim xml:space="preserve"><![CDATA[
+trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.gpl
+]]></verbatim>
+          <para>With the <samp>CentOS-TreeFlower-Syslinux</samp> palette opened in the <samp>Palette Editor</samp>, open (Ctrl+O) the following file:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.ppm
+]]></verbatim>
+          <para>and replace its color information with that one in <samp>CentOS-TreeFlower-Syslinux</samp> palette.  When you are replacing color information inside <file>syslilnux.ppm</file>, remember to keep the order of colors just as they are in the <samp>CentOS-TreeFlower-Palette</samp> palette.</para>
+          <para>The <file>syslinux.ppm</file> file is 16 pixels width and 1 pixel height, so you probably need to zoom it a bit to set the color information in their place when using the pen tool with the brush <samp>Circle (01) (1 x 1)</samp>.</para>
+          <para>Once you've updated the <samp>syslinux.ppm</samp> file, it is time to update the following file:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
+]]></verbatim>
+          <para>The <file>syslinux.hex</file> file contains the color information in hexadecimal notation.  The color information in hexadecimal notation is required by <command>ppmtolss16</command> command.  The <command>ppmtolss16</command> command produces the final LSS16 image format that is used by syslinux program inside CentOS distribution.</para>
+          <para>The color information inside <file>syslinux.hex</file> must match the one in <file>syslinux.ppm</file> and <file>syslinux.gpl</file>. For example, based on <file>CentOS-TreeFlower-Syslinux</file> palette of colors above, consider the following <file>syslinux.hex</file> file:</para>
+          <verbatim xml:space="preserve"><![CDATA[
+#000000=0
+#171423=1
+#221930=2
+#25233c=3
+#2f2444=4
+#253656=5
+#3c305a=6
+#ffffff=7
+#423663=8
+#4a3d62=9
+#314e7e=10
+#2b5797=11
+#5c595f=12
+#3668b7=13
+#9e999c=14
+#c9c4c3=15
+]]></verbatim>
+        </subsubsection>
+
+        <subsubsection>
+          <title>Grub background</title>
+        </subsubsection>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodename>
     <nodenext>Directories trunk Identity Widgets</nodenext>
-    <nodeprev>Directories trunk Identity Themes Motifs TreeFlower</nodeprev>
+    <nodeprev>Directories trunk Identity Themes Motifs TreeFlower-2 Backgrounds</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds</file> Directory</title>

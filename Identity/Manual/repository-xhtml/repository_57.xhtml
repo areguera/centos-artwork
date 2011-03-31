@@ -5,11 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 
-    <title>CentOS Artwork Repository: 2.50 The trunk/Locales/Identity/Brands Directory</title>
+    <title>CentOS Artwork Repository: 2.50 The trunk/Locales Directory</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="CentOS Artwork Repository: 2.50 The trunk/Locales/Identity/Brands Directory" />
-    <meta name="keywords" content="CentOS Artwork Repository: 2.50 The trunk/Locales/Identity/Brands Directory" />
+    <meta name="description" content="CentOS Artwork Repository: 2.50 The trunk/Locales Directory" />
+    <meta name="keywords" content="CentOS Artwork Repository: 2.50 The trunk/Locales Directory" />
     <meta name="resource-type" content="document" />
     <meta name="distribution" content="global" />
     <meta name="generator" content="texi2html 1.76" />
@@ -29,148 +29,93 @@
 
         <div id="content">
 
-<!-- Created on March, 30 2011 by texi2html 1.76 -->
+<!-- Created on March, 31 2011 by texi2html 1.76 -->
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="repository_56.xhtml#SEC274" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC276" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_56.xhtml#SEC281" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_58.xhtml#SEC283" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.xhtml#SEC416" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_82.xhtml#SEC429" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.xhtml#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.xhtml#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.xhtml#SEC416" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_82.xhtml#SEC429" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.xhtml#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Directories-trunk-Locales-Identity-Brands"></a>
-<a name="SEC275"></a>
-<h2 class="section"> 2.50 The <tt>`trunk/Locales/Identity/Brands'</tt> Directory </h2>
-
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC276"></a>
-<h3 class="subsection"> 2.50.1 Goals </h3>
-
-<ul class="toc">
-<li> Organize brands' translation files.
-</li></ul>
-
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC277"></a>
-<h3 class="subsection"> 2.50.2 Description </h3>
-
-<p>Translation files, inside <tt>`trunk/Translations/Identity/Brands'</tt>
-translation entry, don't use default rendering translation
-functionality, they use the following translation pre-rendering
-configuration file instead:
-</p>
-<pre class="verbatim">/home/centos/artwork/trunk/Translation/Identity/Brands/render.conf.sh
-</pre>
-<p>Inside <tt>`trunk/Translations/Identity/Brands'</tt> translation entry,
-translation files are symbolic links pointing to the common template
-translation structure, inside the translation template (<samp>`Tpl/'</samp>)
-directory.
-</p>
-<p>Inside <tt>`trunk/Translations/Identity/Brands'</tt> translation entry,
-translation files are created using identity design templates as
-reference.  The translation pre-rendering script creates a translation
-structure where the translation template (<samp>`Tpl/'</samp>) directory
-structure applies to each single design template available.
-</p>
-<p>For example, if the brands' translation template (<samp>`Tpl/'</samp>)
-directory has 30 translation files, and there are 20 design templates;
-the brands' translation pre-rendering script creates a translation
-structure of symbolic links where the 30 translation files apply the
-20 design templates one by one, producing 600 translation symbolic
-links as result. At this point, when rendering identity, the
-<code>centos-art</code> script considers translation symbolic links as
-translation files.
-</p>
-<p>Translation file names, inside brands' translation template
-(<samp>`Tpl'</samp>) directory have special meaning:
-</p>
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC278"></a>
-<h4 class="subsubsection"> 2.50.2.1 Conventional file names </h4>
-
-<p>Convenctional file names look like <tt>`blue.sed'</tt>, <tt>`2c-a.sed'</tt>,
-etc.  Replacement commands inside translation file are applied to
-design templates and translation file names are used as final image
-name.  The image dimensions use the same dimensions that design
-template has.
-</p>
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC279"></a>
-<h4 class="subsubsection"> 2.50.2.2 Numeric file names </h4>
-
-<p>Numeric file names look like <tt>`300.sed'</tt>, <tt>`200.sed'</tt>, etc.
-Replacements commands inside translation files are applied to design
-templates, and translation file names are used as final image name.
-The final image is saved using an specific <samp>`width'</samp> defined by the
-number part of the translation file name. The image <samp>`height'</samp> is
-automatically scaled based on the previous <samp>`width'</samp> definition to
-maintain the designing ratio.  
-</p>
-<p>For example, if your design template has 400x200 pixels of dimension,
-and you apply a translation file named `300.sed' to it, the final
-image you get as result will have 300x100 pixels of dimension.   The
-same is true if you use higher numbers like `1024.sed', `2048.sed',
-etc. In these cases you have bigger images proportionally.
-</p>
-<p>As we are using scalable vector graphics to design identity templates,
-the image size you produce is not limitted in size. You can use one
-design template produced in 400x200 pixels to produce larger or
-shorter PNG images using numeric translation files as described
-above.
-</p>
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC280"></a>
-<h4 class="subsubsection"> 2.50.2.3 Translation markers </h4>
-
-<p>Inside <tt>`trunk/Translations/Identity/Brands/'</tt>, translation files
-combine the following translation markers:
-</p>
-<dl compact="compact">
-<dt> <samp>`#000000'</samp></dt>
-<dd>
-<p>Specify which color to use when rendering brand images.
-</p>
-<blockquote class="blue icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-info.png" alt="Info" /><h3>Note</h3><p> As translation files inside
-<tt>`trunk/Translations/Identity/Brands'</tt> are symbolic links that
-point to template translation files, translation markers are defined
-inside template translation files.
-</p></blockquote>
-</dd>
-</dl>
-
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC281"></a>
-<h3 class="subsection"> 2.50.3 Usage </h3>
-
-<p>To render brands' translation files, use the following command:
-</p>
-<pre class="verbatim">centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Brands
-</pre>
-<div class="page-line white"><hr style="display:none;" /></div>
+<a name="Directories-trunk-Locales"></a>
 <a name="SEC282"></a>
-<h3 class="subsection"> 2.50.4 See also </h3>
+<h2 class="section"> 2.50 The <tt>`trunk/Locales'</tt> Directory </h2>
 
+<p>The <tt>`trunk/Locales'</tt> directory exists to store the translation
+messages used to produce content in different languages.
+</p>
+<p>Translation messages are organized using the directory structure of
+the component being translated. For example, if we want to provide
+translation messages for <tt>`trunk/Manuals/Repository'</tt>, then the
+<tt>`trunk/Locales/Manuals/Repository'</tt> directory needs to be created.
+</p>
+<p>Once the locale directory exists for the component we want to provide
+translation messages for, it is necessary to create the translation
+files where translation messages are. The translation files follows
+the concepts of <code>xml2po</code> and GNU <code>gettext</code> tools.
+</p>
+<p>The basic translation process is as follow: first, translatable
+strings are extracted from files and a portable object template (.pot)
+is created or updated with the information. Using the portable object
+template, a portable object (.po) is created or updated for translator
+to locale the messages retrived.  Finally, a machine object (.mo) is
+created from portable object to sotore the translated messages.
+</p>
+<p>Inside the repository there are two ways to retrive translatable
+strings from files. The first one is through <code>xml2po</code> command
+and the second through <code>xgettext</code> command. The <code>xml2po</code>
+is used to retrive translatable strings from XML files (e.g., Scalable
+Vector Graphics, DocBook, etc.) and the <code>xgettext</code> command is
+used to retrive translatable strings from shell scripts files (e.g.,
+the files that make the <code>centos-art.sh</code> command-line
+interface).
+</p>
+<p>When translatable strings are retrived from XML files, using the
+<code>xml2po</code> command, there is no need to create the machine
+object as we do when translatable strings ar retrived from shell
+files, using the <code>xgettext</code> command. The <code>xml2po</code>
+produces a temporal machine object in order to create a translated XML
+file. Once the translated XML file has been created the machine object
+is no longer needed. On the other hand, the machine object produced by
+the <code>xgettext</code> command is required by the system in order for
+the show shell script localized messages.
+</p>
+<p>Another difference between <code>xml2po</code> and <code>xgettext</code> we
+need to be aware of is the directory structure used to store machine
+objects. In <code>xml2po</code>, the machine object is created in the
+current working directory as <tt>`.xml2po.mo'</tt> and can be safetly
+removed once the translated XML file has been created. In the case of
+<code>xgettext</code>, the machine object needs to be stored in the
+<tt>`$TEXTDOMAIN/$LOCALE/LL_MESSAGES/$TEXTDOMAIN.mo'</tt> file in order
+for the system to interpret it and should not be removed since it is
+the file that contain the translation messages themselves.
+</p>
+<p>Automation of localization tasks is achived through the <code>locale</code>
+functionality of command-line interface.
+</p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="repository_12.xhtml#SEC37">2.5 The <tt>`trunk/Identity/Brands'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top"><a href="repository_74.xhtml#SEC370">2.67 The <tt>`trunk/Scripts/Functions/Locale'</tt> Directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
+
 <div class="page-line white"><hr style="display:none;" /></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC281" title="Previous section in reading order"> &lt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="repository_56.xhtml#SEC281" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_58.xhtml#SEC283" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC275" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.xhtml#SEC416" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="repository_82.xhtml#SEC429" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 
             <div class="page-line"><hr style="display:none;" /></div>

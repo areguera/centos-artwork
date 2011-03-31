@@ -5,11 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 
-    <title>CentOS Artwork Repository: 2.46 The trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds Directory</title>
+    <title>CentOS Artwork Repository: 2.46 The trunk/Identity/Themes/Motifs/TreeFlower-2 Directory</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="CentOS Artwork Repository: 2.46 The trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds Directory" />
-    <meta name="keywords" content="CentOS Artwork Repository: 2.46 The trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds Directory" />
+    <meta name="description" content="CentOS Artwork Repository: 2.46 The trunk/Identity/Themes/Motifs/TreeFlower-2 Directory" />
+    <meta name="keywords" content="CentOS Artwork Repository: 2.46 The trunk/Identity/Themes/Motifs/TreeFlower-2 Directory" />
     <meta name="resource-type" content="document" />
     <meta name="distribution" content="global" />
     <meta name="generator" content="texi2html 1.76" />
@@ -29,368 +29,56 @@
 
         <div id="content">
 
-<!-- Created on March, 30 2011 by texi2html 1.76 -->
+<!-- Created on March, 31 2011 by texi2html 1.76 -->
 <table cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="repository_52.xhtml#SEC255" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC257" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.xhtml#SEC416" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_82.xhtml#SEC429" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository.xhtml#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="repository_toc.xhtml#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.xhtml#SEC416" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="repository_82.xhtml#SEC429" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="repository_abt.xhtml#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Directories-trunk-Identity-Themes-Motifs-TreeFlower-Backgrounds"></a>
+<a name="Directories-trunk-Identity-Themes-Motifs-TreeFlower_002d2"></a>
 <a name="SEC256"></a>
-<h2 class="section"> 2.46 The <tt>`trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds'</tt> Directory </h2>
+<h2 class="section"> 2.46 The <tt>`trunk/Identity/Themes/Motifs/TreeFlower-2'</tt> Directory </h2>
 
 <div class="page-line white"><hr style="display:none;" /></div>
 <a name="SEC257"></a>
 <h3 class="subsection"> 2.46.1 Goals </h3>
-
-<p>This section exists to orgnize backgrounds of <em>TreeFlower</em>
-artistic motif.
-</p>
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC258"></a>
-<h3 class="subsection"> 2.46.2 Description </h3>
-
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC259"></a>
-<h4 class="subsubsection"> 2.46.2.1 Desktop background </h4>
-
-<p>Once you have defined the vectorial artistic motif design, use the
-<code>centos-art.sh</code> script (as described in usage section below)
-to produce the png version of it. With the png version of your
-vectorial design do the following:
-</p>
-<p>Open the png version with GIMP.
-</p>
-<p>Save the png version as a project of GIMP inside
-<tt>`trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Xcf'</tt>
-directory, using the same name of your vectorial design but with the
-<samp>`.xcf'</samp> extension.  
-</p>
-<p>Now use GIMP to improve your design.  Here you may add one layer for
-pattern, another for colors, and so on until you find yourself
-confortable with your artwork. For example,  the following layer
-distribution (from bottom to top) was used to build revision 285 of
-file <tt>`1360x768.xcf'</tt> using <em>TreeFlower</em> artistic motif at
-revision 241.
-</p>
-<dl compact="compact">
-<dt> <strong>Layer 1: Background</strong> </dt>
-<dd>
-<p>The first thing we did with GIMP was to create a layer named
-<samp>`Background'</samp> to store the artistic motif (File &gt; Open as layer).
-This layer is the lowest layer in the image.  Later, we started to
-create layers one upon another to change the artistic motif visual
-style.
-</p>
-</dd>
-<dt> <strong>Layer 2: Shadow#1</strong></dt>
-<dd>
-<p>This layer is above <samp>`Background'</samp> and contains a linear gradient
-from left (000000) to right (transparent) covering the whole image.
-This layer masks the artistic motif to avoid the effect of linear
-gradient. This layer is 100% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 3: Shadow#2</strong></dt>
-<dd>
-<p>This layer is above <samp>`Shadow#1'</samp> and contains a linear gradient
-from left (000000) to right (transparent) covering just the 70% of the
-whole image aproximatly. This layer doesn't mask the artistic motif
-which make the left part of it fall into the dark of linear gradient.
-This layer is 100% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 4: Pattern (Paper)</strong></dt>
-<dd>
-<p>This layer is above <samp>`Shadow#2'</samp> an contains the paper pattern
-shipped with GIMP 2.2. This layer doesn't mask the artistic motif so
-the pattern is applied over the whole image. This layer is set to 15%
-of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 5: Pattern (Stripes)</strong></dt>
-<dd>
-<p>This layer is above <samp>`Pattern (Paper)'</samp> and contains the stripes
-used over the artistic motif. This layer do masks the artistic motif
-so the stripes are only applied to it. This layer is set to 10% of
-opacity.
-</p>
-</dd>
-<dt> <strong>Layer 6: Shadow#3</strong></dt>
-<dd>
-<p>This layer is above <samp>`Pattern (Stripes)'</samp> and contains a linear
-gradient from right (6600ff) to left (transparent).  This layer masks
-the artistic motif so the linear gradient doesn't affect it. This
-layer is set to 15% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 7: Shadow#4</strong></dt>
-<dd>
-<p>This layer is above <samp>`Shadow#3'</samp> and contains a
-linear gradient from left (000000) to right (transparent). This layer
-do masks the artistic motif so the linear gradient doesn't affect it.
-This layer is set to 10% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 8: Color#1</strong></dt>
-<dd>
-<p>This layer is above <samp>`Shadow#4'</samp> and is filled with orange (ffae00)
-color over the whole image. This layer is set to 10% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 9: Color#2</strong></dt>
-<dd>
-<p>This layer is above <samp>`Color#1'</samp> and is filled with
-blue (010a88) color over the whole image. This layer is set to 10% of
-opacity.
-</p>
-</dd>
-</dl>
-
-<blockquote class="blue icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-info.png" alt="Info" /><h3>Note</h3><p> There is no definite combination. To get the appropriate
-visual design is a matter of constant testing and personal taste.
-</p></blockquote>
-
-<p>Finally, use <samp>`Save as copy ...'</samp> option to export the final
-design. To export the final design use the same name of your vectorial
-design plus <samp>`-final.png'</samp> extension. 
-</p>
-<p>You can repeat these steps to create images for other screen
-resolutions.
-</p>
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC260"></a>
-<h4 class="subsubsection"> 2.46.2.2 Anaconda Prompt (syslinux) background </h4>
-
-<p>When building syslinux backgrounds it is needed to take into account
-that the final image is reduced to 16 colors. In desktop background
-there is no color limitation but syslinux does have. The goal of this
-section is achieving a final syslinux background as close as possible
-to desktop backgrounds using 16 colors only.
-</p>
-<p>Another point to consider is the forground and background definition
-used by syslinux. The syslinux documentation says that the color set
-in position 0 is the background and color set in position 7 is the
-forground. The final palette of color used by our background will
-match that specification. For great contrast we'll use black as
-background and white as forground. At this poing we have black
-(000000) and white (ffffff) colors in our syslinux palette, which left
-us with 14 colors to play with. 
-</p>
-<p>Let's begin with <tt>`Xcf/640x300.xcf'</tt> layer distribution from bottom
-to top:
-</p>
-<dl compact="compact">
-<dt> <strong>Layer 1: Background</strong></dt>
-<dd>
-<p>This layer is the lowest layer in the image composition and contains
-the artistic motif image rendered for the same resolution (i.e.,
-<tt>`Img/Png/640x300.png'</tt>). This layer is set to 100% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 2: Pattern (Paper)</strong></dt>
-<dd>
-<p>This layer is placed above <samp>`Background'</samp> layer and contains the
-paper pattern shipped with GIMP 2.2. This layer doesn't mask the
-artistic motif. This layer is set to 30% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 3: Pattern (Stripes)</strong></dt>
-<dd>
-<p>This layer is placed above <samp>`Pattern (Paper)'</samp> layer and contains
-the stripes pattern shipped with GIMP 2.2. This layer does mask the
-artistic motif in order to apply the stripes over it only. The
-background is not affected by the stripes pattern just the artistic
-motif. This layer is set to 20% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 4: Shadow#1</strong></dt>
-<dd>
-<p>This layer is placed above <samp>`Pattern (Stripes)'</samp> layer and fills
-the entire layer area with violet (6600ff) color. This layer do mask
-the artistic motif in order to applied the violet color to the
-background area outside the artistic motif only. This layer is set to
-15% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 5: Color#1</strong></dt>
-<dd>
-<p>This layer is above <samp>`Shadow#1'</samp> and is filled with orange (ffae00)
-color to cover the whole image. This layer is set to 10% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 6: Color#2</strong></dt>
-<dd>
-<p>This layer is above <samp>`Color#1'</samp> and is filled with blue (010a88)
-color to cover the whole image. This layer is set to 10% of opacity.
-</p>
-</dd>
-<dt> <strong>Layer 7: Shadow#2</strong></dt>
-<dd>
-<p>This layer is above <samp>`Color#1'</samp> and contains a linear gradient from
-left (000000) to right (transparent) covering 70% of the image
-approximately. 
-</p>
-</dd>
-</dl>
-
-<p>At this point we have the composition and should look like the desktop
-backgrounds. Compared with desktop backgrounds there are some
-differences in opacity. This is because in our testings the final
-color information found with this composition produces an acceptable
-16 color image. Of course this is something we haven't seen yet.
-</p>
-<p>To define the color information of our current coposition, save the
-syslinux background composition we've done using <samp>`File &gt; Save as
-Copy ...'</samp> option in the following location:
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/TreeFlower/Backgrounds/Img/Png/640x300-final.png
-</pre>
-<p>Now, create the final png version of syslinux backgrounds using the
-following command:
-</p>
-<pre class="verbatim">centos-art render --entry=trunk/Identity/Themes/Motifs/TreeFlower/Distro/Anaconda/Prompt
-</pre>
-<p>This command will create syslinux-splash final images for all major
-releases of CentOS distribution the repository has been configured to.
-The important files here are <tt>`syslinux-splash.png'</tt>, other
-files may contain the wrong information because we haven't defined yet
-the correct color information to use.
-</p>
-<p>Open one <tt>`syslinux-splash.png'</tt> file with GIMP and use the
-<samp>`Image &gt; Mode &gt; Indexed'</samp> to reduce image colors up to 16 colors,
-using the <samp>`Generate optimum palette'</samp> feature of GIMP.  If the
-image looks aceptable after reducing colors, use the <samp>`Palettes'</samp>
-menu (Ctrl+P) of GIMP to import a new palette from file and name it
-<samp>`CentOS-TreeFlower-Syslinux'</samp>. Once you've saved the palette, the
-color information is stored at:
-</p>
-<pre class="verbatim">~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
-</pre>
-<p>You need to edit <tt>`CentOS-TreeFlower-Syslinux.gpl'</tt> file in order
-to set the appropriate order of colors.  Remember black (000000) in
-position 0, and white (ffffff) in position 7. Other positions are
-irrelevant. When editing this file you may find that color reduction
-did not set black and white colors to their respective values exactly.
-Change that manually. For example, consider the following palette:
-</p>
-<pre class="verbatim">GIMP Palette
-Name: CentOS-TreeFlower-Syslinux
-Columns: 16
-#
-  0   0   0	Background (black)
- 23  20  35	Untitled
- 34  25  48	Untitled
- 37  35  60	Untitled
- 47  36  68	Untitled
- 37  54  86	Untitled
- 60  48  90	Untitled
-255 255 255	Foreground (white)
- 66  54  99	Untitled
- 74  61  98	Untitled
- 49  78 126	Untitled
- 43  87 151	Untitled
- 92  89  95	Untitled
- 54 104 183	Untitled
-158 153 156	Untitled
-201 196 195	Untitled
-</pre>
-<p>Update the <samp>`Palettes'</samp> menu to get the new color positions from
-the file you just edited and open the palette with double click. 
-</p>
-<p>Update the <tt>`syslinux.gpl'</tt> file copying the following file:
-</p>
-<pre class="verbatim">~/.gimp-2.2/palettes/CentOS-TreeFlower-Syslinux.gpl
-</pre>
-<p>to
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.gpl
-</pre>
-<p>With the <samp>`CentOS-TreeFlower-Syslinux'</samp> palette opened in the
-<samp>`Palette Editor'</samp>, open (Ctrl+O) the following file:
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.ppm
-</pre>
-<p>and replace its color information with that one in
-<samp>`CentOS-TreeFlower-Syslinux'</samp> palette.  When you are replacing
-color information inside <tt>`syslilnux.ppm'</tt>, remember to keep the
-order of colors just as they are in the
-<samp>`CentOS-TreeFlower-Palette'</samp> palette.  
-</p>
-<p>The <tt>`syslinux.ppm'</tt> file is 16 pixels width and 1 pixel height, so
-you probably need to zoom it a bit to set the color information in
-their place when using the pen tool with the brush <samp>`Circle (01)
-(1 x 1)'</samp>.
-</p>
-<p>Once you've updated the <samp>`syslinux.ppm'</samp> file, it is time to update
-the following file:
-</p>
-<pre class="verbatim">trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
-</pre>
-<p>The <tt>`syslinux.hex'</tt> file contains the color information in
-hexadecimal notation.  The color information in hexadecimal notation
-is required by <code>ppmtolss16</code> command.  The <code>ppmtolss16</code>
-command produces the final LSS16 image format that is used by syslinux
-program inside CentOS distribution.
-</p>
-<p>The color information inside <tt>`syslinux.hex'</tt> must match the one in
-<tt>`syslinux.ppm'</tt> and <tt>`syslinux.gpl'</tt>. For example, based on
-<tt>`CentOS-TreeFlower-Syslinux'</tt> palette of colors above, consider
-the following <tt>`syslinux.hex'</tt> file:
-</p>
-<pre class="verbatim">#000000=0
-#171423=1
-#221930=2
-#25233c=3
-#2f2444=4
-#253656=5
-#3c305a=6
-#ffffff=7
-#423663=8
-#4a3d62=9
-#314e7e=10
-#2b5797=11
-#5c595f=12
-#3668b7=13
-#9e999c=14
-#c9c4c3=15
-</pre>
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC261"></a>
-<h4 class="subsubsection"> 2.46.2.3 Grub background </h4>
-
-<div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC262"></a>
-<h3 class="subsection"> 2.46.3 Usage </h3>
 
 <ul class="toc">
 <li> ...
 </li></ul>
 
 <div class="page-line white"><hr style="display:none;" /></div>
-<a name="SEC263"></a>
+<a name="SEC258"></a>
+<h3 class="subsection"> 2.46.2 Description </h3>
+
+<div class="page-line white"><hr style="display:none;" /></div>
+<a name="SEC259"></a>
+<h3 class="subsection"> 2.46.3 Usage </h3>
+
+<div class="page-line white"><hr style="display:none;" /></div>
+<a name="SEC260"></a>
 <h3 class="subsection"> 2.46.4 See also </h3>
 
 
 <div class="page-line white"><hr style="display:none;" /></div>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC262" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="repository_54.xhtml#SEC264" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC259" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_54.xhtml#SEC261" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left">[<a href="repository_7.xhtml#SEC12" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#SEC256" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="repository_80.xhtml#SEC416" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left">[<a href="repository_82.xhtml#SEC429" title="Next chapter"> &gt;&gt; </a>]</td>
 </tr></table>
 
             <div class="page-line"><hr style="display:none;" /></div>
