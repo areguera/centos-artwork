@@ -25,8 +25,7 @@
 
 function help_copyEntry {
 
-    local ENTRY_SRC=${ENTRY}
-    local ENTRY_DST=${FLAG_TO}
+    local ENTRY_SRC="$ENTRY"
     local ENTRIES=''
     local ENTRY=''
 
@@ -49,7 +48,7 @@ function help_copyEntry {
     fi
                 
     # Define list of files to process.
-    ENTRIES=$(cli_getFilesList "$(dirname ${ENTRY_DST})" "$(basename ${ENTRY_DST}).*\.texi")
+    ENTRIES=$(cli_getFilesList "$(dirname ${ENTRY_DST})" ".*$(basename ${ENTRY_DST}).*\.texi")
 
     # Set action preamble.
     cli_printActionPreamble "${ENTRIES}" '' ''
