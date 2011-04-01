@@ -92,13 +92,6 @@ function help_deleteEntry {
     # and cross references from remaining files.
     for ENTRY in ${ENTRIES};do
 
-        # Use entry files only. Directories are used to store
-        # dependent entries. Directories are not considered entries on
-        # themselves.
-        if [[ ! -f $ENTRY ]];then
-            continue
-        fi
-
         # Update menu and node definitions from manual sections to
         # reflect the changes.
         help_updateMenu "remove-entry"
