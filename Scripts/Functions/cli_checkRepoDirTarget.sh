@@ -25,8 +25,7 @@
 
 function cli_checkRepoDirTarget {
 
-    # Check target value before making an absolute path from it. 
-    cli_checkPathComponent "$FLAG_TO" '--repo-directory'
+    local LOCATION="$1"
 
     # Redefine target value to build repository absolute path from
     # repository top level on. As we are removing
@@ -37,52 +36,11 @@ function cli_checkRepoDirTarget {
     # entries using both /home/centos/artwork/trunk/... or just
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
-    if [[ $FLAG_TO =~ '^(trunk|branches|tags)/.+$' ]];then
-        FLAG_TO=${HOME}/artwork/$FLAG_TO 
+    if [[ $LOCATION =~ '^(trunk|branches|tags)/.+$' ]];then
+        LOCATION=${HOME}/artwork/$LOCATION 
     fi
 
-    # Check target value.
-    if [[ -a ${FLAG_TO} ]];then
-
-        # At this point target value does existent as working copy
-        # entry. We don't use existent locations as target.  So, print
-        # a message and stop script execution.
-        cli_printMessage "`eval_gettext "The location \\\`\\\$FLAG_TO' already exists."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
-
-    else
-
-        # At this point existent locations inside working copy and
-        # invalid urls have been discarded. Assume a new target
-        # location has being specified. So, build the absolute path
-        # for it.
-
-        # Add directory to the top of the directory stack.
-        pushd "$(dirname "$FLAG_TO")" > /dev/null
-
-        # Check directory existence inside the repository.
-        if [[ $(pwd) =~ "^${HOME}/artwork" ]];then
-            # Re-define target value using absolute path.
-            FLAG_TO=$(pwd)/$(basename "$FLAG_TO")
-        fi
-
-        # Remove directory from the directory stack.
-        popd > /dev/null
-
-        # Verify target location. It is required that target location
-        # points to an entry under (trunk|branches|tags)/Identity/...
-        # directory structure *only*.  Remember that Identity parent
-        # directory structure is the reference used to create parallel
-        # directories (i.e., documentation, configuration scripts,
-        # translations, etc.). We don't manipulate parallel
-        # directories with path ---or any other--- functionality
-        # directly.  Consider manipulation of parallel directories as
-        # a consequence of a previous manipulation of Identity parent
-        # directory structure.
-        if [[ ! ${FLAG_TO} =~ '^.+/(trunk|branches|tags)/Identity/.+$' ]];then
-            cli_printMessage "`eval_gettext "cannot create \\\`\\\$FLAG_TO': It isn't an identity directory structure."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
-        fi
-    fi
+    # Print target location.
+    echo $LOCATION
 
 }
