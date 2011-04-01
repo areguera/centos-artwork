@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_getArguments.sh -- This function interpretes arguments passed
-# to `manual' functionality and calls actions accordingly.
+# help_getOptions.sh -- This function interpretes arguments passed to
+# `manual' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_getArguments {
+function help_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""
