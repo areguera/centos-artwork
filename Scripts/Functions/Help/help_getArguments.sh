@@ -29,7 +29,7 @@ function help_getArguments {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer:,dont-commit-changes,read,search,edit,update"
+    local ARGSL="filter:,quiet,answer:,dont-commit-changes,read,search,edit,update,copy,delete"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -70,6 +70,21 @@ function help_getArguments {
     
             --edit )
                 ACTIONNAM="${FUNCNAM}_editEntry"
+                shift 1
+                ;;
+
+            --copy )
+                ACTIONNAM="${FUNCNAM}_copyEntry"
+                shift 1
+                ;;
+    
+            --delete )
+                ACTIONNAM="${FUNCNAM}_deleteEntry"
+                shift 1
+                ;;
+
+            --rename )
+                ACTIONNAM="${FUNCNAM}_renameEntry"
                 shift 1
                 ;;
     
