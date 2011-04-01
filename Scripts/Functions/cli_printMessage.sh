@@ -116,7 +116,7 @@ function cli_printMessage {
         MESSAGE="trunk/Scripts/Functions/$MESSAGE"
         cli_printMessage '-' 'AsSeparatorLine'
         cli_printMessage "`gettext "To know more, run the following command"`:"
-        cli_printMessage "centos-art help $MESSAGE --read"
+        cli_printMessage "centos-art help --read $MESSAGE"
         cli_printMessage '-' 'AsSeparatorLine'
         exit # <-- ATTENTION: Do not remove this line. We use this
              #                option as convenction to end script
