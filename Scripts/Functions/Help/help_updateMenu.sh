@@ -36,7 +36,7 @@ function help_updateMenu {
 
     # Build the menu node related to the entry being processed
     # currently.
-    local MENUNODE=$(echo "$ENTRY" | cut -d / -f8- | tr '/' ' ' \
+    local MENUNODE=$(echo "$ENTRY" | cut -d / -f9- | tr '/' ' ' \
         | sed 's!\.texi$!!')
 
     # Give format to menu line using texinfo style.
