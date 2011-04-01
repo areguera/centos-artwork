@@ -348,16 +348,6 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Identity Models Tpl</menunode>
-          <menutitle>Directories trunk Identity Models Tpl</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Models Xcf</menunode>
-          <menutitle>Directories trunk Identity Models Xcf</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>Directories trunk Identity Release</menunode>
           <menutitle>Directories trunk Identity Release</menutitle>
           <menucomment></menucomment>
@@ -1029,7 +1019,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Icons</nodename>
-    <nodenext>Directories trunk Identity Models Tpl</nodenext>
+    <nodenext>Directories trunk Identity Release</nodenext>
     <nodeprev>Directories trunk Identity Fonts</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1061,99 +1051,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Models Tpl</nodename>
-    <nodenext>Directories trunk Identity Models Xcf</nodenext>
-    <nodeprev>Directories trunk Identity Icons</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Tpl</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Tpl</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Models Xcf</nodename>
-    <nodenext>Directories trunk Identity Release</nodenext>
-    <nodeprev>Directories trunk Identity Models Tpl</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Xcf</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Xcf</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Release</nodename>
     <nodenext>Directories trunk Identity Themes</nodenext>
-    <nodeprev>Directories trunk Identity Models Xcf</nodeprev>
+    <nodeprev>Directories trunk Identity Icons</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Release</file> Directory</title>
