@@ -348,38 +348,8 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Identity Models</menunode>
-          <menutitle>Directories trunk Identity Models</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Models Css</menunode>
-          <menutitle>Directories trunk Identity Models Css</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Models Html</menunode>
-          <menutitle>Directories trunk Identity Models Html</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Models Img Promo Web</menunode>
-          <menutitle>Directories trunk Identity Models Img Promo Web</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>Directories trunk Identity Models Tpl</menunode>
           <menutitle>Directories trunk Identity Models Tpl</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Models Tpl Brands</menunode>
-          <menutitle>Directories trunk Identity Models Tpl Brands</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Models Tpl Promo Web</menunode>
-          <menutitle>Directories trunk Identity Models Tpl Promo Web</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -1059,7 +1029,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Icons</nodename>
-    <nodenext>Directories trunk Identity Models</nodenext>
+    <nodenext>Directories trunk Identity Models Tpl</nodenext>
     <nodeprev>Directories trunk Identity Fonts</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1091,193 +1061,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Models</nodename>
-    <nodenext>Directories trunk Identity Models Css</nodenext>
-    <nodeprev>Directories trunk Identity Icons</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <para>This section exists to organize design models.</para>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <para>Design models are representative designs useful to understand how to build artworks.</para>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-          <menuentry>
-            <menunode>Directories trunk Identity Models Html</menunode>
-            <menutitle>Directories trunk Identity Models Html</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>Directories trunk Identity Models Css</menunode>
-            <menutitle>Directories trunk Identity Models Css</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>Directories trunk Identity Models Tpl</menunode>
-            <menutitle>Directories trunk Identity Models Tpl</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-          <menuentry>
-            <menunode>Directories trunk Identity Models Xcf</menunode>
-            <menutitle>Directories trunk Identity Models Xcf</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Models Css</nodename>
-    <nodenext>Directories trunk Identity Models Html</nodenext>
-    <nodeprev>Directories trunk Identity Models</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Css</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Css</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <para>This directory exists to provide common style sheets (CSS) definitions to HTML design models.</para>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Models Html</nodename>
-    <nodenext>Directories trunk Identity Models Img Promo Web</nodenext>
-    <nodeprev>Directories trunk Identity Models Css</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Html</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Html</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Models Img Promo Web</nodename>
-    <nodenext>Directories trunk Identity Models Tpl</nodenext>
-    <nodeprev>Directories trunk Identity Models Html</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Img/Promo/Web</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Img Promo Web</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>Provide images related to CentOS web interface.</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-          <menuentry>
-            <menunode>Directories trunk Identity Models Tpl Promo Web</menunode>
-            <menutitle>Directories trunk Identity Models Tpl Promo Web</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Models Tpl</nodename>
-    <nodenext>Directories trunk Identity Models Tpl Brands</nodenext>
-    <nodeprev>Directories trunk Identity Models Img Promo Web</nodeprev>
+    <nodenext>Directories trunk Identity Models Xcf</nodenext>
+    <nodeprev>Directories trunk Identity Icons</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Tpl</file> Directory</title>
@@ -1320,72 +1106,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Models Tpl Brands</nodename>
-    <nodenext>Directories trunk Identity Models Tpl Promo Web</nodenext>
-    <nodeprev>Directories trunk Identity Models Tpl</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Tpl/Brands</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Tpl Brands</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Models Tpl Promo Web</nodename>
-    <nodenext>Directories trunk Identity Models Xcf</nodenext>
-    <nodeprev>Directories trunk Identity Models Tpl Brands</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Models/Tpl/Promo/Web</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Models Tpl Promo Web</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <para>Organize scalable vector graphics (svg) to help describe the CentOS web environment.</para>
-      </subsection>
-
-      <subsection>
-        <title>The CentOS web environment</title>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Models Xcf</nodename>
     <nodenext>Directories trunk Identity Release</nodenext>
-    <nodeprev>Directories trunk Identity Models Tpl Promo Web</nodeprev>
+    <nodeprev>Directories trunk Identity Models Tpl</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Xcf</file> Directory</title>
@@ -1623,7 +1346,7 @@ centos-art render trunk/Identity/Path/To/Dir
       <subsection>
         <title>Description</title>
         <para>This directory implements the concept of <emph>Default Design Models for CentOS Themes</emph>.  Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
-        <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to. See <xref><xrefnodename>Directories trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information.</para>
+        <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to. &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Models Tpl Brands) &mdash;, for more information.</para>
       </subsection>
 
       <subsection>
@@ -1634,7 +1357,7 @@ centos-art render trunk/Identity/Path/To/Dir
           <tableitem>
             <tableterm><strong>How to remark the internal differences visually?</strong></tableterm>
             <item>
-              <para>Merge both The CentOS Project Release Schema into The CentOS Project Trademark to build The CentOS Project Release Trademark.  The CentOS Project Release Trademark remarks two things: first, it remarks the image is from The CentOS Project and second, it remarks which major release of CentOS Distribution does the image belongs to. See <xref><xrefnodename>Directories trunk Identity Models Tpl Brands</xrefnodename></xref>, for more information on how to develop and improve The CentOS Project Brand.</para>
+              <para>Merge both The CentOS Project Release Schema into The CentOS Project Trademark to build The CentOS Project Release Trademark.  The CentOS Project Release Trademark remarks two things: first, it remarks the image is from The CentOS Project and second, it remarks which major release of CentOS Distribution does the image belongs to. &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Models Tpl Brands) &mdash;, for more information on how to develop and improve The CentOS Project Brand.</para>
             </item>
           </tableitem>
           <tableitem>
