@@ -18,11 +18,22 @@ but same characteristics.
 
 @subsection Usage
 
-Inside the framework location above, you find theme models organized
-by name. You can add your own theme models to the structure by adding
-a directory to the list. By default you have the `@xref{Directories trunk Identity
-Themes Models Default, Default},' and `@xref{Directories trunk Identity Themes
-Models Alternative, Alternative},' ready-to-use theme models.
+@table @strong
+@item Default Design Model
+Default Design Models for CentOS Themes provide the common structural
+information (e.g., image dimensions, translation markers, trademark
+position, etc.) the @command{centos-art} script uses to produce images
+when no other design model is specified.
+
+@item Alternative Design Models
+CentOS alternative theme models exist for people how want to use a
+different visual style on their installations of CentOS distribution.
+As the visual style is needed for a system already installed
+components like Anaconda are not required inside alternative themes.
+Inside alternative themes you find post-installation visual style only
+(i.e.  Backgrounds, Display Managers, Grub, etc.).  CentOS alternative
+themes are maintained by CentOS Community.
+@end table
 
 @subsection See also
 
