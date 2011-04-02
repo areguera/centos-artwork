@@ -25,6 +25,9 @@
 
 function help_copyEntry {
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     local ENTRY_SRC="$ENTRY"
     local ENTRIES=''
     local ENTRY=''
@@ -57,7 +60,7 @@ function help_copyEntry {
     cli_printMessage '-' 'AsSeparatorLine'
 
     # Print action message.
-    cli_printMessage "Updating manual menus, nodes and cross-references." 'AsResponseLine'
+    cli_printMessage "Updating menus, nodes and cross-references." 'AsResponseLine'
 
     # Redefine ENTRY variable in order to update documentation
     # structure, taking recently created entries as reference.
