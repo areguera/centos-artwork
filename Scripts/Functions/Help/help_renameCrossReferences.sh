@@ -37,30 +37,14 @@ function help_renameCrossReferences {
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
-            -e "s/(chapter-intro\.texi|\.texi)$//" \
-            -e 's! !( |\\n)!g')
+            -e "s/(chapter-intro\.texi|\.texi)$//")
 
     # Define node replacement for target documentation entry.
-    NODE_DST=$(echo "$FLAG_TO" \
+    NODE_DST=$(echo "$ENTRY_DST" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.texi|\.texi)$//")
-
-    # Sanitate node replacement for target documentation entry to make
-    # use of regular expression positional markers, so the word
-    # separator character found by node pattern could be used.
-    for NODE in $NODE_DST;do
-        if [[ $COUNT -eq 1 ]];then 
-            NODE_DST="${NODE}\\${COUNT}"
-        else
-            NODE_DST="${NODE_DST}$(echo "${NODE}\\${COUNT}")"
-        fi
-        COUNT=$(($COUNT + 1))
-    done
-
-    # Remove last positional marker from node replacement.
-    NODE_DST=$(echo $NODE_DST | sed -r 's!\\[[:digit:]]$!!')
 
     # Define list of entries to process.
     ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')
@@ -82,7 +66,8 @@ function help_renameCrossReferences {
 
     # At this point, source documentation entry has been renamed from
     # source to target documentation entry, but they are still
-    # commented. So, restore target documentation entries.
-    help_restoreCrossReferences "${FLAG_TO}"
+    # commented. So, uncomment them restoring target documentation
+    # entries.
+    help_restoreCrossReferences "${ENTRY_DST}"
 
 }
