@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_convertPngTo.sh -- This function provides post-rendition
-# to convert images images produced by centos-art base-rendition.
+# to convert images produced by centos-art base-rendition.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
