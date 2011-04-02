@@ -74,8 +74,13 @@ function render_getDirTemplate {
     TEMPLATE=$(echo "$TEMPLATE" | sed "s!/branches/!/trunk/!")
 
     # Define absolute path to theme-specific design models.
-    TEMPLATE=$(echo "$TEMPLATE" \
-        | sed -r "s!$(cli_getPathComponent $TEMPLATE '--theme-pattern')!Identity/Themes/Models/${FLAG_THEME_MODEL}/!")
+    if [[ -d ${TEMPLATE}/Tpl ]];then
+        TEMPLATE=${TEMPLATE}/Tpl
+    else
+        TEMPLATE=$(echo "$TEMPLATE" \
+            | sed -r "s!$(cli_getPathComponent $TEMPLATE '--theme-pattern')!Identity/Themes/Models/${FLAG_THEME_MODEL}/!")
+    fi
+
 
     # Define absolute path to general-purpose design models.
     TEMPLATE=$(echo "$TEMPLATE" | sed "s!/Images!/Models!")
