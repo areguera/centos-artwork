@@ -43,11 +43,20 @@ function help_updateOutputFileXhtml {
     # We don't want to have unused files inside it.
     [[ $(ls ${MANUAL_BASEFILE}.xhtml > /dev/null) ]] && rm ${MANUAL_BASEFILE}.xhtml/*.xhtml
 
+    # Add directory where xhtml files will be sotred in into directory
+    # stack to make it the current working directory. This is required
+    # in order for include paths to be constructed correctly.
+    pushd ${MANUAL_BASEFILE}.xhtml > /dev/null
+
     # Update xhtml files.  Use texi2html to export from texinfo file
     # format to html using CentOS Web default visual style.
-    texi2html --init-file=${MANUAL_BASEFILE}.init \
-        --output=${MANUAL_BASEFILE}.xhtml \
-        ${MANUAL_BASEFILE}.texi
+    texi2html --init-file=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.init \
+        --output=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.xhtml \
+        ${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.texi
+
+    # Remove directory where xhtml files are stored from directory
+    # stack. The xhtml files have been already created.
+    popd > /dev/null
 
     # Apply xhtml transformations. This transformation cannot be built
     # inside the initialization script (repository.init). For example,
