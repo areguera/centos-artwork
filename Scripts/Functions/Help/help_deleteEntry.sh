@@ -25,6 +25,9 @@
 
 function help_deleteEntry {
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     local ENTRY_SRC=${ENTRY}
     local ENTRIES=''
     local ENTRY=''
@@ -59,16 +62,13 @@ function help_deleteEntry {
     # Print action preamble.
     cli_printActionPreamble "$ENTRIES" 'doDelete' 'AsResponseLine'
 
-    # Remove documentation entry using regular subversion commands.
-    # Do not use regular rm command here, use subversion del command
-    # instead. Otherwise, even the file is removed, it will be brought
-    # back when the final cli_commitRepoChange be executed. Remember
-    # there is a subversion update there, no matter what you remove
-    # using regular commands, when you do update the directory
-    # structure on the working copy the removed files (not removed in
-    # the repository, nor marked to be removed) are brought down to
-    # the working copy again.
+    # Remove documentation entry using Subversion's `delete' command
+    # to know when the action took place.  Do not use regular `rm'
+    # command here.
     svn del ${ENTRIES} --quiet
+
+    # Verify exit status from subversion command to be sure everything
+    # went well. Otherwhise stop script execution.
     if [[ $? -ne 0 ]];then
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
@@ -77,7 +77,7 @@ function help_deleteEntry {
     cli_printMessage '-' 'AsSeparatorLine'
 
     # Print action message.
-    cli_printMessage "Updating manual menus, nodes and cross-references." 'AsResponseLine'
+    cli_printMessage "Updating menus, nodes and cross-references." 'AsResponseLine'
 
     # Process list of entries in order to update menus, nodes and
     # cross references. Since we are verifying entry status before
@@ -88,8 +88,8 @@ function help_deleteEntry {
     # be needed to remove farther status verification in order for the
     # script to continue its execution. Thereby, I can't see a
     # different way but removing files first using status verification
-    # and later go through entities list again to update menus, nodes
-    # and cross references from remaining files.
+    # and later go through entries list again to update menus, nodes
+    # and cross references in remaining files.
     for ENTRY in ${ENTRIES};do
 
         # Update menu and node definitions from manual sections to
@@ -103,12 +103,7 @@ function help_deleteEntry {
 
     done
  
-    # Remove entry menus and nodes from chapter definition to reflect
-    # the fact it has been removed.  This is mainly applied when one
-    # of the chapters (e.g., trunk/, tags/, or branches/) is removed.
-    if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
-        help_updateChaptersMenu 'remove-entry'
-        help_updateChaptersNodes
-    fi
+    # Rebuild output files to propagate recent changes.
+    help_updateOutputFiles
 
 }
