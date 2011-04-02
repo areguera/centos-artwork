@@ -28,9 +28,6 @@ function help_renameEntry {
     # Copy source documentation entry.
     help_copyEntry
 
-    # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Delete source documentation entry. The source documentation
     # entry has been copied already, so to create the rename effect
     # delete it from repository filesystem.
