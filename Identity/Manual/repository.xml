@@ -333,11 +333,6 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Identity Colors</menunode>
-          <menutitle>Directories trunk Identity Colors</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>Directories trunk Identity Fonts</menunode>
           <menutitle>Directories trunk Identity Fonts</menutitle>
           <menucomment></menucomment>
@@ -348,53 +343,8 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Identity Locales Identity</menunode>
-          <menutitle>Directories trunk Identity Locales Identity</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Brands</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Brands</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Brands Tpl</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Brands Tpl</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Fonts</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Fonts</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Models</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Models</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Release</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Release</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Themes</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Themes</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Themes Backgrounds</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Themes Backgrounds</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Themes Distro Anaconda Progress</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Themes Distro Anaconda Progress</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales Identity Widgets</menunode>
-          <menutitle>Directories trunk Identity Locales Identity Widgets</menutitle>
+          <menunode>Directories trunk Identity Palettes</menunode>
+          <menutitle>Directories trunk Identity Palettes</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -405,11 +355,6 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <menuentry>
           <menunode>Directories trunk Identity Themes Models</menunode>
           <menutitle>Directories trunk Identity Themes Models</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Alternative</menunode>
-          <menutitle>Directories trunk Identity Themes Models Alternative</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -540,11 +485,6 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <menuentry>
           <menunode>Directories trunk Identity Webenv</menunode>
           <menutitle>Directories trunk Identity Webenv</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Widgets</menunode>
-          <menutitle>Directories trunk Identity Widgets</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -798,7 +738,7 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
               <tableterm><strong>The CentOS Colors</strong></tableterm>
               <item>
                 <para>The CentOS Fonts provides the color information used along The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Directories trunk Identity Colors</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity Palettes</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
@@ -875,7 +815,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Brands</nodename>
-    <nodenext>Directories trunk Identity Colors</nodenext>
+    <nodenext>Directories trunk Identity Fonts</nodenext>
     <nodeprev>Directories trunk Identity</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -907,54 +847,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Colors</nodename>
-    <nodenext>Directories trunk Identity Fonts</nodenext>
-    <nodeprev>Directories trunk Identity Brands</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Colors</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Colors</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Fonts</nodename>
     <nodenext>Directories trunk Identity Locales</nodenext>
-    <nodeprev>Directories trunk Identity Colors</nodeprev>
+    <nodeprev>Directories trunk Identity Brands</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Fonts</file> Directory</title>
@@ -1004,7 +899,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Locales</nodename>
-    <nodenext>Directories trunk Identity Locales Identity</nodenext>
+    <nodenext>Directories trunk Identity Palettes</nodenext>
     <nodeprev>Directories trunk Identity Fonts</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1027,13 +922,13 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Locales Identity</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Brands</nodenext>
+    <nodename>Directories trunk Identity Palettes</nodename>
+    <nodenext>Directories trunk Identity Themes</nodenext>
     <nodeprev>Directories trunk Identity Locales</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Identity/Locales/Identity</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity</indexterm></para>
+      <title>The <file>trunk/Identity/Palettes</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Palettes</indexterm></para>
       <subsection>
         <title>Goals</title>
         <itemize>
@@ -1067,461 +962,6 @@ centos-art render trunk/Identity/Path/To/Dir
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Directories trunk Translations Identity Brands::) - -->
-<!--  Removed(* Directories trunk Translations Identity Fonts::) - -->
-<!--  Removed(* Directories trunk Translations Identity Models::) - -->
-<!--  Removed(* Directories trunk Translations Identity Release::) - -->
-<!--  Removed(* Directories trunk Translations Identity Themes::) - -->
-<!--  Removed(* Directories trunk Translations Identity Widgets::) - -->
-          <menuentry>
-            <menunode>Directories trunk Identity</menunode>
-            <menutitle>Directories trunk Identity</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Brands</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Brands Tpl</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Brands</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Brands</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>Organize brands' translation files.</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <para>Translation files, inside <file>trunk/Translations/Identity/Brands</file> translation entry, don't use default rendering translation functionality, they use the following translation pre-rendering configuration file instead:</para>
-        <verbatim xml:space="preserve"><![CDATA[
-/home/centos/artwork/trunk/Translation/Identity/Brands/render.conf.sh
-]]></verbatim>
-        <para>Inside <file>trunk/Translations/Identity/Brands</file> translation entry, translation files are symbolic links pointing to the common template translation structure, inside the translation template (<samp>Tpl/</samp>) directory.</para>
-        <para>Inside <file>trunk/Translations/Identity/Brands</file> translation entry, translation files are created using identity design templates as reference.  The translation pre-rendering script creates a translation structure where the translation template (<samp>Tpl/</samp>) directory structure applies to each single design template available.</para>
-        <para>For example, if the brands' translation template (<samp>Tpl/</samp>) directory has 30 translation files, and there are 20 design templates; the brands' translation pre-rendering script creates a translation structure of symbolic links where the 30 translation files apply the 20 design templates one by one, producing 600 translation symbolic links as result. At this point, when rendering identity, the <command>centos-art</command> script considers translation symbolic links as translation files.</para>
-        <para>Translation file names, inside brands' translation template (<samp>Tpl</samp>) directory have special meaning:</para>
-
-        <subsubsection>
-          <title>Conventional file names</title>
-          <para><indexterm index="cp">Translation brands file names</indexterm> Convenctional file names look like <file>blue.sed</file>, <file>2c-a.sed</file>, etc.  Replacement commands inside translation file are applied to design templates and translation file names are used as final image name.  The image dimensions use the same dimensions that design template has.</para>
-        </subsubsection>
-
-        <subsubsection>
-          <title>Numeric file names</title>
-          <para><indexterm index="cp">Translation brands file names</indexterm> Numeric file names look like <file>300.sed</file>, <file>200.sed</file>, etc. Replacements commands inside translation files are applied to design templates, and translation file names are used as final image name. The final image is saved using an specific <samp>width</samp> defined by the number part of the translation file name. The image <samp>height</samp> is automatically scaled based on the previous <samp>width</samp> definition to maintain the designing ratio.</para>
-          <para>For example, if your design template has 400x200 pixels of dimension, and you apply a translation file named `300.sed' to it, the final image you get as result will have 300x100 pixels of dimension.   The same is true if you use higher numbers like `1024.sed', `2048.sed', etc. In these cases you have bigger images proportionally.</para>
-          <para>As we are using scalable vector graphics to design identity templates, the image size you produce is not limitted in size. You can use one design template produced in 400x200 pixels to produce larger or shorter PNG images using numeric translation files as described above.</para>
-        </subsubsection>
-
-        <subsubsection>
-          <title>Translation markers</title>
-          <para>Inside <file>trunk/Translations/Identity/Brands/</file>, translation files combine the following translation markers:</para>
-          <table>
-            <tableitem>
-              <tableterm><samp>#000000</samp></tableterm>
-              <item>
-                <para>Specify which color to use when rendering brand images.</para>
-                <quotation>
-                  <para><strong>Note</strong> As translation files inside <file>trunk/Translations/Identity/Brands</file> are symbolic links that point to template translation files, translation markers are defined inside template translation files.</para>
-                </quotation>
-              </item>
-            </tableitem>
-          </table>
-        </subsubsection>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <para><indexterm index="cp">How to render brands' translation files</indexterm> To render brands' translation files, use the following command:</para>
-        <verbatim xml:space="preserve"><![CDATA[
-centos-art render --translation=/home/centos/artwork/trunk/Translations/Identity/Brands
-]]></verbatim>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-<!--  Removed(* Directories trunk Translations Identity Brands Tpl::) - -->
-          <menuentry>
-            <menunode>Directories trunk Identity Brands</menunode>
-            <menutitle>Directories trunk Identity Brands</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Brands Tpl</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Fonts</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Brands</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Brands/Tpl</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Brands Tpl</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Fonts</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Models</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Brands Tpl</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Fonts</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Fonts</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <para>This section exists to organize fonts translation files.</para>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <para>Translation files, inside <file>trunk/Translations/Fonts</file>, have the following structure:</para>
-        <verbatim xml:space="preserve"><![CDATA[
-s!font-family:Denmark!font-family:DejaVu LGC Sans!
-s!font-weight:normal!font-weight:bold!
-s!font-style:normal!font-style:italic!
-]]></verbatim>
-        <para>Inside <file>trunk/Translations/Fonts</file>, there is one translation file for each font preview image you want to produce. This way, we create one translation file for each font-family we use somewhere inside CentOS visual identity.</para>
-        <quotation>
-          <para><strong>Important</strong> Do not create translation files for font-families not used somewhere inside CentOS visual identity. The identity of font entry (see <xref><xrefnodename>Directories trunk Identity Fonts</xrefnodename></xref>) is used as reference when someone needs to know which font-families are allowed to use inside CentOS visual identity.</para>
-        </quotation>
-
-        <subsubsection>
-          <title>Translation Markers</title>
-          <para>Inside <file>trunk/Translations/Identity/Fonts</file>, translation files combine the following translation markers:</para>
-          <table>
-            <tableitem>
-              <tableterm><samp>font-family:Denmark</samp></tableterm>
-              <item>
-                <para>Specify which font family to use when rendering font preview images.</para>
-              </item>
-            </tableitem>
-            <tableitem>
-              <tableterm><samp>font-weight:normal</samp></tableterm>
-              <item>
-                <para>Specify which font weight to use when rendering font preview images.</para>
-              </item>
-            </tableitem>
-            <tableitem>
-              <tableterm><samp>font-style:normal</samp></tableterm>
-              <item>
-                <para>Specify which font style to use when rendering font preview images.</para>
-              </item>
-            </tableitem>
-          </table>
-        </subsubsection>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <para><indexterm index="cp">How to render fonts' translation files</indexterm> Inside <file>trunk/Translations/Fonts</file> you use your favorite text editor to create translation files.  Inside <file>trunk/Translations/Fonts</file> there is not translation template directory (<file>Tpl/</file>), nor translation rendering using <command>centos-art</command> script.  For example, to create the <file>dejavu_lgc_sans-boldoblique.sed</file> translation file using <command>vim</command> editor, type the following command:</para>
-        <verbatim xml:space="preserve"><![CDATA[
-vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.sed
-]]></verbatim>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-          <menuentry>
-            <menunode>Directories trunk Identity Fonts</menunode>
-            <menutitle>Directories trunk Identity Fonts</menutitle>
-            <menucomment></menucomment>
-          </menuentry>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Models</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Release</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Fonts</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Models</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Models</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Release</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Themes</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Models</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Release</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Release</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Themes</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Themes Backgrounds</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Release</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Themes</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Themes</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Themes Backgrounds</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Themes Distro Anaconda Progress</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Themes</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Themes/Backgrounds</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Themes Backgrounds</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Themes Distro Anaconda Progress</nodename>
-    <nodenext>Directories trunk Identity Locales Identity Widgets</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Themes Backgrounds</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Themes/Distro/Anaconda/Progress</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Themes Distro Anaconda Progress</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>Organize Anaconda progress translation templates.</para>
-          </item>
-          <item>
-            <para>Organize Anaconda progress translation files in several languages and major releases of CentOS distribution.</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <para>Use the following command to produce translation files based:</para>
-        <example xml:space="preserve">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
-`-- Tpl
-    |-- en
-    |   |-- 01-welcome.sed
-    |   |-- 02-donate.sed
-    |   `-- 03-yum.sed
-    `-- es
-        |-- 01-welcome.sed
-        |-- 02-donate.sed
-        `-- 03-yum.sed</example>
-        <para>In order to produce the slide images in PNG format we need to have the translation files first. So we use the following commands to create translation files for CentOS 3, 4, and 5 major releases:</para>
-        <example xml:space="preserve">centos-art render --translation --filter='3,4,5'</example>
-        <para>The above commands will produce the following translation structure:</para>
-        <example xml:space="preserve">trunk/Translations/Identity/Themes/Distro/Anaconda/Progress
-|-- 3
-|   |-- en
-|   |   |-- 01-welcome.sed
-|   |   |-- 02-donate.sed
-|   |   `-- 03-yum.sed
-|   `-- es
-|       |-- 01-welcome.sed
-|       |-- 02-donate.sed
-|       `-- 03-yum.sed
-|-- 4
-|   |-- en
-|   |   |-- 01-welcome.sed
-|   |   |-- 02-donate.sed
-|   |   `-- 03-yum.sed
-|   `-- es
-|       |-- 01-welcome.sed
-|       |-- 02-donate.sed
-|       `-- 03-yum.sed
-|-- 5
-|   |-- en
-|   |   |-- 01-welcome.sed
-|   |   |-- 02-donate.sed
-|   |   `-- 03-yum.sed
-|   `-- es
-|       |-- 01-welcome.sed
-|       |-- 02-donate.sed
-|       `-- 03-yum.sed
-`-- Tpl
-    |-- en
-    |   |-- 01-welcome.sed
-    |   |-- 02-donate.sed
-    |   `-- 03-yum.sed
-    `-- es
-        |-- 01-welcome.sed
-        |-- 02-donate.sed
-        `-- 03-yum.sed</example>
-        <para>At this point we have all the translation files we need to produce Anaconda progress welcome, donate and yum slides images; in English and Spanish languages; for CentOS 3, CentOS 4, and CentOS 5. That is, a sum of 18 images around.</para>
-        <para>Now, with translation files in place, let's move to <file>trunk/Identity</file> structure and render them.</para>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>See <xref><xrefnodename>Directories trunk Identity Themes Motifs Modern Distro Anaconda Progress</xrefnodename></xref>.</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <para>Translation rendering is described in <samp>trunk/Translations</samp> documentation entry (&mdash; <strong>Removed</strong>(pxref:trunk Translations) &mdash;).</para>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Locales Identity Widgets</nodename>
-    <nodenext>Directories trunk Identity Themes</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Themes Distro Anaconda Progress</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales/Identity/Widgets</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales Identity Widgets</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-<!--  Removed(* Directories trunk Translations Identity Widgets::) - -->
         </menu>
       </subsection>
     </section>
@@ -1529,7 +969,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
   <node>
     <nodename>Directories trunk Identity Themes</nodename>
     <nodenext>Directories trunk Identity Themes Models</nodenext>
-    <nodeprev>Directories trunk Identity Locales Identity Widgets</nodeprev>
+    <nodeprev>Directories trunk Identity Palettes</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes</file> Directory</title>
@@ -1579,7 +1019,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
   </node>
   <node>
     <nodename>Directories trunk Identity Themes Models</nodename>
-    <nodenext>Directories trunk Identity Themes Models Alternative</nodenext>
+    <nodenext>Directories trunk Identity Themes Models Default</nodenext>
     <nodeprev>Directories trunk Identity Themes</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1603,47 +1043,20 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
 
       <subsection>
         <title>Usage</title>
-        <para>Inside the framework location above, you find theme models organized by name. You can add your own theme models to the structure by adding a directory to the list. By default you have the `See <xref><xrefnodename>Directories trunk Identity Themes Models Default</xrefnodename><xrefinfoname>Default</xrefinfoname></xref>,' and `See <xref><xrefnodename>Directories trunk Identity Themes Models Alternative</xrefnodename><xrefinfoname>Alternative</xrefinfoname></xref>,' ready-to-use theme models.</para>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Alternative</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Alternative</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Alternative</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <para>CentOS alternative theme models exist for people how want to use a different visual style on their installations of CentOS distribution. As the visual style is needed for a system already installed components like Anaconda are not required inside alternative themes. Inside alternative themes you find post-installation visual style only (i.e.  Backgrounds, Display Managers, Grub, etc.).  CentOS alternative themes are maintained by CentOS Community.</para>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
+        <table>
+          <tableitem>
+            <tableterm><strong>Default Design Model</strong></tableterm>
+            <item>
+              <para>Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Alternative Design Models</strong></tableterm>
+            <item>
+              <para>CentOS alternative theme models exist for people how want to use a different visual style on their installations of CentOS distribution. As the visual style is needed for a system already installed components like Anaconda are not required inside alternative themes. Inside alternative themes you find post-installation visual style only (i.e.  Backgrounds, Display Managers, Grub, etc.).  CentOS alternative themes are maintained by CentOS Community.</para>
+            </item>
+          </tableitem>
+        </table>
       </subsection>
 
       <subsection>
@@ -1656,7 +1069,7 @@ vim /home/centos/artwork/trunk/Translations/Fonts/dejavu_lgc_sans-boldoblique.se
   <node>
     <nodename>Directories trunk Identity Themes Models Default</nodename>
     <nodenext>Directories trunk Identity Themes Models Default Concept</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Alternative</nodeprev>
+    <nodeprev>Directories trunk Identity Themes Models</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default</file> Directory</title>
@@ -3159,7 +2572,7 @@ trunk/Identity/Themes/Motifs/TreeFlower/Colors/syslinux.hex
   </node>
   <node>
     <nodename>Directories trunk Identity Webenv</nodename>
-    <nodenext>Directories trunk Identity Widgets</nodenext>
+    <nodenext>Directories trunk Scripts</nodenext>
     <nodeprev>Directories trunk Identity Themes Motifs TreeFlower Backgrounds</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -3421,42 +2834,9 @@ priority=10
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Widgets</nodename>
-    <nodenext>Directories trunk Scripts</nodenext>
-    <nodeprev>Directories trunk Identity Webenv</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Widgets</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Widgets</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Scripts</nodename>
     <nodenext>Directories trunk Scripts Functions</nodenext>
-    <nodeprev>Directories trunk Identity Widgets</nodeprev>
+    <nodeprev>Directories trunk Identity Webenv</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts</file> Directory</title>
