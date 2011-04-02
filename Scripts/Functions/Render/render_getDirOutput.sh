@@ -30,7 +30,8 @@ function render_getDirOutput {
     # reference.  
     OUTPUT=$(dirname $FILE | sed -r \
         -e "s!/Models/${FLAG_THEME_MODEL}!/Motifs/$(cli_getPathComponent "$ACTIONVAL" "--theme")!" \
-        -e "s!/Models!/Images!")
+        -e "s!/Models!/Images!" \
+        -e "s!/Tpl!!")
 
     # By default rendered identity content is stored immediatly under
     # identity entry structure,  but if `Img/' directory exists use it
