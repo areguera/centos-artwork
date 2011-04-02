@@ -47,6 +47,9 @@ function render_doSvgPostActions {
     if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupSimilarFiles: png jpg'
+    elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg pdf'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail: 250'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux:-floyd'
@@ -77,6 +80,10 @@ function render_doSvgPostActions {
 
             convertPngTo:* )
                 render_convertPngTo
+                ;;
+
+            convertPngToThumbnail:* )
+                render_convertPngToThumbnail
                 ;;
 
             rotatePngTo:* )
