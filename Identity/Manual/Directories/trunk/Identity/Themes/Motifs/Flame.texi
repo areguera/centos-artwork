@@ -1,10 +1,9 @@
 @subsection Goals
 
-This section describes the steps we followed to construct the
-@emph{Flame} artistic motif. This section may be useful for anyone
-interested in reproducing the @emph{Flame} artistic motif, or in
-creating new artistic motifs for The CentOS Project corporate visual
-identity (@pxref{Directories trunk Identity}).
+This section describes the @emph{Flame} artistic motif. This section
+may be useful for anyone interested in reproducing the @emph{Flame}
+artistic motif, or in creating new artistic motifs for The CentOS
+Project corporate visual identity.
 
 @subsection Description
 
@@ -99,109 +98,23 @@ you can recreate them later.  The @samp{Open} option brings up a file
 selector that allows you to open a previously saved Flame settings
 file.
 
-The Flame settings we used in our example are saved in the file:
+The Flame settings we used in our example are saved in the file named
+@file{800x600.xcf-flame.def}, inside the @file{Backgrounds/Xcf}
+directory structure.
 
-@verbatim
-trunk/Identity/Themes/Motifs/Flame/Backgrounds/Xcf/800x600.xcf-flame.def
-@end verbatim
+@ifhtml
+@subsection Screenshots
 
-@subsection Construction
-
-@subsubsection Step 1: Set image size
-
-Create an empty image and fill the @samp{Background} layer with black
-(@code{000000}) color. Image dimensions depend on the final
-destination you plan to use the image for. For the sake of our
-construction example we used an image of 640x480 pixels and 300 pixels
-per inch (ppi).
-
-@subsubsection Step 2: Add base color and pattern information 
-
-Create a new layer named @samp{Base}, place it over @samp{Background}
-layer and fill it with the base color (@code{7800ff}) you want to have
-your background image set in.  Add a mask to @samp{Base} layer using
-radial gradient and blur it.  You may need to repeat this step more
-than once in order to achieve a confortable black radial degradation
-on the right side of your design.
-
-Duplicate @samp{Base} layer and name it @samp{Paper}. Place
-@samp{Paper} layer over @samp{Base} layer. Remove content of
-@samp{Paper} layer and fill it with @samp{Paper (100x100)} pattern.
-Once you've done with black radial degradation, reduce the
-@samp{Paper} layer opacity to 20%. 
-
-Notice that when we duplicate one layer, the mask information related
-to layer is preserved from previous to next layer. This saves us some
-of the time required to produce different layers with the same mask
-information on them.
-
-Duplicate @samp{Paper} layer and rename it @samp{Stripes}. Remove
-paper pattern from @samp{Stripes} layer. Fill @samp{Stripes} layer
-with @samp{Stripes (48x48)} pattern and reduce the @samp{Stripes}
-layer opacity to 15%.
-
-@subsubsection Step 3: Add flame motif
-
-Create a new layer named @samp{Flame}. Set the foreground
-(@code{003cff}) and background (@code{0084ff}) colors to the gradient
-you want to build the flame motif. 
-
-To build flame motif, use the flame filter (@samp{Filters > Render >
-Nature > Flame...}) on @samp{Flame} layer. We used a layer mask, with
-a radial gradient on it to control the boundaries of flame motif on
-@samp{Flame} layer.
-
-Duplicate @samp{Flame} layer and rename it `Flame Blur'. Place `Flame
-Blur' below @samp{Flame} layer. Apply Gussian blur filter
-(@samp{Filters > Blur > Gussian Blur...}) until reaching the desiered
-effect.
-
-The opacity value, in @samp{Flame} layers, may vary from one image to
-another based on the place the image will be finally placed on.  For
-example, images used as desktop background have the @samp{Flame} layer
-opacity set at 100% but @samp{Flame Blur} is set to 70%.  However, you
-may find that background images used in anaconda progress slides have
-opacity reduced differently, in order to reduce brightness in a way
-that texts could look clean and readable over it.
-
-@subsubsection Step 4: Add foreground color
-
-Create a new layer named @samp{Color}, place it on top of all visible
-layers and fill it with plain color (@code{4c005a}). Reduce
-@samp{Color} layer opacity to 20%. You can use the @samp{Color} layer
-to control the right side color information you want to produce the
-image for.
-
-Duplicate @samp{Flame} layer and create a new layer named
-@samp{Color#1}. Place @samp{Color#1} layer on top of layer named
-@samp{Color}. Remove the mask information from @samp{Color#1} layer
-and recreate a new one using an inverted alpha channel as reference.
-Remove @samp{Color#1} layer content and fill it back with plain black
-(@code{000000}) color. Reduce @samp{Color#1} opacity to 20%.  In this
-step we created a mask to protect the flame artistic motif from black
-color, so when we decrement or increment the opacity of layer, the
-flame artistic motif wouldn't be affected, just the environment
-suround it.
-
-When you set color information, remember that the same artistic motif
-needs to be indexed to 14 and 16 colors, in order to produce Grub and
-Syslinux visual manifestations respectively. Using many different
-colors in the artistic motif may reduce the possibility of your design
-to fix all different situations in.  Likewise, using more colors in
-one design, and less colors in another design will reduce the
-connectivity among your designs, since color information is relevant
-to visual identity. 
-
-When you propagate your artistic motif visual style to different
-visual manifestations of CentOS Project corporate visual identity, it
-is up to you to find out justice and compromise among all possible
-variables you may face.
+@image{trunk/Identity/Themes/Motifs/Flame/1/Concept/motif-thumb-250,,,,jpg}
+@image{trunk/Identity/Themes/Motifs/Flame/2/Concept/motif-thumb-250,,,,jpg}
+@image{trunk/Identity/Themes/Motifs/Flame/3/Concept/motif-thumb-250,,,,jpg}
+@end ifhtml
 
 @subsection See also
 
-@menu
-* Directories trunk Identity Themes Motifs::
-* Directories trunk Identity Themes::
-* Directories trunk Identity::
-* Directories trunk::
-@end menu
+@itemize
+@item @xref{Directories trunk Identity Themes Motifs}.
+@item @xref{Directories trunk Identity Themes}.
+@item @xref{Directories trunk Identity}.
+@item @xref{Directories trunk}.
+@end itemize
