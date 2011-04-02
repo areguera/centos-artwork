@@ -78,9 +78,6 @@ function help_editEntry {
     # Use default text editor to edit the documentation entry.
     eval $EDITOR $ENTRY
 
-    # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Rebuild output files to propagate recent changes.
     help_updateOutputFiles
 
