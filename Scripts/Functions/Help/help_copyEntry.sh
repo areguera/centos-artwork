@@ -45,7 +45,7 @@ function help_copyEntry {
     ENTRY_DST=$(echo ${ENTRY_DST} | sed -r 's!\.texi$!!')
 
     # Copy dependent documentation entries, if any.
-    if [[ ! -d ${ENTRY_DST} ]];then
+    if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]] && [[ ! -d ${ENTRY_DST} ]];then
         cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
         svn cp "${ENTRY_DIR}/${ENTRY_FILE}" "${ENTRY_DST}" --quiet
     fi
