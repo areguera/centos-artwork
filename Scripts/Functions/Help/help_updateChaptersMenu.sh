@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateChaptersMenu.sh - This function updates chapter menu.
+# help_updateChaptersMenu.sh -- This function updates chapter menu.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -28,10 +28,10 @@ function help_updateChaptersMenu {
     local MENUCHAPTERS=''
 
     # Build menu of chapters. The Index node is not included as other
-    # nodes are. The Index node is defined insde the master texinfo
-    # file (repository.texi). To create the final .info file
-    # correctly, the Index line in the menu should remain, even no
-    # other node exist.
+    # nodes are. The Index node is defined inside the master texinfo
+    # file (repository.texi) as an included file. To create the final
+    # .info file correctly, the Index line in the menu should remain,
+    # even no other node exist.
     if [[ -f ${MANUAL_BASEFILE}-menu.texi ]];then
         MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.texi \
             | egrep -v "^(@(end )?menu$|\* Index::.*)$")
@@ -59,7 +59,7 @@ function help_updateChaptersMenu {
 
     # Organize menu of chapters alphabetically and verify that no
     # duplicated line be included on the list.
-    MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sort | uniq )
+    MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sort | uniq)
 
     # Give format to final menu output.
     MENUCHAPTERS="@menu
