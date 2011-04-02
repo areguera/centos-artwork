@@ -162,10 +162,11 @@ function help {
         # be adapted to changes in the repository structure?
         #
         # One solution would be: represent the repository's directory
-        # structure as sections inside a chapter named Filesystem or
-        # something similar. Subsections and subsubsections will not
-        # have their own files, they all will be written inside the
-        # same section file that represents the repository directory.
+        # structure as sections inside a chapter named `Directories'
+        # or something similar. Subsections and subsubsections will
+        # not have their own files, they all will be written inside
+        # the same section file that represents the repository
+        # documentation entry.
         MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-8)
 
         # Define chapter name for the documentation entry we are
@@ -179,7 +180,7 @@ function help {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_syncroRepoChanges ${MANUAL_BASEDIR}
+        cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
         # Execute action name.
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -193,7 +194,7 @@ function help {
         # At this point, changes in the repository are not merged in
         # the working copy, but chages in the working copy do are
         # committed up to repository.
-        cli_commitRepoChanges ${MANUAL_BASEDIR}
+        cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
 
     done
 }
