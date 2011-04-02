@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateChaptersNodes.sh - This function updates nodes of
+# help_updateChaptersNodes.sh -- This function updates nodes of
 # chapters based on menu of chapters.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
