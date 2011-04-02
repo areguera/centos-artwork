@@ -37,6 +37,8 @@ s!<blockquote><p><strong>Caution</strong>!<blockquote class="orange icon"><img s
 
 s!<blockquote><p><strong>Convenction</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-ruler.png" alt="Convenction" /><h3>Convenction</h3><p>!g
 
+s!<blockquote><p><strong>Redirection</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-redirect.png" alt="Redirection" /><h3>Redirection</h3><p>!g
+
 # Links
 s!<a href="(https|http|ftps|ftp)://!<a class="www" href="\1://!g
 s!<a href="mailto:!<a class="mailto" href="mailto:!g
