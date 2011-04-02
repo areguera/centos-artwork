@@ -96,8 +96,8 @@ function cli_commitRepoChanges {
         # notes, and so on. By default we use the word `file' or
         # `files' at ngettext's consideration followed by change
         # direction.
-        PREDICATE[$COUNT]=`ngettext "file from the repository" \
-            "files from the repository" $((${FILESNUM[$COUNT]} + 1))`
+        PREDICATE[$COUNT]=`ngettext "file in the working copy" \
+            "files in the repository" $((${FILESNUM[$COUNT]} + 1))`
 
         # Output report line.
         cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}" 'AsRegularLine'
