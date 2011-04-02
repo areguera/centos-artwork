@@ -25,6 +25,9 @@
 
 function help_editEntry {
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
     # Verify chapter definition inside manual.
     if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
 
