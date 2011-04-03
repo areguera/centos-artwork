@@ -32,11 +32,9 @@ function help_copyEntry {
     local ENTRIES=''
     local ENTRY=''
 
-    # Print action message.
-    cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
-
     # Copy main documentation entry.
-    if [[ ! -f ${ENTRY_DST} ]];then
+    if [[ -a ${ENTRY_SRC} ]] && [[ ! -a ${ENTRY_DST} ]];then
+        cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
         svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
     fi
 
