@@ -1,7 +1,7 @@
 @subsection Goals
 
-The @file{trunk/Identity} directory structure implements @emph{The
-CentOS Project Corporate Identity}.
+This section descirbes the implementation of @emph{The CentOS Project
+Corporate Identity}.
 
 @subsection Description
 
@@ -9,9 +9,9 @@ The CentOS Project Corporate Identity is the ``persona'' of the
 organization known as The CentOS Project.  The CentOS Project
 Corporate Identity plays a significant role in the way the CentOS
 Project, as organization, presents itself to both internal and
-external stakeholders. In general terms, the CentOS Project corporate
-visual identity expresses the values and ambitions of the CentOS
-Project organization, its business, and its characteristics.  
+external stakeholders. In general terms, the CentOS Project Corporate
+Identity expresses the values and ambitions of the CentOS Project
+organization, its business, and its characteristics.  
 
 The CentOS Project Corporate Identity provides visibility,
 recognizability, reputation, structure and identification to The
@@ -30,7 +30,9 @@ The CentOS Project Corporate Design is organized in the following
 work-lines:
 
 @table @strong
-@item The CentOS Brand
+
+@item Brands
+
 The CentOS Brand provides the one unique name or trademark that
 connects the producer with their products. In this case, the producer
 is The CentOS Project and the products are The CentOS Project visual
@@ -38,27 +40,47 @@ manifestations.
 
 @xref{Directories trunk Identity Brands}, for more information.
 
-@item The CentOS Palettes 
+@item Palettes 
 
 The CentOS Palettes provide the @emph{Corporate Color} information
 used along The CentOS Project visual manifestations.
 
 @xref{Directories trunk Identity Palettes}, for more information.
 
-@item The CentOS Fonts
+@item Fonts
 
 The CentOS Fonts provide the @emph{Corporate Typography} information
 used along The CentOS Project visual manifestations.
 
 @xref{Directories trunk Identity Fonts}, for more information.
 
-@item The CentOS Themes
+@item Themes
 
 The CentOS Themes provide the @emph{Corporate Structure} and the
 @emph{Corporate Visual Style} used along The CentOS Project visual
 manifestations.
 
 @xref{Directories trunk Identity Themes}, for more information.
+
+@item Manual
+
+This section organizes the @emph{CentOS Artwork Repository Manual}
+(i.e., the documentation manual you're reading right now).  If you are
+interested on improving The CentOS Artwork Repository Manual, in this
+place you'll find the Texinfo documentation structure you need to work
+with.
+
+@xref{Directories trunk Identity Manual}, for more information.
+
+@item Locales
+
+This section organizes production of translation messages for
+@emph{Identity}, @emph{Documentation} and @emph{Scripts}. This place
+is perfect to consolidate @emph{The CentOS Translation SIG}. If you
+love translating, you'll find lot of messages waiting for you to
+translate here.  
+
+@xref{Directories trunk Identity Locales}, for more information.
 @end table
 
 @subsubsection Corporate Communication
@@ -94,22 +116,32 @@ connects them all to say: @emph{Hey! we are all part of The CentOS
 Project}.
 
 Other corporate structures for The CentOS Project have been considered
-as well, but they could introduce visual contradictions we need to be
-aware of.  In that sake, lets describe the idea of: @emph{Producing
-one different visual style for each major release of The CentOS
-Distribution}.
+as well. Such is the case of producing one different visual style for
+each major releasae of CentOS Distribution. This structure isn't
+inconvenient at all, but some visual contradictions could be
+introduced if it isn't applied correctly and we need to be aware of
+it. To apply it correctly, we need to know what The CentOS Project and
+which are the visual manifestations it is made of.
 
-The CentOS Project maintains near to four different major releases of
-The CentOS Distribution, parallely in time. This fact makes one part
-of The CentOS Project structural design, but just one part, not the
-complete structural design.  In order to produce the correct corporate
-structure for The CentOS Project we need to concider all the visual
-manifestations The CentOS Project is made of, not just one of them.
+The CentOS Project, as organization, is mainly made of (but not
+limited to) three visual manifestions: Distribution, Web and
+Stationery. Inside the Distribution visual manifestations, The CentOS
+Project maintains near to four different major releases of CentOS
+Distribution, parallely in time.  Inside Web and Stationery visual
+manifestations content is visually produced to fit non-release-specifc
+content but treat it as a visual manifestation properly. For example,
+consider that there is no a complete web site for each major release
+of CentOS distribution, but one web site to cover the information
+related to all release-specific visual manifestations like CentOS
+distribution.
 
-If one different visual style is used for each major release of The
-CentOS Distribution, which one of those different visual styles would
-be used to cover the remaining visual manifestations The CentOS
-Project is made of (e.g., The CentOS Web, Stationery)? 
+In order to produce the correct corporate structure for The CentOS
+Project we need to concider all the visual manifestations The CentOS
+Project is made of, not just one of them.  If one different visual
+style is used for each major release of The CentOS Distribution, which
+one of those different visual styles would be used to cover the
+remaining visual manifestations The CentOS Project is made of (e.g.,
+web sites and stationery)? 
 
 Probably you are thinking, that's right, but The CentOS Brand connects
 them all already, why would we need to join them up into the same
@@ -121,8 +153,8 @@ through time and that, certainly, didn't come through swinging magical
 wangs or something but hardly working out to automate tasks and
 providing maintainance through time. Said that, we consider that The
 CentOS Project Visual Structure should be consequent with such
-stability and consistency tradition. It is true The CentOS Brand does
-connect all the visual manifestations it is present on, but that
+stability and consistency tradition. It is true that The CentOS Brand
+does connect all the visual manifestations it is present on, but that
 connection would be stronger if one unique visual style backups it.
 In fact, whatever thing you do to strength the visual connection among
 The CentOS Project visual manifestations would be very good in favor
@@ -132,10 +164,10 @@ Obviously, having just one visual style in all visual manifestations
 for eternity would be a very boring thing and would give the idea of a
 visually dead project. So, there is no problem on creating a brand new
 visual style for each new major release of The CentOS Distribution, in
-order to refresh The CentOS Distribution visual style; the problem
-does is in not propagating the brand new visual style created for the
-new release of CentOS Distribution to all other visual manifestations
-The CentOS Project is made of, in a way The CentOS Project could be
+order to refresh The CentOS Distribution visual style; the problem is
+in not propagating the brand new visual style created for the new
+release of CentOS Distribution to all other visual manifestations The
+CentOS Project is made of, in a way The CentOS Project could be
 recognized no matter what visual manifestation be in front of us. Such
 lack of uniformity is what introduces the visual contradition we are
 precisely trying to solve by mean of themes production in the CentOS
@@ -149,6 +181,8 @@ renderable directories are stored under @file{trunk/Identity/Images}
 and @file{trunk/Identity/Themes/Motifs} directories. These directories
 contain the image files used to implemente The CentOS Project
 Corporate Identity.
+
+@subsubsection Rendition
 
 In order to produce content inside rendereble directories, you can use
 the following command:
@@ -209,15 +243,20 @@ have been added to @command{centos-art.sh} command-line to let you
 produce them all with just one single command, as fast as your machine
 can be able to handle it. 
 
---- @strong{Removed}(xref:Directories trunk Scripts Functions Identity) ---, for more
-information about the @command{identity} functionality of
-@command{centos-art} command-line interface.
+@xref{Directories trunk Scripts Functions Render}, for more
+information about the @command{render} functionality of
+@command{centos-art.sh} script.
+
+@subsubsection Documentation
+
+@subsubsection Localization
+
 
 @subsection See also
 
 See @url{http://en.wikipedia.org/Corporate_identity} (and related
 links), for general information on Corporate Identity. 
 
-Specially useful has been, and still be, the book @emph{Corporate
+Specially useful has been, and still is, the book @emph{Corporate
 Identity} by Wally Olins (1989). This book provides many conceptual
 ideas we've used as base to build The CentOS Artwork Repository. 
