@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-30 00:01-0400\n"
+"POT-Creation-Date: 2011-04-04 12:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/About/about_getActions.sh:72
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:109
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:107
+msgid "Only two arguments are accepted."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:110
+msgid "Two arguments are required."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:189
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:83
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:59
 #: /home/centos/artwork/trunk/Scripts/Functions/Path/path_getActions.sh:108
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:108
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:65
 msgid "A valid action is required."
 msgstr ""
 
@@ -34,16 +41,16 @@ msgstr ""
 msgid "Removed"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:32
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:35
 msgid "The following documentation chapter will be created:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:34
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:37
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:57
 msgid "Do you want to continue?"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:52
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:55
 msgid "The following documentation section will be created:"
 msgstr ""
 
@@ -279,17 +286,6 @@ msgstr ""
 msgid "The location `$ACTIONVAL' is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:50
-#, sh-format
-msgid "The location `$FLAG_TO' already exists."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:83
-#, sh-format
-msgid ""
-"cannot create `$FLAG_TO': It isn't an identity directory structure."
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:61
 msgid "Checking changes in the working copy"
 msgstr ""
@@ -313,9 +309,8 @@ msgid "Added"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:99
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:101
-msgid "file from the repository"
-msgid_plural "files from the repository"
+msgid "file in the working copy"
+msgid_plural "files in the repository"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -2175,3 +2170,9 @@ msgstr ""
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:81
 msgid "Merged"
 msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:101
+msgid "file from the repository"
+msgid_plural "files from the repository"
+msgstr[0] ""
+msgstr[1] ""

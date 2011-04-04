@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-30 00:01-0400\n"
+"POT-Creation-Date: 2011-04-04 12:46-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -17,13 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/About/about_getActions.sh:72
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:109
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:107
+msgid "Only two arguments are accepted."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:110
+msgid "Two arguments are required."
+msgstr "Dos arguments son obligatorios."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:189
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:83
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:59
 #: /home/centos/artwork/trunk/Scripts/Functions/Path/path_getActions.sh:108
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:108
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:65
 msgid "A valid action is required."
 msgstr "Es necesario que la acción sea válida."
 
@@ -34,16 +41,16 @@ msgstr "Es necesario que la acción sea válida."
 msgid "Removed"
 msgstr "Eliminando"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:32
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:35
 msgid "The following documentation chapter will be created:"
 msgstr "El capítulo siguiente de documentación será creado:"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:34
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:37
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:57
 msgid "Do you want to continue?"
 msgstr "¿Desea continuar?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:52
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:55
 msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
 
@@ -279,17 +286,6 @@ msgstr "El valor `$LOCATION' no es válido."
 msgid "The location `$ACTIONVAL' is not valid."
 msgstr "La ubicación `$ACTIONVAL' no es válida."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:50
-#, sh-format
-msgid "The location `$FLAG_TO' already exists."
-msgstr "La ubicación `$FLAG_TO' ya existe."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirTarget.sh:83
-#, sh-format
-msgid "cannot create `$FLAG_TO': It isn't an identity directory structure."
-msgstr ""
-"no se pudo crear `$FLAG_TO': La estructura de directorio no es de identidad."
-
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:61
 msgid "Checking changes in the working copy"
 msgstr "Verificando cambios en la copia de trabajo"
@@ -313,11 +309,10 @@ msgid "Added"
 msgstr "Adicionado"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:99
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:101
-msgid "file from the repository"
-msgid_plural "files from the repository"
-msgstr[0] "fichero desde el repositorio."
-msgstr[1] "ficheros desde el repositorio."
+msgid "file in the working copy"
+msgid_plural "files in the repository"
+msgstr[0] "en la copia de trabajo."
+msgstr[1] "en la copia de trabajo."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:118
 msgid "The following file is unversioned"
@@ -2176,6 +2171,20 @@ msgstr "En conflicto"
 msgid "Merged"
 msgstr "Mezclado"
 
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:101
+msgid "file from the repository"
+msgid_plural "files from the repository"
+msgstr[0] "fichero desde el repositorio."
+msgstr[1] "ficheros desde el repositorio."
+
+#~ msgid "The location `$FLAG_TO' already exists."
+#~ msgstr "La ubicación `$FLAG_TO' ya existe."
+
+#~ msgid "cannot create `$FLAG_TO': It isn't an identity directory structure."
+#~ msgstr ""
+#~ "no se pudo crear `$FLAG_TO': La estructura de directorio no es de "
+#~ "identidad."
+
 #~ msgid "Copyright holder"
 #~ msgstr "Acreedor del copyright"
 
@@ -2259,9 +2268,6 @@ msgstr "Mezclado"
 #~ msgstr[0] "El enlace siguiente será instaldo"
 #~ msgstr[1] "Los enlaces siguientes serán instalados"
 
-#~ msgid "First argument is required."
-#~ msgstr "El primer argumento es obligatorio."
-
 #~ msgid "Syntax: ./update-filenames.sh <PATH> <FILTER> <PATTERN> <VALUE>"
 #~ msgstr "Sintáxis: ./update-filenames <CAMINO> <FILTRO> <PATRÓN> <VALOR>"
 
@@ -2275,9 +2281,6 @@ msgstr "Mezclado"
 #~ msgid_plural "files"
 #~ msgstr[0] "fichero"
 #~ msgstr[1] "ficheros"
-
-#~ msgid "from the working copy."
-#~ msgstr "desde la copia de trabajo."
 
 #~ msgid "The option `$ARG1' can't be duplicated."
 #~ msgstr "La opción `$ARG1' no puede estar duplicada."
