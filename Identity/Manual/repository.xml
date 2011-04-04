@@ -93,13 +93,13 @@
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Convenctions</menunode>
-          <menutitle>Convenctions</menutitle>
+          <menunode>Document Convenctions</menunode>
+          <menutitle>Document Convenctions</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Layout</menunode>
-          <menutitle>Layout</menutitle>
+          <menunode>Repository Convenctions</menunode>
+          <menutitle>Repository Convenctions</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -168,7 +168,7 @@
         <tableitem>
           <tableterm><strong>Ralph Angenendt &lt;ralph@centos.org&gt;</strong></tableterm>
           <item>
-            <para>Infrastructure, Packaging.</para>
+            <para>Infrastructure, Packaging, Documentation.</para>
           </item>
         </tableitem>
         <tableitem>
@@ -194,7 +194,7 @@
   </node>
   <node>
     <nodename>Copying Conditions</nodename>
-    <nodenext>Convenctions</nodenext>
+    <nodenext>Document Convenctions</nodenext>
     <nodeprev>Authors</nodeprev>
     <nodeup>Introduction</nodeup>
     <section>
@@ -211,8 +211,8 @@
     </section>
   </node>
   <node>
-    <nodename>Convenctions</nodename>
-    <nodenext>Layout</nodenext>
+    <nodename>Document Convenctions</nodename>
+    <nodenext>Repository Convenctions</nodenext>
     <nodeprev>Copying Conditions</nodeprev>
     <nodeup>Introduction</nodeup>
     <section>
@@ -290,14 +290,15 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     </section>
   </node>
   <node>
-    <nodename>Layout</nodename>
+    <nodename>Repository Convenctions</nodename>
     <nodenext>Feedback</nodenext>
-    <nodeprev>Convenctions</nodeprev>
+    <nodeprev>Document Convenctions</nodeprev>
     <nodeup>Introduction</nodeup>
     <section>
-      <title>Repository Layout</title>
-      <para><indexterm index="cp">Repository layout</indexterm><emph>&rdquo;CentOS like trees, has roots, trunk, branches, leaves and flowers.  Day by day they work together in freedom, ruled by the laws of nature and open standards, to show the beauty of its existence.&rdquo;</emph></para>
-      <para>This section describes the organization of files and directories inside the CentOS Artwork Repository. The repository layout provides the standard backend required for automation scripts to work correctly. If such layout changes unexpectedly, automation scripts may confuse themselves and stop doing what you may expect from them to do.</para>
+      <title>Repository Convenctions</title>
+      <para><indexterm index="cp">Repository convenctions</indexterm><emph>&rdquo;CentOS like trees, has roots, trunk, branches, leaves and flowers.  Day by day they work together in freedom, ruled by the laws of nature and open standards, to show the beauty of its existence.&rdquo;</emph></para>
+      <para>This section describes the organization of files and directories inside the CentOS Artwork Repository, the names convenctions, how to extend the current layout and the way content is produced, as well.</para>
+      <para>The repository layout is used as standard backend for automation scripts to work correctly. If repository layout changes unexpectedly, automation scripts may get confuse themselves and stop doing what you may expect from them to do.</para>
       <para>As convenction, inside CentOS Artwork Repository, files and directories related to CentOS corporate visual identity are organized under three top level directories named: <file>trunk/</file>, <file>branches/</file>, and <file>tags/</file>.</para>
       <para>The <file>trunk/</file> directory (see <xref><xrefnodename>Directories trunk</xrefnodename></xref>) organizes the main development line of CentOS corporate visual identity. Inside <file>trunk/</file> directory structure, the CentOS corporate visual identity concepts are implemented using directories.  There is one directory level for each relevant concept inside the repository. The <file>trunk/</file> directory structure is mainly used to perform development tasks related to CentOS corporate visual identity.</para>
       <para>The <file>branches/</file> directory (see <xref><xrefnodename>Directories branches</xrefnodename></xref>) oranizes parallel development lines to <file>trunk/</file> directory. The <file>branches/</file> directory is used to set points in time where develpment lines are devided one from another taking separte and idependent lives that share a common past from the point they were devided on. The <file>branches/</file> directory is mainly used to perform quality assurance tasks related to CentOS corporate visual identity.</para>
@@ -316,35 +317,66 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
         <subsubsection>
           <title>Rendition</title>
-          <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>.</para>
-          <para>Rendition is the action through which The CentOS Project Corporate Identity is produced inside the repository. The CentOS Project Corporate Identityis is made, in part, of several visual manifestations.  These visual manifestations implement the Corporate Identity by mean of images placed in key areas of each manifestation visual space.</para>
+          <para>Rendition is the action through which The CentOS Project Corporate Identity is produced inside the repository. The CentOS Project Corporate Identityis is made, in part, of several visual manifestations.  These visual manifestations implement the Corporate Identity by mean of images placed in key areas of their visual space.</para>
           <para>As work flow to produce these images, we decompose them in design models and artistic motifs. Design models provide the image structure (i.e., dimension, translation markers, common designs, etc.) and artistic motifs the visual style (i.e., the background information provide the look and feel).</para>
           <para>Design models are created for each visual manifestation the CentOS Project is made of. This way we describe the visual manifestation and provide a template system for it where several artistic motifs can be applied. Artistic motifs are created with design models in mind, not the visual manifestation such design models is built for.</para>
           <para>The combination of one design models with one artistic motifs is what we know as one <emph>theme</emph>. Inside themes directory structure, you can find several design models and several artistic motifs, apart one another, that can be albitrarily combined one another through <emph>theme rendition</emph>, a flexible way to produce images for different visual manifestations inside CentOS Artwork Repository. Theme rendition takes place in <file>trunk/Identity/Themes/Models</file> and <file>trunk/Identity/Themes/Motifs</file> directory structures.</para>
           <para>In addition to theme rendition, you can find another way of image production, a more direct way of image production where there is no artistic motif at all, but design models only. Such configuration is named <emph>direct rendition</emph> and is very useful to produce simple content that doesn't need specific background information like icons and illustrations used in documentation. Direct rendition takes place in <file>trunk/Identity/Models</file> and <file>trunk/Identity/Images</file> directory structures.</para>
+          <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>, for more information.</para>
         </subsubsection>
 
         <subsubsection>
           <title>Localization</title>
-          <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>.</para>
           <para>Whatever content rendition you perform, sometimes you need to produce content in different languages. Production of content in different languages is known as localization or l10n for short.  Inside CentOS Artwork Repository, content localization is performed using the processed provided by <command>gettext</command> internationalization standard.</para>
           <para>Basically, the <command>gettext</command> internationalization standard consists on retriving translatable strings from source files and creating Portable Objects and Machine Objects. Portable Objects contain the information used by translators to do their work, they are files that can be edited by any convenctional text editor like Vim, Emacs or Nano. On the other hand, Machine Objects are produced to be machine-redable as its name implies, and are produced from Portable Objects.</para>
           <para>Since <command>gettext</command> needs to extract translatable strings form source files in order to let translators to localize them, the types of source files we use inside the repository are limitted to the file types supported by <command>gettext</command> program. Most of source files supported by <command>gettext</command> are those from programming languages like C, C++, Bash, Python and Perl just to mention a few ones from the long list of supported formats. However, formats like SVG, XHTML and Docbook don't figure as supported in the long list of <command>gettext</command> supported source files. For these formats we use the <command>xml2po</command> program that come in the <file>gnome-doc-utils</file> package instead.  The <command>xml2po</command> program reads one XML based file and extracts translatable strings from it and creates one Portable Object that is use to create a translated XML based file with the same definition of the source file where translatable strings were taken from (e.g., if we extract translatable strings from a SVG file, as result we get the same SVG file but with translatable strings already localized &mdash;obviously, for this to happen translators need to localize translatable strings inside the Portable Object first, localization won't appear as art of magic&mdash;). When using <command>xml2po</command>, the Machine Object file is used just temporally to produce the final translated XML based file.</para>
           <quotation>
             <para><strong>Tip</strong> If you want to have your content localized inside CentOS Artwork Repository be sure to use source files supported by <command>gettext</command> and <command>xml2po</command> programs.</para>
           </quotation>
+          <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>, for more information.</para>
         </subsubsection>
 
         <subsubsection>
           <title>Programming</title>
-          <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>.</para>
           <para>So far, we've seen a conceptual view of how image production inside CentOS Artwork Repository is performed, but how all this is implemented, what is the practical view?</para>
           <para>The practical view can be found through <command>centos-art.sh</command> script, a bash script specially designed to automate most frequent tasks inside CentOS Artwork Repository. The <command>centos-art.sh</command> script is stored in <file>trunk/Scripts</file> directory structure and is there where the main development for <command>centos-art.sh</command> script takes place. Basically, the <command>centos-art.sh</command> script is divided in several functionalities that perform specific tasks inside the repository. Such functionalities relay on repository organization to work as expected.</para>
           <para>Maiking the <command>centos-art.sh</command> script to automate tasks is the only possible work flow that I can think about right now. If you are a programmer, take a functionality from <command>centos-art.sh</command> script, study it, look how to improve it and share your ideas at <email><emailaddress>centos-devel@centos.org</emailaddress></email> mailing list.</para>
           <quotation>
             <para><strong>Note</strong> As default configuration, everyone is denied from committing changes up to CentOS Artwork Repository. In order to gain commit rights, you need to prove your interest in contributing and maintaining that contribution.  Otherwise, if you only want to comment your ideas, the <email><emailaddress>centos-devel@centos.org</emailaddress></email> mailing list exists for you to manifest yourself. This restrictions are necessary to protect our work from spammers.</para>
           </quotation>
+          <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information.</para>
         </subsubsection>
+      </subsection>
+
+      <subsection>
+        <title>Work lines</title>
+        <para>The CentOS Artwork Repository is organized using the Rendition, Localization and Programming concepts described above.  These concepts suggest three different work lines to get focused in:</para>
+        <table>
+          <tableitem>
+            <tableterm><strong>Graphic design</strong></tableterm>
+            <item>
+              <para>This work line exists to cover the corporate design (e.g., brand design, typography design and theme design). Other areas that could be included here are icon design and illustration design for documentation.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Documentation</strong></tableterm>
+            <item>
+              <para>This work line exists to describe what each directory structure inside the CentOS Artwork Repository is for and how to produce content inside it.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Translation</strong></tableterm>
+            <item>
+              <para>This work line exists to localize corporate design and documentation source files, so they can be produced in different languages.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Automation</strong></tableterm>
+            <item>
+              <para>This work line exists to standardize corporate design, documentation and localization processes and automate their production. There is no need to repeat several tasks time after time if they can be programmed in just one for you to execute. If you need to improve the way content is produced, look inside automation scripts and make your improvement there for every one to benefit.</para>
+            </item>
+          </tableitem>
+        </table>
       </subsection>
 
       <subsection>
@@ -390,7 +422,7 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
   </node>
   <node>
     <nodename>Feedback</nodename>
-    <nodeprev>Layout</nodeprev>
+    <nodeprev>Repository Convenctions</nodeprev>
     <nodeup>Introduction</nodeup>
     <section>
       <title>Send in Your Feedback</title>
@@ -436,11 +468,6 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
         <menuentry>
           <menunode>Directories trunk Identity Fonts</menunode>
           <menutitle>Directories trunk Identity Fonts</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Locales</menunode>
-          <menutitle>Directories trunk Identity Locales</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -556,6 +583,11 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
         <menuentry>
           <menunode>Directories trunk Identity Webenv</menunode>
           <menutitle>Directories trunk Identity Webenv</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Locales</menunode>
+          <menutitle>Directories trunk Locales</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -798,7 +830,7 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
               <tableterm><strong>Locales</strong></tableterm>
               <item>
                 <para>This section organizes production of translation messages for <emph>Identity</emph>, <emph>Documentation</emph> and <emph>Scripts</emph>. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
-                <para>See <xref><xrefnodename>Directories trunk Identity Locales</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
           </table>
@@ -909,7 +941,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Fonts</nodename>
-    <nodenext>Directories trunk Identity Locales</nodenext>
+    <nodenext>Directories trunk Identity Manual</nodenext>
     <nodeprev>Directories trunk Identity Brands</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -959,33 +991,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Locales</nodename>
-    <nodenext>Directories trunk Identity Manual</nodenext>
-    <nodeprev>Directories trunk Identity Fonts</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Locales</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Locales</indexterm>The <file>trunk/Locales</file> directory exists to store the translation messages used to produce content in different languages.</para>
-      <para>Translation messages are organized using the directory structure of the component being translated. For example, if we want to provide translation messages for <file>trunk/Manuals/Repository</file>, then the <file>trunk/Locales/Manuals/Repository</file> directory needs to be created.</para>
-      <para>Once the locale directory exists for the component we want to provide translation messages for, it is necessary to create the translation files where translation messages are. The translation files follows the concepts of <command>xml2po</command> and GNU <command>gettext</command> tools.</para>
-      <para>The basic translation process is as follow: first, translatable strings are extracted from files and a portable object template (.pot) is created or updated with the information. Using the portable object template, a portable object (.po) is created or updated for translator to locale the messages retrived.  Finally, a machine object (.mo) is created from portable object to sotore the translated messages.</para>
-      <para>Inside the repository there are two ways to retrive translatable strings from files. The first one is through <command>xml2po</command> command and the second through <command>xgettext</command> command. The <command>xml2po</command> is used to retrive translatable strings from XML files (e.g., Scalable Vector Graphics, DocBook, etc.) and the <command>xgettext</command> command is used to retrive translatable strings from shell scripts files (e.g., the files that make the <command>centos-art.sh</command> command-line interface).</para>
-      <para>When translatable strings are retrived from XML files, using the <command>xml2po</command> command, there is no need to create the machine object as we do when translatable strings ar retrived from shell files, using the <command>xgettext</command> command. The <command>xml2po</command> produces a temporal machine object in order to create a translated XML file. Once the translated XML file has been created the machine object is no longer needed. On the other hand, the machine object produced by the <command>xgettext</command> command is required by the system in order for the show shell script localized messages.</para>
-      <para>Another difference between <command>xml2po</command> and <command>xgettext</command> we need to be aware of is the directory structure used to store machine objects. In <command>xml2po</command>, the machine object is created in the current working directory as <file>.xml2po.mo</file> and can be safetly removed once the translated XML file has been created. In the case of <command>xgettext</command>, the machine object needs to be stored in the <file>$TEXTDOMAIN/$LOCALE/LL_MESSAGES/$TEXTDOMAIN.mo</file> file in order for the system to interpret it and should not be removed since it is the file that contain the translation messages themselves.</para>
-      <para>Automation of localization tasks is achived through the <code>locale</code> functionality of command-line interface.</para>
-      <menu>
-        <menuentry>
-          <menunode>Directories trunk Scripts Functions Locale</menunode>
-          <menutitle>Directories trunk Scripts Functions Locale</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-      </menu>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Manual</nodename>
     <nodenext>Directories trunk Identity Palettes</nodenext>
-    <nodeprev>Directories trunk Identity Locales</nodeprev>
+    <nodeprev>Directories trunk Identity Fonts</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Manual</file> Directory</title>
@@ -2140,7 +2148,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Webenv</nodename>
-    <nodenext>Directories trunk Scripts</nodenext>
+    <nodenext>Directories trunk Locales</nodenext>
     <nodeprev>Directories trunk Identity Themes Motifs TreeFlower</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -2402,9 +2410,33 @@ priority=10
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Locales</nodename>
+    <nodenext>Directories trunk Scripts</nodenext>
+    <nodeprev>Directories trunk Identity Webenv</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Locales</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Locales</indexterm>The <file>trunk/Locales</file> directory exists to store the translation messages used to produce content in different languages.</para>
+      <para>Translation messages are organized using the directory structure of the component being translated. For example, if we want to provide translation messages for <file>trunk/Manuals/Repository</file>, then the <file>trunk/Locales/Manuals/Repository</file> directory needs to be created.</para>
+      <para>Once the locale directory exists for the component we want to provide translation messages for, it is necessary to create the translation files where translation messages are. The translation files follows the concepts of <command>xml2po</command> and GNU <command>gettext</command> tools.</para>
+      <para>The basic translation process is as follow: first, translatable strings are extracted from files and a portable object template (.pot) is created or updated with the information. Using the portable object template, a portable object (.po) is created or updated for translator to locale the messages retrived.  Finally, a machine object (.mo) is created from portable object to sotore the translated messages.</para>
+      <para>Inside the repository there are two ways to retrive translatable strings from files. The first one is through <command>xml2po</command> command and the second through <command>xgettext</command> command. The <command>xml2po</command> is used to retrive translatable strings from XML files (e.g., Scalable Vector Graphics, DocBook, etc.) and the <command>xgettext</command> command is used to retrive translatable strings from shell scripts files (e.g., the files that make the <command>centos-art.sh</command> command-line interface).</para>
+      <para>When translatable strings are retrived from XML files, using the <command>xml2po</command> command, there is no need to create the machine object as we do when translatable strings ar retrived from shell files, using the <command>xgettext</command> command. The <command>xml2po</command> produces a temporal machine object in order to create a translated XML file. Once the translated XML file has been created the machine object is no longer needed. On the other hand, the machine object produced by the <command>xgettext</command> command is required by the system in order for the show shell script localized messages.</para>
+      <para>Another difference between <command>xml2po</command> and <command>xgettext</command> we need to be aware of is the directory structure used to store machine objects. In <command>xml2po</command>, the machine object is created in the current working directory as <file>.xml2po.mo</file> and can be safetly removed once the translated XML file has been created. In the case of <command>xgettext</command>, the machine object needs to be stored in the <file>$TEXTDOMAIN/$LOCALE/LL_MESSAGES/$TEXTDOMAIN.mo</file> file in order for the system to interpret it and should not be removed since it is the file that contain the translation messages themselves.</para>
+      <para>Automation of localization tasks is achived through the <code>locale</code> functionality of command-line interface.</para>
+      <menu>
+        <menuentry>
+          <menunode>Directories trunk Scripts Functions Locale</menunode>
+          <menutitle>Directories trunk Scripts Functions Locale</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+      </menu>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Scripts</nodename>
     <nodenext>Directories trunk Scripts Functions</nodenext>
-    <nodeprev>Directories trunk Identity Webenv</nodeprev>
+    <nodeprev>Directories trunk Locales</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts</file> Directory</title>
