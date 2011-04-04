@@ -69,8 +69,6 @@ normalized work flow for, they are: @emph{Rendition},
 
 @subsubsection Rendition
 
-@xref{Directories trunk Identity}.
-
 Rendition is the action through which The CentOS Project Corporate
 Identity is produced inside the repository. The CentOS Project
 Corporate Identityis is made, in part, of several visual
@@ -108,9 +106,9 @@ and illustrations used in documentation. Direct rendition takes place
 in @file{trunk/Identity/Models} and @file{trunk/Identity/Images}
 directory structures.
 
-@subsubsection Localization
+@xref{Directories trunk Identity}, for more information.
 
-@xref{Directories trunk Locales}.
+@subsubsection Localization
 
 Whatever content rendition you perform, sometimes you need to produce
 content in different languages. Production of content in different
@@ -155,9 +153,9 @@ Artwork Repository be sure to use source files supported by
 @command{gettext} and @command{xml2po} programs.
 @end quotation
 
-@subsubsection Programming
+@xref{Directories trunk Locales}, for more information.
 
-@xref{Directories trunk Scripts}.
+@subsubsection Programming
 
 So far, we've seen a conceptual view of how image production inside
 CentOS Artwork Repository is performed, but how all this is
@@ -188,6 +186,8 @@ your ideas, the @email{centos-devel@@centos.org} mailing list exists
 for you to manifest yourself. This restrictions are necessary to
 protect our work from spammers.
 @end quotation
+
+@xref{Directories trunk Scripts}, for more information.
 
 @subsection Parallel directories
 
