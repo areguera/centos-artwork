@@ -1,7 +1,3 @@
-@emph{''CentOS like trees, has roots, trunk, branches, leaves and
-flowers.  Day by day they work together in freedom, ruled by the laws
-of nature and open standards, to show the beauty of its existence.''}
-
 This section describes the organization of files and directories
 inside the CentOS Artwork Repository, the names convenctions, how to
 extend the current layout and the way content is produced, as well. 
@@ -62,21 +58,24 @@ Repository name convenctions are implemented inside the
 convenctions to remember are reduced and concentrated in just one
 single place to look for fixes and improvements.
 
-@subsection Repository work flow
+@subsection Worklines
 
-As repository work flow we understand a serie of normalized steps used
-to produce contents inside CentOS Artwork Repository. There are three
-remarkable actions inside the repository that we need to provide a
-normalized work flow for, they are: @emph{Rendition},
-@emph{Localization} and @emph{Programming}.
+In this section describes a serie of normalized steps used to produce
+contents inside the CentOS Artwork Repository.  
 
-@subsubsection Rendition
+@subsubsection Graphic design
 
-Rendition is the action through which The CentOS Project Corporate
-Identity is produced inside the repository. The CentOS Project
-Corporate Identityis is made, in part, of several visual
-manifestations.  These visual manifestations implement the Corporate
-Identity by mean of images placed in key areas of their visual space. 
+This work line exists to cover brand design, typography design and
+theme design. Other areas that could be included here are icon design
+and illustration design for documentation.
+
+Graphic design production is automated by means of @emph{direct
+rendition} and @emph{theme rendition}.  Content rendition, in general,
+is the action through which The CentOS Project Corporate Identity is
+produced inside the repository.  The CentOS Project Corporate Identity
+is made, in part, of several visual manifestations.  These visual
+manifestations implement the Corporate Identity by mean of images
+placed in key areas of their visual space. 
 
 As work flow to produce these images, we decompose them in design
 models and artistic motifs. Design models provide the image structure
@@ -110,7 +109,18 @@ directory structures.
 
 @xref{Directories trunk Identity}, for more information.
 
+@subsubsection Documentation
+
+This work line exists to describe what each directory structure inside
+the CentOS Artwork Repository is for and how to produce content inside
+it.
+
+@xref{Directories trunk Manual}, for more information.
+
 @subsubsection Localization
+
+This work line exists to localize corporate design and documentation
+source files, so they can be produced in different languages.
 
 Whatever content rendition you perform, sometimes you need to produce
 content in different languages. Production of content in different
@@ -157,7 +167,14 @@ Artwork Repository be sure to use source files supported by
 
 @xref{Directories trunk Locales}, for more information.
 
-@subsubsection Programming
+@subsubsection Automation
+
+This work line exists to standardize corporate design, documentation
+and localization processes and automate their production. There is no
+need to repeat several tasks time after time if they can be programmed
+in just one for you to execute. If you need to improve the way content
+is produced, look inside automation scripts and make your improvement
+there for every one to benefit.
 
 So far, we've seen a conceptual view of how image production inside
 CentOS Artwork Repository is performed, but how all this is
@@ -190,41 +207,6 @@ protect our work from spammers.
 @end quotation
 
 @xref{Directories trunk Scripts}, for more information.
-
-@subsection Work lines
-
-The CentOS Artwork Repository is organized using the Rendition,
-Localization and Programming concepts described above.  These concepts
-suggest three different work lines to get focused in: 
-
-@table @strong
-@item Graphic design 
-
-This work line exists to cover the corporate design (e.g., brand
-design, typography design and theme design). Other areas that could be
-included here are icon design and illustration design for
-documentation.
-
-@item Documentation
-
-This work line exists to describe what each directory structure inside
-the CentOS Artwork Repository is for and how to produce content inside
-it.
-
-@item Translation
-
-This work line exists to localize corporate design and documentation
-source files, so they can be produced in different languages.
-
-@item Automation
-
-This work line exists to standardize corporate design, documentation
-and localization processes and automate their production. There is no
-need to repeat several tasks time after time if they can be programmed
-in just one for you to execute. If you need to improve the way content
-is produced, look inside automation scripts and make your improvement
-there for every one to benefit.
-@end table
 
 @subsection Parallel directories
 
