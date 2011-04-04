@@ -55,7 +55,7 @@ function help_getEntry {
     # paths provided inside trunk/Identity/Manuals/ such actions need
     # to be performed manually.
     if [[ ${ENTRY} =~ '\.texi$' ]];then
-        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Identity/Manual/!!')
+        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manual!!')
     else
         ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).texi
     fi
