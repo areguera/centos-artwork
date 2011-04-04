@@ -109,7 +109,7 @@ function render_doBaseActions {
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
-           | sed -r 's!/trunk/Identity/(Models|Themes/Models)!/trunk/Identity/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
+           | sed -r 's!trunk/Identity/(Models|Themes/Models)!trunk/Locales/Identity/\1!')/$(cli_getCurrentLocale)/messages.po
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
