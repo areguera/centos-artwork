@@ -33,7 +33,7 @@ function help {
     # Define manuals base directory. This is the place where
     # documentation manuals base directory structures are stored and
     # organized in.
-    MANUAL_BASEDIR="${HOME}/artwork/trunk/Identity/Manual"
+    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
 
     # Define file name for documentation manual. This is the file used
     # to initiate the structure of documentation manual.
@@ -167,7 +167,7 @@ function help {
         # not have their own files, they all will be written inside
         # the same section file that represents the repository
         # documentation entry.
-        MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-8)
+        MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-7)
 
         # Define chapter name for the documentation entry we are
         # working with.
