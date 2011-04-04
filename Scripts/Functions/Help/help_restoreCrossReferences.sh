@@ -48,7 +48,7 @@ function help_restoreCrossReferences {
 
     # Build the node string using entry location.
     local NODE=$(echo "$LOCATION" \
-        | cut -d / -f8- \
+        | cut -d / -f7- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.texi|\.texi)$//" \
