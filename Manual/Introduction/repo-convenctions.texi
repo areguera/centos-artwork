@@ -58,56 +58,86 @@ Repository name convenctions are implemented inside the
 convenctions to remember are reduced and concentrated in just one
 single place to look for fixes and improvements.
 
-@subsection Worklines
+@subsection Work lines
 
-In this section describes a serie of normalized steps used to produce
-contents inside the CentOS Artwork Repository.  
+Work lines describe different areas of content production inside
+CentOS Artwork Repository. Content production inside these specific
+areas may vary as much as persons be working on them. Producing
+content in too many different ways may result innapropriate in a
+collaborative environment like CentOS Artwork Repository where content
+produced in one area depends somehow from content produced in another
+different area. To produce content in a syncronized but descentralized
+way, it is required to define a content production standard for each
+work line that everyone uses as reference to realize their work.
+
+The standard way of producing content inside CentOS Artwork Repository
+is implemented through @command{centos-art.sh} script and described in
+@command{centos-art.sh} script related documentation entry
+(@pxref{Directories trunk Scripts}).
+
+Inside CentOS Artwork Repository, work lines are organized in
+@emph{Graphic design}, @emph{Documentation}, @emph{Localization} and
+@emph{Automation}.
 
 @subsubsection Graphic design
 
 This work line exists to cover brand design, typography design and
-theme design. Other areas that could be included here are icon design
-and illustration design for documentation.
+theme design. Additionally, some auxiliar areas like icon design,
+illustration design for documentation, brushes design, pattern designs
+and palettes with color definitions could be included here for
+completeness.
 
-Graphic design production is automated by means of @emph{direct
-rendition} and @emph{theme rendition}.  Content rendition, in general,
-is the action through which The CentOS Project Corporate Identity is
-produced inside the repository.  The CentOS Project Corporate Identity
-is made, in part, of several visual manifestations.  These visual
-manifestations implement the Corporate Identity by mean of images
-placed in key areas of their visual space. 
+Inside CentOS Artwork Repository, graphic design is performed through
+Inkscape and GIMP program.  Inkscape is used create and manipulate
+scalable vector graphics and export them to PNG format; it also
+provides a command-line interface that we use to automate the
+exportation process so you can perform massive exportation of SVG
+files to PNG files. On the other hand, GIMP is used to create and
+manipulate rastered images, create brushes, patterns and palettes of
+colors.  Notice that each program provides very specific
+functionalities and posibilities that when combined can let you
+produce very beautiful images.
 
-As work flow to produce these images, we decompose them in design
-models and artistic motifs. Design models provide the image structure
-(i.e., dimension, translation markers, common designs, etc.) and
-artistic motifs the visual style (i.e., the background information
-provide the look and feel). 
+The CentOS Project Corporate Identity is made of several visual
+manifestations.  These visual manifestations implement the Corporate
+Identity by mean of images placed in key areas of their visual space.
+To produce these images, we decompose image production in @emph{design
+models} and @emph{artistic motifs}. Design models provide the image
+structure (i.e., dimension, translation markers, common designs, etc.)
+and are generally produced as scalable vector graphics generally. On
+the other hand, artistic motifs provide the visual style (i.e., the
+background information, the look and feel) and are generally produced
+as rastered images.
 
 Design models are created for each visual manifestation the CentOS
 Project is made of. This way we describe the visual manifestation and
 provide a template system for it where several artistic motifs can be
 applied. Artistic motifs are created with design models in mind, not
-the visual manifestation such design models is built for.
+the visual manifestation that design models are built for.
 
-The combination of one design models with one artistic motifs is what
-we know as one @emph{theme}. Inside themes directory structure, you
-can find several design models and several artistic motifs, apart one
-another, that can be albitrarily combined one another through
-@emph{theme rendition}, a flexible way to produce images for different
-visual manifestations inside CentOS Artwork Repository. Theme
-rendition takes place in @file{trunk/Identity/Themes/Models} and
-@file{trunk/Identity/Themes/Motifs} directory structures.
+The result produced by combining one design model with one artistic
+motif is what we know as a @emph{theme}. Inside themes directory
+structure (@pxref{Directories trunk Identity Themes}), you can find
+several design models and several artistic motifs, apart one another,
+that can be albitrarily combined one another through @emph{theme
+rendition}, a flexible way to produce images for different visual
+manifestations inside CentOS Artwork Repository. Inside themes
+directory structure, theme rendition is performed in
+@file{trunk/Identity/Themes/Motifs} directory structures and takes
+design models from @file{trunk/Identity/Themes/Models} directory
+structure.
 
 In addition to theme rendition, you can find another way of image
 production, a more direct way of image production where there is no
 artistic motif at all, but design models only. Such configuration is
 named @emph{direct rendition} and is very useful to produce simple
-content that doesn't need specific background information like icons
-and illustrations used in documentation. Direct rendition takes place
-in @file{trunk/Identity/Models} and @file{trunk/Identity/Images}
+content that doesn't need specific background information (e.g., icons
+and illustrations for documentation). Direct rendition takes place in
+@file{trunk/Identity/Models} and @file{trunk/Identity/Images}
 directory structures.
 
-@xref{Directories trunk Identity}, for more information.
+@xref{Directories trunk Identity}, for more information on graphic
+design.
 
 @subsubsection Documentation
 
@@ -115,7 +145,7 @@ This work line exists to describe what each directory structure inside
 the CentOS Artwork Repository is for and how to produce content inside
 it.
 
-@xref{Directories trunk Manual}, for more information.
+@xref{Directories trunk Manual}, for more information on documentation.
 
 @subsubsection Localization
 
@@ -206,7 +236,7 @@ for you to manifest yourself. This restrictions are necessary to
 protect our work from spammers.
 @end quotation
 
-@xref{Directories trunk Scripts}, for more information.
+@xref{Directories trunk Scripts}, for more information on automation.
 
 @subsection Parallel directories
 

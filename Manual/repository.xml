@@ -296,8 +296,7 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     <nodeup>Introduction</nodeup>
     <section>
       <title>Repository Convenctions</title>
-      <para><indexterm index="cp">Repository convenctions</indexterm><emph>&rdquo;CentOS like trees, has roots, trunk, branches, leaves and flowers.  Day by day they work together in freedom, ruled by the laws of nature and open standards, to show the beauty of its existence.&rdquo;</emph></para>
-      <para>This section describes the organization of files and directories inside the CentOS Artwork Repository, the names convenctions, how to extend the current layout and the way content is produced, as well.</para>
+      <para><indexterm index="cp">Repository convenctions</indexterm>This section describes the organization of files and directories inside the CentOS Artwork Repository, the names convenctions, how to extend the current layout and the way content is produced, as well.</para>
       <para>The repository layout is used as standard backend for automation scripts to work correctly. If repository layout changes unexpectedly, automation scripts may get confuse themselves and stop doing what you may expect from them to do.</para>
       <para>As convenction, inside CentOS Artwork Repository, files and directories related to CentOS corporate visual identity are organized under three top level directories named: <file>trunk/</file>, <file>branches/</file>, and <file>tags/</file>.</para>
       <para>The <file>trunk/</file> directory (see <xref><xrefnodename>Directories trunk</xrefnodename></xref>) organizes the main development line of CentOS corporate visual identity. Inside <file>trunk/</file> directory structure, the CentOS corporate visual identity concepts are implemented using directories.  There is one directory level for each relevant concept inside the repository. The <file>trunk/</file> directory structure is mainly used to perform development tasks related to CentOS corporate visual identity.</para>
@@ -312,21 +311,31 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
       </subsection>
 
       <subsection>
-        <title>Repository work flow</title>
-        <para>As repository work flow we understand a serie of normalized steps used to produce contents inside CentOS Artwork Repository. There are three remarkable actions inside the repository that we need to provide a normalized work flow for, they are: <emph>Rendition</emph>, <emph>Localization</emph> and <emph>Programming</emph>.</para>
+        <title>Work lines</title>
+        <para>Work lines describe different areas of content production inside CentOS Artwork Repository. Content production inside these specific areas may vary as much as persons be working on them. Producing content in too many different ways may result innapropriate in a collaborative environment like CentOS Artwork Repository where content produced in one area depends somehow from content produced in another different area. To produce content in a syncronized but descentralized way, it is required to define a content production standard for each work line that everyone uses as reference to realize their work.</para>
+        <para>The standard way of producing content inside CentOS Artwork Repository is implemented through <command>centos-art.sh</command> script and described in <command>centos-art.sh</command> script related documentation entry (see <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>).</para>
+        <para>Inside CentOS Artwork Repository, work lines are organized in <emph>Graphic design</emph>, <emph>Documentation</emph>, <emph>Localization</emph> and <emph>Automation</emph>.</para>
 
         <subsubsection>
-          <title>Rendition</title>
-          <para>Rendition is the action through which The CentOS Project Corporate Identity is produced inside the repository. The CentOS Project Corporate Identityis is made, in part, of several visual manifestations.  These visual manifestations implement the Corporate Identity by mean of images placed in key areas of their visual space.</para>
-          <para>As work flow to produce these images, we decompose them in design models and artistic motifs. Design models provide the image structure (i.e., dimension, translation markers, common designs, etc.) and artistic motifs the visual style (i.e., the background information provide the look and feel).</para>
-          <para>Design models are created for each visual manifestation the CentOS Project is made of. This way we describe the visual manifestation and provide a template system for it where several artistic motifs can be applied. Artistic motifs are created with design models in mind, not the visual manifestation such design models is built for.</para>
-          <para>The combination of one design models with one artistic motifs is what we know as one <emph>theme</emph>. Inside themes directory structure, you can find several design models and several artistic motifs, apart one another, that can be albitrarily combined one another through <emph>theme rendition</emph>, a flexible way to produce images for different visual manifestations inside CentOS Artwork Repository. Theme rendition takes place in <file>trunk/Identity/Themes/Models</file> and <file>trunk/Identity/Themes/Motifs</file> directory structures.</para>
-          <para>In addition to theme rendition, you can find another way of image production, a more direct way of image production where there is no artistic motif at all, but design models only. Such configuration is named <emph>direct rendition</emph> and is very useful to produce simple content that doesn't need specific background information like icons and illustrations used in documentation. Direct rendition takes place in <file>trunk/Identity/Models</file> and <file>trunk/Identity/Images</file> directory structures.</para>
-          <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>, for more information.</para>
+          <title>Graphic design</title>
+          <para>This work line exists to cover brand design, typography design and theme design. Additionally, some auxiliar areas like icon design, illustration design for documentation, brushes design, pattern designs and palettes with color definitions could be included here for completeness.</para>
+          <para>Inside CentOS Artwork Repository, graphic design is performed through Inkscape and GIMP program.  Inkscape is used create and manipulate scalable vector graphics and export them to PNG format; it also provides a command-line interface that we use to automate the exportation process so you can perform massive exportation of SVG files to PNG files. On the other hand, GIMP is used to create and manipulate rastered images, create brushes, patterns and palettes of colors.  Notice that each program provides very specific functionalities and posibilities that when combined can let you produce very beautiful images.</para>
+          <para>The CentOS Project Corporate Identity is made of several visual manifestations.  These visual manifestations implement the Corporate Identity by mean of images placed in key areas of their visual space. To produce these images, we decompose image production in <emph>design models</emph> and <emph>artistic motifs</emph>. Design models provide the image structure (i.e., dimension, translation markers, common designs, etc.) and are generally produced as scalable vector graphics generally. On the other hand, artistic motifs provide the visual style (i.e., the background information, the look and feel) and are generally produced as rastered images.</para>
+          <para>Design models are created for each visual manifestation the CentOS Project is made of. This way we describe the visual manifestation and provide a template system for it where several artistic motifs can be applied. Artistic motifs are created with design models in mind, not the visual manifestation that design models are built for.</para>
+          <para>The result produced by combining one design model with one artistic motif is what we know as a <emph>theme</emph>. Inside themes directory structure (see <xref><xrefnodename>Directories trunk Identity Themes</xrefnodename></xref>), you can find several design models and several artistic motifs, apart one another, that can be albitrarily combined one another through <emph>theme rendition</emph>, a flexible way to produce images for different visual manifestations inside CentOS Artwork Repository. Inside themes directory structure, theme rendition is performed in <file>trunk/Identity/Themes/Motifs</file> directory structures and takes design models from <file>trunk/Identity/Themes/Models</file> directory structure.</para>
+          <para>In addition to theme rendition, you can find another way of image production, a more direct way of image production where there is no artistic motif at all, but design models only. Such configuration is named <emph>direct rendition</emph> and is very useful to produce simple content that doesn't need specific background information (e.g., icons and illustrations for documentation). Direct rendition takes place in <file>trunk/Identity/Models</file> and <file>trunk/Identity/Images</file> directory structures.</para>
+          <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>, for more information on graphic design.</para>
+        </subsubsection>
+
+        <subsubsection>
+          <title>Documentation</title>
+          <para>This work line exists to describe what each directory structure inside the CentOS Artwork Repository is for and how to produce content inside it.</para>
+          <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information on documentation.</para>
         </subsubsection>
 
         <subsubsection>
           <title>Localization</title>
+          <para>This work line exists to localize corporate design and documentation source files, so they can be produced in different languages.</para>
           <para>Whatever content rendition you perform, sometimes you need to produce content in different languages. Production of content in different languages is known as localization or l10n for short.  Inside CentOS Artwork Repository, content localization is performed using the processed provided by <command>gettext</command> internationalization standard.</para>
           <para>Basically, the <command>gettext</command> internationalization standard consists on retriving translatable strings from source files and creating Portable Objects and Machine Objects. Portable Objects contain the information used by translators to do their work, they are files that can be edited by any convenctional text editor like Vim, Emacs or Nano. On the other hand, Machine Objects are produced to be machine-redable as its name implies, and are produced from Portable Objects.</para>
           <para>Since <command>gettext</command> needs to extract translatable strings form source files in order to let translators to localize them, the types of source files we use inside the repository are limitted to the file types supported by <command>gettext</command> program. Most of source files supported by <command>gettext</command> are those from programming languages like C, C++, Bash, Python and Perl just to mention a few ones from the long list of supported formats. However, formats like SVG, XHTML and Docbook don't figure as supported in the long list of <command>gettext</command> supported source files. For these formats we use the <command>xml2po</command> program that come in the <file>gnome-doc-utils</file> package instead.  The <command>xml2po</command> program reads one XML based file and extracts translatable strings from it and creates one Portable Object that is use to create a translated XML based file with the same definition of the source file where translatable strings were taken from (e.g., if we extract translatable strings from a SVG file, as result we get the same SVG file but with translatable strings already localized &mdash;obviously, for this to happen translators need to localize translatable strings inside the Portable Object first, localization won't appear as art of magic&mdash;). When using <command>xml2po</command>, the Machine Object file is used just temporally to produce the final translated XML based file.</para>
@@ -337,46 +346,16 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         </subsubsection>
 
         <subsubsection>
-          <title>Programming</title>
+          <title>Automation</title>
+          <para>This work line exists to standardize corporate design, documentation and localization processes and automate their production. There is no need to repeat several tasks time after time if they can be programmed in just one for you to execute. If you need to improve the way content is produced, look inside automation scripts and make your improvement there for every one to benefit.</para>
           <para>So far, we've seen a conceptual view of how image production inside CentOS Artwork Repository is performed, but how all this is implemented, what is the practical view?</para>
           <para>The practical view can be found through <command>centos-art.sh</command> script, a bash script specially designed to automate most frequent tasks inside CentOS Artwork Repository. The <command>centos-art.sh</command> script is stored in <file>trunk/Scripts</file> directory structure and is there where the main development for <command>centos-art.sh</command> script takes place. Basically, the <command>centos-art.sh</command> script is divided in several functionalities that perform specific tasks inside the repository. Such functionalities relay on repository organization to work as expected.</para>
           <para>Maiking the <command>centos-art.sh</command> script to automate tasks is the only possible work flow that I can think about right now. If you are a programmer, take a functionality from <command>centos-art.sh</command> script, study it, look how to improve it and share your ideas at <email><emailaddress>centos-devel@centos.org</emailaddress></email> mailing list.</para>
           <quotation>
             <para><strong>Note</strong> As default configuration, everyone is denied from committing changes up to CentOS Artwork Repository. In order to gain commit rights, you need to prove your interest in contributing and maintaining that contribution.  Otherwise, if you only want to comment your ideas, the <email><emailaddress>centos-devel@centos.org</emailaddress></email> mailing list exists for you to manifest yourself. This restrictions are necessary to protect our work from spammers.</para>
           </quotation>
-          <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information.</para>
+          <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information on automation.</para>
         </subsubsection>
-      </subsection>
-
-      <subsection>
-        <title>Work lines</title>
-        <para>The CentOS Artwork Repository is organized using the Rendition, Localization and Programming concepts described above.  These concepts suggest three different work lines to get focused in:</para>
-        <table>
-          <tableitem>
-            <tableterm><strong>Graphic design</strong></tableterm>
-            <item>
-              <para>This work line exists to cover the corporate design (e.g., brand design, typography design and theme design). Other areas that could be included here are icon design and illustration design for documentation.</para>
-            </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><strong>Documentation</strong></tableterm>
-            <item>
-              <para>This work line exists to describe what each directory structure inside the CentOS Artwork Repository is for and how to produce content inside it.</para>
-            </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><strong>Translation</strong></tableterm>
-            <item>
-              <para>This work line exists to localize corporate design and documentation source files, so they can be produced in different languages.</para>
-            </item>
-          </tableitem>
-          <tableitem>
-            <tableterm><strong>Automation</strong></tableterm>
-            <item>
-              <para>This work line exists to standardize corporate design, documentation and localization processes and automate their production. There is no need to repeat several tasks time after time if they can be programmed in just one for you to execute. If you need to improve the way content is produced, look inside automation scripts and make your improvement there for every one to benefit.</para>
-            </item>
-          </tableitem>
-        </table>
       </subsection>
 
       <subsection>
@@ -468,11 +447,6 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
         <menuentry>
           <menunode>Directories trunk Identity Fonts</menunode>
           <menutitle>Directories trunk Identity Fonts</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Manual</menunode>
-          <menutitle>Directories trunk Identity Manual</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -588,6 +562,11 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
         <menuentry>
           <menunode>Directories trunk Locales</menunode>
           <menutitle>Directories trunk Locales</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Manual</menunode>
+          <menutitle>Directories trunk Manual</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -823,7 +802,7 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
               <tableterm><strong>Manual</strong></tableterm>
               <item>
                 <para>This section organizes the <emph>CentOS Artwork Repository Manual</emph> (i.e., the documentation manual you're reading right now).  If you are interested on improving The CentOS Artwork Repository Manual, in this place you'll find the Texinfo documentation structure you need to work with.</para>
-                <para>See <xref><xrefnodename>Directories trunk Identity Manual</xrefnodename></xref>, for more information.</para>
+                <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
@@ -941,7 +920,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Fonts</nodename>
-    <nodenext>Directories trunk Identity Manual</nodenext>
+    <nodenext>Directories trunk Identity Palettes</nodenext>
     <nodeprev>Directories trunk Identity Brands</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -991,54 +970,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Manual</nodename>
-    <nodenext>Directories trunk Identity Palettes</nodenext>
-    <nodeprev>Directories trunk Identity Fonts</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Manual</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Manual</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Palettes</nodename>
     <nodenext>Directories trunk Identity Themes</nodenext>
-    <nodeprev>Directories trunk Identity Manual</nodeprev>
+    <nodeprev>Directories trunk Identity Fonts</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Palettes</file> Directory</title>
@@ -2411,7 +2345,7 @@ priority=10
   </node>
   <node>
     <nodename>Directories trunk Locales</nodename>
-    <nodenext>Directories trunk Scripts</nodenext>
+    <nodenext>Directories trunk Manual</nodenext>
     <nodeprev>Directories trunk Identity Webenv</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -2434,9 +2368,54 @@ priority=10
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Manual</nodename>
+    <nodenext>Directories trunk Scripts</nodenext>
+    <nodeprev>Directories trunk Locales</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Manual</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Manual</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Scripts</nodename>
     <nodenext>Directories trunk Scripts Functions</nodenext>
-    <nodeprev>Directories trunk Locales</nodeprev>
+    <nodeprev>Directories trunk Manual</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts</file> Directory</title>
@@ -2543,8 +2522,12 @@ centos-art function path/to/dir --options
           <menuentry>
             <menunode>Directories trunk Scripts</menunode>
             <menutitle>Directories trunk Scripts</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
+          <menuentry>
+            <menunode>Directories trunk Scripts Functions</menunode>
+            <menutitle>Directories trunk Scripts Functions</menutitle>
             <menucomment>
-<!-- Removed(* Directories trunk Scripts Functions::) - -->
 <!-- Removed(* Directories trunk Scripts Locale::) - --></menucomment>
           </menuentry>
         </menu>
@@ -3503,13 +3486,29 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
           <para>The following specific functions of <file>centos-art.sh</file> script, are available for you to use:</para>
           <menu>
 <!--  Removed(* Directories trunk Scripts Functions Html::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Locale::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Manual::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Path::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Render::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Render Config::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Shell::) - -->
-<!--  Removed(* Directories trunk Scripts Functions Svg::) - -->
+            <menuentry>
+              <menunode>Directories trunk Scripts Functions Locale</menunode>
+              <menutitle>Directories trunk Scripts Functions Locale</menutitle>
+              <menucomment>
+<!-- Removed(* Directories trunk Scripts Functions Manual::) - --></menucomment>
+            </menuentry>
+            <menuentry>
+              <menunode>Directories trunk Scripts Functions Path</menunode>
+              <menutitle>Directories trunk Scripts Functions Path</menutitle>
+              <menucomment></menucomment>
+            </menuentry>
+            <menuentry>
+              <menunode>Directories trunk Scripts Functions Render</menunode>
+              <menutitle>Directories trunk Scripts Functions Render</menutitle>
+              <menucomment></menucomment>
+            </menuentry>
+            <menuentry>
+              <menunode>Directories trunk Scripts Functions Render Config</menunode>
+              <menutitle>Directories trunk Scripts Functions Render Config</menutitle>
+              <menucomment>
+<!-- Removed(* Directories trunk Scripts Functions Shell::) - -->
+<!-- Removed(* Directories trunk Scripts Functions Svg::) - --></menucomment>
+            </menuentry>
             <menuentry>
               <menunode>Directories trunk Scripts Functions Prepare</menunode>
               <menutitle>Directories trunk Scripts Functions Prepare</menutitle>
@@ -3767,8 +3766,12 @@ centos-art manual --read=turnk/Identity/Themes/Motifs/TreeFlower/
           <menuentry>
             <menunode>Directories trunk Scripts</menunode>
             <menutitle>Directories trunk Scripts</menutitle>
-            <menucomment>
-<!-- Removed(* Directories trunk Scripts Functions::) - --></menucomment>
+            <menucomment></menucomment>
+          </menuentry>
+          <menuentry>
+            <menunode>Directories trunk Scripts Functions</menunode>
+            <menutitle>Directories trunk Scripts Functions</menutitle>
+            <menucomment></menucomment>
           </menuentry>
         </menu>
       </subsection>
@@ -4382,7 +4385,11 @@ function render_loadConfig {
       <subsection>
         <title>See also</title>
         <menu>
-<!--  Removed(* Directories trunk Scripts Functions Render Config::) - -->
+          <menuentry>
+            <menunode>Directories trunk Scripts Functions Render Config</menunode>
+            <menutitle>Directories trunk Scripts Functions Render Config</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
         </menu>
       </subsection>
     </section>
@@ -4511,9 +4518,17 @@ ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
           <menuentry>
             <menunode>Directories trunk Scripts</menunode>
             <menutitle>Directories trunk Scripts</menutitle>
-            <menucomment>
-<!-- Removed(* Directories trunk Scripts Functions::) - -->
-<!-- Removed(* Directories trunk Scripts Functions Render::) - --></menucomment>
+            <menucomment></menucomment>
+          </menuentry>
+          <menuentry>
+            <menunode>Directories trunk Scripts Functions</menunode>
+            <menutitle>Directories trunk Scripts Functions</menutitle>
+            <menucomment></menucomment>
+          </menuentry>
+          <menuentry>
+            <menunode>Directories trunk Scripts Functions Render</menunode>
+            <menutitle>Directories trunk Scripts Functions Render</menutitle>
+            <menucomment></menucomment>
           </menuentry>
         </menu>
 <!--  The End of the Document - -->
