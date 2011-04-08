@@ -294,11 +294,11 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
     <nodeup>Introduction</nodeup>
     <section>
       <title>Repository Convenctions</title>
-      <para><indexterm index="cp">Repository convenctions</indexterm>The CentOS Artwork Repository is supported by Subversion (<uref><urefurl>http://subversion.tigris.org/</urefurl></uref>), a version control system which allows you to keep old versions of files and directories (usually source code), keep a log of who, when, and why changes occurred, etc., like CVS, RCS or SCCS.  In Subversion repositories there is one source repository and many working copies of that source repository. The working copies are independent one another, can be distributed all around the world and provide a local place for designers, documentors, translators and programmers to perform their works in a descentralized way.  The source repository, on the other hand, provides a central place for all independent working copies to interchange data and the information required to permit extracting previous versions of files at any time.</para>
+      <para><indexterm index="cp">Repository convenctions</indexterm>The CentOS Artwork Repository is supported by Subversion (<uref><urefurl>http://subversion.tigris.org/</urefurl></uref>), a version control system which allows you to keep old versions of files and directories (usually source code), keep a log of who, when, and why changes occurred, etc., like CVS, RCS or SCCS.  When using Subversion there is one source repository and many working copies of that source repository. The working copies are independent one another, can be distributed all around the world and provide a local place for designers, documentors, translators and programmers to perform their works in a descentralized way.  The source repository, on the other hand, provides a central place for all independent working copies to interchange data and the information required to permit extracting previous versions of files at any time.</para>
 
       <subsection>
         <title>Repository policy</title>
-        <para>The CentOS Artwork Repository is a collaborative tool where many people can have access to. However, changing that tool in any form is something that should be requested in <email><emailaddress>centos-devel@centos.org</emailaddress></email> mailing list.  Generally, people download working copies from CentOS Artwork Repository, study the repository organization, make some changes in their working copies, make some tests to verify such changes work the way expected and request access to commit them up to the CentOS Artwork Repository for others to benefit from them.</para>
+        <para>The CentOS Artwork Repository is a collaborative tool that anyone can have access to. However, changing that tool in any form is something that should be requested in <email><emailaddress>centos-devel@centos.org</emailaddress></email> mailing list.  Generally, people download working copies from CentOS Artwork Repository, study the repository organization, make some changes in their working copies, make some tests to verify such changes work the way expected and request access to commit them up to the CentOS Artwork Repository for others to benefit from them.</para>
         <para>Once you've received access to commit your changes, there is no need for you to request permission again to commit other changes from your working copy to CentOS Artwork Repository as long as you behave as a <emph>good community citizen</emph>.</para>
         <para>As a good community citizen one understand of a person whom respects the work already done for others and share ideas with authors before changing relevant parts of their work, specially in situations when the access required to realize those changes has been granted already. Of course, there is a time when conversation has taken place, the paths has been traced and changing the work is so obvious that there is no need to talk about it; that's because you already did, you already built the trust to keep going. Anyway, the mailing list mentioned above is available for sharing ideas in a way that good relationship between community citizens could be constantly balanced.</para>
         <para>The relationship between community citizens is monitored by repository administrators. Repository administrators are responsible of granting everything goes the way it needs to go in order for the CentOS Artwork Repository to comply its mission which is: to provide a colaborative tool for The CentOS Community where The CentOS Project Corporate Identity is built and maintained from The CentOS Community itself.</para>
@@ -337,9 +337,8 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
       <subsection>
         <title>Repository work lines</title>
-        <para>Work lines describe different areas of content production inside CentOS Artwork Repository. Content production inside these specific areas may vary as much as persons be working on them. Producing content in too many different ways may result innapropriate in a collaborative environment like CentOS Artwork Repository where content produced in one area depends somehow from content produced in another different area. To produce content in a syncronized but descentralized way, it is required to define a standard for content production that let each work line to exists that way.</para>
+        <para>Inside CentOS Artwork Repository there are four major production work lines which are: <emph>graphic design</emph>, <emph>documentation</emph>, <emph>localization</emph> and <emph>automation</emph>.  These work lines describe different areas of content production. Content production inside these specific areas may vary as much as persons be working on them. Producing content in too many different ways may result innapropriate in a collaborative environment like CentOS Artwork Repository where content produced in one area depends somehow from content produced in another different area. To produce content in a syncronized but descentralized way, it is required to define a <emph>content production standard</emph> that lead everyone work in order for the content produced in each different work line to gear correctly once it is put together.</para>
         <para>The standard way of producing content inside CentOS Artwork Repository is implemented through <command>centos-art.sh</command> script and described in <file>trunk/Scripts</file> documentation entry (see <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>).</para>
-        <para>Inside CentOS Artwork Repository there are four major production work lines. They are: <emph>graphic design</emph>, <emph>documentation</emph>, <emph>localization</emph> and <emph>automation</emph>.</para>
 
         <subsubsection>
           <title>Graphic design</title>
@@ -360,8 +359,8 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
         <subsubsection>
           <title>Documentation</title>
           <para>The documentation work line exists to describe what each directory inside the CentOS Artwork Repository is for and how to produce content inside them.</para>
-          <para>The CentOS Artwork Repository documentation is supported by Texinfo, a documentation system that uses a single source file to produce both online information and printed output. The repository documentation is organized under <file>trunk/Manual</file> directory structure using repository directories as reference. Directories inside CentOS Artwork Repository are created based on conceptual idea, so one documentation entry exists for each directory inside the repository in order to describe the conceptual ideas such directory is based.</para>
-          <para>Directory documentation entries are stored under <file>trunk/Manual/Directories</file> directory structure and controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script. Using <code>help</code> functionality you can create, edit and remove directory documentation in a way you don't need to take care of updating menus, nodes and cross reference information inside the manual structure; the functionality takes care of it for you. However, if you need to write repository documentation that have nothing to do with repository directories (e.g., Preface, Introduction and similar) you need to do it manually, there is no functionality to automate such process yet.</para>
+          <para>The CentOS Artwork Repository documentation is supported by Texinfo, a documentation system that uses a single source file to produce both online information and printed output. The repository documentation is organized under <file>trunk/Manual</file> directory structure using repository directories as reference. Directories inside CentOS Artwork Repository are created based on conceptual idea, so one documentation entry exists for each directory inside the repository in order to describe the conceptual ideas such directory is based on.</para>
+          <para>Directory documentation entries are stored under <file>trunk/Manual/Directories</file> directory structure and controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script. Using the <code>help</code> functionality you can create, edit and remove directory documentation in a way you don't need to take care of updating menus, nodes and cross reference information inside the manual structure; the functionality takes care of it for you. However, if you need to write repository documentation that have nothing to do with repository directories (e.g., Preface, Introduction and similar) you need to do it manually, there is no functionality to automate such process yet.</para>
           <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information on documentation.</para>
         </subsubsection>
 
@@ -380,10 +379,10 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
         <subsubsection>
           <title>Automation</title>
-          <para>The automation work line exists to standardize content production inside CentOS Artwork Repository. There is no need to repeat several tasks time after time if they can be programmed into just one script that groups them all.</para>
-          <para>The automation work line is take place under <file>trunk/Scripts</file> directory structure. Here is developed the <command>centos-art.sh</command> script, a bash script specially designed to automate most frequent tasks inside CentOS Artwork Repository. Basically, the <command>centos-art.sh</command> script is divided in several functionalities that perform specific tasks inside the repository. Such functionalities relay on repository organization to work as expected.</para>
+          <para>The automation work line exists to standardize content production inside CentOS Artwork Repository. There is no need to type several tasks time after time if they can be programmed into just one script that groups them all.</para>
+          <para>The automation work line takes place under <file>trunk/Scripts</file> directory structure. Here is developed the <command>centos-art.sh</command> script, a bash script specially designed to automate most frequent tasks inside CentOS Artwork Repository. Basically, the <command>centos-art.sh</command> script is divided in several functionalities that perform specific tasks inside the repository. Such functionalities relay on repository organization to work as expected.</para>
           <quotation>
-            <para><strong>Tip</strong> If you need to improve the way content is produced, look inside automation scripts and make your improvement there for every one to benefit.</para>
+            <para><strong>Tip</strong> If you need to improve the way content is produced, look inside automation scripts and make your improvement there for everyone to benefit.</para>
           </quotation>
           <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information on automation.</para>
         </subsubsection>
@@ -391,75 +390,124 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
 
       <subsection>
         <title>Connection between directories</title>
-        <para>In order to produce content correctly inside CentOS Artwork Repository, it is required that all work lines be connected somehow. This is the way automation scripts can know what design model and what translation files to use when specific contents are produced, also where to save the content produced as result.  This connection between directories takes place through two path constructions named <emph>The Master Path</emph> and <emph>The Auxiliar Paths</emph>.</para>
-        <para>As master path consider the last directory, inside a directory structure, which contains the source files (e.g., SVG files) required to produce base content (e.g., PNG files).  Master paths are backup by auxiliar paths.</para>
-        <para>Auxiliar paths provide the files that modify production of base content produced from master paths.  Auxiliar paths take their structure from one unique master path.  Master paths can have several auxiliar paths associated, but auxiliar paths can have only one master path associated.</para>
-        <para>For example, consider The CentOS Brands path relation:</para>
+        <para>In order to produce content correctly inside CentOS Artwork Repository, it is required that all work lines be connected somehow. This is the way automation scripts can know what design model and what translation files to use when specific contents are produced, also where to save the content produced as result.  This connection between directories takes place through two path constructions named <emph>The Master Paths</emph> and <emph>The Auxiliar Paths</emph>.</para>
+        <para>The master paths point to directories which contain the source files (e.g., SVG files) required to produce base content (e.g., PNG files). Each master path inside the repository has several auxiliar paths associated.</para>
+        <para>The auxiliar paths can point either to directories or files. When an auxiliar path points to a directory, that directory contains information that modifies somehow the content produced from the master path (e.g., through translation messages) or provides the output information of where to store the content produced from master path. When an auxiliar path points to a file, that file has no other purpose but document the master path it refers to.</para>
+        <para>The relation between auxiliar paths and master paths is realized taking one unique master path as reference.  Master paths define how auxiliar paths are constructed.  Master paths can have several auxiliar paths associated, but auxiliar paths can have only one master path associated.  For example, consider the following path relation and note how there are constant and variable values in them:</para>
         <table>
           <tableitem>
             <tableterm><file>trunk/Identity/Models/Brands</file></tableterm>
             <item>
               <para>This directory contains source files (e.g., SVG, XCF, etc.) used to produce the brand images of The CentOS Project.</para>
               <para>Here is where you, as graphic designers, define design models used to produce the brand images of The CentOS Project.</para>
-              <para>The path to this directory is considered master because it contains the most critical information (i.e., the information that can't be absent) required to produce the brand images of The CentOS Project.</para>
+              <para>The path to this directory is considered a master path because it contains the most critical information (i.e., the information that can't be absent) required to produce the brand images of The CentOS Project.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><file>trunk/Manual/Directories/trunk/Identity/Models/Brands.texi</file></tableterm>
             <item>
-              <para>This file contains documentation, in Texinfo format, for design models used to produce the brand images of The CentOS Project.</para>
-              <para>Here is where you, as documentor, describe construction of desing models used to produce the brand images of The CentOS Project. In this description you can include image dimensions, color information, image location inside CentOS Distribution filesystem, image packaging and similar things.</para>
-              <para>The path to this file is considered auxiliar to <file>trunk/Identity/Models/Brands</file> master path because it provides the description required to let everyone know how to build design models used to produce the brand images of The CentOS Project.</para>
+              <para>This file contains documentation, in Texinfo format, for design models used to produce the brand images of The CentOS Project. The path to this file is made of three parts:</para>
+              <verbatim xml:space="preserve"><![CDATA[
+            A                         B                C
+|-----------------------|----------------------------|---|
+trunk/Manual/Directories/trunk/Identity/Models/Brands.texi
+|-----------------------|----------------------------|---|
+
+A = The documentation manual source location.
+B = The master path we are building documentation for.
+C = The file extension used by Texinfo documentation files.
+]]></verbatim>
+              <para>Here is where you, as documentor, describe construction of desing models used to produce the brand images of The CentOS Project. In this description you can include image dimensions, color information, image location inside CentOS Distribution filesystem, packaging and similar things.</para>
+              <para>The path to this directory is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><file>trunk/Locales/Identity/Models/Brands</file></tableterm>
             <item>
-              <para>This directory contains translation files, as <command>gettext</command> portable objects, for design models used to produce the brand images of The CentOS Project.</para>
+              <para>This directory contains translation files, as <command>gettext</command> portable objects, for design models used to produce the brand images of The CentOS Project. The path to this directory made of two parts:</para>
+              <verbatim xml:space="preserve"><![CDATA[
+      A                 B
+|------------|---------------------|
+trunk/Locales/Identity/Models/Brands
+|------------|---------------------|
+
+A = The translation messages source location.
+B = The master path we are building translation messages for.
+]]></verbatim>
               <para>Here is where you, as translator, localize translatable strings retrived in English language from design models used to produce the brand images of The CentOS Project. If no portable object is found here the translation tasks are skipped to produce no translation at all, obviously there is no portable object to retrive translation messages from.</para>
-              <para>The path to this directory provides language-specific information required to produce the brand images of The CentOS Project, so it is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
+              <para>The path to this directory is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><file>trunk/Manual/Directories/trunk/Locales/Identity/Models/Brands.texi</file></tableterm>
             <item>
-              <para>This file contains documentation, in Texinfo format, for translation messages retrived from design models used to produce The CentOS Brands required by The CentOS Project.</para>
-              <para>Here is where you, as documentor, describe localization of desing models used to produce The CentOS Brands images required by The CentOS Project. In this description you can include image dimensions, color information, image location inside CentOS Distribution filesystem, image packaging and similar things.</para>
-              <para>The path to this file provides documentation to language-specific directory structure used to store translation messages used to produce the brand images of The CentOS Project, so it is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
+              <para>This file contains documentation, in Texinfo format, for translation messages retrived from design models used to produce brand images required by The CentOS Project. The path to this file is made of three parts:</para>
+              <verbatim xml:space="preserve"><![CDATA[
+            A                              B                   C
+|-----------------------|------------------------------------|---|
+trunk/Manual/Directories/trunk/Locales/Identity/Models/Brands.texi
+|-----------------------|------------------------------------|---|
+
+A = The documentation manual source location.
+B = The master path we are building documentation for.
+C = The file extension used by Texinfo documentation files.
+]]></verbatim>
+              <para>Here is where you, as documentor, describe localization of those desing models used to produce brand images required by The CentOS Project. In this description you can include image dimensions, color information, image location inside the file system of CentOS Distribution, packaging and similar things.</para>
+              <para>The path to this file is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><file>trunk/Identity/Images/Brands</file></tableterm>
             <item>
-              <para>This directory contains the final image produced from The CentOS Brands design models used by The CentOS Project.</para>
-              <para>Here is where you, as packager, can find the images you need to rebrand the brand images related to CentOS Distribution.</para>
-              <para>The path to this directory contains the final brand images of The CentOS Project, so it is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
+              <para>This directory contains the final brand images produced from brand design models used by The CentOS Project.</para>
+              <para>Here is where you, as packager, can find the brand images you need to rebrand the CentOS Distribution.</para>
+              <para>The path to this directory is considered auxiliar path of <file>trunk/Identity/Models/Brands</file> master path.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><file>trunk/Manual/Directories/trunk/Identity/Images/Brands.texi</file></tableterm>
             <item>
-              <para>This file should contains documentation, in Texinfo format, about how to implement final brand images of The CentOS Project.  However, this documentation entry is rarely created because the related design model documentation entry already covers implementation of images produced here.  The only reason to create this documentation entry is to put in an admonition that redirect people up to the design model related documentation entry where documentation related to implementation is.</para>
+              <para>This file should contains documentation, in Texinfo format, about how to implement final brand images of The CentOS Project.  However, this documentation entry is rarely used because the related design model documentation entry already covers implementation of brand images. The only reason to create this documentation entry is to put in an admonition that redirect people up to the correct place (i.e., the related design model coumentation entry).</para>
             </item>
           </tableitem>
         </table>
-        <para>The configuration described above for organizing brand component inside the repository is the one used by direct rendition and can be used as reference to organize other components inside the repository that are produced through direct rendition too. Just change the component name from brands to that one you want to add without changing the path structure around it.</para>
-        <para>The file organization used by theme rendition, however, is a bit different from that used by direct rendition. In theme rendition, both master paths and auxiliar paths are built dynamically based on the design model and the artistic motif you specify at rendition time. As a mnemotechnic resource, consider theme rendition as two independent lists, one list of design models and one list of artistic motifs, which are arbitrary combined between themselves in order to render images. For example, consider the organization used to produce Anaconda images for CentOS distribution major release 5 that use the Default design model and the Flame version 3 artistic motif:</para>
+        <para>The configuration described above for organizing brand component inside the repository is the one used by direct rendition and can be used as reference to organize other components inside the repository that are produced through direct rendition too. Just change the component name from <file>Brands</file> to a different one without changing the path structure around it.</para>
+        <para>The file organization used by theme rendition, however, is a bit different from that used by direct rendition. In theme rendition, both the master paths and the auxiliar paths are built dynamically based on one design model and one artistic motif specified by you at rendition time.  As a mnemotechnic resource, you could consider theme rendition as two independent lists, one of design models and one of artistic motifs, which are arbitrary combined between themselves in order to render images in specific ways. For example, consider the organization used to produce Anaconda images; for CentOS distribution major release 5; using <file>Default</file> design models and version <file>3</file> of <file>Flame</file> artistic motif:</para>
         <table>
           <tableitem>
             <tableterm><file>trunk/Identity/Themes/Models/Default/Distro/5/Anaconda</file></tableterm>
             <item>
-              <para>This directory contains source files used to produce Anaconda images for CentOS distribution major release 5 using Default design models.</para>
-              <para>Here is where you, as graphic designers, define Default design models for Anaconda images used in CentOS distribution major release 5.</para>
-              <para>The path to this directory is considered master because it contains the most critical information (i.e., the information that can't be absent) required to produce Anaconda images used inside CentOS distribution major release 5.</para>
+              <para>This directory contains source files used to produce Anaconda images for CentOS distribution major release 5. This specific information has been named the <file>Default</file> design model. The path to this directory is made of three parts:</para>
+              <verbatim xml:space="preserve"><![CDATA[
+              A                 B           C
+|---------------------------|-------|----------------|
+trunk/Identity/Themes/Models/Default/Distro/5/Anaconda
+|---------------------------|-------|----------------|
+
+A = The theme model source location.
+B = The theme model name.
+C = The visual manifestation the theme model is created for.
+]]></verbatim>
+              <para>Here is where you, as graphic designers, define <file>Default</file> design models for Anaconda images in major release 5 of CentOS distribution.</para>
+              <para>The path to this directory is considered the master path because it contains the most critical information (i.e., the information that can't be absent) required to produce Anaconda images for major release 5 of CentOS distribution.</para>
             </item>
           </tableitem>
           <tableitem>
             <tableterm><file>trunk/Manual/Directories/trunk/Identity/Themes/Models/Default/Distro/5/Anaconda.texi</file></tableterm>
             <item>
-              <para>This file contains documentation, in Texinfo format, for Default design models used to produce the Anaconda images used inside CentOS distribution major release 5.</para>
-              <para>Here is where you, as documentor, describe construction of Default desing models used to produce the Anaconda images for CentOS distribution major release 5. In this description you can include image dimensions, color information, image location inside distribution filesystem, image packaging and similar things.</para>
-              <para>The path to this file is considered auxiliar to <file>trunk/Identity/Themes/Models/Default/Distro/5/Anaconda</file> master path because provides the description required to let everyone know how to build Default design models used to produce Anaconda images required by CentOS distribution major release 5.</para>
+              <para>This file contains documentation, in Texinfo format, for <file>Default</file> design models used to produce the Anaconda images required by major release 5 of CentOS distribution.</para>
+              <verbatim xml:space="preserve"><![CDATA[
+             A                                     B                             C
+|-----------------------|------------------------------------------------------|---|
+trunk/Manual/Directories/trunk/Identity/Themes/Models/Default/Distro/5/Anaconda.texi
+|-----------------------|------------------------------------------------------|---|
+
+A = The documentation manual source location.
+B = The master path we are building documentation for.
+C = The file extension used by Texinfo documentation files.
+]]></verbatim>
+              <para>Here is where you, as documentor, describe construction of <file>Default</file> design models used to produce the Anaconda images required by major release 5 of CentOS distribution. In this description you can include image dimensions, color information, image location inside the file system of CentOS distribution, packaging and similar things.</para>
+              <para>The path to this directory is considered auxiliar path of <file>trunk/Identity/Themes/Models/Default/Distro/5/Anaconda</file> master path.</para>
             </item>
           </tableitem>
           <tableitem>
@@ -474,7 +522,7 @@ manual_deleteCrossReferences.sh  manual_searchIndex.sh
             <tableterm><file>trunk/Manual/Directories/trunk/Locales/Identity/Themes/Models/Default/Distro/5/Anaconda.texi</file></tableterm>
             <item>
               <para>This file contains documentation, in Texinfo format, for translation messages retrived from Default design models used to produce the Anaconda images used inside CentOS distribution major release 5.</para>
-              <para>Here is where you, as documentor, describe localization of Default desing models used to produce the Anaconda images used in CentOS distribution major release 5. In this description you can include image dimensions, color information, image location inside distribution filesystem, image packaging and similar things.</para>
+              <para>Here is where you, as documentor, describe localization of Default desing models used to produce the Anaconda images used in CentOS distribution major release 5. In this description you can include image dimensions, color information, image location inside distribution filesystem, packaging and similar things.</para>
               <para>The path to this file is considered auxiliar to <file>trunk/Identity/Themes/Models/Default/Distro/5/Anaconda</file> master path because provides the language-specific information required to produce Anaconda Default design models in different languages.</para>
               <para>Each master path has its own auxiliar path to store their specific documentation and whatever the artistic motifs used to produce images be is somthing irrelevant.</para>
             </item>
