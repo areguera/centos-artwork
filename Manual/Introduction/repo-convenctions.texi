@@ -1,64 +1,91 @@
-This section describes the organization of files and directories
-inside the CentOS Artwork Repository, the names convenctions, how to
-extend the current layout and the way content is produced, as well. 
+The CentOS Artwork Repository is supported by Subversion
+(@url{http://subversion.tigris.org/}), a version control system which
+allows you to keep old versions of files and directories (usually
+source code), keep a log of who, when, and why changes occurred, etc.,
+like CVS, RCS or SCCS.  In Subversion repositories there is one source
+repository and many working copies of that source repository. The
+working copies are independent one another, can be distributed all
+around the world and provide a local place for designers, documentors,
+translators and programmers to perform their works in a descentralized
+way.  The source repository, on the other hand, provides a central
+place for all independent working copies to interchange data and the
+information required to permit extracting previous versions of files
+at any time.
 
-The repository layout is used as standard backend for automation
-scripts to work correctly. If repository layout changes unexpectedly,
-automation scripts may get confuse themselves and stop doing what you
-may expect from them to do.
+@subsection Repository policy
 
-As convenction, inside CentOS Artwork Repository, files and
-directories related to CentOS corporate visual identity are organized
-under three top level directories named: @file{trunk/},
-@file{branches/}, and @file{tags/}. 
+The CentOS Artwork Repository is a collaborative tool where many
+people can have access to. However, changing that tool in any form is
+something that should be requested in @email{centos-devel@@centos.org}
+mailing list.  Generally, people download working copies from CentOS
+Artwork Repository, study the repository organization, make some
+changes in their working copies, make some tests to verify such
+changes work the way expected and request access to commit them up to
+the CentOS Artwork Repository for others to benefit from them.
 
-The @file{trunk/} directory (@pxref{Directories trunk}) organizes the main
-development line of CentOS corporate visual identity. Inside
-@file{trunk/} directory structure, the CentOS corporate visual
-identity concepts are implemented using directories.  There is one
-directory level for each relevant concept inside the repository. The
-@file{trunk/} directory structure is mainly used to perform
-development tasks related to CentOS corporate visual identity.
+Once you've received access to commit your changes, there is no need
+for you to request permission again to commit other changes from your
+working copy to CentOS Artwork Repository as long as you behave as a
+@emph{good community citizen}.
 
-The @file{branches/} directory (@pxref{Directories branches}) oranizes
-parallel development lines to @file{trunk/} directory. The
-@file{branches/} directory is used to set points in time where
-develpment lines are devided one from another taking separte and
-idependent lives that share a common past from the point they were
-devided on. The @file{branches/} directory is mainly used to perform
-quality assurance tasks related to CentOS corporate visual identity.
+As a good community citizen one understand of a person whom respects
+the work already done for others and share ideas with authors before
+changing relevant parts of their work, specially in situations when
+the access required to realize those changes has been granted already.
+Of course, there is a time when conversation has taken place, the
+paths has been traced and changing the work is so obvious that there
+is no need to talk about it; that's because you already did, you
+already built the trust to keep going. Anyway, the mailing list
+mentioned above is available for sharing ideas in a way that good
+relationship between community citizens could be constantly balanced.
 
-The @file{tags/} directory (@pxref{Directories tags}) organizes parallel frozen
-lines to @file{branches/} directory.  The parallel frozen lines are
-immutable, nothing change inside them once they has been created.  The
-@file{tags/} directory is mainly used to publish final releases of
-CentOS corporate visual identity.
+The relationship between community citizens is monitored by repository
+administrators. Repository administrators are responsible of granting
+everything goes the way it needs to go in order for the CentOS Artwork
+Repository to comply its mission which is: to provide a colaborative
+tool for The CentOS Community where The CentOS Project Corporate
+Identity is built and maintained from The CentOS Community itself.
 
-The CentOS Artwork Repository layout is firmly grounded on a
-Subversion base.  Subversion (@url{http://subversion.tigris.org}) is a
-version control system, which allows you to keep old versions of files
-and directories (usually source code), keep a log of who, when, and
-why changes occurred, etc., like CVS, RCS or SCCS.  Subversion keeps a
-single copy of the master sources.  This copy  is called the source
-``repository''; it contains all the information to permit extracting
-previous versions of those files at any time.
+It is also important to remember that all source files inside CentOS
+Artwork Repository should comply the terms of GNU General Public
+License in order for them to remain inside the repository. See file
+@url{file:///home/centos/artwork/trunk/Scripts/COPYING,trunk/Scripts/COPYING},
+for a complete license description.
+
+@subsection Repository organization 
+
+The CentOS Artwork Repository uses a @file{trunk}, @file{branches},
+and @file{tags} organization.  
+
+@table @file
+@item trunk
+
+The @file{trunk} directory organizes the main development line of
+CentOS Artwork Repository. @xref{Directories trunk}, for more
+information.
+
+@item branches
+
+The @file{branches} directory oranizes intermedaite development lines
+taken from the main development line.  @xref{Directories branches},
+for more information.
+
+@item tags
+
+The @file{tags} directory organizes frozen development lines taken
+from the main or the intermediate lines of development.
+@xref{Directories tags}, for more information.
+@end table
 
 @subsection Repository file names
 
-Repository name convenctions are applied to files and directories
-inside the repository layout. As convenction, file names are all
+For name concistency in CentOS Artwork Repository, file names are all
 written in lowercase (@samp{01-welcome.png}, @samp{splash.png},
 @samp{anaconda_header.png}, etc.) and directory names are all written
 capitalized (e.g., @samp{Identity}, @samp{Themes}, @samp{Motifs},
 @samp{TreeFlower}, etc.).
 
-Repository name convenctions are implemented inside the
-@code{cli_getRepoName} function of @file{centos-art.sh} script. With
-@code{cli_getRepoName} function the amount of commands and
-convenctions to remember are reduced and concentrated in just one
-single place to look for fixes and improvements.
-
-@subsection Work lines
+@subsection Repository work lines
 
 Work lines describe different areas of content production inside
 CentOS Artwork Repository. Content production inside these specific
@@ -67,53 +94,62 @@ content in too many different ways may result innapropriate in a
 collaborative environment like CentOS Artwork Repository where content
 produced in one area depends somehow from content produced in another
 different area. To produce content in a syncronized but descentralized
-way, it is required to define a content production standard for each
-work line that everyone uses as reference to realize their work.
+way, it is required to define a standard for content production that
+let each work line to exists that way.
 
 The standard way of producing content inside CentOS Artwork Repository
 is implemented through @command{centos-art.sh} script and described in
-@command{centos-art.sh} script related documentation entry
-(@pxref{Directories trunk Scripts}).
+@file{trunk/Scripts} documentation entry (@pxref{Directories trunk
+Scripts}).
 
-Inside CentOS Artwork Repository, work lines are organized in
-@emph{Graphic design}, @emph{Documentation}, @emph{Localization} and
-@emph{Automation}.
+Inside CentOS Artwork Repository there are four major production work
+lines. They are: @emph{graphic design}, @emph{documentation},
+@emph{localization} and @emph{automation}.
 
 @subsubsection Graphic design
 
-This work line exists to cover brand design, typography design and
-theme design. Additionally, some auxiliar areas like icon design,
-illustration design for documentation, brushes design, pattern designs
-and palettes with color definitions could be included here for
-completeness.
+The graphic design work line exists to cover brand design, typography
+design and theme design. Additionally, some auxiliar areas like icon
+design, illustration design for documentation, brushes design,
+patterns designs and definition of palettes of colors could be
+included here for completeness.
 
-Inside CentOS Artwork Repository, graphic design is performed through
-Inkscape and GIMP program.  Inkscape is used create and manipulate
-scalable vector graphics and export them to PNG format; it also
-provides a command-line interface that we use to automate the
-exportation process so you can perform massive exportation of SVG
-files to PNG files. On the other hand, GIMP is used to create and
-manipulate rastered images, create brushes, patterns and palettes of
-colors.  Notice that each program provides very specific
-functionalities and posibilities that when combined can let you
-produce very beautiful images.
+Inside CentOS Artwork Repository graphic design is performed through
+Inkscape (@url{http://www.inkscape.org/}) and GIMP
+(@url{http://www.gimp.org/}).  Inkscape is used to create and
+manipulate scalable vector graphics and export them to PNG format; it
+also provides a command-line interface that we use to perform massive
+exportation from SVG files to PNG files through automation scripts. On
+the other hand, GIMP is used to create and manipulate rastered images,
+create brushes, patterns and palettes of colors.  
 
-The CentOS Project Corporate Identity is made of several visual
-manifestations.  These visual manifestations implement the Corporate
-Identity by mean of images placed in key areas of their visual space.
-To produce these images, we decompose image production in @emph{design
-models} and @emph{artistic motifs}. Design models provide the image
-structure (i.e., dimension, translation markers, common designs, etc.)
-and are generally produced as scalable vector graphics generally. On
-the other hand, artistic motifs provide the visual style (i.e., the
-background information, the look and feel) and are generally produced
-as rastered images.
+@quotation
+@strong{Tip} You can combine both Inkscape and GIMP specific
+functionalities and possibilities to produce very beautiful images.
+@end quotation
+
+Another area covered by graphic design is that related to visual
+manifestations The CentOS Project Corporate Identity is made of.
+Visual manifestations implement the corporate identity concepts by
+mean of images placed in key areas of their visual space.  To produce
+these images, we've decomposed image production in @emph{design
+models} and @emph{artistic motifs}. 
+
+Design models provide the structural information of images (i.e.,
+dimension, position of common elements, translation markers, etc.) and
+they are generally produced as scalable vector graphics to take
+advantage of the inclusion feature supported by that standard which
+let us load different background images for the same design model
+changing path information. On the other hand, artistic motifs provide
+the visual style (i.e., the background information, the look and feel)
+and are generally produced as rastered images.  
 
 Design models are created for each visual manifestation the CentOS
-Project is made of. This way we describe the visual manifestation and
-provide a template system for it where several artistic motifs can be
-applied. Artistic motifs are created with design models in mind, not
-the visual manifestation that design models are built for.
+Project is made of. This way it is possible to describe the visual
+manifestation and provide a template system for it.  
+
+Artistic motifs are created with design models in mind, not the visual
+manifestation those design models are built for.
 
 The result produced by combining one design model with one artistic
 motif is what we know as a @emph{theme}. Inside themes directory
@@ -123,92 +159,84 @@ that can be albitrarily combined one another through @emph{theme
 rendition}, a flexible way to produce images for different visual
 manifestations inside CentOS Artwork Repository. Inside themes
 directory structure, theme rendition is performed in
-@file{trunk/Identity/Themes/Motifs} directory structures and takes
-design models from @file{trunk/Identity/Themes/Models} directory
-structure.
+@file{trunk/Identity/Themes/Motifs} directory structures and required
+design models are taken from @file{trunk/Identity/Themes/Models}
+directory structure.
 
-In addition to theme rendition, you can find another way of image
-production, a more direct way of image production where there is no
-artistic motif at all, but design models only. Such configuration is
-named @emph{direct rendition} and is very useful to produce simple
-content that doesn't need specific background information (e.g., icons
-and illustrations for documentation). Direct rendition takes place in
-@file{trunk/Identity/Models} and @file{trunk/Identity/Images}
-directory structures.
+In addition to theme rendition you can find @emph{direct rendition},
+another way of image production where there is no artistic motif at
+all but design models only. Direct rendition is very useful to produce
+simple content that doesn't need specific background information like
+brands, icons and illustrations.  Direct rendition takes place in
+@file{trunk/Identity/Images} and the required design models are taken
+from @file{trunk/Identity/Models} directory structure.
 
 @xref{Directories trunk Identity}, for more information on graphic
 design.
 
 @subsubsection Documentation
 
-This work line exists to describe what each directory structure inside
-the CentOS Artwork Repository is for and how to produce content inside
-them.
+The documentation work line exists to describe what each directory
+inside the CentOS Artwork Repository is for and how to produce content
+inside them.
 
-Documentation is supported by Texinfo, a documentation system that
-uses a single source file to produce both online information and
-printed output.
+The CentOS Artwork Repository documentation is supported by Texinfo, a
+documentation system that uses a single source file to produce both
+online information and printed output. The repository documentation is
+organized under @file{trunk/Manual} directory structure using
+repository directories as reference. Directories inside CentOS Artwork
+Repository are created based on conceptual idea, so one documentation
+entry exists for each directory inside the repository in order to
+describe the conceptual ideas such directory is based.
 
-Documentation is organized in the same way of CentOS Artwork
-Repository directory structure. In the CentOS Artwork Repository we
-use directories to store conceptual ideas of The CentOS Project
-Corporate Visual Identity.  This way, each directory in CentOS Artwork
-Repository has its own documentation section to describe the related
-conceptual ideas it is based on. Documentation entries related to
-repository directory structure are organized in sections under
-@emph{Repository Directories} chapter (@pxref{Directories}).
-
-The file structure of documentation related to the repository
-directory structures is stored under @file{trunk/Manual/Directories}
-directory structure and controlled by the @code{help} functionality of
-@command{centos-art.sh} script.  Using this functionality you can
-create, edit and remove documentation for each directory structure
-inside the repository; so you don't need to take care of updating
-menus, nodes and cross reference information inside the manual
-structure, the functionality takes care of it for you.  However, if
-you need to write repository documentation that have nothing to do
-with directory structure (e.g., Preface, Introduction and similar) you
-need to do it manually, there is no functionality to automate such
-process yet.
+Directory documentation entries are stored under
+@file{trunk/Manual/Directories} directory structure and controlled by
+the @code{help} functionality of @command{centos-art.sh} script.
+Using @code{help} functionality you can create, edit and remove
+directory documentation in a way you don't need to take care of
+updating menus, nodes and cross reference information inside the
+manual structure; the functionality takes care of it for you.
+However, if you need to write repository documentation that have
+nothing to do with repository directories (e.g., Preface, Introduction
+and similar) you need to do it manually, there is no functionality to
+automate such process yet.
 
 @xref{Directories trunk Manual}, for more information on
 documentation.
 
 @subsubsection Localization
 
-This work line exists to localize corporate design and documentation
-source files, so they can be produced in different languages.
+The localization work line exists to provide the translation messages
+required to produce content in different languages. Among these
+contents are: image files, documentation and automation scripts.
 
-Whatever content rendition you perform, sometimes you need to produce
-content in different languages. Production of content in different
-languages is known as localization or l10n for short.  Inside CentOS
-Artwork Repository, content localization is performed using the
-processes provided by @command{gettext} internationalization standard.
+Most of localization tasks have been grouped inside the @code{locale}
+functionality of @command{centos-art.sh} script which make use of
+@command{gettext} and @command{xml2po} programs.
 
-Basically, the @command{gettext} internationalization standard
-consists on retriving translatable strings from source files and
-creating Portable Objects and Machine Objects. Portable Objects
-contain the information used by translators to do their work, they are
-files that can be edited by any convenctional text editor like Vim,
-Emacs or Nano. On the other hand, Machine Objects are produced to be
-machine-redable as its name implies, and are produced from Portable
-Objects.
+The procedure used to localize content is taken from @command{gettext}
+standard specification. Basically, translatable strings are retrived
+from source files in order to create Portable Objects and Machine
+Objects.  Portable Objects are editable files that contain the
+information used by translators to do their work. On the other hand,
+Machine Objects are produced to be machine-redable, as its name
+implies, and are produced from Portable Objects.
 
 Since @command{gettext} needs to extract translatable strings form
-source files in order to let translators to localize them, the types
-of source files we use inside the repository are limitted to the file
+source files in order to let translators to localize them, the type of
+source files we can use inside the repository is limitted to the file
 types supported by @command{gettext} program. Most of the source files
-supported by @command{gettext} are those from programming languages
-like C, C++, Bash, Python and Perl just to mention a few ones from the
-long list of supported formats. However, formats like SVG, XHTML and
+supported by @command{gettext} are those of programming languages like
+C, C++, Bash, Python and Perl just to mention a few ones from the long
+list of supported formats. However, formats like SVG, XHTML and
 Docbook don't figure as supported in the long list of
 @command{gettext} supported source files. 
 
 To translate XML based source files like SVG, XHTML and Docbook we use
-the @command{xml2po} program. This program comes with
+the @command{xml2po} program instead. This program comes with
 @file{gnome-doc-utils} package and reads one XML based file to extract
 translatable strings from it. As result it creates one Portable Object
-that is use by @command{xml2po} itself to create a translated XML
+that is used by @command{xml2po} itself to create the translated XML
 based file with the same definition of the source file where
 translatable strings were taken from (e.g., if we extract translatable
 strings from a SVG file, as result we get the same SVG file but with
@@ -220,49 +248,31 @@ temporally to produce the final translated XML based file.
 
 @quotation
 @strong{Tip} If you want to have your content localized inside CentOS
-Artwork Repository be sure to use source files supported by
-@command{gettext} and @command{xml2po} programs.
+Artwork Repository be sure to use source files supported either by
+@command{gettext} or @command{xml2po} programs.
 @end quotation
 
 @xref{Directories trunk Locales}, for more information.
 
 @subsubsection Automation
 
-This work line exists to standardize content production inside CentOS
-Artwork Repository. There is no need to repeat several tasks time
-after time if they can be programmed in just one.  If you need to
-improve the way content is produced, look inside automation scripts
-and make your improvement there for every one to benefit.
+The automation work line exists to standardize content production
+inside CentOS Artwork Repository. There is no need to repeat several
+tasks time after time if they can be programmed into just one script
+that groups them all.  
 
-So far, we've seen a conceptual view of how image production inside
-CentOS Artwork Repository is performed, but how all this is
-implemented, what is the practical view?
-
-The practical view can be found through @command{centos-art.sh}
+The automation work line is take place under @file{trunk/Scripts}
+directory structure. Here is developed the @command{centos-art.sh}
 script, a bash script specially designed to automate most frequent
-tasks inside CentOS Artwork Repository. The @command{centos-art.sh}
-script is stored in @file{trunk/Scripts} directory structure and is
-there where the main development for @command{centos-art.sh} script
-takes place. Basically, the @command{centos-art.sh} script is divided
-in several functionalities that perform specific tasks inside the
-repository. Such functionalities relay on repository organization to
-work as expected. 
+tasks inside CentOS Artwork Repository. Basically, the
+@command{centos-art.sh} script is divided in several functionalities
+that perform specific tasks inside the repository. Such
+functionalities relay on repository organization to work as expected. 
 
-Maiking the @command{centos-art.sh} script to automate tasks is the
-only possible work flow that I can think about right now. If you are a
-programmer, take a functionality from @command{centos-art.sh} script,
-study it, look how to improve it and share your ideas at
-@email{centos-devel@@centos.org} mailing list or create your own new
-functionalities and propose them as well.
-
-@quotation 
-@strong{Note} As default configuration, everyone is denied from
-committing changes up to CentOS Artwork Repository. In order to gain
-commit rights, you need to prove your interest in contributing and
-maintaining that contribution.  Otherwise, if you only want to comment
-your ideas, the @email{centos-devel@@centos.org} mailing list exists
-for you to manifest yourself. This restrictions are necessary to
-protect our work from spammers.
+@quotation
+@strong{Tip} If you need to improve the way content is produced, look
+inside automation scripts and make your improvement there for every
+one to benefit.
 @end quotation
 
 @xref{Directories trunk Scripts}, for more information on automation.
@@ -271,60 +281,110 @@ protect our work from spammers.
 
 In order to produce content correctly inside CentOS Artwork
 Repository, it is required that all work lines be connected somehow.
-This way it could be possible to know what design models and
-translation messages to use in order to produce a specific content.
-This directory connection between work lines takes place through one
-@emph{master path} that may have several @emph{auxiliar paths}.
+This is the way automation scripts can know what design model and what
+translation files to use when specific contents are produced, also
+where to save the content produced as result.  This connection between
+directories takes place through two path constructions named
+@emph{The Master Path} and @emph{The Auxiliar Paths}.
 
-Master paths are those whose contain source files used to produce base
-content and auxiliar paths provide the files used to modify the
-production of such base content. For example, when images are produced
-from source files, the directory structure that holds source files is
-considered the master path and all other directory structures are
-considered auxiliar paths. There are auxiliar paths to store images,
-translation messages and documentation.
+As master path consider the last directory, inside a directory
+structure, which contains the source files (e.g., SVG files) required
+to produce base content (e.g., PNG files).  Master paths are backup by
+auxiliar paths. 
 
-Auxiliar paths take their structure from one unique parent path.
-Inside CentOS Artwork Repository, this unique parent path is under
-@file{trunk/Identity} directory structure.  The @file{trunk/Identity}
-location must be considered as a reference for whatever information
-you plan to create inside the repository. For example, all the
-possible paths related to brands component production, are:
+Auxiliar paths provide the files that modify production of base
+content produced from master paths.  Auxiliar paths take their
+structure from one unique master path.  Master paths can have several
+auxiliar paths associated, but auxiliar paths can have only one master
+path associated. 
+
+For example, consider The CentOS Brands path relation:
 
 @table @file
 @item trunk/Identity/Models/Brands
 
-This is the master path where source files used to produce brands are
-stored in.
+This directory contains source files (e.g., SVG, XCF, etc.) used to
+produce the brand images of The CentOS Project.
 
-@item trunk/Locales/Identity/Models/Brands
+Here is where you, as graphic designers, define design models used to
+produce the brand images of The CentOS Project.
 
-This is the auxiliar path where translation messages used to produce
-brands, if there is any at all, are stored in.
-
-@item trunk/Manual/Directories/trunk/Locales/Identity/Models/Brands.texi
-
-This is the auxiliar path where documentation about translation
-messages, used to produce brands are stored in.
-
-@item trunk/Identity/Images/Brands
-
-This is the auxiliar path where output images produced as result of
-rendition are stored in.
+The path to this directory is considered master because it contains
+the most critical information (i.e., the information that can't be
+absent) required to produce the brand images of The CentOS Project.
 
 @item trunk/Manual/Directories/trunk/Identity/Models/Brands.texi
 
-This is the auxiliar path where documentation about brand design is
-stored in. This is, how brands are constructed, the color information,
-the proportions, etc. Notice that it points to a regular file, not a
-directory as other auxilar path use to do.
+This file contains documentation, in Texinfo format, for design models
+used to produce the brand images of The CentOS Project.
+
+Here is where you, as documentor, describe construction of desing
+models used to produce the brand images of The CentOS Project. In this
+description you can include image dimensions, color information, image
+location inside CentOS Distribution filesystem, image packaging and
+similar things.
+
+The path to this file is considered auxiliar to
+@file{trunk/Identity/Models/Brands} master path because it provides
+the description required to let everyone know how to build design
+models used to produce the brand images of The CentOS Project.
+
+@item trunk/Locales/Identity/Models/Brands
+
+This directory contains translation files, as @command{gettext}
+portable objects, for design models used to produce the brand images
+of The CentOS Project.
+
+Here is where you, as translator, localize translatable strings
+retrived in English language from design models used to produce the
+brand images of The CentOS Project. If no portable object is found
+here the translation tasks are skipped to produce no translation at
+all, obviously there is no portable object to retrive translation
+messages from.
+
+The path to this directory provides language-specific information
+required to produce the brand images of The CentOS Project, so it is
+considered auxiliar path of @file{trunk/Identity/Models/Brands} master
+path.
+
+@item trunk/Manual/Directories/trunk/Locales/Identity/Models/Brands.texi
+
+This file contains documentation, in Texinfo format, for translation
+messages retrived from design models used to produce The CentOS Brands
+required by The CentOS Project.
+
+Here is where you, as documentor, describe localization of desing
+models used to produce The CentOS Brands images required by The CentOS
+Project. In this description you can include image dimensions, color
+information, image location inside CentOS Distribution filesystem,
+image packaging and similar things.
+
+The path to this file provides documentation to language-specific
+directory structure used to store translation messages used to produce
+the brand images of The CentOS Project, so it is considered auxiliar
+path of @file{trunk/Identity/Models/Brands} master path.
+
+@item trunk/Identity/Images/Brands
+
+This directory contains the final image produced from The CentOS
+Brands design models used by The CentOS Project.
+
+Here is where you, as packager, can find the images you need to
+rebrand the brand images related to CentOS Distribution.
+
+The path to this directory contains the final brand images of The
+CentOS Project, so it is considered auxiliar path of
+@file{trunk/Identity/Models/Brands} master path.
 
 @item trunk/Manual/Directories/trunk/Identity/Images/Brands.texi
 
-This is the auxiliar path where documentation about brand
-implementation. This is, how the brand is applied and how it cannot be
-applied in each different visual manifestation. Notice that it points
-to a regular file, not a directory as other auxiliar path use to do.
+This file should contains documentation, in Texinfo format, about how
+to implement final brand images of The CentOS Project.  However, this
+documentation entry is rarely created because the related design model
+documentation entry already covers implementation of images produced
+here.  The only reason to create this documentation entry is to put in
+an admonition that redirect people up to the design model related
+documentation entry where documentation related to implementation is.
 @end table
 
 The configuration described above for organizing brand component
@@ -337,13 +397,13 @@ changing the path structure around it.
 The file organization used by theme rendition, however, is a bit
 different from that used by direct rendition. In theme rendition, both
 master paths and auxiliar paths are built dynamically based on the
-design model and the artistic motifs you specify at rendition time. As
+design model and the artistic motif you specify at rendition time. As
 a mnemotechnic resource, consider theme rendition as two independent
 lists, one list of design models and one list of artistic motifs,
-which are arbitrary combined among themselves in order to render
+which are arbitrary combined between themselves in order to render
 images. For example, consider the organization used to produce
-Anaconda images to CentOS distribution major release 5 from Default
-design model and Flame artistic motif:
+Anaconda images for CentOS distribution major release 5 that use the
+Default design model and the Flame version 3 artistic motif:
 
 @table @file
 @item trunk/Identity/Themes/Models/Default/Distro/5/Anaconda
@@ -371,7 +431,7 @@ distribution major release 5. In this description you can include
 image dimensions, color information, image location inside
 distribution filesystem, image packaging and similar things.
 
-The path to this file is considered auxiliar for
+The path to this file is considered auxiliar to
 @file{trunk/Identity/Themes/Models/Default/Distro/5/Anaconda} master
 path because provides the description required to let everyone know
 how to build Default design models used to produce Anaconda images
@@ -389,7 +449,7 @@ produce the Anaconda images of CentOS distribution major release 5 to
 your own language. If no portable object is found here, content is
 produced in English language.
 
-The path to this directory is considered auxiliar for
+The path to this directory is considered auxiliar to
 @file{trunk/Identity/Themes/Models/Default/Distro/5/Anaconda} master
 path because provides the language-specific information required to
 produce Anaconda Default design models in different languages.
@@ -406,7 +466,7 @@ distribution major release 5. In this description you can include
 image dimensions, color information, image location inside
 distribution filesystem, image packaging and similar things.
 
-The path to this file is considered auxiliar for
+The path to this file is considered auxiliar to
 @file{trunk/Identity/Themes/Models/Default/Distro/5/Anaconda} master
 path because provides the language-specific information required to
 produce Anaconda Default design models in different languages.
@@ -424,7 +484,7 @@ Flame 3 artistic motif.
 Here is where you, as packager, can find the images you need to
 rebrand Anaconda in CentOS distribution major release 5.
 
-The path to this directory is considered auxiliar for
+The path to this directory is considered auxiliar to
 @file{trunk/Identity/Themes/Models/Default/Distro/5/Anaconda} master
 path because it provides the final images produced from Anaconda
 Default design models.
@@ -536,7 +596,7 @@ a way they could be noted and handled without producing errors (e.g.,
 replacing old path information to new path information inside all the
 files that may include any kind of path information inside).
 
-@subsection Extending repository structure
+@subsection Extending repository organization
 
 Occasionly, you may find that new corporate visual identity components
 need to be added to the repository. If that is your case, the first
@@ -573,11 +633,11 @@ structure are described in the following documentation entries,
 respectively:
 
 @verbatim
-centos-art help --read turnk/
-centos-art help --read turnk/Identity/
-centos-art help --read turnk/Identity/Themes/
-centos-art help --read turnk/Identity/Themes/Motifs/
-centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/
+centos-art help --read turnk
+centos-art help --read turnk/Identity
+centos-art help --read turnk/Identity/Themes
+centos-art help --read turnk/Identity/Themes/Motifs
+centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower
 @end verbatim
 
 The @file{trunk/Identity/Themes/Motifs/TreeFlower} location has
