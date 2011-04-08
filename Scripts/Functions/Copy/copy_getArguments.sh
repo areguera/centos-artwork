@@ -19,7 +19,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 # ----------------------------------------------------------------------
-# $Id: copy_getArguments.sh 2184 2011-03-30 03:19:31Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function copy_getArguments {
