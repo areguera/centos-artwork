@@ -537,13 +537,33 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Directories trunk Identity Brushes</menunode>
+          <menutitle>Directories trunk Identity Brushes</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Directories trunk Identity Fonts</menunode>
           <menutitle>Directories trunk Identity Fonts</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Directories trunk Identity Images</menunode>
+          <menutitle>Directories trunk Identity Images</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Models</menunode>
+          <menutitle>Directories trunk Identity Models</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Directories trunk Identity Palettes</menunode>
           <menutitle>Directories trunk Identity Palettes</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Patterns</menunode>
+          <menutitle>Directories trunk Identity Patterns</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -814,6 +834,20 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
               <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
+          <tableitem>
+            <tableterm><strong>Manual</strong></tableterm>
+            <item>
+              <para>This section organizes the <emph>CentOS Artwork Repository Manual</emph> (i.e., the documentation manual you're reading right now).  If you are interested on improving The CentOS Artwork Repository Manual, in this place you'll find the Texinfo documentation structure you need to work with.</para>
+              <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+          <tableitem>
+            <tableterm><strong>Locales</strong></tableterm>
+            <item>
+              <para>This section organizes production of translation messages for <emph>Identity</emph>, <emph>Documentation</emph> and <emph>Scripts</emph>. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
+              <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
         </table>
       </subsection>
 
@@ -863,17 +897,8 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
           <para>The CentOS Project Corporate Design is organized in the following work-lines:</para>
           <table>
             <tableitem>
-              <tableterm><strong>Brands</strong></tableterm>
+              <tableterm><strong>Brushes</strong></tableterm>
               <item>
-                <para>The CentOS Brand provides the one unique name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Directories trunk Identity Brands</xrefnodename></xref>, for more information.</para>
-              </item>
-            </tableitem>
-            <tableitem>
-              <tableterm><strong>Palettes</strong></tableterm>
-              <item>
-                <para>The CentOS Palettes provide the <emph>Corporate Color</emph> information used along The CentOS Project visual manifestations.</para>
-                <para>See <xref><xrefnodename>Directories trunk Identity Palettes</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
@@ -884,6 +909,16 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
               </item>
             </tableitem>
             <tableitem>
+              <tableterm><strong>Images</strong></tableterm>
+              <tableterm><strong>Models</strong></tableterm>
+              <tableterm><strong>Palettes</strong></tableterm>
+              <item>
+                <para>The CentOS Palettes provide the <emph>Corporate Color</emph> information used along The CentOS Project visual manifestations.</para>
+                <para>See <xref><xrefnodename>Directories trunk Identity Palettes</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
+              <tableterm><strong>Patterns</strong></tableterm>
               <tableterm><strong>Themes</strong></tableterm>
               <item>
                 <para>The CentOS Themes provide the <emph>Corporate Structure</emph> and the <emph>Corporate Visual Style</emph> used along The CentOS Project visual manifestations.</para>
@@ -891,18 +926,7 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
               </item>
             </tableitem>
             <tableitem>
-              <tableterm><strong>Manual</strong></tableterm>
-              <item>
-                <para>This section organizes the <emph>CentOS Artwork Repository Manual</emph> (i.e., the documentation manual you're reading right now).  If you are interested on improving The CentOS Artwork Repository Manual, in this place you'll find the Texinfo documentation structure you need to work with.</para>
-                <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information.</para>
-              </item>
-            </tableitem>
-            <tableitem>
-              <tableterm><strong>Locales</strong></tableterm>
-              <item>
-                <para>This section organizes production of translation messages for <emph>Identity</emph>, <emph>Documentation</emph> and <emph>Scripts</emph>. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
-                <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>, for more information.</para>
-              </item>
+              <tableterm><strong>Webenv</strong></tableterm>
             </tableitem>
           </table>
         </subsubsection>
@@ -979,7 +1003,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Brands</nodename>
-    <nodenext>Directories trunk Identity Fonts</nodenext>
+    <nodenext>Directories trunk Identity Brushes</nodenext>
     <nodeprev>Directories trunk Identity</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1011,9 +1035,54 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Fonts</nodename>
-    <nodenext>Directories trunk Identity Palettes</nodenext>
+    <nodename>Directories trunk Identity Brushes</nodename>
+    <nodenext>Directories trunk Identity Fonts</nodenext>
     <nodeprev>Directories trunk Identity Brands</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Brushes</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Brushes</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Fonts</nodename>
+    <nodenext>Directories trunk Identity Images</nodenext>
+    <nodeprev>Directories trunk Identity Brushes</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Fonts</file> Directory</title>
@@ -1062,9 +1131,108 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Palettes</nodename>
-    <nodenext>Directories trunk Identity Themes</nodenext>
+    <nodename>Directories trunk Identity Images</nodename>
+    <nodenext>Directories trunk Identity Models</nodenext>
     <nodeprev>Directories trunk Identity Fonts</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Images</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Images</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Models</nodename>
+    <nodenext>Directories trunk Identity Palettes</nodenext>
+    <nodeprev>Directories trunk Identity Images</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Models</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Models</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <table>
+          <tableitem>
+            <tableterm><strong>Brands</strong></tableterm>
+            <item>
+              <para>The CentOS Brand provides the one unique name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
+              <para>See <xref><xrefnodename>Directories trunk Identity Brands</xrefnodename></xref>, for more information.</para>
+            </item>
+          </tableitem>
+        </table>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Palettes</nodename>
+    <nodenext>Directories trunk Identity Patterns</nodenext>
+    <nodeprev>Directories trunk Identity Models</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Palettes</file> Directory</title>
@@ -1107,9 +1275,54 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Identity Patterns</nodename>
+    <nodenext>Directories trunk Identity Themes</nodenext>
+    <nodeprev>Directories trunk Identity Palettes</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Patterns</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Patterns</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Identity Themes</nodename>
     <nodenext>Directories trunk Identity Themes Models</nodenext>
-    <nodeprev>Directories trunk Identity Palettes</nodeprev>
+    <nodeprev>Directories trunk Identity Patterns</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes</file> Directory</title>
