@@ -99,15 +99,15 @@ Producing content in too many different ways may result innapropriate
 in a collaborative environment like CentOS Artwork Repository where
 content produced in one area depends somehow from content produced in
 another different area. So, a @emph{content production standard} is
-required.
+required for each available work line.
 
 @subsubsection Graphic design
 
 The graphic design work line exists to cover brand design, typography
 design and themes design mainly. Additionally, some auxiliar areas
-like icon design, illustration design (for documentation mainly),
-brushes design, patterns designs and palettes of colors are also
-included here for completeness.
+like icon design, illustration design, brushes design, patterns
+designs and palettes of colors are also included here for
+completeness.
 
 Inside CentOS Artwork Repository graphic design is performed through
 Inkscape (@url{http://www.inkscape.org/}) and GIMP
@@ -133,7 +133,7 @@ Design models provide the structural information of images (i.e.,
 dimension, position of common elements in the visible area,
 translation markers, etc.) and they are generally produced as scalable
 vector graphics to take advantage of SVG standard, an XML-based
-standard which describe scalable vector graphics. 
+standard.
 
 Artistic motifs provide the visual style (i.e., the background
 information, the look and feel) some design models need to complete
@@ -156,9 +156,9 @@ directory structure and the action itself is controlled by the
 In addition to theme rendition you can find @emph{direct rendition},
 too. Direct rendition is another way of image production where there
 is no artistic motif at all but design models only. Direct rendition
-is very useful to produce simple content that doesn't are in need of
-specific background information. Some of these contents are brands,
-icons and illustrations.  Direct rendition is performed in
+is very useful to produce simple content that doesn't need specific
+background information. Some of these contents are brands, icons and
+illustrations.  Direct rendition is performed in
 @file{trunk/Identity/Images}, the required design models are taken
 from @file{trunk/Identity/Models} directory structure and the action
 itself is controlled by the @code{render} functionality of
@@ -180,10 +180,10 @@ online information and printed output.
 The repository documentation is organized under @file{trunk/Manual}
 directory structure and uses the repository directories as reference.
 Each directory structure in the repository has a documentation entry
-associated in the documentation manual.  Directory documentation
-entries are stored under @file{trunk/Manual/Directories} directory
-structure and the action itself is controlled by the @code{help}
-functionality of @command{centos-art.sh} script.  
+associated in the documentation manual.  Documentation entries are
+stored under @file{trunk/Manual/Directories} directory structure and
+the action itself is controlled by the @code{help} functionality of
+@command{centos-art.sh} script.  
 
 The @code{help} functionality let you create, edit and delete
 documentation entries in a way that you don't need to take care of
@@ -207,36 +207,46 @@ directory structure.
 
 The procedure used to localize content is taken from @command{gettext}
 standard specification.  Basically, translatable strings are retrived
-from source files (e.g., Bash scripts, SVG, XHTML, XML, etc.) in order
-to create portable objects and machine objects for them.  These
-portable objects are editable files that contain the information used
-by translators to do their work. On the other hand, machine objects
-are produced to be machine-redable only, as its name implies, and are
-produced from portable objects.
+from source files in order to create portable objects and machine
+objects for them.  These portable objects are editable files that
+contain the information used by translators to localize the
+translatable strings retrived from source files. On the other hand,
+machine objects are produced to be machine-redable only, as its name
+implies, and are produced from portable objects.
 
 Since @command{gettext} needs to extract translatable strings form
 source files in order to let translators to localize them, we are
 limitted to use source files supported by @command{gettext} program.
 This is not a limitation at all since @command{gettext} supports most
 popular programming laguages (e.g., C, C++, Java, Bash, Python, Perl,
-PHP and GNU Awk just to mention a few ones. Nevertheless, formats like
-SVG, XHTML and Docbook don't figure as supported formats in the list
-of @command{gettext} supported source files.
+PHP and GNU Awk just to mention a few ones). Nevertheless, formats
+like SVG, XHTML and Docbook don't figure as supported formats in the
+list of @command{gettext} supported source files.
 
 To translate XML based source files like SVG, XHTML and Docbook we use
 the @command{xml2po} program instead. The @command{xml2po} comes with
 the @file{gnome-doc-utils} package and retrives translatable strings
-from one XML file which are used to produce one portable object that
-has the same format @command{gettext} portable objects have.  With the
-portable object in place, we use @command{xml2po} again to create the
-final translated XML, just with the same definition of the source file
-where translatable strings were taken from (e.g., if we extract
-translatable strings from a SVG file, as result we get the same SVG
-file but with translatable strings already localized ---obviously, for
-this to happen translators need to localize translatable strings
-inside the portable object first, localization won't appear as art of
-magic---).  When using @command{xml2po}, the machine object is used as
-temporal file to produce the final translated XML file.
+from one XML file to produce portable objects for them. 
+
+@quotation
+@strong{Note}
+Portable objects produced by @command{xml2po} have the same format
+that portable objects produced by @command{gettext}. This make the
+localization process quite consistent from translators' point of view.
+No matter what the source file be, the translator will always face the
+same translation file format (i.e., the portable object format).
+@end quotation
+
+With the portable object in place, the @command{xml2po} program is
+used again to create the final translated XML, just with the same
+definition of the source file where translatable strings were taken
+from (e.g., if we extract translatable strings from a SVG file, as
+result we get the same SVG file but with translatable strings already
+localized ---obviously, for this to happen translators need to
+localize translatable strings inside the portable object first,
+localization won't appear as art of magic---).  When using
+@command{xml2po}, the machine object is used as temporal file to
+produce the final translated XML file.
 
 @quotation
 @strong{Tip} If you want to have your content localized inside CentOS
@@ -250,9 +260,8 @@ Artwork Repository be sure to use source files supported either by
 
 The automation work line exists to standardize content production in
 CentOS Artwork Repository. There is no need to type several tasks,
-time after time, if they can be programmed into just one script that
-groups them all and then execute the script instead of all individual
-tasks.
+time after time, if they can be programmed into just one executable
+script.
 
 The automation work line takes place under @file{trunk/Scripts}
 directory structure. Here is developed the @command{centos-art.sh}
@@ -260,7 +269,7 @@ script, a bash script specially designed to automate most frequent
 tasks (e.g., rendition, documentation and localization) inside the
 repository.  Basically, the @command{centos-art.sh} script is divided
 in several functionalities independent one another that perform
-specific tasks and relaying on repository organization to work as
+specific tasks and relay on repository organization to work as
 expected.
 
 @quotation
@@ -289,21 +298,19 @@ paths can only have one master path associated.
 The auxiliar paths can point either to directories or files. When an
 auxiliar path points to a directory, that directory contains
 information that modifies somehow the content produced from master
-paths (e.g., through translation messages) or provides the output
-information required to know where to store the content produced from
-master path.  When an auxiliar path points to a file, that file has no
-other purpose but document the master path it refers to.
+paths (e.g., translation messages) or provides the output information
+required to know where to store the content produced from master path.
+When an auxiliar path points to a file, that file has no other purpose
+but to document the master path it refers to.
 
-The relation between auxiliar paths and master paths is realized using
-one unique master path and path information from repository second
-level directory structure.  Generally, the master path is used like a
-path identifier and the second level directory structure taken from
-the repository organization is considered the common part where the
-path identifier is append in. For example, consider we want to know
-what the auxiliar path are for @file{trunk/Identity/Models/Brands}
-master path.
+The relation between auxiliar paths and master paths is realized
+combining two path informations which are: the master path itself and
+one second level directory structure from the repository.  Generally,
+the master path is considered the path identifier and the second level
+directory structure taken from the repository is considered the common
+part of the path where the identifier is appended. 
 
-@float Figure, fig:Introduction/repo-convenctions:1
+@float Figure, Path construction
 @verbatim
 -----+---------------+----------------------------+------+-----------
 Path | Suffix        | Identifier                 |Prefix| Type 
@@ -319,36 +326,35 @@ Path | Suffix        | Identifier                 |Prefix| Type
   E  | trunk/Locales/|trunk/Identity/Images/Brands|.texi | File      
 -----+---------------+----------------------------+------+-----------
 
- A = Master path.
- B = Auxiliar path to documentation entry.
- C = Auxiliar path to translation messages.
- D = Auxiliar path to final content output.
- E = Auxiliar path to documentation entry.
+  A = Master path.
+  B = Auxiliar path to documentation entry.
+  C = Auxiliar path to translation messages.
+  D = Auxiliar path to final content output.
+  E = Auxiliar path to documentation entry.
 @end verbatim
-@caption{Base path construction.}
+@caption{Path construction.}
 @end float
 
-The configuration described above is used by direct rendition and can
-be used as reference to organize other components that are equally
-produced through direct rendition in the repository. To create new
+The path information described above (@pxref{Path construction}) is
+used by direct rendition and can be taken as reference to add other
+components that are equally produced in the repository.  To add new
 components that make use of direct rendition inside the repository,
 change just the component name used above (e.g., @file{Brands}) to
-that one you want to add/create/use without changing the path
-structure around it (e.g., suffix and prefix information).
+that one you want to add, without changing the path structure around
+it.
 
-The file organization used by theme rendition is extends direct
-rendition by separating design models from background information.  As
-a mnemotechnic resource helpful to better understand this
-configuration, you can consider it as two independent lists, one of
-design models and one of artistic motifs, which are arbitrary combined
-between themselves in order to render images in specific ways. The
-possibilities of this configuration are endless and let us describe
-visual manifestations with a very high level of details.  For example,
-consider the organization used to produce Anaconda images; for CentOS
-distribution major release 5; using @file{Default} design models and
-version @file{3} of @file{Flame} artistic motif:
+The file organization used by theme rendition extends direct rendition
+by separating design models information from backgrounds information.
+To better understand this configuration, you can consider it as two
+independent lists, one of design models and one of artistic motifs,
+which are arbitrary combined between themselves in order to render
+images in specific ways. The possibilities of this configuration are
+endless and let us describe visual manifestations very well.  For
+example, consider the organization used to produce @file{Anaconda}
+images; for CentOS distribution major release 5; using @file{Default}
+design models and version @file{3} of @file{Flame} artistic motif:
 
-@float Figure, fig:Introduction/repo-convenctions:2
+@float Figure, Path construction extended
 @verbatim
 -----+---------------+------------------------------------------------------+------+-----------
 Path | Suffix        | Identifier                                           |Prefix| Type 
@@ -364,71 +370,65 @@ Path | Suffix        | Identifier                                           |Pre
   E  | trunk/Locales/|trunk/Identity/Themes/Motifs/Flame/3/Distro/5/Anaconda|.texi | File      
 -----+---------------+------------------------------------------------------+------+-----------
 
- A = Master path.
- B = Auxiliar path to documentation entry.
- C = Auxiliar path to translation messages.
- D = Auxiliar path to final content output.
- E = Auxiliar path to documentation entry.
+  A = Master path.
+  B = Auxiliar path to documentation entry.
+  C = Auxiliar path to translation messages.
+  D = Auxiliar path to final content output.
+  E = Auxiliar path to documentation entry.
 @end verbatim
-@caption{Base path construction extended.}
+@caption{Path construction extended.}
 @end float
 
-The Anaconda component is part of CentOS Distribution visual
-manifestation. Inside CentOS Distribution visual manifestation there
-are other components like Syslinux, Grub, Rhgb, Gdm, Kdm, Gsplash and
-Ksplash that share a similar file organization to that described above
-for Anaconda component. The way each of these components is produced
-is described in their own documentation entry.
+The path information described above (@pxref{Path construction
+extended}) is used by theme rendition and can be taken as reference to
+add other components that are equally produced in the repository.
 
-When one master path is changed, it is required that all related
-auxiliar path to it, change too. This is required in order for master
-paths to retain their relation with their auxiliar paths. This way,
-automation script are able to know where to retrive translation
-messages, where to store final output images and where to look for
-documentation. If relation between master paths and auxiliar paths is
-lost, there is no way for automation scripts to know where to retrive
-the information required to automate tasks.
+In this configuration we can change both design model name (e.g.,
+@file{Default}) and artistic motif name (e.g., @file{Flame/3}) to
+something else in order to achieve a different result. The only
+limitations impossed are the storage space provided in the server
+machine and your own creativeness as graphic designer.
 
-The auxiliar paths should never be modified under any reason but to
-satisfy the relationship with the master path.  Liberal change of
-auxiliar paths may suppress the conceptual idea they were initially
-created for; and certainly, things may stop working the way they
-should.
+@quotation
+@strong{Note}
+A theme ready for implementation may consume from 100 MB to 400 MB of
+storage space. The exact space consumed by a theme depends on the
+amount of screen resolutions the theme supports. The more screen
+resolutions the theme supports, the more storage space demanded for
+it.
+@end quotation
+
+In this configuration we saw how to build the path information for
+@file{Anaconda} component as part of CentOS Distribution visual
+manifestation, but that is not the only component we have inside
+CentOS Distribution visual manifestation.  There are other components
+like Syslinux, Grub, Rhgb, Gdm, Kdm, Gsplash and Ksplash that share a
+similar file organization to that described above for @file{Anaconda}
+component.
 
 @subsection Syncronizing path information
 
-The master and auxiliar paths are useful to keep repository organized
-but introduce some complications when we work with files that use
-master path information as reference to build structural information.
-In such cases, when a file is created, duplicated, deleted or removed,
-we use the master path information to update documentation structure,
-update inclusions, menus, nodes and cross reference information as
-well. To see the kind of complication we are talking about, consider
-what would happen if one master path is changed once it already has a
-documentation entry inside the documentation structure. What would
-happen with document structure definitions like file inclusion, menus,
-nodes and cross references?
-
-Syncronizing path information is the action we use to keep all path
+Syncronizing path information is the action that keeps all path
 information up to date in the repository. This action implies both
 @emph{file movement} and @emph{file content replacement} in this very
-specific order. File movement is the action we use to duplicate,
-delete and rename files and directories in the repository.  File
-content replacement is the action we use to replace content, path
-information in this case, inside files in the repository.
+specific order. File movement is related to duplicate, delete and
+rename files and directories in the repository.  File content
+replacement is related to replace information, path information in
+this case, inside files in the repository.
 
 The order followed to syncronize path information is relevant because
-the versioned nature of the files we are working with. We don't change
-path information first in files because that implies a repository
-change we need to commit first before duplicate, delete or rename the
-file where that change takes place. However, if we first perform the
-file movement, it is possible to commit both file movement and file
-content replacement changes as if they were just one change. In this
+the versioned nature of the files we are working with. We don't
+perform file content replacement first because that would imply a
+repository change which will immediatly demmand a commit in order for
+actions like duplicate, delete or rename to take place. However, if we
+perform file movement first, it is possible to commit both file moved
+and file content replacements as if they were just one change. In this
 case the file content replacement takes palce in the target location
-of file that have been duplicated or renamed, not the one use as
-source location. This configuration is specially useful when files are
-renamed (i.e., source file is copied to target location and then
-removed from repository).
+that have been duplicated or renamed, not the one use as source
+location. This configuration is specially useful when files are
+renamed (i.e., one file is copied from a source location to a target
+location and then the source location of it is removed from
+repository).
 
 @quotation
 @strong{Warning} There is no support for URLs actions inside
@@ -436,6 +436,41 @@ removed from repository).
 designed to work with local files inside the working copy only. If you
 need to perform URL actions directly, use Subversion commands instead.
 @end quotation
+
+When one master path is changed it is required that all related
+auxiliar paths be changed, too. This is required in order for master
+paths to retain their relation with auxiliar paths.  This way,
+automation scripts are able to know where to retrive translation
+messages from, where to store final output images to and where to look
+for documentation. If relation between master paths and auxiliar paths
+is lost, there is no way for automation scripts to know where to
+retrive the information they need.
+
+The auxiliar paths should never be modified under any reason but to
+satisfy the relationship with the master path.  Liberal change of
+auxiliar paths may suppress the conceptual idea they were initially
+created for; and certainly, automation scripts may stop working as
+expected. The update direction to rename path information must be from
+master path to auxiliar path and never the opposite.
+
+The relation between master and auxiliar paths is useful to keep
+repository organized but introduce some complications when we work
+with files that use master path information as reference to build
+structural information.  This is the case of repository documentation
+manual source files where inclusions, menus, nodes and cross
+references are built using master path information as reference.  Now,
+to see what kind of complication we are talking about, consider what
+would happen to a structural definitions (i.e., inlusions, menus,
+nodes and cross refereces) already set in the manual from one master
+path that is suddenly renamed to something different.  If the path
+information is not syncronized, at this point, we lose connection
+between the master path and the auxiliar path created to store the
+related documentation entry, as well as the related structural
+definitions that end up pointing to a master path that no longer
+exist.
+
+The syncronization of path information is aimed to solve these kind of
+issues.
 
 @subsection Extending repository organization
 
