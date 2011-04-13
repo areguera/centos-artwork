@@ -532,11 +532,6 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Identity Brands</menunode>
-          <menutitle>Directories trunk Identity Brands</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
           <menunode>Directories trunk Identity Brushes</menunode>
           <menutitle>Directories trunk Identity Brushes</menutitle>
           <menucomment></menucomment>
@@ -554,6 +549,11 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
         <menuentry>
           <menunode>Directories trunk Identity Models</menunode>
           <menutitle>Directories trunk Identity Models</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Models Brands</menunode>
+          <menutitle>Directories trunk Identity Models Brands</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -875,7 +875,7 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
   </node>
   <node>
     <nodename>Directories trunk Identity</nodename>
-    <nodenext>Directories trunk Identity Brands</nodenext>
+    <nodenext>Directories trunk Identity Brushes</nodenext>
     <nodeprev>Directories trunk</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -899,6 +899,7 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
             <tableitem>
               <tableterm><strong>Brushes</strong></tableterm>
               <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Brushes</xrefnodename></xref>, for more information.</para>
               </item>
             </tableitem>
             <tableitem>
@@ -910,7 +911,17 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
             </tableitem>
             <tableitem>
               <tableterm><strong>Images</strong></tableterm>
+              <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Images</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
               <tableterm><strong>Models</strong></tableterm>
+              <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Models</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
               <tableterm><strong>Palettes</strong></tableterm>
               <item>
                 <para>The CentOS Palettes provide the <emph>Corporate Color</emph> information used along The CentOS Project visual manifestations.</para>
@@ -919,6 +930,11 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
             </tableitem>
             <tableitem>
               <tableterm><strong>Patterns</strong></tableterm>
+              <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Patterns</xrefnodename></xref>, for more information.</para>
+              </item>
+            </tableitem>
+            <tableitem>
               <tableterm><strong>Themes</strong></tableterm>
               <item>
                 <para>The CentOS Themes provide the <emph>Corporate Structure</emph> and the <emph>Corporate Visual Style</emph> used along The CentOS Project visual manifestations.</para>
@@ -927,6 +943,9 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
             </tableitem>
             <tableitem>
               <tableterm><strong>Webenv</strong></tableterm>
+              <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Webenv</xrefnodename></xref>, for more information.</para>
+              </item>
             </tableitem>
           </table>
         </subsubsection>
@@ -1002,42 +1021,9 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Brands</nodename>
-    <nodenext>Directories trunk Identity Brushes</nodenext>
-    <nodeprev>Directories trunk Identity</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Brands</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Brands</indexterm></para>
-      <subsection>
-        <title>Goals</title>
-        <itemize>
-          <itemfunction>&bullet;</itemfunction>
-          <item>
-            <para>...</para>
-          </item>
-        </itemize>
-      </subsection>
-
-      <subsection>
-        <title>Description</title>
-      </subsection>
-
-      <subsection>
-        <title>Usage</title>
-      </subsection>
-
-      <subsection>
-        <title>See also</title>
-        <menu>
-        </menu>
-      </subsection>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Brushes</nodename>
     <nodenext>Directories trunk Identity Fonts</nodenext>
-    <nodeprev>Directories trunk Identity Brands</nodeprev>
+    <nodeprev>Directories trunk Identity</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Brushes</file> Directory</title>
@@ -1177,7 +1163,7 @@ centos-art render trunk/Identity/Path/To/Dir
   </node>
   <node>
     <nodename>Directories trunk Identity Models</nodename>
-    <nodenext>Directories trunk Identity Palettes</nodenext>
+    <nodenext>Directories trunk Identity Models Brands</nodenext>
     <nodeprev>Directories trunk Identity Images</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1200,7 +1186,7 @@ centos-art render trunk/Identity/Path/To/Dir
             <tableterm><strong>Brands</strong></tableterm>
             <item>
               <para>The CentOS Brand provides the one unique name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
-              <para>See <xref><xrefnodename>Directories trunk Identity Brands</xrefnodename></xref>, for more information.</para>
+              <para>See <xref><xrefnodename>Directories trunk Identity Models Brands</xrefnodename></xref>, for more information.</para>
             </item>
           </tableitem>
         </table>
@@ -1230,9 +1216,42 @@ centos-art render trunk/Identity/Path/To/Dir
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Identity Models Brands</nodename>
+    <nodenext>Directories trunk Identity Palettes</nodenext>
+    <nodeprev>Directories trunk Identity Models</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Models/Brands</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Models Brands</indexterm></para>
+      <subsection>
+        <title>Goals</title>
+        <itemize>
+          <itemfunction>&bullet;</itemfunction>
+          <item>
+            <para>...</para>
+          </item>
+        </itemize>
+      </subsection>
+
+      <subsection>
+        <title>Description</title>
+      </subsection>
+
+      <subsection>
+        <title>Usage</title>
+      </subsection>
+
+      <subsection>
+        <title>See also</title>
+        <menu>
+        </menu>
+      </subsection>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Identity Palettes</nodename>
     <nodenext>Directories trunk Identity Patterns</nodenext>
-    <nodeprev>Directories trunk Identity Models</nodeprev>
+    <nodeprev>Directories trunk Identity Models Brands</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Palettes</file> Directory</title>
