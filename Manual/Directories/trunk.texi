@@ -1,53 +1,76 @@
 @subsection Goals
 
-This directory implements the Subversion's trunk concept in a
-trunk, branches, tags repository structure.
+The @file{trunk/} directory structure implements the Subversion's
+trunk concept in a trunk, branches, tags repository structure.
 
 @subsection Description
 
 The @file{trunk/} directory structure is the main development line
 inside the CentOS Artwork Repository and organizes the following
-sections:
+work lines:
 
 @table @strong
-@item Identity
+@item Graphic design
 
-This section describes the implementation of The CentOS Project
-Corporate Identity. This place is perfect to consolidate @emph{The
-CentOS Artwork SIG}. If you are interested in producing art works for
-The CentOS Project, this place is for you. 
+The graphic design work line exists to cover brand design, typography
+design and themes design mainly. Additionally, some auxiliar areas
+like icon design, illustration design, brushes design, patterns
+designs and palettes of colors are also included here for
+completeness.
+
+In this section you'll find how to organize and produce gaphic designs
+in the repository. The graphic design work line is the perfect place
+to consolidate @emph{The CentOS Artwork SIG}. If you are interested in
+producing graphic designs for The CentOS Project, this place is for
+you. 
 
 @xref{Directories trunk Identity}, for more information.
 
-@item Scripts
+@item Documentation
 
-This section describes the implementation of @command{centos-art.sh}
-script, a bash scripts specially designed to automate most frequent
-tasks in the repository (e.g., image rendition, documenting directory
-structures, translating content, etc.).  If you can't resist the idea
-of automating repeatable tasks, then take a look here.
+The documentation work line exists to describe what each directory
+inside the CentOS Artwork Repository is for, the conceptual ideas
+behind them and, if possible, how automation scripts make use of them.
 
-@xref{Directories trunk Scripts}, for more information.
-
-@item Manual
-
-This section organizes the @emph{CentOS Artwork Repository Manual}
-(i.e., the documentation manual you're reading right now).  If you are
-interested on improving The CentOS Artwork Repository Manual, in this
-place you'll find the Texinfo documentation structure you need to work
-with.
+In this section you'll find how to organize and produce the
+@emph{CentOS Artwork Repository Manual} (i.e., the documentation
+manual you're reading right now). If you are interested in producing
+documentation for the repository, this place is for you.
 
 @xref{Directories trunk Manual}, for more information.
 
-@item Locales
+@item Localization
 
-This section organizes production of translation messages for
-@emph{Identity}, @emph{Documentation} and @emph{Scripts}. This place
-is perfect to consolidate @emph{The CentOS Translation SIG}. If you
-love translating, you'll find lot of messages waiting for you to
-translate here.  
+The localization work line exists to provide the translation messages
+required to produce content in different languages. Translation
+messages inside the repository are stored as portable objects (e.g.,
+.po, .pot) and machine objects (.mo) under @file{trunk/Locales}
+directory structure.
+
+In this section you'll find how to organize and produce translation
+messages for @emph{graphic designs}, @emph{documentation} and
+@emph{automation scripts} in the repository. This place is perfect to
+consolidate @emph{The CentOS Translation SIG}. If you love
+translating, you'll find lot of messages waiting for you to translate
+here.  
 
 @xref{Directories trunk Locales}, for more information.
+
+@item Automation
+
+The automation work line exists to standardize content production in
+CentOS Artwork Repository. There is no need to type several tasks,
+time after time, if they can be programmed into just one executable
+script.
+
+In this section you'll find how to organize and extend the
+@command{centos-art.sh} script, a bash scripts specially designed to
+automate most frequent tasks in the repository (e.g., image rendition,
+documenting directory structures, translating content, etc.).  If you
+can't resist the idea of automating repeatable tasks, then take a look
+here.
+
+@xref{Directories trunk Scripts}, for more information.
 @end table
 
 @subsection Usage
@@ -62,4 +85,3 @@ sections described above.
 @item @xref{Directories tags}.
 @item Subversion's book (@url{http://svnbook.red-bean.com/}).
 @end itemize
-

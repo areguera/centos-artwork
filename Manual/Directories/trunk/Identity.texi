@@ -1,7 +1,7 @@
 @subsection Goals
 
-This section descirbes the implementation of @emph{The CentOS Project
-Corporate Identity}.
+The @file{trunk/Identity} describes what The CentOS Project Corporate
+Identity is and the components it is made of.
 
 @subsection Description
 
@@ -9,8 +9,8 @@ The CentOS Project Corporate Identity is the ``persona'' of the
 organization known as The CentOS Project.  The CentOS Project
 Corporate Identity plays a significant role in the way the CentOS
 Project, as organization, presents itself to both internal and
-external stakeholders. In general terms, the CentOS Project Corporate
-Identity expresses the values and ambitions of the CentOS Project
+external stakeholders. In general terms, The CentOS Project Corporate
+Identity expresses the values and ambitions of The CentOS Project
 organization, its business, and its characteristics.  
 
 The CentOS Project Corporate Identity provides visibility,
@@ -20,49 +20,87 @@ CentOS Project organization by means of @emph{Corporate Design},
 
 @subsubsection Corporate Design
 
-The CentOS Project Corporate Design is applied to every single visual
-manifestations The CentOS Project as organization wants to express its
-existence. Examples of the most relevant visual manifestations inside
-The CentOS Project are @emph{The CentOS Distribution}, @emph{The
-CentOS Web} and @emph{The CentOS Stationery}.
+The CentOS Project Corporate Design is applied to visual
+manifestations of The CentOS Project organization. As visual
+manifestation we understand any medium, digital or printed, used by
+The CentOS Project to communicate its existence (e.g., @emph{The
+CentOS Distribution}, @emph{The CentOS Web} and @emph{The CentOS
+Stationery}) and is very tied to @emph{The CentOS Project Corporate
+Structure} which in turn is based on @emph{The CentOS Project Mission}
+and @emph{The CentOS Project Release Schema}.
 
-The CentOS Project Corporate Design is organized in the following
-work-lines:
+In The CentOS Project Corporate Design most of the work is about
+graphic design, everything that people can perceive through the visual
+sence (i.e., the human eye), it is about effective visual
+communication of messages.
+
+The CentOS Project Corporate Design is organized in the following work
+lines:
 
 @table @strong
 
 @item Brushes
-@xref{Directories trunk Identity Brushes}, for more information.
+
+This work line provides brushes for GIMP. When you prepare the
+repository, brushes in this location are made available immediatly for
+you to use in the ``Brushes'' panel of GIMP.
+
+@xref{Directories trunk Identity Brushes}, for more
+information.
 
 @item Fonts
 
-The CentOS Fonts provide the @emph{Corporate Typography} information
-used along The CentOS Project visual manifestations.
+This work line provides the typography information required by all
+different visual manifestations of The CentOS Project.
 
 @xref{Directories trunk Identity Fonts}, for more information.
 
 @item Images
+
+This work line provides output location for images that don't need to
+use background images (e.g., brands, icons, illustrations, etc.).
+
 @xref{Directories trunk Identity Images}, for more information.
+
 @item Models
+
+This work line provides design models for images that don't need to
+use background images (e.g., brands, icons, illustrations, etc.).
+
 @xref{Directories trunk Identity Models}, for more information.
+
 @item Palettes 
 
-The CentOS Palettes provide the @emph{Corporate Color} information
-used along The CentOS Project visual manifestations.
+This work line provides palettes of colors for GIMP and Inkscape. When
+you prepare the repository, palettes of colors in this location are
+made available immediatly for you to use in the ``Palettes'' panel of
+GIMP.
 
 @xref{Directories trunk Identity Palettes}, for more information.
 
 @item Patterns
+
+This work line provides patterns for GIMP. When you prepare the
+repository, patterns in this location are made available immediatly
+for you to use in the ``Patterns'' panel of GIMP.
+
 @xref{Directories trunk Identity Patterns}, for more information.
+
 @item Themes
 
-The CentOS Themes provide the @emph{Corporate Structure} and the
-@emph{Corporate Visual Style} used along The CentOS Project visual
-manifestations.
+This work line provides theme design models and theme artistic motifs
+for The CentOS Project. If you are interesting in create a brand new
+visual style for The CentOS Project this is the place for you.
 
 @xref{Directories trunk Identity Themes}, for more information.
 
-@item Webenv
+@item Web environment
+
+This work line provides the HTML/XHTML and CSS standard definitions
+used by The CentOS Websites. If you are a web developer and plan to
+improve The CentOS Websites, then the files in this location may
+result very useful to you.
+
 @xref{Directories trunk Identity Webenv}, for more information.
 @end table
 
