@@ -1,11 +1,52 @@
-The @code{render} functionality exists to produce both identity and
-translation files on different levels of information (i.e., different
-languages, release numbers, architectures, etc.).
+Rendition is the action through we produce content (images specially)
+inside The CentOS Artwork Repository. In order to produce content
+through rendition, the directory structure where that content is
+stored in must be renderable (i.e., the rendition action must be
+applied to a directory structure considered renderable).  Presently,
+renderable directories are stored under @file{trunk/Identity/Images}
+and @file{trunk/Identity/Themes/Motifs} directories only.
 
-The @code{render} functionality relies on ``renderable directory
-structures'' to produce files. Renderable directory structures can be
-either ``identity directory structures'' or ``translation directory
-structures'' with special directories inside.
+In order to render content inside renderable directory structures you
+can use the @code{render} functionality of @command{centos-art.sh}
+script.  The @code{render} functionality takes one design template
+(a.k.a., design model) from the template directory related and creates
+an instance of it in order to apply translation messages, if any.
+Later, using the translated design template instance, the command
+renders the final content based on whether the design template
+instance is a SVG file or XHTML file.  If the design template instace
+is a SVG file, the final content produced is a PNG image. On the other
+hand, if the design template instance is a XHTML file, the final
+content produced is a XHTML file. The rendition flow described so far
+is known as the @command{centos-art.sh} script @emph{base-rendition}
+flow and take place both in @emph{direct rendition} and @emph{theme
+rendition}.
+
+Besides the base-rendition flow, the @command{centos-art} provides
+@emph{post-rendition} and @emph{last-rendition} flows.  The
+post-rendition flow is applied to files produced as result of
+base-rendition flow under the same directory structure. For example,
+you can use post-rendition action to convert the PNG base output into
+different outputs formats (e.g., JPG, PDF, etc.) before passing to
+process the next file in the same directory structure.  The
+last-rendition flow, on the other hand, is applied to all files
+produced as result of both base-rendition and post-rendition flows in
+the same directory structure, just before passing to process a
+different directory structure.  For example, the @file{Preview.png}
+image from Ksplash component is made of three images. In order to
+build the @file{Preview.png} image through @command{centos-art.sh} we
+need to wait for all the three images the @file{Preview.png} image is
+made of to be rendered in order to combine them all together into just
+one image (i.e., the @file{Preview.png} image).  This is something we
+can't do using post-rendition flow.
+
+Inside @file{trunk/Identity} directory structure, you can find that
+base-rendition, post-rendition and last-rendition flows can be
+combined to build @emph{directory-specific} rendition.  The
+directory-specific rendition exists to process specific renderable
+directories in very specific ways. Using directory-specific rendition
+speeds up production of different components like Syslinux, Grub, Gdm,
+Kdm and Ksplash that require intermediate formats or even several
+independent files, in order for the final content to be created.
 
 @subsection Renderable identity directory structures
 
