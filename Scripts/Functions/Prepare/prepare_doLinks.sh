@@ -86,9 +86,9 @@ function prepare_doLinks {
             NAME=''
             VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/${NAME}${VERS}$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/centos-${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/${NAME}${VERS}$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/centos-${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
     done
 
@@ -104,7 +104,7 @@ function prepare_doLinks {
             NAME=''
             VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/${NAME}${VERS}$(basename $BRUSH)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/centos-${NAME}${VERS}$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
 
@@ -120,7 +120,7 @@ function prepare_doLinks {
             NAME=''
             VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/${NAME}${VERS}$(basename $PATTERN)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/centos-${NAME}${VERS}$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
 
