@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# prepare_doLinks.sh -- This function installs the symbolic links your
-# workstation needs to have in order for centos-art command to run
-# correctly.
+# prepare_doLinks.sh -- This function creates the base configuration
+# of symbolic links your workstation needs to have in order for
+# centos-art command to run correctly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -41,6 +41,7 @@ function prepare_doLinks {
 
     local -a LINKS_SRC
     local -a LINKS_DST
+    local SUFFIX=''
     local USERFILES=''
     local PALETTE=''
     local BRUSH=''
@@ -49,82 +50,56 @@ function prepare_doLinks {
     local FILE=''
     local COUNT=0
 
-    # Define link suffix.
-    local SUFFIX='centos-'
-
     # Define user-specific directory for Gimp.
     local GIMP_USER_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
 
     # Define user-specific directory for Inkscape.
     local INKS_USER_DIR=${HOME}/.inkscape
 
-    # Define both source and target location for centos-art command.
+    # Define lists of files which symbolic links will point to.
+    local FONTS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf')
+    local PALETTES=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
+    local BRUSHES=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)")
+    local PATTERNS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Patterns" ".+\.png")
+
+    # Define link relation for cli.
     LINKS_SRC[0]=${HOME}/bin/$CLI_PROGRAM
     LINKS_DST[0]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
 
-    # Define both source and target location for fonts.
-    local FONTS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf')
+    # Define link relation for fonts.
     for FONT in $FONTS;do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.fonts/$(basename $FONT)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$FONT
     done
 
-    # Define both source and target location for Gimp and Inkscape
-    # palettes.
-    local PALETTES=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Palettes
-         ${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
+    # Define link relation for common palettes.
     for PALETTE in $PALETTES;do
-        if [[ "$PALETTE" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
-            NAME="$(cli_getRepoName "$(cli_getPathComponent "$PALETTE" '--theme-name')" 'f')-"
-            VERS="$(cli_getPathComponent "$PALETTE" '--theme-release')-"
-        else
-            NAME=''
-            VERS=''
-        fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
+        SUFFIX="${GIMP_USER_DIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
+        SUFFIX="${INKS_USER_DIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
     done
 
-    # Define both source and target location for Gimp brushes.
-    local BRUSHES=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Brushes
-         ${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)")
+    # Define link relation for common brushes.
     for BRUSH in $BRUSHES;do
-        if [[ "$BRUSH" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
-            NAME="$(cli_getRepoName "$(cli_getPathComponent "$BRUSH" '--theme-name')" 'f')-"
-            VERS="$(cli_getPathComponent "$BRUSH" '--theme-release')-"
-        else
-            NAME=''
-            VERS=''
-        fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/${SUFFIX}${NAME}${VERS}$(basename $BRUSH)
+        SUFFIX="${GIMP_USER_DIR}/brushes/$(prepare_doLinksSuffixes $BRUSH)"
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
 
-    # --- prepare_doLinksPatterns ---
-
-    # Define both source and target location for Gimp patterns.
-    local PATTERNS=$(cli_getFilesList \
-        "${HOME}/artwork/trunk/Identity/Themes/Motifs/*/*/Patterns
-         ${HOME}/artwork/trunk/Identity/Patterns" ".+\.png")
+    # Define link relation for common patterns.
     for PATTERN in $PATTERNS;do
-        if [[ "$PATTERN" =~ "$(cli_getPathComponent '--theme-pattern')" ]];then
-            NAME="$(cli_getRepoName "$(cli_getPathComponent "$PATTERN" '--theme-name')" 'f')-"
-            VERS="$(cli_getPathComponent "$PATTERN" '--theme-release')-"
-        else
-            NAME=''
-            VERS=''
-        fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/${SUFFIX}${NAME}${VERS}$(basename $PATTERN)
+        SUFFIX="${GIMP_USER_DIR}/patterns/$(prepare_doLinksSuffixes $PATTERN)"
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
 
-    # Define files inside user-specific directories that need to be
-    # removed in order to make a fresh installation of patterns,
-    # palettes and brushes using symbolic links from the repository.
+    # Define which files inside user-specific directories need to be
+    # removed in order for centos-art to make a fresh installation of
+    # common patterns, common palettes and common brushes using
+    # symbolic links from the repository.
     USERFILES=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf';
         cli_getFilesList "${HOME}/bin" '.+\.sh';
         cli_getFilesList "${GIMP_USER_DIR}/palettes" '.+\.gpl';
@@ -135,7 +110,7 @@ function prepare_doLinks {
     # Remove installed files inside user-specific directories.
     if [[ "$USERFILES" != '' ]];then
         cli_printActionPreamble "${USERFILES[*]}" 'doDelete' 'AsResponseLine'
-        for FILE in ${USERFILES[@]};do
+        for FILE in ${USERFILES};do
             cli_printMessage "${FILE}" 'AsDeletingLine'
             rm -r $FILE
         done
