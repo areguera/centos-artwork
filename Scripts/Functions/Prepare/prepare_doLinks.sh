@@ -49,12 +49,8 @@ function prepare_doLinks {
     local FILE=''
     local COUNT=0
 
-    # Initialize file prefix. Since we are taking the same file names
-    # from different theme directory and putting them into the same
-    # directory structure it is required to identify them some way in
-    # that common directory structure. For this we use the theme path
-    # identifier.
-    local PREFIX=''
+    # Define link suffix.
+    local SUFFIX='centos-'
 
     # Define user-specific directory for Gimp.
     local GIMP_USER_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
@@ -86,9 +82,9 @@ function prepare_doLinks {
             NAME=''
             VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/centos-${NAME}${VERS}$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/palettes/${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/centos-${NAME}${VERS}$(basename $PALETTE)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_USER_DIR}/palettes/${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
     done
 
@@ -104,9 +100,11 @@ function prepare_doLinks {
             NAME=''
             VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/centos-${NAME}${VERS}$(basename $BRUSH)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/brushes/${SUFFIX}${NAME}${VERS}$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
+
+    # --- prepare_doLinksPatterns ---
 
     # Define both source and target location for Gimp patterns.
     local PATTERNS=$(cli_getFilesList \
@@ -120,7 +118,7 @@ function prepare_doLinks {
             NAME=''
             VERS=''
         fi
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/centos-${NAME}${VERS}$(basename $PATTERN)
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_USER_DIR}/patterns/${SUFFIX}${NAME}${VERS}$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
 
