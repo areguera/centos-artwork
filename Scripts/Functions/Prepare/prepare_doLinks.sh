@@ -98,7 +98,7 @@ function prepare_doLinks {
         cli_getFilesList "${HOME}/bin" '.+\.sh';
         cli_getFilesList "${GIMP_USERDIR}/palettes" '.+\.gpl';
         cli_getFilesList "${GIMP_USERDIR}/brushes" '.+\.(gbr|gih)';
-        cli_getFilesList "${GIMP_USERDIR}/patterns" '.+\.png';
+        cli_getFilesList "${GIMP_USERDIR}/patterns" '.+\.(pat|png|jpg|bmp)';
         cli_getFilesList "${INKS_USERDIR}/palettes" '.+\.gpl')
 
     # Remove installed files inside user-specific directories.
