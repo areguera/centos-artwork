@@ -1,15 +1,17 @@
 #!/bin/bash
 #
 # prepare_doLinks.sh -- This function creates the base configuration
-# of symbolic links your workstation needs to have in order for
-# centos-art command to run correctly.
+# of symbolic links your workstation needs to have installed in order
+# for you to use the `centos-art' command and some auxiliar components
+# (e.g., palettes, brushes, patterns, fonts, etc.) that may result
+# useful for you when designing graphical compositions.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -50,48 +52,40 @@ function prepare_doLinks {
     local FILE=''
     local COUNT=0
 
-    # Define user-specific directory for Gimp.
-    local GIMP_USER_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
-
-    # Define user-specific directory for Inkscape.
-    local INKS_USER_DIR=${HOME}/.inkscape
-
-    # Define lists of files which symbolic links will point to.
-    local FONTS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf')
-    local PALETTES=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl")
-    local BRUSHES=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)")
-    local PATTERNS=$(cli_getFilesList "${HOME}/artwork/trunk/Identity/Patterns" ".+\.png")
+    # Define user-specific directories.
+    local GIMP_USERDIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
+    local INKS_USERDIR=${HOME}/.inkscape
 
     # Define link relation for cli.
-    LINKS_SRC[0]=${HOME}/bin/$CLI_PROGRAM
-    LINKS_DST[0]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/bin/$CLI_PROGRAM
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
 
     # Define link relation for fonts.
-    for FONT in $FONTS;do
+    for FONT in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf');do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.fonts/$(basename $FONT)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$FONT
     done
 
     # Define link relation for common palettes.
-    for PALETTE in $PALETTES;do
-        SUFFIX="${GIMP_USER_DIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
+    for PALETTE in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl");do
+        SUFFIX="${GIMP_USERDIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        SUFFIX="${INKS_USER_DIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
+        SUFFIX="${INKS_USERDIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
     done
 
     # Define link relation for common brushes.
-    for BRUSH in $BRUSHES;do
-        SUFFIX="${GIMP_USER_DIR}/brushes/$(prepare_doLinksSuffixes $BRUSH)"
+    for BRUSH in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)");do
+        SUFFIX="${GIMP_USERDIR}/brushes/$(prepare_doLinksSuffixes $BRUSH)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
 
     # Define link relation for common patterns.
-    for PATTERN in $PATTERNS;do
-        SUFFIX="${GIMP_USER_DIR}/patterns/$(prepare_doLinksSuffixes $PATTERN)"
+    for PATTERN in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Patterns" ".+\.png");do
+        SUFFIX="${GIMP_USERDIR}/patterns/$(prepare_doLinksSuffixes $PATTERN)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
@@ -102,38 +96,38 @@ function prepare_doLinks {
     # symbolic links from the repository.
     USERFILES=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf';
         cli_getFilesList "${HOME}/bin" '.+\.sh';
-        cli_getFilesList "${GIMP_USER_DIR}/palettes" '.+\.gpl';
-        cli_getFilesList "${GIMP_USER_DIR}/brushes" '.+\.(gbr|gih)';
-        cli_getFilesList "${GIMP_USER_DIR}/patterns" '.+\.png';
-        cli_getFilesList "${INKS_USER_DIR}/palettes" '.+\.gpl')
+        cli_getFilesList "${GIMP_USERDIR}/palettes" '.+\.gpl';
+        cli_getFilesList "${GIMP_USERDIR}/brushes" '.+\.(gbr|gih)';
+        cli_getFilesList "${GIMP_USERDIR}/patterns" '.+\.png';
+        cli_getFilesList "${INKS_USERDIR}/palettes" '.+\.gpl')
 
     # Remove installed files inside user-specific directories.
     if [[ "$USERFILES" != '' ]];then
         cli_printActionPreamble "${USERFILES[*]}" 'doDelete' 'AsResponseLine'
-        for FILE in ${USERFILES};do
-            cli_printMessage "${FILE}" 'AsDeletingLine'
-            rm -r $FILE
-        done
+        rm -r $USERFILES
     fi
 
-    # Create symbolic links. In case the the symbolic link parent
-    # directory isn't created, it will be created in order to make
-    # the link creation possible.
+    # Print preamble message for symbolic link creation.
     cli_printActionPreamble "${LINKS_SRC[*]}" 'doCreate' 'AsResponseLine'
+
     while [[ $COUNT -lt ${#LINKS_SRC[*]} ]];do
 
-        if [[ -f ${LINKS_SRC[$COUNT]} ]];then
+        # Print action message.
+        if [[ -a ${LINKS_SRC[$COUNT]} ]];then
             cli_printMessage "${LINKS_SRC[$COUNT]}" 'AsUpdatingLine'
         else
             cli_printMessage "${LINKS_SRC[$COUNT]}" 'AsCreatingLine'
         fi
 
+        # Create symbolic link parent directory if it doesn't exist.
         if [[ ! -d $(dirname ${LINKS_SRC[$COUNT]}) ]];then
             mkdir -p $(dirname ${LINKS_SRC[$COUNT]})
         fi
 
+        # Create symbolic link.
         ln ${LINKS_DST[$COUNT]} ${LINKS_SRC[$COUNT]} --symbolic --force
 
+        # Increment counter.
         COUNT=$(($COUNT + 1))
 
     done
