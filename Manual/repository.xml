@@ -216,9 +216,6 @@
           <item>
             <para><email><emailaddress>ralph@centos.org</emailaddress><emailname>Ralph Angenendt</emailname></email></para>
           </item>
-          <item>
-            <para><email><emailaddress>alain.reguera@gmail.com</emailaddress><emailname>Alain Reguera Delgado</emailname></email></para>
-          </item>
         </itemize>
       </subsection>
 
@@ -1105,7 +1102,7 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
 
       <subsection>
         <title>Description</title>
-        <para>A brush is a pixmap or set of pixmaps used for painting through an image manipulation program like GIMP.  Inside the repository, we've organized brushes in <emph>common brushes</emph> and <emph>theme-specific brushes</emph>.  In both cases, brushes are created under a <file>Xcf</file> directory as <file>.xcf</file> files first and later exported to <file>.gbr</file> or <file>.gih</file> format in the same level of <file>Xcf</file> directory.</para>
+        <para>A brush is a pixmap or set of pixmaps used for painting through an image manipulation program like GIMP.  Inside the repository, we've organized brushes in <emph>common brushes</emph> and <emph>theme-specific brushes</emph>.  In both cases, brushes are initially created in <file>.xcf</file> format and later exported to any of the brush formats recognized by GIMP (e.g., <file>.gbr</file> or <file>.gih</file>) using the same name of its source file.</para>
         <float name="Brush file format and directory structure">
           <floattype>Figure</floattype>
           <floatpos></floatpos>
@@ -1123,10 +1120,12 @@ trunk/Identity/Brushes  trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brus
 ]]></verbatim>
           <caption>Brush file format and directory structure.</caption>
         </float>
-        <para>In order for both common brushes and theme-specific brushes to be loaded by GIMP, they need to be stored under <file>~/.gimp-2.2/brushes</file> directory. Since files related to brushes already exist in the repository, there is no need to duplicate them in <file>~/.gimp-2.2/brushes</file> directory, too.  Instead, we make use of symbolic links and file name convenctions to &ldquo;connect&rdquo; brushes created in the repository with the standard location they need to be stored in for GIMP to recognize them. In this configuration, when links to brushes are created, if someone commits a change for a brush you are using, that change will be immediatly available for you the next time you update your working copy and refresh the Brushes panel of GIMP.</para>
-        <para>When new brushes are added to or removed from the repository, it is required to update the connection between the brushes inside the repository working copy and the links created in the predifined location that GIMP uses to retrive them.  Otherwise you may end up with broken links or brushes in the repository which are not linked.</para>
-        <para>Inside the repository, common brushes and theme-specific brushes are created individually in different locations. However, they all are linked from one unique directory (i.e., <file>~/.gimp-2.2/brushes</file>). This configuration may provoke overlapping of brushes if a name convenction is not implemented correctly.  In that sake, file names used for brushes inside the repository must be unique, no matter where they be.</para>
-        <para>As convenction inside the repository, brush files are named using a numerical value that start at 1 and increment one unit when a new brush is added to the same directory. Later, when links are built, we use one suffix for those brushes retrived from <file>trunk/Identity/Brushes</file> and another suffix for those brushes retrivided from theme-specific directories. Using both the numerical value and the suffix information,  it is possible to build unique names for links under <file>~/.gimp-2.2/brushes</file> directory, scalably.</para>
+        <para>In order for both common brushes and theme-specific brushes to be loaded by GIMP, related <file>.gbr</file> and <file>.gih</file> brush files need to be stored under <file>~/.gimp-2.2/brushes</file> directory. This location is out of CentOS Artwork Repository and provides no version control by itself. This way, brushes aren't exported to this location but into the repository directory structure which is versioned. Later, we create symbolic links in <file>~/.gimp-2.2/brushes</file> to connect file brushes inside the repository and, this way, provide the configuration needed by GIMP to use the brush files produced inside the repository.</para>
+        <quotation>
+          <para><strong>Warning</strong> When brushes are added to or removed from the repository, you need to update your working copy and all information related to brushes inside your workstation (e.g., brush links in <file>~/.gimp-2.2/brushes</file> and the Brushes panel in GIMP).  Otherwise, you may end up with broken links or brushes in the repository that wouldn't be available for you to use in GIMP.</para>
+        </quotation>
+        <para>Inside the repository, common brushes and theme-specific brushes are created individually in different locations, but they all are linked from one unique location (i.e., <file>~/.gimp-2.2/brushes</file>).  This configuration may provoke brush overlapping if a name convenction is not implemented correctly.  In that sake, file names used for brushes inside the repository must be unique, no matter where they be.</para>
+        <para>As file name convenction inside the repository, brushes are named using lowercase letters, numbers, minus characters and dot characters, only.  Additionally, when links are built, we use one suffix for those brushes retrived from <file>trunk/Identity/Brushes</file> and another suffix for those brushes retrivided from theme-specific directories.  Using both the brush file name and the suffix information,  it is possible to build unique names for links under <file>~/.gimp-2.2/brushes</file> directory, scalably.</para>
         <float name="Common brushes path relation">
           <floattype>Figure</floattype>
           <floatpos></floatpos>
@@ -1143,18 +1142,18 @@ trunk/Identity/Brushes
           <floatpos></floatpos>
           <verbatim xml:space="preserve"><![CDATA[
 trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
-|-- 1.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION.1.gbr (link)
-|-- 2.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION.2.gbr (link)
-`-- 3.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION.3.gbr (link)
+|-- 1.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-1.gbr (link)
+|-- 2.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-2.gbr (link)
+`-- 3.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-3.gbr (link)
 ]]></verbatim>
           <caption>Theme-specific brushes path relation.</caption>
         </float>
-        <para>Each brush produced with GIMP has a description field associated which is shown in the Brushes panel of GIMP.  This description is set when the brush is created as <file>.xcf</file> file and can be updated when it is exported either to <file>.gbr</file> or <file>.gih</file> format. It wouldn't be too useful to have two or more brushes using the same description. So, in order to have unique descriptions in brushes it is required to provide them that way. In that sake, we use the same name schema used to name brush files as description but without including the file extension.  This way, if we have the <file>centos-flame-3.gbr</file> brush, its description would be <code>centos-flame-3</code>.</para>
+        <para>Brushes produced with GIMP has a description field associated that is shown in the Brushes panel of GIMP.  This description is set when the brush is created as <file>.xcf</file> file and can be updated when it is exported either to <file>.gbr</file> or <file>.gih</file> format. It wouldn't be too useful to have two or more brushes using the same description so, we also make description of brush files unique, too. In that sake, we use the same name schema used to name brush links as description but without including the file extension (e.g., if we have the <file>centos-flame-3.gbr</file> brush, its description would be <code>centos-flame-3</code>).</para>
       </subsection>
 
       <subsection>
         <title>Usage</title>
-        <para>How to use brushes is up to your creativeness. You can use brushes as you consider them more appropriate for your graphical compositions. However, adding and removing them from the repository is something we need to standardize. It would be terribly sad being using one brush and suddenly find out that it no longer exists, the next time you update your working copy.</para>
+        <para>The way you use brushes is up to your creativeness. However, the way brushes are made available needs to be standardized. That's the reason of organizing brushes in common brushes and theme-specific brushes.</para>
       </subsection>
 
       <subsection>
@@ -1165,8 +1164,9 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
 
       <subsection>
         <title>Theme-specific brushes</title>
-        <para>Theme-specific brushes exist to organize brushes that can be used inside specific artistic motifs only. Inside the repository, theme-specific brushes are stored in a directory named <file>Brushes</file> which is stored in the first directory level under the artistic motif directory structure. Each artistic motif inside the repository has the <file>Brushes</file> directory and uses it to store brushes that can be considered auxiliars to that artistic motif construction.</para>
-        <para>Theme-specific brushes aren't made available under <file>~/.gimp-2.2/brushes</file> directory after preparing the repository. In order to make theme-specific brushes available under <file>~/.gimp-2.2./brushes</file> it is required to activate/deactivate them using the <code>brush</code> functionality of <command>centos-art.sh</command> script ().</para>
+        <para>Theme-specific brushes exist to organize brushes that can be used inside specific artistic motifs only. Inside the repository, theme-specific brushes are stored in a directory named <file>Brushes</file> which is stored in the first directory level under the artistic motif directory structure. Each artistic motif inside the repository has its own <file>Brushes</file> directory and uses it to store brushes that can be considered auxiliars to that artistic motif construction.</para>
+        <para>Theme-specific brushes aren't made available under <file>~/.gimp-2.2/brushes</file> directory after preparing the repository. In order to make theme-specific brushes available under <file>~/.gimp-2.2./brushes</file> it is required to activate/deactivate them using the <code>theme</code> functionality of <command>centos-art.sh</command> script. 
+<!-- (@pxref{Directories trunk Scripts Functions Theme}). --></para>
       </subsection>
 
       <subsection>
@@ -1174,7 +1174,7 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
         <itemize>
           <itemfunction>&bullet;</itemfunction>
           <item>
-            <para><uref><urefurl>file:///usr/share/gimp/2.0/help/en/gimp-concepts-brushes.html</urefurl><urefdesc>Brushes</urefdesc></uref> (from GIMP's manual)</para>
+            <para><uref><urefurl>file:///usr/share/gimp/2.0/help/en/index.html</urefurl><urefdesc>The Gimp Manual</urefdesc></uref>, specifically the section related to <uref><urefurl>file:///usr/share/gimp/2.0/help/en/gimp-concepts-brushes.html</urefurl><urefdesc>Brushes</urefdesc></uref>.</para>
           </item>
         </itemize>
       </subsection>
