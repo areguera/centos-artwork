@@ -50,8 +50,7 @@ function help_restoreCrossReferences {
         | cut -d / -f7- \
         | tr '/' ' ' \
         | sed -r \
-            -e "s/(chapter-intro\.texi|\.texi)$//" \
-            -e 's! !( |\\n)!g')
+            -e "s/(chapter-intro\.texi|\.texi)$//")
 
     # Define regular expression patterns to match removed message
     # format produced by message_removeCrossReferences function.
