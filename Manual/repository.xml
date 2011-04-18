@@ -594,6 +594,11 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Syslinux</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Syslinux</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Directories trunk Identity Themes Models Default Distro Firstboot</menunode>
           <menutitle>Directories trunk Identity Themes Models Default Distro Firstboot</menutitle>
           <menucomment></menucomment>
@@ -1484,17 +1489,77 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro</indexterm></para>
       <subheading>Goals</subheading>
       <para>This directory provides design models to produce image files for the following CentOS Distribution components:</para>
+      <subheading>Description</subheading>
+      <para>The CentOS Distribution visual style is controlled by image files. These image files are packaged inside The CentOS Distribution and made visible once such packages are installed and executed. The way to go for changing The CentOS Distribution visual style is changing all those image files to add the desired visual style first and later, repackage them to make them available inside the final iso files of CentOS Distribution.</para>
+      <subheading>Usage</subheading>
+      <para>This directory provides organizationl structure to store default design models for CentOS Themes of CentOS Distribution and so it should be considered to be used.</para>
+      <para>When a new component is added to CentOS Distribution, this is the directory you need to go for specifying design models for image files inside such component.</para>
+      <para>The procedure to follow is creatig a directory for each component using its very same name (e.g., the directory <file>Anaconda</file> stores image files for Anaconda component, the installer program). Inside the directory, you need to create one scalable vector graphic for each image file inside the component you want to produce images for. This, in order to set image dimensions, image file-name, position of trademarks in the final image, translation markers and whatever common information you need to have specified in them when rendered by <command>centos-art</command> script.</para>
+      <para>Sometimes, between major releases, image files inside packages can be added, removed or just change their names. In order to describe such image files variations, the design models directory structure is organized in the same way the file variations are introduced (i.e., through The CentOS Project Release Schema).  So, each major release of CentOS Distribution does have its own design model directory structure in this directory.</para>
+      <para>When a whole package is removed from one or all CentOS Distribution major releases, the design models directory structure releated to it is no longer used.  However it could be very useful for historical reasons.  Also, someone could feel motivated enough to keep himself documenting it or supporting it for whatever reason.</para>
+      <subsubheading>Major release 5</subsubheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
       <table>
         <tableitem>
           <tableterm><strong>Syslinux</strong></tableterm>
           <item>
-            <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Themes Models Default Distro Syslinux) &mdash;, for more information.</para>
+            <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media.</para>
+            <itemize>
+              <itemfunction>&bullet;</itemfunction>
+              <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Syslinux</xrefnodename></xref>.</para>
+              </item>
+            </itemize>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><strong>Anaconda</strong></tableterm>
           <item>
-            <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Themes Models Default Distro Anaconda) &mdash;, for more information.</para>
+            <para>Contains design models for Anaconda, the program used to install CentOS Distribution.</para>
+            <itemize>
+              <itemfunction>&bullet;</itemfunction>
+              <item>
+                <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Anaconda</xrefnodename></xref>.</para>
+              </item>
+            </itemize>
           </item>
         </tableitem>
         <tableitem>
@@ -1540,53 +1605,6 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
           </item>
         </tableitem>
       </table>
-      <subheading>Description</subheading>
-      <para>The CentOS Distribution visual style is controlled by image files. These image files are packaged inside The CentOS Distribution and made visible once such packages are installed and executed. The way to go for changing The CentOS Distribution visual style is changing all those image files to add the desired visual style first and later, repackage them to make them available inside the final iso files of CentOS Distribution.</para>
-      <subheading>Usage</subheading>
-      <para>This directory provides organizationl structure to store default design models for CentOS Themes of CentOS Distribution and so it should be considered to be used.</para>
-      <para>When a new component is added to CentOS Distribution, this is the directory you need to go for specifying design models for image files inside such component.</para>
-      <para>The procedure to follow is creatig a directory for each component using its very same name (e.g., the directory <file>Anaconda</file> stores image files for Anaconda component, the installer program). Inside the directory, you need to create one scalable vector graphic for each image file inside the component you want to produce images for. This, in order to set image dimensions, image file-name, position of trademarks in the final image, translation markers and whatever common information you need to have specified in them when rendered by <command>centos-art</command> script.</para>
-      <para>Sometimes, between major releases, image files inside packages can be added, removed or just change their names. In order to describe such image files variations, the design models directory structure is organized in the same way the file variations are introduced (i.e., through The CentOS Project Release Schema).  So, each major release of CentOS Distribution does have its own design model directory structure in this directory.</para>
-      <para>When a whole package is removed from one or all CentOS Distribution major releases, the design models directory structure releated to it is no longer used.  However it could be very useful for historical reasons.  Also, someone could feel motivated enough to keep himself documenting it or supporting it for whatever reason.</para>
-      <subheading>See also</subheading>
-      <menu>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro 5</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -1598,7 +1616,7 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
   </node>
   <node>
     <nodename>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Firstboot</nodenext>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodenext>
     <nodeprev>Directories trunk Identity Themes Models Default Distro 5</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1619,9 +1637,47 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Firstboot</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Syslinux</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Syslinux</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Identity Themes Models Default Distro Firstboot</nodename>
     <nodenext>Directories trunk Identity Themes Models Default Distro Gdm</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodeprev>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Firstboot</file> Directory</title>
