@@ -1,4 +1,4 @@
-# -*-perl-*-
+#!/usr/bin/perl 
 #
 # repository.init -- This file initializes Texi2HTML program to
 # produce the repository documentation manual using the CentOS Web
@@ -66,10 +66,12 @@ $SPLIT = 'section';
 # beginning and at the end of chapters anyway.
 $SECTION_NAVIGATION = 0;
 
-$print_page_head	      = \&T2H_XHTML_print_page_head;
-$print_page_foot	      = \&T2H_XHTML_print_page_foot;
-$print_frame              = \&T2H_XHTML_print_frame;
-$button_icon_img	      = \&T2H_XHTML_button_icon_img;
+# Layout control
+$print_page_head	= \&T2H_XHTML_print_page_head;
+$print_page_foot	= \&T2H_XHTML_print_page_foot;
+$print_frame        = \&T2H_XHTML_print_frame;
+$button_icon_img    = \&T2H_XHTML_button_icon_img;
+$print_navigation   = \&T2H_XHTML_print_navigation;
 
 #FIXME update once it is more stabilized in texi2html.init
 sub T2H_XHTML_print_page_head
@@ -231,3 +233,161 @@ sub t2h_xhtml_index_summary($$)
     return "<table><tr><th valign=\"top\">Jump to: &nbsp; </th><td>" .
     $nonalpha_text . $join . $alpha_text . '</td></tr></table>';
 }
+
+# Layout of navigation panel
+sub T2H_XHTML_print_navigation
+{
+    my $fh = shift;
+    my $buttons = shift;
+    my $vertical = shift;
+    print $fh '<div class="navibar"><table>' . "\n";
+
+    print $fh "<tr>" unless $vertical;
+    for my $button (@$buttons)
+    {
+        print $fh qq{<tr>\n} if $vertical;
+        print $fh qq{<td>};
+
+        if (ref($button) eq 'CODE')
+        {
+            &$button($fh, $vertical);
+        }
+        elsif (ref($button) eq 'SCALAR')
+        {
+            print $fh "$$button" if defined($$button);
+        }
+        elsif (ref($button) eq 'ARRAY')
+        {
+            my $text = $button->[1];
+            my $button_href = $button->[0];
+            if (defined($button_href) and !ref($button_href) 
+               and defined($text) and (ref($text) eq 'SCALAR') and defined($$text))
+            {             # use given text
+                if ($Texi2HTML::HREF{$button_href})
+                {
+                  print $fh "" .
+                        &$anchor('',
+                                    $Texi2HTML::HREF{$button_href},
+                                    $$text
+                                   ) 
+                                    ;
+                }
+                else
+                {
+                  print $fh $$text;
+                }
+            }
+        }
+        elsif ($button eq ' ')
+        {                       # handle space button
+            print $fh
+                $ICONS && $ACTIVE_ICONS{' '} ?
+                    &$button_icon_img($button, $ACTIVE_ICONS{' '}) :
+                        $NAVIGATION_TEXT{' '};
+            #next;
+        }
+        elsif ($Texi2HTML::HREF{$button})
+        {                       # button is active
+            my $btitle = $BUTTONS_GOTO{$button} ?
+                'title="' . ucfirst($BUTTONS_GOTO{$button}) . '"' : '';
+            if ($ICONS && $ACTIVE_ICONS{$button})
+            {                   # use icon
+                print $fh '' .
+                    &$anchor('',
+                        $Texi2HTML::HREF{$button},
+                        &$button_icon_img($button,
+                                   $ACTIVE_ICONS{$button},
+                                   #$Texi2HTML::NAME{$button}),
+                                   $Texi2HTML::NO_TEXI{$button}),
+                        $btitle
+                      );
+            }
+            else
+            {                   # use text
+                print $fh
+                    '[' .
+                        &$anchor('',
+                                    $Texi2HTML::HREF{$button},
+                                    $NAVIGATION_TEXT{$button},
+                                    $btitle
+                                   ) .
+                                       ']';
+            }
+        }
+        else
+        {                       # button is passive
+            print $fh
+                $ICONS && $PASSIVE_ICONS{$button} ?
+                    &$button_icon_img($button,
+                                          $PASSIVE_ICONS{$button},
+                                          #$Texi2HTML::NAME{$button}) :
+                                          $Texi2HTML::NO_TEXI{$button}) :
+
+                                              "[" . $NAVIGATION_TEXT{$button} . "]";
+        }
+        print $fh "</td>\n";
+        print $fh "</tr>\n" if $vertical;
+    }
+    print $fh "</tr>" unless $vertical;
+    print $fh "</table>\n</div>";
+}
+
+# Use icons for navigation.
+$ICONS = 1;
+
+# specify in this array which "buttons" should appear in which order
+# in the navigation panel for sections; use ' ' for empty buttons (space)
+@SECTION_BUTTONS =
+    (
+     'Back', 'Top', 'Forward'
+    );
+
+# insert here name of icon images for buttons
+# Icons are used, if $ICONS and resp. value are set
+%ACTIVE_ICONS =
+    (
+     'Top',         'file:///usr/share/gimp/2.0/help/images/home.png',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'This',        '',
+     'Back',        'file:///usr/share/gimp/2.0/help/images/prev.png',
+     'FastBack',    '',
+     'Prev',        'file:///usr/share/gimp/2.0/help/images/prev.png',
+     'Up',          'file:///usr/share/gimp/2.0/help/images/up.png',
+     'Next',        'file:///usr/share/gimp/2.0/help/images/next.png',
+     'NodeUp',      'file:///usr/share/gimp/2.0/help/images/up.png',
+     'NodeNext',    'file:///usr/share/gimp/2.0/help/images/next.png',
+     'NodePrev',    'file:///usr/share/gimp/2.0/help/images/next.png',
+     'Following',   'file:///usr/share/gimp/2.0/help/images/next.png',
+     'Forward',     'file:///usr/share/gimp/2.0/help/images/next.png',
+     'FastForward', '',
+     'About' ,      '',
+     'First',       '',
+     'Last',        '',
+     ' ',           ''
+    );
+
+# insert here name of icon images for these, if button is inactive
+%PASSIVE_ICONS =
+    (
+     'Top',         '',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'This',        '',
+     'Back',        '',
+     'FastBack',    '',
+     'Prev',        '',
+     'Up',          '',
+     'Next',        '',
+     'NodeUp',      '',
+     'NodeNext',    '',
+     'NodePrev',    '',
+     'Following',   '',
+     'Forward',     '',
+     'FastForward', '',
+     'About',       '',
+     'First',       '',
+     'Last',        '',
+    );
