@@ -584,8 +584,13 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Anaconda</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Anaconda</menutitle>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Anaconda</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Anaconda</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -621,11 +626,6 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
         <menuentry>
           <menunode>Directories trunk Identity Themes Models Default Distro Rhgb</menunode>
           <menutitle>Directories trunk Identity Themes Models Default Distro Rhgb</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Syslinux</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Syslinux</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -1476,7 +1476,7 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
   </node>
   <node>
     <nodename>Directories trunk Identity Themes Models Default Distro</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Anaconda</nodenext>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5</nodenext>
     <nodeprev>Directories trunk Identity Themes Models Default Concept</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1488,13 +1488,13 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
         <tableitem>
           <tableterm><strong>Syslinux</strong></tableterm>
           <item>
-            <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Syslinux</xrefnodename></xref>, for more information.</para>
+            <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media. &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Themes Models Default Distro Syslinux) &mdash;, for more information.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><strong>Anaconda</strong></tableterm>
           <item>
-            <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Anaconda</xrefnodename></xref>, for more information.</para>
+            <para>Contains design models for Anaconda, the program used to install CentOS Distribution.  &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Themes Models Default Distro Anaconda) &mdash;, for more information.</para>
           </item>
         </tableitem>
         <tableitem>
@@ -1559,13 +1559,51 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Anaconda</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Firstboot</nodenext>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodenext>
     <nodeprev>Directories trunk Identity Themes Models Default Distro</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Anaconda</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Anaconda</indexterm></para>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro Firstboot</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Anaconda</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Anaconda</indexterm></para>
       <subheading>Goals</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -1583,7 +1621,7 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
   <node>
     <nodename>Directories trunk Identity Themes Models Default Distro Firstboot</nodename>
     <nodenext>Directories trunk Identity Themes Models Default Distro Gdm</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Anaconda</nodeprev>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Firstboot</file> Directory</title>
@@ -1786,7 +1824,7 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
   </node>
   <node>
     <nodename>Directories trunk Identity Themes Models Default Distro Rhgb</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Syslinux</nodenext>
+    <nodenext>Directories trunk Identity Themes Models Default Posters</nodenext>
     <nodeprev>Directories trunk Identity Themes Models Default Distro Ksplash</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1819,43 +1857,9 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Syslinux</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Posters</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Rhgb</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Syslinux</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Syslinux</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Themes Models Default Posters</nodename>
     <nodenext>Directories trunk Identity Themes Motifs</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Syslinux</nodeprev>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro Rhgb</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Posters</file> Directory</title>
