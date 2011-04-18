@@ -49,7 +49,7 @@ function help_updateOutputFileXhtml {
 
     # Update xhtml files.  Use texi2html to export from texinfo file
     # format to html using CentOS Web default visual style.
-    texi2html --init-file=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.init \
+    texi2html --init-file=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}-init.pl \
         --output=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.xhtml \
         ${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.texi
 
