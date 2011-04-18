@@ -1,17 +1,17 @@
-@subsection Goals
+@subheading Goals
 
 This section exists to organize files related to @code{path}
 functiontionality.  The @code{path} functionality standardizes
 movement, syncronization, branching, tagging, and general file
 maintainance inside the repository. 
 
-@subsection Description
+@subheading Description
 
 @emph{''CentOS like trees, has roots, trunk, branches, leaves and
 flowers.  Day by day they work together in freedom, ruled by the laws
 of nature and open standards, to show the beauty of its existence.''}
 
-@subsubsection Repository layout
+@subsubheading Repository layout
 
 The repository layout describes organization of files and directories
 inside the repository. The repository layout provides the standard
@@ -55,7 +55,7 @@ single copy of the master sources.  This copy  is called the source
 ``repository''; it contains all the information to permit extracting
 previous versions of those files at any time.
 
-@subsubsection Repository name convenctions
+@subsubheading Repository name convenctions
 
 Repository name convenctions help us to maintain consistency of names
 inside the repository.
@@ -74,7 +74,7 @@ Repository name convenctions are implemented inside the
 convenctions to remember, concentrating them in just one single place
 to look for fixes and improvements.
 
-@subsubsection Repository work flow
+@subsubheading Repository work flow
 
 Repository work flow describes the steps and time intervals used to
 produce CentOS corporate visual identity inside CentOS Artwork
@@ -146,7 +146,7 @@ location to fulfill CentOS distribution artwork needs. The same
 applies to CentOS Webmasters (the persons whom build CentOS websites),
 and any other visual manifestation required by the project.
 
-@subsubsection Parallel directories
+@subsubheading Parallel directories
 
 Inside CentOS Artwork Repository, parallel directories are simple
 directory entries built from a common parent directory and placed in a
@@ -194,7 +194,7 @@ parent directory structure.  Liberal change of parallel directories
 may suppresses the conceptual idea they were initially created for;
 and certainly, things may stop working the way they should do.
 
-@subsubsection Syncronizing path information
+@subsubheading Syncronizing path information
 
 Parallel directories are very useful to keep repository organized but
 introduce some complications.  For instance, consider what would
@@ -250,7 +250,7 @@ Texinfo to produce error messages at export time. So, the
 @file{centos-art.sh} script needs to know when such changes happen, in
 a way they could be noted and handled without producing errors.
 
-@subsubsection What is the right place to store it?
+@subsubheading What is the right place to store it?
 
 Occasionly, you may find that new corporate visual identity components
 need to be added to the repository. If that is your case, the first
@@ -302,7 +302,7 @@ Other location concepts can be found similary as we did above, just
 change the location we used above by the one you are trying to know
 concepts for.
 
-@subsection Usage
+@subheading Usage
 
 @table @command
 @item centos-art path --copy='SRC' --to='DST'
@@ -319,7 +319,7 @@ In this command, @file{SRC} is a working copy (WC) entry.
 
 @end table
 
-@subsection See also
+@subheading See also
 
 @menu
 * Directories trunk Scripts::

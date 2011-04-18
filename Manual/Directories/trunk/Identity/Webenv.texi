@@ -1,10 +1,10 @@
-@subsection Goals
+@subheading Goals
 
 @itemize
 @item ...
 @end itemize
 
-@subsection Description
+@subheading Description
 
 The CentOS web environment is formed by a central web application
 ---to cover base needs (e.g., per-major release information like
@@ -65,13 +65,13 @@ the one unique visual style customization changes.
 At the surface of this issue we can see the need of one specific yum
 repository to store CentOS web environment customized web applications.
 
-@subsubsection Design model (without ads)
+@subsubheading Design model (without ads)
 
-@subsubsection Design model (with ads)
+@subsubheading Design model (with ads)
 
-@subsubsection HTML definitions
+@subsubheading HTML definitions
 
-@subsubsection Controlling visual style
+@subsubheading Controlling visual style
 
 Inside CentOS web environment, the visual style is controlled by the
 following compenents:
@@ -88,7 +88,7 @@ trunk/Identity/Themes/Models/Default/Promo/Web/CSS/stylesheet.css
 @end verbatim
 @end table
 
-@subsubsection Producing visual style
+@subsubheading Producing visual style
 
 The visual style of CentOS web environment is defined in the following
 files:
@@ -118,7 +118,7 @@ visual style changes will take effect the next time customization line
 of CentOS web applications be packaged, uploded, and installed from
 [webenv] or [webenv-test] repositories.
 
-@subsubsection Navigation
+@subsubheading Navigation
 
 Inside CentOS web environment, the one-step navegation between web
 applications is addressed using the web environment navigation bar.
@@ -126,7 +126,7 @@ The web environment navigation bar contains links to main applications
 and is always visible no matter where you are inside the web
 environment.
 
-@subsubsection Development and release cycle
+@subsubheading Development and release cycle
 
 The CentOS web environment development and relase cycle is described
 below: 
@@ -276,7 +276,7 @@ repository you need to configure it first.
 @end quotation
 @end table
 
-@subsubsection The [webenv-test] repository
+@subsubheading The [webenv-test] repository
 
 @verbatim
 /etc/yum.repos.d/CentOS-Webenv-test.repo
@@ -293,7 +293,7 @@ enabled=1
 priority=10
 @end verbatim
 
-@subsubsection The [webenv] repository
+@subsubheading The [webenv] repository
 
 @verbatim
 /etc/yum.repos.d/CentOS-Webenv.repo
@@ -310,18 +310,18 @@ enabled=1
 priority=10
 @end verbatim
 
-@subsubsection Priority configuration
+@subsubheading Priority configuration
 
 Both [webenv] and [webenv-test] repositories update packages inside
 CentOS [base] and CentOS [updates] repositories.
 
-@subsection Usage
+@subheading Usage
 
 @itemize
 @item ...
 @end itemize
 
-@subsection See also
+@subheading See also
 
 @menu
 @end menu

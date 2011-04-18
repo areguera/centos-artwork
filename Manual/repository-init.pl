@@ -64,7 +64,7 @@ $SPLIT = 'section';
 # This is most useful if you do not want to have section navigation
 # with -split chapter. There will be chapter navigation panel at the
 # beginning and at the end of chapters anyway.
-$SECTION_NAVIGATION = 0;
+$SECTION_NAVIGATION = 1;
 
 # Layout control
 $print_page_head	= \&T2H_XHTML_print_page_head;
@@ -80,8 +80,6 @@ sub T2H_XHTML_print_page_head
     my $longtitle = "$Texi2HTML::THISDOC{'title_unformatted'}";
     $longtitle .= ": $Texi2HTML::UNFORMATTED{'This'}" if exists $Texi2HTML::UNFORMATTED{'This'};
     $T2H_LANG='en';
-    @date=localtime(time);
-    $year=$date[5] += 1900;
     print $fh <<EOT;
 <?xml version="1.0"?>
 <!DOCTYPE html
@@ -98,7 +96,7 @@ sub T2H_XHTML_print_page_head
     <meta name="resource-type" content="document" />
     <meta name="distribution" content="global" />
     <meta name="generator" content="$Texi2HTML::THISDOC{program}" />
-    <meta name="copyright" content="2009-$year Alain Reguera Delgado" />
+    <meta name="copyright" content="2009, 2010, 2011 The CentOS Project" />
 
     <link href="/home/centos/artwork/trunk/Manual/repository.css" rel="stylesheet" type="text/css" media="screen projection" />
 
@@ -121,15 +119,17 @@ EOT
 sub T2H_XHTML_print_page_foot
 {
     my $fh = shift;
+    my @date=localtime(time);
+    my $year=$date[5] += 1900;
+    my $program_string = program_string();
     print $fh <<EOT;
 
-            <div class="page-line"><hr style="display:none;" /></div>
+        <p class="credits">$program_string</p>
 
         </div>
 
     </div>
 
-    <div class="page-line white"><hr style="display:none;" /></div>
 
 </div>
 
@@ -240,7 +240,7 @@ sub T2H_XHTML_print_navigation
     my $fh = shift;
     my $buttons = shift;
     my $vertical = shift;
-    print $fh '<div class="navibar"><table>' . "\n";
+    print $fh '<table class="navibar">' . "\n";
 
     print $fh "<tr>" unless $vertical;
     for my $button (@$buttons)
@@ -329,65 +329,59 @@ sub T2H_XHTML_print_navigation
         print $fh "</tr>\n" if $vertical;
     }
     print $fh "</tr>" unless $vertical;
-    print $fh "</table>\n</div>";
+    print $fh "</table>\n";
 }
 
 # Use icons for navigation.
-$ICONS = 1;
-
-# specify in this array which "buttons" should appear in which order
-# in the navigation panel for sections; use ' ' for empty buttons (space)
-@SECTION_BUTTONS =
-    (
-     'Back', 'Top', 'Forward'
-    );
+$ICONS = 0;
 
 # insert here name of icon images for buttons
 # Icons are used, if $ICONS and resp. value are set
 %ACTIVE_ICONS =
     (
-     'Top',         'file:///usr/share/gimp/2.0/help/images/home.png',
-     'Contents',    '',
+     'Top',         'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-top.png',
+     'Contents',    'file:///usr/share/icons/Bluecurve/24x24/stock/help-contents.png',
      'Overview',    '',
-     'Index',       '',
+     'Index',       'file:///usr/share/icons/Bluecurve/24x24/stock/stock-find.png',
      'This',        '',
-     'Back',        'file:///usr/share/gimp/2.0/help/images/prev.png',
-     'FastBack',    '',
-     'Prev',        'file:///usr/share/gimp/2.0/help/images/prev.png',
-     'Up',          'file:///usr/share/gimp/2.0/help/images/up.png',
-     'Next',        'file:///usr/share/gimp/2.0/help/images/next.png',
-     'NodeUp',      'file:///usr/share/gimp/2.0/help/images/up.png',
-     'NodeNext',    'file:///usr/share/gimp/2.0/help/images/next.png',
-     'NodePrev',    'file:///usr/share/gimp/2.0/help/images/next.png',
-     'Following',   'file:///usr/share/gimp/2.0/help/images/next.png',
-     'Forward',     'file:///usr/share/gimp/2.0/help/images/next.png',
-     'FastForward', '',
-     'About' ,      '',
-     'First',       '',
-     'Last',        '',
+     'Back',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-back.png',
+     'FastBack',    'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-first.png',
+     'Prev',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-back.png',
+     'Up',          'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-up.png',
+     'Next',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'NodeUp',      'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-up.png',
+     'NodeNext',    'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'NodePrev',    'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-back.png',
+     'Following',   'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'Forward',     'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'FastForward', 'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-last.png',
+     'About' ,      'file:///usr/share/icons/Bluecurve/24x24/stock/gtk-about.png',
+     'First',       'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-first.png',
+     'Last',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-last.png',
      ' ',           ''
     );
 
-# insert here name of icon images for these, if button is inactive
+# Insert here name of icon images for these, if button is inactive
 %PASSIVE_ICONS =
     (
-     'Top',         '',
-     'Contents',    '',
+     'Top',         'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-top.png',
+     'Contents',    'file:///usr/share/icons/Bluecurve/24x24/stock/help-contents.png',
      'Overview',    '',
-     'Index',       '',
+     'Index',       'file:///usr/share/icons/Bluecurve/24x24/stock/stock-find.png',
      'This',        '',
-     'Back',        '',
-     'FastBack',    '',
-     'Prev',        '',
-     'Up',          '',
-     'Next',        '',
-     'NodeUp',      '',
-     'NodeNext',    '',
-     'NodePrev',    '',
-     'Following',   '',
-     'Forward',     '',
-     'FastForward', '',
-     'About',       '',
-     'First',       '',
-     'Last',        '',
+     'Back',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-back.png',
+     'FastBack',    'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-first.png',
+     'Prev',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-back.png',
+     'Up',          'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-up.png',
+     'Next',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'NodeUp',      'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-up.png',
+     'NodeNext',    'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'NodePrev',    'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-back.png',
+     'Following',   'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'Forward',     'file:///usr/share/icons/Bluecurve/24x24/stock/stock-go-forward.png',
+     'FastForward', 'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-last.png',
+     'About' ,      'file:///usr/share/icons/Bluecurve/24x24/stock/gtk-about.png',
+     'First',       'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-first.png',
+     'Last',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-last.png',
+     ' ',           ''
     );

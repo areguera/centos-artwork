@@ -1,4 +1,4 @@
-@subsection Goals
+@subheading Goals
 
 This section exists to organize files related to @file{centos-art.sh}
 script @samp{prepare} functionality.  The @samp{prepare} functionality
@@ -6,7 +6,7 @@ of @file{centos-art.sh} script helps you to prepare the workstation
 configuration you are planning to use as host for your working copy of
 CentOS Artwork Repository.
 
-@subsection Description
+@subheading Description
 
 The first time you download CentOS Artwork Repository you need to
 configure your workstation in order to use @file{centos-art.sh}
@@ -24,7 +24,7 @@ the @file{centos-art.sh} script directly, but the absolute path to
 because @file{centos-art} symbolic link, under @file{~/bin/}
 directory, has not been created yet.
 
-@subsubsection Packages
+@subsubheading Packages
 
 Installation of auxiliar RPM packages provides the software required
 to manipulate files inside the repository (e.g., image files,
@@ -58,7 +58,7 @@ sudo}. This reading will be very useful, and with some practice, you
 will be able to configure your users to have @command{sudo}
 privileges.
 
-@subsubsection Links
+@subsubheading Links
 
 Creation of symbolic links helps us to alternate between different
 implementations of @file{centos-art.sh} script-line (e.g.,
@@ -91,7 +91,7 @@ structure as you usually do inside @file{trunk/} repository directory
 structure. As consequence of this configuration, automation scripts
 cannot be branched under @file{branches/Scripts} directory structure.
 
-@subsubsection Environment variables
+@subsubheading Environment variables
 
 Definition of environemnt variables helps us to set default values to
 our user session life. The user session environment variable defintion
@@ -184,7 +184,7 @@ The format of @var{TZ} environment variable is described in
 
 @end table
 
-@subsubsection Shell Script Files
+@subsubheading Shell Script Files
 
 The @code{shell} functionality of @file{centos-art.sh} script helps
 you to maintain bash scripts inside repository. For example, suppose
@@ -321,7 +321,7 @@ See file
 for a complete license description.
 @end quotation
 
-@subsubsection SVG Files
+@subsubheading SVG Files
 
 The @code{svg} functionality of @file{centos-art.sh} script helps you
 to maintain scalable vector graphics (SVG) inside repository. For
@@ -381,9 +381,9 @@ To remove unused definitions from several scalable vector graphics
 files, the @file{centos-art.sh} script uses Inkscape command-line
 interface, specifically with the @option{--vaccum-defs} option.
 
-@subsubsection XHTML Files
+@subsubheading XHTML Files
 
-@subsection Usage
+@subheading Usage
 
 @table @command
 
@@ -436,7 +436,7 @@ provided at all.
 
 @end table
 
-@subsection See also
+@subheading See also
 
 @menu
 * Directories trunk Scripts::

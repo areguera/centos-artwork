@@ -1,9 +1,9 @@
-@subsection Goals
+@subheading Goals
 
 The @file{trunk/Scripts/Bash/Config} directory exists to oraganize
 pre-rendering configuration scripts.
 
-@subsection Description
+@subheading Description
 
 Pre-rendering configuration scripts let you customize the way
 @command{centos-art.sh} script renders identity and translation
@@ -17,7 +17,7 @@ both on identity and translation repository entires.  Pre-rendering
 configuration entries are required for each identity entry, but not
 for translation entries. 
 
-@subsubsection The @file{render.conf.sh} identity model
+@subsubheading The @file{render.conf.sh} identity model
 
 Inside CentOS Artwork Repository, we consider identity entries to all
 directories under @file{trunk/Identity} directory. Identity entries can be
@@ -61,14 +61,14 @@ extend both image-based and text-based pre-rendering configuration
 scripts using image-based and text-based post-rendering actions,
 respectively. 
 
-@subsubsection The @file{render.conf.sh} translation model
+@subsubheading The @file{render.conf.sh} translation model
 
 Translation pre-rendering configuration scripts take precedence before
 default translation rendering action. Translation pre-rendering
 actions are useful when default translation rendering action do not
 fit itself to translation entry rendering requirements.
 
-@subsubsection The @file{render.conf.sh} rendering actions
+@subsubheading The @file{render.conf.sh} rendering actions
 
 Inside both image-based and text-based identity pre-rendering
 configuration scripts, we use the @samp{ACTIONS} array variable to
@@ -150,7 +150,7 @@ ACTIONS[1]='POST:renderFormats: xpm jpg tif'
 ACTIONS[2]='LAST:groupByformat: png xpm jpg tif'
 @end verbatim
 
-@subsection Usage
+@subheading Usage
 
 Use the following commands to administer both identity and translation
 pre-rendering configuration scripts:
@@ -183,7 +183,7 @@ In the commands above, @samp{path/to/dir} refers to one renderable
 directory path under @file{trunk/Identity} or
 @file{trunk/Translations} structures only. 
 
-@subsection See also
+@subheading See also
 
 @menu
 * Directories trunk Scripts::

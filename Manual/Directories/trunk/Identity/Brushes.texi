@@ -1,10 +1,10 @@
-@subsection Goals
+@subheading Goals
 
 This section describes how brushes are organized in the repository and
 how to make them available for you to use in @acronym{GIMP,GNU Image
 Manipulation Program}.
 
-@subsection Description
+@subheading Description
 
 A brush is a pixmap or set of pixmaps used for painting through an
 image manipulation program like GIMP.  Inside the repository, we've
@@ -97,13 +97,13 @@ without including the file extension (e.g., if we have the
 @file{centos-flame-3.gbr} brush, its description would be
 @code{centos-flame-3}).
 
-@subsection Usage
+@subheading Usage
 
 The way you use brushes is up to your creativeness. However, the way
 brushes are made available needs to be standardized. That's the reason
 of organizing brushes in common brushes and theme-specific brushes.
 
-@subsection Common brushes
+@subheading Common brushes
 
 Common brushes exist to organize brushes that can be used anywhere
 inside the repository. Inside the repository, common brushes under
@@ -115,7 +115,7 @@ Common brushes are always made available under
 @file{~/.gimp-2.2/brushes} directory after preparing the repository
 (@pxref{Directories trunk Scripts Functions Prepare}).
 
-@subsection Theme-specific brushes
+@subheading Theme-specific brushes
 
 Theme-specific brushes exist to organize brushes that can be used
 inside specific artistic motifs only. Inside the repository,
@@ -132,7 +132,7 @@ In order to make theme-specific brushes available under
 using the @code{theme} functionality of @command{centos-art.sh}
 script. @c (@pxref{Directories trunk Scripts Functions Theme}).
 
-@subsection See also
+@subheading See also
 
 @itemize
 @item @url{file:///usr/share/gimp/2.0/help/en/index.html,The Gimp

@@ -1,9 +1,9 @@
-@subsection Goals
+@subheading Goals
 
 The @file{trunk/Scripts/Bash/Functions} directory exists to organize
 @file{centos-art.sh} specific functionalities.
 
-@subsection Description
+@subheading Description
 
 The specific functions of @file{centos-art.sh} script are designed
 with ``Software Toolbox'' philosophy (@pxref{Toolbox
@@ -304,9 +304,9 @@ script specific functionalities.
 By the way, the @code{greet} functionality doesn't exist inside
 @file{centos-art.sh} script yet. Would you like to create it?
 
-@subsection Usage
+@subheading Usage
 
-@subsubsection Global variables
+@subsubheading Global variables
 
 The following global variables of @file{centos-art.sh} script, are
 available for you to use inside specific functions:
@@ -504,7 +504,7 @@ If no one of these values is set in @env{EDITOR} environment variable,
 @file{centos-art.sh} uses @file{/usr/bin/vim} text editor by default. 
 @end defvar
 
-@subsubsection Global functions
+@subsubheading Global functions
 
 Function scripts stored directly under
 @file{trunk/Scripts/Bash/Functions/} directory are used to define
@@ -1197,7 +1197,7 @@ trunk/Scripts/Bash/Styles/output_forTwoColumns.awk
 @end quotation
 @end defun
 
-@subsubsection Specific functions
+@subsubheading Specific functions
 
 The following specific functions of @file{centos-art.sh} script, are
 available for you to use:
@@ -1214,7 +1214,7 @@ available for you to use:
 * Directories trunk Scripts Functions Prepare::
 @end menu
 
-@subsection See also
+@subheading See also
 
 @menu
 * Directories trunk Scripts::

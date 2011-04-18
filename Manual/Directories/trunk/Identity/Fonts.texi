@@ -1,79 +1,45 @@
-@subsection Goals
+@subheading Goals
 
-This section exists to organize digital typographies used by the
-CentOS project.
+This section describes how typographies are organized in the
+repository and how to make them available for you to use in
+@acronym{GIMP,GNU Image Manipulation Program} and Inkscape.
 
-@subsection Description
+@subheading Description
 
-@subsection Usage
+The CentOS Project Corporate Identity is attached to @samp{DejaVu LGC}
+font-family and @samp{Denmark} font-family.
 
-The CentOS corporate identity is attached to @samp{DejaVu LGC}
-font-family.  Whatever artwork you design for CentOS project, that
-requires typography usage, must be done using @samp{DejaVu LGC}
-font-family.
+@float Figure, DejaVu LGC font family
+@image{trunk/Identity/Images/Manual/Fonts/dejavu-lgc,430pt,,,jpg}
+@caption{DejaVu-LGC font-family.}
+@end float
 
-@table @strong
-@item Recommendation-1: 
-
-For screen desings (e.g., anything that final destination will never
-be printed on paper or any medium outside computer screens) use
-@samp{DejaVu LGC Sans} font-family. 
-
-@item Recommendation-2: 
-
-For non-screen designs (e.g., anything that final desition will be
-printed on paper or any other medium outside computer screens) use
-@samp{DejaVu LGC Serif} font-family. As convenction files described in
-this rule are stored under @samp{Stationery} directories.  
-@end table
-
-The only execption for the two recommendations above is the typography
-used inside CentOS logo. The CentOS logo is the main visual
-representation of the CentOS project so the typography used in it must
-be the same always, no matter where it be shown. It also has to be
-clear enough to dismiss any confussion between similar typefaces
-(e.g., the number one (1) sometimes is confuesed with the letter
-@samp{el} (l) or letter @samp{ai} (i)). 
-
-As CentOS logo typography convenction, the word @samp{CentOS} uses
-@samp{Denmark} typography as base, both for the word @samp{CentOS} and
-the phrase @samp{Community Enterprise Operating System}. The phrase
-size of CentOS logo is half the size in poits the word @samp{CentOS}
-has and it below @samp{CentOS} word and aligned with it on the left.
-The distance between @samp{CentOS} word and phrase @samp{Community
-Enterprise Operating System} have the size in points the phrase has.
-
-When the CentOS release brand is built, use @samp{Denmark} typography
-for the release number. The release number size is two times larger
-(in height) than default @samp{CentOS} word. The separation between
-release number and @samp{CentOS} word is twice the size in points of
-separation between @samp{CentOS} word and phrase @samp{Community
-Enterprise Operating System}.
-
-Another component inside CentOS logo is the trademark symbol (TM).
-This symbol specifies that the CentOS logo must be consider a product
-brand, even it is not a registered one. The trademark symbol uses
-DejaVu LGC Sans Regular typography. The trademark symbol is aligned
-right-top on the outter side of @samp{CentOS} word. The trademark
-symbol must not exceed haf the distance, in points, between
-@samp{CentOS} word and the release number on its right.
-
-It would be very convenient for the CentOS Project and its community
-to to make a registered trademark (®) of CentOS logo. To make a
-register trademark of CentOS Logo prevents legal complications in the
-market place of brands. It grants the consistency, through time, of
-CentOS project corporate visual identity.
+@float Figure, Denmark font family
+@image{trunk/Identity/Images/Manual/Fonts/denmark,430pt,,,jpg}
+@caption{Denmark font-family.}
+@end float
 
 @quotation
-@strong{Note} The information about trademarks and corporate identity
-is my personal interpretation of
-@url{http://en.wikipedia.org/Corporate_identity} and
-@url{http://en.wikipedia.org/Trademark} description. If you have
-practical experiences with these affairs, please serve yourself to
-improve this section with your reasons.
+@strong{Caution}
+The copyright and license of @samp{Denmark} typography aren't very
+specific and that issue may represent a threat to The CentOS Project
+Corporate Identity.
 @end quotation
 
-@subsection See also
+The @samp{Denmark} typography is used as base to build The CentOS Logo
+(i.e., the main graphic design that connects/identifies all visual
+manifestations related to The CentOS Project). If the typography used
+to build The CentOS Logo is compromised somehow, the whole corporate
+visual identity it represents would be compromised, as well. To
+prevent such issues, it would be better for The CentOS Project to move
+on from @samp{Denmark} typography to another typography (free,
+preferably) that retain the same visual style of @samp{Denmark}, but
+intruce a clearer copyright and license notice.
 
-@menu
-@end menu
+@subheading Usage
+
+@itemize
+@item @xref{Directories trunk Identity Models Brands}.
+@end itemize
+
+@subheading See also
