@@ -594,43 +594,43 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Firstboot</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Firstboot</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Gdm</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Gdm</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Grub</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Grub</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Gsplash</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Gsplash</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Kdm</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Kdm</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Ksplash</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Ksplash</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Identity Themes Models Default Distro 5 Rhgb</menunode>
+          <menutitle>Directories trunk Identity Themes Models Default Distro 5 Rhgb</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Directories trunk Identity Themes Models Default Distro 5 Syslinux</menunode>
           <menutitle>Directories trunk Identity Themes Models Default Distro 5 Syslinux</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Firstboot</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Firstboot</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Gdm</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Gdm</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Grub</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Grub</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Gsplash</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Gsplash</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Kdm</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Kdm</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Ksplash</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Ksplash</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default Distro Rhgb</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default Distro Rhgb</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -731,20 +731,20 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
       <subheading>Goals</subheading>
       <para>This directory implements the Subversion's branches concept in a trunk, branches, tags repository structure.</para>
       <subheading>Description</subheading>
-      <para>The <file>branches/</file> directory structre provides the intermediate space for creating several instances of <file>trunk/</file> directory structure for parallel development and later merging changes back to <file>trunk/</file> in the same parallel basis.</para>
+      <para>The <file>branches/</file> directory structure provides the intermediate space for creating several instances of <file>trunk/</file> directory structure for parallel development and later merging changes back to <file>trunk/</file> in the same parallel basis.</para>
       <subheading>Usage</subheading>
       <para>The <file>branches/</file> directory structure is unused, so far.</para>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
-          <para>See <xref><xrefnodename>Directories tags</xrefnodename></xref>.</para>
+          <para><xref><xrefnodename>Directories tags</xrefnodename></xref>.</para>
         </item>
         <item>
-          <para>See <xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
         </item>
         <item>
-          <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
+          <para>The Subversion book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
         </item>
       </itemize>
     </section>
@@ -760,20 +760,20 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
       <subheading>Goals</subheading>
       <para>This directory implements the Subversion's tags concept in a trunk, branches, tags repository structure.</para>
       <subheading>Description</subheading>
-      <para>The <file>tags/</file> directory structre provides frozen branches. Generally, we use frozen branches to make check-points in time for development lines under <file>branches/</file> or <file>trunk/</file> directory structure.</para>
+      <para>The <file>tags/</file> directory structure provides frozen branches. Generally, we use frozen branches to make check-points in time for development lines under <file>branches/</file> or <file>trunk/</file> directory structure.</para>
       <subheading>Usage</subheading>
       <para>The <file>tags/</file> directory structure is unused, so far.</para>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
-          <para>See <xref><xrefnodename>Directories branches</xrefnodename></xref>.</para>
+          <para><xref><xrefnodename>Directories branches</xrefnodename></xref>.</para>
         </item>
         <item>
-          <para>See <xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
         </item>
         <item>
-          <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
+          <para>The subversion book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
         </item>
       </itemize>
     </section>
@@ -789,54 +789,37 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
       <subheading>Goals</subheading>
       <para>The <file>trunk/</file> directory structure implements the Subversion's trunk concept in a trunk, branches, tags repository structure.</para>
       <subheading>Description</subheading>
-      <para>The <file>trunk/</file> directory structure is the main development line inside the CentOS Artwork Repository and organizes the following work lines:</para>
-      <table>
-        <tableitem>
-          <tableterm><strong>Graphic design</strong></tableterm>
-          <item>
-            <para>The graphic design work line exists to cover brand design, typography design and themes design mainly. Additionally, some auxiliar areas like icon design, illustration design, brushes design, patterns designs and palettes of colors are also included here for completeness.</para>
-            <para>In this section you'll find how to organize and produce gaphic designs in the repository. The graphic design work line is the perfect place to consolidate <emph>The CentOS Artwork SIG</emph>. If you are interested in producing graphic designs for The CentOS Project, this place is for you.</para>
-            <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Documentation</strong></tableterm>
-          <item>
-            <para>The documentation work line exists to describe what each directory inside the CentOS Artwork Repository is for, the conceptual ideas behind them and, if possible, how automation scripts make use of them.</para>
-            <para>In this section you'll find how to organize and produce the <emph>CentOS Artwork Repository Manual</emph> (i.e., the documentation manual you're reading right now). If you are interested in producing documentation for the repository, this place is for you.</para>
-            <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Localization</strong></tableterm>
-          <item>
-            <para>The localization work line exists to provide the translation messages required to produce content in different languages. Translation messages inside the repository are stored as portable objects (e.g., .po, .pot) and machine objects (.mo) under <file>trunk/Locales</file> directory structure.</para>
-            <para>In this section you'll find how to organize and produce translation messages for <emph>graphic designs</emph>, <emph>documentation</emph> and <emph>automation scripts</emph> in the repository. This place is perfect to consolidate <emph>The CentOS Translation SIG</emph>. If you love translating, you'll find lot of messages waiting for you to translate here.</para>
-            <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Automation</strong></tableterm>
-          <item>
-            <para>The automation work line exists to standardize content production in CentOS Artwork Repository. There is no need to type several tasks, time after time, if they can be programmed into just one executable script.</para>
-            <para>In this section you'll find how to organize and extend the <command>centos-art.sh</command> script, a bash scripts specially designed to automate most frequent tasks in the repository (e.g., image rendition, documenting directory structures, translating content, etc.).  If you can't resist the idea of automating repeatable tasks, then take a look here.</para>
-            <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-      </table>
+      <para>The <file>trunk/</file> directory structure provides the main development line inside the CentOS Artwork Repository.</para>
+      <subsubheading>Automation</subsubheading>
+      <para>The automation work line exists to standardize content production in CentOS Artwork Repository. There is no need to type several tasks, time after time, if they can be programmed into just one executable script.</para>
+      <para>In this section you'll find how to organize and extend the <command>centos-art.sh</command> script, a bash scripts specially designed to automate most frequent tasks in the repository (e.g., image rendition, documenting directory structures, translating content, etc.).  If you can't resist the idea of automating repeatable tasks, then take a look here.</para>
       <subheading>Usage</subheading>
-      <para>It seems to be no other use for this directory but to organize the sections described above.</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Locales</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Scripts</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
-          <para>See <xref><xrefnodename>Directories branches</xrefnodename></xref>.</para>
+          <para><xref><xrefnodename>Directories branches</xrefnodename></xref>.</para>
         </item>
         <item>
-          <para>See <xref><xrefnodename>Directories tags</xrefnodename></xref>.</para>
+          <para><xref><xrefnodename>Directories tags</xrefnodename></xref>.</para>
         </item>
         <item>
-          <para>Subversion's book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
+          <para>The Subversion book (<uref><urefurl>http://svnbook.red-bean.com/</urefurl></uref>).</para>
         </item>
       </itemize>
     </section>
@@ -869,27 +852,20 @@ centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
         <tableitem>
           <tableterm><strong>The CentOS Distribution</strong></tableterm>
           <item>
-            <para>The CentOS Distribution visual manifestation covers all actions related to branding and artwork production required by the The CentOS Distribution. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro</xrefnodename></xref>.</para>
-            <para>The CentOS Distribution is an Enterprise-class Linux Distribution derived from sources freely provided to the public by a prominent North American Enterprise Linux vendor. The CentOS Distribution conforms fully with the upstream vendors redistribution policy and aims to be 100% binary compatible. (The CentOS Project mainly changes packages to remove upstream vendor branding and artwork.)</para>
-            <para>The CentOS Distribution is developed by a small but growing team of core developers.  In turn the core developers are supported by an active user community including system administrators, network administrators, enterprise users, managers, core Linux contributors and Linux enthusiasts from around the world.</para>
-            <para>The upstream vendor has released 4 versions of their <acronym><acronymword>EL</acronymword><acronymdesc>Enterprise Linux</acronymdesc></acronym> product that The CentOS Project rebuilds the freely available SRPMS for.  The upstream vendor releases security updates as required by circumstances. The CentOS Project releases rebuilds of security updates as soon as possible. Usually within 24 hours (our stated goal is with 72 hours, but we are usually much faster).</para>
-            <para>The upstream vendor also releases numbered update sets for major versions of their EL product from 2 to 4 times per year. There are new ISOs from the upstream vendor provided for these update sets.  Update sets will be completed as soon as possible after the upstream vendor releases their version &dots; generally within 2 weeks. The CentOS Project follows these conventions as well, so CentOS-3.9 correlates with EL 3 update 9 and CentOS-4.6 correlates with EL 4 update 6, CentOS-5.1 correlates to EL 5 update 1, etc.</para>
-            <para>One thing some people have problems understanding is that if you have any CentOS-3 product and update it, you will be updated to the latest CentOS-3.x version.</para>
-            <para>The same is true for CentOS-4 and CentOS-5. If you update any CentOS-4 product, you will be updated to the latest CentOS-4.x version, or to the latest CentOS-5.x version if you are updating a CentOS-5 system. This is exactly the same behavior as the upstream product.  Let's assume that the latest EL4 product is update 6. If you install the upstream original EL4 CDs (the ones before any update set) and upgrade via <command>yum</command>, you will have latest update set installed (EL4 update 6 in our example). Since all updates within a major release (CentOS-2, CentOS-3, CentOS-4, CentOS-5) always upgrade to the latest version when updates are performed (thus mimicking upstream behavior), only the latest version is maintained in each main tree on The CentOS Mirrors (<uref><urefurl>http://mirrors.centos.org/</urefurl></uref>).</para>
-            <para>There is a CentOS Vault (<uref><urefurl>http://vault.centos.org/</urefurl></uref>) containing old CentOS trees. This vault is a picture of the older tree when it was removed from the main tree, and does not receive updates. It should only be used for reference.</para>
+            <para>The CentOS Distribution visual manifestation covers all actions related to branding and artwork production required by the The CentOS Distribution (see <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro</xrefnodename></xref>).</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><strong>The CentOS Web</strong></tableterm>
           <item>
-            <para>The CentOS Web exists to support The CentOS Distribution.</para>
+            <para>The CentOS Web visual manifestation exists to support The CentOS Distribution.</para>
             <para>The CentOS Web covers web applications which let The CentOS Project to manifest its existence on the Internet. Through these web applications The CentOS Project provides Corporate Communication.  These web applications are free software and come from different providers which distribute their work with predefined visual styles.  Frequently, these predefined visual styles have no visual relation among themselves and introduce some visual contraditions when they all are put together.  These visual contraditions need to be removed in order to comply with The CentOS Project Corporate Structure guidelines.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><strong>The CentOS Showroom</strong></tableterm>
           <item>
-            <para>The CentOS Showroom exists to promote The CentOS Distribution.</para>
+            <para>The CentOS Showroom visual manifestation exists to promote The CentOS Distribution.</para>
             <para>The CentOS Showroom covers industrial production of objects branded by The CentOS Project (e.g., clothes, stationery and installation media). These branded objects are for distribution on social events and/or shops. They provide a way of both promotion and monetary incomming to aliviate The CentOS Project expenses (e.g., electrical power, hosting, servers, full-time-developers, etc.), in a similar way as donations do.</para>
           </item>
         </tableitem>
@@ -1159,15 +1135,12 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
         </item>
       </itemize>
       <subheading>Usage</subheading>
-      <table>
-        <tableitem>
-          <tableterm><strong>Brands</strong></tableterm>
-          <item>
-            <para>The CentOS Brand provides the one unique name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
-            <para>See <xref><xrefnodename>Directories trunk Identity Models Brands</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-      </table>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>&dots;</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -1186,14 +1159,10 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <title>The <file>trunk/Identity/Models/Brands</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Identity Models Brands</indexterm></para>
       <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
+      <para>This section describes The CentOS Brand design models.</para>
       <subheading>Description</subheading>
-      <para>The CentOS logo is the main visual representation of the CentOS project so the typography used in it must be the same always, no matter where it be shown. It also has to be clear enough to dismiss any confussion between similar typefaces (e.g., the number one (1) sometimes is confuesed with the letter <samp>el</samp> (l) or letter <samp>ai</samp> (i)).</para>
+      <para>The CentOS Brand provides the one unique name or trademark that connects the producer with their products. In this case, the producer is The CentOS Project and the products are The CentOS Project visual manifestations.</para>
+      <para>The CentOS Brand is the main visual representation of the CentOS project so the typography used in it must be the same always, no matter where it be shown. It also has to be clear enough to dismiss any confussion between similar typefaces (e.g., the number one (1) sometimes is confuesed with the letter <samp>el</samp> (l) or letter <samp>ai</samp> (i)).</para>
       <para>As convenction, the word <samp>CentOS</samp> uses <samp>Denmark</samp> typography as base, both for the word <samp>CentOS</samp> and the phrase <samp>Community Enterprise Operating System</samp>. The phrase size of CentOS logo is half the size in poits the word <samp>CentOS</samp> has and it below <samp>CentOS</samp> word and aligned with it on the left.  The distance between <samp>CentOS</samp> word and phrase <samp>Community Enterprise Operating System</samp> have the size in points the phrase has.</para>
       <float name="The CentOS logo construction">
         <floattype>Figure</floattype>
@@ -1292,7 +1261,6 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <subheading>Goals</subheading>
       <para>The <file>trunk/Identity/Themes/</file> directory exists to organize production of CentOS themes.</para>
       <subheading>Description</subheading>
-      <subsubheading>Work Flow</subsubheading>
       <para>Initially, we start working themes on their trunk development line (e.g., <file>trunk/Identity/Themes/Motifs/TreeFlower/</file>), here we organize information that cannot be produced automatically (i.e., background images, concepts, color information, screenshots, etc.).</para>
       <para>Later, when theme trunk development line is considered &ldquo;ready&rdquo; for implementation (e.g.,  all required backgrounds have been designed), we create a branch for it (e.g., <file>branches/Identity/Themes/Motifs/TreeFlower/1/</file>).  Once the branch has been created, we forget that branch and continue working the trunk development line while others (e.g., an artwork quality assurance team) test the new branch for tunning it up.</para>
       <para>Once the branch has been tunned up, and considered &ldquo;ready&rdquo; for release, it is freezed under <file>tags/</file> directory (e.g., <file>tags/Identity/Themes/Motifs/TreeFower/1.0/</file>) for packagers, webmasters, promoters, and anyone who needs images from that CentOS theme the tag was created for.</para>
@@ -1306,31 +1274,25 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <para>Before releasing a new major release of CentOS distribution we create a branch for one of several theme development lines available inside the CentOS Artwork Repository, perform quality assurance on it, and later, freeze that branch using tags. Once a the theme branch has been frozen (under <file>tags/</file> directory), CentOS Packagers (the persons whom build CentOS distribution) can use that frozen branch as source location to fulfill CentOS distribution artwork needs. The same applies to CentOS Webmasters (the persons whom build CentOS websites), and any other visual manifestation required by the project.</para>
       <subheading>Usage</subheading>
       <para>In this location themes are organized in &ldquo;Models&rdquo; &mdash;to store common information&mdash; and &ldquo;Motifs&rdquo;&mdash;to store unique information.  At rendering time, both motifs and models are combined to produce the final CentOS themes.  CentOS themes can be tagged as &ldquo;Default&rdquo; or &ldquo;Alternative&rdquo;. CentOS themes are maintained by CentOS community.</para>
-      <menu>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models</menunode>
-          <menutitle>Directories trunk Identity Themes Models</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Motifs</menunode>
-          <menutitle>Directories trunk Identity Themes Motifs</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Motifs</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
-      <menu>
-        <menuentry>
-          <menunode>Directories trunk Identity</menunode>
-          <menutitle>Directories trunk Identity</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-        <menuentry>
-          <menunode>Directories trunk</menunode>
-          <menutitle>Directories trunk</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
     </section>
   </node>
   <node>
@@ -1342,33 +1304,34 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <title>The <file>trunk/Identity/Themes/Models</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Identity Themes Models</indexterm></para>
       <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>Organize theme models.</para>
-        </item>
-      </itemize>
+      <para>This section describes design models from The CentOS Themes.</para>
       <subheading>Description</subheading>
       <para>Theme models let you modeling characteristics (e.g., dimensions, translation markers, position of each element on the display area, etc.) common to all themes.  Theme models let you reduce the time needed when propagating artistic motifs to different visual manifestations.</para>
       <para>Theme models serves as a central pool of design templates for themes to use. This way you can produce themes with different artistic motifs but same characteristics.</para>
+      <subsubheading>Default Design Model</subsubheading>
+      <para>Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
+      <subsubheading>Alternative Design Models</subsubheading>
+      <para>CentOS alternative theme models exist for people how want to use a different visual style on their installations of CentOS distribution. As the visual style is needed for a system already installed components like Anaconda are not required inside alternative themes. Inside alternative themes you find post-installation visual style only (i.e.  Backgrounds, Display Managers, Grub, etc.).  CentOS alternative themes are maintained by CentOS Community.</para>
       <subheading>Usage</subheading>
-      <table>
-        <tableitem>
-          <tableterm><strong>Default Design Model</strong></tableterm>
-          <item>
-            <para>Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Alternative Design Models</strong></tableterm>
-          <item>
-            <para>CentOS alternative theme models exist for people how want to use a different visual style on their installations of CentOS distribution. As the visual style is needed for a system already installed components like Anaconda are not required inside alternative themes. Inside alternative themes you find post-installation visual style only (i.e.  Backgrounds, Display Managers, Grub, etc.).  CentOS alternative themes are maintained by CentOS Community.</para>
-          </item>
-        </tableitem>
-      </table>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
-      <menu>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
     </section>
   </node>
   <node>
@@ -1380,31 +1343,10 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <title>The <file>trunk/Identity/Themes/Models/Default</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Identity Themes Models Default</indexterm></para>
       <subheading>Goals</subheading>
-      <para>Default Design Models for CentOS Themes provide design models for the following components:</para>
-      <table>
-        <tableitem>
-          <tableterm><strong>Distribution</strong></tableterm>
-          <item>
-            <para>Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm, Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.). See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Concept</strong></tableterm>
-          <item>
-            <para>Design models to illustrate Artistic Motifs Concepts. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Concept</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Promotion</strong></tableterm>
-          <item>
-            <para>Design models for CentOS Promotion stuff (e.g., installation media, posters, etc.). &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Themes Models Default Promo) &mdash;, for more information.</para>
-          </item>
-        </tableitem>
-      </table>
+      <para>This section describes the default design model of The CentOS Themes.</para>
       <subheading>Description</subheading>
-      <para>This directory implements the concept of <emph>Default Design Models for CentOS Themes</emph>.  Default Design Models for CentOS Themes provide the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
-      <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of CentOS Distribution the image produced belongs to. &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Models Tpl Brands) &mdash;, for more information.</para>
-      <subheading>Usage</subheading>
+      <para>The <file>trunk/Identity/Themes/Models/Default</file> directory implements the concept of <emph>Default Design Model</emph> for The CentOS Themes.  The CentOS Themes Default Design Model provides the common structural information (e.g., image dimensions, translation markers, trademark position, etc.) the <command>centos-art</command> script uses to produce images when no other design model is specified.</para>
+      <para>Deisgn models in this directory do use the <emph>CentOS Release Brand</emph>. The CentOS Release Brand is a combination of both The CentOS Type and The CentOS Release Schema used to illustrate the major release of The CentOS Distribution the image produced belongs to.  &mdash; <strong>Removed</strong>(xref:Directories trunk Identity Models Tpl Brands) &mdash;, for more information.</para>
       <para>The CentOS Project maintains near to four different major releases of CentOS Distribution. Each major release of CentOS Distribution has internal differences that make them unique and, at the same time, each CentOS Distribution individually is tagged into the one unique visual manifestation (i.e., Distribution). So, how could we implement the monolithic visual structure in one visual manifestation that has internal difference?</para>
       <para>To answer this question we broke the question in two parts and later combined the resultant answers to build a possible solution.</para>
       <table>
@@ -1430,6 +1372,16 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <quotation>
         <para><strong>Important</strong> Remarking the CentOS Release Schema inside each major release of CentOS Distribution &mdash;or similar visual manifestations&mdash; takes <emph>high attention</emph> inside The CentOS Project corporate visual identity. It should be very clear for everyone which major release of CentOS Distribution is being used.</para>
       </quotation>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Concept</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -1488,16 +1440,23 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro</indexterm></para>
       <subheading>Goals</subheading>
-      <para>This directory provides design models to produce image files for the following CentOS Distribution components:</para>
+      <para>This section organizes default design models for different major releases of CentOS Distribution.</para>
       <subheading>Description</subheading>
+      <para>In order to better understatand how this visual manifestation is organized, it is necessary to consider what The CentOS Distribution is and how it is released.</para>
+      <subsubheading>The CentOS Distribution</subsubheading>
+      <para>The CentOS Distribution is an Enterprise-class Linux Distribution derived from sources freely provided to the public by a prominent North American Enterprise Linux vendor. The CentOS Distribution conforms fully with the upstream vendors redistribution policy and aims to be 100% binary compatible. (The CentOS Project mainly changes packages to remove upstream vendor branding and artwork.)</para>
+      <para>The CentOS Distribution is developed by a small but growing team of core developers.  In turn the core developers are supported by an active user community including system administrators, network administrators, enterprise users, managers, core Linux contributors and Linux enthusiasts from around the world.</para>
+      <subsubheading>The CentOS Distribution Release Schema</subsubheading>
+      <para>The upstream vendor has released 4 versions of their <acronym><acronymword>EL</acronymword><acronymdesc>Enterprise Linux</acronymdesc></acronym> product that The CentOS Project rebuilds the freely available SRPMS for.  The upstream vendor releases security updates as required by circumstances. The CentOS Project releases rebuilds of security updates as soon as possible. Usually within 24 hours (our stated goal is with 72 hours, but we are usually much faster).</para>
+      <para>The upstream vendor also releases numbered update sets for major versions of their EL product from 2 to 4 times per year. There are new ISOs from the upstream vendor provided for these update sets.  Update sets will be completed as soon as possible after the upstream vendor releases their version &dots; generally within 2 weeks. The CentOS Project follows these conventions as well, so CentOS-3.9 correlates with EL 3 update 9 and CentOS-4.6 correlates with EL 4 update 6, CentOS-5.1 correlates to EL 5 update 1, etc.</para>
+      <para>One thing some people have problems understanding is that if you have any CentOS-3 product and update it, you will be updated to the latest CentOS-3.x version.</para>
+      <para>The same is true for CentOS-4 and CentOS-5. If you update any CentOS-4 product, you will be updated to the latest CentOS-4.x version, or to the latest CentOS-5.x version if you are updating a CentOS-5 system. This is exactly the same behavior as the upstream product.  Let's assume that the latest EL4 product is update 6. If you install the upstream original EL4 CDs (the ones before any update set) and upgrade via <command>yum</command>, you will have latest update set installed (EL4 update 6 in our example). Since all updates within a major release (CentOS-2, CentOS-3, CentOS-4, CentOS-5) always upgrade to the latest version when updates are performed (thus mimicking upstream behavior), only the latest version is maintained in each main tree on The CentOS Mirrors (<uref><urefurl>http://mirrors.centos.org/</urefurl></uref>).</para>
+      <para>There is a CentOS Vault (<uref><urefurl>http://vault.centos.org/</urefurl></uref>) containing old CentOS trees. This vault is a picture of the older tree when it was removed from the main tree, and does not receive updates. It should only be used for reference.</para>
       <para>The CentOS Distribution visual style is controlled by image files. These image files are packaged inside The CentOS Distribution and made visible once such packages are installed and executed. The way to go for changing The CentOS Distribution visual style is changing all those image files to add the desired visual style first and later, repackage them to make them available inside the final iso files of CentOS Distribution.</para>
       <subheading>Usage</subheading>
-      <para>This directory provides organizationl structure to store default design models for CentOS Themes of CentOS Distribution and so it should be considered to be used.</para>
-      <para>When a new component is added to CentOS Distribution, this is the directory you need to go for specifying design models for image files inside such component.</para>
-      <para>The procedure to follow is creatig a directory for each component using its very same name (e.g., the directory <file>Anaconda</file> stores image files for Anaconda component, the installer program). Inside the directory, you need to create one scalable vector graphic for each image file inside the component you want to produce images for. This, in order to set image dimensions, image file-name, position of trademarks in the final image, translation markers and whatever common information you need to have specified in them when rendered by <command>centos-art</command> script.</para>
-      <para>Sometimes, between major releases, image files inside packages can be added, removed or just change their names. In order to describe such image files variations, the design models directory structure is organized in the same way the file variations are introduced (i.e., through The CentOS Project Release Schema).  So, each major release of CentOS Distribution does have its own design model directory structure in this directory.</para>
-      <para>When a whole package is removed from one or all CentOS Distribution major releases, the design models directory structure releated to it is no longer used.  However it could be very useful for historical reasons.  Also, someone could feel motivated enough to keep himself documenting it or supporting it for whatever reason.</para>
-      <subsubheading>Major release 5</subsubheading>
+      <para>Sometimes, between major releases, image files inside packages can be added, removed or just get the name changed. In order to describe such variations, the design models directory structure is organized in the same way the variations are introduced (i.e., through The CentOS Distribution Release Schema).  So, each major release of The CentOS Distribution has its own design model directory structure.</para>
+      <para>When a new package/component is added to one or all the major releases of The CentOS Distribution, a design model directory structure for that component needs to be created. Later, it is filled up with related design models. Design models are created for each image file inside the component that need to be rebuilt in order to set the visual style and brand information correctly.</para>
+      <para>When a package is removed from one or all major releases of The CentOS Distribution, the design model directory structure releated to that package/component is no longer used.  However, it could be very useful for historical reasons.  Also, someone could feel motivation enough to keep himself documenting it or supporting it for whatever reason.</para>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
@@ -1505,13 +1464,24 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
         </item>
       </itemize>
       <subheading>See also</subheading>
-      <menu>
-        <menuentry>
-          <menunode>Directories trunk Identity Themes Models Default</menunode>
-          <menutitle>Directories trunk Identity Themes Models Default</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes Models Default</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes Models</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
     </section>
   </node>
   <node>
@@ -1537,86 +1507,60 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
         </item>
       </itemize>
       <subheading>Usage</subheading>
-      <table>
-        <tableitem>
-          <tableterm><strong>Syslinux</strong></tableterm>
-          <item>
-            <para>Contains design models for syslinux, the program used to boot the CentOS Distribution installation media.</para>
-            <itemize>
-              <itemfunction>&bullet;</itemfunction>
-              <item>
-                <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Syslinux</xrefnodename></xref>.</para>
-              </item>
-            </itemize>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Anaconda</strong></tableterm>
-          <item>
-            <para>Contains design models for Anaconda, the program used to install CentOS Distribution.</para>
-            <itemize>
-              <itemfunction>&bullet;</itemfunction>
-              <item>
-                <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Anaconda</xrefnodename></xref>.</para>
-              </item>
-            </itemize>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Firstboot</strong></tableterm>
-          <item>
-            <para>Contains design models for the first boot program used to configure the maching onece installed.  See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Firstboot</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Rhgb</strong></tableterm>
-          <item>
-            <para>Contains design models for CentOS Graphical Boot, the program used to show the boot process from Grub to Display Manager.  See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Rhgb</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Gdm</strong></tableterm>
-          <item>
-            <para>Contains design models for GNOME Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Gdm</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Kdm</strong></tableterm>
-          <item>
-            <para>Contains design models for KDE Display Manager, the program used to log into the manchine once installed and configured. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Grub</strong></tableterm>
-          <item>
-            <para>Contains design models for GRUB (Grand Unified Boot Loader), the program used to boot the machine into an operating system. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Kdm</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Gsplash</strong></tableterm>
-          <item>
-            <para>Contains design models for GNOME splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Gsplash</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><strong>Ksplash</strong></tableterm>
-          <item>
-            <para>Contains design models for KDE splash, the program used to show the progress information while user's graphical session is loading. See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro Ksplash</xrefnodename></xref>, for more information.</para>
-          </item>
-        </tableitem>
-      </table>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Syslinux</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Anaconda</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Rhgb</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Gdm</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Kdm</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Grub</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Gsplash</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Identity Themes Models Default Distro 5 Ksplash</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
-          <para>...</para>
+          <para><xref><xrefnodename>Directories trunk Identity Themes Models Default Distro</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes Models Default</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes Models</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Themes</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref>.</para>
         </item>
       </itemize>
     </section>
   </node>
   <node>
     <nodename>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodenext>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Firstboot</nodenext>
     <nodeprev>Directories trunk Identity Themes Models Default Distro 5</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1637,9 +1581,247 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Firstboot</nodenext>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Firstboot</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Gdm</nodenext>
     <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Anaconda</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Firstboot</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Firstboot</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Gdm</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Grub</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Firstboot</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Gdm</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Gdm</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Grub</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Gsplash</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Gdm</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Grub</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Grub</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Gsplash</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Kdm</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Grub</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Gsplash</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Gsplash</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Kdm</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Ksplash</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Gsplash</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Kdm</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Kdm</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Ksplash</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Rhgb</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Kdm</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Ksplash</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Ksplash</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Rhgb</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Ksplash</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Rhgb</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro 5 Rhgb</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <menu>
+      </menu>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodename>
+    <nodenext>Directories trunk Identity Themes Models Default Posters</nodenext>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Rhgb</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Distro/5/Syslinux</file> Directory</title>
@@ -1675,247 +1857,9 @@ trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
     </section>
   </node>
   <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Firstboot</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Gdm</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Firstboot</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Firstboot</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Gdm</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Grub</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Firstboot</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Gdm</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Gdm</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Grub</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Gsplash</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Gdm</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Grub</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Grub</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Gsplash</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Kdm</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Grub</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Gsplash</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Gsplash</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Kdm</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Ksplash</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Gsplash</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Kdm</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Kdm</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Ksplash</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Distro Rhgb</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Kdm</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Ksplash</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Ksplash</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
-    <nodename>Directories trunk Identity Themes Models Default Distro Rhgb</nodename>
-    <nodenext>Directories trunk Identity Themes Models Default Posters</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Ksplash</nodeprev>
-    <nodeup>Directories</nodeup>
-    <section>
-      <title>The <file>trunk/Identity/Themes/Models/Default/Distro/Rhgb</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Identity Themes Models Default Distro Rhgb</indexterm></para>
-      <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>Usage</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
-      <subheading>See also</subheading>
-      <menu>
-      </menu>
-    </section>
-  </node>
-  <node>
     <nodename>Directories trunk Identity Themes Models Default Posters</nodename>
     <nodenext>Directories trunk Identity Themes Motifs</nodenext>
-    <nodeprev>Directories trunk Identity Themes Models Default Distro Rhgb</nodeprev>
+    <nodeprev>Directories trunk Identity Themes Models Default Distro 5 Syslinux</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Themes/Models/Default/Posters</file> Directory</title>
@@ -2412,7 +2356,11 @@ priority=10
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Locales</file> Directory</title>
-      <para><indexterm index="cp">Directories trunk Locales</indexterm>The <file>trunk/Locales</file> directory exists to store the translation messages used to produce content in different languages.</para>
+      <para><indexterm index="cp">Directories trunk Locales</indexterm></para>
+      <subheading>Goals</subheading>
+      <para>The <file>trunk/Locales</file> directory structure provides the localization work line and its main goal is provide the translation messages required to produce content in different languages.</para>
+      <subheading>Description</subheading>
+      <para>Translation messages inside the repository are stored as portable objects (e.g., .po, .pot) and machine objects (.mo) under <file>trunk/Locales</file> directory structure.</para>
       <para>Translation messages are organized using the directory structure of the component being translated. For example, if we want to provide translation messages for <file>trunk/Manuals/Repository</file>, then the <file>trunk/Locales/Manuals/Repository</file> directory needs to be created.</para>
       <para>Once the locale directory exists for the component we want to provide translation messages for, it is necessary to create the translation files where translation messages are. The translation files follows the concepts of <command>xml2po</command> and GNU <command>gettext</command> tools.</para>
       <para>The basic translation process is as follow: first, translatable strings are extracted from files and a portable object template (.pot) is created or updated with the information. Using the portable object template, a portable object (.po) is created or updated for translator to locale the messages retrived.  Finally, a machine object (.mo) is created from portable object to sotore the translated messages.</para>
@@ -2420,13 +2368,17 @@ priority=10
       <para>When translatable strings are retrived from XML files, using the <command>xml2po</command> command, there is no need to create the machine object as we do when translatable strings ar retrived from shell files, using the <command>xgettext</command> command. The <command>xml2po</command> produces a temporal machine object in order to create a translated XML file. Once the translated XML file has been created the machine object is no longer needed. On the other hand, the machine object produced by the <command>xgettext</command> command is required by the system in order for the show shell script localized messages.</para>
       <para>Another difference between <command>xml2po</command> and <command>xgettext</command> we need to be aware of is the directory structure used to store machine objects. In <command>xml2po</command>, the machine object is created in the current working directory as <file>.xml2po.mo</file> and can be safetly removed once the translated XML file has been created. In the case of <command>xgettext</command>, the machine object needs to be stored in the <file>$TEXTDOMAIN/$LOCALE/LL_MESSAGES/$TEXTDOMAIN.mo</file> file in order for the system to interpret it and should not be removed since it is the file that contain the translation messages themselves.</para>
       <para>Automation of localization tasks is achived through the <code>locale</code> functionality of command-line interface.</para>
-      <menu>
-        <menuentry>
-          <menunode>Directories trunk Scripts Functions Locale</menunode>
-          <menutitle>Directories trunk Scripts Functions Locale</menutitle>
-          <menucomment></menucomment>
-        </menuentry>
-      </menu>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction><xref><xrefnodename>Directories trunk Scripts Functions Locale</xrefnodename></xref>
+      </itemize>
     </section>
   </node>
   <node>
@@ -2438,12 +2390,7 @@ priority=10
       <title>The <file>trunk/Manual</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Manual</indexterm></para>
       <subheading>Goals</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
+      <para>This <file>trunk/Manual</file> directory structure provides the documentation work line.  The main goal of documentation work line is describe what each directory inside the CentOS Artwork Repository is for, the conceptual ideas behind them and, if possible, how automation scripts make use of them.</para>
       <subheading>Description</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>

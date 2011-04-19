@@ -53,64 +53,13 @@ visual manifestations were defined:
 
 The CentOS Distribution visual manifestation covers all actions
 related to branding and artwork production required by the The CentOS
-Distribution. @xref{Directories trunk Identity Themes Models Default
-Distro}.
-
-The CentOS Distribution is an Enterprise-class Linux Distribution
-derived from sources freely provided to the public by a prominent
-North American Enterprise Linux vendor. The CentOS Distribution
-conforms fully with the upstream vendors redistribution policy and
-aims to be 100% binary compatible. (The CentOS Project mainly changes
-packages to remove upstream vendor branding and artwork.)
-
-The CentOS Distribution is developed by a small but growing team of
-core developers.  In turn the core developers are supported by an
-active user community including system administrators, network
-administrators, enterprise users, managers, core Linux contributors
-and Linux enthusiasts from around the world.
-
-The upstream vendor has released 4 versions of their
-@acronym{EL,Enterprise Linux} product that The CentOS Project rebuilds
-the freely available SRPMS for.  The upstream vendor releases security
-updates as required by circumstances. The CentOS Project releases
-rebuilds of security updates as soon as possible. Usually within 24
-hours (our stated goal is with 72 hours, but we are usually much
-faster).
-
-The upstream vendor also releases numbered update sets for major
-versions of their EL product from 2 to 4 times per year. There are new
-ISOs from the upstream vendor provided for these update sets.  Update
-sets will be completed as soon as possible after the upstream vendor
-releases their version @dots{} generally within 2 weeks. The CentOS
-Project follows these conventions as well, so CentOS-3.9 correlates
-with EL 3 update 9 and CentOS-4.6 correlates with EL 4 update 6,
-CentOS-5.1 correlates to EL 5 update 1, etc.
-
-One thing some people have problems understanding is that if you have
-any CentOS-3 product and update it, you will be updated to the latest
-CentOS-3.x version.  
-
-The same is true for CentOS-4 and CentOS-5. If you update any CentOS-4
-product, you will be updated to the latest CentOS-4.x version, or to
-the latest CentOS-5.x version if you are updating a CentOS-5 system.
-This is exactly the same behavior as the upstream product.  Let's
-assume that the latest EL4 product is update 6. If you install the
-upstream original EL4 CDs (the ones before any update set) and upgrade
-via @command{yum}, you will have latest update set installed (EL4
-update 6 in our example). Since all updates within a major release
-(CentOS-2, CentOS-3, CentOS-4, CentOS-5) always upgrade to the latest
-version when updates are performed (thus mimicking upstream behavior),
-only the latest version is maintained in each main tree on The CentOS
-Mirrors (@url{http://mirrors.centos.org/}).
-
-There is a CentOS Vault (@url{http://vault.centos.org/}) containing
-old CentOS trees. This vault is a picture of the older tree when it
-was removed from the main tree, and does not receive updates. It
-should only be used for reference. 
+Distribution (@pxref{Directories trunk Identity Themes Models Default
+Distro}).
 
 @item The CentOS Web
 
-The CentOS Web exists to support The CentOS Distribution. 
+The CentOS Web visual manifestation exists to support The CentOS
+Distribution. 
 
 The CentOS Web covers web applications which let The CentOS Project to
 manifest its existence on the Internet. Through these web applications
@@ -124,7 +73,8 @@ to comply with The CentOS Project Corporate Structure guidelines.
 
 @item The CentOS Showroom
 
-The CentOS Showroom exists to promote The CentOS Distribution.
+The CentOS Showroom visual manifestation exists to promote The CentOS
+Distribution.
 
 The CentOS Showroom covers industrial production of objects branded by
 The CentOS Project (e.g., clothes, stationery and installation media).

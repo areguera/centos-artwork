@@ -5,58 +5,11 @@ trunk concept in a trunk, branches, tags repository structure.
 
 @subheading Description
 
-The @file{trunk/} directory structure is the main development line
-inside the CentOS Artwork Repository and organizes the following
-work lines:
+The @file{trunk/} directory structure provides the main development
+line inside the CentOS Artwork Repository.
 
-@table @strong
-@item Graphic design
 
-The graphic design work line exists to cover brand design, typography
-design and themes design mainly. Additionally, some auxiliar areas
-like icon design, illustration design, brushes design, patterns
-designs and palettes of colors are also included here for
-completeness.
-
-In this section you'll find how to organize and produce gaphic designs
-in the repository. The graphic design work line is the perfect place
-to consolidate @emph{The CentOS Artwork SIG}. If you are interested in
-producing graphic designs for The CentOS Project, this place is for
-you. 
-
-@xref{Directories trunk Identity}, for more information.
-
-@item Documentation
-
-The documentation work line exists to describe what each directory
-inside the CentOS Artwork Repository is for, the conceptual ideas
-behind them and, if possible, how automation scripts make use of them.
-
-In this section you'll find how to organize and produce the
-@emph{CentOS Artwork Repository Manual} (i.e., the documentation
-manual you're reading right now). If you are interested in producing
-documentation for the repository, this place is for you.
-
-@xref{Directories trunk Manual}, for more information.
-
-@item Localization
-
-The localization work line exists to provide the translation messages
-required to produce content in different languages. Translation
-messages inside the repository are stored as portable objects (e.g.,
-.po, .pot) and machine objects (.mo) under @file{trunk/Locales}
-directory structure.
-
-In this section you'll find how to organize and produce translation
-messages for @emph{graphic designs}, @emph{documentation} and
-@emph{automation scripts} in the repository. This place is perfect to
-consolidate @emph{The CentOS Translation SIG}. If you love
-translating, you'll find lot of messages waiting for you to translate
-here.  
-
-@xref{Directories trunk Locales}, for more information.
-
-@item Automation
+@subsubheading Automation
 
 The automation work line exists to standardize content production in
 CentOS Artwork Repository. There is no need to type several tasks,
@@ -70,18 +23,19 @@ documenting directory structures, translating content, etc.).  If you
 can't resist the idea of automating repeatable tasks, then take a look
 here.
 
-@xref{Directories trunk Scripts}, for more information.
-@end table
-
 @subheading Usage
 
-It seems to be no other use for this directory but to organize the
-sections described above.
+@itemize
+@item @xref{Directories trunk Identity}.
+@item @xref{Directories trunk Manual}.
+@item @xref{Directories trunk Locales}.
+@item @xref{Directories trunk Scripts}.
+@end itemize
 
 @subheading See also
 
 @itemize
-@item @xref{Directories branches}.
-@item @xref{Directories tags}.
-@item Subversion's book (@url{http://svnbook.red-bean.com/}).
+@item @ref{Directories branches}.
+@item @ref{Directories tags}.
+@item The Subversion book (@url{http://svnbook.red-bean.com/}).
 @end itemize

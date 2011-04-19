@@ -1,5 +1,14 @@
-The @file{trunk/Locales} directory exists to store the translation
-messages used to produce content in different languages.
+@subheading Goals
+
+The @file{trunk/Locales} directory structure provides the localization
+work line and its main goal is provide the translation messages
+required to produce content in different languages. 
+
+@subheading Description 
+
+Translation messages inside the repository are stored as portable
+objects (e.g., .po, .pot) and machine objects (.mo) under
+@file{trunk/Locales} directory structure.
 
 Translation messages are organized using the directory structure of
 the component being translated. For example, if we want to provide
@@ -50,7 +59,15 @@ the file that contain the translation messages themselves.
 Automation of localization tasks is achived through the @code{locale}
 functionality of command-line interface.
 
-@menu
-* Directories trunk Scripts Functions Locale::
-@end menu
+@subheading Usage
+
+@itemize
+@item ...
+@end itemize
+
+@subheading See also
+
+@itemize
+@ref{Directories trunk Scripts Functions Locale}
+@end itemize
 

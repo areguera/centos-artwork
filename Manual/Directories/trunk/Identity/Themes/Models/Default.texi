@@ -1,42 +1,22 @@
 @subheading Goals
 
-Default Design Models for CentOS Themes provide design models for the
-following components:
-
-@table @strong
-@item Distribution
-Design models for CentOS Distribution (e.g., Anaconda, Firstboot, Gdm,
-Grub, Gsplash, Kdm, Ksplash, Rhgb and Syslinux, etc.).
-@xref{Directories trunk Identity Themes Models Default Distro}, for
-more information.
-
-@item Concept
-Design models to illustrate Artistic Motifs Concepts.
-@xref{Directories trunk Identity Themes Models Default Concept}, for
-more information.
-
-@item Promotion 
-Design models for CentOS Promotion stuff (e.g., installation media,
-posters, etc.). --- @strong{Removed}(xref:Directories trunk Identity Themes Models Default
-Promo) ---, for more information.  
-@end table
+This section describes the default design model of The CentOS Themes.
 
 @subheading Description
 
-This directory implements the concept of @emph{Default Design Models
-for CentOS Themes}.  Default Design Models for CentOS Themes provide
-the common structural information (e.g., image dimensions, translation
-markers, trademark position, etc.) the @command{centos-art} script
-uses to produce images when no other design model is specified.
+The @file{trunk/Identity/Themes/Models/Default} directory implements
+the concept of @emph{Default Design Model} for The CentOS Themes.  The
+CentOS Themes Default Design Model provides the common structural
+information (e.g., image dimensions, translation markers, trademark
+position, etc.) the @command{centos-art} script uses to produce images
+when no other design model is specified.
 
 Deisgn models in this directory do use the @emph{CentOS Release
 Brand}. The CentOS Release Brand is a combination of both The CentOS
 Type and The CentOS Release Schema used to illustrate the major
-release of CentOS Distribution the image produced belongs to.
---- @strong{Removed}(xref:Directories trunk Identity Models Tpl Brands) ---, for more
-information.
-
-@subheading Usage
+release of The CentOS Distribution the image produced belongs to.  ---
+@strong{Removed}(xref:Directories trunk Identity Models Tpl Brands)
+---, for more information.
 
 The CentOS Project maintains near to four different major releases of
 CentOS Distribution. Each major release of CentOS Distribution has
@@ -82,6 +62,13 @@ manifestations--- takes @emph{high attention} inside The CentOS
 Project corporate visual identity. It should be very clear for
 everyone which major release of CentOS Distribution is being used.
 @end quotation
+
+@subheading Usage
+
+@itemize
+@item @xref{Directories trunk Identity Themes Models Default Distro}.
+@item @xref{Directories trunk Identity Themes Models Default Concept}.
+@end itemize
 
 @subheading See also
 
