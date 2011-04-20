@@ -1,9 +1,16 @@
 @subheading Goals
 
-The @file{trunk/Scripts} directory exists to organize the trunk
-development line of @file{centos-art.sh} automation script.  The
-@file{centos-art.sh} script standardizes tasks you need to do
-frequently inside CentOS Artwork Repository.
+This section provides the automation work line. The automation work
+line exists to standardize content production in CentOS Artwork
+Repository.  There is no need to type several tasks, time after time,
+if they can be programmed into just one executable script.
+
+In this section you'll find how to organize and extend the
+@command{centos-art.sh} script, a bash scripts specially designed to
+automate most frequent tasks in the repository (e.g., image rendition,
+documenting directory structures, translating content, etc.).  If you
+can't resist the idea of automating repeatable tasks, then take a look
+here.
 
 @subheading Description
 
@@ -22,19 +29,18 @@ operating system trys to execute that command. In order to execute the
 command, the operating system needs to know where it is, so the
 operating system uses the @var{PATH} environment variable to look for
 that command location. If your system was prepared to use CentOS
-Artwork Repository correctly (--- @strong{Removed}(pxref:trunk Scripts Bash Functions
-Verify) ---), you should have a symbolic link inside @file{~/bin/}
-directory that points to the @file{centos-art.sh} script file. As
-@file{~/bin/} directory is, by default, inside @var{PATH} environment
-variable, the execution of @command{centos-art} command runs the
-@file{centos-art.sh} script.
+Artwork Repository correctly (@pxref{Directories trunk Scripts
+Functions Prepare}) you should have a symbolic link inside
+@file{~/bin} directory that points to the @file{centos-art.sh} script
+file. As @file{~/bin} directory is, by default, inside @var{PATH}
+environment variable, the execution of @command{centos-art} command
+runs the @file{centos-art.sh} script.
 
 When @file{centos-art.sh} script is executed, the first it does is
-executing the @file{trunk/Scripts/Bash/initEnvironment.sh} script to
-initialize global variables (e.g., @command{gettext} variables) and
+initializing global variables (e.g., @command{gettext} variables) and
 global function scripts.  Global function scripts are located inside
-@file{trunk/Scripts/Bash/Functions} directory and their file names
-begin with @samp{cli}. Global function scripts provide common
+@file{trunk/Scripts/Functions} directory and their file names begin
+with @samp{cli}. Global function scripts provide common
 functionalities that can be used anywhere inside @file{centos-art.sh}
 script execution environment.
 
@@ -42,13 +48,13 @@ Once global variables and function scripts have been loaded,
 @file{centos-art.sh} script executes the @command{cli} global function
 from @file{cli.sh} function script to retrive command-line arguments
 and define some default values that may be used later by specific
-function scripts (--- @strong{Removed}(pxref:trunk Scripts Bash Functions) ---).
+function scripts (@pxref{Directories trunk Scripts Functions}).
 
 As convenction, the @file{centos-art.sh} command-line arguments have
 the following format:
 
 @verbatim
-centos-art function path/to/dir --options
+centos-art function path/to/dir --option='value'
 @end verbatim
 
 In the above example, @samp{centos-art} is the command you use to
@@ -66,30 +72,26 @@ Once command-line arguments have been retrived, the
 functionality can be loaded at one script execution I.e., you run
 @command{centos-art.sh} script to run just one functionality.
 
-@float Figure,fig:trunk/Scripts/Bash:Initialization
+@float Figure, Functionalities initialization
 @verbatim
 +----------------------------------------------------------------------+
-| [centos@host]$ centos-art function --action='value' --option='value' |
+| [centos@host]$ centos-art function path/to/dir --option='value'      |
 +----------------------------------------------------------------------+
 | ~/bin/centos-art --> ~/artwork/trunk/Scripts/centos-art.sh           |
-+---v-----------------------------------------v------------------------+
-    | centos-art.sh                           |
-    +---v---------------------------------v---+
-    .   | initEnvironment.sh              |   .
-    .   +---------------------------------+   .
-    .   | cli $@                          |   .
-    .   +---v-------------------------v---+   .
-    .   .   | cli_getFunctions        |   .   .
-    .   .   +---v-----------------v---+   .   .
-    .   .   .   | function1       |   .   .   .
-    .   .   .   | function2       |   .   .   .
-    .   .   .   | function3       |   .   .   .
-    .   .   .   +-----------------+   .   .   .
-    .   .   ...........................   .   .
-    .   ...................................   .
-    ...........................................
++---v--------------------------------------------------------------v---+
+    | centos-art.sh                                                |
+    +-v--------------------------------------------------------v---+
+    . | cli $@                                                 |   .
+    . +-v--------------------------------------------------v---+   .
+    . . | cli_getFunctions                                 |   .   .
+    . . +-v-----------v-----------v-----------v------------+   .   .
+    . . . | function1 | function2 | functionN |            .   .   .
+    . . . +-----------+-----------+-----------+            .   .   .
+    . . ....................................................   .   .
+    . ..........................................................   .
+    ................................................................
 @end verbatim
-@caption{The functionalities initialization environment.}
+@caption{Functionalities initialization environment.}
 @end float
 
 Functionalities are implemented by means of actions.  Once the
@@ -99,59 +101,34 @@ similar to functions initialization model. But with the difference,
 that actions are loaded inside function environment, and so, share
 variables and functions defined inside function environment.
 
-@float Figure,fig:trunk/Scripts/Bash/Functions:Initialization
+@float Figure, Actions initialization
 @verbatim
-+--------------------------------------+
-| cli_getFunctions                     |
-+---v------------------------------v---+
-.   | function1                    |   .
-.   +---v------------------------v-+   .
-.   .   | function1_getArguments | .   .
-.   .   +---v--------------v-----+ .   .
-.   .   .   | action 1     |     . .   .
-.   .   .   | action 2     |     . .   .
-.   .   .   | action n     |     . .   .
-.   .   .   +--------------+     . .   .
-.   .   .......................... .   .
-.   ................................   .
-.   +------------------------------+   .
-.   | function2                    |   .
-.   +---v------------------------v-+   .
-.   .   | function2_getArguments | .   .
-.   .   +---v--------------v-----+ .   .
-.   .   .   | action 1     |     . .   .
-.   .   .   | action 2     |     . .   .
-.   .   .   | action n     |     . .   .
-.   .   .   +--------------+     . .   .
-.   .   .......................... .   .
-.   ................................   .
-.   +------------------------------+   .
-.   | function3                    |   .
-.   +---v------------------------v-+   .
-.   .   | function3_getArguments | .   .
-.   .   +---v--------------v-----+ .   .
-.   .   .   | action 1     |     . .   .
-.   .   .   | action 2     |     . .   .
-.   .   .   | action n     |     . .   .
-.   .   .   +--------------+     . .   .
-.   .   .......................... .   .
-.   ................................   .
-........................................
++----------------------------------------------------------------------+
+| cli_getFunctions                                                     |
++---v----------------------------v----v----------------------------v---+
+.   | function1                  |    | function2                  |   .
+.   +-v------------------------v-+    +-v------------------------v-+   .
+.   . | function1_getArguments | .    . | function2_getArguments | .   .
+.   . +-v--------------------v-+ .    . +-v--------------------v-+ .   .
+.   . . | action 1           | . .    . . | action 1           | . .   .
+.   . . | action 2           | . .    . . | action 2           | . .   .
+.   . . | action N           | . .    . . | action N           | . .   .
+.   . . +--------------------+ . .    . . +--------------------+ . .   .
+.   . .......................... .    . .......................... .   .
+.   ..............................    ..............................   .
+........................................................................
 @end verbatim
-@caption{The actions initialization environment.}
+@caption{Actions initialization environment.}
 @end float
 
 @subheading Usage
 
 The @file{centos-art.sh} script usage information is described inside
-each specific function documentation (--- @strong{Removed}(pxref:trunk Scripts Bash
-Functions) ---).
+each specific function documentation (@pxref{Directories trunk Scripts
+Functions}).
 
 @subheading See also
 
-@menu
-* Directories trunk Scripts::
-* Directories trunk Scripts Functions::
-@comment --- Removed(* Directories trunk Scripts Locale::) ---
-@end menu
-
+@itemize
+@item @ref{Directories trunk}
+@end itemize

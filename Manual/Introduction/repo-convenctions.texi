@@ -14,7 +14,7 @@ independent working copies to interchange data and provides the
 information required to permit extracting previous versions of files
 at any time.
 
-@subheading Repository policy
+@subsection Repository policy
 @cindex Repository policy
 
 The CentOS Artwork Repository is a collaborative tool that anyone can
@@ -56,7 +56,7 @@ License in order for them to remain inside the repository. See file
 @url{file:///home/centos/artwork/trunk/Scripts/COPYING,trunk/Scripts/COPYING},
 for a complete license description.
 
-@subheading Repository organization 
+@subsection Repository organization 
 @cindex Repository organization
 
 The CentOS Artwork Repository uses a @file{trunk}, @file{branches},
@@ -82,7 +82,7 @@ either from the main or the intermediate lines of development.
 @xref{Directories tags}, for more information.
 @end table
 
-@subheading Repository file names
+@subsection Repository file names
 @cindex Repository file names
 
 Inside the CentOS Artwork Repository, file names are all written in
@@ -91,7 +91,7 @@ lowercase (e.g., @samp{01-welcome.png}, @samp{splash.png},
 capitalized (e.g., @samp{Identity}, @samp{Themes}, @samp{Motifs},
 @samp{TreeFlower}, etc.).
 
-@subheading Repository work lines
+@subsection Repository work lines
 
 Inside CentOS Artwork Repository there are four major work lines of
 production which are: @emph{graphic design}, @emph{documentation},
@@ -104,7 +104,7 @@ content produced in one area depends somehow from content produced in
 another different area. So, a @emph{content production standard} is
 required for each available work line.
 
-@subsubheading Graphic design
+@subsubsection Graphic design
 @cindex Graphic design work line
 
 The graphic design work line exists to cover brand design, typography
@@ -171,7 +171,7 @@ itself is controlled by the @code{render} functionality of
 @xref{Directories trunk Identity}, for more information about The
 CentOS Corporate Identity and how graphic design fits on it.
 
-@subsubheading Documentation
+@subsubsection Documentation
 @cindex Documentation work line
 
 The documentation work line exists to describe what each directory
@@ -202,7 +202,7 @@ automate such process yet.
 @xref{Directories trunk Manual}, for more information on
 documentation.
 
-@subsubheading Localization
+@subsubsection Localization
 @cindex Localization work line
 
 The localization work line exists to provide the translation messages
@@ -262,7 +262,7 @@ Artwork Repository be sure to use source files supported either by
 
 @xref{Directories trunk Locales}, for more information.
 
-@subsubheading Automation
+@subsubsection Automation
 @cindex Automation work line
 
 The automation work line exists to standardize content production in
@@ -287,7 +287,7 @@ to benefit.
 
 @xref{Directories trunk Scripts}, for more information on automation.
 
-@subheading Connection between directories
+@subsection Connection between directories
 @cindex Connection between directories
 @cindex Master paths
 @cindex Auxiliar paths
@@ -416,7 +416,7 @@ like Syslinux, Grub, Rhgb, Gdm, Kdm, Gsplash and Ksplash that share a
 similar file organization to that described above for @file{Anaconda}
 component.
 
-@subheading Syncronizing path information
+@subsection Syncronizing path information
 @cindex Syncronizing path information
 
 Syncronizing path information is the action that keeps all path
@@ -483,7 +483,7 @@ exist.
 The syncronization of path information is aimed to solve these kind of
 issues.
 
-@subheading Extending repository organization
+@subsection Extending repository organization
 @cindex Extending repository organization
 
 Occasionly, you may find that new components of The CentOS Project
