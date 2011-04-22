@@ -67,6 +67,7 @@ function cli_replaceTMarkers {
     SRC[20]='=URL_IRC='
     SRC[21]='=LOCALE_LL='
     SRC[22]='=LOCALE='
+    SRC[23]='=REPO_TLDIR='
 
     # Define replacements for translation markers.
     DST[0]="$(cli_getCopyrightInfo '--copyright-year')"
@@ -100,6 +101,7 @@ function cli_replaceTMarkers {
     DST[20]='http://www.centos.org/modules/tinycontent/index.php?id=8'
     DST[21]="$(cli_getCurrentLocale '--langcode-only')"
     DST[22]="$(cli_getCurrentLocale)"
+    DST[23]="$(cli_getRepoTLDir)"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
