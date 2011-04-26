@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# copy_getArguments.sh -- This function interprets arguments passed to
-# copy functionality and calls actions accordingly.
+# copy_getOptions.sh -- This function interprets option parameters
+# passed to copy functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -22,7 +22,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function copy_getArguments {
+function copy_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""

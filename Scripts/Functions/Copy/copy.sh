@@ -47,7 +47,7 @@ function copy {
     local COUNT=0
 
     # Interpret arguments and options passed through command-line.
-    copy_getArguments
+    copy_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
