@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# tuneup_getArguments.sh -- This function interprets arguments passed to
-# tuneup functionality and calls actions accordingly.
+# tuneup_getOptions.sh -- This function interprets option parameters
+# passed to `tuneup' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -22,7 +22,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_getArguments {
+function tuneup_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""

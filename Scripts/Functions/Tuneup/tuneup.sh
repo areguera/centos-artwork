@@ -29,7 +29,7 @@ function tuneup {
     local ACTIONVAL=''
 
     # Interpret arguments and options passed through command-line.
-    tuneup_getArguments
+    tuneup_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
