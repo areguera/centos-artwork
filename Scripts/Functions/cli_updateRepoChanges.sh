@@ -53,15 +53,9 @@ function cli_updateRepoChanges {
     cli_checkFiles "$LOCATIONS" 'fd'
     cli_checkFiles "$LOCATIONS" 'isInWorkingCopy'
 
-    # Outout separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Update working copy and retrive update output.
-    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsResponseLine'
+    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsBannerLine'
     UPDATEOUT=$(svn update ${LOCATIONS})
-
-    # Outout separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
 
     # Define path of files considered recent modifications from
     # central repository to working copy.
