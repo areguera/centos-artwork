@@ -44,6 +44,12 @@ function cli_printMessage {
     # Define message formats.
     case $FORMAT in
 
+    'AsBannerLine' )
+        cli_printMessage '-' 'AsSeparatorLine'
+        cli_printMessage "$MESSAGE"
+        cli_printMessage '-' 'AsSeparatorLine'
+        ;;
+
     'AsUpdatingLine' )
         cli_printMessage "`gettext "Updating"`: $MESSAGE"
         ;;
