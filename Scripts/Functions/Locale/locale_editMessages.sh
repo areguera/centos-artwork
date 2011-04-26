@@ -41,10 +41,18 @@ function locale_editMessages {
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
-    # Use default text editor to edit files.
-    eval ${EDITOR} ${FILES}
+    # Go throguh files, one by one.
+    for FILE in $FILES;do
 
-    # Update machine object (.mo) from portable object (.po).
-    locale_updateMessageBinary ${FILES}
+        # Print the file we are editing.
+        cli_printMessage "$FILE" 'AsUpdatingLine'
+
+        # Use default text editor to edit file.
+        eval ${EDITOR} ${FILE}
+
+        # Update machine object (.mo) from portable object (.po).
+        locale_updateMessageBinary ${FILE}
+
+    done
 
 }
