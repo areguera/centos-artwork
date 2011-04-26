@@ -53,15 +53,9 @@ function cli_commitRepoChanges {
     cli_checkFiles "$LOCATIONS" 'fd'
     cli_checkFiles "$LOCATIONS" 'isInWorkingCopy'
 
-    # Outout separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Check working copy.
-    cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsResponseLine'
+    cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsBannerLine'
     STATUSOUT=$(svn status ${LOCATIONS})
-
-    # Outout separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
 
     # Define path fo files considered recent modifications from
     # working copy up to central repository.
