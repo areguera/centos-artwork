@@ -32,20 +32,12 @@ function prepare_doPackages {
         return
     fi
 
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
-
-    # Print action message.
-    cli_printMessage "`gettext "Checking required packages"`" 'AsResponseLine'
-
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     local PACKAGE=''
     local WARNING=''
     local PACKAGES=''
     local PACKAGES_THIRDS=''
     local -a PACKAGES_MISSING
+    local -a PACKAGES_INSTALL
     local RPM='/bin/rpm'
     local YUM='/usr/bin/yum'
 
@@ -66,41 +58,24 @@ function prepare_doPackages {
     # centos-art to work as expected.
     PACKAGES_THIRDS="(inkscape|blender)"
 
-    # Build list of missing packages.
+    # Build list of installed and missing packages.
     for PACKAGE in $PACKAGES;do
         $RPM -q --queryformat "%{NAME}\n" $PACKAGE --quiet
         if [[ $? -ne 0 ]];then
             PACKAGES_MISSING[((++${#PACKAGES_MISSING[*]}))]=$PACKAGE
+        else
+            PACKAGES_INSTALL[((++${#PACKAGES_INSTALL[*]}))]=$PACKAGE
         fi
     done
 
-    # Is there any package missing?
-    if [[ ${#PACKAGES_MISSING[*]} -eq 0 ]];then
-        cli_printMessage "`gettext "The required packages has been already installed."`"
-        return
+    # Use `sudo yum' to install missing packages in your workstation.
+    if [[ ${#PACKAGES_MISSING[*]} -gt 0 ]];then
+        sudo ${YUM} install ${PACKAGES_MISSING[*]}
     fi
-
-    # At this point there is one or more missing packages that need to
-    # be installed in the workstation. Report this issue and specify
-    # which these packages are.
-    cli_printMessage "`ngettext "The following package needs to be installed" \
-        "The following packages need to be installed" \
-        "${#PACKAGES_MISSING[*]}"`:"
-
-    # Build report of missing packages and remark those comming from
-    # third party repository.
-    for PACKAGE in ${PACKAGES_MISSING[@]};do
-        if [[ $PACKAGE =~ $PACKAGES_THIRDS ]];then
-            WARNING=" (`gettext "requires third party repository!"`)"
-        fi
-        cli_printMessage "${PACKAGE}${WARNING}" 'AsResponseLine'
-    done
-
-    # Print confirmation request.
-    cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
-
-    # Use sudo to install the missing packages in your system through
-    # yum.
-    sudo ${YUM} install ${PACKAGES_MISSING[*]}
+        
+    # Use `sudo yum' to update installed packages in your workstation.
+    if [[ ${#PACKAGES_INSTALL[*]} -gt 0 ]];then
+        sudo ${YUM} update ${PACKAGES_INSTALL[*]}
+    fi
 
 }
