@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# locale_getArguments.sh -- This function interprets arguments passed to
-# `locale' functionality and calls actions accordingly.
+# locale_getOptions.sh -- This function interprets option parameters
+# passed to `locale' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -22,7 +22,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function locale_getArguments {
+function locale_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""

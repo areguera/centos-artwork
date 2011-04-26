@@ -34,7 +34,7 @@ function locale {
     local FLAG_DONT_CREATE_MO='false'
 
     # Interpret arguments and options passed through command-line.
-    locale_getArguments
+    locale_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
