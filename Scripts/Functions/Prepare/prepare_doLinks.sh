@@ -32,14 +32,8 @@ function prepare_doLinks {
         return
     fi
 
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Print action message.
-    cli_printMessage "`gettext "Checking symbolic links"`" 'AsResponseLine'
-
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage "`gettext "Checking symbolic links"`" 'AsBannerLine'
 
     local -a LINKS_SRC
     local -a LINKS_DST
