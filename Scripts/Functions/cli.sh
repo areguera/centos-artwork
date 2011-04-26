@@ -46,8 +46,9 @@ function cli {
     local FLAG_QUIET='false'
     
     # Initialize default value to answer flag. The answer flag
-    # (--answer) controls whether centos-art.sh script does or does
-    # not pass confirmation request points. By default, it doesn't.
+    # (--answer-yes) controls whether centos-art.sh script does or
+    # does not pass confirmation request points. By default, it
+    # doesn't.
     local FLAG_ANSWER='false'
 
     # Initialize default value to don't commit changes flag. The don't

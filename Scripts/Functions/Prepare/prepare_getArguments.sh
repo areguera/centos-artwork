@@ -28,7 +28,7 @@ function prepare_getArguments {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer:,packages,links,environment"
+    local ARGSL="quiet,answer-yes,packages,links,environment"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -47,9 +47,9 @@ function prepare_getArguments {
                 shift 1
                 ;;
 
-            --answer )
-                FLAG_ANSWER="$2"
-                shift 2
+            --answer-yes )
+                FLAG_ANSWER="true"
+                shift 1
                 ;;
 
             --packages )

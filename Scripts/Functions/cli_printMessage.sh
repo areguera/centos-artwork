@@ -131,9 +131,13 @@ function cli_printMessage {
         local N="`gettext "no"`"
 
         # Define default answer.
-        local ANSWER=${FLAG_ANSWER}
+        local ANSWER=${N}
 
-        if [[ $ANSWER == 'false' ]];then
+        if [[ $FLAG_ANSWER == 'true' ]];then
+
+            ANSWER=${Y}
+
+        else
 
             # Print the question.
             cli_printMessage "$MESSAGE [${Y}/${N}]: " 'AsNoTrailingNewLine'
