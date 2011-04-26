@@ -24,6 +24,14 @@
 
 function locale {
 
+    # Do not locale messages for English language. The English
+    # language is already used as translation pattern and there is no
+    # translation messages for it.
+    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
+        cli_printMessage "`gettext "Cannot locale English language to itself."`" 'AsErrorLine'
+        cli_printMessage "$FUNCDIRNAM" 'AsToKnowMoreLine'
+    fi
+
     local ACTIONNAM=''
     local ACTIONVAL=''
 
