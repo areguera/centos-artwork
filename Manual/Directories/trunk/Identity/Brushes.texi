@@ -14,7 +14,6 @@ format and later exported to any of the brush formats recognized by
 GIMP (e.g., @file{.gbr} or @file{.gih}) using the same name of its
 source file.
 
-@float Figure, Brush file format and directory structure
 @verbatim
 1. Common brushes       2. Theme-specific brushes
 ----------------------  -----------------------------------------------------------
@@ -27,8 +26,6 @@ trunk/Identity/Brushes  trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brus
 |-- 2.gih               |-- 2.gih
 `-- 3.gbr               `-- 3.gbr
 @end verbatim
-@caption{Brush file format and directory structure.}
-@end float
 
 In order for both common brushes and theme-specific brushes to be
 loaded by GIMP, related @file{.gbr} and @file{.gih} brush files need
@@ -66,25 +63,19 @@ both the brush file name and the suffix information,  it is possible
 to build unique names for links under @file{~/.gimp-2.2/brushes}
 directory, scalably.
 
-@float Figure, Common brushes path relation
 @verbatim
 trunk/Identity/Brushes
 |-- 1.gbr (file) <-- ~/.gimp-2.2/brushes/centos-1.gbr (link)
 |-- 2.gbr (file) <-- ~/.gimp-2.2/brushes/centos-2.gbr (link)
 `-- 3.gbr (file) <-- ~/.gimp-2.2/brushes/centos-3.gbr (link)
 @end verbatim
-@caption{Common brushes path relation.}
-@end float
 
-@float Figure, Theme-specific brushes path relation
 @verbatim
 trunk/Identity/Themes/Motifs/THEMENAME/THEMEVERSION/Brushes
 |-- 1.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-1.gbr (link)
 |-- 2.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-2.gbr (link)
 `-- 3.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-3.gbr (link)
 @end verbatim
-@caption{Theme-specific brushes path relation.}
-@end float
 
 Brushes produced with GIMP has a description field associated that is
 shown in the Brushes panel of GIMP.  This description is set when the

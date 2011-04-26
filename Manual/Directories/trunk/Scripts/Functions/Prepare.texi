@@ -1,114 +1,83 @@
 @subheading Goals
 
-This section exists to organize files related to @file{centos-art.sh}
-script @samp{prepare} functionality.  The @samp{prepare} functionality
-of @file{centos-art.sh} script helps you to prepare the workstation
-configuration you are planning to use as host for your working copy of
-CentOS Artwork Repository.
+This section describes the @code{prepare} functionality of
+@command{centos-art.sh} script and the preliminar steps you need to
+follow in order to get your workstation ready for using the CentOS
+Artwork Repository.
 
 @subheading Description
 
-The first time you download CentOS Artwork Repository you need to
-configure your workstation in order to use @file{centos-art.sh}
-script.  These preliminar configurations are based mainly on auxiliar
-RPM packages installation, symbolic links creations, and environment
-variables definitions.  The @samp{prepare} functionality of
-@file{centos-art.sh} script guides you through this preliminar
-configuration process.  
+The @code{prepare} functionality of @command{centos-art.sh} script
+verifies all the information required by the working copy of CentOS
+Artwork Repository (e.g., packages of software, symbolic links, etc.)
+does exist in your workstation.
 
-If this is the first time you run @file{centos-art.sh} script, the
-appropriate way to use its @samp{prepare} functionality is not using
-the @file{centos-art.sh} script directly, but the absolute path to
-@command{centos-art.sh} script instead (i.e.,
-@file{~/artwork/trunk/Scripts/Bash/centos-art.sh}).  This is necessary
-because @file{centos-art} symbolic link, under @file{~/bin/}
-directory, has not been created yet.
+The @code{prepare} functionality of @command{centos-art.sh} script is
+part of the CentOS Artwork Repository. So, in order to execute the
+@code{prepare} functionality of @command{centos-art.sh} script you
+need to have access to a working copy of CentOS Artwork Repository,
+first.  Working copies of CentOS Artwork Repository are downloaded
+from the source repository and made available to you by mean of
+workstations.  A workstation is a computer that you install and
+configure (prepare) to do something. In this case, you pick a computer
+and prepare it for working on the CentOS Artwork Repository.
 
-@subsubheading Packages
+@subsubheading Installing the workstation
 
-Installation of auxiliar RPM packages provides the software required
-to manipulate files inside the repository (e.g., image files,
-documentation files, translation files, script files, etc.). Most of
-RPM packages @command{centos-art.sh} script uses are shipped with
-CentOS distribution, and can be installed from CentOS base repository.
-The only exception is @samp{inkscape}, the package we use to
-manipulate SVG files.  The @samp{inkscape} package is not inside
-CentOS distribution so it needs to be installed from third party
-repositories.
+Installing the workstation is the first step you need to perform for
+using the CentOS Artwork Repository. In this step you make your
+computer functional through an operating system. In this case, The
+Community Enterprise Operating System; which is also know as The
+CentOS Distribution or just CentOS, for short.
+
+To install The CentOS Distribution you need to have the installation
+media somehow (e.g., CDs, DVDs, Pendrives, etc.). There are several
+different ways to perform the installation process of CentOS
+distribution, but generally, you put the installation media in your
+media reader, boot the computer from it, and follow the installer
+intructions.  That simple.
+
+If you don't have the installation media of CentOS distribution, you
+need to download the ISO files related to the media you plan to use
+(e.g., CD or DVD) and then create the installation media by yourself.
+The CentOS Distribution ISO files can be downloaded from
+@url{http://mirrors.centos.org/} and, if you chosen CD or DVD as your
+prefered installation medium, you can burn the ISO files using the
+@command{K3B} application to create the installation media you'll use.
+Of course, in order to download the ISO files and create the
+installation media, you need to have an already installed CentOS
+workstation where you can realized all the work.
+
+@subsubheading Configuring the workstation
+
+Once you've installed the workstation and it is up and running, login
+as @samp{root} user, create a username (e.g., @samp{centos}) and set a
+password for it. This is the username you must use for everyday work
+inside your working copy of the CentOS Artwork Repository.
 
 @quotation
-@strong{Note} Configuration of third party repositories inside CentOS
-distribution is described in CentOS wiki, specifically in the
-following URL:
-@url{http://wiki.centos.org/AdditionalResources/Repositories}
+@strong{Caution} Do not use ever the @samp{root} username for your
+everyday work inside the working copy of CentOS Artwork Repository.
+It is dangerous and might provoke unreversable damages on your
+workstation.
 @end quotation
 
-Before installing packages, the @file{centos-art.sh} script uses
-@command{sudo} to request root privileges to execute @command{yum}
-installation functionality.  If your user isn't defined as a
-privileged user---at least to run @command{yum} commands--- inside
-@file{/etc/sudoers} configuration file, you will not be able to
-perform package installation tasks as set in @file{centos-art.sh}
-script @samp{prepare} functionality. 
+Once you've created the username for everyday work, there are some
+environment variables that you can customize to fit your personal
+needs (e.g., the text editor you'll use, the language the automation
+scripts will use to print and translate output messages, the time
+correction for your location, etc.).  To customize these variables you
+need to edit your profile file (i.e., @file{~/.bash_profile}) and set
+the redefinition there.  Notice that you may need to logout and then
+do login again in order for the new variable values to take effect.
 
-Setting sudo privileges to users is an administrative task you have to
-do by yourself. If you don't have experience with @command{sudo}
-command, please read its man page running the command: @command{man
-sudo}. This reading will be very useful, and with some practice, you
-will be able to configure your users to have @command{sudo}
-privileges.
+@table @strong
+@item Default text editor:
 
-@subsubheading Links
-
-Creation of symbolic links helps us to alternate between different
-implementations of @file{centos-art.sh} script-line (e.g.,
-@file{centos-art.sh}, for Bash implementation; @file{centos-art.py},
-for Python implementation; @file{centos-art.pl}, for Perl
-implementation; and so on for other implementations). The
-@file{centos-art.sh} script-line definition takes place inside your
-personal binary (@file{~/bin/}) directory in order to make the script
-implementation ---the one that @file{centos-art} links to--- available
-to @var{PATH} environment variable.
-
-Creation of symbolic links helps us to reuse components from repository
-working copy. For example, color information files maintained inside
-your working copy must never be duplicated inside program-specific
-configuration directories that uses them in your workstation (e.g.,
-Gimp, Inkscape, etc.).  Instead, a symbolic link must be created for
-each one of them, from program-specific configuration directories to
-files in the working copy.  In this configuration, when someone
-commits changes to color information files up to central repository,
-they---the changes committed--- will be immediatly available to your
-programs the next time you update your working copy ---the place
-inside your workstation those color information files are stored---.
-
-Creation of symbolic links helps us to make @file{centos-art.sh}
-script functionalities available outside @file{trunk/} repository
-directory structure, but at its same level in repository tree. This is
-useful if you need to use the ``render'' functionality of
-@command{centos-art.sh} under @file{branches/} repository directory
-structure as you usually do inside @file{trunk/} repository directory
-structure. As consequence of this configuration, automation scripts
-cannot be branched under @file{branches/Scripts} directory structure.
-
-@subsubheading Environment variables
-
-Definition of environemnt variables helps us to set default values to
-our user session life. The user session environment variable defintion
-takes place in the user's @file{~/.bash_profile} file.  The
-@samp{prepare} functionality of @file{centos-art.sh} script doesn't
-modify your @file{~/.bash_profile} file.  
-
-The @samp{prepare} functionality of @file{centos-art.sh} script
-evaluates the following environment variables:
-
-@table @env
-@item EDITOR
-Default text editor. 
-
-The @file{centos-art.sh} script uses default text @env{EDITOR} to edit
-pre-commit subversion messages, translation files, configuration
-files, script files, and similar text-based files.
+The default text editor information is contrlled by the @env{EDITOR}
+environment variable. The @file{centos-art.sh} script uses the default
+text editor to edit subversion pre-commit messages, translation files,
+documentation files, script files, and similar text-based files.
 
 If @env{EDITOR} environment variable is not set, @file{centos-art.sh}
 script uses @file{/usr/bin/vim} as default text editor. Otherwise, the
@@ -120,325 +89,188 @@ following values are recognized by @file{centos-art.sh} script:
 @item @file{/usr/bin/nano}
 @end itemize
 
-If no one of these values is set in @env{EDITOR} environment variable,
-@file{centos-art.sh} uses @file{/usr/bin/vim} text editor by default. 
+If no one of these values is set in the @env{EDITOR} environment
+variable, the @file{centos-art.sh} script uses @file{/usr/bin/vim}
+text editor, the one installed by default in The CentOS Distribution. 
 
-@item TEXTDOMAIN
+@item Default locale information:
 
-Default domain used to retrieve translated messages.  This variable is
-set in @file{initFunctions.sh} and shouldn't be changed.
-
-@item TEXTDOMAINDIR
-
-Default directory used to retrieve translated messages.  This variable
-is set in @file{initFunctions.sh} and shouldn't be changed.
-
-@item LANG
-
-Default locale information.
-
-This variable is initially set in the configuration process of CentOS
-distribution installer (i.e., Anaconda), specifically in the
-@samp{Language} step; or once installed using the
+The default locale information is controlled by the @env{LANG}
+environment variable. This variable is initially set in the
+configuration process of CentOS distribution installer, specifically
+in the @samp{Language} step; or once installed using the
 @command{system-config-language} tool.
 
-The @file{centos-art.sh} script uses the @var{LANG} environment
-variable to know in which language the script messages are printed
-out.
+The @command{centos-art.sh} script uses the @env{LANG} environment
+variable to determine what language to use for printing output
+messages. Moreover, the @code{locale} functionality uses the
+@env{LANG} to determine what translation messages to udpate or edit.
 
-@item TZ
+@item Default time zone representation:
 
-Default time zone representation.
+The time zone representation is a time correction applied to the
+system time (stored in the BIOS clock) based on your country location.
+This correction is specially useful to distributed computers around
+the world that work together and need to be syncronized in time to
+know when things happened.
 
-This variable is initially set in the configuration process of CentOS
-distribution installer (i.e., Anaconda), specifically in the
-@samp{Date and time} step; or once installed using the
-@command{system-config-date} tool.
+The CentOS Artwork Repository is made of one server and several
+workstations spread around the world. In order for all these
+workstations to know when changes in the server took place, it is
+required that all the workstations set their system clocks to use the
+same time information (i.e., @acronym{UTC,Coordinated Universal Time})
+and set the time correction for their countries in the operating
+system.  Otherwise, it'd be hard to know when something exactly
+happened.
 
-The @file{centos-art.sh} script doesn't use the @var{TZ} environment
-variable information at all. Instead, this variable is used by the
-system shell to show the time information according to your phisical
-location on planet Earth.  
-
-Inside your computer, the time information is firstly set in the BIOS
-clock (which may need correction), and later in the configuration
-process of CentOS distribution installer (or later, by any of the
-related configuration tools inside CentOS distribution).  Generally,
-setting time information is a straight-forward task and configuration
-tools available do cover most relevant location. However, if you need
-a time precision not provided by the configuration tools available
-inside CentOS distribution then, using @var{TZ} variable may be
-necessary.
-
-@quotation
-@strong{Convenction} In order to keep changes syncronized between
-central repository and its working copies: configure both repository
-server and workstations (i.e., the place where each working copy is
-set on) to use Coordinated Universal Time (UTC) as base time
-representation.  Later, correct the time information for your specific
-location using time zone correction.
-@end quotation
-
-The format of @var{TZ} environment variable is described in
-@file{tzset(3)} manual page.
-
+Generally, setting the time information is a straight-forward task and
+configuration tools provided by The CentOS Distribution do cover time
+correction for most of the countries around the world.  However, if
+you need a time precision not provided by any of the date and time
+configuration tools provided by The CentOS Distribution then, you need
+to use the @env{TZ} environment variable to correct the time
+information by yourself.  The format of @env{TZ} environment variable
+is described in @file{tzset(3)} manual page.  
 @end table
 
-@subsubheading Shell Script Files
+@subsubheading Downloading the working copy
 
-The @code{shell} functionality of @file{centos-art.sh} script helps
-you to maintain bash scripts inside repository. For example, suppose
-you've created many functionalities for @file{centos-art.sh} script,
-and you want to use a common copyright and license note for
-consistency in all your script files. If you have a bunch of files,
-doing this one by one wouldn't be a big deal. In contrast, if the
-amount of files grows, updating the copyright and license note for all
-of them would be a task rather tedious. The @code{shell} functionality
-exists to solve maintainance tasks just as the one previously
-mentioned.
+Once you've configured the workstation, it is time to download the
+working copy of CentOS Artwork Repository. 
 
-When you use @code{shell} functionality to update copyright inside
-script files, it is required that your script files contain (at least)
-the following top commentary structure:
+To download the working copy of CentOS Artwork Repository you need to
+login as your everyday work username (e.g., @samp{centos}) and use the
+Subversion client to bring all the files you need to work with down
+from the source location of CentOS Artwork Repository
+(@url{https://projects.centos.org/svn/artwork/}) to your workstation,
+just as the following command describes:
 
 @verbatim
- 1| #!/bin/bash
- 2| #
- 3| # doSomething.sh -- The function description goes here.
- 4| # 
- 5| # Copyright
- 6| #
- 7| # ...
- 8| #
- 9| # ----------------------------------------------------------------------
-10| # $Id$
-11| # ----------------------------------------------------------------------
-12|
-13| function doSomething {
-14|     
-15| }
+svn co https://projects.centos.org/svn/artwork ~/
 @end verbatim
 
-Relevant lines in the above structure are lines from 5 to 9.
-Everything else in the file is left immutable.
-
-When you are updating copyright through @code{shell}
-functionality,  the @file{centos-art.sh} script replaces everything
-in-between line 5 ---the first one matching @samp{^# Copyright .+$}
-string--- and line 9---the first long dash separator matching @samp{^#
--+$}--- with the content of copyright template instance.
+This command will create the working copy of CentOS Artwork Repository
+in your workstation, specifically in the @file{/home/centos/artwork}
+directory.  Note that you only need to execute this command once.
+After that, to keep your working copy up to date, you use the
+Subversion @command{update} command instead.
 
 @quotation
-@strong{Caution} Be sure to add the long dash separator that matches
-@samp{^# -+$} regular expression @emph{before} the function
-definition. Otherwise, if the @samp{Copyright} line is present but no
-long dash separator exists, @file{centos-art.sh} will remove anything
-in-between the @samp{Copyright} line and the end of file. This way you
-may lost your function definitions entirely.
-@end quotation
-
-The copyright template instance is created from one copyright template
-stored in the @file{Config/tpl_forCopyright.sed} file.  The template
-instance is created once, and later removed when no longer needed. At
-this moment, when template instance is created, the
-@file{centos-art.sh} script takes advantage of automation in order to
-set copyright full name and date dynamically.
-
-When you use @code{shell} functionality to update copyright, the first
-thing @file{shell} functionality does is requesting copyright
-information to user, and later, if values were left empty (i.e., no
-value was typed before pressing @key{RET} key), the @file{shell}
-functionality uses its own default values.
-
-When @code{shell} functionality uses its own default values, the final
-copyright note looks like the following:
+@strong{Tip} In the condition that you don't have Subversion client
+installed in the workstation, then you can install it using the
+command:
 
 @verbatim
- 1| #!/bin/bash
- 2| #
- 3| # doSomthing.sh -- The function description goes here.
- 4| #
- 5| # Copyright (C) 2003, 2010 The CentOS Project
- 6| # 
- 7| # This program is free software; you can redistribute it and/or modify
- 8| # it under the terms of the GNU General Public License as published by
- 9| # the Free Software Foundation; either version 2 of the License, or
-10| # (at your option) any later version.
-11| # 
-12| # This program is distributed in the hope that it will be useful, but
-13| # WITHOUT ANY WARRANTY; without even the implied warranty of
-14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-15| # General Public License for more details.
-16| #
-17| # You should have received a copy of the GNU General Public License
-18| # along with this program; if not, write to the Free Software
-19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
-20| # USA.
-21| #
-22| # ----------------------------------------------------------------------
-23| # $Id$
-24| # ----------------------------------------------------------------------
-25|
-26| function doSomething {
-27|
-28| }
+sudo yum install subversion
 @end verbatim
-
-Relevant lines in the above structure are lines from 5 to 22.  Pay
-attention how the copyright line was built, and how the license was
-added into the top comment where previously was just three dots.
-Everything else in the file was left immutable. 
-
-To change copyright information (i.e., full name or year information),
-run the @code{shell} functionality over the root directory containing
-the script files you want to update copyright in and enter the
-appropriate information when it be requested. You can run the
-@code{shell} functionality as many times as you need to.
-
-To change copyright license (i.e., the text in-between lines 7 and
-20), you need to edit the @file{Config/tpl_forCopyright.sed} file, set
-the appropriate information, and run the @code{shell} functionality
-once again for changes to take effect over the files you specify.
-
-@quotation
-@strong{Important} The @file{centos-art.sh} script is released as: 
-
-@verbatim
-GNU GENERAL PUBLIC LICENSE
-Version 2, June 1991
-
-Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-                         675 Mass Ave, Cambridge, MA 02139, USA
-@end verbatim
-
-Do not change the license information under which @file{centos-art.sh}
-script is released. Instead, if you think a different license must be
-used, please share your reasons at @email{centos-devel@@centos-art.sh}
-mailing list.
-
-See file
-@url{file:///home/centos/artwork/trunk/Scripts/COPYING,trunk/Scripts/COPYING},
-for a complete license description.
 @end quotation
 
-@subsubheading SVG Files
+@subsubheading Configuring the working copy
 
-The @code{svg} functionality of @file{centos-art.sh} script helps you
-to maintain scalable vector graphics (SVG) inside repository. For
-example, suppose you've been working in CentOS default design models
-under @file{trunk/Identity/Themes/Models/}, and you want to set common
-metadata to all of them, and later remove all unused SVG defintions
-from @samp{*.svg} files. Doing so file by file may be a tedious task,
-so the @file{centos-art.sh} script provides the @code{svg}
-functionality to aid you maintain such actions.
+Once you have a working copy of CentOS Artwork Repository in your
+workstation, you can go and run the @code{prepare} functionality of
+@command{centos-art.sh} script to realize the remaining configuration
+stuff.
 
-The metadata used is defined by Inkscape 0.46 using the SVG standard
-markup. The @file{centos-art.sh} script replaces everything
-in-between @code{<metadata} and @code{</metadata>} tags with a
-predefined metadata template we've set for this purpose.
+Assuming this is the very first time you run the
+@command{centos-art.sh} script, you'll find that there is no
+@command{centos-art} command-line interface for it in your
+workstation.  This is correct. In order to have the
+@command{centos-art} command-line in your workstation, you need to run
+the @command{centos-art.sh} script using its absolute path:
 
-The metadata template was created using the metadata information of a
-file which, using Inkscape 0.46, all metadata fields were set. This
-created a complete markup representation of how SVG metadata would
-look like. Later, we replaced every single static value with a
-translation marker in the form @samp{=SOMETEXT=}, where
-@code{SOMETEXT} is the name of its main opening tag. Later, we
-transform the metadata template into a sed replacement set of commads
-escaping new lines at the end of each line.
+@verbatim
+~/artwork/trunk/Scripts/centos-art.sh prepare [OPTIONS]
+@end verbatim
 
-With metadata template in place, the @file{centos-art.sh} script uses
-it to create a metadata template instance for the file being processed
-currently.  The metadata template instance contains the metadata
-portion of sed replacement commands with translation markers already
-traduced.  In this action, instance creation, is where we take
-advantage of automation and generate metadata values like title, date,
-keywords, source, identifier, and relation dynamically, based on the
-file path @file{centos-art.sh} script is currently creating metadata
-information for.
+Assuming you've already run the @code{prepare} functionality before,
+there is no need for you to use the absolute path again. Instead, you
+can use the @command{centos-art} command-line interface directly, as
+the following example describes:
 
-With metadata template instance in place, the @file{centos-art.sh}
-script uses it to replace real values inside all @samp{.svg} files
-under the current location you're running the @file{centos-art.sh}
-script on.  Default behaviour is to ask user to enter each metadatum
-required, one by one. If user leaves metadatum empty, by pressing
-@key{RET} key, @file{centos-art.sh} uses its default value.
+@verbatim
+centos-art.sh prepare [OPTIONS]
+@end verbatim
 
-Many of the no-longer-used gradients, patterns, and markers (more
-precisely, those which you edited manually) remain in the
-corresponding palettes and can be reused for new objects. However if
-you want to optimize your document, use the @samp{Vacuum Defs} command
-in @samp{File} menu. It will remove any gradients, patterns, or
-markers which are not used by anything in the document, making the
-file smaller. 
-
-If you have one or two couple of files, removing unused definitions
-using the graphical interface may be enough to you.  In contrast, if
-you have dozens or even houndreds of scalable vector graphics files to
-maintain it is not a fun task to use the graphical interface to remove
-unused definitions editing those files one by one.
-
-To remove unused definitions from several scalable vector graphics
-files, the @file{centos-art.sh} script uses Inkscape command-line
-interface, specifically with the @option{--vaccum-defs} option.
-
-@subsubheading XHTML Files
+Notice that you can execute the @code{prepare} functionality more than
+once. This is specially useful to keep the link information
+syncronized. For example, considering you've added new brushes to or
+removed old brushes from your working copy of CentOS Artwork
+Repository, the link information related to those files need to be
+updated in the @file{~/.gimp-2.2/brushes} directory too, in a way that
+reflect the addition/deletion change that took place in your working
+copy.  The same is true for fonts, patterns and palettes components.
 
 @subheading Usage
 
-@table @command
+@subsubheading Synopsis
 
-@item centos-art prepare --packages
+@command{centos-art prepare [OPTIONS]}
 
-Verify required packages your workstation needs in order to run the
-@file{centos-art.sh} script correctly.  If there are missing packages,
-the @file{centos-art.sh} script asks you to confirm their
-installation. When installing packages, the @file{centos-art.sh}
-script uses the @command{yum} application in order to achieve the
-task.
+@subsubheading Options
 
-In case all packages required by @file{centos-art.sh} script are
-already installed in your workstation, the message @samp{The required
-packages are already installed.} is output for you to know. 
+@table @option
+@item --packages
 
-@item centos-art prepare --links
+Verify existence of software packages and install them if they aren't
+installed yet.
 
-Verify required links your workstation needs in order to run the
-centos-art command correctly.  If any required link is missing, the
-@command{centos-art.sh} script asks you to confirm their installation.
-To install required links, the @command{centos-art.sh} script uses the
-@command{ln} command.
+This option provides the software required to manipulate files inside
+the repository (e.g., image files, documentation files, translation
+files, script files, etc.). Most of the software packages required by
+the CentOS Artwork Repository are available on The CentOS Distribution
+and can be installed using The CentOS Distribution installation media.
+The only exception is the @file{inkscape}, the package you use to
+manipulate @acronym{SVG,Scalable Vector Graphics} files.  The
+@file{inkscape} package isn't inside The CentOS Distribution or any of
+The CentOS Project repositories neither, so you need to install it from
+a third party repositories like @samp{RPMForge} or @samp{EPEL}.
 
-In case all links required by @file{centos-art.sh} script are already
-created in your workstation, the message @samp{The required links are
-already installed.} is output for you to know. 
+@item --link
 
-In case a regular file exists with the same name of a required link,
-the @file{centos-art.sh} script outputs the @samp{Already exists as
-regular file.} message when listing required links that will be
-installed. Of course, as there is already a regular file where must be
-a link, no link is created. In such cases the @file{centos-art.sh}
-script will fall into a continue installation request for that missing
-link.  To end this continue request you can answer @samp{No}, or
-remove the existent regular file to let @file{centos-art.sh} script
-install the link on its place.
+Update connection between working copy and workstation through
+symbolic links.
 
-@item centos-art prepare --environment
-@itemx centos-art prepare --environment --filter='regex'
+This option creates the @command{centos-art} command-line interface of
+@command{centos-art.sh} script through a symbolic link.  There is no
+need for you to type the full path to @command{centos-art.sh} script
+each time you need to execute it.  Instead, you use the
+@command{centos-art} command which is much shorter and faster to type.
 
-Output a brief description of environment variables used by
-@file{centos-art.sh} script. 
+This option connects design compenents like fonts, brushes, patterns
+and palettes inside your working copy of CentOS Artwork Repository
+with programs like @acronym{GIMP, GNU Image Manipulation Program} and
+Inkscape outside it. This way, all your modifications on these
+components will take place inside the repository and will be shared to
+all other working copies the next time you commit the changes up to
+source repository.
 
-If @samp{--filter} option is provided, output is reduced as defined in
-the @samp{regex} regular expression value. If @samp{--filter} option
-is specified but @samp{regex} value is not, the @file{centos-art.sh}
-script outputs information as if @samp{--filter} option had not been
-provided at all.  
+This option standardizes width, tabulation, indentation, and line
+numbering for text editors in your workstation.  The configuration
+file where these definitions are set, is versioned inside your working
+copy and linked from the appropriate place in the workstation to make
+it valid to your default text editor.
+
+@item --environment
+
+Print the name and value of some of the environment variables used by
+@command{centos-art.sh} scripts.  
+
+@item --quiet
+
+Supress all output messages except errors.  This option assumes an
+affirmative response to all questions so, take care when using it.
 
 @end table
 
 @subheading See also
 
-@menu
-* Directories trunk Scripts::
-* Directories trunk Scripts Functions::
-@end menu
+@itemize
+@item @ref{Directories trunk Scripts Functions}
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
+@item
+@url{http://wiki.centos.org/AdditionalResources/Repositories/,The
+CentOS Repositories}, to know how to configure third party
+repositories inside The CentOS Distribution.
+@end itemize

@@ -14,65 +14,25 @@ here.
 
 @subheading Description
 
-The best way to understand @file{centos-art.sh} automation script is
-studying its source code.  However, as start point, you may prefer to
-read an introductory resume before diving into the source code
-details.
+The best way to understand the @command{centos-art.sh} script is
+studying and improving its source code.  However, as start point, you
+may prefer to read an introductory resume before diving into the
+source code details. In this section we identify the different parts
+the @command{centos-art.sh} script is made of and how these parts
+interact one another.
 
-The @file{centos-art.sh} script is written in Bash. Most tasks, inside
-@file{centos-art.sh} script, have been organized in many specific
-functionalities that you can invoke from the @command{centos-art}
-command-line interface.
+@subsubheading Execution environments
 
-When you type the @command{centos-art} command in your terminal, the
-operating system trys to execute that command. In order to execute the
-command, the operating system needs to know where it is, so the
-operating system uses the @var{PATH} environment variable to look for
-that command location. If your system was prepared to use CentOS
-Artwork Repository correctly (@pxref{Directories trunk Scripts
-Functions Prepare}) you should have a symbolic link inside
-@file{~/bin} directory that points to the @file{centos-art.sh} script
-file. As @file{~/bin} directory is, by default, inside @var{PATH}
-environment variable, the execution of @command{centos-art} command
-runs the @file{centos-art.sh} script.
+The @command{centos-art.sh} script is basically made of four execution
+environments which are named @emph{script}, @emph{global},
+@emph{specific} and @emph{action}. These execution environments are
+nested one into another and provide different definition levels for
+variables and functions.  In this design, variables and functions
+defined in higher execution environments are available on lower
+execution environments, but variables and functions defined in lower
+execution environments are not available for higher execution
+enviroments.
 
-When @file{centos-art.sh} script is executed, the first it does is
-initializing global variables (e.g., @command{gettext} variables) and
-global function scripts.  Global function scripts are located inside
-@file{trunk/Scripts/Functions} directory and their file names begin
-with @samp{cli}. Global function scripts provide common
-functionalities that can be used anywhere inside @file{centos-art.sh}
-script execution environment.
-
-Once global variables and function scripts have been loaded,
-@file{centos-art.sh} script executes the @command{cli} global function
-from @file{cli.sh} function script to retrive command-line arguments
-and define some default values that may be used later by specific
-function scripts (@pxref{Directories trunk Scripts Functions}).
-
-As convenction, the @file{centos-art.sh} command-line arguments have
-the following format:
-
-@verbatim
-centos-art function path/to/dir --option='value'
-@end verbatim
-
-In the above example, @samp{centos-art} is the command you use to
-invoke @file{centos-art.sh} script. The @samp{arg1} is required and
-represents the functionality you want to perform (e.g.,
-@option{verify}, @option{render}, @option{locale}, @option{manual},
-etc.). The remaining arguments are modifiers to @option{arg1}. The
-@option{--arg2} definition is required and represets, specifically,
-the action inside the functionality you want to perform.  The
-@option{--arg3} and on, are optional.
-
-Once command-line arguments have been retrived, the
-@file{centos-art.sh} script loads specific functionalities using the
-@file{cli_getFunctions.sh} function script. Only one specific
-functionality can be loaded at one script execution I.e., you run
-@command{centos-art.sh} script to run just one functionality.
-
-@float Figure, Functionalities initialization
 @verbatim
 +----------------------------------------------------------------------+
 | [centos@host]$ centos-art function path/to/dir --option='value'      |
@@ -80,52 +40,125 @@ functionality can be loaded at one script execution I.e., you run
 | ~/bin/centos-art --> ~/artwork/trunk/Scripts/centos-art.sh           |
 +---v--------------------------------------------------------------v---+
     | centos-art.sh                                                |
-    +-v--------------------------------------------------------v---+
-    . | cli $@                                                 |   .
-    . +-v--------------------------------------------------v---+   .
-    . . | cli_getFunctions                                 |   .   .
-    . . +-v-----------v-----------v-----------v------------+   .   .
-    . . . | function1 | function2 | functionN |            .   .   .
-    . . . +-----------+-----------+-----------+            .   .   .
-    . . ....................................................   .   .
-    . ..........................................................   .
+    +---v------------------------------------------------------v---+
+    .   | cli $@                                               |   .
+    .   +---v----------------------------------------------v---+   .
+    .   .   | cli_getFunctions                             |   .   .
+    .   .   +---v--------------------------------------v---+   .   .
+    .   .   .   | function                             |   .   .   .
+    .   .   .   +---v------------------------------v---+   .   .   .
+    .   .   .   .   | function_getArguments        |   .   .   .   .
+    .   .   .   .   | function_doSomething         |   .   .   .   .
+    .   .   .   .   +------------------------------+   .   .   .   .
+    .   .   .   .                                      .   .   .   .
+    .   .   .   .   Execution environment (action)     .   .   .   .
+    .   .   .   ........................................   .   .   .
+    .   .   .                                              .   .   .
+    .   .   .   Execution environment (specific)           .   .   .
+    .   .   ................................................   .   .
+    .   .                                                      .   .
+    .   .   Execution environment (global)                     .   .
+    .   ........................................................   .
+    .                                                              .
+    .   Execution environment (script)                             .
     ................................................................
 @end verbatim
-@caption{Functionalities initialization environment.}
-@end float
 
-Functionalities are implemented by means of actions.  Once the
-functionality has been initiazalized, actions initialization take
-place for that functionality. Actions initialization model is very
-similar to functions initialization model. But with the difference,
-that actions are loaded inside function environment, and so, share
-variables and functions defined inside function environment.
+The script execution environment exists to provide script definitions
+that can't be set anywhere else inside the script. Example of such
+definitions include initialization of internationalization through
+@command{gettext} program, script personal information and
+initialization of global functionalities.
 
-@float Figure, Actions initialization
+The global execution environment exists to provide definitions that
+can't be set anywhere else inside the script. Example of such
+definitions include initialization of functionalities (e.g.,
+@code{cli_printMessage}, @code{cli_getCurrentLocale},
+@code{cli_checkFiles}, etc.) and variables (e.g., @var{FUNCNAM},
+@var{FUNCDIR}, @var{FUNCDIRNAM}, @var{ARGUMENTS}, etc.) that can be
+both used on specific and action execution environments, only.
+
+The specific execution environment exists to provide definitions that
+can't be set anywhere else inside the script. Example of such
+definitions include initialization of specifc functionalities (e.g.,
+@code{render}, @code{help}, @code{locale}, etc.) and specific
+variables (@var{ACTIONNAM}, @var{ACTIONVAL}, etc.) that can be used on
+action execution environment only.
+
+The action execution environment exists to perform the script actions
+themselves. It is here where we perform content rendition, content
+documentation, content localization and whatever action you plan for
+the @command{centos-art.sh} script to perform. For example, if you
+passed the @code{render} value as first argument to
+@command{centos-art.sh} command-line, the script performs the content
+rendition action through the @code{render} function which is defined
+in the @file{render.sh} file under
+@file{trunk/Scripts/Functions/Render} directory. Is there, inside
+@code{render} functionality were the action execution environment
+takes place exactly.
+
+@subsubheading Command-line interface
+
+When the @command{centos-art} command is executed in a bash terminal,
+the bash interpreter uses the @env{PATH} environment variable to find
+where such command is. In order to run the @command{centos-art}, it
+must exist either as a link to an executable file or an executable
+file by its own, in any of the paths provided by @env{PATH}
+environment variable.  Otherwise, the bash interpreter will print an
+error message and prompt you back to type a valid command.
+
+By default, after installing The CentOS Distribution, there is no
+@command{centos-art} command available in the @env{PATH} environment
+variable for you to execute.  The @command{centos-art} command is made
+available in your workstation as result of executing the
+@code{prepare} functionality of @command{centos-art.sh} script
+(@pxref{Directories trunk Scripts Functions Prepare}) which requires
+you had previously downloaded a working copy of CentOS Artwork
+Repository in your workstation.
+
+When the @command{centos-art} is executed, the first positional
+parameter passed is required and represents the name of the function
+you want to perform (e.g., @code{render} for content rendition,
+@code{locale} for content localization, etc.).  Beyond the first
+positional parameter you can provide either option or non-option
+parameters in no specific order. There are also, option parameters
+with arguments and without arguments. Frequently, non-option paramters
+are used to specify the path location inside the repository where the
+function will be performed in (e.g., the directory structure do you
+want to produce content for) and option parameters to specify how such
+functionality is performed (e.g., do you want to go quietly?  do you
+want to do filtering?  etc.).
+
 @verbatim
-+----------------------------------------------------------------------+
-| cli_getFunctions                                                     |
-+---v----------------------------v----v----------------------------v---+
-.   | function1                  |    | function2                  |   .
-.   +-v------------------------v-+    +-v------------------------v-+   .
-.   . | function1_getArguments | .    . | function2_getArguments | .   .
-.   . +-v--------------------v-+ .    . +-v--------------------v-+ .   .
-.   . . | action 1           | . .    . . | action 1           | . .   .
-.   . . | action 2           | . .    . . | action 2           | . .   .
-.   . . | action N           | . .    . . | action N           | . .   .
-.   . . +--------------------+ . .    . . +--------------------+ . .   .
-.   . .......................... .    . .......................... .   .
-.   ..............................    ..............................   .
-........................................................................
+    A         B         C              D           E
+---------- ------- ----------- ---------------- -------
+centos-art funcnam path/to/dir --filter='regex' --quiet
+---------- ------- ----------- ---------------- -------
+
+    A = The centos-art.sh script command-line.
+    B = The centos-art.sh function name.
+    C = Non-option parameter.
+    D = Option parameter (with argument).
+    E = Option parameter (without argument).
 @end verbatim
-@caption{Actions initialization environment.}
-@end float
+
+@subsubheading Parsing command-line options
+
+The action of parsing options is performed through @command{getopt}
+and results particularly interesting. @command{getopt} breaks up
+(parse) options in command lines and checks for legal options using
+the GNU @code{getopt} routines to do this. One important consideration
+on @command{centos-art.sh} script design is that positional parameters
+are retrived in the @code{cli} function but parsed on each specific
+function, individually. There isn't a big parsing definition to cover
+all specific functions, but one parsing definitions for each specific
+functions.
 
 @subheading Usage
 
-The @file{centos-art.sh} script usage information is described inside
-each specific function documentation (@pxref{Directories trunk Scripts
-Functions}).
+@itemize
+@item @xref{Directories trunk Scripts Functions}.
+@end itemize
 
 @subheading See also
 
