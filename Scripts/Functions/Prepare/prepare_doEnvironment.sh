@@ -29,14 +29,8 @@ function prepare_doEnvironment {
         return
     fi
 
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
-
     # Print action message.
-    cli_printMessage "`gettext "Checking environment variables"`" 'AsResponseLine'
-
-    # Print line separator.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage "`gettext "Checking environment variables"`" 'AsBannerLine'
 
     local -a VARS
     local -a INFO
