@@ -26,6 +26,10 @@
 
 function locale_updateMessageShell {
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Initialize local variables.
     local FILE=''
     local FILES=''
 
@@ -42,9 +46,6 @@ function locale_updateMessageShell {
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
 
-    # Set action preamble.
-    cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
-    
     # Print action message.
     cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
 

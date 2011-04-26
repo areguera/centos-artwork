@@ -24,6 +24,10 @@
 
 function locale_editMessages {
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Initialize local variables.
     local FILES=''
 
     # Define list of locale files to process using action value as
@@ -36,9 +40,6 @@ function locale_editMessages {
         cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
-
-    # Set action preamble.
-    cli_printActionPreamble "${FILES}" "doEdit" 'AsResponseLine'
 
     # Use default text editor to edit files.
     eval ${EDITOR} ${FILES}

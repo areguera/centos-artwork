@@ -25,6 +25,10 @@
 
 function locale_updateMessageXml {
 
+    # Print separator line.
+    cli_printMessage '-' 'AsSeparatorLine'
+
+    # Initialize local variables.
     local FILE=''
     local FILES=''
 
@@ -43,9 +47,6 @@ function locale_updateMessageXml {
         cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
         cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
     fi
-
-    # Set action preamble.
-    cli_printActionPreamble "${FILES}" "doLocale" 'AsResponseLine'
 
     # Print action message.
     cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
