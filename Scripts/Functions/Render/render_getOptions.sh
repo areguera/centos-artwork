@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_getArguments.sh -- This function interprets arguments passed to
-# render functionality and calls actions accordingly.
+# render_getOptions.sh -- This function interprets option parameters
+# passed to `render' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -22,7 +22,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getArguments {
+function render_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""

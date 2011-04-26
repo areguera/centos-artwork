@@ -64,7 +64,7 @@ function render {
     local FLAG_GROUPED_BY=''
 
     # Interpret arguments and options passed through command-line.
-    render_getArguments
+    render_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
