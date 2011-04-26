@@ -59,6 +59,7 @@ function prepare_doLinks {
     # Define link relation for cli.
     LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/bin/$CLI_PROGRAM
     LINKS_DST[((++${#LINKS_DST[*]}))]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
+    USERFILES="${HOME}/bin/$CLI_PROGRAM"
 
     # Define link relation for fonts.
     for FONT in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf');do
@@ -90,20 +91,28 @@ function prepare_doLinks {
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
     done
 
+    # Define link relation for Vim text editor.
+    if [[ $EDITOR == '/usr/bin/vim' ]];then
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.vimrc
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${FUNCCONFIG}/vimrc
+        USERFILES="${USERFILES} ${HOME}/.vimrc"
+    fi
+
     # Define which files inside user-specific directories need to be
     # removed in order for centos-art to make a fresh installation of
     # common patterns, common palettes and common brushes using
     # symbolic links from the repository.
-    USERFILES=$(cli_getFilesList "${HOME}/.fonts" '.+\.ttf';
+    USERFILES=$(echo "$USERFILES";
         cli_getFilesList "${HOME}/bin" '.+\.sh';
-        cli_getFilesList "${GIMP_USERDIR}/palettes" '.+\.gpl';
+        cli_getFilesList "${HOME}/.fonts" '.+\.ttf';
         cli_getFilesList "${GIMP_USERDIR}/brushes" '.+\.(gbr|gih)';
         cli_getFilesList "${GIMP_USERDIR}/patterns" '.+\.(pat|png|jpg|bmp)';
-        cli_getFilesList "${INKS_USERDIR}/palettes" '.+\.gpl')
+        cli_getFilesList "${GIMP_USERDIR}/palettes" '.+\.gpl';
+        cli_getFilesList "${INKS_USERDIR}/palettes" '.+\.gpl';)
 
-    # Remove installed files inside user-specific directories.
+    # Remove files installed inside user-specific directories.
     if [[ "$USERFILES" != '' ]];then
-        cli_printActionPreamble "${USERFILES[*]}" 'doDelete' 'AsResponseLine'
+        cli_printActionPreamble "$USERFILES" 'doDelete' 'AsResponseLine'
         rm -r $USERFILES
     fi
 
