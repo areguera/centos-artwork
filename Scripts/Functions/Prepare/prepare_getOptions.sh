@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# prepare_getArguments.sh -- This function interpretes arguments passed
-# to `prepare' functionality and calls actions accordingly.
+# prepare_getOptions.sh -- This function interpretes option parameters
+# passed to `prepare' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009-2011 Alain Reguera Delgado
 #
@@ -22,7 +22,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_getArguments {
+function prepare_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""

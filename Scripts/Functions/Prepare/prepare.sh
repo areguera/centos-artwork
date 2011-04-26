@@ -41,7 +41,7 @@ function prepare {
     local FLAG_ENVIRONMENT='false'
 
     # Interpret arguments and options passed through command-line.
-    prepare_getArguments
+    prepare_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -52,7 +52,7 @@ function prepare {
     # centos-art, there are many different actions to perform based on
     # the option passed (e.g., `--packages', `--links',
     # `--environment', etc.).  In that sake, we defined action name
-    # inside prepare_getArguments, at the moment of interpreting
+    # inside prepare_getOptions, at the moment of interpreting
     # options.
 
     # Define action value. There is no action value in this function,
