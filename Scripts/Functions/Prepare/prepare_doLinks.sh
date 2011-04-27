@@ -33,9 +33,6 @@ function prepare_doLinks {
         return
     fi
 
-    # Print action message.
-    cli_printMessage "`gettext "Checking symbolic links"`" 'AsBannerLine'
-
     local -a LINKS_SRC
     local -a LINKS_DST
     local SUFFIX=''
