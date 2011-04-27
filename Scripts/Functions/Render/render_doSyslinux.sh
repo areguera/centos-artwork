@@ -50,7 +50,7 @@
 # 194 200 202     c2c8ca
 # 231 241 255     e7f1ff
 #
-# Copyright (C) 2009-2011 Alain Reguera Delgado
+# Copyright (C) 2009-2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -65,6 +65,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------

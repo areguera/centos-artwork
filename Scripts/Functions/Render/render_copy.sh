@@ -8,7 +8,7 @@
 # models, design images, pre-rendition configuration scripts, and
 # related translations files).
 #
-# Copyright (C) 2009-2011 Alain Reguera Delgado
+# Copyright (C) 2009-2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
