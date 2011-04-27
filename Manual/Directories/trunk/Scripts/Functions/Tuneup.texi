@@ -1,27 +1,41 @@
 @subheading Goals
 
-@itemize
-@item ...
-@end itemize
+This section describes the @code{tuneup} functionality of
+@command{centos-art.sh} script and general examples about file
+maintainance inside a working copy of CentOS Artwork Repository.
 
 @subheading Description
 
-@subsubheading Shell Script Files
+The @code{tuneup} functionality of @command{centos-art.sh} script
+provides the standard way of maintaining files inside your working
+copy of CentOS Artwork Repository.
 
-The @code{shell} functionality of @file{centos-art.sh} script helps
-you to maintain bash scripts inside repository. For example, suppose
-you've created many functionalities for @file{centos-art.sh} script,
-and you want to use a common copyright and license note for
-consistency in all your script files. If you have a bunch of files,
-doing this one by one wouldn't be a big deal. In contrast, if the
-amount of files grows, updating the copyright and license note for all
-of them would be a task rather tedious. The @code{shell} functionality
-exists to solve maintainance tasks just as the one previously
-mentioned.
+Tasks related to file maintainance are repetitive. You might find
+yourself doing them time after time inside the working copy of CentOS
+Artwork Repository. Some of these maintainance tasks are updating top
+comments on shell scripts, creating table of contents for web pages,
+updating metadata related to design models and remove unused
+definitions on design models.
 
-When you use @code{shell} functionality to update copyright inside
-script files, it is required that your script files contain (at least)
-the following top commentary structure:
+The maintainance tasks are associated to file extensions. This way,
+the @code{tuneup} functionality know what maintainance tasks should be
+applied to what files inside the working copy of CentOS Artwork
+Repository. For example, when you execute the @code{tuneup}
+functionality, it makes a list of files based on supported extensions
+(e.g., @file{.sh}, @file{.svg} and @file{.xhtml}) and apply
+maintainance tasks file by file accordingly to its file extension.
+
+@subsubheading Maintaining @file{.sh} files
+
+If shell scripts are found, the @code{tuneup} functionality reads a
+comment template
+(@file{trunk/Scripts/Functions/Prepare/Config/shell_topcomment.sed})
+and applies it to the shell scripts, one by one. As result, all shell
+scripts will end up having the same copyright and license information
+the comment template does.
+
+In order for the comment template to be applied correctly, the shell
+script you write must have the following structure:
 
 @verbatim
  1| #!/bin/bash
@@ -41,182 +55,100 @@ the following top commentary structure:
 15| }
 @end verbatim
 
-Relevant lines in the above structure are lines from 5 to 9.
-Everything else in the file is left immutable.
+The comment template replaces all the lines between the
+@samp{Copyright} line (e.g., line 5) and the first separator line
+(e.g., line 9). Everything else in the file will remain immutable.
 
-When you are updating copyright through @code{shell}
-functionality,  the @file{centos-art.sh} script replaces everything
-in-between line 5 ---the first one matching @samp{^# Copyright .+$}
-string--- and line 9---the first long dash separator matching @samp{^#
--+$}--- with the content of copyright template instance.
+From time to time, we use the @code{tuneup} functionality on the
+`trunk/Scripts' directory structure to update the copyright and
+license notice of all the shell scripts we have therein.
 
-@quotation
-@strong{Caution} Be sure to add the long dash separator that matches
-@samp{^# -+$} regular expression @emph{before} the function
-definition. Otherwise, if the @samp{Copyright} line is present but no
-long dash separator exists, @file{centos-art.sh} will remove anything
-in-between the @samp{Copyright} line and the end of file. This way you
-may lost your function definitions entirely.
-@end quotation
+@subsubheading Maintaining @file{.svg} files
 
-The copyright template instance is created from one copyright template
-stored in the @file{Config/tpl_forCopyright.sed} file.  The template
-instance is created once, and later removed when no longer needed. At
-this moment, when template instance is created, the
-@file{centos-art.sh} script takes advantage of automation in order to
-set copyright full name and date dynamically.
+If scalable vector graphics are found, the @code{tuneup} functionality
+reads a metadata template
+(@file{trunk/Scripts/Functions/Tuneup/Config/svg_metadata.sed}) and
+applies it to all files found, one by one. Immediatly after the
+metadata template has been applied and, before passing to next file,
+all unused definition are removed from file, too.
 
-When you use @code{shell} functionality to update copyright, the first
-thing @file{shell} functionality does is requesting copyright
-information to user, and later, if values were left empty (i.e., no
-value was typed before pressing @key{RET} key), the @file{shell}
-functionality uses its own default values.
+The metadata we apply from the metadata template is created dynamicaly
+using the file found absolute path, the workstation time information
+and the @command{centos-art.sh} script copyright information as
+reference.  Additionally, the @emph{Creative Common
+Distribution-ShareAlike 3.0 License} is also set in the metadata.
 
-When @code{shell} functionality uses its own default values, the final
-copyright note looks like the following:
+The elimination of unused definitions inside SVG files takes place
+through the @option{--vacuum-defs} option of @command{inkscape}
+command-line interface.
 
-@verbatim
- 1| #!/bin/bash
- 2| #
- 3| # doSomthing.sh -- The function description goes here.
- 4| #
- 5| # Copyright (C) 2003, 2010 The CentOS Project
- 6| # 
- 7| # This program is free software; you can redistribute it and/or modify
- 8| # it under the terms of the GNU General Public License as published by
- 9| # the Free Software Foundation; either version 2 of the License, or
-10| # (at your option) any later version.
-11| # 
-12| # This program is distributed in the hope that it will be useful, but
-13| # WITHOUT ANY WARRANTY; without even the implied warranty of
-14| # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-15| # General Public License for more details.
-16| #
-17| # You should have received a copy of the GNU General Public License
-18| # along with this program; if not, write to the Free Software
-19| # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
-20| # USA.
-21| #
-22| # ----------------------------------------------------------------------
-23| # $Id$
-24| # ----------------------------------------------------------------------
-25|
-26| function doSomething {
-27|
-28| }
-@end verbatim
+Frequently, we use the @code{tuneup} functionality on the
+@file{trunk/Identity/Models} and @file{trunk/Identity/Themes/Models}
+directory structure to update metadata and remove unused definitions
+from design models therein.
 
-Relevant lines in the above structure are lines from 5 to 22.  Pay
-attention how the copyright line was built, and how the license was
-added into the top comment where previously was just three dots.
-Everything else in the file was left immutable. 
+@subsubheading Maintaining @file{.xhtml} files
 
-To change copyright information (i.e., full name or year information),
-run the @code{shell} functionality over the root directory containing
-the script files you want to update copyright in and enter the
-appropriate information when it be requested. You can run the
-@code{shell} functionality as many times as you need to.
+If web pages are found, the @code{tuneup} functionality transforms web
+page headings to make them accessible through a table of contents.
+The table of contents is expanded in place, wherever the @code{<div
+class="toc"></div>} piece of code be in the page. 
 
-To change copyright license (i.e., the text in-between lines 7 and
-20), you need to edit the @file{Config/tpl_forCopyright.sed} file, set
-the appropriate information, and run the @code{shell} functionality
-once again for changes to take effect over the files you specify.
+Once the @code{<div class="toc"></div>} piece of code has be expanded,
+there is no need to put anything else in the page. You can run the
+@code{tuneup} functionality everytime you update the heading
+information so as to update the table of contents, too.
 
-@quotation
-@strong{Important} The @file{centos-art.sh} script is released as: 
+In order for the @code{tuneup} functionality to transform headings,
+you need to put headings in just one line using one of the following
+forms:
 
 @verbatim
-GNU GENERAL PUBLIC LICENSE
-Version 2, June 1991
-
-Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-                         675 Mass Ave, Cambridge, MA 02139, USA
+<h1><a name="">Title</a></h1>
+<h1><a href="">Title</a></h1>
+<h1><a name="" href="">Title</a></h1>
 @end verbatim
 
-Do not change the license information under which @file{centos-art.sh}
-script is released. Instead, if you think a different license must be
-used, please share your reasons at @email{centos-devel@@centos-art.sh}
-mailing list.
+In the example above, h1 can vary from h1 to h6. Closing tag must be
+present and also match the openning tag. The value of @option{name}
+and @option{href} options from the anchor element are set dynamically
+using the md5sum output of combining the page location, the
+@code{head-} string and the heading string.  If any of the components
+used to build the heading reference changes, you need to run the the
+@code{tuneup} functionality in order for the anchor elements to use
+the correct information.
 
-See file
-@url{file:///home/centos/artwork/trunk/Scripts/COPYING,trunk/Scripts/COPYING},
-for a complete license description.
-@end quotation
-
-@subsubheading SVG Files
-
-The @code{svg} functionality of @file{centos-art.sh} script helps you
-to maintain scalable vector graphics (SVG) inside repository. For
-example, suppose you've been working in CentOS default design models
-under @file{trunk/Identity/Themes/Models/}, and you want to set common
-metadata to all of them, and later remove all unused SVG defintions
-from @samp{*.svg} files. Doing so file by file may be a tedious task,
-so the @file{centos-art.sh} script provides the @code{svg}
-functionality to aid you maintain such actions.
-
-The metadata used is defined by Inkscape 0.46 using the SVG standard
-markup. The @file{centos-art.sh} script replaces everything
-in-between @code{<metadata} and @code{</metadata>} tags with a
-predefined metadata template we've set for this purpose.
-
-The metadata template was created using the metadata information of a
-file which, using Inkscape 0.46, all metadata fields were set. This
-created a complete markup representation of how SVG metadata would
-look like. Later, we replaced every single static value with a
-translation marker in the form @samp{=SOMETEXT=}, where
-@code{SOMETEXT} is the name of its main opening tag. Later, we
-transform the metadata template into a sed replacement set of commads
-escaping new lines at the end of each line.
-
-With metadata template in place, the @file{centos-art.sh} script uses
-it to create a metadata template instance for the file being processed
-currently.  The metadata template instance contains the metadata
-portion of sed replacement commands with translation markers already
-traduced.  In this action, instance creation, is where we take
-advantage of automation and generate metadata values like title, date,
-keywords, source, identifier, and relation dynamically, based on the
-file path @file{centos-art.sh} script is currently creating metadata
-information for.
-
-With metadata template instance in place, the @file{centos-art.sh}
-script uses it to replace real values inside all @samp{.svg} files
-under the current location you're running the @file{centos-art.sh}
-script on.  Default behaviour is to ask user to enter each metadatum
-required, one by one. If user leaves metadatum empty, by pressing
-@key{RET} key, @file{centos-art.sh} uses its default value.
-
-Many of the no-longer-used gradients, patterns, and markers (more
-precisely, those which you edited manually) remain in the
-corresponding palettes and can be reused for new objects. However if
-you want to optimize your document, use the @samp{Vacuum Defs} command
-in @samp{File} menu. It will remove any gradients, patterns, or
-markers which are not used by anything in the document, making the
-file smaller. 
-
-If you have one or two couple of files, removing unused definitions
-using the graphical interface may be enough to you.  In contrast, if
-you have dozens or even houndreds of scalable vector graphics files to
-maintain it is not a fun task to use the graphical interface to remove
-unused definitions editing those files one by one.
-
-To remove unused definitions from several scalable vector graphics
-files, the @file{centos-art.sh} script uses Inkscape command-line
-interface, specifically with the @option{--vaccum-defs} option.
-
-@subsubheading XHTML Files
-
-@itemize
-@item ...
-@end itemize
+Frequently, we use the @code{tuneup} functionality on the
+@file{trunk/Identity/Webenv/App/Home} directory structure to update
+the heading information and the related table of contents of web pages
+therein.
 
 @subheading Usage
 
-@itemize
-@item ...
-@end itemize
+@subsubheading Synopsis
+
+@command{centos-art tuneup [OPTIONS] path/to/dir}
+
+@subsubheading Options
+
+@table @option
+@item --quiet
+Supress all output messages, including confirmation question. Use this
+option with care.
+@item --filter='regex'
+Reduce the amount of files to process using @samp{regex} as pattern.
+@item --answer-yes
+Assume `yes' to all confirmation questions.
+@item --dont-commit-changes
+Supress all @code{commit} and @code{update} actions realized over
+files already processed, before and after the action itself had took
+place in the working copy.
+@end table
 
 @subheading See also
 
 @itemize
-@item ...
+@item @ref{Directories trunk Scripts Functions}
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
 @end itemize

@@ -30,7 +30,7 @@ using the follwiing directory structure:
 
 @verbatim
 trunk/Scripts/Functions/Greet   <-- The source location of greet function.
-|-- greet_getArguments.sh       <-- Defines command-line interface.
+|-- greet_getOptions.sh         <-- Defines command-line interface.
 |-- greet_sayGoodbye.sh         <-- Defines specific action.
 |-- greet_sayHello.sh           <-- Defines specific action.
 `-- greet.sh                    <-- Defines function initialization.
@@ -81,7 +81,7 @@ following:
 function greet {
 
     # Define command-line interface.
-    greet_getArguments
+    greet_getOptions
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -98,7 +98,7 @@ The first definition inside @code{greet} function is for variables
 that will be available along the whole execution environment of
 @code{greet} function. This time we didn't define any variable here
 so, we continued with definition of command-line interface, through
-@code{greet_getArguments} function.
+@code{greet_getOptions} function.
 
 The command-line interface of @code{greet} functionality defines how
 to interpret arguments passed from @command{centos-art.sh} script
@@ -108,7 +108,7 @@ place by mean of @command{getopt} command and is written as the
 following code example describes: 
 
 @verbatim
-function greet_getArguments {
+function greet_getOptions {
 
     # Define short options we want to support.
     local ARGSS=""
@@ -137,6 +137,11 @@ function greet_getArguments {
                 ACTIONNAM="${FUNCNAM}_sayGoodbye" 
                 ACTIONVAL="$2"
                 shift 2
+                ;;
+
+            --quiet )
+                FLAG_QUIET='true'
+                shift 1
                 ;;
 
             -- )
@@ -200,6 +205,7 @@ Some examples are illustrated below:
 Hello, World
 [centos@projects ~]$ centos-art greet --bye='World'
 Goodbye, World
+[centos@projects ~]$ centos-art greet --bye='World' --quiet
 [centos@projects ~]$ 
 @end verbatim
 
@@ -248,6 +254,9 @@ two commands:
 
 @verbatim
 centos-art locale --update trunk/Scripts
+@end verbatim
+
+@verbatim
 centos-art locale --edit trunk/Scripts
 @end verbatim
 

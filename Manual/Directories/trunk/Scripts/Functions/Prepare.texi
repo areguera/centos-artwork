@@ -2,15 +2,14 @@
 
 This section describes the @code{prepare} functionality of
 @command{centos-art.sh} script and the preliminar steps you need to
-follow in order to get your workstation ready for using the CentOS
-Artwork Repository.
+follow in order to get your workstation ready for using a working copy
+of CentOS Artwork Repository.
 
 @subheading Description
 
 The @code{prepare} functionality of @command{centos-art.sh} script
-verifies all the information required by the working copy of CentOS
-Artwork Repository (e.g., packages of software, symbolic links, etc.)
-does exist in your workstation.
+provides the standard way of configuring the workstation you plan to
+use for storing the working copy of CentOS Artwork Repository.
 
 The @code{prepare} functionality of @command{centos-art.sh} script is
 part of the CentOS Artwork Repository. So, in order to execute the
@@ -19,16 +18,15 @@ need to have access to a working copy of CentOS Artwork Repository,
 first.  Working copies of CentOS Artwork Repository are downloaded
 from the source repository and made available to you by mean of
 workstations.  A workstation is a computer that you install and
-configure (prepare) to do something. In this case, you pick a computer
-and prepare it for working on the CentOS Artwork Repository.
+configure (prepare) to do something. In this case, you pick up a
+computer and prepare it for working on the CentOS Artwork Repository.
 
 @subsubheading Installing the workstation
 
-Installing the workstation is the first step you need to perform for
-using the CentOS Artwork Repository. In this step you make your
-computer functional through an operating system. In this case, The
-Community Enterprise Operating System; which is also know as The
-CentOS Distribution or just CentOS, for short.
+Installing the workstation is the first step you need to do. In this
+step you make your computer functional through an operating system. In
+this case, The Community Enterprise Operating System; which is also
+know as The CentOS Distribution or just CentOS, for short.
 
 To install The CentOS Distribution you need to have the installation
 media somehow (e.g., CDs, DVDs, Pendrives, etc.). There are several
@@ -56,17 +54,15 @@ password for it. This is the username you must use for everyday work
 inside your working copy of the CentOS Artwork Repository.
 
 @quotation
-@strong{Caution} Do not use ever the @samp{root} username for your
-everyday work inside the working copy of CentOS Artwork Repository.
-It is dangerous and might provoke unreversable damages on your
-workstation.
+@strong{Caution} Do not use the @samp{root} username for your everyday
+work inside the working copy of CentOS Artwork Repository.  It is
+dangerous and might provoke unreversable damages on your workstation.
 @end quotation
 
-Once you've created the username for everyday work, there are some
-environment variables that you can customize to fit your personal
-needs (e.g., the text editor you'll use, the language the automation
-scripts will use to print and translate output messages, the time
-correction for your location, etc.).  To customize these variables you
+Once you've created the username for your everyday work, there are
+some environment variables that you can customize to fit your personal
+needs (e.g., default text editor, default locale information, default
+time zone representation, etc.).  To customize these variables you
 need to edit your profile file (i.e., @file{~/.bash_profile}) and set
 the redefinition there.  Notice that you may need to logout and then
 do login again in order for the new variable values to take effect.
@@ -197,9 +193,10 @@ once. This is specially useful to keep the link information
 syncronized. For example, considering you've added new brushes to or
 removed old brushes from your working copy of CentOS Artwork
 Repository, the link information related to those files need to be
-updated in the @file{~/.gimp-2.2/brushes} directory too, in a way that
-reflect the addition/deletion change that took place in your working
-copy.  The same is true for fonts, patterns and palettes components.
+updated in the @file{~/.gimp-2.2/brushes} directory too, in a way the
+addition/deletion change that took place in your working copy can be
+reflected there, as well.  The same is true for other similar
+components like fonts, patterns and palettes components.
 
 @subheading Usage
 
@@ -212,23 +209,30 @@ copy.  The same is true for fonts, patterns and palettes components.
 @table @option
 @item --packages
 
-Verify existence of software packages and install them if they aren't
-installed yet.
+Install/update software packages required by the working copy of
+CentOS Artwork Repository.
 
-This option provides the software required to manipulate files inside
-the repository (e.g., image files, documentation files, translation
-files, script files, etc.). Most of the software packages required by
-the CentOS Artwork Repository are available on The CentOS Distribution
-and can be installed using The CentOS Distribution installation media.
-The only exception is the @file{inkscape}, the package you use to
-manipulate @acronym{SVG,Scalable Vector Graphics} files.  The
-@file{inkscape} package isn't inside The CentOS Distribution or any of
-The CentOS Project repositories neither, so you need to install it from
-a third party repositories like @samp{RPMForge} or @samp{EPEL}.
+The process of software installation takes place through @command{sudo
+yum} and the repository configuration currently set in your
+workstation.
+
+Most of the software packages required by the working copy of CentOS
+Artwork Repository are available on The CentOS Distribution and can be
+installed using The CentOS Distribution installation media.  The only
+exception is Inkscape, the program used to manipulate
+@acronym{SVG,Scalable Vector Graphics} files in the working copy.  
+
+The @file{inkscape} package isn't inside The CentOS Distribution or
+any of The CentOS Project repositories neither, so you need to install
+it from a third party repository like @samp{RPMForge} or @samp{EPEL}.
+See page
+@url{http://wiki.centos.org/AdditionalResources/Repositories/,The
+CentOS Repositories}, to know how to configure third party
+repositories in The CentOS Distribution.
 
 @item --link
 
-Update connection between working copy and workstation through
+Install/update connection between working copy and workstation through
 symbolic links.
 
 This option creates the @command{centos-art} command-line interface of
@@ -273,8 +277,4 @@ Assume @samp{yes} to all confirmation questions.
 @item @ref{Directories trunk Scripts Functions}
 @item @ref{Directories trunk Scripts}
 @item @ref{Directories trunk}
-@item
-@url{http://wiki.centos.org/AdditionalResources/Repositories/,The
-CentOS Repositories}, to know how to configure third party
-repositories inside The CentOS Distribution.
 @end itemize
