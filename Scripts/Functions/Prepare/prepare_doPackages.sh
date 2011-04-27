@@ -34,13 +34,13 @@ function prepare_doPackages {
     fi
 
     local PACKAGE=''
-    local WARNING=''
     local PACKAGES=''
     local PACKAGES_THIRDS=''
     local -a PACKAGES_MISSING
     local -a PACKAGES_INSTALL
     local RPM='/bin/rpm'
     local YUM='/usr/bin/yum'
+    local YUM_OPTIONS=''
 
     # Check execution rights of package managers.
     cli_checkFiles $RPM 'x'
@@ -69,14 +69,18 @@ function prepare_doPackages {
         fi
     done
 
+    # Define relation between centos-art.sh options and yum options.
+    [[ $FLAG_ANSWER == 'true' ]] && YUM_OPTIONS="${YUM_OPTIONS} -y"
+    [[ $FLAG_QUIET  == 'true' ]] && YUM_OPTIONS="${YUM_OPTIONS} -q"
+
     # Use `sudo yum' to install missing packages in your workstation.
     if [[ ${#PACKAGES_MISSING[*]} -gt 0 ]];then
-        sudo ${YUM} install ${PACKAGES_MISSING[*]}
+        sudo ${YUM} ${YUM_OPTIONS} install ${PACKAGES_MISSING[*]}
     fi
         
     # Use `sudo yum' to update installed packages in your workstation.
     if [[ ${#PACKAGES_INSTALL[*]} -gt 0 ]];then
-        sudo ${YUM} update ${PACKAGES_INSTALL[*]}
+        sudo ${YUM} ${YUM_OPTIONS} update ${PACKAGES_INSTALL[*]}
     fi
-
+    
 }
