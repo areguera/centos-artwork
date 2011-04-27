@@ -2945,6 +2945,21 @@ centos-art.sh prepare [OPTIONS]
           </item>
         </tableitem>
       </table>
+      <subsubheading>Examples</subsubheading>
+      <table>
+        <tableitem>
+          <tableterm><command>centos-art prepare --packages --link</command></tableterm>
+          <item>
+            <para>Preapare both links and packages required to use the working copy of CentOS Artwork Repository in the workstation. If required packages are already installed this command looks for updates instead.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art prepare --link --quiet</command></tableterm>
+          <item>
+            <para>Update connection between the workstation and the working copy of CentOS Artwork Repository, using no output.</para>
+          </item>
+        </tableitem>
+      </table>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -3346,12 +3361,10 @@ function render_loadConfig {
 15| }
 ]]></verbatim>
       <para>The comment template replaces all the lines between the <samp>Copyright</samp> line (e.g., line 5) and the first separator line (e.g., line 9). Everything else in the file will remain immutable.</para>
-      <para>From time to time, we use the <code>tuneup</code> functionality on the `trunk/Scripts' directory structure to update the copyright and license notice of all the shell scripts we have therein.</para>
       <subsubheading>Maintaining <file>.svg</file> files</subsubheading>
       <para>If scalable vector graphics are found, the <code>tuneup</code> functionality reads a metadata template (<file>trunk/Scripts/Functions/Tuneup/Config/svg_metadata.sed</file>) and applies it to all files found, one by one. Immediatly after the metadata template has been applied and, before passing to next file, all unused definition are removed from file, too.</para>
       <para>The metadata we apply from the metadata template is created dynamicaly using the file found absolute path, the workstation time information and the <command>centos-art.sh</command> script copyright information as reference.  Additionally, the <emph>Creative Common Distribution-ShareAlike 3.0 License</emph> is also set in the metadata.</para>
       <para>The elimination of unused definitions inside SVG files takes place through the <option>--vacuum-defs</option> option of <command>inkscape</command> command-line interface.</para>
-      <para>Frequently, we use the <code>tuneup</code> functionality on the <file>trunk/Identity/Models</file> and <file>trunk/Identity/Themes/Models</file> directory structure to update metadata and remove unused definitions from design models therein.</para>
       <subsubheading>Maintaining <file>.xhtml</file> files</subsubheading>
       <para>If web pages are found, the <code>tuneup</code> functionality transforms web page headings to make them accessible through a table of contents. The table of contents is expanded in place, wherever the <code>&lt;div class="toc"&gt;&lt;/div&gt;</code> piece of code be in the page.</para>
       <para>Once the <code>&lt;div class="toc"&gt;&lt;/div&gt;</code> piece of code has be expanded, there is no need to put anything else in the page. You can run the <code>tuneup</code> functionality everytime you update the heading information so as to update the table of contents, too.</para>
@@ -3362,7 +3375,6 @@ function render_loadConfig {
 <h1><a name="" href="">Title</a></h1>
 ]]></verbatim>
       <para>In the example above, h1 can vary from h1 to h6. Closing tag must be present and also match the openning tag. The value of <option>name</option> and <option>href</option> options from the anchor element are set dynamically using the md5sum output of combining the page location, the <code>head-</code> string and the heading string.  If any of the components used to build the heading reference changes, you need to run the the <code>tuneup</code> functionality in order for the anchor elements to use the correct information.</para>
-      <para>Frequently, we use the <code>tuneup</code> functionality on the <file>trunk/Identity/Webenv/App/Home</file> directory structure to update the heading information and the related table of contents of web pages therein.</para>
       <subheading>Usage</subheading>
       <subsubheading>Synopsis</subsubheading>
       <para><command>centos-art tuneup [OPTIONS] path/to/dir</command></para>
@@ -3390,6 +3402,27 @@ function render_loadConfig {
           <tableterm><option>--dont-commit-changes</option></tableterm>
           <item>
             <para>Supress all <code>commit</code> and <code>update</code> actions realized over files already processed, before and after the action itself had took place in the working copy.</para>
+          </item>
+        </tableitem>
+      </table>
+      <subsubheading>Examples</subsubheading>
+      <table>
+        <tableitem>
+          <tableterm><command>centos-art tuneup trunk/Scripts</command></tableterm>
+          <item>
+            <para>Update the copyright and license notice of all the shell scripts we have in <file>trunk/Scripts</file> directory structure.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art tuneup trunk/Identity/Models/Brands --filter="symbol"</command></tableterm>
+          <item>
+            <para>Update metadata and remove unused definitions from all design models in <file>trunk/Identity/Models/Brands</file> which have the word <samp>symbol</samp> in the file name.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art tuneup trunk/Identity/Webenv/App/Home</command></tableterm>
+          <item>
+            <para>Update headings and the related table of contents to all web pages inside <file>trunk/Identity/Webenv/App/Home</file>, recusively.</para>
           </item>
         </tableitem>
       </table>

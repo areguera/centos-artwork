@@ -59,10 +59,6 @@ The comment template replaces all the lines between the
 @samp{Copyright} line (e.g., line 5) and the first separator line
 (e.g., line 9). Everything else in the file will remain immutable.
 
-From time to time, we use the @code{tuneup} functionality on the
-`trunk/Scripts' directory structure to update the copyright and
-license notice of all the shell scripts we have therein.
-
 @subsubheading Maintaining @file{.svg} files
 
 If scalable vector graphics are found, the @code{tuneup} functionality
@@ -81,11 +77,6 @@ Distribution-ShareAlike 3.0 License} is also set in the metadata.
 The elimination of unused definitions inside SVG files takes place
 through the @option{--vacuum-defs} option of @command{inkscape}
 command-line interface.
-
-Frequently, we use the @code{tuneup} functionality on the
-@file{trunk/Identity/Models} and @file{trunk/Identity/Themes/Models}
-directory structure to update metadata and remove unused definitions
-from design models therein.
 
 @subsubheading Maintaining @file{.xhtml} files
 
@@ -118,11 +109,6 @@ used to build the heading reference changes, you need to run the the
 @code{tuneup} functionality in order for the anchor elements to use
 the correct information.
 
-Frequently, we use the @code{tuneup} functionality on the
-@file{trunk/Identity/Webenv/App/Home} directory structure to update
-the heading information and the related table of contents of web pages
-therein.
-
 @subheading Usage
 
 @subsubheading Synopsis
@@ -143,6 +129,24 @@ Assume `yes' to all confirmation questions.
 Supress all @code{commit} and @code{update} actions realized over
 files already processed, before and after the action itself had took
 place in the working copy.
+@end table
+
+@subsubheading Examples
+
+@table @command
+@item centos-art tuneup trunk/Scripts
+
+Update the copyright and license notice of all the shell scripts we
+have in @file{trunk/Scripts} directory structure.
+
+@item centos-art tuneup trunk/Identity/Models/Brands --filter="symbol"
+Update metadata and remove unused definitions from all design models
+in @file{trunk/Identity/Models/Brands} which have the word
+@samp{symbol} in the file name.
+
+@item centos-art tuneup trunk/Identity/Webenv/App/Home
+Update headings and the related table of contents to all web pages
+inside @file{trunk/Identity/Webenv/App/Home}, recusively.
 @end table
 
 @subheading See also

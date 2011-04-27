@@ -271,6 +271,19 @@ Assume @samp{yes} to all confirmation questions.
 
 @end table
 
+@subsubheading Examples
+
+@table @command
+@item centos-art prepare --packages --link
+Preapare both links and packages required to use the working copy of
+CentOS Artwork Repository in the workstation. If required packages are
+already installed this command looks for updates instead.
+
+@item centos-art prepare --link --quiet
+Update connection between the workstation and the working copy of
+CentOS Artwork Repository, using no output.
+@end table
+
 @subheading See also
 
 @itemize
