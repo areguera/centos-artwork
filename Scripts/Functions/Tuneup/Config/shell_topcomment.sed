@@ -19,11 +19,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
+#
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
 /^# +Copyright .*$/a\
-# Copyright (C) 2009-=COPYRIGHT_YEAR= Alain Reguera Delgado\
+# Copyright (C) 2009-=COPYRIGHT_YEAR= =COPYRIGHT_HOLDER=\
 #\
 # This program is free software; you can redistribute it and/or modify\
 # it under the terms of the GNU General Public License as published by\
@@ -38,6 +39,7 @@
 # You should have received a copy of the GNU General Public License\
 # along with this program; if not, write to the Free Software\
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.\
+#\
 # ----------------------------------------------------------------------
 
 # Remove previous copyright notice, just to be sure the one above be
