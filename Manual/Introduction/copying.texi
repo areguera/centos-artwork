@@ -1,25 +1,17 @@
-Inside the CentOS Artwork Repository you can find content branded by
-The CentOS Project and content not branded at all. Contents branded by
-The CentOS Project contain either The CentOS Trademark, The CentOS
-Logo or The CentOS Symbol.  Content branded by The CentOS Project
-cannot be redistributed without previous conversation with The CentOS
-Project.  However, you can study and modify both content branded by
-The CentOS Project and content not branded at all in the sake of
-proposing improvements to The CentOS Project corporate visual
-identity.
+@verbatim
+Copyright (C) 2009, 2010, 2011 The CentOS Project
+@end verbatim
 
-If you are using the CentOS Artwork Repository for producing your own
-corporate visual identity, you should remove all The CentOS Trademarks
-from your contents and rename the repository to something different
-from CentOS Artwork Repository.
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
+
+@subheading Preamble
 
 The CentOS Artwork Repository organizes files in a very specific way
 to implement The CentOS Project corporate visual identity. This very
 specific organization of files is part of @command{centos-art.sh}
 script, a bash script that automates most of the frequent tasks inside
 the repository.
-
-@subheading The @command{centos-art.sh} script
 
 The @command{centos-art.sh} script and the organization of files it
 needs to work are not in the public domain; they are copyrighted and
@@ -49,9 +41,32 @@ their recipients to know that what they have is not what we
 distributed, so that any problems introduced by others will not
 reflect on our reputation.
 
+The centos-art.sh script is released as a GPL work. Individual
+packages used by centos-art.sh script include their own licenses and
+the centos-art.sh script license applies to all packages that it does
+not clash with.  If there is a clash between the centos-art.sh script
+license and individual package licenses, the individual package
+license applies instead.
+
 The precise conditions of the license for the @command{centos-art.sh}
-script are found in the General Public Licenses that accompany it (see
-file
-@url{file:///home/centos/artwork/trunk/Scripts/COPYING,trunk/Scripts/COPYING}).
-This manual specifically is covered by the GNU Free Documentation
-License.
+script are found in the General Public Licenses (@pxref{GNU General
+Public License}). This manual specifically is covered by the GNU Free
+Documentation License (@pxref{GNU Free Documentation License}).
+
+@subheading 1. The CentOS Brand
+
+The CentOS Brand (@pxref{Directories trunk Identity Models Brands}) is
+the main visual manifestaion of The CentOS Project. The CentOS Project
+uses The CentOS Brand to connect all its visual manifestions (e.g.,
+GNU/Linux Distributions, Websites, Stationery, etc.) and, this way,
+provide recognition among other similar projects.  
+
+Both The CentOS Brand and all the visual manifestations that derivate
+from it are available for you to be able to study and improve them
+around a good citizen's will inside The CentOS Community environment,
+but you are not allowed to redistribute them elsewhere, without the
+given permission of The CentOS Project.
+
+If you need to redistribute either The CentOS Brand or any the visual
+manifestatinos that derivate from it, write your intentions to the
+@email{centos-devel@@centos.org} mailing list.
