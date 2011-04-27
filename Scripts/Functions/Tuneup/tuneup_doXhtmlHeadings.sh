@@ -1,22 +1,27 @@
 #!/bin/bash
+# 
+# tuneup_doXhtmlHeadings.sh -- This functionality transforms web page
+# headings to make them accessible through a table of contents.  The
+# table of contents is expanded in place, wherever the <div
+# class="toc"></div> piece of code be in the page.  Once the <div
+# class="toc"></div> piece of code has be expanded, there is no need
+# to put anything else in the page.
 #
-# html_updateHeadings.sh -- This function transforms html headings to
-# to make them accessible (e.g., through a table of contents).  In
-# order for this function to work, you need to put headings in just
-# one line and they must have one of the following formats:
+# In order for the tuneup functionality to transform headings, you
+# need to put headings in just one line using one of the following
+# forms:
 #
 # <h1><a name="">Title</a></h1>
 # <h1><a href="">Title</a></h1>
 # <h1><a name="" href="">Title</a></h1>
 #
-# In the above examples, h1 can vary from h1 to h6. Closing tag must
-# be present and match the openning tag. The value of <a name=""> and
-# <a href=""> options are the md5sum of page location, plus the
-# 'head-' string, plus the heading string. If heading title or page
-# location changes, the values of <a name=""> and <a href=""> options
-# will change too.
+# In the example above, h1 can vary from h1 to h6. Closing tag must be
+# present and also match the openning tag. The value of `name' and
+# `href' options from the anchor element are set dynamically using the
+# md5sum output of combining the page location, the head- string and
+# the heading string.
 #
-# Copyright (C) 2009-2011 Alain Reguera Delgado
+# Copyright (C) 2009-2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,6 +36,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
