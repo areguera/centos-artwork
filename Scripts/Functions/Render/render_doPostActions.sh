@@ -3,7 +3,7 @@
 # render_doPostActions.sh -- This function performs
 # post-rendition actions for all files.
 #
-# Copyright (C) 2009-2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

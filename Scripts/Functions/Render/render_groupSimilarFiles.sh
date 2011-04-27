@@ -11,7 +11,7 @@
 # array inside the appropriate `render.conf.sh' pre-configuration
 # script. This function cannot be used as last-rendition action.
 #
-# Copyright (C) 2009-2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

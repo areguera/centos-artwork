@@ -4,7 +4,7 @@
 # inside the repository. What task to performed to what file is
 # defined using the file extension as reference.
 #
-# Copyright (C) 2009-2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
