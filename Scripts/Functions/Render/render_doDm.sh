@@ -81,7 +81,7 @@ function render_doDm {
     fi
 
     # Define source files using absolute paths.
-    SRC[0]=$(cli_getRepoTLDir)/Identity/Brands/Img/symbol-resized-48.png
+    SRC[0]=$(cli_getRepoTLDir)/Identity/Images/Brands/centos-symbol-resized-48.png
     SRC[1]=${OUTPUT}/release.png
     SRC[2]=${OUTPUT}/screenshot.png
     SRC[3]=$(dirname $TEMPLATE)/GdmGreeterTheme.xml
