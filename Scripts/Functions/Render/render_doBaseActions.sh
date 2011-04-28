@@ -63,7 +63,7 @@ function render_doBaseActions {
     # file extensions that centos-art will look for in order to build
     # the list of files to process. The list of files to process
     # contains the files that match this extension pattern.
-    EXTENSION='(svgz|svg|xml|xhtml|docbook)'
+    EXTENSION='(svgz|svg|xhtml|docbook)'
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
