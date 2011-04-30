@@ -105,7 +105,7 @@ function render_doSyslinux {
     fi
 
     # Define theme-specific palettes directory. 
-    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
+    local PALETTES=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent '--theme')/Palettes
 
     # Define absolute path to GPL palette. The GPL palette defines the
     # color information used to build syslinux images.  This palette

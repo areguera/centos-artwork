@@ -3,36 +3,29 @@
 # render_getDirTemplate.sh -- This function defines the way renderable
 # directories are processed inside the repository.  Inside the
 # repository, renderable directories are processed either through
-# general-purpose rendition or theme-specific rendition.
+# direct or theme-specific rendition.
 #
-# General-purpose rendition:
+# Direct rendition takes one XML file from design model
+# (`trunk/Identity/Models') directory structure and produces one file
+# in `trunk/Identity/Images' directory strucutre. In this
+# configuration, the organization used to stored the design model is
+# taken as reference to build the path required to store the image
+# related to it under `trunk/Identity/Images' directory structure. 
 #
-# The general-purpose rendition takes one XML file from design
-# model (`trunk/Identity/Models') directory structure and
-# produces one file in `trunk/Identity/Images' directory
-# strucutre. In this configuration, the organization used to
-# stored the design model is taken as reference to build the
-# path required to store the image related to it under
-# `trunk/Identity/Images' directory structure. 
-#
-# Theme-specific rendition:
-#
-# The theme-specific rendition takes one design model from
-# `trunk/Identity/Models/Themes' directory structure to produce
-# one or more images in
-# `trunk/Identity/Motifs/$THEME/$VERSION/$MODEL' directory
-# structure. In this configuration we have many different
-# artistic motifs that use one unique design model directory
-# structure as reference to produce images. 
+# Theme-specific rendition takes one design model from
+# `trunk/Identity/Models/Themes' directory structure to produce one or
+# more images in `trunk/Identity/Images/Themes/$THEME/$VERSION/$MODEL'
+# directory structure. In this configuration we have many different
+# artistic motifs that use one unique design model directory structure
+# as reference to produce images. 
 #
 # Since theme design models are unified to be reused by more
 # than one artistic motif, it is not possible to render artistic
-# motifs in a lineal manner (i.e., as we do with general-purpose
-# rendition) because we need to establish the relation between
-# the artistic motif renderable directory structure and the
-# design model first and that relation happens when renderable
-# directory structures inside artistic motifs are processed
-# individually.
+# motifs in a lineal manner (i.e., as we do with direct rendition)
+# because we need to establish the relation between the artistic motif
+# renderable directory structure and the design model first and that
+# relation happens when renderable directory structures inside
+# artistic motifs are processed individually.
 #
 # In the first rendition category, we use a design model directory
 # structure as reference to produce images one by one. In the second
@@ -73,16 +66,14 @@ function render_getDirTemplate {
     # structure.
     TEMPLATE=$(echo "$TEMPLATE" | sed "s!/branches/!/trunk/!")
 
-    # Define absolute path to theme-specific design models.
+    # Define absolute path to input files using absolute path from
+    # output files.
     if [[ -d ${TEMPLATE}/Tpl ]];then
         TEMPLATE=${TEMPLATE}/Tpl
     else
-        TEMPLATE=$(echo "$TEMPLATE" \
-            | sed -r "s!$(cli_getPathComponent $TEMPLATE '--theme-pattern')!Identity/Themes/Models/${FLAG_THEME_MODEL}/!")
+        TEMPLATE=$(echo "$TEMPLATE" | sed -r \
+            -e "s!/Themes/$(cli_getPathComponent "$ACTIONVAL" "--theme")!/Themes/${FLAG_THEME_MODEL}!" \
+            -e "s!/Images!/Models!")
     fi
-
-
-    # Define absolute path to general-purpose design models.
-    TEMPLATE=$(echo "$TEMPLATE" | sed "s!/Images!/Models!")
 
 }

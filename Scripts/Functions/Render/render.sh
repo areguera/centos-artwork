@@ -72,11 +72,6 @@ function render {
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
 
-    # Define action name. No matter what option be passed to
-    # centos-art, there is only one action to perform (i.e., the
-    # base-rendition flow).
-    ACTIONNAM="${FUNCNAME}_doBaseActions"
-
     # Define action value. We use non-option arguments to define the
     # action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
@@ -86,20 +81,21 @@ function render {
         # copy.
         cli_checkRepoDirSource
 
-        # Define the renderable top directory structure. This is, the
-        # place where renderable directory structures are stored.
-        # Directory structures outside this directory won't be
-        # processed.
-        if [[ ! $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Identity/Images|$(cli_getPathComponent '--theme-pattern'))" ]];then
-            cli_printMessage "`gettext "The path provided doesn't support rendition."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
-        fi
-
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
         cli_syncroRepoChanges
+
+        # Define action name using action value as reference.  
+        if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
+            ACTIONNAM="${FUNCNAME}_doThemeActions"
+        elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
+            ACTIONNAM="${FUNCNAME}_doBaseActions"
+        else
+            cli_printMessage "`gettext "The path provided doesn't support rendition."`" 'AsErrorLine'
+            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        fi
 
         # Execute action name.
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then

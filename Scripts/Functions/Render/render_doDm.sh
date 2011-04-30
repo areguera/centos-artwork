@@ -86,7 +86,7 @@ function render_doDm {
     SRC[2]=${OUTPUT}/screenshot.png
     SRC[3]=$(dirname $TEMPLATE)/GdmGreeterTheme.xml
     SRC[4]=$(dirname $TEMPLATE)/GdmGreeterTheme.desktop
-    SRC[5]=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Backgrounds/Img/Png
+    SRC[5]=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent '--theme')/Backgrounds/Img/Png
     SRC[6]=$(dirname $TEMPLATE)/icon-language.png
     SRC[7]=$(dirname $TEMPLATE)/icon-reboot.png
     SRC[8]=$(dirname $TEMPLATE)/icon-session.png

@@ -51,7 +51,7 @@ function render_doBaseActions {
     local -a LASTACTIONS
 
     # Verify default directory where design models are stored in.
-    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${FLAG_THEME_MODEL}" 'd'
+    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}" 'd'
 
     # Define the extension pattern for template files. This is the
     # file extensions that centos-art will look for in order to build
@@ -103,7 +103,7 @@ function render_doBaseActions {
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
-           | sed -r 's!trunk/Identity/(Models|Themes/Models)!trunk/Locales/Identity/\1!')/$(cli_getCurrentLocale)/messages.po
+           | sed -r 's!trunk/Identity/(.+)!trunk/Locales/Identity/\1!')/$(cli_getCurrentLocale)/messages.po
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
@@ -132,11 +132,11 @@ function render_doBaseActions {
         # path string. The common point is the name of the parent
         # directory (stored in PARENTDIR).
         #
-        # Identity/Themes/Models/.../Firstboot/3/splash-small.svg
+        # Identity/Models/Themes/.../Firstboot/3/splash-small.svg
         # -------------------------^| the     |^------------^
         # variable path             | common  |    common path
         # -------------------------v| point   |    v------------v
-        # Identity/Themes/Motifs/.../Firstboot/Img/3/splash-small.png
+        # Identity/Images/Themes/.../Firstboot/Img/3/splash-small.png
         #
         # What we do here is remove the varibale path, the common
         # point, and the file extension parts in the string holding

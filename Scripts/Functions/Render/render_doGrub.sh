@@ -57,7 +57,7 @@ function render_doGrub {
     fi
 
     # Define theme-specific palettes directory. 
-    local PALETTES=$(cli_getRepoTLDir)/Identity/Themes/Motifs/$(cli_getPathComponent '--theme')/Palettes
+    local PALETTES=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent '--theme')/Palettes
 
     # Define absolute path to GPL palette.  This palettes should have
     # 14 colors only. For more information on this see the GRUB's
