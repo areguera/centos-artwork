@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_do.sh -- This function performs base-rendition action
-# for all files.
+# render_doBaseActions.sh -- This function performs base-rendition
+# action for all files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -52,12 +52,6 @@ function render_doBaseActions {
 
     # Verify default directory where design models are stored in.
     cli_checkFiles "$(cli_getRepoTLDir)/Identity/Themes/Models/${FLAG_THEME_MODEL}" 'd'
-
-    # Verify post-rendition actions passed from command-line and add
-    # them, if any, to post-rendition list of actions.
-    if [[ $FLAG_GROUPED_BY != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="groupSimilarFiles:${FLAG_GROUPED_BY}"
-    fi
 
     # Define the extension pattern for template files. This is the
     # file extensions that centos-art will look for in order to build

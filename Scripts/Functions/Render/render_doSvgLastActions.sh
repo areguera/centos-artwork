@@ -25,13 +25,13 @@
 
 function render_doSvgLastActions {
 
-    local ACTION=''
-
     # Verify position of file being produced in the list of files been
     # currently processed.
     if [[ $THIS_FILE_DIR == $NEXT_FILE_DIR ]];then
         return
     fi
+
+    local ACTION=''
 
     # Define SVG-directory-specific last-rendition actions processing
     # as local to this function. Otherwise it may confuse command-line

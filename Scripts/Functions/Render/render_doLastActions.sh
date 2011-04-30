@@ -25,28 +25,16 @@
 
 function render_doLastActions {
 
-    local ACTION=''
-
     # Verify position of file being produced in the list of files been
     # currently processed.
-    if [[ $THIS_FILE_DIR != $NEXT_FILE_DIR ]];then
-
-        # At this point centos-art.sh should be producing the last
-        # file from the same unique directory structure, so, before
-        # producing images for the next directory structure lets
-        # execute last-rendition actions for the current directory
-        # structure. 
-        for ACTION in "${LASTACTIONS[@]}"; do
-
-            case "${ACTION}" in
-
-                groupSimilarFiles:* )
-                    render_groupSimilarFiles
-                    ;;
-            esac
-
-        done
-
+    if [[ $THIS_FILE_DIR == $NEXT_FILE_DIR ]];then
+        return
     fi
+
+    local ACTION=''
+
+    # Define common last-rendition actions.
+
+    # Execute common last-rendition actions.
 
 }

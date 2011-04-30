@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_doPostActions.sh -- This function performs
-# post-rendition actions for all files.
+# render_doPostActions.sh -- This function performs post-rendition
+# actions for all files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -27,6 +27,12 @@ function render_doPostActions {
 
     local ACTION=''
 
+    # Define common post-rendition actions.
+    if [[ $FLAG_GROUPED_BY != '' ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]="groupSimilarFiles:${FLAG_GROUPED_BY}"
+    fi
+
+    # Execute common post-rendition actions.
     for ACTION in "${POSTACTIONS[@]}"; do
 
         case "${ACTION}" in
