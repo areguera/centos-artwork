@@ -7,35 +7,34 @@ maintainance inside a working copy of CentOS Artwork Repository.
 @subheading Description
 
 The @code{tuneup} functionality of @command{centos-art.sh} script
-provides the standard way of maintaining files inside your working
-copy of CentOS Artwork Repository.
+provides the standard way of maintaining files inside the working copy
+of CentOS Artwork Repository.
 
 Tasks related to file maintainance are repetitive. You might find
 yourself doing them time after time inside the working copy of CentOS
-Artwork Repository. Some of these maintainance tasks are updating top
-comments on shell scripts, creating table of contents for web pages,
-updating metadata related to design models and remove unused
-definitions on design models.
+Artwork Repository. Some of these maintainance tasks do update top
+comments on shell scripts, create table of contents for web pages,
+update metadata related to design models and remove unused definitions
+from design models.
 
-The maintainance tasks are associated to file extensions. This way,
-the @code{tuneup} functionality know what maintainance tasks should be
-applied to what files inside the working copy of CentOS Artwork
-Repository. For example, when you execute the @code{tuneup}
-functionality, it makes a list of files based on supported extensions
-(e.g., @file{.sh}, @file{.svg} and @file{.xhtml}) and apply
-maintainance tasks file by file accordingly to its file extension.
+When you execute the @code{tuneup} functionality of
+@command{centos-art.sh} script, it looks for all files that match the
+supported extensions (e.g., @file{.sh}, @file{.svg} and @file{.xhtml})
+in the directory specified, builds a list with them and applies the
+maintainance tasks using file extensions as reference.
 
 @subsubheading Maintaining @file{.sh} files
 
-If shell scripts are found, the @code{tuneup} functionality reads a
-comment template
-(@file{trunk/Scripts/Functions/Prepare/Config/shell_topcomment.sed})
-and applies it to the shell scripts, one by one. As result, all shell
+If shell scripts are found, the @code{tuneup} functionality of
+@command{centos-art.sh} script reads a comment template from
+@file{trunk/Scripts/Functions/Prepare/Config/shell_topcomment.sed} and
+applies it to shell scripts found, one by one. As result, all shell
 scripts will end up having the same copyright and license information
 the comment template does.
 
-In order for the comment template to be applied correctly, the shell
-script you write must have the following structure:
+In order for the shell script top comment template to be applied
+correctly, the shell scripts you write must have the following
+structure:
 
 @verbatim
  1| #!/bin/bash
@@ -55,9 +54,10 @@ script you write must have the following structure:
 15| }
 @end verbatim
 
-The comment template replaces all the lines between the
-@samp{Copyright} line (e.g., line 5) and the first separator line
-(e.g., line 9). Everything else in the file will remain immutable.
+The @code{tuneup} functionality of @command{centos-art.sh} script
+replaces all lines between the @samp{Copyright} line (e.g., line 5)
+and the first separator line (e.g., line 9), inclusively. Everything
+else in the file will remain immutable.
 
 @subsubheading Maintaining @file{.svg} files
 
@@ -69,30 +69,32 @@ metadata template has been applied and, before passing to next file,
 all unused definition are removed from file, too.
 
 The metadata we apply from the metadata template is created dynamicaly
-using the file found absolute path, the workstation time information
-and the @command{centos-art.sh} script copyright information as
+combining the file absolute path, the workstation time information and
+the @command{centos-art.sh} script copyright holder information as
 reference.  Additionally, the @emph{Creative Common
 Distribution-ShareAlike 3.0 License} is also set in the metadata.
 
 The elimination of unused definitions inside SVG files takes place
 through the @option{--vacuum-defs} option of @command{inkscape}
-command-line interface.
+command-line interface which is described in its man page
+(@command{man inkscape}).
 
 @subsubheading Maintaining @file{.xhtml} files
 
-If web pages are found, the @code{tuneup} functionality transforms web
-page headings to make them accessible through a table of contents.
-The table of contents is expanded in place, wherever the @code{<div
-class="toc"></div>} piece of code be in the page. 
+If web pages are found, the @code{tuneup} functionality of
+@command{centos-art.sh} script transforms web page headings to make
+them accessible through a table of contents.  The table of contents is
+expanded in place, wherever the @code{<div class="toc"></div>} piece
+of code be in the page. 
 
 Once the @code{<div class="toc"></div>} piece of code has be expanded,
 there is no need to put anything else in the page. You can run the
 @code{tuneup} functionality everytime you update the heading
 information so as to update the table of contents, too.
 
-In order for the @code{tuneup} functionality to transform headings,
-you need to put headings in just one line using one of the following
-forms:
+In order for the @code{tuneup} functionality of
+@command{centos-art.sh} script to transform headings, you need to put
+headings in just one line using one of the following forms:
 
 @verbatim
 <h1><a name="">Title</a></h1>
@@ -106,8 +108,8 @@ and @option{href} options from the anchor element are set dynamically
 using the md5sum output of combining the page location, the
 @code{head-} string and the heading string.  If any of the components
 used to build the heading reference changes, you need to run the the
-@code{tuneup} functionality in order for the anchor elements to use
-the correct information.
+@code{tuneup} functionality of @command{centos-art.sh} script in order
+for the anchor elements to use the correct information.
 
 @subheading Usage
 
