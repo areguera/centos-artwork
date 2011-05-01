@@ -32,6 +32,13 @@ function help_copyEntry {
     local ENTRIES=''
     local ENTRY=''
 
+    # Verify parent directory of entry destination. If its parent
+    # directory doesn't exist, create it and add it to the repository.
+    if [[ ! -d $(dirname ${ENTRY_DST}) ]];then
+        mkdir -p $(dirname ${ENTRY_DST})
+        svn add $(dirname ${ENTRY_DST}) --quiet
+    fi
+
     # Copy main documentation entry.
     if [[ -a ${ENTRY_SRC} ]] && [[ ! -a ${ENTRY_DST} ]];then
         cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
