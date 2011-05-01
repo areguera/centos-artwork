@@ -79,7 +79,7 @@ following compenents:
 @table @strong
 @item Webenv header background
 @verbatim
-trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
+trunk/Identity/Images/Themes/$THEME/Backgrounds/Img/1024x250.png
 @end verbatim
 
 @item CSS definitions
@@ -94,10 +94,10 @@ The visual style of CentOS web environment is defined in the following
 files:
 
 @verbatim
-trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Xcf/1024x250.xcf
-trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250.png
-trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Img/1024x250-bg.png
-trunk/Identity/Themes/Motifs/$THEME/Backgrounds/Tpl/1024x250.svg
+trunk/Identity/Images/Themes/$THEME/Backgrounds/Xcf/1024x250.xcf
+trunk/Identity/Images/Themes/$THEME/Backgrounds/Img/1024x250.png
+trunk/Identity/Images/Themes/$THEME/Backgrounds/Img/1024x250-bg.png
+trunk/Identity/Images/Themes/$THEME/Backgrounds/Tpl/1024x250.svg
 @end verbatim
 
 As graphic designer you use @file{1024x250.xcf} file to produce
@@ -108,7 +108,7 @@ your vectorial design. When you consider you artwork ready, use the
 visual style controller images of CentOS web environment.
 
 @verbatim
-centos-art render --entry=trunk/Identity/Themes/Motifs/$THEME/Backgrounds --filter='1024x250'
+centos-art render --entry=trunk/Identity/Images/Themes/$THEME/Backgrounds --filter='1024x250'
 @end verbatim
 
 Once you have rendered required image files, changing the visual style

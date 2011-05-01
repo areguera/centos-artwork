@@ -1,6 +1,6 @@
 @subheading Goals
 
-The @file{trunk/Identity/Themes/Motifs} directory exists to:
+The @file{trunk/Identity/Images/Themes} directory exists to:
 
 @itemize
 @item Organize CentOS themes' artistic motifs. 
@@ -29,7 +29,7 @@ Modern, squares and circles flowing up.
 If you have new conceptual ideas for CentOS, then you can say that you
 want to create a new artistic motif for CentOS. To create a new
 artistic motif you need to create a directory under
-@file{Identity/Themes/Motifs/} using a name coherent with your
+@file{Identity/Images/Themes/} using a name coherent with your
 conceptual idea. That name will be the name of your artistic motif. If
 possible, when creating new conceptual ideas for CentOS, think about
 what CentOS means for you, what does it makes you feel, take your
@@ -42,7 +42,7 @@ organize your graphic design projects.
 
 To add a new motif structure to CentOS Artwork Repository, you need to
 use the @command{centos-art} command line in the
-@file{Identity/Themes/Motifs/} directory as described below:
+@file{Identity/Images/Themes/} directory as described below:
 
 @example
 centos-art add --motif=ThemeName
@@ -53,7 +53,7 @@ you.  The basic structure produced by @command{centos-art} command is
 illustrated in the following figure:
 
 @example
-trunk/Identity/Themes/Motifs/$ThemeName/
+trunk/Identity/Images/Themes/$ThemeName/
 |-- Backgrounds
 |   |-- Img
 |   `-- Tpl
@@ -75,7 +75,7 @@ used as value wherever theme variable (@b{$THEME}) or translation marker
 (@b{=THEME=}) is.  Optionally, you can add a description about
 inspiration and concepts behind your work.
 
-@item Use the location @file{trunk/Identity/Themes/Motifs/$THEME/} to
+@item Use the location @file{trunk/Identity/Images/Themes/$THEME/} to
 store your work. If it doesn't exist create it. Note that this require
 you to have previous commit access in CentOS Artwork Repository.
 

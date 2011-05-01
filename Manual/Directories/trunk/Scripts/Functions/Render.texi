@@ -1,10 +1,26 @@
-@subheading Goals
+@subheading NAME
 
 This section describes the @code{render} functionality of
 @command{centos-art.sh} script and general examples about content
 rendition inside a working copy of CentOS Artwork Repository.
 
-@subheading Description
+@subheading SYNOPSIS
+
+@command{centos-art render [] path/to/dir}
+
+The @file{path/to/dir} parameter refers the path information related
+to the directory structure inside the working copy of CentOS Artwork
+Repository you'r going to produce.  This path information defines
+whether to perform direct or theme-specific rendition.
+
+You can use the @file{path/to/dir} information to control the amount
+of components you'll produce inside a specific renderable location.
+The more deep you go inside the path the more specific you are when
+producing theme components. Sometimes, you can also combine the use of
+@file{path/to/dir} with the @option{--filter} option to have a finer
+control over the files you produce.
+
+@subheading DESCRIPTION
 
 The @code{render} functionlity of @command{centos-art.sh} script
 standardizes rendition tasks inside the working copy of CentOS Artwork
@@ -49,9 +65,9 @@ In theme-specific rendition, there is one directory structure to store
 input files @file{trunk/Identity/Themes/Models}, one directory
 structure to store translation files
 (@file{trunk/Locales/Identity/Themes/Models/}), one directory structure
-to store artistic motifs (@file{trunk/Identity/Themes/Motifs}) and one
+to store artistic motifs (@file{trunk/Identity/Images/Themes}) and one
 directory structure to store output files
-(@file{trunk/Identity/Themes/Motifs}).
+(@file{trunk/Identity/Images/Themes}).
 
 In theme-specific rendition, when the @code{render} functionality of
 @command{centos-art.sh} script is executed, it uses the input
@@ -170,23 +186,7 @@ of the input file. Translation messages are stored under
 functionality of @command{centos-art.sh} script (@pxref{Directories
 trunk Scripts Functions Locale}).
 
-@subheading Usage
-
-@command{centos-art render [OPTIONS] path/to/dir}
-
-@subsubheading Synopsis
-
-The @file{path/to/dir} parameter refers the path information related
-to the directory structure inside the working copy of CentOS Artwork
-Repository you'r going to produce.  This path information defines
-whether to perform direct or theme-specific rendition.
-
-You can use the @file{path/to/dir} information to control the amount
-of components you'll produce inside a specific renderable location.
-The more deep you go inside the path the more specific you are when
-producing theme components. Sometimes, you can also combine the use of
-@file{path/to/dir} with the @option{--filter} option to have a finer
-control over the files you produce.
+@subheading OPTIONS
 
 The @code{render} functionality of @command{centos-art.sh} script
 accepts the following optios:
@@ -269,8 +269,12 @@ motifs.
 @table @command
 @item centos-art render trunk/Identity/Images/Brands
 @item centos-art render trunk/Identity/Images/Brands --filter="symbol"
-@item centos-art render trunk/Identity/Themes/Motifs/Flame/2
+@item centos-art render trunk/Identity/Images/Themes/Flame/2
 @end table
+
+@subheading AUTHOR
+
+Copyright @copyright{}  2009, 2010, 2011 Alain Reguera Delgado.
 
 @subheading See also
 
