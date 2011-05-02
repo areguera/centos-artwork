@@ -55,6 +55,10 @@ function cli_printMessage {
         cli_printMessage "`gettext "Updating"`: $MESSAGE"
         ;;
 
+    'AsCroppingFromLine' )
+        cli_printMessage "`gettext "Cropping from"`: $MESSAGE"
+        ;;
+
     'AsTuningLine' )
         cli_printMessage "`gettext "Tuning"`: $MESSAGE"
         ;;

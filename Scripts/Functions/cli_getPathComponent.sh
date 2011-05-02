@@ -100,9 +100,9 @@ function cli_getPathComponent {
     #   Example:
     #                                +------> theme name
     #                                |-->| 
-    #   trunk/Identity/Themes/Motifs/Flame/1
-    #   trunk/Identity/Themes/Motifs/Flame/2 
-    #   trunk/Identity/Themes/Motifs/Flame/3
+    #   trunk/Identity/Images/Themes/Flame/1
+    #   trunk/Identity/Images/Themes/Flame/2 
+    #   trunk/Identity/Images/Themes/Flame/3
     #                                      |
     #                                      +----> theme version
     #
@@ -144,8 +144,8 @@ function cli_getPathComponent {
     #   Example:
     #                                   +------> theme name
     #                                   |-->| 
-    #       tags/Identity/Themes/Motifs/Flame/1.0
-    #      trunk/Identity/Themes/Motifs/Flame/1 |--> minor update
+    #       tags/Identity/Images/Themes/Flame/1.0
+    #      trunk/Identity/Images/Themes/Flame/1 |--> minor update
     #                                         |----> major udpate
     #
     # Tags have the format X.Z, where X is the first number in the
@@ -162,24 +162,24 @@ function cli_getPathComponent {
     #
     #   Consider the following relations: 
     #
-    #       trunk/Identity/Themes/Motifs/Flame/1
-    #       tags/Identity/Themes/Motifs/Flame/1.0
-    #       tags/Identity/Themes/Motifs/Flame/1.1
-    #       tags/Identity/Themes/Motifs/Flame/1.2
+    #       trunk/Identity/Images/Themes/Flame/1
+    #       tags/Identity/Images/Themes/Flame/1.0
+    #       tags/Identity/Images/Themes/Flame/1.1
+    #       tags/Identity/Images/Themes/Flame/1.2
     #
-    #       trunk/Identity/Themes/Motifs/Flame/2
-    #       tags/Identity/Themes/Motifs/Flame/2.0
-    #       tags/Identity/Themes/Motifs/Flame/2.1
-    #       tags/Identity/Themes/Motifs/Flame/2.2
+    #       trunk/Identity/Images/Themes/Flame/2
+    #       tags/Identity/Images/Themes/Flame/2.0
+    #       tags/Identity/Images/Themes/Flame/2.1
+    #       tags/Identity/Images/Themes/Flame/2.2
     #
-    #       trunk/Identity/Themes/Motifs/TreeFlower/1
+    #       trunk/Identity/Images/Themes/TreeFlower/1
     #       ...
     #       and so on. 
     #
     # Tag versions are created to release fixes and improvements, Tags
     # are immutable (i.e., once tags are created, they shouldn't be
     # modified.).
-    PATTERN[2]="Identity/Themes/Motifs/(([A-Za-z0-9]+)/(${PATTERN[0]}))/"
+    PATTERN[2]="Identity/Images/Themes/(([A-Za-z0-9]+)/(${PATTERN[0]}))/"
 
     # Identify which part of the release we want to output.
     case "$OPTION" in
