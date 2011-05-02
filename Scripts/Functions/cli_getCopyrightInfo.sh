@@ -52,10 +52,35 @@ function cli_getCopyrightInfo {
             echo "http://creativecommons.org/licenses/by-sa/3.0/"
             ;;
 
-        '--copyright-year' )
+        '--copyright-year' | '--copyright-year-last' )
 
             # Output default copyright year.
             date +%Y
+            ;;
+
+        '--copyright-year-list' )
+
+            # The opening year when I (as part of The CentOS Project)
+            # started to consolidate The CentOS Project Corporate
+            # Visual Identity through the CentOS Artwork Repository.
+            local FIRST_YEAR='2009'
+
+            # The last year when The CentOS Project stopped working in
+            # its Corporate Visual Identity through the CentOS Artwork
+            # Repository. That is something that shouldn't happen, so
+            # assume the current year as last working year.
+            local LAST_YEAR=$(cli_getCopyrightInfo '--copyright-year')
+
+            # Define full copyright year string based on first and
+            # last year.
+            local FULL_YEAR=$(\
+                while [[ ${FIRST_YEAR} -le ${LAST_YEAR} ]];do
+                    echo -n "${FIRST_YEAR}, "
+                    FIRST_YEAR=$(($FIRST_YEAR + 1))
+                done)
+
+            # Prepare full copyright year string and print it out. 
+            echo "${FULL_YEAR}" | sed 's!, *$!!'
             ;;
     
         '--copyright-holder' )
