@@ -145,14 +145,14 @@ generally produced as rastered images.
 
 The result produced from combining one design model with one artistic
 motif is what we know as a @emph{theme}. Inside themes directory
-structure (@pxref{Directories trunk Identity Themes}), you can find
+structure (@pxref{Directories trunk Identity Images Themes}), you can find
 several design models and several artistic motifs independently one
 another that can be albitrarily combined through @emph{theme
 rendition}, a flexible way to produce images for different visual
 manifestations in very specific visual styles. Inside themes directory
 structure, theme rendition is performed in
-@file{trunk/Identity/Themes/Motifs} directory structure, the required
-design models are taken from @file{trunk/Identity/Themes/Models}
+@file{trunk/Identity/Images/Themes} directory structure, the required
+design models are taken from @file{trunk/Identity/Models/Themes}
 directory structure and the action itself is controlled by the
 @code{render} functionality of @command{centos-art.sh} script.
 
@@ -368,15 +368,15 @@ design models and version @file{3} of @file{Flame} artistic motif:
 -----+---------------+------------------------------------------------------+------+-----------
 Path | Suffix        | Identifier                                           |Prefix| Type 
 -----+---------------+------------------------------------------------------+------+-----------
-  A  |               |trunk/Identity/Themes/Models/Default/Distro/5/Anaconda|      | Directory 
+  A  |               |trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory 
 -----+---------------+------------------------------------------------------+------+-----------
-  B  |  trunk/Manual/|trunk/Identity/Themes/Models/Default/Distro/5/Anaconda|.texi | File      
+  B  |  trunk/Manual/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|.texi | File      
 -----+---------------+------------------------------------------------------+------+-----------
-  C  | trunk/Locales/|trunk/Identity/Themes/Models/Default/Distro/5/Anaconda|      | Directory 
+  C  | trunk/Locales/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory 
 -----+---------------+------------------------------------------------------+------+-----------
-  D  |               |trunk/Identity/Themes/Motifs/Flame/3/Distro/5/Anaconda|      | Directory 
+  D  |               |trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|      | Directory 
 -----+---------------+------------------------------------------------------+------+-----------
-  E  | trunk/Locales/|trunk/Identity/Themes/Motifs/Flame/3/Distro/5/Anaconda|.texi | File      
+  E  | trunk/Locales/|trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|.texi | File      
 -----+---------------+------------------------------------------------------+------+-----------
 
   A = Master path.
@@ -507,14 +507,14 @@ idea that justifies its existence.
 To build a directory structure, you need to define the conceptual idea
 first and later create the directory. There are some locations inside
 the repository that already define some concepts you probably want to
-reuse. For example, @file{trunk/Identity/Themes/Motifs} to store theme
-artistic motifs, @file{trunk/Identity/Themes/Models} to store theme
+reuse. For example, @file{trunk/Identity/Images/Themes} to store theme
+artistic motifs, @file{trunk/Identity/Models/Themes} to store theme
 design models, @file{trunk/Manual} to store documentation files,
 @file{trunk/Locales} to store translation messages,
 @file{trunk/Scripts} to store automation scripts and so on.
 
 To illustrate this desition process let's consider the
-@file{trunk/Identity/Themes/Motifs/TreeFlower/3} directory structure
+@file{trunk/Identity/Images/Themes/TreeFlower/3} directory structure
 as example.  This directory can be read as: the theme development line
 of version @file{3} of @file{TreeFlower} artistic motif. Additional,
 we can identify that artistic motifs are part of themes as well as
@@ -527,9 +527,9 @@ in the list of commands bellow.
 centos-art help --read turnk
 centos-art help --read turnk/Identity
 centos-art help --read turnk/Identity/Themes
-centos-art help --read turnk/Identity/Themes/Motifs
-centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower
-centos-art help --read turnk/Identity/Themes/Motifs/TreeFlower/3
+centos-art help --read turnk/Identity/Images/Themes
+centos-art help --read turnk/Identity/Images/Themes/TreeFlower
+centos-art help --read turnk/Identity/Images/Themes/TreeFlower/3
 @end verbatim
 
 The concepts behind other location can be found in the same way

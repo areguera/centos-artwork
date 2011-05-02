@@ -1,12 +1,12 @@
-@subheading NAME
+@subheading Name
 
-This section describes the @code{render} functionality of
-@command{centos-art.sh} script and general examples about content
-rendition inside a working copy of CentOS Artwork Repository.
+The @strong{@code{render}} functionlity is part of
+@command{centos-art.sh} script and standardizes rendition tasks inside
+the working copy of CentOS Artwork Repository.
 
-@subheading SYNOPSIS
+@subheading Synopsis
 
-@command{centos-art render [] path/to/dir}
+@command{centos-art} @code{@strong{render}} @code{[OPTION] path/to/dir}
 
 The @file{path/to/dir} parameter refers the path information related
 to the directory structure inside the working copy of CentOS Artwork
@@ -20,11 +20,83 @@ producing theme components. Sometimes, you can also combine the use of
 @file{path/to/dir} with the @option{--filter} option to have a finer
 control over the files you produce.
 
-@subheading DESCRIPTION
+The @code{render} functionality of @command{centos-art.sh} script
+accepts the following options:
 
-The @code{render} functionlity of @command{centos-art.sh} script
-standardizes rendition tasks inside the working copy of CentOS Artwork
-Repository.  
+@table @option
+@item --quiet
+
+Supress all output messages, including confirmation question. Use this
+option with care.
+
+@item --filter="REGEX"
+
+Reduce the list of files to process using @samp{REGEX} as pattern.
+
+@item --answer-yes
+
+Assume `yes' to all confirmation questions.
+
+@item --dont-commit-changes
+
+Supress all commit and update actions realized over files already
+processed, before and after the action itself had took place in the
+working copy.
+
+@item --releasever="STRING"
+
+Produce content for the release version specified in @samp{STRING}.
+This option is generaly used in direct rendition, where design models
+aren't organized using release versions and architectures as
+reference.
+
+@item --basearch="STRING"
+
+Produce content for the architecture specified in @samp{STRING}.  This
+option is generaly used in direct rendition, where design models aren't
+organized using release versions and architectures as reference.
+
+@item --convert="STRING"
+
+Uses post-rendition to convert output produced by base-rendition to
+any image format specified in @samp{STRING}. This option is an
+interface for the @command{convert} command of ImageMagick tool set,
+so it is applicable to images output only.
+
+@item --rotate="STRING"
+
+Uses post-rendition to rotate output produced by base-rendition to any
+angle specified in @samp{STRING}. This option is an interface for the
+@command{convert} command of ImageMagick tool set, so it is
+applicable to images output only.
+
+@item --resize="STRING"
+
+Uses post-rendition to resize the base-rendition output to any angle
+specified in @samp{STRING}. This option is an interface for the
+@command{convert} command of ImageMagick tool set, so it is applicable
+to images output only.
+
+@item --group-by="STRING"
+
+Group base output files inside directories. Directories used to stored
+base output files are named using the file extension of base output
+files.  For example: if the base output file is a @file{.png} file, it
+is moved inside a @file{Png/} directory; if the current file is a
+@file{.jpg} file, it is stored inside a @file{Jpg/} directory, and so
+on.
+
+Directories used to group files are created in the same location that
+base output files would normaly do.
+
+@item --theme-model="STRING"
+Specify, in the @samp{STRING}, the name of the theme model you want to
+use to produce theme motifs. By default, if this option is not passed,
+the @samp{Default} theme model is used as reference to produce theme
+motifs. 
+@end table
+
+@subheading Description
 
 Inside the working copy of CentOS Artwork Repository, rendition tasks
 take place inside renderable directories.  Inside the @code{render}
@@ -186,95 +258,35 @@ of the input file. Translation messages are stored under
 functionality of @command{centos-art.sh} script (@pxref{Directories
 trunk Scripts Functions Locale}).
 
-@subheading OPTIONS
+@subheading Examples
 
-The @code{render} functionality of @command{centos-art.sh} script
-accepts the following optios:
+@verbatim
+centos-art render trunk/Identity/Images/Brands
+@end verbatim
 
-@table @option
-@item --quiet
+@verbatim
+centos-art render trunk/Identity/Images/Brands --filter="symbol"
+@end verbatim
 
-Supress all output messages, including confirmation question. Use this
-option with care.
+@verbatim
+centos-art render trunk/Identity/Images/Themes/Flame/2
+@end verbatim
 
-@item --filter="REGEX"
+@subheading Author
 
-Reduce the list of files to process using @samp{REGEX} as pattern.
+Written by Alain Reguera Delgado.
 
-@item --answer-yes
+@subheading Reporting bugs
 
-Assume `yes' to all confirmation questions.
+Report bugs to @email{centos-artwork@@centos.org} mailing list.
 
-@item --dont-commit-changes
+@subheading Copyright
 
-Supress all commit and update actions realized over files already
-processed, before and after the action itself had took place in the
-working copy.
+Copyright @copyright{}  2009, 2010, 2011 The CentOS Project.
 
-@item --releasever="STRING"
-
-Produce content for the release version specified in @samp{STRING}.
-This option is generaly used in direct rendition, where design models
-aren't organized using release versions and architectures as
-reference.
-
-@item --basearch="STRING"
-
-Produce content for the architecture specified in @samp{STRING}.  This
-option is generaly used in direct rendition, where design models aren't
-organized using release versions and architectures as reference.
-
-@item --convert="STRING"
-
-Uses post-rendition to convert output produced by base-rendition to
-any image format specified in @samp{STRING}. This option is an
-interface for the @command{convert} command of ImageMagick tool set,
-so it is applicable to images output only.
-
-@item --rotate="STRING"
-
-Uses post-rendition to rotate output produced by base-rendition to any
-angle specified in @samp{STRING}. This option is an interface for the
-@command{convert} command of ImageMagick tool set, so it is
-applicable to images output only.
-
-@item --resize="STRING"
-
-Uses post-rendition to resize the base-rendition output to any angle
-specified in @samp{STRING}. This option is an interface for the
-@command{convert} command of ImageMagick tool set, so it is applicable
-to images output only.
-
-@item --group-by="STRING"
-
-Group base output files inside directories. Directories used to stored
-base output files are named using the file extension of base output
-files.  For example: if the base output file is a @file{.png} file, it
-is moved inside a @file{Png/} directory; if the current file is a
-@file{.jpg} file, it is stored inside a @file{Jpg/} directory, and so
-on.
-
-Directories used to group files are created in the same location that
-base output files would normaly do.
-
-@item --theme-model="STRING"
-Specify, in the @samp{STRING}, the name of the theme model you want to
-use to produce theme motifs. By default, if this option is not passed,
-the @samp{Default} theme model is used as reference to produce theme
-motifs. 
-@end table
-
-@subsubheading Examples
-
-@table @command
-@item centos-art render trunk/Identity/Images/Brands
-@item centos-art render trunk/Identity/Images/Brands --filter="symbol"
-@item centos-art render trunk/Identity/Images/Themes/Flame/2
-@end table
-
-@subheading AUTHOR
-
-Copyright @copyright{}  2009, 2010, 2011 Alain Reguera Delgado.
+This is free software.  You may redistribute copies of it under the
+terms of the GNU General Public License (@pxref{GNU General Public
+License}).  There is NO WARRANTY, to the extent permitted by law.
 
 @subheading See also
 
