@@ -40,69 +40,86 @@ function cli_replaceTMarkers {
     # Verify file source location.
     cli_checkFiles "$LOCATION" 'f'
 
-    # Define translation markers. The translation marker definition
-    # order is important. Note that when we render concept directory
-    # structure, we make two replacements to produce the final
-    # copyright note. First, we replace =COPYRIGHT= translation marker
-    # and later the =THEMENAME= translation maker (not the oposite).
-    SRC[0]='=COPYRIGHT_YEAR='
-    SRC[1]='=COPYRIGHT_HOLDER='
-    SRC[2]='=LICENSE='
-    SRC[3]='=LICENSE_URL='
-    SRC[4]='=THEME='
-    SRC[5]='=THEMENAME='
-    SRC[6]='=THEMERELEASE='
-    SRC[7]='=RELEASE='
-    SRC[8]='=MAJOR_RELEASE='
-    SRC[9]='=MINOR_RELEASE='
-    SRC[10]='=URL='
-    SRC[11]='=ARCH='
-    SRC[12]='=URL_WIKI='
-    SRC[13]='=URL_LISTS='
-    SRC[14]='=URL_FORUMS='
-    SRC[15]='=URL_MIRRORS='
-    SRC[16]='=URL_DOCS='
-    SRC[17]='=MAIL_DOCS='
-    SRC[18]='=URL_LL='
-    SRC[19]='=DOMAIN_LL='
-    SRC[20]='=URL_IRC='
-    SRC[21]='=LOCALE_LL='
-    SRC[22]='=LOCALE='
-    SRC[23]='=REPO_TLDIR='
+    # Define copyright translation markers.
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
+    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-year')"
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR='
+    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-year')"
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LIST='
+    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-year-list')"
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
+    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-holder')"
 
-    # Define replacements for translation markers.
-    DST[0]="$(cli_getCopyrightInfo '--copyright-year')"
-    DST[1]="$(cli_getCopyrightInfo '--copyright-holder')"
-    DST[2]="$(cli_getCopyrightInfo '--license')"
-    DST[3]="$(cli_getCopyrightInfo '--license-url')"
-    DST[4]="$(cli_getPathComponent "$OUTPUT" '--theme')"
-    DST[5]="$(cli_getPathComponent "$OUTPUT" '--theme-name')"
-    DST[6]="$(cli_getPathComponent "$OUTPUT" '--theme-release')"
-    DST[7]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release')"
-    DST[8]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-major')"
-    DST[9]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-minor')"
-    DST[10]="http://www.centos.org/=URL_LL="
-    DST[11]="$(cli_getPathComponent "$FLAG_BASEARCH" '--architecture')"
-    DST[12]="http://wiki.centos.org/=URL_LL="
-    DST[13]="http://lists.centos.org/=URL_LL="
-    DST[14]="http://forums.centos.org/=URL_LL="
-    DST[15]="http://mirrors.centos.org/=URL_LL="
-    DST[16]="http://docs.centos.org/=URL_LL="
-    DST[17]="centos-docs@centos.org"
+    # Define license translation markers.
+    SRC[((++${#SRC[*]}))]='=LICENSE='
+    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--license')"
+    SRC[((++${#SRC[*]}))]='=LICENSE_URL='
+    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--license-url')"
+
+    # Define theme translation markers.
+    SRC[((++${#SRC[*]}))]='=THEME='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$OUTPUT" '--theme')"
+    SRC[((++${#SRC[*]}))]='=THEMENAME='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$OUTPUT" '--theme-name')"
+    SRC[((++${#SRC[*]}))]='=THEMERELEASE='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$OUTPUT" '--theme-release')"
+
+    # Define release-specific translation markers.
+    SRC[((++${#SRC[*]}))]='=RELEASE='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release')"
+    SRC[((++${#SRC[*]}))]='=MAJOR_RELEASE='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-major')"
+    SRC[((++${#SRC[*]}))]='=MINOR_RELEASE='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-minor')"
+
+    # Define architectures translation markers.
+    SRC[((++${#SRC[*]}))]='=ARCH='
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_BASEARCH" '--architecture')"
+    
+    # Define url translation markers.
+    SRC[((++${#SRC[*]}))]='=URL='
+    DST[((++${#DST[*]}))]="http://www.centos.org/=URL_LL="
+    SRC[((++${#SRC[*]}))]='=URL_WIKI='
+    DST[((++${#DST[*]}))]="http://wiki.centos.org/=URL_LL="
+    SRC[((++${#SRC[*]}))]='=URL_LISTS='
+    DST[((++${#DST[*]}))]="http://lists.centos.org/=URL_LL="
+    SRC[((++${#SRC[*]}))]='=URL_FORUMS='
+    DST[((++${#DST[*]}))]="http://forums.centos.org/=URL_LL="
+    SRC[((++${#SRC[*]}))]='=URL_MIRRORS='
+    DST[((++${#DST[*]}))]="http://mirrors.centos.org/=URL_LL="
+    SRC[((++${#SRC[*]}))]='=URL_DOCS='
+    DST[((++${#DST[*]}))]="http://docs.centos.org/=URL_LL="
+    SRC[((++${#SRC[*]}))]='=URL_IRC='
+    DST[((++${#DST[*]}))]='http://www.centos.org/modules/tinycontent/index.php?id=8'
+    SRC[((++${#SRC[*]}))]='=URL_LL='
     if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-        DST[18]="$(cli_getCurrentLocale '--langcode-only')/"
+        DST[((++${#DST[*]}))]="$(cli_getCurrentLocale '--langcode-only')/"
     else
-        DST[18]=""
+        DST[((++${#DST[*]}))]=""
     fi
+
+    # Define emails translation markers.
+    SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
+    DST[((++${#DST[*]}))]="centos-docs@centos.org"
+
+
+    # Define locale translation markers.
+    SRC[((++${#SRC[*]}))]='=LOCALE_LL='
+    DST[((++${#DST[*]}))]="$(cli_getCurrentLocale '--langcode-only')"
+    SRC[((++${#SRC[*]}))]='=LOCALE='
+    DST[((++${#DST[*]}))]="$(cli_getCurrentLocale)"
+
+    # Define domain translation markers for domains.
+    SRC[((++${#SRC[*]}))]='=DOMAIN_LL='
     if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-        DST[19]="$(cli_getCurrentLocale '--langcode-only')."
+        DST[((++${#DST[*]}))]="$(cli_getCurrentLocale '--langcode-only')."
     else
-        DST[19]=""
+        DST[((++${#DST[*]}))]=""
     fi
-    DST[20]='http://www.centos.org/modules/tinycontent/index.php?id=8'
-    DST[21]="$(cli_getCurrentLocale '--langcode-only')"
-    DST[22]="$(cli_getCurrentLocale)"
-    DST[23]="$(cli_getRepoTLDir)"
+
+    # Define repository translation markers.
+    SRC[((++${#SRC[*]}))]='=REPO_TLDIR='
+    DST[((++${#DST[*]}))]="$(cli_getRepoTLDir)"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
