@@ -25,6 +25,8 @@
 
 function help_updateNodes {
 
+    local TEXINFO_TEMPLATE=''
+
     # Retrive nodes' entries from chapter-menu.texi file.
     local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.texi \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
@@ -43,9 +45,26 @@ function help_updateNodes {
              mkdir -p ${MANUAL_BASEDIR}/$(dirname "$INCL")
         fi
 
-        # Create texinfo section file using its template.
+        # Create texinfo section file using templates.
         if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]];then
-            cp ${FUNCCONFIG}/manual-section.texi ${MANUAL_BASEDIR}/$INCL
+
+            # Define what template to apply using the absolute path of
+            # the documentation entry as reference.
+            if [[ ${MANUAL_BASEDIR}/${INCL} =~ 'trunk/Scripts/Functions/.+' ]];then
+                TEXINFO_TEMPLATE="${FUNCCONFIG}/manual-section-functions.texi"
+            else
+                TEXINFO_TEMPLATE="${FUNCCONFIG}/manual-section.texi"
+            fi
+
+            # Copy template to its destination.
+            cp ${TEXINFO_TEMPLATE} ${MANUAL_BASEDIR}/$INCL
+
+            # Expand common translation markers.
+            cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
+
+            # Expand texinfo-specific translation markers.
+            ${FUNCNAM}_doTexinfoSeealso "${MANUAL_BASEDIR}/$INCL" "$NODE"
+
         fi
 
         # Output node information based on texinfo menu.
