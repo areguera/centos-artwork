@@ -42,19 +42,19 @@ function cli_replaceTMarkers {
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
-    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-year')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-year')"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR='
-    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-year')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-year')"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LIST='
-    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-year-list')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-year-list')"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
-    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--copyright-holder')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-holder')"
 
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
-    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--license')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--license')"
     SRC[((++${#SRC[*]}))]='=LICENSE_URL='
-    DST[((++${#DST[*]}))]="$(cli_getCopyrightInfo '--license-url')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--license-url')"
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
@@ -75,28 +75,22 @@ function cli_replaceTMarkers {
     # Define architectures translation markers.
     SRC[((++${#SRC[*]}))]='=ARCH='
     DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_BASEARCH" '--architecture')"
-    
+
     # Define url translation markers.
     SRC[((++${#SRC[*]}))]='=URL='
-    DST[((++${#DST[*]}))]="http://www.centos.org/=URL_LL="
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--home' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_WIKI='
-    DST[((++${#DST[*]}))]="http://wiki.centos.org/=URL_LL="
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--wiki' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_LISTS='
-    DST[((++${#DST[*]}))]="http://lists.centos.org/=URL_LL="
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--lists' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_FORUMS='
-    DST[((++${#DST[*]}))]="http://forums.centos.org/=URL_LL="
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--forums' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_MIRRORS='
-    DST[((++${#DST[*]}))]="http://mirrors.centos.org/=URL_LL="
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--mirrors' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_DOCS='
-    DST[((++${#DST[*]}))]="http://docs.centos.org/=URL_LL="
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--docs' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_IRC='
-    DST[((++${#DST[*]}))]='http://www.centos.org/modules/tinycontent/index.php?id=8'
-    SRC[((++${#SRC[*]}))]='=URL_LL='
-    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-        DST[((++${#DST[*]}))]="$(cli_getCurrentLocale '--langcode-only')/"
-    else
-        DST[((++${#DST[*]}))]=""
-    fi
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--irc')
 
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
