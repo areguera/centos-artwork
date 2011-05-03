@@ -107,6 +107,11 @@ function cli_printUrl {
                 shift 1
                 ;;
 
+            --cc-sharealike )
+                URL="http://creativecommons.org/licenses/by-sa/3.0/"
+                shift 1
+                ;;
+
             --with-locale )
                 if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
                     URL="${URL}$(cli_getCurrentLocale '--langcode-only')/"
