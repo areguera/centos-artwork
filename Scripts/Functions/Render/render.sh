@@ -45,20 +45,23 @@ function render {
     local FLAG_THEME_MODEL='Default'
 
     # Initialize `--convert' option. The convert option controls
-    # whether convert or not content produced by centos-art
+    # whether to convert or not content produced as result of
     # base-rendition. By default there is no content convertion.
     local FLAG_CONVERT=''
 
-    # Initialize `--rotate' option. The rotate option controls whether
-    # rotate or not image content produced by centos-art
-    # base-rendition.  By default there is no content rotation.
-    local FLAG_ROTATE=''
+    # Initialize `--comment' option. The comment option controls the
+    # the text message we annotate in base-rendition output. Notice
+    # that the comment will be annotated in those formats that permit
+    # such thing (e.g., PNG files).
+    local FLAG_COMMENT="`gettext "Created in CentOS Arwork Repository"` ($(cli_printUrl '--projects-artwork'))"
 
-    # Initialize `--resize' option. The resize option controls whether
-    # resize or not content produced by centos-art base-rendition. By
-    # default there is no content resizing.
-    local FLAG_RESIZE=''
+    # Initialize `--sharpen' option. The shapen option adaptively
+    # sharpen pixels and increase effect near edges. It might use a
+    # Gaussian operator of the given radius and standard deviation
+    # (sigma).
+    local FLAG_SHARPEN=''
 
+    # Initialize `--group-by' option. The grouped-by option specifies
     # Initialize `--group-by' option. The grouped-by option specifies
     # whether grouping or not content produced by centos-art
     # base-rendition. By default there is no content grouping.
