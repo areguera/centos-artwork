@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_printMessage.sh -- This function outputs information in
+# cli_doPrint.sh -- This function outputs information in
 # predifined formats to standard error. This function is the standard
 # way to output information inside centos-art.sh script.
 #
@@ -24,180 +24,242 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_printMessage {
+function cli_doPrint {
 
     # Verify `--quiet' option.
     if [[ "$FLAG_QUIET" == 'true' ]];then
         return
     fi
 
-    local MESSAGE="$1"
-    local FORMAT="$2"
+    # Initialize message variable as empty.
+    local MESSAGE=''
 
-    # Reduce paths inside output messages. The main purpose for
-    # this is to free horizontal space in output messages.
-    MESSAGE=$(echo "$MESSAGE" \
-        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
+    # Define short options.
+    local ARGSS=''
 
-    # Remove blank spaces from lines' begining.
-    MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
+    # Define long options.
+    local ARGSL='message:,as-separator-line,as-banner-line,as-updating-line,as-cropping-line,as-tuningup-line,as-deleting-line,as-checking-line,as-creating-line,as-reading-line,as-savedas-line,as-linkto-line,as-movedto-line,as-translation-line,as-design-line,as-configuration-line,as-palette-line,as-response-line,as-request-line,as-error-line,as-toknowmore-line,as-yesornorequest-line,as-notrailingnew-line,as-regular-line,'
 
-    # Define message formats.
-    case $FORMAT in
+    # Define ARGUMENTS as local variable in order to parse options
+    # from this function internlally.
+    local ARGUMENTS=''
 
-    'AsBannerLine' )
-        cli_printMessage '-' 'AsSeparatorLine'
-        cli_printMessage "$MESSAGE"
-        cli_printMessage '-' 'AsSeparatorLine'
-        ;;
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
 
-    'AsUpdatingLine' )
-        cli_printMessage "`gettext "Updating"`: $MESSAGE"
-        ;;
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
 
-    'AsCroppingFromLine' )
-        cli_printMessage "`gettext "Cropping from"`: $MESSAGE"
-        ;;
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
 
-    'AsTuningLine' )
-        cli_printMessage "`gettext "Tuning"`: $MESSAGE"
-        ;;
+    # Look for options passed through positional parameters.
+    while true; do
 
-    'AsDeletingLine' )
-        cli_printMessage "`gettext "Deleting"`: $MESSAGE"
-        ;;
+        case "$1" in
 
-    'AsCheckingLine' )
-        cli_printMessage "`gettext "Checking"`: $MESSAGE"
-        ;;
+            '--message' )
 
-    'AsCreatingLine' )
-        cli_printMessage "`gettext "Creating"`: $MESSAGE"
-        ;;
+                # Redefine message.
+                MESSAGE="$2"
 
-    'AsReadingLine' )
-        cli_printMessage "`gettext "Reading"`: $MESSAGE"
-        ;;
+                # Reduce paths inside output messages. The main
+                # purpose for this is to free horizontal space in
+                # output messages.
+                MESSAGE=$(echo "$MESSAGE" \
+                    | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
 
-    'AsSavedAsLine' )
-        cli_printMessage "`gettext "Saved as"`: $MESSAGE"
-        ;;
+                # Remove blank spaces from lines' begining.
+                MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
+
+                shift 2
+                ;;
+
+            '--as-separator-line' )
+
+                # Define separator width.
+                local MAX=70
+
+                # Draw separator.
+                until [[ $MAX -eq 0 ]];do
+                    printf "$MESSAGE" > /dev/stderr
+                    MAX=$(($MAX - 1))
+                done
+
+                # Output newline to end separator.
+                echo "" > /dev/stderr
+
+                break
+                ;;
+
+            '--as-banner-line' )
+                cli_doPrint --message='-' --as-separator-line
+                cli_doPrint --message="$MESSAGE"
+                cli_doPrint --message='-' --as-separator-line
+                break
+                ;;
+
+            '--as-updating-line' )
+                cli_doPrint --message="`gettext "Updating"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-cropping-line' )
+                cli_doPrint --message="`gettext "Cropping from"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-tuningup-line' )
+                cli_doPrint --message="`gettext "Tuning-up"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-deleting-line' )
+                cli_doPrint --message="`gettext "Deleting"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-checking-line' )
+                cli_doPrint --message="`gettext "Checking"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-creating-line' )
+                cli_doPrint --message="`gettext "Creating"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-reading-line' )
+                cli_doPrint --message="`gettext "Reading"`: $MESSAGE"
+                break
+                ;;
+
+            '--as-savedas-line' )
+                cli_doPrint --message="`gettext "Saved as"`: $MESSAGE"
+                break
+                ;;
             
-    'AsLinkToLine' )
-        cli_printMessage "`gettext "Linked to"`: $MESSAGE"
-        ;;
+            '--as-linkto-line' )
+                cli_doPrint --message="`gettext "Linked to"`: $MESSAGE"
+                break
+                ;;
         
-    'AsMovedToLine' )
-        cli_printMessage "`gettext "Moved to"`: $MESSAGE"
-        ;;
+            '--as-movedto-line' )
+                cli_doPrint --message="`gettext "Moved to"`: $MESSAGE"
+                break
+                ;;
 
-    'AsTranslationLine' )
-        cli_printMessage "`gettext "Translation"`: $MESSAGE"
-        ;;
+            '--as-translation-line' )
+                cli_doPrint --message="`gettext "Translation"`: $MESSAGE"
+                break
+                ;;
 
-    'AsDesignLine' )
-        cli_printMessage "`gettext "Design"`: $MESSAGE"
-        ;;
+            '--as-design-line' )
+                cli_doPrint --message="`gettext "Design"`: $MESSAGE"
+                break
+                ;;
 
-    'AsConfigurationLine' )
-        cli_printMessage "`gettext "Configuration"`: $MESSAGE"
-        ;;
+            '--as-configuration-line' )
+                cli_doPrint --message="`gettext "Configuration"`: $MESSAGE"
+                break
+                ;;
 
-    'AsPaletteLine' )
-        cli_printMessage "`gettext "Palette"`: $MESSAGE"
-        ;;
+            '--as-palette-line' )
+                cli_doPrint --message="`gettext "Palette"`: $MESSAGE"
+                break
+                ;;
 
-    'AsResponseLine' )
-        cli_printMessage "--> $MESSAGE"
-        ;;
+            '--as-response-line' )
+                cli_doPrint --message="--> $MESSAGE"
+                break
+                ;;
 
-    'AsRequestLine' )
-        cli_printMessage "${MESSAGE}: " 'AsNoTrailingNewLine'
-        ;;
+            '--as-request-line' )
+                cli_doPrint --message="${MESSAGE}: " --as-notrailingnew-line
+                break
+                ;;
 
-    'AsErrorLine' )
-        # This option is used to print error messsages.
-        echo "${CLI_PROGRAM}: ${MESSAGE}" > /dev/stderr
-        ;;
+            '--as-error-line' )
+                # This option is used to print error messsages.
+                echo "${CLI_PROGRAM} (${FUNCNAME[1]}): ${MESSAGE}" > /dev/stderr
+                cli_doPrint --message="${FUNCDIRNAM}" --as-toknowmore-line
+                break
+                ;;
 
-    'AsToKnowMoreLine' )
-        # This option receives the output of bash's caller built-in as
-        # message value and produces the documentation entry from it.
-        MESSAGE="trunk/Scripts/Functions/$MESSAGE"
-        cli_printMessage '-' 'AsSeparatorLine'
-        cli_printMessage "`gettext "To know more, run the following command"`:"
-        cli_printMessage "centos-art help --read $MESSAGE"
-        cli_printMessage '-' 'AsSeparatorLine'
-        exit # <-- ATTENTION: Do not remove this line. We use this
-             #                option as convenction to end script
-             #                execution.
-        ;;
+            '--as-toknowmore-line' )
+                # This option receives the output of bash's caller
+                # built-in as message value and produces the
+                # documentation entry from it.
+                MESSAGE="trunk/Scripts/Functions/$MESSAGE"
+                cli_doPrint --message='-' --as-separator-line
+                cli_doPrint --message="`gettext "To know more, run the following command"`:"
+                cli_doPrint --message="centos-art help --read $MESSAGE"
+                cli_doPrint --message='-' --as-separator-line
+                exit # <-- ATTENTION: Do not remove this line. We use this
+                     #                option as convenction to end script
+                     #                execution.
+                ;;
     
-    'AsYesOrNoRequestLine' )
+            '--as-yesornorequest-line' )
+                # Define positive answer.
+                local Y="`gettext "yes"`"
 
-        # Define positive answer.
-        local Y="`gettext "yes"`"
+                # Define negative answer.
+                local N="`gettext "no"`"
 
-        # Define negative answer.
-        local N="`gettext "no"`"
+                # Define default answer.
+                local ANSWER=${N}
 
-        # Define default answer.
-        local ANSWER=${N}
+                if [[ $FLAG_ANSWER == 'true' ]];then
 
-        if [[ $FLAG_ANSWER == 'true' ]];then
+                    ANSWER=${Y}
 
-            ANSWER=${Y}
+                else
 
-        else
+                    # Print the question.
+                    cli_doPrint --message="$MESSAGE [${Y}/${N}]: " --as-notrailingnew-line
 
-            # Print the question.
-            cli_printMessage "$MESSAGE [${Y}/${N}]: " 'AsNoTrailingNewLine'
+                    # Redefine default answer based on user's input.
+                    read ANSWER
 
-            # Redefine default answer based on user's input.
-            read ANSWER
+                fi
 
-        fi
+                # Verify user's answer. Only positive answer let the
+                # script flow to continue. Otherwise, if something
+                # different from possitive answer is passed, the
+                # script terminates its execution immediatly.
+                if [[ ! ${ANSWER} =~ "^${Y}" ]];then
+                    exit
+                fi
 
-        # Verify user's answer. Only positive answer let the script
-        # flow to continue. Otherwise, if something different from
-        # possitive answer is passed, the script terminates its
-        # execution immediatly.
-        if [[ ! ${ANSWER} =~ "^${Y}" ]];then
-            exit
-        fi
-        ;;
+                break
+                ;;
 
-    'AsSeparatorLine' )
+            '--as-notrailingnew-line' )
+                printf "$MESSAGE" > /dev/stderr
+                break
+                ;;
 
-        # Define separator width.
-        local MAX=70
+            '--as-regular-line' | * )
+                echo "$MESSAGE" \
+                        | awk 'BEGIN { FS=": " }
+                            { 
+                            if ( $0 ~ /^-+$/ ) 
+                                print $0
+                            else
+                                printf "%-15s\t%s\n", $1, $2 
+                            }
+                            END {}' > /dev/stderr
+                break
+                ;;
 
-        # Draw separator.
-        until [[ $MAX -eq 0 ]];do
-            printf "${MESSAGE}" > /dev/stderr
-            MAX=$(($MAX - 1))
-        done
+            '--' )
+                shift 1
+                break
+                ;;
 
-        # Output newline to end separator.
-        echo "" > /dev/stderr
-        ;;
+        esac
 
-    'AsNoTrailingNewLine' )
-        printf "$MESSAGE" > /dev/stderr
-        ;;
-
-    'AsRegularLine' | * )
-        echo "$MESSAGE" \
-            | awk 'BEGIN { FS=": " }
-                    { 
-                    if ( $0 ~ /^-+$/ ) 
-                        print $0
-                    else
-                        printf "%-15s\t%s\n", $1, $2 
-                    }
-                    END {}' > /dev/stderr
-        ;;
-
-    esac
+    done
 
 }
