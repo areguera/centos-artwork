@@ -34,15 +34,7 @@ function render_doPostActions {
 
     # Execute common post-rendition actions.
     for ACTION in "${POSTACTIONS[@]}"; do
-
-        case "${ACTION}" in
-
-            groupSimilarFiles:* )
-                render_groupSimilarFiles
-                ;;
-
-        esac
-
+        ${FUNCNAM}_$(echo "$ACTION" | cut -d: -f1)
     done
 
 }
