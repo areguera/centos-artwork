@@ -33,7 +33,7 @@ function cli_printUrl {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,cc-sharealike,with-locale,as-html-link'
+    local ARGSL='home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,projects-artwork,cc-sharealike,with-locale,as-html-link'
 
     # Define ARGUMENTS as local variable in order to parse options
     # internlally.
@@ -78,12 +78,12 @@ function cli_printUrl {
                 ;;
 
             --projects )
-                URL='http://projects.centos.org/'
+                URL='https://projects.centos.org/'
                 shift 1
                 ;;
 
             --projects-artwork )
-                URL='http://projects.centos.org/svn/artwork'
+                URL=$(cli_printUrl '--projects')svn/artwork/
                 shift 1
                 ;;
 
