@@ -45,11 +45,11 @@ function render_doSvgLastActions {
     # combinations each time you need to produce images inside the
     # repository.
     if [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Gdm/.+\.svg$" ]];then
-        LASTACTIONS[((++${#LASTACTIONS[*]}))]='renderDm:Gdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
+        LASTACTIONS[((++${#LASTACTIONS[*]}))]='doDm:Gdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Kdm/.+\.svg$" ]];then
-        LASTACTIONS[((++${#LASTACTIONS[*]}))]='renderDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
+        LASTACTIONS[((++${#LASTACTIONS[*]}))]='doDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
-        LASTACTIONS[((++${#LASTACTIONS[*]}))]='renderKsplash'
+        LASTACTIONS[((++${#LASTACTIONS[*]}))]='doKsplash'
     fi
 
     # At this point centos-art.sh should be producing the last file
@@ -57,19 +57,7 @@ function render_doSvgLastActions {
     # images for the next directory structure lets execute
     # last-rendition actions for the current directory structure. 
     for ACTION in "${LASTACTIONS[@]}"; do
-
-        case "${ACTION}" in
-
-            renderKsplash )
-                render_doKsplash
-                ;;
-
-            renderDm:* )
-                render_doDm
-                ;;
-
-        esac
-
+        ${FUNCNAM}_$(echo "$ACTION" | cut -d: -f1)
     done
 
 }
