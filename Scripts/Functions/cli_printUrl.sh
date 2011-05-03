@@ -33,7 +33,7 @@ function cli_printUrl {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,with-locale,as-html-link'
+    local ARGSL='home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,cc-sharealike,with-locale,as-html-link'
 
     # Define ARGUMENTS as local variable in order to parse options
     # internlally.
