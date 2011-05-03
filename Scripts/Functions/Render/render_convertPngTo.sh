@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # render_convertPngTo.sh -- This function provides post-rendition
-# to convert images produced by centos-art base-rendition.
+# actions to use the `convert' command of ImageMagick tool set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -26,18 +26,12 @@
 function render_convertPngTo {
 
     # Get image formats.
-    local FORMATS=$(render_getConfigOption "$ACTION" '2-')
+    local FORMATS=$(render_getConfigOption "$ACTION" '2')
 
-    # Check base file existence.
-    cli_checkFiles ${FILE}.png 'f'
-
-    # Check image formats and do convertion.
-    if [[ "$FORMATS" != "" ]];then
-        for FORMAT in $FORMATS;do
-            cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
-            convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
-        done
-
-    fi
+    # Execute ImageMagick convertion.
+    for FORMAT in $FORMATS;do
+        cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
+        convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
+    done
 
 }
