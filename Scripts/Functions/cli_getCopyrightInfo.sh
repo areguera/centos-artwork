@@ -48,28 +48,38 @@ function cli_getCopyrightInfo {
         '--license-url' )
 
             # Ouput default license url used by all image-based
-            # creations inside CentOS Artwork Repository.
-            echo "http://creativecommons.org/licenses/by-sa/3.0/"
+            # creations inside the CentOS Artwork Repository.
+            cli_printUrl --cc-share-alike
+            ;;
+
+        '--copyright-year-first' )
+
+            # The former year when I (as part of The CentOS Project)
+            # started to consolidate The CentOS Project Corporate
+            # Visual Identity through the CentOS Artwork Repository.
+            echo '2009'
             ;;
 
         '--copyright-year' | '--copyright-year-last' )
 
-            # Output default copyright year.
+            # The last year when The CentOS Project stopped working in
+            # its Corporate Visual Identity through the CentOS Artwork
+            # Repository. That is something that I hope does never
+            # happen, so assume the current year as last working year.
             date +%Y
+            ;;
+
+        '--copyright-year-range' )
+
+            local FIRST_YEAR=$(cli_getCopyrightInfo '--copyright-year-first')
+            local LAST_YEAR=$(cli_getCopyrightInfo '--copyright-year-last')
+            echo "${FIRST_YEAR}-${LAST_YEAR}"
             ;;
 
         '--copyright-year-list' )
 
-            # The opening year when I (as part of The CentOS Project)
-            # started to consolidate The CentOS Project Corporate
-            # Visual Identity through the CentOS Artwork Repository.
-            local FIRST_YEAR='2009'
-
-            # The last year when The CentOS Project stopped working in
-            # its Corporate Visual Identity through the CentOS Artwork
-            # Repository. That is something that shouldn't happen, so
-            # assume the current year as last working year.
-            local LAST_YEAR=$(cli_getCopyrightInfo '--copyright-year')
+            local FIRST_YEAR=$(cli_getCopyrightInfo '--copyright-year-first')
+            local LAST_YEAR=$(cli_getCopyrightInfo '--copyright-year-last')
 
             # Define full copyright year string based on first and
             # last year.
