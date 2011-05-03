@@ -32,90 +32,37 @@ function render_doSvgPostActions {
     # post-rendition actions.
     local -a POSTACTIONS
 
-    # Write commentary to PNG images datastream to let everyone know
-    # where the image was created in.
-    if [[ $TEMPLATE =~ 'trunk/Identity/.+\.svg$' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="renderComment" 
-    fi
+    # Define SVG post-rendition actions that modify base-rendition
+    # output in place.
+    [[ $FLAG_COMMENT != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="mogrifyPngToComment"
+    [[ $FLAG_SHARPEN != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="mogrifyPngToSharpen"
 
-    # Execute SVG directory-specific post-rendition actions to the
-    # list of post actions and last actions. This is required in order
-    # to provide a predictable way of producing content inside the
-    # repository and save you the time of writing long option
-    # combinations each time you need to produce images inside the
-    # repository.
+    # Define SVG directory-specific rendition. Directory-specfic
+    # rendition provides a predictable way of producing content inside
+    # the repository.
     if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupSimilarFiles: png jpg'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupSimilarFiles:png jpg'
     elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo: jpg pdf'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail: 250'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderSyslinux:-floyd'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux:-floyd'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Grub/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderGrub'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderGrub:-floyd'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:-floyd'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderKsplash'
     fi
 
-    # Verify svg-related post-rendition actions passed from
-    # command-line and add them, if any, to post-rendition list of
-    # actions.
-    if [[ $FLAG_CONVERT != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngTo:${FLAG_CONVERT}"
-    fi
-    if [[ $FLAG_ROTATE != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="rotatePngTo:${FLAG_ROTATE}"
-    fi
-    if [[ $FLAG_RESIZE != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="resizePngTo:${FLAG_RESIZE}"
-    fi
+    # Define SVG post-rendition actions that create new files from
+    # base-rendition output.
+    [[ $FLAG_CONVERT != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngTo:$FLAG_CONVERT"
 
-    # Execute post-rendition actions.
+    # Execute SVG post-rendition actions.
     for ACTION in "${POSTACTIONS[@]}"; do
-
-        case "${ACTION}" in
-
-            convertPngTo:* )
-                render_convertPngTo
-                ;;
-
-            convertPngToThumbnail:* )
-                render_convertPngToThumbnail
-                ;;
-
-            rotatePngTo:* )
-                render_rotatePngTo
-                ;;
-
-            resizePngTo:* )
-                render_resizePngTo
-                ;;
-
-            renderSyslinux* )
-                render_doSyslinux 
-                ;;
-
-            renderGrub* )
-                render_doGrub 
-                ;;
-
-            renderBrands )
-                render_doBrands 
-                ;;
-
-            renderComment )
-                render_mogrifyCommentToPng
-                ;;
-
-            groupSimilarFiles:* )
-                render_groupSimilarFiles
-                ;;
-
-        esac
-
+        ${FUNCNAM}_$(echo "$ACTION" | cut -d: -f1)
     done
 
 }
