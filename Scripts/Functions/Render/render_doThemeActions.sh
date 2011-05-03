@@ -50,16 +50,25 @@ function render_doThemeActions {
     # whose have a longer path) to avoid unnecessary rendition loops.
     for MOTIF in $(find $(cli_getRepoTLDir)/Identity/Images/Themes \
         -regextype posix-egrep -type d -regex ".+/(${MODELS_PATTERN})$" \
-        | sort -r | grep $ACTIONVAL);do
-        MOTIFS[((++${#MOTIFS[*]}))]=${MOTIF}
+        | sort -r | grep "$ACTIONVAL");do
+        if [[ $MOTIF != '' ]];then
+            MOTIFS[((++${#MOTIFS[*]}))]=${MOTIF}
+        fi
     done
 
     # Redefine counter using the grater value to perform an inverted
-    # interpretation of the values and so process them using the same
-    # order.
-    COUNT=$((${#MOTIFS[*]} - 1))
+    # interpretation of the values and so, to process them using the
+    # same order.
+    if [[ ${#MOTIFS[*]} -gt 0 ]];then
+        COUNT=${#MOTIFS[*]}
+    else
+        COUNT=0
+    fi
 
     until [[ $COUNT -eq 0 ]];do
+
+        # Decrement counter to match the correct count value.
+        COUNT=$(($COUNT - 1))
 
         # Redefine action value to refer theme specific renderable
         # directory.
@@ -88,9 +97,6 @@ function render_doThemeActions {
         # Execute direct rendition on theme specific renderable
         # directory as specified by action value.
         render_doBaseActions
-
-        # Decrement counter.
-        COUNT=$(($COUNT - 1))
 
     done
 
