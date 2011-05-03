@@ -29,7 +29,7 @@ function render_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,releasever:,basearch:,convert:,rotate:,resize:,group-by:,theme-model:"
+    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,releasever:,basearch:,convert:,comment:,sharpen::,group-by:,theme-model:"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_doParseArguments
@@ -72,27 +72,27 @@ function render_getOptions {
                 shift 2
                 ;;
 
+            --convert )
+                FLAG_CONVERT="$2"
+                shift 2
+                ;;
+
+            --comment )
+                FLAG_COMMENT="$2"
+                shift 2
+                ;;
+
+            --sharpen )
+                FLAG_SHARPEN="$2"
+                shift 2
+                ;;
+
             --basearch )
                 FLAG_BASEARCH="$2"
                 if [[ ! $FLAG_BASEARCH =~ $(cli_getPathComponent '--architecture-pattern') ]];then
                     cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
                     cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
                 fi
-                shift 2
-                ;;
-
-            --convert )
-                FLAG_CONVERT="$2"
-                shift 2
-                ;;
-
-            --rotate )
-                FLAG_ROTATE="$2"
-                shift 2
-                ;;
-
-            --resize )
-                FLAG_RESIZE="$2"
                 shift 2
                 ;;
 
