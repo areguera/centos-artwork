@@ -49,7 +49,7 @@ function cli_getCopyrightInfo {
 
             # Ouput default license url used by all image-based
             # creations inside the CentOS Artwork Repository.
-            cli_printUrl --cc-share-alike
+            cli_printUrl --cc-sharealike
             ;;
 
         '--copyright-year-first' )
