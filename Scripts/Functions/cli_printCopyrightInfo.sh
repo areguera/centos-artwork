@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getCopyrightInfo.sh -- This function outputs the copyright
+# cli_printCopyrightInfo.sh -- This function outputs the copyright
 # information of content produced by the centos-art command-line
 # interface.
 #
@@ -34,7 +34,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getCopyrightInfo {
+function cli_printCopyrightInfo {
 
     case "$1" in
 
@@ -71,15 +71,15 @@ function cli_getCopyrightInfo {
 
         '--copyright-year-range' )
 
-            local FIRST_YEAR=$(cli_getCopyrightInfo '--copyright-year-first')
-            local LAST_YEAR=$(cli_getCopyrightInfo '--copyright-year-last')
+            local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
+            local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
             echo "${FIRST_YEAR}-${LAST_YEAR}"
             ;;
 
         '--copyright-year-list' )
 
-            local FIRST_YEAR=$(cli_getCopyrightInfo '--copyright-year-first')
-            local LAST_YEAR=$(cli_getCopyrightInfo '--copyright-year-last')
+            local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
+            local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
 
             # Define full copyright year string based on first and
             # last year.
@@ -100,8 +100,8 @@ function cli_getCopyrightInfo {
             ;;
 
         '--copyright' | * )
-            local YEAR=$(cli_getCopyrightInfo '--copyright-year')
-            local HOLDER=$(cli_getCopyrightInfo '--copyright-holder')
+            local YEAR=$(cli_printCopyrightInfo '--copyright-year')
+            local HOLDER=$(cli_printCopyrightInfo '--copyright-holder')
             echo "Copyright © $YEAR $HOLDER"
             ;;
 
