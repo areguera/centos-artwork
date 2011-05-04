@@ -48,16 +48,14 @@ function locale_updateMessages {
         ACTIONNAM="${FUNCNAM}_updateMessageShell"
 
     else
-        cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
     fi
 
     # Execute action name.
     if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
         eval $ACTIONNAM
     else
-        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "A valid action is required."`" --as-error-line
     fi
 
 }

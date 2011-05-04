@@ -28,7 +28,7 @@
 function locale_updateMessageShell {
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Initialize local variables.
     local FILE=''
@@ -43,12 +43,11 @@ function locale_updateMessageShell {
     if [[ $ACTIONVAL =~ "^${CLI_BASEDIR}" ]];then
         FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.sh")
     else
-        cli_printMessage "`gettext "The path provided can't be processed."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "The path provided cannot be processed."`" --as-error-line
     fi
 
     # Print action message.
-    cli_printMessage "${FILE}.pot" 'AsUpdatingLine'
+    cli_printMessage "${FILE}.pot" --as-updating-line
 
     # Prepare directory structure to receive .po files.
     if [[ ! -d $(dirname ${FILE}) ]];then

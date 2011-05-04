@@ -26,7 +26,7 @@
 function locale_editMessages {
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Initialize local variables.
     local FILES=''
@@ -38,15 +38,14 @@ function locale_editMessages {
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
         FILES=$(cli_getFilesList "${WORKDIR}" ".*/${TEXTDOMAIN}\.po")
     else
-        cli_printMessage "`gettext "The path provided doesn't support localization."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "The path provided do not support localization."`" --as-error-line
     fi
 
     # Go throguh files, one by one.
     for FILE in $FILES;do
 
         # Print the file we are editing.
-        cli_printMessage "$FILE" 'AsUpdatingLine'
+        cli_printMessage "$FILE" --as-updating-line
 
         # Use default text editor to edit file.
         eval ${EDITOR} ${FILE}

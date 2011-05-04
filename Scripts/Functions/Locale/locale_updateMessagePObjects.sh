@@ -37,7 +37,7 @@ function locale_updateMessagePObjects {
     if [[ -f ${FILE}.po ]];then
 
         # Print action message.
-        cli_printMessage "${FILE}.po" 'AsUpdatingLine'
+        cli_printMessage "${FILE}.po" --as-updating-line
 
         # Update portable object merging both portable object and
         # portable object template.
@@ -46,7 +46,7 @@ function locale_updateMessagePObjects {
     else
 
         # Print action message.
-        cli_printMessage "${FILE}.po" 'AsCreatingLine'
+        cli_printMessage "${FILE}.po" --as-creating-line
 
         # Initiate portable object using portable object template.
         # Do not print msginit sterr output, use centos-art action

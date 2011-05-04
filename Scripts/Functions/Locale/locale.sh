@@ -29,8 +29,7 @@ function locale {
     # language is already used as translation pattern and there is no
     # translation messages for it.
     if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
-        cli_printMessage "`gettext "Cannot locale English language to itself."`" 'AsErrorLine'
-        cli_printMessage "$FUNCDIRNAM" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "Cannot locale English language to itself."`" --as-error-line
     fi
 
     local ACTIONNAM=''
@@ -88,8 +87,7 @@ function locale {
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
             eval $ACTIONNAM
         else
-            cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
         fi
 
         # Commit changes from working copy to central repository only.

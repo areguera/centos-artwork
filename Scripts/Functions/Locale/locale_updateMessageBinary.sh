@@ -48,9 +48,9 @@ function locale_updateMessageBinary {
 
         # Print action message.
         if [[ -f ${MO} ]];then
-            cli_printMessage "${MO}" 'AsUpdatingLine'
+            cli_printMessage "${MO}" --as-updating-line
         else
-            cli_printMessage "${MO}" 'AsCreatingLine'
+            cli_printMessage "${MO}" --as-creating-line
         fi
 
         # Define directory used to store machine object.
