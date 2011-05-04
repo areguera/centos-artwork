@@ -90,7 +90,6 @@ function render_doThemeActions {
         # configuration would produce `/path/to/dir/A/B twice.
         if [[ $ACTIONVAL =~ '[[:digit:]]$' ]] \
             || [[ $ACTIONVAL == $NEXT_DIR ]];then
-            COUNT=$(($COUNT - 1))
             continue
         fi
 
