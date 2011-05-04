@@ -43,8 +43,7 @@ function cli_getPathComponent {
         LOCATION="$1"
         OPTION="$2"
     else
-       cli_printMessage "${FUNCNAM}: `gettext "Invalid arguments."`" 'AsErrorLine'
-       cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine' 
+       cli_printMessage "`gettext "Invalid arguments."`" --as-error-line
     fi
 
     # Define release pattern.
