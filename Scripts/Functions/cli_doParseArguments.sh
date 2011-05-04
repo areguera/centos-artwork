@@ -33,7 +33,7 @@ function cli_doParseArguments {
 
     # Be sure getout parsed arguments successfully.
     if [[ $? != 0 ]]; then 
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
     fi
 
 }
