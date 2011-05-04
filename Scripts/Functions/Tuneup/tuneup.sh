@@ -62,8 +62,7 @@ function tuneup {
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
             eval $ACTIONNAM
         else
-            cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
         fi
 
         # Commit changes from working copy to central repository only.

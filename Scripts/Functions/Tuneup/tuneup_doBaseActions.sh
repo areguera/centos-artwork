@@ -40,14 +40,14 @@ function tuneup_doBaseActions {
     cli_printActionPreamble "$FILES" '' ''
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Process list of files and perform maintainance tasks
     # accordingly.
     for FILE in $FILES;do
 
         # Print action message.
-        cli_printMessage $FILE 'AsTuningLine'
+        cli_printMessage "$FILE" --as-tuningup-line
 
         # Define what to do based on file extension.
         if [[ $FILE =~ '\.svg$' ]];then
