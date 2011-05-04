@@ -55,7 +55,7 @@ function cli_commitRepoChanges {
     cli_checkFiles "$LOCATIONS" 'isInWorkingCopy'
 
     # Check working copy.
-    cli_printMessage "`gettext "Checking changes in the working copy"`" 'AsBannerLine'
+    cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
     STATUSOUT=$(svn status ${LOCATIONS})
 
     # Define path fo files considered recent modifications from
@@ -94,7 +94,7 @@ function cli_commitRepoChanges {
             "files in the repository" $((${FILESNUM[$COUNT]} + 1))`
 
         # Output report line.
-        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}" 'AsRegularLine'
+        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}"
 
         # Increase counter.
         COUNT=$(($COUNT + 1))
@@ -107,15 +107,15 @@ function cli_commitRepoChanges {
     if [[ ${FILESNUM[1]} -gt 0 ]];then
 
         # Outout separator line.
-        cli_printMessage '-' 'AsSeparatorLine'
+        cli_printMessage '-' --as-separator-line
 
         cli_printMessage "`ngettext "The following file is unversioned" \
             "The following files are unversioned" ${FILESNUM[1]}`:"
         for FILE in ${FILES[1]};do
-            cli_printMessage $FILE 'AsResponseLine'
+            cli_printMessage "$FILE" --as-response-line
         done
         cli_printMessage "`ngettext "Do you want to add it now?" \
-            "Do you want to add them now?" ${FILESNUM[2]}`" 'AsYesOrNoRequestLine'
+            "Do you want to add them now?" ${FILESNUM[2]}`" --as-yesornorequest-line
         svn add ${FILES[1]} --quiet
     fi
 
@@ -124,14 +124,14 @@ function cli_commitRepoChanges {
     if [[ $CHNGTOTAL -gt 0 ]];then
 
         # Outout separator line.
-        cli_printMessage '-' 'AsSeparatorLine'
+        cli_printMessage '-' --as-separator-line
 
         # Verify changes.
-        cli_printMessage "`gettext "Do you want to see changes now?"`" "AsYesOrNoRequestLine"
+        cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
         svn diff ${FILES[*]} | less
 
         # Commit changes.
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" "AsYesOrNoRequestLine"
+        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
         svn commit ${FILES[*]}
 
     fi
