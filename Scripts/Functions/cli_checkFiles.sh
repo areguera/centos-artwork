@@ -39,8 +39,7 @@ function cli_checkFiles {
     # Check number of paramaters passed to cli_checkFiles function. At
     # least one argument should be passed.
     if [[ $# -lt 1 ]];then
-        cli_printMessage "${FUNCNAME}: `gettext "You need to provide one argument at least."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
+        cli_printMessage "`gettext "You need to provide one argument at least."`" --as-error-line
     fi
 
     for FILE in $FILES;do
@@ -55,7 +54,7 @@ function cli_checkFiles {
             d | directory )
                 # File exists and is a directory
                 if [[ ! -d $FILE ]];then
-                    MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" doesn't exist."`"
+                    MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" does not exist."`"
                 fi
                 ;;
 
@@ -84,7 +83,7 @@ function cli_checkFiles {
                 # To exist, file should be a regular file or a symbolic link.
                 if [[ ! -f $FILE ]];then
                     if [[ ! -h $FILE ]];then
-                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
+                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`"
                     fi
                 fi
                 ;;
@@ -93,7 +92,7 @@ function cli_checkFiles {
                 # To exist, file should be a regular file or a directory.
                 if [[ ! -f $FILE ]];then
                     if [[ ! -d $FILE ]];then
-                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
+                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`"
                     fi
                 fi
                 ;;
@@ -101,14 +100,14 @@ function cli_checkFiles {
             isInWorkingCopy )
                 # To exist, file should be inside the working copy.
                 if [[ ! $FILE =~ "^/home/centos/artwork/.+$" ]];then
-                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist inside the working copy."`"
+                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`"
                 fi
                 ;;
 
             * )
                 # File exists.
                 if [[ ! -a $FILE ]];then
-                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" doesn't exist."`"
+                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`"
                 fi
 
         esac
@@ -119,8 +118,7 @@ function cli_checkFiles {
     # and end up script execution. Otherwise, continue with script
     # normal flow.
     if [[ "$MESSAGE" != '' ]];then
-        cli_printMessage "$MESSAGE" "AsErrorLine"
-        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
+        cli_printMessage "$MESSAGE" --as-error-line
     fi
 
 }
