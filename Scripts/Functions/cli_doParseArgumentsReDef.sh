@@ -45,7 +45,7 @@ function cli_doParseArgumentsReDef {
         # inside.  To solve this issue, we replace all single quotes
         # in the arguments list with their respective codification and
         # reverse the process back when doPrint them out.
-        ARG=$(echo $ARG | sed "s/'/0x27/g")
+        ARG=$(echo $ARG | sed "s/'/\\\0x27/g")
 
         # Concatenate arguments and encolose them to let getopt to
         # process them when they have spaces inside.
