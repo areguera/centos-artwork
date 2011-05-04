@@ -31,7 +31,7 @@ function prepare_doEnvironment {
     fi
 
     # Print action message.
-    cli_printMessage "`gettext "Checking environment variables"`" 'AsBannerLine'
+    cli_printMessage "`gettext "Checking environment variables"`" --as-banner-line
 
     local -a VARS
     local -a INFO
@@ -62,7 +62,7 @@ function prepare_doEnvironment {
             # expansion (what a beautiful feature!) to output variable
             # value.
             cli_printMessage "${INFO[$COUNT]}:"
-            cli_printMessage "${VARS[$COUNT]}=${!VARS[$COUNT]}" 'AsResponseLine'
+            cli_printMessage "${VARS[$COUNT]}=${!VARS[$COUNT]}" --as-response-line
 
         fi
 

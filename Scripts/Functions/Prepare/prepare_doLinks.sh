@@ -115,9 +115,9 @@ function prepare_doLinks {
 
         # Print action message.
         if [[ -a ${LINKS_SRC[$COUNT]} ]];then
-            cli_printMessage "${LINKS_SRC[$COUNT]}" 'AsUpdatingLine'
+            cli_printMessage "${LINKS_SRC[$COUNT]}" --as-updating-line
         else
-            cli_printMessage "${LINKS_SRC[$COUNT]}" 'AsCreatingLine'
+            cli_printMessage "${LINKS_SRC[$COUNT]}" --as-creating-line
         fi
 
         # Create symbolic link parent directory if it doesn't exist.
