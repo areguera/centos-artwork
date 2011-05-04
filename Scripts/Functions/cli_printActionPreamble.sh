@@ -109,12 +109,11 @@ function cli_printActionPreamble {
     if [[ $POSITIVE != '' ]] &&  [[ $NEGATIVE == '' ]];then
         cli_printMessage "$POSITIVE"
         for FILE in $FILES;do
-            cli_printMessage "$FILE" "$FORMAT"
+            cli_printMessage "$FILE $FORMAT"
         done
-        cli_printMessage "`gettext "Do you want to continue"`" 'AsYesOrNoRequestLine'
+        cli_printMessage "`gettext "Do you want to continue"`" --as-yesornorequest-line
     elif [[ $POSITIVE == '' ]] &&  [[ $NEGATIVE != '' ]];then
-        cli_printMessage "$NEGATIVE" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "$NEGATIVE" --as-error-line
     fi
 
 }
