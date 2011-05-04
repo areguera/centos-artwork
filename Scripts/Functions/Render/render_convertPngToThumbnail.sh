@@ -42,11 +42,11 @@ function render_convertPngToThumbnail {
 
     # Create thumbnails.
     for SIZE in $SIZES;do
-        cli_printMessage "${FILE}-thumb-${SIZE}.png" "AsSavedAsLine"
+        cli_printMessage "${FILE}-thumb-${SIZE}.png" --as-savedas-line
         convert -resize ${SIZE} ${FILE}.png ${FILE}-thumb-${SIZE}.png
-        cli_printMessage "${FILE}-thumb-${SIZE}.jpg" "AsSavedAsLine"
+        cli_printMessage "${FILE}-thumb-${SIZE}.jpg" --as-savedas-line
         convert -resize ${SIZE} ${FILE}-thumb-${SIZE}.png ${FILE}-thumb-${SIZE}.jpg
-        cli_printMessage "${FILE}-thumb-${SIZE}.pdf" "AsSavedAsLine"
+        cli_printMessage "${FILE}-thumb-${SIZE}.pdf" --as-savedas-line
         convert -resize ${SIZE} ${FILE}-thumb-${SIZE}.png ${FILE}-thumb-${SIZE}.pdf
     done
 

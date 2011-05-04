@@ -56,7 +56,7 @@ function render_doDm {
     local RESOLUTIONS=''
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Get display manager passed from render.conf.sh pre-rendition
     # configuration script.
@@ -76,8 +76,7 @@ function render_doDm {
     # Check screen resolutions passed from render.conf.sh
     # pre-rendition configuration script.
     if [[ "$RESOLUTIONS" == '' ]];then
-        cli_printMessage "`gettext "There is no resolution information to process."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
+        cli_printMessage "`gettext "There is no resolution information to process."`" --as-error-line
     fi
 
     # Define source files using absolute paths.
@@ -167,7 +166,11 @@ function render_doDm {
         COUNT=0
 
         # Print action message.
-        cli_printMessage "${OUTPUT}/${RESOLUTION}.tar.gz" "AsCreatingLine"
+        if [[ ${RESOLUTION}.tar.gz ]];then
+            cli_printMessage "${OUTPUT}/${RESOLUTION}.tar.gz" --as-updating-line
+        else
+            cli_printMessage "${OUTPUT}/${RESOLUTION}.tar.gz" --as-creating-line
+        fi
 
         # Create tar.gz file.
         tar -czf "${RESOLUTION}.tar.gz" $TGZ
@@ -179,9 +182,9 @@ function render_doDm {
     rm -r $TGZ
 
     # Remove release-specific images.
-    cli_printMessage "${SRC[1]}" "AsDeletingLine"
+    cli_printMessage "${SRC[1]}" --as-deleting-line
     rm ${SRC[1]}
-    cli_printMessage "${SRC[2]}" "AsDeletingLine"
+    cli_printMessage "${SRC[2]}" --as-deleting-line
     rm ${SRC[2]}
 
     # Return to where we were initially.

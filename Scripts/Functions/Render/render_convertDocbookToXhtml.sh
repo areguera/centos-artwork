@@ -28,9 +28,9 @@ function render_convertDocbookToXhtml {
 
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
-        cli_printMessage "${FILE}.xhtml" 'AsUpdatingLine'
+        cli_printMessage "${FILE}.xhtml" --as-updating-line
     else
-        cli_printMessage "${FILE}.xhtml" 'AsCreatingLine'
+        cli_printMessage "${FILE}.xhtml" --as-creating-line
     fi
 
     # Define list of XSL stylesheets.

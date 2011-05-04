@@ -61,7 +61,7 @@ function render_groupSimilarFiles {
         TARGET=${TARGET}/$(cli_getRepoName "$FILE" 'f').${FORMAT}
 
         # Move file into its final location.
-        cli_printMessage "$TARGET" 'AsMovedToLine'
+        cli_printMessage "$TARGET" --as-movedto-line
         mv ${SOURCE} ${TARGET}
 
     done

@@ -53,7 +53,7 @@ function render_doSvgPostActions {
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:-floyd'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='renderKsplash'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doKsplash'
     fi
 
     # Define SVG post-rendition actions that create new files from

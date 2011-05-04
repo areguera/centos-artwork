@@ -27,9 +27,9 @@ function render_doXhtml {
 
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
-        cli_printMessage "${FILE}.xhtml" 'AsUpdatingLine'
+        cli_printMessage "${FILE}.xhtml" --as-updating-line
     else
-        cli_printMessage "${FILE}.xhtml" 'AsCreatingLine'
+        cli_doPrint "${FILE}.xhtml" --as-creating-line
     fi
 
     # Create xhtml file from instance.

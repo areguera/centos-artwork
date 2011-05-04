@@ -61,7 +61,7 @@ function render_doBrands {
         for FORMAT in ${FORMATS};do
         
             # Output action information.
-            cli_printMessage "${NEWFILE}.${FORMAT}" "AsCreatingLine"
+            cli_printMessage "${NEWFILE}.${FORMAT}" --as-creating-line
 
             # Convert and resize to create new file.
             convert -resize x${SIZE} ${FILE}.png ${NEWFILE}.${FORMAT}
@@ -69,15 +69,15 @@ function render_doBrands {
         done
 
         # Create logo copy in 2 colors.
-        cli_printMessage "${NEWFILE}.xbm (`gettext "2 colors grayscale"`)" "AsCreatingLine"
+        cli_printMessage "${NEWFILE}.xbm (`gettext "2 colors grayscale"`)" --as-creating-line
         convert -resize x${SIZE} -colorspace gray -colors 2 ${FILE}.png ${NEWFILE}.xbm
 
         # Create logo copy in emboss effect.
-        cli_printMessage "${NEWFILE}-emboss.png" "AsCreatingLine"
+        cli_printMessage "${NEWFILE}-emboss.png" --as-creating-line
         convert -resize x${SIZE} -emboss 1 ${FILE}.png ${NEWFILE}-emboss.png
 
     done
 
     # Output division line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 }

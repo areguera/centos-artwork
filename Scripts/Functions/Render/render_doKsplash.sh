@@ -56,7 +56,7 @@ function render_doKsplash {
     DST[4]="${OUTPUT}/Theme.rc"
 
     # Print action message.
-    cli_printMessage "${OUTPUT}/Preview.png" 'AsCreatingLine'
+    cli_printMessage "${OUTPUT}/Preview.png" --as-creating-line
 
     # Create `Preview.png' image.
     convert -append ${SRC[0]} ${SRC[1]} ${SRC[3]} ${OUTPUT}/Preview.png

@@ -88,8 +88,7 @@ function render_doSyslinux {
         # Remove anything after equal sign inside option.
         OPTION=$(echo $OPTION | cut -d'=' -f1)
         if [[ "$OPTION" =~ "-(mapfile|verbose)" ]];then
-            cli_printMessage "`eval_gettext "The \\\$OPTION option is already used."`"
-            cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
+            cli_printMessage "`eval_gettext "The \\\"\\\$OPTION\\\" option is already used."`" --as-error-line
         fi
     done
 
@@ -138,12 +137,12 @@ function render_doSyslinux {
     # created from the PNG image rendered previously as centos-art
     # base-rendition output. The PNM image is an intermediate format
     # used to manipulate images through Netpbm tools.
-    cli_printMessage "${FILE}.pnm" "AsSavedAsLine"
+    cli_printMessage "${FILE}.pnm" --as-savedas-line
     pngtopnm -verbose \
         < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
 
     # Print the path to GPL palette.
-    cli_printMessage "$PALETTE_GPL" 'AsPaletteLine'
+    cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
     render_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
@@ -154,12 +153,12 @@ function render_doSyslinux {
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
     # Floyd-Steinberg dithering in order to improve color reduction.
-    cli_printMessage "${FILE}${PREFIX}.pnm" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.pnm" --as-savedas-line
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
         < ${FILE}.pnm 2>> ${FILE}.log > ${FILE}${PREFIX}.pnm
 
     # Create LSS16 image. 
-    cli_printMessage "${FILE}${PREFIX}.lss" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.lss" --as-savedas-line
     ppmtolss16 $(cat $PALETTE_HEX) \
         < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.lss
      
@@ -171,12 +170,12 @@ function render_doSyslinux {
     # Create the PPM image indexed to 16 colors. Also the colormap
     # used in the LSS16 image is saved on ${FILE}.log; this is useful to
     # verify the correct order of colors in the image index.
-    cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.ppm" --as-savedas-line
     lss16toppm -map \
         < ${FILE}${PREFIX}.lss 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
       
     # Create the 16 colors PNG image.
-    cli_printMessage "${FILE}${PREFIX}.png" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.png" --as-savedas-line
     pnmtopng -verbose -palette=$PALETTE_PPM \
         < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.png
    

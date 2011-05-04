@@ -41,8 +41,7 @@ function render_doGrub {
         # Remove anything after equal sign inside option.
         OPTION=$(echo -n $OPTION | cut -d'=' -f1)
         if [[ "$OPTION" =~ "-(mapfile|verbose)" ]];then
-            cli_printMessage "`eval_gettext "The \\\$OPTION option is already used."`"
-            cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
+            cli_printMessage "`eval_gettext "The \\\"\\\$OPTION\\\" option is already used."`" --as-error-line
         fi
     done
 
@@ -77,12 +76,12 @@ function render_doGrub {
     # created from the PNG image rendered previously as centos-art
     # base-rendition output. The PNM image is an intermediate format
     # used to manipulate images through Netpbm tools.
-    cli_printMessage "${FILE}.pnm" "AsSavedAsLine"
+    cli_printMessage "${FILE}.pnm" --as-savedas-line
     pngtopnm -verbose \
         < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
 
     # Print the path to GPL palette.
-    cli_printMessage "$PALETTE_GPL" 'AsPaletteLine'
+    cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
     render_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
@@ -90,7 +89,7 @@ function render_doGrub {
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
     # Floyd-Steinberg dithering in order to improve color reduction.
-    cli_printMessage "${FILE}${PREFIX}.ppm" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.ppm" --as-savedas-line
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
         < ${FILE}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
 
@@ -100,7 +99,7 @@ function render_doGrub {
     fi
 
     # Create the 14 colors xpm.gz file.
-    cli_printMessage "${FILE}${PREFIX}.xpm.gz" "AsSavedAsLine"
+    cli_printMessage "${FILE}${PREFIX}.xpm.gz" --as-savedas-line
     ppmtoxpm \
         < ${FILE}${PREFIX}.ppm 2>>${FILE}.log > ${FILE}.xpm \
         && gzip --force ${FILE}.xpm \

@@ -50,17 +50,16 @@ function render_convertHtml2Text {
 
         # Print action message.
         if [[ -f ${FILE}.txt ]];then
-            cli_printMessage "${FILE}.txt" 'AsUpdatingLine'
+            cli_printMessage "${FILE}.txt" --as-updating-line
         else
-            cli_printMessage "${FILE}.txt" 'AsCreatingLine'
+            cli_printMessage "${FILE}.txt" --as-creating-line
         fi
 
         # Convert from HTML to plain-text without markup.
         ${COMMAND} ${OPTIONS} ${FILE}.xhtml > ${FILE}.txt
 
     else
-        cli_printMessage "`gettext "No way to convert from HTML to plain-text found."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "No way to convert from HTML to plain-text found."`" --as-error-line
     fi
 
 }

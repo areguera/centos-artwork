@@ -29,7 +29,7 @@ function render_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,releasever:,basearch:,convert:,comment:,sharpen::,group-by:,theme-model:"
+    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,releasever:,basearch:,convert:,comment:,sharpen:,group-by:,theme-model:"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_doParseArguments
@@ -66,8 +66,7 @@ function render_getOptions {
             --releasever )
                 FLAG_RELEASEVER="$2"
                 if [[ ! $FLAG_RELEASEVER =~ $(cli_getPathComponent '--release-pattern') ]];then
-                    cli_printMessage "`gettext "The release version provided is not supported."`" 'AsErrorLine'
-                    cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+                    cli_printMessage "`gettext "The release version provided is not supported."`" --as-error-line
                 fi
                 shift 2
                 ;;
@@ -90,8 +89,7 @@ function render_getOptions {
             --basearch )
                 FLAG_BASEARCH="$2"
                 if [[ ! $FLAG_BASEARCH =~ $(cli_getPathComponent '--architecture-pattern') ]];then
-                    cli_printMessage "`gettext "The architecture provided is not supported."`" 'AsErrorLine'
-                    cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+                    cli_printMessage "`gettext "The architecture provided is not supported."`" --as-error-line
                 fi
                 shift 2
                 ;;

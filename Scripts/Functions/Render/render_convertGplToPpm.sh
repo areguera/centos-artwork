@@ -45,8 +45,7 @@ function render_convertGplToPpm {
     # convenction, we are producing images in 14 and 16 colors only to
     # cover Grub and Syslinux images need respectively.
     if [[ ! $COLOR_NUMBER =~ '^(14|16)$' ]];then
-        cli_printMessage "`eval_gettext "Reducing image to \\\`\\\$COLOR_NUMBER' colors is not supported."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`eval_gettext "Reducing image to \\\"\\\$COLOR_NUMBER\\\" colors is not supported."`" --as-error-line
     fi
 
     # Define list of colors from GPL palette.
@@ -54,15 +53,13 @@ function render_convertGplToPpm {
 
     # Verify number of colors returned in the list.
     if [[ ! $(echo "$COLORS" |  wc -l) =~ $COLOR_NUMBER ]];then
-        cli_printMessage "`gettext "The palette doesn't have the correct number of colors."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "The palette do not have the correct number of colors."`" --as-error-line
     fi
 
     # Verify format of colors inside the list.
     for COLOR in $COLORS;do
         if [[ ! $COLOR =~ '^[0-9a-f]{6}$' ]];then
-            cli_printMessage "`eval_gettext "The \\\`\\\$COLOR' string isn't a valid color code."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`eval_gettext "The \\\"\\\$COLOR\\\" string is not a valid color code."`" --as-error-line
         fi
     done
 

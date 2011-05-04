@@ -50,16 +50,16 @@ function render_checkSvgAbsref {
 
     # Retrive absolute paths from file.
     BG_DST_FILES=$(egrep "(sodipodi:absref|xlink:href)=\"${HOME}.+" $FILE \
-        | sed -r "s,.+=\"(${HOME}.+\.png)\".*,\1,")
+        | sed -r "s,.+=\"(${HOME}.+\.png)\".*,\1," | sort | uniq)
 
     # Verify absolute paths retrived from file.
     for BG_DST_FILE in $BG_DST_FILES;do
 
+        # Print action
+        cli_printMessage "$BG_DST_FILE" --as-checking-line
+
         if [[ ! -a $BG_DST_FILE ]];then
-
-            # Warn about required background omission.
-            cli_printMessage "`eval_gettext "The path \\\"\\\$BG_DST_FILE\\\" doesn't exist."`" 'AsErrorLine'
-
+  
             # Define the source background file, the image file will
             # crop when no specific background informatio be available
             # for using. Generally, this is the most reusable
@@ -92,7 +92,7 @@ function render_checkSvgAbsref {
                     | sed -r 's!.+/[[:digit:]]+x([[:digit:]]+)-final\.png!\1!')
 
                 # Print action message.
-                cli_printMessage "${BG_SRC_FILE} ($BG_SRC_FILE_COLOR)" 'AsCreatingLine'
+                cli_printMessage "${BG_SRC_FILE} ($BG_SRC_FILE_COLOR)" --as-creating-line
 
                 # Create the source background file.
                 ppmmake -quiet ${BG_SRC_FILE_COLOR} \
@@ -102,7 +102,7 @@ function render_checkSvgAbsref {
             fi
 
             # Print action message.
-            cli_printMessage "$BG_SRC_FILE" 'AsCroppingFromLine'
+            cli_printMessage "$BG_SRC_FILE" --as-cropping-line
 
             # Define the width of the required background information.
             BG_DST_FILE_WIDTH=$(echo $BG_DST_FILE \

@@ -50,15 +50,13 @@ function render_getConfigOption {
     # for this function to work. It provides the string needed to
     # retrive options from.
     if [[ "$ACTION" == '' ]];then
-        cli_printMessage "`gettext "There is no action to work with."`"
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "There is no action to work with."`" --as-error-line
     fi
 
     # Check field value. The field's value must match the cut's
     # command specification of its -f option.
     if [[ ! "$FIELD" =~ '^([0-9]+|[0-9]+-|-[0-9]+|[0-9]+-[0-9]+)$' ]];then
-        cli_printMessage "`gettext "The field specified is not valid."`"
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "The field specified is not valid."`" --as-error-line
     fi
 
     # Get option from pre-rendition configuration action definition.

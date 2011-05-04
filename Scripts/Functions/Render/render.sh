@@ -96,16 +96,14 @@ function render {
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
             ACTIONNAM="${FUNCNAME}_doBaseActions"
         else
-            cli_printMessage "`gettext "The path provided doesn't support rendition."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "The path provided do not support rendition."`" --as-error-line
         fi
 
         # Execute action name.
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
             eval $ACTIONNAM
         else
-            cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
         fi
 
         # Commit changes from working copy to central repository only.

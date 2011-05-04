@@ -30,7 +30,7 @@ function render_convertPngTo {
 
     # Execute ImageMagick convertion.
     for FORMAT in $FORMATS;do
-        cli_printMessage "${FILE}.${FORMAT}" "AsSavedAsLine"
+        cli_printMessage "${FILE}.${FORMAT}" --as-savedas-line
         convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
     done
 

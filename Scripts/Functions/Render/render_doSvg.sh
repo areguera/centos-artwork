@@ -32,8 +32,7 @@ function render_doSvg {
     # Check export id inside design templates.
     grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
     if [[ $? -gt 0 ]];then
-        cli_printMessage "`eval_gettext "There is no export id (\\\$EXPORTID) inside \\\$TEMPLATE."`" "AsErrorLine"
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`eval_gettext "There is not export id (\\\$EXPORTID) inside \\\"\\\$TEMPLATE\\\"."`" --as-error-line
     fi
 
     # Check existence of external files. Inside design templates and
@@ -44,13 +43,17 @@ function render_doSvg {
     # be avoided.
     render_checkSvgAbsref "$INSTANCE"
 
-    # Render template instance using inkscape. Modify the inkscape
-    # output to reduce the amount of characters used in description
-    # column at final output.
-    cli_printMessage "$(inkscape $INSTANCE \
-        --export-id=$EXPORTID --export-png=${FILE}.png | sed -r \
-        -e "s!Area !`gettext "Area"`: !" \
-        -e "s!Background RRGGBBAA:!`gettext "Background"`: RRGGBBAA!" \
-        -e "s!Bitmap saved as:!`gettext "Saved as"`:!")" 'AsRegularLine'
+    # Render template instance using inkscape and save the output.
+    local INKSCAPE_OUTPUT="$(\
+        inkscape $INSTANCE --export-id=$EXPORTID --export-png=${FILE}.png)"
+
+    # Modify output from inkscape to fit the centos-art.sh script
+    # output visual style.
+    cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Area' \
+        | sed -r 's!:! !g' | sed -r "s!^Area!`gettext "Area"`: !")"
+    cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Background' \
+        | sed -r 's!:! !g' | sed -r "s!^Background!`gettext "Background"`: !")" 
+    cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
+        | sed -r 's!:! !g' | sed -r "s!^Bitmap saved as!`gettext "Saved as"`: !")"
  
 }

@@ -99,7 +99,7 @@ function render_doBaseActions {
         fi
 
         # Print separator line.
-        cli_printMessage '-' 'AsSeparatorLine'
+        cli_printMessage '-' --as-separator-line
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
@@ -107,9 +107,9 @@ function render_doBaseActions {
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
-            cli_printMessage "`gettext "None"`" "AsTranslationLine"
+            cli_printMessage "`gettext "None"`" --as-translation-line
         else
-            cli_printMessage "$TRANSLATION" 'AsTranslationLine'
+            cli_printMessage "$TRANSLATION" --as-translation-line
         fi
 
         # Define final location of template file.
@@ -117,9 +117,9 @@ function render_doBaseActions {
 
         # Print final location of template file.
         if [[ ! -f "$TEMPLATE" ]];then
-            cli_printMessage "`gettext "None"`" "AsDesignLine"
+            cli_printMessage "`gettext "None"`" --as-design-line
         else
-            cli_printMessage "$TEMPLATE" 'AsDesignLine'
+            cli_printMessage "$TEMPLATE" --as-design-line
         fi
  
         # Define final location of output directory.
@@ -219,8 +219,7 @@ function render_doBaseActions {
             #render_doXhtmlLastActions
 
         else
-            cli_printMessage "`gettext "The template file you try to render is not supported yet."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine' 
+            cli_printMessage "`gettext "The template file you try to render is not supported yet."`" --as-error-line
         fi
 
         # Remove template instance. 
