@@ -92,7 +92,7 @@ function brandAnaconda {
       cli_checkFiles "$SOURCE"
    
       # File exists and will be installed on target.
-      cli_printMessage "$TARGET" "AsUpdatingLine"
+      cli_printMessage "$TARGET" --as-updating-line
 
       # Update file.
       #cp $SOURCE $TARGET
