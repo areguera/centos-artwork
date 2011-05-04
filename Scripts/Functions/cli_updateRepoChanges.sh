@@ -55,7 +55,7 @@ function cli_updateRepoChanges {
     cli_checkFiles "$LOCATIONS" 'isInWorkingCopy'
 
     # Update working copy and retrive update output.
-    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" 'AsBannerLine'
+    cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
     UPDATEOUT=$(svn update ${LOCATIONS})
 
     # Define path of files considered recent modifications from
@@ -96,7 +96,7 @@ function cli_updateRepoChanges {
             "files from the repository" $((${FILESNUM[$COUNT]} + 1))`
 
         # Output report line.
-        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}" 'AsRegularLine'
+        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}"
 
         # Increase counter.
         COUNT=$(($COUNT + 1))
