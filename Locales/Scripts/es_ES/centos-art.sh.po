@@ -54,9 +54,8 @@ msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help_searchIndex.sh:33
-#, fuzzy
 msgid "Use the \"--filter\" option to define the search pattern."
-msgstr "Use la opción `--filter' para definir el patrón de búsqueda."
+msgstr "Use la opción \"--filter\" para definir el patrón de búsqueda."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateChaptersNodes.sh:31
 msgid "Index"
@@ -72,18 +71,15 @@ msgid "Cannot locale English language to itself."
 msgstr "No puede traducir el idioma Inglés a si mismo."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_editMessages.sh:41
-#, fuzzy
 msgid "The path provided do not support localization."
 msgstr "El camino suministrado no soporta la localización."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageShell.sh:46
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageXml.sh:48
-#, fuzzy
 msgid "The path provided cannot be processed."
 msgstr "El camino suministrado no puede ser procesado."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:51
-#, fuzzy
 msgid "The path provided does not support localization."
 msgstr "El camino suministrado no soporta la localización."
 
@@ -112,32 +108,29 @@ msgid "Default locale information"
 msgstr "Información de idioma predeterminada"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:56
-#, fuzzy
 msgid "Created in CentOS Arwork Repository"
 msgstr "Creado en el Repositorio Artístico de CentOS"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:99
-#, fuzzy
 msgid "The path provided do not support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:50
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:48
-#, fuzzy, sh-format
+#, sh-format
 msgid "Reducing image to \"$COLOR_NUMBER\" colors is not supported."
-msgstr "La reducción a `$COLOR_NUMBER' colores en la imagen no está soportada."
+msgstr "La reducción a \"$COLOR_NUMBER\" colores en la imagen no está soportada."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:58
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:56
-#, fuzzy
 msgid "The palette do not have the correct number of colors."
 msgstr "La paleta no tiene el número correcto de colores."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:64
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:62
-#, fuzzy, sh-format
+#, sh-format
 msgid "The \"$COLOR\" string is not a valid color code."
-msgstr "La cadena `$COLOR' no es un código de color válido."
+msgstr "La cadena \"$COLOR\" no es un código de color válido."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertHtmlToText.sh:62
 msgid "No way to convert from HTML to plain-text found."
@@ -162,14 +155,14 @@ msgstr "No hay información de resolución a procesar."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doGrub.sh:44
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSyslinux.sh:91
-#, fuzzy, sh-format
+#, sh-format
 msgid "The \"$OPTION\" option is already used."
-msgstr "La opción $OPTION ya se encuentra en uso."
+msgstr "La opción \"$OPTION\" ya se encuentra en uso."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:35
-#, fuzzy, sh-format
+#, sh-format
 msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
-msgstr "El identificador de exrtación ($EXPORTID) no existe en $TEMPLATE."
+msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:53
 msgid "Area"
@@ -209,7 +202,7 @@ msgid "You need to provide one argument at least."
 msgstr "Necesita suministrar al menos un argumento."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:57
-#, fuzzy, sh-format
+#, sh-format
 msgid "The directory \"$FILE\" does not exist."
 msgstr "El directorio \"$FILE\" no existe."
 
@@ -231,12 +224,12 @@ msgstr "El fichero \"$FILE\" no es ejecutable."
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:86
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:95
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:110
-#, fuzzy, sh-format
+#, sh-format
 msgid "The path \"$FILE\" does not exist."
 msgstr "El camino \"$FILE\" no existe."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:103
-#, fuzzy, sh-format
+#, sh-format
 msgid "The path \"$FILE\" does not exist inside the working copy."
 msgstr "El camino \"$FILE\" no existe dentro de la copia de trabajo."
 
@@ -268,9 +261,9 @@ msgstr "El valor `$LOCATION' no es válido."
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:62
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:78
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:90
-#, fuzzy, sh-format
+#, sh-format
 msgid "The location \"$ACTIONVAL\" is not valid."
-msgstr "La ubicación `$ACTIONVAL' no es válida."
+msgstr "La ubicación \"$ACTIONVAL\" no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:58
 msgid "Checking changes in the working copy"
@@ -297,8 +290,8 @@ msgstr "Adicionado"
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:93
 msgid "file in the working copy"
 msgid_plural "files in the repository"
-msgstr[0] "en la copia de trabajo."
-msgstr[1] "en la copia de trabajo."
+msgstr[0] "fichero en la copia de trabajo."
+msgstr[1] "ficheros en la copia de trabajo."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:112
 msgid "The following file is unversioned"
@@ -321,9 +314,8 @@ msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:37
-#, fuzzy
 msgid "The first argument is required."
-msgstr "Dos arguments son obligatorios."
+msgstr "El primer argumento es obligatorios."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:46
 msgid "The first argument cannot be empty."
@@ -335,10 +327,9 @@ msgstr "Actualizando"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:124
 msgid "Cropping from"
-msgstr ""
+msgstr "Recortando de"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:130
-#, fuzzy
 msgid "Tuning-up"
 msgstr "Afinado"
 
@@ -1357,9 +1348,9 @@ msgid "Unknown"
 msgstr "Desconocido"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getFunctions.sh:49
-#, fuzzy, sh-format
+#, sh-format
 msgid "The \"$FILE\" has not execution rights."
-msgstr "El $FILE no tiene derechos de ejecución."
+msgstr "El \"$FILE\" no tiene derechos de ejecución."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:34
 msgid "Afar"
@@ -2102,9 +2093,9 @@ msgid "The bond string is required."
 msgstr "La cadena de unión es necesaria."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:56
-#, fuzzy, sh-format
+#, sh-format
 msgid "The location \"$LOCATION\" is not valid."
-msgstr "La ubicación `$LOCATION' no es válida."
+msgstr "La ubicación \"$LOCATION\" no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getTemporalFile.sh:38
 msgid "First argument cannot be empty."
