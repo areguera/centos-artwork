@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# cli_doParseArgumentsReDef.sh -- This function initiates/reset
-# positional parameters based on `$@' variable.
+# cli_doParseArgumentsReDef.sh -- This function initiates/reset and
+# sanitates positional parameters passed to this function and creates
+# the the list of arguments that getopt will process.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -35,7 +36,21 @@ function cli_doParseArgumentsReDef {
     # single quotes to enclose each argument (ARG) from command-line
     # idividually.
     for ARG in "$@"; do
+
+        # Sanitate option arguments before process them.  Be sure that
+        # no option argument does contain any single quote (U+0027)
+        # inside; that would break option parsing.  Remember that we
+        # are using single quotes to enclose option arguments in order
+        # to let getopt to interpret option arguments with spaces
+        # inside.  To solve this issue, we replace all single quotes
+        # in the arguments list with their respective codification and
+        # reverse the process back when doPrint them out.
+        ARG=$(echo $ARG | sed "s/'/0x27/g")
+
+        # Concatenate arguments and encolose them to let getopt to
+        # process them when they have spaces inside.
         ARGUMENTS="$ARGUMENTS '$ARG'"
+
     done
 
 }
