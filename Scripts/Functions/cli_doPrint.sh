@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_doPrint.sh -- This function outputs information in
+# cli_printMessage.sh -- This function outputs information in
 # predifined formats to standard error. This function is the standard
 # way to output information inside centos-art.sh script.
 #
@@ -24,15 +24,44 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_doPrint {
+function cli_printMessage {
 
     # Verify `--quiet' option.
     if [[ "$FLAG_QUIET" == 'true' ]];then
         return
     fi
 
-    # Initialize message variable as empty.
-    local MESSAGE=''
+    # Verify number of positional parameters. The first argument is
+    # required.
+    if [[ $# -eq 0 ]];then
+        cli_printMessage "`gettext "The first argument is required."`" --as-error-line
+    fi
+
+    # Initialize message variable using the function first positional
+    # parameter.
+    local MESSAGE="$1"
+
+    # Verify message value. The message value must be non-emtpy.
+    if [[ $MESSAGE == '' ]];then
+        cli_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
+    fi
+
+    # Reverse character codification performed when the list of
+    # arguments wast built at cli_doParseArgumentsReDef.sh.
+    MESSAGE=$(echo $MESSAGE | sed "s/\\\0x27/'/g")
+                
+    # Reduce paths inside output messages. The main purpose for this
+    # is to free horizontal space in output messages.
+    MESSAGE=$(echo "$MESSAGE" \
+        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
+
+    # Remove leading blank spaces from output messages.
+    MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
+
+    # Rotate function positional parameters to start processing
+    # options. The first positional parameter has been already taken
+    # by the message and is no longer used here.
+    shift 1
 
     # Define short options.
     local ARGSS=''
@@ -40,8 +69,8 @@ function cli_doPrint {
     # Define long options.
     local ARGSL='message:,as-separator-line,as-banner-line,as-updating-line,as-cropping-line,as-tuningup-line,as-deleting-line,as-checking-line,as-creating-line,as-reading-line,as-savedas-line,as-linkto-line,as-movedto-line,as-translation-line,as-design-line,as-configuration-line,as-palette-line,as-response-line,as-request-line,as-error-line,as-toknowmore-line,as-yesornorequest-line,as-notrailingnew-line,as-regular-line,'
 
-    # Define ARGUMENTS as local variable in order to parse options
-    # from this function internlally.
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope.
     local ARGUMENTS=''
 
     # Redefine ARGUMENTS variable using current positional parameters. 
@@ -58,149 +87,152 @@ function cli_doPrint {
 
         case "$1" in
 
-            '--message' )
+            --as-separator-line )
 
-                # Redefine message.
-                MESSAGE="$2"
-
-                # Reduce paths inside output messages. The main
-                # purpose for this is to free horizontal space in
-                # output messages.
-                MESSAGE=$(echo "$MESSAGE" \
-                    | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
-
-                # Remove blank spaces from lines' begining.
-                MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
-
-                shift 2
-                ;;
-
-            '--as-separator-line' )
-
-                # Define separator width.
+                # Define width of separator line.
                 local MAX=70
 
-                # Draw separator.
-                until [[ $MAX -eq 0 ]];do
-                    printf "$MESSAGE" > /dev/stderr
-                    MAX=$(($MAX - 1))
-                done
+                # Build the separator line. 
+                MESSAGE=$(\
+                    until [[ $MAX -eq 0 ]];do
+                        echo -n "$MESSAGE"
+                        MAX=$(($MAX - 1))
+                    done)
 
-                # Output newline to end separator.
-                echo "" > /dev/stderr
+                # Draw the separator line.
+                echo "$MESSAGE" > /dev/stderr
 
+                shift 2
                 break
                 ;;
 
-            '--as-banner-line' )
-                cli_doPrint --message='-' --as-separator-line
-                cli_doPrint --message="$MESSAGE"
-                cli_doPrint --message='-' --as-separator-line
+            --as-banner-line )
+                cli_printMessage '-' --as-separator-line
+                cli_printMessage "$MESSAGE"
+                cli_printMessage '-' --as-separator-line
+                shift 2
                 break
                 ;;
 
-            '--as-updating-line' )
-                cli_doPrint --message="`gettext "Updating"`: $MESSAGE"
+            --as-updating-line )
+                cli_printMessage "`gettext "Updating"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-cropping-line' )
-                cli_doPrint --message="`gettext "Cropping from"`: $MESSAGE"
+            --as-cropping-line )
+                cli_printMessage "`gettext "Cropping from"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-tuningup-line' )
-                cli_doPrint --message="`gettext "Tuning-up"`: $MESSAGE"
+            --as-tuningup-line )
+                cli_printMessage "`gettext "Tuning-up"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-deleting-line' )
-                cli_doPrint --message="`gettext "Deleting"`: $MESSAGE"
+            --as-checking-line )
+                cli_printMessage "`gettext "Checking"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-checking-line' )
-                cli_doPrint --message="`gettext "Checking"`: $MESSAGE"
+            --as-creating-line )
+                cli_printMessage "`gettext "Creating"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-creating-line' )
-                cli_doPrint --message="`gettext "Creating"`: $MESSAGE"
+            --as-deleting-line )
+                cli_printMessage "`gettext "Deleting"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-reading-line' )
-                cli_doPrint --message="`gettext "Reading"`: $MESSAGE"
+            --as-reading-line )
+                cli_printMessage "`gettext "Reading"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-savedas-line' )
-                cli_doPrint --message="`gettext "Saved as"`: $MESSAGE"
+            --as-savedas-line )
+                cli_printMessage "`gettext "Saved as"`: $MESSAGE"
+                shift 2
                 break
                 ;;
             
-            '--as-linkto-line' )
-                cli_doPrint --message="`gettext "Linked to"`: $MESSAGE"
+            --as-linkto-line )
+                cli_printMessage "`gettext "Linked to"`: $MESSAGE"
+                shift 2
                 break
                 ;;
         
-            '--as-movedto-line' )
-                cli_doPrint --message="`gettext "Moved to"`: $MESSAGE"
+            --as-movedto-line )
+                cli_printMessage "`gettext "Moved to"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-translation-line' )
-                cli_doPrint --message="`gettext "Translation"`: $MESSAGE"
+            --as-translation-line )
+                cli_printMessage "`gettext "Translation"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-design-line' )
-                cli_doPrint --message="`gettext "Design"`: $MESSAGE"
+            --as-design-line )
+                cli_printMessage "`gettext "Design"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-configuration-line' )
-                cli_doPrint --message="`gettext "Configuration"`: $MESSAGE"
+            --as-configuration-line )
+                cli_printMessage "`gettext "Configuration"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-palette-line' )
-                cli_doPrint --message="`gettext "Palette"`: $MESSAGE"
+            --as-palette-line )
+                cli_printMessage "`gettext "Palette"`: $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-response-line' )
-                cli_doPrint --message="--> $MESSAGE"
+            --as-response-line )
+                cli_printMessage "--> $MESSAGE"
+                shift 2
                 break
                 ;;
 
-            '--as-request-line' )
-                cli_doPrint --message="${MESSAGE}: " --as-notrailingnew-line
+            --as-request-line )
+                cli_printMessage "${MESSAGE}: " --as-notrailingnew-line
+                shift 2
                 break
                 ;;
 
-            '--as-error-line' )
+            --as-error-line )
                 # This option is used to print error messsages.
                 echo "${CLI_PROGRAM} (${FUNCNAME[1]}): ${MESSAGE}" > /dev/stderr
-                cli_doPrint --message="${FUNCDIRNAM}" --as-toknowmore-line
+                cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
+                shift 2
                 break
                 ;;
 
-            '--as-toknowmore-line' )
+            --as-toknowmore-line )
                 # This option receives the output of bash's caller
                 # built-in as message value and produces the
                 # documentation entry from it.
                 MESSAGE="trunk/Scripts/Functions/$MESSAGE"
-                cli_doPrint --message='-' --as-separator-line
-                cli_doPrint --message="`gettext "To know more, run the following command"`:"
-                cli_doPrint --message="centos-art help --read $MESSAGE"
-                cli_doPrint --message='-' --as-separator-line
+                cli_printMessage '-' --as-separator-line
+                cli_printMessage "`gettext "To know more, run the following command"`:"
+                cli_printMessage "centos-art help --read $MESSAGE"
+                cli_printMessage '-' --as-separator-line
                 exit # <-- ATTENTION: Do not remove this line. We use this
                      #                option as convenction to end script
                      #                execution.
                 ;;
     
-            '--as-yesornorequest-line' )
+            --as-yesornorequest-line )
                 # Define positive answer.
                 local Y="`gettext "yes"`"
 
@@ -217,7 +249,7 @@ function cli_doPrint {
                 else
 
                     # Print the question.
-                    cli_doPrint --message="$MESSAGE [${Y}/${N}]: " --as-notrailingnew-line
+                    cli_printMessage "$MESSAGE [${Y}/${N}]: " --as-notrailingnew-line
 
                     # Redefine default answer based on user's input.
                     read ANSWER
@@ -232,15 +264,17 @@ function cli_doPrint {
                     exit
                 fi
 
+                shift 2
                 break
                 ;;
 
-            '--as-notrailingnew-line' )
+            --as-notrailingnew-line )
                 printf "$MESSAGE" > /dev/stderr
+                shift 2
                 break
                 ;;
 
-            '--as-regular-line' | * )
+            --as-regular-line | * )
                 echo "$MESSAGE" \
                         | awk 'BEGIN { FS=": " }
                             { 
@@ -250,16 +284,15 @@ function cli_doPrint {
                                 printf "%-15s\t%s\n", $1, $2 
                             }
                             END {}' > /dev/stderr
-                break
-                ;;
-
-            '--' )
-                shift 1
+                shift 2
                 break
                 ;;
 
         esac
 
     done
+
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
 
 }
