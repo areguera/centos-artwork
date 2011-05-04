@@ -44,8 +44,7 @@ function cli_checkPathComponent {
         LOCATION="$1"
         OPTION="$2"
     else
-       cli_printMessage "${FUNCNAME}: `gettext "Invalid arguments."`" 'AsErrorLine'
-       cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine' 
+        cli_printMessage "`gettext "Invalid arguments."`" --as-error-line
     fi
 
     # Define patterns.
@@ -85,8 +84,7 @@ function cli_checkPathComponent {
 
     # Output message.
     if [[ $MESSAGE != '' ]];then
-        cli_printMessage "$MESSAGE" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" "AsToKnowMoreLine"
+        cli_printMessage "$MESSAGE" --as-error-line
     fi
 
 }
