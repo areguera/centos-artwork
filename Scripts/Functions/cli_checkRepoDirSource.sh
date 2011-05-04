@@ -59,8 +59,7 @@ function cli_checkRepoDirSource {
             # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)
         else
-            cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`eval_gettext "The location \\\"\\\$ACTIONVAL\\\" is not valid."`" --as-error-line
         fi
 
         # Remove directory from the directory stack.
@@ -76,8 +75,7 @@ function cli_checkRepoDirSource {
             # Re-define source value using absolute path.
             ACTIONVAL=$(pwd)/$(basename "$ACTIONVAL")
         else
-            cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`eval_gettext "The location \\\"\\\$ACTIONVAL\\\" is not valid."`" --as-error-line
         fi
 
         # Remove directory from the directory stack.
@@ -89,8 +87,7 @@ function cli_checkRepoDirSource {
         # url. The source value can only be considered as such if it
         # is an existent working copy or valid url. So, print a
         # message and stop script execution.
-        cli_printMessage "`eval_gettext "The location \\\`\\\$ACTIONVAL' is not valid."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`eval_gettext "The location \\\"\\\$ACTIONVAL\\\" is not valid."`" --as-error-line
 
     fi
 
