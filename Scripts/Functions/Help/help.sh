@@ -104,11 +104,9 @@ function help {
 
         # Verify number of arguments passed to centos-art.sh script.
         if [[ ${#ACTIONVALS[*]} -gt 2 ]];then
-            cli_printMessage "`gettext "Only two arguments are accepted."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAME}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "Only two arguments are accepted."`" --as-error-line
         elif [[ ${#ACTIONVALS[*]} -lt 2 ]];then
-            cli_printMessage "`gettext "Two arguments are required."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAME}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "Two arguments are required."`" --as-error-line
         fi
 
         # Define source location. 
@@ -186,8 +184,7 @@ function help {
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
             eval $ACTIONNAM
         else
-            cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
-            cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
         fi
 
         # Commit changes from working copy to central repository only.

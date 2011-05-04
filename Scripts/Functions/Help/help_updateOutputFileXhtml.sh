@@ -26,7 +26,7 @@
 function help_updateOutputFileXhtml {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" 'AsUpdatingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" --as-updating-line
 
     # Redefine manual base file to use just the file base name.
     local MANUAL_BASEFILE=$(basename "$MANUAL_BASEFILE")

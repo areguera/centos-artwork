@@ -26,7 +26,7 @@
 function help_deleteEntry {
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     local ENTRY_SRC=${ENTRY}
     local ENTRIES=''
@@ -70,14 +70,14 @@ function help_deleteEntry {
     # Verify exit status from subversion command to be sure everything
     # went well. Otherwhise stop script execution.
     if [[ $? -ne 0 ]];then
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
     fi
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Print action message.
-    cli_printMessage "Updating menus, nodes and cross-references." 'AsResponseLine'
+    cli_printMessage "Updating menus, nodes and cross-references." '--as-response-line'
 
     # Process list of entries in order to update menus, nodes and
     # cross references. Since we are verifying entry status before

@@ -26,7 +26,7 @@
 function help_copyEntry {
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     local ENTRY_SRC="$ENTRY"
     local ENTRIES=''
@@ -41,7 +41,7 @@ function help_copyEntry {
 
     # Copy main documentation entry.
     if [[ -a ${ENTRY_SRC} ]] && [[ ! -a ${ENTRY_DST} ]];then
-        cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
+        cli_printMessage "${ENTRY_DST}" --as-creating-line
         svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
     fi
 
@@ -51,7 +51,7 @@ function help_copyEntry {
 
     # Copy dependent documentation entries, if any.
     if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]] && [[ ! -d ${ENTRY_DST} ]];then
-        cli_printMessage "${ENTRY_DST}" 'AsCreatingLine'
+        cli_printMessage "${ENTRY_DST}" --as-creating-line
         svn cp "${ENTRY_DIR}/${ENTRY_FILE}" "${ENTRY_DST}" --quiet
     fi
                 
@@ -62,10 +62,10 @@ function help_copyEntry {
     cli_printActionPreamble "${ENTRIES}" '' ''
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Print action message.
-    cli_printMessage "Updating menus, nodes and cross-references." 'AsResponseLine'
+    cli_printMessage "Updating menus, nodes and cross-references." --as-response-line
 
     # Redefine ENTRY variable in order to update documentation
     # structure, taking recently created entries as reference.

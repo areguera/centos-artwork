@@ -30,12 +30,11 @@ function help_searchIndex {
     # So, when no value is passed through --filter option use top node
     # as default value for index-search.
     if [[ "$FLAG_FILTER" == '.+' ]];then
-        cli_printMessage "`gettext "Use the \\\`--filter' option to define the search pattern."`" 'AsErrorLine'
-        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+        cli_printMessage "`gettext "Use the \\\"--filter\\\" option to define the search pattern."`" --as-error-line
     fi
 
     # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
     # Execute info command to perform an index-search.
     /usr/bin/info --index-search="$FLAG_FILTER" --file=${MANUAL_BASEFILE}.info.bz2

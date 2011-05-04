@@ -26,7 +26,7 @@
 function help_updateOutputFilePdf {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" 'AsUpdatingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line
 
     # Update plaintext output directory.
     /usr/bin/texi2pdf --quiet \

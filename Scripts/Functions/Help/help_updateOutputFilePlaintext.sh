@@ -26,7 +26,7 @@
 function help_updateOutputFilePlaintext {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" 'AsUpdatingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-updating-line
 
     # Update plaintext output directory.
     /usr/bin/makeinfo --plaintext \

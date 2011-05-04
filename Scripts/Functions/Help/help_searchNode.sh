@@ -26,7 +26,7 @@
 function help_searchNode {
 
     # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" 'AsReadingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
     # Check entry inside documentation structure. If the entry
     # exits use the info reader to open the info file at the

@@ -26,7 +26,7 @@
 function help_updateOutputFiles {
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Remove extension from manual's base file. This way it is
     # possible to reuse the same filename on different types of files.

@@ -26,15 +26,15 @@
 function help_editEntry {
 
     # Print separator line.
-    cli_printMessage '-' 'AsSeparatorLine'
+    cli_printMessage '-' --as-separator-line
 
     # Verify chapter definition inside manual.
     if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
 
         # Print confirmation question.
         cli_printMessage "`gettext "The following documentation chapter will be created:"`"
-        cli_printMessage "$MANUAL_CHAPTER_DIR" "AsResponseLine"
-        cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
+        cli_printMessage "$MANUAL_CHAPTER_DIR" --as-response-line
+        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update manual chapter related files.
         help_updateChaptersFiles
@@ -53,8 +53,8 @@ function help_editEntry {
 
         # Print confirmation question. 
         cli_printMessage "`gettext "The following documentation section will be created:"`"
-        cli_printMessage "$ENTRY" "AsResponseLine"
-        cli_printMessage "`gettext "Do you want to continue?"`" "AsYesOrNoRequestLine"
+        cli_printMessage "$ENTRY" --as-response-line
+        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update chapter section related menu.
         help_updateMenu
@@ -74,7 +74,7 @@ function help_editEntry {
     else
 
         # Print action message.
-        cli_printMessage "$ENTRY" 'AsUpdatingLine'
+        cli_printMessage "$ENTRY" --as-updating-line
 
     fi
 

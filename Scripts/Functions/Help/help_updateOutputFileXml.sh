@@ -26,7 +26,7 @@
 function help_updateOutputFileXml {
 
     # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xml" 'AsUpdatingLine'
+    cli_printMessage "${MANUAL_BASEFILE}.xml" --as-updating-line
 
     # Update xml output format.
     /usr/bin/makeinfo --xml \
