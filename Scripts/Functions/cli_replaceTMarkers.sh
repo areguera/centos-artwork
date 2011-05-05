@@ -38,7 +38,7 @@ function cli_replaceTMarkers {
     LOCATION="$1" 
 
     # Verify file source location.
-    cli_checkFiles "$LOCATION" 'f'
+    cli_checkFiles "$LOCATION"
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
