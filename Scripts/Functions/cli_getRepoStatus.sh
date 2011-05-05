@@ -39,8 +39,7 @@ function cli_getRepoStatus {
     # Verify the file used as source to retrive its status
     # information. We only use regular files or directories inside the
     # working copy.
-    cli_checkFiles "$LOCATION" 'fd'
-    cli_checkFiles "$LOCATION" 'isInWorkingCopy'
+    cli_checkFiles "$LOCATION" --working-copy
 
     # Use subversion `status' command to retrive the first character
     # in the output. Discard standard error output.
