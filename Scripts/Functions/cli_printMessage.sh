@@ -57,7 +57,7 @@ function cli_printMessage {
     eval set -- "$ARGUMENTS"
 
     # Initialize message variable locally using non-option arguments.
-    local MESSAGE=$(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!')
+    local MESSAGE=$(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!')
 
     # Reverse character codification performed when the list of
     # arguments wast built at cli_doParseArgumentsReDef.sh.
