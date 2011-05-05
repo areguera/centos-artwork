@@ -70,6 +70,6 @@ function render_convertGplToHex {
         > $PALETTE_HEX
 
     # Verify HEX palette existence.
-    cli_checkFiles "$PALETTE_PPM" 'f'
+    cli_checkFiles "$PALETTE_PPM" --regular-file
 
 }
