@@ -86,7 +86,7 @@ function cli {
     FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}.sh
 
     # Check function script execution rights.
-    cli_checkFiles $FUNCSCRIPT 'x'
+    cli_checkFiles "${FUNCSCRIPT}" --execution
 
     # Define function configuration directory. The function
     # configuration directory is used to store functionality's
@@ -107,7 +107,7 @@ function cli {
     fi
     
     # Check text editor execution rights.
-    cli_checkFiles $EDITOR 'x'
+    cli_checkFiles $EDITOR --execution
 
     # Go for function initialization. Keep the cli_getFunctions
     # function calling after all variables and arguments definitions.
