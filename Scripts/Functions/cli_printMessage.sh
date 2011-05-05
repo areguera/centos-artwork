@@ -59,6 +59,11 @@ function cli_printMessage {
     # Initialize message variable locally using non-option arguments.
     local MESSAGE=$(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!')
 
+    # Verify message variable, it cannot have an empty value.
+    if [[ $MESSAGE == '' ]];then
+        cli_printMessage "`gettext "The message cannot be empty."`" --as-error-line
+    fi
+
     # Reverse character codification performed when the list of
     # arguments wast built at cli_doParseArgumentsReDef.sh.
     MESSAGE=$(echo $MESSAGE | sed "s/\\\0x27/'/g")
