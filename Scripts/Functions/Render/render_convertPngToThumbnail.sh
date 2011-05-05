@@ -33,7 +33,7 @@ function render_convertPngToThumbnail {
     local SIZES=$(render_getConfigOption "$ACTION" '2-')
 
     # Check base file existence.
-    cli_checkFiles "${FILE}.png" 'f'
+    cli_checkFiles "${FILE}.png"
 
     # Check image sizes and do convertion.
     if [[ "$SIZES" == "" ]];then
