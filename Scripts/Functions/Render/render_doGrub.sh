@@ -64,7 +64,7 @@ function render_doGrub {
     local PALETTE_GPL=${PALETTES}/grub.gpl
 
     # Verify GPL palette existence.
-    cli_checkFiles $PALETTE_GPL 'f'
+    cli_checkFiles $PALETTE_GPL
 
     # Define absolute path to PPM palette. The PPM palette is built
     # from source palette (PALETTE_GPL) and provides the color
