@@ -36,7 +36,7 @@ function tuneup_doSvgMetadata {
     TEMPLATE="${FUNCCONFIG}/svg_metadata.sed"
 
     # Check template file existence.
-    cli_checkFiles $TEMPLATE 'f'
+    cli_checkFiles $TEMPLATE
 
     # Build title from file path.
     NAM=$(basename "$FILE")
@@ -68,7 +68,7 @@ function tuneup_doSvgMetadata {
 
     # Check template instance. We cannot continue if the template
     # instance couldn't be created.
-    cli_checkFiles $INSTANCE 'f'
+    cli_checkFiles $INSTANCE
 
     # Expand translation markers inside template instance.
     cli_replaceTMarkers $INSTANCE
