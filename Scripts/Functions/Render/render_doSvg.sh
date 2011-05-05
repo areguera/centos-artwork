@@ -52,7 +52,7 @@ function render_doSvg {
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Area' \
         | sed -r "s!^Area!`gettext "Area"`: !")"
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Background' \
-        | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \2 (\1)!")" 
+        | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \1 \2!")" 
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
         | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`: !")"
  
