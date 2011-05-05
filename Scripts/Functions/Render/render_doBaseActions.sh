@@ -51,7 +51,7 @@ function render_doBaseActions {
     local -a LASTACTIONS
 
     # Verify default directory where design models are stored in.
-    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}" 'd'
+    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}" --directory
 
     # Define the extension pattern for template files. This is the
     # file extensions that centos-art will look for in order to build
