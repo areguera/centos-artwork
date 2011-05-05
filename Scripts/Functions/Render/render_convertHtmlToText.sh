@@ -26,7 +26,7 @@
 function render_convertHtml2Text {
 
     # Verify existence of HTML file.
-    cli_checkFiles ${FILE}.xhtml 'f'
+    cli_checkFiles ${FILE}.xhtml
 
     local COMMAND=''
     local OPTIONS=''
