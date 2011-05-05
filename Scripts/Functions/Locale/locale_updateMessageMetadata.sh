@@ -41,7 +41,7 @@ function locale_updateMessageMetadata {
     local LANGNAME=$(cli_getLangName ${CURRENTLOCALE})
 
     # Check existence of file before work with it.
-    cli_checkFiles "${FILE}" 'f'
+    cli_checkFiles "${FILE}"
 
     # Define pattern lines. The pattern lines are put inside portable
     # objects through xgettext and xml2po commands .
