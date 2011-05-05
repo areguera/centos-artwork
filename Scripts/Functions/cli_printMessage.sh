@@ -37,32 +37,6 @@ function cli_printMessage {
         cli_printMessage "`gettext "The first argument is required."`" --as-error-line
     fi
 
-    # Initialize message variable using the function first positional
-    # parameter.
-    local MESSAGE="$1"
-
-    # Verify message value. The message value must be non-emtpy.
-    if [[ $MESSAGE == '' ]];then
-        cli_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
-    fi
-
-    # Reverse character codification performed when the list of
-    # arguments wast built at cli_doParseArgumentsReDef.sh.
-    MESSAGE=$(echo $MESSAGE | sed "s/\\\0x27/'/g")
-                
-    # Reduce paths inside output messages. The main purpose for this
-    # is to free horizontal space in output messages.
-    MESSAGE=$(echo "$MESSAGE" \
-        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
-
-    # Remove leading blank spaces from output messages.
-    MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
-
-    # Rotate function positional parameters to start processing
-    # options. The first positional parameter has been already taken
-    # by the message and is no longer used here.
-    shift 1
-
     # Define short options.
     local ARGSS=''
 
@@ -81,6 +55,21 @@ function cli_printMessage {
 
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
+
+    # Initialize message variable locally using non-option arguments.
+    local MESSAGE=$(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!')
+
+    # Reverse character codification performed when the list of
+    # arguments wast built at cli_doParseArgumentsReDef.sh.
+    MESSAGE=$(echo $MESSAGE | sed "s/\\\0x27/'/g")
+                
+    # Reduce paths inside output messages. The main purpose for this
+    # is to free horizontal space in output messages.
+    MESSAGE=$(echo "$MESSAGE" \
+        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
+
+    # Remove leading blank spaces from output messages.
+    MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
 
     # Look for options passed through positional parameters.
     while true; do
