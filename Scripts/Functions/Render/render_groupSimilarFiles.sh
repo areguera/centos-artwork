@@ -50,7 +50,7 @@ function render_groupSimilarFiles {
         TARGET=$(dirname "$FILE")/$(cli_getRepoName "$FORMAT" 'd')
 
         # Check existence of source file.
-        cli_checkFiles $SOURCE 'f'
+        cli_checkFiles $SOURCE
 
         # Check existence of target directory.
         if [[ ! -d $TARGET ]];then
