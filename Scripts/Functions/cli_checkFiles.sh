@@ -1,13 +1,32 @@
 #!/bin/bash
 #
-# cli_checkFiles.sh -- This function standardizes file verifications
-# inside centos-art.sh script.  If file verification fails in anyway,
-# centos-art.sh script complains about it and ends up script
-# execution.
+# cli_checkFiles.sh -- This function standardizes the way file
+# conditional expressions are applied inside centos-art.sh script.
+# Here is where we answer questions like: is the file a regular file
+# or a directory?  or, is it a symbolic link? or even, does it have
+# execution rights, etc.  If the verification fails somehow at any
+# point, an error message is output and centos-art.sh script ends its
+# execution. 
 #
-# Usage:
+# More than one file can be passed to this function, so we want to
+# process them all as specified by the options. Since we are using
+# getopt output it is possible to determine where options and
+# non-option arguments are in the list of arguments  (e.g., options
+# are on the left side of ` -- ' and non-options on the rigth side of
+# ` -- '). Non-options are the files we want to verify and options how
+# we want to verify them.
 #
-# cli_checkFiles FILE [TYPE]
+# Another issue to consider, when more than one file is passed to this
+# function, is that we cannot shift positional parameters as we
+# frequently do whe just one argument is passsed, doing so would
+# annulate the validation for the second and later files passed to the
+# function. So, in order to provide verification to all files passed
+# to the function, the verification loop must be set individual for
+# each option in this function.
+#
+# Assuming no option be passed to the function, a general verification
+# is performed to determine whether or not the file exists without
+# considering the file type just its existence.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -31,94 +50,91 @@
 
 function cli_checkFiles {
 
+    # Define short options.
+    local ARGSS='d,r,h,x,w'
+
+    # Define long options.
+    local ARGSL='directory,regular-file,symbolic-link,execution,working-copy'
+
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope.
+    local ARGUMENTS=''
+
+    # Initialize file variable as local to avoid conflicts outside
+    # this function scope. In the file variable will set the file path
+    # we'r going to verify.
     local FILE=''
-    local FILES="$1"
-    local TYPE="$2"
-    local MESSAGE=''
 
-    # Check number of paramaters passed to cli_checkFiles function. At
-    # least one argument should be passed.
-    if [[ $# -lt 1 ]];then
-        cli_printMessage "`gettext "You need to provide one argument at least."`" --as-error-line
-    fi
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
 
-    for FILE in $FILES;do
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
 
-        # Check value passed as file to cli_checkFiles function. The
-        # file value cannot be empty nor have extrange values.
-        cli_checkPathComponent "$FILE" '--default'
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
 
-        # Perform file verification using FILE and TYPE variables.
-        case $TYPE in
+    # Look for options passed through positional parameters.
+    while true; do
 
-            d | directory )
-                # File exists and is a directory
-                if [[ ! -d $FILE ]];then
-                    MESSAGE="`eval_gettext "The directory \\\"\\\$FILE\\\" does not exist."`"
-                fi
-                ;;
+        case "$1" in
 
-            f | regular-file )
-                # File exists and is a regular file.
-                if [[ ! -f $FILE ]];then
-                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`"
-                fi
-                ;;
-
-            h | symbolic-link )
-                # File exists and is a symbolic link.
-                if [[ ! -h $FILE ]];then
-                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`"
-                fi
-                ;;
-
-            x | execution )
-                # To exist, file should be executable.
-                if [[ ! -x $FILE ]];then
-                    MESSAGE="`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`"
-                fi
-                ;;
-
-            fh )
-                # To exist, file should be a regular file or a symbolic link.
-                if [[ ! -f $FILE ]];then
-                    if [[ ! -h $FILE ]];then
-                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`"
-                    fi
-                fi
-                ;;
-
-            fd )
-                # To exist, file should be a regular file or a directory.
-                if [[ ! -f $FILE ]];then
+            -d|--directory )
+                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
                     if [[ ! -d $FILE ]];then
-                        MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`"
+                        cli_printMessage "`eval_gettext "The directory \\\"\\\$FILE\\\" does not exist."`" --as-error-line
                     fi
-                fi
+                done
+                shift 1
                 ;;
 
-            isInWorkingCopy )
-                # To exist, file should be inside the working copy.
-                if [[ ! $FILE =~ "^/home/centos/artwork/.+$" ]];then
-                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`"
-                fi
+            -f|--regular-file )
+                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                    if [[ ! -f $FILE ]];then
+                        cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`" --as-error-line
+                    fi
+                done
+                shift 1
                 ;;
 
-            * )
-                # File exists.
-                if [[ ! -a $FILE ]];then
-                    MESSAGE="`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`"
-                fi
+            -h|--symbolic-link )
+                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                    if [[ ! -h $FILE ]];then
+                        cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`" --as-error-line
+                    fi
+                done
+                shift 1
+                ;;
+
+            -x|--execution )
+                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                    if [[ ! -x $FILE ]];then
+                        cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`" --as-error-line
+                    fi
+                done
+                shift 1
+                ;;
+
+            -w|--working-copy )
+                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                    if [[ ! $FILE =~ "^${HOME}/artwork/.+$" ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`" --as-error-line
+                    fi
+                done
+                shift 1
+                ;;
+
+            -- )
+                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                    if [[ ! -a $FILE ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`" --as-error-line
+                    fi
+                done
+                shift 1
+                break
+                ;;
 
         esac
-
     done
-
-    # If file verification fails in anyway, output message information
-    # and end up script execution. Otherwise, continue with script
-    # normal flow.
-    if [[ "$MESSAGE" != '' ]];then
-        cli_printMessage "$MESSAGE" --as-error-line
-    fi
 
 }
