@@ -46,7 +46,7 @@ function render_checkSvgAbsref {
     FILE="$1"
 
     # Verify existence of file we need to retrive absolute paths from.
-    cli_checkFiles $FILE 'f'
+    cli_checkFiles "$FILE"
 
     # Retrive absolute paths from file.
     BG_DST_FILES=$(egrep "(sodipodi:absref|xlink:href)=\"${HOME}.+" $FILE \
