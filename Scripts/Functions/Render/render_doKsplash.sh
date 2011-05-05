@@ -36,7 +36,7 @@ function render_doKsplash {
     FONT=$(cli_getRepoTLDir)/Identity/Fonts/DejaVuLGCSans-Bold.ttf
 
     # Check existence of font file.
-    cli_checkFiles "$FONT" 'f'
+    cli_checkFiles "$FONT"
 
     # Define absolute source location of files.
     SRC[0]="${OUTPUT}/splash_top.png"
@@ -46,7 +46,7 @@ function render_doKsplash {
     SRC[4]="$(dirname $TEMPLATE)/Theme.rc"
 
     # Check absolute source location of files.
-    cli_checkFiles "${SRC[@]}" 'f'
+    cli_checkFiles "${SRC[@]}"
 
     # Define relative target location of files.
     DST[0]="${OUTPUT}/splash_top.png"
