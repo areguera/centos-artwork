@@ -80,7 +80,7 @@ function cli_checkFiles {
         case "$1" in
 
             -d|--directory )
-                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                for FILE in $(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!');do
                     if [[ ! -d $FILE ]];then
                         cli_printMessage "`eval_gettext "The directory \\\"\\\$FILE\\\" does not exist."`" --as-error-line
                     fi
@@ -89,7 +89,7 @@ function cli_checkFiles {
                 ;;
 
             -f|--regular-file )
-                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                for FILE in $(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!');do
                     if [[ ! -f $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`" --as-error-line
                     fi
@@ -98,7 +98,7 @@ function cli_checkFiles {
                 ;;
 
             -h|--symbolic-link )
-                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                for FILE in $(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!');do
                     if [[ ! -h $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`" --as-error-line
                     fi
@@ -107,7 +107,7 @@ function cli_checkFiles {
                 ;;
 
             -x|--execution )
-                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                for FILE in $(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!');do
                     if [[ ! -x $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`" --as-error-line
                     fi
@@ -116,7 +116,7 @@ function cli_checkFiles {
                 ;;
 
             -w|--working-copy )
-                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                for FILE in $(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!');do
                     if [[ ! $FILE =~ "^${HOME}/artwork/.+$" ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`" --as-error-line
                     fi
@@ -125,7 +125,7 @@ function cli_checkFiles {
                 ;;
 
             -- )
-                for FILE in $(echo $@ | gawk 'BEGIN{FS=" -- "}{print $2}' );do
+                for FILE in $(echo $@ | sed -r 's!^.*[[:space:]]*--[[:space:]]+!!');do
                     if [[ ! -a $FILE ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`" --as-error-line
                     fi
