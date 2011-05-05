@@ -39,6 +39,7 @@ function cli_commitRepoChanges {
     local PREDICATE=''
     local CHNGTOTAL=0
     local LOCATIONS=''
+    local LOCATION=''
 
     # Define source location the subversion status action will take
     # place on. If arguments are provided use them as srouce location.
@@ -51,8 +52,7 @@ function cli_commitRepoChanges {
 
     # Verify locations existence. It shoud exist as regular file or
     # directory inside the repository working copy.
-    cli_checkFiles "$LOCATIONS" 'fd'
-    cli_checkFiles "$LOCATIONS" 'isInWorkingCopy'
+    cli_checkFiles "$LOCATIONS" --working-copy
 
     # Check working copy.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
