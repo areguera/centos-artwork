@@ -38,7 +38,7 @@ function locale_updateMessageBinary {
     for FILE in $FILES;do
 
         # Verify existence of portable object.
-        cli_checkFiles "${FILE}" 'f'
+        cli_checkFiles "${FILE}"
 
         # Define absolute path to portable object.
         PO=$FILE
