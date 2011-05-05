@@ -43,8 +43,8 @@ function prepare_doPackages {
     local YUM_OPTIONS=''
 
     # Check execution rights of package managers.
-    cli_checkFiles $RPM 'x'
-    cli_checkFiles $YUM 'x'
+    cli_checkFiles $RPM --execution
+    cli_checkFiles $YUM --execution
 
     # Define required packages needed by centos-art.sh script.
     PACKAGES="inkscape ImageMagick netpbm netpbm-progs syslinux gimp
