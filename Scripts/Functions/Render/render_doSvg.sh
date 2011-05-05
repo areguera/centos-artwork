@@ -50,10 +50,10 @@ function render_doSvg {
     # Modify output from inkscape to fit the centos-art.sh script
     # output visual style.
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Area' \
-        | sed -r 's!:! !g' | sed -r "s!^Area!`gettext "Area"`: !")"
+        | sed -r "s!^Area!`gettext "Area"`: !")"
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Background' \
-        | sed -r 's!:! !g' | sed -r "s!^Background!`gettext "Background"`: !")" 
+        | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \2 (\1)!")" 
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
-        | sed -r 's!:! !g' | sed -r "s!^Bitmap saved as!`gettext "Saved as"`: !")"
+        | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`: !")"
  
 }
