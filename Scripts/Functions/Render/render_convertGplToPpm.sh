@@ -81,6 +81,6 @@ function render_convertGplToPpm {
     rm ${FILES[*]}
 
     # Verify PPM palette existence.
-    cli_checkFiles "$PALETTE_PPM" 'f'
+    cli_checkFiles "$PALETTE_PPM"
 
 }
