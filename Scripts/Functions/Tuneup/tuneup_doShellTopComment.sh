@@ -30,7 +30,7 @@ function tuneup_doShellTopComment {
     local TEMPLATE="${FUNCCONFIG}/shell_topcomment.sed"
 
     # Check template file existence.
-    cli_checkFiles $TEMPLATE 'f'
+    cli_checkFiles $TEMPLATE
 
     # Define file name to template instance.
     local INSTANCE=$(cli_getTemporalFile $TEMPLATE)
@@ -40,7 +40,7 @@ function tuneup_doShellTopComment {
 
     # Check template instance. We cannot continue if template instance
     # couldn't be created.
-    cli_checkFiles $INSTANCE 'f'
+    cli_checkFiles $INSTANCE
 
     # Expand translation markers in template instance.
     cli_replaceTMarkers $INSTANCE
