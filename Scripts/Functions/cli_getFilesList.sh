@@ -29,7 +29,7 @@ function cli_getFilesList {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='pattern:,maxdepth:'
+    local ARGSL='pattern:,maxdepth:,type:'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope.
@@ -63,6 +63,11 @@ function cli_getFilesList {
                 shift 2
                 ;;
 
+            --type )
+                OPTIONS="$OPTIONS -type $2"
+                shift 2
+                ;;
+
             -- )
                 shift 1
                 break
@@ -78,7 +83,7 @@ function cli_getFilesList {
 
     # Verify locations. They should exist and be directories inside
     # the working copy of CentOS Artwork Repository..
-    cli_checkFiles $LOCATIONS --working-copy --directory
+    cli_checkFiles ${LOCATIONS} --working-copy --directory
 
     # Redefine pattern as regular expression. When we use regular
     # expressions with find, regular expressions are evaluated against
@@ -98,7 +103,7 @@ function cli_getFilesList {
     # whether the LOCATION is a directory or a file since path
     # expansion coul be introduced to it. The best we can do is
     # verifying exit status and go on.
-    FILES=$(find ${LOCATION} ${OPTIONS} -regextype posix-egrep -regex "${PATTERN}" | sort | uniq)
+    local FILES=$(find ${LOCATIONS} -regextype posix-egrep ${OPTIONS} -regex "${PATTERN}" | sort | uniq)
 
     # Output list of files to process.
     if [[ $? -eq 0 ]];then
