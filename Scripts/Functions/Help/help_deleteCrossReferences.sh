@@ -68,7 +68,7 @@ function help_deleteCrossReferences {
     REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
 
     # Define list of entries to process.
-    local ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')
+    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
 
     # Set action preamble.
     cli_printActionPreamble "$ENTRIES" '' ''
