@@ -34,7 +34,7 @@ function tuneup_doBaseActions {
     EXTENSION='(svg|xhtml|sh)'
 
     # Build list of files to process using action value as reference.
-    FILES=$(cli_getFilesList "${ACTIONVAL}" "${FLAG_FILTER}.*\.${EXTENSION}")
+    FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
 
     # Verify list of files.
     cli_printActionPreamble "$FILES" '' ''
