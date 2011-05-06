@@ -25,36 +25,32 @@
 
 function cli_getFunctions {
 
-    # Define variables as local to avoid conflicts outside.
-    local FUNCNAMCALL=''
-    local FUNCFILES=''
+    # Define source location where function files are placed in.
+    local LOCATION=$1
 
-    # Build action-specifc script file list.
-    FUNCFILES=$(ls ${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}*.sh)
+    # Define pattern used to retrive function names from function
+    # files.
+    local PATTERN="^function[[:space:]]+${FUNCNAM}[[:alnum:]_]*[[:space:]]+{$"
 
+    # Define list of files.
+    local FUNCFILES=$(cli_getFilesList "${LOCATION}" "${FUNCNAM}.*\.sh")
+
+    # Process list of files.
     for FILE in $FUNCFILES;do
 
-        if [[ -x ${FILE} ]];then
+        # Verify file execution rights.
+        cli_checkFiles $FILE --execution
 
-            # Initialize action-specific functions.
-            . $FILE
+        # Initialize file.
+        . $FILE
 
-            # Export action-specific functions to current shell script
-            # environment.
-            FUNCNAMCALL=$(grep '^function ' $FILE | cut -d' ' -f2)
-            export -f $FUNCNAMCALL
-
-        else
-
-            cli_printMessage "`eval_gettext "The \\\"\\\$FILE\\\" has not execution rights."`" --as-error-line
-
-        fi
+        # Export function names inside the file to current shell
+        # script environment.
+        export -f $(egrep "${PATTERN}" ${FILE} | cut -d' ' -f2)
 
     done
 
-    # Execute action passed to centos-art.sh script.
-    if [[ $FUNCNAM != '' ]];then
-        eval $FUNCNAM
-    fi
+    # Execute function.
+    eval $FUNCNAM
 
 }
