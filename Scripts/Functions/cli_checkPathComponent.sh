@@ -1,13 +1,7 @@
 #!/bin/bash
 #
 # cli_checkPathComponent.sh -- This function checks parts/components
-# from repository paths. Generally, the path information is passed to
-# the function's first positional argument and the part/component we
-# want to check is passed to the function's second positional
-# argument. If the second argument is not passed, then the first
-# argument is assumed to be the part/component we want to check, and
-# the action value (ACTIONVAL) variable is used instead as source path
-# information.
+# from repository paths.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -31,60 +25,87 @@
 
 function cli_checkPathComponent {
 
-    local -a PATTERNS
-    local LOCATION=''
-    local OPTION=''
-    local MESSAGE=''
+    # Define short options.
+    local ARGSS=''
 
-    # Define location which we retrive information from.
-    if [[ "$#" -eq 1 ]];then
-        LOCATION="$ACTIONVAL"
-        OPTION="$1"
-    elif [[ "$#" -eq 2 ]];then
-        LOCATION="$1"
-        OPTION="$2"
-    else
-        cli_printMessage "`gettext "Invalid arguments."`" --as-error-line
+    # Define long options.
+    local ARGSL='release,architecture,theme'
+
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope.
+    local ARGUMENTS=''
+
+    # Initialize file variable as local to avoid conflicts outside
+    # this function scope. In the file variable will set the file path
+    # we are going to verify.
+    local FILE=''
+
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
+
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
+
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
+
+    # Define list of locations we want to apply verifications to.
+    local FILES=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
+
+    # Verify list of locations, it is required that one location be
+    # present in the list and also be a valid file.
+    if [[ $FILES == '--' ]];then
+        cli_printMessage "You need to provide one file at least." --as-error-line 
     fi
 
-    # Define patterns.
-    PATTERNS[0]="^.+/$(cli_getPathComponent "${LOCATION}" '--release-pattern')/.*$"
-    PATTERNS[1]=$(cli_getPathComponent "${LOCATION}" '--release-architecture')
-    PATTERNS[2]=$(cli_getPathComponent "${LOCATION}" '--release-theme')
+    # Look for options passed through positional parameters.
+    while true; do
 
-    # Identify which part of the release we want to output.
-    case "$OPTION" in
+        case "$1" in
 
-        '--release' )
-            if [[ $LOCATION =~ ${PATTERN[0]} ]];then
-                MESSAGE="`eval_gettext "The release \\\"\\\$LOCATION\\\" is not valid."`"
-            fi
-            ;;
+            --release )
+                for FILE in $(echo $FILES);do
+                    if [[ $FILE =~ "^.+/$(cli_getPathComponent "${FILE}" '--release-pattern')/.*$" ]];then
+                        cli_printMessage "`eval_gettext "The release \\\"\\\$FILE\\\" is not valid."`" --as-error-line
+                    fi
+                done
+                shift 2
+                break
+                ;;
 
-        '--architecture' )
-            if [[ $LOCATION =~ ${PATTERN[1]} ]];then
-                MESSAGE="`eval_gettext "The architecture \\\"\\\$LOCATION\\\" is not valid."`"
-            fi
-            ;;
+            --architecture )
+                for FILE in $(echo $FILES);do
+                    if [[ $FILE =~ $(cli_getPathComponent "${FILE}" '--release-architecture') ]];then
+                        cli_printMessage "`eval_gettext "The architecture \\\"\\\$FILE\\\" is not valid."`" --as-error-line
+                    fi
+                done
+                shift 2
+                break
+                ;;
 
-        '--theme' )
-            if [[ $LOCATION =~ ${PATTERN[2]} ]];then
-                MESSAGE="`eval_gettext "The theme \\\"\\\$LOCATION\\\" is not valid."`"
-            fi
-            ;;
+            --theme )
+                for FILE in $(echo $FILES);do
+                    if [[ $FILE =~ $(cli_getPathComponent "${FILE}" '--release-theme') ]];then
+                        cli_printMessage "`eval_gettext "The theme \\\"\\\$FILE\\\" is not valid."`" --as-error-line
+                    fi
+                done
+                shift 2
+                break
+                ;;
 
-        '--default' | * )
-            if [[ $LOCATION == '' ]] \
-                || [[ $LOCATION =~ '(\.\.(/)?)' ]] \
-                || [[ ! $LOCATION =~ '^[A-Za-z0-9\.:/_-]+$' ]]; then 
-                MESSAGE="`eval_gettext "The value \\\"\\\$LOCATION\\\" is not valid."`"
-            fi
-            ;;
-    esac
+            -- )
+                for FILE in $(echo $FILES);do
+                    if [[ $FILE == '' ]] \
+                        || [[ $FILE =~ '(\.\.(/)?)' ]] \
+                        || [[ ! $FILE =~ '^[A-Za-z0-9\.:/_-]+$' ]]; then 
+                        cli_printMessage "`eval_gettext "The value \\\"\\\$FILE\\\" is not valid."`" --as-error-line
+                    fi
+                done
+                shift 2
+                break
+                ;;
 
-    # Output message.
-    if [[ $MESSAGE != '' ]];then
-        cli_printMessage "$MESSAGE" --as-error-line
-    fi
+        esac
+    done
 
 }
