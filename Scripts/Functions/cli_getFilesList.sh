@@ -25,47 +25,80 @@
 
 function cli_getFilesList {
 
-    local LOCATION=''
-    local FILTER=''
-    local FILES=''
+    # Define short options.
+    local ARGSS=''
 
-    # If first argument is provided to cli_getFilesList, use it as
-    # default location. Otherwise, if first argument is not provided,
-    # location takes the action value (ACTIONVAL) as default.
-    if [[ "$1" != '' ]];then
-        LOCATION="$1"
-    else
-        LOCATION="$ACTIONVAL"
-    fi
+    # Define long options.
+    local ARGSL='pattern:,maxdepth:'
 
-    # If second argument is provided to cli_getFilesList, use it as
-    # default extension to look for files. Otherwise, if second
-    # argument is not provided, use flag filter instead.
-    if [[ "$2" != '' ]];then
-        FILTER="$2"
-    else
-        FILTER="$FLAG_FILTER"
-    fi
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope.
+    local ARGUMENTS=''
 
-    # Define filter as regular expression pattern. When we use regular
+    # Initialize pattern used to reduce the find output.
+    local PATTERN="$FLAG_FILTER"
+
+    # Initialize options used with find command.
+    local OPTIONS=''
+
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
+
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
+
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
+
+    while true;do
+        case "$1" in
+
+            --pattern )
+                PATTERN="$2"
+                shift 2
+                ;;
+
+            --maxdepth )
+                OPTIONS="$OPTIONS -maxdepth $2"
+                shift 2
+                ;;
+
+            -- )
+                shift 1
+                break
+                ;;
+        esac
+    done
+
+    # At this point all options arguments have been processed and
+    # removed from positional parameters. Only non-option arguments
+    # remain so we use them as source location for find command to
+    # look files for.
+    local LOCATIONS="$@"
+
+    # Verify locations. They should exist and be directories inside
+    # the working copy of CentOS Artwork Repository..
+    cli_checkFiles $LOCATIONS --working-copy --directory
+
+    # Redefine pattern as regular expression. When we use regular
     # expressions with find, regular expressions are evaluated against
     # the whole file path.  This way, when the regular expression is
     # specified, we need to build it in a way that matches the whole
     # path. Doing so, everytime we pass the `--filter' option in the
-    # command-line could be a tedious task. Instead, in the sake of
+    # command-line could be a tedious task.  Instead, in the sake of
     # reducing some typing, we prepare the regular expression here to
     # match the whole path using the regular expression provided by
     # the user as pattern. Do not use LOCATION variable as part of
     # regular expresion so it could be possible to use path expansion.
     # Using path expansion reduce the amount of places to find out
     # things and so the time required to finish the task.
-    FILTER="^.+/${FILTER}$"
+    PATTERN="^.+/${PATTERN}$"
 
     # Define list of files to process. At this point we cannot verify
     # whether the LOCATION is a directory or a file since path
     # expansion coul be introduced to it. The best we can do is
     # verifying exit status and go on.
-    FILES=$(find ${LOCATION} -regextype posix-egrep -regex "${FILTER}" | sort | uniq)
+    FILES=$(find ${LOCATION} ${OPTIONS} -regextype posix-egrep -regex "${PATTERN}" | sort | uniq)
 
     # Output list of files to process.
     if [[ $? -eq 0 ]];then
