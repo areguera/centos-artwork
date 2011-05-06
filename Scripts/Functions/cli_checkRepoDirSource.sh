@@ -25,9 +25,9 @@
 
 function cli_checkRepoDirSource {
                 
-    # Check action value to be sure strage characters are kept far
-    # from path provided.
-    cli_checkPathComponent "$ACTIONVAL" '--default'
+    # Check action value to be sure strange characters are kept far
+    # away from path provided.
+    cli_checkPathComponent $ACTIONVAL
 
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing
