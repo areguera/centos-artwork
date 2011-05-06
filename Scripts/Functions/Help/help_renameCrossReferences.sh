@@ -47,7 +47,7 @@ function help_renameCrossReferences {
             -e "s/(chapter-intro\.texi|\.texi)$//")
 
     # Define list of entries to process.
-    ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')
+    ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
 
     # Set action preamble.
     cli_printActionPreamble "$ENTRIES" '' ''
