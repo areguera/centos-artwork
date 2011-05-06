@@ -42,8 +42,8 @@ function locale_updateMessageXml {
     local EXTENSION='(svg|xml|xhtml|docbook)'
 
     # Build list of files to process.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.${EXTENSION}")
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Models/.+$" ]];then
+        FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
     else
         cli_printMessage "`gettext "The path provided cannot be processed."`" --as-error-line
     fi
