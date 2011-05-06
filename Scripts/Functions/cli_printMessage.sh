@@ -57,24 +57,26 @@ function cli_printMessage {
     eval set -- "$ARGUMENTS"
 
     # Initialize message variable locally using non-option arguments.
-    local MESSAGE=$(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!')
+    local MESSAGE=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
 
     # Verify message variable, it cannot have an empty value.
-    if [[ $MESSAGE == '' ]];then
+    if [[ $MESSAGE == '--' ]];then
         cli_printMessage "`gettext "The message cannot be empty."`" --as-error-line
     fi
 
-    # Reverse character codification performed when the list of
-    # arguments wast built at cli_doParseArgumentsReDef.sh.
-    MESSAGE=$(echo $MESSAGE | sed "s/\\\0x27/'/g")
+    # Reverse the codification performed on characters that may affect
+    # parsing options and non-option arguments. This codification is
+    # realized before building the ARGUMENTS variable, at
+    # cli_doParseArgumentsReDef, and we need to reverse it back here
+    # in order to show the correct character when the message be
+    # printed out on the screen.
+    MESSAGE=$(echo $MESSAGE | sed -e "s/\\\0x27/'/g")
                 
-    # Reduce paths inside output messages. The main purpose for this
-    # is to free horizontal space in output messages.
-    MESSAGE=$(echo "$MESSAGE" \
-        | sed -r "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g")
-
-    # Remove leading blank spaces from output messages.
-    MESSAGE=$(echo "$MESSAGE" | sed -r 's!^[[:space:]]+!!')
+    # Reduce paths and leading spaces from output messages. The main
+    # purpose for this is to free horizontal space on output messages.
+    MESSAGE=$(echo "$MESSAGE" | sed -r \
+        -e "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g" \
+        -e 's!^[[:space:]]+!!')
 
     # Look for options passed through positional parameters.
     while true; do
@@ -206,20 +208,16 @@ function cli_printMessage {
 
             --as-error-line )
                 # This option is used to print error messsages.
-                echo "${CLI_PROGRAM} (${FUNCNAME[1]}): ${MESSAGE}" > /dev/stderr
+                echo "${CLI_PROGRAM} ($(caller 1 | gawk '{ print $2 " " $1 }')): ${MESSAGE}"
                 cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
                 shift 2
                 break
                 ;;
 
             --as-toknowmore-line )
-                # This option receives the output of bash's caller
-                # built-in as message value and produces the
-                # documentation entry from it.
-                MESSAGE="trunk/Scripts/Functions/$MESSAGE"
                 cli_printMessage '-' --as-separator-line
                 cli_printMessage "`gettext "To know more, run the following command"`:"
-                cli_printMessage "centos-art help --read $MESSAGE"
+                cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE"
                 cli_printMessage '-' --as-separator-line
                 exit # <-- ATTENTION: Do not remove this line. We use this
                      #                option as convenction to end script
