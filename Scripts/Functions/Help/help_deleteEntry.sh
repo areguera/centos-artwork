@@ -43,7 +43,7 @@ function help_deleteEntry {
     if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]];then
 
         # Add dependent files to list of entries. 
-        ENTRIES="${ENTRIES} $(cli_getFilesList "${ENTRY_DIR}/${ENTRY_FILE}" ".*\.texi")"
+        ENTRIES="${ENTRIES} $(cli_getFilesList ${ENTRY_DIR}/${ENTRY_FILE} --pattern=".*\.texi")"
 
         # Add dependent directories to list of entries. Be aware of
         # nested directories.
