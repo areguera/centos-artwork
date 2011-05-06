@@ -33,7 +33,7 @@ function cli_getFunctions {
     local PATTERN="^function[[:space:]]+${FUNCNAM}[[:alnum:]_]*[[:space:]]+{$"
 
     # Define list of files.
-    local FUNCFILES=$(cli_getFilesList "${LOCATION}" "${FUNCNAM}.*\.sh")
+    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${FUNCNAM}.*\.sh" --maxdepth="1")
 
     # Process list of files.
     for FILE in $FUNCFILES;do
