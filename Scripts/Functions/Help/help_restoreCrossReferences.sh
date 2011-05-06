@@ -64,7 +64,7 @@ function help_restoreCrossReferences {
     REPLACE[1]='\1'
 
     # Define list of entries to process.
-    local ENTRIES=$(cli_getFilesList "${MANUAL_BASEDIR}" '.*\.texi')
+    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
 
     # Set action preamble.
     cli_printActionPreamble "$ENTRIES" '' ''
