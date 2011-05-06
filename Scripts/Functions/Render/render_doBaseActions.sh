@@ -72,7 +72,7 @@ function render_doBaseActions {
     # when centos-art.sh is leaving a directory structure and entering
     # into another. This information is required in order for
     # centos-art.sh to know when to apply last-rendition actions.
-    for FILE in $(cli_getFilesList "${TEMPLATE}" "${FLAG_FILTER}.*\.${EXTENSION}");do
+    for FILE in $(cli_getFilesList ${TEMPLATE} --pattern="${FLAG_FILTER}.*\.${EXTENSION}");do
         FILES[((++${#FILES[*]}))]=$FILE
     done
 
