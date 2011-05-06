@@ -34,9 +34,9 @@ function locale_editMessages {
     # Define list of locale files to process using action value as
     # reference.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" ".*/messages\.po")
+        FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/messages\.po")
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
-        FILES=$(cli_getFilesList "${WORKDIR}" ".*/${TEXTDOMAIN}\.po")
+        FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
     else
         cli_printMessage "`gettext "The path provided do not support localization."`" --as-error-line
     fi
