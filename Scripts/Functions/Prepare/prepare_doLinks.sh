@@ -54,13 +54,13 @@ function prepare_doLinks {
     USERFILES="${HOME}/bin/$CLI_PROGRAM"
 
     # Define link relation for fonts.
-    for FONT in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Fonts" 'denmark\.ttf');do
+    for FONT in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Fonts --pattern='denmark\.ttf');do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.fonts/$(basename $FONT)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$FONT
     done
 
     # Define link relation for common palettes.
-    for PALETTE in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Palettes" ".+\.gpl");do
+    for PALETTE in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Palettes --pattern=".+\.gpl");do
         SUFFIX="${GIMP_USERDIR}/palettes/$(prepare_doLinksSuffixes $PALETTE)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PALETTE)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
@@ -70,14 +70,14 @@ function prepare_doLinks {
     done
 
     # Define link relation for common brushes.
-    for BRUSH in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Brushes" ".+\.(gbr|gih)");do
+    for BRUSH in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Brushes --pattern=".+\.(gbr|gih)");do
         SUFFIX="${GIMP_USERDIR}/brushes/$(prepare_doLinksSuffixes $BRUSH)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $BRUSH)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
     done
 
     # Define link relation for common patterns.
-    for PATTERN in $(cli_getFilesList "${HOME}/artwork/trunk/Identity/Patterns" ".+\.png");do
+    for PATTERN in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Patterns --pattern=".+\.png");do
         SUFFIX="${GIMP_USERDIR}/patterns/$(prepare_doLinksSuffixes $PATTERN)"
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${SUFFIX}${NAME}${VERS}$(basename $PATTERN)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
@@ -95,12 +95,12 @@ function prepare_doLinks {
     # common patterns, common palettes and common brushes using
     # symbolic links from the repository.
     USERFILES=$(echo "$USERFILES";
-        cli_getFilesList "${HOME}/bin" '.+\.sh';
-        cli_getFilesList "${HOME}/.fonts" '.+\.ttf';
-        cli_getFilesList "${GIMP_USERDIR}/brushes" '.+\.(gbr|gih)';
-        cli_getFilesList "${GIMP_USERDIR}/patterns" '.+\.(pat|png|jpg|bmp)';
-        cli_getFilesList "${GIMP_USERDIR}/palettes" '.+\.gpl';
-        cli_getFilesList "${INKS_USERDIR}/palettes" '.+\.gpl';)
+        cli_getFilesList ${HOME}/bin --pattern='.+\.sh';
+        cli_getFilesList ${HOME}/.fonts --pattern='.+\.ttf';
+        cli_getFilesList ${GIMP_USERDIR}/brushes --pattern='.+\.(gbr|gih)';
+        cli_getFilesList ${GIMP_USERDIR}/patterns --pattern='.+\.(pat|png|jpg|bmp)';
+        cli_getFilesList ${GIMP_USERDIR}/palettes --pattern='.+\.gpl';
+        cli_getFilesList ${INKS_USERDIR}/palettes --pattern='.+\.gpl';)
 
     # Remove files installed inside user-specific directories.
     if [[ "$USERFILES" != '' ]];then
