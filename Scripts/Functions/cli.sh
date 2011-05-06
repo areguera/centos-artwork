@@ -111,6 +111,6 @@ function cli {
 
     # Go for function initialization. Keep the cli_getFunctions
     # function calling after all variables and arguments definitions.
-    cli_getFunctions
+    cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}"
 
 }
