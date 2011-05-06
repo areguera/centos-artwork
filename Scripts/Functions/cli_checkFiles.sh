@@ -74,13 +74,21 @@ function cli_checkFiles {
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
 
+    # Define list of files we want to apply verifications to.
+    local FILES=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
+
+    # Verify files in the list. It is required at least one.
+    if [[ $FILES == '--' ]];then
+        cli_printMessage "You need to provide one file at least." --as-error-line 
+    fi
+
     # Look for options passed through positional parameters.
     while true; do
 
         case "$1" in
 
             -d|--directory )
-                for FILE in $(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!');do
+                for FILE in $(echo $FILES);do
                     if [[ ! -d $FILE ]];then
                         cli_printMessage "`eval_gettext "The directory \\\"\\\$FILE\\\" does not exist."`" --as-error-line
                     fi
@@ -89,7 +97,7 @@ function cli_checkFiles {
                 ;;
 
             -f|--regular-file )
-                for FILE in $(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!');do
+                for FILE in $(echo $FILES);do
                     if [[ ! -f $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`" --as-error-line
                     fi
@@ -98,7 +106,7 @@ function cli_checkFiles {
                 ;;
 
             -h|--symbolic-link )
-                for FILE in $(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!');do
+                for FILE in $(echo $FILES);do
                     if [[ ! -h $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`" --as-error-line
                     fi
@@ -107,7 +115,7 @@ function cli_checkFiles {
                 ;;
 
             -x|--execution )
-                for FILE in $(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!');do
+                for FILE in $(echo $FILES);do
                     if [[ ! -x $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`" --as-error-line
                     fi
@@ -116,7 +124,7 @@ function cli_checkFiles {
                 ;;
 
             -w|--working-copy )
-                for FILE in $(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!');do
+                for FILE in $(echo $FILES);do
                     if [[ ! $FILE =~ "^${HOME}/artwork/.+$" ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`" --as-error-line
                     fi
@@ -125,7 +133,7 @@ function cli_checkFiles {
                 ;;
 
             -- )
-                for FILE in $(echo $@ | sed -r 's!^(.*[[:space:]]*--[[:space:]]+)?!!');do
+                for FILE in $(echo $FILES);do
                     if [[ ! -a $FILE ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`" --as-error-line
                     fi
