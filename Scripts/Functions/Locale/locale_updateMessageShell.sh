@@ -41,7 +41,7 @@ function locale_updateMessageShell {
 
     # Build list of files to process.
     if [[ $ACTIONVAL =~ "^${CLI_BASEDIR}" ]];then
-        FILES=$(cli_getFilesList "$ACTIONVAL" "${FLAG_FILTER}.*\.sh")
+        FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.sh")
     else
         cli_printMessage "`gettext "The path provided cannot be processed."`" --as-error-line
     fi
