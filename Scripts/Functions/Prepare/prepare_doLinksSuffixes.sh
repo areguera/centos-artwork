@@ -30,7 +30,7 @@ function prepare_doLinksSuffixes {
     local SUFFIX='centos-'
 
     if [[ "$FILE" =~ "$(cli_getPathComponent --theme-pattern)" ]];then
-        SUFFIX="${SUFFIX}$(cli_getRepoName "$(cli_getPathComponent $FILE --theme-name)" 'f')-"
+        SUFFIX="${SUFFIX}$(cli_getRepoName $(cli_getPathComponent $FILE --theme-name) -f)-"
         SUFFIX="${SUFFIX}$(cli_getPathComponent $FILE --theme-release)-"
     fi
 
