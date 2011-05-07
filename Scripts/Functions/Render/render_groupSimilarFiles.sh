@@ -47,7 +47,7 @@ function render_groupSimilarFiles {
 
         # Define target directory where source file will be moved
         # into.
-        TARGET=$(dirname "$FILE")/$(cli_getRepoName "$FORMAT" 'd')
+        TARGET=$(dirname "$FILE")/$(cli_getRepoName $FORMAT -d)
 
         # Check existence of source file.
         cli_checkFiles $SOURCE
@@ -58,7 +58,7 @@ function render_groupSimilarFiles {
         fi
 
         # Redifine file path to add file and its type.
-        TARGET=${TARGET}/$(cli_getRepoName "$FILE" 'f').${FORMAT}
+        TARGET=${TARGET}/$(cli_getRepoName $FILE -f).${FORMAT}
 
         # Move file into its final location.
         cli_printMessage "$TARGET" --as-movedto-line
