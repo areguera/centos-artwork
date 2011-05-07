@@ -25,44 +25,46 @@
 
 function render_doThemeActions {
 
-    local -a MOTIFS
-    local MOTIF=''
+    local -a DIRS
+    local DIR=''
     local COUNT=0
     local NEXT_DIR=''
 
-    # Define patterns using the design model specified by
-    # FLAG_THEME_MODEL as reference to know what organization to
-    # create inside artistic motifs. When rendering, this condition
+    # Define patterns to know what organization to create inside
+    # artistic motifs. Use the design model specified by
+    # FLAG_THEME_MODEL as reference.  When rendering, this condition
     # let the artistic motif to be produced using the same
     # organization of its design model. The intersting thing of this
     # configuration is that you can have more than one design models
     # and each one can has its own unique organization.
-    local MODELS_PATTERN=$(find \
+    local PATTERN=$(cli_getFilesList \
         $(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}/ \
-        -type d | egrep -v '\.svn' | sed -r '/^$/d' | sed -r \
+        --type="d" | egrep -v '\.svn' | sed -r '/^[[:space:]]*$/d' | sed -r \
         "s!^.*/${FLAG_THEME_MODEL}/!!" | tr "\n" '|' \
         | sed -e 's!^|!!' -e 's!|$!!')
 
-    # Define list of available artistic motifs include their names and
-    # versions directory levels. To build this list use the theme
-    # design model directory structure as renference. Also, build the
-    # list using the most specific renderable directories (e.g., those
-    # whose have a longer path) to avoid unnecessary rendition loops.
-    for MOTIF in $(find $(cli_getRepoTLDir)/Identity/Images/Themes \
-        -regextype posix-egrep -type d -regex ".+/(${MODELS_PATTERN})$" \
-        | sort -r | grep "$ACTIONVAL");do
-        if [[ $MOTIF != '' ]];then
-            MOTIFS[((++${#MOTIFS[*]}))]=${MOTIF}
-        fi
+    # Define list of renderable directory structures inside the
+    # artistic motif. As reference, to build this list, use the theme
+    # design model directory structure. Later, reverse the list and
+    # filter it using the action value as reference to control what
+    # renderable directory structure to produce.
+    local RENDERABLE_DIRS=$(\
+        cli_getFilesList $(cli_getRepoTLDir)/Identity/Images/Themes \
+        --pattern=".+/($PATTERN)$" --type="d" | sort -r \
+        | grep "$ACTIONVAL")
+
+    # Rebuild the list of renderable directory structures using an
+    # array variable. This let us to predict what directory is one
+    # step forward or backward from the current directory structure.
+    for DIR in $RENDERABLE_DIRS;do
+        DIRS[((++${#DIRS[*]}))]=${DIR}
     done
 
-    # Redefine counter using the grater value to perform an inverted
+    # Redefine counter using the greater value to perform an inverted
     # interpretation of the values and so, to process them using the
     # same order.
-    if [[ ${#MOTIFS[*]} -gt 0 ]];then
-        COUNT=${#MOTIFS[*]}
-    else
-        COUNT=0
+    if [[ ${#DIRS[*]} -gt 0 ]];then
+        COUNT=${#DIRS[*]}
     fi
 
     until [[ $COUNT -eq 0 ]];do
@@ -72,15 +74,15 @@ function render_doThemeActions {
 
         # Redefine action value to refer theme specific renderable
         # directory.
-        ACTIONVAL=${MOTIFS[$COUNT]}
+        ACTIONVAL=${DIRS[$COUNT]}
 
         # Define what is the next directory in the list, so we could
         # verify whether to render or not the current theme specific
         # renderable directory.
-        if [[ $COUNT -eq 0 ]];then
-            NEXT_DIR=''
+        if [[ $COUNT -gt 0 ]];then
+            NEXT_DIR=$(dirname ${DIRS[(($COUNT - 1))]})
         else
-            NEXT_DIR=$(dirname ${MOTIFS[(($COUNT - 1))]})
+            NEXT_DIR=''
         fi
 
         # Verify whether to render or not the current theme renderable
