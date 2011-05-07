@@ -44,11 +44,11 @@ function render_doSvgLastActions {
     # repository and save you the time of writing long option
     # combinations each time you need to produce images inside the
     # repository.
-    if [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Gdm/.+\.svg$" ]];then
+    if [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Gdm/.+\.svg$" ]];then
         LASTACTIONS[((++${#LASTACTIONS[*]}))]='doDm:Gdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Kdm/.+\.svg$" ]];then
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Kdm/.+\.svg$" ]];then
         LASTACTIONS[((++${#LASTACTIONS[*]}))]='doDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Ksplash/.+\.svg$" ]];then
         LASTACTIONS[((++${#LASTACTIONS[*]}))]='doKsplash'
     fi
 
