@@ -44,7 +44,7 @@ function cli_getRepoParallelDirs {
     TDIR=$(cli_getRepoTLDir ${BOND})
 
     # Define parallel directory base structures.
-    PDIRS[0]=Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir "${BOND}" '--relative')
+    PDIRS[0]=Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir ${BOND} --relative)
     PDIRS[1]=Scripts/Bash/Functions/Render/Config
     PDIRS[2]=Locales
 
