@@ -67,7 +67,7 @@ function render_doDm {
     # as display manager configuration option is converted to
     # uppercase in order to match either Gdm or Kdm design model
     # directory structures.
-    DM=$(cli_getRepoName "$DM" 'd')
+    DM=$(cli_getRepoName $DM -d)
 
     # Get screen resolutions passed from render.conf.sh pre-rendition
     # configuration script.
