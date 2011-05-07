@@ -72,7 +72,7 @@ function render_getDirTemplate {
         TEMPLATE=${TEMPLATE}/Tpl
     else
         TEMPLATE=$(echo "$TEMPLATE" | sed -r \
-            -e "s!/Themes/$(cli_getPathComponent "$ACTIONVAL" "--theme")!/Themes/${FLAG_THEME_MODEL}!" \
+            -e "s!/Themes/$(cli_getPathComponent $ACTIONVAL --theme)!/Themes/${FLAG_THEME_MODEL}!" \
             -e "s!/Images!/Models!")
     fi
 
