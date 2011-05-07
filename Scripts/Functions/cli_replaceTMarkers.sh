@@ -58,23 +58,23 @@ function cli_replaceTMarkers {
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$OUTPUT" '--theme')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --theme)"
     SRC[((++${#SRC[*]}))]='=THEMENAME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$OUTPUT" '--theme-name')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --theme-name)"
     SRC[((++${#SRC[*]}))]='=THEMERELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$OUTPUT" '--theme-release')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --theme-release)"
 
     # Define release-specific translation markers.
     SRC[((++${#SRC[*]}))]='=RELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_RELEASEVER --release)"
     SRC[((++${#SRC[*]}))]='=MAJOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-major')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_RELEASEVER --release-major)"
     SRC[((++${#SRC[*]}))]='=MINOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_RELEASEVER" '--release-minor')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_RELEASEVER --release-minor)"
 
     # Define architectures translation markers.
     SRC[((++${#SRC[*]}))]='=ARCH='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent "$FLAG_BASEARCH" '--architecture')"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_BASEARCH --architecture)"
 
     # Define url translation markers.
     SRC[((++${#SRC[*]}))]='=URL='
