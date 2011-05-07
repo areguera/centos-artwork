@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # cli_getRepoTLDir.sh -- This function returns the repository top
-# level absolute path. The repository top level absolute path may be
-# /home/centos/artwork/trunk, /home/centos/artwork/branches, or
-# /home/centos/artwork/tags.
+# level absolute path. The repository top level absolute path can be
+# either ${HOME}/artwork/trunk, ${HOME}/artwork/branches, or
+# ${HOME}/artwork/tags.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -27,36 +27,71 @@
 
 function cli_getRepoTLDir {
 
+    # Define short options.
+    local ARGSS='r'
+
+    # Define long options.
+    local ARGSL='relative'
+
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope.
+    local ARGUMENTS=''
+
+    # Initialize path pattern and replacement.
     local PATTERN=''
     local REPLACE=''
-    local LOCATION=''
-    
-    # Define location. If first argument is provided use it as default
-    # location.  Otherwise, if first argument is not provided,
-    # location takes the action value (ACTIONVAL) as default.
-    if [[ "$1" != '' ]];then
-        LOCATION="$1"
-    else
-        LOCATION="$ACTIONVAL"
+
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
+
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
+
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
+
+    # Define the location we want to apply verifications to.
+    local LOCATION=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
+
+    # Verify location passed as non-option argument. If no location is
+    # passed as non-option argument to this function, then use action
+    # value as default location.
+    if [[ $LOCATION == '--' ]];then
+        LOCATION=$ACTIONVAL
     fi
 
-    # Verify location.
-    if [[ $LOCATION =~ "^${HOME}/artwork/(trunk|branches|tags)/.+$" ]];then
-        case "$2" in
-            -r|--relative )
-                PATTERN="^${HOME}/artwork/(trunk|branches|tags)/.+$"
-                REPLACE='\1'
-                ;;
-            -a|--absolute|* )
-                PATTERN="^(${HOME}/artwork/(trunk|branches|tags))/.+$"
-                REPLACE='\1'
-                ;;
-        esac
-    else
+    # Verify location where the working copy should be stored in the
+    # workstations. Whatever the location provided be, it should refer
+    # to one of the top level directories inside the working copy of
+    # CentOS Artwork Repository which, in turn, should be sotred in
+    # the `artwork' directory immediatly under your home directory.
+    if [[ ! $LOCATION =~ "^${HOME}/artwork/(trunk|branches|tags)/.+$" ]];then
         cli_printMessage "`eval_gettext "The location \\\"\\\$LOCATION\\\" is not valid."`" --as-error-line
     fi
 
-    # Print location.
+    # Look for options passed through positional parameters.
+    while true;do
+
+        case "$1" in
+    
+            -r|--relative )
+                PATTERN="^${HOME}/artwork/(trunk|branches|tags)/.+$"
+                REPLACE='\1'
+                shift 2
+                break
+                ;;
+
+            -- )
+                PATTERN="^(${HOME}/artwork/(trunk|branches|tags))/.+$"
+                REPLACE='\1'
+                shift 1
+                break
+                ;;
+        esac
+
+    done
+
+    # Print out top level directory.
     echo $LOCATION | sed -r "s!${PATTERN}!${REPLACE}!g"
 
 }
