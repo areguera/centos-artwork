@@ -100,7 +100,7 @@ function render_getOptions {
                 ;;
 
             --theme-model )
-                FLAG_THEME_MODEL=$(cli_getRepoName "$2" 'd')
+                FLAG_THEME_MODEL=$(cli_getRepoName $2 -d)
                 shift 2
                 ;;
 
