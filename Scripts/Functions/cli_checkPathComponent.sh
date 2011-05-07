@@ -65,7 +65,7 @@ function cli_checkPathComponent {
 
             --release )
                 for FILE in $(echo $FILES);do
-                    if [[ $FILE =~ "^.+/$(cli_getPathComponent "${FILE}" '--release-pattern')/.*$" ]];then
+                    if [[ ! $FILE =~ "^.+/$(cli_getPathComponent --release-pattern)/.*$" ]];then
                         cli_printMessage "`eval_gettext "The release \\\"\\\$FILE\\\" is not valid."`" --as-error-line
                     fi
                 done
@@ -75,7 +75,7 @@ function cli_checkPathComponent {
 
             --architecture )
                 for FILE in $(echo $FILES);do
-                    if [[ $FILE =~ $(cli_getPathComponent "${FILE}" '--release-architecture') ]];then
+                    if [[ ! $FILE =~ $(cli_getPathComponent --architecture-pattern) ]];then
                         cli_printMessage "`eval_gettext "The architecture \\\"\\\$FILE\\\" is not valid."`" --as-error-line
                     fi
                 done
@@ -85,7 +85,7 @@ function cli_checkPathComponent {
 
             --theme )
                 for FILE in $(echo $FILES);do
-                    if [[ $FILE =~ $(cli_getPathComponent "${FILE}" '--release-theme') ]];then
+                    if [[ ! $FILE =~ $(cli_getPathComponent --theme-pattern) ]];then
                         cli_printMessage "`eval_gettext "The theme \\\"\\\$FILE\\\" is not valid."`" --as-error-line
                     fi
                 done
