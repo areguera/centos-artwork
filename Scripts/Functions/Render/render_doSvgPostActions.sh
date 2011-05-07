@@ -46,13 +46,13 @@ function render_doSvgPostActions {
     elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Syslinux/.+\.svg$" ]];then
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux:-floyd'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Grub/.+\.svg$" ]];then
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:-floyd'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent '--release-pattern')/Ksplash/.+\.svg$" ]];then
+    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Ksplash/.+\.svg$" ]];then
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doKsplash'
     fi
 
