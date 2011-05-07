@@ -25,7 +25,7 @@
 function brandAnaconda {
 
    # Define file's source and target.
-   local ARTDIR=~/artwork/trunk/Identity/Themes/$(cli_getPathComponent '--theme')/Distro/Anaconda
+   local ARTDIR=~/artwork/trunk/Identity/Themes/$(cli_getPathComponent $ACTIONVAL --theme)/Distro/Anaconda
    local PIXMAP=/usr/share/anaconda/pixmaps
    local SOURCE=''
    local TARGET=''
