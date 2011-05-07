@@ -85,14 +85,14 @@ function render_doDm {
     SRC[2]=${OUTPUT}/screenshot.png
     SRC[3]=$(dirname $TEMPLATE)/GdmGreeterTheme.xml
     SRC[4]=$(dirname $TEMPLATE)/GdmGreeterTheme.desktop
-    SRC[5]=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent '--theme')/Backgrounds/Img/Png
+    SRC[5]=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --theme)/Backgrounds/Img/Png
     SRC[6]=$(dirname $TEMPLATE)/icon-language.png
     SRC[7]=$(dirname $TEMPLATE)/icon-reboot.png
     SRC[8]=$(dirname $TEMPLATE)/icon-session.png
     SRC[9]=$(dirname $TEMPLATE)/icon-shutdown.png
 
     # Define name used as temporal holder to build tar.gz file. 
-    TGZ=$(cli_getPathComponent '--theme-name')
+    TGZ=$(cli_getPathComponent $ACTIONVAL --theme-name)
 
     # Define target files using relative paths.
     DST[0]=${TGZ}/centos-symbol.png
