@@ -46,7 +46,7 @@ function render_doBrands {
     # model have the same name, this is intentional in order to keep
     # images and design models related and organized inside their own
     # directory structures.
-    local DIRNAME=$(cli_getRepoName "$FILE" 'd')/$(cli_getRepoName "$FILE" 'fd')
+    local DIRNAME=$(cli_getRepoName $FILE -d)/$(cli_getRepoName $FILE -fd)
 
     # Check directory where final brand images will be stored.
     if [[ ! -d $DIRNAME ]];then
