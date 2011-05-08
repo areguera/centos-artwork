@@ -81,9 +81,8 @@ function cli_getFilesList {
     # look files for.
     local LOCATIONS="$@"
 
-    # Verify locations. They should exist and be directories inside
-    # the working copy of CentOS Artwork Repository..
-    cli_checkFiles ${LOCATIONS} --working-copy --directory
+    # Verify locations.
+    cli_checkFiles ${LOCATIONS}
 
     # Redefine pattern as regular expression. When we use regular
     # expressions with find, regular expressions are evaluated against
