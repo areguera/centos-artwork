@@ -173,8 +173,10 @@ function render_doBaseActions {
             fi
 
         else
+
             # Create non-translated instance form design model.
             /bin/cp ${TEMPLATE} ${INSTANCE}    
+
         fi
 
         # Apply translation markers replacements to template instance.
