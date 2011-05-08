@@ -49,9 +49,6 @@ function help_renameCrossReferences {
     # Define list of entries to process.
     ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
 
-    # Set action preamble.
-    cli_printActionPreamble "$ENTRIES" '' ''
-
     # Update node-related cross-references. The node-related cross
     # reference definition, long ones specially, could require more
     # than one line to be set. By default, GNU sed does not matches 
