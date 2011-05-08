@@ -76,9 +76,6 @@ function render_doBaseActions {
         FILES[((++${#FILES[*]}))]=$FILE
     done
 
-    # Set action preamble.
-    cli_printActionPreamble "${FILES[*]}" '' ''
-
     # Start processing the base rendition list of FILES. Fun part
     # approching :-).
     while [[ $COUNT -lt ${#FILES[*]} ]];do
