@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-04 10:59-0400\n"
+"POT-Creation-Date: 2011-05-08 16:45-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -25,13 +25,13 @@ msgstr "Solo dos argumentos son aceptados."
 msgid "Two arguments are required."
 msgstr "Dos arguments son obligatorios."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:187
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:184
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:90
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:106
 #: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:65
 msgid "A valid action is required."
-msgstr "Es necesario que la acción sea válida."
+msgstr "La acción suministrada no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:67
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:68
@@ -119,7 +119,8 @@ msgstr "El camino suministrado no soporta la producción."
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:48
 #, sh-format
 msgid "Reducing image to \"$COLOR_NUMBER\" colors is not supported."
-msgstr "La reducción a \"$COLOR_NUMBER\" colores en la imagen no está soportada."
+msgstr ""
+"La reducción a \"$COLOR_NUMBER\" colores en la imagen no está soportada."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToHex.sh:58
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_convertGplToPpm.sh:56
@@ -136,12 +137,12 @@ msgstr "La cadena \"$COLOR\" no es un código de color válido."
 msgid "No way to convert from HTML to plain-text found."
 msgstr "No se encontró una forma de convertir HTML a texto."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:110
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:120
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:107
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:117
 msgid "None"
 msgstr "No hay"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:222
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:221
 msgid "The template file you try to render is not supported yet."
 msgstr "El fichero plantilla que intenta procesar no está soportado aún."
 
@@ -173,7 +174,7 @@ msgid "Background"
 msgstr "Fondo"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doSvg.sh:57
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:160
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:150
 msgid "Saved as"
 msgstr "Guardado como"
 
@@ -197,66 +198,55 @@ msgstr "La arquitectura suministrada no está soportada."
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:42
-msgid "You need to provide one argument at least."
-msgstr "Necesita suministrar al menos un argumento."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:57
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:93
 #, sh-format
 msgid "The directory \"$FILE\" does not exist."
 msgstr "El directorio \"$FILE\" no existe."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:102
 #, sh-format
 msgid "The file \"$FILE\" is not a regular file."
 msgstr "El fichero \"$FILE\" no es un fichero regular."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:71
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:111
 #, sh-format
 msgid "The file \"$FILE\" is not a symbolic link."
 msgstr "El fichero \"$FILE\" no es un enlace simbólico."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:120
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr "El fichero \"$FILE\" no es ejecutable."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:86
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:95
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:110
-#, sh-format
-msgid "The path \"$FILE\" does not exist."
-msgstr "El camino \"$FILE\" no existe."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:103
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:129
 #, sh-format
 msgid "The path \"$FILE\" does not exist inside the working copy."
 msgstr "El camino \"$FILE\" no existe dentro de la copia de trabajo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:47
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getPathComponent.sh:46
-msgid "Invalid arguments."
-msgstr "Los argumentos no son válidos."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:60
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:138
 #, sh-format
-msgid "The release `$LOCATION' is not valid."
-msgstr "La entrega `$LOCATION' no es válida."
+msgid "The path \"$FILE\" does not exist."
+msgstr "El camino \"$FILE\" no existe."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:69
 #, sh-format
-msgid "The architecture `$LOCATION' is not valid."
-msgstr "La arquitectura `$LOCATION' no es válida."
+msgid "The release \"$FILE\" is not valid."
+msgstr "La entrega \"$FILE\" no es válida."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:79
 #, sh-format
-msgid "The theme `$LOCATION' is not valid."
-msgstr "El tema `$LOCATION' no es válida."
+msgid "The architecture \"$FILE\" is not valid."
+msgstr "La arquitectura \"$FILE\" no es válida."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:80
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:89
 #, sh-format
-msgid "The value `$LOCATION' is not valid."
-msgstr "El valor `$LOCATION' no es válido."
+msgid "The theme \"$FILE\" is not valid."
+msgstr "El tema \"$FILE\" no es válida."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkPathComponent.sh:101
+#, sh-format
+msgid "The value \"$FILE\" is not valid."
+msgstr "El valor \"$FILE\" no es válido."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:62
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:78
@@ -278,12 +268,12 @@ msgid "Unversioned"
 msgstr "Sin versionar"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:72
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:71
 msgid "Deleted"
 msgstr "Borrado"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:73
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:71
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:70
 msgid "Added"
 msgstr "Adicionado"
 
@@ -312,78 +302,6 @@ msgstr "¿Desea ver los cambios ahora?"
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:134
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:37
-msgid "The first argument is required."
-msgstr "El primer argumento es obligatorios."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:46
-msgid "The first argument cannot be empty."
-msgstr "El primer argumento no puede estar vacío."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:118
-msgid "Updating"
-msgstr "Actualizando"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:124
-msgid "Cropping from"
-msgstr "Recortando de"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:130
-msgid "Tuning-up"
-msgstr "Afinado"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:136
-msgid "Checking"
-msgstr "Comprobando"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:142
-msgid "Creating"
-msgstr "Creando"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:148
-msgid "Deleting"
-msgstr "Eliminando"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:154
-msgid "Reading"
-msgstr "Leyendo"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:166
-msgid "Linked to"
-msgstr "Enlazado a"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:172
-msgid "Moved to"
-msgstr "Movido a"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:178
-msgid "Translation"
-msgstr "Traducción"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:184
-msgid "Design"
-msgstr "Diseño"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:190
-msgid "Configuration"
-msgstr "Configuración"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:196
-msgid "Palette"
-msgstr "Paleta"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:227
-msgid "To know more, run the following command"
-msgstr "Para conocer más, ejecute el command siguiente"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:237
-msgid "yes"
-msgstr "sí"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_doPrint.sh:240
-msgid "no"
-msgstr "no"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getCountryName.sh:35
 msgid "Andorra"
@@ -1347,11 +1265,6 @@ msgstr ""
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getFunctions.sh:49
-#, sh-format
-msgid "The \"$FILE\" has not execution rights."
-msgstr "El \"$FILE\" no tiene derechos de ejecución."
-
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:34
 msgid "Afar"
 msgstr ""
@@ -2092,85 +2005,171 @@ msgstr ""
 msgid "The bond string is required."
 msgstr "La cadena de unión es necesaria."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:56
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:69
 #, sh-format
 msgid "The location \"$LOCATION\" is not valid."
 msgstr "La ubicación \"$LOCATION\" no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getTemporalFile.sh:38
-msgid "First argument cannot be empty."
+msgid "The first argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:74
 msgid "There is no entry to create."
 msgstr "No hay entrada alguna que crear."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:77
 msgid "The following entry will be created"
 msgid_plural "The following entries will be created"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:71
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:87
 msgid "There is no file to delete."
 msgstr "No hay fichero alguno que borrar."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:73
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:90
 msgid "The following entry will be deleted"
 msgid_plural "The following entries will be deleted"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:80
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:100
 msgid "There is no file to locale."
 msgstr "No hay fichero alguno que localizar."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:82
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:103
 msgid "Translatable strings will be retrived from the following entry"
 msgid_plural "Translatable strings will be retrived from the following entries"
 msgstr[0] "Las cadenas traducibles serán recuperadas de la entrada siguiente"
 msgstr[1] ""
 "Las cadenas traducibles serán recuperadas de las entradas siguientes"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:89
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:113
 msgid "There is no file to edit."
 msgstr "No hay fichero alguno que editar."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:91
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:116
 msgid "The following file will be edited"
 msgid_plural "The following files will be edited"
 msgstr[0] "El fichero siguiente será editado"
 msgstr[1] "Los ficheros siguientes serán editados"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:102
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:126
 msgid "There is no file to process."
 msgstr "No hay fichero alguno que procesar."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:114
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:129
+msgid "The following file will be processed"
+msgid_plural "The following files will be processed"
+msgstr[0] "El fichero siguiente será procesado"
+msgstr[1] "Los ficheros siguientes serán procesados"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printActionPreamble.sh:144
 msgid "Do you want to continue"
 msgstr "¿Desea continuar?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:58
+msgid "The message cannot be empty."
+msgstr "El mensaje no puede estar vacío."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:108
+msgid "Updating"
+msgstr "Actualizando"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:114
+msgid "Cropping from"
+msgstr "Recortando de"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:120
+msgid "Tuning-up"
+msgstr "Afinado"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:126
+msgid "Checking"
+msgstr "Comprobando"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:132
+msgid "Creating"
+msgstr "Creando"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:138
+msgid "Deleting"
+msgstr "Eliminando"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:144
+msgid "Reading"
+msgstr "Leyendo"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:156
+msgid "Linked to"
+msgstr "Enlazado a"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:162
+msgid "Moved to"
+msgstr "Movido a"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:168
+msgid "Translation"
+msgstr "Traducción"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:174
+msgid "Design"
+msgstr "Diseño"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:180
+msgid "Configuration"
+msgstr "Configuración"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:186
+msgid "Palette"
+msgstr "Paleta"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:213
+msgid "To know more, run the following command"
+msgstr "Para conocer más, ejecute el command siguiente"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:223
+msgid "yes"
+msgstr "sí"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:226
+msgid "no"
+msgstr "no"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:57
 msgid "Bringing changes from the repository into the working copy"
 msgstr "Acarreando cambios desde el repositorio a la copia de trabajo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:73
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:72
 msgid "Updated"
 msgstr "Actualizado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:74
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:73
 msgid "Conflicted"
 msgstr "En conflicto"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:75
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:74
 msgid "Merged"
 msgstr "Mezclado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:95
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:94
 msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio."
 msgstr[1] "ficheros desde el repositorio."
+
+#~ msgid "The first argument is required."
+#~ msgstr "El primer argumento es obligatorios."
+
+#~ msgid "You need to provide one argument at least."
+#~ msgstr "Necesita suministrar al menos un argumento."
+
+#~ msgid "Invalid arguments."
+#~ msgstr "Los argumentos no son válidos."
+
+#~ msgid "The \"$FILE\" has not execution rights."
+#~ msgstr "El \"$FILE\" no tiene derechos de ejecución."
 
 #~ msgid "Checking symbolic links"
 #~ msgstr "Verificando enlaces simbólicos"
