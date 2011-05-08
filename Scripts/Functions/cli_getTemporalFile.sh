@@ -35,18 +35,15 @@ function cli_getTemporalFile {
     # Check default base name for temporal file, it can't be an empty
     # value.
     if [[ "$NAME" == '' ]];then
-        cli_printMessage "`gettext "First argument cannot be empty."`" --as-error-line
+        cli_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
     fi
 
     # Define source location where temporal files will be stored.
     local TMPDIR='/tmp'
 
-    # Define unique identifier for temporal file.
-    local UUID=$(cat /proc/sys/kernel/random/uuid)
-
     # Define absolute path for temporal file using the program name,
     # the current locale, the unique identifier and the file name. 
-    local TMPFILE="${TMPDIR}/${CLI_PROGRAM}-$(cli_getCurrentLocale)-${UUID}-${NAME}"
+    local TMPFILE="${TMPDIR}/${CLI_PROGRAM}-${RANDOM}-${NAME}"
 
     # Output absolute path to final temporal file.
     echo $TMPFILE
