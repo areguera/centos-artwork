@@ -47,13 +47,13 @@ function render_doSvgPostActions {
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux:'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux:-floyd'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub'
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:'
         POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:-floyd'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Ksplash/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doKsplash'
+    elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
+        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
     fi
 
     # Define SVG post-rendition actions that create new files from
