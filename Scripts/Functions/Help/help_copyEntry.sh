@@ -58,9 +58,6 @@ function help_copyEntry {
     # Define list of files to process.
     ENTRIES=$(cli_getFilesList $(dirname ${ENTRY_DST}) --pattern=".*$(basename ${ENTRY_DST}).*\.texi")
 
-    # Set action preamble.
-    cli_printActionPreamble "${ENTRIES}" '' ''
-
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
