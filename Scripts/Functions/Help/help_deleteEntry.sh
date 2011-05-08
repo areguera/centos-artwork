@@ -60,7 +60,7 @@ function help_deleteEntry {
     ENTRIES=$(echo ${ENTRIES} | tr ' ' "\n" | sort -r | uniq)
     
     # Print action preamble.
-    cli_printActionPreamble "$ENTRIES" 'doDelete' 'AsResponseLine'
+    cli_printActionPreamble $ENTRIES --to-delete
 
     # Remove documentation entry using Subversion's `delete' command
     # to know when the action took place.  Do not use regular `rm'
