@@ -49,7 +49,7 @@ function render_doSvgLastActions {
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Kdm/.+\.svg$" ]];then
         LASTACTIONS[((++${#LASTACTIONS[*]}))]='doDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
     elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Ksplash/.+\.svg$" ]];then
-        LASTACTIONS[((++${#LASTACTIONS[*]}))]='doKsplash'
+        LASTACTIONS[((++${#LASTACTIONS[*]}))]='doKsplash:'
     fi
 
     # At this point centos-art.sh should be producing the last file
