@@ -31,12 +31,6 @@ function cli_printMessage {
         return
     fi
 
-    # Verify number of positional parameters. The first argument is
-    # required.
-    if [[ $# -eq 0 ]];then
-        cli_printMessage "`gettext "The first argument is required."`" --as-error-line
-    fi
-
     # Define short options.
     local ARGSS=''
 
@@ -195,7 +189,7 @@ function cli_printMessage {
                 ;;
 
             --as-response-line )
-                cli_printMessage "--> $MESSAGE"
+                echo "--> $MESSAGE" > /dev/stderr
                 shift 2
                 break
                 ;;
