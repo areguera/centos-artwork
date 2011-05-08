@@ -76,4 +76,16 @@ function render_getDirTemplate {
             -e "s!/Images!/Models!")
     fi
 
+    # Verify absolute path to input file. This verification is
+    # specially needed in those situations when the artistic motif
+    # directory structure has an organization different to that in
+    # design models directory structure. Since the path to design
+    # models is built from artistic motif directory structure, if
+    # artistic motifs directory structure is different from design
+    # model directory structure, as result we'll have a path to a
+    # design model that may not exist and that would make
+    # centos-art.sh script to fail. So, verify the absolute path to
+    # the input file and stop script execution if it doesn't exist.
+    cli_checkFiles $TEMPLATE
+
 }
