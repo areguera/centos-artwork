@@ -36,9 +36,6 @@ function tuneup_doBaseActions {
     # Build list of files to process using action value as reference.
     FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
 
-    # Verify list of files.
-    cli_printActionPreamble "$FILES" '' ''
-
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
