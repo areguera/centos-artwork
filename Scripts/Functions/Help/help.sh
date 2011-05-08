@@ -171,9 +171,6 @@ function help {
         # working with.
         MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
 
-        # Set action preable.
-        cli_printActionPreamble "${MANUAL_BASEFILE}.texi" '' ''
-
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
