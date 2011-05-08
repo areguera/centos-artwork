@@ -104,12 +104,12 @@ function prepare_doLinks {
 
     # Remove files installed inside user-specific directories.
     if [[ "$USERFILES" != '' ]];then
-        cli_printActionPreamble "$USERFILES" 'doDelete' 'AsResponseLine'
+        cli_printActionPreamble $USERFILES --to-delete
         rm -r $USERFILES
     fi
 
     # Print preamble message for symbolic link creation.
-    cli_printActionPreamble "${LINKS_SRC[*]}" 'doCreate' 'AsResponseLine'
+    cli_printActionPreamble ${LINKS_SRC[*]} --to-create
 
     while [[ $COUNT -lt ${#LINKS_SRC[*]} ]];do
 
