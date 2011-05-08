@@ -1,13 +1,10 @@
 #!/bin/bash
 #
-# cli_printActionPreamble -- This function standardizes action
-# preamble messages. Action preamble messages provides a confirmation
-# message that illustrate what files will be affected in the action.
-#
-# Generally, actions are applied to parent directories. Each parent
-# directory has parallel directories associated. If one parent
-# directory is created/deleted, the parallel directories associated do
-# need to be created/deleted too.
+# cli_printActionPreamble -- This function standardizes the way
+# preamble messages are printed out. Preamble messages are used before
+# actions (e.g., file elimination, edition, creation, actualization,
+# etc.) and provide a way for the user to control whether the action
+# is performed or not.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -31,89 +28,119 @@
 
 function cli_printActionPreamble {
 
-    local FILES="$1"
+    # Define short options.
+    local ARGSS=''
 
-    # Verify amount of files to process. If there is no one then there
-    # is nothing else to do here.
-    if [[ "$FILES" == '' ]];then
-        return
-    fi
+    # Define long options.
+    local ARGSL='to-create,to-delete,to-locale,to-edit'
 
-    local ACTION="$2"
-    local FORMAT="$3"
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope.
+    local ARGUMENTS=''
+
+    # Initialize message.
+    local MESSAGE=''
+
+    # Initialize message options.
+    local OPTIONS=''
+
+    # Initialize file variable as local to avoid conflicts outside.
+    # We'll use the file variable later, to show the list of files
+    # that will be affected by the action.
     local FILE=''
-    local NEGATIVE=''
-    local POSITIVE=''
-    local COUNT=0
 
-    # Replace spaces by new line.
-    FILES=$(echo "$FILES" | sed -r "s! +!\n!g")
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
 
-    # Redefine total number of directories.
-    COUNT=$(echo "$FILES" | wc -l)
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
 
-    # Redefine preamble messages based on action. At this point seems
-    # to be some files to process so lets read ACTION to know what to
-    # do with them.
-    case $ACTION in
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
 
-        'doCreate' )
-            if [[ $FILES == '' ]];then
-                NEGATIVE="`gettext "There is no entry to create."`"
-            else
-                POSITIVE="`ngettext "The following entry will be created" \
-                    "The following entries will be created" $COUNT`:"
-            fi
-            ;;
+    # Define the location we want to apply verifications to.
+    local FILES=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
 
-        'doDelete' )
-            if [[ $FILES == '' ]];then
-                NEGATIVE="`gettext "There is no file to delete."`"
-            else
-                POSITIVE="`ngettext "The following entry will be deleted" \
-                    "The following entries will be deleted" $COUNT`:"
-            fi
-            ;;
+    # Initialize counter with total number of files.
+    local COUNT=$(echo $FILES | wc -l)
 
-        'doLocale' )
-            if [[ $FILES == '' ]];then
-                NEGATIVE="`gettext "There is no file to locale."`"
-            else
-                POSITIVE="`ngettext "Translatable strings will be retrived from the following entry" \
-                    "Translatable strings will be retrived from the following entries" $COUNT`:"
-            fi
-            ;;
+    # Look for options passed through positional parameters.
+    while true;do
 
-        'doEdit' )
-            if [[ $FILES == '' ]];then
-                NEGATIVE="`gettext "There is no file to edit."`"
-            else
-                POSITIVE="`ngettext "The following file will be edited" \
-                    "The following files will be edited" $COUNT`:"
-            fi
-            ;;
+        case "$1" in
 
-        * )
-            # Check list of files to process.  If we have an empty
-            # list of files, inform about that and stop the script
-            # execution.  Otherwise, check all files in the list to be
-            # sure they are regular files.
-            if [[ "$FILES" == '' ]];then
-                NEGATIVE="`gettext "There is no file to process."`"
-            fi
-            ;;
+            --to-create )
+                if [[ $FILES == '--' ]];then
+                    MESSAGE="`gettext "There is no entry to create."`"
+                    OPTIONS='--as-error-line'
+                else
+                    MESSAGE="`ngettext "The following entry will be created" \
+                        "The following entries will be created" $COUNT`:"
+                    OPTIONS=''
+                fi
+                shift 2
+                break
+                ;;
 
-    esac
+            --to-delete )
+                if [[ $FILES == '--' ]];then
+                    MESSAGE="`gettext "There is no file to delete."`"
+                    OPTIONS='--as-error-line'
+                else
+                    MESSAGE="`ngettext "The following entry will be deleted" \
+                        "The following entries will be deleted" $COUNT`:"
+                    OPTIONS=''
+                fi
+                shift 2
+                break
+                ;;
 
-    # Print preamble message.
-    if [[ $POSITIVE != '' ]] &&  [[ $NEGATIVE == '' ]];then
-        cli_printMessage "$POSITIVE"
-        for FILE in $FILES;do
-            cli_printMessage "$FILE $FORMAT"
-        done
-        cli_printMessage "`gettext "Do you want to continue"`" --as-yesornorequest-line
-    elif [[ $POSITIVE == '' ]] &&  [[ $NEGATIVE != '' ]];then
-        cli_printMessage "$NEGATIVE" --as-error-line
-    fi
+            --to-locale )
+                if [[ $FILES == '--' ]];then
+                    MESSAGE="`gettext "There is no file to locale."`"
+                    OPTIONS='--as-error-line'
+                else
+                    MESSAGE="`ngettext "Translatable strings will be retrived from the following entry" \
+                        "Translatable strings will be retrived from the following entries" $COUNT`:"
+                    OPTIONS=''
+                fi
+                shift 2
+                break
+                ;;
+
+            --to-edit )
+                if [[ $FILES == '--' ]];then
+                    MESSAGE="`gettext "There is no file to edit."`"
+                    OPTIONS='--as-error-line'
+                else
+                    MESSAGE="`ngettext "The following file will be edited" \
+                        "The following files will be edited" $COUNT`:"
+                    OPTIONS=''
+                fi
+                shift 2
+                break
+                ;;
+
+            -- )
+                if [[ $FILES == '--' ]];then
+                    MESSAGE="`gettext "There is no file to process."`"
+                    OPTIONS='--as-error-line'
+                else
+                    MESSAGE="`ngettext "The following file will be processed" \
+                        "The following files will be processed" $COUNT`:"
+                    OPTIONS=''
+                fi
+                shift 1
+                break
+                ;;
+        esac
+    done
+
+    # Print out the preamble message.
+    cli_printMessage ${OPTIONS} ${MESSAGE}
+    for FILE in $FILES;do
+        cli_printMessage $FILE --as-response-line
+    done
+    cli_printMessage "`gettext "Do you want to continue"`" --as-yesornorequest-line
 
 }
