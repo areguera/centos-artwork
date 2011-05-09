@@ -42,19 +42,19 @@ function cli_replaceTMarkers {
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-year')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-year')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LIST='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-year-list')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year-list)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--copyright-holder')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-holder)"
 
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--license')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --license)"
     SRC[((++${#SRC[*]}))]='=LICENSE_URL='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo '--license-url')"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --license-url)"
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
