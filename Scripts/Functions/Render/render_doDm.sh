@@ -1,29 +1,11 @@
 #!/bin/bash
 #
-# render_doDm.sh -- This function collects Display Manager (DM)
-# required files and creates a tar.gz package that groups them all
-# together. Use this function as last-rendition action for Gdm and Kdm
-# base-rendition actions.
-#
-# Usage:
-#
-# ACTIONS[1]='LAST:renderDm:TYPE:RESOLUTION'
-#
-# Where:
-#
-# TYPE can be either `Gdm' or `Kdm'. These values correspond to the
-# directory names used to store related design models.
-#
-# RESOLUTION represents the screen resolution tar.gz files are
-# produced for (e.g., 800x600, 1024x768, 2048x1536, etc.). 
-#
-# In order to produce tar.gz files correctly, both screen resolution
-# definition inside pre-rendition configuration script and background
-# name inside theme directory structure need to match one another.  If
-# one screen resolution is defined correctly, but there is no
-# background information for it, the related tar.gz file is not
-# produced and the next file in the list of files to process is
-# evaluated.
+# render_doDm.sh -- This function standardize production of display
+# managers (e.g., Gdm and Kdm). This function copies all files needed
+# into a temporal directory, realize expansion of translation markers
+# and packs all the files into a tar.gz package that is used for
+# installation. This function must be used as last-rendition action
+# for Gdm and Kdm directory specific base-rendition actions.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -47,147 +29,148 @@
 
 function render_doDm {
 
-    local -a SRC
-    local -a DST
-    local DM=''
-    local TGZ=''
-    local COUNT=0
-    local RESOLUTION=''
-    local RESOLUTIONS=''
-
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Get display manager passed from render.conf.sh pre-rendition
-    # configuration script.
-    DM=$(render_getConfigOption "${ACTION}" '2')
- 
-    # Sanitate display manager passed from render.conf.sh
-    # pre-rendition configuration script. Whatever value be retrived
-    # as display manager configuration option is converted to
-    # uppercase in order to match either Gdm or Kdm design model
-    # directory structures.
-    DM=$(cli_getRepoName $DM -d)
+    # Initialize source and destination local variables.
+    local SRC=''
+    local DST=''
 
-    # Get screen resolutions passed from render.conf.sh pre-rendition
-    # configuration script.
-    RESOLUTIONS=$(render_getConfigOption "${ACTION}" '3')
+    # Initialize display manager type.
+    local DM=$(render_getConfigOption "${ACTION}" '2')
 
-    # Check screen resolutions passed from render.conf.sh
-    # pre-rendition configuration script.
+    # Initialize screen resolutions the display manager theme will be
+    # built for.
+    local RESOLUTION=''
+    local RESOLUTIONS=$(render_getConfigOption "${ACTION}" '3')
+
+    # Verify screen resolutions. We cannot produce display manager
+    # theme if no screen resolution has been specified.
     if [[ "$RESOLUTIONS" == '' ]];then
         cli_printMessage "`gettext "There is no resolution information to process."`" --as-error-line
     fi
 
-    # Define source files using absolute paths.
-    SRC[0]=$(cli_getRepoTLDir)/Identity/Images/Brands/centos-symbol-resized-48.png
-    SRC[1]=${OUTPUT}/release.png
-    SRC[2]=${OUTPUT}/screenshot.png
-    SRC[3]=$(dirname $TEMPLATE)/GdmGreeterTheme.xml
-    SRC[4]=$(dirname $TEMPLATE)/GdmGreeterTheme.desktop
-    SRC[5]=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --theme)/Backgrounds/Img/Png
-    SRC[6]=$(dirname $TEMPLATE)/icon-language.png
-    SRC[7]=$(dirname $TEMPLATE)/icon-reboot.png
-    SRC[8]=$(dirname $TEMPLATE)/icon-session.png
-    SRC[9]=$(dirname $TEMPLATE)/icon-shutdown.png
+    # Initialize theme information we are going to build the display
+    # manager theme for.
+    local THEME=$(cli_getPathComponent $ACTIONVAL --theme)
+    local THEME_NAME=$(cli_getPathComponent $ACTIONVAL --theme-name)
 
-    # Define name used as temporal holder to build tar.gz file. 
-    TGZ=$(cli_getPathComponent $ACTIONVAL --theme-name)
+    # Initialize temporal directory where we collect all files needed
+    # in order to create the tar.gz file. This intermediate step is
+    # also needed in order to expand translation markers from XML and
+    # Desktop definitions.
+    local TMPDIR=$(cli_getTemporalFile 'dm')
 
-    # Define target files using relative paths.
-    DST[0]=${TGZ}/centos-symbol.png
-    DST[1]=${TGZ}/centos-release.png
-    DST[2]=${TGZ}/screenshot.png
-    DST[3]=${TGZ}/${TGZ}.xml
-    DST[4]=${TGZ}/GdmGreeterTheme.desktop
-    DST[5]=${TGZ}/background.png
-    DST[6]=${TGZ}/icon-language.png
-    DST[7]=${TGZ}/icon-reboot.png
-    DST[8]=${TGZ}/icon-session.png
-    DST[9]=${TGZ}/icon-shutdown.png
+    # Initialize source location for brands. This is the place where
+    # brand information needed to build the display manager theme is
+    # retrived from.
+    local BRANDS=$(cli_getRepoTLDir)/Identity/Images/Brands
 
-    # Move into the working directory.
-    pushd ${OUTPUT} > /dev/null
+    # Initialize source location for backgrounds. This is the place
+    # where background information needed to ubild the display manager
+    # theme is retrived from. 
+    local BGS=$(cli_getRepoTLDir)/Identity/Images/Themes/${THEME}/Backgrounds/Img/Png
 
-    # Create directory used as temporal holder to build tar.gz file.
-    if [[ ! -d ${TGZ} ]];then
-        mkdir ${TGZ}
-    fi
+    # Initialize file variables. File variables are used build and
+    # process the file relation between source and target locations. 
+    local FILE=''
+    local FILES=''
+
+    # Define file relation between source and target locations, based
+    # on whether we are producing GDM or KDM. Presently, both GDM and
+    # KDM are very similar on files with the exception that GDM does
+    # use icons near actions buttons (e.g., shutdown, reboot, session,
+    # language) and KDM doesn't.
+    case ${DM} in
+
+        Gdm )
+            FILES="\
+            ${BRANDS}/centos-symbol-resized-48.png:centos-symbol.png
+            ${OUTPUT}/release.png:centos-release.png
+            ${OUTPUT}/screenshot.png:screenshot.png
+            $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
+            $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
+            $(dirname $TEMPLATE)/icon-language.png:icon-language.png
+            $(dirname $TEMPLATE)/icon-reboot.png:icon-reboot.png
+            $(dirname $TEMPLATE)/icon-session.png:icon-session.png
+            $(dirname $TEMPLATE)/icon-shutdown.png:icon-shutdown.png
+            "
+            ;;
+            
+        Kdm )
+            FILES="\
+            ${BRANDS}/centos-symbol-resized-48.png:centos-symbol.png
+            ${OUTPUT}/release.png:centos-release.png
+            ${OUTPUT}/screenshot.png:screenshot.png
+            $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
+            $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
+            "
+            ;;
+
+        * )
+            cli_printMessage "`eval_gettext "The \\\"\\\$DM\\\" display manager is not supported yet."`" --as-error-line
+            ;;
+    esac
+
+    for FILE in $FILES;do
+
+        # Define source location.
+        SRC=$(echo $FILE | cut -d: -f1)
+
+        # Define target location.
+        DST=${TMPDIR}/${THEME_NAME}/$(echo $FILE | cut -d: -f2)
+
+        # Verify source files.
+        cli_checkFiles $SRC
+
+        # Verify parent directory for target file.
+        if [[ ! -d $(dirname $DST) ]];then
+            mkdir -p $(dirname $DST)
+        fi
+
+        # Copy files from source to target location.
+        cp ${SRC} ${DST}
+
+        # Expand translation markers.
+        if [[ ${DST} =~ "\.(xml|desktop)$"  ]];then
+            cli_replaceTMarkers "${DST}"
+        fi
+
+    done
+
+    # Move into temporal directory.
+    pushd $TMPDIR > /dev/null
 
     for RESOLUTION in $RESOLUTIONS;do
 
-        while [[ $COUNT -lt ${#SRC[*]} ]];do
-
-            if [[ $COUNT -eq 5 ]];then
-
-                # Redefine background information using resolution as
-                # reference. Avoid concatenation.
-                SRC[$COUNT]=$(echo "${SRC[$COUNT]}" | cut -d/ -f-13)/${RESOLUTION}-final.png
-
-                # If background information defined inside
-                # pre-rendition configuration script doesn't match
-                # background information inside theme-specific
-                # backgrounds directory structure, try the next
-                # background definition.
-                if [[ ! -f ${SRC[$COUNT]} ]];then
-                    continue 2
-                fi
-        
-            elif [[ $COUNT =~ '^[6-9]$' ]];then
-
-                # If display manager is Kdm, then increment counter and
-                # resume the next iteration. Icons aren't used on Kdm,
-                # so there's no need to have them inside it.
-                if [[ $DM =~ '^Kdm$' ]];then
-                    COUNT=$(($COUNT + 1))
-                    continue
-                fi
-
-            fi
-
-            # Check existence of source files.
-            cli_checkFiles ${SRC[$COUNT]}
-
-            # Copy files from source to target location.
-            cp ${SRC[$COUNT]} ${DST[$COUNT]}
-
-            # Replace common translation markers from design model
-            # files with appropriate information.
-            if [[ $COUNT =~ '^(3|4)$'  ]];then
-                cli_replaceTMarkers "${DST[$COUNT]}"
-            fi
-
-            # Increment counter.
-            COUNT=$(($COUNT + 1))
-
-        done
-
-        # Reset counter.
-        COUNT=0
+        # Verify background information. If it doesn't exist go on
+        # with the next one in the list.
+        if [[ ! -f $BGS/${RESOLUTION}-final.png ]];then
+            continue
+        fi
 
         # Print action message.
-        if [[ ${RESOLUTION}.tar.gz ]];then
+        if [[ -f ${RESOLUTION}.tar.gz ]];then
             cli_printMessage "${OUTPUT}/${RESOLUTION}.tar.gz" --as-updating-line
         else
             cli_printMessage "${OUTPUT}/${RESOLUTION}.tar.gz" --as-creating-line
         fi
 
+        # Copy background information.
+        cp $BGS/${RESOLUTION}-final.png ${THEME_NAME}/background.png
+
         # Create tar.gz file.
-        tar -czf "${RESOLUTION}.tar.gz" $TGZ
+        tar -czf ${RESOLUTION}.tar.gz ${THEME_NAME}
+
+        # Move from temporal directory to its final location.
+        mv ${RESOLUTION}.tar.gz ${OUTPUT}
 
     done
 
-    # Remove directory used as temporal holder to build targ.gz
-    # file.
-    rm -r $TGZ
-
-    # Remove release-specific images.
-    cli_printMessage "${SRC[1]}" --as-deleting-line
-    rm ${SRC[1]}
-    cli_printMessage "${SRC[2]}" --as-deleting-line
-    rm ${SRC[2]}
-
     # Return to where we were initially.
     popd > /dev/null
+
+    # Remove temporal directory.
+    rm -r ${TMPDIR}
 
 }
