@@ -32,4 +32,11 @@ function docbook {
     # Produce plaintext output from html outout.
     xhtml_convertToText
 
+    # Perform post-rendition action for Docbook files.
+    #docbookPostActions
+
+    # Perform base-rendition action for Docbook files.
+    #docbookLastActions
+
+
 }
