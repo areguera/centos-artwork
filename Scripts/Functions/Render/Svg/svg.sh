@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doSvg.sh -- This function performs base-rendition
+# svg.sh -- This function performs base-rendition
 # action for SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doSvg {
+function svg {
 
     # Define export id used inside design templates. This value
     # defines the design area we want to export.
@@ -41,7 +41,7 @@ function render_doSvg {
     # background information is not available the image is produced
     # without background information. This is something that need to
     # be avoided.
-    render_checkSvgAbsref "$INSTANCE"
+    svg_checkAbsref "$INSTANCE"
 
     # Render template instance using inkscape and save the output.
     local INKSCAPE_OUTPUT="$(\
