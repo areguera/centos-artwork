@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_convertGplToHex.sh -- This function takes one palette
+# svg_convertGplToHex.sh -- This function takes one palette
 # produced by Gimp (e.g., syslinux.gpl) as input and outputs the list
 # of hexadecimal colors and their respective index position the
 # `pnmtolss16' program needs (e.g., #RRGGBB=0 #RRGGBB=1 ... [all
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_convertGplToHex {
+function svg_convertGplToHex {
 
     local COLOR=''
     local COUNT=0
