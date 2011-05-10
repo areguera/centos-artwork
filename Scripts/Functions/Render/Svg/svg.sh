@@ -25,15 +25,12 @@
 
 function svg {
 
-    # Define export id used inside design templates. This value
-    # defines the design area we want to export.
+    # Initialize the export id used inside design templates. This
+    # value defines the design area we want to export.
     local EXPORTID='CENTOSARTWORK'
 
-    # Check export id inside design templates.
-    grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
-    if [[ $? -gt 0 ]];then
-        cli_printMessage "`eval_gettext "There is not export id (\\\$EXPORTID) inside \\\"\\\$TEMPLATE\\\"."`" --as-error-line
-    fi
+    # Verify the export id.
+    svg_checkExportId
 
     # Check existence of external files. Inside design templates and
     # their instances, external files are used to refere the
@@ -55,5 +52,11 @@ function svg {
         | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \1 \2!")" 
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
         | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`: !")"
+
+    # Perform post-rendition action for svg files.
+    svg_doPostActions
+
+    # Perform last-rendition action for svg files.
+    svg_doLastActions
  
 }

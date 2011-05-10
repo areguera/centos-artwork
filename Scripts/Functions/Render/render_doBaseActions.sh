@@ -182,40 +182,22 @@ function render_doBaseActions {
         # Apply translation markers replacements to template instance.
         cli_replaceTMarkers ${INSTANCE}
 
-        # Verify the extension of template instance and render content
-        # accordingly.
+        # Define what action to perform based on the extension of
+        # template instance.
         if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
 
-            # Perform base-rendition action for svg files.
-            svg
-
-            # Perform post-rendition action for svg files.
-            svg_doPostActions
-
-            # Perform last-rendition action for svg files.
-            svg_doLastActions
-            
+            # Set function name to perform SVG base-rendition.
+            render_svg
+ 
         elif [[ $INSTANCE =~ '\.docbook$' ]];then
 
-            # Perform base-rendition action for Docbook files.
-            docbook
-
-            # Perform post-rendition action for Docbook files.
-            #docbookPostActions
-
-            # Perform base-rendition action for Docbook files.
-            #docbookLastActions
+            # Set function name to perform Docbook base-rendition.
+            render_docbook
 
         elif [[ $INSTANCE =~ '\.xhtml$' ]];then
 
-            # Perform base-rendition action for XHTML files.
-            xhtml
-
-            # Perform post-rendition action for Docbook files.
-            #xhtmlPostActions
-
-            # Perform base-rendition action for Xhtml files.
-            #xhtmlLastActions
+            # Set function name to perform XHTML base-rendition.
+            render_xhtml
 
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" --as-error-line

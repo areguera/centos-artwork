@@ -38,4 +38,10 @@ function xhtml {
     # Produce plaintext output from html outout.
     xhtml_convertToText
 
+    # Perform post-rendition action for Docbook files.
+    #xhtmlPostActions
+
+            # Perform base-rendition action for Xhtml files.
+            #xhtmlLastActions
+
 }
