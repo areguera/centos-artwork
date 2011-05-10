@@ -84,7 +84,7 @@ function render_doGrub {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    render_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
+    svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
