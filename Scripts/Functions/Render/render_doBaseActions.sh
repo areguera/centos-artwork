@@ -187,35 +187,35 @@ function render_doBaseActions {
         if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
 
             # Perform base-rendition action for svg files.
-            render_doSvg
+            svg
 
             # Perform post-rendition action for svg files.
-            render_doSvgPostActions
+            svg_doPostActions
 
             # Perform last-rendition action for svg files.
-            render_doSvgLastActions
+            svg_doLastActions
             
         elif [[ $INSTANCE =~ '\.docbook$' ]];then
 
             # Perform base-rendition action for Docbook files.
-            render_doDocbook
+            docbook
 
             # Perform post-rendition action for Docbook files.
-            #render_doDocbookPostActions
+            #docbookPostActions
 
             # Perform base-rendition action for Docbook files.
-            #render_doDocbookLastActions
+            #docbookLastActions
 
         elif [[ $INSTANCE =~ '\.xhtml$' ]];then
 
             # Perform base-rendition action for XHTML files.
-            render_doXhtml
+            xhtml
 
             # Perform post-rendition action for Docbook files.
-            #render_doXhtmlPostActions
+            #xhtmlPostActions
 
             # Perform base-rendition action for Xhtml files.
-            #render_doXhtmlLastActions
+            #xhtmlLastActions
 
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" --as-error-line
