@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doSvgLastActions.sh -- This function performs
+# svg_doLastActions.sh -- This function performs
 # last-rendition actions for SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doSvgLastActions {
+function svg_doLastActions {
 
     # Verify position of file being produced in the list of files been
     # currently processed.
