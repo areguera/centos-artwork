@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_convertHtmlToText.sh -- This function takes one HTML file
+# svg_convertHtmlToText.sh -- This function takes one HTML file
 # and produces one plain-text file (i.e., without markup inside).
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_convertHtml2Text {
+function xhtml_convertToText {
 
     # Verify existence of HTML file.
     cli_checkFiles ${FILE}.xhtml
