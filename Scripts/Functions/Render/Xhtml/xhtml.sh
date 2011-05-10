@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doXhtml.sh -- This function performs base-rendition action
+# xhtml.sh -- This function performs base-rendition action
 # for Xhtml files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doXhtml {
+function xhtml {
 
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
@@ -36,6 +36,6 @@ function render_doXhtml {
     cp $INSTANCE ${FILE}.xhtml
 
     # Produce plaintext output from html outout.
-    render_convertHtml2Text
+    xhtml_convertToText
 
 }
