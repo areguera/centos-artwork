@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doSvgPostActions.sh -- This function performs
+# svg_doPostActions.sh -- This function performs
 # post-rendition actions for SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doSvgPostActions {
+function svg_doPostActions {
 
     local ACTION=''
     
