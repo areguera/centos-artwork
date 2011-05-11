@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# docbook.sh -- This function performs base-rendition
-# action for DocBook files.
+# render_docbook.sh -- This function performs base-rendition action
+# for DocBook files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,20 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function docbook {
+function render_docbook {
 
     # Produce xhtml output from docbook template instance using XSL
     # stylesheets as reference.
-    docbook_convertToXhtml
+    render_docbook_convertToXhtml
 
     # Produce plaintext output from html outout.
-    xhtml_convertToText
-
-    # Perform post-rendition action for Docbook files.
-    #docbookPostActions
-
-    # Perform base-rendition action for Docbook files.
-    #docbookLastActions
-
+    render_xhtml_convertToText
 
 }
