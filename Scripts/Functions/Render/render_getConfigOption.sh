@@ -70,6 +70,6 @@ function render_getConfigOption {
         | sed -r 's! *$!!g')
 
     # Output action value without trailing newline.
-    echo -n "$VALUE"
+    cli_printMessage "$VALUE" --as-stdout-line
 
 }

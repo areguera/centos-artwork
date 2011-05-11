@@ -35,7 +35,7 @@ function cli_printMessage {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='message:,as-separator-line,as-banner-line,as-updating-line,as-cropping-line,as-tuningup-line,as-deleting-line,as-checking-line,as-creating-line,as-reading-line,as-savedas-line,as-linkto-line,as-movedto-line,as-translation-line,as-design-line,as-configuration-line,as-palette-line,as-response-line,as-request-line,as-error-line,as-toknowmore-line,as-yesornorequest-line,as-notrailingnew-line,as-regular-line,'
+    local ARGSL='message:,as-separator-line,as-banner-line,as-updating-line,as-cropping-line,as-tuningup-line,as-deleting-line,as-checking-line,as-creating-line,as-reading-line,as-savedas-line,as-linkto-line,as-movedto-line,as-translation-line,as-design-line,as-configuration-line,as-palette-line,as-response-line,as-request-line,as-error-line,as-toknowmore-line,as-yesornorequest-line,as-notrailingnew-line,as-stdout-line,'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope.
@@ -260,7 +260,13 @@ function cli_printMessage {
                 break
                 ;;
 
-            --as-regular-line | * )
+            --as-stdout-line )
+                echo "$MESSAGE"
+                shift 2
+                break
+                ;;
+
+            * )
                 echo "$MESSAGE" \
                         | awk 'BEGIN { FS=": " }
                             { 
