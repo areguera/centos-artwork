@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# docbook_convertToXhtml.sh -- This function produces XHTML
+# render_docbook_convertToXhtml.sh -- This function produces XHTML
 # output from docbook template instance using XSL stylesheets as
 # reference.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function docbook_convertToXhtml {
+function render_docbook_convertToXhtml {
 
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
