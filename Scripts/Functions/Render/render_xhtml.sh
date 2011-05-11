@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# xhtml.sh -- This function performs base-rendition action
-# for Xhtml files.
+# render_xhtml.sh -- This function performs base-rendition action for
+# Xhtml files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function xhtml {
+function render_xhtml {
 
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
@@ -36,12 +36,6 @@ function xhtml {
     cp $INSTANCE ${FILE}.xhtml
 
     # Produce plaintext output from html outout.
-    xhtml_convertToText
-
-    # Perform post-rendition action for Docbook files.
-    #xhtmlPostActions
-
-            # Perform base-rendition action for Xhtml files.
-            #xhtmlLastActions
+    render_xhtml_convertToText
 
 }
