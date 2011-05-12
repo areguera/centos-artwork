@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_doSyslinux.sh -- This function provides post-rendition
+# render_svg_convertPngToSyslinux.sh -- This function provides post-rendition
 # action used to produce LSS16 images, the images used by isolinux.
 #
 # This function uses three different formats to handle the same color
@@ -70,7 +70,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doSyslinux {
+function render_svg_convertPngToSyslinux {
 
     # Define number of colors the images will be produced on.
     local COLOR_NUMBER='16'
@@ -145,10 +145,10 @@ function render_doSyslinux {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
+    render_svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
  
     # Create HEX palette using GPL palette.
-    svg_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLOR_NUMBER"
+    render_svg_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLOR_NUMBER"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
