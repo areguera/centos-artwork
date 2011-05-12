@@ -1,7 +1,10 @@
 #!/bin/bash
 #
-# render_doLastActions.sh -- This function performs
-# last-rendition actions for all files.
+# render_doLastActions.sh -- This function provides last-rendition
+# actions to files produced as result of base-rendition and
+# post-rendition output. Actions take place through any command you
+# specify in the `--last-rendition' option  (e.g., the `mogrify'
+# command from ImageMagick tool set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -31,10 +34,42 @@ function render_doLastActions {
         return
     fi
 
-    local ACTION=''
+    # Define file extensions the last-rendition action will be applied
+    # to.
+    local EXTENSION=$(render_getConfigOption "$ACTION" '2')
 
-    # Define common last-rendition actions.
+    # Define the command string that will be evaluated as last-rendition.
+    local COMMAND=$(render_getConfigOption "$ACTION" '3-')
 
-    # Execute common last-rendition actions.
+    # Define list of files the last-rendition action will be applied
+    # to.
+    local FILE=''
+    local FILES=$(cli_getFilesList $OUTPUT --pattern=".+\.${EXTENSION}")
+
+    for FILE in $FILES;do
+
+        # Identify file before processing it. Only formats recognized
+        # by ImageMagick are supported. In case the file isn't
+        # supported by ImageMagick, continue with the next file in the
+        # list.
+        identify -quiet ${FILE} > /dev/null
+        if [[ $? -ne 0 ]];then
+            continue
+        fi
+
+        # Print action message.
+        cli_printMessage "${FILE}" --as-updating-line
+
+        # Execute mogrify action on all files inside the same
+        # directory structure.
+        eval ${COMMAND} ${FILE}
+
+        # Be sure the command was executed correctly. Otherwise stop
+        # script execution.
+        if [[ $? -ne 0 ]];then
+            exit
+        fi
+
+    done
 
 }
