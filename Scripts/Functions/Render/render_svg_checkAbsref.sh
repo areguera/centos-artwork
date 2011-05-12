@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# svg_checkAbsref.sh -- This function retrives absolute files
+# render_svg_checkAbsref.sh -- This function retrives absolute files
 # and checks their existence. In order for design templates to point
 # different artistic motifs, design templates make use of external
 # files which point to specific artistic motif background images. If
@@ -30,7 +30,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_checkAbsref {
+function render_svg_checkAbsref {
 
     local FILE=''
     local BG_DST_FILES=''
