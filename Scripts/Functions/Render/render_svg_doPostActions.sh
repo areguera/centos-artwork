@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# svg_doPostActions.sh -- This function performs
+# render_svg_doPostActions.sh -- This function performs
 # post-rendition actions for SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,42 +23,47 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_doPostActions {
+function render_svg_doPostActions {
 
     local ACTION=''
-    
-    # Define SVG-directory-specific post-rendition actions processing
-    # as local to this function. Otherwise it may confuse command-line
-    # post-rendition actions.
+
+    # Redefine SVG post-rendition actions as local to avoid undesired
+    # concatenation when massive rendition is performed.
     local -a POSTACTIONS
 
-    # Define SVG post-rendition actions that modify base-rendition
-    # output in place.
-    [[ $FLAG_COMMENT != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="mogrifyPngToComment"
-    [[ $FLAG_SHARPEN != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="mogrifyPngToSharpen"
+    # Define default comment written to base-rendition output.
+    local COMMENT="`gettext "Created in CentOS Arwork Repository"` ($(cli_printUrl '--projects-artwork'))"
+
+    # Define SVG post-rendition actions. Since these actions are
+    # applied to base-rendition output and base-rendition output is
+    # used as reference to perform directory-specific rendition, these
+    # action must be defined before directory-specific rendition.
+    # Otherwise it wouldn't be possible to propagate changes impossed
+    # by these actions to new files produced as result of
+    # directory-specific rendition.
+    POSTACTIONS[((++${#POSTACTIONS[*]}))]="doPostActions:png:mogrify -comment '$COMMENT'"
+    [[ $FLAG_POSTRENDITION != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="doPostActions:png:${FLAG_POSTRENDITION}"
 
     # Define SVG directory-specific rendition. Directory-specfic
     # rendition provides a predictable way of producing content inside
     # the repository.
-    if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupSimilarFiles:png jpg'
-    elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux:'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doSyslinux:-floyd'
-    elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:'
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='doGrub:-floyd'
-    elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
+    if [[ $FLAG_DONT_DIRSPECIFIC == 'false' ]];then
+        if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngTo:jpg'
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_groupBy:png jpg'
+        elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngTo:jpg pdf'
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToThumbnail:250'
+        elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToSyslinux:'
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToSyslinux:-floyd'
+        elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToGrub:'
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToGrub:-floyd'
+        elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngTo:jpg pdf'
+        fi
     fi
-
-    # Define SVG post-rendition actions that create new files from
-    # base-rendition output.
-    [[ $FLAG_CONVERT != '' ]] && POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngTo:$FLAG_CONVERT"
 
     # Execute SVG post-rendition actions.
     for ACTION in "${POSTACTIONS[@]}"; do
