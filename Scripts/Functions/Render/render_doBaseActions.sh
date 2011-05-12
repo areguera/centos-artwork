@@ -38,18 +38,6 @@ function render_doBaseActions {
     local NEXT_FILE_DIR=''
     local COUNT=0
 
-    # Initialize post-rendition list of actions,  the specification of
-    # what actions does centos-art execute immediatly after producing
-    # the base file in the same directory structure. 
-    local -a POSTACTIONS
-    
-    # Initialize last-rendition list of actions, the specification of
-    # what actions does centos-art execute once all base files in the
-    # same directory structure have been produced, this is just
-    # immediatly before passing to produce the next directory
-    # structure.
-    local -a LASTACTIONS
-
     # Verify default directory where design models are stored in.
     cli_checkFiles "$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}" --directory
 
@@ -160,44 +148,47 @@ function render_doBaseActions {
         # Define instance name from design model.
         INSTANCE=$(cli_getTemporalFile ${TEMPLATE})
 
-        # Verify translation file existence and create template
-        # instance accordingly.
-        if [[ -f ${TRANSLATION} ]];then
+        # Apply translation file to design model to produce the design
+        # model translated instance. 
+        render_doTranslation
 
-            # Create translated instance from design model.
-            /usr/bin/xml2po -a -p ${TRANSLATION} ${TEMPLATE} > ${INSTANCE}
-
-            # Remove .xml2po.mo temporal file.
-            if [[ -f ${PWD}/.xml2po.mo ]];then
-                rm ${PWD}/.xml2po.mo
-            fi
-
-        else
-
-            # Create non-translated instance form design model.
-            /bin/cp ${TEMPLATE} ${INSTANCE}    
-
-        fi
-
-        # Apply translation markers replacements to template instance.
+        # Expand translation markers inside design model instance.
         cli_replaceTMarkers ${INSTANCE}
 
         # Define what action to perform based on the extension of
         # template instance.
         if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
 
-            # Set function name to perform SVG base-rendition.
+            # Perform base-rendition actions for SVG files.
             render_svg
+
+            # Perform post-rendition actions for SVG files.
+            render_svg_doPostActions
+
+            # Perform last-rendition actions for SVG files.
+            render_svg_doLastActions
  
         elif [[ $INSTANCE =~ '\.docbook$' ]];then
 
-            # Set function name to perform Docbook base-rendition.
+            # Perform base-rendition actions for Docbook files.
             render_docbook
+
+            # Perform post-rendition actions for Docbook files.
+            #render_docbook_doPostActions
+
+            # Perform last-rendition actions for Docbook files.
+            #render_docbook_doLastActions
 
         elif [[ $INSTANCE =~ '\.xhtml$' ]];then
 
-            # Set function name to perform XHTML base-rendition.
+            # Perform base-rendition actions for XHTML files.
             render_xhtml
+
+            # Perform post-rendition actions for XHTML files.
+            #render_xhtml_doPostActions
+
+            # Perform last-rendition actions for XHTML files.
+            #render_xhtml_doLastActions
 
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" --as-error-line
@@ -207,12 +198,6 @@ function render_doBaseActions {
         if [[ -f $INSTANCE ]];then
             rm $INSTANCE
         fi
-
-        # Perform post-rendition actions for all files.
-        render_doPostActions
-
-        # Perform last-rendition actions for all files.
-        render_doLastActions
 
         # Increment file counter.
         COUNT=$(($COUNT + 1))
