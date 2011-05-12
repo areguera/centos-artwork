@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # render_doPostActions.sh -- This function provides post-rendition
-# actions to PNG base-rendition output. Actions take place through any
-# command you specify in the `--post-rendition' option  (e.g., the
-# mogrify command from ImageMagick tool set.
+# actions to base-rendition output. Post-rendition actions take place
+# through any command you specify in the `--post-rendition' option
+# (e.g., the mogrify command from ImageMagick tool set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
