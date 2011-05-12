@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# svg_convertPngToThumbnail.sh -- This function provides post-rendition to
+# render_svg_convertPngToThumbnail.sh -- This function provides post-rendition to
 # create thumbnails from images produced by centos-art base-rendition.
 # Thumbnails are created in PNG and JPG format for you to decide which
 # is the more appropriate one. When no size is specified, thumbnails
@@ -27,27 +27,27 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_convertPngToThumbnail {
+function render_svg_convertPngToThumbnail {
 
     # Get image size.
     local SIZES=$(render_getConfigOption "$ACTION" '2-')
-
-    # Check base file existence.
-    cli_checkFiles "${FILE}.png"
 
     # Check image sizes and do convertion.
     if [[ "$SIZES" == "" ]];then
         SIZES='250'
     fi
 
+    # Check base file existence.
+    cli_checkFiles "${FILE}.png"
+
     # Create thumbnails.
     for SIZE in $SIZES;do
         cli_printMessage "${FILE}-thumb-${SIZE}.png" --as-savedas-line
-        convert -resize ${SIZE} ${FILE}.png ${FILE}-thumb-${SIZE}.png
+        convert -thumbnail ${SIZE} ${FILE}.png ${FILE}-thumb-${SIZE}.png
         cli_printMessage "${FILE}-thumb-${SIZE}.jpg" --as-savedas-line
-        convert -resize ${SIZE} ${FILE}-thumb-${SIZE}.png ${FILE}-thumb-${SIZE}.jpg
+        convert -thumbnail ${SIZE} ${FILE}-thumb-${SIZE}.png ${FILE}-thumb-${SIZE}.jpg
         cli_printMessage "${FILE}-thumb-${SIZE}.pdf" --as-savedas-line
-        convert -resize ${SIZE} ${FILE}-thumb-${SIZE}.png ${FILE}-thumb-${SIZE}.pdf
+        convert -thumbnail ${SIZE} ${FILE}-thumb-${SIZE}.png ${FILE}-thumb-${SIZE}.pdf
     done
 
 }
