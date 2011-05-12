@@ -1,9 +1,10 @@
 #!/bin/bash
 #
-# render_doBrands.sh -- This function provides last-rendition
-# actions to produce CentOS brands. This function takes both The
-# CentOS Symbol and The CentOS Type images and produces variation of
-# them in different dimensions and formats using ImageMagick tool-set.
+# render_svg_convertPngToBrands.sh -- This function provides
+# last-rendition actions to produce CentOS brands. This function takes
+# both The CentOS Symbol and The CentOS Type images and produces
+# variation of them in different dimensions and formats using
+# ImageMagick tool-set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -25,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doBrands {
+function render_svg_convertPngToBrands {
 
     local SOURCEFILE=''
     local TARGETDIR=''
