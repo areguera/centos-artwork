@@ -44,28 +44,26 @@ function render {
     # artistic motifs.
     local FLAG_THEME_MODEL='Default'
 
-    # Initialize `--convert' option. The convert option controls
-    # whether to convert or not content produced as result of
-    # base-rendition. By default there is no content convertion.
-    local FLAG_CONVERT=''
+    # Initialize `--post-rendition' option. This option defines what
+    # command to use as post-rendition. Post-rendition takes palce
+    # over base-rendition output.
+    local FLAG_POSTRENDITION=''
 
-    # Initialize `--comment' option. The comment option controls the
-    # the text message we annotate in base-rendition output. Notice
-    # that the comment will be annotated in those formats that permit
-    # such thing (e.g., PNG files).
-    local FLAG_COMMENT="`gettext "Created in CentOS Arwork Repository"` ($(cli_printUrl '--projects-artwork'))"
+    # Initialize `--last-rendition' option. This option defines what
+    # command to use as last-rendition. Last-rendition takes palce
+    # once both base-rendition and post-rendition has been performed
+    # in the same directory structure.
+    local FLAG_LASTRENDITION=''
 
-    # Initialize `--sharpen' option. The shapen option adaptively
-    # sharpen pixels and increase effect near edges. It might use a
-    # Gaussian operator of the given radius and standard deviation
-    # (sigma).
-    local FLAG_SHARPEN=''
-
-    # Initialize `--group-by' option. The grouped-by option specifies
-    # Initialize `--group-by' option. The grouped-by option specifies
-    # whether grouping or not content produced by centos-art
-    # base-rendition. By default there is no content grouping.
-    local FLAG_GROUPED_BY=''
+    # Initialize `--dont-dirspecific' option. This option can take two
+    # values only (e.g., `true' or `false') and controls whether to
+    # perform or not directory-specific rendition.  Directory-specific
+    # rendition may use any of the three types of renditions (e.g.,
+    # base-rendition, post-rendition and last-rendition) to accomplish
+    # specific tasks when specific directory structures are detected
+    # in the rendition flow. By default, the centos-art.sh script
+    # performs directory-specific rendition.
+    local FLAG_DONT_DIRSPECIFIC='false'
 
     # Interpret arguments and options passed through command-line.
     render_getOptions
