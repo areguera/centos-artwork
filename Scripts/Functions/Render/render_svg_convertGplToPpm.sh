@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# svg_convertGplToPpm.sh -- This function takes one palette
+# render_svg_convertGplToPpm.sh -- This function takes one palette
 # produced by Gimp (e.g., syslinux.gpl) as input and outputs one PPM
 # file based on it (e.g., syslinux.ppm).
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_convertGplToPpm {
+function render_svg_convertGplToPpm {
 
     local COLOR=''
     local COUNT=0
