@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# render_doPostActions.sh -- This function performs post-rendition
-# actions for all files.
+# render_doPostActions.sh -- This function provides post-rendition
+# actions to PNG base-rendition output. Actions take place through any
+# command you specify in the `--post-rendition' option  (e.g., the
+# mogrify command from ImageMagick tool set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -25,16 +27,22 @@
 
 function render_doPostActions {
 
-    local ACTION=''
+    # Define base-rendition output file extension.
+    local EXTENSION=$(render_getConfigOption "$ACTION" '2')
 
-    # Define common post-rendition actions.
-    if [[ $FLAG_GROUPED_BY != '' ]];then
-        POSTACTIONS[((++${#POSTACTIONS[*]}))]="groupSimilarFiles:${FLAG_GROUPED_BY}"
+    # Define command string.
+    local COMMAND=$(render_getConfigOption "$ACTION" '3-')
+
+    # Verify base-rendition output.
+    cli_checkFiles ${FILE}.${EXTENSION}
+
+    # Execute command to base-rendition output.
+    eval $COMMAND ${FILE}.${EXTENSION}
+
+    # Be sure the command was executed correctly. Otherwise stop
+    # script execution.
+    if [[ $? -ne 0 ]];then
+        exit
     fi
-
-    # Execute common post-rendition actions.
-    for ACTION in "${POSTACTIONS[@]}"; do
-        ${FUNCNAM}_$(echo "$ACTION" | cut -d: -f1)
-    done
 
 }
