@@ -29,7 +29,7 @@ function render_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,releasever:,basearch:,convert:,comment:,sharpen:,group-by:,theme-model:"
+    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_doParseArguments
@@ -63,26 +63,18 @@ function render_getOptions {
                 shift 1
                 ;;
 
-            --releasever )
-                FLAG_RELEASEVER="$2"
-                if [[ ! $FLAG_RELEASEVER =~ $(cli_getPathComponent --release-pattern) ]];then
-                    cli_printMessage "`gettext "The release version provided is not supported."`" --as-error-line
-                fi
+            --dont-dirspecific )
+                FLAG_DONT_DIRSPECIFIC="true"
+                shift 1
+                ;;
+
+            --post-rendition )
+                FLAG_POSTRENDITION="$2"
                 shift 2
                 ;;
 
-            --convert )
-                FLAG_CONVERT="$2"
-                shift 2
-                ;;
-
-            --comment )
-                FLAG_COMMENT="$2"
-                shift 2
-                ;;
-
-            --sharpen )
-                FLAG_SHARPEN="$2"
+            --last-rendition )
+                FLAG_LASTRENDITION="$2"
                 shift 2
                 ;;
 
@@ -94,8 +86,11 @@ function render_getOptions {
                 shift 2
                 ;;
 
-            --group-by )
-                FLAG_GROUPED_BY="$2"
+            --releasever )
+                FLAG_RELEASEVER="$2"
+                if [[ ! $FLAG_RELEASEVER =~ $(cli_getPathComponent --release-pattern) ]];then
+                    cli_printMessage "`gettext "The release version provided is not supported."`" --as-error-line
+                fi
                 shift 2
                 ;;
 
