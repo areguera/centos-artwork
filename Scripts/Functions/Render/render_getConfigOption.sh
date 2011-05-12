@@ -1,24 +1,8 @@
 #!/bin/bash
 #
-# render_getConfigOption.sh -- This function standardizes the way
-# action values are retrived from pre-rendition configuration files.
-# Use this function whenever you need to retrive action values from
-# pre-rendition configuration script.
-#
-# Usage: VAR=$(render_getConfigOption "ACTION" "FIELD")
-#
-# VAR is the name of the variable where we store the option named
-# returned by render_getConfigOption. 
-#
-# ACTION is the string definition set in the pre-rendition
-# configuration script that holds the action name and its options
-# fields.
-#
-# FIELD is the field number in the action string we want to retrive
-# option from. By default options start from third field on. The first
-# field is reserved for the action type (i.e., POST or LAST), and the
-# second field is reserved for the action itself (e.g., convertPngTo,
-# renderSyslinux, renderKsplash, etc.).
+# render_getConfigOption.sh -- This function standardizes the
+# configuration fields are retrived from some action-specific
+# definitions.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -42,34 +26,43 @@
 
 function render_getConfigOption {
 
+    # Initialize action string.
     local ACTION="$1"
+
+    # Initialize field definition.
     local FIELD="$2"
-    local VALUE=''
 
-    # Check action value. The action's value must be present in order
-    # for this function to work. It provides the string needed to
-    # retrive options from.
+    # Initialize configuration options.
+    local OPTION=''
+
+    # Check action string. The action string must be present in order
+    # for this function to work. It provides the information needed to
+    # retrive configurantion options from.
     if [[ "$ACTION" == '' ]];then
-        cli_printMessage "`gettext "There is no action to work with."`" --as-error-line
+        cli_printMessage "`gettext "There is no action string to work with."`" --as-error-line
     fi
 
-    # Check field value. The field's value must match the cut's
-    # command specification of its -f option.
+    # Check field definition. The field definition must match any of
+    # the formats specified by the `-f' option of `cut' command.
     if [[ ! "$FIELD" =~ '^([0-9]+|[0-9]+-|-[0-9]+|[0-9]+-[0-9]+)$' ]];then
-        cli_printMessage "`gettext "The field specified is not valid."`" --as-error-line
+        cli_printMessage "`gettext "The field definition is not valid."`" --as-error-line
     fi
 
-    # Get option from pre-rendition configuration action definition.
-    VALUE=$(echo -n "$ACTION" | cut -d: -f${FIELD})
+    # Get configuration option from action string.
+    OPTION=$(echo -n "$ACTION" | cut -d: -f${FIELD})
 
-    # Sanitate action value passed from pre-rendition configuration
-    # action definition.
-    VALUE=$(echo -n "${VALUE}" \
+    # Sanitate configuration option retrived from action string.
+    OPTION=$(echo -n "${OPTION}" \
         | sed -r 's!^ *!!g' \
         | sed -r 's!( |,|;) *! !g' \
         | sed -r 's! *$!!g')
 
-    # Output action value without trailing newline.
-    cli_printMessage "$VALUE" --as-stdout-line
+    # Verify configuration option. It cannot be an empty value.
+    if [[ $OPTION == '' ]];then
+        cli_printMessage "`gettext "The configuration option cannot be empty."`" --as-error-line
+    fi
+
+    # Print out configuration options retrived from action string.
+    cli_printMessage "$OPTION" --as-stdout-line
 
 }
