@@ -1,11 +1,12 @@
 #!/bin/bash
 #
-# render_doDm.sh -- This function standardize production of display
-# managers (e.g., Gdm and Kdm). This function copies all files needed
-# into a temporal directory, realize expansion of translation markers
-# and packs all the files into a tar.gz package that is used for
-# installation. This function must be used as last-rendition action
-# for Gdm and Kdm directory specific base-rendition actions.
+# render_svg_convertPngToDm.sh -- This function standardize production
+# of display managers (e.g., Gdm and Kdm). This function copies all
+# files needed into a temporal directory, realize expansion of
+# translation markers and packs all the files into a tar.gz package
+# that is used for installation. This function must be used as
+# last-rendition action for Gdm and Kdm directory specific
+# base-rendition actions.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -27,7 +28,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doDm {
+function render_svg_convertPngToDm {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
