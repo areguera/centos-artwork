@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_doGrub.sh -- This function provides post-rendition
-# action used to produce GRUB images.
+# render_svg_convertPngToGrub.sh -- This function provides
+# post-rendition action used to produce GRUB images.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doGrub {
+function render_svg_convertPngToGrub {
 
     # Define number of colors the images will be produced on.
     local COLOR_NUMBER='14'
@@ -84,7 +84,7 @@ function render_doGrub {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
+    render_svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
