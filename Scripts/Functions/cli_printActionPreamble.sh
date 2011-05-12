@@ -42,7 +42,7 @@ function cli_printActionPreamble {
     local MESSAGE=''
 
     # Initialize message options.
-    local OPTIONS=''
+    local OPTION=''
 
     # Initialize file variable as local to avoid conflicts outside.
     # We'll use the file variable later, to show the list of files
@@ -72,11 +72,11 @@ function cli_printActionPreamble {
             --to-create )
                 if [[ $FILES == '--' ]];then
                     MESSAGE="`gettext "There is no entry to create."`"
-                    OPTIONS='--as-error-line'
+                    OPTION='--as-error-line'
                 else
                     MESSAGE="`ngettext "The following entry will be created" \
                         "The following entries will be created" $COUNT`:"
-                    OPTIONS=''
+                    OPTION=''
                 fi
                 shift 2
                 break
@@ -85,11 +85,11 @@ function cli_printActionPreamble {
             --to-delete )
                 if [[ $FILES == '--' ]];then
                     MESSAGE="`gettext "There is no file to delete."`"
-                    OPTIONS='--as-error-line'
+                    OPTION='--as-error-line'
                 else
                     MESSAGE="`ngettext "The following entry will be deleted" \
                         "The following entries will be deleted" $COUNT`:"
-                    OPTIONS=''
+                    OPTION=''
                 fi
                 shift 2
                 break
@@ -98,11 +98,11 @@ function cli_printActionPreamble {
             --to-locale )
                 if [[ $FILES == '--' ]];then
                     MESSAGE="`gettext "There is no file to locale."`"
-                    OPTIONS='--as-error-line'
+                    OPTION='--as-error-line'
                 else
                     MESSAGE="`ngettext "Translatable strings will be retrived from the following entry" \
                         "Translatable strings will be retrived from the following entries" $COUNT`:"
-                    OPTIONS=''
+                    OPTION=''
                 fi
                 shift 2
                 break
@@ -111,11 +111,11 @@ function cli_printActionPreamble {
             --to-edit )
                 if [[ $FILES == '--' ]];then
                     MESSAGE="`gettext "There is no file to edit."`"
-                    OPTIONS='--as-error-line'
+                    OPTION='--as-error-line'
                 else
                     MESSAGE="`ngettext "The following file will be edited" \
                         "The following files will be edited" $COUNT`:"
-                    OPTIONS=''
+                    OPTION=''
                 fi
                 shift 2
                 break
@@ -124,11 +124,11 @@ function cli_printActionPreamble {
             -- )
                 if [[ $FILES == '--' ]];then
                     MESSAGE="`gettext "There is no file to process."`"
-                    OPTIONS='--as-error-line'
+                    OPTION='--as-error-line'
                 else
                     MESSAGE="`ngettext "The following file will be processed" \
                         "The following files will be processed" $COUNT`:"
-                    OPTIONS=''
+                    OPTION=''
                 fi
                 shift 1
                 break
@@ -137,7 +137,7 @@ function cli_printActionPreamble {
     done
 
     # Print out the preamble message.
-    cli_printMessage ${OPTIONS} "${MESSAGE}"
+    cli_printMessage "${MESSAGE}" "${OPTION}" 
     for FILE in $FILES;do
         cli_printMessage "$FILE" --as-response-line
     done
