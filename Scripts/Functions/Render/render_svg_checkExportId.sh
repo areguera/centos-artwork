@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# svg_checkExportId.sh -- This function standardizes the export id
+# render_svg_checkExportId.sh -- This function standardizes the export id
 # used inside svg files and the way of verify them.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_checkExportId {
+function render_svg_checkExportId {
+
+    local INSTANCE="$1"
+    local EXPORTID="$2"
+
+    # Verify instance.
+    cli_checkFiles $INSTANCE
+
+    # Verify export id.
+    if [[ $EXPORTID == '' ]];then
+        cli_printMessage "`gettext "The export id value cannot be empty."`" --as-error-line
+    fi
 
     # Check export id inside design templates.
     grep "id=\"$EXPORTID\"" $INSTANCE > /dev/null
