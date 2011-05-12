@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_getColors.sh -- This function takes one palette produced by
+# render_svg_getColors.sh -- This function takes one palette produced by
 # Gimp (e.g., syslinux.gpl) as input and outputs a list of colors as
 # specified.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getColors {
+function render_svg_getColors {
 
     # Define path to GPL palette. This is the .gpl file we use to
     # retrive color information from.
