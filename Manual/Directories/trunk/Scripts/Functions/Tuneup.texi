@@ -1,14 +1,50 @@
-@subheading Goals
+@subheading Name
 
-This section describes the @code{tuneup} functionality of
-@command{centos-art.sh} script and general examples about file
-maintainance inside a working copy of CentOS Artwork Repository.
+The @strong{@code{tuneup}} functionlity is part of
+@command{centos-art.sh} script and standardizes tasks related to file
+maintainance inside the working copy of CentOS Artwork Repository.
 
-@subheading Description
+@subheading Synopsis
+
+@command{centos-art} @code{@strong{tuneup}} @code{[OPTIONS] path/to/dir}
+
+The @file{path/to/dir} parameter specifies what directory structure
+inside the working copy of CentOS Artwork Repository you want to
+process. 
 
 The @code{tuneup} functionality of @command{centos-art.sh} script
-provides the standard way of maintaining files inside the working copy
-of CentOS Artwork Repository.
+accepts the following options:
+
+@table @option
+@item --quiet
+
+Supress all output messages except error messages.  When this option
+is passed, all confirmation requests are supressed as well and a
+possitive answer is assumed for them, just as if the
+@option{--answer-yes} option had been provided.
+
+@item --answer-yes
+
+Assume `yes' to all confirmation requests.
+
+@item --filter="REGEX"
+
+Reduce the list of files to process using @samp{REGEX} as pattern.
+You can use this option in combination with @file{path/to/dir} in
+order to control the amount of files you want to produce as
+base-rendition.  The deeper you go into the directory structure the
+more specific you'll be about the component you want to produce. When
+you cannot go deeper into the directory structure, you can use
+@option{--filter} option to reduce the list of files.
+
+@item --dont-commit-changes
+
+Supress all commit and update actions realized over files, before and
+after the action itself had took place over files in the working copy.
+
+@end table
+
+@subheading Description
 
 Tasks related to file maintainance are repetitive. You might find
 yourself doing them time after time inside the working copy of CentOS
@@ -111,29 +147,7 @@ used to build the heading reference changes, you need to run the the
 @code{tuneup} functionality of @command{centos-art.sh} script in order
 for the anchor elements to use the correct information.
 
-@subheading Usage
-
-@subsubheading Synopsis
-
-@command{centos-art tuneup [OPTIONS] path/to/dir}
-
-@subsubheading Options
-
-@table @option
-@item --quiet
-Supress all output messages, including confirmation question. Use this
-option with care.
-@item --filter='regex'
-Reduce the amount of files to process using @samp{regex} as pattern.
-@item --answer-yes
-Assume `yes' to all confirmation questions.
-@item --dont-commit-changes
-Supress all @code{commit} and @code{update} actions realized over
-files already processed, before and after the action itself had took
-place in the working copy.
-@end table
-
-@subsubheading Examples
+@subheading Examples
 
 @table @command
 @item centos-art tuneup trunk/Scripts
@@ -150,6 +164,22 @@ in @file{trunk/Identity/Models/Brands} which have the word
 Update headings and the related table of contents to all web pages
 inside @file{trunk/Identity/Webenv/App/Home}, recusively.
 @end table
+
+@subheading Author
+
+Written by Alain Reguera Delgado.
+
+@subheading Reporting bugs
+
+Report bugs to @email{centos-artwork@@centos.org} mailing list.
+
+@subheading Copyright
+
+Copyright @copyright{}  2009, 2010, 2011 The CentOS Project.
+
+This is free software.  You may redistribute copies of it under the
+terms of the GNU General Public License (@pxref{GNU General Public
+License}).  There is NO WARRANTY, to the extent permitted by law.
 
 @subheading See also
 

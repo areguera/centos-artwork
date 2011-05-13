@@ -650,6 +650,11 @@ centos-art help --read turnk/Identity/Images/Themes/TreeFlower/3
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
+          <menunode>Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</menunode>
+          <menutitle>Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
           <menunode>Directories trunk Identity Models Themes Default Distro 5 Anaconda</menunode>
           <menutitle>Directories trunk Identity Models Themes Default Distro 5 Anaconda</menutitle>
           <menucomment></menucomment>
@@ -1675,7 +1680,7 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
   </node>
   <node>
     <nodename>Directories trunk Identity Models Themes Default Distro 5</nodename>
-    <nodenext>Directories trunk Identity Models Themes Default Distro 5 Anaconda</nodenext>
+    <nodenext>Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</nodenext>
     <nodeprev>Directories trunk Identity Models Themes Default Distro</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
@@ -1748,9 +1753,47 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
     </section>
   </node>
   <node>
+    <nodename>Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</nodename>
+    <nodenext>Directories trunk Identity Models Themes Default Distro 5 Anaconda</nodenext>
+    <nodeprev>Directories trunk Identity Models Themes Default Distro 5</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Identity/Models/Themes/Default/Distro/5.5/Notes/Release</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+    </section>
+  </node>
+  <node>
     <nodename>Directories trunk Identity Models Themes Default Distro 5 Anaconda</nodename>
     <nodenext>Directories trunk Identity Models Themes Default Distro 5 Firstboot</nodenext>
-    <nodeprev>Directories trunk Identity Models Themes Default Distro 5</nodeprev>
+    <nodeprev>Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Identity/Models/Themes/Default/Distro/5/Anaconda</file> Directory</title>
@@ -1819,12 +1862,7 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
         </item>
       </itemize>
       <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
+      <para>Another example of using last-rendition flow is that related to GDM and KDM <file>tar.gz</file> file construction. Each <file>tar.gz</file> file is made of several files that need to be put together in order to make them installable. In the very specific case of GDM and KDM some of the required files are retrived from design models directory structure and others from artistic motifs directory structure after had been produced through base-rendition. In this case, the action of grouping files and packing them is realized through last-rendition action. This couldn't be possible through post-rendition because we need to wait to have two images first (produced through base-rendition) before we could grouping them all into the <file>tar.gz</file> package.</para>
       <subheading>Usage</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -1955,12 +1993,7 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
         </item>
       </itemize>
       <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
+      <para>The <file>Preview.png</file> image of Ksplash which is made of three different images. In order to build the <file>Preview.png</file> image, we need to create the three images the <file>Preview.png</file> image is made of first (e.g., through base-rendition) and then, combine them all together into one new image, the <file>Preview.png</file> image in this case.</para>
       <subheading>Usage</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -2831,15 +2864,54 @@ centos-art locale --edit trunk/Scripts
     <section>
       <title>The <file>trunk/Scripts/Functions/Prepare</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Scripts Functions Prepare</indexterm></para>
-      <subheading>Goals</subheading>
-      <para>This section describes the <code>prepare</code> functionality of <command>centos-art.sh</command> script and the preliminar steps you need to follow in order to get your workstation ready for using a working copy of CentOS Artwork Repository.</para>
+      <subheading>Name</subheading>
+      <para>The <strong><code>prepare</code></strong> functionality is part of the <command>centos-art.sh</command> script and standardizes configuration of preliminar steps you need to follow in order to get your workstation ready for using a working copy of CentOS Artwork Repository.</para>
+      <subheading>Synopsis</subheading>
+      <para><command>centos-art <strong>prepare</strong> [OPTIONS]</command></para>
+      <para>There is no need to specify <file>path/to/dir</file> information in this functionality. Most actions are performed through options.</para>
+      <para>The <strong><code>prepare</code></strong> functionality of centos-art.sh script accepts the following options:</para>
+      <table>
+        <tableitem>
+          <tableterm><option>--quiet</option></tableterm>
+          <item>
+            <para>Supress all output messages except error messages.  When this option is passed, all confirmation requests are supressed as well and a possitive answer is assumed for them, just as if the <option>--answer-yes</option> option had been provided.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--answer-yes</option></tableterm>
+          <item>
+            <para>Assume <samp>yes</samp> to all confirmation requests.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--packages</option></tableterm>
+          <item>
+            <para>Install/update software packages required by the working copy of CentOS Artwork Repository.</para>
+            <para>The process of software installation takes place through <command>sudo yum</command> and the repository configuration currently set in your workstation.</para>
+            <para>Most of the software packages required by the working copy of CentOS Artwork Repository are available on The CentOS Distribution and can be installed using The CentOS Distribution installation media.  The only exception is Inkscape, the program used to manipulate <acronym><acronymword>SVG</acronymword><acronymdesc>Scalable Vector Graphics</acronymdesc></acronym> files in the working copy.</para>
+            <para>The <file>inkscape</file> package isn't inside The CentOS Distribution or any of The CentOS Project repositories neither, so you need to install it from a third party repository like <samp>RPMForge</samp> or <samp>EPEL</samp>. See page <uref><urefurl>http://wiki.centos.org/AdditionalResources/Repositories/</urefurl><urefdesc>The CentOS Repositories</urefdesc></uref>, to know how to configure third party repositories in The CentOS Distribution.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--link</option></tableterm>
+          <item>
+            <para>This option uses symbolic links to install/update the connection between components inside the working copy and components outside the working copy. Among the components that need to be connected figure out the command-line internface of <command>centos-art.sh</command> script; fonts, brushes, palettes and patterns used by programs like GIMP and Inkscape; and configuration files of text editors.</para>
+            <para>The main purpose of such connection is to adapt the working copy to the CentOS Distribution filesystem layout (e.g., <file>~/bin</file> directory is for storing personal programs, <file>~/gimp-2.2/brushes</file> is for storing GIMP brushes for personal use, etc.) and, at the same time, to provide a way of sharing changes made to connected components to other workstations (e.g., if I update a GIMP brush in my workstation, you'll receive the change the next you update your working copy and then will be immediatly available for you to use in GIMP).</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--environment</option></tableterm>
+          <item>
+            <para>Print the name and value of some of the environment variables used by <command>centos-art.sh</command> scripts.</para>
+          </item>
+        </tableitem>
+      </table>
       <subheading>Description</subheading>
-      <para>The <code>prepare</code> functionality of <command>centos-art.sh</command> script provides the standard way of configuring the workstation you plan to use for storing the working copy of CentOS Artwork Repository.</para>
-      <para>The <code>prepare</code> functionality of <command>centos-art.sh</command> script is part of the CentOS Artwork Repository. So, in order to execute the <code>prepare</code> functionality of <command>centos-art.sh</command> script you need to have access to a working copy of CentOS Artwork Repository, first.  Working copies of CentOS Artwork Repository are downloaded from the source repository and made available to you by mean of workstations.  A workstation is a computer that you install and configure (prepare) to do something. In this case, you pick up a computer and prepare it for working on the CentOS Artwork Repository.</para>
+      <para>The <strong><code>prepare</code></strong> functionality of <command>centos-art.sh</command> script is part of the CentOS Artwork Repository. So, in order to execute the <strong><code>prepare</code></strong> functionality of <command>centos-art.sh</command> script you need to have access to a working copy of CentOS Artwork Repository, first.  Working copies of CentOS Artwork Repository are downloaded from the source repository and made available to you by mean of workstations.  A workstation is a computer that you install and configure (prepare) to do something. In this case, you pick up a computer and prepare it for working on the CentOS Artwork Repository.</para>
       <subsubheading>Installing the workstation</subsubheading>
       <para>Installing the workstation is the first step you need to do. In this step you make your computer functional through an operating system. In this case, The Community Enterprise Operating System; which is also know as The CentOS Distribution or just CentOS, for short.</para>
       <para>To install The CentOS Distribution you need to have the installation media somehow (e.g., CDs, DVDs, Pendrives, etc.). There are several different ways to perform the installation process of CentOS distribution, but generally, you put the installation media in your media reader, boot the computer from it, and follow the installer intructions.  That simple.</para>
-      <para>If you don't have the installation media of CentOS distribution, you need to download the ISO files related to the media you plan to use (e.g., CD or DVD) and then create the installation media by yourself. The CentOS Distribution ISO files can be downloaded from <uref><urefurl>http://mirrors.centos.org/</urefurl></uref> and, if you chosen CD or DVD as your prefered installation medium, you can burn the ISO files using the <command>K3B</command> application to create the installation media you'll use. Of course, in order to download the ISO files and create the installation media, you need to have an already installed CentOS workstation where you can realized all the work.</para>
+      <para>If you don't have the installation media of CentOS distribution, you need to download the ISO files related to the media you plan to use (e.g., CD or DVD) and then create the installation media by yourself. The CentOS Distribution ISO files can be downloaded from <uref><urefurl>http://mirrors.centos.org/</urefurl></uref> and, if you chosen CD or DVD as your prefered installation medium, you can burn the ISO files using the <command>K3B</command> application so as to create the installation media you'll use.  Of course, in order to download the ISO files and create the installation media, you need to have an already installed CentOS workstation where you can realized all the work.</para>
       <subsubheading>Configuring the workstation</subsubheading>
       <para>Once you've installed the workstation and it is up and running, login as <samp>root</samp> user, create a username (e.g., <samp>centos</samp>) and set a password for it. This is the username you must use for everyday work inside your working copy of the CentOS Artwork Repository.</para>
       <quotation>
@@ -2863,7 +2935,7 @@ centos-art locale --edit trunk/Scripts
               <item>
                 <para><file>/usr/bin/nano</file></para>
               </item>
-            </itemize>     
+            </itemize>
             <para>If no one of these values is set in the <env>EDITOR</env> environment variable, the <file>centos-art.sh</file> script uses <file>/usr/bin/vim</file> text editor, the one installed by default in The CentOS Distribution.</para>
           </item>
         </tableitem>
@@ -2871,14 +2943,14 @@ centos-art locale --edit trunk/Scripts
           <tableterm><strong>Default locale information:</strong></tableterm>
           <item>
             <para>The default locale information is controlled by the <env>LANG</env> environment variable. This variable is initially set in the configuration process of CentOS distribution installer, specifically in the <samp>Language</samp> step; or once installed using the <command>system-config-language</command> tool.</para>
-            <para>The <command>centos-art.sh</command> script uses the <env>LANG</env> environment variable to determine what language to use for printing output messages. Moreover, the <code>locale</code> functionality uses the <env>LANG</env> to determine what translation messages to udpate or edit.</para>
+            <para>The <command>centos-art.sh</command> script uses the <env>LANG</env> environment variable to determine what language to use for printing output messages. Another use of <env>LANG</env> variable inside <command>centos-art.sh</command> script is to determine what translation file to update or edit when input files are localized.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><strong>Default time zone representation:</strong></tableterm>
           <item>
             <para>The time zone representation is a time correction applied to the system time (stored in the BIOS clock) based on your country location. This correction is specially useful to distributed computers around the world that work together and need to be syncronized in time to know when things happened.</para>
-            <para>The CentOS Artwork Repository is made of one server and several workstations spread around the world. In order for all these workstations to know when changes in the server took place, it is required that all the workstations set their system clocks to use the same time information (i.e., <acronym><acronymword>UTC</acronymword><acronymdesc>Coordinated Universal Time</acronymdesc></acronym>) and set the time correction for their countries in the operating system.  Otherwise, it'd be hard to know when something exactly happened.</para>
+            <para>The CentOS Artwork Repository is made of one server and several workstations spread around the world. In order for all these workstations to know when changes in the server took place, it is required that they all set their system clocks to use the same time information (i.e., <acronym><acronymword>UTC</acronymword><acronymdesc>Coordinated Universal Time</acronymdesc></acronym>) and set the time correction for their specific countries in the operating system.  Otherwise, it would be difficult to know when something exactly happened.</para>
             <para>Generally, setting the time information is a straight-forward task and configuration tools provided by The CentOS Distribution do cover time correction for most of the countries around the world.  However, if you need a time precision not provided by any of the date and time configuration tools provided by The CentOS Distribution then, you need to use the <env>TZ</env> environment variable to correct the time information by yourself.  The format of <env>TZ</env> environment variable is described in <file>tzset(3)</file> manual page.</para>
           </item>
         </tableitem>
@@ -2897,59 +2969,17 @@ sudo yum install subversion
 ]]></verbatim>
       </quotation>
       <subsubheading>Configuring the working copy</subsubheading>
-      <para>Once you have a working copy of CentOS Artwork Repository in your workstation, you can go and run the <code>prepare</code> functionality of <command>centos-art.sh</command> script to realize the remaining configuration stuff.</para>
+      <para>Once you have a working copy of CentOS Artwork Repository in your workstation, you can go and run the <strong><code>prepare</code></strong> functionality of <command>centos-art.sh</command> script to realize the remaining configuration stuff.</para>
       <para>Assuming this is the very first time you run the <command>centos-art.sh</command> script, you'll find that there is no <command>centos-art</command> command-line interface for it in your workstation.  This is correct. In order to have the <command>centos-art</command> command-line in your workstation, you need to run the <command>centos-art.sh</command> script using its absolute path:</para>
       <verbatim xml:space="preserve"><![CDATA[
 ~/artwork/trunk/Scripts/centos-art.sh prepare [OPTIONS]
 ]]></verbatim>
-      <para>Assuming you've already run the <code>prepare</code> functionality before, there is no need for you to use the absolute path again. Instead, you can use the <command>centos-art</command> command-line interface directly, as the following example describes:</para>
+      <para>Assuming you've already run the <strong><code>prepare</code></strong> functionality before, there is no need for you to use the absolute path again. Instead, you can use the <command>centos-art</command> command-line interface directly, as the following example describes:</para>
       <verbatim xml:space="preserve"><![CDATA[
 centos-art.sh prepare [OPTIONS]
 ]]></verbatim>
-      <para>Notice that you can execute the <code>prepare</code> functionality more than once. This is specially useful to keep the link information syncronized. For example, considering you've added new brushes to or removed old brushes from your working copy of CentOS Artwork Repository, the link information related to those files need to be updated in the <file>~/.gimp-2.2/brushes</file> directory too, in a way the addition/deletion change that took place in your working copy can be reflected there, as well.  The same is true for other similar components like fonts, patterns and palettes components.</para>
-      <subheading>Usage</subheading>
-      <subsubheading>Synopsis</subsubheading>
-      <para><command>centos-art prepare [OPTIONS]</command></para>
-      <subsubheading>Options</subsubheading>
-      <table>
-        <tableitem>
-          <tableterm><option>--packages</option></tableterm>
-          <item>
-            <para>Install/update software packages required by the working copy of CentOS Artwork Repository.</para>
-            <para>The process of software installation takes place through <command>sudo yum</command> and the repository configuration currently set in your workstation.</para>
-            <para>Most of the software packages required by the working copy of CentOS Artwork Repository are available on The CentOS Distribution and can be installed using The CentOS Distribution installation media.  The only exception is Inkscape, the program used to manipulate <acronym><acronymword>SVG</acronymword><acronymdesc>Scalable Vector Graphics</acronymdesc></acronym> files in the working copy.</para>
-            <para>The <file>inkscape</file> package isn't inside The CentOS Distribution or any of The CentOS Project repositories neither, so you need to install it from a third party repository like <samp>RPMForge</samp> or <samp>EPEL</samp>. See page <uref><urefurl>http://wiki.centos.org/AdditionalResources/Repositories/</urefurl><urefdesc>The CentOS Repositories</urefdesc></uref>, to know how to configure third party repositories in The CentOS Distribution.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--link</option></tableterm>
-          <item>
-            <para>Install/update connection between working copy and workstation through symbolic links.</para>
-            <para>This option creates the <command>centos-art</command> command-line interface of <command>centos-art.sh</command> script through a symbolic link.  There is no need for you to type the full path to <command>centos-art.sh</command> script each time you need to execute it.  Instead, you use the <command>centos-art</command> command which is much shorter and faster to type.</para>
-            <para>This option connects design compenents like fonts, brushes, patterns and palettes inside your working copy of CentOS Artwork Repository with programs like <acronym><acronymword>GIMP</acronymword><acronymdesc>GNU Image Manipulation Program</acronymdesc></acronym> and Inkscape outside it. This way, all your modifications on these components will take place inside the repository and will be shared to all other working copies the next time you commit the changes up to source repository.</para>
-            <para>This option standardizes width, tabulation, indentation, and line numbering for text editors in your workstation.  The configuration file where these definitions are set, is versioned inside your working copy and linked from the appropriate place in the workstation to make it valid to your default text editor.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--environment</option></tableterm>
-          <item>
-            <para>Print the name and value of some of the environment variables used by <command>centos-art.sh</command> scripts.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--quiet</option></tableterm>
-          <item>
-            <para>Supress all output messages, including confirmation question. Use this option with care.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--answer-yes</option></tableterm>
-          <item>
-            <para>Assume <samp>yes</samp> to all confirmation questions.</para>
-          </item>
-        </tableitem>
-      </table>
-      <subsubheading>Examples</subsubheading>
+      <para>Notice that you can execute the <strong><code>prepare</code></strong> functionality more than once. This is specially useful to keep the link information syncronized. For example, considering you've added new brushes to or removed old brushes from your working copy of CentOS Artwork Repository, the link information related to those files need to be updated in the <file>~/.gimp-2.2/brushes</file> directory too, in a way the addition/deletion change that took place in your working copy can be reflected there, as well.  The same is true for other similar components like fonts, patterns and palettes components.</para>
+      <subheading>Examples</subheading>
       <table>
         <tableitem>
           <tableterm><command>centos-art prepare --packages --link</command></tableterm>
@@ -2964,6 +2994,13 @@ centos-art.sh prepare [OPTIONS]
           </item>
         </tableitem>
       </table>
+      <subheading>Author</subheading>
+      <para>Written by Alain Reguera Delgado.</para>
+      <subheading>Reporting bugs</subheading>
+      <para>Report bugs to <email><emailaddress>centos-artwork@centos.org</emailaddress></email> mailing list.</para>
+      <subheading>Copyright</subheading>
+      <para>Copyright &copyright;  2009, 2010, 2011 The CentOS Project.</para>
+      <para>This is free software.  You may redistribute copies of it under the terms of the GNU General Public License (see <xref><xrefnodename>GNU General Public License</xrefnodename></xref>).  There is NO WARRANTY, to the extent permitted by law.</para>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -2990,76 +3027,62 @@ centos-art.sh prepare [OPTIONS]
       <subheading>Name</subheading>
       <para>The <strong><code>render</code></strong> functionlity is part of <command>centos-art.sh</command> script and standardizes rendition tasks inside the working copy of CentOS Artwork Repository.</para>
       <subheading>Synopsis</subheading>
-      <para><command>centos-art</command> <code><strong>render</strong></code> <code>[OPTION] path/to/dir</code></para>
-      <para>The <file>path/to/dir</file> parameter refers the path information related to the directory structure inside the working copy of CentOS Artwork Repository you'r going to produce.  This path information defines whether to perform direct or theme-specific rendition.</para>
-      <para>You can use the <file>path/to/dir</file> information to control the amount of components you'll produce inside a specific renderable location. The more deep you go inside the path the more specific you are when producing theme components. Sometimes, you can also combine the use of <file>path/to/dir</file> with the <option>--filter</option> option to have a finer control over the files you produce.</para>
+      <para><command>centos-art</command> <code><strong>render</strong></code> <code>[OPTIONS] path/to/dir</code></para>
+      <para>The <file>path/to/dir</file> parameter specifies what directory structure inside the working copy of CentOS Artwork Repository you want to produce.</para>
       <para>The <code>render</code> functionality of <command>centos-art.sh</command> script accepts the following options:</para>
       <table>
         <tableitem>
           <tableterm><option>--quiet</option></tableterm>
           <item>
-            <para>Supress all output messages, including confirmation question. Use this option with care.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--filter="REGEX"</option></tableterm>
-          <item>
-            <para>Reduce the list of files to process using <samp>REGEX</samp> as pattern.</para>
+            <para>Supress all output messages except error messages.  When this option is passed, all confirmation requests are supressed as well and a possitive answer is assumed for them, just as if the <option>--answer-yes</option> option had been provided.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><option>--answer-yes</option></tableterm>
           <item>
-            <para>Assume `yes' to all confirmation questions.</para>
+            <para>Assume `yes' to all confirmation requests.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--filter="REGEX"</option></tableterm>
+          <item>
+            <para>Reduce the list of files to process using <samp>REGEX</samp> as pattern. You can use this option in combination with <file>path/to/dir</file> in order to control the amount of files you want to produce as base-rendition.  The deeper you go into the directory structure the more specific you'll be about the component you want to produce. When you cannot go deeper into the directory structure, you can use <option>--filter</option> option to reduce the list of files.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><option>--dont-commit-changes</option></tableterm>
           <item>
-            <para>Supress all commit and update actions realized over files already processed, before and after the action itself had took place in the working copy.</para>
+            <para>Supress all commit and update actions realized over files, before and after the action itself had took place over files in the working copy.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><option>--releasever="STRING"</option></tableterm>
           <item>
-            <para>Produce content for the release version specified in <samp>STRING</samp>. This option is generaly used in direct rendition, where design models aren't organized using release versions and architectures as reference.</para>
+            <para>This option expands release-specific translation makers to <samp>STRING</samp>. Use this option when no releasae-specific information can be retrived from the path of the directory structure you are currently rendering.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><option>--basearch="STRING"</option></tableterm>
           <item>
-            <para>Produce content for the architecture specified in <samp>STRING</samp>.  This option is generaly used in direct rendition, where design models aren't organized using release versions and architectures as reference.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--convert="STRING"</option></tableterm>
-          <item>
-            <para>Uses post-rendition to convert output produced by base-rendition to any image format specified in <samp>STRING</samp>. This option is an interface for the <command>convert</command> command of ImageMagick tool set, so it is applicable to images output only.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--rotate="STRING"</option></tableterm>
-          <item>
-            <para>Uses post-rendition to rotate output produced by base-rendition to any angle specified in <samp>STRING</samp>. This option is an interface for the <command>convert</command> command of ImageMagick tool set, so it is applicable to images output only.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--resize="STRING"</option></tableterm>
-          <item>
-            <para>Uses post-rendition to resize the base-rendition output to any angle specified in <samp>STRING</samp>. This option is an interface for the <command>convert</command> command of ImageMagick tool set, so it is applicable to images output only.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--group-by="STRING"</option></tableterm>
-          <item>
-            <para>Group base output files inside directories. Directories used to stored base output files are named using the file extension of base output files.  For example: if the base output file is a <file>.png</file> file, it is moved inside a <file>Png/</file> directory; if the current file is a <file>.jpg</file> file, it is stored inside a <file>Jpg/</file> directory, and so on.</para>
-            <para>Directories used to group files are created in the same location that base output files would normaly do.</para>
+            <para>This option expands architecture-specific translation makers to <samp>STRING</samp>. Use this option when no architecture-specific information can be retrived from the path of the directory structure you are currently rendering.</para>
           </item>
         </tableitem>
         <tableitem>
           <tableterm><option>--theme-model="STRING"</option></tableterm>
           <item>
-            <para>Specify, in the <samp>STRING</samp>, the name of the theme model you want to use to produce theme motifs. By default, if this option is not passed, the <samp>Default</samp> theme model is used as reference to produce theme motifs.</para>
+            <para>Specify the name of the theme model you want to use to produce theme artistic motifs. By default, if this option is not passed, the <samp>Default</samp> theme model is used as reference to produce theme motifs.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--post-rendition="STRING"</option></tableterm>
+          <item>
+            <para>This option let you apply a command as post-rendition action. In this case, the <samp>STRING</samp> represents the command string you want to execute in order to perform in-place modifications to base-rendition output.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--last-rendition="STRING"</option></tableterm>
+          <item>
+            <para>This option let you apply a command as last-rendition action. In this case, the <samp>STRING</samp> represents the command string you want to execute in order to perform in-place modifications to base-rendition, post-rendition and directory-specific rendition outputs.</para>
           </item>
         </tableitem>
       </table>
@@ -3079,9 +3102,9 @@ centos-art.sh prepare [OPTIONS]
         <tableitem>
           <tableterm><strong>Theme-specific rendition</strong></tableterm>
           <item>
-            <para>In theme-specific rendition, there is one directory structure to store input files <file>trunk/Identity/Themes/Models</file>, one directory structure to store translation files (<file>trunk/Locales/Identity/Themes/Models/</file>), one directory structure to store artistic motifs (<file>trunk/Identity/Images/Themes</file>) and one directory structure to store output files (<file>trunk/Identity/Images/Themes</file>).</para>
+            <para>In theme-specific rendition, there is one directory structure to store input files (<file>trunk/Identity/Themes/Models</file>), one directory structure to store translation files (<file>trunk/Locales/Identity/Themes/Models/</file>), one directory structure to store artistic motifs (<file>trunk/Identity/Images/Themes</file>) and one directory structure to store output files (<file>trunk/Identity/Images/Themes</file>).</para>
             <para>In theme-specific rendition, when the <code>render</code> functionality of <command>centos-art.sh</command> script is executed, it uses the input directory structure to build a list of files to process, which is used as reference to determine the location of the translation file and the location of the output file, as well.</para>
-            <para>In contrast with direct rendition, when we use theme-specific rendition, it is possible to combine both design models and artistic motifs to produce output in an arbitrary way. This configuration is specially interesting because it is possible to create different artistic motifs and one unique design model in order to produce one unique theme structure with different visual styles. Or the opposite, to create different theme structures and apply one unique visual style to produce different visual styles with the same theme structure. Or even push a bit farther and experiment with arbitrary combinations among them all.</para>
+            <para>In contrast with direct rendition, when we use theme-specific rendition, it is possible to combine both design models and artistic motifs to produce output in an arbitrary way. This configuration is specially interesting because it is possible to create different artistic motifs and one unique design model in order to produce one unique theme structure with different visual styles. Or the opposite, to create different theme structures and apply one unique visual style to produce one unique visual styles on different theme structure. Or even get a bit farther and experiment with arbitrary combinations among them all.</para>
           </item>
         </tableitem>
       </table>
@@ -3089,31 +3112,86 @@ centos-art.sh prepare [OPTIONS]
       <para>In both direct and theme-specific rendition, if the input related translation file doesn't exist, the <code>render</code> functionality of <command>centos-art.sh</command> script will produce the output in the same language of its input file.</para>
       <subsubheading>The base-rendition flow</subsubheading>
       <para>The base-rendition flow is the first rendition flow of all rendition flows available and takes place immediatly after executing the <code>render</code> functionality of <command>centos-art.sh</command> script.</para>
-      <para>The base-rendition consist on producing different output formats in different languages from one single input format.  This is, one input file produces one output file. Inside the <code>render</code> functionality of <command>centos-art.sh</command> script, the input format is always an XML file (e.g., SVG, XHTML, Docbook) and the output format depends on the input file provided.</para>
-      <para>For example, when the input format is a SVG file, the base output is a PNG file; when the input format is XHTML the base output is an XHTML file; when the input format is a Docbook file the base output is an XHTML file.</para>
+      <para>The base-rendition produces different outputs from one unique input format. This is, one input file is used to produce one ore more output files. When translation files are available for input files, the base-rendition applies the translation file to the input file in order to produce a translated instance of it, then this translated instance is used as input file to produce one or more output files.</para>
+      <para>Inside the <code>render</code> functionality of <command>centos-art.sh</command> script, the input format is always XML (e.g., SVG, XHTML, Docbook), the translation files are always portable objects (e.g., PO) and the output format depends on the input file provided  (e.g., when the input format is a SVG file, the base output is a PNG file; when the input format is XHTML the base output is an XHTML file; when the input format is a Docbook file the base output might be either HTML, RTF, PS or PDF).</para>
+      <para>As application example of base-rendition flow, consider the description of the  following sections:</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models Themes Default Distro 5 Anaconda</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models Themes Default Distro 5.5 Notes Release</xrefnodename></xref></para>
+        </item>
+      </itemize>
       <subsubheading>The post-rendition flow</subsubheading>
-      <para>The post-rendition flow takes place after base-rendition and is applied to create modified copies of the file produced by base-rendition in the same directory structure.</para>
-      <para>For example, when the input format is a SVG file and the output is a PNG file, we can use post-rendition to extend the base output to other image formats. In fact, it is possible to do anything permitted by the ImageMagick and Netpbm programs (e.g., resize, rotate, reduce color, etc.) over the base output.</para>
+      <para>The post-rendition flow is performed immediatly after base-rendition flow to extend the base-rendition flow by applying in-place modifications to base-rendition output. In-place modifications can be performed either through the <option>--post-rendition</option> command-line option of <command>centos-art.sh</command> script or through directory-specific rendition.</para>
+      <para>Actions commanded through <option>--post-rendition</option> option are applied first and directory-specific actions later. This order is required to propagate in-place changes commited to base-rendition output to modified copies (i.e., new files) of it created through directory-specific rendition.  Creation of modified copies is something specific to directory-specific rendition only. It is not possible for the <option>--post-rendition</option> option to create modified copies of base-rendition flow because commands passed through it are applied to the base-rendition output file directly in a disposition that don't support creation of new files, but in-place modifications only.</para>
+      <para>The command passed to <option>--post-rendition</option> option can be changed everytime you run the <command>centos-art.sh</command> script, but actions specified in directory-specific rendition cannot be changed in the same way.  Direcctory-specific rendition is set inside <command>centos-art.sh</command> script to perform specific tasks that cannot be achived through <option>--post-rendition</option> option.</para>
+      <para>As application example of post-rendition flow, consider the description of the  following sections:</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models Themes Default Distro 5 Syslinux</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models Themes Default Distro 5 Grub</xrefnodename></xref></para>
+        </item>
+      </itemize>
       <subsubheading>The last-rendition flow</subsubheading>
-      <para>The last-rendition flow takes place after post-rendition and is applied to all files produced as result of both base-rendition and post-rendition flows in the same directory structure, just before passing to process a different directory structure.</para>
-      <para>For example, consider the <file>Preview.png</file> image of Ksplash which is made of three different images. In order to build the <file>Preview.png</file> image, we need to create the three images the <file>Preview.png</file> image is made of first (e.g., through base-rendition) and then, combine them all together into one new image, the <file>Preview.png</file> image in this case.</para>
-      <para>Another example of using last-rendition flow is that related to GDM and KDM <file>tar.gz</file> file construction. Each <file>tar.gz</file> file is made of several files that need to be put together in order to make them installable. In the very specific case of GDM and KDM some of the required files are retrived from design models directory structure and others from artistic motifs directory structure after had been produced through base-rendition. In this case, the action of grouping files and packing them is realized through last-rendition action. This couldn't be possible through post-rendition because we need to wait to have two images first (produced through base-rendition) before we could grouping them all into the <file>tar.gz</file> package.</para>
+      <para>The last-rendition flow takes place after post-rendition and applies in-place modifications to all files produced as result of both base-rendition and post-rendition flows in the same directory structure, just before passing to process a different directory structure.  In-place modifications can be performed either through the <option>--last-rendition</option> command-line option of <command>centos-art.sh</command> script or through directory-specific rendition.</para>
+      <para>Actions commanded through <option>--last-rendition</option> option are applied after directory-specific actions. This order is required to prevent last-rendition actions commanded from directory-specifc rendition to overlap last-rendition actions commanded from <option>--last-rendition</option> option.</para>
+      <para>The command passed to <option>--last-rendition</option> option can be changed everytime you run the <command>centos-art.sh</command> script, but actions specified in directory-specific rendition cannot be changed in the same way.  Actions commanded from directory-specific rendition are set inside <command>centos-art.sh</command> script to perform specific tasks that cannot be achived through <option>--last-rendition</option> option.</para>
+      <para>As application example of last-rendition flow, consider the description of the  following sections:</para>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models Themes Default Distro 5 Ksplash</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models Themes Default Distro 5 Gdm</xrefnodename></xref></para>
+        </item>
+      </itemize>
       <subsubheading>The directory-specific rendition flow</subsubheading>
-      <para>The directory-specific rendition flow isn't a rendition flow by itself but a combination of rendition flows that are applied to specific directories at rendition time.</para>
-      <para>Inside the working copy of CentOS Artwork Repository there are some directories structures that exist to achieve specific tasks every time they are produced. The directory-specific rendition flow provides a way for the <code>render</code> functionality of <command>centos-art.sh</command> script to know what actions to apply to what directory structure when producing them.</para>
-      <para>The directory-specific rendition flow combines the base-rendition, post-rendition and last-rendition flows in specific ways and applies them to specific directory structures when they are detected.  Using this configuration can speed up production of different components like Syslinux, Grub, Gdm, Kdm and Ksplash that require intermediate formats or even several independent files, in order for the final content to be created.</para>
+      <para>Inside the working copy of CentOS Artwork Repository, some directory structure (e.g., <file>Syslinux</file>, <file>Gurb</file>, <file>Gdm</file>, <file>Kdm</file> and <file>KSplash</file>) required more than base-rendition or even the commands you could pass through the <option>--post-rendition</option> and <option>--last-rendition</option> options, in order for their final files to be produced. In these situations, we make use of directory-specific rendition flow.</para>
+      <para>The directory-specific rendition flow applies specific actions to specific directory structures when they enter into the rendition flow. Using this configuration speeds up production of all those components that require intermediate formats or even several independent files, in order for the final content to be created.</para>
+      <para>The directory-specific rendition flow is generally used in combination with post-rendition and last-rendition flows inside <command>centos-art.sh</command> script.</para>
       <subsubheading>Translations</subsubheading>
       <para>To translate output files, the <code>render</code> functionality of <command>centos-art.sh</command> script creates a translated instance of the input file and uses it then to create the base output file. The translated instance is created using the related translation messages of the input file. Translation messages are stored under <file>trunk/Locales</file> and are created using the <code>locale</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Locale</xrefnodename></xref>).</para>
+      <para>Translation files are optional. When no translation file is available for the input file, the base-rendition output is produced using the same language of the input file.</para>
       <subheading>Examples</subheading>
-      <verbatim xml:space="preserve"><![CDATA[
-centos-art render trunk/Identity/Images/Brands
-]]></verbatim>
-      <verbatim xml:space="preserve"><![CDATA[
-centos-art render trunk/Identity/Images/Brands --filter="symbol"
-]]></verbatim>
-      <verbatim xml:space="preserve"><![CDATA[
-centos-art render trunk/Identity/Images/Themes/Flame/2
-]]></verbatim>
+      <table>
+        <tableitem>
+          <tableterm><command>centos-art render trunk/Identity/Images/Brands</command></tableterm>
+          <item>
+            <para>This command produces all branding information related to The CentOS Project (e.g., symbols, logos and variants of them).</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art render trunk/Identity/Images/Brands --filter="symbol"</command></tableterm>
+          <item>
+            <para>This command produces all branding information, related to The CentOS Project, which file names contain the <samp>symbol</samp> string on it.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art render trunk/Identity/Images/Themes/Flame/2</command></tableterm>
+          <item>
+            <para>This command produces all visual manifestations related to version 2 of Flame artistic motif (e.g., Distribution, Posters, etc.) as specified by default design models.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art render trunk/Identity/Images/Themes/Flame/2/Distro</command></tableterm>
+          <item>
+            <para>This command produces the Distribution visual manifestations related to version 2 of Flame artistic motif (e.g., Anaconda, Syslinux, Grub, Firstboot, Gdm, Kdm, Gsplash, Ksplash, and Rhgb) as specified by default design models.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art render trunk/Identity/Images/Themes --filter='Distro/5/Anaconda'</command></tableterm>
+          <item>
+            <para>This command produces all the images related to Anaconda component from Distribution visual manifestations on its major release number five, for all the artistic motifs available and as specified by default design models.</para>
+          </item>
+        </tableitem>
+      </table>
       <subheading>Author</subheading>
       <para>Written by Alain Reguera Delgado.</para>
       <subheading>Reporting bugs</subheading>
@@ -3143,10 +3221,39 @@ centos-art render trunk/Identity/Images/Themes/Flame/2
     <section>
       <title>The <file>trunk/Scripts/Functions/Tuneup</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Scripts Functions Tuneup</indexterm></para>
-      <subheading>Goals</subheading>
-      <para>This section describes the <code>tuneup</code> functionality of <command>centos-art.sh</command> script and general examples about file maintainance inside a working copy of CentOS Artwork Repository.</para>
+      <subheading>Name</subheading>
+      <para>The <strong><code>tuneup</code></strong> functionlity is part of <command>centos-art.sh</command> script and standardizes tasks related to file maintainance inside the working copy of CentOS Artwork Repository.</para>
+      <subheading>Synopsis</subheading>
+      <para><command>centos-art</command> <code><strong>tuneup</strong></code> <code>[OPTIONS] path/to/dir</code></para>
+      <para>The <file>path/to/dir</file> parameter specifies what directory structure inside the working copy of CentOS Artwork Repository you want to process.</para>
+      <para>The <code>tuneup</code> functionality of <command>centos-art.sh</command> script accepts the following options:</para>
+      <table>
+        <tableitem>
+          <tableterm><option>--quiet</option></tableterm>
+          <item>
+            <para>Supress all output messages except error messages.  When this option is passed, all confirmation requests are supressed as well and a possitive answer is assumed for them, just as if the <option>--answer-yes</option> option had been provided.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--answer-yes</option></tableterm>
+          <item>
+            <para>Assume `yes' to all confirmation requests.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--filter="REGEX"</option></tableterm>
+          <item>
+            <para>Reduce the list of files to process using <samp>REGEX</samp> as pattern. You can use this option in combination with <file>path/to/dir</file> in order to control the amount of files you want to produce as base-rendition.  The deeper you go into the directory structure the more specific you'll be about the component you want to produce. When you cannot go deeper into the directory structure, you can use <option>--filter</option> option to reduce the list of files.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><option>--dont-commit-changes</option></tableterm>
+          <item>
+            <para>Supress all commit and update actions realized over files, before and after the action itself had took place over files in the working copy.</para>
+          </item>
+        </tableitem>
+      </table>
       <subheading>Description</subheading>
-      <para>The <code>tuneup</code> functionality of <command>centos-art.sh</command> script provides the standard way of maintaining files inside the working copy of CentOS Artwork Repository.</para>
       <para>Tasks related to file maintainance are repetitive. You might find yourself doing them time after time inside the working copy of CentOS Artwork Repository. Some of these maintainance tasks do update top comments on shell scripts, create table of contents for web pages, update metadata related to design models and remove unused definitions from design models.</para>
       <para>When you execute the <code>tuneup</code> functionality of <command>centos-art.sh</command> script, it looks for all files that match the supported extensions (e.g., <file>.sh</file>, <file>.svg</file> and <file>.xhtml</file>) in the directory specified, builds a list with them and applies the maintainance tasks using file extensions as reference.</para>
       <subsubheading>Maintaining <file>.sh</file> files</subsubheading>
@@ -3184,37 +3291,7 @@ centos-art render trunk/Identity/Images/Themes/Flame/2
 <h1><a name="" href="">Title</a></h1>
 ]]></verbatim>
       <para>In the example above, h1 can vary from h1 to h6. Closing tag must be present and also match the openning tag. The value of <option>name</option> and <option>href</option> options from the anchor element are set dynamically using the md5sum output of combining the page location, the <code>head-</code> string and the heading string.  If any of the components used to build the heading reference changes, you need to run the the <code>tuneup</code> functionality of <command>centos-art.sh</command> script in order for the anchor elements to use the correct information.</para>
-      <subheading>Usage</subheading>
-      <subsubheading>Synopsis</subsubheading>
-      <para><command>centos-art tuneup [OPTIONS] path/to/dir</command></para>
-      <subsubheading>Options</subsubheading>
-      <table>
-        <tableitem>
-          <tableterm><option>--quiet</option></tableterm>
-          <item>
-            <para>Supress all output messages, including confirmation question. Use this option with care.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--filter='regex'</option></tableterm>
-          <item>
-            <para>Reduce the amount of files to process using <samp>regex</samp> as pattern.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--answer-yes</option></tableterm>
-          <item>
-            <para>Assume `yes' to all confirmation questions.</para>
-          </item>
-        </tableitem>
-        <tableitem>
-          <tableterm><option>--dont-commit-changes</option></tableterm>
-          <item>
-            <para>Supress all <code>commit</code> and <code>update</code> actions realized over files already processed, before and after the action itself had took place in the working copy.</para>
-          </item>
-        </tableitem>
-      </table>
-      <subsubheading>Examples</subsubheading>
+      <subheading>Examples</subheading>
       <table>
         <tableitem>
           <tableterm><command>centos-art tuneup trunk/Scripts</command></tableterm>
@@ -3235,6 +3312,13 @@ centos-art render trunk/Identity/Images/Themes/Flame/2
           </item>
         </tableitem>
       </table>
+      <subheading>Author</subheading>
+      <para>Written by Alain Reguera Delgado.</para>
+      <subheading>Reporting bugs</subheading>
+      <para>Report bugs to <email><emailaddress>centos-artwork@centos.org</emailaddress></email> mailing list.</para>
+      <subheading>Copyright</subheading>
+      <para>Copyright &copyright;  2009, 2010, 2011 The CentOS Project.</para>
+      <para>This is free software.  You may redistribute copies of it under the terms of the GNU General Public License (see <xref><xrefnodename>GNU General Public License</xrefnodename></xref>).  There is NO WARRANTY, to the extent permitted by law.</para>
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>

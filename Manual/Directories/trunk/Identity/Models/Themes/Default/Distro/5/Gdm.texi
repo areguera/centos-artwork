@@ -6,9 +6,17 @@
 
 @subheading Description
 
-@itemize
-@item ...
-@end itemize
+Another example of using last-rendition flow is that related to GDM
+and KDM @file{tar.gz} file construction. Each @file{tar.gz} file is
+made of several files that need to be put together in order to make
+them installable. In the very specific case of GDM and KDM some of the
+required files are retrived from design models directory structure and
+others from artistic motifs directory structure after had been
+produced through base-rendition. In this case, the action of grouping
+files and packing them is realized through last-rendition action. This
+couldn't be possible through post-rendition because we need to wait to
+have two images first (produced through base-rendition) before we
+could grouping them all into the @file{tar.gz} package.
 
 @subheading Usage
 
