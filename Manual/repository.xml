@@ -3191,6 +3191,15 @@ centos-art.sh prepare [OPTIONS]
             <para>This command produces all the images related to Anaconda component from Distribution visual manifestations on its major release number five, for all the artistic motifs available and as specified by default design models.</para>
           </item>
         </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art render trunk/Identity/Images/Themes --filter='Concept' --post-rendition='mogrify -normalize'</command></tableterm>
+          <item>
+            <para>This command produces all the images related to Concept component from all artistic motifs as specified by default design models.  Moreover, the <command>mogrify -normalize</command> command is applied to each PNG image produced as result of the base-rendition output.</para>
+            <quotation>
+              <para><strong>Note</strong> The <command>mogrify</command> command is part of ImageMagick&registered; software suite and let you to resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more.  The ImageMagick&registered; software suite is copyrighted to <uref><urefurl>http://redux.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi</urefurl><urefdesc>ImageMagick Studio LLC</urefdesc></uref>, a non-profit organization dedicated to making software imaging solutions freely available.</para>
+            </quotation>
+          </item>
+        </tableitem>
       </table>
       <subheading>Author</subheading>
       <para>Written by Alain Reguera Delgado.</para>
@@ -3202,6 +3211,9 @@ centos-art.sh prepare [OPTIONS]
       <subheading>See also</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>The ImageMagick&registered; software suite documentation (<command>rpm -qd ImageMagick | less</command>).</para>
+        </item>
         <item>
           <para><xref><xrefnodename>Directories trunk Scripts Functions</xrefnodename></xref></para>
         </item>

@@ -325,6 +325,25 @@ from Distribution visual manifestations on its major release number
 five, for all the artistic motifs available and as specified by
 default design models.
 
+@item centos-art render trunk/Identity/Images/Themes --filter='Concept' --post-rendition='mogrify -normalize'
+
+This command produces all the images related to Concept component from
+all artistic motifs as specified by default design models.  Moreover,
+the @command{mogrify -normalize} command is applied to each PNG image
+produced as result of the base-rendition output.
+
+@quotation
+@strong{Note} The @command{mogrify} command is part of
+ImageMagick@registeredsymbol{} software suite and let you to resize an
+image, blur, crop, despeckle, dither, draw on, flip, join, re-sample,
+and much more.  The ImageMagick@registeredsymbol{} software suite is
+copyrighted to
+@url{http://redux.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi,
+ImageMagick Studio LLC}, a non-profit organization dedicated to making
+software imaging solutions freely available.
+
+@end quotation
+
 @end table
 
 @subheading Author
@@ -346,7 +365,12 @@ License}).  There is NO WARRANTY, to the extent permitted by law.
 @subheading See also
 
 @itemize
+@item The ImageMagick@registeredsymbol{} software suite documentation
+(@command{rpm -qd ImageMagick | less}).
 @item @ref{Directories trunk Scripts Functions}
 @item @ref{Directories trunk Scripts}
 @item @ref{Directories trunk}
 @end itemize
+
+
+
