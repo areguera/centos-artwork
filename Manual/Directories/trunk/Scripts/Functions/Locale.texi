@@ -1,85 +1,218 @@
-@subheading Goals
+@subheading Name
 
-@itemize
-@item ...
-@end itemize
+The @strong{@code{locale}} functionlity is part of
+@command{centos-art.sh} script and standardizes localization tasks
+inside the working copy of CentOS Artwork Repository.
+
+@subheading Synopsis
+
+@command{centos-art} @code{@strong{locale}} @code{[OPTIONS] path/to/dir}
+
+The @file{path/to/dir} parameter specifies what directory structure
+inside the working copy of CentOS Artwork Repository you want to
+create translation messages for.
+
+The @strong{@code{locale}} functionality of @command{centos-art.sh} script
+accepts the following options:
+
+@table @option
+@item --quiet
+
+Supress all output messages except error messages.  When this option
+is passed, all confirmation requests are supressed as well and a
+possitive answer is assumed for them, just as if the
+@option{--answer-yes} option had been provided.
+
+@item --answer-yes
+
+Assume `yes' to all confirmation requests.
+
+@item --filter="REGEX"
+
+Reduce the list of files to process using @samp{REGEX} as pattern.
+You can use this option in combination with @file{path/to/dir} in
+order to control the amount of files you want to produce as
+base-rendition.  The deeper you go into the directory structure the
+more specific you'll be about the component you want to produce. When
+you cannot go deeper into the directory structure, you can use
+@option{--filter} option to reduce the list of files.
+
+@item --dont-commit-changes
+
+Supress all commit and update actions realized over files, before and
+after the action itself had took place over files in the working copy.
+
+@item --update
+
+This option extracts translatable strings from both XML-based files
+(using @command{xml2po}) and shell scripts (using @command{xgettext})
+under @file{path/to/dir}. Translatable strings are initially stored in
+portable objects templates (.pot) which are later merged into portable
+objects (.po) in order to be converted as machine objects (.mo).
+
+Use this option each time you change translatable stirngs inside
+design models and script files.
+
+@item --edit
+
+This option edits the portable object related to @file{path/to/dir}
+location.
+
+Use this option after updating portable objects (through
+@option{--update} option) in order to change the language-specific
+information of translatable strings.
+
+@item --dont-create-mo
+
+This option supresses the creation of machine objects.
+
+@end table
 
 @subheading Description
 
-This command looks for @samp{.sh} files inside Bash directory and
-extracts translatable strings from files, using @command{xgettext}
-command, in order to create a portable object template
-(@file{centos-art.sh.pot}) file for them.
+The CentOS Artwork Repository exists to cover the visual needs of The
+CentOS Project Corporate Identity. The CentOS Project is an
+internationl project and sometimes requires contents in different
+languages. So, in that sake, the CentOS Artwork Repository is designed
+to produce content in as many locales as supported by The CentOS
+Distribution, the platform that supports the whole CentOS Artwork
+Repository, both in workstations and server.
 
-With the @file{centos-art.sh.pot} file up to date, the
-@command{centos-art} command removes the temporal list of files sotred
-inside @file{/tmp} directory and checks the current language of your
-user's session to create a portable object file for it, in the
-location @file{$CLI_LANG/$CLI_LANG.po}. 
+@quotation
+@strong{Tip} To know what locales are supported by The CentOS
+Distribution you are currently using, run the following command:
 
-The @var{CLI_LANG} variable discribes the locale language used to
-output messages inside @command{centos-art} command. The locale
-language used inside @command{centos-art} command is taken from the
-@env{LANG} environment variable.  The @var{CLI_LANG} variable has the
-@samp{LL_CC} format, where @samp{LL} is a language code from the
-ISO-639 standard, and @samp{CC} a country code from the ISO-3166
-standard.
+@verbatim
+locale -a | less
+@end verbatim
+@end quotation
 
-The @env{LANG} environment variable is set when you do log in to your
-system. If you are using a graphical session, change language to your
-native language and do login. That would set and exoprt the @env{LANG}
-environment variable to the correct value. On the other side, if you
-are using a text session edit your @file{~/.bash_profile} file to set
-and export the @env{LANG} environment variable to your native locale
-as defines the @command{locale -a} command output; do logout, and do
-login again.
+The localization process is very tied to the input files we want to
+provide localized messages for. Inside the CentOS Artwork Repository,
+it is possible to localize XML files (e.g., SVG, XHTML, Docbook) and
+programs written in most popular programming languages (e.g., C, C++,
+C#, Shell Scripts, Python, Java, GNU awk, PHP, etc.).
 
-At this point, the @env{LANG} environment variable has the appropriate
-value you need, in order to translate @command{centos-art.sh} messages
-to your native language (the one set in @env{LANG} environment
-variable). 
+@subsubheading Design models localization
 
-With the @file{$CLI_LANG/$CLI_LANG.po} file up to date, the
-@command{centos-art} opens it for you to update translation strings.
-The @command{centos-art} command uses the value of @var{EDITOR}
-environment variable to determine your favorite text editor. If no
-value is defined on @var{EDITOR}, the @file{/usr/bin/vim} text editor
-is used as default.
+Design models are used as input to produce most images and some other
+contents as well. Design models are always XML-based files (e.g., SVG,
+XHTML, Docbook), so the @strong{@code{locale}} functionality uses the
+@command{xml2po} program to create protable objects from them under
+@file{trunk/Locales/Models} directory. Portable objects contain the
+relation between message id and message translation, as translator,
+need to take care of.
 
-When you finishd PO file edition and quit text editor, the
-@command{centos-art} command creates the related machine object in the
-location @file{$CLI_LANG/LC_MESSAGES/$TEXTDOMAIN.mo}.
+Thanks to @command{xml2po}, it is possible for the
+@strong{@code{locale}} functionality to separate designing tasks from
+the translating tasks. It is possible for graphic designers to
+concentrate their efforts on designing models in English language
+while translators take care of their localization using the
+@option{--update} and @option{--edit} options as much as it be needed.
 
-At this point, all translations you made in the PO file should be
-available to your language when runing @command{centos-art.sh} script. 
+Once design models have been localized, rendering them in different
+language is a matter using the @strong{@code{render}} functionality of
+@command{centos-art.sh} script. @xref{Directories trunk Scripts
+Functions Render}, for more information about it.
 
-In order to make the @command{centos-art.sh} internationalization, the
-@command{centos-art.sh} script was modified as described in the
-@command{gettext} info documentation (@command{info gettext}).  You
-can find such modifications in the following files:
+@subsubheading Shell script localization
 
-@itemize
-@item @file{trunk/Scripts/Bash/initFunctions.sh}
-@item @file{trunk/Scripts/Bash/Functions/Help/cli_localeMessages.sh}
-@item @file{trunk/Scripts/Bash/Functions/Help/cli_localeMessagesStatus.sh}
-@end itemize
+Additionally to design models localization, the @strong{@code{locale}}
+functionality is also used to localize the @command{centos-art.sh}
+script itself. The @command{centos-art.sh} script is a shell script
+written in Bash, so the @strong{@code{locale}} functionality uses the
+@command{gettext} tools to retrive translatable strings, create
+portable objects and machine objects.
 
-@itemize
-@item ...
-@end itemize
+Thanks to @command{gettext}, it is possible for the
+@strong{@code{locale}} functionality to separate programming tasks
+from the translating tasks. It is possible for programmer to
+concentrate their efforts in programming output messages in English
+language while translators take care of their localization using the
+@option{--update} and @option{--edit} options as much as it be needed.
 
-@subheading Usage
+Once @command{centos-art.sh} script has been localized, the translated
+messages should be immediatly visible to you, the next time you
+execute the @command{centos-art.sh} script
 
-@table @samp
-@item centos-art locale --edit
-Use this command to translate command-line interface output messages
-in the current system locale you are using (as specified in @env{LANG}
-environment variable).
-@item centos-art locale --list
-Use this command to see the command-line interface locale report.
+@quotation
+@strong{Note} 
+In order to localize translatable strings from English language to
+another language you need to be sure the @env{LANG} environment
+variable has been already set to the locale code you want to localize
+message for or see them printed out before running the
+@command{centos-art.sh} script.  Localizing English language to itself
+is not supported.
+@end quotation
+
+@subheading Examples
+
+@table @command
+@item centos-art locale --update trunk/Identity/Models/Default/Distro/5/Anaconda
+
+This command updates portable objects related to Anaconda default
+design models of The CentOS Distribution major release 5. The update
+action consists on adding new translatable strings or removing old
+translatable strings from portable objects in order to keep both the
+portable object and the design model consistent.
+
+This command is executed by translators once the graphic designers
+have committed updates to Anaconda default design models (e.g., slide
+text changes).
+
+@item centos-art locale --edit trunk/Identity/Models/Default/Distro/5/Anaconda --dont-create-mo
+
+This command let translators to edit portable objects related to
+Anaconda default design models of The CentOS Distribution major
+release 5. The edit action is where the translator localize
+translatable strings in English language to another language.
+
+When portable objects for XML-base files are produced, there is no
+need to retain the machine object format, so we used the
+@option{--dont-create-mo}.
+
+@item centos-art locale --update trunk/Scripts
+
+This command updates portable objects related to
+@command{centos-art.sh} script. The update action consists on adding
+new translatable strings or removing old translatable strings from
+portable objects in order to keep both the portable object and the
+@command{centos-art.sh} script to be consistent one another.
+
+This command is executed by translators once the programmers have
+committed updates @command{centos-art.sh} script.
+
+@item centos-art locale --edit trunk/Scripts
+
+This command let translators to edit portable objects related to
+@command{centos-art.sh} script. The edit action is where the
+translator localize translatable strings in English language to
+another language.
+
 @end table
+
+@subheading Author
+
+Written by Alain Reguera Delgado.
+
+@subheading Reporting bugs
+
+Report bugs to @email{centos-artwork@@centos.org} mailing list.
+
+@subheading Copyright
+
+Copyright @copyright{}  2009, 2010, 2011 The CentOS Project.
+
+This is free software.  You may redistribute copies of it under the
+terms of the GNU General Public License (@pxref{GNU General Public
+License}).  There is NO WARRANTY, to the extent permitted by law.
 
 @subheading See also
 
-@menu
-@end menu
+@itemize
+@item The GNU @command{gettext} tools documentation (@command{info gettext})
+@item The @command{xml2po} command documentation (@command{man xml2po})
+@item @ref{Directories trunk Scripts Functions}
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
+@end itemize
