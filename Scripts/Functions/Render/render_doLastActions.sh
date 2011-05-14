@@ -1,10 +1,8 @@
 #!/bin/bash
 #
-# render_doLastActions.sh -- This function provides last-rendition
-# actions to files produced as result of base-rendition and
-# post-rendition output. Actions take place through any command you
-# specify in the `--last-rendition' option  (e.g., the `mogrify'
-# command from ImageMagick tool set.
+# render_doPostActions.sh -- This function standardizes the way
+# last-rendition actions are applied to base-rendition and
+# post-rendition outputs.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -28,21 +26,19 @@
 
 function render_doLastActions {
 
-    # Verify position of file being produced in the list of files been
-    # currently processed.
-    if [[ $THIS_FILE_DIR == $NEXT_FILE_DIR ]];then
-        return
-    fi
-
-    # Define file extensions the last-rendition action will be applied
-    # to.
+    # Define the file extensions. This value is a regular expression
+    # pattern which must match the file extensions that last-rendition
+    # actions will be applied to.
     local EXTENSION=$(render_getConfigOption "$ACTION" '2')
 
-    # Define the command string that will be evaluated as last-rendition.
+    # Define the command string that will be evaluated as
+    # last-rendition action. Only commands that perform in-place
+    # modifications can be passed here.
     local COMMAND=$(render_getConfigOption "$ACTION" '3-')
 
-    # Define list of files the last-rendition action will be applied
-    # to.
+    # Define the list of files to process. This value contain all the
+    # files in the output directory which extension match the
+    # extension pattern previously defined.
     local FILE=''
     local FILES=$(cli_getFilesList $OUTPUT --pattern=".+\.${EXTENSION}")
 
