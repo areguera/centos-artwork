@@ -25,18 +25,10 @@
 
 function help_searchIndex {
 
-    # Check flag filter. By default flag filter has the `.+' value
-    # which is not very descriptive in the sake of an index-search.
-    # So, when no value is passed through --filter option use top node
-    # as default value for index-search.
-    if [[ "$FLAG_FILTER" == '.+' ]];then
-        cli_printMessage "`gettext "Use the \\\"--filter\\\" option to define the search pattern."`" --as-error-line
-    fi
-
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
     # Execute info command to perform an index-search.
-    /usr/bin/info --index-search="$FLAG_FILTER" --file=${MANUAL_BASEFILE}.info.bz2
+    /usr/bin/info --index-search="$FLAG_SEARCH" --file=${MANUAL_BASEFILE}.info.bz2
 
 }
