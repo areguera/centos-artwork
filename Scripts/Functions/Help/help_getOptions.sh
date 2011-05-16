@@ -29,7 +29,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search,edit,update,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -37,6 +37,14 @@ function help_getOptions {
     # Reset positional parameters using output from (getopt) argument
     # parser.
     eval set -- "$ARGUMENTS"
+
+    # Define default action for help functionality.  This is, the
+    # action performed when no non-option argument is passed to
+    # `centos-art.sh' script command-line internface.
+    if [[ $# -le 1 ]];then
+        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
+        exit
+    fi
 
     # Define action to take for each option passed.
     while true; do
@@ -60,7 +68,17 @@ function help_getOptions {
 
             --search )
                 ACTIONNAM="${FUNCNAM}_searchIndex"
-                shift 1
+                FLAG_SEARCH="$2"
+                shift 2
+
+                # This option doesn't require an action value to work
+                # with. This way, execute it immediatly.
+                eval $ACTIONNAM
+
+                # This option does nothing else but searching in the
+                # index of an info file. So, after executing it, end
+                # up the script execution. There is no more to do.
+                exit
                 ;;
     
             --edit )
@@ -109,14 +127,6 @@ function help_getOptions {
                 ;;
         esac
     done
-
-    # Define default action for help functionality.  This is, the
-    # action performed when no non-option argument is passed to
-    # centos-art.sh script command-line internface.
-    if [[ $# -eq 0 ]];then
-        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
-        exit
-    fi
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_doParseArgumentsReDef "$@"
