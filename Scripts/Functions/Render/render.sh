@@ -88,7 +88,11 @@ function render {
         # repository.
         cli_syncroRepoChanges
 
-        # Define action name using action value as reference.  
+        # Define action name based on action value as reference. When
+        # action value refers to theme-related directory structures,
+        # the centos-art.sh script performs theme-specific rendition.
+        # Otherwise, if a directory structure outside themes is
+        # provided, the base-rendition is performed instead.
         if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
             ACTIONNAM="${FUNCNAME}_doThemeActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
