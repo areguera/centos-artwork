@@ -30,6 +30,11 @@ function help {
     local ACTIONVAL=''
     local -a ACTIONVALS
 
+    # Initialize the search option. The search option (`--search')
+    # specifies the pattern used inside info files when an index
+    # search is perform.
+    FLAG_SEARCH=""
+
     # Define manuals base directory. This is the place where
     # documentation manuals base directory structures are stored and
     # organized in.
