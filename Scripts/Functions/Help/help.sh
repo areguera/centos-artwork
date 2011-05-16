@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# help.sh -- This function provides documentation features to
-# centos-art.sh script. Here we initialize documentation variables and
-# call help_getArguments functions.
+# help.sh -- This function standardizes the way documentation is
+# produced and maintain inside the working copy of CentOS Artwork
+# Repository.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -56,7 +56,7 @@ function help {
     # to find out which is the last argument in the list.  When
     # copying files inside the repository, the last argument in the
     # list is considered the target location and all other arguments
-    # are considered source the locations. Similary, when renaming
+    # are considered the source locations. Similary, when renaming
     # files, only two arguments can be passed.
     for ACTIONVAL in "$@";do
         ACTIONVALS[((++${#ACTIONVALS[*]}))]="$ACTIONVAL"
