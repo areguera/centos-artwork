@@ -29,7 +29,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,read,search,edit,update,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search,edit,update,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
     cli_doParseArguments
@@ -41,11 +41,6 @@ function help_getOptions {
     # Define action to take for each option passed.
     while true; do
         case "$1" in
-
-            --filter )
-                FLAG_FILTER="$2"
-                shift 2
-                ;;
 
             --quiet )
                 FLAG_QUIET="true"
