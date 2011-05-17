@@ -70,15 +70,6 @@ function help_getOptions {
                 ACTIONNAM="${FUNCNAM}_searchIndex"
                 FLAG_SEARCH="$2"
                 shift 2
-
-                # This option doesn't require an action value to work
-                # with. This way, execute it immediatly.
-                eval $ACTIONNAM
-
-                # This option does nothing else but searching in the
-                # index of an info file. So, after executing it, end
-                # up the script execution. There is no more to do.
-                exit
                 ;;
     
             --edit )
