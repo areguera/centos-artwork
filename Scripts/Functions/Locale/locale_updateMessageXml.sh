@@ -37,8 +37,16 @@ function locale_updateMessageXml {
     # use inside the repository.
     local EXTENSION='(svg|xml|xhtml|docbook)'
 
-    # Build list of files to process.
-    local FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
+    # Build list of files to process.  Remember that in some cases
+    # templates and output are in the same location (e.g., when
+    # rendering `trunk/Manual/repository.xhtml/' directory). In these
+    # cases localized content are stored in the same location where
+    # template files are retrived from and we need to avoid using
+    # localized content from being interpreted as design models. In
+    # that sake, supress language-specific files from the list of
+    # files to process.
+    local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}.*\.${EXTENSION}" --type="f" \
+        | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/')
 
     # Print action message.
     cli_printMessage "${FILE}.pot" --as-updating-line
