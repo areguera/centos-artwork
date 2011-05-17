@@ -53,14 +53,32 @@ function render_doBaseActions {
     # Define base location of template files.
     render_getDirTemplate
     
-    # Define list of files to process. Use an array variable to store
-    # the list of files to process. This make posible to realize
+    # Define the list of files to process. Use an array variable to
+    # store the list of files to process. This make posible to realize
     # verifications like: is the current base directory equal to the
     # next one in the list of files to process?  This is used to know
     # when centos-art.sh is leaving a directory structure and entering
     # into another. This information is required in order for
     # centos-art.sh to know when to apply last-rendition actions.
-    for FILE in $(cli_getFilesList ${TEMPLATE} --pattern="${FLAG_FILTER}.*\.${EXTENSION}");do
+    #
+    # Another issue is that some directories are named as if they were
+    # files (e.g., using a renderable extension like .xhtml). In this
+    # situations we need to avoid such directories be interpreted as a
+    # renderable file. For this, pass the `--type="f"' option when
+    # building the list of files to process in order to retrive
+    # regular files only.
+    #
+    # Another issue to consider when building the list of files to
+    # process here, is that in some cases templates and output are in
+    # the same location (e.g., when rendering
+    # `trunk/Manual/repository.xhtml/' directory). In these cases
+    # localized content are stored in the same location where
+    # template files are retrived from and we need to avoid using
+    # localized content from being interpreted as design models. In
+    # that sake, supress language-specific files from the list of
+    # files to process.
+    for FILE in $(cli_getFilesList ${TEMPLATE} --pattern="${FLAG_FILTER}.*\.${EXTENSION}" --type="f" \
+        | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/');do
         FILES[((++${#FILES[*]}))]=$FILE
     done
 
@@ -88,7 +106,7 @@ function render_doBaseActions {
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
-           | sed -r 's!trunk/Identity/(.+)!trunk/Locales/Identity/\1!')/$(cli_getCurrentLocale)/messages.po
+           | sed -r 's!trunk/(Manual|Identity)!trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
