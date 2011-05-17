@@ -97,6 +97,8 @@ function render {
             ACTIONNAM="${FUNCNAME}_doThemeActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
             ACTIONNAM="${FUNCNAME}_doBaseActions"
+        elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manual" ]];then
+            ACTIONNAM="${FUNCNAME}_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided do not support rendition."`" --as-error-line
         fi
