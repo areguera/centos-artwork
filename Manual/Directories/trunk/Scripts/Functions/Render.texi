@@ -1,19 +1,19 @@
 @subheading Name
 
-The @strong{@code{render}} functionlity is part of
-@command{centos-art.sh} script and standardizes rendition tasks inside
-the working copy of CentOS Artwork Repository.
+The @code{render} functionlity is part of @command{centos-art.sh}
+script and standardizes rendition tasks inside the working copy of
+CentOS Artwork Repository.
 
 @subheading Synopsis
 
-@command{centos-art} @code{@strong{render}} @code{[OPTIONS] path/to/dir}
+@command{centos-art render [OPTIONS] path/to/dir}
 
 The @file{path/to/dir} parameter specifies what directory structure
 inside the working copy of CentOS Artwork Repository you want to
 produce. 
 
-The @strong{@code{render}} functionality of @command{centos-art.sh}
-script accepts the following options:
+The @code{render} functionality of @command{centos-art.sh} script
+accepts the following options:
 
 @table @option
 @item --quiet
@@ -82,11 +82,11 @@ post-rendition and directory-specific rendition outputs.
 @subheading Description
 
 Inside the working copy of CentOS Artwork Repository, rendition tasks
-take place inside renderable directories.  Inside the
-@strong{@code{render}} functionality of @command{centos-art.sh}
-script, you can control rendition tasks through different flows of
-rendition named base-rendition, post-rendition, last-rendition and
-directory-specific rendition.
+take place inside renderable directories.  Inside the @code{render}
+functionality of @command{centos-art.sh} script, you can control
+rendition tasks through different flows of rendition named
+base-rendition, post-rendition, last-rendition and directory-specific
+rendition.
 
 @subsubheading Renderable directories
 
@@ -108,7 +108,7 @@ files (e.g., @file{trunk/Identity/Images}). Optionally, a third
 directory structure is available to store the input related
 translation files (e.g., @file{trunk/Locales/Identity/Models}).
 
-In direct rendition, when the @strong{@code{render}} functionality of
+In direct rendition, when the @code{render} functionality of
 @command{centos-art.sh} script is executed, it uses the input
 directory structure to build a list of files to process, which is used
 as reference to determine the location of the translation file and the
@@ -124,11 +124,11 @@ structure to store artistic motifs
 (@file{trunk/Identity/Images/Themes}) and one directory structure to
 store output files (@file{trunk/Identity/Images/Themes}).
 
-In theme-specific rendition, when the @strong{@code{render}}
-functionality of @command{centos-art.sh} script is executed, it uses
-the input directory structure to build a list of files to process,
-which is used as reference to determine the location of the
-translation file and the location of the output file, as well. 
+In theme-specific rendition, when the @code{render} functionality of
+@command{centos-art.sh} script is executed, it uses the input
+directory structure to build a list of files to process, which is used
+as reference to determine the location of the translation file and the
+location of the output file, as well. 
 
 In contrast with direct rendition, when we use theme-specific
 rendition, it is possible to combine both design models and artistic
@@ -144,12 +144,12 @@ among them all.
 @end table
 
 In both direct and theme-specific rendition, if the location where the
-output file should be stored doesn't exist, the @strong{@code{render}}
+output file should be stored doesn't exist, the @code{render}
 functionality of @command{centos-art.sh} script will create it for
 you.
 
 In both direct and theme-specific rendition, if the input related
-translation file doesn't exist, the @strong{@code{render}} functionality of
+translation file doesn't exist, the @code{render} functionality of
 @command{centos-art.sh} script will produce the output in the same
 language of its input file.
 
@@ -157,7 +157,7 @@ language of its input file.
 
 The base-rendition flow is the first rendition flow of all rendition
 flows available and takes place immediatly after executing the
-@strong{@code{render}} functionality of @command{centos-art.sh} script.
+@code{render} functionality of @command{centos-art.sh} script.
 
 The base-rendition produces different outputs from one unique input
 format. This is, one input file is used to produce one ore more output
@@ -166,14 +166,14 @@ base-rendition applies the translation file to the input file in order
 to produce a translated instance of it, then this translated instance
 is used as input file to produce one or more output files.
 
-Inside the @strong{@code{render}} functionality of
-@command{centos-art.sh} script, the input format is always XML (e.g.,
-SVG, XHTML, Docbook), the translation files are always portable
-objects (e.g., PO) and the output format depends on the input file
-provided  (e.g., when the input format is a SVG file, the base output
-is a PNG file; when the input format is XHTML the base output is an
-XHTML file; when the input format is a Docbook file the base output
-might be either HTML, RTF, PS or PDF).
+Inside the @code{render} functionality of @command{centos-art.sh}
+script, the input format is always XML (e.g., SVG, XHTML, Docbook),
+the translation files are always portable objects (e.g., PO) and the
+output format depends on the input file provided  (e.g., when the
+input format is a SVG file, the base output is a PNG file; when the
+input format is XHTML the base output is an XHTML file; when the input
+format is a Docbook file the base output might be either HTML, RTF, PS
+or PDF).
 
 As application example of base-rendition flow, consider the
 description of the  following sections:

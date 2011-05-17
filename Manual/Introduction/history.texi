@@ -8,15 +8,15 @@ list (@email{centos-devel@@centos.org}) during a discussion about how
 to automate the slide images of Anaconda. In such discussion, Ralph
 Angenendt rose up his hand to ask: Do you have something to show? 
 
-To answer the question, Alain Reguera Delgado posted a bash script to
-produce slide images in different languages ---together with the
-proposition of creating a Subversion centralized repository where
-translations and image production could be distributed inside The
-CentOS Community---.
+To answer the question, Alain Reguera Delgado suggested a bash script
+which combined SVG and SED files in order to produce PNG images in
+different languages ---together with the proposition of creating a
+Subversion repository where translations and image production could be
+distributed inside The CentOS Community---.
 
-Karanbirn Sighn considered the idea intresting and provides the
+Karanbirn Sighn considered the idea intresting and provided the
 infrastructure necessary to support the effort. This way the CentOS
-Artwork SIG and the CentOS Artwork Repository are officially created
+Artwork SIG and the CentOS Artwork Repository were officially created
 and made available in the following urls:
 
 @itemize
@@ -35,35 +35,34 @@ slide images in their own languages.
 The rendition script is at a very rustic state where only slide images
 can be produced. 
 
-The rendition script is improved to produce not only slide images, but
-PNG images using one SVG file as input. In this configuration one
-translated SVG instance was created from the SVG provided as input in
-order to produce one translated PNG image as output.  The translation
-of SVG files is made through SED replacement commands and the
-rendition of PNG images is realized through Inkscape command line
+The rendition script was redesigned to extend image production to
+other areas, not just slide images.  In this configuration one
+translated SVG instance was created from the SVG file provided as
+input in order to produce one translated PNG image as output.  The
+translation of SVG files was made through SED replacement commands and
+the rendition of PNG images was realized through Inkscape command line
 internface.
 
-The rendition script is named @command{render.sh}. The directory
-structures are prepared to receive the rendition script so images
-could be produced inside them. Each directory structure has design
+The rendition script was named @command{render.sh}. The directory
+structures were prepared to receive the rendition script so images
+could be produced inside them. Each directory structure had design
 templates (.svg), translation files (.sed), and translated images
 (.png).
 
-The rendition script is unified in a common place and linked from
-different directory structures. There is no need to have the same code
-in different directory structures if it can be in just one place and
-then be linked from different locations.
+The rendition script was unified in a common place and linked from
+different directory structures. There was no need to have the same
+code in different directory structures if it could be in just one
+place and then be linked from different locations.
 
-The concepts of corporate identity started to be considered. As
-referece, it is used Wikipedia
-(@url{http://en.wikipedia.org/Corporate_identity}) and the book
-@emph{Corporate Identity} by Wally Olins (1989). 
+Concepts about corporate identity began to be considered. As referece,
+it was used the book @emph{Corporate Identity} by Wally Olins (1989)
+and Wikipedia (@url{http://en.wikipedia.org/Corporate_identity}).
 
 The rendition script main's goal becomes to: automate production of a
-monolithic corporate visual identity structure based on The CentOS
+monolithic corporate visual identity structure, based on The CentOS
 Mission and The CentOS Release Schema. 
 
-The documentation of CentOS Artwork Repository starts to take form in
+The documentation of CentOS Artwork Repository started to take form in
 @LaTeX{} format.
 
 @subheading 2010
@@ -74,34 +73,37 @@ script, but a collection of functionalities grouped into the
 among others.  The @command{centos-art.sh} is created to automate most
 frequent tasks inside the repository.  There is no need to have links
 all around the repository if a command-line interface can be created
-and called anywhere inside the repository as it is usually done with
+(through symbolic links, in the @file{~/bin} directory) and be called
+anywhere inside the repository as it would be usually done with
 regular commands.   
 
 Inside @command{centos-art.sh}, functionalities started to get
-identified and separated one another. For example, when images are
-rendered, there is no need to load functionalities related to
-documentation manual. There is now common functionalities and specific
-functionalities. Common functionalities are loaded when the script is
-initiated and are available to specific functionalities.
+identified and separated one another. For example, when images were
+rendered, there was no need to load functionalities related to
+documentation manual. This moved us onto common functionalities and
+specific functionalities inside @command{centos-art.sh} script. Common
+functionalities are loaded when the script is initiated and are
+available to specific functionalities.
 
-The @command{centos-art.sh} script is updated to handle options trough
-@command{getopt} option parser.
+The @command{centos-art.sh} script was redesigned to handle options
+trough @command{getopt} option parser.
 
-The repository directory structure is updated to improve the
-implementation of corporate visual identity concepts.
+The repository directory structure was updated to improve the
+implementation of concepts related to corporate visual identity.
+Specially in the area related to themes which were divided into design
+models and artistic motifs.
 
 @subheading 2011
 
-The @command{centos-art.sh} script is updated to translate SVG and
-other XML-based files (e.g., XHTML and Docbook) through
-@command{xml2po} program and shell scripts files through
-@command{xgettext} command.  In this configuration there is no need to
-use `.sed' translation files as they previously were used.
+The @command{centos-art.sh} script was redesigned to start translating
+SVG and other XML-based files (e.g., XHTML and Docbook files) through
+the @command{xml2po} program and shell scripts files (e.g., Bash
+scripts) through GNU @command{gettext} tools.  This configuration
+provided a stronger interface for graphic designers, translators and
+programmers at time of producing localized content. @file{.sed} files
+are no longer used to handle translations.
 
-The @command{centos-art.sh} script is updated to improve option
-parsing through @command{getopt} program. All arguments are parsed by
-@command{getopt} now. Once all option arguments have been parsed, only
-non-option arguments remain for processing.
+Improve option parsing through @command{getopt}.
 
 The @command{centos-art.sh} script is updated to organize
 functionalities in two groups: ``the administrative functionalities''

@@ -1,18 +1,18 @@
 @subheading Name
 
-The @strong{@code{locale}} functionlity is part of
-@command{centos-art.sh} script and standardizes localization tasks
-inside the working copy of CentOS Artwork Repository.
+The @code{locale} functionlity is part of @command{centos-art.sh}
+script and standardizes localization tasks inside the working copy of
+CentOS Artwork Repository.
 
 @subheading Synopsis
 
-@command{centos-art} @code{@strong{locale}} @code{[OPTIONS] path/to/dir}
+@command{centos-art locale [OPTIONS] path/to/dir}
 
 The @file{path/to/dir} parameter specifies what directory structure
 inside the working copy of CentOS Artwork Repository you want to
 create translation messages for.
 
-The @strong{@code{locale}} functionality of @command{centos-art.sh} script
+The @code{locale} functionality of @command{centos-art.sh} script
 accepts the following options:
 
 @table @option
@@ -97,18 +97,18 @@ C#, Shell Scripts, Python, Java, GNU awk, PHP, etc.).
 
 Design models are used as input to produce most images and some other
 contents as well. Design models are always XML-based files (e.g., SVG,
-XHTML, Docbook), so the @strong{@code{locale}} functionality uses the
+XHTML, Docbook), so the @code{locale} functionality uses the
 @command{xml2po} program to create protable objects from them under
 @file{trunk/Locales/Models} directory. Portable objects contain the
 relation between message id and message translation, as translator,
 need to take care of.
 
-Thanks to @command{xml2po}, it is possible for the
-@strong{@code{locale}} functionality to separate designing tasks from
-the translating tasks. It is possible for graphic designers to
-concentrate their efforts on designing models in English language
-while translators take care of their localization using the
-@option{--update} and @option{--edit} options as much as it be needed.
+Thanks to @command{xml2po}, it is possible for the @code{locale}
+functionality to separate designing tasks from the translating tasks.
+It is possible for graphic designers to concentrate their efforts on
+designing models in English language while translators take care of
+their localization using the @option{--update} and @option{--edit}
+options as much as it be needed.
 
 Once design models have been localized, rendering them in different
 language is a matter using the @strong{@code{render}} functionality of
@@ -117,19 +117,19 @@ Functions Render}, for more information about it.
 
 @subsubheading Shell script localization
 
-Additionally to design models localization, the @strong{@code{locale}}
+Additionally to design models localization, the @code{locale}
 functionality is also used to localize the @command{centos-art.sh}
 script itself. The @command{centos-art.sh} script is a shell script
-written in Bash, so the @strong{@code{locale}} functionality uses the
+written in Bash, so the @code{locale} functionality uses the
 @command{gettext} tools to retrive translatable strings, create
 portable objects and machine objects.
 
-Thanks to @command{gettext}, it is possible for the
-@strong{@code{locale}} functionality to separate programming tasks
-from the translating tasks. It is possible for programmer to
-concentrate their efforts in programming output messages in English
-language while translators take care of their localization using the
-@option{--update} and @option{--edit} options as much as it be needed.
+Thanks to @command{gettext}, it is possible for the @code{locale}
+functionality to separate programming tasks from the translating
+tasks. It is possible for programmer to concentrate their efforts in
+programming output messages in English language while translators take
+care of their localization using the @option{--update} and
+@option{--edit} options as much as it be needed.
 
 Once @command{centos-art.sh} script has been localized, the translated
 messages should be immediatly visible to you, the next time you

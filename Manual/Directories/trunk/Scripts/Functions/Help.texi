@@ -1,8 +1,100 @@
-@subheading Goals
+@subheading Name
 
-@itemize
-@item ...
-@end itemize
+The @code{help} functionlity is part of @command{centos-art.sh} script
+and standardizes documentation tasks inside the working copy of CentOS
+Artwork Repository.
+
+@subheading Synopsis
+
+@command{centos-art help [OPTIONS] path/to/dir @dots{}}
+
+The @file{path/to/dir} parameter specifies what directory structure
+inside the working copy of CentOS Artwork Repository you want to
+process. 
+
+The @code{help} functionality of @command{centos-art.sh} script
+accepts the following options:
+
+@table @option
+@item --quiet
+
+Supress all output messages except error messages.  When this option
+is passed, all confirmation requests are supressed as well and a
+possitive answer is assumed for them, just as if the
+@option{--answer-yes} option had been provided.
+
+@item --answer-yes
+
+Assume `yes' to all confirmation requests.
+
+@item --dont-commit-changes
+
+Supress all commit and update actions realized over files, before and
+after the action itself had took place over files in the working copy.
+
+@item --search="STRING"
+
+Go to node pointed by index entry @samp{STRING}.
+
+@item --edit "path/to/dir"
+
+Edit documentation entry related to path specified by
+@file{path/to/dir}. 
+
+The @file{path/to/dir} must point to any directory inside the
+repository. When more than one @file{path/to/dir} are passed as
+non-option arguments to the @command{centos-art.sh} script
+command-line, they are queued for further edition.  The edition itself
+takes place through your default text editor (e.g., the one you
+specified in the @env{EDITOR} environment variable) and the text
+editor opens one file at time (i.e., the queue of files to edit is not
+loaded in the text editor.).
+
+@item --read "path/to/dir"
+
+Read documentation entry specified by @file{file/to/dir} path, using
+@command{info} command. This option is useful to read the repository
+manual on text-based terminals. This option is also used internally by
+@command{centos-art.sh} script to print out the reference you can
+follow to know more about an error message.
+
+@item --update
+
+Update output files rexporting them from Texinfo source files.
+
+@item --copy "path/to/file.texi" "path/to/dir"
+
+Duplicate documentation entries under @file{trunk/Manual} directory
+structure. 
+
+When documentation entries are copied, it is possible to pass more
+than one Texinfo file as source location. In this case, they all and
+their dependent files will be copied into the target location. The
+target location must be a directory and passed as last non-option
+argument in the command-line.
+
+@item --delete "path/to/file.texi"
+
+Delete documentation entries under @file{trunk/Manual} directory
+structure.
+
+When documentation entries are deleted, all cross references that
+point to the deleted documentation entry will be rebuilt to remove
+Texinfo markup and remark the fact that it had been removed indeed
+from the repository.
+
+@item --rename "path/to/file.texi" "path/to/file.texi"
+
+Rename documentation entries under @file{trunk/Manual} directory
+structure.
+
+@end table
+
+When documentation entries are removed (e.g., through
+@option{--delete} or @option{--rename} options), the
+@command{centos-art.sh} script takes care of updating nodes, menus and
+cross references related to documentation entries in order to keep the
+manual structure in a correct state.
 
 @subheading Description
 
@@ -10,13 +102,32 @@
 @item ...
 @end itemize
 
-@subheading Usage
+@subheading Examples
 
 @itemize
 @item ...
 @end itemize
 
+@subheading Author
+
+Written by Alain Reguera Delgado.
+
+@subheading Reporting bugs
+
+Report bugs to @email{centos-artwork@@centos.org} mailing list.
+
+@subheading Copyright
+
+Copyright @copyright{}  2009, 2010, 2011 The CentOS Project.
+
+This is free software.  You may redistribute copies of it under the
+terms of the GNU General Public License (@pxref{GNU General Public
+License}).  There is NO WARRANTY, to the extent permitted by law.
+
 @subheading See also
 
-@menu
-@end menu
+@itemize
+@item @ref{Directories trunk Scripts Functions}
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
+@end itemize

@@ -1,19 +1,19 @@
 @subheading Name
 
-The @strong{@code{prepare}} functionality is part of the
+The @code{prepare} functionality is part of the
 @command{centos-art.sh} script and standardizes configuration of
 preliminar steps you need to follow in order to get your workstation
 ready for using a working copy of CentOS Artwork Repository.
 
 @subheading Synopsis
 
-@command{centos-art @strong{prepare} [OPTIONS]}
+@command{centos-art prepare [OPTIONS]}
 
 There is no need to specify @file{path/to/dir} information in this
 functionality. Most actions are performed through options.
 
-The @strong{@code{prepare}} functionality of centos-art.sh script
-accepts the following options:
+The @code{prepare} functionality of centos-art.sh script accepts the
+following options:
 
 @table @option
 
@@ -79,16 +79,15 @@ Print the name and value of some of the environment variables used by
 
 @subheading Description
 
-The @strong{@code{prepare}} functionality of @command{centos-art.sh}
-script is part of the CentOS Artwork Repository. So, in order to
-execute the @strong{@code{prepare}} functionality of
-@command{centos-art.sh} script you need to have access to a working
-copy of CentOS Artwork Repository, first.  Working copies of CentOS
-Artwork Repository are downloaded from the source repository and made
-available to you by mean of workstations.  A workstation is a computer
-that you install and configure (prepare) to do something. In this
-case, you pick up a computer and prepare it for working on the CentOS
-Artwork Repository.
+The @code{prepare} functionality of @command{centos-art.sh} script is
+part of the CentOS Artwork Repository. So, in order to execute the
+@code{prepare} functionality of @command{centos-art.sh} script you
+need to have access to a working copy of CentOS Artwork Repository,
+first.  Working copies of CentOS Artwork Repository are downloaded
+from the source repository and made available to you by mean of
+workstations.  A workstation is a computer that you install and
+configure (prepare) to do something. In this case, you pick up a
+computer and prepare it for working on the CentOS Artwork Repository.
 
 @subsubheading Installing the workstation
 
@@ -234,9 +233,9 @@ sudo yum install subversion
 @subsubheading Configuring the working copy
 
 Once you have a working copy of CentOS Artwork Repository in your
-workstation, you can go and run the @strong{@code{prepare}}
-functionality of @command{centos-art.sh} script to realize the
-remaining configuration stuff.
+workstation, you can go and run the @code{prepare} functionality of
+@command{centos-art.sh} script to realize the remaining configuration
+stuff.
 
 Assuming this is the very first time you run the
 @command{centos-art.sh} script, you'll find that there is no
@@ -249,7 +248,7 @@ the @command{centos-art.sh} script using its absolute path:
 ~/artwork/trunk/Scripts/centos-art.sh prepare [OPTIONS]
 @end verbatim
 
-Assuming you've already run the @strong{@code{prepare}} functionality
+Assuming you've already run the @code{prepare} functionality
 before, there is no need for you to use the absolute path again.
 Instead, you can use the @command{centos-art} command-line interface
 directly, as the following example describes:
@@ -258,8 +257,8 @@ directly, as the following example describes:
 centos-art.sh prepare [OPTIONS]
 @end verbatim
 
-Notice that you can execute the @strong{@code{prepare}} functionality
-more than once. This is specially useful to keep the link information
+Notice that you can execute the @code{prepare} functionality more than
+once. This is specially useful to keep the link information
 syncronized. For example, considering you've added new brushes to or
 removed old brushes from your working copy of CentOS Artwork
 Repository, the link information related to those files need to be
