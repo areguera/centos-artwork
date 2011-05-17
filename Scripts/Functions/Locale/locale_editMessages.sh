@@ -31,17 +31,25 @@ function locale_editMessages {
     # Initialize local variables.
     local FILES=''
 
-    # Define list of locale files to process using action value as
-    # reference.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/(Models|Manual|Themes/Models)/.+$" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manual|Identity/Models/.+)$" ]];then
+
+        # Define list of locale files for XML-based files.
         FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/messages\.po")
+
+        # Do not create machine objects for XML-based files.
+        FLAG_DONT_CREATE_MO='true'
+
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
+
+        # Define list of locale files for shell script files.
         FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
+
     else
-        cli_printMessage "`gettext "The path provided do not support localization."`" --as-error-line
+
+        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
+
     fi
 
-    # Go throguh files, one by one.
     for FILE in $FILES;do
 
         # Print the file we are editing.
