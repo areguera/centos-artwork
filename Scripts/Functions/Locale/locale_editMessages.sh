@@ -31,7 +31,7 @@ function locale_editMessages {
     # Initialize local variables.
     local FILES=''
 
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manual|Identity/Models/.+)$" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manual|Identity/Models)/.*$" ]];then
 
         # Define list of locale files for XML-based files.
         FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/messages\.po")
