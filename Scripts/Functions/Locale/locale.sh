@@ -67,7 +67,7 @@ function locale {
         # Define work directory. This is the place where locales
         # directories will be stored in.
         WORKDIR=$(echo ${ACTIONVAL} \
-            | sed -r -e "s!trunk/(Identity|Scripts)!trunk/Locales/\1!")
+            | sed -r -e "s!trunk/(Identity|Scripts|Manual)!trunk/Locales/\1!")
 
         # Add current locale to work directory. This is the place
         # where parent directories specific translation messages
