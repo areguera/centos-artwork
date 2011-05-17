@@ -133,6 +133,15 @@ function help {
 
     fi
 
+    # Verify non-option arguments.  When non-option arguments are
+    # passed to `centos-art.sh' script, use the base manual directory
+    # structure. This make possible that option like `--search' and
+    # `--update' can be executed without passing any `path/to/dir'
+    # information in the command line.
+    if [[ $ARGUMENTS == '' ]];then
+        ARGUMENTS=${MANUAL_BASEDIR}
+    fi
+
     # Define action name. It does matter what option be passed to
     # centos-art, there are many different actions to perform based on
     # the option passed (e.g., `--edit', `--read', `--search', etc.).
