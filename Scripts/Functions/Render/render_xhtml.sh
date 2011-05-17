@@ -29,7 +29,7 @@ function render_xhtml {
     if [[ -f ${FILE}.xhtml ]];then
         cli_printMessage "${FILE}.xhtml" --as-updating-line
     else
-        cli_doPrint "${FILE}.xhtml" --as-creating-line
+        cli_printMessage "${FILE}.xhtml" --as-creating-line
     fi
 
     # Create xhtml file from instance.
