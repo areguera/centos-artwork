@@ -29,24 +29,16 @@ function locale_updateMessageXml {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Initialize local variables.
-    local FILE=''
-    local FILES=''
-
     # Define filename used to create both portable object templates
     # (.pot) and portable objects (.po) files.
-    FILE="${WORKDIR}/messages"
+    local FILE="${WORKDIR}/messages"
 
     # Define regular expression to match extensions of XML files we
     # use inside the repository.
     local EXTENSION='(svg|xml|xhtml|docbook)'
 
     # Build list of files to process.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Models/.+$" ]];then
-        FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
-    else
-        cli_printMessage "`gettext "The path provided cannot be processed."`" --as-error-line
-    fi
+    local FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
 
     # Print action message.
     cli_printMessage "${FILE}.pot" --as-updating-line
