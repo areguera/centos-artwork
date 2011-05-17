@@ -30,21 +30,17 @@ function locale_updateMessageShell {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Initialize local variables.
-    local FILE=''
-    local FILES=''
-
     # Define file name used as reference to create portable object
     # templates (.pot), portable objects (.po) and machine objects
     # (.mo).
-    FILE="${WORKDIR}/${TEXTDOMAIN}"
+    local FILE="${WORKDIR}/${TEXTDOMAIN}"
+
+    # Define regular expression to match extensions of XML files we
+    # use inside the repository.
+    local EXTENSION='sh'
 
     # Build list of files to process.
-    if [[ $ACTIONVAL =~ "^${CLI_BASEDIR}" ]];then
-        FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.sh")
-    else
-        cli_printMessage "`gettext "The path provided cannot be processed."`" --as-error-line
-    fi
+    local FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
 
     # Print action message.
     cli_printMessage "${FILE}.pot" --as-updating-line
