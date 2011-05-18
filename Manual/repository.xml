@@ -227,10 +227,7 @@
     <nodeup>Introduction</nodeup>
     <section>
       <title>Copying Conditions</title>
-      <para><indexterm index="cp">Copying conditions</indexterm></para>
-      <verbatim xml:space="preserve"><![CDATA[
-Copyright (C) 2009, 2010, 2011 The CentOS Project
-]]></verbatim>
+      <para><indexterm index="cp">Copying conditions</indexterm>Copyright &copyright; 2009, 2010, 2011 The CentOS Project.</para>
       <para>Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</para>
       <subheading>Preamble</subheading>
       <para>The CentOS Artwork Repository organizes files in a very specific way to implement The CentOS Project corporate visual identity. This very specific organization of files is part of <command>centos-art.sh</command> script, a bash script that automate most of the frequent tasks inside the repository.</para>
@@ -397,7 +394,7 @@ help_deleteCrossReferences.sh   help_searchIndex.sh
           <title>Documentation</title>
           <para><indexterm index="cp">Documentation work line</indexterm> The documentation work line exists to describe what each directory inside the CentOS Artwork Repository is for, the conceptual ideas behind them and, if possible, how automation scripts make use of them.</para>
           <para>The CentOS Artwork Repository documentation is supported by Texinfo, a documentation system that uses a single source file to produce both online information and printed output.</para>
-          <para>The repository documentation is organized under <file>trunk/Manual</file> directory structure and uses the repository directories as reference. Each directory structure in the repository has a documentation entry associated in the documentation manual.  Documentation entries are stored under <file>trunk/Manual/Directories</file> directory structure and the action itself is controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script.</para>
+          <para>The repository documentation is organized under <file>trunk/Manual</file> directory and uses the repository directory structre as reference. Each directory in the repository has a documentation entry associated in the documentation manual.  Documentation entries are stored under <file>trunk/Manual/Directories</file> directory and the action itself is controlled by the <code>help</code> functionality of <command>centos-art.sh</command> script.</para>
           <para>The <code>help</code> functionality let you create, edit and delete documentation entries in a way that you don't need to take care of updating menus, nodes and cross reference information inside the manual structure; the functionality takes care of it for you. However, if you need to write repository documentation that have nothing to do with repository directories (e.g., Preface, Introduction and similar) you need to do it manually, there is no functionality to automate such process yet.</para>
           <para>See <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>, for more information on documentation.</para>
         </subsubsection>
@@ -727,6 +724,21 @@ centos-art help --read turnk/Identity/Images/Themes/TreeFlower/3
         <menuentry>
           <menunode>Directories trunk Manual</menunode>
           <menutitle>Directories trunk Manual</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Manual Directories</menunode>
+          <menutitle>Directories trunk Manual Directories</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Manual Introduction</menunode>
+          <menutitle>Directories trunk Manual Introduction</menutitle>
+          <menucomment></menucomment>
+        </menuentry>
+        <menuentry>
+          <menunode>Directories trunk Manual Licenses</menunode>
+          <menutitle>Directories trunk Manual Licenses</menutitle>
           <menucomment></menucomment>
         </menuentry>
         <menuentry>
@@ -1064,6 +1076,12 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
         <item>
           <para><uref><urefurl>file:///usr/share/gimp/2.0/help/en/index.html</urefurl><urefdesc>The Gimp Manual</urefdesc></uref>, specifically the section related to <uref><urefurl>file:///usr/share/gimp/2.0/help/en/gimp-concepts-brushes.html</urefurl><urefdesc>Brushes</urefdesc></uref>.</para>
         </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref></para>
+        </item>
       </itemize>
     </section>
   </node>
@@ -1137,7 +1155,10 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
-          <para>...</para>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref></para>
         </item>
       </itemize>
     </section>
@@ -1484,9 +1505,25 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
         <para><strong>Note</strong> The information about trademarks and corporate identity is my personal interpretation of <uref><urefurl>http://en.wikipedia.org/Corporate_identity</urefurl></uref> and <uref><urefurl>http://en.wikipedia.org/Trademark</urefurl></uref> description. If you have practical experiences with these affairs, please serve yourself to improve this section with your reasons.</para>
       </quotation>
       <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
       <subheading>See also</subheading>
-      <menu>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity Models</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref></para>
+        </item>
+      </itemize>
     </section>
   </node>
   <node>
@@ -2176,8 +2213,15 @@ trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
         </item>
       </itemize>
       <subheading>See also</subheading>
-      <menu>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk Identity</xrefnodename></xref></para>
+        </item>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref></para>
+        </item>
+      </itemize>
     </section>
   </node>
   <node>
@@ -2425,25 +2469,85 @@ priority=10
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
-          <para>...</para>
+          <para>See <xref><xrefnodename>Directories trunk Scripts Functions Locale</xrefnodename></xref>.</para>
         </item>
       </itemize>
       <subheading>See also</subheading>
       <itemize>
-        <itemfunction>&bullet;</itemfunction><xref><xrefnodename>Directories trunk Scripts Functions Locale</xrefnodename></xref>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref></para>
+        </item>
       </itemize>
     </section>
   </node>
   <node>
     <nodename>Directories trunk Manual</nodename>
-    <nodenext>Directories trunk Scripts</nodenext>
+    <nodenext>Directories trunk Manual Directories</nodenext>
     <nodeprev>Directories trunk Locales</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Manual</file> Directory</title>
       <para><indexterm index="cp">Directories trunk Manual</indexterm></para>
       <subheading>Goals</subheading>
-      <para>This <file>trunk/Manual</file> directory structure provides the documentation work line.  The main goal of documentation work line is describe what each directory inside the CentOS Artwork Repository is for, the conceptual ideas behind them and, if possible, how automation scripts make use of them.</para>
+      <para>The <file>trunk/Manual</file> directory is the place where files related to documentation work line are stored in.  The main goal of documentation work line is to describe what each directory inside the CentOS Artwork Repository is for, the conceptual ideas behind them and, if possible, how automation scripts make use of them.</para>
+      <subheading>Description</subheading>
+      <subsubheading>Files</subsubheading>
+      <table>
+        <tableitem>
+          <tableterm><file>repository.css</file></tableterm>
+          <tableterm><file>repository-index.texi</file></tableterm>
+          <tableterm><file>repository.info.bz2</file></tableterm>
+          <tableterm><file>repository-init.pl</file></tableterm>
+          <tableterm><file>repository-menu.texi</file></tableterm>
+          <tableterm><file>repository-node.texi</file></tableterm>
+          <tableterm><file>repository.pdf</file></tableterm>
+          <tableterm><file>repository.sed</file></tableterm>
+          <tableterm><file>repository.texi</file></tableterm>
+          <tableterm><file>repository.txt.bz2</file></tableterm>
+          <tableterm><file>repository.xhtml.bz2</file></tableterm>
+          <tableterm><file>repository.xml</file></tableterm>
+        </tableitem>
+      </table>
+      <subsubheading>Directories</subsubheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Manual Directories</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Manual Introduction</xrefnodename></xref>.</para>
+        </item>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Manual Licenses</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>See <xref><xrefnodename>Directories trunk Scripts Functions Help</xrefnodename></xref>.</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para><xref><xrefnodename>Directories trunk</xrefnodename></xref></para>
+        </item>
+      </itemize>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Manual Directories</nodename>
+    <nodenext>Directories trunk Manual Introduction</nodenext>
+    <nodeprev>Directories trunk Manual</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Manual/Directories</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Manual Directories</indexterm></para>
+      <subheading>Goals</subheading>
+      <para>The <file>trunk/Manual/Directories</file> directory stores source documentation files related to repository directories. The directory structure in this location mirrors the directory structure being documented in the repository from top level directories (e.g., <file>trunk</file>, <file>branches</file> and <file>tags</file>) to inner levels, including the <file>trunk/Manual</file> location itself where documentation source files are stored in.</para>
       <subheading>Description</subheading>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
@@ -2459,14 +2563,94 @@ priority=10
         </item>
       </itemize>
       <subheading>See also</subheading>
-      <menu>
-      </menu>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Manual Introduction</nodename>
+    <nodenext>Directories trunk Manual Licenses</nodenext>
+    <nodeprev>Directories trunk Manual Directories</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Manual/Introduction</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Manual Introduction</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+    </section>
+  </node>
+  <node>
+    <nodename>Directories trunk Manual Licenses</nodename>
+    <nodenext>Directories trunk Scripts</nodenext>
+    <nodeprev>Directories trunk Manual Introduction</nodeprev>
+    <nodeup>Directories</nodeup>
+    <section>
+      <title>The <file>trunk/Manual/Licenses</file> Directory</title>
+      <para><indexterm index="cp">Directories trunk Manual Licenses</indexterm></para>
+      <subheading>Goals</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Description</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>Usage</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
+      <subheading>See also</subheading>
+      <itemize>
+        <itemfunction>&bullet;</itemfunction>
+        <item>
+          <para>...</para>
+        </item>
+      </itemize>
     </section>
   </node>
   <node>
     <nodename>Directories trunk Scripts</nodename>
     <nodenext>Directories trunk Scripts Functions</nodenext>
-    <nodeprev>Directories trunk Manual</nodeprev>
+    <nodeprev>Directories trunk Manual Licenses</nodeprev>
     <nodeup>Directories</nodeup>
     <section>
       <title>The <file>trunk/Scripts</file> Directory</title>
@@ -2840,19 +3024,29 @@ centos-art locale --edit trunk/Scripts
       </table>
       <para>When documentation entries are removed (e.g., through <option>--delete</option> or <option>--rename</option> options), the <command>centos-art.sh</command> script takes care of updating nodes, menus and cross references related to documentation entries in order to keep the manual structure in a correct state.</para>
       <subheading>Description</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
+      <para>The CentOS Project corporate identity is organized through directories in The CentOS Artwork Repository. Each directory inside the repository responds to conceptual ideas and uses files to get the implementation of those ideas.  The <code>help</code> functionality of <command>centos-art.sh</command> script uses this directory layout as reference to document the conceptual ideas it is based on. Each directory inside the repository can be documented, in order to provide the explanation of what it is for and how automation scripts use it.</para>
+      <quotation>
+        <para><strong>Caution</strong> When the repository directory layout changes, the documentation layout related must be changed as well in order for both locations to be consistent in their paths. Otherwise, you may end up having documentation entries that point to unexistent directories in the repository.</para>
+      </quotation>
+      <para>Files inside the repository are not documented. The only exception to this rule are files under <file>trunk/Manual</file> directory, the place where documentation source files are stored in. Inside this location you can refer <file>.texi</file> files for direct actions using the <code>help</code> functionality of <command>centos-art.sh</command> script. File actions, in this location, are also used to manage specific parts of the manual which have no association outside <file>trunk/Manual</file> directory (e.g., Preface, Introduction, etc.).</para>
+      <para>The manual structure (see <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>) is supported by GNU Texinfo, a documentation system that can produce both online information and a printed manual from a single source. The <code>help</code> functionality is an interface you can use to control the source files in the manual structure.</para>
+      <para>The manual output files is produced from Texinfo files and stored in <file>trunk/Manual</file> on different formats including Info, Pdf, XHTML, XML and TXT.</para>
+      <para>Whatever your prefered language be, you'll always edit documentation entries in English language and so will be the output produced from them, when you use the <code>help</code> functionality of <command>centos-art.sh</command> script. However, you can achieve the manual localization to your prefered language by applying the <code>locale</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Locale</xrefnodename></xref>) to any of the XML-based English outputs supported by <command>centos-art.sh</command> script (e.g., XHTML and Docbook) to produce portable objects for your prefered language and the <code>render</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Render</xrefnodename></xref>) to produce the translated version of the output XHTML files taken in first place. The translated version is produced in the same format of the file taken as reference to build the portable objects. XHTML format in this case.</para>
       <subheading>Examples</subheading>
-      <itemize>
-        <itemfunction>&bullet;</itemfunction>
-        <item>
-          <para>...</para>
-        </item>
-      </itemize>
+      <table>
+        <tableitem>
+          <tableterm><command>centos-art help --edit trunk/Identity</command></tableterm>
+          <item>
+            <para>This command edits the documentation entry related to <file>trunk/Identity</file> directory.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art help --read trunk/Identity</command></tableterm>
+          <item>
+            <para>This command reads the doumentation entry related to <file>trunk/Identity</file> directory in info format.</para>
+          </item>
+        </tableitem>
+      </table>
       <subheading>Author</subheading>
       <para>Written by Alain Reguera Delgado.</para>
       <subheading>Reporting bugs</subheading>
@@ -2947,9 +3141,9 @@ locale -a | less
       <subsubheading>Design models localization</subsubheading>
       <para>Design models are used as input to produce most images and some other contents as well. Design models are always XML-based files (e.g., SVG, XHTML, Docbook), so the <code>locale</code> functionality uses the <command>xml2po</command> program to create protable objects from them under <file>trunk/Locales/Models</file> directory. Portable objects contain the relation between message id and message translation, as translator, need to take care of.</para>
       <para>Thanks to <command>xml2po</command>, it is possible for the <code>locale</code> functionality to separate designing tasks from the translating tasks. It is possible for graphic designers to concentrate their efforts on designing models in English language while translators take care of their localization using the <option>--update</option> and <option>--edit</option> options as much as it be needed.</para>
-      <para>Once design models have been localized, rendering them in different language is a matter using the <strong><code>render</code></strong> functionality of <command>centos-art.sh</command> script. See <xref><xrefnodename>Directories trunk Scripts Functions Render</xrefnodename></xref>, for more information about it.</para>
+      <para>Once design models have been localized, rendering them in different language is a matter using the <code>render</code> functionality of <command>centos-art.sh</command> script. See <xref><xrefnodename>Directories trunk Scripts Functions Render</xrefnodename></xref>, for more information about it.</para>
       <subsubheading>Shell script localization</subsubheading>
-      <para>Additionally to design models localization, the <code>locale</code> functionality is also used to localize the <command>centos-art.sh</command> script itself. The <command>centos-art.sh</command> script is a shell script written in Bash, so the <code>locale</code> functionality uses the <command>gettext</command> tools to retrive translatable strings, create portable objects and machine objects.</para>
+      <para>The <code>locale</code> functionality is used to localize the <command>centos-art.sh</command> script itself. The <command>centos-art.sh</command> script is a shell script written in Bash, so the <code>locale</code> functionality uses the <command>gettext</command> tools to retrive translatable strings, create portable objects and machine objects.</para>
       <para>Thanks to <command>gettext</command>, it is possible for the <code>locale</code> functionality to separate programming tasks from the translating tasks. It is possible for programmer to concentrate their efforts in programming output messages in English language while translators take care of their localization using the <option>--update</option> and <option>--edit</option> options as much as it be needed.</para>
       <para>Once <command>centos-art.sh</command> script has been localized, the translated messages should be immediatly visible to you, the next time you execute the <command>centos-art.sh</command> script</para>
       <quotation>
@@ -2965,10 +3159,10 @@ locale -a | less
           </item>
         </tableitem>
         <tableitem>
-          <tableterm><command>centos-art locale --edit trunk/Identity/Models/Default/Distro/5/Anaconda --dont-create-mo</command></tableterm>
+          <tableterm><command>centos-art locale --edit trunk/Identity/Models/Default/Distro/5/Anaconda</command></tableterm>
           <item>
             <para>This command let translators to edit portable objects related to Anaconda default design models of The CentOS Distribution major release 5. The edit action is where the translator localize translatable strings in English language to another language.</para>
-            <para>When portable objects for XML-base files are produced, there is no need to retain the machine object format, so we used the <option>--dont-create-mo</option>.</para>
+            <para>When portable objects for XML-base files are produced, there is no need to retain the machine object format, so we the <option>--dont-create-mo</option> is automatically assumed.</para>
           </item>
         </tableitem>
         <tableitem>
@@ -2981,7 +3175,23 @@ locale -a | less
         <tableitem>
           <tableterm><command>centos-art locale --edit trunk/Scripts</command></tableterm>
           <item>
-            <para>This command let translators to edit portable objects related to <command>centos-art.sh</command> script. The edit action is where the translator localize translatable strings in English language to another language.</para>
+            <para>This command edits portable objects related to <command>centos-art.sh</command> script in your prefered language.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art locale --update trunk/Manual/repository.xhtml</command></tableterm>
+          <item>
+            <para>This command updates portable objects for the XHTML output of the repository documentation manual. The portable objects are created in your prefered language and can be used to produced localized versions of the manual in XHTML format.</para>
+            <para>The update action consists on adding new translatable strings to or removing old translatable strings from the portable objects in order to keep both the portable object and the manual XHTML output consistent one another.</para>
+            <para>People execute this command after committing changes to the repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
+          <tableterm><command>centos-art locale --edit trunk/Manual/repository.xhtml</command></tableterm>
+          <item>
+            <para>This command takes all the repository documentation manual XHTML output files, which have not been translated yet inside the <file>trunk/Manual/repository.xhtml</file> directory, as input to produce portable objects from them so as for you to localize translatable strings to your prefered language (e.g., as specified by the <env>LANG</env> environment variable).</para>
+            <para>Once the portable objects have been created they are used to produce the translated version of the manual in XHTML format under the <file>trunk/Manual/repository.xml/LANG</file> directory, where <samp>LANG</samp> refers your prefered language. The translated version of the XHTML files is produced using the <code>render</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Render</xrefnodename></xref>).</para>
+            <para>When your prefered language is other but English, the <command>centos-art.sh</command> script takes care of updating both the portable objects and the translated version of files after you've edited a manual documentation entry, using the <code>help</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Help</xrefnodename></xref>). In other situations, you need to do these actions by yourself.</para>
           </item>
         </tableitem>
       </table>
