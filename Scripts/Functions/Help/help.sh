@@ -38,7 +38,7 @@ function help {
     # Define manuals base directory. This is the place where
     # documentation manuals base directory structures are stored and
     # organized in.
-    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
+    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manuals/Texinfo"
 
     # Define file name (without extension) for documentation manual.
     MANUAL_NAME=repository
