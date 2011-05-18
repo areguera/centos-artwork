@@ -40,8 +40,7 @@ function help {
     # organized in.
     MANUAL_BASEDIR="${HOME}/artwork/trunk/Manual"
 
-    # Define file name for documentation manual. This is the file used
-    # to initiate the structure of documentation manual.
+    # Define file name (without extension) for documentation manual.
     MANUAL_NAME=repository
 
     # Define base name for documentation manual files (without
@@ -205,4 +204,27 @@ function help {
         cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
 
     done
+
+    # Perform language-specific actions when the current language is
+    # other but English language.
+    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
+
+        # Update translatable strings in related portable objects.
+        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh locale --update ${MANUAL_BASEFILE}.xhtml --dont-commit-changes
+
+        # Update translatable strings in related portable objects.
+        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh locale --edit ${MANUAL_BASEFILE}.xhtml
+
+        # Print separator.
+        cli_printMessage '-' --as-separator-line
+
+        # Print action message.
+        cli_printMessage "${MANUAL_BASEFILE}.xhtml/$(cli_getCurrentLocale)" '--as-updating-line'
+
+        # Render translated versions of the XHTML output files,
+        # supressing the rendition output.
+        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render ${MANUAL_BASEFILE}.xhtml --dont-commit-changes --quiet
+
+    fi
+
 }
