@@ -45,17 +45,16 @@ function help_getEntry {
 
     # Verify the entry relative path to find out which documentation
     # manual we are acting on. As convenction, whatever documentation
-    # entry you provide outside trunk/Identity/Manuals/ directory
-    # structure is considered as you are documenting the repository
-    # directory structure. Otherwise, if an entry inside
-    # trunk/Identity/Manuals/ is provided, the directory structure
-    # provided is used as default documentation manual for actions
-    # like `--create' and `--update' to take place on. Other options
-    # like `--edit', `--delete' and `--read' cannot be applied to
-    # paths provided inside trunk/Identity/Manuals/ such actions need
-    # to be performed manually.
+    # entry you provide outside trunk/Manuals/ directory structure is
+    # considered as you are documenting the repository directory
+    # structure. Otherwise, if an entry inside trunk/Manuals/ is
+    # provided, the directory structure provided is used as default
+    # documentation manual for actions like `--create' and `--update'
+    # to take place on. Other options like `--edit', `--delete' and
+    # `--read' cannot be applied to paths provided inside
+    # trunk/Manuals/ such actions need to be performed manually.
     if [[ ${ENTRY} =~ '\.texi$' ]];then
-        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manual/!!')
+        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
     else
         ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).texi
     fi
