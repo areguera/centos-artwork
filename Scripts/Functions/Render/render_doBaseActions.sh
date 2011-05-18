@@ -71,7 +71,7 @@ function render_doBaseActions {
     # Another issue to consider when building the list of files to
     # process here, is that in some cases templates and output are in
     # the same location (e.g., when rendering
-    # `trunk/Manual/repository.xhtml/' directory). In these cases
+    # `trunk/Manuals/repository.xhtml/' directory). In these cases
     # localized content are stored in the same location where
     # template files are retrived from and we need to avoid using
     # localized content from being interpreted as design models. In
@@ -106,7 +106,7 @@ function render_doBaseActions {
 
         # Define final location of translation file.
         TRANSLATION=$(dirname $FILE \
-           | sed -r 's!trunk/(Manual|Identity)!trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
+           | sed -r 's!trunk/(Manuals|Identity)!trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
 
         # Print final location of translation file.
         if [[ ! -f "$TRANSLATION" ]];then
