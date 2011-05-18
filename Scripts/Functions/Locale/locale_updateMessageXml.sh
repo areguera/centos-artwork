@@ -39,7 +39,7 @@ function locale_updateMessageXml {
 
     # Build list of files to process.  Remember that in some cases
     # templates and output are in the same location (e.g., when
-    # rendering `trunk/Manual/repository.xhtml/' directory). In these
+    # rendering `trunk/Manuals/repository.xhtml/' directory). In these
     # cases localized content are stored in the same location where
     # template files are retrived from and we need to avoid using
     # localized content from being interpreted as design models. In
