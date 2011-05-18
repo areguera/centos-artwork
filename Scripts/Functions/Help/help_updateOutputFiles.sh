@@ -46,4 +46,20 @@ function help_updateOutputFiles {
     # Remove the working copy root directory from directory stack.
     popd > /dev/null
 
+    # Perform language-specific actions when the current language is
+    # other but English language.
+    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
+
+        # Update translatable strings in related portable objects.
+        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh locale --update ${MANUAL_BASEFILE}.xhtml --dont-commit-changes
+
+        # Print action message.
+        cli_printMessage "${MANUAL_BASEFILE}.xhtml/$(cli_getCurrentLocale)" '--as-updating-line'
+
+        # Render translated versions of the XHTML output files,
+        # supressing the rendition output.
+        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render ${MANUAL_BASEFILE}.xhtml --dont-commit-changes --quiet
+
+    fi
+
 }
