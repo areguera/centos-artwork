@@ -1,24 +1,44 @@
 @subheading Goals
 
-This @file{trunk/Manual} directory structure provides the
-documentation work line.  The main goal of documentation work line is
-describe what each directory inside the CentOS Artwork Repository is
-for, the conceptual ideas behind them and, if possible, how automation
-scripts make use of them.
+The @file{trunk/Manual} directory is the place where files related to
+documentation work line are stored in.  The main goal of documentation
+work line is to describe what each directory inside the CentOS Artwork
+Repository is for, the conceptual ideas behind them and, if possible,
+how automation scripts make use of them.
 
 @subheading Description
 
+@subsubheading Files
+@table @file
+@item repository.css
+@item repository-index.texi
+@item repository.info.bz2
+@item repository-init.pl
+@item repository-menu.texi
+@item repository-node.texi
+@item repository.pdf
+@item repository.sed
+@item repository.texi
+@item repository.txt.bz2
+@item repository.xhtml.bz2
+@item repository.xml
+@end table
+@subsubheading Directories
+
 @itemize
-@item ...
+@item @xref{Directories trunk Manual Directories}.
+@item @xref{Directories trunk Manual Introduction}.
+@item @xref{Directories trunk Manual Licenses}.
 @end itemize
 
 @subheading Usage
 
 @itemize
-@item ...
+@item @xref{Directories trunk Scripts Functions Help}.
 @end itemize
 
 @subheading See also
 
-@menu
-@end menu
+@itemize
+@item @ref{Directories trunk}
+@end itemize
