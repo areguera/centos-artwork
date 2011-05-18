@@ -2492,24 +2492,82 @@ priority=10
       <subheading>Goals</subheading>
       <para>The <file>trunk/Manual</file> directory is the place where files related to documentation work line are stored in.  The main goal of documentation work line is to describe what each directory inside the CentOS Artwork Repository is for, the conceptual ideas behind them and, if possible, how automation scripts make use of them.</para>
       <subheading>Description</subheading>
-      <subsubheading>Files</subsubheading>
+      <para>The repository documentation manual is made of the following files:</para>
       <table>
         <tableitem>
           <tableterm><file>repository.css</file></tableterm>
+          <item>
+            <para>This file controls the visual style for XHTML output files of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository-index.texi</file></tableterm>
+          <item>
+            <para>This file controls the index definition for source files of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.info.bz2</file></tableterm>
+          <item>
+            <para>This file provides the Info output of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository-init.pl</file></tableterm>
+          <item>
+            <para>This file provides the initialization script of <command>texi2html</command>, the program used by <command>centos-art.sh</command> script to produce the XHTML output of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository-menu.texi</file></tableterm>
+          <item>
+            <para>This file controls the menu definition of chapters for source files of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository-node.texi</file></tableterm>
+          <item>
+            <para>This file controls the node definition of chapters for source files of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.pdf</file></tableterm>
+          <item>
+            <para>This file provides the PDF output of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.sed</file></tableterm>
+          <item>
+            <para>This file provides post-transformations for XHTML output files. In this file is where XHTML definitions for admonitions are set in.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.texi</file></tableterm>
+          <item>
+            <para>This is the source file of repository documentation manual where the manual structure initialization is set. manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.txt.bz2</file></tableterm>
+          <item>
+            <para>This file provides the TXT output of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.xhtml.bz2</file></tableterm>
+          <item>
+            <para>This file provides the XHTML output of repository documentation manual.</para>
+          </item>
+        </tableitem>
+        <tableitem>
           <tableterm><file>repository.xml</file></tableterm>
+          <item>
+            <para>This file provides the XML output of repository documentation manual.</para>
+          </item>
         </tableitem>
       </table>
-      <subsubheading>Directories</subsubheading>
+      <para>The repository documentation manual is made of the following directories:</para>
       <itemize>
         <itemfunction>&bullet;</itemfunction>
         <item>
@@ -3030,7 +3088,7 @@ centos-art locale --edit trunk/Scripts
       </quotation>
       <para>Files inside the repository are not documented. The only exception to this rule are files under <file>trunk/Manual</file> directory, the place where documentation source files are stored in. Inside this location you can refer <file>.texi</file> files for direct actions using the <code>help</code> functionality of <command>centos-art.sh</command> script. File actions, in this location, are also used to manage specific parts of the manual which have no association outside <file>trunk/Manual</file> directory (e.g., Preface, Introduction, etc.).</para>
       <para>The manual structure (see <xref><xrefnodename>Directories trunk Manual</xrefnodename></xref>) is supported by GNU Texinfo, a documentation system that can produce both online information and a printed manual from a single source. The <code>help</code> functionality is an interface you can use to control the source files in the manual structure.</para>
-      <para>The manual output files is produced from Texinfo files and stored in <file>trunk/Manual</file> on different formats including Info, Pdf, XHTML, XML and TXT.</para>
+      <para>The manual output is produced from Texinfo files and stored in <file>trunk/Manual</file> on different formats including Info, PDF, XHTML, XML and TXT.</para>
       <para>Whatever your prefered language be, you'll always edit documentation entries in English language and so will be the output produced from them, when you use the <code>help</code> functionality of <command>centos-art.sh</command> script. However, you can achieve the manual localization to your prefered language by applying the <code>locale</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Locale</xrefnodename></xref>) to any of the XML-based English outputs supported by <command>centos-art.sh</command> script (e.g., XHTML and Docbook) to produce portable objects for your prefered language and the <code>render</code> functionality of <command>centos-art.sh</command> script (see <xref><xrefnodename>Directories trunk Scripts Functions Render</xrefnodename></xref>) to produce the translated version of the output XHTML files taken in first place. The translated version is produced in the same format of the file taken as reference to build the portable objects. XHTML format in this case.</para>
       <subheading>Examples</subheading>
       <table>

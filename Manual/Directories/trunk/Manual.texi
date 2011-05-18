@@ -8,22 +8,72 @@ how automation scripts make use of them.
 
 @subheading Description
 
-@subsubheading Files
+The repository documentation manual is made of the following files:
+
 @table @file
+
 @item repository.css
+
+This file controls the visual style for XHTML output files of
+repository documentation manual.
+
 @item repository-index.texi
+
+This file controls the index definition for source files of repository
+documentation manual.
+
 @item repository.info.bz2
+
+This file provides the Info output of repository documentation manual.
+
 @item repository-init.pl
+
+This file provides the initialization script of @command{texi2html},
+the program used by @command{centos-art.sh} script to produce the
+XHTML output of repository documentation manual.
+
 @item repository-menu.texi
+
+This file controls the menu definition of chapters for source files of
+repository documentation manual.
+
 @item repository-node.texi
+
+This file controls the node definition of chapters for source files of
+repository documentation manual.
+
 @item repository.pdf
+
+This file provides the PDF output of repository documentation manual.
+
 @item repository.sed
+
+This file provides post-transformations for XHTML output files. In
+this file is where XHTML definitions for admonitions are set in.
+
 @item repository.texi
+
+This is the source file of repository documentation manual where
+the manual structure initialization is set.
+manual.
+
 @item repository.txt.bz2
+
+This file provides the TXT output of repository documentation manual.  
+
 @item repository.xhtml.bz2
+
+This file provides the XHTML output of repository documentation
+manual.  
+
 @item repository.xml
+
+This file provides the XML output of repository documentation manual.  
+
 @end table
-@subsubheading Directories
+
+The repository documentation manual is made of the following
+directories:
 
 @itemize
 @item @xref{Directories trunk Manual Directories}.
