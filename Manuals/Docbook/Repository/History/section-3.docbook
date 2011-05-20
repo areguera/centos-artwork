@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>2010</title>
+
+    <para>The rendition script <command>render.sh</command> is no
+    longer a rendition script, but a collection of functionalities
+    grouped into the <command>centos-art.sh</command> script where
+    rendition is one functionality among others.  The
+    <command>centos-art.sh</command> is created to automate most
+    frequent tasks inside the repository.  There is no need to have
+    links all around the repository if a command-line interface can be
+    created (through symbolic links, in the <filename
+    class="directory">~/bin</filename> directory) and be called
+    anywhere inside the repository as it would be usually done with
+    regular commands.</para>
+    
+    <para>Inside <command>centos-art.sh</command>, functionalities
+    started to get identified and separated one another. For example,
+    when images were rendered, there was no need to load
+    functionalities related to documentation manual. This moved us
+    onto common functionalities and specific functionalities inside
+    <command>centos-art.sh</command> script. Common functionalities
+    are loaded when the script is initiated and are available to
+    specific functionalities.</para>
+    
+    <para>The <command>centos-art.sh</command> script was redesigned
+    to handle options trough <command>getopt</command> option
+    parser.</para>
+    
+    <para>The repository directory structure was updated to improve
+    the implementation of concepts related to corporate visual
+    identity.  Specially in the area related to themes which were
+    divided into design models and artistic motifs.</para>
+    
+    <para>Stoped using LaTeX for documentation and started using
+    Texinfo instead, a documentation system that can produce both
+    online information and a printed manual from a single source.  In
+    this configuration the info ouput produced by Texinfo was used by
+    <command>centos-art.sh</command> script to provide reading,
+    edition and administration of documentation dynamically, based on
+    repository directory structure.</para>
+
+</section>

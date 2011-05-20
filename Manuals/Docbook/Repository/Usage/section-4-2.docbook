@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>Documentation</title>
+
+    <para>The documentation work line exists to describe what each
+    directory inside the CentOS Artwork Repository is for, the
+    conceptual ideas behind them and, if possible, how automation
+    scripts make use of them.</para>
+    
+    <para>The CentOS Artwork Repository documentation is supported by
+    Texinfo, a documentation system that uses a single source file to
+    produce both online information and printed output.</para>
+    
+    <para>The repository documentation is organized under
+    @file{trunk/Manual} directory and uses the repository directory
+    structre as reference.  Each directory in the repository has a
+    documentation entry associated in the documentation manual.
+    Documentation entries are stored under
+    @file{trunk/Manual/Directories} directory and the action itself is
+    controlled by the @code{help} functionality of
+    <command>centos-art.sh</command> script.</para>
+    
+    <para>The @code{help} functionality let you create, edit and
+    delete documentation entries in a way that you don't need to take
+    care of updating menus, nodes and cross reference information
+    inside the manual structure; the functionality takes care of it
+    for you.  However, if you need to write repository documentation
+    that have nothing to do with repository directories (e.g.,
+    Preface, Introduction and similar) you need to do it manually,
+    there is no functionality to automate such process yet.</para>
+    
+    <para>@xref{Directories trunk Manual}, for more information on
+    documentation.</para>
+    
+</section>

@@ -1,0 +1,73 @@
+<?xml versio="1.0"?>
+<section>
+            
+    <title>Graphic design</title>
+
+    <para>The graphic design work line exists to cover brand design,
+    typography design and themes design mainly.  Additionally, some
+    auxiliar areas like icon design, illustration design, brushes
+    design, patterns designs and palettes of colors are also included
+    here for completeness.</para>
+    
+    <para>Inside CentOS Artwork Repository graphic design is performed
+    through Inkscape (@url{http://www.inkscape.org/}) and GIMP
+    (@url{http://www.gimp.org/}).  The Inkscape tool is used to create
+    and manipulate scalable vector graphics and export them to PNG
+    format; it also provides a command-line interface that we use to
+    perform massive exportation from SVG files to PNG files in
+    automation scripts. On the other hand, GIMP is used to create and
+    manipulate rastered images, create brushes, patterns and palettes
+    of colors.</para>
+    
+    <tip><para>Combine both Inkscape and GIMP specific functionalities
+    and possibilities to produce very beautiful images.</para></tip>
+    
+    <para>The CentOS Project Corporate Visual Identity is made of
+    different visual manifestations (e.g., Distributions, Web sites,
+    Stationery, etc.).  Visual manifestations implement the corporate
+    identity concepts by mean of images.  To produce these images, we
+    decompose image production in "design models" and "artistic
+    motifs".</para>
+    
+    <para>Design models provide the structural information of images
+    (i.e., dimension, position of common elements in the visible area,
+    translation markers, etc.) and they are generally produced as
+    scalable vector graphics to take advantage of SVG standard, an
+    XML-based standard.</para>
+    
+    <para>Artistic motifs provide the visual style (i.e., the
+    background information, the look and feel) some design models need
+    to complete the final image produced by automation scripts.
+    Artistic motifs are generally produced as rastered images.</para>
+    
+    <para>The result produced from combining one design model with one
+    artistic motif is what we know as a @emph{theme}.  Inside themes
+    directory structure (@pxref{Directories trunk Identity Images
+    Themes}), you can find several design models and several artistic
+    motifs independently one another that can be albitrarily combined
+    through @emph{theme rendition}, a flexible way to produce images
+    for different visual manifestations in very specific visual
+    styles. Inside themes directory structure, theme rendition is
+    performed in @file{trunk/Identity/Images/Themes} directory
+    structure, the required design models are taken from
+    @file{trunk/Identity/Models/Themes} directory structure and the
+    action itself is controlled by the @code{render} functionality of
+    <command>centos-art.sh</command> script.</para>
+    
+    <para>In addition to theme rendition you can find @emph{direct
+    rendition}, too. Direct rendition is another way of image
+    production where there is no artistic motif at all but design
+    models only. Direct rendition is very useful to produce simple
+    content that doesn't need specific background information. Some of
+    these contents are brands, icons and illustrations.  Direct
+    rendition is performed in @file{trunk/Identity/Images}, the
+    required design models are taken from @file{trunk/Identity/Models}
+    directory structure and the action itself is controlled by the
+    @code{render} functionality of <command>centos-art.sh</command>
+    script.</para>
+    
+    <para>@xref{Directories trunk Identity}, for more information
+    about The CentOS Corporate Identity and how graphic design fits on
+    it.</para>
+
+</section>

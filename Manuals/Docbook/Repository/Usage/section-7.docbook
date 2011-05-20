@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>Extending repository organization</title>
+
+    <para>Occasionly, you may find that new components of The CentOS
+    Project Corporate Identity need to be added to the repository in
+    order to work them out. If that is the case, the first question we
+    need to ask ourselves, before start to create directories blindly
+    all over, is: @emph{What is the right place to store it?}</para>
+    
+    <para>The best place to find answers is in The CentOS Community
+    (see page @url{http://wiki.centos.org/GettingHelp}), but going
+    there with hands empty is not good idea. It may give the
+    impression you don't really care about. Instead, consider the
+    following suggestions to find your own comprehension in order to
+    make your own propositions based on it.</para>
+    
+    <para>When extending respository structure it is very useful to
+    bear in mind The CentOS Project Corporate Identity Structure
+    (@pxref{Directories trunk Identity}) The CentOS Mission and The
+    CentOS Release Schema. The rest is just matter of choosing
+    appropriate names. It is also worth to know that each directory in
+    the repository responds to a conceptual idea that justifies its
+    existence.</para>
+    
+    <para>To build a directory structure, you need to define the
+    conceptual idea first and later create the directory. There are
+    some locations inside the repository that already define some
+    concepts you probably want to reuse. For example,
+    @file{trunk/Identity/Images/Themes} to store theme artistic
+    motifs, @file{trunk/Identity/Models/Themes} to store theme design
+    models, @file{trunk/Manual} to store documentation files,
+    @file{trunk/Locales} to store translation messages,
+    @file{trunk/Scripts} to store automation scripts and so on.</para>
+    
+    <para>To illustrate this desition process let's consider the
+    @file{trunk/Identity/Images/Themes/TreeFlower/3} directory
+    structure as example.  This directory can be read as: the theme
+    development line of version @file{3} of @file{TreeFlower} artistic
+    motif. Additional, we can identify that artistic motifs are part
+    of themes as well as themes are part of The CentOS Project
+    Corporate Identity. These concepts are better described
+    independently in each documentation entry related to the directory
+    structure as it is respectively shown in the list of commands
+    bellow.
+    
+    <itemizedlist> 
+        <listitem>
+            <para><command>centos-art help --read turnk</command></para>
+        </listitem>
+        <listitem>
+            <para><command>centos-art help --read turnk/Identity</command></para>
+        </listitem>
+        <listitem>
+            <para><command>centos-art help --read turnk/Identity/Images</command></para>
+        </listitem>
+        <listitem>
+            <para><command>centos-art help --read turnk/Identity/Images/Themes</command></para>
+        </listitem>
+        <listitem>
+            <para><command>centos-art help --read turnk/Identity/Images/Themes/TreeFlower</command></para>
+        </listitem>
+        <listitem>
+            <para><command>centos-art help --read turnk/Identity/Images/Themes/TreeFlower/3</command></para>
+        </listitem>
+    </itemizedlist> 
+    
+    </para>
+    
+    <para>The concepts behind other location can be found in the same
+    way described above, just change the path information used above
+    to the one you are trying to know concepts for.</para>
+    
+</section>

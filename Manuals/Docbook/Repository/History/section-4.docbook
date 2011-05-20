@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>2011</title>
+
+    <para>The <command>centos-art.sh</command> script was redesigned
+    to start translating SVG and other XML-based files (e.g., XHTML
+    and Docbook files) through the <command>xml2po</command> program
+    and shell scripts files (e.g., Bash scripts) through GNU
+    <command>gettext</command> tools.  This configuration provided a
+    stronger interface for graphic designers, translators and
+    programmers at time of producing localized content. The SED files
+    are no longer used to handle translations.</para>
+    
+    <para>Improve option parsing through
+    <command>getopt</command>.</para>
+    
+    <para>The <command>centos-art.sh</command> script is updated to
+    organize functionalities in two groups: <quote>the administrative
+    functionalities</quote> and <quote>the productive
+    functionalities</quote>.  The administrative functionalities cover
+    actions like: copying, deleting and renaming directory structures
+    inside the repository.  Also, preparing your workstation for using
+    <command>centos-art.sh</command> script, making backups of the
+    distribution theme currently installed,  installing themes created
+    inside repository and restoring themes from backup.  On the other
+    hand, the productive functionalities cover actions like: content
+    rendition, content localization, content documentation and content
+    maintainance.</para>
+
+</section>

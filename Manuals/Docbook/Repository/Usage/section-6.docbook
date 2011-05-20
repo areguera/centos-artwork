@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>Syncronizing path information</title>
+
+    <para>Syncronizing path information is the action that keeps all
+    path information up to date in the repository. This action implies
+    both @emph{file movement} and @emph{file content replacement} in
+    this very specific order. File movement is related to duplicate,
+    delete and rename files and directories in the repository.  File
+    content replacement is related to replace information, path
+    information in this case, inside files in the repository.</para>
+    
+    <para>The order followed to syncronize path information is
+    relevant because the versioned nature of the files we are working
+    with. We don't perform file content replacement first because that
+    would imply a repository change which will immediatly demmand a
+    commit in order for actions like duplicate, delete or rename to
+    take place. However, if we perform file movement first, it is
+    possible to commit both file moved and file content replacements
+    as if they were just one change. In this case the file content
+    replacement takes palce in the target location that have been
+    duplicated or renamed, not the one use as source location. This
+    configuration is specially useful when files are renamed (i.e.,
+    one file is copied from a source location to a target location and
+    then the source location of it is removed from repository).</para>
+    
+    <warning><para>There is no support for URLs actions inside
+    <command>centos-art.sh</command> script.  The
+    <command>centos-art.sh</command> script is designed to work with
+    local files inside the working copy only. If you need to perform
+    URL actions directly, use Subversion commands
+    instead.</para></warning>
+    
+    <para>When one master path is changed it is required that all
+    related auxiliar paths be changed, too. This is required in order
+    for master paths to retain their relation with auxiliar paths.
+    This way, automation scripts are able to know where to retrive
+    translation messages from, where to store final output images to
+    and where to look for documentation. If relation between master
+    paths and auxiliar paths is lost, there is no way for automation
+    scripts to know where to retrive the information they need.</para>
+    
+    <para>The auxiliar paths should never be modified under any reason
+    but to satisfy the relationship with the master path.  Liberal
+    change of auxiliar paths may suppress the conceptual idea they
+    were initially created for; and certainly, automation scripts may
+    stop working as expected. The update direction to rename path
+    information must be from master path to auxiliar path and never
+    the opposite.</para>
+    
+    <para>The relation between master and auxiliar paths is useful to
+    keep repository organized but introduce some complications when we
+    work with files that use master path information as reference to
+    build structural information.  This is the case of repository
+    documentation manual source files where inclusions, menus, nodes
+    and cross references are built using master path information as
+    reference.  Now, to see what kind of complication we are talking
+    about, consider what would happen to a structural definitions
+    (i.e., inlusions, menus, nodes and cross refereces) already set in
+    the manual from one master path that is suddenly renamed to
+    something different.  If the path information is not syncronized,
+    at this point, we lose connection between the master path and the
+    auxiliar path created to store the related documentation entry, as
+    well as the related structural definitions that end up pointing to
+    a master path that no longer exist.</para>
+    
+    <para>The syncronization of path information is aimed to solve
+    these kind of issues.</para>
+    
+</section>

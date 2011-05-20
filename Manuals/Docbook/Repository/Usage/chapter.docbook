@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<chapter>
+
+    <title>Repository usage convenctions</title>
+
+    <para>The CentOS Artwork Repository is supported by <ulink
+    url="http://subversion.tigris.org/">Subversion</ulink>, a version
+    control system which allows you to keep old versions of files and
+    directories (usually source code), keep a log of who, when, and
+    why changes occurred, etc., like CVS, RCS or SCCS.</para>
+
+    <para>When using Subversion there is one "source repository" and
+    many "working copies" of that source repository. The working
+    copies are independent one another, can be distributed all around
+    the world and provide a local place for designers, documentors,
+    translators and programmers to perform their works in a
+    descentralized way.  The source repository, on the other hand,
+    provides a central place for all independent working copies to
+    interchange data and provides the information required to permit
+    extracting previous versions of files at any time.</para>
+
+    &repository-usage-section-1;
+    &repository-usage-section-2;
+    &repository-usage-section-3;
+    &repository-usage-section-4;
+    &repository-usage-section-5;
+    &repository-usage-section-6;
+    &repository-usage-section-7;
+
+</chapter>

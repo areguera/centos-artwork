@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>2009</title>
+
+    <para>The rendition script is at a very rustic state where only
+    slide images can be produced.</para>
+    
+    <para>The rendition script was redesigned to extend image
+    production to other areas, not just slide images.  In this
+    configuration one translated SVG instance was created from the SVG
+    file provided as input in order to produce one translated PNG
+    image as output.  The translation of SVG files was made through
+    SED replacement commands and the rendition of PNG images was
+    realized through Inkscape command line internface.</para>
+    
+    <para>The rendition script was named <command>render.sh</command>.
+    The directory structures were prepared to receive the rendition
+    script so images could be produced inside them. Each directory
+    structure had design templates (.svg), translation files (.sed),
+    and translated images (.png).</para>
+    
+    <para>The rendition script was unified in a common place and
+    linked from different directory structures. There was no need to
+    have the same code in different directory structures if it could
+    be in just one place and then be linked from different
+    locations.</para>
+    
+    <para>Concepts about corporate identity began to be considered. As
+    referece, it was used the book <quote>Corporate Identity</quote>
+    by Wally Olins (1989) and <ulink
+    url="http://en.wikipedia.org/Corporate_identity">Wikipedia</ulink>.</para>
+    
+    <para>The rendition script main's goal becomes to: automate
+    production of a monolithic corporate visual identity structure,
+    based on The CentOS Mission and The CentOS Release Schema.</para>
+    
+    <para>The documentation of CentOS Artwork Repository started to
+    take form in LaTeX format.</para>
+    
+</section>

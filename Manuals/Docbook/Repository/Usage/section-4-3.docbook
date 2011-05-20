@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>Localization</title>
+
+    <para>The localization work line exists to provide the translation
+    messages required to produce content in different languages.
+    Translation messages inside the repository are stored as portable
+    objects (e.g., .po, .pot) and machine objects (.mo) under
+    @file{trunk/Locales} directory structure.</para>
+    
+    <para>The procedure used to localize content is taken from
+    @command{gettext} standard specification.  Basically, translatable
+    strings are retrived from source files in order to create portable
+    objects and machine objects for them.  These portable objects are
+    editable files that contain the information used by translators to
+    localize the translatable strings retrived from source files. On
+    the other hand, machine objects are produced to be machine-redable
+    only, as its name implies, and are produced from portable
+    objects.</para>
+    
+    <para>Since @command{gettext} needs to extract translatable
+    strings form source files in order to let translators to localize
+    them, we are limitted to use source files supported by
+    @command{gettext} program.  This is not a limitation at all since
+    @command{gettext} supports most popular programming laguages
+    (e.g., C, C++, Java, Bash, Python, Perl, PHP and GNU Awk just to
+    mention a few ones). Nevertheless, formats like SVG, XHTML and
+    Docbook don't figure as supported formats in the list of
+    @command{gettext} supported source files.</para>
+    
+    <para>To translate XML based source files like SVG, XHTML and
+    Docbook we use the @command{xml2po} program instead.  The
+    @command{xml2po} comes with the @file{gnome-doc-utils} package and
+    retrives translatable strings from one XML file to produce
+    portable objects for them.</para>
+    
+    <note> <para>Portable objects produced by @command{xml2po} have
+    the same format that portable objects produced by
+    @command{gettext}. This make the localization process quite
+    consistent from translators' point of view.  No matter what the
+    source file be, the translator will always face the same
+    translation file format (i.e., the portable object format).</para>
+    </note>
+    
+    <para>With the portable object in place, the @command{xml2po}
+    program is used again to create the final translated XML, just
+    with the same definition of the source file where translatable
+    strings were taken from (e.g., if we extract translatable strings
+    from a SVG file, as result we get the same SVG file but with
+    translatable strings already localized ---obviously, for this to
+    happen translators need to localize translatable strings inside
+    the portable object first, localization won't appear as art of
+    magic---).  When using @command{xml2po}, the machine object is
+    used as temporal file to produce the final translated XML
+    file.</para>
+    
+    <tip><para>If you want to have your content localized inside
+    CentOS Artwork Repository be sure to use source files supported
+    either by @command{gettext} or @command{xml2po}
+    programs.</para></tip>
+    
+    <para>@xref{Directories trunk Locales}, for more
+    information.</para>
+    
+</section>

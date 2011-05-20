@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<section>
+
+    <title>Automation</title>
+
+    <para>The automation work line exists to standardize content
+    production in CentOS Artwork Repository. There is no need to type
+    several tasks, time after time, if they can be programmed into
+    just one executable script.</para>
+
+    <para>The automation work line takes place under
+    @file{trunk/Scripts} directory structure. Here is developed the
+    <command>centos-art.sh</command> script, a bash script specially
+    designed to automate most frequent tasks (e.g., rendition,
+    documentation and localization) inside the repository.  Basically,
+    the <command>centos-art.sh</command> script is divided in several
+    functionalities independent one another that perform specific
+    tasks and relay on repository organization to work as
+    expected.</para>
+
+    <tip><para>If you need to improve the way content is produced,
+    look inside automation scripts and make your improvement there for
+    everyone to benefit.</para></tip>
+
+    <para>@xref{Directories trunk Scripts}, for more information on
+    automation.</para>
+
+</section>
