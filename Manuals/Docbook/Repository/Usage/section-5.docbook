@@ -35,23 +35,26 @@
     repository is considered the common part of the path where the
     identifier is appended.</para>
     
-    <programlisting>-----+---------------+----------------------------+------+-----------
-    Path | Suffix        | Identifier                 |Prefix| Type
-    -----+---------------+----------------------------+------+-----------
-    A  |               |trunk/Identity/Models/Brands|      | Directory
-    -----+---------------+----------------------------+------+-----------
-    B  |  trunk/Manual/|trunk/Identity/Models/Brands|.texi | File
-    -----+---------------+----------------------------+------+-----------
-    C  | trunk/Locales/|trunk/Identity/Models/Brands|      | Directory
-    -----+---------------+----------------------------+------+-----------
-    D  |               |trunk/Identity/Images/Brands|      | Directory
-    -----+---------------+----------------------------+------+-----------
-    E  | trunk/Locales/|trunk/Identity/Images/Brands|.texi | File
-    -----+---------------+----------------------------+------+-----------
+    <programlisting>
+-----+---------------+----------------------------+------+-----------
+Path | Suffix        | Identifier                 |Prefix| Type
+-----+---------------+----------------------------+------+-----------
+  A  |               |trunk/Identity/Models/Brands|      | Directory
+-----+---------------+----------------------------+------+-----------
+  B  |  trunk/Manual/|trunk/Identity/Models/Brands|.texi | File
+-----+---------------+----------------------------+------+-----------
+  C  | trunk/Locales/|trunk/Identity/Models/Brands|      | Directory
+-----+---------------+----------------------------+------+-----------
+  D  |               |trunk/Identity/Images/Brands|      | Directory
+-----+---------------+----------------------------+------+-----------
+  E  | trunk/Locales/|trunk/Identity/Images/Brands|.texi | File
+-----+---------------+----------------------------+------+-----------
     
-    A = Master path.  B = Auxiliar path to documentation entry.  C =
-    Auxiliar path to translation messages.  D = Auxiliar path to final
-    content output.  E = Auxiliar path to documentation entry.
+  A = Master path.  
+  B = Auxiliar path to documentation entry.  
+  C = Auxiliar path to translation messages.  
+  D = Auxiliar path to final content output.  
+  E = Auxiliar path to documentation entry.
     </programlisting>
     
     <para>The path information described above (@pxref{Path
@@ -72,39 +75,29 @@
     describe visual manifestations very well.  For example, consider
     the organization used to produce @file{Anaconda} images; for
     CentOS distribution major release 5; using @file{Default} design
-    models and version @file{3} of @file{Flame} artistic motif:
+    models and version @file{3} of @file{Flame} artistic motif:</para>
     
-    <programlisting>-----+---------------+------------------------------------------------------+------+-----------
-    Path | Suffix        | Identifier
-    |Prefix| Type
-    -----+---------------+------------------------------------------------------+------+-----------
-    A  |
-    |trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      |
-    Directory
-    -----+---------------+------------------------------------------------------+------+-----------
-    B  |
-    trunk/Manual/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|.texi
-    | File
-    -----+---------------+------------------------------------------------------+------+-----------
-    C  |
-    trunk/Locales/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|
-    | Directory
-    -----+---------------+------------------------------------------------------+------+-----------
-    D  |
-    |trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|      |
-    Directory
-    -----+---------------+------------------------------------------------------+------+-----------
-    E  |
-    trunk/Locales/|trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|.texi
-    | File
-    -----+---------------+------------------------------------------------------+------+-----------
+    <programlisting>
+-----+---------------+------------------------------------------------------+------+-----------
+Path | Suffix        | Identifier                                           |Prefix| Type
+-----+---------------+------------------------------------------------------+------+-----------
+  A  |               |trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory
+-----+---------------+------------------------------------------------------+------+-----------
+  B  |  trunk/Manual/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|.texi | File
+-----+---------------+------------------------------------------------------+------+-----------
+  C  | trunk/Locales/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory
+-----+---------------+------------------------------------------------------+------+-----------
+  D  |               |trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|      | Directory
+-----+---------------+------------------------------------------------------+------+-----------
+  E  | trunk/Locales/|trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|.texi | File
+-----+---------------+------------------------------------------------------+------+-----------
     
-    A = Master path.  B = Auxiliar path to documentation entry.  C =
-    Auxiliar path to translation messages.  D = Auxiliar path to final
-    content output.  E = Auxiliar path to documentation entry.
+  A = Master path.  
+  B = Auxiliar path to documentation entry.  
+  C = Auxiliar path to translation messages.  
+  D = Auxiliar path to final content output.
+  E = Auxiliar path to documentation entry.
     </programlisting>
-    
-    </para>
     
     <para>The path information described above (@pxref{Path
     construction extended}) is used by theme rendition and can be
