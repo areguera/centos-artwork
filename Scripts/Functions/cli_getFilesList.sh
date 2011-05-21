@@ -29,7 +29,7 @@ function cli_getFilesList {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='pattern:,maxdepth:,type:'
+    local ARGSL='pattern:,maxdepth:,type:,uid:'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope.
@@ -65,6 +65,11 @@ function cli_getFilesList {
 
             --type )
                 OPTIONS="$OPTIONS -type $2"
+                shift 2
+                ;;
+
+            --uid )
+                OPTIONS="$OPTIONS -uid $2"
                 shift 2
                 ;;
 
