@@ -33,8 +33,10 @@
 
 # Initialize personal information.
 export CLI_PROGRAM='centos-art'
+export CLI_PROGRAM_ID=$$
 export CLI_VERSION='1.0 (beta)'
 export CLI_BASEDIR="${HOME}/artwork/trunk/Scripts"
+export CLI_TEMPDIR='/tmp'
 
 # Initizalize internazionalization through gettext.
 . gettext.sh
@@ -59,6 +61,10 @@ done
 unset FILE
 unset FILES
 unset FUNCTION
+
+# Trap interruption signals to terminate script execution correctly
+# (e.g., removing all temporal files before leaving).
+trap cli_terminateScriptExecution 0 1 2
 
 # Initialize command-line interface.
 cli "$@"
