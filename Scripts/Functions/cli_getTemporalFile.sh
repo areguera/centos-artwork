@@ -38,14 +38,22 @@ function cli_getTemporalFile {
         cli_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
     fi
 
-    # Define source location where temporal files will be stored.
-    local TMPDIR='/tmp'
+    # Redefine file name for the temporal file. Make it a combination
+    # of the program name, the program process id, a random string and
+    # the design model name. Using the program name and process id in
+    # the file name let us to relate both the shell script execution
+    # and the temporal files it creates, so they can be removed in
+    # case an interruption signal be detected. The random string let
+    # us to produce the same artwork in different terminals at the
+    # same time. the The design model name provides file
+    # identification.
+    NAME=${CLI_PROGRAM}-${CLI_PROGRAM_ID}-${RANDOM}-${NAME}
 
     # Define absolute path for temporal file using the program name,
     # the current locale, the unique identifier and the file name. 
-    local TMPFILE="${TMPDIR}/${CLI_PROGRAM}-${RANDOM}-${NAME}"
+    local TEMPFILE="${CLI_TEMPDIR}/${NAME}"
 
     # Output absolute path to final temporal file.
-    echo $TMPFILE
+    echo $TEMPFILE
 
 }
