@@ -49,7 +49,7 @@ function render_svg_convertGplToPpm {
     fi
 
     # Define list of colors from GPL palette.
-    local COLORS=$(render_getColors "$PALETTE_GPL")
+    local COLORS=$(render_svg_getColors "$PALETTE_GPL")
 
     # Verify number of colors returned in the list.
     if [[ ! $(echo "$COLORS" |  wc -l) =~ $COLOR_NUMBER ]];then
