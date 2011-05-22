@@ -57,12 +57,15 @@ function render_getConfigOption {
         | sed -r 's!( |,|;) *! !g' \
         | sed -r 's! *$!!g')
 
-    # Verify configuration option. It cannot be an empty value.
-    if [[ $OPTION == '' ]];then
-        cli_printMessage "`gettext "The configuration option cannot be empty."`" --as-error-line
+    # Print out the configuration option retrived from action string,
+    # only if it is not an empty value. Do not use `echo' or `printf'
+    # built-in commands here. Use the `cli_printMessage' functionality
+    # instead.  This is required in order to reverse the apostrophe
+    # codification accomplished when options were retrived from
+    # command-line (cli_doParseArgumentsReDef) in the argument of
+    # options like `--post-rendition' and `--last-rendition'.
+    if [[ $OPTION != '' ]];then
+        cli_printMessage "$OPTION" --as-stdout-line
     fi
-
-    # Print out configuration options retrived from action string.
-    cli_printMessage "$OPTION" --as-stdout-line
 
 }
