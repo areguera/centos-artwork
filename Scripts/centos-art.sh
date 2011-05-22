@@ -62,9 +62,14 @@ unset FILE
 unset FILES
 unset FUNCTION
 
-# Trap interruption signals to terminate script execution correctly
-# (e.g., removing all temporal files before leaving).
-trap cli_terminateScriptExecution 0 1 2
+# Trap signals in order to terminate the script execution correctly
+# (e.g., removing all temporal files before leaving).  Trapping the
+# exit signal seems to be enough by now, since it is always present as
+# part of the script execution flow. Each time the centos-art.sh
+# script is executed it will inevitably end with an EXIT signal at
+# some point of its execution, even if it is interrupted in the middle
+# of its execution (e.g., through `Ctrl+C').
+trap cli_terminateScriptExecution 0
 
 # Initialize command-line interface.
 cli "$@"
