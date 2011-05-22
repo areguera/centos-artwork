@@ -32,7 +32,7 @@ function locale_getOptions {
     local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,update,edit,dont-create-mo"
 
     # Parse arguments using getopt(1) command parser.
-    cli_doParseArguments
+    cli_parseArguments
 
     # Reset positional parameters using output from (getopt) argument
     # parser.
@@ -95,6 +95,6 @@ function locale_getOptions {
     done
 
     # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
 }

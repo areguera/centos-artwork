@@ -41,7 +41,7 @@ function cli_printMessage {
     # Reverse the codification performed on characters that may affect
     # parsing options and non-option arguments. This codification is
     # realized before building the ARGUMENTS variable, at
-    # cli_doParseArgumentsReDef, and we need to reverse it back here
+    # cli_parseArgumentsReDef, and we need to reverse it back here
     # in order to show the correct character when the message be
     # printed out on the screen.
     MESSAGE=$(echo $MESSAGE | sed -e "s/\\\0x27/'/g")

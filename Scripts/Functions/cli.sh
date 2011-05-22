@@ -59,7 +59,7 @@ function cli {
     local FLAG_DONT_COMMIT_CHANGES='false'
 
     # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
     # Define function directory (FUNCDIR). The directory path where
     # functionalities are stored inside the repository.
@@ -99,7 +99,7 @@ function cli {
     shift 1
 
     # Redefine ARGUMENTS using current positional parameters.
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
     # Define default text editors used by centos-art.sh script.
     if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then

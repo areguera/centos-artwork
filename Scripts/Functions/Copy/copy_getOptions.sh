@@ -32,7 +32,7 @@ function copy_getOptions {
     local ARGSL="quiet,answer-yes,dont-commit-changes"
 
     # Redefine ARGUMENTS variable using getopt output.
-    cli_doParseArguments
+    cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
@@ -75,6 +75,6 @@ function copy_getOptions {
     done
 
     # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
 }

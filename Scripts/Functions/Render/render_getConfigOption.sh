@@ -62,7 +62,7 @@ function render_getConfigOption {
     # built-in commands here. Use the `cli_printMessage' functionality
     # instead.  This is required in order to reverse the apostrophe
     # codification accomplished when options were retrived from
-    # command-line (cli_doParseArgumentsReDef) in the argument of
+    # command-line (cli_parseArgumentsReDef) in the argument of
     # options like `--post-rendition' and `--last-rendition'.
     if [[ $OPTION != '' ]];then
         cli_printMessage "$OPTION" --as-stdout-line

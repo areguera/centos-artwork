@@ -32,7 +32,7 @@ function render_getOptions {
     local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:"
 
     # Redefine ARGUMENTS variable using getopt output.
-    cli_doParseArguments
+    cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
@@ -116,6 +116,6 @@ function render_getOptions {
     done
 
     # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
 }

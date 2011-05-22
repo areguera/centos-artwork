@@ -50,10 +50,10 @@ function cli_printActionPreamble {
     local FILE=''
 
     # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
     # Redefine ARGUMENTS variable using getopt output.
-    cli_doParseArguments
+    cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"

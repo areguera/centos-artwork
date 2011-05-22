@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_doParseArgumentsReDef.sh -- This function initiates/reset and
+# cli_parseArgumentsReDef.sh -- This function initiates/reset and
 # sanitates positional parameters passed to this function and creates
 # the the list of arguments that getopt will process.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_doParseArgumentsReDef {
+function cli_parseArgumentsReDef {
 
     local ARG
 

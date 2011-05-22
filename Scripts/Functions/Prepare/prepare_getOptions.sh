@@ -32,7 +32,7 @@ function prepare_getOptions {
     local ARGSL="quiet,answer-yes,packages,links,environment"
 
     # Parse arguments using getopt(1) command parser.
-    cli_doParseArguments
+    cli_parseArguments
 
     # Reset positional parameters using output from (getopt) argument
     # parser.

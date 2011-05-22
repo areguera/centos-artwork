@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_doParseArguments.sh -- This function redefines arguments
+# cli_parseArguments.sh -- This function redefines arguments
 # (ARGUMENTS) global variable using getopt(1) output.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_doParseArguments {
+function cli_parseArguments {
 
     # Reset positional parameters using optional arguments.
     eval set -- "$ARGUMENTS"

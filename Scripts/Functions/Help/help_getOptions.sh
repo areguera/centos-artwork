@@ -32,7 +32,7 @@ function help_getOptions {
     local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
-    cli_doParseArguments
+    cli_parseArguments
 
     # Reset positional parameters using output from (getopt) argument
     # parser.
@@ -120,6 +120,6 @@ function help_getOptions {
     done
 
     # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_doParseArgumentsReDef "$@"
+    cli_parseArgumentsReDef "$@"
 
 }
