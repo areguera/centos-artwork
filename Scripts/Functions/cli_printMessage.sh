@@ -142,8 +142,13 @@ function cli_printMessage {
             ;;
 
         --as-error-line )
-            # This option is used to print error messsages.
-            echo "${CLI_PROGRAM} ($(caller 1 | gawk '{ print $2 " " $1 }')): ${MESSAGE}" > /dev/stderr
+            # Define where the error was originated inside the
+            # centos-art.sh script. Print out the function name and
+            # line from the caller.
+            local ORIGIN="${CLI_PROGRAM} ($(caller 1 | gawk '{ print $2 " " $1 }'))"
+
+            # Build the error message.
+            cli_printMessage "${ORIGIN}: ${MESSAGE}" --as-stderr-line
             cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
             ;;
 
@@ -198,16 +203,20 @@ function cli_printMessage {
             echo "$MESSAGE"
             ;;
 
+        --as-stderr-line )
+            echo "$MESSAGE" > /dev/stderr
+            ;;
+
         * )
             echo "$MESSAGE" \
                 | awk 'BEGIN { FS=": " }
                     { 
-                        if ( $0 ~ /^-+$/ ) 
+                        if ( $0 ~ /^-+$/ )
                             print $0
                         else
-                            printf "%-15s\t%s\n", $1, $2 
-                        }
-                        END {}' > /dev/stderr
+                            printf "%-15s\t%s\n", $1, $2
+                    }
+                    END {}' > /dev/stderr
             ;;
 
     esac
