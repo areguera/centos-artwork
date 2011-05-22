@@ -42,7 +42,10 @@ function cli_terminateScriptExecution {
     # if any of course. Remember that some of the temporal files can
     # be directories, too.
     if [[ $FILES != '' ]];then
-        rm -rf $FILES    
+        rm -rf $FILES
     fi
+
+    # Terminate script correctly.
+    exit 0
 
 }
