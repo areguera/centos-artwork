@@ -38,7 +38,7 @@ function render_svg {
     # background information is not available the image is produced
     # without background information. This is something that need to
     # be avoided.
-    render_svg_checkAbsref "$INSTANCE"
+    render_svg_checkModelAbsref "$INSTANCE"
 
     # Render template instance using inkscape and save the output.
     local INKSCAPE_OUTPUT="$(\
