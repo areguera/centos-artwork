@@ -29,7 +29,7 @@ function cli_checkPathComponent {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='release,architecture,theme'
+    local ARGSL='release,architecture,motif'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope.
@@ -83,9 +83,9 @@ function cli_checkPathComponent {
                 break
                 ;;
 
-            --theme )
+            --motif )
                 for FILE in $(echo $FILES);do
-                    if [[ ! $FILE =~ $(cli_getPathComponent --theme-pattern) ]];then
+                    if [[ ! $FILE =~ $(cli_getPathComponent --motif-pattern) ]];then
                         cli_printMessage "`eval_gettext "The theme \\\"\\\$FILE\\\" is not valid."`" --as-error-line
                     fi
                 done
