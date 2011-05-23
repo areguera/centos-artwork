@@ -77,9 +77,11 @@ function render_svg_checkAbsref {
             # corporate identity manual.
             if [[ ! -f $BG_SRC_FILE ]];then
 
-                # Define plain color for the source background file
-                # the required background information is cropped from.
-                BG_SRC_FILE_COLOR='rgb:20/4C/8D'
+                # Define plain color that will be used as background.
+                BG_SRC_FILE_COLOR=$(render_svg_getColors)
+
+                # Verify format of color value.
+                render_svg_checkColorFormats $BG_SRC_FILE_COLOR --format='rrggbb'
 
                 # Define width for the source background file the
                 # required background information is cropped from.
