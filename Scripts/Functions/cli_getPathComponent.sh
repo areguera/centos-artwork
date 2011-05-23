@@ -3,15 +3,15 @@
 # cli_getPathComponent.sh -- This function standardizes the way
 # directory structures are organized inside the working copy of CentOS
 # Artwork Repository. You can use this function to retrive information
-# from path (e.g., releases, architectures and themes) or the patterns
-# used to build the paths.
+# from paths (e.g., releases, architectures and theme artistic motifs)
+# or the patterns used to build the paths.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,9 +32,9 @@ function cli_getPathComponent {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,theme,theme-name,theme-release,theme-pattern'
+    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-release,motif-pattern'
 
-    # Initialize arguments with an empty value and set it as local
+    # Initialize ARGUMENTS with an empty value and set it as local
     # variable to this function scope.
     local ARGUMENTS=''
 
@@ -45,9 +45,8 @@ function cli_getPathComponent {
     # CentOS distribution is able to be installed on.
     local ARCHITECTURE="(i386|x86_64)"
 
-    # Define theme pattern for trunk, branches, and tags directory
-    # structures.
-    local THEME="Identity/Images/Themes/(([A-Za-z0-9]+)/(${RELEASE}))/"
+    # Define pattern for themes' artistic motifs.
+    local THEME_MOTIF="Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
@@ -102,26 +101,26 @@ function cli_getPathComponent {
                 break
                 ;;
 
-            --theme )
-                echo "$LOCATION" | egrep "${THEME}" | sed -r "s!.*${THEME}.*!\1!"
+            --motif )
+                echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\1!"
                 shift 2
                 break
                 ;;
 
-            --theme-name )
-                echo "$LOCATION" | egrep "${THEME}" | sed -r "s!.*${THEME}.*!\2!"
+            --motif-name )
+                echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\2!"
                 shift 2
                 break
                 ;;
 
-            --theme-release )
-                echo "$LOCATION" | egrep "${THEME}" | sed -r "s!.*${THEME}.*!\3!"
+            --motif-release )
+                echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\3!"
                 shift 2
                 break
                 ;;
 
-            --theme-pattern )
-                echo "${THEME}"
+            --motif-pattern )
+                echo "${THEME_MOTIF}"
                 shift 2
                 break
                 ;;
