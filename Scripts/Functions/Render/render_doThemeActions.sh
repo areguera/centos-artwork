@@ -26,78 +26,113 @@
 function render_doThemeActions {
 
     local -a DIRS
-    local DIR=''
     local COUNT=0
     local NEXT_DIR=''
+    local MOTIF_NAME=''
+    local MOTIF_DIR=''
 
-    # Define patterns to know what organization to create inside
-    # artistic motifs. Use the design model specified by
-    # FLAG_THEME_MODEL as reference.  When rendering, this condition
-    # let the artistic motif to be produced using the same
-    # organization of its design model. The intersting thing of this
-    # configuration is that you can have more than one design models
-    # and each one can has its own unique organization.
-    local PATTERN=$(cli_getFilesList \
-        $(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}/ \
+    # Define base directory of artistic motifs. This is the location
+    # where all artistic motifs are stored in.
+    local MOTIF_BASEDIR="$(cli_getRepoTLDir $ACTIONVAL)/Identity/Images/Themes"
+
+    # Define base directory of design models. This is the location
+    # where all design models are stored in.
+    local MODEL_BASEDIR="$(cli_getRepoTLDir $ACTIONVAL)/Identity/Models/Themes"
+
+    # Define directory structure of design models. Design models
+    # directory structures are used as reference to create artistic
+    # motifs directory structure.
+    local MODEL_DIR=''
+    local MODEL_DIRS="$(cli_getFilesList ${MODEL_BASEDIR}/${FLAG_THEME_MODEL} \
         --type="d" | egrep -v '\.svn' | sed -r '/^[[:space:]]*$/d' | sed -r \
-        "s!^.*/${FLAG_THEME_MODEL}/!!" | tr "\n" '|' \
+        "s!^.*/${FLAG_THEME_MODEL}/!!" | sed -r '/^[[:space:]]*$/d')"
+
+    # Define design model regular expression patterns from design
+    # models directory structure.
+    local MODEL_PATTERN=$(echo "$MODEL_DIRS" | tr "\n" '|' \
         | sed -e 's!^|!!' -e 's!|$!!')
 
     # Define list of renderable directory structures inside the
-    # artistic motif. As reference, to build this list, use the theme
-    # design model directory structure. Later, reverse the list and
-    # filter it using the action value as reference to control what
-    # renderable directory structure to produce.
-    local RENDERABLE_DIRS=$(\
-        cli_getFilesList $(cli_getRepoTLDir)/Identity/Images/Themes \
-        --pattern=".+/($PATTERN)$" --type="d" | sort -r \
-        | grep "$ACTIONVAL")
+    # artistic motif. As reference, to build this list, use design
+    # model directory structure. Later, filter the result using the
+    # action value as reference to control what renderable directory
+    # structure to produce. The more specific you be in the path
+    # specification the more specific theme rendition will be.
+    local MOTIF_RENDERABLE_DIR=''
+    local MOTIF_RENDERABLE_DIRS=$(cli_getFilesList ${MOTIF_BASEDIR} \
+        --pattern=".+/($MODEL_PATTERN)" --type="d" | grep "$ACTIONVAL")
 
-    # Rebuild the list of renderable directory structures using an
-    # array variable. This let us to predict what directory is one
-    # step forward or backward from the current directory structure.
-    for DIR in $RENDERABLE_DIRS;do
-        DIRS[((++${#DIRS[*]}))]=${DIR}
+    # Rebuild list of renderable directory structures using an array
+    # variable. This let us to predict what directory is one step
+    # forward or backward from the current directory structure.
+    for MOTIF_RENDERABLE_DIR in $MOTIF_RENDERABLE_DIRS;do
+        DIRS[((++${#DIRS[*]}))]=${MOTIF_RENDERABLE_DIR}
     done
 
-    # Redefine counter using the greater value to perform an inverted
-    # interpretation of the values and so, to process them using the
-    # same order.
-    if [[ ${#DIRS[*]} -gt 0 ]];then
-        COUNT=${#DIRS[*]}
-    fi
+    # Define total number of directories to process. This is required
+    # in order to correct the counting value and so, make it to match
+    # the zero based nature of bash array variables.
+    local DIRS_TOTAL=$((${#DIRS[*]} - 1))
 
-    until [[ $COUNT -eq 0 ]];do
+    while [[ $COUNT -le ${DIRS_TOTAL} ]];do
 
-        # Decrement counter to match the correct count value.
-        COUNT=$(($COUNT - 1))
-
-        # Redefine action value to refer theme specific renderable
+        # Redefine action value to refer the theme-specific renderable
         # directory.
         ACTIONVAL=${DIRS[$COUNT]}
 
+        # Refine artistic motif name using the current action value.
+        MOTIF_NAME=$(cli_getPathComponent $ACTIONVAL --motif)
+
+        # Verify artistic motif name. The name of the artistic motif
+        # must be present in order for theme rendition to happen.
+        # Theme rendition takes place inside artistic motifs and the
+        # artistic motif name is an indispensable part of it. Take
+        # care of not using design models directory structure as name
+        # for artistic motifs. They, sometimes, match the pattern used
+        # to verify artistic motifs names but must not be confused.
+        if [[ $MOTIF_NAME == '' ]] || [[ $MOTIF_NAME =~ "^$MODEL_PATTERN" ]];then
+            COUNT=$(($COUNT + 1))
+            continue
+        fi
+
+        # Refine artistic motif directory. This is the top directory
+        # where all visual manifestations of an artistic motif are
+        # stored in (e.g., Backgrounds, Brushes, Concept, Distro,
+        # etc.).
+        MOTIF_DIR="${MOTIF_BASEDIR}/${MOTIF_NAME}"
+
+        # Verify artistic motifs directory structure using design
+        # models directory structure as reference. If it doesn't
+        # exist, create it then.
+        if [[ ! -d $ACTIONVAL ]];then
+            mkdir -p $ACTIONVAL
+        fi
+
         # Define what is the next directory in the list, so we could
-        # verify whether to render or not the current theme specific
+        # verify whether to render or not the current theme-specific
         # renderable directory.
-        if [[ $COUNT -gt 0 ]];then
-            NEXT_DIR=$(dirname ${DIRS[(($COUNT - 1))]})
+        if [[ $COUNT -lt ${DIRS_TOTAL} ]];then
+            NEXT_DIR=$(dirname ${DIRS[(($COUNT + 1))]})
         else
             NEXT_DIR=''
         fi
 
-        # Verify whether to render or not the current theme renderable
-        # directory. This verificatin is required in order to avoid
-        # unncessary rendition loops. For example, don't render
-        # `path/to/dir/A' when `path/to/dir/A/B' does exist, that
-        # configuration would produce `/path/to/dir/A/B twice.
-        if [[ $ACTIONVAL =~ '[[:digit:]]$' ]] \
-            || [[ $ACTIONVAL == $NEXT_DIR ]];then
+        # Verify whether to render or not the current theme's
+        # renderable directory. This verification is needed in order
+        # to avoid unncessary rendition loops. For example, don't
+        # render `path/to/dir/A' when `path/to/dir/A/B' does exist,
+        # that configuration would produce `/path/to/dir/A/B twice.
+        if [[ $ACTIONVAL =~ '[[:digit:]]$' ]] || [[ $ACTIONVAL == $NEXT_DIR ]];then
+            COUNT=$(($COUNT + 1))
             continue
         fi
 
         # Execute direct rendition on theme specific renderable
         # directory as specified by action value.
         render_doBaseActions
+
+        # Increment counter to match the correct count value.
+        COUNT=$(($COUNT + 1))
 
     done
 
