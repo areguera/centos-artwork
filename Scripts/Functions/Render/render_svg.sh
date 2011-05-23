@@ -30,7 +30,7 @@ function render_svg {
     local EXPORTID='CENTOSARTWORK'
 
     # Verify the export id.
-    render_svg_checkExportId "$INSTANCE" "$EXPORTID" 
+    render_svg_checkModelExportId "$INSTANCE" "$EXPORTID" 
 
     # Check existence of external files. Inside design templates and
     # their instances, external files are used to refere the

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# render_svg_checkExportId.sh -- This function standardizes the export id
+# render_svg_checkModelExportId.sh -- This function standardizes the export id
 # used inside svg files and the way of verify them.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_checkExportId {
+function render_svg_checkModelExportId {
 
     local INSTANCE="$1"
     local EXPORTID="$2"
