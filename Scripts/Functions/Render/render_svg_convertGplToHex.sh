@@ -28,10 +28,6 @@
 
 function render_svg_convertGplToHex {
 
-    local COLOR=''
-    local COUNT=0
-    local -a FILES
-
     # Define path to GPL palette. This is the .gpl file we use to
     # retrive color information from.
     local PALETTE_GPL="$1"
@@ -41,35 +37,25 @@ function render_svg_convertGplToHex {
     local PALETTE_HEX="$2"
 
     # Define the number of colors this function should return.
-    local COLOR_NUMBER="$3"
-
-    # Verify the number of colors this function should return. As
-    # convenction, we are producing images in 14 and 16 colors only to
-    # cover Grub and Syslinux images need respectively.
-    if [[ ! $COLOR_NUMBER =~ '^(14|16)$' ]];then
-        cli_printMessage "`eval_gettext "Reducing image to \\\"\\\$COLOR_NUMBER\\\" colors is not supported."`" --as-error-line
-    fi
+    local NUMBER="$3"
 
     # Define list of colors from GPL palette.
-    local COLORS=$(render_svg_getColors "$PALETTE_GPL")
+    local COLORS=$(render_svg_getColors $PALETTE_GPL --head=$NUMBER --tail=$NUMBER)
 
-    # Verify number of colors returned in the list.
-    if [[ ! $(echo "$COLORS" |  wc -l) =~ $COLOR_NUMBER ]];then
-        cli_printMessage "`gettext "The palette do not have the correct number of colors."`" --as-error-line
-    fi
+    # Verify number of colors returned in the list. They must match
+    # exactly the amount specified, no more no less. Sometimes, the
+    # list of colors may have less colors than it should have, so we
+    # need to prevent such palettes from being used.
+    render_svg_checkColorAmount "$COLORS" "$NUMBER"
 
-    # Verify format of colors inside the list.
-    for COLOR in $COLORS;do
-        if [[ ! $COLOR =~ '^[0-9a-f]{6}$' ]];then
-            cli_printMessage "`eval_gettext "The \\\"\\\$COLOR\\\" string is not a valid color code."`" --as-error-line
-        fi
-    done
+    # Verify format of colors.
+    render_svg_checkColorFormats "$COLORS" --format='rrggbb'
 
     # Create list of colors to be process by pnmtolss16 
-    echo "$COLORS" | nl | awk '{ printf "#%s=%d ", $2, $1 - 1 }' \
+    echo "$COLORS" | nl | awk '{ printf "%s=%d ", $2, $1 - 1 }' \
         > $PALETTE_HEX
 
     # Verify HEX palette existence.
-    cli_checkFiles "$PALETTE_PPM" --regular-file
+    cli_checkFiles $PALETTE_HEX
 
 }
