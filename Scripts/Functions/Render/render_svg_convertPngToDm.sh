@@ -53,8 +53,8 @@ function render_svg_convertPngToDm {
 
     # Initialize theme information we are going to build the display
     # manager theme for.
-    local THEME=$(cli_getPathComponent $ACTIONVAL --theme)
-    local THEME_NAME=$(cli_getPathComponent $ACTIONVAL --theme-name)
+    local THEME=$(cli_getPathComponent $ACTIONVAL --motif)
+    local THEME_NAME=$(cli_getPathComponent $ACTIONVAL --motif-name)
 
     # Initialize temporal directory where we collect all files needed
     # in order to create the tar.gz file. This intermediate step is
