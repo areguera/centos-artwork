@@ -58,11 +58,11 @@ function cli_replaceTMarkers {
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --theme)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --motif)"
     SRC[((++${#SRC[*]}))]='=THEMENAME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --theme-name)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --motif-name)"
     SRC[((++${#SRC[*]}))]='=THEMERELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --theme-release)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --motif-release)"
 
     # Define release-specific translation markers.
     SRC[((++${#SRC[*]}))]='=RELEASE='
