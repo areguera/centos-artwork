@@ -26,9 +26,9 @@
 
 function render_svg_convertGplToPpm {
 
-    local COLOR=''
-    local COUNT=0
+    local FILE=''
     local -a FILES
+    local COUNT=0
 
     # Define path to GPL palette. This is the .gpl file we use to
     # retrive color information from.
@@ -39,45 +39,31 @@ function render_svg_convertGplToPpm {
     local PALETTE_PPM="$2"
 
     # Define the number of colors this function should return.
-    local COLOR_NUMBER="$3"
-
-    # Verify the number of colors this function should return. As
-    # convenction, we are producing images in 14 and 16 colors only to
-    # cover Grub and Syslinux images need respectively.
-    if [[ ! $COLOR_NUMBER =~ '^(14|16)$' ]];then
-        cli_printMessage "`eval_gettext "Reducing image to \\\"\\\$COLOR_NUMBER\\\" colors is not supported."`" --as-error-line
-    fi
+    local NUMBER="$3"
 
     # Define list of colors from GPL palette.
-    local COLORS=$(render_svg_getColors "$PALETTE_GPL")
+    local COLOR=''
+    local COLORS=$(render_svg_getColors "$PALETTE_GPL" --head=$NUMBER --tail=$NUMBER --format='rrrggbb')
 
-    # Verify number of colors returned in the list.
-    if [[ ! $(echo "$COLORS" |  wc -l) =~ $COLOR_NUMBER ]];then
-        cli_printMessage "`gettext "The palette do not have the correct number of colors."`" --as-error-line
-    fi
+    # Verify amount of colors in the list of colors.
+    render_svg_checkColorAmount "$COLORS" "$NUMBER"
 
-    # Verify format of colors inside the list.
+    # Verify format of colors.
+    render_svg_checkColorFormats $COLORS --format='rrggbb'
+
+    # Create temporal images (of 1x1 pixel each) to store each color
+    # retrived from Gimp's palette. 
     for COLOR in $COLORS;do
-        if [[ ! $COLOR =~ '^[0-9a-f]{6}$' ]];then
-            cli_printMessage "`eval_gettext "The \\\"\\\$COLOR\\\" string is not a valid color code."`" --as-error-line
-        fi
-    done
-
-    # Create temporal images (of 1x1 pixel each) for each color
-    # retrived from Gimp's palette.
-    for COLOR in $COLORS;do
-        FILES[$COUNT]=$(cli_getTemporalFile "color-${COUNT}.ppm")
-        ppmmake $(echo "$COLOR" \
-            | sed -r 's!(.{2})(.{2})(.{2})!rgb:\1/\2/\3!') 1 1 \
-            > ${FILES[$COUNT]}
+        FILES[$COUNT]=$(cli_getTemporalFile ${COUNT}.ppm)
+        ppmmake $COLOR 1 1 > ${FILES[$COUNT]}
         COUNT=$(($COUNT + 1))
     done
 
-    # Concatenate temporal images from left to right to create the PPM
-    # file.
+    # Concatenate each temporal image from left to right to create the
+    # PPM file.
     pnmcat -lr ${FILES[*]} > $PALETTE_PPM
 
-    # Remove temporal images.
+    # Remove temporal images used to build the ppm palette file.
     rm ${FILES[*]}
 
     # Verify PPM palette existence.
