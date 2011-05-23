@@ -29,7 +29,7 @@ function render_getDirOutput {
     # Define base output directory using design model path as
     # reference.  
     OUTPUT=$(dirname $FILE | sed -r \
-        -e "s!/Themes/${FLAG_THEME_MODEL}!/Themes/$(cli_getPathComponent $ACTIONVAL --theme)!" \
+        -e "s!/Themes/${FLAG_THEME_MODEL}!/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
         -e "s!/Models!/Images!" \
         -e "s!/Tpl!!")
 
