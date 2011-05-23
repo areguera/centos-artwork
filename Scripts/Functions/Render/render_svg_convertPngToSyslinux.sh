@@ -73,7 +73,7 @@
 function render_svg_convertPngToSyslinux {
 
     # Define number of colors the images will be produced on.
-    local COLOR_NUMBER='16'
+    local COLORS='16'
 
     # Define options using those passed to actions from pre-rendition
     # configuration script. These options are applied to pnmremap when
@@ -93,7 +93,7 @@ function render_svg_convertPngToSyslinux {
     done
 
     # Define default file name prefix for 16 colors images.
-    local PREFIX="-${COLOR_NUMBER}c"
+    local PREFIX="-${COLORS}c"
 
     # Re-define 16 colors images default file name prefix using
     # options as reference. This is useful to differenciate final
@@ -103,9 +103,6 @@ function render_svg_convertPngToSyslinux {
         PREFIX="${PREFIX}-floyd"
     fi
 
-    # Define theme-specific palettes directory. 
-    local PALETTES=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --theme)/Palettes
-
     # Define absolute path to GPL palette. The GPL palette defines the
     # color information used to build syslinux images.  This palette
     # should be set to 16 colors and, as specified in isolinux
@@ -113,10 +110,15 @@ function render_svg_convertPngToSyslinux {
     # position 0 and the forground in position 7 (see
     # /usr/share/doc/syslinux-X.XX/isolinux.doc, for more
     # information.)
-    local PALETTE_GPL=${PALETTES}/syslinux.gpl
+    local PALETTE_GPL=${MOTIF_DIR}/Palettes/syslinux.gpl
 
-    # Verify GPL palette existence.
-    cli_checkFiles $PALETTE_GPL
+    # Verify GPL palette existence. If it doesn't exist copy the one
+    # provided by the design model and expand translation markers in
+    # it.
+    if [[ ! -f $PALETTE_GPL ]];then
+        cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/syslinux.gpl ${PALETTE_GPL}
+        cli_replaceTMarkers ${PALETTE_GPL}
+    fi
 
     # Define absolute path to PPM palette. The PPM palette is built
     # from source palette (PALETTE_GPL) and provides the color
@@ -145,10 +147,10 @@ function render_svg_convertPngToSyslinux {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    render_svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLOR_NUMBER"
+    render_svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
  
     # Create HEX palette using GPL palette.
-    render_svg_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLOR_NUMBER"
+    render_svg_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLORS"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
