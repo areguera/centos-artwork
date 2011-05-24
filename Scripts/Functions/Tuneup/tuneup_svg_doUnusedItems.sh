@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# tuneup_doSvgUnusedItems.sh -- This function removes all unused items
+# tuneup_svg_doUnusedItems.sh -- This function removes all unused items
 # from the <lt>defs<gt> section of the SVG file.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doSvgUnusedItems {
+function tuneup_svg_doUnusedItems {
 
     # Vacuum unused svg definition using inkscape.
     inkscape --vacuum-defs $FILE &> /dev/null

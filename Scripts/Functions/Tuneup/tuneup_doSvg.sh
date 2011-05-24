@@ -29,6 +29,6 @@ function tuneup_doSvg {
     tuneup_doSvgMetadata
 
     # Remove all unused items.
-    tuneup_doSvgUnusedItems
+    tuneup_svg_doUnusedItems
 
 }
