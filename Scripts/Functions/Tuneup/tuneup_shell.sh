@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# tuneup_doShell.sh -- This function performs maintainance tasks for
+# tuneup_shell.sh -- This function performs maintainance tasks for
 # Shell script files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doShell {
+function tuneup_shell {
 
     # Rebuild top comment inside shell scripts, mainly to update
     # copyright information.
