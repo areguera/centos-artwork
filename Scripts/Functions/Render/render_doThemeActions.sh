@@ -101,13 +101,6 @@ function render_doThemeActions {
         # etc.).
         MOTIF_DIR="${MOTIF_BASEDIR}/${MOTIF_NAME}"
 
-        # Verify artistic motifs directory structure using design
-        # models directory structure as reference. If it doesn't
-        # exist, create it then.
-        if [[ ! -d $ACTIONVAL ]];then
-            mkdir -p $ACTIONVAL
-        fi
-
         # Define what is the next directory in the list, so we could
         # verify whether to render or not the current theme-specific
         # renderable directory.
