@@ -27,6 +27,6 @@ function tuneup_doShell {
 
     # Rebuild top comment inside shell scripts, mainly to update
     # copyright information.
-    tuneup_doShellTopComment
+    tuneup_shell_doTopComment
 
 }

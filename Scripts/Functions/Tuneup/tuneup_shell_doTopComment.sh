@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# tuneup_doShellTopComment.sh -- This function tunnes up the top
+# tuneup_shell_doTopComment.sh -- This function tunnes up the top
 # comment section inside shell scripts (*.sh) using a predefined
 # template.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doShellTopComment {
+function tuneup_shell_doTopComment {
 
     # Define absolute path to template file.
     local TEMPLATE="${FUNCCONFIG}/shell_topcomment.sed"
