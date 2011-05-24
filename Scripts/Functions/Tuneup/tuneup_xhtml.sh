@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# tuneup_doXhtml.sh -- This function performs maintainance tasks for
+# tuneup_xhtml.sh -- This function performs maintainance tasks for
 # XHTML files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doXhtml {
+function tuneup_xhtml {
 
     # Transforms html headings to make them accessible (e.g., through
     # a table of contents).
