@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# tuneup_doSvg.sh -- This function performs maintainance tasks for
+# tuneup_svg.sh -- This function performs maintainance tasks for
 # SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doSvg {
+function tuneup_svg {
 
     # Update metadata information.
     tuneup_svg_doMetadata
