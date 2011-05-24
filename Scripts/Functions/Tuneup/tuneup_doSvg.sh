@@ -26,7 +26,7 @@
 function tuneup_doSvg {
 
     # Update metadata information.
-    tuneup_doSvgMetadata
+    tuneup_svg_doMetadata
 
     # Remove all unused items.
     tuneup_svg_doUnusedItems
