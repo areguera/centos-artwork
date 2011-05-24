@@ -71,13 +71,13 @@ function tuneup_doSvgMetadata {
     cli_checkFiles $INSTANCE
 
     # Expand translation markers inside template instance.
-    cli_replaceTMarkers $INSTANCE
     sed -r -i \
         -e "s!=TITLE=!$NAM!" \
         -e "s!=URL=!$URL!" \
         -e "s!=DATE=!$(date "+%Y-%m-%d")!" $INSTANCE
     sed -i -r "/=KEYWORDS=/c\\${KEYS}" $INSTANCE
     sed -i -r 's/>$/>\\/g' $INSTANCE
+    cli_replaceTMarkers $INSTANCE
 
     # Update scalable vector graphic using template instance.
     sed -i -f $INSTANCE $FILE
