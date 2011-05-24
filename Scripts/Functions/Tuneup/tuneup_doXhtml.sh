@@ -27,6 +27,6 @@ function tuneup_doXhtml {
 
     # Transforms html headings to make them accessible (e.g., through
     # a table of contents).
-    tuneup_doXhtmlHeadings
+    tuneup_xhtml_doHeadings
 
 }

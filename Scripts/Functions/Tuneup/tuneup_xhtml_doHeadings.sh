@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# tuneup_doXhtmlHeadings.sh -- This functionality transforms web page
+# tuneup_xhtml_doHeadings.sh -- This functionality transforms web page
 # headings to make them accessible through a table of contents.  The
 # table of contents is expanded in place, wherever the <div
 # class="toc"></div> piece of code be in the page.  Once the <div
@@ -41,7 +41,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doXhtmlHeadings {
+function tuneup_xhtml_doHeadings {
 
     # Define variables as local to avoid conflicts outside.
     local COUNT=0
