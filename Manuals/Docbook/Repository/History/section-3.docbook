@@ -3,25 +3,27 @@
 
     <title>2010</title>
 
-    <para>The rendition script <command>render.sh</command> changes to
-    <command>centos-art.sh</command> script, a collection of
-    functionalities where rendition is one among others.  The
-    <command>centos-art.sh</command> is created to organize automation
-    of most frequent tasks inside the repository.  There was no need
-    to have links all around the repository if a command-line
-    interface can be created (through symbolic links, in the <filename
-    class="directory">~/bin</filename> directory) and be called
-    anywhere inside the repository as it would be usually done with
-    regular commands.</para>
+    <para>The rendition script changed its name from
+    <command>render.sh</command> to <command>centos-art.sh</command>
+    and became a collection of functionalities where rendition was
+    just one among others (e.g., documenting and localizing).</para>
+    
+    <para>The <command>centos-art.sh</command> was created to organize
+    automation of most frequent tasks inside the repository.  There
+    was no need to have links all around the repository if a
+    command-line interface could be created (through symbolic links,
+    in the <filename class="directory">~/bin</filename> directory) and
+    be called anywhere inside the repository as it would be a regular
+    command.</para>
     
     <para>Inside <command>centos-art.sh</command>, functionalities
     started to get identified and separated one another. For example,
     when images were rendered, there was no need to load
-    functionalities related to documentation manual. This moved us
-    onto common functionalities and specific functionalities inside
+    functionalities related to documentation manual. This layout moved
+    us onto common functionalities and specific functionalities inside
     <command>centos-art.sh</command> script. Common functionalities
-    are loaded when the script is initiated and are available to
-    specific functionalities but not the opposite.</para>
+    are loaded when <command>centos-art.sh</command> script is
+    initiated and are available to specific functionalities.</para>
     
     <para>The <command>centos-art.sh</command> script was redesigned
     to handle command-line options trough <command>getopt</command>
@@ -29,17 +31,19 @@
     
     <para>The repository directory structure was updated to improve
     the implementation of concepts related to corporate visual
-    identity.  Specially in the area related to themes which was
-    divided into design models and artistic motifs. In this
-    configuration, themes are produced as result of arbitrary
-    combinations of both design models (structures) and artistic
-    motifs (visual styles).</para>
+    identity.  Specially in the area related to themes which were
+    divided into <emphasis>design models</emphasis> and
+    <emphasis>artistic motifs</emphasis> to eliminate the content
+    duplication produced by having both image structure and image
+    visual style in the same file. Now, themes are produced as result
+    of arbitrary combinations of both design models (structures) and
+    artistic motifs (visual styles).</para>
     
     <para>In the documentation area, the documentation files in LaTeX
-    format are migrated to Texinfo.  In this configuration, each
-    directory structure in the repository has a documentation entry
-    associated in a Texinfo structure which can be read, edited and
-    administered (e.g., renamed, deleted, copied) interactively
+    format were migrated to Texinfo format.  In this configuration,
+    each directory structure in the repository has a documentation
+    entry associated in a Texinfo structure which can be read, edited
+    and administered (e.g., renamed, deleted, copied) interactively
     throuch <command>centos-art.sh</command>. Additionally, the
     <command>texi2html</command> program was used to produced XHTML
     output customized by CSS from The CentOS Webenv.</para>

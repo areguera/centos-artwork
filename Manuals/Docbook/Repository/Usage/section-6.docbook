@@ -3,13 +3,14 @@
 
     <title>Syncronizing path information</title>
 
-    <para>Syncronizing path information is the action that keeps all
+    <para>Syncronizing path information is the action of keeping all
     path information up to date in the repository. This action implies
-    both @emph{file movement} and @emph{file content replacement} in
-    this very specific order. File movement is related to duplicate,
-    delete and rename files and directories in the repository.  File
-    content replacement is related to replace information, path
-    information in this case, inside files in the repository.</para>
+    both file movement and replacement of content inside files already
+    moved, in this very specific order. File movement is related to
+    actions like duplicate, delete and rename files and directories in
+    the repository.  Replacement of content inside files is related to
+    replace information, path information in this case, inside files
+    in the repository.</para>
     
     <para>The order followed to syncronize path information is
     relevant because the versioned nature of the files we are working

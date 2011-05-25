@@ -9,11 +9,17 @@
     and shell scripts files (e.g., Bash scripts) through GNU
     <command>gettext</command> tools.  This configuration provided a
     stronger interface for graphic designers, translators and
-    programmers at time of producing localized content. The SED files
-    are no longer used to handle translations.</para>
+    programmers to produce localized content. The SED files are no
+    longer used to handle translations.</para>
     
     <para>Improve option parsing through
     <command>getopt</command>.</para>
+
+    <para>Consolidate the <code>render</code>, <code>help</code> and
+    <code>locale</code> functionalities as the most frequent tasks
+    performed inside the repository. Additionally, the
+    <code>prepare</code> and <code>tuneup</code> functionalities are
+    maintained as useful tasks.</para>
     
     <para>The <command>centos-art.sh</command> script is updated to
     organize functionalities in two groups: <quote>the administrative

@@ -3,9 +3,10 @@
 
     <title>Document convenctions</title>
 
-    <para>In this manual the personal pronoun @emph{we} is used to
-    repesent @emph{The CentOS Artwork SIG}. This is, the group of
-    persons building the CentOS Artwork Repository.</para>
+    <para>In this manual the personal pronoun <emphasis>we</emphasis>
+    is used to repesent <emphasis>The CentOS Artwork SIG</emphasis>,
+    the group of persons that build The CentOS Project corporate
+    visual identity through the CentOS Artwork Repository.</para>
 
     <para>In this manual, certain words are represented in different
     fonts, typefaces, sizes, and weights. This highlighting is
@@ -27,10 +28,12 @@
                 considered to be part of the command, so the entire
                 phrase is displayed as a command. For example:</para>
 
-                <para>Use the @command{centos-art identity
-                --render='path/to/dir'} command to produce contents
-                inside the @file{trunk/Identity} directory structure.
-                </para>
+                <para>Use the <command>centos-art identity
+                --render='path/to/dir'</command> command to produce
+                contents inside the <filename
+                class="directory">trunk/Identity</filename> directory
+                structure.</para>
+                
             </glossdef>
         </glossentry>
 
@@ -42,14 +45,18 @@
                 indicates that a particular file or directory exists
                 with that name on your system. Examples:</para>
 
-                <para>The @file{init.sh} file in
-                @file{trunk/Scripts/Bash/Cli/} directory is the
-                initialization script, written in Bash, used to
-                automate most of tasks in the repository.</para>
+                <para>The <filename>init.sh</filename> file in
+                <filename
+                class="directory">trunk/Scripts/Bash/Cli/</filename>
+                directory is the initialization script, written in
+                Bash, used to automate most of tasks in the
+                repository.</para>
 
-                <para>The @command{centos-art} command uses the
-                @file{ImageMagick} RPM package to convert images from
-                PNG format to other formats.</para>
+                <para>The <command>centos-art</command> command uses
+                the <package>ImageMagick</package> RPM package to
+                convert images from PNG format to other
+                formats.</para>
+
             </glossdef>
         </glossentry>
 
@@ -90,8 +97,8 @@
             shell prompt such as error messages and responses to
             commands. For example:</para>
 
-            <para>The @command{ls} command displays the contents of a
-            directory. For example:
+            <para>The <command>ls</command> command displays the
+            contents of a directory. For example:
 
             <programlisting>
 Config                          help_renameEntry.sh
@@ -112,32 +119,30 @@ help_deleteCrossReferences.sh   help_searchIndex.sh
     caution, or warning. For example:</para>
 
     <note>
-        <para>@strong{Note} Remember that Linux is case sensitive. In
-        other words, a rose is not a ROSE is not a rOsE.</para>
+        <para>Remember that Linux is case sensitive. In other words, a
+        rose is not a ROSE is not a rOsE.</para>
     </note> 
 
     <tip>
-        <para>@strong{Tip} The directory @file{/usr/share/doc/}
-        contains additional documentation for packages installed on
-        your system.</para>
+        <para>The directory @file{/usr/share/doc/} contains additional
+        documentation for packages installed on your system.</para>
     </tip>
 
     <important>
-        <para>@strong{Important} If you modify the DHCP configuration
-        file, the changes do not take effect until you restart the
-        DHCP daemon.</para>
+        <para>If you modify the DHCP configuration file, the changes
+        do not take effect until you restart the DHCP daemon.</para>
     </important>
 
     <caution>
-        <para>@strong{Caution} Do not perform routine tasks as root
-        &mdash; use a regular user account unless you need to use the root
-        account for system administration tasks.</para>
+        <para>Do not perform routine tasks as root &mdash; use a
+        regular user account unless you need to use the root account
+        for system administration tasks.</para>
     </caution>
 
     <warning>
-        <para>@strong{Warning} Be careful to remove only the necessary
-        partitions.  Removing other partitions could result in data
-        loss or a corrupted system environment.</para>
+        <para>Be careful to remove only the necessary partitions.
+        Removing other partitions could result in data loss or a
+        corrupted system environment.</para>
     </warning>
 
 </section>

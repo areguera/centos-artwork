@@ -3,20 +3,27 @@
 
     <title>Connection between directories</title>
 
-    <para>In order to produce content in CentOS Artwork Repository, it
-    is required that all work lines be connected somehow.  This is the
-    way automation scripts can know where to retrive the information
-    they need to work with (e.g., design model, translation messages,
-    output location, etc.).  We build this kind of connection using
-    two path constructions named @emph{master paths} and
-    @emph{auxiliar paths}.</para>
+    <para>In order for automation scripts to produce content inside
+    working copies of CentOS Artwork Repository, it is required that
+    all work lines be connected somehow.  Using this connection,
+    automation scripts can know where to retrive the information they
+    need to work with (e.g., design model, translation messages,
+    output locations, etc.).  This connection is built using two path
+    constructions named <emphasis>master paths</emphasis> and
+    <emphasis>auxiliar paths</emphasis>.</para>
     
-    <para>The master path points only to directories that contain the
+    <para>The master path points only to directories that contain
     source files (e.g., SVG files) required to produce base content
     (e.g., PNG files) through automation scripts.  Each master path
     inside the repository may have several auxiliar paths associated,
-    but auxiliar paths can only have one master path
-    associated.</para>
+    but auxiliar paths can only have one master path associated.
+    Master paths are organized under <filename
+    class="directory">trunk/Identity/Models</filename> directory
+    structure and auxiliar paths under <filename
+    class="directory">trunk/Identity/Images</filename>, <filename
+    class="directory">trunk/Locales</filename> and <filename
+    class="directory">trunk/Manuals</filename> directory
+    structures.</para>
     
     <para>The auxiliar paths can point either to directories or files.
     When an auxiliar path points to a directory, that directory
@@ -27,102 +34,11 @@
     file, that file has no other purpose but to document the master
     path it refers to.</para>
     
-    <para>The relation between auxiliar paths and master paths is
-    realized combining two path informations which are: the master
-    path itself and one second level directory structure from the
-    repository.  Generally, the master path is considered the path
-    identifier and the second level directory structure taken from the
-    repository is considered the common part of the path where the
-    identifier is appended.</para>
-    
-    <programlisting>
------+---------------+----------------------------+------+-----------
-Path | Suffix        | Identifier                 |Prefix| Type
------+---------------+----------------------------+------+-----------
-  A  |               |trunk/Identity/Models/Brands|      | Directory
------+---------------+----------------------------+------+-----------
-  B  |  trunk/Manual/|trunk/Identity/Models/Brands|.texi | File
------+---------------+----------------------------+------+-----------
-  C  | trunk/Locales/|trunk/Identity/Models/Brands|      | Directory
------+---------------+----------------------------+------+-----------
-  D  |               |trunk/Identity/Images/Brands|      | Directory
------+---------------+----------------------------+------+-----------
-  E  | trunk/Locales/|trunk/Identity/Images/Brands|.texi | File
------+---------------+----------------------------+------+-----------
-    
-  A = Master path.  
-  B = Auxiliar path to documentation entry.  
-  C = Auxiliar path to translation messages.  
-  D = Auxiliar path to final content output.  
-  E = Auxiliar path to documentation entry.
-    </programlisting>
-    
-    <para>The path information described above (@pxref{Path
-    construction}) is used by direct rendition and can be taken as
-    reference to add other components that are equally produced in the
-    repository.  To add new components that make use of direct
-    rendition inside the repository, change just the component name
-    used above (e.g., @file{Brands}) to that one you want to add,
-    without changing the path structure around it.</para>
-    
-    <para>The file organization used by theme rendition extends direct
-    rendition by separating design models information from backgrounds
-    information.  To better understand this configuration, you can
-    consider it as two independent lists, one of design models and one
-    of artistic motifs, which are arbitrary combined between
-    themselves in order to render images in specific ways. The
-    possibilities of this configuration are endless and let us
-    describe visual manifestations very well.  For example, consider
-    the organization used to produce @file{Anaconda} images; for
-    CentOS distribution major release 5; using @file{Default} design
-    models and version @file{3} of @file{Flame} artistic motif:</para>
-    
-    <programlisting>
------+---------------+------------------------------------------------------+------+-----------
-Path | Suffix        | Identifier                                           |Prefix| Type
------+---------------+------------------------------------------------------+------+-----------
-  A  |               |trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory
------+---------------+------------------------------------------------------+------+-----------
-  B  |  trunk/Manual/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|.texi | File
------+---------------+------------------------------------------------------+------+-----------
-  C  | trunk/Locales/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory
------+---------------+------------------------------------------------------+------+-----------
-  D  |               |trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|      | Directory
------+---------------+------------------------------------------------------+------+-----------
-  E  | trunk/Locales/|trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|.texi | File
------+---------------+------------------------------------------------------+------+-----------
-    
-  A = Master path.  
-  B = Auxiliar path to documentation entry.  
-  C = Auxiliar path to translation messages.  
-  D = Auxiliar path to final content output.
-  E = Auxiliar path to documentation entry.
-    </programlisting>
-    
-    <para>The path information described above (@pxref{Path
-    construction extended}) is used by theme rendition and can be
-    taken as reference to add other components that are equally
-    produced in the repository.</para>
-    
-    <para>In this configuration we can change both design model name
-    (e.g., @file{Default}) and artistic motif name (e.g.,
-    @file{Flame/3}) to something else in order to achieve a different
-    result. The only limitations impossed are the storage space
-    provided in the server machine and your own creativeness as
-    graphic designer.</para>
-    
-    <note><para>A theme ready for implementation may consume from 100
-    MB to 400 MB of storage space. The exact space consumed by a theme
-    depends on the amount of screen resolutions the theme supports.
-    The more screen resolutions the theme supports, the more storage
-    space demanded for it.</para></note>
-    
-    <para>In this configuration we saw how to build the path
-    information for @file{Anaconda} component as part of CentOS
-    Distribution visual manifestation, but that is not the only
-    component we have inside CentOS Distribution visual manifestation.
-    There are other components like Syslinux, Grub, Rhgb, Gdm, Kdm,
-    Gsplash and Ksplash that share a similar file organization to that
-    described above for @file{Anaconda} component.</para>
-    
+    <para>The relationship between auxiliar paths and master paths is
+    realized by combining the master path itself and the second level
+    directory structures of the repository.  The master path is
+    considered the path identifier and the second level directory
+    structure taken from the repository is considered the common part
+    of the path where the path identifier is appended to.</para>
+
 </sect1>
