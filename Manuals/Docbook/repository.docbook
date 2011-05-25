@@ -15,24 +15,24 @@
         <!ENTITY book-parts                                         SYSTEM "Book/parts.docbook">
 
         <!-- Preface -->
-        <!ENTITY preface-chapter                                    SYSTEM "Preface/chapter.docbook">
-        <!ENTITY preface-section-1                                  SYSTEM "Preface/introduction.docbook">
-        <!ENTITY preface-section-2                                  SYSTEM "Preface/document-convenctions.docbook">
+        <!ENTITY preface                                            SYSTEM "Preface.docbook">
+        <!ENTITY preface-document-convenctions                      SYSTEM "Preface/document-convenctions.docbook">
+        <!ENTITY preface-send-in-your-feedback                      SYSTEM "Preface/send-in-your-feedback.docbook">
 
     <!-- Mainmatter -->
 
         <!-- Part I: The Repository -->
-        <!ENTITY repo-history                                       SYSTEM "Repository/History/chapter.docbook">
+        <!ENTITY repo-history                                       SYSTEM "Repository/History.docbook">
         <!ENTITY repo-history-2008                                  SYSTEM "Repository/History/2008.docbook">
         <!ENTITY repo-history-2009                                  SYSTEM "Repository/History/2009.docbook">
         <!ENTITY repo-history-2010                                  SYSTEM "Repository/History/2010.docbook">
         <!ENTITY repo-history-2011                                  SYSTEM "Repository/History/2011.docbook">
 
-        <!ENTITY repo-copying-chapter                               SYSTEM "Repository/Copying/chapter.docbook">
+        <!ENTITY repo-copying                                       SYSTEM "Repository/Copying.docbook">
         <!ENTITY repo-copying-preamble                              SYSTEM "Repository/Copying/preamble.docbook">
         <!ENTITY repo-copying-the-centos-brand                      SYSTEM "Repository/Copying/the-centos-brand.docbook">
 
-        <!ENTITY repo-usage-chapter                                 SYSTEM "Repository/Usage/chapter.docbook">
+        <!ENTITY repo-usage                                         SYSTEM "Repository/Usage.docbook">
         <!ENTITY repo-usage-preamble                                SYSTEM "Repository/Usage/preamble.docbook">
         <!ENTITY repo-usage-organization                            SYSTEM "Repository/Usage/organization.docbook">
         <!ENTITY repo-usage-filenames                               SYSTEM "Repository/Usage/filenames.docbook">
@@ -45,7 +45,7 @@
         <!ENTITY repo-usage-syncronizing-paths                      SYSTEM "Repository/Usage/syncronizing-paths.docbook">
         <!ENTITY repo-usage-extending-repository                    SYSTEM "Repository/Usage/extending-repository.docbook">
 
-        <!ENTITY repo-dir-chapter                                   SYSTEM "Repository/Directories/chapter.docbook">
+        <!ENTITY repo-dir                                           SYSTEM "Repository/Directories.docbook">
         <!ENTITY repo-dir-trunk                                     SYSTEM "Repository/Directories/trunk.docbook">
         <!ENTITY repo-dir-trunk-identity                            SYSTEM "Repository/Directories/trunk/Identity.docbook">
         <!ENTITY repo-dir-trunk-identity-models                     SYSTEM "Repository/Directories/trunk/Identity/Models.docbook">
@@ -54,37 +54,37 @@
         <!ENTITY repo-dir-trunk-manual                              SYSTEM "Repository/Directories/trunk/Manuals.docbook">
 
         <!-- Part II: Licenses -->
-        <!ENTITY licenses-gpl-chapter                               SYSTEM "Licenses/Gpl/chapter.docbook">
-        <!ENTITY licenses-gpl-section-1                             SYSTEM "Licenses/Gpl/section-1.docbook">
-        <!ENTITY licenses-gpl-section-2                             SYSTEM "Licenses/Gpl/section-2.docbook">
-        <!ENTITY licenses-gpl-section-2-0                           SYSTEM "Licenses/Gpl/section-2-0.docbook">
-        <!ENTITY licenses-gpl-section-2-1                           SYSTEM "Licenses/Gpl/section-2-1.docbook">
-        <!ENTITY licenses-gpl-section-2-2                           SYSTEM "Licenses/Gpl/section-2-2.docbook">
-        <!ENTITY licenses-gpl-section-2-3                           SYSTEM "Licenses/Gpl/section-2-3.docbook">
-        <!ENTITY licenses-gpl-section-2-4                           SYSTEM "Licenses/Gpl/section-2-4.docbook">
-        <!ENTITY licenses-gpl-section-2-5                           SYSTEM "Licenses/Gpl/section-2-5.docbook">
-        <!ENTITY licenses-gpl-section-2-6                           SYSTEM "Licenses/Gpl/section-2-6.docbook">
-        <!ENTITY licenses-gpl-section-2-7                           SYSTEM "Licenses/Gpl/section-2-7.docbook">
-        <!ENTITY licenses-gpl-section-2-8                           SYSTEM "Licenses/Gpl/section-2-8.docbook">
-        <!ENTITY licenses-gpl-section-2-9                           SYSTEM "Licenses/Gpl/section-2-9.docbook">
-        <!ENTITY licenses-gpl-section-2-10                          SYSTEM "Licenses/Gpl/section-2-10.docbook">
-        <!ENTITY licenses-gpl-section-2-11                          SYSTEM "Licenses/Gpl/section-2-11.docbook">
-        <!ENTITY licenses-gpl-section-2-12                          SYSTEM "Licenses/Gpl/section-2-12.docbook">
-        <!ENTITY licenses-gpl-section-3                             SYSTEM "Licenses/Gpl/section-3.docbook">
+        <!ENTITY licenses-gpl                                       SYSTEM "Licenses/Gpl.docbook">
+        <!ENTITY licenses-gpl-preamble                              SYSTEM "Licenses/Gpl/preamble.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions                  SYSTEM "Licenses/Gpl/Terms-and-conditions.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-0        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-0.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-1        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-1.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-2        SYSTEM "Licenses/Gpl/Terms-and-conditions/terms-and-conditions-section.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-3        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-3.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-4        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-4.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-5        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-5.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-6        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-6.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-7        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-7.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-8        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-8.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-9        SYSTEM "Licenses/Gpl/Terms-and-conditions/section-9.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-10       SYSTEM "Licenses/Gpl/Terms-and-conditions/section-10.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-11       SYSTEM "Licenses/Gpl/Terms-and-conditions/section-11.docbook">
+        <!ENTITY licenses-gpl-terms-and-conditions-section-12       SYSTEM "Licenses/Gpl/Terms-and-conditions/section-12.docbook">
+        <!ENTITY licenses-gpl-how-to-apply-this-license             SYSTEM "Licenses/Gpl/how-to-apply-this-license.docbook">
 
-        <!ENTITY licenses-gfdl-chapter                              SYSTEM "Licenses/Gfdl/chapter.docbook">
-        <!ENTITY licenses-gfdl-section-1                            SYSTEM "Licenses/Gfdl/section-1.docbook">
-        <!ENTITY licenses-gfdl-section-2                            SYSTEM "Licenses/Gfdl/section-2.docbook">
-        <!ENTITY licenses-gfdl-section-3                            SYSTEM "Licenses/Gfdl/section-3.docbook">
-        <!ENTITY licenses-gfdl-section-4                            SYSTEM "Licenses/Gfdl/section-4.docbook">
-        <!ENTITY licenses-gfdl-section-5                            SYSTEM "Licenses/Gfdl/section-5.docbook">
-        <!ENTITY licenses-gfdl-section-6                            SYSTEM "Licenses/Gfdl/section-6.docbook">
-        <!ENTITY licenses-gfdl-section-7                            SYSTEM "Licenses/Gfdl/section-7.docbook">
-        <!ENTITY licenses-gfdl-section-8                            SYSTEM "Licenses/Gfdl/section-8.docbook">
-        <!ENTITY licenses-gfdl-section-9                            SYSTEM "Licenses/Gfdl/section-9.docbook">
-        <!ENTITY licenses-gfdl-section-10                           SYSTEM "Licenses/Gfdl/section-10.docbook">
-        <!ENTITY licenses-gfdl-section-11                           SYSTEM "Licenses/Gfdl/section-11.docbook">
-        <!ENTITY licenses-gfdl-section-12                           SYSTEM "Licenses/Gfdl/section-12.docbook">
+        <!ENTITY licenses-gfdl                                      SYSTEM "Licenses/Gfdl.docbook">
+        <!ENTITY licenses-gfdl-preamble                             SYSTEM "Licenses/Gfdl/preamble.docbook">
+        <!ENTITY licenses-gfdl-applicability-and-definitions        SYSTEM "Licenses/Gfdl/applicability-and-definitions.docbook">
+        <!ENTITY licenses-gfdl-verbatim-copying                     SYSTEM "Licenses/Gfdl/verbatim-copying.docbook">
+        <!ENTITY licenses-gfdl-copying-in-quantity                  SYSTEM "Licenses/Gfdl/copying-in-quantity.docbook">
+        <!ENTITY licenses-gfdl-modifications                        SYSTEM "Licenses/Gfdl/modifications.docbook">
+        <!ENTITY licenses-gfdl-combining-documents                  SYSTEM "Licenses/Gfdl/combining-documents.docbook">
+        <!ENTITY licenses-gfdl-collection-of-documents              SYSTEM "Licenses/Gfdl/collection-of-documents.docbook">
+        <!ENTITY licenses-gfdl-aggregation-with-independent-works   SYSTEM "Licenses/Gfdl/aggregation-with-independent-works.docbook">
+        <!ENTITY licenses-gfdl-translations                         SYSTEM "Licenses/Gfdl/translations.docbook">
+        <!ENTITY licenses-gfdl-Termination                          SYSTEM "Licenses/Gfdl/Termination.docbook">
+        <!ENTITY licenses-gfdl-future-revisions-of-this-license     SYSTEM "Licenses/Gfdl/future-revisions-of-this-license.docbook">
+        <!ENTITY licenses-gfdl-how-to-use-this-license              SYSTEM "Licenses/Gfdl/how-to-use-this-license.docbook">
 
     <!-- Backmatter -->
 
