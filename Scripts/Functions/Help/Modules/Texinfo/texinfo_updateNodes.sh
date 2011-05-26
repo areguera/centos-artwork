@@ -51,9 +51,9 @@ function texinfo_updateNodes {
             # Define what template to apply using the absolute path of
             # the documentation entry as reference.
             if [[ ${MANUAL_BASEDIR}/${INCL} =~ 'trunk/Scripts/Functions/.+' ]];then
-                TEXINFO_TEMPLATE="${FUNCCONFIG}/manual-section-functions.texi"
+                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section-functions.texi"
             else
-                TEXINFO_TEMPLATE="${FUNCCONFIG}/manual-section.texi"
+                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section.texi"
             fi
 
             # Copy template to its destination.
@@ -63,7 +63,7 @@ function texinfo_updateNodes {
             cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
 
             # Expand texinfo-specific translation markers.
-            ${FUNCNAM}_doTexinfoSeealso "${MANUAL_BASEDIR}/$INCL" "$NODE"
+            ${FUNCNAM}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
 
         fi
 
@@ -78,4 +78,3 @@ function texinfo_updateNodes {
     done > $MANUAL_CHAPTER_DIR/chapter-nodes.texi
 
 }
-
