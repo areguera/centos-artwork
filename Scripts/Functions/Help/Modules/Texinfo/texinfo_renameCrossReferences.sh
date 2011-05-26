@@ -34,14 +34,14 @@ function texinfo_renameCrossReferences {
 
     # Define node pattern for source documenation entry.
     NODE_SRC=$(echo "$ENTRY" \
-        | cut -d / -f7- \
+        | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.texi|\.texi)$//")
 
     # Define node replacement for target documentation entry.
     NODE_DST=$(echo "$ENTRY_DST" \
-        | cut -d / -f7- \
+        | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.texi|\.texi)$//")
