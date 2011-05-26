@@ -50,6 +50,6 @@ function texinfo_updateChaptersFiles {
     echo "" > $MANUAL_CHAPTER_DIR/chapter-nodes.texi
 
     # Initialize chapter instroduction using template file.
-    cp ${FUNCCONFIG}/manual-cha-intro.texi $MANUAL_CHAPTER_DIR/chapter-intro.texi
+    cp ${MANUAL_TEMPLATE}/manual-chapter-intro.texi $MANUAL_CHAPTER_DIR/chapter-intro.texi
 
 }
