@@ -35,6 +35,14 @@ function cli_getFunctions {
     # Define list of files.
     local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${FUNCNAM}.*\.sh" --maxdepth="1")
 
+    # Verify list of files. If no function file exists for the
+    # location specified stop the script execution. Otherwise the
+    # script will surely try to execute a function that haven't been
+    # exported yet and report an error about it.
+    if [[ $FUNCFILES == '' ]];then
+        cli_printMessage "`gettext "No function file was found for this action."`" --as-error-line
+    fi
+
     # Process list of files.
     for FILE in $FUNCFILES;do
 
@@ -49,8 +57,5 @@ function cli_getFunctions {
         export -f $(egrep "${PATTERN}" ${FILE} | cut -d' ' -f2)
 
     done
-
-    # Execute function.
-    eval $FUNCNAM
 
 }
