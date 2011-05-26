@@ -161,6 +161,11 @@ function help {
         # related files (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
+        # Define function configuration directory. The function
+        # configuration directory is used to store functionality's
+        # related files.
+        MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates
+
         # Define documentation entry.
         ENTRY=$(${FUNCNAM}_getEntry)
 
