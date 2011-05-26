@@ -32,7 +32,6 @@ function cli {
     local FUNCDIR=''
     local FUNCDIRNAM=''
     local FUNCSCRIPT=''
-    local FUNCCONFIG=''
     local ARGUMENTS=''
 
     # Initialize default value to filter flag. The filter flag
@@ -88,11 +87,6 @@ function cli {
     # Check function script execution rights.
     cli_checkFiles "${FUNCSCRIPT}" --execution
 
-    # Define function configuration directory. The function
-    # configuration directory is used to store functionality's
-    # related files.
-    FUNCCONFIG=${FUNCDIR}/${FUNCDIRNAM}/Config
-
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
     # start counting from second argument (inclusive) on.
@@ -112,5 +106,8 @@ function cli {
     # Go for function initialization. Keep the cli_getFunctions
     # function calling after all variables and arguments definitions.
     cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}"
+
+    # Execute function.
+    eval $FUNCNAM
 
 }
