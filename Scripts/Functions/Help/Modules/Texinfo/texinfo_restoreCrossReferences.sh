@@ -48,7 +48,7 @@ function texinfo_restoreCrossReferences {
 
     # Build the node string using entry location.
     local NODE=$(echo "$LOCATION" \
-        | cut -d / -f7- \
+        | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.texi|\.texi)$//")
