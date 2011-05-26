@@ -189,7 +189,7 @@ function help {
         # not have their own files, they all will be written inside
         # the same section file that represents the repository
         # documentation entry.
-        MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-7)
+        MANUAL_CHAPTER_DIR=$(echo $ENTRY | cut -d / -f-8)
 
         # Define chapter name for the documentation entry we are
         # working with.
