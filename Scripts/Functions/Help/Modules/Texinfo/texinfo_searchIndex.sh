@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_searchIndex.sh -- This function does an index search inside the
+# texinfo_searchIndex.sh -- This function does an index search inside the
 # info document.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_searchIndex {
+function texinfo_searchIndex {
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line

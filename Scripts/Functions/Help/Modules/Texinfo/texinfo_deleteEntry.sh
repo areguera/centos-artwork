@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_deleteEntry.sh -- This function removes a documentation entry
+# texinfo_deleteEntry.sh -- This function removes a documentation entry
 # from documentation directory structure.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_deleteEntry {
+function texinfo_deleteEntry {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -94,16 +94,16 @@ function help_texinfo_deleteEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        help_texinfo_updateMenu "remove-entry"
-        help_texinfo_updateNodes
+        texinfo_updateMenu "remove-entry"
+        texinfo_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        help_texinfo_deleteCrossReferences
+        texinfo_deleteCrossReferences
 
     done
  
     # Rebuild output files to propagate recent changes.
-    help_texinfo_updateOutputFiles
+    texinfo_updateOutputFiles
 
 }

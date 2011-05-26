@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_updateOutputFilePdf.sh -- This function exports documentation
+# texinfo_updateOutputFilePdf.sh -- This function exports documentation
 # manual to PDF format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_updateOutputFilePdf {
+function texinfo_updateOutputFilePdf {
 
     # Output action message.
     cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_searchNode.sh -- This function does a node search inside the
+# texinfo_searchNode.sh -- This function does a node search inside the
 # info document.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_searchNode {
+function texinfo_searchNode {
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
@@ -32,9 +32,9 @@ function help_texinfo_searchNode {
     # exits use the info reader to open the info file at the
     # specified node. Otherwise, ask the user for create it.
     if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="Directories $(help_texinfo_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
+        /usr/bin/info --node="Directories $(texinfo_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
     else
-        help_texinfo_editEntry
+        texinfo_editEntry
     fi
 
 }

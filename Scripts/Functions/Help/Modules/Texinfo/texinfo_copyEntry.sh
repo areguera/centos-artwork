@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_copyEntry.sh -- This function copies documentation entries and
+# texinfo_copyEntry.sh -- This function copies documentation entries and
 # updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_copyEntry {
+function texinfo_copyEntry {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -70,12 +70,12 @@ function help_texinfo_copyEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        help_texinfo_updateMenu
-        help_texinfo_updateNodes
+        texinfo_updateMenu
+        texinfo_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        help_texinfo_restoreCrossReferences
+        texinfo_restoreCrossReferences
 
     done
 

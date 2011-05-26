@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# help_texinfo_restoreCrossReferences.sh -- This function looks inside
+# texinfo_restoreCrossReferences.sh -- This function looks inside
 # texinfo source files, from section level on, and restores any cross
 # reference related to a documentation entry. This function is used in
 # those cases where documentation entries are created/recreated to
 # documentation structure. It is a verification that looks for
 # matching documentation entries previously defined as removed by
-# help_texinfo_deleteCrossReferences function. The
-# help_texinfo_restoreCrossReferences function relays in the removed
-# message format produced by help_texinfo_deleteCrossReferences
+# texinfo_deleteCrossReferences function. The
+# texinfo_restoreCrossReferences function relays in the removed
+# message format produced by texinfo_deleteCrossReferences
 # function, in order to return them back into the link format. 
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -31,7 +31,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_restoreCrossReferences {
+function texinfo_restoreCrossReferences {
 
     local -a PATTERN
     local -a REPLACE

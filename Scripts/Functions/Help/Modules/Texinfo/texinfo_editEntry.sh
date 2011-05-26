@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_editEntry.sh -- This function implements the edition flow of
+# texinfo_editEntry.sh -- This function implements the edition flow of
 # documentation entries inside the working copy.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_editEntry {
+function texinfo_editEntry {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -37,14 +37,14 @@ function help_texinfo_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update manual chapter related files.
-        help_texinfo_updateChaptersFiles
+        texinfo_updateChaptersFiles
 
         # Update manual chapter related menu.
-        help_texinfo_updateChaptersMenu
+        texinfo_updateChaptersMenu
 
         # Update manual chapter related nodes (based on chapter
         # related menu).
-        help_texinfo_updateChaptersNodes
+        texinfo_updateChaptersNodes
 
     fi
 
@@ -57,11 +57,11 @@ function help_texinfo_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update chapter section related menu.
-        help_texinfo_updateMenu
+        texinfo_updateMenu
 
         # Update chapter section related nodes (based on chapter
         # section related menu).
-        help_texinfo_updateNodes
+        texinfo_updateNodes
 
         # Update old missing cross references. If for some reason a
         # documentation entry is removed by mistake, and that mistake
@@ -69,7 +69,7 @@ function help_texinfo_editEntry {
         # into the repository, rebuild the missing cross reference
         # message to use the correct link to the documentation
         # section.
-        help_texinfo_restoreCrossReferences
+        texinfo_restoreCrossReferences
 
     else
 
@@ -82,6 +82,6 @@ function help_texinfo_editEntry {
     eval $EDITOR $ENTRY
 
     # Rebuild output files to propagate recent changes.
-    help_texinfo_updateOutputFiles
+    texinfo_updateOutputFiles
 
 }

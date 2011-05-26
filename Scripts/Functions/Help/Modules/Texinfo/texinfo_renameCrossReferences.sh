@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_renameCrossReferences.sh -- This function replaces a node
+# texinfo_renameCrossReferences.sh -- This function replaces a node
 # pattern with a node replacement and updates cross-reference
 # definitions to reflect the changes.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_renameCrossReferences {
+function texinfo_renameCrossReferences {
 
     local NODE=''
     local COUNT=1
@@ -65,6 +65,6 @@ function help_texinfo_renameCrossReferences {
     # source to target documentation entry, but they are still
     # commented. So, uncomment them restoring target documentation
     # entries.
-    help_texinfo_restoreCrossReferences "${ENTRY_DST}"
+    texinfo_restoreCrossReferences "${ENTRY_DST}"
 
 }

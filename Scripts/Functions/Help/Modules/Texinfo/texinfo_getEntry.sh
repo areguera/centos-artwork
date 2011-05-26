@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_getEntry.sh -- This function builds a documentation entry based
+# texinfo_getEntry.sh -- This function builds a documentation entry based
 # on a location specified. Location specification can be both action
 # value (ACTIONVAL) variable or a value passed as first positional
 # parameter.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_getEntry {
+function texinfo_getEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRY=''

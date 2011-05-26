@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_getNode.sh -- This function cleans up the action value
+# texinfo_getNode.sh -- This function cleans up the action value
 # (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_getNode {
+function texinfo_getNode {
 
     local NODE=$(echo "$ACTIONVAL" \
         | sed -r "s!^${HOME}/artwork/!!" \

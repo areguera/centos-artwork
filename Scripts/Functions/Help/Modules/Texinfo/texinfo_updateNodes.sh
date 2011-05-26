@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_updateNodes.sh -- This function updates chapter's nodes
+# texinfo_updateNodes.sh -- This function updates chapter's nodes
 # definition using the chapter's menu as reference.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_updateNodes {
+function texinfo_updateNodes {
 
     local TEXINFO_TEMPLATE=''
 

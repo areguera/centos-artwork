@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_texinfo_updateMenu.sh -- This function updates menu lines inside
+# texinfo_updateMenu.sh -- This function updates menu lines inside
 # texinfo chapters.  If this function is called with the
 # 'remove-entry' string as first argument, then the menu line related
 # to the entry being processed is removed. If this function is called
@@ -29,7 +29,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_texinfo_updateMenu {
+function texinfo_updateMenu {
 
     # Specify which action to do inside chapter's menu.
     local ACTION="$1"
@@ -55,7 +55,7 @@ function help_texinfo_updateMenu {
             ;;
         'update-entry' | * )
             # Add menu line to chapter's menu. This is the default
-            # behaivour if no argument is passed to help_texinfo_updateMenu
+            # behaivour if no argument is passed to texinfo_updateMenu
             # function.
             MENU="$MENU
             $MENULINE"
