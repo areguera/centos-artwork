@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_updateOutputFileXml.sh -- This function exports documentation
-# manual to XML format.
+# help_texinfo_updateChaptersNodes.sh -- This function updates nodes of
+# chapters based on menu of chapters.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,13 +23,27 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileXml {
+function help_texinfo_updateChaptersNodes {
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xml" --as-updating-line
+    # Build list "nodes of chapters" based on menu of chapters.
+    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.texi \
+        | egrep -v '^@(end )?menu$' \
+        | egrep -v "^\* `gettext "Index"`::[[:print:]]*$" \
+        | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
+        | sed -r 's! !_!g' | sort | uniq )
 
-    # Update xml output format.
-    /usr/bin/makeinfo --xml \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.xml \
+    # Build list of texinfo inclusions to load chapters' nodes.
+    local FILENODE=$(\
+    for CHAPTERNODE in ${CHAPTERNODES};do
+
+        INCL=$(echo ${CHAPTERNODE} | sed -r "s!(${CHAPTERNODE})!\1/chapter\.texi!")
+
+        # Output inclusion line using texinfo format.
+        echo "@include $INCL"
+
+    done)
+
+    # Dump organized nodes of chapters into file.
+    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.texi
 
 }

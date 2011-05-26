@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_updateOutputFiles.sh -- This function exports documentation
-# manual to different output formats.
+# help_texinfo_updateOutputFileXml.sh -- This function exports documentation
+# manual to XML format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,23 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFiles {
+function help_texinfo_updateOutputFileXml {
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
+    # Print action message.
+    cli_printMessage "${MANUAL_BASEFILE}.xml" --as-updating-line
 
-    # Add the working copy root directory to directory stack to make
-    # path construction correctly. Otherwise, makeinfo may produce
-    # paths incorrectly.
-    pushd ${HOME}/artwork > /dev/null
-
-    help_updateOutputFileInfo
-    help_updateOutputFileXhtml
-    help_updateOutputFileXml
-    help_updateOutputFilePdf
-    help_updateOutputFilePlaintext
-
-    # Remove the working copy root directory from directory stack.
-    popd > /dev/null
+    # Update xml output format.
+    /usr/bin/makeinfo --xml \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.xml \
 
 }

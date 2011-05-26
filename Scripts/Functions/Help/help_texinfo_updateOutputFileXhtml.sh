@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFileXhtml.sh -- This function exports
+# help_texinfo_updateOutputFileXhtml.sh -- This function exports
 # documentation manual to HTML format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileXhtml {
+function help_texinfo_updateOutputFileXhtml {
 
     # Output action message.
     cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" --as-updating-line

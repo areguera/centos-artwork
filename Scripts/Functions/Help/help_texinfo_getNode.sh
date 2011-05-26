@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_searchNode.sh -- This function does a node search inside the
-# info document.
+# help_texinfo_getNode.sh -- This function cleans up the action value
+# (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,18 +23,12 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_searchNode {
+function help_texinfo_getNode {
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
+    local NODE=$(echo "$ACTIONVAL" \
+        | sed -r "s!^${HOME}/artwork/!!" \
+        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
 
-    # Check entry inside documentation structure. If the entry
-    # exits use the info reader to open the info file at the
-    # specified node. Otherwise, ask the user for create it.
-    if [[ -f "$ENTRY" ]];then
-        /usr/bin/info --node="Directories $(help_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
-    else
-        help_editEntry
-    fi
-
+    echo "$NODE"
 }
+

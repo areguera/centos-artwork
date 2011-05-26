@@ -35,20 +35,15 @@ function help {
     # search is perform.
     FLAG_SEARCH=""
 
-    # Define manuals base directory. This is the place where
-    # documentation manuals base directory structures are stored and
-    # organized in.
-    MANUAL_BASEDIR="${HOME}/artwork/trunk/Manuals/Texinfo"
+    # Initialize the format option. The format option (`--format')
+    # specifies the backend format used to manipulate the repository
+    # documentation manual.
+    FLAG_FORMAT="docbook"
 
     # Define file name (without extension) for documentation manual.
     MANUAL_NAME=repository
 
-    # Define base name for documentation manual files (without
-    # extension). This is the main file name used to build texinfo
-    # related files (.info, .pdf, .xml, etc.).
-    MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
-
-    # Interpret option arguments passed through command-line.
+    # Interpret option arguments passed through the command-line.
     help_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
@@ -65,7 +60,7 @@ function help {
     for ACTIONVAL in "$@";do
         ACTIONVALS[((++${#ACTIONVALS[*]}))]="$ACTIONVAL"
     done
-
+ 
     # Enforce conditions against remaining non-option arguments before
     # processing them.
     if [[ ${ACTIONNAM} == ${FUNCNAM}_copyEntry ]];then
@@ -141,12 +136,6 @@ function help {
         ARGUMENTS=${MANUAL_BASEDIR}
     fi
 
-    # Define action name. It does matter what option be passed to
-    # centos-art, there are many different actions to perform based on
-    # the option passed (e.g., `--edit', `--read', `--search', etc.).
-    # In that sake, we defined action name inside help_getArguments,
-    # at the moment of interpreting options.
-
     # Define action value. As convenction, we use non-option arguments
     # to define the action value (ACTIONVAL) variable.
     for ACTIONVAL in $ARGUMENTS;do
@@ -154,9 +143,19 @@ function help {
         # Check action value passed through the command-line using
         # source directory definition as reference.
         cli_checkRepoDirSource
+    
+        # Define manuals base directory. This is the place where
+        # documentation manuals base directory structures are stored
+        # and organized in.
+        MANUAL_BASEDIR="$(cli_getRepoTLDir)/Manuals/$(cli_getRepoName ${FLAG_FORMAT} -d)"
+
+        # Define base name for documentation manual files (without
+        # extension). This is the main file name used to build texinfo
+        # related files (.info, .pdf, .xml, etc.).
+        MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
         # Define documentation entry.
-        ENTRY=$(help_getEntry)
+        ENTRY=$(${FUNCNAM}_getEntry)
 
         # Define documentation entry directory. This is the directory
         # where the entry file is stored.
@@ -191,7 +190,7 @@ function help {
         cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
         # Execute action name.
-        if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        if [[ -f ${FUNCDIR}/${FUNCNAM}/${ACTIONNAM}.sh  ]];then
             eval $ACTIONNAM
         else
             cli_printMessage "`gettext "A valid action is required."`" --as-error-line

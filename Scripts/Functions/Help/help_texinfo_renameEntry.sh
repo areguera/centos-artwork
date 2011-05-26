@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_searchIndex.sh -- This function does an index search inside the
-# info document.
+# help_texinfo_renameEntry.sh -- This function renames documentation entries
+# and updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,12 +23,20 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_searchIndex {
+function help_texinfo_renameEntry {
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
+    # Copy source documentation entry.
+    help_texinfo_copyEntry
 
-    # Execute info command to perform an index-search.
-    /usr/bin/info --index-search="$FLAG_SEARCH" --file=${MANUAL_BASEFILE}.info.bz2
+    # Delete source documentation entry. The source documentation
+    # entry has been copied already, so to create the rename effect
+    # delete it from repository filesystem.
+    help_texinfo_deleteEntry
+
+    # At this point, source documentation entry has been removed and
+    # all menu, nodes and cross-references have been commented. So,
+    # replace commented menu, nodes and cross-reference information
+    # from source to target documentation entry.
+    help_texinfo_renameCrossReferences 
 
 }

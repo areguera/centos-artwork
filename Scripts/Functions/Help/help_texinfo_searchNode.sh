@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_updateOutputFilePlaintext.sh -- This function exports
-# documentation manual to plain-text format.
+# help_texinfo_searchNode.sh -- This function does a node search inside the
+# info document.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,18 +23,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFilePlaintext {
+function help_texinfo_searchNode {
 
-    # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-updating-line
+    # Print action message.
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
-    # Update plaintext output directory.
-    /usr/bin/makeinfo --plaintext \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
-
-    # Compress plaintext output file.
-    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
-        bzip2 ${MANUAL_BASEFILE}.txt --force
+    # Check entry inside documentation structure. If the entry
+    # exits use the info reader to open the info file at the
+    # specified node. Otherwise, ask the user for create it.
+    if [[ -f "$ENTRY" ]];then
+        /usr/bin/info --node="Directories $(help_texinfo_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
+    else
+        help_texinfo_editEntry
     fi
 
 }

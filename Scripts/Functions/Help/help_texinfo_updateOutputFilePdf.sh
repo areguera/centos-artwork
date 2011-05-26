@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_updateOutputFileInfo.sh -- This function exports
-# documentation manual to info format.
+# help_texinfo_updateOutputFilePdf.sh -- This function exports documentation
+# manual to PDF format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,17 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileInfo {
+function help_texinfo_updateOutputFilePdf {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-updating-line
+    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line
 
-    # Update info file.
-    /usr/bin/makeinfo ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.info
-
-    # Compress info file.
-    if [[ $? -eq 0 ]];then
-        bzip2 -f ${MANUAL_BASEFILE}.info
-    fi
+    # Update plaintext output directory.
+    /usr/bin/texi2pdf --quiet \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.pdf
 
 }

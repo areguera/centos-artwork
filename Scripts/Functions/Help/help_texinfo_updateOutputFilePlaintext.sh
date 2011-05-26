@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_updateChaptersNodes.sh -- This function updates nodes of
-# chapters based on menu of chapters.
+# help_texinfo_updateOutputFilePlaintext.sh -- This function exports
+# documentation manual to plain-text format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,27 +23,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateChaptersNodes {
+function help_texinfo_updateOutputFilePlaintext {
 
-    # Build list "nodes of chapters" based on menu of chapters.
-    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.texi \
-        | egrep -v '^@(end )?menu$' \
-        | egrep -v "^\* `gettext "Index"`::[[:print:]]*$" \
-        | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
-        | sed -r 's! !_!g' | sort | uniq )
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-updating-line
 
-    # Build list of texinfo inclusions to load chapters' nodes.
-    local FILENODE=$(\
-    for CHAPTERNODE in ${CHAPTERNODES};do
+    # Update plaintext output directory.
+    /usr/bin/makeinfo --plaintext \
+        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.txt
 
-        INCL=$(echo ${CHAPTERNODE} | sed -r "s!(${CHAPTERNODE})!\1/chapter\.texi!")
-
-        # Output inclusion line using texinfo format.
-        echo "@include $INCL"
-
-    done)
-
-    # Dump organized nodes of chapters into file.
-    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.texi
+    # Compress plaintext output file.
+    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
+        bzip2 ${MANUAL_BASEFILE}.txt --force
+    fi
 
 }

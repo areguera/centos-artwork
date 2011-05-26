@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# help_updateOutputFilePdf.sh -- This function exports documentation
-# manual to PDF format.
+# help_texinfo_updateOutputFiles.sh -- This function exports documentation
+# manual to different output formats.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,13 +23,23 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFilePdf {
+function help_texinfo_updateOutputFiles {
 
-    # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line
+    # Print separator line.
+    cli_printMessage '-' --as-separator-line
 
-    # Update plaintext output directory.
-    /usr/bin/texi2pdf --quiet \
-        ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.pdf
+    # Add the working copy root directory to directory stack to make
+    # path construction correctly. Otherwise, makeinfo may produce
+    # paths incorrectly.
+    pushd ${HOME}/artwork > /dev/null
+
+    help_texinfo_updateOutputFileInfo
+    help_texinfo_updateOutputFileXhtml
+    help_texinfo_updateOutputFileXml
+    help_texinfo_updateOutputFilePdf
+    help_texinfo_updateOutputFilePlaintext
+
+    # Remove the working copy root directory from directory stack.
+    popd > /dev/null
 
 }

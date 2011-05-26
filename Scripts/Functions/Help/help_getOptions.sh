@@ -29,7 +29,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename,format:"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -67,40 +67,48 @@ function help_getOptions {
                 ;;
 
             --search )
-                ACTIONNAM="${FUNCNAM}_searchIndex"
+                ACTIONNAM="searchIndex"
                 FLAG_SEARCH="$2"
                 shift 2
                 ;;
     
             --edit )
-                ACTIONNAM="${FUNCNAM}_editEntry"
+                ACTIONNAM="editEntry"
                 shift 1
                 ;;
 
             --copy )
-                ACTIONNAM="${FUNCNAM}_copyEntry"
+                ACTIONNAM="copyEntry"
                 shift 1
                 ;;
     
             --delete )
-                ACTIONNAM="${FUNCNAM}_deleteEntry"
+                ACTIONNAM="deleteEntry"
                 shift 1
                 ;;
 
             --rename )
-                ACTIONNAM="${FUNCNAM}_renameEntry"
+                ACTIONNAM="renameEntry"
                 shift 1
                 ;;
     
             --update )
-                ACTIONNAM="${FUNCNAM}_updateOutputFiles"
+                ACTIONNAM="updateOutputFiles"
                 shift 1
                 ;;
     
             --read )
-                ACTIONNAM="${FUNCNAM}_searchNode"
+                ACTIONNAM="searchNode"
                 FLAG_DONT_COMMIT_CHANGES='true'
                 shift 1
+                ;;
+            
+            --format )
+                FLAG_FORMAT="$(cli_getRepoName $2 -f)"
+                if [[ ! $FLAG_FORMAT =~ '^(docbook|texinfo)$' ]];then
+                    cli_printMessage "`gettext "The format provided is not supported."`" --as-error-line
+                fi
+                shift 2
                 ;;
 
             -- )
@@ -118,6 +126,12 @@ function help_getOptions {
                 ;;
         esac
     done
+
+    # Redefine function name to include the flag format in it.
+    FUNCNAM="${FUNCNAM}_${FLAG_FORMAT}"
+
+    # Redefine action name using function name.
+    ACTIONNAM="${FUNCNAM}_${ACTIONNAM}"
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
