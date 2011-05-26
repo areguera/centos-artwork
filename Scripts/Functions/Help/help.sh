@@ -46,6 +46,13 @@ function help {
     # Interpret option arguments passed through the command-line.
     help_getOptions
 
+    # Initialize functions inside module specified by `--format'
+    # option. There is no need to load all format-specific functions
+    # when we are using just one format among many. Keep the
+    # cli_getFunctions function calling after all variables and
+    # arguments definitions.
+    cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}"
+
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
     # only non-option arguments remain in it. 
@@ -190,7 +197,7 @@ function help {
         cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
         # Execute action name.
-        if [[ -f ${FUNCDIR}/${FUNCNAM}/${ACTIONNAM}.sh  ]];then
+        if [[ -f ${FUNCDIR}/${FUNCDIRNAM}/${ACTIONNAM}.sh  ]];then
             eval $ACTIONNAM
         else
             cli_printMessage "`gettext "A valid action is required."`" --as-error-line
