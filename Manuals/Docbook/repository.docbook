@@ -2,14 +2,14 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.4//EN" 
     "docbook/sgml-dtd-4.4-1.0-30.1/docbook.dtd" [
 
-        <!ENTITY repository-title                                   SYSTEM "repository-title.docbook">
-        <!ENTITY repository-authors                                 SYSTEM "repository-authors.docbook">
-        <!ENTITY repository-copyright                               SYSTEM "repository-copyright.docbook">
-        <!ENTITY repository-legalnotice                             SYSTEM "repository-legalnotice.docbook">
-        <!ENTITY repository-date                                    SYSTEM "repository-date.docbook">
-        <!ENTITY repository-abstract                                SYSTEM "repository-abstract.docbook">
-        <!ENTITY repository-preamble                                SYSTEM "repository-preamble.docbook">
-        <!ENTITY repository-parts                                   SYSTEM "repository-parts.docbook">
+        <!ENTITY book-title                                         SYSTEM "Entities/Book/title.docbook">
+        <!ENTITY book-authors                                       SYSTEM "Entities/Book/authors.docbook">
+        <!ENTITY book-copyright                                     SYSTEM "Entities/Book/copyright.docbook">
+        <!ENTITY book-legalnotice                                   SYSTEM "Entities/Book/legalnotice.docbook">
+        <!ENTITY book-date                                          SYSTEM "Entities/Book/date.docbook">
+        <!ENTITY book-abstract                                      SYSTEM "Entities/Book/abstract.docbook">
+        <!ENTITY book-preamble                                      SYSTEM "Entities/Book/preamble.docbook">
+        <!ENTITY book-parts                                         SYSTEM "Entities/Book/parts.docbook">
         <!ENTITY preface                                            SYSTEM "Entities/Preface.docbook">
         <!ENTITY preface-document-convenctions                      SYSTEM "Entities/Preface/document-convenctions.docbook">
         <!ENTITY preface-send-in-your-feedback                      SYSTEM "Entities/Preface/send-in-your-feedback.docbook">
@@ -74,6 +74,6 @@
     ]>
 
 <book lang="en">
-&repository-preamble;
-&repository-parts;
+&book-preamble;
+&book-parts;
 </book>
