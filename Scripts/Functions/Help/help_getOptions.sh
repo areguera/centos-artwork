@@ -104,10 +104,7 @@ function help_getOptions {
                 ;;
             
             --format )
-                FLAG_FORMAT="$(cli_getRepoName $2 -f)"
-                if [[ ! $FLAG_FORMAT =~ '^(docbook|texinfo)$' ]];then
-                    cli_printMessage "`gettext "The format provided is not supported."`" --as-error-line
-                fi
+                FLAG_FORMAT="$2"
                 shift 2
                 ;;
 
@@ -126,11 +123,18 @@ function help_getOptions {
                 ;;
         esac
     done
+    
+    # Redefine name of function directory to point the module
+    # specified by `--format' option.
+    FUNCDIRNAM="$(cli_getRepoName ${FUNCNAM} -d)/Modules/$(cli_getRepoName ${FLAG_FORMAT} -d)"
 
-    # Redefine function name to include the flag format in it.
-    FUNCNAM="${FUNCNAM}_${FLAG_FORMAT}"
+    # Redefine function name to start using the module name specified
+    # by `--format' option as preferred function suffix.
+    FUNCNAM="$(cli_getRepoName ${FLAG_FORMAT} -f)"
 
-    # Redefine action name using function name.
+    # Redefine action name using function name.  From this point on,
+    # control is given to modules. No function outside modules can be
+    # loaded from now on.
     ACTIONNAM="${FUNCNAM}_${ACTIONNAM}"
 
     # Redefine ARGUMENTS variable using current positional parameters. 
