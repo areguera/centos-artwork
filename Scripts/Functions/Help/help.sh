@@ -35,23 +35,22 @@ function help {
     # search is perform.
     FLAG_SEARCH=""
 
-    # Initialize the format option. The format option (`--format')
-    # specifies the backend format used to manipulate the repository
+    # Initialize the backend option. The backend option (`--backend')
+    # specifies the backend used to manipulate the repository
     # documentation manual.
-    FLAG_FORMAT="docbook"
+    FLAG_BACKEND="docbook"
 
     # Define file name (without extension) for documentation manual.
     MANUAL_NAME=repository
 
     # Interpret option arguments passed through the command-line.
-    help_getOptions
+    ${FUNCNAM}_getOptions
 
-    # Initialize functions inside module specified by `--format'
-    # option. There is no need to load all format-specific functions
-    # when we are using just one format among many. Keep the
-    # cli_getFunctions function calling after all variables and
-    # arguments definitions.
-    cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}"
+    # Initialize backend functions.  There is no need to load all
+    # backend-specific functions when we can use just one backend
+    # among many. Keep the cli_getFunctions function calling after all
+    # variables and arguments definitions.
+    cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}" "${FLAG_BACKEND}"
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -154,10 +153,10 @@ function help {
         # Define manuals base directory. This is the place where
         # documentation manuals base directory structures are stored
         # and organized in.
-        MANUAL_BASEDIR="$(cli_getRepoTLDir)/Manuals/$(cli_getRepoName ${FLAG_FORMAT} -d)"
+        MANUAL_BASEDIR="$(cli_getRepoTLDir)/Manuals/$(cli_getRepoName ${FLAG_BACKEND} -d)"
 
         # Define base name for documentation manual files (without
-        # extension). This is the main file name used to build texinfo
+        # extension). This is the main file name used to build output
         # related files (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
@@ -170,11 +169,12 @@ function help {
         ENTRY=$(${FUNCNAM}_getEntry)
 
         # Define documentation entry directory. This is the directory
-        # where the entry file is stored.
-        ENTRY_DIR=$(dirname ${ENTRY} | sed -r 's!\.texi$!!')
+        # where the entry file is stored.  When the file extension be
+        # removed, consider that several backends could be used.
+        ENTRY_DIR=$(dirname ${ENTRY} | sed -r "s/\.${FLAG_BACKEND}$//")
 
         # Define documentation entry file (without extension).
-        ENTRY_FILE=$(basename ${ENTRY} | sed -r 's!\.texi$!!')
+        ENTRY_FILE=$(basename ${ENTRY} | sed -r "s/\.${FLAG_BACKEND}$//")
 
         # Define directory to store documentation entries.  At this
         # point, we need to take a desition about documentation
@@ -201,7 +201,12 @@ function help {
         # repository.
         cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
-        # Execute action name.
+        # Verify action name against the file ought to be initialized
+        # from. If the file exists it is very sure that it has been
+        # already initialized, so execute the action name. Otherwise,
+        # if the file doesn't exist, print an error message. It is not
+        # possible to execute a function which definition hasn't been
+        # initialized.
         if [[ -f ${FUNCDIR}/${FUNCDIRNAM}/${ACTIONNAM}.sh  ]];then
             eval $ACTIONNAM
         else
