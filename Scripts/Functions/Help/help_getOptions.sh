@@ -29,7 +29,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename,format:"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename,backend:"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -103,8 +103,8 @@ function help_getOptions {
                 shift 1
                 ;;
             
-            --format )
-                FLAG_FORMAT="$2"
+            --backend )
+                FLAG_BACKEND=$(cli_getRepoName ${2} -f)
                 shift 2
                 ;;
 
@@ -123,19 +123,17 @@ function help_getOptions {
                 ;;
         esac
     done
-    
-    # Redefine name of function directory to point the module
-    # specified by `--format' option.
-    FUNCDIRNAM="$(cli_getRepoName ${FUNCNAM} -d)/Modules/$(cli_getRepoName ${FLAG_FORMAT} -d)"
 
-    # Redefine function name to start using the module name specified
-    # by `--format' option as preferred function suffix.
-    FUNCNAM="$(cli_getRepoName ${FLAG_FORMAT} -f)"
+    # Redefine name of function directory to point the module
+    # specified by `--backend' option.
+    FUNCDIRNAM="$(cli_getRepoName ${FUNCNAM} -d)/Backends/$(cli_getRepoName ${FLAG_BACKEND} -d)"
 
     # Redefine action name using function name.  From this point on,
     # control is given to modules. No function outside modules can be
-    # loaded from now on.
-    ACTIONNAM="${FUNCNAM}_${ACTIONNAM}"
+    # loaded from now on. If you need to execute one, then you can't
+    # use the FUNCNAM variable for that. Instead, use the full name of
+    # the function (e.g., help_getEntry).
+    ACTIONNAM="${FLAG_BACKEND}_${ACTIONNAM}"
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
