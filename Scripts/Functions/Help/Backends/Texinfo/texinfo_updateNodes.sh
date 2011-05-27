@@ -27,8 +27,8 @@ function texinfo_updateNodes {
 
     local TEXINFO_TEMPLATE=''
 
-    # Retrive nodes' entries from chapter-menu.texi file.
-    local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.texi \
+    # Retrive nodes' entries from chapter-menu.texinfo file.
+    local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
         | egrep -v '^@(end )?menu$' | sed -r 's! !:!g' | sort | uniq)
 
@@ -37,7 +37,7 @@ function texinfo_updateNodes {
 
         NODE=$(echo "${NODE}" | sed -r 's!:! !g')
         SECT=$(echo "$NODE" | sed -r 's! !/!g' | sed "s!${MANUAL_CHAPTER_NAME}/!!")
-        INCL=$(echo "$NODE" | sed -r 's! !/!g').texi
+        INCL=$(echo "$NODE" | sed -r 's! !/!g').${FLAG_BACKEND}
         CIND=$(echo "$NODE")
 
         # Create an empty directory to store texinfo files.
@@ -51,9 +51,9 @@ function texinfo_updateNodes {
             # Define what template to apply using the absolute path of
             # the documentation entry as reference.
             if [[ ${MANUAL_BASEDIR}/${INCL} =~ 'trunk/Scripts/Functions/.+' ]];then
-                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section-functions.texi"
+                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section-functions.${FLAG_BACKEND}"
             else
-                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section.texi"
+                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section.${FLAG_BACKEND}"
             fi
 
             # Copy template to its destination.
@@ -75,6 +75,6 @@ function texinfo_updateNodes {
         echo ""
 
     # Dump node information into chapter node file.
-    done > $MANUAL_CHAPTER_DIR/chapter-nodes.texi
+    done > $MANUAL_CHAPTER_DIR/chapter-nodes.${FLAG_BACKEND}
 
 }

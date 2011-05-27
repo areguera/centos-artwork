@@ -29,7 +29,7 @@ function texinfo_updateOutputFileInfo {
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-updating-line
 
     # Update info file.
-    /usr/bin/makeinfo ${MANUAL_BASEFILE}.texi --output=${MANUAL_BASEFILE}.info
+    /usr/bin/makeinfo ${MANUAL_BASEFILE}.${FLAG_BACKEND} --output=${MANUAL_BASEFILE}.info
 
     # Compress info file.
     if [[ $? -eq 0 ]];then

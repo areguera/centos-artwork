@@ -52,7 +52,7 @@ function texinfo_updateOutputFileXhtml {
     # format to html using CentOS Web default visual style.
     texi2html --init-file=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}-init.pl \
         --output=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.xhtml \
-        ${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.texi
+        ${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.${FLAG_BACKEND}
 
     # Remove directory where xhtml files are stored from directory
     # stack. The xhtml files have been already created.

@@ -47,7 +47,7 @@ function texinfo_copyEntry {
 
     # Define target location of directory holding dependent
     # documentation entries.
-    ENTRY_DST=$(echo ${ENTRY_DST} | sed -r 's!\.texi$!!')
+    ENTRY_DST=$(echo ${ENTRY_DST} | sed -r "s/\.${FLAG_BACKEND}$//")
 
     # Copy dependent documentation entries, if any.
     if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]] && [[ ! -d ${ENTRY_DST} ]];then
@@ -56,7 +56,7 @@ function texinfo_copyEntry {
     fi
                 
     # Define list of files to process.
-    ENTRIES=$(cli_getFilesList $(dirname ${ENTRY_DST}) --pattern=".*$(basename ${ENTRY_DST}).*\.texi")
+    ENTRIES=$(cli_getFilesList $(dirname ${ENTRY_DST}) --pattern=".*$(basename ${ENTRY_DST}).*\.${FLAG_BACKEND}")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line

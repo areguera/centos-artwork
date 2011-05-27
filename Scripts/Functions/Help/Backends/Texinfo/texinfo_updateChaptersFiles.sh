@@ -30,9 +30,9 @@ function texinfo_updateChaptersFiles {
         @node $MANUAL_CHAPTER_NAME
         @chapter $MANUAL_CHAPTER_NAME
         @cindex $(echo $MANUAL_CHAPTER_NAME | tr '[[:upper:]]' '[[:lower:]]')
-        @include $MANUAL_CHAPTER_NAME/chapter-intro.texi
-        @include $MANUAL_CHAPTER_NAME/chapter-menu.texi
-        @include $MANUAL_CHAPTER_NAME/chapter-nodes.texi"
+        @include $MANUAL_CHAPTER_NAME/chapter-intro.$FLAG_BACKEND
+        @include $MANUAL_CHAPTER_NAME/chapter-menu.$FLAG_BACKEND
+        @include $MANUAL_CHAPTER_NAME/chapter-nodes.$FLAG_BACKEND"
 
     # Remove any space/tabs at the begining of @... lines.
     CHAPTERBODY=$(echo "$CHAPTERBODY" | sed -r 's!^[[:space:]]+@!@!')
@@ -45,11 +45,11 @@ function texinfo_updateChaptersFiles {
     # Create files to store chapter information. If chapter files
     # already exist, they will be re-written and any previous
     # information inside them will be lost.
-    echo "$CHAPTERBODY" > $MANUAL_CHAPTER_DIR/chapter.texi
-    echo "" > $MANUAL_CHAPTER_DIR/chapter-menu.texi
-    echo "" > $MANUAL_CHAPTER_DIR/chapter-nodes.texi
+    echo "$CHAPTERBODY" > $MANUAL_CHAPTER_DIR/chapter.${FLAG_BACKEND}
+    echo "" > $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND}
+    echo "" > $MANUAL_CHAPTER_DIR/chapter-nodes.${FLAG_BACKEND}
 
     # Initialize chapter instroduction using template file.
-    cp ${MANUAL_TEMPLATE}/manual-chapter-intro.texi $MANUAL_CHAPTER_DIR/chapter-intro.texi
+    cp ${MANUAL_TEMPLATE}/manual-chapter-intro.${FLAG_BACKEND} $MANUAL_CHAPTER_DIR/chapter-intro.${FLAG_BACKEND}
 
 }

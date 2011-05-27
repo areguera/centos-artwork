@@ -47,7 +47,7 @@ function texinfo_deleteCrossReferences {
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
-            -e "s/(chapter-intro\.texi|\.texi)$//" \
+            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//" \
             -e 's! !( |\\n)!g')
 
     # Define regular expression patterns for texinfo cross reference
@@ -68,7 +68,7 @@ function texinfo_deleteCrossReferences {
     REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
 
     # Define list of entries to process.
-    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
+    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
 
     # Update node-related cross references. The node-related cross
     # reference definition, long ones specially, could require more

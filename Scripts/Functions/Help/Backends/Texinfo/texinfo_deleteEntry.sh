@@ -43,12 +43,12 @@ function texinfo_deleteEntry {
     if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]];then
 
         # Add dependent files to list of entries. 
-        ENTRIES="${ENTRIES} $(cli_getFilesList ${ENTRY_DIR}/${ENTRY_FILE} --pattern=".*\.texi")"
+        ENTRIES="${ENTRIES} $(cli_getFilesList ${ENTRY_DIR}/${ENTRY_FILE} --pattern=".*\.${FLAG_BACKEND}")"
 
         # Add dependent directories to list of entries. Be aware of
         # nested directories.
         for ENTRY in ${ENTRIES};do
-            ENTRY_DEP=$(echo $ENTRY | sed -r "s/\.texi$//")
+            ENTRY_DEP=$(echo $ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
             if [[ -d $ENTRY_DEP ]];then
                 ENTRIES="${ENTRIES} ${ENTRY_DEP}"
             fi

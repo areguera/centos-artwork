@@ -29,11 +29,11 @@ function texinfo_updateChaptersMenu {
 
     # Build menu of chapters. The Index node is not included as other
     # nodes are. The Index node is defined inside the master texinfo
-    # file (repository.texi) as an included file. To create the final
+    # file (repository.texinfo) as an included file. To create the final
     # .info file correctly, the Index line in the menu should remain,
     # even no other node exist.
-    if [[ -f ${MANUAL_BASEFILE}-menu.texi ]];then
-        MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.texi \
+    if [[ -f ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} ]];then
+        MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} \
             | egrep -v "^(@(end )?menu$|\* Index::.*)$")
     fi
 
@@ -72,6 +72,6 @@ function texinfo_updateChaptersMenu {
         | egrep -v '^[[:space:]]*$')
 
     # Dump organized menu of chapters into file.
-    echo "${MENUCHAPTERS}" > ${MANUAL_BASEFILE}-menu.texi
+    echo "${MENUCHAPTERS}" > ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND}
 
 }

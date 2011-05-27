@@ -51,7 +51,7 @@ function texinfo_restoreCrossReferences {
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
-            -e "s/(chapter-intro\.texi|\.texi)$//")
+            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
 
     # Define regular expression patterns to match removed message
     # format produced by message_removeCrossReferences function.
@@ -64,7 +64,7 @@ function texinfo_restoreCrossReferences {
     REPLACE[1]='\1'
 
     # Define list of entries to process.
-    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
+    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
 
     # Update node-related cross references. The node-related cross
     # reference definition, long ones specially, could require more

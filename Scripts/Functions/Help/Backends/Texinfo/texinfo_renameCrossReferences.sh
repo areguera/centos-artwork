@@ -37,17 +37,17 @@ function texinfo_renameCrossReferences {
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
-            -e "s/(chapter-intro\.texi|\.texi)$//")
+            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
 
     # Define node replacement for target documentation entry.
     NODE_DST=$(echo "$ENTRY_DST" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
-            -e "s/(chapter-intro\.texi|\.texi)$//")
+            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
 
     # Define list of entries to process.
-    ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern='.*\.texi')
+    ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
 
     # Update node-related cross-references. The node-related cross
     # reference definition, long ones specially, could require more
