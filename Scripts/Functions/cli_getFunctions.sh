@@ -28,12 +28,22 @@ function cli_getFunctions {
     # Define source location where function files are placed in.
     local LOCATION=$1
 
+    # Define suffix used to retrive function files.
+    local SUFFIX=$2
+
+    # Verify suffix value used to retrive function files. Assuming no
+    # suffix value is passed as second argument to this function, use
+    # the function name value (FUNCNAM) as default value.
+    if [[ $SUFFIX == '' ]];then
+        SUFFIX=$FUNCNAM
+    fi
+
     # Define pattern used to retrive function names from function
     # files.
-    local PATTERN="^function[[:space:]]+${FUNCNAM}[[:alnum:]_]*[[:space:]]+{$"
+    local PATTERN="^function[[:space:]]+${SUFFIX}[[:alnum:]_]*[[:space:]]+{$"
 
     # Define list of files.
-    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${FUNCNAM}.*\.sh" --maxdepth="1")
+    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${SUFFIX}.*\.sh" --maxdepth="1")
 
     # Verify list of files. If no function file exists for the
     # location specified stop the script execution. Otherwise the
