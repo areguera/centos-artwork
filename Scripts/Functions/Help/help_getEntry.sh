@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_getEntry.sh -- This function builds a documentation entry based
+# help_getEntry.sh -- This function builds a documentation entry based
 # on a location specified. Location specification can be both action
 # value (ACTIONVAL) variable or a value passed as first positional
 # parameter.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_getEntry {
+function help_getEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRY=''
@@ -56,7 +56,7 @@ function texinfo_getEntry {
     if [[ ${ENTRY} =~ '\.texi$' ]];then
         ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
     else
-        ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).texi
+        ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
     fi
 
     # Re-define entry to set absolute path to manuals base directory
