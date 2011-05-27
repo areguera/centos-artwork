@@ -62,7 +62,7 @@ follow to know more about an error message.
 
 Update output files rexporting them from Texinfo source files.
 
-@item --copy "path/to/file.texi" "path/to/dir"
+@item --copy "path/to/file.texinfo" "path/to/dir"
 
 Duplicate documentation entries under @file{trunk/Manual} directory
 structure. 
@@ -73,7 +73,7 @@ their dependent files will be copied into the target location. The
 target location must be a directory and passed as last non-option
 argument in the command-line.
 
-@item --delete "path/to/file.texi"
+@item --delete "path/to/file.texinfo"
 
 Delete documentation entries under @file{trunk/Manual} directory
 structure.
@@ -83,7 +83,7 @@ point to the deleted documentation entry will be rebuilt to remove
 Texinfo markup and remark the fact that it had been removed indeed
 from the repository.
 
-@item --rename "path/to/file.texi" "path/to/file.texi"
+@item --rename "path/to/file.texinfo" "path/to/file.texinfo"
 
 Rename documentation entries under @file{trunk/Manual} directory
 structure.
@@ -118,7 +118,7 @@ the repository.
 Files inside the repository are not documented. The only exception to
 this rule are files under @file{trunk/Manual} directory, the place
 where documentation source files are stored in. Inside this location
-you can refer @file{.texi} files for direct actions using the
+you can refer @file{.texinfo} files for direct actions using the
 @code{help} functionality of @command{centos-art.sh} script. File
 actions, in this location, are also used to manage specific parts of
 the manual which have no association outside @file{trunk/Manual}
