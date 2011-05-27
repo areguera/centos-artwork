@@ -53,7 +53,7 @@ function help_getEntry {
     # to take place on. Other options like `--edit', `--delete' and
     # `--read' cannot be applied to paths provided inside
     # trunk/Manuals/ such actions need to be performed manually.
-    if [[ ${ENTRY} =~ '\.texi$' ]];then
+    if [[ ${ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
         ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
     else
         ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
