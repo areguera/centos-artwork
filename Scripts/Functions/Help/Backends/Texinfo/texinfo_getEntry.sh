@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# help_getEntry.sh -- This function builds a documentation entry based
-# on a location specified. Location specification can be both action
-# value (ACTIONVAL) variable or a value passed as first positional
-# parameter.
+# texinfo_getEntry.sh -- This function builds a documentation entry
+# based on a location specified. Location specification can be both
+# action value (ACTIONVAL) variable or a value passed as first
+# positional parameter.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_getEntry {
+function texinfo_getEntry {
 
     # Define variables as local to avoid conflicts outside.
     local ENTRY=''
@@ -54,7 +54,7 @@ function help_getEntry {
     # `--read' cannot be applied to paths provided inside
     # trunk/Manuals/ such actions need to be performed manually.
     if [[ ${ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
-        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/!!')
+        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/Texinfo/!!')
     else
         ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
     fi
