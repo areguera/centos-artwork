@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# texinfo_copyEntry.sh -- This function copies documentation entries and
-# updates documentation structure to reflect changes.
+# texinfo_copyEntry.sh -- This function copies documentation entries
+# inside the working copy and updates the documentation structure to
+# reflect the changes.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -25,58 +26,100 @@
 
 function texinfo_copyEntry {
 
+    # Verify number of non-option arguments passed to centos-art.sh
+    # script.
+    if [[ ${#ACTIONVALS[*]} -lt 2 ]];then
+        cli_printMessage "`gettext "Two paths are required."`" --as-error-line
+    elif [[ ${#ACTIONVALS[*]} -gt 2 ]];then
+        cli_printMessage "`gettext "Only two paths are supported."`" --as-error-line
+    fi
+
+    # Define source documentation entry. This is the documentation
+    # entry that will be duplicated.
+    local ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${ACTIONVALS[0]})
+
+    # Define directory where documentation entries are stored in.
+    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRY_SRC")
+
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
+
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    local ENTRY_SRC="$ENTRY"
-    local ENTRIES=''
-    local ENTRY=''
+    # Define target documentation entry. This is the new documentation
+    # entry created from the source documentation entry.
+    local ENTRY_DST=$(${FLAG_BACKEND}_getEntry "${ACTIONVALS[1]}")
 
-    # Verify parent directory of entry destination. If its parent
-    # directory doesn't exist, create it and add it to the repository.
+    # Verify parent directory of target documentation entry. If it
+    # doesn't exist, create it and add it to version control.
     if [[ ! -d $(dirname ${ENTRY_DST}) ]];then
         mkdir -p $(dirname ${ENTRY_DST})
         svn add $(dirname ${ENTRY_DST}) --quiet
     fi
 
-    # Copy main documentation entry.
-    if [[ -a ${ENTRY_SRC} ]] && [[ ! -a ${ENTRY_DST} ]];then
-        cli_printMessage "${ENTRY_DST}" --as-creating-line
-        svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
+    # Copy source documentation entry to target documentation entry.
+    if [[ -f ${ENTRY_SRC} ]];then
+        if [[ ! -f ${ENTRY_DST} ]];then
+            cli_printMessage "${ENTRY_DST}" --as-creating-line
+            svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
+        else
+            cli_printMessage "`gettext "The target location is not valid."`" --as-error-line
+        fi
+    else
+        cli_printMessage "`gettext "The source location is not valid."`" --as-error-line
     fi
 
-    # Define target location of directory holding dependent
-    # documentation entries.
+    # Redefine both source and target locations to refer the directory
+    # where dependent documentation entries are stored in.
+    ENTRY_SRC=$(echo ${ENTRY_SRC} | sed -r "s/\.${FLAG_BACKEND}$//")
     ENTRY_DST=$(echo ${ENTRY_DST} | sed -r "s/\.${FLAG_BACKEND}$//")
 
     # Copy dependent documentation entries, if any.
-    if [[ -d ${ENTRY_DIR}/${ENTRY_FILE} ]] && [[ ! -d ${ENTRY_DST} ]];then
-        cli_printMessage "${ENTRY_DST}" --as-creating-line
-        svn cp "${ENTRY_DIR}/${ENTRY_FILE}" "${ENTRY_DST}" --quiet
+    if [[ -d ${ENTRY_SRC} ]];then
+        if [[ ! -a ${ENTRY_DST} ]];then
+            cli_printMessage "${ENTRY_DST}" --as-creating-line
+            svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
+        else
+            cli_printMessage "`gettext "The target location is not valid."`" --as-error-line
+        fi
+    else
+        cli_printMessage "`gettext "The source location is not valid."`" --as-error-line
     fi
-                
-    # Define list of files to process.
-    ENTRIES=$(cli_getFilesList $(dirname ${ENTRY_DST}) --pattern=".*$(basename ${ENTRY_DST}).*\.${FLAG_BACKEND}")
+
+    # Define list of target documentation entries.
+    local ENTRY=''
+    local ENTRIES=$(cli_getFilesList $(dirname ${ENTRY_DST}) --pattern=".*$(basename ${ENTRY_DST}).*\.${FLAG_BACKEND}")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
     # Print action message.
-    cli_printMessage "Updating menus, nodes and cross-references." --as-response-line
+    cli_printMessage "`gettext "Updating menus, nodes and cross-references."`" --as-response-line
 
-    # Redefine ENTRY variable in order to update documentation
-    # structure, taking recently created entries as reference.
+    # Loop through target documentation entries in order to update
+    # the documentation structure (e.g., It is not enough with copying
+    # documentation entry files, it is also needed to update menu,
+    # nodes and related cross-references).
     for ENTRY in ${ENTRIES};do
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        texinfo_updateMenu
-        texinfo_updateNodes
+        ${FLAG_BACKEND}_updateMenu
+        ${FLAG_BACKEND}_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        texinfo_restoreCrossReferences
+        ${FLAG_BACKEND}_restoreCrossReferences
 
     done
+
+    # Commit changes from working copy to central repository only.  At
+    # this point, changes in the repository are not merged in the
+    # working copy, but chages in the working copy do are committed up
+    # to repository.
+    cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
 
 }
