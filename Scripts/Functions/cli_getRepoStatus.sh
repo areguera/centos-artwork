@@ -29,23 +29,15 @@
 function cli_getRepoStatus {
 
     local LOCATION="$1"
-    local STATUS=''
 
     # Define regular expression pattern to retrive first column,
     # returned by subversion status command. This column is one
     # character column as describes `svn help status' command.
     local PATTERN='^( |A|C|D|I|M|R|X|\?|!|~).+$'
 
-    # Verify the file used as source to retrive its status
-    # information. We only use regular files or directories inside the
-    # working copy.
-    cli_checkFiles "$LOCATION" --working-copy
-
-    # Use subversion `status' command to retrive the first character
-    # in the output. Discard standard error output.
-    STATUS="$(svn status "$LOCATION" | sed -r "s/${PATTERN}/\1/" 2>/dev/null)"
-
-    # Outout status information.
-    echo -n "$STATUS"
+    # Output status. Use subversion `status' command to retrive the
+    # first character in the output.  Discard standard error output.
+    # Otherwise, if the location doesn't exist.
+    svn status "$LOCATION" | sed -r "s,${PATTERN},\1,"
 
 }
