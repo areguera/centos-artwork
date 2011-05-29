@@ -31,20 +31,7 @@ function texinfo_deleteEntry {
 
     # Define list of entries to remove using the entry specified in
     # the command line.
-    local ENTRIES=$(${FLAG_BACKEND}_getEntry "${ACTIONVALS[*]}")
-
-    # Define path to directory where repository documentation entries
-    # are stored in.  As reference, take the first non-option argument
-    # passed to centos-art.sh script. Since all action values point to
-    # directories inside the working copy, no matter what non-option
-    # argument do we use as reference to determine the manual chapter
-    # directory used to store documentation entries in.
-    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRIES")
-
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
+    local ENTRIES=$(${FLAG_BACKEND}_getEntry "$@")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -84,14 +71,19 @@ function texinfo_deleteEntry {
 
     # Sanitate list of documentation entries that will be removed.
     ENTRIES=$(echo ${ENTRIES} | tr ' ' "\n" | sort -r | uniq | tr "\n" ' ')
-    
-    # Print action preamble.
-    cli_printActionPreamble $ENTRIES --to-delete
 
+    # Verify existence of entries before deleting them. We cannot
+    # delete an entry which doesn't exist. Assuming that an entry
+    # doesn't exist, end script execution with an error message.
+    cli_checkFiles "$ENTRIES"
+    
     # Remove documentation entry using Subversion's `delete' command
     # to know when the action took place.  Do not use regular `rm'
     # command here.
-    svn del ${ENTRIES} --quiet
+    for ENTRY in $ENTRIES;do
+        cli_printMessage "$ENTRY" --as-deleting-line
+        svn del ${ENTRY} --quiet
+    done
 
     # Verify exit status from subversion command to be sure everything
     # went well. Otherwise stop script execution with an error
@@ -136,13 +128,4 @@ function texinfo_deleteEntry {
 
     done
  
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
-
-    # Rebuild output files to propagate recent changes.
-    ${FLAG_BACKEND}_updateOutputFiles
-
 }

@@ -26,28 +26,25 @@
 
 function texinfo_renameCrossReferences {
 
-    local NODE=''
-    local COUNT=1
-    local ENTRIES=''
-    local NODE_SRC=''
-    local NODE_DST=''
+    local ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "$1")
+    local ENTRY_DST=$(${FLAG_BACKEND}_getEntry "$2")
 
     # Define node pattern for source documenation entry.
-    NODE_SRC=$(echo "$ENTRY" \
+    local NODE_SRC=$(echo "$ENTRY_SRC" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
 
     # Define node replacement for target documentation entry.
-    NODE_DST=$(echo "$ENTRY_DST" \
+    local NODE_DST=$(echo "$ENTRY_DST" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
 
     # Define list of entries to process.
-    ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
+    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
 
     # Update node-related cross-references. The node-related cross
     # reference definition, long ones specially, could require more
@@ -65,6 +62,6 @@ function texinfo_renameCrossReferences {
     # source to target documentation entry, but they are still
     # commented. So, uncomment them restoring target documentation
     # entries.
-    texinfo_restoreCrossReferences "${ENTRY_DST}"
+    ${FLAG_BACKEND}_restoreCrossReferences "${ENTRY_DST}"
 
 }

@@ -39,12 +39,6 @@ function texinfo_updateMenu {
     local MENUNODE=$(echo "$ENTRY" | cut -d / -f9- | tr '/' ' ' \
         | sed "s/\.${FLAG_BACKEND}$//")
 
-    # Define directory to store documentation entries.
-    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRY")
-
-    # Define chapter name for documentation entry we're working with.
-    local MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
-
     # Give format to menu line using texinfo style.
     local MENULINE="* ${MANUAL_CHAPTER_NAME} $MENUNODE::" 
 

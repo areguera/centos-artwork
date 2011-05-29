@@ -135,6 +135,14 @@ function help_getOptions {
     # the function (e.g., help_getEntry).
     ACTIONNAM="${FLAG_BACKEND}_${ACTIONNAM}"
 
+    # Verify action name. It is required that the action name
+    # specified does have a definition file. Otherwise it is a action
+    # name valid, but not supported yet (e.g., it needs to be
+    # written).
+    if [[ ! -f ${FUNCDIR}/${FUNCDIRNAM}/${ACTIONNAM}.sh ]];then
+        cli_printMessage "`gettext "The action provided is not supported yet."`" --as-error-line
+    fi
+
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
 

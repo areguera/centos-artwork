@@ -25,6 +25,12 @@
 
 function texinfo_searchIndex {
 
+    # Rebuild output files to propagate recent changes.
+    ${FLAG_BACKEND}_updateOutputFiles
+
+    # Print separator line.
+    cli_printMessage '-' --as-separator-line
+
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 

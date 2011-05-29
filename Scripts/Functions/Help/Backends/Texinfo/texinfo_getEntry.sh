@@ -42,6 +42,9 @@ function texinfo_getEntry {
     fi
 
     for LOCATION in $LOCATIONS;do
+
+        # Sanitate action value to use absolute paths.
+        cli_checkRepoDirSource $LOCATION
     
         # Define relative path of entry, from trunk directory on.
         ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")

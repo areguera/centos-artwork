@@ -50,10 +50,10 @@ function docbook_getEntry {
     # structure. Otherwise, if an entry inside trunk/Manuals/ is
     # provided, the directory structure provided is used as default
     # documentation manual.
-    if [[ ${ENTRY} =~ "\.docbook$" ]];then
-        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/Docbook/!!')
+    if [[ ${ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
+        ENTRY=$(echo ${ENTRY} | sed "s!trunk/Manuals/$(cli_getRepoName $FLAG_BACKEND -d)/!!")
     else
-        ENTRY=$(dirname Entities/Repository/Directories/${ENTRY})/$(basename $LOCATION).docbook
+        ENTRY=$(dirname Entities/Repository/Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
     fi
 
     # Re-define entry to set absolute path to manuals base directory

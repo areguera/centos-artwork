@@ -28,30 +28,22 @@ function texinfo_copyEntry {
 
     # Verify number of non-option arguments passed to centos-art.sh
     # script.
-    if [[ ${#ACTIONVALS[*]} -lt 2 ]];then
+    if [[ $# -lt 2 ]];then
         cli_printMessage "`gettext "Two paths are required."`" --as-error-line
-    elif [[ ${#ACTIONVALS[*]} -gt 2 ]];then
+    elif [[ $# -gt 2 ]];then
         cli_printMessage "`gettext "Only two paths are supported."`" --as-error-line
     fi
-
-    # Define source documentation entry. This is the documentation
-    # entry that will be duplicated.
-    local ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${ACTIONVALS[0]})
-
-    # Define directory where documentation entries are stored in.
-    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRY_SRC")
-
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
+    # Define source documentation entry. This is the documentation
+    # entry that will be duplicated.
+    local ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "${1}")
+
     # Define target documentation entry. This is the new documentation
     # entry created from the source documentation entry.
-    local ENTRY_DST=$(${FLAG_BACKEND}_getEntry "${ACTIONVALS[1]}")
+    local ENTRY_DST=$(${FLAG_BACKEND}_getEntry "${2}")
 
     # Verify parent directory of target documentation entry. If it
     # doesn't exist, create it and add it to version control.
@@ -82,11 +74,7 @@ function texinfo_copyEntry {
         if [[ ! -a ${ENTRY_DST} ]];then
             cli_printMessage "${ENTRY_DST}" --as-creating-line
             svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
-        else
-            cli_printMessage "`gettext "The target location is not valid."`" --as-error-line
         fi
-    else
-        cli_printMessage "`gettext "The source location is not valid."`" --as-error-line
     fi
 
     # Define list of target documentation entries.
@@ -115,11 +103,5 @@ function texinfo_copyEntry {
         ${FLAG_BACKEND}_restoreCrossReferences
 
     done
-
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
 
 }

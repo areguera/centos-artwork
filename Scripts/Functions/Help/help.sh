@@ -28,7 +28,6 @@ function help {
 
     local ACTIONNAM=''
     local ACTIONVAL=''
-    local -a ACTIONVALS
 
     # Initialize the search option. The search option (`--search')
     # specifies the pattern used inside info files when an index
@@ -78,42 +77,91 @@ function help {
         cli_printMessage "`gettext "The backend provided is not supported."`" --as-error-line
     fi
 
-    # Store remaining arguments into an array. This way it is possible
-    # to find out which is the last argument in the list.  When
-    # copying files inside the repository, the last argument in the
-    # list is considered the target location and all other arguments
-    # are considered the source locations. Similary, when renaming
-    # files, only two arguments can be passed.
-    for ACTIONVAL in "$@";do
-
-        # Sanitate action value.
-        cli_checkRepoDirSource
-
-        # Assign sanitated action vlue.
-        ACTIONVALS[((++${#ACTIONVALS[*]}))]=$ACTIONVAL
-
-    done
-
     # Execute backend functionalities. Notice that there are
     # functionalities that need more than one action value in order to
-    # be executed (eg.  copying, and renaming) and functionalities
+    # be executed (e.g.,  copying, and renaming), functionalities
     # that need just one action value to be executed (e.g.,
-    # documentation reading and edition). This way, the execution of
-    # backend functionalities is splitted here.
+    # documentation reading and edition) and functionalities that
+    # don't need action value at all (e.g., searching and updating
+    # output files). This way, the execution of backend
+    # functionalities is splitted here.
     if [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(copy|rename|delete)Entry" ]];then
+
+        # Define directories where documentation entries are stored
+        # in.  Since more than one action value might be affected
+        # here, more than one directory might be considered as chapter
+        # directory, as well.
+        MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$@")
+
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository.
+        cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
         # Execute backend action names that may need to use more than
         # one action value.
-        ${ACTIONNAM}
+        ${ACTIONNAM} $@
+
+        # Commit changes from working copy to central repository only.
+        # At this point, changes in the repository are not merged in
+        # the working copy, but chages in the working copy do are
+        # committed up to repository.
+        cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
+
+    elif [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(searchIndex|updateOutputFiles)" ]];then
+
+        # Bring changes from the repository to the working copy.
+        cli_updateRepoChanges ${MANUAL_BASEDIR}
+
+        # Execute backend action names that don't need to use any
+        # action value as reference to do their work.
+        $ACTIONNAM
+
+        # Backend action names that don't need to use any action value
+        # as reference to do their work are of one-pass only. They are
+        # executed and then the script execution is finished.
+        exit
 
     else
 
         # Execute backend action names that use one action value, only.
-        for ACTIONVAL in ${ACTIONVALS[@]};do
-            ${FLAG_BACKEND}
+        for ACTIONVAL in $@;do
+        
+            # Define directories where documentation entries are
+            # stored in.  Since just one action value is
+            # affected here, just one directory is considered as
+            # chapter directory, as well.
+            MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "${ACTIONVAL}")
+
+            # Define chapter name for documentation entry we're working with.
+            MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
+
+            # Define documentation entry.
+            ENTRY=$(${FLAG_BACKEND}_getEntry $ACTIONVAL)
+
+            # Syncronize changes between repository and working copy.
+            # At this point, changes in the repository are merged in
+            # the working copy and changes in the working copy
+            # committed up to repository.
+            cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
+
+            # Execute backend action names that may need to use more
+            # than one action value.
+            $ACTIONNAM 
+
+            # Commit changes from working copy to central repository
+            # only.  At this point, changes in the repository are not
+            # merged in the working copy, but chages in the working
+            # copy do are committed up to repository.
+            cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
+
         done
 
     fi
+
+    # Rebuild output files to propagate recent changes.
+    ${FLAG_BACKEND}_updateOutputFiles
 
     # Perform language-specific actions when the current language is
     # other but English language.

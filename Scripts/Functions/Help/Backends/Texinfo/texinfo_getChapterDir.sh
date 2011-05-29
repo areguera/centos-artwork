@@ -25,12 +25,8 @@
 
 function texinfo_getChapterDir {
 
-    local ENTRY="$1"
-
-    # Verify documentation entry. Only the first documentation entry
-    # provided must be used. This is for those cases where the first
-    # documentation entry needs to be retrived from a list of entries.
-    ENTRY=$(echo $ENTRY | cut -d ' ' -f 1)
+    local ENTRY=''
+    local ENTRIES="$1"
 
     # At this point, we need to take a desition about documentation
     # design, in order to answer the question: How do we assign
@@ -43,8 +39,8 @@ function texinfo_getChapterDir {
     # something similar. Subsections and subsubsections will not have
     # their own files, they all will be written inside the same
     # section file that represents the repository documentation entry.
-    if [[ $ENTRY != '' ]];then
-        echo $ENTRY | cut -d / -f-8
-    fi
+    for ENTRY in $ENTRIES;do
+        ${FLAG_BACKEND}_getEntry $ENTRY | cut -d / -f-8
+    done | sort | uniq
 
 }

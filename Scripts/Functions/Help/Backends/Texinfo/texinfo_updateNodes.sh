@@ -27,12 +27,6 @@ function texinfo_updateNodes {
 
     local TEXINFO_TEMPLATE=''
 
-    # Define directory to store documentation entries.
-    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRY")
-
-    # Define chapter name for documentation entry we're working with.
-    local MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
-
     # Retrive nodes' entries from chapter-menu.texinfo file.
     local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \

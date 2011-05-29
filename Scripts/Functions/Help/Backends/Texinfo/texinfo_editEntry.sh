@@ -57,11 +57,11 @@ function texinfo_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update chapter section related menu.
-        texinfo_updateMenu
+        ${FLAG_BACKEND}_updateMenu
 
         # Update chapter section related nodes (based on chapter
         # section related menu).
-        texinfo_updateNodes
+        ${FLAG_BACKEND}_updateNodes
 
         # Update old missing cross references. If for some reason a
         # documentation entry is removed by mistake, and that mistake
@@ -69,7 +69,7 @@ function texinfo_editEntry {
         # into the repository, rebuild the missing cross reference
         # message to use the correct link to the documentation
         # section.
-        texinfo_restoreCrossReferences
+        ${FLAG_BACKEND}_restoreCrossReferences
 
     else
 
@@ -80,8 +80,5 @@ function texinfo_editEntry {
 
     # Use default text editor to edit the documentation entry.
     eval $EDITOR $ENTRY
-
-    # Rebuild output files to propagate recent changes.
-    texinfo_updateOutputFiles
 
 }
