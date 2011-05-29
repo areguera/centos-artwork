@@ -37,7 +37,13 @@ function texinfo_updateMenu {
     # Build the menu node related to the entry being processed
     # currently.
     local MENUNODE=$(echo "$ENTRY" | cut -d / -f9- | tr '/' ' ' \
-        | sed "s!\.${FLAG_BACKEND}$!!")
+        | sed "s/\.${FLAG_BACKEND}$//")
+
+    # Define directory to store documentation entries.
+    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRY")
+
+    # Define chapter name for documentation entry we're working with.
+    local MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
 
     # Give format to menu line using texinfo style.
     local MENULINE="* ${MANUAL_CHAPTER_NAME} $MENUNODE::" 
@@ -49,10 +55,12 @@ function texinfo_updateMenu {
 
     # Re-defined chapter's menu based on action.
     case $ACTION in
+
         'remove-entry' )
             # Remove menu line from chapter's menu.
             MENU=$(echo "$MENU"  | egrep -v "$MENULINE")
             ;;
+
         'update-entry' | * )
             # Add menu line to chapter's menu. This is the default
             # behaivour if no argument is passed to texinfo_updateMenu
