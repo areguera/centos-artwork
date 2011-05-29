@@ -27,6 +27,12 @@ function texinfo_updateNodes {
 
     local TEXINFO_TEMPLATE=''
 
+    # Define directory to store documentation entries.
+    local MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$ENTRY")
+
+    # Define chapter name for documentation entry we're working with.
+    local MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
+
     # Retrive nodes' entries from chapter-menu.texinfo file.
     local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
@@ -45,8 +51,13 @@ function texinfo_updateNodes {
              mkdir -p ${MANUAL_BASEDIR}/$(dirname "$INCL")
         fi
 
-        # Create texinfo section file using templates.
-        if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]];then
+        # Create texinfo section file using templates, only if the
+        # section file doesn't exist and hasn't been marked for
+        # deletion.  Otherwise, when the files have been marked for
+        # deletion, they will be created again from texinfo template
+        # to working copy and that might create confusion.
+        if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]] \
+            && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR}/$INCL) != 'D' ]];then
 
             # Define what template to apply using the absolute path of
             # the documentation entry as reference.
@@ -56,17 +67,20 @@ function texinfo_updateNodes {
                 TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section.${FLAG_BACKEND}"
             fi
 
-            # Copy template to its destination.
+            # Verify texinfo template.
+            cli_checkFiles $TEXINFO_TEMPLATE
+
+            # Copy texinfo template to its destination.
             cp ${TEXINFO_TEMPLATE} ${MANUAL_BASEDIR}/$INCL
 
             # Expand common translation markers.
             cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
 
             # Expand texinfo-specific translation markers.
-            ${FUNCNAM}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
+            ${FLAG_BACKEND}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
 
         fi
-
+        
         # Output node information based on texinfo menu.
         echo "@node $NODE"
         echo "@section `eval_gettext "The @file{\\\$SECT} Directory"`"
