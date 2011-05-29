@@ -54,10 +54,14 @@ function cli_getRepoTLDir {
     local LOCATION=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
 
     # Verify location passed as non-option argument. If no location is
-    # passed as non-option argument to this function, then use action
-    # value as default location.
+    # passed as non-option argument to this function, then evaluate
+    # the action value to set default location.
     if [[ $LOCATION == '--' ]];then
-        LOCATION=$ACTIONVAL
+        if [[ $ACTIONVAL != '' ]];then
+            LOCATION=$ACTIONVAL
+        else
+            LOCATION=${HOME}/artwork/trunk
+        fi
     fi
 
     # Verify location where the working copy should be stored in the
@@ -65,7 +69,7 @@ function cli_getRepoTLDir {
     # to one of the top level directories inside the working copy of
     # CentOS Artwork Repository which, in turn, should be sotred in
     # the `artwork' directory immediatly under your home directory.
-    if [[ ! $LOCATION =~ "^${HOME}/artwork/(trunk|branches|tags)/.+$" ]];then
+    if [[ ! $LOCATION =~ "^${HOME}/artwork/(trunk|branches|tags)" ]];then
         cli_printMessage "`eval_gettext "The location \\\"\\\$LOCATION\\\" is not valid."`" --as-error-line
     fi
 
