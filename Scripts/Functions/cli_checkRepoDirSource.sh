@@ -24,7 +24,7 @@
 # ----------------------------------------------------------------------
 
 function cli_checkRepoDirSource {
-                
+
     # Check action value to be sure strange characters are kept far
     # away from path provided.
     cli_checkPathComponent $ACTIONVAL
@@ -80,14 +80,6 @@ function cli_checkRepoDirSource {
 
         # Remove directory from the directory stack.
         popd > /dev/null
-
-    else
-
-        # At this there is no existent working copy entry, nor a valid
-        # url. The source value can only be considered as such if it
-        # is an existent working copy or valid url. So, print a
-        # message and stop script execution.
-        cli_printMessage "`eval_gettext "The location \\\"\\\$ACTIONVAL\\\" is not valid."`" --as-error-line
 
     fi
 
