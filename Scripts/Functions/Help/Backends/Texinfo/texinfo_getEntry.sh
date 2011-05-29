@@ -30,40 +30,42 @@ function texinfo_getEntry {
     # Define variables as local to avoid conflicts outside.
     local ENTRY=''
     local LOCATION=''
+    local LOCATIONS=''
 
-    # Redefine location in order to make this function reusable not
+    # Redefine locations in order to make this function reusable not
     # just for action value variable but whatever value passed as
     # first possitional argument.
     if [[ "$1" != '' ]];then
-        LOCATION="$1"
+        LOCATIONS="$1"
     else
-        LOCATION="$ACTIONVAL"
+        LOCATIONS="$ACTIONVAL"
     fi
 
-    # Define relative path of entry, from trunk directory on.
-    ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
+    for LOCATION in $LOCATIONS;do
+    
+        # Define relative path of entry, from trunk directory on.
+        ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
 
-    # Verify the entry relative path to find out which documentation
-    # manual we are acting on. As convenction, whatever documentation
-    # entry you provide outside trunk/Manuals/ directory structure is
-    # considered as you are documenting the repository directory
-    # structure. Otherwise, if an entry inside trunk/Manuals/ is
-    # provided, the directory structure provided is used as default
-    # documentation manual for actions like `--create' and `--update'
-    # to take place on. Other options like `--edit', `--delete' and
-    # `--read' cannot be applied to paths provided inside
-    # trunk/Manuals/ such actions need to be performed manually.
-    if [[ ${ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
-        ENTRY=$(echo ${ENTRY} | sed 's!trunk/Manuals/Texinfo/!!')
-    else
-        ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
-    fi
+        # Verify the entry relative path to find out which
+        # documentation manual we are acting on. As convenction,
+        # whatever documentation entry you provide outside
+        # trunk/Manuals/ directory structure is considered as you are
+        # documenting the repository directory structure. Otherwise,
+        # if an entry inside trunk/Manuals/ is provided, the directory
+        # structure provided is used as default documentation manual.
+        if [[ ${ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
+            ENTRY=$(echo ${ENTRY} | sed "s!trunk/Manuals/$(cli_getRepoName ${FLAG_BACKEND} -d)/!!")
+        else
+            ENTRY=$(dirname Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
+        fi
 
-    # Re-define entry to set absolute path to manuals base directory
-    # structure.
-    ENTRY=${MANUAL_BASEDIR}/${ENTRY}
+        # Re-define entry to set absolute path to manuals base
+        # directory structure.
+        ENTRY=${MANUAL_BASEDIR}/${ENTRY}
 
-    # Output entry's absolute path.
-    echo ${ENTRY}
+        # Output entry's absolute path.
+        echo ${ENTRY}
+
+    done
 
 }
