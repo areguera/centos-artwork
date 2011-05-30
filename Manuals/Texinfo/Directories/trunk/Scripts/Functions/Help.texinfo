@@ -35,10 +35,13 @@ after the action itself had took place over files in the working copy.
 @item --backend="STRING"
 
 Specifies the documentation system used as backend to manage the
-repository documentation manual. The @command{centos-art.sh} script
-plans to provide backend support for @samp{texinfo}, @samp{linuxdoc}, and
-@samp{docbook} documentation systems. However, at this moment, only
-@samp{texinfo} backend is functional.
+repository documentation manual. When this option is not provided, the
+@samp{texinfo} documentation system is used as default backend.
+
+@quotation
+@strong{Note} There are plans to provide support for other
+documentation systems, like: @samp{linuxdoc} and @samp{docbook}.
+@end quotation
 
 @item --search="STRING"
 
