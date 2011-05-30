@@ -32,6 +32,14 @@ Assume `yes' to all confirmation requests.
 Supress all commit and update actions realized over files, before and
 after the action itself had took place over files in the working copy.
 
+@item --backend="STRING"
+
+Specifies the documentation system used as backend to manage the
+repository documentation manual. The @command{centos-art.sh} script
+plans to provide backend support for @samp{texinfo}, @samp{linuxdoc}, and
+@samp{docbook} documentation systems. However, at this moment, only
+@samp{texinfo} backend is functional.
+
 @item --search="STRING"
 
 Go to node pointed by index entry @samp{STRING}.
