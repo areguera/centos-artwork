@@ -25,8 +25,8 @@
 
 function texinfo_getChapterDir {
 
-    local ENTRY=''
-    local ENTRIES="$1"
+    local MANUAL_ENTRY=''
+    local MANUAL_ENTRIES="$1"
 
     # At this point, we need to take a desition about documentation
     # design, in order to answer the question: How do we assign
@@ -39,8 +39,8 @@ function texinfo_getChapterDir {
     # something similar. Subsections and subsubsections will not have
     # their own files, they all will be written inside the same
     # section file that represents the repository documentation entry.
-    for ENTRY in $ENTRIES;do
-        ${FLAG_BACKEND}_getEntry $ENTRY | cut -d / -f-8
+    for MANUAL_ENTRY in $MANUAL_ENTRIES;do
+        ${FLAG_BACKEND}_getEntry $MANUAL_ENTRY | cut -d / -f-8
     done | sort | uniq
 
 }
