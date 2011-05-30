@@ -39,7 +39,7 @@ function texinfo_deleteCrossReferences {
     if [[ "$1" != '' ]];then
         LOCATION="$1"
     else
-        LOCATION="$ENTRY"
+        LOCATION="$MANUAL_ENTRY"
     fi
 
     # Build the node string using entry location.
