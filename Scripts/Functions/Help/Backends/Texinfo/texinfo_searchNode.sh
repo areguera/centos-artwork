@@ -34,7 +34,7 @@ function texinfo_searchNode {
     if [[ -f "$ENTRY" ]];then
         /usr/bin/info --node="Directories $(texinfo_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
     else
-        texinfo_editEntry
+        ${FLAG_BACKEND}_editEntry
     fi
 
 }
