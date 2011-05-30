@@ -67,11 +67,12 @@ Update output files rexporting them from Texinfo source files.
 Duplicate documentation entries under @file{trunk/Manual} directory
 structure. 
 
-When documentation entries are copied, it is possible to pass more
-than one Texinfo file as source location. In this case, they all and
-their dependent files will be copied into the target location. The
-target location must be a directory and passed as last non-option
-argument in the command-line.
+When documentation entries are copied, only two non-option arguments
+can be passed to @command{centos-art.sh} script. In this case, the
+first non-option argument is considered the source location and the
+second one the target location. Both source location and target
+location must point to a directory under the working copy or files
+under @file{trunk/Manuals/Texinfo/Directories} directory structure.
 
 @item --delete "path/to/file.texinfo"
 
