@@ -49,11 +49,11 @@ function texinfo_editEntry {
     fi
 
     # Verify section definition inside chapters. 
-    if [[ ! -f $ENTRY ]];then
+    if [[ ! -f $MANUAL_ENTRY ]];then
 
         # Print confirmation question. 
         cli_printMessage "`gettext "The following documentation section will be created:"`"
-        cli_printMessage "$ENTRY" --as-response-line
+        cli_printMessage "$MANUAL_ENTRY" --as-response-line
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update chapter section related menu.
@@ -74,11 +74,11 @@ function texinfo_editEntry {
     else
 
         # Print action message.
-        cli_printMessage "$ENTRY" --as-updating-line
+        cli_printMessage "$MANUAL_ENTRY" --as-updating-line
 
     fi
 
     # Use default text editor to edit the documentation entry.
-    eval $EDITOR $ENTRY
+    eval $EDITOR $MANUAL_ENTRY
 
 }
