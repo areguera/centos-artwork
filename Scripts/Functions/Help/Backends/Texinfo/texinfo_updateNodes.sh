@@ -36,7 +36,7 @@ function texinfo_updateNodes {
     for NODE in $NODES;do
 
         NODE=$(echo "${NODE}" | sed -r 's!:! !g')
-        SECT=$(echo "$NODE" | sed -r 's! !/!g' | sed "s!${MANUAL_CHAPTER_NAME}/!!")
+        SECT=$(echo "$NODE" | cut -d' ' -f2- | sed -r 's! !/!g') 
         INCL=$(echo "$NODE" | sed -r 's! !/!g').${FLAG_BACKEND}
         CIND=$(echo "$NODE")
 
