@@ -25,9 +25,22 @@
 
 function cli_checkRepoDirSource {
 
+
+    # Define location in order to make this function reusable not just
+    # for action value variable but whatever value passed as first
+    # positional argument.
+    local LOCATION=$1
+
+    # Verify location. Assuming no location is passed as first
+    # positional parameter to this function, print an error message
+    # and stop script execution.
+    if [[ "$LOCATION" == '' ]];then
+        cli_printMessage "`gettext "The first positional parameter is required."`" --as-error-line
+    fi
+
     # Check action value to be sure strange characters are kept far
     # away from path provided.
-    cli_checkPathComponent $ACTIONVAL
+    cli_checkPathComponent $LOCATION
 
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing
@@ -38,8 +51,8 @@ function cli_checkRepoDirSource {
     # entries using both /home/centos/artwork/trunk/... or just
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
-    if [[ $ACTIONVAL =~ '^(trunk|branches|tags)' ]];then
-        ACTIONVAL=${HOME}/artwork/$ACTIONVAL 
+    if [[ $LOCATION =~ '^(trunk|branches|tags)' ]];then
+        LOCATION=${HOME}/artwork/$LOCATION 
     fi
 
     # Re-define source value to build repository absolute path from
@@ -49,33 +62,33 @@ function cli_checkRepoDirSource {
     # a few levels up from the location we want to refer to as source
     # value.  There is no need to pass the absolute path to it, just
     # refere it relatively.
-    if [[ -d ${ACTIONVAL} ]];then
+    if [[ -d ${LOCATION} ]];then
 
         # Add directory to the top of the directory stack.
-        pushd "$ACTIONVAL" > /dev/null
+        pushd "$LOCATION" > /dev/null
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ "^${HOME}/artwork" ]];then
             # Re-define source value using absolute path.
-            ACTIONVAL=$(pwd)
+            LOCATION=$(pwd)
         else
-            cli_printMessage "`eval_gettext "The location \\\"\\\$ACTIONVAL\\\" is not valid."`" --as-error-line
+            cli_printMessage "`eval_gettext "The location \\\"\\\$LOCATION\\\" is not valid."`" --as-error-line
         fi
 
         # Remove directory from the directory stack.
         popd > /dev/null
 
-    elif [[ -f ${ACTIONVAL} ]];then
+    elif [[ -f ${LOCATION} ]];then
 
         # Add directory to the top of the directory stack.
-        pushd "$(dirname "$ACTIONVAL")" > /dev/null
+        pushd "$(dirname "$LOCATION")" > /dev/null
 
         # Check directory existence inside the repository.
         if [[ $(pwd) =~ "^${HOME}/artwork" ]];then
             # Re-define source value using absolute path.
-            ACTIONVAL=$(pwd)/$(basename "$ACTIONVAL")
+            LOCATION=$(pwd)/$(basename "$LOCATION")
         else
-            cli_printMessage "`eval_gettext "The location \\\"\\\$ACTIONVAL\\\" is not valid."`" --as-error-line
+            cli_printMessage "`eval_gettext "The location \\\"\\\$LOCATION\\\" is not valid."`" --as-error-line
         fi
 
         # Remove directory from the directory stack.
