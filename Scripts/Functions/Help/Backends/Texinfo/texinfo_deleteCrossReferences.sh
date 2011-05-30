@@ -43,12 +43,7 @@ function texinfo_deleteCrossReferences {
     fi
 
     # Build the node string using entry location.
-    local NODE=$(echo "$LOCATION" \
-        | cut -d / -f8- \
-        | tr '/' ' ' \
-        | sed -r \
-            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//" \
-            -e 's! !( |\\n)!g')
+    local NODE=$(${FLAG_BACKEND}_getNode "$LOCATION")
 
     # Define regular expression patterns for texinfo cross reference
     # commands.
