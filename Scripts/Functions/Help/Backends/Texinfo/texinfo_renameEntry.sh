@@ -31,7 +31,7 @@ function texinfo_renameEntry {
     # Delete source documentation entry. The source documentation
     # entry has been copied already, so to create the rename effect
     # delete it from repository filesystem.
-    ${FLAG_BACKEND}_deleteEntry $1
+    ${FLAG_BACKEND}_deleteEntry "$1"
 
     # At this point, source documentation entry has been removed and
     # all menu, nodes and cross-references have been commented. So,
