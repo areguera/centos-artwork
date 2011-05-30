@@ -25,13 +25,13 @@
 
 function texinfo_deleteEntry {
 
-    local ENTRY=''
-    local ENTRY_DIR=''
-    local ENTRY_SUBDIR=''
+    local MANUAL_ENTRY=''
+    local MANUAL_ENTRY_DIR=''
+    local MANUAL_ENTRY_SUBDIR=''
 
     # Define list of entries to remove using the entry specified in
     # the command line.
-    local ENTRIES=$(${FLAG_BACKEND}_getEntry "$@")
+    local MANUAL_ENTRIES=$(${FLAG_BACKEND}_getEntry "$@")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -39,29 +39,32 @@ function texinfo_deleteEntry {
     # Define list of dependen entries. Dependent entries are stored
     # inside a directory with the same name of the entry being
     # removed.
-    for ENTRY in $ENTRIES;do
+    for MANUAL_ENTRY in $MANUAL_ENTRIES;do
 
         # Define directory where dependent documentation entries are
         # stored in.
-        ENTRY_DIR=$(echo $ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
+        MANUAL_ENTRY_DIR=$(echo $MANUAL_ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
 
-        if [[ -d $ENTRY_DIR ]];then
+        if [[ -d $MANUAL_ENTRY_DIR ]];then
 
             # Add dependent documentation entries to the list of
             # documentation entries that will be deleted.
-            ENTRIES="${ENTRIES} $(cli_getFilesList ${ENTRY_DIR} --pattern=".*\.${FLAG_BACKEND}")"
+            ENTRIES="${ENTRIES} $(cli_getFilesList ${MANUAL_ENTRY_DIR} --pattern=".*\.${FLAG_BACKEND}")"
 
-            for ENTRY in $ENTRIES;do
+            for MANUAL_ENTRY in $MANUAL_ENTRIES;do
 
                 # Define directory name for dependent documentation
                 # entries which have their own dependent directories.
-                ENTRY_SUBDIR=$(basename $ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
+                MANUAL_ENTRY_SUBDIR=$(basename $MANUAL_ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
 
                 # Add directory paths from dependent documentation
                 # entries which have their own dependent directories
                 # to the list of documentation entries that will be
                 # deleted.
-                ENTRIES="${ENTRIES} $(cli_getFilesList ${ENTRY_DIR} --pattern=".*/${ENTRY_SUBDIR}" --type='d')"
+                MANUAL_ENTRIES="${MANUAL_ENTRIES} $(cli_getFilesList \
+                    ${MANUAL_ENTRY_DIR} \
+                    --pattern=".*/${MANUAL_ENTRY_SUBDIR}" \
+                    --type='d')"
 
             done
 
@@ -70,19 +73,19 @@ function texinfo_deleteEntry {
     done
 
     # Sanitate list of documentation entries that will be removed.
-    ENTRIES=$(echo ${ENTRIES} | tr ' ' "\n" | sort -r | uniq | tr "\n" ' ')
+    MANUAL_ENTRIES=$(echo ${MANUAL_ENTRIES} | tr ' ' "\n" | sort -r | uniq | tr "\n" ' ')
 
     # Verify existence of entries before deleting them. We cannot
     # delete an entry which doesn't exist. Assuming that an entry
     # doesn't exist, end script execution with an error message.
-    cli_checkFiles "$ENTRIES"
+    cli_checkFiles "$MANUAL_ENTRIES"
     
     # Remove documentation entry using Subversion's `delete' command
     # to know when the action took place.  Do not use regular `rm'
     # command here.
-    for ENTRY in $ENTRIES;do
-        cli_printMessage "$ENTRY" --as-deleting-line
-        svn del ${ENTRY} --quiet
+    for MANUAL_ENTRY in $MANUAL_ENTRIES;do
+        cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
+        svn del ${MANUAL_ENTRY} --quiet
     done
 
     # Verify exit status from subversion command to be sure everything
@@ -109,11 +112,11 @@ function texinfo_deleteEntry {
     # different way but removing files first using status verification
     # and later go through entries list again to update menus, nodes
     # and cross references in remaining files.
-    for ENTRY in ${ENTRIES};do
+    for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
 
         # Skip all directories, they are not documentation entries on
         # themselves. Use documentation entries only.
-        if [[ ! $ENTRY =~ "\.${FLAG_BACKEND}$" ]];then
+        if [[ ! $MANUAL_ENTRY =~ "\.${FLAG_BACKEND}$" ]];then
             continue
         fi
 
