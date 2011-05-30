@@ -63,15 +63,14 @@ loaded in the text editor.).
 
 @item --read "path/to/dir"
 
-Read documentation entry specified by @file{file/to/dir} path, using
-@command{info} command. This option is useful to read the repository
-manual on text-based terminals. This option is also used internally by
-@command{centos-art.sh} script to print out the reference you can
-follow to know more about an error message.
+Read documentation entry specified by @file{file/to/dir} path.  This
+option is used internally by @command{centos-art.sh} script to print
+out the reference you can follow to know more about an error message.
 
 @item --update
 
-Update output files rexporting them from Texinfo source files.
+Update output files rexporting them from the specified backend source
+files.
 
 @item --copy "path/to/srcdir" "path/to/dstdir"
 
@@ -85,20 +84,22 @@ second one the target location. Both source location and target
 location must point to a directory under the working copy or files
 under @file{trunk/Manuals/Texinfo/Directories} directory structure.
 
-@item --delete "path/to/file.texinfo"
+@item --delete "path/to/dir"
 
-Delete documentation entries under @file{trunk/Manual} directory
-structure.
+Delete documentation entries inside the working copy of CentOS
+Artwork Repository.
 
-When documentation entries are deleted, all cross references that
-point to the deleted documentation entry will be rebuilt to remove
-Texinfo markup and remark the fact that it had been removed indeed
-from the repository.
+@item --rename "path/to/srcdir" "path/to/dstdir"
 
-@item --rename "path/to/file.texinfo" "path/to/file.texinfo"
+Rename documentation entries inside the working copy of CentOS Artwork
+Repository.
 
-Rename documentation entries under @file{trunk/Manual} directory
-structure.
+When documentation entries are renamed, only two non-option arguments
+can be passed to @command{centos-art.sh} script. In this case, the
+first non-option argument is considered the source location and the
+second one the target location. Both source location and target
+location must point to a directory under the working copy or files
+under @file{trunk/Manuals/Texinfo/Directories} directory structure.
 
 @end table
 
