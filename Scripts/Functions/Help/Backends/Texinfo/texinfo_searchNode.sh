@@ -31,7 +31,7 @@ function texinfo_searchNode {
     # Check entry inside documentation structure. If the entry
     # exits use the info reader to open the info file at the
     # specified node. Otherwise, ask the user for create it.
-    if [[ -f "$ENTRY" ]];then
+    if [[ -f "$MANUAL_ENTRY" ]];then
         /usr/bin/info --node="Directories $(texinfo_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
     else
         ${FLAG_BACKEND}_editEntry
