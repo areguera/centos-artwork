@@ -54,14 +54,10 @@ function cli_getRepoTLDir {
     local LOCATION=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
 
     # Verify location passed as non-option argument. If no location is
-    # passed as non-option argument to this function, then evaluate
-    # the action value to set default location.
-    if [[ $LOCATION == '--' ]];then
-        if [[ $ACTIONVAL != '' ]];then
-            LOCATION=$ACTIONVAL
-        else
-            LOCATION=${HOME}/artwork/trunk
-        fi
+    # passed as non-option argument to this function, then set the
+    # trunk directory structure as default location.
+    if [[ $LOCATION =~ '--$' ]];then
+        LOCATION=${HOME}/artwork/trunk
     fi
 
     # Verify location where the working copy should be stored in the
