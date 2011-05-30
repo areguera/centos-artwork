@@ -26,18 +26,18 @@
 
 function texinfo_renameCrossReferences {
 
-    local ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "$1")
-    local ENTRY_DST=$(${FLAG_BACKEND}_getEntry "$2")
+    local MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "$1")
+    local MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry "$2")
 
     # Define node pattern for source documenation entry.
-    local NODE_SRC=$(echo "$ENTRY_SRC" \
+    local NODE_SRC=$(echo "$MANUAL_ENTRY_SRC" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
             -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
 
     # Define node replacement for target documentation entry.
-    local NODE_DST=$(echo "$ENTRY_DST" \
+    local NODE_DST=$(echo "$MANUAL_ENTRY_DST" \
         | cut -d / -f8- \
         | tr '/' ' ' \
         | sed -r \
@@ -62,6 +62,6 @@ function texinfo_renameCrossReferences {
     # source to target documentation entry, but they are still
     # commented. So, uncomment them restoring target documentation
     # entries.
-    ${FLAG_BACKEND}_restoreCrossReferences "${ENTRY_DST}"
+    ${FLAG_BACKEND}_restoreCrossReferences "${MANUAL_ENTRY_DST}"
 
 }
