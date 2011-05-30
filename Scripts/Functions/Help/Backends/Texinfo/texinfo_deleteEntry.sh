@@ -49,7 +49,7 @@ function texinfo_deleteEntry {
 
             # Add dependent documentation entries to the list of
             # documentation entries that will be deleted.
-            ENTRIES="${ENTRIES} $(cli_getFilesList ${MANUAL_ENTRY_DIR} --pattern=".*\.${FLAG_BACKEND}")"
+            MANUAL_ENTRIES="${MANUAL_ENTRIES} $(cli_getFilesList ${MANUAL_ENTRY_DIR} --pattern=".*\.${FLAG_BACKEND}")"
 
             for MANUAL_ENTRY in $MANUAL_ENTRIES;do
 
