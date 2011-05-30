@@ -49,10 +49,6 @@ function cli_updateRepoChanges {
         LOCATIONS="$ACTIONVAL"
     fi
 
-    # Verify locations existence. It shoud exist as regular file or
-    # directory inside the repository working copy.
-    cli_checkFiles "$LOCATIONS" --working-copy
-
     # Update working copy and retrive update output.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
     UPDATEOUT=$(svn update ${LOCATIONS})
