@@ -36,7 +36,7 @@ function texinfo_updateMenu {
 
     # Build the menu node related to the entry being processed
     # currently.
-    local MENUNODE=$(echo "$ENTRY" | cut -d / -f9- | tr '/' ' ' \
+    local MENUNODE=$(echo "$MANUAL_ENTRY" | cut -d / -f9- | tr '/' ' ' \
         | sed "s/\.${FLAG_BACKEND}$//")
 
     # Give format to menu line using texinfo style.
