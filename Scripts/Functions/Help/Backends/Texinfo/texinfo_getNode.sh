@@ -25,10 +25,12 @@
 
 function texinfo_getNode {
 
-    local NODE=$(echo "$ACTIONVAL" \
-        | sed -r "s!^${HOME}/artwork/!!" \
-        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!')
+    local NODE=$(echo "$MANUAL_ENTRY" \
+        | sed -r "s!^${MANUAL_BASEDIR}!!" \
+        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!' \
+        | sed -r "s/\.${FLAG_BACKEND}$//")
 
     echo "$NODE"
+
 }
 

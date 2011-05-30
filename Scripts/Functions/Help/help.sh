@@ -82,8 +82,8 @@ function help {
     # be executed (e.g.,  copying, and renaming), functionalities
     # that need just one action value to be executed (e.g.,
     # documentation reading and edition) and functionalities that
-    # don't need action value at all (e.g., searching and updating
-    # output files). This way, the execution of backend
+    # don't need action value at all (e.g., searching, reading and
+    # updating output files). This way, the execution of backend
     # functionalities is splitted here.
     if [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(copy|rename|delete)Entry" ]];then
 
@@ -109,14 +109,14 @@ function help {
         # committed up to repository.
         cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
 
-    elif [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(searchIndex|updateOutputFiles)" ]];then
+    elif [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(search(Index|Node)|updateOutputFiles)" ]];then
 
         # Bring changes from the repository to the working copy.
         cli_updateRepoChanges ${MANUAL_BASEDIR}
 
-        # Execute backend action names that don't need to use any
-        # action value as reference to do their work.
-        $ACTIONNAM
+        # Execute backend action names that might not need any action
+        # value as reference to do their work.
+        $ACTIONNAM $@
 
         # Backend action names that don't need to use any action value
         # as reference to do their work are of one-pass only. They are
@@ -138,7 +138,7 @@ function help {
             MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
 
             # Define documentation entry.
-            ENTRY=$(${FLAG_BACKEND}_getEntry $ACTIONVAL)
+            MANUAL_ENTRY=$(${FLAG_BACKEND}_getEntry $ACTIONVAL)
 
             # Syncronize changes between repository and working copy.
             # At this point, changes in the repository are merged in

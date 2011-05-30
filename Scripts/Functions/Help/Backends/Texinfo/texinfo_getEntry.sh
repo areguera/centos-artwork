@@ -35,8 +35,8 @@ function texinfo_getEntry {
     # Redefine locations in order to make this function reusable not
     # just for action value variable but whatever value passed as
     # first possitional argument.
-    if [[ "$1" != '' ]];then
-        LOCATIONS="$1"
+    if [[ "$@" != '' ]];then
+        LOCATIONS="$@"
     else
         LOCATIONS="$ACTIONVAL"
     fi
