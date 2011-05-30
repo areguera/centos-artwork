@@ -37,7 +37,7 @@ function help {
     # Initialize the backend option. The backend option (`--backend')
     # specifies the backend used to manipulate the repository
     # documentation manual.
-    FLAG_BACKEND="docbook"
+    FLAG_BACKEND="texinfo"
 
     # Interpret option arguments passed through the command-line.
     ${FUNCNAM}_getOptions
