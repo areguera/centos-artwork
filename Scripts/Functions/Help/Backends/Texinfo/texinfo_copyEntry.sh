@@ -39,24 +39,24 @@ function texinfo_copyEntry {
 
     # Define source documentation entry. This is the documentation
     # entry that will be duplicated.
-    local ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "${1}")
+    local MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "${1}")
 
     # Define target documentation entry. This is the new documentation
     # entry created from the source documentation entry.
-    local ENTRY_DST=$(${FLAG_BACKEND}_getEntry "${2}")
+    local MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry "${2}")
 
     # Verify parent directory of target documentation entry. If it
     # doesn't exist, create it and add it to version control.
-    if [[ ! -d $(dirname ${ENTRY_DST}) ]];then
-        mkdir -p $(dirname ${ENTRY_DST})
-        svn add $(dirname ${ENTRY_DST}) --quiet
+    if [[ ! -d $(dirname ${MANUAL_ENTRY_DST}) ]];then
+        mkdir -p $(dirname ${MANUAL_ENTRY_DST})
+        svn add $(dirname ${MANUAL_ENTRY_DST}) --quiet
     fi
 
     # Copy source documentation entry to target documentation entry.
-    if [[ -f ${ENTRY_SRC} ]];then
-        if [[ ! -f ${ENTRY_DST} ]];then
-            cli_printMessage "${ENTRY_DST}" --as-creating-line
-            svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
+    if [[ -f ${MANUAL_ENTRY_SRC} ]];then
+        if [[ ! -f ${MANUAL_ENTRY_DST} ]];then
+            cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
+            svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
         else
             cli_printMessage "`gettext "The target location is not valid."`" --as-error-line
         fi
@@ -66,20 +66,22 @@ function texinfo_copyEntry {
 
     # Redefine both source and target locations to refer the directory
     # where dependent documentation entries are stored in.
-    ENTRY_SRC=$(echo ${ENTRY_SRC} | sed -r "s/\.${FLAG_BACKEND}$//")
-    ENTRY_DST=$(echo ${ENTRY_DST} | sed -r "s/\.${FLAG_BACKEND}$//")
+    MANUAL_ENTRY_SRC=$(echo ${MANUAL_ENTRY_SRC} | sed -r "s/\.${FLAG_BACKEND}$//")
+    MANUAL_ENTRY_DST=$(echo ${MANUAL_ENTRY_DST} | sed -r "s/\.${FLAG_BACKEND}$//")
 
     # Copy dependent documentation entries, if any.
-    if [[ -d ${ENTRY_SRC} ]];then
-        if [[ ! -a ${ENTRY_DST} ]];then
-            cli_printMessage "${ENTRY_DST}" --as-creating-line
-            svn cp "${ENTRY_SRC}" "${ENTRY_DST}" --quiet
+    if [[ -d ${MANUAL_ENTRY_SRC} ]];then
+        if [[ ! -a ${MANUAL_ENTRY_DST} ]];then
+            cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
+            svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
         fi
     fi
 
     # Define list of target documentation entries.
-    local ENTRY=''
-    local ENTRIES=$(cli_getFilesList $(dirname ${ENTRY_DST}) --pattern=".*$(basename ${ENTRY_DST}).*\.${FLAG_BACKEND}")
+    local MANUAL_ENTRY=''
+    local MANUAL_ENTRIES=$(cli_getFilesList \
+        $(dirname ${MANUAL_ENTRY_DST}) \
+        --pattern=".*$(basename ${MANUAL_ENTRY_DST}).*\.${FLAG_BACKEND}")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -91,7 +93,7 @@ function texinfo_copyEntry {
     # the documentation structure (e.g., It is not enough with copying
     # documentation entry files, it is also needed to update menu,
     # nodes and related cross-references).
-    for ENTRY in ${ENTRIES};do
+    for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
