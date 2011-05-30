@@ -25,10 +25,20 @@
 
 function texinfo_getNode {
 
-    local NODE=$(echo "$MANUAL_ENTRY" \
-        | sed -r "s!^${MANUAL_BASEDIR}!!" \
-        | sed -r 's!/! !g' | sed -r 's!^[[:space:]]+!!' \
-        | sed -r "s/\.${FLAG_BACKEND}$//")
+    # Define documentation entry.
+    local MANUAL_ENTRY="$1"
+
+    # Verify documentation entry.
+    if [[ $MANUAL_ENTRY == '' ]];then
+        cli_printMessage "`gettext "The first positional parameter cannot be empty."`" --as-error-line
+    fi
+
+    # Define node from documentation entry.
+    local NODE=$(echo "$MANUAL_ENTRY" | sed -r \
+        -e "s!^${MANUAL_BASEDIR}!!" \
+        -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//" \
+        -e 's!/! !g' \
+        -e 's!^[[:space:]]+!!')
 
     echo "$NODE"
 
