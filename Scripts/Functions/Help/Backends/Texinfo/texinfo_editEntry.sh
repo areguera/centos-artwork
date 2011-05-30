@@ -37,14 +37,14 @@ function texinfo_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update manual chapter related files.
-        texinfo_updateChaptersFiles
+        ${FLAG_BACKEND}_updateChaptersFiles
 
         # Update manual chapter related menu.
-        texinfo_updateChaptersMenu
+        ${FLAG_BACKEND}_updateChaptersMenu
 
         # Update manual chapter related nodes (based on chapter
         # related menu).
-        texinfo_updateChaptersNodes
+        ${FLAG_BACKEND}_updateChaptersNodes
 
     fi
 
