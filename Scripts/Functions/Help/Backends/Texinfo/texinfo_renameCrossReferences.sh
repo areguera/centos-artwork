@@ -30,18 +30,10 @@ function texinfo_renameCrossReferences {
     local MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry "$2")
 
     # Define node pattern for source documenation entry.
-    local NODE_SRC=$(echo "$MANUAL_ENTRY_SRC" \
-        | cut -d / -f8- \
-        | tr '/' ' ' \
-        | sed -r \
-            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
+    local NODE_SRC=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_SRC")
 
     # Define node replacement for target documentation entry.
-    local NODE_DST=$(echo "$MANUAL_ENTRY_DST" \
-        | cut -d / -f8- \
-        | tr '/' ' ' \
-        | sed -r \
-            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
+    local NODE_DST=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_DST")
 
     # Define list of entries to process.
     local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
