@@ -50,10 +50,6 @@ function cli_commitRepoChanges {
         LOCATIONS="$ACTIONVAL"
     fi
 
-    # Verify locations existence. It shoud exist as regular file or
-    # directory inside the repository working copy.
-    cli_checkFiles "$LOCATIONS" --working-copy
-
     # Check working copy.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
     STATUSOUT=$(svn status ${LOCATIONS})
