@@ -47,11 +47,7 @@ function texinfo_restoreCrossReferences {
     fi
 
     # Build the node string using entry location.
-    local NODE=$(echo "$LOCATION" \
-        | cut -d / -f8- \
-        | tr '/' ' ' \
-        | sed -r \
-            -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//")
+    local NODE=$(${FLAG_BACKEND}_getNode "$LOCATION")
 
     # Define regular expression patterns to match removed message
     # format produced by message_removeCrossReferences function.
