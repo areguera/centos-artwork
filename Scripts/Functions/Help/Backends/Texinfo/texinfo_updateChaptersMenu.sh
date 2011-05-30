@@ -39,11 +39,13 @@ function texinfo_updateChaptersMenu {
 
     # Re-defined menu of chapters based on action.
     case $ACTION in
+
         'remove-entry' )
             # Remove chapter from menu.
             MENUCHAPTERS=$(echo "${MENUCHAPTERS}" \
                 | egrep -v "^\* ${MANUAL_CHAPTER_NAME}::[[:print:]]*$")
             ;;
+
         'update-entry' | * )
             # Update chapter menu using texinfo format.
             MENUCHAPTERS="${MENUCHAPTERS}
