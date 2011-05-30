@@ -73,10 +73,10 @@ follow to know more about an error message.
 
 Update output files rexporting them from Texinfo source files.
 
-@item --copy "path/to/file.texinfo" "path/to/dir"
+@item --copy "path/to/srcdir" "path/to/dstdir"
 
-Duplicate documentation entries under @file{trunk/Manual} directory
-structure. 
+Duplicate documentation entries inside the working copy of CentOS
+Artwork Repository.
 
 When documentation entries are copied, only two non-option arguments
 can be passed to @command{centos-art.sh} script. In this case, the
