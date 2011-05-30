@@ -28,7 +28,7 @@
 function docbook_getEntry {
 
     # Define variables as local to avoid conflicts outside.
-    local ENTRY=''
+    local MANUAL_ENTRY=''
     local LOCATION=''
 
     # Redefine location in order to make this function reusable not
@@ -41,7 +41,7 @@ function docbook_getEntry {
     fi
 
     # Define relative path of entry, from trunk directory on.
-    ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
+    MANUAL_ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
 
     # Verify the entry relative path to find out which documentation
     # manual we are acting on. As convenction, whatever documentation
@@ -50,17 +50,17 @@ function docbook_getEntry {
     # structure. Otherwise, if an entry inside trunk/Manuals/ is
     # provided, the directory structure provided is used as default
     # documentation manual.
-    if [[ ${ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
-        ENTRY=$(echo ${ENTRY} | sed "s!trunk/Manuals/$(cli_getRepoName $FLAG_BACKEND -d)/!!")
+    if [[ ${MANUAL_ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
+        MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} | sed "s!trunk/Manuals/$(cli_getRepoName $FLAG_BACKEND -d)/!!")
     else
-        ENTRY=$(dirname Entities/Repository/Directories/${ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
+        MANUAL_ENTRY=$(dirname Entities/Repository/Directories/${MANUAL_ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
     fi
 
     # Re-define entry to set absolute path to manuals base directory
     # structure.
-    ENTRY=${MANUAL_BASEDIR}/${ENTRY}
+    MANUAL_ENTRY=${MANUAL_BASEDIR}/${MANUAL_ENTRY}
 
     # Output entry's absolute path.
-    echo ${ENTRY}
+    echo ${MANUAL_ENTRY}
 
 }
