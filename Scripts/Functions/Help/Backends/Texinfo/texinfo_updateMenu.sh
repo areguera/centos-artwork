@@ -36,11 +36,10 @@ function texinfo_updateMenu {
 
     # Build the menu node related to the entry being processed
     # currently.
-    local MENUNODE=$(echo "$MANUAL_ENTRY" | cut -d / -f9- | tr '/' ' ' \
-        | sed "s/\.${FLAG_BACKEND}$//")
+    local MENUNODE=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")
 
     # Give format to menu line using texinfo style.
-    local MENULINE="* ${MANUAL_CHAPTER_NAME} $MENUNODE::" 
+    local MENULINE="* $MENUNODE::" 
 
     # Define chapter's menu. Remove `@menu', `@end menu', and empty lines
     # from output.
