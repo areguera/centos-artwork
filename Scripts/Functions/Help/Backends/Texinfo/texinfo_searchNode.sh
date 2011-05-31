@@ -43,7 +43,7 @@ function texinfo_searchNode {
         # the info file at the specified node for reading it on the
         # terminal. Otherwise, ask the user to create it.
         if [[ -f "$MANUAL_ENTRY" ]];then
-            /usr/bin/info --node="$(${FLAG_BACKEND}_getNode)" --file=${MANUAL_BASEFILE}.info.bz2
+            /usr/bin/info --node="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
         else
             ${FLAG_BACKEND}_editEntry
         fi
