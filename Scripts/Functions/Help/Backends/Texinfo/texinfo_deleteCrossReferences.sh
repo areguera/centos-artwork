@@ -31,19 +31,18 @@ function texinfo_deleteCrossReferences {
 
     local -a PATTERN
     local -a REPLACE
-    local LOCATION=''
 
-    # Define entry location. Verify first argument to make this
-    # function reusable. If no value is passed as first argument use
-    # entry global information value as default value instead.
-    if [[ "$1" != '' ]];then
-        LOCATION="$1"
-    else
-        LOCATION="$MANUAL_ENTRY"
+    # Define documentation entry.
+    local MANUAL_ENTRY="$1"
+
+    # Verify documentation entry. If documentation entry is empty,
+    # stop script execution with an error message.
+    if [[ $MANUAL_ENTRY == '' ]];then
+        cli_printMessage "`gettext "The first positional parameter cannot be empty."`" --as-error-line
     fi
 
     # Build the node string using entry location.
-    local NODE=$(${FLAG_BACKEND}_getNode "$LOCATION")
+    local NODE=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")
 
     # Define regular expression patterns for texinfo cross reference
     # commands.
@@ -63,7 +62,7 @@ function texinfo_deleteCrossReferences {
     REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
 
     # Define list of entries to process.
-    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
+    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
 
     # Update node-related cross references. The node-related cross
     # reference definition, long ones specially, could require more
@@ -75,11 +74,23 @@ function texinfo_deleteCrossReferences {
     # command to add a newline to the pattern space, the s command to
     # make the pattern replacement using the `g' flag to make it
     # global and finaly the command `b' to branch label named `a'.
-    sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${ENTRIES}
+    #
+    # Inside the pattern space, the `\<' and `\>' are used to restrict
+    # the match pattern to a word boundary. The word boundary
+    # restriction applied here is required to avoid undesired
+    # replacements when we replace singular words with their plurals.
+    # For example, if we need to change the word `Manual' to its
+    # plular (i.e., `Manuals'), and no boundary restriction is used in
+    # the pattern space to do that, we might end up having words like
+    # `Manualsssss'. This is because this sed command might be applied
+    # to the same file many times; and each time it is applied a new
+    # `Manuals' replaces the previous `Manuals' replacement to form
+    # `Manualss', `Manualsss', and so on for each interaction.
+    sed -r -i ":a;N;s!\<${PATTERN[0]}\>!${REPLACE[0]}!g;ba" ${MANUAL_ENTRIES}
 
     # Update menu-related cross references. Menu-related cross
     # references hardly appear in more than one line, so there is no
-    # need to complicate the replacement command.
-    sed -r -i "s!${PATTERN[1]}!${REPLACE[1]}!" ${ENTRIES}
+    # need to complicate much the replacement command.
+    sed -r -i "s!\<${PATTERN[1]}\>!${REPLACE[1]}!" ${MANUAL_ENTRIES}
 
 }
