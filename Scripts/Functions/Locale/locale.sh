@@ -62,7 +62,7 @@ function locale {
         # Check action value. Be sure the action value matches the
         # convenctions defined for source locations inside the working
         # copy.
-        cli_checkRepoDirSource
+        ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
 
         # Define work directory. This is the place where locales
         # directories will be stored in.
