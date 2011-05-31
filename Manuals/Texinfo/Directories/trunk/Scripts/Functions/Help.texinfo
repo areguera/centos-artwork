@@ -137,7 +137,7 @@ location, are also used to manage specific parts of the manual which
 have no association outside @file{trunk/Manuals} directory (e.g.,
 Preface, Introduction, etc.).
 
-@subsubheading The @samp{texinfo} backend
+@subsubheading The @samp{texinfo} documentation backend
 
 The manual structure (@pxref{Directories trunk Manuals}) is supported
 by GNU Texinfo, a documentation system that can produce both online
@@ -164,11 +164,11 @@ translated version of the output XHTML files taken in first place. The
 translated version is produced in the same format of the file taken as
 reference to build the portable objects. XHTML format in this case.
 
-@subsubheading The @file{docbook} backend
+@subsubheading The @file{docbook} documentation backend
 
 Not supported yet.
 
-@subsubheading The @file{linuxdoc} backend
+@subsubheading The @file{linuxdoc} documentation backend
 
 Not supported yet.
 
