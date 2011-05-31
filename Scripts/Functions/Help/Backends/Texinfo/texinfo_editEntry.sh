@@ -69,7 +69,7 @@ function texinfo_editEntry {
         # into the repository, rebuild the missing cross reference
         # message to use the correct link to the documentation
         # section.
-        ${FLAG_BACKEND}_restoreCrossReferences
+        ${FLAG_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
 
     else
 
