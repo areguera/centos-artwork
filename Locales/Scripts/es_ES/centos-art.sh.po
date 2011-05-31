@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-17 10:47-0400\n"
+"POT-Creation-Date: 2011-05-31 18:09-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -17,54 +17,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:112
-msgid "Only two arguments are accepted."
-msgstr "Solo dos argumentos son aceptados."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:114
-msgid "Two arguments are required."
-msgstr "Dos arguments son obligatorios."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:198
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:90
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:108
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:65
-msgid "A valid action is required."
-msgstr "La acción suministrada no es válida."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:67
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:68
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:59
-msgid "Removed"
-msgstr "Eliminando"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:35
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:36
 msgid "The following documentation chapter will be created:"
 msgstr "El capítulo siguiente de documentación será creado:"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:37
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:57
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:37
 msgid "Do you want to continue?"
 msgstr "¿Desea continuar?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:55
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:56
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:35
 msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateChaptersNodes.sh:31
-msgid "Index"
-msgstr "Índice"
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_checkLayout.sh:37
+msgid "Preparing documentation layout."
+msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_updateNodes.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:32
+#, fuzzy
+msgid "Two paths are required."
+msgstr "Dos arguments son obligatorios."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:34
+#, fuzzy
+msgid "Only two paths are supported."
+msgstr "Solo dos argumentos son aceptados."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:61
+#, fuzzy
+msgid "The target location is not valid."
+msgstr "El patrón de búsqueda no es valido."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:64
+#, fuzzy
+msgid "The source location is not valid."
+msgstr "El patrón de búsqueda no es valido."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteEntry.sh:102
+#, fuzzy
+msgid "Updating menus, nodes and cross-references."
+msgstr "Actualizando los menús, nodos y referencia cruzada en el manual"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteCrossReferences.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_getNode.sh:33
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_restoreCrossReferences.sh:45
+#, fuzzy
+msgid "The first positional parameter cannot be empty."
+msgstr "El primer argumento no puede estar vacío."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteCrossReferences.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteCrossReferences.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_restoreCrossReferences.sh:53
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_restoreCrossReferences.sh:54
+msgid "Removed"
+msgstr "Eliminando"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteEntry.sh:95
+msgid "An error occurred when deleting entries."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_updateNodes.sh:83
 #, sh-format
 msgid "The @file{$SECT} Directory"
 msgstr "El directorio @file{$SECT}"
 
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:64
+msgid "Directories"
+msgstr "Directorios"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:104
+#, fuzzy
+msgid "The backend provided is not supported."
+msgstr "La arquitectura suministrada no está soportada."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_getOptions.sh:142
+#, fuzzy
+msgid "The action provided is not supported yet."
+msgstr "La arquitectura suministrada no está soportada."
+
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:32
 msgid "Cannot locale English language to itself."
 msgstr "No puede traducir el idioma Inglés a si mismo."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:110
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:65
+msgid "A valid action is required."
+msgstr "La acción suministrada no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_editMessages.sh:49
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:51
@@ -95,16 +139,16 @@ msgstr "Directorio predeterminado usado para recuperar los mensajes traducidos"
 msgid "Default locale information"
 msgstr "Información de idioma predeterminada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:101
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:103
 msgid "The path provided do not support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:95
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:105
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:113
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:123
 msgid "None"
 msgstr "No hay"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:194
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:212
 msgid "The template file you try to render is not supported yet."
 msgstr "El fichero plantilla que intenta procesar no está soportado aún."
 
@@ -115,10 +159,6 @@ msgstr "No hay cadena de acción con la cual trabajar."
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:48
 msgid "The field definition is not valid."
 msgstr "La definición del campo no es válida."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:62
-msgid "The configuration option cannot be empty."
-msgstr "La opción de configuración no puede estar vacía."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getOptions.sh:84
 msgid "The architecture provided is not supported."
@@ -141,32 +181,24 @@ msgstr "Fondo"
 msgid "Saved as"
 msgstr "Guardado como"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_checkExportId.sh:36
-msgid "The export id value cannot be empty."
-msgstr "El identificador de exportación no puede estar vacío."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_checkExportId.sh:42
-#, sh-format
-msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
-msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertGplToHex.sh:50
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertGplToPpm.sh:48
-#, sh-format
-msgid "Reducing image to \"$COLOR_NUMBER\" colors is not supported."
-msgstr ""
-"La reducción a \"$COLOR_NUMBER\" colores en la imagen no está soportada."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertGplToHex.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertGplToPpm.sh:56
-msgid "The palette do not have the correct number of colors."
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_checkColorAmount.sh:38
+#, fuzzy
+msgid "The palette does not have the correct number of colors."
 msgstr "La paleta no tiene el número correcto de colores."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertGplToHex.sh:64
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertGplToPpm.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_checkColorFormats.sh:83
 #, sh-format
 msgid "The \"$COLOR\" string is not a valid color code."
 msgstr "La cadena \"$COLOR\" no es un código de color válido."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_checkModelExportId.sh:36
+msgid "The export id value cannot be empty."
+msgstr "El identificador de exportación no puede estar vacío."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_checkModelExportId.sh:42
+#, sh-format
+msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
+msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_svg_convertPngToBrands.sh:73
 msgid "2 colors grayscale"
@@ -195,7 +227,7 @@ msgstr "Creado en el Repositorio Artístico de CentOS"
 msgid "No way to convert from HTML to plain-text found."
 msgstr "No se encontró una forma de convertir HTML a texto."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_doXhtmlHeadings.sh:131
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_xhtml_doHeadings.sh:131
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
@@ -249,58 +281,63 @@ msgstr "El tema \"$FILE\" no es válida."
 msgid "The value \"$FILE\" is not valid."
 msgstr "El valor \"$FILE\" no es válido."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:62
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:78
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:90
-#, sh-format
-msgid "The location \"$ACTIONVAL\" is not valid."
-msgstr "La ubicación \"$ACTIONVAL\" no es válida."
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:38
+#, fuzzy
+msgid "The first positional parameter is required."
+msgstr "El primer argumento es obligatorios."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:58
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:75
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkRepoDirSource.sh:91
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:69
+#, sh-format
+msgid "The location \"$LOCATION\" is not valid."
+msgstr "La ubicación \"$LOCATION\" no es válida."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:54
 msgid "Checking changes in the working copy"
 msgstr "Verificando cambios en la copia de trabajo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:70
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:66
 msgid "Modified"
 msgstr "Modificado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:71
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:67
 msgid "Unversioned"
 msgstr "Sin versionar"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:72
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:71
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:68
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:67
 msgid "Deleted"
 msgstr "Borrado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:73
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:70
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:69
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:66
 msgid "Added"
 msgstr "Adicionado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:93
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:89
 msgid "file in the working copy"
 msgid_plural "files in the repository"
 msgstr[0] "fichero en la copia de trabajo."
 msgstr[1] "ficheros en la copia de trabajo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:112
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:108
 msgid "The following file is unversioned"
 msgid_plural "The following files are unversioned"
 msgstr[0] "El fichero siguiente no está bajo control de versiones."
 msgstr[1] "Los ficheros siguientes no están bajo control de versiones."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:117
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:113
 msgid "Do you want to add it now?"
 msgid_plural "Do you want to add them now?"
 msgstr[0] "¿Desea adicionarlo ahora?"
 msgstr[1] "¿Desea adicionarlos ahora?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:130
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:126
 msgid "Do you want to see changes now?"
 msgstr "¿Desea ver los cambios ahora?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:134
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:130
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
 
@@ -1266,6 +1303,10 @@ msgstr ""
 msgid "Unknown"
 msgstr "Desconocido"
 
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getFunctions.sh:53
+msgid "No function file was found for this action."
+msgstr ""
+
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getLangName.sh:34
 msgid "Afar"
 msgstr ""
@@ -2006,11 +2047,6 @@ msgstr ""
 msgid "The bond string is required."
 msgstr "La cadena de unión es necesaria."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_getRepoTLDir.sh:69
-#, sh-format
-msgid "The location \"$LOCATION\" is not valid."
-msgstr "La ubicación \"$LOCATION\" no es válida."
-
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getTemporalFile.sh:38
 msgid "The first argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
@@ -2130,39 +2166,52 @@ msgstr "Configuración"
 msgid "Palette"
 msgstr "Paleta"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:152
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:157
 msgid "To know more, run the following command"
 msgstr "Para conocer más, ejecute el command siguiente"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:162
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:167
 msgid "yes"
 msgstr "sí"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:165
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:170
 msgid "no"
 msgstr "no"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:57
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:53
 msgid "Bringing changes from the repository into the working copy"
 msgstr "Acarreando cambios desde el repositorio a la copia de trabajo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:72
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:68
 msgid "Updated"
 msgstr "Actualizado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:73
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:69
 msgid "Conflicted"
 msgstr "En conflicto"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:74
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:70
 msgid "Merged"
 msgstr "Mezclado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:94
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:90
 msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio."
 msgstr[1] "ficheros desde el repositorio."
+
+#~ msgid "Index"
+#~ msgstr "Índice"
+
+#~ msgid "The configuration option cannot be empty."
+#~ msgstr "La opción de configuración no puede estar vacía."
+
+#~ msgid "Reducing image to \"$COLOR_NUMBER\" colors is not supported."
+#~ msgstr ""
+#~ "La reducción a \"$COLOR_NUMBER\" colores en la imagen no está soportada."
+
+#~ msgid "The location \"$ACTIONVAL\" is not valid."
+#~ msgstr "La ubicación \"$ACTIONVAL\" no es válida."
 
 #~ msgid "Use the \"--filter\" option to define the search pattern."
 #~ msgstr "Use la opción \"--filter\" para definir el patrón de búsqueda."
@@ -2172,9 +2221,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "The path provided cannot be processed."
 #~ msgstr "El camino suministrado no puede ser procesado."
-
-#~ msgid "The first argument is required."
-#~ msgstr "El primer argumento es obligatorios."
 
 #~ msgid "You need to provide one argument at least."
 #~ msgstr "Necesita suministrar al menos un argumento."
@@ -2299,9 +2345,6 @@ msgstr[1] "ficheros desde el repositorio."
 #~ msgid "There are changes that need to be committed first."
 #~ msgstr "Existen cambios que necesitan ser enviados primero."
 
-#~ msgid "Updating menus, nodes and cross references in the manual"
-#~ msgstr "Actualizando los menús, nodos y referencia cruzada en el manual"
-
 #~ msgid "file"
 #~ msgid_plural "files"
 #~ msgstr[0] "fichero"
@@ -2334,9 +2377,6 @@ msgstr[1] "ficheros desde el repositorio."
 #~ msgid "Enter the search pattern"
 #~ msgstr "Introduzca el patrón de búsqueda"
 
-#~ msgid "The search pattern is not valid."
-#~ msgstr "El patrón de búsqueda no es valido."
-
 #~ msgid "Goals"
 #~ msgstr "Propósitos"
 
@@ -2345,9 +2385,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "Concepts"
 #~ msgstr "Conceptos"
-
-#~ msgid "Directories"
-#~ msgstr "Directorios"
 
 #~ msgid "See also"
 #~ msgstr "Vea además"
