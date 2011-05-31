@@ -127,7 +127,7 @@ function texinfo_deleteEntry {
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        ${FLAG_BACKEND}_deleteCrossReferences
+        ${FLAG_BACKEND}_deleteCrossReferences $MANUAL_ENTRY
 
     done
  
