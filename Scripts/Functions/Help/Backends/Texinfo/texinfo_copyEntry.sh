@@ -81,7 +81,7 @@ function texinfo_copyEntry {
     local MANUAL_ENTRY=''
     local MANUAL_ENTRIES=$(cli_getFilesList \
         $(dirname ${MANUAL_ENTRY_DST}) \
-        --pattern=".*$(basename ${MANUAL_ENTRY_DST}).*\.${FLAG_BACKEND}")
+        --pattern="${MANUAL_ENTRY_DST}.*\.${FLAG_BACKEND}")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -102,7 +102,7 @@ function texinfo_copyEntry {
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        ${FLAG_BACKEND}_restoreCrossReferences
+        ${FLAG_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
 
     done
 
