@@ -36,7 +36,7 @@ function texinfo_renameCrossReferences {
     local NODE_DST=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_DST")
 
     # Define list of entries to process.
-    local ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
+    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
 
     # Update node-related cross-references. The node-related cross
     # reference definition, long ones specially, could require more
@@ -48,7 +48,19 @@ function texinfo_renameCrossReferences {
     # command to add a newline to the pattern space, the s command to
     # make the pattern replacement using the `g' flag to make it
     # global and finaly the command `b' to branch label named `a'.
-    sed -r -i ":a;N;s!${NODE_SRC}!${NODE_DST}!g;ba" ${ENTRIES}
+    #
+    # Inside the pattern space, the `\<' and `\>' are used to restrict
+    # the match pattern to a word boundary. The word boundary
+    # restriction applied here is required to avoid undesired
+    # replacements when we replace singular words with their plurals.
+    # For example, if we need to change the word `Manual' to its
+    # plular (i.e., `Manuals'), and no boundary restriction is used in
+    # the pattern space to do that, we might end up having words like
+    # `Manualsssss'. This is because this sed command might be applied
+    # to the same file many times; and each time it is applied a new
+    # `Manuals' replaces the previous `Manuals' replacement to form
+    # `Manualss', `Manualsss', and so on for each interaction.
+    sed -r -i ":a;N;s!\<${NODE_SRC}\>!${NODE_DST}!g;ba" ${MANUAL_ENTRIES}
 
     # At this point, source documentation entry has been renamed from
     # source to target documentation entry, but they are still
