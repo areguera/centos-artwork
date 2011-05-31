@@ -106,14 +106,16 @@ manual structure in a correct state.
 
 @subheading Description
 
-The CentOS Project corporate identity is organized through directories
-in The CentOS Artwork Repository. Each directory inside the repository
-responds to conceptual ideas and uses files to get the implementation
-of those ideas.  The @code{help} functionality of
-@command{centos-art.sh} script uses this directory layout as reference
-to document the conceptual ideas it is based on. Each directory inside
-the repository can be documented, in order to provide the explanation
-of what it is for and how automation scripts use it.
+Inside the CentOS Artwork Repository, The CentOS Project corporate
+identity is organized through directories. Each directory inside the
+repository responds to one or more conceptual ideas. Conceptual ideas
+are implemented through files.  
+
+The @code{help} functionality of @command{centos-art.sh} script uses
+the repository directory layout as reference to document the
+conceptual ideas it is based on. Each directory inside the repository
+can be documented, in order to provide the explanation of what it is
+for and how automation scripts use it.
 
 @quotation
 @strong{Caution} When the repository directory layout changes, the
@@ -133,41 +135,9 @@ have no association outside @file{trunk/Manuals} directory (e.g.,
 Preface, Introduction, etc.).
 
 @subsubheading Documentation backends
-@table @samp
-@item texinfo
 
-The manual structure (@pxref{Directories trunk Manuals}) is supported
-by GNU Texinfo, a documentation system that can produce both online
-information and a printed manual from a single source. The @code{help}
-functionality is an interface you can use to control the source files
-in the manual structure.  
-
-The manual output is produced from Texinfo files and stored in
-@file{trunk/Manuals/Texinfo} on different formats including Info, PDF,
-XHTML, XML and TXT.
-
-When the @samp{texinfo} backend is used, you'll always edit
-documentation entries in English language, no matter what your
-prefered language be. This way, the output produced from them will
-always be in English language. To achieve the manual localization in
-your prefered language you need to apply the @code{locale}
-functionality of @command{centos-art.sh} script (@pxref{Directories
-trunk Scripts Functions Locale}) to any of the XML-based English
-outputs supported by @command{centos-art.sh} script (e.g., XHTML) to
-produce portable objects for your prefered language and the
-@code{render} functionality of @command{centos-art.sh} script
-(@pxref{Directories trunk Scripts Functions Render}) to produce the
-translated version of the output XHTML files taken in first place. The
-translated version is produced in the same format of the file taken as
-reference to build the portable objects. XHTML format in this case.
-
-@item linuxdoc
-Not supported yet.
-
-@item docbook
-Not supported yet.
-
-@end table
+Documentation backends are organized in @xref{Directories trunk
+Scripts Functions Help Backends}.
 
 @subheading Examples
 

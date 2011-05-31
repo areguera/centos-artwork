@@ -1,0 +1,34 @@
+@subheading @code{texinfo}
+
+When @code{texinfo} backend is used (default behaviour), the manual
+structure (@pxref{Directories trunk Manuals}) is supported by GNU
+Texinfo, a documentation system that can produce both online
+information and a printed manual from a single source. The @code{help}
+functionality is an interface you can use to control the source files
+in the manual structure.  
+
+The manual output is produced from Texinfo files and stored in
+@file{trunk/Manuals/Texinfo} on different formats including Info, PDF,
+XHTML, XML and TXT.
+
+When the @samp{texinfo} backend is used, you'll always edit
+documentation entries in English language, no matter what your
+prefered language be. This way, the output produced from them will
+always be in English language. To achieve the manual localization in
+your prefered language you need to apply the @code{locale}
+functionality of @command{centos-art.sh} script (@pxref{Directories
+trunk Scripts Functions Locale}) to any of the XML-based English
+outputs supported by @command{centos-art.sh} script (e.g., XHTML) to
+produce portable objects for your prefered language and the
+@code{render} functionality of @command{centos-art.sh} script
+(@pxref{Directories trunk Scripts Functions Render}) to produce the
+translated version of the output XHTML files taken in first place. The
+translated version is produced in the same format of the file taken as
+reference to build the portable objects. XHTML format in this case.
+
+@subheading @code{linuxdoc}
+Not supported yet.
+
+@subheading @code{docbook}
+
+Not supported yet.
