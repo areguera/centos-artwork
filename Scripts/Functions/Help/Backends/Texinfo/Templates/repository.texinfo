@@ -2,8 +2,8 @@
 @c $Id$
 @c -- Header --------------------------------------------------
 
-@setfilename =FILENAME=.info
-@settitle =TITLE=
+@setfilename repository.info
+@settitle CentOS Artwork Repository
 @documentlanguage =LOCALE_LL=
 @afourpaper
 @finalout
@@ -13,7 +13,7 @@
 @copying
 =DESCRIPTION=
 
-Copyright @copyright{} =COPYRIGHT_YEAR= =COPYRIGHT_HOLDER=
+Copyright @copyright{} =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
@@ -26,9 +26,9 @@ Documentation License.
 @c -- Titlepage, contents, copyright ---------------------------
 
 @titlepage
-@title =TITLE=
-@subtitle =SUBTITLE=
-@author =AUTHOR=
+@title CentOS Artwork Repository
+@subtitle Manual
+@author =COPYRIGHT_HOLDER= 
 @page
 @vskip 0pt plus 1filll
 @insertcopying
@@ -39,17 +39,17 @@ Documentation License.
 
 @ifnottex
 @node Top
-@top =TITLE=
+@top CentOS Artwork Repository
 @insertcopying
 @end ifnottex
-@include manual-menu.texinfo
+@include repository-menu.texinfo
 
 @c -- The body of the document --------------------------------
 
-@include manual-nodes.texinfo
+@include repository-nodes.texinfo
 
 @c -- The end of the document ---------------------------------
 
-@include manual-index.texinfo
+@include repository-index.texinfo
 
 @bye
