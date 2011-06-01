@@ -24,21 +24,6 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-# Quotations.
-s!<blockquote><p><strong>Note</strong>!<blockquote class="blue icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-info.png" alt="Info" /><h3>Note</h3><p>!g
-
-s!<blockquote><p><strong>Warning</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-alert.png" alt="Warning" /><h3>Warning</h3><p>!g
-
-s!<blockquote><p><strong>Important</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-star.png" alt="Important" /><h3>Important</h3><p>!g
-
-s!<blockquote><p><strong>Tip</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-idea.png" alt="Idea" /><h3>Tip</h3><p>!g
-
-s!<blockquote><p><strong>Caution</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-attention.png" alt="Caution" /><h3>Caution</h3><p>!g
-
-s!<blockquote><p><strong>Convenction</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-ruler.png" alt="Convenction" /><h3>Convenction</h3><p>!g
-
-s!<blockquote><p><strong>Redirection</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-redirect.png" alt="Redirection" /><h3>Redirection</h3><p>!g
-
 # Links
 s!<a href="(https|http|ftps|ftp)://!<a class="www" href="\1://!g
 s!<a href="mailto:!<a class="mailto" href="mailto:!g
