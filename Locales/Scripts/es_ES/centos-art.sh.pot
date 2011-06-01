@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 18:41-0400\n"
+"POT-Creation-Date: 2011-06-01 18:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,17 +23,13 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:38
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:46
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:49
 msgid "Do you want to continue?"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:56
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:44
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:47
 msgid "The following documentation section will be created:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_checkLayout.sh:37
-msgid "Initializing manual structure."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:32
@@ -74,17 +70,17 @@ msgstr ""
 msgid "An error occurred when deleting entries."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:41
 msgid "The documentation entry provided hasn't a parent directory."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_prepareStructure.sh:38
+msgid "Creating manual structure."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_updateNodes.sh:75
 #, sh-format
 msgid "The @file{$SECT} Directory"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:64
-msgid "Directories"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:104
@@ -243,15 +239,20 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:120
 #, sh-format
-msgid "The file \"$FILE\" is not executable."
+msgid "The path \"$FILE\" is not versioned."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:129
 #, sh-format
-msgid "The path \"$FILE\" does not exist inside the working copy."
+msgid "The file \"$FILE\" is not executable."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:138
+#, sh-format
+msgid "The path \"$FILE\" does not exist inside the working copy."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:147
 #, sh-format
 msgid "The path \"$FILE\" does not exist."
 msgstr ""

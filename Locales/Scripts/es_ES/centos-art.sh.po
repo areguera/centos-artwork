@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh (Beta)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 18:41-0400\n"
+"POT-Creation-Date: 2011-06-01 18:43-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -23,18 +23,14 @@ msgstr "El capítulo siguiente de documentación será creado:"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:38
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:46
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:49
 msgid "Do you want to continue?"
 msgstr "¿Desea continuar?"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:56
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:44
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:47
 msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_checkLayout.sh:37
-msgid "Initializing manual structure."
-msgstr "Inicializando la estructura del manual."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:32
 msgid "Two paths are required."
@@ -74,18 +70,19 @@ msgstr "Eliminando"
 msgid "An error occurred when deleting entries."
 msgstr "Un error ocurrió cuando las entradas se eliminaban."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:41
 msgid "The documentation entry provided hasn't a parent directory."
 msgstr "La entrada de documentación no tiene un directorio padre."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_prepareStructure.sh:38
+#, fuzzy
+msgid "Creating manual structure."
+msgstr "Inicializando la estructura del manual."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_updateNodes.sh:75
 #, sh-format
 msgid "The @file{$SECT} Directory"
 msgstr "El directorio @file{$SECT}"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:64
-msgid "Directories"
-msgstr "Directorios"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:104
 msgid "The backend provided is not supported."
@@ -242,16 +239,21 @@ msgid "The file \"$FILE\" is not a symbolic link."
 msgstr "El fichero \"$FILE\" no es un enlace simbólico."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:120
+#, fuzzy, sh-format
+msgid "The path \"$FILE\" is not versioned."
+msgstr "El tema \"$FILE\" no es válida."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:129
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr "El fichero \"$FILE\" no es ejecutable."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:129
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:138
 #, sh-format
 msgid "The path \"$FILE\" does not exist inside the working copy."
 msgstr "El camino \"$FILE\" no existe dentro de la copia de trabajo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:138
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:147
 #, sh-format
 msgid "The path \"$FILE\" does not exist."
 msgstr "El camino \"$FILE\" no existe."
@@ -2193,6 +2195,9 @@ msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio."
 msgstr[1] "ficheros desde el repositorio."
+
+#~ msgid "Directories"
+#~ msgstr "Directorios"
 
 #~ msgid "Preparing documentation layout."
 #~ msgstr "Inicializando el manual."
