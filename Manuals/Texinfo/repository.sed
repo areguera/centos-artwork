@@ -1,7 +1,7 @@
 #!/bin/sed 
 #
-# repository.sed -- This file replaces texi2html outputs in order to
-# make The CentOS Project CSS definitions usable by texi2html output.
+# repository.sed -- This file provides common transformations for
+# texi2html output, based on The CentOS Project CSS definitions.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
