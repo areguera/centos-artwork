@@ -51,13 +51,13 @@ $LANGUAGES->{'es'} = {
     'Prev' => 'Anterior',
     'Section' => 'Sección',
     'Section One' => 'Sección Uno',
-    'See %{node_file_href}' => 'Vea %{node_file_href}',
-    'See %{node_file_href} @cite{%{book}}' => 'Vea %{node_file_href} @cite{%{book}}',
-    'See %{node_file_href} section `%{section}\' in @cite{%{book}}' => 'Vea la sección %{node_file_href} `%{section}\' en @cite{%{book}}',
-    'See %{reference_name}' => 'Vea %{reference_name}',
-    'See @cite{%{book}}' => 'Vea @cite{%{book}}',
-    'See section %{reference_name}' => 'Vea la sección %{reference_name}',
-    'See section `%{section}\' in @cite{%{book}}' => 'Vea la sección `%{section}\' en @cite{%{book}}',
+    'See %{node_file_href}' => 'Véase %{node_file_href}',
+    'See %{node_file_href} @cite{%{book}}' => 'Véase %{node_file_href} @cite{%{book}}',
+    'See %{node_file_href} section `%{section}\' in @cite{%{book}}' => 'Véase la sección %{node_file_href} `%{section}\' en @cite{%{book}}',
+    'See %{reference_name}' => 'Véase %{reference_name}',
+    'See @cite{%{book}}' => 'Véase @cite{%{book}}',
+    'See section %{reference_name}' => 'Véase la sección %{reference_name}',
+    'See section `%{section}\' in @cite{%{book}}' => 'Véase la sección `%{section}\' en @cite{%{book}}',
     'September' => 'septiembre',
     'Short Table of Contents' => 'Resumen del Contenido',
     'Subsection One-Four' => 'Subsección Uno-Cuatro',
@@ -98,13 +98,13 @@ $LANGUAGES->{'es'} = {
     'previous section in reading order' => 'Sección anterior en orden de lectura',
     'previous section on same level' => 'Sección anterior en el mismo nivel',
     'section `%{section}\' in @cite{%{book}}' => 'sección `%{section}\' en @cite{%{book}}',
-    'see %{node_file_href}' => 'Vea %{node_file_href}',
-    'see %{node_file_href} @cite{%{book}}' => 'Vea %{node_file_href} @cite{%{book}}',
-    'see %{node_file_href} section `%{section}\' in @cite{%{book}}' => 'Vea %{node_file_href} sección `%{section}\' en @cite{%{book}}',
-    'see %{reference_name}' => 'Vea %{reference_name}',
-    'see @cite{%{book}}' => 'Vea @cite{%{book}}',
-    'see section %{reference_name}' => 'Vea sección %{reference_name}',
-    'see section `%{section}\' in @cite{%{book}}' => 'Vea sección `%{section}\' en @cite{%{book}}',
+    'see %{node_file_href}' => 'Véase %{node_file_href}',
+    'see %{node_file_href} @cite{%{book}}' => 'Véase %{node_file_href} @cite{%{book}}',
+    'see %{node_file_href} section `%{section}\' in @cite{%{book}}' => 'Véase %{node_file_href} sección `%{section}\' en @cite{%{book}}',
+    'see %{reference_name}' => 'Véase %{reference_name}',
+    'see @cite{%{book}}' => 'Véase @cite{%{book}}',
+    'see section %{reference_name}' => 'véase sección %{reference_name}',
+    'see section `%{section}\' in @cite{%{book}}' => 'véase sección `%{section}\' en @cite{%{book}}',
     'short table of contents' => 'resumen del contenido',
     'table of contents' => 'Tabla de contenidos',
     'unknown' => 'desconocido',
@@ -113,9 +113,9 @@ $LANGUAGES->{'es'} = {
     };
 
 $T2H_OBSOLETE_STRINGS->{'es'} = {
-    'See' => 'Vea',
+    'See' => 'Véase',
     'section' => 'sección',
-    'see' => 'vea'
+    'see' => 'véase'
     };
 
 return 1;
