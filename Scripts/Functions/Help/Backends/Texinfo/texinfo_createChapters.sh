@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# texinfo_createChapterFiles.sh -- This function creates the
-# chapters' base directory structure using templates as reference.
+# texinfo_createChapters.sh -- This function creates the chapters'
+# base directory structure using templates as reference.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_createChapterFiles {
+function texinfo_createChapters {
 
     local MANUAL_CHAPTER_DIR=''
 
