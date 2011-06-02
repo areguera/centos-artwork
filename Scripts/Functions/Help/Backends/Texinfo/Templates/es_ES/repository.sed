@@ -37,4 +37,4 @@ s!<blockquote><p><strong>Precaución</strong>!<blockquote class="orange icon"><i
 
 s!<blockquote><p><strong>Convensión</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-ruler.png" alt="Convensión" /><h3>Convensión</h3><p>!g
 
-s!<blockquote><p><strong>Redirección</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-redirect.png" alt="Redirección" /><h3>Redirección</h3><p>!g
+s!<blockquote><p><strong>Redirección</strong>!<blockquote class="blue icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/icon-admonition-redirect.png" alt="Redirección" /><h3>Redirección</h3><p>!g
