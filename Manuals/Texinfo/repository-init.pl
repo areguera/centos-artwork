@@ -384,3 +384,5 @@ $ICONS = 0;
      'Last',        'file:///usr/share/icons/Bluecurve/24x24/stock/stock-goto-last.png',
      ' ',           ''
     );
+
+return 1;
