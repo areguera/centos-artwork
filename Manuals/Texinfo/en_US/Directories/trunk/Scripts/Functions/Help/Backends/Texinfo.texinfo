@@ -1,5 +1,6 @@
+@subheading Goals
 
-@subheading Introduction
+@subheading Description
 
 When @code{texinfo} backend is used (default behaviour), the manual
 structure (@pxref{Directories trunk Manuals}) is supported by GNU
@@ -8,13 +9,9 @@ information and a printed manual from a single source. The @code{help}
 functionality is an interface you can use to control the source files
 in the manual structure.  
 
-@subheading Output formats
-
 The manual output is produced from Texinfo files and stored in
 @file{trunk/Manuals/Texinfo} on different formats including Info, PDF,
 XHTML, XML and TXT.
-
-@subheading Localization
 
 When the @samp{texinfo} backend is used, you'll always edit
 documentation entries in English language, no matter what your
@@ -30,3 +27,7 @@ produce portable objects for your prefered language and the
 translated version of the output XHTML files taken in first place. The
 translated version is produced in the same format of the file taken as
 reference to build the portable objects. XHTML format in this case.
+
+@subsubheading Usage
+
+@subsubheading See also
