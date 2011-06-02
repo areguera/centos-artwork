@@ -38,6 +38,9 @@ Specifies the documentation system used as backend to manage the
 repository documentation manual. When this option is not provided, the
 @samp{texinfo} documentation system is used as default backend.
 
+@xref{Directories trunk Scripts Functions Help Backends}, to know more
+about documentation backends and their characteristics.
+
 @item --search="STRING"
 
 Go to node pointed by index entry @samp{STRING}.
@@ -133,9 +136,6 @@ functionality of @command{centos-art.sh} script. File actions, in this
 location, are also used to manage specific parts of the manual which
 have no association outside @file{trunk/Manuals} directory (e.g.,
 Preface, Introduction, etc.).
-
-@xref{Directories trunk Scripts Functions Help Backends}, for more
-information about available documentation backends.
 
 @subheading Examples
 
