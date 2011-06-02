@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# texinfo_updateChaptersFiles.sh -- This function updates chapter related
-# files.
+# texinfo_createChapterFiles.sh -- This function creates the
+# chapters' base directory structure using templates as reference.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -23,33 +23,36 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateChaptersFiles {
+function texinfo_createChapterFiles {
 
-    # Define chapter's generic structure. 
-    local CHAPTERBODY="\
-        @node $MANUAL_CHAPTER_NAME
-        @chapter $MANUAL_CHAPTER_NAME
-        @cindex $(echo $MANUAL_CHAPTER_NAME | tr '[[:upper:]]' '[[:lower:]]')
-        @include $MANUAL_CHAPTER_NAME/chapter-intro.$FLAG_BACKEND
-        @include $MANUAL_CHAPTER_NAME/chapter-menu.$FLAG_BACKEND
-        @include $MANUAL_CHAPTER_NAME/chapter-nodes.$FLAG_BACKEND"
+    local MANUAL_CHAPTER_DIR=''
 
-    # Remove any space/tabs at the begining of @... lines.
-    CHAPTERBODY=$(echo "$CHAPTERBODY" | sed -r 's!^[[:space:]]+@!@!')
+    # Define list of chapter templates files used as base to create
+    # the chapters' documentation manual.
+    local FILE=''
+    local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE} \
+        --pattern='\.texinfo' --mindepth='2')
 
-    # Create directory to store chapter files.
-    if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
-        mkdir $MANUAL_CHAPTER_DIR
-    fi
+    # Loop through chapter structures and create them.
+    for FILE in $FILES;do
 
-    # Create files to store chapter information. If chapter files
-    # already exist, they will be re-written and any previous
-    # information inside them will be lost.
-    echo "$CHAPTERBODY" > $MANUAL_CHAPTER_DIR/chapter.${FLAG_BACKEND}
-    echo "" > $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND}
-    echo "" > $MANUAL_CHAPTER_DIR/chapter-nodes.${FLAG_BACKEND}
+        # Redefine chapter directory based on template files.
+        MANUAL_CHAPTER_DIR=$(basename $(dirname ${FILE}))
 
-    # Initialize chapter instroduction using template file.
-    cp ${MANUAL_TEMPLATE}/manual-chapter-intro.${FLAG_BACKEND} $MANUAL_CHAPTER_DIR/chapter-intro.${FLAG_BACKEND}
+        # Verify texinfo templates used as based to build the chapter.
+        # Be sure they are inside the working copy of CentOS Artwork
+        # Repository (-w) and under version control (-n), too.
+        cli_checkFiles ${FILE} -wn
+
+        # Verify chapter's directory. If it doesn't exist, create it.
+        if [[ ! -d ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_DIR} ]];then
+            svn mkdir ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_DIR} --quiet
+        fi
+
+        # Copy template files into chapter's directory.
+        svn cp ${FILE} ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_DIR} --quiet
+
+    done
 
 }
+
