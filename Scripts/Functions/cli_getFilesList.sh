@@ -29,7 +29,7 @@ function cli_getFilesList {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='pattern:,maxdepth:,type:,uid:'
+    local ARGSL='pattern:,mindepth:,maxdepth:,type:,uid:'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope.
@@ -60,6 +60,11 @@ function cli_getFilesList {
 
             --maxdepth )
                 OPTIONS="$OPTIONS -maxdepth $2"
+                shift 2
+                ;;
+
+            --mindepth )
+                OPTIONS="$OPTIONS -mindepth $2"
                 shift 2
                 ;;
 
@@ -101,7 +106,7 @@ function cli_getFilesList {
     # regular expresion so it could be possible to use path expansion.
     # Using path expansion reduce the amount of places to find out
     # things and so the time required to finish the task.
-    PATTERN="^.+/${PATTERN}$"
+    PATTERN="^.*(/)?${PATTERN}$"
 
     # Define list of files to process. At this point we cannot verify
     # whether the LOCATION is a directory or a file since path
