@@ -35,8 +35,8 @@ function cli_getRepoStatus {
     # character column as describes `svn help status' command.
     local PATTERN='^( |A|C|D|I|M|R|X|!|~).+$'
 
-    # Output status. Use subversion `status' command to retrive the
-    # first character in the output.
+    # Output specific state of location using subversion `status'
+    # command.
     svn status "$LOCATION" --quiet | sed -r "s/${PATTERN}/\1/"
 
 }
