@@ -1,19 +1,64 @@
 @subheading Goals
 
-@itemize
-@item ...
-@end itemize
+The @file{trunk/Scripts/Functions/Help/Backends} directory structure
+organizes documentation backends used by @code{help} functionality of
+@command{centos-art.sh} script.
 
 @subheading Description
 
-@itemize
-@item ...
-@end itemize
+Documentation backends are organized inside directories. There is one
+directory for each documentation backend available. Inside these
+directories, actions related to documentation are implemented by mean
+of shell functions. There is one shell function for each documentation
+action (e.g., reading, editing, updating output, etc.). Optionally,
+other shell functions might be added to backup documentation actions
+functionalities.
+
+Documentation backends use template files to build language-specific
+documentation manual. Template files related to documentation backends
+are stored in a directory name @file{Templates/LANG} inside the
+backend directory. In this location, @var{LANG} is a variable
+containing the locale information the documentation manual is built on
+(e.g., en_US, es_ES, fr_FR, de_DE, etc.). Inside the
+@file{Template/LANG} directory, it is organized the documentation
+structure used as base to build new language-specific documentation
+manuals (e.g., each time a new documentation entry is created for the
+repository, a template is taken from here to initiate the section
+structure and give order to it). The specific organization of
+documentation structure depends on the backend itself.
+
+Inside backend directories, shell functions must have the same
+structure in their names. The name structure used by shell functions
+here is: @code{suffix_funcname.sh}, were @code{suffix} is the name of
+the directory backend in lowercase and @code{funcname} is the name of
+the function. Assuming, both @samp{texinfo} and @samp{docbook}
+backends have been already implemented, they must have a structure
+similar to the following:
+
+@verbatim
+trunk/Scripts/Functions/Help/Backends
+|-- Docbook
+|   |-- Templates
+|   |   |-- en_US
+|   |   `-- ...
+|   |-- docbook_editEntry.sh
+|   |-- docbook_updateOutputFiles.sh
+|   `-- ...
+`-- Texinfo
+    |-- Templates
+    |   |-- en_US
+    |   `-- ...
+    |-- texinfo_editEntry.sh
+    |-- texinfo_updateOutputFiles.sh
+    `-- ...
+@end verbatim
 
 @subheading Usage
 
 @itemize
-@item ...
+@item @ref{Directories trunk Scripts Functions Help Backends Texinfo}
+@item @ref{Directories trunk Scripts Functions Help Backends Docbook}
+@item @ref{Directories trunk Scripts Functions Help Backends Linuxdoc}
 @end itemize
 
 @subheading See also
@@ -25,4 +70,3 @@
 @item @ref{Directories trunk Scripts} 
 @item @ref{Directories trunk}
 @end itemize
-
