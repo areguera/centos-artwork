@@ -31,7 +31,7 @@ function texinfo_createChapters {
     # the chapters' documentation manual.
     local FILE=''
     local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE} \
-        --pattern='\.texinfo' --mindepth='2')
+        --pattern='chapter(-menu|-nodes)?\.texinfo' --mindepth='2')
 
     # Loop through chapter structures and create them.
     for FILE in $FILES;do

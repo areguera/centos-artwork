@@ -33,34 +33,34 @@ function texinfo_createStructure {
         return
     fi
 
-    # Print confirmation question.
+    # Print action message.
     cli_printMessage "-" --as-separator-line
     cli_printMessage "`gettext "Creating manual structure."`"
 
-    # Define file names required to build the manual.
-    local MANUAL_FILE=''
-    local MANUAL_FILES="${MANUAL_NAME}.${FLAG_BACKEND}
-        ${MANUAL_NAME}-nodes.${FLAG_BACKEND}
-        ${MANUAL_NAME}-menu.${FLAG_BACKEND}"
-
-    # Notify that a new directory for a language-specific
-    # documentation manual will be created.
+    # Create the language-specific directory used to store all files
+    # related to documentation manual.
     svn mkdir ${MANUAL_BASEDIR} --quiet
+
+    # Define file names required to build the manual.
+    local FILE=''
+    local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE}" \
+        --maxdepth='1' \
+        --pattern="repository(-menu|-nodes|-index)?\.${FLAG_BACKEND}")
 
     # Verify manual base file. The manual base file is where the
     # documentation manual is defined in the backend format. Assuming
     # no file exists (e.g., a new language-specific manual is being
-    # created), use texinfo templates to create it.
-    for MANUAL_FILE in $MANUAL_FILES;do
-        if [[ ! -f ${MANUAL_BASEDIR}/${MANUAL_FILE} ]];then
-            cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_FILE} -wn
-            svn cp ${MANUAL_TEMPLATE}/${MANUAL_FILE} ${MANUAL_BASEDIR}/${MANUAL_FILE} --quiet
-            cli_replaceTMarkers ${MANUAL_BASEDIR}/${MANUAL_FILE}
+    # created), use texinfo templates for it.
+    for FILE in $FILES;do
+        if [[ ! -f ${MANUAL_BASEDIR}/$(basename ${FILE}) ]];then
+            cli_checkFiles ${FILE} -wn
+            svn cp ${FILE} ${MANUAL_BASEDIR}/$(basename ${FILE}) --quiet
+            cli_replaceTMarkers ${MANUAL_BASEDIR}/$(basename ${FILE})
         fi
     done
 
     # Update manual chapter related files.
-    ${FLAG_BACKEND}_updateChaptersFiles
+    ${FLAG_BACKEND}_createChapters
 
     # Update manual chapter related menu.
     ${FLAG_BACKEND}_updateChaptersMenu

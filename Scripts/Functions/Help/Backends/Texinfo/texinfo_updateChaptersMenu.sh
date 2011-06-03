@@ -34,7 +34,7 @@ function texinfo_updateChaptersMenu {
     # even no other node exist.
     if [[ -f ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} ]];then
         MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} \
-            | egrep -v "^(@(end )?menu$|\* Index::.*)$")
+            | egrep -v "^@(end )?menu$" | egrep -v '^\* Index::$')
     fi
 
     # Re-defined menu of chapters based on action.

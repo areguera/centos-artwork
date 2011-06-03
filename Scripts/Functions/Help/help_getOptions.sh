@@ -99,7 +99,6 @@ function help_getOptions {
     
             --read )
                 ACTIONNAM="searchNode"
-                FLAG_DONT_COMMIT_CHANGES='true'
                 shift 1
                 ;;
             

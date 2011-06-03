@@ -42,23 +42,50 @@ function help {
     # Interpret option arguments passed through the command-line.
     ${FUNCNAM}_getOptions
 
-    # Define manuals base directory. This is the place where
-    # documentation manuals base directory structures are stored and
-    # organized in.
-    MANUAL_BASEDIR="$(cli_getRepoTLDir)/Manuals/$(cli_getRepoName ${FLAG_BACKEND} -d)"
+    # Define manual backend directory. This is the place where all
+    # language specific documentation manuals, for the same backend
+    # documentation system, are stored in.
+    MANUAL_BACKEND=$(cli_getRepoTLDir)/Manuals/$(cli_getRepoName ${FLAG_BACKEND} -d)
+
+    # Define manual base directory. This is the place where
+    # language-specific documentation manual is stored in.
+    MANUAL_BASEDIR="${MANUAL_BACKEND}/$(cli_getCurrentLocale)"
 
     # Define file name (without extension) for documentation manual.
-    MANUAL_NAME=repository
+    MANUAL_NAME=$(cli_getRepoName "repository" -f)
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build output
     # related files (.info, .pdf, .xml, etc.).
     MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
-    # Define function configuration directory. The function
-    # configuration directory is used to store functionality's related
-    # files.
-    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates
+    # Define chapter name of directory where repository documentation
+    # entries will be stored in.
+    MANUAL_CHAPTER_NAME=$(cli_getRepoName "Directories" -d)
+
+    # Define absolute path to chapter directory where repository
+    # documentation entries will be stored in.  At this point, we need
+    # to take a desition about documentation design, in order to
+    # answer the question: How do we assign chapters, sections and
+    # subsections automatically, based on the repository structure?
+    # and also, how such design could be adapted to changes in the
+    # repository structure?
+    #
+    # One solution would be: represent the repository's directory
+    # structure as sections inside a chapter named `Directories' or
+    # something similar. Subsections and subsubsections will not have
+    # their own files, they all will be written inside the same
+    # section file that represents the repository documentation entry.
+    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}
+
+    # Define absolute path to backend template files.
+    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/$(cli_getCurrentLocale)
+
+    # Verify absolute path to backend template files. If the absolute
+    # path doesn't exist, use the English language templates.
+    if [[ ! -d $MANUAL_TEMPLATE ]];then
+        MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/en_US
+    fi
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -77,6 +104,14 @@ function help {
         cli_printMessage "`gettext "The backend provided is not supported."`" --as-error-line
     fi
 
+    # Create documentation structure, if it doesn't exist.
+    ${FLAG_BACKEND}_createStructure
+
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
+
     # Execute backend functionalities. Notice that there are
     # functionalities that need more than one action value in order to
     # be executed (e.g.,  copying, and renaming), functionalities
@@ -87,32 +122,11 @@ function help {
     # functionalities is splitted here.
     if [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(copy|rename|delete)Entry" ]];then
 
-        # Define directories where documentation entries are stored
-        # in.  Since more than one action value might be affected
-        # here, more than one directory might be considered as chapter
-        # directory, as well.
-        MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "$@")
-
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
-
         # Execute backend action names that may need to use more than
         # one action value.
         ${ACTIONNAM} $@
 
-        # Commit changes from working copy to central repository only.
-        # At this point, changes in the repository are not merged in
-        # the working copy, but chages in the working copy do are
-        # committed up to repository.
-        cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
-
     elif [[ $ACTIONNAM =~ "${FLAG_BACKEND}_(search(Index|Node)|updateOutputFiles)" ]];then
-
-        # Bring changes from the repository to the working copy.
-        cli_updateRepoChanges ${MANUAL_BASEDIR}
 
         # Execute backend action names that might not need any action
         # value as reference to do their work.
@@ -128,61 +142,24 @@ function help {
         # Execute backend action names that use one action value, only.
         for ACTIONVAL in $@;do
         
-            # Define directories where documentation entries are
-            # stored in.  Since just one action value is
-            # affected here, just one directory is considered as
-            # chapter directory, as well.
-            MANUAL_CHAPTER_DIR=$(${FLAG_BACKEND}_getChapterDir "${ACTIONVAL}")
-
-            # Define chapter name for documentation entry we're working with.
-            MANUAL_CHAPTER_NAME=$(basename "$MANUAL_CHAPTER_DIR")
-
             # Define documentation entry.
             MANUAL_ENTRY=$(${FLAG_BACKEND}_getEntry $ACTIONVAL)
-
-            # Syncronize changes between repository and working copy.
-            # At this point, changes in the repository are merged in
-            # the working copy and changes in the working copy
-            # committed up to repository.
-            cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
 
             # Execute backend action names that may need to use more
             # than one action value.
             $ACTIONNAM 
 
-            # Commit changes from working copy to central repository
-            # only.  At this point, changes in the repository are not
-            # merged in the working copy, but chages in the working
-            # copy do are committed up to repository.
-            cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
-
         done
 
     fi
 
+    # Commit changes from working copy to central repository only.  At
+    # this point, changes in the repository are not merged in the
+    # working copy, but chages in the working copy do are committed up
+    # to repository.
+    cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
+
     # Rebuild output files to propagate recent changes.
     ${FLAG_BACKEND}_updateOutputFiles
-
-    # Perform language-specific actions when the current language is
-    # other but English language.
-    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-
-        # Update translatable strings in related portable objects.
-        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh locale --update ${MANUAL_BASEFILE}.xhtml --dont-commit-changes
-
-        # Update translatable strings in related portable objects.
-        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh locale --edit ${MANUAL_BASEFILE}.xhtml
-
-        # Print separator.
-        cli_printMessage '-' --as-separator-line
-
-        # Print action message.
-        cli_printMessage "${MANUAL_BASEFILE}.xhtml/$(cli_getCurrentLocale)" '--as-updating-line'
-
-        # Render translated versions of the XHTML output files,
-        # supressing the rendition output.
-        eval ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render ${MANUAL_BASEFILE}.xhtml --dont-commit-changes --quiet
-
-    fi
 
 }

@@ -25,6 +25,14 @@
 
 function texinfo_updateOutputFileXhtml {
 
+    # Verify initialization files used by texi2html.
+    cli_checkFiles ${MANUAL_BACKEND}/${MANUAL_NAME}-init.pl
+    cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_NAME}-init.pl
+
+    # Verify transformation files used to modify texi2html output.
+    cli_checkFiles ${MANUAL_BACKEND}/${MANUAL_NAME}.sed
+    cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_NAME}.sed
+
     # Output action message.
     cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" --as-updating-line
 
@@ -49,24 +57,29 @@ function texinfo_updateOutputFileXhtml {
     pushd ${MANUAL_BASEFILE}.xhtml > /dev/null
 
     # Update xhtml files.  Use texi2html to export from texinfo file
-    # format to html using CentOS Web default visual style.
-    texi2html --init-file=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}-init.pl \
-        --output=${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.xhtml \
-        ${MANUAL_BASEDIR}/${MANUAL_BASEFILE}.${FLAG_BACKEND}
+    # format to xhtml using CentOS Web default visual style.
+    texi2html --lang=$(cli_getCurrentLocale --langcode-only) \
+        --init-file=${MANUAL_BACKEND}/${MANUAL_NAME}-init.pl \
+        --init-file=${MANUAL_TEMPLATE}/${MANUAL_NAME}-init.pl \
+        --output=${MANUAL_BASEDIR}/${MANUAL_NAME}.xhtml \
+        ${MANUAL_BASEDIR}/${MANUAL_NAME}.${FLAG_BACKEND}
 
     # Remove directory where xhtml files are stored from directory
     # stack. The xhtml files have been already created.
     popd > /dev/null
 
     # Apply xhtml transformations. This transformation cannot be built
-    # inside the initialization script (repository.init). For example,
-    # I can't see a possible way to produce different quotation HTML
-    # outputs from the same texinfo quotation definition. Instead,
+    # inside the initialization script (repository-init.pl). For example,
+    # Would it be a possible way to produce different quotation HTML
+    # outputs from the same texinfo quotation definition?  Instead,
     # once the HTML code is produced we can take que quotation HTML
     # definition plus the first letters inside it and transform the
     # structure to a completly different thing that can be handle
     # through classed inside CSS definitions.
-    sed -r -i -f ${MANUAL_BASEFILE}.sed ${MANUAL_BASEFILE}.xhtml/*.xhtml
+    sed -r -i \
+        -f ${MANUAL_BACKEND}/${MANUAL_NAME}.sed \
+        -f ${MANUAL_TEMPLATE}/${MANUAL_NAME}.sed \
+        ${MANUAL_BASEFILE}.xhtml/*.xhtml
 
     # Compress directory structure where xhtml files are stored in.
     # This compressed version is the one we put under version control.

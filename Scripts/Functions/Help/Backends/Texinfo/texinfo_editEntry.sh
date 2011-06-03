@@ -28,28 +28,20 @@ function texinfo_editEntry {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Verify chapter definition inside manual.
-    if [[ ! -d $MANUAL_CHAPTER_DIR ]];then
-
-        # Print confirmation question.
-        cli_printMessage "`gettext "The following documentation chapter will be created:"`"
-        cli_printMessage "$MANUAL_CHAPTER_DIR" --as-response-line
-        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
-
-        # Update manual chapter related files.
-        ${FLAG_BACKEND}_updateChaptersFiles
-
-        # Update manual chapter related menu.
-        ${FLAG_BACKEND}_updateChaptersMenu
-
-        # Update manual chapter related nodes (based on chapter
-        # related menu).
-        ${FLAG_BACKEND}_updateChaptersNodes
-
-    fi
-
     # Verify section definition inside chapters. 
     if [[ ! -f $MANUAL_ENTRY ]];then
+
+        # Verify the parent directory of documentation entry. If the
+        # parent directory of the current documentation entry doesn't
+        # exist, create it and be sure it is added to version control.
+        # Also, verify that the parent directory of the documentation
+        # entry can be created. Otherwise, stop script execution with
+        # an error for the user to be aware of it.
+        if [[ ! -d $(dirname $(dirname $MANUAL_ENTRY)) ]];then
+            cli_printMessage "`gettext "The documentation entry provided hasn't a parent directory."`" --as-error-line
+        elif [[ ! -d $(dirname $MANUAL_ENTRY) ]];then
+            svn mkdir $(dirname ${MANUAL_ENTRY}) --quiet
+        fi
 
         # Print confirmation question. 
         cli_printMessage "`gettext "The following documentation section will be created:"`"

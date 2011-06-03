@@ -44,7 +44,7 @@ function texinfo_getEntry {
     for LOCATION in $LOCATIONS;do
 
         # Sanitate action value to use absolute paths.
-        cli_checkRepoDirSource $LOCATION
+        LOCATION=$(cli_checkRepoDirSource $LOCATION)
     
         # Define relative path of entry, from trunk directory on.
         MANUAL_ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
@@ -59,7 +59,7 @@ function texinfo_getEntry {
         if [[ ${MANUAL_ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
             MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} | sed "s!trunk/Manuals/$(cli_getRepoName ${FLAG_BACKEND} -d)/!!")
         else
-            MANUAL_ENTRY=$(dirname Directories/${MANUAL_ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
+            MANUAL_ENTRY=$(dirname ${MANUAL_CHAPTER_NAME}/${MANUAL_ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
         fi
 
         # Re-define entry to set absolute path to manuals base

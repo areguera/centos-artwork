@@ -36,14 +36,9 @@ function texinfo_updateNodes {
     for NODE in $NODES;do
 
         NODE=$(echo "${NODE}" | sed -r 's!:! !g')
-        SECT=$(echo "$NODE" | cut -d' ' -f2- | sed -r 's! !/!g') 
-        INCL=$(echo "$NODE" | sed -r 's! !/!g').${FLAG_BACKEND}
-        CIND=$(echo "$NODE")
-
-        # Create an empty directory to store texinfo files.
-        if [[ ! -d ${MANUAL_BASEDIR}/$(dirname "$INCL") ]];then
-             mkdir -p ${MANUAL_BASEDIR}/$(dirname "$INCL")
-        fi
+        SECT=$(echo "${NODE}" | cut -d' ' -f2- | sed -r 's! !/!g')
+        INCL=$(echo "${NODE}" | sed -r 's! !/!g').${FLAG_BACKEND}
+        CIND=$(echo "${NODE}")
 
         # Create texinfo section file using templates, only if the
         # section file doesn't exist and hasn't been marked for
@@ -55,17 +50,17 @@ function texinfo_updateNodes {
 
             # Define what template to apply using the absolute path of
             # the documentation entry as reference.
-            if [[ ${MANUAL_BASEDIR}/${INCL} =~ 'trunk/Scripts/Functions/.+' ]];then
-                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section-functions.${FLAG_BACKEND}"
+            if [[ ${MANUAL_BASEDIR}/${INCL} =~ 'trunk/Scripts/Functions/[[:alnum:]]+$' ]];then
+                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/section-functions.${FLAG_BACKEND}"
             else
-                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/manual-section.${FLAG_BACKEND}"
+                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/section.${FLAG_BACKEND}"
             fi
 
             # Verify texinfo template.
             cli_checkFiles $TEXINFO_TEMPLATE
 
             # Copy texinfo template to its destination.
-            cp ${TEXINFO_TEMPLATE} ${MANUAL_BASEDIR}/$INCL
+            svn cp ${TEXINFO_TEMPLATE} ${MANUAL_BASEDIR}/$INCL --quiet
 
             # Expand common translation markers.
             cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
