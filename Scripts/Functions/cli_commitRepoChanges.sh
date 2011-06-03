@@ -122,13 +122,13 @@ function cli_commitRepoChanges {
         # Outout separator line.
         cli_printMessage '-' --as-separator-line
 
-        # Verify changes.
+        # Verify changes on locations.
         cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-        svn diff ${FILES[*]} | less
+        svn diff $LOCATIONS | less
 
-        # Commit changes.
+        # Commit changes on locations.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        svn commit ${FILES[*]}
+        svn commit $LOCATIONS
 
     fi
 
