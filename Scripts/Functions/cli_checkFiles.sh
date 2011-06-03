@@ -116,8 +116,9 @@ function cli_checkFiles {
 
             -n|--versioned )
                 for FILE in $(echo $FILES);do
-                    if [[ ! $(cli_getRepoStatus "$FILE") =~ '^[[:space:]]$' ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not at a clean state."`" --as-error-line
+                    svn ls $FILE 2> /dev/null > /dev/null
+                    if [[ $? -ne 0 ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not versioned."`" --as-error-line
                     fi
                 done
                 shift 1
