@@ -33,10 +33,10 @@ function cli_getRepoStatus {
     # Define regular expression pattern to retrive first column,
     # returned by subversion status command. This column is one
     # character column as describes `svn help status' command.
-    local PATTERN='^( |A|C|D|I|M|R|X|\?|!|~).+$'
+    local PATTERN='^( |A|C|D|I|M|R|X|!|~).+$'
 
     # Output status. Use subversion `status' command to retrive the
     # first character in the output.
-    svn status "$LOCATION" | sed -r "s/${PATTERN}/\1/"
+    svn status "$LOCATION" --quiet | sed -r "s/${PATTERN}/\1/"
 
 }
