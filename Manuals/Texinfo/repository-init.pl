@@ -25,7 +25,8 @@
 # ----------------------------------------------------------------------
 
 # -iso
-# if set, ISO8859 characters are used for special symbols (like copyright, etc)
+# if set, ISO8859 characters are used for special symbols (like
+# copyright, etc)
 $USE_ISO = 1;
 
 # -I
@@ -229,7 +230,7 @@ sub t2h_xhtml_index_summary($$)
        $alpha_text = join("\n &nbsp; \n", @$alpha) . "\n &nbsp; \n";
     }
     #I18n
-    return "<table><tr><th valign=\"top\">Jump to: &nbsp; </th><td>" .
+    return "<table><tr><th valign=\"top\">" . &$I('Jump to') . ": &nbsp; </th><td>" .
     $nonalpha_text . $join . $alpha_text . '</td></tr></table>';
 }
 
