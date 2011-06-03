@@ -96,4 +96,7 @@ function cli_checkRepoDirSource {
 
     fi
 
+    # Output sanitated location.
+    echo $LOCATION
+
 }
