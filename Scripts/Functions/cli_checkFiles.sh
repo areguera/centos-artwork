@@ -116,12 +116,8 @@ function cli_checkFiles {
 
             -n|--versioned )
                 for FILE in $(echo $FILES);do
-                    if [[ $(cli_getRepoStatus "$FILE") =~ '^(A|M)$' ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" must be committed first."`" --as-error-line
-                    elif [[ $(cli_getRepoStatus "$FILE") =~ '^D$' ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" has been marked for deletion."`" --as-error-line
-                    elif [[ ! $(cli_getRepoStatus "$FILE") =~ '' ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not versioned."`" --as-error-line
+                    if [[ ! $(cli_getRepoStatus "$FILE") =~ '^[[:space:]]$' ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not at a clean state."`" --as-error-line
                     fi
                 done
                 shift 1
