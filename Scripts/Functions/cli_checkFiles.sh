@@ -51,10 +51,10 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='d,r,h,x,w'
+    local ARGSS='d,r,h,n,x,w'
 
     # Define long options.
-    local ARGSL='directory,regular-file,symbolic-link,execution,working-copy'
+    local ARGSL='directory,regular-file,symbolic-link,execution,versioned,working-copy'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope.
@@ -78,7 +78,7 @@ function cli_checkFiles {
     local FILES=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
 
     # Verify files in the list. It is required at least one.
-    if [[ $FILES == '--' ]];then
+    if [[ $FILES =~ '--$' ]];then
         cli_printMessage "You need to provide one file at least." --as-error-line 
     fi
 
@@ -109,6 +109,19 @@ function cli_checkFiles {
                 for FILE in $(echo $FILES);do
                     if [[ ! -h $FILE ]];then
                         cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`" --as-error-line
+                    fi
+                done
+                shift 1
+                ;;
+
+            -n|--versioned )
+                for FILE in $(echo $FILES);do
+                    if [[ $(cli_getRepoStatus "$FILE") =~ '^(A|M)$' ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" must be committed first."`" --as-error-line
+                    elif [[ $(cli_getRepoStatus "$FILE") =~ '^D$' ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" has been marked for deletion."`" --as-error-line
+                    elif [[ ! $(cli_getRepoStatus "$FILE") =~ '' ]];then
+                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not versioned."`" --as-error-line
                     fi
                 done
                 shift 1
