@@ -7,25 +7,21 @@ organizes documentation backends used by @code{help} functionality of
 @subheading Description
 
 Documentation backends are organized inside directories. There is one
-directory for each documentation backend available. Inside these
-directories, actions related to documentation are implemented by mean
-of shell functions. There is one shell function for each documentation
-action (e.g., reading, editing, updating output, etc.). Optionally,
-other shell functions might be added to backup documentation actions
-functionalities.
+directory for each documentation backend. Inside backend directories,
+documentation actions are implemented by mean of shell functions.
+There is one shell function for each documentation action (e.g.,
+reading, editing, updating output, etc.) and auxiliar shell functions
+to backup documentation actions.
 
-Documentation backends use template files to build language-specific
-documentation manual. Template files related to documentation backends
-are stored in a directory name @file{Templates/LANG} inside the
-backend directory. In this location, @var{LANG} is a variable
-containing the locale information the documentation manual is built on
-(e.g., en_US, es_ES, fr_FR, de_DE, etc.). Inside the
-@file{Template/LANG} directory, it is organized the documentation
-structure used as base to build new language-specific documentation
-manuals (e.g., each time a new documentation entry is created for the
-repository, a template is taken from here to initiate the section
-structure and give order to it). The specific organization of
-documentation structure depends on the backend itself.
+Documentation backends make use of template files to build
+documentation manuals in different languages. Template files are
+stored in @file{Templates/LANG} directory, where @var{LANG} is a
+variable containing the locale information of the documentation manual
+(e.g., en_US, es_ES, fr_FR, de_DE, etc.).  Each time a new
+documentation entry is created for the repository, a template is taken
+from here to initiate the section structure and give order to it. The
+specific organization of documentation structure depends on the
+backend itself.
 
 Inside backend directories, shell functions must have the same
 structure in their names. The name structure used by shell functions
