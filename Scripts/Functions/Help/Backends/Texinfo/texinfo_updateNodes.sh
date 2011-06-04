@@ -25,8 +25,6 @@
 
 function texinfo_updateNodes {
 
-    local TEXINFO_TEMPLATE=''
-
     # Retrive nodes' entries from chapter-menu.texinfo file.
     local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
@@ -48,37 +46,88 @@ function texinfo_updateNodes {
         if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]] \
             && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR}/$INCL) != 'D' ]];then
 
-            # Define what template to apply using the absolute path of
-            # the documentation entry as reference.
-            if [[ ${MANUAL_BASEDIR}/${INCL} =~ 'trunk/Scripts/Functions/[[:alnum:]]+$' ]];then
-                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/section-functions.${FLAG_BACKEND}"
-            else
-                TEXINFO_TEMPLATE="${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/section.${FLAG_BACKEND}"
-            fi
+            # Define absolute path to section templates assignment
+            # file. This is the file that hold the relation between
+            # section template files and repository paths when
+            # documentation entries are created.
+            local CONFFILE="${MANUAL_TEMPLATE}/${MANUAL_NAME}.conf" 
 
-            # Verify texinfo template.
-            cli_checkFiles $TEXINFO_TEMPLATE
+            # Verify existence of configuration file.
+            cli_checkFiles $CONFFILE
 
-            # Copy texinfo template to its destination.
-            svn cp ${TEXINFO_TEMPLATE} ${MANUAL_BASEDIR}/$INCL --quiet
+            # Retrive configuration lines from configuration file. Be
+            # sure no line begining with `#' or space remain in the
+            # line. Otherwise, it would be difficult to loop through
+            # configuration lines.
+            local CONFLINE=''
+            local CONFLINES=$(cat ${CONFFILE} \
+                | egrep -v '#' \
+                | egrep -v '^[[:space:]]*$' \
+                | sed -r 's![[:space:]]*!!g')
 
-            # Expand common translation markers.
+            # Initialize both left hand side and right hand side
+            # configuration values.
+            local CONFLHS=''
+            local CONFRHS=''
+
+            # Initialize absolute path to final texinfo template.
+            local TEMPLATE=''
+
+            # Define what section template to apply using
+            # documentation entry absolute path and values provided by
+            # configuration line. Be sure to break the loop in the
+            # first match.
+            for CONFLINE in $CONFLINES;do
+
+                CONFLHS=$(echo $CONFLINE \
+                    | gawk 'BEGIN{FS = "="}; { print $1 }' \
+                    | sed -r 's![[:space:]]*!!g')
+
+                CONFRHS=$(echo $CONFLINE \
+                    | gawk 'BEGIN{FS = "="}; { print $2 }' \
+                    | sed -r 's![[:space:]]*!!g' | sed -r 's!^"(.+)"$!\1!')
+
+                if [[ ${MANUAL_BASEDIR}/${INCL} =~ $CONFRHS ]];then
+                    TEMPLATE="${MANUAL_TEMPLATE}/${CONFLHS}"
+                    break
+                fi
+
+            done
+
+            # Verify existence of texinfo template file. If no
+            # template is found, stop script execution with an error
+            # message. We cannot continue without it.
+            cli_checkFiles $TEMPLATE
+
+            # Create documentation entry using texinfo template as
+            # reference.
+            svn cp ${TEMPLATE} ${MANUAL_BASEDIR}/$INCL --quiet
+
+            # Expand common translation markers in documentation entry.
             cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
 
-            # Expand specific translation markers.
+            # Expand `Goals' subsection translation markers in
+            # documentation entry.
             sed -i -r "s!=SECT=!${SECT}!g" "${MANUAL_BASEDIR}/$INCL"
+
+            # Expand `See also' subsection translation markers in
+            # documentation entry.
             ${FLAG_BACKEND}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
 
         fi
-        
-        # Output node information based on texinfo menu.
-        echo "@node $NODE"
-        echo "@section `eval_gettext "The @file{\\\$SECT} Directory"`"
-        echo "@cindex $CIND"
-        echo "@include $INCL"
-        echo ""
 
-    # Dump node information into chapter node file.
+        # Verify existence of chapter-nodes template files. If no
+        # chapter-nodes template is found, stop script execution with
+        # an error message. We cannot continue without it.
+        cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${FLAG_BACKEND}
+
+        # Output node information chapter-nodes template file using
+        # the current texinfo menu information.
+        cat ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${FLAG_BACKEND} \
+            | sed -r -e "s!=NODE=!${NODE}!g" -e "s!=SECT=!${SECT}!g" \
+                     -e "s!=CIND=!${CIND}!g" -e "s!=INCL=!${INCL}!g"
+
+    # Dump node definitions into document structure.
     done > $MANUAL_CHAPTER_DIR/chapter-nodes.${FLAG_BACKEND}
 
 }
