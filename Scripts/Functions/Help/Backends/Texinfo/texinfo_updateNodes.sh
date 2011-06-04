@@ -61,7 +61,7 @@ function texinfo_updateNodes {
             # configuration lines.
             local CONFLINE=''
             local CONFLINES=$(cat ${CONFFILE} \
-                | egrep -v '#' \
+                | egrep -v '^#' \
                 | egrep -v '^[[:space:]]*$' \
                 | sed -r 's![[:space:]]*!!g')
 
