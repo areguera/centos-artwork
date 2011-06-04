@@ -65,7 +65,8 @@ function texinfo_updateNodes {
             # Expand common translation markers.
             cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
 
-            # Expand texinfo-specific translation markers.
+            # Expand specific translation markers.
+            sed -i -r "s!=SECT=!${SECT}!g" "${MANUAL_BASEDIR}/$INCL"
             ${FLAG_BACKEND}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
 
         fi
