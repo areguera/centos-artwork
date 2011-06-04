@@ -58,7 +58,7 @@ function texinfo_makeSeeAlso {
                 NODECOMPS_TOTAL=$(($NODECOMPS_TOTAL - 1))
             done)
     else
-        SEEALSO_LIST=$(echo "@item @dots{}")
+        SEEALSO_LIST=$(echo '\\n@item @dots{}')
     fi
 
     # Define the list type and merge its content.
