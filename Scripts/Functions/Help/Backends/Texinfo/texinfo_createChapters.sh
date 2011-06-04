@@ -25,7 +25,7 @@
 
 function texinfo_createChapters {
 
-    local MANUAL_CHAPTER_DIR=''
+    local MANUAL_CHAPTER_NAME=''
 
     # Define list of chapter templates files used as base to create
     # the chapters' documentation manual.
@@ -37,7 +37,7 @@ function texinfo_createChapters {
     for FILE in $FILES;do
 
         # Redefine chapter directory based on template files.
-        MANUAL_CHAPTER_DIR=$(basename $(dirname ${FILE}))
+        MANUAL_CHAPTER_NAME=$(basename $(dirname ${FILE}))
 
         # Verify texinfo templates used as based to build the chapter.
         # Be sure they are inside the working copy of CentOS Artwork
@@ -45,14 +45,24 @@ function texinfo_createChapters {
         cli_checkFiles ${FILE} -wn
 
         # Verify chapter's directory. If it doesn't exist, create it.
-        if [[ ! -d ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_DIR} ]];then
-            svn mkdir ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_DIR} --quiet
+        if [[ ! -d ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} ]];then
+            svn mkdir ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} --quiet
         fi
 
         # Copy template files into chapter's directory.
-        svn cp ${FILE} ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_DIR} --quiet
+        svn cp ${FILE} ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} --quiet
+
+        # Remove content from `chapter-nodes.texinfo' instance to
+        # start with a clean node structure. This file is also used by
+        # to create new repository documentation entries, but we don't
+        # need that information right now (when the `Directories'
+        # chapter structure is created), just an empty copy of the
+        # file. The node structure of `Directories' chapter is created
+        # automatically based on repository directory structure.
+        if [[ $FILE =~ "Directories/chapter-nodes\.texinfo$" ]];then
+            echo "" > ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${FLAG_BACKEND}
+        fi
 
     done
 
 }
-
