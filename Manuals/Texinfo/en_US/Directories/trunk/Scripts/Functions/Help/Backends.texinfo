@@ -13,16 +13,6 @@ There is one shell function for each documentation action (e.g.,
 reading, editing, updating output, etc.) and auxiliar shell functions
 to backup documentation actions.
 
-Documentation backends define document structure and document language
-through templates. Templates are organized in the @file{Templates}
-directory which is located inside the backend directory. Templates are
-used when new documentation manuals are created and later, when new
-documentation entries are created inside it. They provide the model
-required to create both structure and sections of that structure
-inside the manual. There is one documentation manual for each locale
-code and one documentation entry inside the manual for each directory
-inside the repositroy.
-
 Inside backend directories, shell functions must have the same
 structure in their names. The name structure used by shell functions
 here is: @code{suffix_funcname.sh}, were @code{suffix} is the name of
@@ -58,15 +48,25 @@ section are created in blank for you to fill with information, but the
 last one is created automatically and contains a list of links to
 previous sections.
 
+The internal document organization and language used in repository
+documentation entries are both defined through templates.  Templates
+are organized in the @file{Templates} directory which is located
+inside the backend directory. Templates are used when new
+documentation structures are created and later, when new documentation
+entries are created inside it.  There is one documentation manual for
+each language and one documentation entry inside the documentation
+manual for each directory inside the repositroy.
+
 The relation between template files and repository paths is set in the
-@file{repository.conf} file. In this file all lines begining with
-@code{#} are considered comments. Both comments and empty lines are
-removed before evaluation so only configuration lines will be
-evaluated. Configuration lines must be in the form @samp{template =
-"path-regex"}, where @samp{template} is the relative path to section
-template and @samp{"path-regex"} a regular expression describing the
-path information you want to apply the template on. Configuration
-files look like the following:
+@file{repository.conf} file. In this file, all lines begining with a
+@code{#} character are considered comments. Both comments and empty
+lines are removed from the configuration file before evaluating it, so
+only configuration lines will be evaluated. Configuration lines must
+be in the form @samp{template = "path-regex"}, where @samp{template}
+is the relative path to section template and @samp{"path-regex"} a
+regular expression describing the path information where you want to
+apply the template on. Empty spaces are irrelevant around the equal
+sign. As example, consider the following configuration file:
 
 @verbatim
 # This file defines the relation between section templates and
@@ -82,6 +82,8 @@ Directories/section.texinfo             = "(trunk|branches|tags).*\.texinfo$"
 
 @subheading Usage
 
+The following documentation backends are available:
+
 @itemize
 @item @ref{Directories trunk Scripts Functions Help Backends Texinfo}
 @item @ref{Directories trunk Scripts Functions Help Backends Docbook}
@@ -91,7 +93,6 @@ Directories/section.texinfo             = "(trunk|branches|tags).*\.texinfo$"
 @subheading See also
 
 @itemize
-
 @item @ref{Directories trunk Scripts Functions Help} 
 @item @ref{Directories trunk Scripts Functions} 
 @item @ref{Directories trunk Scripts} 
