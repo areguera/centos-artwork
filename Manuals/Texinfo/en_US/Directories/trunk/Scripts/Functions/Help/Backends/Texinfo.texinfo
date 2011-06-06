@@ -9,35 +9,42 @@ functionality to manage the repository documentation manual
 
 The @code{texinfo} backend is supported by GNU Texinfo, a
 documentation system that can produce both online information and a
-printed manual from a single source. The backend is an interface the
-@command{centos-art.sh} script uses to control the frequent
-documenting tasks (e.g., reading, editing, update output files, etc.)
-in the source files of manual structure.  
-
-@subsubheading Output
+printed manual from a single source. The @code{texinfo} backend is an
+interface the @command{centos-art.sh} script uses to control the
+frequent documenting tasks (e.g., reading, editing, update output
+files, etc.) in the source files of a Texinfo documentation manual
+structure.
 
 The @code{texinfo} backend takes the repository documentation manual
-in texinfo format as input and produces Info, Pdf, Xhtml and Txt
-output files in the @file{trunk/Manuals/Texinfo/} directory structure.
+in texinfo format as input and produces Info, Pdf, XML, Xhtml and Txt
+output files in the @file{trunk/Manuals/Texinfo/$LANG} directory
+structure, where @var{$LANG} represents the language of the manual.
 The Info, Pdf and Txt output files are produced through
 @command{makeinfo} command and the Xhtml output through
-@command{texi2html} command.
+@command{texi2html} command. Using the @command{makeinfo} command it
+is also possible to output the repository documentation manual in
+Docbook format, however, the output produced by @command{makeinfo}
+command seems to have some malformations, so the @samp{docbook}
+backend is considered instead (@pxref{trunk Scripts Functions Help
+Backends Docbook}). 
 
-@subsubheading Paths
+When producing Xhtml output, through @command{texi2html} command, the
+output customization is controlled by common and specific
+configuration files. Common configuration files are stored in
+@file{trunk/Manuals/Texinfo} and include @file{repository.css},
+@file{repository-init.pl} and @file{repository.sed}. Specific
+configuration files, on the other hand, are stored inside
+backend-specific directories (e.g.,
+@file{trunk/Scripts/Functions/Help/Backends/Texinfo/Templates/$LANG})
+and includes @file{repository-init.pl}, @file{repository.conf},
+@file{repository.sed}.
 
-The way absolute paths are defined inside the repository documentation
-manual is important.  Absolute paths definitions (e.g., through
-`@@include' and `@@image') must be set from @file{trunk/} directory
-structure on.  This is necessary because the documentation manual is
-exported using @file{@var{$HOME}/artwork} directory structure as
-base.
-
-@subsubheading Templates
-
-Document templates provide the structure information (i.e., how the
-manual is organized), the language used () and the codification (). 
-
-@subsubheading Internationalization
+When writting texinfo files, produced by @samp{texinfo} backend, the
+way absolute paths are defined is important.  Absolute paths
+definitions (e.g., through `@@include' and `@@image') must be set from
+@file{trunk/} directory structure on.  This is necessary because the
+documentation manual is exported using @file{@var{$HOME}/artwork}
+directory structure as base.
 
 Internationalization of repository documentation manual is performed
 trough document templates and the @env{LANG} environment variable.
