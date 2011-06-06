@@ -80,9 +80,9 @@ letter with the accentuation, but put the accentuation over it.).
 @subheading Usage
 
 The @samp{texinfo} backend is the default backend used by @code{help}
-functionality when the @option{--backend} option is not provided or it
-is specified through it, explicitly (e.g.,
-@option{--backend="texinfo"}).
+functionality when no @option{--backend} option is provided to
+@command{centos-art.sh} script; or when it is explicitly specified
+(e.g., @option{--backend="texinfo"}).
 
 @subheading See also
 
