@@ -42,7 +42,7 @@ function render_svg_convertPngToBrands {
             cli_printMessage "${FILE}-${SIZE}.${FORMAT}" --as-creating-line
 
             # Convert and resize to create new file.
-            convert -resize x${SIZE} ${FILE}.png ${FILE}-${SIZE}.${FORMAT}
+            convert -support 0.8 -resize x${SIZE} ${FILE}.png ${FILE}-${SIZE}.${FORMAT}
 
         done
 
