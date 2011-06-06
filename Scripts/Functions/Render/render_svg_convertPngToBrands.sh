@@ -28,57 +28,32 @@
 
 function render_svg_convertPngToBrands {
 
-    local SOURCEFILE=''
-    local TARGETDIR=''
-    local TARGETFILE=''
-    local NEWFILE=''
-
-    # Define absolute path to image file.
-    local FILE="$1"
-
     # Define height dimensions you want to produce brands for.
     local SIZES="16 20 22 24 32 36 40 48 64 96 128 148 164 196 200 512"
 
     # Define image formats you want to produce brands for.
     local FORMATS="png xpm pdf jpg tif"
 
-    # Redefine absolute path to directory where final brand images
-    # will be stored. Notice how both final image directory and design
-    # model have the same name, this is intentional in order to keep
-    # images and design models related and organized inside their own
-    # directory structures.
-    local DIRNAME=$(cli_getRepoName $FILE -d)/$(cli_getRepoName $FILE -fd)
-
-    # Check directory where final brand images will be stored.
-    if [[ ! -d $DIRNAME ]];then
-        mkdir -p ${DIRNAME}
-    fi
-
     for SIZE in ${SIZES};do
-
-        # Redefine name of new file.
-        NEWFILE=${DIRNAME}/${SIZE}
 
         for FORMAT in ${FORMATS};do
         
             # Output action information.
-            cli_printMessage "${NEWFILE}.${FORMAT}" --as-creating-line
+            cli_printMessage "${FILE}-${SIZE}.${FORMAT}" --as-creating-line
 
             # Convert and resize to create new file.
-            convert -resize x${SIZE} ${FILE}.png ${NEWFILE}.${FORMAT}
+            convert -resize x${SIZE} ${FILE}.png ${FILE}-${SIZE}.${FORMAT}
 
         done
 
         # Create logo copy in 2 colors.
-        cli_printMessage "${NEWFILE}.xbm (`gettext "2 colors grayscale"`)" --as-creating-line
-        convert -resize x${SIZE} -colorspace gray -colors 2 ${FILE}.png ${NEWFILE}.xbm
+        cli_printMessage "${FILE}-${SIZE}.xbm (`gettext "2 colors grayscale"`)" --as-creating-line
+        convert -resize x${SIZE} -colorspace gray -colors 2 ${FILE}.png ${FILE}-${SIZE}.xbm
 
         # Create logo copy in emboss effect.
-        cli_printMessage "${NEWFILE}-emboss.png" --as-creating-line
-        convert -resize x${SIZE} -emboss 1 ${FILE}.png ${NEWFILE}-emboss.png
+        cli_printMessage "${FILE}-${SIZE}-emboss.png" --as-creating-line
+        convert -resize x${SIZE} -emboss 1 ${FILE}.png ${FILE}-${SIZE}-emboss.png
 
     done
 
-    # Output division line.
-    cli_printMessage '-' --as-separator-line
 }
