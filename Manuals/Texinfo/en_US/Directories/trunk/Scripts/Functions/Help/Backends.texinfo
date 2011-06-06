@@ -51,22 +51,24 @@ previous sections.
 The internal document organization and language used in repository
 documentation entries are both defined through templates.  Templates
 are organized in the @file{Templates} directory which is located
-inside the backend directory. Templates are used when new
-documentation structures are created and later, when new documentation
-entries are created inside it.  There is one documentation manual for
-each language and one documentation entry inside the documentation
-manual for each directory inside the repositroy.
+inside the backend directory. Templates are used when a new
+documentation structure is created and later, when a new documentation
+entry is created inside it.  There is one documentation manual
+structure for each language supported and one documentation entry
+inside the documentation manual for each directory inside the
+repositroy.
 
 The relation between template files and repository paths is set in the
 @file{repository.conf} file. In this file, all lines begining with a
-@code{#} character are considered comments. Both comments and empty
+@samp{#} character are considered comments. Both comments and empty
 lines are removed from the configuration file before evaluating it, so
-only configuration lines will be evaluated. Configuration lines must
-be in the form @samp{template = "path-regex"}, where @samp{template}
-is the relative path to section template and @samp{"path-regex"} a
-regular expression describing the path information where you want to
-apply the template on. Empty spaces are irrelevant around the equal
-sign. As example, consider the following configuration file:
+only configuration lines will remain to be evaluated.  Configuration
+lines must be in the form @samp{template = "path-regex"}, where
+@samp{template} is the relative path to section template and
+@samp{"path-regex"} a regular expression describing the path
+information where you want to apply the template on. Empty spaces are
+irrelevant around the equal sign. As example, consider the following
+configuration file:
 
 @verbatim
 # This file defines the relation between section templates and
