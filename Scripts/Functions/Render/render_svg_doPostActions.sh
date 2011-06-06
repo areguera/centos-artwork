@@ -62,6 +62,8 @@ function render_svg_doPostActions {
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToGrub:-floyd'
         elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngTo:jpg pdf'
+        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Brands/.+\.svg$" ]];then
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]='svg_convertPngToBrands'
         fi
     fi
 
