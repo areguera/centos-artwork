@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help.sh -- This function standardizes the way documentation is
-# produced and maintain inside the working copy of CentOS Artwork
+# produced and maintained inside the working copy of CentOS Artwork
 # Repository.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
