@@ -40,7 +40,7 @@ and includes @file{repository-init.pl}, @file{repository.conf},
 @file{repository.sed}.
 
 When writting texinfo files, produced by @samp{texinfo} backend, the
-way absolute paths are defined is important.  Absolute paths
+way absolute paths are defined is important.  Absolute path
 definitions (e.g., through `@@include' and `@@image') must be set from
 @file{trunk/} directory structure on.  This is necessary because the
 documentation manual is exported using @file{@var{$HOME}/artwork}
