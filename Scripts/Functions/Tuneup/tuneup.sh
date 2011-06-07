@@ -29,6 +29,10 @@ function tuneup {
     local ACTIONNAM=''
     local ACTIONVAL=''
 
+    # Define absolute path to this function's configuration directory.
+    # Here is where most transformation files are stored in.
+    local FUNCCONFIG=${FUNCDIR}/${FUNCDIRNAM}/Config
+
     # Interpret arguments and options passed through command-line.
     tuneup_getOptions
 
