@@ -50,7 +50,7 @@ function tuneup {
         # Check action value. Be sure the action value matches the
         # convenctions defined for source locations inside the working
         # copy.
-        cli_checkRepoDirSource
+        ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
 
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
