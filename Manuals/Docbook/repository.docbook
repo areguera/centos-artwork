@@ -6,9 +6,11 @@
         <!ENTITY repository-parts       SYSTEM "repository-parts.docbook">
 
         <!-- Repository -->
-        <!ENTITY introduction           SYSTEM "repository-history.docbook">
+        <!ENTITY intro                  SYSTEM "repository-parts/Introduction.docbook">
+        <!ENTITY intro-history          SYSTEM "repository-parts/Introduction/history.docbook">
 
         <!-- Licenses -->
+        <!ENTITY licenses               SYSTEM "repository-parts/Licenses.docbook">
         <!ENTITY licenses-gpl           SYSTEM "repository-parts/Licenses/gpl.docbook">
         <!ENTITY licenses-gfdl          SYSTEM "repository-parts/Licenses/gfdl.docbook">
 
