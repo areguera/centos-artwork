@@ -48,11 +48,11 @@ function tuneup_doBaseActions {
 
         # Define what to do based on file extension.
         if [[ $FILE =~ '\.svg$' ]];then
-            ${FUNCNAM}_doSvg
+            ${FUNCNAM}_svg
         elif [[ $FILE =~ '\.xhtml$' ]];then
-            ${FUNCNAM}_doXhtml
+            ${FUNCNAM}_xhtml
         elif [[ $FILE =~ '\.sh$' ]];then
-            ${FUNCNAM}_doShell
+            ${FUNCNAM}_shell
         fi
 
     done
