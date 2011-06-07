@@ -3,7 +3,7 @@
 # render_svg_checkColorFormats.sh -- This function verifies formats of
 # colors (i.e., the way color information is specified).
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

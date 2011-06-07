@@ -3,7 +3,7 @@
 # texinfo_createChapters.sh -- This function creates the chapters'
 # base directory structure using templates as reference.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

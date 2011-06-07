@@ -5,7 +5,7 @@
 # in order to build the final locale list. This function defines which
 # translation locales are supported inside CentOS Artwork Repository.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

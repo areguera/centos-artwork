@@ -3,7 +3,7 @@
 # render_svg_convertPngTo.sh -- This function provides post-rendition
 # actions to use the `convert' command of ImageMagick tool set.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

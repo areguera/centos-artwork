@@ -50,7 +50,7 @@
 # 194 200 202     c2c8ca
 # 231 241 255     e7f1ff
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Project
+# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
