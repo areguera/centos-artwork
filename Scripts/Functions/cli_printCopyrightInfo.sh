@@ -133,7 +133,7 @@ function cli_printCopyrightInfo {
             --copyright-holder )
             
                 # Output default copyright holder.
-                echo "The CentOS Project"
+                echo "The CentOS Artwork SIG"
                 shift 2
                 break
                 ;;
