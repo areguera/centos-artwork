@@ -230,13 +230,13 @@
 (define %top-margin%
 (if (equal? %visual-acuity% "large-type")
       7.5pi
-      6pi))
+      10pi))
 
 ;;How big do you want the margin at the bottom?
 (define %bottom-margin% 
  (if (equal? %visual-acuity% "large-type")
       7.5pi 
-      5pi))
+      10pi))
 
 ;;Define the text width. (Change the elements in the formula rather
 ;;than the formula itself)
