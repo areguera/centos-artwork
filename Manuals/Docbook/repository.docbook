@@ -2,26 +2,30 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.4//EN" 
     "docbook/sgml-dtd-4.4-1.0-30.1/docbook.dtd" [
 
-        <!ENTITY repository-preamble    SYSTEM "repository-preamble.docbook">
-        <!ENTITY repository-parts       SYSTEM "repository-parts.docbook">
+<!ENTITY repository-preamble    SYSTEM "repository-preamble.docbook">
+<!ENTITY repository-parts       SYSTEM "repository-parts.docbook">
 
-        <!-- Introduction -->
-        <!ENTITY intro                  SYSTEM "repository-parts/Introduction.docbook">
-        <!ENTITY intro-history          SYSTEM "repository-parts/Introduction/history.docbook">
-        <!ENTITY intro-copying          SYSTEM "repository-parts/Introduction/copying.docbook">
-        <!ENTITY intro-usage            SYSTEM "repository-parts/Introduction/usage.docbook">
+<!-- Introduction -->
+<!ENTITY intro                  SYSTEM "repository-parts/Introduction.docbook">
+<!ENTITY intro-history          SYSTEM "repository-parts/Introduction/history.docbook">
+<!ENTITY intro-copying          SYSTEM "repository-parts/Introduction/copying.docbook">
+<!ENTITY intro-usage            SYSTEM "repository-parts/Introduction/usage.docbook">
 
-        <!-- Directories -->
-        <!ENTITY directories SYSTEM "repository-parts/Directories.docbook">
-        <!ENTITY directories-trunk SYSTEM "repository-parts/Directories/trunk.docbook">
-        <!ENTITY directories-trunk-identity SYSTEM "repository-parts/Directories/trunk/Identity.docbook">
+<!-- Directories -->
+<!ENTITY directories SYSTEM "repository-parts/Directories.docbook">
+<!ENTITY directories-trunk SYSTEM "repository-parts/Directories/trunk.docbook">
+<!ENTITY directories-trunk-identity SYSTEM "repository-parts/Directories/trunk/Identity.docbook">
+<!ENTITY directories-trunk-identity-models SYSTEM "repository-parts/Directories/trunk/Identity/Models.docbook">
+<!ENTITY directories-trunk-identity-models-themes SYSTEM "repository-parts/Directories/trunk/Identity/Models/Themes.docbook">
+<!ENTITY directories-trunk-identity-models-themes-default SYSTEM "repository-parts/Directories/trunk/Identity/Models/Themes/Default.docbook">
+<!ENTITY directories-trunk-manuals SYSTEM "repository-parts/Directories/trunk/Manuals.docbook">
 
-        <!-- Licenses -->
-        <!ENTITY licenses               SYSTEM "repository-parts/Licenses.docbook">
-        <!ENTITY licenses-gpl           SYSTEM "repository-parts/Licenses/gpl.docbook">
-        <!ENTITY licenses-gfdl          SYSTEM "repository-parts/Licenses/gfdl.docbook">
+<!-- Licenses -->
+<!ENTITY licenses               SYSTEM "repository-parts/Licenses.docbook">
+<!ENTITY licenses-gpl           SYSTEM "repository-parts/Licenses/gpl.docbook">
+<!ENTITY licenses-gfdl          SYSTEM "repository-parts/Licenses/gfdl.docbook">
 
-    ]>
+]>
 
 <book lang="en">
 &repository-preamble;

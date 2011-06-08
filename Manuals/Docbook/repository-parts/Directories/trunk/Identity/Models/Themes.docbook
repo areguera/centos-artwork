@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sect1 id="repo-dirs-trunk-identity-models-themes" xreflabel="trunk/Identity/Models/Themes" label="4.4">
+<sect1 id="directories-trunk-identity-models-themes" xreflabel="trunk/Identity/Models/Themes">
 
     <title><filename class="directory">trunk/Identity/Models/Themes</filename></title>
 
@@ -18,12 +18,12 @@
     <para>In this directory, themes' design models are organized by
     name. There is one directory for each theme's design model. Each
     design model directory must be named as specified in <xref
-    linkend="repo-usage-section-3" />.  Inside themes' design
-    models directories, there is one directory for each visual
-    manifestions a theme is made of.  These directories are named
-    <emphasis>visual manifestation directories</emphasis> and contain
-    one or more SVG files to describe the visual structure of that
-    visual manifestion.</para>
+    linkend="intro-usage-filenames" />.  Inside themes' design models
+    directories, there is one directory for each visual manifestions a
+    theme is made of.  These directories are named <emphasis>visual
+    manifestation directories</emphasis> and contain one or more SVG
+    files to describe the visual structure of that visual
+    manifestion.</para>
 
     <para>Themes' design models are <acronym>SVG</acronym> files and
     can be localized using the <code>locale</code> functionality of
