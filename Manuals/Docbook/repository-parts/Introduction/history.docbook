@@ -3,11 +3,11 @@
 
     <title>History</title>
 
-    <para>The CentOS Artwork Repository started around 2008, at CentOS
-    Developers mailing list (centos-devel@centos.org) during a
-    discussion about how to automate the slide images of Anaconda. In
-    such discussion, Ralph Angenendt rose up his hand to ask: Do you
-    have something to show?</para>
+    <para>The CentOS Artwork Repository started around 2008 during a
+    discussion about how to automate the slide images of Anaconda, at
+    CentOS Developers mailing list (centos-devel@centos.org). In such
+    discussion, Ralph Angenendt rose up his hand to ask &mdash;Do you have
+    something to show?&mdash;.</para>
     
     <para>To answer the question, I suggested a bash script which
     combined SVG and SED files in order to produce PNG images in
@@ -62,34 +62,37 @@
     structure, based on the mission and the release schema of The
     CentOS Project.</para>
     
-    <para>The directory structures started to be documented inside the
-    repository using text files without markup.  Later, documentation
-    in flat text files was moved to LaTeX format and this way
-    <quote>The CentOS Artwork Repository Manual</quote> started to
-    take form.</para>
+    <para>The repository directory structures began to be documented
+    inside by mean of flat text files.  Later, documentation in flat
+    text files was moved onto LaTeX format and this way <quote>The
+    CentOS Artwork Repository Manual</quote> is initiated.</para>
 
     <para>Around 2010, the rendition script changed its name from
     <command>render.sh</command> to <command>centos-art.sh</command>
     and became a collection of functionalities where rendition was
     just one among others (e.g., documenting and localizing).</para>
     
-    <para>The <command>centos-art.sh</command> was created to organize
-    automation of most frequent tasks inside the repository.  There
-    was no need to have links all around the repository if a
-    command-line interface could be created (through symbolic links,
-    in the <filename class="directory">~/bin</filename> directory) and
-    be called anywhere inside the repository as it would be a regular
+    <para>The <command>centos-art.sh</command> was initialy conceived
+    to organize automation of most frequent tasks inside the
+    repository based in the conceptual idea of Unix toolbox:
+    <emphasis>create small and specialized tools that do one thing
+    well</emphasis>.  This way, functionalities inside
+    <command>centos-art.sh</command> were identified and separated one
+    another. For example, when images were rendered, there was no need
+    to load functionalities related to documentation manual. This
+    layout moved us onto common functionalities and specific
+    functionalities inside <command>centos-art.sh</command> script.
+    Common functionalities are loaded when
+    <command>centos-art.sh</command> script is initiated and are
+    available to specific functionalities.</para>
+    
+    <para>There was no need to have links all around the
+    repository if a command-line interface could be created (through
+    symbolic links, in the <filename
+    class="directory">~/bin</filename> directory) and be called
+    anywhere inside the repository as it would be a regular
     command.</para>
-    
-    <para>Inside <command>centos-art.sh</command>, functionalities
-    started to get identified and separated one another. For example,
-    when images were rendered, there was no need to load
-    functionalities related to documentation manual. This layout moved
-    us onto common functionalities and specific functionalities inside
-    <command>centos-art.sh</command> script. Common functionalities
-    are loaded when <command>centos-art.sh</command> script is
-    initiated and are available to specific functionalities.</para>
-    
+     
     <para>The <command>centos-art.sh</command> script was redesigned
     to handle command-line options trough <command>getopt</command>
     option parser.</para>
@@ -124,9 +127,9 @@
     translators and programmers to produce localized content. The SED
     files are no longer used to handle translations.</para>
     
-    <para>Consolidate the <code>render</code>, <code>help</code> and
-    <code>locale</code> functionalities as the most frequent tasks
-    performed inside the repository. Additionally, the
+    <para>The <code>render</code>, <code>help</code> and
+    <code>locale</code> functionalities were consolidated as the most
+    frequent tasks performed inside the repository. Additionally, the
     <code>prepare</code> and <code>tuneup</code> functionalities are
     maintained as useful tasks.</para>
     

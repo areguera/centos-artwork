@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<sect1 id="intro-usage" xreflabel="Usage convenctions">
+
+    <title>Usage convenctions</title>
+
+    <para>The CentOS Artwork Repository is supported by Subversion
+    (http://subversion.tigris.org/), a version control system which
+    allows you to keep old versions of files and directories (usually
+    source code), keep a log of who, when, and why changes occurred,
+    etc., like CVS, RCS or SCCS.</para>
+
+    <para>When using Subversion there is one "source repository" and
+    many "working copies" of that source repository. The working
+    copies are independent one another, can be distributed all around
+    the world and provide a local place for designers, documentors,
+    translators and programmers to perform their work in a
+    descentralized way.  The source repository, on the other hand,
+    provides a central place for all independent working copies to
+    interchange data and provides the information required to permit
+    extracting previous versions of files at any time.</para>
+
+    <sect2 id="repo-usage-policy" xreflabel="Policy">
+        
+        <title>Policy</title>
+        
+        <para>The CentOS Artwork Repository is a collaborative tool
+        that anyone can have access to. However, changing that tool in
+        any form is something that should be requested in the CentOS
+        Developers mailing list (centos-devel@centos.org).  Generally,
+        people download working copies from CentOS Artwork Repository,
+        study the repository organization, make some changes in their
+        working copies, make some tests to verify such changes do work
+        the way expected and finally request access to commit them up
+        to the CentOS Artwork Repository (i.e., the source repository)
+        for others to benefit from them.</para>
+        
+        <para>Once you've received access to commit your changes,
+        there is no need for you to request permission again to commit
+        other changes from your working copy to CentOS Artwork
+        Repository as long as you behave as a <emphasis>good
+        cooperating citizen</emphasis>. Otherwise, your rights to
+        commit changes might be temporarly revoked or permanently
+        banished.</para>
+        
+        <para>As a good cooperating citizen one understand of a person
+        who respects the work already done by others and share ideas
+        with authors before changing relevant parts of their work,
+        specially in situations when the access required to realize
+        the changes has been granted already.  Of course, there is a
+        time when conversation has taken place, the paths has been
+        traced and changing the work is so obvious that there is no
+        need for you to talk about it; that's because you already did,
+        you already built the trust to keep going. Anyway, the mailing
+        list mentioned above is available for sharing ideas in a way
+        that good relationship between community citizens could be
+        constantly balanced.</para>
+        
+        <para>The relationship between community citizens is monitored
+        by repository administrators. Repository administrators are
+        responsible of granting that everything goes the way it needs
+        to go in order for the CentOS Artwork Repository to accomplish
+        its mission which is: to provide a colaborative tool for The
+        CentOS Community where The CentOS Project corporate visual
+        identity is built and maintained by The CentOS Community
+        itself.</para>
+        
+        <para>It is also important to remember that all the program
+        and documentation source files inside CentOS Artwork
+        Repository must comply the terms of <xref
+        linkend="licenses-gpl" /> and <xref linkend="licenses-gfdl" />
+        respectively in order for them to remain inside the
+        repository.</para>
+        
+    </sect2>
+
+    <sect2 id="intro-usage-worklines" xreflabel="Worklines">
+        
+        <title>Work lines</title>
+        
+        <para>Content production inside the repository is organized by
+        <emphasis>work lines</emphasis>.  There are three major work
+        lines of production inside The CentOS Artwork Repository,
+        which are: <emphasis>Graphic design</emphasis>,
+        <emphasis>Documentation</emphasis> and
+        <emphasis>Localization</emphasis>. The specific way of
+        producing content inside each specific work line is
+        standardized by mean of <command>centos-art.sh</command>
+        script (which in turn, can be considered a work line by itself
+        [e.g., the <emphasis>Automation</emphasis> work line]). The
+        <command>centos-art.sh</command> script provides one specific
+        functionality for automating each major work line of content
+        production (e.g., <code>render</code> for producing images,
+        <code>help</code> for manage documentation, and
+        <code>locale</code> for localizing contents).</para>
+
+        <para>The graphic design work line exists to cover brand
+        design, typography design and themes design mainly.
+        Additionally, some auxiliar areas like icon design,
+        illustration design, brushes design, patterns designs and
+        palettes of colors are also included here for completeness.
+        The graphic design work line is organized in the <filename
+        class="directory">trunk/Identity</filename> directory.</para>
+
+        <para>The documentation work line exists to describe what each
+        directory inside the CentOS Artwork Repository is for, the
+        conceptual ideas behind them and, if possible, how automation
+        scripts make use of them.  The documentation work line is
+        organized in the <filename
+        class="directory">trunk/Manuals</filename> directory.</para>
+
+        <para>The localization work line exists to provide the
+        translation messages required to produce content in different
+        languages.  Translation messages inside the repository are
+        stored as portable objects (e.g., .po, .pot) and machine
+        objects (.mo).  The localization work line is organized in the
+        <filename class="directory">trunk/Locales</filename>
+        directory.</para>
+
+        <para>The automation work line exists to standardize content
+        production inside the working copies of CentOS Artwork
+        Repository.  Here is developed the
+        <command>centos-art.sh</command> script, a bash script
+        specially designed to automate most frequent tasks (e.g.,
+        rendition, documentation and localization) inside the
+        repository.  There is no need to type several tasks, time
+        after time, if they can be programmed into just one executable
+        script.  The automation work line is organized in the
+        <filename class="directory">trunk/Scripts</filename>
+        directory.</para>
+
+    </sect2>
+
+    <sect2 id="intro-usage-conbdirs" xreflabel="Relation between directories">
+
+    <title>Relation between directories</title>
+
+    <para>In order for automation scripts to produce content inside a
+    working copy of CentOS Artwork Repository, it is required that all
+    work lines be related somehow.  The relation is used by automation
+    scripts to know where to retrive the information they need to work
+    with (e.g., design model, translation messages, output locations,
+    etc.).  This kind of relation is built using two path
+    constructions named <emphasis>master paths</emphasis> and
+    <emphasis>auxiliar paths</emphasis>.</para>
+    
+    <para>The master path points only to directories that contain
+    source files (e.g., SVG files) required to produce output base
+    content (e.g., PNG files) through automation scripts.  Each master
+    path inside the repository may have several auxiliar paths
+    associated, but auxiliar paths can only have one master path
+    associated.</para>
+    
+    <para>Master paths used for producing images through SVG rendition
+    are organized under <filename
+    class="directory">trunk/Identity/Models</filename> directory
+    structure and the auxiliar paths under <filename
+    class="directory">trunk/Identity/Images</filename>, <filename
+    class="directory">trunk/Locales</filename> and <filename
+    class="directory">trunk/Manuals</filename> directory
+    structures.</para>
+    
+    <para>Auxiliar paths can point either to directories or files.
+    When an auxiliar path points to a directory, that directory
+    contains information that modifies somehow the content produced
+    from master paths (e.g., translation messages) or provides the
+    output information required to know where the content produced
+    from the master path should be stored.  When an auxiliar path
+    points to a file, that file has no other purpose but to document
+    the master path it refers to.</para>
+
+    <para>Auxiliar paths should never be modified under any reason but
+    to satisfy the relationship with the master path.  Liberal change
+    of auxiliar paths may suppress the conceptual idea they were
+    initially created for; and certainly, automation scripts may stop
+    working as expected.</para>
+     
+    <para>The relationship between auxiliar paths and master paths is
+    built by combining the master path and the second level directory
+    structures of the repository.  The master path is considered the
+    path identifier and the repository second level directory
+    structure is considered the common part of the path where the path
+    identifier is appended to.  So, if we have the master path
+    <filename
+    class="directory">trunk/Identity/Models/Brands</filename>, we'll
+    end up having, at least, the <filename
+    class="directory">trunk/Identity/Images/Brands</filename> auxiliar
+    path for storing output files and, optionally, one path under
+    <filename class="directory">trunk/Manuals</filename> for storing
+    documentation and one path under <filename
+    class="directory">trunk/Locales</filename> for storing
+    localizations.</para> 
+    
+    </sect2>
+
+    <sect2 id="intro-usage-syncro" xreflabel="Syncronizing paths">
+
+    <title>Syncronizing paths</title>
+
+    <para>Once both master paths and their auxiliar paths have been
+    set, they shouldn't be changed.  Assuming one master path must be
+    changed it is required that all related auxiliar paths be changed,
+    too.  This is required in order for master paths to retain their
+    relation with auxiliar paths.  This process of keeping relation
+    between master paths and auxiliar paths is known as <emphasis>path
+    syncronization</emphasis>. </para>
+    
+    <para>Path syncronization is required for automation scripts to
+    know where to store final output, where to retrive translation
+    messages, documentation, and any information that might be
+    desired. If the relation between master paths and auxiliar paths
+    is lost, there is no way for <command>centos-art.sh</command>
+    script to know where to retrive the information it needs to work
+    with.  Path syncronization is the way we use to organize and
+    extend the information stored in the repository.</para>
+    
+    <para>Path syncronization may imply both movement of files and
+    replacement of content inside files.  Movement of files is related
+    to actions like renaming files and directories inside the
+    repository.  Replacement of content inside files is related to
+    actions like replacing information (e.g., paths information)
+    inside files in order to keep file contents and file locations
+    consistent one another.</para>
+
+    <para>The order followed to syncronize path information is very
+    important because the versioned nature of the repository files we
+    are working with. When a renaming action must be performed, we
+    avoid making replacements inside files first and file movements
+    later. This would require two commit actions: one for the files'
+    internal changes and another for the file movement itself.
+    Otherwise, we prefer to perform file movements first and file
+    internal replacements later. This way it is possible to commit
+    both changes as if they were just one.</para>
+ 
+    <warning><para>There is no support for URLs actions inside
+    <command>centos-art.sh</command> script.  The
+    <command>centos-art.sh</command> script is designed to work with
+    local files inside the working copy only. If you need to perform
+    URL actions directly, use Subversion commands
+    instead.</para></warning>
+
+    <para>At this moment there is no full implementation of path
+    syncronization process inside <command>centos-art.sh</command>
+    script except by <quote>texinfo</quote> backend of
+    <code>help</code> functionality which provides a restricted
+    implementation of path syncronization to this specific area of
+    documentation through the <option>--copy</option>,
+    <option>--delete</option> and <option>--rename</option> options.
+    The plan for a full implementation of path syncronization would be
+    to create individual restricted implementations like this one for
+    other areas that demand it and then, create a higher implmentation
+    that combines all restricted implementations as needed. This way,
+    if we try to rename a repository directory the higer action will
+    define which are all the restricted actions that should be
+    performed in order for make a full path syncronization. For
+    example, if the directory we are renaming is part of graphic
+    design work line, it is required to syncronize related paths in
+    documentation and localization work lines. Likewise, if the
+    directory we are renaming is in documentation work line, it is
+    required to syncronize related paths in graphic design and
+    localization work lines.  In all these cases, the direction used
+    for syncronizing paths must be from master path to auxiliar path
+    and never the opposite (i.e., rename the master path first and
+    auxiliar paths later).</para>
+ 
+    <para>A practical example, through which you can notice the
+    usefulness of path syncronization process, is what happen when
+    documentation entries are renamed (see section ...).</para>
+
+    </sect2>
+
+    <sect2 id="intro-usage-extending" xreflabel="Extending repository
+    organization">
+        
+        <title>Extending repository organization</title>
+        
+        <para>Occasionly, you may find that new components of The
+        CentOS Project corporate visual identity need to be added to
+        the repository in order to work them out. If that is the case,
+        the first question we need to ask ourselves, before start to
+        create directories blindly all over, is: <emphasis>What is the
+        right place to store it?</emphasis></para>
+        
+        <para>The best place to find answers is in The CentOS
+        Community (see page http://wiki.centos.org/Help), but going
+        there with hands empty is not good idea. It may give the
+        impression you don't really care about. Instead, consider the
+        following suggestions to find your own comprehension in order
+        to make your own propositions based on it.</para>
+        
+        <para>When extending respository structure it is very useful
+        to bear in mind The CentOS Project corporate visual identity
+        structure, The CentOS Mission and The CentOS Release Schema.
+        The rest is a matter of choosing appropriate names. It is also
+        worth to know that each directory in the repository responds
+        to a conceptual idea that justifies its existence.</para>
+        
+        <para>To build a directory structure inside the repository,
+        you need to define the conceptual idea first and later create
+        the directory, remembering that there are locations inside the
+        repository that define conceptual ideas you probably would
+        prefer to reuse.  For example, the <filename
+        class="directory">trunk/Identity/Images/Themes</filename>
+        directory stores theme artistic motifs, the <filename
+        class="directory">trunk/Identity/Models/Themes</filename>
+        directory stores theme design models, the <filename
+        class="directory">trunk/Manuals</filename> directory stores
+        documentation files, the <filename
+        class="directory">trunk/Locales</filename> stores translation
+        messages, and the <filename
+        class="directory">trunk/Scripts</filename> stores automation
+        scripts.</para>
+        
+        <para>To better illustrate this desition process, you can
+        consider to examin the <filename
+        class="directory">trunk/Identity/Images/Themes/TreeFlower/3</filename>
+        directory structure as example.  This directory can be read
+        as: the theme development line of version <quote>3</quote> of
+        <quote>TreeFlower</quote> artistic motif.  Additional, we can
+        say that <quote>TreeFlower</quote> artistic motif is part of
+        themes, as themes are part of The CentOS Project corporate
+        visual identity.</para>
+        
+        <para>The relationship between conceptual ideas can be
+        stablished by reading each repository documentation entry
+        individually, from <filename
+        class="directory">trunk</filename> directory to a deeper
+        directory in the path. For reading repository documentation
+        entries we use the <code>help</code> functionality of
+        <command>centos-art.sh</command> script.</para>
+        
+    </sect2>
+
+    <sect2 id="intro-usage-filenames" xreflabel="File names convenction">
+        
+        <title>File names convenction</title>
+        
+        <para>Inside the CentOS Artwork Repository, generally, file
+        names are all written in lowercase (e.g.,
+        <filename>01-welcome.png</filename>,
+        <filename>splash.png</filename>,
+        <filename>anaconda_header.png</filename>, etc.) and directory
+        names are all written capitalized (e.g., <filename
+        role="directory">Identity</filename>, <filename
+        role="directory">Themes</filename>, <filename
+        role="directory">Motifs</filename>) and sometimes in cammel
+        case (e.g., <filename role="directory">TreeFlower</filename>,
+        etc.).  </para>
+
+        <para>In the very specific case of repository documentation
+        entries, file names follow the directory naming convenction.
+        This is because they are documenting directories and that is
+        something we want to remark. So, to better describe what we
+        are documenting, documentation entries follow the name
+        convenction used by the item they document.</para>
+        
+    </sect2>
+
+    <sect2 id="intro-usage-layout" xreflabel="Repository layout">
+
+        <title>Repository layout</title>
+
+        <para>The CentOS Artwork Repository is organized through a
+        convenctional <quote>trunk</quote>, <quote>branches</quote>
+        and <quote>tags</quote> layout. Explanation of each directory
+        inside the repository can be found in the <xref
+        linkend="directories" /> chapter.</para>
+        
+    </sect2>
+
+</sect1>
