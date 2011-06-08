@@ -101,6 +101,19 @@ second one the target location. Both source location and target
 location must point to a directory under the working copy or files
 under @file{trunk/Manuals/Texinfo/Directories} directory structure.
 
+Renaming a repository documentation entry introduces some
+complications because inclusions, menus, nodes and cross references
+are built using master path information as reference.  Now, to see
+what kind of complication we are trying to solve with path
+syncronization, consider what would happen to document structural
+definitions (i.e., inlusions, menus, nodes and cross refereces) when a
+master path that is suddenly renamed to something different.  At this
+point, if the path information is not updated, we lose connection
+between the master path and the auxiliar path created to store the
+related documentation entry, as well as the related structural
+definitions that will end up pointing to a master path that no longer
+exist.
+
 @end table
 
 When documentation entries are removed (e.g., through
