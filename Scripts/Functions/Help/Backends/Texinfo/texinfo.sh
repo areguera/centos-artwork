@@ -57,7 +57,7 @@ function texinfo {
     # something similar. Subsections and subsubsections will not have
     # their own files, they all will be written inside the same
     # section file that represents the repository documentation entry.
-    MANUAL_CHAPTER_DIR=${MANUAL_BACKEND}/${MANUAL_CHAPTER_NAME}
+    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}
 
     # Define absolute path to backend template files.
     MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/$(cli_getCurrentLocale)
