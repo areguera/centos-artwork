@@ -1,8 +1,10 @@
 #!/bin/bash
 #
-# docbook_updateOutputFileXhtml.sh -- This function uses the xsltproc
-# for transforming the repository documentation manual from DocBook to
-# Xhtml.
+# docbook_updateOutputFilePdf.sh -- This function produces XHTML
+# output for repository documentation manual, in DocBook XML format.
+# The procedure was taken from `docbook-style-xsl-1.69.1-5.1'
+# documentation, which says: ---To publish HTML from your XML
+# documents, you just need an XSLT engine.---.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -29,13 +31,26 @@ function docbook_updateOutputFileXhtml {
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.xhtml" --as-updating-line
 
-    # Verify temporal directory and create it if doesn't exist.
+    # Define absolute path to DocBook source file. This is the
+    # repository documentation manual file where DOCTYPE and ENTITY
+    # definition lines are set.
+    local SRC=${MANUAL_BACKEND}/${MANUAL_NAME}.docbook
+
+    # Define absolute path to PDF target file. This is the final
+    # location the PDF file produced as result of DocBook to PDF
+    # transformation will be stored in.
+    local DST="${MANUAL_BASEFILE}.pdf"
+
+    # Define absolute path of the XSLT file used to create the
+    # formatting object (.fo) file.
+    local XSLT=/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl
+
+    # Verify directory where the XHTML files will be stored in.
     if [[ ! -d ${MANUAL_BASEFILE}.xhtml ]];then
         mkdir ${MANUAL_BASEFILE}.xhtml
     fi
 
-    # Execute docbook2pdf convertion.
-    xsltproc /usr/share/sgml/docbook/xsl-stylesheets/xhtml/chunk.xsl \
-    --output ${MANUAL_BASEFILE}.xhtml/ ${MANUAL_BACKEND}/${MANUAL_NAME}.docbook 2> /dev/null
+    # Transform DocBook XML to XHTML supressing all stderr output.
+    xsltproc $XSLT --output $DST $SRC 2> /dev/null
 
 }
