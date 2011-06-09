@@ -41,6 +41,20 @@ function locale {
     # related object or not.
     local FLAG_DONT_CREATE_MO='false'
 
+    # Define localization (l10n) base directory. This is the location
+    # where all translation messages are organized in. Translation
+    # messages, here, are organized using the same order of the
+    # components they represent inside the `trunk/Identity',
+    # `trunk/Manuals' or `trunk/Scripts' directory structures.
+    # Moreover, the localization base directory must be used as source
+    # location for subverion operations (e.g., status, update, commit,
+    # etc.).  Otherwise, it would be difficult to add directory
+    # structures that have several levels down from the localization
+    # base directory up to the repository (e.g., it is not possible in
+    # subversion to add a directory structure which parent directory
+    # structure hasn't been added to the repository, previously.).
+    L10N_BASEDIR="$(cli_getRepoTLDir)/Locales"
+
     # Interpret arguments and options passed through command-line.
     locale_getOptions
 
@@ -54,6 +68,11 @@ function locale {
     # the option passed (e.g., `--edit', `--read', `--search', etc.).
     # In that sake, we defined action name inside document_getArguments,
     # at the moment of interpreting options.
+
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_syncroRepoChanges "${L10N_BASEDIR}"
 
     # Define action value. As convenction, we use non-option arguments
     # to define the action value (ACTIONVAL) variable.
@@ -77,11 +96,25 @@ function locale {
         # individual files inside the same parent directory.
         WORKDIR=$WORKDIR/$(cli_getCurrentLocale)
 
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        cli_syncroRepoChanges "${WORKDIR}"
+        # Prepare working direcotry to receive .po files.
+        if [[ ! -d ${WORKDIR} ]];then
+
+            # Print separator line.
+            cli_printMessage "-" --as-separator-line
+
+            # Output action message.
+            cli_printMessage "${WORKDIR}" --as-creating-line
+
+            # Create directory making parent directories as needed.
+            mkdir -p ${WORKDIR}
+
+            # Commit changes from working copy to central repository
+            # only.  At this point, changes in the repository are not
+            # merged in the working copy, but chages in the working
+            # copy do are committed up to repository.
+            cli_commitRepoChanges "${L10N_BASEDIR}"
+
+        fi
 
         # Execute action name.
         if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
@@ -90,12 +123,12 @@ function locale {
             cli_printMessage "`gettext "A valid action is required."`" --as-error-line
         fi
 
-        # Commit changes from working copy to central repository only.
-        # At this point, changes in the repository are not merged in
-        # the working copy, but chages in the working copy do are
-        # committed up to repository.
-        cli_commitRepoChanges "${WORKDIR}"
-
     done
+
+    # Commit changes from working copy to central repository only.  At
+    # this point, changes in the repository are not merged in the
+    # working copy, but chages in the working copy do are committed up
+    # to repository.
+    cli_commitRepoChanges "${L10N_BASEDIR}"
 
 }
