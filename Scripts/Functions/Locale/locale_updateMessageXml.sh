@@ -45,23 +45,34 @@ function locale_updateMessageXml {
     # localized content from being interpreted as design models. In
     # that sake, supress language-specific files from the list of
     # files to process.
-    local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}.*\.${EXTENSION}" --type="f" \
+    local FILES=$(cli_getFilesList ${ACTIONVAL} \
+        --pattern="${FLAG_FILTER}.*\.${EXTENSION}" \
+        --maxdepth='1' --type="f" \
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/')
 
     # Print action message.
     cli_printMessage "${FILE}.pot" --as-updating-line
 
-    # Prepare directory structure to receive .po files.
-    if [[ ! -d $(dirname ${FILE}) ]];then
-        mkdir -p $(dirname ${FILE})
-    fi
-
-    # Retrive translatable strings from XML-based files and
-    # create the portable object template (.pot) from them.
-    /usr/bin/xml2po -a ${FILES} | msgcat --output=${FILE}.pot --width=70 --sort-by-file -
+    # Normalize XML files and expand entities before retriving
+    # translatable strings and creating the portable object template
+    # (.pot).  The translatable strings are retrived from the
+    # normalized output of files, not files themselves (because of
+    # this, we don't include `#: filename:line' output on .pot files).
+    # Entity expansion is also necessary for DocBook documents to be
+    # processed correctly. Notice that some long DocBook document
+    # structures might use entities to split the document structure
+    # into smaller pieces so they could be easier to maintain.
+    xmllint --valid --noent ${FILES} | xml2po -a - \
+        | msgcat --output=${FILE}.pot --width=70 --no-location -
 
     # Verify, initialize or merge portable objects from portable
     # object templates.
     locale_updateMessagePObjects "${FILE}"
+
+    # Commit changes from working copy to central repository only.  At
+    # this point, changes in the repository are not merged in the
+    # working copy, but chages in the working copy do are committed up
+    # to repository.
+    cli_commitRepoChanges "${L10N_BASEDIR}"
 
 }
