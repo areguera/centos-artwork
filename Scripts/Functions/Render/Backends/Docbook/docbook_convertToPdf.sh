@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# docbook_updateOutputFilePdf.sh -- This function produces PDF output
-# for repository documentation manual, in DocBook XML format. The
+# docbook_convertToPdf.sh -- This function produces PDF output for
+# repository documentation manual, in DocBook XML format. The
 # procedure was taken from `docbook-style-xsl-1.69.1-5.1'
 # documentation, which says: ---To get to print, you need an XSLT
 # engine (e.g., `xsltproc') to produce formatting objects (FO), which
@@ -31,7 +31,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function docbook_updateOutputFilePdf {
+function docbook_convertToPdf {
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line
@@ -43,12 +43,12 @@ function docbook_updateOutputFilePdf {
     # Define absolute path to DocBook source file. This is the
     # repository documentation manual file where DOCTYPE and ENTITY
     # definition lines are set.
-    local SRC=${MANUAL_BACKEND}/${MANUAL_NAME}.docbook
+    local SRC=${INSTANCE}
 
     # Define absolute path to PDF target file. This is the final
     # location the PDF file produced as result of DocBook to PDF
     # transformation will be stored in.
-    local DST="${MANUAL_BASEFILE}.pdf"
+    local DST="${FILE}.pdf"
 
     # Define absolute path of the XSLT file used to create the
     # formatting object (.fo) file.
