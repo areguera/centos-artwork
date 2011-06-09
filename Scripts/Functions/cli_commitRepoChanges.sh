@@ -97,24 +97,6 @@ function cli_commitRepoChanges {
 
     done
 
-    # In case new unversioned files exist, ask the user to add them
-    # into the repository. This may happen when new documentation
-    # entries are created.
-    if [[ ${FILESNUM[1]} -gt 0 ]];then
-
-        # Outout separator line.
-        cli_printMessage '-' --as-separator-line
-
-        cli_printMessage "`ngettext "The following file is unversioned" \
-            "The following files are unversioned" ${FILESNUM[1]}`:"
-        for FILE in ${FILES[1]};do
-            cli_printMessage "$FILE" --as-response-line
-        done
-        cli_printMessage "`ngettext "Do you want to add it now?" \
-            "Do you want to add them now?" ${FILESNUM[2]}`" --as-yesornorequest-line
-        svn add ${FILES[1]} --quiet
-    fi
-
     # Check total amount of changes and, if any, check differences and
     # commit them up to central repository.
     if [[ $CHNGTOTAL -gt 0 ]];then
@@ -122,13 +104,37 @@ function cli_commitRepoChanges {
         # Outout separator line.
         cli_printMessage '-' --as-separator-line
 
-        # Verify changes on locations.
-        cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-        svn diff $LOCATIONS | less
+        # In the very specific case unversioned files, we need to add
+        # them to the repository first, in order to make them
+        # available for subversion commands (e.g., `copy', etc.)
+        # Otherwise, if no unversioned file is found, go ahead with
+        # change differences and committing. Notice that if there is
+        # mix of changes (e.g., aditions and modifications), addition
+        # take preference and no other change is considered.  In order
+        # for other changes to be considered, be sure no adition is
+        # present, or that they have already happened.
+        if [[ ${FILESNUM[1]} -gt 0 ]];then
 
-        # Commit changes on locations.
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        svn commit $LOCATIONS
+            cli_printMessage "`ngettext "The following file is unversioned" \
+                "The following files are unversioned" ${FILESNUM[1]}`:"
+            for FILE in ${FILES[1]};do
+                cli_printMessage "$FILE" --as-response-line
+            done
+            cli_printMessage "`ngettext "Do you want to add it now?" \
+                "Do you want to add them now?" ${FILESNUM[1]}`" --as-yesornorequest-line
+            svn add ${FILES[1]} --quiet
+
+        else
+
+            # Verify changes on locations.
+            cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
+            svn diff $LOCATIONS | less
+
+            # Commit changes on locations.
+            cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
+            svn commit $LOCATIONS
+
+        fi
 
     fi
 
