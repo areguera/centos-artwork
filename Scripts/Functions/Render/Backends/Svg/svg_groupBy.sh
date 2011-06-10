@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# render_svg_groupBy.sh -- This function provides post-rendition
-# action to group files inside directories named as their file
-# extensions.  For example: if the current file is a .png file, it is
-# moved inside a Png/ directory; if the current file is a .jpg file,
-# it is stored inside a Jpg/ directory, and so on.
+# svg_groupBy.sh -- This function provides post-rendition action to
+# group files inside directories named as their file extensions.  For
+# example: if the current file is a .png file, it is moved inside a
+# Png/ directory; if the current file is a .jpg file, it is stored
+# inside a Jpg/ directory, and so on.
 #
 # For this function to work correctly, you need to specify which file
 # type you want to group. This is done in the post-rendition ACTIONS
@@ -31,13 +31,14 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_groupBy {
+function svg_groupBy {
 
     local SOURCE=''
     local TARGET=''
 
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
+    local FORMAT=''
     local FORMATS=$(render_getConfigOption "$ACTION" '2-')
 
     for FORMAT in $FORMATS;do
