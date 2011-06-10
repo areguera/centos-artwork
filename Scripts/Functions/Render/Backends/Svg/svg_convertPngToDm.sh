@@ -105,7 +105,7 @@ function svg_convertPngToDm {
             
         Kdm )
             FILES="\
-            ${BRANDS}/centos-symbol-resized-48.png:centos-symbol.png
+            ${BRANDS}/Symbols/centos-48.png:centos-symbol.png
             ${OUTPUT}/release.png:centos-release.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
