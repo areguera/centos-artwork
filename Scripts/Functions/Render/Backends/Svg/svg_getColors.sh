@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# render_svg_getColors.sh -- This function takes one palette produced
-# by Gimp (e.g., syslinux.gpl) as input and outputs a list of colors
-# in the specified format. In order for this function to output the
-# color in the format specified, it is needed that the fourth column
-# in the gpl palette be set in the `rrggbb' format and the appropriate
-# conversion be implemented here.
+# svg_getColors.sh -- This function takes one palette produced by Gimp
+# (e.g., syslinux.gpl) as input and outputs a list of colors in the
+# specified format. In order for this function to output the color in
+# the format specified, it is needed that the fourth column in the gpl
+# palette be set in the `rrggbb' format and the appropriate conversion
+# be implemented here.
 #
 # Notice that using both the `--head' and `--tail' options it is
 # possible to control how many consecutive items does the list of
@@ -32,7 +32,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_getColors {
+function svg_getColors {
 
     # Define short options.
     local ARGSS=''
@@ -110,9 +110,9 @@ function render_svg_getColors {
         # of them is present, use The CentOS Project default color
         # then.
         if [[ -f $MOTIF_PALETTE ]];then
-            COLORS=$(render_svg_getColors $MOTIF_PALETTE --head=1 --tail=1)
+            COLORS=$(${RENDER_BACKEND}_getColors $MOTIF_PALETTE --head=1 --tail=1)
         elif [[ -f $MODEL_PALETTE ]];then
-            COLORS=$(render_svg_getColors $MODEL_PALETTE --head=1 --tail=1)
+            COLORS=$(${RENDER_BACKEND}_getColors $MODEL_PALETTE --head=1 --tail=1)
         else
             COLORS='#204c8d'
         fi
