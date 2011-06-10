@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# render_svg_convertGplToHex.sh -- This function takes one palette
-# produced by Gimp (e.g., syslinux.gpl) as input and outputs the list
-# of hexadecimal colors and their respective index position the
+# svg_convertGplToHex.sh -- This function takes one palette produced
+# by Gimp (e.g., syslinux.gpl) as input and outputs the list of
+# hexadecimal colors and their respective index position the
 # `pnmtolss16' program needs (e.g., #RRGGBB=0 #RRGGBB=1 ... [all
 # values in the same line]).
 #
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertGplToHex {
+function svg_convertGplToHex {
 
     # Define path to GPL palette. This is the .gpl file we use to
     # retrive color information from.
@@ -40,19 +40,19 @@ function render_svg_convertGplToHex {
     local NUMBER="$3"
 
     # Define list of colors from GPL palette.
-    local COLORS=$(render_svg_getColors $PALETTE_GPL --head=$NUMBER --tail=$NUMBER)
+    local COLORS=$(${RENDER_BACKEND}_getColors $PALETTE_GPL --head=$NUMBER --tail=$NUMBER)
 
     # Verify number of colors returned in the list. They must match
     # exactly the amount specified, no more no less. Sometimes, the
     # list of colors may have less colors than it should have, so we
     # need to prevent such palettes from being used.
-    render_svg_checkColorAmount "$COLORS" "$NUMBER"
+    ${RENDER_BACKEND}_checkColorAmount "$COLORS" "$NUMBER"
 
     # Verify format of colors.
-    render_svg_checkColorFormats "$COLORS" --format='rrggbb'
+    ${RENDER_BACKEND}_checkColorFormats "$COLORS" --format='rrggbb'
 
-    # Create list of colors to be process by pnmtolss16 
-    echo "$COLORS" | nl | awk '{ printf "%s=%d ", $2, $1 - 1 }' \
+    # Create list of colors to be processed by `pnmtolss16'.
+    echo "$COLORS" | nl | gawk '{ printf "%s=%d ", $2, $1 - 1 }' \
         > $PALETTE_HEX
 
     # Verify HEX palette existence.
