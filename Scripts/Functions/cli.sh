@@ -103,9 +103,9 @@ function cli {
     # Check text editor execution rights.
     cli_checkFiles $EDITOR --execution
 
-    # Go for function initialization. Keep the cli_getFunctions
+    # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
-    cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}"
+    cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}"
 
     # Execute function.
     eval $FUNCNAM
