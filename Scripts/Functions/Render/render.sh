@@ -65,6 +65,15 @@ function render {
     # performs directory-specific rendition.
     local FLAG_DONT_DIRSPECIFIC='false'
 
+    # Initialize name of rendition backend as an empty value. The name
+    # of rendition backend is determined automatically based on
+    # template file extension, later, at rendition time. 
+    local RENDER_BACKEND=''
+
+    # Initialize absolute path to backend's base directory, the place
+    # where backend-specific directories are stored in.
+    local RENDER_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
+
     # Interpret arguments and options passed through command-line.
     render_getOptions
 
