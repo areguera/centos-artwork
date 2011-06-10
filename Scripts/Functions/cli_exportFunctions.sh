@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_exportFunctions.sh -- This function loads funtionalities supported by
-# centos-art.sh script.
+# cli_exportFunctions.sh -- This function exports funtionalities to
+# `centos-art.sh' script execution evironment.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -43,6 +43,7 @@ function cli_exportFunctions {
     local PATTERN="^function[[:space:]]+${SUFFIX}[[:alnum:]_]*[[:space:]]+{$"
 
     # Define list of files.
+    local FUNCFILE=''
     local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${SUFFIX}.*\.sh" --maxdepth="1")
 
     # Verify list of files. If no function file exists for the
@@ -54,17 +55,17 @@ function cli_exportFunctions {
     fi
 
     # Process list of files.
-    for FILE in $FUNCFILES;do
+    for FUNCFILE in $FUNCFILES;do
 
         # Verify file execution rights.
-        cli_checkFiles $FILE --execution
+        cli_checkFiles $FUNCFILE --execution
 
         # Initialize file.
-        . $FILE
+        . $FUNCFILE
 
         # Export function names inside the file to current shell
         # script environment.
-        export -f $(egrep "${PATTERN}" ${FILE} | cut -d' ' -f2)
+        export -f $(egrep "${PATTERN}" ${FILE} | gawk '{ print $2 }')
 
     done
 
