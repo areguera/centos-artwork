@@ -1,54 +1,48 @@
 #!/bin/bash
 #
-# render_svg_convertPngToSyslinux.sh -- This function provides post-rendition
+# svg_convertPngToSyslinux.sh -- This function provides post-rendition
 # action used to produce LSS16 images, the images used by isolinux.
 #
-# This function uses three different formats to handle the same color
-# information. Initially, the color information is defined with GIMP
-# (The GNU Image Manipulation Program) as a palette of color. This
-# palette of colors contains 16 colors only and is saved in a file
-# named `syslinux.gpl.
+# Initially, the color information is defined with GIMP (The GNU Image
+# Manipulation Program) as a `.gpl' palette of color. This palette of
+# colors contains 16 colors only and is saved in a file named
+# `syslinux.gpl.  The `syslinux.gpl' file is used to build two other
+# files: the `syslinux.ppm' file and the `syslinux.hex' file. The
+# `syslinux.ppm' provides the color information needed to reduce the
+# full color PNG image, produced as result of SVG base-rendition, to
+# the amount of colors specified (i.e., 16 colors). Later, with the 16
+# color PNG image already created, the `syslinux.hex' file is used to
+# build the LSS16 image.
 #
-# The `syslinux.gpl' file is used to build two other files: the
-# `syslinux.ppm' file and the `syslinux.hex' file. The `syslinux.ppm'
-# file is used to reduce a full color PNG image to the amount of
-# colors it specifies (i.e., 16 colors). Later, with the 16 color
-# image already created, the `syslinux.hex' file is used to build the
-# LSS16 image.
-#
-# In order to produce images in LSS16 format correctly, it is needed
-# that both the `syslinux.ppm' and `syslinux.hex' files contain the
+# In order to produce images in LSS16 format correctly, it is required
+# that both the `syslinux.ppm' and `syslinux.hex' files do contain the
 # same color information. This is, both `syslinux.ppm' and
-# `syslinux.hex' shoud represent the same color values and the same
+# `syslinux.hex' must represent the same color values and in the same
 # color index.
-#
-# This function save you the work of preparing both `syslinux.ppm' and
-# `syslinux.hex'. Instead, you only need to prepare the `syslinux.gpl'
-# file with the color information you want to produce images.
 #
 # In order for this function to work, the `syslinux.gpl' file should
 # have a format similar to the following:
 #
-# GIMP Palette
-# Name: TreeFlower-4-Syslinux
-# Columns: 16
-# #
-# 10  22  40     0a1628
-# 9  28  52     091c34
-# 16  34  63     10223f
-# 20  37  67     142543
-# 15  39  74     0f274a
-# 12  45  85     0c2d55
-# 20  43  78     142b4e
-# 255 255 255     ffffff
-# 21  51  95     15335f
-# 41  52  70     293446
-# 32  76 141     204c8d
-# 77  90 107     4d5a6b
-# 143 154 167     8f9aa7
-# 128 179 255     80b3ff
-# 194 200 202     c2c8ca
-# 231 241 255     e7f1ff
+#   GIMP Palette
+#   Name: CentOS-TreeFlower-4-Syslinux
+#   Columns: 16
+#   #
+#    32  76 141	204c8d
+#    37  82 146	255292
+#    52  94 153	345e99
+#    73 110 162	496ea2
+#    91 124 172	5b7cac
+#   108 136 180	6c88b4
+#   120 146 186	7892ba
+#   131 158 193	839ec1
+#   255 255 255	ffffff
+#   146 170 200	92aac8
+#   162 182 209	a2b6d1
+#   183 199 219	b7c7db
+#   204 216 230	ccd8e6
+#   221 229 238	dde5ee
+#   235 241 245	ebf1f5
+#   246 251 254	f6fbfe
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -70,7 +64,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngToSyslinux {
+function svg_convertPngToSyslinux {
 
     # Define number of colors the images will be produced on.
     local COLORS='16'
@@ -113,10 +107,11 @@ function render_svg_convertPngToSyslinux {
     local PALETTE_GPL=${MOTIF_DIR}/Palettes/syslinux.gpl
 
     # Verify GPL palette existence. If it doesn't exist copy the one
-    # provided by the design model and expand translation markers in
-    # it.
+    # provided by the design model through subversion (to keep track
+    # of the change) and expand translation markers in the copied
+    # instance.
     if [[ ! -f $PALETTE_GPL ]];then
-        cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/syslinux.gpl ${PALETTE_GPL}
+        svn cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/syslinux.gpl ${PALETTE_GPL}
         cli_replaceTMarkers ${PALETTE_GPL}
     fi
 
@@ -147,10 +142,10 @@ function render_svg_convertPngToSyslinux {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    render_svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
+    ${RENDER_BACKEND}_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
  
     # Create HEX palette using GPL palette.
-    render_svg_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLORS"
+    ${RENDER_BACKEND}_convertGplToHex "$PALETTE_GPL" "$PALETTE_HEX" "$COLORS"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
