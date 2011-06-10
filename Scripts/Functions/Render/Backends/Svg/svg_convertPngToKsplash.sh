@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# render_svg_convertPngToKsplash.sh -- This function collects KDE
-# splash (KSplash) required files and creates a tar.gz package that
-# groups them all together. Use this function as last-rendition action
-# for KSplash base-rendition action.
+# svg_convertPngToKsplash.sh -- This function collects KDE splash
+# (KSplash) required files and creates a tar.gz package that groups
+# them all together. Use this function as last-rendition action for
+# KSplash base-rendition action.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngToKsplash {
+function svg_convertPngToKsplash {
 
     local -a SRC
     local -a DST
