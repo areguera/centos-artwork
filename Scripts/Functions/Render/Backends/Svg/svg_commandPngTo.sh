@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_doPostActions.sh -- This function standardizes the way
-# post-rendition actions are applied to base-rendition output.
+# svg_doPostCommand.sh -- This function standardizes the way
+# post-rendition commands are applied to base-rendition output.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doPostActions {
+function svg_doPostCommand {
 
     # Define the file extension of base-rendition output.
     local EXTENSION=$(render_getConfigOption "$ACTION" '2')
