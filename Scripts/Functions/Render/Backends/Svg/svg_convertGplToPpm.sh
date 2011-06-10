@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# render_svg_convertGplToPpm.sh -- This function takes one palette
-# produced by Gimp (e.g., syslinux.gpl) as input and outputs one PPM
-# file based on it (e.g., syslinux.ppm).
+# svg_convertGplToPpm.sh -- This function takes one palette produced
+# by Gimp (e.g., syslinux.gpl) as input and outputs one PPM file based
+# on it (e.g., syslinux.ppm).
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -24,9 +24,8 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertGplToPpm {
+function svg_convertGplToPpm {
 
-    local FILE=''
     local -a FILES
     local COUNT=0
 
@@ -43,13 +42,13 @@ function render_svg_convertGplToPpm {
 
     # Define list of colors from GPL palette.
     local COLOR=''
-    local COLORS=$(render_svg_getColors "$PALETTE_GPL" --head=$NUMBER --tail=$NUMBER --format='rrrggbb')
+    local COLORS=$(${RENDER_BACKEND}_getColors "$PALETTE_GPL" --head=$NUMBER --tail=$NUMBER --format='rrrggbb')
 
     # Verify amount of colors in the list of colors.
-    render_svg_checkColorAmount "$COLORS" "$NUMBER"
+    ${RENDER_BACKEND}_checkColorAmount "$COLORS" "$NUMBER"
 
     # Verify format of colors.
-    render_svg_checkColorFormats $COLORS --format='rrggbb'
+    ${RENDER_BACKEND}_checkColorFormats $COLORS --format='rrggbb'
 
     # Create temporal images (of 1x1 pixel each) to store each color
     # retrived from Gimp's palette. 
@@ -63,7 +62,7 @@ function render_svg_convertGplToPpm {
     # PPM file.
     pnmcat -lr ${FILES[*]} > $PALETTE_PPM
 
-    # Remove temporal images used to build the ppm palette file.
+    # Remove temporal images used to build the PPM palette file.
     rm ${FILES[*]}
 
     # Verify PPM palette existence.
