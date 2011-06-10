@@ -1,7 +1,39 @@
 #!/bin/bash
 #
-# render_svg_convertPngToGrub.sh -- This function provides
-# post-rendition action used to produce GRUB images.
+# svg_convertPngToGrub.sh -- This function provides post-rendition
+# action used to produce GRUB images.
+#
+# Initially, the color information is defined with GIMP (The GNU Image
+# Manipulation Program) as a `.gpl' palette of color. This palette of
+# colors contains 14 colors only and is saved in a file named
+# `grub.gpl.  The `grub.gpl' file is used to build the `grub.ppm' file
+# which provide the color information needed to reduce the full color
+# PNG image, produced as result of SVG base-rendition, to the amount
+# of colors specified (i.e., 14 colors). Later, with the 14 color PNG
+# image already created, the `grub.ppm' file is used to build the
+# `splash.xpm.gz' file.
+#
+# In order for this function to work, the `grub.gpl' file should have
+# a format similar to the following:
+#
+#   GIMP Palette
+#   Name: CentOS-TreeFlower-4-Syslinux
+#   Columns: 14
+#   #
+#    32  76 141	204c8d
+#    36  82 146	245292
+#    52  93 152	345d98
+#    72 108 162	486ca2
+#   102 131 176	6683b0
+#   126 153 190	7e99be
+#   146 170 200	92aac8
+#   161 182 209	a1b6d1
+#   182 199 219	b6c7db
+#   202 214 228	cad6e4
+#   221 230 238	dde6ee
+#   235 241 245	ebf1f5
+#   246 251 254	f6fbfe
+#   254 255 252	fefffc
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,7 +55,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngToGrub {
+function svg_convertPngToGrub {
 
     # Define number of colors the images will be produced on.
     local COLORS='14'
@@ -61,10 +93,11 @@ function render_svg_convertPngToGrub {
     local PALETTE_GPL=${MOTIF_DIR}/Palettes/grub.gpl
 
     # Verify GPL palette existence. If it doesn't exist copy the one
-    # provided by the design model and expand translation markers in
-    # it.
+    # provided by the design model through subversion (to keep track
+    # of the change) and expand translation markers in the copied
+    # instance.
     if [[ ! -f $PALETTE_GPL ]];then
-        cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/grub.gpl ${PALETTE_GPL}
+        svn cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/grub.gpl ${PALETTE_GPL}
         cli_replaceTMarkers ${PALETTE_GPL}
     fi
 
@@ -86,7 +119,7 @@ function render_svg_convertPngToGrub {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    render_svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
+    ${RENDER_BACKEND}_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the
