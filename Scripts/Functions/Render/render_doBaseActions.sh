@@ -76,6 +76,20 @@ function render_doBaseActions {
     # localized content from being interpreted as design models. In
     # that sake, supress language-specific files from the list of
     # files to process.
+    #
+    # Another issue to consider here, is the way of filtering. We
+    # cannot expand the pattern specified by FLAG_FILTER with a `.*'
+    # here (e.g., "${FLAG_FILTER}.*\.${EXTENSION}") because tha would
+    # suppress any possibility of the user to specifiy just one file
+    # name in locations where more than one file with the same name as
+    # prefix exists (e.g., `repository.docbook',
+    # `repository-preamble.docbook' and `repository-parts.docbook').
+    # Instead, pass control of this to the user whom can use regular
+    # expression markup in the `--filter' option to decide whether to
+    # match `repository.docbook' (e.g., through
+    # `--filter="repository"') or both `repository-preamble.docbook'
+    # and `repository-parts.docbook' (e.g., through
+    # `--filter="repository.*"').
     for FILE in $(cli_getFilesList ${TEMPLATE} \
         --pattern="${FLAG_FILTER}\.${EXTENSION}" --type="f" \
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/');do
