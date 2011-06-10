@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_svg_convertPngTo.sh -- This function provides post-rendition
-# actions to use the `convert' command of ImageMagick tool set.
+# svg_convertPngTo.sh -- This function provides post-rendition actions
+# to use the `convert' command of ImageMagick tool set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,12 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngTo {
+function svg_convertPngTo {
 
-    # Get image formats.
+    # Initialize image formats.
+    local FORMAT=''
     local FORMATS=$(render_getConfigOption "$ACTION" '2')
 
-    # Execute ImageMagick convertion.
+    # Convert from PNG to specified formats.
     for FORMAT in $FORMATS;do
         cli_printMessage "${FILE}.${FORMAT}" --as-savedas-line
         convert -quality 85 ${FILE}.png ${FILE}.${FORMAT}
