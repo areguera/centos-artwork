@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# render_svg_convertPngToThumbnail.sh -- This function provides post-rendition to
-# create thumbnails from images produced by centos-art base-rendition.
-# Thumbnails are created in PNG and JPG format for you to decide which
-# is the more appropriate one. When no size is specified, thumbnails
-# are created at 250 pixels width and height is automatically
-# calculated to match the image ratio.
+# svg_convertPngToThumbnail.sh -- This function provides
+# post-rendition to create thumbnails from images produced by
+# centos-art base-rendition.  Thumbnails are created in PNG and JPG
+# format for you to decide which is the more appropriate one. When no
+# size is specified, thumbnails are created at 250 pixels width and
+# height is automatically calculated to match the image ratio.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -27,9 +27,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngToThumbnail {
+function svg_convertPngToThumbnail {
 
     # Get image size.
+    local SIZE=''
     local SIZES=$(render_getConfigOption "$ACTION" '2-')
 
     # Check image sizes and do convertion.
