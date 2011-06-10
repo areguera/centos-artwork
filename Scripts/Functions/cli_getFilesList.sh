@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getFilesList.sh -- This function defines the list of FILES to
+# cli_getFilesList.sh -- This function outputs the list of files to
 # process.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -112,11 +112,6 @@ function cli_getFilesList {
     # whether the LOCATION is a directory or a file since path
     # expansion coul be introduced to it. The best we can do is
     # verifying exit status and go on.
-    local FILES=$(find ${LOCATIONS} -regextype posix-egrep ${OPTIONS} -regex "${PATTERN}" | sort | uniq)
-
-    # Output list of files to process.
-    if [[ $? -eq 0 ]];then
-        echo "$FILES"
-    fi
+    find ${LOCATIONS} -regextype posix-egrep ${OPTIONS} -regex "${PATTERN}" | sort | uniq
 
 }
