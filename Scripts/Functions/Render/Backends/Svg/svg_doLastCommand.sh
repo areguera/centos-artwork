@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_doPostActions.sh -- This function standardizes the way
-# last-rendition actions are applied to base-rendition and
+# svg_doLastCommand.sh -- This function standardizes the way
+# last-rendition commands are applied to base-rendition and
 # post-rendition outputs.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doLastActions {
+function svg_doLastCommand {
 
     # Define the file extensions. This value is a regular expression
     # pattern which must match the file extensions that last-rendition
