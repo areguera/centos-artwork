@@ -65,7 +65,7 @@ function cli_exportFunctions {
 
         # Export function names inside the file to current shell
         # script environment.
-        export -f $(egrep "${PATTERN}" ${FILE} | gawk '{ print $2 }')
+        export -f $(egrep "${PATTERN}" ${FUNCFILE} | gawk '{ print $2 }')
 
     done
 
