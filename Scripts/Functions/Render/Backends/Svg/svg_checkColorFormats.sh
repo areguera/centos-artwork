@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_svg_checkColorFormats.sh -- This function verifies formats of
-# colors (i.e., the way color information is specified).
+# svg_checkColorFormats.sh -- This function verifies formats of colors
+# (i.e., the way color information is specified).
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_checkColorFormats {
+function svg_checkColorFormats {
 
     # Define short options.
     local ARGSS=''
