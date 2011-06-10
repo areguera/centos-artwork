@@ -60,12 +60,12 @@ function help {
 
     # Verify and initialize backend functions.  There is no need to
     # load all backend-specific functions when we can use just one
-    # backend among many. Keep the cli_getFunctions function calling
-    # after all variables and arguments definitions.
+    # backend among many. Keep the cli_exportFunctions function
+    # calling after all variables and arguments definitions.
     if [[ ${FLAG_BACKEND} =~ '^texinfo$' ]];then
-        cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}" 'texinfo'
+        cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}" 'texinfo'
     elif [[ ${FLAG_BACKEND} =~ '^docbook$' ]];then
-        cli_getFunctions "${FUNCDIR}/${FUNCDIRNAM}" 'docbook'
+        cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}" 'docbook'
     else
         cli_printMessage "`gettext "The backend provided is not supported."`" --as-error-line
     fi
