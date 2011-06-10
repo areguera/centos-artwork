@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function xhtml_convertToText {
+function docbook_convertToText {
 
     # Verify existence of HTML file. If `.xhtml' file doesn't exist
     # don't create text file. The `.xhtml' file is required in order
