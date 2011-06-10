@@ -1,12 +1,11 @@
 #!/bin/bash
 #
-# render_svg_convertPngToDm.sh -- This function standardize production
-# of display managers (e.g., Gdm and Kdm). This function copies all
-# files needed into a temporal directory, realize expansion of
-# translation markers and packs all the files into a tar.gz package
-# that is used for installation. This function must be used as
-# last-rendition action for Gdm and Kdm directory specific
-# base-rendition actions.
+# svg_convertPngToDm.sh -- This function standardize production of
+# display managers (e.g., Gdm and Kdm). This function copies all files
+# needed into a temporal directory, realize expansion of translation
+# markers and packs all the files into a tar.gz package that is used
+# for installation. This function must be used as last-rendition
+# action for Gdm and Kdm directory specific base-rendition actions.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -28,7 +27,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngToDm {
+function svg_convertPngToDm {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -40,8 +39,12 @@ function render_svg_convertPngToDm {
     # Initialize display manager type.
     local DM=$(render_getConfigOption "${ACTION}" '2')
 
-    # Initialize screen resolutions the display manager theme will be
-    # built for.
+    # Initialize screen resolutions used by display manager theme.
+    # These are the different screen resolutions a display manager
+    # theme is built for. The amount of screen resolution a display
+    # manager theme can be built for is limited to the amount of
+    # background files provided by the artistic motif used to build
+    # the display manager theme.
     local RESOLUTION=''
     local RESOLUTIONS=$(render_getConfigOption "${ACTION}" '3')
 
@@ -63,13 +66,13 @@ function render_svg_convertPngToDm {
     local TMPDIR=$(cli_getTemporalFile 'dm')
 
     # Initialize source location for brands. This is the place where
-    # brand information needed to build the display manager theme is
+    # brand information, needed to build the display manager theme, is
     # retrived from.
     local BRANDS=$(cli_getRepoTLDir)/Identity/Images/Brands
 
-    # Initialize source location for backgrounds. This is the place
-    # where background information needed to ubild the display manager
-    # theme is retrived from. 
+    # Initialize source location for artistic motif's backgrounds.
+    # This is the place where background information needed to ubild
+    # the display manager theme is retrived from. 
     local BGS=$(cli_getRepoTLDir)/Identity/Images/Themes/${THEME}/Backgrounds/Img/Png
 
     # Initialize file variables. File variables are used build and
@@ -78,15 +81,17 @@ function render_svg_convertPngToDm {
     local FILES=''
 
     # Define file relation between source and target locations, based
-    # on whether we are producing GDM or KDM. Presently, both GDM and
-    # KDM are very similar on files with the exception that GDM does
-    # use icons near actions buttons (e.g., shutdown, reboot, session,
-    # language) and KDM doesn't.
+    # on whether we are producing GDM or KDM. Use the colon character
+    # (`:') as separator; on the left side we put the file's source
+    # location and in the right side the file's target location.
+    # Presently, both GDM and KDM are very similar on files with the
+    # exception that GDM does use icons near actions buttons (e.g.,
+    # shutdown, reboot, session, language) and KDM doesn't.
     case ${DM} in
 
         Gdm )
             FILES="\
-            ${BRANDS}/centos-symbol-resized-48.png:centos-symbol.png
+            ${BRANDS}/Symbols/centos-48.png:centos-symbol.png
             ${OUTPUT}/release.png:centos-release.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
