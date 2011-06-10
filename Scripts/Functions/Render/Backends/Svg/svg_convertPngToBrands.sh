@@ -1,10 +1,9 @@
 #!/bin/bash
 #
-# render_svg_convertPngToBrands.sh -- This function provides
-# last-rendition actions to produce CentOS brands. This function takes
-# both The CentOS Symbol and The CentOS Type images and produces
-# variation of them in different dimensions and formats using
-# ImageMagick tool-set.
+# svg_convertPngToBrands.sh -- This function provides post-rendition
+# actions to produce CentOS brands. This function takes both The
+# CentOS Symbol and The CentOS Type images and produces variation of
+# them in different dimensions and formats using ImageMagick tool-set.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -26,12 +25,14 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_convertPngToBrands {
+function svg_convertPngToBrands {
 
     # Define height dimensions you want to produce brands for.
+    local SIZE=""
     local SIZES="16 20 22 24 32 36 40 48 64 96 128 148 164 196 200 512"
 
     # Define image formats you want to produce brands for.
+    local FORMAT=""
     local FORMATS="png xpm pdf jpg tif"
 
     for SIZE in ${SIZES};do
@@ -41,7 +42,11 @@ function render_svg_convertPngToBrands {
             # Output action information.
             cli_printMessage "${FILE}-${SIZE}.${FORMAT}" --as-creating-line
 
-            # Convert and resize to create new file.
+            # Convert and resize to create new file. Use resize
+            # support with a value less than 1.0 for sharpening. This
+            # make resized brands to look better. Otherwise, if the
+            # resize support is greater than 1.0 or none at all,
+            # resized brands are blured instead.
             convert -support 0.8 -resize x${SIZE} ${FILE}.png ${FILE}-${SIZE}.${FORMAT}
 
         done
