@@ -34,7 +34,7 @@
 function docbook_convertToPdf {
 
     # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line
+    cli_printMessage "${FILE}.pdf" --as-updating-line
 
     # Define name of temporal directory where the DocBook to PDF
     # transformation will take place.
@@ -56,11 +56,11 @@ function docbook_convertToPdf {
 
     # Define file name of formatting object (.fo) file. This file is
     # an intermediate file needed to produced the PDF.
-    local FO=${MANUAL_NAME}.fo
+    local FO=$(basename ${FILE}).fo
 
     # Define file name of PDF file.  This is the file we were looking
     # for and the one moved, once produced.
-    local PDF=${MANUAL_NAME}.pdf
+    local PDF=$(basename ${FILE}).pdf
 
     # Verify temporal directory and create it if doesn't exist.
     if [[ ! -d $TMPDIR ]];then
