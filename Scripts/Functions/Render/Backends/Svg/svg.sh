@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_svg.sh -- This function performs base-rendition action for
-# SVG files.
+# svg.sh -- This function performs base-rendition action for SVG
+# files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,14 +23,14 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg {
+function svg {
 
     # Initialize the export id used inside design templates. This
     # value defines the design area we want to export.
     local EXPORTID='CENTOSARTWORK'
 
     # Verify the export id.
-    render_svg_checkModelExportId "$INSTANCE" "$EXPORTID" 
+    ${RENDER_BACKEND}_checkModelExportId "$INSTANCE" "$EXPORTID" 
 
     # Check existence of external files. Inside design templates and
     # their instances, external files are used to refere the
@@ -38,7 +38,7 @@ function render_svg {
     # background information is not available the image is produced
     # without background information. This is something that need to
     # be avoided.
-    render_svg_checkModelAbsref "$INSTANCE"
+    ${RENDER_BACKEND}_checkModelAbsref "$INSTANCE"
 
     # Render template instance using inkscape and save the output.
     local INKSCAPE_OUTPUT="$(\
