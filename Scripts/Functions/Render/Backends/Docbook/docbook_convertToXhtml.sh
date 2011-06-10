@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# render_docbook_convertToXhtml.sh -- This function produces XHTML
-# output from DocBook XML template instance using XSL stylesheets as
-# reference.  The procedure was taken from the documentation of
+# render_docbook_convertToXhtml.sh -- This function uses DocBook XML
+# as input and applies XSL stylesheets to produce a big XHTML files as
+# output.  The procedure was taken from the documentation of
 # `docbook-style-xsl-1.69.1-5.1' package, which says: ---To publish
 # HTML from your XML documents, you just need an XSLT engine.---.
 #
@@ -45,9 +45,8 @@ function docbook_convertToXhtml {
     # transformation will be stored in.
     local DST="${FILE}.xhtml"
 
-    # Define absolute path of the XSLT file used to create the
-    # formatting object (.fo) file.
-    local XSLT=/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl
+    # Define absolute path to XSLT file.
+    local XSLT=/usr/share/sgml/docbook/xsl-stylesheets/xhtml/docbook.xsl
 
     # Transform DocBook XML to XHTML supressing all stderr output.
     xsltproc $XSLT --output $DST $SRC 2> /dev/null
