@@ -41,10 +41,13 @@ function render_doThemeActions {
 
     # Define directory structure of design models. Design models
     # directory structures are used as reference to create artistic
-    # motifs directory structure.
+    # motifs directory structure. Use the `--pattern' option to be
+    # sure any modification to FLAG_FILTER won't affect the output
+    # result. We need to make matching everything here, no matter what
+    # the FLAG_FILTER value be.
     local MODEL_DIR=''
     local MODEL_DIRS="$(cli_getFilesList ${MODEL_BASEDIR}/${FLAG_THEME_MODEL} \
-        --type="d" | egrep -v '\.svn' | sed -r '/^[[:space:]]*$/d' | sed -r \
+        --pattern=".+" --type="d" | egrep -v '\.svn' | sed -r '/^[[:space:]]*$/d' | sed -r \
         "s!^.*/${FLAG_THEME_MODEL}/!!" | sed -r '/^[[:space:]]*$/d')"
 
     # Define design model regular expression patterns from design
