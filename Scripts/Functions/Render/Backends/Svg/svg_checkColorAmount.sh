@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_svg_checkColorAmount.sh -- This function verifies whether the
-# list of colors provided in the first argument matches the amount of
+# svg_checkColorAmount.sh -- This function verifies whether the list
+# of colors provided in the first argument matches the amount of
 # colors specified by the second argument.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_checkColorAmount {
+function svg_checkColorAmount {
 
     # Define list of colors. 
     local COLORS=$1
