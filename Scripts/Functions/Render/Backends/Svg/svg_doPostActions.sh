@@ -32,7 +32,7 @@ function svg_doPostActions {
     local -a POSTACTIONS
 
     # Define default comment written to base-rendition output.
-    local COMMENT="`gettext "Created in CentOS Arwork Repository"` ($(cli_printUrl '--projects-artwork'))"
+    local COMMENT="`gettext "Created in CentOS Artwork Repository"` ($(cli_printUrl '--projects-artwork'))"
 
     # Define SVG post-rendition actions. Since these actions are
     # applied to base-rendition output and base-rendition output is
