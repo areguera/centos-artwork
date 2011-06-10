@@ -23,13 +23,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_docbook {
+function docbook {
 
-    # Produce xhtml output from docbook template instance using XSL
-    # stylesheets as reference.
-    render_docbook_convertToXhtml
-
-    # Produce plaintext output from html outout.
-    render_xhtml_convertToText
+    ${RENDER_BACKEND}_convertToXhtml
+    ${RENDER_BACKEND}_convertToXhtmlChunk
+    ${RENDER_BACKEND}_convertToPdf
 
 }
