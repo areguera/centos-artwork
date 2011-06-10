@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_svg_doLastActions.sh -- This function performs
-# last-rendition actions for SVG files.
+# svg_doLastActions.sh -- This function performs last-rendition
+# actions for SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_doLastActions {
+function svg_doLastActions {
 
     # Verify position of file being produced in the list of files been
     # currently processed.
@@ -44,11 +44,11 @@ function render_svg_doLastActions {
     # repository.
     if [[ $FLAG_DONT_DIRSPECIFIC == 'false' ]];then
         if [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Gdm/.+\.svg$" ]];then
-            LASTACTIONS[((++${#LASTACTIONS[*]}))]='svg_convertPngToDm:Gdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
+            LASTACTIONS[((++${#LASTACTIONS[*]}))]='convertPngToDm:Gdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
         elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Kdm/.+\.svg$" ]];then
-            LASTACTIONS[((++${#LASTACTIONS[*]}))]='svg_convertPngToDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
+            LASTACTIONS[((++${#LASTACTIONS[*]}))]='convertPngToDm:Kdm:800x600 1024x768 1280x1024 1360x768 2048x1536 2560x1240'
         elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Ksplash/.+\.svg$" ]];then
-            LASTACTIONS[((++${#LASTACTIONS[*]}))]='svg_convertPngToKsplash:'
+            LASTACTIONS[((++${#LASTACTIONS[*]}))]='convertPngToKsplash:'
         fi
     fi
 
@@ -66,7 +66,7 @@ function render_svg_doLastActions {
     # images for the next directory structure lets execute the list of
     # last-rendition actions for the current directory structure. 
     for ACTION in "${LASTACTIONS[@]}"; do
-        ${FUNCNAM}_$(echo "$ACTION" | cut -d: -f1)
+        ${RENDER_BACKEND}_$(echo "$ACTION" | cut -d: -f1)
     done
 
 }
