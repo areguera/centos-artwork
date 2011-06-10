@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getFunctions.sh -- This function loads funtionalities supported by
+# cli_exportFunctions.sh -- This function loads funtionalities supported by
 # centos-art.sh script.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getFunctions {
+function cli_exportFunctions {
 
     # Define source location where function files are placed in.
     local LOCATION=$1
