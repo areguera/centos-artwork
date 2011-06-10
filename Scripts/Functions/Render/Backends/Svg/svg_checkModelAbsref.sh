@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_svg_checkModelAbsref.sh -- This function retrives absolute files
-# and checks their existence. In order for design templates to point
+# svg_checkModelAbsref.sh -- This function retrives absolute files and
+# checks their existence. In order for design templates to point
 # different artistic motifs, design templates make use of external
 # files which point to specific artistic motif background images. If
 # such external files don't exist, try to create the background image
@@ -30,7 +30,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_svg_checkModelAbsref {
+function svg_checkModelAbsref {
 
     local FILE=''
     local BG_DST_FILES=''
@@ -78,10 +78,10 @@ function render_svg_checkModelAbsref {
             if [[ ! -f $BG_SRC_FILE ]];then
 
                 # Define plain color that will be used as background.
-                BG_SRC_FILE_COLOR=$(render_svg_getColors)
+                BG_SRC_FILE_COLOR=$(${RENDER_BACKEND}_getColors)
 
                 # Verify format of color value.
-                render_svg_checkColorFormats $BG_SRC_FILE_COLOR --format='rrggbb'
+                ${RENDER_BACKEND}_checkColorFormats $BG_SRC_FILE_COLOR --format='rrggbb'
 
                 # Define width for the source background file the
                 # required background information is cropped from.
