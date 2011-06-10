@@ -45,7 +45,7 @@ function render_doBaseActions {
     # file extensions that centos-art will look for in order to build
     # the list of files to process. The list of files to process
     # contains the files that match this extension pattern.
-    EXTENSION='(svgz|svg|xhtml|docbook)'
+    EXTENSION='(svgz|svg|docbook)'
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
@@ -56,28 +56,28 @@ function render_doBaseActions {
     # Define the list of files to process. Use an array variable to
     # store the list of files to process. This make posible to realize
     # verifications like: is the current base directory equal to the
-    # next one in the list of files to process?  This is used to know
-    # when centos-art.sh is leaving a directory structure and entering
-    # into another. This information is required in order for
-    # centos-art.sh to know when to apply last-rendition actions.
+    # next one in the list of files to process?  Questions like this
+    # is let us to know when centos-art.sh is leaving a directory
+    # structure and entering another. This information is required in
+    # order for centos-art.sh to know when to apply last-rendition
+    # actions.
     #
-    # Another issue is that some directories are named as if they were
-    # files (e.g., using a renderable extension like .xhtml). In this
-    # situations we need to avoid such directories be interpreted as a
-    # renderable file. For this, pass the `--type="f"' option when
-    # building the list of files to process in order to retrive
-    # regular files only.
+    # Another issue is that some directories might be named as if they
+    # were files (e.g., using a renderable extension like .docbook).
+    # In these situations we need to avoid such directories from being
+    # interpreted as a renderable file. For this, pass the
+    # `--type="f"' option when building the list of files to process
+    # in order to retrive regular files only.
     #
-    # Another issue to consider when building the list of files to
-    # process here, is that in some cases templates and output are in
-    # the same location (e.g., when rendering
-    # `trunk/Manuals/repository.xhtml/' directory). In these cases
-    # localized content are stored in the same location where
+    # Another issue to consider here, is that in some cases both
+    # templates and outputs might be in the same location. In these
+    # cases localized content are stored in the same location where
     # template files are retrived from and we need to avoid using
     # localized content from being interpreted as design models. In
     # that sake, supress language-specific files from the list of
     # files to process.
-    for FILE in $(cli_getFilesList ${TEMPLATE} --pattern="${FLAG_FILTER}.*\.${EXTENSION}" --type="f" \
+    for FILE in $(cli_getFilesList ${TEMPLATE} \
+        --pattern="${FLAG_FILTER}\.${EXTENSION}" --type="f" \
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/');do
         FILES[((++${#FILES[*]}))]=$FILE
     done
@@ -173,44 +173,36 @@ function render_doBaseActions {
         # Expand translation markers inside design model instance.
         cli_replaceTMarkers ${INSTANCE}
 
-        # Define what action to perform based on the extension of
-        # template instance.
+        # Redefine name of rendition backend based on the file
+        # extension of template instance.
         if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
-
-            # Perform base-rendition actions for SVG files.
-            render_svg
-
-            # Perform post-rendition actions for SVG files.
-            render_svg_doPostActions
-
-            # Perform last-rendition actions for SVG files.
-            render_svg_doLastActions
- 
+            RENDER_BACKEND='svg'
         elif [[ $INSTANCE =~ '\.docbook$' ]];then
-
-            # Perform base-rendition actions for Docbook files.
-            render_docbook
-
-            # Perform post-rendition actions for Docbook files.
-            #render_docbook_doPostActions
-
-            # Perform last-rendition actions for Docbook files.
-            #render_docbook_doLastActions
-
-        elif [[ $INSTANCE =~ '\.xhtml$' ]];then
-
-            # Perform base-rendition actions for XHTML files.
-            render_xhtml
-
-            # Perform post-rendition actions for XHTML files.
-            #render_xhtml_doPostActions
-
-            # Perform last-rendition actions for XHTML files.
-            #render_xhtml_doLastActions
-
+            RENDER_BACKEND='docbook'
         else
             cli_printMessage "`gettext "The template file you try to render is not supported yet."`" --as-error-line
         fi
+
+        # Initialize backend-specific functionalities.
+        cli_exportFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
+            ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
+
+        # Perform backend base-rendition.
+        ${RENDER_BACKEND}
+
+        # Perform backend post-rendition.
+        ${RENDER_BACKEND}_doPostActions
+
+        # Perform backend last-rendition.
+        ${RENDER_BACKEND}_doLastActions
+
+        # Unset backend-specific functionalities from environment.
+        # This is required to prevent end up with more than one
+        # backend-specifc function initialization, in those cases when
+        # different template files are rendered in just one execution
+        # of `centos-art.sh' script.
+        cli_unsetFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
+            ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
 
         # Remove template instance. 
         if [[ -f $INSTANCE ]];then
