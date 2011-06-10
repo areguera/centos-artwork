@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# render_svg_convertHtmlToText.sh -- This function takes one HTML file
-# and produces one plain-text file (i.e., without markup inside).
+# svg_convertToText.sh -- This function takes the XHTML file produced
+# by docbook_convertToXhtml and produces one plain-text file (i.e.,
+# without markup inside).
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,10 +24,14 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_xhtml_convertToText {
+function xhtml_convertToText {
 
-    # Verify existence of HTML file.
-    cli_checkFiles ${FILE}.xhtml
+    # Verify existence of HTML file. If `.xhtml' file doesn't exist
+    # don't create text file. The `.xhtml' file is required in order
+    # to create the `.txt' file.
+    if [[ ! -f ${FILE}.xhtml ]];then
+       return 
+    fi
 
     local COMMAND=''
     local OPTIONS=''
@@ -59,7 +64,7 @@ function render_xhtml_convertToText {
         ${COMMAND} ${OPTIONS} ${FILE}.xhtml > ${FILE}.txt
 
     else
-        cli_printMessage "`gettext "No way to convert from HTML to plain-text found."`" --as-error-line
+        cli_printMessage "`gettext "No way to convert from XHTML to plain-text found."`" --as-error-line
     fi
 
 }
