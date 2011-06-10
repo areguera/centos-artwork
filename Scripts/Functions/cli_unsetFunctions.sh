@@ -43,7 +43,7 @@ function cli_unsetFunctions {
     # `cli_exportFunctions'.  Be sure to limit the list to function
     # names that start with the suffix specified only.
     local FUNCDEF=''
-    local FUNCDEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${SUFFIX}_")
+    local FUNCDEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${SUFFIX}")
 
     # Unset function names from current execution environment.
     for FUNCDEF in $FUNCDEFS;do
