@@ -79,17 +79,17 @@ function render_doBaseActions {
     #
     # Another issue to consider here, is the way of filtering. We
     # cannot expand the pattern specified by FLAG_FILTER with a `.*'
-    # here (e.g., "${FLAG_FILTER}.*\.${EXTENSION}") because tha would
-    # suppress any possibility of the user to specifiy just one file
+    # here (e.g., "${FLAG_FILTER}.*\.${EXTENSION}") because that would
+    # suppress any possibility from the user to specifiy just one file
     # name in locations where more than one file with the same name as
     # prefix exists (e.g., `repository.docbook',
     # `repository-preamble.docbook' and `repository-parts.docbook').
-    # Instead, pass control of this to the user whom can use regular
+    # Instead, pass filtering control to the user whom can use regular
     # expression markup in the `--filter' option to decide whether to
-    # match `repository.docbook' (e.g., through
-    # `--filter="repository"') or both `repository-preamble.docbook'
-    # and `repository-parts.docbook' (e.g., through
-    # `--filter="repository.*"').
+    # match `repository.docbook' only (e.g., through
+    # `--filter="repository"') or `repository-preamble.docbook' and
+    # `repository-parts.docbook' but not `repository.docbook' (e.g.,
+    # through `--filter="repository-.*"').
     for FILE in $(cli_getFilesList ${TEMPLATE} \
         --pattern="${FLAG_FILTER}\.${EXTENSION}" --type="f" \
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/');do
