@@ -38,6 +38,10 @@ function tuneup {
     # where backend-specific directories are stored in.
     local TUNEUP_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
 
+    # Initialize list of supported file extensions. This is, the file
+    # extensions we want to perform maintainance tasks for.
+    local TUNEUP_EXTENSIONS='svg xhtml sh'
+
     # Interpret arguments and options passed through command-line.
     tuneup_getOptions
 
@@ -68,11 +72,7 @@ function tuneup {
         cli_syncroRepoChanges
 
         # Execute action name.
-        if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
-            eval $ACTIONNAM
-        else
-            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
-        fi
+        $ACTIONNAM
 
         # Commit changes from working copy to central repository only.
         # At this point, changes in the repository are not merged in

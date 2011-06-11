@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# tuneup_doBaseActions.sh -- This function builds the list of files to
-# process and performs maintainance tasks, file by file.
+# tuneup_doBaseActions.sh -- This function builds one list of files to
+# process for each file extension supported and applies maintainance
+# tasks file by file for each one of them.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -25,40 +26,45 @@
 
 function tuneup_doBaseActions {
 
-    # Define file extensions we'll look files for. This is, the
-    # extension of files we want to perform maintainance tasks for.
-    local EXTENSION='(svg|xhtml|sh)'
-
-    # Build list of files to process using action value as reference.
+    local TUNEUP_EXTENSION=''
     local FILE=''
-    local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${EXTENSION}")
+    local FILES=''
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Process list of files and perform maintainance tasks
-    # accordingly.
-    for FILE in $FILES;do
-
-        # Print action message.
-        cli_printMessage "$FILE" --as-tuningup-line
+    for TUNEUP_EXTENSION in ${TUNEUP_EXTENSIONS};do
 
         # Redefine name of tuneup backend based on the file extension
         # of file being processed.
-        if [[ $FILE =~ '\.svg$' ]];then
+        if [[ $TUNEUP_EXTENSION == 'svg' ]];then
             TUNEUP_BACKEND='svg'
-        elif [[ $FILE =~ '\.xhtml$' ]];then
+        elif [[ $TUNEUP_EXTENSION == 'xhtml' ]];then
             TUNEUP_BACKEND='xhtml'
-        elif [[ $FILE =~ '\.sh$' ]];then
+        elif [[ $TUNEUP_EXTENSION == 'sh' ]];then
             TUNEUP_BACKEND='shell'
+        else
+           cli_printMessage "`gettext "No file to tune up found."`" --as-error-line 
+        fi
+
+        # Build list of files to process using action value as reference.
+        FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${TUNEUP_EXTENSION}")
+
+        # Verify list of files to process. Assuming no file is found,
+        # evaluate the next supported file extension.
+        if [[ $FILES == '' ]];then
+            continue
         fi
 
         # Initialize backend-specific functionalities.
         cli_exportFunctions "${TUNEUP_BACKEND_DIR}/$(cli_getRepoName \
             ${TUNEUP_BACKEND} -d)" "${TUNEUP_BACKEND}"
 
-        # Perform backend base-rendition.
-        ${TUNEUP_BACKEND}
+        # Apply backend-specific maintainance tasks.
+        for FILE in $FILES;do
+            cli_printMessage "$FILE" --as-tuningup-line
+            ${TUNEUP_BACKEND}
+        done
 
         # Unset backend-specific functionalities from environment.
         # This is required to prevent end up with more than one
