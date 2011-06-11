@@ -164,9 +164,9 @@ base-rendition applies the translation file to the input file in order
 to produce a translated instance of it, then this translated instance
 is used as input file to produce one or more output files.
 
-The base-rendition flow processes input files using file extensions
-and backend-specific functionalities as reference. When you try to
-render a location in the repository, a list of supported file
+The base-rendition flow processes input files using design model file
+extensions and backend-specific functionalities as reference. When you
+try to render a location in the repository, a list of supported file
 extensions is evaluated and a list of files to process is built for
 each supported extension. Later, each list of files to process is
 processed using backend-specific functionalities to perform the
