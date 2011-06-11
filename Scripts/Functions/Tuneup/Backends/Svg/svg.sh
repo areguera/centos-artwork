@@ -31,6 +31,6 @@ function svg {
     ${TUNEUP_BACKEND}_doMetadata
 
     # Remove all unused items.
-    ${TUNEUP_BACKEND}_doUnusedItems
+    ${TUNEUP_BACKEND}_doVacuumDefs
 
 }
