@@ -27,10 +27,10 @@
 function svg_doMetadata {
 
     # Define template file name.
-    local CONFIG_TEMPLATE="${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_metadata.sed"
+    local TEMPLATE="${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_metadata.sed"
 
     # Check template file existence.
-    cli_checkFiles $CONFIG_TEMPLATE
+    cli_checkFiles $TEMPLATE
 
     # Build title from file path.
     local TITLE=$(basename "$FILE")
@@ -56,10 +56,10 @@ function svg_doMetadata {
         done)
 
     # Redefine template instance file name.
-    local INSTANCE=$(cli_getTemporalFile $CONFIG_TEMPLATE)
+    local INSTANCE=$(cli_getTemporalFile $TEMPLATE)
 
     # Create instance.
-    cp $CONFIG_TEMPLATE $INSTANCE
+    cp $TEMPLATE $INSTANCE
 
     # Check template instance. We cannot continue if the template
     # instance couldn't be created.
