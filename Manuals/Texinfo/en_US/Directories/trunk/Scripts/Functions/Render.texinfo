@@ -155,25 +155,32 @@ language of its input file.
 
 @subsubheading The base-rendition flow
 
-The base-rendition flow is the first rendition flow of all rendition
-flows available and takes place immediatly after executing the
-@code{render} functionality of @command{centos-art.sh} script.
-
-The base-rendition produces different outputs from one unique input
-format. This is, one input file is used to produce one ore more output
-files. When translation files are available for input files, the
+The base-rendition flow takes place immediatly after executing the
+@code{render} functionality of @command{centos-art.sh} script.  The
+base-rendition produces different outputs from one unique input format
+(i.e., one input file is used to produce one ore more output files).
+When translation files are available for input files, the
 base-rendition applies the translation file to the input file in order
 to produce a translated instance of it, then this translated instance
 is used as input file to produce one or more output files.
 
 Inside the @code{render} functionality of @command{centos-art.sh}
-script, the input format is always XML (e.g., SVG, XHTML, Docbook),
-the translation files are always portable objects (e.g., PO) and the
-output format depends on the input file provided  (e.g., when the
-input format is a SVG file, the base output is a PNG file; when the
-input format is XHTML the base output is an XHTML file; when the input
-format is a Docbook file the base output might be either HTML, RTF, PS
-or PDF).
+script, the input format is always XML (e.g., SVG or DocBook); the
+translation files are always portable objects (e.g., PO); and the
+format produced as output depends on the input file provided  (e.g.,
+when the input format is a SVG file, the base output is a PNG file;
+when the input format is a Docbook file the base output is be XHTML,
+Text and PDF).
+
+In order to optimize the way @code{render} functionality processes
+input files, different input files are organized in different
+locations inside the repository. This way, we end up having one
+base-rendition for each input format supported (e.g., SVG and
+DocBook). SVG base-rendition takes palce under @file{trunk/Identity}
+directory structure and DocBook base-rendition under
+@file{trunk/Manuals} directory structure.  It is not possible to
+perform SVG base-rendition under @file{trunk/Manuals} nor DocBook
+base-rendition under @file{trunk/Identity}.
 
 As application example of base-rendition flow, consider the
 description of the  following sections:
@@ -181,8 +188,7 @@ description of the  following sections:
 @itemize
 @item @ref{Directories trunk Identity Models Themes Default Distro 5
 Anaconda}
-@item @ref{Directories trunk Identity Models Themes Default Distro 5.5
-Notes Release}
+@item @ref{Directories trunk Manuals}
 @end itemize
 
 @subsubheading The post-rendition flow
