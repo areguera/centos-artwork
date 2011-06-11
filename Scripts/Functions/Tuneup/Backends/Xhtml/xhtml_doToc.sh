@@ -1,11 +1,11 @@
 #!/bin/bash
 # 
-# tuneup_xhtml_doHeadings.sh -- This functionality transforms web page
-# headings to make them accessible through a table of contents.  The
-# table of contents is expanded in place, wherever the <div
-# class="toc"></div> piece of code be in the page.  Once the <div
-# class="toc"></div> piece of code has be expanded, there is no need
-# to put anything else in the page.
+# xhtml_makeToc.sh -- This functionality transforms web page headings to
+# make them accessible through a table of contents.  The table of
+# contents is expanded in place, wherever the <div class="toc"></div>
+# piece of code be in the page.  Once the <div class="toc"></div>
+# piece of code has be expanded, there is no need to put anything else
+# in the page.
 #
 # In order for the tuneup functionality to transform headings, you
 # need to put headings in just one line using one of the following
@@ -41,12 +41,11 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_xhtml_doHeadings {
+function xhtml_makeToc {
 
     # Define variables as local to avoid conflicts outside.
     local COUNT=0
     local PREVCOUNT=0
-    local PATTERN=''
     local -a FINAL
     local -a TITLE
     local -a MD5SM
@@ -56,9 +55,16 @@ function tuneup_xhtml_doHeadings {
     local -a TOCENTRIES
     local -a LINK
 
+    # Define table of content configuration file, the file used to
+    # produce the table of content XHTML output code.
+    local TOC_CONFIG=${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_toc.awk
+
+    # Verify table of content configuration file.
+    cli_checkFiles ${TOC_CONFIG}
+
     # Define html heading regular expression pattern. Use parenthisis
     # to save html action name, action value, and heading title.
-    PATTERN="<h([1-6])>(<a.*[^\>]>)(.*[^<])</a></h[1-6]>"
+    local PATTERN="<h([1-6])>(<a.*[^\>]>)(.*[^<])</a></h[1-6]>"
 
     # Verify list of html files. Are files really html files? If they
     # don't, continue with the next one in the list.
@@ -123,7 +129,7 @@ function tuneup_xhtml_doHeadings {
 
     # Build the table of contents using heading numerical
     # identifications as reference. The numerical identification
-    # describes the order of headings in one html file. This
+    # describes the order of headings in one xhtml file. This
     # information is processed by awk to make the appropriate
     # replacements. Finnally, the result is stored in the TOC
     # variable.
@@ -132,15 +138,11 @@ function tuneup_xhtml_doHeadings {
         for TOCENTRY in "${TOCENTRIES[@]}";do
             echo $TOCENTRY
         done \
-            | awk -f ${FUNCCONFIG}/output_forHeadingsToc.awk)
+            | awk -f ${TOC_CONFIG})
 
     # Update table of contents inside the current file being
     # processed.
     sed -i -r '/<div class="toc">[^<\/div].*<\/div>/c'"$(echo -e $TOC)" $FILE
-
-    # Reset counters.
-    COUNT=0
-    PREVCOUNT=0
 
     # Clean up variables to receive the next file.
     unset FINAL
