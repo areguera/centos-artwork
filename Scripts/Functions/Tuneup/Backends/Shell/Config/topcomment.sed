@@ -1,7 +1,7 @@
 #!/bin/sed
 #
-# shell_topcomment.sed -- This file standardizes the top comment
-# inside centos-art.sh scripts.
+# topcomment.sed -- This file standardizes the top comment inside
+# centos-art.sh scripts.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
