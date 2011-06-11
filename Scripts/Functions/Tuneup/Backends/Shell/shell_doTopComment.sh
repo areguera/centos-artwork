@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# tuneup_shell_doTopComment.sh -- This function tunnes up the top
-# comment section inside shell scripts (*.sh) using a predefined
-# template.
+# shell_doTopComment.sh -- This function standardizes the top comment
+# section inside shell scripts (*.sh) using a predefined template.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -24,10 +23,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_shell_doTopComment {
+function shell_doTopComment {
 
     # Define absolute path to template file.
-    local TEMPLATE="${FUNCCONFIG}/shell_topcomment.sed"
+    local TEMPLATE="${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_topcomment.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE
