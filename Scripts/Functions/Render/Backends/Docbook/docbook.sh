@@ -25,9 +25,8 @@
 
 function docbook {
 
-    ${RENDER_BACKEND}_convertToXhtml
-    ${RENDER_BACKEND}_convertToText
-    ${RENDER_BACKEND}_convertToXhtmlChunk
     ${RENDER_BACKEND}_convertToPdf
+    ${RENDER_BACKEND}_convertToXhtml
+    ${RENDER_BACKEND}_convertToXhtmlChunk
 
 }
