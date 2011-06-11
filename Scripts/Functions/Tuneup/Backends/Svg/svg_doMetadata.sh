@@ -27,7 +27,7 @@
 function svg_doMetadata {
 
     # Define template file name.
-    local TEMPLATE="${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_metadata.sed"
+    local TEMPLATE="${TUNEUP_BACKEND_CONFIG}/metadata.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE
