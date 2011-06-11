@@ -30,6 +30,6 @@ function xhtml {
 
     # Transforms xhtml headings to make them accessible (e.g., through
     # a table of contents).
-    xhtml_makeToc
+    xhtml_doToc
 
 }

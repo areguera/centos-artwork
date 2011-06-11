@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# xhtml_makeToc.sh -- This functionality transforms web page headings to
+# xhtml_doToc.sh -- This functionality transforms web page headings to
 # make them accessible through a table of contents.  The table of
 # contents is expanded in place, wherever the <div class="toc"></div>
 # piece of code be in the page.  Once the <div class="toc"></div>
@@ -41,7 +41,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function xhtml_makeToc {
+function xhtml_doToc {
 
     # Define variables as local to avoid conflicts outside.
     local COUNT=0
