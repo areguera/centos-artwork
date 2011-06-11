@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# tuneup_shell.sh -- This function performs maintainance tasks for
-# Shell script files.
+# shell.sh -- This function standardizes maintainance tasks for Shell
+# script files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,10 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_shell {
+function shell {
+
+    # Define backend-specific configuration directory.
+    TUNEUP_BACKEND_CONFIG="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
 
     # Rebuild top comment inside shell scripts, mainly to update
     # copyright information.
-    tuneup_shell_doTopComment
+    shell_doTopComment
 
 }
