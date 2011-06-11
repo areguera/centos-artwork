@@ -169,12 +169,15 @@ extensions and backend-specific functionalities as reference. When you
 try to render a location in the repository, a list of supported file
 extensions is evaluated and a list of files to process is built for
 each supported extension. Later, each list of files is processed using
-backend-specific functionalities to perform the specific tasks.
-Backend-specific functionalities group the function files needed to
-perform tasks specific to one file extension (e.g., when a design
-model file extension is @file{svg}, the @samp{svg} backend-specific
-functionalities are loaded in the execution environment to process the
-design model.).
+functionalities from a specific backend.  Backend-specific
+functionalities group the function files needed to perform the
+specific tasks related to one file extension (e.g., when design model
+is a SVG file, the @samp{svg} backend-specific functionalities are
+loaded to process the design model.  Likewise, when design model is a
+DocBook file, the @samp{docbook} backend-specific functionalities are
+loaded to process the design model file). There is no need to load
+@samp{docbook} backend-specific functionalities when SVG files are
+rendered, nor the opposite.
 
 The base-rendition flow uses XML files as input (e.g., SVG or DocBook)
 and @acronym{PO,Portable Objects} as translation files. The format
