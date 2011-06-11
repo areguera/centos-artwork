@@ -116,7 +116,7 @@ function cli_checkFiles {
 
             -n|--versioned )
                 for FILE in $(echo $FILES);do
-                    svn ls $FILE 2> /dev/null > /dev/null
+                    svn ls $FILE &> /dev/null
                     if [[ $? -ne 0 ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not versioned."`" --as-error-line
                     fi
