@@ -168,13 +168,13 @@ The base-rendition flow processes input files using design model file
 extensions and backend-specific functionalities as reference. When you
 try to render a location in the repository, a list of supported file
 extensions is evaluated and a list of files to process is built for
-each supported extension. Later, each list of files to process is
-processed using backend-specific functionalities to perform the
-specific tasks.  Backend-specific functionalities group the function
-files needed to perform tasks specific to one file extension (e.g.,
-when a design model file extension is @file{svg}, the @samp{svg}
-backend-specific functionalities are loaded in the execution
-environment to process the design model.).
+each supported extension. Later, each list of files is processed using
+backend-specific functionalities to perform the specific tasks.
+Backend-specific functionalities group the function files needed to
+perform tasks specific to one file extension (e.g., when a design
+model file extension is @file{svg}, the @samp{svg} backend-specific
+functionalities are loaded in the execution environment to process the
+design model.).
 
 The base-rendition flow uses XML files as input (e.g., SVG or DocBook)
 and @acronym{PO,Portable Objects} as translation files. The format
