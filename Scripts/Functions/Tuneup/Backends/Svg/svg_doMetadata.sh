@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# tuneup_doSvgMetadata.sh -- This function updates metadata values
-# inside scalable vector graphic (SVG) files using The CentOS Project
-# default values.
+# svg_doMetadata.sh -- This function updates metadata values inside
+# scalable vector graphic (SVG) files using default values from The
+# CentOS Project.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -24,29 +24,24 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_doSvgMetadata {
-
-    local NAM=''
-    local URL=''
-    local KEYS=''
-    local INSTANCE=''
-    local TEMPLATES=''
+function svg_doMetadata {
 
     # Define template file name.
-    TEMPLATE="${FUNCCONFIG}/svg_metadata.sed"
+    local CONFIG_TEMPLATE="${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_metadata.sed"
 
     # Check template file existence.
-    cli_checkFiles $TEMPLATE
+    cli_checkFiles $CONFIG_TEMPLATE
 
     # Build title from file path.
-    NAM=$(basename "$FILE")
+    local TITLE=$(basename "$FILE")
 
     # Build url from file path.
-    URL=$(echo $FILE | sed 's!/home/centos!https://projects.centos.org/svn!')
+    local URL=$(echo $FILE | sed 's!/home/centos!https://projects.centos.org/svn!')
 
     # Build keywords from file path. Do not include filename, it is
     # already on title.
-    KEYS=$(dirname "$FILE" | cut -d/ -f6- | tr '/' '\n')
+    local KEY=''
+    local KEYS=$(dirname "$FILE" | cut -d/ -f6- | tr '/' '\n')
 
     # Build keywords using SVG standard format. Note that this
     # information is inserted inside template file. The template file
@@ -61,10 +56,10 @@ function tuneup_doSvgMetadata {
         done)
 
     # Redefine template instance file name.
-    INSTANCE=$(cli_getTemporalFile $TEMPLATE)
+    local INSTANCE=$(cli_getTemporalFile $CONFIG_TEMPLATE)
 
-    # Create template instance.
-    cp $TEMPLATE $INSTANCE
+    # Create instance.
+    cp $CONFIG_TEMPLATE $INSTANCE
 
     # Check template instance. We cannot continue if the template
     # instance couldn't be created.
@@ -72,7 +67,7 @@ function tuneup_doSvgMetadata {
 
     # Expand translation markers inside template instance.
     sed -r -i \
-        -e "s!=TITLE=!$NAM!" \
+        -e "s!=TITLE=!$TITLE!" \
         -e "s!=URL=!$URL!" \
         -e "s!=DATE=!$(date "+%Y-%m-%d")!" $INSTANCE
     sed -i -r "/=KEYWORDS=/c\\${KEYS}" $INSTANCE

@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# tuneup_svg.sh -- This function performs maintainance tasks for
-# SVG files.
+# svg.sh -- This function standardizes maintainance of SVG files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,12 +22,15 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_svg {
+function svg {
+
+    # Define backend-specific configuration directory.
+    TUNEUP_BACKEND_CONFIG="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
 
     # Update metadata information.
-    tuneup_svg_doMetadata
+    ${TUNEUP_BACKEND}_doMetadata
 
     # Remove all unused items.
-    tuneup_svg_doUnusedItems
+    ${TUNEUP_BACKEND}_doUnusedItems
 
 }
