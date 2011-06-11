@@ -57,7 +57,7 @@ function xhtml_doToc {
 
     # Define table of content configuration file, the file used to
     # produce the table of content XHTML output code.
-    local TOC_CONFIG=${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_toc.awk
+    local TOC_CONFIG=${TUNEUP_BACKEND_CONFIG}/toc.awk
 
     # Verify table of content configuration file.
     cli_checkFiles ${TOC_CONFIG}
