@@ -33,10 +33,11 @@ function tuneup_doBaseActions {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
+    # Loop through list of supported file extensions. 
     for TUNEUP_EXTENSION in ${TUNEUP_EXTENSIONS};do
 
-        # Redefine name of tuneup backend based on the file extension
-        # of file being processed.
+        # Redefine name of tuneup backend based on supported file
+        # extension.
         if [[ $TUNEUP_EXTENSION == 'svg' ]];then
             TUNEUP_BACKEND='svg'
         elif [[ $TUNEUP_EXTENSION == 'xhtml' ]];then
@@ -47,7 +48,8 @@ function tuneup_doBaseActions {
            cli_printMessage "`gettext "No file to tune up found."`" --as-error-line 
         fi
 
-        # Build list of files to process using action value as reference.
+        # Build list of files to process using action value as
+        # reference.
         FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${TUNEUP_EXTENSION}")
 
         # Verify list of files to process. Assuming no file is found,
