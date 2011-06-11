@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# tuneup_xhtml.sh -- This function performs maintainance tasks for
-# XHTML files.
+# xhtml.sh -- This function standardizes maintainance tasks of XHTML
+# files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,10 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function tuneup_xhtml {
+function xhtml {
 
-    # Transforms html headings to make them accessible (e.g., through
+    # Define backend-specific configuration directory.
+    TUNEUP_BACKEND_CONFIG="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
+
+    # Transforms xhtml headings to make them accessible (e.g., through
     # a table of contents).
-    tuneup_xhtml_doHeadings
+    xhtml_makeToc
 
 }
