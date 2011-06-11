@@ -164,23 +164,23 @@ base-rendition applies the translation file to the input file in order
 to produce a translated instance of it, then this translated instance
 is used as input file to produce one or more output files.
 
-Inside the @code{render} functionality of @command{centos-art.sh}
-script, the input format is always XML (e.g., SVG or DocBook); the
-translation files are always portable objects (e.g., PO); and the
-format produced as output depends on the input file provided  (e.g.,
-when the input format is a SVG file, the base output is a PNG file;
-when the input format is a Docbook file the base output is be XHTML,
-Text and PDF).
+The base-rendition flow processes input files using file extensions
+and backend-specific functionalities as reference. When you try to
+render a location in the repository, a list of supported file
+extensions is evaluated and a list of files to process is built for
+each supported extension. Later, each list of files to process is
+processed using backend-specific functionalities to perform the
+specific tasks.  Backend-specific functionalities group the function
+files needed to perform tasks specific to one file extension (e.g.,
+when a design model file extension is @file{svg}, the @samp{svg}
+backend-specific functionalities are loaded in the execution
+environment to process the design model.).
 
-In order to optimize the way @code{render} functionality processes
-input files, different input files are organized in different
-locations inside the repository. This way, we end up having one
-base-rendition for each input format supported (e.g., SVG and
-DocBook). SVG base-rendition takes palce under @file{trunk/Identity}
-directory structure and DocBook base-rendition under
-@file{trunk/Manuals} directory structure.  It is not possible to
-perform SVG base-rendition under @file{trunk/Manuals} nor DocBook
-base-rendition under @file{trunk/Identity}.
+The base-rendition flow uses XML files as input (e.g., SVG or DocBook)
+and @acronym{PO,Portable Objects} as translation files. The format
+produced as output depends on the input file provided  (e.g., when the
+input format is a SVG file, the base output is a PNG file; when the
+input format is a DocBook file the base output is PDF and XHTML.).
 
 As application example of base-rendition flow, consider the
 description of the  following sections:
