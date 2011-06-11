@@ -1,8 +1,8 @@
 #!/usr/bin/gawk
 #
-# output_forHadingsToc.awk -- This file provides the output format
-# required by tuneup_doXhtmlHeadings function, inside centos-art.sh
-# script, to produce the table of contents correctly.
+# xhtml_toc.awk -- This file provides the output format required by
+# xhtml_makeToc function, inside centos-art.sh script, to produce the
+# table of contents correctly.
 #
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
