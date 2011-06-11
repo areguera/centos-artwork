@@ -1,7 +1,9 @@
 #!/bin/bash
 #
 # docbook_doLastActions.sh -- This function performs last-rendition
-# actions for DocBook files.
+# actions for DocBook files. These are the actions that take
+# base-rendition and post-rendition output as input to produce output
+# from it.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
