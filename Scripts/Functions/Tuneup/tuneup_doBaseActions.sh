@@ -25,16 +25,13 @@
 
 function tuneup_doBaseActions {
 
-    local FILE=''
-    local FILES=''
-    local EXTENSION=''
-
     # Define file extensions we'll look files for. This is, the
     # extension of files we want to perform maintainance tasks for.
-    EXTENSION='(svg|xhtml|sh)'
+    local EXTENSION='(svg|xhtml|sh)'
 
     # Build list of files to process using action value as reference.
-    FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
+    local FILE=''
+    local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${EXTENSION}")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -46,14 +43,30 @@ function tuneup_doBaseActions {
         # Print action message.
         cli_printMessage "$FILE" --as-tuningup-line
 
-        # Define what to do based on file extension.
+        # Redefine name of tuneup backend based on the file extension
+        # of file being processed.
         if [[ $FILE =~ '\.svg$' ]];then
-            ${FUNCNAM}_svg
+            TUNEUP_BACKEND='svg'
         elif [[ $FILE =~ '\.xhtml$' ]];then
-            ${FUNCNAM}_xhtml
+            TUNEUP_BACKEND='xhtml'
         elif [[ $FILE =~ '\.sh$' ]];then
-            ${FUNCNAM}_shell
+            TUNEUP_BACKEND='shell'
         fi
+
+        # Initialize backend-specific functionalities.
+        cli_exportFunctions "${TUNEUP_BACKEND_DIR}/$(cli_getRepoName \
+            ${TUNEUP_BACKEND} -d)" "${TUNEUP_BACKEND}"
+
+        # Perform backend base-rendition.
+        ${TUNEUP_BACKEND}
+
+        # Unset backend-specific functionalities from environment.
+        # This is required to prevent end up with more than one
+        # backend-specifc function initialization, in those cases when
+        # different template files are rendered in just one execution
+        # of `centos-art.sh' script.
+        cli_unsetFunctions "${TUNEUP_BACKEND_DIR}/$(cli_getRepoName \
+            ${TUNEUP_BACKEND} -d)" "${TUNEUP_BACKEND}"
 
     done
 
