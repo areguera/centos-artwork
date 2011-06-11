@@ -26,6 +26,6 @@
 function svg_doVacuumDefs {
 
     # Vacuum unused svg definition using inkscape.
-    inkscape --vacuum-defs $FILE > /dev/null
+    inkscape --vacuum-defs $FILE &> /dev/null
 
 }
