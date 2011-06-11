@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# tuneup.sh -- This function groups maintainance tasks for files
-# inside the repository. What task to performed to what file is
-# defined using the file extension as reference.
+# tuneup.sh -- This function standardizes maintainance tasks for files
+# inside the repository. Maintainance tasks are applied to files using
+# file extension as reference.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -29,9 +29,14 @@ function tuneup {
     local ACTIONNAM=''
     local ACTIONVAL=''
 
-    # Define absolute path to this function's configuration directory.
-    # Here is where most transformation files are stored in.
-    local FUNCCONFIG=${FUNCDIR}/${FUNCDIRNAM}/Config
+    # Initialize name of rendition backend as an empty value. The name
+    # of rendition backend is determined automatically based on
+    # template file extension, later, when files are processed.
+    local TUNEUP_BACKEND=''
+
+    # Initialize absolute path to backend's base directory, the place
+    # where backend-specific directories are stored in.
+    local TUNEUP_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
 
     # Interpret arguments and options passed through command-line.
     tuneup_getOptions
