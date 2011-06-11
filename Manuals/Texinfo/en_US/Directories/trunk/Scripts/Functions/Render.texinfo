@@ -194,10 +194,11 @@ Anaconda}
 @subsubheading The post-rendition flow
 
 The post-rendition flow is performed immediatly after base-rendition
-flow to extend the base-rendition flow by applying in-place
-modifications to base-rendition output. In-place modifications can be
-performed either through the @option{--post-rendition} command-line
-option of @command{centos-art.sh} script or through directory-specific
+flow to extend the base-rendition flow by applying transformations or
+in-place modifications to base-rendition output. In-place
+modifications can be performed either through the
+@option{--post-rendition} command-line option of
+@command{centos-art.sh} script or through directory-specific
 rendition.
 
 Actions commanded through @option{--post-rendition} option are applied
@@ -207,7 +208,7 @@ modified copies (i.e., new files) of it created through
 directory-specific rendition.  Creation of modified copies is
 something specific to directory-specific rendition only. It is not
 possible for the @option{--post-rendition} option to create modified
-copies of base-rendition flow because commands passed through it are
+copies of base-rendition output because commands passed through it are
 applied to the base-rendition output file directly in a disposition
 that don't support creation of new files, but in-place modifications
 only.
@@ -232,11 +233,11 @@ Grub}
 @subsubheading The last-rendition flow
 
 The last-rendition flow takes place after post-rendition and applies
-in-place modifications to all files produced as result of both
-base-rendition and post-rendition flows in the same directory
-structure, just before passing to process a different directory
-structure.  In-place modifications can be performed either through the
-@option{--last-rendition} command-line option of
+transformations or in-place modifications to all files produced as
+result of both base-rendition and post-rendition flows in the same
+directory structure, just before passing to process a different
+directory structure.  In-place modifications can be performed either
+through the @option{--last-rendition} command-line option of
 @command{centos-art.sh} script or through directory-specific
 rendition.
 
