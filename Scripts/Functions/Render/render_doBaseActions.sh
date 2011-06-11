@@ -30,7 +30,6 @@ function render_doBaseActions {
     local OUTPUT=''
     local TEMPLATE=''
     local PARENTDIR=''
-    local EXTENSION=''
     local TRANSLATION=''
     local EXTERNALFILE=''
     local EXTERNALFILES=''
@@ -40,12 +39,6 @@ function render_doBaseActions {
 
     # Verify default directory where design models are stored in.
     cli_checkFiles "$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}" --directory
-
-    # Define the extension pattern for template files. This is the
-    # file extensions that centos-art will look for in order to build
-    # the list of files to process. The list of files to process
-    # contains the files that match this extension pattern.
-    EXTENSION='(svgz|svg|docbook)'
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
@@ -79,10 +72,10 @@ function render_doBaseActions {
     #
     # Another issue to consider here, is the way of filtering. We
     # cannot expand the pattern specified by FLAG_FILTER with a `.*'
-    # here (e.g., "${FLAG_FILTER}.*\.${EXTENSION}") because that would
-    # suppress any possibility from the user to specifiy just one file
-    # name in locations where more than one file with the same name as
-    # prefix exists (e.g., `repository.docbook',
+    # here (e.g., "${FLAG_FILTER}.*\.${RENDER_EXTENSION}") because
+    # that would suppress any possibility from the user to specifiy
+    # just one file name in locations where more than one file with
+    # the same name as prefix exists (e.g., `repository.docbook',
     # `repository-preamble.docbook' and `repository-parts.docbook').
     # Instead, pass filtering control to the user whom can use regular
     # expression markup in the `--filter' option to decide whether to
@@ -91,10 +84,14 @@ function render_doBaseActions {
     # `repository-parts.docbook' but not `repository.docbook' (e.g.,
     # through `--filter="repository-.*"').
     for FILE in $(cli_getFilesList ${TEMPLATE} \
-        --pattern="${FLAG_FILTER}\.${EXTENSION}" --type="f" \
+        --pattern="${FLAG_FILTER}\.${RENDER_EXTENSION}" --type="f" \
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/');do
         FILES[((++${#FILES[*]}))]=$FILE
     done
+
+    # Initialize backend-specific functionalities.
+    cli_exportFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
+        ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
 
     # Start processing the base rendition list of FILES. Fun part
     # approching :-).
@@ -172,7 +169,7 @@ function render_doBaseActions {
         # structure.
         FILE=$(echo ${FILE} \
             | sed -r "s!.*${PARENTDIR}/!!" \
-            | sed -r "s/\.${EXTENSION}$//")
+            | sed -r "s/\.${RENDER_EXTENSION}$//")
 
         # Define absolute path to final file (without extension).
         FILE=${OUTPUT}/$(basename "${FILE}")
@@ -187,20 +184,6 @@ function render_doBaseActions {
         # Expand translation markers inside design model instance.
         cli_replaceTMarkers ${INSTANCE}
 
-        # Redefine name of rendition backend based on the file
-        # extension of template instance.
-        if [[ $INSTANCE =~ '\.(svgz|svg)$' ]];then
-            RENDER_BACKEND='svg'
-        elif [[ $INSTANCE =~ '\.docbook$' ]];then
-            RENDER_BACKEND='docbook'
-        else
-            cli_printMessage "`gettext "The template file you try to render is not supported yet."`" --as-error-line
-        fi
-
-        # Initialize backend-specific functionalities.
-        cli_exportFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
-            ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
-
         # Perform backend base-rendition.
         ${RENDER_BACKEND}
 
@@ -209,14 +192,6 @@ function render_doBaseActions {
 
         # Perform backend last-rendition.
         ${RENDER_BACKEND}_doLastActions
-
-        # Unset backend-specific functionalities from environment.
-        # This is required to prevent end up with more than one
-        # backend-specifc function initialization, in those cases when
-        # different template files are rendered in just one execution
-        # of `centos-art.sh' script.
-        cli_unsetFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
-            ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
 
         # Remove template instance. 
         if [[ -f $INSTANCE ]];then
@@ -227,5 +202,9 @@ function render_doBaseActions {
         COUNT=$(($COUNT + 1))
 
     done
+
+    # Unset backend-specific functionalities.
+    cli_unsetFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
+        ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
 
 }

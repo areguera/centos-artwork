@@ -74,6 +74,15 @@ function render {
     # where backend-specific directories are stored in.
     local RENDER_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
 
+    # Initialize extension pattern used to retrive template files as
+    # an empty value. The value of this variable specifies the file
+    # extensions that `centos-art.sh' will look for building the list
+    # of files to process. The list of files to process contains the
+    # files that satisfy this file extension pattern. The value of
+    # this variable is redefine later, at the moment of evaluating the
+    # repository renderable paths.
+    local RENDER_EXTENSION=''
+
     # Interpret arguments and options passed through command-line.
     render_getOptions
 
@@ -97,27 +106,30 @@ function render {
         # repository.
         cli_syncroRepoChanges
 
-        # Define action name based on action value as reference. When
-        # action value refers to theme-related directory structures,
-        # the centos-art.sh script performs theme-specific rendition.
-        # Otherwise, if a directory structure outside themes is
-        # provided, the base-rendition is performed instead.
+        # Define renderable directories and the way they are produced.
+        # To describe the way renderable directories are produced, we
+        # take the action value (ACTIONVAL) as reference and describe
+        # the production through the action name (ACTIONNAM), the
+        # rendition backend (RENDER_BACKEND) and the rendition
+        # extension (RENDER_EXTENSION) related to it.
         if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
             ACTIONNAM="${FUNCNAME}_doThemeActions"
+            RENDER_BACKEND='svg'
+            RENDER_EXTENSION='(svgz|svg)'
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
             ACTIONNAM="${FUNCNAME}_doBaseActions"
+            RENDER_BACKEND='svg'
+            RENDER_EXTENSION='(svgz|svg)'
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals" ]];then
             ACTIONNAM="${FUNCNAME}_doBaseActions"
+            RENDER_BACKEND='docbook'
+            RENDER_EXTENSION='docbook'
         else
-            cli_printMessage "`gettext "The path provided do not support rendition."`" --as-error-line
+            cli_printMessage "`gettext "The path provided does not support rendition."`" --as-error-line
         fi
 
         # Execute action name.
-        if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
-            eval $ACTIONNAM
-        else
-            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
-        fi
+        ${ACTIONNAM}
 
         # Commit changes from working copy to central repository only.
         # At this point, changes in the repository are not merged in
