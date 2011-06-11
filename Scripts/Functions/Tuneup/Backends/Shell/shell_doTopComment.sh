@@ -26,7 +26,7 @@
 function shell_doTopComment {
 
     # Define absolute path to template file.
-    local TEMPLATE="${TUNEUP_BACKEND_CONFIG}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)_topcomment.sed"
+    local TEMPLATE="${TUNEUP_BACKEND_CONFIG}/topcomment.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE
