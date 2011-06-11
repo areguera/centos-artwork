@@ -74,14 +74,12 @@ function render {
     # where backend-specific directories are stored in.
     local RENDER_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
 
-    # Initialize extension pattern used to retrive template files as
-    # an empty value. The value of this variable specifies the file
-    # extensions that `centos-art.sh' will look for building the list
-    # of files to process. The list of files to process contains the
-    # files that satisfy this file extension pattern. The value of
-    # this variable is redefine later, at the moment of evaluating the
-    # repository renderable paths.
-    local RENDER_EXTENSION=''
+    # Initialize list of supported file extensions. These file
+    # extensions are used by design model files, the files used as
+    # base-rendition input. In order for design model files to be
+    # correclty rendered, they must end with one of the file
+    # extensions listed here.
+    local RENDER_EXTENSIONS='svg docbook'
 
     # Interpret arguments and options passed through command-line.
     render_getOptions
@@ -109,21 +107,13 @@ function render {
         # Define renderable directories and the way they are produced.
         # To describe the way renderable directories are produced, we
         # take the action value (ACTIONVAL) as reference and describe
-        # the production through the action name (ACTIONNAM), the
-        # rendition backend (RENDER_BACKEND) and the rendition
-        # extension (RENDER_EXTENSION) related to it.
+        # the production through an action name (ACTIONNAM).
         if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
             ACTIONNAM="${FUNCNAME}_doThemeActions"
-            RENDER_BACKEND='svg'
-            RENDER_EXTENSION='(svgz|svg)'
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
             ACTIONNAM="${FUNCNAME}_doBaseActions"
-            RENDER_BACKEND='svg'
-            RENDER_EXTENSION='(svgz|svg)'
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals" ]];then
             ACTIONNAM="${FUNCNAME}_doBaseActions"
-            RENDER_BACKEND='docbook'
-            RENDER_EXTENSION='docbook'
         else
             cli_printMessage "`gettext "The path provided does not support rendition."`" --as-error-line
         fi
