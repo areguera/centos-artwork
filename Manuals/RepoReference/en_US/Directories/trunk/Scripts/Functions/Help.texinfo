@@ -268,21 +268,21 @@ characters from Info files in UTF-8 terminals.
 Notice that, UTF-8 is the default character codification used by the
 terminal inside The CentOS Distribution. This is the terminal
 configuration we use for executing functionalities of
-@command{centos-art.sh} script. If one of these functionalities
-returns an error, the @command{centos-art.sh} script will suggest to
-you executing a @code{help} command to know more about why the error
+@command{centos-art.sh} script and so to print error messages. When a
+run time error occurs, the @command{centos-art.sh} script will suggest
+you to execute a @code{help} command to know more about why the error
 happend.  This @code{help} command will read the information from an
 Info file. If the Info file is codified to be read in an encoding
 different to the one the terminal we are performing the action is set,
-special characters will be printed wrongly; if printed at all. In this
+special characters will be wrongly printed; if printed at all. In this
 situation it would be required to change the terminal codification to
-that one set in the Info file, which might be something not desirable.
+that one set in the Info file before reading the info file.
 
 Notice also that, the main purpose of using Texinfo as documentation
-backend to write documentation related to each repository directory,
-is the possibility it provides of producing Info files as output. This
+backend when writing documentation related to each repository
+directory, is the possibility of producing Info files as output. This
 posibility is used by @command{centos-art.sh} script to build internal
-references where documentation can be found when errors happen.  It
+documentation references to know where and why the error happen.  It
 lets users to type a command immediatly after errors to know more
 about them, once they happen. It is about creating a direct connection
 between the @command{centos-art.sh} script and the conceptual ideas
