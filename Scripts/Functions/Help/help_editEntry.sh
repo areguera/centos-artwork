@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_editEntry.sh -- This function implements the edition flow of
+# help_editEntry.sh -- This function implements the edition flow of
 # documentation entries inside the working copy.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_editEntry {
+function help_editEntry {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
