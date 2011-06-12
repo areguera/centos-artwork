@@ -145,5 +145,3 @@ function help {
     ${FUNCNAM}_updateOutputFiles
 
 }
-
-}
