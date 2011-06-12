@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_renameEntry.sh -- This function renames documentation entries
+# help_renameEntry.sh -- This function renames documentation entries
 # and updates documentation structure to reflect changes.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_renameEntry {
+function help_renameEntry {
 
     # Copy source documentation entry.
     ${FUNCNAM}_copyEntry "$1" "$2"
