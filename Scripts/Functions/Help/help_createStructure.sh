@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_createStructure.sh -- This function creates the
+# help_createStructure.sh -- This function creates the
 # documentation structure of a manual using the current language as
 # reference.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_createStructure {
+function help_createStructure {
 
     # Verify manual base directory. The manual base directory is where
     # the whole documentation manual is stored in. If it already
