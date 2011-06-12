@@ -26,11 +26,11 @@
 function help_updateOutputFileXhtml {
 
     # Verify initialization files used by texi2html.
-    cli_checkFiles ${MANUAL_BACKEND}/${MANUAL_NAME}-init.pl
+    cli_checkFiles ${MANUAL_TLDIR}/${MANUAL_NAME}-init.pl
     cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_NAME}-init.pl
 
     # Verify transformation files used to modify texi2html output.
-    cli_checkFiles ${MANUAL_BACKEND}/${MANUAL_NAME}.sed
+    cli_checkFiles ${MANUAL_TLDIR}/${MANUAL_NAME}.sed
     cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_NAME}.sed
 
     # Output action message.
@@ -59,7 +59,7 @@ function help_updateOutputFileXhtml {
     # Update xhtml files.  Use texi2html to export from texinfo file
     # format to xhtml using CentOS Web default visual style.
     texi2html --lang=$(cli_getCurrentLocale --langcode-only) \
-        --init-file=${MANUAL_BACKEND}/${MANUAL_NAME}-init.pl \
+        --init-file=${MANUAL_TLDIR}/${MANUAL_NAME}-init.pl \
         --init-file=${MANUAL_TEMPLATE}/${MANUAL_NAME}-init.pl \
         --output=${MANUAL_BASEDIR}/${MANUAL_NAME}.xhtml \
         ${MANUAL_BASEDIR}/${MANUAL_NAME}.${MANUAL_EXTENSION}
@@ -77,7 +77,7 @@ function help_updateOutputFileXhtml {
     # structure to a completly different thing that can be handle
     # through classed inside CSS definitions.
     sed -r -i \
-        -f ${MANUAL_BACKEND}/${MANUAL_NAME}.sed \
+        -f ${MANUAL_TLDIR}/${MANUAL_NAME}.sed \
         -f ${MANUAL_TEMPLATE}/${MANUAL_NAME}.sed \
         ${MANUAL_BASEFILE}.xhtml/*.xhtml
 
