@@ -116,14 +116,17 @@ manual structure in a correct state.
 
 Inside the CentOS Artwork Repository, The CentOS Project corporate
 identity is organized through directories. Each directory inside the
-repository responds to one or more conceptual ideas. Conceptual ideas
-are implemented through files.  
+repository responds to one or more conceptual ideas. The conceptual
+ideas each directory inside the repository is based on, is implemented
+through files.  
 
 The @code{help} functionality of @command{centos-art.sh} script uses
-the repository directory layout as reference to document the
-conceptual ideas it is based on. Each directory inside the repository
-can be documented, in order to provide the explanation of what it is
-for and how automation scripts use it.
+the repository directory layout as reference to describe the
+conceptual ideas behind its existance. Each directory inside the
+repository can be documented, in order to provide the explanation of
+what it is for and how automation scripts use it. Documentation of
+each directory happens through @emph{repository documentation
+entries}.
 
 @quotation
 @strong{Caution} When the repository directory layout changes, the
@@ -132,15 +135,6 @@ locations to be consistent in their paths. Otherwise, you may end up
 having documentation entries that point to unexistent directories in
 the repository.
 @end quotation
-
-Files inside the repository are not documented. The only exception to
-this rule are files under @file{trunk/Manuals} directory, the place
-where documentation source files are stored in. Inside this location
-you can refer files for direct actions using the @code{help}
-functionality of @command{centos-art.sh} script. File actions, in this
-location, are also used to manage specific parts of the manual which
-have no association outside @file{trunk/Manuals} directory (e.g.,
-Preface, Introduction, etc.).
 
 The repository documentation entries are organized as sections inside
 a chapter named @samp{The repository directories}. Each section
@@ -153,13 +147,12 @@ previous sections.
 
 The internal document organization and language used in repository
 documentation entries are both defined through templates.  Templates
-are organized in the @file{Templates} directory which is located
-inside the backend directory. Templates are used when a new
-documentation structure is created and later, when a new documentation
-entry is created inside it.  There is one documentation manual
-structure for each language supported and one documentation entry
-inside the documentation manual for each directory inside the
-repositroy.
+are organized in the @file{trunk/Scripts/Functions/Help/Templates}
+directory. Templates are used when a new documentation structure is
+created and later, when a new documentation entry is created inside
+it.  There is one documentation manual structure for each language
+supported and one documentation entry inside the documentation manual
+for each directory inside the repository.
 
 The relation between template files and repository paths is set in the
 @file{repository.conf} file. In this file, all lines begining with a
@@ -187,50 +180,49 @@ Directories/section.texinfo             = "(trunk|branches|tags).*\.texinfo$"
 
 The @code{help} functionality uses Texinfo as documentation backend.
 Texinfo is a documentation system that can produce both online
-information and a printed manual from a single source. The
-@code{texinfo} backend is an interface the @command{centos-art.sh}
-script uses to control the frequent documenting tasks (e.g., reading,
-editing, update output files, etc.) in the source files of a Texinfo
-documentation manual structure.
+information and a printed manual from a single source. The @code{help}
+functionality is the interface the @command{centos-art.sh} script uses
+to control frequent documenting tasks (e.g., reading, editing, update
+output files, etc.) in the source files of a Texinfo documentation
+manual structure.
 
-The @code{texinfo} backend takes the repository documentation manual
-in texinfo format as input and produces Info, Pdf, XML, Xhtml and Txt
-output files in the @file{trunk/Manuals/Texinfo/$LANG} directory
-structure, where @var{$LANG} represents the language of the manual.
-The Info, Pdf and Txt output files are produced through
+The @code{help} functionality takes the repository documentation
+manual in texinfo format as input and produces Info, Pdf, XML, Xhtml
+and Txt output files in the @file{trunk/Manuals/RepoReference/$LANG}
+directory structure, where @var{$LANG} represents the language of the
+manual.  The Info, Pdf and Txt output files are produced through
 @command{makeinfo} command and the Xhtml output through
 @command{texi2html} command. Using the @command{makeinfo} command it
 is also possible to output the repository documentation manual in
-Docbook format, however, the output produced by @command{makeinfo}
-command seems to have some malformations, so the @samp{docbook}
-backend is considered instead (@pxref{Directories trunk Scripts
-Functions Help Backends Docbook}). 
+DocBook format, however, the DocBook output produced by
+@command{makeinfo} command seems to have some malformations.
 
 When producing Xhtml output, through @command{texi2html} command, the
 output customization is controlled by common and specific
 configuration files. Common configuration files are stored in
-@file{trunk/Manuals/Texinfo} and include @file{repository.css},
+@file{trunk/Manuals/RepoReference} and include @file{repository.css},
 @file{repository-init.pl} and @file{repository.sed}. Specific
-configuration files, on the other hand, are stored inside
-backend-specific directories (e.g.,
-@file{trunk/Scripts/Functions/Help/Backends/Texinfo/Templates/$LANG})
-and includes @file{repository-init.pl}, @file{repository.conf},
+configuration files, on the other hand, are stored inside the
+language-specific template directory (e.g.,
+@file{trunk/Scripts/Functions/Help/Templates/$LANG}) and includes
+@file{repository-init.pl}, @file{repository.conf},
 @file{repository.sed}.
 
-When writting texinfo files, produced by @samp{texinfo} backend, the
-way absolute paths are defined is important.  Absolute path
-definitions (e.g., through `@@include' and `@@image') must be set from
-@file{trunk/} directory structure on.  This is necessary because the
-documentation manual is exported using @file{@var{$HOME}/artwork}
+When writting documentation entries through @samp{help} functionality,
+the way absolute paths are defined inside them is important.  Absolute
+path definitions (e.g., through `@@include' and `@@image') must be set
+from @file{trunk/} directory structure on.  This is necessary because
+the documentation manual is exported using @file{@var{$HOME}/artwork}
 directory structure as base.
 
 Internationalization of repository documentation manual is performed
 trough document templates and the @env{LANG} environment variable.
-There is one repository documentation manual for each locale specified
-by @env{LANG} environment variable. When no template is available for
-a specific language, the @code{en_US} templates are used as reference.
+There might be one repository documentation manual for each locale
+specified by @env{LANG} environment variable. When no template is
+available for a specific language, the @code{en_US} templates are used
+as reference.
 
-Each repository documentation manual written in language other than
+Each repository documentation manual written in a language other than
 English, must include the @samp{@@documentlanguage} and
 @samp{@@documentencoding} directives in the main document file (e.g.,
 @file{repository.texinfo}) to provide the language and encoding
@@ -254,6 +246,38 @@ entities (e.g., @samp{&aacute;}, @samp{&ntilde;}, etc.).  In the Pdf
 output, special characters are printed well most of times with some
 exceptions (e.g., the @samp{@@'i} don't replaces the dot over the
 letter with the accentuation, but put the accentuation over it.).
+
+@quotation
+@strong{Note} Using other codifications but UTF-8 in the terminal
+might be not convenient in some situations. Prevent yourself from
+using Texinfo special way of accentuation and the
+@samp{@@documentencoding} directive when you be writing documentation
+entries through @code{help} functionality. This will hide characters
+with accentuation in Pdf output and no HTML entity for them will be
+expanded, but will let you read Info files in UTF-8 terminals. 
+@quotation
+
+Notice that, UTF-8 is the default character codification used by the
+terminal inside The CentOS Distribution. This is the terminal
+configuration we use for executing functionalities of
+@command{centos-art.sh} script. If one of these functionalities
+returns an error, the @command{centos-art.sh} script will suggest to
+you executing a @code{help} command to know more about why the error
+happend.  This @code{help} command will read the information from an
+Info file. If the Info file is codified to be read in an encoding
+different to the one the terminal we are performing the action is set,
+special characters will be printed wrongly; if printed at all. In this
+situation it would be required to change the terminal codification to
+the one set on the Info file, which might be something not desirable.
+
+The main purpose of using Texinfo as documentation backend to write
+documentation related to each repository directory, is the possibility
+it provides of producing Info files as output. This posibility is used
+by @command{centos-art.sh} script to refere places where documentation
+can be found when an error happens.  It is, let users to type a
+command immidiatly after errors, so they can know more about them. It
+is about creating a direct connection between the
+@command{centos-art.sh} script and the conceptual ideas behind it.
 
 @subheading Examples
 
