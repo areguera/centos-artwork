@@ -135,7 +135,7 @@ function help {
 
             # Execute backend action names that may need to use more
             # than one action value.
-            $ACTIONNAM 
+            $ACTIONNAM
 
         done
 
