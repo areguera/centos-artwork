@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_searchIndex.sh -- This function does an index search inside the
+# help_searchIndex.sh -- This function does an index search inside the
 # info document.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_searchIndex {
+function help_searchIndex {
 
     # Rebuild output files to propagate recent changes.
     ${FUNCNAM}_updateOutputFiles
