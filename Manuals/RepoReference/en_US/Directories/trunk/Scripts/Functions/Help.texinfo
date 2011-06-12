@@ -215,34 +215,35 @@ from @file{trunk/} directory structure on.  This is necessary because
 the documentation manual is exported using @file{@var{$HOME}/artwork}
 directory structure as base.
 
-Internationalization of repository documentation manual is performed
-trough document templates and the @env{LANG} environment variable.
-There might be one repository documentation manual for each locale
-specified by @env{LANG} environment variable. When no template is
-available for a specific language, the @code{en_US} templates are used
-as reference.  Each repository documentation manual written in a
-language other than English, must include the
-@samp{@@documentlanguage} and @samp{@@documentencoding} directives in
-the main document file (e.g., @file{repository.texinfo}) to provide
-the language and encoding information, respectively.  
+Internationalization of document structures produced by @code{help}
+functionality is performed trough document templates and the
+@env{LANG} environment variable.  There might be one repository
+documentation manual for each locale specified by @env{LANG}
+environment variable. When no template is available for a specific
+language, the @code{en_US} templates are used as reference.  Each
+repository documentation manual written in a language other than
+English, must include the @samp{@@documentlanguage} and
+@samp{@@documentencoding} directives in the main document file (e.g.,
+@file{repository.texinfo}) to provide the language and encoding
+information, respectively.  
 
-The language information can be any value specified by ISO-639
-language code standard and the ecoding informormation can be either
-@samp{US-ASCII}, @samp{ISO-8859-1}, @samp{ISO-8859-15} or
-@samp{ISO-8859-2}.  The encoding information is required in order for
-Txt and Info outputs to show special characters, defined through
-Texinfo special way of accentuation (e.g., @samp{@@'a}, @samp{@@~n},
-etc.), correctly. In this specific case, to read both Txt and Info
-files, it is required that the terminal you are performing the reading
-action (e.g., @command{gnome-terminal}) be encoded with the same value
-you specified inside the repository documentation manual. Otherwise,
-special characters may not look as expected.  Using Texinfo special
-way of accentuation is also required for @command{texi2html} command
-to transform special characters to HTML entities (e.g.,
-@samp{&aacute;}, @samp{&ntilde;}, etc.).  In the Pdf output, special
-characters are printed well most of times with some exceptions (e.g.,
-the @samp{@@'i} don't replaces the dot over the letter with the
-accentuation, but put the accentuation over it.).
+The language information provided by @samp{@@documentlanguage} can be
+any value specified by ISO-639 language code standard and the ecoding
+informormation can be either @samp{US-ASCII}, @samp{ISO-8859-1},
+@samp{ISO-8859-15} or @samp{ISO-8859-2}.  The encoding information is
+required in order for Txt and Info outputs to show special characters,
+defined through Texinfo special way of accentuation (e.g.,
+@samp{@@'a}, @samp{@@~n}, etc.), correctly. In this specific case, to
+read both Txt and Info files, it is required that the terminal you are
+performing the reading action (e.g., @command{gnome-terminal}) be
+encoded with the same value you specified inside the repository
+documentation manual. Otherwise, special characters may not look as
+expected.  Using Texinfo special way of accentuation is also required
+for @command{texi2html} command to transform special characters to
+HTML entities (e.g., @samp{&aacute;}, @samp{&ntilde;}, etc.).  In the
+Pdf output, special characters are printed well most of times with
+some exceptions (e.g., the @samp{@@'i} don't replaces the dot over the
+letter with the accentuation, but put the accentuation over it.).
 
 @quotation
 @strong{Note} Using other codifications but UTF-8 in the terminal
