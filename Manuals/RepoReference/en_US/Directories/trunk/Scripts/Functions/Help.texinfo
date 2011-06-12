@@ -190,9 +190,13 @@ Txt output files are produced through @command{makeinfo} command and
 the Xhtml output through @command{texi2html} command.
 
 @quotation
-@strong{Caution} The DocBook output produced through
-@command{makeinfo} (@file{texinfo-4.8-14.el5}) doesn't conform with
-its DTD specification.
+@strong{Caution} The DocBook output produced by @command{makeinfo}
+(@file{texinfo-4.8-14.el5}) doesn't conform with its DTD
+specification. To determine whether the DocBook XML output conforms
+its DTD specification or not, try the following command:
+@verbatim
+xmllint --valid --noout repository.docbook
+@end verbatim
 @end quotation
 
 When producing Xhtml output, through @command{texi2html} command, the
