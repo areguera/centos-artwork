@@ -98,7 +98,7 @@ sub T2H_XHTML_print_page_head
     <meta name="generator" content="$Texi2HTML::THISDOC{program}" />
     <meta name="copyright" content="2009, 2010, 2011 The CentOS Project" />
 
-    <link href="/home/centos/artwork/trunk/Manuals/RepoReference/repository.css" rel="stylesheet" type="text/css" media="screen projection" />
+    <link href="/home/centos/artwork/trunk/Manuals/Repository/repository.css" rel="stylesheet" type="text/css" media="screen projection" />
 
 </head>
 
