@@ -199,9 +199,9 @@ xmllint --valid --noout repository.docbook
 @end verbatim
 @end quotation
 
-The Xhtml output produced through @command{texi2html} is customized
-through common and specific configuration files. Common configuration
-files are stored in @file{trunk/Manuals/RepoReference} and include
+The Xhtml output produced by @command{texi2html} is customized through
+common and specific configuration files. Common configuration files
+are stored in @file{trunk/Manuals/RepoReference} and include
 @file{repository.css}, @file{repository-init.pl} and
 @file{repository.sed}. Specific configuration files, on the other
 hand, are stored inside the language-specific template directory
