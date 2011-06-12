@@ -189,6 +189,13 @@ DocBook, Xhtml and Txt output files in the
 Txt output files are produced through @command{makeinfo} command and
 the Xhtml output through @command{texi2html} command.
 
+@quotation
+@strong{Caution} The DocBook output produced through
+@command{makeinfo} (@file{texinfo-4.8-14.el5}) doesn't conform with
+its DTD specification (e.g., @samp{"-//OASIS//DTD DocBook XML
+V4.2//EN"}).
+@end quotation
+
 When producing Xhtml output, through @command{texi2html} command, the
 output customization is controlled by common and specific
 configuration files. Common configuration files are stored in
