@@ -2,20 +2,20 @@ The CentOS Artwork Repository is supported by Subversion
 (@url{http://subversion.tigris.org/}), a version control system which
 allows you to keep old versions of files and directories (usually
 source code), keep a log of who, when, and why changes occurred, etc.,
-like CVS, RCS or SCCS.  
+like CVS, RCS or SCCS.
 
-When using Subversion there is one @emph{source repository} and many
-@emph{working copies} of that source repository. The working copies
-are independent one another, can be distributed all around the world
-and provide a local place for designers, documentors, translators and
-programmers to perform their works in a descentralized way.  The
-source repository, on the other hand, provides a central place for all
+When using Subversion there is one ``source repository'' and many
+``working copies'' of that source repository. The working copies are
+independent one another, can be distributed all around the world and
+provide a local place for designers, documentors, translators and
+programmers to perform their work in a descentralized way. The source
+repository, on the other hand, provides a central place for all
 independent working copies to interchange data and provides the
 information required to permit extracting previous versions of files
 at any time.
 
-@subsection Repository policy
-@cindex Repository policy
+@subheading Policy
+@cindex Policy
 
 The CentOS Artwork Repository is a collaborative tool that anyone can
 have access to. However, changing that tool in any form is something
@@ -58,42 +58,8 @@ comply the terms of @ref{GNU General Public License} and @ref{GNU Free
 Documentation License} respectively in order for them to remain inside
 the repository.
 
-@subsection Repository organization 
-@cindex Repository organization
-
-The CentOS Artwork Repository uses a @file{trunk}, @file{branches},
-and @file{tags} organization.  
-
-@table @file
-@item trunk
-
-The @file{trunk} directory organizes the main development line of
-CentOS Artwork Repository. @xref{Directories trunk}, for more
-information.
-
-@item branches
-
-The @file{branches} directory oranizes intermediate development lines
-taken from the main development line.  @xref{Directories branches},
-for more information.
-
-@item tags
-
-The @file{tags} directory organizes frozen development lines taken
-either from the main or the intermediate lines of development.
-@xref{Directories tags}, for more information.
-@end table
-
-@subsection Repository file names
-@cindex Repository file names
-
-Inside the CentOS Artwork Repository, file names are all written in
-lowercase (e.g., @samp{01-welcome.png}, @samp{splash.png},
-@samp{anaconda_header.png}, etc.) and directory names are all written
-capitalized (e.g., @samp{Identity}, @samp{Themes}, @samp{Motifs},
-@samp{TreeFlower}, etc.).
-
-@subsection Repository work lines
+@subheading Work lines
+@cindex Work lines
 
 Content production inside the repository is organized by work lines.
 There are three major work lines of production inside The CentOS
@@ -134,252 +100,185 @@ tasks, time after time, if they can be programmed into just one
 executable script. The automation work line is organized in the
 @xref{Directories trunk Manuals}.
 
-@subsection Connection between directories
-@cindex Connection between directories
+@subheading Relation between directories
+@cindex Relation between directories
 @cindex Master paths
 @cindex Auxiliar paths
 
-In order to produce content in CentOS Artwork Repository, it is
-required that all work lines be connected somehow.  This is the way
-automation scripts can know where to retrive the information they need
-to work with (e.g., design model, translation messages, output
-location, etc.).  We build this kind of connection using two path
-constructions named @emph{master paths} and @emph{auxiliar paths}.
+In order for automation scripts to produce content inside a working
+copy of CentOS Artwork Repository, it is required that all work lines
+be related somehow. The relation is used by automation scripts to know
+where to retrive the information they need to work with (e.g., design
+model, translation messages, output locations, etc.). This kind of
+relation is built using two path constructions named ``master paths''
+and ``auxiliar paths''.
 
-The master path points only to directories that contain the source
-files (e.g., SVG files) required to produce base content (e.g., PNG
-files) through automation scripts.  Each master path inside the
+The master path points only to directories that contain source files
+(e.g., SVG files) required to produce output base content (e.g., PNG
+files) through automation scripts. Each master path inside the
 repository may have several auxiliar paths associated, but auxiliar
 paths can only have one master path associated.
 
-The auxiliar paths can point either to directories or files. When an
+Master paths used for producing images through SVG rendition are
+organized under @file{trunk/Identity/Models} directory structure and
+the auxiliar paths under @file{trunk/Identity/Images},
+@file{trunk/Locales} and @file{trunk/Manuals} directory structures.
+
+Auxiliar paths can point either to directories or files. When an
 auxiliar path points to a directory, that directory contains
 information that modifies somehow the content produced from master
 paths (e.g., translation messages) or provides the output information
-required to know where to store the content produced from master path.
-When an auxiliar path points to a file, that file has no other purpose
-but to document the master path it refers to.
+required to know where the content produced from the master path
+should be stored. When an auxiliar path points to a file, that file
+has no other purpose but to document the master path it refers to.
 
-The relation between auxiliar paths and master paths is realized
-combining two path informations which are: the master path itself and
-one second level directory structure from the repository.  Generally,
-the master path is considered the path identifier and the second level
-directory structure taken from the repository is considered the common
-part of the path where the identifier is appended. 
+Auxiliar paths should never be modified under any reason but to
+satisfy the relationship with the master path. Liberal change of
+auxiliar paths may suppress the conceptual idea they were initially
+created for; and certainly, automation scripts may stop working as
+expected.
 
-@float Figure, Path construction
-@verbatim
------+---------------+----------------------------+------+-----------
-Path | Suffix        | Identifier                 |Prefix| Type 
------+---------------+----------------------------+------+-----------
-  A  |               |trunk/Identity/Models/Brands|      | Directory 
------+---------------+----------------------------+------+-----------
-  B  |  trunk/Manual/|trunk/Identity/Models/Brands|.texinfo | File      
------+---------------+----------------------------+------+-----------
-  C  | trunk/Locales/|trunk/Identity/Models/Brands|      | Directory 
------+---------------+----------------------------+------+-----------
-  D  |               |trunk/Identity/Images/Brands|      | Directory 
------+---------------+----------------------------+------+-----------
-  E  | trunk/Locales/|trunk/Identity/Images/Brands|.texinfo | File      
------+---------------+----------------------------+------+-----------
+The relationship between auxiliar paths and master paths is built by
+combining the master path and the second level directory structures of
+the repository. The master path is considered the path identifier and
+the repository second level directory structure is considered the
+common part of the path where the path identifier is appended to. So,
+if we have the master path @file{trunk/Identity/Models/Brands}, we'll
+end up having, at least, the @file{trunk/Identity/Images/Brands}
+auxiliar path for storing output files and, optionally, one path under
+trunk/Manuals for storing documentation and one path under
+@file{trunk/Locales} for storing localizations.
 
-  A = Master path.
-  B = Auxiliar path to documentation entry.
-  C = Auxiliar path to translation messages.
-  D = Auxiliar path to final content output.
-  E = Auxiliar path to documentation entry.
-@end verbatim
-@caption{Path construction.}
-@end float
-
-The path information described above (@pxref{Path construction}) is
-used by direct rendition and can be taken as reference to add other
-components that are equally produced in the repository.  To add new
-components that make use of direct rendition inside the repository,
-change just the component name used above (e.g., @file{Brands}) to
-that one you want to add, without changing the path structure around
-it.
-
-The file organization used by theme rendition extends direct rendition
-by separating design models information from backgrounds information.
-To better understand this configuration, you can consider it as two
-independent lists, one of design models and one of artistic motifs,
-which are arbitrary combined between themselves in order to render
-images in specific ways. The possibilities of this configuration are
-endless and let us describe visual manifestations very well.  For
-example, consider the organization used to produce @file{Anaconda}
-images; for CentOS distribution major release 5; using @file{Default}
-design models and version @file{3} of @file{Flame} artistic motif:
-
-@float Figure, Path construction extended
-@verbatim
------+---------------+------------------------------------------------------+------+-----------
-Path | Suffix        | Identifier                                           |Prefix| Type 
------+---------------+------------------------------------------------------+------+-----------
-  A  |               |trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory 
------+---------------+------------------------------------------------------+------+-----------
-  B  |  trunk/Manual/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|.texinfo | File      
------+---------------+------------------------------------------------------+------+-----------
-  C  | trunk/Locales/|trunk/Identity/Models/Themes/Default/Distro/5/Anaconda|      | Directory 
------+---------------+------------------------------------------------------+------+-----------
-  D  |               |trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|      | Directory 
------+---------------+------------------------------------------------------+------+-----------
-  E  | trunk/Locales/|trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda|.texinfo | File      
------+---------------+------------------------------------------------------+------+-----------
-
-  A = Master path.
-  B = Auxiliar path to documentation entry.
-  C = Auxiliar path to translation messages.
-  D = Auxiliar path to final content output.
-  E = Auxiliar path to documentation entry.
-@end verbatim
-@caption{Path construction extended.}
-@end float
-
-The path information described above (@pxref{Path construction
-extended}) is used by theme rendition and can be taken as reference to
-add other components that are equally produced in the repository.
-
-In this configuration we can change both design model name (e.g.,
-@file{Default}) and artistic motif name (e.g., @file{Flame/3}) to
-something else in order to achieve a different result. The only
-limitations impossed are the storage space provided in the server
-machine and your own creativeness as graphic designer.
-
-@quotation
-@strong{Note}
-A theme ready for implementation may consume from 100 MB to 400 MB of
-storage space. The exact space consumed by a theme depends on the
-amount of screen resolutions the theme supports. The more screen
-resolutions the theme supports, the more storage space demanded for
-it.
-@end quotation
-
-In this configuration we saw how to build the path information for
-@file{Anaconda} component as part of CentOS Distribution visual
-manifestation, but that is not the only component we have inside
-CentOS Distribution visual manifestation.  There are other components
-like Syslinux, Grub, Rhgb, Gdm, Kdm, Gsplash and Ksplash that share a
-similar file organization to that described above for @file{Anaconda}
-component.
-
-@subsection Syncronizing path information
+@subheading Syncronizing path information
 @cindex Syncronizing path information
 
-Syncronizing path information is the action that keeps all path
-information up to date in the repository. This action implies both
-@emph{file movement} and @emph{file content replacement} in this very
-specific order. File movement is related to duplicate, delete and
-rename files and directories in the repository.  File content
-replacement is related to replace information, path information in
-this case, inside files in the repository.
+Once both master paths and their auxiliar paths have been set, they
+shouldn't be changed. Assuming one master path must be changed it is
+required that all related auxiliar paths be changed, too. This is
+required in order for master paths to retain their relation with
+auxiliar paths. This process of keeping relation between master paths
+and auxiliar paths is known as path syncronization.
 
-The order followed to syncronize path information is relevant because
-the versioned nature of the files we are working with. We don't
-perform file content replacement first because that would imply a
-repository change which will immediatly demmand a commit in order for
-actions like duplicate, delete or rename to take place. However, if we
-perform file movement first, it is possible to commit both file moved
-and file content replacements as if they were just one change. In this
-case the file content replacement takes palce in the target location
-that have been duplicated or renamed, not the one use as source
-location. This configuration is specially useful when files are
-renamed (i.e., one file is copied from a source location to a target
-location and then the source location of it is removed from
-repository).
+Path syncronization is required for automation scripts to know where
+to store final output, where to retrive translation messages,
+documentation, and any information that might be desired. If the
+relation between master paths and auxiliar paths is lost, there is no
+way for centos-art.sh script to know where to retrive the information
+it needs to work with. Path syncronization is the way we use to
+organize and extend the information stored in the repository.
+
+Path syncronization may imply both movement of files and replacement
+of content inside files. Movement of files is related to actions like
+renaming files and directories inside the repository. Replacement of
+content inside files is related to actions like replacing information
+(e.g., paths information) inside files in order to keep file contents
+and file locations consistent one another.
+
+The order followed to syncronize path information is very important
+because the versioned nature of the repository files we are working
+with. When a renaming action must be performed, we avoid making
+replacements inside files first and file movements later. This would
+require two commit actions: one for the files' internal changes and
+another for the file movement itself. Otherwise, we prefer to perform
+file movements first and file internal replacements later. This way it
+is possible to commit both changes as if they were just one.
 
 @quotation
 @strong{Warning} There is no support for URLs actions inside
-@command{centos-art.sh} script.  The @command{centos-art.sh} script is
+@command{centos-art.sh} script. The @command{centos-art.sh} script is
 designed to work with local files inside the working copy only. If you
 need to perform URL actions directly, use Subversion commands instead.
 @end quotation
 
-When one master path is changed it is required that all related
-auxiliar paths be changed, too. This is required in order for master
-paths to retain their relation with auxiliar paths.  This way,
-automation scripts are able to know where to retrive translation
-messages from, where to store final output images to and where to look
-for documentation. If relation between master paths and auxiliar paths
-is lost, there is no way for automation scripts to know where to
-retrive the information they need.
+At this moment there is no full implementation of path syncronization
+process inside @command{centos-art.sh} script except by ``texinfo''
+backend of help functionality which provides a restricted
+implementation of path syncronization to this specific area of
+documentation through the --copy, --delete and --rename options. The
+plan for a full implementation of path syncronization would be to
+create individual restricted implementations like this one for other
+areas that demand it and then, create a higher implmentation that
+combines all restricted implementations as needed. This way, if we try
+to rename a repository directory the higer action will define which
+are all the restricted actions that should be performed in order for
+make a full path syncronization. For example, if the directory we are
+renaming is part of graphic design work line, it is required to
+syncronize related paths in documentation and localization work lines.
+Likewise, if the directory we are renaming is in documentation work
+line, it is required to syncronize related paths in graphic design and
+localization work lines. In all these cases, the direction used for
+syncronizing paths must be from master path to auxiliar path and never
+the opposite (i.e., rename the master path first and auxiliar paths
+later).
 
-The auxiliar paths should never be modified under any reason but to
-satisfy the relationship with the master path.  Liberal change of
-auxiliar paths may suppress the conceptual idea they were initially
-created for; and certainly, automation scripts may stop working as
-expected. The update direction to rename path information must be from
-master path to auxiliar path and never the opposite.
+A practical example, through which you can notice the usefulness of
+path syncronization process, is what happen when documentation entries
+are renamed (@pxref{Directories trunk Scripts Functions Help}, for
+more information).
 
-The relation between master and auxiliar paths is useful to keep
-repository organized but introduce some complications when we work
-with files that use master path information as reference to build
-structural information.  This is the case of repository documentation
-manual source files where inclusions, menus, nodes and cross
-references are built using master path information as reference.  Now,
-to see what kind of complication we are talking about, consider what
-would happen to a structural definitions (i.e., inlusions, menus,
-nodes and cross refereces) already set in the manual from one master
-path that is suddenly renamed to something different.  If the path
-information is not syncronized, at this point, we lose connection
-between the master path and the auxiliar path created to store the
-related documentation entry, as well as the related structural
-definitions that end up pointing to a master path that no longer
-exist.
-
-The syncronization of path information is aimed to solve these kind of
-issues.
-
-@subsection Extending repository organization
+@subheading Extending repository organization
 @cindex Extending repository organization
 
 Occasionly, you may find that new components of The CentOS Project
-Corporate Identity need to be added to the repository in order to work
-them out. If that is the case, the first question we need to ask
-ourselves, before start to create directories blindly all over, is:
-@emph{What is the right place to store it?}
+corporate visual identity need to be added to the repository in order
+to work them out. If that is the case, the first question we need to
+ask ourselves, before start to create directories blindly all over,
+is: What is the right place to store it?
 
 The best place to find answers is in The CentOS Community (see page
-@url{http://wiki.centos.org/GettingHelp}), but going there with hands
-empty is not good idea. It may give the impression you don't really
-care about. Instead, consider the following suggestions to find your
-own comprehension in order to make your own propositions based on it.
+@url{http://wiki.centos.org/Help}), but going there with hands empty
+is not good idea. It may give the impression you don't really care
+about.  Instead, consider the following suggestions to find your own
+comprehension in order to make your own propositions based on it.
 
 When extending respository structure it is very useful to bear in mind
-The CentOS Project Corporate Identity Structure (@pxref{Directories
-trunk Identity}) The CentOS Mission and The CentOS Release Schema. The
-rest is just matter of choosing appropriate names. It is also worth to
-know that each directory in the repository responds to a conceptual
-idea that justifies its existence.
+The CentOS Project corporate visual identity structure, The CentOS
+Mission and The CentOS Release Schema. The rest is a matter of
+choosing appropriate names. It is also worth to know that each
+directory in the repository responds to a conceptual idea that
+justifies its existence.
 
-To build a directory structure, you need to define the conceptual idea
-first and later create the directory. There are some locations inside
-the repository that already define some concepts you probably want to
-reuse. For example, @file{trunk/Identity/Images/Themes} to store theme
-artistic motifs, @file{trunk/Identity/Models/Themes} to store theme
-design models, @file{trunk/Manual} to store documentation files,
-@file{trunk/Locales} to store translation messages,
-@file{trunk/Scripts} to store automation scripts and so on.
+To build a directory structure inside the repository, you need to
+define the conceptual idea first and later create the directory,
+remembering that there are locations inside the repository that define
+conceptual ideas you probably would prefer to reuse. For example, the
+@file{trunk/Identity/Images/Themes} directory stores theme artistic
+motifs, the @file{trunk/Identity/Models/Themes} directory stores theme
+design models, the trunk/Manuals directory stores documentation files,
+the @file{trunk/Locales} stores translation messages, and the
+@file{trunk/Scripts} stores automation scripts.
 
-To illustrate this desition process let's consider the
-@file{trunk/Identity/Images/Themes/TreeFlower/3} directory structure
-as example.  This directory can be read as: the theme development line
-of version @file{3} of @file{TreeFlower} artistic motif. Additional,
-we can identify that artistic motifs are part of themes as well as
-themes are part of The CentOS Project Corporate Identity. These
-concepts are better described independently in each documentation
-entry related to the directory structure as it is respectively shown
-in the list of commands bellow.
+To better illustrate this desition process, you can consider to examin
+the trunk/Identity/Images/Themes/TreeFlower/3 directory structure as
+example. This directory can be read as: the theme development line of
+version ``3'' of ``TreeFlower'' artistic motif. Additional, we can say
+that ``TreeFlower'' artistic motif is part of themes, as themes are
+part of The CentOS Project corporate visual identity.
 
-@verbatim
-centos-art help --read turnk
-centos-art help --read turnk/Identity
-centos-art help --read turnk/Identity/Themes
-centos-art help --read turnk/Identity/Images/Themes
-centos-art help --read turnk/Identity/Images/Themes/TreeFlower
-centos-art help --read turnk/Identity/Images/Themes/TreeFlower/3
-@end verbatim
+The relationship between conceptual ideas can be stablished by reading
+each repository documentation entry individually, from trunk directory
+to a deeper directory in the path. For reading repository
+documentation entries we use the help functionality of centos-art.sh
+script.
 
-The concepts behind other location can be found in the same way
-described above, just change the path information used above to the
-one you are trying to know concepts for.
+@subheading File names convenction
+@cindex File names convenction
+
+Inside the CentOS Artwork Repository, generally, file names are all
+written in lowercase (e.g., @file{01-welcome.png}, @file{splash.png},
+@file{anaconda_header.png}, etc.) and directory names are all written
+capitalized (e.g., @file{Identity}, @file{Themes}, @file{Motifs}) and
+sometimes in cammel case (e.g., @file{TreeFlower}, etc.).
+
+In the very specific case of repository documentation entries, file
+names follow the directory naming convenction. This is because they
+are documenting directories and that is something we want to remark.
+So, to better describe what we are documenting, documentation entries
+follow the name convenction used by the item they document.
+
+@subheading Layout
+@cindex Layout
+
+The CentOS Artwork Repository is organized through a convenctional
+“trunk”, “branches” and “tags” layout. Explanation of each directory
+inside the repository can be found in the Directories chapter.
