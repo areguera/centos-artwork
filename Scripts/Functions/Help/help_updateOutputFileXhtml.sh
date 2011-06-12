@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_updateOutputFileXhtml.sh -- This function exports
+# help_updateOutputFileXhtml.sh -- This function exports
 # documentation manual to HTML format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateOutputFileXhtml {
+function help_updateOutputFileXhtml {
 
     # Verify initialization files used by texi2html.
     cli_checkFiles ${MANUAL_BACKEND}/${MANUAL_NAME}-init.pl
