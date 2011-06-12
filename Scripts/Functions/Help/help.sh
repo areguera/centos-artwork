@@ -1,15 +1,15 @@
 #!/bin/bash
 #
 # help.sh -- This function standardizes the way documentation is
-# produced and maintained inside the working copy of CentOS Artwork
-# Repository.
+# produced and maintained for "The CentOS Artwork Repository
+# Reference" documentation manual.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -46,7 +46,7 @@ function help {
     # Define manual base directory to refere the place where
     # language-specific source files used by texinfo documentation
     # backend are stored in.
-    MANUAL_BASEDIR="${HOME}/trunk/Manuals/RepoReference/${MANUAL_LANG}"
+    MANUAL_BASEDIR="$(cli_getRepoTLDir)/Manuals/RepoReference/${MANUAL_LANG}"
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build output
