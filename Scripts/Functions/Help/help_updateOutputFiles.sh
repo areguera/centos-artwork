@@ -36,6 +36,7 @@ function help_updateOutputFiles {
     ${FUNCNAM}_updateOutputFileInfo
     ${FUNCNAM}_updateOutputFileXhtml
     ${FUNCNAM}_updateOutputFileXml
+    ${FUNCNAM}_updateOutputFileDocbook
     ${FUNCNAM}_updateOutputFilePdf
     ${FUNCNAM}_updateOutputFilePlaintext
 
