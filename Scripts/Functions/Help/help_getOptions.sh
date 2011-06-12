@@ -123,25 +123,6 @@ function help_getOptions {
         esac
     done
 
-    # Redefine name of function directory to point the module
-    # specified by `--backend' option.
-    FUNCDIRNAM="$(cli_getRepoName ${FUNCNAM} -d)/Backends/$(cli_getRepoName ${FLAG_BACKEND} -d)"
-
-    # Redefine action name using function name.  From this point on,
-    # control is given to modules. No function outside modules can be
-    # loaded from now on. If you need to execute one, then you can't
-    # use the FUNCNAM variable for that. Instead, use the full name of
-    # the function (e.g., help_getEntry).
-    ACTIONNAM="${FLAG_BACKEND}_${ACTIONNAM}"
-
-    # Verify action name. It is required that the action name
-    # specified does have a definition file. Otherwise it is a action
-    # name valid, but not supported yet (e.g., it needs to be
-    # written).
-    if [[ ! -f ${FUNCDIR}/${FUNCDIRNAM}/${ACTIONNAM}.sh ]];then
-        cli_printMessage "`gettext "The action provided is not supported yet."`" --as-error-line
-    fi
-
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
 
