@@ -271,13 +271,13 @@ special characters will be printed wrongly; if printed at all. In this
 situation it would be required to change the terminal codification to
 that one set in the Info file, which might be something not desirable.
 
-The main purpose of using Texinfo as documentation backend to write
-documentation related to each repository directory, is the possibility
-it provides of producing Info files as output. This posibility is used
-by @command{centos-art.sh} script to refere places where documentation
-can be found when an error happens.  It is, let users to type a
-command immidiatly after errors, so they can know more about them. It
-is about creating a direct connection between the
+Notice also that, the main purpose of using Texinfo as documentation
+backend to write documentation related to each repository directory,
+is the possibility it provides of producing Info files as output. This
+posibility is used by @command{centos-art.sh} script to refer places
+where documentation can be found when an error happens.  It is, let
+users to type a command immidiatly after errors, so they can know more
+about them. It is about creating a direct connection between the
 @command{centos-art.sh} script and the conceptual ideas behind it.
 
 @subheading Examples
