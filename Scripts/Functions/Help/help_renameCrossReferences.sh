@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_renameCrossReferences.sh -- This function replaces a node
+# help_renameCrossReferences.sh -- This function replaces a node
 # pattern with a node replacement and updates cross-reference
 # definitions to reflect the changes.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_renameCrossReferences {
+function help_renameCrossReferences {
 
     local MANUAL_ENTRY_SRC=$(${FUNCNAM}_getEntry "$1")
     local MANUAL_ENTRY_DST=$(${FUNCNAM}_getEntry "$2")
