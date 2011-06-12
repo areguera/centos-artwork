@@ -62,7 +62,7 @@ function texinfo_updateOutputFileXhtml {
         --init-file=${MANUAL_BACKEND}/${MANUAL_NAME}-init.pl \
         --init-file=${MANUAL_TEMPLATE}/${MANUAL_NAME}-init.pl \
         --output=${MANUAL_BASEDIR}/${MANUAL_NAME}.xhtml \
-        ${MANUAL_BASEDIR}/${MANUAL_NAME}.${FLAG_BACKEND}
+        ${MANUAL_BASEDIR}/${MANUAL_NAME}.${MANUAL_EXTENSION}
 
     # Remove directory where xhtml files are stored from directory
     # stack. The xhtml files have been already created.

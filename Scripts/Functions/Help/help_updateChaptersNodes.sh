@@ -26,7 +26,7 @@
 function texinfo_updateChaptersNodes {
 
     # Build list "nodes of chapters" based on menu of chapters.
-    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} \
+    local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} \
         | egrep -v '^@(end )?menu$' | egrep -v '^\* Index::$'\
         | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
         | sed -r 's! !_!g' | sort | uniq )
@@ -37,12 +37,12 @@ function texinfo_updateChaptersNodes {
     local FILENODE=$(\
         for CHAPTERNODE in ${CHAPTERNODES};do
             INCL=$(echo ${CHAPTERNODE} \
-                | sed -r "s!(${CHAPTERNODE})!\1/chapter\.${FLAG_BACKEND}!")
+                | sed -r "s!(${CHAPTERNODE})!\1/chapter\.${MANUAL_EXTENSION}!")
             # Output inclusion line using texinfo format.
             echo "@include $INCL"
         done)
 
     # Dump organized nodes of chapters into file.
-    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.${FLAG_BACKEND}
+    echo "$FILENODE" > ${MANUAL_BASEFILE}-nodes.${MANUAL_EXTENSION}
 
 }

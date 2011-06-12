@@ -60,7 +60,7 @@ function texinfo_createChapters {
         # file. The node structure of `Directories' chapter is created
         # automatically based on repository directory structure.
         if [[ $FILE =~ "Directories/chapter-nodes\.texinfo$" ]];then
-            echo "" > ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${FLAG_BACKEND}
+            echo "" > ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION}
         fi
 
     done

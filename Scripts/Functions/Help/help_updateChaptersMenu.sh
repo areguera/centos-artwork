@@ -32,8 +32,8 @@ function texinfo_updateChaptersMenu {
     # file (repository.texinfo) as an included file. To create the final
     # .info file correctly, the Index line in the menu should remain,
     # even no other node exist.
-    if [[ -f ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} ]];then
-        MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND} \
+    if [[ -f ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} ]];then
+        MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} \
             | egrep -v "^@(end )?menu$" | egrep -v '^\* Index::$')
     fi
 
@@ -74,6 +74,6 @@ function texinfo_updateChaptersMenu {
         | egrep -v '^[[:space:]]*$')
 
     # Dump organized menu of chapters into file.
-    echo "${MENUCHAPTERS}" > ${MANUAL_BASEFILE}-menu.${FLAG_BACKEND}
+    echo "${MENUCHAPTERS}" > ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION}
 
 }

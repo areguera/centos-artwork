@@ -45,7 +45,7 @@ function texinfo_createStructure {
     local FILE=''
     local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE}" \
         --maxdepth='1' \
-        --pattern="repository(-menu|-nodes|-index)?\.${FLAG_BACKEND}")
+        --pattern="repository(-menu|-nodes|-index)?\.${MANUAL_EXTENSION}")
 
     # Verify manual base file. The manual base file is where the
     # documentation manual is defined in the backend format. Assuming
@@ -60,14 +60,14 @@ function texinfo_createStructure {
     done
 
     # Update manual chapter related files.
-    ${FLAG_BACKEND}_createChapters
+    ${FUNCNAM}_createChapters
 
     # Update manual chapter related menu.
-    ${FLAG_BACKEND}_updateChaptersMenu
+    ${FUNCNAM}_updateChaptersMenu
 
     # Update manual chapter related nodes (based on chapter related
     # menu).
-    ${FLAG_BACKEND}_updateChaptersNodes
+    ${FUNCNAM}_updateChaptersNodes
 
     # Commit changes from working copy to central repository only.  At
     # this point, changes in the repository are not merged in the

@@ -31,7 +31,7 @@ function texinfo_updateOutputFileInfo {
     # Update info file.
     /usr/bin/makeinfo --output=${MANUAL_BASEFILE}.info \
         --enable-encoding \
-        ${MANUAL_BASEFILE}.${FLAG_BACKEND} 
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} 
 
     # Compress info file.
     if [[ $? -eq 0 ]];then

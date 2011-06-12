@@ -33,11 +33,11 @@ function texinfo_updateOutputFiles {
     # paths incorrectly.
     pushd ${HOME}/artwork > /dev/null
 
-    ${FLAG_BACKEND}_updateOutputFileInfo
-    ${FLAG_BACKEND}_updateOutputFileXhtml
-    ${FLAG_BACKEND}_updateOutputFileXml
-    ${FLAG_BACKEND}_updateOutputFilePdf
-    ${FLAG_BACKEND}_updateOutputFilePlaintext
+    ${FUNCNAM}_updateOutputFileInfo
+    ${FUNCNAM}_updateOutputFileXhtml
+    ${FUNCNAM}_updateOutputFileXml
+    ${FUNCNAM}_updateOutputFilePdf
+    ${FUNCNAM}_updateOutputFilePlaintext
 
     # Remove the working copy root directory from directory stack.
     popd > /dev/null

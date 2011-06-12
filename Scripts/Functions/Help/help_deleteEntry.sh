@@ -31,7 +31,7 @@ function texinfo_deleteEntry {
 
     # Define list of entries to remove using the entry specified in
     # the command line.
-    local MANUAL_ENTRIES=$(${FLAG_BACKEND}_getEntry "$@")
+    local MANUAL_ENTRIES=$(${FUNCNAM}_getEntry "$@")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -43,19 +43,22 @@ function texinfo_deleteEntry {
 
         # Define directory where dependent documentation entries are
         # stored in.
-        MANUAL_ENTRY_DIR=$(echo $MANUAL_ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
+        MANUAL_ENTRY_DIR=$(echo $MANUAL_ENTRY \
+            | sed -r "s/\.${MANUAL_EXTENSION}$//")
 
         if [[ -d $MANUAL_ENTRY_DIR ]];then
 
             # Add dependent documentation entries to the list of
             # documentation entries that will be deleted.
-            MANUAL_ENTRIES="${MANUAL_ENTRIES} $(cli_getFilesList ${MANUAL_ENTRY_DIR} --pattern=".*\.${FLAG_BACKEND}")"
+            MANUAL_ENTRIES="${MANUAL_ENTRIES} $(cli_getFilesList ${MANUAL_ENTRY_DIR} \
+                --pattern=".*\.${MANUAL_EXTENSION}")"
 
             for MANUAL_ENTRY in $MANUAL_ENTRIES;do
 
                 # Define directory name for dependent documentation
                 # entries which have their own dependent directories.
-                MANUAL_ENTRY_SUBDIR=$(basename $MANUAL_ENTRY | sed -r "s/\.${FLAG_BACKEND}$//")
+                MANUAL_ENTRY_SUBDIR=$(basename $MANUAL_ENTRY \
+                    | sed -r "s/\.${MANUAL_EXTENSION}$//")
 
                 # Add directory paths from dependent documentation
                 # entries which have their own dependent directories
@@ -116,18 +119,18 @@ function texinfo_deleteEntry {
 
         # Skip all directories, they are not documentation entries on
         # themselves. Use documentation entries only.
-        if [[ ! $MANUAL_ENTRY =~ "\.${FLAG_BACKEND}$" ]];then
+        if [[ ! $MANUAL_ENTRY =~ "\.${MANUAL_EXTENSION}$" ]];then
             continue
         fi
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        ${FLAG_BACKEND}_updateMenu "remove-entry"
-        ${FLAG_BACKEND}_updateNodes
+        ${FUNCNAM}_updateMenu "remove-entry"
+        ${FUNCNAM}_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        ${FLAG_BACKEND}_deleteCrossReferences $MANUAL_ENTRY
+        ${FUNCNAM}_deleteCrossReferences $MANUAL_ENTRY
 
     done
  

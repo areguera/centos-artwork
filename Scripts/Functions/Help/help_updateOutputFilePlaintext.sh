@@ -30,7 +30,7 @@ function texinfo_updateOutputFilePlaintext {
 
     # Update plaintext output directory.
     /usr/bin/makeinfo --plaintext \
-        ${MANUAL_BASEFILE}.${FLAG_BACKEND} --output=${MANUAL_BASEFILE}.txt
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_BASEFILE}.txt
 
     # Compress plaintext output file.
     if [[ -f ${MANUAL_BASEFILE}.txt ]];then

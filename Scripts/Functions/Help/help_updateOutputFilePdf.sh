@@ -30,6 +30,6 @@ function texinfo_updateOutputFilePdf {
 
     # Update plaintext output directory.
     /usr/bin/texi2pdf --quiet \
-        ${MANUAL_BASEFILE}.${FLAG_BACKEND} --output=${MANUAL_BASEFILE}.pdf
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_BASEFILE}.pdf
 
 }

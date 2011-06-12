@@ -36,14 +36,14 @@ function texinfo_updateMenu {
 
     # Build the menu node related to the entry being processed
     # currently.
-    local MENUNODE=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")
+    local MENUNODE=$(${FUNCNAM}_getNode "$MANUAL_ENTRY")
 
     # Give format to menu line using texinfo style.
     local MENULINE="* ${MENUNODE}::" 
 
     # Define chapter's menu. Remove `@menu', `@end menu' and empty
     # lines from output.
-    local MENU=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND} \
+    local MENU=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION} \
         | egrep -v '^[[:space:]]*$' | egrep -v '^@(end )?menu')
 
     # Re-defined chapter's menu based on action.
@@ -78,6 +78,6 @@ function texinfo_updateMenu {
     MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g')
 
     # Dump final menu structure back into chapter's menu file.
-    echo "$MENU" > $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND}
+    echo "$MENU" > $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION}
 
 }

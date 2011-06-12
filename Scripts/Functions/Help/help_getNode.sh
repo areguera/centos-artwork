@@ -36,7 +36,7 @@ function texinfo_getNode {
     # Define node from documentation entry.
     local NODE=$(echo "$MANUAL_ENTRY" | sed -r \
         -e "s!^${MANUAL_BASEDIR}!!" \
-        -e "s/(chapter-intro\.${FLAG_BACKEND}|\.${FLAG_BACKEND})$//" \
+        -e "s/(chapter-intro\.${MANUAL_EXTENSION}|\.${MANUAL_EXTENSION})$//" \
         -e 's!/! !g' \
         -e 's!^[[:space:]]+!!')
 

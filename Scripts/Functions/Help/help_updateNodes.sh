@@ -26,7 +26,7 @@
 function texinfo_updateNodes {
 
     # Retrive nodes' entries from chapter-menu.texinfo file.
-    local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${FLAG_BACKEND} \
+    local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
         | egrep -v '^@(end )?menu$' | sed -r 's! !:!g' | sort | uniq)
 
@@ -35,7 +35,7 @@ function texinfo_updateNodes {
 
         NODE=$(echo "${NODE}" | sed -r 's!:! !g')
         SECT=$(echo "${NODE}" | cut -d' ' -f2- | sed -r 's! !/!g')
-        INCL=$(echo "${NODE}" | sed -r 's! !/!g').${FLAG_BACKEND}
+        INCL=$(echo "${NODE}" | sed -r 's! !/!g').${MANUAL_EXTENSION}
         CIND=$(echo "${NODE}")
 
         # Create texinfo section file using templates, only if the
@@ -112,22 +112,22 @@ function texinfo_updateNodes {
 
             # Expand `See also' subsection translation markers in
             # documentation entry.
-            ${FLAG_BACKEND}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
+            ${FUNCNAM}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
 
         fi
 
         # Verify existence of chapter-nodes template files. If no
         # chapter-nodes template is found, stop script execution with
         # an error message. We cannot continue without it.
-        cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${FLAG_BACKEND}
+        cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION}
 
         # Output node information chapter-nodes template file using
         # the current texinfo menu information.
-        cat ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${FLAG_BACKEND} \
+        cat ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION} \
             | sed -r -e "s!=NODE=!${NODE}!g" -e "s!=SECT=!${SECT}!g" \
                      -e "s!=CIND=!${CIND}!g" -e "s!=INCL=!${INCL}!g"
 
     # Dump node definitions into document structure.
-    done > $MANUAL_CHAPTER_DIR/chapter-nodes.${FLAG_BACKEND}
+    done > $MANUAL_CHAPTER_DIR/chapter-nodes.${MANUAL_EXTENSION}
 
 }

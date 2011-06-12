@@ -26,7 +26,7 @@
 function texinfo_searchIndex {
 
     # Rebuild output files to propagate recent changes.
-    ${FLAG_BACKEND}_updateOutputFiles
+    ${FUNCNAM}_updateOutputFiles
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line

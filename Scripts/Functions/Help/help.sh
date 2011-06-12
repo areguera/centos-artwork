@@ -37,6 +37,9 @@ function help {
     # Define file name (without extension) for documentation manual.
     MANUAL_NAME=$(cli_getRepoName "repository" -f)
 
+    # Define file extension used by documentation manual source files.
+    MANUAL_EXTENSION='texinfo'
+
     # Define language information used by manual.
     MANUAL_LANG=$(cli_getCurrentLocale)
 

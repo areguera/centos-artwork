@@ -30,6 +30,6 @@ function texinfo_updateOutputFileXml {
 
     # Update xml output format.
     /usr/bin/makeinfo --xml \
-        ${MANUAL_BASEFILE}.${FLAG_BACKEND} --output=${MANUAL_BASEFILE}.xml \
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_BASEFILE}.xml \
 
 }

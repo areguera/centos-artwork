@@ -39,11 +39,11 @@ function texinfo_copyEntry {
 
     # Define source documentation entry. This is the documentation
     # entry that will be duplicated.
-    local MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "${1}")
+    local MANUAL_ENTRY_SRC=$(${FUNCNAM}_getEntry "${1}")
 
     # Define target documentation entry. This is the new documentation
     # entry created from the source documentation entry.
-    local MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry "${2}")
+    local MANUAL_ENTRY_DST=$(${FUNCNAM}_getEntry "${2}")
 
     # Verify parent directory of target documentation entry. If it
     # doesn't exist, create it and add it to version control.
@@ -66,8 +66,8 @@ function texinfo_copyEntry {
 
     # Redefine both source and target locations to refer the directory
     # where dependent documentation entries are stored in.
-    MANUAL_ENTRY_SRC=$(echo ${MANUAL_ENTRY_SRC} | sed -r "s/\.${FLAG_BACKEND}$//")
-    MANUAL_ENTRY_DST=$(echo ${MANUAL_ENTRY_DST} | sed -r "s/\.${FLAG_BACKEND}$//")
+    MANUAL_ENTRY_SRC=$(echo ${MANUAL_ENTRY_SRC} | sed -r "s/\.${MANUAL_EXTENSION}$//")
+    MANUAL_ENTRY_DST=$(echo ${MANUAL_ENTRY_DST} | sed -r "s/\.${MANUAL_EXTENSION}$//")
 
     # Copy dependent documentation entries, if any.
     if [[ -d ${MANUAL_ENTRY_SRC} ]];then
@@ -81,7 +81,7 @@ function texinfo_copyEntry {
     local MANUAL_ENTRY=''
     local MANUAL_ENTRIES=$(cli_getFilesList \
         $(dirname ${MANUAL_ENTRY_DST}) \
-        --pattern="${MANUAL_ENTRY_DST}.*\.${FLAG_BACKEND}")
+        --pattern="${MANUAL_ENTRY_DST}.*\.${MANUAL_EXTENSION}")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -97,12 +97,12 @@ function texinfo_copyEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        ${FLAG_BACKEND}_updateMenu
-        ${FLAG_BACKEND}_updateNodes
+        ${FUNCNAM}_updateMenu
+        ${FUNCNAM}_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        ${FLAG_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
+        ${FUNCNAM}_restoreCrossReferences $MANUAL_ENTRY
 
     done
 

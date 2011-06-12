@@ -42,7 +42,7 @@ function texinfo_deleteCrossReferences {
     fi
 
     # Build the node string using entry location.
-    local NODE=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")
+    local NODE=$(${FUNCNAM}_getNode "$MANUAL_ENTRY")
 
     # Define regular expression patterns for texinfo cross reference
     # commands.
@@ -62,7 +62,8 @@ function texinfo_deleteCrossReferences {
     REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
 
     # Define list of entries to process.
-    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} --pattern=".*\.${FLAG_BACKEND}")
+    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} \
+        --pattern=".*\.${MANUAL_EXTENSION}")
 
     # Update node-related cross references. The node-related cross
     # reference definition, long ones specially, could require more

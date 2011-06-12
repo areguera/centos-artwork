@@ -56,11 +56,10 @@ function texinfo_getEntry {
         # documenting the repository directory structure. Otherwise,
         # if an entry inside trunk/Manuals/ is provided, the directory
         # structure provided is used as default documentation manual.
-        if [[ ${MANUAL_ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
-            MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} \
-                | sed "s!trunk/Manuals/RepoReference/!!")
+        if [[ ${MANUAL_ENTRY} =~ "\.${MANUAL_EXTENSION}$" ]];then
+            MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} | sed "s!${MANUAL_BASEDIR}!!")
         else
-            MANUAL_ENTRY=$(dirname ${MANUAL_CHAPTER_NAME}/${MANUAL_ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
+            MANUAL_ENTRY=$(dirname ${MANUAL_CHAPTER_NAME}/${MANUAL_ENTRY})/$(basename $LOCATION).${MANUAL_EXTENSION}
         fi
 
         # Re-define entry to set absolute path to manuals base
