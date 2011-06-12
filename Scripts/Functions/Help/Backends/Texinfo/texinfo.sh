@@ -28,7 +28,7 @@ function texinfo {
     # Define manual backend directory. This is the place where all
     # language specific documentation manuals, for the same backend
     # documentation system, are stored in.
-    MANUAL_BACKEND="${MANUAL_BASEDIR}/$(cli_getRepoName ${FLAG_BACKEND} -d)"
+    MANUAL_BACKEND="${MANUAL_BASEDIR}"
 
     # Redefine manual base directory to refere the place where
     # language-specific source files used by texinfo documentation
