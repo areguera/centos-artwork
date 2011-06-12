@@ -57,7 +57,8 @@ function texinfo_getEntry {
         # if an entry inside trunk/Manuals/ is provided, the directory
         # structure provided is used as default documentation manual.
         if [[ ${MANUAL_ENTRY} =~ "\.${FLAG_BACKEND}$" ]];then
-            MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} | sed "s!trunk/Manuals/$(cli_getRepoName ${FLAG_BACKEND} -d)/!!")
+            MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} \
+                | sed "s!trunk/Manuals/RepoReference/!!")
         else
             MANUAL_ENTRY=$(dirname ${MANUAL_CHAPTER_NAME}/${MANUAL_ENTRY})/$(basename $LOCATION).${FLAG_BACKEND}
         fi
