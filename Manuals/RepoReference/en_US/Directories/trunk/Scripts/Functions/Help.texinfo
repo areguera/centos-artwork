@@ -199,23 +199,29 @@ xmllint --valid --noout repository.docbook
 @end verbatim
 @end quotation
 
-When producing Xhtml output, through @command{texi2html} command, the
-output customization is controlled by common and specific
-configuration files. Common configuration files are stored in
-@file{trunk/Manuals/RepoReference} and include @file{repository.css},
-@file{repository-init.pl} and @file{repository.sed}. Specific
-configuration files, on the other hand, are stored inside the
-language-specific template directory (e.g.,
-@file{trunk/Scripts/Functions/Help/Templates/$LANG}) and includes
-@file{repository-init.pl}, @file{repository.conf},
-@file{repository.sed}.
+The Xhtml output produced through @command{texi2html} is customized
+through common and specific configuration files. Common configuration
+files are stored in @file{trunk/Manuals/RepoReference} and include
+@file{repository.css}, @file{repository-init.pl} and
+@file{repository.sed}. Specific configuration files, on the other
+hand, are stored inside the language-specific template directory
+(e.g., @file{trunk/Scripts/Functions/Help/Templates/$LANG}) which
+includes the @file{repository-init.pl}, @file{repository.conf},
+@file{repository.sed} files.
 
-When writting documentation entries through @samp{help} functionality,
-the way absolute paths are defined inside them is important.  Absolute
-path definitions (e.g., through `@@include' and `@@image') must be set
-from @file{trunk/} directory structure on.  This is necessary because
-the documentation manual is exported using @file{@var{$HOME}/artwork}
-directory structure as base.
+The @code{help} functionality takes the @file{trunk/} directory
+structure as top level directory for including external files inside
+repository documention entries.  This specification is imposed because
+the action of exporting different outputs is performed from
+@file{@var{$HOME}/artwork} directory structure. There is no obligation
+to use this specific directory structure as base location for
+exporting Texinfo outputs, it is a matter of convenience. Notice that,
+all path information output from @command{centos-art.sh} script does
+begin with @file{trunk/} directory structure as top level directory,
+as convenction. In that sake, using the @file{@var{$HOME}/artwork}
+directory structure as base directory location for including external
+files in repository documentation entries provides consistency with
+the way @command{centos-art.sh} script outputs path information.
 
 Internationalization of document structures produced by @code{help}
 functionality is performed trough document templates and the
