@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_updateOutputFileInfo.sh -- This function exports
+# help_updateOutputFileInfo.sh -- This function exports
 # documentation manual to info format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateOutputFileInfo {
+function help_updateOutputFileInfo {
 
     # Output action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-updating-line
