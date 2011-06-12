@@ -126,8 +126,8 @@ The @code{help} functionality uses the repository directory layout as
 reference to describe the conceptual ideas behind its existance. Each
 directory inside the repository can be documented, in order to provide
 the explanation of what it is for and how automation scripts use it.
-Documentation of each directory happens through @emph{repository
-documentation entries}.
+Documentation of each directory happens through ``repository
+documentation entries''.
 
 @quotation
 @strong{Caution} When the repository directory layout changes, the
@@ -147,8 +147,8 @@ last one is created automatically and contains a list of links to
 previous sections.
 
 The internal document organization and language used in repository
-documentation entries are both defined through @emph{document
-templates}.  Document templates are organized in the
+documentation entries are both defined through ``document templates''.
+Document templates are organized in the
 @file{trunk/Scripts/Functions/Help/Templates} directory and are used
 when a new documentation structure is created and later, when a new
 documentation entry is created inside it. There is one set of document
