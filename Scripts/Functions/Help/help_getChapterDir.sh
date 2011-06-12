@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_getChapterDir.sh -- This function outputs the entry's
+# help_getChapterDir.sh -- This function outputs the entry's
 # chapter directory.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_getChapterDir {
+function help_getChapterDir {
 
     local MANUAL_ENTRY=''
     local MANUAL_ENTRIES="$1"
