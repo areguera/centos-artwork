@@ -67,38 +67,38 @@ function help_getOptions {
                 ;;
 
             --search )
-                ACTIONNAM="searchIndex"
+                ACTIONNAM="${FUNCNAM}_searchIndex"
                 FLAG_SEARCH="$2"
                 shift 2
                 ;;
     
             --edit )
-                ACTIONNAM="editEntry"
+                ACTIONNAM="${FUNCNAM}_editEntry"
                 shift 1
                 ;;
 
             --copy )
-                ACTIONNAM="copyEntry"
+                ACTIONNAM="${FUNCNAM}_copyEntry"
                 shift 1
                 ;;
     
             --delete )
-                ACTIONNAM="deleteEntry"
+                ACTIONNAM="${FUNCNAM}_deleteEntry"
                 shift 1
                 ;;
 
             --rename )
-                ACTIONNAM="renameEntry"
+                ACTIONNAM="${FUNCNAM}_renameEntry"
                 shift 1
                 ;;
     
             --update )
-                ACTIONNAM="updateOutputFiles"
+                ACTIONNAM="${FUNCNAM}_updateOutputFiles"
                 shift 1
                 ;;
     
             --read )
-                ACTIONNAM="searchNode"
+                ACTIONNAM="${FUNCNAM}_searchNode"
                 shift 1
                 ;;
             
