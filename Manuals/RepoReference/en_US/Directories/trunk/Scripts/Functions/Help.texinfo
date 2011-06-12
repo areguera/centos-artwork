@@ -151,9 +151,10 @@ documentation entries are both defined through templates.  Templates
 are organized in the @file{trunk/Scripts/Functions/Help/Templates}
 directory. Templates are used when a new documentation structure is
 created and later, when a new documentation entry is created inside
-it.  There is one documentation manual structure for each language
-supported and one documentation entry inside the documentation manual
-for each directory inside the repository.
+it. There is one documentation manual structure for each language
+supported. Inside each language-specific documentation manual
+structure, there is one documentation entry for each directory inside
+the repository.
 
 The relation between template files and repository paths is set in the
 @file{repository.conf} file. In this file, all lines begining with a
