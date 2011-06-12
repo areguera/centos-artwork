@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_deleteEntry.sh -- This function removes a documentation entry
+# help_deleteEntry.sh -- This function removes a documentation entry
 # from documentation directory structure.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_deleteEntry {
+function help_deleteEntry {
 
     local MANUAL_ENTRY=''
     local MANUAL_ENTRY_DIR=''
