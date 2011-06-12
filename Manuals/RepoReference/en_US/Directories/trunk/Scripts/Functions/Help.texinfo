@@ -182,15 +182,12 @@ Directories/section.texinfo             = "(trunk|branches|tags).*\.texinfo$"
 @end verbatim
 
 The @code{help} functionality takes the repository documentation
-manual in texinfo format as input and produces Info, Pdf, XML, Xhtml
-and Txt output files in the @file{trunk/Manuals/RepoReference/$LANG}
-directory structure, where @var{$LANG} represents the language of the
-manual.  The Info, Pdf and Txt output files are produced through
-@command{makeinfo} command and the Xhtml output through
-@command{texi2html} command. Using the @command{makeinfo} command it
-is also possible to output the repository documentation manual in
-DocBook format, however, the DocBook output produced by
-@command{makeinfo} command seems to have some malformations.
+manual in texinfo format as input and produces Info, Pdf, XML,
+DocBook, Xhtml and Txt output files in the
+@file{trunk/Manuals/RepoReference/$LANG} directory structure, where
+@var{$LANG} represents the language of the manual.  The Info, Pdf and
+Txt output files are produced through @command{makeinfo} command and
+the Xhtml output through @command{texi2html} command.
 
 When producing Xhtml output, through @command{texi2html} command, the
 output customization is controlled by common and specific
