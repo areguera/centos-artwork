@@ -266,27 +266,35 @@ characters from Info files in UTF-8 terminals.
 @end quotation
 
 Notice that, UTF-8 is the default character codification used by the
-terminal inside The CentOS Distribution. This is the terminal
-configuration we use for executing functionalities of
-@command{centos-art.sh} script and so to print error messages. When a
-run time error occurs, the @command{centos-art.sh} script will suggest
-you to execute a @code{help} command to know more about why the error
-happend.  This @code{help} command will read the information from an
-Info file. If the Info file is codified to be read in an encoding
-different to the one the terminal we are performing the action is set,
+command-line terminal inside The CentOS Distribution and we are using
+such configuration for executing the @command{centos-art.sh} script.
+When @command{centos-art.sh} script reports an error, it prints out a
+@code{help} command that you can use to know more about the error
+printed. If the @code{help} command is executed, the information will
+be read from an Info file, using the character enconding of the
+terminal used to executed the @code{help} command in first place.
+Assuming the Info file is codified to be read in a character encoding
+different to that one the terminal is currently configured, the
 special characters will be wrongly printed; if printed at all. In this
 situation it would be required to change the terminal codification to
 that one set in the Info file before reading the info file.
 
 Notice also that, the main purpose of using Texinfo as documentation
-backend when writing documentation related to each repository
-directory, is the possibility of producing Info files as output. This
-posibility is used by @command{centos-art.sh} script to build internal
-documentation references to know where and why the error happen.  It
-lets users to type a command immediatly after errors to know more
-about them, once they happen. It is about creating a direct connection
-between the @command{centos-art.sh} script and the conceptual ideas
-behind it.
+backend in the @code{help} functionality is the possibility of
+producing Info files as output. This posibility is used by
+@command{centos-art.sh} script to build internal documentation
+references between errors and repository documentation entries.  It
+permits users to read documentation related to errors, immediatly
+after they happen. It is about creating a direct connection between
+the @command{centos-art.sh} script and the conceptual ideas behind it.
+A direct connection accesible at anytime from the same medium the
+@command{centos-art.sh} script is executed.
+
+@quotation
+@strong{Tip} Use the @code{help} functionality to describe your work
+inside the CentOS Artwork Repository. For that purpose, use the
+directory path you're working in as argument.
+@end quotation
 
 @subheading Examples
 
