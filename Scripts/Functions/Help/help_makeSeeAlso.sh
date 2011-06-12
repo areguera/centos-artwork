@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_makeSeeAlso.sh -- This function creates an itemized list
+# help_makeSeeAlso.sh -- This function creates an itemized list
 # of links to refer parent documentation entries. This list of links
 # is expanded wherever the =TEXINFO_SEEALSO= translation marker be
 # placed in the documentation entry.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_makeSeeAlso {
+function help_makeSeeAlso {
 
     local FILE="$1"
     local NODE="$2"
