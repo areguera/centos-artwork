@@ -122,13 +122,12 @@ to control frequent documenting tasks (e.g., reading, editing, update
 output files, etc.) in the source files of a Texinfo documentation
 manual structure.
 
-The @code{help} functionality of @command{centos-art.sh} script uses
-the repository directory layout as reference to describe the
-conceptual ideas behind its existance. Each directory inside the
-repository can be documented, in order to provide the explanation of
-what it is for and how automation scripts use it. Documentation of
-each directory happens through @emph{repository documentation
-entries}.
+The @code{help} functionality uses the repository directory layout as
+reference to describe the conceptual ideas behind its existance. Each
+directory inside the repository can be documented, in order to provide
+the explanation of what it is for and how automation scripts use it.
+Documentation of each directory happens through @emph{repository
+documentation entries}.
 
 @quotation
 @strong{Caution} When the repository directory layout changes, the
