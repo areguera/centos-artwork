@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_updateOutputFiles.sh -- This function exports documentation
+# help_updateOutputFiles.sh -- This function exports documentation
 # manual to different output formats.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateOutputFiles {
+function help_updateOutputFiles {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
