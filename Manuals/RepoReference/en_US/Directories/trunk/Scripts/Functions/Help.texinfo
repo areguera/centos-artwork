@@ -253,8 +253,9 @@ might be not convenient in some situations. Prevent yourself from
 using Texinfo special way of accentuation and the
 @samp{@@documentencoding} directive when you be writing documentation
 entries through @code{help} functionality. This will hide characters
-with accentuation in Pdf output and no HTML entity for them will be
-expanded, but will let you read Info files in UTF-8 terminals. 
+with accentuation in Pdf output and, in XHTML output no HTML entity
+for them will be expanded. However, this configuration will let you
+read characters with accentuation from Info files in UTF-8 terminals. 
 @end quotation
 
 Notice that, UTF-8 is the default character codification used by the
