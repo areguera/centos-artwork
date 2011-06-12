@@ -92,113 +92,44 @@ capitalized (e.g., @samp{Identity}, @samp{Themes}, @samp{Motifs},
 
 @subsection Repository work lines
 
-Inside CentOS Artwork Repository there are four major work lines of
-production which are: @emph{graphic design}, @emph{documentation},
-@emph{localization} and @emph{automation}.  These work lines describe
-different areas of content production. Content production inside these
-specific areas may vary as much as persons be working on them.
-Producing content in too many different ways may result innapropriate
-in a collaborative environment like CentOS Artwork Repository where
-content produced in one area depends somehow from content produced in
-another different area. So, a @emph{content production standard} is
-required for each available work line.
+Content production inside the repository is organized by work lines.
+There are three major work lines of production inside The CentOS
+Artwork Repository, which are: Graphic design, Documentation and
+Localization. The specific way of producing content inside each
+specific work line is standardized by mean of centos-art.sh  script
+(which in turn, can be considered a work line by itself [e.g., the
+Automation work line]). The centos-art.sh script provides one specific
+functionality for automating each major work line of content
+production (e.g., render for producing images, help for manage
+documentation, and locale for localizing contents).
 
-@subsubsection Graphic design
-@cindex Graphic design work line
+The graphic design work line exists to cover brand design, typography
+design and themes design mainly. Additionally, some auxiliar areas
+like icon design, illustration design, brushes design, patterns
+designs and palettes of colors are also included here for
+completeness. The graphic design work line is organized in the
+@xref{Directories trunk Identity}.
 
-@xref{Directories trunk Identity}, for more information about The
-CentOS Corporate Identity and how graphic design fits on it.
-
-@subsubsection Documentation
-@cindex Documentation work line
-
-@xref{Directories trunk Manuals}, for more information on
-documentation.
-
-@subsubsection Localization
-@cindex Localization work line
+The documentation work line exists to describe what each directory
+inside the CentOS Artwork Repository is for, the conceptual ideas
+behind them and, if possible, how automation scripts make use of them.
+The documentation work line is organized in the @xref{Directories
+trunk Manuals}.
 
 The localization work line exists to provide the translation messages
 required to produce content in different languages. Translation
 messages inside the repository are stored as portable objects (e.g.,
-.po, .pot) and machine objects (.mo) under @file{trunk/Locales}
-directory structure.
+.po, .pot) and machine objects (.mo). The localization work line is
+organized in the @xref{Directories trunk Manuals}.
 
-The procedure used to localize content is taken from @command{gettext}
-standard specification.  Basically, translatable strings are retrived
-from source files in order to create portable objects and machine
-objects for them.  These portable objects are editable files that
-contain the information used by translators to localize the
-translatable strings retrived from source files. On the other hand,
-machine objects are produced to be machine-redable only, as its name
-implies, and are produced from portable objects.
-
-Since @command{gettext} needs to extract translatable strings form
-source files in order to let translators to localize them, we are
-limitted to use source files supported by @command{gettext} program.
-This is not a limitation at all since @command{gettext} supports most
-popular programming laguages (e.g., C, C++, Java, Bash, Python, Perl,
-PHP and GNU Awk just to mention a few ones). Nevertheless, formats
-like SVG, XHTML and Docbook don't figure as supported formats in the
-list of @command{gettext} supported source files.
-
-To translate XML based source files like SVG, XHTML and Docbook we use
-the @command{xml2po} program instead. The @command{xml2po} comes with
-the @file{gnome-doc-utils} package and retrives translatable strings
-from one XML file to produce portable objects for them. 
-
-@quotation
-@strong{Note}
-Portable objects produced by @command{xml2po} have the same format
-that portable objects produced by @command{gettext}. This make the
-localization process quite consistent from translators' point of view.
-No matter what the source file be, the translator will always face the
-same translation file format (i.e., the portable object format).
-@end quotation
-
-With the portable object in place, the @command{xml2po} program is
-used again to create the final translated XML, just with the same
-definition of the source file where translatable strings were taken
-from (e.g., if we extract translatable strings from a SVG file, as
-result we get the same SVG file but with translatable strings already
-localized ---obviously, for this to happen translators need to
-localize translatable strings inside the portable object first,
-localization won't appear as art of magic---).  When using
-@command{xml2po}, the machine object is used as temporal file to
-produce the final translated XML file.
-
-@quotation
-@strong{Tip} If you want to have your content localized inside CentOS
-Artwork Repository be sure to use source files supported either by
-@command{gettext} or @command{xml2po} programs.
-@end quotation
-
-@xref{Directories trunk Locales}, for more information.
-
-@subsubsection Automation
-@cindex Automation work line
-
-The automation work line exists to standardize content production in
-CentOS Artwork Repository. There is no need to type several tasks,
-time after time, if they can be programmed into just one executable
-script.
-
-The automation work line takes place under @file{trunk/Scripts}
-directory structure. Here is developed the @command{centos-art.sh}
-script, a bash script specially designed to automate most frequent
-tasks (e.g., rendition, documentation and localization) inside the
-repository.  Basically, the @command{centos-art.sh} script is divided
-in several functionalities independent one another that perform
-specific tasks and relay on repository organization to work as
-expected.
-
-@quotation
-@strong{Tip} If you need to improve the way content is produced, look
-inside automation scripts and make your improvement there for everyone
-to benefit.
-@end quotation
-
-@xref{Directories trunk Scripts}, for more information on automation.
+The automation work line exists to standardize content production
+inside the working copies of CentOS Artwork Repository. Here is
+developed the centos-art.sh script, a bash script specially designed
+to automate most frequent tasks (e.g., rendition, documentation and
+localization) inside the repository. There is no need to type several
+tasks, time after time, if they can be programmed into just one
+executable script. The automation work line is organized in the
+@xref{Directories trunk Manuals}.
 
 @subsection Connection between directories
 @cindex Connection between directories
