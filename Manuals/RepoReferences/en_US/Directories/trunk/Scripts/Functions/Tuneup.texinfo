@@ -1,0 +1,190 @@
+@subheading Name
+
+The @code{tuneup} functionlity is part of @command{centos-art.sh}
+script and standardizes tasks related to file maintainance inside the
+working copy of CentOS Artwork Repository.
+
+@subheading Synopsis
+
+@command{centos-art tuneup [OPTIONS] path/to/dir}
+
+The @file{path/to/dir} parameter specifies what directory structure
+inside the working copy of CentOS Artwork Repository you want to
+process. 
+
+The @code{tuneup} functionality of @command{centos-art.sh} script
+accepts the following options:
+
+@table @option
+@item --quiet
+
+Supress all output messages except error messages.  When this option
+is passed, all confirmation requests are supressed as well and a
+possitive answer is assumed for them, just as if the
+@option{--answer-yes} option had been provided.
+
+@item --answer-yes
+
+Assume `yes' to all confirmation requests.
+
+@item --filter="REGEX"
+
+Reduce the list of files to process using @samp{REGEX} as pattern.
+You can use this option in combination with @file{path/to/dir} in
+order to control the amount of files you want to produce as
+base-rendition.  The deeper you go into the directory structure the
+more specific you'll be about the component you want to produce. When
+you cannot go deeper into the directory structure, you can use
+@option{--filter} option to reduce the list of files.
+
+@item --dont-commit-changes
+
+Supress all commit and update actions realized over files, before and
+after the action itself had took place over files in the working copy.
+
+@end table
+
+@subheading Description
+
+Tasks related to file maintainance are repetitive. You might find
+yourself doing them time after time inside the working copy of CentOS
+Artwork Repository. Some of these maintainance tasks do update top
+comments on shell scripts, create table of contents for web pages,
+update metadata related to design models and remove unused definitions
+from design models.
+
+When you execute the @code{tuneup} functionality of
+@command{centos-art.sh} script, it looks for all files that match the
+supported extensions (e.g., @file{.sh}, @file{.svg} and @file{.xhtml})
+in the directory specified, builds a list with them and applies the
+maintainance tasks using file extensions as reference.
+
+@subsubheading Maintaining @file{.sh} files
+
+If shell scripts are found, the @code{tuneup} functionality of
+@command{centos-art.sh} script reads a comment template from
+@file{trunk/Scripts/Functions/Prepare/Config/shell_topcomment.sed} and
+applies it to shell scripts found, one by one. As result, all shell
+scripts will end up having the same copyright and license information
+the comment template does.
+
+In order for the shell script top comment template to be applied
+correctly, the shell scripts you write must have the following
+structure:
+
+@verbatim
+ 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| # 
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|     
+15| }
+@end verbatim
+
+The @code{tuneup} functionality of @command{centos-art.sh} script
+replaces all lines between the @samp{Copyright} line (e.g., line 5)
+and the first separator line (e.g., line 9), inclusively. Everything
+else in the file will remain immutable.
+
+@subsubheading Maintaining @file{.svg} files
+
+If scalable vector graphics are found, the @code{tuneup} functionality
+reads a metadata template
+(@file{trunk/Scripts/Functions/Tuneup/Config/svg_metadata.sed}) and
+applies it to all files found, one by one. Immediatly after the
+metadata template has been applied and, before passing to next file,
+all unused definition are removed from file, too.
+
+The metadata we apply from the metadata template is created dynamicaly
+combining the file absolute path, the workstation time information and
+the @command{centos-art.sh} script copyright holder information as
+reference.  Additionally, the @emph{Creative Common
+Distribution-ShareAlike 3.0 License} is also set in the metadata.
+
+The elimination of unused definitions inside SVG files takes place
+through the @option{--vacuum-defs} option of @command{inkscape}
+command-line interface which is described in its man page
+(@command{man inkscape}).
+
+@subsubheading Maintaining @file{.xhtml} files
+
+If web pages are found, the @code{tuneup} functionality of
+@command{centos-art.sh} script transforms web page headings to make
+them accessible through a table of contents.  The table of contents is
+expanded in place, wherever the @code{<div class="toc"></div>} piece
+of code be in the page. 
+
+Once the @code{<div class="toc"></div>} piece of code has be expanded,
+there is no need to put anything else in the page. You can run the
+@code{tuneup} functionality everytime you update the heading
+information so as to update the table of contents, too.
+
+In order for the @code{tuneup} functionality of
+@command{centos-art.sh} script to transform headings, you need to put
+headings in just one line using one of the following forms:
+
+@verbatim
+<h1><a name="">Title</a></h1>
+<h1><a href="">Title</a></h1>
+<h1><a name="" href="">Title</a></h1>
+@end verbatim
+
+In the example above, h1 can vary from h1 to h6. Closing tag must be
+present and also match the openning tag. The value of @option{name}
+and @option{href} options from the anchor element are set dynamically
+using the md5sum output of combining the page location, the
+@code{head-} string and the heading string.  If any of the components
+used to build the heading reference changes, you need to run the the
+@code{tuneup} functionality of @command{centos-art.sh} script in order
+for the anchor elements to use the correct information.
+
+@subheading Examples
+
+@table @command
+@item centos-art tuneup trunk/Scripts
+
+Update the copyright and license notice of all the shell scripts we
+have in @file{trunk/Scripts} directory structure.
+
+@item centos-art tuneup trunk/Identity/Models/Brands --filter="symbol"
+Update metadata and remove unused definitions from all design models
+in @file{trunk/Identity/Models/Brands} which have the word
+@samp{symbol} in the file name.
+
+@item centos-art tuneup trunk/Identity/Webenv/App/Home
+Update headings and the related table of contents to all web pages
+inside @file{trunk/Identity/Webenv/App/Home}, recusively.
+@end table
+
+@subheading Author
+
+Written by Alain Reguera Delgado.
+
+@subheading Reporting bugs
+
+Report bugs to @email{centos-artwork@@centos.org} mailing list.
+
+@subheading Copyright
+
+Copyright @copyright{}  2009, 2010, 2011 The CentOS Project.
+
+This is free software.  You may redistribute copies of it under the
+terms of the GNU General Public License (@pxref{GNU General Public
+License}).  There is NO WARRANTY, to the extent permitted by law.
+
+@subheading See also
+
+@itemize
+@item @ref{Directories trunk Scripts Functions}
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
+@end itemize

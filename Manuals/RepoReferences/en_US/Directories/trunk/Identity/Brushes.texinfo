@@ -1,0 +1,135 @@
+@subheading Goals
+
+This section describes how brushes are organized in the repository and
+how to make them available for you to use in @acronym{GIMP,GNU Image
+Manipulation Program}.
+
+@subheading Description
+
+A brush is a pixmap or set of pixmaps used for painting through an
+image manipulation program like GIMP.  Inside the repository, we've
+organized brushes in @emph{common brushes} and @emph{theme-specific
+brushes}.  In both cases, brushes are initially created in @file{.xcf}
+format and later exported to any of the brush formats recognized by
+GIMP (e.g., @file{.gbr} or @file{.gih}) using the same name of its
+source file.
+
+@verbatim
+1. Common brushes       2. Theme-specific brushes
+----------------------  -----------------------------------------------------------
+trunk/Identity/Brushes  trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
+|-- Xcf                 |-- Xcf
+|   |-- 1.xcf           |   |-- 1.xcf
+|   |-- 2.xcf           |   |-- 2.xcf
+|   `-- 3.xcf           |   `-- 3.xcf
+|-- 1.gbr               |-- 1.gbr
+|-- 2.gih               |-- 2.gih
+`-- 3.gbr               `-- 3.gbr
+@end verbatim
+
+In order for both common brushes and theme-specific brushes to be
+loaded by GIMP, related @file{.gbr} and @file{.gih} brush files need
+to be stored under @file{~/.gimp-2.2/brushes} directory. This location
+is out of CentOS Artwork Repository and provides no version control by
+itself. This way, brushes aren't exported to this location but into
+the repository directory structure which is versioned. Later, we
+create symbolic links in @file{~/.gimp-2.2/brushes} to connect file
+brushes inside the repository and, this way, provide the configuration
+needed by GIMP to use the brush files produced inside the repository.
+
+@quotation
+@strong{Warning}
+When brushes are added to or removed from the repository, you need to
+update your working copy and all information related to brushes inside
+your workstation (e.g., brush links in @file{~/.gimp-2.2/brushes} and
+the Brushes panel in GIMP).  Otherwise, you may end up with broken
+links or brushes in the repository that wouldn't be available for you
+to use in GIMP.
+@end quotation
+
+Inside the repository, common brushes and theme-specific brushes are
+created individually in different locations, but they all are linked
+from one unique location (i.e., @file{~/.gimp-2.2/brushes}).  This
+configuration may provoke brush overlapping if a name convenction is
+not implemented correctly.  In that sake, file names used for brushes
+inside the repository must be unique, no matter where they be.
+
+As file name convenction inside the repository, brushes are named
+using lowercase letters, numbers, minus characters and dot characters,
+only.  Additionally, when links are built, we use one suffix for those
+brushes retrived from @file{trunk/Identity/Brushes} and another suffix
+for those brushes retrivided from theme-specific directories.  Using
+both the brush file name and the suffix information,  it is possible
+to build unique names for links under @file{~/.gimp-2.2/brushes}
+directory, scalably.
+
+@verbatim
+trunk/Identity/Brushes
+|-- 1.gbr (file) <-- ~/.gimp-2.2/brushes/centos-1.gbr (link)
+|-- 2.gbr (file) <-- ~/.gimp-2.2/brushes/centos-2.gbr (link)
+`-- 3.gbr (file) <-- ~/.gimp-2.2/brushes/centos-3.gbr (link)
+@end verbatim
+
+@verbatim
+trunk/Identity/Images/Themes/THEMENAME/THEMEVERSION/Brushes
+|-- 1.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-1.gbr (link)
+|-- 2.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-2.gbr (link)
+`-- 3.gbr (file) <-- ~/.gimp-2.2/brushes/centos-THEMENAME-THEMEVERSION-3.gbr (link)
+@end verbatim
+
+Brushes produced with GIMP has a description field associated that is
+shown in the Brushes panel of GIMP.  This description is set when the
+brush is created as @file{.xcf} file and can be updated when it is
+exported either to @file{.gbr} or @file{.gih} format. It wouldn't be
+too useful to have two or more brushes using the same description so,
+we also make description of brush files unique, too. In that sake, we
+use the same name schema used to name brush links as description but
+without including the file extension (e.g., if we have the
+@file{centos-flame-3.gbr} brush, its description would be
+@code{centos-flame-3}).
+
+@subheading Usage
+
+The way you use brushes is up to your creativeness. However, the way
+brushes are made available needs to be standardized. That's the reason
+of organizing brushes in common brushes and theme-specific brushes.
+
+@subheading Common brushes
+
+Common brushes exist to organize brushes that can be used anywhere
+inside the repository. Inside the repository, common brushes under
+@file{trunk/Identity/Brushes} are mainly used to hold brand
+information related to The CentOS Project (e.g., symbols, logos,
+trademarks, etc.).
+
+Common brushes are always made available under
+@file{~/.gimp-2.2/brushes} directory after preparing the repository
+(@pxref{Directories trunk Scripts Functions Prepare}).
+
+@subheading Theme-specific brushes
+
+Theme-specific brushes exist to organize brushes that can be used
+inside specific artistic motifs only. Inside the repository,
+theme-specific brushes are stored in a directory named @file{Brushes}
+which is stored in the first directory level under the artistic motif
+directory structure. Each artistic motif inside the repository has its
+own @file{Brushes} directory and uses it to store brushes that can be
+considered auxiliars to that artistic motif construction.
+
+Theme-specific brushes aren't made available under
+@file{~/.gimp-2.2/brushes} directory after preparing the repository.
+In order to make theme-specific brushes available under
+@file{~/.gimp-2.2./brushes} it is required to activate/deactivate them
+using the @code{theme} functionality of @command{centos-art.sh}
+script. @c (@pxref{Directories trunk Scripts Functions Theme}).
+
+@subheading See also
+
+@itemize
+@item @url{file:///usr/share/gimp/2.0/help/en/index.html,The Gimp
+Manual}, specifically the section related to
+@url{file:///usr/share/gimp/2.0/help/en/gimp-concepts-brushes.html,
+Brushes}.
+@item @ref{Directories trunk Identity}
+@item @ref{Directories trunk}
+@end itemize

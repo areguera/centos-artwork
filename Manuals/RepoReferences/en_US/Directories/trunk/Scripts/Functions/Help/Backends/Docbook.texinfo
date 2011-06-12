@@ -1,0 +1,50 @@
+@subheading Goals
+
+The @file{trunk/Scripts/Functions/Help/Backends/Docbook} organizes
+the implementation of @samp{docbook} documentation backend used by
+@code{help} functionality of @command{centos-art.sh} script.
+
+@subheading Description
+
+Creation of new language-specific documentation structure is based on
+English documentation structure. When we try to edit a documentation
+entry in a documentation structure that doesn't exist,
+@command{centos-art.sh} script renders the new documentation structure
+using the language-specific translation messages for the current
+language information. If the @command{centos-art.sh} script doesn't
+find any translation message for the current language, it asks you to
+create them through the @code{locale} functionality. Later, uses the
+translation messages to render the new language-specific documentation
+structure. Obviously, if translation messages are created but no
+localization is inside them you'll have the new language-specific
+documentation struction in the same language of source documentation
+structure (i.e., English).
+
+Localization of language-specific documentation structures are
+maintained through the @code{locale} and @code{render} functionalities
+of @command{centos-art.sh} script. Eventhough, a language-specific
+documentation structure is available, you must not edit it directly
+because it is produced automatically from translation messages.
+Instead, edit translation messages whenever you need to update
+language-specific documentation structures. Using this configuration
+let us to have an accurate documentation structures: running the
+@code{locale} functionality will take advice of new changes and will
+call our attention about them.  This way, we go directly to changes
+and save the time of looking them inside the English documentation
+structure.
+
+@subheading Usage
+
+@itemize
+@item ...
+@end itemize
+
+@subheading See also
+
+@itemize
+@item @ref{Directories trunk Scripts Functions Help Backends} 
+@item @ref{Directories trunk Scripts Functions Help} 
+@item @ref{Directories trunk Scripts Functions} 
+@item @ref{Directories trunk Scripts} 
+@item @ref{Directories trunk}
+@end itemize

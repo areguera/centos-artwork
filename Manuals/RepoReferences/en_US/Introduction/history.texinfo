@@ -1,0 +1,139 @@
+This section records noteworthy changes of CentOS Artwork Repository
+through years.
+
+@subheading 2008
+
+The CentOS Artwork Repository started at CentOS Developers mailing
+(@email{centos-devel@@centos.org}) during a discussion about how
+to automate the slide images of Anaconda. In such discussion, Ralph
+Angenendt rose up his hand to ask: Do you have something to show?
+    
+To answer the question, Alain Reguera Delgado suggested a bash script
+which combined SVG and SED files in order to produce PNG images in
+different languages ---together with the proposition of creating a
+Subversion repository where translations and image production could be
+distributed inside The CentOS Community---.
+    
+Karanbirn Sighn considered the idea intresting and provided the
+infrastructure necessary to support the effort.  This way the CentOS
+Artwork SIG (@url{https://projects.centos.org/trac/artwork/}) and the
+CentOS Artwork Repository
+(@url{https://projects.centos.org/svn/artwork/}) were officially
+created.
+    
+Once the CentOS Artwork Repository was available, Alain Reguera
+Delagdo uploaded the bash script for rendering Anaconda slides; Ralph
+Angenendt documented it very well; and people started to download
+working copies of CentOS Artwork Repository to produce slide images in
+their own languages.
+
+@subheading 2009
+
+The rendition script was at a very rustic state where only slide
+images could be produced, so it was redesigned to extend the image
+production to other areas, not just slide images.  In this
+configuration, one SVG file was used as input to produce a translated
+instance of it which, in turn, was used to produce one translated PNG
+image as output.  The SVG translated instance was created through SED
+replacement commands. The translated PNG image was created from the
+SVG translated instance using Inkscape command-line interface.
+    
+The rendition script was named @command{render.sh}.
+    
+The repository directory structure was prepared to receive the
+rendition script using design templates and translation files in the
+same location.  There was one directory structure for each artwork
+that needed to be produced. In this configuration, if you would want
+to produce the same artwork with a different visual style or
+structure, it was needed to create a new directory structure for it
+because both the image structure and the image visual style were
+together in the design template.
+    
+The rendition script was moved to a common place and linked from
+different directory structures. There was no need to have the same
+code in different directory structures if it could be in just one
+place and then be linked from different locations.
+    
+The concepts about corporate identity began to be considered. As
+referece, it was used the book ``Corporate Identity'' by Wally Olins
+(1989) and Wikipedia
+(@url{http://en.wikipedia.org/Corporate_identity}). This way, the
+rendition script main's goal becomes to: automate production of a
+monolithic corporate visual identity structure, based on the mission
+and the release schema of The CentOS Project.
+    
+The directory structures started to be documented inside the
+repository using text files without markup.  Later, documentation in
+flat text files was moved to LaTeX format and this way ``The CentOS
+Artwork Repository Manual'' started to take form.
+
+@subheading 2010
+
+The rendition script changed its name from @command{render.sh} to
+@command{centos-art.sh} and became a collection of functionalities
+where rendition was just one among others (e.g., documenting and
+localizing).
+
+The @command{centos-art.sh} was created to organize automation of most
+frequent tasks inside the repository.  There was no need to have links
+all around the repository if a command-line interface could be created
+(through symbolic links, in the @file{~/bin} directory) and be called
+anywhere inside the repository as it would be a regular command.
+
+Inside @command{centos-art.sh}, functionalities started to get
+identified and separated one another. For example, when images were
+rendered, there was no need to load functionalities related to
+documentation manual. This layout moved us onto common functionalities
+and specific functionalities inside @command{centos-art.sh} script.
+Common functionalities are loaded when @command{centos-art.sh} script
+is initiated and are available to specific functionalities.
+
+The @command{centos-art.sh} script was redesigned to handle
+command-line options trough @command{getopt} option parser.
+
+The repository directory structure was updated to improve the
+implementation of concepts related to corporate visual identity.
+Specially in the area related to themes which were divided into
+``design models'' and ``artistic motifs'' to eliminate the content
+duplication produced by having both image structure and image visual
+style in the same file.  Now, themes are produced as result of
+arbitrary combinations of both design models (structures) and artistic
+motifs (visual styles).
+
+In the documentation area, the documentation files in LaTeX format
+were migrated to Texinfo format.  In this configuration, each
+directory structure in the repository has a documentation entry
+associated in a Texinfo structure which can be read, edited and
+administered (e.g., renamed, deleted, copied) interactively throuch
+@command{centos-art.sh}. Additionally, the @command{texi2html} program
+was used to produced XHTML output customized by CSS from The CentOS
+Webenv.
+
+@subheading 2011
+
+The @command{centos-art.sh} script was redesigned to start translating
+SVG and other XML-based files (e.g., XHTML and Docbook files) through
+the @command{xml2po} program and shell scripts files (e.g., Bash
+scripts) through GNU @command{gettext} tools.  This configuration
+provided a stronger interface for graphic designers, translators and
+programmers to produce localized content.  The SED files are no longer
+used to handle translations.
+
+Improve option parsing through @command{getopt}.
+
+Consolidate the @code{render}, @code{help} and @code{locale}
+functionalities as the most frequent tasks performed inside the
+repository. Additionally, the @code{prepare} and @code{tuneup}
+functionalities are maintained as useful tasks.
+
+The @command{centos-art.sh} script is updated to organize
+functionalities in two groups: ``the administrative functionalities''
+and ``the productive functionalities''.  The administrative
+functionalities cover actions like: copying, deleting and renaming
+directory structures inside the repository.  Also, preparing your
+workstation for using @command{centos-art.sh} script, making
+backups of the distribution theme currently installed,  installing
+themes created inside repository and restoring themes from backup.  On
+the other hand, the productive functionalities cover actions like:
+content rendition, content localization, content documentation and
+content maintainance.

@@ -1,0 +1,109 @@
+In this manual the personal pronoun @emph{we} is used to repesent
+@emph{The CentOS Artwork SIG}. This is, the group of persons building
+the CentOS Artwork Repository.
+
+In this manual, certain words are represented in different fonts,
+typefaces, sizes, and weights. This highlighting is systematic;
+different words are represented in the same style to indicate their
+inclusion in a specific category. The types of words that are
+represented this way include the following:
+
+@table @command
+@item command
+
+Linux commands (and other operating system commands, when used) are
+represented this way. This style should indicate to you that you can
+type the word or phrase on the command line and press Enter to invoke
+a command. Sometimes a command contains words that would be displayed
+in a different style on their own (such as file names). In these
+cases, they are considered to be part of the command, so the entire
+phrase is displayed as a command. For example:
+
+Use the @command{centos-art identity --render='path/to/dir'} command
+to produce contents inside the @file{trunk/Identity} directory
+structure.
+@end table
+
+@table @file
+@item file name
+
+File names, directory names, paths, and RPM package names are
+represented this way. This style indicates that a particular file or
+directory exists with that name on your system. Examples:
+
+The @file{init.sh} file in @file{trunk/Scripts/Bash/Cli/} directory is
+the initialization script, written in Bash, used to automate most of
+tasks in the repository.
+
+The @command{centos-art} command uses the @file{ImageMagick} RPM
+package to convert images from PNG format to other formats.
+@end table
+
+@table @key
+@item @key{key}
+
+A key on the keyboard is shown in this style. For example:
+
+To use @key{TAB} completion to list particular files in a directory,
+type @command{ls}, then a character, and finally the Tab key. Your
+terminal displays the list of files in the working directory that
+begin with that character.  
+@end table
+
+@table @key
+@item @key{key-combination}
+A combination of keystrokes is represented in this way. For example:
+
+The @key{Ctrl-Alt-Backspace} key combination exits your graphical
+session and returns you to the graphical login screen or the console.
+@end table
+
+@table @code
+@item @code{computer output}
+
+Text in this style indicates text displayed to a shell prompt such as
+error messages and responses to commands. For example:
+
+The @command{ls} command displays the contents of a directory. For example:
+
+@verbatim
+Config                          help_renameEntry.sh
+help_copyEntry.sh               help_restoreCrossReferences.sh
+help_deleteCrossReferences.sh   help_searchIndex.sh
+@end verbatim
+
+The output returned in response to the command (in this case, the
+contents of the directory) is shown in this style.
+@end table
+
+Additionally, we use several different strategies to draw your
+attention to certain pieces of information. In order of urgency, these
+items are marked as a note, tip, important, caution, or warning. For
+example:
+
+@quotation
+@strong{Note} Remember that Linux is case sensitive. In other words, a
+rose is not a ROSE is not a rOsE. 
+@end quotation
+
+@quotation
+@strong{Tip} The directory @file{/usr/share/doc/} contains additional
+documentation for packages installed on your system. 
+@end quotation
+
+@quotation
+@strong{Important} If you modify the DHCP configuration file, the
+changes do not take effect until you restart the DHCP daemon. 
+@end quotation
+
+@quotation
+@strong{Caution} Do not perform routine tasks as root --- use a
+regular user account unless you need to use the root account for
+system administration tasks.
+@end quotation
+
+@quotation
+@strong{Warning} Be careful to remove only the necessary partitions.
+Removing other partitions could result in data loss or a corrupted
+system environment.
+@end quotation

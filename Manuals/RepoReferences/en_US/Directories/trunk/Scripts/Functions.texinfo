@@ -1,0 +1,348 @@
+@subheading Goals
+
+The @file{trunk/Scripts/Functions} directory exists to organize
+@file{centos-art.sh} specific functionalities.
+
+@subheading Description
+
+The specific functions of @file{centos-art.sh} script are designed
+with the ``Software Toolbox'' philosophy (@inforef{Toolbox
+introduction,,coreutils.info}) in mind: each program ``should do one
+thing well''.  Inside @file{centos-art.sh} script, each specific
+functionality is considered a program that should do one thing well.
+Of course, if you find that they still don't do it, feel free to
+improve them in order for them to do so.
+
+The specific functions of @file{centos-art.sh} script are organized
+inside specific directories under @file{trunk/Scripts/Functions}
+location. Each specific function directory should be named as the
+function it represents, with the first letter in uppercase. For
+example, if the function name is @code{render}, the specific function
+directory for it would be @samp{trunk/Scripts/Functions/Render}.
+
+@subsubheading Creating the @code{greet} functionality
+
+To better understand how to design specific functions for
+@file{centos-art.sh} script, let's create the @code{greet}
+functionality which only goal is to print out different kind of
+greetings to your screen.  The @code{greet} functionality will be set
+using the follwiing directory structure:
+
+@verbatim
+trunk/Scripts/Functions/Greet   <-- The source location of greet function.
+|-- greet_getOptions.sh         <-- Defines command-line interface.
+|-- greet_sayGoodbye.sh         <-- Defines specific action.
+|-- greet_sayHello.sh           <-- Defines specific action.
+`-- greet.sh                    <-- Defines function initialization.
+@end verbatim
+
+The @file{greet.sh} file contains the initialization script of
+@code{greet} functionality. It is the first file loaded from function
+source location by @command{centos-art.sh} script when it is executed
+using the @code{greet} functionality as first argument.
+
+Inside @file{centos-art.sh} script, as convenction, each function
+script has one top commentary, followed by one blank line, and then
+one function defintion below it only.  The top commentary has the
+function description, one-line for copyright notice with your personal
+information,  the license under which the function source code is
+released ---the @file{centos-art.sh} script is released as GPL, so do
+all its functions--- and the @code{$Id$} keyword of Subversion which
+is later expanded by @command{svn propset} command.  In our example,
+the top comment of @code{greet.sh} function script would look like the
+following:
+
+@verbatim
+#!/bin/bash
+#
+# greet.sh -- This function outputs different kind of greetings to
+# your screen. Use this function to understand how centos-art.sh
+# script specific functionalities work.
+#
+# Copyright (C) YEAR YOURFULLNAME
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+# ----------------------------------------------------------------------
+# $Id$
+# ----------------------------------------------------------------------
+
+function greet {
+
+    # Define command-line interface.
+    greet_getOptions
+
+    # Execute action name.
+    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
+        eval $ACTIONNAM
+    else
+        cli_printMessage "`gettext "A valid action is required."`" 'AsErrorLine'
+        cli_printMessage "${FUNCDIRNAM}" 'AsToKnowMoreLine'
+    fi
+    
+}
+@end verbatim
+
+The first definition inside @code{greet} function is for variables
+that will be available along the whole execution environment of
+@code{greet} function. This time we didn't define any variable here
+so, we continued with definition of command-line interface, through
+@code{greet_getOptions} function.
+
+The command-line interface of @code{greet} functionality defines how
+to interpret arguments passed from @command{centos-art.sh} script
+command-line.  Inside @command{centos-art.sh} script, the
+interpretation of arguments passed through its command-line takes
+place by mean of @command{getopt} command and is written as the
+following code example describes: 
+
+@verbatim
+function greet_getOptions {
+
+    # Define short options we want to support.
+    local ARGSS=""
+
+    # Define long options we want to support.
+    local ARGSL="hello:,bye:,quiet"
+
+    # Redefine ARGUMENTS variable using getopt output.
+    cli_doParseArguments
+
+    # Redefine positional parameters using ARGUMENTS variable.
+    eval set -- "$ARGUMENTS"
+
+    # Look for options passed through command-line.
+    while true; do
+
+        case "$1" in
+
+            --hello )
+                ACTIONNAM="${FUNCNAM}_sayHello"
+                ACTIONVAL="$2"
+                shift 2
+                ;;
+
+            --bye )
+                ACTIONNAM="${FUNCNAM}_sayGoodbye" 
+                ACTIONVAL="$2"
+                shift 2
+                ;;
+
+            --quiet )
+                FLAG_QUIET='true'
+                shift 1
+                ;;
+
+            -- )
+                # Remove the `--' argument from the list of arguments
+                # in order for processing non-option arguments
+                # correctly. At this point all option arguments have
+                # been processed already but the `--' argument still
+                # remains to mark ending of option arguments and
+                # begining of non-option arguments. The `--' argument
+                # needs to be removed here in order to avoid
+                # centos-art.sh script to process it as a path inside
+                # the repository, which obviously is not.
+                shift 1
+                break
+                ;;
+        esac
+    done
+
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_doParseArgumentsReDef "$@"
+
+}
+@end verbatim
+
+The @code{greet_sayHello} and @code{greet_sayGoodbye} function definitions
+are the core of @code{greet} specific functionality.  In such function
+definitions we set what our @code{greet} function really does: to
+output different kinds of greetings.
+
+@verbatim
+function greet_sayHello {
+
+    cli_printMessage "`gettext "Hello"`, $ACTIONVAL"
+
+}
+@end verbatim
+
+The @code{greet_sayHello} function definition is stored in
+@file{greet_sayHello.sh} function script. 
+
+@verbatim
+function greet_sayGoodbye {
+
+    cli_printMessage "`gettext "Goodbye"`, $ACTIONVAL"
+
+}
+@end verbatim
+
+The @code{greet_sayGoodbye} function definition is stored in the
+@file{greet_sayGoodbye.sh} function script. 
+
+@subsubheading Executing the @code{greet} functionality
+
+To execute the @code{greet} specific functionality we've just created,
+pass the function name (i.e., @code{greet}) as first argument to
+@file{centos-art.sh} script and any of the valid options after it.
+Some examples are illustrated below:
+
+@verbatim
+[centos@projects ~]$ centos-art greet --hello='World'
+Hello, World
+[centos@projects ~]$ centos-art greet --bye='World'
+Goodbye, World
+[centos@projects ~]$ centos-art greet --bye='World' --quiet
+[centos@projects ~]$ 
+@end verbatim
+
+The word @samp{World} in the examples above can be anything. Likewise,
+if you need to change the way either the hello or goodbye messages are
+printed out, you can modifie the functions @code{greet_sayHello} and
+@code{greet_sayGoodbye}, respectively.
+
+@subsubheading Documenting the @command{greet} functionality
+
+Now that @code{greet} functionality works as we expect, it is time to
+document it.  To document functionalities inside
+@command{centos-art.sh} script we use the function directory path as
+argument to the @code{help} functionality (@pxref{Directories trunk
+Scripts Functions Help}) of @file{centos-art.sh} script, just as the
+following command illustrates: 
+
+@verbatim
+centos-art help --edit trunk/Scripts/Functions/Greet
+@end verbatim
+
+The function documentation helps to understand how the function really
+works and how it should be used.  Also, when @command{centos-art.sh}
+script ends because an error, the documentation entry related to the
+functionality being currently executed is used as vehicle to
+communicate the user what is the correct way of using the
+functionality. 
+
+@subsubheading Localizing the @command{greet} functionality
+
+Now that @code{greet} functionality has been documented, it is time to
+localize its output messages. Localizing specific functionalities of
+@command{centos-art.sh} script takes place as part of
+@command{centos-art.sh} script localization itself which is performed
+by applying the path @file{trunk/Scripts} to the @code{locale}
+functionality of @command{centos-art.sh} script. 
+
+As the @code{greet} functionality added new translatable strings to
+the @command{centos-art.sh} script, it is required to update the
+translation messages firstly, to add the new translatable strings from
+@code{greet} functionality to @command{centos-art.sh} script
+translation messages and then, edit the translation messages of
+@command{centos-art.sh} script to localize the new translatable
+strings that have been added. To achieve this, execute the following
+two commands:
+
+@verbatim
+centos-art locale --update trunk/Scripts
+@end verbatim
+
+@verbatim
+centos-art locale --edit trunk/Scripts
+@end verbatim
+
+@quotation
+@strong{Warning} To translate output messages in different languages,
+your system locale information ---as in @env{LANG} environment
+variable--- must be set to that locale you want to produce translated
+messages for. For example, if you want to produce translated messages
+for Spanish language, your system locale information must be set to
+@samp{es_ES.UTF-8}, or similar, before executing the @code{locale}
+functionality of @command{centos-art.sh} script.
+@end quotation
+
+Well, it seems that our example is rather complete by now. 
+
+@subsubheading Extending the @code{greet} functionality
+
+In the @code{greet} functionality we've described so far, we only use
+@code{cli_printMessage} function in action specific function
+definitions in order to print messages, but more interesting things
+can be achieved inside action specific function definitions.  For
+example, if you pass a directory path as argument, you could use it to
+retrive a list of files from therein and process them. If the list of
+files turns too long or you just want to control which files to
+process, so you could add another argument in the form
+@option{--filter='regex'} and reduce the list of files to process
+using a regular expression pattern.
+
+In case you consider to extend the @code{greet} functionality to do
+something different but print out grettings, consider changing the
+function name from @code{greet} to something more appropriate, as
+well. The name change must be coherent with the actions the new
+function is designed to perform. 
+
+If you doubt what name is better for your functionality, write to
+@email{centos-devel@@centos.org} mailing list, explain what your
+functionality intends to do and request suggestion about what name
+would be more appropriate for it. That would be also very convenient
+for you, in order to evaluate the purposes of your function and what
+the community thinks about it. It is a way for you to gather ideas
+that help you to write using the community feeling as base.
+
+If your function passes the community evaluation, that is a good sign
+for you to start/keep writing it. However, if it doesn't, it is time
+for you to rethink what you are doing and ask again until it passes
+the community evaluation. You can considered you've passed the
+community evaluation when after proposing your idea, you get a
+considerable amount of possitve responses for what you are doing,
+specially if those responses come from community leaders.  
+
+It is very hard to do something useful for a community of people
+without any point of contact with that community you are trying to do
+things for.  How could you know you are doing something that is needed
+if you don't know what the needs are?  So, explore the community needs
+first, define them, work them out and repeat the process time after
+time, even when you might think the need has been already satisfied.
+At that point, surely, you'll find smaller needs that need to be
+satisfied, as well.
+
+@subsubheading Conclusions
+
+The @code{greet} functionality described in this section may serve as
+introduction for you to understand how specific functionalities are
+created inside @file{centos-art.sh} script. With some of luck this
+introduction will also serve you as motivation to create your own
+specific functionalities for @file{centos-art.sh} script.
+
+By the way, the @code{greet} functionality doesn't exist inside
+@file{centos-art.sh} script yet. Would you like to create it?
+
+@subheading Usage
+
+The following specific functions of @file{centos-art.sh} script, are
+available for you to use:
+
+@itemize
+@item @xref{Directories trunk Scripts Functions Help}.
+@item @xref{Directories trunk Scripts Functions Locale}.
+@item @xref{Directories trunk Scripts Functions Prepare}.
+@item @xref{Directories trunk Scripts Functions Render}.
+@item @xref{Directories trunk Scripts Functions Tuneup}.
+@end itemize
+
+@subheading See also
+
+@itemize
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
+@end itemize

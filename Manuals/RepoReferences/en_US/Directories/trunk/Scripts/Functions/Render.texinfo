@@ -1,0 +1,388 @@
+@subheading Name
+
+The @code{render} functionlity is part of @command{centos-art.sh}
+script and standardizes rendition tasks inside the working copy of
+CentOS Artwork Repository.
+
+@subheading Synopsis
+
+@command{centos-art render [OPTIONS] path/to/dir}
+
+The @file{path/to/dir} parameter specifies what directory structure
+inside the working copy of CentOS Artwork Repository you want to
+produce. 
+
+The @code{render} functionality of @command{centos-art.sh} script
+accepts the following options:
+
+@table @option
+@item --quiet
+
+Supress all output messages except error messages.  When this option
+is passed, all confirmation requests are supressed as well and a
+possitive answer is assumed for them, just as if the
+@option{--answer-yes} option had been provided.
+
+@item --answer-yes
+
+Assume `yes' to all confirmation requests.
+
+@item --filter="REGEX"
+
+Reduce the list of files to process using @samp{REGEX} as pattern.
+You can use this option in combination with @file{path/to/dir} in
+order to control the amount of files you want to produce as
+base-rendition.  The deeper you go into the directory structure the
+more specific you'll be about the component you want to produce. When
+you cannot go deeper into the directory structure, you can use
+@option{--filter} option to reduce the list of files.
+
+@item --dont-commit-changes
+
+Supress all commit and update actions realized over files, before and
+after the action itself had took place over files in the working copy.
+
+@item --releasever="STRING"
+
+This option expands release-specific translation makers to
+@samp{STRING}. Use this option when no releasae-specific information
+can be retrived from the path of the directory structure you are
+currently rendering.
+
+@item --basearch="STRING"
+
+This option expands architecture-specific translation makers to
+@samp{STRING}. Use this option when no architecture-specific
+information can be retrived from the path of the directory structure
+you are currently rendering.
+
+@item --theme-model="STRING"
+
+Specify the name of the theme model you want to use to produce theme
+artistic motifs. By default, if this option is not passed, the
+@samp{Default} theme model is used as reference to produce theme
+motifs.
+
+@item --post-rendition="STRING"
+
+This option let you apply a command as post-rendition action. In this
+case, the @samp{STRING} represents the command string you want to
+execute in order to perform in-place modifications to base-rendition
+output.
+
+@item --last-rendition="STRING"
+
+This option let you apply a command as last-rendition action. In this
+case, the @samp{STRING} represents the command string you want to
+execute in order to perform in-place modifications to base-rendition,
+post-rendition and directory-specific rendition outputs. 
+
+@end table
+
+@subheading Description
+
+Inside the working copy of CentOS Artwork Repository, rendition tasks
+take place inside renderable directories.  Inside the @code{render}
+functionality of @command{centos-art.sh} script, you can control
+rendition tasks through different flows of rendition named
+base-rendition, post-rendition, last-rendition and directory-specific
+rendition.
+
+@subsubheading Renderable directories
+
+In order for a directory structure to be considered renderable, it
+should have one directory structure for input files and one directory
+structure for output files. Optionally, a third directory structure
+might be available for storing translation files.
+
+Renderable directories are very tied to the way content is produced
+inside the working copy of CentOS Artwork Repository. Presently,
+content is produced through the following organizations:
+
+@table @strong
+@item Direct rendition
+
+In direct rendition, there is one directory structure for input files
+(@file{trunk/Identity/Models}) and one directory structure for output
+files (e.g., @file{trunk/Identity/Images}). Optionally, a third
+directory structure is available to store the input related
+translation files (e.g., @file{trunk/Locales/Identity/Models}).
+
+In direct rendition, when the @code{render} functionality of
+@command{centos-art.sh} script is executed, it uses the input
+directory structure to build a list of files to process, which is used
+as reference to determine the location of the translation file and the
+location of the output file, as well.
+
+@item Theme-specific rendition
+
+In theme-specific rendition, there is one directory structure to store
+input files (@file{trunk/Identity/Themes/Models}), one directory
+structure to store translation files
+(@file{trunk/Locales/Identity/Themes/Models/}), one directory
+structure to store artistic motifs
+(@file{trunk/Identity/Images/Themes}) and one directory structure to
+store output files (@file{trunk/Identity/Images/Themes}).
+
+In theme-specific rendition, when the @code{render} functionality of
+@command{centos-art.sh} script is executed, it uses the input
+directory structure to build a list of files to process, which is used
+as reference to determine the location of the translation file and the
+location of the output file, as well. 
+
+In contrast with direct rendition, when we use theme-specific
+rendition, it is possible to combine both design models and artistic
+motifs to produce output in an arbitrary way. This configuration is
+specially interesting because it is possible to create different
+artistic motifs and one unique design model in order to produce one
+unique theme structure with different visual styles. Or the opposite,
+to create different theme structures and apply one unique visual style
+to produce one unique visual styles on different theme structure. Or
+even get a bit farther and experiment with arbitrary combinations
+among them all.
+
+@end table
+
+In both direct and theme-specific rendition, if the location where the
+output file should be stored doesn't exist, the @code{render}
+functionality of @command{centos-art.sh} script will create it for
+you.
+
+In both direct and theme-specific rendition, if the input related
+translation file doesn't exist, the @code{render} functionality of
+@command{centos-art.sh} script will produce the output in the same
+language of its input file.
+
+@subsubheading The base-rendition flow
+
+The base-rendition flow takes place immediatly after executing the
+@code{render} functionality of @command{centos-art.sh} script.  The
+base-rendition produces different outputs from one unique input format
+(i.e., one input file is used to produce one ore more output files).
+When translation files are available for input files, the
+base-rendition applies the translation file to the input file in order
+to produce a translated instance of it, then this translated instance
+is used as input file to produce one or more output files.
+
+The base-rendition flow processes input files using design model file
+extensions and backend-specific functionalities as reference. When you
+try to render a location in the repository, a list of supported file
+extensions is evaluated and a list of files to process is built for
+each supported extension. Later, each list of files is processed using
+functionalities from a specific backend.  Backend-specific
+functionalities group the function files needed to perform the
+specific tasks related to one file extension (e.g., when design model
+is a SVG file, the @samp{svg} backend-specific functionalities are
+loaded to process the design model.  Likewise, when design model is a
+DocBook file, the @samp{docbook} backend-specific functionalities are
+loaded to process the design model file). There is no need to load
+@samp{docbook} backend-specific functionalities when SVG files are
+rendered, nor the opposite.
+
+The base-rendition flow uses XML files as input (e.g., SVG or DocBook)
+and @acronym{PO,Portable Objects} as translation files. The format
+produced as output depends on the input file provided  (e.g., when the
+input format is a SVG file, the base output is a PNG file; when the
+input format is a DocBook file the base output is PDF and XHTML.).
+
+As application example of base-rendition flow, consider the
+description of the  following sections:
+
+@itemize
+@item @ref{Directories trunk Identity Models Themes Default Distro 5
+Anaconda}
+@item @ref{Directories trunk Manuals}
+@end itemize
+
+@subsubheading The post-rendition flow
+
+The post-rendition flow is performed immediatly after base-rendition
+flow to extend the base-rendition flow by applying transformations or
+in-place modifications to base-rendition output. In-place
+modifications can be performed either through the
+@option{--post-rendition} command-line option of
+@command{centos-art.sh} script or through directory-specific
+rendition.
+
+Actions commanded through @option{--post-rendition} option are applied
+first and directory-specific actions later. This order is required to
+propagate in-place changes commited to base-rendition output to
+modified copies (i.e., new files) of it created through
+directory-specific rendition.  Creation of modified copies is
+something specific to directory-specific rendition only. It is not
+possible for the @option{--post-rendition} option to create modified
+copies of base-rendition output because commands passed through it are
+applied to the base-rendition output file directly in a disposition
+that don't support creation of new files, but in-place modifications
+only.
+
+The command passed to @option{--post-rendition} option can be changed
+everytime you run the @command{centos-art.sh} script, but actions
+specified in directory-specific rendition cannot be changed in the
+same way.  Direcctory-specific rendition is set inside
+@command{centos-art.sh} script to perform specific tasks that cannot
+be achived through @option{--post-rendition} option.
+
+As application example of post-rendition flow, consider the
+description of the  following sections:
+
+@itemize
+@item @ref{Directories trunk Identity Models Themes Default Distro 5
+Syslinux}
+@item @ref{Directories trunk Identity Models Themes Default Distro 5
+Grub}
+@end itemize
+
+@subsubheading The last-rendition flow
+
+The last-rendition flow takes place after post-rendition and applies
+transformations or in-place modifications to all files produced as
+result of both base-rendition and post-rendition flows in the same
+directory structure, just before passing to process a different
+directory structure.  In-place modifications can be performed either
+through the @option{--last-rendition} command-line option of
+@command{centos-art.sh} script or through directory-specific
+rendition.
+
+Actions commanded through @option{--last-rendition} option are applied
+after directory-specific actions. This order is required to prevent
+last-rendition actions commanded from directory-specifc rendition to
+overlap last-rendition actions commanded from
+@option{--last-rendition} option.
+
+The command passed to @option{--last-rendition} option can be changed
+everytime you run the @command{centos-art.sh} script, but actions
+specified in directory-specific rendition cannot be changed in the
+same way.  Actions commanded from directory-specific rendition are set
+inside @command{centos-art.sh} script to perform specific tasks that
+cannot be achived through @option{--last-rendition} option.
+
+As application example of last-rendition flow, consider the
+description of the  following sections:
+
+@itemize
+@item @ref{Directories trunk Identity Models Themes Default Distro 5
+Ksplash}
+@item @ref{Directories trunk Identity Models Themes Default Distro 5
+Gdm}
+@end itemize
+
+@subsubheading The directory-specific rendition flow
+
+Inside the working copy of CentOS Artwork Repository, some directory
+structure (e.g., @file{Syslinux}, @file{Gurb}, @file{Gdm}, @file{Kdm}
+and @file{KSplash}) required more than base-rendition or even the
+commands you could pass through the @option{--post-rendition} and
+@option{--last-rendition} options, in order for their final files to
+be produced. In these situations, we make use of directory-specific
+rendition flow.
+
+The directory-specific rendition flow applies specific actions to
+specific directory structures when they enter into the rendition flow.
+Using this configuration speeds up production of all those components
+that require intermediate formats or even several independent files,
+in order for the final content to be created.  
+
+The directory-specific rendition flow is generally used in combination
+with post-rendition and last-rendition flows inside
+@command{centos-art.sh} script.
+
+@subsubheading Translations
+
+To translate output files, the @code{render} functionality of
+@command{centos-art.sh} script creates a translated instance of the
+input file and uses it then to create the base output file. The
+translated instance is created using the related translation messages
+of the input file. Translation messages are stored under
+@file{trunk/Locales} and are created using the @code{locale}
+functionality of @command{centos-art.sh} script (@pxref{Directories
+trunk Scripts Functions Locale}).
+
+Translation files are optional. When no translation file is available
+for the input file, the base-rendition output is produced using the
+same language of the input file.
+
+@subheading Examples
+
+@table @command
+@item centos-art render trunk/Identity/Images/Brands
+
+This command produces all branding information related to The CentOS
+Project (e.g., symbols, logos and variants of them).
+
+@item centos-art render trunk/Identity/Images/Brands --filter="symbol"
+
+This command produces all branding information, related to The CentOS
+Project, which file names contain the @samp{symbol} string on it.
+
+@item centos-art render trunk/Identity/Images/Themes/Flame/2
+
+This command produces all visual manifestations related to version 2 of
+Flame artistic motif (e.g., Distribution, Posters, etc.) as specified
+by default design models.
+
+@item centos-art render trunk/Identity/Images/Themes/Flame/2/Distro
+
+This command produces the Distribution visual manifestations related
+to version 2 of Flame artistic motif (e.g., Anaconda, Syslinux, Grub,
+Firstboot, Gdm, Kdm, Gsplash, Ksplash, and Rhgb) as specified by
+default design models.
+
+@item centos-art render trunk/Identity/Images/Themes --filter='Distro/5/Anaconda'
+
+This command produces all the images related to Anaconda component
+from Distribution visual manifestations on its major release number
+five, for all the artistic motifs available and as specified by
+default design models.
+
+@item centos-art render trunk/Identity/Images/Themes --filter='Concept' --post-rendition='mogrify -normalize'
+
+This command produces all the images related to Concept component from
+all artistic motifs as specified by default design models.  Moreover,
+the @command{mogrify -normalize} command is applied to each PNG image
+produced as result of the base-rendition output.
+
+@quotation
+@strong{Note} The @command{mogrify} command is part of
+ImageMagick@registeredsymbol{} software suite and let you to resize an
+image, blur, crop, despeckle, dither, draw on, flip, join, re-sample,
+and much more.  The ImageMagick@registeredsymbol{} software suite is
+copyrighted to
+@url{http://redux.imagemagick.org/MagickStudio/scripts/MagickStudio.cgi,
+ImageMagick Studio LLC}, a non-profit organization dedicated to making
+software imaging solutions freely available.
+
+@end quotation
+
+@item centos-art render trunk/Manuals/Repository --filter="repository" --dont-commit-changes
+
+This command produces the repository documetnation manual in PDF,
+XHTML and Text format.
+
+@end table
+
+@subheading Author
+
+Written by Alain Reguera Delgado.
+
+@subheading Reporting bugs
+
+Report bugs to @email{centos-artwork@@centos.org} mailing list.
+
+@subheading Copyright
+
+Copyright @copyright{}  2009, 2010, 2011 The CentOS Project.
+
+This is free software.  You may redistribute copies of it under the
+terms of the GNU General Public License (@pxref{GNU General Public
+License}).  There is NO WARRANTY, to the extent permitted by law.
+
+@subheading See also
+
+@itemize
+@item The ImageMagick@registeredsymbol{} software suite documentation
+(@command{rpm -qd ImageMagick | less}).
+@item @ref{Directories trunk Scripts Functions}
+@item @ref{Directories trunk Scripts}
+@item @ref{Directories trunk}
+@end itemize

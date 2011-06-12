@@ -1,0 +1,89 @@
+@subheading Goals
+
+The @file{trunk/Identity/Themes/} directory exists to organize
+production of CentOS themes.
+
+@subheading Description
+
+Initially, we start working themes on their trunk development line
+(e.g., @file{trunk/Identity/Images/Themes/TreeFlower/}), here we
+organize information that cannot be produced automatically (i.e.,
+background images, concepts, color information, screenshots, etc.).
+
+Later, when theme trunk development line is considered ``ready'' for
+implementation (e.g.,  all required backgrounds have been designed),
+we create a branch for it (e.g.,
+@file{branches/Identity/Images/Themes/TreeFlower/1/}).  Once the
+branch has been created, we forget that branch and continue working
+the trunk development line while others (e.g., an artwork quality
+assurance team) test the new branch for tunning it up. 
+
+Once the branch has been tunned up, and considered ``ready'' for
+release, it is freezed under @file{tags/} directory (e.g.,
+@file{tags/Identity/Images/Themes/TreeFower/1.0/}) for packagers,
+webmasters, promoters, and anyone who needs images from that CentOS
+theme the tag was created for.
+
+Both branches and tags, inside CentOS Artwork Repository, use
+numerical values to identify themselves under the same location.
+Branches start at one (i.e., @samp{1}) and increment one unit for each
+branch created from the same trunk development line.  Tags start at
+zero (i.e., @samp{0}) and increment one unit for each tag created from
+the same branch development line.
+
+@quotation
+@strong{Convenction} Do not freeze trunk development lines using tags
+directly.  If you think you need to freeze a trunk development line,
+create a branch for it and then freeze that branch instead.
+@end quotation
+
+The trunk development line may introduce problems we cannot see
+immediatly. Certainly, the high changable nature of trunk development
+line complicates finding and fixing such problems. On the other hand,
+the branched development lines provide a more predictable area where
+only fixes/corrections to current content are commited up to
+repository. 
+
+If others find and fix bugs inside the branched development line, we
+could merge such changes/experiences back to trunk development line
+(not visversa) in order for future branches, created from trunk, to
+benefit.
+
+Time intervals used to create branches and tags may vary, just as
+different needs may arrive. For example, consider the release schema
+of CentOS distribution: one major release every 2 years, security
+updates every 6 months, support for 7 years long. Each time a CentOS
+distribution is released, specially if it is a major release, there is
+a theme need in order to cover CentOS distribution artwork
+requirements. At this point, is where CentOS Artwork Repository comes
+up to scene. 
+
+Before releasing a new major release of CentOS distribution we create
+a branch for one of several theme development lines available inside
+the CentOS Artwork Repository, perform quality assurance on it, and
+later, freeze that branch using tags. Once a the theme branch has been
+frozen (under @file{tags/} directory), CentOS Packagers (the persons
+whom build CentOS distribution) can use that frozen branch as source
+location to fulfill CentOS distribution artwork needs. The same
+applies to CentOS Webmasters (the persons whom build CentOS websites),
+and any other visual manifestation required by the project.
+
+@subheading Usage
+
+In this location themes are organized in ``Models'' ---to store common
+information--- and ``Motifs''---to store unique information.  At
+rendering time, both motifs and models are combined to produce the
+final CentOS themes.  CentOS themes can be tagged as ``Default'' or
+``Alternative''. CentOS themes are maintained by CentOS community. 
+
+@itemize
+@item @xref{Directories trunk Identity Models Themes}.
+@item --- @strong{Removed}(xref:Directories trunk Identity Images Themes Motifs) ---.
+@end itemize
+
+@subheading See also
+
+@itemize
+@item @ref{Directories trunk Identity}.
+@item @ref{Directories trunk}.
+@end itemize
