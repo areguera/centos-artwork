@@ -114,6 +114,14 @@ manual structure in a correct state.
 
 @subheading Description
 
+The @code{help} functionality uses Texinfo as documentation backend.
+Texinfo is a documentation system that can produce both online
+information and a printed manual from a single source. The @code{help}
+functionality is the interface the @command{centos-art.sh} script uses
+to control frequent documenting tasks (e.g., reading, editing, update
+output files, etc.) in the source files of a Texinfo documentation
+manual structure.
+
 The @code{help} functionality of @command{centos-art.sh} script uses
 the repository directory layout as reference to describe the
 conceptual ideas behind its existance. Each directory inside the
@@ -171,14 +179,6 @@ configuration file:
 Directories/section-functions.texinfo   = "(trunk|branches|tags)/Scripts/Functions/[[:alnum:]]+\.texinfo$"
 Directories/section.texinfo             = "(trunk|branches|tags).*\.texinfo$"
 @end verbatim
-
-The @code{help} functionality uses Texinfo as documentation backend.
-Texinfo is a documentation system that can produce both online
-information and a printed manual from a single source. The @code{help}
-functionality is the interface the @command{centos-art.sh} script uses
-to control frequent documenting tasks (e.g., reading, editing, update
-output files, etc.) in the source files of a Texinfo documentation
-manual structure.
 
 The @code{help} functionality takes the repository documentation
 manual in texinfo format as input and produces Info, Pdf, XML, Xhtml
