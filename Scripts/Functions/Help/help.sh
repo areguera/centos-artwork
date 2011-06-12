@@ -34,6 +34,10 @@ function help {
     # search is perform.
     FLAG_SEARCH=""
 
+    # Define manual top level directory. This is where
+    # language-specific documentation structures are stored in.
+    MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/RepoReference"
+
     # Define file name (without extension) for documentation manual.
     MANUAL_NAME=$(cli_getRepoName "repository" -f)
 
@@ -43,10 +47,9 @@ function help {
     # Define language information used by manual.
     MANUAL_LANG=$(cli_getCurrentLocale)
 
-    # Define manual base directory to refere the place where
-    # language-specific source files used by texinfo documentation
-    # backend are stored in.
-    MANUAL_BASEDIR="$(cli_getRepoTLDir)/Manuals/RepoReference/${MANUAL_LANG}"
+    # Define manual base directory. This is where the
+    # language-specific document initialization file is stored in.
+    MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_LANG}"
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build output
@@ -73,7 +76,7 @@ function help {
     MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}
 
     # Define absolute path to backend template files.
-    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/$(cli_getCurrentLocale)
+    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/${MANUAL_LANG}
 
     # Verify absolute path to backend template files. If the absolute
     # path doesn't exist, use the English language templates.
