@@ -81,17 +81,18 @@ functionalities'' and ``specific functionalities'' inside
 specific functionalities.
 
 Suddenly, no need was found to keep all the links spreaded around the
-repository which refer to @command{centos-art.sh} script.  The
-@command{centos-art} command-line interface is used instead. The
-@command{centos-art} command-line interface is a symbolic link stored
-inside the @file{~/bin} directory pointing to @command{centos-art.sh}
-script. Inside The CentOS Distribution, the @file{~/bin} path is set
-as default in the @env{PATH} environment variable which is evaluated
-by the shell to know where executable files are stored in, before any
-command execution. This way, using the @command{centos-art}
-command-line interface, it is possible for us to execute the
-@command{centos-art.sh} script from virtually anywhere inside the
-workstation, just as we frequently do with regular commands.
+repository in order to execute the @command{centos-art.sh} script from
+different locations.  The @command{centos-art} command-line interface
+was used instead. The @command{centos-art} command-line interface is a
+symbolic link stored inside the @file{~/bin} directory pointing to
+@command{centos-art.sh} script. Inside The CentOS Distribution, the
+@file{~/bin} path is set as default value to @env{PATH} environment
+variable which is evaluated by the shell to know where executable
+files are stored in, before executing any command. This way, using the
+@command{centos-art} command-line interface, it is possible for us to
+execute the @command{centos-art.sh} script from virtually anywhere
+inside the workstation, just as we frequently do with regular
+commands.
 
 Start using GNU @command{getopt} as default option parser inside the
 @command{centos-art.sh} script.
