@@ -76,19 +76,22 @@ functionalities'' inside @command{centos-art.sh} script. Common
 functionalities are loaded when @command{centos-art.sh} script is
 initiated and are available to specific functionalities.
 
-Suddenly, no need was found to keep links from all around the
-repository to @command{centos-art.sh} script.  Instead the
-@command{centos-art} command-line was created. This is, a symbolic
-links in the @file{~/bin} directory which can be called from anywhere
-inside the repository, just as it would be a regular command. The
-symbolic links inside the repository were removed and the
-@command{centos-art} command-line interface was used instead.
+Suddenly, no need was found to keep all the links spreaded around the
+repository which refer to @command{centos-art.sh} script.  The
+@command{centos-art} command-line interface is used instead. The
+@command{centos-art} command-line interface is a symbolic link stored
+inside the @file{~/bin} directory pointing the @command{centos-art.sh}
+script. Inside The CentOS Distribution, the @file{~/bin} path is set
+in the @env{PATH} environment variable which is read by the shell to
+know where executable files are stored in; and this way let us to
+execute the @command{centos-art.sh} script from virtually anywhere
+inside the workstation.
 
-Option parsing became too complicated for the current implemented way
-of parsing positional parameters passed to @command{centos-art.sh}
-script from the command-line.  The GNU @command{getopt} option parser
-was considered, studied, and implemented in @command{centos-art.sh}
-script as default option parser.
+Option parsing needs inside the @command{centos-art.sh} script became
+too complicated for the current implementation of parsing positional
+parameters passed from the command-line.  The GNU @command{getopt}
+option parser was considered and configured inside
+@command{centos-art.sh} script as default option parser.
 
 The repository directory structure was updated to improve the
 implementation of corporate visual identity concepts.  Specially in
