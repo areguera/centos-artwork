@@ -194,18 +194,19 @@ At this moment there is no full implementation of path syncronization
 process inside @command{centos-art.sh} script except by ``texinfo''
 backend of help functionality which provides a restricted
 implementation of path syncronization to this specific area of
-documentation through the --copy, --delete and --rename options. The
-plan for a full implementation of path syncronization would be to
-create individual restricted implementations like this one for other
-areas that demand it and then, create a higher implmentation that
-combines all restricted implementations as needed. This way, if we try
-to rename a repository directory the higer action will define which
-are all the restricted actions that should be performed in order for
-make a full path syncronization. For example, if the directory we are
-renaming is part of graphic design work line, it is required to
-syncronize related paths in documentation and localization work lines.
-Likewise, if the directory we are renaming is in documentation work
-line, it is required to syncronize related paths in graphic design and
+documentation through the @option{--copy}, @option{--delete} and
+@option{--rename} options. The plan for a full implementation of path
+syncronization would be to create individual restricted
+implementations like this one for other areas that demand it and then,
+create a higher implmentation that combines all restricted
+implementations as needed. This way, if we try to rename a repository
+directory the higer action will define which are all the restricted
+actions that should be performed in order for make a full path
+syncronization. For example, if the directory we are renaming is part
+of graphic design work line, it is required to syncronize related
+paths in documentation and localization work lines.  Likewise, if the
+directory we are renaming is in documentation work line, it is
+required to syncronize related paths in graphic design and
 localization work lines. In all these cases, the direction used for
 syncronizing paths must be from master path to auxiliar path and never
 the opposite (i.e., rename the master path first and auxiliar paths
@@ -259,8 +260,9 @@ identity.
 The relationship between conceptual ideas can be stablished by reading
 each repository documentation entry individually, from trunk directory
 to a deeper directory in the path. For reading repository
-documentation entries we use the help functionality of centos-art.sh
-script.
+documentation entries we use the @code{help} functionality of
+@command{centos-art.sh} script (@pxref{Directories trunk Scripts
+Functions Help}).
 
 @subheading File names convenction
 @cindex File names convenction
