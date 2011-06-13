@@ -22,6 +22,8 @@ script for rendering Anaconda slides; Ralph Angenendt documented it
 very well; and people started to download working copies of CentOS
 Artwork Repository to produce slide images in their own languages.
 
+@subheading 2009
+
 Around 2009, the rendition script was at a very rustic state where
 only slide images could be produced, so it was redesigned to extend
 the image production to other areas, different from slide images. In
@@ -58,6 +60,8 @@ The repository directory structures began to be documented by mean of
 flat text files. Later, documentation in flat text files was moved
 onto LaTeX format and this way the ``The CentOS Artwork Repository''
 documentation manual is initiated.
+
+@subheading 2010
 
 Around 2010, the rendition script changed its name from
 @command{render.sh} to @command{centos-art.sh} and became a collection
@@ -110,6 +114,8 @@ deleted and copied) interactively through @command{centos-art.sh}
 script.  Additionally, the @command{texi2html} program was used to
 produced customized XHTML output in conjunction with CSS from The
 CentOS Webenv.
+
+@subheading 2011
 
 Around 2011, the @command{centos-art.sh} script was redesigned to
 start translating XML-based files (e.g., SVG and Docbook files)
