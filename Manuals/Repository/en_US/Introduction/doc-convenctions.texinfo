@@ -8,8 +8,8 @@ different words are represented in the same style to indicate their
 inclusion in a specific category. The types of words that are
 represented this way include the following:
 
-@table @command
-@item command
+@table @strong
+@item @command{command}
 
 Linux commands (and other operating system commands, when used) are
 represented this way. This style should indicate to you that you can
@@ -19,13 +19,10 @@ in a different style on their own (such as file names). In these
 cases, they are considered to be part of the command, so the entire
 phrase is displayed as a command. For example:
 
-Use the @command{centos-art identity --render='path/to/dir'} command
-to produce contents inside the @file{trunk/Identity} directory
-structure.
-@end table
+Use the @command{centos-art render path/to/dir} command to produce
+contents inside the @file{trunk/Identity} directory structure.  
 
-@table @file
-@item file name
+@item @file{file name}
 
 File names, directory names, paths, and RPM package names are
 represented this way. This style indicates that a particular file or
@@ -37,9 +34,7 @@ tasks in the repository.
 
 The @command{centos-art} command uses the @file{ImageMagick} RPM
 package to convert images from PNG format to other formats.
-@end table
 
-@table @key
 @item @key{key}
 
 A key on the keyboard is shown in this style. For example:
@@ -48,17 +43,14 @@ To use @key{TAB} completion to list particular files in a directory,
 type @command{ls}, then a character, and finally the Tab key. Your
 terminal displays the list of files in the working directory that
 begin with that character.  
-@end table
 
-@table @key
 @item @key{key-combination}
+
 A combination of keystrokes is represented in this way. For example:
 
 The @key{Ctrl-Alt-Backspace} key combination exits your graphical
 session and returns you to the graphical login screen or the console.
-@end table
 
-@table @code
 @item @code{computer output}
 
 Text in this style indicates text displayed to a shell prompt such as
