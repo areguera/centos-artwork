@@ -64,17 +64,17 @@ Around 2010, the rendition script changed its name from
 of functionalities where rendition was just one among others (e.g.,
 documenting and localizing).
 
-The @command{centos-art.sh} was initialy conceived to organize
-automation of most frequent tasks inside the repository based in the
-conceptual idea of Unix toolbox: @emph{to create small and specialized
-tools that do one thing well}. This way, functionalities inside
-@command{centos-art.sh} began to be identified and separated one
-another. For example, when images were rendered, there was no need to
-load functionalities related to documentation manual. This layout
-moved us onto ``common functionalities'' and ``specific
-functionalities'' inside @command{centos-art.sh} script. Common
-functionalities are loaded when @command{centos-art.sh} script is
-initiated and are available to specific functionalities.
+The @command{centos-art.sh} was initialy conceived to automate
+frequent tasks inside the repository based in the idea of Unix
+toolbox: @emph{to create small and specialized tools that do one thing
+well}. This way, functionalities inside @command{centos-art.sh} began
+to be identified and separated one another. For example, when images
+were rendered, there was no need to load functionalities related to
+documentation manual. This layout moved us onto ``common
+functionalities'' and ``specific functionalities'' inside
+@command{centos-art.sh} script. Common functionalities are loaded when
+@command{centos-art.sh} script is initiated and are available to
+specific functionalities.
 
 Suddenly, no need was found to keep all the links spreaded around the
 repository which refer to @command{centos-art.sh} script.  The
