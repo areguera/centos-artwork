@@ -82,10 +82,11 @@ repository which refer to @command{centos-art.sh} script.  The
 @command{centos-art} command-line interface is a symbolic link stored
 inside the @file{~/bin} directory pointing to @command{centos-art.sh}
 script. Inside The CentOS Distribution, the @file{~/bin} path is set
-in the @env{PATH} environment variable which is read by the shell to
-know where executable files are stored in; and this way let us to
-execute the @command{centos-art.sh} script from virtually anywhere
-inside the workstation.
+as default in the @env{PATH} environment variable which is evaluated
+by the shell to know where executable files are stored in before
+execute anyone. This way, it is possible for us to execute the
+@command{centos-art.sh} script from virtually anywhere inside the
+workstation, just as we frequently do with regular commands.
 
 Option parsing needs inside the @command{centos-art.sh} script became
 too complicated for the current implementation of parsing positional
