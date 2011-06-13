@@ -123,12 +123,13 @@ repository. Additionally, the @code{prepare} and @code{tuneup}
 functionalities are also maintained as useful tasks.
 
 In the documentation area, support for producing localized
-transformations of DocBook XML DTD was added through the @code{render}
-and @code{locale} functionalities. The @code{render} functionality
-uses the @command{xsltproc} command-line XSLT parser in conjunction
-with the styles provided by the @file{docbook-style-xsl} package, both
-of them contained inside The CentOS Distribution. The @code{locale}
-functionality creates the localized @acronym{PO,Portable Objects} used
-by @code{render} functionality to produce the localized
-transformations of DocBook XML DTDs.  When no localized PO exists, the
-English language is used.
+transformations of DocBook XML DTD instances was added through the
+@code{render} and @code{locale} functionalities. The @code{render}
+functionality uses the @command{xsltproc} command-line XSLT parser in
+conjunction with the styles provided by the @file{docbook-style-xsl}
+package, both of them included inside The CentOS Distribution. The
+@code{locale} functionality creates the localized @acronym{PO,Portable
+Objects} the @code{render} functionality needs to produce localized
+transformations of DocBook XML DTD instances.  When no localized PO
+exists for a DocBook XML DTD instance, it is produced in English
+language.
