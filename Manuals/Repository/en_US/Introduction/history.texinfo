@@ -80,7 +80,7 @@ Suddenly, no need was found to keep all the links spreaded around the
 repository which refer to @command{centos-art.sh} script.  The
 @command{centos-art} command-line interface is used instead. The
 @command{centos-art} command-line interface is a symbolic link stored
-inside the @file{~/bin} directory pointing the @command{centos-art.sh}
+inside the @file{~/bin} directory pointing to @command{centos-art.sh}
 script. Inside The CentOS Distribution, the @file{~/bin} path is set
 in the @env{PATH} environment variable which is read by the shell to
 know where executable files are stored in; and this way let us to
