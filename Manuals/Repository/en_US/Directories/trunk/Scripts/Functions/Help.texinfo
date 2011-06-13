@@ -1,17 +1,17 @@
 @subheading Name
 
 The @code{help} functionlity is part of @command{centos-art.sh} script
-and standardizes documentation tasks related to @emph{The CentOS
-Artwork Repository} documentation manual in the working copy of CentOS
-Artwork Repository.
+and standardizes documentation tasks of directory structures in the
+working copy of The CentOS Artwork Repository.
 
 @subheading Synopsis
 
 @command{centos-art help [OPTIONS] path/to/dir @dots{}}
 
 The @file{path/to/dir} parameter specifies the directory structure
-inside the working copy of CentOS Artwork Repository you want to
-process the related documentation entry for.
+inside the working copy of The CentOS Artwork Repository you want to
+process the related documentation entry for. More than one directory
+structure can be passed as @file{path/to/dir} argument.
 
 The @code{help} functionality of @command{centos-art.sh} script
 accepts the following options:
