@@ -128,4 +128,7 @@ and @code{locale} functionalities. The @code{render} functionality
 uses the @command{xsltproc} command-line XSLT parser in conjunction
 with the styles provided by the @file{docbook-style-xsl} package, both
 of them contained inside The CentOS Distribution. The @code{locale}
-functionality uses the @command{xml2po} as it usually does.
+functionality creates the localized @acronym{PO,Portable Objects} used
+by @code{render} functionality to produce the localized
+transformations of DocBook XML DTDs.  When no localized PO exists, the
+English language is used.
