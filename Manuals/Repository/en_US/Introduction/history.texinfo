@@ -89,11 +89,8 @@ interface, it is possible for us to execute the
 @command{centos-art.sh} script from virtually anywhere inside the
 workstation, just as we frequently do with regular commands.
 
-Option parsing needs inside the @command{centos-art.sh} script became
-too complicated for the current implementation of parsing positional
-parameters passed from the command-line.  The GNU @command{getopt}
-option parser was considered and configured inside
-@command{centos-art.sh} script as default option parser.
+Start using GNU @command{getopt} option parser as default option
+parser inside the @command{centos-art.sh} script.
 
 The repository directory structure was updated to improve the
 implementation of corporate visual identity concepts.  Specially in
