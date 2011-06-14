@@ -10,7 +10,7 @@
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -18,23 +18,24 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
- * USA.
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
  * ----------------------------------------------------------------------
  * $Id$
  * ----------------------------------------------------------------------
  */
 
+
 /* Main Blocks
 -----------------------------------------------*/
 
 div#page-header {
-	background: #204C8D url("/home/centos/artwork/trunk/Identity/Patterns/webenv-bg-2.png") 0 0 repeat;
+	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/header-bg.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
 div#page-footer {
-	background: #204C8D url("/home/centos/artwork/trunk/Identity/Patterns/webenv-bg-2.png") 0 0 repeat;
+	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/header-bg.png") 0 0 repeat;
     padding: 10px;
 	}
 
@@ -95,14 +96,14 @@ div#page-body h1 {
         padding-left: 0.7em;
         color: #FFF;
         border: none;
-        background: #204C8D url("/home/centos/artwork/trunk/Identity/Patterns/webenv-header-1.png");
+        background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/h1-bg.png");
         }
 
 div#page-body h2 {
         margin-top: 1.6em;
         margin-bottom: 0.8em;
         padding-left: 0.7em;
-        background: #FFF url("/home/centos/artwork/trunk/Identity/Patterns/webenv-header-2.png");
+        background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/h2-bg.png");
         border: none;
         color: #072B61;
         }
@@ -166,7 +167,9 @@ div#page-body h6 a:active, div#page-body h6 a:visited:hover {
 /* Paragraphs
 -----------------------------------------------*/
 
-p {
+p,
+dl,
+pre {
     margin-left: 1.5em;
     }
 
@@ -182,31 +185,31 @@ div#page-body a.nonexistent:hover { color: gray; }
 
 div#page-body a.www:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-www.png); 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.http:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-www.png); 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.https:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-www.png); 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-www.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.mailto:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-mail.png); 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-mail.png); 
     margin: 0 0.2em; 
     }
 
 div#page-body a.attachment:before { 
     white-space:nowrap; 
-    content: url(/home/centos/artwork/trunk/Identity/Images/Webenv/a-attach.png); 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-attach.png); 
     margin: 0 0.2em; 
     }
 
@@ -287,7 +290,7 @@ div.page-line.white {
 -----------------------------------------------*/
 
 div#page-body ul { 
-    list-style: url("/home/centos/artwork/trunk/Identity/Images/Webenv/ul.png") circle; 
+    list-style: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/ul.png") circle; 
     } 
 
 div#page-body div#content-links ul {
@@ -313,7 +316,7 @@ div#page-body div#content-links ul li.current {
 
 div#page-body div.toc {
 	border: 1px solid #CCCCCC;
-	background: #FFF url("/home/centos/artwork/trunk/Identity/Images/Webenv/toc-bg.png") right repeat-y; 
+	background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/toc-bg.png") right repeat-y; 
 	font-size: small;
 	text-align:left;
 	margin-left: 1.5em;
@@ -322,7 +325,7 @@ div#page-body div.toc {
 
 div#page-body div.toc h3 {
     margin-top: 0;
-    background: #FFF url("/home/centos/artwork/trunk/Identity/Patterns/webenv-header-2.png");
+    background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/h2-bg.png");
     }
 
 div#page-body div.toc ul {
@@ -333,30 +336,54 @@ div#page-body div.toc ul ul {
     margin-left: 0;
 }
 
+div#page-body div.glosslist dd {
+    margin-left: 3.5em;
+    }
+
 /* Quotations
 -----------------------------------------------*/
 
 div#page-body blockquote {
-    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-gray.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-gray.png");
 	}
 
+div#page-body blockquote p {
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    margin-bottom: 0.5em;
+    }
+
 div#page-body blockquote h3 {
-    line-height: 0;
+    font-size: 1.4em;
+    padding: 0 0 0.5em 0.5em;
+    margin: 1em 0 0 0;
+    color: #333;
     border: none;
-    color: #000000;
-    margin-left: 1.2em;
-    padding: 0;
+    }
+
+div#page-body blockquote pre {
+    margin-left: 1em;
+    padding-left: 0.5em;
     }
 
 div#page-body blockquote.icon h3 {
-    margin-left: 3.2em;
+    padding: 0 0 0.5em 1em;
+    margin: 1em 0 0 2em;
     }
 
-div#page-body blockquote.icon hr, 
-div#page-body blockquote.icon pre, 
-div#page-body blockquote.icon table, 
+div#page-body blockquote.icon img {
+    margin: 0.5em 0 0 0;
+    }
+
 div#page-body blockquote.icon p {
-	margin-left: 4em;
+    margin-left: 2em;
+    padding-left: 2em;
+    margin-bottom: 0.5em;
+    }
+
+div#page-body blockquote.icon pre,
+div#page-body blockquote.icon table {
+    margin-left: 4em;
     }
 
 div#page-body blockquote.message {
@@ -367,7 +394,7 @@ div#page-body blockquote.message {
 	}
 
 div#page-body blockquote.blue {
-    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-blue.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-blue.png");
 	border-color: #D2E0F6; 
 	background-color: #ECF4FF;
 	}
@@ -375,25 +402,25 @@ div#page-body blockquote.blue {
 div#page-body blockquote.orange {
     border-color: #F6E7D2; 
     background-color: #FFF8EC;
-    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-orange.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-orange.png");
 	}
 
 div#page-body blockquote.violet {
     border-color: #F6D2F6; 
     background-color: #FFECFF;
-    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-violet.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-violet.png");
 	}	
 
 div#page-body blockquote.red {
     border-color: #E0B7B7;
     background-color: #FFECEC;
-    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-red.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-red.png");
 	}
 
 div#page-body blockquote.green {
     border-color: #D6F6D2;
     background-color: #EEFFEC;
-    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/msg-bg-green.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-green.png");
 	}
 
 /* Forms
