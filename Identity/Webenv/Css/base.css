@@ -20,7 +20,7 @@
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -28,11 +28,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
- * USA.
- * ----------------------------------------------------------------------
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * -------------------------------------------------------------------
  * $Id$
- * ----------------------------------------------------------------------
+ * -------------------------------------------------------------------
  */
 
 
@@ -49,7 +49,7 @@
 
 html {
     background-color: #FFF;
-    background-image: url("/home/centos/artwork/trunk/Identity/Patterns/webenv-bg-1.png");
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/html-bg.png");
     }
 
 /* Define body
@@ -64,6 +64,7 @@ body {
     /* margin: 0 2% 0 2%;   /* <- with 2% of left and right margin  */
     margin: 0 3% 0 3%;      /* <- with 3% of left and right margin  */
     /* margin: 0 10% 0 10%; /* <- with 10% of left and right margin */
+    color: #333;
     }
 
 /* Links 
@@ -82,39 +83,32 @@ h1 {
     font-size: 1.7em;
     font-weight: bold;
     line-height: 1.9em;
-    color: #000;
     }
 
 h2 {
     font-size: 1.4em;
     line-height: 1.8em;
     border: none;
-    color: #000;
     }
 
 h3 {
     font-size: 1.25em;
     line-height: 1.6em;
-    margin-top: 1em;
-    color: #000;
     }
 
 h4 {
     font-size: 1.2em;
     line-height: 1.4em;
-    color: #000;
     }
 
 h5 {
     font-size: 1.1em;
     line-height: 1.1em;
-    color: #000;
     }
 
 h6 {
     font-size: 1em;
     line-height: 1.1em;
-    color: #000;
     }
 
 h1 a:link,
@@ -131,7 +125,7 @@ h5 a:link,
 h5 a:active,
 h6 a:link,
 h6 a:active {
-    color: #000;
+    color: #333;
 	text-decoration: none;
 	}
 
@@ -139,7 +133,7 @@ h6 a:active {
 -----------------------------------------------*/
 
 p {
-    margin: 1em;
+    margin: 0.5em 0 1.3em 0;
     line-height: 1.5em;
     }
 
@@ -147,15 +141,15 @@ p {
 -----------------------------------------------*/
 
 blockquote {
-    background-color: #ECECEC;
+    background: #fafafa;
+    border-color: #eeeeee;
     border-width: 1px;
     border-style: solid;
-    border-color: #CFCFCF;
     border-left-width: 4px;
     margin-left: 1.5em;
     padding: 0.5em;
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     }
 
 blockquote h3 {
@@ -168,7 +162,7 @@ blockquote h3 {
 
 blockquote pre {
     border: none;
-    background-color: #000000;
+    background-color: #333;
     color: #FFFFFF;
     margin: 0;
     margin-left: 1.5em;
@@ -203,14 +197,14 @@ address {
 
 pre {
     font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
-    padding: 0.5em 1em;
-    margin: 0.5em 0 0.5em 1.5em;
+    padding: 1em;
+    margin: 1em 0 1.3em 0;
     white-space: pre;
     border-width: 1px;
     border-style: solid;
-    border-color: #E5E5E5;
+    border-color: #eeeeee;
     border-left-width: 4px;
-    background: #FFFAE9;
+    background: #fafafa;
     overflow: auto;
     }
 
@@ -264,7 +258,7 @@ ul ul,
 ul ol,
 ol ul,
 ol ol {
-    margin-left: 0.5em;
+    margin-left: 1em;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
     }
@@ -276,28 +270,26 @@ ol li p {
     margin-left: 0 !important;
     }
 
-dl {
-    margin-top: 1.5em;
-    margin-left: 3.5em;
-    }
-
-dl dt {
-    font-weight: bold;
+dl dl {
+    margin-left: 1.5em;
     }
 
 dl dt:after {
     content: ""
     }
 
-dl dd {
-    margin-left: 2em;
-    margin-bottom: 1em;
+dl dt span {
     line-height: 1.5em;
+    }
+
+dl dd {
+    margin-left: 1em;
     }
 
 dl dd ul,
 dl dd ol {
-    margin-left: 3.5em;
+    margin-left: 0.8em;
+    line-height: 1.5em;
     }
 
 /* Tables 
