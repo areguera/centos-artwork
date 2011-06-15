@@ -114,6 +114,8 @@ function cli_replaceTMarkers {
     # Define repository translation markers.
     SRC[((++${#SRC[*]}))]='=REPO_TLDIR='
     DST[((++${#DST[*]}))]="$(cli_getRepoTLDir)"
+    SRC[((++${#SRC[*]}))]='=REPO_HOME='
+    DST[((++${#DST[*]}))]="${HOME}/artwork"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
