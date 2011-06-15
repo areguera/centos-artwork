@@ -26,8 +26,16 @@
 
 /* Define default visual style.
 -------------------------------*/
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/base.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/base-app.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/default.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/base.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/headings.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/paragraphs.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/links.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/pagelines.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/lists.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/quotation.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/forms.css");
+@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/ads.css");
 
 /* Texi2html specific definitions.
 ----------------------------------*/
@@ -64,4 +72,8 @@ div#content table.navibar {
 
 div#content p.credits {
     font-size: small;
+    }
+
+div#content dl {
+    margin-left: 1.5em;
     }
