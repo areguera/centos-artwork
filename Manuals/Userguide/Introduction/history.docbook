@@ -2,147 +2,223 @@
 
     <title>History</title>
 
-    <para>The CentOS Artwork Repository started around 2008 during a
-    discussion about how to automate the slide images of Anaconda, at
-    CentOS Developers mailing list (centos-devel@centos.org). In such
-    discussion, Ralph Angenendt rose up his hand to ask &mdash;Do you have
-    something to show?&mdash;.</para>
-    
-    <para>To answer the question, I suggested a bash script which
-    combined SVG and SED files in order to produce PNG images in
-    different languages &mdash;together with the proposition of
-    creating a Subversion repository where translations and image
-    production could be distributed inside The CentOS
-    Community&mdash;.</para>
-    
-    <para>Karanbirn Sighn considered the idea intresting and provided
-    the infrastructure necessary to support the effort.  This way the
-    CentOS Artwork SIG (https://projects.centos.org/trac/artwork/) and
-    the CentOS Artwork Repository
-    (https://projects.centos.org/svn/artwork/) were officially
-    created.</para>
-    
-    <para>Once the CentOS Artwork Repository was available, I uploaded
-    the bash script for rendering Anaconda slides; Ralph Angenendt
-    documented it very well; and people started to download working
-    copies of CentOS Artwork Repository to produce slide images in
-    their own languages.</para>
+    <para>
+        The CentOS Artwork Repository started during a discussion
+        about how to automate the slide images of Anaconda, at CentOS
+        Developers mailing list (<ulink
+        url="mailto:centos-devel@centos.org">centos-devel@centos.org</ulink>)
+        around 2008.  In such discussion, Ralph Angenendt rose up his
+        hand to ask &mdash;Do you have something to show?&mdash;.
+    </para>
 
-    <para>Around 2009, the rendition script was at a very rustic state
-    where only slide images could be produced, so it was redesigned to
-    extend the image production to other areas, different from slide
-    images.  In this configuration, one SVG file was used as input to
-    produce a translated instance of it which, in turn, was used to
-    produce one translated PNG image as output.  The SVG translated
-    instance was created through SED replacement commands. The
-    translated PNG image was created from the SVG translated instance
-    using Inkscape command-line interface.</para>
-    
-    <para>The repository directory structure was prepared to receive
-    the rendition script using design templates and translation files
-    in the same location.  There was one directory structure for each
-    artwork that needed to be produced. In this configuration, if you
-    would want to produce the same artwork with a different visual
-    style or structure, it was needed to create a new directory
-    structure for it because both the image structure and the image
-    visual style were together in the design template.</para>
-    
-    <para>The rendition script was moved to a common place and linked
-    from different directory structures. There was no need to have the
-    same code in different directory structures if it could be in just
-    one place and then be linked from different locations.</para>
-    
-    <para>The concepts about corporate identity began to be
-    considered. As referece, it was used the book <quote>Corporate
-    Identity</quote> by Wally Olins (1989) and Wikipedia related links
-    (e.g., <ulink url="http://en.wikipedia.org/Corporate_identity"
-    />). This way, the rendition script main's goal becomes to:
-    automate production of a monolithic corporate visual identity
-    structure, based on the mission and the release schema of The
-    CentOS Project.</para>
-    
-    <para>The repository directory structures began to be documented
-    inside by mean of flat text files.  Later, documentation in flat
-    text files was moved onto LaTeX format and this way <quote>The
-    CentOS Artwork Repository Manual</quote> is initiated.</para>
+    <para>
+        To answer the question, Alain Reguera Delgado suggested a bash
+        script which combined SVG and SED files in order to produce
+        PNG images in different languages &mdash;in conjunction with
+        the proposition of creating a Subversion repository where
+        translations and image production could be distributed inside
+        The CentOS Community&mdash;.
+    </para>
 
-    <para>Around 2010, the rendition script changed its name from
-    <command>render.sh</command> to <command>centos-art.sh</command>
-    and became a collection of functionalities where rendition was
-    just one among others (e.g., documenting and localizing).</para>
-    
-    <para>The <command>centos-art.sh</command> was initialy conceived
-    to organize automation of most frequent tasks inside the
-    repository based in the conceptual idea of Unix toolbox:
-    <emphasis>create small and specialized tools that do one thing
-    well</emphasis>.  This way, functionalities inside
-    <command>centos-art.sh</command> were identified and separated one
-    another. For example, when images were rendered, there was no need
-    to load functionalities related to documentation manual. This
-    layout moved us onto common functionalities and specific
-    functionalities inside <command>centos-art.sh</command> script.
-    Common functionalities are loaded when
-    <command>centos-art.sh</command> script is initiated and are
-    available to specific functionalities.</para>
-    
-    <para>There was no need to have links all around the
-    repository if a command-line interface could be created (through
-    symbolic links, in the <filename
-    class="directory">~/bin</filename> directory) and be called
-    anywhere inside the repository as it would be a regular
-    command.</para>
-     
-    <para>The <command>centos-art.sh</command> script was redesigned
-    to handle command-line options trough <command>getopt</command>
-    option parser.</para>
-    
-    <para>The repository directory structure was updated to improve
-    the implementation of concepts related to corporate visual
-    identity.  Specially in the area related to themes which were
-    divided into <emphasis>design models</emphasis> and
-    <emphasis>artistic motifs</emphasis> to eliminate the content
-    duplication produced by having both image structure and image
-    visual style in the same file. Now, both
-    <command>centos-art.sh</command> and repository directory
-    structure are able to produce themes as result of arbitrary
-    combinations between design models (structures) and artistic
-    motifs (visual styles).</para>
-    
-    <para>In the documentation area, the documentation files in LaTeX
-    format were migrated to Texinfo format.  In this configuration,
-    each directory structure in the repository has a documentation
-    entry associated in a Texinfo structure which can be read, edited
-    and administered (e.g., renamed, deleted, copied) interactively
-    throuch <command>centos-art.sh</command>. Additionally, the
-    <command>texi2html</command> program was used to produced XHTML
-    output customized by CSS from The CentOS Webenv.</para>
+    <para>
+        Karanbirn Sighn considered the idea intresting and provided
+        the infrastructure necessary to support the effort. This way
+        the <ulink
+        url="https://projects.centos.org/trac/artwork/">CentOS Artwork
+        SIG</ulink> and the <ulink
+        url="https://projects.centos.org/svn/artwork/">CentOS Artwork
+        Repository</ulink> were officially created.
+    </para>
 
-    <para>Around 2011, the <command>centos-art.sh</command> script was
-    redesigned to start translating SVG and other XML-based files
-    (e.g., XHTML and Docbook files) through the
-    <command>xml2po</command> program and shell scripts files (e.g.,
-    Bash scripts) through GNU <command>gettext</command> tools.  This
-    configuration provided a stronger interface for graphic designers,
-    translators and programmers to produce localized content. The SED
-    files are no longer used to handle translations.</para>
-    
-    <para>The <code>render</code>, <code>help</code> and
-    <code>locale</code> functionalities were consolidated as the most
-    frequent tasks performed inside the repository. Additionally, the
-    <code>prepare</code> and <code>tuneup</code> functionalities are
-    maintained as useful tasks.</para>
-    
-    <para>The <command>centos-art.sh</command> script is updated to
-    organize functionalities in two groups: <quote>the administrative
-    functionalities</quote> and <quote>the productive
-    functionalities</quote>.  The administrative functionalities cover
-    actions like: copying, deleting and renaming directory structures
-    inside the repository.  Also, preparing your workstation for using
-    <command>centos-art.sh</command> script, making backups of the
-    distribution theme currently installed,  installing themes created
-    inside repository and restoring themes from backup.  On the other
-    hand, the productive functionalities cover actions like: content
-    rendition, content localization, content documentation and content
-    maintainance.</para>
+    <para>
+        Once the CentOS Artwork Repository was available, Alain
+        Reguera Delgado uploaded the bash script for rendering
+        Anaconda slides; Ralph Angenendt documented it very well; and
+        people started to download working copies of CentOS Artwork
+        Repository to produce slide images in their own languages.
+    </para>
+
+    <sect1>
+    <title>2009's</title>
+
+     <para>
+        Around 2009, the rendition script was at a very rustic state
+        where only slide images could be produced, so it was
+        redesigned to extend the image production to other areas,
+        different from slide images.  In this configuration, one SVG
+        file was used as input to produce a translated instance of it
+        which, in turn, was used to produce one translated PNG image
+        as output. The SVG translated instance was created through SED
+        replacement commands. The translated PNG image was created
+        from the SVG translated instance using Inkscape command-line
+        interface.
+    </para>
+
+    <para>
+        The repository directory structure was prepared to receive the
+        rendition script using design templates and translation files
+        in the same location. There was one directory structure for
+        each artwork that needed to be produced. In this
+        configuration, if you would want to produce the same artwork
+        with a different visual style or structure, it was needed to
+        create a new directory structure for it because both the image
+        structure and the image visual style were together in the
+        design template.
+    </para>
+
+    <para>
+        The rendition script was moved to a common place and linked
+        from different directory structures. There was no need to have
+        the same code in different directory structures if it could be
+        in just one place and then be linked from different locations.
+    </para>
+
+    <para>
+        Corporate identity concepts began to be considered. As
+        referece, it was used the book "Corporate Identity" by Wally
+        Olins (1989) and <ulink
+        url="http://en.wikipedia.org/Corporate_identity">Wikipedia</ulink>
+        related links. This way, the rendition script main's goal
+        becomes into: <emphasis>automating production of a monolithic corporate
+        visual identity structure, based on the mission and the
+        release schema of The CentOS Project</emphasis>.
+    </para>
+
+    <para>
+        The repository directory structures began to be documented by
+        mean of flat text files. Later, documentation in flat text
+        files was moved onto LaTeX format and this way the "The CentOS
+        Artwork Repository" documentation manual is initiated.
+    </para>
+    </sect1>
+
+    <sect1>
+    <title>2010's</title>
+
+    <para>
+        Around 2010, the rendition script changed its name from
+        <command>render.sh</command> to
+        <command>centos-art.sh</command> and became a collection of
+        functionalities where rendition was just one among others
+        (e.g., documentation and localization).
+    </para>
+
+    <para>
+        The <command>centos-art.sh</command> was initially conceived
+        to automate frequent tasks inside the repository based in the
+        idea of Unix toolbox: to create small and specialized tools
+        that do one thing well.  This way, functionalities inside
+        <command>centos-art.sh</command> began to be identified and
+        separated one another. For example, when images were rendered,
+        there was no need to load functionalities related to
+        documentation manual. This layout moved us onto <quote>common
+        functionalities</quote> and <quote>specific
+        functionalities</quote> inside
+        <command>centos-art.sh</command> script. Common
+        functionalities are loaded when
+        <command>centos-art.sh</command> script is initiated and are
+        available to specific functionalities.
+    </para>
+
+    <para>
+        Suddenly, no need was found to keep all the links spreaded
+        around the repository in order to execute the
+        <command>centos-art.sh</command> script from different
+        locations.  The centos-art command-line interface was used
+        instead. The centos-art command-line interface is a symbolic
+        link stored inside the <filename
+        class="directory">~/bin</filename> directory that point to
+        <command>centos-art.sh</command> script. As default
+        configuration, inside The CentOS Distribution, the path to
+        <filename class="directory">~/bin</filename> is included in
+        the search path for commands (see PATH environment variable).
+        This way, using the centos-art command-line interface, it is
+        possible for us to execute the
+        <command>centos-art.sh</command> script from virtually
+        anywhere inside the workstation, just as we frequently do with
+        regular commands.
+    </para>
+
+    <para>
+        Start using GNU getopt as default option parser inside the
+        <command>centos-art.sh</command> script.
+    </para>
+
+    <para>
+        The repository directory structure was updated to improve the
+        implementation of corporate visual identity concepts.
+        Specially in the area related to themes. Having both structure
+        and style in the same file introduced content duplication when
+        producing art works.  Because of this reason, they were
+        divided out to separate directory structures: the design
+        models and artistic motifs directory structures.  From this
+        point on, the <command>centos-art.sh</command> is able to
+        produce themes as result of arbitrary combinations between
+        design models (structures) and artistic motifs (visual
+        styles).
+    </para>
+
+    <para>
+        In the documentation area, the documents in LaTeX format were
+        migrated to Texinfo format. In this configuration, each
+        directory structure in the repository has a documentation
+        entry associated in a Texinfo structure which can be read,
+        edited and administered (e.g., renamed, deleted and copied)
+        interactively through <command>centos-art.sh</command> script.
+        Additionally, the texi2html program was used to produced
+        customized XHTML output in conjunction with CSS from The
+        CentOS Webenv.
+    </para>
+    </sect1>
+
+    <sect1>
+    <title>2011's</title>
+
+    <para>
+        Around 2011, the <command>centos-art.sh</command> script was
+        redesigned to start translating XML-based files (e.g., SVG and
+        Docbook files) through <command>xml2po</command> program and
+        shell scripts (e.g., Bash scripts) through GNU gettext tools.
+        This configuration provided a stronger localization interface
+        for graphic designers, translators and programmers. The SED
+        replacement files are no longer used to handle localization.
+    </para>
+
+    <para>
+        The <code>render</code>, <code>help</code> and
+        <code>locale</code> functionalities were consolidated as the
+        most frequent tasks performed inside the repository.
+        Additionally, the prepare and tuneup functionalities are also
+        maintained as useful tasks.
+    </para>
+
+    <para> 
+        In the documentation area, support for producing localized
+        transformations of DocBook XML DTD instances was added through
+        the <code>render</code> and locale functionalities. The
+        <code>render</code> functionality uses the xsltproc
+        command-line <acronym>XSLT</acronym> parser in conjunction
+        with the styles provided by the
+        <package>docbook-style-xsl</package> package, both of them
+        included inside The CentOS Distribution.  The locale
+        functionality creates the localized portable object
+        (<acronym>PO</acronym>) the <code>render</code> functionality
+        needs to produce localized transformations of DocBook XML DTD
+        instances.  
+    </para> 
+
+    <para>
+        Redesign <code>help</code> functionality to start using
+        DocBook XML as default documentation backend. Produciing
+        documentation through DocBook XML as default documentation
+        backend consolidates <code>render</code> and
+        <code>locale</code> even more. In this configuration, once the
+        DocBook files are written, we use <code>locale</code>
+        functionality to localize the DocBook files in your prefered
+        language and later, using <code>render</code> functionality,
+        we produce the XTHML and PDF outputs as specified in the
+        XSLT customization driver we defined.
+    </para>
+    </sect1>
 
 </chapter>
