@@ -99,11 +99,11 @@
             <para>The <command>ls</command> command displays the
             contents of a directory. For example:
 
-            <programlisting>
+<programlisting>
 Config                          help_renameEntry.sh
 help_copyEntry.sh               help_restoreCrossReferences.sh
 help_deleteCrossReferences.sh   help_searchIndex.sh
-            </programlisting>
+</programlisting>
 
             The output returned in response to the command (in this
             case, the contents of the directory) is shown in this
@@ -123,8 +123,10 @@ help_deleteCrossReferences.sh   help_searchIndex.sh
     </note> 
 
     <tip>
-        <para>The directory @file{/usr/share/doc/} contains additional
-        documentation for packages installed on your system.</para>
+        <para>The directory <filename
+        class="directory">/usr/share/doc/</filename> contains
+        additional documentation for packages installed on your
+        system.</para>
     </tip>
 
     <important>
