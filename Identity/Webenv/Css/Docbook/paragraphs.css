@@ -1,5 +1,5 @@
 /*
- * Docbook
+ * Docbook -> Paragraphs
  * 
  * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
@@ -22,18 +22,31 @@
  * ----------------------------------------------------------------------
  */
 
-/* Reset browser's default definitions. 
---------------------------------------------------------------------*/
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/default.css");
+p {
+    text-align:justify;
+    }
 
-/* Customize default definitions.
---------------------------------------------------------------------*/
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/base.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/navigation.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/headings.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/paragraphs.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/lists.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/admonitions.css");
+/* Phrase elements
+-----------------------------------------------*/
 
-/* Miscellaneous definitions.
---------------------------------------------------------------------*/
+.command {
+    font-family: "DejaVu LGC Sans Mono", "Liberation Mono", monospace;
+    }
+
+.computeroutput {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #eeeeee;
+    background: #fafafa;
+    }
+
+/* Table of contents
+-----------------------------------------------*/
+
+div.toc {
+    margin: 1em 0 2em 0;
+    }
+
+div.toc p {
+    margin-bottom: 0.5em;
+    }

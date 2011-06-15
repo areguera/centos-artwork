@@ -1,5 +1,5 @@
 /*
- * Docbook
+ * Docbook -> Headings
  * 
  * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
@@ -22,18 +22,19 @@
  * ----------------------------------------------------------------------
  */
 
-/* Reset browser's default definitions. 
---------------------------------------------------------------------*/
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/default.css");
+h1.title {
+    font-size: 2em;
+    color: #fff;
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #204c8d;
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.2/h1-bg.png");
+    }
 
-/* Customize default definitions.
---------------------------------------------------------------------*/
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/base.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/navigation.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/headings.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/paragraphs.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/lists.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/Docbook/admonitions.css");
+h2.title {
+    margin-top: 1.6em;
+    }
 
-/* Miscellaneous definitions.
---------------------------------------------------------------------*/
+.title { 
+    color: #072B61; 
+    }

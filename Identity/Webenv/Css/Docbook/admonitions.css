@@ -1,0 +1,104 @@
+/*
+ * Docbook -> Admonitions
+ * 
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+div.note, 
+div.tip,
+div.important,
+div.caution,
+div.warning {
+    margin: 0 0 1.5em 0 !important;
+    }
+
+div.note table, div.note table,
+div.tip table, div.tip table,
+div.important table, div.important table,
+div.caution table, div.caution table,
+div.warning table, div.warning table {
+    margin: 0;
+    border-width: 1px;
+    border-left-width: 5px;
+    border-style: solid;
+    }
+
+div.note table, 
+div.tip table,
+div.important table,
+div.caution table,
+div.warning table {
+    border-color: #F6E7D2;
+    background-color: #FFF8EC;
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-orange.png");
+    }
+
+div.note table {
+	border-color: #D2E0F6; 
+	background-color: #ECF4FF;
+    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/msg-bg-blue.png");
+    }
+
+div.note table th, div.note table td, 
+div.tip table th, div.tip table td,
+div.important table th, div.important table td,
+div.caution table th, div.caution table td,
+div.warning table th, div.warning table td {
+    border:none;
+    padding: 0 0 0 0;
+    }
+
+div.note table th, 
+div.tip table th,
+div.important table th, 
+div.caution table th, 
+div.warning table th {
+    font-size: 1.4em;
+    padding: 1em 0 0.5em 0;
+    }
+
+div.note table td img,
+div.tip table td img,
+div.important table td img,
+div.caution table td img,
+div.warning table td img {
+    margin: 1em 0.5em;
+    }
+
+div.note table td p,
+div.tip table td p,
+div.important table td p,
+div.caution table td p,
+div.warning table td p {
+    margin: 0 1em 1.3em 0;
+    }
+
+div.note pre,
+div.tip pre,
+div.important pre,
+div.caution pre,
+div.warning pre {
+    border: none;
+    background-color: #333;
+    color: #FFFFFF;
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.5em;
+    }
