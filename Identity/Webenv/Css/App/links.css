@@ -1,0 +1,118 @@
+/* 
+ * Webenv -> Links
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+/* Broken or nonexistent links */
+
+div#page-body a.nonexistent, 
+div#page-body a.nonexistent:hover { color: gray; }
+
+/* Special decoration for some links' classes */
+
+div#page-body a.www:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-www.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.http:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-www.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.https:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-www.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.mailto:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-mail.png); 
+    margin: 0 0.2em; 
+    }
+
+div#page-body a.attachment:before { 
+    white-space:nowrap; 
+    content: url(/home/centos/artwork/tags/Identity/Images/Webenv/1.0/a-attach.png); 
+    margin: 0 0.2em; 
+    }
+
+/* */
+
+div#page-header div.links {
+    margin-right: 10px;
+    margin-top: 10px;
+    }
+
+div#page-header div.links div.user,
+div#page-header div.links div.trail {
+	display: block;
+	margin: 5px;
+	text-align: right;
+	color: #fff;
+	}
+
+div#page-body div#content div.trail a {
+    font-size: small;
+    margin-right: 5px;
+    }
+
+div#page-header div.links div.user a,
+div#page-header div.links div.trail a {
+	color: #FFF;
+    margin-right: 5px;
+	}
+
+div#page-header div.links div.user span {
+	border-right: 1px dotted #FFF;
+    padding-right: 3px;
+	}
+
+div#page-header div.links div.user span,
+div#page-header div.links div.trail span {
+	display: inline;
+    margin-left: 3px;
+	}
+
+div#page-header div.links div.user span.last,
+div#page-header div.links div.trail span.last {
+	border-right: none;
+	padding-right: 0;
+	}
+
+div#page-header div.links div.user span.last a,
+div#page-header div.links div.trail span.last a {
+	margin-right: 0;
+	}
+
+div#page-header div.links div.trail span:after,
+div#page-body div#content div.trail span:after {
+	content: "»";
+	}
+
+div#page-header div.links div.trail span.last:after,
+div#page-body div#content div.trail span.last:after {
+	content: none;
+	}

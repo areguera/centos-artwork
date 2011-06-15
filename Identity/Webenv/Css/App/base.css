@@ -1,5 +1,5 @@
 /* 
- * Webenv -> Layout (Two columns).
+ * Webenv -> Main Blocks
  *
  * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
@@ -22,14 +22,54 @@
  * ----------------------------------------------------------------------
  */
 
-div#page-body div#content {
-    margin-right: 180px;
-    border-right: 3px #EEE solid;
+/* Main Blocks
+--------------------------------------------------------------------*/
+
+div#page-header {
+	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.2/h1-bg.png") 0 0 repeat;
+	min-height: 46px;
+	}
+
+div#page-footer {
+	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.2/h1-bg.png") 0 0 repeat;
+    padding: 10px;
+	}
+
+div#page-footer div.top img {
+    border:none;
+    float:right;
     }
 
-div#page-body div#content-links {
-    float:right;
-    width: 180px;
+div#page-header div.links div.user,
+div#page-header div.links div.trail,
+div#page-footer div.credits {
     font-size: small;
-    border-left: 3px #EEE solid;
+    color: #FFF;
+    }
+
+div#page-footer div.credits a {
+    color: #FFF;
+    font-style: italic;
+    }
+
+div#wrap {
+	padding: 0 10px 0 10px;
+    background-color: #FFF;
+	}
+
+div#page-header,
+div#wrap,
+div#page-body,
+div#page-footer {
+    min-width: 680px;
+    }
+
+div#page-body {
+	clear: both;
+    background-color: #F8F8F8;
+	}
+
+div#page-body div#content {
+    padding: 20px;
+    background-color: #FFF;
     }

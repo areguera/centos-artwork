@@ -1,0 +1,74 @@
+/* 
+ * Webenv -> Lists
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+div#page-body ul { 
+    list-style: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/ul.png") circle; 
+    } 
+
+div#page-body div#content-links ul {
+    padding: 1em;
+    margin: 0;
+    list-style: none;
+    border-top: 1px #EEE solid;
+}
+
+div#page-body div#content-links ul.first {
+    border-top: none;
+    }
+
+div#page-body div#content-links ul li {
+    padding: 2px;
+    }
+
+div#page-body div#content-links ul li.current {
+    font-weight: bold;
+    }
+
+/* Table of content (toc) */
+
+div#page-body div.toc {
+	border: 1px solid #CCCCCC;
+	background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/toc-bg.png") right repeat-y; 
+	font-size: small;
+	text-align:left;
+	margin-left: 1.5em;
+    width:70%;
+	}
+
+div#page-body div.toc h3 {
+    margin-top: 0;
+    background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/h2-bg.png");
+    }
+
+div#page-body div.toc ul {
+    margin-left: 1.5em;
+    }
+
+div#page-body div.toc ul ul {
+    margin-left: 0;
+}
+
+div#page-body div.glosslist dd {
+    margin-left: 3.5em;
+    }

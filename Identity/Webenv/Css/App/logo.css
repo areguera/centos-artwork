@@ -1,5 +1,5 @@
 /* 
- * Webenv -> Layout (Two columns).
+ * Webenv -> Logo
  *
  * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
@@ -22,14 +22,8 @@
  * ----------------------------------------------------------------------
  */
 
-div#page-body div#content {
-    margin-right: 180px;
-    border-right: 3px #EEE solid;
-    }
-
-div#page-body div#content-links {
-    float:right;
-    width: 180px;
-    font-size: small;
-    border-left: 3px #EEE solid;
-    }
+div#page-header div#logo img {
+	border: none;
+	float: left;
+    margin: 5px;
+	}
