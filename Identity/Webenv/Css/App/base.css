@@ -22,9 +22,6 @@
  * ----------------------------------------------------------------------
  */
 
-/* Main Blocks
---------------------------------------------------------------------*/
-
 div#page-header {
 	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.2/h1-bg.png") 0 0 repeat;
 	min-height: 46px;
@@ -73,3 +70,13 @@ div#page-body div#content {
     padding: 20px;
     background-color: #FFF;
     }
+
+/* Logo
+--------------------------------------------------------------------*/
+
+div#page-header div#logo img {
+	border: none;
+	float: left;
+    margin: 5px;
+	}
+
