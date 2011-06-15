@@ -3,33 +3,67 @@
                "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
                [
 
-<!-- Preamble -->
-<!ENTITY repository-preamble    SYSTEM "repository-preamble.docbook">
-<!ENTITY repository-parts       SYSTEM "repository-parts.docbook">
+<!ENTITY % Introduction.ent     SYSTEM "Introduction.ent">
+<!ENTITY % Directories.ent      SYSTEM "Directories.ent">
+<!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
-<!-- Introduction -->
-<!ENTITY intro                  SYSTEM "Introduction.docbook">
-<!ENTITY intro-history          SYSTEM "Introduction/history.docbook">
-<!ENTITY intro-copying          SYSTEM "Introduction/copying.docbook">
-<!ENTITY intro-usage            SYSTEM "Introduction/usage.docbook">
-<!ENTITY intro-docs             SYSTEM "Introduction/document-convenctions.docbook">
-
-<!-- Directories -->
-<!ENTITY dir SYSTEM "Directories.docbook">
-<!ENTITY dir-trunk SYSTEM "Directories/trunk.docbook">
-<!ENTITY dir-trunk-identity SYSTEM "Directories/trunk/Identity.docbook">
-<!ENTITY dir-trunk-identity-models SYSTEM "Directories/trunk/Identity/Models.docbook">
-<!ENTITY dir-trunk-identity-models-themes SYSTEM "Directories/trunk/Identity/Models/Themes.docbook">
-<!ENTITY dir-trunk-identity-models-themes-default SYSTEM "Directories/trunk/Identity/Models/Themes/Default.docbook">
-<!ENTITY dir-trunk-manuals SYSTEM "Directories/trunk/Manuals.docbook">
-
-<!-- Licenses -->
-<!ENTITY licenses-gpl           SYSTEM "Licenses/gpl.docbook">
-<!ENTITY licenses-gfdl          SYSTEM "Licenses/gfdl.docbook">
-
+%Introduction.ent;
+%Directories.ent;
+%Licenses.ent;
 ]>
 
 <book lang="en-US">
-&repository-preamble;
-&repository-parts;
+
+    <!-- Front matter -->
+    <title>The CentOS Artwork Repository</title>
+    <subtitle>User's Guide</subtitle>
+
+    <bookinfo>
+        <authorgroup>
+            <author>
+                <firstname>Alain</firstname>
+                <surname>Reguera Delgado</surname>
+            </author>
+        </authorgroup>
+
+        <!-- Copyright: The copyright page is verso and contains the
+        copyright notice, the publishing/printing history, the country
+        where printed, ISBN and/or CIP information.  The page is
+        usually typeset in a smaller font than the normal text. -->
+        <copyright>
+            <year>2009</year>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>The CentOS Artwork SIG</holder>
+        </copyright>
+
+        <legalnotice>
+            <para>
+              Permission is granted to copy, distribute and/or modify
+              this document under the terms of the GNU Free
+              Documentation License, Version 1.2 or any later version
+              published by the Free Software Foundation; with no
+              Invariant Sections, no Front-Cover Texts, and no
+              Back-Cover Texts. A copy of the license is included in
+              the section entitled <xref linkend="licenses-gfdl" />.
+            </para>
+        </legalnotice>
+
+        <date>Jun, 2011</date>
+
+        <abstract>
+            <para>
+              This manuals documents relevant information regarding
+              the deployment, organization, and administration of
+              CentOS Artwork Repository.
+            </para>
+        </abstract>
+
+    </bookinfo>
+
+    <!-- Main matter -->
+    &intro;
+    &dir;
+    &licenses;
+
 </book>
