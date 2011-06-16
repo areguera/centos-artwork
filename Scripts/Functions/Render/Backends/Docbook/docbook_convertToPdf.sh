@@ -1,15 +1,14 @@
 #!/bin/bash
 #
-# docbook_convertToPdf.sh -- This function produces PDF output for
-# repository documentation manual, in DocBook XML format. The
-# procedure was taken from `docbook-style-xsl-1.69.1-5.1'
-# documentation, which says: ---To get to print, you need an XSLT
-# engine (e.g., `xsltproc') to produce formatting objects (FO), which
-# then must be processed with an FO engine (e.g., `pdfxmltex') to
-# produce PostScript or PDF output---. To make the whole process
-# transparent, a temporal directory is created for intermediate works.
-# Once the PDF file is produced there, it is moved to its final
-# location.
+# docbook_convertToPdf.sh -- This function takes DocBook XML as input
+# and produces two different PDF as outputs; one from DocBook XML and
+# another from DocBook SGML.  To make the whole process transparent, a
+# temporal directory is created for intermediate works and final files
+# are moved then to their final location.
+#
+# Inside `centos-art.sh' script we provide support for both outputs
+# produced from DocBook XML and DocBook SGML for you to evaluate and
+# if possible correct.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -33,72 +32,10 @@
 
 function docbook_convertToPdf {
 
-    local -a XSL_TEMPLATE
-    local -a XSL_INSTANCE
-    local XSL_INSTANCE_FINAL=''
+    # Tranform DocBook XML to PDF.
+    ${RENDER_BACKEND}_convertToPdfFromXml
 
-    # Print action message.
-    cli_printMessage "${FILE}.pdf" --as-updating-line
-
-    # Define name of temporal directory where the DocBook to PDF
-    # transformation will take place.
-    local TMPDIR=$(cli_getTemporalFile "docbook2pdf")
-
-    # Define absolute path to DocBook source file. This is the
-    # repository documentation manual file where DOCTYPE and ENTITY
-    # definition lines are set.
-    local SRC=${INSTANCE}
-
-    # Define absolute path to PDF target file. This is the final
-    # location the PDF file produced as result of DocBook to PDF
-    # transformation will be stored in.
-    local DST="${FILE}.pdf"
-
-    # Define file name of formatting object (.fo) file. This file is
-    # an intermediate file needed to produced the PDF.
-    local FO=$(basename ${FILE}).fo
-
-    # Define file name of PDF file.  This is the file we were looking
-    # for and the one moved, once produced.
-    local PDF=$(basename ${FILE}).pdf
-
-    # Prepare XSL final instances used in transformations.
-    ${RENDER_BACKEND}_prepareXsl4Using "${RENDER_DOCBOOK_XSLDIR}/docbook2fo.xsl"
-
-    # Verify temporal directory and create it if doesn't exist.
-    if [[ ! -d $TMPDIR ]];then
-        mkdir $TMPDIR
-    fi
-
-    # Move inside temporal directory.
-    pushd $TMPDIR > /dev/null
-
-    # Create formatting object supressing output from stderr.
-    xsltproc --output ${FO} ${XSL_INSTANCE_FINAL} ${SRC} &> /dev/null
-
-    # Create PDF format from formatting object. The `pdfxmltex' commad
-    # must be executed twice in order for document's cross-references
-    # to be built correctly.
-    if [[ $? -eq 0 ]];then
-        pdfxmltex ${FO} > /dev/null
-        pdfxmltex ${FO} > /dev/null
-    else 
-        cli_printMessage "`gettext "Cannot produce the formatting object."`" --as-error-line
-    fi
-
-    # Verify `' exit status and, if everything is ok, move PDF file
-    # from temporal directory to its target location.
-    if [[ $? -eq 0 ]];then
-        mv $PDF $DST
-    else 
-        cli_printMessage "`gettext "Cannot produce the PDF file."`" --as-error-line
-    fi
-
-    # Return to where we initially were.
-    popd > /dev/null
-
-    # Remove temporal directory and temporal XSL instances created.
-    rm -r $TMPDIR
-    rm ${XSL_INSTANCE[*]}
+    # Tranform DocBook SGML to PDF.
+    ${RENDER_BACKEND}_convertToPdfFromSgml
 
 }

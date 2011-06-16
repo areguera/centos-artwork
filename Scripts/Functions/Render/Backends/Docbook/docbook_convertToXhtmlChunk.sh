@@ -29,9 +29,9 @@
 
 function docbook_convertToXhtmlChunk {
 
-    local -a XSL_TEMPLATE
-    local -a XSL_INSTANCE
-    local XSL_INSTANCE_FINAL=''
+    local -a STYLE_TEMPLATE
+    local -a STYLE_INSTANCE
+    local STYLE_INSTANCE_FINAL=''
 
     # Print action message.
     if [[ -d ${FILE}-xhtml ]];then
@@ -51,13 +51,13 @@ function docbook_convertToXhtmlChunk {
     local DST="${FILE}-xhtml/"
 
     # Prepare XSL final instances used in transformations.
-    ${RENDER_BACKEND}_prepareXsl4Using $(cli_getFilesList \
-        ${RENDER_DOCBOOK_XSLDIR} --pattern='.*docbook2xhtml-(chunks|common)\.xsl')
+    ${RENDER_BACKEND}_prepareStyles $(cli_getFilesList \
+        ${DOCBOOK_STYLES_DIR} --pattern='.*docbook2xhtml-(chunks|common)\.xsl')
 
     # Transform DocBook XML to XHTML supressing all stderr output.
-    xsltproc --output ${DST} ${XSL_INSTANCE_FINAL} ${SRC} &> /dev/null
+    xsltproc --output ${DST} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
 
     # Remove XSL instance files.
-    rm ${XSL_INSTANCE[*]}
+    rm ${STYLE_INSTANCE[*]}
 
 }

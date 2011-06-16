@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render_docbook.sh -- This function performs base-rendition action
-# for DocBook files.
+# docbook.sh -- This function performs base-rendition action for
+# DocBook files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -27,7 +27,7 @@ function docbook {
 
     # Initialize absolute path to Xsl directory. This is the location
     # where customization of XSL tranformations are stored in.
-    RENDER_DOCBOOK_XSLDIR="${RENDER_BACKEND_DIR}/$(cli_getRepoName ${RENDER_BACKEND} -d)/Styles"
+    DOCBOOK_STYLES_DIR="${RENDER_BACKEND_DIR}/$(cli_getRepoName ${RENDER_BACKEND} -d)/Styles"
 
     ${RENDER_BACKEND}_convertToPdf
     ${RENDER_BACKEND}_convertToXhtml
