@@ -4,7 +4,7 @@
 # as input and applies XSL stylesheets to produce a big XHTML files as
 # output.  The procedure was taken from the documentation of
 # `docbook-style-xsl-1.69.1-5.1' package, which says: ---To publish
-# HTML from your XML documents, you just need an XSLT engine.---.
+# HTML from your XML documents, you just need an XSL engine.---.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -28,6 +28,10 @@
 
 function docbook_convertToXhtml {
 
+    local -a XSL_TEMPLATE
+    local -a XSL_INSTANCE
+    local XSL_INSTANCE_FINAL=''
+
     # Print action message.
     if [[ -f ${FILE}.xhtml ]];then
         cli_printMessage "${FILE}.xhtml" --as-updating-line
@@ -45,10 +49,14 @@ function docbook_convertToXhtml {
     # transformation will be stored in.
     local DST="${FILE}.xhtml"
 
-    # Define absolute path to XSLT file.
-    local XSLT=/usr/share/sgml/docbook/xsl-stylesheets/xhtml/docbook.xsl
+    # Prepare XSL final instances used in transformations.
+    ${RENDER_BACKEND}_prepareXsl4Using $(cli_getFilesList \
+        ${RENDER_DOCBOOK_XSLDIR} --pattern='.*docbook2xhtml-(single|common)\.xsl')
 
     # Transform DocBook XML to XHTML supressing all stderr output.
-    xsltproc $XSLT --output $DST $SRC 2> /dev/null
+    xsltproc --output ${DST} ${XSL_INSTANCE_FINAL} ${SRC} &> /dev/null
+
+    # Remove XSL instance files.
+    rm ${XSL_INSTANCE[*]}
 
 }

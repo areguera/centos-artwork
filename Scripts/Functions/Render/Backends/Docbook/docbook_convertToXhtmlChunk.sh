@@ -29,12 +29,15 @@
 
 function docbook_convertToXhtmlChunk {
 
+    local -a XSL_TEMPLATE
+    local -a XSL_INSTANCE
+    local XSL_INSTANCE_FINAL=''
+
     # Print action message.
     if [[ -d ${FILE}-xhtml ]];then
         cli_printMessage "${FILE}-xhtml" --as-updating-line
     else
         cli_printMessage "${FILE}-xhtml" --as-creating-line
-        mkdir ${FILE}-xhtml
     fi
 
     # Define absolute path to DocBook source file. This is the
@@ -47,10 +50,14 @@ function docbook_convertToXhtmlChunk {
     # transformation will be stored in.
     local DST="${FILE}-xhtml/"
 
-    # Define absolute path to XSLT file.
-    local XSLT=/usr/share/sgml/docbook/xsl-stylesheets/xhtml/chunk.xsl
+    # Prepare XSL final instances used in transformations.
+    ${RENDER_BACKEND}_prepareXsl4Using $(cli_getFilesList \
+        ${RENDER_DOCBOOK_XSLDIR} --pattern='.*docbook2xhtml-(chunks|common)\.xsl')
 
     # Transform DocBook XML to XHTML supressing all stderr output.
-    xsltproc $XSLT --output $DST $SRC 2> /dev/null
+    xsltproc --output ${DST} ${XSL_INSTANCE_FINAL} ${SRC} &> /dev/null
+
+    # Remove XSL instance files.
+    rm ${XSL_INSTANCE[*]}
 
 }

@@ -33,6 +33,10 @@
 
 function docbook_convertToPdf {
 
+    local -a XSL_TEMPLATE
+    local -a XSL_INSTANCE
+    local XSL_INSTANCE_FINAL=''
+
     # Print action message.
     cli_printMessage "${FILE}.pdf" --as-updating-line
 
@@ -50,10 +54,6 @@ function docbook_convertToPdf {
     # transformation will be stored in.
     local DST="${FILE}.pdf"
 
-    # Define absolute path of the XSLT file used to create the
-    # formatting object (.fo) file.
-    local XSLT=/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl
-
     # Define file name of formatting object (.fo) file. This file is
     # an intermediate file needed to produced the PDF.
     local FO=$(basename ${FILE}).fo
@@ -61,6 +61,9 @@ function docbook_convertToPdf {
     # Define file name of PDF file.  This is the file we were looking
     # for and the one moved, once produced.
     local PDF=$(basename ${FILE}).pdf
+
+    # Prepare XSL final instances used in transformations.
+    ${RENDER_BACKEND}_prepareXsl4Using "${RENDER_DOCBOOK_XSLDIR}/docbook2fo.xsl"
 
     # Verify temporal directory and create it if doesn't exist.
     if [[ ! -d $TMPDIR ]];then
@@ -71,7 +74,7 @@ function docbook_convertToPdf {
     pushd $TMPDIR > /dev/null
 
     # Create formatting object supressing output from stderr.
-    xsltproc ${XSLT} ${SRC} 2> /dev/null > ${FO}
+    xsltproc --output ${FO} ${XSL_INSTANCE_FINAL} ${SRC} &> /dev/null
 
     # Create PDF format from formatting object. The `pdfxmltex' commad
     # must be executed twice in order for document's cross-references
@@ -94,7 +97,8 @@ function docbook_convertToPdf {
     # Return to where we initially were.
     popd > /dev/null
 
-    # Remove temporal directory.
+    # Remove temporal directory and temporal XSL instances created.
     rm -r $TMPDIR
+    rm ${XSL_INSTANCE[*]}
 
 }
