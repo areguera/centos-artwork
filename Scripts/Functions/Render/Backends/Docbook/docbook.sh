@@ -27,7 +27,7 @@ function docbook {
 
     # Initialize absolute path to Xsl directory. This is the location
     # where customization of XSL tranformations are stored in.
-    RENDER_DOCBOOK_XSLDIR="${RENDER_BACKEND_DIR}/$(cli_getRepoName ${RENDER_BACKEND} -d)/Xsl"
+    RENDER_DOCBOOK_XSLDIR="${RENDER_BACKEND_DIR}/$(cli_getRepoName ${RENDER_BACKEND} -d)/Styles"
 
     ${RENDER_BACKEND}_convertToPdf
     ${RENDER_BACKEND}_convertToXhtml
