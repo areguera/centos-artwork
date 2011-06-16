@@ -29,6 +29,10 @@
 #   4. Long file paths near the end of page-body aren't hyphenated.
 #   Even the `hyphenate' property is set to true by default.
 #
+# To make the whole process transparent, a temporal directory is
+# created for intermediate works and final files are moved then to
+# their final location.
+#
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify

@@ -2,13 +2,9 @@
 #
 # docbook_convertToPdf.sh -- This function takes DocBook XML as input
 # and produces two different PDF as outputs; one from DocBook XML and
-# another from DocBook SGML.  To make the whole process transparent, a
-# temporal directory is created for intermediate works and final files
-# are moved then to their final location.
-#
-# Inside `centos-art.sh' script we provide support for both outputs
-# produced from DocBook XML and DocBook SGML for you to evaluate and
-# if possible correct.
+# another from DocBook SGML.  We decided to provide support for both
+# ways of output production from DocBook XML and DocBook SGML for you
+# to evaluate and if possible correct.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
