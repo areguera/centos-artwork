@@ -20,7 +20,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ----------------------------------------------------------------------
-# $Id: docbook_convertToPdf.sh 3335 2011-06-10 03:52:23Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function docbook_prepareXsl4Using {
