@@ -27,6 +27,7 @@ function docbook_prepareXsl4Using {
 
     local XSL_TEMPLATE_FILE=''
     local XSL_TEMPLATE_FILES=$@
+    local XSL_INSTANCE_COMMON=''
     local COUNT=0
 
     for XSL_TEMPLATE_FILE in $XSL_TEMPLATE_FILES;do
@@ -43,24 +44,29 @@ function docbook_prepareXsl4Using {
         # Create XSL instance from XSL template.
         cp ${XSL_TEMPLATE[$COUNT]} ${XSL_INSTANCE[$COUNT]}
 
-        # Define the XSL final instance and expand translation markers
-        # inside it based on template files. Notice that some of the
-        # XSL template files need expantion of translation markers
-        # while others don't. Default expantion of translation markers
-        # is applied when no specific expantion is conditioned here.
+        # Define both final an common XSL instances based on XSL
+        # template.
         if [[ $XSL_TEMPLATE_FILE =~ 'docbook2fo\.xsl$' ]];then
             XSL_INSTANCE_FINAL=${XSL_INSTANCE[$COUNT]}
         elif [[ $XSL_TEMPLATE_FILE =~ 'docbook2xhtml-(chunks|single)\.xsl$' ]];then
             XSL_INSTANCE_FINAL=${XSL_INSTANCE[${COUNT}]}
-            sed -i -r "s!=XSL_XHTML_COMMON=!${XSL_INSTANCE_FINAL}!" ${XSL_INSTANCE_FINAL}
-        else
-            cli_replaceTMarkers ${XSL_INSTANCE[${COUNT}]}
+        elif [[ $XSL_TEMPLATE_FILE =~ 'docbook2xhtml-common\.xsl$' ]];then
+            XSL_INSTANCE_COMMON=${XSL_INSTANCE[${COUNT}]}
         fi
 
     done
 
-    # Verify Xsl final instance before using it. We cannot continue
-    # without it.
+    # Verify XSL final instance. This is the file used by `xsltproc'
+    # to produce the specified output. We cannot continue without it.
     cli_checkFiles $XSL_INSTANCE_FINAL 
+
+    # Expand common translation markers in XSL common instances. This
+    # expantion is optional.
+    if [[ -f $XSL_INSTANCE_COMMON ]];then
+        cli_replaceTMarkers $XSL_INSTANCE_COMMON
+    fi
+
+    # Expand specific translation markers in XSL final instance.
+    sed -r -i "s!=XSL_XHTML_COMMON=!${XSL_INSTANCE_COMMON}!" ${XSL_INSTANCE_FINAL}
 
 }
