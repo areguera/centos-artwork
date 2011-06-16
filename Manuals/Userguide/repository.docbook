@@ -4,11 +4,17 @@
                [
 
 <!ENTITY % Introduction.ent     SYSTEM "Introduction.ent">
-<!ENTITY % Directories.ent      SYSTEM "Directories.ent">
+<!ENTITY % Identity.ent         SYSTEM "Identity.ent">
+<!ENTITY % Locales.ent          SYSTEM "Locales.ent">
+<!ENTITY % Manuals.ent          SYSTEM "Manuals.ent">
+<!ENTITY % Scripts.ent          SYSTEM "Scripts.ent">
 <!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
 %Introduction.ent;
-%Directories.ent;
+%Identity.ent;
+%Locales.ent;
+%Manuals.ent;
+%Scripts.ent;
 %Licenses.ent;
 ]>
 
@@ -63,7 +69,10 @@
 
     <!-- Main matter -->
     &intro;
-    &dir;
+    &identity;
+    &locales;
+    &manuals;
+    &scripts;
     &licenses;
 
 </book>
