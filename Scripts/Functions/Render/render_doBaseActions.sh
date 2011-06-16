@@ -150,11 +150,18 @@ function render_doBaseActions {
             # Define final location of template file.
             TEMPLATE=${FILE}
 
-            # Print final location of template file.
-            if [[ ! -f "$TEMPLATE" ]];then
-                cli_printMessage "`gettext "None"`" --as-design-line
+            # Validate XML-based document before processing it. This
+            # step is very important in order to detect document
+            # malformations and warn you about it, so you can correct
+            # them before processing the document as input.
+            if [[ -f $TEMPLATE ]];then
+                cli_printMessage "$TEMPLATE" --as-validating-line
+                xmllint --valid --noent --noout $TEMPLATE
+                if [[ $? -ne 0 ]];then
+                    cli_printMessage "`gettext "Validation failed."`" --as-error-line
+                fi
             else
-                cli_printMessage "$TEMPLATE" --as-design-line
+                cli_printMessage "`gettext "None"`" --as-validating-line
             fi
  
             # Define final location of output directory.
