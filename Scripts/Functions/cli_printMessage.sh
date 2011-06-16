@@ -121,9 +121,10 @@ function cli_printMessage {
             cli_printMessage "`gettext "Translation"`: $MESSAGE"
             ;;
 
-        --as-design-line )
-            cli_printMessage "`gettext "Design"`: $MESSAGE"
+        --as-validating-line )
+            cli_printMessage "`gettext "Validating"`: $MESSAGE"
             ;;
+
 
         --as-configuration-line )
             cli_printMessage "`gettext "Configuration"`: $MESSAGE"
