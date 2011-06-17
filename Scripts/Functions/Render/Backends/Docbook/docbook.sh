@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# docbook.sh -- This function performs base-rendition action for
+# docbook.sh -- This function performs base-rendition actions for
 # DocBook files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -29,8 +29,15 @@ function docbook {
     # where customization of XSL tranformations are stored in.
     DOCBOOK_STYLES_DIR="${RENDER_BACKEND_DIR}/$(cli_getRepoName ${RENDER_BACKEND} -d)/Styles"
 
-    ${RENDER_BACKEND}_convertToPdf
-    ${RENDER_BACKEND}_convertToXhtml
     ${RENDER_BACKEND}_convertToXhtmlChunk
+    ${RENDER_BACKEND}_convertToXhtml
+
+    # WARNING: There are some issues related to DocBook-to-PDF
+    # transformations that make the whole process not so "clean" as
+    # DocBook-to-XHTML transformation is. Based on this situation and
+    # the need of providing a clean output, PDF transformation is
+    # commented until these issues be corrected. If you have a release
+    # of CentOS greater than 5.5, uncomment this to see what happen.
+    #${RENDER_BACKEND}_convertToPdf
 
 }
