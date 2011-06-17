@@ -10,13 +10,13 @@
 # In this configuration and using default configuration settings, I've
 # presented the following problems:
 #
-#   1. Something is wrong with headings. They seem not to expand along
+#   1. Something is wrong with headings. They are not expanded along
 #   the whole page-body. They seem to be rendered in a reduced width
-#   (1in approximatly). This provokes the heading to be broken in a
-#   two-to-five letters column and sometimes the heading overlaps the
+#   (1 inch approximatly). This provokes the heading to be broken in a
+#   two-to-five letters column and sometimes it overlaps the
 #   sectioning titles (e.g., chatper, section). I tried to customize
 #   the value of `header.column.widths' and `page.margin.top' but it
-#   seem to be not there where I need to touch.
+#   seems to be not there where I need to touch.
 #
 #   2. TOC's indentation is not rendered. Even the `toc.indent.width'
 #   property is set to 24 by default.
@@ -27,7 +27,14 @@
 #   unaligned.
 #
 #   4. Long file paths near the end of page-body aren't hyphenated.
-#   Even the `hyphenate' property is set to true by default.
+#   Even the `hyphenate' property is set to `true' by default.
+#
+# In this configuration and using default configuration settings, I've
+# presented the following advantages:
+#
+#   1. It is possible to produce localized PDF outputs through
+#   `xml2po', the default way of producing localized content inside
+#   the `centos-art.sh' script.
 #
 # To make the whole process transparent, a temporal directory is
 # created for intermediate works and final files are moved then to
@@ -56,7 +63,11 @@
 function docbook_convertToPdfFromXml {
 
     # Print action message.
-    cli_printMessage "${FILE}-xml.pdf" --as-updating-line
+    if [[ -f ${FILE}.sgml.pdf ]];then
+        cli_printMessage "${FILE}.xml.pdf" --as-updating-line
+    else
+        cli_printMessage "${FILE}.xml.pdf" --as-creating-line
+    fi
 
     local -a STYLE_TEMPLATE
     local -a STYLE_INSTANCE
@@ -74,7 +85,7 @@ function docbook_convertToPdfFromXml {
     # Define absolute path to PDF target file. This is the final
     # location the PDF file produced as result of DocBook to PDF
     # transformation will be stored in.
-    local DST="${FILE}-xml.pdf"
+    local DST="${FILE}.xml.pdf"
 
     # Define file name of formatting object (.fo) file. This file is
     # an intermediate file needed to produced the PDF.
@@ -98,9 +109,10 @@ function docbook_convertToPdfFromXml {
     # Create formatting object supressing output from stderr.
     xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
 
-    # Create PDF format from formatting object. The `pdfxmltex' commad
-    # must be executed twice in order for document's cross-references
-    # to be built correctly.
+    # Create PDF format from formatting object. The `pdfxmltex'
+    # command (which use the `PassiveTex' engine) must be executed
+    # twice in order for the document's cross references to be built
+    # correctly.
     if [[ $? -eq 0 ]];then
         pdfxmltex ${FO} > /dev/null
         pdfxmltex ${FO} > /dev/null
