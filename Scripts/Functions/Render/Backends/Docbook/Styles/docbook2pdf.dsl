@@ -22,7 +22,7 @@ $Id$
 
 ;;Do you want enumerated sections? (E.g, 1.1, 1.1.1, 1.2, etc.)
 (define %section-autolabel% 
- #f)
+ #t)
 
 ;;Show URL links? If the text of the link and the URL are identical,
 ;;the parenthetical URL is suppressed.
@@ -33,14 +33,14 @@ $Id$
 ;'jade --> print' time tremendously keep this in mind before
 ;complaining!
 (define %footnote-ulinks%
-  #t)
+ #t)
 
 ;;Tex Backend on
 (define tex-backend 
  #t)
 
 ;;Define Line Spacing
-(define %line-spacing-factor% 1.1)
+(define %line-spacing-factor% 1.3)
 
 ;;Define the Paragraph Style
 (define para-style
@@ -82,7 +82,7 @@ $Id$
 
 ;;Do you want a TOC for the element part?
 (define %generate-part-toc% 
- #f)
+ #t)
 
 ;;Do you want the part toc on the part titlepage or separate?
 (define %generate-part-toc-on-titlepage%
@@ -90,11 +90,11 @@ $Id$
 
 ;;Generate Part Title Page?
 (define %generate-part-titlepage% 
-  #f)
+ #t)
 
 ;;Do you want the Part intro on the part title page?
 (define %generate-partintro-on-titlepage%
-  #t)
+ #t)
 
 ;;What elements should have a LOT?
 (define ($generate-book-lot-list$)
@@ -107,8 +107,7 @@ $Id$
 ;;Do you want Chapter's and Appendix's 
 ;;to have automatic labels?
 (define %chap-app-running-head-autolabel% 
-  #t)
-
+ #t)
 
 ;;======================================
 ;;Article Options
@@ -157,11 +156,11 @@ $Id$
 
 ;;How many Columns on the titlepage?
 (define %titlepage-n-columns%
-  1)
+ 1)
 
 ;;Balance columns?
 (define %page-balance-colums%
-#t)
+ #t)
 
 ;;======================================
 ;;Fonts
@@ -170,7 +169,7 @@ $Id$
 ;;Defines the general size of the text in the document. normal(10),
 ;;presbyopic(12), and large-type(24). 
 (define %visual-acuity%
- "normal")
+ "presbyopic")
 
 ;;What font would you like for titles?
 (define %title-font-family% 
@@ -207,7 +206,7 @@ $Id$
 
 ;;How much indentation for the body?
 (define %body-start-indent% 
- 4pi)
+ 0pi)
 
 ;;How big is the left margin? (relative to physical page)
 (define %left-margin% 
@@ -219,15 +218,15 @@ $Id$
 
 ;;How big do you want the margin at the top?
 (define %top-margin%
-(if (equal? %visual-acuity% "large-type")
+ (if (equal? %visual-acuity% "large-type")
       7.5pi
-      6pi))
+      8pi))
 
 ;;How big do you want the margin at the bottom?
 (define %bottom-margin% 
  (if (equal? %visual-acuity% "large-type")
       7.5pi 
-      5pi))
+      8pi))
 
 ;;Define the text width. (Change the elements in the formula rather
 ;;than the formula itself)
@@ -241,15 +240,15 @@ $Id$
 
 ;;Define distance between paragraphs
 (define %para-sep% 
- (/ %bf-size% 2.0))
+ (/ %bf-size% 1.0))
 
 ;;Define distance between block elements (figures, tables, etc.).
 (define %block-sep% 
- (* %para-sep% 2.0))
+ (* %para-sep% 1.0))
 
 ;;Indent block elements?
 (define %block-start-indent% 
-  0pt)
+ 0pt)
 ;0pt
 
 ;;======================================
@@ -300,9 +299,6 @@ $Id$
 (define %component-subtitle-quadding% 
   'start)
 
-
-
-
 ;;======================================
 ;;Paper Options
 ;;======================================
@@ -345,7 +341,6 @@ $Id$
 (define (PROCWID ilvl)
   (if (> ilvl 1) 1.8em 1.4em))
 
-
 (define ($comptitle$)
   (make paragraph
 	font-family-name: %title-font-family%
@@ -363,7 +358,6 @@ $Id$
 ;;Callouts are confusing in Postscript... fix them.
 (define %callout-fancy-bug% 
  #f)
-
 
 ;;By default perils are centered and dropped into a box with a really
 ;;big border - I have simply decreased the border thickness -
@@ -410,7 +404,6 @@ $Id$
 	    adm-title)
 	  (process-children))))))
 
-
 ;;======================================
 ;;Non-printing Elements
 ;;======================================
@@ -433,7 +426,6 @@ $Id$
 ;;======================================
 ;;Formalpara titles
 ;;======================================
-
 
 ;;Change the way Formal Paragraph titles are displayed. The commented
 ;;out section will run the titles in the paragraphs. 
