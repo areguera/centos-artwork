@@ -31,7 +31,18 @@ function docbook_convertToPdf {
     # Tranform DocBook XML to PDF.
     ${RENDER_BACKEND}_convertToPdfFromXml
 
-    # Tranform DocBook SGML to PDF.
-    ${RENDER_BACKEND}_convertToPdfFromSgml
+    # Tranform DocBook SGML to PDF. 
+    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
+        # FIXME: This is only possible when no localization is
+        # performed (i.e., xml2po is not involved.) to main DocBook
+        # file, otherwise there will be errors and the PDF output
+        # won't be created. The errors come out because when we passed
+        # the validated DocBook file to xml2po all XML decimal
+        # entities inside the main DocBook file are expanded and set
+        # in the msgid field. Such expanded characters are not
+        # recognized by openjade when they are used as source to
+        # produce the PDF output. 
+        ${RENDER_BACKEND}_convertToPdfFromSgml
+    fi
 
 }
