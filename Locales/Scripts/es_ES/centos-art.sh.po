@@ -112,11 +112,11 @@ msgstr "Información de idioma predeterminada"
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromSgml.sh:106
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromXml.sh:128
 msgid "Cannot produce the PDF file."
-msgstr ""
+msgstr "No se pudo producir el fichero PDF."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromXml.sh:120
 msgid "Cannot produce the formatting object."
-msgstr ""
+msgstr "No se pudo producir el objecto de formateado (FO)."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToText.sh:67
 msgid "No way to convert from XHTML to plain-text found."
@@ -177,14 +177,13 @@ msgid "Created in CentOS Artwork Repository"
 msgstr "Creado en Repositorio Artístico de CentOS"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:118
-#, fuzzy
 msgid "The path provided does not support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:60
-#, fuzzy, sh-format
+#, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
-msgstr "El administrador de monitor \"$DM\" no está soportado aún."
+msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:145
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:164
@@ -192,9 +191,8 @@ msgid "None"
 msgstr "No hay"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:161
-#, fuzzy
 msgid "Validation failed."
-msgstr "Guía de virtualización"
+msgstr "Validación fallida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:42
 msgid "There is no action string to work with."
@@ -217,9 +215,8 @@ msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_doBaseActions.sh:48
-#, fuzzy
 msgid "No file to tune up found."
-msgstr "Ningún fichero fue encontrado."
+msgstr "No se encontró ningún fichero que afinar."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:93
 #, sh-format
@@ -2149,9 +2146,8 @@ msgid "Translation"
 msgstr "Traducción"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:125
-#, fuzzy
 msgid "Validating"
-msgstr "Actualizando"
+msgstr "Validando"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:130
 msgid "Configuration"
