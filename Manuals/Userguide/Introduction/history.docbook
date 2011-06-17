@@ -218,11 +218,11 @@
         Producing documentation through DocBook XML as default
         documentation backend consolidates <code>render</code> and
         <code>locale</code> even more.  In this configuration, once
-        the DocBook files are written, we use <code>locale</code>
+        the DocBook files are written, you use <code>locale</code>
         functionality to localize the DocBook files in your prefered
         language and later, using <code>render</code> functionality,
-        we produce the XTHML and PDF outputs as specified in the XSLT
-        customization driver we can define.
+        you produce the XTHML and PDF outputs as specified in a XSLT
+        or DSL customization layer.
     </para>
 
     </sect1>
