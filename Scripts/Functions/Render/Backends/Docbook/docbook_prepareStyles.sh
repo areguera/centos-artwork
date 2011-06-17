@@ -1,7 +1,13 @@
 #!/bin/bash
 #
-# docbook_prepareStyles.sh -- This function prepares XSL final
-# instances used in transformations based on XSL templates.
+# docbook_prepareStyles.sh -- This function prepares styles' final
+# instances used in transformations based on XSL or DSL templates.
+# There are translation markers inside the XSL and DSL templates that
+# need to be expand before they be used for transformations. This
+# function creates temporal instances of XSL and DSL templates with
+# translation markers expanded inside so as for transformation
+# commands (e.g., `xmltproc' or `openjade' through `docbook2pdf') to
+# use as style defintion.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -41,11 +47,11 @@ function docbook_prepareStyles {
         # with the information stored in the array.
         COUNT=$(( ${#STYLE_INSTANCE[*]} - 1 ))
 
-        # Create XSL instance from XSL template.
+        # Create style instance from style template.
         cp ${STYLE_TEMPLATE[$COUNT]} ${STYLE_INSTANCE[$COUNT]}
 
-        # Define both final an common XSL instances based on XSL
-        # template.
+        # Define both final an common style instances based on style
+        # templates.
         if [[ $STYLE_TEMPLATE_FILE =~ 'docbook2fo\.xsl$' ]];then
             STYLE_INSTANCE_FINAL=${STYLE_INSTANCE[$COUNT]}
         elif [[ $STYLE_TEMPLATE_FILE =~ 'docbook2pdf\.dsl$' ]];then
@@ -58,17 +64,18 @@ function docbook_prepareStyles {
 
     done
 
-    # Verify XSL final instance. This is the file used by `xsltproc'
-    # to produce the specified output. We cannot continue without it.
-    cli_checkFiles $STYLE_INSTANCE_FINAL 
+    # Verify style final instance. This is the file used by
+    # transformation command (`xsltproc' or `openjade') to produce the
+    # specified output. We cannot continue without it.
+    cli_checkFiles $STYLE_INSTANCE_FINAL
 
-    # Expand common translation markers in XSL common instances. This
-    # expantion is optional.
+    # Expand common translation markers in the common style instance,
+    # if it exists.
     if [[ -f $STYLE_INSTANCE_COMMON ]];then
         cli_replaceTMarkers $STYLE_INSTANCE_COMMON
     fi
 
-    # Expand specific translation markers in XSL final instance.
+    # Expand specific translation markers in final style instance.
     sed -r -i "s!=STYLE_XHTML_COMMON=!${STYLE_INSTANCE_COMMON}!" ${STYLE_INSTANCE_FINAL}
 
 }
