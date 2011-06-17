@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-10 19:07-0400\n"
+"POT-Creation-Date: 2011-06-17 14:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,77 +17,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_createStructure.sh:47
-msgid "Creating DocBook manual structure."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:36
-msgid "The following documentation chapter will be created:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:38
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:49
-msgid "Do you want to continue?"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Docbook/docbook_editEntry.sh:56
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:47
-msgid "The following documentation section will be created:"
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:32
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_copyEntry.sh:32
 msgid "Two paths are required."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:34
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_copyEntry.sh:34
 msgid "Only two paths are supported."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_copyEntry.sh:61
 msgid "The target location is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_copyEntry.sh:64
 msgid "The source location is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_copyEntry.sh:90
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteEntry.sh:102
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_copyEntry.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteEntry.sh:105
 msgid "Updating menus, nodes and cross-references."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_createStructure.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_createStructure.sh:38
 msgid "Creating manual structure."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteCrossReferences.sh:41
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_getNode.sh:33
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_restoreCrossReferences.sh:45
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_getNode.sh:33
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:45
 msgid "The first positional parameter cannot be empty."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteCrossReferences.sh:61
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteCrossReferences.sh:62
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_restoreCrossReferences.sh:53
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_restoreCrossReferences.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteCrossReferences.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:53
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_restoreCrossReferences.sh:54
 msgid "Removed"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_deleteEntry.sh:95
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_deleteEntry.sh:98
 msgid "An error occurred when deleting entries."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Backends/Texinfo/texinfo_editEntry.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:41
 msgid "The documentation entry provided hasn't a parent directory."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:70
-msgid "The backend provided is not supported."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:47
+msgid "The following documentation section will be created:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_getOptions.sh:142
-msgid "The action provided is not supported yet."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_editEntry.sh:49
+msgid "Do you want to continue?"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:32
@@ -96,8 +77,6 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:123
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:119
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup.sh:69
 msgid "A valid action is required."
 msgstr ""
 
@@ -130,12 +109,13 @@ msgstr ""
 msgid "Default locale information"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdf.sh:83
-msgid "Cannot produce the formatting object."
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromSgml.sh:106
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromXml.sh:128
+msgid "Cannot produce the PDF file."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdf.sh:91
-msgid "Cannot produce the PDF file."
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromXml.sh:120
+msgid "Cannot produce the formatting object."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToText.sh:67
@@ -196,17 +176,22 @@ msgstr ""
 msgid "Created in CentOS Artwork Repository"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:112
-msgid "The path provided do not support rendition."
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:118
+msgid "The path provided does not support rendition."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:127
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:137
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:60
+#, sh-format
+msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:145
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:164
 msgid "None"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:197
-msgid "The template file you try to render is not supported yet."
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:161
+msgid "Validation failed."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/render_getConfigOption.sh:42
@@ -225,8 +210,12 @@ msgstr ""
 msgid "The release version provided is not supported."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_xhtml_doHeadings.sh:131
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/Backends/Xhtml/xhtml_doToc.sh:137
 msgid "Table of contents"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_doBaseActions.sh:48
+msgid "No file to tune up found."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:93
@@ -2157,26 +2146,26 @@ msgid "Translation"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:125
-msgid "Design"
+msgid "Validating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:129
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:130
 msgid "Configuration"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:133
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:134
 msgid "Palette"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:157
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:158
 msgid "To know more, run the following command"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:167
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:168
 msgid "yes"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:170
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:171
 msgid "no"
 msgstr ""
 
