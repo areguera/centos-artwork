@@ -26,6 +26,17 @@ ul {
     list-style: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/ul.png") circle; 
     } 
 
-div.glosslist dl dd {
+
+div.glosslist dl,
+div.variablelist dl {
     margin-left: 3.5em;
+    }
+
+div.glosslist dl dd,
+div.variablelist dl dd {
+    margin-left: 3.5em;
+    }
+
+span.term {
+    font-weight: bold;
     }
