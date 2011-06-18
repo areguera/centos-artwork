@@ -29,17 +29,24 @@ function help {
     local ACTIONNAM=''
     local ACTIONVAL=''
 
-    # Initialize the search option. The search option (`--search')
-    # specifies the pattern used inside info files when an index
-    # search is perform.
+    # Initialize search option (`--search'). This option is used to
+    # look for documentation inside documentation backends.
     FLAG_SEARCH=""
 
     # Define manual top level directory. This is where
     # backend-specific documentation structures are stored in.
     MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/Repository"
 
-    # Initialize documentation backend used by default.
+    # Define manual language.
+    MANUAL_LANG=$(cli_getCurrentLocale)
+
+    # Define default documentation backend.
     MANUAL_BACKEND='texinfo'
+
+    # Define backend directory path. This is the place where common
+    # files to all languages and language-specific directories are
+    # stored in.
+    MANUAL_BACKEND_DIR=${MANUAL_TLDIR}/$(cli_getRepoName $MANUAL_BACKEND -d)
 
     # Interpret option arguments passed through the command-line.
     ${FUNCNAM}_getOptions
@@ -54,11 +61,10 @@ function help {
         ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
 
     # Execute backend-specific actions.
-    ${MANUAL_BACKEND}_${ACTIONNAM}
+    ${MANUAL_BACKEND} $@
 
     # Unset backend-specific functionalities.
     cli_unsetFunctions "${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
         ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
-
 
 }
