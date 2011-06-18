@@ -40,7 +40,10 @@ function docbook_convertToXhtmlChunk {
 
     # Clean up output directory. This is required in order to prevent
     # old files from remaining therein when they are no longer needed.
-    rm -r "${DST}" && mkdir ${DST}
+    if [[ -d ${DST} ]];then
+        rm -r "${DST}"
+    fi 
+    mkdir ${DST}
 
     # Print action message.
     cli_printMessage "${FILE}-xhtml" --as-creating-line
