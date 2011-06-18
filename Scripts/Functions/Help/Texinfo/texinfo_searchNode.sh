@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_searchNode.sh -- This function does a node search inside the
+# texinfo_searchNode.sh -- This function does a node search inside the
 # info document.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_searchNode {
+function texinfo_searchNode {
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateChaptersMenu.sh -- This function updates chapter menu.
+# texinfo_updateChaptersMenu.sh -- This function updates chapter menu.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -22,7 +22,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateChaptersMenu {
+function texinfo_updateChaptersMenu {
 
     local ACTION=$1
     local MENUCHAPTERS=''

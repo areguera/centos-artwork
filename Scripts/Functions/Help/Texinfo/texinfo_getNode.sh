@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_getNode.sh -- This function cleans up the action value
+# texinfo_getNode.sh -- This function cleans up the action value
 # (ACTIONVAL) directory to make a node name from it.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_getNode {
+function texinfo_getNode {
 
     # Define documentation entry.
     local MANUAL_ENTRY="$1"

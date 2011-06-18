@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFileDocbook.sh -- This function exports
+# texinfo_updateOutputFileDocbook.sh -- This function exports
 # documentation manual to DocBook format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileDocbook {
+function texinfo_updateOutputFileDocbook {
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.docbook" --as-updating-line

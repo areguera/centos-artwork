@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFilePlaintext.sh -- This function exports
+# texinfo_updateOutputFilePlaintext.sh -- This function exports
 # documentation manual to plain-text format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFilePlaintext {
+function texinfo_updateOutputFilePlaintext {
 
     # Output action message.
     cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-updating-line

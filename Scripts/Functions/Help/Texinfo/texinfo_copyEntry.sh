@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_copyEntry.sh -- This function copies documentation entries
+# texinfo_copyEntry.sh -- This function copies documentation entries
 # inside the working copy and updates the documentation structure to
 # reflect the changes.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_copyEntry {
+function texinfo_copyEntry {
 
     # Verify number of non-option arguments passed to centos-art.sh
     # script.

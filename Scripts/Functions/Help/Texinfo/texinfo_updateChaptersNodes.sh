@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateChaptersNodes.sh -- This function updates nodes of
+# texinfo_updateChaptersNodes.sh -- This function updates nodes of
 # chapters based on menu of chapters.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateChaptersNodes {
+function texinfo_updateChaptersNodes {
 
     # Build list "nodes of chapters" based on menu of chapters.
     local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} \

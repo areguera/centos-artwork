@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# help_updateOutputFileXml.sh -- This function exports documentation
+# texinfo_updateOutputFileXml.sh -- This function exports documentation
 # manual to XML format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function help_updateOutputFileXml {
+function texinfo_updateOutputFileXml {
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.xml" --as-updating-line
