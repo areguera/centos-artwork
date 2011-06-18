@@ -33,22 +33,22 @@ function docbook_convertToXhtmlChunk {
     local -a STYLE_INSTANCE
     local STYLE_INSTANCE_FINAL=''
 
+    # Define absolute path to PDF target file. This is the final
+    # location the PDF file produced as result of DocBook to PDF
+    # transformation will be stored in.
+    local DST="${FILE}-xhtml/"
+
+    # Clean up output directory. This is required in order to prevent
+    # old files from remaining therein when they are no longer needed.
+    rm -r "${DST}" && mkdir ${DST}
+
     # Print action message.
-    if [[ -d ${FILE}-xhtml ]];then
-        cli_printMessage "${FILE}-xhtml" --as-updating-line
-    else
-        cli_printMessage "${FILE}-xhtml" --as-creating-line
-    fi
+    cli_printMessage "${FILE}-xhtml" --as-creating-line
 
     # Define absolute path to DocBook source file. This is the
     # repository documentation manual file where DOCTYPE and ENTITY
     # definition lines are set.
     local SRC=${INSTANCE}
-
-    # Define absolute path to PDF target file. This is the final
-    # location the PDF file produced as result of DocBook to PDF
-    # transformation will be stored in.
-    local DST="${FILE}-xhtml/"
 
     # Prepare XSL final instances used in transformations.
     ${RENDER_BACKEND}_prepareStyles $(cli_getFilesList \
