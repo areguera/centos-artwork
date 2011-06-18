@@ -36,7 +36,7 @@ function help {
 
     # Define manual top level directory. This is where
     # language-specific documentation structures are stored in.
-    MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/Repository"
+    MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/Repository/Texinfo"
 
     # Define file name (without extension) for documentation manual.
     MANUAL_NAME=$(cli_getRepoName "repository" -f)
