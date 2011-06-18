@@ -1,9 +1,7 @@
-/* CSS
+/*
+ * Texi2HTML
  *
- * repository.css -- This file extends `base-app.css' to provide
- * specific visual style to Texi2HTML output.
- *
- * Copyright (C) 2009-2011 Alain Reguera Delgado
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -24,9 +22,12 @@
  * ----------------------------------------------------------------------
  */
 
-/* Define default visual style.
--------------------------------*/
+/* Reset browser's default definitions. 
+--------------------------------------------------------------------*/
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/default.css");
+
+/* Customize default definitions.
+--------------------------------------------------------------------*/
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/base.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/headings.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/paragraphs.css");
@@ -37,8 +38,9 @@
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/forms.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/ads.css");
 
-/* Texi2html specific definitions.
-----------------------------------*/
+/* Customize Texi2HTML specific definitions.
+--------------------------------------------------------------------*/
+
 div#page-body div#content {
     padding-top: 5px;
     padding-bottom: 5px;
