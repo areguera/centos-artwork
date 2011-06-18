@@ -42,6 +42,13 @@ function texinfo {
     # related files (.info, .pdf, .xml, etc.).
     MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
+    # Define default behaviour when no action has been provided to
+    # `centos-art.sh' script command-line interface.
+    if [[ $ACTIONNAM == '' ]];then
+        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
+        exit
+    fi
+
     # Define chapter name of directory where repository documentation
     # entries will be stored in.
     MANUAL_CHAPTER_NAME=$(cli_getRepoName "Directories" -d)
@@ -86,13 +93,13 @@ function texinfo {
     # don't need action value at all (e.g., searching, reading and
     # updating output files). This way, the execution of backend
     # functionalities is splitted here.
-    if [[ $ACTIONNAM =~ "(copy|rename|delete)Entry" ]];then
+    if [[ $ACTIONNAM =~ "^(copy|rename|delete)Entry$" ]];then
 
         # Execute backend action names that may need to use more than
         # one action value.
         ${MANUAL_BACKEND}_${ACTIONNAM} $@
 
-    elif [[ $ACTIONNAM =~ "(search(Index|Node)|updateOutputFiles)" ]];then
+    elif [[ $ACTIONNAM =~ "^(search(Index|Node)|updateOutputFiles)$" ]];then
 
         # Execute backend action names that might not need any action
         # value as reference to do their work.

@@ -38,14 +38,6 @@ function help_getOptions {
     # parser.
     eval set -- "$ARGUMENTS"
 
-    # Define default action for help functionality.  This is, the
-    # action performed when no non-option argument is passed to
-    # `centos-art.sh' script command-line internface.
-    if [[ $# -le 1 ]];then
-        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
-        exit
-    fi
-
     # Define action to take for each option passed.
     while true; do
         case "$1" in
