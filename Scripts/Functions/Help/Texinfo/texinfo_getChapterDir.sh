@@ -40,7 +40,7 @@ function texinfo_getChapterDir {
     # their own files, they all will be written inside the same
     # section file that represents the repository documentation entry.
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-        ${FUNCNAM}_getEntry $MANUAL_ENTRY | cut -d / -f-8
+        ${MANUAL_BACKEND}_getEntry $MANUAL_ENTRY | cut -d / -f-8
     done | sort | uniq
 
 }

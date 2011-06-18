@@ -49,11 +49,11 @@ function texinfo_editEntry {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
         # Update chapter section related menu.
-        ${FUNCNAM}_updateMenu
+        ${MANUAL_BACKEND}_updateMenu
 
         # Update chapter section related nodes (based on chapter
         # section related menu).
-        ${FUNCNAM}_updateNodes
+        ${MANUAL_BACKEND}_updateNodes
 
         # Update old missing cross references. If for some reason a
         # documentation entry is removed by mistake, and that mistake
@@ -61,7 +61,7 @@ function texinfo_editEntry {
         # into the repository, rebuild the missing cross reference
         # message to use the correct link to the documentation
         # section.
-        ${FUNCNAM}_restoreCrossReferences $MANUAL_ENTRY
+        ${MANUAL_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
 
     else
 

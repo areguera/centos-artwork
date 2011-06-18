@@ -26,17 +26,17 @@
 function texinfo_renameEntry {
 
     # Copy source documentation entry.
-    ${FUNCNAM}_copyEntry "$1" "$2"
+    ${MANUAL_BACKEND}_copyEntry "$1" "$2"
 
     # Delete source documentation entry. The source documentation
     # entry has been copied already, so to create the rename effect
     # delete it from repository filesystem.
-    ${FUNCNAM}_deleteEntry "$1"
+    ${MANUAL_BACKEND}_deleteEntry "$1"
 
     # At this point, source documentation entry has been removed and
     # all menu, nodes and cross-references have been commented. So,
     # replace commented menu, nodes and cross-reference information
     # from source to target documentation entry.
-    ${FUNCNAM}_renameCrossReferences "$1" "$2"
+    ${MANUAL_BACKEND}_renameCrossReferences "$1" "$2"
 
 }

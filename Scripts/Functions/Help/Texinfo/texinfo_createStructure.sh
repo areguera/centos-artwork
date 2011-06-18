@@ -60,14 +60,14 @@ function texinfo_createStructure {
     done
 
     # Update manual chapter related files.
-    ${FUNCNAM}_createChapters
+    ${MANUAL_BACKEND}_createChapters
 
     # Update manual chapter related menu.
-    ${FUNCNAM}_updateChaptersMenu
+    ${MANUAL_BACKEND}_updateChaptersMenu
 
     # Update manual chapter related nodes (based on chapter related
     # menu).
-    ${FUNCNAM}_updateChaptersNodes
+    ${MANUAL_BACKEND}_updateChaptersNodes
 
     # Commit changes from working copy to central repository only.  At
     # this point, changes in the repository are not merged in the

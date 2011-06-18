@@ -39,11 +39,11 @@ function texinfo_copyEntry {
 
     # Define source documentation entry. This is the documentation
     # entry that will be duplicated.
-    local MANUAL_ENTRY_SRC=$(${FUNCNAM}_getEntry "${1}")
+    local MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry "${1}")
 
     # Define target documentation entry. This is the new documentation
     # entry created from the source documentation entry.
-    local MANUAL_ENTRY_DST=$(${FUNCNAM}_getEntry "${2}")
+    local MANUAL_ENTRY_DST=$(${MANUAL_BACKEND}_getEntry "${2}")
 
     # Verify parent directory of target documentation entry. If it
     # doesn't exist, create it and add it to version control.
@@ -97,12 +97,12 @@ function texinfo_copyEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        ${FUNCNAM}_updateMenu
-        ${FUNCNAM}_updateNodes
+        ${MANUAL_BACKEND}_updateMenu
+        ${MANUAL_BACKEND}_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        ${FUNCNAM}_restoreCrossReferences $MANUAL_ENTRY
+        ${MANUAL_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
 
     done
 

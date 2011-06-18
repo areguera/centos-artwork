@@ -71,7 +71,7 @@ function texinfo {
     fi
 
     # Create documentation structure, if it doesn't exist.
-    ${FUNCNAM}_createStructure
+    ${MANUAL_BACKEND}_createStructure
 
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
@@ -86,13 +86,13 @@ function texinfo {
     # don't need action value at all (e.g., searching, reading and
     # updating output files). This way, the execution of backend
     # functionalities is splitted here.
-    if [[ $ACTIONNAM =~ "${FUNCNAM}_(copy|rename|delete)Entry" ]];then
+    if [[ $ACTIONNAM =~ "${MANUAL_BACKEND}_(copy|rename|delete)Entry" ]];then
 
         # Execute backend action names that may need to use more than
         # one action value.
         ${ACTIONNAM} $ARGUMENTS
 
-    elif [[ $ACTIONNAM =~ "${FUNCNAM}_(search(Index|Node)|updateOutputFiles)" ]];then
+    elif [[ $ACTIONNAM =~ "${MANUAL_BACKEND}_(search(Index|Node)|updateOutputFiles)" ]];then
 
         # Execute backend action names that might not need any action
         # value as reference to do their work.
@@ -109,7 +109,7 @@ function texinfo {
         for ACTIONVAL in $ARGUMENTS;do
         
             # Define documentation entry.
-            MANUAL_ENTRY=$(${FUNCNAM}_getEntry $ACTIONVAL)
+            MANUAL_ENTRY=$(${MANUAL_BACKEND}_getEntry $ACTIONVAL)
 
             # Execute backend action names that may need to use more
             # than one action value.
@@ -126,6 +126,6 @@ function texinfo {
     cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
 
     # Rebuild output files to propagate recent changes.
-    ${FUNCNAM}_updateOutputFiles
+    ${MANUAL_BACKEND}_updateOutputFiles
 
 }

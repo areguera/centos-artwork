@@ -112,7 +112,7 @@ function texinfo_updateNodes {
 
             # Expand `See also' subsection translation markers in
             # documentation entry.
-            ${FUNCNAM}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
+            ${MANUAL_BACKEND}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
 
         fi
 

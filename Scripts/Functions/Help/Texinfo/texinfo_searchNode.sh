@@ -30,7 +30,7 @@ function texinfo_searchNode {
 
     # Define list of documentation entries.
     local MANUAL_ENTRY=''
-    local MANUAL_ENTRIES=$(${FUNCNAM}_getEntry "$@")
+    local MANUAL_ENTRIES=$(${MANUAL_BACKEND}_getEntry "$@")
 
     # Loop through manual entries and read related node.
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
@@ -43,9 +43,9 @@ function texinfo_searchNode {
         # the info file at the specified node for reading it on the
         # terminal. Otherwise, ask the user to create it.
         if [[ -f "$MANUAL_ENTRY" ]];then
-            /usr/bin/info --node="$(${FUNCNAM}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
+            /usr/bin/info --node="$(${MANUAL_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
         else
-            ${FUNCNAM}_editEntry
+            ${MANUAL_BACKEND}_editEntry
         fi
 
     done

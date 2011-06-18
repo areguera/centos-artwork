@@ -36,7 +36,7 @@ function texinfo_updateMenu {
 
     # Build the menu node related to the entry being processed
     # currently.
-    local MENUNODE=$(${FUNCNAM}_getNode "$MANUAL_ENTRY")
+    local MENUNODE=$(${MANUAL_BACKEND}_getNode "$MANUAL_ENTRY")
 
     # Give format to menu line using texinfo style.
     local MENULINE="* ${MENUNODE}::" 
