@@ -90,13 +90,13 @@ function texinfo {
 
         # Execute backend action names that may need to use more than
         # one action value.
-        ${MANUAL_BACKEND}_${ACTIONNAM} "$ARGUMENTS"
+        ${MANUAL_BACKEND}_${ACTIONNAM} $@
 
     elif [[ $ACTIONNAM =~ "(search(Index|Node)|updateOutputFiles)" ]];then
 
         # Execute backend action names that might not need any action
         # value as reference to do their work.
-        ${MANUAL_BACKEND}_$ACTIONNAM "$ARGUMENTS"
+        ${MANUAL_BACKEND}_$ACTIONNAM $@
 
         # Backend action names that don't need to use any action value
         # as reference to do their work are of one-pass only. They are
@@ -106,7 +106,7 @@ function texinfo {
     else
 
         # Execute backend action names that use one action value, only.
-        for ACTIONVAL in $ARGUMENTS;do
+        for ACTIONVAL in $@;do
         
             # Define documentation entry.
             MANUAL_ENTRY=$(${MANUAL_BACKEND}_getEntry $ACTIONVAL)
