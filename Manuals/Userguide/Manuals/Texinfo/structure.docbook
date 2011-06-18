@@ -1,0 +1,116 @@
+<sect1 id="manuals-texinfo-structure">
+
+    <title>Document structure</title>
+
+    <para>
+        Based on the fact that there is only one repository directory
+        structure to document, there is only one documentation manual
+        structure based on Texinfo documentation backend to maintain,
+        for each language we want to provide support.
+    </para>
+
+    <para>
+        Each language-specific documentation structure based on
+        Texinfo documentation backend is stored in the <filename
+        class="directory">trunk/Manuals/Repository</filename>
+        directory. Inside this location, we use the file
+        <filename>repository-init.pl</filename>,
+        <filename>repository.css</filename> and
+        <filename>repository.sed</filename> to control common
+        characteristics of all language-specific document structures
+        (e.g., common initialization of <command>texi2html</command>
+        as well as common visual styles and transformations applied to
+        final XHTML output).
+    </para>
+
+    <example id="manuals-texinfo-structure-fig1">
+    <title>Texinfo document structure.</title>
+    <screenshot>
+    <screeninfo>Texinfo document structure.</screeninfo>
+    <mediaobject>
+    <textobject>
+    <programlisting>trunk/Manuals/Repository
+|-- $LANG
+|   |-- Directories
+|   |   |-- chapter-menu.texinfo
+|   |   |-- chapter-nodes.texinfo
+|   |   |-- chapter.texinfo
+|   |   |-- trunk/Identity.texinfo
+|   |   `-- trunk.texinfo
+|   |-- Introduction
+|   |   |-- chapter-menu.texinfo
+|   |   |-- chapter-nodes.texinfo
+|   |   |-- chapter.texinfo
+|   |   `-- history.texinfo
+|   |-- Licenses
+|   |   |-- chapter-menu.texinfo
+|   |   |-- chapter-nodes.texinfo
+|   |   `-- chapter.texinfo
+|   |-- repository-index.texinfo
+|   |-- repository-menu.texinfo
+|   |-- repository-nodes.texinfo
+|   `-- repository.texinfo
+|-- repository-init.pl
+|-- repository.css
+`-- repository.sed</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
+    <para>
+        Inside each language-specific directory, we have the <filename
+        class="directory">Introduction</filename>, <filename
+        class="directory">Directories</filename> and <filename
+        class="directory">Licenses</filename> directories to cover
+        manual's introduction, documentation of repository directories
+        and license information.  In addition to these directories, we
+        also have the <filename>repository.texinfo</filename>,
+        <filename>repository-index.texinfo</filename>,
+        <filename>repository-menu.texinfo</filename> and
+        <filename>repository-nodes.texinfo</filename> files to make up
+        the manual's main structure (e.g., title, copyright notice,
+        chapters, appendixes, indexes and all the similar stuff a
+        documentation manual should have).
+    </para>
+
+    <para>
+        Inside chapter directories, we have at least the files
+        <filename>chapter.texinfo</filename>,
+        <filename>chapter-menu.texinfo</filename> and
+        <filename>chapter-nodes.texinfo</filename> to control section
+        definitions inside the chapter. In addition to these files, we
+        have documentation entries to store the information itself.
+    </para>
+            
+    <para>
+        Inside <filename class="directory">Introduction</filename>
+        directory, documentation entries are managed without any
+        functionality's help, you need to take care of them by your
+        own.
+    </para>
+
+    <para>
+        Inside <filename class="directory">Directories</filename>
+        directory, documentation entries are all managed by the
+        <function>help</function> functionality and you don't need to
+        take care of them. To manage documentation entries here you
+        need to use the <function>help</function> functionality as
+        described in <xref linkend="scripts-bash-help" />.
+    </para>
+
+    <para>
+        Inside <filename class="directory">Licenses</filename>
+        directory, there aren't documentation entries. Instead, they
+        are imported from <filename
+        class="directory">trunk/Scripts/Functions/Help/Templates/$LANG/Licenses/</filename>
+        directory.  We did it this way to reuse license files when
+        different language-specific document structures, based on
+        Texinfo documentation backend, are created for first time.
+        There is no need to duplicate the license files inside each
+        language-specific document structure if they can be placed in
+        a single location and then be imported to reduce the amount of
+        files in need of maintainance.
+    </para>
+
+</sect1>

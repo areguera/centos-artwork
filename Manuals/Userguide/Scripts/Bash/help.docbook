@@ -1,0 +1,269 @@
+<sect1 id="scripts-bash-help">
+
+    <title>The <function>help</function> functionality</title>
+
+    <para>
+        The <function>help</function> functionality is the interface
+        the <command>centos-art.sh</command> script provides to
+        control frequent documentation tasks (e.g., reading, editing,
+        update output files, etc.) requied by specific documentation
+        backends.  Documentation backends supported by
+        <function>help</function> functionality are described in <xref
+        linkend="manuals"/>.
+    </para>
+
+    <simplesect>
+
+    <title>Synopsis</title>
+
+        <para>
+            <userinput>centos-art help [OPTIONS] path/to/dir &#8230;</userinput>
+        </para>
+
+        <para>
+            The <parameter>path/to/dir</parameter> parameter specifies
+            the directory structure inside the working copy of The
+            CentOS Artwork Repository you want to process the related
+            documentation entry for. More than one directory structure
+            can be passed as <parameter>path/to/dir</parameter>
+            parameter.
+        </para>
+
+        <para>
+            The <function>help</function> functionality accepts the
+            following options:
+
+            <variablelist>
+
+            <varlistentry>
+            <term><option>--quiet</option></term>
+            <listitem>
+            <para>
+                Supress all output messages except error messages.
+                When this option is passed, all confirmation requests
+                are supressed as well and a possitive answer is
+                assumed for them, just as if the
+                <option>--answer-yes</option> option had been
+                provided.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--answer-yes</option></term>
+            <listitem>
+            <para>
+                Assume <emphasis>yes</emphasis> to all confirmation requests.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--dont-commit-changes</option></term>
+            <listitem>
+            <para>
+                Supress all commit and update actions realized over
+                files, before and after the action itself had took
+                place over files in the working copy.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--backend="STRING"</option></term>
+            <listitem>
+            <para>
+                Specify <replaceable>STRING</replaceable> as
+                default documentation backend to use. Possible
+                arguments to this options are:
+                <literal>texinfo</literal>
+                or <literal>docbook</literal>. If this option is not
+                provided, <literal>texinfo</literal> is used as
+                default documentation backend.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--search="STRING"</option></term>
+            <listitem>
+            <para>
+                Go to node pointed by index entry <literal>STRING</literal>.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--edit</option></term>
+            <listitem>
+            <para>
+                Edit documentation entry related to path specified by
+                <parameter>path/to/dir</parameter> parameter.
+            </para>
+            <para>
+                The <parameter>path/to/dir</parameter> parameter must
+                point to any directory inside the repository.  When
+                more than one <parameter>path/to/dir</parameter> are
+                passed as non-option arguments to the
+                <command>centos-art.sh</command> script command-line,
+                they are queued for further edition.  The edition
+                itself takes place through your default text editor
+                (e.g., the one you specified in the
+                <envar>EDITOR</envar> environment variable) and the
+                text editor opens one file at time (i.e., the queue of
+                files to edit is not loaded in the text editor.).
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--read</option></term>
+            <listitem>
+            <para>
+                Read documentation entry specified by
+                <parameter>path/to/dir</parameter> path.  This option
+                is used internally by <command>centos-art.sh</command>
+                script to print out the reference you can follow to
+                know more about an error message.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--update</option></term>
+            <listitem>
+            <para>
+                Update output files rexporting them from the specified
+                backend source files.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--copy</option></term>
+            <listitem>
+            <para>
+                Duplicate documentation entries inside the working
+                copy of the repository.
+            </para>
+            <para>
+                When documentation entries are copied, it is required
+                to pass two non-option parameters in the command-line.
+                The first non-option parameter is considered the
+                source location and the second one the target
+                location.  Both source location and target location
+                must point to a directory under the working copy.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--delete</option></term>
+            <listitem>
+            <para>
+                Delete documentation entries specified by
+                <parameter>path/to/dir</parameter> inside the working
+                copy. It is possible to delete more than one
+                documentation entry by specifying more
+                <parameter>path/to/dir</parameter> parameters in the
+                command-line.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            <varlistentry>
+            <term><option>--rename</option></term>
+            <listitem>
+            <para>
+                Rename documentation entries inside the working copy.
+            </para>
+            <para>
+                When documentation entries are renamed, it is required
+                to pass only two non-option parameters to the
+                command-line. The first non-option parameter is
+                considered the source location and the second one the
+                target location.  Both source location and target
+                location must point to a directory under the working
+                copy.
+            </para>
+            </listitem>
+            </varlistentry>
+
+            </variablelist>
+        </para>
+
+        <para>
+            When documentation entries are removed (e.g., through
+            <option>--delete</option> or <option>--rename</option>
+            options), the <function>help</function> functionality
+            takes care of updating nodes, menus and cross references
+            related to documentation entries in order to keep the
+            manual structure in a correct state.
+        </para>
+
+    </simplesect>
+
+    <simplesect>
+
+    <title>Examples</title>
+
+    <para>
+        <variablelist> 
+        <varlistentry>
+        <term><userinput>centos-art help --edit trunk/Identity</userinput></term>
+        <listitem>
+        <para>
+            This command edits the documentation entry related to
+            <filename class="directory">trunk/Identity</filename>
+            directory inside the repository working copy.
+        </para>
+        </listitem>
+        </varlistentry>
+
+        <varlistentry>
+        <term><userinput>centos-art help --read trunk/Identity</userinput></term>
+        <listitem>
+        <para>
+            This command reads the documentation entry related to
+            <filename class="directory">trunk/Identity</filename>
+            directory inside the repository working copy.
+        </para>
+        </listitem>
+        </varlistentry>
+
+        </variablelist> 
+    </para>
+    </simplesect>
+
+    <simplesect>
+
+        <title>Author</title>
+
+        <para>
+            Written by Alain Reguera Delgado.
+        </para>
+
+    </simplesect>
+
+    <simplesect>
+        <title>Reporting bugs</title>
+        <para>
+            Report bugs to <ulink
+            url="mailto:centos-artwork@centos.org">centos-artwork@centos.org</ulink>
+            mailing list.
+        </para>
+    </simplesect>
+
+    <simplesect>
+        <title>Copyright</title>
+        <para>
+            Copyright &copy; 2009, 2010, 2011 The CentOS Artwork SIG.
+        </para>
+        <para>
+            This  is free software.  You may redistribute copies of it
+            under the terms of the <xref linkend="licenses-gpl"/>.
+            There is NO WARRANTY, to the extent permitted by law.
+        </para>
+    </simplesect>
+
+</sect1>

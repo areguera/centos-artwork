@@ -1,21 +1,20 @@
-<part>
+<part id="manuals">
 
     <title>Documentation</title>
 
     <partintro>
-        <para>...</para>
+        <para>
+            This part describes the repository's documentation work
+            line. Here you'll find how documentation backends inside
+            The CentOS Distribution are used to produce documentation
+            manuals inside The CentOS
+            Artwork Repository.
+        </para>
+
     </partintro>
 
-    <chapter>
-            <title>...</title>
-            <para>...</para>
-
-        <sect1>
-            <title>...</title>
-            <para>...</para>
-        </sect1>
-
-    </chapter>
+    &manuals-texinfo;
+    &manuals-docbook;
 
 </part>
 
