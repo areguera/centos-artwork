@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # help_getOptions.sh -- This function interpretes arguments passed to
-# `manual' functionality and calls actions accordingly.
+# `help' functionality and calls actions accordingly.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -29,7 +29,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -66,39 +66,44 @@ function help_getOptions {
                 shift 1
                 ;;
 
+            --backend )
+                MANUAL_BACKEND="$(cli_getRepoName "$2" -f)"
+                shift 2
+                ;;
+
             --search )
-                ACTIONNAM="${FUNCNAM}_searchIndex"
+                ACTIONNAM="searchIndex"
                 FLAG_SEARCH="$2"
                 shift 2
                 ;;
     
             --edit )
-                ACTIONNAM="${FUNCNAM}_editEntry"
+                ACTIONNAM="editEntry"
                 shift 1
                 ;;
 
             --copy )
-                ACTIONNAM="${FUNCNAM}_copyEntry"
+                ACTIONNAM="copyEntry"
                 shift 1
                 ;;
     
             --delete )
-                ACTIONNAM="${FUNCNAM}_deleteEntry"
+                ACTIONNAM="deleteEntry"
                 shift 1
                 ;;
 
             --rename )
-                ACTIONNAM="${FUNCNAM}_renameEntry"
+                ACTIONNAM="renameEntry"
                 shift 1
                 ;;
     
             --update )
-                ACTIONNAM="${FUNCNAM}_updateOutputFiles"
+                ACTIONNAM="updateOutputFiles"
                 shift 1
                 ;;
     
             --read )
-                ACTIONNAM="${FUNCNAM}_searchNode"
+                ACTIONNAM="searchNode"
                 shift 1
                 ;;
             
