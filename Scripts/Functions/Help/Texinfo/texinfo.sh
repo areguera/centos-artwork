@@ -33,9 +33,9 @@ function texinfo {
     # Define file extension used by documentation manual source files.
     MANUAL_EXTENSION='texinfo'
 
-    # Define manual base directory. This is where the
-    # language-specific document initialization file is stored in.
-    MANUAL_BASEDIR="${MANUAL_TLDIR}/Texinfo/${MANUAL_LANG}"
+    # Define manual base directory. This is where language-specific
+    # documentation source files are stored in.
+    MANUAL_BASEDIR="${MANUAL_BACKEND_DIR}/${MANUAL_LANG}"
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build output
@@ -62,7 +62,7 @@ function texinfo {
     MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}
 
     # Define absolute path to backend template files.
-    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/${MANUAL_LANG}
+    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Texinfo/Templates/${MANUAL_LANG}
 
     # Verify absolute path to backend template files. If the absolute
     # path doesn't exist, use the English language templates.
@@ -86,17 +86,17 @@ function texinfo {
     # don't need action value at all (e.g., searching, reading and
     # updating output files). This way, the execution of backend
     # functionalities is splitted here.
-    if [[ $ACTIONNAM =~ "${MANUAL_BACKEND}_(copy|rename|delete)Entry" ]];then
+    if [[ $ACTIONNAM =~ "(copy|rename|delete)Entry" ]];then
 
         # Execute backend action names that may need to use more than
         # one action value.
-        ${ACTIONNAM} $ARGUMENTS
+        ${MANUAL_BACKEND}_${ACTIONNAM} "$ARGUMENTS"
 
-    elif [[ $ACTIONNAM =~ "${MANUAL_BACKEND}_(search(Index|Node)|updateOutputFiles)" ]];then
+    elif [[ $ACTIONNAM =~ "(search(Index|Node)|updateOutputFiles)" ]];then
 
         # Execute backend action names that might not need any action
         # value as reference to do their work.
-        $ACTIONNAM $ARGUMENTS
+        ${MANUAL_BACKEND}_$ACTIONNAM "$ARGUMENTS"
 
         # Backend action names that don't need to use any action value
         # as reference to do their work are of one-pass only. They are
@@ -113,7 +113,7 @@ function texinfo {
 
             # Execute backend action names that may need to use more
             # than one action value.
-            $ACTIONNAM
+            ${MANUAL_BACKEND}_$ACTIONNAM
 
         done
 
