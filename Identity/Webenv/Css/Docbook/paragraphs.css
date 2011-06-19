@@ -29,6 +29,22 @@ p {
 /* Phrase elements
 -----------------------------------------------*/
 
+.command {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    }
+
+.replaceable:before {
+    content: "<";
+    }
+
+.replaceable:after {
+    content: ">";
+    }
+
+.prompt {
+    background-color: #FFFAE9;
+    }
+
 /* Table of contents
 -----------------------------------------------*/
 
