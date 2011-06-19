@@ -2,115 +2,225 @@
 
     <title>Document Convenctions</title>
 
-    <para>In this manual the personal pronoun <emphasis>we</emphasis>
-    is used to repesent <emphasis>The CentOS Artwork SIG</emphasis>,
-    the group of persons that build The CentOS Project corporate
-    visual identity through the CentOS Artwork Repository.</para>
+    <para>
+        In this manual, certain words are represented in different
+        fonts, typefaces, sizes, and weights. This highlighting is
+        systematic; different words are represented in the same style
+        to indicate their inclusion in a specific category. The types
+        of words that are represented this way include the
+        following:
+    </para>
 
-    <para>In this manual, certain words are represented in different
-    fonts, typefaces, sizes, and weights. This highlighting is
-    systematic; different words are represented in the same style to
-    indicate their inclusion in a specific category. The types of
-    words that are represented this way include the following:</para>
+    <variablelist>
+        <varlistentry>
+            <term><command>command</command></term>
+            <listitem>
+                <para>
+                    Linux commands (and other operating system
+                    commands, when used) are represented this way.
+                    This style should indicate to you that you can
+                    type the word or phrase on the command line and
+                    press Enter to invoke a command. Sometimes a
+                    command contains words that would be displayed in
+                    a different style on their own (such as file
+                    names). In these cases, they are considered to be
+                    part of the command, so the entire phrase is
+                    displayed as a command.
+                </para>
+                <para>
+                    Example:
+                </para>
 
-    <glosslist>
-        <glossentry>
-            <glossterm><command>command</command></glossterm>
-            <glossdef>
-                <para> Linux commands (and other operating system
-                commands, when used) are represented this way. This
-                style should indicate to you that you can type the
-                word or phrase on the command line and press Enter to
-                invoke a command. Sometimes a command contains words
-                that would be displayed in a different style on their
-                own (such as file names). In these cases, they are
-                considered to be part of the command, so the entire
-                phrase is displayed as a command. For example:</para>
-
-                <para>Use the <command>centos-art identity
-                --render='path/to/dir'</command> command to produce
-                contents inside the <filename
-                class="directory">trunk/Identity</filename> directory
-                structure.</para>
+                <itemizedlist>
+                <listitem>
+                <para>
+                    Use the <command>centos-art render <filename
+                    class="directory">trunk/Manuals/Repository/Docbook</filename>
+                    --filter="repository"</command> command to produce
+                    the CentOS Artwork Repository User's Guide.
+                </para>
+                </listitem>
+                </itemizedlist>
                 
-            </glossdef>
-        </glossentry>
+            </listitem>
+        </varlistentry>
 
-        <glossentry>
-            <glossterm><filename>file name</filename></glossterm>
-            <glossdef>
-                <para>File names, directory names, paths, and RPM
-                package names are represented this way. This style
-                indicates that a particular file or directory exists
-                with that name on your system. Examples:</para>
+        <varlistentry>
+            <term><filename>file name</filename></term>
+            <listitem>
+                <para>
+                    File names, directory names, paths, and RPM
+                    package names are represented this way. This style
+                    indicates that a particular file or directory
+                    exists with that name on your system. 
+                </para>
+                <para>
+                    Example:
+                </para>
 
-                <para>The <filename>init.sh</filename> file in
-                <filename
-                class="directory">trunk/Scripts/Bash/Cli/</filename>
-                directory is the initialization script, written in
-                Bash, used to automate most of tasks in the
-                repository.</para>
+                <itemizedlist>
+                <listitem>
+                <para>
+                    The <filename>init.sh</filename> file in <filename
+                    class="directory">trunk/Scripts/Bash/Cli/</filename>
+                    directory is the initialization script, written in
+                    Bash, used to automate most of tasks in the
+                    repository.
+                </para>
+                </listitem>
+                <listitem>
+                <para>
+                    The <command>centos-art</command> command uses the
+                    <package>ImageMagick</package> RPM package to
+                    convert images from PNG format to other
+                    formats.
+                </para>
+                </listitem>
+                </itemizedlist>
 
-                <para>The <command>centos-art</command> command uses
-                the <package>ImageMagick</package> RPM package to
-                convert images from PNG format to other
-                formats.</para>
+            </listitem>
+        </varlistentry>
 
-            </glossdef>
-        </glossentry>
+        <varlistentry>
+            <term><keycap>key</keycap></term>
+            <listitem>
+                <para>
+                    A key on the keyboard is shown in this style.
+                </para>
+                <para>
+                    Example:
+                </para>
 
-        <glossentry>
-            <glossterm><keycap>key</keycap></glossterm>
-            <glossdef>
-                <para> A key on the keyboard is shown in this style.
-                For example:</para>
+                <itemizedlist>
+                <listitem>
+                <para>To use <keycap>Tab</keycap> completion to list
+                particular files in a directory, type
+                <command>ls</command>, then a character, and finally
+                the <keycap>Tab</keycap> key. Your terminal displays
+                the list of files in the working directory that begin
+                with that character.</para>
+                </listitem>
+                </itemizedlist>
+            </listitem>
+        </varlistentry>
 
-                <para>To use <keycap>TAB</keycap> completion to list
-                particular files in a directory, type @command{ls},
-                then a character, and finally the Tab key. Your
-                terminal displays the list of files in the working
-                directory that begin with that character.</para>
-            </glossdef>
-        </glossentry>
-
-        <glossentry>
-            <glossterm><keycombo action="simul"><keycap>key-combination</keycap></keycombo></glossterm>
-            <glossdef>
-                <para>A combination of keystrokes is represented in
-                this way. For example:</para>
-
-                <para>The <keycombo
-                action="simul"><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>Backspace</keycap></keycombo>
-                key combination exits your graphical session and
-                returns you to the graphical login screen or the
-                console.</para> 
+        <varlistentry>
+            <term><keycombo action="simul"><keycap>key</keycap><keycap>combination</keycap></keycombo></term>
+            <listitem>
+                <para>
+                    A combination of keystrokes is represented in this
+                    way.
+                </para>
+                <para>
+                    Example: 
+                </para>
+                <itemizedlist> 
+                <listitem> 
+                <para>
+                    The <keycombo
+                    action="simul"><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>Backspace</keycap></keycombo>
+                    key combination exits your graphical session and
+                    returns you to the graphical login screen or the
+                    console.
+                </para> 
+                </listitem>
+                </itemizedlist>
                 
-            </glossdef> 
+            </listitem> 
                 
-        </glossentry>
+        </varlistentry>
 
-        <glossentry>
-            <glossterm><computeroutput>computer output</computeroutput></glossterm>
-            <glossdef>
-            <para> Text in this style indicates text displayed to a
-            shell prompt such as error messages and responses to
-            commands. For example:</para>
-
-            <para>The <command>ls</command> command displays the
-            contents of a directory. For example:
+        <varlistentry>
+            <term><computeroutput>computer output</computeroutput></term>
+            <listitem>
+            <para>
+                Text in this style indicates text displayed to a shell
+                prompt such as error messages and responses to
+                commands. For example, the <command>ls</command>
+                command displays the contents of a directory using
+                this style:
+            </para>
 
 <programlisting>
-Config                          help_renameEntry.sh
-help_copyEntry.sh               help_restoreCrossReferences.sh
-help_deleteCrossReferences.sh   help_searchIndex.sh
+render_doTranslation.sh     render_getDirTemplate.sh    render_doBaseActions.sh
+render_getConfigOption.sh   render_getOptions.sh        render_doThemeActions.sh  
+render_getDirOutput.sh      render.sh
 </programlisting>
 
-            The output returned in response to the command (in this
-            case, the contents of the directory) is shown in this
-            style.</para>
-        </glossdef>
-    </glossentry>
-    </glosslist>
+            <para>
+                The output returned in response to the command (in
+                this case, the contents of the directory) is shown in
+                this style.
+            </para>
+        </listitem>
+    </varlistentry>
+
+    <varlistentry>
+        <term><prompt>prompt</prompt></term>
+        <listitem>
+        <para>
+            A prompt, which is a computer's way of signifying that it
+            is ready for you to input something, is shown in this
+            style. Examples:
+            <itemizedlist>
+                <listitem>
+                <para>
+                    <prompt>$</prompt>
+                </para>
+                </listitem>
+                <listitem>
+                <para>
+                    <prompt>#</prompt>
+                </para>
+                </listitem>
+                <listitem>
+                <para>
+                    <prompt>[centos@projects centos]$</prompt>
+                </para>
+                </listitem>
+                <listitem>
+                <para>
+                    <prompt>projects login:</prompt>
+                </para>
+                </listitem>
+            </itemizedlist>
+
+        </para>
+        </listitem>
+    </varlistentry>
+
+    <varlistentry>
+        <term><userinput>user input</userinput></term>
+        <listitem>
+        <para>
+            Text that the user types, either on the command line or
+            into a text box on a GUI screen, is displayed in this
+            style. In the following example,
+            <userinput>text</userinput> is displayed in this style: To
+            boot your system into the text based installation program,
+            you must type in the <userinput>text</userinput> command
+            at the <prompt>boot:</prompt> prompt.
+        </para>
+        </listitem>
+    </varlistentry>
+
+    <varlistentry>
+        <term><replaceable>replaceable</replaceable></term>
+        <listitem>
+        <para>
+           Text used in examples that is meant to be replaced with
+           data provided by the user is displayed in this style. In
+           the following example,
+           <replaceable>version-number</replaceable> is displayed in
+           this style: The directory for the kernel source is
+           <filename
+           class="directory">/usr/src/kernels/<replaceable>version-number</replaceable>/</filename>,
+           where <replaceable>version-number</replaceable> is the
+           version and type of kernel installed on this system. 
+        </para>
+        </listitem>
+    </varlistentry>
+    </variablelist>
 
     <para>Additionally, we use several different strategies to draw
     your attention to certain pieces of information. In order of

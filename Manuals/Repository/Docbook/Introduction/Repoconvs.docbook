@@ -1,37 +1,46 @@
-<chapter id="intro-usage" xreflabel="Usage convenctions">
+<chapter id="intro-usage">
 
     <title>Repository Convenctions</title>
 
-    <para>The CentOS Artwork Repository is supported by Subversion
-    (http://subversion.tigris.org/), a version control system which
-    allows you to keep old versions of files and directories (usually
-    source code), keep a log of who, when, and why changes occurred,
-    etc., like CVS, RCS or SCCS.</para>
+    <para>
+        The CentOS Artwork Repository is supported by <ulink
+        url="http://subversion.tigris.org/">Subversion</ulink>, a
+        version control system which allows you to keep old versions
+        of files and directories (usually source code), keep a log of
+        who, when, and why changes occurred, etc., like CVS, RCS or
+        SCCS.
+    </para>
 
-    <para>When using Subversion there is one "source repository" and
-    many "working copies" of that source repository. The working
-    copies are independent one another, can be distributed all around
-    the world and provide a local place for designers, documentors,
-    translators and programmers to perform their work in a
-    descentralized way.  The source repository, on the other hand,
-    provides a central place for all independent working copies to
-    interchange data and provides the information required to permit
-    extracting previous versions of files at any time.</para>
+    <para>
+        When using Subversion there is one "source repository" and
+        many "working copies" of that source repository. The working
+        copies are independent one another, can be distributed all
+        around the world and provide a local place for designers,
+        documentors, translators and programmers to perform their work
+        in a descentralized way.  The source repository, on the other
+        hand, provides a central place for all independent working
+        copies to interchange data and provides the information
+        required to permit extracting previous versions of files at
+        any time.
+    </para>
 
-    <sect1 id="repo-usage-policy" xreflabel="Policy">
+    <sect1 id="repo-usage-policy">
         
         <title>Policy</title>
         
-        <para>The CentOS Artwork Repository is a collaborative tool
-        that anyone can have access to. However, changing that tool in
-        any form is something that should be requested in the CentOS
-        Developers mailing list (centos-devel@centos.org).  Generally,
-        people download working copies from CentOS Artwork Repository,
-        study the repository organization, make some changes in their
-        working copies, make some tests to verify such changes do work
-        the way expected and finally request access to commit them up
-        to the CentOS Artwork Repository (i.e., the source repository)
-        for others to benefit from them.</para>
+        <para>
+            The CentOS Artwork Repository is a collaborative tool that
+            anyone can have access to. However, changing that tool in
+            any form is something that should be requested in the
+            CentOS Developers mailing list (centos-devel@centos.org).
+            Generally, people download working copies from CentOS
+            Artwork Repository, study the repository organization,
+            make some changes in their working copies, make some tests
+            to verify such changes do work the way expected and
+            finally request access to commit them up to the CentOS
+            Artwork Repository (i.e., the source repository) for
+            others to benefit from them.
+        </para>
         
         <para>Once you've received access to commit your changes,
         there is no need for you to request permission again to commit
@@ -72,7 +81,7 @@
         
     </sect1>
 
-    <sect1 id="intro-usage-worklines" xreflabel="Worklines">
+    <sect1 id="intro-usage-worklines">
         
         <title>Work Lines</title>
         
@@ -129,7 +138,7 @@
 
     </sect1>
 
-    <sect1 id="intro-usage-conbdirs" xreflabel="Relation between directories">
+    <sect1 id="intro-usage-conbdirs">
 
     <title>Relation Between Directories</title>
 
@@ -191,7 +200,7 @@
     
     </sect1>
 
-    <sect1 id="intro-usage-syncro" xreflabel="Syncronizing paths">
+    <sect1 id="intro-usage-syncro">
 
     <title>Syncronizing Paths</title>
 
@@ -267,8 +276,7 @@
 
     </sect1>
 
-    <sect1 id="intro-usage-extending" xreflabel="Extending repository
-    organization">
+    <sect1 id="intro-usage-extending">
         
         <title>Extending Repository Organization</title>
         
@@ -309,27 +317,32 @@
         class="directory">trunk/Scripts</filename> stores automation
         scripts.</para>
         
-        <para>To better illustrate this desition process, you can
-        consider to examin the <filename
-        class="directory">trunk/Identity/Images/Themes/TreeFlower/3</filename>
-        directory structure as example.  This directory can be read
-        as: the theme development line of version <quote>3</quote> of
-        <quote>TreeFlower</quote> artistic motif.  Additional, we can
-        say that <quote>TreeFlower</quote> artistic motif is part of
-        themes, as themes are part of The CentOS Project corporate
-        visual identity.</para>
+        <para>
+            To better illustrate this desition process, you can
+            consider to examin the <filename
+            class="directory">trunk/Identity/Images/Themes/TreeFlower/3</filename>
+            directory structure as example.  This directory can be
+            read as: the theme development line of version
+            <quote>3</quote> of <quote>TreeFlower</quote> artistic
+            motif.  Additional, we can say that
+            <quote>TreeFlower</quote> artistic motif is part of
+            themes, as themes are part of The CentOS Project corporate
+            visual identity.
+        </para>
         
-        <para>The relationship between conceptual ideas can be
-        stablished by reading each repository documentation entry
-        individually, from <filename
-        class="directory">trunk</filename> directory to a deeper
-        directory in the path. For reading repository documentation
-        entries we use the <code>help</code> functionality of
-        <command>centos-art.sh</command> script.</para>
+        <para>
+            The relationship between conceptual ideas can be
+            stablished by reading each repository documentation entry
+            individually, from <filename
+            class="directory">trunk</filename> directory to a deeper
+            directory in the path. For reading repository
+            documentation entries we use the <code>help</code>
+            functionality of <command>centos-art.sh</command> script.
+        </para>
         
     </sect1>
 
-    <sect1 id="intro-usage-filenames" xreflabel="File names convenction">
+    <sect1 id="intro-usage-filenames">
         
         <title>File Names</title>
         
@@ -354,9 +367,9 @@
         
     </sect1>
 
-    <sect1 id="intro-usage-layout" xreflabel="Repository layout">
+    <sect1 id="intro-usage-layout">
 
-        <title>Repository Layout</title>
+        <title>Layout</title>
 
         <para>The CentOS Artwork Repository is organized through a
         convenctional <quote>trunk</quote>, <quote>branches</quote>

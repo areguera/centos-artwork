@@ -62,7 +62,7 @@
         <para>
             Licenses &mdash; This chapter includes licenses from
             <filename
-            class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates/$LANG/Licenses/</filename>
+            class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates/<replaceable>language</replaceable>/Licenses/</filename>
             directory. In the normal work flow, you don't need to
             touch this chapter. It is created when the document
             structure is created and should ramain that way. If you
@@ -105,7 +105,7 @@
     <mediaobject>
     <textobject>
     <programlisting>trunk/Manuals/Repository/Texinfo
-|-- $LANG
+|-- en_US
 |   |-- Directories
 |   |   |-- chapter-menu.texinfo
 |   |   |-- chapter-nodes.texinfo
