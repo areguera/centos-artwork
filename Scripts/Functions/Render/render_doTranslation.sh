@@ -32,17 +32,16 @@
 
 function render_doTranslation {
 
-    # Verify existence of DOCTYPE definition inside template.
-    egrep '^<!DOCTYPE' ${TEMPLATE} > /dev/null
-    local TEMPLATE_DOCTYPE=$?
-
     # Verify translation file existence and create template
     # instance accordingly.
     if [[ -f ${TRANSLATION} ]];then
 
+        # Print final location of translation file.
+        cli_printMessage "${TRANSLATION}" --as-translation-line
+
         # Create the translated instance of design model based on
         # whether the template file has DOCTYPE definition or not.
-        if [[ ${TEMPLATE_DOCTYPE} -eq 0 ]];then
+        if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
             xmllint --valid --noent ${TEMPLATE} \
                 | xml2po -a -l $(cli_getCurrentLocale) -p ${TRANSLATION} -o ${INSTANCE} -
         else
@@ -57,7 +56,7 @@ function render_doTranslation {
     else
 
         # Create the non-translated instance of design model.
-        if [[ ${TEMPLATE_DOCTYPE} -eq 0 ]];then
+        if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
             xmllint --valid --noent ${TEMPLATE} > ${INSTANCE}    
         else
             cp ${TEMPLATE} ${INSTANCE}

@@ -125,6 +125,9 @@ function cli_printMessage {
             cli_printMessage "`gettext "Validating"`: $MESSAGE"
             ;;
 
+        --as-template-line )
+            cli_printMessage "`gettext "Template"`: $MESSAGE"
+            ;;
 
         --as-configuration-line )
             cli_printMessage "`gettext "Configuration"`: $MESSAGE"

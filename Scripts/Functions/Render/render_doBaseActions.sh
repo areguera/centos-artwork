@@ -140,28 +140,33 @@ function render_doBaseActions {
             TRANSLATION=$(dirname $FILE \
                | sed -r 's!trunk/(Manuals|Identity)!trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
 
-            # Print final location of translation file.
-            if [[ ! -f "$TRANSLATION" ]];then
-                cli_printMessage "`gettext "None"`" --as-translation-line
-            else
-                cli_printMessage "$TRANSLATION" --as-translation-line
-            fi
-
             # Define final location of template file.
             TEMPLATE=${FILE}
 
-            # Validate XML-based document before processing it. This
-            # step is very important in order to detect document
-            # malformations and warn you about it, so you can correct
-            # them before processing the document as input.
-            if [[ -f $TEMPLATE ]];then
+            # Print action message.
+            cli_printMessage "$TEMPLATE" --as-template-line
+
+            # Verify design models file existence. We cannot continue
+            # with out it.
+            if [[ ! -f $TEMPLATE ]];then
+                cli_printMessage "`gettext "The template file doesn't exist."`" --as-error-line
+            fi
+
+            # Verify whether the design model uses DOCTYPE definition
+            # or not.
+            egrep '^<!DOCTYPE' ${TEMPLATE} > /dev/null
+            local TEMPLATE_HAS_DOCTYPE=$?
+
+            # Validate document before processing it.  This step is
+            # very important in order to detect document malformations
+            # and warn you about it, so you can correct them before
+            # processing the document as input.
+            if [[ $TEMPLATE_HAS_DOCTYPE -eq 0 ]];then
                 cli_printMessage "$TEMPLATE" --as-validating-line
                 xmllint --valid --noent --noout $TEMPLATE
                 if [[ $? -ne 0 ]];then
                     cli_printMessage "`gettext "Validation failed."`" --as-error-line
                 fi
-            else
-                cli_printMessage "`gettext "None"`" --as-validating-line
             fi
  
             # Define final location of output directory.
