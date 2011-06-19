@@ -1,0 +1,57 @@
+<sect1>
+
+    <title>2011's</title>
+
+    <para>
+        Around 2011, the <command>centos-art.sh</command> script was
+        redesigned to start translating XML-based files (e.g., SVG and
+        Docbook files) through <command>xml2po</command> program and
+        shell scripts (e.g., Bash scripts) through GNU gettext tools.
+        This configuration provided a stronger localization interface
+        for graphic designers, translators and programmers. The SED
+        replacement files are no longer used to handle localization.
+    </para>
+
+    <para>
+        The <function>render</function>, <function>help</function> and
+        <function>locale</function> functionalities were consolidated
+        as the most frequent tasks performed inside the repository.
+        Additionally, the prepare and tuneup functionalities are also
+        maintained as useful tasks.
+    </para>
+
+    <para> 
+        In the documentation area, support for producing localized
+        transformations of DocBook XML DTD instances was added through
+        the <function>render</function> and locale functionalities.
+        The <function>render</function> functionality uses the
+        xsltproc command-line <acronym>XSLT</acronym> parser in
+        conjunction with the styles provided by the
+        <package>docbook-style-xsl</package> package, both of them
+        included inside The CentOS Distribution.  The locale
+        functionality creates the localized portable object
+        (<acronym>PO</acronym>) the <function>render</function>
+        functionality needs to produce localized transformations of
+        DocBook XML DTD instances.  
+    </para> 
+
+    <para>
+        To build DocBook documentation, it was considered the idea of
+        using concepts behind repository directory structure as base,
+        not the opposite (as I've been doing with Texinfo backend, so
+        far).
+    </para>
+
+    <para>
+        Producing documentation through DocBook XML as default
+        documentation backend consolidates <function>render</function>
+        and <function>locale</function> even more.  In this
+        configuration, once the DocBook files are written, you use
+        <function>locale</function> functionality to localize the
+        DocBook files in your prefered language and later, using
+        <function>render</function> functionality, you produce the
+        XTHML and PDF outputs as specified in a XSLT or DSL
+        customization layer.
+    </para>
+
+</sect1>

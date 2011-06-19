@@ -1,0 +1,55 @@
+<sect1>
+
+    <title>2009's</title>
+
+     <para>
+        Around 2009, the rendition script was at a very rustic state
+        where only slide images could be produced, so it was
+        redesigned to extend the image production to other areas,
+        different from slide images.  In this configuration, one SVG
+        file was used as input to produce a translated instance of it
+        which, in turn, was used to produce one translated PNG image
+        as output. The SVG translated instance was created through SED
+        replacement commands. The translated PNG image was created
+        from the SVG translated instance using Inkscape command-line
+        interface.
+    </para>
+
+    <para>
+        The repository directory structure was prepared to receive the
+        rendition script using design templates and translation files
+        in the same location. There was one directory structure for
+        each artwork that needed to be produced. In this
+        configuration, if you would want to produce the same artwork
+        with a different visual style or structure, it was needed to
+        create a new directory structure for it because both the image
+        structure and the image visual style were together in the
+        design template.
+    </para>
+
+    <para>
+        The rendition script was moved to a common place and linked
+        from different directory structures. There was no need to have
+        the same code in different directory structures if it could be
+        in just one place and then be linked from different locations.
+    </para>
+
+    <para>
+        Corporate identity concepts began to be considered. As
+        referece, it was used the book "Corporate Identity" by Wally
+        Olins (1989) and <ulink
+        url="http://en.wikipedia.org/Corporate_identity">Wikipedia</ulink>
+        related links. This way, the rendition script main's goal
+        becomes to: <emphasis>automate the production process of a
+        monolithic corporate visual identity structure, based on the
+        mission and the release schema of The CentOS
+        Project</emphasis>.
+    </para>
+
+    <para>
+        The repository directory structures began to be documented by
+        mean of flat text files. Later, documentation in flat text
+        files was moved onto LaTeX format and this way the "The CentOS
+        Artwork Repository" documentation manual is initiated.
+    </para>
+</sect1>

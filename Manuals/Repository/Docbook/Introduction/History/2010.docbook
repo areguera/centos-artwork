@@ -1,0 +1,80 @@
+<sect1>
+
+    <title>2010's</title>
+
+    <para>
+        Around 2010, the rendition script changed its name from
+        <command>render.sh</command> to
+        <command>centos-art.sh</command> and became a collection of
+        functionalities where rendition was just one among others
+        (e.g., documentation and localization).
+    </para>
+
+    <para>
+        The <command>centos-art.sh</command> was initially conceived
+        to automate frequent tasks inside the repository based in the
+        idea of Unix toolbox: to create small and specialized tools
+        that do one thing well.  This way, functionalities inside
+        <command>centos-art.sh</command> began to be identified and
+        separated one another. For example, when images were rendered,
+        there was no need to load functionalities related to
+        documentation manual. This layout moved us onto <quote>common
+        functionalities</quote> and <quote>specific
+        functionalities</quote> inside
+        <command>centos-art.sh</command> script. Common
+        functionalities are loaded when
+        <command>centos-art.sh</command> script is initiated and are
+        available to specific functionalities.
+    </para>
+
+    <para>
+        Suddenly, no need was found to keep all the links spreaded
+        around the repository in order to execute the
+        <command>centos-art.sh</command> script from different
+        locations.  The centos-art command-line interface was used
+        instead. The centos-art command-line interface is a symbolic
+        link stored inside the <filename
+        class="directory">~/bin</filename> directory that point to
+        <command>centos-art.sh</command> script. As default
+        configuration, inside The CentOS Distribution, the path to
+        <filename class="directory">~/bin</filename> is included in
+        the search path for commands (see PATH environment variable).
+        This way, using the centos-art command-line interface, it is
+        possible for us to execute the
+        <command>centos-art.sh</command> script from virtually
+        anywhere inside the workstation, just as we frequently do with
+        regular commands.
+    </para>
+
+    <para>
+        Start using GNU getopt as default option parser inside the
+        <command>centos-art.sh</command> script.
+    </para>
+
+    <para>
+        The repository directory structure was updated to improve the
+        implementation of corporate visual identity concepts.
+        Specially in the area related to themes. Having both structure
+        and style in the same file introduced content duplication when
+        producing art works.  Because of this reason, they were
+        divided out to separate directory structures: the design
+        models and artistic motifs directory structures.  From this
+        point on, the <command>centos-art.sh</command> is able to
+        produce themes as result of arbitrary combinations between
+        design models (structures) and artistic motifs (visual
+        styles).
+    </para>
+
+    <para>
+        In the documentation area, the documents in LaTeX format were
+        migrated to Texinfo format. In this configuration, each
+        directory structure in the repository has a documentation
+        entry associated in a Texinfo structure which can be read,
+        edited and administered (e.g., renamed, deleted and copied)
+        interactively through <command>centos-art.sh</command> script.
+        Additionally, the texi2html program was used to produced
+        customized XHTML output in conjunction with CSS from The
+        CentOS Webenv.
+    </para>
+
+</sect1>
