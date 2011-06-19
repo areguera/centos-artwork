@@ -29,6 +29,7 @@ function render_doBaseActions {
     local FILE=''
     local OUTPUT=''
     local TEMPLATE=''
+    local TEMPLATE_HAS_DOCTYPE=''
     local PARENTDIR=''
     local TRANSLATION=''
     local EXTERNALFILE=''
@@ -143,9 +144,6 @@ function render_doBaseActions {
             # Define final location of template file.
             TEMPLATE=${FILE}
 
-            # Print action message.
-            cli_printMessage "$TEMPLATE" --as-template-line
-
             # Verify design models file existence. We cannot continue
             # with out it.
             if [[ ! -f $TEMPLATE ]];then
@@ -153,20 +151,30 @@ function render_doBaseActions {
             fi
 
             # Verify whether the design model uses DOCTYPE definition
-            # or not.
+            # or not; and redefine related variable for further using.
             egrep '^<!DOCTYPE' ${TEMPLATE} > /dev/null
-            local TEMPLATE_HAS_DOCTYPE=$?
+            TEMPLATE_HAS_DOCTYPE=$?
 
-            # Validate document before processing it.  This step is
-            # very important in order to detect document malformations
-            # and warn you about it, so you can correct them before
-            # processing the document as input.
+            # Validate design model before processing it. This step is
+            # very important in order to detect document's
+            # malformations and warn you about it, so you can correct
+            # them before processing the document as input.  Notice
+            # that, here, validation is possible only for documents
+            # which have a DOCTYPE definition inside.
             if [[ $TEMPLATE_HAS_DOCTYPE -eq 0 ]];then
+
+                # Print action message.
                 cli_printMessage "$TEMPLATE" --as-validating-line
+
+                # Validate document before processing it.  
                 xmllint --valid --noent --noout $TEMPLATE
                 if [[ $? -ne 0 ]];then
                     cli_printMessage "`gettext "Validation failed."`" --as-error-line
                 fi
+
+            else
+                # Print action message.
+                cli_printMessage "$TEMPLATE" --as-template-line
             fi
  
             # Define final location of output directory.
