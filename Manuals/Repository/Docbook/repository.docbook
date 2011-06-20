@@ -3,6 +3,7 @@
                "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
                [
 
+<!ENTITY % Commons.ent          SYSTEM "Commons.ent">
 <!ENTITY % Introduction.ent     SYSTEM "Introduction.ent">
 <!ENTITY % Identity.ent         SYSTEM "Identity.ent">
 <!ENTITY % Locales.ent          SYSTEM "Locales.ent">
@@ -10,6 +11,7 @@
 <!ENTITY % Scripts.ent          SYSTEM "Scripts.ent">
 <!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
+%Commons.ent;
 %Introduction.ent;
 %Identity.ent;
 %Locales.ent;

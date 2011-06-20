@@ -1,9 +1,9 @@
-<chapter id="intro-repo">
+<chapter id="intro-repoconvs">
 
     <title>Repository Convenctions</title>
 
     <para>
-        The CentOS Artwork Repository is supported by <ulink
+        &TCAR; is supported by <ulink
         url="http://subversion.tigris.org/">Subversion</ulink>, a
         version control system which allows you to keep old versions
         of files and directories (usually source code), keep a log of
@@ -12,16 +12,16 @@
     </para>
 
     <para>
-        When using Subversion there is one "source repository" and
-        many "working copies" of that source repository. The working
-        copies are independent one another, can be distributed all
-        around the world and provide a local place for designers,
-        documentors, translators and programmers to perform their work
-        in a descentralized way.  The source repository, on the other
-        hand, provides a central place for all independent working
-        copies to interchange data and provides the information
-        required to permit extracting previous versions of files at
-        any time.
+        When using Subversion there is one <quote>source
+        repository</quote> and many <quote>working copies</quote> of
+        that source repository. The working copies are independent one
+        another, can be distributed all around the world and provide a
+        local place for designers, documentors, translators and
+        programmers to perform their work in a descentralized way.
+        The source repository, on the other hand, provides a central
+        place for all independent working copies to interchange data
+        and provides the information required to permit extracting
+        previous versions of files at any time.
     </para>
 
     <sect1 id="repo-usage-policy">
@@ -31,24 +31,21 @@
         <para>
             The CentOS Artwork Repository is a collaborative tool that
             anyone can have access to. However, changing that tool in
-            any form is something that should be requested in the
-            CentOS Developers mailing list (centos-devel@centos.org).
-            Generally, people download working copies from CentOS
-            Artwork Repository, study the repository organization,
-            make some changes in their working copies, make some tests
-            to verify such changes do work the way expected and
-            finally request access to commit them up to the CentOS
-            Artwork Repository (i.e., the source repository) for
-            others to benefit from them.
+            any form is something that should be requested in &TCDML;.
+            Generally, people download working copies from &TCAR;,
+            study the repository organization, make some changes in
+            their working copies, make some tests to verify such
+            changes do work the way expected and finally request
+            access to commit them up to &TCAR; for others to benefit
+            from them.
         </para>
         
         <para>Once you've received access to commit your changes,
         there is no need for you to request permission again to commit
-        other changes from your working copy to CentOS Artwork
-        Repository as long as you behave as a <emphasis>good
-        cooperating citizen</emphasis>. Otherwise, your rights to
-        commit changes might be temporarly revoked or permanently
-        banished.</para>
+        other changes from your working copy to &TCAR; as long as you
+        behave as a <emphasis>good cooperating citizen</emphasis>.
+        Otherwise, your rights to commit changes might be temporarly
+        revoked or permanently banished.</para>
         
         <para>As a good cooperating citizen one understand of a person
         who respects the work already done by others and share ideas
@@ -67,10 +64,9 @@
         by repository administrators. Repository administrators are
         responsible of granting that everything goes the way it needs
         to go in order for the CentOS Artwork Repository to accomplish
-        its mission which is: to provide a colaborative tool for The
-        CentOS Community where The CentOS Project corporate visual
-        identity is built and maintained by The CentOS Community
-        itself.</para>
+        its mission which is: to provide a colaborative tool for &TCC;
+        where &TCP; corporate visual identity is built and maintained
+        by &TCC; itself.</para>
         
         <para>It is also important to remember that all the program
         and documentation source files inside CentOS Artwork

@@ -38,9 +38,9 @@
         <command>centos-art.sh</command> script. As default
         configuration, inside The CentOS Distribution, the path to
         <filename class="directory">~/bin</filename> is included in
-        the search path for commands (see PATH environment variable).
-        This way, using the centos-art command-line interface, it is
-        possible for us to execute the
+        the search path for commands (see <envar>PATH</envar>
+        environment variable).  This way, using the centos-art
+        command-line interface, it is possible for us to execute the
         <command>centos-art.sh</command> script from virtually
         anywhere inside the workstation, just as we frequently do with
         regular commands.
@@ -73,8 +73,7 @@
         edited and administered (e.g., renamed, deleted and copied)
         interactively through <command>centos-art.sh</command> script.
         Additionally, the texi2html program was used to produced
-        customized XHTML output in conjunction with CSS from The
-        CentOS Webenv.
+        customized XHTML output in conjunction with CSS from &TCW;.
     </para>
 
 </sect1>
