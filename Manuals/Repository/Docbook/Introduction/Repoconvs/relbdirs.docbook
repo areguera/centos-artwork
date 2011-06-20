@@ -1,0 +1,75 @@
+<sect1 id="intro-repoconvs-relbdirs">
+
+    <title>Relation Between Directories</title>
+
+    <para>
+        In order for automation scripts to produce content inside a
+        working copy of CentOS Artwork Repository, it is required that
+        all work lines be related somehow.  The relation is used by
+        automation scripts to know where to retrive the information
+        they need to work with (e.g., design model, translation
+        messages, output locations, etc.).  This kind of relation is
+        built using two path constructions named <emphasis>master
+        paths</emphasis> and <emphasis>auxiliar
+        paths</emphasis>.
+    </para>
+    
+    <para>
+        The master path points only to directories that contain source
+        files (e.g., SVG files) required to produce output base
+        content (e.g., PNG files) through automation scripts.  Each
+        master path inside the repository may have several auxiliar
+        paths associated, but auxiliar paths can only have one master
+        path associated.
+    </para>
+    
+    <para>
+        Master paths used for producing images through SVG rendition
+        are organized under <filename
+        class="directory">trunk/Identity/Models</filename> directory
+        structure and the auxiliar paths under <filename
+        class="directory">trunk/Identity/Images</filename>, <filename
+        class="directory">trunk/Locales</filename> and <filename
+        class="directory">trunk/Manuals</filename> directory
+        structures.
+    </para>
+    
+    <para>
+        Auxiliar paths can point either to directories or files.  When
+        an auxiliar path points to a directory, that directory
+        contains information that modifies somehow the content
+        produced from master paths (e.g., translation messages) or
+        provides the output information required to know where the
+        content produced from the master path should be stored.  When
+        an auxiliar path points to a file, that file has no other
+        purpose but to document the master path it refers to.
+    </para>
+
+    <para>
+        Auxiliar paths should never be modified under any reason but
+        to satisfy the relationship with the master path.  Liberal
+        change of auxiliar paths may suppress the conceptual idea they
+        were initially created for; and certainly, automation scripts
+        may stop working as expected.
+    </para>
+     
+    <para>
+        The relationship between auxiliar paths and master paths is
+        built by combining the master path and the second level
+        directory structures of the repository.  The master path is
+        considered the path identifier and the repository second level
+        directory structure is considered the common part of the path
+        where the path identifier is appended to.  So, if we have the
+        master path <filename
+        class="directory">trunk/Identity/Models/Brands</filename>,
+        we'll end up having, at least, the <filename
+        class="directory">trunk/Identity/Images/Brands</filename>
+        auxiliar path for storing output files and, optionally, one
+        path under <filename
+        class="directory">trunk/Manuals</filename> for storing
+        documentation and one path under <filename
+        class="directory">trunk/Locales</filename> for storing
+        localizations.
+    </para> 
+    
+</sect1>

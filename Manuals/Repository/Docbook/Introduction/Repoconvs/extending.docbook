@@ -1,0 +1,71 @@
+<sect1 id="intro-repoconvs-extending">
+
+    <title>Extending Repository Organization</title>
+        
+    <para>
+        Occasionly, you may find that new components of The
+        CentOS Project corporate visual identity need to be added to
+        the repository in order to work them out. If that is the case,
+        the first question we need to ask ourselves, before start to
+        create directories blindly all over, is: <emphasis>What is the
+        right place to store it?</emphasis>
+    </para>
+        
+    <para>
+        The best place to find answers is in The CentOS Community (see
+        page http://wiki.centos.org/Help), but going there with hands
+        empty is not good idea. It may give the impression you don't
+        really care about. Instead, consider the following suggestions
+        to find your own comprehension in order to make your own
+        propositions based on it.
+    </para>
+        
+    <para>
+        When extending respository structure it is very useful to bear
+        in mind The CentOS Project corporate visual identity
+        structure, The CentOS Mission and The CentOS Release Schema.
+        The rest is a matter of choosing appropriate names. It is also
+        worth to know that each directory in the repository responds
+        to a conceptual idea that justifies its existence.
+    </para>
+        
+    <para>
+        To build a directory structure inside the repository, you need
+        to define the conceptual idea first and later create the
+        directory, remembering that there are locations inside the
+        repository that define conceptual ideas you probably would
+        prefer to reuse.  For example, the <filename
+        class="directory">trunk/Identity/Images/Themes</filename>
+        directory stores theme artistic motifs, the <filename
+        class="directory">trunk/Identity/Models/Themes</filename>
+        directory stores theme design models, the <filename
+        class="directory">trunk/Manuals</filename> directory stores
+        documentation files, the <filename
+        class="directory">trunk/Locales</filename> stores translation
+        messages, and the <filename
+        class="directory">trunk/Scripts</filename> stores automation
+        scripts.
+    </para>
+        
+    <para>
+        To better illustrate this desition process, you can consider
+        to examin the <filename
+        class="directory">trunk/Identity/Images/Themes/TreeFlower/3</filename>
+        directory structure as example.  This directory can be read
+        as: the theme development line of version <quote>3</quote> of
+        <quote>TreeFlower</quote> artistic motif.  Additional, we can
+        say that <quote>TreeFlower</quote> artistic motif is part of
+        themes, as themes are part of The CentOS Project corporate
+        visual identity.
+    </para>
+        
+    <para>
+        The relationship between conceptual ideas can be stablished by
+        reading each repository documentation entry individually, from
+        <filename class="directory">trunk</filename> directory to a
+        deeper directory in the path. For reading repository
+        documentation entries we use the <code>help</code>
+        functionality of <command>centos-art.sh</command> script.
+    </para>
+        
+</sect1>

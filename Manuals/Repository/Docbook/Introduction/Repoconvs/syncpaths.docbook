@@ -1,0 +1,94 @@
+<sect1 id="intro-repoconvs-syncpaths">
+
+    <title>Syncronizing Paths</title>
+
+    <para>  
+        Once both master paths and their auxiliar paths have been set,
+        they shouldn't be changed.  Assuming one master path must be
+        changed it is required that all related auxiliar paths be
+        changed, too.  This is required in order for master paths to
+        retain their relation with auxiliar paths.  This process of
+        keeping relation between master paths and auxiliar paths is
+        known as <emphasis>path syncronization</emphasis>.
+    </para>
+    
+    <para>
+        Path syncronization is required for automation scripts to know
+        where to store final output, where to retrive translation
+        messages, documentation, and any information that might be
+        desired. If the relation between master paths and auxiliar
+        paths is lost, there is no way for
+        <command>centos-art.sh</command> script to know where to
+        retrive the information it needs to work with.  Path
+        syncronization is the way we use to organize and extend the
+        information stored in the repository.
+    </para>
+    
+    <para>
+        Path syncronization may imply both movement of files and
+        replacement of content inside files.  Movement of files is
+        related to actions like renaming files and directories inside
+        the repository.  Replacement of content inside files is
+        related to actions like replacing information (e.g., paths
+        information) inside files in order to keep file contents and
+        file locations consistent one another.
+    </para>
+
+    <para>
+        The order followed to syncronize path information is very
+        important because the versioned nature of the repository files
+        we are working with. When a renaming action must be performed,
+        we avoid making replacements inside files first and file
+        movements later. This would require two commit actions: one
+        for the files' internal changes and another for the file
+        movement itself.  Otherwise, we prefer to perform file
+        movements first and file internal replacements later. This way
+        it is possible to commit both changes as if they were just
+        one.
+    </para>
+ 
+    <warning>
+        <para>
+            There is no support for URLs actions inside
+            <command>centos-art.sh</command> script.  The
+            <command>centos-art.sh</command> script is designed to
+            work with local files inside the working copy only. If you
+            need to perform URL actions directly, use Subversion
+            commands instead.
+        </para>
+    </warning>
+
+    <para>
+        At this moment there is no full implementation of path
+        syncronization process inside <command>centos-art.sh</command>
+        script except by <quote>texinfo</quote> backend of
+        <code>help</code> functionality which provides a restricted
+        implementation of path syncronization to this specific area of
+        documentation through the <option>--copy</option>,
+        <option>--delete</option> and <option>--rename</option>
+        options.  The plan for a full implementation of path
+        syncronization would be to create individual restricted
+        implementations like this one for other areas that demand it
+        and then, create a higher implmentation that combines all
+        restricted implementations as needed. This way, if we try to
+        rename a repository directory the higer action will define
+        which are all the restricted actions that should be performed
+        in order for make a full path syncronization. For example, if
+        the directory we are renaming is part of graphic design work
+        line, it is required to syncronize related paths in
+        documentation and localization work lines. Likewise, if the
+        directory we are renaming is in documentation work line, it is
+        required to syncronize related paths in graphic design and
+        localization work lines.  In all these cases, the direction
+        used for syncronizing paths must be from master path to
+        auxiliar path and never the opposite (i.e., rename the master
+        path first and auxiliar paths later).
+    </para>
+ 
+    <para>
+        A practical example, through which you can notice the
+        usefulness of path syncronization process, is what happen when
+        documentation entries are renamed (see section ...).
+    </para>
+
+</sect1>
