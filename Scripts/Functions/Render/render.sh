@@ -72,7 +72,7 @@ function render {
 
     # Initialize absolute path to backend's base directory, the place
     # where backend-specific directories are stored in.
-    local RENDER_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
+    local RENDER_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}"
 
     # Initialize list of supported file extensions. These file
     # extensions are used by design model files, the files used as
