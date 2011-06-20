@@ -4,6 +4,7 @@
                [
 
 <!ENTITY % Commons.ent          SYSTEM "Commons.ent">
+<!ENTITY % Preface.ent          SYSTEM "Preface.ent">
 <!ENTITY % Introduction.ent     SYSTEM "Introduction.ent">
 <!ENTITY % Identity.ent         SYSTEM "Identity.ent">
 <!ENTITY % Locales.ent          SYSTEM "Locales.ent">
@@ -12,6 +13,7 @@
 <!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
 %Commons.ent;
+%Preface.ent;
 %Introduction.ent;
 %Identity.ent;
 %Locales.ent;
@@ -68,6 +70,11 @@
         </abstract>
 
     </bookinfo>
+
+    <!-- Front matter -->
+    &preface-copying;
+    &preface-docconvs;
+    &preface-feedback;
 
     <!-- Main matter -->
     &intro;
