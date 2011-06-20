@@ -55,8 +55,20 @@ function svg_checkModelAbsref {
     # Verify absolute paths retrived from file.
     for BG_DST_FILE in $BG_DST_FILES;do
 
-        # Print action
+        # Print action message.
         cli_printMessage "$BG_DST_FILE" --as-checking-line
+
+        # Verify parent directory of absolute files retrived from
+        # file. This is required to prevent the construction of paths
+        # to locations that don't exist. For example, when including
+        # background images in SVG files, it is possible that the path
+        # information inside SVG files get outdated temporarly. If in
+        # that exact moment, you try to render the SVG file it won't
+        # be possible to create the image used for cropping because
+        # the path build from the location inside SVG file doesn't
+        # exist. In this case, centos-art.sh script will end up with
+        # `file ... doesn't exist' errors.
+        cli_checkFiles "$(dirname ${BG_DST_FILE})" -d
 
         if [[ ! -a $BG_DST_FILE ]];then
   
