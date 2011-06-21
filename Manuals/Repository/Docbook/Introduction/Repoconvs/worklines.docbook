@@ -3,63 +3,91 @@
     <title>Work Lines</title>
         
     <para>
-        Content production inside the repository is organized by
-        <emphasis>work lines</emphasis>.  There are three major work
-        lines of production inside The CentOS Artwork Repository,
-        which are: <emphasis>Graphic design</emphasis>,
-        <emphasis>Documentation</emphasis> and
-        <emphasis>Localization</emphasis>. The specific way of
-        producing content inside each specific work line is
-        standardized by mean of <command>centos-art.sh</command>
-        script (which in turn, can be considered a work line by itself
-        [e.g., the <emphasis>Automation</emphasis> work line]). The
-        <command>centos-art.sh</command> script provides one specific
-        functionality for automating each major work line of content
-        production (e.g., <code>render</code> for producing images,
-        <code>help</code> for manage documentation, and
-        <code>locale</code> for localizing contents).
+        To organize content production inside &TCAR;, production has
+        been divided into individual work lines that relate one
+        another.  The is based on the idea of doing one thing well and
+        later combine the result of each individual part to achieve a
+        higher purpose. Work lines, as conceived here, provide
+        relayable output components that combine one another to close
+        the production cycle inside &TCAR;.
     </para>
-
+ 
+    <variablelist>
+    <varlistentry>
+    <term>Graphic Design</term>
+    <listitem>
     <para>
-        The graphic design work line exists to cover brand design,
-        typography design and themes design mainly.  Additionally,
-        some auxiliar areas like icon design, illustration design,
-        brushes design, patterns designs and palettes of colors are
-        also included here for completeness.  The graphic design work
-        line is organized in the <filename
-        class="directory">trunk/Identity</filename> directory.
+        In the production cycle, the first step takes place through
+        graphic design and is focused on preparing design models for
+        all the visual manifestation &TCP; is made of.  Here, graphic
+        designers describe the visual characteristics of each visual
+        manifestation (e.g., image dimensions, position of text in the
+        visible area, translation markers, etc.).  Later, once design
+        models have been defined, graphic designers take care of
+        artistic motifs to define the visual style of those design
+        models already created (e.g., how the look and feel).
+        Furthermore, graphic designers use the
+        <function>render</function> functionality of
+        <command>centos-art.sh</command> script to combine both design
+        models and artistic motifs in order to produce the final
+        images required by each visual manifestaions.
     </para>
+    </listitem>
+    </varlistentry>
 
+    <varlistentry>
+    <term>Localization</term>
+    <listitem>
     <para>
-        The documentation work line exists to describe what each
-        directory inside &TCAR; is for, the conceptual ideas behind
-        them and, if possible, how automation scripts make use of
-        them.  The documentation work line is organized in the
-        <filename class="directory">trunk/Manuals</filename>
-        directory.
+        The second step in the production cycle is to localize
+        source files (e.g., SVG, DocBook, Shell scripts). This step
+        makes possible to produce localized images, localized
+        documentation and localized automation scripts. The
+        localization tasks are carried on by translators using the
+        <function>locale</function> functionality of the
+        <command>centos-art.sh</command> script which take care of
+        retriving translatable strings from source files and provide a
+        consistent localization interface based on the ideas behind
+        GNU <application>gettext</application> multi-lingual message
+        production.
     </para>
+    </listitem>
+    </varlistentry>
 
+    <varlistentry>
+    <term>Documentation</term>
+    <listitem>
     <para>
-        The localization work line exists to provide the translation
-        messages required to produce content in different languages.
-        Translation messages inside the repository are stored as
-        portable objects (e.g., .po, .pot) and machine objects (.mo).
-        The localization work line is organized in the <filename
-        class="directory">trunk/Locales</filename> directory.
+        The third step in the production cycle is to document &TCAR;,
+        what it is and how to use it. This step provides the
+        conceptual ideas used as base to edificate &TCPCVI; and is
+        implemented by mean of &TCARUG;. To write documentation,
+        documentors use the <function>help</function> functionality of
+        <command>centos-art.sh</command> script which provide an
+        consistent interface for building documentation through
+        different documentation backends (e.g., Texinfo, DocBook).
     </para>
+    </listitem>
+    </varlistentry>
 
+    <varlistentry>
+    <term>Automation</term>
+    <listitem>
     <para>
-        The automation work line exists to standardize content
-        production inside the working copies of CentOS Artwork
-        Repository.  Here is developed the
-        <command>centos-art.sh</command> script, a bash script
-        specially designed to automate most frequent tasks (e.g.,
-        rendition, documentation and localization) inside the
-        repository.  There is no need to type several tasks, time
-        after time, if they can be programmed into just one executable
-        script.  The automation work line is organized in the
-        <filename class="directory">trunk/Scripts</filename>
-        directory.
+        The fourth step in the production cycle is to automate
+        frequent tasks inside &TCAR;. This step closes the production
+        cycle and provides the production standards needed by all
+        different work lines to coexist together.  Here is where we
+        develop the <command>centos-art.sh</command> script and all
+        its functionalities (e.g., <function>render</function> for
+        rendition, <function>help</function> for documentation,
+        <function>locale</function> for localization, etc.).  At this
+        point it should be obvious, but we consider worth to remember
+        that: there is no need to type several tasks, time after time,
+        if they can be programmed into just one executable script. 
     </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
 
 </sect1>
