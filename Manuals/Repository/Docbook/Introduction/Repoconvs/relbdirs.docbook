@@ -5,70 +5,124 @@
     <para>
         In order for automation scripts to produce content inside a
         working copy of &TCAR;, it is required that all work lines be
-        related somehow.  The relation is used by automation scripts
-        to know where to retrive the information they need to work
-        with (e.g., design model, translation messages, output
-        locations, etc.).  This kind of relation is built using two
-        path constructions named <emphasis>master paths</emphasis> and
-        <emphasis>auxiliar paths</emphasis>.
-    </para>
-    
-    <para>
-        The master path points only to directories that contain source
-        files (e.g., SVG files) required to produce output base
-        content (e.g., PNG files) through automation scripts.  Each
-        master path inside the repository may have several auxiliar
-        paths associated, but auxiliar paths can only have one master
-        path associated.
-    </para>
-    
-    <para>
-        Master paths used for producing images through SVG rendition
-        are organized under <filename
-        class="directory">trunk/Identity/Models</filename> directory
-        structure and the auxiliar paths under <filename
-        class="directory">trunk/Identity/Images</filename>, <filename
-        class="directory">trunk/Locales</filename> and <filename
-        class="directory">trunk/Manuals</filename> directory
-        structures.
-    </para>
-    
-    <para>
-        Auxiliar paths can point either to directories or files.  When
-        an auxiliar path points to a directory, that directory
-        contains information that modifies somehow the content
-        produced from master paths (e.g., translation messages) or
-        provides the output information required to know where the
-        content produced from the master path should be stored.  When
-        an auxiliar path points to a file, that file has no other
-        purpose but to document the master path it refers to.
+        related somehow.  The relation between work lines is used by
+        automation scripts to know where to retrive the information
+        they need to work with (e.g., input files, translation
+        messages, output locations, etc.).  This kind of relation is
+        built using two path constructions known as <emphasis>master
+        paths</emphasis> and <emphasis>auxiliar paths</emphasis>.
     </para>
 
+    <variablelist>
+    <varlistentry>
+    <term>Master Paths</term>
+    <listitem>
     <para>
-        Auxiliar paths should never be modified under any reason but
-        to satisfy the relationship with the master path.  Liberal
-        change of auxiliar paths may suppress the conceptual idea they
-        were initially created for; and certainly, automation scripts
-        may stop working as expected.
+        A master path refers to a directory inside the repository that
+        contain input files required to produce output files through
+        automation scripts. Examples of master paths inside the
+        repository include:
+
+        <itemizedlist>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Identity/Models/Brands</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Manuals/Repository/Docbook</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Identity/Models/Themes/Default/Distro/5/Anaconda</filename>
+        </para>
+        </listitem>
+        </itemizedlist>
     </para>
-     
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>Auxiliar paths</term>
+    <listitem>
     <para>
-        The relationship between auxiliar paths and master paths is
-        built by combining the master path and the second level
-        directory structures of the repository.  The master path is
-        considered the path identifier and the repository second level
-        directory structure is considered the common part of the path
-        where the path identifier is appended to.  So, if we have the
-        master path <filename
-        class="directory">trunk/Identity/Models/Brands</filename>,
-        we'll end up having, at least, the <filename
-        class="directory">trunk/Identity/Images/Brands</filename>
-        auxiliar path for storing output files and, optionally, one
-        path under <filename
-        class="directory">trunk/Manuals</filename> for storing
-        documentation and one path under <filename
-        class="directory">trunk/Locales</filename> for storing
-        localizations.
+        An auxiliar path refers a directory inside the repository
+        considered auxiliar for the master path. Auxiliar path can be
+        either for output or localization. Assuming the master path
+        provides the input information, the auxiliar paths provide the
+        auxiliar information which describes how and where that input 
+        information is rendered by automation scripts. Examples of
+        auxiliar paths inside the repository include:
+        
+        <itemizedlist>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Identity/Images/Brands</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Manuals/Repository/Docbook/es_ES</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Locales/Manuals/Repository/Docbook/es_ES</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda/es_ES</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Locales/Identity/Models/Default/Distro/5/Anaconda/es_ES</filename>
+        </para>
+        </listitem>
+        </itemizedlist>
+
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+      
+    <para>
+        The relationship between master and auxiliar paths is built by
+        combining the second directory level of master paths with
+        directories in the second directory level of repository
+        layout. In the second directory level of repository layout,
+        the <filename class="directory">Identity</filename>, <filename
+        class="directory">Manuals</filename> and <filename
+        class="directory">Scripts</filename> directories are always
+        used to create the master paths and the output auxiliar paths.
+        The <filename class="directory">Locales</filename> directory,
+        on the other hand, is always used to create localization
+        auxiliar paths for all the master paths available under
+        <filename class="directory">Identity</filename>, <filename
+        class="directory">Manuals</filename> and <filename
+        class="directory">Scripts directories</filename>.
+    </para>
+        
+    <para>
+        For example, if the <envar>LANG</envar> environment variable
+        is set to <literal>es_ES.UTF-8</literal> and you execute the
+        <function>render</function> functionality of
+        <command>centos-art.sh</command> script with the <filename
+        class="directory">trunk/Manuals/Repository/Docbook</filename>
+        master path as argument, it will produce &TCARUG; in Spanish
+        language using translation messages from <filename
+        class="directory">trunk/Locales/Manuals/Repository/Docbook/es_ES</filename>
+        auxiliar path and saving output files inside <filename
+        class="directory">trunk/Manuals/Repository/Docbook/es_ES</filename>
+        auxiliar path.
     </para> 
+
+    <para>
+        To better understand what each directory inside the repository
+        means, read <xref linkend="intro-repoconvs-layout" />.
+    </para>
     
 </sect1>
