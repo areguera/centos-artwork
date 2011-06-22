@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getL10n.sh -- This function outputs/verifies locale codes in LL
+# cli_getLocales.sh -- This function outputs/verifies locale codes in LL
 # and LL_CC format. Combine both ISO639 and ISO3166 specification in
 # order to build the final locale list. This function defines which
 # translation locales are supported inside CentOS Artwork Repository.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getL10n {
+function cli_getLocales {
 
     # Print locales supported by centos-art.sh script.
     locale -a | egrep '^[a-z]{2,3}_[A-Z]{2}$' | sort | uniq
