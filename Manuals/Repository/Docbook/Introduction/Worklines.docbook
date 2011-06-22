@@ -1,93 +1,24 @@
-<chapter id="intro-repoconvs-worklines">
+<chapter id="intro-worklines">
         
     <title>Repository Work Lines</title>
         
     <para>
         To organize content production inside &TCAR;, production has
         been divided into individual work lines that relate one
-        another.  The is based on the idea of doing one thing well and
-        later combine the result of each individual part to achieve a
-        higher purpose. Work lines, as conceived here, provide
-        relayable output components that combine one another to close
-        the production cycle inside &TCAR;.
+        another based on the idea of doing one thing well. Later, the
+        results produced individually by each work line are combined
+        to achieve a higher purpose. Work lines, as conceived here,
+        provide the relayable output components the production cycle
+        inside &TCAR; needs to let everyone to work syncronized in a
+        descentralized environment.
     </para>
+
+    &intro-worklines-identity;
+    &intro-worklines-l10n;
+    &intro-worklines-manuals;
+    &intro-worklines-scripts;
+    &intro-worklines-relbdirs;
+    &intro-worklines-syncpaths;
+    &intro-worklines-extending;
  
-    <variablelist>
-    <varlistentry>
-    <term>Visual Identity (<filename class="directory">trunk/Identity</filename>)</term>
-    <listitem>
-    <para>
-        In the production cycle, the first step takes place through
-        graphic design. It is focused on preparing design models for
-        all the visual manifestation &TCP; is made of.  Here, graphic
-        designers describe the visual characteristics of each visual
-        manifestation (e.g., image dimensions, position of text in the
-        visible area, translation markers, etc.).  Later, once design
-        models have been defined, graphic designers take care of
-        artistic motifs to define the visual style of those design
-        models already created (e.g., how the look and feel).
-        Furthermore, graphic designers use the
-        <function>render</function> functionality of
-        <command>centos-art.sh</command> script to combine both design
-        models and artistic motifs in order to produce the final
-        images required by each visual manifestaions.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term>Localization (<filename class="directory">trunk/L10n</filename>)</term>
-    <listitem>
-    <para>
-        The second step in the production cycle is to localize
-        source files (e.g., SVG, DocBook, Shell scripts). This step
-        makes possible to produce localized images, localized
-        documentation and localized automation scripts. The
-        localization tasks are carried on by translators using the
-        <function>locale</function> functionality of the
-        <command>centos-art.sh</command> script which take care of
-        retriving translatable strings from source files and provide a
-        consistent localization interface based on the ideas behind
-        GNU <application>gettext</application> multi-lingual message
-        production.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term>Documentation (<filename class="directory">trunk/Manuals</filename>)</term>
-    <listitem>
-    <para>
-        The third step in the production cycle is to document &TCAR;,
-        what it is and how to use it. This step provides the
-        conceptual ideas used as base to edificate &TCPCVI; and is
-        implemented by mean of &TCARUG;. To write documentation,
-        documentors use the <function>help</function> functionality of
-        <command>centos-art.sh</command> script which provide an
-        consistent interface for building documentation through
-        different documentation backends (e.g., Texinfo, DocBook).
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term>Automation (<filename class="directory">trunk/Scripts</filename>)</term>
-    <listitem>
-    <para>
-        The fourth step in the production cycle is to automate
-        frequent tasks inside &TCAR;. This step closes the production
-        cycle and provides the production standards needed by all
-        different work lines to coexist together.  Here is where we
-        develop the <command>centos-art.sh</command> script and all
-        its functionalities (e.g., <function>render</function> for
-        rendition, <function>help</function> for documentation,
-        <function>locale</function> for localization, etc.).  At this
-        point it should be obvious, but we consider worth to remember
-        that: there is no need to type several tasks, time after time,
-        if they can be programmed into just one executable script. 
-    </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-
 </chapter>

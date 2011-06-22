@@ -1,0 +1,22 @@
+<sect1 id="intro-worklines-l10n">
+
+    <title>Localization</title>
+
+    <para>
+        The second step in the production cycle is to localize
+        source files (e.g., SVG, DocBook, Shell scripts). This step
+        makes possible to produce localized images, localized
+        documentation and localized automation scripts.
+    </para>
+    
+    <para>
+        The localization tasks are carried on by translators using the
+        <function>locale</function> functionality of the
+        <command>centos-art.sh</command> script which take care of
+        retriving translatable strings from source files and provide a
+        consistent localization interface based on GNU
+        <application>gettext</application> multi-lingual message
+        production tool set and <command>xml2po</command> command.
+    </para>
+
+</sect1>

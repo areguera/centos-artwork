@@ -1,26 +1,28 @@
-<chapter id="intro-repoconvs-syncpaths">
+<sect1 id="intro-worklines-syncpaths">
 
-    <title>Syncronizing Paths</title>
+    <title>Path Syncronization</title>
 
     <para>  
-        Once both master and auxiliar paths have been set in the
-        repository, they shouldn't be changed.  However, assuming you
-        need to change them, it is required that you also change the
-        relation between them, in order for both master and auxiliar
-        paths to retain their relation one another.  This process of
-        keeping relation between master and auxiliar paths updated is
-        known as <emphasis>path syncronization</emphasis>.
+        Once both master and auxiliar paths have been related in the
+        repository, they shouldn't be changed except you absolutly
+        need to do so. In this cases, when you need to change master
+        or auxiliar paths, it is required that you also change the
+        relation between them so as to retain their bond.  This
+        process of keeping master and auxiliar paths
+        <quote>connected</quote> between themselves is known as
+        <emphasis>path syncronization</emphasis>.
     </para>
     
     <para>
         Path syncronization is required for automation scripts to know
-        where to store final output, where to retrive translation, and
-        any information that might be desired. If the relation between
-        master paths and auxiliar paths is lost, there is no way for
-        <command>centos-art.sh</command> script to know where to
-        retrive the information it needs to work with.  Path
-        syncronization is the way we use to organize and extend the
-        information stored in the repository.
+        where to store final output, where to retrive translation
+        messages from, and whatever information you might need to
+        count with. If the relation between master paths and auxiliar
+        paths is lost, there is no way for automation scripts to know
+        where to retrive the information they need to work with or
+        where to store the output information produced from it.  Path
+        syncronization is the way we use through to organize and
+        extend the information stored in the repository.
     </para>
     
     <para>
@@ -30,30 +32,31 @@
         the repository.  Replacement of content inside files is
         related to actions like replacing information (e.g., paths
         information) inside files in order to keep file contents and
-        file locations consistent one another after the movement.
+        file locations consistent one another after a file movement.
     </para>
 
     <para>
         The order followed to syncronize path information is very
         important because the versioned nature of the files we are
-        working with. When a renaming action is performed, we avoid
-        making replacements inside files first and file movements
-        later. This would require two commit actions: one for the
-        files' internal changes and another for the file movement
-        itself.  Otherwise, we prefer to perform file movements first
-        and file internal replacements later. This way it is possible
-        to commit both changes as if they were just one.
+        working with. When a renaming action needs to be performed
+        inside the repository, we avoid making replacements inside
+        files first and file movements later. This would demand two
+        commit actions: one for the files' internal changes and
+        another for the file movement itself.  Otherwise, we prefer to
+        perform file movements first and files' internal replacements
+        later.  This way it is possible to commit both changes as if
+        they were just one.
     </para>
  
     <note>
-        <para>
-            There is no support for URLs actions inside
-            <command>centos-art.sh</command> script.  The
-            <command>centos-art.sh</command> script is designed to
-            work with local files inside the working copy only. If you
-            need to perform URL actions directly, use Subversion
-            commands instead.
-        </para>
+    <para>
+        There is no support for URLs actions inside
+        <command>centos-art.sh</command> script.  The
+        <command>centos-art.sh</command> script is designed to work
+        with local files inside the working copy only. If you need to
+        perform URL actions directly, use Subversion's commands
+        instead.
+    </para>
     </note>
 
     <para>
@@ -90,4 +93,4 @@
         would be the master path not the auxiliar path.  
     </para>
 
-</chapter>
+</sect1>
