@@ -3,68 +3,40 @@
     <title>Extending Repository Organization</title>
         
     <para>
-        Occasionly, you may find that new components of &TCP;
-        corporate visual identity need to be added to the repository
-        in order to work them out. If that is the case, the first
-        question we need to ask ourselves, before start to create
-        directories blindly all over, is: <emphasis>What is the right
-        place to store it?</emphasis>
+        Occasionly, you may find that new components of &TCPCVI; need
+        to be added to the repository in order to work them out. If
+        that is the case, the first question we need to ask ourselves,
+        before starting to create directories blindly all over, is:
+        <emphasis>What is the right place to store it?</emphasis>
     </para>
         
     <para>
-        The best place to find answers is in &TCC; (see page
-        http://wiki.centos.org/Help), but going there with hands empty
-        is not good idea. It may give the impression you don't really
-        care about. Instead, consider the following suggestions
-        to find your own comprehension in order to make your own
-        propositions based on it.
-    </para>
-        
-    <para>
-        When extending respository structure it is very useful to bear
-        in mind &TCPCVIS;, &TCM; and &TCDRS;.  The rest is a matter of
-        choosing appropriate names.  It is also worth to know that
-        each directory in the repository responds to a conceptual idea
-        that justifies its existence.
+        When the repository structure is extended, it is very useful
+        to bear in mind &TCPCVIS;, &TCM; and &TCDRS;.  The rest is a
+        matter of choosing appropriate names.  It is also worth to
+        know that each directory in the repository responds to one or
+        more concepts that justify its existence.
     </para>
         
     <para>
         To build a directory structure inside the repository, you need
-        to define the conceptual idea first and later create the
+        to define the concept behind it first and later create the
         directory, remembering that there are locations inside the
-        repository that define conceptual ideas you probably would
-        prefer to reuse.  For example, the <filename
+        repository that define concepts you probably would prefer to
+        reuse.  For example, the <filename
         class="directory">trunk/Identity/Images/Themes</filename>
-        directory stores theme artistic motifs, the <filename
+        directory stores artistic motifs of different themes, the
+        <filename
         class="directory">trunk/Identity/Models/Themes</filename>
-        directory stores theme design models, the <filename
+        directory stores design models for themes, the <filename
         class="directory">trunk/Manuals</filename> directory stores
-        documentation files, the <filename
-        class="directory">trunk/Locales</filename> stores translation
+        documentation, the <filename
+        class="directory">trunk/L10n</filename> stores translation
         messages, and the <filename
         class="directory">trunk/Scripts</filename> stores automation
-        scripts.
-    </para>
-        
-    <para>
-        To better illustrate this desition process, you can consider
-        to examin the <filename
-        class="directory">trunk/Identity/Images/Themes/TreeFlower/3</filename>
-        directory structure as example.  This directory can be read
-        as: the theme development line of version <quote>3</quote> of
-        <quote>TreeFlower</quote> artistic motif.  Additional, we can
-        say that <quote>TreeFlower</quote> artistic motif is part of
-        themes, as themes are part of The CentOS Project corporate
-        visual identity.
-    </para>
-        
-    <para>
-        The relationship between conceptual ideas can be stablished by
-        reading each repository documentation entry individually, from
-        <filename class="directory">trunk</filename> directory to a
-        deeper directory in the path. For reading repository
-        documentation entries we use the <code>help</code>
-        functionality of <command>centos-art.sh</command> script.
+        scripts. Using this information and the one provided in <xref
+        linkend="intro-repoconvs-layout" />, it is possible for you to
+        find out good places for extending &TCAR;.
     </para>
         
 </sect1>

@@ -25,9 +25,36 @@
     </para>
 
     <para>
-        &TCAR; is organized through a convenctional
-        <quote>trunk</quote>, <quote>branches</quote> and
-        <quote>tags</quote> layout.
+        The first level of directories in the repository provides
+        organization through a convenctional <quote>trunk</quote>,
+        <quote>branches</quote> and <quote>tags</quote> layout. In
+        this configuration the <filename
+        class="directory">trunk</filename> directory is where main
+        changes take place, the <filename
+        class="directory">tags</filename> directory is where frozen
+        copies of <filename class="directory">trunk</filename> changes
+        are placed in for releasing, and the <filename
+        class="directory">branches</filename> directory is an
+        intermediate place between <filename
+        class="directory">trunk</filename> and <filename
+        class="directory">tags</filename> states where changes take
+        place before being merged into <filename
+        class="directory">trunk</filename> and finally released into
+        <filename class="directory">tags</filename>.
+    </para>
+
+    <para>
+        The second level of directories in the repository provides
+        organization for each work line described in <xref
+        linkend="intro-repoconvs-worklines" />.
+    </para>
+    
+    <para>
+        All other subsequent levels of directories in the repository,
+        from third level on, are created to organize specific concepts
+        related to the work line they are in. A complete reference for
+        each directory inside &TCAR; is available at <xref
+        linkend="dirs" />.
     </para>
         
 </sect1>

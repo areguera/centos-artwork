@@ -10,6 +10,7 @@
 <!ENTITY % Locales.ent          SYSTEM "Locales.ent">
 <!ENTITY % Manuals.ent          SYSTEM "Manuals.ent">
 <!ENTITY % Scripts.ent          SYSTEM "Scripts.ent">
+<!ENTITY % Directories.ent      SYSTEM "Directories.ent">
 <!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
 %Commons.ent;
@@ -19,6 +20,7 @@
 %Locales.ent;
 %Manuals.ent;
 %Scripts.ent;
+%Directories.ent;
 %Licenses.ent;
 ]>
 
@@ -81,6 +83,7 @@
     &locales;
     &manuals;
     &scripts;
+    &dirs;
     &licenses;
 
 </book>
