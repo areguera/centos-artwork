@@ -41,7 +41,7 @@ export CLI_TEMPDIR='/tmp'
 # Initizalize internazionalization through gettext.
 . gettext.sh
 export TEXTDOMAIN=${CLI_PROGRAM}.sh
-export TEXTDOMAINDIR=${HOME}/artwork/trunk/Locales/Scripts
+export TEXTDOMAINDIR=${HOME}/artwork/trunk/L10n/Scripts
 
 # Initialize common function scripts.
 FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)

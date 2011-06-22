@@ -139,7 +139,7 @@ function render_doBaseActions {
 
             # Define final location of translation file.
             TRANSLATION=$(dirname $FILE \
-               | sed -r 's!trunk/(Manuals|Identity)!trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
+               | sed -r 's!trunk/(Manuals|Identity)!trunk/L10n/\1!')/$(cli_getCurrentLocale)/messages.po
 
             # Define final location of template file.
             TEMPLATE=${FILE}

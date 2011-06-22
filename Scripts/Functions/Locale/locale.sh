@@ -53,7 +53,7 @@ function locale {
     # base directory up to the repository (e.g., it is not possible in
     # subversion to add a directory structure which parent directory
     # structure hasn't been added to the repository, previously.).
-    L10N_BASEDIR="$(cli_getRepoTLDir)/Locales"
+    L10N_BASEDIR="$(cli_getRepoTLDir)/L10n"
 
     # Interpret arguments and options passed through command-line.
     locale_getOptions
@@ -86,7 +86,7 @@ function locale {
         # Define work directory. This is the place where locales
         # directories will be stored in.
         WORKDIR=$(echo ${ACTIONVAL} \
-            | sed -r -e "s!trunk/(Identity|Scripts|Manuals)!trunk/Locales/\1!")
+            | sed -r -e "s!trunk/(Identity|Scripts|Manuals)!trunk/L10n/\1!")
 
         # Add current locale to work directory. This is the place
         # where parent directories specific translation messages
