@@ -202,11 +202,11 @@ xmllint --valid --noout repository.docbook
 The Xhtml output produced by @command{texi2html} is customized through
 common and specific configuration files. Common configuration files
 are stored in @file{trunk/Manuals/RepoReference} and include
-@file{repository.css}, @file{repository-init.pl} and
+@file{repository.css}, @file{tcar-ug-init.pl} and
 @file{repository.sed}. Specific configuration files, on the other
 hand, are stored inside the language-specific template directory
 (e.g., @file{trunk/Scripts/Functions/Help/Templates/$LANG}) which
-includes the @file{repository-init.pl}, @file{repository.conf},
+includes the @file{tcar-ug-init.pl}, @file{repository.conf},
 @file{repository.sed} files.
 
 The @code{help} functionality takes the @file{trunk/} directory
