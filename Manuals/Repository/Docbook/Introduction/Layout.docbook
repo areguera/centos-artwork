@@ -1,4 +1,4 @@
-<chapter id="intro-repoconvs-layout">
+<chapter id="repo-repoconvs-layout">
 
     <title>Repository Layout</title>
 
@@ -46,20 +46,18 @@
     <para>
         The second level of directories in the repository provides
         organization for each work line described in <xref
-        linkend="intro-worklines" />.
+        linkend="repo-worklines" />.
     </para>
     
     <para>
         All other subsequent levels of directories in the repository,
         from third level on, are created to organize specific concepts
-        related to the work line they are in. A complete reference for
-        each directory inside &TCAR; is available at <xref
-        linkend="dirs" />.
+        related to the work line they are in.
     </para>
 
-    &intro-layout-filenames;
-    &intro-layout-relbdirs;
-    &intro-layout-syncpaths;
-    &intro-layout-extending;
+    &repo-layout-filenames;
+    &repo-layout-relbdirs;
+    &repo-layout-syncpaths;
+    &repo-layout-extending;
         
 </chapter>
