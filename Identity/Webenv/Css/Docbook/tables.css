@@ -1,5 +1,5 @@
 /*
- * Docbook -> Admonitions
+ * Docbook -> Tables
  * 
  * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
@@ -21,6 +21,46 @@
  * $Id$
  * ----------------------------------------------------------------------
  */
+
+/* Revision History
+-----------------------------------------------*/
+
+div.revhistory {
+    margin: 1em 0 1em 0;
+    }
+
+div.revhistory table th,
+div.revhistory table td {
+    font-size: x-small;
+    }
+
+/* Navegation
+-----------------------------------------------*/
+
+div.navheader {
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+    }
+
+div.navfooter {
+    margin-top: 2.5em;
+    padding-bottom: 0.5em;
+    }
+
+div.navheader table,
+div.navfooter table {
+    margin: 0; 
+    }
+
+div.navheader table th,
+div.navheader table td,
+div.navfooter table th, 
+div.navfooter table td { 
+    border: none;
+    }
+
+/* Admonitions
+-----------------------------------------------*/
 
 div.note, 
 div.tip,
