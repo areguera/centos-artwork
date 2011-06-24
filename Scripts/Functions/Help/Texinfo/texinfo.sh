@@ -28,7 +28,7 @@
 function texinfo {
 
     # Define file name (without extension) for documentation manual.
-    MANUAL_NAME=$(cli_getRepoName "repository" -f)
+    MANUAL_NAME=$(cli_getRepoName "$(basename $MANUAL_TLDIR)" -f)
 
     # Define file extension used by documentation manual source files.
     MANUAL_EXTENSION='texinfo'
