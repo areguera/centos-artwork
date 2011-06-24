@@ -35,7 +35,7 @@ function help {
 
     # Define manual top level directory. This is where
     # backend-specific documentation structures are stored in.
-    MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/Repository"
+    MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/TCAR-UG"
 
     # Define manual language.
     MANUAL_LANG=$(cli_getCurrentLocale)
