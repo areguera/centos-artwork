@@ -23,8 +23,20 @@
  */
 
 div#page-body ul { 
-    list-style: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/ul.png") circle; 
+    list-style: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.5/ul.png") disc; 
     } 
+
+div#page-body ul,
+div#page-body ol { 
+    margin-left: 5.5em;
+    }
+
+div#page-body ul ol,
+div#page-body ol ul,
+div#page-body dl ul,
+div#page-body dl ol { 
+    margin-left: 2.5em;
+    }
 
 div#page-body div#content-links ul {
     padding: 1em;
@@ -45,7 +57,8 @@ div#page-body div#content-links ul li.current {
     font-weight: bold;
     }
 
-/* Table of content (toc) */
+/* Table of content (toc) 
+--------------------------------------------------------------------*/
 
 div#page-body div.toc {
 	border: 1px solid #CCCCCC;
@@ -58,15 +71,15 @@ div#page-body div.toc {
 
 div#page-body div.toc h3 {
     margin-top: 0;
-    background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/h2-bg.png");
+    background: #FFF url("/home/centos/artwork/tags/Identity/Images/Webenv/1.3/h2-bg.png");
     }
 
 div#page-body div.toc ul {
-    margin-left: 1.5em;
+    margin-left: 3.5em;
     }
 
 div#page-body div.toc ul ul {
-    margin-left: 0;
+    margin-left: 2.5em;
     }
 
 div#page-body dl {
