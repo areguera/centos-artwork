@@ -231,14 +231,11 @@ hr {
 
 ul,
 ol {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    padding-left: 1.9em;
-    margin-left: 3.5em;
+    margin: 1.5em 0 1.5em 2.5em;
     }
 
 ul { 
-    list-style: circle;
+    list-style: disc;
     } 
 
 ol {
@@ -254,7 +251,6 @@ ul ul,
 ul ol,
 ol ul,
 ol ol {
-    margin-left: 1em;
     margin-top: 0.3em;
     margin-bottom: 0.3em;
     }
@@ -262,8 +258,6 @@ ol ol {
 ul li p,
 ol li p {
     margin-bottom: 0.3em;
-    line-height: 1.5em;
-    margin-left: 0 !important;
     }
 
 dl {
@@ -284,7 +278,6 @@ dl dt span {
 
 dl dd ul,
 dl dd ol {
-    margin-left: 0.8em;
     line-height: 1.5em;
     }
 
@@ -294,7 +287,6 @@ dl dd ol {
 table {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    margin-left: 1.5em;
     border-collapse: collapse;
     }
 
