@@ -103,8 +103,8 @@ div.tip table th, div.tip table td,
 div.important table th, div.important table td,
 div.caution table th, div.caution table td,
 div.warning table th, div.warning table td {
-    border:none;
-    padding: 0 0 0.5em 0;
+    padding: 0;
+    border: none;
     }
 
 div.note table th, 
@@ -129,7 +129,7 @@ div.tip table td p,
 div.important table td p,
 div.caution table td p,
 div.warning table td p {
-    margin: 0 2em 1em 0;
+    margin: 0 1em 1em 0;
     }
 
 div.note pre,
@@ -140,6 +140,6 @@ div.warning pre {
     border: none;
     background-color: #333;
     color: #FFFFFF;
-    margin: 0 2em 1em 0;
-    padding: 0.5em;
+    margin: 0 1em 1em 0;
+    padding: 0.5em 1em 0.5em 1em;
     }
