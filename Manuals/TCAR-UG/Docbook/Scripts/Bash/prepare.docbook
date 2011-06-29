@@ -1,4 +1,40 @@
 <sect1 id="scripts-bash-prepare">
     <title>The <function>prepare</function> functionality</title>
-    <para>...</para>
+
+    <para>
+        Assuming this is the very first time you run the
+        <command>centos-art.sh</command> script, you'll find that
+        it isn't found in your workstation.  This is correct because
+        you haven't create the command-line interface symbolic link
+        that make it available in the execution path. In order to make
+        the <command>centos-art.sh</command> command-line
+        available in the execution path of your workstation, you need
+        to run it using its absolute path first:
+    </para>
+
+    <screen>~/artwork/trunk/Scripts/centos-art.sh prepare [OPTIONS]</screen>
+
+    <para>
+        Later, once the <command>centos-art.sh</command> script is
+        available in the execution path of your system, there is no
+        need for you to use the absolute path again.  From this time
+        on, you can use the <command>centos-art</command> command-line
+        interface directly, as the following example describes:
+    </para>
+
+    <screen>centos-art prepare [OPTIONS]</screen>
+
+    <para>
+        Notice that you can execute the prepare functionality more
+        than once. This is specially useful to keep the link
+        information syncronized. For example, considering you've added
+        new brushes to or removed old brushes from your working copy
+        of &TCAR;, the link information related to those files need to
+        be updated in the <filename
+        class="directory">~/.gimp-2.2/brushes</filename> directory
+        too, in a way the addition/deletion change that took place in
+        your working copy can be reflected there, as well.  The same
+        is true for other similar components like fonts, patterns and
+        palettes.
+    </para>
 </sect1>

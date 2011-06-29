@@ -1,0 +1,221 @@
+<sect1 id="repo-ws-install">
+
+    <title>Installing Your Workstation</title>
+
+    <para>
+        In order to have a working copy of &TCAR; in your workstation,
+        the first step you need to follow is pick up a computer and
+        install an operating system in it. This computer will be named
+        the workstation from now on. 
+    </para>
+        
+    <para>
+        At the moment of chosing which operating system to install in
+        your workstation, consider that &TCAR; is completly built on
+        &TCD; and realies on it to achieve most automation tasks. At
+        time of this writing the major release 5 update 5 of &TCD; was
+        used as platform to support all work line development inside
+        &TCAR;. To get the best of &TCAR;, it is necessary that you
+        too, use the same operating system we did to develop it.
+    </para>
+
+    <para>
+        To install &TCD; you need to have access to the installation
+        media somehow (e.g., CDs, DVDs, Pendrives, etc.).  If you
+        don't have the installation media of &TCD;, you need to
+        download the ISO files related to the installation media you
+        plan to use (e.g., CD or DVD) and then create the installation
+        media by yourself.  &TCD; ISO files can be downloaded from
+        &TCM;.
+    </para>
+        
+    <para>
+        Assuming you downloaded the DVD ISO of &TCD;, you can burn it
+        using the <application>K3B</application> application and, this
+        way, you are creating the installation media you are in need
+        of.  Of course, in order to download the ISO files and create
+        the installation media, you need to have a workstation already
+        functionality where you can realized such tasks. If this is
+        the first time for you and see yourself into much troubles
+        here, talk to the guys in your nearest LUG, or simply send a
+        mail to &TCML; where you'll surely have the answer you need.
+    </para>
+        
+    <para>
+        Once you have the installation media on your hands, the
+        installation process of &TCD; is rather straightforward. To
+        begin, you put the installation media in your media reader,
+        boot the computer from it, and follow the installer
+        intructions till it completes all the steps. That simple.
+    </para>
+
+    <sect2 id="repo-ws-partition">
+
+    <title>The Partition Information</title>
+    
+    <para>
+        The partition information you set in your workstation is very
+        specific to your personal needs and the technical
+        characteristics of your machine.  This information will also
+        set the bases of all deployment you reach to achieve inside
+        the workstation. A well partitioned workstation is crucial to
+        garantee a well distribution of space inside the worstation.
+        In order to provide an idea of this installation step, I'll
+        describe the specific partitioning of the machine I use to
+        develop &TCAR; right now.  Remember that your needs might be
+        differents and so the partition layout you should implement.
+    </para>
+
+    <para>
+        The machine of our example is isolated from Internet or any
+        other network. It has two hard drives of 256GB each, 2GB of
+        RAM and a 2.80GHz Core 2 Duo processor. The main goal of this
+        machine is producing &TCAR;. To represent the real production
+        environment of &TCAR;, this machine was conceived to have two
+        roles, one as server &mdash;to store the source repository of
+        &TCAR;&mdash; and one as client &mdash;to store a working copy
+        of the source repository&mdash;. From both hard drives
+        available, one is used as primary
+        (<filename>/dev/sda</filename>) and the other one as secondary
+        (<filename>/dev/sdb</filename>) where the secondary is used
+        only to backup the information produced in the primary by mean
+        of backup scripts.
+    </para>
+    <para>
+        The partition distribution of this machine implements the
+        default partinioning schema provided by &TCD; in the primary
+        hard drive to store partitions needed by the operating system
+        (e.g., <filename class="directory">/</filename>, <filename
+        class="directory">/boot</filename> and swap partition) where
+        the working copy is placed in. The second hard drive is an
+        entire partition mounted in <filename
+        class="directory">/mnt/backups</filename> automatically on
+        boot which only purpose is to duplicate the information
+        produced in the workplace.
+    </para>
+
+<screen>
+Filesystem                          Type   Size  Mounted on
+/dev/mapper/VolGroup00-LogVol00     ext3   239G  /
+/dev/sda1                           ext3   104M  /boot
+tmpfs                               tmpfs  1.1G  /dev/shm
+/dev/sdb                            ext3   247G  /mnt/backups
+</screen>
+
+    <para>
+        The detailed steps followed to prepare the partinioning layout
+        described above are described in the <citetitle>Deployment
+        Guide</citetitle> provided by
+        <package>Deployment_Guide-en-US-5.2-11.el5.centos</package>
+        package.
+    </para>
+
+    </sect2>
+
+    <sect2 id="repo-ws-packages">
+
+    <title>The Packages Selection</title>
+
+    <para>
+        The packages selection lets you to specify which software does
+        your workstation will have once it be installed. In this step,
+        you need to select the following groups of packages:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>Desktop Environments</para>
+    <itemizedlist>
+        <listitem>
+        <para>
+            GNOME Desktop Environment
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            KDE (K Desktop Environment)
+        </para>
+        </listitem>
+    </itemizedlist>
+    </listitem>
+
+    <listitem>
+    <para>Applications</para>
+    <itemizedlist>
+        <listitem>
+        <para>
+            Authoring and Publishing
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            Editors
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            Graphical Internet
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            Graphics
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            Office/Productivity
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            Text-based Internet
+        </para>
+        </listitem>
+    </itemizedlist>
+    </listitem>
+
+    <listitem>
+    <para>Development</para>
+    <itemizedlist>
+        <listitem>
+        <para>
+            Development Libraries
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            Development Tools  
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            GNOME Software Development
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            KDE Software Development
+        </para>
+        </listitem>
+    </itemizedlist>
+    </listitem>
+    </itemizedlist>
+
+    <para>
+        Packages selected in this step provide a base selection of all
+        the packages you need in order to have a functional working
+        copy of &TCAR;. The only exception for this, is the
+        <package>inkscape</package> package and some of its
+        dependencies which doesn't come with &TCD; and need to be
+        installed from third party repositroies like EPEL and
+        RPMForge. The configuration of third party repository is done
+        later, once the workstation has been installed; just as
+        described in the <ulink
+        url="http://wiki.centos.org/AdditionalResources/Repositories">Repositories</ulink>
+        page.
+    </para>
+
+    </sect2>
+
+</sect1>
