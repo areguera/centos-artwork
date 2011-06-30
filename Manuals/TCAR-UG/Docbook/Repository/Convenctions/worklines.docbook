@@ -1,0 +1,112 @@
+<sect1 id="repo-convs-worklines">
+
+    <title>Repository Work Lines</title>
+
+    <para>
+        To organize content production inside &TCAR;, production has
+        been divided into individual work lines that relate one
+        another based on the idea of doing one thing well. Later, the
+        results produced individually by each work line are combined
+        to achieve a higher purpose. Work lines, as conceived here,
+        provide the relayable output components the production cycle
+        inside &TCAR; needs to let everyone to work syncronized in a
+        descentralized environment.
+    </para>
+
+    <sect2 id="repo-convs-worklines-idenity">
+
+    <title>Visual Identity</title>
+
+    <para>
+        In the production cycle, the first step takes place through
+        graphic design. It is focused on preparing design models for
+        all the visual manifestation &TCP; is made of.  Here, graphic
+        designers describe the visual characteristics of each visual
+        manifestation (e.g., image dimensions, position of text in the
+        visible area, translation markers, etc.).  
+        Later, once design models have been defined, graphic designers
+        take care of artistic motifs to define the visual style of
+        those design models already created (e.g., how they look and
+        feel).  
+    </para>
+        
+    <para>
+        Finally, graphic designers use the
+        <function>render</function> functionality of
+        <command>centos-art.sh</command> script to combine both design
+        models and artistic motifs in order to produce the final
+        images required by each visual manifestaions.
+    </para>
+
+    </sect2>
+
+    <sect2 id="repo-convs-worklines-l10n">
+
+    <title>Localization</title>
+
+    <para>
+        The second step in the production cycle is to localize
+        source files (e.g., SVG, DocBook, Shell scripts). This step
+        makes possible to produce localized images, localized
+        documentation and localized automation scripts.
+    </para>
+    
+    <para>
+        The localization tasks are carried on by translators using the
+        <function>locale</function> functionality of the
+        <command>centos-art.sh</command> script which take care of
+        retriving translatable strings from source files and provide a
+        consistent localization interface based on GNU
+        <application>gettext</application> multi-lingual message
+        production tool set and <command>xml2po</command> command.
+    </para>
+
+    </sect2>
+
+    <sect2 id="repo-convs-worklines-manuals">
+
+    <title>Documentation</title>
+
+    <para>
+        The third step in the production cycle is to document &TCAR;,
+        what it is and how to use it. This step provides the
+        conceptual ideas used as base to edificate &TCPCVI; and is
+        implemented through &TCARUG;.
+    </para>
+
+    <para>
+        To write documentation, documentors use the
+        <function>help</function> functionality of
+        <command>centos-art.sh</command> script which provide an
+        consistent interface for building documentation through
+        different documentation backends (e.g., Texinfo and DocBook).
+    </para>
+
+    </sect2>
+
+    <sect2 id="repo-convs-worklines-scripts">
+
+    <title>Automation</title>
+
+    <para>
+        The fourth step in the production cycle is to automate
+        frequent tasks inside &TCAR;. This step closes the production
+        cycle and provides the production standards needed by all
+        different work lines to coexist together.  Here is where
+        the <command>centos-art.sh</command> script and all
+        its functionalities (e.g., <function>render</function> for
+        rendition, <function>help</function> for documentation,
+        <function>locale</function> for localization, etc.) are
+        developed.
+    </para>  
+
+    <para>
+        At this point it should be obvious, but we consider worth to
+        remember that: there is no need to type several tasks, time
+        after time, if they can be programmed into just one executable
+        script. 
+    </para>
+
+    </sect2>
+
+</sect1>
