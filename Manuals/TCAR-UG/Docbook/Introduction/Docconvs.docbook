@@ -13,174 +13,149 @@
 
     <variablelist>
         <varlistentry>
-            <term><command>command</command></term>
-            <listitem>
-                <para>
-                    Linux commands (and other operating system
-                    commands, when used) are represented this way.
-                    This style should indicate to you that you can
-                    type the word or phrase on the command line and
-                    press Enter to invoke a command. Sometimes a
-                    command contains words that would be displayed in
-                    a different style on their own (such as file
-                    names). In these cases, they are considered to be
-                    part of the command, so the entire phrase is
-                    displayed as a command.  For example:
-                </para>
+        <term><command>command</command></term>
+        <listitem>
+        <para>
+            Linux commands (and other operating system commands, when
+            used) are represented this way.  This style should
+            indicate to you that you can type the word or phrase on
+            the command line and press <keycap>Enter</keycap> to
+            invoke a command.  Sometimes a command contains words that
+            would be displayed in a different style on their own (such
+            as file names). In these cases, they are considered to be
+            part of the command, so the entire phrase is displayed as
+            a command.  For example:
+        </para>
 
-                <itemizedlist>
-                <listitem>
-                <para>
-                    Use the <command>centos-art render <filename
-                    class="directory">trunk/Manuals/Repository/Docbook</filename>
-                    --filter="repository"</command> command to produce
-                    the CentOS Artwork Repository User's Guide.
-                </para>
-                </listitem>
-                </itemizedlist>
-                
-            </listitem>
+        <para>
+            Use the <command>centos-art render
+            trunk/Identity/Images/Themes/TreeFlower/4/Distro/5/Anaconda
+            --filter="01-welcome"</command> command to produce the first
+            slide image used by Anaconda in the branch 5 of &TCD;
+            using the version 4 of TreeFlower artistic motif.
+        </para>
+        </listitem>
         </varlistentry>
 
         <varlistentry>
-            <term><filename>file name</filename></term>
-            <listitem>
-                <para>
-                    File names, directory names, paths, and RPM
-                    package names are represented this way. This style
-                    indicates that a particular file or directory
-                    exists with that name on your system. Examples:
-                </para>
+        <term><filename>file name</filename></term>
+        <listitem>
+        <para>
+            File names, directory names, paths, and RPM package names
+            are represented this way. This style indicates that a
+            particular file or directory exists with that name on your
+            system. Examples:
+        </para>
 
-                <itemizedlist>
-                <listitem>
-                <para>
-                    The <filename>init.sh</filename> file in <filename
-                    class="directory">trunk/Scripts/Bash/Cli/</filename>
-                    directory is the initialization script, written in
-                    Bash, used to automate most of tasks in the
-                    repository.
-                </para>
-                </listitem>
-                <listitem>
-                <para>
-                    The <command>centos-art</command> command uses the
-                    <package>ImageMagick</package> RPM package to
-                    convert images from PNG format to other
-                    formats.
-                </para>
-                </listitem>
-                </itemizedlist>
+        <para>
+            The <filename>init.sh</filename> file in <filename
+            class="directory">trunk/Scripts/Bash/Cli/</filename>
+            directory is the initialization script, written in Bash,
+            used to automate most of tasks in the repository.
+        </para>
 
-            </listitem>
+        <para>
+            The <command>centos-art</command> command uses the
+            <filename>ImageMagick</filename> RPM package to convert
+            images from PNG format to other formats.
+        </para>
+        </listitem>
         </varlistentry>
 
         <varlistentry>
-            <term><keycap>key</keycap></term>
-            <listitem>
-                <para>
-                    A key on the keyboard is shown in this style.
-                    For example:
-                </para>
+        <term><keycap>key</keycap></term>
+        <listitem>
+        <para>
+            A key on the keyboard is shown in this style.  For
+            example:
+        </para>
 
-                <itemizedlist>
-                <listitem>
-                <para>
-                    To use <keycap>Tab</keycap> completion to list
-                    particular files in a directory, type
-                    <command>ls</command>, then a character, and
-                    finally the <keycap>Tab</keycap> key. Your
-                    terminal displays the list of files in the working
-                    directory that begin with that character.
-                </para>
-                </listitem>
-                </itemizedlist>
-            </listitem>
+        <para>
+            To use <keycap>Tab</keycap> completion to list particular
+            files in a directory, type <command>ls</command>, then a
+            character, and finally the <keycap>Tab</keycap> key. Your
+            terminal displays the list of files in the working
+            directory that begin with that character.
+        </para>
+        </listitem>
         </varlistentry>
 
         <varlistentry>
-            <term><keycombo action="simul"><keycap>key</keycap><keycap>combination</keycap></keycombo></term>
-            <listitem>
-                <para>
-                    A combination of keystrokes is represented in this
-                    way. For example: 
-                </para>
-                <itemizedlist> 
-                <listitem> 
-                <para>
-                    The <keycombo
-                    action="simul"><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>Backspace</keycap></keycombo>
-                    key combination exits your graphical session and
-                    returns you to the graphical login screen or the
-                    console.
-                </para> 
-                </listitem>
-                </itemizedlist>
-                
-            </listitem> 
-                
+        <term><keycombo action="simul"><keycap>key</keycap><keycap>combination</keycap></keycombo></term>
+        <listitem>
+        <para>
+            A combination of keystrokes is represented in this way.
+            For example: 
+        </para>
+
+        <para>
+            The <keycombo
+            action="simul"><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>Backspace</keycap></keycombo>
+            key combination exits your graphical session and returns
+            you to the graphical login screen or the console.
+        </para> 
+        </listitem> 
         </varlistentry>
 
         <varlistentry>
-            <term><computeroutput>computer output</computeroutput></term>
-            <listitem>
-            <para>
-                Text in this style indicates text displayed to a shell
-                prompt such as error messages and responses to
-                commands. For example, the <command>ls</command>
-                command displays the contents of a directory using
-                this style:
-            </para>
+        <term><computeroutput>computer output</computeroutput></term>
+        <listitem>
+        <para>
+            Text in this style indicates text displayed to a shell
+            prompt such as error messages and responses to commands.
+            For example, the <command>ls</command> command displays
+            the contents of a directory using this style:
+        </para>
 
-<programlisting>
+<screen>
 render_doTranslation.sh     render_getDirTemplate.sh    render_doBaseActions.sh
 render_getConfigOption.sh   render_getOptions.sh        render_doThemeActions.sh  
 render_getDirOutput.sh      render.sh
-</programlisting>
+</screen>
 
-            <para>
-                The output returned in response to the command (in
-                this case, the contents of the directory) is shown in
-                this style.
-            </para>
+        <para>
+            The output returned in response to the command (in this
+            case, the contents of the directory) is shown in this
+            style.
+        </para>
         </listitem>
-    </varlistentry>
+        </varlistentry>
 
-    <varlistentry>
+        <varlistentry>
         <term><prompt>prompt</prompt></term>
         <listitem>
         <para>
             A prompt, which is a computer's way of signifying that it
             is ready for you to input something, is shown in this
             style. Examples:
-            <itemizedlist>
-                <listitem>
-                <para>
-                    <prompt>$</prompt>
-                </para>
-                </listitem>
-                <listitem>
-                <para>
-                    <prompt>#</prompt>
-                </para>
-                </listitem>
-                <listitem>
-                <para>
-                    <prompt>[centos@projects centos]$</prompt>
-                </para>
-                </listitem>
-                <listitem>
-                <para>
-                    <prompt>projects login:</prompt>
-                </para>
-                </listitem>
-            </itemizedlist>
+        </para>
 
+        <itemizedlist>
+        <listitem>
+        <para>
+            <prompt>$</prompt>
         </para>
         </listitem>
-    </varlistentry>
+        <listitem>
+        <para>
+            <prompt>#</prompt>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <prompt>[centos@projects centos]$</prompt>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <prompt>projects login:</prompt>
+        </para>
+        </listitem>
+        </itemizedlist>
+        </listitem>
+        </varlistentry>
 
-    <varlistentry>
+        <varlistentry>
         <term><userinput>user input</userinput></term>
         <listitem>
         <para>
@@ -193,9 +168,9 @@ render_getDirOutput.sh      render.sh
             at the <prompt>boot:</prompt> prompt.
         </para>
         </listitem>
-    </varlistentry>
+        </varlistentry>
 
-    <varlistentry>
+        <varlistentry>
         <term><replaceable>replaceable</replaceable></term>
         <listitem>
         <para>
@@ -210,7 +185,7 @@ render_getDirOutput.sh      render.sh
            version and type of kernel installed on this system. 
         </para>
         </listitem>
-    </varlistentry>
+        </varlistentry>
     </variablelist>
 
     <para>Additionally, we use several different strategies to draw
