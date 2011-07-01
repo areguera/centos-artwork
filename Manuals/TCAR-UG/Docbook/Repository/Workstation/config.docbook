@@ -1,4 +1,4 @@
-<sect1 id="repo-ws-configure">
+<sect1 id="repo-ws-config">
 
     <title>Configuring Your Workstation</title>
 
@@ -10,9 +10,9 @@
         copy of &TCAR; and prepare it for start using it.
     </para>
 
-    <sect2 id="repo-ws-configure-wp">
+    <sect2 id="repo-ws-config-wp">
 
-    <title>The Workplace</title>
+    <title>Workplace</title>
 
     <para>
         Once you've installed the workstation and it is up and
@@ -138,8 +138,8 @@
 
     </sect2>
 
-    <sect2>
-    <title>The Environment Variables</title>
+    <sect2 id="repo-ws-config-envar">
+    <title>Environment Variables</title>
 
     <para>
         Once you've created the <emphasis>centos</emphasis> user name
@@ -270,8 +270,8 @@
     </variablelist>
     </sect2>
 
-    <sect2>
-    <title>The Administrative Tasks</title>
+    <sect2 id="repo-ws-config-sudo">
+    <title>Administrative Tasks</title>
 
     <para>
         Sometimes it is necessary that you perform administrative
@@ -325,8 +325,8 @@ centos  ALL=(ALL)       ALL
     
     </sect2>
 
-    <sect2>
-    <title>The Working Copy</title>
+    <sect2 id="repo-ws-config-wc">
+    <title>Working Copy</title>
 
     <para>
         Once you've installed and configured the workstation, it is

@@ -1,5 +1,18 @@
 <sect1 id="scripts-bash-prepare">
+
     <title>The <function>prepare</function> functionality</title>
+
+    <para>
+        The <function>prepare</function> functionality is the
+        interface the <command>centos-art.sh</command> script provides
+        to standardize the final configuration stuff your workstation
+        needs, once the working copy of &TCAR; has been downloaded
+        inside it already.
+    </para>
+
+    <simplesect>
+
+    <title>Synopsis</title>
 
     <para>
         Assuming this is the very first time you run the
@@ -25,16 +38,157 @@
     <screen>centos-art prepare [OPTIONS]</screen>
 
     <para>
-        Notice that you can execute the prepare functionality more
-        than once. This is specially useful to keep the link
-        information syncronized. For example, considering you've added
-        new brushes to or removed old brushes from your working copy
-        of &TCAR;, the link information related to those files need to
-        be updated in the <filename
-        class="directory">~/.gimp-2.2/brushes</filename> directory
-        too, in a way the addition/deletion change that took place in
-        your working copy can be reflected there, as well.  The same
-        is true for other similar components like fonts, patterns and
-        palettes.
+        The <function>prepare</function> functionality accepts the
+        following options: 
     </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--quiet</option></term>
+    <listitem>
+    <para>
+        Supress all output messages except error messages.  When this
+        option is passed, all confirmation requests are supressed and
+        a possitive answer is assumed for them, just as if the
+        <option>--answer-yes</option> option had been provided.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--answer-yes</option></term>
+    <listitem>
+    <para>
+       Assume <emphasis>yes</emphasis> to all confirmation requests.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--packages</option></term>
+    <listitem>
+    <para>
+        This option verifies whether required packages need to be
+        installed or updated. In both cases, the <command>sudo
+        yum</command> command is used to perform such tasks. This
+        configuration requires you to configure the
+        <command>sudo</command> command first, as described in <xref
+        linkend="repo-ws-config-sudo" />.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--links</option></term>
+    <listitem>
+    <para>
+        This option creates/updates the symbolic links information
+        required in your workstation to connect it with the files
+        inside the working copy of &TCAR;. When you provide this
+        option, the <command>centos-art.sh</command> put itself into
+        your system's execution path and make brushes, patterns,
+        palettes and fonts available inside applications like GIMP, so
+        you can make use of them without loosing version control over
+        them.
+    </para>
+    </listitem>
+    </varlistentry>
+    
+    <varlistentry>
+    <term><option>--images</option></term>
+    <listitem>
+    <para>
+        This option initializes image files inside the working copy.
+        When you provide this option, the
+        <command>centos-art.sh</command> scripts renders image files
+        from all design models available in the working copy. This
+        step is required in order to satisfy dependencies from
+        different components inside the working copy.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--manuals</option></term>
+    <listitem>
+    <para>
+       This option initializes documentation files inside the working
+       copy. When you provide this option, the
+       <command>centos-art.sh</command> script renders all
+       documentation manuals from their related source files so you
+       can read them nicely.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--environment</option></term>
+    <listitem>
+    <para>
+       Print the name and value of some of the environment variables
+       used by <command>centos-art.sh</command> scripts.  
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        As default behaviour, when no option is provided to
+        <function>prepare</function> functionality, the
+        <command>centos-art.sh</command> script
+        excecutes as is it had been executed with the
+        <option>--packages</option>, <option>--links</option>,
+        <option>--images</option> and <option>--manuals</option>
+        options. Otherwise, if you provide any option, the
+        <command>centos-art.sh</command> script executes the
+        <function>prepare</function> functionality as specified by the
+        options.
+    </para>
+
+    <para>
+        Notice that is possible for you to execute the
+        <function>prepare</function> functionality as much times as
+        you need to.  This is specially useful when you need to keep
+        syncronized the relation between content produced inside your
+        working copy and the applications you use outside it. For
+        example, considering you've added new brushes to or removed
+        old brushes from your working copy of &TCAR;, the link
+        information related to those files need to be updated in the
+        <filename class="directory">~/.gimp-2.2/brushes</filename>
+        directory too, in a way the addition/deletion change that took
+        place in your working copy can be reflected there, as well.
+        The same is true for other similar components like fonts,
+        patterns and palettes.
+    </para>
+
+    </simplesect>
+
+    <simplesect>
+    <title>Examples</title>
+    <para>
+        The examples here seem to be pretty obvious once you've read
+        both the synopsis section and the options supported by this
+        functionality.  Isn't it?
+    </para>
+    </simplesect>
+
+    <simplesect>
+    <title>Reporting Bugs</title>
+    <para>
+        Report bugs to &TCAML;.
+    </para>
+    </simplesect>
+
+    <simplesect>
+    <title>Copyright</title>
+    <para>
+        Copyright &copy; 2009, 2010, 2011 &TCAS;.
+    </para>
+    <para>
+        This  is free software.  You may redistribute copies of it
+        under the terms of the <xref linkend="licenses-gpl"/>.  There
+        is NO WARRANTY, to the extent permitted by law.
+    </para>
+    </simplesect>
+
 </sect1>
