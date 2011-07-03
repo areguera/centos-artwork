@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# svg_convertPngToBrands.sh -- This function provides post-rendition
-# actions to produce CentOS brands. This function takes both The
-# CentOS Symbol and The CentOS Type images and produces variation of
-# them in different dimensions and formats using ImageMagick tool-set.
+# svg_convertPngToIcons.sh -- This function provides post-rendition
+# actions to produce images in different sizes and formats from the
+# same SVG design model. This function might be useful to produce
+# icons and brands images.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_convertPngToBrands {
+function svg_convertPngToIcons {
 
     # Define height dimensions you want to produce brands for.
     local SIZE=""
@@ -33,31 +33,45 @@ function svg_convertPngToBrands {
 
     # Define image formats you want to produce brands for.
     local FORMAT=""
-    local FORMATS="png xpm pdf jpg tif"
+    local FORMATS="xpm pdf jpg tif"
 
     for SIZE in ${SIZES};do
 
+        # Redefine absolute path to file location where size-specific
+        # images will be stored in.
+        local FINALFILE=$(dirname $FILE)/${SIZE}/$(basename $FILE)
+
+        # Prepare directory where size-specific images will be stored
+        # in. If it doesn't exist create it.
+        if [[ ! -d $(dirname $FINALFILE) ]];then
+            mkdir -p $(dirname $FINALFILE)
+        fi
+
+        # Print action message.
+        cli_printMessage "${FINALFILE}.png" --as-creating-line
+
+        # Create size-specific PNG image ommiting all output.
+        inkscape $INSTANCE --export-id=$EXPORTID \
+            --export-png=${FINALFILE}.png --export-height=${SIZE} \
+            &> /dev/null
+
         for FORMAT in ${FORMATS};do
         
-            # Output action information.
-            cli_printMessage "${FILE}-${SIZE}.${FORMAT}" --as-creating-line
+            # Print action message.
+            cli_printMessage "${FINALFILE}.${FORMAT}" --as-creating-line
 
-            # Convert and resize to create new file. Use resize
-            # support with a value less than 1.0 for sharpening. This
-            # make resized brands to look better. Otherwise, if the
-            # resize support is greater than 1.0 or none at all,
-            # resized brands are blured instead.
-            convert -support 0.8 -resize x${SIZE} ${FILE}.png ${FILE}-${SIZE}.${FORMAT}
+            # Convert size-specific PNG image into different formats.
+            convert ${FINALFILE}.png ${FINALFILE}.${FORMAT}
 
         done
 
-        # Create logo copy in 2 colors.
-        cli_printMessage "${FILE}-${SIZE}.xbm (`gettext "2 colors grayscale"`)" --as-creating-line
-        convert -resize x${SIZE} -colorspace gray -colors 2 ${FILE}.png ${FILE}-${SIZE}.xbm
+        # Create copy of size-specific image in 2 colors.
+        cli_printMessage "${FINALFILE}.xbm" --as-creating-line
+        convert -colorspace gray -colors 2 ${FINALFILE}.png ${FINALFILE}.xbm
 
-        # Create logo copy in emboss effect.
-        cli_printMessage "${FILE}-${SIZE}-emboss.png" --as-creating-line
-        convert -resize x${SIZE} -emboss 1 ${FILE}.png ${FILE}-${SIZE}-emboss.png
+        # Create copy of size-specific image with emboss effect.
+        cli_printMessage "${FINALFILE}-emboss.png" --as-creating-line
+        convert -emboss 1 ${FINALFILE}.png ${FINALFILE}-emboss.png
 
     done
 
