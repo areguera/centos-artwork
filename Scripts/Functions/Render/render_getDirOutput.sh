@@ -44,20 +44,26 @@ function render_getDirOutput {
     # like release number, architecture, etc.
     OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
 
-    # Define whether to use or not locale-specific directory to store
-    # content, using current locale information as reference. As
-    # convenction, when we produce content in English language, we do
-    # not add a laguage-specific directory to organize content.
-    # However, when we produce language-specific content in a language
-    # different from English we do use language-specific directory to
-    # organize content.
-    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-        OUTPUT=${OUTPUT}/$(cli_getCurrentLocale)
-    fi
-
     # Remove two or more consecutive slashes as well as the last
     # remaining slash in the path.
     OUTPUT=$(echo $OUTPUT | sed -r 's!/{2,}!/!g' | sed -r 's!/$!!')
+
+    # Define whether to use or not locale-specific directory to store
+    # content, using current locale information as reference. As
+    # convenction, when we produce content, only specific locations
+    # use locale-specific directories to organize language-specific
+    # content (e.g., Manuals, Anaconda, Installation media, etc.). All
+    # other locations do not use locale-specific directories to
+    # organize content. This convenction is important in order for
+    # the `prepare' functionality of centos-art.sh script to produce
+    # content in the correct location. Otherwise, we might end up
+    # duplicating content (e.g., icons, brands, etc.) which doesn't
+    # have any translation, nor any need to be translated.
+    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
+        if [[ $(cli_hasLocalization $TEMPLATE) == 'true' ]];then
+            OUTPUT=${OUTPUT}/$(cli_getCurrentLocale)
+        fi
+    fi
 
     # Create final output directory, if it doesn't exist yet.
     if [[ ! -d ${OUTPUT} ]];then
