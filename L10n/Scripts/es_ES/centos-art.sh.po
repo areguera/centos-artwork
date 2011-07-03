@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-19 15:00-0400\n"
+"POT-Creation-Date: 2011-07-02 22:32-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -75,7 +75,12 @@ msgstr "¿Desea continuar?"
 msgid "Cannot locale English language to itself."
 msgstr "No puede traducir el idioma Inglés a si mismo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:123
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:89
+#, fuzzy
+msgid "The path provided doesn't support localization."
+msgstr "El camino suministrado no soporta la localización."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:129
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
 msgid "A valid action is required."
 msgstr "La acción suministrada no es válida."
@@ -85,94 +90,90 @@ msgstr "La acción suministrada no es válida."
 msgid "The path provided does not support localization."
 msgstr "El camino suministrado no soporta la localización."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:34
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:29
 msgid "Checking environment variables"
 msgstr "Comprobando variables de entorno"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:49
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:44
 msgid "Default text editor"
 msgstr "Editor de texto predeterminado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:50
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:45
 msgid "Default time zone representation"
 msgstr "Representación de la zona horaria predeterminada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:51
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:46
 msgid "Default domain used to retrieve translated messages"
 msgstr "Dominio predeterminado para recuperar los mensajes traducidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:52
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:47
 msgid "Default directory used to retrive translated messages"
 msgstr "Directorio predeterminado usado para recuperar los mensajes traducidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:53
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:48
 msgid "Default locale information"
 msgstr "Información de idioma predeterminada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromSgml.sh:106
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromXml.sh:128
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Docbook/docbook_convertToPdfFromSgml.sh:106
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:128
 msgid "Cannot produce the PDF file."
 msgstr "No se pudo producir el fichero PDF."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToPdfFromXml.sh:120
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:120
 msgid "Cannot produce the formatting object."
 msgstr "No se pudo producir el objecto de formateado (FO)."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Docbook/docbook_convertToText.sh:67
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Docbook/docbook_convertToText.sh:67
 msgid "No way to convert from XHTML to plain-text found."
 msgstr "No se encontró una forma para convertir de XHTML a texto."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg.sh:50
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg.sh:50
 msgid "Area"
 msgstr "Área"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg.sh:52
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg.sh:52
 msgid "Background"
 msgstr "Fondo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg.sh:54
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:109
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:106
 msgid "Saved as"
 msgstr "Guardado como"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_checkColorAmount.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_checkColorAmount.sh:38
 msgid "The palette does not have the correct number of colors."
 msgstr "La paleta no tiene el número correcto de colores."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_checkColorFormats.sh:83
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_checkColorFormats.sh:83
 #, sh-format
 msgid "The \"$COLOR\" string is not a valid color code."
 msgstr "La cadena \"$COLOR\" no es un código de color válido."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_checkModelExportId.sh:36
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_checkModelExportId.sh:36
 msgid "The export id value cannot be empty."
 msgstr "El identificador de exportación no puede estar vacío."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_checkModelExportId.sh:42
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_checkModelExportId.sh:42
 #, sh-format
 msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
 msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_convertPngToBrands.sh:55
-msgid "2 colors grayscale"
-msgstr "2 colores escala de grices."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_convertPngToDm.sh:54
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_convertPngToDm.sh:54
 msgid "There is no resolution information to process."
 msgstr "No hay información de resolución a procesar."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_convertPngToDm.sh:117
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_convertPngToDm.sh:117
 #, sh-format
 msgid "The \"$DM\" display manager is not supported yet."
 msgstr "El administrador de monitor \"$DM\" no está soportado aún."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_convertPngToGrub.sh:76
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_convertPngToSyslinux.sh:85
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_convertPngToGrub.sh:76
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_convertPngToSyslinux.sh:85
 #, sh-format
 msgid "The \"$OPTION\" option is already used."
 msgstr "La opción \"$OPTION\" ya se encuentra en uso."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Backends/Svg/svg_doPostActions.sh:35
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_doPostActions.sh:35
 msgid "Created in CentOS Artwork Repository"
 msgstr "Creado en Repositorio Artístico de CentOS"
 
@@ -180,16 +181,16 @@ msgstr "Creado en Repositorio Artístico de CentOS"
 msgid "The path provided does not support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:60
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:61
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:152
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:150
 msgid "The template file doesn't exist."
 msgstr "El fichero plantilla no existe."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:168
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:172
 msgid "Validation failed."
 msgstr "Validación fallida."
 
@@ -2104,71 +2105,71 @@ msgstr "Al menos una opción es necesaria."
 msgid "The message cannot be empty."
 msgstr "El mensaje no puede estar vacío."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:81
-msgid "Updating"
-msgstr "Actualizando"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:85
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:78
 msgid "Cropping from"
 msgstr "Recortando de"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:89
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:82
 msgid "Tuning-up"
 msgstr "Afinado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:93
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:86
 msgid "Checking"
 msgstr "Comprobando"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:97
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:91
+msgid "Updating"
+msgstr "Actualizando"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:93
 msgid "Creating"
 msgstr "Creando"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:101
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:98
 msgid "Deleting"
 msgstr "Eliminando"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:105
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:102
 msgid "Reading"
 msgstr "Leyendo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:113
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:110
 msgid "Linked to"
 msgstr "Enlazado a"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:117
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:114
 msgid "Moved to"
 msgstr "Movido a"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:121
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:118
 msgid "Translation"
 msgstr "Traducción"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:125
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:122
 msgid "Validating"
 msgstr "Validando"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:129
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:126
 msgid "Template"
 msgstr "Plantilla"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:133
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:130
 msgid "Configuration"
 msgstr "Configuración"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:137
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:134
 msgid "Palette"
 msgstr "Paleta"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:161
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:158
 msgid "To know more, run the following command"
 msgstr "Para conocer más, ejecute el command siguiente"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:171
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:168
 msgid "yes"
 msgstr "sí"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:174
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:171
 msgid "no"
 msgstr "no"
 
@@ -2193,6 +2194,9 @@ msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio."
 msgstr[1] "ficheros desde el repositorio."
+
+#~ msgid "2 colors grayscale"
+#~ msgstr "2 colores escala de grices."
 
 #~ msgid "None"
 #~ msgstr "No hay"
