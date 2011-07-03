@@ -29,7 +29,7 @@ function prepare_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,packages,links,environment"
+    local ARGSL="quiet,answer-yes,packages,links,images,manuals,environment"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -37,6 +37,15 @@ function prepare_getOptions {
     # Reset positional parameters using output from (getopt) argument
     # parser.
     eval set -- "$ARGUMENTS"
+
+    # Define default behaviour when no option is provided.
+    if [[ "$@" =~ '^--$' ]];then
+        ${FUNCNAM}_doPackages
+        ${FUNCNAM}_doLinks
+        ${FUNCNAM}_doImages
+        ${FUNCNAM}_doManuals
+        return
+    fi
 
     # Look for options passed through command-line.
     while true; do
@@ -54,17 +63,27 @@ function prepare_getOptions {
                 ;;
 
             --packages )
-                FLAG_PACKAGES="true"
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doPackages"
                 shift 1
                 ;;
 
             --links )
-                FLAG_LINKS="true"
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doLinks"
+                shift 1
+                ;;
+
+            --images )
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doImages"
+                shift 1
+                ;;
+
+            --manuals )
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doManuals"
                 shift 1
                 ;;
 
             --environment )
-                FLAG_ENVIRONMENT="true"
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doEnvironment"
                 shift 1
                 ;;
 

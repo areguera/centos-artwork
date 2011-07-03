@@ -28,11 +28,6 @@
 
 function prepare_doPackages {
 
-    # Verify `--packages' option.
-    if [[ $FLAG_PACKAGES == 'false' ]];then
-        return
-    fi
-
     local PACKAGE=''
     local PACKAGES=''
     local PACKAGES_THIRDS=''

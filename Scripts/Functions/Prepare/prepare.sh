@@ -25,21 +25,15 @@
 
 function prepare {
 
-    # Define packages flag. The package flag (--packages) controls
-    # whether package verification is performed or not. By default no
-    # package verification is done.
-    local FLAG_PACKAGES='false'
+    # Initialize action name variable. Here is where we store the
+    # name of the actions that will be executed based on the options
+    # passed in the command-line.
+    local ACTIONNAM=''
+    local ACTIONNAMS=''
 
-    # Define links flag. The link flag (--links) controls whether
-    # links verifications are performed or not. By default no link
-    # verification is done.
-    local FLAG_LINKS='false'
-
-    # Define environment flag. The environment flag (--environment)
-    # controles whether verification of environment variables are
-    # performed or not. By default no verification of environment
-    # variables is done.
-    local FLAG_ENVIRONMENT='false'
+    # Define absolute path to directory holding prepare's
+    # configuration files.
+    PREPARE_CONFIG_DIR=${FUNCDIR}/${FUNCDIRNAM}/Config
 
     # Interpret arguments and options passed through command-line.
     prepare_getOptions
@@ -61,10 +55,9 @@ function prepare {
     # arguments here since we are doing fixed verifications only in
     # predifined paths.
 
-    # Verify flags and execute actions accordingly. Start with
-    # packages, links and then environment.
-    prepare_doPackages
-    prepare_doLinks
-    prepare_doEnvironment
+    # Execute action names.
+    for ACTIONNAM in $ACTIONNAMS;do
+        ${ACTIONNAM}
+    done
 
 }

@@ -25,14 +25,6 @@
 
 function prepare_doEnvironment {
 
-    # Verify `--packages' option.
-    if [[ $FLAG_ENVIRONMENT == 'false' ]];then
-        return
-    fi
-
-    # Print action message.
-    cli_printMessage "`gettext "Checking environment variables"`" --as-banner-line
-
     local -a VARS
     local -a INFO
     local COUNT=0
