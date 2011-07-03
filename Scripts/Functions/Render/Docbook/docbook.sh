@@ -40,4 +40,10 @@ function docbook {
     # of CentOS greater than 5.5, uncomment this to see what happen.
     #${RENDER_BACKEND}_convertToPdf
 
+    # Perform backend post-rendition.
+    ${RENDER_BACKEND}_doPostActions
+
+    # Perform backend last-rendition.
+    ${RENDER_BACKEND}_doLastActions
+
 }

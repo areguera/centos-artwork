@@ -228,12 +228,6 @@ function render_doBaseActions {
             # Perform backend base-rendition.
             ${RENDER_BACKEND}
 
-            # Perform backend post-rendition.
-            ${RENDER_BACKEND}_doPostActions
-
-            # Perform backend last-rendition.
-            ${RENDER_BACKEND}_doLastActions
-
             # Remove template instance. 
             if [[ -f $INSTANCE ]];then
                 rm $INSTANCE
