@@ -91,7 +91,7 @@ function svg_convertPngToDm {
 
         Gdm )
             FILES="\
-            ${BRANDS}/Symbols/centos-48.png:centos-symbol.png
+            ${BRANDS}/Symbols/48/centos.png:centos-symbol.png
             ${OUTPUT}/release.png:centos-release.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
@@ -105,7 +105,7 @@ function svg_convertPngToDm {
             
         Kdm )
             FILES="\
-            ${BRANDS}/Symbols/centos-48.png:centos-symbol.png
+            ${BRANDS}/Symbols/48/centos.png:centos-symbol.png
             ${OUTPUT}/release.png:centos-release.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
