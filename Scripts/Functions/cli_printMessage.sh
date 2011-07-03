@@ -46,11 +46,8 @@ function cli_printMessage {
     # printed out on the screen.
     MESSAGE=$(echo $MESSAGE | sed -e "s/\\\0x27/'/g")
 
-    # Reduce paths and leading spaces from output messages. The main
-    # purpose for this is to free horizontal space on output messages.
-    MESSAGE=$(echo "$MESSAGE" | sed -r \
-        -e "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g" \
-        -e 's!^[[:space:]]+!!')
+    # Remove empty spaces from message.
+    MESSAGE=$(echo $MESSAGE | sed -e 's!^[[:space:]]+!!')
 
     # Print out messages based on format.
     case "$FORMAT" in
@@ -77,10 +74,6 @@ function cli_printMessage {
             cli_printMessage '-' --as-separator-line
             ;;
 
-        --as-updating-line )
-            cli_printMessage "`gettext "Updating"`: $MESSAGE"
-            ;;
-
         --as-cropping-line )
             cli_printMessage "`gettext "Cropping from"`: $MESSAGE"
             ;;
@@ -93,8 +86,12 @@ function cli_printMessage {
             cli_printMessage "`gettext "Checking"`: $MESSAGE"
             ;;
 
-        --as-creating-line )
-            cli_printMessage "`gettext "Creating"`: $MESSAGE"
+        --as-creating-line | --as-updating-line )
+            if [[ -a "$MESSAGE" ]];then
+                cli_printMessage "`gettext "Updating"`: $MESSAGE"
+            else
+                cli_printMessage "`gettext "Creating"`: $MESSAGE"
+            fi
             ;;
 
         --as-deleting-line )
@@ -212,7 +209,14 @@ function cli_printMessage {
             ;;
 
         * )
-            echo "$MESSAGE" \
+
+            # Default printing format. This is the format used when no
+            # other specification is passed to this function. As
+            # convenience, we transform absolute paths into relative
+            # paths in order to free horizontal space on final output
+            # messages.
+            echo "$MESSAGE" | sed -r \
+                -e "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g" \
                 | awk 'BEGIN { FS=": " }
                     { 
                         if ( $0 ~ /^-+$/ )
