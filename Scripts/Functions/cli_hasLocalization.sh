@@ -51,6 +51,7 @@ function cli_hasLocalization {
     # locale-specific directories will be created for.
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Identity/Models/Themes/[[:alnum:]-]+/(Concept|Posters|Distro/$(cli_getPathComponent --release-pattern))/(Anaconda|Media)"
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Manuals/[[:alnum:]-]+/Docbook"
+    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Scripts$"
 
     # Verify location passed as first argument agains the list of
     # directories that can have translation messages. By default, the
