@@ -83,6 +83,12 @@ function locale {
         # copy.
         ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
 
+        # Verify whether the directory provided can have localization
+        # messages or not.
+        if [[ ! $(cli_hasLocalization $ACTIONVAL) == 'true' ]];then
+            cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
+        fi
+
         # Define work directory. This is the place where locales
         # directories will be stored in.
         WORKDIR=$(echo ${ACTIONVAL} \
