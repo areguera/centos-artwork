@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# svg_convertPngToBrands.sh -- This function provides post-rendition
-# actions to produce brand images in different sizes and formats from
+# svg_convertPngToIcons.sh -- This function provides post-rendition
+# actions to produce icon images in different sizes and formats from
 # the same SVG design model.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svg_convertPngToBrands {
+function svg_convertPngToIcons {
 
     # Define height dimensions you want to produce brands for.
     local SIZE=""
@@ -32,7 +32,7 @@ function svg_convertPngToBrands {
 
     # Define image formats you want to produce brands for.
     local FORMAT=""
-    local FORMATS="xpm pdf jpg tif"
+    local FORMATS=""
 
     for SIZE in ${SIZES};do
 
@@ -54,23 +54,23 @@ function svg_convertPngToBrands {
             --export-png=${FINALFILE}.png --export-height=${SIZE} \
             &> /dev/null
 
-        for FORMAT in ${FORMATS};do
-        
-            # Print action message.
-            cli_printMessage "${FINALFILE}.${FORMAT}" --as-creating-line
-
-            # Convert size-specific PNG image into different formats.
-            convert ${FINALFILE}.png ${FINALFILE}.${FORMAT}
-
-        done
+        #for FORMAT in ${FORMATS};do
+        #
+        #    # Print action message.
+        #    cli_printMessage "${FINALFILE}.${FORMAT}" --as-creating-line
+        #
+        #    # Convert size-specific PNG image into different formats.
+        #    convert ${FINALFILE}.png ${FINALFILE}.${FORMAT}
+        #
+        #done
 
         # Create copy of size-specific image in 2 colors.
-        cli_printMessage "${FINALFILE}.xbm" --as-creating-line
-        convert -colorspace gray -colors 2 ${FINALFILE}.png ${FINALFILE}.xbm
+        #cli_printMessage "${FINALFILE}.xbm" --as-creating-line
+        #convert -colorspace gray -colors 2 ${FINALFILE}.png ${FINALFILE}.xbm
 
         # Create copy of size-specific image with emboss effect.
-        cli_printMessage "${FINALFILE}-emboss.png" --as-creating-line
-        convert -emboss 1 ${FINALFILE}.png ${FINALFILE}-emboss.png
+        #cli_printMessage "${FINALFILE}-emboss.png" --as-creating-line
+        #convert -emboss 1 ${FINALFILE}.png ${FINALFILE}-emboss.png
 
     done
 
