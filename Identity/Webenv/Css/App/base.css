@@ -23,12 +23,12 @@
  */
 
 div#page-header {
-	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.2/h1-bg.png") 0 0 repeat;
+	background: #204C8D url("/home/centos/artwork/trunk/Identity/Images/Webenv/h1-bg.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
 div#page-footer {
-	background: #204C8D url("/home/centos/artwork/tags/Identity/Images/Webenv/1.2/h1-bg.png") 0 0 repeat;
+	background: #204C8D url("/home/centos/artwork/trunk/Identity/Images/Webenv/h1-bg.png") 0 0 repeat;
     padding: 10px;
 	}
 
@@ -58,7 +58,7 @@ div#page-header,
 div#wrap,
 div#page-body,
 div#page-footer {
-    min-width: 680px;
+    min-width: 728px;
     }
 
 div#page-body {
@@ -68,7 +68,12 @@ div#page-body {
 
 div#page-body div#content {
     padding: 20px;
+    padding-top: 10px;
     background-color: #FFF;
+    }
+
+div#content div.trail {
+    margin-bottom: 1em;
     }
 
 /* Logo
@@ -77,6 +82,6 @@ div#page-body div#content {
 div#page-header div#logo img {
 	border: none;
 	float: left;
-    margin: 5px;
+    margin-left: 5px;
 	}
 
