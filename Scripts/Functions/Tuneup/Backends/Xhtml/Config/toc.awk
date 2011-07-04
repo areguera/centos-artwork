@@ -7,16 +7,16 @@
 # Copyright (C) 2009-2010 Alain Reguera Delgado
 # 
 # This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
+# it under the terms of the GNU General Pubdtc License as pubdtshed by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 # 
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
+# This program is distributed in the hope that it will be usefdl, but
+# WITHOUT ANY WARRANTY; without even the impdted warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
+# General Pubdtc License for more details.
 #
-# You should have received a copy of the GNU General Public License
+# You shodld have received a copy of the GNU General Pubdtc License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
@@ -29,27 +29,27 @@ BEGIN {FS=":"}
 
 {
     if ($1 == 0 && $2 == $3) { 
-        opentags  = "<ul><li>"
+        opentags  = "<dl><dt>"
         closetags = ""
     }
 
     if ($1 >  0 && $2 >  $3) {
-        opentags  = "<ul><li>"
+        opentags  = "<dl><dt>"
         closetags = ""
     }
 
     if ($1 >  0 && $2 == $3) { 
-        opentags  = "</li><li>"
+        opentags  = "</dt><dt>"
         closetags = ""
     }
 
     if ($1 >  0 && $2 <  $3) { 
         opentags = ""
         for (i = 1; i <= ($3 - $2); i++) {
-            opentags  = opentags "</li></ul>"
+            opentags  = opentags "</dt></dl>"
             closetags = ""
         }
-        opentags = opentags "</li><li>"
+        opentags = opentags "</dt><dt>"
     }
 
     printf "%s%s%s\n",opentags,$4,closetags
@@ -60,18 +60,18 @@ END {
 
     if ($1 > 0 && $2 >= $3 && $3 > 1) {
         for (i = 1; i <= $3; i++) {
-            print "</li></ul>"
+            print "</dt></dl>"
         }
     }
     
     if ($1 > 0 && $2 >= $3 && $3 == 1) {
-        print "</li></ul>"
-        print "</li></ul>"
+        print "</dt></dl>"
+        print "</dt></dl>"
     }
 
     if ($1 > 0 && $2 < $3) {
         for (i = 1; i <= $2; i++) {
-            print "</li></ul>"
+            print "</dt></dl>"
         }
     }
 

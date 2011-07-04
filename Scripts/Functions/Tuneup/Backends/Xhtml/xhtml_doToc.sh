@@ -50,6 +50,7 @@ function xhtml_doToc {
     local -a TITLE
     local -a MD5SM
     local -a OPTNS
+    local -a CLASS
     local -a LEVEL
     local -a PARENT
     local -a TOCENTRIES
@@ -64,7 +65,7 @@ function xhtml_doToc {
 
     # Define html heading regular expression pattern. Use parenthisis
     # to save html action name, action value, and heading title.
-    local PATTERN="<h([1-6])>(<a.*[^\>]>)(.*[^<])</a></h[1-6]>"
+    local PATTERN='<h([1-6])(.*)>(<a.*[^\>]>)(.*[^<])</a></h[1-6]>'
 
     # Verify list of html files. Are files really html files? If they
     # don't, continue with the next one in the list.
@@ -89,9 +90,10 @@ function xhtml_doToc {
 
         # Define initial heading information.
         FIRST[$COUNT]=$(echo $HEADING | sed -r "s!\\\040! !g")
-        TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\3!")
+        TITLE[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\4!")
         MD5SM[$COUNT]=$(echo "${FILE}${FIRST[$COUNT]}" | md5sum | sed -r 's![[:space:]]+-$!!')
-        OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
+        OPTNS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\3!")
+        CLASS[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\2!")
         LEVEL[$COUNT]=$(echo ${FIRST[$COUNT]} | sed -r "s!$PATTERN!\1!")
         PARENT[$COUNT]=${LEVEL[$PREVCOUNT]}
 
@@ -106,7 +108,7 @@ function xhtml_doToc {
         fi
 
         # Build final html heading structure.
-        FINAL[$COUNT]='<h'${LEVEL[$COUNT]}'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'${LEVEL[$COUNT]}'>'
+        FINAL[$COUNT]='<h'${LEVEL[$COUNT]}${CLASS[$COUNT]}'>'${OPTNS[$COUNT]}${TITLE[$COUNT]}'</a></h'${LEVEL[$COUNT]}'>'
 
         # Build html heading link structure. These links are used by
         # the table of contents later.
@@ -134,7 +136,7 @@ function xhtml_doToc {
     # replacements. Finnally, the result is stored in the TOC
     # variable.
     TOC=$(echo '<div class="toc">'
-        echo "<h3>`gettext "Table of contents"`</h3>"
+        echo "<p>`gettext "Table of contents"`</p>"
         for TOCENTRY in "${TOCENTRIES[@]}";do
             echo $TOCENTRY
         done \
@@ -149,6 +151,7 @@ function xhtml_doToc {
     unset TITLE
     unset MD5SM
     unset OPTNS
+    unset CLASS
     unset LEVEL
     unset PARENT
     unset TOCENTRIES
