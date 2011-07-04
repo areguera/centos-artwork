@@ -29,14 +29,10 @@
 /* Customize default definitions.
 --------------------------------------------------------------------*/
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/base.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/headings.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/paragraphs.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/links.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/pagelines.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/lists.css");
 @import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/quotation.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/forms.css");
-@import url("/home/centos/artwork/trunk/Identity/Webenv/Css/App/ads.css");
 
 /* Customize Texi2HTML specific definitions.
 --------------------------------------------------------------------*/
@@ -47,31 +43,50 @@ div#page-body div#content {
     background-color: #FFF;
     }
 
-table {
+div#page-body ul.toc { 
+    list-style: none;
+    }
+
+div#page-body div#content table {
     margin-top: 0px;
     }
 
-div#content table tr td,
-div#content table tr th {
+div#page-body div#content table tr td,
+div#page-body div#content table tr th {
     border:none;
     }
 
-div#content pre.example {
+div#page-body div#content pre.example {
     padding: 0.5em 1em;
     }
 
-div#content p img {
+div#page-body div#content p img {
     margin-right: 10px;
     margin-top: 10px;
     padding: 5px;
     border: 1px solid #DADADA;
     }
 
-div#content table.navibar {
+div#page-body div#content table.navibar {
     margin-top: 20px;
     border-bottom: 1px solid #f8f8f8;
     }
 
-div#content p.credits {
+div#page-body div#content table.menu {
+    margin: 0 0 0 1.5em;
+    }
+
+div#page-body div#content p.credits {
     font-size: small;
+    }
+
+div#page-body div#content h1,
+.chapter,
+.section,
+.subsection,
+.subsubsection,
+.heading,
+.subheading,
+.subsubheading {
+    color: #072B61;
     }
