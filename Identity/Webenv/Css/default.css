@@ -45,7 +45,7 @@
 
 html {
     background-color: #FFF;
-    background-image: url("/home/centos/artwork/tags/Identity/Images/Webenv/1.0/html-bg.png");
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/html-bg.png");
     }
 
 /* Define body
@@ -71,6 +71,15 @@ a:hover { text-decoration: underline; color: green; }
 a:active { text-decoration: underline; color: green; }
 a:visited { text-decoration: none; color: #0044B3; }
 a:visited:hover { text-decoration: underline; color: green; }
+
+.title a:link,
+.title a:active,
+.title a:hover,
+.title a:visited,
+.title a:visited:hover {
+    color: #072B61;
+	text-decoration: none;
+	}
 
 /* Headings
 -----------------------------------------------*/
@@ -107,23 +116,9 @@ h6 {
     line-height: 1.1em;
     }
 
-h1 a:link,
-h1 a:active,
-h1 a:visited,
-h1 a:visited:hover,
-h2 a:link,
-h2 a:active,
-h3 a:link,
-h3 a:active,
-h4 a:link,
-h4 a:active,
-h5 a:link,
-h5 a:active,
-h6 a:link,
-h6 a:active {
-    color: #333;
-	text-decoration: none;
-	}
+.title {
+    color: #072B61;
+    }
 
 /* Paragraphs
 -----------------------------------------------*/
@@ -146,26 +141,6 @@ blockquote {
     padding: 0.5em;
     margin-top: 1em;
     margin-bottom: 1.3em;
-    }
-
-blockquote h3 {
-    line-height: 0;
-    border: none;
-    color: #000000;
-    margin-left: 1.2em;
-    padding: 0;
-    }
-
-blockquote pre {
-    border: none;
-    background-color: #333;
-    color: #FFFFFF;
-    margin: 0;
-    margin-left: 1.5em;
-    }
-
-blockquote img {
-    float: left;
     }
 
 q:before {
@@ -268,10 +243,6 @@ dl dd {
     margin-left: 2.5em;
     }
 
-dl dt:after {
-    content: ""
-    }
-
 dl dt span {
     line-height: 1.5em;
     }
@@ -285,15 +256,9 @@ dl dd ol {
 -----------------------------------------------*/
 
 table {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
     border-collapse: collapse;
-    }
-
-table.menu {
-    margin:0;
-    margin-left: 3.5em;
-    padding:0;
     }
 
 table caption {
@@ -379,10 +344,9 @@ input[type="checkbox"] {
     }
 
 fieldset {
-    margin: 1em;
+    margin: 1em 0 1em 0;
     padding: 1em;
     padding-bottom: 5px;
-    margin-left: 1.5em;
     border: 1px solid #AAA;
     }
 
