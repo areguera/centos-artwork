@@ -34,14 +34,14 @@
         <div id="logo">
            <a title="Community Enterprise Operating System"
             href="http://www.centos.org/"><img
-            src="/home/centos/artwork/trunk/Identity/Images/Brands/Logos/centos-white-64.png" alt="CentOS"/></a>
+            src="/home/centos/artwork/trunk/Identity/Images/Brands/Logos/64/centos-white.png" alt="CentOS"/></a>
         </div>
 
         <!-- 
         Advertisement area (468x60 pixels). 
         -->
-        <div class="advertisement">
-            <img src="/home/centos/artwork/tags/Identity/Images/Webenv/1.0/ads-sample-468x60.png" alt="Advertisement" />
+        <div class="ads-google">
+            <a title="Google Advertisement"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/ads-sample-468x60.png" alt="Google Advertisement" /></a>
             <script type="text/javascript"><!--
                 google_ad_client = "pub-6973128787810819";
                 google_ad_width = 468;
@@ -66,7 +66,7 @@
         CentOS specific navigation links. Use this section to list the
         web applications you want to be always visible no matter where
         you are inside the CentOS web environment.  Example of web
-        applications are: Wiki, Lists, Mirrors, Forums, Planet, etc.
+        applications are: Wiki, Lists, Downloads, Forums, Planet, etc.
         -->
         <div class="page-line"><hr style="display:none;" /></div>
         <div class="tabs1">
@@ -78,7 +78,7 @@
        
             <span>
             <a accesskey="2" title="CentOS Wiki (Alt+Shift+2)" 
-            href="/home/centos/artwork/trunk/Identity/Models/Html/Moin/index.xhtml">
+            href="http://wiki.centos.org/">
             <span>Wiki</span></a>
             </span>
        
@@ -103,18 +103,24 @@
             </span>
 
             <span>
-            <a accesskey="7" title="CentOS Projects (Alt+Shift+7)" href="https://projects.centos.org/trac/">
-            <span>Projects</span></a>
+            <a accesskey="7" title="CentOS SIGs (Alt+Shift+7)" href="http://sigs.centos.org/">
+            <span>SIGs</span></a>
             </span>
 
             <span>
-            <a accesskey="8" title="CentOS Mirrors (Alt+Shift+8)" href="http://mirrors.centos.org">
-            <span>Mirrors</span></a>
+            <a accesskey="8" title="CentOS Downloads (Alt+Shift+8)" href="http://mirrors.centos.org">
+            <span>Downloads</span></a>
             </span>
 
         </div>
 
-        <div class="page-line white"><hr style="display:none;" /></div>
+        <!-- 
+        Sponsors Advertisement.
+        -->
+        <div class="ads-sponsors">
+        <a title="Sponsors Advertisement" href=""><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/ads-sample-728x90.png" alt="Sponsors Advertisement" /></a>
+        </div>
+
         <div class="links">
 
             <!-- 
@@ -186,7 +192,7 @@
 
     <div id="page-body">
 
-        <div id="content-links">
+        <div id="links">
             <!--
             The content of right column starts here.
             -->
@@ -226,31 +232,31 @@
             The content of left column starts here.
             -->
 
-	        <h1><a name="head-3ae977939dfc013fa3769ec97c0bc318">Headings</a></h1>
+	        <h1 class="title"><a name="head-13565f63786fdd627fe0a3da2eadb098">Headings</a></h1>
     
 	        <p>CentOS Headings Visual Style Guide.</p>
 
-<div class="toc"> <h3>Table of contents</h3> <ul><li><a href="#head-3ae977939dfc013fa3769ec97c0bc318">Headings</a> </li><li><a href="#head-42fddd5d984bf386b963745dbf00cad7">Heading Level 1</a> <ul><li><a href="#head-55cafd5be3ec8cd5e3ed311d7139e73d">Heading Level 2</a> <ul><li><a href="#head-1be785f65ec7f71a4d47aeb58a7c10b1">Heading Level 3</a> <ul><li><a href="#head-09ea89ae2d41d9bd37d2a89a7f42d4c6">Heading Level 4</a> <ul><li><a href="#head-4963ae3c6429afb933b5d1940195f237">Heading Level 5</a> <ul><li><a href="#head-117106a8110f3a0c78f8df5671f40f95">Heading Level 6</a> </li></ul></li></ul></li></ul></li></ul></li><li><a href="#head-25f818ba9c9634257afb7b25e706dc66">Recommendations</a> </li></ul> </li></ul> </div>
+<div class="toc"> <p>Table of contents</p> <dl><dt><a href="#head-13565f63786fdd627fe0a3da2eadb098">Headings</a> </dt><dt><a href="#head-d11297f57835c598dabca3e180eceef2">Heading Level 1</a> <dl><dt><a href="#head-78efe0dadf814013fd956a3eb3801572">Heading Level 2</a> <dl><dt><a href="#head-5ba1dc050ed1343de3dfa2fb6c6d5d28">Heading Level 3</a> <dl><dt><a href="#head-fd816535c2c0c07cb3fb982e56bb733d">Heading Level 4</a> <dl><dt><a href="#head-f5f6d8cad371d4307a2eab75a11741e1">Heading Level 5</a> <dl><dt><a href="#head-ad8feab7822672f2735d6924c77c4147">Heading Level 6</a> </dt></dl></dt></dl></dt></dl></dt></dl></dt><dt><a href="#head-a87c1d68dc93f779d26b1be6960d9e93">Recommendations</a> </dt></dl> </dt></dl> </div>
 
-            <h1><a name="head-42fddd5d984bf386b963745dbf00cad7" href="#head-42fddd5d984bf386b963745dbf00cad7">Heading Level 1</a></h1>
-            <pre>&lt;h1&gt;&lt;a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a"&gt;Heading Level 1&lt;/a&gt;&lt;/h1&gt;</pre>
+            <h1 class="title"><a name="head-d11297f57835c598dabca3e180eceef2" href="#head-d11297f57835c598dabca3e180eceef2">Heading Level 1</a></h1>
+            <pre>&lt;h1 class="title" class="title"&gt;&lt;a name="head-5871b1272673f7cf89bcaf48972c848a" href="#head-5871b1272673f7cf89bcaf48972c848a"&gt;Heading Level 1&lt;/a&gt;&lt;/h1&gt;</pre>
 
-            <h2><a name="head-55cafd5be3ec8cd5e3ed311d7139e73d" href="#head-55cafd5be3ec8cd5e3ed311d7139e73d">Heading Level 2</a></h2>
-            <pre>&lt;h2&gt;&lt;a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05"&gt;Heading Level 2&lt;/a&gt;&lt;/h2&gt;</pre>
+            <h2 class="title"><a name="head-78efe0dadf814013fd956a3eb3801572" href="#head-78efe0dadf814013fd956a3eb3801572">Heading Level 2</a></h2>
+            <pre>&lt;h2 class="title"&gt;&lt;a name="head-d33a28a4193cffb949f506cfdf770f05" href="#head-d33a28a4193cffb949f506cfdf770f05"&gt;Heading Level 2&lt;/a&gt;&lt;/h2&gt;</pre>
 
-            <h3><a name="head-1be785f65ec7f71a4d47aeb58a7c10b1" href="#head-1be785f65ec7f71a4d47aeb58a7c10b1">Heading Level 3</a></h3>
-            <pre>&lt;h3&gt;&lt;a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a"&gt;Heading Level 3&lt;/a&gt;&lt;/h3&gt;</pre>
+            <h3 class="title"><a name="head-5ba1dc050ed1343de3dfa2fb6c6d5d28" href="#head-5ba1dc050ed1343de3dfa2fb6c6d5d28">Heading Level 3</a></h3>
+            <pre>&lt;h3 class="title"&gt;&lt;a name="head-82dd23c665d8ee437a980459c8b80d7a" href="#head-82dd23c665d8ee437a980459c8b80d7a"&gt;Heading Level 3&lt;/a&gt;&lt;/h3&gt;</pre>
 
-            <h4><a name="head-09ea89ae2d41d9bd37d2a89a7f42d4c6" href="#head-09ea89ae2d41d9bd37d2a89a7f42d4c6">Heading Level 4</a></h4>
-            <pre>&lt;h4&gt;&lt;a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8"&gt;Heading Level 4&lt;/a&gt;&lt;/h4&gt;</pre>
+            <h4 class="title"><a name="head-fd816535c2c0c07cb3fb982e56bb733d" href="#head-fd816535c2c0c07cb3fb982e56bb733d">Heading Level 4</a></h4>
+            <pre>&lt;h4 class="title"&gt;&lt;a name="head-157dc030ea314f4b53a6ed238113a3f8" href="#head-157dc030ea314f4b53a6ed238113a3f8"&gt;Heading Level 4&lt;/a&gt;&lt;/h4&gt;</pre>
 
-            <h5><a name="head-4963ae3c6429afb933b5d1940195f237" href="#head-4963ae3c6429afb933b5d1940195f237">Heading Level 5</a></h5>
-            <pre>&lt;h5&gt;&lt;a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6"&gt;Heading Level 5&lt;/a&gt;&lt;/h5&gt;</pre>
+            <h5 class="title"><a name="head-f5f6d8cad371d4307a2eab75a11741e1" href="#head-f5f6d8cad371d4307a2eab75a11741e1">Heading Level 5</a></h5>
+            <pre>&lt;h5 class="title"&gt;&lt;a name="head-33628cc07bcbefc4e4732407b8680bf6" href="#head-33628cc07bcbefc4e4732407b8680bf6"&gt;Heading Level 5&lt;/a&gt;&lt;/h5&gt;</pre>
 
-            <h6><a name="head-117106a8110f3a0c78f8df5671f40f95" href="#head-117106a8110f3a0c78f8df5671f40f95">Heading Level 6</a></h6>
-            <pre>&lt;h6&gt;&lt;a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c"&gt;Heading Level 5&lt;/a&gt;&lt;/h6&gt;</pre>
+            <h6 class="title"><a name="head-ad8feab7822672f2735d6924c77c4147" href="#head-ad8feab7822672f2735d6924c77c4147">Heading Level 6</a></h6>
+            <pre>&lt;h6 class="title"&gt;&lt;a name="head-93b42a4a61a0b05a81aff6224555603c" href="#head-93b42a4a61a0b05a81aff6224555603c"&gt;Heading Level 5&lt;/a&gt;&lt;/h6&gt;</pre>
 
-            <h2><a name="head-25f818ba9c9634257afb7b25e706dc66">Recommendations</a></h2>
+            <h2 class="title"><a name="head-a87c1d68dc93f779d26b1be6960d9e93">Recommendations</a></h2>
 
             <p>As heading design recommendations:</p>
 
@@ -259,7 +265,7 @@
                 <li><p>When defining headings, make them accessible
                 using the following structure:</p>
 
-                <pre>&lt;h1&gt;&lt;a name="head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
+                <pre>&lt;h1 class="title"&gt;&lt;a name="head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
 
                 <p>Where <tt>a1811f6545db914813115417011b2df9</tt> is the
                 result of applying <tt>md5sum</tt> command to
@@ -271,12 +277,12 @@
                 <li><p>Sometimes headings are used as links. For those
                 cases, use the following structure:</p></li>
 
-                <pre>&lt;h1&gt;&lt;a href="#head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
+                <pre>&lt;h1 class="title"&gt;&lt;a href="#head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
 
                 <p>or the following, if you want to make a heading an
                 anchor and link of itself:</p>
 
-                <pre>&lt;h1&gt;&lt;a name="head-a1811f6545db914813115417011b2df9" href="#head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
+                <pre>&lt;h1 class="title"&gt;&lt;a name="head-a1811f6545db914813115417011b2df9" href="#head-a1811f6545db914813115417011b2df9"&gt;Heading&lt;/a&gt;&lt;/h1&gt;</pre>
 
                 <li><p>Avoid using more than 4 levels of headings. If
                 you think you need to, you probably do; but consider
@@ -306,7 +312,7 @@
         <div class="top">
             <a title="Top"
             href="#top"><img
-            src="/home/centos/artwork/tags/Identity/Images/Webenv/1.0/top.png"
+            src="/home/centos/artwork/trunk/Identity/Images/Webenv/top.png"
             alt="Top"/></a>
         </div>
 
