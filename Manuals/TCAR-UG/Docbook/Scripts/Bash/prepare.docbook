@@ -86,11 +86,19 @@
         required in your workstation to connect it with the files
         inside the working copy of &TCAR;. When you provide this
         option, the <command>centos-art.sh</command> put itself into
-        your system's execution path and make brushes, patterns,
-        palettes and fonts available inside applications like GIMP, so
-        you can make use of them without loosing version control over
-        them.
+        your system's execution path and make common brushes,
+        patterns, palettes and fonts available inside applications
+        like GIMP, so you can make use of them without loosing version
+        control over them.
     </para>
+    <caution>
+    <para>
+        This option removes all common fonts, brushes, patterns, and
+        palettes from your home configuration directories, in order to
+        create a fresh installation of them all, again, using the
+        working copy as reference.
+    </para>
+    </caution>
     </listitem>
     </varlistentry>
     
@@ -160,7 +168,6 @@
         The same is true for other similar components like fonts,
         patterns and palettes.
     </para>
-
     </simplesect>
 
     <simplesect>
