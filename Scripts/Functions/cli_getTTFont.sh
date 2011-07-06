@@ -36,9 +36,9 @@ function cli_getTTFont {
     local FONT_FILE=''
 
     # Define list of patterns used to build the list of TTF files.
-    FONT_PATTERNS[++((${#FONT_PATTERNS[*]}))]="/${1}\.ttf$"
-    FONT_PATTERNS[++((${#FONT_PATTERNS[*]}))]="sans\.ttf$"
-    FONT_PATTERNS[++((${#FONT_PATTERNS[*]}))]="\.ttf$"
+    FONT_PATTERNS[((++${#FONT_PATTERNS[*]}))]="/${1}\.ttf$"
+    FONT_PATTERNS[((++${#FONT_PATTERNS[*]}))]="sans\.ttf$"
+    FONT_PATTERNS[((++${#FONT_PATTERNS[*]}))]="\.ttf$"
 
     # Define directory location where fonts are installed in your
     # workstation.
