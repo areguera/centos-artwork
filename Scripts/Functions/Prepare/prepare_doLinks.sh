@@ -52,7 +52,7 @@ function prepare_doLinks {
     USERFILES="${HOME}/bin/$CLI_PROGRAM"
 
     # Define link relation for fonts.
-    for FONT in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Fonts --pattern='denmark\.ttf');do
+    for FONT in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Fonts --pattern='.+\.ttf');do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.fonts/$(basename $FONT)
         LINKS_DST[((++${#LINKS_DST[*]}))]=$FONT
     done
