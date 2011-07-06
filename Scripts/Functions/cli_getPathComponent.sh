@@ -67,61 +67,61 @@ function cli_getPathComponent {
 
             --release )
                 echo "$LOCATION" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\1!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --release-major )
                 echo "$LOCATION" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\2!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --release-minor )
                 echo "$LOCATION" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\4!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --release-pattern )
                 echo "${RELEASE}"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --architecture )
                 echo "$LOCATION" | egrep "${ARCHITECTURE}" | sed -r "s!${ARCHITECTURE}!\1!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --architecture-pattern )
                 echo "${ARCHITECTURE}"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --motif )
                 echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\1!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --motif-name )
                 echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\2!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --motif-release )
                 echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\3!"
-                shift 2
+                shift 1
                 break
                 ;;
 
             --motif-pattern )
                 echo "${THEME_MOTIF}"
-                shift 2
+                shift 1
                 break
                 ;;
 
