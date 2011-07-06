@@ -66,11 +66,11 @@ function cli_replaceTMarkers {
 
     # Define release-specific translation markers.
     SRC[((++${#SRC[*]}))]='=RELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_RELEASEVER --release)"
+    DST[((++${#DST[*]}))]="$FLAG_RELEASEVER"
     SRC[((++${#SRC[*]}))]='=MAJOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_RELEASEVER --release-major)"
+    DST[((++${#DST[*]}))]="$(echo $FLAG_RELEASEVER | cut -d'.' -f1)"
     SRC[((++${#SRC[*]}))]='=MINOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_RELEASEVER --release-minor)"
+    DST[((++${#DST[*]}))]="$(echo $FLAG_RELEASEVER | cut -d'.' -f2)"
 
     # Define architectures translation markers.
     SRC[((++${#SRC[*]}))]='=ARCH='
