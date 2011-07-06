@@ -36,7 +36,7 @@ function tuneup {
 
     # Initialize absolute path to backend's base directory, the place
     # where backend-specific directories are stored in.
-    local TUNEUP_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}/Backends"
+    local TUNEUP_BACKEND_DIR="${FUNCDIR}/${FUNCDIRNAM}"
 
     # Initialize list of supported file extensions. This is, the file
     # extensions we want to perform maintainance tasks for.
