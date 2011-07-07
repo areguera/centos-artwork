@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-02 22:32-0400\n"
+"POT-Creation-Date: 2011-07-07 13:01-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  CentOS Documentation SIG <centos-docs@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -89,27 +89,23 @@ msgstr "La acción suministrada no es válida."
 msgid "The path provided does not support localization."
 msgstr "El camino suministrado no soporta la localización."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:29
-msgid "Checking environment variables"
-msgstr "Comprobando variables de entorno"
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:44
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:41
 msgid "Default text editor"
 msgstr "Editor de texto predeterminado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:45
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:42
 msgid "Default time zone representation"
 msgstr "Representación de la zona horaria predeterminada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:46
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:43
 msgid "Default domain used to retrieve translated messages"
 msgstr "Dominio predeterminado para recuperar los mensajes traducidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:47
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:44
 msgid "Default directory used to retrive translated messages"
 msgstr "Directorio predeterminado usado para recuperar los mensajes traducidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:48
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:45
 msgid "Default locale information"
 msgstr "Información de idioma predeterminada"
 
@@ -209,7 +205,7 @@ msgstr "La arquitectura suministrada no está soportada."
 msgid "The release version provided is not supported."
 msgstr "La versión de la entrega suministrada no está soportada."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/Backends/Xhtml/xhtml_doToc.sh:137
+#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/Xhtml/xhtml_doToc.sh:139
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
@@ -2037,6 +2033,11 @@ msgstr ""
 msgid "The bond string is required."
 msgstr "La cadena de unión es necesaria."
 
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_getTTFont.sh:68
+#, fuzzy
+msgid "The font provided doesn't exist."
+msgstr "El fichero plantilla no existe."
+
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_getTemporalFile.sh:38
 msgid "The first argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
@@ -2193,6 +2194,9 @@ msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio."
 msgstr[1] "ficheros desde el repositorio."
+
+#~ msgid "Checking environment variables"
+#~ msgstr "Comprobando variables de entorno"
 
 #~ msgid "2 colors grayscale"
 #~ msgstr "2 colores escala de grices."
