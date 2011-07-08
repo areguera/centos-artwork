@@ -95,7 +95,8 @@ function cli_replaceTMarkers {
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
     DST[((++${#DST[*]}))]="centos-docs@centos.org"
-
+    SRC[((++${#SRC[*]}))]='=MAIL_L10N='
+    DST[((++${#DST[*]}))]="centos-l10n@centos.org"
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
