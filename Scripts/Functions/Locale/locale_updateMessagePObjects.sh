@@ -1,8 +1,10 @@
 #!/bin/bash
 #
-# locale_updateMessagePObjects.sh --- This function verifies,
-# initializes or updates portable objects from portable object
-# templates.
+# locale_updateMessagePObjects.sh -- This function initializes the
+# portable object when it doesn't exist. When the portable object does
+# exist, it is updated instead. In both cases, the portable object
+# template is used as source to merge changes inside the portable
+# object.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -29,24 +31,22 @@ function locale_updateMessagePObjects {
     local FILE="$1"
 
     # Verify the portable object template. The portable object
-    # template is used to create the portable object. 
+    # template is used to create the portable object. We cannot
+    # continue without it. 
     cli_checkFiles "${FILE}.pot"
+
+    # Print action message.
+    cli_printMessage "${FILE}.po" --as-creating-line
 
     # Verify existence of portable object. The portable object is the
     # file translators edit in order to make translation works.
     if [[ -f ${FILE}.po ]];then
-
-        # Print action message.
-        cli_printMessage "${FILE}.po" --as-updating-line
 
         # Update portable object merging both portable object and
         # portable object template.
         msgmerge --output="${FILE}.po" "${FILE}.po" "${FILE}.pot" --quiet
 
     else
-
-        # Print action message.
-        cli_printMessage "${FILE}.po" --as-creating-line
 
         # Initiate portable object using portable object template.
         # Do not print msginit sterr output, use centos-art action
@@ -57,7 +57,7 @@ function locale_updateMessagePObjects {
         # Sanitate portable object metadata. This is the first time
         # the portable object is created so some modifications are
         # needed to customized metadata.
-        locale_updateMessageMetadata "${FILE}.po"
+        ${FUNCNAM}_updateMessageMetadata "${FILE}.po"
 
     fi
 

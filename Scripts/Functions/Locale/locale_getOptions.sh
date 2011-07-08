@@ -1,14 +1,15 @@
 #!/bin/bash
 #
 # locale_getOptions.sh -- This function interprets option parameters
-# passed to `locale' functionality and calls actions accordingly.
+# passed to `locale' functionality and defines action names
+# accordingly.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,7 +30,7 @@ function locale_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,update,edit,dont-create-mo"
+    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,update,edit,delete,dont-create-mo"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -64,12 +65,17 @@ function locale_getOptions {
                 ;;
 
             --update )
-                ACTIONNAM="${FUNCNAM}_updateMessages"
+                ACTIONNAMS="$ACTIONNAMS ${FUNCNAM}_updateMessages"
                 shift 1
                 ;;
 
             --edit )
-                ACTIONNAM="${FUNCNAM}_editMessages"
+                ACTIONNAMS="$ACTIONNAMS ${FUNCNAM}_editMessages"
+                shift 1
+                ;;
+
+            --delete )
+                ACTIONNAMS="$ACTIONNAMS ${FUNCNAM}_deleteMessages"
                 shift 1
                 ;;
 
@@ -94,7 +100,20 @@ function locale_getOptions {
         esac
     done
 
+    # Verify action names. When no action name is specified, use
+    # edition as default action name.
+    if [[ $ACTIONNAMS == '' ]];then
+        ACTIONNAMS="${FUNCNAM}_editMessages"
+    fi
+
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
+
+    # Verify non-option arguments passed to command-line. If there
+    # isn't any, redefine the ARGUMENTS variable to use the current
+    # location the functionality was called from.
+    if [[ $ARGUMENTS == '' ]];then
+        ARGUMENTS=${PWD}
+    fi
 
 }

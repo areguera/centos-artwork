@@ -22,7 +22,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ----------------------------------------------------------------------
-# $Id4
+# $Id$
 # ----------------------------------------------------------------------
 
 function locale_updateMessageMetadata {
@@ -52,8 +52,8 @@ function locale_updateMessageMetadata {
 
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${CLI_PROGRAM} (${CURRENTLOCALE})\\\n\""
-    DST[1]="\"Report-Msgid-Bugs-To: CentOS Documentation SIG <=MAIL_DOCS=>\\\n\""
-    DST[2]="\"Last-Translator: CentOS Documentation SIG <=MAIL_DOCS=>\\\n\""
+    DST[1]="\"Report-Msgid-Bugs-To: The CentOS L10n SIG <=MAIL_L10N=>\\\n\""
+    DST[2]="\"Last-Translator: The CentOS L10n SIG <=MAIL_L10N=>\\\n\""
     DST[3]="\"Language-Team: ${LANGNAME}\\\n\""
 
     # Change pattern lines with their replacement lines.

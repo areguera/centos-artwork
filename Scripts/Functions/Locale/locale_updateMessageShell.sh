@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # locale_updateMessageShell.sh -- This function parses shell scripts
-# under action value, retrives translatable strings and
-# creates/updates both portable object templates (.pot) and portable
-# objects (.po).
+# source files under action value and retrives translatable strings in
+# order to creates/updates both the portable object template (.pot)
+# and the portable object (.po) related.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -39,25 +39,25 @@ function locale_updateMessageShell {
     # use inside the repository.
     local EXTENSION='sh'
 
-    # Build list of files to process.
-    local FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}.*\.${EXTENSION}")
+    # Build list of files to process. When building the patter, be
+    # sure the value passed through `--filter' be exactly evaluated
+    # with the extension as prefix. Otherwise it would be difficult to
+    # match files that share the same characters in their file names
+    # (e.g., it would be difficult to match only `hello.sh' if
+    # `hello-world.sh' also exists in the same location).
+    local FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}\.${EXTENSION}")
 
     # Print action message.
     cli_printMessage "${FILE}.pot" --as-updating-line
 
-    # Prepare directory structure to receive .po files.
-    if [[ ! -d $(dirname ${FILE}) ]];then
-        mkdir -p $(dirname ${FILE})
-    fi
-
     # Retrive translatable strings from shell script files and create
     # the portable object template (.pot) from them.
     /usr/bin/xgettext --output=${FILE}.pot \
-        --copyright-holder="CentOS Documentation SIG" \
+        --copyright-holder="The CentOS L10n SIG" \
         --width=70 --sort-by-file ${FILES}
 
     # Verify, initialize or update portable objects from portable
     # object templates.
-    locale_updateMessagePObjects "${FILE}"
+    ${FUNCNAM}_updateMessagePObjects "${FILE}"
 
 }

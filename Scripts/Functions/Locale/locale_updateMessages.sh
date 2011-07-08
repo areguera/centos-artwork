@@ -29,6 +29,10 @@
 
 function locale_updateMessages {
 
+    # Verify existence of localization working directory. We cannot
+    # update translation files that don't exist.
+    cli_checkFiles $WORKDIR
+
     local ACTIONNAM=''
 
     # Evaluate action value to determine whether to use xml2po to
@@ -37,25 +41,22 @@ function locale_updateMessages {
     # files.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manuals|Identity/Models)/.*$" ]];then
 
-        # Update translatable strings inside portable object templates
-        # for XML-based files (e.g., scalable vector graphics).
-        ACTIONNAM="${FUNCNAM}_updateMessageXml"
+        # Update translatable strings inside the portable object
+        # template related to XML-based files (e.g., scalable vector
+        # graphics).
+        ${FUNCNAM}_updateMessageXml
 
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
 
-        # Update translatable strings inside portable object templates
-        # for shell scripts (e.g., centos-art.sh script).
-        ACTIONNAM="${FUNCNAM}_updateMessageShell"
+        # Update translatable strings inside the portable object
+        # template related to shell scripts (e.g., the centos-art.sh
+        # script).
+        ${FUNCNAM}_updateMessageShell
 
     else
+
         cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-    fi
 
-    # Execute action name.
-    if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
-        eval $ACTIONNAM
-    else
-        cli_printMessage "`gettext "A valid action is required."`" --as-error-line
     fi
 
 }

@@ -28,7 +28,30 @@ function locale_editMessages {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Initialize local variables.
+    # Prepare localization working directory to receive translation
+    # files.
+    if [[ ! -d ${WORKDIR} ]];then
+
+        # Print separator line.
+        cli_printMessage "-" --as-separator-line
+
+        # Output action message.
+        cli_printMessage "${WORKDIR}" --as-creating-line
+
+        # Create localization working directory making parent
+        # directories as needed. Subversion doesn't create directories
+        # recursively, so we use the system's `mkdir' command and then
+        # subversion to register the changes.
+        mkdir -p ${WORKDIR}
+
+        # Commit changes from working copy to central repository only.
+        # At this point, changes in the repository are not merged in
+        # the working copy, but chages in the working copy do are
+        # committed up to repository.
+        cli_commitRepoChanges "${L10N_BASEDIR}"
+
+    fi
+
     local FILES=''
 
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manuals|Identity/Models)/.*$" ]];then
@@ -59,7 +82,7 @@ function locale_editMessages {
         eval ${EDITOR} ${FILE}
 
         # Update machine object (.mo) from portable object (.po).
-        locale_updateMessageBinary ${FILE}
+        ${FUNCNAM}_updateMessageBinary ${FILE}
 
     done
 

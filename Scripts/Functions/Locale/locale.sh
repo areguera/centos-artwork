@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # locale.sh -- This function provides internationalization features
-# for centos-art.sh script through gettext standard processes.
+# for centos-art.sh script through GNU gettext standard processes.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -32,6 +32,7 @@ function locale {
         cli_printMessage "`gettext "Cannot locale English language to itself."`" --as-error-line
     fi
 
+    local ACTIONNAMS=''
     local ACTIONNAM=''
     local ACTIONVAL=''
 
@@ -41,33 +42,27 @@ function locale {
     # related object or not.
     local FLAG_DONT_CREATE_MO='false'
 
-    # Define localization (l10n) base directory. This is the location
+    # Define localization (l10n) base directory. This is the place
     # where all translation messages are organized in. Translation
-    # messages, here, are organized using the same order of the
+    # messages, here, are organized using the same organization of the
     # components they represent inside the `trunk/Identity',
     # `trunk/Manuals' or `trunk/Scripts' directory structures.
-    # Moreover, the localization base directory must be used as source
-    # location for subverion operations (e.g., status, update, commit,
-    # etc.).  Otherwise, it would be difficult to add directory
-    # structures that have several levels down from the localization
-    # base directory up to the repository (e.g., it is not possible in
+    # The localization base directory must be used as source location
+    # for subverion operations (e.g., status, update, commit, etc.).
+    # Otherwise, it would be difficult to add directory structures
+    # that have several levels down from the localization base
+    # directory up to the repository (e.g., it is not possible in
     # subversion to add a directory structure which parent directory
     # structure hasn't been added to the repository, previously.).
     L10N_BASEDIR="$(cli_getRepoTLDir)/L10n"
 
     # Interpret arguments and options passed through command-line.
-    locale_getOptions
+    ${FUNCNAM}_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
-
-    # Define action name. It does matter what option be passed to
-    # centos-art, there are many different actions to perform based on
-    # the option passed (e.g., `--edit', `--read', `--search', etc.).
-    # In that sake, we defined action name inside document_getArguments,
-    # at the moment of interpreting options.
 
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
@@ -89,45 +84,20 @@ function locale {
             cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
         fi
 
-        # Define work directory. This is the place where locales
-        # directories will be stored in.
+        # Define localization working directory. This is the place
+        # where language-specific directories are stored in.
         WORKDIR=$(echo ${ACTIONVAL} \
             | sed -r -e "s!trunk/(Identity|Scripts|Manuals)!trunk/L10n/\1!")
 
-        # Add current locale to work directory. This is the place
-        # where parent directories specific translation messages
-        # (e.g., the .po, .pot and .mo files) will be stored in.  The
-        # `locale' functionality creates translation messages for all
-        # translatable files inside the parent directory and never for
-        # individual files inside the same parent directory.
+        # Redefine localization working directory to include
+        # language-specific directories. This is the place where POT,
+        # PO, and MO files are stored in.
         WORKDIR=$WORKDIR/$(cli_getCurrentLocale)
 
-        # Prepare working direcotry to receive .po files.
-        if [[ ! -d ${WORKDIR} ]];then
-
-            # Print separator line.
-            cli_printMessage "-" --as-separator-line
-
-            # Output action message.
-            cli_printMessage "${WORKDIR}" --as-creating-line
-
-            # Create directory making parent directories as needed.
-            mkdir -p ${WORKDIR}
-
-            # Commit changes from working copy to central repository
-            # only.  At this point, changes in the repository are not
-            # merged in the working copy, but chages in the working
-            # copy do are committed up to repository.
-            cli_commitRepoChanges "${L10N_BASEDIR}"
-
-        fi
-
-        # Execute action name.
-        if [[ $ACTIONNAM =~ "^${FUNCNAM}_[A-Za-z]+$" ]];then
-            eval $ACTIONNAM
-        else
-            cli_printMessage "`gettext "A valid action is required."`" --as-error-line
-        fi
+        # Execute action names.
+        for ACTIONNAM in $ACTIONNAMS;do
+            ${ACTIONNAM}
+        done
 
     done
 

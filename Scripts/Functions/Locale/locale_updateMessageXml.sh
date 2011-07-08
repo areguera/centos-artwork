@@ -33,20 +33,23 @@ function locale_updateMessageXml {
     # (.pot) and portable objects (.po) files.
     local FILE="${WORKDIR}/messages"
 
-    # Define regular expression to match extensions of XML files we
-    # use inside the repository.
-    local EXTENSION='(svg|xml|xhtml|docbook)'
+    # Define regular expression to match the file extension of all
+    # XML-based source files that can be localized inside the working
+    # copy.  Be aware that sometimes, source files and output files
+    # are stored in the same location (e.g., when rendering
+    # `tcar-ug.docbook' file the `tcar-ug.xhtml' is saved in the same
+    # location). Avoid using output files as if they were source
+    # files, when retriving translatable strings.
+    local EXTENSION='(svg|docbook)'
 
-    # Build list of files to process.  Remember that in some cases
-    # templates and output are in the same location (e.g., when
-    # rendering `trunk/Manuals/repository.xhtml/' directory). In these
-    # cases localized content are stored in the same location where
-    # template files are retrived from and we need to avoid using
-    # localized content from being interpreted as design models. In
-    # that sake, supress language-specific files from the list of
-    # files to process.
+    # Build list of files to process. When building the patter, be
+    # sure the value passed through `--filter' be exactly evaluated
+    # with the extension as prefix. Otherwise it would be difficult to
+    # match files that share the same characters in their file names
+    # (e.g., it would be difficult to match only `hello.docbook' if
+    # `hello-world.docbook' also exists in the same location).
     local FILES=$(cli_getFilesList ${ACTIONVAL} \
-        --pattern="${FLAG_FILTER}.*\.${EXTENSION}" \
+        --pattern="${FLAG_FILTER}\.${EXTENSION}" \
         --maxdepth='1' --type="f" \
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/')
 
@@ -67,12 +70,6 @@ function locale_updateMessageXml {
 
     # Verify, initialize or merge portable objects from portable
     # object templates.
-    locale_updateMessagePObjects "${FILE}"
-
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    cli_commitRepoChanges "${L10N_BASEDIR}"
+    ${FUNCNAM}_updateMessagePObjects "${FILE}"
 
 }
