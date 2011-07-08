@@ -118,4 +118,11 @@ function render_getOptions {
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
 
+    # Verify non-option arguments passed to command-line. If there
+    # isn't any, redefine the ARGUMENTS variable to use the current
+    # location the functionality was called from.
+    if [[ $ARGUMENTS == '' ]];then
+        ARGUMENTS=${PWD}
+    fi
+
 }
