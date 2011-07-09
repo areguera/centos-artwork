@@ -1,6 +1,6 @@
 <sect1 id="scripts-bash-prepare">
 
-    <title>The <function>prepare</function> functionality</title>
+    <title><function>prepare</function> &mdash; Standardize Configuration Tasks</title>
 
     <para>
         The <function>prepare</function> functionality is the
@@ -10,19 +10,15 @@
         inside it already.
     </para>
 
-    <simplesect>
-
-    <title>Synopsis</title>
-
     <para>
         Assuming this is the very first time you run the
         <command>centos-art.sh</command> script, you'll find that
         it isn't found in your workstation.  This is correct because
-        you haven't create the command-line interface symbolic link
-        that make it available in the execution path. In order to make
-        the <command>centos-art.sh</command> command-line
-        available in the execution path of your workstation, you need
-        to run it using its absolute path first:
+        you haven't created the symbolic link that make it available
+        in the execution path, yet. In order to make the
+        <command>centos-art.sh</command> script available in the
+        execution path of your workstation, you need to run it using
+        its absolute path first:
     </para>
 
     <screen>~/artwork/trunk/Scripts/centos-art.sh prepare [OPTIONS]</screen>
@@ -50,7 +46,7 @@
         Supress all output messages except error messages.  When this
         option is passed, all confirmation requests are supressed and
         a possitive answer is assumed for them, just as if the
-        <option>--answer-yes</option> option had been provided.
+        <option>--answer-yes</option> option whould have been provided.
     </para>
     </listitem>
     </varlistentry>
@@ -68,12 +64,16 @@
     <term><option>--packages</option></term>
     <listitem>
     <para>
-        This option verifies whether required packages need to be
-        installed or updated. In both cases, the <command>sudo
-        yum</command> command is used to perform such tasks. This
-        configuration requires you to configure the
-        <command>sudo</command> command first, as described in <xref
-        linkend="repo-ws-config-sudo" />.
+        This option verifies packeges required by
+        <command>centos-art.sh</command> script. installs or updates
+        required packages. When required packages aren't installed,
+        this option uses <command>sudo yum install</command>
+        command to perform the installation task. When required
+        packages are installed, this option uses <command>sudo yum
+        update</command> to update them, if there is any related
+        actualization to be applied on. In both cases, it is required
+        that you configure the <command>sudo</command> command first,
+        as described in <xref linkend="repo-ws-config-sudo" />.
     </para>
     </listitem>
     </varlistentry>
@@ -82,20 +82,21 @@
     <term><option>--links</option></term>
     <listitem>
     <para>
-        This option creates/updates the symbolic links information
-        required in your workstation to connect it with the files
-        inside the working copy of &TCAR;. When you provide this
-        option, the <command>centos-art.sh</command> put itself into
-        your system's execution path and make common brushes,
-        patterns, palettes and fonts available inside applications
-        like GIMP, so you can make use of them without loosing version
-        control over them.
+        This option maintains the file relation between your working
+        copy and configuration files inside your workstation through
+        symbolic links. When you provide this option, the
+        <command>centos-art.sh</command> puts itself into your
+        system's execution path through its command line interface
+        <command>centos-art</command> and makes common brushes,
+        patterns, palettes and fonts inside the working copy,
+        available to applications like GIMP in order for you to make
+        use of them without loosing version control over them.
     </para>
     <caution>
     <para>
         This option removes all common fonts, brushes, patterns, and
-        palettes from your home configuration directories, in order to
-        create a fresh installation of them all, again, using the
+        palettes currently installed in your home directory, in order
+        to create a fresh installation of them all again, using the
         working copy as reference.
     </para>
     </caution>
@@ -110,7 +111,7 @@
         When you provide this option, the
         <command>centos-art.sh</command> scripts renders image files
         from all design models available in the working copy. This
-        step is required in order to satisfy dependencies from
+        step is required in order to satisfy file dependencies among
         different components inside the working copy.
     </para>
     </listitem>
@@ -123,8 +124,8 @@
        This option initializes documentation files inside the working
        copy. When you provide this option, the
        <command>centos-art.sh</command> script renders all
-       documentation manuals from their related source files so you
-       can read them nicely.
+       documentation manuals from their related source files to
+       different output formats, so you can read them nicely.
     </para>
     </listitem>
     </varlistentry>
@@ -134,27 +135,27 @@
     <listitem>
     <para>
        Print the name and value of some of the environment variables
-       used by <command>centos-art.sh</command> scripts.  
+       used by <command>centos-art.sh</command> scripts as described
+       in <xref linkend="repo-ws-config-envar" />.  
     </para>
     </listitem>
     </varlistentry>
     </variablelist>
 
     <para>
-        As default behaviour, when no option is provided to
-        <function>prepare</function> functionality, the
-        <command>centos-art.sh</command> script
-        excecutes as is it had been executed with the
-        <option>--packages</option>, <option>--links</option>,
-        <option>--images</option> and <option>--manuals</option>
-        options. Otherwise, if you provide any option, the
-        <command>centos-art.sh</command> script executes the
-        <function>prepare</function> functionality as specified by the
-        options.
+        When no option is provided to <function>prepare</function>
+        functionality, the <command>centos-art.sh</command> script
+        uses the <option>--packages</option>,
+        <option>--links</option>, <option>--images</option> and
+        <option>--manuals</option> options as default behaviour.
+        Otherwise, if you provide any option, the
+        <command>centos-art.sh</command> script avoids its default
+        behaviour and executes the <function>prepare</function>
+        functionality as specified by the options you provides.
     </para>
 
     <para>
-        Notice that is possible for you to execute the
+        Notice that it is possible for you to execute the
         <function>prepare</function> functionality as much times as
         you need to.  This is specially useful when you need to keep
         syncronized the relation between content produced inside your
@@ -168,34 +169,5 @@
         The same is true for other similar components like fonts,
         patterns and palettes.
     </para>
-    </simplesect>
-
-    <simplesect>
-    <title>Examples</title>
-    <para>
-        The examples here seem to be pretty obvious once you've read
-        both the synopsis section and the options supported by this
-        functionality.  Isn't it?
-    </para>
-    </simplesect>
-
-    <simplesect>
-    <title>Reporting Bugs</title>
-    <para>
-        Report bugs to &TCAML;.
-    </para>
-    </simplesect>
-
-    <simplesect>
-    <title>Copyright</title>
-    <para>
-        Copyright &copy; 2009, 2010, 2011 &TCAS;.
-    </para>
-    <para>
-        This  is free software.  You may redistribute copies of it
-        under the terms of the <xref linkend="licenses-gpl"/>.  There
-        is NO WARRANTY, to the extent permitted by law.
-    </para>
-    </simplesect>
 
 </sect1>
