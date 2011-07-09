@@ -1,4 +1,240 @@
 <sect1 id="scripts-bash-tuneup">
-    <title>The <function>tuneup</function> functionality</title>
-    <para>...</para>
+
+    <title><function>tuneup</function> &mdash; Standardize File Maintainance</title>
+
+    <para>
+        The <function>tuneup</function> functionality is the
+        interface the <command>centos-art.sh</command> script provides
+        to standardize the maintainance tasks related to individual
+        files inside the working copy.
+    </para>
+
+    <screen>centos-art tuneup [OPTIONS] [DIRECTORY]</screen>
+
+    <para>
+        The <varname>DIRECTORY</varname> parameter specifies the
+        directory path, inside the working copy of &TCAR;, where the
+        files you want to process are stored in.  This paramter can be
+        provided more than once in order to process more than one
+        directory path in a single command execution.  When this
+        parameter is not provided, the current directory path where
+        the command was called from is used instead.
+    </para>
+    <para>
+        The <function>tuneup</function> functionality accepts the
+        following options: 
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--quiet</option></term>
+    <listitem>
+    <para>
+        Supress all output messages except error messages.  When this
+        option is passed, all confirmation requests are supressed and
+        a possitive answer is assumed for them, just as if the
+        <option>--answer-yes</option> option would have been provided.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--answer-yes</option></term>
+    <listitem>
+    <para>
+       Assume <emphasis>yes</emphasis> to all confirmation requests.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--filter="REGEX"</option></term>
+    <listitem>
+    <para>
+        Reduce the list of files to process inside
+        <replaceable>path/to/dir</replaceable> using
+        <replaceable>REGEX</replaceable> as pattern.  You can use this
+        option to control the amount of files you want to tuneup.  The
+        deeper you go into the directory structure the more specific
+        you'll be about the files you want to tuneup.  When you cannot
+        go deeper into the directory structure through
+        <replaceable>path/to/dir</replaceable> specification, use this
+        option to reduce the list of files therein.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--dont-commit-changes</option></term>
+    <listitem>
+    <para>
+        Supress all commit and update actions realized over files,
+        before and after the action itself had took place over files
+        in the working copy.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        Tasks related to file maintainance are repetitive. You might
+        find yourself doing them time after time inside the working
+        copy of &TCAR;. Some of these maintainance tasks do update top
+        comments on shell scripts, create table of contents for web
+        pages, update metadata related to design models and remove
+        unused definitions from design models.
+    </para>
+
+    <para>
+        When you execute the tuneup functionality of centos-art.sh
+        script, it looks for all files that match the supported
+        extensions (e.g., <filename class="extension">.sh</filename>,
+        <filename class="extension">.svg</filename> and <filename
+        class="extension">.xhtml</filename>) in the directory
+        specified, builds a list with them and applies the
+        maintainance tasks using file extensions as reference.
+    </para>
+
+    <para>
+        When shell scripts are found, the <function>tuneup</function>
+        functionality of centos-art.sh script reads a comment template
+        from
+        <filename>trunk/Scripts/Functions/Tuneup/Shell/Config/topcomment.sed</filename>
+        and applies it to all shell scripts found, one by one. As
+        result, all shell scripts will end up having the same
+        copyright and license information the comment template does.
+    </para>
+    <para>
+        In order for the shell script top comment template to be
+        applied correctly, the shell scripts you write must have the
+        structure described in <xref linkend="scripts-bash-tuneup-fig1" />.
+    </para>
+
+    <example id="scripts-bash-tuneup-fig1">
+    <title>Shell script top-comment template.</title>
+    <screenshot>
+    <screeninfo>Shell script top-comment template.</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+ 1| #!/bin/bash
+ 2| #
+ 3| # doSomething.sh -- The function description goes here.
+ 4| # 
+ 5| # Copyright
+ 6| #
+ 7| # ...
+ 8| #
+ 9| # ----------------------------------------------------------------------
+10| # $Id$
+11| # ----------------------------------------------------------------------
+12|
+13| function doSomething {
+14|     
+15| }
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
+    <para>
+        The <function>tuneup</function> functionality of
+        <command>centos-art.sh</command> script replaces all lines
+        between the <literal>Copyright</literal> line (e.g., line 5)
+        and the first separator line (e.g., line 9), inclusively.
+        Everything else will remain immutable in the file.
+    </para>
+
+    <para>
+        When scalable vector graphics are found, the tuneup
+        functionality reads a SVG metadata template from
+        <filename>trunk/Scripts/Functions/Tuneup/Svg/Config/metadata.sed</filename>
+        and applies it to all files found, one by one. Immediatly
+        after the metadata template has been applied and, before
+        passing to next file, all unused definition are removed from
+        the file, too.
+    </para>
+    <para>
+        The metadata applied by the SVG metadata template is created
+        dynamicaly combining the absolute path of the file being
+        currently modified, the workstation's date information, the
+        <command>centos-art.sh</command> script copyright holder
+        (e.g., =COPYRIGHT_HOLDER=) as reference and the Creative
+        Common Distribution-ShareAlike 3.0 License as default license
+        to release SVG files.
+    </para>
+    <para>
+        The elimination of unused definitions inside SVG files takes
+        place through Inkscape's <option>--vacuum-defs</option>
+        option, as described in its man page (e.g., <command>man
+        inkscape</command>).
+    </para>
+
+    <para>
+        When HTML files are found, the <function>tuneup</function>
+        functionality of <command>centos-art.sh</command> script
+        transforms web page headings to make them accessible through a
+        table of contents.  The table of contents is expanded in
+        place, wherever the <code>&lt;div
+        class="toc"&gt;&lt;/div&gt;</code> piece of code be in the
+        file.  Once the table of contents has been expanded, there is
+        no need to put anything else in the page.  You can run the
+        <function>tuneup</function> functionality everytime you update
+        the heading information so as to update the table of contents,
+        too.
+    </para>
+    <para>
+        In order for this functionality to build the table of contents
+        from headings, you need to put headings in just one line. The
+        headin level can vary from <code>h1</code> to <code>h6</code>
+        with attribute definitions accepted.  Closing tag must be
+        present and also match the openning tag.  Inside the heading
+        definition an anchor definition must be present with attribute
+        definitions accepted. The value of <property>name</property>
+        and <property>href</property> attributes from the anchor
+        element are set dynamically using the md5sum output of
+        combining the page location, the <literal>head-</literal>
+        string and the heading content itself.  If any of the
+        components used to build the heading reference changes, you
+        need to run the the tuneup functionality of
+        <command>centos-art.sh</command> script in order for the
+        anchor elements to use the correct information.
+    </para>
+    <para>
+        For example, the headings shown in <xref
+        linkend="scripts-bash-tuneup-fig2" /> produces the table of
+        contents shown in <xref linkend="scripts-bash-tuneup-fig3" />.
+    </para>
+
+    <example id="scripts-bash-tuneup-fig2">
+    <title>HTML heading definition.</title>
+    <screenshot>
+    <screeninfo>HTML heading definition.</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+&lt;h1 class="title"&gt;&lt;a name="head-8a23b56a28dfa7277d176576f217054a"&gt;Forms&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 class="title"&gt;&lt;a name="head-629f38bc607f2a270177106b450aeae3"&gt;Elements&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 class="title"&gt;&lt;a name="head-f49cae1d73592c984bbb0bffb1d5699a"&gt;Recommendations&lt;/a&gt;&lt;/h2&gt;
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
+    <example id="scripts-bash-tuneup-fig3">
+    <title>HTML table of contents definition.</title>
+    <screenshot>
+    <screeninfo>HTML table of contents definition.</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+&lt;div class="toc"&gt; &lt;p&gt;Table of contents&lt;/p&gt; &lt;dl&gt;&lt;dt&gt;&lt;a href="#head-8a23b56a28dfa7277d176576f217054a"&gt;Forms&lt;/a&gt; &lt;dl&gt;&lt;dt&gt;&lt;a href="#head-629f38bc607f2a270177106b450aeae3"&gt;Elements&lt;/a&gt; &lt;/dt&gt;&lt;dt&gt;&lt;a href="#head-f49cae1d73592c984bbb0bffb1d5699a"&gt;Recommendations&lt;/a&gt; &lt;/dt&gt;&lt;/dl&gt; &lt;/dt&gt;&lt;/dl&gt; &lt;/div&gt;
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
 </sect1>
