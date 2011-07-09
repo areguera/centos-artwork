@@ -1,4 +1,230 @@
 <sect1 id="scripts-bash-locale">
-    <title>The <function>locale</function> functionality</title>
-    <para>...</para>
+
+    <title><function>locale</function> &mdash; Standardize Localization Tasks</title>
+
+    <para>
+        The <function>locale</function> functionality is the
+        interface the <command>centos-art.sh</command> script provides
+        to standardize localization tasks inside the working copy.
+    </para>
+
+    <screen>centos-art locale [OPTIONS] [DIRECTORY]</screen>
+
+    <para>
+        The <varname>DIRECTORY</varname> parameter specifies the
+        directory path, inside the working copy of &TCAR;, where the
+        files you want to process are stored in.  This paramter can be
+        provided more than once in order to process more than one
+        directory path in a single command execution.  When this
+        parameter is not provided, the current directory path where
+        the command was called from is used instead.
+    </para>
+    <para>
+        The <function>locale</function> functionality accepts the
+        following options: 
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--quiet</option></term>
+    <listitem>
+    <para>
+        Supress all output messages except error messages.  When this
+        option is passed, all confirmation requests are supressed and
+        a possitive answer is assumed for them, just as if the
+        <option>--answer-yes</option> option would have been provided.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--answer-yes</option></term>
+    <listitem>
+    <para>
+       Assume <emphasis>yes</emphasis> to all confirmation requests.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--filter="REGEX"</option></term>
+    <listitem>
+    <para>
+        Reduce the list of files to process inside
+        <varname>DIRECTORY</varname> using <varname>REGEX</varname> as
+        pattern.  You can use this option to control the amount of
+        files you want to locale.  The deeper you go into the
+        directory structure the more specific you'll be about the
+        files you want to locale.  When you cannot go deeper into the
+        directory structure through <varname>DIRECTORY</varname>
+        specification, use this option to reduce the list of files
+        therein.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--dont-commit-changes</option></term>
+    <listitem>
+    <para>
+        Supress all commit and update actions realized over files,
+        before and after the actions themselves had took place over
+        files in the working copy.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--update</option></term>
+    <listitem>
+    <para>
+        This option updates both POT and PO files related to source
+        files.  Use this option everytime you change translatable
+        strings inside the source files.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--edit</option></term>
+    <listitem>
+    <para>
+        This option edits the portable object related to source files.
+        When you provide this option, your default text editor is used
+        to open the portable object you, as translator, need to change
+        in order to keep source file messages consistent with their
+        localized versions.  In the very specific case of shell
+        scripts localization, this option takes care of updating the
+        machine object (MO) file the shell script requires to
+        displayed translation messages correctly when it is executed.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--delete</option></term>
+    <listitem>
+    <para>
+        This option unlocalizes source files. When you provide this
+        option, the localization directory related to source files is
+        removed from the working copy in conjunction with all portable
+        objects and machine objects inside it.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--dont-create-mo</option></term>
+    <listitem>
+    <para>
+        This option suppresses machine objects creation when shell
+        scripts are localized.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+    <para>
+        The localization process is very tied to the source files we
+        want to provide localized messages for. Inside the working
+        copy of &TCAR; it is possible to localize XML-based files
+        (e.g., SVG and Docbook) and programs written in most popular
+        programming languages (e.g., C, C++, C#, Shell Scripts,
+        Python, Java, GNU awk, PHP, etc.).
+    </para>
+
+    <para>
+        The localization process initiates by retriving translatable
+        strings from source files.  When source files are XML-based
+        files, the only requisite to retrive translatable strings
+        correctly is that they be well-formed.  Beyond that, the
+        <command>xml2po</command> command takes care of everything
+        else.  When source files are Shell script files, it is
+        necessary that you previously define what strings inside the
+        script are considered as translatable strings in order for
+        <command>xgettext</command> command to retrive them correctly.
+        To define translatable strings inside shell scripts, you need
+        to use either <command>gettext</command>,
+        <command>ngettext</command>, <command>eval_gettext</command>
+        or <command>eval_ngettext</command> command as it is following
+        described:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        Use the <command>gettext</command> command to display the
+        native language translation of a textual message.
+    </para>
+    <screen>MESSAGE="`gettext "There is no entry to create."`"</screen>
+    </listitem>
+
+    <listitem>
+    <para>
+        Use the <command>ngettext</command> command to display the
+        native language translation of a textual message whose
+        grammatical form depends on a number.
+    </para>
+    <screen>MESSAGE="`ngettext "The following entry will be created" \
+                   "The following entries will be created" \
+                   $COUNT`:"</screen>
+    </listitem>
+
+    <listitem>
+    <para>
+        Use the <command>eval_gettext</command> command to display the
+        native language translation of a textual message, performing
+        dollar-substitution on the result.  Note that only shell
+        variables mentioned in the message will be dollar-substituted
+        in the result.
+    </para>
+    <screen>MESSAGE="`eval_gettext "The location \\\"\\\$LOCATION\\\" is not valid."`"</screen>
+    </listitem>
+
+    <listitem>
+    <para>
+        Use the <command>eval_ngettext</command> command to display
+        the native language translation of a textual message whose
+        grammatical form depends on a number, performing
+        dollar-substitution on the result.  Note that only shell
+        variables mentioned in messages will be dollar-substituted in
+        the result.
+    </para>
+    <screen>MESSAGE="`eval_ngettext "The following entry will be created in \\\$LOCATION" \
+                        "The following entries will be created in \\\$LOCATION" \
+                        $COUNT`:"</screen>
+    </listitem>
+    </itemizedlist>
+
+    <para>
+        Once translatable strings are retrived, a portable object
+        template (POT) file is created for storing them. Later, the
+        POT file is used to create a portable object (PO). The
+        portable object is the place where localization itself takes
+        place, it is the file translators edit to localize messages.
+        When translatable strings change inside source files, it is
+        necessary that you update these POT and PO files in order to
+        keep consistency between source file messages and their
+        localized versions.
+    </para>
+
+    <para>
+        Inside source files, translatable strings are always written
+        in English language. In order to localize translatable strings
+        from English language to another language, you need to be sure
+        the <envar>LANG</envar> environment variable has been already
+        set to the locale code you want to localize message for or see
+        them printed out before running the
+        <function>locale</function> functionality of
+        <command>centos-art.sh</command> script.  Localizing English
+        language to itself is not supported.
+    </para>
+
+    <para>
+        To have a list of all locale codes you can have localized
+        messages for, run the following command: <command>locale -a |
+        less</command>.
+    </para>
+
 </sect1>
