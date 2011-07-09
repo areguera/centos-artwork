@@ -1,4 +1,240 @@
 <sect1 id="scripts-bash-render">
-    <title>The <function>render</function> functionality</title>
-    <para>...</para>
+
+    <title><function>render</function> &mdash; Standardize Content Production</title>
+
+    <para>
+        The <function>render</function> functionality is the interface
+        the <command>centos-art.sh</command> script provides to
+        standardize the content production tasks inside the working
+        copy.
+    </para>
+
+    <screen>centos-art render [OPTIONS] [DIRECTORY]</screen>
+
+    <para>
+        The <varname>DIRECTORY</varname> parameter specifies the
+        directory path, inside the working copy of &TCAR;, where the
+        files you want to process are stored in.  This paramter can be
+        provided more than once in order to process more than one
+        directory path in a single command execution.  When this
+        parameter is not provided, the current directory path where
+        the command was called from is used instead.
+    </para>
+    <para>
+        The <function>render</function> functionality accepts the
+        following options: 
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--quiet</option></term>
+    <listitem>
+    <para>
+        This option supresses all output messages except error
+        messages.  When this option is passed, all confirmation
+        requests are supressed and a possitive answer is assumed for
+        them, just as if the <option>--answer-yes</option> option
+        would have been provided.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--answer-yes</option></term>
+    <listitem>
+    <para>
+       Assume <emphasis>yes</emphasis> to all confirmation requests.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--filter="REGEX"</option></term>
+    <listitem>
+    <para>
+        This option reduces the list of files to process inside
+        <varname>DIRECTORY</varname> using <varname>REGEX</varname> as
+        pattern.  You can use this option to control the amount of
+        files you want to render.  The deeper you go into the
+        directory structure the more specific you'll be about the
+        files you want to render.  When you cannot go deeper into the
+        directory structure through <varname>DIRECTORY</varname>
+        specification, use this option to reduce the list of files
+        therein.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--dont-commit-changes</option></term>
+    <listitem>
+    <para>
+        This option supresses all commit and update actions realized
+        over files, before and after the action itself had took place
+        over files in the working copy.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--releasever="NUMBER"</option></term>
+    <listitem>
+    <para>
+        This option expands the <code>=\RELEASE=</code>,
+        <code>=\MAJOR_RELEASE=</code>, and
+        <code>=\MINOR_RELEASE=</code> translation makers based on
+        <varname>NUMBER</varname> value.  Notice that translation
+        markers here were escaped using a backslash (<code>\</code>)
+        in order to prevent their expansion. Use this option when you
+        need to produce release-specific contents, but no release
+        information can be retrived from the directory path you are
+        currently rendering.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--basearch="ARCH"</option></term>
+    <listitem>
+    <para>
+        This option expands the <code>=\ARCHITECTURE=</code>,
+        translation makers based on <varname>ARHC</varname> value.
+        Notice that translation markers here were escaped using a
+        backslash (<code>\</code>) in order to prevent their
+        expansion. Use this option when you need to produce
+        architecture-sepecific contents but no architecture
+        information can be retrived from the directory path you are
+        currently rendering.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--theme-model="NAME"</option></term>
+    <listitem>
+    <para>
+        This option specifies the name of theme model you want to use
+        when producing theme artistic motifs. By default, if this
+        option is not provided, the <literal>Default</literal> theme
+        model is used as reference to produce theme artistic motifs.
+        To know what values does the <varname>NAME</varname> variable
+        can have, run <command>ls
+        ~/artwork/trunk/Identity/Models/Themes</command> command.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--post-rendition="COMMAND"</option></term>
+    <listitem>
+    <para>
+        This option lets you apply a command as post-rendition action.
+        In this case, the <varname>COMMAND</varname> represents the
+        command-line you want to execute in order to perform in-place
+        modifications to base-rendition output.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--last-rendition="COMMAND"</option></term>
+    <listitem>
+    <para>
+        This option lets you apply a command as last-rendition action.
+        In this case, the <varname>COMMAND</varname> argument
+        represents the command string you want to execute in order to
+        perform in-place modifications to base-rendition,
+        post-rendition and directory-specific rendition outputs. 
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        Inside the working copy of &TCAR;, rendition tasks take place
+        inside renderable directories. The rendition itself is
+        performed through a serie of rendition flows named
+        base-rendition, post-rendition, last-rendition and
+        directory-specific rendition.
+    </para>
+
+    <sect2 id="scripts-bash-render-dir">
+    <title>Renderable Directories</title>
+    <para>
+        Renderable directories are convenctional locations inside the
+        working copy where you can find source files, output files and
+        auxiliar files. Source files are used to produce output files.
+        Auxiliar files are used to modify the way output files are
+        produced from source files (e.g., to produce localized
+        output). Auxiliar files are optionals.
+    </para>
+    <para>
+        Renderable directories are made of several directories but
+        only the output dirctory path is passed to
+        <function>render</function> functionality as
+        <varname>DIRECTORY</varname> parameter in the command-line.
+        The directories related to source and auxiliar files are
+        automatically constructed based on a directory organization
+        convenction. This way, the <function>render</function>
+        functionality collects all the information it needs to work
+        with.
+    </para>
+    <para>
+        Inside the working copy, renderable directories are divided in
+        two categories in a way differences between them can be
+        preserved. These categories are named <quote>direct
+        production</quote> and <quote>theme production</quote>. These
+        categories provide the file organization convenction the
+        <function>render</function> functionality needs, to produce
+        content based on rendition flows.
+    </para>
+
+    <sect3 id="scripts-bash-render-dir-direct">
+    <title>Direct Production</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    <sect3 id="scripts-bash-render-dir-theme">
+    <title>Theme Production</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    </sect2>
+
+    <sect2 id="scripts-bash-render-flows">
+    <title>Rendition Flows</title>
+
+    <sect3 id="scripts-bash-render-br">
+    <title>Base-Rendition</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    <sect3 id="scripts-bash-render-pr">
+    <title>Post-Rendition</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    <sect3 id="scripts-bash-render-lr">
+    <title>Last-Rendition</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    <sect3 id="scripts-bash-render-dsr">
+    <title>Directory-Specific Rendition</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+    </sect2>
+
 </sect1>
