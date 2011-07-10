@@ -27,15 +27,12 @@
     
 function texinfo {
 
-    # Define file name (without extension) for documentation manual.
-    MANUAL_NAME=$(cli_getRepoName "$(basename $MANUAL_TLDIR)" -f)
-
     # Define file extension used by documentation manual source files.
     MANUAL_EXTENSION='texinfo'
 
-    # Define manual base directory. This is where language-specific
-    # documentation source files are stored in.
-    MANUAL_BASEDIR="${MANUAL_BACKEND_DIR}/${MANUAL_LANG}"
+    # Define manual base directory. This is the place where
+    # language-specific documentation source files are stored in.
+    MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_L10N}"
 
     # Define base name for documentation manual files (without
     # extension). This is the main file name used to build output
@@ -68,13 +65,18 @@ function texinfo {
     # section file that represents the repository documentation entry.
     MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}
 
-    # Define absolute path to backend template files.
-    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Texinfo/Templates/${MANUAL_LANG}
+    # Define absolute path to template directory.
+    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
+        $MANUAL_BACKEND -d)/Templates
 
-    # Verify absolute path to backend template files. If the absolute
-    # path doesn't exist, use the English language templates.
-    if [[ ! -d $MANUAL_TEMPLATE ]];then
-        MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/Templates/en_US
+    # Define absolute path to language-speicific template directory.
+    MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
+
+    # Verify absolute path to language-speicific template directory.
+    # If it doesn't exist, use English language as default location to
+    # retrive template files.
+    if [[ ! -d $MANUAL_TEMPLATE_L10N ]];then
+        MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
     fi
 
     # Create documentation structure, if it doesn't exist.
@@ -83,7 +85,7 @@ function texinfo {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges ${MANUAL_CHAPTER_DIR}
+    cli_syncroRepoChanges ${MANUAL_BASEDIR}
 
     # Execute backend functionalities. Notice that there are
     # functionalities that need more than one action value in order to
@@ -130,7 +132,7 @@ function texinfo {
     # this point, changes in the repository are not merged in the
     # working copy, but chages in the working copy do are committed up
     # to repository.
-    cli_commitRepoChanges ${MANUAL_CHAPTER_DIR}
+    cli_commitRepoChanges ${MANUAL_BASEDIR}
 
     # Rebuild output files to propagate recent changes.
     ${MANUAL_BACKEND}_updateOutputFiles

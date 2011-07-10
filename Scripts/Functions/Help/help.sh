@@ -31,25 +31,31 @@ function help {
 
     # Initialize search option (`--search'). This option is used to
     # look for documentation inside documentation backends.
-    FLAG_SEARCH=""
+    local FLAG_SEARCH=""
 
-    # Define manual top level directory. This is where
-    # backend-specific documentation structures are stored in.
-    MANUAL_TLDIR="$(cli_getRepoTLDir)/Manuals/TCAR-UG"
+    # Initialize manual's ID. By default, The CentOS Artwork
+    # Repository User's Guide is used. This value can be changed
+    # using the `--manual' option from the command-line.
+    local FLAG_MANUAL="TCAR-UG"
 
-    # Define manual language.
-    MANUAL_LANG=$(cli_getCurrentLocale)
+    # Initialize manual's language.
+    local MANUAL_L10N=$(cli_getCurrentLocale)
 
-    # Define default documentation backend.
-    MANUAL_BACKEND='texinfo'
-
-    # Define backend directory path. This is the place where common
-    # files to all languages and language-specific directories are
-    # stored in.
-    MANUAL_BACKEND_DIR=${MANUAL_TLDIR}/$(cli_getRepoName $MANUAL_BACKEND -d)
+    # Initialize manual's backend. By default, texinfo is used as
+    # documentation backend. This value can be changed using the
+    # `--backend' option from the command-line.
+    local MANUAL_BACKEND='texinfo'
 
     # Interpret option arguments passed through the command-line.
     ${FUNCNAM}_getOptions
+
+    # Initialize manual's backend directory. This is the place where
+    # the backend specific documentation structure is stored in.
+    MANUAL_TLDIR="${HOME}/artwork/branches/Manuals/$(cli_getRepoName \
+        $MANUAL_BACKEND -d)/${FLAG_MANUAL}"
+
+    # Initialize manual's file name (without extension).
+    MANUAL_NAME=$(cli_getRepoName "$(basename $FLAG_MANUAL)" -f)
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -62,9 +68,5 @@ function help {
 
     # Execute backend-specific actions.
     ${MANUAL_BACKEND} $@
-
-    # Unset backend-specific functionalities.
-    cli_unsetFunctions "${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
-        ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
 
 }

@@ -30,7 +30,7 @@ function texinfo_createChapters {
     # Define list of chapter templates files used as base to create
     # the chapters' documentation manual.
     local FILE=''
-    local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE} \
+    local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE_L10N} \
         --pattern='chapter(-menu|-nodes)?\.texinfo' --mindepth='2')
 
     # Loop through chapter structures and create them.

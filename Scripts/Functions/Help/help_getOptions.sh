@@ -29,7 +29,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename,manual:"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -60,6 +60,11 @@ function help_getOptions {
 
             --backend )
                 MANUAL_BACKEND="$(cli_getRepoName "$2" -f)"
+                shift 2
+                ;;
+
+            --manual )
+                FLAG_MANUAL=$(cli_getRepoName "$2" -f | tr '[:lower:]' '[:upper:]')
                 shift 2
                 ;;
 

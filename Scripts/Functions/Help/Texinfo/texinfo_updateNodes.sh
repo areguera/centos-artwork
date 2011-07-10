@@ -50,7 +50,7 @@ function texinfo_updateNodes {
             # file. This is the file that hold the relation between
             # section template files and repository paths when
             # documentation entries are created.
-            local CONFFILE="${MANUAL_TEMPLATE}/${MANUAL_NAME}.conf" 
+            local CONFFILE="${MANUAL_TEMPLATE_L10N}/manual.conf" 
 
             # Verify existence of configuration file.
             cli_checkFiles $CONFFILE
@@ -88,7 +88,7 @@ function texinfo_updateNodes {
                     | sed -r 's![[:space:]]*!!g' | sed -r 's!^"(.+)"$!\1!')
 
                 if [[ ${MANUAL_BASEDIR}/${INCL} =~ $CONFRHS ]];then
-                    TEMPLATE="${MANUAL_TEMPLATE}/${CONFLHS}"
+                    TEMPLATE="${MANUAL_TEMPLATE_L10N}/${CONFLHS}"
                     break
                 fi
 
@@ -119,11 +119,11 @@ function texinfo_updateNodes {
         # Verify existence of chapter-nodes template files. If no
         # chapter-nodes template is found, stop script execution with
         # an error message. We cannot continue without it.
-        cli_checkFiles ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION}
+        cli_checkFiles ${MANUAL_TEMPLATE_L10N}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION}
 
         # Output node information chapter-nodes template file using
         # the current texinfo menu information.
-        cat ${MANUAL_TEMPLATE}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION} \
+        cat ${MANUAL_TEMPLATE_L10N}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION} \
             | sed -r -e "s!=NODE=!${NODE}!g" -e "s!=SECT=!${SECT}!g" \
                      -e "s!=CIND=!${CIND}!g" -e "s!=INCL=!${INCL}!g"
 
