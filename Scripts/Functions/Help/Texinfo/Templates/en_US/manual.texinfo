@@ -3,7 +3,7 @@
 @c -- Header --------------------------------------------------
 
 @setfilename =MANUAL_NAME=.info
-@settitle =MANUAL_NAME=
+@settitle =MANUAL_TITLE=
 @documentlanguage =LOCALE_LL=
 @afourpaper
 @finalout
@@ -26,8 +26,8 @@ Documentation License}.
 @c -- Titlepage, contents, copyright ---------------------------
 
 @titlepage
-@title =MANUAL_NAME=
-@subtitle Manual
+@title =MANUAL_TITLE=
+@subtitle =MANUAL_SUBTITLE=
 @author =COPYRIGHT_HOLDER= 
 @page
 @vskip 0pt plus 1filll
@@ -39,7 +39,7 @@ Documentation License}.
 
 @ifnottex
 @node Top
-@top =MANUAL_NAME=
+@top =MANUAL_TITLE=
 @insertcopying
 @end ifnottex
 
