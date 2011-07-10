@@ -2,8 +2,8 @@
 @c $Id$
 @c -- Header --------------------------------------------------
 
-@setfilename tcar-ug.info
-@settitle CentOS Artwork Repository
+@setfilename =MANUAL_NAME=.info
+@settitle =MANUAL_NAME=
 @documentlanguage =LOCALE_LL=
 @afourpaper
 @finalout
@@ -11,7 +11,7 @@
 @c -- Summary description and copyright -----------------------
 
 @copying
-=DESCRIPTION=
+=MANUAL_ABSTRACT=
 
 Copyright @copyright{} =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
 
@@ -26,7 +26,7 @@ Documentation License}.
 @c -- Titlepage, contents, copyright ---------------------------
 
 @titlepage
-@title CentOS Artwork Repository
+@title =MANUAL_NAME=
 @subtitle Manual
 @author =COPYRIGHT_HOLDER= 
 @page
@@ -39,15 +39,18 @@ Documentation License}.
 
 @ifnottex
 @node Top
-@top CentOS Artwork Repository
+@top =MANUAL_NAME=
 @insertcopying
 @end ifnottex
-@include tcar-ug-menu.texinfo
+
+@include =MANUAL_NAME=-menu.texinfo
 
 @c -- The body of the document --------------------------------
 
-@include tcar-ug-nodes.texinfo
+@include =MANUAL_NAME=-nodes.texinfo
 
 @c -- The end of the document ---------------------------------
+
+@include =MANUAL_NAME=-index.texinfo
 
 @bye
