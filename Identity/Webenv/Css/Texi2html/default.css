@@ -43,10 +43,6 @@ div#page-body div#content {
     background-color: #FFF;
     }
 
-div#page-body ul.toc { 
-    list-style: none;
-    }
-
 div#page-body div#content table {
     margin-top: 0px;
     }
@@ -68,7 +64,7 @@ div#page-body div#content p img {
     }
 
 div#page-body div#content table.navibar {
-    margin-top: 20px;
+    margin-top: 10px;
     border-bottom: 1px solid #f8f8f8;
     }
 
@@ -80,7 +76,15 @@ div#page-body div#content p.credits {
     font-size: small;
     }
 
-div#page-body div#content h1,
+div#page-body div#content h1 {
+    color: #fff;
+    padding: 1em;
+    margin: 0.5em 0 1em 0;
+    background-color: #204c8d;
+    background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/h1-bg.png");
+    line-height: 1.9em;
+    }
+    
 .chapter,
 .section,
 .subsection,
@@ -89,4 +93,6 @@ div#page-body div#content h1,
 .subheading,
 .subsubheading {
     color: #072B61;
+    padding-top: 1em;
+    clear:both;
     }
