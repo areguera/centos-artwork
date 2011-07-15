@@ -50,9 +50,26 @@ function cli_commitRepoChanges {
         LOCATIONS="$ACTIONVAL"
     fi
 
-    # Check working copy.
+    # Print action message.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
-    STATUSOUT=$(svn status ${LOCATIONS})
+
+    # Build list of files that have received changes in its versioned
+    # status.  Be sure that ouput files are kept out from this list.
+    # Remember, output files are not versioned inside the working
+    # copy, so they are not considered for evaluation here. But take
+    # care, sometimes output files are in the same format of source
+    # files, so we need to differentiate them using their locations.
+    for LOCATION in $LOCATIONS;do
+        if [[ $LOCATION =~ 'trunk/Manuals' ]];then
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')"
+        elif [[ $LOCATION =~ 'trunk/Identity' ]];then
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$')"
+        elif [[ $LOCATION =~ 'branches/Manuals/Texinfo' ]];then
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')"
+        else
+            STATUSOUT="$(svn status ${LOCATION})"
+        fi
+    done
 
     # Define path fo files considered recent modifications from
     # working copy up to central repository.
@@ -106,11 +123,11 @@ function cli_commitRepoChanges {
 
         # In the very specific case unversioned files, we need to add
         # them to the repository first, in order to make them
-        # available for subversion commands (e.g., `copy', etc.)
-        # Otherwise, if no unversioned file is found, go ahead with
-        # change differences and committing. Notice that if there is
-        # mix of changes (e.g., aditions and modifications), addition
-        # take preference and no other change is considered.  In order
+        # available for subversion commands (e.g., `copy') Otherwise,
+        # if no unversioned file is found, go ahead with change
+        # differences and committing. Notice that if there is mix of
+        # changes (e.g., aditions and modifications), addition take
+        # preference and no other change is considered.  In order
         # for other changes to be considered, be sure no adition is
         # present, or that they have already happened.
         if [[ ${FILESNUM[1]} -gt 0 ]];then
