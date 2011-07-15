@@ -41,7 +41,7 @@ function cli_printMessage {
     # Define message horizontal width. This is the max number of
     # horizontal characters the message will use to be displayed on
     # the screen.
-    local MESSAGE_WIDTH=70
+    local MESSAGE_WIDTH=75
 
     # Reverse the codification performed on characters that may affect
     # parsing options and non-option arguments. This codification is
