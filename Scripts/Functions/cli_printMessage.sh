@@ -207,7 +207,7 @@ function cli_printMessage {
             ;;
 
         --as-stderr-line )
-            echo "$MESSAGE" > /dev/stderr
+            echo "$MESSAGE" | fmt --width=${MESSAGE_WIDTH} > /dev/stderr
             ;;
 
         * )
