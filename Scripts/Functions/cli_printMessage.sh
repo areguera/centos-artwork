@@ -38,6 +38,11 @@ function cli_printMessage {
         cli_printMessage "`gettext "The message cannot be empty."`" --as-error-line
     fi
 
+    # Define message horizontal width. This is the max number of
+    # horizontal characters the message will use to be displayed on
+    # the screen.
+    local MESSAGE_WIDTH=70
+
     # Reverse the codification performed on characters that may affect
     # parsing options and non-option arguments. This codification is
     # realized before building the ARGUMENTS variable, at
@@ -54,19 +59,16 @@ function cli_printMessage {
 
         --as-separator-line )
 
-        # Define width of separator line.
-        local MAX=70
+            # Build the separator line. 
+            MESSAGE=$(\
+                until [[ $MESSAGE_WIDTH -eq 0 ]];do
+                    echo -n "$MESSAGE"
+                    MESSAGE_WIDTH=$(($MESSAGE_WIDTH - 1))
+                done)
 
-        # Build the separator line. 
-        MESSAGE=$(\
-            until [[ $MAX -eq 0 ]];do
-                echo -n "$MESSAGE"
-                MAX=$(($MAX - 1))
-            done)
-
-        # Draw the separator line.
-        echo "$MESSAGE" > /dev/stderr
-        ;;
+            # Draw the separator line.
+            echo "$MESSAGE" > /dev/stderr
+            ;;
 
         --as-banner-line )
             cli_printMessage '-' --as-separator-line
@@ -139,7 +141,7 @@ function cli_printMessage {
             ;;
 
         --as-request-line )
-            cli_printMessage "${MESSAGE}: " --as-notrailingnew-line
+            cli_printMessage "${MESSAGE}:\040" --as-notrailingnew-line
             ;;
 
         --as-error-line )
@@ -180,7 +182,7 @@ function cli_printMessage {
             else
 
                 # Print the question.
-                cli_printMessage "$MESSAGE [${Y}/${N}]: " --as-notrailingnew-line
+                cli_printMessage "$MESSAGE [${Y}/${N}]:\040" --as-notrailingnew-line
 
                 # Redefine default answer based on user's input.
                 read ANSWER
@@ -197,7 +199,7 @@ function cli_printMessage {
             ;;
 
         --as-notrailingnew-line )
-            echo -n "$MESSAGE" > /dev/stderr
+            echo -e -n "$MESSAGE" > /dev/stderr
             ;;
 
         --as-stdout-line )
