@@ -29,128 +29,103 @@
 
 function cli_getRepoName {
 
-    # Define short options.
-    local ARGSS='f,d'
-
-    # Define long options.
-    local ARGSL='basename,dirname'
-
-    # Initialize arguments with an empty value and set it as local
-    # variable to this function scope.
-    local ARGUMENTS=''
-
-    # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_parseArgumentsReDef "$@"
-
-    # Redefine ARGUMENTS variable using getopt output.
-    cli_parseArguments
-
-    # Redefine positional parameters using ARGUMENTS variable.
-    eval set -- "$ARGUMENTS"
-
     # Define the name we want to apply verifications to.
-    local NAME=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
+    local NAME="$1"
+
+    # Avoid using options as it were names. When name value is empty
+    # but an option is provided, the option becomes the first
+    # positional argument and is evaluated as it were a name which is
+    # something we need to prevent from happening.
+    if [[ $NAME =~ '^-' ]];then
+        return
+    fi
 
     # Look for options passed through positional parameters.
-    while true;do
+    case "$2" in
 
-        case "$1" in
+        -f|--basename )
 
-            -f|--basename )
+            # Reduce the path passed to use just the non-directory
+            # part of it (i.e., the last component in the path; _not_
+            # the last "real" directory in the path).
+            NAME=$(basename $NAME)
 
-                # Reduce the path passed to use just the non-directory
-                # part of it (i.e., the last component in the path;
-                # _not_ the last "real" directory in the path).
-                NAME=$(basename $NAME)
+            # Clean value.
+            NAME=$(echo $NAME \
+                | tr -s ' ' '_' \
+                | tr '[:upper:]' '[:lower:]')
+            ;;
 
-                # Clean value.
-                NAME=$(echo $NAME \
-                    | tr -s ' ' '_' \
-                    | tr '[:upper:]' '[:lower:]')
+        -d|--dirname )
 
-                shift 1
-                ;;
+            local DIR=''
+            local DIRS=''
+            local CLEANDIRS=''
+            local PREFIXDIR=''
 
-            -d|--dirname )
-
-                local DIR=''
-                local DIRS=''
-                local CLEANDIRS=''
-                local PREFIXDIR=''
-
-                # In order to sanitate each directory in a path, it is
-                # required to break off the path string so each
-                # component can be worked out individually and later
-                # combine them back to create a clean path string.
+            # In order to sanitate each directory in a path, it is
+            # required to break off the path string so each component
+            # can be worked out individually and later combine them
+            # back to create a clean path string.
                 
-                # Reduce path information passed to use the directory
-                # part of it only.  Of course, this is applied if
-                # there is a directory part in the path.  Assuming
-                # there is no directory part but a non-empty value in
-                # the path, use that value as directory part and clean
-                # it up.
-                if [[ $NAME =~ '.+/.+' ]];then
+            # Reduce path information passed to use the directory part
+            # of it only.  Of course, this is applied if there is a
+            # directory part in the path.  Assuming there is no
+            # directory part but a non-empty value in the path, use
+            # that value as directory part and clean it up.
+            if [[ $NAME =~ '.+/.+' ]];then
 
-                    # When path information is reduced, we need to
-                    # consider that absolute paths contain some
-                    # directories outside the working copy directory
-                    # structure that shouldn't be sanitated  (e.g.,
-                    # /home, /home/centos, /home/centos/artwork,
-                    # /home/centos/artwork/turnk, trunk, etc.) 
-                    # So, we keep them unchaged for later use.
-                    PREFIXDIR=$(echo $NAME \
-                        | sed -r "s,^(($(cli_getRepoTLDir)/)?(trunk|branches|tags)/).+$,\1,")
+                # When path information is reduced, we need to
+                # consider that absolute paths contain some
+                # directories outside the working copy directory
+                # structure that shouldn't be sanitated  (e.g., /home,
+                # /home/centos, /home/centos/artwork,
+                # /home/centos/artwork/turnk, trunk, etc.) So, we keep
+                # them unchaged for later use.
+                PREFIXDIR=$(echo $NAME \
+                    | sed -r "s,^(($(cli_getRepoTLDir)/)?(trunk|branches|tags)/).+$,\1,")
 
-                    # ... and remove them from the path information we
-                    # do want to sanitate.
-                    DIRS=$(dirname "$NAME" \
-                        | sed -r "s!^${PREFIXDIR}!!" \
-                        | tr '/' ' ')
+                # ... and remove them from the path information we do
+                # want to sanitate.
+                DIRS=$(dirname "$NAME" \
+                    | sed -r "s!^${PREFIXDIR}!!" \
+                    | tr '/' ' ')
 
-                else
+            else
                 
-                    # At this point, there is not directory part in
-                    # the information passed, so use the value passed
-                    # as directory part as such. 
-                    DIRS=$NAME
+                # At this point, there is not directory part in the
+                # information passed, so use the value passed as
+                # directory part as such. 
+                DIRS=$NAME
 
+            fi
+
+            for DIR in $DIRS;do
+
+                # Sanitate directory component.
+                if [[ $DIR =~ '^[a-z]' ]];then
+                    DIR=$(echo ${DIR} \
+                        | tr -s ' ' '_' \
+                        | tr '[:upper:]' '[:lower:]' \
+                        | sed -r 's/^([[:alpha:]])/\u\1/')
                 fi
 
-                for DIR in $DIRS;do
+                # Rebuild path using sanitated values.
+                CLEANDIRS="${CLEANDIRS}/$DIR"
 
-                    # Sanitate directory component.
-                    if [[ $DIR =~ '^[a-z]' ]];then
-                        DIR=$(echo ${DIR} \
-                            | tr -s ' ' '_' \
-                            | tr '[:upper:]' '[:lower:]' \
-                            | sed -r 's/^([[:alpha:]])/\u\1/')
-                    fi
+            done
 
-                    # Rebuild path using sanitated values.
-                    CLEANDIRS="${CLEANDIRS}/$DIR"
+            # Redefine path using sanitated values.
+            NAME=$(echo ${CLEANDIRS} | sed -r "s!^/!!")
 
-                done
+            # Add prefix directory information to sanitated path
+            # information.
+            if [[ "$PREFIXDIR" != '' ]];then
+                NAME=${PREFIXDIR}${NAME}
+            fi
+        ;;
 
-                # Redefine path using sanitated values.
-                NAME=$(echo ${CLEANDIRS} | sed -r "s!^/!!")
-
-                # Add prefix directory information to sanitated path
-                # information.
-                if [[ "$PREFIXDIR" != '' ]];then
-                    NAME=${PREFIXDIR}${NAME}
-                fi
-
-                shift 1
-                ;;
-
-            -- )
-                shift 1
-                break
-                ;;
-            
-        esac
-
-    done
+    esac
 
     # Print out the clean path string.
     echo $NAME
