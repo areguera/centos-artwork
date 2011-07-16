@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# texinfo_updateNodes.sh -- This function updates chapter's nodes
-# definition using the chapter's menu as reference.
+# texinfo_updateSectionNodes.sh -- This function updates section's
+# nodes definition files using section's menu definition file both
+# inside the same chapter.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateNodes {
+function texinfo_updateSectionNodes {
 
     # Build list of chapter nodes using entries from chapter menu as
     # reference.
