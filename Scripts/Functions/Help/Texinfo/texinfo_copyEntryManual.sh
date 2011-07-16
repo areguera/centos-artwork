@@ -67,7 +67,7 @@ function texinfo_copyEntryManual {
 
         # Update chapter information inside the manual's texinfo
         # structure.
-        ${FLAG_BACKEND}_updateChaptersMenu
+        ${FLAG_BACKEND}_updateChapterMenu
         ${FLAG_BACKEND}_updateChaptersNodes
 
     done

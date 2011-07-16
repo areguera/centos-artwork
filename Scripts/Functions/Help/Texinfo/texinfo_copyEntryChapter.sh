@@ -73,7 +73,7 @@ function texinfo_copyEntryChapter {
     # At this point, all copying actions had took place and it is time
     # to update the document structure.  Start updating chapter
     # menu and nodes inside manual structure,
-    ${FLAG_BACKEND}_updateChaptersMenu
+    ${FLAG_BACKEND}_updateChapterMenu
     ${FLAG_BACKEND}_updateChaptersNodes
 
     # and section menu, nodes and cross references later.
