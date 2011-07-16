@@ -8,12 +8,30 @@
 @afourpaper
 @finalout
 
+@c -- Variables -----------------------------------------------
+
+@set TCENTOS    The Community Enterprise Operating System
+@set TCPROJ     @url{http://www.centos.org/, The CentOS Project}
+@set TCWIKI     @url{http://wiki.centos.org/, The CentOS Wiki}
+@set TCMLISTS   @url{http://lists.centos.org/, The CentOS Mailing Lists}
+@set TCBUGS     @url{http://bugs.centos.org/, The CentOS Bugs}
+@set TCMIRRORS  @url{http://mirrors.centos.org/, The CentOS Mirrors}
+@set TCPLANET   @url{http://planet.centos.org/, The CentOS Planet}
+@set TCFORUMS   @url{http://forums.centos.org/, The CentOS Forums}
+@set TCINFOML   @email{centos-info@@centos.org, The CentOS Information Mailing List}
+@set TCDEVSML   @email{centos-devel@@centos.org, The CentOS Developers Mailing List}
+@set TCDOCSML   @email{centos-docs@@centos.org, The CentOS Documentation Mailing List}
+@set TCARTWML   @email{centos-artwork@@centos.org, The CentOS Artwork Mailing List}
+@set TCL10NML   @email{centos-l10n@@centos.org, The CentOS Localization Mailing List}
+@set TCAR       @url{https://projects.centos.org/svn/artwork/, The CentOS Artwork Repository}
+@set TCAS       @url{https://projects.centos.org/trac/artwork/, The CentOS Artwork SIG}
+
 @c -- Summary description and copyright -----------------------
 
 @copying
 =MANUAL_ABSTRACT=
 
-Copyright @copyright{} =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
+Copyright @copyright{} =COPYRIGHT_YEAR_LIST= @value{TCAS}
 
 Se otorga permiso para copiar, distribuir y/o modificar este documento
 bajo los términos de la Licencia de Documentación Libre de GNU,
@@ -30,7 +48,7 @@ Documentation License}.
 @titlepage
 @title =MANUAL_TITLE=
 @subtitle =MANUAL_SUBTITLE= 
-@author =COPYRIGHT_HOLDER= 
+@author @value{TCAS}
 @page
 @vskip 0pt plus 1filll
 @insertcopying
