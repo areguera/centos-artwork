@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR CentOS Documentation SIG
+# Copyright (C) YEAR The CentOS L10n SIG
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-07 13:01-0400\n"
+"POT-Creation-Date: 2011-07-16 17:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:32
-msgid "Two paths are required."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo.sh:154
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:104
+msgid "The parameters you provided are not supported."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:34
-msgid "Only two paths are supported."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:72
+msgid "The location provided as target isn't valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntryChapter.sh:42
+msgid "The chapter cannot be copied into itself."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntryManual.sh:56
+msgid "Updating chapter menus and nodes inside manual structure."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:31
+msgid "The source and target locations cannot be the same."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:64
 msgid "The target location is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:67
 msgid "The source location is not valid."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:90
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:105
-msgid "Updating menus, nodes and cross-references."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:36
+msgid "The following documentation chapter will be created:"
 msgstr ""
 
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:38
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:38
-msgid "Creating manual structure."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_editEntry.sh:45
+msgid "Do you want to continue?"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:45
+msgid "Enter chapter's title"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:50
+msgid "Creating chapter's files."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:98
+msgid "Updating chapter menu and nodes inside manual structure."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:36
+#, sh-format
+msgid "The following documentation manual will be created:"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:65
+msgid "Manual Title"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:67
+msgid "Manual Subtitle"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:69
+msgid "Manual Abstract"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:74
+msgid "Creating manual structure in texinfo format."
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:79
+msgid "The manual title cannot be empty."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:41
@@ -59,33 +110,28 @@ msgstr ""
 msgid "An error occurred when deleting entries."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_editEntry.sh:41
-msgid "The documentation entry provided hasn't a parent directory."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:105
+msgid "Updating menus, nodes and cross-references."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_editEntry.sh:47
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_editEntry.sh:43
 msgid "The following documentation section will be created:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_editEntry.sh:49
-msgid "Do you want to continue?"
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:64
+msgid "Updating section menus, nodes and cross references."
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:32
 msgid "Cannot locale English language to itself."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:89
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:84
 msgid "The path provided doesn't support localization."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:129
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_editMessages.sh:72
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
-msgid "A valid action is required."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_editMessages.sh:49
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:51
 msgid "The path provided does not support localization."
 msgstr ""
 
@@ -131,7 +177,7 @@ msgid "Background"
 msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg.sh:54
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:106
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:108
 msgid "Saved as"
 msgstr ""
 
@@ -283,47 +329,47 @@ msgstr ""
 msgid "Checking changes in the working copy"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:83
 msgid "Modified"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:67
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:84
 msgid "Unversioned"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:68
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:85
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:67
 msgid "Deleted"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:69
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:86
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:66
 msgid "Added"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:89
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:106
 msgid "file in the working copy"
 msgid_plural "files in the repository"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:118
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:135
 msgid "The following file is unversioned"
 msgid_plural "The following files are unversioned"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:123
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:140
 msgid "Do you want to add it now?"
 msgid_plural "Do you want to add them now?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:130
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:147
 msgid "Do you want to see changes now?"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:134
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:151
 msgid "Do you want to commit changes now?"
 msgstr ""
 
@@ -2104,71 +2150,71 @@ msgstr ""
 msgid "The message cannot be empty."
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:78
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:80
 msgid "Cropping from"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:82
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:84
 msgid "Tuning-up"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:86
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:88
 msgid "Checking"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:91
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:93
 msgid "Updating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:93
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:95
 msgid "Creating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:98
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:100
 msgid "Deleting"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:102
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:104
 msgid "Reading"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:110
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:112
 msgid "Linked to"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:114
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:116
 msgid "Moved to"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:118
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:120
 msgid "Translation"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:122
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:124
 msgid "Validating"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:126
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:128
 msgid "Template"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:130
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:132
 msgid "Configuration"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:134
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:136
 msgid "Palette"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:158
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:160
 msgid "To know more, run the following command"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:168
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:170
 msgid "yes"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:171
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:173
 msgid "no"
 msgstr ""
 
