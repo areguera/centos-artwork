@@ -85,47 +85,42 @@ a:visited:hover { text-decoration: underline; color: green; }
 -----------------------------------------------*/
 
 h1 {
-    font-size: 1.7em;
-    font-weight: bold;
-    line-height: 1.9em;
+    font-size: 1.8em;
     }
 
 h2 {
     font-size: 1.4em;
-    line-height: 1.8em;
-    border: none;
     }
 
 h3 {
     font-size: 1.25em;
-    line-height: 1.6em;
     }
 
 h4 {
     font-size: 1.2em;
-    line-height: 1.4em;
     }
 
 h5 {
     font-size: 1.1em;
-    line-height: 1.1em;
     }
 
 h6 {
     font-size: 1em;
-    line-height: 1.1em;
-    }
-
-.title {
-    color: #072B61;
     }
 
 /* Paragraphs
 -----------------------------------------------*/
 
 p {
-    margin: 0.5em 0 1.3em 0;
+    margin: 1em 0 1em 0;
     line-height: 1.5em;
+    }
+
+/* Images
+-----------------------------------------------*/
+
+img {
+    border: none;
     }
 
 /* Quotations
@@ -169,7 +164,7 @@ address {
 pre {
     font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
     padding: 0.5em 1em 0.5em 1em;
-    margin: 1em 0 1.5em 0;
+    margin: 1em 0 1em 0;
     white-space: pre;
     border-width: 1px;
     border-style: solid;
@@ -194,8 +189,6 @@ code {
 
 hr {
     clear: both;
-    margin: 0;
-    padding: 0;
     height: 1px ! important;
     border: none;
     background-color: #DADADA;
@@ -205,7 +198,8 @@ hr {
 -----------------------------------------------*/
 
 ul,
-ol {
+ol,
+dl {
     margin: 1.5em 0 1.5em 2.5em;
     }
 
@@ -235,29 +229,19 @@ ol li p {
     margin-bottom: 0.3em;
     }
 
-dl {
-    margin-left: 2.5em;
-    }
-
 dl dd {
     margin-left: 2.5em;
     }
 
-dl dt span {
-    line-height: 1.5em;
-    }
-
-dl dd ul,
-dl dd ol {
-    line-height: 1.5em;
+dl ol,
+dl ul {
+    margin-left: 3.5em;
     }
 
 /* Tables 
 -----------------------------------------------*/
 
 table {
-    margin-top: 1em;
-    margin-bottom: 1.5em;
     border-collapse: collapse;
     }
 
