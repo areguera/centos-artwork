@@ -26,10 +26,6 @@ ul {
     list-style: url("/home/centos/artwork/trunk/Identity/Images/Webenv/ul.png") disc;
     }
 
-div.toc dl {
-    margin-left: 0;
-    }
-
 span.term {
     font-weight: bold;
     }
@@ -37,8 +33,16 @@ span.term {
 /* Table of contents
 -----------------------------------------------*/
 
+.toc dl {
+    margin: 0;
+    }
+
+.toc dl dt {
+    margin: 0.3em 0 0.3em 0;
+    }
+
 div.toc {
-    margin: 1em 0 2em 0;
+    margin: 1.3em 0 1em 0;
     }
 
 div.toc p {

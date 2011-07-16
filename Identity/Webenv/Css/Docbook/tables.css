@@ -25,10 +25,6 @@
 /* Revision History
 -----------------------------------------------*/
 
-div.revhistory {
-    margin: 1em 0 1em 0;
-    }
-
 div.revhistory table th,
 div.revhistory table td {
     font-size: x-small;
@@ -49,7 +45,7 @@ div.navfooter {
 
 div.navheader table,
 div.navfooter table {
-    margin: 0; 
+    margin: 0;
     }
 
 div.navheader table th,
@@ -67,7 +63,7 @@ div.tip,
 div.important,
 div.caution,
 div.warning {
-    margin: 0 0 1.5em 0 !important;
+    margin: 1.5em 0 1.5em 0 !important;
     }
 
 div.note table, div.note table,
@@ -113,7 +109,7 @@ div.important table th,
 div.caution table th, 
 div.warning table th {
     font-size: 1.4em;
-    padding: 1em 0 0.5em 0;
+    padding: 1em 0 0 0;
     }
 
 div.note table td img,
@@ -121,7 +117,7 @@ div.tip table td img,
 div.important table td img,
 div.caution table td img,
 div.warning table td img {
-    margin: 1em 0.5em;
+    margin: 1em 10px;
     }
 
 div.note table td p,
@@ -129,7 +125,7 @@ div.tip table td p,
 div.important table td p,
 div.caution table td p,
 div.warning table td p {
-    margin: 0 1em 1em 0;
+    margin: 1em 15px 1em 0;
     }
 
 div.note pre,
@@ -140,6 +136,6 @@ div.warning pre {
     border: none;
     background-color: #333;
     color: #FFFFFF;
-    margin: 0 1em 1em 0;
+    margin: 0 15px 1em 0;
     padding: 0.5em 1em 0.5em 1em;
     }

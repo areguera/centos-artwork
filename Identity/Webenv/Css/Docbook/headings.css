@@ -23,18 +23,32 @@
  */
 
 h1.title {
-    font-size: 2em;
+    text-align: center;
     color: #fff;
     padding: 1em;
     margin-bottom: 1em;
     background-color: #204c8d;
     background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/h1-bg.png");
+    line-height: 1.9em;
     }
 
 h2.title {
-    margin-top: 1.6em;
+    color: #072B61;
+    line-height: 1em;
+    padding-top: 1.5em;
+    color: #072B61;
     }
 
-.title { 
-    color: #072B61; 
+h3.title,
+h4.title,
+h5.title,
+h6.title {
+    padding-top: 1em;
+    line-height: 1em;
+    color: #072B61;
+    }
+
+.subtitle,
+.author {
+    line-height: 1.5em;
     }
