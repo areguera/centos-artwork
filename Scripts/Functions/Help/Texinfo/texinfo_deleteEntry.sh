@@ -125,7 +125,7 @@ function texinfo_deleteEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        ${FLAG_BACKEND}_updateMenu "remove-entry"
+        ${FLAG_BACKEND}_updateSectionMenu "remove-entry"
         ${FLAG_BACKEND}_updateNodes
 
         # Update cross reference definitions from manual to reflect

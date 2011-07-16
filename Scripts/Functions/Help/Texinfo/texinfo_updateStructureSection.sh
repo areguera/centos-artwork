@@ -71,7 +71,7 @@ function texinfo_updateStructureSection {
 
         # Update menu and node definitions for sections inside manual
         # in order to reflect the changes.
-        ${FLAG_BACKEND}_updateMenu
+        ${FLAG_BACKEND}_updateSectionMenu
         ${FLAG_BACKEND}_updateNodes
 
         # Resotre cross reference definitions inside manual structure.

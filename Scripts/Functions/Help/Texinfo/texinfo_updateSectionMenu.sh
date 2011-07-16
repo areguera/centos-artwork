@@ -1,12 +1,13 @@
 #!/bin/bash
 #
-# texinfo_updateMenu.sh -- This function updates chapter's menu
-# definition file.  If this function is called with the 'remove-entry'
-# string as first argument, the menu line related to the entry being
-# processed is removed. Otherwise, if this function is called with the
-# 'update-entry' string as first argument, the menu line related to
-# the entry being processed is added to menu's bottom.  If no argument
-# is passed to this function, the 'update-entry' action is assumed.
+# texinfo_updateSectionMenu.sh -- This function updates the section's
+# menu definition file of a chapter.  If this function is called with
+# the 'remove-entry' string as first argument, the menu line related
+# to the entry being processed is removed. Otherwise, if this function
+# is called with the 'update-entry' string as first argument, the menu
+# line related to the entry being processed is added to menu's bottom.
+# If no argument is passed to this function, the 'update-entry' action
+# is assumed.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -28,7 +29,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateMenu {
+function texinfo_updateSectionMenu {
 
     # Specify which action to do with documentation entry inside the
     # chapter menu.
