@@ -44,15 +44,18 @@ function texinfo_updateChapterMenu {
         'remove-entry' )
             # Remove chapter from menu.
             MENUCHAPTERS=$(echo "${MENUCHAPTERS}" \
-                | egrep -v "^\* ${MANUAL_CHAPTER_NAME}::[[:print:]]*$")
+                | egrep -v '^\* '"${MANUAL_CHAPTER_NAME}"'::[[:print:]]*$')
             ;;
 
         'update-entry' | * )
             # Update chapter menu using texinfo format. Be sure the
             # chapter node itself is not included here, that would
-            # duplicate it inside the menu definition file which
-            # end up being a definition error.
-            MENUCHAPTERS="$(echo "${MENUCHAPTERS}" | egrep -v "\* ${MANUAL_CHAPTER_NAME}::[[:print:]]*$")
+            # duplicate it inside the menu definition file which end
+            # up being a definition error. Take care the way you quote
+            # egrep's pattern, prevent to end up using the syntax
+            # `$"..."' which has security risks.
+            MENUCHAPTERS="$(echo "${MENUCHAPTERS}" \
+                | egrep -v '\* '"${MANUAL_CHAPTER_NAME}"'::[[:print:]]*$')
                 * ${MANUAL_CHAPTER_NAME}::"
             ;;
     esac
