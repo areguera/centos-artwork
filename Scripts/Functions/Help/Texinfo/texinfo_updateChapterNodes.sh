@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# texinfo_updateChaptersNodes.sh -- This function updates nodes of
+# texinfo_updateChapterNode.sh -- This function updates nodes of
 # chapters based on menu of chapters.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_updateChaptersNodes {
+function texinfo_updateChapterNode {
 
     # Build chapter nodes using entries from chapter menu as
     # reference. Don't include `Licenses' or `Index' chapters here.
