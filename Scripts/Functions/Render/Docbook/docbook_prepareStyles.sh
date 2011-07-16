@@ -72,7 +72,7 @@ function docbook_prepareStyles {
     # Expand common translation markers in the common style instance,
     # if it exists.
     if [[ -f $STYLE_INSTANCE_COMMON ]];then
-        cli_replaceTMarkers $STYLE_INSTANCE_COMMON
+        cli_expandTMarkers $STYLE_INSTANCE_COMMON
     fi
 
     # Expand specific translation markers in final style instance.

@@ -108,7 +108,7 @@ function texinfo_updateSectionNodes {
         fi
 
         # Expand common translation markers in documentation entry.
-        cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
+        cli_expandTMarkers "${MANUAL_BASEDIR}/$INCL"
 
         # Replace node, section and concept index definitions already
         # defined with node, section and concept index translation

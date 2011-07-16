@@ -104,7 +104,7 @@ function texinfo_createStructure {
             svn cp ${FILE} ${DST} --quiet
             
             # Expand common translation markers inside target file.
-            cli_replaceTMarkers ${DST}
+            cli_expandTMarkers ${DST}
 
             # Expand specific translation markers inside target file.
             sed -r -i -e "s!=MANUAL_NAME=!${MANUAL_NAME}!g" \

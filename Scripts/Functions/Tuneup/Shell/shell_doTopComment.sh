@@ -42,7 +42,7 @@ function shell_doTopComment {
     cli_checkFiles $INSTANCE
 
     # Expand translation markers in template instance.
-    cli_replaceTMarkers $INSTANCE
+    cli_expandTMarkers $INSTANCE
 
     # Apply template instance to file.
     sed -r -i -f $INSTANCE $FILE

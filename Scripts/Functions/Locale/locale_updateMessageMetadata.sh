@@ -76,7 +76,7 @@ function locale_updateMessageMetadata {
     sed -i -r "s/PACKAGE/${TEXTDOMAIN}/g" ${FILE}
 
     # Expand translation markers inside file.
-    cli_replaceTMarkers ${FILE}
+    cli_expandTMarkers ${FILE}
 
     # Unset array variables to avoid undesired concatenations.
     unset SRC

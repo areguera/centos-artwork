@@ -139,7 +139,7 @@ function svg_convertPngToDm {
 
         # Expand translation markers.
         if [[ ${DST} =~ "\.(xml|desktop)$"  ]];then
-            cli_replaceTMarkers "${DST}"
+            cli_expandTMarkers "${DST}"
         fi
 
     done

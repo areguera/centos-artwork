@@ -223,7 +223,7 @@ function render_doBaseActions {
             render_doTranslation
 
             # Expand translation markers inside design model instance.
-            cli_replaceTMarkers ${INSTANCE}
+            cli_expandTMarkers ${INSTANCE}
 
             # Perform backend base-rendition.
             ${RENDER_BACKEND}

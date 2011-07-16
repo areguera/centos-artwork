@@ -112,7 +112,7 @@ function svg_convertPngToSyslinux {
     # instance.
     if [[ ! -f $PALETTE_GPL ]];then
         svn cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/syslinux.gpl ${PALETTE_GPL}
-        cli_replaceTMarkers ${PALETTE_GPL}
+        cli_expandTMarkers ${PALETTE_GPL}
     fi
 
     # Define absolute path to PPM palette. The PPM palette is built

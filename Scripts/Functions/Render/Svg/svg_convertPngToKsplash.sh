@@ -74,6 +74,6 @@ function svg_convertPngToKsplash {
     cp ${SRC[4]} ${DST[4]}
 
     # Apply common translation markers to Theme.rc file.
-    cli_replaceTMarkers "${DST[4]}"
+    cli_expandTMarkers "${DST[4]}"
 
 }
