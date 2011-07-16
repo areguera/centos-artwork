@@ -28,26 +28,17 @@ function texinfo_searchNode {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Define list of documentation entries.
-    local MANUAL_ENTRY=''
-    local MANUAL_ENTRIES=$(${MANUAL_BACKEND}_getEntry "$@")
+    # Print action message.
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
-    # Loop through manual entries and read related node.
-    for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-
-        # Print action message.
-        cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
-
-        # Check documentation entry inside documentation structure. If
-        # the documentation entry exits use the info reader to open
-        # the info file at the specified node for reading it on the
-        # terminal. Otherwise, ask the user to create it.
-        if [[ -f "$MANUAL_ENTRY" ]];then
-            /usr/bin/info --node="$(${MANUAL_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
-        else
-            ${MANUAL_BACKEND}_editEntry
-        fi
-
-    done
+    # Check documentation entry inside documentation structure. If the
+    # documentation entry exits use the info reader to open the info
+    # file at the specified node for reading it on the terminal.
+    # Otherwise, ask the user to create it.
+    if [[ -f "$MANUAL_ENTRY" ]];then
+        /usr/bin/info --node="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
+    else
+        ${FLAG_BACKEND}_editEntry
+    fi
 
 }

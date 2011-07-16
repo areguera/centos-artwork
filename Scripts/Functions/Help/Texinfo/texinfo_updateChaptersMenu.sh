@@ -34,7 +34,8 @@ function texinfo_updateChaptersMenu {
     # even no other node exist.
     if [[ -f ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} ]];then
         MENUCHAPTERS=$(cat ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} \
-            | egrep -v "^@(end )?menu$" | egrep -v '^\* Index::$')
+            | egrep -v "^@(end )?menu$" \
+            | egrep -v '^\* (Licenses|Index)::$')
     fi
 
     # Re-defined menu of chapters based on action.
@@ -47,8 +48,11 @@ function texinfo_updateChaptersMenu {
             ;;
 
         'update-entry' | * )
-            # Update chapter menu using texinfo format.
-            MENUCHAPTERS="${MENUCHAPTERS}
+            # Update chapter menu using texinfo format. Be sure the
+            # chapter node itself is not included here, that would
+            # duplicate it inside the menu definition file which
+            # end up being a definition error.
+            MENUCHAPTERS="$(echo "${MENUCHAPTERS}" | egrep -v "\* ${MANUAL_CHAPTER_NAME}::[[:print:]]*$")
                 * ${MANUAL_CHAPTER_NAME}::"
             ;;
     esac
@@ -60,16 +64,19 @@ function texinfo_updateChaptersMenu {
         | egrep -v '^[[:space:]]*$')
 
     # Organize menu of chapters alphabetically and verify that no
-    # duplicated line be included on the list.
-    MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sort | uniq)
+    # duplicated line be included on the list. Notice that organizing
+    # menu this way supresses the idea of putting the last chapter
+    # created at the end of the list. 
+    #MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sort | uniq)
 
     # Give format to final menu output.
     MENUCHAPTERS="@menu
     ${MENUCHAPTERS}
+    * Licenses::
     * Index::
     @end menu"
 
-    # Strip opening space/tabs from final menu of chapters.
+    # Remove opening space/tabs from menu's final definition.
     MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sed -r 's!^[[:space:]]+!!' \
         | egrep -v '^[[:space:]]*$')
 

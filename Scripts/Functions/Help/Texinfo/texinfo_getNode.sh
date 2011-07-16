@@ -35,9 +35,10 @@ function texinfo_getNode {
 
     # Define node from documentation entry.
     local NODE=$(echo "$MANUAL_ENTRY" | sed -r \
-        -e "s!^${MANUAL_BASEDIR}!!" \
+        -e "s!^${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}!!" \
         -e "s/(chapter-intro\.${MANUAL_EXTENSION}|\.${MANUAL_EXTENSION})$//" \
-        -e 's!/! !g' \
+        -e 's!(/|-)! !g' \
+        -e 's! ([[:alpha:]])! \u\1!g' \
         -e 's!^[[:space:]]+!!')
 
     echo "$NODE"

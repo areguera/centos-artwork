@@ -25,18 +25,19 @@
 
 function texinfo_updateNodes {
 
-    # Retrive nodes' entries from chapter-menu.texinfo file.
+    # Build list of chapter nodes using entries from chapter menu as
+    # reference.
     local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
-        | egrep -v '^@(end )?menu$' | sed -r 's! !:!g' | sort | uniq)
+        | egrep -v '^@(end )?menu$' | sed -r 's! !:!g')
 
-    # Re-build node structure based on menu information.
+    # Build chapter nodes based on chapter menu.
     for NODE in $NODES;do
 
         NODE=$(echo "${NODE}" | sed -r 's!:! !g')
-        SECT=$(echo "${NODE}" | cut -d' ' -f2- | sed -r 's! !/!g')
-        INCL=$(echo "${NODE}" | sed -r 's! !/!g').${MANUAL_EXTENSION}
-        CIND=$(echo "${NODE}")
+        INCL=$(echo "${NODE}" | sed -r 's! !/!' | sed -r 's! !-!g' | sed -r 's!/(.+)!/\L\1!').${MANUAL_EXTENSION}
+        SECT=$(echo "${NODE}" | cut -d' ' -f2- )
+        CIND=$(echo "${SECT}" | sed -r 's!^([[:alpha:]]+) (.+)!\u\1 \L\2!')
 
         # Create texinfo section file using templates, only if the
         # section file doesn't exist and hasn't been marked for
@@ -46,11 +47,11 @@ function texinfo_updateNodes {
         if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]] \
             && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR}/$INCL) != 'D' ]];then
 
-            # Define absolute path to section templates assignment
-            # file. This is the file that hold the relation between
-            # section template files and repository paths when
-            # documentation entries are created.
-            local CONFFILE="${MANUAL_TEMPLATE_L10N}/manual.conf" 
+            # Define absolute path to template assignment file. This
+            # is the file that controls the way texinfo template files
+            # are applied to documentation entries once they have been
+            # created.
+            local CONFFILE="${MANUAL_TEMPLATE}/manual.conf" 
 
             # Verify existence of configuration file.
             cli_checkFiles $CONFFILE
@@ -80,11 +81,11 @@ function texinfo_updateNodes {
             for CONFLINE in $CONFLINES;do
 
                 CONFLHS=$(echo $CONFLINE \
-                    | gawk 'BEGIN{FS = "="}; { print $1 }' \
+                    | gawk 'BEGIN{FS="="}; { print $1 }' \
                     | sed -r 's![[:space:]]*!!g')
 
                 CONFRHS=$(echo $CONFLINE \
-                    | gawk 'BEGIN{FS = "="}; { print $2 }' \
+                    | gawk 'BEGIN{FS="="}; { print $2 }' \
                     | sed -r 's![[:space:]]*!!g' | sed -r 's!^"(.+)"$!\1!')
 
                 if [[ ${MANUAL_BASEDIR}/${INCL} =~ $CONFRHS ]];then
@@ -103,29 +104,37 @@ function texinfo_updateNodes {
             # reference.
             svn cp ${TEMPLATE} ${MANUAL_BASEDIR}/$INCL --quiet
 
-            # Expand common translation markers in documentation entry.
-            cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
-
-            # Expand `Goals' subsection translation markers in
-            # documentation entry.
-            sed -i -r "s!=SECT=!${SECT}!g" "${MANUAL_BASEDIR}/$INCL"
-
-            # Expand `See also' subsection translation markers in
-            # documentation entry.
-            ${MANUAL_BACKEND}_makeSeeAlso "${MANUAL_BASEDIR}/$INCL" "$NODE"
-
         fi
+
+        # Expand common translation markers in documentation entry.
+        cli_replaceTMarkers "${MANUAL_BASEDIR}/$INCL"
+
+        # Replace node, section and concept index definitions already
+        # defined with node, section and concept index translation
+        # markers. Otherwise, incorrect sectioning may happen.
+        sed -i -r \
+            -e '/@node/c@node =NODE=' \
+            -e '/@section/c@section =SECT=' \
+            -e '/@cindex/c@cindex =CIND=' \
+            "${MANUAL_BASEDIR}/$INCL"
+
+        # Expand noce, section and concept index translation
+        # markers in documentation entry.
+        sed -i -r \
+            -e "s!=NODE=!${NODE}!g" \
+            -e "s!=SECT=!${SECT}!g" \
+            -e "s!=CIND=!${CIND}!g" \
+            "${MANUAL_BASEDIR}/$INCL"
 
         # Verify existence of chapter-nodes template files. If no
         # chapter-nodes template is found, stop script execution with
         # an error message. We cannot continue without it.
-        cli_checkFiles ${MANUAL_TEMPLATE_L10N}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION}
+        cli_checkFiles ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION}
 
         # Output node information chapter-nodes template file using
         # the current texinfo menu information.
-        cat ${MANUAL_TEMPLATE_L10N}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION} \
-            | sed -r -e "s!=NODE=!${NODE}!g" -e "s!=SECT=!${SECT}!g" \
-                     -e "s!=CIND=!${CIND}!g" -e "s!=INCL=!${INCL}!g"
+        cat ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION} \
+            | sed -r "s!=INCL=!${INCL}!g"
 
     # Dump node definitions into document structure.
     done > $MANUAL_CHAPTER_DIR/chapter-nodes.${MANUAL_EXTENSION}

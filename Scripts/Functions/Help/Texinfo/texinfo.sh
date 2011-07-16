@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# help.sh -- This function implements Texinfo documentation backend.
-# This is, the collection of frequent actions required to produce and
-# maintain The CentOS Artwork Repsoitory user's guide in Texinfo
-# format.
+# texinfo.sh -- This function initilializes the Texinfo documentation
+# backend used by centos-art.sh script to produce and maintain Texinfo
+# documentation manuals inside the working copy of The CentOS Artwork
+# Repository.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -27,49 +27,52 @@
     
 function texinfo {
 
-    # Define file extension used by documentation manual source files.
+    # Define file extension used by source files inside manuals.
     MANUAL_EXTENSION='texinfo'
 
-    # Define manual base directory. This is the place where
-    # language-specific documentation source files are stored in.
+    # Define absolute path to directory holding language-specific
+    # texinfo source files.
     MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_L10N}"
 
-    # Define base name for documentation manual files (without
-    # extension). This is the main file name used to build output
-    # related files (.info, .pdf, .xml, etc.).
+    # Define absolute path to base file. This is the main file name
+    # (without extension) we use as reference to build output files in
+    # different formats (.info, .pdf, .xml, etc.).
     MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
 
-    # Define default behaviour when no action has been provided to
-    # `centos-art.sh' script command-line interface.
+    # Verify existence of action names. When no action name is
+    # provided to centos-art.sh script, read manual's output in info
+    # format in order to provide a way for people to get oriented
+    # about The CentOS Artwork Repository and its automation tool, the
+    # centos-art.sh script. Be sure the manual's output file does
+    # exist and terminate the script execution once the reading is
+    # done.
     if [[ $ACTIONNAM == '' ]];then
+
+        # Verify existence of manual's output in info format.
+        cli_checkFiles ${MANUAL_BASEFILE}.info.bz2
+
+        # Read Top node from manual's output in info format.
         /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
+
+        # Terminate script execution right here.
         exit
+
     fi
 
-    # Define chapter name of directory where repository documentation
-    # entries will be stored in.
-    MANUAL_CHAPTER_NAME=$(cli_getRepoName "Directories" -d)
+    # Define absolute path to chapter's directory. This is the place
+    # where chapter-specific files are stored in.
+    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/$(cli_getRepoName \
+        "${MANUAL_CHAPTER_NAME}" -d | tr -d ' ' | sed -r 's!/$!!')
 
-    # Define absolute path to chapter directory where repository
-    # documentation entries will be stored in.  At this point, we need
-    # to take a desition about documentation design, in order to
-    # answer the question: How do we assign chapters, sections and
-    # subsections automatically, based on the repository structure?
-    # and also, how such design could be adapted to changes in the
-    # repository structure?
-    #
-    # One solution would be: represent the repository's directory
-    # structure as sections inside a chapter named `Directories' or
-    # something similar. Subsections and subsubsections will not have
-    # their own files, they all will be written inside the same
-    # section file that represents the repository documentation entry.
-    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}
-
-    # Define absolute path to template directory.
+    # Define absolute path to template directory. This is the place
+    # where we store locale directories (e.g., en_US, es_ES, etc.)
+    # used to build manuals in texinfo format.
     MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
-        $MANUAL_BACKEND -d)/Templates
+        ${FLAG_BACKEND} -d)/Templates
 
-    # Define absolute path to language-speicific template directory.
+    # Define absolute path to language-specific template directory.
+    # This is the place where we store locale-specific files used to
+    # build manuals in texinfo format.
     MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
 
     # Verify absolute path to language-speicific template directory.
@@ -79,62 +82,81 @@ function texinfo {
         MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
     fi
 
-    # Create documentation structure, if it doesn't exist.
-    ${MANUAL_BACKEND}_createStructure
+    # Initialize document structure of new manuals.
+    ${FLAG_BACKEND}_createStructure
 
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges ${MANUAL_BASEDIR}
-
-    # Execute backend functionalities. Notice that there are
-    # functionalities that need more than one action value in order to
-    # be executed (e.g.,  copying, and renaming), functionalities
-    # that need just one action value to be executed (e.g.,
-    # documentation reading and edition) and functionalities that
-    # don't need action value at all (e.g., searching, reading and
-    # updating output files). This way, the execution of backend
-    # functionalities is splitted here.
-    if [[ $ACTIONNAM =~ "^(copy|rename|delete)Entry$" ]];then
+    # Execute action names. Notice that we've separated action name
+    # execution in order to control and save the differences among
+    # them. For example, there are action names that need a fixed
+    # amount of non-option arguments (e.g., when we rename or copy
+    # documentation entries); but there are other action names that
+    # have no restriction in the amount of non-option arguments that
+    # can be provided to it (e.g., when we edit, read or delete
+    # documentation entries).
+    if [[ $ACTIONNAM =~ "^(copy|rename)Entry$" ]];then
 
         # Execute backend action names that may need to use more than
         # one action value.
-        ${MANUAL_BACKEND}_${ACTIONNAM} $@
+        ${FLAG_BACKEND}_${ACTIONNAM}
 
-    elif [[ $ACTIONNAM =~ "^(search(Index|Node)|updateOutputFiles)$" ]];then
+        # Rebuild output files to propagate recent changes.
+        ${FLAG_BACKEND}_updateOutputFiles
 
-        # Execute backend action names that might not need any action
-        # value as reference to do their work.
-        ${MANUAL_BACKEND}_$ACTIONNAM $@
+        # Commit changes from working copy to central repository only.
+        # At this point, changes in the repository are not merged in
+        # the working copy, but chages in the working copy do are
+        # committed up to repository.
+        cli_commitRepoChanges ${MANUAL_BASEDIR}
 
-        # Backend action names that don't need to use any action value
-        # as reference to do their work are of one-pass only. They are
-        # executed and then the script execution is finished.
+        # Terminate script execution right here.
+        exit
+
+    elif [[ $ACTIONNAM =~ "^(searchIndex|updateOutputFiles)$" ]];then
+
+        # Execute backend action names which don't require non-option
+        # arguments to be passed at all, in order for them to do their
+        # work.
+        ${FLAG_BACKEND}_${ACTIONNAM}
+
+        # Terminate script execution right here.
         exit
 
     else
 
-        # Execute backend action names that use one action value, only.
-        for ACTIONVAL in $@;do
-        
-            # Define documentation entry.
-            MANUAL_ENTRY=$(${MANUAL_BACKEND}_getEntry $ACTIONVAL)
+        # Define documentation entry. To build the documentation
+        # entry, we combine the manual's name, the chapter's name and
+        # the section name retrived from the command-line.
+        if [[ $MANUAL_CHAPTER_NAME == '' ]];then
 
-            # Execute backend action names that may need to use more
-            # than one action value.
-            ${MANUAL_BACKEND}_$ACTIONNAM
+            # When chapter option is not provided, discard the section
+            # name and define documentation entry based on manual's
+            # main definition file.
+            MANUAL_ENTRY="${MANUAL_BASEFILE}.${MANUAL_EXTENSION}"
 
-        done
+        elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME == '' ]];then
+
+            # When chapter option is provided whith out a section
+            # name, verify chapter's directory inside the manual,
+            ${FLAG_BACKEND}_createChapter
+
+            # and define documentation entry based on chapter's main
+            # definition file.
+            MANUAL_ENTRY="${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/chapter.${MANUAL_EXTENSION}"
+
+        elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME != '' ]];then
+
+            # When both the chapter option and non-option arguments
+            # are provided, define documentation entries based on
+            # manual, chapter and non-option arguments.
+            MANUAL_ENTRY="$(${FLAG_BACKEND}_getEntry "$MANUAL_SECTION_NAME")"
+
+        else
+            cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
+        fi
+
+        # Execute action name on documentation entry.
+        ${FLAG_BACKEND}_$ACTIONNAM
 
     fi
-
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    cli_commitRepoChanges ${MANUAL_BASEDIR}
-
-    # Rebuild output files to propagate recent changes.
-    ${MANUAL_BACKEND}_updateOutputFiles
 
 }

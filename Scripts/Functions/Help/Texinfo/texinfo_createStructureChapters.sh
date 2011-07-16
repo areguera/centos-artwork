@@ -26,21 +26,23 @@
 
 function texinfo_createStructureChapters {
 
+    local MANUAL_CHAPTER_DIR=''
+
     # Define list of chapter templates files used to build the
-    # documentation manual. Do not include the `Directories' directory
+    # documentation manual. Do not include the `Chapters' directory
     # here. It is used to build chapters based on value passed though
     # `--chapter' option passed in the command-line.
     local FILE=''
     local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE_L10N} \
         --pattern='chapter(-menu|-nodes)?\.texinfo' --mindepth='2' \
-        | grep -v '/Directories/')
+        | grep -v '/Chapters/')
 
     # Loop through chapter structures and create them inside the
     # manual.
     for FILE in $FILES;do
 
-        # Redefine chapter directory based on template files.
-        MANUAL_CHAPTER_NAME=$(basename $(dirname ${FILE}))
+        # Redefine manual's chapter directory based on template files.
+        MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/$(basename $(dirname ${FILE}))
 
         # Verify texinfo templates used as based to build the chapter.
         # Be sure they are inside the working copy of CentOS Artwork
@@ -48,12 +50,12 @@ function texinfo_createStructureChapters {
         cli_checkFiles ${FILE} -wn
 
         # Verify chapter's directory. If it doesn't exist, create it.
-        if [[ ! -d ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} ]];then
-            svn mkdir ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} --quiet
+        if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
+            svn mkdir ${MANUAL_CHAPTER_DIR} --quiet
         fi
 
         # Copy template files into chapter's directory.
-        svn cp ${FILE} ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} --quiet
+        svn cp ${FILE} ${MANUAL_CHAPTER_DIR} --quiet
 
     done
 

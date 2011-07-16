@@ -26,14 +26,14 @@
 
 function texinfo_renameCrossReferences {
 
-    local MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry "$1")
-    local MANUAL_ENTRY_DST=$(${MANUAL_BACKEND}_getEntry "$2")
+    local MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "$1")
+    local MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry "$2")
 
     # Define node pattern for source documenation entry.
-    local NODE_SRC=$(${MANUAL_BACKEND}_getNode "$MANUAL_ENTRY_SRC")
+    local NODE_SRC=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_SRC")
 
     # Define node replacement for target documentation entry.
-    local NODE_DST=$(${MANUAL_BACKEND}_getNode "$MANUAL_ENTRY_DST")
+    local NODE_DST=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_DST")
 
     # Define list of entries to process.
     local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} \
@@ -67,6 +67,6 @@ function texinfo_renameCrossReferences {
     # source to target documentation entry, but they are still
     # commented. So, uncomment them restoring target documentation
     # entries.
-    ${MANUAL_BACKEND}_restoreCrossReferences "${MANUAL_ENTRY_DST}"
+    ${FLAG_BACKEND}_restoreCrossReferences "${MANUAL_ENTRY_DST}"
 
 }

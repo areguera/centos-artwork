@@ -31,7 +31,7 @@ function texinfo_deleteEntry {
 
     # Define list of entries to remove using the entry specified in
     # the command line.
-    local MANUAL_ENTRIES=$(${MANUAL_BACKEND}_getEntry "$@")
+    local MANUAL_ENTRIES=$(${FLAG_BACKEND}_getEntry "$@")
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
@@ -125,12 +125,12 @@ function texinfo_deleteEntry {
 
         # Update menu and node definitions from manual sections to
         # reflect the changes.
-        ${MANUAL_BACKEND}_updateMenu "remove-entry"
-        ${MANUAL_BACKEND}_updateNodes
+        ${FLAG_BACKEND}_updateMenu "remove-entry"
+        ${FLAG_BACKEND}_updateNodes
 
         # Update cross reference definitions from manual to reflect
         # the changes.
-        ${MANUAL_BACKEND}_deleteCrossReferences $MANUAL_ENTRY
+        ${FLAG_BACKEND}_deleteCrossReferences $MANUAL_ENTRY
 
     done
  

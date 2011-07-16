@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# texinfo_copyEntry.sh -- This function copies documentation entries
-# inside the working copy and updates the documentation structure to
-# reflect the changes.
+# texinfo_copyEntry.sh -- This function standardizes the duplication
+# actions related to manuals written in texinfo format. This function
+# duplicates manuals, chapters inside manuals, and sections inside
+# chapters.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -26,84 +27,81 @@
 
 function texinfo_copyEntry {
 
-    # Verify number of non-option arguments passed to centos-art.sh
-    # script.
-    if [[ $# -lt 2 ]];then
-        cli_printMessage "`gettext "Two paths are required."`" --as-error-line
-    elif [[ $# -gt 2 ]];then
-        cli_printMessage "`gettext "Only two paths are supported."`" --as-error-line
-    fi
-
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
-
-    # Define source documentation entry. This is the documentation
-    # entry that will be duplicated.
-    local MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry "${1}")
-
-    # Define target documentation entry. This is the new documentation
-    # entry created from the source documentation entry.
-    local MANUAL_ENTRY_DST=$(${MANUAL_BACKEND}_getEntry "${2}")
-
-    # Verify parent directory of target documentation entry. If it
-    # doesn't exist, create it and add it to version control.
-    if [[ ! -d $(dirname ${MANUAL_ENTRY_DST}) ]];then
-        mkdir -p $(dirname ${MANUAL_ENTRY_DST})
-        svn add $(dirname ${MANUAL_ENTRY_DST}) --quiet
-    fi
-
-    # Copy source documentation entry to target documentation entry.
-    if [[ -f ${MANUAL_ENTRY_SRC} ]];then
-        if [[ ! -f ${MANUAL_ENTRY_DST} ]];then
-            cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
-            svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
-        else
-            cli_printMessage "`gettext "The target location is not valid."`" --as-error-line
-        fi
-    else
-        cli_printMessage "`gettext "The source location is not valid."`" --as-error-line
-    fi
-
-    # Redefine both source and target locations to refer the directory
-    # where dependent documentation entries are stored in.
-    MANUAL_ENTRY_SRC=$(echo ${MANUAL_ENTRY_SRC} | sed -r "s/\.${MANUAL_EXTENSION}$//")
-    MANUAL_ENTRY_DST=$(echo ${MANUAL_ENTRY_DST} | sed -r "s/\.${MANUAL_EXTENSION}$//")
-
-    # Copy dependent documentation entries, if any.
-    if [[ -d ${MANUAL_ENTRY_SRC} ]];then
-        if [[ ! -a ${MANUAL_ENTRY_DST} ]];then
-            cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
-            svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
-        fi
-    fi
-
-    # Define list of target documentation entries.
+    local MANUAL_ENTRY_SRC=''
+    local MANUAL_ENTRY_DST=''
     local MANUAL_ENTRY=''
-    local MANUAL_ENTRIES=$(cli_getFilesList \
-        $(dirname ${MANUAL_ENTRY_DST}) \
-        --pattern="${MANUAL_ENTRY_DST}.*\.${MANUAL_EXTENSION}")
+    local MANUAL_ENTRIES=''
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
+    # Define both source and target documentation entries. To build
+    # the source and target documentation entries we take into
+    # consideration the manual's main definition file, the chapter's
+    # main definition file and non-option arguments passed to
+    # centos-art.sh script through the command-line.
+    if [[ ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]} != '' ]];then
 
-    # Print action message.
-    cli_printMessage "`gettext "Updating menus, nodes and cross-references."`" --as-response-line
+        if [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
 
-    # Loop through target documentation entries in order to update
-    # the documentation structure (e.g., It is not enough with copying
-    # documentation entry files, it is also needed to update menu,
-    # nodes and related cross-references).
-    for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
+            # When the section name is specified both in first and
+            # second non-option arguments, source and target are set
+            # as specified in first and second non-option arguments
+            # respectively.
 
-        # Update menu and node definitions from manual sections to
-        # reflect the changes.
-        ${MANUAL_BACKEND}_updateMenu
-        ${MANUAL_BACKEND}_updateNodes
+            # Define documentation entry source's location.
+            MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
 
-        # Update cross reference definitions from manual to reflect
-        # the changes.
-        ${MANUAL_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
+            # Define documentation entry target's location.
+            MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]})
 
-    done
+        elif [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} == '' ]] \
+            && [[ ${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+
+            # When the section name is specified only in the first
+            # non-option argument and the chapter name has been
+            # provided in the second non-option argument, use the
+            # section name passed in first argument to build the
+            # section name that will be used as target.
+
+            # Define documentation entry source's location.
+            MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
+
+            # Define documentation entry target's location.
+            MANUAL_ENTRY_DST=$(echo $MANUAL_ENTRY_SRC \
+                | sed -r "s!${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}!")
+
+        else
+            cli_printMessage "`gettext "The location provided as target isn't valid."`" --as-error-line
+        fi
+
+        # Copy documentation entry using source and target locations.
+        ${FLAG_BACKEND}_copyEntrySection
+         
+    elif [[ ${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]} != '' ]] \
+        && [[ ${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+
+        # In this configuration, the section name wasn't specified
+        # neither in first or second non-option argument.  So, we
+        # perform a copying action for the chapter directory itself.
+        # In this configuration, the whole chapter directory and all
+        # the content inside it is duplicated from source to target.
+        ${FLAG_BACKEND}_copyEntryChapter
+
+    elif [[ ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != '' ]] \
+        && [[ ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+
+        # In this configuration, the chapter name wasn't specified
+        # neither in first or second non-option argument. So, we
+        # perform copying actions on manual directory itself.  Notice
+        # that, in this configuration, the whole manual is duplicated.
+        ${FLAG_BACKEND}_copyEntryManual
+
+        # In this configuration, there is no need to update section
+        # menus, nodes and cross refereces. The section definition
+        # files were copied from the source manual with any change so
+        # the manual should build without any problem. Be sure such
+        # verification will never happen.
+
+    else
+        cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
+    fi
 
 }

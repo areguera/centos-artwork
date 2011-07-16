@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# help_getOptions.sh -- This function interpretes arguments passed to
-# `help' functionality and calls actions accordingly.
+# help_getOptions.sh -- This function interpretes option arguments
+# passed to `help' functionality through the command-line and defines
+# action names accordingly.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -29,7 +30,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename,manual:"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -59,12 +60,11 @@ function help_getOptions {
                 ;;
 
             --backend )
-                MANUAL_BACKEND="$(cli_getRepoName "$2" -f)"
-                shift 2
-                ;;
-
-            --manual )
-                FLAG_MANUAL=$(cli_getRepoName "$2" -f | tr '[:lower:]' '[:upper:]')
+                # CAUTION: Be sure to sanitate this input value
+                # through cli_getRepoName using just the basename of
+                # the value provided. Otherwise, functionalities might
+                # be executed from unexpected places.
+                FLAG_BACKEND="$(cli_getRepoName "$2" -f)"
                 shift 2
                 ;;
 
@@ -122,12 +122,5 @@ function help_getOptions {
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
-
-    # Verify non-option arguments passed to command-line. If there
-    # isn't any, redefine the ARGUMENTS variable to use the current
-    # location the functionality was called from.
-    if [[ $ARGUMENTS == '' ]];then
-        ARGUMENTS=${PWD}
-    fi
 
 }

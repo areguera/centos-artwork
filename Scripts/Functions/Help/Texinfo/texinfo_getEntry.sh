@@ -1,9 +1,7 @@
 #!/bin/bash
 #
 # texinfo_getEntry.sh -- This function builds a documentation entry
-# based on a location specified. Location specification can be both
-# action value (ACTIONVAL) variable or a value passed as first
-# positional parameter.
+# based on location specified as first positional parameter.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -27,48 +25,19 @@
 
 function texinfo_getEntry {
 
-    # Define variables as local to avoid conflicts outside.
     local MANUAL_ENTRY=''
-    local LOCATION=''
-    local LOCATIONS=''
+    local MANUAL_SECTION_NAME=''
+    local MANUAL_SECTION_NAMES="$@"
 
-    # Redefine locations in order to make this function reusable not
-    # just for action value variable but whatever value passed as
-    # first possitional argument.
-    if [[ "$@" != '' ]];then
-        LOCATIONS="$@"
-    else
-        LOCATIONS="$ACTIONVAL"
-    fi
+    # Loop through list of section names.
+    for MANUAL_SECTION_NAME in $MANUAL_SECTION_NAMES;do
 
-    for LOCATION in $LOCATIONS;do
-
-        # Sanitate action value to use absolute paths.
-        LOCATION=$(cli_checkRepoDirSource $LOCATION)
-    
-        # Define relative path of entry, from trunk directory on.
-        MANUAL_ENTRY=$(echo $LOCATION | sed -r "s!^${HOME}/artwork/!!")
-
-        # Verify the entry relative path to find out which
-        # documentation manual we are acting on. As convenction,
-        # whatever documentation entry you provide outside
-        # trunk/Manuals/ directory structure is considered as you are
-        # documenting the repository directory structure. Otherwise,
-        # if an entry inside trunk/Manuals/ is provided, the directory
-        # structure provided is used as default documentation manual.
-        if [[ ${MANUAL_ENTRY} =~ "\.${MANUAL_EXTENSION}$" ]];then
-            MANUAL_ENTRY=$(echo ${MANUAL_ENTRY} | sed "s!${MANUAL_BASEDIR}!!")
-        else
-            MANUAL_ENTRY=$(dirname ${MANUAL_CHAPTER_NAME}/${MANUAL_ENTRY})/$(basename $LOCATION).${MANUAL_EXTENSION}
-        fi
-
-        # Re-define entry to set absolute path to manuals base
-        # directory structure.
-        MANUAL_ENTRY=${MANUAL_BASEDIR}/${MANUAL_ENTRY}
+        # Define absolute path to documentation entry.
+        MANUAL_ENTRY=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/${MANUAL_SECTION_NAME}.${MANUAL_EXTENSION}
 
         # Output entry's absolute path.
         echo ${MANUAL_ENTRY}
 
     done
-
+    
 }

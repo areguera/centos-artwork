@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# texinfo_createChapters.sh -- This function creates the chapters'
-# base directory structure using templates as reference.
+# texinfo_createChapter.sh -- This function creates manual's chapters
+# based on templates.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,46 +23,83 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_createChapters {
+function texinfo_createChapter {
 
-    local MANUAL_CHAPTER_NAME=''
+    # Verify chapter's directory inside the manual.  The chapter's
+    # directory is where chapter-specific information (e.g., manual's
+    # sections) are stored in.  If this directory already exist,
+    # assume it was created correctly in the past. Otherwise, prompt
+    # its creation.
+    if [[ -d $MANUAL_CHAPTER_DIR ]];then
+        return
+    else
+        cli_printMessage "`gettext "The following documentation chapter will be created:"`"
+        cli_printMessage "${MANUAL_CHAPTER_DIR}" --as-response-line
+        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
+    fi
 
-    # Define list of chapter templates files used as base to create
-    # the chapters' documentation manual.
+    # Initialize chapter information (e.g., title).
+    local MANUAL_CHAPTER_TITLE=''
+
+    # Retrive manual's information from standard input.
+    cli_printMessage "`gettext "Enter chapter's title"`" --as-request-line
+    read MANUAL_CHAPTER_TITLE
+
+    # Print action message.
+    cli_printMessage "-" --as-separator-line
+    cli_printMessage "`gettext "Creating chapter's files."`" --as-response-line
+
+    # Define list of template files used to build chapter's main
+    # definition files.
     local FILE=''
-    local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE_L10N} \
-        --pattern='chapter(-menu|-nodes)?\.texinfo' --mindepth='2')
+    local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE_L10N}/Chapters" \
+        --maxdepth='1' \
+        --pattern="chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}")
 
-    # Loop through chapter structures and create them.
+    # Create chapter's directory using subversion. This is the place
+    # where all chapter-specific files will be stored in.
+    if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
+        svn mkdir ${MANUAL_CHAPTER_DIR} --quiet
+    fi
+
+    # Create chapter's files using template files as reference.
     for FILE in $FILES;do
-
-        # Redefine chapter directory based on template files.
-        MANUAL_CHAPTER_NAME=$(basename $(dirname ${FILE}))
 
         # Verify texinfo templates used as based to build the chapter.
         # Be sure they are inside the working copy of CentOS Artwork
         # Repository (-w) and under version control (-n), too.
         cli_checkFiles ${FILE} -wn
 
-        # Verify chapter's directory. If it doesn't exist, create it.
-        if [[ ! -d ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} ]];then
-            svn mkdir ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} --quiet
-        fi
-
         # Copy template files into chapter's directory.
-        svn cp ${FILE} ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME} --quiet
-
-        # Remove content from `chapter-nodes.texinfo' instance to
-        # start with a clean node structure. This file is also used by
-        # to create new repository documentation entries, but we don't
-        # need that information right now (when the `Directories'
-        # chapter structure is created), just an empty copy of the
-        # file. The node structure of `Directories' chapter is created
-        # automatically based on repository directory structure.
-        if [[ $FILE =~ "Directories/chapter-nodes\.texinfo$" ]];then
-            echo "" > ${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/chapter-nodes.${MANUAL_EXTENSION}
-        fi
+        svn cp ${FILE} ${MANUAL_CHAPTER_DIR} --quiet
 
     done
+
+    # Expand translation markers inside chapter's main definition
+    # file.  Before expanding chapter information, be sure the slash
+    # (/) character be scaped. Otherwise, if the slashes aren't scape,
+    # they will be interpreted as sed's separator and provoke sed to
+    # fail.
+    sed -i -r \
+        -e 's/ \// \\\//g' \
+        -e "s/=CHAPTER_NAME=/${MANUAL_CHAPTER_NAME}/" \
+        -e "s/=CHAPTER_TITLE=/${MANUAL_CHAPTER_TITLE}/" \
+        ${MANUAL_CHAPTER_DIR}/chapter.${MANUAL_EXTENSION}
+
+    # Remove content from `chapter-nodes.texinfo' file to start with a
+    # clean node structure. This file is also used to create new
+    # documentation entries, but we don't need that information right
+    # now (when the chapter structure is created), just an empty copy
+    # of the file. The node structure of chapter is created
+    # automatically based on action value.
+    echo "" > ${MANUAL_CHAPTER_DIR}/chapter-nodes.${MANUAL_EXTENSION}
+
+    # Print action maessage.
+    cli_printMessage "`gettext "Updating chapter menu and nodes inside manual structure."`" --as-response-line
+
+    # Update chapter information inside the manual's texinfo
+    # structure.
+    ${FLAG_BACKEND}_updateChaptersMenu
+    ${FLAG_BACKEND}_updateChaptersNodes
 
 }

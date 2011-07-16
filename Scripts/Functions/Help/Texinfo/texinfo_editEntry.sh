@@ -31,16 +31,12 @@ function texinfo_editEntry {
     # Verify section definition inside chapters. 
     if [[ ! -f $MANUAL_ENTRY ]];then
 
-        # Verify the parent directory of documentation entry. If the
-        # parent directory of the current documentation entry doesn't
-        # exist, create it and be sure it is added to version control.
-        # Also, verify that the parent directory of the documentation
-        # entry can be created. Otherwise, stop script execution with
-        # an error for the user to be aware of it.
-        if [[ ! -d $(dirname $(dirname $MANUAL_ENTRY)) ]];then
-            cli_printMessage "`gettext "The documentation entry provided hasn't a parent directory."`" --as-error-line
-        elif [[ ! -d $(dirname $MANUAL_ENTRY) ]];then
-            svn mkdir $(dirname ${MANUAL_ENTRY}) --quiet
+        # Verify chapter related to documentation entry. Inside
+        # manuals, all documentation entries are stored directly under
+        # its chapter directory. There is no more levels deep so it is
+        # possible to perform a direct chapter verification here.
+        if [[ ! -a $(dirname $MANUAL_ENTRY)/chapter.${MANUAL_EXTENSION} ]];then
+            ${FLAG_BACKEND}_createChapter
         fi
 
         # Print confirmation question. 
@@ -48,20 +44,9 @@ function texinfo_editEntry {
         cli_printMessage "$MANUAL_ENTRY" --as-response-line
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
-        # Update chapter section related menu.
-        ${MANUAL_BACKEND}_updateMenu
-
-        # Update chapter section related nodes (based on chapter
-        # section related menu).
-        ${MANUAL_BACKEND}_updateNodes
-
-        # Update old missing cross references. If for some reason a
-        # documentation entry is removed by mistake, and that mistake
-        # is fixing by adding the removed documentation entry back
-        # into the repository, rebuild the missing cross reference
-        # message to use the correct link to the documentation
-        # section.
-        ${MANUAL_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
+        # Update section menu, nodes and cross references based on
+        # changes in order for manual structure to remain cosistent.
+        ${FLAG_BACKEND}_updateStructureSection "$MANUAL_ENTRY"
 
     else
 

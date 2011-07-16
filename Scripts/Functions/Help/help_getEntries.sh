@@ -33,37 +33,50 @@ function help_getEntries {
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
 
-    # Build manual array to store information required to process
-    # documentation entries (e.g., manual name, chapter name and
-    # section name.) At this point all option arguments have been
-    # removed from positional paramters so we can use the remaining
-    # non-option arguments as reference to retrive documentation
-    # entries. Documentation entries passed as non-opiton arguments
-    # must have the `MANUAL:CHAPTER:SECTION' format in order to be
-    # processed correctly here.
-    for DOCENTRY in $@;do
+    if [[ $@ == '' ]];then
 
-        # Manual self name.
-        MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-            $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
-            | tr '[:upper:]' '[:lower:]')
-
-        # Manual directory name.
-        MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-            $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
-            | tr '[:lower:]' '[:upper:]')
-
-        # Manual chapter name.
-        MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-            $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
-
-        # Manual section name.
-        MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-            $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -f )
-
-        # Increment counting of non-option arguments.
+        # Define default documentation entry. This happen when
+        # non-option arguments aren't provided to centos-art.sh
+        # script.  Default documentation entry defined here points to
+        # manual's main definition file, so only the manual's self
+        # name and manual's directory name need to be defined here.
+        MANUAL_SLFN[0]='tcar-ug'
         MANUAL_DOCENTRY_COUNT=$(($MANUAL_DOCENTRY_COUNT + 1))
 
-    done
+    else
 
+        # Retrive documentation entries passed to centos-art.sh script
+        # as non-option arguments and store them in array variables in
+        # order to describe their parts (e.g., manual name, chapter
+        # name and section name) that way.  Documentation entries
+        # passed as non-opiton arguments must have the
+        # `MANUAL:CHAPTER:SECTION' format in order to be processed
+        # correctly here. Empty spaces are not permitted. To separate
+        # words, use the minus sign (e.g., hello-world) or cammel case
+        # (e.g., HelloWorld).
+        for DOCENTRY in $@;do
+
+            # Manual self name.
+            MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
+                | tr '[:upper:]' '[:lower:]')
+
+            # Manual self directory name.
+            MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
+
+            # Manual chapter name.
+            MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
+
+            # Manual section name.
+            MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -f )
+
+            # Increment counting of non-option arguments.
+            MANUAL_DOCENTRY_COUNT=$(($MANUAL_DOCENTRY_COUNT + 1))
+
+        done
+
+    fi
 }

@@ -25,15 +25,16 @@
 
 function texinfo_updateChaptersNodes {
 
-    # Build list "nodes of chapters" based on menu of chapters.
+    # Build chapter nodes using entries from chapter menu as
+    # reference. Don't include `Licenses' or `Index' chapters here.
+    # These chapters are part of our manual's main defintion file and
+    # shouldn't be handled as regular chapters.
     local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} \
-        | egrep -v '^@(end )?menu$' | egrep -v '^\* Index::$'\
+        | egrep -v '^@(end )?menu$' | egrep -v '^\* (Licenses|Index)::$'\
         | sed -r 's!^\* !!' | sed -r 's!::[[:print:]]*$!!g' \
-        | sed -r 's! !_!g' | sort | uniq )
+        | sed -r 's! !_!g')
 
-    # Build list of texinfo inclusions to load chapters' nodes. Don't
-    # include `Index' chapter here, it has been already included in
-    # the `repository.texinfo' file.
+    # Build list of inclusions from chapter nodes. 
     local FILENODE=$(\
         for CHAPTERNODE in ${CHAPTERNODES};do
             INCL=$(echo ${CHAPTERNODE} \
