@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: The CentOS L10n SIG <centos-l10n@centos.org>\n"
 "POT-Creation-Date: 2011-07-16 17:46-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  The CentOS L10n SIG <centos-l10n@centos.org>\n"
@@ -19,27 +19,24 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo.sh:154
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:104
-#, fuzzy
 msgid "The parameters you provided are not supported."
-msgstr "La versión de la entrega suministrada no está soportada."
+msgstr "Los parámetros que usted suministró no están soportados."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:72
-#, fuzzy
 msgid "The location provided as target isn't valid."
-msgstr "La opción suministrada no es válida."
+msgstr "La ubicación suministrada como destino no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntryChapter.sh:42
 msgid "The chapter cannot be copied into itself."
-msgstr ""
+msgstr "El capítulo no puede copiarse a sí mismo."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntryManual.sh:56
 msgid "Updating chapter menus and nodes inside manual structure."
-msgstr ""
+msgstr "Actualizando menús y nodos en la estructura del manual."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:31
-#, fuzzy
 msgid "The source and target locations cannot be the same."
-msgstr "La ubicación de destino no es válida."
+msgstr "La ubicación de origen y destino no puden ser las mismas."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:64
 msgid "The target location is not valid."
@@ -61,42 +58,40 @@ msgstr "¿Desea continuar?"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:45
 msgid "Enter chapter's title"
-msgstr ""
+msgstr "Entre el título del capítulo"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:50
 msgid "Creating chapter's files."
-msgstr ""
+msgstr "Creando ficheros del capítulo"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:98
 msgid "Updating chapter menu and nodes inside manual structure."
-msgstr ""
+msgstr "Actualizando menú y nodos dentro de la estructura del manual."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:36
-#, fuzzy, sh-format
+#, sh-format
 msgid "The following documentation manual will be created:"
-msgstr "La sección siguiente de documentación será creada:"
+msgstr "El manual de documentación siguiente será creado:"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:65
 msgid "Manual Title"
-msgstr ""
+msgstr "Título del manual"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:67
 msgid "Manual Subtitle"
-msgstr ""
+msgstr "Subtítulo del manual"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:69
 msgid "Manual Abstract"
-msgstr ""
+msgstr "Preámbulo del manual"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:74
-#, fuzzy
 msgid "Creating manual structure in texinfo format."
-msgstr "Creando la estructura del manual."
+msgstr "Creando la estructura del manual en formato texinfo."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:79
-#, fuzzy
 msgid "The manual title cannot be empty."
-msgstr "El mensaje no puede estar vacío."
+msgstr "El título del manual no puede estar vacío."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:41
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_getNode.sh:33
@@ -124,9 +119,8 @@ msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:64
-#, fuzzy
 msgid "Updating section menus, nodes and cross references."
-msgstr "Actualizando los menús, nodos y referencias cruzadas en el manual"
+msgstr "Actualizando menús, nodos y referencias cruzadas en las secciones."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:32
 msgid "Cannot locale English language to itself."
