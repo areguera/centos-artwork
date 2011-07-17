@@ -42,7 +42,7 @@ function texinfo_createStructureChapters {
     for FILE in $FILES;do
 
         # Redefine manual's chapter directory based on template files.
-        MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/$(basename $(dirname ${FILE}))
+        MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR_L10N}/$(basename $(dirname ${FILE}))
 
         # Verify texinfo templates used as based to build the chapter.
         # Be sure they are inside the working copy of CentOS Artwork

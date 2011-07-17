@@ -36,8 +36,8 @@ function texinfo_renameCrossReferences {
     local NODE_DST=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_DST")
 
     # Define list of entries to process.
-    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} \
-        --pattern=".*\.${MANUAL_EXTENSION}")
+    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
+        --pattern=".+\.${MANUAL_EXTENSION}")
 
     # Update node-related cross-references. The node-related cross
     # reference definition, long ones specially, could require more

@@ -52,8 +52,8 @@ function texinfo_createStructure {
 
     # Create manual's top-level directory using subversion. This is
     # the place where all texinfo documentation manuals is stored in.
-    if [[ ! -d ${MANUAL_TLDIR} ]];then
-        svn mkdir ${MANUAL_TLDIR} --quiet
+    if [[ ! -d ${MANUAL_BASEDIR} ]];then
+        svn mkdir ${MANUAL_BASEDIR} --quiet
         MANUAL_FIRSTTIME_CREATED='true'
     fi
 
@@ -123,7 +123,7 @@ function texinfo_createStructure {
     # working copy, but chages in the working copy do are committed up
     # to repository.
     if [[ ${MANUAL_FIRSTTIME_CREATED} == 'true' ]];then
-        cli_commitRepoChanges ${MANUAL_TLDIR}
+        cli_commitRepoChanges ${MANUAL_BASEDIR}
     fi
 
 }

@@ -59,8 +59,8 @@ function texinfo_restoreCrossReferences {
     REPLACE[1]='\1'
 
     # Define list of entries to process.
-    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} \
-        --pattern=".*\.${MANUAL_EXTENSION}")
+    local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
+        --pattern=".+\.${MANUAL_EXTENSION}")
 
     # Update node-related cross references. The node-related cross
     # reference definition, long ones specially, could require more

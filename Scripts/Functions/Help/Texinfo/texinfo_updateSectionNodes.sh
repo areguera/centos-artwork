@@ -45,8 +45,8 @@ function texinfo_updateSectionNodes {
         # deletion.  Otherwise, when the files have been marked for
         # deletion, they will be created again from texinfo template
         # to working copy and that might create confusion.
-        if [[ ! -f ${MANUAL_BASEDIR}/$INCL ]] \
-            && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR}/$INCL) != 'D' ]];then
+        if [[ ! -f ${MANUAL_BASEDIR_L10N}/$INCL ]] \
+            && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR_L10N}/$INCL) != 'D' ]];then
 
             # Define absolute path to template assignment file. This
             # is the file that controls the way texinfo template files
@@ -89,7 +89,7 @@ function texinfo_updateSectionNodes {
                     | gawk 'BEGIN{FS="="}; { print $2 }' \
                     | sed -r 's![[:space:]]*!!g' | sed -r 's!^"(.+)"$!\1!')
 
-                if [[ ${MANUAL_BASEDIR}/${INCL} =~ $CONFRHS ]];then
+                if [[ ${MANUAL_BASEDIR_L10N}/${INCL} =~ $CONFRHS ]];then
                     TEMPLATE="${MANUAL_TEMPLATE_L10N}/${CONFLHS}"
                     break
                 fi
@@ -103,12 +103,12 @@ function texinfo_updateSectionNodes {
 
             # Create documentation entry using texinfo template as
             # reference.
-            svn cp ${TEMPLATE} ${MANUAL_BASEDIR}/$INCL --quiet
+            svn cp ${TEMPLATE} ${MANUAL_BASEDIR_L10N}/$INCL --quiet
 
         fi
 
         # Expand common translation markers in documentation entry.
-        cli_expandTMarkers "${MANUAL_BASEDIR}/$INCL"
+        cli_expandTMarkers "${MANUAL_BASEDIR_L10N}/$INCL"
 
         # Replace node, section and concept index definitions already
         # defined with node, section and concept index translation
@@ -117,7 +117,7 @@ function texinfo_updateSectionNodes {
             -e '/@node/c@node =NODE=' \
             -e '/@section/c@section =SECT=' \
             -e '/@cindex/c@cindex =CIND=' \
-            "${MANUAL_BASEDIR}/$INCL"
+            "${MANUAL_BASEDIR_L10N}/$INCL"
 
         # Expand noce, section and concept index translation
         # markers in documentation entry.
@@ -125,7 +125,7 @@ function texinfo_updateSectionNodes {
             -e "s!=NODE=!${NODE}!g" \
             -e "s!=SECT=!${SECT}!g" \
             -e "s!=CIND=!${CIND}!g" \
-            "${MANUAL_BASEDIR}/$INCL"
+            "${MANUAL_BASEDIR_L10N}/$INCL"
 
         # Verify existence of chapter-nodes template files. If no
         # chapter-nodes template is found, stop script execution with

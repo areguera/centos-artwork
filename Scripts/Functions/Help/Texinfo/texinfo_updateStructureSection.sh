@@ -56,7 +56,7 @@ function texinfo_updateStructureSection {
         # using it.  Don't include manual or chapter definition files
         # in this list, it would create documentation entries for them
         # and that shouldn't happen.
-        MANUAL_ENTRIES=$(cli_getFilesList $(dirname ${MANUAL_BASEDIR}) \
+        MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} \
             --pattern="$PATTERN" | egrep -v "/(${MANUAL_NAME}|chapter)")
     fi
 

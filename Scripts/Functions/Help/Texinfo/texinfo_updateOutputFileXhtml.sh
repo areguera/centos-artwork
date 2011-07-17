@@ -42,7 +42,7 @@ function texinfo_updateOutputFileXhtml {
     # Add manual base directory path into directory stack to make it
     # the current working directory. This is done to reduce the path
     # information packaged inside `repository.xhtml.tar.bz2' file.
-    pushd ${MANUAL_BASEDIR} > /dev/null
+    pushd ${MANUAL_BASEDIR_L10N} > /dev/null
 
     # Clean up directory structure where xhtml files will be stored.
     # We don't want to have unused files inside it.
@@ -63,8 +63,8 @@ function texinfo_updateOutputFileXhtml {
     texi2html --lang=$(cli_getCurrentLocale --langcode-only) \
         --init-file=${MANUAL_TEMPLATE}/manual-init.pl \
         --init-file=${MANUAL_TEMPLATE_L10N}/manual-init.pl \
-        --output=${MANUAL_BASEDIR}/${MANUAL_NAME}-xhtml \
-        ${MANUAL_BASEDIR}/${MANUAL_NAME}.${MANUAL_EXTENSION}
+        --output=${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}-xhtml \
+        ${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.${MANUAL_EXTENSION}
 
     # Remove directory where xhtml files are stored from directory
     # stack. The xhtml files have been already created.

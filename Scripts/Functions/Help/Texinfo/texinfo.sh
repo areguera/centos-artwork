@@ -30,15 +30,6 @@ function texinfo {
     # Define file extension used by source files inside manuals.
     MANUAL_EXTENSION='texinfo'
 
-    # Define absolute path to directory holding language-specific
-    # texinfo source files.
-    MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_L10N}"
-
-    # Define absolute path to base file. This is the main file name
-    # (without extension) we use as reference to build output files in
-    # different formats (.info, .pdf, .xml, etc.).
-    MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
-
     # Verify existence of action names. When no action name is
     # provided to centos-art.sh script, read manual's output in info
     # format in order to provide a way for people to get oriented
@@ -61,7 +52,7 @@ function texinfo {
 
     # Define absolute path to chapter's directory. This is the place
     # where chapter-specific files are stored in.
-    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR}/$(cli_getRepoName \
+    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR_L10N}/$(cli_getRepoName \
         "${MANUAL_CHAPTER_NAME}" -d | tr -d ' ' | sed -r 's!/$!!')
 
     # Define absolute path to template directory. This is the place
@@ -141,7 +132,7 @@ function texinfo {
 
             # and define documentation entry based on chapter's main
             # definition file.
-            MANUAL_ENTRY="${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/chapter.${MANUAL_EXTENSION}"
+            MANUAL_ENTRY="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}/chapter.${MANUAL_EXTENSION}"
 
         elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME != '' ]];then
 

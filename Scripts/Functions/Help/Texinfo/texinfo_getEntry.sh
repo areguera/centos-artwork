@@ -33,7 +33,7 @@ function texinfo_getEntry {
     for MANUAL_SECTION_NAME in $MANUAL_SECTION_NAMES;do
 
         # Define absolute path to documentation entry.
-        MANUAL_ENTRY=${MANUAL_BASEDIR}/${MANUAL_CHAPTER_NAME}/${MANUAL_SECTION_NAME}.${MANUAL_EXTENSION}
+        MANUAL_ENTRY=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}/${MANUAL_SECTION_NAME}.${MANUAL_EXTENSION}
 
         # Output entry's absolute path.
         echo ${MANUAL_ENTRY}

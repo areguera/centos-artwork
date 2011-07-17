@@ -38,16 +38,16 @@ function texinfo_copyEntryManual {
 
     # Redefine absolute path to manual directory using manual name
     # passed to `centos-art.sh' script as second non-option argument.
-    MANUAL_TLDIR="$(echo $MANUAL_TLDIR \
+    MANUAL_BASEDIR="$(echo $MANUAL_BASEDIR \
         | sed -r "s!${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]}!")"
 
     # Redefine absolute path to manual directory using manual name
     # passed to `centos-art.sh' script as second non-option argument.
-    MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_L10N}"
+    MANUAL_BASEDIR_L10N="${MANUAL_BASEDIR}/${MANUAL_L10N}"
 
     # Redefine absolute path to base file using manual name passed to
     # `centos-art.sh' script as second non-option argument.
-    MANUAL_BASEFILE="${MANUAL_BASEDIR}/${MANUAL_NAME}"
+    MANUAL_BASEFILE="${MANUAL_BASEDIR_L10}/${MANUAL_NAME}"
 
     # Create manual structure
     ${FLAG_BACKEND}_createStructure
@@ -60,7 +60,7 @@ function texinfo_copyEntryManual {
 
         # Copy chapter directory from source to target using
         # subversion.
-        svn cp ${MANUAL_CHAPTER} ${MANUAL_BASEDIR} --quiet
+        svn cp ${MANUAL_CHAPTER} ${MANUAL_BASEDIR_L10N} --quiet
 
         # Define manual chapter name.
         local MANUAL_CHAPTER_NAME=$(basename ${MANUAL_CHAPTER})

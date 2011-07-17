@@ -26,14 +26,14 @@
 function texinfo_copyEntryChapter {
 
     # Define documentation entry source's location.
-    local MANUAL_ENTRY_SRC=${MANUAL_BASEDIR}/${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
+    local MANUAL_ENTRY_SRC=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
 
     # Redefine chapter name using chapter name passed to
     # `centos-art.sh' script as second non-option argument.
     local MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # Define documentation entry target's location.
-    local MANUAL_ENTRY_DST=${MANUAL_BASEDIR}/${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    local MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # When we are copying chapters, the source location and the target
     # location must be different in value. They cannot point to the

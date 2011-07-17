@@ -40,6 +40,25 @@ function help {
     # Initialize manual's language.
     local MANUAL_L10N=$(cli_getCurrentLocale)
 
+    # Initialize manuals's top-level directory. This is the place
+    # where the manual will be stored in. To provide flexibility, the
+    # current directory where the `centos-art.sh' script was called
+    # from is used as manual's top-level directory.  Notice that this
+    # relaxation is required because we need to create/maintain
+    # manuals both under `trunk/Manuals/' and `branches/Manuals/'
+    # directories.
+    local MANUAL_TLDIR=${PWD}
+
+    # Verify manual's top-level directory. To prevent messing the
+    # things up, we need to restrict the possible locations
+    # documentation manuals can be created inside the working copy.
+    # When manual's top-level location is other but the ones
+    # permitted, use `trunk/Manuals' directory structure as default
+    # location to store documentation manuals.
+    if [[ ! $MANUAL_TLDIR =~ "^${HOME}/artwork/(trunk|branches)/Manuals" ]];then
+        MANUAL_TLDIR="${HOME}/artwork/trunk/Manuals"
+    fi
+
     # Initialize arrays related to documentation entries. Arrays
     # defined here contain all the information needed to process
     # documentation entries written in texinfo format.
@@ -61,11 +80,6 @@ function help {
     # non-option arguments remain. Evaluate ARGUMENTS to retrive the
     # information related documentation entries from there.
     ${FUNCNAM}_getEntries
-
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges ${MANUAL_BASEDIR}
 
     # Initialize backend functionalities. At this point we load all
     # functionalities required into the centos-art.sh's execution
@@ -89,16 +103,38 @@ function help {
         # Define name used by manual's main definition file.
         MANUAL_NAME=${MANUAL_SLFN[${MANUAL_DOCENTRY_ID}]}
 
-        # Define absolute path to directory holding manual's main
-        # definition file.
-        MANUAL_TLDIR="${HOME}/artwork/branches/Manuals/$(cli_getRepoName \
-            ${FLAG_BACKEND} -d)/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
+        # Define absolute path to directory holding language-specific
+        # directories.
+        MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
+
+        # Define absolute path to directory holding language-specific
+        # texinfo source files.
+        MANUAL_BASEDIR_L10N="${MANUAL_BASEDIR}/${MANUAL_L10N}"
+
+        # Define absolute path to base file. This is the main file
+        # name (without extension) we use as reference to build output
+        # files in different formats (.info, .pdf, .xml, etc.).
+        MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
 
         # Define chapter name.
         MANUAL_CHAPTER_NAME=${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
 
         # Define section name.
         MANUAL_SECTION_NAME=${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]}
+
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository. Notice that, because we are processing
+        # non-option arguments one by one, there is no need to
+        # sycronize changes to the same manual time after time
+        # (assuming all documentation entries passed as non-option
+        # arguments refer the same manual directory name).
+        if [[ ${MANUAL_DOCENTRY_ID} -eq 0 \
+            || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
+            ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
+            cli_syncroRepoChanges ${MANUAL_BASEDIR}
+        fi
 
         # Execute backend-specific documentation tasks.
         ${FLAG_BACKEND}
