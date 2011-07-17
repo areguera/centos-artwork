@@ -55,7 +55,7 @@ function help {
     # When manual's top-level location is other but the ones
     # permitted, use `trunk/Manuals' directory structure as default
     # location to store documentation manuals.
-    if [[ ! $MANUAL_TLDIR =~ "^${HOME}/artwork/(trunk|branches)/Manuals" ]];then
+    if [[ ! $MANUAL_TLDIR =~ "^${HOME}/artwork/(trunk/Manuals|branches/Manuals/[[:alnum:]-]+)" ]];then
         MANUAL_TLDIR="${HOME}/artwork/trunk/Manuals"
     fi
 
