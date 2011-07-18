@@ -45,10 +45,10 @@ function locale_updateMessageMetadata {
 
     # Define pattern lines. The pattern lines are put inside portable
     # objects through xgettext and xml2po commands .
-    SRC[0]='Project-Id-Version:'
-    SRC[1]='Report-Msgid-Bugs-To:'
-    SRC[2]='Last-Translator:'
-    SRC[3]='Language-Team:'
+    SRC[0]="\"Project-Id-Version:"
+    SRC[1]="\"Report-Msgid-Bugs-To:"
+    SRC[2]="\"Last-Translator:"
+    SRC[3]="\"Language-Team:"
 
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${CLI_PROGRAM} (${CURRENTLOCALE})\\\n\""
