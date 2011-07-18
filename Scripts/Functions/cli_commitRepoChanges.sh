@@ -104,7 +104,7 @@ function cli_commitRepoChanges {
         # `files' at ngettext's consideration followed by change
         # direction.
         PREDICATE[$COUNT]=`ngettext "file in the working copy" \
-            "files in the repository" $((${FILESNUM[$COUNT]} + 1))`
+            "files in the working copy" $((${FILESNUM[$COUNT]} + 1))`
 
         # Output report line.
         cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}"
