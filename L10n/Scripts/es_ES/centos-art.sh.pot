@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-16 17:46-0400\n"
+"POT-Creation-Date: 2011-07-17 21:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo.sh:154
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo.sh:145
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:104
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:73
 msgid "The parameters you provided are not supported."
 msgstr ""
 
@@ -106,19 +107,11 @@ msgstr ""
 msgid "Removed"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:98
-msgid "An error occurred when deleting entries."
-msgstr ""
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:105
-msgid "Updating menus, nodes and cross-references."
-msgstr ""
-
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_editEntry.sh:43
 msgid "The following documentation section will be created:"
 msgstr ""
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:64
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:99
 msgid "Updating section menus, nodes and cross references."
 msgstr ""
 
@@ -349,7 +342,7 @@ msgstr ""
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:106
 msgid "file in the working copy"
-msgid_plural "files in the repository"
+msgid_plural "files in the working copy"
 msgstr[0] ""
 msgstr[1] ""
 
