@@ -59,7 +59,7 @@ function texinfo_createStructure {
 
     # Create manual's base directory. This is the place where
     # language-specific documentation source files are stored in.
-    svn mkdir ${MANUAL_BASEDIR} --quiet
+    svn mkdir ${MANUAL_BASEDIR_L10N} --quiet
 
     # Retrive manual's information from standard input.
     cli_printMessage "`gettext "Manual Title"`" --as-request-line
