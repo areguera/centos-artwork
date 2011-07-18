@@ -76,6 +76,37 @@ function texinfo {
     # Initialize document structure of new manuals.
     ${FLAG_BACKEND}_createStructure
 
+    # Define documentation entry. To build the documentation entry, we
+    # combine the manual's name, the chapter's name and the section
+    # name retrived from the command-line.
+    if [[ $MANUAL_CHAPTER_NAME == '' ]];then
+
+        # When chapter option is not provided, discard the section
+        # name and define documentation entry based on manual's main
+        # definition file.
+        MANUAL_ENTRY="${MANUAL_BASEFILE}.${MANUAL_EXTENSION}"
+
+    elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME == '' ]];then
+
+        # When chapter option is provided whith out a section name,
+        # verify chapter's directory inside the manual,
+        ${FLAG_BACKEND}_createChapter
+
+        # and define documentation entry based on chapter's main
+        # definition file.
+        MANUAL_ENTRY="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}/chapter.${MANUAL_EXTENSION}"
+
+    elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME != '' ]];then
+
+        # When both the chapter option and non-option arguments are
+        # provided, define documentation entries based on manual,
+        # chapter and non-option arguments.
+        MANUAL_ENTRY="$(${FLAG_BACKEND}_getEntry "$MANUAL_SECTION_NAME")"
+
+    else
+        cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
+    fi
+
     # Execute action names. Notice that we've separated action name
     # execution in order to control and save the differences among
     # them. For example, there are action names that need a fixed
@@ -113,37 +144,6 @@ function texinfo {
         exit
 
     else
-
-        # Define documentation entry. To build the documentation
-        # entry, we combine the manual's name, the chapter's name and
-        # the section name retrived from the command-line.
-        if [[ $MANUAL_CHAPTER_NAME == '' ]];then
-
-            # When chapter option is not provided, discard the section
-            # name and define documentation entry based on manual's
-            # main definition file.
-            MANUAL_ENTRY="${MANUAL_BASEFILE}.${MANUAL_EXTENSION}"
-
-        elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME == '' ]];then
-
-            # When chapter option is provided whith out a section
-            # name, verify chapter's directory inside the manual,
-            ${FLAG_BACKEND}_createChapter
-
-            # and define documentation entry based on chapter's main
-            # definition file.
-            MANUAL_ENTRY="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}/chapter.${MANUAL_EXTENSION}"
-
-        elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME != '' ]];then
-
-            # When both the chapter option and non-option arguments
-            # are provided, define documentation entries based on
-            # manual, chapter and non-option arguments.
-            MANUAL_ENTRY="$(${FLAG_BACKEND}_getEntry "$MANUAL_SECTION_NAME")"
-
-        else
-            cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
-        fi
 
         # Execute action name on documentation entry.
         ${FLAG_BACKEND}_$ACTIONNAM
