@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# texinfo_deleteEntry.sh -- This function removes a documentation entry
-# from documentation directory structure.
+# texinfo_deleteEntry.sh -- This function removes a documentation
+# manuals, chapters or sections from the working copy.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -25,113 +25,53 @@
 
 function texinfo_deleteEntry {
 
-    local MANUAL_ENTRY=''
-    local MANUAL_ENTRY_DIR=''
-    local MANUAL_ENTRY_SUBDIR=''
-
-    # Define list of entries to remove using the entry specified in
-    # the command line.
-    local MANUAL_ENTRIES=$(${FLAG_BACKEND}_getEntry "$@")
-
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
-
-    # Define list of dependen entries. Dependent entries are stored
-    # inside a directory with the same name of the entry being
-    # removed.
-    for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-
-        # Define directory where dependent documentation entries are
-        # stored in.
-        MANUAL_ENTRY_DIR=$(echo $MANUAL_ENTRY \
-            | sed -r "s/\.${MANUAL_EXTENSION}$//")
-
-        if [[ -d $MANUAL_ENTRY_DIR ]];then
-
-            # Add dependent documentation entries to the list of
-            # documentation entries that will be deleted.
-            MANUAL_ENTRIES="${MANUAL_ENTRIES} $(cli_getFilesList ${MANUAL_ENTRY_DIR} \
-                --pattern=".*\.${MANUAL_EXTENSION}")"
-
-            for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-
-                # Define directory name for dependent documentation
-                # entries which have their own dependent directories.
-                MANUAL_ENTRY_SUBDIR=$(basename $MANUAL_ENTRY \
-                    | sed -r "s/\.${MANUAL_EXTENSION}$//")
-
-                # Add directory paths from dependent documentation
-                # entries which have their own dependent directories
-                # to the list of documentation entries that will be
-                # deleted.
-                MANUAL_ENTRIES="${MANUAL_ENTRIES} $(cli_getFilesList \
-                    ${MANUAL_ENTRY_DIR} \
-                    --pattern=".*/${MANUAL_ENTRY_SUBDIR}" \
-                    --type='d')"
-
-            done
-
-        fi
-
-    done
-
-    # Sanitate list of documentation entries that will be removed.
-    MANUAL_ENTRIES=$(echo ${MANUAL_ENTRIES} | tr ' ' "\n" | sort -r | uniq | tr "\n" ' ')
-
-    # Verify existence of entries before deleting them. We cannot
-    # delete an entry which doesn't exist. Assuming that an entry
-    # doesn't exist, end script execution with an error message.
-    cli_checkFiles "$MANUAL_ENTRIES"
-    
-    # Remove documentation entry using Subversion's `delete' command
-    # to know when the action took place.  Do not use regular `rm'
-    # command here.
-    for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-        cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
-        svn del ${MANUAL_ENTRY} --quiet
-    done
-
-    # Verify exit status from subversion command to be sure everything
-    # went well. Otherwise stop script execution with an error
-    # message.
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "`gettext "An error occurred when deleting entries."`" --as-toknowmore-line
-    fi
-
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
     # Print action message.
-    cli_printMessage "`gettext "Updating menus, nodes and cross-references."`" --as-response-line
+    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
 
-    # Process list of entries in order to update menus, nodes and
-    # cross references. Since we are verifying entry status before
-    # remove the we cannot update the information in the same loop we
-    # remove files. This would modify some file before be removed and
-    # that would stop script execution. Similary, if we do update
-    # menus, nodes and cross references before removing files it would
-    # be needed to remove farther status verification in order for the
-    # script to continue its execution. Thereby, I can't see a
-    # different way but removing files first using status verification
-    # and later go through entries list again to update menus, nodes
-    # and cross references in remaining files.
-    for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
+    # Verify existence of documentation entry before deleting it. We
+    # cannot delete an entry which doesn't exist.
+    cli_checkFiles "$MANUAL_ENTRY"
 
-        # Skip all directories, they are not documentation entries on
-        # themselves. Use documentation entries only.
-        if [[ ! $MANUAL_ENTRY =~ "\.${MANUAL_EXTENSION}$" ]];then
-            continue
-        fi
+    # Remove manual, chapter or section based on documentation entry
+    # provided as non-option argument to `centos-art.sh' script.  
+    if [[ ${MANUAL_SECN[$MANUAL_DOCENTRY_ID]} != '' ]];then
 
-        # Update menu and node definitions from manual sections to
-        # reflect the changes.
-        ${FLAG_BACKEND}_updateSectionMenu "remove-entry"
-        ${FLAG_BACKEND}_updateSectionNodes
+        # When a section is deleted, documentation entry points to a
+        # section name. In this configuration, documentation entry is
+        # deleted through subversion in order to register the change.
+        # Once the documentation entry is deleted, the section menu
+        # and nodes definition files are updated to keep manual in a
+        # consistent state.
+        ${FLAG_BACKEND}_deleteEntrySection
 
-        # Update cross reference definitions from manual to reflect
-        # the changes.
-        ${FLAG_BACKEND}_deleteCrossReferences $MANUAL_ENTRY
+    elif [[ ${MANUAL_CHAN[$MANUAL_DOCENTRY_ID]} != '' ]];then
 
-    done
- 
+        # When a chapter is deleted, documentation entry doesn't point
+        # to a section name but a chapter name. In this configuration,
+        # it is necessary to build a list of all the section entries
+        # available inside the chapter before deleting it. Once the
+        # chapter has been marked for deletion, it is time to update
+        # chapter definition files and later section definition files
+        # using the list of section entries previously defined.
+        # Actualization of section definition files must be done one
+        # at a time because menu entries related to section
+        # definitions are updated one at a time.
+        ${FLAG_BACKEND}_deleteEntryChapter
+
+    elif [[ ${MANUAL_DIRN[$MANUAL_DOCENTRY_ID]} != '' ]];then
+
+        # When a manual is deleted, documentation entry doesnt' point
+        # to either a section or chapter but a manual name only. In
+        # this configuration the entire manual directory is marked for
+        # deletion, and that way processed.
+        ${FLAG_BACKEND}_deleteEntryManual
+
+    else
+        cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
+    fi
+
+
 }

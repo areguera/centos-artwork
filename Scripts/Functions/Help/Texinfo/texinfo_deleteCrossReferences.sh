@@ -42,7 +42,7 @@ function texinfo_deleteCrossReferences {
     fi
 
     # Build the node string using entry location.
-    local NODE=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")
+    local NODE="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")"
 
     # Define regular expression patterns for texinfo cross reference
     # commands.
@@ -75,23 +75,11 @@ function texinfo_deleteCrossReferences {
     # command to add a newline to the pattern space, the s command to
     # make the pattern replacement using the `g' flag to make it
     # global and finaly the command `b' to branch label named `a'.
-    #
-    # Inside the pattern space, the `\<' and `\>' are used to restrict
-    # the match pattern to a word boundary. The word boundary
-    # restriction applied here is required to avoid undesired
-    # replacements when we replace singular words with their plurals.
-    # For example, if we need to change the word `Manual' to its
-    # plular (i.e., `Manuals'), and no boundary restriction is used in
-    # the pattern space to do that, we might end up having words like
-    # `Manualsssss'. This is because this sed command might be applied
-    # to the same file many times; and each time it is applied a new
-    # `Manuals' replaces the previous `Manuals' replacement to form
-    # `Manualss', `Manualsss', and so on for each interaction.
-    sed -r -i ":a;N;s!\<${PATTERN[0]}\>!${REPLACE[0]}!g;ba" ${MANUAL_ENTRIES}
+    sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${MANUAL_ENTRIES}
 
     # Update menu-related cross references. Menu-related cross
     # references hardly appear in more than one line, so there is no
     # need to complicate much the replacement command.
-    sed -r -i "s!\<${PATTERN[1]}\>!${REPLACE[1]}!" ${MANUAL_ENTRIES}
+    sed -r -i "s!${PATTERN[1]}!${REPLACE[1]}!" ${MANUAL_ENTRIES}
 
 }

@@ -41,13 +41,13 @@ function texinfo_updateChapterMenu {
     # Re-defined menu of chapters based on action.
     case $ACTION in
 
-        'remove-entry' )
+        --delete-entry )
             # Remove chapter from menu.
             MENUCHAPTERS=$(echo "${MENUCHAPTERS}" \
                 | egrep -v '^\* '"${MANUAL_CHAPTER_NAME}"'::[[:print:]]*$')
             ;;
 
-        'update-entry' | * )
+        --add-entry | * )
             # Update chapter menu using texinfo format. Be sure the
             # chapter node itself is not included here, that would
             # duplicate it inside the menu definition file which end

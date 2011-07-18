@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# texinfo_getNode.sh -- This function cleans up the action value
-# (ACTIONVAL) directory to make a node name from it.
+# texinfo_deleteEntrySection.sh -- This function standardized section
+# deletion inside the manual structure.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,25 +23,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_getNode {
+function texinfo_deleteEntrySection {
 
-    # Define documentation entry.
-    local MANUAL_ENTRY="$1"
+    # Remove documentation entry using subversion to register the
+    # change.
+    svn del $MANUAL_ENTRY --quiet
 
-    # Verify documentation entry.
-    if [[ $MANUAL_ENTRY == '' ]];then
-        cli_printMessage "`gettext "The first positional parameter cannot be empty."`" --as-error-line
-    fi
-
-    # Define node from documentation entry.
-    local NODE=$(echo "$MANUAL_ENTRY" | sed -r \
-        -e "s!^${MANUAL_BASEDIR_L10N}/!!" \
-        -e "s/(chapter-intro\.${MANUAL_EXTENSION}|\.${MANUAL_EXTENSION})$//" \
-        -e 's!(/|-)! !g' \
-        -e 's! ([[:alpha:]])! \u\1!g' \
-        -e 's!^[[:space:]]+!!')
-
-    echo "$NODE"
+    # Update section menu, nodes and cross references.
+    ${FLAG_BACKEND}_updateStructureSection "${MANUAL_ENTRY}" --delete
 
 }
-

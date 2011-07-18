@@ -2,11 +2,11 @@
 #
 # texinfo_updateSectionMenu.sh -- This function updates the section's
 # menu definition file of a chapter.  If this function is called with
-# the 'remove-entry' string as first argument, the menu line related
+# the '--delete-entry' string as first argument, the menu line related
 # to the entry being processed is removed. Otherwise, if this function
-# is called with the 'update-entry' string as first argument, the menu
+# is called with the '--add-entry' string as first argument, the menu
 # line related to the entry being processed is added to menu's bottom.
-# If no argument is passed to this function, the 'update-entry' action
+# If no argument is passed to this function, the '--add-entry' action
 # is assumed.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
@@ -40,7 +40,7 @@ function texinfo_updateSectionMenu {
 
     # Define menu entry using texinfo style and node information as
     # reference.
-    local MENULINE="* ${MANUAL_CHAPTER_NAME} ${MENUNODE}::" 
+    local MENULINE="* ${MENUNODE}::" 
 
     # Retrive list of menu entries from chapter menu and exclude
     # `@menu', `@end menu' and empty lines from output.
@@ -51,12 +51,12 @@ function texinfo_updateSectionMenu {
     # function as first positional parameter.
     case $ACTION in
 
-        'remove-entry' )
+        --delete-entry )
             # Remove menu entry from chapter menu.
             MENU=$(echo "$MENU" | egrep -v "$MENULINE")
             ;;
 
-        'update-entry' | * )
+        --add-entry | * )
             # Add menu entry to chapter menu list as last entry.
             MENU="$MENU
             $MENULINE"
@@ -64,19 +64,16 @@ function texinfo_updateSectionMenu {
 
     esac
 
-    # Remove empty lines from chapter menu entries. Don't order
-    # alphabetically.  That would suppress the idea of putting the
-    # last entry added as last entry in the chapter menu entries.
-    MENU=$(echo "$MENU" | egrep -v '^[[:space:]]*$')
-
     # Rebuild list of chapter menu entries including '@menu' and '@end
     # menu' lines back into chapter menu.
     MENU="@menu
     $MENU
     @end menu"
 
-    # Remove opening spaces/tabs from final menu structure.
-    MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g')
+    # Remove opening spaces/tabs and empty lines from final menu
+    # structure.
+    MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g' \
+        | egrep -v '^[[:space:]]*$')
 
     # Dump chapter menu entries back into chapter's menu definition
     # file.

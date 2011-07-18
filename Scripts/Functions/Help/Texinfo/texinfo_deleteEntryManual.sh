@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# texinfo_deleteEntryManual.sh -- This function standardized manual
+# deletion inside the working copy.
+#
+# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+# ----------------------------------------------------------------------
+# $Id$
+# ----------------------------------------------------------------------
+
+function texinfo_deleteEntryManual {
+
+    # Remove locale-specific documentation manual directory from the
+    # working copy. Using subversion to register the change. Be sure
+    # that related output files are removed too.
+    svn del ${MANUAL_BASEDIR_L10N} --quiet --force
+
+    # Verify manual base directory. When the locale-specific
+    # documentaion manual is the last one inside the manual base
+    # directory, remove the manual base directory from the working
+    # copy.  There is no need to have an empty manual base directories
+    # inside the working copy.
+    if [[ $(ls -1 $MANUAL_BASEDIR | wc -l) -le 1 ]];then
+
+        # Remove manual base directory.
+        svn del ${MANUAL_BASEDIR} --quiet
+
+        # Commit changes from working copy to central repository only.
+        # At this point, changes in the repository are not merged in
+        # the working copy, but chages in the working copy do are
+        # committed up to repository.
+        cli_commitRepoChanges ${MANUAL_BASEDIR}
+
+    else
+
+        # Commit changes from working copy to central repository only.
+        # At this point, changes in the repository are not merged in
+        # the working copy, but chages in the working copy do are
+        # committed up to repository.
+        cli_commitRepoChanges ${MANUAL_BASEDIR_L10N}
+
+    fi
+
+    # Terminate script execution here. The documentation manual has
+    # been removed and there is nothing else to do here.
+    exit
+
+}

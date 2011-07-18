@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 # texinfo_updateStructureSection.sh -- This function looks for all
-# documentation entry (section) files inside manual's base directory and
-# updates menu, nodes and cross references for them.
+# documentation entry (section) files inside manual's base directory
+# and updates menu, nodes and cross references definitions for them
+# all, one at a time.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -29,13 +30,47 @@ function texinfo_updateStructureSection {
     local PATTERN=''
     local MANUAL_ENTRY=''
     local MANUAL_ENTRIES=''
+    local ACTIONNAM_SECMENU=''
+    local ACTIONNAM_CROSREF=''
 
     # Define find's regular expression pattern.
-    if [[ $1 != '' ]];then
+    if [[ "$1" != '' ]];then
         PATTERN="$1"
     else
         PATTERN=".+\.${MANUAL_EXTENSION}"
     fi
+
+    # Define action to perform on definitions.
+    case "$2" in 
+
+        --delete )
+
+            # Remove menu and node definitions for sections inside
+            # manual, in order to reflect the changes.
+            ACTIONNAM_SECMENU='updateSectionMenu --delete-entry'
+
+            # Remove cross reference definitions inside manual
+            # structure.
+            ACTIONNAM_CROSREF='deleteCrossReferences'
+            ;;
+
+        --update | * )
+
+            # Update menu and node definitions for sections inside
+            # manual, in order to reflect the changes.
+            ACTIONNAM_SECMENU='updateSectionMenu --add-entry'
+
+            # Resotre cross reference definitions inside manual
+            # structure.  If a documentation entry has been removed by
+            # mistake and that mistake is later fixed by adding the
+            # removed documentation entry back into the manual
+            # structure, it is necessary to rebuild the missing cross
+            # reference information inside the manual structure in
+            # order to reactivate the removed cross refereces, as
+            # well.
+            ACTIONNAM_CROSREF='restoreCrossReferences'
+            ;;
+    esac
 
     # Define list of target documentation entries using find's regular
     # expression pattern as reference. This is required in order to
@@ -68,21 +103,8 @@ function texinfo_updateStructureSection {
     # documentation entry files, it is also needed to update menu,
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
-
-        # Update menu and node definitions for sections inside manual
-        # in order to reflect the changes.
-        ${FLAG_BACKEND}_updateSectionMenu
+        ${FLAG_BACKEND}_${ACTIONNAM_SECMENU}
         ${FLAG_BACKEND}_updateSectionNodes
-
-        # Resotre cross reference definitions inside manual structure.
-        # If a documentation entry has been removed by mistake and
-        # that mistake is later fixed by adding the removed
-        # documentation entry back into the manual structure, it is
-        # necessary to rebuild the missing cross reference information
-        # inside the manual structure in order to reactivate the
-        # removed cross refereces, as well.
-        ${FLAG_BACKEND}_restoreCrossReferences $MANUAL_ENTRY
-
+        ${FLAG_BACKEND}_${ACTIONNAM_CROSREF} ${MANUAL_ENTRY}
     done
-
 }
