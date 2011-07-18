@@ -112,12 +112,16 @@ function texinfo_updateSectionNodes {
 
         # Replace node, section and concept index definitions already
         # defined with node, section and concept index translation
-        # markers. Otherwise, incorrect sectioning may happen.
+        # markers. Otherwise, incorrect sectioning may happen. Take
+        # care with index definitions, more than one index definition
+        # might be found in the section file but only the first
+        # concept index entry (i.e., `cindex') will be updated, the
+        # rest will remain as they are.
         sed -i -r \
-            -e '/@node/c@node =NODE=' \
-            -e '/@section/c@section =SECT=' \
-            -e '/@cindex/c@cindex =CIND=' \
-            "${MANUAL_BASEDIR_L10N}/$INCL"
+            -e '/^@node/c@node =NODE=' \
+            -e '/^@section/c@section =SECT=' \
+            -e '0,/^@cindex/c@cindex =CIND=' \
+            "${MANUAL_BASEDIR_L10N}/$INCL" 
 
         # Expand noce, section and concept index translation
         # markers in documentation entry.
