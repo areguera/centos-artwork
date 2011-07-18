@@ -28,13 +28,6 @@ function texinfo_deleteEntry {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Print action message.
-    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
-
-    # Verify existence of documentation entry before deleting it. We
-    # cannot delete an entry which doesn't exist.
-    cli_checkFiles "$MANUAL_ENTRY"
-
     # Remove manual, chapter or section based on documentation entry
     # provided as non-option argument to `centos-art.sh' script.  
     if [[ ${MANUAL_SECN[$MANUAL_DOCENTRY_ID]} != '' ]];then

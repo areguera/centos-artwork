@@ -25,6 +25,13 @@
 
 function texinfo_deleteEntryChapter {
 
+    # Print action message.
+    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
+
+    # Verify existence of documentation entry before deleting it. We
+    # cannot delete an entry which doesn't exist.
+    cli_checkFiles "$MANUAL_ENTRY"
+
     # Build list of section entries inside the chapter. This is
     # required to delete cross references from other section entries
     # that point to section entries inside the chapter that will be
@@ -32,6 +39,9 @@ function texinfo_deleteEntryChapter {
     local MANUAL_ENTRIES=$(cli_getFilesList $MANUAL_CHAPTER_DIR \
         --pattern=".+\.${MANUAL_EXTENSION}" \
         | egrep -v '/chapter')
+
+    # Revert pending changes before deleting.
+    svn revert ${MANUAL_CHAPTER_DIR} --quiet --recursive
 
     # Remove chapter directory using subversion to register the
     # change.

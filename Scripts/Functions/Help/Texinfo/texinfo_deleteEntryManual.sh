@@ -25,6 +25,16 @@
 
 function texinfo_deleteEntryManual {
 
+    # Print action message.
+    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
+
+    # Verify existence of documentation entry before deleting it. We
+    # cannot delete an entry which doesn't exist.
+    cli_checkFiles "$MANUAL_ENTRY"
+
+    # Revert pending changes before deleting.
+    svn revert ${MANUAL_BASEDIR_L10N} --quiet --recursive
+
     # Remove locale-specific documentation manual directory from the
     # working copy. Using subversion to register the change. Be sure
     # that related output files are removed too.
