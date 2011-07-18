@@ -90,14 +90,14 @@ function texinfo_createStructure {
     # no file exists (e.g., a new language-specific manual is being
     # created), use texinfo templates for it.
     for FILE in $FILES;do
-        if [[ ! -f ${MANUAL_BASEDIR}/$(basename ${FILE}) ]];then
+        if [[ ! -f ${MANUAL_BASEDIR_L10N}/$(basename ${FILE}) ]];then
 
             # Be sure the file is inside the working copy and under
             # version control. 
             cli_checkFiles ${FILE} -wn
 
             # Define target file.
-            local DST=${MANUAL_BASEDIR}/$(basename ${FILE} \
+            local DST=${MANUAL_BASEDIR_L10N}/$(basename ${FILE} \
                 | sed -r "s!manual!${MANUAL_NAME}!")
 
             # Copy using subversion to register this action.
