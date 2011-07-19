@@ -30,26 +30,6 @@ function texinfo {
     # Define file extension used by source files inside manuals.
     MANUAL_EXTENSION='texinfo'
 
-    # Verify existence of action names. When no action name is
-    # provided to centos-art.sh script, read manual's output in info
-    # format in order to provide a way for people to get oriented
-    # about The CentOS Artwork Repository and its automation tool, the
-    # centos-art.sh script. Be sure the manual's output file does
-    # exist and terminate the script execution once the reading is
-    # done.
-    if [[ $ACTIONNAM == '' ]];then
-
-        # Verify existence of manual's output in info format.
-        cli_checkFiles ${MANUAL_BASEFILE}.info.bz2
-
-        # Read Top node from manual's output in info format.
-        /usr/bin/info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
-
-        # Terminate script execution right here.
-        exit
-
-    fi
-
     # Define absolute path to chapter's directory. This is the place
     # where chapter-specific files are stored in.
     MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR_L10N}/$(cli_getRepoName \
@@ -76,9 +56,9 @@ function texinfo {
     # Initialize document structure of new manuals.
     ${FLAG_BACKEND}_createStructure
 
-    # Define documentation entry. To build the documentation entry, we
-    # combine the manual's name, the chapter's name and the section
-    # name retrived from the command-line.
+    # Define documentation entry default values. To build the
+    # documentation entry, we combine the manual's name, the chapter's
+    # name and the section name retrived from the command-line.
     if [[ $MANUAL_CHAPTER_NAME == '' ]];then
 
         # When chapter option is not provided, discard the section
@@ -107,46 +87,65 @@ function texinfo {
         cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
     fi
 
-    # Execute action names. Notice that we've separated action name
-    # execution in order to control and save the differences among
-    # them. For example, there are action names that need a fixed
-    # amount of non-option arguments (e.g., when we rename or copy
-    # documentation entries); but there are other action names that
-    # have no restriction in the amount of non-option arguments that
-    # can be provided to it (e.g., when we edit, read or delete
-    # documentation entries).
-    if [[ $ACTIONNAM =~ "^(copy|rename)Entry$" ]];then
+    # Execute action names. Notice that we've separated execution of
+    # action names in order to control and save differences among
+    # them.
+    if [[ $ACTIONNAM == "" ]];then
 
-        # Execute backend action names that may need to use more than
-        # one action value.
-        ${FLAG_BACKEND}_${ACTIONNAM}
+        # When no action name is provided to `centos-art.sh' script,
+        # read manual's output in info format in order to provide a
+        # way for people to get oriented about The CentOS Artwork
+        # Repository and its automation tool, the centos-art.sh
+        # script. Be sure the manual's output file does exist and
+        # terminate the script execution once the reading is done.
 
-        # Rebuild output files to propagate recent changes.
+        # Update manual's info output format.
         ${FLAG_BACKEND}_updateOutputFiles
-
-        # Commit changes from working copy to central repository only.
-        # At this point, changes in the repository are not merged in
-        # the working copy, but chages in the working copy do are
-        # committed up to repository.
-        cli_commitRepoChanges ${MANUAL_BASEDIR}
+            
+        # Read Top node from manual's info output format.
+        info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
 
         # Terminate script execution right here.
         exit
 
-    elif [[ $ACTIONNAM =~ "^(searchIndex|updateOutputFiles)$" ]];then
+    elif [[ $ACTIONNAM =~ "^(copy|rename)Entry$" ]];then
 
-        # Execute backend action names which don't require non-option
-        # arguments to be passed at all, in order for them to do their
-        # work.
+        # Both `--copy' and `--rename' actions interpret non-option
+        # arguments passed to `centos-art.sh' script in a special way.
+        # In this configuration, only two non-option arguments are
+        # used and interpreted from the first loop of their
+        # interpretation.
         ${FLAG_BACKEND}_${ACTIONNAM}
 
-        # Terminate script execution right here.
+        # Break interpretation of non-option arguments, to prevent the
+        # second non-option argument from be considered a source
+        # location.
+        break
+
+    elif [[ $ACTIONNAM =~ "^(search(Node|Index)|updateOutputFiles)$" ]];then
+
+        # The two final actions of help functionality are precisely to
+        # update manual output files and commit all changes from
+        # working copy to central repository. In this situation, when
+        # the `--update' action name is provided to `centos-art.sh',
+        # don't duplicate the rendition of manual output files (e.g.,
+        # one as action name and another as help's normal execution
+        # flow) nor commit any change form working copy to central
+        # repository (e.g., output files are not under version
+        # control).
+        ${FLAG_BACKEND}_${ACTIONNAM}
+
+        # Terminate script execution right here. Actions realized in
+        # this configuration doesn't need to update manual output
+        # files, nor commit changes from working copy up to central
+        # repository.
         exit
 
     else
 
-        # Execute action name on documentation entry.
-        ${FLAG_BACKEND}_$ACTIONNAM
+        # Execute action names that follow help's execution flow as it
+        # is, without any modification.
+        ${FLAG_BACKEND}_${ACTIONNAM}
 
     fi
 

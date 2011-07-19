@@ -32,47 +32,14 @@ function texinfo_copyEntry {
     local MANUAL_ENTRY=''
     local MANUAL_ENTRIES=''
 
-    # Define both source and target documentation entries. To build
-    # the source and target documentation entries we take into
-    # consideration the manual's main definition file, the chapter's
-    # main definition file and non-option arguments passed to
-    # centos-art.sh script through the command-line.
+    # Execute copying action based on documentation entries passed as
+    # non-option arguments to `centos-art.sh' script in the
+    # command-line.
     if [[ ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]} != '' ]];then
 
-        if [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
-
-            # When the section name is specified both in first and
-            # second non-option arguments, source and target are set
-            # as specified in first and second non-option arguments
-            # respectively.
-
-            # Define documentation entry source's location.
-            MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
-
-            # Define documentation entry target's location.
-            MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]})
-
-        elif [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} == '' ]] \
-            && [[ ${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
-
-            # When the section name is specified only in the first
-            # non-option argument and the chapter name has been
-            # provided in the second non-option argument, use the
-            # section name passed in first argument to build the
-            # section name that will be used as target.
-
-            # Define documentation entry source's location.
-            MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
-
-            # Define documentation entry target's location.
-            MANUAL_ENTRY_DST=$(echo $MANUAL_ENTRY_SRC \
-                | sed -r "s!${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}!")
-
-        else
-            cli_printMessage "`gettext "The location provided as target isn't valid."`" --as-error-line
-        fi
-
-        # Copy documentation entry using source and target locations.
+        # In this configuration, the section name is specified in
+        # first non-option argument and optionally in the second
+        # non-option arugment.
         ${FLAG_BACKEND}_copyEntrySection
          
     elif [[ ${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]} != '' ]] \
@@ -82,7 +49,7 @@ function texinfo_copyEntry {
         # neither in first or second non-option argument.  So, we
         # perform a copying action for the chapter directory itself.
         # In this configuration, the whole chapter directory and all
-        # the content inside it is duplicated from source to target.
+        # the content inside are duplicated from source to target.
         ${FLAG_BACKEND}_copyEntryChapter
 
     elif [[ ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != '' ]] \

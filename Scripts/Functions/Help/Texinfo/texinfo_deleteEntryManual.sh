@@ -48,26 +48,8 @@ function texinfo_deleteEntryManual {
     if [[ $(ls -1 $MANUAL_BASEDIR | wc -l) -le 1 ]];then
 
         # Remove manual base directory.
-        svn del ${MANUAL_BASEDIR} --quiet
-
-        # Commit changes from working copy to central repository only.
-        # At this point, changes in the repository are not merged in
-        # the working copy, but chages in the working copy do are
-        # committed up to repository.
-        cli_commitRepoChanges ${MANUAL_BASEDIR}
-
-    else
-
-        # Commit changes from working copy to central repository only.
-        # At this point, changes in the repository are not merged in
-        # the working copy, but chages in the working copy do are
-        # committed up to repository.
-        cli_commitRepoChanges ${MANUAL_BASEDIR_L10N}
+        svn del ${MANUAL_BASEDIR} --quiet --force
 
     fi
-
-    # Terminate script execution here. The documentation manual has
-    # been removed and there is nothing else to do here.
-    exit
 
 }

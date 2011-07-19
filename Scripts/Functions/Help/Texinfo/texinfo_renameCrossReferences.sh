@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# texinfo_renameCrossReferences.sh -- This function replaces a node
-# pattern with a node replacement and updates cross-reference
-# definitions to reflect the changes.
+# texinfo_renameCrossReferences.sh -- This function renames menu,
+# nodes and cross references related to chapters and sections that
+# have been renamed previously.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -26,47 +26,57 @@
 
 function texinfo_renameCrossReferences {
 
-    local MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry "$1")
-    local MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry "$2")
+    local -a PATTERN
+    local -a REPLACE
 
-    # Define node pattern for source documenation entry.
-    local NODE_SRC=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_SRC")
+    # Build source and target node definitions.
+    local NODE_SRC="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_SRC")"
+    local NODE_DST="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_DST")"
 
-    # Define node replacement for target documentation entry.
-    local NODE_DST=$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY_DST")
+    # Define regular expression pattern and its replacement for node
+    # definitions that have been previously removed.
+    PATTERN[0]="--- @strong\{`gettext "Removed"`\}\((pxref|xref|ref):\<${NODE_SRC}\>(.*)\) ---"
+    REPLACE[0]="\@\1{${NODE_DST}\2}"
 
-    # Define list of entries to process.
+    # Define regular expression pattern and its replacement for menu
+    # definitions that have been previously removed.
+    PATTERN[1]="^@comment --- `gettext "Removed"`\(\* \<${NODE_SRC}\>(.*)\) ---$"
+    REPLACE[1]="* ${NODE_DST}\1"
+
+    # Define list of entries to process. This is, all the texinfo
+    # source files the documentation manual is made of.
     local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
         --pattern=".+\.${MANUAL_EXTENSION}")
 
-    # Update node-related cross-references. The node-related cross
-    # reference definition, long ones specially, could require more
-    # than one line to be set. By default, GNU sed does not matches 
-    # newline characters in the pattern space, so we need to make use
-    # of `label' feature and the `N' command in order to build a
-    # pattern space that includes the newline character in it. Here we
-    # use the `a' letter to name the label we use, followed by N
-    # command to add a newline to the pattern space, the s command to
-    # make the pattern replacement using the `g' flag to make it
-    # global and finaly the command `b' to branch label named `a'.
+    # Update node cross references. The node-related cross reference
+    # definition, long ones specially, could require more than one
+    # line to be set. By default, GNU sed does not matches newline
+    # characters in the pattern space, so we need to make use of
+    # `label' feature and the `N' command in order to build a pattern
+    # space that includes the newline character in it. Here we use the
+    # `a' letter to name the label we use, followed by N command to
+    # add a newline to the pattern space, the s command to make the
+    # pattern replacement using the `g' flag to make it global and
+    # finaly the command `b' to branch label named `a'.
     #
     # Inside the pattern space, the `\<' and `\>' are used to restrict
     # the match pattern to a word boundary. The word boundary
     # restriction applied here is required to avoid undesired
     # replacements when we replace singular words with their plurals.
-    # For example, if we need to change the word `Manual' to its
+    # For example, if we need to change the node `Manual' to its
     # plular (i.e., `Manuals'), and no boundary restriction is used in
-    # the pattern space to do that, we might end up having words like
-    # `Manualsssss'. This is because this sed command might be applied
-    # to the same file many times; and each time it is applied a new
-    # `Manuals' replaces the previous `Manuals' replacement to form
-    # `Manualss', `Manualsss', and so on for each interaction.
-    sed -r -i ":a;N;s!\<${NODE_SRC}\>!${NODE_DST}!g;ba" ${MANUAL_ENTRIES}
+    # the pattern space to do that, we might end up having nodes like
+    # `Manualsssss' which probably doesn't exist. This is because this
+    # sed command might be applied to the same file more than once;
+    # and each time it is applied, a new `Manuals' replaces the
+    # previous `Manuals' replacement to form `Manualss', `Manualsss',
+    # and so on for each interaction. Using word boundaries
+    # restrictions prevent such issue from happening.
+    sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${MANUAL_ENTRIES}
 
-    # At this point, source documentation entry has been renamed from
-    # source to target documentation entry, but they are still
-    # commented. So, uncomment them restoring target documentation
-    # entries.
-    ${FLAG_BACKEND}_restoreCrossReferences "${MANUAL_ENTRY_DST}"
+    # Update menu cross references. Menu cross reference definitions
+    # hardly appear in more than one line, so there is no need to
+    # complicate the replacement command.
+    sed -r -i "s!${PATTERN[1]}!${REPLACE[1]}!" ${MANUAL_ENTRIES}
 
 }

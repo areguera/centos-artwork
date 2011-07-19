@@ -74,6 +74,11 @@ function help {
     # Interpret option arguments passed through the command-line.
     ${FUNCNAM}_getOptions
 
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_syncroRepoChanges ${MANUAL_TLDIR}
+
     # Redefine arrays related to documentation entries using
     # non-option arguments passed through the command-line. At this
     # point all options have been removed from ARGUMENTS and
@@ -122,20 +127,6 @@ function help {
         # Define section name.
         MANUAL_SECTION_NAME=${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]}
 
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository. Notice that, because we are processing
-        # non-option arguments one by one, there is no need to
-        # sycronize changes to the same manual time after time
-        # (assuming all documentation entries passed as non-option
-        # arguments refer the same manual directory name).
-        if [[ ${MANUAL_DOCENTRY_ID} -eq 0 \
-            || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
-            ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
-            cli_syncroRepoChanges ${MANUAL_BASEDIR}
-        fi
-
         # Execute backend-specific documentation tasks.
         ${FLAG_BACKEND}
 
@@ -151,6 +142,6 @@ function help {
     # this point, changes in the repository are not merged in the
     # working copy, but chages in the working copy do are committed up
     # to repository.
-    cli_commitRepoChanges ${MANUAL_BASEDIR}
+    cli_commitRepoChanges ${MANUAL_TLDIR}
 
 }

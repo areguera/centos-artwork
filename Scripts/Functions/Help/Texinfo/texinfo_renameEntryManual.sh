@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# texinfo_copyEntryChapter.sh -- This function standardizes
-# duplication of manuals written in texinfo format.
+# texinfo_renameEntryManual.sh -- This function standardizes renaming
+# tasks related to documenation manuals written in texinfo format
+# inside the working copy.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,53 +24,33 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_copyEntryManual {
+function texinfo_renameEntryManual {
 
-    # Define list of chapters inside source manual excluding those
-    # created from template, rendition output and subversion.
-    local MANUAL_CHAPTER=''
-    local MANUAL_CHAPTERS=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
-        --maxdepth=1 --mindepth=1 --type="d" --pattern='.+' \
-        | egrep -v "(Licenses|\.svn|${MANUAL_NAME}-xhtml)$")
+    # Copy section source entry to target location.
+    ${FLAG_BACKEND}_copyEntryManual
+
+    # Delete section source entry.
+    ${FLAG_BACKEND}_deleteEntryManual
+
+    # From this time on, the manual information set so far is no
+    # longer useful. Redefine it to start using the new manual
+    # information instead.
 
     # Redefine manual name using manual name passed to `centos-art.sh'
     # script as second non-option argument.
-    local MANUAL_NAME=${MANUAL_SLFN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    MANUAL_NAME=${MANUAL_SLFN[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # Redefine absolute path to manual directory using manual name
     # passed to `centos-art.sh' script as second non-option argument.
-    local MANUAL_BASEDIR="$(echo $MANUAL_BASEDIR \
+    MANUAL_BASEDIR="$(echo $MANUAL_BASEDIR \
         | sed -r "s!${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]}!")"
 
     # Redefine absolute path to manual directory using manual name
     # passed to `centos-art.sh' script as second non-option argument.
-    local MANUAL_BASEDIR_L10N="${MANUAL_BASEDIR}/${MANUAL_L10N}"
+    MANUAL_BASEDIR_L10N="${MANUAL_BASEDIR}/${MANUAL_L10N}"
 
     # Redefine absolute path to base file using manual name passed to
     # `centos-art.sh' script as second non-option argument.
-    local MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
-
-    # Create manual structure
-    ${FLAG_BACKEND}_createStructure
-
-    # Print action maessage.
-    cli_printMessage "`gettext "Updating chapter menus and nodes inside manual structure."`" --as-response-line
-
-    # Loop through list of chapters.
-    for MANUAL_CHAPTER in ${MANUAL_CHAPTERS};do
-
-        # Copy chapter directory from source to target using
-        # subversion.
-        svn cp ${MANUAL_CHAPTER} ${MANUAL_BASEDIR_L10N} --quiet
-
-        # Define manual chapter name.
-        local MANUAL_CHAPTER_NAME=$(basename ${MANUAL_CHAPTER})
-
-        # Update chapter information inside the manual's texinfo
-        # structure.
-        ${FLAG_BACKEND}_updateChapterMenu
-        ${FLAG_BACKEND}_updateChapterNodes
-
-    done
+    MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
 
 }

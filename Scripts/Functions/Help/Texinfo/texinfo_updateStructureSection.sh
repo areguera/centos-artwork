@@ -40,6 +40,43 @@ function texinfo_updateStructureSection {
         PATTERN=".+\.${MANUAL_EXTENSION}"
     fi
 
+    # Define manual entries based on pattern.
+    if [[ -a $PATTERN ]];then
+
+        # Define list of target documentation entries using find's
+        # regular expression pattern as reference. Notice that, when
+        # wer update section definition files, the files already exist
+        # in the working copy so the pattern can be its absolute path
+        # without any problem. If the pattern is built correctly, it
+        # will match the location and so be returned to build the list
+        # of entries to process. Notice also that, when updating, it
+        # is possible to use a regular expression to match more than
+        # one location and build the list of entries based on such
+        # matching.  In this last configuration, let you to update
+        # menu, nodes and cross references to many section definitions
+        # (i.e., all those section definition file that match the
+        # pattern you specified). 
+        MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
+            --pattern="$PATTERN" | egrep -v "/(${MANUAL_NAME}|chapter)")
+
+    else
+    
+        # Define list of target documentation entries using pattern as
+        # reference. When we delete a section entry from the working
+        # copy, using find to retrive its path isn't useful because
+        # the section definition file has been already removed from
+        # the working copy and even the regex pattern be correctly
+        # formed, the file doesn't exist and by consequence no match
+        # is found.  This issue provokes no section entry to be
+        # removed from menu, nodes and cross references. In order to
+        # solve this, use the pattern value as list of target entries.
+        # Notice that, in this case, the pattern value must be the
+        # absolute path of that section entry removed we want to
+        # update menu, nodes and cross references information for.
+        MANUAL_ENTRIES=$PATTERN
+
+    fi
+
     # Define action to perform on definitions.
     case "$2" in 
 
@@ -70,30 +107,8 @@ function texinfo_updateStructureSection {
             # well.
             ACTIONNAM_CROSREF='restoreCrossReferences'
             ;;
+
     esac
-
-    # Define list of target documentation entries using find's regular
-    # expression pattern as reference. This is required in order to
-    # process non-existent documentation entries (e.g., when they are
-    # created for first time). Otherwise, the list of documentation
-    # entries will be empty an no entry would be processed.
-    if [[ ${PATTERN} =~ '^/.+\.texinfo$' ]];then
-
-        # When the pattern value is an absolute path to a
-        # documentation entry, use that value as only documentation
-        # entry in the list.
-        MANUAL_ENTRIES=${PATTERN}
-
-    else
-
-        # When the pattern value is a regular expression, use
-        # cli_getFilesList to build the list of documentation entries
-        # using it.  Don't include manual or chapter definition files
-        # in this list, it would create documentation entries for them
-        # and that shouldn't happen.
-        MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR} \
-            --pattern="$PATTERN" | egrep -v "/(${MANUAL_NAME}|chapter)")
-    fi
 
     # Print action message.
     cli_printMessage "`gettext "Updating section menus, nodes and cross references."`" --as-response-line
@@ -107,4 +122,5 @@ function texinfo_updateStructureSection {
         ${FLAG_BACKEND}_updateSectionNodes
         ${FLAG_BACKEND}_${ACTIONNAM_CROSREF} ${MANUAL_ENTRY}
     done
+
 }

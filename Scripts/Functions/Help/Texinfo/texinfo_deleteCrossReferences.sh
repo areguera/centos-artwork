@@ -47,7 +47,7 @@ function texinfo_deleteCrossReferences {
     # Define regular expression patterns for texinfo cross reference
     # commands.
     PATTERN[0]="@(pxref|xref|ref)\{(${NODE})\}"
-    PATTERN[1]="^(\* ${NODE}:(.*)?:(.*)?)$"
+    REPLACE[0]='--- @strong{'`gettext "Removed"`'}(\1:\2) ---'
 
     # Define replacement string for missing entries. It is convenient
     # to keep missing entries in documentation for documentation team
@@ -58,8 +58,8 @@ function texinfo_deleteCrossReferences {
     # perform. That's frustrating. Instead, when centos-art.sh script
     # finds a missing cross reference it removes the link and remark
     # the issue for you to act on it.
-    REPLACE[0]='--- @strong{'`gettext "Removed"`'}(\1:\2) ---'
-    REPLACE[1]='@comment --- '`gettext "Removed"`'(\1) ---'
+    PATTERN[1]="^(\* ${NODE}:(.*):(.*))$"
+    REPLACE[1]='\@comment --- '`gettext "Removed"`'(\1) ---'
 
     # Define list of entries to process.
     local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \

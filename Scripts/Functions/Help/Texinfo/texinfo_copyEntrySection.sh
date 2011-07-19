@@ -25,50 +25,79 @@
 
 function texinfo_copyEntrySection {
 
+    # Define absolute path to section source and target locations
+    # based on non-option arguments passed to `centos-art.sh' script.
+    if [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+
+        # When the section name is specified in first and second
+        # non-option arguments, source and target are set as specified
+        # in first and second non-option arguments respectively.
+        MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
+        MANUAL_ENTRY_DST=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]})
+
+    elif [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} == '' ]] \
+        && [[ ${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+
+        # When the section name is specified only in the first
+        # non-option argument and the chapter name has been provided
+        # in the second non-option argument, use the section name
+        # passed in first argument to build the section name that will
+        # be used as target.
+        MANUAL_ENTRY_SRC=$(${FLAG_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
+        MANUAL_ENTRY_DST=$(echo $MANUAL_ENTRY_SRC \
+            | sed -r "s!${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}!")
+
+    else
+        cli_printMessage "`gettext "The location provided as target isn't valid."`" --as-error-line
+    fi
+
     # Verify source and target locations to be sure they are different
     # one another. We cannot copy a source location to itself.
     if [[ $MANUAL_ENTRY_SRC == $MANUAL_ENTRY_DST ]];then
         cli_printMessage "`gettext "The source and target locations cannot be the same."`" --as-error-line
     fi
 
-    # Print separator line.
+    # Print separator line along with action message.
     cli_printMessage '-' --as-separator-line
+    cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
 
-    # Redefine chapter name using chapter name passed to
-    # `centos-art.sh' script as second non-option argument.
-    MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    # Verify existence of source location.
+    if [[ ! -a ${MANUAL_ENTRY_SRC} ]];then
+        cli_printMessage "`gettext "The source location doesn't exist."`" --as-error-line
+    fi
 
-    # Redefine chapter directory to use the chapter provided to
-    # `centos-art.sh' script as second non-option argument. This is
-    # required in order to update the `chapter-menu.texinfo' file on
-    # the target chapter the documentation entry was copied in, not
-    # the source chapter where the documentation entry was taken from.
-    # This is particulary useful when a documentation entry is copied
-    # from one chapter to another different.
-    MANUAL_CHAPTER_DIR=$(dirname ${MANUAL_ENTRY_DST})
-
-    # When we copy sections, the chapter directory where the section
-    # copied will be placed in must exist first. In that sake, verify
-    # the chapter directory of target documentation entry and if it
-    # doesn't exist, create it adding it to version control.
+    # When we copy sections, the target chapter directory where the
+    # source section will be duplicated in, must exist first.  In that
+    # sake, verify the chapter directory of target section entry and
+    # if it doesn't exist, create it adding using subversion.
     if [[ ! -d $(dirname ${MANUAL_ENTRY_DST}) ]];then
         svn mkdir $(dirname ${MANUAL_ENTRY_DST}) --quiet
     fi
 
-    # Copy documentation entry from source to target using subversion.
-    if [[ -a ${MANUAL_ENTRY_SRC} ]];then
-        if [[ ! -a ${MANUAL_ENTRY_DST} ]];then
-            cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
-            svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
-        else
-            cli_printMessage "`gettext "The target location is not valid."`" --as-error-line
-        fi
-    else
-        cli_printMessage "`gettext "The source location is not valid."`" --as-error-line
+    # Verify existence of target location.
+    if [[ -a ${MANUAL_ENTRY_DST} ]];then
+        cli_printMessage "`gettext "The target location already exists."`" --as-error-line
     fi
 
-    # At this point, all copying actions had took place and it is time
-    # to update the document structure.
+    # Copy section entry from source to target using subversion.
+    svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
+
+    # Redefine chapter name using chapter name passed to
+    # `centos-art.sh' script as second non-option argument.
+    local MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+
+    # Redefine chapter directory to use the chapter provided to
+    # `centos-art.sh' script as second non-option argument. This is
+    # required in order to update the `chapter-menu.texinfo' file
+    # inside the target chapter where section entry was copied to, not
+    # the source chapter where the section entry was taken from.  This
+    # is particulary useful section entries are copied from one
+    # chapter into another different.
+    local MANUAL_CHAPTER_DIR=$(dirname ${MANUAL_ENTRY_DST})
+
+    # At this point, all copying actions and chapter related
+    # redefinitions have took place. It is time, then, to update the
+    # document structure using the information collected so far.
     ${FLAG_BACKEND}_updateStructureSection "${MANUAL_ENTRY_DST}"
 
 }

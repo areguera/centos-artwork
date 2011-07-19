@@ -25,15 +25,11 @@
 
 function texinfo_copyEntryChapter {
 
-    # Define documentation entry source's location.
-    local MANUAL_ENTRY_SRC=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
+    # Redefine documentation entry source's location.
+    MANUAL_ENTRY_SRC=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
 
-    # Redefine chapter name using chapter name passed to
-    # `centos-art.sh' script as second non-option argument.
-    local MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
-
-    # Define documentation entry target's location.
-    local MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    # Redefine documentation entry target's location.
+    MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # When we are copying chapters, the source location and the target
     # location must be different in value. They cannot point to the
@@ -45,7 +41,7 @@ function texinfo_copyEntryChapter {
     # When we are copying chapters, document structure actualization
     # needs to be performed against the target chapter not the source
     # one used to create the duplication.  To achieve this goal,
-    # redefine both chapter's directory and chapter's name at this
+    # define both chapter's directory and chapter's name at this
     # point.
     local MANUAL_CHAPTER_DIR=$MANUAL_ENTRY_DST
     local MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
@@ -62,7 +58,7 @@ function texinfo_copyEntryChapter {
     # copied to target chapter. Don't include chapter main definition
     # files.
     local MANUAL_ENTRIES=$(cli_getFilesList $MANUAL_ENTRY_SRC \
-        --pattern="${MANUAL_ENTRY_SRC}.*\.${MANUAL_EXTENSION}" \
+        --pattern="${MANUAL_ENTRY_SRC}/.+\.${MANUAL_EXTENSION}" \
         | egrep -v '/chapter')
 
     # Copy sections from source chapter to target chapter.
@@ -70,13 +66,13 @@ function texinfo_copyEntryChapter {
         svn cp $MANUAL_ENTRY $MANUAL_ENTRY_DST --quiet
     done
 
-    # At this point, all copying actions had took place and it is time
-    # to update the document structure.  Start updating chapter
-    # menu and nodes inside manual structure,
+    # Update section menu, nodes and cross reference definitions
+    # inside target chapter where all section entries were copied to.
+    ${FLAG_BACKEND}_updateStructureSection "${MANUAL_ENTRY_DST}/.+\.${MANUAL_EXTENSION}"
+
+    # Update chapter menu and node definitions inside the manual
+    # structure.
     ${FLAG_BACKEND}_updateChapterMenu
     ${FLAG_BACKEND}_updateChapterNodes
-
-    # and section menu, nodes and cross references later.
-    ${FLAG_BACKEND}_updateStructureSection ".+\.${MANUAL_EXTENSION}"
 
 }

@@ -25,6 +25,13 @@
 
 function texinfo_updateOutputFiles {
 
+    # Verify manual base file. We can update manual outputs only if
+    # its base file exists. For example, we cannot update manual
+    # outputs if the manual has been deleted previously.
+    if [[ ! -a ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} ]];then
+        return
+    fi
+
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 

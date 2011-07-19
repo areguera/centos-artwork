@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# texinfo_searchNode.sh -- This function does a node search inside the
-# info document.
+# texinfo_renameEntrySection.sh -- This function standardizes renaming
+# tasks related to chapter sections inside documentation manuals
+# written in texinfo format.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,22 +24,15 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function texinfo_searchNode {
+function texinfo_renameEntrySection {
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
+    # Copy section source entry to target location.
+    ${FLAG_BACKEND}_copyEntrySection
 
-    # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
+    # Delete section source entry.
+    ${FLAG_BACKEND}_deleteEntrySection
 
-    # Check documentation entry inside documentation structure. If the
-    # documentation entry exits use the info reader to open the info
-    # file at the specified node for reading it on the terminal.
-    # Otherwise, ask the user to create it.
-    if [[ -f "$MANUAL_ENTRY" ]];then
-        info --node="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
-    else
-        ${FLAG_BACKEND}_editEntry
-    fi
+    # Rename menu, nodes and cross references related entries.
+    ${FLAG_BACKEND}_renameCrossReferences
 
 }

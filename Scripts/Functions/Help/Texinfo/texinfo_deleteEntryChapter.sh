@@ -26,11 +26,11 @@
 function texinfo_deleteEntryChapter {
 
     # Print action message.
-    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
+    cli_printMessage "$MANUAL_CHAPTER_DIR" --as-deleting-line
 
     # Verify existence of documentation entry before deleting it. We
     # cannot delete an entry which doesn't exist.
-    cli_checkFiles "$MANUAL_ENTRY"
+    cli_checkFiles "$MANUAL_CHAPTER_DIR"
 
     # Build list of section entries inside the chapter. This is
     # required to delete cross references from other section entries

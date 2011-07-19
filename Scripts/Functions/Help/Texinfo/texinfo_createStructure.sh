@@ -38,13 +38,6 @@ function texinfo_createStructure {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
     fi
 
-    # Initialize first time created variable. Through this variable it
-    # is possible to know when the manual has been created for first
-    # time or not. This variable is used to determine whether to
-    # relize subversion actions or not against the whole manual
-    # directory structure.
-    local MANUAL_FIRSTTIME_CREATED='false'
-
     # Initialize manual's information (e.g., title, subtitle, abstract).
     local MANUAL_TITLE=''
     local MANUAL_SUBTITLE=''
@@ -54,7 +47,6 @@ function texinfo_createStructure {
     # the place where all texinfo documentation manuals is stored in.
     if [[ ! -d ${MANUAL_BASEDIR} ]];then
         svn mkdir ${MANUAL_BASEDIR} --quiet
-        MANUAL_FIRSTTIME_CREATED='true'
     fi
 
     # Create manual's base directory. This is the place where
@@ -117,13 +109,5 @@ function texinfo_createStructure {
 
     # Initialize chapter structure inside the manual.
     ${FLAG_BACKEND}_createStructureChapters
-
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    if [[ ${MANUAL_FIRSTTIME_CREATED} == 'true' ]];then
-        cli_commitRepoChanges ${MANUAL_BASEDIR}
-    fi
 
 }
