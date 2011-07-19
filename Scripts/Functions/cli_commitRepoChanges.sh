@@ -54,12 +54,13 @@ function cli_commitRepoChanges {
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
 
     # Build list of files that have received changes in its versioned
-    # status.  Be sure that ouput files are kept out from this list.
+    # status.  Be sure to keep output files off from this list.
     # Remember, output files are not versioned inside the working
     # copy, so they are not considered for evaluation here. But take
     # care, sometimes output files are in the same format of source
     # files, so we need to differentiate them using their locations.
     for LOCATION in $LOCATIONS;do
+
         if [[ $LOCATION =~ 'trunk/Manuals' ]];then
             STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')"
         elif [[ $LOCATION =~ 'trunk/Identity' ]];then
@@ -69,6 +70,7 @@ function cli_commitRepoChanges {
         else
             STATUSOUT="$(svn status ${LOCATION})"
         fi
+
     done
 
     # Define path fo files considered recent modifications from
