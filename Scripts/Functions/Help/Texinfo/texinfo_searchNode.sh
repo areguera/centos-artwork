@@ -25,20 +25,24 @@
 
 function texinfo_searchNode {
 
+    # Verify documentation entry. If it doesn't exist, ask to create
+    # it.
+    if [[ ! -f "$MANUAL_ENTRY" ]];then
+        ${FLAG_BACKEND}_editEntry
+    fi
+
+    # Verify manual output files. If they don't exist, create them.
+    if [[ ! -f ${MANUAL_BASEFILE}.info.bz2 ]];then
+        ${FLAG_BACKEND}_updateOutputFiles
+    fi
+
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
-    # Check documentation entry inside documentation structure. If the
-    # documentation entry exits use the info reader to open the info
-    # file at the specified node for reading it on the terminal.
-    # Otherwise, ask the user to create it.
-    if [[ -f "$MANUAL_ENTRY" ]];then
-        info --node="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
-    else
-        ${FLAG_BACKEND}_editEntry
-    fi
+    # Use info reader to present manual's info output.
+    info --node="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
 
 }
