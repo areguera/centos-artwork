@@ -32,6 +32,12 @@ function texinfo_renameEntryManual {
     # Delete section source entry.
     ${FLAG_BACKEND}_deleteEntryManual
 
+    # Redefine absolute paths to changed directories.  This is
+    # required in order for `cli_commitRepoChanges' to be aware of
+    # manual source and target locations we've just renamed.
+    MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR} $(echo $MANUAL_BASEDIR \
+        | sed -r "s!${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]}!")"
+
     # From this time on, the manual information set so far is no
     # longer useful. Redefine it to start using the new manual
     # information instead.

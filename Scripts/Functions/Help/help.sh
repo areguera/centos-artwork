@@ -74,11 +74,6 @@ function help {
     # Interpret option arguments passed through the command-line.
     ${FUNCNAM}_getOptions
 
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges ${MANUAL_TLDIR}
-
     # Redefine arrays related to documentation entries using
     # non-option arguments passed through the command-line. At this
     # point all options have been removed from ARGUMENTS and
@@ -116,6 +111,30 @@ function help {
         # texinfo source files.
         MANUAL_BASEDIR_L10N="${MANUAL_BASEDIR}/${MANUAL_L10N}"
 
+        # Define absolute path to changed directories inside the
+        # manual. For example, when a section entry is edited, copied
+        # or renamed inside  the same manual there is only one
+        # aboslute path to changed directory to look for changes, the
+        # one holding the section entry.  However, when a manual entry
+        # is renamed, there are two different locations to look for
+        # changes, the source manual removed and the target manual
+        # added.
+        MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR_L10N}"
+
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository. Notice that, because we are processing
+        # non-option arguments one by one, there is no need to
+        # sycronize changes to the same manual time after time
+        # (assuming all documentation entries passed as non-option
+        # arguments refer the same manual directory name).
+        if [[ ${MANUAL_DOCENTRY_ID} -eq 0 \
+            || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
+            ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
+            cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
+        fi
+
         # Define absolute path to base file. This is the main file
         # name (without extension) we use as reference to build output
         # files in different formats (.info, .pdf, .xml, etc.).
@@ -142,6 +161,6 @@ function help {
     # this point, changes in the repository are not merged in the
     # working copy, but chages in the working copy do are committed up
     # to repository.
-    cli_commitRepoChanges ${MANUAL_TLDIR}
+    cli_commitRepoChanges ${MANUAL_CHANGED_DIRS}
 
 }
