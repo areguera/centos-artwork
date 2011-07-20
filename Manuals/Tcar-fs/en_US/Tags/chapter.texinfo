@@ -1,0 +1,16 @@
+@node Tags
+@chapter The @file{tags} Directory
+@cindex The @file{tags} Directory
+
+@c -- Chapter Introduction
+This directory implements the Subversion's tags concept in a trunk,
+branches, tags repository structure. The @file{tags/} directory
+structure provides frozen branches.  Generally, we use frozen branches
+to make check-points in time for development lines under
+@file{branches/} or @file{trunk/} directory structure.
+
+@c -- Chapter Menu
+@include Tags/chapter-menu.texinfo
+
+@c -- Chapter Nodes
+@include Tags/chapter-nodes.texinfo
