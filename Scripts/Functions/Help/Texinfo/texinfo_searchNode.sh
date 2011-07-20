@@ -43,6 +43,6 @@ function texinfo_searchNode {
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
     # Use info reader to present manual's info output.
-    info --node="$(${FLAG_BACKEND}_getNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
+    info --node="$(${FLAG_BACKEND}_getEntryNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
 
 }

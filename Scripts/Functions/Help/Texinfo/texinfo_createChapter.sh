@@ -38,16 +38,26 @@ function texinfo_createChapter {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
     fi
 
-    # Initialize chapter information (e.g., title).
+    local MANUAL_CHAPTER_NODE=''
     local MANUAL_CHAPTER_TITLE=''
+    local MANUAL_CHAPTER_CIND=''
 
-    # Retrive manual's information from standard input.
-    cli_printMessage "`gettext "Enter chapter's title"`" --as-request-line
+    # Define chapter title asking user for it.
+    cli_printMessage "`gettext "Chapter Title"`" --as-request-line
     read MANUAL_CHAPTER_TITLE
+
+    # Define chapter node using chapter name as reference.
+    MANUAL_CHAPTER_NODE=$(${FLAG_BACKEND}_getEntryNode "$MANUAL_CHAPTER_NAME")
+
+    # Define chapter title based value entered and the style provided.
+    MANUAL_CHAPTER_TITLE=$(${FLAG_BACKEND}_getEntryTitle "$MANUAL_CHAPTER_TITLE")
+
+    # Define chapter concept index using chapter node as reference.
+    MANUAL_CHAPTER_CINDX=$(${FLAG_BACKEND}_getEntryIndex "$MANUAL_CHAPTER_NODE")
 
     # Print action message.
     cli_printMessage "-" --as-separator-line
-    cli_printMessage "`gettext "Creating chapter's files."`" --as-response-line
+    cli_printMessage "`gettext "Creating chapter files."`" --as-response-line
 
     # Define list of template files used to build chapter's main
     # definition files.
@@ -82,8 +92,10 @@ function texinfo_createChapter {
     # fail.
     sed -i -r \
         -e 's/ \// \\\//g' \
-        -e "s/=CHAPTER_NAME=/${MANUAL_CHAPTER_NAME}/" \
+        -e "s/=CHAPTER_NODE=/${MANUAL_CHAPTER_NODE}/" \
         -e "s/=CHAPTER_TITLE=/${MANUAL_CHAPTER_TITLE}/" \
+        -e "s/=CHAPTER_CIND=/${MANUAL_CHAPTER_CIND}/" \
+        -e "s/=CHAPTER_NAME=/${MANUAL_CHAPTER_NAME}/" \
         ${MANUAL_CHAPTER_DIR}/chapter.${MANUAL_EXTENSION}
 
     # Remove content from `chapter-nodes.texinfo' file to start with a
