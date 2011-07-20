@@ -62,13 +62,13 @@ function cli_commitRepoChanges {
     for LOCATION in $LOCATIONS;do
 
         if [[ $LOCATION =~ 'trunk/Manuals' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$') $STATUSOUT"
         elif [[ $LOCATION =~ 'trunk/Identity' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$')"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$') $STATUSOUT"
         elif [[ $LOCATION =~ 'branches/Manuals/Texinfo' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$') $STATUSOUT"
         else
-            STATUSOUT="$(svn status ${LOCATION})"
+            STATUSOUT="$(svn status ${LOCATION}) $STATUSOUT"
         fi
 
     done
