@@ -80,7 +80,7 @@ function locale {
 
         # Verify whether the directory provided can have localization
         # messages or not.
-        if [[ ! $(cli_hasLocalization $ACTIONVAL) == 'true' ]];then
+        if [[ ! $(cli_isLocalized $ACTIONVAL) == 'true' ]];then
             cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
         fi
 

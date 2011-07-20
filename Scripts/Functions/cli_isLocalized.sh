@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_hasLocalization.sh -- This function determines whether a file or
+# cli_isLocalized.sh -- This function determines whether a file or
 # directory can have translation messages or not. This is the way we
 # standardize what locations can be localized and what cannot inside
 # the repository.
@@ -25,13 +25,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_hasLocalization {
+function cli_isLocalized {
 
     local DIR=''
     local -a DIRS
 
     # Initialize default value returned by this function.
-    local HASL10N='false'
+    local LOCALIZED='false'
 
     # Initialize location will use as reference to determine whether
     # it can have translation messages or not.
@@ -60,12 +60,12 @@ function cli_hasLocalization {
     # says otherwise.
     for DIR in ${DIRS[@]};do
         if [[ $LOCATION =~ $DIR ]];then
-            HASL10N='true'
+            LOCALIZED='true'
             break
         fi
     done
 
     # Output final answer to all verifications. 
-    echo "$HASL10N"
+    echo "$LOCALIZED"
 
 }
