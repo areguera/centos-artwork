@@ -62,16 +62,20 @@ function cli_commitRepoChanges {
     for LOCATION in $LOCATIONS;do
 
         if [[ $LOCATION =~ 'trunk/Manuals' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$') $STATUSOUT"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
         elif [[ $LOCATION =~ 'trunk/Identity' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$') $STATUSOUT"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$')\n$STATUSOUT"
         elif [[ $LOCATION =~ 'branches/Manuals/Texinfo' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$') $STATUSOUT"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
         else
-            STATUSOUT="$(svn status ${LOCATION}) $STATUSOUT"
+            STATUSOUT="$(svn status ${LOCATION})\n$STATUSOUT"
         fi
 
     done
+
+    # Sanitate status output. Expand new lines, remove leading spaces
+    # and empty lines.
+    STATUSOUT=$(echo -e "$STATUSOUT" | sed -r 's!^[[:space:]]*!!' | egrep -v '^[[:space:]]*$')
 
     # Define path fo files considered recent modifications from
     # working copy up to central repository.
