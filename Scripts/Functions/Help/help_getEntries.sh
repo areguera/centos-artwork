@@ -40,7 +40,7 @@ function help_getEntries {
         # script.  Default documentation entry defined here points to
         # manual's main definition file, so only the manual's self
         # name and manual's directory name need to be defined here.
-        MANUAL_SLFN[0]='tcar-ug'
+        MANUAL_SLFN[0]='tcar-fs'
         MANUAL_DOCENTRY_COUNT=$(($MANUAL_DOCENTRY_COUNT + 1))
 
     else
@@ -49,29 +49,63 @@ function help_getEntries {
         # as non-option arguments and store them in array variables in
         # order to describe their parts (e.g., manual name, chapter
         # name and section name) that way.  Documentation entries
-        # passed as non-opiton arguments must have the
-        # `MANUAL:CHAPTER:SECTION' format in order to be processed
-        # correctly here. Empty spaces are not permitted. To separate
-        # words, use the minus sign (e.g., hello-world) or cammel case
-        # (e.g., HelloWorld).
+        # passed as non-opiton arguments must be written in either
+        # `MANUAL:CHAPTER:SECTION' or `path/to/dir' formats in order
+        # to be processed correctly here. Empty spaces are not
+        # permitted. To separate words, use the minus sign (e.g.,
+        # hello-world) or cammel case (e.g., HelloWorld).
         for DOCENTRY in $@;do
 
-            # Manual self name.
-            MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
-                | tr '[:upper:]' '[:lower:]')
+            if [[ $DOCENTRY =~ '^([[:alnum:]-]+:){1,3}' ]];then
 
-            # Manual self directory name.
-            MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
+                # When `MANUAL:CHAPTER:SECTION' is used as format to
+                # documentation entry, you can specify the manual,
+                # chapter and section where documentation actions will
+                # take place on.
 
-            # Manual chapter name.
-            MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
+                # Manual self name.
+                MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
+                    | tr '[:upper:]' '[:lower:]')
 
-            # Manual section name.
-            MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -f )
+                # Manual self directory name.
+                MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
+
+                # Manual chapter name.
+                MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
+
+                # Manual section name.
+                MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -f )
+
+            elif [[ $DOCENTRY =~ '^(trunk|branches|tags)' ]];then
+
+                # When `path/to/dir' is used as format to
+                # documentation entry, you cannot specify the manual
+                # chapter or section where documentation actions will
+                # take place on. Instead, they are predefined for you
+                # here. Use this format to document directories inside
+                # your working copy.
+
+                # Manual self name.
+                MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]='tcar-fs'
+
+                # Manual self directory name.
+                MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]='Tcar-fs'
+
+                # Manual chapter name.
+                MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS="/" } { print $1 }' ) -d )
+
+                # Manual section name.
+                MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS="/" } { print $2 }' | tr '/' '-') -f )
+
+            else
+                cli_printMessage "`gettext "The documentation entry provided isn't supported."`" --as-error-line
+            fi
 
             # Increment counting of non-option arguments.
             MANUAL_DOCENTRY_COUNT=$(($MANUAL_DOCENTRY_COUNT + 1))
