@@ -42,8 +42,9 @@ function texinfo_getEntryTitle {
         # In the entire phrase provided, concatenate all words with
         # slash (/) character and remark the fact it is a directory.
         PHRASE=$(echo "${PHRASE}" | sed -r \
-            -e 's/^(Trunk|Branches|Tags)/\l\1/' \
-            -e 's/ /\//g')
+            -e 's/(Trunk|Branches|Tags)/\l\1/' \
+            -e 's/ /\//g' \
+            -e 's/\/([[:alpha:]])/\/\u\1/g')
 
         PHRASE="`eval_gettext "The @file{$PHRASE} Directory"`"
 
