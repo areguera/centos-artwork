@@ -2,8 +2,8 @@
 #
 # cli_isVersioned.sh -- This function determines whether a location is
 # under version control or not. When the location is under version
-# control, this function returns `0'. when the location isn't under
-# version control, this function returns `1'.
+# control, this function returns `true'. when the location isn't under
+# version control, this function returns `false'.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -27,8 +27,15 @@
 
 function cli_isVersioned {
 
-    # Use subversion to determine whether file is under version
-    # control or not.
+    # Use subversion to determine whether the location is under
+    # version control or not.
     svn info $LOCATION &> /dev/null
+
+    # Verify subversion exit status and print output.
+    if [[ $? -eq 0 ]];then
+        echo 'true'
+    else
+        echo 'false'
+    fi
 
 }
