@@ -61,18 +61,18 @@ function cli_commitRepoChanges {
     # files, so we need to differentiate them using their locations.
     for LOCATION in $LOCATIONS;do
 
-        # Process location if it is under version control only.
-        if [[ ! $(cli_isVersioned $LOCATION) ]];then
+        # Don't process location outside of version control.
+        if [[ $(cli_isVersioned $LOCATION) == 'false' ]];then
             continue
         fi
 
         # Process location based on its path information.
-        if [[ $LOCATION =~ 'trunk/Manuals' ]];then
+        if [[ $LOCATION =~ '(trunk/Manuals/Tcar-fs|branches/Manuals/Texinfo)' ]];then
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
+        elif [[ $LOCATION =~ 'trunk/Manuals' ]];then
             STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
         elif [[ $LOCATION =~ 'trunk/Identity' ]];then
             STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$')\n$STATUSOUT"
-        elif [[ $LOCATION =~ 'branches/Manuals/Texinfo' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
         else
             STATUSOUT="$(svn status ${LOCATION})\n$STATUSOUT"
         fi
