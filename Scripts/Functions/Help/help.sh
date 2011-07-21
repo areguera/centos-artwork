@@ -37,6 +37,13 @@ function help {
     # documentation backed used to perform documentation actions.
     local FLAG_BACKEND='texinfo'
 
+    # Initialize the style flag (`--style'). This option lets you to
+    # create chapters and sections in predefined ways. By default,
+    # both chapter and section names are printed with each word
+    # capitalized (e.g., `cap-each-word'). Other values to this option
+    # are `cap-first-only' and `directory'.
+    local FLAG_STYLE='cap-each-word'
+
     # Initialize manual's language.
     local MANUAL_L10N=$(cli_getCurrentLocale)
 
@@ -157,10 +164,9 @@ function help {
     # Rebuild output files to propagate recent changes.
     ${FLAG_BACKEND}_updateOutputFiles
 
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    cli_commitRepoChanges ${MANUAL_CHANGED_DIRS}
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
 
 }

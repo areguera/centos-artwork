@@ -94,7 +94,7 @@ function texinfo_createStructure {
 
             # Copy using subversion to register this action.
             svn cp ${FILE} ${DST} --quiet
-            
+
             # Expand common translation markers inside target file.
             cli_expandTMarkers ${DST}
 
@@ -109,5 +109,8 @@ function texinfo_createStructure {
 
     # Initialize chapter structure inside the manual.
     ${FLAG_BACKEND}_createStructureChapters
+
+    # Redefine absolute path to changed directory.
+    MANUAL_CHANGED_DIRS=${MANUAL_BASEDIR}
 
 }

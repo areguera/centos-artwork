@@ -35,10 +35,13 @@ function texinfo_updateSectionNodes {
     # Build chapter nodes based on chapter menu.
     for NODE in $NODES;do
 
-        NODE=$(echo "${NODE}" | sed -r 's!:! !g')
-        INCL=$(echo "${NODE}" | sed -r 's! !/!' | sed -r 's! !-!g' | sed -r 's!/(.+)!/\L\1!').${MANUAL_EXTENSION}
-        SECT=$(echo "${NODE}" | cut -d' ' -f2- )
-        CIND=$(echo "${SECT}" | sed -r 's!^([[:alpha:]]+) (.+)!\u\1 \L\2!')
+        local NODE=$(echo "${NODE}" | sed -r 's!:! !g')
+        local INCL=$(echo "${NODE}" | sed -r 's! !/!' | sed -r 's! !-!g' | sed -r 's!/(.+)!/\L\1!').${MANUAL_EXTENSION}
+        local SECT=$(echo "${NODE}" | cut -d' ' -f2- )
+        local CIND=$(${FLAG_BACKEND}_getEntryIndex "$SECT")
+
+        # Redefine section value based on style provided.
+        SECT=$(${FLAG_BACKEND}_getEntryTitle "$SECT")
 
         # Create texinfo section file using templates, only if the
         # section file doesn't exist and hasn't been marked for
@@ -123,25 +126,32 @@ function texinfo_updateSectionNodes {
             -e '0,/^@cindex/c@cindex =CIND=' \
             "${MANUAL_BASEDIR_L10N}/$INCL" 
 
-        # Expand noce, section and concept index translation
+        # Before expading node, section and concept index, be sure
+        # that all slash characters (`/') be escaped.  Otherwise, they
+        # might be interpreted as separators and that isn't
+        # desireable in anyway. 
+        NODE=$(echo "$NODE" | sed -r 's/\//\\\//g')
+        SECT=$(echo "$SECT" | sed -r 's/\//\\\//g')
+        CIND=$(echo "$CIND" | sed -r 's/\//\\\//g')
+
+        # Expand node, section and concept index translation
         # markers in documentation entry.
         sed -i -r \
-            -e "s!=NODE=!${NODE}!g" \
-            -e "s!=SECT=!${SECT}!g" \
-            -e "s!=CIND=!${CIND}!g" \
+            -e "s/=NODE=/${NODE}/g" \
+            -e "s/=SECT=/${SECT}/g" \
+            -e "s/=CIND=/${CIND}/g" \
             "${MANUAL_BASEDIR_L10N}/$INCL"
 
-        # Verify existence of chapter-nodes template files. If no
+        # Verify existence of chapter-nodes template file. If no
         # chapter-nodes template is found, stop script execution with
         # an error message. We cannot continue without it.
         cli_checkFiles ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION}
 
-        # Output node information chapter-nodes template file using
-        # the current texinfo menu information.
+        # Expand chapter node inclusion definition.
         cat ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION} \
             | sed -r "s!=INCL=!${INCL}!g"
 
-    # Dump node definitions into document structure.
+    # Dump chapter node definition into manual structure.
     done > $MANUAL_CHAPTER_DIR/chapter-nodes.${MANUAL_EXTENSION}
 
 }

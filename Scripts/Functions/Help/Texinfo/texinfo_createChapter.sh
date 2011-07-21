@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# texinfo_createChapter.sh -- This function creates manual's chapters
-# based on templates.
+# texinfo_createChapter.sh -- This function standardizes chapter
+# creation insdie the manual structure.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -25,11 +25,11 @@
 
 function texinfo_createChapter {
 
-    # Verify chapter's directory inside the manual.  The chapter's
-    # directory is where chapter-specific information (e.g., manual's
-    # sections) are stored in.  If this directory already exist,
-    # assume it was created correctly in the past. Otherwise, prompt
-    # its creation.
+    # Verify chapter directory inside the manual structure.  The
+    # chapter directory is where chapter-specific information (e.g.,
+    # chapter definition files and sections) are stored in.  If this
+    # directory already exist, assume it was created correctly in the
+    # past. Otherwise, request confirmation for creating it.
     if [[ -d $MANUAL_CHAPTER_DIR ]];then
         return
     else
@@ -38,60 +38,62 @@ function texinfo_createChapter {
         cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
     fi
 
+    # Initialize chapter node, chapter index and chapter title.
     local MANUAL_CHAPTER_NODE=''
     local MANUAL_CHAPTER_TITLE=''
     local MANUAL_CHAPTER_CIND=''
 
-    # Define chapter title asking user for it.
+    # Request the user to enter a chapter title.
     cli_printMessage "`gettext "Chapter Title"`" --as-request-line
     read MANUAL_CHAPTER_TITLE
 
-    # Define chapter node using chapter name as reference.
+    # Sanitate chapter node, chapter index and chapter title.
     MANUAL_CHAPTER_NODE=$(${FLAG_BACKEND}_getEntryNode "$MANUAL_CHAPTER_NAME")
-
-    # Define chapter title based value entered and the style provided.
+    MANUAL_CHAPTER_CIND=$(${FLAG_BACKEND}_getEntryIndex "$MANUAL_CHAPTER_TITLE")
     MANUAL_CHAPTER_TITLE=$(${FLAG_BACKEND}_getEntryTitle "$MANUAL_CHAPTER_TITLE")
-
-    # Define chapter concept index using chapter node as reference.
-    MANUAL_CHAPTER_CINDX=$(${FLAG_BACKEND}_getEntryIndex "$MANUAL_CHAPTER_NODE")
 
     # Print action message.
     cli_printMessage "-" --as-separator-line
     cli_printMessage "`gettext "Creating chapter files."`" --as-response-line
 
-    # Define list of template files used to build chapter's main
+    # Define list of template files used to build the chapter main
     # definition files.
     local FILE=''
     local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE_L10N}/Chapters" \
         --maxdepth='1' \
         --pattern="chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}")
 
-    # Create chapter's directory using subversion. This is the place
+    # Create chapter directory using subversion. This is the place
     # where all chapter-specific files will be stored in.
     if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
         svn mkdir ${MANUAL_CHAPTER_DIR} --quiet
     fi
 
-    # Create chapter's files using template files as reference.
+    # Create chapter-specific files using template files as reference.
     for FILE in $FILES;do
 
-        # Verify texinfo templates used as based to build the chapter.
-        # Be sure they are inside the working copy of CentOS Artwork
-        # Repository (-w) and under version control (-n), too.
+        # Verify texinfo templates used as based to build the chapter
+        # structure.  Be sure they are inside the working copy of
+        # The CentOS Artwork Repository (-w) and under version control
+        # (-n), too.
         cli_checkFiles ${FILE} -wn
 
-        # Copy template files into chapter's directory.
+        # Copy template files into the chapter directory.
         svn cp ${FILE} ${MANUAL_CHAPTER_DIR} --quiet
 
     done
 
-    # Expand translation markers inside chapter's main definition
-    # file.  Before expanding chapter information, be sure the slash
-    # (/) character be scaped. Otherwise, if the slashes aren't scape,
-    # they will be interpreted as sed's separator and provoke sed to
-    # fail.
+    # Before expanding chapter information, be sure the slash (/)
+    # character be scaped. Otherwise, if the slashes aren't scape,
+    # they will be interpreted as sed's separator and might provoke
+    # sed to complain.
+    MANUAL_CHAPTER_NODE=$(echo "$MANUAL_CHAPTER_NODE" | sed -r 's/\//\\\//g')
+    MANUAL_CHAPTER_CIND=$(echo "$MANUAL_CHAPTER_CIND" | sed -r 's/\//\\\//g')
+    MANUAL_CHAPTER_TITLE=$(echo "$MANUAL_CHAPTER_TITLE" | sed -r 's/\//\\\//g')
+    MANUAL_CHAPTER_NAME=$(echo "$MANUAL_CHAPTER_NAME" | sed -r 's/\//\\\//g')
+
+    # Expand translation markers inside chapter main definition file.  
     sed -i -r \
-        -e 's/ \// \\\//g' \
         -e "s/=CHAPTER_NODE=/${MANUAL_CHAPTER_NODE}/" \
         -e "s/=CHAPTER_TITLE=/${MANUAL_CHAPTER_TITLE}/" \
         -e "s/=CHAPTER_CIND=/${MANUAL_CHAPTER_CIND}/" \
