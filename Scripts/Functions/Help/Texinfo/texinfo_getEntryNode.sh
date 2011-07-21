@@ -37,9 +37,9 @@ function texinfo_getEntryNode {
     local NODE=$(echo "$MANUAL_ENTRY" | sed -r \
         -e "s!^${MANUAL_BASEDIR_L10N}/!!" \
         -e "s/\.${MANUAL_EXTENSION}$//" \
-        -e "s/chapter//" \
+        -e "s!chapter!!" \
         -e 's!(/|-)! !g' \
-        -e 's!\<([[:alpha:]])\>!\u\1!g' \
+        -e 's!\<([[:alpha:]]+)\>!\u\1!g' \
         -e 's!^[[:space:]]+!!')
 
     echo "$NODE"
