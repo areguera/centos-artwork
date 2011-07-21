@@ -1,0 +1,30 @@
+@node Trunk Identity Fonts
+@section The @file{trunk/Identity/Fonts} Directory
+@cindex Trunk identity fonts
+
+The @file{trunk/Identity/Fonts} directory exists to organize
+typographies used inside @value{TCPCVI} that aren't available on
+@file{/usr/share/fonts} directory.
+
+@image{trunk/Identity/Images/Manuals/Fonts/dejavu-lgc,443pt,,,}
+
+Inside @value{TCPCVI}, the @samp{DejaVu LGC} typography is used as
+default typography in all visual manifestations. The @samp{DejaVu LGC}
+typography comes with @value{TCD} so there is no need to store it in
+@file{trunk/Identity/Fonts} for you to use.
+
+@image{trunk/Identity/Images/Manuals/Fonts/denmark,443pt,,,}
+
+Inside @value{TCPCVI}, the @samp{Denmark} typography is used as base
+to build The CentOS Logo (i.e., the main graphic design that
+connects/identifies all visual manifestations related to The CentOS
+Project). The @samp{Denmark} typography doesn't come with @value{TCD}
+so it is store in @file{trunk/Identity/Fonts} for you to use.
+
+The license information of @samp{Denmark} typography isn't very clear,
+at least not as clear as the one in @samp{DejaVu LGC} typography is.
+Using a typography with a doubtful license might put in risk the
+content produced from it.  To prevent such issues, it would be better
+to move on from @samp{Denmark} typography to another typography (free,
+preferably) that retain the same visual style of @samp{Denmark}, but
+with a clearer copyright and license notice.
