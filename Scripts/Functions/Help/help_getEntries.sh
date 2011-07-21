@@ -97,11 +97,12 @@ function help_getEntries {
 
                 # Manual chapter name.
                 MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS="/" } { print $1 }' ) -d )
+                    $(echo "$DOCENTRY" | gawk 'BEGIN { FS="/" }; { if ( NF >= 1 ) print $1 }' ) -d )
 
                 # Manual section name.
                 MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS="/" } { print $2 }' | tr '/' '-') -f )
+                    $(echo "$DOCENTRY" | gawk 'BEGIN { FS="/" }; { if ( NF >= 2 ) print $0 }' \
+                    | cut -d/ -f2- | tr '/' '-') -f )
 
             else
                 cli_printMessage "`gettext "The documentation entry provided isn't supported."`" --as-error-line
