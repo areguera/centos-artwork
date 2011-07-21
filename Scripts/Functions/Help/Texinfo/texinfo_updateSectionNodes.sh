@@ -37,11 +37,8 @@ function texinfo_updateSectionNodes {
 
         local NODE=$(echo "${NODE}" | sed -r 's!:! !g')
         local INCL=$(echo "${NODE}" | sed -r 's! !/!' | sed -r 's! !-!g' | sed -r 's!/(.+)!/\L\1!').${MANUAL_EXTENSION}
-        local SECT=$(echo "${NODE}" | cut -d' ' -f2- )
-        local CIND=$(${FLAG_BACKEND}_getEntryIndex "$SECT")
-
-        # Redefine section value based on style provided.
-        SECT=$(${FLAG_BACKEND}_getEntryTitle "$SECT")
+        local SECT=$(${FLAG_BACKEND}_getEntryTitle "$NODE")
+        local CIND=$(${FLAG_BACKEND}_getEntryIndex "$NODE")
 
         # Create texinfo section file using templates, only if the
         # section file doesn't exist and hasn't been marked for
