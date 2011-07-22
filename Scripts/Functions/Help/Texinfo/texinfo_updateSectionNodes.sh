@@ -48,24 +48,12 @@ function texinfo_updateSectionNodes {
         if [[ ! -f ${MANUAL_BASEDIR_L10N}/$INCL ]] \
             && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR_L10N}/$INCL) != 'D' ]];then
 
-            # Define absolute path to template assignment file. This
-            # is the file that controls the way texinfo template files
-            # are applied to documentation entries once they have been
-            # created.
-            local CONFFILE="${MANUAL_TEMPLATE}/manual.conf" 
-
-            # Verify existence of configuration file.
-            cli_checkFiles $CONFFILE
-
             # Retrive configuration lines from configuration file. Be
             # sure no line begining with `#' or space remain in the
             # line. Otherwise, it would be difficult to loop through
             # configuration lines.
             local CONFLINE=''
-            local CONFLINES=$(cat ${CONFFILE} \
-                | egrep -v '^#' \
-                | egrep -v '^[[:space:]]*$' \
-                | sed -r 's![[:space:]]*!!g')
+            local CONFLINES=$(cli_getConfigLines "${MANUAL_CONFIG_FILE}" "templates")
 
             # Initialize both left hand side and right hand side
             # configuration values.
