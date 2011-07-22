@@ -28,33 +28,50 @@ function texinfo_getEntryTitle {
     # Initialize phrase we want to transform based on style provided.
     local PHRASE="$1"
 
-    # Verify style provided through `--style' option and transform
-    # the phrase value in accordance with it.
-    if [[ $FLAG_STYLE == 'cap-first-only' ]];then
-
-        # In the entire phrase provided, capitalize the first word
-        # only.
-        PHRASE=$(echo "${PHRASE}" | tr '[:upper:]' '[:lower:]' \
-            | sed -r 's!^([[:alpha:]])!\u\1!')
-
-    elif [[ $FLAG_STYLE == 'directory' ]];then
-
-        # In the entire phrase provided, concatenate all words with
-        # slash (/) character and remark the fact it is a directory.
-        PHRASE=$(echo "${PHRASE}" | sed -r \
-            -e 's/(Trunk|Branches|Tags)/\l\1/' \
-            -e 's/ /\//g' \
-            -e 's/\/([[:alpha:]])/\/\u\1/g')
-
-        PHRASE="@file{$PHRASE}"
-
-    else
-
-        # In the entire phrase provided, capitalize all words.
-        PHRASE=$(echo "${PHRASE}" | tr '[:upper:]' '[:lower:]' \
-            | sed -r 's!\<([[:alpha:]]+)\>!\u\1!g')
-
+    # Define section style. Through this property you can customize
+    # the section title in predefined ways.  By default, section
+    # titles are printed with each word capitalized (`cap-each-word').
+    # Other values to this option are `cap-first-only' (to capitalize
+    # just the first word in the title) or `directory' to transform
+    # each word to a directory path.
+    local MANUAL_SECTION_STYLE=$(cli_getConfigValue "${MANUAL_CONFIG_FILE}" "main" "manual_section_style")
+    if [[ ! $MANUAL_SECTION_STYLE =~ '^(cap-each-word|cap-first-only|directory)$' ]];then
+        MANUAL_SECTION_STYLE='cap-each-word'
     fi
+
+    # Verify section style provided and transform the phrase value in
+    # accordance with it.
+    case $MANUAL_SECTION_STYLE in
+
+        'cap-first-only' )
+
+            # In the entire phrase provided, capitalize the first word
+            # only.
+            PHRASE=$(echo "${PHRASE}" | tr '[:upper:]' '[:lower:]' \
+                | sed -r 's!^([[:alpha:]])!\u\1!')
+            ;;
+
+        'directory' )
+
+            # In the entire phrase provided, concatenate all words
+            # with slash (/) character and remark the fact it is a
+            # directory.
+            PHRASE=$(echo "${PHRASE}" | sed -r \
+                -e 's/(Trunk|Branches|Tags)/\l\1/' \
+                -e 's/ /\//g' \
+                -e 's/\/([[:alpha:]])/\/\u\1/g')
+
+            PHRASE="@file{$PHRASE}"
+            ;;
+
+        'cap-each-word' | * )
+
+            # In the entire phrase provided, capitalize all words.
+            PHRASE=$(echo "${PHRASE}" | tr '[:upper:]' '[:lower:]' \
+                | sed -r 's!\<([[:alpha:]]+)\>!\u\1!g')
+            ;;
+
+    esac
 
     # Output transformed phrase.
     echo "$PHRASE"
