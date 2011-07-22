@@ -1,9 +1,10 @@
 #!/bin/bash
 #
-# texinfo_makeSeeAlso.sh -- This function creates an itemized list
-# of links to refer parent documentation entries. This list of links
-# is expanded wherever the =TEXINFO_SEEALSO= translation marker be
-# placed in the documentation entry.
+# texinfo_makeSeeAlso.sh -- This function creates a menu with all
+# section entries found one or more levels down the current node
+# information.  The texinfo code of this menu is expanded wherever a
+# `@menu...@end menu' definition be found inside a section entry.
+# When no menu definition is found, nothing is expanded.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -27,44 +28,41 @@
 
 function texinfo_makeSeeAlso {
 
-    local FILE="$1"
-    local NODE="$2"
-    local NODECOMP=''
-    local NODECOMPS_TOTAL=''
-    local -a NODECOMPS
-    local SEEALSO_LIST=''
+    local MENU=''
+    local MENUNODES=''
+    local CHILD_ENTRY=''
+    local CHILD_ENTRIES=''
 
-    # Stript out the node information in order to retrive its
-    # components individually.
-    for NODECOMP in $(echo $NODE);do
-        NODECOMPS[((++${#NODECOMPS[*]}))]=$NODECOMP
+    # Initialize section definition absolute path.
+    local MANUAL_ENTRY="$1"
+
+    # Initialize amount of levels the menu is build for. 
+    local LEVELS_DEEP="$2"
+
+    # Define pattern used to build list of child sections. A child
+    # section shares the same path information of its parent with out
+    # file extension. For example, if you have the `identity',
+    # `identity-images' and `identity-images-themes' section entries,
+    # `identity-images' is a child entry of `identity' likewise
+    # `identity-images-themes' is a child entry of `identity-images'.
+    local PATTERN="$(echo $MANUAL_ENTRY | sed -r "s/\.${MANUAL_EXTENSION}$//")"
+
+    # Define list of child entries we'll use as source to build the
+    # menu nodes. Reverse the list output order to print entries in
+    # creation order once they be added to menu definition.
+    local CHILD_ENTRIES=$(cli_getFilesList ${MANUAL_CHAPTER_DIR} \
+        --pattern="${PATTERN}-[[:alnum:]]+\.${MANUAL_EXTENSION}" | sort -r | uniq )
+
+    # Define menu nodes using section entries as reference.
+    for CHILD_ENTRY in $CHILD_ENTRIES;do
+        MENUNODES="* $(${FLAG_BACKEND}_getEntryNode "$CHILD_ENTRY")::\n${MENUNODES}"
     done
 
-    # Define how many components does the node have.
-    local NODECOMPS_TOTAL=$((${#NODECOMPS[*]}))
+    # Define menu using menu nodes.
+    MENU="@menu\n${MENUNODES}@end menu"
 
-    # Define the list content. This list should contain all the parent
-    # documentation entries under the same chapter, using the current
-    # documentation entry as reference. Assuming no parent directory
-    # exist for the current documentation entry, print just one item
-    # with three dots as content so as to let the user deside what the
-    # most appropriate content for this section would be.
-    if [[ $NODECOMPS_TOTAL -gt 2 ]];then
-        SEEALSO_LIST=$(\
-            until [[ ${NODECOMPS_TOTAL} -eq 2 ]];do
-                echo "@item @ref{$NODE" \
-                    | cut -d ' ' -f-"$NODECOMPS_TOTAL" \
-                    | sed -r -e 's!^[:space:]*!\\n!' -e 's!$!}!';
-                NODECOMPS_TOTAL=$(($NODECOMPS_TOTAL - 1))
-            done)
-    else
-        SEEALSO_LIST=$(echo '\n@item @dots{}')
-    fi
-
-    # Define the list type and merge its content.
-    SEEALSO_LIST="$(echo '@itemize'$SEEALSO_LIST'\n@end itemize')"
-
-    # Expand translation marker in the documentation entry.
-    sed -i -e "/=TEXINFO_SEEALSO=/c\\$SEEALSO_LIST" $FILE
-
+    # Expand menu definition using translation marker or menu
+    # definition itself.
+    sed -r -i "/^@menu$/,/^@end menu$/c\\${MENU}" $MANUAL_ENTRY
+    
 }
