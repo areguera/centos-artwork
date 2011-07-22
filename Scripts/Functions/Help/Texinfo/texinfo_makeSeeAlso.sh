@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # texinfo_makeSeeAlso.sh -- This function creates a menu with all
-# section entries found one or more levels down the current node
+# section entries found one level ahead from the current node
 # information.  The texinfo code of this menu is expanded wherever a
 # `@menu...@end menu' definition be found inside a section entry.
 # When no menu definition is found, nothing is expanded.
@@ -35,9 +35,6 @@ function texinfo_makeSeeAlso {
 
     # Initialize section definition absolute path.
     local MANUAL_ENTRY="$1"
-
-    # Initialize amount of levels the menu is build for. 
-    local LEVELS_DEEP="$2"
 
     # Define pattern used to build list of child sections. A child
     # section shares the same path information of its parent with out
