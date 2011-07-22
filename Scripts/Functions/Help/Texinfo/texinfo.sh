@@ -53,7 +53,21 @@ function texinfo {
         MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
     fi
 
-    # Initialize document structure of new manuals.
+    # Define absolute path to manual's configuration file. This is the
+    # file that controls the way texinfo template files are applied to
+    # documentation entries once they have been created as well as the
+    # style and order used for printing sections. There is one default
+    # configuration file inside templates and, optionally, a
+    # manual-specific configuration file.  When manual-specific
+    # configuration file isn't found, the default configuration file
+    # is used instead.
+    if [[ -f ${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.conf ]];then
+        MANUAL_CONFIG_FILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.conf" 
+    else
+        MANUAL_CONFIG_FILE="${MANUAL_TEMPLATE}/manual.conf" 
+    fi
+
+    # Initialize document structure for new manuals.
     ${FLAG_BACKEND}_createStructure
 
     # Define documentation entry default values. To build the
