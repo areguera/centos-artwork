@@ -2,6 +2,61 @@
 @section @file{trunk/Identity/Brushes}
 @cindex Trunk identity brushes
 
-@itemize
-@item ...
-@end itemize
+The @file{trunk/Identity/Brushes} directory exists to organize GIMP
+brushes used inside @value{TCPCVI}. 
+
+A brush is a pixmap or set of pixmaps used for painting through an
+image manipulation program like GIMP.  Inside the repository, we've
+organized brushes in @emph{common brushes} and @emph{theme-specific
+brushes}.  In both cases, brushes are initially created in @file{.xcf}
+format and later exported to any of the brush formats recognized by
+GIMP (e.g., @file{.gbr} or @file{.gih}) using the same name of its
+source file.
+
+In order for brushes to be loaded by GIMP, they must be store
+@file{~/.gimp-2.2/brushes} directory. This location is out of
+@value{TCAR} and doesn't provide version control by itself. To be able
+of using version controlled brushes inside GIMP, we store brush
+related files inside @file{trunk/Identity/Brushes} directory and
+create links to them from @file{~/.gimp-2.2/brushes} directory.
+
+@verbatim
+trunk/Identity/Brushes
+|-- Corporate
+|   `-- symbol.gbr   (file) <-- ~/.gimp-2.2/brushes/corporate-symbol.gbr (link)
+|-- TreeFlower
+|   |-- flower-1.gbr (file) <-- ~/.gimp-2.2/brushes/treeflower-flower-1.gbr (link)
+|   |-- branch-1.gbr (file) <-- ~/.gimp-2.2/brushes/treeflower-branch-1.gbr (link)
+|   |-- branch-2.gbr (file) <-- ~/.gimp-2.2/brushes/treeflower-branch-2.gbr (link)
+|   `-- trunk-1.gbr  (file) <-- ~/.gimp-2.2/brushes/treeflower-trunk-1.gbr  (link)
+`-- Others
+    `-- ...
+@end verbatim
+
+The entire link preparation and maintainance of brushes inside the
+working copy is automated by @code{prepare} functionality of
+@command{centos-art.sh} script.
+
+Inside the working copy, brushes might be created individually in
+different locations, but they all need to be linked from one unique
+location (i.e., @file{~/.gimp-2.2/brushes}).  This configuration may
+provoke brush overlapping if a consistent name convenction is not
+implemented correctly.  In that sake, file names used for brushes
+are combined with the directories they are stored in order to build
+unique identifiers.
+
+Brushes produced with GIMP has a description field associated that is
+shown in the Brushes panel of GIMP.  This description is set when the
+brush is created as @file{.xcf} file and can be updated when it is
+exported either to @file{.gbr} or @file{.gih} format. It wouldn't be
+too useful to have two or more brushes using the same description so,
+we also make description of brush files unique, too. In that sake, use
+the file name as description but without including the file extension
+(e.g., if we have the @file{centos-flame-3.gbr} brush, its description
+would be @code{centos-flame-3}).
+
+More information about GIMP brushes can be found in
+@url{file:///usr/share/gimp/2.0/help/en/index.html,The Gimp Manual},
+specifically in the section related to
+@url{file:///usr/share/gimp/2.0/help/en/gimp-concepts-brushes.html,
+Brushes}.
