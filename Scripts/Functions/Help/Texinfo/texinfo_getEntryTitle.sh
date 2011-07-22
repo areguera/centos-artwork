@@ -46,7 +46,7 @@ function texinfo_getEntryTitle {
             -e 's/ /\//g' \
             -e 's/\/([[:alpha:]])/\/\u\1/g')
 
-        PHRASE="`eval_gettext "The @file{$PHRASE} Directory"`"
+        PHRASE="@file{$PHRASE}"
 
     else
 
