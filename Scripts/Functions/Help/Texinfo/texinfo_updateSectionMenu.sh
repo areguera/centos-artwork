@@ -35,6 +35,19 @@ function texinfo_updateSectionMenu {
     # chapter menu.
     local ACTION="$1"
 
+    # Define section order. Through this property you can customize
+    # the section order inside the manual.  Possible arguments to this
+    # option are `ordered', `reversed', `created'.  From these three
+    # values `created' is used by default (i.e., new menu entries are
+    # added to menu's bottom as last entry.).  Notice that, once
+    # you've sorted the menu using `ordered' or `reversed' values, it
+    # is hard to sort the list back to former creation orders. Go
+    # sorted or not sorted at all.
+    local MANUAL_SECTION_ORDER=$(cli_getConfigValue "${MANUAL_CONFIG_FILE}" "main" "manual_section_order")
+    if [[ ! $MANUAL_SECTION_ORDER =~ '^(created|ordered|reversed)$' ]];then
+        MANUAL_SECTION_ORDER='created'
+    fi
+
     # Build node information used inside chapter menu.
     local MENUNODE=$(${FLAG_BACKEND}_getEntryNode "$MANUAL_ENTRY")
 
@@ -69,13 +82,8 @@ function texinfo_updateSectionMenu {
     MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g' \
         | egrep -v '^[[:space:]]*$')
 
-    # Define order of menu entries based on sort option provided to
-    # `centos-art.sh' script on the command-line. When no sort option
-    # is provided, the menu entry creation order is used as default.
-    # Notice that, once you've sorted the menu, it is hard to sort the
-    # list back to former creation order. Go sorted or not sorted at
-    # all to use creation order.
-    case $FLAG_SORT in
+    # Sort menu entries based on section order property.
+    case $MANUAL_SECTION_ORDER in
 
         'ordered' )
             MENU="$(echo "$MENU" | sort )"
