@@ -6,12 +6,10 @@ The @file{trunk/Identity/Brushes} directory exists to organize GIMP
 brushes used inside @value{TCPCVI}. 
 
 A brush is a pixmap or set of pixmaps used for painting through an
-image manipulation program like GIMP.  Inside the repository, we've
-organized brushes in @emph{common brushes} and @emph{theme-specific
-brushes}.  In both cases, brushes are initially created in @file{.xcf}
-format and later exported to any of the brush formats recognized by
-GIMP (e.g., @file{.gbr} or @file{.gih}) using the same name of its
-source file.
+image manipulation program like GIMP.  Inside the repository, brushes
+are initially created in @file{.xcf} format and later exported to any
+of the brush formats recognized by GIMP (e.g., @file{.gbr} or
+@file{.gih}) using the same name of its source file.
 
 In order for brushes to be loaded by GIMP, they must be store
 @file{~/.gimp-2.2/brushes} directory. This location is out of
