@@ -53,9 +53,9 @@ function texinfo_editEntry {
         # Print action message.
         cli_printMessage "$MANUAL_ENTRY" --as-updating-line
 
-        # Rebuild menu definition set inside section entry using two
-        # levels deep.
-        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY" "2"
+        # Rebuild menu definition set inside section entry using one
+        # level ahead only.
+        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
 
     fi
 

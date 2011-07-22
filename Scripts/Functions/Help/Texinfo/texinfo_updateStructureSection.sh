@@ -114,7 +114,7 @@ function texinfo_updateStructureSection {
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
         ${FLAG_BACKEND}_${ACTIONNAM_SECMENU}
         ${FLAG_BACKEND}_updateSectionNodes
-        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY" "2"
+        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
         ${FLAG_BACKEND}_${ACTIONNAM_CROSREF} ${MANUAL_ENTRY}
     done
 
