@@ -64,6 +64,29 @@ function texinfo_updateSectionMenu {
 
     esac
 
+    # Remove opening spaces/tabs and empty lines from final menu
+    # entries.
+    MENU=$(echo "$MENU" | sed -r 's!^[[:space:]]+!!g' \
+        | egrep -v '^[[:space:]]*$')
+
+    # Define order of menu entries based on sort option provided to
+    # `centos-art.sh' script on the command-line. When no sort option
+    # is provided, the menu entry creation order is used as default.
+    # Notice that, once you've sorted the menu, it is hard to sort the
+    # list back to former creation order. Go sorted or not sorted at
+    # all to use creation order.
+    case $FLAG_SORT in
+
+        'ordered' )
+            MENU="$(echo "$MENU" | sort )"
+            ;;
+
+        'reversed' )
+            MENU="$(echo "$MENU" | sort -r )"
+            ;;
+
+    esac
+
     # Rebuild list of chapter menu entries including '@menu' and '@end
     # menu' lines back into chapter menu.
     MENU="@menu
