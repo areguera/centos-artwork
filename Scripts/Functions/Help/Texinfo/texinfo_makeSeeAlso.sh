@@ -47,9 +47,9 @@ function texinfo_makeSeeAlso {
     # `identity-images-themes' is a child entry of `identity-images'.
     local PATTERN="$(echo $MANUAL_ENTRY | sed -r "s/\.${MANUAL_EXTENSION}$//")"
 
-    # Define list of child entries we'll use as source to build the
-    # menu nodes. Reverse the list output order to print entries in
-    # creation order once they be added to menu definition.
+    # Define list of child entries we'll use as reference to build the
+    # menu nodes. Reverse the output here to produce the correct value
+    # based on menu nodes definition set further.
     local CHILD_ENTRIES=$(cli_getFilesList ${MANUAL_CHAPTER_DIR} \
         --pattern="${PATTERN}-[[:alnum:]]+\.${MANUAL_EXTENSION}" | sort -r | uniq )
 
