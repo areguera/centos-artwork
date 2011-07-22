@@ -30,7 +30,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename,style:,sort:"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -104,16 +104,6 @@ function help_getOptions {
                 shift 1
                 ;;
 
-            --style )
-                FLAG_STYLE="$2"
-                shift 2
-                ;;
-            
-            --sort )
-                FLAG_SORT="$2"
-                shift 2
-                ;;
-            
             -- )
                 # Remove the `--' argument from the list of arguments
                 # in order for processing non-option arguments
