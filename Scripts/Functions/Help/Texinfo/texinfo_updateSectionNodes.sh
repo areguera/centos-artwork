@@ -28,7 +28,7 @@ function texinfo_updateSectionNodes {
 
     # Build list of chapter nodes using entries from chapter menu as
     # reference.
-    local NODES=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION} \
+    local NODES=$(cat $(dirname ${MANUAL_ENTRY})/chapter-menu.${MANUAL_EXTENSION} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
         | egrep -v '^@(end )?menu$' | sed -r 's! !:!g')
 
@@ -137,6 +137,6 @@ function texinfo_updateSectionNodes {
             | sed -r "s!=INCL=!${INCL}!g"
 
     # Dump chapter node definition into manual structure.
-    done > $MANUAL_CHAPTER_DIR/chapter-nodes.${MANUAL_EXTENSION}
+    done > $(dirname ${MANUAL_ENTRY})/chapter-nodes.${MANUAL_EXTENSION}
 
 }
