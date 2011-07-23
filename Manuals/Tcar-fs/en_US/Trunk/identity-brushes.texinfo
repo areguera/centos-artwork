@@ -11,8 +11,8 @@ are initially created in @file{.xcf} format and later exported to any
 of the brush formats recognized by GIMP (e.g., @file{.gbr} or
 @file{.gih}) using the same name of its source file.
 
-In order for brushes to be loaded by GIMP, they must be store in the
-@file{~/.gimp-2.2/brushes} directory. This location is out of
+In order for brushes to be loaded by GIMP, they should be stored in
+the @file{~/.gimp-2.2/brushes} directory. This location is out of
 @value{TCAR} and doesn't provide version control by itself. To be able
 of using version controlled brushes inside GIMP, we store brush
 related files inside @file{trunk/Identity/Brushes} directory and
