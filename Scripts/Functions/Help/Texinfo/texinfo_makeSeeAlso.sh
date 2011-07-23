@@ -36,6 +36,12 @@ function texinfo_makeSeeAlso {
     # Initialize section definition absolute path.
     local MANUAL_ENTRY="$1"
 
+    # Verify section entry. When section entries are deleted, there is
+    # no menu definition to set.
+    if [[ ! -f $MANUAL_ENTRY ]];then
+        return
+    fi
+
     # Define pattern used to build list of child sections. A child
     # section shares the same path information of its parent with out
     # file extension. For example, if you have the `identity',
