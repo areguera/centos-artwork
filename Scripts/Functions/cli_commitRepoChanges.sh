@@ -72,7 +72,7 @@ function cli_commitRepoChanges {
         elif [[ $LOCATION =~ 'trunk/Manuals' ]];then
             STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
         elif [[ $LOCATION =~ 'trunk/Identity' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log|)$')\n$STATUSOUT"
+            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
         else
             STATUSOUT="$(svn status ${LOCATION})\n$STATUSOUT"
         fi
