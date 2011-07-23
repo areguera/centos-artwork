@@ -40,7 +40,8 @@ function help_getEntries {
         # script.  Default documentation entry defined here points to
         # manual's main definition file, so only the manual's self
         # name and manual's directory name need to be defined here.
-        MANUAL_SLFN[0]='tcar-fs'
+        MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]='tcar-fs'
+        MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]='Tcar-fs'
         MANUAL_DOCENTRY_COUNT=$(($MANUAL_DOCENTRY_COUNT + 1))
 
     else
