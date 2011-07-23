@@ -53,13 +53,15 @@ function texinfo_editEntry {
         # Print action message.
         cli_printMessage "$MANUAL_ENTRY" --as-updating-line
 
-        # Rebuild menu definition set inside section entry using one
-        # level ahead only.
+        # Rebuild section menu definitions before editing the
+        # documentation entry. This way, if there is any change in the
+        # section menu definition, it will be visible to you on
+        # edition.
         ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
 
     fi
 
-    # Use default text editor to edit the documentation entry.
-    eval $EDITOR $MANUAL_ENTRY
+    # Use default text editor to write changes on documentation entry.
+    $EDITOR $MANUAL_ENTRY
 
 }
