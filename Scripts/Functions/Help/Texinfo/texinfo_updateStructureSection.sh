@@ -27,8 +27,10 @@
 
 function texinfo_updateStructureSection {
 
-    # Print separator line.
-    cli_printMessage "-" --as-separator-line
+    # Print action message. These actions might consume some time to
+    # finish. The more section entries the regular expression pattern
+    # matches, the more time it will take to finish.
+    cli_printMessage "`gettext "Updating section menus, nodes and cross references"`" --as-banner-line
 
     local PATTERN=''
     local MANUAL_ENTRY=''
@@ -121,36 +123,27 @@ function texinfo_updateStructureSection {
     # the absolute path to that documentation entry which doesn't
     # exist and we want to update menu, nodes and cross references
     # information for.
-    if [[ $MANUAL_ENTRIES == '' ]] && [[ $PATTERN =~ '^[[:alnum:]-./]+$' ]];then
+    if [[ $MANUAL_ENTRIES == '' ]] && [[ $PATTERN =~ '^[[:alnum:]./_-]+$' ]];then
         MANUAL_ENTRIES=${PATTERN}
     fi
 
-    # Verify list of target entries. Assumming it is empty, there is
-    # nothing else to do here but print an error message describing
-    # the fact that no entry was found to process.
+    # Verify list of target entries. Assumming it is still empty,
+    # there is nothing else to do here but printing an error message
+    # describing the fact that no section entry was found to process.
     if [[ $MANUAL_ENTRIES == '' ]];then
         cli_printMessage "`gettext "No section entry found to process."`" --as-error-line
     fi
 
-    # Loop through target documentation entries in order to update
-    # the documentation structure (e.g., It is not enough with copying
+    # Loop through target documentation entries in order to update the
+    # documentation structure (e.g., It is not enough with copying
     # documentation entry files, it is also needed to update menu,
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
-
-        # Print action message. These actions might consume some time
-        # to finish. The more section entries the pattern defined
-        # matches, the more time it takes to finish. To avoid boring
-        # you waiting something to happen out to the screen, the
-        # action message is printed for each section entry processed.
-        cli_printMessage "$MANUAL_ENTRY" --as-updating-line
-
-        # Execute actualization of section structure. 
+        cli_printMessage "${MANUAL_ENTRY}" --as-response-line
         ${FLAG_BACKEND}_${ACTIONNAM_SECMENU}
         ${FLAG_BACKEND}_updateSectionNodes
         ${FLAG_BACKEND}_makeSeeAlso "${MANUAL_ENTRY}"
-        ${FLAG_BACKEND}_${ACTIONNAM_CROSREF} ${MANUAL_ENTRY}
-
+        ${FLAG_BACKEND}_${ACTIONNAM_CROSREF} "${MANUAL_ENTRY}"
     done
 
 }
