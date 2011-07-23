@@ -57,7 +57,7 @@ function texinfo_updateSectionMenu {
 
     # Retrive list of menu entries from chapter menu and exclude
     # `@menu', `@end menu' and empty lines from output.
-    local MENU=$(cat $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION} \
+    local MENU=$(cat $(dirname ${MANUAL_ENTRY})/chapter-menu.${MANUAL_EXTENSION} \
         | egrep -v '^[[:space:]]*$' | egrep -v '^@(end )?menu')
 
     # Re-defined chapter menu entries based on action provided to this
@@ -66,13 +66,13 @@ function texinfo_updateSectionMenu {
 
         --delete-entry )
             # Remove menu entry from chapter menu.
-            MENU=$(echo "$MENU" | egrep -v "$MENULINE")
+            MENU="$(echo "$MENU" | egrep -v "$MENULINE")"
             ;;
 
         --add-entry | * )
             # Add menu entry to chapter menu list as last entry.
-            MENU="$MENU
-            $MENULINE"
+            MENU="$(echo "$MENU" | egrep -v "$MENULINE" )
+                ${MENULINE}"
             ;;
 
     esac
@@ -108,6 +108,6 @@ function texinfo_updateSectionMenu {
 
     # Dump chapter menu entries back into chapter's menu definition
     # file.
-    echo "$MENU" > $MANUAL_CHAPTER_DIR/chapter-menu.${MANUAL_EXTENSION}
+    echo "$MENU" > $(dirname ${MANUAL_ENTRY})/chapter-menu.${MANUAL_EXTENSION}
 
 }
