@@ -3,8 +3,32 @@
 @cindex Trunk identity fonts
 
 The @file{trunk/Identity/Fonts} directory exists to organize
-typographies used inside @value{TCPCVI} that aren't available on
+typographies used inside @value{TCPCVI}. Most fonts stored inside this
+location are TrueType Fonts (@file{.ttf}) that aren't available inside
 @file{/usr/share/fonts} directory.
+
+@c -- describe, in one paragraph, what a font is.
+
+In order for fonts to be available inside programs like GIMP and
+Inkscape, font files should be stored either in
+@file{/usr/share/fonts} or @file{~/.fonts} directory. These locations
+are out of @value{TCAR} and doesn't provide version control by
+themselves. In order for using version controlled fonts inside
+programs like GIMP and Inkscape, we store font related files under
+@file{trunk/Identity/Fonts} directory and create links to them from
+@file{~/.fonts} directory.
+
+@float Example, trunk-identity-fonts-1
+@verbatim
+trunk/Identity/Fonts
+`-- denmark.ttf (file) <-- ~/.fonts/denmark.ttf (link)
+@end verbatim
+@caption{Relation between fonts inside the workstation.}
+@end float
+
+The creation and maintainance of links related to fonts inside the
+working copy are automated by @code{prepare} functionality of
+@command{centos-art.sh} script.
 
 @image{trunk/Identity/Images/Manuals/Fonts/dejavu-lgc,443pt,,,}
 
