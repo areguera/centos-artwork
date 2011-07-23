@@ -26,7 +26,7 @@
 function texinfo_updateOutputFilePlaintext {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-updating-line
+    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-response-line
 
     # Update plaintext output directory.
     /usr/bin/makeinfo --plaintext \

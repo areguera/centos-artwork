@@ -26,7 +26,7 @@
 function texinfo_updateOutputFileInfo {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-updating-line
+    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-response-line
 
     # Update info file.
     /usr/bin/makeinfo --output=${MANUAL_BASEFILE}.info \

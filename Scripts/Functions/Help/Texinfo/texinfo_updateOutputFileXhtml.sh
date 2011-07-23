@@ -25,6 +25,9 @@
 
 function texinfo_updateOutputFileXhtml {
 
+    # Output action message.
+    cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" --as-response-line
+
     # Verify initialization files used by texi2html.
     cli_checkFiles ${MANUAL_TEMPLATE}/manual-init.pl
     cli_checkFiles ${MANUAL_TEMPLATE_L10N}/manual-init.pl
@@ -32,9 +35,6 @@ function texinfo_updateOutputFileXhtml {
     # Verify transformation files used to modify texi2html output.
     cli_checkFiles ${MANUAL_TEMPLATE}/manual.sed
     cli_checkFiles ${MANUAL_TEMPLATE_L10N}/manual.sed
-
-    # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" --as-updating-line
 
     # Redefine manual base file to use just the file base name.
     local MANUAL_BASEFILE=$(basename "$MANUAL_BASEFILE")

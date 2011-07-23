@@ -33,7 +33,7 @@ function texinfo_updateOutputFiles {
     fi
 
     # Print separator line.
-    cli_printMessage '-' --as-separator-line
+    cli_printMessage "`gettext "Updating output files"`" --as-banner-line
 
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce

@@ -26,7 +26,7 @@
 function texinfo_updateOutputFilePdf {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-updating-line
+    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-response-line
 
     # Update plaintext output directory.
     /usr/bin/texi2pdf --quiet \
