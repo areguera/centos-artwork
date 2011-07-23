@@ -101,10 +101,9 @@ function locale {
 
     done
 
-    # Commit changes from working copy to central repository only.  At
-    # this point, changes in the repository are not merged in the
-    # working copy, but chages in the working copy do are committed up
-    # to repository.
-    cli_commitRepoChanges "${L10N_BASEDIR}"
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_syncroRepoChanges "${L10N_BASEDIR}"
 
 }
