@@ -47,7 +47,7 @@ function texinfo_makeSeeAlso {
     # Define list of child entries we'll use as reference to build the
     # menu nodes. Reverse the output here to produce the correct value
     # based on menu nodes definition set further.
-    local CHILD_ENTRIES=$(cli_getFilesList ${MANUAL_CHAPTER_DIR} \
+    local CHILD_ENTRIES=$(cli_getFilesList $(dirname ${MANUAL_ENTRY}) \
         --pattern="${PATTERN}-[[:alnum:]]+\.${MANUAL_EXTENSION}" | sort -r | uniq )
 
     # Define menu nodes using section entries as reference.
