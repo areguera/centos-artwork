@@ -1,0 +1,42 @@
+@node Trunk Identity Images Brands Symbols
+@section @file{trunk/Identity/Images/Brands/Symbols}
+@cindex Trunk identity images brands symbols
+
+The @file{trunk/Identity/Images/Brands/Logos} exists to organize
+images related to The CentOS Logos, in different formats (e.g., PNG,
+JPG, PDF, TIF, XBM, XPM) and dimensions. 
+
+The CentOS Logo is a construction made of The CentOS Symbol and The
+CentOS Type. The CentOS Symbol and The CentOS Logo are the main visual
+manifestations of the organization known as @value{TCPROJ}.  As The
+CentOS Symbol, The CentOS Logo is used to ``brand'' images produced by
+@value{TCPROJ} and provide a visual connection between images so they
+can be monolithically recognized as part of @value{TCPROJ}. The CentOS
+Logo must be exactly the same everytime it is printed out and a route
+to reproduce it in such a way must be available so as to avoid
+reproduction mistakes when images are branded with it.
+
+The @file{trunk/Identity/Images/Brands/Logos} directory and the files
+inside it aren't under version control.
+
+The @file{trunk/Identity/Images/Brands/Logos} directory contains files
+used by the @file{redhat-logos} package, specifically the files inside
+the @file{/usr/share/pixmaps/redhat} directory.
+
+The @file{trunk/Identity/Images/Brands/Logos} directory organizes
+files under directories numerically named (e.g., @file{48}, @file{64},
+@file{128}, etc.).  Inside these directories, image files are stored
+in specific heights and named as
+@file{centos-<something>.<extension>}, where @code{<somthing>}
+describes the file content and @code{<extension>} sets the file
+extension. In all cases, the directory name can be used as reference
+to determine the image height of files stored inside.  For example,
+the directory @file{48} stores image files of 48 pixels height in
+different formats.
+
+Content rendition inside @file{trunk/Identity/Images/Brands/Logos}
+directory takes place through the following command:
+
+@verbatim
+centos-art render trunk/Identity/Images/Brands/Logos --dont-commit-changes
+@end verbatim
