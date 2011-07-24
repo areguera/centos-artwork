@@ -27,6 +27,13 @@
 
 function cli_isVersioned {
 
+    # Initialize absolute path using first positional parameter as
+    # reference.
+    local LOCATION="$1"
+
+    # Verify location to be sure it really exists.
+    cli_checkFiles $LOCATION
+
     # Use subversion to determine whether the location is under
     # version control or not.
     svn info $LOCATION &> /dev/null
