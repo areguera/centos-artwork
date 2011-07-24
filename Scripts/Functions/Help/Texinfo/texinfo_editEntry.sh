@@ -48,6 +48,9 @@ function texinfo_editEntry {
         # changes in order for manual structure to remain cosistent.
         ${FLAG_BACKEND}_updateStructureSection "$MANUAL_ENTRY"
 
+        # Use default text editor to write changes on documentation entry.
+        $EDITOR $MANUAL_ENTRY
+
     else
 
         # Print action message.
@@ -59,9 +62,16 @@ function texinfo_editEntry {
         # edition.
         ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
 
-    fi
+        # Use default text editor to write changes on documentation entry.
+        $EDITOR $MANUAL_ENTRY
 
-    # Use default text editor to write changes on documentation entry.
-    $EDITOR $MANUAL_ENTRY
+        # Rebuild section menu definitions after editing the
+        # documentation entry. This way, if there is any change or
+        # expansion to realize in the section menu definition, it be
+        # applied right now. Don't see a reason for waiting until the
+        # next edition for expansions to happen.
+        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
+
+    fi
 
 }
