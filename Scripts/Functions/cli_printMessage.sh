@@ -41,7 +41,7 @@ function cli_printMessage {
     # Define message horizontal width. This is the max number of
     # horizontal characters the message will use to be displayed on
     # the screen.
-    local MESSAGE_WIDTH=75
+    local MESSAGE_WIDTH=66
 
     # Reverse the codification performed on characters that may affect
     # parsing options and non-option arguments. This codification is
@@ -148,10 +148,10 @@ function cli_printMessage {
             # Define where the error was originated inside the
             # centos-art.sh script. Print out the function name and
             # line from the caller.
-            local ORIGIN="${CLI_PROGRAM} ($(caller 1 | gawk '{ print $2 " " $1 }'))"
+            local ORIGIN="$(caller 1 | gawk '{ print $2 " " $1 }')"
 
             # Build the error message.
-            cli_printMessage "${ORIGIN}: ${MESSAGE}" --as-stderr-line
+            cli_printMessage "${CLI_PROGRAM} (${ORIGIN}): $MESSAGE" --as-stderr-line
             cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
             ;;
 
@@ -207,7 +207,7 @@ function cli_printMessage {
             ;;
 
         --as-stderr-line )
-            echo "$MESSAGE" | fmt --width=${MESSAGE_WIDTH} > /dev/stderr
+            echo "$MESSAGE"
             ;;
 
         * )
