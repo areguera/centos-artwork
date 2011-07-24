@@ -27,10 +27,9 @@
 
 function texinfo_copyEntry {
 
+    # Initialize source and target locations.
     local MANUAL_ENTRY_SRC=''
     local MANUAL_ENTRY_DST=''
-    local MANUAL_ENTRY=''
-    local MANUAL_ENTRIES=''
 
     # Execute copying action based on documentation entries passed as
     # non-option arguments to `centos-art.sh' script in the

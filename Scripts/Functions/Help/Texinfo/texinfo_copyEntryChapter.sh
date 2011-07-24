@@ -31,12 +31,8 @@ function texinfo_copyEntryChapter {
     # Redefine documentation entry target's location.
     MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
 
-    # When we are copying chapters, the source location and the target
-    # location must be different in value. They cannot point to the
-    # same chapter directory.
-    if [[ $MANUAL_ENTRY_SRC == $MANUAL_ENTRY_DST ]];then
-        cli_printMessage "`gettext "The chapter cannot be copied into itself."`" --as-error-line
-    fi
+    # Verify entry source and target locations.
+    ${FLAG_BACKEND}_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
 
     # When we are copying chapters, document structure actualization
     # needs to be performed against the target chapter not the source
@@ -55,8 +51,8 @@ function texinfo_copyEntryChapter {
     ${FLAG_BACKEND}_createChapter
 
     # Create list of sections from source chapter that need to be
-    # copied to target chapter. Don't include chapter main definition
-    # files.
+    # copied to target chapter. Don't include chapter's main
+    # definition files.
     local MANUAL_ENTRIES=$(cli_getFilesList $MANUAL_ENTRY_SRC \
         --pattern="${MANUAL_ENTRY_SRC}/.+\.${MANUAL_EXTENSION}" \
         | egrep -v '/chapter')

@@ -51,33 +51,12 @@ function texinfo_copyEntrySection {
         cli_printMessage "`gettext "The location provided as target isn't valid."`" --as-error-line
     fi
 
-    # Verify source and target locations to be sure they are different
-    # one another. We cannot copy a source location to itself.
-    if [[ $MANUAL_ENTRY_SRC == $MANUAL_ENTRY_DST ]];then
-        cli_printMessage "`gettext "The source and target locations cannot be the same."`" --as-error-line
-    fi
-
     # Print separator line along with action message.
     cli_printMessage '-' --as-separator-line
     cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
 
-    # Verify existence of source location.
-    if [[ ! -a ${MANUAL_ENTRY_SRC} ]];then
-        cli_printMessage "`gettext "The source location doesn't exist."`" --as-error-line
-    fi
-
-    # When we copy sections, the target chapter directory where the
-    # source section will be duplicated in, must exist first.  In that
-    # sake, verify the chapter directory of target section entry and
-    # if it doesn't exist, create it adding using subversion.
-    if [[ ! -d $(dirname ${MANUAL_ENTRY_DST}) ]];then
-        svn mkdir $(dirname ${MANUAL_ENTRY_DST}) --quiet
-    fi
-
-    # Verify existence of target location.
-    if [[ -a ${MANUAL_ENTRY_DST} ]];then
-        cli_printMessage "`gettext "The target location already exists."`" --as-error-line
-    fi
+    # Verify entry source and target locations.
+    ${FLAG_BACKEND}_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
 
     # Copy section entry from source to target using subversion.
     svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
