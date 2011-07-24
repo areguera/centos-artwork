@@ -2,23 +2,12 @@
 @section @file{trunk/Identity/Images/Brands}
 @cindex Trunk identity images brands
 
-The @file{trunk/Identity/Images/Brands} directory exists to store
-branding images related to @value{TCPROJ} (e.g., The CentOS Logo, The
-CentOS Symbol and The CentOS Type) in different formats (e.g., PNG,
-JPG, PDF, TIF, XBM, XPM, etc.) and dimensions.
-
-The images stored in @file{trunk/Identity/Images/Brands} directory
-aren't under version control. Instead, they are produced from design
-models stored in @file{trunk/Identity/Models/Brands} directory (which
-are under version controll, indeed); using the @code{render}
-functionality of @command{centos-art.sh} script.
-
-The @file{trunk/Identity/Images/Brands} directory isn't and mustn't be
-localized. Branding information must be rendered just as conceived
-inside SVG design models.
+The @file{trunk/Identity/Images/Brands} directory exists to organize
+brand information related to @value{TCPROJ}.
 
 The @file{trunk/Identity/Images/Brands} directory is organized in the
 following components:
 
 @menu
+* Trunk Identity Images Brands Logos::
 @end menu
