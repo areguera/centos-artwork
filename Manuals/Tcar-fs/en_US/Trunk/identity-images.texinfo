@@ -5,23 +5,20 @@
 The @file{trunk/Identity/Images} directory exists to store all image
 files (e.g., PNG, JPG, PPM, etc.) related to @value{TCPCVI}.
 
-Since the rendition point of view, @file{trunk/Identity/Images}
-provides storage for output files as @file{trunk/Identity/Models}
-provides storage for input files. In the very specific case of
-artistic motifs, the @file{trunk/Identity/Images} directory can act
-both as output and input locations. This is because XCF and SVG design
-models used to build artistic motif background images are stored here
-instead of @file{trunk/Identity/Models} directory.
+The @file{trunk/Identity/Images} directory and the files inside it
+aren't under version control.
 
-Since the version control point of view, image files stored under
-@file{trunk/Identity/Images} aren't under version control. Only source
-files (i.e., the files used to build images) and final background
-images are set under verion control here.
-
-Since the organizational point of view, @file{trunk/Identity/Images}
-has the following components:
+The @file{trunk/Identity/Images} directory contains no file, but the
+following directories to organize files:
 
 @menu
 * Trunk Identity Images Brands::
 * Trunk Identity Images Themes::
 @end menu
+
+Content rendition inside @file{trunk/Identity/Images/Brands/Logos}
+directory takes place through the following command:
+
+@verbatim
+centos-art render trunk/Identity/Images --dont-commit-changes
+@end verbatim
