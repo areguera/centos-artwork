@@ -1,9 +1,8 @@
 #!/bin/bash
 #
 # texinfo_updateStructureSection.sh -- This function looks for all
-# documentation entry (section) files inside manual's base directory
-# and updates menu, nodes and cross references definitions for them
-# all, one at a time.
+# section entry files inside manual's base directory and updates menu,
+# nodes and cross references definitions for them all, one at a time.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -33,7 +32,6 @@ function texinfo_updateStructureSection {
     cli_printMessage "`gettext "Updating section menus, nodes and cross references"`" --as-banner-line
 
     local PATTERN=''
-    local MANUAL_ENTRY=''
     local MANUAL_ENTRIES=''
     local ACTIONNAM_SECMENU=''
     local ACTIONNAM_CROSREF=''
@@ -41,25 +39,18 @@ function texinfo_updateStructureSection {
     # Define regular expression pattern used to build the list of
     # section entries that will be processed.
     if [[ "$1" != '' ]];then
-
-        # Define pattern from first position parameter.
         PATTERN="$1"
-
-        # Verify the pattern value considering both the chapter and
-        # section names. This is required when no chapter or section
-        # name is provided to `centos-art.sh' script, as non-option
-        # argument in the command-line (e.g., `centos-art help
-        # --update-structure').
-        if [[ $PATTERN =~ "${MANUAL_NAME}\.${MANUAL_EXTENSION}$" ]] \
-            || [[ $PATTERN =~ "chapter\.${MANUAL_EXTENSION}$" ]];then
-            PATTERN="$(dirname ${MANUAL_ENTRY})/.+\.${MANUAL_EXTENSION}"
-        fi
-
     else
+        PATTERN="${MANUAL_ENTRY}"
+    fi
 
-        # Define pattern default value.
-        PATTERN=".+\.${MANUAL_EXTENSION}"
-
+    # Verify the pattern value considering both the chapter and
+    # section names. This is required when no chapter or section name
+    # is provided to `centos-art.sh' script, as non-option argument in
+    # the command-line (e.g., `centos-art help --update-structure').
+    if [[ $PATTERN =~ "${MANUAL_NAME}\.${MANUAL_EXTENSION}$" ]] \
+        || [[ $PATTERN =~ "chapter\.${MANUAL_EXTENSION}$" ]];then
+        PATTERN="$(dirname ${MANUAL_ENTRY})/.+\.${MANUAL_EXTENSION}"
     fi
 
     # Define action to perform on menu, nodes and cross references
@@ -135,7 +126,7 @@ function texinfo_updateStructureSection {
     fi
 
     # Loop through target documentation entries in order to update the
-    # documentation structure (e.g., It is not enough with copying
+    # documentation structure (e.g., it is not enough with copying
     # documentation entry files, it is also needed to update menu,
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
