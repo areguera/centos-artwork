@@ -32,7 +32,6 @@ function prepare_doLinks {
 
     local -a LINKS_SRC
     local -a LINKS_DST
-    local SUFFIX='centos'
     local USERFILES=''
     local PALETTE=''
     local BRUSH=''
@@ -41,46 +40,61 @@ function prepare_doLinks {
     local FILE=''
     local COUNT=0
 
-    # Define user's directories where most configuration linkes will
-    # be created in.
-    local GIMP_HOME=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
-    local INKS_HOME=${HOME}/.inkscape
+    # Define user's directories. This is the place where configuration
+    # links are created in.
+    local GIMP_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
+    local GIMP_DIR_BRUSHES=${GIMP_DIR}/brushes
+    local GIMP_DIR_PALETTES=${GIMP_DIR}/palettes
+    local GIMP_DIR_PATTERNS=${GIMP_DIR}/patterns
+    local INKS_DIR=${HOME}/.inkscape
+    local INKS_DIR_PALETTES=${INKS_DIR}/palettes
+    local FONT_DIR=${HOME}/.fonts
+    local APPS_DIR=${HOME}/bin
+
+    # Define working copy directories. This is the place where
+    # configuration links point to.
+    local WCDIR=$(cli_getRepoTLDir)/Identity
+    local WCDIR_BRUSHES=${WCDIR}/Brushes
+    local WCDIR_PALETTES=${WCDIR}/Palettes
+    local WCDIR_PATTERNS=${WCDIR}/Patterns
+    local WCDIR_FONTS=${WCDIR}/Fonts
+    local WCDIR_EDITOR=${PREPARE_CONFIG_DIR}
 
     # Define link relation for cli.
-    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/bin/$CLI_PROGRAM
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${APPS_DIR}/${CLI_PROGRAM}
     LINKS_DST[((++${#LINKS_DST[*]}))]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
-    USERFILES="${HOME}/bin/$CLI_PROGRAM"
+    USERFILES="${APPS_DIR}/${CLI_PROGRAM}"
 
     # Define link relation for fonts.
-    for FONT in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Fonts --pattern='.+\.ttf');do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.fonts/$(basename $FONT)
-        LINKS_DST[((++${#LINKS_DST[*]}))]=$FONT
+    for FONT in $(cli_getFilesList "${WCDIR_FONTS}" --pattern='.+\.ttf');do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${FONT_DIR}/$(basename $FONT)
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${FONT}
     done
 
     # Define link relation for common palettes.
-    for PALETTE in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Palettes --pattern=".+\.gpl");do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_HOME}/palettes/${SUFFIX}-$(basename $PALETTE)
-        LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_HOME}/palettes/${SUFFIX}-$(basename $PALETTE)
-        LINKS_DST[((++${#LINKS_DST[*]}))]=$PALETTE
+    for PALETTE in $(cli_getFilesList "${WCDIR_PALETTES}" --pattern=".+\.gpl");do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_DIR_PALETTES}/$(prepare_getLinkName ${WCDIR_PALETTES} ${PALETTE})
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${PALETTE}
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_DIR_PALETTES}/$(prepare_getLinkName ${WCDIR_PALETTES} ${PALETTE})
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${PALETTE}
     done
 
     # Define link relation for common brushes.
-    for BRUSH in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Brushes --pattern=".+\.(gbr|gih)");do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_HOME}/brushes/${SUFFIX}-$(basename $BRUSH)
-        LINKS_DST[((++${#LINKS_DST[*]}))]=$BRUSH
+    for BRUSH in $(cli_getFilesList "${WCDIR_BRUSHES}" --pattern=".+\.(gbr|gih)");do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_DIR_BRUSHES}/$(prepare_getLinkName ${WCDIR_BRUSHES} ${BRUSH})
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${BRUSH}
     done
 
     # Define link relation for common patterns.
-    for PATTERN in $(cli_getFilesList ${HOME}/artwork/trunk/Identity/Patterns --pattern=".+\.png");do
-        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_HOME}/patterns/${SUFFIX}-$(basename $PATTERN)
-        LINKS_DST[((++${#LINKS_DST[*]}))]=$PATTERN
+    for PATTERN in $(cli_getFilesList "${WCDIR_PATTERNS}" --pattern=".+\.png");do
+        LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_DIR_PATTERNS}/$(prepare_getLinkName ${WCDIR_BRUSHES} ${BRUSH})
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${PATTERN}
     done
 
     # Define link relation for Vim text editor's configuration.
     if [[ $EDITOR == '/usr/bin/vim' ]];then
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.vimrc
-        LINKS_DST[((++${#LINKS_DST[*]}))]=${PREPARE_CONFIG_DIR}/vimrc
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${WCDIR_EDITOR}/vimrc
         USERFILES="${USERFILES} ${HOME}/.vimrc"
     fi
 
@@ -90,12 +104,12 @@ function prepare_doLinks {
     # common brushes using symbolic links from the working copy to the
     # user's configuration directories inside the workstation.
     USERFILES=$(echo "$USERFILES";
-        cli_getFilesList ${HOME}/bin --pattern='.+\.sh';
-        cli_getFilesList ${HOME}/.fonts --pattern='.+\.ttf';
-        cli_getFilesList ${GIMP_HOME}/brushes --pattern='.+\.(gbr|gih)';
-        cli_getFilesList ${GIMP_HOME}/patterns --pattern='.+\.(pat|png|jpg|bmp)';
-        cli_getFilesList ${GIMP_HOME}/palettes --pattern='.+\.gpl';
-        cli_getFilesList ${INKS_HOME}/palettes --pattern='.+\.gpl';)
+        cli_getFilesList ${APPS_DIR} --pattern='.+\.sh';
+        cli_getFilesList ${FONT_DIR} --pattern='.+\.ttf';
+        cli_getFilesList ${GIMP_DIR_BRUSHES} --pattern='.+\.(gbr|gih)';
+        cli_getFilesList ${GIMP_DIR_PATTERNS} --pattern='.+\.(pat|png|jpg|bmp)';
+        cli_getFilesList ${GIMP_DIR_PALETTES} --pattern='.+\.gpl';
+        cli_getFilesList ${INKS_DIR_PALETTES} --pattern='.+\.gpl';)
 
     # Remove user-specific configuration files from user's home
     # directory. Otherwise, we might end up having links insid user's
