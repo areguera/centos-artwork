@@ -58,10 +58,10 @@ working copy is automated by @code{prepare} functionality of
 Inside the working copy, brushes might be created individually in
 different locations, but they all need to be linked from one unique
 location (i.e., @file{~/.gimp-2.2/brushes}).  This configuration may
-provoke brush overlapping if a consistent name convenction is not
-implemented correctly.  In that sake, file names used for brushes
-are combined with the directories they are stored in order to build
-unique identifiers.
+provoke brushes to overlap one another if a consistent name
+convenction is not implemented correctly.  In that sake, the brushes
+file names are build using their directory and file names as reference
+in order to build unique names that can be used as unique identifiers.
 
 Brushes produced with GIMP has a description field associated that is
 shown in the Brushes panel of GIMP.  This description is set when the
