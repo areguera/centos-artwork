@@ -1,0 +1,54 @@
+@node Trunk Scripts Functions Prepare
+@section @file{trunk/Scripts/Functions/Prepare}
+@cindex Trunk scripts functions prepare
+
+The @file{trunk/Scripts/Functions/Prepare} directory exists to
+organize Bash scripts that make the @code{prepare} functionality of
+@command{centos-art.sh} script. The @code{prepare} functionality
+standardizes the final configuration stuff your workstation needs,
+once the working copy of @value{TCAR} has been downloaded inside it. 
+
+The @file{trunk/Scripts/Functions/Prepare} directory is under version
+control.
+
+The @file{trunk/Scripts/Functions/Prepare} directory contains the
+following function scripts:
+
+@defun prepare
+The @code{prepare} function is the first function executed when
+@command{centos-art.sh} script is executed with @code{prepare} as
+first argument. The @code{prepare} function initializes global
+variables and provides the base environment where all other actions
+are called from.
+@end defun
+
+@defun prepare_getOptions
+...
+@end defun
+
+@defun prepare_doLinks
+...
+@end defun
+
+@defun prepare_getLinkName FILE_BASEDIR, FILE_ABSPATH
+...
+@end defun
+
+@defun prepare_doEnvironment
+...
+@end defun
+
+@defun prepare_doManuals
+...
+@end defun
+
+@defun prepare_doImages
+...
+@end defun
+
+@defun prepare_doPackages
+...
+@end defun
+
+Content rendition inside @file{trunk/Scripts/Functions/Prepare} is not
+supported. 
