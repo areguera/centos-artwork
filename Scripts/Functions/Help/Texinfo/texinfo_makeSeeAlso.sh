@@ -133,8 +133,10 @@ function texinfo_makeSeeAlso {
         LIST_DEF="@c -- <[${CLI_PROGRAM}(SeeAlso${LIST_PROP})\n@${LIST_TYPE}\n${LIST_ENTRIES}@end ${LIST_TYPE}\n@c -- ]>"
 
         # Expand list definition using translation marker and list
-        # definition itself.
-        sed -r -i "/${LIST_TYPE_PATTERN}/,/^@c -- \]>$/c\\${LIST_DEF}" $MANUAL_ENTRY
+        # definition itself. Be sure that no expansion be done when
+        # the closing tag of translation marker isn't specified.
+        # Otherwise, there might be lost of content.
+        sed -r -i "/${LIST_TYPE_PATTERN}/{:a;N;/\n@c -- ]>$/!ba;s/.*/${LIST_DEF}/;}" $MANUAL_ENTRY
 
         # Clean up both list definition and list entries. Otherwise
         # undesired concatenations happen.
