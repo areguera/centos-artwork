@@ -11,6 +11,19 @@ are initially created in @file{.xcf} format and later exported to any
 of the brush formats recognized by GIMP (e.g., @file{.gbr} or
 @file{.gih}) using the same name of its source file.
 
+The @file{trunk/Identity/Brushes} directory is under version control.
+
+The @file{trunk/Identity/Brushes} directory contains no file, but the
+following organizational directories:
+
+@c -- <[centos-art(SeeAlso)
+@itemize
+@end itemize
+@c -- ]>
+
+Content rendition inside @file{trunk/Identity/Brushes} directory is
+not supported. 
+
 In order for brushes to be loaded by GIMP, they should be stored in
 the @file{~/.gimp-2.2/brushes} directory. This location is out of
 @value{TCAR} and doesn't provide version control by itself. To be able
@@ -22,11 +35,15 @@ create links to them from @file{~/.gimp-2.2/brushes} directory.
 @verbatim
 trunk/Identity/Brushes
 |-- Corporate
+|   |-- symbol.xcf
 |   `-- symbol.gbr (file) <-- ~/.gimp-2.2/brushes/corporate-symbol.gbr (link)
 |-- TreeFlower
 |   |-- flower.gbr (file) <-- ~/.gimp-2.2/brushes/treeflower-flower.gbr (link)
+|   |-- flower.xcf
 |   |-- branch.gbr (file) <-- ~/.gimp-2.2/brushes/treeflower-branch.gbr (link)
-|   `-- trunk.gbr  (file) <-- ~/.gimp-2.2/brushes/treeflower-trunk.gbr  (link)
+|   |-- branch.xcf
+|   |-- trunk.gbr  (file) <-- ~/.gimp-2.2/brushes/treeflower-trunk.gbr  (link)
+|   `-- trunk.xcf
 `-- Others
     `-- ...
 @end verbatim
