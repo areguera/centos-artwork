@@ -3,9 +3,13 @@
 @cindex Trunk identity fonts
 
 The @file{trunk/Identity/Fonts} directory exists to organize
-typographies used inside @value{TCPCVI}. Most fonts stored inside this
-location are TrueType Fonts (@file{.ttf}) that aren't available inside
-@file{/usr/share/fonts} directory.
+typographies used inside @value{TCPCVI} that aren't packaged inside
+@value{TCD}.
+
+The @file{trunk/Identity/Fonts} directory is under version control.
+
+Content rendition inside @file{trunk/Identity/Fonts} directory is not
+supported.
 
 @c -- describe, in one paragraph, what a font is.
 
@@ -13,8 +17,8 @@ In order for fonts to be available inside programs like GIMP and
 Inkscape, font files should be stored either in
 @file{/usr/share/fonts} or @file{~/.fonts} directory. These locations
 are out of @value{TCAR} and doesn't provide version control by
-themselves. In order for using version controlled fonts inside
-programs like GIMP and Inkscape, we store font related files under
+themselves. In order for version controlled typographies to be
+available inside programs like GIMP and Inkscape, we store them under
 @file{trunk/Identity/Fonts} directory and create links to them from
 @file{~/.fonts} directory.
 
