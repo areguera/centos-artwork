@@ -83,7 +83,7 @@ function prepare_getOptions {
                 ;;
 
             --environment )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doEnvironment"
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_getEnvars"
                 shift 1
                 ;;
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# prepare_doEnvironment.sh -- This function outputs a brief description
-# of environment variables used by `centos-art.sh' script.
+# prepare_getEnvars.sh -- This function outputs a brief description of
+# relevant environment variables used by `centos-art.sh' script.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_doEnvironment {
+function prepare_getEnvars {
 
     local -a VARS
     local -a INFO
