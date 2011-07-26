@@ -45,18 +45,6 @@ function prepare {
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
 
-    # Define action name. It does matter what option be passed to
-    # centos-art, there are many different actions to perform based on
-    # the option passed (e.g., `--packages', `--links',
-    # `--environment', etc.).  In that sake, we defined action name
-    # inside prepare_getOptions, at the moment of interpreting
-    # options.
-
-    # Define action value. There is no action value in this function,
-    # but action name values only. There is no need for non-option
-    # arguments here since we are doing fixed verifications only in
-    # predifined paths.
-
     # Execute action names.
     for ACTIONNAM in $ACTIONNAMS;do
         ${ACTIONNAM}
