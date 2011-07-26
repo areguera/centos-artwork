@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# prepare_doImages.sh -- This option initializes image files inside
+# prepare_updateImages.sh -- This option initializes image files inside
 # the working copy. When you provide this option, the centos-art.sh
 # scripts renders image files from all design models available in the
 # working copy. This step is required in order to satisfy dependencies
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_doImages {
+function prepare_updateImages {
 
     # Define list of directories that need to be rendered.
     local DIRS=$(cli_getFilesList \

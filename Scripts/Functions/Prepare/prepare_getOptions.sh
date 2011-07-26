@@ -40,15 +40,6 @@ function prepare_getOptions {
     # parser.
     eval set -- "$ARGUMENTS"
 
-    # Define default behaviour when no option is provided.
-    if [[ "$@" =~ '^--$' ]];then
-        ${FUNCNAM}_checkPackages
-        ${FUNCNAM}_doLinks
-        ${FUNCNAM}_doImages
-        ${FUNCNAM}_doManuals
-        return
-    fi
-
     # Look for options passed through command-line.
     while true; do
         case "$1" in
@@ -65,27 +56,27 @@ function prepare_getOptions {
                 ;;
 
             --packages )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_checkPackages"
+                PREPARE_ACTIONNAMS="${ACTIONNAMS} updatePackages"
                 shift 1
                 ;;
 
             --links )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doLinks"
+                PREPARE_ACTIONNAMS="${ACTIONNAMS} updateLinks"
                 shift 1
                 ;;
 
             --images )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doImages"
+                PREPARE_ACTIONNAMS="${ACTIONNAMS} updateImages"
                 shift 1
                 ;;
 
             --manuals )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doManuals"
+                PREPARE_ACTIONNAMS="${ACTIONNAMS} updateManuals"
                 shift 1
                 ;;
 
             --environment )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_getEnvars"
+                PREPARE_ACTIONNAMS="${ACTIONNAMS} getEnvars"
                 shift 1
                 ;;
 

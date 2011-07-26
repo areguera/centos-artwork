@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# prepare_doLinks.sh -- This option creates/updates the symbolic links
+# prepare_updateLinks.sh -- This option creates/updates the symbolic links
 # information required in your workstation to connect it with the
 # files inside the working copy of The CentOS Artwork Repository. When
 # you provide this option, the centos-art.sh put itself into your
@@ -28,7 +28,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_doLinks {
+function prepare_updateLinks {
 
     local -a LINKS_SRC
     local -a LINKS_DST

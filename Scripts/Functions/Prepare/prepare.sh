@@ -27,27 +27,34 @@
 
 function prepare {
 
-    # Initialize action name variable. Here is where we store the
-    # name of the actions that will be executed based on the options
-    # passed in the command-line.
-    local ACTIONNAM=''
-    local ACTIONNAMS=''
+    local PREPARE_ACTIONNAM=''
+    local PREPARE_ACTIONNAMS=''
 
     # Define absolute path to directory holding prepare's
     # configuration files.
-    PREPARE_CONFIG_DIR=${FUNCDIR}/${FUNCDIRNAM}/Config
+    local PREPARE_CONFIG_DIR=${FUNCDIR}/${FUNCDIRNAM}/Config
 
     # Interpret arguments and options passed through command-line.
-    prepare_getOptions
+    ${FUNCNAM}_getOptions
 
-    # Redefine positional parameters using ARGUMENTS. At this point,
-    # option arguments have been removed from ARGUMENTS variable and
-    # only non-option arguments remain in it. 
-    eval set -- "$ARGUMENTS"
+    # Execute action names based on whether they were provided or not.
+    if [[ $PREPARE_ACTIONNAMS == '' ]];then
 
-    # Execute action names.
-    for ACTIONNAM in $ACTIONNAMS;do
-        ${ACTIONNAM}
-    done
+        # When action names are not provided, define action names that
+        # will take place, explicitly.
+        ${FUNCNAM}_updatePackages
+        ${FUNCNAM}_updateLinks
+        ${FUNCNAM}_updateImages
+        ${FUNCNAM}_updateManuals
+
+    else
+
+        # When action names are provided, loop through them and
+        # execute them one by one.
+        for PREPARE_ACTIONNAM in $PREPARE_ACTIONNAMS;do
+            ${FUNCNAM}_${PREPARE_ACTIONNAM}
+        done
+
+    fi
 
 }

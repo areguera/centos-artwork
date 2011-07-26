@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# prepare_doManuals.sh -- This option initializes documentation files
+# prepare_updateManuals.sh -- This option initializes documentation files
 # inside the working copy. When you provide this option, the
 # centos-art.sh script renders all documentation manuals from their
 # related source files so you can read them nicely.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_doManuals {
+function prepare_updateManuals {
 
     # The CentOS Artwork Repository User's Guide in docbook format.
     ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render \

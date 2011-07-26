@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# prepare_checkPackages.sh -- This function verifies the required
+# prepare_updatePackages.sh -- This function verifies the required
 # packages your workstation needs to have installed in order for
 # `centos-art.sh' script to run correctly. If there is one or more
 # missing packages, the `centos-art.sh' script asks you to confirm
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_checkPackages {
+function prepare_updatePackages {
 
     local PACKAGE=''
     local PACKAGES=''
