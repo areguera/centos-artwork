@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# prepare_getOptions.sh -- This function interpretes option parameters
-# passed to `prepare' functionality and calls actions accordingly.
+# prepare_getOptions.sh -- This function parses command options
+# provided to `centos-art.sh' script when the first argument in the
+# command-line is the `prepare' word. To parse options, this function
+# makes use of getopt program.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
