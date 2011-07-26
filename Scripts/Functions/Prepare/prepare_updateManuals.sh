@@ -27,14 +27,21 @@
 
 function prepare_updateManuals {
 
+    local RELEASE=$(cat /etc/redhat-release | gawk '{ print $3 }')
+
     # The CentOS Artwork Repository User's Guide in docbook format.
     ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render \
-        trunk/Manuals/TCAR-UG/Docbook/ --filter="tcar-ug" \
+        trunk/Manuals/Tcar-ug --filter="tcar-ug" \
+        --dont-commit-changes
+
+    # The CentOS Distribution Notes
+    ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render \
+        trunk/Manuals/Distro --releasever="${RELEASE}" \
         --dont-commit-changes
 
     # The CentOS Artwork Repository User's Guide in texinfo format.
     ${CLI_BASEDIR}/${CLI_PROGRAM}.sh help --update \
-        trunk/Manuals/TCAR-UG/Texinfo/ \
+        trunk/Manuals/Tcar-fs \
         --dont-commit-changes
 
 }
