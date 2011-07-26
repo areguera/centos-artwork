@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# prepare_doPackages.sh -- This function verifies the required
+# prepare_checkPackages.sh -- This function verifies the required
 # packages your workstation needs to have installed in order for
-# centos-art command to run correctly. If there is one or more missing
-# packages, the `centos-art.sh' script asks you to confirm their
-# installation through yum.
+# `centos-art.sh' script to run correctly. If there is one or more
+# missing packages, the `centos-art.sh' script asks you to confirm
+# their installation through `sudo yum'.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -26,7 +26,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function prepare_doPackages {
+function prepare_checkPackages {
 
     local PACKAGE=''
     local PACKAGES=''

@@ -40,7 +40,7 @@ function prepare_getOptions {
 
     # Define default behaviour when no option is provided.
     if [[ "$@" =~ '^--$' ]];then
-        ${FUNCNAM}_doPackages
+        ${FUNCNAM}_checkPackages
         ${FUNCNAM}_doLinks
         ${FUNCNAM}_doImages
         ${FUNCNAM}_doManuals
@@ -63,7 +63,7 @@ function prepare_getOptions {
                 ;;
 
             --packages )
-                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_doPackages"
+                ACTIONNAMS="${ACTIONNAMS} ${FUNCNAM}_checkPackages"
                 shift 1
                 ;;
 
