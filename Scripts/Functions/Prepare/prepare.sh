@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# prepare.sh -- This function prepares your workstation for using the
-# centos-art command-line.
+# prepare.sh (initialization) -- This function creates the base
+# execution environment required to standardize final configuration
+# stuff needed by your workstation, once the working copy of The
+# CentOS Artwork Repository has been downloaded in it.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
