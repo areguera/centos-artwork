@@ -51,7 +51,7 @@ function help {
 
     # Verify manual's top-level directory. To prevent messing the
     # things up, we need to restrict the possible locations
-    # documentation manuals can be created inside the working copy.
+    # where documentation manuals can be created in the working copy.
     # When manual's top-level location is other but the ones
     # permitted, use `trunk/Manuals' directory structure as default
     # location to store documentation manuals.
@@ -59,15 +59,15 @@ function help {
         MANUAL_TLDIR="${HOME}/artwork/trunk/Manuals"
     fi
 
-    # Initialize arrays related to documentation entries. Arrays
-    # defined here contain all the information needed to process
-    # documentation entries written in texinfo format.
+    # Initialize documentation entries arrays. Arrays defined here
+    # contain all the information needed to process documentation
+    # entries (e.g., manual, chapter, section).
     local -a MANUAL_SLFN
     local -a MANUAL_DIRN
     local -a MANUAL_CHAN
     local -a MANUAL_SECN
 
-    # Initialize counter of non-option arguments.
+    # Initialize documentation entries counter.
     local MANUAL_DOCENTRY_COUNT=0
     local MANUAL_DOCENTRY_ID=0
 
@@ -81,10 +81,10 @@ function help {
     # information related documentation entries from there.
     ${FUNCNAM}_getEntries
 
-    # Initialize backend functionalities. At this point we load all
-    # functionalities required into the centos-art.sh's execution
-    # environment and make them available, this way, to perform
-    # backend-specific documentation tasks.
+    # Initialize documentation backend functionalities. At this point
+    # we load all functionalities required into `centos-art.sh''s
+    # execution environment and make them available, this way, to
+    # perform backend-specific documentation tasks.
     cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
         ${FLAG_BACKEND} -d)" "${FLAG_BACKEND}"
 
