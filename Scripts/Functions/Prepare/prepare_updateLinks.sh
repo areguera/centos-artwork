@@ -94,7 +94,7 @@ function prepare_updateLinks {
     # Define link relation for Vim text editor's configuration.
     if [[ $EDITOR == '/usr/bin/vim' ]];then
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${HOME}/.vimrc
-        LINKS_DST[((++${#LINKS_DST[*]}))]=${WCDIR_EDITOR}/vimrc
+        LINKS_DST[((++${#LINKS_DST[*]}))]=${WCDIR_EDITOR}/vim.conf
         USERFILES="${USERFILES} ${HOME}/.vimrc"
     fi
 
