@@ -46,18 +46,18 @@ function help_getEntries {
 
     else
 
-        # Retrive documentation entries passed to centos-art.sh script
-        # as non-option arguments and store them in array variables in
-        # order to describe their parts (e.g., manual name, chapter
-        # name and section name) that way.  Documentation entries
-        # passed as non-opiton arguments must be written in either
-        # `MANUAL:CHAPTER:SECTION' or `path/to/dir' formats in order
-        # to be processed correctly here. Empty spaces are not
-        # permitted. To separate words, use the minus sign (e.g.,
-        # hello-world) or cammel case (e.g., HelloWorld).
+        # Retrive documentation entries passed to `centos-art.sh'
+        # script as non-option arguments and store them in array
+        # variables in order to describe their parts (e.g., manual
+        # name, chapter name and section name) that way.
+        # Documentation entries passed as non-opiton arguments must be
+        # written either in `MANUAL:CHAPTER:SECTION' or `path/to/dir'
+        # formats in order to be processed correctly here. Empty
+        # spaces are not permitted. To separate words, use the minus
+        # sign (e.g., hello-world) or cammel case (e.g., HelloWorld).
         for DOCENTRY in $@;do
 
-            if [[ $DOCENTRY =~ '^([[:alnum:]-]+:){1,3}' ]];then
+            if [[ $DOCENTRY =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]+){1,2}$' ]];then
 
                 # When `MANUAL:CHAPTER:SECTION' is used as format to
                 # documentation entry, you can specify the manual,
@@ -115,4 +115,5 @@ function help_getEntries {
         done
 
     fi
+
 }
