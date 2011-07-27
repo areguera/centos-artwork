@@ -32,8 +32,7 @@ function texinfo {
 
     # Define absolute path to chapter's directory. This is the place
     # where chapter-specific files are stored in.
-    MANUAL_CHAPTER_DIR=${MANUAL_BASEDIR_L10N}/$(cli_getRepoName \
-        "${MANUAL_CHAPTER_NAME}" -d | tr -d ' ' | sed -r 's!/$!!')
+    MANUAL_CHAPTER_DIR="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}"
 
     # Define absolute path to template directory. This is the place
     # where we store locale directories (e.g., en_US, es_ES, etc.)
@@ -113,10 +112,10 @@ function texinfo {
         # script. Be sure the manual's output file does exist and
         # terminate the script execution once the reading is done.
 
-        # Update manual's info output format.
+        # Update manual's output files.
         ${FLAG_BACKEND}_updateOutputFiles
             
-        # Read Top node from manual's info output format.
+        # Read manual's Top node from info output file.
         info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
 
         # Terminate script execution right here.
@@ -127,13 +126,12 @@ function texinfo {
         # Both `--copy' and `--rename' actions interpret non-option
         # arguments passed to `centos-art.sh' script in a special way.
         # In this configuration, only two non-option arguments are
-        # used and interpreted from the first loop of their
-        # interpretation.
+        # processed in the first loop of their interpretation.
         ${FLAG_BACKEND}_${ACTIONNAM}
 
         # Break interpretation of non-option arguments, to prevent the
-        # second non-option argument from be considered a source
-        # location.
+        # second and further non-option arguments from being
+        # considered a source location.
         break
 
     elif [[ $ACTIONNAM =~ "^(search(Node|Index)|updateOutputFiles)$" ]];then
