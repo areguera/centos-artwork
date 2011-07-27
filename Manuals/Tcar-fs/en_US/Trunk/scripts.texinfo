@@ -1,0 +1,23 @@
+@node Trunk Scripts
+@section @file{trunk/Scripts}
+@cindex Trunk scripts
+
+The @file{trunk/Scripts} directory exists to organize the
+@command{centos-art.sh} script, a bash scripts specially designed to
+automate most frequent tasks in the repository (e.g., image rendition,
+documenting directory structures, translating content, etc.).
+
+The @file{trunk/Scripts} directory and all files inside it are under
+version control.
+
+Content rendition inside @file{trunk/Scripts} is not supported.
+
+Inside the @file{trunk/Scripts} directory, it is stored the
+initialization script (i.e., @command{centos-art.sh}) you execute to
+run most automation tasks. Automation tasks are organized by functions
+inside the following directory:
+
+@c -- <[centos-art(SeeAlso)
+@itemize
+@end itemize
+@c -- ]>
