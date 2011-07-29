@@ -27,8 +27,8 @@
 
 function prepare {
 
-    local PREPARE_ACTIONNAM=''
-    local PREPARE_ACTIONNAMS=''
+    local ACTIONNAM=''
+    local ACTIONNAMS=''
 
     # Define absolute path to directory holding prepare's
     # configuration files.
@@ -38,7 +38,7 @@ function prepare {
     ${FUNCNAM}_getOptions
 
     # Execute action names based on whether they were provided or not.
-    if [[ $PREPARE_ACTIONNAMS == '' ]];then
+    if [[ $ACTIONNAMS == '' ]];then
 
         # When action names are not provided, define action names that
         # will take place, explicitly.
@@ -51,8 +51,8 @@ function prepare {
 
         # When action names are provided, loop through them and
         # execute them one by one.
-        for PREPARE_ACTIONNAM in $PREPARE_ACTIONNAMS;do
-            ${FUNCNAM}_${PREPARE_ACTIONNAM}
+        for ACTIONNAM in $ACTIONNAMS;do
+            ${FUNCNAM}_${ACTIONNAM}
         done
 
     fi
