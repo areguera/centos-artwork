@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# centos-art.sh -- This file is the initialization script, the first
-# script the centos-art command executes.
+# centos-art.sh -- The CentOS Artwork Repository automation tool.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -23,27 +22,33 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-# Most paths are built from HOME variable on, so we need to make our
-# best to make it contain a valid value before any path be built from
-# it. Using HOME variable gives us some flexibility to store the
-# repository filesystem in a location different from `/home/centos',
-# the default home directory centos-art assumes if HOME variable is
-# empty or malformed.
-[[ ! $HOME =~ '^/home/[[:alnum:]]+' ]] && HOME='/home/centos'
+# Initialize personal data.
+declare -xr CLI_PROGRAM='centos-art'
+declare -xr CLI_PROGRAM_ID=$$
+declare -xr CLI_VERSION='1.0 (beta)'
 
-# Initialize personal information.
-export CLI_PROGRAM='centos-art'
-export CLI_PROGRAM_ID=$$
-export CLI_VERSION='1.0 (beta)'
-export CLI_BASEDIR="${HOME}/artwork/trunk/Scripts"
-export CLI_TEMPDIR='/tmp'
+# Initialize paths.
+declare -xr CLI_WRKCOPY="${HOME}/artwork"
+declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts"
+declare -xr CLI_TEMPDIR='/tmp'
 
-# Initizalize internazionalization through gettext.
+# Initialize internazionalization through GNU gettext.
 . gettext.sh
-export TEXTDOMAIN=${CLI_PROGRAM}.sh
-export TEXTDOMAINDIR=${HOME}/artwork/trunk/L10n/Scripts
+declare -xr TEXTDOMAIN=${CLI_PROGRAM}.sh
+declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/L10n/Scripts
 
-# Initialize common function scripts.
+# Verify the working copy directory. Be sure it is
+# `/home/centos/artwork'.  Otherwise, end the script execution.  We
+# cannot continue if the working copy is stored in a place other than
+# `/home/centos/artwork'. This restriction is what let us to reuse
+# contents using absolute paths inside a distributed environment like
+# that one provided by The CentOS Artwork Repository.
+if [[ ! -d ${CLI_WRKCOPY} ]];then
+    echo "`eval_gettext "The working copy must be under \\\"\\\$CLI_WRKCOPY\\\"."`" > /dev/stderr
+    exit
+fi
+
+# Initialize common functions.
 FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)
 for FILE in ${FILES};do
     if [[ -x ${FILE} ]];then
@@ -51,13 +56,13 @@ for FILE in ${FILES};do
         FUNCTION=$(grep '^function ' ${FILE} | cut -d' ' -f2)
         export -f ${FUNCTION}
     else
-        echo `gettext "The ${FILE} needs to have execution rights."` > /dev/stderr
+        echo `eval_gettext "The \\\"\\\$FILE\\\" needs to have execution rights."` > /dev/stderr
         exit
     fi
 done
 
-# Unset all variables not considered global in order to start cli
-# execution with a clean environment.
+# Unset all variables not considered global in order to start common
+# functions with a clean environment.
 unset FILE
 unset FILES
 unset FUNCTION
