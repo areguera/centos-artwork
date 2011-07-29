@@ -218,7 +218,7 @@ function cli_printMessage {
             # paths in order to free horizontal space on final output
             # messages.
             echo "$MESSAGE" | sed -r \
-                -e "s!${HOME}/artwork/(trunk|branches|tags)/!\1/!g" \
+                -e "s!${CLI_WRKCOPY}/(trunk|branches|tags)/!\1/!g" \
                 | awk 'BEGIN { FS=": " }
                     { 
                         if ( $0 ~ /^-+$/ )
