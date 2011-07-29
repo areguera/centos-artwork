@@ -85,7 +85,7 @@ function help {
     # we load all functionalities required into `centos-art.sh''s
     # execution environment and make them available, this way, to
     # perform backend-specific documentation tasks.
-    cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
+    cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
         ${FLAG_BACKEND} -d)" "${FLAG_BACKEND}"
 
     # Execute backend-specific documentation tasks for each

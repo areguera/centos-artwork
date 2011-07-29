@@ -152,7 +152,7 @@ function cli_printMessage {
 
             # Build the error message.
             cli_printMessage "${CLI_PROGRAM} (${ORIGIN}): $MESSAGE" --as-stderr-line
-            cli_printMessage "${FUNCDIRNAM}" --as-toknowmore-line
+            cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
             ;;
 
         --as-toknowmore-line )

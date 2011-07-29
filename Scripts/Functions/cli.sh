@@ -29,8 +29,8 @@ function cli {
 
     # Initialize global variables.
     local CLI_FUNCNAME=''
-    local FUNCDIR=''
-    local FUNCDIRNAM=''
+    local CLI_FUNCDIR=''
+    local CLI_FUNCDIRNAM=''
     local FUNCSCRIPT=''
     local ARGUMENTS=''
 
@@ -60,9 +60,9 @@ function cli {
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
 
-    # Define function directory (FUNCDIR). The directory path where
+    # Define function directory (CLI_FUNCDIR). The directory path where
     # functionalities are stored inside the repository.
-    FUNCDIR=${CLI_BASEDIR}/Functions
+    CLI_FUNCDIR=${CLI_BASEDIR}/Functions
 
     # Check function name. The function name is critical for
     # centos-art.sh script to do something coherent. If it is not
@@ -79,10 +79,10 @@ function cli {
     CLI_FUNCNAME=$(cli_getRepoName $1 -f)
 
     # Define function directory. 
-    FUNCDIRNAM=$(cli_getRepoName $CLI_FUNCNAME -d)
+    CLI_FUNCDIRNAM=$(cli_getRepoName $CLI_FUNCNAME -d)
 
     # Define function file name.
-    FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${CLI_FUNCNAME}.sh
+    FUNCSCRIPT=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh
 
     # Check function script execution rights.
     cli_checkFiles "${FUNCSCRIPT}" --execution
@@ -105,7 +105,7 @@ function cli {
 
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
-    cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}"
+    cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
 
     # Execute function.
     eval $CLI_FUNCNAME

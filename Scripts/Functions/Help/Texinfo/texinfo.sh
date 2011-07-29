@@ -37,7 +37,7 @@ function texinfo {
     # Define absolute path to template directory. This is the place
     # where we store locale directories (e.g., en_US, es_ES, etc.)
     # used to build manuals in texinfo format.
-    MANUAL_TEMPLATE=${FUNCDIR}/${FUNCDIRNAM}/$(cli_getRepoName \
+    MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
         ${FLAG_BACKEND} -d)/Templates
 
     # Define absolute path to language-specific template directory.
