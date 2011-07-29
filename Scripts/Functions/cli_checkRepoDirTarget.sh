@@ -37,7 +37,7 @@ function cli_checkRepoDirTarget {
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
     if [[ $LOCATION =~ '^(trunk|branches|tags)/.+$' ]];then
-        LOCATION=${HOME}/artwork/$LOCATION 
+        LOCATION=${CLI_WRKCOPY}/$LOCATION 
     fi
 
     # Print target location.
