@@ -72,14 +72,14 @@ function help {
     local MANUAL_DOCENTRY_ID=0
 
     # Interpret option arguments passed through the command-line.
-    ${FUNCNAM}_getOptions
+    ${CLI_FUNCNAME}_getOptions
 
     # Redefine arrays related to documentation entries using
     # non-option arguments passed through the command-line. At this
     # point all options have been removed from ARGUMENTS and
     # non-option arguments remain. Evaluate ARGUMENTS to retrive the
     # information related documentation entries from there.
-    ${FUNCNAM}_getEntries
+    ${CLI_FUNCNAME}_getEntries
 
     # Initialize documentation backend functionalities. At this point
     # we load all functionalities required into `centos-art.sh''s

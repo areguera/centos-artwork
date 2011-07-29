@@ -82,7 +82,7 @@ function locale_editMessages {
         eval ${EDITOR} ${FILE}
 
         # Update machine object (.mo) from portable object (.po).
-        ${FUNCNAM}_updateMessageBinary ${FILE}
+        ${CLI_FUNCNAME}_updateMessageBinary ${FILE}
 
     done
 

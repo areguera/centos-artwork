@@ -57,10 +57,10 @@ function locale_updateMessageShell {
         --width=70 --sort-by-file ${FILES}
 
     # Sanitate portable object template metadata.
-    ${FUNCNAM}_updateMessageMetadata "${FILE}.pot"
+    ${CLI_FUNCNAME}_updateMessageMetadata "${FILE}.pot"
 
     # Verify, initialize or update portable objects from portable
     # object templates.
-    ${FUNCNAM}_updateMessagePObjects "${FILE}"
+    ${CLI_FUNCNAME}_updateMessagePObjects "${FILE}"
 
 }

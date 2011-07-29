@@ -109,11 +109,11 @@ function render {
         # take the action value (ACTIONVAL) as reference and describe
         # the production through an action name (ACTIONNAM).
         if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
-            ACTIONNAM="${FUNCNAME}_doThemeActions"
+            ACTIONNAM="${CLI_FUNCNAME}_doThemeActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
-            ACTIONNAM="${FUNCNAME}_doBaseActions"
+            ACTIONNAM="${CLI_FUNCNAME}_doBaseActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals" ]];then
-            ACTIONNAM="${FUNCNAME}_doBaseActions"
+            ACTIONNAM="${CLI_FUNCNAME}_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided does not support rendition."`" --as-error-line
         fi

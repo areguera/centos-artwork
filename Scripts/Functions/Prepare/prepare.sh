@@ -35,24 +35,24 @@ function prepare {
     local PREPARE_CONFIG_DIR=${FUNCDIR}/${FUNCDIRNAM}/Config
 
     # Interpret arguments and options passed through command-line.
-    ${FUNCNAM}_getOptions
+    ${CLI_FUNCNAME}_getOptions
 
     # Execute action names based on whether they were provided or not.
     if [[ $ACTIONNAMS == '' ]];then
 
         # When action names are not provided, define action names that
         # will take place, explicitly.
-        ${FUNCNAM}_updatePackages
-        ${FUNCNAM}_updateLinks
-        ${FUNCNAM}_updateImages
-        ${FUNCNAM}_updateManuals
+        ${CLI_FUNCNAME}_updatePackages
+        ${CLI_FUNCNAME}_updateLinks
+        ${CLI_FUNCNAME}_updateImages
+        ${CLI_FUNCNAME}_updateManuals
 
     else
 
         # When action names are provided, loop through them and
         # execute them one by one.
         for ACTIONNAM in $ACTIONNAMS;do
-            ${FUNCNAM}_${ACTIONNAM}
+            ${CLI_FUNCNAME}_${ACTIONNAM}
         done
 
     fi

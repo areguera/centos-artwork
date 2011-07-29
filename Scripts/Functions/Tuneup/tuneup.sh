@@ -54,7 +54,7 @@ function tuneup {
     # centos-art, there is only one action to perform (i.e., build the
     # list of files and interpretation of file extensions for further
     # processing).
-    ACTIONNAM="${FUNCNAME}_doBaseActions"
+    ACTIONNAM="${CLI_FUNCNAME}_doBaseActions"
 
     # Define action value. We use non-option arguments to define the
     # action value (ACTIONVAL) variable.

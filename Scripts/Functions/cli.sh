@@ -28,7 +28,7 @@
 function cli {
 
     # Initialize global variables.
-    local FUNCNAM=''
+    local CLI_FUNCNAME=''
     local FUNCDIR=''
     local FUNCDIRNAM=''
     local FUNCSCRIPT=''
@@ -73,16 +73,16 @@ function cli {
         exit
     fi
 
-    # Define function name (FUNCNAM) variable from first command-line
+    # Define function name (CLI_FUNCNAME) variable from first command-line
     # argument.  As convenction we use the first argument to determine
     # the exact name of functionality to call.
-    FUNCNAM=$(cli_getRepoName $1 -f)
+    CLI_FUNCNAME=$(cli_getRepoName $1 -f)
 
     # Define function directory. 
-    FUNCDIRNAM=$(cli_getRepoName $FUNCNAM -d)
+    FUNCDIRNAM=$(cli_getRepoName $CLI_FUNCNAME -d)
 
     # Define function file name.
-    FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${FUNCNAM}.sh
+    FUNCSCRIPT=${FUNCDIR}/${FUNCDIRNAM}/${CLI_FUNCNAME}.sh
 
     # Check function script execution rights.
     cli_checkFiles "${FUNCSCRIPT}" --execution
@@ -108,6 +108,6 @@ function cli {
     cli_exportFunctions "${FUNCDIR}/${FUNCDIRNAM}"
 
     # Execute function.
-    eval $FUNCNAM
+    eval $CLI_FUNCNAME
 
 }

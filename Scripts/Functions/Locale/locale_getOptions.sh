@@ -65,17 +65,17 @@ function locale_getOptions {
                 ;;
 
             --update )
-                ACTIONNAMS="$ACTIONNAMS ${FUNCNAM}_updateMessages"
+                ACTIONNAMS="$ACTIONNAMS ${CLI_FUNCNAME}_updateMessages"
                 shift 1
                 ;;
 
             --edit )
-                ACTIONNAMS="$ACTIONNAMS ${FUNCNAM}_editMessages"
+                ACTIONNAMS="$ACTIONNAMS ${CLI_FUNCNAME}_editMessages"
                 shift 1
                 ;;
 
             --delete )
-                ACTIONNAMS="$ACTIONNAMS ${FUNCNAM}_deleteMessages"
+                ACTIONNAMS="$ACTIONNAMS ${CLI_FUNCNAME}_deleteMessages"
                 shift 1
                 ;;
 
@@ -103,7 +103,7 @@ function locale_getOptions {
     # Verify action names. When no action name is specified, use
     # edition as default action name.
     if [[ $ACTIONNAMS == '' ]];then
-        ACTIONNAMS="${FUNCNAM}_editMessages"
+        ACTIONNAMS="${CLI_FUNCNAME}_editMessages"
     fi
 
     # Redefine ARGUMENTS variable using current positional parameters. 

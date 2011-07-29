@@ -33,9 +33,9 @@ function cli_unsetFunctions {
 
     # Verify suffix value used to retrive function files. Assuming no
     # suffix value is passed as second argument to this function, use
-    # the function name value (FUNCNAM) as default value.
+    # the function name value (CLI_FUNCNAME) as default value.
     if [[ $SUFFIX == '' ]];then
-        SUFFIX=$FUNCNAM
+        SUFFIX=$CLI_FUNCNAME
     fi
 
     # Define list of backend-specific functionalities. This is the
