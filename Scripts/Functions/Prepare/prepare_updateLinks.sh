@@ -58,7 +58,7 @@ function prepare_updateLinks {
     local WCDIR_PALETTES=${WCDIR}/Palettes
     local WCDIR_PATTERNS=${WCDIR}/Patterns
     local WCDIR_FONTS=${WCDIR}/Fonts
-    local WCDIR_EDITOR=${PREPARE_CONFIG_DIR}
+    local WCDIR_EDITOR=${CONFIGDIR}
 
     # Define link relation for cli.
     LINKS_SRC[((++${#LINKS_SRC[*]}))]=${APPS_DIR}/${CLI_PROGRAM}

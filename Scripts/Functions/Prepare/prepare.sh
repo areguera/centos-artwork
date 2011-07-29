@@ -32,7 +32,7 @@ function prepare {
 
     # Define absolute path to directory holding prepare's
     # configuration files.
-    local PREPARE_CONFIG_DIR=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/Config
+    local CONFIGDIR=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/Config
 
     # Interpret arguments and options passed through command-line.
     ${CLI_FUNCNAME}_getOptions
