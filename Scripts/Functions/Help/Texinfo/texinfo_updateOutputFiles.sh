@@ -38,7 +38,7 @@ function texinfo_updateOutputFiles {
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
     # paths incorrectly.
-    pushd ${HOME}/artwork > /dev/null
+    pushd ${CLI_WRKCOPY} > /dev/null
 
     ${FLAG_BACKEND}_updateOutputFileInfo
     ${FLAG_BACKEND}_updateOutputFileXhtml
