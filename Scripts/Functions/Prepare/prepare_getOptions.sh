@@ -56,27 +56,27 @@ function prepare_getOptions {
                 ;;
 
             --packages )
-                PREPARE_ACTIONNAMS="${ACTIONNAMS} updatePackages"
+                ACTIONNAMS="${ACTIONNAMS} updatePackages"
                 shift 1
                 ;;
 
             --links )
-                PREPARE_ACTIONNAMS="${ACTIONNAMS} updateLinks"
+                ACTIONNAMS="${ACTIONNAMS} updateLinks"
                 shift 1
                 ;;
 
             --images )
-                PREPARE_ACTIONNAMS="${ACTIONNAMS} updateImages"
+                ACTIONNAMS="${ACTIONNAMS} updateImages"
                 shift 1
                 ;;
 
             --manuals )
-                PREPARE_ACTIONNAMS="${ACTIONNAMS} updateManuals"
+                ACTIONNAMS="${ACTIONNAMS} updateManuals"
                 shift 1
                 ;;
 
             --environment )
-                PREPARE_ACTIONNAMS="${ACTIONNAMS} getEnvars"
+                ACTIONNAMS="${ACTIONNAMS} getEnvars"
                 shift 1
                 ;;
 
