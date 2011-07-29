@@ -2,8 +2,8 @@
 #
 # cli_getRepoTLDir.sh -- This function returns the repository top
 # level absolute path. The repository top level absolute path can be
-# either ${HOME}/artwork/trunk, ${HOME}/artwork/branches, or
-# ${HOME}/artwork/tags.
+# either ${CLI_WRKCOPY}/trunk, ${CLI_WRKCOPY}/branches, or
+# ${CLI_WRKCOPY}/tags.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
 #
@@ -57,7 +57,7 @@ function cli_getRepoTLDir {
     # passed as non-option argument to this function, then set the
     # trunk directory structure as default location.
     if [[ $LOCATION =~ '--$' ]];then
-        LOCATION=${HOME}/artwork/trunk
+        LOCATION=${CLI_WRKCOPY}/trunk
     fi
 
     # Verify location where the working copy should be stored in the
@@ -65,7 +65,7 @@ function cli_getRepoTLDir {
     # to one of the top level directories inside the working copy of
     # CentOS Artwork Repository which, in turn, should be sotred in
     # the `artwork' directory immediatly under your home directory.
-    if [[ ! $LOCATION =~ "^${HOME}/artwork/(trunk|branches|tags)" ]];then
+    if [[ ! $LOCATION =~ "^${CLI_WRKCOPY}/(trunk|branches|tags)" ]];then
         cli_printMessage "`eval_gettext "The location \\\"\\\$LOCATION\\\" is not valid."`" --as-error-line
     fi
 
@@ -75,14 +75,14 @@ function cli_getRepoTLDir {
         case "$1" in
     
             -r|--relative )
-                PATTERN="^${HOME}/artwork/(trunk|branches|tags)/.+$"
+                PATTERN="^${CLI_WRKCOPY}/(trunk|branches|tags)/.+$"
                 REPLACE='\1'
                 shift 2
                 break
                 ;;
 
             -- )
-                PATTERN="^(${HOME}/artwork/(trunk|branches|tags))/.+$"
+                PATTERN="^(${CLI_WRKCOPY}/(trunk|branches|tags))/.+$"
                 REPLACE='\1'
                 shift 1
                 break
