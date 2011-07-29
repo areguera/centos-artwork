@@ -31,7 +31,7 @@ function cli {
     local CLI_FUNCNAME=''
     local CLI_FUNCDIR=''
     local CLI_FUNCDIRNAM=''
-    local FUNCSCRIPT=''
+    local CLI_FUNCSCRIPT=''
     local ARGUMENTS=''
 
     # Initialize default value to filter flag. The filter flag
@@ -82,10 +82,10 @@ function cli {
     CLI_FUNCDIRNAM=$(cli_getRepoName $CLI_FUNCNAME -d)
 
     # Define function file name.
-    FUNCSCRIPT=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh
+    CLI_FUNCSCRIPT=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh
 
     # Check function script execution rights.
-    cli_checkFiles "${FUNCSCRIPT}" --execution
+    cli_checkFiles "${CLI_FUNCSCRIPT}" --execution
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
