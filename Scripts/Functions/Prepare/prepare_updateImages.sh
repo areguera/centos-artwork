@@ -30,7 +30,7 @@ function prepare_updateImages {
 
     # Define list of directories that need to be rendered.
     local DIRS=$(cli_getFilesList \
-        ${HOME}/artwork/trunk/Identity/Images --maxdepth="1" \
+        ${CLI_WRKCOPY}/trunk/Identity/Images --maxdepth="1" \
         --mindepth="1" --type="d" --pattern=".+/[[:alnum:]]+$")
 
     # Execute the render functionality of centos-art.sh script to
