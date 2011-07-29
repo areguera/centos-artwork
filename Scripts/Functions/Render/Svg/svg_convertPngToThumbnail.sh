@@ -31,7 +31,7 @@ function svg_convertPngToThumbnail {
 
     # Get image size.
     local SIZE=''
-    local SIZES=$(render_getConfigOption "$ACTION" '2-')
+    local SIZES=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2-')
 
     # Check image sizes and do convertion.
     if [[ "$SIZES" == "" ]];then

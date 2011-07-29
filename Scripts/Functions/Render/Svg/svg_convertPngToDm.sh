@@ -37,7 +37,7 @@ function svg_convertPngToDm {
     local DST=''
 
     # Initialize display manager type.
-    local DM=$(render_getConfigOption "${ACTION}" '2')
+    local DM=$(${CLI_FUNCNAME}_getConfigOption "${ACTION}" '2')
 
     # Initialize screen resolutions used by display manager theme.
     # These are the different screen resolutions a display manager
@@ -46,7 +46,7 @@ function svg_convertPngToDm {
     # background files provided by the artistic motif used to build
     # the display manager theme.
     local RESOLUTION=''
-    local RESOLUTIONS=$(render_getConfigOption "${ACTION}" '3')
+    local RESOLUTIONS=$(${CLI_FUNCNAME}_getConfigOption "${ACTION}" '3')
 
     # Verify screen resolutions. We cannot produce display manager
     # theme if no screen resolution has been specified.

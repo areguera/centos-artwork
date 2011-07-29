@@ -125,7 +125,7 @@ function render_doThemeActions {
 
         # Execute direct rendition on theme specific renderable
         # directory as specified by action value.
-        render_doBaseActions
+        ${CLI_FUNCNAME}_doBaseActions
 
         # Increment counter to match the correct count value.
         COUNT=$(($COUNT + 1))

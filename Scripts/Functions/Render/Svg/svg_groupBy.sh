@@ -39,7 +39,7 @@ function svg_groupBy {
     # Sanitate file types passed from render.conf.sh pre-rendition
     # configuration script.
     local FORMAT=''
-    local FORMATS=$(render_getConfigOption "$ACTION" '2-')
+    local FORMATS=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2-')
 
     for FORMAT in $FORMATS;do
 

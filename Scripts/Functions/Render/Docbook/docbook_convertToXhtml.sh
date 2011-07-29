@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# render_docbook_convertToXhtml.sh -- This function uses DocBook XML
-# as input and applies XSL stylesheets to produce a big XHTML files as
-# output.  The procedure was taken from the documentation of
+# docbook_convertToXhtml.sh -- This function uses DocBook XML as input
+# and applies XSL stylesheets to produce a big XHTML files as output.
+# The procedure was taken from the documentation of
 # `docbook-style-xsl-1.69.1-5.1' package, which says: ---To publish
 # HTML from your XML documents, you just need an XSL engine.---.
 #

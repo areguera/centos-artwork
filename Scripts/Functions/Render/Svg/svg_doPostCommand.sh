@@ -26,10 +26,10 @@
 function svg_doPostCommand {
 
     # Define the file extension of base-rendition output.
-    local EXTENSION=$(render_getConfigOption "$ACTION" '2')
+    local EXTENSION=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2')
 
     # Define the command string.
-    local COMMAND=$(render_getConfigOption "$ACTION" '3-')
+    local COMMAND=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '3-')
 
     # Verify the absolute path of base-rendition output.
     cli_checkFiles ${FILE}.${EXTENSION}

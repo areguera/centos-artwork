@@ -82,7 +82,7 @@ function render {
     local RENDER_EXTENSIONS='svg docbook'
 
     # Interpret arguments and options passed through command-line.
-    render_getOptions
+    ${CLI_FUNCNAME}_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and

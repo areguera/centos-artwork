@@ -46,7 +46,7 @@ function render_doBaseActions {
     PARENTDIR=$(basename "${ACTIONVAL}")
 
     # Define base location of template files.
-    render_getDirTemplate
+    ${CLI_FUNCNAME}_getDirTemplate
     
     # Loop through list of supported file extensions. 
     for RENDER_EXTENSION in ${RENDER_EXTENSIONS};do
@@ -178,7 +178,7 @@ function render_doBaseActions {
             fi
  
             # Define final location of output directory.
-            render_getDirOutput
+            ${CLI_FUNCNAME}_getDirOutput
 
             # Get relative path to file. The path string (stored in
             # FILE) has two parts: 1. the variable path and 2. the
@@ -220,7 +220,7 @@ function render_doBaseActions {
 
             # Apply translation file to design model to produce the design
             # model translated instance. 
-            render_doTranslation
+            ${CLI_FUNCNAME}_doTranslation
 
             # Expand translation markers inside design model instance.
             cli_expandTMarkers ${INSTANCE}

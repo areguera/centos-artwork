@@ -27,7 +27,7 @@ function svg_convertPngTo {
 
     # Initialize image formats.
     local FORMAT=''
-    local FORMATS=$(render_getConfigOption "$ACTION" '2')
+    local FORMATS=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2')
 
     # Convert from PNG to specified formats.
     for FORMAT in $FORMATS;do

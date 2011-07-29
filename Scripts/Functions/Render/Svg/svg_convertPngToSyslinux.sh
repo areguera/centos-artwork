@@ -73,7 +73,7 @@ function svg_convertPngToSyslinux {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    local OPTIONS=$(render_getConfigOption "$ACTION" '2-')
+    local OPTIONS=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2-')
 
     # Check options passed to action. This is required in order to
     # aviod using options already used in this script. For example
