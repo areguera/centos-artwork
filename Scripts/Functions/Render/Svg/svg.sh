@@ -52,7 +52,7 @@ function svg {
         | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \1 \2!")" 
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
         | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`:!")"
- 
+
     # Perform backend post-rendition.
     ${RENDER_BACKEND}_doPostActions
 
