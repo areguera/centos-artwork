@@ -80,6 +80,9 @@ function svg_convertPngToDm {
     local FILE=''
     local FILES=''
 
+    # Define major release from template.
+    local MAJOR_RELEASE=$(cli_getPathComponent "$TEMPLATE" "--release-major")
+
     # Define file relation between source and target locations, based
     # on whether we are producing GDM or KDM. Use the colon character
     # (`:') as separator; on the left side we put the file's source
@@ -92,7 +95,7 @@ function svg_convertPngToDm {
         Gdm )
             FILES="\
             ${BRANDS}/Symbols/48/centos.png:centos-symbol.png
-            ${OUTPUT}/release.png:centos-release.png
+            ${BRANDS}/Types/White/111/centos-${MAJOR_RELEASE}-msg.png:centos-release.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
@@ -106,7 +109,7 @@ function svg_convertPngToDm {
         Kdm )
             FILES="\
             ${BRANDS}/Symbols/48/centos.png:centos-symbol.png
-            ${OUTPUT}/release.png:centos-release.png
+            ${BRANDS}/Types/White/111/centos-${MAJOR_RELEASE}-msg.png:centos-release.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
