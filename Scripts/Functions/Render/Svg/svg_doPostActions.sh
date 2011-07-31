@@ -48,27 +48,42 @@ function svg_doPostActions {
     # rendition provides a predictable way of producing content inside
     # the repository.
     if [[ $FLAG_DONT_DIRSPECIFIC == 'false' ]];then
-        if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg'
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupBy:png jpg'
-        elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
-        elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToSyslinux:'
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToSyslinux:-floyd'
-        elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToGrub:'
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToGrub:-floyd'
-        elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
+
+        if [[ $TEMPLATE =~ 'trunk/Identity/Models/Themes/.+\.svg$' ]];then
+
+            POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngToBranded"
+
+            if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg'
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupBy:png jpg'
+
+            elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
+
+            elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToSyslinux:'
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToSyslinux:-floyd'
+
+            elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToGrub:'
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToGrub:-floyd'
+
+            elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
+                POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
+            fi
+
         elif [[ $TEMPLATE =~ "trunk/Identity/Models/Brands/.+\.svg$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToBrands'
+
         elif [[ $TEMPLATE =~ "trunk/Identity/Models/Icons/.+\.svg$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToIcons'
+
         elif [[ $TEMPLATE =~ "trunk/Identity/Models/Manuals.+\.svg$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
+
         fi
+
     fi
 
     # Execute SVG post-rendition actions.
