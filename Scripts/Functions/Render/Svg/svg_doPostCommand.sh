@@ -3,7 +3,7 @@
 # svg_doPostCommand.sh -- This function standardizes the way
 # post-rendition commands are applied to base-rendition output.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

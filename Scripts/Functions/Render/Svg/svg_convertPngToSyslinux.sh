@@ -23,28 +23,28 @@
 # In order for this function to work, the `syslinux.gpl' file should
 # have a format similar to the following:
 #
-#   GIMP Palette
-#   Name: CentOS-TreeFlower-4-Syslinux
-#   Columns: 16
-#   #
-#    32  76 141	204c8d
-#    37  82 146	255292
-#    52  94 153	345e99
-#    73 110 162	496ea2
-#    91 124 172	5b7cac
-#   108 136 180	6c88b4
-#   120 146 186	7892ba
-#   131 158 193	839ec1
-#   255 255 255	ffffff
-#   146 170 200	92aac8
-#   162 182 209	a2b6d1
-#   183 199 219	b7c7db
-#   204 216 230	ccd8e6
-#   221 229 238	dde5ee
-#   235 241 245	ebf1f5
-#   246 251 254	f6fbfe
+# GIMP Palette
+# Name: CentOS-TreeFlower-4-Syslinux
+# Columns: 16
+# #
+# 32  76 141	204c8d
+# 37  82 146	255292
+# 52  94 153	345e99
+# 73 110 162	496ea2
+# 91 124 172	5b7cac
+# 108 136 180	6c88b4
+# 120 146 186	7892ba
+# 131 158 193	839ec1
+# 255 255 255	ffffff
+# 146 170 200	92aac8
+# 162 182 209	a2b6d1
+# 183 199 219	b7c7db
+# 204 216 230	ccd8e6
+# 221 229 238	dde5ee
+# 235 241 245	ebf1f5
+# 246 251 254	f6fbfe
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

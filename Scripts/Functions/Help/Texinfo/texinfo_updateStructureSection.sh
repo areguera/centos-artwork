@@ -4,7 +4,7 @@
 # section entry files inside manual's base directory and updates menu,
 # nodes and cross references definitions for them all, one at a time.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

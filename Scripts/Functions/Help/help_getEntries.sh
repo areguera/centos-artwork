@@ -4,7 +4,7 @@
 # arguments passed to `help' functionality through the command-line
 # and redefines array variables related to documentation entries.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

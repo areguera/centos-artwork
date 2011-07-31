@@ -12,22 +12,22 @@
 # In this configuration and using default configuration settings, I've
 # presented the following problems:
 #
-#   1. It is not possible to produce localized PDF outputs through
-#   `xml2po', the default way of producing localized content inside
-#   `centos-art.sh' script.
+# 1. It is not possible to produce localized PDF outputs through
+# `xml2po', the default way of producing localized content inside
+# `centos-art.sh' script.
 #
 # In this configuration and using default configuration settins, I've
 # presented the following advantages:
 #
-#   1. The PDF output produced from SGML-based files seem to be better
-#   looking an less buggy than PDF output produced from XML-based
-#   files, visually I mean.
+# 1. The PDF output produced from SGML-based files seem to be better
+# looking an less buggy than PDF output produced from XML-based
+# files, visually I mean.
 #
 # To make the whole process transparent, a temporal directory is
 # created for intermediate works and final files are moved then to
 # their final location.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

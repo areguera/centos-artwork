@@ -6,7 +6,7 @@
 # `docbook-style-xsl-1.69.1-5.1' package, which says: ---To publish
 # HTML from your XML documents, you just need an XSL engine.---.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

@@ -5,7 +5,7 @@
 # domain organization of The CentOS Project through its URLs and
 # provides a way to print them out when needed.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

@@ -5,7 +5,7 @@
 # control, this function returns `true'. when the location isn't under
 # version control, this function returns `false'.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

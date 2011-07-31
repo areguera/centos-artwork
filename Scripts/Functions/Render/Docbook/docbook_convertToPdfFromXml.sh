@@ -10,37 +10,37 @@
 # In this configuration and using default configuration settings, I've
 # presented the following problems:
 #
-#   1. Something is wrong with headings. They are not expanded along
-#   the whole page-body. They seem to be rendered in a reduced width
-#   (1 inch approximatly). This provokes the heading to be broken in a
-#   two-to-five letters column and sometimes it overlaps the
-#   sectioning titles (e.g., chatper, section). I tried to customize
-#   the value of `header.column.widths' and `page.margin.top' but it
-#   seems to be not there where I need to touch.
+# 1. Something is wrong with headings. They are not expanded along
+# the whole page-body. They seem to be rendered in a reduced width
+# (1 inch approximatly). This provokes the heading to be broken in a
+# two-to-five letters column and sometimes it overlaps the
+# sectioning titles (e.g., chatper, section). I tried to customize
+# the value of `header.column.widths' and `page.margin.top' but it
+# seems to be not there where I need to touch.
 #
-#   2. TOC's indentation is not rendered. Even the `toc.indent.width'
-#   property is set to 24 by default.
+# 2. TOC's indentation is not rendered. Even the `toc.indent.width'
+# property is set to 24 by default.
 #
-#   3. Inside lists, when items are more than one line, the
-#   indentation seems to work for the first line only.  All other
-#   lines in the same item are not indented and begin completly
-#   unaligned.
+# 3. Inside lists, when items are more than one line, the
+# indentation seems to work for the first line only.  All other
+# lines in the same item are not indented and begin completly
+# unaligned.
 #
-#   4. Long file paths near the end of page-body aren't hyphenated.
-#   Even the `hyphenate' property is set to `true' by default.
+# 4. Long file paths near the end of page-body aren't hyphenated.
+# Even the `hyphenate' property is set to `true' by default.
 #
 # In this configuration and using default configuration settings, I've
 # presented the following advantages:
 #
-#   1. It is possible to produce localized PDF outputs through
-#   `xml2po', the default way of producing localized content inside
-#   the `centos-art.sh' script.
+# 1. It is possible to produce localized PDF outputs through
+# `xml2po', the default way of producing localized content inside
+# the `centos-art.sh' script.
 #
 # To make the whole process transparent, a temporal directory is
 # created for intermediate works and final files are moved then to
 # their final location.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

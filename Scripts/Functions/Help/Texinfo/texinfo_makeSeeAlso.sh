@@ -6,13 +6,13 @@
 # set inside the section entry itself, through the following
 # construction:
 #
-#   @c -- <[centos-art(SeeAlso,TYPE)
-#   @c -- ]>
+# @c -- <[centos-art(SeeAlso,TYPE)
+# @c -- ]>
 #
 # In this construction, the TYPE variable can be either `itemize',
 # `enumerate' or `menu'.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

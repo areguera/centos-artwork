@@ -3,7 +3,7 @@
 # texinfo_deleteEntrySection.sh -- This function standardized section
 # deletion inside the manual structure.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

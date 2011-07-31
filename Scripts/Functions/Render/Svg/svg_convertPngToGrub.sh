@@ -16,26 +16,26 @@
 # In order for this function to work, the `grub.gpl' file should have
 # a format similar to the following:
 #
-#   GIMP Palette
-#   Name: CentOS-TreeFlower-4-Syslinux
-#   Columns: 14
-#   #
-#    32  76 141	204c8d
-#    36  82 146	245292
-#    52  93 152	345d98
-#    72 108 162	486ca2
-#   102 131 176	6683b0
-#   126 153 190	7e99be
-#   146 170 200	92aac8
-#   161 182 209	a1b6d1
-#   182 199 219	b6c7db
-#   202 214 228	cad6e4
-#   221 230 238	dde6ee
-#   235 241 245	ebf1f5
-#   246 251 254	f6fbfe
-#   254 255 252	fefffc
+# GIMP Palette
+# Name: CentOS-TreeFlower-4-Syslinux
+# Columns: 14
+# #
+# 32  76 141	204c8d
+# 36  82 146	245292
+# 52  93 152	345d98
+# 72 108 162	486ca2
+# 102 131 176	6683b0
+# 126 153 190	7e99be
+# 146 170 200	92aac8
+# 161 182 209	a1b6d1
+# 182 199 219	b6c7db
+# 202 214 228	cad6e4
+# 221 230 238	dde6ee
+# 235 241 245	ebf1f5
+# 246 251 254	f6fbfe
+# 254 255 252	fefffc
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

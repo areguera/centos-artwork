@@ -3,7 +3,7 @@
 # texinfo_getEntry.sh -- This function builds a documentation entry
 # based on location specified as first positional parameter.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
