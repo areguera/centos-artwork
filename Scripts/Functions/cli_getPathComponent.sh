@@ -39,7 +39,7 @@ function cli_getPathComponent {
     local ARGUMENTS=''
 
     # Define release pattern.
-    local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+)){,1})"
+    local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+)){0,1})"
 
     # Define architecture pattern. Make it match the architectures the
     # CentOS distribution is able to be installed on.
