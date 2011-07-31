@@ -49,6 +49,8 @@ function cli_expandTMarkers {
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year-list)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-holder)"
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER_PREDICATE='
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-holder-predicate)"
 
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
