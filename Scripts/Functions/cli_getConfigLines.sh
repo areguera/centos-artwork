@@ -37,32 +37,25 @@ function cli_getConfigLines {
     # we want to to retrive is set in.
     local CONFIG_SECTION="$2"
 
-    # Verify configuration section name. Be sure it is one of the
-    # supported values.
-    if [[ ! $CONFIG_SECTION =~ '^(main|templates)$' ]];then
-        CONFIG_SECTION='main'
-    fi
-
     # Initialize variable name we want to retrive value from.
     local CONFIG_VARNAME="$3"
 
     # Verify configuration variable name. When no variable name is
-    # provided print all configuration lines. Be sure configuration
-    # variable name starts just at the begining of the line.
-    if [[ ! $CONFIG_VARNAME =~ '^[[:alnum:]_/-\.]+$' ]];then
-        CONFIG_VARNAME='^[[:alnum:]_/-\.]+='
-    else
-        CONFIG_VARNAME="^${CONFIG_VARNAME}"
+    # provided print all configuration lines that can be considered
+    # as well-formed paths. Be sure configuration variable name starts
+    # just at the begining of the line.
+    if [[ ! $CONFIG_VARNAME =~ '^[[:alnum:]_./-]+$' ]];then
+        CONFIG_VARNAME='[[:alnum:]_./-]+='
     fi
 
     # Retrive configuration lines from configuration file.
-    local CONFIG_LINES=$(cat ${MANUAL_CONFIG_FILE} \
+    local CONFIG_LINES=$(cat ${CONFIG_ABSPATH} \
         | egrep -v '^#' \
         | egrep -v '^[[:space:]]*$' \
         | sed -r 's![[:space:]]*!!g' \
         | sed -r -n "/^\[${CONFIG_SECTION}\]$/,/^\[/p" \
         | egrep -v '^\[' | sort | uniq \
-        | egrep "${CONFIG_VARNAME}")
+        | egrep "^${CONFIG_VARNAME}")
 
     # Output value related to variable name.
     echo "$CONFIG_LINES"
