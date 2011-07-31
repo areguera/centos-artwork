@@ -65,6 +65,11 @@ function render {
     # performs directory-specific rendition.
     local FLAG_DONT_DIRSPECIFIC='false'
 
+    # Initialize `--with-brands' option. This option controls whether
+    # to brand output images or not. By default output images are not
+    # branded.
+    local FLAG_WITH_BRANDS='false'
+
     # Initialize name of rendition backend as an empty value. The name
     # of rendition backend is determined automatically based on
     # template file extension, later, at rendition time. 

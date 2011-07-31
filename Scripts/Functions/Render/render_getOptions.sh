@@ -29,7 +29,7 @@ function render_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:"
+    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_parseArguments
@@ -97,6 +97,11 @@ function render_getOptions {
             --theme-model )
                 FLAG_THEME_MODEL=$(cli_getRepoName $2 -d)
                 shift 2
+                ;;
+
+            --with-brands )
+                FLAG_WITH_BRANDS='true'
+                shift 1
                 ;;
 
             -- )
