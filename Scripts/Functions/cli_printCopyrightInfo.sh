@@ -35,126 +35,84 @@
 
 function cli_printCopyrightInfo {
 
-    # Define short options.
-    local ARGSL=''
+    case "$1" in
 
-    # Define long options.
-    local ARGSL='license,license-url,coyright,copyright-year,copyright-year-last,copyright-year-first,copyright-year-list,copyright-year-range,copyright-holder'
+        --license )
 
-    # Initialize arguments with an empty value and set it as local
-    # variable to this function scope.
-    local ARGUMENTS=''
+            # Print out the name of the license used by to release the
+            # content produced by centos-art.sh script, inside CentOS
+            # Artwork Repository.
+            echo "`gettext "Creative Common Attribution-ShareAlike 3.0 License"`"
+            ;;
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_parseArgumentsReDef "$@"
+        --license-url )
 
-    # Redefine ARGUMENTS variable using getopt output.
-    cli_parseArguments
+            # Print out the url of the license used by to release the
+            # content produced by centos-art.sh script, inside CentOS
+            # Artwork Repository.
+            cli_printUrl --cc-sharealike
+            ;;
 
-    # Redefine positional parameters using ARGUMENTS variable.
-    eval set -- "$ARGUMENTS"
+        --copyright-year-first )
 
-    # Look for options passed through positional parameters.
-    while true; do
+            # The former year when I (as part of The CentOS Project)
+            # started to consolidate The CentOS Project Corporate
+            # Visual Identity through the CentOS Artwork Repository.
+            echo '2009'
+            ;;
 
-        case "$1" in
+        --copyright-year|--copyright-year-last )
 
-            --license )
+            # The last year when The CentOS Project stopped working in
+            # its Corporate Visual Identity through the CentOS Artwork
+            # Repository. That is something that I hope does never
+            # happen, so assume the current year as last working year.
+            date +%Y
+            ;;
 
-                # Print out the name of the license used by to release
-                # the content produced by centos-art.sh script, inside
-                # CentOS Artwork Repository.
-                echo "Creative Common Attribution-ShareAlike 3.0"
-                shift 2
-                break
-                ;;
+        --copyright-year-range )
 
-            --license-url )
+            local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
+            local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
+            echo "${FIRST_YEAR}-${LAST_YEAR}"
+            ;;
 
-                # Print out the url of the license used by to release
-                # the content produced by centos-art.sh script, inside
-                # CentOS Artwork Repository.
-                cli_printUrl --cc-sharealike
-                shift 2
-                break
-                ;;
+        --copyright-year-list )
 
-            --copyright-year-first )
+            local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
+            local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
 
-                # The former year when I (as part of The CentOS
-                # Project) started to consolidate The CentOS Project
-                # Corporate Visual Identity through the CentOS Artwork
-                # Repository.
-                echo '2009'
-                shift 2
-                break
-                ;;
+            # Define full copyright year string based on first and
+            # last year.
+            local FULL_YEAR=$(\
+                while [[ ${FIRST_YEAR} -le ${LAST_YEAR} ]];do
+                    echo -n "${FIRST_YEAR}, "
+                    FIRST_YEAR=$(($FIRST_YEAR + 1))
+                done)
 
-            --copyright-year|--copyright-year-last )
-
-                # The last year when The CentOS Project stopped
-                # working in its Corporate Visual Identity through the
-                # CentOS Artwork Repository. That is something that I
-                # hope does never happen, so assume the current year
-                # as last working year.
-                date +%Y
-                shift 2
-                break
-                ;;
-
-            --copyright-year-range )
-
-                local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
-                local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
-                echo "${FIRST_YEAR}-${LAST_YEAR}"
-                shift 2
-                break
-                ;;
-
-            --copyright-year-list )
-
-                local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
-                local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
-
-                # Define full copyright year string based on first and
-                # last year.
-                local FULL_YEAR=$(\
-                    while [[ ${FIRST_YEAR} -le ${LAST_YEAR} ]];do
-                        echo -n "${FIRST_YEAR}, "
-                        FIRST_YEAR=$(($FIRST_YEAR + 1))
-                    done)
-
-                # Prepare full copyright year string and print it out. 
-                echo "${FULL_YEAR}" | sed 's!, *$!!'
-                shift 2
-                break
-                ;;
+            # Prepare full copyright year string and print it out. 
+            echo "${FULL_YEAR}" | sed 's!, *$!!'
+            ;;
     
-            --copyright-holder )
+        --copyright-holder )
             
-                # Output default copyright holder.
-                echo "The CentOS Artwork SIG"
-                shift 2
-                break
-                ;;
+            # Output default copyright holder.
+            echo "`gettext "The CentOS Project"`"
+            ;;
 
-            --copyright )
+        --copyright-holder-predicate )
 
-                local YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
-                local HOLDER=$(cli_printCopyrightInfo '--copyright-holder')
-                echo "Copyright © $YEAR $HOLDER"
-                shift 2
-                break
-                ;;
+            local HOLDER=$(cli_printCopyrightInfo '--copyright-holder')
+            echo "${HOLDER}. `gettext "All rights reserved."`"
+            ;;
 
-            -- )
-                cli_printMessage "`gettext "At least one option is required."`" --as-error-line
-                shift 1
-                break
-                ;;
+        --copyright )
 
-        esac
+            local YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
+            local HOLDER=$(cli_printCopyrightInfo '--copyright-holder')
+            echo "Copyright © ${YEAR} ${HOLDER}"
+            ;;
 
-    done
+    esac
 
 }
