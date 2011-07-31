@@ -24,14 +24,14 @@
     <!-- CentOS Release -->
     
     <item type="pixmap">
-    <pos x="10" y="56%" anchor="sw" />
+    <pos x="20" y="55%" anchor="sw" />
     <normal file="centos-release.png" />
     </item>
     
     <!-- The Login Box -->
     
     <item type="rect">
-    <pos x="20" y="57%" width="490" height="box" />
+    <pos x="20" y="57%" width="510" height="box" />
     <box orientation="vertical">
 
         <item type="rect">
@@ -120,7 +120,7 @@
 
             <item type="rect" id="language_button" button="true">
             <pos width="box" height="box" />
-            <box xpadding="6" orientation="horizontal">
+            <box xpadding="10" orientation="horizontal">
 
                 <item type="pixmap">
                 <normal file="icon-language.png" />
@@ -141,7 +141,7 @@
     
             <item type="rect" id="session_button" button="true">
             <pos width="box" height="box" />
-            <box xpadding="6" orientation="horizontal">
+            <box xpadding="10" orientation="horizontal">
     
                 <item type="pixmap">
                 <normal file="icon-session.png" />
@@ -163,7 +163,7 @@
             <item type="rect" id="system_button" button="true">
             <show modes="console" type="system" />
             <pos width="box" height="box" />
-            <box xpadding="6" orientation="horizontal">
+            <box xpadding="10" orientation="horizontal">
 
                 <item type="pixmap">
                 <normal file="icon-reboot.png" />
@@ -185,7 +185,7 @@
             <item type="rect" id="disconnect_button" button="true">
             <show modes="flexi,remote" />
             <pos width="box" height="box" />
-            <box xpadding="6" orientation="horizontal">
+            <box xpadding="10" orientation="horizontal">
 
                 <item type="pixmap">
                 <normal file="icon-shutdown.png" />
