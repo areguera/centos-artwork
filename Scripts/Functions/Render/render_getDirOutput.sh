@@ -27,7 +27,7 @@
 function render_getDirOutput {
 
     # Define base output directory using design model path as
-    # reference.  
+    # reference.
     OUTPUT=$(dirname $FILE | sed -r \
         -e "s!/Themes/${FLAG_THEME_MODEL}!/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
         -e "s!/Models!/Images!" \
@@ -41,12 +41,20 @@ function render_getDirOutput {
     fi
 
     # Redefine base output directory to introduce specific information
-    # like release number, architecture, etc.
-    OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
-
-    # Remove two or more consecutive slashes as well as the last
-    # remaining slash in the path.
-    OUTPUT=$(echo $OUTPUT | sed -r 's!/{2,}!/!g' | sed -r 's!/$!!')
+    # like release number and architecture. This information is
+    # require by directories (e.g., the `Media' directory inside
+    # themes) whose need this information to be passed explicitly
+    # at the command-line through the `--releasever' and `--basearch'
+    # options.  Other directories take such information from the path
+    # they are stored in (e.g., the `Distro/5/Anaconda' directory
+    # inside themes.). So, we need to differentiate the way
+    # information like release numbers and architectures are retrived
+    # in order to build the output path correctly at rendition time.
+    if [[ $OUTPUT =~ "^${MOTIF_DIR}/Media$" ]];then
+        OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
+    else
+        OUTPUT=${OUTPUT}
+    fi
 
     # Define whether to use or not locale-specific directory to store
     # content, using current locale information as reference. As
