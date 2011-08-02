@@ -30,14 +30,16 @@ function render {
 
     # Initialize `--releasever' option. The release version option
     # controls the release number used to produce release-specific
-    # content.  By default no release number is used.
-    local FLAG_RELEASEVER=''
+    # content.  By default, the release number of The CentOS
+    # Distribution you have installed in your workstation is used.
+    local FLAG_RELEASEVER=$(cat /etc/redhat-release \
+        | gawk '{ print $3 }')
 
     # Initialize `--basearch' option. The base architecture option
     # controls the architecture type used to produce
-    # architecture-specific content. By default no architecture type
-    # is used.
-    local FLAG_BASEARCH=''
+    # architecture-specific content.  By default, the hardware
+    # platform of your workstation is used.
+    local FLAG_BASEARCH=$(uname -i)
 
     # Initialize `--theme-model' option. The theme model option
     # specifies the the theme model name used to produce theme
