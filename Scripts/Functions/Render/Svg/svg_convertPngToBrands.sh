@@ -28,7 +28,7 @@ function svg_convertPngToBrands {
 
     # Define height dimensions you want to produce brands for.
     local SIZE=""
-    local SIZES="16 20 22 24 32 36 38 40 48 64 96 111 124 128 148 164 196 200 512"
+    local SIZES="16 20 22 24 32 36 38 40 48 64 96 112 124 128 148 164 196 200 512"
 
     # Define image formats you want to produce brands for.
     local FORMAT=""
