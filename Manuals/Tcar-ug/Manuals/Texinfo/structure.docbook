@@ -1,128 +1,81 @@
-<sect1 id="doc-texinfo-structure">
+<sect1 id="manuals-texinfo-structure">
 
     <title>Texinfo Document Structure</title>
 
     <para>
-        The document structure provides the organization needed to
-        make the documentation scalable and maintainable through time
-        which, in turn, involves document sectioning and file
-        organization inside specific locations of the working copy.
-        The document structure is also a convenction we adopt in order
-        to automate frequent tasks related to the document structure
-        itself. Without a well defined document structure convenction,
-        it would be very difficult for automation script to guess
-        where the documentation files are.
+        The document structure provided by texinfo backend creates the
+        organization needed to make documentation manuals scalable and
+        maintainable through time. Structuring considerations follows
+        the idea of an upside-down tree to organize chapters,
+        sections, subsections, and the like. The document initiates
+        with a Top node where we place document title, copyright note,
+        abstract, and the list of chapters.  Inside each chapter the
+        information is logically organized in sections, subsections
+        and subsubsections.
+    </para>
+
+    <para> 
+        The first time you create a documentation manual through
+        texinfo backend, the <command>centos-art.sh</command> script
+        considers the working directory you are placed in order to
+        determine where to store the documentation manual.  When the
+        current working directory is <filename
+        class="directory">branches/Manuals/Texinfo</filename>, the
+        documentation manual directory is created therein.  On all
+        other situations, the documentation manual directory is
+        created under <filename
+        class="directory">trunk/Manuals</filename> directory.  Once
+        the documentation manual directory has been created, the
+        <command>centos-art.sh</command> script creates its definition
+        files in conjuction with an appendix named
+        <quote>Licenses</quote>.  The content of licenses stored in
+        the Licenses appendix isn't inside the documentation manual
+        directory but refered from texinfo document templates, as
+        described at <xref linkend="manuals-texinfo-templates" />, so
+        the <code>help</code> functionality cannot control it.
     </para>
 
     <para>
-        The file organization of Texinfo documentation backend takes
-        place in <filename
-        class="directory">trunk/Manuals/Repository/Texinfo/</filename>
-        directory. Inside this location there is one documentation
-        structure for each language you want to support and the
-        <filename>repository-init.pl</filename> and
-        <filename>repository.sed</filename> files which let you
-        control common characteristics of final XHTML output (e.g.,
-        <command>texi2html</command> initialization, and markup
-        transformations).
-    </para>
-
-    <para>
-        The document sectioning follows the idea of an upside-down
-        tree to organize chapters, sections, subsections, and the
-        like. The document initiates with a Top node where we placed
-        document's title, copyright note, abstract, and a list of
-        available chapters to start browsing. Inside each chapter the
-        information is logically organized in sections which in turn
-        are subdivided in subsections and subsubsections.
-    </para>
-
-    <para>
-        The Texinfo document structure produced by
-        <function>help</function> functionality organizes information
-        in two chapters only, which are:
-
-        <orderedlist>
-
-        <listitem>
-        <para>
-            Directories &mdash; This chapter organizes documentation
-            entries related to repository directories. In the normal
-            work flow, you don't need to touch the files of this
-            chapter by your own. For that purpose, the
-            <command>centos-art.sh</command> script porovides the
-            <function>help</function> functionality. To manipulate
-            documentation entries in this chapter, you use the
-            <function>help</function> functionality as described in
-            <xref linkend="scripts-bash-help" />.
-        </para>
-        </listitem>
-
-        <listitem>
-        <para>
-            Licenses &mdash; This chapter includes licenses from
-            <filename
-            class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates/<replaceable>language</replaceable>/Licenses/</filename>
-            directory. In the normal work flow, you don't need to
-            touch this chapter. It is created when the document
-            structure is created and should ramain that way. If you
-            need to improve the markup, update the template files for
-            your language, not the content of this chapter.
-        </para>
-        </listitem>
-
-        </orderedlist>
-
-    </para>
- 
-    <para>
-        At the same level of chapter directories, the
-        <filename>repository.texinfo</filename>,
-        <filename>repository-index.texinfo</filename>,
-        <filename>repository-menu.texinfo</filename> and
-        <filename>repository-nodes.texinfo</filename> files exist to
-        set manual's main definitions (e.g., title, copyright notice,
-        chapters, appendixes, indexes and all the similar stuff a
-        documentation manual should have).
-    </para>
-    <para>
-        Inside each chapter directory, the
-        <filename>chapter.texinfo</filename>,
+        Inside the documentation manual directory, the
+        <filename>${MANUAL_NAME}.texinfo</filename>,
+        <filename>${MANUAL_NAME}-index.texinfo</filename>,
+        <filename>${MANUAL_NAME}-menu.texinfo</filename> and
+        <filename>${MANUAL_NAME}-nodes.texinfo</filename> files exist to
+        set manual's main definitions; including title, copyright
+        notice, chapters, appendixes, indexes and all the similar
+        stuff a documentation manual should have.  Inside each chapter
+        directory, the <filename>chapter.texinfo</filename>,
         <filename>chapter-menu.texinfo</filename> and
         <filename>chapter-nodes.texinfo</filename> files exist to
-        control definition of sections.  In addition to these files,
-        there are documentation entries to store the document's content
-        itself, using arbitrary file names prefixed with the <filename
-        class="extension">texinfo</filename> extension, just as it is
-        illustrated in <xref linkend="doc-texinfo-structure-eg1"
-        />.
+        control section definitions, related to the chapter they are
+        stored in. The documentation manual content itself is stored
+        in section files (a.k.a. <quote>documentation entries</quote>)
+        suffixed with <filename class="extension">texinfo</filename>
+        extension and arbitrarily named, as <xref
+        linkend="doc-texinfo-structure-eg1" /> describes.
     </para>
 
     <example id="doc-texinfo-structure-eg1">
-    <title>Texinfo backend's document structure.</title>
+    <title>Texinfo document structure.</title>
     <screenshot>
-    <screeninfo>Texinfo backend's document structure.</screeninfo>
+    <screeninfo>Texinfo document structure.</screeninfo>
     <mediaobject>
     <textobject>
-    <programlisting>trunk/Manuals/Repository/Texinfo
-|-- en_US
-|   |-- Directories
-|   |   |-- chapter-menu.texinfo
-|   |   |-- chapter-nodes.texinfo
-|   |   |-- chapter.texinfo
-|   |   |-- trunk/Identity.texinfo
-|   |   `-- trunk.texinfo
-|   |-- Licenses
-|   |   |-- chapter-menu.texinfo
-|   |   |-- chapter-nodes.texinfo
-|   |   `-- chapter.texinfo
-|   |-- repository-index.texinfo
-|   |-- repository-menu.texinfo
-|   |-- repository-nodes.texinfo
-|   `-- repository.texinfo
-|-- repository-init.pl
-|-- repository.css
-`-- repository.sed</programlisting>
+    <programlisting>trunk/Manuals/${MANUAL_NAME}
+`-- ${LANG}
+    |-- ${CHAPTER_NAME}
+    |   |-- chapter-menu.texinfo
+    |   |-- chapter-nodes.texinfo
+    |   |-- chapter.texinfo
+    |   `-- ${SECTION_NAME}.texinfo
+    |-- Licenses
+    |   |-- chapter-menu.texinfo
+    |   |-- chapter-nodes.texinfo
+    |   `-- chapter.texinfo
+    |-- ${MANUAL_NAME}-index.texinfo
+    |-- ${MANUAL_NAME}-menu.texinfo
+    |-- ${MANUAL_NAME}-nodes.texinfo
+    `-- ${MANUAL_NAME}.texinfo</programlisting>
     </textobject>
     </mediaobject>
     </screenshot>
