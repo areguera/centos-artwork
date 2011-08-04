@@ -4,11 +4,22 @@
 
     <partintro>
         <para>
-            This part describes the repository's documentation work
-            line. Here you'll find how documentation backends inside
-            The CentOS Distribution are used to produce documentation
-            manuals inside The CentOS
-            Artwork Repository.
+            &TCAR; documentation work line is implemented through
+            documentation manuals.  Documentation manuals are
+            implemented through documentation systems provided inside
+            &TCD; (e.g., <application>Texinfo</application> and
+            <application>Docbook</application>).  Structuring tasks
+            related to documentation systems (e.g., creating, editing,
+            deleting, copying, renaming, etc.) are standardized
+            through <quote>documentation backends</quote> inside the
+            <command>centos-art.sh</command> script.  Documentation
+            backends encapsulate the specificities of each
+            documentation system and are made available to you through
+            the <code>help</code> functionality, as described in <xref
+            linkend="scripts-bash-help" />.  This way, people
+            documenting don't need to deal with structuring tasks like
+            creating files, updating menus, nodes, cross references
+            and be aware of where to put the files.
         </para>
 
     </partintro>
@@ -17,4 +28,3 @@
     &manuals-docbook;
 
 </part>
-
