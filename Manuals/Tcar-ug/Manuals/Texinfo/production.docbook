@@ -1,0 +1,64 @@
+<sect1>
+
+    <title>Texinfo Document Production</title>
+
+    <para>
+        The production of documentation manuals written in Texinfo
+        format is realized through the <code>help</code> functionality
+        of <command>centos-art.sh</command> script, as described in
+        <xref linkend="scripts-bash-help" />.  To illustrate the
+        production cycle, we'll describe it using the
+        <quote>Repository File System</quote> documentation manual as
+        reference.
+    </para>
+
+    <para>
+        The first step before creating a documentation manual is to
+        make yourself an idea of what such manual intends to document.
+        The <quote>Repository File System</quote> emerged with the
+        need of understand what each directory inside &TCAR; is for,
+        how they can be used and how they connect one another as the
+        repository structure itself is built on.  Explaining something
+        that is being conceived on its very first begining is a rather
+        difficult task. So, I decided to create documentation adapting
+        the same principales I followed to create functionalities
+        inside <command>centos-art.sh</command> script as a way to
+        understand what I was doing. This way, if programs should do
+        one thing well, each directory inside the repository should be
+        documented well in order to better understand what they do and
+        how they related one another. Later, summing them all would
+        let us, hypothetically, to correct the whole idea in a
+        repeatable cycle of improvement that would consolidate the
+        final idea we try to implement. 
+    </para>
+
+    <para>
+        Once you've make yourself an idea of what the documentation
+        manual is for, it is time to define the manual title and the
+        directory name where the manual will be sotred in. The manual
+        title describes, in few words, what the documentation manual
+        is about and can be changed later. The manual directory name
+        must be a word or several words separated by minus sign. As
+        convenction, as manual directory name would be useful to use
+        acronyms or abbreviations directly related to manual's title.
+        In our example, the documentation manual was initially titled
+        <quote>The CentOS Artwork Repository File System</quote> but
+        it was too long, so it was reduced to <quote>Repository File
+        System</quote> and the documentation directory name was set to
+        <code>Tcar-fs</code>.
+    </para>
+
+    <para>
+        Once that both documentation manual title and directory name
+        have been defined, you can create the documentation manual
+        using the <code>help</code> functionality of
+        <command>centos-art.sh</command> script. In our example, the
+        command to execute would be the following:
+    </para>
+    <screen>centos-art help tcar-fs:</screen>
+
+    <para>
+        ...
+    </para>
+
+</sect1>
