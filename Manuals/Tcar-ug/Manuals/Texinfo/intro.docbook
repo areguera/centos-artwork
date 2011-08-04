@@ -3,36 +3,14 @@
     <title>Introduction</title>
 
     <para>
-        Documentation manuals that use
-        <application>Texinfo</application> as documentation backend
-        are conceived to describe what each directory inside The
-        CentOS Artwork Repository is for, the conceptual ideas behind
-        them and, if possible, how automation scripts make use of
-        them. They provides a documentation entry for each directory
-        inside the repository and, this way, a place to document it.
-    </para>
-
-    <para>
-        Most actions related to Texinfo documentation backend (e.g.,
-        editing, reading, copying, renaming, etc.) are controlled by
-        the <function>help</function> functionality as described in
-        <xref linkend="scripts-bash-help" />.  Through this
-        functionality you can  manipulate documentation entries in a
-        way that you don't need to take care of updating menus, nodes
-        and cross reference information inside the manual source files
-        because the functionality takes care of it for you.  However,
-        if you need to write repository documentation that have
-        nothing to do with repository directories (e.g., Preface,
-        Introduction and similar) you need to do it by your own, there
-        is no functionality to help you doing such things, yet.
-    </para>
-
-    <para>
-        The Texinfo documentation backend could result useful to you
-        if your only need is to document directory structures in a
-        manual that follows, exactly, the same organization of the
-        structure it documents (e.g., one directory one documentation
-        entry for it).
+        The <command>centos-art.sh</command> script provides the
+        texinfo backend to standardize most documentation tasks
+        related to documentation manuals written in Texinfo
+        documentation system, inside &TCAR;.  Most actions related to
+        texinfo documentation backend management (e.g., editing,
+        reading, copying, renaming, etc.) are controlled by the
+        <function>help</function> functionality as described in <xref
+        linkend="scripts-bash-help" />.
     </para>
 
 </sect1>
