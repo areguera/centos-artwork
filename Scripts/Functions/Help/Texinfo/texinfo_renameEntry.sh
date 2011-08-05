@@ -42,7 +42,7 @@ function texinfo_renameEntry {
         # location has been renamed, the section menu, nodes and cross
         # references are updated to keep consistency inside the
         # manual.
-        ${FLAG_BACKEND}_renameEntrySection
+        ${MANUAL_BACKEND}_renameEntrySection
 
     elif [[ ${MANUAL_CHAN[$MANUAL_DOCENTRY_ID]} != '' ]] \
         && [[ ${MANUAL_CHAN[(($MANUAL_DOCENTRY_ID + 1))]} != '' ]];then
@@ -53,7 +53,7 @@ function texinfo_renameEntry {
         # location has been renamed, the chapter and section menu,
         # nodes and cross references are updated to keep consistency
         # inside the manual.
-        ${FLAG_BACKEND}_renameEntryChapter
+        ${MANUAL_BACKEND}_renameEntryChapter
 
     elif [[ ${MANUAL_DIRN[$MANUAL_DOCENTRY_ID]} != '' ]] \
         && [[ ${MANUAL_DIRN[(($MANUAL_DOCENTRY_ID + 1))]} != '' ]] ;then
@@ -64,7 +64,7 @@ function texinfo_renameEntry {
         # location. Once the source manual has been renamed, chapter
         # and section menu, nodes and cross references are updated to
         # keep consistency inside the manual.
-        ${FLAG_BACKEND}_renameEntryManual
+        ${MANUAL_BACKEND}_renameEntryManual
 
     else
         cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line

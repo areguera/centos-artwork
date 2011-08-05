@@ -108,7 +108,7 @@ function texinfo_createStructure {
     done
 
     # Initialize chapter structure inside the manual.
-    ${FLAG_BACKEND}_createStructureChapters
+    ${MANUAL_BACKEND}_createStructureChapters
 
     # Redefine absolute path to changed directory.
     MANUAL_CHANGED_DIRS=${MANUAL_BASEDIR}

@@ -117,11 +117,11 @@ function texinfo_makeSeeAlso {
         # Redefine list's entry based on translation marker definition.
         if [[ $LIST_TYPE =~ '^menu$' ]];then
             for CHILD_ENTRY in $CHILD_ENTRIES;do
-                LIST_ENTRIES="* $(${FLAG_BACKEND}_getEntryNode "$CHILD_ENTRY")::\n${LIST_ENTRIES}"
+                LIST_ENTRIES="* $(${MANUAL_BACKEND}_getEntryNode "$CHILD_ENTRY")::\n${LIST_ENTRIES}"
             done
         elif [[ $LIST_TYPE =~ '^(itemize|enumerate)$' ]];then 
             for CHILD_ENTRY in $CHILD_ENTRIES;do
-                LIST_ENTRIES="@item @ref{$(${FLAG_BACKEND}_getEntryNode "$CHILD_ENTRY")}\n${LIST_ENTRIES}"
+                LIST_ENTRIES="@item @ref{$(${MANUAL_BACKEND}_getEntryNode "$CHILD_ENTRY")}\n${LIST_ENTRIES}"
             done
         else
             # When an translation marker isn't recognize, go on with

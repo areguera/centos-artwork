@@ -36,7 +36,7 @@ function texinfo_editEntry {
         # its chapter directory. There is no more levels deep so it is
         # possible to perform a direct chapter verification here.
         if [[ ! -a $(dirname $MANUAL_ENTRY)/chapter.${MANUAL_EXTENSION} ]];then
-            ${FLAG_BACKEND}_createChapter
+            ${MANUAL_BACKEND}_createChapter
         fi
 
         # Print confirmation question. 
@@ -46,7 +46,7 @@ function texinfo_editEntry {
 
         # Update section menu, nodes and cross references based on
         # changes in order for manual structure to remain cosistent.
-        ${FLAG_BACKEND}_updateStructureSection "$MANUAL_ENTRY"
+        ${MANUAL_BACKEND}_updateStructureSection "$MANUAL_ENTRY"
 
         # Use default text editor to write changes on documentation entry.
         $EDITOR $MANUAL_ENTRY
@@ -60,7 +60,7 @@ function texinfo_editEntry {
         # documentation entry. This way, if there is any change in the
         # section menu definition, it will be visible to you on
         # edition.
-        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
+        ${MANUAL_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
 
         # Use default text editor to write changes on documentation entry.
         $EDITOR $MANUAL_ENTRY
@@ -70,7 +70,7 @@ function texinfo_editEntry {
         # expansion to realize in the section menu definition, it be
         # applied right now. Don't see a reason for waiting until the
         # next edition for expansions to happen.
-        ${FLAG_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
+        ${MANUAL_BACKEND}_makeSeeAlso "$MANUAL_ENTRY"
 
     fi
 

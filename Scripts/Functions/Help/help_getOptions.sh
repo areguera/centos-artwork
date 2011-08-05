@@ -64,7 +64,7 @@ function help_getOptions {
                 # through cli_getRepoName using just the basename of
                 # the value provided. Otherwise, functionalities might
                 # be executed from unexpected places.
-                FLAG_BACKEND="$(cli_getRepoName "$2" -f)"
+                MANUAL_BACKEND="$(cli_getRepoName "$2" -f)"
                 shift 2
                 ;;
 

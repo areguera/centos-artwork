@@ -50,7 +50,7 @@ function texinfo_copyEntryManual {
     local MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
 
     # Create manual structure
-    ${FLAG_BACKEND}_createStructure
+    ${MANUAL_BACKEND}_createStructure
 
     # Print action maessage.
     cli_printMessage "`gettext "Updating chapter menus and nodes inside manual structure."`" --as-response-line
@@ -67,8 +67,8 @@ function texinfo_copyEntryManual {
 
         # Update chapter information inside the manual's texinfo
         # structure.
-        ${FLAG_BACKEND}_updateChapterMenu
-        ${FLAG_BACKEND}_updateChapterNodes
+        ${MANUAL_BACKEND}_updateChapterMenu
+        ${MANUAL_BACKEND}_updateChapterNodes
 
     done
 

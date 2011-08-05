@@ -46,7 +46,7 @@ function texinfo_restoreCrossReferences {
     fi
 
     # Build the node string using entry location.
-    local NODE="$(${FLAG_BACKEND}_getEntryNode "$MANUAL_ENTRY")"
+    local NODE="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY")"
 
     # Define regular expression patterns to match removed message
     # format produced by message_removeCrossReferences function.

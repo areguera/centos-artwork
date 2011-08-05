@@ -35,7 +35,7 @@ function help {
 
     # Initialize the backend flag (`--backend'). This option sets the
     # documentation backed used to perform documentation actions.
-    local FLAG_BACKEND='texinfo'
+    local MANUAL_BACKEND='texinfo'
 
     # Initialize manual's language.
     local MANUAL_L10N=$(cli_getCurrentLocale)
@@ -86,7 +86,7 @@ function help {
     # execution environment and make them available, this way, to
     # perform backend-specific documentation tasks.
     cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-        ${FLAG_BACKEND} -d)" "${FLAG_BACKEND}"
+        ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
 
     # Execute backend-specific documentation tasks for each
     # documentation entry specified in the command-line, individually.
@@ -147,7 +147,7 @@ function help {
         MANUAL_SECTION_NAME=${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]}
 
         # Execute backend-specific documentation tasks.
-        ${FLAG_BACKEND}
+        ${MANUAL_BACKEND}
 
         # Increment documentation entry counter id.
         MANUAL_DOCENTRY_ID=$(($MANUAL_DOCENTRY_ID + 1))
@@ -155,7 +155,7 @@ function help {
     done
 
     # Rebuild output files to propagate recent changes.
-    ${FLAG_BACKEND}_updateOutputFiles
+    ${MANUAL_BACKEND}_updateOutputFiles
 
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy

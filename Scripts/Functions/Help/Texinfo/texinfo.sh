@@ -38,7 +38,7 @@ function texinfo {
     # where we store locale directories (e.g., en_US, es_ES, etc.)
     # used to build manuals in texinfo format.
     MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-        ${FLAG_BACKEND} -d)/Templates
+        ${MANUAL_BACKEND} -d)/Templates
 
     # Define absolute path to language-specific template directory.
     # This is the place where we store locale-specific files used to
@@ -67,7 +67,7 @@ function texinfo {
     fi
 
     # Initialize document structure for new manuals.
-    ${FLAG_BACKEND}_createStructure
+    ${MANUAL_BACKEND}_createStructure
 
     # Define documentation entry default values. To build the
     # documentation entry, we combine the manual's name, the chapter's
@@ -83,7 +83,7 @@ function texinfo {
 
         # When chapter option is provided whith out a section name,
         # verify chapter's directory inside the manual,
-        ${FLAG_BACKEND}_createChapter
+        ${MANUAL_BACKEND}_createChapter
 
         # and define documentation entry based on chapter's main
         # definition file.
@@ -94,7 +94,7 @@ function texinfo {
         # When both the chapter option and non-option arguments are
         # provided, define documentation entries based on manual,
         # chapter and non-option arguments.
-        MANUAL_ENTRY="$(${FLAG_BACKEND}_getEntry "$MANUAL_SECTION_NAME")"
+        MANUAL_ENTRY="$(${MANUAL_BACKEND}_getEntry "$MANUAL_SECTION_NAME")"
 
     else
         cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
@@ -113,7 +113,7 @@ function texinfo {
         # terminate the script execution once the reading is done.
 
         # Update manual's output files.
-        ${FLAG_BACKEND}_updateOutputFiles
+        ${MANUAL_BACKEND}_updateOutputFiles
             
         # Read manual's Top node from info output file.
         info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
@@ -127,7 +127,7 @@ function texinfo {
         # arguments passed to `centos-art.sh' script in a special way.
         # In this configuration, only two non-option arguments are
         # processed in the first loop of their interpretation.
-        ${FLAG_BACKEND}_${ACTIONNAM}
+        ${MANUAL_BACKEND}_${ACTIONNAM}
 
         # Break interpretation of non-option arguments, to prevent the
         # second and further non-option arguments from being
@@ -145,7 +145,7 @@ function texinfo {
         # flow) nor commit any change form working copy to central
         # repository (e.g., output files are not under version
         # control).
-        ${FLAG_BACKEND}_${ACTIONNAM}
+        ${MANUAL_BACKEND}_${ACTIONNAM}
 
         # Terminate script execution right here. Actions realized in
         # this configuration doesn't need to update manual output
@@ -157,7 +157,7 @@ function texinfo {
 
         # Execute action names that follow help's execution flow as it
         # is, without any modification.
-        ${FLAG_BACKEND}_${ACTIONNAM}
+        ${MANUAL_BACKEND}_${ACTIONNAM}
 
     fi
 

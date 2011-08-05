@@ -27,10 +27,10 @@
 function texinfo_renameEntryManual {
 
     # Copy section source entry to target location.
-    ${FLAG_BACKEND}_copyEntryManual
+    ${MANUAL_BACKEND}_copyEntryManual
 
     # Delete section source entry.
-    ${FLAG_BACKEND}_deleteEntryManual
+    ${MANUAL_BACKEND}_deleteEntryManual
 
     # Redefine absolute paths to changed directories.  This is
     # required in order for `cli_commitRepoChanges' to be aware of

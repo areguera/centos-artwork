@@ -131,10 +131,10 @@ function texinfo_updateStructureSection {
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
         cli_printMessage "${MANUAL_ENTRY}" --as-response-line
-        ${FLAG_BACKEND}_${ACTIONNAM_SECMENU}
-        ${FLAG_BACKEND}_updateSectionNodes
-        ${FLAG_BACKEND}_makeSeeAlso "${MANUAL_ENTRY}"
-        ${FLAG_BACKEND}_${ACTIONNAM_CROSREF} "${MANUAL_ENTRY}"
+        ${MANUAL_BACKEND}_${ACTIONNAM_SECMENU}
+        ${MANUAL_BACKEND}_updateSectionNodes
+        ${MANUAL_BACKEND}_makeSeeAlso "${MANUAL_ENTRY}"
+        ${MANUAL_BACKEND}_${ACTIONNAM_CROSREF} "${MANUAL_ENTRY}"
     done
 
 }

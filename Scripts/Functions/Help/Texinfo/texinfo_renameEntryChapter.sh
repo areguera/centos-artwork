@@ -27,12 +27,12 @@
 function texinfo_renameEntryChapter {
 
     # Copy section source entry to target location.
-    ${FLAG_BACKEND}_copyEntryChapter
+    ${MANUAL_BACKEND}_copyEntryChapter
 
     # Delete section source entry.
-    ${FLAG_BACKEND}_deleteEntryChapter
+    ${MANUAL_BACKEND}_deleteEntryChapter
 
     # Rename menu, nodes and cross references related entries.
-    ${FLAG_BACKEND}_renameCrossReferences
+    ${MANUAL_BACKEND}_renameCrossReferences
 
 }
