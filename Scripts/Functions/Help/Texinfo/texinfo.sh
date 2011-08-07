@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# texinfo.sh -- This function initilializes the Texinfo documentation
-# backend used by centos-art.sh script to produce and maintain Texinfo
-# documentation manuals inside the working copy of The CentOS Artwork
-# Repository.
+# texinfo.sh -- This function initilializes Texinfo documentation
+# backend used by `centos-art.sh' script to produce and maintain
+# documentation manuals written in Texinfo format, inside the working
+# copy of The CentOS Artwork Repository.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -26,45 +26,6 @@
 # ----------------------------------------------------------------------
     
 function texinfo {
-
-    # Define file extension used by source files inside manuals.
-    MANUAL_EXTENSION='texinfo'
-
-    # Define absolute path to chapter's directory. This is the place
-    # where chapter-specific files are stored in.
-    MANUAL_CHAPTER_DIR="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}"
-
-    # Define absolute path to template directory. This is the place
-    # where we store locale directories (e.g., en_US, es_ES, etc.)
-    # used to build manuals in texinfo format.
-    MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-        ${MANUAL_BACKEND} -d)/Templates
-
-    # Define absolute path to language-specific template directory.
-    # This is the place where we store locale-specific files used to
-    # build manuals in texinfo format.
-    MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
-
-    # Verify absolute path to language-speicific template directory.
-    # If it doesn't exist, use English language as default location to
-    # retrive template files.
-    if [[ ! -d $MANUAL_TEMPLATE_L10N ]];then
-        MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
-    fi
-
-    # Define absolute path to manual's configuration file. This is the
-    # file that controls the way texinfo template files are applied to
-    # documentation entries once they have been created as well as the
-    # style and order used for printing sections. There is one default
-    # configuration file inside templates and, optionally, a
-    # manual-specific configuration file.  When manual-specific
-    # configuration file isn't found, the default configuration file
-    # is used instead.
-    if [[ -f ${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.conf ]];then
-        MANUAL_CONFIG_FILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.conf" 
-    else
-        MANUAL_CONFIG_FILE="${MANUAL_TEMPLATE}/manual.conf" 
-    fi
 
     # Initialize document structure for new manuals.
     ${MANUAL_BACKEND}_createStructure
@@ -115,11 +76,8 @@ function texinfo {
         # Update manual's output files.
         ${MANUAL_BACKEND}_updateOutputFiles
             
-        # Read manual's Top node from info output file.
-        info --node="Top" --file=${MANUAL_BASEFILE}.info.bz2
-
-        # Terminate script execution right here.
-        exit
+        # Read manual's Top node from its info output file.
+        info --node="Top" --file="${MANUAL_BASEFILE}.info.bz2"
 
     elif [[ $ACTIONNAM =~ "^(copy|rename)Entry$" ]];then
 
@@ -129,9 +87,12 @@ function texinfo {
         # processed in the first loop of their interpretation.
         ${MANUAL_BACKEND}_${ACTIONNAM}
 
-        # Break interpretation of non-option arguments, to prevent the
+        # Rebuild output files to propagate recent changes, if any.
+        ${MANUAL_BACKEND}_updateOutputFiles
+
+        # Break interpretation of non-option arguments to prevent the
         # second and further non-option arguments from being
-        # considered a source location.
+        # considered as source location.
         break
 
     elif [[ $ACTIONNAM =~ "^(search(Node|Index)|updateOutputFiles)$" ]];then
@@ -147,17 +108,14 @@ function texinfo {
         # control).
         ${MANUAL_BACKEND}_${ACTIONNAM}
 
-        # Terminate script execution right here. Actions realized in
-        # this configuration doesn't need to update manual output
-        # files, nor commit changes from working copy up to central
-        # repository.
-        exit
-
     else
 
         # Execute action names that follow help's execution flow as it
         # is, without any modification.
         ${MANUAL_BACKEND}_${ACTIONNAM}
+
+        # Rebuild output files to propagate recent changes, if any.
+        ${MANUAL_BACKEND}_updateOutputFiles
 
     fi
 

@@ -33,10 +33,6 @@ function help {
     # look for documentation inside documentation backends.
     local FLAG_SEARCH=""
 
-    # Initialize the backend flag (`--backend'). This option sets the
-    # documentation backed used to perform documentation actions.
-    local MANUAL_BACKEND='texinfo'
-
     # Initialize manual's language.
     local MANUAL_L10N=$(cli_getCurrentLocale)
 
@@ -81,13 +77,6 @@ function help {
     # information related documentation entries from there.
     ${CLI_FUNCNAME}_getEntries
 
-    # Initialize documentation backend functionalities. At this point
-    # we load all functionalities required into `centos-art.sh''s
-    # execution environment and make them available, this way, to
-    # perform backend-specific documentation tasks.
-    cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-        ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
-
     # Execute backend-specific documentation tasks for each
     # documentation entry specified in the command-line, individually.
     # Notice that we've stored all documentation entries passed as
@@ -121,20 +110,6 @@ function help {
         # added.
         MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR_L10N}"
 
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository. Notice that, because we are processing
-        # non-option arguments one by one, there is no need to
-        # sycronize changes to the same manual time after time
-        # (assuming all documentation entries passed as non-option
-        # arguments refer the same manual directory name).
-        if [[ ${MANUAL_DOCENTRY_ID} -eq 0 \
-            || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
-            ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
-            cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
-        fi
-
         # Define absolute path to base file. This is the main file
         # name (without extension) we use as reference to build output
         # files in different formats (.info, .pdf, .xml, etc.).
@@ -143,19 +118,126 @@ function help {
         # Define chapter name.
         MANUAL_CHAPTER_NAME=${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
 
+        # Define absolute path to chapter's directory. This is the
+        # place where chapter-specific files are stored in.
+        MANUAL_CHAPTER_DIR="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}"
+
         # Define section name.
         MANUAL_SECTION_NAME=${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]}
 
+        # Define absolute path to manual's configuration file.  This
+        # is the file that controls the way template files are applied
+        # to documentation entries once they have been created as well
+        # as the style and order used for printing sections. 
+        MANUAL_CONFIG_FILE="${MANUAL_BASEFILE}.conf" 
+
+        # Define documentation backend. This information defines the
+        # kind of source files we work with inside the documentation
+        # manual as well as the kind of actions required by them to
+        # perform actions related to document management (e.g.,
+        # creation, edition, deletion, copying, renaming, etc.).
+        if [[ -f ${MANUAL_CONFIG_FILE} ]];then
+
+            # Retrive documentation backend from configuration file.
+            MANUAL_BACKEND=$(cli_getConfigValue \
+                "${MANUAL_CONFIG_FILE}" "main" "manual_backend")
+
+            # Verify documentation backend. This is required because
+            # in order to prevent malformed values from being used. Be
+            # sure only supported documentation backends could be
+            # provided as value to `manual_backend' option in
+            # configuration files.
+            if [[ ! $MANUAL_BACKEND =~ '^(texinfo)$' ]];then
+                cli_printMessage "`gettext "The documentation backend provided isn't supported."`" --as-error-line
+            fi 
+
+        else
+
+            # When the current documentation manual is being created
+            # for first time, there's no way to get the documentation
+            # backend to use in the future manual, but asking the user
+            # creating it which one to use.
+            cli_printMessage "`gettext "Select one of the following documentation backends:"`"
+            MANUAL_BACKEND=$(cli_printMessage "texinfo" --as-selection-line)
+
+        fi
+
+        # Define file extension used by source files inside manuals.
+        MANUAL_EXTENSION="${MANUAL_BACKEND}"
+
+        # Define absolute path to template directory. This is the
+        # place where we store locale directories (e.g., en_US, es_ES,
+        # etc.) used to build manuals in texinfo format.
+        MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
+            ${MANUAL_BACKEND} -d)/Templates
+
+        # Define absolute path to language-specific template
+        # directory.  This is the place where we store locale-specific
+        # files used to build manuals in texinfo format.
+        MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
+
+        # Verify absolute path to language-speicific template
+        # directory.  If it doesn't exist, use English language as
+        # default location to retrive template files.
+        if [[ ! -d $MANUAL_TEMPLATE_L10N ]];then
+            MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
+        fi
+
+        # Notice that, because we are processing non-option arguments
+        # one by one, there is no need to sycronize changes or
+        # initialize functionalities to the same manual time after
+        # time (assuming all documentation entries passed as
+        # non-option arguments refer the same manual directory name).
+        # That would be only necessary when documentation entries
+        # refer to different manual directory names that could be
+        # written in different documentation backends.
+        if [[ ${MANUAL_DOCENTRY_ID} -eq 0 \
+            || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
+            ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
+
+            # Syncronize changes between repository and working copy.
+            # At this point, changes in the repository are merged in
+            # the working copy and changes in the working copy
+            # committed up to repository.
+            cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
+
+            # Initialize documentation backend functionalities. At
+            # this point we load all functionalities required into
+            # `centos-art.sh''s execution environment and make them
+            # available, this way, to perform backend-specific
+            # documentation tasks.
+            cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
+                ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
+
+        fi
+
         # Execute backend-specific documentation tasks.
         ${MANUAL_BACKEND}
+
+        # Unset the exported functions before go on with the next
+        # documentation entry provided as non-option argument to
+        # `centos-art.sh' script. Different documentation entries may
+        # be written in different documentation backends. Each
+        # documentation backend is loaded in order to perform their
+        # related documentation tasks. Assuming more that one
+        # documentation entry be passed as non-option argument to
+        # `centos-art.sh' script and they are written in different
+        # formats, we might end up loading documentation backend
+        # functionalities that aren't used in the current
+        # documentation entry being processed. In that sake, unset
+        # documentation bakend functionalities when the next
+        # documentation entry refers to a manual directory different
+        # to that one being currently processed.
+        if [[ ${MANUAL_DOCENTRY_ID} -gt 0 \
+            && ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]} ]];then
+            cli_unsetFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
+                ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
+        fi
 
         # Increment documentation entry counter id.
         MANUAL_DOCENTRY_ID=$(($MANUAL_DOCENTRY_ID + 1))
 
     done
-
-    # Rebuild output files to propagate recent changes.
-    ${MANUAL_BACKEND}_updateOutputFiles
 
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
