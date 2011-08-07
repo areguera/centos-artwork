@@ -57,7 +57,7 @@ function help_getEntries {
         # sign (e.g., hello-world) or cammel case (e.g., HelloWorld).
         for DOCENTRY in $@;do
 
-            if [[ $DOCENTRY =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]+){1,2}$' ]];then
+            if [[ $DOCENTRY =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]+){0,2}$' ]];then
 
                 # When `MANUAL:CHAPTER:SECTION' is used as format to
                 # documentation entry, you can specify the manual,
