@@ -144,6 +144,14 @@ function cli_printMessage {
             cli_printMessage "${MESSAGE}:\040" --as-notrailingnew-line
             ;;
 
+        --as-selection-line )
+            local NAME=''
+            select NAME in ${MESSAGE};do
+                echo $NAME
+                break
+            done
+            ;;
+
         --as-error-line )
             # Define where the error was originated inside the
             # centos-art.sh script. Print out the function name and
