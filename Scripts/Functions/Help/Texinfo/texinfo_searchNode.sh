@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# texinfo_searchNode.sh -- This function does a node search inside the
-# info document.
+# texinfo_searchNode.sh -- This function converts the documentation
+# entry provided to `centos-art.sh' script command-line into a node
+# and tries to read it from the manual's `.info' output file.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -25,13 +26,14 @@
 
 function texinfo_searchNode {
 
-    # Verify documentation entry. If it doesn't exist, ask to create
-    # it.
+    # Verify documentation entry and, if it doesn't exist, prompt out
+    # its creation.
     if [[ ! -f "$MANUAL_ENTRY" ]];then
         ${MANUAL_BACKEND}_editEntry
     fi
 
-    # Verify manual output files. If they don't exist, create them.
+    # Verify manual output files and, if they don't exist, create
+    # them.
     if [[ ! -f ${MANUAL_BASEFILE}.info.bz2 ]];then
         ${MANUAL_BACKEND}_updateOutputFiles
     fi
@@ -42,7 +44,17 @@ function texinfo_searchNode {
     # Print action message.
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
-    # Use info reader to present manual's info output.
-    info --node="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY")" --file=${MANUAL_BASEFILE}.info.bz2
+    # Define manual node that will be read.
+    local MANUAL_NODE="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY")"
+
+    # Verify manual node that will be read. When the manual name is
+    # the only value passed as documentation entry, then use the `Top'
+    # node as manual node to be read.
+    if [[ $MANUAL_NODE =~ $(${MANUAL_BACKEND}_getEntryNode "$MANUAL_NAME") ]];then
+        MANUAL_NODE='Top'
+    fi
+
+    # Use info reader to read the manual node.
+    info --node="${MANUAL_NODE}" --file="${MANUAL_BASEFILE}.info.bz2"
 
 }
