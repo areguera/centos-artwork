@@ -75,7 +75,7 @@ function texinfo_createStructure {
     local FILE=''
     local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE_L10N}" \
         --maxdepth='1' \
-        --pattern="manual(-menu|-nodes|-index)?\.${MANUAL_EXTENSION}")
+        --pattern="manual((-menu|-nodes|-index)?\.${MANUAL_EXTENSION}|\.conf)")
 
     # Verify manual base file. The manual base file is where the
     # documentation manual is defined in the backend format. Assuming
