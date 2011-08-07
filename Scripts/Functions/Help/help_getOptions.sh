@@ -30,7 +30,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,dont-commit-changes,backend:,read,search:,edit,update-output,update-structure,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,dont-commit-changes,read,search:,edit,update-output,update-structure,copy,delete,rename"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -57,15 +57,6 @@ function help_getOptions {
             --dont-commit-changes )
                 FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
-                ;;
-
-            --backend )
-                # CAUTION: Be sure to sanitate this input value
-                # through cli_getRepoName using just the basename of
-                # the value provided. Otherwise, functionalities might
-                # be executed from unexpected places.
-                MANUAL_BACKEND="$(cli_getRepoName "$2" -f)"
-                shift 2
                 ;;
 
             --search )
