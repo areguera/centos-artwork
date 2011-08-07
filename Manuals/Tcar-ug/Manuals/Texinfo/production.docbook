@@ -7,7 +7,7 @@
         format is realized through the <code>help</code> functionality
         of <command>centos-art.sh</command> script, as described in
         <xref linkend="scripts-bash-help" />.  To illustrate the
-        production cycle, we'll describe it using the
+        production cycle, we'll describe it here, using the
         <quote>Repository File System</quote> documentation manual as
         reference.
     </para>
@@ -16,20 +16,23 @@
         The first step before creating a documentation manual is to
         make yourself an idea of what such manual intends to document.
         The <quote>Repository File System</quote> emerged with the
-        need of understand what each directory inside &TCAR; is for,
-        how they can be used and how they connect one another as the
-        repository structure itself is built on.  Explaining something
-        that is being conceived on its very first begining is a rather
-        difficult task. So, I decided to create documentation adapting
-        the same principales I followed to create functionalities
-        inside <command>centos-art.sh</command> script as a way to
+        need of understanding what each directory inside &TCAR; is
+        for, how they can be used and how they connect themselves one
+        another, as the repository structure itself is built on.
+        At the very begining, explaining something that is being
+        conceived is a rather difficult task, there are many small
+        concepts floting around that need to be organized in order for
+        them to take sense when it seen as a whole. So, I decided to
+        create documentation adapting the same principales I followed
+        to create functionalities inside
+        <command>centos-art.sh</command> script, as a way to
         understand what I was doing. This way, if programs should do
         one thing well, each directory inside the repository should be
         documented well in order to better understand what they do and
-        how they related one another. Later, summing them all would
-        let us, hypothetically, to correct the whole idea in a
-        repeatable cycle of improvement that would consolidate the
-        final idea we try to implement. 
+        how they relate one another.  Later, summing all directory
+        documentations would let us, hypothetically, to correct the
+        whole idea in a repeatable cycle of improvement that would
+        consolidate the final idea we try to implement. 
     </para>
 
     <para>
@@ -37,11 +40,11 @@
         manual is for, it is time to define the manual title and the
         directory name where the manual will be sotred in. The manual
         title describes, in few words, what the documentation manual
-        is about and can be changed later. The manual directory name
-        must be a word or several words separated by minus sign. As
-        convenction, as manual directory name would be useful to use
-        acronyms or abbreviations directly related to manual's title.
-        In our example, the documentation manual was initially titled
+        is about. The manual directory name must be a word or several
+        words separated by minus sign. As convenction, to set the
+        manual directory name, it would be useful to use acronyms or
+        abbreviations directly related to manual's title.  In our
+        example, the documentation manual was initially titled
         <quote>The CentOS Artwork Repository File System</quote> but
         it was too long, so it was reduced to <quote>Repository File
         System</quote> and the documentation directory name was set to
@@ -49,13 +52,75 @@
     </para>
 
     <para>
-        Once that both documentation manual title and directory name
-        have been defined, you can create the documentation manual
-        using the <code>help</code> functionality of
-        <command>centos-art.sh</command> script. In our example, the
-        command to execute would be the following:
+        Once both title and directory name related to documentation
+        manual have been defined, it is time to create the
+        documentation manual and documenting your work through
+        chapters and sections inside it. At this point, it is
+        necessary some planification to set the way the manual will be
+        organized. The manual organization is set through chapters and
+        sections. In our example, the documentation manual is made of
+        three chapters named <quote>The <filename
+        class="directory">trunk</filename> Directory</quote>,
+        <quote>The <filename class="directory">branches</filename>
+        Directory</quote> and <quote>The <filename
+        class="directory">tags</filename> Directory</quote>. Inside
+        each of these chapters there is one documentation section for
+        each directory in &TCAR;.
     </para>
-    <screen>centos-art help tcar-fs:</screen>
+
+    <para>
+        To create a manual like that one described so far, you need to
+        introduce such organization through the <code>help</code>
+        functionality of <command>centos-art.sh</command> script, as
+        the following list of commands describes:
+    </para>
+
+    <variablelist>
+
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit tcar-fs:</command>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit tcar-fs:introduction</command>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit tcar-fs:trunk:identity</command>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit tcar-fs:trunk:identity-themes</command>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
 
     <para>
         ...
