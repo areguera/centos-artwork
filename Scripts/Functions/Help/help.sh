@@ -199,7 +199,9 @@ function help {
             # At this point, changes in the repository are merged in
             # the working copy and changes in the working copy
             # committed up to repository.
-            cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
+            if [[ -d ${MANUAL_CHANGED_DIRS} ]];then
+                cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
+            fi
 
             # Initialize documentation backend functionalities. At
             # this point we load all functionalities required into
