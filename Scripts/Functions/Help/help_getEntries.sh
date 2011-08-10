@@ -51,16 +51,17 @@ function help_getEntries {
         # variables in order to describe their parts (e.g., manual
         # name, chapter name and section name) that way.
         # Documentation entries passed as non-opiton arguments must be
-        # written either in `MANUAL:CHAPTER:SECTION' or `path/to/dir'
-        # formats in order to be processed correctly here. Empty
-        # spaces are not permitted. To separate words, use the minus
-        # sign (e.g., hello-world) or cammel case (e.g., HelloWorld).
+        # written either in `MANUAL:PART:CHAPTER:SECTION' or
+        # `path/to/dir' formats in order to be processed correctly
+        # here. Empty spaces are not permitted. To separate words, use
+        # the minus sign (e.g., hello-world) or cammel case (e.g.,
+        # HelloWorld).
         for DOCENTRY in $@;do
 
-            if [[ $DOCENTRY =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]+){0,2}$' ]];then
+            if [[ $DOCENTRY =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]*){0,3}$' ]];then
 
-                # When `MANUAL:CHAPTER:SECTION' is used as format to
-                # documentation entry, you can specify the manual,
+                # When `MANUAL:PART:CHAPTER:SECTION' is used as format
+                # to documentation entry, you can specify the manual,
                 # chapter and section where documentation actions will
                 # take place on.
 
@@ -73,13 +74,17 @@ function help_getEntries {
                 MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
                     $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
 
-                # Manual chapter name.
-                MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                # Manual part name.
+                MANUAL_PART[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
                     $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
 
+                # Manual chapter name.
+                MANUAL_CHAP[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -d )
+
                 # Manual section name.
-                MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -f )
+                MANUAL_SECT[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $4 }') -f )
 
             elif [[ $DOCENTRY =~ '^(trunk|branches|tags)' ]];then
 
@@ -97,11 +102,11 @@ function help_getEntries {
                 MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]='Tcar-fs'
 
                 # Manual chapter name.
-                MANUAL_CHAN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                MANUAL_CHAP[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
                     $(echo "$DOCENTRY" | gawk 'BEGIN { FS="/" }; { if ( NF >= 1 ) print $1 }' ) -d )
 
                 # Manual section name.
-                MANUAL_SECN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                MANUAL_SECT[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
                     $(echo "$DOCENTRY" | gawk 'BEGIN { FS="/" }; { if ( NF >= 2 ) print $0 }' \
                     | cut -d/ -f2- | tr '/' '-') -f )
 

@@ -27,25 +27,25 @@ function texinfo_copyEntrySection {
 
     # Define absolute path to section source and target locations
     # based on non-option arguments passed to `centos-art.sh' script.
-    if [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+    if [[ ${MANUAL_SECT[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
 
         # When the section name is specified in first and second
         # non-option arguments, source and target are set as specified
         # in first and second non-option arguments respectively.
-        MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
-        MANUAL_ENTRY_DST=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]})
+        MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]})
+        MANUAL_ENTRY_DST=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECT[((${MANUAL_DOCENTRY_ID} + 1))]})
 
-    elif [[ ${MANUAL_SECN[((${MANUAL_DOCENTRY_ID} + 1))]} == '' ]] \
-        && [[ ${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+    elif [[ ${MANUAL_SECT[((${MANUAL_DOCENTRY_ID} + 1))]} == '' ]] \
+        && [[ ${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
 
         # When the section name is specified only in the first
         # non-option argument and the chapter name has been provided
         # in the second non-option argument, use the section name
         # passed in first argument to build the section name that will
         # be used as target.
-        MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]})
+        MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]})
         MANUAL_ENTRY_DST=$(echo $MANUAL_ENTRY_SRC \
-            | sed -r "s!${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}!${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}!")
+            | sed -r "s!${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]}!${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]}!")
 
     else
         cli_printMessage "`gettext "The location provided as target isn't valid."`" --as-error-line
@@ -63,7 +63,7 @@ function texinfo_copyEntrySection {
 
     # Redefine chapter name using chapter name passed to
     # `centos-art.sh' script as second non-option argument.
-    local MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    local MANUAL_CHAPTER_NAME=${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # Redefine chapter directory to use the chapter provided to
     # `centos-art.sh' script as second non-option argument. This is

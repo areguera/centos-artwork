@@ -57,11 +57,12 @@ function help {
 
     # Initialize documentation entries arrays. Arrays defined here
     # contain all the information needed to process documentation
-    # entries (e.g., manual, chapter, section).
+    # entries (e.g., manual, part, chapter and section).
     local -a MANUAL_SLFN
     local -a MANUAL_DIRN
-    local -a MANUAL_CHAN
-    local -a MANUAL_SECN
+    local -a MANUAL_PART
+    local -a MANUAL_CHAP
+    local -a MANUAL_SECT
 
     # Initialize documentation entries counter.
     local MANUAL_DOCENTRY_COUNT=0
@@ -115,15 +116,24 @@ function help {
         # files in different formats (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
 
+        # Define part name.
+        MANUAL_PART_NAME=${MANUAL_PART[${MANUAL_DOCENTRY_ID}]}
+
+        # Define part directory.
+        MANUAL_PART_DIR="${MANUAL_BASEDIR_L10N}/${MANUAL_PART_NAME}"
+
         # Define chapter name.
-        MANUAL_CHAPTER_NAME=${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
+        MANUAL_CHAPTER_NAME=${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]}
 
         # Define absolute path to chapter's directory. This is the
-        # place where chapter-specific files are stored in.
-        MANUAL_CHAPTER_DIR="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}"
+        # place where chapter-specific files are stored in. Be sure no
+        # extra slash be present in the value (e.g., when the part
+        # name isn't provided).
+        MANUAL_CHAPTER_DIR="$(echo ${MANUAL_PART_DIR}/${MANUAL_CHAPTER_NAME} \
+            | sed -r 's!/{2,}!/!g' )"
 
         # Define section name.
-        MANUAL_SECTION_NAME=${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]}
+        MANUAL_SECTION_NAME=${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]}
 
         # Define absolute path to manual's configuration file.  This
         # is the file that controls the way template files are applied
@@ -161,9 +171,6 @@ function help {
             MANUAL_BACKEND=$(cli_printMessage "texinfo" --as-selection-line)
 
         fi
-
-        # Define file extension used by source files inside manuals.
-        MANUAL_EXTENSION="${MANUAL_BACKEND}"
 
         # Define absolute path to template directory. This is the
         # place where we store locale directories (e.g., en_US, es_ES,

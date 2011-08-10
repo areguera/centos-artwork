@@ -26,10 +26,10 @@
 function texinfo_copyEntryChapter {
 
     # Redefine documentation entry source's location.
-    MANUAL_ENTRY_SRC=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]}
+    MANUAL_ENTRY_SRC=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]}
 
     # Redefine documentation entry target's location.
-    MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # Verify entry source and target locations.
     ${MANUAL_BACKEND}_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
@@ -40,7 +40,7 @@ function texinfo_copyEntryChapter {
     # define both chapter's directory and chapter's name at this
     # point.
     local MANUAL_CHAPTER_DIR=$MANUAL_ENTRY_DST
-    local MANUAL_CHAPTER_NAME=${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]}
+    local MANUAL_CHAPTER_NAME=${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # When we are copying chapters, the chapter itself cannot be
     # copied as we regularly do with sections. Instead, the target

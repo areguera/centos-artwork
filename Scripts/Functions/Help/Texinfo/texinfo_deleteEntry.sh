@@ -30,7 +30,7 @@ function texinfo_deleteEntry {
 
     # Remove manual, chapter or section based on documentation entry
     # provided as non-option argument to `centos-art.sh' script.  
-    if [[ ${MANUAL_SECN[$MANUAL_DOCENTRY_ID]} != '' ]];then
+    if [[ ${MANUAL_SECT[$MANUAL_DOCENTRY_ID]} != '' ]];then
 
         # When a section is deleted, documentation entry points to a
         # section name. In this configuration, documentation entry is
@@ -40,7 +40,7 @@ function texinfo_deleteEntry {
         # consistent state.
         ${MANUAL_BACKEND}_deleteEntrySection
 
-    elif [[ ${MANUAL_CHAN[$MANUAL_DOCENTRY_ID]} != '' ]];then
+    elif [[ ${MANUAL_CHAP[$MANUAL_DOCENTRY_ID]} != '' ]];then
 
         # When a chapter is deleted, documentation entry doesn't point
         # to a section name but a chapter name. In this configuration,

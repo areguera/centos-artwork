@@ -27,6 +27,17 @@
     
 function texinfo {
 
+    # Verify documentation entry to be sure it coincides with
+    # Texinfo's supported structuring (e.g., texinfo-4.8 doesn't
+    # support structuring through parts, but chapters and sections
+    # only).
+    if [[ $MANUAL_PART_NAME != '' ]];then
+        cli_printMessage "The documentation entry provided isn't supported." --as-error-line
+    fi
+
+    # Define file extension used by source files inside manuals.
+    MANUAL_EXTENSION="${MANUAL_BACKEND}"
+
     # Initialize document structure for new manuals.
     ${MANUAL_BACKEND}_createStructure
 

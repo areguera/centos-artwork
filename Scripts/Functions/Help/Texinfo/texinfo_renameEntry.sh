@@ -34,7 +34,7 @@ function texinfo_renameEntry {
     # consideration the manual's main definition file, the chapter's
     # main definition file and non-option arguments passed to
     # centos-art.sh script through the command-line.
-    if [[ ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]} != '' ]];then
+    if [[ ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]} != '' ]];then
 
         # When a section is renamed, the section source location is
         # duplicated into the section target location and later
@@ -44,8 +44,8 @@ function texinfo_renameEntry {
         # manual.
         ${MANUAL_BACKEND}_renameEntrySection
 
-    elif [[ ${MANUAL_CHAN[$MANUAL_DOCENTRY_ID]} != '' ]] \
-        && [[ ${MANUAL_CHAN[(($MANUAL_DOCENTRY_ID + 1))]} != '' ]];then
+    elif [[ ${MANUAL_CHAP[$MANUAL_DOCENTRY_ID]} != '' ]] \
+        && [[ ${MANUAL_CHAP[(($MANUAL_DOCENTRY_ID + 1))]} != '' ]];then
 
         # When a chapter is renamed, the chapter source location is
         # duplicated into the chapter source location and later

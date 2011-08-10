@@ -34,15 +34,15 @@ function texinfo_copyEntry {
     # Execute copying action based on documentation entries passed as
     # non-option arguments to `centos-art.sh' script in the
     # command-line.
-    if [[ ${MANUAL_SECN[${MANUAL_DOCENTRY_ID}]} != '' ]];then
+    if [[ ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]} != '' ]];then
 
         # In this configuration, the section name is specified in
         # first non-option argument and optionally in the second
         # non-option arugment.
         ${MANUAL_BACKEND}_copyEntrySection
          
-    elif [[ ${MANUAL_CHAN[${MANUAL_DOCENTRY_ID}]} != '' ]] \
-        && [[ ${MANUAL_CHAN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
+    elif [[ ${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]} != '' ]] \
+        && [[ ${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
 
         # In this configuration, the section name wasn't specified
         # neither in first or second non-option argument.  So, we
