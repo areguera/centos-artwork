@@ -5,21 +5,21 @@
     <para>
         The document structure provided by texinfo backend creates the
         organization needed to make documentation manuals scalable and
-        maintainable through time. Structuring considerations follows
+        maintainable through time. Structuring considerations follow
         the idea of an upside-down tree to organize chapters,
         sections, subsections, and the like. The document initiates
-        with a Top node where we place document title, copyright note,
-        abstract, and the list of chapters.  Inside each chapter the
-        information is logically organized in sections, subsections
-        and subsubsections.
+        with a Top node which contains manual's main definitions
+        (e.g., title, copyright note, abstract, and the list of
+        chapters).  Inside each chapter the information is logically
+        organized in sections, subsections and subsubsections.
     </para>
 
     <para> 
-        The first time you create a documentation manual through
+        The first time the documentation structure is created through
         texinfo backend, the <command>centos-art.sh</command> script
         considers the working directory you are placed in order to
-        determine where to store the documentation manual.  When the
-        current working directory is <filename
+        determine where to store the documentation manual source
+        files.  When the current working directory is <filename
         class="directory">branches/Manuals/Texinfo</filename>, the
         documentation manual directory is created therein.  On all
         other situations, the documentation manual directory is
@@ -28,22 +28,31 @@
         the documentation manual directory has been created, the
         <command>centos-art.sh</command> script creates its definition
         files in conjuction with an appendix named
-        <quote>Licenses</quote>.  The content of licenses stored in
-        the Licenses appendix isn't inside the documentation manual
-        directory but refered from texinfo document templates, as
-        described at <xref linkend="manuals-texinfo-templates" />, so
-        the <code>help</code> functionality cannot control it.
+        <quote>Licenses</quote>.  The content stored in the Licenses
+        appendix isn't inside the documentation manual directory
+        itself, but refered from texinfo document templates as
+        described at <xref linkend="manuals-texinfo-templates" />.
     </para>
 
     <para>
-        Inside the documentation manual directory, the
+        Inside the documentation manual directory, source files are
+        all stored inside language-specific directories.
+        Language-specific directories are necessary to implement
+        localization of source files written in texinfo format, as
+        described in <xref linkend="manuals-texinfo-l10n" />.
+    </para>
+        
+    <para>
+        Inside the language-specific directory, the
         <filename>${MANUAL_NAME}.texinfo</filename>,
         <filename>${MANUAL_NAME}-index.texinfo</filename>,
         <filename>${MANUAL_NAME}-menu.texinfo</filename> and
         <filename>${MANUAL_NAME}-nodes.texinfo</filename> files exist to
-        set manual's main definitions; including title, copyright
-        notice, chapters, appendixes, indexes and all the similar
-        stuff a documentation manual should have.  Inside each chapter
+        set manual's main definitions (e.g., title, subtitle, author,
+        copyright notice, chapters, appendixes, indexes and all the
+        similar stuff a documentation manual should have).  In
+        addition to these files, there is one directory for each
+        chapter created inside the manual. Inside each chapter
         directory, the <filename>chapter.texinfo</filename>,
         <filename>chapter-menu.texinfo</filename> and
         <filename>chapter-nodes.texinfo</filename> files exist to
@@ -51,14 +60,14 @@
         stored in. The documentation manual content itself is stored
         in section files (a.k.a. <quote>documentation entries</quote>)
         suffixed with <filename class="extension">texinfo</filename>
-        extension and arbitrarily named, as <xref
-        linkend="doc-texinfo-structure-eg1" /> describes.
+        extension and arbitrary names, as it is displayed in <xref
+        linkend="manuals-texinfo-structure-1" />.
     </para>
 
-    <example id="doc-texinfo-structure-eg1">
-    <title>Texinfo document structure.</title>
+    <example id="manuals-texinfo-structure-1">
+    <title>Texinfo document structure</title>
     <screenshot>
-    <screeninfo>Texinfo document structure.</screeninfo>
+    <screeninfo>Texinfo document structure</screeninfo>
     <mediaobject>
     <textobject>
     <programlisting>trunk/Manuals/${MANUAL_NAME}
