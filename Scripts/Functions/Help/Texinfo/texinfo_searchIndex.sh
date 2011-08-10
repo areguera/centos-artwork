@@ -25,8 +25,11 @@
 
 function texinfo_searchIndex {
 
-    # Rebuild output files to propagate recent changes.
-    ${MANUAL_BACKEND}_updateOutputFiles
+    # Verify manual output files and, if they don't exist, create
+    # them.
+    if [[ ! -f ${MANUAL_BASEFILE}.info.bz2 ]];then
+        ${MANUAL_BACKEND}_updateOutputFiles
+    fi
 
     # Print separator line.
     cli_printMessage '-' --as-separator-line
