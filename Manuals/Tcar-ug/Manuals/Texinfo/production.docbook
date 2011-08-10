@@ -7,9 +7,9 @@
         format is realized through the <code>help</code> functionality
         of <command>centos-art.sh</command> script, as described in
         <xref linkend="scripts-bash-help" />.  To illustrate the
-        production cycle, we'll describe it here using the
-        <quote>Repository File System</quote> documentation manual as
-        reference.
+        production cycle, let us consider the creation of
+        <quote>Repository File System</quote> documentation manual, as
+        example.
     </para>
 
     <para>
@@ -22,16 +22,17 @@
         the very begining, explaining the whole idea of all
         directories inside &TCAR; on one manual was difficult, there
         were many changing concepts floting around which needed to be
-        considered. So, as a way to understand what I was doing, I
-        decided to adapt documentation to such changes through the
-        same principales I followed to create functionalities inside
+        considered in the same changing way. So, as a way to
+        understand what we were doing, it was decided to adapt
+        documentation to such changes through the same principales we
+        followed to create functionalities inside
         <command>centos-art.sh</command> script. This way, if programs
         should do one thing well, each directory inside the repository
         should be documented well in order to better understand what
         they do and how they relate one another.  Later, summing all
-        directory documentations would let me, hypothetically, to
+        directory documentations would let us, hypothetically, to
         correct the whole idea through an improvement cycle that would
-        consolidate the final idea I try to implement. 
+        consolidate the final idea we try to implement. 
     </para>
 
     <para>
@@ -39,18 +40,21 @@
         manual is for, it is time for you to define the manual title
         and the manual directory name.  The manual title describes, in
         few words, what the documentation manual is about. The manual
-        directory name must be one or more words separated by minus
-        sign. As convenction, to the manual directory name, it would
-        be convenient to use acronyms or abbreviations related to
-        manual's title.  In our example, the documentation manual was
-        initially titled <quote>The CentOS Artwork Repository</quote>
-        but later it changed to <quote>Repository File System</quote>
-        and its manual directory name ended up being
-        <code>Tcar-fs</code>.
+        directory name describes the manual title in one or more words
+        separated by minus sign.<footnote>
+        <para>
+            ... a good convenction to follow here might be to use
+            acronyms or abbreviations from manual's title.
+        </para>
+        </footnote>
+        In our example, the documentation manual was initially titled
+        <quote>The CentOS Artwork Repository</quote> but later it
+        changed to <quote>Repository File System</quote> and its
+        manual directory name ended up being <code>Tcar-fs</code>.
     </para>
 
     <para>
-        Once both manual title and manual directory name have been
+        Once both manual's title and manual's directory name have been
         defined, it is time to planificate manual's content through
         chapters and sections.  In our example, the documentation
         manual is made of three chapters named <quote>The <filename
@@ -58,16 +62,16 @@
         <quote>The <filename class="directory">branches</filename>
         Directory</quote> and <quote>The <filename
         class="directory">tags</filename> Directory</quote> and one
-        appendix named <quote>License</quote>. Inside each chapter
+        appendix named <quote>Licenses</quote>. Inside each chapter
         there is one documentation section for each directory in
         &TCAR;.
     </para>
 
     <para>
-        To create a manual like that one described so far, you need to
-        introduce such organization through the <code>help</code>
-        functionality of <command>centos-art.sh</command> script, as
-        it is described in the following list of commands:
+        To create a manual like the one described so far, you need to
+        use the <code>help</code> functionality of
+        <command>centos-art.sh</command> script as it is described in
+        the following list of commands:
     </para>
 
     <variablelist>
@@ -78,10 +82,10 @@
     </term>
     <listitem>
     <para>
-        This command creates the <quote>tcar-fs</quote> manual base
-        structure and opens its main definition file with your
-        favorite text editor so you can fix values like title,
-        subtitle, author, etc.
+        This command creates the base structure of
+        <quote>tcar-fs</quote> manual and opens its main definition
+        file with your favorite text editor so you can update values
+        like title, subtitle, author, etc.
     </para>
     </listitem>
     </varlistentry>
@@ -92,9 +96,10 @@
     </term>
     <listitem>
     <para>
-        This command creates the <quote>introduction</quote> chapter
-        base structure and opens its main definition file with your
-        favorite text editor so you can fix the chapter introduction.
+        This command creates the base structure of
+        <quote>introduction</quote> chapter and opens its main
+        definition file with your favorite text editor so you can
+        update the chapter introduction.
     </para>
     </listitem>
     </varlistentry>
@@ -110,13 +115,28 @@
         doesn't exist it will be created first. In this command, the
         <quote>identity</quote> section refers to <filename
         class="directory">trunk/Identity</filename> directory inside
-        &TCAR;. To document other directories, follow the same
-        procedure but using minus signs to separate directories.  For
-        example, to document the <filename
-        class="directory">trunk/Identity/Themes</filename> you would
-        use <quote>tcar-fs:trunk:identity-themes</quote>, and so on
-        for other directories.
+        &TCAR;. In order to document other directories, follow the
+        same procedure but using minus signs to separate directories.
+        For example, to document the <filename
+        class="directory">trunk/Identity/Models/Themes</filename>
+        directory you should use the
+        <quote>tcar-fs:trunk:identity-models-themes</quote>
+        documentation entry.
     </para>
+    
+    <note>
+        <para>
+            In the very specific case of <quote>tcar-fs</quote>
+            manual, it is possible to set chapter and section
+            documentation entries using the form <filename
+            class="directory">path/to/dir</filename>, as well.  For
+            example, to document the <filename
+            class="directory">trunk/Identity/Models/Themes</filename>
+            directory you can execute the following command:
+
+            <screen>centos-art help --edit trunk/Identity/Models/Themes</screen>
+        </para>
+    </note>
     </listitem>
     </varlistentry>
 
