@@ -5,24 +5,25 @@
     <para>
         The <function>help</function> functionality is the interface
         the <command>centos-art.sh</command> script provides to
-        control frequent documentation tasks (e.g., reading, editing,
-        update output files, etc.) requied by specific documentation
-        backends.  Documentation backends supported by
-        <function>help</function> functionality are described in <xref
-        linkend="doc"/>.
+        standardize frequent documentation tasks, based on specific
+        documentation backends described in <xref linkend="doc"/>.
     </para>
 
-    <screen>centos-art help [OPTIONS] [DIRECTORY]</screen>
+    <para>
+        <command>centos-art help [OPTIONS] [DOCENTRY]</command>
+    </para>
 
     <para>
-        The <varname>DIRECTORY</varname> parameter specifies the
-        directory path, inside the working copy of &TCAR;, where the
-        files you want to process the related documentation entry for.
-        This paramter can be provided more than once in order to
-        process more than one directory path in a single command
-        execution or not provided at all.  When this parameter is not
-        provided, the current directory path where the command was
-        called from is used instead.
+        The <varname>DOCENTRY</varname> parameter specifies the
+        documentation entry you want to process.  It can be provided
+        one or more times in the form
+        <code>MANUAL:PART:CHAPTER:SECTION</code> or
+        <code>MANUAL::CHAPTER:SECTION</code> based on whether the
+        manual documentation backend you are using supports
+        structuring through parts or not. When
+        <varname>DOCENTRY</varname> parameter is not provided, the
+        <quote>Repository File System</quote> documentation manual is
+        used as default value.
     </para>
 
     <para>
@@ -64,28 +65,12 @@
     </varlistentry>
 
     <varlistentry>
-    <term><option>--backend="NAME"</option></term>
+    <term><option>--search="KEYWORD"</option></term>
     <listitem>
     <para>
-        The <varname>NAME</varname> argument in this option specifies
-        what backend to use when processing documentation. Possible
-        arguments to this options are: <literal>texinfo</literal> or
-        <literal>docbook</literal>. If this option is not provided,
-        <literal>texinfo</literal> is used as default documentation
-        backend.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>--search="ID"</option></term>
-    <listitem>
-    <para>
-        Go to node pointed by <varname>ID</varname> argument. When
-        texinfo backend is used, this arguments refers the node you
-        want to read documentation for. When docbook backend is used,
-        this argument refers the section id you want to read
-        documentation for.
+        This option looks for <varname>KEYWORD</varname> inside the
+        manual specified in the documentation entry and display
+        related information you to read.
     </para>
     </listitem>
     </varlistentry>
@@ -95,12 +80,12 @@
     <listitem>
     <para>
         Edit documentation entry related to path specified by
-        <varname>DIRECTORY</varname> parameter.
+        <varname>DOCENTRY</varname> parameter.
     </para>
     <para>
-        The <varname>DIRECTORY</varname> parameter must point to any
+        The <varname>DOCENTRY</varname> parameter must point to any
         directory inside the working copy.  When more than one
-        <varname>DIRECTORY</varname> are passed as non-option
+        <varname>DOCENTRY</varname> are passed as non-option
         arguments to the <command>centos-art.sh</command> script
         command-line, they are queued for further edition.  The
         edition itself takes place through your default text editor
@@ -117,7 +102,7 @@
     <listitem>
     <para>
         Read documentation entry specified by
-        <varname>DIRECTORY</varname> path.  This option is used
+        <varname>DOCENTRY</varname> path.  This option is used
         internally by <command>centos-art.sh</command> script to print
         out the reference you can follow to know more about an error
         message.
@@ -157,9 +142,9 @@
     <listitem>
     <para>
         Delete documentation entries specified by
-        <varname>DIRECTORY</varname> inside the working copy. It is
+        <varname>DOCENTRY</varname> inside the working copy. It is
         possible to delete more than one documentation entry by
-        specifying more <varname>DIRECTORY</varname> parameters in the
+        specifying more <varname>DOCENTRY</varname> parameters in the
         command-line.
     </para>
     </listitem>
