@@ -1,6 +1,5 @@
-# This file extends the `trunk/Manuals/Texinfo/repository-init.pl'
-# initialization file to provide English specific initializations for
-# the `texi2html-1.76-4.fc6' package.
+# This file extends the `../manual-init.pl' initialization file to
+# provide English specific initializations for `texi2html-1.76-4.fc6'.
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
