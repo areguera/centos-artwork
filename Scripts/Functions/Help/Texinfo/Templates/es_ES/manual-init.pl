@@ -1,6 +1,4 @@
-# This file extends the 'trunk/Manuals/Texinfo/repository-init.pl'
-# initialization file to provide Spanish translation messages for the
-# `texi2html-1.76-4.fc6' package.
+# This file extends the '../manual-init.pl' initialization file to # provide Spanish translation messages for `texi2html-1.76-4.fc6'.
 # ----------------------------------------------------------------------
 # $Id$
 # ----------------------------------------------------------------------
