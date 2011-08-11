@@ -26,8 +26,8 @@
         created under <filename
         class="directory">trunk/Manuals</filename> directory.  Once
         the documentation manual directory has been created, the
-        <command>centos-art.sh</command> script creates its definition
-        files in conjuction with an appendix named
+        <command>centos-art.sh</command> script creates the related
+        definition files in conjuction with an appendix named
         <quote>Licenses</quote>.  The content stored in the Licenses
         appendix isn't inside the documentation manual directory
         itself, but refered from texinfo document templates as
@@ -56,11 +56,12 @@
         directory, the <filename>chapter.texinfo</filename>,
         <filename>chapter-menu.texinfo</filename> and
         <filename>chapter-nodes.texinfo</filename> files exist to
-        control section definitions, related to the chapter they are
-        stored in. The documentation manual content itself is stored
-        in section files (a.k.a. <quote>documentation entries</quote>)
-        suffixed with <filename class="extension">texinfo</filename>
-        extension and arbitrary names, as it is displayed in <xref
+        control section definitions related to the chapter directory
+        they belong to.  The documentation manual content itself is
+        stored in section files (a.k.a. <quote>documentation
+        entries</quote>) suffixed with <filename
+        class="extension">texinfo</filename> extension and arbitrary
+        names, as it is displayed in <xref
         linkend="manuals-texinfo-structure-1" />.
     </para>
 
