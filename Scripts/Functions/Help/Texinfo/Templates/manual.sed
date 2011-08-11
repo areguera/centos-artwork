@@ -3,7 +3,7 @@
 # repository.sed -- This file provides common transformations for
 # texi2html output, based on The CentOS Project CSS definitions.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009, 2010, 2011 The CentOS Project
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,5 +25,5 @@
 # ----------------------------------------------------------------------
 
 # Links
-s!<a href="(https|http|ftps|ftp)://!<a class="www" href="\1://!g
-s!<a href="mailto:!<a class="mailto" href="mailto:!g
+#s!<a href="(https|http|ftps|ftp)://!<a class="www" href="\1://!g
+#s!<a href="mailto:!<a class="mailto" href="mailto:!g
