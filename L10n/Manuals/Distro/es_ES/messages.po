@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art (es_ES)\n"
 "Report-Msgid-Bugs-To: CentOS Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2011-08-13 16:43-0400\n"
+"POT-Creation-Date: 2011-08-13 17:02-0400\n"
 "PO-Revision-Date: 2011-03-28 15:10-0400\n"
 "Last-Translator: CentOS Documentation SIG\n"
 "Language-Team: Español\n"
@@ -14,74 +14,41 @@ msgstr ""
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 msgid ""
-"@@image: '/var/www/icons/powered_by_rh.png'; "
-"md5=148eb82f8f0e447acd5527eef767cb5c"
+"@@image: '/home/centos/artwork/trunk/Identity/Images/Brands/Logos/Black/78/"
+"centos.png'; md5=d8a48185c3de313772ff0c45fbdc3af8"
 msgstr ""
 
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-msgid ""
-"@@image: '/var/www/icons/apache_pb.gif'; md5=48bc8b181b36c9289866a2e30f6afedd"
+msgid "Welcome to CentOS =RELEASE="
 msgstr ""
 
-msgid "Apache HTTP Server Test Page"
-msgstr ""
-
-msgid ""
-"This page is used to test the proper operation of the Apache HTTP server "
-"after it has been installed. If you can read this page it means that the "
-"Apache HTTP server installed at this site is working properly."
-msgstr ""
-
-msgid "If you are a member of the general public"
-msgstr ""
-
-msgid ""
-"The fact that you are seeing this page indicates that the website you just "
-"visited is either experiencing problems or is undergoing routine maintenance."
-msgstr ""
-
-msgid ""
-"If you would like to let the administrators of this website know that you've "
-"seen this page instead of the page you expected, you should send them e-"
-"mail. In general, mail sent to the name <quote>webmaster</quote> and "
-"directed to the website's domain should reach the appropriate person."
-msgstr ""
-
-msgid ""
-"For example, if you experienced problems while visiting www.example.com, you "
-"should send e-mail to <quote>webmaster@example.com</quote>."
-msgstr ""
-
-msgid "If you are the website administrator"
-msgstr ""
-
-msgid ""
-"You may now add content to the directory <filename class=\"directory\">/var/"
-"www/html/</filename>. Note that until you do so, people visiting your "
-"website will see this page and not your content. To prevent this page from "
-"ever being used, follow the instructions in the file <filename>/etc/httpd/"
-"conf.d/welcome.conf</filename>."
-msgstr ""
-
-msgid ""
-"You are free to use the images below on Apache and CentOS Linux powered HTTP "
-"servers. Thanks for using Apache and CentOS!"
+msgid "=COPYRIGHT_YEAR_LAST="
 msgstr ""
 
 #, fuzzy
-msgid "About CentOS"
-msgstr "Bienvenido a CentOS"
+msgid "The CentOS Project"
+msgstr "Sitio web"
 
 #, fuzzy
 msgid ""
-"The Community ENTerprise Operating System (CentOS) is an Enterprise-class "
+"CentOS =RELEASE= comes with no guarantees or warranties of any sorts, either "
+"written or implied. The Distribution is released as <ulink url=\"/usr/share/"
+"doc/centos-release-=MAJOR_RELEASE=/GPL\">GPL</ulink> work. Individual "
+"packages in the distribution come with their own licences."
+msgstr ""
+"La distribución CentOS es liberada como un trabajo <a href=\"file:///usr/"
+"share/doc/centos-release-5/GPL\">GPL</a>."
+
+msgid "What is CentOS?"
+msgstr "¿Qué es CentOS?"
+
+#, fuzzy
+msgid ""
+"<ulink url=\"http://www.centos.org/\">CentOS</ulink> is an Enterprise-class "
 "Linux Distribution derived from sources freely provided to the public by a "
 "prominent North American Enterprise Linux vendor. CentOS conforms fully with "
 "the upstream vendors redistribution policy and aims to be 100% binary "
 "compatible. (CentOS mainly changes packages to remove upstream vendor "
-"branding and artwork.) The CentOS Project is the organization that builds "
-"CentOS."
+"branding and artwork.)"
 msgstr ""
 "CentOS es una distribución de Linux de clase empresarial derivada de los "
 "paquetes fuentes liberemente suministrados al público por un prominente "
@@ -91,32 +58,66 @@ msgstr ""
 "eliminar las marcas y trabajos artísticos del prominente vendedor."
 
 msgid ""
-"For information on CentOS please visit the <ulink url=\"http://www.centos."
-"org/\">CentOS website</ulink>."
+"CentOS is developed by a small but growing team of core developers. In turn "
+"the core developers are supported by an active user community including "
+"system administrators, network administrators, enterprise users, managers, "
+"core Linux contributors and Linux enthusiasts from around the world."
 msgstr ""
+"CentOS es desarrollado por un pequeño pero creciente equipo de "
+"desarrolladores principales. En cambio los desarrolladores principales están "
+"auxiliados por una activa comunidad de usuarios que include, administradores "
+"de sistema, administradores de red, empresarios, gerentes, contribuyentes y "
+"entusiastas del movimiento GNU/Linux de todo el mundo."
+
+msgid "Advantages"
+msgstr "Ventajas"
+
+#, fuzzy
+msgid ""
+"CentOS has numerous advantages including: an active and growing user "
+"community, quickly rebuilt, tested, and QA'ed errata packages, an extensive "
+"<ulink url=\"http://http//www.centos.org//modules/tinycontent/index.php?id=15"
+"\">mirror network</ulink>, developers who are contactable and responsive "
+"reliable Enterprise Linux class distribution, multiple free support avenues."
+msgstr ""
+"CentOS tiene numerosas ventajas, entre ellas cuentan: comunidad activa y "
+"creciente de usuarios, reconstrucción rápida, paquetes probados y "
+"previamente verificados para garantizar su calidad, una <a class=\"www\" "
+"href=\"http://=URL=/modules/tinycontent/index.php?id=15\">ámplia red de "
+"espejos</a>, desarrolladores contactables y responsables de una distribución "
+"Linux de clase empresarial confiable, múltiples avenidas de soporte libre."
+
+msgid "Support"
+msgstr "Soporte"
+
+msgid "The following free support avenues are available:"
+msgstr "Las siguientes avenidas de soporte libre están disponibles:"
+
+msgid "The CentOS Website"
+msgstr "Sitio web"
 
 msgid ""
-"CentOS is an Operating System and it is used to power this website; however, "
-"the webserver is owned by the domain owner and not the CentOS Project. If "
-"you have issues with the content of this site, contact the owner of the "
-"domain, not the CentOS project."
+"<ulink url=\"http://wiki.centos.org/\">The CentOS Wiki</ulink> (includes a "
+"dynamic <ulink url=\"http://wiki.centos.org/FAQ\">FAQ</ulink>)"
 msgstr ""
 
-msgid ""
-"Unless this server is on the CentOS.org domain, the CentOS Project doesn't "
-"have anything to do with the content on this webserver or any e-mails that "
-"directed you to this site."
-msgstr ""
+msgid "The CentOS IRC Chat"
+msgstr "Chat IRC"
 
-msgid ""
-"For example, if this website is www.example.com, you would find the owner of "
-"the example.com domain at the following WHOIS server: <ulink url=\"http://"
-"www.internic.net/whois.html\"/>."
-msgstr ""
+#, fuzzy
+msgid "The CentOS Mailing List"
+msgstr "Listas de correo"
+
+msgid "The CentOS Forums"
+msgstr "Foros"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 msgid "translator-credits"
 msgstr ""
+
+#, fuzzy
+#~ msgid "About CentOS"
+#~ msgstr "Bienvenido a CentOS"
 
 #, fuzzy
 #~ msgid "CentOS 5.5 EULA"
@@ -129,15 +130,6 @@ msgstr ""
 #~ msgstr ""
 #~ "CentOS =RELEASE= viene sin garantías o advertencias de ningún tipo, en "
 #~ "forma escrita o implícita."
-
-#, fuzzy
-#~ msgid ""
-#~ "The Distribution is released as <a href=\"file:///usr/share/doc/centos-"
-#~ "release-5/GPL\">GPL</a>. Individual packages in the distribution come "
-#~ "with their own licences."
-#~ msgstr ""
-#~ "La distribución CentOS es liberada como un trabajo <a href=\"file:///usr/"
-#~ "share/doc/centos-release-5/GPL\">GPL</a>."
 
 #~ msgid "CentOS-5.5 Release Notes"
 #~ msgstr "Notas de la publicación de CentOS-5.5"
@@ -217,12 +209,6 @@ msgstr ""
 #~ msgid "License: <ulink url=\"=LICENSE_URL=\">=LICENSE=</ulink>."
 #~ msgstr "Licencia: <ulink url=\"=LICENSE_URL=\">=LICENSE=</ulink>."
 
-#~ msgid "The following free support avenues are available:"
-#~ msgstr "Las siguientes avenidas de soporte libre están disponibles:"
-
-#~ msgid "The CentOS Website"
-#~ msgstr "Sitio web"
-
 #~ msgid ""
 #~ "<a class=\"www\" href=\"=URL_WIKI=\">The CentOS Wiki</a> (includes a "
 #~ "dynamic <a class=\"www\" href=\"=URL_WIKI=FAQ\">FAQ</a>)"
@@ -230,57 +216,9 @@ msgstr ""
 #~ "<a class=\"www\" href=\"=URL_WIKI=\">Wiki</a> (incluye <a class=\"www\" "
 #~ "href=\"=URL_WIKI=FAQ\">respuestas a preguntas frecuentes</a>)"
 
-#~ msgid "The CentOS IRC Chat"
-#~ msgstr "Chat IRC"
-
-#~ msgid "The CentOS Mailing Lists"
-#~ msgstr "Listas de correo"
-
-#~ msgid "The CentOS Forums"
-#~ msgstr "Foros"
-
 #~ msgid "Welcome"
 #~ msgstr "Bienvenido"
 
 #~ msgid "Welcome to CentOS, the Community Enterprise Operating System."
 #~ msgstr ""
 #~ "Bienvenido a CentOS, el sistema operativo empresarial de la comunidad."
-
-#~ msgid "What is CentOS?"
-#~ msgstr "¿Qué es CentOS?"
-
-#~ msgid ""
-#~ "CentOS is developed by a small but growing team of core developers. In "
-#~ "turn the core developers are supported by an active user community "
-#~ "including system administrators, network administrators, enterprise "
-#~ "users, managers, core Linux contributors and Linux enthusiasts from "
-#~ "around the world."
-#~ msgstr ""
-#~ "CentOS es desarrollado por un pequeño pero creciente equipo de "
-#~ "desarrolladores principales. En cambio los desarrolladores principales "
-#~ "están auxiliados por una activa comunidad de usuarios que include, "
-#~ "administradores de sistema, administradores de red, empresarios, "
-#~ "gerentes, contribuyentes y entusiastas del movimiento GNU/Linux de todo "
-#~ "el mundo."
-
-#~ msgid "Advantages"
-#~ msgstr "Ventajas"
-
-#~ msgid ""
-#~ "CentOS has numerous advantages including: an active and growing user "
-#~ "community, quickly rebuilt, tested, and QA'ed errata packages, an "
-#~ "extensive <a class=\"www\" href=\"http://=URL=/modules/tinycontent/index."
-#~ "php?id=15\">mirror network</a>, developers who are contactable and "
-#~ "responsive reliable Enterprise Linux class distribution, multiple free "
-#~ "support avenues."
-#~ msgstr ""
-#~ "CentOS tiene numerosas ventajas, entre ellas cuentan: comunidad activa y "
-#~ "creciente de usuarios, reconstrucción rápida, paquetes probados y "
-#~ "previamente verificados para garantizar su calidad, una <a class=\"www\" "
-#~ "href=\"http://=URL=/modules/tinycontent/index.php?id=15\">ámplia red de "
-#~ "espejos</a>, desarrolladores contactables y responsables de una "
-#~ "distribución Linux de clase empresarial confiable, múltiples avenidas de "
-#~ "soporte libre."
-
-#~ msgid "Support"
-#~ msgstr "Soporte"
