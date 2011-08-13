@@ -49,7 +49,7 @@ function svg_doPostActions {
     # the repository.
     if [[ $FLAG_DONT_DIRSPECIFIC == 'false' ]];then
 
-        if [[ $TEMPLATE =~ 'trunk/Identity/Models/Themes/.+\.svg$' ]];then
+        if [[ $TEMPLATE =~ 'trunk/Identity/(Models|Images)/Themes/.+\.svg$' ]];then
 
             POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngToBranded"
 
