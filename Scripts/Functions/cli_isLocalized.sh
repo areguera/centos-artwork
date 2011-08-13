@@ -49,7 +49,8 @@ function cli_isLocalized {
     # Define regular expresion list of all directories inside the
     # repository that can have translation. These are the
     # locale-specific directories will be created for.
-    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Identity/Models/Themes/[[:alnum:]-]+/(Concept|Posters|Distro/$(cli_getPathComponent --release-pattern))/(Anaconda|Media)"
+    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
+        cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Manuals/[[:alnum:]-]+$"
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Scripts$"
 
