@@ -56,17 +56,26 @@ function locale_updateMessageXml {
     # Print action message.
     cli_printMessage "${FILE}.pot" --as-updating-line
 
-    # Normalize XML files and expand entities before retriving
-    # translatable strings and creating the portable object template
-    # (.pot).  The translatable strings are retrived from the
-    # normalized output of files, not files themselves (because of
-    # this, we don't include `#: filename:line' output on .pot files).
-    # Entity expansion is also necessary for DocBook documents to be
-    # processed correctly. Notice that some long DocBook document
-    # structures might use entities to split the document structure
-    # into smaller pieces so they could be easier to maintain.
-    xmllint --valid --noent ${FILES} | xml2po -a - \
-        | msgcat --output=${FILE}.pot --width=70 --no-location -
+    # Normalize XML files, expand entities before retriving
+    # translatable strings and create the portable object template
+    # (.pot) from such output.  The translatable strings are retrived
+    # from the normalized output of files, not files themselves
+    # (because of this, we don't include `#: filename:line' output on
+    # .pot files).  Entity expansion is also necessary for DocBook
+    # documents to be processed correctly. Notice that some long
+    # DocBook document structures might use entities to split the
+    # document structure into smaller pieces so they could be easier
+    # to maintain. Also, don't validate svg files the same way you
+    # validate docbook files; Docbook files have a DOCTYPE definition
+    # while svg files don't. Without a DOCTYPE definition, it isn't
+    # possible for `xmllint' to validate the document. 
+    if [[ $ACTIONVAL =~ '^.+/(trunk|branches)/Manuals/.+$' ]];then
+        xmllint --valid --noent ${FILES} | xml2po -a - \
+            | msgcat --output=${FILE}.pot --width=70 --no-location -
+    elif [[ $ACTIONVAL =~ '^.+/(trunk|branches)/Identity/Models/.+$' ]];then
+        xml2po -a ${FILES} \
+            | msgcat --output=${FILE}.pot --width=70 --no-location -
+    fi
 
     # Verify, initialize or merge portable objects from portable
     # object templates.
