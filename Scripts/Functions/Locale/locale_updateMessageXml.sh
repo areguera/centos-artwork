@@ -107,6 +107,6 @@ function locale_updateMessageXml {
 
    # Verify, initialize or merge portable objects from portable object
    # templates.
-   ${CLI_FUNCNAME}_updateMessagePObjects "${MESSAGES}"
+   locale_updateMessagePObjects "${MESSAGES}"
 
 }

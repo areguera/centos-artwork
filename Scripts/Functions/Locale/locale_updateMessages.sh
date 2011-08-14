@@ -44,14 +44,14 @@ function locale_updateMessages {
         # Update translatable strings inside the portable object
         # template related to XML-based files (e.g., scalable vector
         # graphics).
-        ${CLI_FUNCNAME}_updateMessageXml
+        locale_updateMessageXml
 
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to shell scripts (e.g., the centos-art.sh
         # script).
-        ${CLI_FUNCNAME}_updateMessageShell
+        locale_updateMessageShell
 
     else
 

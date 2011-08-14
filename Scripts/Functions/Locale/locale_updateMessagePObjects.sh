@@ -57,7 +57,7 @@ function locale_updateMessagePObjects {
         # Sanitate portable object metadata. This is the first time
         # the portable object is created so some modifications are
         # needed to customized metadata.
-        ${CLI_FUNCNAME}_updateMessageMetadata "${FILE}.po"
+        locale_updateMessageMetadata "${FILE}.po"
 
     fi
 

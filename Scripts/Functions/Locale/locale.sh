@@ -57,7 +57,7 @@ function locale {
     L10N_BASEDIR="$(cli_getRepoTLDir)/L10n"
 
     # Interpret arguments and options passed through command-line.
-    ${CLI_FUNCNAME}_getOptions
+    locale_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
