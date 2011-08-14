@@ -31,7 +31,7 @@ function locale_updateMessageXml {
 
     # Define filename used to create both portable object templates
     # (.pot) and portable objects (.po) files.
-    local FILE="${WORKDIR}/messages"
+    local MESSAGES="${WORKDIR}/messages"
 
     # Define regular expression to match the file extension of all
     # XML-based source files that can be localized inside the working
@@ -54,7 +54,7 @@ function locale_updateMessageXml {
         | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/')
 
     # Print action message.
-    cli_printMessage "${FILE}.pot" --as-updating-line
+    cli_printMessage "${MESSAGES}.pot" --as-updating-line
 
     # Normalize XML files, expand entities before retriving
     # translatable strings and create the portable object template
@@ -69,16 +69,44 @@ function locale_updateMessageXml {
     # validate docbook files; Docbook files have a DOCTYPE definition
     # while svg files don't. Without a DOCTYPE definition, it isn't
     # possible for `xmllint' to validate the document. 
-    if [[ $ACTIONVAL =~ '^.+/(trunk|branches)/Manuals/.+$' ]];then
-        xmllint --valid --noent ${FILES} | xml2po -a - \
-            | msgcat --output=${FILE}.pot --width=70 --no-location -
-    elif [[ $ACTIONVAL =~ '^.+/(trunk|branches)/Identity/Models/.+$' ]];then
+    if [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Manuals/.+$' ]];then
+
+        # Another issue to consider is the amount of source files that
+        # are being processed through xml2po. When there are more than
+        # one file, xml2po interprets only the first one and discards
+        # the rest in the list. This way, when more than one file
+        # exists in the list, it isn't convenient to provide xmllint's
+        # output to xml2po's input. Once here, we can say that
+        # in order to expand DocBook entities it is required that only
+        # one file must be provided at localization time (e.g., using
+        # the `--filter' option). Otherwise translation messages are
+        # retrived from all files, but no entity expansion is realized
+        # because xmllint wouldn't be used in such case.
+        if [[ $(echo "$FILES" | wc -l) -eq 1 ]];then
+
+            xmllint --valid --noent ${FILES} | xml2po -a - \
+                | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
+
+        else
+
+            xml2po -a ${FILES} \
+                | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
+
+        fi
+
+    elif [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Identity/Models/.+$' ]];then
+
         xml2po -a ${FILES} \
-            | msgcat --output=${FILE}.pot --width=70 --no-location -
+            | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
+
+    else
+
+        cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
+
     fi
 
-    # Verify, initialize or merge portable objects from portable
-    # object templates.
-    ${CLI_FUNCNAME}_updateMessagePObjects "${FILE}"
+   # Verify, initialize or merge portable objects from portable object
+   # templates.
+   ${CLI_FUNCNAME}_updateMessagePObjects "${MESSAGES}"
 
 }
