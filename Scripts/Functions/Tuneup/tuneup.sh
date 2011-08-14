@@ -43,7 +43,7 @@ function tuneup {
     local TUNEUP_EXTENSIONS='svg xhtml sh'
 
     # Interpret arguments and options passed through command-line.
-    ${CLI_FUNCNAME}_getOptions
+    tuneup_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -54,7 +54,7 @@ function tuneup {
     # centos-art, there is only one action to perform (i.e., build the
     # list of files and interpretation of file extensions for further
     # processing).
-    ACTIONNAM="${CLI_FUNCNAME}_doBaseActions"
+    ACTIONNAM="tuneup_doBaseActions"
 
     # Define action value. We use non-option arguments to define the
     # action value (ACTIONVAL) variable.

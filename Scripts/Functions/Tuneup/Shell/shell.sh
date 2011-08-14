@@ -30,6 +30,6 @@ function shell {
 
     # Rebuild top comment inside shell scripts, mainly to update
     # copyright information.
-    ${TUNEUP_BACKEND}_doTopComment
+    shell_doTopComment
 
 }

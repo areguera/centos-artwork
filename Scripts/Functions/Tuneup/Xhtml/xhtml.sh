@@ -26,7 +26,7 @@
 function xhtml {
 
     # Define backend-specific configuration directory.
-    local CONFIG_DIR="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
+    local CONFIG_DIR="${TUNEUP_BACKEND_DIR}/Xhtml/Config"
 
     # Transforms xhtml headings to make them accessible (e.g., through
     # a table of contents).
