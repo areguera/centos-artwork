@@ -4,24 +4,25 @@
 
     <para>
         Texinfo document templates provide the texinfo document design
-        model that <command>centos-art.sh</command> script needs to
-        create and maintain texinfo document structures like that one
-        described in <xref linkend="manuals-texinfo-structure" />.
+        model that <command>centos-art.sh</command> script needs in
+        order to create and maintain texinfo document structures like
+        that one described in <xref
+        linkend="manuals-texinfo-structure" />.
     </para>
 
     <para>
         Texinfo document templates are language-specific. This means
         that there is one texinfo document template for each language
         you want to write documentation manuals in texinfo format.
-        This is required because, when we write documentation manuals
-        in texinfo format, it is not possible to retrive translatable
-        strings from source files so translators can localize
-        documentation source files to other languages, independently
-        from documentors.  To create documentation manuals in
-        different languages, it is required to write a complete
-        texinfo document structure for each language you plan to
-        write one documentation manual for; or what might be the same,
-        to duplicate the source documenation manual you want to
+        Using one texinfo document template for each leanguage is
+        required because, in texinfo format, it is not possible to
+        retrive translatable strings from source files so translators
+        can localize documentation source files to other languages,
+        independently from documentors.  To create documentation
+        manuals in different languages, it is required to write a
+        complete texinfo document structure for each language you plan
+        to write one documentation manual for; or what might be the
+        same, to duplicate the source documenation manual you want to
         translate and do the translation inside the source files
         themselves. This way, in order for the <code>help</code>
         functionality of <command>centos-art.sh</command> script to
@@ -32,10 +33,10 @@
     </para>
 
     <para>
-        In order to create texinfo document templates in different
-        languages, duplicate the texinfo document template used to
-        build documentation manuals in English language (<filename
-        class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates/en_US</filename>)
+        In order to create multilingual texinfo document templates,
+        you can duplicate the texinfo document template used to build
+        documentation manuals in English language from <filename
+        class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates/en_US</filename>
         to a new directory at the same directory level and using the
         language and country codification described  in the standards
         iso-639 and iso-3166, respectively. Once the directory has
@@ -60,12 +61,16 @@
         class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates</filename>
         directory, as displayed in <xref
         linkend="manuals-texinfo-templates-1" />. In this structure,
-        files like <filename>manual-ini.pl</filename>,
+        files suffixed with <filename
+        class="extension">.texinfo</filename> extension exists to
+        modelate manual's source files. However, other files like
+        <filename>manual-ini.pl</filename>,
         <filename>manual.sed</filename> and
         <filename>manual.conf</filename> aren't related to manual's
-        source files, but manual's output files. Some of these files
-        are inside and outside language-specific directories in order
-        to control common and specific output settings through them.
+        source files, but to manual's output files. Some of these
+        files can be found inside and outside the language-specific
+        directories so as to control common and specific output
+        settings through them.
     </para>
 
     <example id="manuals-texinfo-templates-1">
@@ -75,7 +80,7 @@
     <mediaobject>
     <textobject>
     <programlisting>trunk/Scripts/Functions/Help/Texinfo/Templates
-|-- $LANG
+|-- ${LANG}
 |   |-- Chapters
 |   |   |-- chapter-menu.texinfo
 |   |   |-- chapter-nodes.texinfo
@@ -100,5 +105,22 @@
     </mediaobject>
     </screenshot>
     </example>
+
+    <para>
+        Inside texinfo document templates, the <filename
+        class="directory">Chapters</filename> directory organizes
+        chapter specific models used to create and maintain both
+        chapter and sections inside manuals. On the other hand, the
+        <filename class="directory">Licenses</filename> organizes
+        license information used by all manuals created from such
+        template. License information is not copied to documentation
+        manuals, but refered from them to this location where they are
+        maintained. This configuration permites that all documentation
+        manuals written in texinfo format inside &TCAR; do use the
+        same license information and if a change is committed to the
+        license files, such changes be immediatly propagated to
+        documentation manuals the next time their output files be
+        updated.
+    </para>
 
 </sect1>
