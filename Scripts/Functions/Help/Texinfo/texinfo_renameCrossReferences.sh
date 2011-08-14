@@ -30,8 +30,8 @@ function texinfo_renameCrossReferences {
     local -a REPLACE
 
     # Build source and target node definitions.
-    local NODE_SRC="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY_SRC")"
-    local NODE_DST="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY_DST")"
+    local NODE_SRC="$(texinfo_getEntryNode "$MANUAL_ENTRY_SRC")"
+    local NODE_DST="$(texinfo_getEntryNode "$MANUAL_ENTRY_DST")"
 
     # Define regular expression pattern and its replacement for node
     # definitions that have been previously removed.

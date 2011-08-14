@@ -41,6 +41,6 @@ function texinfo_deleteEntrySection {
     svn del $MANUAL_ENTRY --quiet
 
     # Update section menu, nodes and cross references.
-    ${MANUAL_BACKEND}_updateStructureSection "${MANUAL_ENTRY}" --delete
+    texinfo_updateStructureSection "${MANUAL_ENTRY}" --delete
 
 }

@@ -49,7 +49,7 @@ function texinfo_updateSectionMenu {
     fi
 
     # Build node information used inside chapter menu.
-    local MENUNODE=$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY")
+    local MENUNODE=$(texinfo_getEntryNode "$MANUAL_ENTRY")
 
     # Define menu entry using texinfo style and node information as
     # reference.

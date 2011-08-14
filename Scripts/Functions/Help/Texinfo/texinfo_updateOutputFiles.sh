@@ -40,12 +40,12 @@ function texinfo_updateOutputFiles {
     # paths incorrectly.
     pushd ${CLI_WRKCOPY} > /dev/null
 
-    ${MANUAL_BACKEND}_updateOutputFileInfo
-    ${MANUAL_BACKEND}_updateOutputFileXhtml
-    ${MANUAL_BACKEND}_updateOutputFileXml
-    ${MANUAL_BACKEND}_updateOutputFileDocbook
-    ${MANUAL_BACKEND}_updateOutputFilePdf
-    ${MANUAL_BACKEND}_updateOutputFilePlaintext
+    texinfo_updateOutputFileInfo
+    texinfo_updateOutputFileXhtml
+    texinfo_updateOutputFileXml
+    texinfo_updateOutputFileDocbook
+    texinfo_updateOutputFilePdf
+    texinfo_updateOutputFilePlaintext
 
     # Remove the working copy root directory from directory stack.
     popd > /dev/null

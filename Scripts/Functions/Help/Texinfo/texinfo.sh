@@ -39,7 +39,7 @@ function texinfo {
     MANUAL_EXTENSION="${MANUAL_BACKEND}"
 
     # Initialize document structure for new manuals.
-    ${MANUAL_BACKEND}_createStructure
+    texinfo_createStructure
 
     # Define documentation entry default values. To build the
     # documentation entry, we combine the manual's name, the chapter's
@@ -55,7 +55,7 @@ function texinfo {
 
         # When chapter option is provided whith out a section name,
         # verify chapter's directory inside the manual,
-        ${MANUAL_BACKEND}_createChapter
+        texinfo_createChapter
 
         # and define documentation entry based on chapter's main
         # definition file.
@@ -66,7 +66,7 @@ function texinfo {
         # When both the chapter option and non-option arguments are
         # provided, define documentation entries based on manual,
         # chapter and non-option arguments.
-        MANUAL_ENTRY="$(${MANUAL_BACKEND}_getEntry "$MANUAL_SECTION_NAME")"
+        MANUAL_ENTRY="$(texinfo_getEntry "$MANUAL_SECTION_NAME")"
 
     else
         cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
@@ -85,7 +85,7 @@ function texinfo {
         # terminate the script execution once the reading is done.
 
         # Update manual's output files.
-        ${MANUAL_BACKEND}_updateOutputFiles
+        texinfo_updateOutputFiles
             
         # Read manual's Top node from its info output file.
         info --node="Top" --file="${MANUAL_BASEFILE}.info.bz2"
@@ -96,10 +96,10 @@ function texinfo {
         # arguments passed to `centos-art.sh' script in a special way.
         # In this configuration, only two non-option arguments are
         # processed in the first loop of their interpretation.
-        ${MANUAL_BACKEND}_${ACTIONNAM}
+        texinfo_${ACTIONNAM}
 
         # Rebuild output files to propagate recent changes, if any.
-        ${MANUAL_BACKEND}_updateOutputFiles
+        texinfo_updateOutputFiles
 
         # Break interpretation of non-option arguments to prevent the
         # second and further non-option arguments from being
@@ -117,16 +117,16 @@ function texinfo {
         # flow) nor commit any change form working copy to central
         # repository (e.g., output files are not under version
         # control).
-        ${MANUAL_BACKEND}_${ACTIONNAM}
+        texinfo_${ACTIONNAM}
 
     else
 
         # Execute action names that follow help's execution flow as it
         # is, without any modification.
-        ${MANUAL_BACKEND}_${ACTIONNAM}
+        texinfo_${ACTIONNAM}
 
         # Rebuild output files to propagate recent changes, if any.
-        ${MANUAL_BACKEND}_updateOutputFiles
+        texinfo_updateOutputFiles
 
     fi
 

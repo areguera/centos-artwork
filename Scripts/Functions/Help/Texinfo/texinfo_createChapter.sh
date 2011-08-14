@@ -48,9 +48,9 @@ function texinfo_createChapter {
     read MANUAL_CHAPTER_TITLE
 
     # Sanitate chapter node, chapter index and chapter title.
-    MANUAL_CHAPTER_NODE=$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_CHAPTER_NAME")
-    MANUAL_CHAPTER_CIND=$(${MANUAL_BACKEND}_getEntryIndex "$MANUAL_CHAPTER_TITLE")
-    MANUAL_CHAPTER_TITLE=$(${MANUAL_BACKEND}_getEntryTitle "$MANUAL_CHAPTER_TITLE")
+    MANUAL_CHAPTER_NODE=$(texinfo_getEntryNode "$MANUAL_CHAPTER_NAME")
+    MANUAL_CHAPTER_CIND=$(texinfo_getEntryIndex "$MANUAL_CHAPTER_TITLE")
+    MANUAL_CHAPTER_TITLE=$(texinfo_getEntryTitle "$MANUAL_CHAPTER_TITLE")
 
     # Print action message.
     cli_printMessage "-" --as-separator-line
@@ -113,7 +113,7 @@ function texinfo_createChapter {
 
     # Update chapter information inside the manual's texinfo
     # structure.
-    ${MANUAL_BACKEND}_updateChapterMenu
-    ${MANUAL_BACKEND}_updateChapterNodes
+    texinfo_updateChapterMenu
+    texinfo_updateChapterNodes
 
 }

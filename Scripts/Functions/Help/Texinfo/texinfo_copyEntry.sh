@@ -39,7 +39,7 @@ function texinfo_copyEntry {
         # In this configuration, the section name is specified in
         # first non-option argument and optionally in the second
         # non-option arugment.
-        ${MANUAL_BACKEND}_copyEntrySection
+        texinfo_copyEntrySection
          
     elif [[ ${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]} != '' ]] \
         && [[ ${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
@@ -49,7 +49,7 @@ function texinfo_copyEntry {
         # perform a copying action for the chapter directory itself.
         # In this configuration, the whole chapter directory and all
         # the content inside are duplicated from source to target.
-        ${MANUAL_BACKEND}_copyEntryChapter
+        texinfo_copyEntryChapter
 
     elif [[ ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != '' ]] \
         && [[ ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
@@ -58,7 +58,7 @@ function texinfo_copyEntry {
         # neither in first or second non-option argument. So, we
         # perform copying actions on manual directory itself.  Notice
         # that, in this configuration, the whole manual is duplicated.
-        ${MANUAL_BACKEND}_copyEntryManual
+        texinfo_copyEntryManual
 
         # In this configuration, there is no need to update section
         # menus, nodes and cross refereces. The section definition

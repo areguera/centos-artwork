@@ -69,14 +69,14 @@ function help {
     local MANUAL_DOCENTRY_ID=0
 
     # Interpret option arguments passed through the command-line.
-    ${CLI_FUNCNAME}_getOptions
+    help_getOptions
 
     # Redefine arrays related to documentation entries using
     # non-option arguments passed through the command-line. At this
     # point all options have been removed from ARGUMENTS and
     # non-option arguments remain. Evaluate ARGUMENTS to retrive the
     # information related documentation entries from there.
-    ${CLI_FUNCNAME}_getEntries
+    help_getEntries
 
     # Execute backend-specific documentation tasks for each
     # documentation entry specified in the command-line, individually.

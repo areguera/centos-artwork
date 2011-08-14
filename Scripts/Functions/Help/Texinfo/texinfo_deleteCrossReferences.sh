@@ -42,7 +42,7 @@ function texinfo_deleteCrossReferences {
     fi
 
     # Build the node string using entry location.
-    local NODE="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY")"
+    local NODE="$(texinfo_getEntryNode "$MANUAL_ENTRY")"
 
     # Define regular expression patterns for texinfo cross reference
     # commands.

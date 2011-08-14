@@ -32,8 +32,8 @@ function texinfo_copyEntrySection {
         # When the section name is specified in first and second
         # non-option arguments, source and target are set as specified
         # in first and second non-option arguments respectively.
-        MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]})
-        MANUAL_ENTRY_DST=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECT[((${MANUAL_DOCENTRY_ID} + 1))]})
+        MANUAL_ENTRY_SRC=$(texinfo_getEntry ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]})
+        MANUAL_ENTRY_DST=$(texinfo_getEntry ${MANUAL_SECT[((${MANUAL_DOCENTRY_ID} + 1))]})
 
     elif [[ ${MANUAL_SECT[((${MANUAL_DOCENTRY_ID} + 1))]} == '' ]] \
         && [[ ${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]} != '' ]];then
@@ -43,7 +43,7 @@ function texinfo_copyEntrySection {
         # in the second non-option argument, use the section name
         # passed in first argument to build the section name that will
         # be used as target.
-        MANUAL_ENTRY_SRC=$(${MANUAL_BACKEND}_getEntry ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]})
+        MANUAL_ENTRY_SRC=$(texinfo_getEntry ${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]})
         MANUAL_ENTRY_DST=$(echo $MANUAL_ENTRY_SRC \
             | sed -r "s!${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]}!${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]}!")
 
@@ -56,7 +56,7 @@ function texinfo_copyEntrySection {
     cli_printMessage "${MANUAL_ENTRY_DST}" --as-creating-line
 
     # Verify entry source and target locations.
-    ${MANUAL_BACKEND}_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
+    texinfo_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
 
     # Copy section entry from source to target using subversion.
     svn cp "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}" --quiet
@@ -77,6 +77,6 @@ function texinfo_copyEntrySection {
     # At this point, all copying actions and chapter related
     # redefinitions have took place. It is time, then, to update the
     # document structure using the information collected so far.
-    ${MANUAL_BACKEND}_updateStructureSection "${MANUAL_ENTRY_DST}"
+    texinfo_updateStructureSection "${MANUAL_ENTRY_DST}"
 
 }

@@ -29,13 +29,13 @@ function texinfo_searchNode {
     # Verify documentation entry and, if it doesn't exist, prompt out
     # its creation.
     if [[ ! -f "$MANUAL_ENTRY" ]];then
-        ${MANUAL_BACKEND}_editEntry
+        texinfo_editEntry
     fi
 
     # Verify manual output files and, if they don't exist, create
     # them.
     if [[ ! -f ${MANUAL_BASEFILE}.info.bz2 ]];then
-        ${MANUAL_BACKEND}_updateOutputFiles
+        texinfo_updateOutputFiles
     fi
 
     # Print separator line.
@@ -45,12 +45,12 @@ function texinfo_searchNode {
     cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
 
     # Define manual node that will be read.
-    local MANUAL_NODE="$(${MANUAL_BACKEND}_getEntryNode "$MANUAL_ENTRY")"
+    local MANUAL_NODE="$(texinfo_getEntryNode "$MANUAL_ENTRY")"
 
     # Verify manual node that will be read. When the manual name is
     # the only value passed as documentation entry, then use the `Top'
     # node as manual node to be read.
-    if [[ $MANUAL_NODE =~ $(${MANUAL_BACKEND}_getEntryNode "$MANUAL_NAME") ]];then
+    if [[ $MANUAL_NODE =~ $(texinfo_getEntryNode "$MANUAL_NAME") ]];then
         MANUAL_NODE='Top'
     fi
 

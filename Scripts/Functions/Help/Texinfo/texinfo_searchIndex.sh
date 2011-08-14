@@ -28,7 +28,7 @@ function texinfo_searchIndex {
     # Verify manual output files and, if they don't exist, create
     # them.
     if [[ ! -f ${MANUAL_BASEFILE}.info.bz2 ]];then
-        ${MANUAL_BACKEND}_updateOutputFiles
+        texinfo_updateOutputFiles
     fi
 
     # Print separator line.

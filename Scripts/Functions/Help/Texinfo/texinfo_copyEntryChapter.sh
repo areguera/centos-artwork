@@ -32,7 +32,7 @@ function texinfo_copyEntryChapter {
     MANUAL_ENTRY_DST=${MANUAL_BASEDIR_L10N}/${MANUAL_CHAP[((${MANUAL_DOCENTRY_ID} + 1))]}
 
     # Verify entry source and target locations.
-    ${MANUAL_BACKEND}_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
+    texinfo_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
 
     # When we are copying chapters, document structure actualization
     # needs to be performed against the target chapter not the source
@@ -48,7 +48,7 @@ function texinfo_copyEntryChapter {
     # source chapter must be copied one by one to the recently created
     # chapter. At this point then, is when menu, nodes and cross
     # references for the new chapter are updated.
-    ${MANUAL_BACKEND}_createChapter
+    texinfo_createChapter
 
     # Create list of sections from source chapter that need to be
     # copied to target chapter. Don't include chapter's main
@@ -64,11 +64,11 @@ function texinfo_copyEntryChapter {
 
     # Update section menu, nodes and cross reference definitions
     # inside target chapter where all section entries were copied to.
-    ${MANUAL_BACKEND}_updateStructureSection "${MANUAL_ENTRY_DST}/.+\.${MANUAL_EXTENSION}"
+    texinfo_updateStructureSection "${MANUAL_ENTRY_DST}/.+\.${MANUAL_EXTENSION}"
 
     # Update chapter menu and node definitions inside the manual
     # structure.
-    ${MANUAL_BACKEND}_updateChapterMenu
-    ${MANUAL_BACKEND}_updateChapterNodes
+    texinfo_updateChapterMenu
+    texinfo_updateChapterNodes
 
 }

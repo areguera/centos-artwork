@@ -48,8 +48,8 @@ function texinfo_deleteEntryChapter {
     svn del ${MANUAL_CHAPTER_DIR} --quiet
 
     # Update chapter menu and nodes inside manual structure.
-    ${MANUAL_BACKEND}_updateChapterMenu --delete-entry
-    ${MANUAL_BACKEND}_updateChapterNodes
+    texinfo_updateChapterMenu --delete-entry
+    texinfo_updateChapterNodes
 
     # Loop through section entries retrived from chapter, before
     # deleting it, in order to remove cross references pointing to
@@ -59,7 +59,7 @@ function texinfo_deleteEntryChapter {
     # pointing to non-existent section entries will be transformed in
     # order for documentors to advertise the section entry state.
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-        ${MANUAL_BACKEND}_deleteCrossReferences ${MANUAL_ENTRY}
+        texinfo_deleteCrossReferences ${MANUAL_ENTRY}
     done
 
 }

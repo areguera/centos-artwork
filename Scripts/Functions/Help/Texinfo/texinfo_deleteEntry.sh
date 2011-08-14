@@ -38,7 +38,7 @@ function texinfo_deleteEntry {
         # Once the documentation entry is deleted, the section menu
         # and nodes definition files are updated to keep manual in a
         # consistent state.
-        ${MANUAL_BACKEND}_deleteEntrySection
+        texinfo_deleteEntrySection
 
     elif [[ ${MANUAL_CHAP[$MANUAL_DOCENTRY_ID]} != '' ]];then
 
@@ -52,7 +52,7 @@ function texinfo_deleteEntry {
         # Actualization of section definition files must be done one
         # at a time because menu entries related to section
         # definitions are updated one at a time.
-        ${MANUAL_BACKEND}_deleteEntryChapter
+        texinfo_deleteEntryChapter
 
     elif [[ ${MANUAL_DIRN[$MANUAL_DOCENTRY_ID]} != '' ]];then
 
@@ -60,7 +60,7 @@ function texinfo_deleteEntry {
         # to either a section or chapter but a manual name only. In
         # this configuration the entire manual directory is marked for
         # deletion, and that way processed.
-        ${MANUAL_BACKEND}_deleteEntryManual
+        texinfo_deleteEntryManual
 
     else
         cli_printMessage "`gettext "The parameters you provided are not supported."`" --as-error-line
