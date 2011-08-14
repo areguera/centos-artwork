@@ -25,7 +25,7 @@
 function svg {
 
     # Define backend-specific configuration directory.
-    TUNEUP_BACKEND_CONFIG="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
+    local CONFIG_DIR="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
 
     # Update metadata information.
     ${TUNEUP_BACKEND}_doMetadata
