@@ -42,13 +42,13 @@ function svg_convertGplToPpm {
 
     # Define list of colors from GPL palette.
     local COLOR=''
-    local COLORS=$(${RENDER_BACKEND}_getColors "$PALETTE_GPL" --head=$NUMBER --tail=$NUMBER --format='rrrggbb')
+    local COLORS=$(svg_getColors "$PALETTE_GPL" --head=$NUMBER --tail=$NUMBER --format='rrrggbb')
 
     # Verify amount of colors in the list of colors.
-    ${RENDER_BACKEND}_checkColorAmount "$COLORS" "$NUMBER"
+    svg_checkColorAmount "$COLORS" "$NUMBER"
 
     # Verify format of colors.
-    ${RENDER_BACKEND}_checkColorFormats $COLORS --format='rrggbb'
+    svg_checkColorFormats $COLORS --format='rrggbb'
 
     # Create temporal images (of 1x1 pixel each) to store each color
     # retrived from Gimp's palette. 

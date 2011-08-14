@@ -50,7 +50,7 @@ function docbook_convertToXhtml {
     local DST="${FILE}.xhtml"
 
     # Prepare XSL final instances used in transformations.
-    ${RENDER_BACKEND}_prepareStyles $(cli_getFilesList \
+    docbook_prepareStyles $(cli_getFilesList \
         ${DOCBOOK_STYLES_DIR} --pattern='.*docbook2xhtml-(single|common)\.xsl')
 
     # Transform DocBook XML to XHTML supressing all stderr output.

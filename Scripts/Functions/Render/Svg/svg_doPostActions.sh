@@ -88,7 +88,7 @@ function svg_doPostActions {
 
     # Execute SVG post-rendition actions.
     for ACTION in "${POSTACTIONS[@]}"; do
-        ${RENDER_BACKEND}_$(echo "$ACTION" | cut -d: -f1)
+        svg_$(echo "$ACTION" | cut -d: -f1)
     done
 
 }

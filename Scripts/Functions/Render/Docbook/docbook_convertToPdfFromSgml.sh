@@ -85,7 +85,7 @@ function docbook_convertToPdfFromSgml {
         $SRC
 
     # Prepare style final instance used in transformations.
-    ${RENDER_BACKEND}_prepareStyles "${DOCBOOK_STYLES_DIR}/docbook2pdf.dsl"
+    docbook_prepareStyles "${DOCBOOK_STYLES_DIR}/docbook2pdf.dsl"
 
     # Verify temporal directory and create it if doesn't exist.
     if [[ ! -d $TMPDIR ]];then

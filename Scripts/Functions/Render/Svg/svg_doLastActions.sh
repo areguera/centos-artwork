@@ -66,7 +66,7 @@ function svg_doLastActions {
     # images for the next directory structure lets execute the list of
     # last-rendition actions for the current directory structure. 
     for ACTION in "${LASTACTIONS[@]}"; do
-        ${RENDER_BACKEND}_$(echo "$ACTION" | cut -d: -f1)
+        svg_$(echo "$ACTION" | cut -d: -f1)
     done
 
 }

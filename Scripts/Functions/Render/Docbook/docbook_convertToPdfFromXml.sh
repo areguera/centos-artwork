@@ -96,7 +96,7 @@ function docbook_convertToPdfFromXml {
     local PDF=$(basename ${FILE}).pdf
 
     # Prepare XSL final instances used in transformations.
-    ${RENDER_BACKEND}_prepareStyles "${DOCBOOK_STYLES_DIR}/docbook2fo.xsl"
+    docbook_prepareStyles "${DOCBOOK_STYLES_DIR}/docbook2fo.xsl"
 
     # Verify temporal directory and create it if doesn't exist.
     if [[ ! -d $TMPDIR ]];then

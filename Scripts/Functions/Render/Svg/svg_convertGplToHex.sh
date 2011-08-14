@@ -40,16 +40,16 @@ function svg_convertGplToHex {
     local NUMBER="$3"
 
     # Define list of colors from GPL palette.
-    local COLORS=$(${RENDER_BACKEND}_getColors $PALETTE_GPL --head=$NUMBER --tail=$NUMBER)
+    local COLORS=$(svg_getColors $PALETTE_GPL --head=$NUMBER --tail=$NUMBER)
 
     # Verify number of colors returned in the list. They must match
     # exactly the amount specified, no more no less. Sometimes, the
     # list of colors may have less colors than it should have, so we
     # need to prevent such palettes from being used.
-    ${RENDER_BACKEND}_checkColorAmount "$COLORS" "$NUMBER"
+    svg_checkColorAmount "$COLORS" "$NUMBER"
 
     # Verify format of colors.
-    ${RENDER_BACKEND}_checkColorFormats "$COLORS" --format='rrggbb'
+    svg_checkColorFormats "$COLORS" --format='rrggbb'
 
     # Create list of colors to be processed by `pnmtolss16'.
     echo "$COLORS" | nl | gawk '{ printf "%s=%d ", $2, $1 - 1 }' \

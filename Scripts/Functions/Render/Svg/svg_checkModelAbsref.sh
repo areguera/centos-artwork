@@ -90,10 +90,10 @@ function svg_checkModelAbsref {
             if [[ ! -f $BG_SRC_FILE ]];then
 
                 # Define plain color that will be used as background.
-                BG_SRC_FILE_COLOR=$(${RENDER_BACKEND}_getColors)
+                BG_SRC_FILE_COLOR=$(svg_getColors)
 
                 # Verify format of color value.
-                ${RENDER_BACKEND}_checkColorFormats $BG_SRC_FILE_COLOR --format='rrggbb'
+                svg_checkColorFormats $BG_SRC_FILE_COLOR --format='rrggbb'
 
                 # Define width for the source background file the
                 # required background information is cropped from.

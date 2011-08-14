@@ -27,10 +27,10 @@ function docbook {
 
     # Initialize absolute path to Xsl directory. This is the location
     # where customization of XSL tranformations are stored in.
-    DOCBOOK_STYLES_DIR="${RENDER_BACKEND_DIR}/$(cli_getRepoName ${RENDER_BACKEND} -d)/Styles"
+    DOCBOOK_STYLES_DIR="${RENDER_BACKEND_DIR}/Docbook/Styles"
 
-    ${RENDER_BACKEND}_convertToXhtmlChunk
-    ${RENDER_BACKEND}_convertToXhtml
+    docbook_convertToXhtmlChunk
+    docbook_convertToXhtml
 
     # WARNING: There are some issues related to DocBook-to-PDF
     # transformations that make the whole process not so "clean" as
@@ -38,12 +38,12 @@ function docbook {
     # the need of providing a clean output, PDF transformation is
     # commented until these issues be corrected. If you have a release
     # of CentOS greater than 5.5, uncomment this to see what happen.
-    #${RENDER_BACKEND}_convertToPdf
+    #docbook_convertToPdf
 
     # Perform backend post-rendition.
-    ${RENDER_BACKEND}_doPostActions
+    docbook_doPostActions
 
     # Perform backend last-rendition.
-    ${RENDER_BACKEND}_doLastActions
+    docbook_doLastActions
 
 }

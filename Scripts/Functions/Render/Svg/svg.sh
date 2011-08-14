@@ -30,7 +30,7 @@ function svg {
     local EXPORTID='CENTOSARTWORK'
 
     # Verify the export id.
-    ${RENDER_BACKEND}_checkModelExportId "$INSTANCE" "$EXPORTID" 
+    svg_checkModelExportId "$INSTANCE" "$EXPORTID" 
 
     # Check existence of external files. Inside design templates and
     # their instances, external files are used to refere the
@@ -38,7 +38,7 @@ function svg {
     # background information is not available the image is produced
     # without background information. This is something that need to
     # be avoided.
-    ${RENDER_BACKEND}_checkModelAbsref "$INSTANCE"
+    svg_checkModelAbsref "$INSTANCE"
 
     # Render template instance using inkscape and save the output.
     local INKSCAPE_OUTPUT="$(\
@@ -54,9 +54,9 @@ function svg {
         | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`:!")"
 
     # Perform backend post-rendition.
-    ${RENDER_BACKEND}_doPostActions
+    svg_doPostActions
 
     # Perform backend last-rendition.
-    ${RENDER_BACKEND}_doLastActions
+    svg_doLastActions
 
 }

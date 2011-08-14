@@ -29,7 +29,7 @@
 function docbook_convertToPdf {
 
     # Tranform DocBook XML to PDF.
-    ${RENDER_BACKEND}_convertToPdfFromXml
+    docbook_convertToPdfFromXml
 
     # Tranform DocBook SGML to PDF. 
     if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
@@ -42,7 +42,7 @@ function docbook_convertToPdf {
         # in the msgid field. Such expanded characters are not
         # recognized by openjade when they are used as source to
         # produce the PDF output. 
-        ${RENDER_BACKEND}_convertToPdfFromSgml
+        docbook_convertToPdfFromSgml
     fi
 
 }

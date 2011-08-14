@@ -26,6 +26,6 @@
 
 function docbook_doPostActions {
 
-    ${RENDER_BACKEND}_convertToText
+    docbook_convertToText
 
 }

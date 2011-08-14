@@ -89,7 +89,7 @@ function render {
     local RENDER_EXTENSIONS='svg docbook'
 
     # Interpret arguments and options passed through command-line.
-    ${CLI_FUNCNAME}_getOptions
+    render_getOptions
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -116,11 +116,11 @@ function render {
         # take the action value (ACTIONVAL) as reference and describe
         # the production through an action name (ACTIONNAM).
         if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
-            ACTIONNAM="${CLI_FUNCNAME}_doThemeActions"
+            ACTIONNAM="render_doThemeActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
-            ACTIONNAM="${CLI_FUNCNAME}_doBaseActions"
+            ACTIONNAM="render_doBaseActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals" ]];then
-            ACTIONNAM="${CLI_FUNCNAME}_doBaseActions"
+            ACTIONNAM="render_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided does not support rendition."`" --as-error-line
         fi

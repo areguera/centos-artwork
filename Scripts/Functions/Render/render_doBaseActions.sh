@@ -46,17 +46,15 @@ function render_doBaseActions {
     PARENTDIR=$(basename "${ACTIONVAL}")
 
     # Define base location of template files.
-    ${CLI_FUNCNAME}_getDirTemplate
+    render_getDirTemplate
     
     # Loop through list of supported file extensions. 
     for RENDER_EXTENSION in ${RENDER_EXTENSIONS};do
 
         # Redefine name of rendition backend based on supported file
         # extension.
-        if [[ $RENDER_EXTENSION == 'svg' ]];then
-            RENDER_BACKEND='svg'
-        elif [[ $RENDER_EXTENSION == 'docbook' ]];then
-            RENDER_BACKEND='docbook'
+        if [[ $RENDER_EXTENSION == '^(svg|docbook)$' ]];then
+            RENDER_BACKEND=${RENDER_EXTENSION}
         else
            cli_printMessage "`eval_gettext "The \\\"\\\$RENDER_EXTENSION\\\" file extension is not supported yet."`" --as-error-line 
         fi
@@ -178,7 +176,7 @@ function render_doBaseActions {
             fi
  
             # Define final location of output directory.
-            ${CLI_FUNCNAME}_getDirOutput
+            render_getDirOutput
 
             # Get relative path to file. The path string (stored in
             # FILE) has two parts: 1. the variable path and 2. the
@@ -220,7 +218,7 @@ function render_doBaseActions {
 
             # Apply translation file to design model to produce the design
             # model translated instance. 
-            ${CLI_FUNCNAME}_doTranslation
+            render_doTranslation
 
             # Expand translation markers inside design model instance.
             cli_expandTMarkers ${INSTANCE}

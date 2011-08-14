@@ -110,9 +110,9 @@ function svg_getColors {
         # of them is present, use The CentOS Project default color
         # then.
         if [[ -f $MOTIF_PALETTE ]];then
-            COLORS=$(${RENDER_BACKEND}_getColors $MOTIF_PALETTE --head=1 --tail=1)
+            COLORS=$(svg_getColors $MOTIF_PALETTE --head=1 --tail=1)
         elif [[ -f $MODEL_PALETTE ]];then
-            COLORS=$(${RENDER_BACKEND}_getColors $MODEL_PALETTE --head=1 --tail=1)
+            COLORS=$(svg_getColors $MODEL_PALETTE --head=1 --tail=1)
         else
             COLORS='#204c8d'
         fi

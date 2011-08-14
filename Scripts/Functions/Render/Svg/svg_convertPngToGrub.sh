@@ -64,7 +64,7 @@ function svg_convertPngToGrub {
     # configuration script. These options are applied to pnmremap when
     # doing color reduction, so any option available for pnmremap
     # command can be passed to renderSyslinux functionality.
-    local OPTIONS=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2-')
+    local OPTIONS=$(render_getConfigOption "$ACTION" '2-')
 
     # Check options passed to action. This is required in order to
     # aviod using options used already in this script. For example
@@ -119,7 +119,7 @@ function svg_convertPngToGrub {
     cli_printMessage "$PALETTE_GPL" --as-palette-line
 
     # Create PPM palette using GPL palette.
-    ${RENDER_BACKEND}_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
+    svg_convertGplToPpm "$PALETTE_GPL" "$PALETTE_PPM" "$COLORS"
 
     # Reduce colors as specified in PPM palette.  Here we use the PPM
     # palette to enforce the color position in the image index and the

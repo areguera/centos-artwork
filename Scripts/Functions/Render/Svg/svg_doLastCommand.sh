@@ -29,12 +29,12 @@ function svg_doLastCommand {
     # Define the file extensions. This value is a regular expression
     # pattern which must match the file extensions that last-rendition
     # actions will be applied to.
-    local EXTENSION=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '2')
+    local EXTENSION=$(render_getConfigOption "$ACTION" '2')
 
     # Define the command string that will be evaluated as
     # last-rendition action. Only commands that perform in-place
     # modifications can be passed here.
-    local COMMAND=$(${CLI_FUNCNAME}_getConfigOption "$ACTION" '3-')
+    local COMMAND=$(render_getConfigOption "$ACTION" '3-')
 
     # Define the list of files to process. This value contain all the
     # files in the output directory which extension match the
