@@ -47,7 +47,7 @@ function prepare_updatePackages {
         tetex-dvips gettext texi2html gnome-doc-utils elinks
         docbook-style-xsl docbook-utils docbook-dtds
         docbook-style-dsssl docbook-simple docbook-utils-pdf
-        docbook-slides firefox sudo yum rpm"
+        docbook-slides firefox sudo yum rpm ctags"
 
     # Define packages from third party repositories (i.e., packages
     # not included in CentOS [base] repository.) required by
