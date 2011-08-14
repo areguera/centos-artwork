@@ -1,4 +1,19 @@
 <sect1 id="manuals-texinfo-l10n">
+
     <title>Texinfo Document Localization</title>
-    <para>...</para>
+
+    <para>
+        Texinfo document localization is based on <envar>LANG</envar>
+        environment variable. When you do login to open your user's
+        session, the <envar>LANG</envar> environment variable holds
+        the locale information of your user's session in the form
+        ll_CC.encoding. This information is used by the
+        <code>help</code> functionality of
+        <command>centos-art.sh</command> script to determine the
+        the manual's main language definition and the texinfo document
+        template that should be used when documentation manuals
+        written in texinfo format are created and maintained,
+        respectively.
+    </para>
+
 </sect1>
