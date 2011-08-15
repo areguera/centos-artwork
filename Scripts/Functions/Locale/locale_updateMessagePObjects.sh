@@ -54,11 +54,9 @@ function locale_updateMessagePObjects {
         msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
             --no-translator 2> /dev/null
 
-        # Sanitate portable object metadata. This is the first time
-        # the portable object is created so some modifications are
-        # needed to customized metadata.
-        locale_updateMessageMetadata "${FILE}.po"
-
     fi
+
+    # Sanitate metadata inside the PO file.
+    locale_updateMessageMetadata "${FILE}.po"
 
 }
