@@ -52,7 +52,7 @@ function prepare {
         # When action names are provided, loop through them and
         # execute them one by one.
         for ACTIONNAM in $ACTIONNAMS;do
-            prepare_${ACTIONNAM}
+            ${ACTIONNAM}
         done
 
     fi
