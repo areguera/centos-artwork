@@ -24,9 +24,6 @@
 
 function svg {
 
-    # Define backend-specific configuration directory.
-    local CONFIG_DIR="${TUNEUP_BACKEND_DIR}/Svg/Config"
-
     # Update metadata information.
     svg_doMetadata
 

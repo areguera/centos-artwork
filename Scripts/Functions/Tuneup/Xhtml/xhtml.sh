@@ -25,9 +25,6 @@
 
 function xhtml {
 
-    # Define backend-specific configuration directory.
-    local CONFIG_DIR="${TUNEUP_BACKEND_DIR}/Xhtml/Config"
-
     # Transforms xhtml headings to make them accessible (e.g., through
     # a table of contents).
     xhtml_doToc

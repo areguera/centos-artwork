@@ -25,9 +25,6 @@
 
 function shell {
 
-    # Define backend-specific configuration directory.
-    local CONFIG_DIR="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -d)/Config"
-
     # Rebuild top comment inside shell scripts, mainly to update
     # copyright information.
     shell_doTopComment

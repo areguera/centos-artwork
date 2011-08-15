@@ -27,7 +27,7 @@
 function svg_doMetadata {
 
     # Define template file name.
-    local TEMPLATE="${CONFIG_DIR}/metadata.sed"
+    local TEMPLATE="${TUNEUP_CONFIG_DIR}/metadata.sed"
 
     # Check template file existence.
     cli_checkFiles $TEMPLATE
