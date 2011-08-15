@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh\n"
 "Report-Msgid-Bugs-To: The CentOS L10n SIG <centos-l10n@centos.org>\n"
-"POT-Creation-Date: 2011-07-17 21:35-0400\n"
+"POT-Creation-Date: 2011-08-15 11:12-0400\n"
 "PO-Revision-Date: 2011-02-04 14:51-0500\n"
 "Last-Translator:  The CentOS L10n SIG <centos-l10n@centos.org>\n"
 "Language-Team: Spanish\n"
@@ -17,35 +17,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo.sh:145
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:104
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:73
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo.sh:90
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:70
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteEntry.sh:66
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_renameEntry.sh:70
 msgid "The parameters you provided are not supported."
 msgstr "Los parámetros que usted suministró no están soportados."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntry.sh:72
-msgid "The location provided as target isn't valid."
-msgstr "La ubicación suministrada como destino no es válida."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:37
+#, fuzzy
+msgid "The source location doesn't exist."
+msgstr "La ubicación de origen no es válida."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntryChapter.sh:42
-msgid "The chapter cannot be copied into itself."
-msgstr "El capítulo no puede copiarse a sí mismo."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:43
+msgid "The source and target locations cannot be the same."
+msgstr "La ubicación de origen y destino no puden ser las mismas."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:50
+#, fuzzy
+msgid "The source location has pending changes."
+msgstr "La ubicación de origen no es válida."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:53
+#, fuzzy
+msgid "The source location isn't under version control."
+msgstr "La ubicación de origen no es válida."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:66
+#, fuzzy
+msgid "The target location already exists."
+msgstr "La ubicación `$FLAG_TO' ya existe."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntryManual.sh:56
 msgid "Updating chapter menus and nodes inside manual structure."
 msgstr "Actualizando menús y nodos en la estructura del manual."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:31
-msgid "The source and target locations cannot be the same."
-msgstr "La ubicación de origen y destino no puden ser las mismas."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:64
-msgid "The target location is not valid."
-msgstr "La ubicación de destino no es válida."
-
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:67
-msgid "The source location is not valid."
-msgstr "La ubicación de origen no es válida."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:51
+msgid "The location provided as target isn't valid."
+msgstr "La ubicación suministrada como destino no es válida."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:36
 msgid "The following documentation chapter will be created:"
@@ -57,15 +66,17 @@ msgstr "El capítulo siguiente de documentación será creado:"
 msgid "Do you want to continue?"
 msgstr "¿Desea continuar?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:45
-msgid "Enter chapter's title"
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:47
+#, fuzzy
+msgid "Chapter Title"
 msgstr "Entre el título del capítulo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:50
-msgid "Creating chapter's files."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:57
+#, fuzzy
+msgid "Creating chapter files."
 msgstr "Creando ficheros del capítulo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:98
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createChapter.sh:112
 msgid "Updating chapter menu and nodes inside manual structure."
 msgstr "Actualizando menú y nodos dentro de la estructura del manual."
 
@@ -74,34 +85,36 @@ msgstr "Actualizando menú y nodos dentro de la estructura del manual."
 msgid "The following documentation manual will be created:"
 msgstr "El manual de documentación siguiente será creado:"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:65
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:57
 msgid "Manual Title"
 msgstr "Título del manual"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:67
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:59
 msgid "Manual Subtitle"
 msgstr "Subtítulo del manual"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:69
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:61
 msgid "Manual Abstract"
 msgstr "Preámbulo del manual"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:74
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:66
 msgid "Creating manual structure in texinfo format."
 msgstr "Creando la estructura del manual en formato texinfo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:79
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_createStructure.sh:71
 msgid "The manual title cannot be empty."
 msgstr "El título del manual no puede estar vacío."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:41
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_getNode.sh:33
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_getEntryNode.sh:33
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:45
 msgid "The first positional parameter cannot be empty."
 msgstr "El primer argumento de posición no puede estar vacío."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:50
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:62
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:38
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:43
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:53
 #: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:54
 msgid "Removed"
@@ -111,40 +124,68 @@ msgstr "Eliminando"
 msgid "The following documentation section will be created:"
 msgstr "La sección siguiente de documentación será creada:"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:99
-msgid "Updating section menus, nodes and cross references."
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateOutputFiles.sh:36
+#, fuzzy
+msgid "Updating output files"
+msgstr "Actualizando la salida pdf del manual"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:32
+#, fuzzy
+msgid "Updating section menus, nodes and cross references"
 msgstr "Actualizando menús, nodos y referencias cruzadas en las secciones."
 
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:125
+#, fuzzy
+msgid "No section entry found to process."
+msgstr "No hay información de resolución a procesar."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:160
+#, fuzzy
+msgid "The documentation backend provided isn't supported."
+msgstr "El trasfondo suministrada no está soportada."
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help.sh:169
+#, fuzzy
+msgid "Select one of the following documentation backends:"
+msgstr "El manual de documentación siguiente será creado:"
+
+#: /home/centos/artwork/trunk/Scripts/Functions/Help/help_getEntries.sh:116
+#, fuzzy
+msgid "The documentation entry provided isn't supported."
+msgstr "La entrada de documentación no tiene un directorio padre."
+
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:32
-msgid "Cannot locale English language to itself."
+#, fuzzy
+msgid "Localizing English language to itself isn't supported."
 msgstr "No puede traducir el idioma Inglés a si mismo."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale.sh:84
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessageXml.sh:104
+#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:57
 msgid "The path provided doesn't support localization."
 msgstr "El camino suministrado no soporta la localización."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_editMessages.sh:72
-#: /home/centos/artwork/trunk/Scripts/Functions/Locale/locale_updateMessages.sh:58
 msgid "The path provided does not support localization."
 msgstr "El camino suministrado no soporta la localización."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:41
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_getEnvars.sh:41
 msgid "Default text editor"
 msgstr "Editor de texto predeterminado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:42
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_getEnvars.sh:42
 msgid "Default time zone representation"
 msgstr "Representación de la zona horaria predeterminada"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:43
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_getEnvars.sh:43
 msgid "Default domain used to retrieve translated messages"
 msgstr "Dominio predeterminado para recuperar los mensajes traducidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:44
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_getEnvars.sh:44
 msgid "Default directory used to retrive translated messages"
 msgstr "Directorio predeterminado usado para recuperar los mensajes traducidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_doEnvironment.sh:45
+#: /home/centos/artwork/trunk/Scripts/Functions/Prepare/prepare_getEnvars.sh:45
 msgid "Default locale information"
 msgstr "Información de idioma predeterminada"
 
@@ -196,7 +237,7 @@ msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
 msgid "There is no resolution information to process."
 msgstr "No hay información de resolución a procesar."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_convertPngToDm.sh:117
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/Svg/svg_convertPngToDm.sh:120
 #, sh-format
 msgid "The \"$DM\" display manager is not supported yet."
 msgstr "El administrador de monitor \"$DM\" no está soportado aún."
@@ -211,20 +252,20 @@ msgstr "La opción \"$OPTION\" ya se encuentra en uso."
 msgid "Created in CentOS Artwork Repository"
 msgstr "Creado en Repositorio Artístico de CentOS"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:118
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render.sh:125
 msgid "The path provided does not support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:61
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:59
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:150
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:148
 msgid "The template file doesn't exist."
 msgstr "El fichero plantilla no existe."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:172
+#: /home/centos/artwork/trunk/Scripts/Functions/Render/render_doBaseActions.sh:170
 msgid "Validation failed."
 msgstr "Validación fallida."
 
@@ -248,10 +289,6 @@ msgstr "La versión de la entrega suministrada no está soportada."
 msgid "Table of contents"
 msgstr "Tabla de contenidos"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/Tuneup/tuneup_doBaseActions.sh:48
-msgid "No file to tune up found."
-msgstr "No se encontró ningún fichero que afinar."
-
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:93
 #, sh-format
 msgid "The directory \"$FILE\" does not exist."
@@ -267,22 +304,22 @@ msgstr "El fichero \"$FILE\" no es un fichero regular."
 msgid "The file \"$FILE\" is not a symbolic link."
 msgstr "El fichero \"$FILE\" no es un enlace simbólico."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:121
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:120
 #, sh-format
 msgid "The path \"$FILE\" is not versioned."
 msgstr "El camino \"$FILE\" no está versionado."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:130
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:129
 #, sh-format
 msgid "The file \"$FILE\" is not executable."
 msgstr "El fichero \"$FILE\" no es ejecutable."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:139
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:138
 #, sh-format
 msgid "The path \"$FILE\" does not exist inside the working copy."
 msgstr "El camino \"$FILE\" no existe dentro de la copia de trabajo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:148
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_checkFiles.sh:147
 #, sh-format
 msgid "The path \"$FILE\" does not exist."
 msgstr "El camino \"$FILE\" no existe."
@@ -322,47 +359,47 @@ msgstr "La ubicación \"$LOCATION\" no es válida."
 msgid "Checking changes in the working copy"
 msgstr "Verificando cambios en la copia de trabajo"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:83
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:95
 msgid "Modified"
 msgstr "Modificado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:84
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:96
 msgid "Unversioned"
 msgstr "Sin versionar"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:85
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:97
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:67
 msgid "Deleted"
 msgstr "Borrado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:86
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:98
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_updateRepoChanges.sh:66
 msgid "Added"
 msgstr "Adicionado"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:106
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:118
 msgid "file in the working copy"
 msgid_plural "files in the working copy"
 msgstr[0] "fichero en la copia de trabajo."
 msgstr[1] "ficheros en la copia de trabajo."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:135
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:147
 msgid "The following file is unversioned"
 msgid_plural "The following files are unversioned"
 msgstr[0] "El fichero siguiente no está bajo control de versiones."
 msgstr[1] "Los ficheros siguientes no están bajo control de versiones."
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:140
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:152
 msgid "Do you want to add it now?"
 msgid_plural "Do you want to add them now?"
 msgstr[0] "¿Desea adicionarlo ahora?"
 msgstr[1] "¿Desea adicionarlos ahora?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:147
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:159
 msgid "Do you want to see changes now?"
 msgstr "¿Desea ver los cambios ahora?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:151
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_commitRepoChanges.sh:163
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
 
@@ -2135,9 +2172,17 @@ msgstr[1] "Los ficheros siguientes serán procesados"
 msgid "Do you want to continue"
 msgstr "¿Desea continuar?"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printCopyrightInfo.sh:151
-msgid "At least one option is required."
-msgstr "Al menos una opción es necesaria."
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printCopyrightInfo.sh:45
+msgid "Creative Common Attribution-ShareAlike 3.0 License"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printCopyrightInfo.sh:100
+msgid "The CentOS Project"
+msgstr ""
+
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printCopyrightInfo.sh:106
+msgid "All rights reserved."
+msgstr "Todos los derechos reservados."
 
 #: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:38
 msgid "The message cannot be empty."
@@ -2199,15 +2244,15 @@ msgstr "Configuración"
 msgid "Palette"
 msgstr "Paleta"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:160
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:168
 msgid "To know more, run the following command"
 msgstr "Para conocer más, ejecute el command siguiente"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:170
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:178
 msgid "yes"
 msgstr "sí"
 
-#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:173
+#: /home/centos/artwork/trunk/Scripts/Functions/cli_printMessage.sh:181
 msgid "no"
 msgstr "no"
 
@@ -2233,6 +2278,28 @@ msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio."
 msgstr[1] "ficheros desde el repositorio."
 
+#: /home/centos/artwork/trunk/Scripts/centos-art.sh:47
+#, fuzzy, sh-format
+msgid "The working copy must be under \"$CLI_WRKCOPY\"."
+msgstr "La copia de trabajo ha sido actualizada."
+
+#: /home/centos/artwork/trunk/Scripts/centos-art.sh:59
+#, fuzzy, sh-format
+msgid "The \"$FILE\" needs to have execution rights."
+msgstr "El \"$FILE\" no tiene derechos de ejecución."
+
+#~ msgid "The chapter cannot be copied into itself."
+#~ msgstr "El capítulo no puede copiarse a sí mismo."
+
+#~ msgid "The target location is not valid."
+#~ msgstr "La ubicación de destino no es válida."
+
+#~ msgid "No file to tune up found."
+#~ msgstr "No se encontró ningún fichero que afinar."
+
+#~ msgid "At least one option is required."
+#~ msgstr "Al menos una opción es necesaria."
+
 #~ msgid "An error occurred when deleting entries."
 #~ msgstr "Un error ocurrió cuando las entradas se eliminaban."
 
@@ -2244,9 +2311,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "Only two paths are supported."
 #~ msgstr "Solo dos caminos son aceptados."
-
-#~ msgid "The documentation entry provided hasn't a parent directory."
-#~ msgstr "La entrada de documentación no tiene un directorio padre."
 
 #~ msgid "A valid action is required."
 #~ msgstr "La acción suministrada no es válida."
@@ -2262,9 +2326,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "Creating DocBook manual structure."
 #~ msgstr "Creando la estructura del manual DocBook."
-
-#~ msgid "The backend provided is not supported."
-#~ msgstr "El trasfondo suministrada no está soportada."
 
 #~ msgid "The action provided is not supported yet."
 #~ msgstr "La acción suministrada no está soportada aún."
@@ -2312,9 +2373,6 @@ msgstr[1] "ficheros desde el repositorio."
 #~ msgid "Invalid arguments."
 #~ msgstr "Los argumentos no son válidos."
 
-#~ msgid "The \"$FILE\" has not execution rights."
-#~ msgstr "El \"$FILE\" no tiene derechos de ejecución."
-
 #~ msgid "Checking symbolic links"
 #~ msgstr "Verificando enlaces simbólicos"
 
@@ -2332,9 +2390,6 @@ msgstr[1] "ficheros desde el repositorio."
 #~ msgid "requires third party repository!"
 #~ msgstr "¡necesita repositorio the terceros!"
 
-#~ msgid "The location `$FLAG_TO' already exists."
-#~ msgstr "La ubicación `$FLAG_TO' ya existe."
-
 #~ msgid "cannot create `$FLAG_TO': It isn't an identity directory structure."
 #~ msgstr ""
 #~ "no se pudo crear `$FLAG_TO': La estructura de directorio no es de "
@@ -2351,9 +2406,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "Try using numeric characters."
 #~ msgstr "Intente usar caracteres numéricos"
-
-#~ msgid "All rights reserved."
-#~ msgstr "Todos los derechos reservados."
 
 #~ msgid "Enter the information you want to apply:"
 #~ msgstr "Seleccione la información que desea aplicar:"
@@ -2475,9 +2527,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "Updating manual's info output"
 #~ msgstr "Actualizando la salida info del manual"
-
-#~ msgid "Updating manual's pdf output"
-#~ msgstr "Actualizando la salida pdf del manual"
 
 #~ msgid "Updating manual's plaintext output"
 #~ msgstr "Actualizando la salida texto-plano del manual"
@@ -3234,9 +3283,6 @@ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "There is not background for \"$RESOLUTION\" resolution."
 #~ msgstr "No hay fondo para la resolución \"$RESOLUTION\"."
-
-#~ msgid "The working copy has been updated."
-#~ msgstr "La copia de trabajo ha sido actualizada."
 
 #~ msgid "HELP"
 #~ msgstr "AYUDA"
