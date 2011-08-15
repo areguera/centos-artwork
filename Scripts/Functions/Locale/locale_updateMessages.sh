@@ -31,7 +31,7 @@ function locale_updateMessages {
 
     # Verify existence of localization working directory. We cannot
     # update translation files that don't exist.
-    cli_checkFiles $WORKDIR
+    cli_checkFiles $L10N_WORKDIR
 
     local ACTIONNAM=''
 
@@ -54,9 +54,7 @@ function locale_updateMessages {
         locale_updateMessageShell
 
     else
-
-        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-
+        cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
     fi
 
 }

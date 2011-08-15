@@ -30,19 +30,19 @@ function locale_editMessages {
 
     # Prepare localization working directory to receive translation
     # files.
-    if [[ ! -d ${WORKDIR} ]];then
+    if [[ ! -d ${L10N_WORKDIR} ]];then
 
         # Print separator line.
         cli_printMessage "-" --as-separator-line
 
         # Output action message.
-        cli_printMessage "${WORKDIR}" --as-creating-line
+        cli_printMessage "${L10N_WORKDIR}" --as-creating-line
 
         # Create localization working directory making parent
         # directories as needed. Subversion doesn't create directories
         # recursively, so we use the system's `mkdir' command and then
         # subversion to register the changes.
-        mkdir -p ${WORKDIR}
+        mkdir -p ${L10N_WORKDIR}
 
         # Commit changes from working copy to central repository only.
         # At this point, changes in the repository are not merged in
@@ -57,7 +57,7 @@ function locale_editMessages {
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manuals|Identity/Models)/.*$" ]];then
 
         # Define list of locale files for XML-based files.
-        FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/messages\.po")
+        FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/messages\.po")
 
         # Do not create machine objects for XML-based files.
         FLAG_DONT_CREATE_MO='true'
@@ -65,7 +65,7 @@ function locale_editMessages {
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
 
         # Define list of locale files for shell script files.
-        FILES=$(cli_getFilesList ${WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
+        FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
 
     else
 

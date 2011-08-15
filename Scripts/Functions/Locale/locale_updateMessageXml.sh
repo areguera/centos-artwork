@@ -31,7 +31,7 @@ function locale_updateMessageXml {
 
     # Define filename used to create both portable object templates
     # (.pot) and portable objects (.po) files.
-    local MESSAGES="${WORKDIR}/messages"
+    local MESSAGES="${L10N_WORKDIR}/messages"
 
     # Define regular expression to match the file extension of all
     # XML-based source files that can be localized inside the working

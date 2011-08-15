@@ -29,7 +29,7 @@ function locale {
     # language is already used as translation pattern and there is no
     # translation messages for it.
     if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
-        cli_printMessage "`gettext "Cannot locale English language to itself."`" --as-error-line
+        cli_printMessage "`gettext "Localizing English language to itself isn't supported."`" --as-error-line
     fi
 
     local ACTIONNAMS=''
@@ -86,13 +86,13 @@ function locale {
 
         # Define localization working directory. This is the place
         # where language-specific directories are stored in.
-        WORKDIR=$(echo ${ACTIONVAL} \
+        L10N_WORKDIR=$(echo ${ACTIONVAL} \
             | sed -r -e "s!trunk/(Identity|Scripts|Manuals)!trunk/L10n/\1!")
 
         # Redefine localization working directory to include
         # language-specific directories. This is the place where POT,
         # PO, and MO files are stored in.
-        WORKDIR=$WORKDIR/$(cli_getCurrentLocale)
+        L10N_WORKDIR="${L10N_WORKDIR}/$(cli_getCurrentLocale)"
 
         # Execute action names.
         for ACTIONNAM in $ACTIONNAMS;do

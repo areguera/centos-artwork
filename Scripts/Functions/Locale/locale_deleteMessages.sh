@@ -30,13 +30,13 @@ function locale_deleteMessages {
     cli_printMessage '-' --as-separator-line
 
     # Print action message.
-    cli_printMessage "$WORKDIR" --as-deleting-line
+    cli_printMessage "$L10N_WORKDIR" --as-deleting-line
 
     # Verify existence of localization working directory. We cannot
     # remove translation files that don't exist.
-    cli_checkFiles "$WORKDIR"
+    cli_checkFiles "$L10N_WORKDIR"
 
     # Delete localization working directory using subversion quietly.
-    svn del "$WORKDIR" --quiet
+    svn del "$L10N_WORKDIR" --quiet
 
 }

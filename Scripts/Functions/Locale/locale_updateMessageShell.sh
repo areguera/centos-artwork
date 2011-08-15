@@ -33,7 +33,7 @@ function locale_updateMessageShell {
     # Define file name used as reference to create portable object
     # templates (.pot), portable objects (.po) and machine objects
     # (.mo).
-    local FILE="${WORKDIR}/${TEXTDOMAIN}"
+    local FILE="${L10N_WORKDIR}/${TEXTDOMAIN}"
 
     # Define regular expression to match extensions of XML files we
     # use inside the repository.
