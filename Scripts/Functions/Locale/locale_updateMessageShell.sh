@@ -56,7 +56,7 @@ function locale_updateMessageShell {
         --copyright-holder="The CentOS L10n SIG" \
         --width=70 --sort-by-file ${FILES}
 
-    # Sanitate portable object template metadata.
+    # Sanitate metadata inside the POT file.
     locale_updateMessageMetadata "${FILE}.pot"
 
     # Verify, initialize or update portable objects from portable
