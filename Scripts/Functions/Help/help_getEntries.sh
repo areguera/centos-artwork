@@ -26,7 +26,9 @@
 
 function help_getEntries {
 
-    local DOCENTRY=''
+    # Initialize manual's documentation entry as an empty value local
+    # to this function.
+    local MANUAL_DOCENTRY=''
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
@@ -35,7 +37,7 @@ function help_getEntries {
 
     if [[ $@ == '' ]];then
 
-        # Define default documentation entry. This happen when
+        # Define default documentation entry. This happens when
         # non-option arguments aren't provided to centos-art.sh
         # script.  Default documentation entry defined here points to
         # manual's main definition file, so only the manual's self
@@ -56,9 +58,9 @@ function help_getEntries {
         # here. Empty spaces are not permitted. To separate words, use
         # the minus sign (e.g., hello-world) or cammel case (e.g.,
         # HelloWorld).
-        for DOCENTRY in $@;do
+        for MANUAL_DOCENTRY in $@;do
 
-            if [[ $DOCENTRY =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]*){0,3}$' ]];then
+            if [[ ${MANUAL_DOCENTRY} =~ '^([A-Za-z0-9-]+)(:[A-Za-z0-9-]*){0,3}$' ]];then
 
                 # When `MANUAL:PART:CHAPTER:SECTION' is used as format
                 # to documentation entry, you can specify the manual,
@@ -67,26 +69,26 @@ function help_getEntries {
 
                 # Manual self name.
                 MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
                     | tr '[:upper:]' '[:lower:]')
 
                 # Manual self directory name.
                 MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
 
                 # Manual part name.
                 MANUAL_PART[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
 
                 # Manual chapter name.
                 MANUAL_CHAP[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $3 }') -d )
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $3 }') -d )
 
                 # Manual section name.
                 MANUAL_SECT[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN{ FS=":" } { print $4 }') -f )
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $4 }') -f )
 
-            elif [[ $DOCENTRY =~ '^(trunk|branches|tags)' ]];then
+            elif [[ ${MANUAL_DOCENTRY} =~ '^(trunk|branches|tags)' ]];then
 
                 # When `path/to/dir' is used as format to
                 # documentation entry, you cannot specify the manual
@@ -95,19 +97,19 @@ function help_getEntries {
                 # here. Use this format to document directories inside
                 # your working copy.
 
-                # Manual self name.
+                # Manual's self name.
                 MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]='tcar-fs'
 
-                # Manual self directory name.
+                # Manual's self directory name.
                 MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]='Tcar-fs'
 
-                # Manual chapter name.
+                # Manual's chapter name.
                 MANUAL_CHAP[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN { FS="/" }; { if ( NF >= 1 ) print $1 }' ) -d )
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS="/" }; { if ( NF >= 1 ) print $1 }' ) -d )
 
-                # Manual section name.
+                # Manual's section name.
                 MANUAL_SECT[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                    $(echo "$DOCENTRY" | gawk 'BEGIN { FS="/" }; { if ( NF >= 2 ) print $0 }' \
+                    $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS="/" }; { if ( NF >= 2 ) print $0 }' \
                     | cut -d/ -f2- | tr '/' '-') -f )
 
             else

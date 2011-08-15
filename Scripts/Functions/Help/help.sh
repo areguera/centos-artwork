@@ -104,11 +104,10 @@ function help {
         # Define absolute path to changed directories inside the
         # manual. For example, when a section entry is edited, copied
         # or renamed inside  the same manual there is only one
-        # aboslute path to changed directory to look for changes, the
-        # one holding the section entry.  However, when a manual entry
-        # is renamed, there are two different locations to look for
-        # changes, the source manual removed and the target manual
-        # added.
+        # aboslute path to look for changes, the one holding the
+        # section entry.  However, when an entire manual is renamed,
+        # there might be two different locations to look changes for,
+        # the source location deleted and the target location added.
         MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR_L10N}"
 
         # Define absolute path to base file. This is the main file
@@ -116,13 +115,13 @@ function help {
         # files in different formats (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
 
-        # Define part name.
+        # Define manual's part name.
         MANUAL_PART_NAME=${MANUAL_PART[${MANUAL_DOCENTRY_ID}]}
 
-        # Define part directory.
+        # Define absolute path to manual's part directory.
         MANUAL_PART_DIR="${MANUAL_BASEDIR_L10N}/${MANUAL_PART_NAME}"
 
-        # Define chapter name.
+        # Define manual's chapter name.
         MANUAL_CHAPTER_NAME=${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]}
 
         # Define absolute path to chapter's directory. This is the
@@ -152,11 +151,11 @@ function help {
             MANUAL_BACKEND=$(cli_getConfigValue \
                 "${MANUAL_CONFIG_FILE}" "main" "manual_backend")
 
-            # Verify documentation backend. This is required because
-            # in order to prevent malformed values from being used. Be
-            # sure only supported documentation backends could be
-            # provided as value to `manual_backend' option in
-            # configuration files.
+            # Verify documentation backend. This is required in order
+            # to prevent malformed values from being used. Be sure
+            # only supported documentation backends can be provided as
+            # value to `manual_backend' option inside configuration
+            # files.
             if [[ ! $MANUAL_BACKEND =~ '^(texinfo)$' ]];then
                 cli_printMessage "`gettext "The documentation backend provided isn't supported."`" --as-error-line
             fi 
@@ -170,24 +169,6 @@ function help {
             cli_printMessage "`gettext "Select one of the following documentation backends:"`"
             MANUAL_BACKEND=$(cli_printMessage "texinfo" --as-selection-line)
 
-        fi
-
-        # Define absolute path to template directory. This is the
-        # place where we store locale directories (e.g., en_US, es_ES,
-        # etc.) used to build manuals in texinfo format.
-        MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-            ${MANUAL_BACKEND} -d)/Templates
-
-        # Define absolute path to language-specific template
-        # directory.  This is the place where we store locale-specific
-        # files used to build manuals in texinfo format.
-        MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
-
-        # Verify absolute path to language-speicific template
-        # directory.  If it doesn't exist, use English language as
-        # default location to retrive template files.
-        if [[ ! -d $MANUAL_TEMPLATE_L10N ]];then
-            MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
         fi
 
         # Notice that, because we are processing non-option arguments

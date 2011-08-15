@@ -38,12 +38,30 @@ function texinfo {
     # Define file extension used by source files inside manuals.
     MANUAL_EXTENSION="${MANUAL_BACKEND}"
 
+    # Define absolute path to template directory. This is the place
+    # where we store locale directories (e.g., en_US, es_ES, etc.)
+    # used to build manuals in texinfo format.
+    MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
+        ${MANUAL_BACKEND} -d)/Templates
+
+    # Define absolute path to language-specific template directory.
+    # This is the place where we store locale-specific files used to
+    # build manuals in texinfo format.
+    MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
+
+    # Verify absolute path to language-speicific template directory.
+    # If it doesn't exist, use English language as default location to
+    # retrive template files.
+    if [[ ! -d $MANUAL_TEMPLATE_L10N ]];then
+        MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
+    fi
+
     # Initialize document structure for new manuals.
     texinfo_createStructure
 
     # Define documentation entry default values. To build the
-    # documentation entry, we combine the manual's name, the chapter's
-    # name and the section name retrived from the command-line.
+    # documentation entry, we combine the manual's name, part, chapter
+    # and section information retrived from the command-line.
     if [[ $MANUAL_CHAPTER_NAME == '' ]];then
 
         # When chapter option is not provided, discard the section
@@ -111,18 +129,18 @@ function texinfo {
         # The two final actions of help functionality are precisely to
         # update manual output files and commit all changes from
         # working copy to central repository. In this situation, when
-        # the `--update' action name is provided to `centos-art.sh',
+        # the `--update-output' option is provided to `centos-art.sh',
         # don't duplicate the rendition of manual output files (e.g.,
-        # one as action name and another as help's normal execution
+        # one for the option and other for help's normal execution
         # flow) nor commit any change form working copy to central
-        # repository (e.g., output files are not under version
+        # repository (e.g., output files aren't under version
         # control).
         texinfo_${ACTIONNAM}
 
     else
 
-        # Execute action names that follow help's execution flow as it
-        # is, without any modification.
+        # Execute action names as part of normal help's execution
+        # flow, without any extra modification.
         texinfo_${ACTIONNAM}
 
         # Rebuild output files to propagate recent changes, if any.
