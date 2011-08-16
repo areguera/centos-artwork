@@ -122,7 +122,7 @@ function render {
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Manuals" ]];then
             ACTIONNAM="render_doBaseActions"
         else
-            cli_printMessage "`gettext "The path provided does not support rendition."`" --as-error-line
+            cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
         fi
 
         # Execute action name.
