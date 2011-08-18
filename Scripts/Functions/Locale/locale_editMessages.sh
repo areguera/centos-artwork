@@ -28,7 +28,10 @@ function locale_editMessages {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Prepare localization working directory to receive translation
+    local PO_FILE=''
+    local PO_FILES=''
+
+    # Prepare localization working directory for receiving translation
     # files.
     if [[ ! -d ${L10N_WORKDIR} ]];then
 
@@ -52,37 +55,42 @@ function locale_editMessages {
 
     fi
 
-    local FILES=''
-
+    # Define list of PO files to process based on paths provided as
+    # non-option arguments through centos-art.sh script command-line.
     if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manuals|Identity/Models)/.*$" ]];then
 
-        # Define list of locale files for XML-based files.
-        FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/messages\.po")
+        # Define list of PO files for XML-based files.
+        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/messages\.po")
 
-        # Do not create machine objects for XML-based files.
+        # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
 
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
 
-        # Define list of locale files for shell script files.
-        FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
+        # Define list of PO files for shell scripts.
+        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
 
     else
-
         cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-
     fi
 
-    for FILE in $FILES;do
+    # Loop through list of PO files to process in order to edit them
+    # one by one using user's default text editor.
+    for PO_FILE in ${PO_FILES};do
 
         # Print the file we are editing.
-        cli_printMessage "$FILE" --as-updating-line
+        cli_printMessage "${PO_FILE}" --as-updating-line
 
-        # Use default text editor to edit file.
-        eval ${EDITOR} ${FILE}
+        # Use default text editor to edit the PO file.
+        eval ${EDITOR} ${PO_FILE}
 
-        # Update machine object (.mo) from portable object (.po).
-        locale_updateMessageBinary ${FILE}
+        # At this point some changes might be realized inside the PO
+        # file, so we need to update the related MO files based on
+        # recently updated PO files here in order for `centos-art.sh'
+        # script to print out the most up to date revision of
+        # localized messages. Notice that this is required only if we
+        # were localizaing shell scripts.
+        locale_updateMessageBinary ${PO_FILE}
 
     done
 
