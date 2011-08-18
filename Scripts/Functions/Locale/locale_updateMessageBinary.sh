@@ -30,41 +30,28 @@ function locale_updateMessageBinary {
         return
     fi
 
-    local PO=''
-    local MO=''
-    local FILE=''
-    local FILES="$1"
+    # Define absolute path to portable object file.
+    local PO_FILE="$1"
 
-    for FILE in $FILES;do
+    # Verify existence of portable object file.
+    cli_checkFiles "${PO_FILE}"
 
-        # Verify existence of portable object.
-        cli_checkFiles "${FILE}"
+    # Define absolute path to machine object directory.
+    local MO_DIR="${L10N_WORKDIR}/LC_MESSAGES"
 
-        # Define absolute path to portable object.
-        PO=$FILE
+    # Define absolute path to machine object file.
+    local MO_FILE="${MO_DIR}/${CLI_PROGRAM}.sh.mo"
 
-        # Define absolute path to machine object.
-        MO=$(dirname ${PO})/LC_MESSAGES/$(basename ${PO} | sed -r 's!\.po$!.mo!')
+    # Print action message.
+    cli_printMessage "${MO_FILE}" --as-creating-line
 
-        # Print action message.
-        if [[ -f ${MO} ]];then
-            cli_printMessage "${MO}" --as-updating-line
-        else
-            cli_printMessage "${MO}" --as-creating-line
-        fi
-
-        # Define directory used to store machine object.
-        MODIR=$(dirname ${MO})
-
-        # Create directory to store machine object, if it doesn't
-        # exist.
-        if [[ ! -d ${MODIR} ]];then
-            mkdir -p ${MODIR}
-        fi
+    # Verify absolute path to machine object directory, if it doesn't
+    # exist create it.
+    if [[ ! -d ${MO_DIR} ]];then
+        mkdir -p ${MO_DIR}
+    fi
     
-        # Create machine object from portable object.
-        msgfmt --check ${PO} --output-file=${MO}
-
-    done
+    # Create machine object from portable object.
+    msgfmt --check ${PO_FILE} --output-file=${MO_FILE}
 
 }
