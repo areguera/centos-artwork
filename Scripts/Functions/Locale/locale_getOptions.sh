@@ -37,7 +37,7 @@ function locale_getOptions {
 
     # Reset positional parameters using output from (getopt) argument
     # parser.
-    eval set -- "$ARGUMENTS"
+    eval set -- "${ARGUMENTS}"
 
     # Look for options passed through command-line.
     while true; do
