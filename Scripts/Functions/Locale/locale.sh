@@ -25,35 +25,35 @@
 
 function locale {
 
-    # Do not locale messages for English language. The English
-    # language is already used as translation pattern and there is no
-    # translation messages for it.
+    # Verify current locale information to avoid English messages from
+    # being localized to themselves.  The English language is used as
+    # reference to write translatable strings inside the source files.
     if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
-        cli_printMessage "`gettext "Localizing English language to itself isn't supported."`" --as-error-line
+        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
     local ACTIONNAMS=''
     local ACTIONNAM=''
     local ACTIONVAL=''
 
-    # Initialize default value to create/update machine object flag.
-    # The machine object flag (--dont-create-mo) controls whether
-    # centos-art.sh script does create/update the machine object
-    # related object or not.
+    # Initialize machine object flag (`--dont-create-mo').  This flag
+    # controls whether the centos-art.sh script does create/update
+    # machine object (MO) files from related portable object (PO)
+    # files or not. By default, MO files are created.
     local FLAG_DONT_CREATE_MO='false'
 
     # Define localization (l10n) base directory. This is the place
     # where all translation messages are organized in. Translation
-    # messages, here, are organized using the same organization of the
-    # components they represent inside the `trunk/Identity',
-    # `trunk/Manuals' or `trunk/Scripts' directory structures.
-    # The localization base directory must be used as source location
-    # for subverion operations (e.g., status, update, commit, etc.).
+    # messages are organized herein using the same layout of the
+    # components they represent under the `trunk/Identity',
+    # `trunk/Manuals' or `trunk/Scripts' directory structures.  The
+    # localization base directory must be used as source location for
+    # subversion operations (e.g., status, update, commit, etc.).
     # Otherwise, it would be difficult to add directory structures
     # that have several levels down from the localization base
     # directory up to the repository (e.g., it is not possible in
-    # subversion to add a directory structure which parent directory
-    # structure hasn't been added to the repository, previously.).
+    # subversion to add a directory which parent directory hasn't been
+    # added to the repository previously.).
     L10N_BASEDIR="$(cli_getRepoTLDir)/L10n"
 
     # Interpret arguments and options passed through command-line.
@@ -62,40 +62,40 @@ function locale {
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
     # only non-option arguments remain in it. 
-    eval set -- "$ARGUMENTS"
+    eval set -- "${ARGUMENTS}"
 
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
     cli_syncroRepoChanges "${L10N_BASEDIR}"
 
-    # Define action value. As convenction, we use non-option arguments
-    # to define the action value (ACTIONVAL) variable.
+    # Loop through non-option arguments passed to centos-art.sh script
+    # through its command-line.
     for ACTIONVAL in "$@";do
 
-        # Check action value. Be sure the action value matches the
-        # convenctions defined for source locations inside the working
-        # copy.
-        ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
+        # Sanitate non-option argument to be sure it matches the
+        # directory convenctions stablished by centos-art.sh script
+        # against source locations in the working copy.
+        ACTIONVAL=$(cli_checkRepoDirSource "${ACTIONVAL}")
 
-        # Verify whether the directory provided can have localization
-        # messages or not.
-        if [[ ! $(cli_isLocalized $ACTIONVAL) == 'true' ]];then
-            cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
+        # Verify directory passed as non-option argument to be sure it
+        # supports localization.
+        if [[ ! $(cli_isLocalized "${ACTIONVAL}") == 'true' ]];then
+            cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
         fi
 
-        # Define localization working directory. This is the place
-        # where language-specific directories are stored in.
-        L10N_WORKDIR=$(echo ${ACTIONVAL} \
-            | sed -r -e "s!trunk/(Identity|Scripts|Manuals)!trunk/L10n/\1!")
+        # Define localization working directory using directory passed
+        # as non-option argument. The localization working directory
+        # is the place where POT and PO files are stored inside the
+        # working copy.
+        L10N_WORKDIR=$(echo "${ACTIONVAL}" \
+            | sed -r -e "s!trunk/(Identity|Scripts|Manuals)!trunk/L10n/\1!")/$(cli_getCurrentLocale)
 
-        # Redefine localization working directory to include
-        # language-specific directories. This is the place where POT,
-        # PO, and MO files are stored in.
-        L10N_WORKDIR="${L10N_WORKDIR}/$(cli_getCurrentLocale)"
-
-        # Execute action names.
-        for ACTIONNAM in $ACTIONNAMS;do
+        # Execute localization actions provided to centos-art.sh
+        # script through its command-line. Notice that localization
+        # actions will be executed in the same order they were
+        # provided in the command-line.
+        for ACTIONNAM in ${ACTIONNAMS};do
             ${ACTIONNAM}
         done
 
