@@ -29,7 +29,7 @@ declare -xr CLI_VERSION='1.0 (beta)'
 
 # Initialize paths.
 declare -xr CLI_WRKCOPY="${HOME}/artwork"
-declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts"
+declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/${CLI_PROGRAM}"
 declare -xr CLI_TEMPDIR='/tmp'
 
 # Initialize internazionalization through GNU gettext.
