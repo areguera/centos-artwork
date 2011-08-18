@@ -30,13 +30,13 @@ function locale_updateMessageShell {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Define file name used as reference to create portable object
-    # templates (.pot), portable objects (.po) and machine objects
-    # (.mo).
-    local FILE="${L10N_WORKDIR}/${TEXTDOMAIN}"
+    # Define absolute path to file used as reference to create
+    # portable object templates (.pot), portable objects (.po) and
+    # machine objects (.mo).
+    local MESSAGES="${L10N_WORKDIR}/${TEXTDOMAIN}"
 
-    # Define regular expression to match extensions of XML files we
-    # use inside the repository.
+    # Define regular expression to match extensions of shell scripts
+    # we use inside the repository.
     local EXTENSION='sh'
 
     # Build list of files to process. When building the patter, be
@@ -45,22 +45,22 @@ function locale_updateMessageShell {
     # match files that share the same characters in their file names
     # (e.g., it would be difficult to match only `hello.sh' if
     # `hello-world.sh' also exists in the same location).
-    local FILES=$(cli_getFilesList $ACTIONVAL --pattern="${FLAG_FILTER}\.${EXTENSION}")
+    local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${EXTENSION}")
 
     # Print action message.
-    cli_printMessage "${FILE}.pot" --as-updating-line
+    cli_printMessage "${MESSAGES}.pot" --as-updating-line
 
     # Retrive translatable strings from shell script files and create
     # the portable object template (.pot) from them.
-    /usr/bin/xgettext --output=${FILE}.pot \
+    xgettext --output=${MESSAGES}.pot \
         --copyright-holder="The CentOS L10n SIG" \
         --width=70 --sort-by-file ${FILES}
 
     # Sanitate metadata inside the POT file.
-    locale_updateMessageMetadata "${FILE}.pot"
+    locale_updateMessageMetadata "${MESSAGES}.pot"
 
     # Verify, initialize or update portable objects from portable
     # object templates.
-    locale_updateMessagePObjects "${FILE}"
+    locale_updateMessagePObjects "${MESSAGES}"
 
 }
