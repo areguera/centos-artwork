@@ -53,7 +53,7 @@ function render_doBaseActions {
 
         # Redefine name of rendition backend based on supported file
         # extension.
-        if [[ $RENDER_EXTENSION == '^(svg|docbook)$' ]];then
+        if [[ $RENDER_EXTENSION =~ '^(svg|docbook)$' ]];then
             RENDER_BACKEND=${RENDER_EXTENSION}
         else
            cli_printMessage "`eval_gettext "The \\\"\\\$RENDER_EXTENSION\\\" file extension is not supported yet."`" --as-error-line 
