@@ -1,0 +1,340 @@
+/*
+ * Webenv (reset) --  This file resets the browser's default visual
+ * style and sets The CentOS Web Environment visual style as default
+ * visual style. This file sets default values to tags like `html',
+ * `body', as well as those controlling links, tables, paragrphs,
+ * headings, lists, forms and quotation.
+ *
+ * The CentOS Web Environment (Webenv) is specially conceived to
+ * achieve one unique visual style and easy navegation through all
+ * different web applications The CentOS Project uses to show its
+ * existence in the World Wide Web medium.
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * -------------------------------------------------------------------
+ * $Id$
+ * -------------------------------------------------------------------
+ */
+
+
+/* Reset browsers default margins and paddings
+-----------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+/* Define html
+-----------------------------------------------*/
+
+html {
+    background-color: #FFF;
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/html-bg.png");
+    }
+
+/* Define body
+-----------------------------------------------*/
+
+body {
+    font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+    font-size: 0.85em;
+    line-height: 1.25em;
+    /* margin: 0;           /* <- full screen                       */
+    /* margin: 0 1% 0 1%;   /* <- with 1% of left and right margin  */
+    /* margin: 0 2% 0 2%;   /* <- with 2% of left and right margin  */
+    margin: 0 3% 0 3%;      /* <- with 3% of left and right margin  */
+    /* margin: 0 10% 0 10%; /* <- with 10% of left and right margin */
+    color: #333;
+    }
+
+/* Links 
+-----------------------------------------------*/
+
+a:link  { text-decoration: none; color: #0044B3; }
+a:hover { text-decoration: underline; color: green; }
+a:active { text-decoration: underline; color: green; }
+a:visited { text-decoration: none; color: #0044B3; }
+a:visited:hover { text-decoration: underline; color: green; }
+
+.title a:link,
+.title a:active,
+.title a:hover,
+.title a:visited,
+.title a:visited:hover {
+    color: #072B61;
+	text-decoration: none;
+	}
+
+/* Headings
+-----------------------------------------------*/
+
+h1 {
+    font-size: 1.8em;
+    }
+
+h2 {
+    font-size: 1.4em;
+    }
+
+h3 {
+    font-size: 1.25em;
+    }
+
+h4 {
+    font-size: 1.2em;
+    }
+
+h5 {
+    font-size: 1.1em;
+    }
+
+h6 {
+    font-size: 1em;
+    }
+
+/* Paragraphs
+-----------------------------------------------*/
+
+p {
+    margin: 1em 0 1em 0;
+    line-height: 1.5em;
+    }
+
+/* Images
+-----------------------------------------------*/
+
+img {
+    border: none;
+    }
+
+/* Quotations
+-----------------------------------------------*/
+
+blockquote {
+    background: #fafafa;
+    border-color: #eeeeee;
+    border-width: 1px;
+    border-style: solid;
+    border-left-width: 4px;
+    margin-left: 1.5em;
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1.3em;
+    }
+
+q:before {
+    content: " “";
+    }
+
+q:after {
+    content: "” ";
+    }
+
+q q:before {
+    content: " ‘";
+    }
+
+q q:after {
+    content: "’ ";
+    }
+
+address {
+    margin-left: 1.5em;
+    }
+
+/* Preformatted Texts
+-----------------------------------------------*/
+
+pre {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 1em 0 1em 0;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E5E5E5;
+    border-left-width: 4px;
+    background: #FFFAE9;
+    overflow: auto;
+    }
+
+/* Phrase Elements
+-----------------------------------------------*/
+
+tt,
+samp,
+kbd,
+code {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    }
+
+/* Page Lines
+-----------------------------------------------*/
+
+hr {
+    clear: both;
+    height: 1px ! important;
+    border: none;
+    background-color: #DADADA;
+    }
+
+/* Lists
+-----------------------------------------------*/
+
+ul,
+ol,
+dl {
+    margin: 1.5em 0 1.5em 2.5em;
+    }
+
+ul { 
+    list-style: disc;
+    } 
+
+ol {
+    list-style-image: none !important;
+    }
+
+ul li,
+ol li {
+    line-height: 1.5em;
+    }
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    }
+
+ul li p,
+ol li p {
+    margin-bottom: 0.3em;
+    }
+
+dl dd {
+    margin-left: 2.5em;
+    }
+
+dl ol,
+dl ul {
+    margin-left: 3.5em;
+    }
+
+/* Tables 
+-----------------------------------------------*/
+
+table {
+    border-collapse: collapse;
+    }
+
+table caption {
+    font-style: italic;
+    text-align: center;
+    }
+
+table tr th {
+    font-weight: bold;
+    }
+
+table tr td,
+table tr th {
+    border: 1pt;
+    border-style: solid;
+    border-color: #CCC;
+    padding-top: 0.25em;
+    padding-right: 0.5em;
+    padding-bottom: 0.25em;
+    padding-left: 0.5em;
+    vertical-align: top;
+    }
+
+table tr td p,
+table tr td pre {
+    margin: 0;
+    padding: 0;
+    }
+
+/* Forms 
+-----------------------------------------------*/
+
+form {
+    display: inline;
+    }
+
+input[type="submit"], 
+input[type="button"] {
+    padding: 1px;
+    display: inline;
+    text-decoration: none;
+    }
+
+input[type="text"],
+input[type="password"],
+textarea {
+    display: inline;
+    padding: 2px;
+    }
+
+select {
+    display: inline;
+    padding: 1px;
+    }
+
+form p {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
+    }
+
+/* Select
+---------------------------------------- */
+
+select option {
+    padding-left: 3px;
+    padding-right: 3px;
+    }
+
+select optgroup {
+    font-style: normal;
+    font-weight: bold;
+    padding-left: 3px;
+    }
+
+select optgroup option {
+    margin-left: 1em;	
+    }
+
+input[type="radio"],
+input[type="checkbox"] {
+    vertical-align: middle;
+    }
+
+fieldset {
+    margin: 1em 0 1em 0;
+    padding: 1em;
+    padding-bottom: 5px;
+    border: 1px solid #AAA;
+    }
+
+fieldset legend {
+    font-weight: bold;
+    color: #AAA;
+    }

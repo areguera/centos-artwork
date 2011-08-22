@@ -1,0 +1,107 @@
+/* 
+ * Webenv -> Quotation
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+div#page-body blockquote {
+    margin-left: 0;
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-gray.png");
+    padding: 0.5em 1.5em 0 1em;
+	}
+
+div#page-body blockquote h2 {
+    line-height: 0;
+    margin: 1em 0 1em 0;
+    }
+ 
+div#page-body blockquote pre {
+    border: none;
+    background-color: #333;
+    color: #FFFFFF;
+    }
+
+div#page-body blockquote.icon img {
+    margin: 0.5em 0 0 0;
+    float: left;
+    }
+
+div#page-body blockquote.icon pre,
+div#page-body blockquote.icon h2,
+div#page-body blockquote.icon p,
+div#page-body blockquote.icon table {
+    margin-left: 60px;
+    }
+
+div#page-body blockquote.icon ul,
+div#page-body blockquote.icon ol,
+div#page-body blockquote.icon dl {
+    margin-left: 110px;
+    }
+
+div#page-body blockquote.icon ul dl,
+div#page-body blockquote.icon ul ol,
+div#page-body blockquote.icon ul ul,
+div#page-body blockquote.icon ol dl,
+div#page-body blockquote.icon ol ol,
+div#page-body blockquote.icon ol ul,
+div#page-body blockquote.icon dl dl,
+div#page-body blockquote.icon dl ol,
+div#page-body blockquote.icon dl ul {
+    margin-left: 2.5em;
+    }
+
+div#page-body blockquote.message {
+	border: none;
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+    border-color: #CFCFCF;
+	}
+
+div#page-body blockquote.blue {
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-blue.png");
+	border-color: #D2E0F6; 
+	background-color: #ECF4FF;
+	}
+
+div#page-body blockquote.orange {
+    border-color: #F6E7D2; 
+    background-color: #FFF8EC;
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-orange.png");
+	}
+
+div#page-body blockquote.violet {
+    border-color: #F6D2F6; 
+    background-color: #FFECFF;
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-violet.png");
+	}
+
+div#page-body blockquote.red {
+    border-color: #E0B7B7;
+    background-color: #FFECEC;
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-red.png");
+	}
+
+div#page-body blockquote.green {
+    border-color: #D6F6D2;
+    background-color: #EEFFEC;
+    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-green.png");
+	}

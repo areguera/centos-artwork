@@ -1,0 +1,76 @@
+/* 
+ * Webenv -> Lists
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+div#page-body ul { 
+    list-style: url("https://projects.centos.org/centos-web-pub/Images/ul.png") disc; 
+    }
+
+div#page-body ul,
+div#page-body ol { 
+    margin-left: 2.5em;
+    }
+
+div#page-body ul ol,
+div#page-body ol ul,
+div#page-body dl ul,
+div#page-body dl ol { 
+    margin-left: 1.5em;
+    }
+
+div#page-body div#links ul {
+    padding: 0.5em 0.5em 1em 1em;
+    margin: 0;
+    list-style: none;
+    border-top: 1px #EEE solid;
+    }
+
+div#page-body div#links ul.first {
+    border-top: none;
+    }
+
+div#page-body div#links ul li {
+    padding: 2px;
+    }
+
+/* Table of content (toc) 
+--------------------------------------------------------------------*/
+
+div#page-body div.toc {
+	font-size: small;
+	text-align:left;
+    margin-bottom: 2em;
+	}
+
+div#page-body div.toc p {
+    font-weight: bold;
+    margin: 0.5em 0 0.5em 0;
+    }
+
+div#page-body div#content div.toc dl {
+    margin: 0;
+    }
+
+div#page-body div#content div.toc dl dl {
+    margin-left: 2.5em;
+    }

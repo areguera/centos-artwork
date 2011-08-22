@@ -1,0 +1,81 @@
+/* 
+ * Webenv -> Main Blocks
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+div#page-header {
+	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
+	min-height: 46px;
+	}
+
+div#page-footer {
+	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
+    padding: 10px;
+	}
+
+div#page-footer div.top img {
+    border:none;
+    float:right;
+    }
+
+div#page-header div.links div.user,
+div#page-header div.links div.trail,
+div#page-footer div.credits {
+    font-size: small;
+    color: #FFF;
+    }
+
+div#page-footer div.credits a {
+    color: #FFF;
+    font-style: italic;
+    }
+
+div#wrap {
+	padding: 0 10px 0 10px;
+    background-color: #FFF;
+    min-width: 728px;
+	}
+
+div#page-body {
+	clear: both;
+    background-color: #F8F8F8;
+	}
+
+div#page-body div#content {
+    padding: 30px;
+    padding-top: 10px;
+    background-color: #FFF;
+    }
+
+div#content div.trail {
+    margin-bottom: 1em;
+    }
+
+/* Logo
+--------------------------------------------------------------------*/
+
+div#page-header div#logo img {
+    border: none;
+    float: left;
+    margin-left: 10px;
+    }
+

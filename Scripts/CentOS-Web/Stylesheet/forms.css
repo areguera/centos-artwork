@@ -1,0 +1,166 @@
+/* 
+ * Webenv -> Forms
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------
+ */
+
+div#page-body div.row1 {
+	clear: both;
+	background: #F8F8F8;
+	padding: 10px;
+	}
+
+div#page-body div.row2 {
+	clear: both;
+	background: #FFFFFF;
+	padding: 10px;
+	}
+
+div#page-body div.row3 {
+	clear: both;
+	border-top: 1px solid #CCC;
+	padding: 10px;
+	margin-top: 10px;
+	}
+
+div#page-body fieldset div.row1 span.descrip,
+div#page-body fieldset div.row2 span.descrip {
+	float: left;
+	}
+
+div#page-body fieldset div.field {
+	display: block;
+	margin-left: 30%;
+	}
+
+div#page-body fieldset div.field div.column {
+	float: left;
+	margin-right: 1em;
+	padding-right: 1em;
+	border-right: 1px dotted #AAA;
+	}
+
+div#page-body fieldset div.row3 div.descrip {
+	display: block;
+	font-size: small;
+	color: #AAA;
+	font-style: italic;
+	width: 70%
+	}
+
+div#page-body fieldset span.submit {
+	float: right;
+	}
+
+/* */
+
+div#page-body div.actions {
+    margin-top: 10px;
+	border-bottom: 1px solid #AAA;
+    padding-bottom: 10px;
+
+    }
+
+div#page-body div.actions span {
+	display: inline;
+	margin: 0;
+	padding-right: 10px;
+	border-right: 1px dotted #AAA;
+	color: #AAA;
+	}
+
+div#page-body div.actions span.last {
+	border-right: none;
+	padding-left: 10px;
+	}
+
+/* */
+
+div#page-body div.pagination {
+    font-size: small;
+    padding: 10px;
+    border-top: 1px #AAA solid;
+    margin-bottom: 2em;
+    }
+
+div#page-body div.pagination span.left {
+    float: left;
+    }
+
+div#page-body div.pagination span.left a:before {
+    content: "«";
+    padding-right: 3px;
+    }
+
+div#page-body div.pagination span.right a:after {
+    content: "»";
+    padding-left: 3px;
+    }
+
+div#page-body div.pagination span.right {
+    float: right;
+    }
+
+/* */
+
+div#page-body div.records-list {
+    display: block;
+    }
+
+div#page-body div.records-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    }
+
+div#page-body div.records-list ul li {
+    padding: 0.5em;
+    }
+
+div#page-body div.records-list ul li.row1 {
+    background: #F8F8F8;
+    }
+
+div#page-body div.records-list ul li span.col0 {
+    display: block;
+    float:left;
+    text-align: center;
+    padding-right: 0.5em;
+    margin-right: 0.5em;
+    border-right: 1px solid #FFF;
+    }
+
+div#page-body div.records-list ul li span.col1 {
+    width: 250px;
+    display: block;
+    float:left;
+    }
+
+div#page-body div.records-list ul li span.col2 {
+    border-left: 1px solid #FFF;
+    padding-left: 0.5em;
+    }
+
+div#page-body div.records-list ul li.title {
+    font-weight: bold;
+    background: #eee;
+    border-bottom: 1px #AAA solid;
+    }
