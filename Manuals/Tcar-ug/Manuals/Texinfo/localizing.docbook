@@ -7,13 +7,16 @@
         environment variable. When you do login to open your user's
         session, the <envar>LANG</envar> environment variable holds
         the locale information of your user's session in the form
-        ll_CC.encoding. This information is used by the
+        <quote>LL_CC.encoding</quote>. This information is used by the
         <code>help</code> functionality of
-        <command>centos-art.sh</command> script to determine the
-        the manual's main language definition and the texinfo document
+        <command>centos-art.sh</command> script to determine the the
+        manual's main language definition and the texinfo document
         template that should be used when documentation manuals
-        written in texinfo format are created and maintained,
+        written in texinfo format are created or maintained,
         respectively.
+    </para>
+
+    <para>
     </para>
 
 </sect1>
