@@ -87,17 +87,17 @@ def tag(name, attributes, indentation=[8,1], content="", has_child=0):
     output = v_indent + h_indent + '<' + str(name)
     if len(attributes) > 0:
         for k, v in attributes.iteritems():
-            output = output + ' ' + str(k) + '="' + str(v) + '"'
+            output += ' ' + str(k) + '="' + str(v) + '"'
     if content == '':
-        output = output + ' />'
+        output += ' />'
     else:
-        output = output + '>'
-        output = output + str(content)
+        output += '>'
+        output += str(content)
         if has_child == 1:
-            output = output + h_indent + '</' + str(name) + '>'
+            output += h_indent + '</' + str(name) + '>'
         else:
-            output = output + '</' + str(name) + '>'
-    output = output + v_indent
+            output += '</' + str(name) + '>'
+    output += v_indent
 
     return output
 
@@ -111,9 +111,9 @@ def page_preamble():
 
     """
     output = '<?xml version="1.0"?>' + "\n"
-    output = output + '<!DOCTYPE html' + "\n"
-    output = output + ' '*4 + 'PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"' + "\n"
-    output = output + ' '*4 + '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' + "\n"
+    output += '<!DOCTYPE html' + "\n"
+    output += ' '*4 + 'PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"' + "\n"
+    output += ' '*4 + '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' + "\n"
 
     return output
 
@@ -203,7 +203,7 @@ def page_navibar_top():
         focus = names[0]
 
     output = page_navibar_tabs(names, attrs, focus)
-    output = output + tag('div', {'class': 'page-line white'}, [8,1], tag('hr', {'style': 'display:none;'}, [0,0], '', 0), 0)
+    output += tag('div', {'class': 'page-line white'}, [8,1], tag('hr', {'style': 'display:none;'}, [0,0], '', 0), 0)
 
     return output
 
@@ -320,8 +320,8 @@ def page_navibar_app():
         focus = names[0]
 
     output = page_userlinks()
-    output = output + page_navibar_tabs(names, attrs, focus)
-    output = output + tag('div', {'class': 'page-line white'}, [4,1], tag('hr', {'style': 'display:none;'}, [0,0], '', 0), 0)
+    output += page_navibar_tabs(names, attrs, focus)
+    output += tag('div', {'class': 'page-line white'}, [4,1], tag('hr', {'style': 'display:none;'}, [0,0], '', 0), 0)
 
     return output
 
@@ -330,11 +330,11 @@ def page_header():
     """Returns XHTML code of page header."""
 
     content = page_logo()
-    content = content + page_ads_google()
-    content = content + page_navibar_top()
+    content += page_ads_google()
+    content += page_navibar_top()
     if not 'app' in qs:
-        content = content + page_ads_release()
-        content = content + page_navibar_app()
+        content += page_ads_release()
+        content += page_navibar_app()
 
     return tag('div', {'id': 'page-header'}, [4,1], content, 1)
     
@@ -373,10 +373,10 @@ def page_body():
     """
     content = page_body_breadcrumbs()
 
-    content = content + tag('h1', {'class': 'title'}, [12,1], 'My first CGI script')
-    content = content + tag('p', '', [12,1], 'This is the first paragraph.')
+    content += tag('h1', {'class': 'title'}, [12,1], 'My first CGI script')
+    content += tag('p', '', [12,1], 'This is the first paragraph.')
 
-    content = content + tag('div', {'class': 'page-line'}, [8,1], tag('hr', {'style': 'display:none;'}, [0,0]))
+    content += tag('div', {'class': 'page-line'}, [8,1], tag('hr', {'style': 'display:none;'}, [0,0]))
     content = tag('div', {'id':'content'}, [8,1], content, 1)
 
     output = tag('div', {'id':'page-body'}, [4,1], content, 1)
@@ -400,10 +400,10 @@ def page_footer():
     content = tag('img', attrs[1], [0,0])
     content = tag('a', attrs[0], [12,1], content)
     content = tag('div', {'class': 'top'}, [8,1], content, 1)
-    content = content + tag('div', {'class': 'credits'}, [8,1], credits, 1)
+    content += tag('div', {'class': 'credits'}, [8,1], credits, 1)
 
     output = tag('div', {'class': 'page-line'}, [4,1], tag('hr', {'style': 'display:none;'}, [0,0]))
-    output = output + tag('div', {'id': 'page-footer'}, [4,1], content, 1)
+    output += tag('div', {'id': 'page-footer'}, [4,1], content, 1)
 
     return output
 
@@ -416,26 +416,26 @@ def page_wrap(title, keywords, description):
     attrs.append({'xmlns': 'http://www.w3.org/1999/xhtml', 'dir': 'ltr', 'lang': str(language), 'xml:lang': str(language)})
     
     content = tag('meta http-equiv="content-type" content="text/html; charset=UTF-8"', '', [4,1])
-    content = content + tag('meta http-equiv="content-style-type" content="text/css"', '', [4,0])
-    content = content + tag('meta http-equiv="content-language" content="' + str(language) + '"', '', [4,1])
-    content = content + tag('meta name="keywords" content="' + str(keywords) + '"', '', [4,0])
-    content = content + tag('meta name="description" content="' + str(description) + '"', '', [4,1])
-    content = content + tag('meta name="copyright" content="Copyright © ' + str(copyright) + '"', '', [4,0])
-    content = content + tag('title', '', [4,1], str(title))
-    content = content + tag('link href="/centos-web-pub/stylesheet.css" rel="stylesheet" type="text/css" media="screen projection"', '', [4,1])
+    content += tag('meta http-equiv="content-style-type" content="text/css"', '', [4,0])
+    content += tag('meta http-equiv="content-language" content="' + str(language) + '"', '', [4,1])
+    content += tag('meta name="keywords" content="' + str(keywords) + '"', '', [4,0])
+    content += tag('meta name="description" content="' + str(description) + '"', '', [4,1])
+    content += tag('meta name="copyright" content="Copyright © ' + str(copyright) + '"', '', [4,0])
+    content += tag('title', '', [4,1], str(title))
+    content += tag('link href="/centos-web-pub/stylesheet.css" rel="stylesheet" type="text/css" media="screen projection"', '', [4,1])
     head = tag('head', '', [0,1], content)
 
     top = tag('a', {'name':'top'}, [0,1], '')
 
     content = page_header()
-    content = content + page_body()
-    content = content + page_footer()
+    content += page_body()
+    content += page_footer()
     wrap = tag('div', {'id': 'wrap'}, [0,1], content)
 
     body = tag('body', '', [0,1], top + wrap)
 
     output = page_preamble()
-    output = output + tag('html', attrs[0], [0,1], head + body)
+    output += tag('html', attrs[0], [0,1], head + body)
 
     return output
 
