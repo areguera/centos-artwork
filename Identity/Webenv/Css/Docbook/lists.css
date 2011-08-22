@@ -33,18 +33,27 @@ span.term {
 /* Table of contents
 -----------------------------------------------*/
 
-.toc dl {
-    margin: 0;
-    }
-
-.toc dl dt {
-    margin: 0.3em 0 0.3em 0;
-    }
-
-div.toc {
+.toc,
+.list-of-figures,
+.list-of-examples {
     margin: 1.3em 0 1em 0;
     }
 
-div.toc p {
+.toc dl,
+.list-of-figures dl,
+.list-of-examples dl {
+    margin: 0;
+    }
+
+.toc dl dt,
+.list-of-figures dl dt,
+.list-of-examples dl dt {
+    margin: 0.3em 0 0.3em 0;
+    }
+
+.toc p,
+.list-of-figures p,
+.list-of-examples p {
     margin-bottom: 0.5em;
+    color: #000;
     }
