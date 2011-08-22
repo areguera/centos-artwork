@@ -72,28 +72,31 @@ a:active { text-decoration: underline; color: green; }
 a:visited { text-decoration: none; color: #0044B3; }
 a:visited:hover { text-decoration: underline; color: green; }
 
+.title,
 .title a:link,
 .title a:active,
 .title a:hover,
 .title a:visited,
 .title a:visited:hover {
-    color: #072B61;
-	text-decoration: none;
-	}
+    color: #000;
+    line-height: 1em;
+    margin-top: 1em;
+    text-decoration: none;
+    } 
 
 /* Headings
 -----------------------------------------------*/
 
 h1 {
-    font-size: 1.8em;
+    font-size: 1.9em;
     }
 
 h2 {
-    font-size: 1.4em;
+    font-size: 1.5em;
     }
 
 h3 {
-    font-size: 1.25em;
+    font-size: 1.4em;
     }
 
 h4 {
