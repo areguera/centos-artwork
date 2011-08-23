@@ -76,11 +76,14 @@ div#page-body div#content p.credits {
 
 div#page-body div#content h1 {
     color: #fff;
-    padding: 1em;
+    padding: 1.5em;
     margin: 0.5em 0 1em 0;
     background-color: #204c8d;
     background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/h1-bg.png");
-    line-height: 1.9em;
+    }
+
+div#page-body div#content h2 {
+    font-size: 1.7em;
     }
     
 .chapter,
@@ -90,9 +93,9 @@ div#page-body div#content h1 {
 .heading,
 .subheading,
 .subsubheading {
-    color: #072B61;
-    padding-top: 1em;
+    color: #000;
     clear:both;
+    margin-top: 1.5em;
     }
 
 div#page-body div#content dl dt {
