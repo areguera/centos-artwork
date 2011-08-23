@@ -14,44 +14,26 @@
 
     <para>
         The <function>render</function>, <function>help</function> and
-        <function>locale</function> functionalities were consolidated
-        as the most frequent tasks performed inside the repository.
-        Additionally, the prepare and tuneup functionalities are also
+        <function>locale</function> functionalities consolidated
+        themselves as the most frequent tasks performed in &TCAR;
+        working copy.  Additionally, the <function>prepare</function>
+        and <function>tuneup</function> functionalities are also
         maintained as useful tasks.
     </para>
 
     <para> 
-        In the documentation area, support for producing localized
-        transformations of DocBook XML DTD instances was added through
-        the <function>render</function> and locale functionalities.
-        The <function>render</function> functionality uses the
-        xsltproc command-line <acronym>XSLT</acronym> parser in
-        conjunction with the styles provided by the
-        <package>docbook-style-xsl</package> package, both of them
-        included inside The CentOS Distribution.  The locale
-        functionality creates the localized portable object
-        (<acronym>PO</acronym>) the <function>render</function>
-        functionality needs to produce localized transformations of
-        DocBook XML DTD instances.  
-    </para> 
-
-    <para>
-        To build DocBook documentation, it was considered the idea of
-        using concepts behind repository directory structure as base,
-        not the opposite (as I've been doing with Texinfo backend, so
-        far).
-    </para>
-
-    <para>
-        Producing documentation through DocBook XML as default
-        documentation backend consolidates <function>render</function>
-        and <function>locale</function> even more.  In this
-        configuration, once the DocBook files are written, you use
-        <function>locale</function> functionality to localize the
-        DocBook files in your prefered language and later, using
-        <function>render</function> functionality, you produce the
-        XTHML and PDF outputs as specified in a XSLT or DSL
-        customization layer.
+        The documentation area introduced the transformation of
+        localized DocBook XML DTD instances through the
+        <function>render</function> and <function>locale</function>
+        functionalities.  In this configuration, you use
+        <function>locale</function> functionality to localize DocBook
+        source files to your prefered language and later, using the
+        <function>render</function> functionality, you can produce the
+        localized XTHML and PDF output as specified in a XSLT layer.
+        Unfortunly, the transformation DocBook XML -> FO -> PDF
+        (through PassiveTex) seems to be incomplete inside CentOS 5.5,
+        so it was commented inside the
+        <command>centos-art.sh</command> script.
     </para>
 
 </sect1>
