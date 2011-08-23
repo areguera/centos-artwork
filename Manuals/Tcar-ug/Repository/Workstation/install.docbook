@@ -13,10 +13,11 @@
         At the moment of chosing which operating system to install in
         your workstation, consider that &TCAR; is completly built on
         &TCD; and realies on it to achieve most automation tasks. At
-        time of this writing the major release 5 update 5 of &TCD; was
-        used as platform to support all work line development inside
-        &TCAR;. To get the best of &TCAR;, it is necessary that you
-        too, use the same operating system we did to develop it.
+        time of this writing &TCD; release 5.5 was used as platform to
+        support all development work lines inside &TCAR; working copy.
+        So, in order to get a reproducable environemtn, it is
+        convenient that you, too, use the same version of the
+        operating system that we did. 
     </para>
 
     <para>
@@ -29,6 +30,9 @@
         &TCM;.
     </para>
         
+
+    <sect2 id="repo-ws-install-burning">
+    <title>Burning The Installation Media</title>
     <para>
         Assuming you downloaded the DVD ISO of &TCD;, you can burn it
         using the <application>K3B</application> application and, this
@@ -48,71 +52,38 @@
         boot the computer from it, and follow the installer
         intructions till it completes all the steps. That simple.
     </para>
+    </sect2>
 
-    <sect2 id="repo-ws-partition">
 
+    <sect2 id="repo-ws-install-partition">
     <title>Partition Information</title>
-    
     <para>
         The partition information you set in your workstation is very
         specific to your personal needs and the technical
-        characteristics of your machine.  This information will also
-        set the bases of all deployment you reach to achieve inside
-        the workstation. A well partitioned workstation is crucial to
-        garantee a well distribution of space inside the worstation.
-        In order to provide an idea of this installation step, I'll
-        describe the specific partitioning of the machine I use to
-        develop &TCAR; right now.  Remember that your needs might be
-        differents and so the partition layout you should implement.
+        characteristics of your machine.  The partitioning information 
+        set the bases of all deployment you pretend to achieve inside
+        the workstation. Generally, the default partitioning schema
+        suggested by &TCD; installer is fine for most avarage
+        workstations, but if you need to customize it, a complete
+        description about how to do it can be found in the
+        <citetitle>Deployment Guide</citetitle> provided by the
+        <package>Deployment_Guide-en-US</package> package.
     </para>
 
     <para>
-        The machine of our example is isolated from Internet or any
-        other network. It has two hard drives of 256GB each, 2GB of
-        RAM and a 2.80GHz Core 2 Duo processor. The main goal of this
-        machine is producing &TCAR;. To represent the real production
-        environment of &TCAR;, this machine was conceived to have two
-        roles, one as server &mdash;to store the source repository of
-        &TCAR;&mdash; and one as client &mdash;to store a working copy
-        of the source repository&mdash;. From both hard drives
-        available, one is used as primary
-        (<filename>/dev/sda</filename>) and the other one as secondary
-        (<filename>/dev/sdb</filename>) where the secondary is used
-        only to backup the information produced in the primary by mean
-        of backup scripts.
-    </para>
-    <para>
-        The partition distribution of this machine implements the
-        default partinioning schema provided by &TCD; in the primary
-        hard drive to store partitions needed by the operating system
-        (e.g., <filename class="directory">/</filename>, <filename
-        class="directory">/boot</filename> and swap partition) where
-        the working copy is placed in. The second hard drive is an
-        entire partition mounted in <filename
-        class="directory">/mnt/backups</filename> automatically on
-        boot which only purpose is to duplicate the information
-        produced in the workplace.
-    </para>
-
-<screen>
-Filesystem                          Type   Size  Mounted on
-/dev/mapper/VolGroup00-LogVol00     ext3   239G  /
-/dev/sda1                           ext3   104M  /boot
-tmpfs                               tmpfs  1.1G  /dev/shm
-/dev/sdb                            ext3   247G  /mnt/backups
-</screen>
-
-    <para>
-        The detailed steps followed to prepare the partinioning layout
-        described above are described in the <citetitle>Deployment
-        Guide</citetitle> provided by
-        <package>Deployment_Guide-en-US-5.2-11.el5.centos</package>
-        package.
+        The amount of space required to store a clean working copy of
+        &TCAR; is about 1GB. Later, when you start rendering content,
+        more space will be required. There is no specific space we can
+        suggest since the final amount of space required depends on
+        the amount of content you produce after downloading a clean
+        working copy; just be sure to leave enough space to work
+        (e.g., 10GB seems to be a good number) whatever your partition
+        information be.
     </para>
 
     </sect2>
 
-    <sect2 id="repo-ws-packages">
+    <sect2 id="repo-ws-install-packages">
 
     <title>Packages Selection</title>
 
@@ -207,13 +178,9 @@ tmpfs                               tmpfs  1.1G  /dev/shm
         the packages you need in order to have a functional working
         copy of &TCAR;. The only exception for this, is the
         <package>inkscape</package> package and some of its
-        dependencies which doesn't come with &TCD; and need to be
-        installed from third party repositroies like EPEL and
-        RPMForge. The configuration of third party repository is done
-        later, once the workstation has been installed; just as
-        described in the <ulink
-        url="http://wiki.centos.org/AdditionalResources/Repositories">Repositories</ulink>
-        page.
+        dependencies which don't come with &TCD; and need to be
+        installed from third party repositories like EPEL and
+        RPMForge, as described in the <ulink url="http://wiki.centos.org/AdditionalResources/Repositories">Repositories</ulink> wiki page.
     </para>
 
     </sect2>
