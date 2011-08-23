@@ -11,9 +11,7 @@
     </para>
 
     <sect2 id="repo-ws-config-wp">
-
     <title>Workplace</title>
-
     <para>
         Once you've installed the workstation and it is up and
         running, you need to create the user name you'll use for your
@@ -39,17 +37,14 @@
         create only a user identifier for you to login, but a place
         for you to store your information, as well. This place is
         known as your home directory and is unique for each user
-        inside the workstation.  At the moment, we face the following
-        design problems related to handling absolute paths inside the
-        working copies of &TCAR;:
+        inside the workstation.  At this point, it is necessary to
+        decide where the working copy tree will be stored in the
+        workstation filesystem.
     </para>
 
-    <variablelist>
-    <varlistentry>
-    <term>Case 1: Different home directories</term>
-    <listitem>
     <para>
-        Assuming you store your working copy under <filename
+        <emphasis>Case 1: Different Home Directories</emphasis>
+        &mdash; Assuming you store your working copy under <filename
         class="directory">/home/john/artwork/</filename> and I store
         mine under <filename
         class="directory">/home/al/artwork/</filename>, we'll end up
@@ -58,18 +53,13 @@
         files, holding path information inside, are committed up to
         the central repository. The contradiction comes from the
         question: which is the correct absolute path to use inside
-        such files, yours or mine? &mdash; No one of them is, of
-        course.
+        such files, yours or mine? (None of them is, of course.)
     </para>
-    </listitem>
-    </varlistentry>
 
-    <varlistentry>
-    <term>Case 2: One unique home directory</term>
-    <listitem>
     <para>
-        Another case would be that you and I ourselves use one unique
-        home directory (e.g., <filename
+        <emphasis>Case 2: One Unique Home Directory</emphasis> &mdash;
+        Another case would be that where you and I ourselves use one
+        unique home directory (e.g., <filename
         class="directory">/home/centos/artwork/</filename>) to store
         the working copy of &TCAR; in our own workstations, but
         configure the subversion client to use different user names to
@@ -84,34 +74,28 @@
         different subversion credentials for committing changes to be
         lost.
     </para>
-    </listitem>
-    </varlistentry>
 
-    <varlistentry>
-    <term>Case 3: Different home directories through dynamic expansion</term>
-    <listitem>
     <para>
-        Most of the absolute paths we use inside the working copy are
-        made of two parts, one dynamic and one fixed. The dynamic part
-        is the home directory of the current user and its value can be
-        retrived from the <envar>$HOME</envar> environment variable.
-        The fixed part of the path is the one we set inside the
-        repositroy structure itself as organization matter.  What we
-        need here is to find a way to expand variables inside files
-        that don't support variable expansion.  So far we've been
-        doing this through creation template instances which are
-        temporal files with translation markers expanded inside.  This
-        work rather fine with template files that are one-time-pass
-        (e.g., when we produce produce PNG files from SVG files and
-        XTHML from DocBook files), but the same is not true for
-        absolute paths inside files that are used as in their
-        permanent state inside the repository (e.g., CSS files and
-        other files similar in purpose).
+        <emphasis>Case 3: Different Home Directories Through Dynamic
+        Expansion</emphasis> &mdash; Most of the absolute paths we use
+        inside the working copy are made of two parts, one dynamic and
+        one fixed. The dynamic part is the home directory of the
+        current user and its value can be retrived from the
+        <envar>$HOME</envar> environment variable.  The fixed part of
+        the path is the one we set inside the repositroy structure
+        itself as organization matter.  What we need here is to find a
+        way to expand variables inside files that don't support
+        variable expansion.  So far we've been doing this through
+        creation template instances which are temporal files with
+        translation markers expanded inside.  This work rather fine
+        with template files that are one-time-pass (e.g., when we
+        produce produce PNG files from SVG files and XTHML from
+        DocBook files), but the same is not true for absolute paths
+        inside files that are used as in their permanent state inside
+        the repository (e.g., CSS files and other files similar in
+        purpose).
     </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-    
+
     <para>
         From the three cases discussed above, the second one (i.e.,
         One unique home directory) seems to be the best candidate. It
