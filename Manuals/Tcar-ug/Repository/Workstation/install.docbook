@@ -15,11 +15,13 @@
         &TCD; and realies on it to achieve most automation tasks. At
         time of this writing &TCD; release 5.5 was used as platform to
         support all development work lines inside &TCAR; working copy.
-        So, in order to get a reproducable environemtn, it is
+        So, in order to get a reproducable environment, it is
         convenient that you, too, use the same version of the
         operating system that we did. 
-    </para>
+    </para> 
 
+    <sect2 id="repo-ws-install-burning">
+    <title>Installation Media</title>
     <para>
         To install &TCD; you need to have access to the installation
         media somehow (e.g., CDs, DVDs, Pendrives, etc.).  If you
@@ -29,10 +31,6 @@
         media by yourself.  &TCD; ISO files can be downloaded from
         &TCM;.
     </para>
-        
-
-    <sect2 id="repo-ws-install-burning">
-    <title>Burning The Installation Media</title>
     <para>
         Assuming you downloaded the DVD ISO of &TCD;, you can burn it
         using the <application>K3B</application> application and, this
@@ -60,25 +58,17 @@
     <para>
         The partition information you set in your workstation is very
         specific to your personal needs and the technical
-        characteristics of your machine.  The partitioning information 
-        set the bases of all deployment you pretend to achieve inside
-        the workstation. Generally, the default partitioning schema
-        suggested by &TCD; installer is fine for most avarage
-        workstations, but if you need to customize it, a complete
-        description about how to do it can be found in the
-        <citetitle>Deployment Guide</citetitle> provided by the
-        <package>Deployment_Guide-en-US</package> package.
-    </para>
-
-    <para>
-        The amount of space required to store a clean working copy of
-        &TCAR; is about 1GB. Later, when you start rendering content,
-        more space will be required. There is no specific space we can
-        suggest since the final amount of space required depends on
-        the amount of content you produce after downloading a clean
-        working copy; just be sure to leave enough space to work
-        (e.g., 10GB seems to be a good number) whatever your partition
-        information be.
+        characteristics of your machine.  Generally, the default
+        partitioning schema suggested by &TCD; installer is fine for
+        the workstation we are preparing as platform for the working
+        copy of &TCAR;.  The amount of space required to store a clean
+        working copy of &TCAR; is about 1GB. Later, when you start
+        rendering content, more space will be required. There is no
+        specific space we can suggest since the final amount of space
+        required depends on the amount of content you produce after
+        downloading a clean working copy; just be sure to leave enough
+        space to work (e.g., 10GB seems to be a good number) whatever
+        your partition information be.
     </para>
 
     </sect2>
@@ -175,12 +165,14 @@
 
     <para>
         Packages selected in this step provide a base selection of all
-        the packages you need in order to have a functional working
-        copy of &TCAR;. The only exception for this, is the
+        the packages needed in order to have a functional working
+        copy of &TCAR;. The only exception is the
         <package>inkscape</package> package and some of its
         dependencies which don't come with &TCD; and need to be
         installed from third party repositories like EPEL and
-        RPMForge, as described in the <ulink url="http://wiki.centos.org/AdditionalResources/Repositories">Repositories</ulink> wiki page.
+        RPMForge, as described in the <ulink
+        url="http://wiki.centos.org/AdditionalResources/Repositories">Repositories</ulink>
+        wiki page.
     </para>
 
     </sect2>
