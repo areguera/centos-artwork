@@ -3,6 +3,6 @@
 from Xhtml import output
 
 def main():
-    output.page()
+    output.main()
 
 if __name__ == '__main__': main()
