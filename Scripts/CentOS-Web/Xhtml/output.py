@@ -26,8 +26,11 @@
 import os
 import cgi
 import cgitb; cgitb.enable()
+from datetime import date
 
 qs = cgi.parse_qs(os.environ['QUERY_STRING'])
+
+now = date.today()
 
 def tag(name, attrs, indent=[8,1], content="", has_child=0):
     """Returns XHTML tag definition.
@@ -372,19 +375,20 @@ def page_language(language='en'):
     return language
 
 
-def page_keywords(keywords):
+def page_keywords(keywords='centos, project, community, enterprise, operating system'):
     """Returns page keywords."""
     return keywords
 
 
-def page_description(description):
+def page_description(description="Community Enterprise Operating    tem"):
     """Returns page description."""
     return description
 
 
-def page_copyright(copyright_year, copyright_holder):
+def page_copyright(copyright_year=now.strftime("%Y"), 
+                   copyright_holder='The CentOS Project. All rights reserved.'):
     """Returns page copyright."""
-    return copyright_year + copyright_holder 
+    return copyright_year + ' ' + copyright_holder 
 
 
 def page_license():
