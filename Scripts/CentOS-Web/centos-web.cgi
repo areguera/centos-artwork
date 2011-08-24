@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from Web import xhtml
+from Apps import xhtml
 
 def main():
     xhtml.main()
