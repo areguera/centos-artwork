@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-from Xhtml import output
+from Web import xhtml
 
 def main():
-    output.main()
+    xhtml.main()
 
 if __name__ == '__main__': main()
