@@ -407,8 +407,9 @@ def page_metadata():
     metadata += tag('meta', {'name': 'description', 'content': str(page_description())}, [4,1])
     metadata += tag('meta', {'name': 'copyright', 'content': 'Copyright © ' + str(page_copyright())}, [4,0])
     metadata += tag('title', '', [4,1], page_title())
-    metadata += tag('link', {'href': '/centos-web-pub/stylesheet.css', 'rel': 'stylesheet', 'type': 'text/css', 
-                            'media': 'screen projection'}, [4,1])
+    metadata += tag('link', {'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,1])
+     
+    metadata += tag('link', {'href': '/centos-web-pub/Images/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,0])
 
     return tag('head', '', [0,1], metadata)
 
