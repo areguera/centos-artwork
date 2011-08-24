@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #
-# Xhtml -- This module encapsulates XHTML construction needed by The
-# CentOS Web application.
+# Xhtml.output -- This module encapsulates XHTML output code needed by
+# web applications.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -28,10 +28,8 @@ import cgi
 import cgitb; cgitb.enable()
 
 qs = cgi.parse_qs(os.environ['QUERY_STRING'])
-copyright = '2009-2011 The CentOS Project. All rights reserved.'
-language = 'en'
 
-def tag(name, attributes, indentation=[8,1], content="", has_child=0):
+def tag(name, attrs, indent=[8,1], content="", has_child=0):
     """Returns XHTML tag definition.
 
     Arguments:
@@ -41,15 +39,15 @@ def tag(name, attributes, indentation=[8,1], content="", has_child=0):
         you write them correctly considering the XHTML standard
         definition.
 
-    attributes: The XHTML tag's attribute. Notice that this function
+    attrs: The XHTML tag's attribute. Notice that this function
         doesn't verify the attributes assignation to tags. You need to
         know what attributes are considered valid to the tag you are
         creating in order to build a well-formed XHTML document. Such
         verification can be achived inside firefox browser through the
         `firebug' plugin.
 
-    indentation: The XHTML tag's indentation (Optional). This argument
-        is a list of two numerical values. The first value in the list
+    indent: The XHTML tag's indentation (Optional). This argument is a
+        list of two numerical values. The first value in the list
         represents the amount of horizontal spaces between the
         beginning of line and the opening tag.  The second value in
         the list represents the amount of vertical spaces (new lines)
@@ -74,20 +72,22 @@ def tag(name, attributes, indentation=[8,1], content="", has_child=0):
     way, produce consistent XHTML documents.
 
     """
-    if indentation[0] > 0:
-        h_indent = ' '*indentation[0]
+    if indent[0] > 0:
+        h_indent = ' '*indent[0]
     else:
         h_indent = ''
 
-    if indentation[1] > 0: 
-        v_indent = "\n"*indentation[1]
+    if indent[1] > 0: 
+        v_indent = "\n"*indent[1]
     else:
         v_indent = ''
     
     output = v_indent + h_indent + '<' + str(name)
-    if len(attributes) > 0:
-        for k, v in attributes.iteritems():
-            output += ' ' + str(k) + '="' + str(v) + '"'
+    if len(attrs) > 0:
+        attr_names = attrs.keys()
+        attr_names.sort()
+        for attr_name in attr_names:
+            output += ' ' + str(attr_name) + '="' + str(attrs[attr_name]) + '"'
     if content == '':
         output += ' />'
     else:
@@ -103,11 +103,10 @@ def tag(name, attributes, indentation=[8,1], content="", has_child=0):
 
 
 def page_preamble():
-    """Define XHTML preamble.
+    """Return XHTML code of page preamble.
 
-    Use this section to set the content-type required by CGI
-    definition, the document type and the head section required by
-    XHTML standard.
+    The page preamble sets the document type definition required by
+    the XHTML standard.
 
     """
     output = '<?xml version="1.0"?>' + "\n"
@@ -119,12 +118,13 @@ def page_preamble():
 
 
 def page_logo():
-    """Print XHTML code of page logo.
+    """Returns XHTML code of page logo.
 
     The page logo is displayed on the top-left corner of the page. We
     use this area to show The CentOS Logo, the main visual
     representation of The CentOS Project. In order to print the page
     logo correctly, the image related must be 78 pixels of height.
+
     """
     attrs = []
     attrs.append({'id': 'logo'})
@@ -135,7 +135,7 @@ def page_logo():
 
 
 def page_ads_google():
-    """Returns Google advertisement (468x60 pixels).
+    """Returns XHTML code of Google advertisement (468x60 pixels).
     
     """
     output = """
@@ -162,17 +162,24 @@ def page_ads_google():
 
         <div class="page-line"><hr style="display:none;" /></div>
     """
-
     return output
 
 
 def page_navibar_top():
-    """Return The CentOS Project top-level navigation links. 
+    """Returns XHTML code of top-level navigation bar. 
     
-    Use this section to list the web applications you want to be
-    always visible no matter where you are inside the CentOS web
-    henvironment.  Example of web applications are `Home', `Wiki',
-    `Lists', `Forums', `Planet', etc.
+    The top-level navigation bar organizes links to the web
+    application The CentOS Project makes use of. Links in the
+    top-level navigation bar remain always visible, no matter what web
+    application you be visiting.
+
+    Notice that web application differe one another and is not
+    convenient to point them all to this definition. Instead, a
+    specific definition for each web application will be created
+    (based on this definition) in order for them to give the
+    impression of being connected. In this process, the top-level
+    navigation bar is adapted to each web application characteristics
+    and the related tab is set as current.
 
     """
     names = []
@@ -203,15 +210,15 @@ def page_navibar_top():
         focus = names[0]
 
     output = page_navibar_tabs(names, attrs, focus)
-    output += tag('div', {'class': 'page-line white'}, [8,1], tag('hr', {'style': 'display:none;'}, [0,0], '', 0), 0)
+    output += page_line({'class': 'page-line white'}, [8,1])
 
     return output
 
 
 def page_navibar_tabs(names, attrs, focus="Home"):
-    """Returns the XHTML code of navigation tabs.
+    """Returns navigation tabs.
 
-    Argumuents:
+    Arguments:
 
     names: List of tab names.
 
@@ -224,125 +231,101 @@ def page_navibar_tabs(names, attrs, focus="Home"):
         to this argument the `Home' value is used as default value.
 
     """
-    links = ''
+    navibar_tabs = ''
 
-    for i in names:
-        content = tag('span', '', [0,0], str(i))
-        content = tag('a', attrs[names.index(i)], [16,1], content)
-        if str(i).lower() == focus.lower():
+    for i in range(len(names)):
+        content = tag('span', '', [0,0], str(names[i]))
+        content = tag('a', attrs[i], [16,1], content)
+        if str(names[i]).lower() == focus.lower():
             content = tag('span', {'class': 'current'}, [12,1], content, 1)
         else:
             content = tag('span', '', [12,1], content, 1)
-        links = links + content
+        navibar_tabs += content
 
-    output = tag('div', {'class': 'tabs1'}, [8,1], links, 1)
-
-    return output
+    return tag('div', {'class': 'tabs1'}, [8,1], navibar_tabs, 1)
 
 
-def page_ads_release():
-    """Return XHTML code of last-release advertisement.
+def page_ads_release(image='ads-sample-728x90.png', description='Release Advertisement'):
+    """Return last-release advertisement.
     
     The release advertisment is a 728x90 pixels image graphically
     designed to promote the last releases of The CentOS Distribution.
     This image is located on the header space, between the top-level
     links and application specific links. This image changes each time
-    a new release is published from The CentOS Project.  
+    a new release is published from The CentOS Project and is only
+    visible at home page (i.e., the first time shown when
+    `http://www.centos.org/' domain is requested from a web browser).
     
     The place where the release advertisement is displayed on the web
     is an area of high visual impact, so images appearing therein
-    should be carefully designed in consequence with it.  Likewise,
-    the frequency and priority of images in the rotation must be
-    controlled and somehow syncronized with the releasing process of
-    The CentOS Distribution.
+    should be carefully designed in consequence with it.  The
+    frequency and priority of images in the rotation must be connected
+    somehow with The CentOS Distribution releasing process.
 
     Previous to consider the release advertisement as such, it was
     reserved for sponsor advertisements. Nevertheless, sponsor
-    advertisements were moved to a page for its own through a link in
+    advertisements were moved to a page to their own through a link in
     the top-level navegation bar.
     
     """
     attrs = []
     attrs.append({'class': 'ads-release'})
-    attrs.append({'title': 'Release Advertisement', 'href': ''})
-    attrs.append({'src': '/centos-web-pub/Images/ads-sample-728x90.png', 'alt': 'Release Advertisement'})
+    attrs.append({'title': description, 'href': ''})
+    attrs.append({'src': '/centos-web-pub/Images/' + image, 'alt': description})
     output = tag('div', attrs[0], [8,1], tag('a', attrs[1], [12,1], tag('img', attrs[2], [0,0], '', 0), 0), 1)
 
     return output
 
 
-def page_userlinks():
-    """Return XHTML code of user's links.
+def page_userlinks(names=['Login'], attrs=[{'href': '/centos-web/?p=login'}]):
+    """Returns user links.
+
+    Arguments:
+
+    names: List of links you want to have.
+
+    attrs: List of dictionaries with link attributes. In order for
+        links to be built correctly, both names and attrs lists must
+        coincide their indexes.
+
+    The user links are specific to each web application. They are
+    shown in the right-top corner of the application navigation bar,
+    just over the application navigation tabs.
 
     """
-    links = ''
-    names = []
-    attrs = []
+    userlinks = ''
 
-    names.append('Lost your password?')
-    attrs.append({'href': '/centos-web/?p=lostpwd'})
-    names.append('Register')
-    attrs.append({'href': '/centos-web/?p=register'})
-    names.append('Login')
-    attrs.append({'href': '/centos-web/?p=login'})
-
-    for i in names:
-        content = tag('a', attrs[names.index(i)], [20,1], str(i), 0)
-        if str(i) == names[len(names) -1]:
+    for i in range(len(names)):
+        content = tag('a', attrs[i], [20,1], str(names[i]), 0)
+        if i == len(names) - 1:
             content = tag('span', {'class': 'last'}, [16,1], content, 1)
         else:
             content = tag('span', '', [16,1], content, 1)
-        links = links + content
+        userlinks += content 
 
-    content = tag('div', {'class': 'user'}, [12,1], links, 1)
-    output = tag('div', {'class': 'links'}, [8,1], content, 1)
+    userlinks = tag('div', {'class': 'user'}, [12,1], userlinks, 1)
 
-    return output
+    return tag('div', {'class': 'links'}, [8,1], userlinks, 1)
 
 
-def page_navibar_app():
-    """Returns navigation bar with application links.
-
-    """
-    names = []
-    attrs = [] 
-
-    names.append('Erratas')
-    attrs.append({'accesskey': 'e', 'title': 'The CentOS News (Alt+Shift+E)', 'href': '/centos-web/?p=erratas'})
-    names.append('Articles')
-    attrs.append({'accesskey': 'a', 'title': 'The CentOS Articles (Alt+Shift+A)', 'href': '/centos-web/?p=articles'})
-    names.append('Events')
-    attrs.append({'accesskey': 'v', 'title': 'The CentOS Events (Alt+Shift+V)', 'href': '/centos-web/?p=events'})
-    
+def page_navibar_app(names=['Welcome'], attrs=[{'href':'/centos-web/?p=welcome'}]):
+    """Returns application's navigation bar."""
     if 'p' in qs:
         focus = qs['p'][0]
     else:
         focus = names[0]
 
-    output = page_userlinks()
-    output += page_navibar_tabs(names, attrs, focus)
-    output += tag('div', {'class': 'page-line white'}, [4,1], tag('hr', {'style': 'display:none;'}, [0,0], '', 0), 0)
+    navibar_app = page_navibar_tabs(names, attrs, focus)
+    navibar_app += page_line({'class': 'page-line white'}, [8,1])
 
-    return output
+    return navibar_app
+ 
 
-
-def page_header():
-    """Returns XHTML code of page header."""
-
-    content = page_logo()
-    content += page_ads_google()
-    content += page_navibar_top()
-    if not 'app' in qs:
-        content += page_ads_release()
-        content += page_navibar_app()
-
-    return tag('div', {'id': 'page-header'}, [4,1], content, 1)
+def page_breadcrumbs():
+    """Returns page breadcrumbs.
     
-
-def page_body_breadcrumbs():
-    """Application specific links for breadcrumbs sutff. 
-    
-    Use this section if your application supports breadcrumbs.
+    The page breadcrumbs record the last pages visited inside the
+    current web application.
 
     """
     links = ''
@@ -358,96 +341,124 @@ def page_body_breadcrumbs():
     names.append('Links')
     attrs.append({'href': ''})
 
-    for i in names:
-        if names.index(i) == len(names) - 1:
-            content = tag('span', {'class':'last'}, [16,1], tag('a', attrs[names.index(i)], [20, 1], i), 1)
+    for i in range(len(names)):
+        if i == len(names) - 1:
+            content = tag('span', {'class':'last'}, [16,1], tag('a', attrs[i], [20, 1], names[i]), 1)
         else:
-            content = tag('span', '', [16,1], tag('a', attrs[names.index(i)], [20, 1], i, 0), 1)
+            content = tag('span', '', [16,1], tag('a', attrs[i], [20, 1], names[i], 0), 1)
         links = links + content
 
     return tag('div', {'class': 'trail'}, [12,1], links, 1)
 
 
-def page_body():
-    """Start page body definitions.
-    """
-    content = page_body_breadcrumbs()
+def page_line(attrs={'class': 'page-line'}, indent=[8,1]):
+    """Returns a division line."""
+    page_line = tag('hr', {'style': 'display:none;'}, [0,0])
+    page_line = tag('div', attrs, indent, page_line)
 
-    content += tag('h1', {'class': 'title'}, [12,1], 'My first CGI script')
-    content += tag('p', '', [12,1], 'This is the first paragraph.')
-
-    content += tag('div', {'class': 'page-line'}, [8,1], tag('hr', {'style': 'display:none;'}, [0,0]))
-    content = tag('div', {'id':'content'}, [8,1], content, 1)
-
-    output = tag('div', {'id':'page-body'}, [4,1], content, 1)
-
-    return output
+    return page_line
 
 
-def page_footer():
-    """Returns XHTML code of page's footer.
-    """
-    attrs = []
-    attrs.append({'title': 'Top', 'href': '#top'})
-    attrs.append({'src': '/centos-web-pub/Images/top.png', 'alt': 'Top'})
-    attrs.append({'href': 'http://creativecommons.org/licenses/by-sa/3.0/'})
-
-    license = tag('a', attrs[2], [0,0], 'Creative Commons Attribution-Share Alike 3.0 Unported License.')
-
-    credits = tag('div', {'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(copyright))
-    credits = credits + tag('div', {'class': 'license'}, [12,1], 'This website is licensed under a ' + str(license))
-
-    content = tag('img', attrs[1], [0,0])
-    content = tag('a', attrs[0], [12,1], content)
-    content = tag('div', {'class': 'top'}, [8,1], content, 1)
-    content += tag('div', {'class': 'credits'}, [8,1], credits, 1)
-
-    output = tag('div', {'class': 'page-line'}, [4,1], tag('hr', {'style': 'display:none;'}, [0,0]))
-    output += tag('div', {'id': 'page-footer'}, [4,1], content, 1)
-
-    return output
+def page_title(title='The CentOS Project'):
+    """Returns page title."""
+    title = 'The CentOS Project'
+    if 'app' in qs.keys():
+        title += ' :: ' + qs['app'][0].capitalize()
+    return title
 
 
-def page_wrap(title, keywords, description):
-    """Returns the XHTML code that wraps the whole page.
-    """
-    attrs = []
+def page_language(language='en'):
+    """Returns page language."""
+    return language
 
-    attrs.append({'xmlns': 'http://www.w3.org/1999/xhtml', 'dir': 'ltr', 'lang': str(language), 'xml:lang': str(language)})
-    
-    content = tag('meta http-equiv="content-type" content="text/html; charset=UTF-8"', '', [4,1])
-    content += tag('meta http-equiv="content-style-type" content="text/css"', '', [4,0])
-    content += tag('meta http-equiv="content-language" content="' + str(language) + '"', '', [4,1])
-    content += tag('meta name="keywords" content="' + str(keywords) + '"', '', [4,0])
-    content += tag('meta name="description" content="' + str(description) + '"', '', [4,1])
-    content += tag('meta name="copyright" content="Copyright © ' + str(copyright) + '"', '', [4,0])
-    content += tag('title', '', [4,1], str(title))
-    content += tag('link href="/centos-web-pub/stylesheet.css" rel="stylesheet" type="text/css" media="screen projection"', '', [4,1])
-    head = tag('head', '', [0,1], content)
 
-    top = tag('a', {'name':'top'}, [0,1], '')
+def page_keywords(keywords):
+    """Returns page keywords."""
+    return keywords
 
-    content = page_header()
-    content += page_body()
-    content += page_footer()
-    wrap = tag('div', {'id': 'wrap'}, [0,1], content)
 
-    body = tag('body', '', [0,1], top + wrap)
+def page_description(description):
+    """Returns page description."""
+    return description
 
-    output = page_preamble()
-    output += tag('html', attrs[0], [0,1], head + body)
 
-    return output
+def page_copyright(copyright_year, copyright_holder):
+    """Returns page copyright."""
+    return copyright_year + copyright_holder 
+
+
+def page_license():
+    """Retruns link to page license."""
+    license = 'Creative Commons Attribution-Share Alike 3.0 Unported License.'
+    license = tag('a', {'href': 'http://creativecommons.org/licenses/by-sa/3.0/'}, [0,0], license)
+    return license
+
+
+def page_metadata():
+    """Returns page metadata."""
+    metadata = tag('meta', {'http-equiv': 'content-type', 'content': 'text/html; charset=UTF-8'}, [4,1])
+    metadata += tag('meta', {'http-equiv': 'content-style-type', 'content': 'text/css'}, [4,0])
+    metadata += tag('meta', {'http-equiv': 'content-language', 'content': str(page_language())}, [4,1])
+    metadata += tag('meta', {'name': 'keywords', 'content': str(page_keywords())}, [4,0])
+    metadata += tag('meta', {'name': 'description', 'content': str(page_description())}, [4,1])
+    metadata += tag('meta', {'name': 'copyright', 'content': 'Copyright © ' + str(page_copyright())}, [4,0])
+    metadata += tag('title', '', [4,1], page_title())
+    metadata += tag('link', {'href': '/centos-web-pub/stylesheet.css', 'rel': 'stylesheet', 'type': 'text/css', 
+                            'media': 'screen projection'}, [4,1])
+
+    return tag('head', '', [0,1], metadata)
+
+def page_credits():
+    """Returns page credits."""
+    copyright = tag('p', {'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(page_copyright()))
+    license = tag('p', {'class': 'license'}, [12,1], 'This website is licensed under a ' + str(page_license()))
+    credits = tag('img', {'src': '/centos-web-pub/Images/top.png', 'alt': 'Top'}, [0,0])
+    credits = tag('a', {'title': 'Top', 'href': '#top'}, [16,1], credits)
+    credits = tag('div', {'class': 'top'}, [12,1], credits, 1)
+    credits = str(credits) + str(copyright) + str(license) 
+    credits = tag('div', {'class': 'credits'}, [8,1], credits, 1)
+
+    return credits
+
+
+def page_content():
+    """Returns page content."""
+    content = tag('h1', {'class': 'title'}, [12, 1], page_title())
+    content += tag('p', '', [12, 1], 'No content found for this page.')
+    return content
 
 
 def page():
+    """Returns page final output."""
+    page_header = page_logo()
+    page_header += page_ads_google()
+    page_header += page_navibar_top()
+    if not 'app' in qs:
+        page_header += page_ads_release()
+        page_header += page_userlinks()
+        page_header += page_navibar_app()
+    page_header = tag('div', {'id': 'page-header'}, [4,1], page_header, 1)
+
+    page_body = page_content() + page_line(indent=[12,1])
+    page_body = tag('div', {'id':'content'}, [8,1], page_body, 1)
+    page_body = tag('div', {'id':'page-body'}, [4,1], page_body, 1)
+
+    page_footer = page_line(indent=[4,1])
+    page_footer += tag('div', {'id': 'page-footer'}, [4,1], page_credits(), 1)
+    
+    top = tag('a', {'name':'top'}, [0,1], '')
+    wrap = tag('div', {'id': 'wrap'}, [0,1], page_header + page_body + page_footer)
+    body = tag('body', '', [0,1], top + wrap)
+
+    html = page_preamble()
+    html += tag('html', {'xmlns': 'http://www.w3.org/1999/xhtml', 'dir': 'ltr', 
+                         'lang': str(page_language()), 'xml:lang':
+                         str(page_language())}, [0,1], page_metadata() +  body)
+
+    return html
+
+
+def main():
     """The Xhtml code of a complete page."""
-
-    title       = 'The CentOS Project'
-    keywords    = 'centos, project, community, enterprise, operating system'
-    if 'app' in qs:
-        title = title + ' :: ' + str(qs['app'][0]).capitalize()
-    description = title
-
     print 'Content-type: text/html' + "\n"
-    print page_wrap(title, keywords, description)
+    print page()
