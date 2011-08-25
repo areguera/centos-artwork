@@ -72,119 +72,135 @@
         <div class="tabs1">
 
             <span class="current">
-            <a accesskey="1" title="CentOS Home Page
-            (Alt+Shift+1)" href="http://www.centos.org/"><span>Home</span></a>
-            </span>  
+            <a accesskey="1" title="CentOS Home Page (Alt+Shift+1)" href="http://www.centos.org/">
+            <span>Home</span></a>
+            </span> 
        
             <span>
-            <a accesskey="2" title="CentOS Wiki (Alt+Shift+2)"
-            href="http://wiki.centos.org/"><span>Wiki</span></a>
+            <a accesskey="2" title="CentOS Wiki (Alt+Shift+2)" 
+            href="http://wiki.centos.org/">
+            <span>Wiki</span></a>
             </span>
        
             <span>
-            <a accesskey="3" title="CentOS Mailing Lists
-            (Alt+Shift+3)" href="http://lists.centos.org/"><span>Lists</span></a>
+            <a accesskey="3" title="CentOS Mailing Lists (Alt+Shift+3)" href="http://lists.centos.org/">
+            <span>Lists</span></a>
             </span>
 
             <span>
-            <a accesskey="4" title="CentOS Forums (Alt+Shift+4)"
-            href="http://forums.centos.org"><span>Forums</span></a>
+            <a accesskey="4" title="CentOS Forums (Alt+Shift+4)" href="http://forums.centos.org">
+            <span>Forums</span></a>
             </span>
 
             <span>
-            <a accesskey="5" title="CentOS Planet (Alt+Shift+5)"
-            href="http://planet.centos.org"><span>Planet</span></a>
+            <a accesskey="5" title="CentOS Planet (Alt+Shift+5)" href="http://planet.centos.org">
+            <span>Planet</span></a>
             </span>
-
+            
             <span>
             <a accesskey="6" title="CentOS Bugs (Alt+Shift+6)" href="http://bugs.centos.org">
             <span>Bugs</span></a>
             </span>
 
             <span>
-            <a accesskey="7" title="CentOS SIGs (Alt+Shift+7)"
-            href="http://sigs.centos.org/"><span>SIGs</span></a>
+            <a accesskey="7" title="CentOS SIGs (Alt+Shift+7)" href="http://sigs.centos.org/">
+            <span>SIGs</span></a>
             </span>
 
             <span>
-            <a accesskey="8" title="CentOS Downloads (Alt+Shift+8)"
-            href="http://mirrors.centos.org"><span>Downloads</span></a>
+            <a accesskey="8" title="CentOS Downloads (Alt+Shift+8)" href="http://mirrors.centos.org">
+            <span>Downloads</span></a>
             </span>
 
         </div>
 
         <!-- 
-        Sponsors Advertisement.
+        The CentOS Distribution last releases.
         -->
-        <div class="ads-sponsors">
-        <a title="Sponsors Advertisement" href=""><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/ads-sample-728x90.png" alt="Sponsors Advertisement" /></a>
+        <div class="last-releases">
+            <div class="left">
+            <div>
+                <span class="title"><a href="">Last Releases</a>:</span> 
+                <span class="release"><a href="">6.0</a></span>
+                <span class="release"><a href="">5.8</a></span> 
+                <span class="release"><a href="">4.12</a></span> 
+                <span class="release last"><a href="">3.18</a></span>
+            </div>
+            </div>
+            <div class="right">
+                <a href="" title="RSS">
+                <span class="rss">RSS</span>
+                </a>
+            </div>
         </div>
 
-        <div class="links">
+        <!-- 
+        Application links. Use this section to organize user specific
+        links (e.g., session links, the last pages the user visited,
+        and the main pages the application is made of).
+        -->
+        <div id="appslinks">
 
-            <!-- 
-            Application specific links for user stuff. Use this
-            section to set Login, Register, Lost your passwrod?  and
-            so links.
-            -->
-            <div class="user">
-                <span><a href="">Lost your password?</a></span>
-                <span><a href="">Register</a></span>
-                <span class="last"><a href="">Login</a></span>
-            </div>
-            
-            <!--
-            Application specific links for trail sutff. Use this
-            section if your application trails the pages you've
-            visited.
-            -->
-    	    <div class="trail">
-    		    <span><a href="">Pagination</a></span>
-            	<span><a href="">Lists</a></span>
-            	<span><a href="">Headings</a></span>
-                <span><a href="">Links</a></span>
-            	<span><a href="">Texts</a></span>
-            	<span class="last"><a href="">Home</a></span>
-            </div>
-
-            <!-- 
-            Application specific links for content stuff. Use this
-            section to set application specific links that need to
-            remain always visible inside the application environment.
-            -->
-
-            <div class="tabs1">
-
-                <span><a title="Welcome to the web special interest group"
-                href="index.xhtml"><span>Welcome</span></a></span>
-
-                <span><a title="CentOS headings visual style guide."
-                href="headings.xhtml"><span>Headings</span></a></span>
-
-                <span><a title="CentOS texts visual style guide."
-                href="texts.xhtml"><span>Texts</span></a></span>
-
-                <span><a title="CentOS lists visual style guide."
-                href="lists.xhtml"><span>Lists</span></a></span>
-
-                <span><a title="CentOS links visual style guide."
-                href="links.xhtml"><span>Links</span></a></span>
-
-                <span class="current"><a title="CentOS tables visual style guide."
-                href="tables.xhtml"><span>Tables</span></a></span>
-
-                <span><a title="CentOS forms visual style guide."
-                href="forms.xhtml"><span>Forms</span></a></span> 
+        <!-- 
+        User links. Use this section to set Login, Register, Lost your
+        passwrod?  and so links.
+        -->
+        <div class="userlinks">
+            <span><a href="">Lost your password?</a></span>
+            <span><a href="">Register</a></span>
+            <span class="last"><a href="">Login</a></span>
+        </div>
         
-                <span><a title="CentOS pagination visual style guide."
-                href="pagination.xhtml"><span>Pagination</span></a></span>
+        <!--
+        User trails. Use this section if your application trails the
+        pages you've visited.
+        -->
+        <div class="usertrail">
+        	<span><a href="">Pagination</a></span>
+            <span><a href="">Lists</a></span>
+            <span><a href="">Headings</a></span>
+            <span><a href="">Links</a></span>
+            <span><a href="">Texts</a></span>
+            <span class="last"><a href="">Home</a></span>
+        </div>
 
-            </div>
+        <!-- 
+        Application specific links for content stuff. Use this section
+        to set application specific links that need to remain always
+        visible inside the application environment.
+        -->
+
+        <div class="tabs1">
+    
+            <span><a title="Welcome to the web special interest group"
+            href="index.xhtml"><span>Welcome</span></a></span>
+    
+            <span><a title="CentOS headings visual style guide."
+            href="headings.xhtml"><span>Headings</span></a></span>
+    
+            <span><a title="CentOS texts visual style guide."
+            href="texts.xhtml"><span>Texts</span></a></span>
+
+            <span><a title="CentOS lists visual style guide."
+            href="lists.xhtml"><span>Lists</span></a></span>
+
+            <span><a title="CentOS links visual style guide."
+            href="links.xhtml"><span>Links</span></a></span>
+
+            <span class="current"><a title="CentOS tables visual style guide."
+            href="tables.xhtml"><span>Tables</span></a></span>
+
+            <span><a title="CentOS forms visual style guide."
+            href="forms.xhtml"><span>Forms</span></a></span>
+        
+            <span><a title="CentOS pagination visual style guide."
+            href="pagination.xhtml"><span>Pagination</span></a></span>
+
+        </div>
 
         </div>
 
         <div class="page-line white"><hr style="display:none;" /></div>
-
 
     </div>
 
@@ -194,7 +210,7 @@
 
     <div id="page-body">
 
-        <div id="links">
+        <div id="rightbar">
 
             <!--
             The content of right column goes here.
@@ -224,7 +240,7 @@
             Application specific links for breadcrumbs sutff. Use this
             section if your application supports breadcrumbs.
             -->
-        	<div class="trail">
+        	<div class="usertrail">
         	    <span><a href="">Pagination</a></span>
                 <span><a href="">Lists</a></span>
                 <span><a href="">Headings</a></span>
