@@ -22,16 +22,12 @@
  * ----------------------------------------------------------------------
  */
 
-div#page-header div.tabs1 {
+div#page-header div.tabs {
 	margin-left: 10px;
     margin-right: 10px;
-	}
-
-div#page-header div.links div.tabs1 {
-    margin-top: 15px;
     }
 
-div#page-header div.tabs1 a {
+div#page-header div.tabs a {
 	color: #FFF;
 	float: left;
 	font-weight: bold;
@@ -40,44 +36,48 @@ div#page-header div.tabs1 a {
 	text-decoration: none;
 	}
 
-div#page-header div.tabs1 span.current a,
-div#page-header div.tabs1 span.current a:hover, 
-div#page-header div.tabs1 span.current a span,
-div#page-header div.tabs1 span.current a:hover span {
+div#page-header div.tabs span.current a,
+div#page-header div.tabs span.current a:hover, 
+div#page-header div.tabs span.current a span,
+div#page-header div.tabs span.current a:hover span {
 	color: #204A87;
 	text-decoration: none;
 	}
 
-div#page-header div.tabs1 a span,
-div#page-footer div.tabs1 a span {
+div#page-header div.tabs a span {
 	float: left;
 	padding: 5px 0px 3px 8px;
 	}
 
 /* */
 
-div#page-header div.tabs1 a {
+div#page-header div.tabs a {
 	background: none;
 	}
 
-div#page-header div.tabs1 a span {
+div#page-header div.tabs a span {
 	background: none;
 	}
 
-div#page-header div.tabs1 span.current a,
-div#page-header div.tabs1 span.current a:hover {
+div#page-header div.tabs span.current a,
+div#page-header div.tabs span.current a:hover {
 	background: url("/home/centos/artwork/trunk/Identity/Images/Webenv/tabs3-bg.png") 100% -50px no-repeat;
 	}
 
-div#page-header div.tabs1 span.current a span,
-div#page-header div.tabs1 span.current a:hover span {
+div#page-header div.tabs span.current a span,
+div#page-header div.tabs span.current a:hover span {
 	background: url("/home/centos/artwork/trunk/Identity/Images/Webenv/tabs4-bg.png") 0 -50px no-repeat;
 	}
 
-div#page-header div.tabs1 span:hover a {
+div#page-header div.tabs span:hover a {
 	background: url("/home/centos/artwork/trunk/Identity/Images/Webenv/tabs3-bg.png") 100% 0 no-repeat;
 	}
 
-div#page-header div.tabs1 span:hover a span {
+div#page-header div.tabs span:hover a span {
 	background: url("/home/centos/artwork/trunk/Identity/Images/Webenv/tabs4-bg.png") 0 0;
 	}
+
+/* Application level navigation bar.
+--------------------------------------------------------------------*/
+div#page-header div#appslinks div.tabs span:hover a span {
+    }
