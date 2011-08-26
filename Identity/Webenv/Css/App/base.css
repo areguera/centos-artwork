@@ -161,9 +161,10 @@ div#page-header div.last-releases div span.last {
 --------------------------------------------------------------------*/
 
 div#page-header div.userlinks {
-    margin: 10px;
+    padding: 10px;
     text-align: right;
     font-size: x-small;
+    clear: both;
     }
 
 div#page-header div.userlinks div.left {
@@ -215,8 +216,7 @@ div#page-header div.userlinks div.right span.last:after {
 /* User trail on header.
 --------------------------------------------------------------------*/
 div#page-header div.usertrail {
-	margin-right: 10px;
-    margin-bottom: 5px;
+	padding: 10px;
 	text-align: right;
     }
 
