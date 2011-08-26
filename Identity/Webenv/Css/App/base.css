@@ -51,7 +51,7 @@ div#page-body {
 
 div#page-body div#content {
     padding: 30px;
-    padding-top: 10px;
+    padding-top: 20px;
     background-color: #FFF;
     }
 
@@ -70,9 +70,14 @@ div#page-footer {
 	}
 
 div#page-footer div.credits {
-    font-size: small;
-    color: #FFF;
     padding: 10px;
+    }
+    
+div#page-footer div.credits .copyright,
+div#page-footer div.credits .license {
+    font-size: x-small;
+    color: #FFF;
+    line-height: 1.5em;
     }
 
 div#page-footer div.credits a {
@@ -81,8 +86,6 @@ div#page-footer div.credits a {
     }
 
 div#page-footer div.top {
-    padding: 10px;
-    border:none;
     float:right;
     }
 
