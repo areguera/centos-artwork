@@ -22,37 +22,26 @@
  * ----------------------------------------------------------------------
  */
 
+div#page-header,
+div#wrap,
+div#page-body,
+div#page-footer {
+    min-width: 728px;
+    }
+
+/* Header.
+--------------------------------------------------------------------*/
 div#page-header {
 	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
-div#page-footer {
-	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
-    padding: 10px;
-	}
-
-div#page-footer div.top img {
-    border:none;
-    float:right;
-    }
-
-div#page-header div.links div.user,
-div#page-header div.links div.trail,
-div#page-footer div.credits {
-    font-size: small;
-    color: #FFF;
-    }
-
-div#page-footer div.credits a {
-    color: #FFF;
-    font-style: italic;
-    }
+/* Content.
+--------------------------------------------------------------------*/
 
 div#wrap {
 	padding: 0 10px 0 10px;
     background-color: #FFF;
-    min-width: 728px;
 	}
 
 div#page-body {
@@ -61,19 +50,240 @@ div#page-body {
 	}
 
 div#page-body div#content {
-    padding: 30px;
-    padding-top: 10px;
+    padding: 50px;
+    padding-top: 30px;
     background-color: #FFF;
     }
 
-div#content div.trail {
+/* Paragraphs
+--------------------------------------------------------------------*/
+
+div#page-body div#content p {
+    text-align:justify; 
+    }
+
+/* Footer.
+--------------------------------------------------------------------*/
+
+div#page-footer {
+	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
+	}
+
+div#page-footer div.credits {
+    padding: 10px;
+    }
+
+div#page-footer div.credits .copyright,
+div#page-footer div.credits .license {
+    font-size: x-small;
+    color: #FFF;
+    line-height: 1.5em;
+    }
+
+div#page-footer div.credits a {
+    color: #FFF;
+    font-style: italic;
+    }
+
+div#page-footer div.top {
+    float:right;
     }
 
 /* Logo
 --------------------------------------------------------------------*/
-
 div#page-header div#logo img {
     border: none;
     float: left;
     margin-left: 10px;
     }
+
+/* Google advertisement (468x60px)
+--------------------------------------------------------------------*/
+
+div#page-header div.ads-google {
+    float: right;
+    margin: 5px;
+    }
+
+div#page-header div.ads-google img {
+    border: none;
+    }
+
+/* Last releases and RSS link for them.
+--------------------------------------------------------------------*/
+div#page-header div#last-releases {
+    clear: both;
+    min-height: 35px;
+    border-top: 3px solid #FFF;
+    border-bottom: 3px solid #FFF;
+    background: #3465A4;
+    }
+
+div#page-header div#last-releases div.left {
+    display: block;
+    float: left;
+    width: 80%;
+    margin-top: 10px;
+    font-size: small;
+    }
+
+div#page-header div#last-releases div.right {
+    float: right;
+    margin-top: 9px;
+    margin-right: 5px;
+    }
+
+div#page-header div#last-releases div.right span.rss span {
+    text-align: center;
+    font-weight: bold;
+    background: #729fcf;
+    padding: 4px 10px;
+    }
+
+div#page-header div#last-releases div {
+    margin-left: 10px;
+    }
+
+div#page-header div#last-releases div span.title {
+    font-weight: bold;
+    color: #FFF;
+    }
+
+div#page-header div#last-releases div span.release {
+    border-right: 1px dotted #FFF;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    }
+
+div#page-header div#last-releases div span.last {
+    border-right: 0px;
+    }
+
+/* User links on header.
+--------------------------------------------------------------------*/
+
+div#page-header div.userlinks {
+    padding: 10px;
+    text-align: right;
+    font-size: x-small;
+    clear: both;
+    }
+
+div#page-header div.userlinks div.lastvisit {
+    width: 50%;
+    float: left;
+    text-align: left;
+    }
+
+div#page-header div.userlinks div.lastvisit span {
+    border: none;
+    }
+
+div#page-header div.userlinks div.lastvisit span.title {
+    color: #FFF;
+    }
+
+div#page-header div.userlinks div.lastvisit span.datetime {
+    font-style: italic;
+    color: #FFF;
+    }
+
+div#page-header div.userlinks div.session {
+    width: 50%;
+    float: right;
+    }
+
+div#page-header div.userlinks div.session span {
+    border-right: 1px dotted #FFF;
+	}
+
+div#page-header div.userlinks div.session span a {
+    margin-right: 10px;
+    margin-left: 10px;
+    }
+
+
+div#page-header div.userlinks div.session span.last {
+	border-right: none;
+	}
+
+div#page-header div.userlinks div.session span.last a {
+    margin-right: 0;
+    }
+
+div#page-header div.userlinks div.session span.last:after {
+	content: none;
+	}
+
+div#page-header div.userlinks div.trail {
+	text-align: right;
+    clear: both;
+    padding-top: 5px;
+    }
+
+div#page-header div.userlinks div.trail span {
+	display: inline;
+	}
+
+div#page-header div.userlinks div.trail span.last {
+	border-right: none;
+	padding-right: 0;
+	}
+
+div#page-header div.userlinks div.trail span:after {
+	content: "»";
+    color: #FFF;
+    margin-left: 5px;
+    margin-right: 3px;
+	}
+
+div#page-header div.userlinks div.trail span.last:after {
+	content: none;
+	}
+
+/* User trail on content.
+--------------------------------------------------------------------*/
+div#page-body div.usertrail {
+    font-size: small;
+    }
+
+div#page-body div.usertrail a {
+    margin-right: 5px;
+	}
+
+div#page-body div.usertrail span {
+	display: inline;
+	}
+
+div#page-body div.usertrail span.last {
+	border-right: none;
+	padding-right: 0;
+	}
+
+div#page-body div.usertrail span.last a {
+	margin-right: 0;
+	}
+
+div#page-body div.usertrail span:after {
+	content: "»";
+	}
+
+div#page-body div.usertrail span.last:after {
+	content: none;
+	}
+
+/* Page lines.
+--------------------------------------------------------------------*/
+
+.page-line {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	}
+
+.page-line.white {
+	height: 3px;
+	background-color: #FFF;
+	}
