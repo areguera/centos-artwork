@@ -108,7 +108,7 @@ div#page-header div.ads-google img {
 
 /* Last releases and RSS link for them.
 --------------------------------------------------------------------*/
-div#page-header div.last-releases {
+div#page-header div#last-releases {
     clear: both;
     min-height: 35px;
     border-top: 3px solid #FFF;
@@ -116,7 +116,7 @@ div#page-header div.last-releases {
     background: #3465A4;
     }
 
-div#page-header div.last-releases div.left {
+div#page-header div#last-releases div.left {
     display: block;
     float: left;
     width: 80%;
@@ -124,36 +124,36 @@ div#page-header div.last-releases div.left {
     font-size: small;
     }
 
-div#page-header div.last-releases div.right {
+div#page-header div#last-releases div.right {
     float: right;
     margin-top: 9px;
     margin-right: 5px;
     }
 
-div#page-header div.last-releases div.right span.rss span {
+div#page-header div#last-releases div.right span.rss span {
     text-align: center;
     font-weight: bold;
     background: #729fcf;
     padding: 4px 10px;
     }
 
-div#page-header div.last-releases div {
+div#page-header div#last-releases div {
     margin-left: 10px;
     }
 
-div#page-header div.last-releases div span.title {
+div#page-header div#last-releases div span.title {
     font-weight: bold;
     color: #FFF;
     }
 
-div#page-header div.last-releases div span.release {
+div#page-header div#last-releases div span.release {
     border-right: 1px dotted #FFF;
     padding-left: 10px;
     padding-right: 10px;
     font-weight: bold;
     }
 
-div#page-header div.last-releases div span.last {
+div#page-header div#last-releases div span.last {
     border-right: 0px;
     }
 
