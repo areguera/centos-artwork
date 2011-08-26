@@ -167,83 +167,74 @@ div#page-header div.userlinks {
     clear: both;
     }
 
-div#page-header div.userlinks div.left {
+div#page-header div.userlinks div.lastvisit {
     width: 50%;
     float: left;
     text-align: left;
     }
 
-div#page-header div.userlinks div.left span {
+div#page-header div.userlinks div.lastvisit span {
     border: none;
     }
 
-div#page-header div.userlinks div.left span.title {
+div#page-header div.userlinks div.lastvisit span.title {
     color: #FFF;
     }
 
-div#page-header div.userlinks div.left span.datetime {
+div#page-header div.userlinks div.lastvisit span.datetime {
     font-style: italic;
     color: #FFF;
     }
 
-div#page-header div.userlinks div.right {
+div#page-header div.userlinks div.session {
     width: 50%;
     float: right;
     }
 
-div#page-header div.userlinks div.right a {
+div#page-header div.userlinks div.session a {
     margin-left: 10px;
     margin-right: 10px;
 	}
 
-div#page-header div.userlinks div.right span {
+div#page-header div.userlinks div.session span {
     border-right: 1px dotted #FFF;
 	}
 
-
-div#page-header div.userlinks div.right span.last {
+div#page-header div.userlinks div.session span.last {
 	border-right: none;
 	}
 
-div#page-header div.userlinks div.right span.last a {
+div#page-header div.userlinks div.session span.last a {
 	margin-right: 0;
 	}
 
-div#page-header div.userlinks div.right span.last:after {
+div#page-header div.userlinks div.session span.last:after {
 	content: none;
 	}
 
-/* User trail on header.
---------------------------------------------------------------------*/
-div#page-header div.usertrail {
-	padding: 10px;
+div#page-header div.userlinks div.trail {
 	text-align: right;
+    clear: both;
+    padding-top: 5px;
     }
 
-div#page-header div.usertrail a {
-    margin-right: 5px;
-    font-size: x-small;
-	}
-
-div#page-header div.usertrail span {
+div#page-header div.userlinks div.trail span {
 	display: inline;
 	}
 
-div#page-header div.usertrail span.last {
+div#page-header div.userlinks div.trail span.last {
 	border-right: none;
 	padding-right: 0;
 	}
 
-div#page-header div.usertrail span.last a {
-	margin-right: 0;
-	}
-
-div#page-header div.usertrail span:after {
+div#page-header div.userlinks div.trail span:after {
 	content: "»";
     color: #FFF;
+    margin-left: 5px;
+    margin-right: 3px;
 	}
 
-div#page-header div.usertrail span.last:after {
+div#page-header div.userlinks div.trail span.last:after {
 	content: none;
 	}
 
