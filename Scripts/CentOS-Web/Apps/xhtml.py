@@ -242,8 +242,8 @@ class Page:
         """Returns last-release information and related RSS link."""
         releases = ''
 
-        title = self.tag('a', {'href': '/centos-web/?p=releases'}, [20,0], 'Last Releases') + ':'
-        title = self.tag('span', {'class': 'title'}, [16,1], title, 1)
+        title = self.tag('a', {'href': '/centos-web/?p=releases'}, [0,0], 'Last Releases') + ':'
+        title = self.tag('span', {'class': 'title'}, [16,1], title)
 
         for i in range(len(names)):
             link = self.tag('a', attrs[i], [20,1], names[i])
@@ -254,9 +254,9 @@ class Page:
             releases += span
         releases = self.tag('div', {'class': 'left'}, [12,1], title + releases, 1)
 
-        rsslink = self.tag('span', '', [20,1], 'RSS')
-        rsslink = self.tag('a', {'href': '/centos-web/?print=rss', 'title': 'RSS'}, [16,1], rsslink)
-        rsslink = self.tag('span', {'class': 'rss'}, [12,1], rsslink)
+        rsslink = self.tag('span', '', [0,0], 'RSS')
+        rsslink = self.tag('a', {'href': '/centos-web/?print=rss', 'title': 'RSS'}, [20,1], rsslink)
+        rsslink = self.tag('span', {'class': 'rss'}, [16,1], rsslink, 1)
         rsslink = self.tag('div', {'class': 'right'}, [12, 1], rsslink, 1)
 
         return self.tag('div', {'id': 'last-releases'}, [8,1], releases + rsslink, 1)
@@ -269,9 +269,9 @@ class Page:
 
 
     def page_lastvisit(self):
-        last_visit = self.tag('a', '', [16,0], 'Your last visit was at')
-        last_visit = self.tag('span', {'class': 'title'}, [12, 1], last_visit, 1)
-        last_visit += self.tag('span', {'class': 'datetime'}, [12, 1], '...', 1)
+        last_visit = self.tag('a', '', [0,0], 'Your last visit was at')
+        last_visit = self.tag('span', {'class': 'title'}, [16, 1], last_visit)
+        last_visit += self.tag('span', {'class': 'datetime'}, [16, 1], '...')
         return self.tag('div', {'class': 'lastvisit'}, [12, 1], last_visit, 1)
 
 
@@ -378,8 +378,8 @@ class Page:
         metadata += self.tag('meta', {'name': 'description', 'content': str(self.description)}, [4,1])
         metadata += self.tag('meta', {'name': 'copyright', 'content': 'Copyright © ' + str(self.copyright)}, [4,0])
         metadata += self.tag('title', '', [4,1], self.title)
-        metadata += self.tag('link', {'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,1])
-        metadata += self.tag('link', {'href': '/centos-web-pub/Images/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,0])
+        metadata += self.tag('link', {'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
+        metadata += self.tag('link', {'href': '/centos-web-pub/Images/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
 
         return self.tag('head', '', [0,1], metadata)
 
@@ -391,8 +391,8 @@ class Page:
 
     def page_credits(self):
         """Returns page credits."""
-        copyright = self.tag('div', {'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
-        license = self.tag('div', {'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.page_license()))
+        copyright = self.tag('p', {'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
+        license = self.tag('p', {'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.page_license()))
         credits = self.tag('img', {'src': '/centos-web-pub/Images/top.png', 'alt': 'Top'}, [0,0])
         credits = self.tag('a', {'title': 'Top', 'href': '#top'}, [16,1], credits)
         credits = self.tag('div', {'class': 'top'}, [12,1], credits, 1)
