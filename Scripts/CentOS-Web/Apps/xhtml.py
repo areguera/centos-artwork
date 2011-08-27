@@ -28,6 +28,9 @@ import cgi
 import cgitb; cgitb.enable()
 
 class Page:
+    """Xhtml page modeling.
+    
+    """
 
 
     def __init__(self):
@@ -82,7 +85,8 @@ class Page:
         This function encapsulates the construction of XHTML tags.
         Use this function wherever you need to create XHTML tags. It
         helps to standardize tag constructions and their final output
-        and, this way, produce consistent XHTML documents.
+        and. This function provides a consistent way of producing
+        output for XHTML documents.
         """
         if indent[0] > 0:
             h_indent = ' '*indent[0]
@@ -269,7 +273,7 @@ class Page:
 
 
     def page_lastvisit(self):
-        last_visit = self.tag('a', '', [0,0], 'Your last visit was at')
+        last_visit = self.tag('a', {'href': '/centos-web/?p=lastvisit'}, [0,0], 'Your last visit was at')
         last_visit = self.tag('span', {'class': 'title'}, [16, 1], last_visit)
         last_visit += self.tag('span', {'class': 'datetime'}, [16, 1], '...')
         return self.tag('div', {'class': 'lastvisit'}, [12, 1], last_visit, 1)
@@ -432,5 +436,4 @@ class Page:
 
     def main(self):
         """The Xhtml code of a complete page."""
-        print 'Content-type: text/html' + "\n"
         print self.page()
