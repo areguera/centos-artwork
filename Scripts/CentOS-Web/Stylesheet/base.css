@@ -29,14 +29,14 @@ div#page-footer {
     min-width: 728px;
     }
 
-/* Header.
+/* Header
 --------------------------------------------------------------------*/
 div#page-header {
 	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
-/* Content.
+/* Content
 --------------------------------------------------------------------*/
 
 div#wrap {
@@ -62,7 +62,7 @@ div#page-body div#content p {
     text-align:justify; 
     }
 
-/* Footer.
+/* Footer
 --------------------------------------------------------------------*/
 
 div#page-footer {
@@ -91,6 +91,7 @@ div#page-footer div.top {
 
 /* Logo
 --------------------------------------------------------------------*/
+
 div#page-header div#logo img {
     border: none;
     float: left;
@@ -109,8 +110,9 @@ div#page-header div.ads-google img {
     border: none;
     }
 
-/* Last releases and RSS link for them.
+/* Last releases and related RSS link.
 --------------------------------------------------------------------*/
+
 div#page-header div#last-releases {
     clear: both;
     min-height: 35px;
@@ -119,11 +121,16 @@ div#page-header div#last-releases {
     background: #3465A4;
     }
 
+div#page-header div#last-releases a {
+    color: #fff;
+    }
+
 div#page-header div#last-releases div.left {
     display: block;
     float: left;
-    width: 80%;
+    width: 450px;
     margin-top: 10px;
+    margin-left: 10px;
     font-size: small;
     }
 
@@ -138,10 +145,6 @@ div#page-header div#last-releases div.right span.rss span {
     font-weight: bold;
     background: #729fcf;
     padding: 4px 10px;
-    }
-
-div#page-header div#last-releases div {
-    margin-left: 10px;
     }
 
 div#page-header div#last-releases div span.title {
@@ -160,7 +163,7 @@ div#page-header div#last-releases div span.last {
     border-right: 0px;
     }
 
-/* User links on header.
+/* User related links (e.g., last visit, session info and page trails)
 --------------------------------------------------------------------*/
 
 div#page-header div.userlinks {
@@ -168,6 +171,10 @@ div#page-header div.userlinks {
     text-align: right;
     font-size: x-small;
     clear: both;
+    }
+
+div#page-header div.userlinks a {
+    color: #fff;
     }
 
 div#page-header div.userlinks div.lastvisit {
@@ -239,37 +246,6 @@ div#page-header div.userlinks div.trail span:after {
 	}
 
 div#page-header div.userlinks div.trail span.last:after {
-	content: none;
-	}
-
-/* User trail on content.
---------------------------------------------------------------------*/
-div#page-body div.usertrail {
-    font-size: small;
-    }
-
-div#page-body div.usertrail a {
-    margin-right: 5px;
-	}
-
-div#page-body div.usertrail span {
-	display: inline;
-	}
-
-div#page-body div.usertrail span.last {
-	border-right: none;
-	padding-right: 0;
-	}
-
-div#page-body div.usertrail span.last a {
-	margin-right: 0;
-	}
-
-div#page-body div.usertrail span:after {
-	content: "»";
-	}
-
-div#page-body div.usertrail span.last:after {
 	content: none;
 	}
 
