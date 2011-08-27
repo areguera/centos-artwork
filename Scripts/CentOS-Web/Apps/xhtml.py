@@ -28,9 +28,7 @@ import cgi
 import cgitb; cgitb.enable()
 
 class Page:
-    """Xhtml page modeling.
-    
-    """
+    """Xhtml page modeling."""
 
 
     def __init__(self):
@@ -321,7 +319,7 @@ class Page:
                 content = self.tag('span', {'class':'last'}, [16,1], self.tag('a', attrs[i], [20, 1], names[i]), 1)
             else:
                 content = self.tag('span', '', [16,1], self.tag('a', attrs[i], [20, 1], names[i], 0), 1)
-            links = links + content
+            links += content
 
         return self.tag('div', {'class': 'trail'}, [12,1], links, 1)
 
@@ -370,6 +368,7 @@ class Page:
         """Retruns link to page license."""
         license = 'Creative Commons Attribution-Share Alike 3.0 Unported License'
         license = self.tag('a', {'href': 'http://creativecommons.org/licenses/by-sa/3.0/'}, [0,0], license) + '.'
+
         return license
 
 
@@ -391,6 +390,51 @@ class Page:
     def page_content(self, content='Page empty.'):
         """Returns page content."""
         return content
+
+
+    def page_admonition(self, title='Note', subtitle="", content=""):
+        """Returns page admonition.
+        
+        Arguments:
+
+        title: Admonition's title.
+
+        subtitle: Admonition's subtitle. The value of this argument is
+            concatenated on the right side of title using a colon (:)
+            as separator. Notice that this value is expanded inside
+            the <h3> tag and there is no need to introduce extra tags
+            here.
+
+        content: Admonition's content. The values passed through this
+            arguments needs to be XHTML code returned from
+            `self.tag()'. Preferably, paragraphs (p), tables (table),
+            lists (ul, ol, dl) and pre-formatted texts (pre).
+
+        """
+        if title == '':
+            return ''
+        else:
+            title = str(title.capitalize())
+
+        if subtitle != '':
+            subtitle = ': ' + str(subtitle.capitalize())
+
+        if content != '':
+            content = str(content)
+
+        admonitions = ['Note', 'Tip', 'Important', 'Caution', 'Warning', 'Redirected', 'Success', 'Error']
+        
+        if title in admonitions:
+            attrs = {'class': 'admonition ' + title.lower()}
+            image = self.tag('img', {'src': '/centos-web-pub/Images/' + title.lower() + '.png', 'alt': title}, [0,0])
+            title = self.tag('h3', {'class': 'title'}, [0,0], title + subtitle, 0)
+            output = image + title + content + self.page_line()
+        else:
+            attrs = {'class': 'admonition unknown'}
+            title = self.tag('h3', {'class': 'title'}, [16,1], title + subtitle, 1)
+            output = title + content
+        
+        return self.tag('div', attrs, [12,1], output, 1)
 
 
     def page_credits(self):
