@@ -22,85 +22,100 @@
  * ----------------------------------------------------------------------
  */
 
-div#page-body blockquote {
-    margin-left: 0;
-    background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-gray.png");
-    padding: 0.5em 1.5em 0 1em;
-	}
-
-div#page-body blockquote h2 {
-    line-height: 0;
-    margin: 1em 0 1em 0;
+div#page-body div.admonition {
+    border: 1px solid;
+    border-left: 5px solid;
+    padding: 10px 20px 0px 10px;
+    margin: 1.5em 0 1.5em 0;
     }
- 
-div#page-body blockquote pre {
+
+div#page-body div.admonition pre {
     border: none;
     background-color: #333;
     color: #FFFFFF;
     }
 
-div#page-body blockquote.icon img {
-    margin: 0.5em 0 0 0;
+div#page-body div.admonition img {
     float: left;
     }
 
-div#page-body blockquote.icon pre,
-div#page-body blockquote.icon h2,
-div#page-body blockquote.icon p,
-div#page-body blockquote.icon table {
+
+div#page-body div.admonition h3 {
+    margin-top: 10px; 
+    line-height: 1.5em;
+    }
+
+div#page-body div.admonition h3,
+div#page-body div.admonition p,
+div#page-body div.admonition pre,
+div#page-body div.admonition table {
     margin-left: 60px;
     }
 
-div#page-body blockquote.icon ul,
-div#page-body blockquote.icon ol,
-div#page-body blockquote.icon dl {
+div#page-body div.admonition ul,
+div#page-body div.admonition ol,
+div#page-body div.admonition dl {
     margin-left: 110px;
     }
 
-div#page-body blockquote.icon ul dl,
-div#page-body blockquote.icon ul ol,
-div#page-body blockquote.icon ul ul,
-div#page-body blockquote.icon ol dl,
-div#page-body blockquote.icon ol ol,
-div#page-body blockquote.icon ol ul,
-div#page-body blockquote.icon dl dl,
-div#page-body blockquote.icon dl ol,
-div#page-body blockquote.icon dl ul {
+div#page-body div.admonition ul dl,
+div#page-body div.admonition ul ol,
+div#page-body div.admonition ul ul,
+div#page-body div.admonition ol dl,
+div#page-body div.admonition ol ol,
+div#page-body div.admonition ol ul,
+div#page-body div.admonition dl dl,
+div#page-body div.admonition dl ol,
+div#page-body div.admonition dl ul {
     margin-left: 2.5em;
     }
 
-div#page-body blockquote.message {
+div#page-body div.admonition.unknown pre,
+div#page-body div.admonition.unknown h3,
+div#page-body div.admonition.unknown p,
+div#page-body div.admonition.unknown table {
+    margin-left: 20px;
+    }
+
+div#page-body div.admonition.success,
+div#page-body div.admonition.redirected,
+div#page-body div.admonition.error {
 	border: none;
-	border-top: 4px solid;
-	border-bottom: 4px solid;
+	border-top: 5px solid;
+	border-bottom: 5px solid;
     border-color: #CFCFCF;
 	}
 
-div#page-body blockquote.blue {
+div#page-body div.admonition.unknown,
+div#page-body div.admonition.redirected,
+div#page-body div.admonition.note {
     background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-blue.png");
 	border-color: #D2E0F6; 
 	background-color: #ECF4FF;
 	}
 
-div#page-body blockquote.orange {
+div#page-body div.admonition.tip,
+div#page-body div.admonition.important,
+div#page-body div.admonition.caution,
+div#page-body div.admonition.warning {
     border-color: #F6E7D2; 
     background-color: #FFF8EC;
     background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-orange.png");
 	}
 
-div#page-body blockquote.violet {
+div#page-body div.admonition.violet {
     border-color: #F6D2F6; 
     background-color: #FFECFF;
     background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-violet.png");
 	}
 
-div#page-body blockquote.red {
+div#page-body div.admonition.error {
     border-color: #E0B7B7;
     background-color: #FFECEC;
     background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-red.png");
 	}
 
-div#page-body blockquote.green {
+div#page-body div.admonition.success {
     border-color: #D6F6D2;
     background-color: #EEFFEC;
     background-image: url("https://projects.centos.org/centos-web-pub/Images/msg-bg-green.png");
