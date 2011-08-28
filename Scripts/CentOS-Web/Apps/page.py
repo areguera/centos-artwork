@@ -44,21 +44,6 @@ class Layout(xhtml.Strict):
         self.language = 'en'
 
 
-    def preamble(self):
-        """Return XHTML code of page preamble.
-
-        The page preamble sets the document type definition required
-        by the XHTML standard.
-
-        """
-        output = '<?xml version="1.0"?>' + "\n"
-        output += '<!DOCTYPE html' + "\n"
-        output += ' '*4 + 'PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"' + "\n"
-        output += ' '*4 + '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' + "\n"
-
-        return output
-
-
     def logo(self):
         """Returns XHTML code of page logo.
 
