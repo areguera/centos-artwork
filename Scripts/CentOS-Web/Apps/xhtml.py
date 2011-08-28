@@ -14,9 +14,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
+# ------------------------------------------------------------------
 # $Id$
-# ----------------------------------------------------------------------
+# ------------------------------------------------------------------
 """
 This module (App.xhtml) encapsulates the output code needed by web
 applications, using the Extensible HTML version 1.0 DTDs
@@ -28,44 +28,46 @@ class Strict:
     """Implements XHTML strict document type definition."""
 
 
-    def __init__():
-        """Initialize class data."""
+    # Core attributes common to most elements.
+    coreattrs = ['id',        # document-wide unique id
+                 'class',     # space separated list of classes
+                 'style',     # associated style info
+                 'title'      # advisory title/amplification
+                ]
+        
+    # Internationalization attributes.
+    i18n = ['lang',          # language code (backwards compatible)
+            'xml:lang',      # language code (as per XML 1.0 spec)
+            'dir'            # direction for weak/neutral text
+           ]
+        
+    # Attributes for common UI events.
+    events = ['onclick',     # a pointer button was clicked
+              'ondblclick',  # a pointer button was double clicked
+              'onmousedown', # a pointer button was pressed down
+              'onmouseup',   # a pointer button was released
+              'onmousemove', # a pointer was moved onto the element
+              'onmouseout',  # a pointer was moved away from the element
+              'onkeypress',  # a key was pressed and released
+              'onkeydown',   # a key was pressed down
+              'onkeyup'      # a key was released
+             ]
+        
+    # Attributes for elements that can get the focus.
+    focus = ['accesskey',    # accessibility key character
+             'tabindex',     # position in tabbing order
+             'onfocus',      # the element got the focus
+             'onblur'        # the element lost the focus
+            ]
+        
+    # Attributes generic format.
+    attrs = coreattrs + i18n + events
 
-        # Core attributes common to most elements.
-        self.coreattr = {'id':'',           # document-wide unique id
-                         'class':'',        # space separated list of classes
-                         'style':'',        # associated style info
-                         'title':''         # advisory title/amplification
-                         }
-        
-        # Internationalization attributes.
-        self.i18n = {'lang':'',             # language code (backwards compatible)
-                     'xml:lang':'',         # language code (as per XML 1.0 spec)
-                     'dir':''               # direction for weak/neutral text
-                     }
-        
-        # Attributes for common UI events.
-        self.events = {'onclick':'',        # a pointer button was clicked
-                       'ondblclick':'',     # a pointer button was double clicked
-                       'onmousedown':'',    # a pointer button was pressed down
-                       'onmouseup':'',      # a pointer button was released
-                       'onmousemove':'',    # a pointer was moved onto the element
-                       'onmouseout':'',     # a pointer was moved away from the element
-                       'onkeypress':'',     # a key was pressed and released
-                       'onkeydown':'',      # a key was pressed down
-                       'onkeyup':''         # a key was released
-                       }
-        
-        # Attributes for elements that can get the focus.
-        self.focus = {'accesskey':'',       # accessibility key character
-                      'tabindex':'',        # position in tabbing order
-                      'onfocus':'',         # the element got the focus
-                      'onblur':''           # the element lost the focus
-                      }
-        
-        # Attributes generic format.
-        self.attrs = self.coreattrs + self.i18n + self.events
-        
+
+    def __init__(self):
+        """Initialize class data."""
+        pass
+
 
     def tag(self, name, attrs, indent=[8,1], content="", has_child=0):
         """Returns generic XHTML tag definition.
@@ -141,9 +143,23 @@ class Strict:
         return output
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------ 
+    # Document Type Definition
+    # ------------------------------------------------------------------ 
+
+    def preamble(self):
+        """Return document type definition."""
+        output = '<?xml version="1.0"?>' + "\n"
+        output += '<!DOCTYPE html' + "\n"
+        output += ' '*4 + 'PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"' + "\n"
+        output += ' '*4 + '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' + "\n"
+
+        return output
+
+
+    # ------------------------------------------------------------------ 
     # Document Structure
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------ 
 
     def tag_html(self, attrs, indent, content, has_child=1):
         """Returns document structure definition.
@@ -161,9 +177,9 @@ class Strict:
         return self.tag('html', attrs, indent, content, has_child=1)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Document Head
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_head(self, attrs, indent, content, has_child=1):
         """Returns document head definition.
@@ -317,9 +333,9 @@ class Strict:
         return self.tag(self, attrs, indent, content, has_child)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Document Body
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_body(self, attrs, indent, content, has_child=1):
         """Returns document body definition.
@@ -347,9 +363,9 @@ class Strict:
         return self.tag('div', attrs, indent, content, has_child)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Paragraphs
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_p(self, attrs, indent, content, has_child=0):
         """Returns paragraph definition.
@@ -363,12 +379,12 @@ class Strict:
         return self.tag('p', attrs, indent, content, has_child)
         
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Headings
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # There are six levels of headings from h1 (the most important) to
     # h6 (the least important).
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_h1(self, attrs, indent, content, has_child=0):
         """Returns h1 definition.
@@ -442,9 +458,9 @@ class Strict:
         return self.tag('h6', attrs, indent, content, has_child)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Lists
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_ul(self, attrs, indent, content, has_child=1):
         """Returns unordered list definition.
@@ -519,9 +535,9 @@ class Strict:
         return self.tag('dd', attrs, indent, content, has_child)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Address
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_address(self, attrs, indent, content='', has_child=0):
         """Returns information on author.
@@ -535,9 +551,9 @@ class Strict:
         return self.tag('address', attrs, indent, content)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Horizontal Rule
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_hr(self, attrs, indent):
         """Returns horizontal rule.
@@ -551,9 +567,9 @@ class Strict:
         return self.tag('hr', attrs, indent)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Preformatted text
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     
     def tag_pre(self, attrs, indent, content):
         """Returns preformatted text.
@@ -570,9 +586,9 @@ class Strict:
         return self.tag('pre', attrs, indent, content)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Block-line Quotes
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     
     def tag_blockquote(self, attrs, indent, content):
         """Returns block-line quote.
@@ -587,9 +603,9 @@ class Strict:
         return self.tag('blockquote', attrs, indent, content)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Inserted/Deleted Text
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_ins(self, attrs, indent, content):
         """Returns inserted text.
@@ -627,9 +643,9 @@ class Strict:
         return self.tag('ins', attrs, indent, content)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # The Anchor Element
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_a(self, attrs, indent, content='', has_child=0):
         """Returns the anchor element.
@@ -654,9 +670,9 @@ class Strict:
         return self.tag('a', attrs, indent, content, has_child)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Inline Elements
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_span(self, attrs, indent, content, has_child=0):
         """Returns span definition.
@@ -881,9 +897,9 @@ class Strict:
         return self.tag('small', attrs, indent, content, has_child)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Object
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_object(self, attrs, indent, content, has_child=1):
         """Returns object definition.
@@ -938,9 +954,9 @@ class Strict:
         return self.tag('object', attrs, indent)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Images
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_img(self, attrs, indent):
         """Returns image definition.
@@ -972,9 +988,9 @@ class Strict:
         return self.tag('img', attrs, indent)
         
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Client-side image maps
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_map(self, attrs, indent, content, has_child=1):
         """Returns map definition.
@@ -1018,9 +1034,9 @@ class Strict:
         return self.tag('area', attrs, indent)
 
 
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Forms
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
 
     def tag_form(self, attrs, indent, content, has_child=1):
         """Returns form definition.
