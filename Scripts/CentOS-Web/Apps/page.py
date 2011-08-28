@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #
-# Apps.xhtml -- This module encapsulates XHTML output code needed by
-# web applications.
+# Apps.page -- This module encapsulates the page layout of web
+# applications.
 #
 # Copyright (C) 2011 The CentOS Project
 #
@@ -27,7 +27,9 @@ import os
 import cgi
 import cgitb; cgitb.enable()
 
-class Page:
+from Apps import xhtml
+
+class Layout(xhtml.Strict):
     """Xhtml page modeling."""
 
 
@@ -42,81 +44,7 @@ class Page:
         self.language = 'en'
 
 
-    def tag(self, name, attrs, indent=[8,1], content="", has_child=0):
-        """Returns XHTML tag definition.
-
-        Arguments:
-
-        name: The XHTML tag's name. Notice that this function doesn't
-            verify nor validate the XHTML tags you provide. It is up
-            to you write them correctly considering the XHTML standard
-            definition.
-
-        attrs: The XHTML tag's attribute. Notice that this function
-            doesn't verify the attributes assignation to tags. You
-            need to know what attributes are considered valid to the
-            tag you are creating in order to build a well-formed XHTML
-            document. Such verification can be achived inside firefox
-            browser through the `firebug' plugin.
-
-        indent: The XHTML tag's indentation (Optional). This argument
-            is a list of two numerical values. The first value in the
-            list represents the amount of horizontal spaces between
-            the beginning of line and the opening tag.  The second
-            value in the list represents the amount of vertical spaces
-            (new lines) between tags.
-
-        content: The XHTML tag's content (Optional). This argument
-            provides the information the tag encloses. When this
-            argument is empty, tag is rendered without content.
-
-        has_child: The XHTML tag has a child? (Optional). This
-            argument is specifies whether a tag has another tag inside
-            (1) or not (0).  When a tag has not a child tag,
-            indentation is applied between the tag content and the
-            closing tag provoking an unecessary spaces to be shown.
-            Such kind of problems are prevented by setting this option
-            to `0'. On the other hand, when a tag has a child tag
-            inside, using the value `1' will keep the closing tag
-            indentation aligned with the opening one.
-
-        This function encapsulates the construction of XHTML tags.
-        Use this function wherever you need to create XHTML tags. It
-        helps to standardize tag constructions and their final output
-        and. This function provides a consistent way of producing
-        output for XHTML documents.
-        """
-        if indent[0] > 0:
-            h_indent = ' '*indent[0]
-        else:
-            h_indent = ''
-
-        if indent[1] > 0: 
-            v_indent = "\n"*indent[1]
-        else:
-            v_indent = ''
-    
-        output = v_indent + h_indent + '<' + str(name)
-        if len(attrs) > 0:
-            attr_names = attrs.keys()
-            attr_names.sort()
-            for attr_name in attr_names:
-                output += ' ' + str(attr_name) + '="' + str(attrs[attr_name]) + '"'
-        if content == '':
-            output += ' />'
-        else:
-            output += '>'
-            output += str(content)
-            if has_child == 1:
-                output += h_indent + '</' + str(name) + '>'
-            else:
-                output += '</' + str(name) + '>'
-        output += v_indent
-
-        return output
-
-
-    def page_preamble(self):
+    def preamble(self):
         """Return XHTML code of page preamble.
 
         The page preamble sets the document type definition required
@@ -131,7 +59,7 @@ class Page:
         return output
 
 
-    def page_logo(self):
+    def logo(self):
         """Returns XHTML code of page logo.
 
         The page logo is displayed on the top-left corner of the page.
@@ -146,10 +74,10 @@ class Page:
         attrs.append({'title': 'Community Enterprise Operating System', 'href': '/centos-web/'})
         attrs.append({'src': '/centos-web-pub/Images/centos-logo.png', 'alt': 'CentOS'})
 
-        return self.tag('div', attrs[0], [8,1], self.tag('a', attrs[1], [12,1], self.tag('img', attrs[2], [0,0], '', 0), 0), 1)
+        return self.tag_div(attrs[0], [8,1], self.tag_a(attrs[1], [12,1], self.tag_img(attrs[2], [0,0]), 0), 1)
 
 
-    def page_ads_google(self):
+    def ads_google(self):
         """Returns XHTML code of Google advertisement (468x60 pixels)."""
         output = """
         <div class="ads-google">
@@ -178,7 +106,7 @@ class Page:
         return output
 
 
-    def page_navibar_top(self):
+    def navibar_top(self):
         """Returns XHTML code of top-level navigation bar. 
     
         The top-level navigation bar organizes links to the web
@@ -200,15 +128,18 @@ class Page:
         focus = self.name
 
         for i in range(len(names)):
-            attrs.append({'href': '/centos-web/?app=' + names[i].lower()})
+            if names[i].lower() == 'home':
+                attrs.append({'href': '/centos-web/'})
+            else:
+                attrs.append({'href': '/centos-web/?app=' + names[i].lower()})
 
-        tabs = self.page_navibar_tabs(names, attrs, focus)
-        tabs += self.page_line()
+        tabs = self.navibar_tabs(names, attrs, focus)
+        tabs += self.separator()
 
         return tabs
 
 
-    def page_navibar_tabs(self, names, attrs, focus=''):
+    def navibar_tabs(self, names, attrs, focus=''):
         """Returns navigation tabs.
 
         Arguments:
@@ -229,79 +160,84 @@ class Page:
         navibar_tabs = ''
 
         for i in range(len(names)):
-            content = self.tag('span', '', [0,0], str(names[i]))
-            content = self.tag('a', attrs[i], [16,1], content)
+            content = self.tag_span('', [0,0], str(names[i]))
+            content = self.tag_a(attrs[i], [16,1], content)
             if str(names[i]).lower() == focus.lower():
-                content = self.tag('span', {'class': 'current'}, [12,1], content, 1)
+                content = self.tag_span({'class': 'current'}, [12,1], content, 1)
             else:
-                content = self.tag('span', '', [12,1], content, 1)
+                content = self.tag_span('', [12,1], content, 1)
             navibar_tabs += content
 
-        return self.tag('div', {'class': 'tabs'}, [8,1], navibar_tabs, 1)
+        return self.tag_div({'class': 'tabs'}, [8,1], navibar_tabs, 1)
 
 
-    def page_lastreleases(self, names=['6.0'], attrs=[{'href': '/centos-web/?p=releases&id=6.0'}]):
+    def lastreleases(self, names=['6.0'], attrs=[{'href': '/centos-web/?p=releases&id=6.0'}]):
         """Returns last-release information and related RSS link."""
         releases = ''
 
-        title = self.tag('a', {'href': '/centos-web/?p=releases'}, [0,0], 'Last Releases') + ':'
-        title = self.tag('span', {'class': 'title'}, [16,1], title)
+        title = self.tag_a({'href': '/centos-web/?p=releases'}, [0,0], 'Last Releases') + ':'
+        title = self.tag_span({'class': 'title'}, [16,1], title)
 
         for i in range(len(names)):
-            link = self.tag('a', attrs[i], [20,1], names[i])
+            link = self.tag_a(attrs[i], [20,1], names[i])
             if i == len(names) - 1:
-                span = self.tag('span', {'class': 'last release'}, [16,1], link, 1) 
+                span = self.tag_span({'class': 'last release'}, [16,1], link, 1) 
             else:
-                span = self.tag('span', {'class': 'release'}, [16,1], link, 1) 
+                span = self.tag_span({'class': 'release'}, [16,1], link, 1) 
             releases += span
-        releases = self.tag('div', {'class': 'left'}, [12,1], title + releases, 1)
+        releases = self.tag_div({'class': 'left'}, [12,1], title + releases, 1)
 
-        rsslink = self.tag('span', '', [0,0], 'RSS')
-        rsslink = self.tag('a', {'href': '/centos-web/?print=rss', 'title': 'RSS'}, [20,1], rsslink)
-        rsslink = self.tag('span', {'class': 'rss'}, [16,1], rsslink, 1)
-        rsslink = self.tag('div', {'class': 'right'}, [12, 1], rsslink, 1)
+        rsslink = self.tag_span('', [0,0], 'RSS')
+        rsslink = self.tag_a({'href': '/centos-web/?print=rss', 'title': 'RSS'}, [20,1], rsslink)
+        rsslink = self.tag_span({'class': 'rss'}, [16,1], rsslink, 1)
+        rsslink = self.tag_div({'class': 'right'}, [12, 1], rsslink, 1)
 
-        return self.tag('div', {'id': 'last-releases'}, [8,1], releases + rsslink, 1)
+        return self.tag_div({'id': 'last-releases'}, [8,1], releases + rsslink, 1)
 
 
-    def page_appslinks(self):
+    def appslinks(self):
         """Returns application related links."""
-        appslinks = self.page_userlinks()
-        return self.tag('div', {'id': 'appslinks'}, [8,1], appslinks, 1)
+        appslinks = self.userlinks()
+        return self.tag_div({'id': 'appslinks'}, [8,1], appslinks, 1)
 
 
-    def page_lastvisit(self):
-        last_visit = self.tag('a', {'href': '/centos-web/?p=lastvisit'}, [0,0], 'Your last visit was at')
-        last_visit = self.tag('span', {'class': 'title'}, [16, 1], last_visit)
-        last_visit += self.tag('span', {'class': 'datetime'}, [16, 1], '...')
-        return self.tag('div', {'class': 'lastvisit'}, [12, 1], last_visit, 1)
+    def lastvisit(self):
+        last_visit = self.tag_a({'href': '/centos-web/?p=lastvisit'}, [0,0], 'Your last visit was at')
+        last_visit = self.tag_span({'class': 'title'}, [16, 1], last_visit)
+        last_visit += self.tag_span({'class': 'datetime'}, [16, 1], '...')
+        return self.tag_div({'class': 'lastvisit'}, [12, 1], last_visit, 1)
 
 
-    def page_session(self):
+    def session(self):
         """Returns information related to user's session."""
         names = []
         attrs = []
         session = ''
 
+        if 'app' in self.qs:
+            app = 'app=' + self.qs['app'][0].lower() + '&'
+        else:
+            app = ''
+
         names.append('Lost your password?')
-        attrs.append({'href': '/centos-web/?p=lostpwd'})
+        attrs.append({'href': '/centos-web/?' + app + 'p=lostpwd'})
         names.append('Register')
-        attrs.append({'href': '/centos-web/?p=register'})
+        attrs.append({'href': '/centos-web/?' + app + 'p=register'})
         names.append('Login')
-        attrs.append({'href': '/centos-web/?p=login'})
+        attrs.append({'href': '/centos-web/?' + app + 'p=login'})
 
         for i in range(len(names)):
-            output = self.tag('a', attrs[i], [20,1], str(names[i]), 0)
+            output = self.tag_a(attrs[i], [20,1], str(names[i]), 0)
             if i == len(names) - 1:
-                output = self.tag('span', {'class': 'last'}, [16,1], output, 1)
+                output = self.tag_span({'class': 'last'}, [16,1], output, 1)
             else:
-                output = self.tag('span', '', [16,1], output, 1)
+                output = self.tag_span('', [16,1], output, 1)
             session += output
 
-        return self.tag('div', {'class': 'session'}, [12,1], session, 1)
+        return self.tag_div({'class': 'session'}, [12,1], session, 1)
 
 
-    def page_trail(self, names=['None'], attrs=[{'href': '/centos-web/'}]):
+    def trail(self, names=['None'], attrs=[{'href': '/centos-web/'}]):
         """Returns page trails (a.k.a. breadcrumbs).
     
         The page breadcrumbs record the last pages visited inside the
@@ -316,15 +252,15 @@ class Page:
 
         for i in range(len(names)):
             if i == len(names) - 1:
-                content = self.tag('span', {'class':'last'}, [16,1], self.tag('a', attrs[i], [20, 1], names[i]), 1)
+                content = self.tag_span({'class':'last'}, [16,1], self.tag_a(attrs[i], [20, 1], names[i]), 1)
             else:
-                content = self.tag('span', '', [16,1], self.tag('a', attrs[i], [20, 1], names[i], 0), 1)
+                content = self.tag_span('', [16,1], self.tag_a(attrs[i], [20, 1], names[i], 0), 1)
             links += content
 
-        return self.tag('div', {'class': 'trail'}, [12,1], links, 1)
+        return self.tag_div({'class': 'trail'}, [12,1], links, 1)
 
 
-    def page_userlinks(self):
+    def userlinks(self):
         """Returns user links.
 
         Arguments:
@@ -340,59 +276,59 @@ class Page:
         bar, just over the application navigation tabs.
 
         """
-        userlinks = self.page_lastvisit()
-        userlinks += self.page_session()
-        userlinks += self.page_trail()
+        userlinks = self.lastvisit()
+        userlinks += self.session()
+        userlinks += self.trail()
 
-        return self.tag('div', {'class': 'userlinks'}, [8,1], userlinks, 1)
+        return self.tag_div({'class': 'userlinks'}, [8,1], userlinks, 1)
 
 
-    def page_navibar_app(self, names=['Welcome'], attrs=[{'href':'/centos-web/?p=welcome'}], focus='Welcome'):
+    def navibar_app(self, names=['Welcome'], attrs=[{'href':'/centos-web/?p=welcome'}], focus='Welcome'):
         """Returns application's navigation bar."""
 
-        navibar_app = self.page_navibar_tabs(names, attrs, focus)
-        navibar_app += self.page_line({'class': 'page-line white'}, [8,1])
+        navibar_app = self.navibar_tabs(names, attrs, focus)
+        navibar_app += self.separator({'class': 'page-line white'}, [8,1])
 
         return navibar_app
  
 
-    def page_line(self, attrs={'class': 'page-line'}, indent=[8,1]):
+    def separator(self, attrs={'class': 'page-line'}, indent=[16,1]):
         """Returns a division line."""
-        page_line = self.tag('hr', {'style': 'display:none;'}, [0,0])
-        page_line = self.tag('div', attrs, indent, page_line)
+        line = self.tag_hr({'style': 'display:none;'}, [0,0])
+        line = self.tag_div(attrs, indent, line)
 
-        return page_line
+        return line
 
 
-    def page_license(self):
+    def license(self):
         """Retruns link to page license."""
         license = 'Creative Commons Attribution-Share Alike 3.0 Unported License'
-        license = self.tag('a', {'href': 'http://creativecommons.org/licenses/by-sa/3.0/'}, [0,0], license) + '.'
+        license = self.tag_a({'href': 'http://creativecommons.org/licenses/by-sa/3.0/'}, [0,0], license) + '.'
 
         return license
 
 
-    def page_metadata(self):
+    def metadata(self):
         """Returns page metadata."""
-        metadata = self.tag('meta', {'http-equiv': 'content-type', 'content': 'text/html; charset=UTF-8'}, [4,1])
-        metadata += self.tag('meta', {'http-equiv': 'content-style-type', 'content': 'text/css'}, [4,0])
-        metadata += self.tag('meta', {'http-equiv': 'content-language', 'content': str(self.language)}, [4,1])
-        metadata += self.tag('meta', {'name': 'keywords', 'content': str(self.keywords)}, [4,0])
-        metadata += self.tag('meta', {'name': 'description', 'content': str(self.description)}, [4,1])
-        metadata += self.tag('meta', {'name': 'copyright', 'content': 'Copyright © ' + str(self.copyright)}, [4,0])
-        metadata += self.tag('title', '', [4,1], self.title)
-        metadata += self.tag('link', {'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
-        metadata += self.tag('link', {'href': '/centos-web-pub/Images/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
+        metadata = self.tag_meta({'http-equiv': 'content-type', 'content': 'text/html; charset=UTF-8'}, [4,1])
+        metadata += self.tag_meta({'http-equiv': 'content-style-type', 'content': 'text/css'}, [4,0])
+        metadata += self.tag_meta({'http-equiv': 'content-language', 'content': str(self.language)}, [4,1])
+        metadata += self.tag_meta({'name': 'keywords', 'content': str(self.keywords)}, [4,0])
+        metadata += self.tag_meta({'name': 'description', 'content': str(self.description)}, [4,1])
+        metadata += self.tag_meta({'name': 'copyright', 'content': 'Copyright © ' + str(self.copyright)}, [4,0])
+        metadata += self.tag_title('', [4,1], self.title)
+        metadata += self.tag_link({'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
+        metadata += self.tag_link({'href': '/centos-web-pub/Images/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
 
-        return self.tag('head', '', [0,1], metadata)
+        return self.tag_head('', [0,1], metadata)
 
 
-    def page_content(self, content='Page empty.'):
+    def content(self, content='Empty Page.'):
         """Returns page content."""
         return content
 
 
-    def page_admonition(self, title='Note', subtitle="", content=""):
+    def admonition(self, title='Note', subtitle="", content=""):
         """Returns page admonition.
         
         Arguments:
@@ -426,54 +362,54 @@ class Page:
         
         if title in admonitions:
             attrs = {'class': 'admonition ' + title.lower()}
-            image = self.tag('img', {'src': '/centos-web-pub/Images/' + title.lower() + '.png', 'alt': title}, [0,0])
-            title = self.tag('h3', {'class': 'title'}, [0,0], title + subtitle, 0)
-            output = image + title + content + self.page_line()
+            image = self.tag_img({'src': '/centos-web-pub/Images/' + title.lower() + '.png', 'alt': title}, [16,1])
+            title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 0)
+            output = image + title + content + self.separator()
         else:
             attrs = {'class': 'admonition unknown'}
-            title = self.tag('h3', {'class': 'title'}, [16,1], title + subtitle, 1)
+            title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 1)
             output = title + content
         
-        return self.tag('div', attrs, [12,1], output, 1)
+        return self.tag_div(attrs, [12,1], output, 1)
 
 
-    def page_credits(self):
+    def credits(self):
         """Returns page credits."""
-        copyright = self.tag('p', {'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
-        license = self.tag('p', {'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.page_license()))
-        credits = self.tag('img', {'src': '/centos-web-pub/Images/top.png', 'alt': 'Top'}, [0,0])
-        credits = self.tag('a', {'title': 'Top', 'href': '#top'}, [16,1], credits)
-        credits = self.tag('div', {'class': 'top'}, [12,1], credits, 1)
+        copyright = self.tag_p({'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
+        license = self.tag_p({'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.license()))
+        credits = self.tag_img({'src': '/centos-web-pub/Images/top.png', 'alt': 'Top'}, [0,0])
+        credits = self.tag_a({'title': 'Top', 'href': '#top'}, [16,1], credits)
+        credits = self.tag_div({'class': 'top'}, [12,1], credits, 1)
         credits = str(credits) + str(copyright) + str(license) 
-        credits = self.tag('div', {'class': 'credits'}, [8,1], credits, 1)
+        credits = self.tag_div({'class': 'credits'}, [8,1], credits, 1)
 
         return credits
 
 
     def page(self):
         """Returns page final output."""
-        page_header = self.page_logo()
-        page_header += self.page_ads_google()
-        page_header += self.page_navibar_top()
-        page_header += self.page_lastreleases()
-        page_header += self.page_appslinks()
-        page_header += self.page_navibar_app()
-        page_header = self.tag('div', {'id': 'page-header'}, [4,1], page_header, 1)
+        header = self.logo()
+        header += self.ads_google()
+        header += self.navibar_top()
+        header += self.lastreleases()
+        header += self.appslinks()
+        header += self.navibar_app()
+        header = self.tag_div({'id': 'page-header'}, [4,1], header, 1)
 
-        page_body = self.page_content()
-        page_body = self.tag('div', {'id':'content'}, [8,1], page_body, 1)
-        page_body = self.tag('div', {'id':'page-body'}, [4,1], page_body, 1)
+        body = self.content()
+        body = self.tag_div({'id':'content'}, [8,1], body, 1)
+        body = self.tag_div({'id':'page-body'}, [4,1], body, 1)
 
-        page_footer = self.tag('div', {'id': 'page-footer'}, [4,1], self.page_credits(), 1)
+        footer = self.tag_div({'id': 'page-footer'}, [4,1], self.credits(), 1)
     
-        top = self.tag('a', {'name':'top'}, [0,1])
-        wrap = self.tag('div', {'id': 'wrap'}, [0,1], page_header + page_body + page_footer, 1)
-        body = self.tag('body', '', [0,1], top + wrap)
+        top = self.tag_a({'name':'top'}, [0,1])
+        wrap = self.tag_div({'id': 'wrap'}, [0,1], header + body + footer, 1)
+        body = self.tag_body('', [0,1], top + wrap)
 
-        html = self.page_preamble()
-        html += self.tag('html', {'xmlns': 'http://www.w3.org/1999/xhtml', 'dir': 'ltr', 
+        html = self.preamble()
+        html += self.tag_html({'xmlns': 'http://www.w3.org/1999/xhtml', 'dir': 'ltr', 
                          'lang': str(self.language), 'xml:lang':
-                         str(self.language)}, [0,1], self.page_metadata() +  body)
+                         str(self.language)}, [0,1], self.metadata() +  body)
 
         return html
 
