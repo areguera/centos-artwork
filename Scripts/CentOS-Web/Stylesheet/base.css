@@ -50,8 +50,7 @@ div#page-body {
 	}
 
 div#page-body div#content {
-    padding: 50px;
-    padding-top: 20px;
+    padding: 20px 50px; 20px;
     background-color: #FFF;
     }
 
@@ -117,7 +116,6 @@ div#page-header div#last-releases {
     clear: both;
     min-height: 35px;
     border-top: 3px solid #FFF;
-    border-bottom: 3px solid #FFF;
     background: #3465A4;
     }
 
@@ -161,6 +159,12 @@ div#page-header div#last-releases div span.release {
 
 div#page-header div#last-releases div span.last {
     border-right: 0px;
+    }
+
+/* Application links
+--------------------------------------------------------------------*/
+div#page-header div#appslinks {
+    border-top: 3px solid #FFF;
     }
 
 /* User related links (e.g., last visit, session info and page trails)
