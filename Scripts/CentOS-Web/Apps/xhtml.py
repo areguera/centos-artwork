@@ -147,7 +147,7 @@ class Strict:
     # Document Type Definition
     # ------------------------------------------------------------------ 
 
-    def preamble(self):
+    def doctype(self):
         """Return document type definition."""
         output = '<?xml version="1.0"?>' + "\n"
         output += '<!DOCTYPE html' + "\n"
