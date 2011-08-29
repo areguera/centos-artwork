@@ -23,7 +23,6 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-import os
 import cgi
 import cgitb; cgitb.enable()
 
@@ -35,7 +34,7 @@ class Layout(xhtml.Strict):
 
     def __init__(self):
         """Initialize page data."""
-        self.qs = cgi.parse_qs(os.environ['QUERY_STRING'])
+        self.qs = cgi.parse()
         self.name = 'Home'
         self.title = 'The CentOS Project'
         self.description = 'Community Enterprise Operating System'
@@ -43,6 +42,23 @@ class Layout(xhtml.Strict):
         self.copyright = '2009-2011 The CentOS Project. All rights reserved.'
         self.language = 'en'
 
+        # Define page header. This is the information displayed
+        # between the page top and the page content.
+        self.header = self.logo()
+        self.header += self.ads_google()
+        self.header += self.navibar_top()
+        self.header += self.lastreleases()
+        self.header += self.appslinks()
+        self.header += self.navibar_app()
+
+        # Define page body. This is the information displayed between
+        # the page header and page footer.
+        self.body = self.content()
+
+        # Define page footer. This is the information displayed
+        # between the page bottom and the page content, the last
+        # information displayed in the page.
+        self.footer = self.credits()
 
     def logo(self):
         """Returns XHTML code of page logo.
@@ -92,20 +108,13 @@ class Layout(xhtml.Strict):
 
 
     def navibar_top(self):
-        """Returns XHTML code of top-level navigation bar. 
+        """Returns applications top-level navigation bar. 
     
         The top-level navigation bar organizes links to the web
         application The CentOS Project makes use of. Links in the
         top-level navigation bar remain always visible, no matter what
-        web application you be visiting.
-
-        Notice that web application differe one another and is not
-        convenient to point them all to this definition. Instead, a
-        specific definition for each web application will be created
-        (based on this definition) in order for them to give the
-        impression of being connected. In this process, the top-level
-        navigation bar is adapted to each web application
-        characteristics and the related tab is set as current.
+        web application you be visiting (e.g., Wiki, Lists, Forums,
+        Projects, Bugs, Docs, Downloads and Sponsors.).
 
         """
         names = ['Home', 'Wiki', 'Lists', 'Forums', 'Projects', 'Bugs', 'Docs', 'Downloads', 'Sponsors']
@@ -308,7 +317,7 @@ class Layout(xhtml.Strict):
         return self.tag_head('', [0,1], metadata)
 
 
-    def content(self, content='Empty Page.'):
+    def content(self, content='Page empty.'):
         """Returns page content."""
         return content
 
@@ -373,32 +382,16 @@ class Layout(xhtml.Strict):
 
     def page(self):
         """Returns page final output."""
-        header = self.logo()
-        header += self.ads_google()
-        header += self.navibar_top()
-        header += self.lastreleases()
-        header += self.appslinks()
-        header += self.navibar_app()
-        header = self.tag_div({'id': 'page-header'}, [4,1], header, 1)
-
-        body = self.content()
-        body = self.tag_div({'id':'content'}, [8,1], body, 1)
-        body = self.tag_div({'id':'page-body'}, [4,1], body, 1)
-
-        footer = self.tag_div({'id': 'page-footer'}, [4,1], self.credits(), 1)
-    
+        header = self.tag_div({'id': 'page-header'}, [4,1], self.header, 1)
         top = self.tag_a({'name':'top'}, [0,1])
+        body = self.tag_div({'id':'content'}, [8,1], self.body, 1)
+        body = self.tag_div({'id':'page-body'}, [4,1], body, 1)
+        footer = self.tag_div({'id': 'page-footer'}, [4,1], self.credits(), 1)
         wrap = self.tag_div({'id': 'wrap'}, [0,1], header + body + footer, 1)
         body = self.tag_body('', [0,1], top + wrap)
-
-        html = self.preamble()
+        html = self.doctype()
         html += self.tag_html({'xmlns': 'http://www.w3.org/1999/xhtml', 'dir': 'ltr', 
                          'lang': str(self.language), 'xml:lang':
                          str(self.language)}, [0,1], self.metadata() +  body)
 
         return html
-
-
-    def main(self):
-        """The Xhtml code of a complete page."""
-        print self.page()
