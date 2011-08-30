@@ -49,6 +49,8 @@ def main():
         from Apps.Home import page
     elif app == 'sponsors':
         from Apps.Sponsors import page
+    else:
+        from Apps.Unknown import page
     
     print 'Content-type: text/html' + "\n"
     print page.main()
