@@ -6,7 +6,7 @@ from Apps import page
 app = page.Layout()
 
 
-def page_navibar_tabs():
+def page_navibar():
     """Returns application's main pages.
     
     The application's main pages are organized as tabs in the
@@ -28,7 +28,7 @@ def page_navibar_tabs():
     else:
         focus = names[0].lower()
 
-    return app.navibar_app(names, attrs, focus)
+    return app.page_navibar(names, attrs, focus)
 
 
 def page_content():
@@ -52,7 +52,7 @@ def page_content():
     else:
         output = app.tag_p('', [12, 1], 'Page empty.')
 
-    return app.content(output)
+    return output
 
 
 def main():
@@ -71,10 +71,10 @@ def main():
     # Define page header. This is the information displayed
     # between the page top and the page content.
     app.header = app.logo()
-    app.header += app.ads_google()
-    app.header += app.navibar_top()
-    app.header += app.appslinks()
-    app.header += page_navibar_tabs()
+    app.header += app.google()
+    app.header += app.navibar()
+    app.header += app.page_links()
+    app.header += page_navibar()
 
     # Define page body. This is the information displayed between the
     # page header and page footer.
