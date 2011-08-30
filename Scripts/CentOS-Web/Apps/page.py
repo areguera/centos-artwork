@@ -165,7 +165,7 @@ class Layout(xhtml.Strict):
         return self.tag_div({'class': 'tabs'}, [8,1], navibar_tabs, 1)
 
 
-    def releases(self, names=['6.0'], attrs=[{'href': '/centos-web/?p=releases&id=6.0'}]):
+    def releases(self, names=['6.0'], attrs=[{'href': '/centos-web/p=releases&id=6.0'}]):
         """Returns The CentOS Distribution last releases.
 
         This method introduces the `releases' method by providing
@@ -196,7 +196,7 @@ class Layout(xhtml.Strict):
         releases = self.tag_div({'class': 'left'}, [12,1], title + releases, 1)
 
         rsslink = self.tag_span('', [0,0], 'RSS')
-        rsslink = self.tag_a({'href': '/centos-web/?print=rss', 'title': 'RSS'}, [20,1], rsslink)
+        rsslink = self.tag_a({'href': '/centos-web/' + self.qs_args({'rss':'releases'}), 'title': 'RSS'}, [20,1], rsslink)
         rsslink = self.tag_span({'class': 'rss'}, [16,1], rsslink, 1)
         rsslink = self.tag_div({'class': 'right'}, [12, 1], rsslink, 1)
 
@@ -228,17 +228,12 @@ class Layout(xhtml.Strict):
         attrs = []
         session = ''
 
-        if 'app' in self.qs:
-            app = 'app=' + self.qs['app'][0].lower() + '&'
-        else:
-            app = ''
-
         names.append('Lost your password?')
-        attrs.append({'href': '/centos-web/?' + app + 'p=lostpwd'})
+        attrs.append({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'lostpwd'})})
         names.append('Register')
-        attrs.append({'href': '/centos-web/?' + app + 'p=register'})
+        attrs.append({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'register'})})
         names.append('Login')
-        attrs.append({'href': '/centos-web/?' + app + 'p=login'})
+        attrs.append({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'login'})})
 
         for i in range(len(names)):
             output = self.tag_a(attrs[i], [20,1], str(names[i]), 0)
@@ -371,7 +366,9 @@ class Layout(xhtml.Strict):
 
         """
         output = ''
-        for key in names.keys():
+        names_keys = names.keys()
+        names_keys.sort()
+        for key in names_keys:
             if names[key] == '':
                 if key in self.qs:
                     names[key] = self.qs[key][0]
@@ -386,14 +383,18 @@ class Layout(xhtml.Strict):
         return output
 
 
-    def form_search_content(self):
-        """Returns content search form."""
+    def form_search_content(self, results=''):
+        """Returns search form.
+        
+        result: A string describing last results.
 
+        """
         action = self.tag_input({'type':'text', 'value':'', 'size':'20'}, [24,1])
         action += self.tag_input({'type':'submit', 'value':'Search'}, [24,1])
-        action = self.tag_span('', [20,1], action, 1)
-        result = self.tag_span({'class':'last'}, [20,1], 'No result found.')
-        output = self.tag_div({'class':'actions'}, [16,1], action + result, 1)
+        action = self.tag_span({'class':'actions'}, [20,1], action, 1)
+        if results != '':
+            results = self.tag_span({'class':'results'}, [20,1], results)
+        output = self.tag_div({}, [16,1], action + results, 1)
         return self.tag_form({'action':'/centos-web/' + self.qs_args({'app':'', 'p':''}), 'method':'post', 'title':'Search'}, [12,1], output, 1)
         
 
@@ -453,7 +454,7 @@ class Layout(xhtml.Strict):
         list view, but in the detailed view of content.
 
         """
-        output = self.form_search_content()
+        output = self.form_search_content('3 articles found.')
         output += str(cgi.parse())
         return output
 
