@@ -163,7 +163,8 @@ div#page-header div#last-releases div span.last {
 
 /* Application links
 --------------------------------------------------------------------*/
-div#page-header div#appslinks {
+
+div#page-header div#pagelinks {
     border-top: 3px solid #FFF;
     }
 
@@ -181,21 +182,21 @@ div#page-header div.userlinks a {
     color: #fff;
     }
 
-div#page-header div.userlinks div.lastvisit {
+div#page-header div.userlinks div.logs {
     width: 50%;
     float: left;
     text-align: left;
     }
 
-div#page-header div.userlinks div.lastvisit span {
+div#page-header div.userlinks div.logs span {
     border: none;
     }
 
-div#page-header div.userlinks div.lastvisit span.title {
+div#page-header div.userlinks div.logs span.title {
     color: #FFF;
     }
 
-div#page-header div.userlinks div.lastvisit span.datetime {
+div#page-header div.userlinks div.logs span.datetime {
     font-style: italic;
     color: #FFF;
     }
