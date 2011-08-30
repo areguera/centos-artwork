@@ -72,23 +72,21 @@ div#page-body fieldset span.submit {
 
 /* */
 
-div#page-body div.actions {
-    margin-top: 10px;
-	border-bottom: 1px solid #AAA;
+div#page-body form div {
+    margin-bottom: 10px;
     padding-bottom: 10px;
-
+	border-bottom: 1px solid #AAA;
     }
 
-div#page-body div.actions span {
+div#page-body form div span {
 	display: inline;
 	margin: 0;
 	padding-right: 10px;
-	border-right: 1px dotted;
 	}
 
-div#page-body div.actions span.last {
-	border-right: none;
+div#page-body div span.results {
 	padding-left: 10px;
+    border-left: 1px dotted #AAA;
 	}
 
 /* */
