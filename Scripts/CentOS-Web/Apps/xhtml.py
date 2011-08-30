@@ -1054,7 +1054,7 @@ class Strict:
             >
 
         """
-        return self.form('form', attrs, indent, content, has_child)
+        return self.tag('form', attrs, indent, content, has_child)
 
     
     def tag_label(self, attrs, indent, content, has_child=0):
