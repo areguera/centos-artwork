@@ -76,3 +76,36 @@ div#page-body div#content div.toc dl {
 div#page-body div#content div.toc dl dl {
     margin-left: 2.5em;
     }
+
+/* Content actions links (e.g., categories and archives).
+--------------------------------------------------------------------*/
+
+div#page-body div#content-actions dl {
+    margin-top: 0;
+    margin-left: 0;
+    }
+
+div#page-body div#content-actions dl dt {
+    font-weight: bold;
+    border-bottom: 1px solid #EEE;
+    margin-bottom: 1em;
+    }
+
+div#page-body div#content-actions dl dd {
+    margin-left: 1.5em;
+    }
+
+div#page-body div#content-actions dl dl {
+    margin-left: 1.5em;
+    margin-top: 0px;
+    border-top: none;
+    padding-top: 0;
+    }
+
+div#page-body div#content-actions dl dl.year {
+    margin-bottom: 1em;
+    }
+
+div#page-body div#content-actions dl dl.year dd {
+    margin-left: 0;
+    }
