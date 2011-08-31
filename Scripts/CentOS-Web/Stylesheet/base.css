@@ -49,8 +49,8 @@ div#page-body {
     background-color: #F8F8F8;
 	}
 
-div#page-body div#content {
-    padding: 20px 50px; 20px;
+div#page-body div#content-list {
+    padding: 10px 0px;
     background-color: #FFF;
     }
 
@@ -268,3 +268,66 @@ div#page-header div.userlinks div.trail span.last:after {
 	height: 3px;
 	background-color: #FFF;
 	}
+
+/* Content Listing - One column
+--------------------------------------------------------------------*/
+
+div#page-body div#content-list {
+    margin-right: 200px;
+    border-right: 3px #EEE solid;
+    }
+
+div#page-body div#content-actions {
+    float:right;
+    width: 180px;
+    font-size: small;
+    border-left: 3px #EEE solid;
+    padding: 10px;
+    }
+
+div#page-body div#content-list div.search {
+    }
+
+div#page-body div#content-list div.row {
+    padding: 10px 20px;
+    margin-right: 10px;
+    }
+
+div#page-body div#content-list div.dark {
+    background: #F8F8F8;
+    }
+
+div#page-body div#content-list div.light {
+    background: #FFF;
+    }
+
+div#page-body div#content-list .info {
+    margin-top:5px;
+    font-size: small;
+    }
+
+div#page-body div#content-list .title {
+    margin-top: 0;
+    
+    }
+
+div#page-body div#content-list .info span.author {
+    border-right: 1px dotted #AAA;
+    padding-right: 10px;
+    }
+
+div#page-body div#content-list .info span.date {
+    border-right: 1px dotted #AAA;
+    padding-right: 10px;
+    padding-left: 5px;
+    }
+
+div#page-body div#content-list .info span.comments {
+    padding-left: 5px;
+    }
+
+
+div#page-body div#content-list .abstract {
+    margin-bottom: 0;
+    }
+
