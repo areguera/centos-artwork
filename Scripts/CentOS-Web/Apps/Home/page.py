@@ -14,7 +14,7 @@ def page_navibar():
     inside the application.
     
     """
-    names = ['Erratas', 'Articles', 'Events']
+    names = ['Page1', 'Page2', 'Page3']
     attrs = []
 
     for i in names:
@@ -23,7 +23,7 @@ def page_navibar():
     if 'p' in app.qs.keys():
         focus = app.qs['p'][0].lower()
     else:
-        focus = names[0].lower()
+        focus = ''
 
     return app.page_navibar(names, attrs, focus)
 
@@ -38,22 +38,16 @@ def page_content():
     if 'p' in app.qs.keys():
         p = app.qs['p'][0].lower()
     else:
-        p = 'erratas'
+        p = ''
 
-    if p == 'erratas':
-        output = app.tag_h1({'class': 'title'}, [12, 1], 'Erratas' )
-        output += app.tag_p({}, [12, 1], 'This is a paragraph. '*30 )
-        output += app.tag_p({}, [12, 1], 'This is a paragraph in the sense of improvement. '*30 )
-        output += app.tag_h2({'class': 'title'}, [12, 1], 'For A Better OS' )
-        output += app.tag_p({}, [12, 1], 'This is a paragraph. '*30 )
-        output += app.admonition('Caution', '', app.tag_p({}, [16, 1], 'This is a paragraph. '*5))
-        output += app.tag_p({}, [12, 1], 'This is a paragraph. '*30 )
-    elif p == 'articles':
-        output = app.content_list('articles')
-    elif p == 'events':
-        output = app.tag_h1({'class': 'title'}, [12, 1], 'Events' )
-    else:
+    if p == 'page1':
         output = app.tag_p('', [12, 1], 'Page Empty.')
+    elif p == 'page2':
+        output = app.tag_p('', [12, 1], 'Page Empty.')
+    elif p == 'page3':
+        output = app.tag_p({}, [12, 1], 'Page Empty' )
+    else:
+        output = app.content_list_2cols()
 
     return output
 
@@ -72,7 +66,7 @@ def main():
     app.title += ' :: Home'
 
     # Define page header. This is the information displayed
-    # between the page top and the page content.
+    # between the page top and page content.
     app.header = app.logo()
     app.header += app.google()
     app.header += app.navibar()
