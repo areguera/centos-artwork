@@ -60,6 +60,7 @@ class Layout(xhtml.Strict):
         # information displayed in the page.
         self.footer = self.credits()
 
+
     def logo(self):
         """Returns The CentOS Logo.
 
@@ -378,41 +379,39 @@ class Layout(xhtml.Strict):
                 output = '?'
             else:
                 output += '&'
-            output += key + '=' + names[key]
+            output += key + '=' + str(names[key])
 
         return output
 
 
-    def form_search_content(self, results=''):
+    def search(self, size=20):
         """Returns search form.
+
+        The search form redirects the search up to the search page. Is
+        there, in the search page, where the search occurs.
         
-        result: A string describing last results.
+        size: A number discribe how large the search text box is.
 
         """
-        action = self.tag_input({'type':'text', 'value':'', 'size':'20'}, [24,1])
-        action += self.tag_input({'type':'submit', 'value':'Search'}, [24,1])
-        action = self.tag_span({'class':'actions'}, [20,1], action, 1)
-        if results != '':
-            results = self.tag_span({'class':'results'}, [20,1], results)
-        output = self.tag_div({}, [16,1], action + results, 1)
-        return self.tag_form({'action':'/centos-web/' + self.qs_args({'app':'', 'p':''}), 'method':'post', 'title':'Search'}, [12,1], output, 1)
+        input = self.tag_input({'type':'text', 'value':'', 'size':size}, [24,1])
+
+        action = self.tag_dt({}, [20,1], 'Search', 1)
+        action += self.tag_dd({}, [20,1], input)
+        output = self.tag_dl({'class':'search'}, [16,1], action, 1)
+        return self.tag_form({'action':'/centos-web/' + self.qs_args({'app':'', 'p':'search'}), 'method':'post', 'title':'Search'}, [12,1], output, 1)
         
 
-    def content_list(self, category='None.'):
-        """Returns content list.
-        
-        The content list is used to summarize all the information
-        available in a specific application main page. The content
-        list introduces the `pagination' and `searching' (with
-        pagination) modules, so finding content can be achieved
-        easily.
+    def content_row(self, attrs, id, title, email, commit_date, update_date, category, comments, abstract):
+        """Return row of content.
 
-        The content list is organized in articles. Each article is
-        organized in categories and described through the following
-        fields:
+        The row of content is used to build the list of content and is
+        made of the following information:
+
+            attrs: (Required) A dictionary discribing the rows style.
+                This is useful to alternate the row background colors.
 
             id: (Required) A unique numerical value referring the
-                article identification. This is the value used on
+                content identification. This is the value used on
                 administrative tasks like updating and deleting.
         
             title: (Required) A few words phrase describing the
@@ -433,8 +432,12 @@ class Layout(xhtml.Strict):
                 time the author_email updated/revised the article for
                 last time.
 
-            category: (Required) A number refering the category id the
-                author_email wrote the article for.
+            comments: (Required) A number representing the number of
+                comments the content has received since its
+                publication.
+
+            category: (Required) A string refering the category name
+                the author_email wrote the article for.
 
             abstract: (Optional) One or two paragraphs describing the
                 article content. This information is used to build the
@@ -443,20 +446,132 @@ class Layout(xhtml.Strict):
                 page, but the <meta name="description".../> is built
                 using article's first 255 characters.
 
-            keywords: (Optional) A few words describing the content,
-                up to 255 characters. This information is used to
-                build the page metadata information and as source for
-                `searching' module. When this value is not provided
-                the title is prepared and used insted as source of
-                values here.
-
         The article's content itself is not displayed in the content
         list view, but in the detailed view of content.
 
         """
-        output = self.form_search_content('3 articles found.')
-        output += str(cgi.parse())
-        return output
+        email = self.tag_a({'href':'mailto:' + email}, [0,0], email)
+        title = self.tag_a({'href':'/centos-web/' + self.qs_args({'app':'', 'p':'', 'id':id})}, [0,0], title)
+        title = self.tag_h3({'class': 'title'}, [20,1], title, 0)
+        info = self.tag_span({'class':'author'}, [24,1], 'Written by ' + email)
+        if update_date != commit_date:
+            info += self.tag_span({'class':'date'}, [24,1], update_date)
+        else:
+            info += self.tag_span({'class':'date'}, [24,1], commit_date)
+        if comments == 1:
+            comments = self.tag_a({'href': self.qs_args({'app':'', 'p':'details', 'id':id}) + '#comments'}, [0,0], str(comments) + ' comment')
+        elif comments > 1:
+            comments = self.tag_a({'href': self.qs_args({'app':'', 'p':'', 'id':id}) + '#comments'}, [0,0], str(comments) + ' comments')
+        else:
+            comments = 'No comments'
+        info += self.tag_span({'class':'comments'}, [24,1], comments)
+        info = self.tag_div({'class': 'info'}, [20,1], info, 1)
+        abstract = self.tag_p({'class': 'abstract'}, [20,1], abstract)
+
+        return self.tag_div(attrs, [16,1], title + info + abstract, 1)
+
+
+    def content_list(self, category='None.'):
+        """Returns list of content.
+        
+        The list of content is used to explore the content available
+        inside specific pages of specific web applications. The
+        information is displayed through paginated rows of content
+        that can be filtered to reduce the search results based on
+        patterns.  By default, the list of content displays 15 rows,
+        but this value can be changed in user's preferences.
+
+        """
+        output = ''
+        count = 0
+        rows = []
+        rows.append((1, 'Introduction to CentOS Web Environment',
+                    'al@centos.org',
+                    'Tue Aug 30 12:33:11 CDT 2011',
+                    'Tue Aug 30 12:33:11 CDT 2011',
+                    'articles',
+                    0,
+                    'This is the abstrac paragrah of content. '*10))
+        rows.append((2, 'Creating New Applications',
+                    'al@centos.org',
+                    'Tue Aug 30 12:33:11 CDT 2011',
+                    'Tue Aug 30 12:33:11 CDT 2011',
+                    'articles',
+                    1,
+                    'This is the abstrac paragrah of content. '*5))
+        rows.append((3, 'Texinfo Documentation Backend',
+                    'al@centos.org',
+                    'Tue Aug 30 12:33:11 CDT 2011',
+                    'Tue Aug 30 12:33:11 CDT 2011',
+                    'articles',
+                    5,
+                    'This is the abstrac paragrah of content. '*8))
+
+        for row in rows:
+            if count == 0:
+                attrs = {'class': 'dark row'}
+                count += 1
+            else:
+                attrs = {'class': 'light row'}
+                count = 0
+            output += self.content_row(attrs, *row)
+
+        content_list = self.tag_div({'id':'content-list'}, [12,1], output, 1)
+        
+        return content_list
+
+
+    def content_list_2cols(self, category='None'):
+        """Return list of content in two columns.
+        
+        The left column is for listing content and the right column to
+        list related actions (e.g., search, categories, archives,
+        etc.).
+
+        """
+        list = self.content_list()
+
+        actions = self.search(15) + self.categories() + self.archives()
+        actions = self.tag_div({'id':'content-actions'}, [8,1], actions, 1)
+
+        return actions  + list
+
+
+    def categories(self):
+        """Returns list of categories.
+        
+        """
+        categories = ['Articles', 'Erratas', 'Events']
+        dt = self.tag_dt({}, [12,1], 'Categories')
+        dd = ''
+        for id in range(len(categories)):
+            a = self.tag_a({'href': self.qs_args({'app':'', 'p':'categories', 'id':id})}, [16,1], categories[id] + ' (0)') 
+            dd += self.tag_dd({}, [12,1], a, 1)
+
+        return self.tag_dl({},[8,1], dt + dd, 1)
+
+
+    def archives(self):
+        """Returns archives."""
+        archives = {}
+        archives['2011'] = ['January', 'February', 'March', 'April', 'May']
+        archives['2010'] = ['January', 'February']
+
+        dt = self.tag_dt({}, [12,1], 'Archives')
+        year_dl = ''
+        year_dd = ''
+
+        for key in archives.keys():
+            year_dt = self.tag_dt({},[12,1], key, 1)
+            for id in range(len(archives[key])):
+                a = self.tag_a({'href': self.qs_args({'app':'',
+                'p':'archives', 'year': key, 'month': id + 1})},
+                [16,1], archives[key][id] + ' (0)')
+                year_dd += self.tag_dd({}, [12,1], a)
+            year_dl += self.tag_dl({'class':'year'}, [12,1], year_dt + year_dd, 1)
+            year_dd = ''
+
+        return self.tag_dl({},[8,1], dt + year_dl, 1)
 
 
     def page_top(self):
@@ -465,22 +580,34 @@ class Layout(xhtml.Strict):
 
 
     def page_header(self):
-        """Returns page header."""
+        """Returns page header.
+        
+        The page_header is common to all application modules and 
+        """
         return self.tag_div({'id': 'page-header'}, [4,1], self.header, 1)
 
 
-    def page_content(self):
-        """Returns page content."""
-        return self.tag_div({'id':'content'}, [8,1], self.body, 1)
-
-
     def page_body(self):
-        """Returns page body."""
-        return self.tag_div({'id':'page-body'}, [4,1], self.page_content(), 1)
+        """Returns page body.
+        
+        The page_body is specific to each application module and is
+        there where it must be constructed. The construction itself
+        takes place through the page_content() function which does
+        a return through an instantiated `content_' prefixed method.
+        The `content_' prefixed method used depends on the kind of
+        content you want to print out (e.g., `content_list()' for a
+        content list, `content_detail()' for a detailed view of
+        content, etc.). Later, the `body' variable instantiated
+        from this class is reset in the `main()' function with the value
+        returned from `page_content()' so the desired content layout
+        can be printed out. 
+        
+        """
+        return self.tag_div({'id':'page-body'}, [4,1], self.body, 1)
 
 
     def page_links(self):
-        """Returns application-specific links."""
+        """Returns page links."""
         page_links = self.user_links()
         return self.tag_div({'id': 'pagelinks'}, [8,1], page_links, 1)
 
