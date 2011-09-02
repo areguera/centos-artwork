@@ -20,8 +20,8 @@ def page_navibar():
     for i in names:
         attrs.append({'href': '/centos-web/?p=' + i.lower()})
 
-    if 'p' in app.qs.keys():
-        focus = app.qs['p'][0].lower()
+    if 'p' in page.qs.keys():
+        focus = page.qs['p'][0].lower()
     else:
         focus = ''
 
@@ -35,8 +35,8 @@ def page_content():
     from the value of `p' variable.
     
     """
-    if 'p' in app.qs.keys():
-        p = app.qs['p'][0].lower()
+    if 'p' in page.qs.keys():
+        p = page.qs['p'][0].lower()
     else:
         p = ''
 
@@ -70,7 +70,7 @@ def main():
     # Define page header. This is the information displayed
     # between the page top and page content.
     app.header = app.logo()
-    app.header += app.google()
+    app.header += app.google_ad_example()
     app.header += app.navibar()
     app.header += app.releases()
     app.header += app.page_links()
