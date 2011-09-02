@@ -46,8 +46,10 @@ def page_content():
         output = app.tag_p('', [12, 1], 'Page Empty.')
     elif p == 'page3':
         output = app.tag_p({}, [12, 1], 'Page Empty' )
+    elif p == 'entry':
+        output = app.content_details()
     else:
-        output = app.content_list_2cols()
+        output = app.content_list()
 
     return output
 
