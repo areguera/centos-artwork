@@ -32,7 +32,7 @@ div#page-footer {
 /* Header
 --------------------------------------------------------------------*/
 div#page-header {
-	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
+	background: #204C8D url("https://projects.centos.org/centos-web-pub/h1-bg.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
@@ -63,7 +63,7 @@ div#page-body div#content-list {
 --------------------------------------------------------------------*/
 
 div#page-footer {
-	background: #204C8D url("https://projects.centos.org/centos-web-pub/Images/h1-bg.png") 0 0 repeat;
+	background: #204C8D url("https://projects.centos.org/centos-web-pub/h1-bg.png") 0 0 repeat;
 	}
 
 div#page-footer div.credits {
@@ -98,12 +98,12 @@ div#page-header div#logo img {
 /* Google advertisement (468x60px)
 --------------------------------------------------------------------*/
 
-div#page-header div.ads-google {
+div#page-header div.google-ad {
     float: right;
     margin: 5px;
     }
 
-div#page-header div.ads-google img {
+div#page-header div.google-ad img {
     border: none;
     }
 
@@ -271,7 +271,7 @@ div#page-header div.userlinks div.trail span.last:after {
 --------------------------------------------------------------------*/
 
 div#page-body .info {
-    margin-top: 10px;
+    margin-top: 5px;
     }
 
 div#page-body .info span {
@@ -364,5 +364,13 @@ div#page-body div#content-list .pagination span.next {
 
 div#page-body div#content-details {
     padding: 30px 10% 30px 10%;
+    background: #FFF;
+    }
+
+/* Content Unkown - Not page found.
+--------------------------------------------------------------------*/
+
+div#page-body div#content-unknown {
+    padding: 0 15% 0 15%;
     background: #FFF;
     }
