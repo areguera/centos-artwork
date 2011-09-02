@@ -1,14 +1,9 @@
-#!/usr/bin/python
-#
-# Apps.page -- This module encapsulates the page layout of web
-# applications.
-#
 # Copyright (C) 2011 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,9 +14,126 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
+# ------------------------------------------------------------------
 # $Id$
-# ----------------------------------------------------------------------
+# ------------------------------------------------------------------
+"""This module provides support to pages construction.
+
+To this module, a page is an XHTML document consisting of several
+independent components that, when put together, provide organization
+to content. Each of these components is set as a method of Layout
+class that can be instantiated later from application specific modules.
+
+When you create a new application package, you need to create a page
+module for it and instantiate the Layout class provided inside it.
+Later, the following functions must be created: page_content(),
+page_navibar() and main(). These functions are used to define the
+content of your application and its navigation, as well. Both
+application content and application navigation are logically organized
+using variables passed through the URL.
+
+Application
+===========
+
+URL variable: app
+
+This variable contains the application id. It is a unique numerical
+value that starts on 0 and increments one for each new application
+that might be added. The application identified by number 0 is the one
+used as default when no other application is provided.  The
+application identified by number 0 is added to database the first time
+it is created as part of the initial configuration process.
+
+Application is the highest level of organization inside
+`centos-web.cgi' script. Inside applications, it is defined pages and
+contents. In other words, both pages and contents are specific to
+applications.
+
+Pages
+=====
+
+URL variable: page
+
+This variable contains the page id. It is a unique numerical value
+that starts on 0 and increments in one for each new page added to the
+application. In contrast to applications, the page identified by
+number 0 is not used as default page when no other page is provided.
+This configuration is specific to each application and can be
+customized inside each application individually. Generally, when a
+page variable isn't passed through the URL, the application module
+uses the `content_list()' method to display a list of all
+related contents while links to pages are displayed in the related
+navigation bar in order for users to access them.  The unique
+numerical value of pages is specific to each application, so there is
+one page 0 for each application available. No page is added to
+database the first time the database is created as part of the initial
+configuration process.
+
+Pages contain similar information to that described by contents with
+few exceptions. Pages, in contrast to contents, can differentiate the
+page title from the page name. The page title goes in the page content
+itself and describes what the page is about with a phrase. On the
+other hand, the page name is generaly one word describing the page
+content and is used as link on the related application navigation bar.
+When no page name is explicitly provided, the first word of page title
+is used instead.
+    
+Pages are always accessible inside the same application while contents
+aren't.  Pages are permanently visible and linkend from each
+application specific navigation bar.  This kind of pages can be
+managed by editors or administrators and can be marked as `draft' to
+put it on a special state where it is possible for editors and authors
+to work on it, but impossible for others to read it until the page be
+marked as `published' by either the page author or any members of
+editor's or administrator's groups.
+
+Pages can be converted to contents and the oposite. When convertion
+occurs, unused information looses its meaning and is kept for
+informative purpose, specially in situations when it might be needed
+to realize a convertion back into the former state. Notice that in
+order to realize such a backward and forward convertion it is required
+that both pages and entires share the same definition structure.  In
+fact, that be the same thing, but able to differentiate themselves
+either as page or entry (e.g., through `type' field.).
+
+Pages content is under version controlled. When a page (or entry) is
+changed, a verification is performed to determine whether the
+information entered in edition matches the last record in the page
+history table. When both the information coming from edition and the
+last record in the page history table are the same (e.g., no change
+happens) the edition action is cancelled and a message is printed out
+to notify the action.  Otherwise, when the information entered in
+edition differs from the last record in the page history table, the
+information comming from edition passes to be the last record in the
+page history table.  In case, a page be reverted to a revision
+different to that one being currently the active page, the reverted
+revision becomes the active page (e.g., by changing a `status' field
+from `false' to `true' in the history table).
+
+Categories
+==========
+
+Categories exists to organize contents. When an entry is created it is
+automatically linked to a category. Categories are managed by
+administrators and editors only. Categories can be nested one another
+and provide another way of finding information inside the web
+environment.  Categories are specific to each web application, just as
+contents and pages are. The `Unknown' category is created when the
+categories table is created for first time, as part of the initial
+configuration process so if no explicit category assignation is set by
+the user, a default value (the `Unknown' category in this case) is
+used to satisfy the connection between contents and categories.
+
+Referential integrity
+=====================
+
+Referential integrity is not handle in the logic layer provided by
+this module, but set inside the database system used to store the
+information handled by this module. The most we do about it here, is
+to display a confirmation message before committing such actions, so
+you can be aware of them.
+
+"""
 
 import cgi
 import cgitb; cgitb.enable()
@@ -29,7 +141,7 @@ import cgitb; cgitb.enable()
 from Apps import xhtml
 
 class Layout(xhtml.Strict):
-    """Xhtml page modeling."""
+    """Page modeling."""
 
 
     def __init__(self):
@@ -155,13 +267,13 @@ class Layout(xhtml.Strict):
         navibar_tabs = ''
 
         for i in range(len(names)):
-            content = self.tag_span('', [0,0], str(names[i]))
-            content = self.tag_a(attrs[i], [16,1], content)
+            output = self.tag_span('', [0,0], str(names[i]))
+            output = self.tag_a(attrs[i], [16,1], output)
             if str(names[i]).lower() == focus.lower():
-                content = self.tag_span({'class': 'current'}, [12,1], content, 1)
+                output = self.tag_span({'class': 'current'}, [12,1], output, 1)
             else:
-                content = self.tag_span('', [12,1], content, 1)
-            navibar_tabs += content
+                output = self.tag_span('', [12,1], output, 1)
+            navibar_tabs += output
 
         return self.tag_div({'class': 'tabs'}, [8,1], navibar_tabs, 1)
 
@@ -197,7 +309,7 @@ class Layout(xhtml.Strict):
         releases = self.tag_div({'class': 'left'}, [12,1], title + releases, 1)
 
         rsslink = self.tag_span('', [0,0], 'RSS')
-        rsslink = self.tag_a({'href': '/centos-web/' + self.qs_args({'rss':'releases'}), 'title': 'RSS'}, [20,1], rsslink)
+        rsslink = self.tag_a({'href': self.qs_args({'rss':'releases'}), 'title': 'RSS'}, [20,1], rsslink)
         rsslink = self.tag_span({'class': 'rss'}, [16,1], rsslink, 1)
         rsslink = self.tag_div({'class': 'right'}, [12, 1], rsslink, 1)
 
@@ -213,7 +325,7 @@ class Layout(xhtml.Strict):
         login.
 
         """
-        last_visit = self.tag_a({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'logs'})}, [0,0], 'Logs')
+        last_visit = self.tag_a({'href': self.qs_args({'app':'', 'p':'logs'})}, [0,0], 'Logs')
         return self.tag_div({'class': 'logs'}, [12, 1], last_visit, 1)
 
 
@@ -230,11 +342,11 @@ class Layout(xhtml.Strict):
         session = ''
 
         names.append('Lost your password?')
-        attrs.append({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'lostpwd'})})
+        attrs.append({'href': self.qs_args({'app':'', 'p':'lostpwd'})})
         names.append('Register')
-        attrs.append({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'register'})})
+        attrs.append({'href': self.qs_args({'app':'', 'p':'register'})})
         names.append('Login')
-        attrs.append({'href': '/centos-web/' + self.qs_args({'app':'', 'p':'login'})})
+        attrs.append({'href': self.qs_args({'app':'', 'p':'login'})})
 
         for i in range(len(names)):
             output = self.tag_a(attrs[i], [20,1], str(names[i]), 0)
@@ -266,10 +378,10 @@ class Layout(xhtml.Strict):
 
         for i in range(len(names)):
             if i == len(names) - 1:
-                content = self.tag_span({'class':'last'}, [16,1], self.tag_a(attrs[i], [20, 1], names[i]), 1)
+                output = self.tag_span({'class':'last'}, [16,1], self.tag_a(attrs[i], [20, 1], names[i]), 1)
             else:
-                content = self.tag_span('', [16,1], self.tag_a(attrs[i], [20, 1], names[i], 0), 1)
-            links += content
+                output = self.tag_span('', [16,1], self.tag_a(attrs[i], [20, 1], names[i], 0), 1)
+            links += output
 
         return self.tag_div({'class': 'trail'}, [12,1], links, 1)
 
@@ -381,10 +493,10 @@ class Layout(xhtml.Strict):
                 output += '&'
             output += key + '=' + str(names[key])
 
-        return output
+        return '/centos-web/' + output
 
 
-    def search(self, size=20):
+    def searchform(self, size=20):
         """Returns search form.
 
         The search form redirects the search up to the search page. Is
@@ -397,82 +509,134 @@ class Layout(xhtml.Strict):
 
         action = self.tag_dt({}, [20,1], 'Search', 1)
         action += self.tag_dd({}, [20,1], input)
-        output = self.tag_dl({'class':'search'}, [16,1], action, 1)
-        return self.tag_form({'action':'/centos-web/' + self.qs_args({'app':'', 'p':'search'}), 'method':'post', 'title':'Search'}, [12,1], output, 1)
+        action = self.tag_dl({'class':'search'}, [16,1], action, 1)
+
+        return self.tag_form({'action': self.qs_args({'app':'', 'p':'search'}), 
+                              'method':'post', 'title':'Search'},
+                              [12,1], action, 1)
         
 
-    def content_row(self, attrs, id, title, email, commit_date, update_date, category, comments, abstract):
-        """Return row of content.
+    def content_resumen(self, attrs, id, title, user_id, commit_date,
+                        update_date, category_id, comments, abstract):
+        """Returns content resumen.
 
-        The row of content is used to build the list of content and is
-        made of the following information:
+        The content resumen is used to build the list of contents
+        output by `content_list()'. The content resumen pretends to be
+        concise and informative so the user can grab an idea what the
+        content is about. The content resumen is made of the following
+        information:
 
-            attrs: (Required) A dictionary discribing the rows style.
-                This is useful to alternate the row background colors.
+            attrs: A dictionary discribing the rows style.  This is
+                useful to alternate the row background colors.
 
-            id: (Required) A unique numerical value referring the
-                content identification. This is the value used on
+            id: A unique numerical value referring the content
+                identification. This is the value used on
                 administrative tasks like updating and deleting.
         
-            title: (Required) A few words phrase describing the
-                content, up to 255 characters.
+            title: A few words phrase describing the content,
+                up to 255 characters.
             
-            author_email: (Required) A string referring the user email
-                address, up to 255 characters. The user email address
-                is used as id inside The CentOS User LDAP server,
-                where user specific information (e.g., surname,
-                lastname, office, phone, etc.) are stored in. This is
-                the field that connects the user with the content
-                he/she produces.
+            author_id: A string referring the user email address, as
+                specified by RFC2822. The user email address is used
+                as id inside The CentOS User LDAP server, where user
+                specific information (e.g., surname, lastname, office,
+                phone, etc.) are stored in. This is the field that
+                bonds the user with the content he/she produces.
             
-            commit_date: (Required). A string referring the date and
-                time the author_email published the article for time.
+            commit_date: A string referring the timestamp the content
+                arrived to database for time.
 
-            update_date: (Optional) A string representing the date and
-                time the author_email updated/revised the article for
-                last time.
+            update_date: A string representing the timestamp the
+                content was updated/revised for last time.
 
-            comments: (Required) A number representing the number of
-                comments the content has received since its
-                publication.
+            category_id: A number refering the category id the
+                content is attached to.
 
-            category: (Required) A string refering the category name
-                the author_email wrote the article for.
+            abstract: One paragraphs describing the content.  This
+                information is used to build the page metadata
+                information. When this value is not provided no
+                abstract information is displayed in the page, but the
+                <meta name="description".../> is built using article's
+                first 255 characters.
 
-            abstract: (Optional) One or two paragraphs describing the
-                article content. This information is used to build the
-                page metadata information. When this value is not
-                provided no abstract information is displayed in the
-                page, but the <meta name="description".../> is built
-                using article's first 255 characters.
+            comments: A number representing how many comments the
+                content has received since it is in the database.
 
-        The article's content itself is not displayed in the content
-        list view, but in the detailed view of content.
+        The content itself is not displayed in the resumen, but in
+        `content_detailed()'.
 
         """
-        email = self.tag_a({'href':'mailto:' + email}, [0,0], email)
-        title = self.tag_a({'href':'/centos-web/' + self.qs_args({'app':'', 'p':'', 'id':id})}, [0,0], title)
+        title = self.tag_a({'href': self.qs_args({'app':'', 'p':'entry', 'id':id})}, [0,0], title)
         title = self.tag_h3({'class': 'title'}, [20,1], title, 0)
-        info = self.tag_span({'class':'author'}, [24,1], 'Written by ' + email)
-        if update_date != commit_date:
-            info += self.tag_span({'class':'date'}, [24,1], update_date)
+        info = self.content_info(id, user_id, commit_date, update_date, category_id, comments, abstract)
+        return self.tag_div(attrs, [16,1], title + info, 1)
+
+
+    def pagination(self):
+        """Return content pagination."""
+        previous = self.tag_a({'href':''}, [12,1], 'Previous')
+        previous = self.tag_span({'class':'previous'}, [12,1], previous, 1)
+        next = self.tag_a({'href':''}, [12,1], 'Next')
+        next = self.tag_span({'class':'next'}, [12,1], next, 1)
+        return self.tag_div({'class':'pagination'}, [12,1], previous + next + self.separator(), 1)
+
+
+    def content_info(self, content_id, user_id, commit_date, update_date, category_id, comments, abstract):
+        """Return content information.
+
+        The content information provides a reduced view of content so
+        people can make themselves an idea of what the content talks
+        about. The content information displays content's title,
+        author, timestamp, related category, number of comments and an
+        abstract of the whole content.
+
+        """
+        categories = []
+        categories.append('Unknown')
+        categories.append('Erratas')
+        categories.append('Articles')
+        categories.append('Events')
+
+        if category_id <= len(categories):
+            category_name = categories[category_id].capitalize()
         else:
-            info += self.tag_span({'class':'date'}, [24,1], commit_date)
+            category_id = 0
+            category_name = categories[category_id].capitalize()
+
+        category_name = self.tag_a({'href': self.qs_args({'app':'', 'p':'categories', 'id':category_id})}, [0,0], category_name)
+        category_name = self.tag_span({'class':'category'}, [24,1], category_name) 
+
+        users = {}
+        users['al@centos.org'] = 'Alain Reguera Delgado'
+        users['ana@centos.org'] = 'Ana Tamara Reguera Gattorno'
+        users['alina@centos.org'] = 'Alina Reguera Gattorno'
+
+        if user_id in users.keys():
+            user_name = self.tag_a({'href':'mailto:' + user_id}, [0,0], users[user_id])
+            user_name = self.tag_span({'class':'author'}, [24,1], 'Written by ' + user_name)
+
+        if update_date != commit_date:
+            date = self.tag_span({'class':'date'}, [24,1], update_date)
+        else:
+            date = self.tag_span({'class':'date'}, [24,1], commit_date)
+
+            
+        comments_attrs = {'href': self.qs_args({'app':'', 'p':'entry', 'id':content_id}) + '#comments'}
         if comments == 1:
-            comments = self.tag_a({'href': self.qs_args({'app':'', 'p':'details', 'id':id}) + '#comments'}, [0,0], str(comments) + ' comment')
+            comments = self.tag_a(comments_attrs, [0,0], str(comments) + ' comment')
         elif comments > 1:
-            comments = self.tag_a({'href': self.qs_args({'app':'', 'p':'', 'id':id}) + '#comments'}, [0,0], str(comments) + ' comments')
+            comments = self.tag_a(comments_attrs, [0,0], str(comments) + ' comments')
         else:
             comments = 'No comments'
-        info += self.tag_span({'class':'comments'}, [24,1], comments)
-        info = self.tag_div({'class': 'info'}, [20,1], info, 1)
-        abstract = self.tag_p({'class': 'abstract'}, [20,1], abstract)
+        comments = self.tag_span({'class':'comment'}, [24,1], comments)
 
-        return self.tag_div(attrs, [16,1], title + info + abstract, 1)
+        abstract = self.tag_p({'class':'abstract'}, [24,1], abstract)
+
+        return self.tag_div({'class': 'info'}, [20,1], user_name + date + category_name + comments + abstract, 1)
 
 
-    def content_list(self, category='None.'):
-        """Returns list of content.
+    def content_list(self):
+        """Return list of content.
         
         The list of content is used to explore the content available
         inside specific pages of specific web applications. The
@@ -485,27 +649,27 @@ class Layout(xhtml.Strict):
         output = ''
         count = 0
         rows = []
-        rows.append((1, 'Introduction to CentOS Web Environment',
+        rows.append([0, 'Introduction to CentOS Web Environment',
                     'al@centos.org',
-                    'Tue Aug 30 12:33:11 CDT 2011',
-                    'Tue Aug 30 12:33:11 CDT 2011',
-                    'articles',
+                    '2011-8-30 12:33:11', 
+                    '2011-8-30 12:33:11', 
                     0,
-                    'This is the abstrac paragrah of content. '*10))
-        rows.append((2, 'Creating New Applications',
+                    0,
+                    'This is the abstract paragrah of content. '*10])
+        rows.append([1, 'Creating New Applications',
                     'al@centos.org',
-                    'Tue Aug 30 12:33:11 CDT 2011',
-                    'Tue Aug 30 12:33:11 CDT 2011',
-                    'articles',
+                    '2011-8-30 12:33:11', 
+                    '2011-8-30 12:33:11', 
+                    2,
                     1,
-                    'This is the abstrac paragrah of content. '*5))
-        rows.append((3, 'Texinfo Documentation Backend',
+                    'This is the abstract paragrah of content. '*5])
+        rows.append([2, 'Texinfo Documentation Backend',
                     'al@centos.org',
-                    'Tue Aug 30 12:33:11 CDT 2011',
-                    'Tue Aug 30 12:33:11 CDT 2011',
-                    'articles',
+                    '2011-8-30 12:33:11', 
+                    '2011-8-30 12:33:11', 
+                    1,
                     5,
-                    'This is the abstrac paragrah of content. '*8))
+                    'This is the abstract paragrah of content. '*8])
 
         for row in rows:
             if count == 0:
@@ -514,38 +678,92 @@ class Layout(xhtml.Strict):
             else:
                 attrs = {'class': 'light row'}
                 count = 0
-            output += self.content_row(attrs, *row)
+            output += self.content_resumen(attrs, *row)
 
-        content_list = self.tag_div({'id':'content-list'}, [12,1], output, 1)
-        
-        return content_list
-
-
-    def content_list_2cols(self, category='None'):
-        """Return list of content in two columns.
-        
-        The left column is for listing content and the right column to
-        list related actions (e.g., search, categories, archives,
-        etc.).
-
-        """
-        list = self.content_list()
-
-        actions = self.search(15) + self.categories() + self.archives()
+        list = output + self.pagination() + self.separator()
+        list = self.tag_div({'id':'content-list'}, [12,1], list, 1)
+        actions = self.searchform(16) + self.categories() + self.archives()
         actions = self.tag_div({'id':'content-actions'}, [8,1], actions, 1)
 
-        return actions  + list
+        return actions + list
+
+
+    def content_details(self):
+        """Return content details.
+        
+        The content detail is shown for contents and pages.
+        """
+        output = ''
+        rows = []
+        rows.append([0, 'Introduction to CentOS Web Environment',
+                    'al@centos.org',
+                    '2011-8-30 12:33:11', 
+                    '2011-8-30 12:33:11', 
+                    0,
+                    0,
+                    'This is the abstract paragrah of content. '*10,
+                    'This is the first paragraph of content'*10 + "\n"
+                    'This is the second paragraph of content'*20 +
+                    "\n" + 'This is the third paragraph of content.'*10 + "\n"])
+        rows.append([1, 'Creating New Applications',
+                    'al@centos.org',
+                    '2011-8-30 12:33:11', 
+                    '2011-8-30 12:33:11', 
+                    2,
+                    1,
+                    'This is the abstract paragrah of content. '*5,
+                    "This is the first paragraph of content\n\
+                    This is the second paragraph of content.\n\
+                    This is the third paragraph of content."])
+        rows.append([2, 'Texinfo Documentation Backend',
+                    'al@centos.org',
+                    '2011-8-30 12:33:11', 
+                    '2011-8-30 12:33:11', 
+                    1,
+                    5,
+                    'This is the abstract paragrah of content. '*8,
+                    "This is the first paragraph of content.\n\
+                    This is the second paragraph of content.\n\
+                    This is the third paragraph of content."])
+
+        if 'id' in self.qs:
+            id = int(self.qs['id'][0])
+            title = rows[id][1]
+            email = rows[id][2]
+            commit_date = rows[id][3]
+            update_date = rows[id][4]
+            category = rows[id][5]
+            comments = rows[id][6]
+            abstract = self.tag_p({}, [0,0], rows[id][7])
+
+            output = self.tag_h1({'class':'title'}, [12,1], title)
+            output += self.content_info(id, email, commit_date, update_date, category, comments, abstract)
+            output += self.tag_p({}, [20,1], rows[id][8])
+            output += self.comments()
+
+        return self.tag_div({'id':'content-details'}, [12,1], output, 1)
+
+
+    def comments(self):
+        """Returns content specific list of comments.
+
+        """
+        output = self.tag_a({'name':'comment'}, [0,0], 'Comments')
+        output = self.tag_h2({'class':'title comments'}, [12,1], output, 0) 
+
+        return output
 
 
     def categories(self):
         """Returns list of categories.
         
         """
-        categories = ['Articles', 'Erratas', 'Events']
+        categories = ['Unknown', 'Articles', 'Erratas', 'Events']
         dt = self.tag_dt({}, [12,1], 'Categories')
         dd = ''
         for id in range(len(categories)):
-            a = self.tag_a({'href': self.qs_args({'app':'', 'p':'categories', 'id':id})}, [16,1], categories[id] + ' (0)') 
+            category_attrs = {'href': self.qs_args({'app':'', 'p':'categories', 'id':id})}
+            a = self.tag_a(category_attrs, [16,0], categories[id] + ' (0)') 
             dd += self.tag_dd({}, [12,1], a, 1)
 
         return self.tag_dl({},[8,1], dt + dd, 1)
@@ -592,15 +810,15 @@ class Layout(xhtml.Strict):
         
         The page_body is specific to each application module and is
         there where it must be constructed. The construction itself
-        takes place through the page_content() function which does
-        a return through an instantiated `content_' prefixed method.
+        takes place through the `page_content()' function which does a
+        return through an instantiated `content_' prefixed method.
         The `content_' prefixed method used depends on the kind of
         content you want to print out (e.g., `content_list()' for a
-        content list, `content_detail()' for a detailed view of
-        content, etc.). Later, the `body' variable instantiated
-        from this class is reset in the `main()' function with the value
-        returned from `page_content()' so the desired content layout
-        can be printed out. 
+        content list, `detail()' for a detailed view of content,
+        etc.). Later, the `body' variable instantiated from this class
+        is reset in the `main()' function with the value returned from
+        `page_content()' so the desired content layout can be printed
+        out. 
         
         """
         return self.tag_div({'id':'page-body'}, [4,1], self.body, 1)
@@ -622,7 +840,7 @@ class Layout(xhtml.Strict):
         return self.tag_div({'id': 'wrap'}, [0,1], self.page_header() + self.page_body() + self.page_footer(), 1)
 
 
-    def admonition(self, title='Note', subtitle="", content=""):
+    def admonition(self, title='Note', subtitle="", body=""):
         """Returns page admonition.
         
         title: Admonition's title.
@@ -633,7 +851,7 @@ class Layout(xhtml.Strict):
             the <h3> tag and there is no need to introduce extra tags
             here.
 
-        content: Admonition's content. The values passed through this
+        body: Admonition's body. The values passed through this
             arguments needs to be XHTML code returned from
             `self.tag()'. Preferably, paragraphs (p), tables (table),
             lists (ul, ol, dl) and pre-formatted texts (pre).
@@ -647,8 +865,8 @@ class Layout(xhtml.Strict):
         if subtitle != '':
             subtitle = ': ' + str(subtitle.capitalize())
 
-        if content != '':
-            content = str(content)
+        if body != '':
+            body = str(body)
 
         admonitions = ['Note', 'Tip', 'Important', 'Caution', 'Warning', 'Redirected', 'Success', 'Error']
         
@@ -656,11 +874,11 @@ class Layout(xhtml.Strict):
             attrs = {'class': 'admonition ' + title.lower()}
             image = self.tag_img({'src': '/centos-web-pub/Images/' + title.lower() + '.png', 'alt': title}, [16,1])
             title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 0)
-            output = image + title + content + self.separator()
+            output = image + title + body + self.separator()
         else:
             attrs = {'class': 'admonition unknown'}
             title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 1)
-            output = title + content
+            output = title + body
         
         return self.tag_div(attrs, [12,1], output, 1)
 
