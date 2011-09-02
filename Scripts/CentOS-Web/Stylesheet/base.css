@@ -50,16 +50,14 @@ div#page-body {
 	}
 
 div#page-body div#content-list {
-    padding: 10px 0px;
+    padding: 10px;
+    padding-left: 0;
+    padding-top: 8px;
     background-color: #FFF;
     }
 
 /* Paragraphs
 --------------------------------------------------------------------*/
-
-div#page-body div#content p {
-    text-align:justify; 
-    }
 
 /* Footer
 --------------------------------------------------------------------*/
@@ -269,6 +267,28 @@ div#page-header div.userlinks div.trail span.last:after {
 	background-color: #FFF;
 	}
 
+/* Page body
+--------------------------------------------------------------------*/
+
+div#page-body .info {
+    margin-top: 10px;
+    }
+
+div#page-body .info span {
+    font-size: small;
+    border-right: 1px dotted #AAA;
+    padding-right: 10px;
+    padding-left: 7px;
+    }
+
+div#page-body .info span.author {
+    padding-left: 0;
+    }
+
+div#page-body .info span.comment {
+    border-right: 0;
+    }
+
 /* Content Listing - One column
 --------------------------------------------------------------------*/
 
@@ -280,9 +300,13 @@ div#page-body div#content-list {
 div#page-body div#content-actions {
     float:right;
     width: 180px;
-    font-size: small;
     border-left: 3px #EEE solid;
     padding: 10px;
+    font-size: small;
+    }
+
+div#page-body div#content-actions form input[type="text"] {
+    border: 1px solid #AAA;
     }
 
 div#page-body div#content-list div.search {
@@ -290,7 +314,6 @@ div#page-body div#content-list div.search {
 
 div#page-body div#content-list div.row {
     padding: 10px 20px;
-    margin-right: 10px;
     }
 
 div#page-body div#content-list div.dark {
@@ -301,33 +324,45 @@ div#page-body div#content-list div.light {
     background: #FFF;
     }
 
-div#page-body div#content-list .info {
-    margin-top:5px;
-    font-size: small;
-    }
-
-div#page-body div#content-list .title {
+div#page-body div#content-list h3.title {
     margin-top: 0;
-    
     }
-
-div#page-body div#content-list .info span.author {
-    border-right: 1px dotted #AAA;
-    padding-right: 10px;
-    }
-
-div#page-body div#content-list .info span.date {
-    border-right: 1px dotted #AAA;
-    padding-right: 10px;
-    padding-left: 5px;
-    }
-
-div#page-body div#content-list .info span.comments {
-    padding-left: 5px;
-    }
-
 
 div#page-body div#content-list .abstract {
-    margin-bottom: 0;
+    margin-bottom: 1em;
     }
 
+div#page-body div#content-list .pagination {
+    border-top: 1px solid #AAA;
+    font-size: small;
+    padding: 10px;
+    border-top: 1px #AAA solid;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    }
+
+div#page-body div#content-list .pagination span.previous {
+    float: left;
+    }
+
+div#page-body div#content-list .pagination span.previous a:before {
+    content: "«";
+    padding-right: 3px;
+    }
+
+div#page-body div#content-list .pagination span.next a:after {
+    content: "»";
+    padding-left: 3px;
+    }
+
+div#page-body div#content-list .pagination span.next {
+    float: right;
+    }
+
+/* Content Details - One column
+--------------------------------------------------------------------*/
+
+div#page-body div#content-details {
+    padding: 30px 10% 30px 10%;
+    background: #FFF;
+    }
