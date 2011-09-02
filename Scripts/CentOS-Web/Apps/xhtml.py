@@ -303,7 +303,7 @@ class Strict:
         return self.tag('style', attrs, indent, content, has_child)
 
 
-    def tag_script(self, attrs, indent, content, has_child=0):
+    def tag_script(self, attrs, indent, content="", has_child=0):
         """Returns script statement.
         
         <!-- script statements, which may include CDATA sections -->
