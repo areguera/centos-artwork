@@ -17,10 +17,11 @@
 # ------------------------------------------------------------------
 # $Id$
 # ------------------------------------------------------------------
-"""
-This module (App.xhtml) encapsulates the output code needed by web
-applications, using the Extensible HTML version 1.0 DTDs
-(/usr/share/sgml/xhtml1/xhtml1-20020801/DTD/) as reference.
+"""This module provides support to XHTML construction.
+
+XHTML construction, as set here, uses the Extensible HTML version 1.0
+DTDs (/usr/share/sgml/xhtml1/xhtml1-20020801/DTD/) as reference. XHTML
+construction is required by page module.
 """
 
 
@@ -375,8 +376,16 @@ class Strict:
             %attrs;
             >
 
+        When content is introduced inside the database, it goes
+        without any XHTML markup. This method transforms newline
+        separated strings into XHTML paragraphs.
+        
         """
-        return self.tag('p', attrs, indent, content, has_child)
+        output = ''
+        for line in content.splitlines():
+            if line == '': continue
+            output += self.tag('p', attrs, indent, line.strip(), has_child)
+        return output
         
 
     # ------------------------------------------------------------------
