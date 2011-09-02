@@ -18,13 +18,13 @@ def page_navibar():
     attrs = []
 
     for i in names:
-        if 'app' in app.qs.keys():
-            attrs.append({'href': '/centos-web/?app=' + app.qs['app'][0].lower() + '&p=' + i.lower()})
+        if 'app' in page.qs.keys():
+            attrs.append({'href': '/centos-web/?app=' + page.qs['app'][0].lower() + '&p=' + i.lower()})
         else:
             attrs.append({'href': '/centos-web/?p=' + i.lower()})
 
-    if 'p' in app.qs.keys():
-        focus = app.qs['p'][0].lower()
+    if 'p' in page.qs.keys():
+        focus = page.qs['p'][0].lower()
     else:
         focus = names[0].lower()
 
@@ -38,8 +38,8 @@ def page_content():
     specifically from the value of `p' variable.
     
     """
-    if 'p' in app.qs.keys():
-        p = app.qs['p'][0].lower()
+    if 'p' in page.qs.keys():
+        p = page.qs['p'][0].lower()
     else:
         p = 'hardware'
 
@@ -71,7 +71,7 @@ def main():
     # Define page header. This is the information displayed
     # between the page top and the page content.
     app.header = app.logo()
-    app.header += app.google()
+    app.header += app.google_ad_example()
     app.header += app.navibar()
     app.header += app.page_links()
     app.header += page_navibar()
