@@ -137,16 +137,84 @@ you can be aware of them.
 
 import cgi
 import cgitb; cgitb.enable()
-
 from Apps import xhtml
 
+qs = cgi.parse()
+
+
+def qs_args( names={}):
+    """Returns query string arguments.
+
+    The query string arguments are used to build links dynamically
+    and, this way, to create a browsable and logically organized web
+    environment.  Such a construction generally needs to retrive some
+    of the values previously passed to the query string and add new
+    ones to it.
+
+    names: A dictionary containing the variable name and value pair
+        used to build a new query string. 
+            
+    When a variable is provied without a value, then its value is
+    retrived from the current query string. If a value isn't found
+    there neither, then the variable is removed from the new query
+    string.
+
+    When a variable is provided with its value, then its value is used
+    to build the new query string.
+
+    """
+    output = ''
+
+    names_keys = names.keys()
+    names_keys.sort()
+    for key in names_keys:
+        if names[key] == '':
+            if key in qs:
+                names[key] = qs[key][0]
+            else:
+                continue
+        if output == '':
+            output = '?'
+        else:
+            output += '&amp;'
+        output += key + '=' + str(names[key])
+
+    return '/centos-web/' + output
+
+
 class Layout(xhtml.Strict):
-    """Page modeling."""
+    """The Page Layout.
+    
+    The page layout is made by combining XHTML tags in specific ways.
+    These specific combinations make the page components which in turn
+    can be also combined. Some of these components can be reused and
+    others don't. The goal of this class is to define what such
+    components are and describe them well in order to understand how
+    to use them from application modules when building XHTML documents
+    dynamically.
+
+    The page layout is initialized with a functional layout that can
+    be used as reference inside application modules, to create
+    variations of it. Generally, inside application packages, this
+    class is instantiated in a module named `page', variables are
+    reset and functions created in order to satisfy that application
+    needs. When you need to output one of the page components then you
+    use this class instantiated methods. When the method you need
+    doesn't exist in this class, then it is a good time for it to be
+    created, here ;). 
+
+    Notice that most methods defined in this class make direct use of
+    methods defined by Strict class inside the `xhtml' module. The
+    Strict class inside xhtml module is inherited inside this class so
+    all the methods there are also available here. Methods which
+    doesn't make a direct use of Strict methods are dependencies of
+    those which do make direct use of Strict methods.
+
+    """
 
 
     def __init__(self):
         """Initialize page data."""
-        self.qs = cgi.parse()
         self.name = 'Home'
         self.title = 'The CentOS Project'
         self.description = 'Community Enterprise Operating System'
@@ -157,7 +225,7 @@ class Layout(xhtml.Strict):
         # Define page header. This is the information displayed
         # between the page top and the page content.
         self.header = self.logo()
-        self.header += self.google()
+        self.header += self.google_ad()
         self.header += self.navibar()
         self.header += self.releases()
         self.header += self.page_links()
@@ -191,32 +259,50 @@ class Layout(xhtml.Strict):
         return self.tag_div(attrs[0], [8,1], self.tag_a(attrs[1], [12,1], self.tag_img(attrs[2], [0,0]), 0), 1)
 
 
-    def google(self):
-        """Returns Google advertisements (468x60 pixels)."""
-        output = """
-        <div class="ads-google">
-            <a title="Google Advertisement" href=""><img src="/centos-web-pub/Images/ads-sample-468x60.png" alt="Google Advertisement" /></a>
-            <script type="text/javascript"><!--
-                google_ad_client = "pub-6973128787810819";
-                google_ad_width = 468;
-                google_ad_height = 60;
-                google_ad_format = "468x60_as";
-                google_ad_type = "text_image";
-                google_ad_channel = "";
-                google_color_border = "204c8d";
-                google_color_bg = "345c97";
-                google_color_link = "0000FF";
-                google_color_text = "FFFFFF";
-                google_color_url = "008000";
-                //-->
-            </script>
-            <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-            </script>
-        </div>
+    def google_ad_example(self):
+        """Returns Google advertisement for offline testings."""
 
-        <div class="page-line"><hr style="display:none;" /></div>
-        """
+        source = self.tag_img({'src':'/centos-web-pub/Images/ads-sample-468x60.png', 'alt':'Google Advertisement'}, [0,0])
+        source = self.tag_a({'href':'', 'title':'Google Advertisement'}, [12,1], source )
+        output = self.tag_div({'class':'google-ad'}, [8,1], source, 1)
+        output += self.separator({'class':'page-line'}, [8,1])
+
+        return output
+
+
+    def google_ad(self):
+        """Returns Google advertisement for online using."""
+
+        properties = {}
+        properties['google_ad_client']    = 'pub-6973128787810819'
+        properties['google_ad_width']     = '468'
+        properties['google_ad_height']    = '60'
+        properties['google_ad_format']    = '468x60_as'
+        properties['google_ad_type']      = 'text_image'
+        properties['google_ad_channel']   = ''
+        properties['google_color_border'] = '204c8d'
+        properties['google_color_bg']     = '345c97'
+        properties['google_color_link']   = '0000FF'
+        properties['google_color_text']   = 'FFFFFF'
+        properties['google_color_url']    = '008000'
+
+        attrs = {}
+        attrs['type'] = "text/javascript"
+
+        output = '<!--\n'
+        for key, value in properties.iteritems():
+            output += ' '*16 + key + '="' + value + '";\n'
+        output += ' '*16 + '//-->\n'
+
+        properties = self.tag_script(attrs, [12,1], output, 1)
+
+        attrs['src'] = "http://pagead2.googlesyndication.com/pagead/show_ads.js"
+
+        source = self.tag_script(attrs, [12,1], ' ', 0)
+
+        output = self.tag_div({'class':'google-ad'}, [8,1], properties + source, 1)
+        output += self.separator({'class':'page-line'}, [8,1])
+
         return output
 
 
@@ -278,7 +364,7 @@ class Layout(xhtml.Strict):
         return self.tag_div({'class': 'tabs'}, [8,1], navibar_tabs, 1)
 
 
-    def releases(self, names=['6.0'], attrs=[{'href': '/centos-web/p=releases&id=6.0'}]):
+    def releases(self):
         """Returns The CentOS Distribution last releases.
 
         This method introduces the `releases' method by providing
@@ -296,7 +382,14 @@ class Layout(xhtml.Strict):
         """
         releases = ''
 
-        title = self.tag_a({'href': '/centos-web/?p=releases'}, [0,0], 'Last Releases') + ':'
+        names = []
+        names.append('6.0')
+
+        attrs = []
+        attrs.append({'href': qs_args({'p':'releases', 'id': 6.0})})
+
+        
+        title = self.tag_a({'href': qs_args({'p':'releases'})}, [0,0], 'Last Releases') + ':'
         title = self.tag_span({'class': 'title'}, [16,1], title)
 
         for i in range(len(names)):
@@ -309,7 +402,7 @@ class Layout(xhtml.Strict):
         releases = self.tag_div({'class': 'left'}, [12,1], title + releases, 1)
 
         rsslink = self.tag_span('', [0,0], 'RSS')
-        rsslink = self.tag_a({'href': self.qs_args({'rss':'releases'}), 'title': 'RSS'}, [20,1], rsslink)
+        rsslink = self.tag_a({'href': qs_args({'rss':'releases'}), 'title': 'RSS'}, [20,1], rsslink)
         rsslink = self.tag_span({'class': 'rss'}, [16,1], rsslink, 1)
         rsslink = self.tag_div({'class': 'right'}, [12, 1], rsslink, 1)
 
@@ -325,7 +418,7 @@ class Layout(xhtml.Strict):
         login.
 
         """
-        last_visit = self.tag_a({'href': self.qs_args({'app':'', 'p':'logs'})}, [0,0], 'Logs')
+        last_visit = self.tag_a({'href': qs_args({'app':'', 'p':'logs'})}, [0,0], 'Logs')
         return self.tag_div({'class': 'logs'}, [12, 1], last_visit, 1)
 
 
@@ -342,11 +435,11 @@ class Layout(xhtml.Strict):
         session = ''
 
         names.append('Lost your password?')
-        attrs.append({'href': self.qs_args({'app':'', 'p':'lostpwd'})})
+        attrs.append({'href': qs_args({'app':'', 'p':'lostpwd'})})
         names.append('Register')
-        attrs.append({'href': self.qs_args({'app':'', 'p':'register'})})
+        attrs.append({'href': qs_args({'app':'', 'p':'register'})})
         names.append('Login')
-        attrs.append({'href': self.qs_args({'app':'', 'p':'login'})})
+        attrs.append({'href': qs_args({'app':'', 'p':'login'})})
 
         for i in range(len(names)):
             output = self.tag_a(attrs[i], [20,1], str(names[i]), 0)
@@ -452,66 +545,30 @@ class Layout(xhtml.Strict):
         metadata += self.tag_meta({'name': 'copyright', 'content': 'Copyright © ' + str(self.copyright)}, [4,0])
         metadata += self.tag_title('', [4,1], self.title)
         metadata += self.tag_link({'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
-        metadata += self.tag_link({'href': '/centos-web-pub/Images/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
+        metadata += self.tag_link({'href': '/centos-web-pub/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
 
         return self.tag_head('', [0,1], metadata)
 
 
-    def qs_args(self, names={}):
-        """Returns query string arguments.
-
-        The query string arguments are used to build links dynamically
-        and, this way, to create a browsable and logically organized
-        web environment.  Such a construction generally needs to
-        retrive some of the values previously passed to the query
-        string and add new ones to it.
-
-        names: A dictionary containing the variable name and value
-            pair used to build a new query string. 
-            
-        When a variable is provied without a value, then its value is
-        retrived from the current query string. If a value isn't found
-        there neither, then the variable is removed from the new query
-        string.
-
-        When a variable is provided with its value, then its value is
-        used to build the new query string.
-
-        """
-        output = ''
-        names_keys = names.keys()
-        names_keys.sort()
-        for key in names_keys:
-            if names[key] == '':
-                if key in self.qs:
-                    names[key] = self.qs[key][0]
-                else:
-                    continue
-            if output == '':
-                output = '?'
-            else:
-                output += '&'
-            output += key + '=' + str(names[key])
-
-        return '/centos-web/' + output
 
 
-    def searchform(self, size=20):
+    def searchform(self, size=15):
         """Returns search form.
 
-        The search form redirects the search up to the search page. Is
-        there, in the search page, where the search occurs.
+        The search form redirects user from the current page onto the
+        search page, where the keywords previously introduced in the
+        input field are processed then.
         
-        size: A number discribe how large the search text box is.
+        size: A number discribing how large the search box is.
 
         """
-        input = self.tag_input({'type':'text', 'value':'', 'size':size}, [24,1])
+        input = self.tag_input({'type':'text', 'value':'', 'size':size}, [0,0])
 
-        action = self.tag_dt({}, [20,1], 'Search', 1)
+        action = self.tag_dt({}, [20,1], 'Search')
         action += self.tag_dd({}, [20,1], input)
         action = self.tag_dl({'class':'search'}, [16,1], action, 1)
 
-        return self.tag_form({'action': self.qs_args({'app':'', 'p':'search'}), 
+        return self.tag_form({'action': qs_args({'app':'', 'p':'search'}), 
                               'method':'post', 'title':'Search'},
                               [12,1], action, 1)
         
@@ -520,68 +577,72 @@ class Layout(xhtml.Strict):
                         update_date, category_id, comments, abstract):
         """Returns content resumen.
 
-        The content resumen is used to build the list of contents
-        output by `content_list()'. The content resumen pretends to be
-        concise and informative so the user can grab an idea what the
-        content is about. The content resumen is made of the following
-        information:
+        The content resumen is used to build the list of contents,
+        output by `content_list()' method. The content resumen intends
+        to be concise and informative so the user can grab a general
+        idea about the related content and what it is about.
 
-            attrs: A dictionary discribing the rows style.  This is
-                useful to alternate the row background colors.
+        attrs: A dictionary discribing the rows style.  This is useful
+            to alternate the row background colors.
 
-            id: A unique numerical value referring the content
-                identification. This is the value used on
-                administrative tasks like updating and deleting.
+        id: A unique numerical value referring the content
+            identification. This is the value used on administrative
+            tasks like updating and deleting.
         
-            title: A few words phrase describing the content,
-                up to 255 characters.
+        title: A few words phrase describing the content, up to 255
+            characters.
             
-            author_id: A string referring the user email address, as
-                specified by RFC2822. The user email address is used
-                as id inside The CentOS User LDAP server, where user
-                specific information (e.g., surname, lastname, office,
-                phone, etc.) are stored in. This is the field that
-                bonds the user with the content he/she produces.
+        author_id: A string referring the user email address, as
+            specified by RFC2822. The user email address is used as id
+            inside The CentOS User LDAP server, where user specific
+            information (e.g., surname, lastname, office, phone, etc.)
+            are stored in. This is the field that bonds the user with
+            the content he/she produces.
             
-            commit_date: A string referring the timestamp the content
-                arrived to database for time.
+        commit_date: A string referring the timestamp the content
+            arrived to database for time.
 
-            update_date: A string representing the timestamp the
-                content was updated/revised for last time.
+        update_date: A string representing the timestamp the content
+            was updated/revised for last time.
 
-            category_id: A number refering the category id the
-                content is attached to.
+        category_id: A number refering the category id the content is
+            attached to.
 
-            abstract: One paragraphs describing the content.  This
-                information is used to build the page metadata
-                information. When this value is not provided no
-                abstract information is displayed in the page, but the
-                <meta name="description".../> is built using article's
-                first 255 characters.
+        abstract: One paragraphs describing the content.  This
+            information is used to build the page metadata
+            information. When this value is not provided no abstract
+            information is displayed in the page, but the <meta
+            name="description".../> is built using article's first 255
+            characters.
 
-            comments: A number representing how many comments the
-                content has received since it is in the database.
+        comments: A number representing how many comments the content
+            has received since it is in the database.
 
         The content itself is not displayed in the resumen, but in
-        `content_detailed()'.
+        `content_details()'.
 
         """
-        title = self.tag_a({'href': self.qs_args({'app':'', 'p':'entry', 'id':id})}, [0,0], title)
+        title = self.tag_a({'href': qs_args({'app':'', 'p':'entry', 'id':id})}, [0,0], title)
         title = self.tag_h3({'class': 'title'}, [20,1], title, 0)
-        info = self.content_info(id, user_id, commit_date, update_date, category_id, comments, abstract)
+        info = self.content_info(id, user_id, commit_date,
+                                 update_date, category_id, comments,
+                                 abstract)
         return self.tag_div(attrs, [16,1], title + info, 1)
 
 
     def pagination(self):
         """Return content pagination."""
-        previous = self.tag_a({'href':''}, [12,1], 'Previous')
-        previous = self.tag_span({'class':'previous'}, [12,1], previous, 1)
-        next = self.tag_a({'href':''}, [12,1], 'Next')
-        next = self.tag_span({'class':'next'}, [12,1], next, 1)
-        return self.tag_div({'class':'pagination'}, [12,1], previous + next + self.separator(), 1)
+        previous = self.tag_a({'href':''}, [0,0], 'Previous')
+        previous = self.tag_span({'class':'previous'}, [20,1], previous)
+        next = self.tag_a({'href':''}, [0,0], 'Next')
+        next = self.tag_span({'class':'next'}, [20,1], next)
+        separator = self.separator({'class':'page-line'}, [20,1])
+        return self.tag_div({'class':'pagination'}, [16,1], previous +
+                            next + separator, 1)
 
 
-    def content_info(self, content_id, user_id, commit_date, update_date, category_id, comments, abstract):
+    def content_info(self, content_id, user_id, commit_date,
+                     update_date, category_id, comments, abstract):
         """Return content information.
 
         The content information provides a reduced view of content so
@@ -603,7 +664,7 @@ class Layout(xhtml.Strict):
             category_id = 0
             category_name = categories[category_id].capitalize()
 
-        category_name = self.tag_a({'href': self.qs_args({'app':'', 'p':'categories', 'id':category_id})}, [0,0], category_name)
+        category_name = self.tag_a({'href': qs_args({'app':'', 'p':'categories', 'id':category_id})}, [0,0], category_name)
         category_name = self.tag_span({'class':'category'}, [24,1], category_name) 
 
         users = {}
@@ -621,7 +682,7 @@ class Layout(xhtml.Strict):
             date = self.tag_span({'class':'date'}, [24,1], commit_date)
 
             
-        comments_attrs = {'href': self.qs_args({'app':'', 'p':'entry', 'id':content_id}) + '#comments'}
+        comments_attrs = {'href': qs_args({'app':'', 'p':'entry', 'id':content_id}) + '#comments'}
         if comments == 1:
             comments = self.tag_a(comments_attrs, [0,0], str(comments) + ' comment')
         elif comments > 1:
@@ -682,7 +743,7 @@ class Layout(xhtml.Strict):
 
         list = output + self.pagination() + self.separator()
         list = self.tag_div({'id':'content-list'}, [12,1], list, 1)
-        actions = self.searchform(16) + self.categories() + self.archives()
+        actions = self.searchform() + self.categories() + self.archives()
         actions = self.tag_div({'id':'content-actions'}, [8,1], actions, 1)
 
         return actions + list
@@ -726,8 +787,8 @@ class Layout(xhtml.Strict):
                     This is the second paragraph of content.\n\
                     This is the third paragraph of content."])
 
-        if 'id' in self.qs:
-            id = int(self.qs['id'][0])
+        if 'id' in qs:
+            id = int(qs['id'][0])
             title = rows[id][1]
             email = rows[id][2]
             commit_date = rows[id][3]
@@ -759,14 +820,14 @@ class Layout(xhtml.Strict):
         
         """
         categories = ['Unknown', 'Articles', 'Erratas', 'Events']
-        dt = self.tag_dt({}, [12,1], 'Categories')
+        dt = self.tag_dt({}, [16,1], 'Categories')
         dd = ''
         for id in range(len(categories)):
-            category_attrs = {'href': self.qs_args({'app':'', 'p':'categories', 'id':id})}
-            a = self.tag_a(category_attrs, [16,0], categories[id] + ' (0)') 
-            dd += self.tag_dd({}, [12,1], a, 1)
+            category_attrs = {'href': qs_args({'app':'', 'p':'categories', 'id':id})}
+            a = self.tag_a(category_attrs, [0,0], categories[id] + ' (0)') 
+            dd += self.tag_dd({}, [16,1], a)
 
-        return self.tag_dl({},[8,1], dt + dd, 1)
+        return self.tag_dl({},[12,1], dt + dd, 1)
 
 
     def archives(self):
@@ -775,21 +836,19 @@ class Layout(xhtml.Strict):
         archives['2011'] = ['January', 'February', 'March', 'April', 'May']
         archives['2010'] = ['January', 'February']
 
-        dt = self.tag_dt({}, [12,1], 'Archives')
+        dt = self.tag_dt({}, [16,1], 'Archives')
         year_dl = ''
         year_dd = ''
 
         for key in archives.keys():
-            year_dt = self.tag_dt({},[12,1], key, 1)
+            year_dt = self.tag_dt({},[20,1], key)
             for id in range(len(archives[key])):
-                a = self.tag_a({'href': self.qs_args({'app':'',
-                'p':'archives', 'year': key, 'month': id + 1})},
-                [16,1], archives[key][id] + ' (0)')
-                year_dd += self.tag_dd({}, [12,1], a)
-            year_dl += self.tag_dl({'class':'year'}, [12,1], year_dt + year_dd, 1)
+                a = self.tag_a({'href': qs_args({'app':'', 'p':'archives', 'year': key, 'month': id + 1})}, [0,0], archives[key][id] + ' (0)')
+                year_dd += self.tag_dd({}, [20,1], a)
+            year_dl += self.tag_dl({'class':'year'}, [16,1], year_dt + year_dd, 1)
             year_dd = ''
 
-        return self.tag_dl({},[8,1], dt + year_dl, 1)
+        return self.tag_dl({},[12,1], dt + year_dl, 1)
 
 
     def page_top(self):
