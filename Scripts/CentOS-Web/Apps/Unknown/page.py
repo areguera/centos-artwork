@@ -1,4 +1,10 @@
-"""Support module for page layout inside `Unknown' web application.
+"""The `Unknown' web application.
+
+The Unknown web application is automatically triggered when the page
+requested is not defined as valid in `centos-web.cgi' script. The
+Unknown web application is basically an admonition message describing
+the `page not found' issue and where to find the correct links to
+start all over.
 
 """
 from Apps import page
@@ -8,8 +14,9 @@ app = page.Layout()
 
 def page_content():
     """Returns page content."""
-    output = app.tag_p('', [12,1], 'The page you tried to open was not found in this server. Try one of the links above to start over.')
+    output = app.tag_p('', [16,1], 'The page you tried to open was not found in this server. Try one of the links above to start over.')
     output = app.admonition('Warning', 'Page not found.', output)
+    output = app.tag_div({'id':'content-unknown'}, [8,1], output, 1)
     return output
 
 
@@ -29,7 +36,7 @@ def main():
     # Define page header. This is the information displayed
     # between the page top and the page content.
     app.header = app.logo()
-    app.header += app.google()
+    app.header += app.google_ad_example()
     app.header += app.navibar()
 
     # Define page body. This is the information displayed between the
