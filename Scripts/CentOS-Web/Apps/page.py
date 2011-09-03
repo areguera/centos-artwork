@@ -17,20 +17,20 @@
 # ------------------------------------------------------------------
 # $Id$
 # ------------------------------------------------------------------
-"""This module provides support to pages construction.
+"""Support page construction.
 
-To this module, a page is an XHTML document consisting of several
+The page construction is an XHTML document consisting of several
 independent components that, when put together, provide organization
 to content. Each of these components is set as a method of Layout
 class that can be instantiated later from application specific modules.
 
 When you create a new application package, you need to create a page
-module for it and instantiate the Layout class provided inside it.
-Later, the following functions must be created: page_content(),
+module for it and instantiate the Layout class provided here inside
+it.  Later, the following functions must be created: page_content(),
 page_navibar() and main(). These functions are used to define the
-content of your application and its navigation, as well. Both
-application content and application navigation are logically organized
-using variables passed through the URL.
+content and navigation bar of your application. Both application
+content and application navigation are logically organized using
+variables passed through the URL.
 
 Application
 ===========
@@ -38,16 +38,15 @@ Application
 URL variable: app
 
 This variable contains the application id. It is a unique numerical
-value that starts on 0 and increments one for each new application
+value that starts at 0 and increments one for each new application
 that might be added. The application identified by number 0 is the one
 used as default when no other application is provided.  The
 application identified by number 0 is added to database the first time
 it is created as part of the initial configuration process.
 
 Application is the highest level of organization inside
-`centos-web.cgi' script. Inside applications, it is defined pages and
-contents. In other words, both pages and contents are specific to
-applications.
+`centos-web.cgi' script. Inside applications, there is content in form
+of pages and entries. Content can be grouped by categories.
 
 Pages
 =====
@@ -55,53 +54,55 @@ Pages
 URL variable: page
 
 This variable contains the page id. It is a unique numerical value
-that starts on 0 and increments in one for each new page added to the
+that starts at 0 and increments in one for each new page added to the
 application. In contrast to applications, the page identified by
 number 0 is not used as default page when no other page is provided.
 This configuration is specific to each application and can be
-customized inside each application individually. Generally, when a
-page variable isn't passed through the URL, the application module
-uses the `content_list()' method to display a list of all
-related contents while links to pages are displayed in the related
-navigation bar in order for users to access them.  The unique
-numerical value of pages is specific to each application, so there is
-one page 0 for each application available. No page is added to
-database the first time the database is created as part of the initial
-configuration process.
+customized inside each application individually, using string values
+instead of numerical values when passing values to page variable.
+
+Generally, when a page variable isn't passed through the URL, the
+application module uses the `content_list()' method from Layout class
+to display a list of all available content entries while links to
+content pages are displayed in the application navigation bar so users
+can access them.  The unique numerical value of content pages is
+specific to each application, so there is one page 0 for each
+application available. No page is added to database the first time the
+database is created as part of the initial configuration process.
 
 Pages contain similar information to that described by contents with
-few exceptions. Pages, in contrast to contents, can differentiate the
+few exceptions. Pages, in contrast to entries, can differentiate the
 page title from the page name. The page title goes in the page content
 itself and describes what the page is about with a phrase. On the
 other hand, the page name is generaly one word describing the page
-content and is used as link on the related application navigation bar.
-When no page name is explicitly provided, the first word of page title
-is used instead.
+content and is used as link on the application navigation bar.  When
+no page name is explicitly provided, the first word of page title is
+used instead.
     
 Pages are always accessible inside the same application while contents
 aren't.  Pages are permanently visible and linkend from each
 application specific navigation bar.  This kind of pages can be
 managed by editors or administrators and can be marked as `draft' to
-put it on a special state where it is possible for editors and authors
-to work on it, but impossible for others to read it until the page be
-marked as `published' by either the page author or any members of
-editor's or administrator's groups.
+put it on a special state where it is possible for administrator,
+editors and authors to work on it, but impossible for others to read
+it until the page be marked as `published' by either the page author
+or any members of editor's or administrator's groups.
 
-Pages can be converted to contents and the oposite. When convertion
+Pages can be converted to entires and the oposite. When convertion
 occurs, unused information looses its meaning and is kept for
 informative purpose, specially in situations when it might be needed
 to realize a convertion back into the former state. Notice that in
-order to realize such a backward and forward convertion it is required
-that both pages and entires share the same definition structure.  In
-fact, that be the same thing, but able to differentiate themselves
-either as page or entry (e.g., through `type' field.).
+order to realize such a back and forth convertion it is required that
+both pages and entires share the same definition structure.  In fact,
+that they be the same thing, but able to differentiate themselves
+either as page or entry (e.g., through a `type' field.).
 
-Pages content is under version controlled. When a page (or entry) is
+Pages content is under version control. When a page (or entry) is
 changed, a verification is performed to determine whether the
 information entered in edition matches the last record in the page
 history table. When both the information coming from edition and the
 last record in the page history table are the same (e.g., no change
-happens) the edition action is cancelled and a message is printed out
+happened) the edition action is cancelled and a message is printed out
 to notify the action.  Otherwise, when the information entered in
 edition differs from the last record in the page history table, the
 information comming from edition passes to be the last record in the
@@ -261,10 +262,11 @@ class Layout(xhtml.Strict):
 
     def google_ad_example(self):
         """Returns Google advertisement for offline testings."""
-
-        source = self.tag_img({'src':'/centos-web-pub/Images/ads-sample-468x60.png', 'alt':'Google Advertisement'}, [0,0])
-        source = self.tag_a({'href':'', 'title':'Google Advertisement'}, [12,1], source )
-        output = self.tag_div({'class':'google-ad'}, [8,1], source, 1)
+        title = 'Google Advertisement'
+        url = '/centos-web-pub/Images/ads-sample-468x60.png'
+        image = self.tag_img({'src': url, 'alt': title}, [0,0])
+        link = self.tag_a({'href': url, 'title': title}, [12,1], image)
+        output = self.tag_div({'class':'google-ad'}, [8,1], link, 1)
         output += self.separator({'class':'page-line'}, [8,1])
 
         return output
@@ -307,13 +309,16 @@ class Layout(xhtml.Strict):
 
 
     def navibar(self):
-        """Returns top-level navigation bar. 
+        """Returns webenv navigation bar. 
     
-        The top-level navigation bar organizes links to main web
+        The webenv navigation bar organizes links to main web
         applications The CentOS Project makes use of. Links to these
         web applications stay always visible, no matter what web
-        application you be visiting (e.g., Wiki, Lists, Forums,
-        Projects, Bugs, Docs, Downloads and Sponsors.).
+        application the user be visiting (e.g., Wiki, Lists, Forums,
+        Projects, Bugs, Docs, Downloads and Sponsors.).  Notice that
+        some of these web applications are out of `centos-web.cgi'
+        scope and they need to code their own webenv navigation bars
+        in a way that coincide the one set by `centos-web.cgi'.
 
         """
         names = ['Home', 'Wiki', 'Lists', 'Forums', 'Projects', 'Bugs', 'Docs', 'Downloads', 'Sponsors']
