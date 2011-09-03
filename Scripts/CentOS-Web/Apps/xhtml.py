@@ -17,7 +17,7 @@
 # ------------------------------------------------------------------
 # $Id$
 # ------------------------------------------------------------------
-"""This module provides support to XHTML construction.
+"""Support XHTML construction.
 
 XHTML construction, as set here, uses the Extensible HTML version 1.0
 DTDs (/usr/share/sgml/xhtml1/xhtml1-20020801/DTD/) as reference. XHTML
