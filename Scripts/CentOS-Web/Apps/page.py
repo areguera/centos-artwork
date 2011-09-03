@@ -809,7 +809,7 @@ class Layout(xhtml.Strict):
         """Returns content specific list of comments.
 
         """
-        output = self.tag_a({'name':'comment'}, [0,0], 'Comments')
+        output = self.tag_a({'name':'comments'}, [0,0], 'Comments')
         output = self.tag_h2({'class':'title comments'}, [12,1], output, 0) 
 
         return output
