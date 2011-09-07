@@ -4,18 +4,17 @@
 
     <para>
         Inside &TCAR;, documentation manuals are written in English
-        language and later translated to other languages, using the
-        English language as reference. In the very specific case of
-        documentation manuals produced through texinfo documentation
-        backend, it is necessary to create one manual structure for
-        each language you decide to produce a manual for. In this
-        configuration, it is not possible to separate translation
-        messages from manual's content itself because they both are
-        the same thing.  Translators need to be aware of changes
-        committed up to English manuals, find out where the changes
-        happened exactly and, finally, update the localized manuals in
-        order to keep both English and localized manuals syncronized
-        in the content they describe.
+        language and later translated to other languages. In the very
+        specific case of documentation manuals produced through
+        texinfo documentation backend, it is necessary to create one
+        manual structure for each language you decide to produce a
+        manual for. In this configuration, it is not possible to
+        separate translation messages from manual's content itself
+        because they both are the same thing.  Translators need to be
+        aware of changes committed up to English manuals, find out
+        where the changes happened exactly and, finally, update the
+        localized manuals they maintain in order to keep both English
+        and localized manuals syncronized one another.
     </para>
 
     <sect2 id="manuals-texinfo-l10n-language">
