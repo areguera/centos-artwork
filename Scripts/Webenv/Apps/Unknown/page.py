@@ -1,7 +1,7 @@
 """The `Unknown' web application.
 
 The Unknown web application is automatically triggered when the page
-requested is not defined as valid in `centos-web.cgi' script. The
+requested is not defined as valid in `webenv.cgi' script. The
 Unknown web application is basically an admonition message describing
 the `page not found' issue and where to find the correct links to
 start all over.

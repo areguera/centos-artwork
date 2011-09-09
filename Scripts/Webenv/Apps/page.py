@@ -45,7 +45,7 @@ application identified by number 0 is added to database the first time
 it is created as part of the initial configuration process.
 
 Application is the highest level of organization inside
-`centos-web.cgi' script. Inside applications, there is content in form
+`webenv.cgi' script. Inside applications, there is content in form
 of pages and entries. Content can be grouped by categories.
 
 Pages
@@ -180,7 +180,7 @@ def qs_args( names={}):
             output += '&amp;'
         output += key + '=' + str(names[key])
 
-    return '/centos-web/' + output
+    return '/webenv/' + output
 
 
 class Layout(xhtml.Strict):
@@ -254,8 +254,8 @@ class Layout(xhtml.Strict):
         """
         attrs = []
         attrs.append({'id': 'logo'})
-        attrs.append({'title': 'Community Enterprise Operating System', 'href': '/centos-web/'})
-        attrs.append({'src': '/centos-web-pub/Images/centos-logo.png', 'alt': 'CentOS'})
+        attrs.append({'title': 'Community Enterprise Operating System', 'href': '/webenv/'})
+        attrs.append({'src': '/webenv-pub/Images/centos-logo.png', 'alt': 'CentOS'})
 
         return self.tag_div(attrs[0], [8,1], self.tag_a(attrs[1], [12,1], self.tag_img(attrs[2], [0,0]), 0), 1)
 
@@ -263,7 +263,7 @@ class Layout(xhtml.Strict):
     def google_ad_example(self):
         """Returns Google advertisement for offline testings."""
         title = 'Google Advertisement'
-        url = '/centos-web-pub/Images/ads-sample-468x60.png'
+        url = '/webenv-pub/Images/ads-sample-468x60.png'
         image = self.tag_img({'src': url, 'alt': title}, [0,0])
         link = self.tag_a({'href': url, 'title': title}, [12,1], image)
         output = self.tag_div({'class':'google-ad'}, [8,1], link, 1)
@@ -316,9 +316,9 @@ class Layout(xhtml.Strict):
         web applications stay always visible, no matter what web
         application the user be visiting (e.g., Wiki, Lists, Forums,
         Projects, Bugs, Docs, Downloads and Sponsors.).  Notice that
-        some of these web applications are out of `centos-web.cgi'
+        some of these web applications are out of `webenv.cgi'
         scope and they need to code their own webenv navigation bars
-        in a way that coincide the one set by `centos-web.cgi'.
+        in a way that coincide the one set by `webenv.cgi'.
 
         """
         names = ['Home', 'Wiki', 'Lists', 'Forums', 'Projects', 'Bugs', 'Docs', 'Downloads', 'Sponsors']
@@ -327,9 +327,9 @@ class Layout(xhtml.Strict):
 
         for i in range(len(names)):
             if names[i].lower() == 'home':
-                attrs.append({'href': '/centos-web/'})
+                attrs.append({'href': '/webenv/'})
             else:
-                attrs.append({'href': '/centos-web/?app=' + names[i].lower()})
+                attrs.append({'href': '/webenv/?app=' + names[i].lower()})
 
         tabs = self.navibar_tabs(names, attrs, focus)
         tabs += self.separator()
@@ -457,14 +457,14 @@ class Layout(xhtml.Strict):
         return self.tag_div({'class': 'session'}, [12,1], session, 1)
 
 
-    def user_links_trails(self, names=['None'], attrs=[{'href': '/centos-web/'}]):
+    def user_links_trails(self, names=['None'], attrs=[{'href': '/webenv/'}]):
         """Returns page trails (a.k.a. breadcrumbs).
     
         The page breadcrumbs record the last pages the user visited
         inside the current web application. Notice that page
         breadcrumbs are user-specific information, so it isn't
         possible to implement them until a way to manage user sessions
-        be implemeneted inside `centos-web.cgi' script. Until then,
+        be implemeneted inside `webenv.cgi' script. Until then,
         keep the tag construction commented and return an empty value.
 
         names: List with trail link names.
@@ -498,7 +498,7 @@ class Layout(xhtml.Strict):
         return self.tag_div({'class': 'userlinks'}, [8,1], userlinks, 1)
 
 
-    def page_navibar(self, names=['Welcome'], attrs=[{'href':'/centos-web/?p=welcome'}], focus='Welcome'):
+    def page_navibar(self, names=['Welcome'], attrs=[{'href':'/webenv/?p=welcome'}], focus='Welcome'):
         """Returns navigation bar for application main pages.
        
         names: List containing link names.
@@ -549,8 +549,8 @@ class Layout(xhtml.Strict):
         metadata += self.tag_meta({'name': 'description', 'content': str(self.description)}, [4,1])
         metadata += self.tag_meta({'name': 'copyright', 'content': 'Copyright © ' + str(self.copyright)}, [4,0])
         metadata += self.tag_title('', [4,1], self.title)
-        metadata += self.tag_link({'href': '/centos-web-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
-        metadata += self.tag_link({'href': '/centos-web-pub/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
+        metadata += self.tag_link({'href': '/webenv-pub/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
+        metadata += self.tag_link({'href': '/webenv-pub/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
 
         return self.tag_head('', [0,1], metadata)
 
@@ -936,7 +936,7 @@ class Layout(xhtml.Strict):
         
         if title in admonitions:
             attrs = {'class': 'admonition ' + title.lower()}
-            image = self.tag_img({'src': '/centos-web-pub/Images/' + title.lower() + '.png', 'alt': title}, [16,1])
+            image = self.tag_img({'src': '/webenv-pub/Images/' + title.lower() + '.png', 'alt': title}, [16,1])
             title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 0)
             output = image + title + body + self.separator()
         else:
@@ -951,7 +951,7 @@ class Layout(xhtml.Strict):
         """Returns page credits."""
         copyright = self.tag_p({'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
         license = self.tag_p({'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.license()))
-        credits = self.tag_img({'src': '/centos-web-pub/Images/top.png', 'alt': 'Top'}, [0,0])
+        credits = self.tag_img({'src': '/webenv-pub/Images/top.png', 'alt': 'Top'}, [0,0])
         credits = self.tag_a({'title': 'Top', 'href': '#top'}, [16,1], credits)
         credits = self.tag_div({'class': 'top'}, [12,1], credits, 1)
         credits = str(credits) + str(copyright) + str(license) 

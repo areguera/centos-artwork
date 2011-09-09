@@ -18,7 +18,7 @@ def page_navibar():
     attrs = []
 
     for i in names:
-        attrs.append({'href': '/centos-web/?p=' + i.lower()})
+        attrs.append({'href': '/webenv/?p=' + i.lower()})
 
     if 'p' in page.qs.keys():
         focus = page.qs['p'][0].lower()
