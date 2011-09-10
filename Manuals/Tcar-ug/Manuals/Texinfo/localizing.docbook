@@ -3,25 +3,63 @@
     <title>Texinfo Document Localization</title>
 
     <para>
-        Inside &TCAR;, documentation manuals are written in English
-        language and later translated to other languages. In the very
-        specific case of documentation manuals produced through
+        The documentation manuals inside &TCAR; are written in English
+        language first and translated to other languages later. In the
+        very specific case of documentation manuals produced through
         texinfo documentation backend, it is necessary to create one
-        manual structure for each language you decide to produce a
-        manual for. In this configuration, it is not possible to
-        separate translation messages from manual's content itself
-        because they both are the same thing.  Translators need to be
-        aware of changes committed up to English manuals, find out
-        where the changes happened exactly and, finally, update the
-        localized manuals they maintain in order to keep both English
-        and localized manuals syncronized one another.
+        manual structure for each language you decided to produce the
+        documentation manuals for. In this configuration, it is not
+        possible to separate translation messages from manual's
+        content because they both are the same thing.  Translators
+        need to be aware of changes committed up to English manuals,
+        find out where the changes happened exactly and, finally,
+        update the localized manuals they maintain in order to keep
+        both English and localized manuals syncronized one another.
     </para>
 
     <sect2 id="manuals-texinfo-l10n-language">
     <title>Language</title>
     <para>
-    ...
+        To create a documentation manual in English language you need
+        to be sure that the <envar>LANG</envar> environment variable
+        is set to <code>en_US.UTF-8</code> or something similar for
+        your user's session.  Likewise, if you want to create
+        documentation manuals in a language other than English, be
+        sure your user's session <envar>LANG</envar> environment
+        variable is set to the appropriate locale code.  Generally,
+        you can control the locale code of your user's session through
+        the graphical login screen, or once you've opened
+        the user's session by explicitly changing the value of
+        <envar>LANG</envar> environment variable to your prefered
+        locale inside the <filename>~/.bash_profile</filename> file.
+        To see the list of all the locales supported, you can use the
+        <command>locale -a | less</command> command.
     </para>
+
+    <para>
+        Inside the main definition file of each documentation manual,
+        the language information is set by texinfo
+        <code>@documentlanguage</code> command, when the documentation
+        manual is created through the <code>help</code> functionality
+        of <command>centos-art.sh</command> script.  Generally, there
+        is no need to change the language information set by
+        <code>@documentlanguage</code> command once the document has
+        been created, unless you mistakently create the manual for a
+        locale code different to that one you previously pretended in
+        first place.
+    </para>
+
+    <para>
+        When producing output, the language information set by
+        <code>@documentlanguage</code> texinfo command is ignore in
+        Info and HTML output produced by <command>makeinfo</command>
+        command in the <package>texinfo-4.8-14.el5</package> package,
+        but cosidered by Tex program to redefine various English words
+        used in the output (e.g., <quote>Chapter</quote>,
+        <quote>Index</quote>, <quote>See</quote>, and so on) based on
+        the current language set in.
+    </para>
+
     </sect2>
     
     <sect2 id="manuals-texinfo-l10n-encoding">
