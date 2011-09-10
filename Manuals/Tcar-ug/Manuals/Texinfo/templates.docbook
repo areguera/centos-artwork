@@ -36,7 +36,7 @@
         In order to create multilingual texinfo document templates,
         you can duplicate the texinfo document template used to build
         documentation manuals in English language from <filename
-        class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates/en_US</filename>
+        class="directory">branches/Scripts/Bash/Functions/Help/Texinfo/Templates/en_US</filename>
         to a new directory at the same directory level and using the
         language and country codification described  in the standards
         iso-639 and iso-3166, respectively. Once the directory has
@@ -58,7 +58,7 @@
     <para>
         The directory structure used to organize texinfo document
         templates take place under <filename
-        class="directory">trunk/Scripts/Functions/Help/Texinfo/Templates</filename>
+        class="directory">branches/Scripts/Bash/Functions/Help/Texinfo/Templates</filename>
         directory, as displayed in <xref
         linkend="manuals-texinfo-templates-1" />. In this structure,
         files suffixed with <filename
@@ -79,7 +79,7 @@
     <screeninfo>Texinfo document template</screeninfo>
     <mediaobject>
     <textobject>
-    <programlisting>trunk/Scripts/Functions/Help/Texinfo/Templates
+    <programlisting>branches/Scripts/Bash/Functions/Help/Texinfo/Templates
 |-- ${LANG}
 |   |-- Chapters
 |   |   |-- chapter-menu.texinfo
