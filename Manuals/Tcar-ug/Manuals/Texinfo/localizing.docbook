@@ -5,59 +5,86 @@
     <para>
         The localization of documentation manuals produced through
         texinfo documentation backend takes place by creating one
-        documentation manual for each language.  These manuals don't
-        have a direct relation among themselves except that one
-        adopted by people writting them in order to keep their content
-        syncronized one another.  This configuration needs to
-        predefine a source documentation manual and translated
-        versions which derivate from it so as to keep the localization
-        work organized. To keep track of changes, the underlaying
-        version control system must be used. Notice that most of these
-        limitations might be reduced if it would be possible to apply
-        <application>gettext</application> procedures to texinfo
-        source files.
+        documentation manual for each supported language.  These
+        manuals don't have a direct relation among themselves except
+        that one adopted by people writting them in order to keep
+        their content syncronized.  In this configuration translators
+        take one documentation manual as reference and produce
+        translated versions of it. To keep track of changes, the
+        underlaying version control system must be used. 
+    </para>
+
+    <para>
+        Notice that <application>gettext</application><footnote>
+        <para>
+            The <application>gettext</application> program  translates
+            a  natural language message into the user's language, by
+            looking up the translation in a message catalog. For more
+            information about <application>gettext</application>
+            program run <command>info gettext</command>.
+        </para>
+        </footnote> procedures cannot be applied to texinfo source
+        files. A possible work around would be to convert the
+        documentation manual from texinfo format to XML format and
+        then apply <application>gettext</application> procedures on it
+        through <command>xml2po</command> command. This would produce
+        a translated XML file which can be used to convert back the
+        documentation manual to texinfo format so it can be exported
+        to convenctional output formats. Even though it is possible to
+        convert texinfo source files into XML, the DTD and XSLT files
+        required to realize both markup validation and transnformation
+        back into texinfo format (or possibly other formats) are not
+        available inside &TCD; release 5.5.
     </para>
 
     <sect2 id="manuals-texinfo-l10n-language">
     <title>Texinfo Document Language</title>
     <para>
-        To create a documentation manual in English language the
+        The language information of documentation manuals produced
+        through texinfo documentation backend is defined by texinfo's
+        <code>@documentlanguage</code> command. This command is set in
+        the manual's main definition file and, generally, there is no
+        need to change it unless you mistakently create the manual for
+        a locale code different to that one you previously pretended
+        to do in first place.
+    </para>
+
+    <para>
+        The user's session locale information, as set in
+        <envar>LANG</envar> environment variable, determines the
+        language information used by new documentation manuals created
+        through the <function>help</function> functionality of
+        <command>centos-art.sh</command> script and the XHTML output
+        produced from <command>texi2html</command> command.  The
+        user's session locale information can be customized in the
+        graphical login screen before login, or once you've login by
+        explicitly setting the value of <envar>LANG</envar>
+        environment variable inside the
+        <filename>~/.bash_profile</filename> file. 
+    </para>
+
+    <tip>
+    <para>
+        To create documentation manuals in English language the
         <envar>LANG</envar> environment variable must be set to
         <code>en_US.UTF-8</code> or something similar.  Likewise, if
         you want to create documentation manuals in a language other
         than English, be sure the <envar>LANG</envar> environment
-        variable is set to the appropriate locale code.  Generally,
-        you can customize the user's session locale information
-        in the graphical login screen before login, or once you've
-        login by explicitly setting the value of <envar>LANG</envar>
-        environment variable inside the
-        <filename>~/.bash_profile</filename> file.  To see the list of
-        all the locales supported, you can use the
-        <command>locale -a | less</command> command.
+        variable is set to the appropriate locale code, based on the
+        output of <command>locale -a | less</command> command.
     </para>
-
+    </tip>
+     
     <para>
-        Inside the main definition file of each documentation manual,
-        the language information is set by texinfo's
-        <code>@documentlanguage</code> command, when the documentation
-        manual is created through the <code>help</code> functionality
-        of <command>centos-art.sh</command> script.  Generally, there
-        is no need to change the language information set by
-        <code>@documentlanguage</code> command once the document has
-        been created, unless you mistakently create the manual for a
-        locale code different to that one you previously pretended in
-        first place.
-    </para>
-
-    <para>
-        When producing output, the language information set by
-        <code>@documentlanguage</code> texinfo command is ignore in
-        Info and HTML output produced by <command>makeinfo</command>
-        command in the <package>texinfo-4.8-14.el5</package> package,
-        but cosidered by Tex program to redefine various English words
-        used in the output (e.g., <quote>Chapter</quote>,
-        <quote>Index</quote>, <quote>See</quote>, and so on) based on
-        the current language set in.
+        When producing output from texinfo source files, the language
+        information set by <code>@documentlanguage</code> texinfo
+        command is ignored in Info and HTML output produced by
+        <command>makeinfo</command> command in the
+        <package>texinfo-4.8-14.el5</package> package, but cosidered
+        by Tex program to redefine various English words used in the
+        output (e.g., <quote>Chapter</quote>, <quote>Index</quote>,
+        <quote>See</quote>, and so on) based on the current language
+        set in. 
     </para>
 
     </sect2>
