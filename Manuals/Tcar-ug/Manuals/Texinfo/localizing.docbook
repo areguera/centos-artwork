@@ -3,42 +3,42 @@
     <title>Texinfo Document Localization</title>
 
     <para>
-        The documentation manuals inside &TCAR; are written in English
-        language first and translated to other languages later. In the
-        very specific case of documentation manuals produced through
-        texinfo documentation backend, it is necessary to create one
-        manual structure for each language you decided to produce the
-        documentation manuals for. In this configuration, it is not
-        possible to separate translation messages from manual's
-        content because they both are the same thing.  Translators
-        need to be aware of changes committed up to English manuals,
-        find out where the changes happened exactly and, finally,
-        update the localized manuals they maintain in order to keep
-        both English and localized manuals syncronized one another.
+        The localization of documentation manuals produced through
+        texinfo documentation backend takes place by creating one
+        documentation manual for each language.  These manuals don't
+        have a direct relation among themselves except that one
+        adopted by people writting them in order to keep their content
+        syncronized one another.  This configuration needs to
+        predefine a source documentation manual and translated
+        versions which derivate from it so as to keep the localization
+        work organized. To keep track of changes, the underlaying
+        version control system must be used. Notice that most of these
+        limitations might be reduced if it would be possible to apply
+        <application>gettext</application> procedures to texinfo
+        source files.
     </para>
 
     <sect2 id="manuals-texinfo-l10n-language">
-    <title>Language</title>
+    <title>Texinfo Document Language</title>
     <para>
-        To create a documentation manual in English language you need
-        to be sure that the <envar>LANG</envar> environment variable
-        is set to <code>en_US.UTF-8</code> or something similar for
-        your user's session.  Likewise, if you want to create
-        documentation manuals in a language other than English, be
-        sure your user's session <envar>LANG</envar> environment
+        To create a documentation manual in English language the
+        <envar>LANG</envar> environment variable must be set to
+        <code>en_US.UTF-8</code> or something similar.  Likewise, if
+        you want to create documentation manuals in a language other
+        than English, be sure the <envar>LANG</envar> environment
         variable is set to the appropriate locale code.  Generally,
-        you can control the locale code of your user's session through
-        the graphical login screen, or once you've opened
-        the user's session by explicitly changing the value of
-        <envar>LANG</envar> environment variable to your prefered
-        locale inside the <filename>~/.bash_profile</filename> file.
-        To see the list of all the locales supported, you can use the
+        you can customize the user's session locale information
+        in the graphical login screen before login, or once you've
+        login by explicitly setting the value of <envar>LANG</envar>
+        environment variable inside the
+        <filename>~/.bash_profile</filename> file.  To see the list of
+        all the locales supported, you can use the
         <command>locale -a | less</command> command.
     </para>
 
     <para>
         Inside the main definition file of each documentation manual,
-        the language information is set by texinfo
+        the language information is set by texinfo's
         <code>@documentlanguage</code> command, when the documentation
         manual is created through the <code>help</code> functionality
         of <command>centos-art.sh</command> script.  Generally, there
@@ -63,7 +63,7 @@
     </sect2>
     
     <sect2 id="manuals-texinfo-l10n-encoding">
-    <title>Encoding</title>
+    <title>Texinfo Document Encoding</title>
     <para>
     ...
     </para>
