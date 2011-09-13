@@ -1,72 +1,175 @@
-<sect1>
+<sect1 id="manuals-texinfo-production">
 
-    <title>Texinfo Document Production</title>
+    <title>Texinfo Document Production Cycle</title>
 
     <para>
-        The production of documentation manuals written in Texinfo
-        format is realized through the <code>help</code> functionality
-        of <command>centos-art.sh</command> script, as described in
-        <xref linkend="scripts-bash-help" />.  To illustrate the
-        production cycle, let us consider the creation of
-        <quote>Repository File System</quote> documentation manual, as
-        example.
+        This section describes the procedure you should follow in
+        order to produce and maintain manuals through texinfo
+        documentation backend inside &TCAR;. To illustrate this
+        creation process, we'll use the <citetitle>TCAR-FS</citetitle>
+        manual as example.
+    </para>
+    
+    <sect2>
+    <title>Identifying Manual's Goals</title>
+    <para>
+        The first step to create a documentation manual is to make
+        yourself an idea of what such manual intends to document.  As
+        the repository directory structure was built on, there was an
+        emerging need to understand what each directory inside it was
+        for, how they could be used and how they could be connected
+        one another. At that moment the structure was very unstable
+        and explaining the whole idea of all directories inside &TCAR;
+        on one manual was not possible, there were many changing
+        concepts floting around which needed to be considered in the
+        same changing way.
+    </para>
+    
+    <para>
+        To understand what we were doing, it was decided to document
+        each directory inside the repository in order to better
+        understand the concepts behind them one by one, as well as how
+        they relate one another.  Later, summing all directory
+        documentations would let us, hypothetically, to correct the
+        whole idea through an improvement cycle that would consolidate
+        the final idea we try to implement.
+    </para>
+
+    </sect2>
+
+    <sect2>
+    <title>Identifying Manual's Title</title>
+    <para>
+        Once you've make yourself an clean idea of what the
+        documentation manual is for and the needs behind, it is time
+        for to define the manual's title and the manual's directory
+        name.  Both manuals' title and manual's directory name
+        describe what the documentation manual is about. The manual's
+        title is used inside the documentation and the manual's
+        directory name is used to store the related source files
+        inside the repository. As convenction, manual's title is a
+        few words phrase while manual's directory name is the
+        abbreviation of that phrase set as manual's title.
     </para>
 
     <para>
-        The first step for creating a documentation manual is to make
-        yourself an idea of what such manual intends to document.  The
-        <quote>Repository File System</quote> emerged with the need of
-        understanding what each directory inside &TCAR; was for, how
-        they could be used and how they connected themselves one
-        another, as the repository structure itself was built on.  At
-        the very begining, explaining the whole idea of all
-        directories inside &TCAR; on one manual was difficult, there
-        were many changing concepts floting around which needed to be
-        considered in the same changing way. So, as a way to
-        understand what we were doing, it was decided to adapt
-        documentation to such changes through the same principales we
-        followed to create functionalities inside
-        <command>centos-art.sh</command> script. This way, if programs
-        should do one thing well, each directory inside the repository
-        should be documented well in order to better understand what
-        they do and how they relate one another.  Later, summing all
-        directory documentations would let us, hypothetically, to
-        correct the whole idea through an improvement cycle that would
-        consolidate the final idea we try to implement. 
+        Following with our example, the documentation manual was
+        initially titled <quote>The CentOS Artwork Repository File
+        System</quote> but that name was too long to remain that way,
+        so it was abbreviated soon into <quote>TCAR-FS</quote> which
+        is less descriptive but easier to remember and doesn't need to
+        be translated into other languages. The related manual's
+        directory for it would be
+        <quote><filename>Tcar-fs</filename></quote> in order to comply
+        with the file name convenctions described at <xref
+        linkend="repo-convs-filenames" />.
     </para>
 
-    <para>
-        Once you've make yourself an idea of what the documentation
-        manual is for, it is time for you to define the manual title
-        and the manual directory name.  The manual title describes, in
-        few words, what the documentation manual is about. The manual
-        directory name describes the manual title in one or more words
-        separated by minus sign.<footnote>
-        <para>
-            ... a good convenction to follow here might be to use
-            acronyms or abbreviations from manual's title.
-        </para>
-        </footnote>
-        In our example, the documentation manual was initially titled
-        <quote>The CentOS Artwork Repository</quote> but later it
-        changed to <quote>Repository File System</quote> and its
-        manual directory name ended up being <code>Tcar-fs</code>.
-    </para>
+    </sect2>
 
+    <sect2>
+    <title>Identifying Manual's Structure</title>
     <para>
         Once both manual's title and manual's directory name have been
-        defined, it is time to planificate manual's content through
-        chapters and sections.  In our example, the documentation
-        manual is made of three chapters named <quote>The <filename
-        class="directory">trunk</filename> Directory</quote>,
-        <quote>The <filename class="directory">branches</filename>
-        Directory</quote> and <quote>The <filename
-        class="directory">tags</filename> Directory</quote> and one
-        appendix named <quote>Licenses</quote>. Inside each chapter
-        there is one documentation section for each directory in
-        &TCAR;.
+        defined, it is time to plan manual's structure through which
+        chapters and sections will be organized.  The
+        <citetitle>TCAR-FS</citetitle> manual has been following the
+        same organization of &TCAR; directories. Each directory inside
+        the repository can have its own documentation entry to store
+        related information that let people to communicate thoughts
+        about its content. As we are using texinfo format to write
+        such documentation entries, it is possible to refer other
+        documentation entries through cross reference.
     </para>
 
+    <para>
+        At this point we phase that the repository directory structure
+        has more levels deep than those texinfo sectioning commands
+        can conver. Notice that this is not a Texinfo limitation since
+        content in most manuals can be very good organized with the
+        sectioning levels provided by Texinfo system.  The thing is
+        that it is not possible to set one sectioning level for
+        each directory level deep inside the repository using Texinfo
+        sectioning command; the content organization must be
+        reaccomodated in order to fit the amount of sectioning
+        commands the Texinfo system provides.
+    </para>
+
+    <para>
+        As consequence of sectioning limitations, the
+        <citetitle>TCAR-FS</citetitle> manual was structured in the
+        following chapters:
+    </para>
+
+    <variablelist>
+
+    <varlistentry>
+    <term>Chapter 1. The <filename class="directory">trunk</filename>
+    Directory</term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>Chapter 2. The <filename class="directory">branches</filename>
+    Directory</term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>Chapter 3. The <filename class="directory">tags</filename>
+    Directory</term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        and the following appendixes:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term>Appendix A. Licenses</term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        In addition to these chapters and appendixes, there is one
+        special unnumbered chapter named <quote>Index</quote>. This
+        chapter organizes all index related commands you use
+        inside the documentation manual. Notice that this information
+        is auto-generated each time the manual's output files are
+        created.
+    </para>
+    </sect2>
+
+    <sect2>
+    <title>Implementing Manual's Structure</title>
+
+    <note>
+    <para>
+        Most production tasks related to documentation manuals written
+        in Texinfo format are standardized by the <code>help</code>
+        functionality of <command>centos-art.sh</command> script, as
+        described in <xref linkend="scripts-bash-help" />.
+    </para>
+    </note>
     <para>
         To create a manual like the one described so far, you need to
         use the <code>help</code> functionality of
@@ -127,7 +230,7 @@
     <note>
         <para>
             In the very specific case of <quote>tcar-fs</quote>
-            manual, it is possible to set chapter and section
+            manual, it is also possible to set chapter and section
             documentation entries using the form <filename
             class="directory">path/to/dir</filename>, as well.  For
             example, to document the <filename
@@ -145,5 +248,13 @@
     <para>
         ...
     </para>
+    </sect2>
 
+    <sect2>
+    <title>Maintaining Manual's Structure</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+        
 </sect1>
