@@ -3,18 +3,18 @@
     <title>Texinfo Document Internationalization</title>
 
     <para>
-        The internationalization of documentation manuals produced
-        through texinfo documentation backend takes place by creating
-        one documentation manual for each language individually.
-        Documentation manuals created in this configuration don't have
-        a direct relation among themselves except that one adopted by
-        people writting them in order to keep their content
-        syncronized.  In this configuration translators take one
-        documentation manual as reference (the source manual) and
-        produce several translated manuals based on its content.  To
-        keep track of changes inside the source manual, the
-        underlayout version control system must be used. Notice that
-        there is no direct way to apply
+        To produce localized documentation manuals through texinfo
+        documentation backend it is necessary to create one
+        documentation manual for each language it is desired to
+        support documentation for.  Documentation manuals created in
+        this configuration don't have a direct relation among
+        themselves except that one adopted by people writting them to
+        keep their content syncronized.  In this configuration
+        translators take one documentation manual as reference (a.k.a.
+        the source manual) and produce several translated manuals
+        based on its content.  To keep track of changes inside the
+        source manual, the underlaying version control system must be
+        used considering that there is no direct way to apply
         <application>gettext</application><footnote>
         <para>
             The <application>gettext</application> program  translates
@@ -29,44 +29,42 @@
     <para>
         In order to maintain localization of texinfo source files
         through <application>gettext</application> procedures, it is
-        necessary to convert the texinfo source files into XML format.
-        This way it would be possible to make use of the
+        necessary to convert the texinfo source files into
+        XML format first.  This way it would be possible to make use of
         <function>locale</function> and <function>render</function>
-        functionalities of <command>centos-art.sh</command> script to
-        maintain translation messages in different languages through
-        portable objets and producing localized XML files based on
-        such portable objects, respectively.  Once the localized XML
-        files are available, it would be matter of using an XSLT
-        processor (e.g., <command>xsltproc</command>) to realize the
-        convertion from XML to texinfo format. Nevertheless, this
-        workaround fails because the texinfo Document Type Definition
-        (DTD) required for validation and the related XSLT files
-        required for transformation itself are not available
-        inside &TCD; (release 5.5).
+        functionalities from <command>centos-art.sh</command> script
+        to maintain translation messages in different languages
+        through portable objets and producing localized XML files
+        based on such portable objects, respectively.  Once the
+        localized XML file is available, it would be a matter of using
+        an XSLT processor (see the <command>xsltproc</command>
+        command) to realize the convertion from XML to a localize
+        texinfo (or possible other) format.  Nevertheless, this
+        workaround fails because the Document Type Definition (DTD)
+        required to validate the XML file produced from
+        <command>makeinfo</command> (as in
+        <package>texinfo-4.8-14.el5</package>) is not availabe inside
+        &TCD; (release 5.5), nor it is the XSLT files required to
+        realize the transformation itself for such DTD.
     </para>
 
     <para>
-        Another similar approch to maintain localization of texinfo
+        Another similar approach to maintain localization of texinfo
         source files through <application>gettext</application>
         procedures would be to convert texinfo source file to DocBook
-        format, to whom there are DTD files available inside &TCD;.
-        This way it would be possible to make use of the
-        <function>locale</function> and <function>render</function>
-        functionalities of <command>centos-art.sh</command> script.
-        Nevertheless, this workaround seems fails when the DocBook
-        output is produced from <command>makeinfo</command> command
-        (as in <package>texinfo-4.8-14.el5</package>). It doesn't
-        produce a valid DocBook document, according to DocBook DTDs
-        available inside &TCD; (release 5.5) so, transformation of
-        such file isn't possible either.
+        format; for who the required DTD and XSLT files are available
+        inside &TCD;.  This way, following a procedure similar to that
+        one describe for XML files above, it would be possible to end
+        up having localized DocBook files that can be used as source
+        to produce localized output for both online and printing
+        media.  However, the DocBook output produced from
+        <command>makeinfo</command> command (as in
+        <package>texinfo-4.8-14.el5</package>) isn't a valid DocBook
+        document according to DocBook DTDs available inside &TCD;
+        (release 5.5) thus provoking the validation and transformation
+        of such a malformed document to fail.
     </para>
 
-    <para>
-        The only visible way to localize texinfo source files, at this
-        moment, is to create one documentation manual for each
-        language we want to support documentation for.
-    </para>
-        
     <sect2 id="manuals-texinfo-l10n-language">
     <title>Texinfo Document Language</title>
     <para>
@@ -85,14 +83,14 @@
     </para>
 
     <para>
-        The language information used in both the texinfo source files
-        and the XHTML output produced when they are rendered through
-        the <function>help</function> functionality of
-        <command>centos-art.sh</command> script is determined by the
-        user's session <envar>LANG</envar> environment variable.  This
-        variable can be customized in the graphical login screen
-        before login, or once you've login by explicitly setting the
-        value of <envar>LANG</envar> environment variable inside the
+        The language information used in both texinfo source files and
+        XHTML output produced by the <function>help</function>
+        functionality of <command>centos-art.sh</command> script is
+        determined by the user's session <envar>LANG</envar>
+        environment variable.  This variable can be customized in the
+        graphical login screen before login, or once you've login by
+        explicitly setting the value of <envar>LANG</envar>
+        environment variable inside the
         <filename>~/.bash_profile</filename> file. 
     </para>
 
@@ -104,20 +102,20 @@
         you want to create documentation manuals in a language other
         than English, be sure the <envar>LANG</envar> environment
         variable is set to the appropriate locale code, based on the
-        output of <command>locale -a | less</command> command.
+        output of the <command>locale -a | less</command> command.
     </para>
     </tip>
      
     <para>
-        When producing output from texinfo source files, the language
-        information set by <code>@documentlanguage</code> texinfo
-        command is ignored in Info and HTML output produced by
-        <command>makeinfo</command> command in the
-        <package>texinfo-4.8-14.el5</package> package, but cosidered
-        by Tex program to redefine various English words used in the
-        output (e.g., <quote>Chapter</quote>, <quote>Index</quote>,
+        When producing output from texinfo source files using the
+        <command>makeinfo</command> command (as in the
+        <package>texinfo-4.8-14.el5</package> package), the language
+        information set by <code>@documentlanguage</code> is ignored
+        in Info and HTML output, but cosidered by Tex program to
+        redefine various English words used in the PDF output (e.g.,
+        <quote>Chapter</quote>, <quote>Index</quote>,
         <quote>See</quote>, and so on) based on the current language
-        set in. 
+        set in.
     </para>
 
     </sect2>
@@ -126,71 +124,74 @@
     <title>Texinfo Document Encoding</title>
     <para>
         The encoding information of documentation manuals produced
-        trhough texinfo documentation backend is declared by texinfo's
-        <code>documentlanguage</code> command and can take
+        through texinfo documentation backend is declared by texinfo's
+        <code>@documentencoding</code> command and can take either
         <code>US-ASCII</code>, <code>ISO-8859-1</code>,
         <code>ISO-8859-15</code> or <code>ISO-8859-2</code> as
-        argument.  Nevertheless, the encoding information inside
-        documentation manuals produced through texinfo documentation
-        backend is not declared at all when documentation manuals are
-        created for first time in order for documents to be written
-        and read in terminals with an UTF-8 encoding set in (as it is
-        in &TCD;).
+        argument.  Nevertheless, you should be aware that the
+        <code>help</code> functionality of
+        <command>centos-art.sh</command> script doesn't declare the
+        <code>@documentencoding</code> inside texinfo source files.
+        Let's see why.
     </para>
 
     <para>
         When the <code>@documentencoding</code> command is set in
         texinfo source files, the terminal encoding you use to read
-        the Info output must be set to that encoding you provided as
-        argument for <code>@documentencoding</code> before using an
-        Info reader to open the Info output file. Otherwise, when
-        terminal and texinfo source files encoding definition differs
-        one another, characters defined through texinfo's special way
-        of producing floating accents won't be displayed as expected
-        (even when the <option>--enable-encoding</option> is
-        provided to <command>makeinfo</command> command). On the
-        other hand, when the <code>@documentencoding</code> command is
-        not set in texinfo source files, it is possible to write
-        documentation manuals in a UTF-8 encoding terminal and also
-        reading localized Info output, as well.  There is no need to
-        use texinfo's special way of producing floating accents since
-        the terminal encoding is able to interpret the characters
-        initially entered when the texinfo source files were written
-        in first place. 
+        the Info output produced from such files must be set to that
+        encoding information you provided as argument to
+        <code>@documentencoding</code> command; this, before using an
+        Info reader to open the Info output file in the terminal.
+        Otherwise, when the terminal and the texinfo source files
+        encoding definition differ one another, characters defined
+        through texinfo's special way of producing floating accents
+        won't be displayed as expected (even when the
+        <option>--enable-encoding</option> is provided to
+        <command>makeinfo</command> command). On the other hand, when
+        the <code>@documentencoding</code> command is not set in
+        texinfo source files, it is possible to write and read
+        documentation manuals using the UTF-8 encoding without needing
+        to use texinfo's special way of producing floating accents
+        because the terminal encoding would be able to interpret the
+        characters entered when the texinfo source files were written
+        in first place.
     </para>
     
     <para>
         When texinfo's special way of producing floating accents isn't
         used, HTML entities are not produced in XHTML output produced
-        by <command>texi2html</command> command and some accents
-        aren't well produced by <command>makeinfo</command> when PDF
-        output is produced, either.  In this last case, when producing
-        PDF output, you can realize what the floating accents are by
-        trying to produce an accentuated Spanish <code>i</code> letter
-        (e.g., <code>í</code>). When you do so, you'll note that that
-        construction puts the accentuation <emphasis>over</emphasis>
-        the <code>i</code> letter's dot, instead of removing the
-        <code>i</code> letter's dot and placing the accent in its
-        place. In the case of XHTML output, however, it possible to
-        produce well localized XHTML output by setting
+        by <command>texi2html</command>, nor in the HTML output
+        produced by <command>makeinfo</command>, nor in PDF output.
+        In this last case, when producing PDF output, you can realize
+        what the floating accents are by trying to produce an
+        accentuated Spanish <code>i</code> letter (e.g.,
+        <code>í</code>). When you do so, you'll note that that
+        construction puts the accentuation mark
+        <emphasis>over</emphasis> the <code>i</code> letter's dot,
+        instead of removing the <code>i</code> letter's dot and
+        put the accentuation mark on its place.  In the case of XHTML
+        output, however, it possible to produce well localized XHTML
+        output by setting
     </para>
 
     <screen>&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8" /&gt;</screen>
 
     <para>
-        on the head section of each XHTML output permits to all web
-        browsers supporting UTF-8 encoding to display the character
-        information correctly when reading it.
+        on the head section of each XHTML output to instruct the web
+        browsers what encoding to use to display the document content.
+        Of course, in order to display the document content correctly,
+        the web browser should provide support for UTF-8 encoding.
     </para>
 
     <para>
-        Based on these contradictions it was decided not to set the
-        @documentencoding command to texinfo source files produced by
-        the help functionality of centos-art.sh script. This desition
-        restricts texinfo documentation backend from producing well
-        localized PDF outputs from texinfo source files but permits it
-        to produce well localized Info, Text, and XHTML output that
-        can be read on UTF-8 ecoding terminals
+        These contradictions provide the reasons over which it was
+        decided not to set the <code>@documentencoding</code> in
+        texinfo source files produced by the <code>help</code>
+        functionality of <command>centos-art.sh</command> script. Now,
+        considering them, we can conclude that it is difficult to
+        produce well localized PDF output through texinfo
+        documentation backend while it is possible to produce well
+        localized Info, Text, and XHTML outputs through it.
     </para>
 
     </sect2>
