@@ -1,21 +1,21 @@
 <sect1 id="manuals-texinfo-l10n">
 
-    <title>Texinfo Document Localization</title>
+    <title>Texinfo Document Internationalization</title>
 
     <para>
-        The localization of documentation manuals produced through
-        texinfo documentation backend takes place by creating one
-        documentation manual for each language individually.  These
-        manuals don't have a direct relation among themselves except
-        that one adopted by people writting them in order to keep
-        their content syncronized.  In this configuration translators
-        take one documentation manual as reference and produce
-        translated versions of it. To keep track of changes, the
-        underlaying version control system must be used. 
-    </para>
-
-    <para>
-        Notice that <application>gettext</application><footnote>
+        The internationalization of documentation manuals produced
+        through texinfo documentation backend takes place by creating
+        one documentation manual for each language individually.
+        Documentation manuals created in this configuration don't have
+        a direct relation among themselves except that one adopted by
+        people writting them in order to keep their content
+        syncronized.  In this configuration translators take one
+        documentation manual as reference (the source manual) and
+        produce several translated manuals based on its content.  To
+        keep track of changes inside the source manual, the
+        underlayout version control system must be used. Notice that
+        there is no direct way to apply
+        <application>gettext</application><footnote>
         <para>
             The <application>gettext</application> program  translates
             a  natural language message into the user's language, by
@@ -23,44 +23,76 @@
             information about the <application>gettext</application>
             program, run <command>info gettext</command>.
         </para>
-        </footnote> procedures cannot be applied to texinfo source
-        files. A possible work around would be to convert each
-        documentation manual from texinfo format to XML format and
-        then apply <application>gettext</application> procedures on it
-        through <command>xml2po</command> command. This would produce
-        a translated XML file which can be used to convert back the
-        documentation manual to texinfo format so it can be exported
-        to convenctional output formats. Even though it is possible to
-        convert texinfo source files into XML, the DTD and XSLT files
-        required to realize both markup validation and transnformation
-        back into texinfo format (or possibly other formats) are not
-        available inside &TCD; release 5.5.
+        </footnote> procedures to texinfo source files.
     </para>
 
+    <para>
+        In order to maintain localization of texinfo source files
+        through <application>gettext</application> procedures, it is
+        necessary to convert the texinfo source files into XML format.
+        This way it would be possible to make use of the
+        <function>locale</function> and <function>render</function>
+        functionalities of <command>centos-art.sh</command> script to
+        maintain translation messages in different languages through
+        portable objets and producing localized XML files based on
+        such portable objects, respectively.  Once the localized XML
+        files are available, it would be matter of using an XSLT
+        processor (e.g., <command>xsltproc</command>) to realize the
+        convertion from XML to texinfo format. Nevertheless, this
+        workaround fails because the texinfo Document Type Definition
+        (DTD) required for validation and the related XSLT files
+        required for transformation itself are not available
+        inside &TCD; (release 5.5).
+    </para>
+
+    <para>
+        Another similar approch to maintain localization of texinfo
+        source files through <application>gettext</application>
+        procedures would be to convert texinfo source file to DocBook
+        format, to whom there are DTD files available inside &TCD;.
+        This way it would be possible to make use of the
+        <function>locale</function> and <function>render</function>
+        functionalities of <command>centos-art.sh</command> script.
+        Nevertheless, this workaround seems fails when the DocBook
+        output is produced from <command>makeinfo</command> command
+        (as in <package>texinfo-4.8-14.el5</package>). It doesn't
+        produce a valid DocBook document, according to DocBook DTDs
+        available inside &TCD; (release 5.5) so, transformation of
+        such file isn't possible either.
+    </para>
+
+    <para>
+        The only visible way to localize texinfo source files, at this
+        moment, is to create one documentation manual for each
+        language we want to support documentation for.
+    </para>
+        
     <sect2 id="manuals-texinfo-l10n-language">
     <title>Texinfo Document Language</title>
     <para>
-        The language information of documentation manuals produced
-        through texinfo documentation backend is declared by texinfo's
-        <code>@documentlanguage</code> command and can take any
-        language code from ISO-639 as argument. This command is set in
-        the manual's main definition file and, generally, there is no
-        need to change it unless you mistakently create the manual for
-        a locale code different to that one you previously pretended
-        to do in first place.
+        The language information of those documentation manuals
+        produced through texinfo documentation backend is declared by
+        texinfo's <code>@documentlanguage</code> command.  This
+        command receives one argument refering the language code (as
+        in ISO-639 standard) and must be set inside the manual's main
+        definition file. Generally, there is no need to change the
+        document language declaration once it has been created by the
+        <function>help</function> functionality of
+        <command>centos-art.sh</command> script; unless you
+        mistakently create the manual for a locale code different to
+        that one you previously pretended to do in first place, of
+        course.
     </para>
 
     <para>
-        The user's session locale information, as set in
-        <envar>LANG</envar> environment variable, determines the
-        language information used by new documentation manuals created
-        through the <function>help</function> functionality of
-        <command>centos-art.sh</command> script and its XHTML output
-        produced from <command>texi2html</command> command.  The
-        user's session locale information can be customized in the
-        graphical login screen before login, or once you've login by
-        explicitly setting the value of <envar>LANG</envar>
-        environment variable inside the
+        The language information used in both the texinfo source files
+        and the XHTML output produced when they are rendered through
+        the <function>help</function> functionality of
+        <command>centos-art.sh</command> script is determined by the
+        user's session <envar>LANG</envar> environment variable.  This
+        variable can be customized in the graphical login screen
+        before login, or once you've login by explicitly setting the
+        value of <envar>LANG</envar> environment variable inside the
         <filename>~/.bash_profile</filename> file. 
     </para>
 
