@@ -118,7 +118,7 @@ div.tip table td img,
 div.important table td img,
 div.caution table td img,
 div.warning table td img {
-    margin: 1em 10px;
+    margin: 10px;
     }
 
 div.note table td p,
@@ -126,7 +126,8 @@ div.tip table td p,
 div.important table td p,
 div.caution table td p,
 div.warning table td p {
-    margin: 1em 15px 1em 0;
+    margin: 10px 25px 15px 0;
+    color: #000;
     }
 
 div.note pre,
@@ -135,7 +136,7 @@ div.important pre,
 div.caution pre,
 div.warning pre {
     border: none;
-    background-color: #333;
+    background-color: #000;
     color: #FFFFFF;
     margin: 0 15px 1em 0;
     padding: 0.5em 1em 0.5em 1em;
