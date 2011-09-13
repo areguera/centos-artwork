@@ -185,13 +185,19 @@
 
     <para>
         These contradictions provide the reasons over which it was
-        decided not to set the <code>@documentencoding</code> in
+        decided not to set the <code>@documentencoding</code> in those
         texinfo source files produced by the <code>help</code>
         functionality of <command>centos-art.sh</command> script. Now,
-        considering them, we can conclude that it is difficult to
-        produce well localized PDF output through texinfo
-        documentation backend while it is possible to produce well
-        localized Info, Text, and XHTML outputs through it.
+        considering them, we can conclude that it is no viable way to
+        localize texinfo source files through
+        <application>gettext</application> procedures so one
+        documentation manual must be created for each language we
+        desire to support documentation for. In this configuration,
+        it is difficult the production of well localized PDF output,
+        but it is possible to produce well localized Info, Text, and
+        XHTML outputs as long as no document encoding be explicitly
+        set inside texinfo source files and UTF-8 be used as default
+        terminal character encoding.
     </para>
 
     </sect2>
