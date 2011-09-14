@@ -3,36 +3,36 @@
     <title>Texinfo Document Production Cycle</title>
 
     <para>
-        This section describes the procedure you should follow in
-        order to produce and maintain manuals through texinfo
-        documentation backend inside &TCAR;. To illustrate this
-        creation process, we'll use the <citetitle>TCAR-FS</citetitle>
-        manual as example.
+        This section describes the procedure you should follow to
+        produce and maintain manuals through texinfo documentation
+        backend inside &TCAR;. To illustrate this creation process,
+        we'll use the <citetitle>TCAR-FS</citetitle> manual as
+        example.
     </para>
     
     <sect2>
     <title>Identifying Manual's Goals</title>
     <para>
         The first step to create a documentation manual is to make
-        yourself an idea of what such manual intends to document.  As
-        the repository directory structure was built on, there was an
-        emerging need to understand what each directory inside it was
-        for, how they could be used and how they could be connected
-        one another. At that moment the structure was very unstable
-        and explaining the whole idea of all directories inside &TCAR;
-        on one manual was not possible, there were many changing
+        yourself an clean idea about what such manual will document
+        exactly.  As the repository directory structure was built on,
+        there was an emerging need to understand what each directory
+        inside it was for, how they could be used and how they could
+        be connected one another. At that moment the directory
+        structure was very unstable and explaining the whole idea
+        behind it wouldn't be possible, there were many changing
         concepts floting around which needed to be considered in the
         same changing way.
     </para>
     
     <para>
         To understand what we were doing, it was decided to document
-        each directory inside the repository in order to better
-        understand the concepts behind them one by one, as well as how
-        they relate one another.  Later, summing all directory
-        documentations would let us, hypothetically, to correct the
-        whole idea through an improvement cycle that would consolidate
-        the final idea we try to implement.
+        each directory inside the repository individually so as to
+        better understand the concepts it implements and how they
+        relate one another.  Later, by putting all directory
+        documentations together, it would be possible (hypothetically)
+        to correct the whole idea through an improvement cycle that
+        would consolidate the final idea we try to implement.
     </para>
 
     </sect2>
