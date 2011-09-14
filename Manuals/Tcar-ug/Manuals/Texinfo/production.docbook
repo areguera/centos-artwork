@@ -96,9 +96,9 @@
     </para>
 
     <para>
-        As consequence of sectioning limitations, the
-        <citetitle>TCAR-FS</citetitle> manual was structured in the
-        following chapters:
+        As consequence of sectioning limitations described above, the
+        <citetitle>TCAR-FS</citetitle> manual was structured as
+        following:
     </para>
 
     <variablelist>
@@ -108,7 +108,15 @@
     Directory</term>
     <listitem>
     <para>
-        ...
+        This chapter describes the <filename>trunk</filename>
+        directory and all directories inside it. The first level of
+        directories (i.e., the trunk directory itself) is described
+        inside the chapter entry. Deeper directory levels are all
+        documented through sections and have a file for their own. It
+        is also possible to write subsections and subsubsections,
+        however, they don't have a file for their own as sections do.
+        Subsections and Subsubsections should be written as part of
+        section files (i.e., when writting sections).
     </para>
     </listitem>
     </varlistentry>
@@ -118,7 +126,10 @@
     Directory</term>
     <listitem>
     <para>
-        ...
+        This chapter describes the <filename>branches</filename>
+        directory and all directories inside it following the same
+        structure described for <filename>trunk</filename> directory
+        above.
     </para>
     </listitem>
     </varlistentry>
@@ -128,48 +139,62 @@
     Directory</term>
     <listitem>
     <para>
-        ...
+        This chapter describes the <filename>tags</filename> directory
+        and all directories inside it following the same structure
+        described for <filename>trunk</filename> directory above.
     </para>
     </listitem>
     </varlistentry>
-    </variablelist>
 
-    <para>
-        and the following appendixes:
-    </para>
-
-    <variablelist>
     <varlistentry>
     <term>Appendix A. Licenses</term>
     <listitem>
     <para>
-        ...
+        This appendix is confined to organize licenses mentioned
+        in the manual. The content of this appendix is out of
+        documenatation manual scope itself and is shared among all
+        documentation manuals written through the
+        <function>help</function> of <command>centos-art.sh</command>
+        script inside &TCAR;. To know how to edit the content of this
+        chapter, see <xref linkend="manuals-texinfo-templates" />.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>Index</term>
+    <listitem>
+    <para>
+        This chapter organizes links to those index definitions you
+        defined inside the documentation manual. The index information
+        displayed by this chapter is auto-generated each time the
+        manual's output files are created so this chapter is not
+        editable.
     </para>
     </listitem>
     </varlistentry>
     </variablelist>
 
     <para>
-        In addition to these chapters and appendixes, there is one
-        special unnumbered chapter named <quote>Index</quote>. This
-        chapter organizes all index related commands you use
-        inside the documentation manual. Notice that this information
-        is auto-generated each time the manual's output files are
-        created.
+        The structure of other documentation manuals is very similar
+        to that one described so far. When you create a new
+        documentation manual it is created with a base structure that
+        includes the <quote>Licenses</quote> appendix and the
+        <quote>Index</quote> unnumbered chapter only. This structure
+        is ready for output but you surely found it useless since no
+        content is described in it (execpt for the licenses, of
+        course).  In order to describe inside a documentation manual
+        recently created, you need to create the chapters it will have
+        and the sections inside them, as described in <xref
+        linkend="manuals-texinfo-production-implementing-structure"
+        />.
     </para>
+
     </sect2>
 
-    <sect2>
+    <sect2 id="manuals-texinfo-production-implementing-structure">
     <title>Implementing Manual's Structure</title>
 
-    <note>
-    <para>
-        Most production tasks related to documentation manuals written
-        in Texinfo format are standardized by the <code>help</code>
-        functionality of <command>centos-art.sh</command> script, as
-        described in <xref linkend="scripts-bash-help" />.
-    </para>
-    </note>
     <para>
         To create a manual like the one described so far, you need to
         use the <code>help</code> functionality of
@@ -181,35 +206,39 @@
 
     <varlistentry>
     <term>
-        <command>centos-art help --edit tcar-fs</command>
+        <command>centos-art help --edit "tcar-fs"</command>
     </term>
     <listitem>
     <para>
         This command creates the base structure of
-        <quote>tcar-fs</quote> manual and opens its main definition
-        file with your favorite text editor so you can update values
-        like title, subtitle, author, etc.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term>
-        <command>centos-art help --edit tcar-fs::introduction</command>
-    </term>
-    <listitem>
-    <para>
-        This command creates the base structure of
-        <quote>introduction</quote> chapter and opens its main
+        <citetitle>TCAR-FS</citetitle> manual and opens its main
         definition file with your favorite text editor so you can
-        update the chapter introduction.
+        update manual's definition values like title, subtitle,
+        author, etc.
     </para>
     </listitem>
     </varlistentry>
 
     <varlistentry>
     <term>
-        <command>centos-art help --edit tcar-fs::trunk:identity</command>
+        <command>centos-art help --edit "tcar-fs::trunk"</command>
+    </term>
+    <listitem>
+    <para>
+        This command creates the base structure for the
+        <quote>trunk</quote> chapter and opens its main definition
+        file with your favorite text editor so you can update the
+        chapter introduction. This very same procedure is used to
+        create <quote>branches</quote> and <quote>tags</quote>
+        chapters, just be sure to change the chapter field
+        accordingly.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit "tcar-fs::trunk:identity"</command>
     </term>
     <listitem>
     <para>
@@ -220,40 +249,41 @@
         class="directory">trunk/Identity</filename> directory inside
         &TCAR;. In order to document other directories, follow the
         same procedure but using minus signs to separate directories.
-        For example, to document the <filename
-        class="directory">trunk/Identity/Models/Themes</filename>
+        For example, to document the <quote><filename
+        class="directory">trunk/Identity/Models/Themes</filename></quote>
         directory you should use the
-        <quote>tcar-fs:trunk:identity-models-themes</quote>
+        <quote><code>tcar-fs::trunk:identity-models-themes</code></quote>
         documentation entry.
     </para>
     
     <note>
         <para>
-            In the very specific case of <quote>tcar-fs</quote>
-            manual, it is also possible to set chapter and section
-            documentation entries using the form <filename
-            class="directory">path/to/dir</filename>, as well.  For
-            example, to document the <filename
-            class="directory">trunk/Identity/Models/Themes</filename>
-            directory you can execute the following command:
-
-            <screen>centos-art help --edit trunk/Identity/Models/Themes</screen>
+            In the very specific case of
+            <citetitle>TCAR-FS</citetitle> manual, it is also possible
+            to refer chapters and sections using a <quote><filename
+            class="directory">path/to/dir</filename></quote> format.
+            For example, the reference
+            <quote><code>tcar-fs::trunk:identity-models-themes</code></quote>
+            can also be specified as <quote><filename
+            class="directory">trunk/Identity/Models/Themes</filename></quote>,
+            in case you feel more confortable with it than the former
+            one.
         </para>
     </note>
     </listitem>
     </varlistentry>
-
     </variablelist>
 
-    <para>
-        ...
-    </para>
     </sect2>
 
     <sect2>
     <title>Maintaining Manual's Structure</title>
     <para>
-        ...
+        Most maintaining tasks related to documentation manuals
+        written through texinfo documentation backend are standardized
+        by the <code>help</code> functionality of
+        <command>centos-art.sh</command> script, as described in <xref
+        linkend="scripts-bash-help" />.
     </para>
     </sect2>
         
