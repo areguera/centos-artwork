@@ -72,7 +72,7 @@
 
     </sect2>
 
-    <sect2>
+    <sect2 id="manuals-texinfo-production-identifying-structure">
     <title>Identifying Document Structure</title>
     <para>
         Once both manual's title and manual's directory name have been
@@ -201,8 +201,9 @@
     <title>Implementing Document Structure</title>
 
     <para>
-        To create a manual like the one described so far, you need to
-        use the <code>help</code> functionality of
+        To create a manual like the one described <xref
+        linkend="manuals-texinfo-production-identifying-structure" />,
+        you need to use the <code>help</code> functionality of
         <command>centos-art.sh</command> script as it is described in
         the following list of commands:
     </para>
