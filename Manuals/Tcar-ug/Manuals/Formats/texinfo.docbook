@@ -1,0 +1,310 @@
+<sect1 id="manuals-format-texinfo">
+
+    <title>Texinfo Documentation Format</title>
+
+    <para>
+        This section describes how the Texinfo documentation format is
+        implemented inside the <function>help</function> functionality
+        of <command>centos-art.sh</command> script to produce
+        documentation manuals inside &TCAR;. More information about
+        Texinfo documentation system itself can be found by running
+        the <command>info texinfo</command> command.
+    </para>
+
+    <sect2 id="manuals-formats-texinfo-structure">
+    <title>Texinfo Document Structure</title>
+    <para>
+        The texinfo document structure provided by
+        <function>help</function> functionality creates an
+        organization that makes documentation manuals written in
+        texinfo format to be scalable and maintainable through time,
+        just as described in <xref
+        linkend="manuals-production-identifying-structure" />.
+        Structuring considerations follow the idea of an upside-down
+        tree to organize chapters, sections, subsections, and the
+        like. The document initiates with a Top node which contains
+        manual's main definitions (e.g., title, copyright note,
+        abstract, and the list of chapters).  Inside each chapter the
+        information is logically organized in sections, subsections
+        and subsubsections.
+    </para>
+
+    <para> 
+        The first time you use the <function>help</function>
+        functionality to create a documentation manual in texinfo
+        format, the <function>help</function> functionality considers
+        the working directory you are placed in to determine where to
+        store the documentation manual source files.  When the current
+        working directory is <filename
+        class="directory">~/artwork/branches/Manuals/Texinfo</filename>,
+        the documentation manual directory is created therein.  On all
+        other situations, the documentation manual directory is
+        created under <filename
+        class="directory">~/artwork/trunk/Manuals</filename>
+        directory.  Once the documentation manual directory has been
+        created, the <function>help</function> functionality creates
+        the related definition files using texinfo documentation
+        templates as described in <xref
+        linkend="manuals-formats-texinfo-templates"
+        />.
+    </para>
+
+    <para>
+        Inside the documentation manual directory, source files are
+        stored inside language specific directories.  Language
+        specific directories are necessary to implement
+        internationalization of source files written in texinfo
+        format, as described in <xref
+        linkend="manuals-formats-texinfo-l10n" />.
+    </para>
+        
+    <para>
+        Inside the language specific directory, the files
+    </para>
+
+    <screen>
+${MANUAL_NAME}.texinfo
+${MANUAL_NAME}-index.texinfo
+${MANUAL_NAME}-menu.texinfo
+${MANUAL_NAME}-nodes.texinfo</screen>
+
+    <para>
+        exist to store the manual's main definitions (e.g., title,
+        subtitle, author, copyright notice, chapters, appendixes,
+        indexes and all the similar stuff a documentation manual would
+        have).  In addition to these files, there is one directory for
+        each chapter created inside the manual.  Inside each chapter
+        directory, the files
+    </para>
+
+    <screen>
+chapter.texinfo
+chapter-menu.texinfo
+chapter-nodes.texinfo</screen> 
+
+    <para>
+        exist to control section definitions related to the chapter
+        directory they belong to.  The documentation manual content
+        itself is stored in section files (a.k.a.
+        <quote>documentation entries</quote>) suffixed with <filename
+        class="extension">texinfo</filename> extension and arbitrary
+        names, as it is displayed in <xref
+        linkend="manuals-texinfo-structure-1" />.
+    </para>
+
+    <example id="manuals-texinfo-structure-1">
+    <title>Texinfo document structure</title>
+    <screenshot>
+    <screeninfo>Texinfo document structure</screeninfo>
+    <mediaobject>
+    <textobject>
+    <programlisting>trunk/Manuals/${MANUAL_NAME}
+`-- ${LANG}
+    |-- ${CHAPTER_NAME}
+    |   |-- chapter-menu.texinfo
+    |   |-- chapter-nodes.texinfo
+    |   |-- chapter.texinfo
+    |   `-- ${SECTION_NAME}.texinfo
+    |-- Licenses
+    |   |-- chapter-menu.texinfo
+    |   |-- chapter-nodes.texinfo
+    |   `-- chapter.texinfo
+    |-- ${MANUAL_NAME}-index.texinfo
+    |-- ${MANUAL_NAME}-menu.texinfo
+    |-- ${MANUAL_NAME}-nodes.texinfo
+    `-- ${MANUAL_NAME}.texinfo</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+    </sect2>
+
+    <sect2 id="manuals-formats-texinfo-templates">
+    <title>Texinfo Document Templates</title>
+    <para>
+        Texinfo document templates provide the texinfo document design
+        model that <function>help</function> functionality needs to
+        create and maintain texinfo document structures like that one
+        described in <xref linkend="manuals-formats-texinfo-structure" />.
+    </para>
+
+    <para>
+        Texinfo document templates are language-specific. This means
+        that there is (or at least must be) one texinfo document
+        template for each language you want to write documentation
+        manuals in texinfo format.  Using one texinfo document
+        template for each leanguage is required because, it is not
+        possible to retrive translatable strings from source files
+        (e.g., through <application>gettext</application> procedures)
+        so translators can localize documentation source files to
+        other languages, independently from documentors.
+    </para>
+
+    <note>
+    <para>
+        When the <code>help</code> functionality doesn't find a
+        texinfo document template for that language the documentation
+        manual is being currently created for, the <code>help</code>
+        functionality takes the files it needs from texinfo document
+        templates written in English language then.
+    </para>
+    </note>
+
+    <para>
+        The files related to texinfo document templates are stored in 
+    </para>
+
+    <screen>
+~/artwork/trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
+
+    <para>
+        directory, as displayed in <xref
+        linkend="manuals-texinfo-templates-1" />. In this structure,
+        the initial state of manual's source files is customized by
+        the following files:
+    </para>
+
+    <variablelist>
+
+    <varlistentry>
+    <term><filename>chapter.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>section.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter-menu.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter-nodes.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+        
+    <para>
+        There are other files that aren't related to manual's source
+        files, but to manual's output files. Such files are described
+        below and can be found both inside and outside the language
+        specific directories so you can control common and specific
+        output settings through them.
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><filename>manual-ini.pl</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>manual.sed</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>manual.conf</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    
+
+    <example id="manuals-texinfo-templates-1">
+    <title>Texinfo document template</title>
+    <screenshot>
+    <screeninfo>Texinfo document template</screeninfo>
+    <mediaobject>
+    <textobject>
+    <programlisting>~/artwork/trunk/Scripts/Bash/Functions/Help/Texinfo/Templates
+|-- ${LANG}
+|   |-- Chapters
+|   |   |-- chapter-menu.texinfo
+|   |   |-- chapter-nodes.texinfo
+|   |   |-- chapter.texinfo
+|   |   `-- section.texinfo
+|   |-- Licenses
+|   |   |-- GFDL.texinfo
+|   |   |-- GPL.texinfo
+|   |   |-- chapter-menu.texinfo
+|   |   |-- chapter-nodes.texinfo
+|   |   `-- chapter.texinfo
+|   |-- manual-index.texinfo
+|   |-- manual-init.pl
+|   |-- manual-menu.texinfo
+|   |-- manual-nodes.texinfo
+|   |-- manual.conf
+|   |-- manual.sed
+|   `-- manual.texinfo
+|-- manual-init.pl
+`-- manual.sed</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
+    <para>
+        Inside the directory structure of texinfo document templates,
+        the <filename class="directory">Chapters</filename> directory
+        organizes chapter specific models used to create and maintain
+        both chapter and sections inside manuals. On the other hand,
+        the <filename class="directory">Licenses</filename> directory
+        organizes the license information linked from all manuals.
+        Notice the license information is not copied into
+        documentation manuals when they are created, but refered from
+        this location where they are maintained.  This configuration
+        permites that all documentation manuals written in texinfo
+        format inside &TCAR; do use the same license information and
+        if a change is committed to the license files, such changes be
+        immediatly propagated to documentation manuals the next time
+        their output files be updated.
+    </para>
+    </sect2>
+
+    <sect2>
+    <title>Texinfo Document Configuration</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+    <sect2 id="manuals-formats-texinfo-l10n">
+    <title>Texinfo Document Internationalization</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+</sect1>
+

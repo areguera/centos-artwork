@@ -1,0 +1,29 @@
+<sect1>
+    <title>Identifying Document Title</title>
+    <para>
+        Once you've make yourself an clean idea of what the
+        documentation manual is for and the needs behind, it is time
+        for to define the manual's title and the manual's directory
+        name.  Both manuals' title and manual's directory name
+        describe what the documentation manual is about. The manual's
+        title is used inside the documentation and the manual's
+        directory name is used to store the related source files
+        inside the repository. As convenction, manual's title is a
+        few words phrase while manual's directory name is the
+        abbreviation of that phrase set as manual's title.
+    </para>
+
+    <para>
+        Following with our example, the documentation manual was
+        initially titled <quote>The CentOS Artwork Repository File
+        System</quote> but that name was too long to remain that way,
+        so it was abbreviated soon into <quote>TCAR-FS</quote> which
+        is less descriptive but easier to remember and doesn't need to
+        be translated into other languages. The related manual's
+        directory for it would be
+        <quote><filename>Tcar-fs</filename></quote> in order to comply
+        with the file name convenctions described at <xref
+        linkend="repo-convs-filenames" />.
+    </para>
+
+</sect1>
