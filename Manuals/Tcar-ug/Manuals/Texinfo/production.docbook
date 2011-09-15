@@ -11,34 +11,39 @@
     </para>
     
     <sect2>
-    <title>Identifying Manual's Goals</title>
+    <title>Identifying Document Goals</title>
     <para>
-        The first step to create a documentation manual is to make
-        yourself an clean idea about what such manual will document
-        exactly.  As the repository directory structure was built on,
-        there was an emerging need to understand what each directory
-        inside it was for, how they could be used and how they could
-        be connected one another. At that moment the directory
-        structure was very unstable and explaining the whole idea
-        behind it wouldn't be possible, there were many changing
-        concepts floting around which needed to be considered in the
-        same changing way.
+        Before the <citetitle>TCAR-FS</citetitle> exit, there was an
+        emerging need to understand what each directory inside the
+        growing repository layout was for, how they could be used and
+        how they could be connected one another. At that moment the
+        directory structure was very unstable and explaining the whole
+        idea behind it wouldn't be possible, there were many changing
+        concepts floating around which needed to be considered in the
+        same changing way. So, to understand what was happening, the
+        <citetitle>TCAR-FS</citetitle> documentation manual appeared.
     </para>
     
     <para>
-        To understand what we were doing, it was decided to document
-        each directory inside the repository individually so as to
-        better understand the concepts it implements and how they
-        relate one another.  Later, by putting all directory
-        documentations together, it would be possible (hypothetically)
-        to correct the whole idea through an improvement cycle that
-        would consolidate the final idea we try to implement.
+        The <citetitle>TCAR-FS</citetitle> manual let us to document
+        each directory inside the repository individually and, later,
+        by considering all directory documentations together, it would
+        be possible (hypothetically) to correct the whole idea through
+        an improvement cycle that would consolidate the final idea we
+        try to implement.
+    </para>
+    
+    <para>
+        The characteristics of other documentation manuals will surely
+        be different from those described above, however, it would be
+        helpful to make yourself an clean idea about what you are
+        going to document exactly before putting your hands on it.
     </para>
 
     </sect2>
 
     <sect2>
-    <title>Identifying Manual's Title</title>
+    <title>Identifying Document Title</title>
     <para>
         Once you've make yourself an clean idea of what the
         documentation manual is for and the needs behind, it is time
@@ -68,7 +73,7 @@
     </sect2>
 
     <sect2>
-    <title>Identifying Manual's Structure</title>
+    <title>Identifying Document Structure</title>
     <para>
         Once both manual's title and manual's directory name have been
         defined, it is time to plan manual's structure through which
@@ -193,7 +198,7 @@
     </sect2>
 
     <sect2 id="manuals-texinfo-production-implementing-structure">
-    <title>Implementing Manual's Structure</title>
+    <title>Implementing Document Structure</title>
 
     <para>
         To create a manual like the one described so far, you need to
@@ -277,7 +282,7 @@
     </sect2>
 
     <sect2>
-    <title>Maintaining Manual's Structure</title>
+    <title>Maintaining Document Structure</title>
     <para>
         Most maintaining tasks related to documentation manuals
         written through texinfo documentation backend are standardized
