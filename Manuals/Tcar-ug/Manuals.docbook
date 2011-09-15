@@ -13,21 +13,17 @@
             <application>LaTeX</application>, etc.).  Structuring
             tasks related to documentation systems (e.g., creating,
             editing, deleting, copying, renaming, etc.) are
-            standardized through <quote>documentation backends</quote>
-            inside the <command>centos-art.sh</command> script.
-            Documentation backends encapsulate the specificities of
-            each documentation formats and are made available to you
-            through the <code>help</code> functionality, as described
-            in <xref linkend="scripts-bash-help" />.  This way, people
-            documenting don't need to deal with structuring tasks like
-            creating files, updating menus, nodes, cross references
-            and be aware of where to put the files.
+            standardized through the <code>help</code> functionality
+            of <command>centos-art.sh</command> script.  This way,
+            people writting documentation don't need to deal with
+            structuring tasks like creating files, updating menus,
+            nodes, cross references and be aware of where to put the
+            files.
         </para>
 
     </partintro>
 
-    &manuals-texinfo;
-    &manuals-docbook;
-    &manuals-latex;
+    &manuals-production;
+    &manuals-formats;
 
 </part>
