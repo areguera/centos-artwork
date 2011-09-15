@@ -59,36 +59,92 @@
     </para>
         
     <para>
-        Inside the language specific directory, the files
-    </para>
-
-    <screen>
-${MANUAL_NAME}.texinfo
-${MANUAL_NAME}-index.texinfo
-${MANUAL_NAME}-menu.texinfo
-${MANUAL_NAME}-nodes.texinfo</screen>
-
-    <para>
+        Inside the language specific directory, the following files
         exist to store the manual's main definitions (e.g., title,
         subtitle, author, copyright notice, chapters, appendixes,
         indexes and all the similar stuff a documentation manual would
-        have).  In addition to these files, there is one directory for
-        each chapter created inside the manual.  Inside each chapter
-        directory, the files
+        have). 
     </para>
 
-    <screen>
-chapter.texinfo
-chapter-menu.texinfo
-chapter-nodes.texinfo</screen> 
+    <variablelist>
+    <varlistentry>
+    <term><filename>${MANUAL_NAME}.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>${MANUAL_NAME}-index.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>${MANUAL_NAME}-menu.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>${MANUAL_NAME}-nodes.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
 
     <para>
-        exist to control section definitions related to the chapter
-        directory they belong to.  The documentation manual content
-        itself is stored in section files (a.k.a.
-        <quote>documentation entries</quote>) suffixed with <filename
-        class="extension">texinfo</filename> extension and arbitrary
-        names, as it is displayed in <xref
+        In addition to these files, there is one directory for each
+        chapter created inside the manual.  Inside each chapter
+        directory, the following files exist to control section
+        definitions related to the chapter directory they belong to.
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><filename>chapter.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter-menu.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter-nodes.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        The documentation manual content itself is stored in section
+        files (a.k.a.  <quote>documentation entries</quote>) suffixed
+        with a <filename class="extension">texinfo</filename>
+        extension and arbitrary names, as it is illustrated in <xref
         linkend="manuals-texinfo-structure-1" />.
     </para>
 
@@ -302,8 +358,205 @@ chapter-nodes.texinfo</screen>
     <sect2 id="manuals-formats-texinfo-l10n">
     <title>Texinfo Document Internationalization</title>
     <para>
-        ...
+        To produce localized documentation manuals through texinfo
+        documentation backend it is necessary to create one
+        documentation manual for each language it is desired to
+        support documentation for.  Documentation manuals created in
+        this configuration don't have a direct relation among
+        themselves except that one adopted by people writting them to
+        keep their content syncronized.  In this configuration
+        translators take one documentation manual as reference (a.k.a.
+        the source manual) and produce several translated manuals
+        based on its content.  To keep track of changes inside the
+        source manual, the underlaying version control system must be
+        used considering that there is no direct way to apply
+        <application>gettext</application><footnote>
+        <para>
+            The <application>gettext</application> program  translates
+            a  natural language message into the user's language, by
+            looking up the translation in a message catalog. For more
+            information about the <application>gettext</application>
+            program, run <command>info gettext</command>.
+        </para>
+        </footnote> procedures to texinfo source files.
     </para>
+
+    <para>
+        In order to maintain localization of texinfo source files
+        through <application>gettext</application> procedures, it is
+        necessary to convert the texinfo source files into
+        XML format first.  This way it would be possible to make use of
+        <function>locale</function> and <function>render</function>
+        functionalities from <command>centos-art.sh</command> script
+        to maintain translation messages in different languages
+        through portable objets and producing localized XML files
+        based on such portable objects, respectively.  Once the
+        localized XML file is available, it would be a matter of using
+        an XSLT processor (see the <command>xsltproc</command>
+        command) to realize the convertion from XML to a localize
+        texinfo (or possible other) format.  Nevertheless, this
+        workaround fails because the Document Type Definition (DTD)
+        required to validate the XML file produced from
+        <command>makeinfo</command> (as in
+        <package>texinfo-4.8-14.el5</package>) is not availabe inside
+        &TCD; (release 5.5), nor it is the XSLT files required to
+        realize the transformation itself for such DTD.
+    </para>
+
+    <para>
+        Another similar approach to maintain localization of texinfo
+        source files through <application>gettext</application>
+        procedures would be to convert texinfo source file to DocBook
+        format; for who the required DTD and XSLT files are available
+        inside &TCD;.  This way, following a procedure similar to that
+        one describe for XML files above, it would be possible to end
+        up having localized DocBook files that can be used as source
+        to produce localized output for both online and printing
+        media.  However, the DocBook output produced from
+        <command>makeinfo</command> command (as in
+        <package>texinfo-4.8-14.el5</package>) isn't a valid DocBook
+        document according to DocBook DTDs available inside &TCD;
+        (release 5.5) thus provoking the validation and transformation
+        of such a malformed document to fail.
+    </para>
+
+    <sect3 id="manuals-texinfo-l10n-language">
+    <title>The Document Language</title>
+    <para>
+        The language information of those documentation manuals
+        produced through texinfo documentation backend is declared by
+        texinfo's <code>@documentlanguage</code> command.  This
+        command receives one argument refering the language code (as
+        in ISO-639 standard) and must be set inside the manual's main
+        definition file. Generally, there is no need to change the
+        document language declaration once it has been created by the
+        <function>help</function> functionality of
+        <command>centos-art.sh</command> script; unless you
+        mistakently create the manual for a locale code different to
+        that one you previously pretended to do in first place, of
+        course.
+    </para>
+
+    <para>
+        The language information used in both texinfo source files and
+        XHTML output produced by the <function>help</function>
+        functionality of <command>centos-art.sh</command> script is
+        determined by the user's session <envar>LANG</envar>
+        environment variable.  This variable can be customized in the
+        graphical login screen before login, or once you've login by
+        explicitly setting the value of <envar>LANG</envar>
+        environment variable inside the
+        <filename>~/.bash_profile</filename> file. 
+    </para>
+
+    <tip>
+    <para>
+        To create documentation manuals in English language the
+        <envar>LANG</envar> environment variable must be set to
+        <code>en_US.UTF-8</code> or something similar.  Likewise, if
+        you want to create documentation manuals in a language other
+        than English, be sure the <envar>LANG</envar> environment
+        variable is set to the appropriate locale code, based on the
+        output of the <command>locale -a | less</command> command.
+    </para>
+    </tip>
+     
+    <para>
+        When producing output from texinfo source files using the
+        <command>makeinfo</command> command (as in the
+        <package>texinfo-4.8-14.el5</package> package), the language
+        information set by <code>@documentlanguage</code> is ignored
+        in Info and HTML output, but cosidered by Tex program to
+        redefine various English words used in the PDF output (e.g.,
+        <quote>Chapter</quote>, <quote>Index</quote>,
+        <quote>See</quote>, and so on) based on the current language
+        set in.
+    </para>
+
+    </sect3>
+    
+    <sect3 id="manuals-texinfo-l10n-encoding">
+    <title>The Document Encoding</title>
+    <para>
+        The encoding information of documentation manuals produced
+        through texinfo documentation backend is declared by texinfo's
+        <code>@documentencoding</code> command and can take either
+        <code>US-ASCII</code>, <code>ISO-8859-1</code>,
+        <code>ISO-8859-15</code> or <code>ISO-8859-2</code> as
+        argument.  Nevertheless, you should be aware that the
+        <code>help</code> functionality of
+        <command>centos-art.sh</command> script doesn't declare the
+        <code>@documentencoding</code> inside texinfo source files.
+        Let's see why.
+    </para>
+
+    <para>
+        When the <code>@documentencoding</code> command is set in
+        texinfo source files, the terminal encoding you use to read
+        the Info output produced from such files must be set to that
+        encoding information you provided as argument to
+        <code>@documentencoding</code> command; this, before using an
+        Info reader to open the Info output file in the terminal.
+        Otherwise, when the terminal and the texinfo source files
+        encoding definition differ one another, characters defined
+        through texinfo's special way of producing floating accents
+        won't be displayed as expected (even when the
+        <option>--enable-encoding</option> is provided to
+        <command>makeinfo</command> command). On the other hand, when
+        the <code>@documentencoding</code> command is not set in
+        texinfo source files, it is possible to write and read
+        documentation manuals using the UTF-8 encoding without needing
+        to use texinfo's special way of producing floating accents
+        because the terminal encoding would be able to interpret the
+        characters entered when the texinfo source files were written
+        in first place.
+    </para>
+    
+    <para>
+        When texinfo's special way of producing floating accents isn't
+        used, HTML entities are not produced in XHTML output produced
+        by <command>texi2html</command>, nor in the HTML output
+        produced by <command>makeinfo</command>, nor in PDF output.
+        In this last case, when producing PDF output, you can realize
+        what the floating accents are by trying to produce an
+        accentuated Spanish <code>i</code> letter (e.g.,
+        <code>í</code>). When you do so, you'll note that that
+        construction puts the accentuation mark
+        <emphasis>over</emphasis> the <code>i</code> letter's dot,
+        instead of removing the <code>i</code> letter's dot and
+        put the accentuation mark on its place.  In the case of XHTML
+        output, however, it possible to produce well localized XHTML
+        output by setting
+    </para>
+
+    <screen>&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8" /&gt;</screen>
+
+    <para>
+        on the head section of each XHTML output to instruct the web
+        browsers what encoding to use to display the document content.
+        Of course, in order to display the document content correctly,
+        the web browser should provide support for UTF-8 encoding.
+    </para>
+
+    <para>
+        These contradictions provide the reasons over which it was
+        decided not to set the <code>@documentencoding</code> in those
+        texinfo source files produced by the <code>help</code>
+        functionality of <command>centos-art.sh</command> script. Now,
+        considering them, we can conclude that it is no viable way to
+        localize texinfo source files through
+        <application>gettext</application> procedures so one
+        documentation manual must be created for each language we
+        desire to support documentation for. In this configuration,
+        it is difficult the production of well localized PDF output,
+        but it is possible to produce well localized Info, Text, and
+        XHTML outputs as long as no document encoding be explicitly
+        set inside texinfo source files and UTF-8 be used as default
+        terminal character encoding.
+    </para>
+
+    </sect3>
+
     </sect2>
 
 </sect1>
