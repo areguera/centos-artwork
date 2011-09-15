@@ -3,13 +3,25 @@
     <title>Introduction</title>
 
     <para>
-        The texinfo backend encapsulates the specificities needed to
-        create and maintain documentation manuals written in Texinfo
-        format inside &TCAR; working copy.  This way, through texinfo
-        backend, people can concentrate their efforts on writing
-        documentation and forget structuring tasks like creating
-        files, updating menus, nodes, cross references and be aware of
-        where to put the related files.
+        <quote>Texinfo</quote>  is a documentation system that uses a
+        single source file to produce both online information and
+        printed output.  This means that instead of writing two
+        different documents, one for the online information and the
+        other for a printed work, you need write only one document.
+        Therefore, when the work is revised, you need revise only that
+        one document.
     </para>
 
+    <para>
+        The texinfo documentation backend is a collection of function
+        scripts made available through the <function>help</function>
+        functionality of <command>centos-art.sh</command> script to
+        let you create and maintain documentation manuals using the
+        Texinfo format inside &TCAR;.  The texinfo documentation
+        backend permits you to concentrate yourself on writing
+        documentation while the structuring tasks related to files
+        creation and actualization of menus, nodes and cross
+        references are all automatically arranged for you. 
+    </para>
+         
 </sect1>
