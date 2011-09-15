@@ -1,0 +1,75 @@
+\input texinfo   @c -*-texinfo-*-
+@c -- Header --------------------------------------------------
+
+@setfilename =MANUAL_NAME=.info
+@settitle =MANUAL_TITLE=
+@documentlanguage es
+@afourpaper
+@finalout
+
+@c -- Variables -----------------------------------------------
+
+@set TCENTOS    The Community Enterprise Operating System
+@set TCPROJ     @url{http://www.centos.org/, The CentOS Project}
+@set TCWIKI     @url{http://wiki.centos.org/, The CentOS Wiki}
+@set TCMLISTS   @url{http://lists.centos.org/, The CentOS Mailing Lists}
+@set TCBUGS     @url{http://bugs.centos.org/, The CentOS Bugs}
+@set TCMIRRORS  @url{http://mirrors.centos.org/, The CentOS Mirrors}
+@set TCPLANET   @url{http://planet.centos.org/, The CentOS Planet}
+@set TCFORUMS   @url{http://forums.centos.org/, The CentOS Forums}
+@set TCINFOML   @email{centos-info@@centos.org, The CentOS Information Mailing List}
+@set TCDEVSML   @email{centos-devel@@centos.org, The CentOS Developers Mailing List}
+@set TCDOCSML   @email{centos-docs@@centos.org, The CentOS Documentation Mailing List}
+@set TCARTWML   @email{centos-artwork@@centos.org, The CentOS Artwork Mailing List}
+@set TCL10NML   @email{centos-l10n@@centos.org, The CentOS Localization Mailing List}
+@set TCAR       @url{https://projects.centos.org/svn/artwork/, The CentOS Artwork Repository}
+@set TCAS       @url{https://projects.centos.org/trac/artwork/, The CentOS Artwork SIG}
+
+@c -- Summary description and copyright -----------------------
+
+@copying
+=MANUAL_ABSTRACT=
+
+Copyright @copyright{} =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU,
+Versión 1.1 o cualquier otra versión posterior publicada por la Free
+Software Foundation; con las Secciones Invariantes, con Textos de
+Cubierta Delantera, y con los Textos de Cubierta Trasera. Una copia de
+la licencia está incluida en la sección titulada @ref{GNU Free
+Documentation License}.  
+@end copying
+
+@c -- Titlepage, contents, copyright ---------------------------
+
+@titlepage
+@title =MANUAL_TITLE=
+@subtitle =MANUAL_SUBTITLE= 
+@author =COPYRIGHT_HOLDER=
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+@contents
+
+@c -- `Top' node and master menu -------------------------------
+
+@ifnottex
+@node Top
+@top =MANUAL_TITLE=
+@insertcopying
+@end ifnottex
+
+@include =MANUAL_NAME=-menu.texinfo
+
+@c -- The body of the document --------------------------------
+
+@include =MANUAL_NAME=-nodes.texinfo
+
+@c -- The end of the document ---------------------------------
+
+@include Licenses/chapter.texinfo
+@include =MANUAL_NAME=-index.texinfo
+
+@bye
