@@ -1,74 +1,59 @@
-<preface id="intro">
+<preface id="preface">
 
-    <title>Introduction</title>
+    <title>Preface</title>
 
     <para>
-        Welcome to &TCARUG;.
+        Welcome to &TCARUG;, the official documentation of &TCAR;.
     </para>
 
     <para>
-        &TCAR; User's Guide (TCAR-UG) describes how &TCPCVI; is
-        organized and produced inside &TCAR;.  If you are looking for
-        a comprehensive, task-oriented guide for understanding how
-        &TCPCI; is produced, this is the manual for you.
-    </para>
-
-    <para>
-        This manual is divided in the following categories:
+        To make the information in this book managable, it has been
+        organized in the following parts:
     </para>
 
     <itemizedlist>
     <listitem>
     <para>
-        Repository
+        <xref linkend="repo" /> describes the repository directory
+        structure.
     </para>
     </listitem>
 
     <listitem>
     <para>
-        Corporate Identity
+        <xref linkend="identity" /> describes the identity work line.
+        This part is closely related to graphic design and considers
+        &TCP; as organization to find the aspects that could affect
+        its visual identity.
     </para>
     </listitem>
 
     <listitem>
     <para>
-        Localization
+        <xref linkend="l10n" /> describes the localization work line. 
     </para>
     </listitem>
 
     <listitem>
     <para>
-        Documentation
+        <xref linkend="manuals" /> describes the documentation work
+        line.
     </para>
     </listitem>
 
     <listitem>
     <para>
-        Automation
+        <xref linkend="scripts" /> describes the automation work line.
     </para>
     </listitem>
-    </itemizedlist>
-
-    <para>
-        This manual discusses the following topics:
-    </para>
-
-    <itemizedlist>
+    
     <listitem>
     <para>
-        &TCAR;, what it is, how it is organized, the things you can
-        achieve inside it and how you can do such things.
+        <xref linkend="licenses" /> organizes the licenses mentioned
+        inside this book.
     </para>
     </listitem>
-
-    <listitem>
-    <para>
-        &TCP; as organization and the components that define its
-        visual identity.  Here we dig in the ground and climb up to
-        the sky, looking for the roots, flowers and thorns &TCP; is
-        made of.
-    </para>
-    </listitem>
+    
     </itemizedlist>
 
     <para>
@@ -79,6 +64,7 @@
         help.
     </para>
 
+    &intro-history;
     &intro-docconvs;
     &intro-feedback;
 
