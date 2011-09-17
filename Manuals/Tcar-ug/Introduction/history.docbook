@@ -1,0 +1,44 @@
+<section id="preface-history">
+    <title>History</title>
+    <para>
+        &TCAR; started at <ulink
+        url="mailto:centos-devel@centos.org">The CentOS Developers
+        Mailing List</ulink> around 2008, on a discussion about how to
+        automate slide images used by Anaconda (&TCD; installer).  In
+        such discussion, Ralph Angenendt rose up his hand to ask
+        &mdash;Do you have something to show?&mdash;.
+    </para>
+
+    <para>
+        To answer the question, Alain Reguera Delgado suggested a bash
+        script which combined SVG and SED files in order to produce
+        PNG images in different languages &mdash;in conjunction with
+        the proposition of creating a Subversion repository where
+        translations and image production could be distributed inside
+        &TCC;&mdash;.
+    </para>
+
+    <para>
+        Karanbirn Sighn considered the idea intresting and provided
+        the infrastructure necessary to support the effort.  This way,
+        &TCAS; and &TCAR; were officially created and world wide
+        available.
+    </para>
+
+    <para>
+        Once &TCAR; was available, Alain Reguera Delgado uploaded the
+        bash script used to produce the Anaconda slides; Ralph
+        Angenendt documented it very well; and people started to
+        download working copies of the repository to produce slide
+        images in their own languages.
+    </para>
+
+    <para>
+        From this time on, the &TCAR; has been under constant
+        development to automate the production of &TCP; corporate
+        visual identity.  The list of all changes is available in the
+        repository's log messages. A resumen of relevant changes is
+        made available yearly in <xref linkend="repo-history" />.
+    </para>
+
+</section>
