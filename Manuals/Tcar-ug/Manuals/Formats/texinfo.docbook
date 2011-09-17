@@ -14,38 +14,35 @@
     <sect2 id="manuals-formats-texinfo-structure">
     <title>Texinfo Document Structure</title>
     <para>
-        The texinfo document structure provided by
-        <function>help</function> functionality creates an
-        organization that makes documentation manuals written in
-        texinfo format to be scalable and maintainable through time,
-        just as described in <xref
+        The <function>help</function> functionality of
+        <command>centos-art.sh</command> provides a document structure
+        that makes documentation manuals created through it to be
+        scalable and maintainable through time.  This document
+        structure follows the idea of an upside-down tree to organize
+        chapters, sections, subsections, and the like; where there is
+        a Top node to contain manual's main definitions (e.g., title,
+        copyright note, abstract, and the list of chapters).  Inside
+        chapters, the information is logically organized through
+        sections, subsections and subsubsections as described in <xref
         linkend="manuals-production-identifying-structure" />.
-        Structuring considerations follow the idea of an upside-down
-        tree to organize chapters, sections, subsections, and the
-        like. The document initiates with a Top node which contains
-        manual's main definitions (e.g., title, copyright note,
-        abstract, and the list of chapters).  Inside each chapter the
-        information is logically organized in sections, subsections
-        and subsubsections.
     </para>
 
     <para> 
         The first time you use the <function>help</function>
-        functionality to create a documentation manual in texinfo
+        functionality to create a documentation manual in Texinfo
         format, the <function>help</function> functionality considers
         the working directory you are placed in to determine where to
         store the documentation manual source files.  When the current
         working directory is <filename
-        class="directory">~/artwork/branches/Manuals/Texinfo</filename>,
-        the documentation manual directory is created therein.  On all
+        class="directory">branches/Manuals/Texinfo</filename>, the
+        documentation manual directory is created therein.  On all
         other situations, the documentation manual directory is
         created under <filename
-        class="directory">~/artwork/trunk/Manuals</filename>
-        directory.  Once the documentation manual directory has been
-        created, the <function>help</function> functionality creates
-        the related definition files using texinfo documentation
-        templates as described in <xref
-        linkend="manuals-formats-texinfo-templates"
+        class="directory">trunk/Manuals</filename> directory.  Once
+        the documentation manual directory has been created, the
+        <function>help</function> functionality creates the related
+        definition files using Texinfo documentation templates as
+        described in <xref linkend="manuals-formats-texinfo-templates"
         />.
     </para>
 
@@ -53,7 +50,7 @@
         Inside the documentation manual directory, source files are
         stored inside language specific directories.  Language
         specific directories are necessary to implement
-        internationalization of source files written in texinfo
+        internationalization of source files written in Texinfo
         format, as described in <xref
         linkend="manuals-formats-texinfo-l10n" />.
     </para>
@@ -63,89 +60,17 @@
         exist to store the manual's main definitions (e.g., title,
         subtitle, author, copyright notice, chapters, appendixes,
         indexes and all the similar stuff a documentation manual would
-        have). 
-    </para>
-
-    <variablelist>
-    <varlistentry>
-    <term><filename>${MANUAL_NAME}.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>${MANUAL_NAME}-index.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>${MANUAL_NAME}-menu.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>${MANUAL_NAME}-nodes.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-
-    <para>
-        In addition to these files, there is one directory for each
-        chapter created inside the manual.  Inside each chapter
-        directory, the following files exist to control section
-        definitions related to the chapter directory they belong to.
-    </para>
-
-    <variablelist>
-    <varlistentry>
-    <term><filename>chapter.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>chapter-menu.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>chapter-nodes.texinfo</filename></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-
-    <para>
-        The documentation manual content itself is stored in section
-        files (a.k.a.  <quote>documentation entries</quote>) suffixed
-        with a <filename class="extension">texinfo</filename>
-        extension and arbitrary names, as it is illustrated in <xref
-        linkend="manuals-texinfo-structure-1" />.
+        have).  In addition to these files, there is one directory for
+        each chapter created inside the manual.  Inside each chapter
+        directory, you'll found the files controling the section
+        definitions related to that chapter they belong to.  The
+        section files (a.k.a.  <quote>documentation entries</quote>)
+        are suffixed with a <filename
+        class="extension">texinfo</filename> extension and named
+        arbitrarily, as it is illustrated in <xref
+        linkend="manuals-texinfo-structure-1" />. Inside section files
+        it is where you write the manual's content itself.  Inside
+        chapters, you can create as many sections as you need.
     </para>
 
     <example id="manuals-texinfo-structure-1">
@@ -178,46 +103,44 @@
     <sect2 id="manuals-formats-texinfo-templates">
     <title>Texinfo Document Templates</title>
     <para>
-        Texinfo document templates provide the texinfo document design
-        model that <function>help</function> functionality needs to
-        create and maintain texinfo document structures like that one
-        described in <xref linkend="manuals-formats-texinfo-structure" />.
-    </para>
-
-    <para>
-        Texinfo document templates are language-specific. This means
-        that there is (or at least must be) one texinfo document
-        template for each language you want to write documentation
-        manuals in texinfo format.  Using one texinfo document
-        template for each leanguage is required because, it is not
-        possible to retrive translatable strings from source files
-        (e.g., through <application>gettext</application> procedures)
-        so translators can localize documentation source files to
-        other languages, independently from documentors.
+        The <function>help</function> functionality uses Texinfo
+        document templates to create and maintain Texinfo document
+        structures like that one described in <xref
+        linkend="manuals-formats-texinfo-structure" />.  Texinfo
+        document templates are language-specific. This means that
+        there is (or, at least, must be) one Texinfo document template
+        for each language you plan to support documentation manuals
+        for.  Notice that it is not possible to retrive translatable
+        strings from Texinfo source files (e.g., through
+        <application>gettext</application> procedures) so translators
+        cannot localize documentation source files to other languages,
+        independently from people writing the manual.
     </para>
 
     <note>
     <para>
         When the <code>help</code> functionality doesn't find a
-        texinfo document template for that language the documentation
+        Texinfo document template for that language the documentation
         manual is being currently created for, the <code>help</code>
-        functionality takes the files it needs from texinfo document
+        functionality takes the files it needs from Texinfo document
         templates written in English language then.
     </para>
     </note>
 
     <para>
-        The files related to texinfo document templates are stored in 
+        The files related to Texinfo document templates are stored in
+        the directory 
     </para>
 
     <screen>
-~/artwork/trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
+trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
 
     <para>
-        directory, as displayed in <xref
-        linkend="manuals-texinfo-templates-1" />. In this structure,
-        the initial state of manual's source files is customized by
-        the following files:
+        and illustrated in <xref
+        linkend="manuals-formats-texinfo-templates-example1" />. The
+        Texinfo document template provides the initial state of
+        Texinfo source files. The initial state of Texinfo source
+        files can be customized by the following files:
     </para>
 
     <variablelist>
@@ -226,7 +149,13 @@
     <term><filename>chapter.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file contains the Texinfo chapter definition used by
+        <function>help</function> functionality when new chapters are
+        created inside the documentation manual. When chapters are
+        created for first time, they come without any introduction. If
+        you want to update the chapter information inside your
+        documentation manual, update the chapter related file inside
+        the documentation manual, not the template used to create it.
     </para>
     </listitem>
     </varlistentry>
@@ -235,7 +164,15 @@
     <term><filename>section.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file contains the Texinfo section definition used by
+        <function>help</function> functionality when new documentation
+        entries are created inside the documentation manual. When
+        documentation entries are created for first time, they are
+        created as empty documentation entries that you need to fill
+        up with content. Again, if you want to update the content of
+        sections inside the documentation manual, update the
+        related documentation entry inside the documentation manual,
+        not the template file used to create it.
     </para>
     </listitem>
     </varlistentry>
@@ -244,7 +181,13 @@
     <term><filename>chapter-menu.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file is part of Texinfo chapter definition and should be
+        initially empty. Later, when chapters are created for first
+        time, this file is copied as it is (i.e., empty) into the
+        documentation manual to store the Texinfo menu entries related
+        to all documentation entries created inside the chapter. The
+        Texinfo menu entries are automatically created using Texinfo
+        source files as reference.
     </para>
     </listitem>
     </varlistentry>
@@ -253,7 +196,13 @@
     <term><filename>chapter-nodes.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file is part of Texinfo chapter definition and contains
+        the node definition the <function>help</function>
+        functionality uses as reference to create the list of Texinfo
+        nodes related to all documentation entries created inside the
+        chapter. The Texinfo nodes are automatically created using
+        Texinfo meny entries as reference, after they have been
+        updated from Texinfo source files.
     </para>
     </listitem>
     </varlistentry>
@@ -262,17 +211,25 @@
     <para>
         There are other files that aren't related to manual's source
         files, but to manual's output files. Such files are described
-        below and can be found both inside and outside the language
-        specific directories so you can control common and specific
-        output settings through them.
+        below and can be found both inside and outside the
+        language-specific directories so you can control common and
+        specific output settings through them.
     </para>
 
     <variablelist>
     <varlistentry>
-    <term><filename>manual-ini.pl</filename></term>
+    <term><filename>manual-init.pl</filename></term>
     <listitem>
     <para>
-        ...
+        This file can be found inside or outside language-specific
+        directories and contains Texi2html initialization script. The
+        file outside language-specific directory specify
+        initialization parameters to all language-specific
+        directories. On the other hand, the file inside the
+        language-specific directory control language-specific
+        definitions for XHTML output (e.g., in order for Texi2html to
+        produce localized content it is required that string
+        localization be set this way).
     </para>
     </listitem>
     </varlistentry>
@@ -281,8 +238,26 @@
     <term><filename>manual.sed</filename></term>
     <listitem>
     <para>
-        ...
+        This file can be found inside and outside language-specific
+        directories and contain special transformations for Texi2html
+        output. Again, when this file is inside language-specific
+        directories the transformation have are applied to that
+        language-specific XHTML output and when it is outside
+        language-specific directories the transformations are applied
+        to all language-specific XHTML outputs.  Most transformations
+        achived through this file are to produce admonitions since
+        Texinfo documentation format (as in
+        <package>texinfo-4.8-14.el5</package>) doesn't have an
+        internal command to build them.
     </para>
+    <note>
+    <para>
+        In the future, this file could be removed in the sake of
+        setting XHTML output transformations inside the Texi2html
+        initialization script (<filename>manual-init.pl</filename>)
+        itself.
+    </para>
+    </note>
     </listitem>
     </varlistentry>
 
@@ -296,14 +271,13 @@
     </varlistentry>
     </variablelist>
     
-
-    <example id="manuals-texinfo-templates-1">
+    <example id="manuals-formats-texinfo-templates-example1">
     <title>Texinfo document template</title>
     <screenshot>
     <screeninfo>Texinfo document template</screeninfo>
     <mediaobject>
     <textobject>
-    <programlisting>~/artwork/trunk/Scripts/Bash/Functions/Help/Texinfo/Templates
+    <programlisting>trunk/Scripts/Bash/Functions/Help/Texinfo/Templates
 |-- ${LANG}
 |   |-- Chapters
 |   |   |-- chapter-menu.texinfo
@@ -331,7 +305,7 @@
     </example>
 
     <para>
-        Inside the directory structure of texinfo document templates,
+        Inside the directory structure of Texinfo document templates,
         the <filename class="directory">Chapters</filename> directory
         organizes chapter specific models used to create and maintain
         both chapter and sections inside manuals. On the other hand,
@@ -340,7 +314,7 @@
         Notice the license information is not copied into
         documentation manuals when they are created, but refered from
         this location where they are maintained.  This configuration
-        permites that all documentation manuals written in texinfo
+        permites that all documentation manuals written in Texinfo
         format inside &TCAR; do use the same license information and
         if a change is committed to the license files, such changes be
         immediatly propagated to documentation manuals the next time
@@ -358,7 +332,7 @@
     <sect2 id="manuals-formats-texinfo-l10n">
     <title>Texinfo Document Internationalization</title>
     <para>
-        To produce localized documentation manuals through texinfo
+        To produce localized documentation manuals through Texinfo
         documentation backend it is necessary to create one
         documentation manual for each language it is desired to
         support documentation for.  Documentation manuals created in
@@ -378,13 +352,13 @@
             information about the <application>gettext</application>
             program, run <command>info gettext</command>.
         </para>
-        </footnote> procedures to texinfo source files.
+        </footnote> procedures to Texinfo source files.
     </para>
 
     <para>
-        In order to maintain localization of texinfo source files
+        In order to maintain localization of Texinfo source files
         through <application>gettext</application> procedures, it is
-        necessary to convert the texinfo source files into
+        necessary to convert the Texinfo source files into
         XML format first.  This way it would be possible to make use of
         <function>locale</function> and <function>render</function>
         functionalities from <command>centos-art.sh</command> script
@@ -394,7 +368,7 @@
         localized XML file is available, it would be a matter of using
         an XSLT processor (see the <command>xsltproc</command>
         command) to realize the convertion from XML to a localize
-        texinfo (or possible other) format.  Nevertheless, this
+        Texinfo (or possible other) format.  Nevertheless, this
         workaround fails because the Document Type Definition (DTD)
         required to validate the XML file produced from
         <command>makeinfo</command> (as in
@@ -404,9 +378,9 @@
     </para>
 
     <para>
-        Another similar approach to maintain localization of texinfo
+        Another similar approach to maintain localization of Texinfo
         source files through <application>gettext</application>
-        procedures would be to convert texinfo source file to DocBook
+        procedures would be to convert Texinfo source file to DocBook
         format; for who the required DTD and XSLT files are available
         inside &TCD;.  This way, following a procedure similar to that
         one describe for XML files above, it would be possible to end
@@ -424,8 +398,8 @@
     <title>The Document Language</title>
     <para>
         The language information of those documentation manuals
-        produced through texinfo documentation backend is declared by
-        texinfo's <code>@documentlanguage</code> command.  This
+        produced through Texinfo documentation backend is declared by
+        Texinfo's <code>@documentlanguage</code> command.  This
         command receives one argument refering the language code (as
         in ISO-639 standard) and must be set inside the manual's main
         definition file. Generally, there is no need to change the
@@ -438,7 +412,7 @@
     </para>
 
     <para>
-        The language information used in both texinfo source files and
+        The language information used in both Texinfo source files and
         XHTML output produced by the <function>help</function>
         functionality of <command>centos-art.sh</command> script is
         determined by the user's session <envar>LANG</envar>
@@ -462,7 +436,7 @@
     </tip>
      
     <para>
-        When producing output from texinfo source files using the
+        When producing output from Texinfo source files using the
         <command>makeinfo</command> command (as in the
         <package>texinfo-4.8-14.el5</package> package), the language
         information set by <code>@documentlanguage</code> is ignored
@@ -479,41 +453,41 @@
     <title>The Document Encoding</title>
     <para>
         The encoding information of documentation manuals produced
-        through texinfo documentation backend is declared by texinfo's
+        through Texinfo documentation backend is declared by Texinfo's
         <code>@documentencoding</code> command and can take either
         <code>US-ASCII</code>, <code>ISO-8859-1</code>,
         <code>ISO-8859-15</code> or <code>ISO-8859-2</code> as
         argument.  Nevertheless, you should be aware that the
         <code>help</code> functionality of
         <command>centos-art.sh</command> script doesn't declare the
-        <code>@documentencoding</code> inside texinfo source files.
+        <code>@documentencoding</code> inside Texinfo source files.
         Let's see why.
     </para>
 
     <para>
         When the <code>@documentencoding</code> command is set in
-        texinfo source files, the terminal encoding you use to read
+        Texinfo source files, the terminal encoding you use to read
         the Info output produced from such files must be set to that
         encoding information you provided as argument to
         <code>@documentencoding</code> command; this, before using an
         Info reader to open the Info output file in the terminal.
-        Otherwise, when the terminal and the texinfo source files
+        Otherwise, when the terminal and the Texinfo source files
         encoding definition differ one another, characters defined
-        through texinfo's special way of producing floating accents
+        through Texinfo's special way of producing floating accents
         won't be displayed as expected (even when the
         <option>--enable-encoding</option> is provided to
         <command>makeinfo</command> command). On the other hand, when
         the <code>@documentencoding</code> command is not set in
-        texinfo source files, it is possible to write and read
+        Texinfo source files, it is possible to write and read
         documentation manuals using the UTF-8 encoding without needing
-        to use texinfo's special way of producing floating accents
+        to use Texinfo's special way of producing floating accents
         because the terminal encoding would be able to interpret the
-        characters entered when the texinfo source files were written
+        characters entered when the Texinfo source files were written
         in first place.
     </para>
     
     <para>
-        When texinfo's special way of producing floating accents isn't
+        When Texinfo's special way of producing floating accents isn't
         used, HTML entities are not produced in XHTML output produced
         by <command>texi2html</command>, nor in the HTML output
         produced by <command>makeinfo</command>, nor in PDF output.
@@ -541,17 +515,17 @@
     <para>
         These contradictions provide the reasons over which it was
         decided not to set the <code>@documentencoding</code> in those
-        texinfo source files produced by the <code>help</code>
+        Texinfo source files produced by the <code>help</code>
         functionality of <command>centos-art.sh</command> script. Now,
         considering them, we can conclude that it is no viable way to
-        localize texinfo source files through
+        localize Texinfo source files through
         <application>gettext</application> procedures so one
         documentation manual must be created for each language we
         desire to support documentation for. In this configuration,
         it is difficult the production of well localized PDF output,
         but it is possible to produce well localized Info, Text, and
         XHTML outputs as long as no document encoding be explicitly
-        set inside texinfo source files and UTF-8 be used as default
+        set inside Texinfo source files and UTF-8 be used as default
         terminal character encoding.
     </para>
 
