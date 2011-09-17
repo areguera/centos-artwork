@@ -22,23 +22,53 @@
  * ----------------------------------------------------------------------
  */
 
-h1.title {
+div.book > div.titlepage h1.title,
+div.part > div.titlepage h1.title {
     background-color: #204c8d;
     background-image: url("/home/centos/artwork/trunk/Identity/Images/Webenv/h1-bg.png");
     color: #fff;
-    padding: 1.5em 0 1.5em 0;
+    padding: 1em;
     text-align: center;
-    line-height: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     }
 
-h2.title {
-    font-size: 1.7em;
+div.book > div.titlepage h2.subtitle,
+div.book > div.titlepage h3.author {
+    margin-top: 0;
     }
 
-.subtitle,
-.author {
-    line-height: 1em;
+div.book > div.titlepage p.copyright {
+    }
+
+div.book > div.titlepage div.legalnotice {
+    margin-bottom: 1.5em;
+    }
+
+div.book > div.titlepage div.revhistory {
+    margin-bottom: 1.5em;
+    }
+
+div.book > div.titlepage div.abstract p.title {
+    margin-bottom: 0;
+    }
+
+div.preface > div.titlepage h2.title {
+    font-size: 2em;
+    margin-top: 0.5em;
+    }
+
+div.chapter > div.titlepage h2.title {
     margin-top: 1em;
-    color: #000;
     }
+
+div.sect1 > div.titlepage h2.title,
+div.section > div.titlepage h2.title {
+    margin-top: 1em;
+    }
+
+div.sect2 > div.titlepage h3.title {
+    }
+
+div.sect3 > div.titlepage h4.title {
+    }
+
