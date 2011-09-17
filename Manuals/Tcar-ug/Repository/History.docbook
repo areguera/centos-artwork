@@ -1,37 +1,10 @@
-<chapter id="repo-history" xreflabel="History">
+<chapter id="repo-history">
 
     <title>Repository History</title>
 
     <para>
-        &TCAR; started at <ulink
-        url="mailto:centos-devel@centos.org">The CentOS Developers
-        Mailing List</ulink> around 2008, on a discussion about how to
-        automate slide images used by Anaconda.  In such discussion,
-        Ralph Angenendt rose up his hand to ask &mdash;Do you have
-        something to show?&mdash;.
-    </para>
-
-    <para>
-        To answer the question, Alain Reguera Delgado suggested a bash
-        script which combined SVG and SED files in order to produce
-        PNG images in different languages &mdash;in conjunction with
-        the proposition of creating a Subversion repository where
-        translations and image production could be distributed inside
-        &TCC;&mdash;.
-    </para>
-
-    <para>
-        Karanbirn Sighn considered the idea intresting and provided
-        the infrastructure necessary to support the effort.  This way,
-        &TCAS; and &TCAR; were officially created and world wide
-        available.
-    </para>
-
-    <para>
-        Once &TCAR; was available, Alain Reguera Delgado uploaded the
-        bash script Anaconda slides; Ralph Angenendt documented it
-        very well; and people started to download working copies of
-        the repository to produce slide images in their own languages.
+        This chapter summarizes relevant changes committed to &TCAR;
+        along the years.
     </para>
 
     &repo-history-2009;
