@@ -1,0 +1,177 @@
+<section id="preface-overview">
+    <title>Overview</title>
+
+    <para>
+        The corporate identity is always present on corporations, even
+        when no intentional control is taken over it.  It is a choise
+        from the corporation to define how much control to take over
+        its identity.  This kind of control is expensive and not all
+        corporations are able to maintain it.  However, it is
+        necessary that, based on pragmatic facts, the corporation
+        assume an acceptable degree of compromise with its identity in
+        order to create a consistent idea of itself in a way that can
+        be progresively improved through time.
+    </para>
+    
+    <para>
+        During the years (2003-2009), we've seen a growing interest
+        inside &TCC; for helping on &TCP; development. Some people
+        seem to be very clear about what the project needs are and how
+        to maintain it being a very stable project, but others however
+        don't to get what &TCP; is (even it is explained time after
+        time) and sometimes decide to put their efforts in the wrong
+        direction making everything to be a waste of time and source
+        of distraction from what is really needed.
+    </para>
+    
+    <para>
+        &TCAR; phases the question <quote>What can I do for
+        &TCP;?</quote> by identifying different work lines you can
+        join in and providing automated production mechanisms that
+        complement one another according to each work line needs so
+        consistent results can be achieved inside a distributed
+        environment under version control.  For example, consider an
+        environment where there are graphic designers to produce
+        images, documentors to produce documentation manuals (whose
+        can use images produced by graphic designers), programmers to
+        produce automation scripts (needed to standardize production
+        tasks) and translators to localize source files created by
+        graphic designers, documetors and programmers.  Once such
+        environment has been implemented, it would be possible for
+        packagers to take localized images and localized documentation
+        from &TCAR; (through an automation script probably) to
+        rebrand/update the content of those packages inside &TCD; that
+        must include information specific to &TCP; itself (e.g., boot
+        loader, distribution installer, release notes, display
+        managers, release notes, web browsers default page, etc.).
+    </para>
+
+    <para>
+        Most production tasks inside &TCAR; are focused on the files
+        needed to implement &TCP; visual identity.<footnote>
+        <para>
+            Notice that, here, visual identity means everything
+            perceived through the human's visual sences (i.e., the
+            human eyes), but the corporate identity is a wider concept
+            that extends to all human senses (i.e., visibilty (eyes),
+            audition (ears), scent (nose), touch (fingers), and savour
+            (tongue)), not just that one related to visual aspects.
+            Nevertheless, we need to be consequent with the media
+            where &TCP; manifests its existence on, as described in
+            <xref linkend="identity" />. 
+        </para></footnote> This includes everything from file edition
+        (e.g., text width, text indentation, line numbering, text
+        tabulation, etc.) up to how the web sites, distribution, and
+        industrial stuff (e.g., pullovers, caps, installation media,
+        etc.) look and feel.  Notice that, more specific details like
+        typography, window design, icons, menu items, etc., inside
+        &TCD; are already covered by &TCP; upstream provider.  In our
+        effort to be 100% binary compatible with the upstream provider
+        and also keeping maintainance low, we stand over those
+        specific details as much as possible assuming them as default.
+        However, if you feel brave enough (and prove your ability to
+        keep yourself being that way) it would be possible to open a
+        work line for you to maintain variants of such very specific
+        details.
+    </para>
+        
+    <para>
+        In addition to visual manifestations, there are also emotional
+        feelings (e.g., motivation) and ethical behaviours (e.g., good
+        will) that must be considered as part of &TCP; corporate
+        identity. A pleasant experience in this area includes
+        &TCWIKI;, specifically the way it was conceived and
+        administered. When the &TCWIKI; was published, &TCP; published
+        a list of needs so anyone could contribute based on them.
+        Not to much time after that, the list triggered some souls'
+        motivations ruled by the good will of initiating the
+        localization of contents published inside the wiki,
+        redesigning its visual style, proposing the TreeFlower theme
+        for &TCD;, and reducing to zero the contraditions of
+        precoceived minds with respect, reason and passion. As result
+        of this experience, we found that maintaining and extending
+        the effort on covering all the visual manifestations &TCP; is
+        made of would require to focalize &TCC; creative forces in
+        very well defined directions,  telling it where to go and also
+        providing the vehicles it needs to move on.
+    </para>
+    
+    <para>
+        &TCAR; extends &TCWIKI; feelings and ethicals behaviours to
+        itself by identifying the visual manifestations &TCP; is made
+        of and allowing people to develop them through standardized
+        procedures inside a colaborative environment.
+    </para>
+    
+    <para>
+        Finally, if you need to do something for &TCP;,  be sure to
+        define what that something exactly is and also make it a
+        community effort so it can be validated as something useful to
+        the community itself.  Otherwise, the effort would loose its
+        initial sense soon enough so as to be considered seriously.
+        Notice that the way these needs are described may take
+        different forms: They can be written and organized inside a
+        book, an article, or even a well documented program ;-).
+    </para>
+
+    <para>
+        To make the information in this book managable, it has been
+        organized in the following parts:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        <xref linkend="repo" /> describes the convenctions you should
+        follow to keep everything organized and consistent inside the
+        repository, how to prepare your workstation to install and
+        configure a working copy inside it, and a history of most
+        relevant changes committed to the repository along the years.
+    </para>
+    </listitem>
+
+    <listitem>
+    <para>
+        <xref linkend="identity" /> describes the identity work line.
+        This part is closely related to graphic design and considers
+        &TCP; as corporation to find the aspects that could affect its
+        visual identity.
+    </para>
+    </listitem>
+
+    <listitem>
+    <para>
+        <xref linkend="l10n" /> describes the localization work line. 
+    </para>
+    </listitem>
+
+    <listitem>
+    <para>
+        <xref linkend="manuals" /> describes the documentation work
+        line.
+    </para>
+    </listitem>
+
+    <listitem>
+    <para>
+        <xref linkend="scripts" /> describes the automation work line.
+    </para>
+    </listitem>
+    
+    <listitem>
+    <para>
+        <xref linkend="licenses" /> organizes the licenses mentioned
+        inside this book.
+    </para>
+    </listitem>
+    
+    </itemizedlist>
+
+    <para>
+        This manual assumes you have a basic understanding of &TCD;.
+        If you need help with it, go to the <ulink
+        url="http://wiki.centos.org/Help">Help</ulink> page inside The
+        CentOS Wiki for or a list of different places you can find
+        help.
+    </para>
+</section>
