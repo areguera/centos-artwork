@@ -17,23 +17,26 @@
         <function>locale</function> functionalities consolidated
         themselves as the most frequent tasks performed in &TCAR;
         working copy.  Additionally, the <function>prepare</function>
-        and <function>tuneup</function> functionalities are also
+        and <function>tuneup</function> functionalities were also
         maintained as useful tasks.
     </para>
 
     <para> 
-        The documentation area introduced the transformation of
-        localized DocBook XML DTD instances through the
-        <function>render</function> and <function>locale</function>
-        functionalities.  In this configuration, you use
-        <function>locale</function> functionality to localize DocBook
-        source files to your prefered language and later, using the
+        In the documentation area, it was introduced the
+        transformation of localized DocBook XML DTD instances through
+        the <function>render</function> and
+        <function>locale</function> functionalities.  In this
+        configuration, you use <function>locale</function>
+        functionality to localize DocBook source files to your
+        prefered language and later, using the
         <function>render</function> functionality, you can produce the
         localized XTHML and PDF output as specified in a XSLT layer.
         Unfortunly, the transformation DocBook XML -> FO -> PDF
-        (through PassiveTex) seems to be incomplete inside CentOS 5.5,
-        so it was commented inside the
-        <command>centos-art.sh</command> script.
+        (through PassiveTex) seems to be buggy inside CentOS 5.5, so
+        it was commented inside the <command>centos-art.sh</command>
+        script. Most documentation is now organized in DocBook format,
+        even Texinfo format remains as the only format with automated
+        production tasks.
     </para>
 
 </sect1>
