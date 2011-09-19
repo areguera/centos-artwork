@@ -3,13 +3,19 @@
     <title>Texinfo Documentation Format</title>
 
     <para>
-        This section describes how the Texinfo documentation format is
-        implemented inside the <function>help</function> functionality
-        of <command>centos-art.sh</command> script to produce
-        documentation manuals inside &TCAR;. More information about
-        Texinfo documentation system itself can be found by running
-        the <command>info texinfo</command> command.
+        This section describes the implementation of Texinfo
+        documentation format inside the <function>help</function>
+        functionality of <command>centos-art.sh</command> script. More
+        information about Texinfo documentation system itself can be
+        found by running the <command>info texinfo</command> command.
     </para>
+
+    <sect2>
+    <title>Introduction</title>
+    <para>
+        ...
+    </para>
+    </sect2>
 
     <sect2 id="manuals-formats-texinfo-structure">
     <title>Texinfo Document Structure</title>
@@ -153,9 +159,10 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         <function>help</function> functionality when new chapters are
         created inside the documentation manual. When chapters are
         created for first time, they come without any introduction. If
-        you want to update the chapter information inside your
-        documentation manual, update the chapter related file inside
-        the documentation manual, not the template used to create it.
+        you want to add/update any information inside the chapter
+        definition, edit the related chapter file inside the
+        documentation manual you are working on, not the template file
+        used to create it.
     </para>
     </listitem>
     </varlistentry>
@@ -209,7 +216,7 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </variablelist>
         
     <para>
-        There are other files that aren't related to manual's source
+        There are other files which aren't related to manual's source
         files, but to manual's output files. Such files are described
         below and can be found both inside and outside the
         language-specific directories so you can control common and
@@ -217,6 +224,45 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </para>
 
     <variablelist>
+    <varlistentry>
+    <term><filename>manual.texinfo</filename></term>
+    <listitem>
+    <para>
+        This file can be found inside the language-specific directory
+        and contains the manual's main definitions (e.g., document
+        title, document language, document authors, copyright notice,
+        etc.). 
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>manual-menu.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>manual-nodes.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>manual-index.texinfo</filename></term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
     <varlistentry>
     <term><filename>manual-init.pl</filename></term>
     <listitem>
@@ -250,14 +296,6 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         <package>texinfo-4.8-14.el5</package>) doesn't have an
         internal command to build them.
     </para>
-    <note>
-    <para>
-        In the future, this file could be removed in the sake of
-        setting XHTML output transformations inside the Texi2html
-        initialization script (<filename>manual-init.pl</filename>)
-        itself.
-    </para>
-    </note>
     </listitem>
     </varlistentry>
 
@@ -265,16 +303,24 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <term><filename>manual.conf</filename></term>
     <listitem>
     <para>
-        ...
+        This file contains the initial configuration of documentation
+        manuals written in Texinfo format. When the documentation
+        manual is created for first time, this file is copied into the
+        documentation manual target directory so you can customize
+        specific information like menu order, title styles and
+        templates assignment. More details about the content of this
+        file can be found in <xref
+        linkend="manuals-formats-texinfo-configuration" />.
     </para>
     </listitem>
     </varlistentry>
+
     </variablelist>
     
     <example id="manuals-formats-texinfo-templates-example1">
-    <title>Texinfo document template</title>
+    <title>Texinfo document templates</title>
     <screenshot>
-    <screeninfo>Texinfo document template</screeninfo>
+    <screeninfo>Texinfo document templates</screeninfo>
     <mediaobject>
     <textobject>
     <programlisting>trunk/Scripts/Bash/Functions/Help/Texinfo/Templates
@@ -308,10 +354,10 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         Inside the directory structure of Texinfo document templates,
         the <filename class="directory">Chapters</filename> directory
         organizes chapter specific models used to create and maintain
-        both chapter and sections inside manuals. On the other hand,
-        the <filename class="directory">Licenses</filename> directory
-        organizes the license information linked from all manuals.
-        Notice the license information is not copied into
+        both chapter and sections files inside manuals. On the other
+        hand, the <filename class="directory">Licenses</filename>
+        directory organizes the license information linked from all
+        manuals.  Notice the license information is not copied into
         documentation manuals when they are created, but refered from
         this location where they are maintained.  This configuration
         permites that all documentation manuals written in Texinfo
@@ -322,7 +368,7 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </para>
     </sect2>
 
-    <sect2>
+    <sect2 id="manuals-formats-texinfo-configuration">
     <title>Texinfo Document Configuration</title>
     <para>
         ...
