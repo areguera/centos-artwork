@@ -31,19 +31,19 @@
         Suddenly, no need was found to keep all the links spreaded
         around the repository in order to execute the
         <command>centos-art.sh</command> script from different
-        locations.  The centos-art command-line interface was used
-        instead. The centos-art command-line interface is a symbolic
-        link stored inside the <filename
-        class="directory">~/bin</filename> directory that point to
-        <command>centos-art.sh</command> script. As default
-        configuration, inside The CentOS Distribution, the path to
-        <filename class="directory">~/bin</filename> is included in
-        the search path for commands (see <envar>PATH</envar>
-        environment variable).  This way, using the centos-art
-        command-line interface, it is possible for us to execute the
-        <command>centos-art.sh</command> script from virtually
-        anywhere inside the workstation, just as we frequently do with
-        regular commands.
+        locations.  The <command>centos-art</command> command-line
+        interface was used instead. The <command>centos-art</command>
+        command-line interface is a symbolic link stored inside the
+        <filename class="directory">~/bin</filename> directory
+        pointing to <command>centos-art.sh</command> script. As
+        default configuration, inside The CentOS Distribution, the
+        path to <filename class="directory">~/bin</filename> is
+        included in the search path for commands (see
+        <envar>PATH</envar> environment variable).  This way, using
+        the <command>centos-art</command> command-line interface, it
+        is possible to execute the <command>centos-art.sh</command>
+        script from virtually anywhere inside the workstation, just as
+        we frequently do with regular commands.
     </para>
 
     <para>
@@ -57,12 +57,11 @@
         Specially in the area related to themes. Having both structure
         and style in the same file introduced content duplication when
         producing art works.  Because of this reason, they were
-        divided out to separate directory structures: the design
-        models and artistic motifs directory structures.  From this
-        point on, the <command>centos-art.sh</command> is able to
-        produce themes as result of arbitrary combinations between
-        design models (structures) and artistic motifs (visual
-        styles).
+        separated into two different directory structures: the design
+        models and the artistic motifs directory structures.  From
+        this point on, the <command>centos-art.sh</command> was able
+        to produce themes as result of arbitrary combinations between
+        design models (structure) and artistic motifs (visual styles).
     </para>
 
     <para>
