@@ -240,7 +240,12 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <term><filename>manual-menu.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file can be found inside the language-specific directory
+        and contains the menu definitions of chapters inside the
+        manual. Menu definitions in this file are automatically
+        created when chapters are created inside the manual.
+        Generally, you don't need to edit this file once the
+        documentation manual has been created.
     </para>
     </listitem>
     </varlistentry>
@@ -249,7 +254,16 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <term><filename>manual-nodes.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file can be found inside the language-specific directory
+        and contains the node definitions of all chapters inside the
+        manual.  Node definitions in this file are automatically
+        created based on menu definitions (see
+        <filename>manual-menu.texinfo</filename> file above) and they
+        don't include any content here.  Instead, as part of the node
+        definition, the <code>@include</code> command is used to
+        connect each node with its content.  Generally, you don't need
+        to edit this file once the documentation manual has been
+        created.
     </para>
     </listitem>
     </varlistentry>
@@ -258,7 +272,12 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <term><filename>manual-index.texinfo</filename></term>
     <listitem>
     <para>
-        ...
+        This file can be found inside the language-specific directory
+        and contains the Texinfo commands used to generated an
+        organized view of all indexes you defined inside documentation
+        entries so they can be quickly accessed. Generally, you don't
+        need to edit this file once the documentation manual has been
+        created.
     </para>
     </listitem>
     </varlistentry>
