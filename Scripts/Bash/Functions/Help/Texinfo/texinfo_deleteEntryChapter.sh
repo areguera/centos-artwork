@@ -32,6 +32,15 @@ function texinfo_deleteEntryChapter {
     # cannot delete an entry which doesn't exist.
     cli_checkFiles "$MANUAL_CHAPTER_DIR"
 
+    # Define list of chapters that shouldn't be removed.
+    local SPECIAL_CHAPTERS='/(Licenses|Index)$'
+
+    # Verify list of chapters that shouldn't be removed against the
+    # current chapter directory being removed.
+    if [[ $MANUAL_CHAPTER_DIR =~ $SPECIAL_CHAPTERS ]];then
+        cli_printMessage "`gettext "The chapter specified cannot be removed."`" --as-error-line
+    fi
+
     # Build list of section entries inside the chapter. This is
     # required to delete cross references from other section entries
     # that point to section entries inside the chapter that will be
@@ -63,4 +72,3 @@ function texinfo_deleteEntryChapter {
     done
 
 }
-
