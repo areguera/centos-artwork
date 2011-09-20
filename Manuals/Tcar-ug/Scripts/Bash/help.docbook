@@ -1,12 +1,13 @@
 <sect1 id="scripts-bash-help">
 
-    <title>Standardize Documentation Tasks</title>
+    <title>Standardizing Documentation Tasks</title>
 
     <para>
         The <function>help</function> functionality is the interface
         the <command>centos-art.sh</command> script provides to
         standardize frequent documentation tasks, based on specific
-        documentation backends described in <xref linkend="manuals"/>.
+        documentation formats, as described in <xref
+        linkend="manuals-formats"/>.
     </para>
 
     <para>
@@ -24,6 +25,17 @@
         <varname>DOCENTRY</varname> parameter is not provided, the
         <quote>Repository File System</quote> documentation manual is
         used as default value.
+    </para>
+
+    <para>
+        To determine the documentation format to use, when new
+        documentation manuals are created and no configuration file is
+        available, the <function>help</function> functionality request
+        you to enter one of the supported documentation formats and
+        then, uses it to create the documentation manual. Once the
+        documentation manual is created, the document configuration
+        file is available inside the manual directory structure and
+        used to retrive the document format information, instead.
     </para>
 
     <para>
@@ -103,9 +115,9 @@
     <para>
         Read documentation entry specified by
         <varname>DOCENTRY</varname> path.  This option is used
-        internally by <command>centos-art.sh</command> script to print
-        out the reference you can follow to know more about an error
-        message.
+        internally by <command>centos-art.sh</command> script to refer
+        documentation based on errors, so you can know more about them
+        and the causes that could have provoked them.
     </para>
     </listitem>
     </varlistentry>
