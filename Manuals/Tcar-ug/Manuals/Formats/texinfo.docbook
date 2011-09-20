@@ -5,7 +5,8 @@
     <para>
         This section describes the implementation of Texinfo
         documentation format inside the <function>help</function>
-        functionality of <command>centos-art.sh</command> script. More
+        functionality of <command>centos-art.sh</command> script, as
+        described in <xref linkend="scripts-bash-help" />. More
         information about Texinfo documentation system itself can be
         found by running the <command>info texinfo</command> command.
     </para>
@@ -62,12 +63,13 @@
         are suffixed with a <filename
         class="extension">texinfo</filename> extension and named
         arbitrarily, as it is illustrated in <xref
-        linkend="manuals-texinfo-structure-1" />. Inside section files
-        it is where you write the manual's content itself.  Inside
-        chapters, you can create as many sections as you need.
+        linkend="manuals-formats-texinfo-structure-example1" />.
+        Inside section files it is where you write the manual's
+        content itself.  Inside chapters, you can create as many
+        sections as you need.
     </para>
 
-    <example id="manuals-texinfo-structure-1">
+    <example id="manuals-formats-texinfo-structure-example1">
     <title>Texinfo document structure</title>
     <screenshot>
     <screeninfo>Texinfo document structure</screeninfo>
@@ -84,6 +86,7 @@
     |   |-- chapter-menu.texinfo
     |   |-- chapter-nodes.texinfo
     |   `-- chapter.texinfo
+    |-- ${MANUAL_NAME}.conf
     |-- ${MANUAL_NAME}-index.texinfo
     |-- ${MANUAL_NAME}-menu.texinfo
     |-- ${MANUAL_NAME}-nodes.texinfo
@@ -100,109 +103,37 @@
         Texinfo document templates provide the initial state the
         <function>help</function> functionality of
         <command>centos-art.sh</command> script needs in order to
-        create and maintain documentation manuals written in Texinfo
-        format, as described in <xref
-        linkend="manuals-formats-texinfo-structure" />.
+        create and maintain document structures, as that one described
+        in <xref linkend="manuals-formats-texinfo-structure" />.
     </para>
 
     <para>
         Texinfo document templates are language-specific. This means
         that there is (or, at least, must be) one Texinfo document
         template for each language you plan to support documentation
-        manuals for. By default, &TCAR; provides the <filename
-        class="directory">en_US</filename> Texinfo document template
-        so documentation manuals in English language can be created
-        always.
-    </para>
-
-    <note>
-    <para>
-        When the <code>help</code> functionality doesn't find a
-        Texinfo document template for that language the documentation
-        manual is being currently created for, the <code>help</code>
-        functionality takes the files it needs from that Texinfo
-        document template written in English language.
-    </para>
-    </note>
-
-    <para>
-        The language-specific directories related to Texinfo document
-        templates are organized are organized inside the following
-        directory:
+        manuals for. By default, &TCAR; provides a default Texinfo
+        document template under <filename class="directory">en_US</filename>
+        directory. This template structure is used when your current
+        locale is English language or when you are creating/editing a
+        documentation manual in a language other than English, but no
+        language-specific document template for that language exists
+        in the directory:
     </para>
 
     <screen>
 trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
 
     <para>
-        Inside language-specific directories, Texinfo document
-        templates are made of the following files:
+        This directory organizes all Texinfo document templates using
+        the format LL_CC, where LL is the language code (as in
+        ISO-639) and CC the country code (as in ISO-3166). The
+        directory structure of Texinfo document templates is
+        illustrated in the <xref
+        linkend="manuals-formats-texinfo-templates-example1" /> and
+        implemented through the following files:
     </para>
 
     <variablelist>
-    <varlistentry>
-    <term><filename>chapter.texinfo</filename></term>
-    <listitem>
-    <para>
-        This file contains the Texinfo chapter definition used by
-        <function>help</function> functionality when new chapters are
-        created inside documentation manuals. When chapters are
-        created for first time, they come without any introduction or
-        documentation entry inside. If you want to add/update any
-        information inside the chapter definition itself, edit the
-        related chapter file inside the documentation manual you are
-        working on, not the template file used to create it.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>section.texinfo</filename></term>
-    <listitem>
-    <para>
-        This file contains the Texinfo section definition used by
-        <function>help</function> functionality when new documentation
-        entries are created inside the documentation manual. When
-        documentation entries are created for first time, they are
-        created as empty documentation entries that you need to fill
-        up with content. Again, if you want to update the content of
-        sections inside the documentation manual, update the
-        related documentation entry inside the documentation manual,
-        not the template file used to create it.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>chapter-menu.texinfo</filename></term>
-    <listitem>
-    <para>
-        This file is part of Texinfo chapter definition and should be
-        initially empty. Later, when chapters are created for first
-        time, this file is copied as it is (i.e., empty) into the
-        documentation manual to store the Texinfo menu entries related
-        to all documentation entries created inside the chapter. The
-        Texinfo menu entries are automatically created using Texinfo
-        source files as reference.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><filename>chapter-nodes.texinfo</filename></term>
-    <listitem>
-    <para>
-        This file is part of Texinfo chapter definition and contains
-        the node definition the <function>help</function>
-        functionality uses as reference to create the list of Texinfo
-        nodes related to all documentation entries created inside the
-        chapter. The Texinfo nodes are automatically created using
-        Texinfo meny entries as reference, after they have been
-        updated from Texinfo source files.
-    </para>
-    </listitem>
-    </varlistentry>
-
     <varlistentry>
     <term><filename>manual.texinfo</filename></term>
     <listitem>
@@ -222,20 +153,37 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         This file can be found inside the language-specific directory
         and contains the menu definitions of chapters inside the
         manual. Menu definitions in this file are automatically
-        updated when a new chapter is created through the
+        updated when a new chapter is created or deleted through the
         <function>help</function> functionality of
         <command>centos-art.sh</command> script.  Generally, you don't
         need to edit this file once the documentation manual has been
         created.
     </para>
-    <note>
     <para>
-        The menu definition of chapters like Index and Licenses is not
-        considered inside this file. Instead, it is configured inside
-        the template files and made available when the documentation
-        manual is created for first time.
+        When a documentation manual is created for first time, this
+        file is copied from Texinfo document template directory
+        structure to the documentation manual being currently created.
+        At this specific moment, this file contains the following
+        Texinfo menu definition:
     </para>
-    </note>
+
+    <screen>@menu
+* Licenses::
+* Index::
+@end menu</screen>
+
+    <para>
+        Later, when chapters are added to or deleted from the
+        documentation manual, the content of this file varies adding
+        or deleting menu entries accordingly.  Nevertheless, the two
+        entries shown above are ignored when new chapters are added to
+        or removed from the list, so they will always be present in
+        this file. To preserve the manual consistency, the
+        <function>help</function> functionality prevents you from
+        deleting any of these chapters once the documentation manual
+        has been created.
+    </para>
+
     </listitem>
     </varlistentry>
 
@@ -270,6 +218,106 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </para>
     </listitem>
     </varlistentry>
+
+    <varlistentry>
+    <term><filename>manual.conf</filename></term>
+    <listitem>
+    <para>
+        This file contains the initial configuration of documentation
+        manuals written in Texinfo format. When a documentation manual
+        is created for first time, this file is copied into its target
+        directory so you be able of later customizing specific
+        information like menu order, title styles and template
+        assignments. The content of this file is described in <xref
+        linkend="manuals-formats-texinfo-configuration" />.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter.texinfo</filename></term>
+    <listitem>
+    <para>
+        This file contains the Texinfo's main chapter definition used
+        by <function>help</function> functionality when new chapters
+        are created inside documentation manuals. When chapters are
+        created for first time, they come without any introduction or
+        documentation entry inside. If you want to add/update any
+        information inside the chapter definition itself, edit the
+        related chapter file inside the documentation manual you are
+        working on, not the template file used to create it.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter-menu.texinfo</filename></term>
+    <listitem>
+    <para>
+        This file is part of Texinfo's main chapter definition and
+        should be initially empty. Later, when chapters are created
+        for first time, this file is copied as it is (i.e., empty)
+        into the documentation manual to store the Texinfo menu
+        entries related to all documentation entries created inside
+        the chapter. The Texinfo menu entries related to documentation
+        entries are automatically created using Texinfo source files
+        as reference.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>chapter-nodes.texinfo</filename></term>
+    <listitem>
+    <para>
+        This file is part of Texinfo's main chapter definition and
+        contains the node definition the <function>help</function>
+        functionality uses as reference to create the list of Texinfo
+        nodes related to all documentation entries created inside the
+        chapter. The node definition of documentation entries is 
+        automatically created from the menu definition of
+        documentation entries (see
+        <filename>chapter-menu.texinfo</filename> file above), once it
+        has been updated from Texinfo source files.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>section.texinfo</filename></term>
+    <listitem>
+    <para>
+        This file contains the Texinfo section definition used by
+        <function>help</function> functionality when new documentation
+        entries are created inside the chapters of a documentation
+        manual. When documentation entries are created for first time,
+        they are created as empty documentation entries that you need
+        to fill up with content.  Again, if you want to update the
+        content of sections inside the documentation manual, update
+        the related documentation entry inside the documentation
+        manual, not the template file used to create it.
+    </para>
+
+    <para>
+        The creation of documentation entries inside the documentation
+        manual is represented by the
+        <filename>${SECTION_NAME}.texinfo</filename> file, as
+        described in <xref
+        linkend="manuals-formats-texinfo-structure-example1" />. In
+        this example, <code>${SECTION_NAME}</code> is a variable
+        string refering the file name of documentaiton entries.
+        The file names of documentation entries is made of letters,
+        numbers and the minus sign (which is generally used to
+        separate words).
+    </para>
+
+    <para>
+        Documentation entries are not limited inside a documentation
+        manual. You can create as many documentation entries as you
+        need to describe the content of your manual.
+    </para>
+    </listitem>
+    </varlistentry>
     </variablelist>
         
     <para>
@@ -277,7 +325,13 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         files, but to manual's output files. Such files are described
         below and can be found either inside or outside the
         language-specific directories so you can control common and
-        specific output settings through them.
+        specific output settings through them.  These files aren't
+        copied into the directory structure of new documentation
+        manuals created through the <function>help</function>
+        functionality of <command>centos-art.sh</command> script.
+        Instead, they remain inside the template directory structure
+        so as to be reused each time the output of documentation
+        manuals is rendered.
     </para>
 
     <variablelist>
@@ -295,17 +349,6 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         words like See, Index, Contents, Top, etc., are localized
         here).
     </para>
-
-    <note>
-    <para>
-        Texi2html initialization scripts aren't copied into the
-        directory structure of new documentation manuals created
-        through the <function>help</function> functionality of
-        <command>centos-art.sh</command> script. Instead, they remain
-        inside the template directory structure so as to be reused
-        each time the output of documentation manuals is rendered.
-    </para>
-    </note>
     </listitem>
     </varlistentry>
 
@@ -327,27 +370,10 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </para>
     </listitem>
     </varlistentry>
-
-    <varlistentry>
-    <term><filename>manual.conf</filename></term>
-    <listitem>
-    <para>
-        This file contains the initial configuration of documentation
-        manuals written in Texinfo format. When the documentation
-        manual is created for first time, this file is copied into the
-        documentation manual target directory so you can customize
-        specific information like menu order, title styles and
-        templates assignment. More details about the content of this
-        file can be found in <xref
-        linkend="manuals-formats-texinfo-configuration" />.
-    </para>
-    </listitem>
-    </varlistentry>
-
     </variablelist>
     
     <example id="manuals-formats-texinfo-templates-example1">
-    <title>The Document Template</title>
+    <title>Texinfo document template</title>
     <screenshot>
     <screeninfo>Texinfo document template</screeninfo>
     <mediaobject>
@@ -397,18 +423,140 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </para>
     </sect2>
 
+    <sect2 id="manuals-formats-texinfo-macros">
+    <title>Document Dynamic Expansions</title>
+    <para>
+        The document dynamic expansions are special constructions used
+        to generate dynamic content inside Texinfo source files. For
+        example, when you are using the directory style on section
+        titles and your are documenting a filesystem, it would be
+        useful to list, in each documentation entry, the next level of
+        documentation entries (directories in this case) so you can
+        know what they are and also access them if you need to.
+    </para>
+    </sect2>
+
     <sect2 id="manuals-formats-texinfo-configuration">
     <title>Document Configuration</title>
     <para>
-        ...
+        The document configuration is stored in the 
+        <filename>${MANUAL_NAME}.conf</filename> file, inside the
+        documentation manual directory structure. This file is
+        originally copied from <filename>manual.conf</filename>
+        template file when the documentation manual is created for
+        first time. The content of
+        <filename>${MANUAL_NAME}.conf</filename> file is organized in
+        sections. Each section here is written in one line of its own
+        and have the form <code>[section_name]</code>. Under sections,
+        the configuration settings take place through
+        <code>name="value"</code> pairs.  Notice that quotation marks
+        around the option_value are required.  Comments are also
+        possible using the <code>#</code> character at the begining of
+        lines. Comments and empty lines (including tabs and white
+        spaces) are ignored. In case more than one section with the
+        same name be present inside the configuration file, the first
+        one found will be used. Nested section definitions are not
+        supported.
     </para>
+
+    <screen>[section_name]
+# This is a comment.
+option_name = "option_value"</screen>
+
+    <para>
+        The <filename>${MANUAL_NAME}.conf</filename> file is specific
+        to document templates. If you are using Texinfo document
+        template to create documentation manuals, then the default
+        configuration file for that documentation manual is taken from
+        Texinfo document template directory structure. However, if you
+        are using a document template different to Texinfo document
+        template, the default configuration file will be taken from
+        the related document template directory structure you are
+        creating the documentation manual from.
+    </para>
+
+    <sect3>
+    <title>The <code>[main]</code> Section</title>
+    <para>
+        The <code>[main]</code> section organizes settings that let
+        you customize the way sections and menu definitions are
+        created inside the documentation manual. The following options
+        are available in this section:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><code>manual_format</code></term>
+    <listitem>
+    <para>
+        This option specifies the documentation format used by manual.
+        To write documentation manuals in Texinfo format, the value
+        of this option must always be:
+    </para>
+    <screen>manual_format = "texinfo"</screen>
+    <caution>
+    <para>
+        Once the documentation manual has been created, you must not
+        change the value of <option>manual_format</option> option.
+        This will produce an error.
+    </para>
+    </caution>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><code>manual_section_style</code></term>
+    <listitem>
+    <para>
+        This option specifies the title style used by sections inside
+        the manual.  Possible values to this option are
+        `cap-each-word' to capitalize each word in the section title,
+        `cap-first-word' to capitalize the first word in the section
+        title only and `directory' to transform each word in the
+        section title into a directory path. From all these options,
+        `cap-each-word' is the one used as default.
+    </para>
+    <screen>manual_section_style = "cap-each-word"</screen>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><code>manual_section_order</code></term>
+    <listitem>
+    <para>
+        This option specifies the order used by sections inside the
+        manual. By default new sections added to the manual are put on
+        the end to follow the section order in which they were
+        `created'. Other possible values to this option are `ordered'
+        and `reversed' to sort the list of sections alphabetically
+        from A-Z and Z-A, respectively.
+    </para>
+    <screen>manual_section_order = "created"</screen>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    </sect3>
+
+    <sect3>
+    <title>The <code>[templates]</code> Section</title>
+    <para>
+        The <code>[templates]</code> section provides the assignment
+        relation between template files and documentation entry files
+        inside the manual. The template definition is set on the left
+        side using relative path and the documentation entry files are
+        described on the right side using a regular expression. The
+        first match wins.
+    </para>
+    <screen>Chapters/section.texinfo = "^.+\.texinfo$"</screen>
+    </sect3>
+    
     </sect2>
 
     <sect2 id="manuals-formats-texinfo-l10n">
     <title>Document Internationalization</title>
     <para>
         To produce localized documentation manuals through Texinfo
-        documentation backend it is necessary to create one
+        documentation format it is necessary to create one
         documentation manual for each language it is desired to
         support documentation for.  Documentation manuals created in
         this configuration don't have a direct relation among
@@ -473,7 +621,7 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <title>Document Language</title>
     <para>
         The language information of those documentation manuals
-        produced through Texinfo documentation backend is declared by
+        produced through Texinfo documentation format is declared by
         Texinfo's <code>@documentlanguage</code> command.  This
         command receives one argument refering the language code (as
         in ISO-639 standard) and must be set inside the manual's main
@@ -532,7 +680,7 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <title>Document Encoding</title>
     <para>
         The encoding information of documentation manuals produced
-        through Texinfo documentation backend is declared by Texinfo's
+        through Texinfo documentation format is declared by Texinfo's
         <code>@documentencoding</code> command and can take either
         <code>US-ASCII</code>, <code>ISO-8859-1</code>,
         <code>ISO-8859-15</code> or <code>ISO-8859-2</code> as
