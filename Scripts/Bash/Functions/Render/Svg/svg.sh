@@ -53,10 +53,10 @@ function svg {
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
         | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`:!")"
 
-    # Perform backend post-rendition.
+    # Perform format post-rendition.
     svg_doPostActions
 
-    # Perform backend last-rendition.
+    # Perform format last-rendition.
     svg_doLastActions
 
 }

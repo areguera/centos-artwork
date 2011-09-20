@@ -79,7 +79,7 @@ function texinfo_createStructure {
         --pattern="manual((-menu|-nodes|-index)?\.${MANUAL_EXTENSION}|\.conf)")
 
     # Verify manual base file. The manual base file is where the
-    # documentation manual is defined in the backend format. Assuming
+    # documentation manual is defined in the format format. Assuming
     # no file exists (e.g., a new language-specific manual is being
     # created), use texinfo templates for it.
     for FILE in $FILES;do

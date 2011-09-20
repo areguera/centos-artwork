@@ -27,7 +27,7 @@ function docbook {
 
     # Initialize absolute path to Xsl directory. This is the location
     # where customization of XSL tranformations are stored in.
-    DOCBOOK_STYLES_DIR="${RENDER_BACKEND_DIR}/Docbook/Styles"
+    DOCBOOK_STYLES_DIR="${RENDER_FORMAT_DIR}/Docbook/Styles"
 
     docbook_convertToXhtmlChunk
     docbook_convertToXhtml
@@ -40,10 +40,10 @@ function docbook {
     # of CentOS greater than 5.5, uncomment this to see what happen.
     #docbook_convertToPdf
 
-    # Perform backend post-rendition.
+    # Perform format post-rendition.
     docbook_doPostActions
 
-    # Perform backend last-rendition.
+    # Perform format last-rendition.
     docbook_doLastActions
 
 }

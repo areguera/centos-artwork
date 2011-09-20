@@ -72,14 +72,14 @@ function render {
     # branded.
     local FLAG_WITH_BRANDS='false'
 
-    # Initialize name of rendition backend as an empty value. The name
-    # of rendition backend is determined automatically based on
+    # Initialize name of rendition format as an empty value. The name
+    # of rendition format is determined automatically based on
     # template file extension, later, at rendition time. 
-    local RENDER_BACKEND=''
+    local RENDER_FORMAT=''
 
-    # Initialize absolute path to backend's base directory, the place
-    # where backend-specific directories are stored in.
-    local RENDER_BACKEND_DIR="${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
+    # Initialize absolute path to format's base directory, the place
+    # where format-specific directories are stored in.
+    local RENDER_FORMAT_DIR="${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
 
     # Initialize list of supported file extensions. These file
     # extensions are used by design model files, the files used as

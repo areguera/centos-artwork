@@ -29,7 +29,7 @@ function docbook_doLastActions {
 
     # Presently, there is no last-rendition action for DocBook base
     # rendition but the function should exist for consistency with
-    # other backends.
+    # other formats.
     return
 
 }

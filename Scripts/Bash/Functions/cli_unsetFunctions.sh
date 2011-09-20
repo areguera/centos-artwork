@@ -38,7 +38,7 @@ function cli_unsetFunctions {
         SUFFIX=$CLI_FUNCNAME
     fi
 
-    # Define list of backend-specific functionalities. This is the
+    # Define list of format-specific functionalities. This is the
     # list of function definitions previously exported by
     # `cli_exportFunctions'.  Be sure to limit the list to function
     # names that start with the suffix specified only.

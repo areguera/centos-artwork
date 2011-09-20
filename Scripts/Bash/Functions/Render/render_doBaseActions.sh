@@ -51,10 +51,10 @@ function render_doBaseActions {
     # Loop through list of supported file extensions. 
     for RENDER_EXTENSION in ${RENDER_EXTENSIONS};do
 
-        # Redefine name of rendition backend based on supported file
+        # Redefine name of rendition format based on supported file
         # extension.
         if [[ $RENDER_EXTENSION =~ '^(svg|docbook)$' ]];then
-            RENDER_BACKEND=${RENDER_EXTENSION}
+            RENDER_FORMAT=${RENDER_EXTENSION}
         else
            cli_printMessage "`eval_gettext "The \\\"\\\$RENDER_EXTENSION\\\" file extension is not supported yet."`" --as-error-line 
         fi
@@ -109,9 +109,9 @@ function render_doBaseActions {
             continue
         fi
 
-        # Initialize backend-specific functionalities.
-        cli_exportFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
-            ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
+        # Initialize format-specific functionalities.
+        cli_exportFunctions "${RENDER_FORMAT_DIR}/$(cli_getRepoName \
+            ${RENDER_FORMAT} -d)" "${RENDER_FORMAT}"
 
         # Start processing the base rendition list of FILES. Fun part
         # approching :-).
@@ -223,8 +223,8 @@ function render_doBaseActions {
             # Expand translation markers inside design model instance.
             cli_expandTMarkers ${INSTANCE}
 
-            # Perform backend base-rendition.
-            ${RENDER_BACKEND}
+            # Perform format base-rendition.
+            ${RENDER_FORMAT}
 
             # Remove template instance. 
             if [[ -f $INSTANCE ]];then
@@ -236,9 +236,9 @@ function render_doBaseActions {
 
         done
 
-        # Unset backend-specific functionalities.
-        cli_unsetFunctions "${RENDER_BACKEND_DIR}/$(cli_getRepoName \
-            ${RENDER_BACKEND} -d)" "${RENDER_BACKEND}"
+        # Unset format-specific functionalities.
+        cli_unsetFunctions "${RENDER_FORMAT_DIR}/$(cli_getRepoName \
+            ${RENDER_FORMAT} -d)" "${RENDER_FORMAT}"
 
     done
 }

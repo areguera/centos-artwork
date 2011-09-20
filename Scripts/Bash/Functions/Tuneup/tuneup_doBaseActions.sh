@@ -27,8 +27,8 @@
 function tuneup_doBaseActions {
 
     local TUNEUP_CONFIG_DIR=''
-    local TUNEUP_BACKEND_DIR=''
-    local TUNEUP_BACKEND_INIT=''
+    local TUNEUP_FORMAT_DIR=''
+    local TUNEUP_FORMAT_INIT=''
     local TUNEUP_EXTENSION=''
     local FILE=''
     local FILES=''
@@ -39,28 +39,28 @@ function tuneup_doBaseActions {
     # Loop through list of supported file extensions. 
     for TUNEUP_EXTENSION in ${TUNEUP_EXTENSIONS};do
 
-        # Define backend name based on supported file extensions.
-        TUNEUP_BACKEND="${TUNEUP_EXTENSION}"
+        # Define format name based on supported file extensions.
+        TUNEUP_FORMAT="${TUNEUP_EXTENSION}"
 
-        # Define absolute path to directory where backend-specific
+        # Define absolute path to directory where format-specific
         # functionalities are stored in.
-        TUNEUP_BACKEND_DIR="${TUNEUP_BASEDIR}/$(cli_getRepoName \
-            ${TUNEUP_BACKEND} -d)"
+        TUNEUP_FORMAT_DIR="${TUNEUP_BASEDIR}/$(cli_getRepoName \
+            ${TUNEUP_FORMAT} -d)"
 
-        # Define absolute path to backend initialization script.
-        TUNEUP_BACKEND_INIT="${TUNEUP_BACKEND_DIR}/$(cli_getRepoName ${TUNEUP_BACKEND} -f)"
+        # Define absolute path to format initialization script.
+        TUNEUP_FORMAT_INIT="${TUNEUP_FORMAT_DIR}/$(cli_getRepoName ${TUNEUP_FORMAT} -f)"
 
-        # Verify absolute path to backend initialization script.  When
-        # a file extension is provided, but no backend initialization
+        # Verify absolute path to format initialization script.  When
+        # a file extension is provided, but no format initialization
         # script exists for it, continue with the next file extension
         # in the list.
-        if [[ ! -f ${TUNEUP_BACKEND_INIT} ]];then
+        if [[ ! -f ${TUNEUP_FORMAT_INIT} ]];then
             continue
         fi
 
-        # Define absolute path to directory where backend-specific
+        # Define absolute path to directory where format-specific
         # configurations are retrived from.
-        TUNEUP_CONFIG_DIR="${TUNEUP_BACKEND_DIR}/Config"
+        TUNEUP_CONFIG_DIR="${TUNEUP_FORMAT_DIR}/Config"
 
         # Build list of files to process using action value as
         # reference.
@@ -72,24 +72,24 @@ function tuneup_doBaseActions {
             continue
         fi
 
-        # Export backend-specific functionalities up to the
+        # Export format-specific functionalities up to the
         # execution environment.
         cli_exportFunctions "${TUNEUP_BASEDIR}/$(cli_getRepoName \
-            ${TUNEUP_BACKEND} -d)" "${TUNEUP_BACKEND}"
+            ${TUNEUP_FORMAT} -d)" "${TUNEUP_FORMAT}"
 
-        # Execute backend-specific maintainance tasks.
+        # Execute format-specific maintainance tasks.
         for FILE in $FILES;do
             cli_printMessage "$FILE" --as-tuningup-line
-            ${TUNEUP_BACKEND}
+            ${TUNEUP_FORMAT}
         done
 
-        # Unset backend-specific functionalities from execution
+        # Unset format-specific functionalities from execution
         # environment.  This is required to prevent end up with more
-        # than one backend-specifc function initialization, in those
+        # than one format-specifc function initialization, in those
         # cases when different template files are rendered in just one
         # execution of `centos-art.sh' script.
         cli_unsetFunctions "${TUNEUP_BASEDIR}/$(cli_getRepoName \
-            ${TUNEUP_BACKEND} -d)" "${TUNEUP_BACKEND}"
+            ${TUNEUP_FORMAT} -d)" "${TUNEUP_FORMAT}"
 
     done
 

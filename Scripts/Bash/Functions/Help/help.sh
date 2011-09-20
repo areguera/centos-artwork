@@ -2,7 +2,7 @@
 #
 # help.sh -- This function initializes the interface used by
 # centos-art.sh script to perform documentation tasks through
-# different documentation backends.
+# different documentation formats.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -30,7 +30,7 @@ function help {
     local ACTIONNAM=''
 
     # Initialize search option (`--search'). This option is used to
-    # look for documentation inside documentation backends.
+    # look for documentation inside documentation formats.
     local FLAG_SEARCH=""
 
     # Initialize manual's language.
@@ -78,7 +78,7 @@ function help {
     # information related documentation entries from there.
     help_getEntries
 
-    # Execute backend-specific documentation tasks for each
+    # Execute format-specific documentation tasks for each
     # documentation entry specified in the command-line, individually.
     # Notice that we've stored all documentation entries passed as
     # non-option arguments in array variables in order to process them
@@ -140,34 +140,34 @@ function help {
         # as the style and order used for printing sections. 
         MANUAL_CONFIG_FILE="${MANUAL_BASEFILE}.conf" 
 
-        # Define documentation backend. This information defines the
+        # Define documentation format. This information defines the
         # kind of source files we work with inside the documentation
         # manual as well as the kind of actions required by them to
         # perform actions related to document management (e.g.,
         # creation, edition, deletion, copying, renaming, etc.).
         if [[ -f ${MANUAL_CONFIG_FILE} ]];then
 
-            # Retrive documentation backend from configuration file.
-            MANUAL_BACKEND=$(cli_getConfigValue \
-                "${MANUAL_CONFIG_FILE}" "main" "manual_backend")
+            # Retrive documentation format from configuration file.
+            MANUAL_FORMAT=$(cli_getConfigValue \
+                "${MANUAL_CONFIG_FILE}" "main" "manual_format")
 
-            # Verify documentation backend. This is required in order
+            # Verify documentation format. This is required in order
             # to prevent malformed values from being used. Be sure
-            # only supported documentation backends can be provided as
-            # value to `manual_backend' option inside configuration
+            # only supported documentation formats can be provided as
+            # value to `manual_format' option inside configuration
             # files.
-            if [[ ! $MANUAL_BACKEND =~ '^(texinfo)$' ]];then
-                cli_printMessage "`gettext "The documentation backend provided isn't supported."`" --as-error-line
+            if [[ ! $MANUAL_FORMAT =~ '^(texinfo)$' ]];then
+                cli_printMessage "`gettext "The documentation format provided isn't supported."`" --as-error-line
             fi 
 
         else
 
             # When the current documentation manual is being created
             # for first time, there's no way to get the documentation
-            # backend to use in the future manual, but asking the user
+            # format to use in the future manual, but asking the user
             # creating it which one to use.
-            cli_printMessage "`gettext "Select one of the following documentation backends:"`"
-            MANUAL_BACKEND=$(cli_printMessage "texinfo" --as-selection-line)
+            cli_printMessage "`gettext "Select one of the following documentation formats:"`"
+            MANUAL_FORMAT=$(cli_printMessage "texinfo" --as-selection-line)
 
         fi
 
@@ -178,7 +178,7 @@ function help {
         # non-option arguments refer the same manual directory name).
         # That would be only necessary when documentation entries
         # refer to different manual directory names that could be
-        # written in different documentation backends.
+        # written in different documentation formats.
         if [[ ${MANUAL_DOCENTRY_ID} -eq 0 \
             || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
             ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
@@ -191,28 +191,28 @@ function help {
                 cli_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
             fi
 
-            # Initialize documentation backend functionalities. At
+            # Initialize documentation format functionalities. At
             # this point we load all functionalities required into
             # `centos-art.sh''s execution environment and make them
-            # available, this way, to perform backend-specific
+            # available, this way, to perform format-specific
             # documentation tasks.
             cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-                ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
+                ${MANUAL_FORMAT} -d)" "${MANUAL_FORMAT}"
 
         fi
 
-        # Execute backend-specific documentation tasks.
-        ${MANUAL_BACKEND}
+        # Execute format-specific documentation tasks.
+        ${MANUAL_FORMAT}
 
         # Unset the exported functions before go on with the next
         # documentation entry provided as non-option argument to
         # `centos-art.sh' script. Different documentation entries may
-        # be written in different documentation backends. Each
-        # documentation backend is loaded in order to perform their
+        # be written in different documentation formats. Each
+        # documentation format is loaded in order to perform their
         # related documentation tasks. Assuming more that one
         # documentation entry be passed as non-option argument to
         # `centos-art.sh' script and they are written in different
-        # formats, we might end up loading documentation backend
+        # formats, we might end up loading documentation format
         # functionalities that aren't used in the current
         # documentation entry being processed. In that sake, unset
         # documentation bakend functionalities when the next
@@ -221,7 +221,7 @@ function help {
         if [[ ${MANUAL_DOCENTRY_ID} -gt 0 \
             && ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]} ]];then
             cli_unsetFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-                ${MANUAL_BACKEND} -d)" "${MANUAL_BACKEND}"
+                ${MANUAL_FORMAT} -d)" "${MANUAL_FORMAT}"
         fi
 
         # Increment documentation entry counter id.

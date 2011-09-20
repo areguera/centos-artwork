@@ -29,13 +29,13 @@ function tuneup {
     local ACTIONNAM=''
     local ACTIONVAL=''
 
-    # Initialize name of rendition backend as an empty value. The name
-    # of rendition backend is determined automatically based on
+    # Initialize name of rendition format as an empty value. The name
+    # of rendition format is determined automatically based on
     # template file extension, later, when files are processed.
-    local TUNEUP_BACKEND=''
+    local TUNEUP_FORMAT=''
 
-    # Initialize absolute path to backend's base directory, the place
-    # where backend-specific directories are stored in.
+    # Initialize absolute path to format's base directory, the place
+    # where format-specific directories are stored in.
     local TUNEUP_BASEDIR="${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
 
     # Initialize list of supported file extensions. This is, the file

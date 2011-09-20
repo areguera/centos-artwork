@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # texinfo.sh -- This function initilializes Texinfo documentation
-# backend used by `centos-art.sh' script to produce and maintain
+# format used by `centos-art.sh' script to produce and maintain
 # documentation manuals written in Texinfo format, inside the working
 # copy of The CentOS Artwork Repository.
 #
@@ -36,13 +36,13 @@ function texinfo {
     fi
 
     # Define file extension used by source files inside manuals.
-    MANUAL_EXTENSION="${MANUAL_BACKEND}"
+    MANUAL_EXTENSION="${MANUAL_FORMAT}"
 
     # Define absolute path to template directory. This is the place
     # where we store locale directories (e.g., en_US, es_ES, etc.)
     # used to build manuals in texinfo format.
     MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-        ${MANUAL_BACKEND} -d)/Templates
+        ${MANUAL_FORMAT} -d)/Templates
 
     # Define absolute path to language-specific template directory.
     # This is the place where we store locale-specific files used to
