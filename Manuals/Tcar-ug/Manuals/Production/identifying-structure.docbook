@@ -2,30 +2,29 @@
     <title>Identifying Document Structure</title>
     <para>
         Once both manual's title and manual's directory name have been
-        defined, it is time to plan manual's structure through which
-        chapters and sections will be organized.  The
+        defined, it is time to plan the document structure through
+        which chapters and sections will be organized.  The
         <citetitle>TCAR-FS</citetitle> manual follows the same
         organization of &TCAR; directories so each directory inside
-        the repository does have its own documentation entry to store
-        related information that let people to communicate thoughts
-        about the content it holds. As we are using documentation
-        formats to write documentation entries, it is also possible to
-        use all the features they permit to use (e.g., cross
-        references, index definition, etc.) to improve the whole
-        manual and the way information can be found inside it.
+        the repository does have its own documentation entry.
+        Moreover, as we are using documentation formats to write
+        documentation entries, it is possible to use all the features
+        such documentation formats provide (e.g., cross references,
+        index definition, etc.) to improve the whole manual and the
+        way information can be found inside it.
     </para>
 
     <para>
-        At this point we phase a repository directory structure with
-        more levels deep than sectioning commands supported by the
-        documentation formats that can be used to represent them. This
-        way it is not possible to use one sectioning level from
-        documentation format for each directory level inside the
-        repository. It is necessary to reaccomodate the document
-        structure in order to be able of documenting
-        <emphasis>all</emphasis> the directories &TCAR; is made of,
-        using the sectioning levels supported by most documentation
-        formats inside &TCD;.
+        At this point we phase a repository directory structure where
+        there are more levels deep than sectioning commands available
+        inside documentation formats. This way it is not possible to
+        use one sectioning command for each directory level inside the
+        repository directory structure we need to document. Based on
+        these issues, it is imperative to reaccomodate the document
+        structure in order to be able of documenting every directory
+        &TCAR; is made of, using the sectioning levels supported by
+        most documentation formats inside &TCD;, no matter how many
+        levels deep the repository directory structure has.
     </para>
 
     <para>
