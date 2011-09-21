@@ -40,7 +40,7 @@
         class="directory">trunk/Manuals</filename> directory.  Once
         the documentation manual directory has been created, the
         <function>help</function> functionality creates the related
-        definition files using Texinfo documentation templates as
+        definition files using Texinfo documentation templates, as
         described in <xref linkend="manuals-formats-texinfo-templates"
         />.
     </para>
@@ -60,7 +60,7 @@
         indexes and all the similar stuff a documentation manual would
         have).  In addition to these files, there is one directory for
         each chapter created inside the manual.  Inside each chapter
-        directory, you'll found the files controling the section
+        directory, you'll found the files controlling the section
         definitions related to that chapter they belong to.  The
         section files (a.k.a.  <quote>documentation entries</quote>)
         are suffixed with a <filename
@@ -68,10 +68,9 @@
         arbitrarily, as it is illustrated in <xref
         linkend="manuals-formats-texinfo-structure-example1" />.
         Inside section files it is where you write the manual's
-        content itself.  Inside chapters, you can create as many
-        sections as you need.
+        content itself.
     </para>
-
+    
     <example id="manuals-formats-texinfo-structure-example1">
     <title>Texinfo document structure</title>
     <screenshot>
@@ -98,6 +97,15 @@
     </mediaobject>
     </screenshot>
     </example>
+
+    <para>
+        In this document structure, the creation of documentation
+        manuals, chapters and sections is not limitted. You can create
+        as many documenation manuals, chapters and sections as you
+        need. The only limitation would be the amount of free space
+        required to store the Texinfo source files and the output
+        files produced from them.
+    </para>
     </sect2>
 
     <sect2 id="manuals-formats-texinfo-templates">
