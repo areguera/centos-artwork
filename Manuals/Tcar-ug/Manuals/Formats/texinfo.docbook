@@ -5,10 +5,13 @@
     <para>
         This section describes the implementation of Texinfo
         documentation format inside the <function>help</function>
-        functionality of <command>centos-art.sh</command> script, as
-        described in <xref linkend="scripts-bash-help" />. More
-        information about Texinfo documentation system itself can be
-        found by running the <command>info texinfo</command> command.
+        functionality of <command>centos-art.sh</command> script
+        described in <xref linkend="scripts-bash-help" />. In this
+        section we assume you have a basic understanding of Texinfo
+        documentation system. Otherwise, if you don't know what
+        Texinfo documentation system is, read the Texinfo manual first
+        (e.g., by running the <command>info texinfo</command> command)
+        and then, come back here.
     </para>
 
     <sect2 id="manuals-formats-texinfo-structure">
@@ -424,16 +427,65 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </sect2>
 
     <sect2 id="manuals-formats-texinfo-macros">
-    <title>Document Dynamic Expansions</title>
+    <title>Document Expansions</title>
     <para>
-        The document dynamic expansions are special constructions used
-        to generate dynamic content inside Texinfo source files. For
-        example, when you are using the directory style on section
-        titles and your are documenting a filesystem, it would be
-        useful to list, in each documentation entry, the next level of
-        documentation entries (directories in this case) so you can
-        know what they are and also access them if you need to.
+        The document expansions are special constructions used to
+        generate content dynamically inside Texinfo source files.
     </para>
+
+    <sect3>
+    <title>The <code>SeeAlso</code> Expansion</title>
+
+    <para>
+        This expansion creates a list of links with section entries
+        one level ahead from the section entry being currently
+        processed.  In this construction, the TYPE variable can be
+        either <quote>itemize</quote>, <quote>enumerate</quote> or
+        <quote>menu</quote>. When no TYPE variable is provided, the
+        <quote>itemize</quote> value is considered as default.
+    </para>
+
+    <screen>@c -- &lt;[centos-art(SeeAlso,TYPE)
+@c -- ]&gt;</screen>
+
+    <para>
+        This expansion might result useful when you are documenting
+        the repository file system. For example, if you are currently
+        editing the documentation entry related to <filename
+        class="directory">trunk/Identity</filename> directory and want
+        to create a linkable list of all documentation entries in the
+        first level under it, the code you'll have once the
+        construction be expanded would look like the following:
+    </para>
+
+<screen>
+@c -- &lt;[centos-art(SeeAlso)
+@itemize
+@item @ref{Trunk Identity Brushes}
+@item @ref{Trunk Identity Fonts}
+@item @ref{Trunk Identity Images}
+@item @ref{Trunk Identity Models}
+@item @ref{Trunk Identity Palettes}
+@item @ref{Trunk Identity Patterns}
+@item @ref{Trunk Identity Webenv}
+@end itemize
+@c -- ]&gt;
+</screen>
+
+    <para>
+        An interesting thing to notice here is that document
+        expansions are executed each time the related documentation
+        entry is edited or updated. Following with the example above,
+        if the documentation entries related to directories under
+        <filename class="directory">trunk/Identity</filename> changes
+        for some reason (e.g., they are removed from documentation
+        manual), the list generated as result of document expansion
+        will be updated automatically after editing the documentation
+        entry or updating the documentation manual structure.
+    </para>
+
+    </sect3>
+
     </sect2>
 
     <sect2 id="manuals-formats-texinfo-configuration">
@@ -449,14 +501,14 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         sections. Each section here is written in one line of its own
         and have the form <code>[section_name]</code>. Under sections,
         the configuration settings take place through
-        <code>name="value"</code> pairs.  Notice that quotation marks
-        around the option_value are required.  Comments are also
-        possible using the <code>#</code> character at the begining of
-        lines. Comments and empty lines (including tabs and white
-        spaces) are ignored. In case more than one section with the
-        same name be present inside the configuration file, the first
-        one found will be used. Nested section definitions are not
-        supported.
+        <code>name="value"</code> pairs set in one line each.  Notice
+        that quotation marks around the option_value are required.
+        Comments are also possible using the <code>#</code> character
+        at the begining of lines.  Comments and empty lines (including
+        tabs and white spaces) are ignored. In case more than one
+        section or option appear with the same name inside the
+        configuration file, the first one found will be used. Nested
+        section definitions are not supported.
     </para>
 
     <screen>[section_name]
