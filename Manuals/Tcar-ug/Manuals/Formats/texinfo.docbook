@@ -99,6 +99,16 @@
     </example>
 
     <para>
+        Texinfo (as in <package>texinfo-4.8-14.el5</package>) doesn't
+        support part sectioning inside documentation manuals, so
+        neither does the <function>help</function> functionality of
+        <command>centos-art.sh</command> script. Nevertheless, you can
+        create several documentation manuals and
+        <emphasis>considered</emphasis> them as part of a bigger
+        documentation manual to workaround this issue.
+    </para>
+
+    <para>
         In this document structure, the creation of documentation
         manuals, chapters and sections is not limitted. You can create
         as many documenation manuals, chapters and sections as you
@@ -106,6 +116,7 @@
         required to store the Texinfo source files and the output
         files produced from them.
     </para>
+
     </sect2>
 
     <sect2 id="manuals-formats-texinfo-templates">
