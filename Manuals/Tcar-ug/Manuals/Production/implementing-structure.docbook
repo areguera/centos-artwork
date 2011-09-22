@@ -1,84 +1,53 @@
 <sect1 id="manuals-production-implementing-structure">
+
     <title>Implementing Document Structure</title>
 
     <para>
-        To create a manual like the one described in <xref
-        linkend="manuals-production-identifying-structure" />,
-        you need to use the <code>help</code> functionality of
-        <command>centos-art.sh</command> script as it is described in
-        the following list of commands:
+        This section describes the steps you should follow to
+        implement document structures like that one described in <xref
+        linkend="manuals-production-identifying-structure" />.
     </para>
 
-    <variablelist>
+    <sect2>
+    <title>Creating Document Structure</title>
 
-    <varlistentry>
-    <term>
-        <command>centos-art help --edit "tcar-fs"</command>
-    </term>
-    <listitem>
     <para>
-        This command creates the base structure of
-        <citetitle>TCAR-FS</citetitle> manual and opens its main
-        definition file with your favorite text editor so you can
-        update manual's definition values like title, subtitle,
-        author, etc.
+        To create new documentation manuals inside &TCAR; you need to
+        use the <function>help</function> functionality of
+        <command>centos-art.sh</command> script, as shown in the
+        following command: 
     </para>
-    </listitem>
-    </varlistentry>
 
-    <varlistentry>
-    <term>
-        <command>centos-art help --edit "tcar-fs::trunk"</command>
-    </term>
-    <listitem>
-    <para>
-        This command creates the base structure for the
-        <quote>trunk</quote> chapter and opens its main definition
-        file with your favorite text editor so you can update the
-        chapter introduction. This very same procedure is used to
-        create <quote>branches</quote> and <quote>tags</quote>
-        chapters, just be sure to change the chapter field
-        accordingly.
-    </para>
-    </listitem>
-    </varlistentry>
+    <screen>centos-art help --edit "<replaceable>manual-name</replaceable>"</screen>
 
-    <varlistentry>
-    <term>
-        <command>centos-art help --edit "tcar-fs::trunk:identity"</command>
-    </term>
-    <listitem>
     <para>
-        This command creates the <quote>identity</quote> section
-        inside the <quote>trunk</quote> chapter. If the chapter
-        doesn't exist it will be created first. In this command, the
-        <quote>identity</quote> section refers to <filename
-        class="directory">trunk/Identity</filename> directory inside
-        &TCAR;. In order to document other directories, follow the
-        same procedure but using minus signs to separate directories.
-        For example, to document the <quote><filename
-        class="directory">trunk/Identity/Models/Themes</filename></quote>
-        directory you should use the
-        <quote><code>tcar-fs::trunk:identity-models-themes</code></quote>
-        documentation entry.
+        The first time you execute this command, you will be prompted
+        to enter manual specific information like document format,
+        document title, document subtitle, document author, etc.  Once
+        this information has been collected the
+        <function>help</function> functionality performs some
+        repository verifications and creates the manual source files
+        inside the manual's directory name you specified as
+        <replaceable>manual-name</replaceable>.
     </para>
-    
-    <note>
-        <para>
-            In the very specific case of
-            <citetitle>TCAR-FS</citetitle> manual, it is also possible
-            to refer chapters and sections using a <quote><filename
-            class="directory">path/to/dir</filename></quote> format.
-            For example, the reference
-            <quote><code>tcar-fs::trunk:identity-models-themes</code></quote>
-            can be also specified as <quote><filename
-            class="directory">trunk/Identity/Models/Themes</filename></quote>,
-            in case you feel more confortable with it than the former
-            one.
-        </para>
-    </note>
-    </listitem>
-    </varlistentry>
-    </variablelist>
+
+    <para>
+        When you create new documentation manuals, take care of the
+        locale information you are currently using. This information
+        is generally set in the <envar>LANG</envar> environment
+        variable and is used by the <function>help</function>
+        functionality of <command>centos-art.sh</command> script to
+        define the language of new documentation manual and the
+        document template used to build it, as well.
+    </para>
+
+    <para>
+        Once the documentation structure has been created this way,
+        the recently created documentation manual is ready to receive
+        new chapters and sections as it is described in <xref
+        linkend="manuals-production-maintaining-structure" />.
+    </para>
+
+    </sect2>
 
 </sect1>
