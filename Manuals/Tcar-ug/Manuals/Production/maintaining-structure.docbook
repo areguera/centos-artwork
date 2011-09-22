@@ -1,10 +1,99 @@
-<sect1>
+<sect1 id="manuals-production-maintaining-structure">
+
     <title>Maintaining Document Structure</title>
+
     <para>
-        Most maintaining tasks related to documentation manuals
-        written through Texinfo documentation format are standardized
-        by the <code>help</code> functionality of
-        <command>centos-art.sh</command> script, as described in <xref
-        linkend="scripts-bash-help" />.
+        This section describes the steps you should follow to maintain
+        documentation structures like that one described in <xref
+        linkend="manuals-production-identifying-structure" />.
     </para>
+
+    <sect2>
+    <title>Editing Document Structure</title>
+
+    <variablelist>
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit "tcar-fs::trunk"</command>
+    </term>
+    <listitem>
+    <para>
+        This command creates the base structure for the
+        <quote>trunk</quote> chapter and opens its main definition
+        file with your favorite text editor so you can update the
+        chapter introduction. This very same procedure is used to
+        create <quote>branches</quote> and <quote>tags</quote>
+        chapters, just be sure to change the chapter field
+        accordingly.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <command>centos-art help --edit "tcar-fs::trunk:identity"</command>
+    </term>
+    <listitem>
+    <para>
+        This command creates the <quote>identity</quote> section
+        inside the <quote>trunk</quote> chapter. If the chapter
+        doesn't exist it will be created first. In this command, the
+        <quote>identity</quote> section refers to <filename
+        class="directory">trunk/Identity</filename> directory inside
+        &TCAR;. In order to document other directories, follow the
+        same procedure but using minus signs to separate directories.
+        For example, to document the <quote><filename
+        class="directory">trunk/Identity/Models/Themes</filename></quote>
+        directory you should use the
+        <quote><code>tcar-fs::trunk:identity-models-themes</code></quote>
+        documentation entry.
+    </para>
+    
+    <note>
+        <para>
+            In the very specific case of
+            <citetitle>TCAR-FS</citetitle> manual, it is also possible
+            to refer chapters and sections using a <quote><filename
+            class="directory">path/to/dir</filename></quote> format.
+            For example, the reference
+            <quote><code>tcar-fs::trunk:identity-models-themes</code></quote>
+            can be also specified as <quote><filename
+            class="directory">trunk/Identity/Models/Themes</filename></quote>,
+            in case you feel more confortable with it than the former
+            one.
+        </para>
+    </note>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    </sect2>
+
+    <sect2>
+    <title>Copying Document Structure</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+    <sect2>
+    <title>Deleting Document Structure</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+    <sect2>
+    <title>Renaming Document Structure</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+    <sect2>
+    <title>Updating Document Structure</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
 </sect1>
