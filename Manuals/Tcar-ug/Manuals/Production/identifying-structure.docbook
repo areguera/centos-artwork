@@ -1,36 +1,46 @@
 <sect1 id="manuals-production-identifying-structure">
     <title>Identifying Document Structure</title>
     <para>
-        Once both manual's title and manual's directory name have been
-        defined, it is time to plan the document structure through
-        which chapters and sections will be organized.  The
-        <citetitle>TCAR-FS</citetitle> manual follows the same
-        organization of &TCAR; directories so each directory inside
-        the repository does have its own documentation entry.
-        Moreover, as we are using documentation formats to write
-        documentation entries, it is possible to use all the features
-        such documentation formats provide (e.g., cross references,
-        index definition, etc.) to improve the whole manual and the
-        way information can be found inside it.
+        Once both the manual's title and the manual's directory name
+        have been defined, it is time for you to plan the document
+        structure through which the manual's content will be
+        organized.
+    </para>
+    
+    <para>
+        The document structure of documentation manuals is specific to
+        that documentation format used to write documentation source
+        files.  Nevertheless, no matter what the documentation format
+        be, the document structure produce produced from the
+        <function>help</function> functionality of
+        <command>centos-art.sh</command> script follows and
+        upside-down tree configuration. In this configuration,
+        documentation manuals can be organized through parts,
+        chapters, sections, and several subsection levels based in
+        whether the chosen documentation format supports them or not.
     </para>
 
     <para>
-        At this point we phase a repository directory structure where
-        there are more levels deep than sectioning commands available
-        inside documentation formats. This way it is not possible to
-        use one sectioning command for each directory level inside the
-        repository directory structure we need to document. Based on
-        these issues, it is imperative to reaccomodate the document
+        Considering the <citetitle>The CentOS Artwork Repository File
+        System</citetitle> documentation manual, we already know that
+        it was conceived to document each directory structure &TCAR;
+        is made of using Texinfo format and the sectioning levels
+        supported by it.  At this point we phase that &TCAR; has more
+        levels deep than sectioning commands available inside Texinfo
+        formats.  This way it is not possible to use one sectioning
+        command for each directory level inside the repository
+        directory structure we need to document.  Based on these
+        issues, it is imperative to reaccomodate the document
         structure in order to be able of documenting every directory
         &TCAR; is made of, using the sectioning levels supported by
         most documentation formats inside &TCD;, no matter how many
         levels deep the repository directory structure has.
     </para>
-
+    
     <para>
-        As consequence of sectioning limitations described above, the
-        <citetitle>TCAR-FS</citetitle> manual was structured as
-        following:
+        As consequence,  <citetitle>The CentOS Artwork Repository File
+        System</citetitle> ended up being organized through the
+        following documentation structure:
     </para>
 
     <variablelist>
@@ -93,8 +103,7 @@
         documenatation manual scope itself and is shared among all
         documentation manuals written through the
         <function>help</function> of <command>centos-art.sh</command>
-        script inside &TCAR;. To know how to edit the content of this
-        chapter, see <xref linkend="manuals-formats-texinfo-templates" />
+        script inside &TCAR;.
     </para>
     </listitem>
     </varlistentry>
@@ -114,23 +123,21 @@
     </variablelist>
 
     <para>
-        The documentation structure depends on the documentation
-        format you used to create the documentation manual. The one
-        described so far (without the first three numbered chapters)
-        is the one produced by the <function>help</function>
-        functionality when Texinfo documentation format is used.
-        Likewise, other documentation formats were
-        programmed<footnote>
-        <para>
-        At time of this writting, only Texinfo documentation format
-        has been programmed inside the <function>help</function>
-        functionality.  Other documentation formats like DocBook and
-        LaTeX are scheduled to be included in the future.
-        </para>
-        </footnote> inside the <function>help</function> functionality
-        to produce the same documentation structure that Texinfo
-        documentation format does but saving the internal differences
-        the documentation formts might have between themselves.
+        The document structure illustrated above is also considered
+        the default document structure used by the
+        <function>help</function> functionality of
+        <command>centos-art.sh</command> script when you produce new
+        documentation manuals inside &TCAR;. In contrast with document
+        structure illustrated above, the default document structure
+        used by <function>help</function> functionality doesn't
+        include sectioning constructions like parts, chapters,
+        sections, subsections and the like. Such structuring
+        constructions should be specified by you when building the
+        documentation manual. The only exceptions to this restriction
+        are sectioning structures used to organize contents like
+        <quote>Index</quote> and <quote>Licenses</quote>, which are
+        considered inseparable components of documentation manuals
+        stored inside &TCAR;.
     </para>
 
 </sect1>
