@@ -102,7 +102,6 @@ function texinfo {
         # output file do exist. Later, once the reading is done,
         # terminate the script execution.
 
-
         # Update manual's output files.
         texinfo_updateOutputFiles
             
