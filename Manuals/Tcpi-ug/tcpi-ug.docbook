@@ -4,13 +4,11 @@
                [
 
 <!ENTITY % Commons.ent          SYSTEM "Commons.ent">
-<!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
-<!--
 <!ENTITY % Preface.ent          SYSTEM "Preface.ent">
+<!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
-%Preface.ent;
--->
 %Commons.ent;
+%Preface.ent;
 %Licenses.ent;
 ]>
 
@@ -66,6 +64,7 @@
     </bookinfo>
 
     <!-- Front matter -->
+    &preface;
 
     <!-- Main matter -->
 
