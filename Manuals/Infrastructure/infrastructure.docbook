@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+               "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+               [
+
+<!ENTITY % Commons.ent          SYSTEM "Commons.ent">
+<!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
+<!--
+<!ENTITY % Preface.ent          SYSTEM "Preface.ent">
+
+%Preface.ent;
+-->
+%Commons.ent;
+%Licenses.ent;
+]>
+
+<book lang="en_US">
+
+    <!-- Front matter -->
+    <title>The CentOS Project Infrastructure</title>
+    <subtitle>User's Guide</subtitle>
+
+    <bookinfo>
+        <author>
+            <firstname>Alain</firstname>
+            <surname>Reguera Delgado</surname>
+        </author>
+
+        <!-- Copyright: The copyright page is verso and contains the
+        copyright notice, the publishing/printing history, the country
+        where printed, ISBN and/or CIP information.  The page is
+        usually typeset in a smaller font than the normal text. -->
+        <copyright>
+            <year>2011</year>
+            <holder>&TCP;. All rights reserved.</holder>
+        </copyright>
+
+        <legalnotice>
+            <para>
+              Permission is granted to copy, distribute and/or modify
+              this document under the terms of the GNU Free
+              Documentation License, Version 1.2 or any later version
+              published by the Free Software Foundation; with no
+              Invariant Sections, no Front-Cover Texts, and no
+              Back-Cover Texts. A copy of the license is included in
+              <xref linkend="licenses-gfdl" />.
+            </para>
+        </legalnotice>
+
+        <revhistory>
+            <revision> 
+            <revnumber>1.0</revnumber>
+            <date>Today</date>
+            <author>
+                <firstname>Alain</firstname>
+                <surname>Reguera Delgado</surname>
+            </author>
+            <revdescription>
+            <para>
+                Under development.
+            </para>
+            </revdescription>
+            </revision> 
+        </revhistory>
+
+    </bookinfo>
+
+    <!-- Front matter -->
+
+    <!-- Main matter -->
+
+    <!-- Back matter -->
+    &licenses;
+
+</book>
