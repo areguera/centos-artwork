@@ -1,9 +1,25 @@
-<sect1 id="configurations-ppp-overview">
+<sect1 id="configurations-ppp-intro">
 
-    <title>Overview</title>
+    <title>Introduction</title>
 
     <para>
-        ...
+        This chapter describes how to configure &TCD; to provide some
+        Internet services through the telephone line. In this chapter,
+        the computer holding the Internet services is named the
+        <quote>server</quote> and the computer that want to make use
+        of such services is named the <quote>client</quote>. We assume
+        that both server and client computers have been installed with
+        &TCD; (release 5.5).
+    </para>
+
+    <para>
+        The dial-up connections could be a choise when the only
+        communication medium you have access to is the telephone line
+        system.  In this configuration, both client and server
+        computers use modems to transmit data through the telephone
+        line in form of sound. The modem device used in this
+        configuration was a Multi-Tech Modem (MT5634ZBA-USB) connected
+        to an USB port. 
     </para>
 
 </sect1>
