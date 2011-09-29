@@ -1,0 +1,227 @@
+<sect1 id="configurations-ppp-modem">
+
+    <title>The Modem Device</title>
+
+    <para>
+        This section describes the steps you should follow to install
+        and configure the modem device in the computer. This section
+        applies both to server and client computers.
+    </para>
+
+    <sect2 id="configurations-ppp-modem-installation">
+    <title>Installation</title>
+    <para>
+        The modem device installation consists on attacthing the modem
+        hardware both to the computer and the telephone line. To
+        connect the modem to your computer, you need to connect the
+        serial or USB cable that comes from the modem hardware to the
+        appropriate input on your computer. To connect the modem to
+        the telephone line system, you need to unplug the cable that
+        connects your phone device and plug it on the modem device,
+        specifically in the port reserved for data transmission.
+        Later, using a similar cable, you could connect your phone
+        device to the modem's phone port, so you be able of realizing
+        phone calls when no data transmition take place, as well.
+    </para>
+
+    <para>
+        To be on the safe side, do all the installation with the
+        computer turned off. Then, when everthing has been put in
+        place, turn it on. Once the system is up, you can verify the
+        modem hardware using either the <command>lsusb</command> or
+        <command>lspci</command> commands. For example, if you are
+        using an USB modem like that one we mentioned before, run the
+        following command:
+    </para>
+
+    <screen>sudo /sbin/lsusb</screen>
+
+    <para>
+        and you should get an output similar to the following:
+    </para>
+
+<screen>
+Bus 003 Device 001: ID 0000:0000  
+Bus 001 Device 001: ID 0000:0000  
+Bus 001 Device 002: ID 058f:6366 Alcor Micro Corp. Multi Flash Reader
+Bus 002 Device 001: ID 0000:0000  
+Bus 005 Device 003: ID 06e0:f104 Multi-Tech Systems, Inc.
+MT5634ZBA-USB MultiModemUSB (new firmware)
+Bus 005 Device 001: ID 0000:0000  
+Bus 005 Device 002: ID 046d:c018 Logitech, Inc. Optical Wheel Mouse
+Bus 004 Device 001: ID 0000:0000 
+</screen>
+
+    <para>
+        The relevant line here is that mentioning the existence of a
+        <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB (new
+        firmware)</code> device.
+    </para>
+
+    </sect2>
+
+    <sect2 id="configurations-ppp-modem-config">
+    <title>Configuration</title>
+
+    <para>
+        The modem configuration depends on whether you are setting the
+        server computer or the client computer. Nevertheless, the
+        configuration stuff related to modem detection is both valid
+        on server acn client computers.
+    </para>
+
+    <sect3 id="configurations-ppp-modem-config-detect">
+    <title>Detecting The Modem Device</title>
+
+    <para>
+        Once the modem hardware has been installed in the computer, it
+        is necessary to determine what device inside the operating
+        system it was assigned to, so applications like
+        <command>pppd</command> and <command>chat</command> can talk
+        to it. To perform this very specific configuration step, run
+        the following command:
+    </para>
+
+    <screen>sudo /usr/bin/wvdialconf /etc/wvdial.conf</screen>
+    
+    <para>
+        The <command>wvdialconf</command> command comes with the
+        <package>wvdial</package><footnote>
+        <para>
+            <command>wvdial</command> is an intelligent PPP dialer
+            that takes care of dialing a modem and starting PPP to
+            connect almost any ISP without special configurations. It
+            is something like the <application>chat</application>
+            program, except that it uses heuristics to guess how to
+            dial and log into your server rather than forcing you to
+            write a login script.
+        </para></footnote> package and detects your modem, its maximum
+        baud rate, and a good initialization string. Later, using this
+        information, it generates or updates the
+        <command>wvdial</command> configuration file
+        (<filename>/etc/wvdial.conf</filename>).  The output produced
+        by <command>wvdialconf</command> command looks as the
+        following:
+    </para>
+
+<screen>
+Scanning your serial ports for a modem.
+
+ttyS0&lt;*1&gt;: ATQ0 V1 E1 -- failed with 2400 baud, next try: 9600 baud
+ttyS0&lt;*1&gt;: ATQ0 V1 E1 -- failed with 9600 baud, next try: 115200 baud
+ttyS0&lt;*1&gt;: ATQ0 V1 E1 -- and failed too at 115200, giving up.
+Port Scan&lt;*1&gt;: S1   S2   S3   
+WvModem&lt;*1&gt;: Cannot get information for serial port.
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 -- OK
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 Z -- OK
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 -- OK
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 -- OK
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 -- OK
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0 -- OK
+ttyACM0&lt;*1&gt;: Modem Identifier: ATI -- LT V.90 1.0 MT5634ZBA-USB
+Data/Fax Modem (Dual Config) Version 5.18e
+ttyACM0&lt;*1&gt;: Speed 4800: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 9600: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 19200: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 38400: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 57600: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 115200: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 230400: AT -- OK
+ttyACM0&lt;*1&gt;: Speed 460800: AT -- OK
+ttyACM0&lt;*1&gt;: Max speed is 460800; that should be safe.
+ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0 -- OK
+
+Found an USB modem on /dev/ttyACM0.
+Modem configuration written to /etc/wvdial.conf.
+ttyACM0&lt;Info&gt;: Speed 460800; init "ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0"
+</screen>
+
+    <para>
+        which produces the following <command>wvdial</command>
+        configuration file:
+    </para>
+
+<screen>
+[Dialer Defaults]
+Modem = /dev/ttyACM0
+Baud = 460800
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+ISDN = 0
+Modem Type = USB Modem
+; Phone = &lt;Target Phone Number&gt;
+; Username = &lt;Your Login Name&gt;
+; Password = &lt;Your Password&gt;
+</screen>
+
+    <para>
+        At this point, the computer should be ready to attend incoming
+        calls.  When an incoming call is detected by the computer, the
+        <application>pppd</application> deamon responds to it. To
+        configure the way such incoming calls are attended (e.g.,
+        forcing user authentication, restricting the phone numbers the
+        calls can be initiated from, etc.), you need to set-up the
+        <application>pppd</application> deamon to fit your needs. On
+        the other hand, if you are configuring a computer to act as
+        client, you need to realize a few more tunning steps on
+        <filename>/etc/wvdial.conf</filename> to set the information
+        related of that Internet Service Provider (ISP) you want to
+        get connected in (e.g., by uncommenting the
+        <code>Phone</code>, <code>Username</code> and
+        <code>Password</code> lines above to set the appropiate values
+        there) and then, instruct to <application>pppd</application>
+        deamon about the user credential (e.g., user name and
+        password) you will use to connect the target ISP. In this
+        case, credentials defined both in
+        <application>wvdial</application> and
+        <application>pppd</application> applications must be exactly
+        the same.
+    </para>
+
+    </sect3>
+
+    <sect3 id="configurations-ppp-modem-config-server">
+    <title>The Server Settings</title>
+
+    <para>
+        ...
+    </para>
+
+    </sect3>
+
+    <sect3 id="configurations-ppp-modem-config-client">
+    <title>The Client Settings</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    </sect2>
+
+    <sect2 id="configurations-ppp-modem-verification">
+    <title>Verification</title>
+    <para>
+    ...
+    </para>
+
+<screen>
+--> WvDial: Internet dialer version 1.54.0
+--> Cannot get information for serial port.
+--> Initializing modem.
+--> Sending: ATZ
+ATZ
+OK
+--> Sending: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+OK
+--> Modem initialized.
+--> Sending: ATDT520347
+--> Waiting for carrier.
+ATDT520347
+NO DIALTONE
+--> No dial tone.
+--> Disconnecting at Thu Sep 29 13:04:30 2011
+</screen>
+    </sect2>
+
+</sect1>
