@@ -1,0 +1,61 @@
+<sect1 id="configurations-ppp-installingmodem">
+
+    <title>Installing The Modem Device</title>
+    
+    <para>
+        This section describes the steps you should follow to install
+        the modem device in the computer. This section applies both to
+        server and client computers. The modem device used in this
+        configuration was a Multi-Tech Modem (MT5634ZBA-USB) connected
+        to an USB port.
+    </para>
+
+    <para>
+        The modem device installation consists on attacthing the modem
+        hardware both to the computer and the telephone line. To
+        connect the modem to your computer, you need to connect the
+        serial or USB cable that comes from the modem hardware to the
+        appropriate input on your computer. To connect the modem to
+        the telephone line system, you need to unplug the cable that
+        connects your phone device and plug it on the modem device,
+        specifically in the port reserved for data transmission.
+        Later, using a similar cable, you could connect your phone
+        device to the modem's phone port, so you be able of realizing
+        phone calls when no data transmition take place, as well.
+    </para>
+
+    <para>
+        To be on the safe side, do all the installation with the
+        computer turned off. Then, when everthing has been put in
+        place, turn it on. Once the system is up, you can verify the
+        modem hardware using either the <command>lsusb</command> or
+        <command>lspci</command> commands. For example, if you are
+        using an USB modem like that one we mentioned before, run the
+        following command:
+    </para>
+
+    <screen>sudo /sbin/lsusb</screen>
+
+    <para>
+        and you should get an output similar to the following:
+    </para>
+
+<screen>
+Bus 003 Device 001: ID 0000:0000  
+Bus 001 Device 001: ID 0000:0000  
+Bus 001 Device 002: ID 058f:6366 Alcor Micro Corp. Multi Flash Reader
+Bus 002 Device 001: ID 0000:0000  
+Bus 005 Device 003: ID 06e0:f104 Multi-Tech Systems, Inc.
+MT5634ZBA-USB MultiModemUSB (new firmware)
+Bus 005 Device 001: ID 0000:0000  
+Bus 005 Device 002: ID 046d:c018 Logitech, Inc. Optical Wheel Mouse
+Bus 004 Device 001: ID 0000:0000 
+</screen>
+
+    <para>
+        The relevant line here is that mentioning the existence of a
+        <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB (new
+        firmware)</code> device.
+    </para>
+
+</sect1>
