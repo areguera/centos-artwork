@@ -64,44 +64,34 @@ Bus 004 Device 001: ID 0000:0000
     <title>Configuration</title>
 
     <para>
-        The modem configuration depends on whether you are setting the
-        server computer or the client computer. Nevertheless, the
-        configuration stuff related to modem detection is both valid
-        on server acn client computers.
-    </para>
-
-    <sect3 id="configurations-ppp-modem-config-detect">
-    <title>Detecting The Modem Device</title>
-
-    <para>
         Once the modem hardware has been installed in the computer, it
         is necessary to determine what device inside the operating
         system it was assigned to, so applications like
         <command>pppd</command> and <command>chat</command> can talk
-        to it. To perform this very specific configuration step, run
-        the following command:
+        to it.  This configuration process can be realized through the
+        <command>wvdialconf</command> command distributed with the
+        <package>wvdial</package> package or the
+        <command>system-config-network</command> command. Once the 
+    </para>
+
+    <sect3 id="configurations-ppp-modem-config-wvdial">
+    <title><command>wvdialconf</command></title>
+
+    <para>
+        The <command>wvdialconf</command> automatically detects your
+        modem and generates/updates the <command>wvdial</command>
+        configuration file (<filename>/etc/wvdial.conf</filename>)
+        using the modem's maximum baud rate found in the
+        auto-detection process, and a good initialization string for
+        it, as well.  To set the modem configuration through
+        <command>wvdialconf</command> command, run the following
+        command:
     </para>
 
     <screen>sudo /usr/bin/wvdialconf /etc/wvdial.conf</screen>
     
     <para>
-        The <command>wvdialconf</command> command comes with the
-        <package>wvdial</package><footnote>
-        <para>
-            <command>wvdial</command> is an intelligent PPP dialer
-            that takes care of dialing a modem and starting PPP to
-            connect almost any ISP without special configurations. It
-            is something like the <application>chat</application>
-            program, except that it uses heuristics to guess how to
-            dial and log into your server rather than forcing you to
-            write a login script.
-        </para></footnote> package and detects your modem, its maximum
-        baud rate, and a good initialization string. Later, using this
-        information, it generates or updates the
-        <command>wvdial</command> configuration file
-        (<filename>/etc/wvdial.conf</filename>).  The output produced
-        by <command>wvdialconf</command> command looks as the
-        following:
+        This command will produce an output like the following:
     </para>
 
 <screen>
@@ -137,8 +127,8 @@ ttyACM0&lt;Info&gt;: Speed 460800; init "ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS
 </screen>
 
     <para>
-        which produces the following <command>wvdial</command>
-        configuration file:
+        and a <command>wvdial</command> configuration file like the
+        following:
     </para>
 
 <screen>
@@ -156,72 +146,151 @@ Modem Type = USB Modem
 
     <para>
         At this point, the computer should be ready to attend incoming
-        calls.  When an incoming call is detected by the computer, the
-        <application>pppd</application> deamon responds to it. To
-        configure the way such incoming calls are attended (e.g.,
-        forcing user authentication, restricting the phone numbers the
-        calls can be initiated from, etc.), you need to set-up the
-        <application>pppd</application> deamon to fit your needs. On
-        the other hand, if you are configuring a computer to act as
-        client, you need to realize a few more tunning steps on
-        <filename>/etc/wvdial.conf</filename> to set the information
-        related of that Internet Service Provider (ISP) you want to
-        get connected in (e.g., by uncommenting the
+        calls.  
+    </para>
+
+    <para>
+        When an incoming call arrives to the server they are attended
+        by the <application>pppd</application> deamon. To administer
+        the way such incoming calls are attended (e.g., forcing user
+        authentication, restricting the phone numbers the calls can be
+        initiated from, etc.), you need to set the
+        <application>pppd</application> deamon configuration to fit
+        your needs.  To know more about how to configure the
+        <application>pppd</application> deamon and the options it
+        provides, read its man page (e.g., <command>man
+        pppd</command>).
+    </para>
+        
+    <para>
+        On the other hand, when you are configuring a computer to act
+        as client (i.e., you are calling out an ISP to establish
+        connection to it), you need to realize a few more tunning
+        steps on <filename>/etc/wvdial.conf</filename> to set the
+        information related of that Internet Service Provider (ISP)
+        you want to get connected to (e.g., uncommenting the
         <code>Phone</code>, <code>Username</code> and
         <code>Password</code> lines above to set the appropiate values
-        there) and then, instruct to <application>pppd</application>
-        deamon about the user credential (e.g., user name and
-        password) you will use to connect the target ISP. In this
-        case, credentials defined both in
-        <application>wvdial</application> and
-        <application>pppd</application> applications must be exactly
-        the same.
+        there). 
     </para>
+    
+    <para>
+        Once you've specified the ISP information, run the following
+        command to stablish connection: 
+    </para>
+
+    <screen>sudo /usr/bin/wvdial</screen>
+
+    <note>
+    <para>
+        Both <command>wvdial</command> and
+        <command>wvdialconf</command> commands must be run with
+        administrative privilages because its configuration file
+        (<filename>/etc/wvdial.conf</filename>) is readable by the
+        <systemitem class="username">root</systemitem> user only.
+    </para>
+    </note>
 
     </sect3>
 
-    <sect3 id="configurations-ppp-modem-config-server">
-    <title>The Server Settings</title>
+    <sect3 id="configuration-ppp-modem-config-scn">
+    <title><command>system-config-network</command></title>
 
     <para>
-        ...
+        In addition to the configuration process described so far, you
+        can manage modem configurations through the
+        <command>system-config-network</command> command. This command
+        provides a graphical interface (administrative privileges
+        required) which let you configure several ISP and alternate
+        the one you connect to. This command has been already
+        documented in the <citetitle>Deployment Guide</citetitle>
+        availabe in the <package>Deployment_Guide</package> and we
+        won't duplicate that information here. However, there are some
+        differences between the output produced by
+        <command>system-config-network</command> and
+        <command>wvdialconf</command> commads you need to be aware of.
     </para>
 
-    </sect3>
-
-    <sect3 id="configurations-ppp-modem-config-client">
-    <title>The Client Settings</title>
     <para>
-        ...
+        The first thing to know is that both
+        <command>system-config-network</command> and
+        <command>wvdialconf</command> commands write configurations to
+        the <filename>/etc/wvdial.conf</filename> file, but the
+        interface provided by <command>system-config-network</command>
+        command doesn't detect the configuration intially created by
+        <command>wvdialconf</command> command. In fact, if you set a
+        new (modem) hardware configuration through the interface
+        provided by the <command>system-config-network</command>
+        command, any configuraion previously created by
+        <command>wvdailconf</command> will be lost.
     </para>
-    </sect3>
 
-    </sect2>
-
-    <sect2 id="configurations-ppp-modem-verification">
-    <title>Verification</title>
+    <caution>
     <para>
-    ...
+        The interface provided by
+        <command>system-config-network</command> command doesn't
+        provide modem device detection (as
+        <command>wvdialconf</command> would do) and uses the
+        <filename>/dev/modem</filename> as default location. This
+        location doesn't exists by default, so whatever configuration
+        you set from it will not work. To solve this, chose one of the
+        following workarounds: 
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+        Replace the <filename>/dev/modem</filename> location by that
+        one <command>wvdialconf</command> found when the interface
+        provided by <command>system-config-network</command> ask you
+        to enter the modem device.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        Create <filename>/dev/modem</filename> location as a symbolic
+        link to that location found by <command>wvdialconf</command>
+        command. For example:
+        <screen>sudo /bin/ln -s /dev/ttyACM0 /dev/modem</screen>
+    </para>
+    </listitem>
+    </itemizedlist>
+    </caution>
+
+    <para>
+        Inside the <filename>/etc/wvdial.conf</filename> configuration
+        file, the interface provided by
+        <command>system-config-network</command> identifies default
+        modem configurations through the line <code>[Modem0]</code>,
+        while the <command>wvdialconf</command> command does the same
+        through the line <code>[Dialer Defauls]</code>. Something
+        interesting about the configuration file created by
+        <command>system-config-network</command> is that it is
+        possible to create several ISP configurations that reuse
+        default settings in the <code>[Modem0]</code> section. For
+        example, consider the following example:
     </para>
 
 <screen>
---> WvDial: Internet dialer version 1.54.0
---> Cannot get information for serial port.
---> Initializing modem.
---> Sending: ATZ
-ATZ
-OK
---> Sending: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
-ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
-OK
---> Modem initialized.
---> Sending: ATDT520347
---> Waiting for carrier.
-ATDT520347
-NO DIALTONE
---> No dial tone.
---> Disconnecting at Thu Sep 29 13:04:30 2011
+[Modem0]
+Modem = /dev/ttyACM0
+Baud = 460800
+SetVolume = 2
+Dial Command = ATDT
+Init1 = ATZ
+Init3 = ATM1L2
+FlowControl = CRTSCTS
+[Dialer Vispa_Internet]
+Username = signup
+Password = rebel
+Phone = 08453080125
+Stupid Mode = 1
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
+Inherits = Modem0
 </screen>
+
+    </sect3>
+
     </sect2>
 
 </sect1>
