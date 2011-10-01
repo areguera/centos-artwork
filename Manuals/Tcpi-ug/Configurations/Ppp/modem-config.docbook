@@ -1,30 +1,53 @@
 <sect1 id="configurations-ppp-modem-config">
 
-    <title>Configuring The Modem Device</title>
+    <title>Configuring Modem Device</title>
 
     <para>
         Once the modem hardware has been installed in the computer, it
-        is necessary to determine what device inside the operating
-        system it was assigned to, so applications like
-        <command>pppd</command> and <command>chat</command> can talk
-        to it.  This configuration process can be realized through the
-        <command>wvdialconf</command> command distributed with the
-        <package>wvdial</package> package or the
-        <command>system-config-network</command> command. Once the 
+        is necessary to determine what device location the operating
+        system assigned to it, so applications like
+        <application>chat</application> be able to know which device
+        to talk to.  This configuration process can be realized
+        through the <command>wvdialconf</command> command, distributed
+        with the <package>wvdial</package> package.
+    </para>
+    
+    <para>
+        Another way to configure modems installed in your computer is
+        through the graphical interface provided by
+        <command>system-config-network</command> command. This
+        interface may result specially useful when you need to
+        configure your computer to establish Modem connections to
+        remote Internet Service Providers (ISPs).  The interface
+        provided by <command>system-config-network</command> command
+        uses the same configuration file that
+        <command>wvdialconf</command> command does (e.g.,
+        <filename>/etc/wvdial.conf</filename>), however, there are
+        some differences in the way these commands create
+        configuration files that we need to be aware of.
+    </para>
+
+    <para>
+        This section describes how you could use the
+        <command>wvdialconf</command> and
+        <command>system-config-network</command> commands to configure
+        the modem installed in your computer, as well as possible
+        issues you might face if these two commands are arbitrarily
+        combined one another.
     </para>
 
     <sect2 id="configurations-ppp-modem-config-wvdial">
-    <title><command>wvdialconf</command></title>
+    <title>The <command>wvdialconf</command> Command</title>
 
     <para>
-        The <command>wvdialconf</command> automatically detects your
-        modem and generates/updates the <command>wvdial</command>
-        configuration file (<filename>/etc/wvdial.conf</filename>)
-        using the modem's maximum baud rate found in the
-        auto-detection process, and a good initialization string for
-        it, as well.  To set the modem configuration through
-        <command>wvdialconf</command> command, run the following
-        command:
+        The <command>wvdialconf</command> automatically detects the
+        location the operating system assigned to your modem, its
+        maximum baud rate, a good initialization string for it, and
+        generates/updates the <command>wvdial</command> configuration
+        file (<filename>/etc/wvdial.conf</filename>) the
+        <command>wvdial</command> command needs to work. To set the
+        modem configuration through <command>wvdialconf</command>
+        command, run the command as follows:
     </para>
 
     <screen>sudo /usr/bin/wvdialconf /etc/wvdial.conf</screen>
@@ -83,125 +106,55 @@ Modem Type = USB Modem
 ; Password = &lt;Your Password&gt;
 </screen>
 
-    <para>
-        At this point, the computer should be ready to attend incoming
-        calls.  
-    </para>
-
-    <para>
-        When an incoming call arrives to the server they are attended
-        by the <application>pppd</application> deamon. To administer
-        the way such incoming calls are attended (e.g., forcing user
-        authentication, restricting the phone numbers the calls can be
-        initiated from, etc.), you need to set the
-        <application>pppd</application> deamon configuration to fit
-        your needs.  To know more about how to configure the
-        <application>pppd</application> deamon and the options it
-        provides, read its man page (e.g., <command>man
-        pppd</command>).
-    </para>
-        
-    <para>
-        On the other hand, when you are configuring a computer to act
-        as client (i.e., you are calling out an ISP to establish
-        connection to it), you need to realize a few more tunning
-        steps on <filename>/etc/wvdial.conf</filename> to set the
-        information related of that Internet Service Provider (ISP)
-        you want to get connected to (e.g., uncommenting the
-        <code>Phone</code>, <code>Username</code> and
-        <code>Password</code> lines above to set the appropiate values
-        there). 
-    </para>
-    
-    <para>
-        Once you've specified the ISP information, run the following
-        command to stablish connection: 
-    </para>
-
-    <screen>sudo /usr/bin/wvdial</screen>
-
     <note>
     <para>
-        Both <command>wvdial</command> and
-        <command>wvdialconf</command> commands must be run with
-        administrative privilages because its configuration file
-        (<filename>/etc/wvdial.conf</filename>) is readable by the
-        <systemitem class="username">root</systemitem> user only.
+        It is possible to configure the same computer to act both as
+        server (i.e., to receive incoming calls from clients) and
+        client (i.e., to realize outgoing calls to servers). However,
+        be aware that only one of these connections can be established
+        at a time.
     </para>
     </note>
 
     </sect2>
 
     <sect2 id="configuration-ppp-modem-config-scn">
-    <title><command>system-config-network</command></title>
+    <title>The <command>system-config-network</command> Command</title>
 
-    <para>
-        In addition to the configuration process described so far, you
-        can manage modem configurations through the
-        <command>system-config-network</command> command. This command
-        provides a graphical interface (administrative privileges
-        required) which let you configure several ISP and alternate
-        the one you connect to. This command has been already
-        documented in the <citetitle>Deployment Guide</citetitle>
-        availabe in the <package>Deployment_Guide</package> and we
-        won't duplicate that information here. However, there are some
-        differences between the output produced by
-        <command>system-config-network</command> and
-        <command>wvdialconf</command> commads you need to be aware of.
-    </para>
-
-    <para>
-        The first thing to know is that both
-        <command>system-config-network</command> and
-        <command>wvdialconf</command> commands write configurations to
-        the <filename>/etc/wvdial.conf</filename> file, but the
-        interface provided by <command>system-config-network</command>
-        command doesn't detect the configuration intially created by
-        <command>wvdialconf</command> command. In fact, if you set a
-        new (modem) hardware configuration through the interface
-        provided by the <command>system-config-network</command>
-        command, any configuraion previously created by
-        <command>wvdailconf</command> will be lost.
-    </para>
-
-    <caution>
     <para>
         The interface provided by
         <command>system-config-network</command> command doesn't
-        provide modem device detection (as
-        <command>wvdialconf</command> would do) and uses the
-        <filename>/dev/modem</filename> as default location. This
-        location doesn't exists by default, so whatever configuration
-        you set from it will not work. To solve this, chose one of the
-        following workarounds: 
+        detect the configuration intially created by
+        <command>wvdialconf</command> command. In fact, if you set a
+        new (modem) hardware configuration through it, any
+        configuration previously created by
+        <command>wvdailconf</command> command will be lost. On the
+        other hand, if you firstly generate the configuration file
+        using the interface provided by
+        <command>system-config-network</command> command and later run
+        the <command>wvdialconf</command> command over it, you will
+        end up having two similar configuration settings under
+        different definitions stored in the same configuration file.
     </para>
-    <itemizedlist>
-    <listitem>
+
+    <note>
     <para>
-        Replace the <filename>/dev/modem</filename> location by that
-        one <command>wvdialconf</command> found when the interface
-        provided by <command>system-config-network</command> ask you
-        to enter the modem device.
+        The <command>wvdial</command> command doesn't understand the
+        configuration file produced by
+        <command>system-config-network</command> command, even both
+        <command>wvdialconf</command> and
+        <command>system-config-network</command> commands use the same
+        configuration syntax to create the configuration file.
     </para>
-    </listitem>
-    <listitem>
-    <para>
-        Create <filename>/dev/modem</filename> location as a symbolic
-        link to that location found by <command>wvdialconf</command>
-        command. For example:
-        <screen>sudo /bin/ln -s /dev/ttyACM0 /dev/modem</screen>
-    </para>
-    </listitem>
-    </itemizedlist>
-    </caution>
+    </note>
 
     <para>
         Inside the <filename>/etc/wvdial.conf</filename> configuration
         file, the interface provided by
         <command>system-config-network</command> identifies default
-        modem configurations through the line <code>[Modem0]</code>,
+        modem configurations through the <code>[Modem0]</code> line,
         while the <command>wvdialconf</command> command does the same
-        through the line <code>[Dialer Defauls]</code>. Something
+        through the <code>[Dialer Defaults]</code> line. Something
         interesting about the configuration file created by
         <command>system-config-network</command> is that it is
         possible to create several ISP configurations that reuse
@@ -227,6 +180,36 @@ Init1 = ATZ
 Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
 Inherits = Modem0
 </screen>
+
+    <caution>
+    <para>
+        The interface provided by
+        <command>system-config-network</command> command doesn't
+        provide modem detection (as <command>wvdialconf</command>
+        command would do) and uses the <filename>/dev/modem</filename>
+        as default location. This location doesn't exists by default,
+        so whatever configuration you set from it will not work. To
+        solve this issue, chose one of the following workarounds: 
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+        Replace the <filename>/dev/modem</filename> location by that
+        one <command>wvdialconf</command> found when the interface
+        provided by <command>system-config-network</command> ask you
+        to enter the modem device.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        Create <filename>/dev/modem</filename> location as a symbolic
+        link to that location found by <command>wvdialconf</command>
+        command. For example:
+        <screen>sudo /bin/ln -s /dev/ttyACM0 /dev/modem</screen>
+    </para>
+    </listitem>
+    </itemizedlist>
+    </caution>
 
     </sect2>
 
