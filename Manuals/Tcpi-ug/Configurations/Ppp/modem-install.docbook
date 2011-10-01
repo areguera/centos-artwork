@@ -1,15 +1,7 @@
 <sect1 id="configurations-ppp-installingmodem">
 
-    <title>Installing The Modem Device</title>
+    <title>Installing Modem Device</title>
     
-    <para>
-        This section describes the steps you should follow to install
-        the modem device in the computer. This section applies both to
-        server and client computers. The modem device used in this
-        configuration was a Multi-Tech Modem (MT5634ZBA-USB) connected
-        to an USB port.
-    </para>
-
     <para>
         The modem device installation consists on attacthing the modem
         hardware both to the computer and the telephone line. To
@@ -56,6 +48,17 @@ Bus 004 Device 001: ID 0000:0000
         The relevant line here is that mentioning the existence of a
         <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB (new
         firmware)</code> device.
+    </para>
+
+    <para>
+        At this point, your computer should be able of responding to
+        incoming calls but cannot realize outgoing calls, yet.  To
+        administer the way incoming calls are attended in this
+        computer, read <xref linkend="configurations-ppp-modem-server"
+        />. On the other hand, to realize outgoing calls from this
+        computer, you need to specify the server information you want
+        to establish connection to, as described in <xref
+        linkend="configurations-ppp-modem-client" />.
     </para>
 
 </sect1>
