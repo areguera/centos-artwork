@@ -20,4 +20,178 @@
         access to is the telephone lines system.
     </para>
 
+    <para>
+        This configuration emerged from the need of sharing
+        information with my friends in a country where Internet access
+        is limitted to statal organizations and controlled there with
+        an increasing crazy obsession. However, in this environment,
+        the telephone lines system provides an alternative platform to
+        interchange information in a point-to-point fashion. It can be
+        used to create small social groups and organize ideas safetly
+        (e.g., by using TLS to encrypt connections). To be more
+        specific, the goal would be to provide public access to an
+        Internet Service Provider (ISP) where people can express
+        themselves freely (e.g., through a mailing list with open
+        subscriptions).
+    </para>
+
+    <para>
+        Even this configuration tries to reduce the lack of
+        communication, there are limitations around it that we cannot
+        take away, yet. The following list shows what these
+        limitations are:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        Only one connection (of 15 minutes) is possible at a time.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        More than 3 consecutive connections from the same phone number
+        in a time range of 60 minutes means that that number is
+        attacking the ISP to provoke a <quote>Denying of Service
+        (DoS)</quote> attach. In such cases the phone number
+        originating the call will be permantly banished from
+        realizing further calls to the ISP.  Fourtunly, such controls
+        can be automated so I hope they achieve an acceptable degree
+        of efficiency.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        The ISP is isolated from Internet, so it is not possible to
+        provide Internet access through the ISP.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        The information generated inside the ISP is jailed to it. This
+        way, it will be available to people registered inside the ISP
+        only (e.g., through the web internface).
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        The implementation of services that required persistent
+        connections (e.g., <application>chats</application>) will not
+        be considered as a practical offer.  Instead, only
+        asynchronous services (e.g.,
+        <application>e-mail</application>) will be supported. This
+        restriction is required to reduce the connection effective
+        times. For example, consider an environment where you connect
+        the ISP to send/receive e-mails only and then disconnect.  In
+        fact, to force this behaivour the ISP will be configured to
+        close connections after 15 minutes passed the connection
+        establishment.  
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        Your user profile will be removed from ISP when no effective
+        point-to-point connection is established by you in a period of
+        7 days since the last effective point-to-point connection you
+        established to the ISP. When your user profile is removed, you
+        will need to register yourself again inside the ISP, to access
+        its services.
+    </para>
+    </listitem>
+    </itemizedlist>
+        
+    <para>
+        I'm very sorry about these limitations, but this is the best I
+        can offer with one PC, one modem, and one single telephone
+        line. If you think this configuration can be improved somehow,
+        please send me an e-mail to <email>al@example.com</email>.
+        Notice that, for any mail to reach me, you should be
+        registered inside the ISP first; I don't answer phone calls
+        personally, the phone is very busy answering point-to-point
+        connections ;).
+    </para>
+
+    <para>
+        In order for you to share information with others, it is
+        required that both you and the person you want to share
+        information with, have an e-mail address registered inside
+        ISP. This registration process is realized through a secured
+        web interface accessable through an encrypted connection as
+        the following url illustrates:
+    </para>
+    
+    <itemizedlist>
+    <listitem>
+    <para>
+        <ulink url="https://example.com/users?action=register" />
+    </para>
+    </listitem>
+    </itemizedlist>
+
+    <para>
+        The web interface should permit everyone to update or delete
+        their personal profiles without compromising personal
+        information. Notice that all actions realized through this web
+        interface must be simple enough to be achieved in less than 15
+        minutes (the time the point-to-point connection reamins active
+        from its first establishment on).
+    </para>
+
+    <para>
+        User information is stored inside an LDAP server. The web
+        application manipulates LDAP records and all related files
+        inside the operating system that make possible a user to
+        establish a poit-to-point connection to the ISP, as well as
+        register, update or delate its profile inside the ISP. Care
+        should be taken to prevent one user to modify/delete profiles
+        from other users. The user's profile administration is
+        individual to each user based on its identity. Notice that,
+        all related subsystems (e.g., Postix, Cyrus-Imapd and
+        Saslauthd) must use the user information from LDAP server.
+        Likewise, the mailbox administration must be automated based
+        on the users in the LDAP server. The web application must be
+        able to be aware of all files related inside the
+        infrastructure in a way that administration tasks can be
+        automated and presented friendly to end users (this will
+        required the web application to run some program that needs
+        root privileges =:-|). The whole proces would be, establish a
+        point-to-point connection to the ISP, register a new user
+        through the web application and start using the e-mail client
+        with your new address. The LDAP server will be available for
+        everyone to consult from their mail clients. Inside the web
+        application, verifications must be included to avoid
+        duplicated values, invalid characters and similar stuff.
+    </para>
+
+    <para>
+        In case some kind of force intend to confiscate me the
+        computer where the ISP is installed in, I am plaing to encrypt
+        the whole filesystem in a way that it would be very difficult
+        to get any valid data from it. The encryption feature is
+        applied before the operating system starts. In this
+        configuration a password is required to decrypt the operating
+        system filesystem in order to be able of booting up the
+        operating system as expected. If the password is not provided,
+        the only thing you get is a prompt to enter a password :).
+    </para>
+
+    <para>
+        Another important matter to be aware of is about the ISP's
+        policy.  In order to keep freedom, it is required to define
+        the boundaries of that freedom so you can determine and judge
+        it.  Absolute freedom (anarchism) will not be permitted (it
+        would end up in total destruction) and communism will be
+        avoided (it would suppress the natural freedom of human
+        beings). So a middle point will be used. For example, if you
+        think you have the freedom to abuse the ISP I provide (e.g.,
+        by spamming it, or by provoking denying of service attaks) you
+        probably have it, but consider that I am free to banish you
+        immediatly for trying to destroy my work. On the other hand,
+        if you show yourself to be an educated person with solid ideas
+        and reasons to share, you'll be totaly welcome to stay. The
+        general idea behind this work is improving Cuban communication
+        to make ourselves better persons, understand our nature and
+        environment either social, economical or polital. 
+    </para>
+
 </sect1>
