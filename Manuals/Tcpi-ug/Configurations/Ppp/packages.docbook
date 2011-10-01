@@ -1,0 +1,40 @@
+<sect1 id="configuration-ppp-packages">
+
+    <title>Installing Required Packages</title>
+
+    <para>
+        To implement the dial-up infrastrcuture described in this
+        chapter, it is required to have installed the <quote>Dialup
+        Networking Support</quote> group of packages available in the
+        <code>[base]</code> repository of &TCD;. The installtion of
+        this group of packages is required both in server and client
+        computers. If you don't have this group of packages installed
+        in your computer, then you can do it as the following command
+        describes:
+    </para>
+
+    <screen>sudo yum groupinstall "Dialup Networking Support"</screen>
+
+    <para>
+        Other packages might be required based on whether you are
+        configuring the computer to be a server or a client.  The
+        implementation described in this chapter considers both a
+        server and client configuration so you can pick up the one
+        that better fits your needs.
+    </para>
+
+    <sect2 id="configurations-ppp-packages-server">
+    <title>The Server Installation</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+    <sect2 id="configurations-ppp-packages-client">
+    <title>The Client Installation</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+</sect1>
