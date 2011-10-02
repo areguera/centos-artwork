@@ -5,27 +5,6 @@
     <sect2 id="configurations-ppp-server-install">
     <title>Installation</title>
 
-    <para>
-        Start with a minimal installation of &TCD;, bootup the
-        operating system, and login as root user. Later, install the
-        <quote>Dialup Networking Support</quote> group of packages
-        available in the <code>[base]</code> repository of &TCD;. The
-        installation of this group of packages is required both in
-        server and client computers. If you don't have this group of
-        packages installed in your computer, then you can do it as the
-        following command describes:
-    </para>
-
-    <screen>yum groupinstall "Dialup Networking Support"</screen>
-
-    <para>
-        Other packages might be required based on whether you are
-        configuring the computer to be a server or a client.  The
-        implementation described in this chapter considers both a
-        server and client configuration so you can pick up the one
-        fitting your case.
-    </para>
-
     <sect3 id="configurations-ppp-server-dns">
     <title>Name Server</title>
     <para>
