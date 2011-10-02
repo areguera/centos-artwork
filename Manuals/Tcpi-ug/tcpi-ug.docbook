@@ -5,12 +5,14 @@
 
 <!ENTITY % Commons.ent          SYSTEM "Commons.ent">
 <!ENTITY % Preface.ent          SYSTEM "Preface.ent">
-<!ENTITY % Configurations.ent   SYSTEM "Configurations.ent">
+<!ENTITY % Interfaces.ent       SYSTEM "Interfaces.ent">
+<!ENTITY % Infrastructures.ent  SYSTEM "Infrastructures.ent">
 <!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
 %Commons.ent;
 %Preface.ent;
-%Configurations.ent;
+%Interfaces.ent;
+%Infrastructures.ent;
 %Licenses.ent;
 ]>
 
@@ -69,7 +71,8 @@
     &preface;
 
     <!-- Main matter -->
-    &configurations;
+    &interfaces;
+    &infrastructures;
 
     <!-- Back matter -->
     &licenses;
