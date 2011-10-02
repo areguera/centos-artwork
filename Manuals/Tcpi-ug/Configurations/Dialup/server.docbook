@@ -1,21 +1,22 @@
-<sect1 id="configurations-ppp-server">
+<sect1 id="configurations-dialup-server">
 
     <title>The Server Computer</title>
 
-    <sect2 id="configurations-ppp-server-install">
-    <title>Installation</title>
+    <sect2 id="configurations-dialup-server-install">
+    <title>Installing Server Computer</title>
 
-    <sect3 id="configurations-ppp-server-dns">
+    <sect3 id="configurations-dialup-server-install-dns">
     <title>Name Server</title>
     <para>
         The name server provides the software required to translate
         domain names into IP address and IP addresses into domain
         names. With this software you can rembember addresses like
-        <ulink url="https://projects.centos.org/" /> instead of addresses like
-        <ulink url="https://192.168.0.1/" />.  There are other
-        feautres (e.g., mail exchanger resolution, zone delegation,
-        etc.) provided by this software that aren't used in the
-        point-to-point configuration we describe in this chapter.
+        <ulink url="https://server.example.com/" /> instead of
+        addresses like <ulink url="https://192.168.0.1/" />.  There
+        are other feautres (e.g., mail exchanger resolution, zone
+        delegation, etc.) provided by this software that aren't used
+        in the point-to-point configuration we describe in this
+        chapter.
     </para>
     <para>
         To install this software, run the following command:
@@ -31,7 +32,7 @@
     </note>
     </sect3>
 
-    <sect3 id="configurations-ppp-server-mail">
+    <sect3 id="configurations-dialup-server-install-mail">
     <title>Mail Server</title>
     <para>
         The mail server provides the software required to let you
@@ -95,7 +96,7 @@
     <itemizedlist>
     <listitem>
     <para>
-        <ulink url="https://projects.centos.org/lists/" />
+        <ulink url="https://server.example.com/lists/" />
     </para>
     </listitem>
     </itemizedlist>
@@ -108,7 +109,7 @@
     <screen>yum install mailman</screen>
     </sect3>
 
-    <sect3 id="configurations-ppp-server-web">
+    <sect3 id="configurations-dialup-server-install-web">
     <title>Web Server</title>
     <para>
         The web server provides the software required to support web
@@ -132,8 +133,10 @@
 
     </sect3>
 
-    <sect3 id="configurations-ppp-server-ldap">
+    <sect3 id="configurations-dialup-server-install-ldap">
+
     <title>Directory Server</title>
+
     <para>
         The directory server provides the software required to unify
         user information. This server is access by other server
@@ -153,6 +156,13 @@
     <screen>yum openldap-servers python-ldap</screen>
 
     </sect3>
+    </sect2>
+
+    <sect2 id="configurations-dialup-server-config">
+    <title>Configuring Server Computer</title>
+    <para>
+        ...
+    </para>
     </sect2>
 
 </sect1>
