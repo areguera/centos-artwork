@@ -1,4 +1,4 @@
-<sect1 id="configurations-ppp-intro">
+<sect1 id="configurations-dialup-intro">
 
     <title>Introduction</title>
 
@@ -6,206 +6,19 @@
         This chapter describes two computers configuration, one acting
         as server and other as client. The server computer will be
         configured to provide internet services and the client to make
-        use of internet services provided by the server computer. The
-        connection medium both client and server computer use is the
-        telelphone line (i.e., the same medium you use to realize
-        phone calls).  In this configuration, both client and server
-        computers use special devices named <quote>Modems</quote> to
-        transmit data in form of sound across the telephone line. The
-        configuration described in this chapter could be a good choise
-        when the only communication medium you have access to is the
-        telephone system.
-    </para>
-
-    <para>
-        Even this configuration tries to reduce the lack of
-        communication, there are limitations around it that we cannot
-        take off, yet. The following list shows what these limitations
-        are:
-    </para>
-
-    <itemizedlist>
-    <listitem>
-    <para>
-        Only one connection (of 15 minutes) is possible at a time.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        More than 3 consecutive connections from the same phone number
-        in a time range of 60 minutes means that that number is
-        attacking the ISP to provoke a <quote>Denying of
-        Service</quote> (DoS) attacks. In such cases, the phone number
-        originating the phone call will be denyed from realizing
-        further phone calls onto the ISP in the next 15 minutes. If
-        after 15 mintes, 3 new consecutive connections are detected
-        from the same phone number than before, the delay time will be
-        duplicated on each consecutive interval (e.g., 15*1 for the
-        first time, 15*2 for the second time, 15*3 for the third time,
-        and so on).
-    </para>
-
-    <note>
-    <para>
-        In order to achieve an acceptable degree of efficiency when
-        controlling consecutive connections from the same phone
-        number, it is required that both the client's phone number and
-        connection time be registered somehow in the server (e.g., Is
-        it on pppd's log file?). Without such information it would be
-        very difficult to achieve any prevention against DoS attacks
-        originated from incoming calls.
-    </para>
-    </note>
-
-    </listitem>
-    <listitem>
-    <para>
-        The ISP is isolated from Internet, so it is not possible to
-        provide Internet access through the ISP. For example, don't
-        ever think you will be able to send international e-mail to
-        Gmail or Yahoo, nor visit web sites like Google or Wikipedia.
-        I really would like to provide such accesses, but without a
-        link to Internet I don't have where to send your requests.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        The information generated inside the ISP is jailed to it. This
-        way, it will be available to people registered inside the ISP
-        only (e.g., through the web interface).
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        The implementation of services that required persistent
-        connections (e.g., <application>chats</application>) will not
-        be considered as a practical offer.  Instead, only
-        asynchronous services (e.g.,
-        <application>e-mail</application>) will be supported. This
-        restriction is required to reduce the connection effective
-        times. For example, consider an environment where you connect
-        the ISP to send/receive e-mails only and then quickly
-        disconnect from ISP to release the line for others to use.
-        There is no need for you to be connected at the same time
-        someone else sends you an e-mail, this in order for you to
-        receive it.  E-mail messages sent to you will be available in
-        your mailbox the next time you establish a point-to-point
-        connection with the ISP and use your mail client to send and
-        receive new messages. Likewise, you don't need to be connected
-        to the ISP in order to write your e-mail messages.  You can
-        write your messages off-line and then establish connection to
-        send it whe it be ready.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        Your user profile will be automatically removed from the ISP
-        when no effective point-to-point connection be established by
-        you in a period greater than 7 days since the last effective
-        point-to-point connection you established to the ISP. When
-        your user profile is removed, you will need to get registered
-        again (i.e., create a new user profile) using the web
-        interface provided by the ISP.  </para>
-    </listitem>
-    <listitem>
-    <para>
-        When a user receive messages, the user's e-mail client must be
-        configure to move the e-mail messages from server to client.
-        This is forced in the ISP computer by denying user's from
-        accessing the IMAP service. Only POP service will be
-        available. This restriction is required to save disk space on
-        ISP computer.
-    </para>
-    </listitem>
-    </itemizedlist>
-        
-    <para>
-        I'm very sorry about these limitations, but this is the best I
-        can offer with one PC, one modem, and one single telephone
-        line. If you think this configuration can be improved somehow,
-        please send me an e-mail to
-        <email>al@projects.centos.org</email>.  Notice that, in order
-        for you to be able to send e-mails to this address you need to
-        do it using the Mail Transfer Agent provided in the server
-        computer. I don't answer phone calls personally, the phone is
-        very busy answering point-to-point connections ;).
-    </para>
-
-    <warning>
-    <para>
-        The <systemitem
-        class="domainname">projects.centos.org</systemitem> mentioned in
-        this chapter must not be confused with the real infrastructure
-        provided by &TCP; on Internet.  The domain name mentioned in
-        this chapter is not available on Internet and was created to
-        illustrate the real infrastructure inside an isolated
-        environment.
-    </para>
-    </warning>
-
-    <para>
-        In order for you to share information with others, it is
-        required that both you and the person you want to share
-        information with, have an e-mail address registered inside
-        ISP. This registration process is realized through a secured
-        web interface accessable through an encrypted connection.  The
-        web interface provided should permit everyone to update or
-        delete their personal profiles. All actions realized through
-        this web interface must be simple enough to be achieved in
-        less than 15 minutes (the time you have before the
-        point-to-point connection be closed by the ISP).
-    </para>
-
-    <para>
-        Inside the ISP, user information is stored inside an LDAP
-        server. The web application manipulates LDAP records and all
-        related files inside the operating system that make possible a
-        user to establish a point-to-point connection to the ISP, as
-        well as registering, updating or deleting its profile inside
-        the ISP.  Care should be taken to prevent one user to
-        modify/delete profiles from other users. The user's profile
-        administration is individual to each user using the user's
-        identity as reference. The user's identity is determined by a
-        username (e.g., the e-mail address) and a password.  The LDAP
-        server will be available for everyone to consult from their
-        mail clients.  Inside the web application, verifications must
-        be included to avoid duplicated values, invalid characters and
-        similar stuff.
+        use of those internet services provided by the server
+        computer. The connection medium both client and server
+        computer use is the telelphone line (i.e., the same medium you
+        use to realize phone calls).  In this configuration, both
+        client and server computers use special devices named
+        <quote>Modems</quote> to transmit data in form of sound across
+        the telephone line.
     </para>
     
     <para>
-        Inside the ISP, all related subsystems (e.g., Postix,
-        Cyrus-Imapd and Saslauthd) must retrive user information from
-        LDAP server.  Likewise, the mailbox administration must be
-        automated based on the users in the LDAP server. The web
-        application must be able to be aware of all files related
-        inside the infrastructure in a way that administration tasks
-        can be automated and presented friendly to end users (this
-        will required the web application to run some program that
-        needs root privileges =:-|). The whole process would be as
-        follows:
+        The configuration described in this chapter is a good choise
+        when the only communication medium you have access to is a
+        telephone network.
     </para>
-    <orderedlist>
-    <listitem>
-    <para>
-        Establish a point-to-point connection to ISP, as described in
-        <xref linkend="configurations-ppp-modem-client" />.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        Register a new user profile through the web application
-        provided by the ISP.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        Configure your workstation using the information provided as
-        result of a successful registration in order to start using
-        the services provided by the ISP you recently get registered
-        in. 
-    </para>
-    </listitem>
-    </orderedlist>
-
+    
 </sect1>
