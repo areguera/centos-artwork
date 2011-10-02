@@ -1,0 +1,302 @@
+<sect1 id="configurations-dialup-usage">
+
+    <title>Usage Convenctions</title>
+
+    <para>
+        The infrastructure described in this chapter uses the
+        client/server model to provide a public mail service through
+        the telephone line. In this configuration, we (the poeple
+        building the infrastructure) provide the information you (the
+        person using the infrastructure) need to know in order to
+        establish a point-to-point connection from your client
+        computer to the server computer through the telephone line.
+    </para>
+
+    <para>
+        The infrastructure described in this chapter is made available
+        to you free of charge, however, you should know that
+        maintaining it costs both money and time. For example, for
+        each hour the server computer is on production there is an
+        electrical consume that need to be paid every month.
+        Likewise, each call that you establish from your client
+        computer to the server computer will cost you money, based on
+        the location you made the call from and the time you spend
+        connected.
+    </para>
+
+    <para>
+        In this section we discuss usage convenctions we all must be
+        agree with, in order to achieve a practical and secure
+        interchange system.
+    </para>
+
+    <sect2 id="configurations-dialup-usage-conn">
+    <title>Establishing Dial-Up Connections</title>
+
+    <para>
+        To establish a dial-up connection to the server computer you
+        need to install and configure a Modem device in your client
+        computer.  Each operating system has its own way of doing
+        this, but if you are using &TCD; you can use the
+        <command>wvdialconf</command> and
+        <command>system-config-network</command> commands, as
+        described in <xref linkend="configurations-dialup-modem" />.
+    </para>
+
+    <para>
+        In the configuration process you will need to enter the
+        following information:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        ISP Name: <code>server.example.com</code>
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        ISP Phone: <code>+53043515094</code>
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        Username: <code>client.example.com</code>
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        Password: <code>mail4u</code>
+    </para>
+    </listitem>
+    </itemizedlist>
+    </sect2>
+
+    <sect2 id="configurations-dialup-usage-connlimits">
+    <title>Administering Incoming Dial-Up Connections</title>
+
+    <para>
+        Assuming you are providing a public service, it is required to
+        limit the time of active connections based on the amount of
+        users you expect to connect and the kind of services you
+        provide. Using the information described in <xref
+        linkend="configurations-dialup-server" /> as reference,
+        incoming connection will remain open during 15 minutes and then
+        will be closed from the server to free the phone line for
+        others to use.
+    </para>
+
+    <para>
+        Assuming you are providing a public service and incoming
+        connections are limited to X numbers of minutes and then
+        closed from the server, it is require to limit the amount of
+        consecutive connections realized from the same phone number in
+        period of time. This way, more than 3 consecutive connections
+        (that last 15 or less minutes each) from the same phone number
+        in a time range of 60 minutes means that that number is
+        attacking the server computer to provoke a <quote>Denial of
+        Service</quote> (DoS) attack. In such cases, the phone number
+        originating the phone call will be denied from realizing
+        further phone calls onto the server computer in the next 15
+        minutes. If after 15 mintes, 3 new consecutive connections are
+        detected from the same phone number than before, the delay
+        time for that phone number will be duplicated on each
+        consecutive interval (e.g., 15*1 for the first time, 15*2 for
+        the second time, 15*3 for the third time, and so on).
+    </para>
+
+    <note>
+    <para>
+        In order to achieve an acceptable degree of efficiency when
+        controlling consecutive connections from the same phone
+        number, it is required that both the client's phone number and
+        connection times (e.g., when the connection was opened, and
+        when it was closed) be registered somehow in the server
+        computer (e.g., Is it on pppd's log file?). Without such
+        information it would be very difficult to achieve any
+        prevention against DoS attacks originated from incoming calls.
+    </para>
+    </note>
+    </sect2>
+
+    <sect2 id="configurations-dialup-usage-users">
+    <title>Administering User Profiles</title>
+
+    <para>
+        In order for a you to use any service provided by the server
+        computer it is required that you get registered a user profile
+        first. The user profile provides the user information required
+        by services inside the server computer (e.g., username,
+        password, e-mail address, phone number, etc.). To register new
+        user profiles, you need to use the web application provided by
+        the server computer. For example, assuming the domain name of
+        the server computer is <systemitem
+        class="domainname">example.com</systemitem>, the URL of the
+        web application would be: <ulink
+        url="https://example.com/people/?action=register" />.
+    </para>
+    
+    <para>
+        To reach the web interface, the first thing you need to do is
+        establishing a dial-up connection to the server computer as
+        described in <xref
+        linkend="configurations-dialup-usage-conn"/>. Once the dial-up
+        connection has been established, you need to open a web
+        browser (e.g., Firefox) and put the URL mentioned above in the
+        address space, and press Enter to go. This will present you a
+        list of instructions that will guide you through the
+        self-registration process. Other actions like updating or
+        deleting your user profile can be also achieved from this web
+        interface.
+    </para>
+
+    <important>
+    <para>
+        The web interface used to manage user profiles inside the
+        server computer must be presented over an encrypted session in
+        order to protect all the information passing through.
+    </para>
+    </important>
+
+    <para>
+        Inside the server computer, all related subsystems in need of
+        user information (e.g., Postix, Cyrus-Imapd and Saslauthd)
+        retrive user information from one single (LDAP) source. The
+        web application provided by the server computer manages all
+        these subsystems' configuration files in order to provide a
+        pleasant experience for end users.  The web interface must be
+        as simple as possible in order to achieve all administration
+        tasks in the range of time permitted by the server computer
+        before it closes the connection established from the client
+        computer.
+    </para>
+
+    <para>
+        More information about the web interface you need to use to
+        manage your user profile inside the server computer can be
+        found in <xref linkend="administration-mail" />.
+    </para>
+
+    </sect2>
+
+    <sect2 id="configurations-dialup-usage-scope">
+    <title>Determining Information Scope</title>
+
+    <para>
+        The information generated inside the server computer is
+        isolated from Internet. This way, any information generated
+        inside the server computer will be available only to people
+        registered inside the server computer. For example, don't ever
+        expect to send/receive e-mails to/from Internet e-mail
+        accounts like Gmail or Yahoo, nor visiting web sites like
+        <ulink url="http://www.google.com/">Google</ulink> or <ulink
+        url="http://www.wikipedia.org/">Wikipedia</ulink> either. For
+        this to happen, it is required an established connection
+        between the server computer we are configuring and the
+        Internet network we want those services in, but such
+        established connection isn't possible in the current
+        environment.
+    </para>
+    </sect2>
+
+    <sect2 id="configurations-dialup-usage-services">
+    <title>Determining Provided Services</title>
+
+    <para>
+        The implementation of services that required persistent
+        connections (e.g., <application>chats</application>) will not
+        be considered as a practical offer inside the server computer.
+        Instead, only asynchronous services (e.g.,
+        <application>e-mail</application>) will be supported. This
+        restriction is required to reduce the amount time demanded by
+        services. For example, consider an environment where you
+        connect to the server computer for sending/receiving e-mails
+        messages and then quickly disconnect from it to free the
+        telephone line for others to use.  In this environment, there
+        is no need for you and other person to be both connected at
+        the same time to send/receive e-mail messages to/from each
+        other.  The e-mails sent from other person to you will be
+        available in your mailbox the next time you get connected to
+        the server computer and use your e-mail client to send/receive
+        e-mail messages.  Likewise, you don't need to be connected to
+        the server computer in order to write your e-mail messages.
+        You can write down your messages off-line and then establish
+        connection once you've finished writing, just to send them
+        out and receive new messages that could have been probably
+        sent to you.
+    </para>
+
+    <para>
+        Another issue related to e-mail exchange is the protocol used
+        to receive messages. Presently, there are two popular ways to
+        do this, one is through IMAP and another through POP3.  When
+        you use IMAP protocol, e-mail messages are retained in the
+        server computer and aren't downloaded to client computer.
+        Otherwise, when you use POP3 protocol, e-mail messages are
+        downloaded to the client computer and removed from server
+        computer. Based on the resources we have and the kind of link
+        used by the client computer to connect the server computer,
+        using POP3 is prefered than IMAP. However both are made
+        available.
+    </para>
+
+    <para>
+        Assuming you use IMAP protocol to read your mailbox, be aware
+        that you need to be connected to the server computer.  Once
+        the connection is lost you won't be able to read your messages
+        (unless your e-mail client possesses a feature that let you
+        reading messages off-line). Morover, you run the risk of get
+        your mailbox out of space. If your mailbox gets out of space,
+        new messages sent to you will not be deliver to your mailbox.
+        Instead, they will be deferred for about 5 days hoping you
+        free the space in your mailbox to deliver them. If you don't
+        free space within this period of time, e-mail messages sent to
+        you will be bounced back to their senders.
+    </para>
+
+    <para>
+        Otherwise, if you use POP3 protocol to read your mailbox, you
+        always keep your mailbox free to receive new e-mails messages
+        and keep them for you until the next time you establish
+        connection with the server computer and download them to your
+        client computer using your e-mail client.
+    </para>
+    </sect2>
+
+    <sect2 id="configuration-dialup-usage-diskspace">
+    <title>Determining Disk Space Usage</title>
+
+    <para>
+        Assuming you are providing a public service, it is required to
+        limit the maximum number of users registered inside the server
+        computer, based on the maximum disk space the server computer
+        confines to such purpose. For example, consider an environment
+        where users can get registered themselves using a web
+        interface which requires the web application to know how much
+        free space is available before proceeding to register new mail
+        accounts inside the server computer; this, to prevent user
+        registrations when there isn't enough free space to perform a
+        new user registration.  Considering the computer server has
+        confined 5GB of disk space to handle the mail service (e.g.,
+        mail queues, mailboxes, etc.), if we set 10MB for each user
+        account, it will be possible to provide self-registration
+        through the web interface for 500 users in total.
+    </para>
+
+    <para>
+        Another measure related to disk space saving might be to
+        remove unused user accounts and their related files (e.g.,
+        mailboxes) from the server computer. For example, consider an
+        environment where user accounts are automatically removed from
+        the server computer when they don't establish a connection
+        with the server computer in a period greater than 7 days since
+        the last valid connection established to the server computer.
+        Once the user account is removed, it is no longer functional
+        of course, and the person whom lost the account will need to
+        create a new one, assuming it want to have access back to the
+        mail service inside the server computer.
+    </para>
+
+    </sect2>
+        
+</sect1>
