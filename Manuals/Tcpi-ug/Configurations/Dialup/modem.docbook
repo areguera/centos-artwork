@@ -1,10 +1,10 @@
-<sect1 id="configurations-ppp-device">
+<sect1 id="configurations-dialup-modem">
 
     <title>The Modem Device</title>
 
-    <sect2 id="configurations-ppp-device-install">
+    <sect2 id="configurations-dialup-modem-install">
 
-    <title>Installation</title>
+    <title>Installing Modem Device</title>
 
     <para>
         Start with a minimal installation of &TCD;, bootup the
@@ -38,15 +38,14 @@
         computer turned off. Then, when everthing has been put in
         place, turn it on. Once the system is up, you can verify the
         modem hardware using either the <command>lsusb</command> or
-        <command>lspci</command> commands. For example, if you are
-        using an USB modem like that one we mentioned before, run the
-        following command:
-    </para>
-
-    <screen>sudo /sbin/lsusb</screen>
-
-    <para>
-        and you should get an output similar to the following:
+        <command>lspci</command> commands. These commands need to be
+        run with administrative privileges, so probably need to
+        <command>sudo</command> them or login as <systemitem
+        class="username">root</systemitem> user in order to execute
+        thme. For example, assuming you are logged in as root user,
+        and you are using an USB modem like that one we mentioned
+        before, the output of <command>lsusb</command> command would
+        look like the following:
     </para>
 
 <screen>
@@ -71,17 +70,18 @@ Bus 004 Device 001: ID 0000:0000
         At this point, your computer should be able of responding to
         incoming calls but cannot realize outgoing calls, yet.  To
         administer the way incoming calls are attended in this
-        computer, read <xref linkend="configurations-ppp-server"
-        />. On the other hand, to realize outgoing calls from this
-        computer, you need to specify the server information you want
-        to establish connection to, as described in <xref
-        linkend="configurations-ppp-modem-client" />.
+        computer, read <xref
+        linkend="configurations-dialup-server-config" />. On the other
+        hand, to realize outgoing calls from this computer, you need
+        to specify the server information you want to establish
+        connection to, as described in <xref
+        linkend="configurations-dialup-modem" />.
     </para>
 
     </sect2>
 
-    <sect2 id="configurations-ppp-device-config">
-    <title>Configuration</title>
+    <sect2 id="configurations-dialup-modem-config">
+    <title>Configuring Modem Device</title>
 
     <para>
         Once the modem hardware has been installed in the computer, it
@@ -94,7 +94,7 @@ Bus 004 Device 001: ID 0000:0000
         package.
     </para>
     
-    <sect3 id="configurations-ppp-device-config-wvdial">
+    <sect3 id="configurations-dialup-modem-config-wvdial">
     <title>The <command>wvdialconf</command> Command</title>
 
     <para>
@@ -176,7 +176,7 @@ Modem Type = USB Modem
 
     </sect3>
 
-    <sect3 id="configuration-ppp-device-config-scn">
+    <sect3 id="configurations-dialup-modem-config-scn">
     <title>The <command>system-config-network</command> Command</title>
 
     <para>
@@ -193,6 +193,14 @@ Modem Type = USB Modem
         some differences in the way these commands create
         configuration files that we need to be aware of.
     </para>
+
+    <para>
+        If you don't have the <command>system-config-network</command>
+        command installed in your system, you can run the following
+        command to install it:
+    </para>
+
+    <screen></screen>
 
     <para>
         The interface provided by
