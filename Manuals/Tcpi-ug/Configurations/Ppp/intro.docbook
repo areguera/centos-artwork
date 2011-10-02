@@ -3,36 +3,18 @@
     <title>Introduction</title>
 
     <para>
-        This chapter describes how to configure a small Internet
-        Service Provider (ISP) accesable through the telephone line.
-        In this chapter, the computer holding the ISP is named the
-        <quote>server</quote> and the computer that want to make use
-        of such services is named the <quote>client</quote>. We assume
-        that both server and client computers have been installed with
-        &TCD; (release 5.5).
-    </para>
-
-    <para>
-        In this configuration, both client and server computers use
-        modems to transmit data in form of sound through the telephone
-        lines system. The dial-up connection described in this chapter
-        could be a choise when the only communication medium you have
-        access to is the telephone lines system.
-    </para>
-
-    <para>
-        This configuration emerged from the need of sharing
-        information with my friends in a country where Internet access
-        is limitted to statal organizations and controlled therein
-        with an increasing crazy-obsession. However, in this
-        environment, the telephone lines system provides an
-        alternative platform to interchange information in a
-        point-to-point fashion. It can be used to create small social
-        groups that can share ideas safetly (e.g., by using encrypted
-        point-to-point connections). To be more specific, the goal of
-        this work would be to provide public access to an ISP where
-        people can express themselves freely and develop their
-        personal projects (e.g., through mailing list).
+        This chapter describes two computers configuration, one acting
+        as server and other as client. The server computer will be
+        configured to provide internet services and the client to make
+        use of internet services provided by the server computer. The
+        connection medium both client and server computer use is the
+        telelphone line (i.e., the same medium you use to realize
+        phone calls).  In this configuration, both client and server
+        computers use special devices named <quote>Modems</quote> to
+        transmit data in form of sound across the telephone line. The
+        configuration described in this chapter could be a good choise
+        when the only communication medium you have access to is the
+        telephone system.
     </para>
 
     <para>
@@ -141,12 +123,25 @@
         I'm very sorry about these limitations, but this is the best I
         can offer with one PC, one modem, and one single telephone
         line. If you think this configuration can be improved somehow,
-        please send me an e-mail to <email>al@example.com</email>.
-        Notice that, for any mail to reach my mailbox, you should be
-        registered inside the ISP first and used the ISP mail server
-        to send the mail. I don't answer phone calls personally, the
-        phone is very busy answering point-to-point connections ;).
+        please send me an e-mail to
+        <email>al@projects.centos.org</email>.  Notice that, in order
+        for you to be able to send e-mails to this address you need to
+        do it using the Mail Transfer Agent provided in the server
+        computer. I don't answer phone calls personally, the phone is
+        very busy answering point-to-point connections ;).
     </para>
+
+    <warning>
+    <para>
+        The <systemitem
+        class="domainname">projects.centos.org</systemitem> mentioned in
+        this chapter must not be confused with the real infrastructure
+        provided by &TCP; on Internet.  The domain name mentioned in
+        this chapter is not available on Internet and was created to
+        illustrate the real infrastructure inside an isolated
+        environment.
+    </para>
+    </warning>
 
     <para>
         In order for you to share information with others, it is
@@ -212,58 +207,5 @@
     </para>
     </listitem>
     </orderedlist>
-
-    <para>
-        In case some kind of force intend to confiscate me the
-        computer where the ISP is installed in, it should be noticed
-        that the whole ISP filesystem is encrypted in a way that it
-        would be very difficult to get any valid data from it, once it
-        be physically compromised. The encryption feature is applied
-        before the operating system starts. In this configuration a
-        password is required to decrypt the operating system
-        filesystem in order to be able of booting it up as expected.
-        If the password is not provided (or is incorrectly provided),
-        the only thing you get is a prompt to enter a password :-).
-        With this action I pretend to protect my work from the Cuban
-        political system.  Presently (Oct 1, 2011), legal resolutions
-        related to Information Technologies (ITs) have been only
-        specified to Cuban State's organizations in a very
-        contradictory and restrictive way (see resolution 149 from
-        MIT).  There is no public resolution covering management of
-        ITs at a level of natural citizens.  The legal conception, as
-        far as I can see, is that no one can be independent from the
-        Cuban State (i.e., you need to work for it somehow and be
-        limitted to its working conditions).  If you decide to work
-        for your own (i.e., based on a philosophy of life different
-        from that followed by the Cuban State) you will be considered
-        a dissident and will be rejected by a highly oppressed and
-        armless society. Because Cuban natural citizens don't count
-        with a legal definition about how to use ITs individually from
-        the Cuban State's point of view, it is very difficult to be
-        sure about the ground we are putting our feet on (e.g., the
-        State could use its force to affect our creation based on its
-        idea of <quote>appropriate usage</quote>, <quote>national
-        security</quote>, etc.). This way, dramatic measures like
-        encryption need to be considered in order to protect our
-        natural freedom of sharing our creation in whatever way we
-        decide to do it.
-    </para>
-
-    <para>
-        Another important matter to be aware of is about the ISP's
-        policy.  In order to keep freedom, it is required to define
-        the boundaries of that freedom so you can determine and judge
-        it.  Absolute freedom would end up in total destruction and
-        absolute restriction would suppress the natural freedom of
-        human beings to express themselves individually.  So a middle
-        point will be used.  For example, if you think you have the
-        freedom to abuse the ISP I provide (e.g., by spamming it, or
-        by provoking denying of service attacks) you probably do, but
-        consider that I will make use of my freedom to immediatly
-        banish you for trying to destroy my work. On the other hand,
-        if you show yourself as an educated and good-will person with
-        solid ideas and reasons to share, you'll be totally welcome to
-        stay. 
-    </para>
 
 </sect1>
