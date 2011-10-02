@@ -5,7 +5,20 @@
     <sect2 id="configurations-ppp-device-install">
 
     <title>Installation</title>
-    
+
+    <para>
+        Start with a minimal installation of &TCD;, bootup the
+        operating system, and login as root user. Later, install the
+        <quote>Dialup Networking Support</quote> group of packages
+        available in the <code>[base]</code> repository of &TCD;. The
+        installation of this group of packages is required both in
+        server and client computers. If you don't have this group of
+        packages installed in your computer, then you can do it as the
+        following command describes:
+    </para>
+
+    <screen>yum groupinstall "Dialup Networking Support"</screen>
+
     <para>
         The modem device installation consists on attacthing the modem
         hardware both to the computer and the telephone line. To
@@ -73,37 +86,14 @@ Bus 004 Device 001: ID 0000:0000
     <para>
         Once the modem hardware has been installed in the computer, it
         is necessary to determine what device location the operating
-        system assigned to it, so applications like
-        <application>chat</application> be able to know which device
-        to talk to.  This configuration process can be realized
-        through the <command>wvdialconf</command> command, distributed
-        with the <package>wvdial</package> package.
+        system assigned to it, so you can instruct applications like
+        <application>chat</application> the correct device they will
+        to talk to.  This configuration process has been greatly
+        simplified thanks to the <command>wvdialconf</command>
+        command, distributed with the <package>wvdial</package>
+        package.
     </para>
     
-    <para>
-        Another way to configure modems installed in your computer is
-        through the graphical interface provided by
-        <command>system-config-network</command> command. This
-        interface may result specially useful when you need to
-        configure your computer to establish Modem connections to
-        remote Internet Service Providers (ISPs).  The interface
-        provided by <command>system-config-network</command> command
-        uses the same configuration file that
-        <command>wvdialconf</command> command does (e.g.,
-        <filename>/etc/wvdial.conf</filename>), however, there are
-        some differences in the way these commands create
-        configuration files that we need to be aware of.
-    </para>
-
-    <para>
-        This section describes how you could use the
-        <command>wvdialconf</command> and
-        <command>system-config-network</command> commands to configure
-        the modem installed in your computer, as well as possible
-        issues you might face if these two commands are arbitrarily
-        combined one another.
-    </para>
-
     <sect3 id="configurations-ppp-device-config-wvdial">
     <title>The <command>wvdialconf</command> Command</title>
 
@@ -188,6 +178,21 @@ Modem Type = USB Modem
 
     <sect3 id="configuration-ppp-device-config-scn">
     <title>The <command>system-config-network</command> Command</title>
+
+    <para>
+        Another way to configure modems installed in your computer is
+        through the graphical interface provided by
+        <command>system-config-network</command> command. This
+        interface may result specially useful when you need to
+        configure your computer to establish Modem connections to
+        remote Internet Service Providers (ISPs).  The interface
+        provided by <command>system-config-network</command> command
+        uses the same configuration file that
+        <command>wvdialconf</command> command does (e.g.,
+        <filename>/etc/wvdial.conf</filename>), however, there are
+        some differences in the way these commands create
+        configuration files that we need to be aware of.
+    </para>
 
     <para>
         The interface provided by
