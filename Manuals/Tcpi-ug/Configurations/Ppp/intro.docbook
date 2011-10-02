@@ -3,9 +3,9 @@
     <title>Introduction</title>
 
     <para>
-        This chapter describes how to configure &TCD; to provide some
-        Internet services through the telephone line. In this chapter,
-        the computer holding the Internet services is named the
+        This chapter describes how to configure a small Internet
+        Service Provider (ISP) accesable through the telephone line.
+        In this chapter, the computer holding the ISP is named the
         <quote>server</quote> and the computer that want to make use
         of such services is named the <quote>client</quote>. We assume
         that both server and client computers have been installed with
@@ -23,23 +23,23 @@
     <para>
         This configuration emerged from the need of sharing
         information with my friends in a country where Internet access
-        is limitted to statal organizations and controlled there with
-        an increasing crazy obsession. However, in this environment,
-        the telephone lines system provides an alternative platform to
-        interchange information in a point-to-point fashion. It can be
-        used to create small social groups and organize ideas safetly
-        (e.g., by using TLS to encrypt connections). To be more
-        specific, the goal would be to provide public access to an
-        Internet Service Provider (ISP) where people can express
-        themselves freely (e.g., through a mailing list with open
-        subscriptions).
+        is limitted to statal organizations and controlled therein
+        with an increasing crazy-obsession. However, in this
+        environment, the telephone lines system provides an
+        alternative platform to interchange information in a
+        point-to-point fashion. It can be used to create small social
+        groups that can share ideas safetly (e.g., by using encrypted
+        point-to-point connections). To be more specific, the goal of
+        this work would be to provide public access to an ISP where
+        people can express themselves freely and develop their
+        personal projects (e.g., through mailing list).
     </para>
 
     <para>
         Even this configuration tries to reduce the lack of
         communication, there are limitations around it that we cannot
-        take away, yet. The following list shows what these
-        limitations are:
+        take off, yet. The following list shows what these limitations
+        are:
     </para>
 
     <itemizedlist>
@@ -52,25 +52,45 @@
     <para>
         More than 3 consecutive connections from the same phone number
         in a time range of 60 minutes means that that number is
-        attacking the ISP to provoke a <quote>Denying of Service
-        (DoS)</quote> attach. In such cases the phone number
-        originating the call will be permantly banished from
-        realizing further calls to the ISP.  Fourtunly, such controls
-        can be automated so I hope they achieve an acceptable degree
-        of efficiency.
+        attacking the ISP to provoke a <quote>Denying of
+        Service</quote> (DoS) attacks. In such cases, the phone number
+        originating the phone call will be denyed from realizing
+        further phone calls onto the ISP in the next 15 minutes. If
+        after 15 mintes, 3 new consecutive connections are detected
+        from the same phone number than before, the delay time will be
+        duplicated on each consecutive interval (e.g., 15*1 for the
+        first time, 15*2 for the second time, 15*3 for the third time,
+        and so on).
     </para>
+
+    <note>
+    <para>
+        In order to achieve an acceptable degree of efficiency when
+        controlling consecutive connections from the same phone
+        number, it is required that both the client's phone number and
+        connection time be registered somehow in the server (e.g., Is
+        it on pppd's log file?). Without such information it would be
+        very difficult to achieve any prevention against DoS attacks
+        originated from incoming calls.
+    </para>
+    </note>
+
     </listitem>
     <listitem>
     <para>
         The ISP is isolated from Internet, so it is not possible to
-        provide Internet access through the ISP.
+        provide Internet access through the ISP. For example, don't
+        ever think you will be able to send international e-mail to
+        Gmail or Yahoo, nor visit web sites like Google or Wikipedia.
+        I really would like to provide such accesses, but without a
+        link to Internet I don't have where to send your requests.
     </para>
     </listitem>
     <listitem>
     <para>
         The information generated inside the ISP is jailed to it. This
         way, it will be available to people registered inside the ISP
-        only (e.g., through the web internface).
+        only (e.g., through the web interface).
     </para>
     </listitem>
     <listitem>
@@ -82,20 +102,37 @@
         <application>e-mail</application>) will be supported. This
         restriction is required to reduce the connection effective
         times. For example, consider an environment where you connect
-        the ISP to send/receive e-mails only and then disconnect.  In
-        fact, to force this behaivour the ISP will be configured to
-        close connections after 15 minutes passed the connection
-        establishment.  
+        the ISP to send/receive e-mails only and then quickly
+        disconnect from ISP to release the line for others to use.
+        There is no need for you to be connected at the same time
+        someone else sends you an e-mail, this in order for you to
+        receive it.  E-mail messages sent to you will be available in
+        your mailbox the next time you establish a point-to-point
+        connection with the ISP and use your mail client to send and
+        receive new messages. Likewise, you don't need to be connected
+        to the ISP in order to write your e-mail messages.  You can
+        write your messages off-line and then establish connection to
+        send it whe it be ready.
     </para>
     </listitem>
     <listitem>
     <para>
-        Your user profile will be removed from ISP when no effective
-        point-to-point connection is established by you in a period of
-        7 days since the last effective point-to-point connection you
-        established to the ISP. When your user profile is removed, you
-        will need to register yourself again inside the ISP, to access
-        its services.
+        Your user profile will be automatically removed from the ISP
+        when no effective point-to-point connection be established by
+        you in a period greater than 7 days since the last effective
+        point-to-point connection you established to the ISP. When
+        your user profile is removed, you will need to get registered
+        again (i.e., create a new user profile) using the web
+        interface provided by the ISP.  </para>
+    </listitem>
+    <listitem>
+    <para>
+        When a user receive messages, the user's e-mail client must be
+        configure to move the e-mail messages from server to client.
+        This is forced in the ISP computer by denying user's from
+        accessing the IMAP service. Only POP service will be
+        available. This restriction is required to save disk space on
+        ISP computer.
     </para>
     </listitem>
     </itemizedlist>
@@ -105,10 +142,10 @@
         can offer with one PC, one modem, and one single telephone
         line. If you think this configuration can be improved somehow,
         please send me an e-mail to <email>al@example.com</email>.
-        Notice that, for any mail to reach me, you should be
-        registered inside the ISP first; I don't answer phone calls
-        personally, the phone is very busy answering point-to-point
-        connections ;).
+        Notice that, for any mail to reach my mailbox, you should be
+        registered inside the ISP first and used the ISP mail server
+        to send the mail. I don't answer phone calls personally, the
+        phone is very busy answering point-to-point connections ;).
     </para>
 
     <para>
@@ -116,82 +153,117 @@
         required that both you and the person you want to share
         information with, have an e-mail address registered inside
         ISP. This registration process is realized through a secured
-        web interface accessable through an encrypted connection as
-        the following url illustrates:
+        web interface accessable through an encrypted connection.  The
+        web interface provided should permit everyone to update or
+        delete their personal profiles. All actions realized through
+        this web interface must be simple enough to be achieved in
+        less than 15 minutes (the time you have before the
+        point-to-point connection be closed by the ISP).
+    </para>
+
+    <para>
+        Inside the ISP, user information is stored inside an LDAP
+        server. The web application manipulates LDAP records and all
+        related files inside the operating system that make possible a
+        user to establish a point-to-point connection to the ISP, as
+        well as registering, updating or deleting its profile inside
+        the ISP.  Care should be taken to prevent one user to
+        modify/delete profiles from other users. The user's profile
+        administration is individual to each user using the user's
+        identity as reference. The user's identity is determined by a
+        username (e.g., the e-mail address) and a password.  The LDAP
+        server will be available for everyone to consult from their
+        mail clients.  Inside the web application, verifications must
+        be included to avoid duplicated values, invalid characters and
+        similar stuff.
     </para>
     
-    <itemizedlist>
+    <para>
+        Inside the ISP, all related subsystems (e.g., Postix,
+        Cyrus-Imapd and Saslauthd) must retrive user information from
+        LDAP server.  Likewise, the mailbox administration must be
+        automated based on the users in the LDAP server. The web
+        application must be able to be aware of all files related
+        inside the infrastructure in a way that administration tasks
+        can be automated and presented friendly to end users (this
+        will required the web application to run some program that
+        needs root privileges =:-|). The whole process would be as
+        follows:
+    </para>
+    <orderedlist>
     <listitem>
     <para>
-        <ulink url="https://example.com/users?action=register" />
+        Establish a point-to-point connection to ISP, as described in
+        <xref linkend="configurations-ppp-modem-client" />.
     </para>
     </listitem>
-    </itemizedlist>
-
+    <listitem>
     <para>
-        The web interface should permit everyone to update or delete
-        their personal profiles without compromising personal
-        information. Notice that all actions realized through this web
-        interface must be simple enough to be achieved in less than 15
-        minutes (the time the point-to-point connection reamins active
-        from its first establishment on).
+        Register a new user profile through the web application
+        provided by the ISP.
     </para>
-
+    </listitem>
+    <listitem>
     <para>
-        User information is stored inside an LDAP server. The web
-        application manipulates LDAP records and all related files
-        inside the operating system that make possible a user to
-        establish a poit-to-point connection to the ISP, as well as
-        register, update or delate its profile inside the ISP. Care
-        should be taken to prevent one user to modify/delete profiles
-        from other users. The user's profile administration is
-        individual to each user based on its identity. Notice that,
-        all related subsystems (e.g., Postix, Cyrus-Imapd and
-        Saslauthd) must use the user information from LDAP server.
-        Likewise, the mailbox administration must be automated based
-        on the users in the LDAP server. The web application must be
-        able to be aware of all files related inside the
-        infrastructure in a way that administration tasks can be
-        automated and presented friendly to end users (this will
-        required the web application to run some program that needs
-        root privileges =:-|). The whole proces would be, establish a
-        point-to-point connection to the ISP, register a new user
-        through the web application and start using the e-mail client
-        with your new address. The LDAP server will be available for
-        everyone to consult from their mail clients. Inside the web
-        application, verifications must be included to avoid
-        duplicated values, invalid characters and similar stuff.
+        Configure your workstation using the information provided as
+        result of a successful registration in order to start using
+        the services provided by the ISP you recently get registered
+        in. 
     </para>
+    </listitem>
+    </orderedlist>
 
     <para>
         In case some kind of force intend to confiscate me the
-        computer where the ISP is installed in, I am plaing to encrypt
-        the whole filesystem in a way that it would be very difficult
-        to get any valid data from it. The encryption feature is
-        applied before the operating system starts. In this
-        configuration a password is required to decrypt the operating
-        system filesystem in order to be able of booting up the
-        operating system as expected. If the password is not provided,
-        the only thing you get is a prompt to enter a password :).
+        computer where the ISP is installed in, it should be noticed
+        that the whole ISP filesystem is encrypted in a way that it
+        would be very difficult to get any valid data from it, once it
+        be physically compromised. The encryption feature is applied
+        before the operating system starts. In this configuration a
+        password is required to decrypt the operating system
+        filesystem in order to be able of booting it up as expected.
+        If the password is not provided (or is incorrectly provided),
+        the only thing you get is a prompt to enter a password :-).
+        With this action I pretend to protect my work from the Cuban
+        political system.  Presently (Oct 1, 2011), legal resolutions
+        related to Information Technologies (ITs) have been only
+        specified to Cuban State's organizations in a very
+        contradictory and restrictive way (see resolution 149 from
+        MIT).  There is no public resolution covering management of
+        ITs at a level of natural citizens.  The legal conception, as
+        far as I can see, is that no one can be independent from the
+        Cuban State (i.e., you need to work for it somehow and be
+        limitted to its working conditions).  If you decide to work
+        for your own (i.e., based on a philosophy of life different
+        from that followed by the Cuban State) you will be considered
+        a dissident and will be rejected by a highly oppressed and
+        armless society. Because Cuban natural citizens don't count
+        with a legal definition about how to use ITs individually from
+        the Cuban State's point of view, it is very difficult to be
+        sure about the ground we are putting our feet on (e.g., the
+        State could use its force to affect our creation based on its
+        idea of <quote>appropriate usage</quote>, <quote>national
+        security</quote>, etc.). This way, dramatic measures like
+        encryption need to be considered in order to protect our
+        natural freedom of sharing our creation in whatever way we
+        decide to do it.
     </para>
 
     <para>
         Another important matter to be aware of is about the ISP's
         policy.  In order to keep freedom, it is required to define
         the boundaries of that freedom so you can determine and judge
-        it.  Absolute freedom (anarchism) will not be permitted (it
-        would end up in total destruction) and communism will be
-        avoided (it would suppress the natural freedom of human
-        beings). So a middle point will be used. For example, if you
-        think you have the freedom to abuse the ISP I provide (e.g.,
-        by spamming it, or by provoking denying of service attaks) you
-        probably have it, but consider that I am free to banish you
-        immediatly for trying to destroy my work. On the other hand,
-        if you show yourself to be an educated person with solid ideas
-        and reasons to share, you'll be totaly welcome to stay. The
-        general idea behind this work is improving Cuban communication
-        to make ourselves better persons, understand our nature and
-        environment either social, economical or polital. 
+        it.  Absolute freedom would end up in total destruction and
+        absolute restriction would suppress the natural freedom of
+        human beings to express themselves individually.  So a middle
+        point will be used.  For example, if you think you have the
+        freedom to abuse the ISP I provide (e.g., by spamming it, or
+        by provoking denying of service attacks) you probably do, but
+        consider that I will make use of my freedom to immediatly
+        banish you for trying to destroy my work. On the other hand,
+        if you show yourself as an educated and good-will person with
+        solid ideas and reasons to share, you'll be totally welcome to
+        stay. 
     </para>
 
 </sect1>
