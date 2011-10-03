@@ -37,86 +37,84 @@
         To establish a dial-up connection to the server computer you
         need to install and configure a Modem device in your client
         computer.  Each operating system has its own way of doing
-        this, but if you are using &TCD; you can use the
+        this, but if you are using &TCD;, you can use the
         <command>wvdialconf</command> and
         <command>system-config-network</command> commands, as
         described in <xref linkend="configurations-dialup-modem" />.
     </para>
 
     <para>
-        In the configuration process you will need to enter the
-        following information:
+        In the configuration process you need to enter the following
+        information:
     </para>
 
-    <itemizedlist>
-    <listitem>
-    <para>
-        ISP Name: <code>server.example.com</code>
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        ISP Phone: <code>+53043515094</code>
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        Username: <code>client.example.com</code>
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        Password: <code>mail4u</code>
-    </para>
-    </listitem>
-    </itemizedlist>
+<screen>
+ ISP Name: server.example.com
+ISP Phone: +53043515094
+ Username: client.example.com
+ Password: mail4u
+</screen>
+
     </sect2>
 
     <sect2 id="configurations-dialup-usage-connlimits">
-    <title>Administering Incoming Dial-Up Connections</title>
+    <title>Administering Dial-Up Connections</title>
 
     <para>
-        Assuming you are providing a public service, it is required to
-        limit the time of active connections based on the amount of
-        users you expect to connect and the kind of services you
-        provide. Using the information described in <xref
-        linkend="configurations-dialup-server" /> as reference,
-        incoming connection will remain open during 15 minutes and then
-        will be closed from the server to free the phone line for
-        others to use.
+        The lifetime of dial-up connections must be limitted based on
+        the number of users you expect to establish connection and the
+        kind of services you plan to provide. Using the information
+        described in <xref linkend="configurations-dialup-server" />
+        as reference, the lifetime of dial-up connections will be 15
+        minutes from the moment they were established on. Likewise,
+        once the connection has been established, if the link is idle
+        for 1 minute, the server computer will close the connection to
+        free the telephone line for others to use.
     </para>
 
     <para>
-        Assuming you are providing a public service and incoming
-        connections are limited to X numbers of minutes and then
-        closed from the server, it is require to limit the amount of
-        consecutive connections realized from the same phone number in
-        period of time. This way, more than 3 consecutive connections
-        (that last 15 or less minutes each) from the same phone number
-        in a time range of 60 minutes means that that number is
-        attacking the server computer to provoke a <quote>Denial of
-        Service</quote> (DoS) attack. In such cases, the phone number
-        originating the phone call will be denied from realizing
-        further phone calls onto the server computer in the next 15
-        minutes. If after 15 mintes, 3 new consecutive connections are
-        detected from the same phone number than before, the delay
-        time for that phone number will be duplicated on each
-        consecutive interval (e.g., 15*1 for the first time, 15*2 for
-        the second time, 15*3 for the third time, and so on).
+        The number of consecutive connections realized from the same
+        telephone number in a fixed period of time must be also
+        controlled in order to reduce Denial of Service (DoS) attacks.
+        This way, you can consider an environment where: more than 3
+        consecutive connections (that last 15 or less minutes each)
+        from the same telephone number in a time range of 60 minutes
+        will be taken as a DoS attack from the client computer.  In
+        such cases, once the client computer is disconnected from
+        server computer, the telephone number originating the call
+        won't be able to establish any further connection to the
+        server computer in the next 15 minutes since the last it was
+        disconnected on.
     </para>
 
     <note>
     <para>
         In order to achieve an acceptable degree of efficiency when
-        controlling consecutive connections from the same phone
-        number, it is required that both the client's phone number and
-        connection times (e.g., when the connection was opened, and
-        when it was closed) be registered somehow in the server
+        controlling consecutive connections from the same telephone
+        number, it is required that both the client's telephone number
+        and connection times (e.g., when the connection was opened,
+        and when it was closed) be registered somehow in the server
         computer (e.g., Is it on pppd's log file?). Without such
         information it would be very difficult to achieve any
         prevention against DoS attacks originated from incoming calls.
     </para>
     </note>
+
+    <para>
+        Another issue to consider here is that, in order to realize
+        any control over incoming telephone calls, it is required that
+        the client computer realizes a telepohne call into the server
+        computer to provide the telephone number information and that
+        certainly occupies the telephone line until the access control
+        actions take place. This could be used by evil users to
+        generate DoS attacks (e.g., by configuring a client computer
+        to redial the server computer telephone number forever), since
+        there is no way to control access at a Modem level without
+        occupying the telephone line for a few seconds at least. The
+        only change legitimate users have against such evil users'
+        attacks would be establish connection before them (e.g., in
+        the exact range of time between disconnection and redial).
+    </para>
     </sect2>
 
     <sect2 id="configurations-dialup-usage-users">
@@ -127,10 +125,10 @@
         computer it is required that you get registered a user profile
         first. The user profile provides the user information required
         by services inside the server computer (e.g., username,
-        password, e-mail address, phone number, etc.). To register new
-        user profiles, you need to use the web application provided by
-        the server computer. For example, assuming the domain name of
-        the server computer is <systemitem
+        password, e-mail address, telephone number, etc.). To register
+        new user profiles, you need to use the web application
+        provided by the server computer. For example, assuming the
+        domain name of the server computer is <systemitem
         class="domainname">example.com</systemitem>, the URL of the
         web application would be: <ulink
         url="https://example.com/people/?action=register" />.
