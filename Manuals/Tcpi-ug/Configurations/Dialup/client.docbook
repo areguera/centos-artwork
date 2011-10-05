@@ -84,11 +84,10 @@ ttyACM0&lt;Info&gt;: Speed 460800; init "ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS
         using the interface provided by
         <command>system-config-network</command> command. Take care of
         replacing the <filename>/dev/modem</filename> device name by
-        that one found by <command>wvdialconf</command> (e.g., in the
-        output above would be <filename>/dev/ttyACM0</filename>). At
-        this point, you can use the button Activate from
+        that one found by <command>wvdialconf</command>. At this
+        point, you can use the button Activate from
         <command>system-config-network</command> to establish the
-        Modem connection you previously configured.
+        Modem connection you just configured.
     </para>
  
     </sect3>
