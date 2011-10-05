@@ -1,36 +1,26 @@
 <sect1 id="configurations-dialup-modem">
 
-    <title>The Modem Device</title>
-
-    <sect2 id="configurations-dialup-modem-install">
-
-    <title>Installing Modem Device</title>
+    <title>The Modem Hardware</title>
 
     <para>
-        Start with a minimal installation of &TCD;, bootup the
-        operating system, and login as root user. Later, install the
-        <quote>Dialup Networking Support</quote> group of packages
-        available in the <code>[base]</code> repository of &TCD;. The
-        installation of this group of packages is required both in
-        server and client computers. If you don't have this group of
-        packages installed in your computer, then you can do it as the
-        following command describes:
+        In order to establish a PPP link between two computers using
+        the telephone line as medium for data transmission, you need
+        to install (at least) one modem device in each computer.
     </para>
 
-    <screen>yum groupinstall "Dialup Networking Support"</screen>
-
     <para>
-        The modem device installation consists on attacthing the modem
-        hardware both to the computer and the telephone line. To
-        connect the modem to your computer, you need to connect the
-        serial or USB cable that comes from the modem hardware to the
-        appropriate input on your computer. To connect the modem to
-        the telephone line system, you need to unplug the cable that
-        connects your phone device and plug it on the modem device,
-        specifically in the port reserved for data transmission.
-        Later, using a similar cable, you could connect your phone
-        device to the modem's phone port, so you be able of realizing
-        phone calls when no data transmition take place, as well.
+        To install a modem device in computer you need to attach the
+        modem hardware to the computer and later the telephone line to
+        the modem hardware. To connect the modem to your computer, you
+        need to connect the serial or USB cable that comes from the
+        modem hardware to the appropriate input on your computer. To
+        connect the modem to the telephone line system, you need to
+        unplug the cable that connects your telephone device and plug
+        it on the modem device, specifically in the port reserved for
+        data transmission.  Later, using a similar cable, you could
+        connect your telephone device to the modem's telephone port,
+        so you can realize telephone calls when no data transmition
+        take place.
     </para>
 
     <para>
@@ -63,237 +53,16 @@ Bus 004 Device 001: ID 0000:0000
     <para>
         The relevant line here is that mentioning the existence of a
         <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB (new
-        firmware)</code> device.
+        firmware)</code> device. If the modem you installed doesn't
+        appear in this list, it is probably because such hardware is
+        not supported by &TCD;, yet.
     </para>
 
     <para>
-        At this point, your computer should be able of responding to
-        incoming calls but cannot realize outgoing calls, yet.  To
-        administer the way incoming calls are attended in this
-        computer, read <xref
-        linkend="configurations-dialup-server-config" />. On the other
-        hand, to realize outgoing calls from this computer, you need
-        to specify the server information you want to establish
-        connection to, as described in <xref
-        linkend="configurations-dialup-modem" />.
+        At this point, everything is ready for you to install and
+        configure the computer either as server (see <xref
+        linkend="configurations-dialup-server" />) or client (see
+        <xref linkend="configurations-dialup-client" />).
     </para>
-
-    </sect2>
-
-    <sect2 id="configurations-dialup-modem-config">
-    <title>Configuring Modem Device</title>
-
-    <para>
-        Once the modem hardware has been installed in the computer, it
-        is necessary to determine what device location the operating
-        system assigned to it, so you can instruct applications like
-        <application>chat</application> the correct device they will
-        to talk to.  This configuration process has been greatly
-        simplified thanks to the <command>wvdialconf</command>
-        command, distributed with the <package>wvdial</package>
-        package.
-    </para>
-    
-    <sect3 id="configurations-dialup-modem-config-wvdial">
-    <title>The <command>wvdialconf</command> Command</title>
-
-    <para>
-        The <command>wvdialconf</command> automatically detects the
-        location the operating system assigned to your modem, its
-        maximum baud rate, a good initialization string for it, and
-        generates/updates the <command>wvdial</command> configuration
-        file (<filename>/etc/wvdial.conf</filename>) the
-        <command>wvdial</command> command needs to work. To set the
-        modem configuration through <command>wvdialconf</command>
-        command, run the command as follows:
-    </para>
-
-    <screen>sudo /usr/bin/wvdialconf /etc/wvdial.conf</screen>
-    
-    <para>
-        This command will produce an output like the following:
-    </para>
-
-<screen>
-Scanning your serial ports for a modem.
-
-ttyS0&lt;*1&gt;: ATQ0 V1 E1 -- failed with 2400 baud, next try: 9600 baud
-ttyS0&lt;*1&gt;: ATQ0 V1 E1 -- failed with 9600 baud, next try: 115200 baud
-ttyS0&lt;*1&gt;: ATQ0 V1 E1 -- and failed too at 115200, giving up.
-Port Scan&lt;*1&gt;: S1   S2   S3   
-WvModem&lt;*1&gt;: Cannot get information for serial port.
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 -- OK
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 Z -- OK
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 -- OK
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 -- OK
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 -- OK
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0 -- OK
-ttyACM0&lt;*1&gt;: Modem Identifier: ATI -- LT V.90 1.0 MT5634ZBA-USB
-Data/Fax Modem (Dual Config) Version 5.18e
-ttyACM0&lt;*1&gt;: Speed 4800: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 9600: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 19200: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 38400: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 57600: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 115200: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 230400: AT -- OK
-ttyACM0&lt;*1&gt;: Speed 460800: AT -- OK
-ttyACM0&lt;*1&gt;: Max speed is 460800; that should be safe.
-ttyACM0&lt;*1&gt;: ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0 -- OK
-
-Found an USB modem on /dev/ttyACM0.
-Modem configuration written to /etc/wvdial.conf.
-ttyACM0&lt;Info&gt;: Speed 460800; init "ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0"
-</screen>
-
-    <para>
-        and a <command>wvdial</command> configuration file like the
-        following:
-    </para>
-
-<screen>
-[Dialer Defaults]
-Modem = /dev/ttyACM0
-Baud = 460800
-Init1 = ATZ
-Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
-ISDN = 0
-Modem Type = USB Modem
-; Phone = &lt;Target Phone Number&gt;
-; Username = &lt;Your Login Name&gt;
-; Password = &lt;Your Password&gt;
-</screen>
-
-    <note>
-    <para>
-        It is possible to configure the same computer to act both as
-        server (i.e., to receive incoming calls from clients) and
-        client (i.e., to realize outgoing calls to servers). However,
-        be aware that only one of these connections can be established
-        at a time.
-    </para>
-    </note>
-
-    </sect3>
-
-    <sect3 id="configurations-dialup-modem-config-scn">
-    <title>The <command>system-config-network</command> Command</title>
-
-    <para>
-        Another way to configure modems installed in your computer is
-        through the graphical interface provided by
-        <command>system-config-network</command> command. This
-        interface may result specially useful when you need to
-        configure your computer to establish Modem connections to
-        remote Internet Service Providers (ISPs).  The interface
-        provided by <command>system-config-network</command> command
-        uses the same configuration file that
-        <command>wvdialconf</command> command does (e.g.,
-        <filename>/etc/wvdial.conf</filename>), however, there are
-        some differences in the way these commands create
-        configuration files that we need to be aware of.
-    </para>
-
-    <para>
-        If you don't have the <command>system-config-network</command>
-        command installed in your system, you can run the following
-        command to install it:
-    </para>
-
-    <screen></screen>
-
-    <para>
-        The interface provided by
-        <command>system-config-network</command> command doesn't
-        detect the configuration intially created by
-        <command>wvdialconf</command> command. In fact, if you set a
-        new (modem) hardware configuration through it, any
-        configuration previously created by
-        <command>wvdailconf</command> command will be lost. On the
-        other hand, if you firstly generate the configuration file
-        using the interface provided by
-        <command>system-config-network</command> command and later run
-        the <command>wvdialconf</command> command over it, you will
-        end up having two similar configuration settings under
-        different definitions stored in the same configuration file.
-    </para>
-
-    <note>
-    <para>
-        The <command>wvdial</command> command doesn't understand the
-        configuration file produced by
-        <command>system-config-network</command> command, even both
-        <command>wvdialconf</command> and
-        <command>system-config-network</command> commands use the same
-        configuration syntax to create the configuration file.
-    </para>
-    </note>
-
-    <para>
-        Inside the <filename>/etc/wvdial.conf</filename> configuration
-        file, the interface provided by
-        <command>system-config-network</command> identifies default
-        modem configurations through the <code>[Modem0]</code> line,
-        while the <command>wvdialconf</command> command does the same
-        through the <code>[Dialer Defaults]</code> line. Something
-        interesting about the configuration file created by
-        <command>system-config-network</command> is that it is
-        possible to create several ISP configurations that reuse
-        default settings in the <code>[Modem0]</code> section. For
-        example, consider the following example:
-    </para>
-
-<screen>
-[Modem0]
-Modem = /dev/ttyACM0
-Baud = 460800
-SetVolume = 2
-Dial Command = ATDT
-Init1 = ATZ
-Init3 = ATM1L2
-FlowControl = CRTSCTS
-[Dialer Vispa_Internet]
-Username = signup
-Password = rebel
-Phone = 08453080125
-Stupid Mode = 1
-Init1 = ATZ
-Init2 = ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0
-Inherits = Modem0
-</screen>
-
-    <caution>
-    <para>
-        The interface provided by
-        <command>system-config-network</command> command doesn't
-        provide modem detection (as <command>wvdialconf</command>
-        command would do) and uses the <filename>/dev/modem</filename>
-        as default location. This location doesn't exists by default,
-        so whatever configuration you set from it will not work. To
-        solve this issue, chose one of the following workarounds: 
-    </para>
-    <itemizedlist>
-    <listitem>
-    <para>
-        Replace the <filename>/dev/modem</filename> location by that
-        one <command>wvdialconf</command> found when the interface
-        provided by <command>system-config-network</command> ask you
-        to enter the modem device.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        Create <filename>/dev/modem</filename> location as a symbolic
-        link to that location found by <command>wvdialconf</command>
-        command. For example:
-        <screen>sudo /bin/ln -s /dev/ttyACM0 /dev/modem</screen>
-    </para>
-    </listitem>
-    </itemizedlist>
-    </caution>
-
-    </sect3>
-
-    </sect2>
 
 </sect1>
