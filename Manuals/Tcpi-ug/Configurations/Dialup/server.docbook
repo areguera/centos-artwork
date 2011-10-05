@@ -11,7 +11,7 @@
     </para>
 
     <sect3 id="configurations-dialup-server-install-ppp">
-    <title>Ppp Server</title>
+    <title>Installing Ppp Server</title>
     <para>
         The ppp server provides the software required to establish and
         maintain a PPP link with another system and negociate Internet
@@ -23,7 +23,7 @@
     </sect3>
 
     <sect3 id="configurations-dialup-server-install-dns">
-    <title>Name Server</title>
+    <title>Installing Name Server</title>
     <para>
         The name server provides the software required to translate
         domain names into IP address and IP addresses into domain
@@ -47,7 +47,7 @@
     </sect3>
 
     <sect3 id="configurations-dialup-server-install-mail">
-    <title>Mail Server</title>
+    <title>Installing Mail Server</title>
     <para>
         The mail server provides the software required to let you
         send/receive e-mail messages to/from others. The mail server
@@ -62,10 +62,18 @@
         where your mailbox is stored in).  The authentication daemon
         is used by the mail delivery agent to authenticate user's
         credentials (e.g., the information that let you access an
-        specific mailbox). 
+        specific mailbox). The authentication daemon can also be used
+        by the mail transfer agent to authenticate users before
+        sending mail to it, however, that is not set in this
+        configuration (i.e., the mail transfer agent will receive mail
+        from all its interfaces which are sent either to <systemitem
+        class="fqdomainname">example.com</systemitem> domain name or
+        <systemitem
+        class="fqdomainname">server.example.com</systemitem> host
+        name).
     </para>
 
-    <screen>yum install postfix cyrus-imapd cyrus-sasl</screen>
+    <screen>yum install postfix cyrus-{imapd{,-utils},sasl{,-ldap,-md5,-plain}}</screen>
 
     <para>
         By default, the <application>sendmail</application>
@@ -106,7 +114,7 @@
     <itemizedlist>
     <listitem>
     <para>
-        <ulink url="https://server.example.com/lists/" />
+        <ulink url="https://example.com/lists/" />
     </para>
     </listitem>
     </itemizedlist>
@@ -115,7 +123,7 @@
     </sect3>
 
     <sect3 id="configurations-dialup-server-install-web">
-    <title>Web Server</title>
+    <title>Installing Web Server</title>
     <para>
         The web server provides the software required to support web
         interfaces like those one previously mention to register new
@@ -140,7 +148,7 @@
 
     <sect3 id="configurations-dialup-server-install-ldap">
 
-    <title>Directory Server</title>
+    <title>Installing Directory Server</title>
 
     <para>
         The directory server provides the software required to unify
@@ -161,8 +169,603 @@
     <sect2 id="configurations-dialup-server-config">
     <title>Configuring Server Computer</title>
     <para>
+        Once all required packages have been installed inside the
+        server computer, it is time to configure them. This section
+        describes how to configure the server computer to provide a
+        public mail system.
+    </para>
+
+    <sect3 id="configurations-dialup-server-install-network">
+    <title>Configuring Network Internface</title>
+    <variablelist>
+    <varlistentry>
+    <term><filename>/etc/sysconfig/network-scripts/ifcfg-eth0</filename></term>
+    <listitem>
+<screen>
+# Please read /usr/share/doc/initscripts-*/sysconfig.txt
+# for the documentation of these parameters.
+TYPE=Ethernet
+DEVICE=eth0
+HWADDR=00:1c:c0:f0:aa:05
+BOOTPROTO=none
+NETMASK=255.255.255.0
+IPADDR=192.168.0.1
+ONBOOT=yes
+USERCTL=no
+IPV6INIT=no
+PEERDNS=yes
+</screen>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    </sect3>
+
+    <sect3 id="configurations-dialup-server-config-ppp">
+    <title>Configuring Ppp Server</title>
+    <para>
+        This configuration specifies the way the server computer will
+        handle incoming dial-up connections. 
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term><filename>/etc/ppp/options</filename></term>
+    <listitem>
+<screen>
+# Set  the  name of the local system for authentication purposes to
+# name.  This is a privileged option.  With this option, pppd will use
+# lines in the secrets files which have name as the second field when
+# looking  for a secret to use in authenticating the peer.  In
+# addition, unless overridden with the user option, name will be used
+# as the name to send to the peer when authenticating the local system
+# to the peer.  (Note that pppd does not append the domain name to
+# name.)
+name "server.example.com"
+
+# Require the peer to authenticate itself before allowing network
+# packets to be sent or received. This option is the default if the
+# system has a default route. If neither this option nor the noauth
+# option is specified, pppd will only allow the peer to use IP
+# addresses to which the system does not already have a route.
+auth
+
+# Specifies that pppd should create a UUCP-style lock file for the
+# serial device to ensure exclusive access to the device. By default,
+# pppd will not create a lock file.
+lock
+
+# If pppd is acting as a server for Microsoft Windows clients, this
+# option allows pppd to supply one  or  two DNS (Domain Name Server)
+# addresses to the clients.  The first instance of this option
+# specifies the primary DNS address; the second instance (if given)
+# specifies the secondary DNS address.  (This option was  present in
+# some older versions of pppd under the name dns-addr.)
+ms-dns 192.168.0.1
+
+# Allow peers to connect from the given telephone number.  A trailing
+# ‘*’ character will  match  all  numbers beginning with the leading
+# part.  Notice that this option (allow-number) is useful only to
+# incoming calls.  When you want to realize an outgoing call, this
+# restrictions must be commentted out. 
+##### centos-pppd-admin will overwrite this part!!! (begin) #####
+##### centos-pppd-admin will overwrite this part!!! (end) #####
+
+# Enable connection debugging facilities. If this option is given,
+# pppd will log the contents of all control packets sent or received
+# in a readable form. The packets are logged through syslog with
+# facility daemon and level debug. This information can be directed to
+# a file by 
+# setting up /etc/syslog.conf appropriately (see syslog.conf(5)).
+debug
+
+# Terminate the connection when it has been available for  network
+# traffic for 900 seconds (i.e. 15 minutes after the first network 
+# control protocol comes up).
+maxconnect 900
+
+# Specifies that pppd should disconnect if the link is idle for 60
+# seconds (e.g., 1 minute). The link is idle when no data packets (i.e. 
+# IP packets) are being sent or received. Note: it is not advisable 
+# to use this option with the persist option without the demand 
+# option. If the active-filter option is given, data packets which are 
+# rejected by the specified activity filter also count as the link 
+# being idle.
+idle 60
+</screen>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>/etc/ppp/cha-secrets</filename></term>
+    <term><filename>/etc/ppp/pap-secrets</filename></term>
+    <listitem>
+<screen>
+# client        server  secret                  IP addresses
+
+# Specify the client configuration. This is when this manchine calls
+# someone's else machine and tries to establish a point-to-point
+# connection. Most of this configuration is handled by the
+# `system-config-network' utility.
+#
+####### redhat-config-network will overwrite this part!!! (begin) ##########
+####### redhat-config-network will overwrite this part!!! (end) ############
+
+# Specify the server configuration. This is when someone's else
+# machine calls this machine trying to establish a point-to-point
+# connection.  This part of the configuration isn't handled by
+# `system-config-network' utility. To prenvent this configuration to
+# be lost the next time the `system-config-network' utility be used,
+# be sure to have this configuration backed up somewhere so it can be
+# resotred in such situations.
+#
+"client.example.com"     "server.example.com"   "mail4u" "192.168.0.2"
+</screen>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    </sect3>
+
+    <sect3 id="configurations-dialup-server-config-dns">
+    <title>Configuring Name Server</title>
+
+    <variablelist>
+    <varlistentry>
+    <term><filename>/etc/named.conf</filename></term>
+    <listitem>
+<screen>
+# BIND DNS server 'named' configuration file for the Red Hat BIND
+# distribution. This file was initially taken from
+# `/usr/share/doc/bind-*/samples/named.conf' file and modified to fit
+# this server's needs.
+#
+# This machine exists to develop The CentOS Project Corporate Identity
+# through The CentOS Artwork Repository. Presently, this machine is
+# isolated from Internet. However, a modem has been attached[1] and
+# configured so people can establish point-to-point connections to
+# this machine and download working copies of The CentOS Artwork
+# Repository and help me to develop it. 
+#
+# In this configuration there are only two IP addresses involved. The
+# one used in this server (192.168.0.1) and another for the client who
+# realize the point-to-point connection (192.168.0.2). This server is
+# named `server.example.com' and the client `client.example.com' or
+# something similar.
+# --------------------------------------------------------------------
+# See the BIND Administrator's Reference Manual (ARM) for details, in:
+#   file:///usr/share/doc/bind-*/arm/Bv9ARM.html
+#
+# Also see the BIND Configuration GUI: 
+#   /usr/bin/system-config-bind and its manual.
+# --------------------------------------------------------------------
+
+options {
+
+        # Those options should be used carefully because they disable port
+        # randomization.
+        // query-source         port 53;        
+        // query-source-v6      port 53;
+
+        # Put files that named is allowed to write in the data/ directory:
+        directory               "/var/named"; // the default
+        dump-file               "data/cache_dump.db";
+        statistics-file         "data/named_stats.txt";
+        memstatistics-file      "data/named_mem_stats.txt";
+};
+
+logging {
+
+        # If you want to enable debugging, eg. using the 'rndc trace'
+        # command, named will try to write the 'named.run' file in the
+        # $directory (/var/named).  By default, SELinux policy does not
+        # allow named to modify the /var/named directory, so put the
+        # default debug log file in data/ :
+        channel default_debug {
+                file            "data/named.run" versions 5 size 20m;
+                severity        dynamic;
+        };
+};
+
+# All BIND 9 zones are in a "view", which allow different zones to be
+# served to different types of client addresses, and for options to be
+# set for groups of zones.  By default, if named.conf contains no
+# "view" clauses, all zones are in the "default" view, which matches
+# all clients.  If named.conf contains any "view" clause, then all
+# zones MUST be in a view; so it is recommended to start off using
+# views to avoid having to restructure your configuration files in the
+# future.
+
+view "internal" {
+
+        # This view will contain zones you want to serve only to
+        # "internal" clients that connect via your directly attached LAN
+        # interfaces - "localnets".
+        match-clients           { 192.168.0/24; };
+        match-destinations      { 192.168.0/24; };
+        recursion               no;
+
+        # All views must contain the root hints zone. However, since this
+        # machine is disconnected from Internet it is not possible for it 
+        # to reach root servers. So, this line is commented based that no
+        # recursion is performed here.
+        //include "named.rfc1912.zones";
+
+        # These are your "authoritative" internal zones, and would
+        # probably also be included in the "localhost_resolver" view
+        # above:
+        zone "example.com" IN { 
+                type master;
+                file "example.com.zone";
+                allow-update { none; }; 
+        };
+
+        zone "0.168.192.in-addr.arpa" IN { 
+                type master; 
+                file "example.com.rr.zone"; 
+                allow-update { none; }; 
+        };
+};
+
+# The localhost_resolver is already configured in `/etc/hosts' and set 
+# as first choise in `/etc/hosts.conf' file. However, if you change 
+# the order in `/etc/hosts.conf' file to make bind the first choise,
+# then you need to include here the localhost_resolver in order to 
+# resolve localhost (127.0.0.1) address.
+
+key "rndckey" {
+        algorithm hmac-md5;
+        secret "JjsCg0VcCjZILGD8FR9nnw==";
+};
+
+controls { 
+        inet 127.0.0.1 port 953 
+        allow { 127.0.0.1; } keys { "rndckey"; };
+};
+</screen>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>/var/named/example.com.zone</filename></term>
+    <listitem>
+<screen>
+$ORIGIN example.com.
+$TTL    86400
+@               IN SOA  example.com. hostmaster.example.com. (
+                                        2011100404      ; serial (d. adams)
+                                        3H              ; refresh
+                                        15M             ; retry
+                                        1W              ; expiry
+                                        1D )            ; minimum
+
+                IN NS           dns.example.com.
+                IN MX 10        mail.example.com.
+
+server          IN A            192.168.0.1
+client          IN A            192.168.0.2
+
+dns             IN CNAME        server
+mail            IN CNAME        server
+www             IN CNAME        server
+</screen>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>/var/named/example.com.rr.zone</filename></term>
+    <listitem>
+<screen>
+$ORIGIN 0.168.192.in-addr.arpa.
+$TTL    86400
+@               IN SOA  example.com. hostmaster.example.com. (
+                                        2011100405      ; serial (d. adams)
+                                        3H              ; refresh
+                                        15M             ; retry
+                                        1W              ; expiry
+                                        1D )            ; minimum
+
+                IN NS           192.168.0.1
+
+1               IN PTR          server.example.com.
+2               IN PTR          client.example.com.
+</screen>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><filename>/etc/rndc.conf</filename></term>
+    <listitem>
+<screen>
+include "/etc/rndc.key";
+options {
+        default-key "rndckey";
+        default-server 127.0.0.1;
+        default-port 953;
+};
+</screen>
+    </listitem>
+    </varlistentry>
+    
+    <varlistentry>
+    <term><filename>/etc/rndc.key</filename></term>
+    <listitem>
+<screen>
+key "rndckey" {
+        algorithm hmac-md5;
+        secret "JjsCg0VcCjZILGD8FR9nnw==";
+};
+</screen>
+    <para>
+        When configuring <command>rndc</command> controls, don't use
+        the same secret shown in the example above. If you do so, the
+        secret information will not be a secret anymore (since we
+        already used it here). Instead, use the
+        <command>rndc-genconf</command> command to generate a new one,
+        and be sure it be placed correctly both in
+        <filename>/etc/rndc.conf</filename> and
+        <filename>/etc/named.conf</filename> configuration files.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><filename>/etc/resolv.conf</filename></term>
+    <listitem>
+    <screen>nameserver 192.168.0.1</screen>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><filename>/etc/host.conf</filename></term>
+    <listitem>
+    <screen>order hosts,bind</screen>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        At this point you can start the named service and realize some
+        tests to verify the named service is certainly working as
+        expected. For example, consider the the following two
+        commands:
+    </para>
+
+<screen>
+[root@server ~]# service named start
+Starting named:                                            [  OK  ]
+[root@server ~]# dig example.com mx
+
+; &lt;&lt;&gt;&gt; DiG 9.3.6-P1-RedHat-9.3.6-4.P1.el5_4.2 &lt;&lt;&gt;&gt; example.com mx
+;; global options:  printcmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 3540
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;example.com.                    IN      MX
+
+;; ANSWER SECTION:
+example.com.             86400   IN      MX      10 mail.example.com.
+
+;; AUTHORITY SECTION: 
+example.com.             86400   IN      NS      dns.example.com.
+
+;; Query time: 0 msec
+;; SERVER: 192.168.0.1#53(192.168.0.1)
+;; WHEN: Wed Oct  5 10:33:24 2011
+;; MSG SIZE  rcvd: 67
+</screen>
+
+    <para>
+        If everything is ok, configure the named service to start at
+        boot time:
+    </para>
+
+    <screen>chkconfig --level 345 named on</screen>
+
+    <para>
+        If something goes wrong, look for <systemitem
+        class="daemon">named</systemitem> daemon entries inside the
+        <filename>/var/log/messages</filename> file to know what is
+        going on. When you are configuring the name server, it could
+        result useful to you keeping an always visible terminal,
+        running the following command on it: 
+    </para>
+
+    <screen>grep named /var/log/messages | tail -f -</screen>
+
+    </sect3>
+
+    <sect3 id="configurations-dialup-server-config-mta">
+    <title>Configuring Mail Server (MTA)</title>
+    <para>
+        Based on default configuration provided by Postfix RPM inside
+        &TCD; (release 5.5), look for the following options and leave
+        the rest as is.
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><filename>/etc/postfix/main.cf</filename></term>
+    <listitem>
+<screen>
+myhostname = server.example.com
+mydomain = example.org
+inet_interfaces = $myhostname, localhost
+mynetworks = 192.168.0.0/24, 127.0.0.0/8
+mailbox_transport = lmtp:unix:/var/lib/imap/socket/lmtp
+local_destination_recipient_limit = 300
+local_destination_concurrency_limit = 5
+</screen>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    </sect3>
+
+    <sect3 id="configurations-dialup-server-config-mda">
+    <title>Configuring Mail Server (MDA)</title>
+    <variablelist>
+    <varlistentry>
+    <term><filename>/etc/cyrus.conf</filename></term>
+    <listitem>
+    <para>
+        Leave it as is. There is nothing to touch here for a small and
+        basic configuration like that one we are implementing in this
+        chapter.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><filename>/etc/imapd.conf</filename></term>
+    <listitem>
+    <para>
+        Leave it as is. There is nothing to touch here for a small and
+        basic configuration like that one we are implementing in this
+        chapter.
+    </para>
+    <para>
+        The initial configuration of Cyrus IMAP server is set to use
+        PLAIN authentication mechanisim (see
+        <option>sasl_mech_list</option> option) against <systemitem
+        class="daemon">saslauthd</systemitem> daemon. This makes the
+        password information to be vulnerable for man in the middle
+        attacks. In order to protect the user authentication, you can
+        use other authentication mechanisms like CRAM-MD5 or
+        DIGEST-MD5 in the e-mail client in order to send the password
+        information encrypted. Another solution would be to create an
+        encrypted channel for communication between the e-email client
+        and Cyrus IMAP server by mean of SSL encryption.
+    </para>
+    <para>
+        When you use authentication mechanisms that encrypt user
+        information before passing them to saslauthd daemon (e.g.,
+        DIGETS-MD5), you are protecting your data in the e-mail
+        client before passing it to saslauthd daemon. Therefore, when
+        the <systemitem class="daemon">saslauthd</systemitem> daemon
+        tries to validate the credentials you passed in against PAM,
+        it fails.  At my personal understanding,  this happens becase
+        PAM must receive the user information as it was entered by the
+        user (i.e., plainly, without any encryption) in order to
+        realize the verification against the system default
+        authentication database (e.g.,
+        <filename>/etc/passwd</filename>,
+        <filename>/etc/shadow</filename>), and <systemitem
+        class="daemon">saslauthd</systemitem> daemon is passing an
+        encrypted version of the plain user information which
+        obviously cannot match the hash produced by plain user
+        information in first place.
+    </para>
+
+    <para>
+        One alternative to the situation mentioned above could be to
+        use PLAIN authentication mechanism over an SSL encrypted
+        communication or excluding PAM mechanism from saslauthd
+        daemon, and use LDAP mechanism instead.  When LDAP mechanism
+        is used as default authentication mechanism inside saslauthd
+        daemon, it is possible for e-mail clients to send encrypted
+        passwords to saslauthd daemon. In this configuration, the
+        password stored in LDAP server must be encrypted using the
+        same algorithm used to send the encrypted password from e-mail
+        client to saslauthd daemon. Therefore, you need to force the
+        user to use just one authentication mechanism, that one used
+        to stored encrypted passwords inside the LDAP server.
+        Otherwise, it would be very difficult to authenticate users
+        that send passwords encrypted in a way different to that one
+        stored in the LDAP server.
+    </para>
+
+    <para>
+        Another configuration could be to keep e-mail clients using
+        PLAIN authentication over an SSL connection against saslauthd
+        daemon, and saslauthd using a PAM. But this time, PAM would be
+        configured to extend its default system authentication by
+        using an LDAP server. This way, it would be possible to
+        isolate user accound administration and greatly control the
+        kind of information a user might have. For example, the root
+        user account would be in the system default authentication,
+        however all service-specific user information would be in the
+        LDAP server. This permits us to create a web application that
+        interact with LDAP server in order to manage service-specific
+        user information only avoiding any contant with system default
+        authentication, the place where the root user is stored in. In
+        this PAM configuration, the first match that fails means that
+        the whole authentication process fails.
+    </para>
+
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><filename>/etc/pki/cyrus-imapd/cyrus-imapd.pem</filename></term>
+    <listitem>
+    <para>
+        This file is a symbolic link to
+        <filename>/etc/pki/tls/certs/cyrus-imapd.pem</filename>. This
+        file contains a self-generated SSL certificate you probably
+        want to update for setting your host name in the <quote>Common
+        Name</quote> field of it. To create this file use the
+        following command:
+    </para>
+    <screen>openssl req -new -x509 -nodes -out /etc/pki/tls/certs/cyrus-imapd.pem -keyout /etc/pki/tls/certs/cyrus-imapd.pem -days 365</screen>
+
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        To initiate the Cyrus IMAP server, run the following command:
+    </para>
+
+    <screen>service cyrus-imapd start</screen>
+
+    <para>
+        In case something fails, look into the
+        <filename>/var/log/maillog</filename> file, specifically those
+        entries containing <code>imap</code>, <code>pop</code>,
+        <code>nntp</code> and <code>cyrus</code> strings. It could be
+        useful if, before initiating Cyrus IMAP server, you open a
+        terminal and run the following command in it, just to see what
+        is happening once Cyrus IMAP server is initiated:
+    </para>
+
+    <screen>egrep '(cyrus|imap|pop)' /var/log/maillog | tail -f -</screen>
+
+    <para>
+        Later, to test the <code>STARTTLS</code> negociation, you can
+        run the following command:
+    </para>
+
+    <screen>imtest -t "" server.example.com</screen>
+
+    <para>
+        To administer mailboxes inside Cyrus Imapd, set a password to
+        cyrus user (e.g., <command>passwd cyrus</command>), do login
+        with it, and connect to Cyrus IMAP server using the
+        <command>cyradm</command> command, as shown below:
+    </para>
+
+    <screen>cyradm --user=cyrus --auth=login localhost</screen>
+
+    </sect3>
+
+    <sect3 id="configurations-dialup-server-config-sasl">
+    <title>Configuring Mail Server (SASL)</title>
+    <para>
         ...
     </para>
+    </sect3>
+    
+    <sect3 id="configurations-dialup-server-config-web">
+    <title>Configuring Web Server</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
+    <sect3 id="configurations-dialup-server-config-ldap">
+    <title>Configuring Directory Server</title>
+    <para>
+        ...
+    </para>
+    </sect3>
+
     </sect2>
 
 </sect1>
