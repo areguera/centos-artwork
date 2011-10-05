@@ -5,6 +5,23 @@
     <sect2 id="configurations-dialup-server-install">
     <title>Installing Server Computer</title>
 
+    <para>
+        Start with a minimal installation of &TCD;, bootup the
+        operating system, and login as root user. 
+    </para>
+
+    <sect3 id="configurations-dialup-server-install-ppp">
+    <title>Ppp Server</title>
+    <para>
+        The ppp server provides the software required to establish and
+        maintain a PPP link with another system and negociate Internet
+        Protocol addresses for each end of the link.
+    </para>
+
+    <screen>yum install ppp</screen>
+
+    </sect3>
+
     <sect3 id="configurations-dialup-server-install-dns">
     <title>Name Server</title>
     <para>
@@ -17,9 +34,6 @@
         delegation, etc.) provided by this software that aren't used
         in the point-to-point configuration we describe in this
         chapter.
-    </para>
-    <para>
-        To install this software, run the following command:
     </para>
     <screen>yum install bind</screen>
     <note>
@@ -49,10 +63,6 @@
         is used by the mail delivery agent to authenticate user's
         credentials (e.g., the information that let you access an
         specific mailbox). 
-    </para>
-
-    <para>
-        To install this software, run the following command:
     </para>
 
     <screen>yum install postfix cyrus-imapd cyrus-sasl</screen>
@@ -101,11 +111,6 @@
     </listitem>
     </itemizedlist>
     
-    <para>
-        To install the mailing list software, run the following
-        command:
-    </para>
-
     <screen>yum install mailman</screen>
     </sect3>
 
@@ -126,8 +131,8 @@
         provide access to Subversion.  Subvesion provides a way to
         manage files through version control. The main purpose of
         providing Subversion support here is sharing the version of
-        &TCAR; I've been working on. To install Subversion software,
-        run the following command: </para>
+        &TCAR; I've been working on.
+    </para>
 
     <screen>yum install subversion mod_dav_svn</screen>
 
@@ -146,11 +151,6 @@
         by the web interface the ISP provides, or any application your
         workstation provide (e.g., most e-mail clients provide a way
         to configure LDAP servers to build address book from it.).
-    </para>
-
-    <para>
-        To install the directory server sofware, run the following
-        command:
     </para>
 
     <screen>yum openldap-servers python-ldap</screen>
