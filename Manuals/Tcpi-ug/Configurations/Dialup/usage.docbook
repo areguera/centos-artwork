@@ -8,9 +8,8 @@
         the telephone line. In this configuration, we (the poeple
         building the infrastructure) provide the information you (the
         person using the infrastructure) need to know in order to
-        establish a point-to-point connection from your client
-        computer to the server computer through the telephone line.
-    </para>
+        establish a point-to-point connection from the client computer
+        to the server computer through the telephone line.  </para>
 
     <para>
         The infrastructure described in this chapter is made available
@@ -18,7 +17,7 @@
         maintaining it costs both money and time. For example, for
         each hour the server computer is on production there is an
         electrical consume that need to be paid every month.
-        Likewise, each call that you establish from your client
+        Likewise, each call that you establish from the client
         computer to the server computer will cost you money, based on
         the location you made the call from and the time you spend
         connected.
@@ -30,122 +29,117 @@
         interchange system.
     </para>
 
-    <sect2 id="configurations-dialup-usage-conn">
-    <title>Establishing Dial-Up Connections</title>
-
-    <para>
-        To establish a dial-up connection to the server computer you
-        need to install and configure a Modem device in your client
-        computer.  Each operating system has its own way of doing
-        this, but if you are using &TCD;, you can use the
-        <command>wvdialconf</command> and
-        <command>system-config-network</command> commands, as
-        described in <xref linkend="configurations-dialup-modem" />.
-    </para>
-
-    <para>
-        In the configuration process you need to enter the following
-        information:
-    </para>
-
-<screen>
- ISP Name: server.example.com
-ISP Phone: +53043515094
- Username: client.example.com
- Password: mail4u
-</screen>
-
-    </sect2>
-
     <sect2 id="configurations-dialup-usage-connlimits">
     <title>Administering Dial-Up Connections</title>
 
     <para>
         The lifetime of dial-up connections must be limitted based on
         the number of users you expect to establish connection and the
-        kind of services you plan to provide. Using the information
-        described in <xref linkend="configurations-dialup-server" />
-        as reference, the lifetime of dial-up connections will be 15
-        minutes from the moment they were established on. Likewise,
-        once the connection has been established, if the link is idle
-        for 1 minute, the server computer will close the connection to
-        free the telephone line for others to use.
+        kind of services you plan to provide. The mail service
+        provided by the server computer is conceived as a public
+        service so anyone with a modem attached to a computer would be
+        able to have access to it.  However, due to hardware
+        limitations, only 100 users will be allowed to be registered
+        in the public mail service. Based on this information, the
+        lifetime of established connections will be of 15 minutes from
+        the established moment on. Once the connection has been
+        established, if the link is idle for 1 minute, the server
+        computer will close the established connection to free the
+        telephone line.  This control can be implemented through the
+        <option>maxconnect</option> and <option>idle</option> options
+        inside the <application>pppd</application>'s configuration
+        file.
     </para>
 
     <para>
-        The number of consecutive connections realized from the same
-        telephone number in a fixed period of time must be also
-        controlled in order to reduce Denial of Service (DoS) attacks.
-        This way, you can consider an environment where: more than 3
-        consecutive connections (that last 15 or less minutes each)
-        from the same telephone number in a time range of 60 minutes
-        will be taken as a DoS attack from the client computer.  In
-        such cases, once the client computer is disconnected from
-        server computer, the telephone number originating the call
-        won't be able to establish any further connection to the
-        server computer in the next 15 minutes since the last it was
-        disconnected on.
+        Only registered user profiles will be able to establish connections
+        to the server computer.  This control can be implemented using
+        the <option>allow-number</option> option in the
+        <application>pppd</application>'s configuration file to define a
+        list of all telephone numbers that are allowed to establish
+        connection with the server computer, based on the list of
+        registered user profiles.  By default, all telephone numbers
+        are denied from establishing access with the server computer,
+        except those ones explicitly set by
+        <option>allow-number</option> option.  If the
+        <option>allow-number</option> option is not present in
+        <application>pppd</application>'s configuration file, all
+        telephone numbers are allowed to establish connection with the
+        server computer, so be sure to include the
+        <option>allow-number</option> option in
+        <application>pppd</application>'s configuration file if you
+        want to control who can/cannot establish connection with the
+        server computer.
     </para>
 
-    <note>
-    <para>
-        In order to achieve an acceptable degree of efficiency when
-        controlling consecutive connections from the same telephone
-        number, it is required that both the client's telephone number
-        and connection times (e.g., when the connection was opened,
-        and when it was closed) be registered somehow in the server
-        computer (e.g., Is it on pppd's log file?). Without such
-        information it would be very difficult to achieve any
-        prevention against DoS attacks originated from incoming calls.
-    </para>
-    </note>
+<screen>
+##### centos-pppd-config will overwrite this part!!! (begin) #####
+allow-number 12345
+allow-number 21345
+allow-number 34567
+##### centos-pppd-config will overwrite this part!!! (end) #####
+</screen>
 
     <para>
-        Another issue to consider here is that, in order to realize
-        any control over incoming telephone calls, it is required that
-        the client computer realizes a telepohne call into the server
-        computer to provide the telephone number information and that
-        certainly occupies the telephone line until the access control
-        actions take place. This could be used by evil users to
-        generate DoS attacks (e.g., by configuring a client computer
-        to redial the server computer telephone number forever), since
-        there is no way to control access at a Modem level without
-        occupying the telephone line for a few seconds at least. The
-        only change legitimate users have against such evil users'
-        attacks would be establish connection before them (e.g., in
-        the exact range of time between disconnection and redial).
+        The <application>centos-pppd-admin</application> application
+        must be considered part of user profile registration process
+        inside the server computer. The
+        <application>centos-pppd-admin</application> application would
+        be used to control the list of allowed telephone numbers
+        inside the <application>pppd</application>'s configuration
+        file, based on the list of user profiles. The
+        <application>centos-pppd-admin</application> application
+        should be executed after any registration/deletion action
+        against the list of user profiles with <systemitem
+        class="username">root</systemitem> privilages in order to be
+        able of writing the settings on
+        <application>pppd</application>'s configuration file.
     </para>
+
+    <para>
+        Redialing consecutive connections from the same telephone
+        number without any dealy between call retries must be avoided
+        from client computers. This would reduce the possibilities for
+        other client computers to establish connection with the server
+        computer. To prevent this issue from happening, it would be
+        necessary to provide more telephone lines than users
+        authorized to establish connection with the server computer.
+        Nevertheless, there is only one telephone line available for
+        the server computer to use.
+    </para>
+    
     </sect2>
 
     <sect2 id="configurations-dialup-usage-users">
     <title>Administering User Profiles</title>
 
     <para>
-        In order for a you to use any service provided by the server
-        computer it is required that you get registered a user profile
-        first. The user profile provides the user information required
-        by services inside the server computer (e.g., username,
-        password, e-mail address, telephone number, etc.). To register
-        new user profiles, you need to use the web application
-        provided by the server computer. For example, assuming the
-        domain name of the server computer is <systemitem
-        class="domainname">example.com</systemitem>, the URL of the
-        web application would be: <ulink
-        url="https://example.com/people/?action=register" />.
+        In order for you to use any service provided by the server
+        computer it is required that you register yourself inside the
+        server computer creating a user profile.  The user profile
+        provides the user information required by services inside the
+        server computer (e.g., username, password, e-mail address,
+        telephone number, etc.). To register new user profiles, you
+        need to use the web application provided by the server
+        computer. For example, assuming the domain name of the server
+        computer is <systemitem
+        class="domainname">example.com</systemitem>, the web
+        application would be accessable through the following URL:
+        <ulink url="https://example.com/people/?action=register" />.
     </para>
     
     <para>
         To reach the web interface, the first thing you need to do is
         establishing a dial-up connection to the server computer as
         described in <xref
-        linkend="configurations-dialup-usage-conn"/>. Once the dial-up
-        connection has been established, you need to open a web
-        browser (e.g., Firefox) and put the URL mentioned above in the
-        address space, and press Enter to go. This will present you a
-        list of instructions that will guide you through the
-        self-registration process. Other actions like updating or
-        deleting your user profile can be also achieved from this web
-        interface.
+        linkend="configurations-dialup-client-config-conn"/>. Once the
+        dial-up connection has been established, you need to open a
+        web browser (e.g., Firefox) and put the URL mentioned above in
+        the address space, and press Enter to go. This will present
+        you a web page with the instructions you need to follow in
+        order to register your user profile.  Other actions like
+        updating or deleting your own user profile should be also
+        possible from this web interface.
     </para>
 
     <important>
@@ -178,7 +172,7 @@ ISP Phone: +53043515094
     </sect2>
 
     <sect2 id="configurations-dialup-usage-scope">
-    <title>Determining Information Scope</title>
+    <title>Administering Services</title>
 
     <para>
         The information generated inside the server computer is
@@ -190,15 +184,11 @@ ISP Phone: +53043515094
         <ulink url="http://www.google.com/">Google</ulink> or <ulink
         url="http://www.wikipedia.org/">Wikipedia</ulink> either. For
         this to happen, it is required an established connection
-        between the server computer we are configuring and the
-        Internet network we want those services in, but such
-        established connection isn't possible in the current
-        environment.
+        between the server computer you are establishing connection
+        through and the Internet network those services are available
+        in. Without that link, it is not possible to direct your
+        requests to those sites.
     </para>
-    </sect2>
-
-    <sect2 id="configurations-dialup-usage-services">
-    <title>Determining Provided Services</title>
 
     <para>
         The implementation of services that required persistent
@@ -206,8 +196,8 @@ ISP Phone: +53043515094
         be considered as a practical offer inside the server computer.
         Instead, only asynchronous services (e.g.,
         <application>e-mail</application>) will be supported. This
-        restriction is required to reduce the amount time demanded by
-        services. For example, consider an environment where you
+        restriction is required to reduce the amount of time demanded
+        by services. For example, consider an environment where you
         connect to the server computer for sending/receiving e-mails
         messages and then quickly disconnect from it to free the
         telephone line for others to use.  In this environment, there
@@ -234,7 +224,7 @@ ISP Phone: +53043515094
         downloaded to the client computer and removed from server
         computer. Based on the resources we have and the kind of link
         used by the client computer to connect the server computer,
-        using POP3 is prefered than IMAP. However both are made
+        using POP3 is rather prefered than IMAP. However both are made
         available.
     </para>
 
@@ -243,56 +233,56 @@ ISP Phone: +53043515094
         that you need to be connected to the server computer.  Once
         the connection is lost you won't be able to read your messages
         (unless your e-mail client possesses a feature that let you
-        reading messages off-line). Morover, you run the risk of get
-        your mailbox out of space. If your mailbox gets out of space,
-        new messages sent to you will not be deliver to your mailbox.
-        Instead, they will be deferred for about 5 days hoping you
-        free the space in your mailbox to deliver them. If you don't
-        free space within this period of time, e-mail messages sent to
-        you will be bounced back to their senders.
-    </para>
-
-    <para>
-        Otherwise, if you use POP3 protocol to read your mailbox, you
-        always keep your mailbox free to receive new e-mails messages
-        and keep them for you until the next time you establish
-        connection with the server computer and download them to your
-        client computer using your e-mail client.
+        reading messages off-line). Morover, you run the risk of
+        getting your mailbox out of space. If your mailbox gets out of
+        space, new messages sent to you will not be deliver to your
+        mailbox.  Instead, they will be deferred for a period of time
+        (e.g., about 5 days when using
+        <application>Postfix</application> defaults) hoping you to
+        free the space in your mailbox to deliver them.  If you don't
+        free space within this period of time, the deferred e-mails
+        will be bounced back to their senders and you will never see
+        them.  On the other hand, assuming you are using POP3 protocol
+        to read your mailbox, you always keep your mailbox free to
+        receive new e-mails messages and keep them for you until the
+        next time you establish connection with the server computer
+        and download them to your client computer using your e-mail
+        client.
     </para>
     </sect2>
 
-    <sect2 id="configuration-dialup-usage-diskspace">
-    <title>Determining Disk Space Usage</title>
+    <sect2 id="configurations-dialup-usage-diskspace">
+    <title>Administering Disk Space</title>
 
     <para>
-        Assuming you are providing a public service, it is required to
-        limit the maximum number of users registered inside the server
-        computer, based on the maximum disk space the server computer
-        confines to such purpose. For example, consider an environment
-        where users can get registered themselves using a web
-        interface which requires the web application to know how much
-        free space is available before proceeding to register new mail
-        accounts inside the server computer; this, to prevent user
-        registrations when there isn't enough free space to perform a
-        new user registration.  Considering the computer server has
-        confined 5GB of disk space to handle the mail service (e.g.,
-        mail queues, mailboxes, etc.), if we set 10MB for each user
-        account, it will be possible to provide self-registration
-        through the web interface for 500 users in total.
+        The maximum number of registered user profiles is limited
+        inside the server computer, based on the maximum disk space
+        the server computer confines to such purpose. For example,
+        consider an environment where users can get registered
+        themselves using a web interface. In this case the web
+        interface must know how much disk space is available before
+        proceeding to register new mail accounts inside the server
+        computer and this way preventing any disk writing when there
+        isn't enough free space on disk to perform a new user
+        registration.  Considering the server computer has confined
+        1GB of disk space to handle the mail service (e.g., mail
+        queues, mailboxes, etc.) and each user mailbox is 10MB, it
+        will be possible to provide self-registration through the web
+        interface for 100 users in total.
     </para>
 
     <para>
-        Another measure related to disk space saving might be to
-        remove unused user accounts and their related files (e.g.,
-        mailboxes) from the server computer. For example, consider an
-        environment where user accounts are automatically removed from
-        the server computer when they don't establish a connection
-        with the server computer in a period greater than 7 days since
-        the last valid connection established to the server computer.
-        Once the user account is removed, it is no longer functional
-        of course, and the person whom lost the account will need to
-        create a new one, assuming it want to have access back to the
-        mail service inside the server computer.
+        Another measure related to save disk space might be to remove
+        unused user accounts and their related files (e.g., mailboxes)
+        from the server computer. For example, consider an environment
+        where user accounts are automatically removed from the server
+        computer when they don't establish a connection with the
+        server computer in a period greater than 7 days since the last
+        valid connection established to the server computer.  Once the
+        user account is removed, it is no longer functional of course,
+        and the person whom lost the account will need to create a new
+        one, assuming it want to have access to the mail service
+        again.
     </para>
 
     </sect2>
