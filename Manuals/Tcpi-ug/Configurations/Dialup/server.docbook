@@ -50,23 +50,22 @@
     <title>Installing Mail Server</title>
     <para>
         The mail server provides the software required to let you
-        send/receive e-mail messages to/from others. The mail server
+        send/receive mail messages to/from others. The mail server
         is splitted in three basic components: The Mail Transfer Agent
-        (<package>postfix</package>), The Mail Delivery Agent
-        (<package>Cyrus-Imapd</package>) and an intermediary daemon
-        named <systemitem class="daemon">saslauthd</systemitem> to
-        handle users' authentication. The mail transfer agent is the
-        program your e-mail client sends e-mail messages to. The mail
-        delivery agent, on the other hand, is the program your e-mail
-        client reads e-mail message from (i.e., this is the place
-        where your mailbox is stored in).  The authentication daemon
-        is used by the mail delivery agent to authenticate user's
-        credentials (e.g., the information that let you access an
-        specific mailbox). The authentication daemon can also be used
-        by the mail transfer agent to authenticate users before
-        sending mail to it, however, that is not set in this
-        configuration (i.e., the mail transfer agent will receive mail
-        from all its interfaces which are sent either to <systemitem
+        (MTA), The Mail Delivery Agent (MDA) and an intermediary
+        daemon named <systemitem class="daemon">saslauthd</systemitem>
+        to handle user authentication. The MTA is the program your
+        mail client sends mail messages to. The MDA, on the other
+        hand, is the program your mail client reads mail message
+        from (i.e., this is the program that let you access your
+        mailbox).  The saslauthd daemon is used by the MDA to
+        authenticate user's credentials (e.g., the information that
+        let you access an specific mailbox) and by the MTA to
+        authenticate users before sending mail to it, however, in the
+        configuration we are implementing, the MTA doesn't require
+        that you authenticate to it in order to send mails through
+        it.  The MTA will listen on all network interfaces it is
+        attached to and will receive mail sent to <systemitem
         class="fqdomainname">example.com</systemitem> domain name or
         <systemitem
         class="fqdomainname">server.example.com</systemitem> host
@@ -101,9 +100,9 @@
 
     <para>
        In addition to mail server specific packages, we also provide
-       mailing list support. Mailing lists provide e-mail addresses
+       mailing list support. Mailing lists provide mail addresses
        that users registered inside the ISP can write to. When you
-       sed an e-mail to a mailing list, your message is distributed to
+       sed an mail to a mailing list, your message is distributed to
        all members of that list. In order for this to happen, people
        registered inside ISP need to subscribe themselves into that
        mailing list they want to receive messages from.  The
@@ -157,7 +156,7 @@
         also use this server from your workstation to retrive a list
         of all users registered in the ISP. This list can be retrived
         by the web interface the ISP provides, or any application your
-        workstation provide (e.g., most e-mail clients provide a way
+        workstation provide (e.g., most mail clients provide a way
         to configure LDAP servers to build address book from it.).
     </para>
 
@@ -629,7 +628,7 @@ local_destination_concurrency_limit = 5
         password information to be vulnerable for man in the middle
         attacks. In order to protect the user authentication, you can
         use other authentication mechanisms like CRAM-MD5 or
-        DIGEST-MD5 in the e-mail client in order to send the password
+        DIGEST-MD5 in the mail client in order to send the password
         information encrypted. Another solution would be to create an
         encrypted channel for communication between the e-email client
         and Cyrus IMAP server by mean of SSL encryption.
@@ -637,7 +636,7 @@ local_destination_concurrency_limit = 5
     <para>
         When you use authentication mechanisms that encrypt user
         information before passing them to saslauthd daemon (e.g.,
-        DIGETS-MD5), you are protecting your data in the e-mail
+        DIGETS-MD5), you are protecting your data in the mail
         client before passing it to saslauthd daemon. Therefore, when
         the <systemitem class="daemon">saslauthd</systemitem> daemon
         tries to validate the credentials you passed in against PAM,
@@ -660,10 +659,10 @@ local_destination_concurrency_limit = 5
         communication or excluding PAM mechanism from saslauthd
         daemon, and use LDAP mechanism instead.  When LDAP mechanism
         is used as default authentication mechanism inside saslauthd
-        daemon, it is possible for e-mail clients to send encrypted
+        daemon, it is possible for mail clients to send encrypted
         passwords to saslauthd daemon. In this configuration, the
         password stored in LDAP server must be encrypted using the
-        same algorithm used to send the encrypted password from e-mail
+        same algorithm used to send the encrypted password from mail
         client to saslauthd daemon. Therefore, you need to force the
         user to use just one authentication mechanism, that one used
         to stored encrypted passwords inside the LDAP server.
@@ -673,7 +672,7 @@ local_destination_concurrency_limit = 5
     </para>
 
     <para>
-        Another configuration could be to keep e-mail clients using
+        Another configuration could be to keep mail clients using
         PLAIN authentication over an SSL connection against saslauthd
         daemon, and saslauthd using a PAM. But this time, PAM would be
         configured to extend its default system authentication by
