@@ -87,6 +87,11 @@ function svg_convertPngToGrub {
         PREFIX="${PREFIX}-floyd"
     fi
 
+    # Define logs' file. Log files are stored in the same place of
+    # images and are used to store output information produced by
+    # programs when the image files are built up.
+    local LOGS=${FILE}${PREFIX}.log
+
     # Define absolute path to GPL palette.  This palettes should have
     # 14 colors only. For more information on this see the GRUB's
     # documentation.
@@ -113,7 +118,7 @@ function svg_convertPngToGrub {
     # used to manipulate images through Netpbm tools.
     cli_printMessage "${FILE}.pnm" --as-savedas-line
     pngtopnm -verbose \
-        < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
+        < ${FILE}.png 2>${LOGS} > ${FILE}.pnm
 
     # Print the path to GPL palette.
     cli_printMessage "$PALETTE_GPL" --as-palette-line
@@ -126,7 +131,7 @@ function svg_convertPngToGrub {
     # Floyd-Steinberg dithering in order to improve color reduction.
     cli_printMessage "${FILE}${PREFIX}.ppm" --as-savedas-line
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
-        < ${FILE}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
+        < ${FILE}.pnm 2>>${LOGS} > ${FILE}${PREFIX}.ppm
 
     # Remove PPM palette. It is no longer needed.
     if [[ -f ${PALETTE_PPM} ]];then
@@ -136,7 +141,7 @@ function svg_convertPngToGrub {
     # Create the 14 colors xpm.gz file.
     cli_printMessage "${FILE}${PREFIX}.xpm.gz" --as-savedas-line
     ppmtoxpm \
-        < ${FILE}${PREFIX}.ppm 2>>${FILE}.log > ${FILE}.xpm \
+        < ${FILE}${PREFIX}.ppm 2>>${LOGS} > ${FILE}.xpm \
         && gzip --force ${FILE}.xpm \
         && mv ${FILE}.xpm.gz ${FILE}${PREFIX}.xpm.gz
 
