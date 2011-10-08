@@ -97,6 +97,11 @@ function svg_convertPngToSyslinux {
         PREFIX="${PREFIX}-floyd"
     fi
 
+    # Define logs' file. Log files are stored in the same place of
+    # images and are used to store output information produced by
+    # programs when the image files are built up.
+    local LOGS=${FILE}${PREFIX}.log
+
     # Define absolute path to GPL palette. The GPL palette defines the
     # color information used to build syslinux images.  This palette
     # should be set to 16 colors and, as specified in isolinux
@@ -136,7 +141,7 @@ function svg_convertPngToSyslinux {
     # used to manipulate images through Netpbm tools.
     cli_printMessage "${FILE}.pnm" --as-savedas-line
     pngtopnm -verbose \
-        < ${FILE}.png 2>${FILE}.log > ${FILE}.pnm
+        < ${FILE}.png 2>${LOGS} > ${FILE}.pnm
 
     # Print the path to GPL palette.
     cli_printMessage "$PALETTE_GPL" --as-palette-line
@@ -152,30 +157,30 @@ function svg_convertPngToSyslinux {
     # Floyd-Steinberg dithering in order to improve color reduction.
     cli_printMessage "${FILE}${PREFIX}.pnm" --as-savedas-line
     pnmremap -verbose -mapfile=$PALETTE_PPM $OPTIONS \
-        < ${FILE}.pnm 2>> ${FILE}.log > ${FILE}${PREFIX}.pnm
+        < ${FILE}.pnm 2>> ${LOGS} > ${FILE}${PREFIX}.pnm
 
     # Create LSS16 image. 
     cli_printMessage "${FILE}${PREFIX}.lss" --as-savedas-line
     ppmtolss16 $(cat $PALETTE_HEX) \
-        < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.lss
+        < ${FILE}${PREFIX}.pnm 2>>${LOGS} > ${FILE}${PREFIX}.lss
      
     # Remove HEX palette. It is no longer needed.
     if [[ -f ${PALETTE_HEX} ]];then
         rm $PALETTE_HEX
     fi
 
-    # Create the PPM image indexed to 16 colors. Also the colormap
-    # used in the LSS16 image is saved on ${FILE}.log; this is useful to
+    # Create PPM image indexed to 16 colors. Also the colormap used in
+    # the LSS16 image is saved on ${FILE}.log; this is useful to
     # verify the correct order of colors in the image index.
     cli_printMessage "${FILE}${PREFIX}.ppm" --as-savedas-line
     lss16toppm -map \
-        < ${FILE}${PREFIX}.lss 2>>${FILE}.log > ${FILE}${PREFIX}.ppm
-      
-    # Create the 16 colors PNG image.
+        < ${FILE}${PREFIX}.lss 2>>${LOGS} > ${FILE}${PREFIX}.ppm
+
+    # Create PNG image indexed to 16 colors.
     cli_printMessage "${FILE}${PREFIX}.png" --as-savedas-line
-    pnmtopng -verbose -palette=$PALETTE_PPM \
-        < ${FILE}${PREFIX}.pnm 2>>${FILE}.log > ${FILE}${PREFIX}.png
-   
+    pnmtopng -verbose \
+        < ${FILE}${PREFIX}.pnm 2>>${LOGS} > ${FILE}${PREFIX}.png
+      
     # Remove PPM palette. It is no longer needed.
     if [[ -f ${PALETTE_PPM} ]];then
         rm $PALETTE_PPM
