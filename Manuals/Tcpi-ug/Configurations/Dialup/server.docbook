@@ -210,64 +210,76 @@ PEERDNS=yes
     <term><filename>/etc/ppp/options</filename></term>
     <listitem>
 <screen>
-# Set  the  name of the local system for authentication purposes to
-# name.  This is a privileged option.  With this option, pppd will use
-# lines in the secrets files which have name as the second field when
-# looking  for a secret to use in authenticating the peer.  In
-# addition, unless overridden with the user option, name will be used
-# as the name to send to the peer when authenticating the local system
-# to the peer.  (Note that pppd does not append the domain name to
-# name.)
-name "server.example.com"
+# Enforce the use of the hostname as the name of the local system for
+# authentication purposes (overrides the name option).
+usehostname
 
-# Require the peer to authenticate itself before allowing network
-# packets to be sent or received. This option is the default if the
-# system has a default route. If neither this option nor the noauth
-# option is specified, pppd will only allow the peer to use IP
-# addresses to which the system does not already have a route.
-auth
-
-# Specifies that pppd should create a UUCP-style lock file for the
-# serial device to ensure exclusive access to the device. By default,
-# pppd will not create a lock file.
-lock
-
-# If pppd is acting as a server for Microsoft Windows clients, this
-# option allows pppd to supply one  or  two DNS (Domain Name Server)
-# addresses to the clients.  The first instance of this option
-# specifies the primary DNS address; the second instance (if given)
-# specifies the secondary DNS address.  (This option was  present in
-# some older versions of pppd under the name dns-addr.)
+# Specify which DNS Servers the incoming Win95 or WinNT Connection
+# should use Two Servers can be remotely configured
 ms-dns 192.168.0.1
 
-# Allow peers to connect from the given telephone number.  A trailing
-# ‘*’ character will  match  all  numbers beginning with the leading
-# part.  Notice that this option (allow-number) is useful only to
-# incoming calls.  When you want to realize an outgoing call, this
-# restrictions must be commentted out. 
-##### centos-pppd-admin will overwrite this part!!! (begin) #####
-##### centos-pppd-admin will overwrite this part!!! (end) #####
-
-# Enable connection debugging facilities. If this option is given,
-# pppd will log the contents of all control packets sent or received
-# in a readable form. The packets are logged through syslog with
-# facility daemon and level debug. This information can be directed to
-# a file by 
-# setting up /etc/syslog.conf appropriately (see syslog.conf(5)).
+# Increase debugging level (same as -d). The debug output is written
+# to syslog LOG_LOCAL2.
 debug
 
-# Terminate the connection when it has been available for  network
-# traffic for 900 seconds (i.e. 15 minutes after the first network 
-# control protocol comes up).
-maxconnect 900
+# Require the peer to authenticate itself before allowing network
+# packets to be sent or received.  Please do not disable this setting.
+# It is expected to be standard in future releases of pppd. Use the
+# call option (see manpage) to disable authentication for specific
+# peers.
+#auth
 
-# Specifies that pppd should disconnect if the link is idle for 60
-# seconds (e.g., 1 minute). The link is idle when no data packets (i.e. 
-# IP packets) are being sent or received. Note: it is not advisable 
-# to use this option with the persist option without the demand 
-# option. If the active-filter option is given, data packets which are 
-# rejected by the specified activity filter also count as the link 
-# being idle.
+# Use hardware flow control (i.e. RTS/CTS) to control the flow of data
+# on the serial port.
+crtscts
+
+# Specifies that pppd should use a UUCP-style lock on the serial
+# device to ensure exclusive access to the device.
+lock
+
+# Use the modem control lines.
+modem
+
+# async character map -- 32-bit hex; each bit is a character that
+# needs to be escaped for pppd to receive it.  0x00000001 represents
+# '\x01', and 0x80000000 represents '\x1f'.  To allow pppd to work
+# over a rlogin/telnet connection, ou should escape XON (^Q), XOFF
+# (^S) and ^]: (The peer should use "escape ff".)
+#asyncmap  200a0000
+asyncmap 0
+
+# Set the interface netmask to &lt;n&gt;, a 32 bit netmask in "decimal dot"
+# notation (e.g. 255.255.255.0).
+netmask 255.255.255.0
+
+# Don't fork to become a background process (otherwise pppd will do so
+# if a serial device is specified).
+nodetach
+
+# Set the assumed name of the remote system for authentication
+# purposes to &lt;n&gt;.
+remotename client
+
+# If this option is given, pppd will send an LCP echo-request frame to
+# the peer every n seconds. Under Linux, the echo-request is sent when
+# no packets have been received from the peer for n seconds. Normally
+# the peer should respond to the echo-request by sending an
+# echo-reply.  This option can be used with the lcp-echo-failure
+# option to detect that the peer is no longer connected.
+lcp-echo-interval 30
+
+# If this option is given, pppd will presume the peer to be dead if n
+# LCP echo-requests are sent without receiving a valid LCP echo-reply.
+# If this happens, pppd will terminate the connection.  Use of this
+# option requires a non-zero value for the lcp-echo-interval
+# parameter.  This option can be used to enable pppd to terminate
+# after the physical connection has been broken (e.g., the modem has
+# hung up) in situations where no hardware modem control lines are
+# available.
+lcp-echo-failure 4
+
+# Specifies that pppd should disconnect if the link is idle for n
+# seconds.
 idle 60
 </screen>
     </listitem>
@@ -296,11 +308,22 @@ idle 60
 # be sure to have this configuration backed up somewhere so it can be
 # resotred in such situations.
 #
-"client.example.com"     "server.example.com"   "mail4u" "192.168.0.2"
+client     server   mail4u      192.168.0.2
+server     client   mail4u      192.168.0.1
 </screen>
     </listitem>
     </varlistentry>
     </variablelist>
+
+    <para>
+        To initiate <systemitem class="daemon">pppd</systemitem> (I
+        haven't tested this, yet.), run the following command when the
+        incoming call you want <systemitem
+        class="daemon">pppd</systemitem> to answer has arrived to your
+        modem device (e.g., <filename>/dev/ttyACM0</filename>):
+    </para>
+
+    <screen>pppd /dev/ttyACM0</screen>
 
     </sect3>
 
