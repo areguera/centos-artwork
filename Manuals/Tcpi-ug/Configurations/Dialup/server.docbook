@@ -316,11 +316,7 @@ server     client   mail4u      192.168.0.1
     </variablelist>
 
     <para>
-        To initiate <systemitem class="daemon">pppd</systemitem> (I
-        haven't tested this, yet.), run the following command when the
-        incoming call you want <systemitem
-        class="daemon">pppd</systemitem> to answer has arrived to your
-        modem device (e.g., <filename>/dev/ttyACM0</filename>):
+        To make the modem respond to calls ...
     </para>
 
     <screen>pppd /dev/ttyACM0</screen>
