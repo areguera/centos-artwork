@@ -48,7 +48,7 @@ function tuneup_doBaseActions {
             ${TUNEUP_FORMAT} -d)"
 
         # Define absolute path to format initialization script.
-        TUNEUP_FORMAT_INIT="${TUNEUP_FORMAT_DIR}/$(cli_getRepoName ${TUNEUP_FORMAT} -f)"
+        TUNEUP_FORMAT_INIT="${TUNEUP_FORMAT_DIR}/$(cli_getRepoName ${TUNEUP_FORMAT} -f).sh"
 
         # Verify absolute path to format initialization script.  When
         # a file extension is provided, but no format initialization
