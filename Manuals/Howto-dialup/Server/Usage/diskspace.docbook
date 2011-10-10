@@ -1,0 +1,36 @@
+<sect1 id="server-usage-diskspace">
+
+    <title>Administering Disk Space</title>
+
+    <para>
+        The maximum number of registered user profiles is limited
+        inside the server computer, based on the maximum disk space
+        the server computer confines to such purpose. For example,
+        consider an environment where users can get registered
+        themselves using a web interface. In this case the web
+        interface must know how much disk space is available before
+        proceeding to register new mail accounts inside the server
+        computer and this way preventing any disk writing when there
+        isn't enough free space on disk to perform a new user
+        registration.  Considering the server computer has confined
+        1GB of disk space to handle the mail service (e.g., mail
+        queues, mailboxes, etc.) and each user mailbox is 10MB, it
+        will be possible to provide self-registration through the web
+        interface for 100 users in total.
+    </para>
+
+    <para>
+        Another measure related to save disk space might be to remove
+        unused user accounts and their related files (e.g., mailboxes)
+        from the server computer. For example, consider an environment
+        where user accounts are automatically removed from the server
+        computer when they don't establish a connection with the
+        server computer in a period greater than 7 days since the last
+        valid connection established to the server computer.  Once the
+        user account is removed, it is no longer functional of course,
+        and the person whom lost the account will need to create a new
+        one, assuming it want to have access to the mail service
+        again.
+    </para>
+
+</sect1>

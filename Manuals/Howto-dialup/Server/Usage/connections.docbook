@@ -1,0 +1,81 @@
+<sect1 id="server-usage-connections">
+
+    <title>Administering Dial-Up Connections</title>
+
+    <para>
+        The lifetime of dial-up connections must be limitted based on
+        the number of users you expect to establish connection and the
+        kind of services you plan to provide. The mail service
+        provided by the server computer is conceived as a public
+        service so anyone with a modem attached to a computer would be
+        able to have access to it.  However, due to hardware
+        limitations, only 100 users will be allowed to be registered
+        in the public mail service. Based on this information, the
+        lifetime of established connections will be of 15 minutes from
+        the established moment on. Once the connection has been
+        established, if the link is idle for 1 minute, the server
+        computer will close the established connection to free the
+        telephone line.  This control can be implemented through the
+        <option>maxconnect</option> and <option>idle</option> options
+        inside the <application>pppd</application>'s configuration
+        file.
+    </para>
+
+    <para>
+        Only registered user profiles will be able to establish connections
+        to the server computer.  This control can be implemented using
+        the <option>allow-number</option> option in the
+        <application>pppd</application>'s configuration file to define a
+        list of all telephone numbers that are allowed to establish
+        connection with the server computer, based on the list of
+        registered user profiles.  By default, all telephone numbers
+        are denied from establishing access with the server computer,
+        except those ones explicitly set by
+        <option>allow-number</option> option.  If the
+        <option>allow-number</option> option is not present in
+        <application>pppd</application>'s configuration file, all
+        telephone numbers are allowed to establish connection with the
+        server computer, so be sure to include the
+        <option>allow-number</option> option in
+        <application>pppd</application>'s configuration file if you
+        want to control who can/cannot establish connection with the
+        server computer.
+    </para>
+
+<screen>
+##### centos-pppd-config will overwrite this part!!! (begin) #####
+allow-number 12345
+allow-number 21345
+allow-number 34567
+##### centos-pppd-config will overwrite this part!!! (end) #####
+</screen>
+
+    <para>
+        The <application>centos-pppd-admin</application> application
+        must be considered part of user profile registration process
+        inside the server computer. The
+        <application>centos-pppd-admin</application> application would
+        be used to control the list of allowed telephone numbers
+        inside the <application>pppd</application>'s configuration
+        file, based on the list of user profiles. The
+        <application>centos-pppd-admin</application> application
+        should be executed after any registration/deletion action
+        against the list of user profiles with <systemitem
+        class="username">root</systemitem> privilages in order to be
+        able of writing the settings on
+        <application>pppd</application>'s configuration file.
+    </para>
+
+    <para>
+        Redialing consecutive connections from the same telephone
+        number without any dealy between call retries must be avoided
+        from client computers. This would reduce the possibilities for
+        other client computers to establish connection with the server
+        computer. To prevent this issue from happening, it would be
+        necessary to provide more telephone lines than users
+        authorized to establish connection with the server computer.
+        Nevertheless, there is only one telephone line available for
+        the server computer to use.
+    </para>
+    
+</sect1>

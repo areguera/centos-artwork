@@ -1,0 +1,61 @@
+<sect1 id="server-usage-users">
+
+    <title>Administering Users Accounts</title>
+
+    <para>
+        In order for you to use any service provided by the server
+        computer it is required that you register yourself inside the
+        server computer creating a user profile.  The user profile
+        provides the user information required by services inside the
+        server computer (e.g., username, password, e-mail address,
+        telephone number, etc.). To register new user profiles, you
+        need to use the web application provided by the server
+        computer. For example, assuming the domain name of the server
+        computer is <systemitem
+        class="domainname">example.com</systemitem>, the web
+        application would be accessable through the following URL:
+        <ulink url="https://example.com/people/?action=register" />.
+    </para>
+    
+    <para>
+        To reach the web interface, the first thing you need to do is
+        establishing a dial-up connection to the server computer as
+        described in <xref
+        linkend="server-config"/>. Once the
+        dial-up connection has been established, you need to open a
+        web browser (e.g., Firefox) and put the URL mentioned above in
+        the address space, and press Enter to go. This will present
+        you a web page with the instructions you need to follow in
+        order to register your user profile.  Other actions like
+        updating or deleting your own user profile should be also
+        possible from this web interface.
+    </para>
+
+    <important>
+    <para>
+        The web interface used to manage user profiles inside the
+        server computer must be presented over an encrypted session in
+        order to protect all the information passing through.
+    </para>
+    </important>
+
+    <para>
+        Inside the server computer, all related subsystems in need of
+        user information (e.g., Postix, Cyrus-Imapd and Saslauthd)
+        retrive user information from one single (LDAP) source. The
+        web application provided by the server computer manages all
+        these subsystems' configuration files in order to provide a
+        pleasant experience for end users.  The web interface must be
+        as simple as possible in order to achieve all administration
+        tasks in the range of time permitted by the server computer
+        before it closes the connection established from the client
+        computer.
+    </para>
+
+    <para>
+        More information about the web interface you need to use to
+        manage your user profile inside the server computer can be
+        found in ....
+    </para>
+
+</sect1>

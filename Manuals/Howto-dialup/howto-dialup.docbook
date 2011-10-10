@@ -5,22 +5,21 @@
 
 <!ENTITY % Commons.ent          SYSTEM "Commons.ent">
 <!ENTITY % Preface.ent          SYSTEM "Preface.ent">
-<!ENTITY % Administration.ent   SYSTEM "Administration.ent">
-<!ENTITY % Configurations.ent   SYSTEM "Configurations.ent">
+<!ENTITY % Server.ent           SYSTEM "Server.ent">
+<!ENTITY % Client.ent           SYSTEM "Client.ent">
 <!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
 
 %Commons.ent;
 %Preface.ent;
-%Administration.ent;
-%Configurations.ent;
+%Server.ent;
+%Client.ent;
 %Licenses.ent;
 ]>
 
 <book lang="en_US">
 
     <!-- Front matter -->
-    <title>The CentOS Project Infrastructure</title>
-    <subtitle>User's Guide</subtitle>
+    <title>Dial-Up Infrastructure</title>
 
     <bookinfo>
         <author>
@@ -71,8 +70,8 @@
     &preface;
 
     <!-- Main matter -->
-    &administration;
-    &configurations;
+    &server;
+    &client;
 
     <!-- Back matter -->
     &licenses;
