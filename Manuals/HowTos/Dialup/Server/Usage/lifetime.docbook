@@ -1,0 +1,28 @@
+<sect1 id="server-usage-lifetime">
+
+    <title>Dial-Up Connection Lifetime</title>
+
+    <para>
+        The server computer restricts the lifetime of established
+        dial-up connections to 15 minutes from the establishment
+        moment on. Once the connection has been established, if the
+        link is idle for 1 minute, the server computer will also close
+        the established connection to free the telephone line.  This
+        control can be implemented through the
+        <option>maxconnect</option> and <option>idle</option> options
+        inside the <application>pppd</application>'s configuration
+        file.
+    </para>
+
+    <para>
+        The server computer allows incoming connections everyday from
+        10:00PM to 12:00AM. This control can be implemented through a
+        cron job and the <filename>/etc/nologin.ttyxx</filename> file;
+        where ttyxx represents the device name of your modem
+        (e.g., <filename>/etc/nologin.ttyACM0</filename> would prevent
+        the Modem device installed in
+        <filename>/dev/ttyACM0</filename> from answering calls).
+    </para>
+
+</sect1>
+
