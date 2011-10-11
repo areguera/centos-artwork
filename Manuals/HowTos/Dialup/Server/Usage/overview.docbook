@@ -8,8 +8,8 @@
         the telephone line. In this configuration, we (the poeple
         building the infrastructure) provide the information you (the
         person using the infrastructure) need to know in order to
-        establish a point-to-point connection from the client computer
-        to the server computer through the telephone line.
+        establish a dial-up connection from the client computer to the
+        server computer through the telephone line.
     </para>
 
     <para>
@@ -25,9 +25,45 @@
     </para>
 
     <para>
-        In this chapter we discuss usage convenctions we all must be
-        agree with, in order to achieve a practical and secure
-        interchange system.
+        In this manual, by dial-up connection we mean the action of
+        dialing-up a server computer from a client computer through a
+        Modem attached to the telephone line. In this infrastructure,
+        dial-up connections are always established from the client
+        computer to the server computer and never the other way
+        around.  The main purpose of a client computer to establish a
+        dial-up connection with the server computer will be using one
+        or more Internet services provided in the server computer.
+    </para>
+
+    <para>
+        In order for the server computer to answer telephone calls, it
+        is required to install a Modem device in it (see <xref
+        linkend="server-install-hardware" />). Once the Modem device
+        has been installed, you need to install and configure both
+        <application>mgetty</application> and
+        <application>pppd</application> programs.  The
+        <application>mgetty</application> program must be run by
+        <systemitem class="daemon">init</systemitem> daemon in order
+        to take control over the Modem device. By default, inside
+        &TCD; (release 5.5), mgetty isn't configured to start with
+        <systemitem class="daemon">init</systemitem> daemon so you
+        need to do it yourself (see ...). Later, for attending
+        connection requests, you need to configure mgetty to use the
+        <application>pppd</application> program, so the Point-to-Point
+        Protocol (PPP) can be talked and IP packages can be
+        interchanged between the client computer and the server
+        computer. Later, you need to configure
+        <application>pppd</application> to adjust it to your needs
+        (see ...). 
+    </para>
+    
+    <para>
+        Once you've configured both <application>mgetty</application>
+        and <application>pppd</application> programs, the server
+        computer should be ready to attend incoming calls.  The
+        remaining of this chapter describes the way incoming calls are
+        attended by the server computer once they have arrived to its
+        Modem device.
     </para>
 
 </sect1>
