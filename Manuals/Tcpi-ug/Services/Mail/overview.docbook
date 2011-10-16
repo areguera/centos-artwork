@@ -1,0 +1,58 @@
+<sect1 id="services-mail-overview">
+
+    <title>Overview</title>
+
+    <para>
+        The mail service provides the software required to let you
+        send/receive mail messages to/from others. The mail service is
+        supported by three basic components: the Mail Transfer Agent
+        (MTA), the Mail Delivery Agent (MDA) and the Mail User Agent
+        (MUA). The MTA is the program your mail client sends mail
+        messages to. The MDA, on the other hand, is the program your
+        mail client reads mail message from (i.e., this is the program
+        that lets you access your mailbox).  The saslauthd daemon is
+        used by the MDA to authenticate user's credentials (e.g., the
+        information required to grant access to an specific mailbox)
+        and in some cases by the MTA to authenticate users before
+        sending mail to it.  The MTA will listen on all network
+        interfaces it is attached to and will receive mail sent to
+        specific users inside specific domain names.
+    </para>
+
+    <para>
+        Inside &TCD; there is support for different MTAs (e.g.,
+        Sendmail, Postfix and Exim).  By default, the
+        <application>Sendmail</application> program is used as mail
+        transfer agent, however, we want to use Postfix for our
+        configuration. This way, to use Postfix as default mail
+        transfer agent and not Sendmail, it is required to use the
+        <command>alternatives</command> command.  This command will
+        present you a menu to chose between available mail transfer
+        agents installed in the system, so you can choose Posfix as
+        default option. Now that you've made Postfix the default mail
+        transfer agent, you can saftly remove the sendmail package to
+        avoid unused software to remain inside the computer.
+    </para>
+
+    <para>
+        Inside &TCD; there is support for different MDA (e.g., Cyrus
+        IMPA and Dovecot). By default, the Dovecot program is used as
+        mail delivery agent (which doesn't require any intermediate
+        daemon for athentication), however, we want to use Cyrus IMAP
+        for our configuration (which does require an intermediate
+        daemon called saslauthd for authentication).
+    </para>
+
+    <para>
+        Inside &TCD; there is support for different MUA (e.g.,
+        Evolution, Thunderbird and Mutt). By default, the Evolution
+        program is used and we stay with it :).
+    </para>
+
+    <para>
+        In this chapter we describe how to configure each one of these
+        components to let you send/receive e-mails to/from your
+        friends.
+    </para>
+
+</sect1>
