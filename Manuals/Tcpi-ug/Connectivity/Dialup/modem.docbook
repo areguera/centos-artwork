@@ -1,0 +1,147 @@
+<sect1 id="connectivity-dialup-modem">
+
+    <title>The Modem Device</title>
+
+    <para>
+        In order to establish a PPP link between two computers using
+        the telephone line as medium for data transmission, you need
+        to install and configure (at least) one Modem device in each
+        computer.
+    </para>
+    
+    <sect2 id="connectivity-dialup-modem-install">
+    <title>Installing Modem Devices</title>
+    <para>
+        To install a Modem device in a computer you need to attach the
+        Modem hardware to the computer and later the telephone line to
+        the Modem hardware. To attach the Modem hardware to your
+        computer, you need to connect the serial or USB cable that
+        comes from the Modem hardware to the appropriate input on your
+        computer. To connect the Modem hardware to the telephone line
+        system, you need to unplug the cable that connects your
+        telephone device and plug it on the Modem device, specifically
+        in the port reserved for data transmission.  Later, using a
+        similar cable, you could connect your telephone device to the
+        Modem's telephone port, so you can realize telephone calls
+        when no data transmition take place, as well.
+    </para>
+
+    <para>
+        To be on the safe side, do all the installation with the
+        computer turned off. Then, when everthing has been put in
+        place, turn the computer on. Once the system is up, you can
+        verify the Modem hardware using either the
+        <command>lsusb</command> or <command>lspci</command> commands.
+        These commands need to be run with administrative privileges,
+        so probably need to <command>sudo</command> them or login as
+        <systemitem class="username">root</systemitem> user in order
+        to execute them. For example, assuming you are logged in as
+        <systemitem class="username">root</systemitem> user, and you
+        are using an USB Modem like that one we mentioned before, the
+        output of <command>lsusb</command> command would look like the
+        following:
+    </para>
+
+<screen>
+Bus 003 Device 001: ID 0000:0000  
+Bus 001 Device 001: ID 0000:0000  
+Bus 001 Device 002: ID 058f:6366 Alcor Micro Corp. Multi Flash Reader
+Bus 002 Device 001: ID 0000:0000  
+Bus 005 Device 003: ID 06e0:f104 Multi-Tech Systems, Inc.
+MT5634ZBA-USB MultiModemUSB (new firmware)
+Bus 005 Device 001: ID 0000:0000  
+Bus 005 Device 002: ID 046d:c018 Logitech, Inc. Optical Wheel Mouse
+Bus 004 Device 001: ID 0000:0000 
+</screen>
+
+    <para>
+        The relevant line here is that one mentioning the existence of
+        a <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB
+        (new firmware)</code> device. This line confirms that your
+        Modem hardware is supported by &TCD; and it is possible to
+        transmit data through it.  Otherwise, if the Modem you
+        installed doesn't appear in this list, it is probably because
+        such hardware is not supported by &TCD;, yet.
+    </para>
+
+    <para>
+        Once you have confirmed the Modem hardware has been installed
+        in the computer (either client or server), you need to
+        determine the device name the operating system assigned to it.
+        This information is required by programs like
+        <application>mgetty</application> and
+        <application>wvdial</application>, so they can know what
+        device to talk to.  Assuming you've connected your Modem
+        device through an USB port, the operating system might use the
+        the <filename>/dev/ttyACM0</filename> file to talk to it. On
+        the other hand, assuming you've connected your Modem device
+        through a serial port, the operating system might use the
+        <filename>/dev/ttyS0</filename> file to talk to it.  To be
+        absolutly sure about what device name the operating system
+        assigned to your Modem hardware, you can use the
+        <application>wvdialconf</application> program from
+        <package>wvdial</package> package or the
+        <command>lshal</command> command from <package>hal</package>
+        package.
+    </para>
+    </sect2>
+
+    <sect2 id="connectivity-dialup-modem-config">
+    <title>Configuring Modem Devices</title>
+    <para>
+        Modem devices are configured through
+        <command>system-config-network</command> command. This command
+        produces Modem configuration files under the
+        <filename>/etc/sysconfig/network-scripts</filename> directory.
+        Configuration related to Modem devices can take different
+        file names, but they can be clearly identified by the value
+        set on the <varname>DEVICE</varname> variable, inside the
+        configuration file. This variable can take names like
+        <code>ppp0</code> for the first Modem device,
+        <code>ppp1</code> for the second Modem device, and so on for
+        other Modem devices.  The Modem configuration files are used
+        by <application>pppd</application> and
+        <application>wvdial</application> programs when a PPP
+        connection is established between two computers.  If you are
+        runing mgetty and pppd to attend incoming calls, it is very
+        important that you also specify the IP address and the network
+        mask in the configuration file of the Modem device you are
+        using to establish the connection. Otherwise, if the remote
+        peer doesn't set the IP information for you, it would be
+        difficult for both computer to establish a permanent
+        interchange of data across the link created.
+    </para>
+
+<screen>
+# Please read /usr/share/doc/initscripts-*/sysconfig.txt
+# for the documentation of these parameters.
+TYPE=Modem
+DEVICE=ppp0
+BOOTPROTO=none
+ONBOOT=no
+USERCTL=yes
+PEERDNS=yes
+AC=off
+BSDCOMP=off
+VJCCOMP=off
+CCP=off
+PC=off
+VJ=off
+LINESPEED=115200
+MODEMPORT=/dev/ttyACM0
+PROVIDER=ProviderName
+DEFROUTE=yes
+PERSIST=no
+PAPNAME=a
+WVDIALSECT=ProviderName
+MODEMNAME=Modem0
+DEMAND=no
+IPV6INIT=no
+IDLETIMEOUT=600
+NETMASK=255.255.255.0
+IPADDR=192.168.0.2
+</screen>
+
+    </sect2>
+
+</sect1>

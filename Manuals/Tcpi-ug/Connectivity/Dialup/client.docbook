@@ -1,0 +1,17 @@
+<sect1 id="connectivity-dialup-client">
+
+    <title>The Client Computer</title>
+
+    <para>
+        When you are configuring the client computer, you need to
+        install the <package>wvdial</package>, <package>pppd</package>
+        and <package>system-config-network</package> packages. From
+        these packages, to configure your Modem connection, you only
+        need to use the interface provided by the
+        <package>system-config-network</package> package. This
+        interface controls configuration files related to
+        <application>pppd</application> and
+        <application>wvdial</application> programs for you.
+    </para>
+
+</sect1>

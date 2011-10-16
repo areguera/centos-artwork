@@ -1,0 +1,288 @@
+<sect1 id="connectivity-dialup-server">
+
+    <title>The Server Computer</title>
+
+    <para>
+        When you are configuring the server computer, you need to
+        install and configure both <application>mgetty</application>
+        and <application>pppd</application> programs.  The
+        <application>mgetty</application> program lets you attend
+        incoming calls and must be configured to run through
+        <systemitem class="daemon">init</systemitem> daemon in order
+        to take control over the Modem device. By default, inside
+        &TCD; (release 5.5), <application>mgetty</application> isn't
+        configured to start with <systemitem
+        class="daemon">init</systemitem> daemon so you need to do it
+        yourself (see <xref
+        linkend="connectivity-dialup-server-mgetty-inittab" />).
+        Later, for attending connection requests, you need to
+        configure <application>mgetty</application> to use the
+        <application>pppd</application> program, so the Point-to-Point
+        Protocol (PPP) can be talked and IP packages can be
+        interchanged between the client computer and the server
+        computer. Later, you need to configure
+        <application>pppd</application> to adjust it to your needs
+        (see <xref linkend="connectivity-dialup-server-pppd-options"
+        />)Once you've configured both
+        <application>mgetty</application> and
+        <application>pppd</application> programs, the server computer
+        should be ready to attend incoming calls.
+    </para>
+
+    <sect2 id="connectivity-dialup-server-mgetty">
+    <title><package>mgetty</package></title>
+    <para>
+        Taken from <command>mgetty</command> man page: &mdash; Mgetty
+        is a <quote>smart</quote> getty replacement, designed to be
+        used with hayes compatible data and data/fax modems. Mgetty
+        knows about modem initialization, manual modem answering (so
+        your modem doesn’t answer if the machine isn’t ready), UUCP
+        locking (so you can use the same device for dial-in and
+        dial-out).  Mgetty provides very extensive logging facilities
+        &mdash;.
+    </para>
+    <para>
+        Before using the configuration provided here, it would be
+        useful for you to read the documentation provided by
+        <package>mgetty</package> and <package>SysVinit</package>
+        packages.  This will let you to understand what you are
+        configuring.
+    </para>
+
+    <sect3 id="connectivity-dialup-server-mgetty-inittab">
+    <title><filename>/etc/inittab</filename></title>
+<screen>
+# Run mgetty to control a Multi-Tech (MT5634ZBA-USB) modem attached to
+# `/dev/ttyAMC0' device. Incoming calls will be attended without fax
+# initalization.
+ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
+</screen>
+    </sect3>
+
+    <sect3 id="connectivity-dialup-server-mgetty-login">
+    <title><filename>/etc/mgetty+sendfax/login.config</filename></title>
+<screen>
+# Automatic PPP startup on receipt of LCP configure request (AutoPPP).
+# mgetty has to be compiled with "-DAUTO_PPP" for this to work.
+# Warning: Case is significant, AUTOPPP or autoppp won't work!
+# Consult the "pppd" man page to find pppd options that work for you.
+#
+#  NOTE: for *some* users, the "-detach" option has been necessary,
+#  for others, not at all. If your pppd doesn't die after hangup, try
+#  it.
+#
+#  NOTE2: "debug" creates lots of debugging info.  LOOK AT IT if
+#  things do not work out of the box, most likely it's a ppp problem!
+#
+#  NOTE3: "man pppd" is your friend!
+#
+#  NOTE4: max. 9 arguments allowed.
+#
+#/AutoPPP/ -    a_ppp   /usr/sbin/pppd auth -chap +pap login debug
+/AutoPPP/ -     a_ppp   /usr/sbin/pppd 192.168.0.2:192.168.0.3
+</screen>
+
+    <para>
+        Notice that both local and remote IP address are set here. All
+        other options are taken from the <filename>options</filename>
+        file (see <xref
+        linkend="connectivity-dialup-server-pppd-options" />). If we
+        don't specify both local and remote IP addresses when pppd is
+        initialized, pppd will try to take such information from the
+        first Modem device you configured (e.g., ppp0) and will expect
+        the remote peer to provide its IP address. This situation can
+        introduce some contraditions (e.g., the local and remote
+        address may be on a different network.) that would make the
+        connection to fail.
+    </para>
+
+    <para>
+        Another issue we might face out would be the netmask
+        specification of the poin-to-point network established between
+        the two computers. Inside the pppd-2.4.4 man page there is no
+        reference to the <option>netmask</option> option, however,
+        there is a mention to it on the sample files installed with it
+        which is quiet confussing. It seems to be required that one of
+        the two computers establishing connection defines the netmask
+        information of the network they are creating. So, to do it on
+        the server computer (the one receiving calls), it is needed to
+        set the netmask definition in the Modem device configuration
+        file of it (<xref linkend="connectivity-dialup-modem-config"
+        />) along with the local IP address. Otherwise, even local and
+        remote IP addresses be specified through the pppd, the
+        connection will end up having the 255.255.255.255 netmask
+        which would let you ping the computer on the other end but
+        that will not last too long before it fails and iptables seems
+        to get very confused about it.
+    </para>
+
+    <para>
+        Since we are already using <systemitem
+        class="daemon">pppd</systemitem> to attend login requests,
+        there is no need to invoke the
+        <application>login</application> program. So, comment the
+        related line as described below.
+    </para>
+
+<screen>
+#*      -       -       /bin/login @
+</screen>
+
+    </sect3>
+
+    <sect3 id="connectivity-dialup-server-mgetty-dialin">
+    <title><filename>/etc/mgetty+sendfax/dialin.config</filename></title>
+    <para>
+        I didn't touch this file, but you might need to.
+    </para>
+    </sect3>
+
+    <sect3 id="connectivity-dialup-server-mgetty-config">
+    <title><filename>/etc/mgetty+sendfax/mgetty.config</filename></title>
+    <para>
+        I didn't touch this file, but you might need to.
+    </para>
+    </sect3>
+
+    </sect2>
+
+    <sect2 id="connectivity-dialup-server-pppd">
+    <title><package>pppd</package></title>
+    <para>
+        Taken from pppd man page: &mdash; PPP is the protocol used for
+        establishing internet links over dial-up modems, DSL
+        connections, and many other types of point-to-point links.
+        The pppd daemon works together with the kernel PPP driver to
+        establish and maintain a PPP link with another system (called
+        the peer) and to negotiate Internet Protocol (IP) addresses
+        for each end of the link. Pppd can also authenticate the peer
+        and/or supply authentication information to the peer.  PPP can
+        be used with other network protocols besides IP, but such use
+        is becoming increasingly rare &mdash;.
+    </para>
+
+    <para>
+        Before using the configuration provided here, it would be
+        useful for you to read the documentation provided by
+        <package>ppp</package> package.  This will let you to
+        understand what you are configuring.
+    </para>
+
+    <sect3 id="connectivity-dialup-server-pppd-options">
+    <title><filename>/etc/pppd/options</filename></title>
+<screen>
+# Enables connection debugging facilities.  If this option is given,
+# pppd will log the contents of all control packets sent or received
+# in a readable form.  The packets are logged through syslog with
+# facility daemon and level debug.  This information can be directed
+# to a file by setting up /etc/syslog.conf appropriately (see
+# syslog.conf(5)).
+debug
+
+# Require the peer to authenticate itself before allowing network
+# packets to be sent or received. This option is the default if the
+# system has a default route.  If neither this option nor the noauth
+# option is specified, pppd will only allow the peer to use IP
+# addresses to which the system does not already have a route.
+auth
+
+# Specifies that pppd should create a UUCP-style lock file for the
+# serial device to ensure exclusive access to the device.  By default,
+# pppd will not create a lock file.
+lock
+
+# Specify which DNS Servers the incoming Win95 or WinNT Connection
+# should use Two Servers can be remotely configured
+ms-dns 192.168.0.1
+
+# If this option is given, pppd will send an LCP echo-request frame to
+# the peer every n seconds. Under Linux, the echo-request is sent when
+# no packets have been received from the peer for n seconds. Normally
+# the peer should respond to the echo-request by sending an
+# echo-reply.  This option can be used with the lcp-echo-failure
+# option to detect that the peer is no longer connected.
+lcp-echo-interval 30
+
+# If this option is given, pppd will presume the peer to be dead if n
+# LCP echo-requests are sent without receiving a valid LCP echo-reply.
+# If this happens, pppd will terminate the connection.  Use of this
+# option requires a non-zero value for the lcp-echo-interval
+# parameter.  This option can be used to enable pppd to terminate
+# after the physical connection has been broken (e.g., the modem has
+# hung up) in situations where no hardware modem control lines are
+# available.
+lcp-echo-failure 4
+
+# Specifies that pppd should disconnect if the link is idle for n
+# seconds.
+idle 60
+
+# Specifies that pppd should disconnect if the link have been active
+# for n seconds.
+maxconnect 900
+
+# Disable the IPXCP and IPX protocols.
+noipx
+</screen>
+    </sect3>
+
+    <sect3 id="connectivity-dialup-server-pppd-cha">
+    <title><filename>/etc/pppd/cha-secrets</filename></title>
+<screen>
+# Secrets for authentication using CHAP
+# client        server  secret                  IP addresses
+
+# Specify the client configuration. This is when this manchine calls
+# someone's else machine and tries to establish a point-to-point
+# connection. Most of this configuration is handled by the
+# `system-config-network' utility.
+#
+####### redhat-config-network will overwrite this part!!! (begin) ##########
+####### redhat-config-network will overwrite this part!!! (end) ############
+
+# Specify the server configuration. This is when someone's else
+# machine calls this machine trying to establish a point-to-point
+# connection.  This part of the configuration isn't handled by
+# `system-config-network' utility. By default, there is one line to
+# verify client's identity with authenticating it and one line to let
+# the server computer to authenticate itself with the client computer
+# in case the client computer requires so. All client computers will
+# be authenticated through the `faith' user.  However, it is possible
+# to provide anonymous authentication to client computers by using an
+# empty client identity (as explained in pppd's man page) in order to
+# restrict the IP address they can use.
+#
+"faith"         "projects"      "mail4u.2k10"   "192.168.0.3"
+#""             "projects"      ""              "192.168.0.3"
+"projects"      *               "mail4u.2k10"
+</screen>
+
+    <para>
+        Assuming the hostname of the server computer is
+        <quote>projects</quote>, when a client computer uses the faith
+        username to login on it, the <systemitem
+        class="ipaddress">192.168.0.3</systemitem> IP address will be
+        assigned to that client computer after a successful
+        authentication.  This configuration is just for one Modem
+        device attached to the server computer.  In case you have more
+        than one Modem device attached to the server computer, it
+        would be necessary to add one username for each Modem device
+        you have, in order to permit the client computers to connect
+        simultaneously. It is not possible to have two or more
+        computers with the same IP address in the same network.
+    </para>
+
+    </sect3>
+
+    <sect3 id="connectivity-dialup-server-pppd-pap">
+    <title><filename>/etc/pppd/pap-secrets</filename></title>
+    <para>
+        This file contains the same information of
+        <filename>pap-secrets</filename> file does. See <xref
+        linkend="connectivity-dialup-server-pppd-cha" />. 
+    </para>
+    </sect3>
+
+    </sect2>
+
+</sect1>
