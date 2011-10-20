@@ -3,55 +3,10 @@
     <title>Overview</title>
 
     <para>
-        This manual describes the configuration of two computers, one
-        acting as server and other as client. The server computer (see
-        <xref linkend="connectivity-dialup-server" />) will be
-        configured to provide internet services and the client
-        computer (see <xref linkend="connectivity-dialup-client" />)
-        to make use of those internet services. The connection medium
-        used by both client and server computer is the telelphone line
-        (i.e., the same medium you use to realize telephone calls).
-        In this configuration, both client and server computers use
-        special devices named <quote>Modems</quote> to transmit data
-        in form of sound across the telephone line (see <xref
-        linkend="connectivity-dialup-modem" />).
-    </para>
-    
-    <para>
-        This infrastructure is made available to you free of charge,
-        however, you should know that maintaining it might cost you
-        both money and time. For example, for each hour the server
-        computer is on production there is an electrical consume that
-        need to be paid every month.  Likewise, each call that you
-        establish from the client computer to the server computer will
-        cost you money, based on the location you made the call from
-        and the time you spend connected.
-    </para>
-
-    <para>
-        To use this infrastructure, people connecting from the client
-        computers to the server computer must agree the conditions
-        described in <xref linkend="connectivity-dialup-policy" />.
-    </para>
-
-    <para>
-        It is worth to mention that, you can configure one computer to
-        act both as server and client. In this case, your computer
-        acts as client of another server computer, not the one you
-        have configured in the same computer of your client (i.e., you
-        cannot call yourself and expect to answer any incoming call
-        using the same line you used to make the outgoing call, it
-        doesn't make any sense).  Likewise, your server will act as
-        server for another client computer, not the one you have
-        configured. In resume, you can both receive incoming calls or
-        realize outgoing calls using the same telephone line, but only
-        when the telephone line is free from any incoming or outgoing
-        call.
-    </para>
-
-    <para>
-        This infrastructure could result very useful to you when you
-        want to share IP packages with your friends and the only
+        This chapter describes an infrastructure where computers
+        communicate one another through the telephone line.  This
+        infrastructure could result very useful to you when you want
+        to share IP packages with your friends and the only
         communication medium you and your friends have access to is a
         telephone network.
     </para>
