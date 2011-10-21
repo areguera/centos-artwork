@@ -79,7 +79,7 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
 #  NOTE4: max. 9 arguments allowed.
 #
 #/AutoPPP/ -    a_ppp   /usr/sbin/pppd auth -chap +pap login debug
-/AutoPPP/ -     a_ppp   /usr/sbin/pppd 192.168.0.2:192.168.0.3
+/AutoPPP/ -     a_ppp   /usr/sbin/pppd 192.168.1.1:192.168.1.2
 </screen>
 
     <para>
@@ -193,7 +193,7 @@ lock
 
 # Specify which DNS Servers the incoming Win95 or WinNT Connection
 # should use Two Servers can be remotely configured
-ms-dns 192.168.0.1
+ms-dns 192.168.1.1
 
 # If this option is given, pppd will send an LCP echo-request frame to
 # the peer every n seconds. Under Linux, the echo-request is sent when
@@ -252,8 +252,8 @@ noipx
 # empty client identity (as explained in pppd's man page) in order to
 # restrict the IP address they can use.
 #
-"faith"         "projects"      "mail4u.2k10"   "192.168.0.3"
-#""             "projects"      ""              "192.168.0.3"
+"faith"         "projects"      "mail4u.2k10"   "192.168.1.2"
+#""             "projects"      ""              "192.168.1.2"
 "projects"      *               "mail4u.2k10"
 </screen>
 
@@ -261,7 +261,7 @@ noipx
         Assuming the hostname of the server computer is
         <quote>projects</quote>, when a client computer uses the faith
         username to login on it, the <systemitem
-        class="ipaddress">192.168.0.3</systemitem> IP address will be
+        class="ipaddress">192.168.1.2</systemitem> IP address will be
         assigned to that client computer after a successful
         authentication.  This configuration is just for one Modem
         device attached to the server computer.  In case you have more
