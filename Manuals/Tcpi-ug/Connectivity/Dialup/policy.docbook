@@ -96,7 +96,7 @@ ISP Phone: +53043515094
 <screen>
 Provice-A PPP Server                          Province-A PPP Client
 --------------------------\             /--------------------------
-192.168.0.1/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.2/24
+192.168.1.1/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.2/24
 --------------------------/             \--------------------------
 </screen>
     </textobject>
@@ -114,8 +114,8 @@ Provice-A PPP Server                          Province-A PPP Client
         connection in order to use whatever internet service the
         server computer provides. In the figure we can see that there
         are two IP addresses involved (<systemitem
-        class="ipaddress">192.168.0.1</systemitem> and <systemitem
-        class="ipaddress">192.168.0.2</systemitem>) inside the same
+        class="ipaddress">192.168.1.1</systemitem> and <systemitem
+        class="ipaddress">192.168.1.2</systemitem>) inside the same
         newtork (<systemitem
         class="netmask">255.255.255.0</systemitem>).
     </para>
@@ -185,17 +185,17 @@ Provice-A PPP Server                          Province-A PPP Client
 <screen>
 Provice-A PPP Server                          Province-A PPP Client
 --------------------------\             /--------------------------
-192.168.0.1/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.2/24
+192.168.1.1/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.2/24
 --------------------------/      |      \--------------------------
                                  |
 Provice-B PPP Server             |            Province-B PPP Client
 --------------------------\      |      /--------------------------
-192.168.0.3/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.4/24
+192.168.1.3/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.4/24
 --------------------------/      |      \--------------------------
                                  |
 Provice-C PPP Server             |            Province-C PPP Client
 --------------------------\      |      /--------------------------
-192.168.0.5/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.6/24
+192.168.1.5/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.6/24
 --------------------------/             \--------------------------
 </screen>
     </textobject>
@@ -305,9 +305,9 @@ Provice-C PPP Server             |            Province-C PPP Client
 <screen>
 Province-A PPP/ETH Server                     Province-A PPP Client
 --------------------------\             /--------------------------
-192.168.0.1/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.2/24
+192.168.1.1/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.2/24
 --------------------------/      |      \--------------------------
-192.168.1.1/24 | Ethernet        |
+192.168.0.1/24 | Ethernet        |
 ---------------------|----       |
                      |           |
               +--------+         |
@@ -315,13 +315,13 @@ Province-A PPP/ETH Server                     Province-A PPP Client
               +--------+         |
                      |           |
 ---------------------|--         |
-LAN1: 192.168.1.2-254/24         |
+LAN1: 192.168.0.2-254/24         |
 ------------------------         |
 Province-A ETH Clients           |
                                  |
 Province-B PPP/ETH Server        |            Province-B PPP Client
 --------------------------\      |      /--------------------------
-192.168.0.3/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.4/24
+192.168.1.3/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.4/24
 --------------------------/      |      \--------------------------
 192.168.2.1/24 | Ethernet        |
 ---------------------|----       |
@@ -337,7 +337,7 @@ Province-B ETH Clients           |
                                  |
 Province-C PPP/ETH Server        |            Province-C PPP Client
 --------------------------\      |      /--------------------------
-192.168.0.5/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.0.6/24
+192.168.1.5/24 | Modem ~~~ TelephoneLine ~~~ Modem | 192.168.1.6/24
 --------------------------/             \--------------------------
 192.168.3.1/24 | Ethernet
 ---------------------|----
