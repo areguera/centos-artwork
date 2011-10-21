@@ -1,47 +1,51 @@
 <sect1 id="connectivity-dialup-policy">
 
-    <title>Terms Of Usage</title>
+    <title>Usage Convenctions</title>
 
     <sect2 id="connectivity-dialup-policy-auth">
-    <title>About PPP Authentication</title>
+    <title>Authenticating PPP Users</title>
 
     <para>
-        The credential required by the client computers to establish
-        dial-up connection with the server computer are always the
-        same. There is only one public username and password for all
-        client computers that must be used in order to establish
-        dial-up connection with the server computer. This information
-        is the following:
+        The client computers will need to authenticate against the
+        server computer each time they intend to establish a PPP
+        connection. The username and password required by the client
+        computers will be public and will rarely change.
     </para>
 
+    <example id="connectivity-dialup-policy-auth.fig-1">
+    <title>Credentials for PPP authentication</title>
+    <screenshot>
+    <screeninfo>Credentials for PPP authentication</screeninfo>
+    <mediaobject>
+    <textobject>
 <screen>
  ISP Name: projects.centos.org
 ISP Phone: +53043515094
  Username: faith
  Password: mail4u.2k10
 </screen>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
 
     <para>
-        The client computer can use this information to establish
-        connection to the server computer using any telephone number
-        from 10:00PM to 12:00AM. Notice how there is only one
-        telephone line available (e.g., +53043515094) in the server
-        computer to receive incoming calls.  The number of telephone
-        lines directly affects the possibilities a client computer has
-        to establish connection with the server computer in an
-        environment where more than one client computer are struggling
-        among themselves to establish a dial-up connection with the
-        server computer.  To prevent this issue from happening, it is
-        innevitable for the server computer to provide more telephone
-        lines for incoming calls (at least one for each user the
-        server computer expects to receive incoming calls from).
-        Sadly, that is not possible at present time.
+        The server computer provides only one telephone line available
+        (e.g., +53043515094) to receive incoming calls.  This directly
+        affects the possibilities a client computer has to establish
+        connection with the server computer in an environment where
+        several client computers are struggling among themselves to
+        establish a dial-up connection with the server computer.  To
+        prevent this kind of issues from happening, it is innevitable
+        for the server computer to provide more telephone lines for
+        incoming calls (at least one for each user the server computer
+        expects to receive incoming calls from).
     </para>
 
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-network">
-    <title>About PPP Networking</title>
+    <title>One PPP network of two computers</title>
 
     <para>
         The simpliest configuration we can achive over the telephone
@@ -84,9 +88,9 @@ ISP Phone: +53043515094
     </para>
 
     <figure id="connectivity-dialup-policy-network-basic">
-    <title>Simple networking over telephone line</title>
+    <title>One PPP network of two computers</title>
     <screenshot>
-    <screeninfo>Simple networking over telephone line</screeninfo>
+    <screeninfo>One PPP network of two computers</screeninfo>
     <mediaobject>
     <textobject>
 <screen>
@@ -137,7 +141,7 @@ Provice-A PPP Server                          Province-A PPP Client
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-network-extended">
-    <title>About Extending PPP Networking</title>
+    <title>One PPP network of several computers</title>
 
     <para>
         Based on <xref
@@ -173,9 +177,9 @@ Provice-A PPP Server                          Province-A PPP Client
     </para>
 
     <figure id="connectivity-dialup-policy-network-extended.fig-1">
-    <title>Extended networking over telephone line</title>
+    <title>One PPP network of several computers</title>
     <screenshot>
-    <screeninfo>Extended networking over telephone line</screeninfo>
+    <screeninfo>One PPP network of several computers</screeninfo>
     <mediaobject>
     <textobject>
 <screen>
@@ -258,11 +262,11 @@ Provice-C PPP Server             |            Province-C PPP Client
         move the information from one computer to another. Notice that
         the number of PPP clients is directly related to the number of
         telephone lines a server computer has configured to receive
-        incomming calls. If there is only one telephone line attached
-        to the server computer then, only one client computer will be
-        able to establish connection to that server computer.  Other
-        PPP clients will need to wait until the telephone line gets
-        free in order to establish connection with that server
+        incomming calls on. If there is only one telephone line
+        attached to the server computer then, only one client computer
+        will be able to establish connection to that server computer.
+        Other PPP clients will need to wait until the telephone line
+        gets free in order to establish connection with that server
         computer.  On the other hand, if the server computer has two
         (or more) attached telephone lines, it would be possible to
         attend incoming calls from two (or more) PPP client at the
@@ -275,7 +279,7 @@ Provice-C PPP Server             |            Province-C PPP Client
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-network-eth">
-    <title>About Extending PPP Networking With Ethernet</title>
+    <title>One PPP+Ethernet network of several computers</title>
 
     <para>
         Assuming all the server computers with a Modem interface
@@ -293,9 +297,9 @@ Provice-C PPP Server             |            Province-C PPP Client
     </para>
 
     <figure id="connectivity-dialup-policy-network-extended.fig-2">
-    <title>PPP+Ethernet networking over telephone line</title>
+    <title>One PPP+Ethernet network of several computers</title>
     <screenshot>
-    <screeninfo>PPP+Ethernet networking over telephone line</screeninfo>
+    <screeninfo>One PPP+Ethernet network of several computers</screeninfo>
     <mediaobject>
     <textobject>
 <screen>
@@ -376,41 +380,9 @@ Province-C ETH Clients
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-policy-names">
-    <title>About Domain Names</title>
-    <para>
-        Domain names and host names are another important topic to
-        take care of, specially in a distributed network like those
-        described in <xref
-        linkend="connectivity-dialup-policy-network-extended" /> and
-        <xref linkend="connectivity-dialup-policy-network-eth" />.
-        Likewise IP address, names assigned to computers (both clients
-        and servers) must be unique. Each unique computer name is
-        associated to one unique IP address.  Based on the nature of
-        point-to-point connections, there is no way for the Province-A
-        to know names in Province-D unless they be defined on
-        Province-A. In this point-to-point configuration there isn't a
-        top level name resolution so it isn't possible to find out
-        such names. Each computer in this configuration must define
-        the names of their closest server computer only, using BIND
-        (without recursion) or the <filename>/etc/hosts</filename>
-        file, as prefered.
-    </para>
-
-<screen>
-+------------------------+     +------------------------+       +------------------------+       +---------------------+
-| To: bob@d.domain.tld   |     | To: bob@d.domain.tld   |       | To: bob@d.domain.tld   |       |    Bob's mailbox    |
-| From: mat@a.domain.tld |     | From: ana@b.domain.tld |       | From: jef@c.domain.tld |       | (Final destination) |
-| Body: 500KB            |     | Body: 500KB            |       | Body: 500KB            |       |                     |
-+---|--------------------+     +---|--------------------+       +---|--------------------+       +------------------^--+
-    |                              |                                |                                               |
-----v--------------|&lt;~~~~~~~~~&gt;|---v----------------|&lt;~~~~~~~~~&gt;|---v----------------|&lt;~~~~~~~~~&gt;|------------------|---
-srv-1.a.domain.tld | 75Km Call | srv-1.b.domain.tld | 75Km Call | srv-1.c.domain.tld | 75Km Call | srv-1.d.domain.tld
--------------------|&lt;~~~~~~~~~&gt;|--------------------|&lt;~~~~~~~~~&gt;|--------------------|&lt;~~~~~~~~~&gt;|----------------------
-relay to:          |   5 min   | relay to:          |   10 min  | relay to:          |  15 min   |
-srv-1.b.domain.tld |   500KB   | srv-1.c.domain.tld |   1.0MB   | srv-1.d.domain.tld |  1.5MB    |
-</screen>
-    
+    <sect2 id="connectivity-dialup-policy-bridgedcall">
+    <title>Bridging Calls To Transfer Data</title>
+ 
     <para>
         When the server computers call other server computers to
         bridge data delivery, the server computer in Province-A
@@ -435,22 +407,26 @@ srv-1.b.domain.tld |   500KB   | srv-1.c.domain.tld |   1.0MB   | srv-1.d.domain
         path creates a route for a server computer that doesn't exist
         (or doesn't define a route at all), the information will never
         reach its destination when such computer is acting as a bridge
-        between the origen and the target server computer.
+        between the source and the target server computer.
     </para>
 
 <screen>
-+------------------------+             +---------------------+
-| To: bob@d.domain.tld   |             |    Bob's mailbox    |
-| From: mat@a.domain.tld |             | (Final destination) |
-| Body: 500KB            |             |                     |
-+--|---------------------+             +------------------^--+
-   |                                                      | 
----v---------------------|&lt;~~~~~~~~~~&gt;|-------------------|---
-srv-1.a.domain.tld       | 225Km Call | srv-1.d.domain.tld
--------------------------|&lt;~~~~~~~~~~&gt;|-----------------------
-relay to:                |   5 min    |
-srv-1.d.domain.tld       |   500KB    |
++------------------------+     +------------------------+       +------------------------+       +---------------------+
+| To: bob@d.domain.tld   |     | To: bob@d.domain.tld   |       | To: bob@d.domain.tld   |       |    Bob's mailbox    |
+| From: mat@a.domain.tld |     | From: ana@b.domain.tld |       | From: jef@c.domain.tld |       | (Final destination) |
+| Body: 500KB            |     | Body: 500KB            |       | Body: 500KB            |       |                     |
++---|--------------------+     +---|--------------------+       +---|--------------------+       +------------------^--+
+    |                              |                                |                                               |
+----v--------------|&lt;~~~~~~~~~&gt;|---v----------------|&lt;~~~~~~~~~&gt;|---v----------------|&lt;~~~~~~~~~&gt;|------------------|---
+srv-1.a.domain.tld | 75Km Call | srv-1.b.domain.tld | 75Km Call | srv-1.c.domain.tld | 75Km Call | srv-1.d.domain.tld
+-------------------|&lt;~~~~~~~~~&gt;|--------------------|&lt;~~~~~~~~~&gt;|--------------------|&lt;~~~~~~~~~&gt;|----------------------
+relay to:          |   5 min   | relay to:          |   10 min  | relay to:          |  15 min   |
+srv-1.b.domain.tld |   500KB   | srv-1.c.domain.tld |   1.0MB   | srv-1.d.domain.tld |  1.5MB    |
 </screen>
+    </sect2>
+
+    <sect2 id="connectivity-dialup-policy-directcalls">
+    <title>Directing Calls To Transfer Data</title>
 
     <para>
         When the server computers make direct telephone calls (no bridge
@@ -469,15 +445,30 @@ srv-1.d.domain.tld       |   500KB    |
         call themselves to transfer data directly.
     </para>
 
+<screen>
++------------------------+             +---------------------+
+| To: bob@d.domain.tld   |             |    Bob's mailbox    |
+| From: mat@a.domain.tld |             | (Final destination) |
+| Body: 500KB            |             |                     |
++--|---------------------+             +------------------^--+
+   |                                                      | 
+---v---------------------|&lt;~~~~~~~~~~&gt;|-------------------|---
+srv-1.a.domain.tld       | 225Km Call | srv-1.d.domain.tld
+-------------------------|&lt;~~~~~~~~~~&gt;|-----------------------
+relay to:                |   5 min    |
+srv-1.d.domain.tld       |   500KB    |
+</screen>
+
     <para>
         The elapsed time in a server-to-server conversation is
         directly related to the amount of data that need to be moved
-        from one server to another. In a direct telephone call
-        configuration, telephone calls could result to be less
-        expensive than those in bridged configurations where server
-        computers may accumulate traffic from other server computers
-        in the path. The accumulation of traffic between server
-        computers increases the amount of time the last server
+        from one server to another and the baud rate of the connection
+        established between the two Modem devices. In a direct
+        telephone call configuration, telephone calls could result to
+        be less expensive than those in bridged configurations where
+        server computers may accumulate traffic from other server
+        computers in the path.  The accumulation of traffic between
+        server computers increases the amount of time the last server
         computer in the path before the final destination needs, in
         order to transmit everything to the final destination. In a
         bridged telephone call configuration, server computers acting
@@ -493,7 +484,7 @@ srv-1.d.domain.tld       |   500KB    |
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-lifetime">
-    <title>About Connection Lifetimes</title>
+    <title>Restricting PPP Connection Lifetimes</title>
 
     <para>
         The server computer restricts the lifetime of established
@@ -522,13 +513,14 @@ srv-1.d.domain.tld       |   500KB    |
     </sect2>
 
     <sect2 id="connectivity-dialup-services">
-    <title>About Supported Services</title>
+    <title>Providing Internet Services</title>
 
     <para>
-        The implementation of services that required persistent
-        connections (e.g., <application>chats</application>) should
-        not be considered as a practical offer inside the server
-        computer.  Instead, only asynchronous services (e.g.,
+        The implementation of internet services that required
+        persistent connections (e.g.,
+        <application>chats</application>) should not be considered as
+        a practical offer inside the server computer.  Instead, only
+        asynchronous services (e.g.,
         <application>e-mail</application>) should be supported. This
         restriction is required to reduce the connection time demanded
         by services. For example, consider an environment where you
