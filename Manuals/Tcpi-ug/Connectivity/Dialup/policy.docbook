@@ -31,8 +31,8 @@ ISP Phone: +53043515094
 
     <para>
         The server computer provides only one telephone line available
-        (e.g., +53043515094) to receive incoming calls.  This directly
-        affects the possibilities a client computer has to establish
+        (e.g., +53043515094) to receive incoming calls.  This affects
+        directly the possibilities a client computer has to establish
         connection with the server computer in an environment where
         several client computers are struggling among themselves to
         establish a dial-up connection with the server computer.  To
@@ -49,7 +49,7 @@ ISP Phone: +53043515094
 
     <para>
         The simpliest configuration we can achive over the telephone
-        network involves two computers only where one computer would
+        network involves two computers only, where one computer would
         be acting as server and another as client. In this
         configuration, the client computer establishes connection to
         the server to make use of internet services provided therein.
@@ -57,34 +57,37 @@ ISP Phone: +53043515094
 
     <para>
         When the client computer calls the server computer, the call
-        is attended by mgetty and then passed pppd to establish a PPP
-        conversation.  The first thing in the conversation is
-        authentication and if it passes then IPCP conversation takes
-        place to set IP addresses and start transmitting data over the
-        link. IP addresses need to be set when the Modem device is
-        configured (see <xref
-        linkend="connectivity-dialup-modem-config" />) or you can
-        leave it to the server computer to assign them for you
-        (assuming you are calling a server computer to establish
-        connection to it). If you are configuring a server computer,
-        then it is necessary that you set the IP address and netmask
-        of the IP network you are planning to set through a Modem
-        device (e.g., ppp0).
+        is attended by <application>mgetty</application> and then
+        passed to <application>pppd</application> for establishing a
+        PPP conversation between the two computers.  The first thing
+        in a PPP conversation is the user authentication and then
+        (after a sucessful athentication), the IPCP conversation takes
+        place to set IP addresses and start data transmission over the
+        link recently created. In this configuration, the client
+        computer can set its IP address when configuring the Modem
+        device (see <xref
+        linkend="connectivity-dialup-modem-config" />) or 
+        leave the server computer to assign one (assuming you are
+        calling a server computer). If you are configuring a server
+        computer, then it is necessary that you set the IP address and
+        netmask of the IP network you are planning to set, using the
+        Modem device configuration file.
     </para>
     
     <para>
-        Specifiying the IP information on the server computer is very
-        important, otherwise the network created may end up undefined
-        and this would provoke errors on data transmission.  When the
-        server computer doesn't set the network mask in the Modem
-        device configuration file, the <systemitem
-        class="daemon">pppd</systemitem> daemon would try to retrive
-        such information from the client computer and if the client
-        computer didn't specify either, the network recently created
-        would end up having a wrong network mask (e.g., <systemitem
+        Configuring the IP address and netmask information inside
+        Modem device configuration file is very important in order to
+        prevent errors when transmitting data across the link. When
+        the the netmask information isn't set in the Modem device
+        configuration file, the <systemitem
+        class="daemon">pppd</systemitem> daemon on the server computer
+        tries to retrive such information from the client computer and
+        if the client computer didn't specify one either, the network
+        recently created would end up having a wrong information
+        (e.g., <systemitem
         class="netmask">255.255.255.255</systemitem>) which provokes
-        the network to fail when someone tries to transfer data
-        through it.
+        the point-to-point connection to fail when someone tries to
+        transfer data through it.
     </para>
 
     <figure id="connectivity-dialup-policy-network-basic">
@@ -109,7 +112,7 @@ Provice-A PPP Server                          Province-A PPP Client
         describes the simpliest configuration we can implement for a
         point-to-point connection. This configuration involves two
         computers only, one acting as server (the server computer) and
-        other action as client (the client computer). The client
+        other acting as client (the client computer). The client
         computer calls the server computer to establish a PPP
         connection in order to use whatever internet service the
         server computer provides. In the figure we can see that there
@@ -123,16 +126,16 @@ Provice-A PPP Server                          Province-A PPP Client
     <para>
         This configuration might be convenient for people in the same
         location, near one another. Here, the client computer
-        establishes connection locally and can use whatever internet
-        service the server computer provides. Since the connection
-        lifetime is limited (see <xref
+        establishes connection by mean of a local telephone call and
+        can use whatever internet service the server computer
+        provides. Since the connection lifetime is limited (see <xref
         linkend="connectivity-dialup-policy-lifetime" />) and only two
         peers can be connected at the same time (assuming only one
-        modem is attached to the server computer), the implementation
-        of some internet services like chat aren't a practical offer
-        for the server computer to provide.  However, internet
-        services like e-mail fit perfectly on an environment where
-        more than one client computer will be struggling among
+        Modem is attached to the server computer), the implementation
+        of some internet services like chat may be not a practical
+        offer for the server computer to provide.  However, internet
+        services like e-mail fit perfectly on this environment where
+        more than one client computer would be struggling among
         themselves for establishing connection with the server
         computer (e.g., people connect to send/receive their e-mail
         messages to/from the server computer).
@@ -148,32 +151,44 @@ Provice-A PPP Server                          Province-A PPP Client
         linkend="connectivity-dialup-policy-network" />, it is
         possible to provide an extended version including several
         server computers that may communicate between themselves to
-        distribute data collected by the client computers they serve
-        to. For example, consider the telephone network of a country
-        which is organized in provinces and each province is divided
-        in several municipalities. In such organization, it would be
+        distribute data collected from client computers they serve to.
+        For example, consider the telephone network of a country which
+        is organized in provinces and each province is divided in
+        several municipalities. In such organization, it would be
         possible to set one or more server computers for each province
         and let near people to dial-up on them to use whatever
         internet service they provide.  Later, it could be possible
         for each server computer to establish a dial-up connections
         with other near server computers in order to share information
-        from one province to another. This configuration is
-        illustrated in <xref
-        linkend="connectivity-dialup-policy-network-extended.fig-1" />.
+        from one province to another, as it is illustrated in <xref
+        linkend="connectivity-dialup-policy-network-extended.fig-1"
+        />.
     </para>
 
     <para>
-        In this configuration, if someone in Province-A needs to send
-        a message to someone in Province-C (which is far away from
-        Province-A and making a telephone call there would imply a
-        considerable amount of money), there is no need (even it is
-        possible) for that person to realize a direct telephone call
-        from Province-A to Province-C. Instead, that person in
-        Province-A can send its messages to server A (the nearest
-        server on its location) making a local telephone call and
-        then, the server A would take care of delivering the
-        information using other servers following the same concept of
-        nearest delivery. 
+        When setting the IP information, it is important that each
+        server computer sets both IP address and IP network mask
+        information in the Modem device configuration file so
+        different IP address can be use between different server
+        computers. It is also important that they all be configured to
+        use authentication between themselves before transmitting any
+        data across a PPP established connection so the information
+        being transmitted can be protected.
+    </para>
+
+    <para>
+        When making telephone calls, if someone in Province-A needs to
+        send a message to someone in Province-C (which is far away
+        from Province-A and making a telephone call there would imply
+        a considerable amount of money), there is no need (even it is
+        possible and sometimes prefered) for that person to realize a
+        direct telephone call from Province-A to Province-C. Instead,
+        that person in Province-A can send its messages to the server
+        computer on its province (the nearest server on its location)
+        making a local telephone call and then, such server computer
+        would take care of delivering the information using other
+        server computers, following the same concept of nearest
+        delivery.
     </para>
 
     <figure id="connectivity-dialup-policy-network-extended.fig-1">
@@ -206,24 +221,25 @@ Provice-C PPP Server             |            Province-C PPP Client
     <para>
         The more distant a telephone call is, the more expensive it
         is. This way, to move information from one province to
-        another, server computers must be configured to send
+        another, each server computers must be configured to send
         information to the nearest province until reaching its
         destination. For example, if you are in Province-A and want to
         send an e-mail message to Province-D, the server computer
-        configuered in Province-A must sed the e-mail message to
-        Province-B, then server in Province-B must be configuered to
-        send such message to Province-C, and then C to D. This is
+        configured in Province-A must sed the e-mail message to
+        Province-B, then server in Province-B must be configured to
+        send such message to Province-C, and finally C to D. This is
         required because making a direct call from Province-A to
-        Province-D would be too much expensive.
+        Province-D would be otherwise too much expensive to pay.
     </para>
 
     <para>
         Since telephone calls are required to establish connections
         between computers and each call costs money based on the
         location and the destination, it is required to set a
-        convenction in this area, specially if you plan to realize
-        interprovincial telephone calls to interchange data with computer
-        servers on different provinces.
+        convenction in how telephone calls are realized from one
+        server computer to another, specially if you plan to establish
+        connection between server computer placed on different
+        provices in order to exchange data between them.
     </para>
     
     <itemizedlist>
@@ -241,21 +257,21 @@ Provice-C PPP Server             |            Province-C PPP Client
         your data to its destination? &mdash; This configuration could
         be less expensive to maintain (considering the telephone call
         distances), but data delivery will take much more time to
-        reach their destinations (and there is no way to be sure it
-        will do).
+        reach their destinations and there is no way to be sure it
+        will do.
     </para>
 
     </listitem>
     </itemizedlist>
 
     <para>
-        Whatever calling schema be choosed, the server computers will
+        Whatever calling schema be chosen, the server computers will
         always talk through UUCP to transfer data from one place to
         another. The server computers will operate with two IP
         addresses each, unless you plan to connect one of the server
         computers to a different network (Internet, maybe?). One IP
         address would identify the server computer itself and the
-        other would identify the client computer establishing
+        other would identify the client computer establishing PPP
         connection to the server computer.  In this configuration it
         is very importat that each server and client computer does
         have one unique IP address. This way it would be possible to
@@ -282,16 +298,16 @@ Provice-C PPP Server             |            Province-C PPP Client
     <title>One PPP+Ethernet network of several computers</title>
 
     <para>
-        Assuming all the server computers with a Modem interface
-        attached have also one (or more) Ethernet interface attached
-        (which is very common nowadays), it would be possible to
-        extend the configuration described in <xref
+        Assuming all server computers with a Modem device have also
+        one (or more) Ethernet interface attached (which is very
+        common nowadays), it would be possible to extend the
+        configuration described in <xref
         linkend="connectivity-dialup-policy-network-extended.fig-1" />
-        creating one Ethernet network for each server and client
-        computer in the configuration. For this configuration to be
-        implemented it is also required one switch device for each
-        computer with having both the Ethernet and Modem interface, as
-        described in <xref
+        creating one Ethernet network for each server computer in the
+        configuration. For this configuration to be implemented it is
+        required one or more switch devices (based on the amount of
+        computers such network needs to have) for each ethernet
+        network interface a server computer has, as described in <xref
         linkend="connectivity-dialup-policy-network-extended.fig-2"
         />.
     </para>
@@ -360,22 +376,28 @@ Province-C ETH Clients
         In this configuration, computers connected to the switch will
         also be considered as client computers. It is necessary that a
         coordination be implemented at time of setting IP addresses to
-        new server computers so no IP address be duplicated. The
-        illustration above, describes one main network (192.168.0/24)
-        which connects all the server computers using the telephone
-        lines as medium for data transmission. Using the Modem
-        interface it is possible to connect just one client computer
-        at a time (assuming only one modem is availalble in the server
-        computer).
-    </para>
-
-    <para>
-        The telephone line is used by client computers to establish
-        PPP connections with the server computer and by server
-        computers to interchange data with other server computers, as
-        well. On the other hand, the ethernet interface attached to
-        each server computer let the administrator of that server
-        computer to connect up to 252 computers simultaneously.
+        new server computers so no IP address be duplicated on the
+        computer network. The illustration above describes one main
+        network (<systemitem
+        class="ipaddress">192.168.1/24</systemitem>) which connects
+        all the server computers using the telephone lines as medium
+        for data transmission. The Modem interface connects just one
+        computer at a time either client or server (assuming only one
+        Modem device is installed and configured in
+        the computer acting as server).  The telephone line is used by
+        client computers to establish PPP connections with the server
+        computer and by server computers to exchange data with other
+        server computers, as well. On the other hand, the ethernet
+        interface attached to each server computer let the
+        administrator of each server computer to connect up to 252
+        computers simultaneously, assuming a class C network as shown
+        above be used.<footnote>
+        <para>
+        There are also class A and class B network types which can be
+        used to connect much more computers than a class C network
+        allows to.
+        </para>
+        </footnote>
     </para>
 
     </sect2>
@@ -385,12 +407,13 @@ Province-C ETH Clients
  
     <para>
         When the server computers call other server computers to
-        bridge data delivery, the server computer in Province-A
-        (srv-1.a.domain.tld) will never know that there is a server
-        computer on Province-C (srv-1.c.domain.tld) or Province-D
-        (srv-1.d.domain.tld), but in Province-B (srv-1.b.domain.tld)
+        bridge data delivery, the server computer in, let's say,
+        Province-A (srv-1.a.domain.tld) will never know that there is
+        a server computer on Province-C (srv-1.c.domain.tld) or
+        Province-D (srv-1.d.domain.tld), but in Province-B
+        (srv-1.b.domain.tld)
         only, its nearest location.  So, when a message is sent from
-        srv-1.d.domain.tld to the server computer in
+        srv-1.a.domain.tld to the server computer in
         srv-1.d.domain.tld, the server computer in srv-1.a.domain.tld
         contacts its nearest server computer (i.e.,
         srv-1.b.domain.tld) and delivers to it all messages sent to
@@ -400,14 +423,14 @@ Province-C ETH Clients
         computer (i.e., srv-1.c.domain.tld).  Later, the server
         computer in srv-1.c.domain.tld, which knows about
         srv-1.d.domain.tld, delivers to it all the messages it has for
-        it. Notice that, in order for this configuration to work, it
-        is required that all the server computer administrators do
-        work syncronized to garantee a well defined route for messages
-        to follow.  Otherwise, if one of the server computers in the
-        path creates a route for a server computer that doesn't exist
+        it. Notice that, in order for this configuration to work,
+        system administrators attending the server computers must work
+        syncronized to garantee a well defined route for messages to
+        follow.  Otherwise, if one of the server computers in the path
+        creates a route for a server computer that doesn't exist
         (or doesn't define a route at all), the information will never
         reach its destination when such computer is acting as a bridge
-        between the source and the target server computer.
+        between other two server computers.
     </para>
 
 <screen>
@@ -429,20 +452,22 @@ srv-1.b.domain.tld |   500KB   | srv-1.c.domain.tld |   1.0MB   | srv-1.d.domain
     <title>Directing Calls To Transfer Data</title>
 
     <para>
-        When the server computers make direct telephone calls (no bridge
-        in-between is used to transfer data), the server computer in
-        Province-A (srv-1.a.domain.tld) contacts the server computer
-        in Province-D (srv-1.d.domain.tld) making a direct telephone call
-        to it. In this configuration, the telephone call might cost more
-        than a bridged configuration where several smaller telephone calls
-        are dialed between the data origin and the data destination;
-        or less, considering that when server computers in a bridged
-        configuration interchange data they may move data accumulated
-        from other server computers, while a direct telephone call would
-        transmit data from one server computer to another without
-        intermediate steps. There is no need to overload the server
-        computers with foreign data when each server computer could
-        call themselves to transfer data directly.
+        When the server computers make direct telephone calls (no
+        bridge in-between is used to transfer data), the server
+        computer in Province-A (srv-1.a.domain.tld) contacts the
+        server computer in Province-D (srv-1.d.domain.tld) making a
+        direct telephone call up to it. In this configuration, the
+        telephone call might cost more than those in a bridged
+        configuration where several smaller telephone calls are dialed
+        in-between the final server computer; or less, considering
+        that when server computers in a bridged configuration exchange
+        data they may move data accumulated from other server
+        computers, while a direct telephone call would transmit data
+        from one server computer to another without any accumulated
+        data from other server computers.  There is no need to
+        overload the server computers with foreign data when each
+        server computer could call themselves to transfer data
+        directly.
     </para>
 
 <screen>
@@ -473,12 +498,12 @@ srv-1.d.domain.tld       |   500KB    |
         order to transmit everything to the final destination. In a
         bridged telephone call configuration, server computers acting
         as bridges do act as servers as well and produce their own
-        traffic which is sumed to that one already accumulated in
-        them. This may provoke a heugh traffic in a server-to-server
-        conversation (remarkably on the last destination before the
-        final destination), that could be potentially increased with
-        each new server computer added to the string of server
-        computers acting as bridges one another.
+        traffic which is added to that one already accumulated in
+        them from other server computers. This may provoke a heugh
+        traffic in a server-to-server conversation (remarkably on the
+        last destination before the final destination), that could be
+        potentially increased with each new server computer added to
+        the string of server computers acting as bridges one another.
     </para>
 
     </sect2>
@@ -504,7 +529,7 @@ srv-1.d.domain.tld       |   500KB    |
         range of time, the telephone could be answered by somebody,
         not the computer. This control can be implemented through a
         cron job and the <filename>/etc/nologin.ttyxx</filename> file;
-        where ttyxx represents the device name of your modem (e.g.,
+        where ttyxx represents the device name of your Modem (e.g.,
         <filename>/etc/nologin.ttyACM0</filename> would prevent the
         Modem device installed in <filename>/dev/ttyACM0</filename>
         from answering calls).
@@ -516,25 +541,26 @@ srv-1.d.domain.tld       |   500KB    |
     <title>Providing Internet Services</title>
 
     <para>
-        The implementation of internet services that required
+        The implementation of internet services which require
         persistent connections (e.g.,
         <application>chats</application>) should not be considered as
-        a practical offer inside the server computer.  Instead, only
+        a practical offer for PPP client computers.  Instead, only
         asynchronous services (e.g.,
-        <application>e-mail</application>) should be supported. This
-        restriction is required to reduce the connection time demanded
-        by services. For example, consider an environment where you
-        connect to the server computer for sending/receiving e-mails
-        messages and then quickly disconnect from it to free the
-        telephone line for others to use.  In this environment, there
-        is no need for you and other person to be both connected at
-        the same time to send/receive e-mail messages to/from each
-        other.  The e-mails sent from other person to you will be
-        available in your mailbox the next time you get connected to
-        the server computer and use your e-mail client to send/receive
-        e-mail messages.  Likewise, you don't need to be connected to
-        the server computer in order to write your e-mail messages.
-        You can write down your messages off-line and then establish
+        <application>e-mail</application>) should be supported for
+        them. This restriction is required to reduce the connection
+        times demanded such services. For example, consider an
+        environment where you establish connection with a server
+        computer to send/receive e-mails messages and then quickly
+        disconnect from it to free the telephone line so others be
+        able of using it.  In this environment, there is no need for
+        you and others to be both connected at the same time to
+        send/receive e-mail messages to/from each other.  The e-mails
+        sent from other person to you will be available in your
+        mailbox the next time you get connected to the server computer
+        and use your e-mail client to send/receive e-mail messages.
+        Likewise, you don't need to be connected to the server
+        computer in order to write your e-mail messages.  You can
+        write down your messages off-line and then establish
         connection once you've finished writing, just to send them out
         and receive new messages that could have been probably sent to
         you.
