@@ -2,14 +2,31 @@
 
     <title>Usage Convenctions</title>
 
+    <sect2 id="connectivity-dialup-policy-os">
+    <title>GNU/Linux Distribution</title>
+    <para>
+        The operating system used by both server and client computers
+        will be &TCD; release 5.5<footnote>
+        <para>
+            I want to thank my friend Manual Chavez Manzano (Manny)
+            for finding a way to download this release of &TCD; and
+            bring it to me as a gift.
+        </para>
+        </footnote> (even higher releases might be used too). The
+        configuration described in this book doesn't use third party
+        software. All the software needed is available inside &TCD;.
+    </para>
+
+    </sect2>
+
     <sect2 id="connectivity-dialup-policy-auth">
     <title>Authenticating PPP Users</title>
 
     <para>
         The client computers will need to authenticate against the
         server computer each time they intend to establish a PPP
-        connection. The username and password required by the client
-        computers will be public and will rarely change.
+        connection. The username and password required by client
+        computers will be public and will be rarely changed.
     </para>
 
     <example id="connectivity-dialup-policy-auth.fig-1">
@@ -45,7 +62,7 @@ ISP Phone: +53043515094
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-network">
-    <title>One PPP network of two computers</title>
+    <title>One PPP Network Of Two Computers</title>
 
     <para>
         The simpliest configuration we can achive over the telephone
@@ -144,7 +161,7 @@ Provice-A PPP Server                          Province-A PPP Client
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-network-extended">
-    <title>One PPP network of several computers</title>
+    <title>One PPP Network Of Several Computers</title>
 
     <para>
         Based on <xref
@@ -295,7 +312,7 @@ Provice-C PPP Server             |            Province-C PPP Client
     </sect2>
 
     <sect2 id="connectivity-dialup-policy-network-eth">
-    <title>One PPP+Ethernet network of several computers</title>
+    <title>One PPP+Ethernet Network Of Several Computers</title>
 
     <para>
         Assuming all server computers with a Modem device have also
@@ -520,20 +537,28 @@ srv-1.d.domain.tld       |   500KB    |
         control can be implemented through the
         <option>maxconnect</option> and <option>idle</option> options
         inside the <application>pppd</application>'s configuration
-        file.
+        file as described in <xref
+        linkend="connectivity-dialup-server-pppd-options" />.
     </para>
 
     <para>
-        The server computer will attend incoming calls from client
+        The server computer restricts the incoming calls from client
         computers every night from 10:00PM to 12:00AM. Outside this
-        range of time, the telephone could be answered by somebody,
-        not the computer. This control can be implemented through a
-        cron job and the <filename>/etc/nologin.ttyxx</filename> file;
+        range of time, the telephone could be answered by a person,
+        not a computer. This control can be implemented through a cron
+        job and the <filename>/etc/nologin.ttyxx</filename> file;
         where ttyxx represents the device name of your Modem (e.g.,
         <filename>/etc/nologin.ttyACM0</filename> would prevent the
         Modem device installed in <filename>/dev/ttyACM0</filename>
         from answering calls).
     </para>
+
+<screen>
+# Activate Modem to attend incoming calls.
+59 21 * * * [ -f /etc/nologin.ttyACM0 ] &amp;&amp; /bin/rm /etc/nologin.ttyACM0
+# Deactivate Modem to prevent incoming calls from being attended. 
+59 23 * * * [ ! -f /etc/nologin.ttyACM0 ] &amp;&amp; /bin/touch /etc/nologin.ttyACM0
+</screen>
 
     </sect2>
 
