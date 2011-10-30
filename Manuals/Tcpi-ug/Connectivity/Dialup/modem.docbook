@@ -61,7 +61,13 @@ Bus 004 Device 001: ID 0000:0000
     <para>
         The relevant line here is that one mentioning the existence of
         a <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB
-        (new firmware)</code> device. This line confirms that your
+        (new firmware)</code><footnote>
+        <para>
+            I want to thank my friend Brians Suarez Alonso for
+            bringing this Modem to me and for his paitient, resisting
+            my repetitive calls at night to realize connection tests.
+        </para>
+        </footnote> device. This line confirms that your
         Modem hardware is supported by &TCD; and it is possible to
         transmit data through it.  Otherwise, if the Modem you
         installed doesn't appear in this list, it is probably because
