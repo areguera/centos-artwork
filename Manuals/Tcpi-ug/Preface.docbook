@@ -7,32 +7,24 @@
     </para>
 
     <para>
-        This book describes how you can use the telephone network to
-        share the development of &TCAR; with me, in a political system
-        where the telephone line is the only communication network
-        most people have (still limitted) access to. This book
-        provides a guide you and your friends can follow to build your
-        own collaborative networks using computers and the telephone
-        network of your country.
+        This book describes you can use the telephone network to
+        create a collaborative network using computers.
     </para>
 
     <para>
         To implement the configuration described in this book, you
         need two or more computers connected to the telephone network
-        of your country by mean of modem devices. Optionally, to
-        extend the entire network, you could use Ethternet devices to
-        create local area networks (LANs) on both ends of each
-        connection established over the telephone network able of
-        exchanging data between themselves. For example, consider an
-        infrastructure where you have one LAN for each province in
-        your country and then, each of these LANs are connected using
-        the country's telephone network. Each LAN would have one or
-        more server computers to concentrate the information produced
-        by that province and then, using the telephone network, each
-        server computer would be able of exchanging data between
-        themselves.  This infrastructure would be as expensive as a
-        national telephone call would be (without counting the
-        electrical power consume required by computers, of course).
+        of your country by mean of modem devices. Optionally, you
+        could use Ethernet devices (e.g., switches) to create local
+        area networks (LANs) on both ends of each connection
+        established over the telephone network for sharing information
+        between them. For example, consider an infrastructure where
+        you have one LAN for each province in your country and then,
+        each of these LANs is connected one another to share
+        information between them using the country's telephone
+        network.  This infrastructure would be as expensive as a
+        national telephone call would be (without counting the consume
+        of electrical power required by computers, of course).
     </para>
 
     <para>
@@ -43,22 +35,25 @@
     <itemizedlist>
     <listitem>
     <para>
-        <xref linkend="connectivity" /> describes how to link
-        computers in order to make internet services described in
-        <xref linkend="services" /> available to other computers.
+        <xref linkend="connectivity" /> describes how to configure
+        server and client computers to transfer IP packages through
+        the telephone network. This is the first step you need to
+        setup in order to use the internet services described in <xref
+        linkend="services" />.
     </para>
     </listitem>
     <listitem>
     <para>
-        <xref linkend="services" /> describes how to configure
-        computers to provide internet services and also exchange
-        information between computers using the media described in
-        <xref linkend="connectivity" />.
+        <xref linkend="services" /> describes how to configure server
+        and client computers to exchange information using internet
+        services over the telephone network. Once you complete this
+        step, your collaborative network should be ready for
+        production.
     </para>
     </listitem>
     <listitem>
     <para>
-        <xref linkend="licenses" /> contains the lincense documents
+        <xref linkend="licenses" /> describes the lincense documents
         mentioned in this book.
     </para>
     </listitem>
