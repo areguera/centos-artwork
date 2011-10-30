@@ -18,13 +18,12 @@
         Later, for attending connection requests, you need to
         configure <application>mgetty</application> to use the
         <application>pppd</application> program, so the Point-to-Point
-        Protocol (PPP) can be talked and IP packages can be
-        interchanged between the client computer and the server
-        computer. Later, you need to configure
-        <application>pppd</application> to adjust it to your needs
-        (see <xref linkend="connectivity-dialup-server-pppd-options"
-        />)Once you've configured both
-        <application>mgetty</application> and
+        Protocol (PPP) can be talked and IP packages can be exchange
+        between the client computer and the server computer. Later,
+        you need to configure <application>pppd</application> to
+        adjust it to your needs (see <xref
+        linkend="connectivity-dialup-server-pppd-options" />). Once
+        you've configured both <application>mgetty</application> and
         <application>pppd</application> programs, the server computer
         should be ready to attend incoming calls.
     </para>
@@ -83,9 +82,10 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
 </screen>
 
     <para>
-        Notice that both local and remote IP address are set here. All
-        other options are taken from the <filename>options</filename>
-        file (see <xref
+        In this configuration, we set both local and remote IP
+        addresses to fix the IP information used by computers once the
+        PPP connection has been established.  All other options are
+        taken from the <filename>options</filename> file (see <xref
         linkend="connectivity-dialup-server-pppd-options" />). If we
         don't specify both local and remote IP addresses when pppd is
         initialized, pppd will try to take such information from the
@@ -192,7 +192,7 @@ auth
 lock
 
 # Specify which DNS Servers the incoming Win95 or WinNT Connection
-# should use Two Servers can be remotely configured
+# should use Two Servers can be remotely configured.
 ms-dns 192.168.1.1
 
 # If this option is given, pppd will send an LCP echo-request frame to
@@ -278,7 +278,7 @@ noipx
     <title><filename>/etc/pppd/pap-secrets</filename></title>
     <para>
         This file contains the same information of
-        <filename>pap-secrets</filename> file does. See <xref
+        <filename>cha-secrets</filename> file does. See <xref
         linkend="connectivity-dialup-server-pppd-cha" />. 
     </para>
     </sect3>
