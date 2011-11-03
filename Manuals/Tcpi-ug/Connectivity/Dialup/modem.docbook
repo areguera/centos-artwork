@@ -5,44 +5,48 @@
     <para>
         In order to establish a PPP link between two computers using
         the telephone line as medium for data transmission, you need
-        to install and configure one Modem device in each computer. On
-        the other hand, if you're planning to connect the same
-        computer to different networks simultaneously (e.g., to build
-        a proxy between them), you will need to install and configure
-        one Modem device for each different network you plan to
-        establish such simultaneous connection on.
+        to install and configure one Modem device in each computer you
+        are connecting in. On the other hand, if you're planning to
+        connect the same computer to different networks simultaneously
+        (e.g., to build a proxy between them), you will need to
+        install and configure one Modem device for each different
+        network you plan to establish such simultaneous connection on.
     </para>
     
     <sect2 id="connectivity-dialup-modem-install">
     <title>Installing Modem Devices</title>
     <para>
-        To install a Modem device in a computer you need to attach the
-        Modem hardware to the computer and later the telephone line to
-        the Modem hardware. To attach the Modem hardware to your
-        computer, you need to connect the serial or USB cable that
-        comes from the Modem hardware to the appropriate input on your
-        computer. To connect the Modem hardware to the telephone line
-        system, you need to unplug the cable that connects your
-        telephone device and plug it on the Modem device, specifically
-        in the port reserved for data transmission.  Later, using a
-        similar cable, you could connect your telephone device to the
-        Modem's telephone port, so you can realize telephone calls
-        when no data transmition take place, as well.
+        To install a Modem device in the computer, you need to attach
+        the Modem hardware to the computer and later the telephone
+        line to the Modem hardware. To attach the Modem hardware to
+        your computer, you need to connect the serial or USB cable
+        that comes from the Modem hardware to the appropriate input on
+        your computer (whether serial or USB). To connect the Modem
+        hardware to the telephone line system, you need to unplug the
+        cable that connects your telephone device and plug it on the
+        Modem device, specifically in the port reserved for data
+        transmission.  Later, using a similar cable, you could connect
+        your telephone device to the Modem's telephone port, so you
+        can realize telephone calls when no data transmition take
+        place through Modem's data port.
     </para>
 
     <para>
-        To be on the safe side, do all the installation with the
-        computer turned off. Then, when everthing has been put in
-        place, turn the computer on. Once the system is up, you can
-        verify the Modem hardware using either the
-        <command>lsusb</command> or <command>lspci</command> commands.
-        These commands need to be run with administrative privileges,
-        so probably need to <command>sudo</command> them or login as
-        <systemitem class="username">root</systemitem> user in order
-        to execute them. For example, assuming you are logged in as
-        <systemitem class="username">root</systemitem> user, and you
-        are using an USB Modem like that one we mentioned before, the
-        output of <command>lsusb</command> command would look like the
+        To be on the safe side, do everything related to hardware
+        installation with the computer turned off. Then, when
+        everthing has been put in place, turn the computer on. Once
+        the operating system is up and running, you can verify the
+        Modem hardware using either the <command>lsusb</command> or
+        <command>lspci</command> commands, based on whether you
+        attached the Modem device to an USB or serial port,
+        respectivly.  These commands need to be run with
+        administrative privileges, so probably need to
+        <command>sudo</command> them or login as <systemitem
+        class="username">root</systemitem> user in order to execute
+        them. For example, assuming you are logged in as <systemitem
+        class="username">root</systemitem> user, and you are using an
+        USB Modem like that one we mentioned before, the output of
+        <command>lsusb</command> command would be similar to that
         following:
     </para>
 
@@ -59,19 +63,20 @@ Bus 004 Device 001: ID 0000:0000
 </screen>
 
     <para>
-        The relevant line here is that one mentioning the existence of
-        a <code>Multi-Tech System, Inc. MT5634ZBA-USB MultiModemUSB
-        (new firmware)</code><footnote>
+        The relevant line in this output is that one mentioning the
+        existence of your Modem. For example, <code>Multi-Tech System,
+        Inc.  MT5634ZBA-USB MultiModemUSB (new
+        firmware</code>)<footnote>
         <para>
             I want to thank my friend Brians Suarez Alonso for
             bringing this Modem to me and for his paitient, resisting
             my repetitive calls at night to realize connection tests.
         </para>
-        </footnote> device. This line confirms that your
-        Modem hardware is supported by &TCD; and it is possible to
-        transmit data through it.  Otherwise, if the Modem you
-        installed doesn't appear in this list, it is probably because
-        such hardware is not supported by &TCD;, yet.
+        </footnote>. This line confirms that your Modem hardware is
+        supported by &TCD; and it is possible to transmit data through
+        it.  Otherwise, if the Modem you installed doesn't appear in
+        this list, it is probably because such hardware is not
+        supported by &TCD;, yet.
     </para>
 
     <para>
@@ -83,11 +88,11 @@ Bus 004 Device 001: ID 0000:0000
         <application>wvdial</application>, so they can know what
         device to talk to.  Assuming you've connected your Modem
         device through an USB port, the operating system might use the
-        the <filename>/dev/ttyACM0</filename> file to talk to it. On
-        the other hand, assuming you've connected your Modem device
+        <filename>/dev/ttyACM0</filename> device file to talk to it.
+        On the other hand, assuming you've connected your Modem device
         through a serial port, the operating system might use the
-        <filename>/dev/ttyS0</filename> file to talk to it.  To be
-        absolutly sure about what device name the operating system
+        <filename>/dev/ttyS0</filename> device file to talk to it.  To
+        be absolutly sure about what device name the operating system
         assigned to your Modem hardware, you can use the
         <application>wvdialconf</application> program from
         <package>wvdial</package> package or the
@@ -142,7 +147,7 @@ MODEMPORT=/dev/ttyACM0
 PROVIDER=ProviderName
 DEFROUTE=yes
 PERSIST=no
-PAPNAME=a
+PAPNAME=faith
 WVDIALSECT=ProviderName
 MODEMNAME=Modem0
 DEMAND=no
