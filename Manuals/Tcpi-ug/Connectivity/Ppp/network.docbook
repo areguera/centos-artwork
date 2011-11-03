@@ -7,7 +7,7 @@
         client computers to create a collaborative network.
     </para>
     
-    <sect2 id="connectivity-dialup-policy-network">
+    <sect2 id="connectivity-ppp-policy-network">
     <title>One PPP Network Of Two Computers</title>
 
     <para>
@@ -29,7 +29,7 @@
         link recently created. In this configuration, the client
         computer can set its IP address when configuring the Modem
         device (see <xref
-        linkend="connectivity-dialup-modem-config" />) or 
+        linkend="connectivity-ppp-modem-config" />) or 
         leave the server computer to assign one (assuming you are
         calling a server computer). If you are configuring a server
         computer, then it is necessary that you set the IP address and
@@ -53,7 +53,7 @@
         transfer data through it.
     </para>
 
-    <figure id="connectivity-dialup-policy-network-basic">
+    <figure id="connectivity-ppp-policy-network-basic">
     <title>One PPP network of two computers</title>
     <screenshot>
     <screeninfo>One PPP network of two computers</screeninfo>
@@ -71,7 +71,7 @@ Provice-A PPP Server                          Province-A PPP Client
     </figure>
 
     <para>
-        The <xref linkend="connectivity-dialup-policy-network-basic" />
+        The <xref linkend="connectivity-ppp-policy-network-basic" />
         describes the simpliest configuration we can implement for a
         point-to-point connection. This configuration involves two
         computers only, one acting as server (the server computer) and
@@ -92,7 +92,7 @@ Provice-A PPP Server                          Province-A PPP Client
         establishes connection by mean of a local telephone call and
         can use whatever internet service the server computer
         provides. Since the connection lifetime is limited (see <xref
-        linkend="connectivity-dialup-policy-lifetime" />) and only two
+        linkend="connectivity-ppp-policy-lifetime" />) and only two
         peers can be connected at the same time (assuming only one
         Modem is attached to the server computer), the implementation
         of some internet services like chat may be not a practical
@@ -106,12 +106,12 @@ Provice-A PPP Server                          Province-A PPP Client
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-policy-network-extended">
+    <sect2 id="connectivity-ppp-policy-network-extended">
     <title>One PPP Network Of Several Computers</title>
 
     <para>
         Based on <xref
-        linkend="connectivity-dialup-policy-network" />, it is
+        linkend="connectivity-ppp-policy-network" />, it is
         possible to provide an extended version including several
         server computers that may communicate between themselves to
         distribute data collected from client computers they serve to.
@@ -124,7 +124,7 @@ Provice-A PPP Server                          Province-A PPP Client
         for each server computer to establish a dial-up connections
         with other near server computers in order to share information
         from one province to another, as it is illustrated in <xref
-        linkend="connectivity-dialup-policy-network-extended.fig-1"
+        linkend="connectivity-ppp-policy-network-extended.fig-1"
         />.
     </para>
 
@@ -154,7 +154,7 @@ Provice-A PPP Server                          Province-A PPP Client
         delivery.
     </para>
 
-    <figure id="connectivity-dialup-policy-network-extended.fig-1">
+    <figure id="connectivity-ppp-policy-network-extended.fig-1">
     <title>One PPP network of several computers</title>
     <screenshot>
     <screeninfo>One PPP network of several computers</screeninfo>
@@ -257,7 +257,7 @@ Provice-C PPP Server             |            Province-C PPP Client
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-policy-network-eth">
+    <sect2 id="connectivity-ppp-policy-network-eth">
     <title>One PPP+Ethernet Network Of Several Computers</title>
 
     <para>
@@ -265,17 +265,17 @@ Provice-C PPP Server             |            Province-C PPP Client
         one (or more) Ethernet interface attached (which is very
         common nowadays), it would be possible to extend the
         configuration described in <xref
-        linkend="connectivity-dialup-policy-network-extended.fig-1" />
+        linkend="connectivity-ppp-policy-network-extended.fig-1" />
         creating one Ethernet network for each server computer in the
         configuration. For this configuration to be implemented it is
         required one or more switch devices (based on the amount of
         computers such network needs to have) for each ethernet
         network interface a server computer has, as described in <xref
-        linkend="connectivity-dialup-policy-network-extended.fig-2"
+        linkend="connectivity-ppp-policy-network-extended.fig-2"
         />.
     </para>
 
-    <figure id="connectivity-dialup-policy-network-extended.fig-2">
+    <figure id="connectivity-ppp-policy-network-extended.fig-2">
     <title>One PPP+Ethernet network of several computers</title>
     <screenshot>
     <screeninfo>One PPP+Ethernet network of several computers</screeninfo>
@@ -365,7 +365,7 @@ Province-C ETH Clients
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-policy-bridgedcall">
+    <sect2 id="connectivity-ppp-policy-bridgedcall">
     <title>About Bridging Calls To Transfer Data</title>
  
     <para>
@@ -411,7 +411,7 @@ srv-1.b.domain.tld |   500KB   | srv-1.c.domain.tld |   1.0MB   | srv-1.d.domain
 </screen>
     </sect2>
 
-    <sect2 id="connectivity-dialup-policy-directcalls">
+    <sect2 id="connectivity-ppp-policy-directcalls">
     <title>About Directing Calls To Transfer Data</title>
 
     <para>
@@ -471,7 +471,7 @@ srv-1.d.domain.tld       |   500KB    |
 
     </sect2>
     
-    <sect2 id="connectivity-dialup-policy-auth">
+    <sect2 id="connectivity-ppp-policy-auth">
     <title>About Authenticating PPP Users</title>
 
     <para>
@@ -481,7 +481,7 @@ srv-1.d.domain.tld       |   500KB    |
         computers will be public and will be rarely changed.
     </para>
 
-    <example id="connectivity-dialup-policy-auth.fig-1">
+    <example id="connectivity-ppp-policy-auth.fig-1">
     <title>Credentials for PPP authentication</title>
     <screenshot>
     <screeninfo>Credentials for PPP authentication</screeninfo>
@@ -513,7 +513,7 @@ ISP Phone: +53043515094
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-policy-lifetime">
+    <sect2 id="connectivity-ppp-policy-lifetime">
     <title>About Restricting PPP Connections</title>
 
     <para>
@@ -526,7 +526,7 @@ ISP Phone: +53043515094
         <option>maxconnect</option> and <option>idle</option> options
         inside the <application>pppd</application>'s configuration
         file as described in <xref
-        linkend="connectivity-dialup-server-pppd-options" />.
+        linkend="connectivity-ppp-server-pppd-options" />.
     </para>
 
     <para>
@@ -550,7 +550,7 @@ ISP Phone: +53043515094
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-services">
+    <sect2 id="connectivity-ppp-services">
     <title>About Providing Internet Services</title>
 
     <para>

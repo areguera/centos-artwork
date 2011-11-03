@@ -1,4 +1,4 @@
-<sect1 id="connectivity-dialup-server">
+<sect1 id="connectivity-ppp-server">
 
     <title>The Server Computer</title>
 
@@ -14,7 +14,7 @@
         configured to start with <systemitem
         class="daemon">init</systemitem> daemon so you need to do it
         yourself (see <xref
-        linkend="connectivity-dialup-server-mgetty-inittab" />).
+        linkend="connectivity-ppp-server-mgetty-inittab" />).
         Later, for attending connection requests, you need to
         configure <application>mgetty</application> to use the
         <application>pppd</application> program, so the Point-to-Point
@@ -22,13 +22,13 @@
         between the client computer and the server computer. Later,
         you need to configure <application>pppd</application> to
         adjust it to your needs (see <xref
-        linkend="connectivity-dialup-server-pppd-options" />). Once
+        linkend="connectivity-ppp-server-pppd-options" />). Once
         you've configured both <application>mgetty</application> and
         <application>pppd</application> programs, the server computer
         should be ready to attend incoming calls.
     </para>
 
-    <sect2 id="connectivity-dialup-server-mgetty">
+    <sect2 id="connectivity-ppp-server-mgetty">
     <title><package>mgetty</package></title>
     <para>
         Taken from <command>mgetty</command> man page: &mdash; Mgetty
@@ -48,7 +48,7 @@
         configuring.
     </para>
 
-    <sect3 id="connectivity-dialup-server-mgetty-inittab">
+    <sect3 id="connectivity-ppp-server-mgetty-inittab">
     <title><filename>/etc/inittab</filename></title>
 <screen>
 # Run mgetty to control a Multi-Tech (MT5634ZBA-USB) modem attached to
@@ -58,7 +58,7 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
 </screen>
     </sect3>
 
-    <sect3 id="connectivity-dialup-server-mgetty-login">
+    <sect3 id="connectivity-ppp-server-mgetty-login">
     <title><filename>/etc/mgetty+sendfax/login.config</filename></title>
 <screen>
 # Automatic PPP startup on receipt of LCP configure request (AutoPPP).
@@ -86,7 +86,7 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
         addresses to fix the IP information used by computers once the
         PPP connection has been established.  All other options are
         taken from the <filename>options</filename> file (see <xref
-        linkend="connectivity-dialup-server-pppd-options" />). If we
+        linkend="connectivity-ppp-server-pppd-options" />). If we
         don't specify both local and remote IP addresses when pppd is
         initialized, pppd will try to take such information from the
         first Modem device you configured (e.g., ppp0) and will expect
@@ -107,7 +107,7 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
         information of the network they are creating. So, to do it on
         the server computer (the one receiving calls), it is needed to
         set the netmask definition in the Modem device configuration
-        file of it (<xref linkend="connectivity-dialup-modem-config"
+        file of it (<xref linkend="connectivity-ppp-modem-config"
         />) along with the local IP address. Otherwise, even local and
         remote IP addresses be specified through the pppd, the
         connection will end up having the 255.255.255.255 netmask
@@ -130,14 +130,14 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
 
     </sect3>
 
-    <sect3 id="connectivity-dialup-server-mgetty-dialin">
+    <sect3 id="connectivity-ppp-server-mgetty-dialin">
     <title><filename>/etc/mgetty+sendfax/dialin.config</filename></title>
     <para>
         I didn't touch this file, but you might need to.
     </para>
     </sect3>
 
-    <sect3 id="connectivity-dialup-server-mgetty-config">
+    <sect3 id="connectivity-ppp-server-mgetty-config">
     <title><filename>/etc/mgetty+sendfax/mgetty.config</filename></title>
     <para>
         I didn't touch this file, but you might need to.
@@ -146,7 +146,7 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
 
     </sect2>
 
-    <sect2 id="connectivity-dialup-server-pppd">
+    <sect2 id="connectivity-ppp-server-pppd">
     <title><package>pppd</package></title>
     <para>
         Taken from pppd man page: &mdash; PPP is the protocol used for
@@ -168,7 +168,7 @@ ACM0:2345:respawn:/sbin/mgetty -D ttyACM0
         understand what you are configuring.
     </para>
 
-    <sect3 id="connectivity-dialup-server-pppd-options">
+    <sect3 id="connectivity-ppp-server-pppd-options">
     <title><filename>/etc/pppd/options</filename></title>
 <screen>
 # Enables connection debugging facilities.  If this option is given,
@@ -226,7 +226,7 @@ noipx
 </screen>
     </sect3>
 
-    <sect3 id="connectivity-dialup-server-pppd-cha">
+    <sect3 id="connectivity-ppp-server-pppd-cha">
     <title><filename>/etc/pppd/cha-secrets</filename></title>
 <screen>
 # Secrets for authentication using CHAP
@@ -274,12 +274,12 @@ noipx
 
     </sect3>
 
-    <sect3 id="connectivity-dialup-server-pppd-pap">
+    <sect3 id="connectivity-ppp-server-pppd-pap">
     <title><filename>/etc/pppd/pap-secrets</filename></title>
     <para>
         This file contains the same information of
         <filename>cha-secrets</filename> file does. See <xref
-        linkend="connectivity-dialup-server-pppd-cha" />. 
+        linkend="connectivity-ppp-server-pppd-cha" />. 
     </para>
     </sect3>
 
