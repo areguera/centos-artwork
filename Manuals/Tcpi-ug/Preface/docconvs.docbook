@@ -11,215 +11,58 @@
         following:
     </para>
 
-    <variablelist>
-        <varlistentry>
-        <term><command>command</command></term>
-        <listitem>
-        <para>
-            Linux commands (and other operating system commands, when
-            used) are represented this way.  This style should
-            indicate to you that you can type the word or phrase on
-            the command line and press <keycap>Enter</keycap> to
-            invoke a command.  Sometimes a command contains words that
-            would be displayed in a different style on their own (such
-            as file names). In these cases, they are considered to be
-            part of the command, so the entire phrase is displayed as
-            a command.  For example:
-        </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </itemizedlist>
 
-        <para>
-            Use the <command>centos-art render
-            trunk/Identity/Images/Themes/TreeFlower/4/Distro/5/Anaconda
-            --filter="01-welcome"</command> command to produce the first
-            slide image used by Anaconda in the branch 5 of &TCD;
-            using the version 4 of TreeFlower artistic motif.
-        </para>
-        </listitem>
-        </varlistentry>
-
-        <varlistentry>
-        <term><filename>file name</filename></term>
-        <listitem>
-        <para>
-            File names, directory names, paths, and RPM package names
-            are represented this way. This style indicates that a
-            particular file or directory exists with that name on your
-            system. Examples:
-        </para>
-
-        <para>
-            The <filename>init.sh</filename> file in <filename
-            class="directory">trunk/Scripts/Bash/Cli/</filename>
-            directory is the initialization script, written in Bash,
-            used to automate most of tasks in the repository.
-        </para>
-
-        <para>
-            The <command>centos-art</command> command uses the
-            <filename>ImageMagick</filename> RPM package to convert
-            images from PNG format to other formats.
-        </para>
-        </listitem>
-        </varlistentry>
-
-        <varlistentry>
-        <term><keycap>key</keycap></term>
-        <listitem>
-        <para>
-            A key on the keyboard is shown in this style.  For
-            example:
-        </para>
-
-        <para>
-            To use <keycap>Tab</keycap> completion to list particular
-            files in a directory, type <command>ls</command>, then a
-            character, and finally the <keycap>Tab</keycap> key. Your
-            terminal displays the list of files in the working
-            directory that begin with that character.
-        </para>
-        </listitem>
-        </varlistentry>
-
-        <varlistentry>
-        <term><keycombo action="simul"><keycap>key</keycap><keycap>combination</keycap></keycombo></term>
-        <listitem>
-        <para>
-            A combination of keystrokes is represented in this way.
-            For example: 
-        </para>
-
-        <para>
-            The <keycombo
-            action="simul"><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>Backspace</keycap></keycombo>
-            key combination exits your graphical session and returns
-            you to the graphical login screen or the console.
-        </para> 
-        </listitem> 
-        </varlistentry>
-
-        <varlistentry>
-        <term><computeroutput>computer output</computeroutput></term>
-        <listitem>
-        <para>
-            Text in this style indicates text displayed to a shell
-            prompt such as error messages and responses to commands.
-            For example, the <command>ls</command> command displays
-            the contents of a directory using this style:
-        </para>
-
-<screen>
-render_doTranslation.sh     render_getDirTemplate.sh    render_doBaseActions.sh
-render_getConfigOption.sh   render_getOptions.sh        render_doThemeActions.sh  
-render_getDirOutput.sh      render.sh
-</screen>
-
-        <para>
-            The output returned in response to the command (in this
-            case, the contents of the directory) is shown in this
-            style.
-        </para>
-        </listitem>
-        </varlistentry>
-
-        <varlistentry>
-        <term><prompt>prompt</prompt></term>
-        <listitem>
-        <para>
-            A prompt, which is a computer's way of signifying that it
-            is ready for you to input something, is shown in this
-            style. Examples:
-        </para>
-
-        <itemizedlist>
-        <listitem>
-        <para>
-            <prompt>$</prompt>
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            <prompt>#</prompt>
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            <prompt>[centos@projects centos]$</prompt>
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            <prompt>projects login:</prompt>
-        </para>
-        </listitem>
-        </itemizedlist>
-        </listitem>
-        </varlistentry>
-
-        <varlistentry>
-        <term><userinput>user input</userinput></term>
-        <listitem>
-        <para>
-            Text that the user types, either on the command line or
-            into a text box on a GUI screen, is displayed in this
-            style. In the following example,
-            <userinput>text</userinput> is displayed in this style: To
-            boot your system into the text based installation program,
-            you must type in the <userinput>text</userinput> command
-            at the <prompt>boot:</prompt> prompt.
-        </para>
-        </listitem>
-        </varlistentry>
-
-        <varlistentry>
-        <term><replaceable>replaceable</replaceable></term>
-        <listitem>
-        <para>
-           Text used in examples that is meant to be replaced with
-           data provided by the user is displayed in this style. In
-           the following example,
-           <replaceable>version-number</replaceable> is displayed in
-           this style: The directory for the kernel source is
-           <filename
-           class="directory">/usr/src/kernels/<replaceable>version-number</replaceable>/</filename>,
-           where <replaceable>version-number</replaceable> is the
-           version and type of kernel installed on this system. 
-        </para>
-        </listitem>
-        </varlistentry>
-    </variablelist>
-
-    <para>Additionally, we use several different strategies to draw
-    your attention to certain pieces of information. In order of
-    urgency, these items are marked as a note, tip, important,
-    caution, or warning. For example:</para>
+    <para>
+        Additionally, we use several different strategies to draw your
+        attention to certain pieces of information. In order of
+        urgency, these items are marked as a note, tip, important,
+        caution, or warning. For example:
+    </para>
 
     <note>
-        <para>Remember that Linux is case sensitive. In other words, a
-        rose is not a ROSE is not a rOsE.</para>
+        <para>
+            Remember that Linux is case sensitive. In other words, a
+            rose is not a ROSE is not a rOsE.
+        </para>
     </note> 
 
     <tip>
-        <para>The directory <filename
-        class="directory">/usr/share/doc/</filename> contains
-        additional documentation for packages installed on your
-        system.</para>
+        <para>
+            The directory <filename
+            class="directory">/usr/share/doc/</filename> contains
+            additional documentation for packages installed on your
+            system.
+        </para>
     </tip>
 
     <important>
-        <para>If you modify the DHCP configuration file, the changes
-        do not take effect until you restart the DHCP daemon.</para>
+        <para>
+            If you modify the DHCP configuration file, the changes do
+            not take effect until you restart the DHCP daemon.
+        </para>
     </important>
 
     <caution>
-        <para>Do not perform routine tasks as root &mdash; use a
-        regular user account unless you need to use the root account
-        for system administration tasks.</para>
+        <para>
+            Do not perform routine tasks as root &mdash; use a regular
+            user account unless you need to use the root account for
+            system administration tasks.
+        </para>
     </caution>
 
     <warning>
-        <para>Be careful to remove only the necessary partitions.
-        Removing other partitions could result in data loss or a
-        corrupted system environment.</para>
+        <para>
+            Be careful to remove only the necessary partitions.
+            Removing other partitions could result in data loss or a
+            corrupted system environment.
+        </para>
     </warning>
 
 </section>
