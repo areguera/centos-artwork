@@ -6,18 +6,50 @@
         This chapter describes how you can use the Point-to-Point
         Protocol (PPP) to create collaborative networks in situations
         where the telephone network is the only medium you and your
-        friends have access to.  The operating system used by both
-        server and client computers will be &TCD; release
-        5.5<footnote>
+        friends have access to.  With PPP you can prepare a server
+        computer to provide internet services for client computers
+        that use the telephone network as medium for data transmition.
+        The configuration described here can be thought as one client
+        computer that establishes connection to a server computer in
+        order to use the internet services it provides, however, based
+        on this concept, other configuration are also possible to
+        satisfy situations where more than two computers need to be
+        involved.
+    </para>
+
+    <para>
+        The operating system used by both server and client computers
+        will be &TCD; release 5.5<footnote>
         <para>
-            I want to thank my friend Manual Chavez Manzano (Manny)
-            for finding a way to download this release of &TCD; and
-            bring it to me as a gift.
+            Thank to my friend Manual Chavez Manzano (Manny) for
+            finding a way to download this release of &TCD; and bring
+            it to me as a gift when I was completly isolated from
+            Internet without any possibility of downloading it by
+            myself.
         </para>
-        </footnote> (even higher releases might be used too). The
-        configuration described in this book doesn't use third party
-        software. All the software needed in this configuration is
-        available inside &TCD;.
+        </footnote>. The configuration described in this book doesn't
+        use third party software. All the software needed in this
+        configuration is available inside &TCD;.  In case you are
+        using a different operating system in your client computer,
+        you'll need to look the appropriate application your operating
+        system provides to establish PPP connections and configure it
+        to establish connection with the server computer described in
+        <xref linkend="connectivity-ppp-server" />.  Generally, the
+        most you need to establish connection with the server computer
+        is a telephone number and the credentials for authentication,
+        if any.
+    </para>
+
+    <para>
+        In this chapter you'll find how to configure your client
+        computer to dial-up the server computer automatically when
+        client applications (e.g., e-mail clients, web browsers, etc.)
+        request data transmition for the server computer at a moment
+        where no connection has been established with it, yet. Also,
+        this chapter covers different considerations you could take
+        into account to keep the telephone line as free as possible,
+        so different client computers be able of establishing
+        connection to the same server computer as quickly as possible.
     </para>
 
 </sect1>
