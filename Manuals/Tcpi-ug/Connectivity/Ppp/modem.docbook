@@ -4,31 +4,32 @@
 
     <para>
         In order to establish a PPP link between two computers using
-        the telephone line as medium for data transmission, you need
-        to install and configure one Modem device in each computer you
-        are connecting in. On the other hand, if you're planning to
-        connect the same computer to different networks simultaneously
-        (e.g., to build a proxy between them), you will need to
-        install and configure one Modem device for each different
-        network you plan to establish such simultaneous connection on.
+        the telephone line as medium for data transmission, you will
+        need to install and configure a modem device in each computer
+        you plan to connect. On the other hand, if you're planning to
+        use PPP to connect the same computer to different networks
+        simultaneously (e.g., to build a proxy between them), you will
+        need to install and configure one modem device for each
+        different network you plan to establish such simultaneous
+        connection in the same computer.
     </para>
     
     <sect2 id="connectivity-ppp-modem-install">
     <title>Installing Modem Devices</title>
     <para>
-        To install a Modem device in the computer, you need to attach
-        the Modem hardware to the computer and later the telephone
-        line to the Modem hardware. To attach the Modem hardware to
+        To install a modem device in the computer, you need to attach
+        the modem hardware to the computer and later the telephone
+        line to the modem hardware. To attach the modem hardware to
         your computer, you need to connect the serial or USB cable
-        that comes from the Modem hardware to the appropriate input on
-        your computer (whether serial or USB). To connect the Modem
-        hardware to the telephone line system, you need to unplug the
-        cable that connects your telephone device and plug it on the
-        Modem device, specifically in the port reserved for data
+        that comes from the modem hardware to the appropriate input on
+        your computer (whether serial or USB). To connect the modem
+        hardware to the telephone line, you need to unplug the cable
+        that connects your telephone device and plug it on the modem
+        device, specifically in the port reserved for data
         transmission.  Later, using a similar cable, you could connect
-        your telephone device to the Modem's telephone port, so you
+        your telephone device to the modem's telephone port, so you
         can realize telephone calls when no data transmition take
-        place through Modem's data port.
+        place through modem's data port.
     </para>
 
     <para>
@@ -36,16 +37,16 @@
         installation with the computer turned off. Then, when
         everthing has been put in place, turn the computer on. Once
         the operating system is up and running, you can verify the
-        Modem hardware using either the <command>lsusb</command> or
+        modem hardware using either the <command>lsusb</command> or
         <command>lspci</command> commands, based on whether you
-        attached the Modem device to an USB or serial port,
+        attached the modem device to an USB or serial port,
         respectivly.  These commands need to be run with
-        administrative privileges, so probably need to
-        <command>sudo</command> them or login as <systemitem
+        administrative privileges, thus, you probably need to do
+        <command>sudo</command> on them or login as <systemitem
         class="username">root</systemitem> user in order to execute
-        them. For example, assuming you are logged in as <systemitem
-        class="username">root</systemitem> user, and you are using an
-        USB Modem like that one we mentioned before, the output of
+        them. For example, assuming you logged in as <systemitem
+        class="username">root</systemitem> user and you installed an
+        USB modem hardware as mentioned before, the output of
         <command>lsusb</command> command would be similar to that
         following:
     </para>
@@ -56,7 +57,7 @@ Bus 001 Device 001: ID 0000:0000
 Bus 001 Device 002: ID 058f:6366 Alcor Micro Corp. Multi Flash Reader
 Bus 002 Device 001: ID 0000:0000  
 Bus 005 Device 003: ID 06e0:f104 Multi-Tech Systems, Inc.
-MT5634ZBA-USB MultiModemUSB (new firmware)
+MT5634ZBA-USB MultimodemUSB (new firmware)
 Bus 005 Device 001: ID 0000:0000  
 Bus 005 Device 002: ID 046d:c018 Logitech, Inc. Optical Wheel Mouse
 Bus 004 Device 001: ID 0000:0000 
@@ -64,38 +65,37 @@ Bus 004 Device 001: ID 0000:0000
 
     <para>
         The relevant line in this output is that one mentioning the
-        existence of your Modem. For example, <code>Multi-Tech System,
-        Inc.  MT5634ZBA-USB MultiModemUSB (new
+        existence of your modem. For example, <code>Multi-Tech System,
+        Inc.  MT5634ZBA-USB MultimodemUSB (new
         firmware</code>)<footnote>
         <para>
             I want to thank my friend Brians Suarez Alonso for
-            bringing this Modem to me and for his paitient, resisting
-            my repetitive calls at night to realize connection tests.
+            bringing this modem hardware to me and for his paitient,
+            resisting my repetitive calls at night to realize
+            connection tests.
         </para>
-        </footnote>. This line confirms that your Modem hardware is
+        </footnote>. This line confirms that your modem hardware is
         supported by &TCD; and it is possible to transmit data through
-        it.  Otherwise, if the Modem you installed doesn't appear in
+        it.  Otherwise, if the modem you installed doesn't appear in
         this list, it is probably because such hardware is not
         supported by &TCD;, yet.
     </para>
 
     <para>
-        Once you have confirmed the Modem hardware has been installed
+        Once you have confirmed the modem hardware has been installed
         in the computer (either client or server), you need to
         determine the device name the operating system assigned to it.
         This information is required by programs like
         <application>mgetty</application> and
         <application>wvdial</application>, so they can know what
-        device to talk to.  Assuming you've connected your Modem
-        device through an USB port, the operating system might use the
-        <filename>/dev/ttyACM0</filename> device file to talk to it.
-        On the other hand, assuming you've connected your Modem device
-        through a serial port, the operating system might use the
-        <filename>/dev/ttyS0</filename> device file to talk to it.  To
-        be absolutly sure about what device name the operating system
-        assigned to your Modem hardware, you can use the
-        <application>wvdialconf</application> program from
-        <package>wvdial</package> package or the
+        device to talk to.  Assuming you've connected your modem
+        device through an USB port, the operating system will assign
+        the the <filename>/dev/ttyACM0</filename> device file to talk
+        to it.  On the other hand, assuming you've connected your
+        modem device through a serial port, the operating system will
+        use the <filename>/dev/ttyS0</filename> device file to talk to
+        it.  To be absolutly sure about what device name the operating
+        system assigned to your modem hardware, you can use the
         <command>lshal</command> command from <package>hal</package>
         package.
     </para>
@@ -103,34 +103,62 @@ Bus 004 Device 001: ID 0000:0000
 
     <sect2 id="connectivity-ppp-modem-config">
     <title>Configuring Modem Devices</title>
+
     <para>
-        Modem devices are configured through
-        <command>system-config-network</command> command. This command
-        produces Modem configuration files under the
-        <filename>/etc/sysconfig/network-scripts</filename> directory.
-        Configuration related to Modem devices can take different
-        file names, but they can be clearly identified by the value
-        set on the <varname>DEVICE</varname> variable, inside the
-        configuration file. This variable can take names like
-        <code>ppp0</code> for the first Modem device,
-        <code>ppp1</code> for the second Modem device, and so on for
-        other Modem devices.  The Modem configuration files are used
-        by <application>pppd</application> and
-        <application>wvdial</application> programs when a PPP
-        connection is established between two computers.  If you are
-        runing mgetty and pppd to attend incoming calls, it is very
-        important that you also specify the IP address and the network
-        mask in the configuration file of the Modem device you are
-        using to establish the connection. Otherwise, if the remote
-        peer doesn't set the IP information for you, it would be
-        difficult for both computer to establish a permanent
-        interchange of data across the link created.
+        Inside &TCD;, modem devices can be configured using the
+        <command>system-config-network</command> tool. This tool is a
+        manages modem configuration files under the
+        <filename>/etc/sysconfig/network-scripts</filename> and
+        <filename>/etc/wvdial.conf</filename>.  Inside
+        <filename>/etc/sysconfig/network-scripts</filename>, modem
+        configuration files can take different file names. To identify
+        them you need to open the file and checking the value set on
+        <varname>DEVICE</varname> variable. This variable can take
+        values like <code>ppp0</code> for the first modem device,
+        <code>ppp1</code> for the second modem device, and so on for
+        other modem devices.
     </para>
 
+    <para>
+        The configuration files of modem devices may vary based on
+        whether the computer is acting as server, client or both.
+        When you configure the modem device on the server computer,
+        you should take care of specifying both the IP address
+        (IPADDR) and the network mask (NETMASK) inside the
+        configuration file.  Otherwise, the established connection
+        might end up having the wrong IP information you need to
+        transfer data correctly through it, assuming the other end
+        isn't configured to specify it.  When you configure the modem
+        device on the server computer, there is no need for you to set
+        any configuration related to wvdial, unless you be thinking to
+        make your server computer to act as a client of another server
+        computer. In fact, in the server computer, you can create the
+        modem configuration file by yourself based on the information
+        provided at
+        <filename>/usr/share/doc/initscripts-*/sysconfig.txt
+        </filename>
+    </para>
+
+    <para>
+        When you configure the modem device on the client computer,
+        you don't need to take care of specifying either the IP
+        address or network mask because the server computer will
+        assign them for you. The assignment of client computer IP
+        address is configured by <application>ppp</application> daemon
+        when it is executed by <application>mgetty</application> after
+        an incoming call has arrived to modem's port.
+    </para>
+
+    <example id="connectivity-ppp-modem-config.fig-1">
+    <title>Modem configuration file</title>
+    <screenshot>
+    <screeninfo>Modem configuration file</screeninfo>
+    <mediaobject>
+    <textobject>
 <screen>
 # Please read /usr/share/doc/initscripts-*/sysconfig.txt
 # for the documentation of these parameters.
-TYPE=Modem
+TYPE=modem
 DEVICE=ppp0
 BOOTPROTO=none
 ONBOOT=no
@@ -156,6 +184,10 @@ IDLETIMEOUT=600
 NETMASK=255.255.255.0
 IPADDR=192.168.1.1
 </screen>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
 
     </sect2>
 
