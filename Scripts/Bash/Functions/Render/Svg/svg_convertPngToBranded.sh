@@ -3,9 +3,10 @@
 # svg_convertPngToBranded.sh -- This function standardizes image
 # branding. Once the base PNG image is rendered and the
 # `--with-brands' option is provided, this function composites a new
-# branded image using the preferences set in the `branding.conf' file.
-# The `branding.conf' file must be stored in the design model root
-# location used as reference to produce the base PNG image.
+# branded image using the preferences set in the related
+# `branding.conf' file.  The `branding.conf' file must be stored
+# inside the related design model component used as reference to
+# produce the base PNG image.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -44,12 +45,12 @@ function svg_convertPngToBranded {
     local POSITIONS=''
 
     # Define absolute path to branding configuration file.
-    BRANDING_CONF_FILE="$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}/branding.conf"
+    BRANDING_CONF_FILE="$(dirname ${TEMPLATE})/branding.conf"
 
     # Define regular expression matching the variable name (i.e., the
     # left column), inside the configuration line, you want to match
     # on.
-    BRANDING_CONF_VARNAME=$(echo $TEMPLATE | cut -d/ -f10-)
+    BRANDING_CONF_VARNAME=$(basename ${TEMPLATE})
 
     # Define list of configuration lines related to current design
     # model. This are the lines that tell us how and where to apply
@@ -82,8 +83,8 @@ function svg_convertPngToBranded {
         POSITIONS=$(echo "$BRANDING_CONF_VALUE" | cut -d: -f2- | tr ':' ' ')
 
         # Loop through list of brand image positions and use the
-        # composite command from ImageMagick, to overlap brand image
-        # over unbranded image just rendered.
+        # composite command from ImageMagick, to overlap the unbranded
+        # image just rendered with the branded version of itself.
         for POSITION in $POSITIONS;do
             composite -geometry $POSITION $BRAND ${FILE}.png ${FILE}.png
         done
