@@ -255,7 +255,7 @@ class Layout(xhtml.Strict):
         attrs = []
         attrs.append({'id': 'logo'})
         attrs.append({'title': 'Community Enterprise Operating System', 'href': '/webenv/'})
-        attrs.append({'src': '/public/Images/centos-logo.png', 'alt': 'CentOS'})
+        attrs.append({'src': '/public/images/centos-logo.png', 'alt': 'CentOS'})
 
         return self.tag_div(attrs[0], [8,1], self.tag_a(attrs[1], [12,1], self.tag_img(attrs[2], [0,0]), 0), 1)
 
@@ -263,7 +263,7 @@ class Layout(xhtml.Strict):
     def google_ad_example(self):
         """Returns Google advertisement for offline testings."""
         title = 'Google Advertisement'
-        url = '/public/Images/ads-sample-468x60.png'
+        url = '/public/images/ads-sample-468x60.png'
         image = self.tag_img({'src': url, 'alt': title}, [0,0])
         link = self.tag_a({'href': url, 'title': title}, [12,1], image)
         output = self.tag_div({'class':'google-ad'}, [8,1], link, 1)
@@ -936,7 +936,7 @@ class Layout(xhtml.Strict):
         
         if title in admonitions:
             attrs = {'class': 'admonition ' + title.lower()}
-            image = self.tag_img({'src': '/public/Images/' + title.lower() + '.png', 'alt': title}, [16,1])
+            image = self.tag_img({'src': '/public/images/' + title.lower() + '.png', 'alt': title}, [16,1])
             title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 0)
             output = image + title + body + self.separator()
         else:
@@ -951,7 +951,7 @@ class Layout(xhtml.Strict):
         """Returns page credits."""
         copyright = self.tag_p({'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
         license = self.tag_p({'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.license()))
-        credits = self.tag_img({'src': '/public/Images/top.png', 'alt': 'Top'}, [0,0])
+        credits = self.tag_img({'src': '/public/images/top.png', 'alt': 'Top'}, [0,0])
         credits = self.tag_a({'title': 'Top', 'href': '#top'}, [16,1], credits)
         credits = self.tag_div({'class': 'top'}, [12,1], credits, 1)
         credits = str(credits) + str(copyright) + str(license) 
