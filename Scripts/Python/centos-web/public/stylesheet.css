@@ -1,5 +1,5 @@
-/* 
- * Webenv
+/* stylesheet.css -- This file provides the CSS initialization needed
+ * by centos-web.cgi.
  *
  * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
  *
@@ -23,17 +23,17 @@
  */
 
 /* Reset browser's default definitions.
---------------------------------------------------------------------*/
-@import url("Stylesheet/reset.css");
+---------------------------------------*/
+@import url("reset.css");
 
 /* Customize default definitions.
---------------------------------------------------------------------*/
-@import url("Stylesheet/base.css");
-@import url("Stylesheet/links.css");
-@import url("Stylesheet/lists.css");
-@import url("Stylesheet/admonition.css");
-@import url("Stylesheet/forms.css");
+---------------------------------*/
+@import url("base.css");
+@import url("links.css");
+@import url("lists.css");
+@import url("admonition.css");
+@import url("forms.css");
 
 /* Miscellaneous definitions.
---------------------------------------------------------------------*/
-@import url("Stylesheet/tabs.css");
+-----------------------------*/
+@import url("tabs.css");
