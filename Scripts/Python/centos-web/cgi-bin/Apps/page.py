@@ -143,7 +143,7 @@ from Apps import xhtml
 qs = cgi.parse()
 
 
-def qs_args( names={}):
+def qs_args(names={}):
     """Returns query string arguments.
 
     The query string arguments are used to build links dynamically
@@ -168,6 +168,7 @@ def qs_args( names={}):
 
     names_keys = names.keys()
     names_keys.sort()
+
     for key in names_keys:
         if names[key] == '':
             if key in qs:
