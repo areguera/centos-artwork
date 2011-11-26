@@ -138,10 +138,11 @@ you can be aware of them.
 
 import cgi
 import cgitb; cgitb.enable()
+import ConfigParser
 from Apps import xhtml
 
+config = ConfigParser()
 qs = cgi.parse()
-
 
 def qs_args(names={}):
     """Returns query string arguments.
@@ -181,8 +182,7 @@ def qs_args(names={}):
             output += '&amp;'
         output += key + '=' + str(names[key])
 
-    return '/webenv/' + output
-
+    return config.get('webserver', 'baseurl') + output
 
 class Layout(xhtml.Strict):
     """The Page Layout.
@@ -214,7 +214,6 @@ class Layout(xhtml.Strict):
 
     """
 
-
     def __init__(self):
         """Initialize page data."""
         self.name = 'Home'
@@ -242,7 +241,6 @@ class Layout(xhtml.Strict):
         # information displayed in the page.
         self.footer = self.credits()
 
-
     def logo(self):
         """Returns The CentOS Logo.
 
@@ -256,22 +254,20 @@ class Layout(xhtml.Strict):
         attrs = []
         attrs.append({'id': 'logo'})
         attrs.append({'title': 'Community Enterprise Operating System', 'href': '/webenv/'})
-        attrs.append({'src': '/public/images/centos-logo.png', 'alt': 'CentOS'})
+        attrs.append({'src': config.get('webserver','baseurl') + 'public/images/centos-logo.png', 'alt': 'CentOS'})
 
         return self.tag_div(attrs[0], [8,1], self.tag_a(attrs[1], [12,1], self.tag_img(attrs[2], [0,0]), 0), 1)
-
 
     def google_ad_example(self):
         """Returns Google advertisement for offline testings."""
         title = 'Google Advertisement'
-        url = '/public/images/ads-sample-468x60.png'
+        url = config.get('webserver','baseurl') + 'public/images/ads-sample-468x60.png'
         image = self.tag_img({'src': url, 'alt': title}, [0,0])
         link = self.tag_a({'href': url, 'title': title}, [12,1], image)
         output = self.tag_div({'class':'google-ad'}, [8,1], link, 1)
         output += self.separator({'class':'page-line'}, [8,1])
 
         return output
-
 
     def google_ad(self):
         """Returns Google advertisement for online using."""
@@ -308,7 +304,6 @@ class Layout(xhtml.Strict):
 
         return output
 
-
     def navibar(self):
         """Returns webenv navigation bar. 
     
@@ -336,7 +331,6 @@ class Layout(xhtml.Strict):
         tabs += self.separator()
 
         return tabs
-
 
     def navibar_tabs(self, names, attrs, focus=''):
         """Returns navigation tabs.
@@ -368,7 +362,6 @@ class Layout(xhtml.Strict):
             navibar_tabs += output
 
         return self.tag_div({'class': 'tabs'}, [8,1], navibar_tabs, 1)
-
 
     def releases(self):
         """Returns The CentOS Distribution last releases.
@@ -414,7 +407,6 @@ class Layout(xhtml.Strict):
 
         return self.tag_div({'id': 'last-releases'}, [8,1], releases + rsslink, 1)
 
-
     def user_links_logs(self):
         """Return links related to user's logs.
         
@@ -426,7 +418,6 @@ class Layout(xhtml.Strict):
         """
         last_visit = self.tag_a({'href': qs_args({'app':'', 'p':'logs'})}, [0,0], 'Logs')
         return self.tag_div({'class': 'logs'}, [12, 1], last_visit, 1)
-
 
     def user_links_session(self):
         """Returns links related to user's session.
@@ -457,7 +448,6 @@ class Layout(xhtml.Strict):
 
         return self.tag_div({'class': 'session'}, [12,1], session, 1)
 
-
     def user_links_trails(self, names=['None'], attrs=[{'href': '/webenv/'}]):
         """Returns page trails (a.k.a. breadcrumbs).
     
@@ -484,7 +474,6 @@ class Layout(xhtml.Strict):
 
         return self.tag_div({'class': 'trail'}, [12,1], links, 1)
 
-
     def user_links(self):
         """Returns user related links.
 
@@ -497,7 +486,6 @@ class Layout(xhtml.Strict):
         userlinks += self.user_links_trails()
 
         return self.tag_div({'class': 'userlinks'}, [8,1], userlinks, 1)
-
 
     def page_navibar(self, names=['Welcome'], attrs=[{'href':'/webenv/?p=welcome'}], focus='Welcome'):
         """Returns navigation bar for application main pages.
@@ -514,7 +502,6 @@ class Layout(xhtml.Strict):
         navibar_app += self.separator({'class': 'page-line white'}, [8,1])
 
         return navibar_app
- 
 
     def separator(self, attrs={'class': 'page-line'}, indent=[16,1]):
         """Returns separator.
@@ -532,14 +519,12 @@ class Layout(xhtml.Strict):
 
         return line
 
-
     def license(self):
         """Retruns license link."""
         license = 'Creative Commons Attribution-Share Alike 3.0 Unported License'
         license = self.tag_a({'href': 'http://creativecommons.org/licenses/by-sa/3.0/'}, [0,0], license) + '.'
 
         return license
-
 
     def metadata(self):
         """Returns metadata."""
@@ -550,13 +535,10 @@ class Layout(xhtml.Strict):
         metadata += self.tag_meta({'name': 'description', 'content': str(self.description)}, [4,1])
         metadata += self.tag_meta({'name': 'copyright', 'content': 'Copyright © ' + str(self.copyright)}, [4,0])
         metadata += self.tag_title('', [4,1], self.title)
-        metadata += self.tag_link({'href': '/public/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
-        metadata += self.tag_link({'href': '/public/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
+        metadata += self.tag_link({'href': config.get('webserver','baseurl') + 'public/stylesheet.css','rel': 'stylesheet', 'type': 'text/css'}, [4,0])
+        metadata += self.tag_link({'href': config.get('webserver','baseurl') + 'public/centos-fav.png', 'rel': 'shortcut icon', 'type': 'image/png'}, [4,1])
 
         return self.tag_head('', [0,1], metadata)
-
-
-
 
     def searchform(self, size=15):
         """Returns search form.
@@ -577,7 +559,6 @@ class Layout(xhtml.Strict):
         return self.tag_form({'action': qs_args({'app':'', 'p':'search'}), 
                               'method':'post', 'title':'Search'},
                               [12,1], action, 1)
-        
 
     def content_resumen(self, attrs, id, title, user_id, commit_date,
                         update_date, category_id, comments, abstract):
@@ -635,7 +616,6 @@ class Layout(xhtml.Strict):
                                  abstract)
         return self.tag_div(attrs, [16,1], title + info, 1)
 
-
     def pagination(self):
         """Return content pagination."""
         previous = self.tag_a({'href':''}, [0,0], 'Previous')
@@ -645,7 +625,6 @@ class Layout(xhtml.Strict):
         separator = self.separator({'class':'page-line'}, [20,1])
         return self.tag_div({'class':'pagination'}, [16,1], previous +
                             next + separator, 1)
-
 
     def content_info(self, content_id, user_id, commit_date,
                      update_date, category_id, comments, abstract):
@@ -701,7 +680,6 @@ class Layout(xhtml.Strict):
 
         return self.tag_div({'class': 'info'}, [20,1], user_name + date + category_name + comments + abstract, 1)
 
-
     def content_list(self):
         """Return list of content.
         
@@ -753,7 +731,6 @@ class Layout(xhtml.Strict):
         actions = self.tag_div({'id':'content-actions'}, [8,1], actions, 1)
 
         return actions + list
-
 
     def content_details(self):
         """Return content details.
@@ -810,7 +787,6 @@ class Layout(xhtml.Strict):
 
         return self.tag_div({'id':'content-details'}, [12,1], output, 1)
 
-
     def comments(self):
         """Returns content specific list of comments.
 
@@ -819,7 +795,6 @@ class Layout(xhtml.Strict):
         output = self.tag_h2({'class':'title comments'}, [12,1], output, 0) 
 
         return output
-
 
     def categories(self):
         """Returns list of categories.
@@ -834,7 +809,6 @@ class Layout(xhtml.Strict):
             dd += self.tag_dd({}, [16,1], a)
 
         return self.tag_dl({},[12,1], dt + dd, 1)
-
 
     def archives(self):
         """Returns archives."""
@@ -856,11 +830,9 @@ class Layout(xhtml.Strict):
 
         return self.tag_dl({},[12,1], dt + year_dl, 1)
 
-
     def page_top(self):
         """Returns page top anchor."""
         return self.tag_a({'name':'top'}, [0,1])
-
 
     def page_header(self):
         """Returns page header.
@@ -868,7 +840,6 @@ class Layout(xhtml.Strict):
         The page_header is common to all application modules and 
         """
         return self.tag_div({'id': 'page-header'}, [4,1], self.header, 1)
-
 
     def page_body(self):
         """Returns page body.
@@ -888,22 +859,18 @@ class Layout(xhtml.Strict):
         """
         return self.tag_div({'id':'page-body'}, [4,1], self.body, 1)
 
-
     def page_links(self):
         """Returns page links."""
         page_links = self.user_links()
         return self.tag_div({'id': 'pagelinks'}, [8,1], page_links, 1)
-
     
     def page_footer(self):
         """Retruns page footer."""
         return self.tag_div({'id': 'page-footer'}, [4,1], self.credits(), 1)
 
-
     def page_wrap(self):
         """Returns page wrap."""
         return self.tag_div({'id': 'wrap'}, [0,1], self.page_header() + self.page_body() + self.page_footer(), 1)
-
 
     def admonition(self, title='Note', subtitle="", body=""):
         """Returns page admonition.
@@ -937,7 +904,7 @@ class Layout(xhtml.Strict):
         
         if title in admonitions:
             attrs = {'class': 'admonition ' + title.lower()}
-            image = self.tag_img({'src': '/public/images/' + title.lower() + '.png', 'alt': title}, [16,1])
+            image = self.tag_img({'src': config.get('webserver','baseurl') + 'public/images/' + title.lower() + '.png', 'alt': title}, [16,1])
             title = self.tag_h3({'class': 'title'}, [16,1], title + subtitle, 0)
             output = image + title + body + self.separator()
         else:
@@ -947,19 +914,17 @@ class Layout(xhtml.Strict):
         
         return self.tag_div(attrs, [12,1], output, 1)
 
-
     def credits(self):
         """Returns page credits."""
         copyright = self.tag_p({'class': 'copyright'}, [12,1], 'Copyright &copy; ' + str(self.copyright))
         license = self.tag_p({'class': 'license'}, [12,1], 'This website is licensed under a ' + str(self.license()))
-        credits = self.tag_img({'src': '/public/images/top.png', 'alt': 'Top'}, [0,0])
+        credits = self.tag_img({'src': config.get('webserver','baseurl') + 'public/images/top.png', 'alt': 'Top'}, [0,0])
         credits = self.tag_a({'title': 'Top', 'href': '#top'}, [16,1], credits)
         credits = self.tag_div({'class': 'top'}, [12,1], credits, 1)
         credits = str(credits) + str(copyright) + str(license) 
         credits = self.tag_div({'class': 'credits'}, [8,1], credits, 1)
 
         return credits
-
 
     def page(self):
         """Returns page final output."""
