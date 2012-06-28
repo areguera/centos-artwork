@@ -110,7 +110,7 @@ function docbook_convertToPdfFromXml {
     xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
 
     # Create PDF format from formatting object. The `pdfxmltex'
-    # command (which use the `PassiveTex' engine) must be executed
+    # command (which uses the `PassiveTex' engine) must be executed
     # twice in order for the document's cross references to be built
     # correctly.
     if [[ $? -eq 0 ]];then
