@@ -57,7 +57,7 @@ function texinfo_makeSeeAlso {
     fi
 
     # Define `SeeAlso' transltaion marker regular expression pattern.
-    TMARK_PATTERN="^@c -- <\[${CLI_PROGRAM}\(SeeAlso(,(itemize|enumerate|menu))?\)$"
+    TMARK_PATTERN="^@c -- <\[${CLI_NAME}\(SeeAlso(,(itemize|enumerate|menu))?\)$"
 
     # Retrive `SeeAlso' translation marker definition lines. Be sure
     # to retrive unique definitions only. If the same definition is
@@ -112,7 +112,7 @@ function texinfo_makeSeeAlso {
         # markers that can provided and here we need to precisely set
         # the one being currently processed, not those whose could be
         # processed.
-        LIST_TYPE_PATTERN="^@c -- <\[${CLI_PROGRAM}\(SeeAlso${LIST_PROP}\)$"
+        LIST_TYPE_PATTERN="^@c -- <\[${CLI_NAME}\(SeeAlso${LIST_PROP}\)$"
 
         # Redefine list's entry based on translation marker definition.
         if [[ $LIST_TYPE =~ '^menu$' ]];then
@@ -130,7 +130,7 @@ function texinfo_makeSeeAlso {
         fi
 
         # Define menu using menu nodes.
-        LIST_DEF="@c -- <[${CLI_PROGRAM}(SeeAlso${LIST_PROP})\n@${LIST_TYPE}\n${LIST_ENTRIES}@end ${LIST_TYPE}\n@c -- ]>"
+        LIST_DEF="@c -- <[${CLI_NAME}(SeeAlso${LIST_PROP})\n@${LIST_TYPE}\n${LIST_ENTRIES}@end ${LIST_TYPE}\n@c -- ]>"
 
         # Expand list definition using translation marker and list
         # definition itself. Be sure that no expansion be done when
