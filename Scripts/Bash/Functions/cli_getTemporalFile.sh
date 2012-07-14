@@ -47,7 +47,7 @@ function cli_getTemporalFile {
     # us to produce the same artwork in different terminals at the
     # same time. the The design model name provides file
     # identification.
-    NAME=${CLI_NAME}-${CLI_PROGRAM_ID}-${RANDOM}-${NAME}
+    NAME=${CLI_NAME}-${CLI_PPID}-${RANDOM}-${NAME}
 
     # Define absolute path for temporal file using the program name,
     # the current locale, the unique identifier and the file name. 
