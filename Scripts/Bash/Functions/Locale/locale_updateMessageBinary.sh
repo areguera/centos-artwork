@@ -40,7 +40,7 @@ function locale_updateMessageBinary {
     local MO_DIR="${L10N_WORKDIR}/LC_MESSAGES"
 
     # Define absolute path to machine object file.
-    local MO_FILE="${MO_DIR}/${CLI_PROGRAM}.sh.mo"
+    local MO_FILE="${MO_DIR}/${CLI_NAME}.sh.mo"
 
     # Print action message.
     cli_printMessage "${MO_FILE}" --as-creating-line
