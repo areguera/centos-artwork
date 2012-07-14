@@ -35,7 +35,7 @@ function cli_terminateScriptExecution {
     # the first level of files that you are owner of.  Otherwise,
     # undesired `permission denied' messages might be output.
     local FILES=$(cli_getFilesList ${CLI_TEMPDIR} \
-        --pattern="${CLI_NAME}-${CLI_PROGRAM_ID}-.+" \
+        --pattern="${CLI_NAME}-${CLI_PPID}-.+" \
         --maxdepth="1" --uid="$(id -u)")
 
     # Remove list of temporal files related to this script execution,
