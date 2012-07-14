@@ -61,9 +61,9 @@ function prepare_updateLinks {
     local WCDIR_EDITOR=${PREPARE_CONFIG_DIR}
 
     # Define link relation for cli.
-    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${APPS_DIR}/${CLI_PROGRAM}
-    LINKS_DST[((++${#LINKS_DST[*]}))]=${CLI_BASEDIR}/${CLI_PROGRAM}.sh
-    USERFILES="${APPS_DIR}/${CLI_PROGRAM}"
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${APPS_DIR}/${CLI_NAME}
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${CLI_BASEDIR}/${CLI_NAME}.sh
+    USERFILES="${APPS_DIR}/${CLI_NAME}"
 
     # Define link relation for fonts.
     for FONT in $(cli_getFilesList "${WCDIR_FONTS}" --pattern='.+\.ttf');do
