@@ -24,7 +24,7 @@
 
 # Initialize personal data.
 declare -xr CLI_NAME='centos-art'
-declare -xr CLI_NAME_ID=$$
+declare -xr CLI_PPID=$$
 declare -xr CLI_VERSION='1.0 (beta)'
 
 # Initialize paths.
