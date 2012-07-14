@@ -40,6 +40,6 @@ function prepare_updateImages {
     # when we create a list of directories and pass them that way to
     # centos-art.sh script, it is possible for ir to know how to
     # produce each directory passed.
-    ${CLI_BASEDIR}/${CLI_PROGRAM}.sh render $DIRS --dont-commit-changes
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render $DIRS --dont-commit-changes
 
 }
