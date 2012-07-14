@@ -23,8 +23,8 @@
 # ----------------------------------------------------------------------
 
 # Initialize personal data.
-declare -xr CLI_PROGRAM='centos-art'
-declare -xr CLI_PROGRAM_ID=$$
+declare -xr CLI_NAME='centos-art'
+declare -xr CLI_NAME_ID=$$
 declare -xr CLI_VERSION='1.0 (beta)'
 
 # Initialize paths.
@@ -34,7 +34,7 @@ declare -xr CLI_TEMPDIR='/tmp'
 
 # Initialize internazionalization through GNU gettext.
 . gettext.sh
-declare -xr TEXTDOMAIN=${CLI_PROGRAM}.sh
+declare -xr TEXTDOMAIN=${CLI_NAME}.sh
 declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/branches/L10n/Scripts/Bash
 
 # Verify the working copy directory. Be sure it is
