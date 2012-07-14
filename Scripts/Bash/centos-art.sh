@@ -49,7 +49,7 @@ if [[ ! -d ${CLI_WRKCOPY} ]];then
 fi
 
 # Initialize common functions.
-FILES=$(ls ${CLI_BASEDIR}/Functions/{cli,cli_*}.sh)
+FILES=$(ls ${CLI_BASEDIR}/Functions/{init,Commons/cli_*}.sh)
 for FILE in ${FILES};do
     if [[ -x ${FILE} ]];then
         . ${FILE}
