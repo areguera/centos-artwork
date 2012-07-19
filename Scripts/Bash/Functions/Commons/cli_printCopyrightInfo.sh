@@ -58,7 +58,7 @@ function cli_printCopyrightInfo {
             # The former year when I (as part of The CentOS Project)
             # started to consolidate The CentOS Project Corporate
             # Visual Identity through the CentOS Artwork Repository.
-            echo '2009'
+            echo "${COPYRIGHT_YEAR_FIRST}"
             ;;
 
         --copyright-year|--copyright-year-last )
@@ -97,7 +97,7 @@ function cli_printCopyrightInfo {
         --copyright-holder )
             
             # Output default copyright holder.
-            echo "`gettext "The CentOS Project"`"
+            echo ${COPYRIGHT_HOLDER}
             ;;
 
         --copyright-holder-predicate )
