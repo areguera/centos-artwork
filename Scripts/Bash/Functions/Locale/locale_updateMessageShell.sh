@@ -53,7 +53,7 @@ function locale_updateMessageShell {
     # Retrive translatable strings from shell script files and create
     # the portable object template (.pot) from them.
     xgettext --output=${MESSAGES}.pot \
-        --copyright-holder="The CentOS L10n SIG" \
+        --copyright-holder="The CentOS Locales SIG" \
         --width=70 --sort-by-file ${FILES}
 
     # Sanitate metadata inside the POT file.

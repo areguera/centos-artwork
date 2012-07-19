@@ -35,7 +35,7 @@ declare -xr CLI_TEMPDIR='/tmp'
 # Initialize internazionalization through GNU gettext.
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/branches/L10n/Scripts/Bash
+declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/branches/Locales/Scripts/Bash
 
 # Verify the working copy directory. Be sure it is
 # `/home/centos/artwork'.  Otherwise, end the script execution.  We

@@ -46,7 +46,7 @@ function cli_getRepoParallelDirs {
     # Define parallel directory base structures.
     PDIRS[0]=Manuals/$(cli_getCurrentLocale)/Texinfo/Repository/$(cli_getRepoTLDir ${BOND} --relative)
     PDIRS[1]=Scripts/Bash/Functions/Render/Config
-    PDIRS[2]=L10n
+    PDIRS[2]=Locales
 
     # Redefine bond string without its top level directory structure.
     BOND=$(echo $BOND | sed -r "s,^${TDIR}/(.+)$,\1,")
