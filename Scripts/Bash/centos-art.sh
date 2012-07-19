@@ -67,6 +67,11 @@ unset FILE
 unset FILES
 unset FUNCTION
 
+# Initialize copyright information for all art works produced through
+# this tool.
+COPYRIGHT_HOLDER="`gettext "The CentOS Project"`"
+COPYRIGHT_YEAR_FIRST="2009"
+
 # Trap signals in order to terminate the script execution correctly
 # (e.g., removing all temporal files before leaving).  Trapping the
 # exit signal seems to be enough by now, since it is always present as
