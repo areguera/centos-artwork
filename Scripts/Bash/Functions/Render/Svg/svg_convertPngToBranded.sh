@@ -68,8 +68,9 @@ function svg_convertPngToBranded {
         # Define absolute path to image file used as brand. This is
         # the image put over the PNG image produced as result of
         # design models base rendition.
-        BRAND="$(cli_getRepoTLDir)/Identity/Images/Brands/$(echo $BRANDING_CONF_VALUE \
-            | gawk 'BEGIN{ FS=":" } { print $1 }')"
+        BRAND=$(cli_getRepoTLDir)/Identity/Images/Brands/$(echo $BRANDING_CONF_VALUE \
+            | gawk 'BEGIN{ FS=":" } { print $1 }' \
+            | sed -r "s/=BRAND_FILENAME=/${BRAND_FILENAME}/g")
 
         # Verify absolute path to image file used as brand. Assuming
         # no brand image file is found, continue with the next
