@@ -94,8 +94,7 @@ function svg_convertPngToDm {
 
         Gdm )
             FILES="\
-            ${BRANDS}/Symbols/48/centos.png:centos-symbol.png
-            ${BRANDS}/Types/White/112/centos-${MAJOR_RELEASE}-msg.png:centos-release.png
+            ${BRANDS}/Symbols/White/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
@@ -108,8 +107,7 @@ function svg_convertPngToDm {
             
         Kdm )
             FILES="\
-            ${BRANDS}/Symbols/48/centos.png:centos-symbol.png
-            ${BRANDS}/Types/White/112/centos-${MAJOR_RELEASE}-msg.png:centos-release.png
+            ${BRANDS}/Symbols/White/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
