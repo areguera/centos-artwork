@@ -52,6 +52,13 @@ function cli_expandTMarkers {
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER_PREDICATE='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-holder-predicate)"
 
+    # Define name of branding files. This files are mainly used under
+    # Identity/(Images|Models)/Brands/ directory structure. These
+    # file names may vary from one project to another so we use this
+    # variable to control the name of such files.
+    SRC[((++${#SRC[*]}))]='=BRAND_FILENAME='
+    DST[((++${#DST[*]}))]="${BRAND_FILENAME}"
+
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --license)"
@@ -96,9 +103,9 @@ function cli_expandTMarkers {
 
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
-    DST[((++${#DST[*]}))]="centos-docs@centos.org"
+    DST[((++${#DST[*]}))]="${BRAND_FILENAME}-docs@centos.org"
     SRC[((++${#SRC[*]}))]='=MAIL_L10N='
-    DST[((++${#DST[*]}))]="centos-l10n@centos.org"
+    DST[((++${#DST[*]}))]="${BRAND_FILENAME}-l10n@centos.org"
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
