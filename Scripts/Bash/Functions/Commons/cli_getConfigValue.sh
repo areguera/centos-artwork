@@ -44,7 +44,7 @@ function cli_getConfigValue {
     # Parse configuration lines to retrive the values of variable
     # names.
     local CONFIG_VARVALUE=$(echo $CONFIG_LINES \
-        | gawk 'BEGIN { FS="=" } { print $2 }' \
+        | cut -d'=' -f2- \
         | sed -r 's/^"(.*)"$/\1/')
 
     # Output values related to variable name.
