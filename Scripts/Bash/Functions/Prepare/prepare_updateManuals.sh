@@ -29,19 +29,44 @@ function prepare_updateManuals {
 
     local RELEASE=$(cat /etc/redhat-release | gawk '{ print $3 }')
 
-    # The CentOS Artwork Repository User's Guide in docbook format.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render \
-        trunk/Manuals/Tcar-ug --filter="tcar-ug" \
-        --dont-commit-changes
+    # Define base directory used by documentation manuals. This is the
+    # top level directory where all documentation manuals are stored
+    # in the repository.
+    local MANUALS=Manuals
 
-    # The CentOS Distribution Notes
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render \
-        trunk/Manuals/Distro --releasever="${RELEASE}" \
-        --dont-commit-changes
+    # Define documentation manuals key names.
+    local MANUALS_NAMES="Tcar-ug Tcar-fs"
 
-    # The CentOS Artwork Repository User's Guide in texinfo format.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh help --update \
-        trunk/Manuals/Tcar-fs \
-        --dont-commit-changes
+    # Define relative paths of design models and images used by
+    # documentation manuals.
+    local MANUALS_IMAGES=Identity/Images/Manuals
+    local MANUALS_MODELS=Identity/Models/Manuals
+
+    # Verify related design models and images used by documentation manuals.
+    for DIR in $(echo "$MANUALS_IMAGES $MANUALS_MODELS");do
+        MANUALS_ABSPATH=$(cli_getRepoTLDir)/${DIR}
+        if [[ ! -d $MANUALS_ABSPATH ]];then
+            cli_printMessage "`eval_gettext "The directory \\\"\\\$MANUALS_ABSPATH\\\" doesn't exist."`" 
+            cli_printMessage "`gettext "Do you want to download a working copy for it now?"`" --as-yesornorequest-line
+            mkdir -p $MANUALS_ABSPATH
+            svn co $(cli_printUrl --projects-artwork)trunk/${DIR} $MANUALS_ABSPATH
+        fi
+    done
+
+    # Verify directory structure used by documentation manuals.
+    for MANUALS_NAME in $MANUALS_NAMES;do
+        MANUALS_ABSPATH=$(cli_getRepoTLDir)/${MANUALS}/${MANUALS_NAME}
+        if [[ ! -d $MANUALS_ABSPATH ]];then
+            cli_printMessage "`eval_gettext "The directory \\\"\\\$MANUALS_ABSPATH\\\" doesn't exist."`" 
+            cli_printMessage "`gettext "Do you want to download a working copy for it now?"`" --as-yesornorequest-line
+            mkdir -p $MANUALS_ABSPATH
+            svn co $(cli_printUrl --projects-artwork)trunk/${MANUALS}/${MANUALS_NAME} ${MANUALS_ABSPATH}
+        fi
+    done
+
+    # Build output files related to key documentation manuals.
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/${MANUALS_IMAGES} --dont-commit-changes
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Manuals/Tcar-ug --filter="tcar-ug" --dont-commit-changes
+    ${CLI_BASEDIR}/${CLI_NAME}.sh help   trunk/Manuals/Tcar-fs --update --dont-commit-changes
 
 }
