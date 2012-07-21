@@ -88,8 +88,7 @@ function init {
     # provided, execute the help functionality and end script
     # execution.
     if [[ ! "$1" ]] || [[ ! "$1" =~ '^[[:alpha:]]' ]];then
-        echo 'No functionality passed as first argument.'
-    #    exec ${CLI_BASEDIR}/${CLI_NAME}.sh help
+        exec ${CLI_BASEDIR}/${CLI_NAME}.sh help
         exit
     fi
 
