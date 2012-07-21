@@ -2,12 +2,12 @@
 #
 # centos-art.sh -- The CentOS Artwork Repository automation tool.
 #
-# Copyright (C) 2009, 2010, 2011 The CentOS Project
+# Copyright (C) 2009-2012 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,64 +22,30 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-# Initialize personal data.
+# Initialize script-specific configuration variables.
 declare -xr CLI_NAME='centos-art'
 declare -xr CLI_PPID=$$
-declare -xr CLI_VERSION='1.0 (beta)'
-
-# Initialize paths.
-declare -xr CLI_WRKCOPY="${HOME}/artwork"
-declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
+declare -xr CLI_VERSION='1.0'
+declare -xr CLI_USRCONF=${HOME}/.${CLI_NAME}.conf
 declare -xr CLI_TEMPDIR='/tmp'
+
+# Initialize user-specific path information.
+declare -x  CLI_WRKCOPY=${HOME}/Projects/CentOS
+declare -x  COPYRIGHT_HOLDER="The CentOS Project"
+declare -x  COPYRIGHT_YEAR_FIRST="2009"
+declare -x  BRAND_FILENAME="centos"
+if [[ -x ${CLI_USRCONF} ]];then 
+    . ${CLI_USRCONF}
+fi
+declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
+declare -xr CLI_FUNCDIR=${CLI_BASEDIR}/Functions
 
 # Initialize internazionalization through GNU gettext.
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/branches/Locales/Scripts/Bash
-
-# Verify the working copy directory. Be sure it is
-# `/home/centos/artwork'.  Otherwise, end the script execution.  We
-# cannot continue if the working copy is stored in a place other than
-# `/home/centos/artwork'. This restriction is what let us to reuse
-# contents using absolute paths inside a distributed environment like
-# that one provided by The CentOS Artwork Repository.
-if [[ ! -d ${CLI_WRKCOPY} ]];then
-    echo "`eval_gettext "The working copy must be under \\\"\\\$CLI_WRKCOPY\\\"."`" > /dev/stderr
-    exit
-fi
-
-# Initialize common functions.
-FILES=$(ls ${CLI_BASEDIR}/Functions/{init,Commons/cli_*}.sh)
-for FILE in ${FILES};do
-    if [[ -x ${FILE} ]];then
-        . ${FILE}
-        FUNCTION=$(grep '^function ' ${FILE} | cut -d' ' -f2)
-        export -f ${FUNCTION}
-    else
-        echo `eval_gettext "The \\\"\\\$FILE\\\" needs to have execution rights."` > /dev/stderr
-        exit
-    fi
-done
-
-# Unset all variables not considered global in order to start common
-# functions with a clean environment.
-unset FILE
-unset FILES
-unset FUNCTION
-
-# Initialize copyright information for all art works produced through
-# this tool.
-COPYRIGHT_HOLDER="`gettext "The CentOS Project"`"
-COPYRIGHT_YEAR_FIRST="2009"
-
-# Trap signals in order to terminate the script execution correctly
-# (e.g., removing all temporal files before leaving).  Trapping the
-# exit signal seems to be enough by now, since it is always present as
-# part of the script execution flow. Each time the centos-art.sh
-# script is executed it will inevitably end with an EXIT signal at
-# some point of its execution, even if it is interrupted in the middle
-# of its execution (e.g., through `Ctrl+C').
-trap cli_terminateScriptExecution 0
+declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/Locales/Scripts
 
 # Initialize command-line interface.
-cli "$@"
+if [[ -x ${CLI_FUNCDIR}/Commons/init.sh ]];then
+    . ${CLI_FUNCDIR}/Commons/init.sh; export -f init ; init "$@"
+fi
