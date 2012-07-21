@@ -40,8 +40,8 @@ function prepare_updateLinks {
     local FILE=''
     local COUNT=0
 
-    # Define user's directories. This is the place where configuration
-    # links are created in.
+    # Define user's directories. Here is where configuration links are
+    # created in the local workstation.
     local GIMP_DIR=${HOME}/.$(rpm -q gimp | cut -d. -f-2)
     local GIMP_DIR_BRUSHES=${GIMP_DIR}/brushes
     local GIMP_DIR_PALETTES=${GIMP_DIR}/palettes
@@ -51,14 +51,32 @@ function prepare_updateLinks {
     local FONT_DIR=${HOME}/.fonts
     local APPS_DIR=${HOME}/bin
 
-    # Define working copy directories. This is the place where
-    # configuration links point to.
+    # Define the working copy directory structure. Here is where user
+    # specific configuration links in the workstation will point to.
     local WCDIR=$(cli_getRepoTLDir)/Identity
     local WCDIR_BRUSHES=${WCDIR}/Brushes
     local WCDIR_PALETTES=${WCDIR}/Palettes
     local WCDIR_PATTERNS=${WCDIR}/Patterns
     local WCDIR_FONTS=${WCDIR}/Fonts
     local WCDIR_EDITOR=${PREPARE_CONFIG_DIR}
+
+    # Verify required working copy directory structure. If these
+    # directories don't exist, there isn't a target location where
+    # configuration links can point to. To prevent such an issue
+    # output an error message and stop the script execution after it.
+    if [[ ! -d $WCDIR ]];then
+        cli_printMessage "`eval_gettext "The directory \\\"\\\$WCDIR\\\" doesn't exist."`" 
+        cli_printMessage "`gettext "Do you want to download a working copy for it now?"`" --as-yesornorequest-line
+        svn -N co $(cli_printUrl --projects-artwork)trunk/Identity $WCDIR
+        
+    fi
+    for DIR in $(echo "Brushes Palettes Patterns Fonts");do
+        if [[ ! -d ${WCDIR}/${DIR} ]];then
+            cli_printMessage "`eval_gettext "The directory \\\"\\\$WCDIR/\\\$DIR\\\" doesn't exist."`" 
+            cli_printMessage "`gettext "Do you want to download a working copy for it now?"`" --as-yesornorequest-line
+            svn co $(cli_printUrl --projects-artwork)trunk/Identity/${DIR} ${WCDIR}/${DIR}
+        fi
+    done
 
     # Define link relation for cli.
     LINKS_SRC[((++${#LINKS_SRC[*]}))]=${APPS_DIR}/${CLI_NAME}
