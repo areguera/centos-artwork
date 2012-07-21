@@ -1,0 +1,73 @@
+@node Trunk Scripts
+@section @file{trunk/Scripts}
+@cindex Trunk scripts
+
+The @file{trunk/Scripts} directory exists to organize automation
+scripts related to @value{TCPCVI}. Such automation scripts are
+implemented through @command{centos-art.sh} script, a bash scripts
+designed to automate most frequent tasks performed inside the working
+copy of @value{TCAR} (e.g., image rendition, content documentation,
+content translation, etc.).
+
+The @file{trunk/Scripts} directory and all files inside it are under
+version control. 
+
+The @file{trunk/Scripts} directory contains just one file, the
+@file{centos-art.sh} file. This file is the invocation script the
+@command{centos-art} command calls to. In addition to
+@file{centos-art.sh} file, the following directories are available:
+
+@c -- <[centos-art(SeeAlso)
+@itemize
+@item @ref{Trunk Scripts Functions}
+@end itemize
+@c -- ]>
+
+Content rendition inside @file{trunk/Scripts} is not supported.
+
+Once the @command{centos-art.sh} script is executed, the following
+variables are available all along the script execution:
+
+@defvar CLI_PROGRAM
+The @var{CLI_PROGRAM} variable is read-only and contains the name of
+the script, which is @samp{centos-art}, without extension.
+@end defvar
+
+@defvar CLI_PROGRAM_ID
+The @var{CLI_PROGRAM_ID} variable is read-only and contains the
+process identification assigned to @command{centos-art.sh} script,
+once executed.
+@end defvar
+
+@defvar CLI_VERSION
+The @var{CLI_VERSION} variable is read-only and contains the version
+number of @command{centos-art.sh} script.
+@end defvar
+
+@defvar CLI_BASEDIR
+The @var{CLI_BASEDIR} variable is read-only and contains the absolute
+path of directory where @command{centos-art.sh} script is stored in.
+@end defvar
+
+@defvar CLI_TEMPDIR
+The @var{CLI_TEMPDIR} variable is read-only and contains the absolute
+path of directory where temporal files created by
+@command{centos-art.sh} script are stored in.
+@end defvar
+
+@defvar TEXTDOMAIN
+The @var{TEXDOMAIN} variable is read-only and contains the name of the
+program we are providing localization for (i.e., @samp{centos-art.sh}).
+@end defvar
+
+@defvar TEXTDOMAINDIR 
+The @var{TEXTDOMAINDIR} variable is read-only and contains the
+absolute path of directory holding localization messages for
+@command{centos-art.sh}. In order for this variable to take effect,
+its value must be set using the
+@file{$@{BASEDIR@}/$@{LANG@}/LC_MESSAGES/$@{TEXDOMAIN@}} construction;
+where @var{BASEDIR} is an absolute path inside your workstation,
+@var{LANG} a language code based on the standards @samp{ISO-639} and
+@samp{ISO-3166} (e.g., @samp{es_ES} for Spanish from Spain,
+@samp{fr_FR} for French from France, etc.).
+@end defvar

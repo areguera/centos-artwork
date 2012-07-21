@@ -1,0 +1,86 @@
+@node Trunk Scripts Functions Prepare
+@section @file{trunk/Scripts/Functions/Prepare}
+@cindex Trunk scripts functions prepare
+
+The @file{trunk/Scripts/Functions/Prepare} directory exists to
+organize the @code{prepare} functionality of @command{centos-art.sh}
+script.  The @code{prepare} functionality is written in Bash and its
+main goal is to standardize the final configuration stuff your
+workstation needs, once the working copy of @value{TCAR} has been
+downloaded inside it. 
+
+The @file{trunk/Scripts/Functions/Prepare} directory and all files
+inside it are under version control.
+
+Content rendition inside @file{trunk/Scripts/Functions/Prepare} is not
+supported. 
+
+Inside @file{trunk/Scripts/Functions/Prepare} directory, file names
+and function names share the same name convenction with the exception
+that file names end with a @samp{.sh} suffix while function names
+doesn't. Both, file names and function names, begin with
+@samp{prepare_} prefix followed by a description of what the function
+does.
+
+Inside @file{trunk/Scripts/Functions/Prepare} directory, you can find
+the following functions:
+
+@defun prepare
+The @code{prepare} (initialization) function creates the base
+execution environment required to standardize final configuration
+stuff needed by your workstation, once the working copy of
+@value{TCAR} has been downloaded in it.
+@end defun
+
+@defun prepare_getOptions
+The @code{prepare_getOptions} function parses command options provided
+to @command{centos-art.sh} script when the first argument in the
+command-line is the @samp{prepare} word. This function decides what
+action to perform based on options provided. To parse options, this
+function makes use of @command{getopt} program.
+@end defun
+
+@defun prepare_updateLinks
+The @code{prepare_updateLinks} function updates the symbolic
+link relation that connects your workstation with the files inside the
+working copy of @value{TCAR}. This function makes brushes, palettes,
+patterns and fonts inside the working copy available to programs like
+GIMP and Inkscape installed in your workstation. 
+@end defun
+
+@defun prepare_updateImages
+The @code{prepare_updateImages} function initializes image files
+inside the working copy. This function makes a list of all design
+models inside the working copy and renders them one by one to produces
+the related output images.
+@end defun
+
+@defun prepare_updateManuals
+The @code{prepare_updateManuals} function initializes
+documentation files inside the working copy. This function makes a
+list of all documentation manuals source files inside the working copy
+and produces related output for them.
+@end defun
+
+@defun prepare_updatePackages
+The @code{prepare_updatePackages} function verifies the required
+packages your workstation needs to have installed in order for
+@command{centos-art.sh} script to run correctly. If one or
+more packages are uninstalled or out of date, the
+@command{centos-art.sh} script asks you to confirm their
+installation or actualization through the @command{sudo yum} command.
+@end defun
+
+@defun prepare_getEnvars
+The @code{prepare_getEnvars} function outputs a brief description of
+relevant environment variables the @command{centos-art.sh} script
+makes use of.
+@end defun
+
+@defun prepare_getLinkName DIRECTORY, FILE
+The @code{prepare_getLinkName} function takes a @var{DIRECTORY} path
+as first argument and a @var{FILE} path as second argument to output a
+file name with the path information that remains from substracting the
+@var{DIRECTORY} path from the @var{FILE} path provided as argument.
+@end defun
+

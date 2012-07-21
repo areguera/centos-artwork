@@ -1,0 +1,69 @@
+@node Trunk Scripts Functions
+@section @file{trunk/Scripts/Functions}
+@cindex Trunk scripts functions
+
+The @file{trunk/Scripts/Functions} directory exists to organize common
+and spectic functionalities related to the @command{centos-art.sh}
+script. Common functionalities are loaded once the
+@command{centos-art.sh} script is executed and made available for
+sepecific functionalities to reuse.
+
+The @file{trunk/Scripts/Functions} directory and all files inside it
+are under version control.
+
+Content rendition inside `trunk/Scripts/Functions' directory is not
+supported.
+
+Inside @file{trunk/Scripts/Functions} directory, specific
+functionalities are organized in the following directories:
+
+@c -- <[centos-art(SeeAlso)
+@itemize
+@item @ref{Trunk Scripts Functions Prepare}
+@end itemize
+@c -- ]>
+
+Inside @file{trunk/Scripts/Functions} directory, common
+functionalities are stored in files prefixed with the @samp{cli}
+string as described below:
+
+@defun cli "$@@"
+The @code{cli} functionality initializes the command-line interface
+(cli) of @command{centos-art.sh} script. This function evaluates the
+first argument provided to @command{centos-art.sh} script and call the
+specific functionality that respondes to it. The @code{cli} function
+is directly called from @file{centos-art.sh} itself once global
+variables are defined, working copy verification performed, common
+functionalities exported into the execution environment, and signals
+trapped. The @code{cli} function receives all positional parameters
+passed to @command{centos-art.sh} as argument.
+
+The @code{cli} function creates the a new environment inside that one
+created by @command{centos-art.sh} script execution. Variables defined
+herein will be avaialble to all specific functionalities and common
+functionalities used inside specific functionalities.
+
+@defvar FUNCNAM
+The @var{FUNCNAM} variable stores the function name passed as first
+argument to @command{centos-art.sh} script using the file convenction
+specified by @code{cli_getRepoName} function.
+@end defvar
+
+@defvar FUNCDIR
+The @var{FUNCDIR} variable stores the absolute path of directory
+holding @command{centos-art.sh} script functions, both common and
+specific.
+@end defvar
+
+@defvar FUNCDIRNAM
+...
+@end defvar
+
+@defvar FUNCSCRIPT
+...
+@end defvar
+
+@defvar ARGUMENTS
+...
+@end defvar
+@end defun
