@@ -94,7 +94,7 @@ function svg_convertPngToDm {
 
         Gdm )
             FILES="\
-            ${BRANDS}/Symbols/White/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
+            ${BRANDS}/Symbols/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
@@ -107,7 +107,7 @@ function svg_convertPngToDm {
             
         Kdm )
             FILES="\
-            ${BRANDS}/Symbols/White/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
+            ${BRANDS}/Symbols/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
