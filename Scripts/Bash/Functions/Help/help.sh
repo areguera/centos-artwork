@@ -52,7 +52,7 @@ function help {
     # permitted, use `trunk/Manuals' directory structure as default
     # location to store documentation manuals.
     if [[ ! $MANUAL_TLDIR =~ "^${CLI_WRKCOPY}/(trunk/Manuals|branches/Manuals/[[:alnum:]-]+)$" ]];then
-        MANUAL_TLDIR="${CLI_WRKCOPY}/branches/Manuals/Texinfo"
+        MANUAL_TLDIR="${CLI_WRKCOPY}/trunk/Manuals"
     fi
 
     # Initialize documentation entries arrays. Arrays defined here
