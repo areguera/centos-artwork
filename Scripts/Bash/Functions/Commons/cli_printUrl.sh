@@ -78,7 +78,7 @@ function cli_printUrl {
                 ;;
 
             --projects )
-                URL="https://${DOMAINNAME_PROJECTS}/"
+                URL="https://${DOMAINNAME_PROJECTS}/svn/"
                 shift 1
                 ;;
 
