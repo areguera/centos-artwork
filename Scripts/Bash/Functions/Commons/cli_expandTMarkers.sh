@@ -56,8 +56,8 @@ function cli_expandTMarkers {
     # Identity/(Images|Models)/Brands/ directory structure. These
     # file names may vary from one project to another so we use this
     # variable to control the name of such files.
-    SRC[((++${#SRC[*]}))]='=BRAND_FILENAME='
-    DST[((++${#DST[*]}))]="${BRAND_FILENAME}"
+    SRC[((++${#SRC[*]}))]='=BRAND='
+    DST[((++${#DST[*]}))]="${BRAND}"
 
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
@@ -103,9 +103,9 @@ function cli_expandTMarkers {
 
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
-    DST[((++${#DST[*]}))]="${BRAND_FILENAME}-docs@centos.org"
+    DST[((++${#DST[*]}))]="${MAILINGLIST_DOCS}"
     SRC[((++${#SRC[*]}))]='=MAIL_L10N='
-    DST[((++${#DST[*]}))]="${BRAND_FILENAME}-l10n@centos.org"
+    DST[((++${#DST[*]}))]="${MAILINGLIST_L10N}"
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
