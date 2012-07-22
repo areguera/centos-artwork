@@ -53,57 +53,57 @@ function cli_printUrl {
         case "$1" in
 
             --home )
-                URL='http://www.centos.org/'
+                URL="http://${DOMAINNAME_HOME}/"
                 shift 1
                 ;;
 
             --lists )
-                URL='http://lists.centos.org/'
+                URL="http://${DOMAINNAME_LISTS}/"
                 shift 1
                 ;;
 
             --wiki )
-                URL='http://wiki.centos.org/'
+                URL="http://${DOMAINNAME_WIKI}/"
                 shift 1
                 ;;
 
             --forums )
-                URL='http://forums.centos.org/'
+                URL="http://${DOMAINNAME_FORUMS}/"
                 shift 1
                 ;;
 
             --bugs )
-                URL='http://bugs.centos.org/'
+                URL="http://${DOMAINNAME_BUGS}/"
                 shift 1
                 ;;
 
             --projects )
-                URL='https://projects.centos.org/'
+                URL="https://${DOMAINNAME_PROJECTS}/"
                 shift 1
                 ;;
 
             --projects-artwork )
-                URL=$(cli_printUrl '--projects')svn/artwork/
+                URL=${DOMAINNAME_PROJECTS}/svn/artwork/
                 shift 1
                 ;;
 
             --planet )
-                URL='http://planet.centos.org/'
+                URL="http://${DOMAINNAME_PLANET}/"
                 shift 1
                 ;;
 
             --docs )
-                URL='http://docs.centos.org/'
+                URL="http://${DOMAINNAME_DOCS}/"
                 shift 1
                 ;;
 
             --mirrors )
-                URL='http://mirrors.centos.org/'
+                URL="http://${DOMAINNAME_MIRRORS}/"
                 shift 1
                 ;;
 
             --irc )
-                URL='http://www.centos.org/modules/tinycontent/index.php?id=8'
+                URL="http://${DOMAINNAME_HOME}/modules/tinycontent/index.php?id=8"
                 shift 1
                 ;;
 
