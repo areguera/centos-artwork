@@ -39,12 +39,12 @@ function locale_updateMessageShell {
     # we use inside the repository.
     local EXTENSION='sh'
 
-    # Build list of files to process. When building the patter, be
-    # sure the value passed through `--filter' be exactly evaluated
-    # with the extension as prefix. Otherwise it would be difficult to
-    # match files that share the same characters in their file names
-    # (e.g., it would be difficult to match only `hello.sh' if
-    # `hello-world.sh' also exists in the same location).
+    # Build list of files to process. When you build the pattern, be
+    # sure the value passed through `--filter' will be exactly
+    # evaluated with the extension as prefix. Otherwise it would be
+    # difficult to match files that share the same characters in their
+    # file names (e.g., it would be difficult to match only `hello.sh'
+    # if `hello-world.sh' also exists in the same location).
     local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${EXTENSION}")
 
     # Print action message.
@@ -53,7 +53,7 @@ function locale_updateMessageShell {
     # Retrive translatable strings from shell script files and create
     # the portable object template (.pot) from them.
     xgettext --output=${MESSAGES}.pot \
-        --copyright-holder="The CentOS Locales SIG" \
+        --copyright-holder="${COPYRIGHT_HOLDER}" \
         --width=70 --sort-by-file ${FILES}
 
     # Sanitate metadata inside the POT file.
