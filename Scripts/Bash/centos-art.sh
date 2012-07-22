@@ -23,27 +23,42 @@
 # ----------------------------------------------------------------------
 
 # Initialize script-specific configuration variables.
-declare -xr CLI_NAME='centos-art'
+declare -xr BRAND="centos"
+declare -xr CLI_NAME="${BRAND}-art"
 declare -xr CLI_PPID=$$
 declare -xr CLI_VERSION='1.0'
 declare -xr CLI_USRCONF=${HOME}/.${CLI_NAME}.conf
 declare -xr CLI_TEMPDIR='/tmp'
 
 # Initialize user-specific path information.
-declare -x  CLI_WRKCOPY=${HOME}/Projects/CentOS
-declare -x  COPYRIGHT_HOLDER="The CentOS Project"
-declare -x  COPYRIGHT_YEAR_FIRST="2009"
-declare -x  BRAND_FILENAME="centos"
-if [[ -x ${CLI_USRCONF} ]];then 
-    . ${CLI_USRCONF}
-fi
+declare -xr CLI_WRKCOPY=${HOME}/Projects/CentOS
 declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
 declare -xr CLI_FUNCDIR=${CLI_BASEDIR}/Functions
+
+# Initialize copyright information.
+declare -xr COPYRIGHT_HOLDER="The CentOS Project"
+declare -xr COPYRIGHT_YEAR_FIRST="2009"
+
+# Initialize domain-specific information.
+declare -xr DOMAINNAME="${BRAND}.org"
+declare -xr DOMAINNAME_LISTS="lists.${DOMAINNAME}"
+declare -xr DOMAINNAME_HOME="www.${DOMAINNAME}"
+declare -xr DOMAINNAME_PROJECTS="projects.${DOMAINNAME}"
+declare -xr DOMAINNAME_FORUMS="forums.${DOMAINNAME}"
+declare -xr DOMAINNAME_BUGS="bugs.${DOMAINNAME}"
+declare -xr DOMAINNAME_PLANET="planet.${DOMAINNAME}"
+declare -xr DOMAINNAME_WIKI="wiki.${DOMAINNAME}"
+declare -xr DOMAINNAME_MIRRORS="mirrors.${DOMAINNAME}"
+
+# Initialize mail-specific information.
+declare -xr MAILINGLIST_DOCS="${BRAND}-docs@${DOMAINNAME}"
+declare -xr MAILINGLIST_L10N="${BRAND}-l10n@${DOMAINNAME}"
+declare -xr MAILINGLIST_DEVEL="${BRAND}-devel@${DOMAINNAME}"
 
 # Initialize internazionalization through GNU gettext.
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/Locales/Scripts
+declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/Locales/Scripts/Bash
 
 # Initialize command-line interface.
 if [[ -x ${CLI_FUNCDIR}/Commons/init.sh ]];then
