@@ -29,11 +29,10 @@
 
 function locale_updateMessages {
 
-    # Verify existence of localization working directory. We cannot
-    # update translation files that don't exist.
-    cli_checkFiles $L10N_WORKDIR
-
     local ACTIONNAM=''
+
+    # Prepare working directory to receive translation files.
+    locale_prepareWorkingDirectory
 
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
@@ -46,7 +45,7 @@ function locale_updateMessages {
         # graphics).
         locale_updateMessageXml
 
-    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
+    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to shell scripts (e.g., the centos-art.sh
