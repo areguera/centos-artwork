@@ -52,9 +52,9 @@ function locale_updateMessageMetadata {
     SRC[4]="\"PO-Revision-Date:"
 
     # Define replacement lines for pattern line.
-    DST[0]="\"Project-Id-Version: ${CLI_NAME}.sh\\\n\""
-    DST[1]="\"Report-Msgid-Bugs-To: The CentOS Locales SIG <=MAIL_L10N=>\\\n\""
-    DST[2]="\"Last-Translator: The CentOS Locales SIG <=MAIL_L10N=>\\\n\""
+    DST[0]="\"Project-Id-Version: ${CLI_NAME}-${CLI_VERSION}\\\n\""
+    DST[1]="\"Report-Msgid-Bugs-To: Translation SIG\\\n\""
+    DST[2]="\"Last-Translator: Translation SIG <${MAILINGLIST_L10N}>\\\n\""
     DST[3]="\"Language-Team: ${LANGNAME}\\\n\""
     DST[4]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
 
@@ -75,7 +75,7 @@ function locale_updateMessageMetadata {
     fi
 
     # Replace package information using gettext domain information.
-    sed -i -r "s/PACKAGE/${TEXTDOMAIN}/g" ${FILE}
+    sed -i -r "s/PACKAGE/${CLI_NAME}-${CLI_VERSION}/g" ${FILE}
 
     # Expand translation markers inside file.
     cli_expandTMarkers ${FILE}
