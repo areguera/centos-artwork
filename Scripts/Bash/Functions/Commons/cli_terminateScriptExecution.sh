@@ -28,22 +28,8 @@
 
 function cli_terminateScriptExecution {
 
-    # Build list of temporal files related to this script execution.
-    # Remember that inside `/tmp' directory there are files and
-    # directories you might have no access to (due permission
-    # restrictions), so command cli_getFilesList to look for files in
-    # the first level of files that you are owner of.  Otherwise,
-    # undesired `permission denied' messages might be output.
-    local FILES=$(cli_getFilesList ${CLI_TEMPDIR} \
-        --pattern="${CLI_NAME}-${CLI_PPID}-.+" \
-        --maxdepth="1" --uid="$(id -u)")
-
-    # Remove list of temporal files related to this script execution,
-    # if any of course. Remember that some of the temporal files can
-    # be directories, too.
-    if [[ $FILES != '' ]];then
-        rm -rf $FILES
-    fi
+    # Remove temporal directory.
+    rm -r ${CLI_TEMPDIR}
 
     # Terminate script correctly.
     exit 0
