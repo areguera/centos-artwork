@@ -68,7 +68,7 @@ function svg_convertPngToDm {
     # Initialize source location for brands. This is the place where
     # brand information, needed to build the display manager theme, is
     # retrived from.
-    local BRANDS=$(cli_getRepoTLDir)/Identity/Images/Brands
+    local BRAND_BASEDIR=$(cli_getRepoTLDir)/Identity/Images/Brands
 
     # Initialize source location for artistic motif's backgrounds.
     # This is the place where background information needed to ubild
@@ -94,7 +94,7 @@ function svg_convertPngToDm {
 
         Gdm )
             FILES="\
-            ${BRANDS}/Symbols/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
+            ${BRAND_BASEDIR}/Symbols/48/${BRAND}.png:${BRAND}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
@@ -107,7 +107,7 @@ function svg_convertPngToDm {
             
         Kdm )
             FILES="\
-            ${BRANDS}/Symbols/48/${BRAND_FILENAME}.png:${BRAND_FILENAME}-symbol.png
+            ${BRAND_BASEDIR}/Symbols/48/${BRAND}.png:${BRAND}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
