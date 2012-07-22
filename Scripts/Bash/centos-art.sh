@@ -27,13 +27,12 @@ declare -xr BRAND="centos"
 declare -xr CLI_NAME="${BRAND}-art"
 declare -xr CLI_PPID=$$
 declare -xr CLI_VERSION='1.0'
-declare -xr CLI_USRCONF=${HOME}/.${CLI_NAME}.conf
-declare -xr CLI_TEMPDIR='/tmp'
+declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.XXXXXX)"
 
 # Initialize user-specific path information.
-declare -xr CLI_WRKCOPY=${HOME}/Projects/CentOS
+declare -xr CLI_WRKCOPY="${HOME}/Projects/CentOS"
 declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
-declare -xr CLI_FUNCDIR=${CLI_BASEDIR}/Functions
+declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
 # Initialize copyright information.
 declare -xr COPYRIGHT_HOLDER="The CentOS Project"
