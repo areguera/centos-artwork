@@ -63,7 +63,6 @@ function svg_convertPngToBranded {
     # configuration lines from supported section names (e.g.,
     # `symbol', `type', `logo') be read, no need to waste resources
     # with others.
-
     BRANDING_CONF_VALUES=$(\
         for BRANDING_CONF_SECTION in $(echo "types symbols logos");do
             cli_getConfigValue "${BRANDING_CONF_FILE}" "${BRANDING_CONF_SECTION}" "${BRANDING_CONF_VARNAME}"
