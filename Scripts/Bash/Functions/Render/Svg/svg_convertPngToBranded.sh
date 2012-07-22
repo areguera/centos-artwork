@@ -40,7 +40,7 @@ function svg_convertPngToBranded {
     local BRANDING_CONF_SECTION=''
     local BRANDING_CONF_VALUES=''
     local BRANDING_CONF_VALUE=''
-    local BRAND=''
+    local BRANDFILE=''
     local POSITION=''
     local POSITIONS=''
 
@@ -68,14 +68,14 @@ function svg_convertPngToBranded {
         # Define absolute path to image file used as brand. This is
         # the image put over the PNG image produced as result of
         # design models base rendition.
-        BRAND=$(cli_getRepoTLDir)/Identity/Images/Brands/$(echo $BRANDING_CONF_VALUE \
+        BRANDFILE=$(cli_getRepoTLDir)/Identity/Images/Brands/$(echo $BRANDING_CONF_VALUE \
             | gawk 'BEGIN{ FS=":" } { print $1 }' \
-            | sed -r "s/=BRAND_FILENAME=/${BRAND_FILENAME}/g")
+            | sed -r "s/=BRAND=/${BRAND}/g")
 
         # Verify absolute path to image file used as brand. Assuming
         # no brand image file is found, continue with the next
         # configuration line.
-        if [[ ! -f $BRAND ]];then
+        if [[ ! -f $BRANDFILE ]];then
             continue
         fi
 
@@ -87,7 +87,7 @@ function svg_convertPngToBranded {
         # composite command from ImageMagick, to overlap the unbranded
         # image just rendered with the branded version of itself.
         for POSITION in $POSITIONS;do
-            composite -geometry $POSITION $BRAND ${FILE}.png ${FILE}.png
+            composite -geometry ${POSITION} ${BRANDFILE} ${FILE}.png ${FILE}.png
         done
 
     done
