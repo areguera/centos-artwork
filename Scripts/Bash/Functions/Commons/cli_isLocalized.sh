@@ -52,7 +52,7 @@ function cli_isLocalized {
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
         cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Manuals/[[:alnum:]-]+$"
-    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Scripts$"
+    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Scripts/Bash$"
 
     # Verify location passed as first argument agains the list of
     # directories that can have translation messages. By default, the
