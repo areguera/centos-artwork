@@ -47,6 +47,11 @@ function svg_convertPngToBranded {
     # Define absolute path to branding configuration file.
     BRANDING_CONF_FILE="$(dirname ${TEMPLATE})/branding.conf"
 
+    # Verify absolute path to branding configuration file. This is
+    # required in order to avoid trying to rendered branded content
+    # which doesn't have an associated `branding.conf' file.
+    cli_checkFiles "$BRANDING_CONF_FILE"
+
     # Define regular expression matching the variable name (i.e., the
     # left column), inside the configuration line, you want to match
     # on.
@@ -58,6 +63,7 @@ function svg_convertPngToBranded {
     # configuration lines from supported section names (e.g.,
     # `symbol', `type', `logo') be read, no need to waste resources
     # with others.
+
     BRANDING_CONF_VALUES=$(\
         for BRANDING_CONF_SECTION in $(echo "types symbols logos");do
             cli_getConfigValue "${BRANDING_CONF_FILE}" "${BRANDING_CONF_SECTION}" "${BRANDING_CONF_VARNAME}"
