@@ -25,35 +25,11 @@
 
 function locale_editMessages {
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
-
     local PO_FILE=''
     local PO_FILES=''
 
-    # Prepare localization working directory for receiving translation
-    # files.
-    if [[ ! -d ${L10N_WORKDIR} ]];then
-
-        # Print separator line.
-        cli_printMessage "-" --as-separator-line
-
-        # Output action message.
-        cli_printMessage "${L10N_WORKDIR}" --as-creating-line
-
-        # Create localization working directory making parent
-        # directories as needed. Subversion doesn't create directories
-        # recursively, so we use the system's `mkdir' command and then
-        # subversion to register the changes.
-        mkdir -p ${L10N_WORKDIR}
-
-        # Commit changes from working copy to central repository only.
-        # At this point, changes in the repository are not merged in
-        # the working copy, but chages in the working copy do are
-        # committed up to repository.
-        cli_commitRepoChanges "${L10N_BASEDIR}"
-
-    fi
+    # Prepare working directory to receive translation files.
+    locale_prepareWorkingDirectory
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
@@ -65,13 +41,20 @@ function locale_editMessages {
         # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
 
-    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts$" ]];then
+    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash$" ]];then
 
-        # Define list of PO files for shell scripts.
+        # Define list of PO files for script files.
         PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern=".*/${TEXTDOMAIN}\.po")
 
     else
         cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
+    fi
+
+    # Verify list of PO files.
+    if [[ $PO_FILES = "" ]];then
+        cli_printMessage "`gettext "The path provided hasn't translations yet."`" --as-error-line
+    else
+        cli_printMessage '-' --as-separator-line
     fi
 
     # Loop through list of PO files to process in order to edit them
