@@ -39,7 +39,7 @@ function cli_getTemporalFile {
     fi
 
     # Define absolute path for temporal file. 
-    local TEMPFILE="$(mktemp ${CLI_TEMPDIR}/${NAME}.XXXXXXXXXX)"
+    local TEMPFILE="${CLI_TEMPDIR}/${NAME}"
 
     # Output absolute path to final temporal file.
     echo $TEMPFILE
