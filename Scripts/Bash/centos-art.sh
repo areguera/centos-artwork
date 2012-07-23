@@ -25,7 +25,7 @@
 # Initialize script-specific configuration variables.
 declare -xr BRAND="centos"
 declare -xr CLI_NAME="${BRAND}-art"
-declare -xr CLI_PPID=$$
+declare -xr CLI_PID=$$
 declare -xr CLI_VERSION='1.0'
 declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.XXXXXX)"
 
