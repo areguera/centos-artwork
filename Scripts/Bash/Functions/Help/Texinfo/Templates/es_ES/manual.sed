@@ -25,16 +25,16 @@
 # ----------------------------------------------------------------------
 
 # Quotations.
-s!<blockquote><p><strong>Nota</strong>!<blockquote class="blue icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/note.png" alt="Info" /><h2>Nota</h2><p>!g
+s!<blockquote><p><strong>Nota</strong>!<blockquote class="blue icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/note.png" alt="Info" /><h2>Nota</h2><p>!g
 
-s!<blockquote><p><strong>Advertencia</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/warning.png" alt="Advertencia" /><h2>Advertencia</h2><p>!g
+s!<blockquote><p><strong>Advertencia</strong>!<blockquote class="orange icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/warning.png" alt="Advertencia" /><h2>Advertencia</h2><p>!g
 
-s!<blockquote><p><strong>Importante</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/star.png" alt="Importante" /><h2>Importante</h2><p>!g
+s!<blockquote><p><strong>Importante</strong>!<blockquote class="orange icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/star.png" alt="Importante" /><h2>Importante</h2><p>!g
 
-s!<blockquote><p><strong>Idea</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/tip.png" alt="Idea" /><h2>Idea</h2><p>!g
+s!<blockquote><p><strong>Idea</strong>!<blockquote class="orange icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/tip.png" alt="Idea" /><h2>Idea</h2><p>!g
 
-s!<blockquote><p><strong>Precaución</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/caution.png" alt="Precaución" /><h2>Precaución</h2><p>!g
+s!<blockquote><p><strong>Precaución</strong>!<blockquote class="orange icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/caution.png" alt="Precaución" /><h2>Precaución</h2><p>!g
 
-s!<blockquote><p><strong>Convensión</strong>!<blockquote class="orange icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/ruler.png" alt="Convensión" /><h2>Convensión</h2><p>!g
+s!<blockquote><p><strong>Convensión</strong>!<blockquote class="orange icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/ruler.png" alt="Convensión" /><h2>Convensión</h2><p>!g
 
-s!<blockquote><p><strong>Redirección</strong>!<blockquote class="blue icon"><img src="/home/centos/artwork/trunk/Identity/Images/Webenv/redirect.png" alt="Redirección" /><h2>Redirección</h2><p>!g
+s!<blockquote><p><strong>Redirección</strong>!<blockquote class="blue icon"><img src="/home/centos/Projects/artwork/trunk/Identity/Images/Webenv/redirect.png" alt="Redirección" /><h2>Redirección</h2><p>!g
