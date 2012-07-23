@@ -83,7 +83,7 @@ function cli_printUrl {
                 ;;
 
             --projects-artwork )
-                URL=${DOMAINNAME_PROJECTS}/svn/artwork/
+                URL="https://${DOMAINNAME_PROJECTS}/svn/artwork/"
                 shift 1
                 ;;
 
