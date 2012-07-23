@@ -30,7 +30,7 @@ declare -xr CLI_VERSION='1.0'
 declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.XXXXXX)"
 
 # Initialize user-specific path information.
-declare -xr CLI_WRKCOPY="${HOME}/Projects/CentOS"
+declare -xr CLI_WRKCOPY="${HOME}/Projects/artwork"
 declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
 declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
