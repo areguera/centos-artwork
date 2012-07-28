@@ -20,19 +20,20 @@
         count with. If the relation between master paths and auxiliar
         paths is lost, there is no way for automation scripts to know
         where to retrive the information they need to work with or
-        where to store the output information produced from it.  Path
-        syncronization is the way we use through to organize and
-        extend the information stored in the repository.
+        where to store the output information produced from it.
+        Through path syncronization we organize and extend the content
+        production inside the repository.
     </para>
     
     <para>
-        Path syncronization involves both movement of files and
+        Path syncronization affects both movement of files and
         replacement of content inside files.  Movement of files is
         related to actions like renaming files and directories inside
         the repository.  Replacement of content inside files is
         related to actions like replacing information (e.g., paths
         information) inside files in order to keep file contents and
-        file locations consistent one another after a file movement.
+        file locations consistent one another after a file has been
+        moved.
     </para>
 
     <para>
@@ -42,7 +43,7 @@
         inside the repository, we avoid making replacements inside
         files first and file movements later. This would demand two
         commit actions: one for the files' internal changes and
-        another for the file movement itself.  Otherwise, we prefer to
+        another for the file movement itself.  Instead, we prefer to
         perform file movements first and files' internal replacements
         later.  This way it is possible to commit both changes as if
         they were just one.
@@ -60,25 +61,27 @@
     </note>
 
     <para>
-        At this moment there is no full implementation of path
-        syncronization process inside <command>centos-art.sh</command>
-        script and it is somthing we need to do oursleves. However,
-        the <quote>texinfo</quote> backend of <code>help</code>
-        functionality which provides a restricted implementation of
-        path syncronization to this specific area of documentation
+        At this moment there isn't full implementation of path
+        syncronization inside <command>centos-art.sh</command> script
+        and that is somthing we need to do oursleves. However, the
+        <quote>texinfo</quote> backend inside the
+        <function>help</function> functionality does provide a restricted
+        implementation of path syncronization to documentation area
         through the <option>--copy</option>, <option>--delete</option>
-        and <option>--rename</option> options you can take as
-        reference to implement it in other areas.
+        and <option>--rename</option> options. You can read this
+        implementation and use it as reference to implement path
+        syncronization in other areas.
     </para>
         
     <para>
         The plan for a full implementation of path syncronization
-        would be to create individual restricted implementations like
-        the one in <quote>texinfo</quote> backend for other areas that
-        demand it and then, create a higher implmentation that
-        combines them all as needed. This way, if we try to rename a
-        repository directory the higher action will define which are
-        all the restricted actions that should be performed in order
+        inside <command>centos-art.sh</command> script would be to
+        create individual restricted implementations like the one in
+        <quote>texinfo</quote> backend for other areas that demand it
+        and then, create a higher implmentation that combines them all
+        as needed. This way, if we try to rename a repository
+        directory, the higher action can know which are all the
+        restricted actions that should be performed in order
         to make the full path syncronization.
     </para>
         
@@ -90,7 +93,7 @@
         an auxiliar path, it is required to determine first what is
         the related master path and later, perform the syncronization
         from master path to auxiliar paths as if the path provided
-        would be the master path not the auxiliar path.  
+        would be the master path not the auxiliar path.
     </para>
 
 </sect1>
