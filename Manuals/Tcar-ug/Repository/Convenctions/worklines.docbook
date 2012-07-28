@@ -3,14 +3,22 @@
     <title>Repository Work Lines</title>
 
     <para>
-        To organize content production inside &TCAR;, production has
-        been divided into individual work lines that relate one
-        another based on the idea of doing one thing well. Later, the
-        results produced individually by each work line are combined
-        to achieve a higher purpose. Work lines, as conceived here,
-        provide the relayable output components the production cycle
-        inside &TCAR; needs to let everyone to work syncronized in a
-        descentralized environment.
+        The content production inside &TCAR; has been divided into
+        individual work lines that relate one another based on the
+        idea of doing one thing well. In this model, the content
+        produced individually by each work line is combined one
+        another later to achieve higher purposes (e.g., corporate
+        identity for &TCP;). The repository work lines, as conceived
+        here, provide a relaible environment for people to work
+        syncronized and descentralized.
+    </para>
+
+    <para>
+        The action of combining work lines one another inside &TCAR;
+        is known as the corporate identity production cycle. The rest
+        of this section describes the work lines available in the
+        repository and their position inside the corporate identity
+        production cycle. 
     </para>
 
     <sect2 id="repo-convs-worklines-idenity">
@@ -18,25 +26,32 @@
     <title>Visual Identity</title>
 
     <para>
-        In the production cycle, the first step takes place through
-        graphic design. It is focused on preparing design models for
-        all the visual manifestation &TCP; is made of.  Here, graphic
-        designers describe the visual characteristics of each visual
-        manifestation (e.g., image dimensions, position of text in the
-        visible area, translation markers, etc.).  
-        Later, once design models have been defined, graphic designers
-        take care of artistic motifs to define the visual style of
-        those design models already created (e.g., how they look and
-        feel).  
+        The visual identity is the first component we work out in
+        order to produce a new corporate identity.  Through this work
+        line, graphic designers create <quote>models</quote> and
+        <quote>motifs</quote> for all the visual manifestation &TCP;
+        is made of.  Once design models and artistic motifs are set in
+        place, graphic designers use the <function>render</function>
+        functionality described in <xref linkend="scripts-bash-render"
+        /> to combine both design models and artistic motifs into
+        final images.
     </para>
-        
+
     <para>
-        Finally, graphic designers use the
-        <function>render</function> functionality of
-        <command>centos-art.sh</command> script to combine both design
-        models and artistic motifs in order to produce the final
-        images required by each visual manifestaions.
+        The main purposes of this work line is define all the visual
+        manifestations the &TCP; is made of and provide design models
+        and artistic motifs for them in order to render the set of
+        images required to transmit the visual style that identifies
+        &TCP; as unique organization. To know more about &TCPCVI;,
+        read <xref linkend="identity" />.
     </para>
+
+    <para>
+        The visual identity work line takes palce in the <ulink
+        url="https://projects.centos.org/svn/artwork/trunk/Identity"><filename
+        class="directory">trunk/Identity</filename></ulink> directory.
+    </para>
+
 
     </sect2>
 
@@ -45,20 +60,34 @@
     <title>Localization</title>
 
     <para>
-        The second step in the production cycle is to localize
-        source files (e.g., SVG, DocBook, Shell scripts). This step
-        makes possible to produce localized images, localized
-        documentation and localized automation scripts.
-    </para>
-    
-    <para>
-        The localization tasks are carried on by translators using the
-        <function>locale</function> functionality of the
-        <command>centos-art.sh</command> script which take care of
+        The content localization is the second component that must be
+        worked out in the corporate identity production cycle.
+        Through this work line translators localize source files
+        (e.g., SVG, DocBook, Shell scripts) which are later use to
+        produce localized images, localized documentation and
+        localized automation scripts.  To localize source files,
+        translators use 
+        the <function>locale</function> functionality described in
+        <xref linkend="scripts-bash-locale" /> which takes care of
         retriving translatable strings from source files and provide a
         consistent localization interface based on GNU
         <application>gettext</application> multi-lingual message
         production tool set and <command>xml2po</command> command.
+    </para>
+
+    <para>
+        The main purpose of this work line is extend the visual
+        identity (produced in English language) to as many native
+        languages as possible in order for people which doesn't
+        understand English languague to feel more confortable with
+        &TCP; and its messages. To know more about the specific
+        localization process read <xref linkend="locale" />.
+    </para>
+
+    <para>
+        The localization work line takes palce in the <ulink
+        url="https://projects.centos.org/svn/artwork/trunk/Locales"><filename
+        class="directory">trunk/Locales</filename></ulink> directory.
     </para>
 
     </sect2>
@@ -68,18 +97,37 @@
     <title>Documentation</title>
 
     <para>
-        The third step in the production cycle is to document &TCAR;,
-        what it is and how to use it. This step provides the
-        conceptual ideas used as base to edificate &TCPCVI; and is
-        implemented through &TCARUG;.
+        The documentation work line is the third component that must
+        be worked out in the corporate identity production cycle.
+        Through this work line documentors settle down the conceptual
+        and practical used to edificate &TCAR;.  To write
+        documentation, documentors use the <function>help</function>
+        functionality described in <xref linkend="scripts-bash-help"
+        /> which provides a consistent interface for building
+        documentation through different documentation backends (e.g.,
+        Texinfo, DocBook, LaTeX, etc.).
     </para>
 
     <para>
-        To write documentation, documentors use the
-        <function>help</function> functionality of
-        <command>centos-art.sh</command> script which provide an
-        consistent interface for building documentation through
-        different documentation backends (e.g., Texinfo and DocBook).
+        The main purpose of this work line is describe the standard
+        procedures &TCAR; realies on, as well as conceive a place to
+        help you understand what &TCAR; is and what can you do with
+        it.
+    </para>
+
+    <para>
+        The documentation work line takes palce in the <ulink
+        url="https://projects.centos.org/svn/artwork/trunk/Manuals"><filename
+        class="directory">trunk/Manuals</filename></ulink> directory.
+    </para>
+
+    </sect2>
+
+    <sect2 id="repo-convs-worklines-packaging">
+    <title>Packaging</title>
+
+    <para>
+        ...
     </para>
 
     </sect2>
@@ -89,22 +137,25 @@
     <title>Automation</title>
 
     <para>
-        The fourth step in the production cycle is to automate
-        frequent tasks inside &TCAR;. This step closes the production
-        cycle and provides the production standards needed by all
-        different work lines to coexist together.  Here is where
-        the <command>centos-art.sh</command> script and all
-        its functionalities (e.g., <function>render</function> for
-        rendition, <function>help</function> for documentation,
-        <function>locale</function> for localization, etc.) are
-        developed.
-    </para>  
+        The automation work line is the fifth and last component that
+        must be worked out in the corporate identity production cycle.
+        This work line closes the production cycle and provides the
+        production standards graphic designers, documentors,
+        translators and packagers need to make their work consistent
+        and reusable.  For this purpose, programmers develop the
+        <command>centos-art.sh</command> script described in <xref
+        linkend="scripts" />.
+    </para>
 
     <para>
-        At this point it should be obvious, but we consider worth to
-        remember that: there is no need to type several tasks, time
-        after time, if they can be programmed into just one executable
-        script. 
+        The main purpose of this work line is standardize the
+        interaction of work lines in a reliable way.
+    </para>
+
+    <para>
+        The automation work line takes palce in the <ulink
+        url="https://projects.centos.org/svn/artwork/trunk/Scripts"><filename
+        class="directory">trunk/Scripts</filename></ulink> directory.
     </para>
 
     </sect2>
