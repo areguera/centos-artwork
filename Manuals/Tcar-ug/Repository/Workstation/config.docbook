@@ -11,11 +11,11 @@
     </para>
 
     <sect2 id="repo-ws-config-wp">
-    <title>Workplace</title>
+    <title>Define Your Workplace</title>
     <para>
         Once you've installed the workstation and it is up and
-        running, you need to create the user name you'll use for your
-        everyday's work. In this task you need to use the commands
+        running, you need to register the user name you'll use for
+        working. In this task you need to use the commands
         <command>useradd</command> and <command>passwd</command> to
         create the user name and set a password for it, respectively.
         These commands require administrative privileges to be
@@ -25,113 +25,141 @@
 
     <caution>
     <para>
-        Do not use the <emphasis>root</emphasis> username for your
-        everyday's work inside your working copy of &TCAR;.  This is
-        dangerous and might provoke unreversable damages to your
-        workstation.
+        Do not use the <emphasis>root</emphasis> username for regular
+        tasks inside your working copy of &TCAR;.  This is dangerous
+        and might provoke unreversable damages to your workstation.
     </para>
     </caution>
 
     <para>
-        When user names are created inside the workstation, it doesn't
-        create only a user identifier for you to login, but a place
-        for you to store your information, as well. This place is
-        known as your home directory and is unique for each user
-        inside the workstation.  At this point, it is necessary to
-        decide where the working copy tree will be stored in the
-        workstation filesystem.
+        When you've registered your user name in the workstation, it
+        provides an identifier for you to open a user's session in the
+        workstation and a place to store the information you produce,
+        as well. This place is known as your home directory and is
+        unique for each user registered in the workstation. For
+        example, if you register the user name john in your
+        workstation, your home directory would be located at <filename
+        class="directory">/home/john/</filename>.
+    </para>
+    
+    <para>
+        At this point you need to decide where to download the working
+        copy of &TCAR; inside your home directory.  This desition
+        deserves special attention and should be implemented carefully
+        in order to grant a standardized distributed environment.
+        Let's see some alternatives.
     </para>
 
+    <sect3>
+    <title>Different Absolute Paths</title>
     <para>
-        <emphasis>Case 1: Different Home Directories</emphasis>
-        &mdash; Assuming you store your working copy under <filename
-        class="directory">/home/john/artwork/</filename> and I store
-        mine under <filename
-        class="directory">/home/al/artwork/</filename>, we'll end up
-        refering the same files inside our working copies through
-        different absolute paths. This generates a contradiction when
-        files, holding path information inside, are committed up to
-        the central repository. The contradiction comes from the
-        question: which is the correct absolute path to use inside
-        such files, yours or mine? (None of them is, of course.)
+        Consider that you store your working copy under <filename
+        class="directory">/home/john/Projects/artwork/</filename> and
+        I store mine under <filename
+        class="directory">/home/al/Projects/artwork/</filename>, we'll
+        end up refering the same files inside our working copies
+        through different absolute paths. 
+    </para>
+    
+    <para>
+        This alternative generates a contradiction when files which
+        hold path information inside are committed up to the central
+        repository from different working copies. The contradiction
+        comes from the question: which is the correct absolute path to
+        use inside such files, yours or mine? (None of them is, of
+        course.)
     </para>
 
+    </sect3>
+
+    <sect3 id="repo-ws-config-wp-OneUniqueAbsolutePath">
+    <title>One Unique Absolute Path</title>
     <para>
-        <emphasis>Case 2: One Unique Home Directory</emphasis> &mdash;
         Another case would be that where you and I ourselves use one
         unique home directory (e.g., <filename
-        class="directory">/home/centos/artwork/</filename>) to store
-        the working copy of &TCAR; in our own workstations, but
-        configure the subversion client to use different user names to
-        commit changes up from the working copy to the central
-        repository.  This configuration might be not so good for
-        situations where you and I have to share the same workstation.
-        In such case, it would be required that we both share the
-        password information of the same system user (the
-        <emphasis>centos</emphasis> user in our example) which, in
-        addition, gives access to that user's subversion client
-        configuration and this way provokes the whole sense of using
-        different subversion credentials for committing changes to be
-        lost.
+        class="directory">/home/centos/Projects/artwork/</filename>)
+        to store the working copy of &TCAR; in our own workstations,
+        but configure the subversion client to use different user
+        names to commit changes up from the working copy to the
+        central repository. 
     </para>
+    
+    <para>
+        This alternative might be not so good in situations where you
+        and I have to share the same workstation.  In such cases, it
+        would be required that we both share the password information
+        of the same system user (the <emphasis>centos</emphasis> user
+        in our example) which, in addition, gives access to that
+        user's subversion client configuration and this way provokes
+        the whole sense of using different subversion credentials for
+        committing changes to be lost.
+    </para>
+    </sect3>
+
+    <sect3>
+    <title>Different Absolute Paths Through Dynamic Expansion</title>
+    <para>
+        Most of the absolute paths we use inside the working copy are
+        made of two parts, one dynamic and one relative fixed. The
+        dynamic part is the home directory of the current user and its
+        value can be retrived from the <envar>$HOME</envar>
+        environment variable.  The fixed part of the path is the one
+        we set inside the repositroy structure itself as a matter of
+        organization.  What we need here is to find a way to expand
+        variables inside files that don't support variable expansion.
+    </para>    
 
     <para>
-        <emphasis>Case 3: Different Home Directories Through Dynamic
-        Expansion</emphasis> &mdash; Most of the absolute paths we use
-        inside the working copy are made of two parts, one dynamic and
-        one fixed. The dynamic part is the home directory of the
-        current user and its value can be retrived from the
-        <envar>$HOME</envar> environment variable.  The fixed part of
-        the path is the one we set inside the repositroy structure
-        itself as organization matter.  What we need here is to find a
-        way to expand variables inside files that don't support
-        variable expansion.  So far we've been doing this through
-        creation template instances which are temporal files with
-        translation markers expanded inside.  This work rather fine
-        with template files that are one-time-pass (e.g., when we
-        produce produce PNG files from SVG files and XTHML from
-        DocBook files), but the same is not true for absolute paths
-        inside files that are used as in their permanent state inside
-        the repository (e.g., CSS files and other files similar in
+        This alternative had worked rather fine when we produce
+        produce PNG files from SVG files and XTHML from DocBook
+        files, but the same is not true for absolute paths inside
+        files that are used as in their permanent state inside the
+        repository (e.g., CSS files and other files similar in
         purpose).
     </para>
+    </sect3>
+
+    </sect2>
+
+    <sect2 id="repo-ws-config-wc">
+    <title>Download Your Working Copy</title>
 
     <para>
-        From the three cases discussed above, the second one (i.e.,
-        One unique home directory) seems to be the best candidate. It
-        limits us from using more than one working copy in the same
-        workstation, but gives us the chance of standardizing the use
-        of absolute paths inside all the working copies of &TCAR;.
-        Using absolute paths is very convenient because it is possible
-        to reuse information from different locations inside the
-        working copy, something that would be almost imposible to
-        maintain if relative paths were used instead. Thus, lets
-        assume the second case of handling home directories as default
-        solution to relatively solve the problem of where to store
-        working copies of &TCAR; until a better one shows itself up.
+        As convenction, to use the &TCAR;, you must register the user
+        name <emphasis>centos</emphasis> in your workstation, do login
+        with it, and download the working copy from the central
+        repository using the following command:
+    </para>
+
+    <screen>svn co https://projects.centos.org/svn/artwork /home/centos/Projects/artwork</screen>
+
+    <para>
+        The first time you download the working copy it contains no
+        image files, nor documentation, or localized content inside
+        it. This is because all the files provided in the working copy
+        are source files (e.g., the files needed to produce other
+        files) and it is up to you the action of render them to
+        produce the final files (e.g., images and documentation) used
+        to implement &TCPCVI;. 
     </para>
 
     <para>
-        The action of providing working copies of &TCAR; that permit
-        to reuse files inside them unifies the way content is produced
-        inside the working copy and provides a convenction for people
-        working on different areas to get attached to in order to
-        syncronize their works and still keep doing it decentralized
-        one another.
+        In order to complete the instalation of your working copy, use
+        the <function>prepare</function> functionality of the
+        <command>centos-art.sh</command> script, as described in <xref
+        linkend="scripts-bash-prepare" />.
     </para>
 
     </sect2>
 
     <sect2 id="repo-ws-config-envar">
-    <title>Environment Variables</title>
+    <title>Set Your Environment Variables</title>
 
     <para>
-        Once you've created the <emphasis>centos</emphasis> user name
-        for your everyday's work and you had done login with it, there
-        are some environment variables that you can customize to fit
-        your personal needs (e.g., default text editor, default locale
-        information, default time zone representation, etc.).  To
-        customize these variables you need to edit your personal
+        There are some environment variables that you can customize to
+        fit your personal needs (e.g., default text editor, default
+        locale information, default time zone representation, etc.).
+        To customize these variables you need to edit your personal
         profile (i.e., <filename
         class="directory">~/.bash_profile</filename>) and set the
         redefinition there.  Notice that you may need to logout and
@@ -139,10 +167,8 @@
         take effect.
     </para>
 
-    <variablelist>
-    <varlistentry>
-    <term>Default text editor</term>
-    <listitem>
+    <sect3>
+    <title>Default text editor</title>
     <para>
         The default text editor information is controlled by the
         <envar>EDITOR</envar> environment variable. The
@@ -188,12 +214,10 @@
         class="directory">/usr/bin/vim</filename> text editor, the one
         installed by default in &TCD;. 
     </para>
-    </listitem>
-    </varlistentry>
+    </sect3>
 
-    <varlistentry>
-    <term>Default locale information</term>
-    <listitem>
+    <sect3>
+    <title>Default locale information</title>
     <para>
         The default locale information is controlled by the
         <envar>LANG</envar> environment variable. This variable is
@@ -214,12 +238,10 @@
         be updated or edited when you localize directory structures
         inside the working copy of &TCAR;.
     </para>
-    </listitem>
-    </varlistentry>
+    </sect3>
 
-    <varlistentry>
-    <term>Default time zone representation</term>
-    <listitem>
+    <sect3>
+    <title>Default time zone representation</title>
     <para>
         The time zone representation is a time correction applied to
         the system time (stored in the BIOS clock) based on your
@@ -249,131 +271,48 @@
         environment variable is described in <code>tzset(3)</code>
         manual page.  
     </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
+    </sect3>
     </sect2>
 
     <sect2 id="repo-ws-config-sudo">
-    <title>Administrative Tasks</title>
+    <title>Be Prepared For Administrative Tasks</title>
 
     <para>
-        Sometimes it is necessary that you perform administrative
-        tasks inside the workstation the working copy of &TCAR; is
-        stored in. These tasks might demand you to type many commands
-        (e.g., for configuring a third party repository) or just a
-        one-line command (e.g., for installing a new package).  In
-        both cases this kind of tasks require permissions that your
-        user for everyday's work must not have under no mean. 
+        Administrative tasks inside &TCAR; are standardized through
+        the <command>centos-art.sh</command> script which must be run
+        as <emphasis>centos</emphasis> user. The
+        <emphasis>centos</emphasis> user is a regular user and doesn't
+        have administrative rights. Therefore, it is required to give
+        some administrative rights to the <emphasis>centos</emphasis>
+        user in order for <command>centos-art.sh</command> to perform
+        the administrative tasks (e.g., installing packages through
+        <command>yum</command>).
     </para>
 
     <para>
-        To perform administrative tasks in your workstation, you need
-        to login as <emphasis>root</emphasis> or configure the
-        <command>sudo</command> program to temporarily granting the
-        permissions your regular user needs to perform the
-        administrative tasks. The configuration of
-        <command>sudo</command> program is at
-        <filename>/etc/sudoers</filename> file and you need to add the
-        <emphasis>centos</emphasis> user to the list of privileged
-        user as described in the section below:
+        To give some administrative rights to a regular user like
+        <emphasis>centos</emphasis> you should execute the
+        <command>visudo</command> command as
+        <emphasis>root</emphasis> and set the rights you want to give 
+        accordingly. In case you don't configure the sudoers file,
+        <command>centos-art.sh</command> won't be able to perform
+        administrative task and you will need to do so yourself by
+        hand as the <emphasis>root</emphasis> supeuser.
     </para>
 
-<screen>
-## Next comes the main part: which users can run what software on 
-## which machines (the sudoers file can be shared between multiple
-## systems).
-## Syntax:
-##
-##      user    MACHINE=COMMANDS
-##
-## The COMMANDS section may have other options added to it.
-##
-## Allow root to run any commands anywhere 
-root    ALL=(ALL)       ALL
-centos  ALL=(ALL)       ALL
-</screen>
-
-    <para>
-        This configuration is required in order for automation scripts
-        to realize administrative tasks that otherwise you would need
-        to type one by one.  It is worth to mention that all these
-        tasks are organized in the <function>prepare</function>
-        functionality of the <command>centos-art.sh</command> script
-        in the sake of reducing work and standardize the procedure of
-        performing them. It is also worth to mention that, the
-        <command>centos-art.sh</command> script is available for you
-        to run, study, improve and share your changes as described in
-        <xref linkend="licenses-gpl" />.
-    </para>
-    
-    </sect2>
-
-    <sect2 id="repo-ws-config-wc">
-    <title>Working Copy</title>
-
-    <para>
-        Once you've installed and configured the workstation, it is
-        ready to receive the working copy of &TCAR;. In this step, you
-        use Subversion's client to communicate the source repository
-        of &TCAR;  and download all the files that make a working copy
-        of it.
-    </para>
-
-    <para>
-        To download the working copy of &TCAR; you need to login as
-        your everyday's work user (i.e., the
-        <emphasis>centos</emphasis> user) and use the Subversion
-        client installed in your workstation to bring all the files
-        you need to work with from the source repository down to your
-        workstation, just as the following command describes:
-    </para>
-
-    <screen>svn co https://projects.centos.org/svn/artwork ~/</screen>
-
-    <para>
-        This command will create your working copy of &TCAR; in your
-        workstation, specifically in the <filename
-        class="directory">/home/centos/artwork</filename> directory.
-    </para>
-
-    <note>
-    <para>
-        If the Subversion's client wasn't installed by default, you
-        need to install it using the following command:
-    </para>
-    <screen>sudo yum install subversion</screen>
-    </note>
-
-
-    <para>
-        Once your working copy of &TCAR; has been downloaded, you
-        should notice that there is no image files, nor documentation,
-        or localized content inside it. This is because all the files
-        provided in the working copy are source files (e.g., the files
-        needed to produce other files) and it is up to you the action
-        of render them to produce the final files (e.g., images and
-        documentation) used to implement &TCPCVI;. 
-    </para>
-
-    <para>
-        Another consideration to be aware of at this point, is the
-        need of verifying the software installed in the workstation,
-        as well as the creation of symbolic links to connect the
-        content produced inside the working copy to applications
-        outside it (e.g., to make available patterns, brushes, and
-        palettes produced inside the working copy in GIMP, the
-        application used to manipulate images).
-    </para>
-
-    <para>
-        This final preparation stuff is automated by the
-        <function>prepare</function> functionality of the
-        <command>centos-art.sh</command> script, as described in <xref
-        linkend="scripts-bash-prepare" />. Execute it right now,
-        to be sure your workstation and your working copy are both
-        ready to be used.
-    </para>
+    <example id="repo-ws-config-sudo-example1">
+    <title>The <filename>/etc/sudoers</filename> configuration.</title>
+    <screenshot>
+    <screeninfo>The <filename>/etc/sudoers</filename> configuration.</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+...
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
 
     </sect2>
 
