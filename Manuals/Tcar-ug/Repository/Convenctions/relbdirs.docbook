@@ -13,17 +13,17 @@
         paths</emphasis> and <emphasis>auxiliar paths</emphasis>.
     </para>
 
-    <variablelist>
-    <varlistentry>
-    <term>Master Paths</term>
-    <listitem>
+    <sect2 id="repo-convs-relbdirs-master">
+    <title>Master Paths</title>
+
     <para>
         A master path refers to a directory inside the repository that
         contain input files required to produce output files through
         automation scripts. Examples of master paths inside the
         repository include:
+    </para>
 
-        <itemizedlist>
+    <itemizedlist>
         <listitem>
         <para>
             <filename class="directory">trunk/Identity/Models/Brands</filename>
@@ -39,24 +39,24 @@
             <filename class="directory">trunk/Identity/Models/Themes/Default/Distro/5/Anaconda</filename>
         </para>
         </listitem>
-        </itemizedlist>
-    </para>
-    </listitem>
-    </varlistentry>
+    </itemizedlist>
 
-    <varlistentry>
-    <term>Auxiliar paths</term>
-    <listitem>
+    </sect2>
+
+    <sect2 id="repo-convs-relbdirs-auxiliar">
+    <title>Auxiliar Paths</title>
+
     <para>
-        An auxiliar path refers a directory inside the repository
-        considered auxiliar for the master path. Auxiliar path can be
-        either for output or localization. Assuming the master path
-        provides the input information, the auxiliar paths provide the
-        auxiliar information which describes how and where that input 
-        information is rendered by automation scripts. Examples of
-        auxiliar paths inside the repository include:
+        An auxiliar path refers to directories inside the repository
+        considered auxiliar for one single master path. Auxiliar path
+        can be either for output or localization. Assuming the master
+        path provides the input information, the auxiliar paths
+        provide the auxiliar information which describes how and where
+        that input information must be rendered by automation scripts.
+        Examples of auxiliar paths inside the repository include:
+    </para>
         
-        <itemizedlist>
+    <itemizedlist>
         <listitem>
         <para>
             <filename class="directory">trunk/Identity/Images/Brands</filename>
@@ -82,13 +82,8 @@
             <filename class="directory">trunk/Locales/Identity/Models/Default/Distro/5/Anaconda/es_ES</filename>
         </para>
         </listitem>
-        </itemizedlist>
+    </itemizedlist>
 
-    </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-      
     <para>
         The relationship between master and auxiliar paths is built by
         combining the second directory level of master paths with
@@ -107,17 +102,20 @@
     </para>
         
     <para>
-        For example, if the <envar>LANG</envar> environment variable
-        is set to <literal>es_ES.UTF-8</literal> and you execute the
-        <function>render</function> functionality of
+        For example, if the <varname>LANG</varname> environment
+        variable is set to <quote>es_ES.UTF-8</quote> and you execute
+        the <function>render</function> functionality of
         <command>centos-art.sh</command> script with the <filename
-        class="directory">trunk/Manuals/Repository/Docbook</filename>
-        master path as argument, it will produce &TCARUG; in Spanish
-        language using translation messages from <filename
-        class="directory">trunk/Locales/Manuals/Repository/Docbook/es_ES</filename>
-        auxiliar path and saving output files inside <filename
-        class="directory">trunk/Manuals/Repository/Docbook/es_ES</filename>
+        class="directory">trunk/Manuals/Tcar-ug</filename>  master
+        path as argument, it will produce &TCARUG; in Spanish language
+        using translation messages from
+        <filename>trunk/Locales/Manuals/Tcar-ug/es_ES</filename>
+        auxiliar path and would save final documentation output files
+        under <filename
+        class="directory">trunk/Manuals/Tcar-ug/es_ES</filename>
         auxiliar path.
-    </para> 
+    </para>
+
+    </sect2>
 
 </sect1>
