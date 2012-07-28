@@ -25,34 +25,43 @@
     </para>
 
     <para>
-        The first level of directories in the repository provides
-        organization through a convenctional <quote>trunk</quote>,
-        <quote>branches</quote> and <quote>tags</quote> layout. In
-        this configuration the <filename
-        class="directory">trunk</filename> directory is where main
-        changes take place, the <filename
-        class="directory">tags</filename> directory is where frozen
-        copies of <filename class="directory">trunk</filename> changes
-        are placed in for releasing, and the <filename
-        class="directory">branches</filename> directory is an
-        intermediate place between <filename
-        class="directory">trunk</filename> and <filename
-        class="directory">tags</filename> states where changes take
-        place before being merged into <filename
-        class="directory">trunk</filename> and finally released into
-        <filename class="directory">tags</filename>.
+        The first level of directories inside &TCAR; provides
+        organization through a convenctional <filename
+        class="directory">trunk/</filename>, <filename
+        class="directory">branches/</filename> and <filename
+        class="directory">tags/</filename> layout. As propossition we
+        are assuming that:
     </para>
 
+    <itemizedlist>
+        <listitem>
+        <para>
+            The <filename class="directory">trunk/</filename>
+            directory is where development changes take place.
+        </para>
+        </listitem>
+
+        <listitem>
+        <para>
+            The <filename class="directory">branches/</filename>
+            directory is where maintainance changes take place.
+        </para>
+        </listitem>
+
+        <listitem>
+        <para>
+            The <filename class="directory">tags/</filename> directory
+            is where final releases take place.
+        </para>
+        </listitem>
+    </itemizedlist>
+
     <para>
-        The second level of directories in the repository provides
-        organization for repository work lines, as described in <xref
-        linkend="repo-convs-worklines" />.
-    </para>
-    
-    <para>
-        All other subsequent levels of directories in the repository,
-        from third level on, are created to organize specific concepts
-        related to the work line they are in.
+        The second level of directories inside &TCAR; provides
+        organization for different work lines, as described in <xref
+        linkend="repo-convs-worklines" />.  All other subsequent
+        directory levels from third level on exist to organize
+        specific concepts related to the work line they belong to.
     </para>
 
 </sect1>
