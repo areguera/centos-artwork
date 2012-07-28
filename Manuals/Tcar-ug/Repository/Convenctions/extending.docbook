@@ -11,19 +11,12 @@
     </para>
         
     <para>
-        When the repository structure is extended, it is very useful
-        to bear in mind &TCPCVIS;, &TCM; and &TCDRS;.  The rest is a
-        matter of choosing appropriate names.  It is also worth to
-        know that each directory in the repository responds to one or
-        more concepts that justify its existence.
-    </para>
-        
-    <para>
-        To build a directory structure inside the repository, you need
-        to define the concept behind it first and later create the
-        directory, remembering that there are locations inside the
-        repository that define concepts you probably would prefer to
-        reuse.  For example, the <filename
+        To build a directory structure inside the repository you need
+        to define the concept behind it first. Later you need to
+        create a new directory inside the repository, remembering that
+        there are locations inside the repository that already define
+        concepts you probably would prefer to reuse.  For example, the
+        <filename
         class="directory">trunk/Identity/Images/Themes</filename>
         directory stores artistic motifs of different themes, the
         <filename
@@ -31,10 +24,21 @@
         directory stores design models for themes, the <filename
         class="directory">trunk/Manuals</filename> directory stores
         documentation, the <filename
-        class="directory">trunk/L10n</filename> stores translation
+        class="directory">trunk/Locales</filename> stores translation
         messages, and the <filename
         class="directory">trunk/Scripts</filename> stores automation
         scripts.
+    </para>
+
+    <para>
+        The best suggestion we can probably give you would be to send
+        a mail with your questions to the <ulink
+        url="mailto:centos-devel@centos.org">CentOS developers mailing
+        list</ulink> (<ulink
+        url="mailto:centos-devel@centos.org">centos-devel@centos.org</ulink>).
+        This is the place where development of &TCAR; takes place and
+        surely, in community, it will be possible to find a place for
+        your new component inside the repository.
     </para>
         
 </sect1>
