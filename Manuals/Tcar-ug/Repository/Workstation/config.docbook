@@ -4,8 +4,8 @@
 
     <para>
         Once your worstation is installed, it is time for you to
-        configure it.  At this point you create a user for everyday's
-        work, configure third party repositories, fix environment
+        configure it.  At this point you create a user for working
+        everyday, configure third party repositories, set environment
         variables to fit your personal needs, download the working
         copy of &TCAR; and prepare it for start using it.
     </para>
@@ -43,11 +43,11 @@
     </para>
     
     <para>
-        At this point you need to decide where to download the working
-        copy of &TCAR; inside your home directory.  This desition
-        deserves special attention and should be implemented carefully
-        in order to grant a standardized distributed environment.
-        Let's see some alternatives.
+        At this point it is important to define where to download the
+        working copy of &TCAR; inside your home directory.  This
+        desition deserves special attention and should be implemented
+        carefully in order to grant a standard environment that can be
+        distributed.  Let's see some alternatives.
     </para>
 
     <sect3>
@@ -58,16 +58,12 @@
         I store mine under <filename
         class="directory">/home/al/Projects/artwork/</filename>, we'll
         end up refering the same files inside our working copies
-        through different absolute paths. 
-    </para>
-    
-    <para>
-        This alternative generates a contradiction when files which
-        hold path information inside are committed up to the central
-        repository from different working copies. The contradiction
-        comes from the question: which is the correct absolute path to
-        use inside such files, yours or mine? (None of them is, of
-        course.)
+        through different absolute paths.  This alternative generates
+        a contradiction when files which hold path information inside
+        are committed up to the central repository from different
+        working copies. The contradiction comes from the question:
+        which is the correct absolute path to use inside such files,
+        yours or mine? (None of them is, of course.)
     </para>
 
     </sect3>
@@ -81,18 +77,15 @@
         to store the working copy of &TCAR; in our own workstations,
         but configure the subversion client to use different user
         names to commit changes up from the working copy to the
-        central repository. 
-    </para>
-    
-    <para>
-        This alternative might be not so good in situations where you
-        and I have to share the same workstation.  In such cases, it
-        would be required that we both share the password information
-        of the same system user (the <emphasis>centos</emphasis> user
-        in our example) which, in addition, gives access to that
-        user's subversion client configuration and this way provokes
-        the whole sense of using different subversion credentials for
-        committing changes to be lost.
+        central repository.  This alternative might be not so good in
+        situations where you and I have to share the same workstation.
+        In such cases, it would be required that we both share the
+        password information of the same system user (the
+        <emphasis>centos</emphasis> user in our example) which, in
+        addition, gives access to that user's subversion client
+        configuration and this way provokes the whole sense of using
+        different subversion credentials for committing changes to be
+        lost.
     </para>
     </sect3>
 
@@ -107,15 +100,11 @@
         we set inside the repositroy structure itself as a matter of
         organization.  What we need here is to find a way to expand
         variables inside files that don't support variable expansion.
-    </para>    
-
-    <para>
         This alternative had worked rather fine when we produce
-        produce PNG files from SVG files and XTHML from DocBook
-        files, but the same is not true for absolute paths inside
-        files that are used as in their permanent state inside the
-        repository (e.g., CSS files and other files similar in
-        purpose).
+        produce PNG files from SVG files and XTHML from DocBook files,
+        but the same is not true for absolute paths inside files that
+        are used as in their permanent state inside the repository
+        (e.g., CSS files and other files similar in purpose).
     </para>
     </sect3>
 
@@ -144,175 +133,10 @@
     </para>
 
     <para>
-        In order to complete the instalation of your working copy, use
-        the <function>prepare</function> functionality of the
-        <command>centos-art.sh</command> script, as described in <xref
-        linkend="scripts-bash-prepare" />.
+        In order to complete the installation of your working copy,
+        use the <function>prepare</function> functionality described
+        in <xref linkend="scripts-bash-prepare" />.
     </para>
-
-    </sect2>
-
-    <sect2 id="repo-ws-config-envar">
-    <title>Set Your Environment Variables</title>
-
-    <para>
-        There are some environment variables that you can customize to
-        fit your personal needs (e.g., default text editor, default
-        locale information, default time zone representation, etc.).
-        To customize these variables you need to edit your personal
-        profile (i.e., <filename
-        class="directory">~/.bash_profile</filename>) and set the
-        redefinition there.  Notice that you may need to logout and
-        then do login again in order for the new variable values to
-        take effect.
-    </para>
-
-    <sect3>
-    <title>Default text editor</title>
-    <para>
-        The default text editor information is controlled by the
-        <envar>EDITOR</envar> environment variable. The
-        <command>centos-art.sh</command> script uses the default text
-        editor to edit subversion pre-commit messages, translation
-        files, documentation files, script files, and similar
-        text-based files.
-    </para>
-
-    <para>
-        If <envar>EDITOR</envar> environment variable is not set,
-        <command>centos-art.sh</command> script uses <filename
-        class="directory">/usr/bin/vim</filename> as default text
-        editor. Otherwise, the following values are recognized by
-        <command>centos-art.sh</command> script:
-
-        <itemizedlist>
-        <listitem>
-        <para>
-            <filename class="directory">/usr/bin/vim</filename>
-        </para>
-        </listitem>
-
-        <listitem>
-        <para>
-        <filename class="directory">/usr/bin/emacs</filename>
-        </para>
-        </listitem>
-
-        <listitem>
-        <para>
-            <filename class="directory">/usr/bin/nano</filename>
-        </para>
-        </listitem>
-        </itemizedlist>
-
-    </para>
-
-    <para>
-        If no one of these values is set in the <envar>EDITOR</envar>
-        environment variable, the <command>centos-art.sh</command>
-        script uses <filename
-        class="directory">/usr/bin/vim</filename> text editor, the one
-        installed by default in &TCD;. 
-    </para>
-    </sect3>
-
-    <sect3>
-    <title>Default locale information</title>
-    <para>
-        The default locale information is controlled by the
-        <envar>LANG</envar> environment variable. This variable is
-        initially set in the installation process of &TCD;,
-        specifically in the <emphasis>Language</emphasis> step.
-        Generally, there is no need to customize this variable in your
-        personal profile. If you need to change the value of this
-        environment variable do it through the login screen of GNOME
-        Desktop Environment or the
-        <command>system-config-language</command> command.
-    </para>
-
-    <para>
-        The <command>centos-art.sh</command> script uses the
-        <envar>LANG</envar> environment variable to determine what
-        language to use for printing output messages from the script
-        itself, as well as the portable objects locations that need to
-        be updated or edited when you localize directory structures
-        inside the working copy of &TCAR;.
-    </para>
-    </sect3>
-
-    <sect3>
-    <title>Default time zone representation</title>
-    <para>
-        The time zone representation is a time correction applied to
-        the system time (stored in the BIOS clock) based on your
-        country location.  This correction is specially useful to
-        distributed computers around the world that work together and
-        need to be syncronized in time to know when things happened.
-    </para>
-    <para>
-        &TCAR; is made of one server and several workstations spread
-        around the world. In order for all these workstations to know
-        when changes in the server took place, it is required that
-        they all set their system clocks to use the same time
-        information (e.g., through UTC (Coordinated Universal Time))
-        and set the time correction for their specific countries in
-        the operating system.  Otherwise, it would be difficult to
-        know when something exactly happened.
-    </para>
-    <para>
-        Generally, setting the time information is a straight-forward
-        task and configuration tools provided by &TCD; do cover time
-        correction for most of the countries around the world.
-        However, if you need a time precision not provided by any of
-        the date and time configuration tools provided by &TCD; then,
-        you need to customize the <envar>TZ</envar> environment
-        variable in your personal profile to correct the time
-        information by yourself.  The format of <envar>TZ</envar>
-        environment variable is described in <code>tzset(3)</code>
-        manual page.  
-    </para>
-    </sect3>
-    </sect2>
-
-    <sect2 id="repo-ws-config-sudo">
-    <title>Be Prepared For Administrative Tasks</title>
-
-    <para>
-        Administrative tasks inside &TCAR; are standardized through
-        the <command>centos-art.sh</command> script which must be run
-        as <emphasis>centos</emphasis> user. The
-        <emphasis>centos</emphasis> user is a regular user and doesn't
-        have administrative rights. Therefore, it is required to give
-        some administrative rights to the <emphasis>centos</emphasis>
-        user in order for <command>centos-art.sh</command> to perform
-        the administrative tasks (e.g., installing packages through
-        <command>yum</command>).
-    </para>
-
-    <para>
-        To give some administrative rights to a regular user like
-        <emphasis>centos</emphasis> you should execute the
-        <command>visudo</command> command as
-        <emphasis>root</emphasis> and set the rights you want to give 
-        accordingly. In case you don't configure the sudoers file,
-        <command>centos-art.sh</command> won't be able to perform
-        administrative task and you will need to do so yourself by
-        hand as the <emphasis>root</emphasis> supeuser.
-    </para>
-
-    <example id="repo-ws-config-sudo-example1">
-    <title>The <filename>/etc/sudoers</filename> configuration.</title>
-    <screenshot>
-    <screeninfo>The <filename>/etc/sudoers</filename> configuration.</screeninfo>
-    <mediaobject>
-    <textobject>
-<programlisting>
-...
-</programlisting>
-    </textobject>
-    </mediaobject>
-    </screenshot>
-    </example>
 
     </sect2>
 
