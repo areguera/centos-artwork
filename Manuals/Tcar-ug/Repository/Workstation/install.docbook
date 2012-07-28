@@ -3,176 +3,37 @@
     <title>Installing Your Workstation</title>
 
     <para>
-        In order to have a working copy of &TCAR; in your workstation,
-        the first step you need to follow is pick up a computer and
-        install an operating system in it. This computer will be named
-        the workstation from now on. 
-    </para>
-        
-    <para>
-        At the moment of chosing which operating system to install in
-        your workstation, consider that &TCAR; is completly built on
-        &TCD; and realies on it to achieve most automation tasks. At
-        time of this writing &TCD; release 5.5 was used as platform to
-        support all development work lines inside &TCAR; working copy.
-        So, in order to get a reproducable environment, it is
-        convenient that you, too, use the same version of the
-        operating system that we did. 
+        To install your workstation use &TCD; and the default
+        configuration proposed by its installer. This includes default
+        partitioning and packages.  &TCAR; is been completly develop
+        upon &TCD; and realies on such environment to achieve most
+        automation tasks.  In order to get a reproducable environment,
+        it is convenient that you, too, use the same operating system
+        that we do. 
     </para> 
 
-    <sect2 id="repo-ws-install-burning">
-    <title>Installation Media</title>
-    <para>
-        To install &TCD; you need to have access to the installation
-        media somehow (e.g., CDs, DVDs, Pendrives, etc.).  If you
-        don't have the installation media of &TCD;, you need to
-        download the ISO files related to the installation media you
-        plan to use (e.g., CD or DVD) and then create the installation
-        media by yourself.  &TCD; ISO files can be downloaded from
-        &TCM;.
-    </para>
-    <para>
-        Assuming you downloaded the DVD ISO of &TCD;, you can burn it
-        using the <application>K3B</application> application and, this
-        way, you are creating the installation media you are in need
-        of.  Of course, in order to download the ISO files and create
-        the installation media, you need to have a workstation already
-        functionality where you can realized such tasks. If this is
-        the first time for you and see yourself into much troubles
-        here, talk to the guys in your nearest LUG, or simply send a
-        mail to &TCML; where you'll surely have the answer you need.
-    </para>
-        
-    <para>
-        Once you have the installation media on your hands, the
-        installation process of &TCD; is rather straightforward. To
-        begin, you put the installation media in your media reader,
-        boot the computer from it, and follow the installer
-        intructions till it completes all the steps. That simple.
-    </para>
-    </sect2>
-
-
-    <sect2 id="repo-ws-install-partition">
-    <title>Partition Information</title>
-    <para>
-        The partition information you set in your workstation is very
-        specific to your personal needs and the technical
-        characteristics of your machine.  Generally, the default
-        partitioning schema suggested by &TCD; installer is fine for
-        the workstation we are preparing as platform for the working
-        copy of &TCAR;.  The amount of space required to store a clean
-        working copy of &TCAR; is about 1GB. Later, when you start
-        rendering content, more space will be required. There is no
-        specific space we can suggest since the final amount of space
-        required depends on the amount of content you produce after
-        downloading a clean working copy; just be sure to leave enough
-        space to work (e.g., 10GB seems to be a good number) whatever
-        your partition information be.
-    </para>
-
-    </sect2>
-
-    <sect2 id="repo-ws-install-packages">
-
-    <title>Packages Selection</title>
+    <sect2 id="repo-ws-install-support">
+    <title>Supported Platforms</title>
 
     <para>
-        The packages selection lets you to specify which software does
-        your workstation will have once it be installed. In this step,
-        you need to select the following groups of packages:
+        &TCAR; has been tested in the following platforms:
     </para>
 
     <itemizedlist>
     <listitem>
-    <para>Desktop Environments</para>
-    <itemizedlist>
-        <listitem>
-        <para>
-            GNOME Desktop Environment
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            KDE (K Desktop Environment)
-        </para>
-        </listitem>
-    </itemizedlist>
-    </listitem>
-
-    <listitem>
-    <para>Applications</para>
-    <itemizedlist>
-        <listitem>
-        <para>
-            Authoring and Publishing
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            Editors
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            Graphical Internet
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            Graphics
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            Office/Productivity
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            Text-based Internet
-        </para>
-        </listitem>
-    </itemizedlist>
-    </listitem>
-
-    <listitem>
-    <para>Development</para>
-    <itemizedlist>
-        <listitem>
-        <para>
-            Development Libraries
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            Development Tools  
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            GNOME Software Development
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            KDE Software Development
-        </para>
-        </listitem>
-    </itemizedlist>
+    <para>
+        The CentOS Distribution major release 5 update 5, for i386
+        architectures.
+    </para>
     </listitem>
     </itemizedlist>
 
     <para>
-        Packages selected in this step provide a base selection of all
-        the packages needed in order to have a functional working
-        copy of &TCAR;. The only exception is the
-        <package>inkscape</package> package and some of its
-        dependencies which don't come with &TCD; and need to be
-        installed from third party repositories like EPEL and
-        RPMForge, as described in the <ulink
-        url="http://wiki.centos.org/AdditionalResources/Repositories">Repositories</ulink>
-        wiki page.
+        In case you be using a working copy of &TCAR; in a different
+        platform from those listed here, please send a mail to <ulink
+        url="mailto:centos-devel@centos.org">centos-devel@centos.org</ulink>
+        notifying it. It is our intention to make &TCAR; as portable
+        as possible through different major releases of &TCD;.
     </para>
 
     </sect2>
