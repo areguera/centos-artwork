@@ -14,11 +14,11 @@
     </para>
 
     <para>
-        The action of combining work lines one another inside &TCAR;
-        is known as the corporate identity production cycle. The rest
-        of this section describes the work lines available in the
-        repository and their position inside the corporate identity
-        production cycle. 
+        The action of combining work lines inside &TCAR; is known as
+        the corporate identity production cycle. The rest of this
+        section describes the work lines available in the repository
+        and how they fit inside the corporate identity production
+        cycle.
     </para>
 
     <sect2 id="repo-convs-worklines-idenity">
@@ -127,7 +127,27 @@
     <title>Packaging</title>
 
     <para>
-        ...
+        The packaging work line is the fourth component that must be
+        worked out in the corporate identity production cycle. Through
+        this work line packager gather final images, final
+        translations and final documentation related to art works and
+        put all together inside RPM packages. For this purpose,
+        packagers use the <function>pack</function> describe in
+        <xref linkend="scripts-bash-pack" /> which provides a
+        consistent interface for building packages inside the
+        repository.
+    </para>
+
+    <para>
+        The main purpose of this work line is pack all the information
+        &TCP; requires to rebrand &TCD; according Red Hat
+        redistribution guidelines.
+    </para>
+
+    <para>
+        The packaging work line takes palce in the <ulink
+        url="https://projects.centos.org/svn/artwork/trunk/Packages"><filename
+        class="directory">trunk/Packages</filename></ulink> directory.
     </para>
 
     </sect2>
