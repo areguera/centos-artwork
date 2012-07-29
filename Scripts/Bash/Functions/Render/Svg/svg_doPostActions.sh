@@ -49,37 +49,37 @@ function svg_doPostActions {
     # the repository.
     if [[ $FLAG_DONT_DIRSPECIFIC == 'false' ]];then
 
-        if [[ $TEMPLATE =~ 'trunk/Identity/(Models|Images)/Themes/.+\.svg$' ]];then
+        if [[ $TEMPLATE =~ "trunk/Identity/(Models|Images)/Themes/.+\.${RENDER_EXTENSION}$" ]];then
 
             POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngToBranded"
 
-            if [[ $TEMPLATE =~ "Backgrounds/.+\.svg$" ]];then
+            if [[ $TEMPLATE =~ "Backgrounds/.+\.${RENDER_EXTENSION}$" ]];then
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg'
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='groupBy:png jpg'
 
-            elif [[ $TEMPLATE =~ "Concept/.+\.svg$" ]];then
+            elif [[ $TEMPLATE =~ "Concept/.+\.${RENDER_EXTENSION}$" ]];then
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToThumbnail:250'
 
-            elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.svg$" ]];then
+            elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Syslinux/.+\.${RENDER_EXTENSION}$" ]];then
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToSyslinux:'
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToSyslinux:-floyd'
 
-            elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.svg$" ]];then
+            elif [[ $TEMPLATE =~ "Distro/$(cli_getPathComponent --release-pattern)/Grub/.+\.${RENDER_EXTENSION}$" ]];then
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToGrub:'
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToGrub:-floyd'
 
-            elif [[ $TEMPLATE =~ "Posters/.+\.svg$" ]];then
+            elif [[ $TEMPLATE =~ "Posters/.+\.${RENDER_EXTENSION}$" ]];then
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
             fi
 
-        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Brands/.+\.svg$" ]];then
+        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Brands/.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToBrands'
 
-        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Icons/.+\.svg$" ]];then
+        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Icons/.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToIcons'
 
-        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Manuals.+\.svg$" ]];then
+        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Manuals.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
 
         fi

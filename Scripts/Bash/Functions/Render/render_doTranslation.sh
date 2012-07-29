@@ -5,10 +5,10 @@
 # the translated instance that is used to expand translation markers
 # and produce the base-rendition output.
 #
-# Assuming no translation file exists, the an untranslated instace
-# from the design model is created (i.e., just a copy of it). Using a
-# design model instance (translated or not) is required in order to
-# expand translation markers safetly.
+# Assuming no translation file exists, an untranslated instace is
+# taken from the design model and created (i.e., just a copy) from it.
+# Using a design model instance (translated or not) is required in
+# order to expand translation markers safetly.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
 #
@@ -32,6 +32,14 @@
 
 function render_doTranslation {
 
+    # Define which command will be used to output the template
+    # content. This is required because template files might be found
+    # as compressed files inside the repository.
+    local COMMAND="/bin/cat"
+    if [[ $(file -b -i $TEMPLATE) =~ '^application/x-gzip$' ]];then
+        COMMAND="/bin/zcat"
+    fi
+
     # Verify translation file existence and create template
     # instance accordingly.
     if [[ -f ${TRANSLATION} ]];then
@@ -42,10 +50,11 @@ function render_doTranslation {
         # Create the translated instance of design model based on
         # whether the template file has DOCTYPE definition or not.
         if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
-            xmllint --valid --noent ${TEMPLATE} \
+            ${COMMAND} ${TEMPLATE} | xmllint --valid --noent - \
                 | xml2po -a -l $(cli_getCurrentLocale) -p ${TRANSLATION} -o ${INSTANCE} -
         else
-            xml2po -a -l $(cli_getCurrentLocale) -p ${TRANSLATION} -o ${INSTANCE} ${TEMPLATE}
+            ${COMMAND} ${TEMPLATE} | xml2po -a -l $(cli_getCurrentLocale) \
+                -p ${TRANSLATION} -o ${INSTANCE} -
         fi
 
         # Remove .xml2po.mo temporal file.
@@ -57,9 +66,9 @@ function render_doTranslation {
 
         # Create the non-translated instance of design model.
         if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
-            xmllint --valid --noent ${TEMPLATE} > ${INSTANCE}    
+            ${COMMAND} ${$TEMPLATE} | xmllint --valid --noent - > ${INSTANCE}    
         else
-            cp ${TEMPLATE} ${INSTANCE}
+            ${COMMAND} ${TEMPLATE} > ${INSTANCE}
         fi
 
     fi

@@ -86,7 +86,7 @@ function render {
     # base-rendition input. In order for design model files to be
     # correclty rendered, they must end with one of the file
     # extensions listed here.
-    local RENDER_EXTENSIONS='svg docbook'
+    local RENDER_EXTENSIONS='svg svgz docbook'
 
     # Interpret arguments and options passed through command-line.
     render_getOptions
