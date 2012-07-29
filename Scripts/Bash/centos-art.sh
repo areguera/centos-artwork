@@ -48,6 +48,7 @@ declare -xr DOMAINNAME_BUGS="bugs.${DOMAINNAME}"
 declare -xr DOMAINNAME_PLANET="planet.${DOMAINNAME}"
 declare -xr DOMAINNAME_WIKI="wiki.${DOMAINNAME}"
 declare -xr DOMAINNAME_MIRRORS="mirrors.${DOMAINNAME}"
+declare -xr DOMAINNAME_DOCS="docs.${DOMAINNAME}"
 
 # Initialize mail-specific information.
 declare -xr MAILINGLIST_DOCS="${BRAND}-docs@${DOMAINNAME}"
