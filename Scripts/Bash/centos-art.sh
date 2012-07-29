@@ -25,17 +25,21 @@
 # Initialize script-specific configuration variables.
 declare -xr BRAND="centos"
 declare -xr CLI_NAME="${BRAND}-art"
-declare -xr CLI_PID=$$
 declare -xr CLI_VERSION='1.0'
-declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.XXXXXX)"
+declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh.XXXXXX)"
 
 # Initialize user-specific path information.
 declare -xr CLI_WRKCOPY="${HOME}/Projects/artwork"
 declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
 declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
+# Initialize internazionalization through GNU gettext.
+. gettext.sh
+declare -xr TEXTDOMAIN=${CLI_NAME}.sh
+declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/Locales/Scripts/Bash
+
 # Initialize copyright information.
-declare -xr COPYRIGHT_HOLDER="The CentOS Project"
+declare -xr COPYRIGHT_HOLDER="`gettext "The CentOS Project"`"
 declare -xr COPYRIGHT_YEAR_FIRST="2009"
 
 # Initialize domain-specific information.
@@ -54,11 +58,6 @@ declare -xr DOMAINNAME_DOCS="docs.${DOMAINNAME}"
 declare -xr MAILINGLIST_DOCS="${BRAND}-docs@${DOMAINNAME}"
 declare -xr MAILINGLIST_L10N="${BRAND}-l10n@${DOMAINNAME}"
 declare -xr MAILINGLIST_DEVEL="${BRAND}-devel@${DOMAINNAME}"
-
-# Initialize internazionalization through GNU gettext.
-. gettext.sh
-declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/Locales/Scripts/Bash
 
 # Initialize command-line interface.
 if [[ -x ${CLI_FUNCDIR}/Commons/init.sh ]];then
