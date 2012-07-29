@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# shell_doTopComment.sh -- This function standardizes the top comment
+# sh_doTopComment.sh -- This function standardizes the top comment
 # section inside shell scripts (*.sh) using a predefined template.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function shell_doTopComment {
+function sh_doTopComment {
 
     # Define absolute path to template file.
     local TEMPLATE="${TUNEUP_CONFIG_DIR}/topcomment.sed"

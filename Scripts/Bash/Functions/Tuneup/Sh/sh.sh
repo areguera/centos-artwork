@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# shell.sh -- This function standardizes maintainance tasks for Shell
+# sh.sh -- This function standardizes maintainance tasks for Shell
 # script files.
 #
 # Copyright (C) 2009, 2010, 2011 The CentOS Project
@@ -23,10 +23,10 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function shell {
+function sh {
 
     # Rebuild top comment inside shell scripts, mainly to update
     # copyright information.
-    shell_doTopComment
+    sh_doTopComment
 
 }
