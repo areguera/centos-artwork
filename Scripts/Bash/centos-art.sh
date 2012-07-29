@@ -26,7 +26,7 @@
 declare -xr BRAND="centos"
 declare -xr CLI_NAME="${BRAND}-art"
 declare -xr CLI_VERSION='1.0'
-declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh.XXXXXX)"
+declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
 
 # Initialize user-specific path information.
 declare -xr CLI_WRKCOPY="${HOME}/Projects/artwork"
