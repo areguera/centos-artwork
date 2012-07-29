@@ -48,9 +48,18 @@ function svg_convertPngToBranded {
     BRANDING_CONF_FILE="$(dirname ${TEMPLATE})/branding.conf"
 
     # Verify absolute path to branding configuration file. This is
-    # required in order to avoid trying to rendered branded content
-    # which doesn't have an associated `branding.conf' file.
-    cli_checkFiles "$BRANDING_CONF_FILE"
+    # required in order to avoid trying to render branded content
+    # which doesn't have an associated `branding.conf' file. If there
+    # is no associated `branding.conf' file don't stop the script
+    # execution. Instead, continue with the next action in the list.
+    # This is required in order to perform massive rendition inside
+    # structures like themes where components might or might not have
+    # `branding.conf' files associted. For example, the `Concept'
+    # component doesn't have branding information associated but most
+    # elements inside `Distro' component do.
+    if [[ ! -f "$BRANDING_CONF_FILE" ]];then
+        continue
+    fi
 
     # Define regular expression matching the variable name (i.e., the
     # left column), inside the configuration line, you want to match
