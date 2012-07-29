@@ -66,7 +66,7 @@ function render_doTranslation {
 
         # Create the non-translated instance of design model.
         if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
-            ${COMMAND} ${$TEMPLATE} | xmllint --valid --noent - > ${INSTANCE}    
+            ${COMMAND} ${TEMPLATE} | xmllint --valid --noent - > ${INSTANCE}    
         else
             ${COMMAND} ${TEMPLATE} > ${INSTANCE}
         fi
