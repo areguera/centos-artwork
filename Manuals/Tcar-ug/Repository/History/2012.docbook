@@ -44,10 +44,10 @@
         To solve this issue, you need to mix specific parts of
         different central repositories into one single working copy.
         This is the working copy you'll use to manage your new
-        project. The <xref linkend="repository-history-2012-1" />,
-        illustrates how the <function>render</function> functionality
-        living in &TCAR; has been integrated into the working copy of
-        your new project.
+        project. In <xref linkend="repository-history-2012-1" />, we
+        see how the <function>render</function> functionality living
+        in &TCAR; has been integrated into the working copy of your
+        new project.
     </para>
         
     <example id="repository-history-2012-1">
@@ -72,9 +72,9 @@
     |       |           `-- messages.pot
     |       `-- es_ES/
     |           |-- LC_MESSAGES/
-    |           |   `-- centos-art.sh.mo
-    |           |-- centos-art.sh.po
-    |           `-- centos-art.sh.pot
+    |           |   `-- myapp.sh.mo
+    |           |-- myapp.sh.po
+    |           `-- myapp.sh.pot
     `-- Scripts/            
         `-- Bash/
             |-- Functions/
@@ -88,14 +88,17 @@
     </example>
 
     <para>
-        At this point you find yourself working with a mix of two
-        different central repositories in the same working copy. One
-        repository provides your organization files. The other
-        repository provides the files of <function>render</function>
-        functionality at &TCAR;.  In this environment, all updates
+        At this point your working copy contains files from two
+        different central repositories. One repository provides the
+        files of your new organization project and the other one
+        provides the files related to the <function>render</function>
+        functionality from &TCAR;.  In this environment, all updates
         commited to the <function>render</function> functionality at
         &TCAR; will be available to you too, the next time you update
-        your working copy.
+        your working copy. Likewise, if you change something in the
+        <function>render</function> functionality and commit your
+        changes, your changes will be available to poeple working in
+        &TCAR; the next time they update their working copies.
     </para>
 
     <para>
