@@ -3,25 +3,24 @@
 
     <para>
         &TCAR; development was eventually stopped at November 2011
-        until July 2012 when it was decided to make the
+        until July 2012 when we needed to make the
         <command>centos-art.sh</command> script a bit more
         customizable than it presently was. For example, it was
         considered as a need that functionalities inside the
         <command>centos-art.sh</command> script must be not just
         conceived independent one another but reusable in different
-        contexts.
+        contexts as well.
     </para>
     
     <para>
-        As consequence of this autonomy we want to have among
+        As consequence of this autonomy we wanted to have among
         functionalities, the procedure used to locale messages inside
-        the <command>centos-art.sh</command> script had to be
-        modified in order to accept such pluggable behavior into the
-        script. We cannot have a single
-        <filename>centos-art.sh.po</filename> file for all the
-        functionalities because all functionalities are not used in
-        the same context. Instead, it is required that each
-        functionality has its own <filename
+        the <command>centos-art.sh</command> script had to be modified
+        in order to accept such pluggable behavior into the script. We
+        cannot have a single <filename>centos-art.sh.po</filename>
+        file for all the functionalities because all functionalities
+        are not used in the same context. Instead, it is required that
+        each functionality has its own <filename
         class="extension">messages.po</filename> file in order to
         treat them individually. Otherwise, we would end up having
         translations for functionalities that we don't need or use in
