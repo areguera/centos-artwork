@@ -114,21 +114,21 @@
         rename it to something else. Later, you need to edit the
         renamed version and change variables inside according your
         needs. In <xref linkend="repository-history-2012-1" />, we
-        used the name <filename>ispadm.sh</filename> instead of
+        used the name <filename>myapp.sh</filename> instead of
         <filename>centos-art.sh</filename> so the information we set
-        inside it could reflect the specific needs that motiveted the
+        inside it could reflect the specific needs that motivated the
         creation of a new project without affecting those from &TCP;.
     </para>
 
     <para>
         Most of the information you need to change in your duplicated
         version of <filename>centos-art.sh</filename> file is
-        controled by a set of read-only variables. You modify these
+        controlled by a set of read-only variables. You modify these
         variables here and they will be available all along the script
         execution time. For example, you can change the value of
         <varname>CLI_WRKCOPY</varname> variable inside your duplicated
         version of <filename>centos-art.sh</filename> to change the
-        absolute path of your working copy.
+        absolute path you use to store your working copy.
     </para>
 
     <caution>
