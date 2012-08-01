@@ -83,7 +83,7 @@
         situations where you and I have to share the same workstation.
         In such cases, it would be required that we both share the
         password information of the same system user (the
-        <emphasis>centos</emphasis> user in our example) which, in
+        <quote>centos</quote> user in our example) which, in
         addition, gives access to that user's subversion client
         configuration and this way provokes the whole sense of using
         different subversion credentials for committing changes to be
@@ -117,9 +117,9 @@
 
     <para>
         As convenction, to use the &TCAR;, you must register the user
-        name <emphasis>centos</emphasis> in your workstation, do login
-        with it, and download the working copy from the central
-        repository using the following command:
+        name <quote>centos</quote> in your workstation, do login with
+        it, and download the working copy from the central repository
+        using the following command:
     </para>
 
     <screen>svn co https://projects.centos.org/svn/artwork /home/centos/Projects/artwork</screen>
