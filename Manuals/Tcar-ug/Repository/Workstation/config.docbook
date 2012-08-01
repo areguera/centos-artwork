@@ -3,11 +3,13 @@
     <title>Configuring Your Workstation</title>
 
     <para>
-        Once your worstation is installed, it is time for you to
-        configure it.  At this point you create a user for working
-        everyday, configure third party repositories, set environment
-        variables to fit your personal needs, download the working
-        copy of &TCAR; and prepare it for start using it.
+        Once your worstation has been installed, it is time for you to
+        configure it. The configuration of your workstation consists
+        on defining your workplace, download a working copy from
+        &TCAR; and finally, run the <function>prepare</function>
+        functionality of <command>centos-art.sh</command> script to
+        install/update the software needed, as well as render images,
+        links, and anything else needed.
     </para>
 
     <sect2 id="repo-ws-config-wp">
@@ -132,12 +134,93 @@
         to implement &TCPCVI;. 
     </para>
 
+    </sect2>
+
+    <sect2 id="repo-ws-config-sudoers">
+    <title>Configure Administrative Tasks</title>
+
     <para>
-        In order to complete the installation of your working copy,
-        use the <function>prepare</function> functionality described
-        in <xref linkend="scripts-bash-prepare" />.
+        Most of the administrative tasks you need to perform in your
+        working copy of &TCAR; are standardized inside the
+        <function>prepare</function> functionality of
+        <command>centos-art.sh</command> script. Inside
+        <command>centos-art.sh</command>
+        script, all administrative task are invoked trough the
+        <command>sudo</command> command. Thus, in order for the
+        <command>centos-art.sh</command> script to perform
+        administrative tasks, you need to update the
+        <command>sudo</command>'s configuration in a way that such
+        administrative actions be allowed.
     </para>
 
+    <para>
+        At time of this writing the <command>centos-art.sh</command>
+        script implements just one administrative task, that is
+        package management.  Nevertheless, in the future, other
+        administrative tasks might be included as well.
+    </para>
+
+    <para>
+       To update the <command>sudo</command>'s configuration, execute
+       the <command>visudo</command> command as <quote>root</quote>.
+       Later, uncoment the <varname>Cmnd_Alias</varname> related to
+       <quote>SOFTWARE</quote> and add a line for
+       <quote>centos</quote> username allowing software commands. This
+       configuration is illustrated in <xref
+       linkend="repo-ws-config-sudoers-example" />.
+    </para>
+
+    <example id="repo-ws-config-sudoers-example">
+    <title>The <filename>/etc/sudoers</filename> configuration file</title>
+    <screenshot>
+    <screeninfo><filename>/etc/sudoers</filename> configuration file</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+## Installation and management of software
+Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
+
+## Next comes the main part: which users can run what software on
+## which machines (the sudoers file can be shared between multiple
+## systems).
+## Syntax:
+##
+##      user    MACHINE=COMMANDS
+##
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+
+## Allow the centos user to run installation and management of
+## software anywhere.
+centos  ALL=(ALL)       SOFTWARE
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+    
+    </sect2>
+
+    <sect2 id="repo-ws-config-runout">
+    <title>Run Automation Tool</title>
+    <para>
+        Once you've created the <quote>centos</quote> username, logged
+        in with it, downloaded a working copy from &TCAR; and
+        configured the <command>sudo</command>'s configuration file,
+        run the <function>prepare</function> functionality of
+        <command>centos-art.sh</command> script to complete the
+        configuration process using the following command:
+    </para>
+
+    <screen>/home/centos/Projects/artwork/trunk/Scripts/Bash/centos-art.sh prepare</screen>
+
+    <para>
+        To know more about the <function>prepare</function>
+        functionality of <command>centos-art.sh</command> script, see
+        <xref linkend="scripts-bash-prepare" />.
+    </para>
     </sect2>
 
 </sect1>
