@@ -36,8 +36,12 @@ function init {
     # Initialize default value to filter flag. The filter flag
     # (--filter) is used mainly to reduce the number of files to
     # process. The value of this variable is interpreted as
-    # egrep-posix regular expression.  By default, everything matches.
-    local FLAG_FILTER='.+'
+    # egrep-posix regular expression.  By default, when the --filter
+    # option is not provided, all paths in the working copy must match
+    # except files under hidden directories like `.svn'. We do this in
+    # conjunction with `cli_getFilesList', when building the list of
+    # files that will be processed.
+    local FLAG_FILTER='[[:alnum:]_/-]+'
 
     # Initialize default value to verbosity flag. The verbosity flag
     # (--quiet) controls whether centos-art.sh script prints messages
