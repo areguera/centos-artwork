@@ -3,7 +3,7 @@
 # repository.sed -- This file provide English transformations for
 # texi2html outupt, based on The CentOS Project CSS definitions.
 #
-# Copyright (C) 2009-2010 Alain Reguera Delgado
+# Copyright (C) 2009-2012 The CentOS Project
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
