@@ -30,37 +30,63 @@ function locale_updateMessageShell {
     # Print separator line.
     cli_printMessage '-' --as-separator-line
 
-    # Define absolute path to file used as reference to create
-    # portable object templates (.pot), portable objects (.po) and
-    # machine objects (.mo).
-    local MESSAGES="${L10N_WORKDIR}/${TEXTDOMAIN}"
-
     # Define regular expression to match extensions of shell scripts
     # we use inside the repository.
     local EXTENSION='sh'
 
-    # Build list of files to process. When you build the pattern, be
-    # sure the value passed through `--filter' will be exactly
-    # evaluated with the extension as prefix. Otherwise it would be
-    # difficult to match files that share the same characters in their
-    # file names (e.g., it would be difficult to match only `hello.sh'
-    # if `hello-world.sh' also exists in the same location).
-    local FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${EXTENSION}")
+    # Define list of absolute paths to function directories.
+    local FNDIRS=$(cli_getFilesList ${ACTIONVAL}/Functions \
+        --maxdepth=1 --mindepth=1 --type='d' --pattern="/${FLAG_FILTER}$")
 
-    # Print action message.
-    cli_printMessage "${MESSAGES}.pot" --as-updating-line
+    for FNDIR in $FNDIRS;do
 
-    # Retrive translatable strings from shell script files and create
-    # the portable object template (.pot) from them.
-    xgettext --output=${MESSAGES}.pot \
-        --copyright-holder="${COPYRIGHT_HOLDER}" \
-        --width=70 --sort-by-file ${FILES}
+        # Define function name.
+        local FNNAME=$(basename $FNDIR)
 
-    # Sanitate metadata inside the POT file.
-    locale_updateMessageMetadata "${MESSAGES}.pot"
+        # Define absolute path to directory used as reference to store
+        # portable objects.
+        local L10N_DIR=${L10N_WORKDIR}/Functions/${FNNAME}
 
-    # Verify, initialize or update portable objects from portable
-    # object templates.
-    locale_updateMessagePObjects "${MESSAGES}"
+        # Prepare working directory to receive translation files.
+        locale_prepareWorkingDirectory ${L10N_DIR}
+
+        # Define absolute path to file used as reference to create
+        # portable objects.
+        local MESSAGES="${L10N_DIR}/messages"
+
+        # Print action message.
+        cli_printMessage "${MESSAGES}.pot" --as-updating-line
+
+        # Build list of files to process. When you build the pattern,
+        # be sure the value passed through `--filter' will be exactly
+        # evaluated with the extension as prefix. Otherwise it would
+        # be difficult to match files that share the same characters
+        # in their file names (e.g., it would be difficult to match
+        # only `hello.sh' if `hello-world.sh' also exists in the same
+        # location).
+        local FILES=$(cli_getFilesList ${FNDIR} --pattern="\.${EXTENSION}$")
+
+        # Retrive translatable strings from shell script files and
+        # create the portable object template (.pot) from them.
+        xgettext --output=${MESSAGES}.pot \
+            --copyright-holder="${COPYRIGHT_HOLDER}" \
+            --width=70 --sort-by-file ${FILES}
+
+        # Sanitate metadata inside the POT file.
+        locale_updateMessageMetadata "${MESSAGES}.pot"
+
+        # Verify, initialize or update portable objects from portable
+        # object templates.
+        locale_updateMessagePObjects "${MESSAGES}"
+
+    done
+
+    # At this point some changes might be realized inside the PO file,
+    # so we need to update the related MO file based on recently
+    # updated PO files here in order for `centos-art.sh' script to
+    # print out the most up to date revision of localized messages.
+    # Notice that this is required only if we were localizaing shell
+    # scripts.
+    locale_updateMessageBinary
 
 }
