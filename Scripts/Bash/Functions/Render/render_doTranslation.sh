@@ -40,6 +40,15 @@ function render_doTranslation {
         COMMAND="/bin/zcat"
     fi
 
+    # Move into template's directory in order to satisfy relative
+    # entities.  Take care that some XML documents (e.g., DocBook
+    # documents) can use entities relatively from their base
+    # locations. In order to process such documents, it is necessary
+    # to put the template directory up in the directory stack and
+    # create the instance from there. Thus, it is possible to expand
+    # relative entities correctly when validating the document.
+    pushd $(dirname $TEMPLATE) > /dev/null
+
     # Verify translation file existence and create template
     # instance accordingly.
     if [[ -f ${TRANSLATION} ]];then
@@ -64,7 +73,7 @@ function render_doTranslation {
 
     else
 
-        # Create the non-translated instance of design model.
+        # Create the non-translated instance of design model. 
         if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
             ${COMMAND} ${TEMPLATE} | xmllint --valid --noent - > ${INSTANCE}    
         else
@@ -72,6 +81,9 @@ function render_doTranslation {
         fi
 
     fi
+
+    # Return to where we were.
+    popd > /dev/null
 
     # Verify instance existence.
     cli_checkFiles $INSTANCE
