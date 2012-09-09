@@ -9,6 +9,9 @@
         files inside the working copy.
     </para>
 
+    <sect2 id="scripts-bash-tuneup-syntax">
+    <title>Syntax</title>
+
     <screen>centos-art tuneup [OPTIONS] [DIRECTORY]</screen>
 
     <para>
@@ -20,6 +23,10 @@
         parameter is not provided, the current directory path where
         the command was called from is used instead.
     </para>
+    </sect2>
+
+    <sect2 id="scripts-bash-tuneup-options">
+    <title>Options</title>
     <para>
         The <function>tuneup</function> functionality accepts the
         following options: 
@@ -75,6 +82,10 @@
     </listitem>
     </varlistentry>
     </variablelist>
+    </sect2>
+
+    <sect2 id="scripts-bash-tuneup-description">
+    <title>Description</title>
 
     <para>
         Tasks related to file maintainance are repetitive. You might
@@ -236,5 +247,49 @@
     </mediaobject>
     </screenshot>
     </example>
+    </sect2>
+
+    <sect2 id="script-bash-tuneup-environment">
+    <title>Environment</title>
+    <para>
+        ...
+    </para>
+    </sect2>
+
+    <sect2 id="scripts-bash-tuneup-authors">
+    <title>Authors</title>
+    <para>
+        The following people have worked in the
+        <function>tuneup</function> functionality:
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+        Alain Reguera Delgado &lt;<ulink url="mailto:alain.reguera@gmail.com">alain.reguera@gmail.com</ulink>&gt;
+    </para>
+    </listitem>
+    </itemizedlist>
+    </sect2>
+
+    <sect2 id="scripts-bash-tuneup-licence">
+    <title>License</title>
+    <para>
+<screen>Copyright (C) 2009-2012 The CentOS Project
+ 
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</screen>
+    </para>
+    </sect2>
 
 </sect1>
