@@ -125,7 +125,7 @@ function cli_expandTMarkers {
     SRC[((++${#SRC[*]}))]='=REPO_TLDIR='
     DST[((++${#DST[*]}))]="$(cli_getRepoTLDir)"
     SRC[((++${#SRC[*]}))]='=REPO_HOME='
-    DST[((++${#DST[*]}))]="${CLI_WRKCOPY}"
+    DST[((++${#DST[*]}))]="${TCAR_WORKDIR}"
 
     # Do replacement of nested translation markers.
     while [[ $COUNTDST -lt ${#DST[@]} ]];do
