@@ -1,0 +1,1193 @@
+/* 
+ * Webenv -> Main Blocks
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: base.css 5276 2012-08-28 22:08:58Z al $
+ * ----------------------------------------------------------------------
+ */
+
+div#header,
+div#wrap,
+div#body,
+div#footer {
+    min-width: 728px;
+    }
+
+/* Header.
+--------------------------------------------------------------------*/
+div#header {
+	background: #204C8D url("../img/moin-header-background.png") 0 0 repeat;
+	min-height: 46px;
+	}
+
+/* Content.
+--------------------------------------------------------------------*/
+
+div#wrap {
+	padding: 0px 10px;
+    background-color: #FFF;
+	}
+
+div#body {
+	clear: both;
+    background-color: #F8F8F8;
+	}
+
+div#content {
+    padding: 30px;
+    padding-top: 20px;
+    background-color: #FFF;
+    }
+
+/* Paragraphs
+--------------------------------------------------------------------*/
+
+div#content p {
+    text-align:justify; 
+    }
+
+div#content form .userpref table {
+    margin-bottom: 1em;
+    }
+
+div#content form .userpref p {
+    margin-left: 0;
+    }
+
+/* Footer.
+--------------------------------------------------------------------*/
+
+div#footer {
+	background: #204C8D url("../img/h1-bg.png") 0 0 repeat;
+	}
+
+div#footer div.credits {
+    padding: 10px;
+    }
+    
+div#footer div.credits .copyright,
+div#footer div.credits .license {
+    font-size: x-small;
+    color: #FFF;
+    line-height: 1.5em;
+    }
+
+div#footer div.credits a {
+    color: #FFF;
+    font-style: italic;
+    }
+
+div#footer div.top {
+    float:right;
+    }
+
+/* Logo
+--------------------------------------------------------------------*/
+div#header div#logo img {
+    border: none;
+    float: left;
+    margin-left: 10px;
+    }
+
+/* Google advertisement (468x60px)
+--------------------------------------------------------------------*/
+
+div#header div.ads-google {
+    float: right;
+    margin: 5px;
+    }
+
+div#header div.ads-google img {
+    border: none;
+    }
+
+/* Last releases and RSS link for them.
+--------------------------------------------------------------------*/
+div#header div#last-releases {
+    clear: both;
+    min-height: 35px;
+    border-top: 3px solid #FFF;
+    border-bottom: 3px solid #FFF;
+    background: #3465A4;
+    }
+
+div#header div#last-releases div.left {
+    display: block;
+    float: left;
+    width: 80%;
+    margin-top: 10px;
+    font-size: small;
+    }
+
+div#header div#last-releases div.right {
+    float: right;
+    margin-top: 9px;
+    margin-right: 5px;
+    }
+
+div#header div#last-releases div.right span.rss span {
+    text-align: center;
+    font-weight: bold;
+    background: #729fcf;
+    padding: 4px 10px;
+    }
+
+div#header div#last-releases div {
+    margin-left: 10px;
+    }
+
+div#header div#last-releases div span.title {
+    font-weight: bold;
+    color: #FFF;
+    }
+
+div#header div#last-releases div span.release {
+    border-right: 1px dotted #FFF;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    }
+
+div#header div#last-releases div span.last {
+    border-right: 0px;
+    }
+
+/* User links on header.
+--------------------------------------------------------------------*/
+
+div#header div.userlinks {
+    padding: 10px;
+    text-align: right;
+    font-size: x-small;
+    clear: both;
+    }
+
+div#header div.userlinks div.lastvisit {
+    width: 50%;
+    float: left;
+    text-align: left;
+    }
+
+div#header div.userlinks div.lastvisit span {
+    border: none;
+    }
+
+div#header div.userlinks div.lastvisit span.title {
+    color: #FFF;
+    }
+
+div#header div.userlinks div.lastvisit span.datetime {
+    font-style: italic;
+    color: #FFF;
+    }
+
+div#header div.userlinks div.session {
+    width: 50%;
+    float: right;
+    }
+
+div#header div.userlinks div.session a {
+    margin-left: 10px;
+    margin-right: 10px;
+	}
+
+div#header div.userlinks div.session span {
+    border-right: 1px dotted #FFF;
+	}
+
+div#header div.userlinks div.session span.last {
+	border-right: none;
+	}
+
+div#header div.userlinks div.session span.last a {
+	margin-right: 0;
+	}
+
+div#header div.userlinks div.session span.last:after {
+	content: none;
+	}
+
+div#header div.userlinks div.trail {
+	text-align: right;
+    clear: both;
+    padding-top: 5px;
+    }
+
+div#header div.userlinks div.trail span {
+	display: inline;
+	}
+
+div#header div.userlinks div.trail span.last {
+	border-right: none;
+	padding-right: 0;
+	}
+
+div#header div.userlinks div.trail span:after {
+	content: "»";
+    color: #FFF;
+    margin-left: 5px;
+    margin-right: 3px;
+	}
+
+div#header div.userlinks div.trail span.last:after {
+	content: none;
+	}
+
+/* User trail on content.
+--------------------------------------------------------------------*/
+div#body div.usertrail {
+    font-size: small;
+    }
+
+div#body div.usertrail a {
+    margin-right: 5px;
+	}
+
+div#body div.usertrail span {
+	display: inline;
+	}
+
+div#body div.usertrail span.last {
+	border-right: none;
+	padding-right: 0;
+	}
+
+div#body div.usertrail span.last a {
+	margin-right: 0;
+	}
+
+div#body div.usertrail span:after {
+	content: "»";
+	}
+
+div#body div.usertrail span.last:after {
+	content: none;
+	}
+
+/* Page lines.
+--------------------------------------------------------------------*/
+
+.line {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	}
+
+.line.white {
+	height: 3px;
+	background-color: #FFF;
+	}
+/* 
+ * Webenv -> Forms
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: forms.css 5257 2012-08-28 18:02:18Z al $
+ * ----------------------------------------------------------------------
+ */
+
+div#body div.row1 {
+	clear: both;
+	background: #F8F8F8;
+	padding: 10px;
+	}
+
+div#body div.row2 {
+	clear: both;
+	background: #FFFFFF;
+	padding: 10px;
+	}
+
+div#body div.row3 {
+	clear: both;
+	border-top: 1px solid #CCC;
+	padding: 10px;
+	margin-top: 10px;
+	}
+
+div#body fieldset div.row1 span.descrip,
+div#body fieldset div.row2 span.descrip {
+	float: left;
+	}
+
+div#body fieldset div.field {
+	display: block;
+	margin-left: 30%;
+	}
+
+div#body fieldset div.field div.column {
+	float: left;
+	margin-right: 1em;
+	padding-right: 1em;
+	border-right: 1px dotted #AAA;
+	}
+
+div#body fieldset div.row3 div.descrip {
+	display: block;
+	font-size: small;
+	color: #AAA;
+	font-style: italic;
+	width: 70%
+	}
+
+div#body fieldset span.submit {
+	float: right;
+	}
+
+/* */
+
+div#body div.actions {
+    margin-top: 10px;
+	border-bottom: 1px solid #AAA;
+    padding-bottom: 10px;
+
+    }
+
+div#body div.actions span {
+	display: inline;
+	margin: 0;
+	padding-right: 10px;
+	border-right: 1px dotted #AAA;
+	color: #AAA;
+	}
+
+div#body div.actions span.last {
+	border-right: none;
+	padding-left: 10px;
+	}
+
+/* */
+
+div#body div.pagination {
+    font-size: small;
+    padding: 10px;
+    border-top: 1px #AAA solid;
+    margin-bottom: 2em;
+    }
+
+div#body div.pagination span.left {
+    float: left;
+    }
+
+div#body div.pagination span.left a:before {
+    content: "«";
+    padding-right: 3px;
+    }
+
+div#body div.pagination span.right a:after {
+    content: "»";
+    padding-left: 3px;
+    }
+
+div#body div.pagination span.right {
+    float: right;
+    }
+
+/* */
+
+div#body div.records-list {
+    display: block;
+    }
+
+div#body div.records-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    }
+
+div#body div.records-list ul li {
+    padding: 0.5em;
+    }
+
+div#body div.records-list ul li.row1 {
+    background: #F8F8F8;
+    }
+
+div#body div.records-list ul li span.col0 {
+    display: block;
+    float:left;
+    text-align: center;
+    padding-right: 0.5em;
+    margin-right: 0.5em;
+    border-right: 1px solid #FFF;
+    }
+
+div#body div.records-list ul li span.col1 {
+    width: 250px;
+    display: block;
+    float:left;
+    }
+
+div#body div.records-list ul li span.col2 {
+    border-left: 1px solid #FFF;
+    padding-left: 0.5em;
+    }
+
+div#body div.records-list ul li.title {
+    font-weight: bold;
+    background: #eee;
+    border-bottom: 1px #AAA solid;
+    }
+/*
+ * Webenv -> Links
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: links.css 5276 2012-08-28 22:08:58Z al $
+ * ----------------------------------------------------------------------
+ */
+
+/* Broken or nonexistent links.
+--------------------------------------------------------------------*/
+
+div#body a.nonexistent,
+div#body a.nonexistent:hover { color: gray; }
+
+/* Special decoration for some links' classes
+--------------------------------------------------------------------*/
+
+div#body a.www:before {
+    white-space:nowrap;
+    content: url(../img/a-www.png);
+    margin: 0 0.2em;
+    }
+
+div#body a.http:before {
+    white-space:nowrap;
+    content: url(../img/a-www.png);
+    margin: 0 0.2em;
+    }
+
+div#body a.https:before {
+    white-space:nowrap;
+    content: url(../img/a-www.png);
+    margin: 0 0.2em;
+    }
+
+div#body a.mailto:before {
+    white-space:nowrap;
+    content: url(../img/a-mail.png);
+    margin: 0 0.2em;
+    }
+
+div#body a.attachment:before {
+    white-space:nowrap;
+    content: url(../img/a-attach.png);
+    margin: 0 0.2em;
+    }
+
+/*
+--------------------------------------------------------------------*/
+
+div#header .user-last-visit a,
+div#header .userlinks a,
+div#header .usertrail a,
+div#header #last-releases a {
+	color: #fff;
+    }
+/* 
+ * Webenv -> Lists
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: lists.css 5276 2012-08-28 22:08:58Z al $
+ * ----------------------------------------------------------------------
+ */
+
+div#body ul { 
+    list-style: url("../img/ul.png") disc; 
+    }
+
+div#body ul,
+div#body ol { 
+    margin-left: 2.5em;
+    }
+
+div#body ul ol,
+div#body ol ul,
+div#body dl ul,
+div#body dl ol { 
+    margin-left: 1.5em;
+    }
+
+div#body div#rightbar ul {
+    padding: 0.5em 0.5em 1em 1em;
+    margin: 0;
+    list-style: none;
+    border-top: 1px #EEE solid;
+    }
+
+div#body div#rightbar ul.first {
+    border-top: none;
+    }
+
+div#body div#right ul li {
+    padding: 2px;
+    }
+
+/* Table of content (toc) 
+--------------------------------------------------------------------*/
+
+div#body div.toc {
+	font-size: small;
+	text-align:left;
+    margin-bottom: 2em;
+	}
+
+div#body div.toc p {
+    font-weight: bold;
+    margin: 0.5em 0 0.5em 0;
+    }
+
+div#body div#content div.toc dl {
+    margin: 0;
+    }
+
+div#body div#content div.toc dl dl {
+    margin-left: 2.5em;
+    }
+/* 
+ * Webenv -> Quotation
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: quotation.css 5276 2012-08-28 22:08:58Z al $
+ * ----------------------------------------------------------------------
+ */
+
+div#body blockquote {
+    margin-left: 0;
+    background-image: url("../img/msg-bg-gray.png");
+    padding: 1em 1.5em 0 1em;
+	}
+
+div#body blockquote h3 {
+    line-height: 0;
+    margin: 1em 0 1em 0;
+    }
+ 
+div#body blockquote pre {
+    border: none;
+    background-color: #333;
+    color: #FFFFFF;
+    }
+
+div#body blockquote.icon img {
+    float: left;
+    }
+
+div#body blockquote.icon pre,
+div#body blockquote.icon h3,
+div#body blockquote.icon p,
+div#body blockquote.icon table {
+    margin-left: 60px;
+    }
+
+div#body blockquote.icon ul,
+div#body blockquote.icon ol,
+div#body blockquote.icon dl {
+    margin-left: 110px;
+    }
+
+div#body blockquote.icon ul dl,
+div#body blockquote.icon ul ol,
+div#body blockquote.icon ul ul,
+div#body blockquote.icon ol dl,
+div#body blockquote.icon ol ol,
+div#body blockquote.icon ol ul,
+div#body blockquote.icon dl dl,
+div#body blockquote.icon dl ol,
+div#body blockquote.icon dl ul {
+    margin-left: 2.5em;
+    }
+
+div#body blockquote.message {
+	border: none;
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+    border-color: #CFCFCF;
+	}
+
+div#body blockquote.blue {
+    background-image: url("../img/msg-bg-blue.png");
+	border-color: #D2E0F6; 
+	background-color: #ECF4FF;
+	}
+
+div#body blockquote.orange {
+    border-color: #F6E7D2; 
+    background-color: #FFF8EC;
+    background-image: url("../img/msg-bg-orange.png");
+	}
+
+div#body blockquote.violet {
+    border-color: #F6D2F6; 
+    background-color: #FFECFF;
+    background-image: url("../img/msg-bg-violet.png");
+	}
+
+div#body blockquote.red {
+    border-color: #E0B7B7;
+    background-color: #FFECEC;
+    background-image: url("../img/msg-bg-red.png");
+	}
+
+div#body blockquote.green {
+    border-color: #D6F6D2;
+    background-color: #EEFFEC;
+    background-image: url("../img/msg-bg-green.png");
+	}
+/* 
+ * Webenv -> Tabs (Style 2: Two Rounded Borders)
+ *
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: tabs.css 5276 2012-08-28 22:08:58Z al $
+ * ----------------------------------------------------------------------
+ */
+
+div#header div.tabs {
+	margin-left: 10px;
+    margin-right: 10px;
+    }
+
+div#header div.tabs a {
+	color: #FFF;
+	float: left;
+	font-weight: bold;
+	margin-right: 3px;
+	padding: 0px 8px 0 0px;
+	text-decoration: none;
+	}
+
+div#header div.tabs span.current a,
+div#header div.tabs span.current a:hover, 
+div#header div.tabs span.current a span,
+div#header div.tabs span.current a:hover span {
+	color: #204A87;
+	text-decoration: none;
+	}
+
+div#header div.tabs a span {
+	float: left;
+	padding: 5px 0px 3px 8px;
+	}
+
+/* */
+
+div#header div.tabs a {
+	background: none;
+	}
+
+div#header div.tabs a span {
+	background: none;
+	}
+
+div#header div.tabs span.current a,
+div#header div.tabs span.current a:hover {
+	background: url("../img/tabs-bg-1.png") 100% -50px no-repeat;
+	}
+
+div#header div.tabs span.current a span,
+div#header div.tabs span.current a:hover span {
+	background: url("../img/tabs-bg-2.png") 0 -50px no-repeat;
+	}
+
+div#header div.tabs span:hover a {
+	background: url("../img/tabs-bg-1.png") 100% 0 no-repeat;
+	}
+
+div#header div.tabs span:hover a span {
+	background: url("../img/tabs-bg-2.png") 0 0;
+	}
+
+/* Application level navigation bar.
+--------------------------------------------------------------------*/
+.editbar {
+    clear: both;
+    display: block;
+    margin: 0;
+    padding-left: 20px;
+    white-space: nowrap;
+    background: #EDF4FF; 
+    font-size: 0.9em;
+    }
+
+.editbar form, .editbar form div {
+    display: inline;
+    margin: 0px;
+    }
+
+.editbar li {
+    display: inline;
+    padding: 0;
+    margin-right: 10px;
+    }
+
+*[dir="rtl"] .editbar li {
+    float: right;
+    }
+
+#header .editbar {
+    border-bottom-width: 2px;
+    border-bottom-style: dotted;
+    border-bottom-color: #628ECA;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #C9C9C9;
+    }
+
+.navibar {
+    /* Problem: clear: right; aligns nicely right of
+     * logo, but lets it float high in the header,
+     * disconnected from ground */  
+    clear: both;
+    display: block;
+    height: 20px;
+    padding: 0;
+    padding-left: 20px;
+    margin: 0;
+    font-size: 0.9em;
+
+    /* For avoiding a gap between navibar and pageline
+     * on IE */
+    zoom: 1;
+    }
+
+.navibar li {
+    float: left;
+    display: inline;
+    white-space: nowrap;
+    margin-left: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #628ECA;
+    background-color: #FFF;
+    background-image: url("../img/moin-navibartop-bg.png");
+    background-position: left top;
+    background-repeat: repeat-x;
+    }
+
+*[dir="rtl"] .navibar li {
+    float: right;
+    }
+
+.navibar li.wikilink {
+    /*background: #3967a3; /*url(../img/tab-wiki.png) repeat-x;*/
+    }
+
+.navibar li.userlink {
+    /*background: #E6EAF0; /*url(../img/tab-user.png) repeat-x;*/
+    }
+
+.navibar li a { 
+    /* To cover the box area as linkable */
+    padding: 8px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    }
+
+.navibar a, .navibar a:visited {
+    color: #204C8D;
+    text-decoration: none;
+    }
+
+.navibar li.current a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    }
+
+.navibar li:hover {
+    background-color: #628ECA;
+    background-image: url("../img/moin-navibartop-hover-bg.png");
+    background-position: left top;
+    background-repeat: repeat-x;
+    }
+
+.navibar li:hover a {
+    color: #FFFFFF;
+    text-decoration: none;
+    }
+
+.navibar li:hover a:active { color:#FFF; text-decoration:none;}
+.navibar li a:active { color:#204C8D; text-decoration:none;}
+
+.navibar li.current, 
+.navibar li.current:hover, 
+.navibar li.current:hover a, 
+.navibar li.current:active a {
+    color: #FFFFFF;
+    background-color: #628ECA;
+    background-image: url("../img/moin-navibartop-hover-bg.png"); 
+    background-position: left top;
+    background-repeat: repeat-x;
+    }
+
+#username {
+    padding: 0;
+    margin: 0.4em;
+    margin-top: 0;
+    text-align: right;
+    font-size: 0.82em;
+    white-space: nowrap;
+    }
+
+*[dir="rtl"] #username {
+    text-align: left;
+    }
+
+#username li {
+    display: inline;
+    padding: 0;
+    padding-right: 0.5em;
+    }
+
+#username form {
+    display: inline;
+    }
+
+#username input {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: #E7E7E7; /* inherit doesnt work on IE */
+    color: blue;
+    font-size: 0.82em;
+    cursor: pointer;
+    }
+
+#username input:hover {
+    color: red;
+    }
+
+#searchform {
+    color: #FFFFFF; 
+    margin-right: 0;
+    text-align: right;
+    padding: 0;
+    white-space: nowrap;
+    }
+
+*[dir="rtl"] #searchform {
+    float: left;
+    }
+
+#searchform input{
+    font-size: 0.85em;
+    padding: 1px;
+    padding-left: 3px;
+    }
+
+#searchinput {
+    background: #EDF4FF;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #204C8D;
+    color: #204C8D;
+    display: inline;
+    width: 130px;
+    }
+
+#titlesearch, #fullsearch {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #204C8D;
+    background: #3B71B8; /* inherit doesnt work on IE */
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline;
+    font-weight: bold;
+    text-decoration: none;
+    }
+
+#searchform label {
+    display: block;
+    }
+
+
+#searchform form div {
+    display: inline;
+    }
+
+#pagetrail {
+    font-size: 0.82em;
+    margin:0.4em;
+    padding:0;
+    padding-right: 0.5em;
+    text-align: right;
+    }
+
+*[dir="rtl"] #pagetrail {
+    clear: left;
+    }
+
+#interwiki {
+        margin-right: 0.5em;
+        float:left;
+        font-size: 1em;
+    }
+
+*[dir="rtl"] #interwiki {
+    display: inline;
+    margin-right: 5px;
+    font-size: 1em;
+    }
+
+#interwiki span:after {
+    content: ":";
+    }
+
+#locationline {
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+
+*[dir="rtl"] #locationline {
+    clear: left;
+    }
+
+#pagelocation {
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    padding: 0;
+    }
+
+#pagelocation li {
+    display: inline;
+    color: #3B639B;
+    }
+
+#pagetrail li {
+    display: inline;
+    margin: 0;
+    color: #EEEEEE;
+    }
+
+/* XXX Warning: non-ascii characters! */
+
+#pagetrail li:after {
+    content: " » ";
+    }
+
+*[dir="rtl"] #pagetrail li:after {
+    content: " « ";
+    }
+
+#pagetrail li:last-child:after {
+    content: "";
+    }
+
+#pagelocation li:after {
+    content: " » ";
+    }
+
+*[dir="rtl"] #pagelocation li:after {
+    content: " \\ "; /* TODO: check what looks best with RTL */
+    }
+
+#pagelocation li:last-child:after {
+    content: "";
+    }
+
+#username a:link { text-decoration: none; color: #EEE; }
+#username a:hover { text-decoration: underline; color: #FFF; }
+#username a:active { text-decoration: underline; color: #FFF; }
+#username a:visited { text-decoration: none; color: #EEE; }
+#username a:visited:hover { text-decoration: underline; color: #FFF; }
+
+#pagetrail a:link { text-decoration: none; color: #EEE; }
+#pagetrail a:hover { text-decoration: underline; color: #FFF; }
+#pagetrail a:active { text-decoration: underline; color: #FFF; }
+#pagetrail a:visited { text-decoration: none; color: #EEE; }
+#pagetrail a:visited:hover { text-decoration: underline; color: #FFF; }
+
+#userlinks {
+    padding: 10px;
+    }
+
+.pageline {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* sync these values, line-height is needed for IE */
+    height: 5px;
+    line-height: 5px;
+    background: #628ECA;
+    }
+
+/* Footer */
+
+#footer {
+    clear: both;
+    margin-top: 20px;
+    padding-bottom: 1em;
+    background-color: #204C8D;
+    background-image: url("../img/moin-header-background.png");
+    }
+
+#footer .editbar {
+    border-top-width: 2px;
+    border-top-style: dotted;
+    border-top-color: #628EAC;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #C9C9C9;
+    }
+
+#footer .navibar li {
+    background-color: #FFF;
+    background-image: url("../img/moin-navibarbottom-bg.png");
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    }
+
+#footer .navibar li:hover {
+    background-color: #628ECA;
+    background-image: url("../img/moin-navibarbottom-hover-bg.png");
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    }
+
+#footer .navibar li.current, 
+#footer .navibar li.current:hover, 
+#footer .navibar li.current:hover a, 
+#footer .navibar li.current:active a {
+    color: #FFFFFF;
+    background-color: #628ECA;
+    background-image: url("../img/moin-navibarbottom-hover-bg.png"); 
+    background-position: left top;
+    background-repeat: repeat-x;
+    }
+
+#credits, #version, #timings {
+    text-align: center;
+    font-size: 0.88em;
+    padding: 0;
+    margin-top: 2.5em;
+    color: #EEE;
+    }
+
+#credits a { 
+    color: #EEE; 
+    }
+
+#credits a:hover {
+    text-decoration: underline;
+    }
+
+#credits li, #timings li {
+    display: inline;
+    padding-right: 2px;
+    margin-right: 4px;
+    color: #EEE;
+    }
+
+#credits img {
+    vertical-align: middle;
+    }
+
+#content {
+    padding: 0 50px 0 50px;
+    }
+
+ul { 
+    list-style: url("../img/moin-ul.png") circle; 
+    } 

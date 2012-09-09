@@ -1,0 +1,285 @@
+/* CentOS Cascading Style Sheet
+ * -----------------------------------------------
+ * File		: print.css
+ * Category	: root / common
+ * Theme	: Modern
+ * Description	: CSS definitions used to build the CentOS common
+ *  		  visual style in printer medias.
+ * -----------------------------------------------
+ * Author	: CentOS Artwork SIG
+ * License	: GPL (http://www.fsf.org/licensing/licenses/gpl.txt)
+ * -----------------------------------------------
+ */
+
+
+/* Reset browsers default margins and paddings
+-----------------------------------------------*/
+
+* { margin: 0; padding: 0; }
+
+/* Define html
+-----------------------------------------------*/
+
+html { background-color: #FFF; }
+
+/* Define body 
+-----------------------------------------------*/
+
+body {  font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+	font-size: 0.85em; }
+
+/* Main Blocks
+-----------------------------------------------*/
+
+div#page-header,
+div#page-location,
+div#page-body div.actions,
+div#page-body div.tabs3,
+div#page-footer {
+	/* Hide everything that is not content */
+	display: none;
+	}
+
+div#wrap {
+	background: #FFF;
+	}
+
+div#page-body {
+	padding: 20px;
+	clear: both;
+	}
+
+div#page-info {
+	/* Holds information about the page. */
+	text-align: right;
+	font-style: italic;
+	font-size: small;
+	}
+
+/* Links 
+-----------------------------------------------*/
+
+a:link, a:visited, a:active, a:hover {
+        text-decoration: underline;
+        color: #666;
+        background: none;
+	}
+
+
+/* Headings
+-----------------------------------------------*/
+
+div#page-body h1 {
+        margin-top: 0.9em;
+        margin-bottom: 0.9em;
+        }
+
+div#page-body h2 {
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        }
+
+div#page-body h3 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        }
+
+div#page-body h4 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        }
+
+div#page-body h5 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        }
+
+div#page-body h6 {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        }
+
+/* Paragraphs
+-----------------------------------------------*/
+
+div#page-body p {
+	margin: 1em;
+	margin-left: 0;
+	line-height: 1.5em;
+	}
+
+div#page-body blockquote p {
+	margin-left: 1.5em;;
+}
+
+/* Quotations
+-----------------------------------------------*/
+
+div#page-body blockquote {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #CFCFCF;
+        border-left-width: 4px;
+        padding: 0;
+	margin: 1em;
+	margin-left: 2em;
+	}
+
+div#page-body blockquote img {
+	vertical-align: middle;
+	margin-right: 20px;
+	}
+
+div#page-body q:before {
+	content: " “";
+}
+
+div#page-body q:after {
+	content: "” ";
+}
+
+div#page-body q q:before {
+	content: " ‘";
+}
+
+div#page-body q q:after {
+	content: "’ ";
+}
+
+/* Preformatted Texts
+-----------------------------------------------*/
+
+div#page-body pre {
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+        padding: 0.5em 1em;
+        margin: 0.5em 0 0.5em 0;
+        white-space: pre;
+        border-width: 1px;
+        border-style: dashed;
+        border-color: #CCC;
+        white-space: pre;
+        overflow: auto;
+        }
+
+/* Phrase Elements
+-----------------------------------------------*/
+
+div#page-body tt,
+div#page-body samp,
+div#page-body kbd,
+div#page-body code {
+        font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+	}
+
+/* Page Lines
+-----------------------------------------------*/
+
+div.page-line {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	}
+
+/* Lists
+-----------------------------------------------*/
+
+div#page-body ul,
+div#page-body ol {
+	margin: 1em;
+	padding: 1em;
+        padding-left: 1.9em;
+        margin-left: 3em;
+        margin-bottom: 0.3em;
+        }
+
+div#page-body ul { 
+        list-style: disc; 
+        } 
+
+div#page-body ol {
+        list-style-image: none !important;
+        }
+
+div#page-body ul li,
+div#page-body ol li {
+        padding-left: 0em;
+        margin-bottom: 0.3em;
+        }
+
+div#page-body ul ul,
+div#page-body ul ol,
+div#page-body ol ul,
+div#page-body ol ol {
+        margin-left: 0.5em;
+        margin-top: 0.3em;
+        }
+
+div#page-body ul li p,
+div#page-body ol li p {
+        margin-bottom: 0.3em;
+        line-height: 1.5em;
+        margin-left: 0 !important;
+        }
+
+/* */
+
+div#page-body dl {
+	margin: 1em 1em 0.3em 3em;
+	padding: 1em 1em 1em 0;
+	}
+
+div#page-body dl dt {
+	font-weight: bold;
+	}
+
+div#page-body dl dt:after {
+	content: ": "
+	}
+
+div#page-body dl dd {
+	margin-left: 2em;
+	margin-bottom: 1em;
+	line-height: 1.5em;
+	}
+
+div#page-body dl dd ul,
+div#page-body dl dd ol {
+	margin: 0;
+	padding-bottom: 0;
+}
+
+/* Tables 
+-----------------------------------------------*/
+
+div#page-body table {
+        margin: 0;
+        margin-top: 0.5em;
+	margin-left: 1.5em;
+        border-collapse: collapse;
+        }
+
+div#page-body table caption {
+	font-style: italic;
+	text-align: center;
+}
+
+div#page-body table tr th {
+	font-weight: bold;
+}
+
+div#page-body table tr td,
+div#page-body table tr th {
+        border: 1pt;
+        border-style: solid;
+        border-color: #CCC;
+        padding-top: 0.25em;
+        padding-right: 0.5em;
+        padding-bottom: 0.25em;
+        padding-left: 0.5em;
+        }
+
+div#page-body table tr td p {
+        margin: 0;
+        padding: 0;
+        }
