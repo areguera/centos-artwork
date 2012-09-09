@@ -31,7 +31,7 @@ function prepare_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,packages,links,images,manuals,environment"
+    local ARGSL="quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -55,8 +55,23 @@ function prepare_getOptions {
                 shift 1
                 ;;
 
+            --set-environment )
+                ACTIONNAMS="${ACTIONNAMS} prepare_updateEnvironment"
+                shift 1
+                ;;
+
+            --see-environment )
+                ACTIONNAMS="${ACTIONNAMS} prepare_seeEnvironment"
+                shift 1
+                ;;
+
             --packages )
                 ACTIONNAMS="${ACTIONNAMS} prepare_updatePackages"
+                shift 1
+                ;;
+
+            --locales )
+                ACTIONNAMS="${ACTIONNAMS} prepare_updateLocales"
                 shift 1
                 ;;
 
@@ -72,11 +87,6 @@ function prepare_getOptions {
 
             --manuals )
                 ACTIONNAMS="${ACTIONNAMS} prepare_updateManuals"
-                shift 1
-                ;;
-
-            --environment )
-                ACTIONNAMS="${ACTIONNAMS} prepare_getEnvars"
                 shift 1
                 ;;
 
