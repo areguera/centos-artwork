@@ -28,15 +28,19 @@ declare -xr CLI_NAME="${BRAND}-art"
 declare -xr CLI_VERSION='1.0'
 declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
 
+# Initialize working copy default value.
+if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == "" ]];then
+    TCAR_WORKDIR=${HOME}/artwork
+fi
+
 # Initialize user-specific path information.
-declare -xr CLI_WRKCOPY="${HOME}/Projects/artwork"
-declare -xr CLI_BASEDIR="${CLI_WRKCOPY}/trunk/Scripts/Bash"
+declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/trunk/Scripts/Bash"
 declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
 # Initialize internazionalization through GNU gettext.
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${CLI_WRKCOPY}/trunk/Locales/Scripts/Bash
+declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/trunk/Locales/Scripts/Bash
 
 # Initialize copyright information.
 declare -xr COPYRIGHT_HOLDER="`gettext "The CentOS Project"`"
