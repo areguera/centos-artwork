@@ -30,18 +30,39 @@ function locale_updateMessageBinary {
         return
     fi
 
-    # Define absolute path to portable object file.
-    local PO_FILE="$1"
+    # Define absolute path to final portable object. This is the file
+    # that contains all the individual function translation messages
+    # and is used to build the machine object (.mo) file.
+    local PO_FILE=${L10N_WORKDIR}/${TEXTDOMAIN}.po
 
-    # Verify existence of portable object file.
-    cli_checkFiles "${PO_FILE}"
+    # Define list of portable objects to work with. This list must be
+    # built using the portable objects inside the working copy as
+    # reference not the information in the central repository
+    # (IMPORTANT: all of them must be included in this list, so
+    # FLAG_FILTER mustn't be applied here). Thus, when we are
+    # selective about the functionalities we want to use, it is
+    # possible to have translation messages only for those
+    # functionalities we did donwload into the working copy and no
+    # others. There is no need to have translation messages for
+    # functionalities we didn't download.
+    local PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type='f' --pattern="/messages.po$")
 
     # Define absolute path to machine object directory.
     local MO_DIR="${L10N_WORKDIR}/LC_MESSAGES"
 
     # Define absolute path to machine object file.
-    local MO_FILE="${MO_DIR}/${CLI_NAME}.sh.mo"
+    local MO_FILE="${MO_DIR}/${TEXTDOMAIN}.mo"
 
+    # Print action message.
+    cli_printMessage "${PO_FILE}" --as-creating-line
+
+    # Combine all the function individual portable objects into just
+    # one portable object. Be sure to use just the first translation
+    # found, otherwise the automated flow will be broken for you to
+    # decide which one of two or more variants should remain in the
+    # portable object.
+    msgcat ${PO_FILES} --output-file=${PO_FILE} --use-first
+    
     # Print action message.
     cli_printMessage "${MO_FILE}" --as-creating-line
 
@@ -50,7 +71,7 @@ function locale_updateMessageBinary {
     if [[ ! -d ${MO_DIR} ]];then
         mkdir -p ${MO_DIR}
     fi
-    
+
     # Create machine object from portable object.
     msgfmt --check ${PO_FILE} --output-file=${MO_FILE}
 
