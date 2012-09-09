@@ -40,7 +40,7 @@ function locale_updateMessageXml {
     # `tcar-ug.docbook' file the `tcar-ug.xhtml' is saved in the same
     # location). Avoid using output files as if they were source
     # files, when retriving translatable strings.
-    local EXTENSION='(svg|docbook)'
+    local EXTENSION='(svg|svgz|docbook)'
 
     # Build list of files to process. When building the patter, be
     # sure the value passed through `--filter' be exactly evaluated
@@ -76,8 +76,8 @@ function locale_updateMessageXml {
         # one file, xml2po interprets only the first one and discards
         # the rest in the list. This way, when more than one file
         # exists in the list, it isn't convenient to provide xmllint's
-        # output to xml2po's input. Once here, we can say that
-        # in order to expand DocBook entities it is required that only
+        # output to xml2po's input. Once here, we can say that in
+        # order to expand DocBook entities it is required that only
         # one file must be provided at localization time (e.g., using
         # the `--filter' option). Otherwise translation messages are
         # retrived from all files, but no entity expansion is realized
@@ -96,11 +96,48 @@ function locale_updateMessageXml {
 
     elif [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Identity/Models/.+$' ]];then
 
-        xml2po -a ${FILES} \
+        # Inside trunk/Identity/Models, design models can be
+        # compressed or uncompressed. Because of this we cannot
+        # process all the design models in one unique way. Instead, we
+        # need to treat them individually based on their file type.
+
+        # Initialize name of temporal files.
+        local TEMPFILE=''
+        local TEMPFILES=''
+
+        for FILE in $FILES;do
+
+            # Redefine temporal file based on file been processed.
+            TEMPFILE=$(cli_getTemporalFile $(basename ${FILE} ))
+
+            # Update the command used to read content of XML files.
+            if [[ $(file -b -i $FILE) =~ '^application/x-gzip$' ]];then
+        
+                # Create uncompressed copy of file.
+                /bin/zcat $FILE > $TEMPFILE
+
+            else
+                
+                # Create uncompressed copy of file.
+                /bin/cat $FILE > $TEMFILE
+
+            fi
+
+            # Concatenate temporal files into a list so we can process
+            # them later through xml2po.
+            TEMPFILES="${TEMPFILE} ${TEMPFILES}"
+
+        done
+
+        # Create the portable object template.
+        xml2po -a $TEMPFILES \
             | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
 
-    else
+        # Remove list of temporal files. They are no longer needed.
+        rm $TEMPFILES --force
 
+    else
+        
         cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
 
     fi
