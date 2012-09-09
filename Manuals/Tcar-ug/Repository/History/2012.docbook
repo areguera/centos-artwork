@@ -1,4 +1,5 @@
-<sect1>
+<sect1 id="repository-history-2012">
+
     <title>2012's</title>
 
     <para>
@@ -12,49 +13,143 @@
         contexts as well.
     </para>
 
+    <sect2 id="repository-history-2012-UpdateLocales">
+
+    <title>Make Localization Of <command>centos-art.sh</command>
+    Script Specific To Different Contexts</title>
+ 
+    <para>
+        The procedure used to locale messages inside the
+        <command>centos-art.sh</command> script had to be re-designed
+        in order to accept such pluggable behavior into the script. We
+        couldn't publish unique <filename>centos-art.sh.po</filename>
+        and <filename>centos-art.sh.mo</filename> files because they
+        may contain different information in different contexts. For
+        example, if you are using the <function>render</function> and
+        <function>help</function> functionalities you only need
+        translation messages for them and not those from other
+        functionalities that may exist in the central repository but
+        you didn't download nor use into your working copy.
+    </para>
+
+    <para>
+        One solution for this could be to have independent PO files
+        for each functionality of <command>centos-art.sh</command>
+        script which are combined to create the final PO and MO files
+        that <application>gettext</application> uses to retrive
+        translated strings when <command>centos-art.sh</command>
+        script is running. For this solution to be effective, you must
+        be selective about the functionalities and locales directories
+        you download into your working copy. For example, if you want
+        to use the render functionality and its locale messages only,
+        you must download the required directories and exclude others.
+    </para>
+
     <note>
     <para>
-        The ideas described here have not been implemented inside
-        <command>centos-art.sh</command> script, yet.
-    </para>
-    </note>
-    
-    <para>
-        As consequence of this autonomy we wanted to have among
-        functionalities, the procedure used to locale messages inside
-        the <command>centos-art.sh</command> script had to be modified
-        in order to accept such pluggable behavior into the script. We
-        cannot have a single <filename>centos-art.sh.po</filename>
-        file for all the functionalities because all functionalities
-        are not used in the same context. Instead, it is required that
-        each functionality has its own <filename
-        class="extension">messages.po</filename> file in order to
-        treat them individually. Otherwise, we would end up having
-        translations for functionalities that we don't need or use in
-        our current context.
+        In case you don't want to be selective and download the whole
+        repository, the creation of the
+        <filename>centos-art.sh.po</filename>,
+        <filename>centos-art.sh.pot</filename> and
+        <filename>centos-art.sh.mo</filename> files will occur
+        automatically the first time you run the
+        <function>prepare</function> functionality (which require the
+        <function>locale</function> functionality to be available), or
+        later, by running the following command: 
+        <screen>centos-art locale trunk/Scripts/Bash --update</screen>
     </para>
 
     <para>
-        As an example, consider a situation where you are working on
-        the corporate identity of &TCP; and you need to start a new
-        corporate identity project for another organization. You want
-        to keep the directory structure of &TCAR; and its automation
-        tool, the <command>centos-art.sh</command> script. Your new
-        project requires you to introduce new functionalities to
-        <command>centos-art.sh</command> that don't fit the needs of
+        For more information about the <function>prepare</function>
+        and <function>locale</function> functionalities, see <xref
+        linkend="scripts-bash-locale" /> and <xref
+        linkend="scripts-bash-prepare" /> respectively.
+    </para>
+
+    </note>
+
+    <para>
+        As shown in <xref linkend="repository-history-2012-2" />, both
+        <function>Commons</function> and <function>Locales</function>
+        functionalities will always be required directories. The
+        <function>Commons</function> directory contains the common
+        functionalities and the <function>Locales</function> directory
+        contains the standard procedures you need to run in order to
+        build the final <filename>centos-art.sh.mo</filename> file
+        used by <application>gettext</application> to retrive
+        translation strings when the <command>centos-art.sh</command>
+        script is running. Remember that
+        <filename>centos-art.sh.pot</filename>,
+        <filename>centos-art.sh.po</filename> files aren't under
+        version control and they are built by combining each
+        funtionality message.po file into a PO and later a MO file.
+    </para>
+
+    <example id="repository-history-2012-2">
+    <title>Directory structure of a rendering-only context</title>
+    <screenshot>
+    <screeninfo>Directory structure of a rendering-only context</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+/home/centos/Projects/artwork/trunk/
+|-- Locales/
+|   `-- Scripts/
+|       `-- Bash/
+|           `-- es_ES/
+|               |-- Functions/
+|               |   |-- Commons/
+|               |   |   |-- messages.po
+|               |   |   `-- messages.pot
+|               |   |-- Locales/
+|               |   |   |-- messages.po
+|               |   |   `-- messages.pot
+|               |   `-- Render/
+|               |       |-- messages.po
+|               |       `-- messages.pot
+|               |-- LC_MESSAGES/
+|               |   `-- centos-art.sh.mo
+|               |-- centos-art.sh.po
+|               `-- centos-art.sh.pot
+`-- Scripts/
+    `-- Bash/
+        |-- Functions/
+        |   |-- Commons/
+        |   |-- Locales/
+        |   `-- Render/
+        `-- centos-art.sh
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
+    <para>
+        A practical example of using the solution described above may
+        be found when you are working on the corporate identity of
+        &TCP; and then need to start a new corporate identity project
+        for another organization. You want to keep the directory
+        structure of &TCAR; and its automation tool, the
+        <command>centos-art.sh</command> script.  Your new project
+        requires you to introduce new functionalities to
+        <command>centos-art.sh</command> which don't fit the needs of
         &TCP; (e.g., you want to introduce a
         <function>report</function> functionality to mesure how much
-        connect time do you consume through your PPP internface.).
+        connect time do you consume through your PPP internface.) or
+        you just want to keep the directory structure of your new
+        project as simple as possible.
     </para>
 
     <para>
-        To solve this issue, you need to mix specific parts of
+        To go through this it is possible to mix specific parts of
         different central repositories into one single working copy.
         This is the working copy you'll use to manage your new
         project. In <xref linkend="repository-history-2012-1" />, we
-        see how the <function>render</function> functionality living
-        in &TCAR; has been integrated into the working copy of your
-        new project.
+        see how the <filename class="directory">Render</filename>,
+        <filename class="directory">Locales</filename> and <filename
+        class="directory">Commons</filename> directories which come
+        from the &TCAR; has been integrated into the working copy of
+        your new project.
     </para>
         
     <example id="repository-history-2012-1">
@@ -64,30 +159,36 @@
     <mediaobject>
     <textobject>
 <programlisting>
-/home/al/Projects/Myapp/
-`-- trunk/                  
-    |-- Locales/           
-    |   `-- Bash/         
-    |       |-- Functions/
-    |       |   |-- Render/  &lt;--| from https://projects.centos.org/svn/artwork/
-    |       |   |   `-- es_ES/
-    |       |   |       |-- messages.po
-    |       |   |       `-- messages.pot
-    |       |   `-- Report/
-    |       |       `-- es_ES/
-    |       |           |-- messages.po
-    |       |           `-- messages.pot
-    |       `-- es_ES/
-    |           |-- LC_MESSAGES/
-    |           |   `-- myapp.sh.mo
-    |           |-- myapp.sh.po
-    |           `-- myapp.sh.pot
-    `-- Scripts/            
-        `-- Bash/
-            |-- Functions/
-            |   |-- Render/  &lt;--| from https://projects.centos.org/svn/artwork/
-            |   `-- Report/
-            `-- myapp.sh
+/home/al/Projects/Myapp/trunk/
+|-- Locales/           
+|   `-- Scripts/
+|       `-- Bash/         
+|           `-- es_ES/
+|               |-- Functions/
+|               |   |-- Commons/ &lt;--| from https://projects.centos.org/svn/artwork/
+|               |   |   |-- messages.po
+|               |   |   `-- messages.pot
+|               |   |-- Locales/ &lt;--| from https://projects.centos.org/svn/artwork/
+|               |   |   |-- messages.po
+|               |   |   `-- messages.pot
+|               |   |-- Render/  &lt;--| from https://projects.centos.org/svn/artwork/
+|               |   |   |-- messages.po
+|               |   |   `-- messages.pot
+|               |   `-- Report/
+|               |       |-- messages.po
+|               |       `-- messages.pot
+|               |-- LC_MESSAGES/
+|               |   `-- myapp.sh.mo
+|               |-- myapp.sh.po
+|               `-- myapp.sh.pot
+`-- Scripts/
+    `-- Bash/
+        |-- Functions/
+        |   |-- Commons/ &lt;--| from https://projects.centos.org/svn/artwork/
+        |   |-- Locales/ &lt;--| from https://projects.centos.org/svn/artwork/
+        |   |-- Render/  &lt;--| from https://projects.centos.org/svn/artwork/
+        |   `-- Report/
+        `-- myapp.sh
 </programlisting>
     </textobject>
     </mediaobject>
@@ -95,36 +196,39 @@
     </example>
 
     <para>
-        At this point your working copy contains files from two
+        At this point, your working copy contains files from two
         different central repositories. One repository provides the
         files of your new organization project and the other one
         provides the files related to the <function>render</function>
         functionality from &TCAR;.  In this environment, all updates
-        commited to the <function>render</function> functionality at
-        &TCAR; will be available to you too, the next time you update
-        your working copy. Likewise, if you change something in the
-        <function>render</function> functionality and commit your
-        changes, your changes will be available to poeple working in
-        &TCAR; the next time they update their working copies.
+        commited to the <filename class="directory">Render</filename>,
+        <filename class="directory">Locales</filename> and <filename
+        class="directory">Commons</filename> directories at &TCAR;
+        will be available to you too, the next time you update your
+        working copy. Likewise, if you change something in any of
+        these directories and commit your changes, your changes will
+        be available to poeple working in &TCAR; the next time they
+        update their working copies.
     </para>
 
     <para>
-        Understanding the need of mixing different repositories into a
-        single working copy is an important setp for reusing the
-        functionalities that come with centos-art.sh script, but it is
-        not enough if you want to customize the information produced
-        by it.  By default, the centos-art.sh script uses information
-        related to &TCP;. You probably need to change this if you are
-        producing images to a different organization than &TCP;. For
-        example, some of the information you might need to change
-        would be the copyright holder, brands, domain names, mailing
-        lists, and so forth.  To change this information you need to
-        duplicate the file <filename>centos-art.sh</filename> and
-        rename it to something else. Later, you need to edit the
-        renamed version and change variables inside according your
-        needs. In <xref linkend="repository-history-2012-1" />, we
-        used the name <filename>myapp.sh</filename> instead of
-        <filename>centos-art.sh</filename> so the information we set
+        Understanding the need of mixing different central
+        repositories into a single working copy is an important step
+        for reusing the functionalities that come with centos-art.sh
+        script, but it is not enough if you want to customize the
+        information produced by it.  By default, the centos-art.sh
+        script uses information related to &TCP;. You probably need to
+        change this if you are producing images to a different
+        organization than &TCP;. For example, some of the information
+        you might need to change would be the copyright holder,
+        brands, domain names, mailing lists, and so forth.  To change
+        this information you need to duplicate the file
+        <filename>centos-art.sh</filename> and rename it to something
+        else. Later, you need to edit the renamed version and change
+        variables inside according your needs. In <xref
+        linkend="repository-history-2012-1" />, we used the name
+        <command>myapp.sh</command> instead of
+        <command>centos-art.sh</command> so the information we set
         inside it could reflect the specific needs that motivated the
         creation of a new project without affecting those from &TCP;.
     </para>
@@ -140,23 +244,13 @@
         absolute path you use to store your working copy.
     </para>
 
-    <caution>
-        <para>
-            Setting the absolute path of your working copy to
-            something different than
-            <filename>/home/centos/Projects/artwork</filename> will
-            provoke that some components inside &TCAR; be processed
-            correctly while others don't.
-        </para>
+    </sect2>
 
-        <para>
-            For example, SVG design models will be processed correctly
-            but CSS files won't.  This is because before processing
-            SVG files we expand translation markers inside them create
-            a temporal file and then process the temporal file instead
-            of the original SVG file. In the case of CSS files doing
-            the same isn't appropriate.
-        </para>
-    </caution>
+    <sect2 id="repository-history-2012-UnifyCommonFunctionalities">
+    <title>Unify Common Functionalities Into One Single File</title>
+    <para>
+        ...
+    </para>
+    </sect2>
 
 </sect1>
