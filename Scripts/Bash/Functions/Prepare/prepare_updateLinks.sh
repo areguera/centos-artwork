@@ -116,6 +116,29 @@ function prepare_updateLinks {
         USERFILES="${USERFILES} ${HOME}/.vimrc"
     fi
 
+    # Define link relation for the `reset.css' file. The `reset.css'
+    # file is resets the web browser default style and use ours
+    # instead. The reset.css file is common for all web environments
+    # so there is no need to have duplicated files inside the working
+    # copy.  Instead, create a symbolic link to it from different
+    # places using absolute paths and the default style guide as
+    # reference.
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook-style-xsl/1.69.1/reset.css
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Style-guide/0.0.1/css/reset.css
+
+    # Define link relation for `images' directory used inside the
+    # default web environment style guide. The `images' directory
+    # contains common images used by all web environments. By default
+    # no image is under version control so we point out the output
+    # directory where this images produced, once rendered.
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Style-guide/0.0.1/images
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Images/Webenv
+
+    # Define link for `centos-logo.png', the branding information that
+    # should be used in all web applications on the left-top corner.
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Images/Webenv/logo-centos.png
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Images/Brands/Logos/White/78/centos.png
+
     # Define which files inside the user's configuration directories
     # need to be removed in order for centos-art.sh script to make a
     # fresh installation of common patterns, common palettes and
@@ -130,8 +153,9 @@ function prepare_updateLinks {
         cli_getFilesList ${INKS_DIR_PALETTES} --pattern='.+\.gpl';)
 
     # Remove user-specific configuration files from user's home
-    # directory. Otherwise, we might end up having links insid user's
-    # home directory that don't exist inside the working copy.
+    # directory before creating symbolic links from the working copy.
+    # Otherwise, we might end up having links inside the user's home
+    # directory that don't exist inside the working copy.
     if [[ "$USERFILES" != '' ]];then
         rm -r $USERFILES
     fi
@@ -144,6 +168,13 @@ function prepare_updateLinks {
         # Create symbolic link's parent directory if it doesn't exist.
         if [[ ! -d $(dirname ${LINKS_SRC[$COUNT]}) ]];then
             mkdir -p $(dirname ${LINKS_SRC[$COUNT]})
+        fi
+
+        # Remove symbolic link before creating it to preven recursive
+        # creation once the first symbolic link be created and it be a
+        # directory.
+        if [[ -a ${LINKS_SRC[$COUNT]} ]];then
+            rm ${LINKS_SRC[$COUNT]}
         fi
 
         # Create symbolic link.
