@@ -60,6 +60,20 @@ function docbook_convertToXhtmlChunk {
     # Transform DocBook XML to XHTML supressing all stderr output.
     xsltproc --output ${DST} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
 
+    # Create `css' and `images' directories. In order to save disk
+    # space, these directories are linked (symbolically) to their
+    # respective locations inside the working copy. 
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook-style-xsl/1.69.1/ ${DST}/css
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv ${DST}/images
+
+    # Create `images-manuals' directory. This directory points to the
+    # directory structure inside the working copy where we store image
+    # files that will be used inside documentation manuals. Don't
+    # confuse web images like those defined in `images' directories
+    # with images stored in `images-manuals'. They are conceptually
+    # different information and must be kept independent one another.
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Manuals ${DST}/images-manuals
+
     # Remove XSL instance files.
     rm ${STYLE_INSTANCE[*]}
 
