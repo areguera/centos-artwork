@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# prepare.sh -- This function creates the base execution environment
-# required to standardize final configuration stuff needed by your
-# workstation, once the working copy of The CentOS Artwork Repository
-# has been downloaded in it.
+# prepare.sh (initialization) -- This function creates the base
+# execution environment required to standardize final configuration
+# stuff needed by your workstation, once the working copy of The
+# CentOS Artwork Repository has been downloaded in it.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -42,7 +42,9 @@ function prepare {
 
         # When action names are not provided, define action names that
         # will take place, explicitly.
+        prepare_updateEnvironment
         prepare_updatePackages
+        prepare_updateLocales
         prepare_updateLinks
         prepare_updateImages
         prepare_updateManuals
