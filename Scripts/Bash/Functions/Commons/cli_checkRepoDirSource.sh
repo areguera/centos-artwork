@@ -52,7 +52,7 @@ function cli_checkRepoDirSource {
     # trunk/..., the /home/centos/artwork/ part is automatically added
     # here. 
     if [[ $LOCATION =~ '^(trunk|branches|tags)' ]];then
-        LOCATION=${CLI_WRKCOPY}/$LOCATION 
+        LOCATION=${TCAR_WORKDIR}/$LOCATION 
     fi
 
     # Re-define source value to build repository absolute path from
@@ -68,7 +68,7 @@ function cli_checkRepoDirSource {
         pushd "$LOCATION" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ "^${CLI_WRKCOPY}" ]];then
+        if [[ $(pwd) =~ "^${TCAR_WORKDIR}" ]];then
             # Re-define source value using absolute path.
             LOCATION=$(pwd)
         else
@@ -84,7 +84,7 @@ function cli_checkRepoDirSource {
         pushd "$(dirname "$LOCATION")" > /dev/null
 
         # Check directory existence inside the repository.
-        if [[ $(pwd) =~ "^${CLI_WRKCOPY}" ]];then
+        if [[ $(pwd) =~ "^${TCAR_WORKDIR}" ]];then
             # Re-define source value using absolute path.
             LOCATION=$(pwd)/$(basename "$LOCATION")
         else
