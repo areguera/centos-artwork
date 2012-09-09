@@ -41,7 +41,7 @@ function prepare_updateManuals {
     # used by documentation manuals.
     for DIR in $(echo "Identity/Images/Manuals
                        Identity/Models/Manuals
-                       Identity/Webenv/Css
+                       Identity/Webenv/Themes
                        Identity/Models/Webenv
                        Identity/Images/Webenv");do
         MANUALS_ABSPATH=$(cli_getRepoTLDir)/${DIR}
@@ -64,10 +64,8 @@ function prepare_updateManuals {
         fi
     done
 
-    # Render dependent files and key documentation manuals.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Identity/Images/Manuals --dont-commit-changes
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Identity/Images/Webenv --dont-commit-changes
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Manuals/Tcar-ug --filter="tcar-ug" --dont-commit-changes
+    # Render key documentation manuals.
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Manuals/Tcar-ug --dont-commit-changes --filter=tcar-ug
     ${CLI_BASEDIR}/${CLI_NAME}.sh help   trunk/Manuals/Tcar-fs --update --dont-commit-changes
 
 }
