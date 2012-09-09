@@ -134,7 +134,7 @@ function cli_checkFiles {
 
             -w|--working-copy )
                 for FILE in $(echo $FILES);do
-                    if [[ ! $FILE =~ "^${CLI_WRKCOPY}/.+$" ]];then
+                    if [[ ! $FILE =~ "^${TCAR_WORKDIR}/.+$" ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`" --as-error-line
                     fi
                 done
