@@ -25,6 +25,8 @@
 
 function locale_prepareWorkingDirectory {
 
+    local L10N_WORKDIR=$1
+
     if [[ ! -d ${L10N_WORKDIR} ]];then
 
         # Create localization working directory making parent
@@ -39,6 +41,10 @@ function locale_prepareWorkingDirectory {
         # committed up to repository.
         cli_commitRepoChanges "${L10N_BASEDIR}"
 
+    elif [[ $L10N_WORKDIR == '' ]];then
+    
+        cli_printMessage "`gettext "The variable L10N_WORKDIR cannot be empty."`" --as-error-line
+        
     fi
 
 }
