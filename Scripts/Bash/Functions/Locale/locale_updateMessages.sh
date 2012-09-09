@@ -32,7 +32,7 @@ function locale_updateMessages {
     local ACTIONNAM=''
 
     # Prepare working directory to receive translation files.
-    locale_prepareWorkingDirectory
+    locale_prepareWorkingDirectory ${L10N_WORKDIR}
 
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
