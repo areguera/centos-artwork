@@ -168,9 +168,9 @@ function cli_printMessage {
             cli_printMessage "`gettext "To know more, run the following command"`:"
             cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE"
             cli_printMessage '-' --as-separator-line
-            exit # <-- ATTENTION: Do not remove this line. We use this
-                 #                option as convenction to end script
-                 #                execution.
+            exit 1 # <-- ATTENTION: Do not remove this line. We use this
+                   #                option as convenction to end script
+                   #                execution.
             ;;
     
         --as-yesornorequest-line )
