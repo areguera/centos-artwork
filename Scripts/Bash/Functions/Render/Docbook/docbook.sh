@@ -30,9 +30,9 @@ function docbook {
     DOCBOOK_XSL_DIR="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
 
     # Convert DocBook source files to other formats.
-    #docbook_convertToXhtmlChunk
-    #docbook_convertToXhtml
-    #docbook_convertToText
+    docbook_convertToXhtmlChunk
+    docbook_convertToXhtml
+    docbook_convertToText
     docbook_convertToPdfFromXml
 
     # NOTE: From version 5.0 on, DocBook specification is no longer a
