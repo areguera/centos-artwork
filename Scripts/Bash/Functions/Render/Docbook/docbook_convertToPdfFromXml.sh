@@ -95,7 +95,7 @@ function docbook_convertToPdfFromXml {
     ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
 
     # Create formatting object supressing output from stderr.
-    xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} # 2> /dev/null
+    xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} 2> /dev/null
 
     # Create PDF format from formatting object. Because we are using
     # relative path to access `Images', it is necessary to move the
