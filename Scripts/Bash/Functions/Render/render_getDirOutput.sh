@@ -43,7 +43,7 @@ function render_getDirOutput {
     # Redefine base output directory to introduce specific information
     # like release number and architecture. This information is
     # require by directories (e.g., the `Media' directory inside
-    # themes and the `trunk/Manuals/Distro' directory ) whose need
+    # themes and the `trunk/Documentation/Manuals/Distro' directory ) whose need
     # this information to be passed explicitly at the command-line
     # through the `--releasever' and `--basearch' options.  Other
     # directories take such information from the path they are stored
@@ -53,7 +53,7 @@ function render_getDirOutput {
     # output path correctly at rendition time.
     if [[ $OUTPUT =~ "^${MOTIF_DIR}/Media$" ]];then
         OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
-    elif [[ $OUTPUT =~ 'trunk/Manuals/Distro$' ]];then
+    elif [[ $OUTPUT =~ 'trunk/Documentation/Manuals/Distro$' ]];then
         OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}
     else
         OUTPUT=${OUTPUT}
