@@ -6,7 +6,9 @@ $Id$
     <xsl:import href="/usr/share/sgml/docbook/xsl-stylesheets/xhtml/docbook.xsl" />
 
     <!--
-    Add your customization below this comment.
+    Add your customization below this comment. For more information
+    about how to customize this section, read installed documentation
+    at: /usr/share/doc/docbook-style-xsl-1.69.1/doc/html/index.html
     -->
 
     <xsl:import href="=STYLE_XHTML_COMMON=" />
