@@ -32,7 +32,7 @@ function prepare_updateManuals {
     # Define base directory used by documentation manuals. This is the
     # top level directory where all documentation manuals are stored
     # in the repository.
-    local MANUALS=Manuals
+    local MANUALS=Documentation/Manuals
 
     # Define key documentation manuals.
     local MANUALS_NAMES="Tcar-ug Tcar-fs"
@@ -65,7 +65,7 @@ function prepare_updateManuals {
     done
 
     # Render key documentation manuals.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Manuals/Tcar-ug --dont-commit-changes --filter=tcar-ug
-    ${CLI_BASEDIR}/${CLI_NAME}.sh help   trunk/Manuals/Tcar-fs --update --dont-commit-changes
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Documentation/Manuals/Tcar-ug --dont-commit-changes --filter=tcar-ug
+    ${CLI_BASEDIR}/${CLI_NAME}.sh help   trunk/Documentation/Manuals/Tcar-fs --update --dont-commit-changes
 
 }
