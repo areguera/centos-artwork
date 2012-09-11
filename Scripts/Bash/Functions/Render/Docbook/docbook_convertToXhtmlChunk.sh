@@ -55,7 +55,7 @@ function docbook_convertToXhtmlChunk {
 
     # Prepare XSL final instances used in transformations.
     docbook_prepareStyles $(cli_getFilesList \
-        ${DOCBOOK_STYLES_DIR} --pattern='.*docbook2xhtml-(chunks|common)\.xsl')
+        ${DOCBOOK_XSL_DIR} --pattern='.*docbook2xhtml-(chunks|common)\.xsl')
 
     # Transform DocBook XML to XHTML supressing all stderr output.
     xsltproc --output ${DST} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
@@ -63,16 +63,8 @@ function docbook_convertToXhtmlChunk {
     # Create `css' and `images' directories. In order to save disk
     # space, these directories are linked (symbolically) to their
     # respective locations inside the working copy. 
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook-style-xsl/1.69.1/ ${DST}/css
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv ${DST}/images
-
-    # Create `images-manuals' directory. This directory points to the
-    # directory structure inside the working copy where we store image
-    # files that will be used inside documentation manuals. Don't
-    # confuse web images like those defined in `images' directories
-    # with images stored in `images-manuals'. They are conceptually
-    # different information and must be kept independent one another.
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Manuals ${DST}/images-manuals
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css ${DST}/Css
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv ${DST}/Images
 
     # Remove XSL instance files.
     rm ${STYLE_INSTANCE[*]}
