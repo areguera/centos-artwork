@@ -26,6 +26,9 @@
 
 function docbook_doPostActions {
 
-    docbook_convertToText
+    # Presently, there is no post-rendition action for DocBook base
+    # rendition but the function should exist for consistency with
+    # other formats.
+    return
 
 }
