@@ -27,18 +27,18 @@ function docbook {
 
     # Initialize absolute path to Xsl directory. This is the location
     # where customization of XSL tranformations are stored in.
-    DOCBOOK_STYLES_DIR="${RENDER_FORMAT_DIR}/Docbook/Styles"
+    DOCBOOK_XSL_DIR="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
 
-    docbook_convertToXhtmlChunk
-    docbook_convertToXhtml
+    # Convert DocBook source files to other formats.
+    #docbook_convertToXhtmlChunk
+    #docbook_convertToXhtml
+    #docbook_convertToText
+    docbook_convertToPdfFromXml
 
-    # WARNING: There are some issues related to DocBook-to-PDF
-    # transformations that make the whole process not so "clean" as
-    # DocBook-to-XHTML transformation is. Based on this situation and
-    # the need of providing a clean output, PDF transformation is
-    # commented until these issues be corrected. If you have a release
-    # of CentOS greater than 5.5, uncomment this to see what happen.
-    #docbook_convertToPdf
+    # NOTE: From version 5.0 on, DocBook specification is no longer a
+    # SGML specification but an XML specification only. Thus,
+    # transformations related to DocBook SGML specification won't be
+    # supported in `centos-art.sh' script.
 
     # Perform format post-rendition.
     docbook_doPostActions
