@@ -63,19 +63,11 @@
 function docbook_convertToPdfFromXml {
 
     # Print action message.
-    if [[ -f ${FILE}.sgml.pdf ]];then
-        cli_printMessage "${FILE}.xml.pdf" --as-updating-line
-    else
-        cli_printMessage "${FILE}.xml.pdf" --as-creating-line
-    fi
+    cli_printMessage "${FILE}.pdf" --as-creating-line
 
     local -a STYLE_TEMPLATE
     local -a STYLE_INSTANCE
     local STYLE_INSTANCE_FINAL=''
-
-    # Define name of temporal directory where the DocBook to PDF
-    # transformation will take place.
-    local TMPDIR=$(cli_getTemporalFile "docbook2pdf")
 
     # Define absolute path to DocBook source file. This is the
     # repository documentation manual file where DOCTYPE and ENTITY
@@ -85,54 +77,37 @@ function docbook_convertToPdfFromXml {
     # Define absolute path to PDF target file. This is the final
     # location the PDF file produced as result of DocBook to PDF
     # transformation will be stored in.
-    local DST="${FILE}.xml.pdf"
+    local DST="${FILE}.pdf"
 
     # Define file name of formatting object (.fo) file. This file is
     # an intermediate file needed to produced the PDF.
-    local FO=$(basename ${FILE}).fo
+    local FO=$(echo ${INSTANCE} | sed -r 's/docbook$/fo/g')
 
     # Define file name of PDF file.  This is the file we were looking
     # for and the one moved, once produced.
-    local PDF=$(basename ${FILE}).pdf
+    local PDF=$(echo ${INSTANCE} | sed -r 's/docbook$/pdf/g')
 
     # Prepare XSL final instances used in transformations.
-    docbook_prepareStyles "${DOCBOOK_STYLES_DIR}/docbook2fo.xsl"
+    docbook_prepareStyles "${DOCBOOK_XSL_DIR}/docbook2fo.xsl"
 
-    # Verify temporal directory and create it if doesn't exist.
-    if [[ ! -d $TMPDIR ]];then
-        mkdir $TMPDIR
-    fi
-
-    # Move inside temporal directory.
-    pushd $TMPDIR > /dev/null
+    # Create link to `Images' directory. This is the directory where
+    # images used by documentation are stored in.
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
 
     # Create formatting object supressing output from stderr.
-    xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
+    xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} # 2> /dev/null
 
-    # Create PDF format from formatting object. The `pdfxmltex'
-    # command (which uses the `PassiveTex' engine) must be executed
-    # twice in order for the document's cross references to be built
-    # correctly.
+    # Create PDF format from formatting object. Because we are using
+    # relative path to access `Images', it is necessary to move the
+    # directory stack into the temporal directory where instance files
+    # are created. Otherwise, the location used to load images will
+    # fail.
     if [[ $? -eq 0 ]];then
-        pdfxmltex ${FO} > /dev/null
-        pdfxmltex ${FO} > /dev/null
-    else 
-        cli_printMessage "`gettext "Cannot produce the formatting object."`" --as-error-line
-    fi
-
-    # Verify `pdfxmltex' exit status and, if everything is ok, move
-    # PDF file from temporal directory to its target location.
-    if [[ $? -eq 0 ]];then
-        mv $PDF $DST
+        pushd $(dirname ${INSTANCE}) > /dev/null
+        xmlto -o $(dirname ${FILE}) pdf ${FO}
+        popd > /dev/null
     else 
         cli_printMessage "`gettext "Cannot produce the PDF file."`" --as-error-line
     fi
-
-    # Return to where we initially were.
-    popd > /dev/null
-
-    # Remove temporal directory and temporal style instances created.
-    rm -r $TMPDIR
-    rm ${STYLE_INSTANCE[*]}
 
 }
