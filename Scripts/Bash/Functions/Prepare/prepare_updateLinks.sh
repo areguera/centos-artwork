@@ -123,16 +123,21 @@ function prepare_updateLinks {
     # copy.  Instead, create a symbolic link to it from different
     # places using absolute paths and the default style guide as
     # reference.
-    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook-style-xsl/1.69.1/reset.css
-    LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Style-guide/0.0.1/css/reset.css
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css/reset.css
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Style-guide/0.0.1/Css/reset.css
 
     # Define link relation for `images' directory used inside the
     # default web environment style guide. The `images' directory
     # contains common images used by all web environments. By default
     # no image is under version control so we point out the output
     # directory where this images produced, once rendered.
-    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Style-guide/0.0.1/images
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Style-guide/0.0.1/Images
     LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Images/Webenv
+
+    # Define link relation for `Manuals' images. These images exists
+    # to help people describe ideas inside documentation.
+    LINKS_SRC[((++${#LINKS_SRC[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Images/Webenv/Manuals
+    LINKS_DST[((++${#LINKS_DST[*]}))]=${TCAR_WORKDIR}/trunk/Identity/Images/Manuals
 
     # Define link for `centos-logo.png', the branding information that
     # should be used in all web applications on the left-top corner.
