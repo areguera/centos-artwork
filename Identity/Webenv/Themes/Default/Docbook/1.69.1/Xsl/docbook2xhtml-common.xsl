@@ -6,7 +6,9 @@ $Id$
     <xsl:param name="html.stylesheet">Css/stylesheet.css</xsl:param>
 
     <!--
-    Add your customization below this comment.
+    Add your customization below this comment. For more information
+    about how to customize this section, read installed documentation
+    at: /usr/share/doc/docbook-style-xsl-1.69.1/doc/html/index.html
     -->
 
     <xsl:param name="section.autolabel" select="1"></xsl:param>
