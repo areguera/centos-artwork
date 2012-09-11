@@ -38,7 +38,7 @@ function locale_updateMessages {
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manuals|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Documentation|Identity/Models)/.*$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to XML-based files (e.g., scalable vector

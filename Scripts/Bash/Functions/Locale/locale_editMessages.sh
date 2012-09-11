@@ -33,7 +33,7 @@ function locale_editMessages {
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Manuals|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Documentation|Identity/Models)/.*$" ]];then
 
         # Define list of PO files for XML-based files.
         PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="/${FLAG_FILTER}/messages\.po$")

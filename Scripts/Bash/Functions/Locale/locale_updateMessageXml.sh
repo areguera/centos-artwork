@@ -69,7 +69,7 @@ function locale_updateMessageXml {
     # validate docbook files; Docbook files have a DOCTYPE definition
     # while svg files don't. Without a DOCTYPE definition, it isn't
     # possible for `xmllint' to validate the document. 
-    if [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Manuals/.+$' ]];then
+    if [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Documentation/Manuals/.+$' ]];then
 
         # Another issue to consider is the amount of source files that
         # are being processed through xml2po. When there are more than

@@ -46,14 +46,14 @@ function locale {
     # where all translation messages are organized in. Translation
     # messages are organized herein using the same layout of the
     # components they represent under the `trunk/Identity',
-    # `trunk/Manuals' or `trunk/Scripts' directory structures.  The
-    # localization base directory must be used as source location for
-    # subversion operations (e.g., status, update, commit, etc.).
-    # Otherwise, it would be difficult to add directory structures
-    # that have several levels down from the localization base
-    # directory up to the repository (e.g., it is not possible in
-    # subversion to add a directory which parent directory hasn't been
-    # added to the repository previously.).
+    # `trunk/Documentation/Manuals' or `trunk/Scripts' directory
+    # structures.  The localization base directory must be used as
+    # source location for subversion operations (e.g., status, update,
+    # commit, etc.).  Otherwise, it would be difficult to add
+    # directory structures that have several levels down from the
+    # localization base directory up to the repository (e.g., it is
+    # not possible in subversion to add a directory which parent
+    # directory hasn't been added to the repository previously.).
     L10N_BASEDIR="$(cli_getRepoTLDir)/Locales"
 
     # Interpret arguments and options passed through command-line.
