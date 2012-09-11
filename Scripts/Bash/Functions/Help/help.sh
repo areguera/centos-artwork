@@ -41,18 +41,18 @@ function help {
     # current directory where the `centos-art.sh' script was called
     # from is used as manual's top-level directory.  Notice that this
     # relaxation is required because we need to create/maintain
-    # manuals both under `trunk/Manuals/' and `branches/Manuals/'
-    # directories.
+    # manuals both under `trunk/Documentation/Manuals/' and
+    # `branches/Documentation/Manuals/' directories.
     local MANUAL_TLDIR=${PWD}
 
     # Verify manual's top-level directory. To prevent messing the
     # things up, we need to restrict the possible locations
     # where documentation manuals can be created in the working copy.
     # When manual's top-level location is other but the ones
-    # permitted, use `trunk/Manuals' directory structure as default
-    # location to store documentation manuals.
-    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/(trunk/Manuals|branches/Manuals/[[:alnum:]-]+)$" ]];then
-        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Manuals"
+    # permitted, use `trunk/Documentation/Manuals' directory structure
+    # as default location to store documentation manuals.
+    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/(trunk/Documentation/Manuals|branches/Documentation/Manuals/[[:alnum:]-]+)$" ]];then
+        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Manuals"
     fi
 
     # Initialize documentation entries arrays. Arrays defined here
