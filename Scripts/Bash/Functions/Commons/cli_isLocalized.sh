@@ -51,7 +51,7 @@ function cli_isLocalized {
     # locale-specific directories will be created for.
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
         cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
-    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Manuals/[[:alnum:]-]+$"
+    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Documentation/Manuals/[[:alnum:]-]+$"
     DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Scripts/Bash$"
 
     # Verify location passed as first argument agains the list of
