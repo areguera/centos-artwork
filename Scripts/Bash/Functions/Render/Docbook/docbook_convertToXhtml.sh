@@ -51,7 +51,7 @@ function docbook_convertToXhtml {
 
     # Prepare XSL final instances used in transformations.
     docbook_prepareStyles $(cli_getFilesList \
-        ${DOCBOOK_STYLES_DIR} --pattern='.*docbook2xhtml-(single|common)\.xsl')
+        ${DOCBOOK_XSL_DIR} --pattern='.*docbook2xhtml-(single|common)\.xsl')
 
     # Transform DocBook XML to XHTML supressing all stderr output.
     xsltproc --output ${DST} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
