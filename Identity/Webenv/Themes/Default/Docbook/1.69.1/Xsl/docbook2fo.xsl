@@ -5,10 +5,11 @@ $Id$
 
     <xsl:import href="/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl"/>
 
-    <xsl:param name="body.font.master">10</xsl:param>
+    <!--
+    Add your customization below this comment.
+    -->
 
-    <xsl:param name="body.font.family" select="'sans-serif'"></xsl:param>
-
-    <xsl:param name="draft.mode" select="'yes'"></xsl:param>
+    <xsl:param name="img.src.path"></xsl:param>
+    <xsl:param name="section.autolabel" select="1"></xsl:param>
 
 </xsl:stylesheet>
