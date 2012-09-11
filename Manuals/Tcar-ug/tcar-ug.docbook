@@ -1,30 +1,32 @@
 <?xml version="1.0"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-               "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-               [
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
+    [
 
-<!ENTITY % Commons.ent          SYSTEM "Commons.ent">
-<!ENTITY % Preface.ent          SYSTEM "Preface.ent">
-<!ENTITY % Repository.ent       SYSTEM "Repository.ent">
-<!ENTITY % Identity.ent         SYSTEM "Identity.ent">
-<!ENTITY % Locales.ent          SYSTEM "Locales.ent">
-<!ENTITY % Manuals.ent          SYSTEM "Manuals.ent">
-<!ENTITY % Scripts.ent          SYSTEM "Scripts.ent">
-<!ENTITY % Licenses.ent         SYSTEM "Licenses.ent">
+    <!-- Common content -->
 
-%Commons.ent;
-%Preface.ent;
-%Repository.ent;
-%Identity.ent;
-%Locales.ent;
-%Manuals.ent;
-%Scripts.ent;
-%Licenses.ent;
-]>
+    <!ENTITY % Entities SYSTEM "../Common_content/Entities.ent">
+    %Entities;
+
+    <!-- Specific content -->
+
+    <!ENTITY % Identity     SYSTEM "Identity.ent">
+    %Identity;
+    <!ENTITY % Locales      SYSTEM "Locales.ent">
+    %Locales;
+    <!ENTITY % Manuals      SYSTEM "Manuals.ent">
+    %Manuals;
+    <!ENTITY % Repository   SYSTEM "Repository.ent">
+    %Repository;
+    <!ENTITY % Scripts      SYSTEM "Scripts.ent">
+    %Scripts;
+
+    ]>
 
 <book lang="en_US">
 
     <!-- Front matter -->
+
     <title>The CentOS Artwork Repository</title>
     <subtitle>User's Guide</subtitle>
 
@@ -54,7 +56,7 @@
               published by the Free Software Foundation; with no
               Invariant Sections, no Front-Cover Texts, and no
               Back-Cover Texts. A copy of the license is included in
-              <xref linkend="licenses-gfdl" />
+              <xref linkend="licenses-gfdl" />.
             </para>
         </legalnotice>
 
@@ -76,15 +78,15 @@
 
     </bookinfo>
 
-    <!-- Front matter -->
-    &preface;
-
     <!-- Main matter -->
+    &preface;
     &repo;
     &identity;
     &locales;
     &manuals;
     &scripts;
+
+    <!-- Back matter -->
     &licenses;
 
 </book>
