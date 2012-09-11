@@ -226,17 +226,20 @@
 
         <title>Modifications</title>
 
-        <para>You may copy and distribute a <xref
-        linkend="modified-version" /> of the Document under the
-        conditions of sections <xref linkend="licenses-gfdl-section-3"
-        /> and <xref linkend="licenses-gfdl-section-4" /> above,
-        provided that you release the <xref linkend="modified-version"
-        /> under precisely this License, with the <xref
-        linkend="modified-version" /> filling the role of the
-        Document, thus licensing distribution and modification of the
-        <xref linkend="modified-version" /> to whoever possesses a
-        copy of it.  In addition, you must do these things in the
-        <xref linkend="modified-version" />:
+        <para>
+            You may copy and distribute a <xref
+            linkend="modified-version" /> of the Document under the
+            conditions of sections <xref
+            linkend="licenses-gfdl-section-3" /> and <xref
+            linkend="licenses-gfdl-section-4" /> above, provided that
+            you release the <xref linkend="modified-version" /> under
+            precisely this License, with the <xref
+            linkend="modified-version" /> filling the role of the
+            Document, thus licensing distribution and modification of
+            the <xref linkend="modified-version" /> to whoever
+            possesses a copy of it.  In addition, you must do these
+            things in the <xref linkend="modified-version" />:
+        </para>
 
         <orderedlist numeration="upperalpha">
     
@@ -357,41 +360,52 @@
                 <para>Preserve any Warranty Disclaimers.</para>
             </listitem>
         </orderedlist>
+    
+        <para>
+            If the <xref linkend="modified-version" /> includes new
+            front-matter sections or appendices that qualify as <xref
+            linkend="secondary-section" /> and contain no material
+            copied from the Document, you may at your option designate
+            some or all of these sections as invariant.  To do this,
+            add their titles to the list of <xref
+            linkend="invariant-sections"/> in the <xref
+            linkend="modified-version" />'s license notice.  These
+            titles must be distinct from any other section
+            titles.
         </para>
     
-        <para>If the <xref linkend="modified-version" /> includes new
-        front-matter sections or appendices that qualify as <xref
-        linkend="secondary-section" /> and contain no material copied
-        from the Document, you may at your option designate some or
-        all of these sections as invariant.  To do this, add their
-        titles to the list of <xref linkend="invariant-sections"/> in the <xref
-        linkend="modified-version" />'s license notice.  These titles
-        must be distinct from any other section titles.</para>
+        <para>
+            You may add a section Entitled
+            <quote>Endorsements</quote>, provided it contains nothing
+            but endorsements of your <xref linkend="modified-version"
+            /> by various parties&ndash;for example, statements of
+            peer review or that the text has been approved by an
+            organization as the authoritative definition of a
+            standard.
+        </para>
     
-        <para>You may add a section Entitled
-        <quote>Endorsements</quote>, provided it contains nothing but
-        endorsements of your <xref linkend="modified-version" /> by various
-        parties&ndash;for example, statements of peer review or that
-        the text has been approved by an organization as the
-        authoritative definition of a standard.</para>
+        <para>
+            You may add a passage of up to five words as a Front-Cover
+            Text, and a passage of up to 25 words as a Back-Cover
+            Text, to the end of the list of <xref
+            linkend="cover-texts"/> in the <xref
+            linkend="modified-version" />.  Only one passage of
+            Front-Cover Text and one of Back-Cover Text may be added
+            by (or through arrangements made by) any one entity.  If
+            the Document already includes a cover text for the same
+            cover, previously added by you or by arrangement made by
+            the same entity you are acting on behalf of, you may not
+            add another; but you may replace the old one, on explicit
+            permission from the previous publisher that added the old
+            one.
+        </para>
     
-        <para>You may add a passage of up to five words as a
-        Front-Cover Text, and a passage of up to 25 words as a
-        Back-Cover Text, to the end of the list of <xref
-        linkend="cover-texts"/> in the <xref
-        linkend="modified-version" />.  Only one passage of
-        Front-Cover Text and one of Back-Cover Text may be added by
-        (or through arrangements made by) any one entity.  If the
-        Document already includes a cover text for the same cover,
-        previously added by you or by arrangement made by the same
-        entity you are acting on behalf of, you may not add another;
-        but you may replace the old one, on explicit permission from
-        the previous publisher that added the old one.</para>
-    
-        <para>The author(s) and publisher(s) of the Document do not by
-        this License give permission to use their names for publicity
-        for or to assert or imply endorsement of any <xref
-        linkend="modified-version" />.</para>
+        <para>
+            The author(s) and publisher(s) of the Document do not by
+            this License give permission to use their names for
+            publicity for or to assert or imply endorsement of any
+            <xref linkend="modified-version" />.
+        </para>
     
     </sect1>
 
@@ -555,7 +569,7 @@
         following copyright and license notices just after the title
         page:</para>
 
-<programlisting>
+<screen>
 Copyright (C)  YEAR  YOUR NAME.
 
 Permission is granted to copy, distribute and/or modify this
@@ -564,17 +578,17 @@ Version 1.2 or any later version published by the Free Software
 Foundation; with no Invariant Sections, no Front-Cover Texts, and
 no Back-Cover Texts.  A copy of the license is included in the
 section entitled <quote>GNU Free Documentation License</quote>.
-</programlisting>
+</screen>
 
         <para>If you have <xref linkend="invariant-sections" />,
         Front-Cover Texts and Back-Cover Texts, replace the
         <quote>with...Texts</quote>.  line with this:</para>
 
-<programlisting>
+<screen>
 with the Invariant Sections being LIST THEIR TITLES, with the
 Front-Cover Texts being LIST, and with the Back-Cover Texts being
 LIST.
-</programlisting>
+</screen>
 
         <para>If you have <xref linkend="invariant-sections" />
         without <xref linkend="cover-texts" />, or some other
