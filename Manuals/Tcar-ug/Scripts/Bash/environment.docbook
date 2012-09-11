@@ -1,6 +1,6 @@
 <sect1 id="scripts-bash-environment">
 
-    <title>Environment Variables</title>
+    <title>Execution Environment</title>
 
     <para>
         When you login in your computer you enter into a unique user
@@ -10,54 +10,56 @@
         see the bash(1) man page.</para></footnote> This way different
         users can benefit from their own environment variables to
         customize the execution of <command>centos-art.sh</command>
-        script in a safe way. For example, users can use the variables
-        of their environments to set different locations for their
-        working copies of &TCAR;.<footnote><para>See <xref
-        linkend="repo-ws-config-ChangeWorkingCopy" /></para></footnote>
+        script in a safe way.  For example, users can use the
+        variables of their environments to set different locations for
+        their working copies of &TCAR;.<footnote><para>See <xref
+        linkend="repo-ws-config-ChangeWorkingCopy"
+        /></para></footnote>
     </para>
 
     <para>
         When you execute the <command>centos-art.sh</command> script,
         you create a new environment inside the user environment which
-        we call the <command>centos-art.sh</command> script
-        environment. This environment inherits all variables from the
-        user environment and contains the variables and
-        functionalities defined by the
-        <command>centos-art.sh</command> script. If your only interest
-        is using the <command>centos-art.sh</command> script to
-        accomplish tasks inside the working copy, you don't need to
-        know the whole environment of <command>centos-art.sh</command>
-        script but the user environment only. However, if your
-        interest is improving the <command>centos-art.sh</command>
-        script somehow, to know the <command>centos-art.sh</command>
-        script environment is a fundamental knowledge you need to have
-        in order to understand where to put the code you want to
-        contribute inside the script.
+        we call the script environment. This environment inherits all
+        variables from the user environment and contains the variables
+        and functionalities defined by the script itself. If your only
+        interest is using the <command>centos-art.sh</command> script
+        to accomplish tasks inside the working copy, you don't need to
+        know the whole environment it uses, but the user environment
+        only. However, if your interest is improving it somehow, to
+        know the environment where it is run is a fundamental
+        knowledge you need to be armed with in order to understand
+        where to put the code you want to contribute inside the
+        script.
     </para>
 
     <example id="scripts-bash-environment-1">
-    <title>The <command>centos-art.sh</command> script environment</title>
+    <title>The script environment</title>
     <screenshot>
-    <screeninfo>The <command>centos-art.sh</command> script environment</screeninfo>
+    <screeninfo>The script environment</screeninfo>
     <mediaobject>
     <textobject>
 <programlisting>
----------------------------------------------------
+-------------------------------------------------------
 User environment
-----|-------------------|--------------------------
-.   |-- TCAR_WORKDIR    |-- EDITOR                .
-.   |-- LANG            |-- HOME                  .
-.   `-- centos-art.sh   `-- ...                   .
-.       ----|------------------------------------ .
-.       centos-art.sh environment                 .
-.       ----|-----------------|------------------ .
-.       .   |-- CLI_NAME      |-- render()      . .
-.       .   |-- CLI_BASEDIR   |   |-- svg()     . .
-.       .   |-- CLI_TEMPDIR   |   `-- docbook() . .
-.       .   |-- CLI_VERSION   |-- help()        . .
-.       .   `-- ...           `-- ...           . .
-.       ......................................... .
-...................................................
+----|-------------------|------------------------------
+.   |-- TCAR_WORKDIR    |-- EDITOR                    .
+.   |-- LANG            |-- HOME                      .
+.   `-- centos-art.sh   `-- ...                       .
+.       ----|---------------------------------------- .
+.       centos-art.sh script environment              .
+.       ----|-----------------|---------------------- .
+.       .   |-- CLI_NAME      `-- init()            . .
+.       .   |-- CLI_VERSION       |-- render()      . .
+.       .   |-- CLI_BASEDIR       |   |-- svg()     . .
+.       .   |-- CLI_FUNCDIR       |   `-- docbook() . .
+.       .   |-- CLI_TEMPDIR       |-- help()        . .
+.       .   `-- ...               |   |-- docbook() . .
+.       .                         |   `-- texinfo() . .
+.       .                         |-- locale()      . .
+.       .                         `-- ...           . .
+.       ............................................. .
+.......................................................
 </programlisting>
     </textobject>
     </mediaobject>
@@ -66,22 +68,17 @@ User environment
 
     <para>
         To study the environment of <command>centos-art.sh</command>
-        script consider the directory structure under <filename
-        class="directory">trunk/Scripts/Bash/</filename>. In this
-        structure each directory under <filename
-        class="directory">Functions</filename> creates a new function
-        environment inside the <command>centos-art.sh</command> script
-        environment. You can only execute one function by script
-        execution so it will only be one function environment inside
-        the <command>centos-art.sh</command> script environment every
-        time it is executed. In some cases, it is possible to find a
+        script, you need to consider the directory structure under
+        <filename class="directory">trunk/Scripts/Bash/</filename>. In
+        this structure each directory under <filename
+        class="directory">Functions/</filename> creates a new function
+        environment inside the script environment. You can only
+        execute one function environment at a time for each script
+        environment. In some cases, it is possible to find a
         sub-function environment which takes place inside the function
-        environment.  This is the case of the
+        environment.  Such is the case of the
         <function>render</function> functionality which produces both
-        images and docbook manuals. Likewise function environments to
-        <command>centos-art.sh</command> script environment, there can
-        only exist one sub-function environment inside the current
-        function environment.
+        images and DocBook manuals.
     </para>
     
     <note>
@@ -185,7 +182,7 @@ User environment
     </para>
 
     <para>
-        The <command>centos-art.sh</command> script uses the
+        The <command>centos-art.sh</command> script use the
         <envar>LANG</envar> environment variable to determine what
         language to use for printing output messages from the script
         itself, as well as the portable objects locations that need to
