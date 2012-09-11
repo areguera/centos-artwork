@@ -5,9 +5,8 @@
     <para>
         The <function>prepare</function> functionality is the
         interface the <command>centos-art.sh</command> script provides
-        to standardize the final configuration stuff your workstation
-        needs, once the working copy of &TCAR; has been downloaded
-        inside it already.
+        to standardize the content production tasks inside the working
+        copy.
     </para>
 
     <sect2 id="scripts-bash-prepare-syntax">
@@ -15,26 +14,27 @@
 
     <para>
         Assuming this is the very first time you run the
-        <command>centos-art.sh</command> script, you'll find that
-        it isn't found in your workstation.  This is correct because
-        you haven't created the symbolic link that make it available
-        in the execution path, yet. In order to make the
-        <command>centos-art.sh</command> script available in the
-        execution path of your workstation, you need to run it using
-        its absolute path first:
+        <command>centos-art</command> command, you'll find that there
+        isn't such a command in your workstation.  This is correct
+        because you haven't created the symbolic link that makes it
+        available in your execution path, yet. In order to make the
+        <command>centos-art</command> command available in the
+        execution path of your workstation, you need to run the
+        <command>centos-art.sh</command> script using its absolute
+        path first:
     </para>
 
     <screen>~/artwork/trunk/Scripts/Bash/centos-art.sh prepare [OPTIONS]</screen>
 
     <para>
-        Later, once the <command>centos-art.sh</command> script is
-        available in the execution path of your system, there is no
-        need for you to use the absolute path again.  From this time
-        on, you can use the <command>centos-art</command> command-line
-        interface directly, as the following example describes:
+        Later, once the <command>centos-art</command> command is
+        available in your execution path, there is no need for you to
+        use any absolute path again.  From this time on, you can use
+        the <command>centos-art</command> command-line interface
+        directly, as the following example describes:
     </para>
 
-    <screen>centos-art prepare [OPTIONS]</screen>
+    <screen>centos-env prepare [OPTIONS]</screen>
 
     </sect2>
 
@@ -42,8 +42,9 @@
     <title>Options</title>
 
     <para>
-        The <function>prepare</function> functionality accepts the
-        following options: 
+        When the <command>centos-art</command> command is executed
+        with the <function>prepare</function> functionality, it
+        accepts the following options:
     </para>
 
     <variablelist>
@@ -72,16 +73,15 @@
     <term><option>--packages</option></term>
     <listitem>
     <para>
-        This option verifies packeges required by
-        <command>centos-art.sh</command> script. installs or updates
-        required packages. When required packages aren't installed,
-        this option uses <command>sudo yum install</command> command
-        to perform the installation task. When required packages are
-        installed, this option uses <command>sudo yum update</command>
-        to update them, if there is any related actualization to be
-        applied on. In both cases, it is required that you configure
-        the <filename>/etc/sudoers</filename> configuration file
-        first, as discribed in <xref linkend="repo-ws-config-sudoers" />.
+        This option verifies packeges required by automation scripts
+        and installs or updates them as required. When required
+        packages aren't installed or need to be updated, the
+        <command>centos-art</command> uses the <command>sudo</command>
+        and <command>yum</command> to perform either installations or
+        actualizations tasks.  In both cases, it is required that you
+        configure the <filename>/etc/sudoers</filename> configuration
+        file first, as discribed in <xref
+        linkend="repo-ws-config-sudoers" />.
     </para>
 
     </listitem>
@@ -91,12 +91,12 @@
     <term><option>--locales</option></term>
     <listitem>
     <para>
-        This option creates or updates the machine object (MO) file
-        used by <application>gettext</application> to retrive
-        translated strings when <command>centos-art.sh</command>
-        script is running. This option is a call to the
-        <option>--update</option> option of
-        <function>locale</function> functionality, as described in
+        This option creates or updates the portable objects (PO) and
+        machine object (MO) used by <application>gettext</application>
+        to retrive translated strings related to
+        <command>centos-art.sh</command> script.  This option calls
+        the <function>locale</function> functionality of centos-art.sh
+        with the <option>--update</option> option, as described in
         <xref linkend="scripts-bash-locale" />.
     </para>
     </listitem>
@@ -109,7 +109,7 @@
         This option maintains the file relation between your working
         copy and configuration files inside your workstation through
         symbolic links. When you provide this option, the
-        <command>centos-art.sh</command> puts itself into your
+        <command>centos-art.sh</command> script puts itself into your
         system's execution path through its command line interface
         <command>centos-art</command> and makes common brushes,
         patterns, palettes and fonts inside the working copy,
@@ -133,10 +133,10 @@
     <para>
         This option initializes image files inside the working copy.
         When you provide this option, the
-        <command>centos-art.sh</command> scripts renders image files
-        from all design models available in the working copy. This
-        step is required in order to satisfy file dependencies among
-        different components inside the working copy.
+        <command>centos-art.sh</command> calls the
+        <function>render</function> functionality to create images
+        related to each design model available in your working copy,
+        as described in <xref linkend="scripts-bash-render" />.
     </para>
     </listitem>
     </varlistentry>
@@ -147,9 +147,10 @@
     <para>
        This option initializes documentation files inside the working
        copy. When you provide this option, the
-       <command>centos-art.sh</command> script renders all
-       documentation manuals from their related source files to
-       different output formats, so you can read them nicely.
+       <command>centos-art.sh</command> script calls both the
+       <function>render</function> and <function>help</function>
+       functionality to produce DocBook and Texinfo manuals,
+       respectively.
     </para>
     </listitem>
     </varlistentry>
@@ -159,7 +160,7 @@
     <listitem>
     <para>
        Print the name and value of some of the environment variables
-       used by <command>centos-art.sh</command> scripts as described
+       used by <command>centos-art.sh</command> script as described
        in <xref linkend="scripts-bash-environment" />.  
     </para>
     </listitem>
@@ -187,11 +188,11 @@
         uses the <option>--set-environment</option>,
         <option>--packages</option>, <option>--locales</option>
         <option>--links</option>, <option>--images</option> and
-        <option>--manuals</option> options as default behaviour.
-        Otherwise, if you provide any option, the
+        <option>--manuals</option> options, in that order, as default
+        behaviour.  Otherwise, if you provide any option, the
         <command>centos-art.sh</command> script avoids its default
         behaviour and executes the <function>prepare</function>
-        functionality as specified by the options you provides.
+        functionality as specified by the options you provided.
     </para>
 
     <para>
