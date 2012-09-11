@@ -3,9 +3,9 @@
 # docbook_prepareStyles.sh -- This function prepares styles' final
 # instances used in transformations based on XSL or DSL templates.
 # There are translation markers inside the XSL and DSL templates that
-# need to be expand before they be used for transformations. This
-# function creates temporal instances of XSL and DSL templates with
-# translation markers expanded inside so as for transformation
+# need to be expanded before they can be used for transformations.
+# This function creates temporal instances of XSL and DSL templates
+# with translation markers expanded inside so as for transformation
 # commands (e.g., `xmltproc' or `openjade' through `docbook2pdf') to
 # use as style defintion.
 #
