@@ -67,3 +67,6 @@ declare -xr MAILINGLIST_DEVEL="${BRAND}-devel@${DOMAINNAME}"
 if [[ -x ${CLI_FUNCDIR}/Commons/init.sh ]];then
     . ${CLI_FUNCDIR}/Commons/init.sh; export -f init ; init "$@"
 fi
+
+# End script execution correctly.
+exit 0
