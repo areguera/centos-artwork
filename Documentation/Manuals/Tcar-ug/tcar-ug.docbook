@@ -2,25 +2,11 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
     [
-
-    <!-- Common content -->
-
-    <!ENTITY % Entities SYSTEM "../Common_content/Entities.ent">
-    %Entities;
-
-    <!-- Specific content -->
-
-    <!ENTITY % Identity     SYSTEM "Identity.ent">
-    %Identity;
-    <!ENTITY % Locales      SYSTEM "Locales.ent">
-    %Locales;
-    <!ENTITY % Manuals      SYSTEM "Manuals.ent">
-    %Manuals;
-    <!ENTITY % Repository   SYSTEM "Repository.ent">
-    %Repository;
-    <!ENTITY % Scripts      SYSTEM "Scripts.ent">
-    %Scripts;
-
+    <!-- 
+        WARNING: Don't remove anything from `<?xml' to `]>' lines.
+        They are used as pattern to rebuild the public definition of
+        this document with both common and specific system entities.
+    --> 
     ]>
 
 <book lang="en_US">
@@ -78,15 +64,20 @@
 
     </bookinfo>
 
-    <!-- Main matter -->
-    &preface;
+    <!-- Main matter --> 
+
     &repo;
     &identity;
     &locales;
     &manuals;
     &scripts;
 
+    <!-- Licenses -->
+    <!-- 
+        WARNING: Licenses are included at execution time so don't
+        remove the comments this message is in between, nor the
+        message so you can remember it. 
+    -->
     <!-- Back matter -->
-    &licenses;
 
 </book>
