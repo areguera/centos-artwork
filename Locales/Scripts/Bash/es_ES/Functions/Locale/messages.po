@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-1.0\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-03 23:21-0400\n"
-"PO-Revision-Date: 2012-09-03 23:21-0400\n"
+"POT-Creation-Date: 2012-09-13 13:58-0400\n"
+"PO-Revision-Date: 2012-09-13 13:58-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,10 @@ msgstr "El idioma Inglés no puede ser traducido a sí mismo."
 msgid "The path provided does not support localization."
 msgstr "El camino suministrado no soporta la localización."
 
+#: trunk/Scripts/Bash/Functions/Locale/locale_combineLicenseMessages.sh:32
+msgid "One argument is required."
+msgstr "Un argumento es necesario."
+
 #: trunk/Scripts/Bash/Functions/Locale/locale_editMessages.sh:55
 msgid "The path provided hasn't translations yet."
 msgstr "El camino suministrado no tiene traducciones aún."
@@ -47,7 +51,6 @@ msgstr "El camino suministrado no tiene traducciones aún."
 msgid "The variable L10N_WORKDIR cannot be empty."
 msgstr "La variable L10N_WORKDIR no puede estar vacía."
 
-#: trunk/Scripts/Bash/Functions/Locale/locale_updateMessageXml.sh:141
 #: trunk/Scripts/Bash/Functions/Locale/locale_updateMessages.sh:56
 msgid "The path provided doesn't support localization."
 msgstr "El camino suministrado no soporta la localización."
@@ -423,9 +426,6 @@ msgstr "El camino suministrado no soporta la localización."
 
 #~ msgid "Russian"
 #~ msgstr "Ruso"
-
-#~ msgid "The bond string is required."
-#~ msgstr "La cadena de unión es necesaria."
 
 #~ msgid "The font provided doesn't exist."
 #~ msgstr "La fuente suministrada no existe."
