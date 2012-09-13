@@ -74,8 +74,7 @@ function tuneup_doBaseActions {
 
         # Export format-specific functionalities up to the
         # execution environment.
-        cli_exportFunctions "${TUNEUP_BASEDIR}/$(cli_getRepoName \
-            ${TUNEUP_FORMAT} -d)" "${TUNEUP_FORMAT}"
+        cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${TUNEUP_FORMAT} -d)/${TUNEUP_FORMAT}[[:alpha:]_]*"
 
         # Execute format-specific maintainance tasks.
         for FILE in $FILES;do
