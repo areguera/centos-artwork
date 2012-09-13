@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-1.0\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-03 23:15-0400\n"
-"PO-Revision-Date: 2012-09-03 23:15-0400\n"
+"POT-Creation-Date: 2012-09-13 14:04-0400\n"
+"PO-Revision-Date: 2012-09-13 14:04-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -30,18 +30,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromSgml.sh:106
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:128
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook.sh:53
+msgid "Validation failed."
+msgstr "La validación falló."
+
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:110
 msgid "Cannot produce the PDF file."
 msgstr "No se pudo producir el fichero PDF."
-
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:120
-msgid "Cannot produce the formatting object."
-msgstr "No se pudo producir el objecto de formateado (FO)."
 
 #: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
 msgid "No way to convert from XHTML to plain-text found."
 msgstr "No se encontró una forma para convertir de XHTML a texto."
+
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:56
+msgid "Licenses"
+msgstr "Licencias"
 
 #: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:50
 msgid "Area"
@@ -96,18 +99,14 @@ msgstr "Creado en Repositorio Artístico de CentOS"
 msgid "The path provided doesn't support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
+#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:60
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:150
+#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:159
 msgid "The template file doesn't exist."
 msgstr "El fichero plantilla no existe."
-
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:172
-msgid "Validation failed."
-msgstr "Validación fallida."
 
 #: trunk/Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
 msgid "There is no action string to work with."
@@ -124,6 +123,9 @@ msgstr "La arquitectura suministrada no está soportada."
 #: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:92
 msgid "The release version provided is not supported."
 msgstr "La versión de la entrega suministrada no está soportada."
+
+#~ msgid "Cannot produce the formatting object."
+#~ msgstr "No se pudo producir el objecto de formateado (FO)."
 
 #~ msgid "The parameters you provided are not supported."
 #~ msgstr "Los parámetros que usted suministró no están soportados."

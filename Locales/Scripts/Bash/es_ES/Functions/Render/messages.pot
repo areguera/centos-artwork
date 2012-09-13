@@ -8,25 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-1.0\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-03 23:15-0400\n"
-"PO-Revision-Date: 2012-09-03 23:15-0400\n"
+"POT-Creation-Date: 2012-09-13 14:04-0400\n"
+"PO-Revision-Date: 2012-09-13 14:04-0400\n"
 "Last-Translator: Documentation SIG\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromSgml.sh:106
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:128
-msgid "Cannot produce the PDF file."
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook.sh:53
+msgid "Validation failed."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:120
-msgid "Cannot produce the formatting object."
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:110
+msgid "Cannot produce the PDF file."
 msgstr ""
 
 #: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
 msgid "No way to convert from XHTML to plain-text found."
+msgstr ""
+
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:56
+msgid "Licenses"
 msgstr ""
 
 #: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:50
@@ -82,17 +85,13 @@ msgstr ""
 msgid "The path provided doesn't support rendition."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
+#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:60
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:150
+#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:159
 msgid "The template file doesn't exist."
-msgstr ""
-
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:172
-msgid "Validation failed."
 msgstr ""
 
 #: trunk/Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
