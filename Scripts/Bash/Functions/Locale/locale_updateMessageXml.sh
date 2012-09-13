@@ -33,117 +33,29 @@ function locale_updateMessageXml {
     # (.pot) and portable objects (.po) files.
     local MESSAGES="${L10N_WORKDIR}/messages"
 
-    # Define regular expression to match the file extension of all
-    # XML-based source files that can be localized inside the working
-    # copy.  Be aware that sometimes, source files and output files
-    # are stored in the same location (e.g., when rendering
-    # `tcar-ug.docbook' file the `tcar-ug.xhtml' is saved in the same
-    # location). Avoid using output files as if they were source
-    # files, when retriving translatable strings.
-    local EXTENSION='(svg|svgz|docbook)'
+    # Define what kind of XML file we are generatin translation
+    # messages for. This is relevant because scalable vector graphics
+    # (SVG) files are not using entity expansion while DocBook files
+    # do.
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/(Manuals|Models)/Docbook/[[:alnum:]-]+$" ]];then
 
-    # Build list of files to process. When building the patter, be
-    # sure the value passed through `--filter' be exactly evaluated
-    # with the extension as prefix. Otherwise it would be difficult to
-    # match files that share the same characters in their file names
-    # (e.g., it would be difficult to match only `hello.docbook' if
-    # `hello-world.docbook' also exists in the same location).
-    local FILES=$(cli_getFilesList ${ACTIONVAL} \
-        --pattern="${FLAG_FILTER}\.${EXTENSION}" \
-        --maxdepth='1' --type="f" \
-        | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/')
+        locale_updateMessageXmlDocbook
 
-    # Print action message.
-    cli_printMessage "${MESSAGES}.pot" --as-updating-line
+        # Combine template messages and licenses messages so when
+        # template be merged into the final portable object the
+        # translations be there. If we cannot treat licenses as
+        # idependent documents (e.g., through XInclude), then lets
+        # keep translation messages as syncronized as possible.
+        locale_combineLicenseMessages ${MESSAGES}.po
 
-    # Normalize XML files, expand entities before retriving
-    # translatable strings and create the portable object template
-    # (.pot) from such output.  The translatable strings are retrived
-    # from the normalized output of files, not files themselves
-    # (because of this, we don't include `#: filename:line' output on
-    # .pot files).  Entity expansion is also necessary for DocBook
-    # documents to be processed correctly. Notice that some long
-    # DocBook document structures might use entities to split the
-    # document structure into smaller pieces so they could be easier
-    # to maintain. Also, don't validate svg files the same way you
-    # validate docbook files; Docbook files have a DOCTYPE definition
-    # while svg files don't. Without a DOCTYPE definition, it isn't
-    # possible for `xmllint' to validate the document. 
-    if [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Documentation/Manuals/.+$' ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Models/.+$" ]];then
 
-        # Another issue to consider is the amount of source files that
-        # are being processed through xml2po. When there are more than
-        # one file, xml2po interprets only the first one and discards
-        # the rest in the list. This way, when more than one file
-        # exists in the list, it isn't convenient to provide xmllint's
-        # output to xml2po's input. Once here, we can say that in
-        # order to expand DocBook entities it is required that only
-        # one file must be provided at localization time (e.g., using
-        # the `--filter' option). Otherwise translation messages are
-        # retrived from all files, but no entity expansion is realized
-        # because xmllint wouldn't be used in such case.
-        if [[ $(echo "$FILES" | wc -l) -eq 1 ]];then
-
-            xmllint --valid --noent ${FILES} | xml2po -a - \
-                | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
-
-        else
-
-            xml2po -a ${FILES} \
-                | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
-
-        fi
-
-    elif [[ $ACTIONVAL =~ '^.+/(branches|trunk)/Identity/Models/.+$' ]];then
-
-        # Inside trunk/Identity/Models, design models can be
-        # compressed or uncompressed. Because of this we cannot
-        # process all the design models in one unique way. Instead, we
-        # need to treat them individually based on their file type.
-
-        # Initialize name of temporal files.
-        local TEMPFILE=''
-        local TEMPFILES=''
-
-        for FILE in $FILES;do
-
-            # Redefine temporal file based on file been processed.
-            TEMPFILE=$(cli_getTemporalFile $(basename ${FILE} ))
-
-            # Update the command used to read content of XML files.
-            if [[ $(file -b -i $FILE) =~ '^application/x-gzip$' ]];then
-        
-                # Create uncompressed copy of file.
-                /bin/zcat $FILE > $TEMPFILE
-
-            else
-                
-                # Create uncompressed copy of file.
-                /bin/cat $FILE > $TEMFILE
-
-            fi
-
-            # Concatenate temporal files into a list so we can process
-            # them later through xml2po.
-            TEMPFILES="${TEMPFILE} ${TEMPFILES}"
-
-        done
-
-        # Create the portable object template.
-        xml2po -a $TEMPFILES \
-            | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
-
-        # Remove list of temporal files. They are no longer needed.
-        rm $TEMPFILES --force
-
-    else
-        
-        cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
+        locale_updateMessageXmlSvg
 
     fi
 
-   # Verify, initialize or merge portable objects from portable object
-   # templates.
-   locale_updateMessagePObjects "${MESSAGES}"
+    # Verify, initialize or merge portable objects from portable
+    # object templates.
+    locale_updateMessagePObjects "${MESSAGES}"
 
 }
