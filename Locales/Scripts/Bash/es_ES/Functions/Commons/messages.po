@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-1.0\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-03 23:15-0400\n"
-"PO-Revision-Date: 2012-09-03 23:15-0400\n"
+"POT-Creation-Date: 2012-09-13 13:58-0400\n"
+"PO-Revision-Date: 2012-09-13 13:58-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -144,9 +144,13 @@ msgstr "¿Desea ver los cambios ahora?"
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:54
-msgid "No function file was found for this action."
-msgstr "Ningún fichero de función se encontró para esta acción."
+#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:30
+msgid "At least one argument must be passed."
+msgstr "Al menos un argumento debe ser pasado."
+
+#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:64
+msgid "No function file was found."
+msgstr "Ningún fichero de función fue encontrado."
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_getCountryName.sh:35
 msgid "Andorra"
@@ -1937,63 +1941,67 @@ msgstr "Afinado"
 msgid "Checking"
 msgstr "Comprobando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:93
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:92
+msgid "Combining"
+msgstr "Combinando"
+
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:97
 msgid "Updating"
 msgstr "Actualizando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:95
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:99
 msgid "Creating"
 msgstr "Creando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:100
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:104
 msgid "Deleting"
 msgstr "Eliminando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:104
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:108
 msgid "Reading"
 msgstr "Leyendo"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:108
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:112
 msgid "Saved as"
 msgstr "Guardado como"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:112
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:116
 msgid "Linked to"
 msgstr "Enlazado a"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:116
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:120
 msgid "Moved to"
 msgstr "Movido a"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:120
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:124
 msgid "Translation"
 msgstr "Traducción"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:124
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:128
 msgid "Validating"
 msgstr "Validando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:128
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:132
 msgid "Template"
 msgstr "Plantilla"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:132
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:136
 msgid "Configuration"
 msgstr "Configuración"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:136
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:140
 msgid "Palette"
 msgstr "Paleta"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:168
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:172
 msgid "To know more, run the following command"
 msgstr "Para conocer más, ejecute el command siguiente"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:178
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:182
 msgid "yes"
 msgstr "sí"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:181
+#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:185
 msgid "no"
 msgstr "no"
 
