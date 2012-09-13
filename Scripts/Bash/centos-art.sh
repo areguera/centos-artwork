@@ -63,6 +63,11 @@ declare -xr MAILINGLIST_DOCS="${BRAND}-docs@${DOMAINNAME}"
 declare -xr MAILINGLIST_L10N="${BRAND}-l10n@${DOMAINNAME}"
 declare -xr MAILINGLIST_DEVEL="${BRAND}-devel@${DOMAINNAME}"
 
+# Define absolute paths to relevant Docbook directory structures.
+declare -xr DOCBOOK_XSL_DIR="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
+declare -xr DOCBOOK_MODELS_DIR=${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook
+declare -xr DOCBOOK_MODELS_LOCALES_DIR=${TCAR_WORKDIR}/trunk/Locales/Documentation/Models/Docbook
+
 # Initialize command-line interface.
 if [[ -x ${CLI_FUNCDIR}/Commons/init.sh ]];then
     . ${CLI_FUNCDIR}/Commons/init.sh; export -f init ; init "$@"
