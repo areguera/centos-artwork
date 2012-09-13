@@ -46,13 +46,13 @@ function help {
     local MANUAL_TLDIR=${PWD}
 
     # Verify manual's top-level directory. To prevent messing the
-    # things up, we need to restrict the possible locations
-    # where documentation manuals can be created in the working copy.
-    # When manual's top-level location is other but the ones
-    # permitted, use `trunk/Documentation/Manuals' directory structure
-    # as default location to store documentation manuals.
-    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/(trunk/Documentation/Manuals|branches/Documentation/Manuals/[[:alnum:]-]+)$" ]];then
-        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Manuals"
+    # things up, we need to restrict the possible locations where
+    # documentation manuals can be created in the working copy.  When
+    # manual's top-level location is other but the ones permitted, use
+    # `trunk/Documentation/Manuals/Texinfo' directory structure as
+    # default location to store documentation manuals.
+    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/(trunk|branches)/Documentation/Manuals/Texinfo/[[:alnum:]-]+)$" ]];then
+        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Manuals/Texinfo"
     fi
 
     # Initialize documentation entries arrays. Arrays defined here
@@ -196,8 +196,7 @@ function help {
             # `centos-art.sh''s execution environment and make them
             # available, this way, to perform format-specific
             # documentation tasks.
-            cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-                ${MANUAL_FORMAT} -d)" "${MANUAL_FORMAT}"
+            cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${MANUAL_FORMAT} -d)/${MANUAL_FORMAT}[[:alpha:]_]*"
 
         fi
 
