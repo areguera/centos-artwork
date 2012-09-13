@@ -29,7 +29,7 @@ function render_doBaseActions {
     local FILE=''
     local OUTPUT=''
     local TEMPLATE=''
-    local TEMPLATE_HAS_DOCTYPE=''
+    local TEMPLATES=''
     local PARENTDIR=''
     local TRANSLATION=''
     local EXTERNALFILE=''
@@ -62,10 +62,10 @@ function render_doBaseActions {
         fi
 
         # Define the list of files to process. Use an array variable
-        # to store the list of files to process. This make posible to
+        # to store the list of files to process. This make possible to
         # realize verifications like: is the current base directory
         # equal to the next one in the list of files to process?
-        # Questions like this is let us to know when centos-art.sh is
+        # Questions like this let us to know when centos-art.sh is
         # leaving a directory structure and entering another. This
         # information is required in order for centos-art.sh to know
         # when to apply last-rendition actions.
@@ -73,23 +73,26 @@ function render_doBaseActions {
         # Another issue is that some directories might be named as if
         # they were files (e.g., using a renderable extension like
         # .docbook).  In these situations we need to avoid such
-        # directories from being interpreted as a renderable file. For
-        # this, pass the `--type="f"' option when building the list of
-        # files to process in order to retrive regular files only.
+        # directories from being interpreted as a render able file.
+        # For this, pass the `--type="f"' option when building the
+        # list of files to process in order to retrieve regular files
+        # only.
         #
         # Another issue to consider here, is that in some cases both
         # templates and outputs might be in the same location. In
         # these cases localized content are stored in the same
-        # location where template files are retrived from and we need
+        # location where template files are retrieved from and we need
         # to avoid using localized content from being interpreted as
-        # design models. In that sake, supress language-specific files
-        # from the list of files to process.
+        # design models. In that sake, build the list of files to
+        # process using the files directely stored in the directory
+        # passed as argument to centos-art.sh command-line. Don't go
+        # recursive here.
         #
         # Another issue to consider here, is the way of filtering. We
         # cannot expand the pattern specified by FLAG_FILTER with a
         # `.*' here (e.g., "${FLAG_FILTER}.*\.${RENDER_EXTENSION}")
         # because that would suppress any possibility from the user to
-        # specifiy just one file name in locations where more than one
+        # specify just one file name in locations where more than one
         # file with the same name as prefix exists (e.g.,
         # `repository.docbook', `repository-preamble.docbook' and
         # `repository-parts.docbook').  Instead, pass filtering
@@ -99,9 +102,18 @@ function render_doBaseActions {
         # `--filter="repository"') or `repository-preamble.docbook'
         # and `repository-parts.docbook' but not `repository.docbook'
         # (e.g., through `--filter="repository-.*"').
-        for FILE in $(cli_getFilesList ${TEMPLATE} \
-            --pattern="${FLAG_FILTER}\.${RENDER_EXTENSION}" --type="f" \
-            | egrep -v '/[[:alpha:]]{2}_[[:alpha:]]{2}/');do
+        if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/(Models|Manuals)/Docbook/.+$" ]];then
+            TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
+                --maxdepth="1" --mindepth="1" \
+                --pattern="$(cli_getRepoName ${TEMPLATE} -f)\.${RENDER_EXTENSION}$" \
+                --type="f")
+        else
+            TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
+                --maxdepth="1" --mindepth="1" \
+                --pattern="${FLAG_FILTER}\.${RENDER_EXTENSION}$" \
+                --type="f")
+        fi
+        for FILE in $TEMPLATES;do
             FILES[((++${#FILES[*]}))]=$FILE
         done
 
@@ -112,11 +124,10 @@ function render_doBaseActions {
         fi
 
         # Initialize format-specific functionalities.
-        cli_exportFunctions "${RENDER_FORMAT_DIR}/$(cli_getRepoName \
-            ${RENDER_FORMAT} -d)" "${RENDER_FORMAT}"
+        cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${RENDER_FORMAT} -d)/$(cli_getRepoName ${RENDER_FORMAT} -f)[[:alpha:]_]*"
 
         # Start processing the base rendition list of FILES. Fun part
-        # approching :-).
+        # approaching :-).
         while [[ $COUNT -lt ${#FILES[*]} ]];do
 
             # Define base file.
@@ -150,32 +161,8 @@ function render_doBaseActions {
                 cli_printMessage "`gettext "The template file doesn't exist."`" --as-error-line
             fi
 
-            # Verify whether the design model uses DOCTYPE definition
-            # or not; and redefine related variable for further using.
-            egrep '^<!DOCTYPE' ${TEMPLATE} > /dev/null
-            TEMPLATE_HAS_DOCTYPE=$?
-
-            # Validate design model before processing it. This step is
-            # very important in order to detect document's
-            # malformations and warn you about it, so you can correct
-            # them before processing the document as input.  Notice
-            # that, here, validation is possible only for documents
-            # which have a DOCTYPE definition inside.
-            if [[ $TEMPLATE_HAS_DOCTYPE -eq 0 ]];then
-
-                # Print action message.
-                cli_printMessage "$TEMPLATE" --as-validating-line
-
-                # Validate document before processing it.  
-                xmllint --valid --noent --noout $TEMPLATE
-                if [[ $? -ne 0 ]];then
-                    cli_printMessage "`gettext "Validation failed."`" --as-error-line
-                fi
-
-            else
-                # Print action message.
-                cli_printMessage "$TEMPLATE" --as-template-line
-            fi
+            # Print action message.
+            cli_printMessage "$TEMPLATE" --as-template-line
  
             # Define final location of output directory.
             render_getDirOutput
