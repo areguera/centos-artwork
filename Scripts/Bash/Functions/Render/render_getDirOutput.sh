@@ -29,8 +29,7 @@ function render_getDirOutput {
     # Define base output directory using design model path as
     # reference.
     OUTPUT=$(dirname $FILE | sed -r \
-        -e "s!/Themes/${FLAG_THEME_MODEL}!/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
-        -e "s!/Models!/Images!" \
+        -e "s!/Models/Themes/${FLAG_THEME_MODEL}!/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
         -e "s!/Tpl!!")
 
     # By default rendered identity content is stored immediatly under
@@ -43,17 +42,17 @@ function render_getDirOutput {
     # Redefine base output directory to introduce specific information
     # like release number and architecture. This information is
     # require by directories (e.g., the `Media' directory inside
-    # themes and the `trunk/Documentation/Manuals/Distro' directory ) whose need
-    # this information to be passed explicitly at the command-line
-    # through the `--releasever' and `--basearch' options.  Other
-    # directories take such information from the path they are stored
-    # in (e.g., the `Distro/5/Anaconda' directory inside themes.). So,
-    # we need to differentiate the way information like release
-    # numbers and architectures are retrived in order to build the
-    # output path correctly at rendition time.
+    # themes and the `trunk/Documentation/Manuals/Docbook/Distro'
+    # directory ) whose need this information to be passed explicitly
+    # at the command-line through the `--releasever' and `--basearch'
+    # options.  Other directories take such information from the path
+    # they are stored in (e.g., the `Distro/5/Anaconda' directory
+    # inside themes.). So, we need to differentiate the way
+    # information like release numbers and architectures are retrived
+    # in order to build the output path correctly at rendition time.
     if [[ $OUTPUT =~ "^${MOTIF_DIR}/Media$" ]];then
         OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
-    elif [[ $OUTPUT =~ 'trunk/Documentation/Manuals/Distro$' ]];then
+    elif [[ $OUTPUT =~ 'trunk/Documentation/Manuals/Docbook/Distro$' ]];then
         OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}
     else
         OUTPUT=${OUTPUT}
