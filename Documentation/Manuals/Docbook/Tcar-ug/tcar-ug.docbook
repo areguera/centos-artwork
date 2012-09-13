@@ -1,14 +1,13 @@
-<?xml version="1.0"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"
-    [
-    <!-- 
-        WARNING: Don't remove anything from `<?xml' to `]>' lines.
-        They are used as pattern to rebuild the public definition of
-        this document with both common and specific system entities.
-    --> 
-    ]>
-
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" []>
+<!-- 
+    WARNING: Keep the preable definition as it is (in two lines). The
+    centos-art.sh script uses this information as pattern to rebuild
+    the preamble definition later and introduce system entities
+    definitions in it. If centos-art.sh script cannot rebuild the
+    preamble definition of this document its validation will fail and
+    consequently, no final rendition will be possible.
+-->
 <book lang="en_US">
 
     <!-- Front matter -->
@@ -64,19 +63,19 @@
 
     </bookinfo>
 
+    <!-- Preface -->
+    &preface;
     <!-- Main matter --> 
-
     &repo;
     &identity;
     &locales;
     &manuals;
     &scripts;
-
     <!-- Licenses -->
     <!-- 
-        WARNING: Licenses are included at execution time so don't
-        remove the comments this message is in between, nor the
-        message so you can remember it. 
+        WARNING: Licenses are included by centos-art.sh script at
+        execution time, so don't remove the comments this message is in
+        between, nor this message so you can remember it. 
     -->
     <!-- Back matter -->
 
