@@ -56,29 +56,50 @@ function render_doTranslation {
         # Print final location of translation file.
         cli_printMessage "${TRANSLATION}" --as-translation-line
 
-        # Create the translated instance of design model based on
-        # whether the template file has DOCTYPE definition or not.
-        if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
-            ${COMMAND} ${TEMPLATE} | xmllint --valid --noent - \
-                | xml2po -a -l $(cli_getCurrentLocale) -p ${TRANSLATION} -o ${INSTANCE} -
+        # Create translation instance to combine both template
+        # translation and licenses translations.
+        local TRANSLATION_INSTANCE=$(cli_getTemporalFile ${TRANSLATION})
+    
+        if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/.+$" ]];then
+
+            # Combine license translations with template translation
+            # in order to reuse licenses translations in template
+            # files without including them in template portable
+            # objects. In the case of Docbook templates, translations
+            # related to licenses are required because license content
+            # is expanded at execution time inside the docbook
+            # instance used by XSL processor during transformation.
+            cli_exportFunctions "Locale/locale_combineLicenseMessages"
+            locale_combineLicenseMessages ${TRANSLATION_INSTANCE} ${TRANSLATION}
+
         else
-            ${COMMAND} ${TEMPLATE} | xml2po -a -l $(cli_getCurrentLocale) \
-                -p ${TRANSLATION} -o ${INSTANCE} -
+
+            # In the case of SVG and other files, license translations
+            # is not required so we don't combine it into the template
+            # translation.
+            cp ${TRANSLATION} ${TRANSLATION_INSTANCE}
+
         fi
+
+        # Create the translated instance of design model.
+        ${COMMAND} ${TEMPLATE} | xml2po -a -l $(cli_getCurrentLocale) \
+            -p ${TRANSLATION_INSTANCE} -o ${INSTANCE} -
 
         # Remove .xml2po.mo temporal file.
         if [[ -f ${PWD}/.xml2po.mo ]];then
             rm ${PWD}/.xml2po.mo
         fi
 
+        # Remove instance created to store both licenses and template
+        # translations.
+        if [[ -f ${TRANSLATION_INSTANCE} ]];then
+            rm ${TRANSLATION_INSTANCE}
+        fi
+
     else
 
         # Create the non-translated instance of design model. 
-        if [[ ${TEMPLATE_HAS_DOCTYPE} -eq 0 ]];then
-            ${COMMAND} ${TEMPLATE} | xmllint --valid --noent - > ${INSTANCE}    
-        else
-            ${COMMAND} ${TEMPLATE} > ${INSTANCE}
-        fi
+        ${COMMAND} ${TEMPLATE} > ${INSTANCE}
 
     fi
 
