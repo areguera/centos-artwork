@@ -88,6 +88,10 @@ function cli_printMessage {
             cli_printMessage "`gettext "Checking"`: $MESSAGE"
             ;;
 
+        --as-combining-line )
+            cli_printMessage "`gettext "Combining"`: $MESSAGE"
+            ;;
+
         --as-creating-line | --as-updating-line )
             if [[ -a "$MESSAGE" ]];then
                 cli_printMessage "`gettext "Updating"`: $MESSAGE"
