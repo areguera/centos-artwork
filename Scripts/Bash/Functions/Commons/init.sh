@@ -127,7 +127,7 @@ function init {
 
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
-    cli_exportFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
+    cli_exportFunctions "${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}[[:alpha:]_]*"
 
     # Execute function.
     eval $CLI_FUNCNAME
