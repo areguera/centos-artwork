@@ -3,7 +3,7 @@
 # docbook.sh -- This function performs base-rendition actions for
 # DocBook files.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2012 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,9 +25,28 @@
 
 function docbook {
 
-    # Initialize absolute path to Xsl directory. This is the location
-    # where customization of XSL tranformations are stored in.
-    DOCBOOK_XSL_DIR="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
+    # Expand translation markers inside instance.
+    cli_expandTMarkers ${INSTANCE}
+
+    # Exapand common contents inside instance.
+    docbook_expandLicenses ${INSTANCE}
+
+    # When translated instances are rendered, system entities (e.g.,
+    # `%entity-name;') don't appear in the translated instance (it
+    # seems that xml2po removes them) and this provokes Docbook
+    # validation to fail.  So in order to pass the validation
+    # successfully and automate the whole creation of system entities,
+    # don't let this duty ion users'. Instead, make centos-art.sh
+    # script responsible of it.
+    docbook_expandSystemEntities ${INSTANCE}
+
+    # Validate translated instance before processing it. This step is
+    # very important in order to detect document's malformations and
+    # warn you about it, so you can correct them.
+    xmllint --valid --noent --noout ${INSTANCE}
+    if [[ $? -ne 0 ]];then
+        cli_printMessage "`gettext "Validation failed."`" --as-error-line
+    fi
 
     # Convert DocBook source files to other formats.
     docbook_convertToXhtmlChunk
