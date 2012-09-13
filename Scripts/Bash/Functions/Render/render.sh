@@ -3,7 +3,7 @@
 # render.sh -- This function initializes rendition variables and
 # actions to centos-art.sh script.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2012 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -119,7 +119,7 @@ function render {
             ACTIONNAM="render_doThemeActions"
         elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
             ACTIONNAM="render_doBaseActions"
-        elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Documentation/Manuals" ]];then
+        elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Documentation" ]];then
             ACTIONNAM="render_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
