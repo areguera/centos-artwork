@@ -26,15 +26,15 @@
 function texinfo_updateOutputFilePlaintext {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.txt.bz2" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.txt.bz2" --as-response-line
 
     # Update plaintext output directory.
     /usr/bin/makeinfo --plaintext \
-        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_BASEFILE}.txt
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_OUTPUT_BASEFILE}.txt
 
     # Compress plaintext output file.
-    if [[ -f ${MANUAL_BASEFILE}.txt ]];then
-        bzip2 ${MANUAL_BASEFILE}.txt --force
+    if [[ -f ${MANUAL_OUTPUT_BASEFILE}.txt ]];then
+        bzip2 ${MANUAL_OUTPUT_BASEFILE}.txt --force
     fi
 
 }
