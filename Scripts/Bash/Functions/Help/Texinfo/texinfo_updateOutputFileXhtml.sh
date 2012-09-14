@@ -26,7 +26,7 @@
 function texinfo_updateOutputFileXhtml {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xhtml.tar.bz2" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.xhtml.tar.bz2" --as-response-line
 
     # Verify initialization files used by texi2html.
     cli_checkFiles ${MANUAL_TEMPLATE}/manual-init.pl
@@ -36,35 +36,34 @@ function texinfo_updateOutputFileXhtml {
     cli_checkFiles ${MANUAL_TEMPLATE}/manual.sed
     cli_checkFiles ${MANUAL_TEMPLATE_L10N}/manual.sed
 
-    # Redefine manual base file to use just the file base name.
-    local MANUAL_BASEFILE=$(basename "$MANUAL_BASEFILE")
+    # Clean up directory structure where xhtml files will be stored.
+    # We don't want to have unused files inside it.
+    if [[ -d ${MANUAL_OUTPUT_BASEFILE}-xhtml ]];then
+        rm -r ${MANUAL_OUTPUT_BASEFILE}-xhtml
+    fi
+
+    # Prepare directory structure where xhtml files will be stored in.
+    mkdir -p ${MANUAL_OUTPUT_BASEFILE}-xhtml
 
     # Add manual base directory path into directory stack to make it
     # the current working directory. This is done to reduce the path
     # information packaged inside `repository.xhtml.tar.bz2' file.
-    pushd ${MANUAL_BASEDIR_L10N} > /dev/null
+    pushd ${MANUAL_OUTPUT_BASEFILE}-xhtml > /dev/null
 
-    # Clean up directory structure where xhtml files will be stored.
-    # We don't want to have unused files inside it.
-    if [[ -d ${MANUAL_NAME}-xhtml ]];then
-        rm -r ${MANUAL_NAME}-xhtml
-    fi
-
-    # Prepare directory structure where xhtml files will be stored in.
-    mkdir ${MANUAL_NAME}-xhtml
-
-    # Add directory where xhtml files will be sotred in into directory
-    # stack to make it the current working directory. This is required
-    # in order for include paths to be constructed correctly.
-    pushd ${MANUAL_NAME}-xhtml > /dev/null
-
-    # Update xhtml files.  Use texi2html to export from texinfo file
+    # Update xhtml files. Use texi2html to export from texinfo file
     # format to xhtml using The CentOS Web default visual style.
     texi2html --lang=$(cli_getCurrentLocale --langcode-only) \
         --init-file=${MANUAL_TEMPLATE}/manual-init.pl \
         --init-file=${MANUAL_TEMPLATE_L10N}/manual-init.pl \
-        --output=${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}-xhtml \
+        -I ${TCAR_WORKDIR} \
+        --output=${MANUAL_OUTPUT_BASEFILE}-xhtml \
         ${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.${MANUAL_EXTENSION}
+
+    # Create `css' and `images' directories. In order to save disk
+    # space, these directories are linked (symbolically) to their
+    # respective locations inside the working copy. 
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css Css
+    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv Images
 
     # Remove directory where xhtml files are stored from directory
     # stack. The xhtml files have been already created.
@@ -81,15 +80,12 @@ function texinfo_updateOutputFileXhtml {
     sed -r -i \
         -f ${MANUAL_TEMPLATE}/manual.sed \
         -f ${MANUAL_TEMPLATE_L10N}/manual.sed \
-        ${MANUAL_BASEFILE}-xhtml/*.xhtml
+        ${MANUAL_OUTPUT_BASEFILE}-xhtml/*.xhtml
 
     # Compress directory structure where xhtml files are stored in.
     # This compressed version is the one we put under version control.
     # The directory used to build the compressed version is left
     # unversion for the matter of human revision.
-    tar -cjf ${MANUAL_BASEFILE}.xhtml.tar.bz2 ${MANUAL_BASEFILE}-xhtml
-
-    # Remove manual base directory from directory stack.
-    popd > /dev/null
+    tar -cjf ${MANUAL_OUTPUT_BASEFILE}.xhtml.tar.bz2 ${MANUAL_OUTPUT_BASEFILE}-xhtml > /dev/null 2>&1 
 
 }
