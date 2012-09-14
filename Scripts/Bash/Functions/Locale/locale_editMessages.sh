@@ -33,10 +33,10 @@ function locale_editMessages {
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Documentation|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
 
         # Define list of PO files for XML-based files.
-        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="/${FLAG_FILTER}/messages\.po$")
+        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" --pattern="messages\.po$")
 
         # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
@@ -44,7 +44,7 @@ function locale_editMessages {
     elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash$" ]];then
 
         # Define list of PO files for script files.
-        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="/${FLAG_FILTER}/messages\.po$")
+        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="${FLAG_FILTER}/messages\.po$")
 
     else
         cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
