@@ -196,7 +196,7 @@ function help {
             # `centos-art.sh''s execution environment and make them
             # available, this way, to perform format-specific
             # documentation tasks.
-            cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${MANUAL_FORMAT} -d)/${MANUAL_FORMAT}[[:alpha:]_]*"
+            cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${MANUAL_FORMAT} -d)/${MANUAL_FORMAT}"
 
         fi
 
