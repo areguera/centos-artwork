@@ -26,10 +26,10 @@
 function texinfo_updateOutputFileXml {
 
     # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.xml" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.xml" --as-response-line
 
     # Update xml output format.
     /usr/bin/makeinfo --xml \
-        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_BASEFILE}.xml \
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_OUTPUT_BASEFILE}.xml \
 
 }
