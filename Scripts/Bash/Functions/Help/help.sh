@@ -41,7 +41,7 @@ function help {
     # current directory where the `centos-art.sh' script was called
     # from is used as manual's top-level directory.  Notice that this
     # relaxation is required because we need to create/maintain
-    # manuals both under `trunk/Documentation/Manuals/' and
+    # manuals both under `trunk/Documentation/Models/' and
     # `branches/Documentation/Manuals/' directories.
     local MANUAL_TLDIR=${PWD}
 
@@ -49,10 +49,10 @@ function help {
     # things up, we need to restrict the possible locations where
     # documentation manuals can be created in the working copy.  When
     # manual's top-level location is other but the ones permitted, use
-    # `trunk/Documentation/Manuals/Texinfo' directory structure as
-    # default location to store documentation manuals.
-    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/(trunk|branches)/Documentation/Manuals/Texinfo/[[:alnum:]-]+)$" ]];then
-        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Manuals/Texinfo"
+    # `trunk/Documentation/Models' directory structure as default
+    # location to store documentation manuals.
+    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/trunk/Documentation/Models/Texinfo" ]];then
+        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models/Texinfo"
     fi
 
     # Initialize documentation entries arrays. Arrays defined here
@@ -94,7 +94,7 @@ function help {
         MANUAL_NAME=${MANUAL_SLFN[${MANUAL_DOCENTRY_ID}]}
 
         # Define absolute path to directory holding language-specific
-        # directories.
+        # models.
         MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
 
         # Define absolute path to directory holding language-specific
@@ -114,6 +114,9 @@ function help {
         # name (without extension) we use as reference to build output
         # files in different formats (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
+
+        # Define manual base file used for output.
+        MANUAL_OUTPUT_BASEFILE=$(echo $MANUAL_BASEFILE | sed -r 's!Models/!Manuals/!')
 
         # Define manual's part name.
         MANUAL_PART_NAME=${MANUAL_PART[${MANUAL_DOCENTRY_ID}]}
