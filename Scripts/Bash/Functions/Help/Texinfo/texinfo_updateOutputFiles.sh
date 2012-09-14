@@ -32,6 +32,11 @@ function texinfo_updateOutputFiles {
         return
     fi
 
+    # Create output directory if it doesn't exist.
+    if [[ ! -d $(dirname $MANUAL_OUTPUT_BASEFILE) ]];then
+        mkdir -p $(dirname $MANUAL_OUTPUT_BASEFILE)
+    fi
+
     # Print separator line.
     cli_printMessage "`gettext "Updating output files"`" --as-banner-line
 
