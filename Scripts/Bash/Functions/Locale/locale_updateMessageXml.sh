@@ -37,7 +37,7 @@ function locale_updateMessageXml {
     # messages for. This is relevant because scalable vector graphics
     # (SVG) files are not using entity expansion while DocBook files
     # do.
-    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/(Manuals|Models)/Docbook/[[:alnum:]-]+$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/[[:alnum:]-]+$" ]];then
 
         locale_updateMessageXmlDocbook
 
