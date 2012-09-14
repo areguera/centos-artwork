@@ -56,6 +56,13 @@ function docbook_convertToXhtml {
     # Transform DocBook XML to XHTML supressing all stderr output.
     xsltproc --output ${DST} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
 
+    # Create `css' and `images' directories. In order to save disk
+    # space, these directories are linked (symbolically) to their
+    # respective locations inside the working copy. Be sure to remove
+    # previous links first to prevent a recursive creation of links.
+    ln -sf ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css $(dirname $DST)/Css
+    ln -sf ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname $DST)/Images
+
     # Remove XSL instance files.
     rm ${STYLE_INSTANCE[*]}
 
