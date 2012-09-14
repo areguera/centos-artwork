@@ -29,7 +29,8 @@ function render_getDirOutput {
     # Define base output directory using design model path as
     # reference.
     OUTPUT=$(dirname $FILE | sed -r \
-        -e "s!/Models/Themes/${FLAG_THEME_MODEL}!/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
+        -e "s!Identity/Models/Themes/${FLAG_THEME_MODEL}!Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
+        -e "s!Documentation/Models!Documentation/Manuals!" \
         -e "s!/Tpl!!")
 
     # By default rendered identity content is stored immediatly under
