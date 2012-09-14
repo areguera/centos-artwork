@@ -34,7 +34,7 @@ function cli_exportFunctions {
     local EXPORTID=$1
 
     # Define the source location where function files are placed in.
-    local LOCATION=${CLI_BASEDIR}/Functions/$(dirname "$EXPORTID")
+    local LOCATION=${CLI_BASEDIR}/Functions/$(dirname ${EXPORTID})
 
     # Define suffix used to retrieve function files.
     local SUFFIX=$(basename "$EXPORTID")
@@ -44,8 +44,12 @@ function cli_exportFunctions {
     # function, use the function name value (CLI_FUNCNAME) as default
     # value.
     if [[ $SUFFIX == '' ]];then
-        SUFFIX="${CLI_FUNCNAME}[[:alpha:]_]*"
+        SUFFIX="${CLI_FUNCNAME}"
     fi
+
+    # Redefine suffix to match all related function files inside the
+    # related function directory.
+    SUFFIX=${SUFFIX}'[[:alpha:]_]*'
 
     # Define the pattern used to retrieve function names from function
     # files.
@@ -54,7 +58,7 @@ function cli_exportFunctions {
     # Define the list of files.
     local FUNCFILE=''
     local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${SUFFIX}\.sh$" \
-        --maxdepth="1" --mindepth="1" --type="f")
+        --maxdepth='1' --mindepth='1' --type='f')
 
     # Verify the list of files. If no function file exists for the
     # location specified stop the script execution. Otherwise the
