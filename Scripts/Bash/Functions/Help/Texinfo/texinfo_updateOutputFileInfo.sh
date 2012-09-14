@@ -26,16 +26,16 @@
 function texinfo_updateOutputFileInfo {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.info.bz2" --as-response-line
 
     # Update info file.
-    /usr/bin/makeinfo --output=${MANUAL_BASEFILE}.info \
+    /usr/bin/makeinfo --output=${MANUAL_OUTPUT_BASEFILE}.info \
         --enable-encoding \
         ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} 
 
     # Compress info file.
     if [[ $? -eq 0 ]];then
-        bzip2 -f ${MANUAL_BASEFILE}.info
+        bzip2 -f ${MANUAL_OUTPUT_BASEFILE}.info
     fi
 
 }
