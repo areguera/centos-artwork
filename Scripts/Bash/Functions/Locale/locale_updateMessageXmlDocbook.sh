@@ -29,9 +29,14 @@ function locale_updateMessageXmlDocbook {
     # Print action message.
     cli_printMessage "${MESSAGES}.pot" --as-updating-line
 
-    # Define absolute path to Docbook's main file. This file must have
-    # the same name all in lowercase than its parent directory.
-    local TEMPLATE=${ACTIONVAL}/$(cli_getRepoName $(basename ${ACTIONVAL}) -f).docbook
+    # Define regular expression to match extensions of shell scripts
+    # we use inside the repository.
+    local EXTENSION='docbook'
+
+    # Define absolute paths to Docbook main file.
+    local TEMPLATE=$(cli_getFilesList ${ACTIONVAL} \
+        --maxdepth=1 --mindepth=1 --type='f' \
+        --pattern="$(cli_getRepoName ${ACTIONVAL} -f)\.${EXTENSION}$")
 
     # Verify existence of docbook's main template file. We cannot go
     # on without it.
