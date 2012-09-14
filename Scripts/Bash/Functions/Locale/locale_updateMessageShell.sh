@@ -36,7 +36,7 @@ function locale_updateMessageShell {
 
     # Define list of absolute paths to function directories.
     local FNDIRS=$(cli_getFilesList ${ACTIONVAL}/Functions \
-        --maxdepth=1 --mindepth=1 --type='d' --pattern="/${FLAG_FILTER}$")
+        --maxdepth=1 --mindepth=1 --type='d' --pattern="${FLAG_FILTER}$")
 
     for FNDIR in $FNDIRS;do
 
