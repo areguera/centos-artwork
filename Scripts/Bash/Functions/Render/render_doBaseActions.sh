@@ -124,7 +124,7 @@ function render_doBaseActions {
         fi
 
         # Initialize format-specific functionalities.
-        cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${RENDER_FORMAT} -d)/$(cli_getRepoName ${RENDER_FORMAT} -f)[[:alpha:]_]*"
+        cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${RENDER_FORMAT} -d)/$(cli_getRepoName ${RENDER_FORMAT} -f)"
 
         # Start processing the base rendition list of FILES. Fun part
         # approaching :-).
