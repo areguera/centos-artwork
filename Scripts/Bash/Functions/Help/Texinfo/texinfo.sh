@@ -41,8 +41,8 @@ function texinfo {
     # Define absolute path to template directory. This is the place
     # where we store locale directories (e.g., en_US, es_ES, etc.)
     # used to build manuals in texinfo format.
-    MANUAL_TEMPLATE=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-        ${MANUAL_FORMAT} -d)/Templates
+    MANUAL_TEMPLATE=${TCAR_WORKDIR}/trunk/Documentation/Models/$(cli_getRepoName \
+        ${MANUAL_FORMAT} -d)/Default
 
     # Define absolute path to language-specific template directory.
     # This is the place where we store locale-specific files used to
@@ -106,7 +106,7 @@ function texinfo {
         texinfo_updateOutputFiles
             
         # Read manual's Top node from its info output file.
-        info --node="Top" --file="${MANUAL_BASEFILE}.info.bz2"
+        info --node="Top" --file="${MANUAL_OUTPUT_BASEFILE}.info.bz2"
 
     elif [[ $ACTIONNAM =~ "^(copy|rename)Entry$" ]];then
 
