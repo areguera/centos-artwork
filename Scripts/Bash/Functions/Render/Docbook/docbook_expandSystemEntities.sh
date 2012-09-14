@@ -33,8 +33,8 @@ function docbook_expandSystemEntities {
 
     # Define absolute path to both common and specific system
     # entities.
-    local ENTITIES_PATHS="$(cli_getFilesList ${DOCBOOK_MODELS_DIR}/Book ${ACTIONVAL} \
-        --pattern=".ent$" --maxdepth=1 --mindepth=1 --type='f')"
+    local ENTITIES_PATHS="$(cli_getFilesList ${DOCBOOK_MODELS_DIR}/Default/Book ${ACTIONVAL} \
+        --pattern="[[:alpha:]-]+\.ent$" --maxdepth=1 --mindepth=1 --type='f')"
 
     # Build definition of both common and specific system entities.
     local ENTITIES="$(\
