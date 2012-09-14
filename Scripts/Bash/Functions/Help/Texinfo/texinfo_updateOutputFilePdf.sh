@@ -26,10 +26,10 @@
 function texinfo_updateOutputFilePdf {
 
     # Output action message.
-    cli_printMessage "${MANUAL_BASEFILE}.pdf" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.pdf" --as-response-line
 
     # Update plaintext output directory.
     /usr/bin/texi2pdf --quiet \
-        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_BASEFILE}.pdf
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} --output=${MANUAL_OUTPUT_BASEFILE}.pdf
 
 }
