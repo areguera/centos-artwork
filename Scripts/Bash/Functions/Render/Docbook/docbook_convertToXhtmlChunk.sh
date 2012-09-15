@@ -62,9 +62,10 @@ function docbook_convertToXhtmlChunk {
 
     # Create `css' and `images' directories. In order to save disk
     # space, these directories are linked (symbolically) to their
-    # respective locations inside the working copy. 
-    ln -fs ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css ${DST}/Css
-    ln -fs ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv ${DST}/Images
+    # respective locations inside the working copy. Be sure to remove
+    # previous links first to prevent a recursive creation of links.
+    ln -sf ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css ${DST}/Css
+    ln -sf ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv ${DST}/Images
 
     # Remove XSL instance files.
     rm ${STYLE_INSTANCE[*]}
