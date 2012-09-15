@@ -25,7 +25,7 @@
 # Initialize script-specific configuration variables.
 declare -xr BRAND="centos"
 declare -xr TCAR_CLI_NAME="${BRAND}-art"
-declare -xr CLI_VERSION='1.0'
+declare -xr TCAR_CLI_VERSION='1.0'
 declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${TCAR_CLI_NAME}.sh-XXXXXX)"
 
 # Initialize working copy default value.
