@@ -25,9 +25,6 @@
 
 function docbook {
 
-    # Expand translation markers inside instance.
-    cli_expandTMarkers ${INSTANCE}
-
     # Exapand common contents inside instance.
     docbook_expandLicenses ${INSTANCE}
 
@@ -42,11 +39,20 @@ function docbook {
 
     # Validate translated instance before processing it. This step is
     # very important in order to detect document's malformations and
-    # warn you about it, so you can correct them.
-    xmllint --valid --noent --noout ${INSTANCE}
+    # warn you about it, so you can correct them. It is also necessary
+    # to save them in a new file in order to make translation markers
+    # expansion possible before transforming the Docbook instance into
+    # other formats.
+    xmllint --valid --noent ${INSTANCE} > ${INSTANCE}.tmp
     if [[ $? -ne 0 ]];then
         cli_printMessage "`gettext "Validation failed."`" --as-error-line
     fi
+
+    # Expand translation markers on temporal instance.
+    cli_expandTMarkers ${INSTANCE}.tmp
+
+    # Update instance to add translation markers expansion.
+    mv ${INSTANCE}.tmp ${INSTANCE}
 
     # Convert DocBook source files to other formats.
     docbook_convertToXhtmlChunk
