@@ -29,7 +29,7 @@
 function cli_terminateScriptExecution {
 
     # Remove temporal directory.
-    rm -r ${CLI_TEMPDIR}
+    rm -r ${TMPDIR}
 
     # Terminate script correctly.
     exit 0
