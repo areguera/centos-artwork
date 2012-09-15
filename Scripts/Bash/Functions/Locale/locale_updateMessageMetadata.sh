@@ -52,7 +52,7 @@ function locale_updateMessageMetadata {
     SRC[4]="\"PO-Revision-Date:"
 
     # Define replacement lines for pattern line.
-    DST[0]="\"Project-Id-Version: ${CLI_NAME}-${CLI_VERSION}\\\n\""
+    DST[0]="\"Project-Id-Version: ${TCAR_CLI_NAME}-${CLI_VERSION}\\\n\""
     DST[1]="\"Report-Msgid-Bugs-To: Documentation SIG <${MAILINGLIST_DOCS}>\\\n\""
     DST[2]="\"Last-Translator: Documentation SIG\\\n\""
     DST[3]="\"Language-Team: ${LANGNAME}\\\n\""
@@ -75,7 +75,7 @@ function locale_updateMessageMetadata {
     fi
 
     # Replace package information using gettext domain information.
-    sed -i -r "s/PACKAGE/${CLI_NAME}-${CLI_VERSION}/g" ${FILE}
+    sed -i -r "s/PACKAGE/${TCAR_CLI_NAME}-${CLI_VERSION}/g" ${FILE}
 
     # Remove absolute path to the working copy so it doesn't appear on
     # comments related to locations. Remember that people can download
