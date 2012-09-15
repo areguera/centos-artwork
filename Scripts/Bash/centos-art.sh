@@ -26,7 +26,7 @@
 declare -xr BRAND="centos"
 declare -xr TCAR_CLI_NAME="${BRAND}-art"
 declare -xr TCAR_CLI_VERSION='1.0'
-declare -xr CLI_TEMPDIR="$(mktemp -p /tmp -d ${TCAR_CLI_NAME}.sh-XXXXXX)"
+declare -xr TMPDIR="$(mktemp -p /tmp -d ${TCAR_CLI_NAME}.sh-XXXXXX)"
 
 # Initialize working copy default value.
 if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == "" ]];then
