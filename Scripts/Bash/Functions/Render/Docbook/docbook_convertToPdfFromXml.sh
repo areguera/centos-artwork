@@ -91,8 +91,9 @@ function docbook_convertToPdfFromXml {
     docbook_prepareStyles "${DOCBOOK_XSL_DIR}/docbook2fo.xsl"
 
     # Create link to `Images' directory. This is the directory where
-    # images used by documentation are stored in.
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
+    # images used by documentation are stored in. Be sure to remove
+    # previous links first to prevent a recursive creation of links.
+    ln -sf ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
 
     # Create formatting object supressing output from stderr.
     xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} 2> /dev/null
