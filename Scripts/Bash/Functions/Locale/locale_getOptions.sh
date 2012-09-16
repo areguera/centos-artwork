@@ -30,7 +30,7 @@ function locale_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,update,edit,delete,dont-create-mo"
+    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -50,17 +50,11 @@ function locale_getOptions {
 
             --quiet )
                 FLAG_QUIET="true"
-                FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
             --answer-yes )
                 FLAG_ANSWER="true"
-                shift 1
-                ;;
-
-            --dont-commit-changes )
-                FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
