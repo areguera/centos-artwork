@@ -105,12 +105,6 @@ function render {
         # copy.
         ACTIONVAL=$(cli_checkRepoDirSource "$ACTIONVAL")
 
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        ${CLI_NAME} svn --sync ${ACTIONVAL}
-
         # Define renderable directories and the way they are produced.
         # To describe the way renderable directories are produced, we
         # take the action value (ACTIONVAL) as reference and describe
@@ -124,6 +118,12 @@ function render {
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
         fi
+
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository.
+        ${CLI_NAME} svn --sync ${ACTIONVAL}
 
         # Execute action name.
         ${ACTIONNAM}
