@@ -41,9 +41,9 @@ function cli_syncroRepoChanges {
     fi
 
     # Bring changes from the repository into the working copy.
-    cli_updateRepoChanges "$LOCATIONS"
+    svn_updateRepoChanges "$LOCATIONS"
 
     # Check changes in the working copy.
-    cli_commitRepoChanges "$LOCATIONS"
+    svn_commitRepoChanges "$LOCATIONS"
 
 }
