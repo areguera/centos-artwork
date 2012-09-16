@@ -32,11 +32,23 @@ function locale_editMessages {
         cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
+    # Verify directory passed as non-option argument to be sure it
+    # supports localization.
+    locale_isLocalizable "${ACTIONVAL}"
+    if [[ $? -ne 0 ]];then
+        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
+    fi
+
     local PO_FILE=''
     local PO_FILES=''
 
     # Prepare working directory to receive translation files.
     locale_prepareWorkingDirectory ${L10N_WORKDIR}
+
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
@@ -83,5 +95,10 @@ function locale_editMessages {
     # Notice that this is required only if we were localizaing shell
     # scripts.
     locale_updateMessageBinary
+
+    # Syncronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
 
 }
