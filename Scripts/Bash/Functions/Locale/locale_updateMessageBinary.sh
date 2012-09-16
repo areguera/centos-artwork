@@ -61,7 +61,7 @@ function locale_updateMessageBinary {
     # found, otherwise the automated flow will be broken for you to
     # decide which one of two or more variants should remain in the
     # portable object.
-    msgcat ${PO_FILES} --output-file=${PO_FILE} --use-first
+    msgcat ${PO_FILES} --use-first --output-file=${PO_FILE}
     
     # Print action message.
     cli_printMessage "${MO_FILE}" --as-creating-line
