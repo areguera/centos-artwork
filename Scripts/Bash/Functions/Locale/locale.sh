@@ -25,13 +25,6 @@
 
 function locale {
 
-    # Verify current locale information to avoid English messages from
-    # being localized to themselves.  The English language is used as
-    # reference to write translatable strings inside the source files.
-    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
-        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
-    fi
-
     local ACTIONNAMS=''
     local ACTIONNAM=''
     local ACTIONVAL=''
@@ -75,7 +68,8 @@ function locale {
 
         # Verify directory passed as non-option argument to be sure it
         # supports localization.
-        if [[ ! $(cli_isLocalized "${ACTIONVAL}") == 'true' ]];then
+        locale_isLocalizable "${ACTIONVAL}"
+        if [[ $? -ne 0 ]];then
             cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
         fi
 
