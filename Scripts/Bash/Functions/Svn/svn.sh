@@ -32,13 +32,13 @@ function svn {
     # Define absolute path to Subversion command.
     SVN=/usr/bin/svn
 
+    # Interpret arguments and options passed through command-line.
+    svn_getOptions
+
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
-
-    # Interpret arguments and options passed through command-line.
-    svn_getOptions
 
     # Define action value. We use non-option arguments to define the
     # action value (ACTIONVAL) variable.
