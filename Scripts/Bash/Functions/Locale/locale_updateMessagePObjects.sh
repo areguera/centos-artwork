@@ -52,7 +52,7 @@ function locale_updateMessagePObjects {
         # Do not print msginit sterr output, use centos-art action
         # message instead.
         msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
-            --no-translator 2> /dev/null
+            --no-translator > /dev/null 2>&1
 
     fi
 
