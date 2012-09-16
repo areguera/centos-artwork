@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-1.0\n"
+"Project-Id-Version: centos-art-0.0.2\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-13 14:04-0400\n"
-"PO-Revision-Date: 2012-09-13 14:04-0400\n"
+"POT-Creation-Date: 2012-09-16 13:12-0400\n"
+"PO-Revision-Date: 2012-09-16 13:12-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -30,11 +30,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook.sh:53
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook.sh:48
 msgid "Validation failed."
 msgstr "La validación falló."
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:110
+#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:111
 msgid "Cannot produce the PDF file."
 msgstr "No se pudo producir el fichero PDF."
 
@@ -95,16 +95,20 @@ msgstr "La opción \"$OPTION\" ya se encuentra en uso."
 msgid "Created in CentOS Artwork Repository"
 msgstr "Creado en Repositorio Artístico de CentOS"
 
-#: trunk/Scripts/Bash/Functions/Render/render.sh:125
+#: trunk/Scripts/Bash/Functions/Render/Svg/svg_getTTFont.sh:68
+msgid "The font provided doesn't exist."
+msgstr "La fuente suministrada no existe."
+
+#: trunk/Scripts/Bash/Functions/Render/render.sh:119
 msgid "The path provided doesn't support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:60
+#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:159
+#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:161
 msgid "The template file doesn't exist."
 msgstr "El fichero plantilla no existe."
 
@@ -116,11 +120,11 @@ msgstr "No hay cadena de acción con la cual trabajar."
 msgid "The field definition is not valid."
 msgstr "La definición del campo no es válida."
 
-#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:84
+#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:78
 msgid "The architecture provided is not supported."
 msgstr "La arquitectura suministrada no está soportada."
 
-#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:92
+#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:86
 msgid "The release version provided is not supported."
 msgstr "La versión de la entrega suministrada no está soportada."
 
@@ -445,9 +449,6 @@ msgstr "La versión de la entrega suministrada no está soportada."
 
 #~ msgid "The bond string is required."
 #~ msgstr "La cadena de unión es necesaria."
-
-#~ msgid "The font provided doesn't exist."
-#~ msgstr "La fuente suministrada no existe."
 
 #~ msgid "The first argument cannot be empty."
 #~ msgstr "El primer argumento no puede estar vacío."
