@@ -30,7 +30,7 @@ function locale_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo"
+    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo,is-localizable"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -73,6 +73,11 @@ function locale_getOptions {
                 shift 1
                 ;;
 
+            --is-localizable )
+                ACTIONNAMS="$ACTIONNAMS locale_isLocalizable"
+                shift 1
+                ;;
+
             --dont-create-mo )
                 FLAG_DONT_CREATE_MO="true"
                 shift 1
@@ -97,7 +102,7 @@ function locale_getOptions {
     # Verify action names. When no action name is specified, use
     # edition as default action name.
     if [[ $ACTIONNAMS == '' ]];then
-        ACTIONNAMS="locale_editMessages"
+        ACTIONNAMS="locale_updateMessages"
     fi
 
     # Redefine ARGUMENTS variable using current positional parameters. 
