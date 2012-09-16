@@ -3,7 +3,8 @@
 # locale_isLocalizable.sh -- This function determines whether a file or
 # directory can have translation messages or not. This is the way we
 # standardize what locations can be localized and what cannot inside
-# the repository.
+# the repository. This function returns 0 when the path is localizable
+# and 1 when it is not.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -30,12 +31,15 @@ function locale_isLocalizable {
     local DIR=''
     local -a DIRS
 
-    # Initialize default value returned by this function.
-    local LOCALIZED='false'
-
     # Initialize location will use as reference to determine whether
     # it can have translation messages or not.
     local LOCATION="$1"
+    
+    # When no variable is passed to this function, use the action
+    # value instead.
+    if [[ $LOCATION == '' ]];then
+        LOCATION=${ACTIONVAL}
+    fi
 
     # Redefine location to be sure we'll always evaluate a directory,
     # as reference location.
@@ -61,12 +65,11 @@ function locale_isLocalizable {
     # says otherwise.
     for DIR in ${DIRS[@]};do
         if [[ $LOCATION =~ $DIR ]];then
-            LOCALIZED='true'
-            break
+            return 0
         fi
     done
 
     # Output final answer to all verifications. 
-    echo "$LOCALIZED"
+    return 1
 
 }
