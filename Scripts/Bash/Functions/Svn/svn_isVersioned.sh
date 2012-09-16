@@ -27,22 +27,11 @@
 
 function svn_isVersioned {
 
-    # Initialize absolute path using first positional parameter as
-    # reference.
-    local LOCATION="$1"
-
-    # Verify location to be sure it really exists.
-    cli_checkFiles $LOCATION
-
     # Use subversion to determine whether the location is under
     # version control or not.
-    svn info $LOCATION &> /dev/null
+    ${SVN} info $ACTIONVAL > /dev/null 2>&1
 
     # Verify subversion exit status and print output.
-    if [[ $? -eq 0 ]];then
-        echo 'true'
-    else
-        echo 'false'
-    fi
+    echo $?
 
 }
