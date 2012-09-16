@@ -69,8 +69,8 @@ declare -xr DOCBOOK_MODELS_DIR=${TCAR_WORKDIR}/trunk/Documentation/Models/Docboo
 declare -xr DOCBOOK_MODELS_LOCALES_DIR=${TCAR_WORKDIR}/trunk/Locales/Documentation/Models/Docbook
 
 # Initialize command-line interface.
-if [[ -x ${CLI_FUNCDIR}/Commons/init.sh ]];then
-    . ${CLI_FUNCDIR}/Commons/init.sh; export -f init ; init "$@"
+if [[ -x ${CLI_FUNCDIR}/Commons/cli.sh ]];then
+    . ${CLI_FUNCDIR}/Commons/cli.sh; export -f 'cli'; cli "$@"
 fi
 
 # End script execution correctly.

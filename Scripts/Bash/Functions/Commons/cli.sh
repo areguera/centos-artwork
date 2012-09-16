@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# init.sh -- This function initiates the application's command-line
+# cli.sh -- This function initiates the application's command-line
 # interface.  Variables defined in this function are accesible by all
 # other functions. The cli function is the first script executed by
 # the application command-line onces invoked.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function init {
+function cli {
 
     # Initialize global variables.
     local CLI_FUNCNAME=''
