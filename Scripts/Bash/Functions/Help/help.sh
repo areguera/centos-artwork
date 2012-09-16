@@ -191,7 +191,7 @@ function help {
             # the working copy and changes in the working copy
             # committed up to repository.
             if [[ -d ${MANUAL_CHANGED_DIRS} ]];then
-                svn_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
+                ${CLI_NAME} svn --sync ${MANUAL_CHANGED_DIRS}
             fi
 
             # Initialize documentation format functionalities. At
@@ -234,6 +234,6 @@ function help {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    svn_syncroRepoChanges ${MANUAL_CHANGED_DIRS}
+    ${CLI_NAME} svn --sync ${MANUAL_CHANGED_DIRS}
 
 }
