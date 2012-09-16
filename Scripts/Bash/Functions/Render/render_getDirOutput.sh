@@ -71,7 +71,8 @@ function render_getDirOutput {
     # duplicating content (e.g., icons, brands, etc.) which doesn't
     # have any translation, nor any need to be translated.
     if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-        if [[ $(cli_isLocalized $TEMPLATE) == 'true' ]];then
+        ${CLI_NAME} locale --is-localizable ${TEMPLATE}
+        if [[ $? -eq 0 ]];then
             OUTPUT=${OUTPUT}/$(cli_getCurrentLocale)
         fi
     fi
