@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_isLocalized.sh -- This function determines whether a file or
+# locale_isLocalizable.sh -- This function determines whether a file or
 # directory can have translation messages or not. This is the way we
 # standardize what locations can be localized and what cannot inside
 # the repository.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_isLocalized {
+function locale_isLocalizable {
 
     local DIR=''
     local -a DIRS
