@@ -69,7 +69,7 @@ function tuneup {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        svn_syncroRepoChanges
+        ${CLI_NAME} svn --sync ${ACTIONVAL}
 
         # Execute action name.
         $ACTIONNAM
@@ -78,7 +78,7 @@ function tuneup {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        svn_syncroRepoChanges
+        ${CLI_NAME} svn --sync ${ACTIONVAL}
 
     done
 
