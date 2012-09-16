@@ -64,11 +64,6 @@ function locale {
     # only non-option arguments remain in it. 
     eval set -- "${ARGUMENTS}"
 
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    svn_syncroRepoChanges "${L10N_BASEDIR}"
-
     # Loop through non-option arguments passed to centos-art.sh script
     # through its command-line.
     for ACTIONVAL in "$@";do
@@ -91,6 +86,12 @@ function locale {
         L10N_WORKDIR=$(echo "${ACTIONVAL}" \
             | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/$(cli_getCurrentLocale)
 
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository.
+        ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
+
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization
         # actions will be executed in the same order they were
@@ -99,11 +100,12 @@ function locale {
             ${ACTIONNAM}
         done
 
-    done
+        # Syncronize changes between repository and working copy. At
+        # this point, changes in the repository are merged in the
+        # working copy and changes in the working copy committed up to
+        # repository.
+        ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
 
-    # Syncronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    svn_syncroRepoChanges "${L10N_BASEDIR}"
+    done
 
 }
