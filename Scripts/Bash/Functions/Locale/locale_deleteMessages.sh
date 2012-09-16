@@ -37,6 +37,6 @@ function locale_deleteMessages {
     cli_checkFiles "$L10N_WORKDIR"
 
     # Delete localization working directory using subversion quietly.
-    svn del "$L10N_WORKDIR" --quiet
+    ${SVN} del "$L10N_WORKDIR" --quiet
 
 }
