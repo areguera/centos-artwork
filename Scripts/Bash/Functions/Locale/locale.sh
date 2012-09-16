@@ -66,25 +66,12 @@ function locale {
         # against source locations in the working copy.
         ACTIONVAL=$(cli_checkRepoDirSource "${ACTIONVAL}")
 
-        # Verify directory passed as non-option argument to be sure it
-        # supports localization.
-        locale_isLocalizable "${ACTIONVAL}"
-        if [[ $? -ne 0 ]];then
-            cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-        fi
-
         # Define localization working directory using directory passed
         # as non-option argument. The localization working directory
         # is the place where POT and PO files are stored inside the
         # working copy.
         L10N_WORKDIR=$(echo "${ACTIONVAL}" \
             | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/$(cli_getCurrentLocale)
-
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
 
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization
@@ -93,12 +80,6 @@ function locale {
         for ACTIONNAM in ${ACTIONNAMS};do
             ${ACTIONNAM}
         done
-
-        # Syncronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
 
     done
 
