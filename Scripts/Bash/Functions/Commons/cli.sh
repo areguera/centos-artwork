@@ -54,12 +54,6 @@ function cli {
     # doesn't.
     local FLAG_ANSWER='false'
 
-    # Initialize default value to don't commit changes flag. The don't
-    # commit changes flag (--dont-commit-changes) controls whether
-    # centos-art.sh script syncronizes changes between the central
-    # repository and the working copy. By default, it does.
-    local FLAG_DONT_COMMIT_CHANGES='false'
-
     # Initialize list of common functionalities to load.
     local FILES=$(ls ${CLI_FUNCDIR}/Commons/*.sh)
 
