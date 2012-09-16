@@ -29,7 +29,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getTTFont {
+function svg_getTTFont {
 
     local -a FONT_PATTERNS
     local FONT_PATTERN=''
