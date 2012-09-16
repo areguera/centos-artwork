@@ -51,7 +51,7 @@ function texinfo_deleteEntryManual {
         svn del ${MANUAL_BASEDIR} --quiet --force
 
         # Redefine absolute paths to changed directory.  This is
-        # required in order for `cli_commitRepoChanges' to be aware
+        # required in order for `svn_commitRepoChanges' to be aware
         # that we are deleting MANUAL_BASEDIR, not
         # MANUAL_BASEDIR_L10N.
         MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR}"
