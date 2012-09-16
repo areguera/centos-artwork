@@ -46,7 +46,6 @@ function prepare_getOptions {
 
             --quiet )
                 FLAG_QUIET="true"
-                FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
