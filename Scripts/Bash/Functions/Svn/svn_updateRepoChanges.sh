@@ -26,11 +26,6 @@
 
 function svn_updateRepoChanges {
 
-    # Verify don't commit changes flag.
-    if [[ $FLAG_DONT_COMMIT_CHANGES != 'false' ]];then
-        return
-    fi
-
     local -a FILES
     local -a INFO
     local -a FILESNUM
@@ -38,28 +33,18 @@ function svn_updateRepoChanges {
     local UPDATEOUT=''
     local PREDICATE=''
     local CHNGTOTAL=0
-    local LOCATIONS=''
-
-    # Define source location the subversion update action will take
-    # place on. If arguments are provided use them as srouce location.
-    # Otherwise use action value as default source location.
-    if [[ "$@" != '' ]];then
-        LOCATIONS="$@"
-    else
-        LOCATIONS="$ACTIONVAL"
-    fi
 
     # Update working copy and retrive update output.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
-    UPDATEOUT=$(svn update ${LOCATIONS})
+    UPDATEOUT=$(${SVN} update ${ACTIONVAL})
 
     # Define path of files considered recent modifications from
     # central repository to working copy.
-    FILES[0]=$(echo "$UPDATEOUT" | egrep "^A.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[1]=$(echo "$UPDATEOUT" | egrep "^D.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[2]=$(echo "$UPDATEOUT" | egrep "^U.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[3]=$(echo "$UPDATEOUT" | egrep "^C.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[4]=$(echo "$UPDATEOUT" | egrep "^G.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[0]=$(echo "$UPDATEOUT" | egrep "^A.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[1]=$(echo "$UPDATEOUT" | egrep "^D.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[2]=$(echo "$UPDATEOUT" | egrep "^U.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[3]=$(echo "$UPDATEOUT" | egrep "^C.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[4]=$(echo "$UPDATEOUT" | egrep "^G.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
 
     # Define description of files considered recent modifications from
     # central repository to working copy.
