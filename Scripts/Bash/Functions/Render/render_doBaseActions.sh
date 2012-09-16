@@ -105,12 +105,12 @@ function render_doBaseActions {
         if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/(Models|Manuals)/Docbook/.+$" ]];then
             TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
                 --maxdepth="1" --mindepth="1" \
-                --pattern="$(cli_getRepoName ${TEMPLATE} -f)\.${RENDER_EXTENSION}$" \
+                --pattern="$(cli_getRepoName ${TEMPLATE} -f)\.${RENDER_EXTENSION}" \
                 --type="f")
         else
             TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
                 --maxdepth="1" --mindepth="1" \
-                --pattern="${FLAG_FILTER}\.${RENDER_EXTENSION}$" \
+                --pattern="${FLAG_FILTER}\.${RENDER_EXTENSION}" \
                 --type="f")
         fi
         for FILE in $TEMPLATES;do
