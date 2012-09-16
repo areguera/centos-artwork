@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getCurrentLocale.sh -- This function checks LANG environment
+# locale_getCurrentLocale.sh -- This function checks LANG environment
 # variable and returns the current locale information in the LL_CC
 # format.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getCurrentLocale {
+function locale_getCurrentLocale {
 
     local CURRENTLOCALE=''
     local OPTION="$1"
