@@ -29,7 +29,12 @@
 
 function locale_updateMessages {
 
-    local ACTIONNAM=''
+    # Verify current locale information to avoid English messages from
+    # being localized to themselves.  The English language is used as
+    # reference to write translatable strings inside the source files.
+    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
+        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
+    fi
 
     # Prepare working directory to receive translation files.
     locale_prepareWorkingDirectory ${L10N_WORKDIR}
