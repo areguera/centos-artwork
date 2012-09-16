@@ -92,7 +92,7 @@ function cli {
     # provided, execute the help functionality and end script
     # execution.
     if [[ ! "$1" ]] || [[ ! "$1" =~ '^[[:alpha:]]' ]];then
-        exec ${CLI_BASEDIR}/${TCAR_CLI_NAME}.sh help
+        exec ${CLI_BASEDIR}/${CLI_NAME}.sh help
         exit
     fi
 
