@@ -28,6 +28,6 @@
 
 function prepare_updateLocales {
 
-    ${CLI_BASEDIR}/${TCAR_CLI_NAME}.sh locale trunk/Scripts/Bash --update --dont-commit-changes
+    ${CLI_BASEDIR}/${CLI_NAME}.sh locale trunk/Scripts/Bash --update --dont-commit-changes
 
 }
