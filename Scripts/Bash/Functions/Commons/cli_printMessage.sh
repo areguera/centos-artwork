@@ -163,7 +163,7 @@ function cli_printMessage {
             local ORIGIN="$(caller 1 | gawk '{ print $2 " " $1 }')"
 
             # Build the error message.
-            cli_printMessage "${TCAR_CLI_NAME} (${ORIGIN}): $MESSAGE" --as-stderr-line
+            cli_printMessage "${CLI_NAME} (${ORIGIN}): $MESSAGE" --as-stderr-line
             cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
             ;;
 
