@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# svn_commitRepoChanges.sh -- This function realizes a subversion
-# commit command agains the workgin copy in order to send local
-# changes up to central repository.
+# svn_commitRepoChanges.sh -- This function explores the working copy
+# and commits changes up to central repository after checking changes
+# and adding unversioned files.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -47,7 +47,7 @@ function svn_commitRepoChanges {
     # Process location based on its path information.
     if [[ $ACTIONVAL =~ 'trunk/Documentation/Manuals/Texinfo)' ]];then
         STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
-    elif [[ $ACTIONVAL =~ 'trunk/Manuals/Documentation/Manuals/Docbook' ]];then
+    elif [[ $ACTIONVAL =~ 'trunk/Documentation/Manuals/Docbook' ]];then
         STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
     elif [[ $ACTIONVAL =~ 'trunk/Identity' ]];then
         STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
@@ -102,44 +102,64 @@ function svn_commitRepoChanges {
 
     done
 
-    # Check total amount of changes and, if any, check differences and
-    # commit them up to central repository.
-    if [[ $CHNGTOTAL -gt 0 ]];then
+    # Outout separator line.
+    cli_printMessage '-' --as-separator-line
 
-        # Outout separator line.
-        cli_printMessage '-' --as-separator-line
+    # When files have changed in the target location, show which these
+    # files are and request user to see such changes and then, for
+    # commtting them up to the central repository.
+    if [[ ${FILESNUM[0]} -gt 0 ]];then
 
-        # In the very specific case unversioned files, we need to add
-        # them to the repository first, in order to make them
-        # available for subversion commands (e.g., `copy') Otherwise,
-        # if no unversioned file is found, go ahead with change
-        # differences and committing. Notice that if there is mix of
-        # changes (e.g., aditions and modifications), addition take
-        # preference and no other change is considered.  In order
-        # for other changes to be considered, be sure no adition is
-        # present, or that they have already happened.
-        if [[ ${FILESNUM[1]} -gt 0 ]];then
+        # Verify changes on locations.
+        cli_printMessage "`ngettext "The following file has changed" \
+            "The following files have changed" ${FILESNUM[0]}`:"
+        for FILE in ${FILES[0]};do
+            cli_printMessage "$FILE" --as-response-line
+        done
+        cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
+        ${SVN} diff ${FILES[0]} | less
 
-            cli_printMessage "`ngettext "The following file is unversioned" \
-                "The following files are unversioned" ${FILESNUM[1]}`:"
-            for FILE in ${FILES[1]};do
-                cli_printMessage "$FILE" --as-response-line
-            done
-            cli_printMessage "`ngettext "Do you want to add it now?" \
-                "Do you want to add them now?" ${FILESNUM[1]}`" --as-yesornorequest-line
-            ${SVN} add ${FILES[1]} --quiet
-
-        else
-
-            # Verify changes on locations.
-            cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-            ${SVN} diff $ACTIONVAL | less
-
-            # Commit changes on locations.
-            cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-            ${SVN} commit $ACTIONVAL
-
-        fi
+        # Commit changes up to central repository.
+        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
+        ${SVN} commit ${FILES[0]}
 
     fi
+
+    # When there are unversioned files in the target location, show
+    # which these files are and request user to add such files into
+    # the working copy.
+    if [[ ${FILESNUM[1]} -gt 0 ]];then
+
+        cli_printMessage "`ngettext "The following file is unversioned" \
+            "The following files are unversioned" ${FILESNUM[1]}`:"
+        for FILE in ${FILES[1]};do
+            cli_printMessage "$FILE" --as-response-line
+        done
+        cli_printMessage "`ngettext "Do you want to add it now?" \
+            "Do you want to add them now?" ${FILESNUM[1]}`" --as-yesornorequest-line
+        ${SVN} add ${FILES[1]} --quiet
+
+        # Commit changes up to central repository.
+        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
+        ${SVN} commit ${FILES[1]}
+
+    fi
+
+    # When there are added files in the target location, show which
+    # these files are and request user to commit them up to central
+    # repository.
+    if [[ ${FILESNUM[3]} -gt 0 ]];then
+
+        # Verify changes on locations.
+        cli_printMessage "`ngettext "The following file has changed" \
+            "The following files have changed" ${FILESNUM[3]}`:"
+        for FILE in ${FILES[3]};do
+            cli_printMessage "$FILE" --as-response-line
+        done
+
+        # Commit added files up to central repository.
+        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
+        ${SVN} commit ${FILES[0]}
+    fi
+
 }
