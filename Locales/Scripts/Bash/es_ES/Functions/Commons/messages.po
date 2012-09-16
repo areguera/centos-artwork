@@ -19,16 +19,21 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-1.0\n"
+"Project-Id-Version: centos-art-0.0.2\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-13 13:58-0400\n"
-"PO-Revision-Date: 2012-09-13 13:58-0400\n"
+"POT-Creation-Date: 2012-09-16 13:12-0400\n"
+"PO-Revision-Date: 2012-09-16 13:12-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
 "Content-Type: textplain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: trunk/Scripts/Bash/Functions/Commons/cli.sh:66
+#, sh-format
+msgid "The $FILE needs to have execution rights."
+msgstr "El fichero $FILE necesita tener permiso de ejecución."
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:93
 #, sh-format
@@ -96,59 +101,11 @@ msgstr "El primer argumento de posición es obligatorios."
 msgid "The location \"$LOCATION\" is not valid."
 msgstr "La ubicación \"$LOCATION\" no es válida."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:54
-msgid "Checking changes in the working copy"
-msgstr "Verificando cambios en la copia de trabajo"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:95
-msgid "Modified"
-msgstr "Modificado"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:96
-msgid "Unversioned"
-msgstr "Sin versionar"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:97
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:67
-msgid "Deleted"
-msgstr "Borrado"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:98
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:66
-msgid "Added"
-msgstr "Adicionado"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:118
-msgid "file in the working copy"
-msgid_plural "files in the working copy"
-msgstr[0] "fichero en la copia de trabajo."
-msgstr[1] "ficheros en la copia de trabajo."
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:147
-msgid "The following file is unversioned"
-msgid_plural "The following files are unversioned"
-msgstr[0] "El fichero siguiente no está bajo control de versiones."
-msgstr[1] "Los ficheros siguientes no están bajo control de versiones."
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:152
-msgid "Do you want to add it now?"
-msgid_plural "Do you want to add them now?"
-msgstr[0] "¿Desea adicionarlo ahora?"
-msgstr[1] "¿Desea adicionarlos ahora?"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:159
-msgid "Do you want to see changes now?"
-msgstr "¿Desea ver los cambios ahora?"
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_commitRepoChanges.sh:163
-msgid "Do you want to commit changes now?"
-msgstr "¿Desea enviar los cambios ahora?"
-
 #: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:30
 msgid "At least one argument must be passed."
 msgstr "Al menos un argumento debe ser pasado."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:64
+#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:68
 msgid "No function file was found."
 msgstr "Ningún fichero de función fue encontrado."
 
@@ -1850,14 +1807,6 @@ msgstr ""
 msgid "Zulu"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_getRepoParallelDirs.sh:40
-msgid "The bond string is required."
-msgstr "La cadena de unión es necesaria."
-
-#: trunk/Scripts/Bash/Functions/Commons/cli_getTTFont.sh:68
-msgid "The font provided doesn't exist."
-msgstr "La fuente suministrada no existe."
-
 #: trunk/Scripts/Bash/Functions/Commons/cli_getTemporalFile.sh:38
 msgid "The first argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
@@ -2005,32 +1954,64 @@ msgstr "sí"
 msgid "no"
 msgstr "no"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:53
-msgid "Bringing changes from the repository into the working copy"
-msgstr "Acarreando cambios desde el repositorio a la copia de trabajo"
+#~ msgid "Checking changes in the working copy"
+#~ msgstr "Verificando cambios en la copia de trabajo"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:68
-msgid "Updated"
-msgstr "Actualizado"
+#~ msgid "Modified"
+#~ msgstr "Modificado"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:69
-msgid "Conflicted"
-msgstr "En conflicto"
+#~ msgid "Unversioned"
+#~ msgstr "Sin versionar"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:70
-msgid "Merged"
-msgstr "Mezclado"
+#~ msgid "Deleted"
+#~ msgstr "Borrado"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_updateRepoChanges.sh:90
-msgid "file from the repository"
-msgid_plural "files from the repository"
-msgstr[0] "fichero desde el repositorio."
-msgstr[1] "ficheros desde el repositorio."
+#~ msgid "Added"
+#~ msgstr "Adicionado"
 
-#: trunk/Scripts/Bash/Functions/Commons/init.sh:72
-#, sh-format
-msgid "The $FILE needs to have execution rights."
-msgstr "El fichero $FILE necesita tener permiso de ejecución."
+#~ msgid "file in the working copy"
+#~ msgid_plural "files in the working copy"
+#~ msgstr[0] "fichero en la copia de trabajo."
+#~ msgstr[1] "ficheros en la copia de trabajo."
+
+#~ msgid "The following file is unversioned"
+#~ msgid_plural "The following files are unversioned"
+#~ msgstr[0] "El fichero siguiente no está bajo control de versiones."
+#~ msgstr[1] "Los ficheros siguientes no están bajo control de versiones."
+
+#~ msgid "Do you want to add it now?"
+#~ msgid_plural "Do you want to add them now?"
+#~ msgstr[0] "¿Desea adicionarlo ahora?"
+#~ msgstr[1] "¿Desea adicionarlos ahora?"
+
+#~ msgid "Do you want to see changes now?"
+#~ msgstr "¿Desea ver los cambios ahora?"
+
+#~ msgid "Do you want to commit changes now?"
+#~ msgstr "¿Desea enviar los cambios ahora?"
+
+#~ msgid "The bond string is required."
+#~ msgstr "La cadena de unión es necesaria."
+
+#~ msgid "The font provided doesn't exist."
+#~ msgstr "La fuente suministrada no existe."
+
+#~ msgid "Bringing changes from the repository into the working copy"
+#~ msgstr "Acarreando cambios desde el repositorio a la copia de trabajo"
+
+#~ msgid "Updated"
+#~ msgstr "Actualizado"
+
+#~ msgid "Conflicted"
+#~ msgstr "En conflicto"
+
+#~ msgid "Merged"
+#~ msgstr "Mezclado"
+
+#~ msgid "file from the repository"
+#~ msgid_plural "files from the repository"
+#~ msgstr[0] "fichero desde el repositorio."
+#~ msgstr[1] "ficheros desde el repositorio."
 
 #~ msgid "The parameters you provided are not supported."
 #~ msgstr "Los parámetros que usted suministró no están soportados."
