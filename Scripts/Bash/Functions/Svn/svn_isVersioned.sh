@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_isVersioned.sh -- This function determines whether a location is
+# svn_isVersioned.sh -- This function determines whether a location is
 # under version control or not. When the location is under version
 # control, this function returns `true'. when the location isn't under
 # version control, this function returns `false'.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_isVersioned {
+function svn_isVersioned {
 
     # Initialize absolute path using first positional parameter as
     # reference.

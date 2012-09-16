@@ -62,7 +62,7 @@ function svn_commitRepoChanges {
     for LOCATION in $LOCATIONS;do
 
         # Don't process location outside of version control.
-        if [[ $(cli_isVersioned $LOCATION) == 'false' ]];then
+        if [[ $(svn_isVersioned $LOCATION) == 'false' ]];then
             continue
         fi
 

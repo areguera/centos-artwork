@@ -25,6 +25,35 @@
 
 function svn {
 
-    return
+    local ACTIONNAM=''
+    local ACTIONNAMS=''
+    local ACTIONVAL=''
+
+    # Define absolute path to Subversion command.
+    SVN=/usr/bin/svn
+
+    # Redefine positional parameters using ARGUMENTS. At this point,
+    # option arguments have been removed from ARGUMENTS variable and
+    # only non-option arguments remain in it. 
+    eval set -- "$ARGUMENTS"
+
+    # Interpret arguments and options passed through command-line.
+    svn_getOptions
+
+    # Define action value. We use non-option arguments to define the
+    # action value (ACTIONVAL) variable.
+    for ACTIONVAL in "$@";do
+        
+        # Check action value. Be sure the action value matches the
+        # convenctions defined for source locations inside the working
+        # copy.
+        ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
+
+        # Execute action names.
+        for ACTIONNAM in $ACTIONNAMS;do
+            $ACTIONNAM
+        done
+
+    done
 
 }

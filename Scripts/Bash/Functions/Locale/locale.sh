@@ -67,7 +67,7 @@ function locale {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges "${L10N_BASEDIR}"
+    svn_syncroRepoChanges "${L10N_BASEDIR}"
 
     # Loop through non-option arguments passed to centos-art.sh script
     # through its command-line.
@@ -104,6 +104,6 @@ function locale {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_syncroRepoChanges "${L10N_BASEDIR}"
+    svn_syncroRepoChanges "${L10N_BASEDIR}"
 
 }

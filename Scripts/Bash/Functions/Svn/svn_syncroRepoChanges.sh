@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_syncroRepoChanges.sh -- This function syncronizes both central
+# svn_syncroRepoChanges.sh -- This function syncronizes both central
 # repository and working copy performing a subversion update command
 # first and a subversion commit command later.
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_syncroRepoChanges {
+function svn_syncroRepoChanges {
 
     # Verify don't commit changes flag.
     if [[ $FLAG_DONT_COMMIT_CHANGES != 'false' ]];then
@@ -41,9 +41,11 @@ function cli_syncroRepoChanges {
     fi
 
     # Bring changes from the repository into the working copy.
+    cli_exportFunctions "Svn/svn_updateRepoChanges"
     svn_updateRepoChanges "$LOCATIONS"
 
     # Check changes in the working copy.
+    cli_exportFunctions "Svn/svn_commitRepoChanges"
     svn_commitRepoChanges "$LOCATIONS"
 
 }

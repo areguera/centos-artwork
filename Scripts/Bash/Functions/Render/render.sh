@@ -109,7 +109,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_syncroRepoChanges
+        svn_syncroRepoChanges
 
         # Define renderable directories and the way they are produced.
         # To describe the way renderable directories are produced, we
@@ -132,7 +132,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_syncroRepoChanges
+        svn_syncroRepoChanges
 
     done
 

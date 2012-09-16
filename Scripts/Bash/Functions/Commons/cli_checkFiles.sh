@@ -116,7 +116,7 @@ function cli_checkFiles {
 
             -n|--versioned )
                 for FILE in $(echo $FILES);do
-                    if [[ $(cli_isVersioned $FILE) == 'false' ]];then
+                    if [[ $(svn_isVersioned $FILE) == 'false' ]];then
                         cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not versioned."`" --as-error-line
                     fi
                 done
