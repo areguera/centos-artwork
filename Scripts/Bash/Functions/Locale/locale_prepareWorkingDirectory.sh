@@ -39,8 +39,7 @@ function locale_prepareWorkingDirectory {
         # At this point, changes in the repository are not merged in
         # the working copy, but chages in the working copy do are
         # committed up to repository.
-        cli_exportFunctions "Svn/svn_commitRepoChanges"
-        svn_commitRepoChanges "${L10N_BASEDIR}"
+        ${CLI_NAME} svn --commit "${L10N_BASEDIR}"
 
     elif [[ $L10N_WORKDIR == '' ]];then
     
