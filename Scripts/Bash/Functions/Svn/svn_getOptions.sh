@@ -29,7 +29,7 @@ function svn_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="sync,dont-commit-changes,update,commit"
+    local ARGSL="sync,update,commit,is-versioned"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_parseArguments
@@ -43,7 +43,7 @@ function svn_getOptions {
         case "$1" in
 
             --sync )
-                ACTIONNAMS="${ACTIONNAMS} svn_syncRepoChanges"
+                ACTIONNAMS="${ACTIONNAMS} svn_syncroRepoChanges"
                 shift 1
                 ;;
 
@@ -57,8 +57,8 @@ function svn_getOptions {
                 shift 1
                 ;;
 
-            --dont-commit-changes )
-                FLAG_DONT_COMMIT_CHANGES="true"
+            --is-versioned )
+                ACTIONNAMS="${ACTIONNAMS} svn_isVersioned"
                 shift 1
                 ;;
 
@@ -80,5 +80,12 @@ function svn_getOptions {
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
+
+    # Verify non-option arguments passed to command-line. If there
+    # isn't any, redefine the ARGUMENTS variable to use the current
+    # location the functionality was called from.
+    if [[ $ARGUMENTS == '' ]];then
+        ARGUMENTS=${PWD}
+    fi
 
 }
