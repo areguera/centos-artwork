@@ -43,6 +43,6 @@ function prepare_updateImages {
     # the image preparation process, all images that need to hold
     # branding information will be rendered using The CentOS Brand in
     # it.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render $DIRS --dont-commit-changes --with-brands
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render $DIRS --with-brands
 
 }
