@@ -33,7 +33,7 @@ function svg_convertPngToKsplash {
     local COUNT=0
 
     # Define font used to print bottom splash message.
-    FONT=$(cli_getTTFont "DejaVuLGCSans-Bold")
+    FONT=$(svg_getTTFont "DejaVuLGCSans-Bold")
 
     # Check existence of font file.
     cli_checkFiles "$FONT"
