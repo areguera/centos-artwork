@@ -29,7 +29,7 @@ function render_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,dont-commit-changes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands"
+    local ARGSL="filter:,quiet,answer-yes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands"
 
     # Redefine ARGUMENTS variable using getopt output.
     cli_parseArguments
@@ -49,17 +49,11 @@ function render_getOptions {
 
             --quiet )
                 FLAG_QUIET="true"
-                FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
             --answer-yes )
                 FLAG_ANSWER="true"
-                shift 1
-                ;;
-
-            --dont-commit-changes )
-                FLAG_DONT_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
