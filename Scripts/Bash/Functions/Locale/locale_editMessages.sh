@@ -25,6 +25,13 @@
 
 function locale_editMessages {
 
+    # Verify current locale information to avoid English messages from
+    # being localized to themselves.  The English language is used as
+    # reference to write translatable strings inside the source files.
+    if [[ $(cli_getCurrentLocale) =~ '^en' ]];then
+        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
+    fi
+
     local PO_FILE=''
     local PO_FILES=''
 
