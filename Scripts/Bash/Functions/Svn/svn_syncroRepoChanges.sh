@@ -26,26 +26,16 @@
 
 function svn_syncroRepoChanges {
 
-    # Verify don't commit changes flag.
-    if [[ $FLAG_DONT_COMMIT_CHANGES != 'false' ]];then
+    # Verify the location is a working copy. Whe it is not a working
+    # copy don't do any subversion stuff in it.
+    if [[ $(svn_isVersioned) != 0 ]];then
         return
     fi
 
-    # Define source location the subversion update action will take
-    # place on. If arguments are provided use them as srouce location.
-    # Otherwise use action value as default source location.
-    if [[ "$@" != '' ]];then
-        LOCATIONS="$@"
-    else
-        LOCATIONS="$ACTIONVAL"
-    fi
-
     # Bring changes from the repository into the working copy.
-    cli_exportFunctions "Svn/svn_updateRepoChanges"
-    svn_updateRepoChanges "$LOCATIONS"
+    svn_updateRepoChanges
 
     # Check changes in the working copy.
-    cli_exportFunctions "Svn/svn_commitRepoChanges"
-    svn_commitRepoChanges "$LOCATIONS"
+    svn_commitRepoChanges
 
 }
