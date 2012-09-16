@@ -27,7 +27,9 @@
 
 function locale_getLocales {
 
+    local LOCALE=/usr/bin/locale
+
     # Print locales supported by centos-art.sh script.
-    locale -a | egrep '^[a-z]{2,3}_[A-Z]{2}$' | sort | uniq
+    ${LOCALE} -a | egrep '^[a-z]{2,3}_[A-Z]{2}$' | sort | uniq
 
 }
