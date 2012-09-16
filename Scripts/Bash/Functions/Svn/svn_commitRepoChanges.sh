@@ -26,11 +26,6 @@
 
 function svn_commitRepoChanges {
 
-    # Verify `--dont-commit-changes' option.
-    if [[ $FLAG_DONT_COMMIT_CHANGES == 'true' ]];then
-        return
-    fi
-
     local -a FILES
     local -a INFO
     local -a FILESNUM
@@ -38,17 +33,6 @@ function svn_commitRepoChanges {
     local STATUSOUT=''
     local PREDICATE=''
     local CHNGTOTAL=0
-    local LOCATIONS=''
-    local LOCATION=''
-
-    # Define source location the subversion status action will take
-    # place on. If arguments are provided use them as srouce location.
-    # Otherwise use action value as default source location.
-    if [[ "$@" != '' ]];then
-        LOCATIONS="$@"
-    else
-        LOCATIONS="$ACTIONVAL"
-    fi
 
     # Print action message.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
@@ -59,25 +43,17 @@ function svn_commitRepoChanges {
     # copy, so they are not considered for evaluation here. But take
     # care, sometimes output files are in the same format of source
     # files, so we need to differentiate them using their locations.
-    for LOCATION in $LOCATIONS;do
 
-        # Don't process location outside of version control.
-        if [[ $(svn_isVersioned $LOCATION) == 'false' ]];then
-            continue
-        fi
-
-        # Process location based on its path information.
-        if [[ $LOCATION =~ 'trunk/Documentation/Manuals/Texinfo)' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
-        elif [[ $LOCATION =~ 'trunk/Manuals/Documentation/Manuals/Docbook' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
-        elif [[ $LOCATION =~ 'trunk/Identity' ]];then
-            STATUSOUT="$(svn status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
-        else
-            STATUSOUT="$(svn status ${LOCATION})\n$STATUSOUT"
-        fi
-
-    done
+    # Process location based on its path information.
+    if [[ $ACTIONVAL =~ 'trunk/Documentation/Manuals/Texinfo)' ]];then
+        STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
+    elif [[ $ACTIONVAL =~ 'trunk/Manuals/Documentation/Manuals/Docbook' ]];then
+        STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
+    elif [[ $ACTIONVAL =~ 'trunk/Identity' ]];then
+        STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
+    else
+        STATUSOUT="$(${SVN} status ${ACTIONVAL})\n$STATUSOUT"
+    fi
 
     # Sanitate status output. Expand new lines, remove leading spaces
     # and empty lines.
@@ -85,10 +61,10 @@ function svn_commitRepoChanges {
 
     # Define path fo files considered recent modifications from
     # working copy up to central repository.
-    FILES[0]=$(echo "$STATUSOUT" | egrep "^M.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[2]=$(echo "$STATUSOUT" | egrep "^D.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
-    FILES[3]=$(echo "$STATUSOUT" | egrep "^A.+$(cli_getRepoTLDir "${LOCATIONS}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${LOCATIONS}").+)$,\1,")
+    FILES[0]=$(echo "$STATUSOUT" | egrep "^M.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[2]=$(echo "$STATUSOUT" | egrep "^D.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[3]=$(echo "$STATUSOUT" | egrep "^A.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
 
     # Define description of files considered recent modifications from
     # working copy up to central repository.
@@ -151,20 +127,19 @@ function svn_commitRepoChanges {
             done
             cli_printMessage "`ngettext "Do you want to add it now?" \
                 "Do you want to add them now?" ${FILESNUM[1]}`" --as-yesornorequest-line
-            svn add ${FILES[1]} --quiet
+            ${SVN} add ${FILES[1]} --quiet
 
         else
 
             # Verify changes on locations.
             cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-            svn diff $LOCATIONS | less
+            ${SVN} diff $ACTIONVAL | less
 
             # Commit changes on locations.
             cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-            svn commit $LOCATIONS
+            ${SVN} commit $ACTIONVAL
 
         fi
 
     fi
-
 }
