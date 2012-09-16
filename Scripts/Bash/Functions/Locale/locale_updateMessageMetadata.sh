@@ -44,10 +44,14 @@ function locale_updateMessageMetadata {
     cli_checkFiles "${FILE}"
 
     # Define pattern lines. The pattern lines are put inside portable
-    # objects through xgettext and xml2po commands .
+    # objects through xgettext and xml2po commands. In the case of
+    # Last-Translators, be sure to remplace it only when it is empty
+    # or refer the Documentation SIG only. This way translators' names
+    # will survive metadata updates. We don't want they have to type
+    # their name each time they edit a file.
     SRC[0]="\"Project-Id-Version:"
     SRC[1]="\"Report-Msgid-Bugs-To:"
-    SRC[2]="\"Last-Translator:"
+    SRC[2]="\"Last-Translator: (Documentation SIG)?"
     SRC[3]="\"Language-Team:"
     SRC[4]="\"PO-Revision-Date:"
 
