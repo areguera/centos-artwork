@@ -150,7 +150,7 @@ function render_doBaseActions {
 
             # Define final location of translation file.
             TRANSLATION=$(dirname $FILE \
-               | sed -r 's!trunk/(Documentation|Identity)!trunk/Locales/\1!')/$(cli_getCurrentLocale)/messages.po
+               | sed -r 's!trunk/(Documentation|Identity)!trunk/Locales/\1!')/$(${CLI_NAME} locale --get-current-locale)/messages.po
 
             # Define final location of template file.
             TEMPLATE=${FILE}
