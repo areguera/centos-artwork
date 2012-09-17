@@ -113,8 +113,8 @@ function cli_printUrl {
                 ;;
 
             --with-locale )
-                if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-                    URL="${URL}$(cli_getCurrentLocale '--langcode-only')/"
+                if [[ ! ${LANG} =~ '^en' ]];then
+                    URL="${URL}$(${CLI_NAME} locale --get-current-langcode)/"
                 fi
                 shift 1
                 ;;
