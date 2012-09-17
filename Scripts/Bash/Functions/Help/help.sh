@@ -34,7 +34,7 @@ function help {
     local FLAG_SEARCH=""
 
     # Initialize manual's language.
-    local MANUAL_L10N=$(cli_getCurrentLocale)
+    local MANUAL_L10N=$(${CLI_NAME} locale --get-current-locale)
 
     # Initialize manuals's top-level directory. This is the place
     # where the manual will be stored in. To provide flexibility, the
