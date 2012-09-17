@@ -33,8 +33,8 @@ function locale_combineLicenseMessages {
     fi
 
     # Define list of all files you want to combine.
-    local FILES="${DOCBOOK_MODELS_LOCALES_DIR}/Gpl/$(cli_getCurrentLocale)/messages.po \
-        ${DOCBOOK_MODELS_LOCALES_DIR}/Gfdl/$(cli_getCurrentLocale)/messages.po \
+    local FILES="${DOCBOOK_MODELS_LOCALES_DIR}/Gpl/$(locale_getCurrentLocale)/messages.po \
+        ${DOCBOOK_MODELS_LOCALES_DIR}/Gfdl/$(locale_getCurrentLocale)/messages.po \
         ${TRANSLATION_TEMPLATE}"
 
     # Be sure the files we want to combine do exist.
