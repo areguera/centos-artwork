@@ -30,7 +30,7 @@ function locale_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo,is-localizable,get-locales"
+    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo,is-localizable,get-locales,get-current-locale,get-current-langcode,get-current-countrycode,get-countryname:"
 
     # Parse arguments using getopt(1) command parser.
     cli_parseArguments
@@ -81,6 +81,27 @@ function locale_getOptions {
             --get-locales )
                 ACTIONNAMS="$ACTIONNAMS locale_getLocales"
                 shift 1
+                ;;
+
+            --get-current-locale )
+                ACTIONNAMS="$ACTIONNAMS locale_getCurrentLocale"
+                shift 1
+                ;;
+
+            --get-current-langcode )
+                ACTIONNAMS="$ACTIONNAMS locale_getCurrentLanguageCode"
+                shift 1
+                ;;
+
+            --get-current-countrycode )
+                ACTIONNAMS="$ACTIONNAMS locale_getCurrentCountryCode"
+                shift 1
+                ;;
+
+            --get-countryname )
+                ACTIONNAMS="$ACTIONNAMS locale_getCountryName"
+                export COUNTRYCODE="$2"
+                shift 2
                 ;;
 
             --dont-create-mo )
