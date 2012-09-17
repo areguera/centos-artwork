@@ -52,7 +52,7 @@ function texinfo_updateOutputFileXhtml {
 
     # Update xhtml files. Use texi2html to export from texinfo file
     # format to xhtml using The CentOS Web default visual style.
-    texi2html --lang=$(cli_getCurrentLocale --langcode-only) \
+    texi2html --lang=$(${CLI_NAME} locale --get-current-locale) \
         --init-file=${MANUAL_TEMPLATE}/manual-init.pl \
         --init-file=${MANUAL_TEMPLATE_L10N}/manual-init.pl \
         -I ${TCAR_WORKDIR} \
