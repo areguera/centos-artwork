@@ -35,7 +35,7 @@ function locale_updateMessageMetadata {
     local FILE="$1"
 
     # Define current locale.
-    local CURRENTLOCALE=$(cli_getCurrentLocale)
+    local CURRENTLOCALE=$(locale_getCurrentLocale)
 
     # Define language name from current locale.
     local LANGNAME=$(cli_getLangName ${CURRENTLOCALE})
