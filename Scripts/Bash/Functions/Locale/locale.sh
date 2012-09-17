@@ -71,7 +71,7 @@ function locale {
         # is the place where POT and PO files are stored inside the
         # working copy.
         L10N_WORKDIR=$(echo "${ACTIONVAL}" \
-            | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/$(cli_getCurrentLocale)
+            | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/$(locale_getCurrentLocale)
 
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization
