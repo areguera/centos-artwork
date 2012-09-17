@@ -26,28 +26,7 @@
 
 function locale_getCurrentLocale {
 
-    local CURRENTLOCALE=''
-    local OPTION="$1"
-
     # Redefine current locale using LL_CC format.
-    CURRENTLOCALE=$(echo $LANG | sed -r 's!(^[a-z]{2,3}_[A-Z]{2}).+$!\1!')
+    echo $LANG | sed -r 's!(^[a-z]{2,3}_[A-Z]{2}).+$!\1!'
 
-    # Define centos-art.sh script default current locale. If
-    # centos-art.sh script doesn't support current system locale, use
-    # English language from United States as default current locale.
-    if [[ $CURRENTLOCALE == '' ]];then
-        CURRENTLOCALE='en_US'
-    fi
-
-    # Output current locale.    
-    case $OPTION in
-
-        '--langcode-only' )
-            echo "${CURRENTLOCALE}" | cut -d_ -f1
-            ;;
-
-        '--langcode-and-countrycode'| * )
-            echo "${CURRENTLOCALE}"
-            ;;
-    esac
 }
