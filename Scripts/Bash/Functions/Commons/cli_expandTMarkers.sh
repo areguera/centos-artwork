@@ -109,14 +109,14 @@ function cli_expandTMarkers {
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
-    DST[((++${#DST[*]}))]="$(cli_getCurrentLocale '--langcode-only')"
+    DST[((++${#DST[*]}))]="$(${CLI_NAME} locale --get-current-langcode)"
     SRC[((++${#SRC[*]}))]='=LOCALE='
-    DST[((++${#DST[*]}))]="$(cli_getCurrentLocale)"
+    DST[((++${#DST[*]}))]="$(${CLI_NAME} locale --get-current-langcode)"
 
     # Define domain translation markers for domains.
     SRC[((++${#SRC[*]}))]='=DOMAIN_LL='
-    if [[ ! $(cli_getCurrentLocale) =~ '^en' ]];then
-        DST[((++${#DST[*]}))]="$(cli_getCurrentLocale '--langcode-only')."
+    if [[ ! $(${CLI_NAME} locale --get-current-langcode) =~ '^en' ]];then
+        DST[((++${#DST[*]}))]="$(echo $LANG | cut -d'_' -f-2)"
     else
         DST[((++${#DST[*]}))]=""
     fi
