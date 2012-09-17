@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getCountryName.sh -- This function reads one language locale
+# locale_getCountryName.sh -- This function reads one language locale
 # code in the format LL_CC and outputs the name of its related
 # country.
 #
@@ -24,12 +24,11 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getCountryName {
+function locale_getCountryName {
 
-    local LOCALECODE="$(echo $1 | cut -d_ -f2)"
-    local COUNTRYNAME=""
+    COUNTRYCODE=$(echo $COUNTRYCODE | sed -r 's!.+_([[:alpha:]]{2}).+!\1!')
 
-    case $LOCALECODE in
+    case $COUNTRYCODE in
 
 	'AD' )
         COUNTRYNAME="`gettext "Andorra"`"

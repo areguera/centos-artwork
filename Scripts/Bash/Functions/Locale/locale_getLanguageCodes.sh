@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getLangCodes.sh -- This function outputs a list with language
+# locale_getLanguageCodes.sh -- This function outputs a list with language
 # codes as defined in ISO639 standard.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
@@ -23,9 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getLangCodes {
-
-    local FILTER="$(echo $1 | cut -d_ -f1)"
+function locale_getLanguageCodes {
 
     LANGCODES="aa
         ab 
@@ -212,11 +210,5 @@ function cli_getLangCodes {
         za 
         zh 
         zu"
-
-    if [[ $FILTER != '' ]];then
-        echo "$LANGCODES" | egrep "$FILTER" | sed -r 's![[:space:]]+!!g'
-    else
-        echo "$LANGCODES"
-    fi
 
 }

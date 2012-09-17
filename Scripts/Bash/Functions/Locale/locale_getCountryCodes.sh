@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_getCountryCodes.sh -- This function outputs a list with country
+# locale_getCountryCodes.sh -- This function outputs a list with country
 # codes as defined in ISO3166 standard.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
@@ -23,9 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getCountryCodes {
-
-    local FILTER="$(echo $1 | cut -d_ -f2)"
+function locale_getCountryCodes {
 
     COUNTRYCODES='AD 
         AE 
@@ -266,11 +264,5 @@ function cli_getCountryCodes {
         ZA 
         ZM 
         ZW'
-
-    if [[ $FILTER != '' ]];then
-        echo $COUNTRYCODES | egrep "$FILTER"
-    else
-        echo "$COUNTRYCODES"
-    fi
 
 }

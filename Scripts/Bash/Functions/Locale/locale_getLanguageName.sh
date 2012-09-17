@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_getLangName {
+function locale_getLanguageName {
 
    local LANGCODE="$(echo "$1" | cut -d_ -f1 | tr '[:upper:]' '[:lower:]')"
    local LANGNAME=''
@@ -772,9 +772,10 @@ function cli_getLangName {
 
       * )
       LANGNAME="`gettext "Unknown"`"
+      ;;
 
    esac
 
    echo $LANGNAME;
-}
 
+}
