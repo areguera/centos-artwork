@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# locale_getCountryName.sh -- This function reads one language locale
-# code in the format LL_CC and outputs the name of its related
-# country.
+# locale_getLanguageName.sh -- This function takes the environment
+# country code as reference and outputs the related country name.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -26,9 +25,9 @@
 
 function locale_getCountryName {
 
-    COUNTRYCODE=$(echo $COUNTRYCODE | sed -r 's!.+_([[:alpha:]]{2}).+!\1!')
+    local COUNTRYNAME="`gettext "Unknown"`"
 
-    case $COUNTRYCODE in
+    case ${CLI_LANG_CC} in
 
 	'AD' )
         COUNTRYNAME="`gettext "Andorra"`"
@@ -747,8 +746,6 @@ function locale_getCountryName {
 	'ZW' )
         COUNTRYNAME="`gettext "Zimbabwe"`"
         ;;
-        * )
-        COUNTRYNAME="`gettext "Unknown"`"
 
     esac
 
