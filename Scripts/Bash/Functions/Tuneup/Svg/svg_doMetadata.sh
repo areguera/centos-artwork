@@ -30,7 +30,7 @@ function svg_doMetadata {
     local TEMPLATE="${TUNEUP_CONFIG_DIR}/metadata.sed"
 
     # Check template file existence.
-    cli_checkFiles $TEMPLATE
+    cli_checkFiles -e $TEMPLATE
 
     # Build title from file path.
     local TITLE=$(basename "$FILE")
@@ -63,7 +63,7 @@ function svg_doMetadata {
 
     # Check template instance. We cannot continue if the template
     # instance couldn't be created.
-    cli_checkFiles $INSTANCE
+    cli_checkFiles -e $INSTANCE
 
     # Expand translation markers inside template instance.
     sed -r -i \
