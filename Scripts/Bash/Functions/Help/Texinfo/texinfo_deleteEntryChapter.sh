@@ -30,7 +30,7 @@ function texinfo_deleteEntryChapter {
 
     # Verify existence of documentation entry before deleting it. We
     # cannot delete an entry which doesn't exist.
-    cli_checkFiles "$MANUAL_CHAPTER_DIR"
+    cli_checkFiles -e "$MANUAL_CHAPTER_DIR"
 
     # Define list of chapters that shouldn't be removed.
     local SPECIAL_CHAPTERS='/(Licenses|Index)$'
