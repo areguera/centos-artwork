@@ -88,7 +88,7 @@ function docbook_convertToPdfFromXml {
     local PDF=$(echo ${INSTANCE} | sed -r 's/docbook$/pdf/g')
 
     # Prepare XSL final instances used in transformations.
-    docbook_prepareStyles "${DOCBOOK_XSL_DIR}/docbook2fo.xsl"
+    docbook_prepareStyles "${DOCBOOK_XSL}/docbook2fo.xsl"
 
     # Create link to `Images' directory. This is the directory where
     # images used by documentation are stored in. Be sure to remove
