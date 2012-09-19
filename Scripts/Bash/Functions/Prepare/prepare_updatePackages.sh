@@ -38,14 +38,14 @@ function prepare_updatePackages {
     local YUM_OPTIONS=''
 
     # Check execution rights of package managers.
-    cli_checkFiles $RPM --execution
-    cli_checkFiles $YUM --execution
+    cli_checkFiles -x $RPM
+    cli_checkFiles -x $YUM
 
     # Define required packages needed by centos-art.sh script.
     PACKAGES="inkscape ImageMagick netpbm netpbm-progs syslinux gimp
-        coreutils texinfo info tetex-latex tetex-fonts tetex-xdvi
-        tetex-dvips gettext texi2html gnome-doc-utils elinks
-        docbook-style-xsl docbook-utils docbook-dtds
+        coreutils texinfo texinfo-tex info tetex-latex tetex-fonts
+        tetex-xdvi tetex-dvips gettext texi2html gnome-doc-utils
+        elinks docbook-style-xsl docbook-utils docbook-dtds
         docbook-style-dsssl docbook-simple docbook-utils-pdf
         docbook-slides firefox sudo yum rpm ctags"
 
