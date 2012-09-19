@@ -8,26 +8,6 @@
 # point, an error message is output and centos-art.sh script ends its
 # execution. 
 #
-# More than one file can be passed to this function, so we want to
-# process them all as specified by the options. Since we are using
-# getopt output it is possible to determine where options and
-# non-option arguments are in the list of arguments  (e.g., options
-# are on the left side of ` -- ' and non-options on the rigth side of
-# ` -- '). Non-options are the files we want to verify and options how
-# we want to verify them.
-#
-# Another issue to consider, when more than one file is passed to this
-# function, is that we cannot shift positional parameters as we
-# frequently do whe just one argument is passsed, doing so would
-# annulate the validation for the second and later files passed to the
-# function. So, in order to provide verification to all files passed
-# to the function, the verification loop must be set individual for
-# each option in this function.
-#
-# Assuming no option be passed to the function, a general verification
-# is performed to determine whether or not the file exists without
-# considering the file type just its existence.
-#
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
@@ -51,36 +31,31 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='d,r,h,n,x,w'
+    local ARGSS='d,r,h,x,e'
 
     # Define long options.
-    local ARGSL='directory,regular-file,symbolic-link,execution,versioned,working-copy'
+    local ARGSL='directory,regular-file,symbolic-link,execution,exists'
+
+    # Initialize array variables.
+    local -a CONDITION_PATTERN
+    local -a CONDITION_MESSAGE
+
+    # Initialize array variable counter.
+    local COUNTER=0
 
     # Initialize arguments with an empty value and set it as local
-    # variable to this function scope.
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
     local ARGUMENTS=''
 
-    # Initialize file variable as local to avoid conflicts outside
-    # this function scope. In the file variable will set the file path
-    # we'r going to verify.
-    local FILE=''
-
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Prepare ARGUMENTS for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
-
-    # Define list of files we want to apply verifications to.
-    local FILES=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
-
-    # Verify files in the list. It is required at least one.
-    if [[ $FILES =~ '--$' ]];then
-        cli_printMessage "You need to provide one file at least." --as-error-line 
-    fi
 
     # Look for options passed through positional parameters.
     while true; do
@@ -88,70 +63,71 @@ function cli_checkFiles {
         case "$1" in
 
             -d|--directory )
-                for FILE in $(echo $FILES);do
-                    if [[ ! -d $FILE ]];then
-                        cli_printMessage "`eval_gettext "The directory \\\"\\\$FILE\\\" does not exist."`" --as-error-line
-                    fi
-                done
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-d'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a directory."`"
                 shift 1
                 ;;
 
             -f|--regular-file )
-                for FILE in $(echo $FILES);do
-                    if [[ ! -f $FILE ]];then
-                        cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a regular file."`" --as-error-line
-                    fi
-                done
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-f'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a regular file."`"
                 shift 1
                 ;;
 
             -h|--symbolic-link )
-                for FILE in $(echo $FILES);do
-                    if [[ ! -h $FILE ]];then
-                        cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not a symbolic link."`" --as-error-line
-                    fi
-                done
-                shift 1
-                ;;
-
-            -n|--versioned )
-                for FILE in $(echo $FILES);do
-                    if [[ $(svn_isVersioned $FILE) == 'false' ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" is not versioned."`" --as-error-line
-                    fi
-                done
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-h'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a symbolic link."`"
                 shift 1
                 ;;
 
             -x|--execution )
-                for FILE in $(echo $FILES);do
-                    if [[ ! -x $FILE ]];then
-                        cli_printMessage "`eval_gettext "The file \\\"\\\$FILE\\\" is not executable."`" --as-error-line
-                    fi
-                done
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-x'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't an executable file."`"
                 shift 1
                 ;;
 
-            -w|--working-copy )
-                for FILE in $(echo $FILES);do
-                    if [[ ! $FILE =~ "^${TCAR_WORKDIR}/.+$" ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist inside the working copy."`" --as-error-line
-                    fi
-                done
-                shift 1
+            -e|--exists )
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
                 ;;
 
             -- )
-                for FILE in $(echo $FILES);do
-                    if [[ ! -a $FILE ]];then
-                        cli_printMessage "`eval_gettext "The path \\\"\\\$FILE\\\" does not exist."`" --as-error-line
-                    fi
-                done
                 shift 1
                 break
                 ;;
 
         esac
+    done
+
+    # FIXME: Find a way to be sure that file is inside the working
+    # copy and under version control too. All the files we use to
+    # produce content (i.e., svg, docbook, texinfo, etc.) must be
+    # under version control and inside the working copy.  Note also
+    # that we uso temporal files which aren't inside the working copy
+    # nor under version control. So a way to verify different types of
+    # files based on context must be available.
+    #
+    # For example: It would be useful to have an option to standardize
+    # questions like "Is this file under version control?" or "Is this
+    # file under the working copy directory structure?".
+
+    # Define list of files we want to apply verifications to, now that
+    # all option-like arguments have been removed from positional
+    # paramters list.
+    local FILE=''
+    local FILES=$@
+
+    for FILE in $FILES;do
+
+        while [[ ${COUNTER} -lt ${#CONDITION_PATTERN[*]} ]];do
+
+            test ! "${CONDITION_PATTERN[$COUNTER]} ${FILE}" \
+                && cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+
+            COUNTER=$(($COUNTER + 1))
+
+        done
+
     done
 
 }
