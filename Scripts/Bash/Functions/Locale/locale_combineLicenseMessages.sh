@@ -25,20 +25,23 @@
 
 function locale_combineLicenseMessages {
 
-    local TRANSLATION_INSTANCE=$1
-    local TRANSLATION_TEMPLATE=$2
-
     if [[ $# -lt 1 ]];then
         cli_printMessage "`gettext "One argument is required."`" --as-error-message
     fi
 
+    local TRANSLATION_INSTANCE=$1
+    local TRANSLATION_TEMPLATE=$2
+
+    local DOCBOOK_LOCALES=$(echo $DOCBOOK_MODELS \
+        | sed 's!trunk/!trunk/Locales/!')
+
     # Define list of all files you want to combine.
-    local FILES="${DOCBOOK_MODELS_LOCALES_DIR}/Gpl/$(locale_getCurrentLocale)/messages.po \
-        ${DOCBOOK_MODELS_LOCALES_DIR}/Gfdl/$(locale_getCurrentLocale)/messages.po \
+    local FILES="${DOCBOOK_LOCALES}/Gpl/${CLI_LANG_LC}/messages.po \
+        ${DOCBOOK_LOCALES}/Gfdl/${CLI_LANG_LC}/messages.po \
         ${TRANSLATION_TEMPLATE}"
 
     # Be sure the files we want to combine do exist.
-    cli_checkFiles ${FILES}
+    cli_checkFiles -e ${FILES}
 
     # Combine files.
     msgcat --output=${TRANSLATION_INSTANCE} \
