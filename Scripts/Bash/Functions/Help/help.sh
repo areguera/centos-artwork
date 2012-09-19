@@ -34,7 +34,7 @@ function help {
     local FLAG_SEARCH=""
 
     # Initialize manual's language.
-    local MANUAL_L10N=$(${CLI_NAME} locale --get-current-locale)
+    local MANUAL_L10N=${CLI_LANG_LC}
 
     # Initialize manuals's top-level directory. This is the place
     # where the manual will be stored in. To provide flexibility, the
@@ -191,7 +191,7 @@ function help {
             # the working copy and changes in the working copy
             # committed up to repository.
             if [[ -d ${MANUAL_CHANGED_DIRS} ]];then
-                ${CLI_NAME} svn --sync ${MANUAL_CHANGED_DIRS}
+                cli_commitRepoChanges ${MANUAL_CHANGED_DIRS}
             fi
 
             # Initialize documentation format functionalities. At
@@ -234,6 +234,6 @@ function help {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    ${CLI_NAME} svn --sync ${MANUAL_CHANGED_DIRS}
+    cli_commitRepoChanges ${MANUAL_CHANGED_DIRS}
 
 }
