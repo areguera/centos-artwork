@@ -22,18 +22,18 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-# Initialize script-specific configuration variables.
-declare -xr BRAND="centos"
-declare -xr CLI_NAME="${BRAND}-art"
-declare -xr CLI_VERSION='0.0.2'
-declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
-
-# Initialize working copy default value.
+# Initialize absolute path to the working copy.
 if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == "" ]];then
     TCAR_WORKDIR=${HOME}/artwork
 fi
 
-# Initialize user-specific path information.
+# Initialize script-specific configuration variables.
+declare -xr BRAND="centos"
+declare -xr CLI_NAME="${BRAND}-art"
+declare -xr CLI_VERSION='0.0.3'
+declare -xr CLI_LANG_LC=$(echo ${LANG} | cut -d'.' -f1)
+declare -xr CLI_LANG_LL=$(echo ${CLI_LANG_LC} | cut -d'_' -f1)
+declare -xr CLI_LANG_CC=$(echo ${CLI_LANG_LC} | cut -d'_' -f2)
 declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/trunk/Scripts/Bash"
 declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
@@ -41,6 +41,9 @@ declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
 declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/trunk/Locales/Scripts/Bash
+
+# Initialize absolute path to temporal directory.
+declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
 
 # Initialize copyright information.
 declare -xr COPYRIGHT_HOLDER="`gettext "The CentOS Project"`"
@@ -62,11 +65,6 @@ declare -xr DOMAINNAME_DOCS="docs.${DOMAINNAME}"
 declare -xr MAILINGLIST_DOCS="${BRAND}-docs@${DOMAINNAME}"
 declare -xr MAILINGLIST_L10N="${BRAND}-l10n@${DOMAINNAME}"
 declare -xr MAILINGLIST_DEVEL="${BRAND}-devel@${DOMAINNAME}"
-
-# Define absolute paths to relevant Docbook directory structures.
-declare -xr DOCBOOK_XSL_DIR="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
-declare -xr DOCBOOK_MODELS_DIR=${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook
-declare -xr DOCBOOK_MODELS_LOCALES_DIR=${TCAR_WORKDIR}/trunk/Locales/Documentation/Models/Docbook
 
 # Initialize command-line interface.
 if [[ -x ${CLI_FUNCDIR}/Commons/cli.sh ]];then
