@@ -30,7 +30,7 @@ function texinfo_deleteEntrySection {
 
     # Verify existence of documentation entry before deleting it. We
     # cannot delete an entry which doesn't exist.
-    cli_checkFiles "$MANUAL_ENTRY"
+    cli_checkFiles -e "$MANUAL_ENTRY"
 
     # Revert pending changes inside the section entry in order to
     # prepare the file for deletion.
