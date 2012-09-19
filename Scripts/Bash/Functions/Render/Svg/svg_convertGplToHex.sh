@@ -56,6 +56,6 @@ function svg_convertGplToHex {
         > $PALETTE_HEX
 
     # Verify HEX palette existence.
-    cli_checkFiles $PALETTE_HEX
+    cli_checkFiles -e $PALETTE_HEX
 
 }
