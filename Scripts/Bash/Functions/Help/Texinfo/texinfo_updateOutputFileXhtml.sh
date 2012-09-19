@@ -29,12 +29,12 @@ function texinfo_updateOutputFileXhtml {
     cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.xhtml.tar.bz2" --as-response-line
 
     # Verify initialization files used by texi2html.
-    cli_checkFiles ${MANUAL_TEMPLATE}/manual-init.pl
-    cli_checkFiles ${MANUAL_TEMPLATE_L10N}/manual-init.pl
+    cli_checkFiles -e ${MANUAL_TEMPLATE}/manual-init.pl
+    cli_checkFiles -e ${MANUAL_TEMPLATE_L10N}/manual-init.pl
 
     # Verify transformation files used to modify texi2html output.
-    cli_checkFiles ${MANUAL_TEMPLATE}/manual.sed
-    cli_checkFiles ${MANUAL_TEMPLATE_L10N}/manual.sed
+    cli_checkFiles -e ${MANUAL_TEMPLATE}/manual.sed
+    cli_checkFiles -e ${MANUAL_TEMPLATE_L10N}/manual.sed
 
     # Clean up directory structure where xhtml files will be stored.
     # We don't want to have unused files inside it.
@@ -52,7 +52,7 @@ function texinfo_updateOutputFileXhtml {
 
     # Update xhtml files. Use texi2html to export from texinfo file
     # format to xhtml using The CentOS Web default visual style.
-    texi2html --lang=$(${CLI_NAME} locale --get-current-locale) \
+    texi2html --lang=${CLI_LANG_LL} \
         --init-file=${MANUAL_TEMPLATE}/manual-init.pl \
         --init-file=${MANUAL_TEMPLATE_L10N}/manual-init.pl \
         -I ${TCAR_WORKDIR} \
