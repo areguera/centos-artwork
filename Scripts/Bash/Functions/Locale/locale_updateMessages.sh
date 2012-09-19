@@ -32,7 +32,7 @@ function locale_updateMessages {
     # Verify current locale information to avoid English messages from
     # being localized to themselves.  The English language is used as
     # reference to write translatable strings inside the source files.
-    if [[ $(locale_getCurrentLocale) =~ '^en' ]];then
+    if [[ ${CLI_LANG_LC} =~ '^en' ]];then
         cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
@@ -49,20 +49,20 @@ function locale_updateMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
+    cli_commitRepoChanges "${L10N_WORKDIR}"
 
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to XML-based files (e.g., scalable vector
         # graphics).
         locale_updateMessageXml
 
-    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash$" ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Scripts/Bash$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to shell scripts (e.g., the centos-art.sh
@@ -76,6 +76,6 @@ function locale_updateMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
+    cli_commitRepoChanges "${L10N_WORKDIR}"
 
 }
