@@ -51,7 +51,7 @@ function svg_groupBy {
         TARGET=$(dirname "$FILE")/$(cli_getRepoName $FORMAT -d)
 
         # Check existence of source file.
-        cli_checkFiles $SOURCE
+        cli_checkFiles -e $SOURCE
 
         # Check existence of target directory.
         if [[ ! -d $TARGET ]];then
