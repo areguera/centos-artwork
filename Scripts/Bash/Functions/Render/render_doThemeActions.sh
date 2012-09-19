@@ -33,11 +33,11 @@ function render_doThemeActions {
 
     # Define base directory of artistic motifs. This is the location
     # where all artistic motifs are stored in.
-    local MOTIF_BASEDIR="$(cli_getRepoTLDir $ACTIONVAL)/Identity/Images/Themes"
+    local MOTIF_BASEDIR="${TCAR_WORKDIR}/trunk/Identity/Images/Themes"
 
     # Define base directory of design models. This is the location
     # where all design models are stored in.
-    local MODEL_BASEDIR="$(cli_getRepoTLDir $ACTIONVAL)/Identity/Models/Themes"
+    local MODEL_BASEDIR="${TCAR_WORKDIR}/trunk/Identity/Models/Themes"
 
     # Define directory structure of design models. Design models
     # directory structures are used as reference to create artistic
