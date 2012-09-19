@@ -30,9 +30,9 @@ function locale_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo,is-localizable,get-locales,get-current-locale,get-current-langcode,get-current-countrycode,get-countryname:"
+    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo,is-localizable,commit-changes"
 
-    # Parse arguments using getopt(1) command parser.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Reset positional parameters using output from (getopt) argument
@@ -78,34 +78,13 @@ function locale_getOptions {
                 shift 1
                 ;;
 
-            --get-locales )
-                ACTIONNAMS="$ACTIONNAMS locale_getLocales"
-                shift 1
-                ;;
-
-            --get-current-locale )
-                ACTIONNAMS="$ACTIONNAMS locale_getCurrentLocale"
-                shift 1
-                ;;
-
-            --get-current-langcode )
-                ACTIONNAMS="$ACTIONNAMS locale_getCurrentLanguageCode"
-                shift 1
-                ;;
-
-            --get-current-countrycode )
-                ACTIONNAMS="$ACTIONNAMS locale_getCurrentCountryCode"
-                shift 1
-                ;;
-
-            --get-countryname )
-                ACTIONNAMS="$ACTIONNAMS locale_getCountryName"
-                export COUNTRYCODE="$2"
-                shift 2
-                ;;
-
             --dont-create-mo )
                 FLAG_DONT_CREATE_MO="true"
+                shift 1
+                ;;
+
+            --commit-changes )
+                FLAG_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
@@ -133,12 +112,5 @@ function locale_getOptions {
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
-
-    # Verify non-option arguments passed to command-line. If there
-    # isn't any, redefine the ARGUMENTS variable to use the current
-    # location the functionality was called from.
-    if [[ $ARGUMENTS == '' ]];then
-        ARGUMENTS=${PWD}
-    fi
 
 }
