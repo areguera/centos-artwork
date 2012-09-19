@@ -54,6 +54,12 @@ function cli {
     # doesn't.
     local FLAG_ANSWER='false'
 
+    # Initialize default value to commit changes flag. This flag
+    # (--commit-changes) controls whether subversion is triggered or
+    # not after realizing changes to source files under version
+    # control.
+    local FLAG_COMMIT_CHANGES='false'
+
     # Initialize list of common functionalities to load.
     local FILES=$(ls ${CLI_FUNCDIR}/Commons/*.sh)
 
@@ -86,22 +92,22 @@ function cli {
     # provided, execute the help functionality and end script
     # execution.
     if [[ ! "$1" ]] || [[ ! "$1" =~ '^[[:alpha:]]' ]];then
-        exec ${CLI_BASEDIR}/${CLI_NAME}.sh help
+        ${CLI_BASEDIR}/${CLI_NAME}.sh help tcar-fs:
         exit
     fi
 
     # Define function name (CLI_FUNCNAME) using the first argument in
     # the command-line.
-    CLI_FUNCNAME=$(cli_getRepoName $1 -f | cut -d '-' -f 1)
+    CLI_FUNCNAME=$(cli_getRepoName $1 -f | cut -d '-' -f1)
 
-    # Define function directory. 
+    # Define function directory.
     CLI_FUNCDIRNAM=$(cli_getRepoName $CLI_FUNCNAME -d)
 
     # Define function file name.
     CLI_FUNCSCRIPT=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh
 
     # Check function script execution rights.
-    cli_checkFiles "${CLI_FUNCSCRIPT}" --execution
+    cli_checkFiles -x "${CLI_FUNCSCRIPT}"
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
@@ -117,7 +123,7 @@ function cli {
     fi
     
     # Check text editor execution rights.
-    cli_checkFiles $EDITOR --execution
+    cli_checkFiles -x ${EDITOR}
 
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
