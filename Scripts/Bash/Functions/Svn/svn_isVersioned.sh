@@ -27,9 +27,14 @@
 
 function svn_isVersioned {
 
+    local LOCATION=$1
+    if [[ $LOCATION == '' ]];then
+        LOCATION=${ACTIONVAL}
+    fi
+
     # Use subversion to determine whether the location is under
     # version control or not.
-    ${SVN} info $ACTIONVAL > /dev/null 2>&1
+    ${SVN} info $LOCATION > /dev/null 2>&1
 
     # Verify subversion exit status and print output.
     echo $?
