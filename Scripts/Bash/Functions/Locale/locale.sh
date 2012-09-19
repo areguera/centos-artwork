@@ -47,7 +47,7 @@ function locale {
     # localization base directory up to the repository (e.g., it is
     # not possible in subversion to add a directory which parent
     # directory hasn't been added to the repository previously.).
-    L10N_BASEDIR="$(cli_getRepoTLDir)/Locales"
+    local L10N_BASEDIR="${TCAR_WORKDIR}/trunk/Locales"
 
     # Interpret arguments and options passed through command-line.
     locale_getOptions
@@ -61,17 +61,17 @@ function locale {
     # through its command-line.
     for ACTIONVAL in "$@";do
 
-        # Sanitate non-option argument to be sure it matches the
+        # Sanitate non-option arguments to be sure they match the
         # directory convenctions stablished by centos-art.sh script
-        # against source locations in the working copy.
-        ACTIONVAL=$(cli_checkRepoDirSource "${ACTIONVAL}")
+        # against source directory locations in the working copy.
+        cli_checkRepoDirSource
 
         # Define localization working directory using directory passed
         # as non-option argument. The localization working directory
         # is the place where POT and PO files are stored inside the
         # working copy.
         L10N_WORKDIR=$(echo "${ACTIONVAL}" \
-            | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/$(locale_getCurrentLocale)
+            | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/${CLI_LANG_LC}
 
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization
