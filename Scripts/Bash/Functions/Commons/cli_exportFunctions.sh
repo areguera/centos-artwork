@@ -57,7 +57,7 @@ function cli_exportFunctions {
 
     # Define the list of files.
     local FUNCFILE=''
-    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${SUFFIX}\.sh$" \
+    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${SUFFIX}\.sh" \
         --maxdepth='1' --mindepth='1' --type='f')
 
     # Verify the list of files. If no function file exists for the
@@ -72,10 +72,10 @@ function cli_exportFunctions {
     for FUNCFILE in $FUNCFILES;do
 
         # Verify the execution rights for function file.
-        cli_checkFiles $FUNCFILE --execution
+        cli_checkFiles -x ${FUNCFILE}
 
         # Initialize the function file.
-        . $FUNCFILE
+        . ${FUNCFILE}
 
         # Export the function names inside the file to current shell
         # script environment.
