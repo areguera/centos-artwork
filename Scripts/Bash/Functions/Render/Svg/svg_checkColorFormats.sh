@@ -31,17 +31,18 @@ function svg_checkColorFormats {
     # Define long options.
     local ARGSL='format:'
 
-    # Initialize ARGUMENTS with an empty value and set it as local
-    # variable to this function scope.
-    local ARGUMENTS=''
-
     # Initialize pattern used for color sanitation.
     local PATTERN='^#[0-9a-f]{6}$'
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
+    local ARGUMENTS=''
+
+    # Prepare ARGUMENTS variable for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
