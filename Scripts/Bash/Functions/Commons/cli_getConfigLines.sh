@@ -30,8 +30,8 @@ function cli_getConfigLines {
     # Initialize absolute path to configuration file.
     local CONFIG_ABSPATH="$1"
 
-    # Verify absolute path to configuration file.
-    cli_checkFiles ${CONFIG_ABSPATH}
+    # Verify that configuration file does exist.
+    cli_checkFiles -e ${CONFIG_ABSPATH}
 
     # Initialize configuration section name where the variable value
     # we want to to retrive is set in.
