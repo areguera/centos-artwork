@@ -37,20 +37,22 @@ function cli_parseArgumentsReDef {
     # idividually.
     for ARG in "$@"; do
 
-        # Sanitate option arguments before process them.  Be sure that
-        # no option argument does contain any single quote (U+0027)
-        # inside; that would break option parsing.  Remember that we
-        # are using single quotes to enclose option arguments in order
-        # to let getopt to interpret option arguments with spaces
-        # inside.  To solve this issue, we replace all single quotes
-        # in the arguments list with their respective codification and
-        # reverse the process back when doPrint them out.
-        ARG=$(echo $ARG | sed "s/'/\\\0x27/g")
+        # Remove any single quote from arguments passed to
+        # centos-art.sh script. We will use single quotes for grouping
+        # option values so white space can be passed through them.
+        ARG=$(echo "$ARG" | tr -d "'")
 
         # Concatenate arguments and encolose them to let getopt to
         # process them when they have spaces inside.
         ARGUMENTS="$ARGUMENTS '$ARG'"
 
     done
+
+    # Verify non-option arguments passed to command-line. If there
+    # isn't any, redefine the ARGUMENTS variable to use the current
+    # location the centos-art.sh script was called from.
+    if [[ $ARGUMENTS == '' ]];then
+        ARGUMENTS=${PWD}
+    fi
 
 }
