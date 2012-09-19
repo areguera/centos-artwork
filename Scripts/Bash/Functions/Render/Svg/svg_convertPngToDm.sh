@@ -68,12 +68,12 @@ function svg_convertPngToDm {
     # Initialize source location for brands. This is the place where
     # brand information, needed to build the display manager theme, is
     # retrived from.
-    local BRAND_BASEDIR=$(cli_getRepoTLDir)/Identity/Images/Brands
+    local BRAND_BASEDIR=${TCAR_WORKDIR}/trunk/Identity/Images/Brands
 
     # Initialize source location for artistic motif's backgrounds.
     # This is the place where background information needed to ubild
     # the display manager theme is retrived from. 
-    local BGS=$(cli_getRepoTLDir)/Identity/Images/Themes/${THEME}/Backgrounds/Img/Png
+    local BGS=${TCAR_WORKDIR}/trunk/Identity/Images/Themes/${THEME}/Backgrounds/Img/Png
 
     # Initialize file variables. File variables are used build and
     # process the file relation between source and target locations. 
@@ -128,7 +128,7 @@ function svg_convertPngToDm {
         DST=${TMPDIR}/${THEME_NAME}/$(echo $FILE | cut -d: -f2)
 
         # Verify source files.
-        cli_checkFiles $SRC
+        cli_checkFiles -e $SRC
 
         # Verify parent directory for target file.
         if [[ ! -d $(dirname $DST) ]];then
