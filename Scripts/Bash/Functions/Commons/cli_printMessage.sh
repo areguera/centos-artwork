@@ -43,16 +43,8 @@ function cli_printMessage {
     # the screen.
     local MESSAGE_WIDTH=66
 
-    # Reverse the codification performed on characters that may affect
-    # parsing options and non-option arguments. This codification is
-    # realized before building the ARGUMENTS variable, at
-    # cli_parseArgumentsReDef, and we need to reverse it back here
-    # in order to show the correct character when the message be
-    # printed out on the screen.
-    MESSAGE=$(echo $MESSAGE | sed -e "s/\\\0x27/'/g")
-
     # Remove empty spaces from message.
-    MESSAGE=$(echo $MESSAGE | sed -e 's!^[[:space:]]+!!')
+    MESSAGE=$(echo $MESSAGE | sed -r -e 's!^[[:space:]]+!!')
 
     # Print out messages based on format.
     case "$FORMAT" in
@@ -67,7 +59,7 @@ function cli_printMessage {
                 done)
 
             # Draw the separator line.
-            echo "$MESSAGE" > /dev/stderr
+            echo "$MESSAGE" 1>&2
             ;;
 
         --as-banner-line )
@@ -160,7 +152,7 @@ function cli_printMessage {
             # Define where the error was originated inside the
             # centos-art.sh script. Print out the function name and
             # line from the caller.
-            local ORIGIN="$(caller 1 | gawk '{ print $2 " " $1 }')"
+            ORIGIN="$(caller 1 | gawk '{ print $2 " " $1 }')"
 
             # Build the error message.
             cli_printMessage "${CLI_NAME} (${ORIGIN}): $MESSAGE" --as-stderr-line
@@ -172,9 +164,9 @@ function cli_printMessage {
             cli_printMessage "`gettext "To know more, run the following command"`:"
             cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE"
             cli_printMessage '-' --as-separator-line
-            exit 1 # <-- ATTENTION: Do not remove this line. We use this
-                   #                option as convenction to end script
-                   #                execution.
+            exit # <-- ATTENTION: Do not remove this line. We use this
+                 #                option as convenction to end script
+                 #                execution.
             ;;
     
         --as-yesornorequest-line )
@@ -211,7 +203,7 @@ function cli_printMessage {
             ;;
 
         --as-notrailingnew-line )
-            echo -e -n "$MESSAGE" > /dev/stderr
+            echo -e -n "$MESSAGE" 1>&2
             ;;
 
         --as-stdout-line )
@@ -219,7 +211,7 @@ function cli_printMessage {
             ;;
 
         --as-stderr-line )
-            echo "$MESSAGE"
+            echo "$MESSAGE" 1>&2
             ;;
 
         * )
