@@ -70,10 +70,10 @@ function render_getDirOutput {
     # content in the correct location. Otherwise, we might end up
     # duplicating content (e.g., icons, brands, etc.) which doesn't
     # have any translation, nor any need to be translated.
-    if [[ ! $(${CLI_NAME} locale --get-current-locale) =~ '^en' ]];then
+    if [[ ! ${CLI_LANG_LC} =~ '^en' ]];then
         ${CLI_NAME} locale --is-localizable ${TEMPLATE}
         if [[ $? -eq 0 ]];then
-            OUTPUT=${OUTPUT}/$(${CLI_NAME} locale --get-current-locale)
+            OUTPUT=${OUTPUT}/${CLI_LANG_LC}
         fi
     fi
 
