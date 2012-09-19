@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.2\n"
+"Project-Id-Version: centos-art-0.0.3\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-16 13:40-0400\n"
-"PO-Revision-Date: 2012-09-16 13:40-0400\n"
+"POT-Creation-Date: 2012-09-18 23:53-0400\n"
+"PO-Revision-Date: 2012-09-18 23:53-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,12 @@ msgstr "Título del capítulo"
 msgid "Creating chapter files."
 msgstr "Creando los ficheros del capítulo"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:112
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:81
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:92
+msgid "is not under version control."
+msgstr "no está bajo control de versión."
+
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:115
 msgid "Updating chapter menu and nodes inside manual structure."
 msgstr "Actualizando menú y nodos dentro de la estructura del manual."
 
