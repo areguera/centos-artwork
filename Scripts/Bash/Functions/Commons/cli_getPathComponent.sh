@@ -34,10 +34,6 @@ function cli_getPathComponent {
     # Define long options.
     local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-release,motif-pattern'
 
-    # Initialize ARGUMENTS with an empty value and set it as local
-    # variable to this function scope.
-    local ARGUMENTS=''
-
     # Define release pattern.
     local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+)){0,1})"
 
@@ -48,10 +44,15 @@ function cli_getPathComponent {
     # Define pattern for themes' artistic motifs.
     local THEME_MOTIF="Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
+    local ARGUMENTS=''
+
+    # Prepare ARGUMENTS variable for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
@@ -128,4 +129,5 @@ function cli_getPathComponent {
         esac
 
     done
+
 }
