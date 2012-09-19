@@ -37,8 +37,8 @@ function cli_expandTMarkers {
     # Define source location on which sed replacements take place.
     LOCATION="$1" 
 
-    # Verify file source location.
-    cli_checkFiles $LOCATION
+    # Verify that source location does exist.
+    cli_checkFiles -e ${LOCATION}
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
@@ -109,21 +109,21 @@ function cli_expandTMarkers {
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
-    DST[((++${#DST[*]}))]="$(${CLI_NAME} locale --get-current-langcode)"
+    DST[((++${#DST[*]}))]="${CLI_LANG_LL}"
     SRC[((++${#SRC[*]}))]='=LOCALE='
-    DST[((++${#DST[*]}))]="$(${CLI_NAME} locale --get-current-langcode)"
+    DST[((++${#DST[*]}))]="${CLI_LANG_LC}"
 
     # Define domain translation markers for domains.
     SRC[((++${#SRC[*]}))]='=DOMAIN_LL='
-    if [[ ! $(${CLI_NAME} locale --get-current-langcode) =~ '^en' ]];then
-        DST[((++${#DST[*]}))]="$(echo $LANG | cut -d'_' -f-2)"
+    if [[ ! ${CLI_LANG_LL} =~ '^en' ]];then
+        DST[((++${#DST[*]}))]="${CLI_LANG_LL}"
     else
         DST[((++${#DST[*]}))]=""
     fi
 
     # Define repository translation markers.
     SRC[((++${#SRC[*]}))]='=REPO_TLDIR='
-    DST[((++${#DST[*]}))]="$(cli_getRepoTLDir)"
+    DST[((++${#DST[*]}))]="${TCAR_WORKDIR}/trunk"
     SRC[((++${#SRC[*]}))]='=REPO_HOME='
     DST[((++${#DST[*]}))]="${TCAR_WORKDIR}"
 
