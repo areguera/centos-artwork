@@ -40,7 +40,7 @@ function render_doBaseActions {
     local COUNT=0
 
     # Verify default directory where design models are stored in.
-    cli_checkFiles "$(cli_getRepoTLDir)/Identity/Models/Themes/${FLAG_THEME_MODEL}" --directory
+    cli_checkFiles -e "${TCAR_WORKDIR}/trunk/Identity/Models/Themes/${FLAG_THEME_MODEL}"
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
@@ -150,7 +150,7 @@ function render_doBaseActions {
 
             # Define final location of translation file.
             TRANSLATION=$(dirname $FILE \
-               | sed -r 's!trunk/(Documentation|Identity)!trunk/Locales/\1!')/$(${CLI_NAME} locale --get-current-locale)/messages.po
+               | sed -r 's!trunk/(Documentation|Identity)!trunk/Locales/\1!')/${CLI_LANG_LC}/messages.po
 
             # Define final location of template file.
             TEMPLATE=${FILE}
