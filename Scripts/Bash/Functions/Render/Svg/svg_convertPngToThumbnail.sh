@@ -39,7 +39,7 @@ function svg_convertPngToThumbnail {
     fi
 
     # Check base file existence.
-    cli_checkFiles "${FILE}.png"
+    cli_checkFiles -e "${FILE}.png"
 
     # Create thumbnails.
     for SIZE in $SIZES;do
