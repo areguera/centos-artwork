@@ -35,14 +35,15 @@ function cli_printUrl {
     # Define long options.
     local ARGSL='home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,projects-artwork,cc-sharealike,with-locale,as-html-link'
 
-    # Define ARGUMENTS as local variable in order to parse options
-    # internlally.
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
     local ARGUMENTS=''
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Prepare ARGUMENTS for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
@@ -114,7 +115,7 @@ function cli_printUrl {
 
             --with-locale )
                 if [[ ! ${LANG} =~ '^en' ]];then
-                    URL="${URL}$(${CLI_NAME} locale --get-current-langcode)/"
+                    URL="${URL}${CLI_LANG_LL}/"
                 fi
                 shift 1
                 ;;
