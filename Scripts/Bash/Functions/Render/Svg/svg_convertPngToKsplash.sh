@@ -36,7 +36,7 @@ function svg_convertPngToKsplash {
     FONT=$(svg_getTTFont "DejaVuLGCSans-Bold")
 
     # Check existence of font file.
-    cli_checkFiles "$FONT"
+    cli_checkFiles -e "$FONT"
 
     # Define absolute source location of files.
     SRC[0]="${OUTPUT}/splash_top.png"
@@ -46,7 +46,7 @@ function svg_convertPngToKsplash {
     SRC[4]="$(dirname $TEMPLATE)/Theme.rc"
 
     # Check absolute source location of files.
-    cli_checkFiles "${SRC[@]}"
+    cli_checkFiles -e "${SRC[@]}"
 
     # Define relative target location of files.
     DST[0]="${OUTPUT}/splash_top.png"
