@@ -31,20 +31,21 @@ function cli_getFilesList {
     # Define long options.
     local ARGSL='pattern:,mindepth:,maxdepth:,type:,uid:'
 
-    # Initialize arguments with an empty value and set it as local
-    # variable to this function scope.
-    local ARGUMENTS=''
-
     # Initialize pattern used to reduce the find output.
     local PATTERN="$FLAG_FILTER"
 
     # Initialize options used with find command.
     local OPTIONS=''
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
+    local ARGUMENTS=''
+
+    # Prepare ARGUMENTS for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
@@ -91,8 +92,8 @@ function cli_getFilesList {
     # look files for.
     local LOCATIONS="$@"
 
-    # Verify locations.
-    cli_checkFiles ${LOCATIONS}
+    # Verify that locations does exist.
+    cli_checkFiles -e ${LOCATIONS}
 
     # Redefine pattern as regular expression. When we use regular
     # expressions with find, regular expressions are evaluated against
