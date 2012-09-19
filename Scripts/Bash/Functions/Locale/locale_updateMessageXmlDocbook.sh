@@ -21,7 +21,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ----------------------------------------------------------------------
-# $Id: locale_updateMessageXml.sh 5457 2012-09-11 18:56:18Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function locale_updateMessageXmlDocbook {
@@ -40,7 +40,7 @@ function locale_updateMessageXmlDocbook {
 
     # Verify existence of docbook's main template file. We cannot go
     # on without it.
-    cli_checkFiles ${TEMPLATE}
+    cli_checkFiles -e ${TEMPLATE}
 
     # Define file name used as template instance. Here is where we
     # expand translation markers and entities before retriving
