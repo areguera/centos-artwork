@@ -87,7 +87,10 @@ function texinfo_createStructure {
 
             # Be sure the file is inside the working copy and under
             # version control. 
-            cli_checkFiles ${FILE} -wn
+            ${CLI_NAME} svn --is-versioned ${FILE}
+            if [[ $? -ne 0 ]];then
+                cli_printMessage "${FILE} `gettext "is not under version control."`" --as-error-line
+            fi
 
             # Define target file.
             local DST=${MANUAL_BASEDIR_L10N}/$(basename ${FILE} \
