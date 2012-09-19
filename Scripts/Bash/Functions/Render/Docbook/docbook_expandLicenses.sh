@@ -34,13 +34,16 @@ function docbook_expandLicenses {
 
     local INSTANCE=$1
 
+    # Define absolute path to Docbook models.
+    local DOCBOOK_MODELS="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook"
+
     # Define list of files holding licenses you want to include. Note
     # even this files are not inside the documentation structure
     # itself, they are connected with it. The files holding license
     # information does contain id information used inside the
     # documentation structure at cross references.
-    local LICENSES="${DOCBOOK_MODELS_DIR}/Default/Licenses/gpl.docbook \
-        ${DOCBOOK_MODELS_DIR}/Default/Licenses/gfdl.docbook"
+    local LICENSES="${DOCBOOK_MODELS}/Default/Licenses/gpl.docbook \
+        ${DOCBOOK_MODELS}/Default/Licenses/gfdl.docbook"
 
     # Define top level structure in the instance. This is the tag
     # defined in the second field of DOCTYPE definition.
