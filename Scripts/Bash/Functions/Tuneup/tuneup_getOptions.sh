@@ -29,9 +29,9 @@ function tuneup_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes"
+    local ARGSL="filter:,quiet,answer-yes,commit-changes"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
@@ -57,6 +57,11 @@ function tuneup_getOptions {
                 shift 1
                 ;;
 
+            --answer-yes )
+                FLAG_COMMIT_CHANGES="true"
+                shift 1
+                ;;
+
             -- )
                 # Remove the `--' argument from the list of arguments
                 # in order for processing non-option arguments
@@ -75,12 +80,5 @@ function tuneup_getOptions {
 
     # Redefine ARGUMENTS variable using current positional parameters. 
     cli_parseArgumentsReDef "$@"
-
-    # Verify non-option arguments passed to command-line. If there
-    # isn't any, redefine the ARGUMENTS variable to use the current
-    # location the functionality was called from.
-    if [[ $ARGUMENTS == '' ]];then
-        ARGUMENTS=${PWD}
-    fi
 
 }
