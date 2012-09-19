@@ -33,7 +33,7 @@ function locale_updateMessagePObjects {
     # Verify the portable object template. The portable object
     # template is used to create the portable object. We cannot
     # continue without it. 
-    cli_checkFiles "${FILE}.pot"
+    cli_checkFiles -e "${FILE}.pot"
 
     # Print action message.
     cli_printMessage "${FILE}.po" --as-creating-line
