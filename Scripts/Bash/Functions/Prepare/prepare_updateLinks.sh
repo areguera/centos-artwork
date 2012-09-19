@@ -53,7 +53,7 @@ function prepare_updateLinks {
 
     # Define the working copy directory structure. Here is where user
     # specific configuration links in the workstation will point to.
-    local WCDIR=$(cli_getRepoTLDir)/Identity
+    local WCDIR=${TCAR_WORKDIR}/trunk/Identity
     local WCDIR_BRUSHES=${WCDIR}/Brushes
     local WCDIR_PALETTES=${WCDIR}/Palettes
     local WCDIR_PATTERNS=${WCDIR}/Patterns
