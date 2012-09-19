@@ -61,7 +61,7 @@ function xhtml_doToc {
     local TOC_CONFIG=${TUNEUP_CONFIG_DIR}/toc.awk
 
     # Verify table of content configuration file.
-    cli_checkFiles ${TOC_CONFIG}
+    cli_checkFiles -e ${TOC_CONFIG}
 
     # Define html heading regular expression pattern. Use parenthisis
     # to save html action name, action value, and heading title.
