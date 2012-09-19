@@ -20,7 +20,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ----------------------------------------------------------------------
-# $Id: prepare_seeEnvironment.sh 5213 2012-07-29 17:09:15Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function prepare_seeEnvironment {
