@@ -21,7 +21,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ----------------------------------------------------------------------
-# $Id: prepare_updateEnvironment.sh 937 2012-09-03 19:50:35Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function prepare_updateEnvironment {
