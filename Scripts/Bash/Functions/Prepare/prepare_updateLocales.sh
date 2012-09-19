@@ -23,7 +23,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # ----------------------------------------------------------------------
-# $Id: prepare_updateLocales.sh 963 2012-09-05 02:51:50Z al $
+# $Id$
 # ----------------------------------------------------------------------
 
 function prepare_updateLocales {
