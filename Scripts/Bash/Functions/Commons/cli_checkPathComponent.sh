@@ -29,34 +29,28 @@ function cli_checkPathComponent {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='release,architecture,motif'
+    local ARGSL='release,architecture,motif,everything'
+
+    # Initialize array variables used to process options.
+    local -a CONDITION_PATTERN
+    local -a CONDITION_MESSAGE
+
+    # Initialize counter used to process array variables.
+    local COUNTER=0
 
     # Initialize arguments with an empty value and set it as local
-    # variable to this function scope.
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
     local ARGUMENTS=''
 
-    # Initialize file variable as local to avoid conflicts outside
-    # this function scope. In the file variable will set the file path
-    # we are going to verify.
-    local FILE=''
-
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Prepare ARGUMENTS for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
     eval set -- "$ARGUMENTS"
-
-    # Define list of locations we want to apply verifications to.
-    local FILES=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
-
-    # Verify list of locations, it is required that one location be
-    # present in the list and also be a valid file.
-    if [[ $FILES == '--' ]];then
-        cli_printMessage "You need to provide one file at least." --as-error-line 
-    fi
 
     # Look for options passed through positional parameters.
     while true; do
@@ -64,48 +58,55 @@ function cli_checkPathComponent {
         case "$1" in
 
             --release )
-                for FILE in $(echo $FILES);do
-                    if [[ ! $FILE =~ "^.+/$(cli_getPathComponent --release-pattern)/.*$" ]];then
-                        cli_printMessage "`eval_gettext "The release \\\"\\\$FILE\\\" is not valid."`" --as-error-line
-                    fi
-                done
-                shift 2
-                break
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="^.+/$(cli_getPathComponent --release-pattern)/.*$"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "contains an invalid release format."`"
+                shift 1
                 ;;
 
             --architecture )
-                for FILE in $(echo $FILES);do
-                    if [[ ! $FILE =~ $(cli_getPathComponent --architecture-pattern) ]];then
-                        cli_printMessage "`eval_gettext "The architecture \\\"\\\$FILE\\\" is not valid."`" --as-error-line
-                    fi
-                done
-                shift 2
-                break
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="$(cli_getPathComponent --architecture-pattern)"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "contains an invalid architecture format."`" --as-error-line
+                shift 1
                 ;;
 
             --motif )
-                for FILE in $(echo $FILES);do
-                    if [[ ! $FILE =~ $(cli_getPathComponent --motif-pattern) ]];then
-                        cli_printMessage "`eval_gettext "The theme \\\"\\\$FILE\\\" is not valid."`" --as-error-line
-                    fi
-                done
-                shift 2
-                break
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="$(cli_getPathComponent --motif-pattern)"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "contains an invalid theme format."`"
+                shift 1
+                ;;
+
+            --everything )
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="^[[:alnum:]/]+"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "contains an invalid format."`"
+                shift 1
                 ;;
 
             -- )
-                for FILE in $(echo $FILES);do
-                    if [[ $FILE == '' ]] \
-                        || [[ $FILE =~ '(\.\.(/)?)' ]] \
-                        || [[ ! $FILE =~ '^[A-Za-z0-9\.:/_-]+$' ]]; then 
-                        cli_printMessage "`eval_gettext "The value \\\"\\\$FILE\\\" is not valid."`" --as-error-line
-                    fi
-                done
-                shift 2
+                shift 1
                 break
                 ;;
 
         esac
+    done
+
+    # Define list of files we want to apply verifications to, now that
+    # all option-like arguments have been removed from positional
+    # paramters list.
+    local FILE=''
+    local FILES="$@"
+
+    for FILE in $FILES;do
+
+        while [[ ${COUNTER} -lt ${#CONDITION_PATTERN[*]} ]];do
+
+            if [[ ! ${FILE} =~ "${CONDITION_PATTERN[$COUNTER]}" ]];then
+                cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+            fi
+
+            COUNTER=$(($COUNTER + 1))
+
+        done
+
     done
 
 }
