@@ -100,20 +100,20 @@ function render {
     # action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
         
-        # Check action value. Be sure the action value matches the
-        # convenctions defined for source locations inside the working
-        # copy.
-        ACTIONVAL=$(cli_checkRepoDirSource "$ACTIONVAL")
+        # Sanitate non-option arguments to be sure they match the
+        # directory convenctions stablished by centos-art.sh script
+        # against source directory locations in the working copy.
+        cli_checkRepoDirSource
 
         # Define renderable directories and the way they are produced.
         # To describe the way renderable directories are produced, we
         # take the action value (ACTIONVAL) as reference and describe
         # the production through an action name (ACTIONNAM).
-        if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images/Themes" ]];then
+        if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images/Themes" ]];then
             ACTIONNAM="render_doThemeActions"
-        elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Identity/Images" ]];then
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images" ]];then
             ACTIONNAM="render_doBaseActions"
-        elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Documentation/Models/Docbook/[[:alnum:]-]+" ]];then
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/[[:alnum:]-]+" ]];then
             ACTIONNAM="render_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
@@ -123,7 +123,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        ${CLI_NAME} svn --sync ${ACTIONVAL}
+        cli_commitRepoChanges ${ACTIONVAL}
 
         # Execute action name.
         ${ACTIONNAM}
@@ -132,7 +132,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        ${CLI_NAME} svn --sync ${ACTIONVAL}
+        cli_commitRepoChanges ${ACTIONVAL}
 
     done
 
