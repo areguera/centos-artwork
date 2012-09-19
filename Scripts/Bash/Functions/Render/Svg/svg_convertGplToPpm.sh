@@ -66,6 +66,6 @@ function svg_convertGplToPpm {
     rm ${FILES[*]}
 
     # Verify PPM palette existence.
-    cli_checkFiles "$PALETTE_PPM"
+    cli_checkFiles -e "$PALETTE_PPM"
 
 }
