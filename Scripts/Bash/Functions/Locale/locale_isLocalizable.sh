@@ -48,15 +48,15 @@ function locale_isLocalizable {
     fi
 
     # Verify location existence. If it doesn't exist we cannot go on.
-    cli_checkFiles $LOCATION -d
+    cli_checkFiles -e $LOCATION
 
     # Define regular expresion list of all directories inside the
     # repository that can have translation. These are the
     # locale-specific directories will be created for.
-    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/trunk/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
         cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
-    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Documentation/Models/Docbook/[[:alnum:]-]+$"
-    DIRS[++((${#DIRS[*]}))]="$(cli_getRepoTLDir)/Scripts/Bash$"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/[[:alnum:]-]+$"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/trunk/Scripts/Bash$"
 
     # Verify location passed as first argument agains the list of
     # directories that can have translation messages. By default, the
