@@ -44,10 +44,10 @@ function svn {
     # action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
         
-        # Check action value. Be sure the action value matches the
-        # convenctions defined for source locations inside the working
-        # copy.
-        ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
+        # Sanitate non-option arguments to be sure they match the
+        # directory convenctions stablished by centos-art.sh script
+        # against source directory locations in the working copy.
+        cli_checkRepoDirSource
 
         # Execute action names.
         for ACTIONNAM in $ACTIONNAMS;do
