@@ -39,11 +39,7 @@ function svg_getColors {
 
     # Define long options.
     local ARGSL='head:,tail:,format:'
-    
-    # Initialize ARGUMENTS with an empty value and set it as local
-    # variable to this function scope.
-    local ARGUMENTS=''
-    
+
     # Initialize both head and tail values to return the first line of
     # color information from the palette.
     local HEAD=1
@@ -56,10 +52,15 @@ function svg_getColors {
     # Initialize list of colors.
     local COLORS=''
 
-    # Redefine ARGUMENTS variable using current positional parameters.
+    # Initialize arguments with an empty value and set it as local
+    # variable to this function scope. Doing this is very important to
+    # avoid any clash with higher execution environments.
+    local ARGUMENTS=''
+
+    # Prepare ARGUMENTS variable for getopt.
     cli_parseArgumentsReDef "$@"
 
-    # Redefine ARGUMENTS variable using getopt output.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Redefine positional parameters using ARGUMENTS variable.
@@ -100,10 +101,10 @@ function svg_getColors {
     if [[ $PALETTE == '' ]];then
 
         # Define palette path inside the theme's artistic motif.
-        local MOTIF_PALETTE=$(cli_getRepoTLDir)/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)/Palettes/grub.gpl
+        local MOTIF_PALETTE=${TCAR_WORKDIR}/trunk/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)/Palettes/grub.gpl
 
         # Define palette path inside the theme's design model.
-        local MODEL_PALETTE=$(cli_getRepoTLDir)/Identity/Models/Themes/${THEME_MODEL_NAME}/Palettes/grub.gpl
+        local MODEL_PALETTE=${TCAR_WORKDIR}/trunk/Identity/Models/Themes/${THEME_MODEL_NAME}/Palettes/grub.gpl
 
         # Redefine default background color using palettes provided by
         # artistic motif first, and design model later. Assuming none
