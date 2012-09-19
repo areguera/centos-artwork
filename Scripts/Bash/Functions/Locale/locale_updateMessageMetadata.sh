@@ -34,14 +34,8 @@ function locale_updateMessageMetadata {
     # Retrive absolute path of portable object we'll work with.
     local FILE="$1"
 
-    # Define current locale.
-    local CURRENTLOCALE=$(locale_getCurrentLocale)
-
-    # Define language name from current locale.
-    local LANGNAME=$(cli_getLangName ${CURRENTLOCALE})
-
     # Check existence of file before work with it.
-    cli_checkFiles "${FILE}"
+    cli_checkFiles -e "${FILE}"
 
     # Define pattern lines. The pattern lines are put inside portable
     # objects through xgettext and xml2po commands. In the case of
@@ -59,7 +53,7 @@ function locale_updateMessageMetadata {
     DST[0]="\"Project-Id-Version: ${CLI_NAME}-${CLI_VERSION}\\\n\""
     DST[1]="\"Report-Msgid-Bugs-To: Documentation SIG <${MAILINGLIST_DOCS}>\\\n\""
     DST[2]="\"Last-Translator: Documentation SIG\\\n\""
-    DST[3]="\"Language-Team: ${LANGNAME}\\\n\""
+    DST[3]="\"Language-Team: $(locale_getLanguageName)\\\n\""
     DST[4]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
 
     # Change pattern lines with their replacement lines.
