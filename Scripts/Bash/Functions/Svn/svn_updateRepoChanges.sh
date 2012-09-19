@@ -36,15 +36,15 @@ function svn_updateRepoChanges {
 
     # Update working copy and retrive update output.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
-    UPDATEOUT=$(${SVN} update ${ACTIONVAL})
+    UPDATEOUT=$(${SVN} update ${ACTIONVAL} --quiet)
 
     # Define path of files considered recent modifications from
     # central repository to working copy.
-    FILES[0]=$(echo "$UPDATEOUT" | egrep "^A.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[1]=$(echo "$UPDATEOUT" | egrep "^D.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[2]=$(echo "$UPDATEOUT" | egrep "^U.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[3]=$(echo "$UPDATEOUT" | egrep "^C.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[4]=$(echo "$UPDATEOUT" | egrep "^G.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[0]=$(echo "$UPDATEOUT" | egrep "^A" | sed -r "s,^.+${TCAR_WORKDIR},,")
+    FILES[1]=$(echo "$UPDATEOUT" | egrep "^D" | sed -r "s,^.+${TCAR_WORKDIR},,")
+    FILES[2]=$(echo "$UPDATEOUT" | egrep "^U" | sed -r "s,^.+${TCAR_WORKDIR},,")
+    FILES[3]=$(echo "$UPDATEOUT" | egrep "^C" | sed -r "s,^.+${TCAR_WORKDIR},,")
+    FILES[4]=$(echo "$UPDATEOUT" | egrep "^G" | sed -r "s,^.+${TCAR_WORKDIR},,")
 
     # Define description of files considered recent modifications from
     # central repository to working copy.
