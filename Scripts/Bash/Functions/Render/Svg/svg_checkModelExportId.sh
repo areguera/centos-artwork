@@ -29,7 +29,7 @@ function svg_checkModelExportId {
     local EXPORTID="$2"
 
     # Verify instance.
-    cli_checkFiles $INSTANCE
+    cli_checkFiles -e $INSTANCE
 
     # Verify export id.
     if [[ $EXPORTID == '' ]];then
