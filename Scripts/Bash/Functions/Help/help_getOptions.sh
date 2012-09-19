@@ -30,9 +30,9 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename"
+    local ARGSL="quiet,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename,commit-changes"
 
-    # Parse arguments using getopt(1) command parser.
+    # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Reset positional parameters using output from (getopt) argument
@@ -91,6 +91,11 @@ function help_getOptions {
     
             --read )
                 ACTIONNAM="searchNode"
+                shift 1
+                ;;
+
+            --commit-changes )
+                FLAG_COMMIT_CHANGES="true"
                 shift 1
                 ;;
 
