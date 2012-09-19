@@ -60,25 +60,25 @@ function tuneup {
     # action value (ACTIONVAL) variable.
     for ACTIONVAL in "$@";do
         
-        # Check action value. Be sure the action value matches the
-        # convenctions defined for source locations inside the working
-        # copy.
-        ACTIONVAL=$(cli_checkRepoDirSource $ACTIONVAL)
+        # Sanitate non-option arguments to be sure they match the
+        # directory convenctions stablished by centos-art.sh script
+        # against source directory locations in the working copy.
+        cli_checkRepoDirSource
 
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        ${CLI_NAME} svn --sync ${ACTIONVAL}
+        cli_commitRepoChanges ${ACTIONVAL}
 
         # Execute action name.
-        $ACTIONNAM
+        ${ACTIONNAM}
 
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        ${CLI_NAME} svn --sync ${ACTIONVAL}
+        cli_commitRepoChanges ${ACTIONVAL}
 
     done
 
