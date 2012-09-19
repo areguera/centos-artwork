@@ -28,7 +28,7 @@ function locale_editMessages {
     # Verify current locale information to avoid English messages from
     # being localized to themselves.  The English language is used as
     # reference to write translatable strings inside the source files.
-    if [[ $(locale_getCurrentLocale) =~ '^en' ]];then
+    if [[ ${CLI_LANG_LC} =~ '^en' ]];then
         cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
@@ -48,11 +48,11 @@ function locale_editMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
+    cli_commitRepoChanges "${L10N_WORKDIR}"
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
-    if [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
 
         # Define list of PO files for XML-based files.
         PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" --pattern="messages\.po$")
@@ -60,7 +60,7 @@ function locale_editMessages {
         # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
 
-    elif [[ $ACTIONVAL =~ "^$(cli_getRepoTLDir)/Scripts/Bash$" ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Scripts/Bash$" ]];then
 
         # Define list of PO files for script files.
         PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="${FLAG_FILTER}/messages\.po$")
@@ -99,6 +99,6 @@ function locale_editMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    ${CLI_NAME} svn --sync "${L10N_WORKDIR}"
+    cli_commitRepoChanges "${L10N_WORKDIR}"
 
 }
