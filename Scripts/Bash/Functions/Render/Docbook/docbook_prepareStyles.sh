@@ -67,7 +67,7 @@ function docbook_prepareStyles {
     # Verify style final instance. This is the file used by
     # transformation command (`xsltproc' or `openjade') to produce the
     # specified output. We cannot continue without it.
-    cli_checkFiles $STYLE_INSTANCE_FINAL
+    cli_checkFiles -e $STYLE_INSTANCE_FINAL
 
     # Expand common translation markers in the common style instance,
     # if it exists.
