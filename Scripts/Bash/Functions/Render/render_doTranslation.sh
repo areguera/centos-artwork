@@ -82,7 +82,7 @@ function render_doTranslation {
         fi
 
         # Create the translated instance of design model.
-        ${COMMAND} ${TEMPLATE} | xml2po -a -l $(${CLI_NAME} locale --get-current-locale) \
+        ${COMMAND} ${TEMPLATE} | xml2po -a -l ${CLI_LANG_LL} \
             -p ${TRANSLATION_INSTANCE} -o ${INSTANCE} -
 
         # Remove .xml2po.mo temporal file.
@@ -107,6 +107,6 @@ function render_doTranslation {
     popd > /dev/null
 
     # Verify instance existence.
-    cli_checkFiles $INSTANCE
+    cli_checkFiles -e $INSTANCE
 
 }
