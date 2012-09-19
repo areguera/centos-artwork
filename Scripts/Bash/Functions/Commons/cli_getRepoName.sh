@@ -83,7 +83,7 @@ function cli_getRepoName {
                 # /home/centos/artwork/turnk, trunk, etc.) So, we keep
                 # them unchaged for later use.
                 PREFIXDIR=$(echo $NAME \
-                    | sed -r "s,^(($(cli_getRepoTLDir)/)?(trunk|branches|tags)/).+$,\1,")
+                    | sed -r "s,^((${TCAR_WORKDIR}/)?(trunk|branches|tags)/).+$,\1,")
 
                 # ... and remove them from the path information we do
                 # want to sanitate.
