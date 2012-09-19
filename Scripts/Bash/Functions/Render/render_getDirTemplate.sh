@@ -86,6 +86,6 @@ function render_getDirTemplate {
     # design model that may not exist and that would make
     # centos-art.sh script to fail. So, verify the absolute path to
     # the input file and stop script execution if it doesn't exist.
-    cli_checkFiles $TEMPLATE
+    cli_checkFiles -e $TEMPLATE
 
 }
