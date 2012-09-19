@@ -46,7 +46,7 @@ function svg_checkModelAbsref {
     FILE="$1"
 
     # Verify existence of file we need to retrive absolute paths from.
-    cli_checkFiles "$FILE"
+    cli_checkFiles -e "$FILE"
 
     # Retrive absolute paths from file.
     BG_DST_FILES=$(egrep "(sodipodi:absref|xlink:href)=\"${HOME}.+" $FILE \
@@ -68,7 +68,7 @@ function svg_checkModelAbsref {
         # the path build from the location inside SVG file doesn't
         # exist. In this case, centos-art.sh script will end up with
         # `file ... doesn't exist' errors.
-        cli_checkFiles "$(dirname ${BG_DST_FILE})" -d
+        cli_checkFiles -d "$(dirname ${BG_DST_FILE})"
 
         if [[ ! -a $BG_DST_FILE ]];then
   
@@ -132,7 +132,7 @@ function svg_checkModelAbsref {
                 ${BG_SRC_FILE} ${BG_DST_FILE}
 
             # Verify required background information.
-            cli_checkFiles $BG_DST_FILE
+            cli_checkFiles -a $BG_DST_FILE
 
         fi
 
