@@ -59,12 +59,12 @@ function svn_commitRepoChanges {
     # and empty lines.
     STATUSOUT=$(echo -e "$STATUSOUT" | sed -r 's!^[[:space:]]*!!' | egrep -v '^[[:space:]]*$')
 
-    # Define path fo files considered recent modifications from
+    # Define path to files considered recent modifications from
     # working copy up to central repository.
-    FILES[0]=$(echo "$STATUSOUT" | egrep "^M.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[2]=$(echo "$STATUSOUT" | egrep "^D.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
-    FILES[3]=$(echo "$STATUSOUT" | egrep "^A.+$(cli_getRepoTLDir "${ACTIONVAL}").+$" | sed -r "s,^.+($(cli_getRepoTLDir "${ACTIONVAL}").+)$,\1,")
+    FILES[0]=$(echo "$STATUSOUT" | egrep "^M"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?" | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[2]=$(echo "$STATUSOUT" | egrep "^D"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[3]=$(echo "$STATUSOUT" | egrep "^A"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
 
     # Define description of files considered recent modifications from
     # working copy up to central repository.
@@ -102,26 +102,17 @@ function svn_commitRepoChanges {
 
     done
 
-    # Outout separator line.
-    cli_printMessage '-' --as-separator-line
-
     # When files have changed in the target location, show which these
     # files are and request user to see such changes and then, for
     # commtting them up to the central repository.
     if [[ ${FILESNUM[0]} -gt 0 ]];then
 
-        # Verify changes on locations.
-        cli_printMessage "`ngettext "The following file has changed" \
-            "The following files have changed" ${FILESNUM[0]}`:"
-        for FILE in ${FILES[0]};do
-            cli_printMessage "$FILE" --as-response-line
-        done
         cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-        ${SVN} diff ${FILES[0]} | less
+        ${SVN} diff ${ACTIONVAL} | less
 
         # Commit changes up to central repository.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${FILES[0]}
+        ${SVN} commit ${ACTIONVAL}
 
     fi
 
@@ -130,18 +121,15 @@ function svn_commitRepoChanges {
     # the working copy.
     if [[ ${FILESNUM[1]} -gt 0 ]];then
 
-        cli_printMessage "`ngettext "The following file is unversioned" \
-            "The following files are unversioned" ${FILESNUM[1]}`:"
+        cli_printMessage '-' --as-separator-line
+        cli_printMessage "`gettext "Do you want to add unversioned files now?"`" --as-yesornorequest-line
         for FILE in ${FILES[1]};do
-            cli_printMessage "$FILE" --as-response-line
+            ${SVN} add "${TCAR_WORKDIR}/$FILE"
         done
-        cli_printMessage "`ngettext "Do you want to add it now?" \
-            "Do you want to add them now?" ${FILESNUM[1]}`" --as-yesornorequest-line
-        ${SVN} add ${FILES[1]} --quiet
 
         # Commit changes up to central repository.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${FILES[1]}
+        ${SVN} commit ${ACTIONVAL}
 
     fi
 
@@ -149,17 +137,9 @@ function svn_commitRepoChanges {
     # these files are and request user to commit them up to central
     # repository.
     if [[ ${FILESNUM[3]} -gt 0 ]];then
-
-        # Verify changes on locations.
-        cli_printMessage "`ngettext "The following file has changed" \
-            "The following files have changed" ${FILESNUM[3]}`:"
-        for FILE in ${FILES[3]};do
-            cli_printMessage "$FILE" --as-response-line
-        done
-
-        # Commit added files up to central repository.
+        cli_printMessage '-' --as-separator-line
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${FILES[0]}
+        ${SVN} commit ${ACTIONVAL}
     fi
 
 }
