@@ -87,7 +87,7 @@ function texinfo_updateSectionNodes {
             # Verify existence of texinfo template file. If no
             # template is found, stop script execution with an error
             # message. We cannot continue without it.
-            cli_checkFiles $TEMPLATE
+            cli_checkFiles -e $TEMPLATE
 
             # Create documentation entry using texinfo template as
             # reference.
@@ -130,7 +130,7 @@ function texinfo_updateSectionNodes {
         # Verify existence of chapter-nodes template file. If no
         # chapter-nodes template is found, stop script execution with
         # an error message. We cannot continue without it.
-        cli_checkFiles ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION}
+        cli_checkFiles -e ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION}
 
         # Expand chapter node inclusion definition.
         cat ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION} \
