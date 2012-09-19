@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-0.0.3\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-09-18 23:53-0400\n"
-"PO-Revision-Date: 2012-09-18 23:53-0400\n"
+"POT-Creation-Date: 2012-09-19 00:07-0400\n"
+"PO-Revision-Date: 2012-09-19 00:07-0400\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -63,17 +63,14 @@ msgid "Do you want to see changes now?"
 msgstr "Desea ver los cambios ahora?"
 
 #: trunk/Scripts/Bash/Functions/Svn/svn_commitRepoChanges.sh:114
-#: trunk/Scripts/Bash/Functions/Svn/svn_commitRepoChanges.sh:132
-#: trunk/Scripts/Bash/Functions/Svn/svn_commitRepoChanges.sh:142
+#: trunk/Scripts/Bash/Functions/Svn/svn_commitRepoChanges.sh:131
+#: trunk/Scripts/Bash/Functions/Svn/svn_commitRepoChanges.sh:141
 msgid "Do you want to commit changes now?"
 msgstr "Desea enviar los cambios ahora?"
 
 #: trunk/Scripts/Bash/Functions/Svn/svn_commitRepoChanges.sh:125
-#, fuzzy
 msgid "Do you want to add unversioned files now?"
-msgid_plural "Do you want to add them now?"
-msgstr[0] "Desea adicionarlo ahora?"
-msgstr[1] "Desea adicionarlos ahora?"
+msgstr "Desea adicionar los ficheros sin versionar ahora?"
 
 #: trunk/Scripts/Bash/Functions/Svn/svn_updateRepoChanges.sh:38
 msgid "Bringing changes from the repository into the working copy"
@@ -96,13 +93,3 @@ msgid "file from the repository"
 msgid_plural "files from the repository"
 msgstr[0] "fichero desde el repositorio"
 msgstr[1] "ficheros desde el repositorio"
-
-#~ msgid "The following file has changed"
-#~ msgid_plural "The following files have changed"
-#~ msgstr[0] "El fichero siguiente ha cambiado"
-#~ msgstr[1] "Los ficheros siguientes han cambiado"
-
-#~ msgid "The following file is unversioned"
-#~ msgid_plural "The following files are unversioned"
-#~ msgstr[0] "El fichero siguiente no está bajo control de versiones"
-#~ msgstr[1] "Los ficheros siguientes no están bajo control de versiones"
