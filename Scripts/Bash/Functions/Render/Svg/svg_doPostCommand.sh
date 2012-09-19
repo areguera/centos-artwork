@@ -32,7 +32,7 @@ function svg_doPostCommand {
     local COMMAND=$(render_getConfigOption "$ACTION" '3-')
 
     # Verify the absolute path of base-rendition output.
-    cli_checkFiles ${FILE}.${EXTENSION}
+    cli_checkFiles -e ${FILE}.${EXTENSION}
 
     # Execute the command string on base-rendition output.
     eval $COMMAND ${FILE}.${EXTENSION}
