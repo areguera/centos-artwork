@@ -25,6 +25,13 @@
 
 function docbook {
 
+    # Define absolute path to XSL files used for transforming Docbook
+    # into other formats.
+    local DOCBOOK_XSL="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
+
+    # Define absolute path to Docbook models.
+    local DOCBOOK_MODELS="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook"
+
     # Exapand common contents inside instance.
     docbook_expandLicenses ${INSTANCE}
 
