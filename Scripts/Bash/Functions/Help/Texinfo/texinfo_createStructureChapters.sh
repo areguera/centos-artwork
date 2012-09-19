@@ -46,8 +46,8 @@ function texinfo_createStructureChapters {
 
         # Verify texinfo templates used as based to build the chapter.
         # Be sure they are inside the working copy of CentOS Artwork
-        # Repository (-w) and under version control (-n), too.
-        cli_checkFiles ${FILE} -wn
+        # Repository and under version control, too.
+        cli_checkFiles --versioned ${FILE}
 
         # Verify chapter's directory. If it doesn't exist, create it.
         if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
