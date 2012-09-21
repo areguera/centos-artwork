@@ -84,7 +84,7 @@ function svg_convertPngToBranded {
         # design models base rendition.
         BRANDFILE=${TCAR_WORKDIR}/trunk/Identity/Images/Brands/$(echo $BRANDING_CONF_VALUE \
             | gawk 'BEGIN{ FS=":" } { print $1 }' \
-            | sed -r "s/=BRAND=/${BRAND}/g")
+            | sed -r "s/=BRAND=/${TCAR_BRAND}/g")
 
         # Verify absolute path to image file used as brand. Assuming
         # no brand image file is found, continue with the next
