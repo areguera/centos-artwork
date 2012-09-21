@@ -53,7 +53,7 @@ function render_doBaseActions {
 
         # Redefine name of rendition format based on supported file
         # extension.
-        if [[ $RENDER_EXTENSION =~ '^(svg|svgz)$' ]];then
+        if [[ $RENDER_EXTENSION =~ '^(svgz|svg)$' ]];then
             RENDER_FORMAT='svg'
         elif [[ $RENDER_EXTENSION =~ '^(docbook)$' ]];then
             RENDER_FORMAT='docbook'
@@ -109,7 +109,6 @@ function render_doBaseActions {
                 --type="f")
         else
             TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
-                --maxdepth="1" --mindepth="1" \
                 --pattern="${FLAG_FILTER}\.${RENDER_EXTENSION}" \
                 --type="f")
         fi
