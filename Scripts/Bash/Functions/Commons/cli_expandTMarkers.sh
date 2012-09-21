@@ -42,15 +42,17 @@ function cli_expandTMarkers {
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year)"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year)"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LIST='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-year-list)"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --years-list)"
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEARS_LIST='
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --years-list)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-holder)"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --holder)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER_PREDICATE='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --copyright-holder-predicate)"
+    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --holder-predicate)"
 
     # Define name of branding files. This files are mainly used under
     # Identity/(Images|Models)/Brands/ directory structure. These
