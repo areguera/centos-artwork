@@ -132,7 +132,7 @@ function svg_checkModelAbsref {
                 ${BG_SRC_FILE} ${BG_DST_FILE}
 
             # Verify required background information.
-            cli_checkFiles -a $BG_DST_FILE
+            cli_checkFiles -e $BG_DST_FILE
 
         fi
 
