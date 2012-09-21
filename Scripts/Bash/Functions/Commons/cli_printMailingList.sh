@@ -53,6 +53,7 @@ function cli_printMailingList {
 
             --docs )
                 MAILADDRS="${TCAR_BRAND}-docs@$(cli_printUrl --domain)"
+                shift 1
                 ;;
 
             --as-html-link )
