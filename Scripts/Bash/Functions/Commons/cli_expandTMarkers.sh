@@ -59,7 +59,7 @@ function cli_expandTMarkers {
     # file names may vary from one project to another so we use this
     # variable to control the name of such files.
     SRC[((++${#SRC[*]}))]='=BRAND='
-    DST[((++${#DST[*]}))]="${BRAND}"
+    DST[((++${#DST[*]}))]="${TCAR_BRAND}"
 
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
@@ -105,9 +105,7 @@ function cli_expandTMarkers {
 
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
-    DST[((++${#DST[*]}))]="${MAILINGLIST_DOCS}"
-    SRC[((++${#SRC[*]}))]='=MAIL_L10N='
-    DST[((++${#DST[*]}))]="${MAILINGLIST_L10N}"
+    DST[((++${#DST[*]}))]="$(cli_printMailingList --docs)"
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
