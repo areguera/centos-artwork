@@ -107,7 +107,7 @@ function cli_getFilesList {
     # regular expresion so it could be possible to use path expansion.
     # Using path expansion reduce the amount of places to find out
     # things and so the time required to finish the task.
-    PATTERN="^.*(/[^.])?${PATTERN}$"
+    PATTERN="^.*${PATTERN}$"
 
     # Define list of files to process. At this point we cannot verify
     # whether the LOCATION is a directory or a file since path
