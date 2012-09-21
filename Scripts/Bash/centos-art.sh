@@ -45,10 +45,6 @@ declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/trunk/Locales/Scripts/Bash
 # Initialize absolute path to temporal directory.
 declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
 
-# Initialize copyright information.
-declare -xr COPYRIGHT_HOLDER="`gettext "The CentOS Project"`"
-declare -xr COPYRIGHT_YEAR_FIRST="2009"
-
 # Initialize domain-specific information.
 declare -xr DOMAINNAME="${BRAND}.org"
 declare -xr DOMAINNAME_LISTS="lists.${DOMAINNAME}"
