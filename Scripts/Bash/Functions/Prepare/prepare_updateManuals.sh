@@ -28,7 +28,7 @@
 function prepare_updateManuals {
 
     # Render key documentation manuals.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Documentation/Manuals/Docbook/Tcar-ug 
-    ${CLI_BASEDIR}/${CLI_NAME}.sh help   trunk/Documentation/Manuals/Texinfo/Tcar-fs --update
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render trunk/Documentation/Models/Docbook/Tcar-ug 
+    ${CLI_BASEDIR}/${CLI_NAME}.sh help   trunk/Documentation/Models/Texinfo/Tcar-fs --update
 
 }
