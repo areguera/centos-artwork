@@ -94,7 +94,7 @@ function svg_convertPngToDm {
 
         Gdm )
             FILES="\
-            ${BRAND_BASEDIR}/Symbols/48/${BRAND}.png:${BRAND}-symbol.png
+            ${BRAND_BASEDIR}/Symbols/48/${TCAR_BRAND}.png:${TCAR_BRAND}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
@@ -107,7 +107,7 @@ function svg_convertPngToDm {
             
         Kdm )
             FILES="\
-            ${BRAND_BASEDIR}/Symbols/48/${BRAND}.png:${BRAND}-symbol.png
+            ${BRAND_BASEDIR}/Symbols/48/${TCAR_BRAND}.png:${TCAR_BRAND}-symbol.png
             ${OUTPUT}/screenshot.png:screenshot.png
             $(dirname $TEMPLATE)/GdmGreeterTheme.xml:${THEME_NAME}.xml
             $(dirname $TEMPLATE)/GdmGreeterTheme.desktop:GdmGreeterTheme.desktop
