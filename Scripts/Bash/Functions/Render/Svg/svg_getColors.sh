@@ -98,7 +98,7 @@ function svg_getColors {
     # will be used.
     local PALETTE=$(echo $@ | cut -d' ' -f1)
 
-    if [[ $PALETTE == '' ]];then
+    if [[ ! -f $PALETTE ]];then
 
         # Define palette path inside the theme's artistic motif.
         local MOTIF_PALETTE=${TCAR_WORKDIR}/trunk/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)/Palettes/grub.gpl
