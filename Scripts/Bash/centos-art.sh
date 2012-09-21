@@ -27,9 +27,13 @@ if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == "" ]];then
     TCAR_WORKDIR=${HOME}/artwork
 fi
 
+# Initialize repository brand information.
+if [[ ! $TCAR_BRAND ]] || [[ $TCAR_BRAND == "" ]] ;then
+    TCAR_BRAND='centos'
+fi
+
 # Initialize script-specific configuration variables.
-declare -xr BRAND="centos"
-declare -xr CLI_NAME="${BRAND}-art"
+declare -xr CLI_NAME="${TCAR_BRAND}-art"
 declare -xr CLI_VERSION='0.0.3'
 declare -xr CLI_LANG_LC=$(echo ${LANG} | cut -d'.' -f1)
 declare -xr CLI_LANG_LL=$(echo ${CLI_LANG_LC} | cut -d'_' -f1)
@@ -44,23 +48,6 @@ declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/trunk/Locales/Scripts/Bash
 
 # Initialize absolute path to temporal directory.
 declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
-
-# Initialize domain-specific information.
-declare -xr DOMAINNAME="${BRAND}.org"
-declare -xr DOMAINNAME_LISTS="lists.${DOMAINNAME}"
-declare -xr DOMAINNAME_HOME="www.${DOMAINNAME}"
-declare -xr DOMAINNAME_PROJECTS="projects.${DOMAINNAME}"
-declare -xr DOMAINNAME_FORUMS="forums.${DOMAINNAME}"
-declare -xr DOMAINNAME_BUGS="bugs.${DOMAINNAME}"
-declare -xr DOMAINNAME_PLANET="planet.${DOMAINNAME}"
-declare -xr DOMAINNAME_WIKI="wiki.${DOMAINNAME}"
-declare -xr DOMAINNAME_MIRRORS="mirrors.${DOMAINNAME}"
-declare -xr DOMAINNAME_DOCS="docs.${DOMAINNAME}"
-
-# Initialize mail-specific information.
-declare -xr MAILINGLIST_DOCS="${BRAND}-docs@${DOMAINNAME}"
-declare -xr MAILINGLIST_L10N="${BRAND}-l10n@${DOMAINNAME}"
-declare -xr MAILINGLIST_DEVEL="${BRAND}-devel@${DOMAINNAME}"
 
 # Initialize command-line interface.
 if [[ -x ${CLI_FUNCDIR}/Commons/cli.sh ]];then
