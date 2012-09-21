@@ -47,7 +47,10 @@ function texinfo_createStructureChapters {
         # Verify texinfo templates used as based to build the chapter.
         # Be sure they are inside the working copy of CentOS Artwork
         # Repository and under version control, too.
-        cli_checkFiles --versioned ${FILE}
+        ${CLI_NAME} svn --is-versioned ${FILE}
+        if [[ $? -ne 0 ]];then
+            cli_printMessage "${FILE} `gettext "isn't under version control."`" --as-error-line
+        fi
 
         # Verify chapter's directory. If it doesn't exist, create it.
         if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
