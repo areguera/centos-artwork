@@ -31,18 +31,14 @@ function prepare_updateImages {
     # Define list of directories that need to be rendered.
     local DIRS=$(cli_getFilesList \
         ${TCAR_WORKDIR}/trunk/Identity/Images --maxdepth="1" \
-        --mindepth="1" --type="d" --pattern=".+/[[:alnum:]]+$")
+        --mindepth="1" --type="d" --pattern=".+/[[:alnum:]]+")
 
-    # Execute the render functionality of centos-art.sh script to
-    # produce images inside each directory.  Using directories one by
-    # one to render images is important because themes directories are
-    # produced in a different way compared to others image
-    # directories.  Thus, if we pass the list of directories to
-    # centos-art.sh script, it is possible for it to know how to
-    # produce each specific directory passed correctly. As default, in
-    # the image preparation process, all images that need to hold
-    # branding information will be rendered using The CentOS Brand in
-    # it.
+    # CAUTION: The order in which images are rendered is very
+    # important. For example, in order for themed images to hold the
+    # branding information the trunk/Identity/Images/Brands directory
+    # must be rendered before trunk/Identity/Images/Themes directory.
+
+    # Render images using the centos-art.sh script itself. 
     ${CLI_BASEDIR}/${CLI_NAME}.sh render $DIRS --with-brands
 
 }
