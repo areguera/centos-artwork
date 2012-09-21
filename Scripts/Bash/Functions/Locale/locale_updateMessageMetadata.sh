@@ -51,7 +51,7 @@ function locale_updateMessageMetadata {
 
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${CLI_NAME}-${CLI_VERSION}\\\n\""
-    DST[1]="\"Report-Msgid-Bugs-To: Documentation SIG <${MAILINGLIST_DOCS}>\\\n\""
+    DST[1]="\"Report-Msgid-Bugs-To: Documentation SIG <$(cli_printMailingList --docs)>\\\n\""
     DST[2]="\"Last-Translator: Documentation SIG\\\n\""
     DST[3]="\"Language-Team: $(locale_getLanguageName)\\\n\""
     DST[4]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
