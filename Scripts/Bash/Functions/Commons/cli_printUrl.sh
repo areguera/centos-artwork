@@ -33,7 +33,7 @@ function cli_printUrl {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,projects-artwork,cc-sharealike,with-locale,as-html-link'
+    local ARGSL='domain,home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,projects-artwork,cc-sharealike,with-locale,as-html-link'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
@@ -53,58 +53,63 @@ function cli_printUrl {
     while true; do
         case "$1" in
 
+            --domain )
+                URL="${TCAR_BRAND}.org"
+                shift 1
+                ;;
+
             --home )
-                URL="http://${DOMAINNAME_HOME}/"
+                URL="http://www.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --lists )
-                URL="http://${DOMAINNAME_LISTS}/"
+                URL="http://lists.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --wiki )
-                URL="http://${DOMAINNAME_WIKI}/"
+                URL="http://wiki.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --forums )
-                URL="http://${DOMAINNAME_FORUMS}/"
+                URL="http://forums.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --bugs )
-                URL="http://${DOMAINNAME_BUGS}/"
+                URL="http://bugs.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --projects )
-                URL="https://${DOMAINNAME_PROJECTS}/svn/"
+                URL="https://projects.$(cli_printUrl --domain)/svn/"
                 shift 1
                 ;;
 
             --projects-artwork )
-                URL="https://${DOMAINNAME_PROJECTS}/svn/artwork/"
+                URL="$(cli_printUrl --projects)artwork/"
                 shift 1
                 ;;
 
             --planet )
-                URL="http://${DOMAINNAME_PLANET}/"
+                URL="http://planet.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --docs )
-                URL="http://${DOMAINNAME_DOCS}/"
+                URL="http://docs.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --mirrors )
-                URL="http://${DOMAINNAME_MIRRORS}/"
+                URL="http://mirrors.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
             --irc )
-                URL="http://${DOMAINNAME_HOME}/modules/tinycontent/index.php?id=8"
+                URL="http://$(cli_printUrl --home)modules/tinycontent/index.php?id=8"
                 shift 1
                 ;;
 
