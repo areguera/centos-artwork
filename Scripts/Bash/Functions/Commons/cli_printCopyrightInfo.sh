@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # cli_printCopyrightInfo.sh -- This function standardizes the
-# copyright information used by centos-art.sh script.
+# copyright information printed inside content produced by
+# centos-art.sh script.
 #
 # As far as I understand, the copyright exists to make people create
 # more.  The copyright gives creators the legal power over their
@@ -39,48 +40,44 @@ function cli_printCopyrightInfo {
 
         --license )
 
-            # Print out the name of the license used by to release the
-            # content produced by centos-art.sh script, inside CentOS
-            # Artwork Repository.
+            # Print the license name. 
             echo "`gettext "Creative Common Attribution-ShareAlike 3.0 License"`"
             ;;
 
         --license-url )
 
-            # Print out the url of the license used by to release the
-            # content produced by centos-art.sh script, inside CentOS
-            # Artwork Repository.
+            # Print the url related to license name.
             cli_printUrl --cc-sharealike
             ;;
 
-        --copyright-year-first )
+        --first-year )
 
             # The former year when I (as part of The CentOS Project)
             # started to consolidate The CentOS Project Corporate
             # Visual Identity through the CentOS Artwork Repository.
-            echo "${COPYRIGHT_YEAR_FIRST}"
+            echo '2009'
             ;;
 
-        --copyright-year|--copyright-year-last )
+        --year|--last-year)
 
             # The last year when The CentOS Project stopped working in
             # its Corporate Visual Identity through the CentOS Artwork
-            # Repository. That is something that I hope does never
-            # happen, so assume the current year as last working year.
+            # Repository. That is something that I hope never happens,
+            # so assume the current year as last working year.
             date +%Y
             ;;
 
-        --copyright-year-range )
+        --years-range )
 
-            local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
-            local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
+            local FIRST_YEAR=$(cli_printCopyrightInfo --first-year)
+            local LAST_YEAR=$(cli_printCopyrightInfo --last-year)
             echo "${FIRST_YEAR}-${LAST_YEAR}"
             ;;
 
-        --copyright-year-list )
+        --years-list )
 
-            local FIRST_YEAR=$(cli_printCopyrightInfo '--copyright-year-first')
-            local LAST_YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
+            local FIRST_YEAR=$(cli_printCopyrightInfo --first-year)
+            local LAST_YEAR=$(cli_printCopyrightInfo --last-year)
 
             # Define full copyright year string based on first and
             # last year.
@@ -94,22 +91,22 @@ function cli_printCopyrightInfo {
             echo "${FULL_YEAR}" | sed 's!, *$!!'
             ;;
     
-        --copyright-holder )
+        --holder )
             
-            # Output default copyright holder.
-            echo ${COPYRIGHT_HOLDER}
+            # Print centos-art.sh script default copyright holder.
+            echo "The CentOS Project"
             ;;
 
-        --copyright-holder-predicate )
+        --holder-predicate )
 
-            local HOLDER=$(cli_printCopyrightInfo '--copyright-holder')
+            local HOLDER=$(cli_printCopyrightInfo --holder)
             echo "${HOLDER}. `gettext "All rights reserved."`"
             ;;
 
-        --copyright )
+        * )
 
-            local YEAR=$(cli_printCopyrightInfo '--copyright-year-last')
-            local HOLDER=$(cli_printCopyrightInfo '--copyright-holder')
+            local YEAR=$(cli_printCopyrightInfo --last-year)
+            local HOLDER=$(cli_printCopyrightInfo --holder)
             echo "Copyright © ${YEAR} ${HOLDER}"
             ;;
 
