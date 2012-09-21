@@ -1,9 +1,7 @@
 #!/bin/bash
 #
-# cli_printMail.sh -- This function standardize the way MAILADDRSs are
-# printed inside centos-art.sh script. This function describes the
-# domain organization of The CentOS Project through its MAILADDRSs and
-# provides a way to print them out when needed.
+# cli_printMailingList.sh -- This function standardize the way mailing
+# list addresses are printed inside centos-art.sh script.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -25,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_printMail {
+function cli_printMailingList {
 
     local MAILADDRS=''
 
