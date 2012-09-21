@@ -104,10 +104,10 @@ function locale_getOptions {
         esac
     done
 
-    # Verify action names. When no action name is specified, use
-    # edition as default action name.
+    # Verify action names. When no action name is specified, print an
+    # error message explaining an action is required at least.
     if [[ $ACTIONNAMS == '' ]];then
-        ACTIONNAMS="locale_updateMessages"
+        cli_printMessage "`gettext "You need to provide one action at least."`" --as-error-line
     fi
 
     # Redefine ARGUMENTS variable using current positional parameters. 
