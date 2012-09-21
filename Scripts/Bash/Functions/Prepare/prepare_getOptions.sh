@@ -31,8 +31,7 @@ function prepare_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local
-    ARGSL="quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,commit-changes"
+    local ARGSL="quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,commit-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
