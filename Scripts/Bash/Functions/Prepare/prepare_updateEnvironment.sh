@@ -38,4 +38,13 @@ function prepare_updateEnvironment {
     # to be able of using different values in their own environments.
     cp -f $SOURCE $TARGET
 
+    # Determine which is the absolute path the script has been
+    # executed from. This information will be used to construct the
+    # working copy absolute path and will easy the procedure to follow
+    # when a new absolute path should be defined for the working copy.
+    if [[ $0 =~ "${CLI_NAME}.sh$" ]];then
+        local TCAR_WORKDIR=$(echo "$0" | sed -r 's!^(.+)/trunk.*!\1!')
+        sed -i -r "s!^(TCAR_WORKDIR=).*!\1${TCAR_WORKDIR}!" ${TARGET}
+    fi
+
 }
