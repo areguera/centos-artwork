@@ -10,7 +10,7 @@
         linkend="manuals-formats"/>.
     </para>
 
-    <sect2 id="scripts-bash-help-syntax">
+    <simplesect id="scripts-bash-help-syntax">
     <title>Syntax</title>
 
     <screen>centos-art help [OPTIONS] [DOCENTRY]</screen>
@@ -38,9 +38,9 @@
         file is available inside the manual directory structure and
         used to retrive the document format information, instead.
     </para>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="scripts-bash-help-options">
+    <simplesect id="scripts-bash-help-options">
     <title>Options</title>
     <para>
         The <function>help</function> functionality accepts the
@@ -192,23 +192,23 @@
         documentation entries in order to keep the manual structure in
         a consistent state.
     </para>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="scripts-bash-help-description">
+    <simplesect id="scripts-bash-help-description">
     <title>Description</title>
     <para>
         ...
     </para>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="script-bash-help-environment">
-    <title>Environment</title>
+    <simplesect id="script-bash-help-environment">
+    <title>Function Specific Environment</title>
     <para>
         ...
     </para>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="scripts-bash-help-authors">
+    <simplesect id="scripts-bash-help-authors">
     <title>Authors</title>
     <para>
         The following people have worked in the
@@ -217,31 +217,39 @@
     <itemizedlist>
     <listitem>
     <para>
-        Alain Reguera Delgado &lt;<ulink url="mailto:alain.reguera@gmail.com">alain.reguera@gmail.com</ulink>&gt;
+        Alain Reguera Delgado &lt;<ulink url="mailto:alain.reguera@gmail.com">alain.reguera@gmail.com</ulink>&gt;, =COPYRIGHT_YEAR_LIST=
     </para>
     </listitem>
     </itemizedlist>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="scripts-bash-help-licence">
+    <simplesect id="scripts-bash-help-licence">
     <title>License</title>
+
     <para>
-<screen>Copyright (C) 2009-2012 The CentOS Project
- 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or (at
-your option) any later version.
- 
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
- 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</screen>
+        Copyright &copy; =COPYRIGHT_YEAR_LIST= The CentOS Project
     </para>
-    </sect2>
+ 
+    <para>
+        This program is free software; you can redistribute it and/or
+        modify it under the terms of the GNU General Public License as
+        published by the Free Software Foundation; either version 2 of
+        the License, or (at your option) any later version.
+    </para>
+ 
+    <para>
+        This program is distributed in the hope that it will be
+        useful, but WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+        PURPOSE.  See the GNU General Public License for more details.
+    </para>
+ 
+    <para>
+        You should have received a copy of the GNU General Public
+        License along with this program; if not, write to the Free
+        Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
+        USA.
+    </para>
+    </simplesect>
 
 </sect1>
