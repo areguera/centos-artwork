@@ -9,7 +9,7 @@
         copy.
     </para>
 
-    <sect2 id="script-bash-render-syntax">
+    <simplesect id="script-bash-render-syntax">
     <title>Syntax</title>
     <screen>centos-art render [OPTIONS] [DIRECTORY]</screen>
 
@@ -22,9 +22,9 @@
         parameter is not provided, the current directory path where
         the command was called from is used instead.
     </para>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="script-bash-render-option">
+    <simplesect id="script-bash-render-option">
     <title>Options</title>
 
     <para>
@@ -156,9 +156,9 @@
     </listitem>
     </varlistentry>
     </variablelist>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="script-bash-render-description">
+    <simplesect id="script-bash-render-description">
     <title>Description</title>
 
     <para>
@@ -188,6 +188,7 @@
         functionality collects all the information it needs to work
         with.
     </para>
+
     <para>
         Inside the working copy, renderable directories are divided in
         two categories in a way differences between them can be
@@ -198,58 +199,22 @@
         content based on rendition flows.
     </para>
 
-    <sect3 id="scripts-bash-render-dir-direct">
-    <title>Direct Production</title>
+    <para>Direct Production </para>
+    <para>Theme Production</para>
+    <para>Base Rendition Flow</para>
+    <para>Post Rendition Flow</para>
+    <para>Last Rendition Flow</para>
+    <para>Directory-Specific Rendition Flow</para>
+    </simplesect>
+
+    <simplesect id="script-bash-render-environment">
+    <title>Function Specific Environment</title>
     <para>
         ...
     </para>
-    </sect3>
+    </simplesect>
 
-    <sect3 id="scripts-bash-render-dir-theme">
-    <title>Theme Production</title>
-    <para>
-        ...
-    </para>
-    </sect3>
-
-    <sect3 id="scripts-bash-render-br">
-    <title>Base Rendition Flow</title>
-    <para>
-        ...
-    </para>
-    </sect3>
-
-    <sect3 id="scripts-bash-render-pr">
-    <title>Post Rendition Flow</title>
-    <para>
-        ...
-    </para>
-    </sect3>
-
-    <sect3 id="scripts-bash-render-lr">
-    <title>Last Rendition Flow</title>
-    <para>
-        ...
-    </para>
-    </sect3>
-
-    <sect3 id="scripts-bash-render-dsr">
-    <title>Directory-Specific Rendition Flow</title>
-    <para>
-        ...
-    </para>
-    </sect3>
-
-    </sect2>
-
-    <sect2 id="script-bash-render-environment">
-    <title>Environment</title>
-    <para>
-        ...
-    </para>
-    </sect2>
-
-    <sect2 id="scripts-bash-render-authors">
+    <simplesect id="scripts-bash-render-authors">
     <title>Authors</title>
     <para>
         The following people have worked in the
@@ -258,31 +223,39 @@
     <itemizedlist>
     <listitem>
     <para>
-        Alain Reguera Delgado &lt;<ulink url="mailto:alain.reguera@gmail.com">alain.reguera@gmail.com</ulink>&gt;
+        Alain Reguera Delgado &lt;<ulink url="mailto:alain.reguera@gmail.com">alain.reguera@gmail.com</ulink>&gt;, =COPYRIGHT_YEAR_LIST=
     </para>
     </listitem>
     </itemizedlist>
-    </sect2>
+    </simplesect>
 
-    <sect2 id="scripts-bash-render-licence">
+    <simplesect id="scripts-bash-render-licence">
     <title>License</title>
+
     <para>
-<screen>Copyright (C) 2009-2012 The CentOS Project
- 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or (at
-your option) any later version.
- 
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
- 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</screen>
+        Copyright &copy; =COPYRIGHT_YEAR_LIST= The CentOS Project
     </para>
-    </sect2>
+ 
+    <para>
+        This program is free software; you can redistribute it and/or
+        modify it under the terms of the GNU General Public License as
+        published by the Free Software Foundation; either version 2 of
+        the License, or (at your option) any later version.
+    </para>
+ 
+    <para>
+        This program is distributed in the hope that it will be
+        useful, but WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+        PURPOSE.  See the GNU General Public License for more details.
+    </para>
+ 
+    <para>
+        You should have received a copy of the GNU General Public
+        License along with this program; if not, write to the Free
+        Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
+        USA.
+    </para>
+    </simplesect>
 
 </sect1>
