@@ -27,8 +27,10 @@
 function cli_checkRepoDirSource {
 
     # Check action value to be sure strange characters are kept far
-    # away from the path provided.
-    cli_checkPathComponent --everything ${ACTIONVAL}
+    # away from the path provided as action value.
+    if [[ ! ${ACTIONVAL} =~ "^[[:alnum:]/-]+$" ]];then
+        cli_printMessage "${ACTIONVAL} `gettext "contains an invalid format"`" --as-error-line
+    fi
 
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing the absolute path
@@ -43,27 +45,8 @@ function cli_checkRepoDirSource {
         ACTIONVAL=${TCAR_WORKDIR}/$ACTIONVAL 
     fi
 
-    # Re-define source value to build repository absolute path from
-    # repository relative paths. This let us to pass repository
-    # relative paths as source value.  Passing relative paths as
-    # source value may save us some typing; specially if we are stood
-    # a few levels up from the location we want to refer to as source
-    # value.  There is no need to pass the absolute path to it, just
-    # refere it relatively.
-    if [[ -d ${ACTIONVAL} ]];then
-
-        # Add directory to the top of the directory stack.
-        pushd "$ACTIONVAL" > /dev/null
-
-        # Check directory existence inside the repository.
-        if [[ $(pwd) =~ "^${TCAR_WORKDIR}" ]];then
-            # Re-define source value using absolute path.
-            ACTIONVAL=$(pwd)
-        fi
-
-        # Remove directory from the directory stack.
-        popd > /dev/null
-
-    fi
+    # Be sure that action value does exist and is a directory before
+    # processing it.
+    cli_checkFiles -d ${ACTIONVAL}
 
 }
