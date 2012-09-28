@@ -31,10 +31,10 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='d,r,h,x,e'
+    local ARGSS='d,e,f,h,x'
 
     # Define long options.
-    local ARGSL='directory,regular-file,symbolic-link,execution,exists'
+    local ARGSL=''
 
     # Initialize array variables.
     local -a CONDITION_PATTERN
@@ -62,33 +62,33 @@ function cli_checkFiles {
 
         case "$1" in
 
-            -d|--directory )
+            -d )
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-d'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a directory."`"
                 shift 1
                 ;;
 
-            -f|--regular-file )
+            -e )
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
+                ;;
+
+            -f )
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-f'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a regular file."`"
                 shift 1
                 ;;
 
-            -h|--symbolic-link )
+            -h )
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-h'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a symbolic link."`"
                 shift 1
                 ;;
 
-            -x|--execution )
+            -x )
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-x'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't an executable file."`"
                 shift 1
-                ;;
-
-            -e|--exists )
-                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
-                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
                 ;;
 
             -- )
