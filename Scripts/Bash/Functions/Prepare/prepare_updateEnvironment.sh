@@ -1,8 +1,10 @@
 #!/bin/bash
 #
 # prepare_updateEnvironment.sh -- This function updates the
-# ~/.bash_profile file to provide default configuration values to
-# centos-art.sh script.
+# `~/.bash_profile' file to provide default configuration values to
+# centos-art.sh script. Those values which aren't set by this function
+# are already set in the `bash_profile.conf' template file we use as
+# reference to create the `~/.bash_profile' file.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -26,25 +28,34 @@
 
 function prepare_updateEnvironment {
 
-    local BASH_PROFILE=bash_profile
-    local SOURCE=${PREPARE_CONFIG_DIR}/${BASH_PROFILE}.conf
-    local TARGET=${HOME}/.${BASH_PROFILE}
+    local PROFILE=bash_profile
+    local SOURCE=${PREPARE_CONFIG_DIR}/${PROFILE}.conf
+    local TARGET=${HOME}/.${PROFILE}
+
+    # Determine which is the absolute path the script has been
+    # executed from. This information will be used to construct the
+    # working copy absolute path and will easy the procedure to follow
+    # when a new absolute path should be defined for the working copy.
+    local TCAR_WORKDIR=$(echo "$0" | sed -r 's!^(.+)/trunk.*!\1!')
+
+    # Determine which is the brand information that will be used as
+    # repository brand information. By default we are using `centos'
+    # and shouldn't be change to anything else, at least if you
+    # pretend to produce content for The CentOS Project.
+    local TCAR_BRAND='centos'
 
     # Print action message.
-    cli_printMessage "`gettext "${HOME}/.${BASH_PROFILE}"`" --as-updating-line
+    cli_printMessage "${TARGET}" --as-updating-line
 
     # Copy default configuration file to its final destination. Note
     # that we are not making a link here in order for different users
     # to be able of using different values in their own environments.
     cp -f $SOURCE $TARGET
 
-    # Determine which is the absolute path the script has been
-    # executed from. This information will be used to construct the
-    # working copy absolute path and will easy the procedure to follow
-    # when a new absolute path should be defined for the working copy.
-    if [[ $0 =~ "${CLI_NAME}.sh$" ]];then
-        local TCAR_WORKDIR=$(echo "$0" | sed -r 's!^(.+)/trunk.*!\1!')
-        sed -i -r "s!^(TCAR_WORKDIR=).*!\1${TCAR_WORKDIR}!" ${TARGET}
-    fi
+    # Update bash_profile file with default values.
+    sed -i -r \
+        -e "s,^(TCAR_WORKDIR=).*,\1${TCAR_WORKDIR}," \
+        -e "s,^(TCAR_BRAND=).*,\1${TCAR_BRAND}," \
+        ${TARGET}
 
 }
