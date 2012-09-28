@@ -27,6 +27,13 @@
 
 function prepare {
 
+    # Verify that centos-art.sh script is run using an absolute path.
+    # This is required in order to determine the exact location of the
+    # working copy, later when `bash_profile' file is created.
+    if [[ ! $0 =~ "^/[[:alnum:]/_-]+${CLI_NAME}.sh$" ]];then
+        cli_printMessage "`gettext "To prepare your workstation, the script should be run using its abosolute path."`" --as-error-line
+    fi
+
     local ACTIONNAM=''
     local ACTIONNAMS=''
 
