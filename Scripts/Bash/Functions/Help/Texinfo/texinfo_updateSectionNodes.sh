@@ -46,7 +46,7 @@ function texinfo_updateSectionNodes {
         # deletion, they will be created again from texinfo template
         # to working copy and that might create confusion.
         if [[ ! -f ${MANUAL_BASEDIR_L10N}/$INCL ]] \
-            && [[ $(cli_getRepoStatus ${MANUAL_BASEDIR_L10N}/$INCL) != 'D' ]];then
+            && [[ $(${CLI_NAME} svn --get-status ${MANUAL_BASEDIR_L10N}/$INCL) != 'D' ]];then
 
             # Retrive configuration lines from configuration file. Be
             # sure no line begining with `#' or space remain in the
