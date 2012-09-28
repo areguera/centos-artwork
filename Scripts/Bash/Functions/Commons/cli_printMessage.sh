@@ -54,12 +54,12 @@ function cli_printMessage {
             # Build the separator line. 
             MESSAGE=$(\
                 until [[ $MESSAGE_WIDTH -eq 0 ]];do
-                    echo -n "$MESSAGE"
+                    echo -n "$(echo $MESSAGE | sed -r 's!(.).*!\1!')"
                     MESSAGE_WIDTH=$(($MESSAGE_WIDTH - 1))
                 done)
 
             # Draw the separator line.
-            echo "$MESSAGE" 1>&2
+            echo "$MESSAGE"
             ;;
 
         --as-banner-line )
@@ -203,15 +203,18 @@ function cli_printMessage {
             ;;
 
         --as-notrailingnew-line )
-            echo -e -n "$MESSAGE" 1>&2
+            echo -e -n "$MESSAGE" | sed -r \
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
             ;;
 
         --as-stdout-line )
-            echo "$MESSAGE"
+            echo "$MESSAGE" | sed -r \
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
             ;;
 
         --as-stderr-line )
-            echo "$MESSAGE" 1>&2
+            echo "$MESSAGE" | sed -r \
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
             ;;
 
         * )
@@ -230,7 +233,7 @@ function cli_printMessage {
                         else
                             printf "%-15s\t%s\n", $1, $2
                     }
-                    END {}' > /dev/stderr
+                    END {}'
             ;;
 
     esac
