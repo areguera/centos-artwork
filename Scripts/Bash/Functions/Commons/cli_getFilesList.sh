@@ -90,7 +90,7 @@ function cli_getFilesList {
     # removed from positional parameters. Only non-option arguments
     # remain so we use them as source location for find command to
     # look files for.
-    local LOCATIONS="$@"
+    local LOCATIONS=$@
 
     # Verify that locations does exist.
     cli_checkFiles -e ${LOCATIONS}
