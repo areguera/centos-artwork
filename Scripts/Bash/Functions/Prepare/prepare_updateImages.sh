@@ -33,12 +33,23 @@ function prepare_updateImages {
         ${TCAR_WORKDIR}/trunk/Identity/Images --maxdepth="1" \
         --mindepth="1" --type="d" --pattern=".+/[[:alnum:]]+")
 
-    # CAUTION: The order in which images are rendered is very
-    # important. For example, in order for themed images to hold the
-    # branding information the trunk/Identity/Images/Brands directory
-    # must be rendered before trunk/Identity/Images/Themes directory.
+    # CAUTION: The order in which the image components are rendered is
+    # very important. For example, in order for theme images to hold
+    # the branding information the `trunk/Identity/Images/Brands'
+    # directory must be rendered before `trunk/Identity/Images/Themes'
+    # directory. The reason of this is that brand images are not draw
+    # inside theme design models themselves, but combined with theme
+    # images using the ImageMagick tool suite once both have been
+    # rendered.
 
-    # Render images using the centos-art.sh script itself. 
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render $DIRS --with-brands
+    # Update list of directories to be sure that brands will always be
+    # rendered as first image component. Here we remove the brand
+    # component from the list and add it explicitly on top of all
+    # other directories in the list.
+    DIRS="${TCAR_WORKDIR}/trunk/Identity/Images/Brands
+        $(echo "$DIRS" | grep -v 'trunk/Identity/Images/Brands')"
+
+    # Render image components using the list of directories.
+    ${CLI_BASEDIR}/${CLI_NAME}.sh render ${DIRS} --with-brands
 
 }
