@@ -34,7 +34,7 @@ fi
 
 # Initialize script-specific configuration variables.
 declare -xr CLI_NAME="${TCAR_BRAND}-art"
-declare -xr CLI_VERSION='0.0.3'
+declare -xr CLI_VERSION='0.0.4'
 declare -xr CLI_LANG_LC=$(echo ${LANG} | cut -d'.' -f1)
 declare -xr CLI_LANG_LL=$(echo ${CLI_LANG_LC} | cut -d'_' -f1)
 declare -xr CLI_LANG_CC=$(echo ${CLI_LANG_LC} | cut -d'_' -f2)
