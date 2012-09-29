@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # cli_printMessage.sh -- This function standardizes the way messages
-# are printed out from centos-art.sh script.
+# are printed by centos-art.sh script.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
