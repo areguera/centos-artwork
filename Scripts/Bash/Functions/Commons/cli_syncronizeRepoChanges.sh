@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_commitRepoChanges.sh -- This function is the interface we use
+# cli_syncronizeRepoChanges.sh -- This function is the interface we use
 # inside centos-art.sh script to commit changes inside the repository.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_commitRepoChanges {
+function cli_syncronizeRepoChanges {
 
     if [[ ! $FLAG_COMMIT_CHANGES == 'true' ]];then
         return
