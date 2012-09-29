@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # cli_printMailingList.sh -- This function standardize the way mailing
-# list addresses are printed inside centos-art.sh script.
+# list addresses are printed on content produced by centos-art.sh
+# script.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
