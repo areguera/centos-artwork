@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# cli_expandTMarkers.sh -- This function standardizes
-# replacements for common translation markers. Raplacements are
-# applied to temporal instances used to produce the final file.
+# cli_expandTMarkers.sh -- This function standardizes translation
+# markers and their replacements. Raplacements are applied to temporal
+# instances used to produce final files.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
