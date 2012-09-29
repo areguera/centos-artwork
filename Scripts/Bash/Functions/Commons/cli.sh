@@ -55,10 +55,10 @@ function cli {
     local FLAG_ANSWER='false'
 
     # Initialize default value to commit changes flag. This flag
-    # (--commit-changes) controls whether subversion is triggered or
+    # (--sync-changes) controls whether subversion is triggered or
     # not after realizing changes to source files under version
     # control.
-    local FLAG_COMMIT_CHANGES='false'
+    local FLAG_SYNC_CHANGES='false'
 
     # Initialize list of common functionalities to load.
     local FILES=$(ls ${CLI_FUNCDIR}/Commons/*.sh)
