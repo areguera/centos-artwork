@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # cli_getRepoName.sh -- This function standardize file and directories
-# name convenction inside the working copy of CentOS Artowrk
-# Repository. As convenction, regular files are written in lower case
+# name convection inside the working copy of CentOS Artowrk
+# Repository. As convection, regular files are written in lower case
 # and directories are written in lower case but with the first letter
 # in upper case.  Use this function to sanitate the name of regular
 # files and directory components of paths you work with.
