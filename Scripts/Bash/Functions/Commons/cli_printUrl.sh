@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_printUrl.sh -- This function standardize the way URLs are
-# printed inside centos-art.sh script. This function describes the
+# cli_printUrl.sh -- This function standardizes the way URLs are
+# printed by centos-art.sh script. This function describes the
 # domain organization of The CentOS Project through its URLs and
 # provides a way to print them out when needed.
 #
