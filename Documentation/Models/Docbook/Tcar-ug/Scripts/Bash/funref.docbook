@@ -1,0 +1,530 @@
+<sect1 id="scripts-bash-funref">
+
+    <title>Environment Functions Reference</title>
+
+    <para>
+        In addition to environment variables described above, the
+        centos-art.sh script makes available the following common
+        environment functions once it is executed:
+    </para>
+
+    <variablelist>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command>cli_checkFiles</command> 
+            <arg choice="req">
+            <arg>-d</arg>
+            <arg>-e</arg>
+            <arg>-f</arg>
+            <arg>-h</arg>
+            <arg>-x</arg>
+            </arg>
+            <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        The <function>cli_checkFiles</function> standardizes the way
+        files are verified inside the centos-art.sh script. It tries
+        to answers questions like <emphasis>Is
+        <replaceable>LOCATION</replaceable> a regular file or
+        directory?</emphasis> or even, <emphasis>does
+        <replaceable>LOCATION</replaceable> have execution
+        rights?</emphasis>.  You can provide several
+        <replaceable>LOCATION</replaceable> arguments to this function
+        in order to perform the verifications over them. Likewise, you
+        can combine different options to realize different
+        verifications over the same files. In case the verification
+        fails, an error message is printed and the script finishes its
+        execution.
+    </para>
+    <para>
+        The <function>cli_checkFiles</function> is an interface for
+        the <command>test</command> command and accepts the following
+        options:
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term><option>-d</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and is a directory. If it doesn't exists or isn't a directory,
+        an error message is printed and the script finishes its
+        execution.  Otherwise, if it exists and is a directory, the
+        script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-e</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists or
+        not. If it doesn't exist, an error message is printed and the
+        script finishes its execution.  Otherwise, if it does exists,
+        the script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-f</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and is a regular file. If it doesn't exists or isn't a regular
+        file, an error message is printed and the script finishes its
+        execution. Otherwise, if it exists and is a regular file, the
+        script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-h</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and is a symbolic link. If it doesn't exists or isn't a
+        symbolic link, an error message is printed and the script
+        finishes its execution immediately.  Otherwise, if it does
+        exist and is a symbolic link, the script continue its
+        execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-x</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and execution permission is granted. If it doesn't exist or
+        hasn't execution permission, the script finishes its execution
+        immediately. Otherwise, if it exists and has execution
+        permissions, the script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+    <para>
+        Use the <function>cli_checkFiles</function> function whenever
+        you need to verify files inside the &TCAR;.
+    </para>
+    </listitem>
+    </varlistentry>
+    
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command>cli_checkRepoDirSource</command>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+
+    <para>
+        The <function>cli_checkRepoDirSource</function> function
+        standardizes the path construction to directories inside it
+        the working copy, using absolute paths.  This function
+        transforms relative paths passed as non-option arguments to
+        <command>centos-art.sh</command> script command-line into
+        absolute paths inside the working copy and verifies whether
+        they really exist as directories inside the working copy or
+        not. If the path provided doesn't exist as directory inside
+        the working copy, the script will finish its execution
+        immediately with an error message. Otherwise, if the directory
+        exists, the variable <varname>ACTIONVAL</varname> is redefined
+        with the related absolute path for further use.
+    </para>
+ 
+    <para>
+        Use the <function>cli_checkRepoDirSource</function> function
+        whenever you need to be sure that non-option arguments passed
+        to <command>centos-art.sh</command> script command-line will
+        always point to directories inside the working copy.
+    </para>
+
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command>cli_synchronizeRepoChanges</command>
+            <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        The <function>cli_synchronizeRepoChanges</function>
+        standardizes the way changes are synchronized between the
+        working copy and the central repository using
+        <replaceable>LOCATION</replaceable> as reference. This
+        function is the interface we use inside the
+        <command>centos-art.sh</command> script to execute the
+        <function>Svn</function> functionality described in <xref
+        linkend="scripts-bash-svn" />.
+    </para>
+    <para>
+        Use <function>cli_synchronizeRepoChanges</function> function
+        inside the <command>centos-art.sh</command> script whenever
+        you need to synchronize one or more changes at any
+        <replaceable>LOCATION</replaceable> inside the working copy.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command>cli_printMessage</command>
+            <arg choice="req"><replaceable>MESSAGE</replaceable></arg>
+            <group choice="opt">
+            <arg>--as-separator-line</arg>
+            <arg>--as-banner-line</arg>
+            <arg>--as-cropping-line</arg>
+            <arg>--as-tuningup-line</arg>
+            <arg>--as-checking-line</arg>
+            <arg>--as-combining-line</arg>
+            <arg>--as-creating-line</arg>
+            <arg>--as-reading-line</arg>
+            <arg>--as-savedas-line</arg>
+            <arg>--as-linkto-line</arg>
+            <arg>--as-movedto-line</arg>
+            <arg>--as-validating-line</arg>
+            <arg>--as-template-line</arg>
+            <arg>--as-configuration-line</arg>
+            <arg>--as-palette-line</arg>
+            <arg>--as-reponse-line</arg>
+            <arg>--as-request-line</arg>
+            <arg>--as-selection-line</arg>
+            <arg>--as-error-line</arg>
+            <arg>--as-toknowmore-line</arg>
+            <arg>--as-yesornorequest-line</arg>
+            <arg>--as-notrailingnew-line</arg>
+            <arg>--as-stdout-line</arg>
+            <arg>--as-stderr-line</arg>
+            </group>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        The <function>cli_printMessage</function> function
+        standardizes the way centos-ar.sh scirpt prints messages. By
+        default, centos-art.sh script prints all messages to the
+        standard output with the exception of those messages printed
+        with the <option>--as-stderr-line</option> option, which are
+        printed to standard error output instead.
+    </para>
+
+    <para>
+        The <function>cli_printMessage</function> function requires
+        two arguments.  The first argument specifies the MESSAGE you
+        want to print and the second argument specifies the FORMAT
+        you'll use to print that message. Because this function is so
+        used inside the centos-art.sh script, it is convenient to
+        provide localization to strings passed as MESSAGE using
+        <command>gettext</command> contructions when they aren't
+        paths.
+    </para>
+
+    <para>
+        The <function>cli_printMessage</function> function accepts the
+        following formats as second argument:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--as-separator-line</option></term>
+    <listitem>
+    <para>
+        This format takes the first character passed as MESSAGE and
+        repeats it horizontally to build a separator line.  Use this
+        format whenever you need to create a logical separation
+        between different actions.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--as-banner-line</option></term>
+    <listitem>
+    <para>
+        This format takes the string passed as MESSAGE and puts it
+        inside two horizontal separator lines. Use this format
+        whenever you need to print header information for following
+        lines.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--as-cropping-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been cropped.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--as-tuningup-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been tuned-up.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-checking-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been checked or verified (e.g., through
+        <function>cli_checkFiles</function> functionality).
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-combining-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been combined.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-creating-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been created.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-reading-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been read.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-savedas-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been saved.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-linkto-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been linked.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-movedto-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been moved.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-validating-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        has been validated.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-template-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        is a template or design model.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-configuration-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        is a configuration file.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-palette-line</option></term>
+    <listitem>
+    <para>
+        This format is for two columns messages where MESSAGE
+        generally refers to a file inside the repository.  Use this
+        format whenever you need to imply the fact that certain file
+        is a palette of colors.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-response-line</option></term>
+    <listitem>
+    <para>
+        This format adds <literal>--></literal> at the begining of the
+        string passed as MESSAGE.  Use this format whenever you need
+        to imply the fact that certain file is considered part of a
+        response. For example, when you need to express that a group
+        of files will take ceratin action, you can use this option to
+        doing so.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-request-line</option></term>
+    <listitem>
+    <para>
+        This format prints MESSAGE without trailing new line.  Use
+        this format whenever you need to imply a question or yes or no
+        request.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-selection-line</option></term>
+    <listitem>
+    <para>
+        This format uses each word in MESSAGE as item of a selection
+        list. Use this format whenever you need to select one of the
+        items provided as MESSAGE.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-error-line</option></term>
+    <listitem>
+    <para>
+        This format prints error messages produced by centos-art.sh
+        script. It uses the <command>caller</command> built-in command
+        to display the line number and the filename where such error
+        was triggered. Later, it prints where to find more information
+        by using the <option>--as-toknowmore-line</option> option.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term><option>--as-toknowmore-line</option></term>
+    <listitem>
+    <para>
+        This format takes a function name as MESSAGE and prints the
+        command you can use to find more information about it. When
+        this option is passed the script finishes its execution
+        immediately. This option is used in combination with
+        <option>--as-error-line</option> to finish the script
+        execution after an error.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--as-yesornorequest-line</option></term>
+    <listitem>
+    <para>
+        This format takes a question as MESSAGE and reads a yes or no
+        answer. When answer is negative, the script finishes its
+        execution immediately. When answer is affirmative, the script
+        continues its execution normally. 
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--as-notrailingnew-line</option></term>
+    <listitem>
+    <para>
+        Print MESSAGE without any trailing newline.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--as-stdout-line</option></term>
+    <listitem>
+    <para>
+        Print MESSAGE to standard output.
+    </para>
+    </listitem>
+    </varlistentry>
+    
+    <varlistentry>
+    <term><option>--as-stderr-line</option></term>
+    <listitem>
+    <para>
+        Print MESSAGE to standard error output.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+    <para>
+        Use <function>cli_printMessage</function> function whenever
+        you need to print information inside the
+        <command>centos-art.sh</command> script.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>...</term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+</sect1>
+
