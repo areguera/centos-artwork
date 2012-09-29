@@ -39,7 +39,7 @@ function locale_prepareWorkingDirectory {
         # At this point, changes in the repository are not merged in
         # the working copy, but chages in the working copy do are
         # committed up to central repository.
-        cli_syncronizeRepoChanges "${L10N_BASEDIR}"
+        cli_synchronizeRepoChanges "${L10N_BASEDIR}"
 
     elif [[ $L10N_WORKDIR == '' ]];then
     
