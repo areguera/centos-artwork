@@ -48,7 +48,7 @@ function locale_editMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_commitRepoChanges "${L10N_WORKDIR}"
+    cli_syncronizeRepoChanges "${L10N_WORKDIR}"
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
@@ -99,6 +99,6 @@ function locale_editMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_commitRepoChanges "${L10N_WORKDIR}"
+    cli_syncronizeRepoChanges "${L10N_WORKDIR}"
 
 }
