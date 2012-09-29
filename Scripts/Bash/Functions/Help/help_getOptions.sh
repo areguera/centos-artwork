@@ -30,7 +30,7 @@ function help_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename,commit-changes"
+    local ARGSL="quiet,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -94,8 +94,8 @@ function help_getOptions {
                 shift 1
                 ;;
 
-            --commit-changes )
-                FLAG_COMMIT_CHANGES="true"
+            --sync-changes )
+                FLAG_SYNC_CHANGES="true"
                 shift 1
                 ;;
 
