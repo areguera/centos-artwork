@@ -123,7 +123,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_commitRepoChanges ${ACTIONVAL}
+        cli_syncronizeRepoChanges ${ACTIONVAL}
 
         # Execute action name.
         ${ACTIONNAM}
@@ -132,7 +132,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_commitRepoChanges ${ACTIONVAL}
+        cli_syncronizeRepoChanges ${ACTIONVAL}
 
     done
 
