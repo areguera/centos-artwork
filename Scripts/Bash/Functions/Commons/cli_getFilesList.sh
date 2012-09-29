@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_getFilesList.sh -- This function outputs the list of files to
-# process.
+# cli_getFilesList.sh -- This function outputs a sorted and unique
+# list of files to process.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
