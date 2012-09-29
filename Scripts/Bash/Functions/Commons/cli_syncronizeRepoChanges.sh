@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# cli_syncronizeRepoChanges.sh -- This function is the interface we use
-# inside centos-art.sh script to commit changes inside the repository.
+# cli_syncronizeRepoChanges.sh -- This function standardizes the way
+# changes are synchronized between the working copy and the central
+# repository. This function is an interface for the `Svn'
+# functionality of centos-art.sh script.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -29,10 +31,10 @@ function cli_syncronizeRepoChanges {
         return
     fi
     
-    local LOCATIONS="$@"
+    # Verify existence of locations passed to this function.
+    cli_checkFiles -e $@
 
-    cli_checkFiles -e ${LOCATIONS}
-
-    ${CLI_NAME} svn --sync ${LOCATIONS}
+    # Synchronize changes.
+    ${CLI_NAME} svn --sync $@
 
 }
