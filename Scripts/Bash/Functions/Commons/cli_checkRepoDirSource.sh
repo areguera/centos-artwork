@@ -1,8 +1,23 @@
 #!/bin/bash
 #
-# cli_checkRepoDirSource.sh -- This function sanitates the action
-# value variable. The action value variable contains non-option
-# arguments passed to centos-art.sh script.
+# cli_checkRepoDirSource.sh -- This function standardizes the access
+# to directories inside the working copy using absolute paths. This
+# function transforms relative paths passed as non-option arguments to
+# centos-art.sh script command-line into absolute paths inside the
+# working copy and verifies whether they really exist as directories
+# inside the working copy or not. If the path provided doesn't exist
+# as directory inside the working copy, the script will finish its
+# execution immediately with an error message. Otherwise, if the
+# directory exists, the variable ACTIONVAL is redefined with the
+# related absolute path for further use.
+#
+#   NOTE: Transforming relative paths into absolute paths before
+#   processing them is very useful when you need to execute the
+#   centos-art.sh script anywhere inside the workstation.
+#
+# Use this function whenever you need to be sure that non-option
+# arguments passed to centos-art.sh script command-line will always
+# point to directories inside the working copy.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
