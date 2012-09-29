@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # cli_printCopyrightInfo.sh -- This function standardizes the
-# copyright information printed inside content produced by
-# centos-art.sh script.
+# copyright information printed on content produced by centos-art.sh
+# script.
 #
 # As far as I understand, the copyright exists to make people create
 # more.  The copyright gives creators the legal power over their
