@@ -100,45 +100,20 @@ Shell execution environment
         <command>centos-art.sh</command> script and are not available
         for common functionalities. Specific functionalities are
         stored in the <filename
-        class="directory">trunk/Scripts/Bash/Functions/${CLI_FUNCDIRNAM}</filename>
-        directory and described in the following sections:
+        class="directory">trunk/Scripts/Bash/Functions/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh</filename>
+        file where <varname>CLI_FUNCDIRNAM</varname> is the function
+        name with the first letter in upper case and
+        <varname>CLI_FUNCNAME</varname> is the function name with all
+        letters in lower case.
     </para>
 
-    <itemizedlist>
-    <listitem>
-        <para><xref linkend="scripts-bash-prepare" /></para>
-    </listitem>
-    <listitem>
-        <para><xref linkend="scripts-bash-render" /></para>
-    </listitem>
-    <listitem>
-        <para><xref linkend="scripts-bash-locale" /></para>
-    </listitem>
-    <listitem>
-        <para><xref linkend="scripts-bash-help" /></para>
-    </listitem>
-    <listitem>
-        <para><xref linkend="scripts-bash-pack" /></para>
-    </listitem>
-    <listitem>
-        <para><xref linkend="scripts-bash-tuneup" /></para>
-    </listitem>
-    </itemizedlist>
-    
     <para>
         In <xref linkend="scripts-bash-environments-1" />,
         <function>render</function>, <function>help</function> and
         <function>locale</function> are all specific functions while
         <function>cli_printMessage</function> and
         <function>cli_getFilesList</function> are common
-        functionality.
-    </para>
-
-    <para>
-        To know more about variables and common functions available
-        inside centos-art.sh script, see <xref
-        linkend="scripts-bash-varref" /> and <xref
-        linkend="scripts-bash-funref" />, respectively.
+        functionalities.
     </para>
 
 </sect1>
