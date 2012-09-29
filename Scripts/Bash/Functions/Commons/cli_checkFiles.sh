@@ -5,8 +5,8 @@
 # Here is where we answer questions like: is the file a regular file
 # or a directory?  or, is it a symbolic link? or even, does it have
 # execution rights, etc.  If the verification fails somehow at any
-# point, an error message is output and centos-art.sh script ends its
-# execution. 
+# point, an error message is output and centos-art.sh script finishes
+# its execution. 
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
