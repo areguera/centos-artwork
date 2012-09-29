@@ -224,11 +224,12 @@
 
     <para>
         The <function>cli_printMessage</function> function requires
-        two arguments.  The first argument specifies the MESSAGE you
-        want to print and the second argument specifies the FORMAT
-        you'll use to print that message. Because this function is so
-        used inside the centos-art.sh script, it is convenient to
-        provide localization to strings passed as MESSAGE using
+        two arguments.  The first argument specifies the
+        <replaceable>MESSAGE</replaceable> you want to print and the
+        second argument specifies the FORMAT you'll use to print that
+        message. Because this function is so used inside the
+        centos-art.sh script, it is convenient to provide localization
+        to strings passed as <replaceable>MESSAGE</replaceable> using
         <command>gettext</command> contructions when they aren't
         paths.
     </para>
@@ -243,10 +244,10 @@
     <term><option>--as-separator-line</option></term>
     <listitem>
     <para>
-        This format takes the first character passed as MESSAGE and
-        repeats it horizontally to build a separator line.  Use this
-        format whenever you need to create a logical separation
-        between different actions.
+        This format takes the first character passed as
+        <replaceable>MESSAGE</replaceable> and repeats it horizontally
+        to build a separator line.  Use this format whenever you need
+        to create a logical separation between different actions.
     </para>
     </listitem>
     </varlistentry>
@@ -255,10 +256,10 @@
     <term><option>--as-banner-line</option></term>
     <listitem>
     <para>
-        This format takes the string passed as MESSAGE and puts it
-        inside two horizontal separator lines. Use this format
-        whenever you need to print header information for following
-        lines.
+        This format takes the string passed as
+        <replaceable>MESSAGE</replaceable> and puts it inside two
+        horizontal separator lines. Use this format whenever you need
+        to print header information for following lines.
     </para>
     </listitem>
     </varlistentry>
@@ -267,10 +268,10 @@
     <term><option>--as-cropping-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been cropped.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been cropped.
     </para>
     </listitem>
     </varlistentry>
@@ -279,7 +280,8 @@
     <term><option>--as-tuningup-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable>
         generally refers to a file inside the repository.  Use this
         format whenever you need to imply the fact that certain file
         has been tuned-up.
@@ -290,11 +292,12 @@
     <term><option>--as-checking-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been checked or verified (e.g., through
-        <function>cli_checkFiles</function> functionality).
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been checked or verified
+        (e.g., through <function>cli_checkFiles</function>
+        functionality).
     </para>
     </listitem>
     </varlistentry>
@@ -302,10 +305,10 @@
     <term><option>--as-combining-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been combined.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been combined.
     </para>
     </listitem>
     </varlistentry>
@@ -313,10 +316,10 @@
     <term><option>--as-creating-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been created.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been created.
     </para>
     </listitem>
     </varlistentry>
@@ -324,10 +327,10 @@
     <term><option>--as-reading-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been read.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been read.
     </para>
     </listitem>
     </varlistentry>
@@ -335,10 +338,10 @@
     <term><option>--as-savedas-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been saved.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been saved.
     </para>
     </listitem>
     </varlistentry>
@@ -346,10 +349,10 @@
     <term><option>--as-linkto-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been linked.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been linked.
     </para>
     </listitem>
     </varlistentry>
@@ -357,10 +360,10 @@
     <term><option>--as-movedto-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been moved.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been moved.
     </para>
     </listitem>
     </varlistentry>
@@ -368,10 +371,10 @@
     <term><option>--as-validating-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        has been validated.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file has been validated.
     </para>
     </listitem>
     </varlistentry>
@@ -379,10 +382,11 @@
     <term><option>--as-template-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        is a template or design model.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file is a template or design
+        model.
     </para>
     </listitem>
     </varlistentry>
@@ -390,10 +394,10 @@
     <term><option>--as-configuration-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        is a configuration file.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file is a configuration file.
     </para>
     </listitem>
     </varlistentry>
@@ -401,10 +405,10 @@
     <term><option>--as-palette-line</option></term>
     <listitem>
     <para>
-        This format is for two columns messages where MESSAGE
-        generally refers to a file inside the repository.  Use this
-        format whenever you need to imply the fact that certain file
-        is a palette of colors.
+        This format is for two columns messages where
+        <replaceable>MESSAGE</replaceable> generally refers to a file
+        inside the repository.  Use this format whenever you need to
+        imply the fact that certain file is a palette of colors.
     </para>
     </listitem>
     </varlistentry>
@@ -413,11 +417,11 @@
     <listitem>
     <para>
         This format adds <literal>--></literal> at the begining of the
-        string passed as MESSAGE.  Use this format whenever you need
-        to imply the fact that certain file is considered part of a
-        response. For example, when you need to express that a group
-        of files will take ceratin action, you can use this option to
-        doing so.
+        string passed as <replaceable>MESSAGE</replaceable>.  Use this
+        format whenever you need to imply the fact that certain file
+        is considered part of a response. For example, when you need
+        to express that a group of files will take ceratin action, you
+        can use this option to doing so.
     </para>
     </listitem>
     </varlistentry>
@@ -425,9 +429,9 @@
     <term><option>--as-request-line</option></term>
     <listitem>
     <para>
-        This format prints MESSAGE without trailing new line.  Use
-        this format whenever you need to imply a question or yes or no
-        request.
+        This format prints <replaceable>MESSAGE</replaceable> without
+        trailing new line.  Use this format whenever you need to imply
+        a question or yes or no request.
     </para>
     </listitem>
     </varlistentry>
@@ -435,9 +439,10 @@
     <term><option>--as-selection-line</option></term>
     <listitem>
     <para>
-        This format uses each word in MESSAGE as item of a selection
+        This format uses each word in
+        <replaceable>MESSAGE</replaceable> as item of a selection
         list. Use this format whenever you need to select one of the
-        items provided as MESSAGE.
+        items provided as <replaceable>MESSAGE</replaceable>.
     </para>
     </listitem>
     </varlistentry>
@@ -457,10 +462,11 @@
     <term><option>--as-toknowmore-line</option></term>
     <listitem>
     <para>
-        This format takes a function name as MESSAGE and prints the
-        command you can use to find more information about it. When
-        this option is passed the script finishes its execution
-        immediately. This option is used in combination with
+        This format takes a function name as
+        <replaceable>MESSAGE</replaceable> and prints the command you
+        can use to find more information about it. When this option is
+        passed the script finishes its execution immediately. This
+        option is used in combination with
         <option>--as-error-line</option> to finish the script
         execution after an error.
     </para>
@@ -471,7 +477,8 @@
     <term><option>--as-yesornorequest-line</option></term>
     <listitem>
     <para>
-        This format takes a question as MESSAGE and reads a yes or no
+        This format takes a question as
+        <replaceable>MESSAGE</replaceable> and reads a yes or no
         answer. When answer is negative, the script finishes its
         execution immediately. When answer is affirmative, the script
         continues its execution normally. 
@@ -483,7 +490,8 @@
     <term><option>--as-notrailingnew-line</option></term>
     <listitem>
     <para>
-        Print MESSAGE without any trailing newline.
+        Print <replaceable>MESSAGE</replaceable> without any trailing
+        newline.
     </para>
     </listitem>
     </varlistentry>
@@ -492,7 +500,7 @@
     <term><option>--as-stdout-line</option></term>
     <listitem>
     <para>
-        Print MESSAGE to standard output.
+        Print <replaceable>MESSAGE</replaceable> to standard output.
     </para>
     </listitem>
     </varlistentry>
@@ -501,7 +509,8 @@
     <term><option>--as-stderr-line</option></term>
     <listitem>
     <para>
-        Print MESSAGE to standard error output.
+        Print <replaceable>MESSAGE</replaceable> to standard error
+        output.
     </para>
     </listitem>
     </varlistentry>
