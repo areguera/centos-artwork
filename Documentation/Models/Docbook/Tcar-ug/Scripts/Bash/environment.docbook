@@ -1,12 +1,6 @@
 <sect1 id="scripts-bash-environment">
 
-    <title>Execution Environments</title>
-
-    <para>
-        This section describes both variables and functions used by
-        <command>centos-art.sh</command> script as well as the related
-        execution environments they take place on.
-    </para>
+    <title>Execution Environment Reference</title>
 
     <para>
         The execution environment of <command>centos-art.sh</command>
@@ -53,10 +47,10 @@
 <programlisting>
 ---------------------------------------------------------------
 Shell execution environment
-----|-------------------|--------------------------------------
-.   |-- TCAR_WORKDIR    |-- EDITOR                            .
-.   |-- LANG            |-- HOME                              .
-.   `-- centos-art.sh   `-- ...                               .
+----|-------------------|-----------------|--------------------
+.   |-- TCAR_WORKDIR    |-- TCAR_BRAND    |-- EDITOR          .
+.   |-- LANG            |-- HOME          |-- PATH            .
+.   `-- centos-art.sh   `-- ...           `-- ...             .
 .       ----|------------------------------------------------ .
 .       centos-art.sh script execution environment            .
 .       ----|--------------------|--------------------------- .
@@ -107,8 +101,29 @@ Shell execution environment
         for common functionalities. Specific functionalities are
         stored in the <filename
         class="directory">trunk/Scripts/Bash/Functions/${CLI_FUNCDIRNAM}</filename>
-        directory.
+        directory and described in the following sections:
     </para>
+
+    <itemizedlist>
+    <listitem>
+        <para><xref linkend="scripts-bash-prepare" /></para>
+    </listitem>
+    <listitem>
+        <para><xref linkend="scripts-bash-render" /></para>
+    </listitem>
+    <listitem>
+        <para><xref linkend="scripts-bash-locale" /></para>
+    </listitem>
+    <listitem>
+        <para><xref linkend="scripts-bash-help" /></para>
+    </listitem>
+    <listitem>
+        <para><xref linkend="scripts-bash-pack" /></para>
+    </listitem>
+    <listitem>
+        <para><xref linkend="scripts-bash-tuneup" /></para>
+    </listitem>
+    </itemizedlist>
     
     <para>
         In <xref linkend="scripts-bash-environments-1" />,
@@ -119,276 +134,11 @@ Shell execution environment
         functionality.
     </para>
 
-    <sect2 id="scripts-bash-environments-variables">
-    <title>Environment Variables</title>
-
     <para>
-        The <command>centos-art.sh</command> script uses the following
-        system environment variables:
+        To know more about variables and common functions available
+        inside centos-art.sh script, see <xref
+        linkend="scripts-bash-varref" /> and <xref
+        linkend="scripts-bash-funref" />, respectively.
     </para>
-
-    <variablelist>
-    <varlistentry>
-    <term><envar>PATH</envar></term>
-    <listitem>
-    <para>
-        The <envar>PATH</envar> environment variable is specific to
-        the operating system and provides search paths for command
-        execution.  By default, the centos-art.sh script links
-        executable scripts from the <filename
-        class="directory">~/bin</filename> directory which is one of
-        the locations used as search path in this variable. This is
-        how we create the <command>centos-art</command> command from
-        the <command>centos-art.sh</command> script  inside your
-        working copy.
-    </para>
-
-    <para>
-        This variable is not initialized inside the
-        <command>centos-art.sh</command> script. Instead, the value
-        set in <filename>~/.bash_profile</filename> file is used. 
-    </para>
-
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><envar>EDITOR</envar></term>
-    <listitem>
-    <para>
-        The <envar>EDITOR</envar> environment variable is specific to
-        the operating system and provides the path to your default
-        text editor. The <command>centos-art.sh</command> script uses
-        the default text editor to edit subversion pre-commit
-        messages, translation files, documentation files, script
-        files, and similar text-based files.  
-    </para>
-    
-    <para>
-        Possible values for this variable are:
-    </para>
-
-    <itemizedlist>
-        <listitem>
-        <para>
-            <filename class="directory">/usr/bin/vim</filename>
-        </para>
-        </listitem>
-
-        <listitem>
-        <para>
-        <filename class="directory">/usr/bin/emacs</filename>
-        </para>
-        </listitem>
-
-        <listitem>
-        <para>
-            <filename class="directory">/usr/bin/nano</filename>
-        </para>
-        </listitem>
-    </itemizedlist>
-
-    <para>
-        In case none of these values is set for the
-        <envar>EDITOR</envar> environment variable inside
-        <filename>~/.bash_profile</filename>, the
-        <command>centos-art.sh</command> script uses <filename
-        class="directory">/usr/bin/vim</filename> as default text
-        editor. This is the default text editor installed by default
-        in &TCD;. 
-    </para>
-
-    </listitem>
-    </varlistentry>
-    <varlistentry>
-    <term><varname>TEXTDOMAIN</varname></term>
-    <listitem>
-    <para>
-        The <envar>TEXTDOMAIN</envar> environment variable is specific
-        to the operating system and provides the domain name of that
-        application we are producing translation messages for. This
-        variable, in combination with <envar>TEXTDOMAINDIR</envar>, is
-        used by <application>gettext</application> to find out the
-        location of translation messages.  In the very specific case
-        of <command>centos-art.sh</command> script we use the
-        <literal>centos-art.sh</literal> name as domain name.
-    </para>
-    
-    <para>
-        This variable is initialized inside the
-        <command>centos-art.sh</command> script, so if you set it
-        outside it (e.g., in <filename>~/.bash_profile</filename>) the
-        value you set there will be overwritten by that one set inside
-        <command>centos-art.sh</command> script, once it is executed.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><varname>TEXTDOMAINDIR</varname></term>
-    <listitem>
-    <para>
-        The <envar>TEXTDOMAINDIR</envar> environment variable is
-        specific to the operating system and provides the absolute
-        path to the directory containing the translation messages
-        related to that application specified by
-        <envar>TEXTDOMAIN</envar> environment variable.  In the very
-        specific case of <command>centos-art.sh</command> script we
-        use the <filename
-        class="directory">trunk/Locales/Scripts/Bash</filename>
-        path as default value.
-    </para>
-    <para>
-        This variable is initialized inside the
-        <command>centos-art.sh</command> script, so if you set it
-        outside it (e.g., in <filename>~/.bash_profile</filename>) the
-        value you set there will be overwritten by that one set inside
-        <command>centos-art.sh</command> script, once it is executed.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><envar>TMPDIR</envar></term>
-    <listitem>
-    <para>
-        The <envar>TMPDIR</envar> environment variable is specific to
-        the operating system and provides the absolute path to the
-        temporal directory the centos-art.sh script will use along its
-        execution. This variable is defined inside the
-        <command>centos-art.sh</command> script itself using the
-        <command>mktemp</command> command and will be unique on each
-        script execution. Thus, you should be able to run several
-        instances of <command>centos-art.sh</command> script
-        simultaneously without any problem. 
-    </para>
-    
-    <para>
-        Each time you need to store temporal files, do it inside the
-        absolute path specified by this variable.
-    </para>
-
-    <para>
-        This variable is initialized inside the
-        <command>centos-art.sh</command> script, so if you set it
-        outside it (e.g., in <filename>~/.bash_profile</filename>) the
-        value you set there will be overwritten by that one set inside
-        <command>centos-art.sh</command> script, once it is executed.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><envar>LANG</envar></term>
-    <listitem>
-    <para>
-        The <envar>LANG</envar> environment variable is specific to
-        the operating system and controls the default locale
-        information of it.  The <command>centos-art.sh</command>
-        script use the <envar>LANG</envar> environment variable to
-        determine what language to use for printing output messages
-        from the script itself, as well as the portable objects
-        locations that need to be updated or edited when you localize
-        directory structures inside the working copy of &TCAR;.
-    </para>
-        
-    <para>
-        The <envar>LANG</envar> environment variable is initially set
-        in the installation process of &TCD;, specifically in the
-        <emphasis>Language</emphasis> step.  Generally, there is no
-        need to customize this variable in your personal profile. If
-        you need to change the value of this environment variable do
-        it through the login screen of GNOME Desktop Environment or
-        the <command>system-config-language</command> command, or even
-        resetting the variable before executing the
-        <command>centos-art.sh</command> script.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    </variablelist>
-
-    <para>
-        In addition to system environment variables described above,
-        the centos-art.sh script adds the following variables inside
-        the <filename>~/.bash_profile</filename> file to control the
-        script behaviour in a per-user level:
-    </para>
-
-    <variablelist>
-    <varlistentry>
-    <term><varname>TCAR_WORKDIR</varname></term>
-    <listitem>
-    <para>
-        The <envar>TCAR_WORKDIR</envar> environment variable is
-        specific to <command>centos-art.sh</command> script and
-        controls the working copy default location in the workstation.
-        This variable doesn't exist just after installing your
-        workstation. In order for this variable to be customizable you
-        need to configure your workstation first, as described in
-        <xref linkend="repo-ws-config" />.
-    </para>
-    <para>
-        By default, when this variable hadn't been set, the
-        centos-art.sh script assumes the <filename
-        class="directory">${HOME}/artwork</filename> path as default
-        location for your working copy.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><varname>TCAR_BRAND</varname></term>
-    <listitem>
-    <para>
-        ...   
-    </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-
-    </sect2>
-
-    <sect2 id="scripts-bash-environment-functions">
-    <title>Environment Functions</title>
-
-    <para>
-        In addition to environment variables described above, the
-        centos-art.sh script makes available the following common
-        environment functions:
-    </para>
-
-    <variablelist>
-
-    <varlistentry>
-    <term><function>cli_checkFiles <parameter>FILE</parameter> <parameter>...</parameter></function></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><function>cli_printMessage <parameter>MESSAGE</parameter> <parameter>TYPE</parameter></function></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><function>cli_exportFunctions <parameter>PATH</parameter></function></term>
-    <listitem>
-    <para>
-        ...
-    </para>
-    </listitem>
-    </varlistentry>
-
-    </variablelist>
-    </sect2>
-
 
 </sect1>
