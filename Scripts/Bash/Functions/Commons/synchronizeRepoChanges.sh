@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# cli_syncronizeRepoChanges.sh -- This function standardizes the way
+# cli_synchronizeRepoChanges.sh -- This function standardizes the way
 # changes are synchronized between the working copy and the central
 # repository. This function is an interface for the `Svn'
 # functionality of centos-art.sh script.
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function cli_syncronizeRepoChanges {
+function cli_synchronizeRepoChanges {
 
     if [[ ! $FLAG_COMMIT_CHANGES == 'true' ]];then
         return
