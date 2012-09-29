@@ -49,7 +49,7 @@ function locale_updateMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_syncronizeRepoChanges "${L10N_WORKDIR}"
+    cli_synchronizeRepoChanges "${L10N_WORKDIR}"
 
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
@@ -76,6 +76,6 @@ function locale_updateMessages {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_syncronizeRepoChanges "${L10N_WORKDIR}"
+    cli_synchronizeRepoChanges "${L10N_WORKDIR}"
 
 }
