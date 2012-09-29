@@ -72,12 +72,11 @@
     </varlistentry>
 
     <varlistentry>
-    <term><option>--dont-commit-changes</option></term>
+    <term><option>--sync-changes</option></term>
     <listitem>
     <para>
-        Supress all commit and update actions realized over files,
-        before and after the action itself had took place over files
-        in the working copy.
+        Synchronizes available changes between the working copy and
+        the central repository.
     </para>
     </listitem>
     </varlistentry>
