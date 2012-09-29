@@ -29,7 +29,7 @@ function svn_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="sync,update,commit,is-versioned,commit-changes,get-status"
+    local ARGSL="sync,update,commit,is-versioned,get-status"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -66,12 +66,6 @@ function svn_getOptions {
                 ACTIONNAMS="${ACTIONNAMS} svn_getRepoStatus"
                 shift 1
                 ;;
-
-            --commit-changes )
-                FLAG_COMMIT_CHANGES="true"
-                shift 1
-                ;;
-
 
             -- )
                 # Remove the `--' argument from the list of arguments
