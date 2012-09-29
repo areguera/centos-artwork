@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # cli_parseArgumentsReDef.sh -- This function initiates/reset and
-# sanitates positional parameters passed to this function and creates
-# the the list of arguments that getopt will process.
+# sanitizes positional parameters passed to this function and creates
+# the list of arguments that getopt will process.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
