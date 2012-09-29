@@ -29,7 +29,7 @@ function tuneup_getOptions {
     local ARGSS=""
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,commit-changes"
+    local ARGSL="filter:,quiet,answer-yes,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -58,7 +58,7 @@ function tuneup_getOptions {
                 ;;
 
             --answer-yes )
-                FLAG_COMMIT_CHANGES="true"
+                FLAG_SYNC_CHANGES="true"
                 shift 1
                 ;;
 
