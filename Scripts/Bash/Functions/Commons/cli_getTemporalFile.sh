@@ -28,7 +28,7 @@ function cli_getTemporalFile {
 
     # Define base name for temporal file. This is required when svg
     # instances are created previous to be parsed by inkscape in order
-    # to be exported as png. In such cases .svg file exention is
+    # to be exported as png. In such cases .svg file extension is
     # required in order to avoid complains from inkscape.
     local NAME="$(cli_getRepoName $1 -f)"
 
