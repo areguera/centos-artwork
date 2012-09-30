@@ -57,7 +57,7 @@ function texinfo_updateOutputFileXhtml {
         --init-file=${MANUAL_TEMPLATE_L10N}/manual-init.pl \
         -I ${TCAR_WORKDIR} \
         --output=${MANUAL_OUTPUT_BASEFILE}-xhtml \
-        ${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}.${MANUAL_EXTENSION}
+        ${MANUAL_BASEFILE}.${MANUAL_EXTENSION}
 
     # Create `css' and `images' directories. In order to save disk
     # space, these directories are linked (symbolically) to their
