@@ -32,7 +32,7 @@ function texinfo {
     # support structuring through parts, but chapters and sections
     # only).
     if [[ $MANUAL_PART_NAME != '' ]];then
-        cli_printMessage "The documentation entry provided isn't supported." --as-error-line
+        cli_printMessage "`gettext "The documentation entry provided isn't supported."`" --as-error-line
     fi
 
     # Define file extension used by source files inside manuals.
