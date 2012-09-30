@@ -34,7 +34,7 @@ function texinfo_searchNode {
 
     # Verify manual output files and, if they don't exist, create
     # them.
-    if [[ ! -f ${MANUAL_BASEFILE}.info.bz2 ]];then
+    if [[ ! -f ${MANUAL_OUTPUT_BASEFILE}.info.bz2 ]];then
         texinfo_updateOutputFiles
     fi
 
@@ -42,7 +42,7 @@ function texinfo_searchNode {
     cli_printMessage '-' --as-separator-line
 
     # Print action message.
-    cli_printMessage "${MANUAL_BASEFILE}.info.bz2" --as-reading-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.info.bz2" --as-reading-line
 
     # Define manual node that will be read.
     local MANUAL_NODE="$(texinfo_getEntryNode "$MANUAL_ENTRY")"
@@ -55,6 +55,6 @@ function texinfo_searchNode {
     fi
 
     # Use info reader to read the manual node.
-    info --node="${MANUAL_NODE}" --file="${MANUAL_BASEFILE}.info.bz2"
+    info --node="${MANUAL_NODE}" --file="${MANUAL_OUTPUT_BASEFILE}.info.bz2"
 
 }
