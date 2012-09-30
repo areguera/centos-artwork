@@ -37,23 +37,8 @@ function help {
     local MANUAL_L10N=${CLI_LANG_LC}
 
     # Initialize manuals's top-level directory. This is the place
-    # where the manual will be stored in. To provide flexibility, the
-    # current directory where the `centos-art.sh' script was called
-    # from is used as manual's top-level directory.  Notice that this
-    # relaxation is required because we need to create/maintain
-    # manuals both under `trunk/Documentation/Models/' and
-    # `branches/Documentation/Manuals/' directories.
-    local MANUAL_TLDIR=${PWD}
-
-    # Verify manual's top-level directory. To prevent messing the
-    # things up, we need to restrict the possible locations where
-    # documentation manuals can be created in the working copy.  When
-    # manual's top-level location is other but the ones permitted, use
-    # `trunk/Documentation/Models' directory structure as default
-    # location to store documentation manuals.
-    if [[ ! $MANUAL_TLDIR =~ "^${TCAR_WORKDIR}/trunk/Documentation/Models/Texinfo" ]];then
-        MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models/Texinfo"
-    fi
+    # where source files for documentation manuals will be stored in. 
+    local MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models/Texinfo"
 
     # Initialize documentation entries arrays. Arrays defined here
     # contain all the information needed to process documentation
