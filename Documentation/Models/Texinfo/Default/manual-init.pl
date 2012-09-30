@@ -34,7 +34,7 @@ $USE_ISO = 1;
 # searched for (besides the directory of the file). additional '-I'
 # args are appended to this list.  (APA: Don't implicitely search .,
 # to conform with the docs!) my @INCLUDE_DIRS = (".");
-@INCLUDE_DIRS = ("/home/centos/Projects/artwork");
+#@INCLUDE_DIRS = ("/home/al/Projects/CentOS/artwork");
 
 # Extension used on output files.
 $EXTENSION = "xhtml";
@@ -96,9 +96,9 @@ sub T2H_XHTML_print_page_head
     <meta name="resource-type" content="document" />
     <meta name="distribution" content="global" />
     <meta name="generator" content="$Texi2HTML::THISDOC{program}" />
-    <meta name="copyright" content="2009, 2010, 2011 The CentOS Project" />
+    <meta name="copyright" content="2009-2012 The CentOS Project" />
 
-    <link href="/home/centos/Projects/artwork/trunk/Identity/Webenv/Css/Texi2html/default.css" rel="stylesheet" type="text/css" media="screen projection" />
+    <link href="Css/stylesheet.css" rel="stylesheet" type="text/css" media="screen projection" />
 
 </head>
 
