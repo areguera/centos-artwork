@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# cli.sh -- This function initiates the application's command-line
-# interface.  Variables defined in this function are accesible by all
-# other functions. The cli function is the first script executed by
-# the application command-line onces invoked.
+# cli.sh -- This function initiates the centos-art.sh script
+# command-line interface.  Variables defined in this function are
+# accesible by all other functions. The cli function is the first
+# script executed by centos-art.sh, onces executed in a terminal.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -92,7 +92,7 @@ function cli {
     # provided, execute the help functionality and end script
     # execution.
     if [[ ! "$1" ]] || [[ ! "$1" =~ '^[[:alpha:]]' ]];then
-        ${CLI_BASEDIR}/${CLI_NAME}.sh help tcar-fs:
+        ${CLI_BASEDIR}/${CLI_NAME}.sh help tcar-fs:::
         exit
     fi
 
