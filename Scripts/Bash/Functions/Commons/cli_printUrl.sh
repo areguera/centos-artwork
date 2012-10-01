@@ -33,7 +33,7 @@ function cli_printUrl {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='domain,home,lists,wiki,forums,bugs,planet,docs,mirrors,irc,projects,projects-artwork,cc-sharealike,with-locale,as-html-link'
+    local ARGSL='domain,home,lists,wiki,forums,bugs,planet,docs,mirrors,projects,svn,trac,irc,cc-sharealike,with-locale,as-html-link'
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
@@ -84,12 +84,17 @@ function cli_printUrl {
                 ;;
 
             --projects )
-                URL="https://projects.$(cli_printUrl --domain)/svn/"
+                URL="https://projects.$(cli_printUrl --domain)/"
                 shift 1
                 ;;
 
-            --projects-artwork )
-                URL="$(cli_printUrl --projects)artwork/"
+            --svn )
+                URL="$(cli_printUrl --projects)svn/"
+                shift 1
+                ;;
+
+            --trac )
+                URL="$(cli_printUrl --projects)trac/"
                 shift 1
                 ;;
 
