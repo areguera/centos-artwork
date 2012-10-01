@@ -155,8 +155,352 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
+            <command>cli_expandTMarkers</command>
+            <arg choice="opt">--as-html-link</arg>
+            <arg choice="opt">--with-locale</arg>
+            <arg choice="req"><replaceable>LOCATION</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        The <function>cli_expandTMarkers</function> standardizes
+        construction of translation markers and their related
+        expansion. As convention, translation markers are set inside
+        source files (e.g., DocBook, SVG) and expanded inside temporal
+        instances used to produce final contents.
+    </para>
+    <para>
+        Translation markers written in source files must comply the
+        <literal>=[A-Z_]+=</literal> regular expression pattern. For
+        example, <literal>=UNKNOWN_MARKER=</literal> is a valid
+        translation marker without any replacement. To prevent
+        <command>centos-art.sh</command> script from expanding
+        translation markers, add a backslash (<literal>\</literal>)
+        between the first equal sign and the following letter. For
+        example, <literal>=\...=</literal> won't be expanded.
+    </para>
+    <para>
+        The <function>cli_expandTMarkers</function> supports the
+        following translation markers:
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term><literal>=\COPYRIGHT_YEAR_LAST=</literal></term>
+    <term><literal>=\COPYRIGHT_YEAR=</literal></term>
+    <listitem>
+    <para>
+        These translation markers expand to the last year used in
+        copyright notes. For example,
+        <literal>=COPYRIGHT_YEAR_LAST=</literal>. 
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\COPYRIGHT_YEAR_LIST=</literal></term>
+    <term><literal>=\COPYRIGHT_YEARS_LIST=</literal></term>
+    <listitem>
+    <para>
+        This translation markers expand to the list of years used in
+        copyright notes. For example,
+        <literal>=COPYRIGHT_YEARS_LIST=</literal>.  The first year
+        represents the time we began to work on &TCAR;.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\COPYRIGHT_HOLDER=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the holder used in
+        copyright notes. For example,
+        <literal>=COPYRIGHT_HOLDER=</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\COPYRIGHT_HOLDER_PREDICATE=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands both the holder and the
+        predicate used in copyright notes. For example,
+        <literal>=COPYRIGHT_HOLDER_PREDICATE=</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\BRAND=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the brand name used on
+        files names and URLs inside &TCAR;.  For example,
+        <literal>=BRAND=</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\LICENSE=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the license information
+        used in files created by <command>centos-art.sh</command>
+        script. For example, <literal>=LICENSE=</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\LICENSE_URL=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the license URL used in
+        files created by <command>centos-art.sh</command> script. For
+        example, <literal>=LICENSE_URL=</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\THEME=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the theme portion of path
+        you are producing through centos-art.sh script. As
+        consequence, this translation marker should be used in
+        situations where you are producing theme components only.
+        This translation marker expands its value by retrieving the
+        theme part of the path you provide as non-option argument to
+        <command>centos-art.sh</command> script. For example, if you
+        provide the path
+        <filename>trunk/Identity/Images/Themes/Modern/2/Distro/5</filename>,
+        this translation will expand to the
+        <literal>Modern/2/</literal> value.
+    </para>
+    <para>
+        In case you need to retrieve the theme name or version
+        separately one another, then you can use the
+        <literal>=\THEMENAME=</literal> and
+        <literal>=\THEMERELEASE=</literal> translation markers,
+        respectively. When you use these translation markers, forward
+        slashes are removed from result. So, if you provide the path
+        <filename>trunk/Identity/Images/Themes/Modern/2/Distro/5</filename>,
+        <literal>=\THEMENAME=</literal> will expand to
+        <literal>Modern</literal> and
+        <literal>=THEMERELEASE=</literal> will expand to
+        <literal>2</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\RELEASE=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the current release
+        information of your CentOS distribution. By default this
+        information is retrieved from
+        <filename>/etc/redhat-release</filename>. In case the option
+        <option>--release</option> be passed, the value specified with
+        it will overwrite the default value and will be this the one
+        used as reference for this translation marker to retrieve the
+        release information. So, for example, if you are running a
+        CentOS-5.8 distribution and no <option>--release</option>
+        option is passed to <command>centos-art.sh</command> script,
+        this translation marker expands to <literal>5.8</literal>. On
+        the other hand, if you are still running a CentOS-5.8
+        distribution but provide the <option>--release=6.3</option>
+        option to <command>centos-art.sh</command> script, this
+        translation marker expands to <literal>6.3</literal> instead.
+    </para>
+    <para>
+        In case you need to retrieve minor and major release numbers
+        separately one another, then you can use the
+        <literal>=\MINOR_RELEASE=</literal> and
+        <literal>=\MAJOR_RELEASE=</literal> translation makers,
+        respectively.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\ARCH=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the current architecture of
+        your CentOS Distribution. By default this information is
+        retrieved from <command>uname -i</command>. In case the option
+        <option>--arch</option> be passed, the value specified with it
+        will overwrite the default value and will be the one used as
+        reference. For example, if the <command>uname -i</command>
+        outputs the line <computeroutput>i386</computeroutput>, this
+        translation marker will expand to <literal>i386</literal>. On
+        the other hand, if you pass the <option>--arch=x86_64</option>
+        option to <command>centos-art.sh</command> script, this
+        translation marker will expand to <literal>x86_64</literal>
+        instead.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\URL=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the URL which points to
+        &TCP; home page. For example, <literal>=URL=</literal>.  In
+        case you are using the centos-art.sh script in a different
+        locale but English (<literal>en_US.UTF-8</literal>), this
+        translation marker expands as usual but with the language
+        information appended to the end of the string. For example, if
+        you are executing the centos-art.shscript for Spanish locale
+        (e.g., <literal>es_ES.UTF-8</literal>), this translation
+        marker expands to <literal>=URL=es/</literal>.
+    </para>
+
+    <para>
+        In case you need to expand other URL related to &TCP; domain,
+        use translation markers described in <xref
+        linkend="scripts-bash-funref-expandTMarkers-Url" />. Likewise
+        =\URL=, translation markers described in <xref
+        linkend="scripts-bash-funref-expandTMarkers-Url" /> does
+        append the current language information to the end of the URL
+        string based on the locale information you are currently
+        executing the <command>centos-art.sh</command> script.
+    </para>
+
+    <table id="scripts-bash-funref-expandTMarkers-Url">
+    <title>URL-related translation markers</title>
+    <tgroup cols="2" align="left">
+    <thead>
+        <row>
+            <entry>Translation Marker</entry>
+            <entry>Expands To</entry>
+        </row>
+    </thead>
+
+    <tbody>
+        <row>
+            <entry><literal>=\URL_WIKI=</literal></entry>
+            <entry><literal>=URL_WIKI=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_LISTS=</literal></entry>
+            <entry><literal>=URL_LISTS=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_FORUMS=</literal></entry>
+            <entry><literal>=URL_FORUMS=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_MIRRORS=</literal></entry>
+            <entry><literal>=URL_MIRRORS=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_DOCS=</literal></entry>
+            <entry><literal>=URL_DOCS=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_PROJECTS=</literal></entry>
+            <entry><literal>=URL_PROJECTS=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_SVN=</literal></entry>
+            <entry><literal>=URL_SVN=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_TRAC=</literal></entry>
+            <entry><literal>=URL_TRAC=</literal></entry>
+        </row>
+        <row>
+            <entry><literal>=\URL_PLANET=</literal></entry>
+            <entry><literal>=URL_PLANET=</literal></entry>
+        </row>
+    </tbody>
+    
+    </tgroup>
+    </table>
+
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\MAIL_DOCS=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to CentOS documentation
+        mailing list address. For example,
+        <literal>=MAIL_DOCS=</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\LOCALE=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the current locale
+        information used by <command>centos-art.sh</command> script.
+        This value is retrieved from the <envar>LANG</envar>
+        environment variable and should look like
+        <literal>=LOCALE=</literal>.  In case you need to retrieve the
+        language and country part separately one another, you can use
+        the <literal>=\LOCALE_LL=</literal> and
+        <literal>=\LOCALE_CC=</literal>, respectively.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\REPO_TLDIR=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the absolute path to
+        <filename class="directory">trunk/</filename> directory inside
+        your workstation. For example,
+        <literal>/home/al/Projects/CentOS/artwork/trunk</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><literal>=\REPO_HOME=</literal></term>
+    <term><literal>=\TCAR_WORKDIR=</literal></term>
+    <listitem>
+    <para>
+        This translation marker expands to the absolute path of your
+        working copy.  For example,
+        <literal>/home/al/Projects/CentOS/artwork</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command>cli_exportFunctions</command>
+            <arg choice="req"><replaceable>EXPORTID</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
             <command>cli_synchronizeRepoChanges</command>
-            <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
+            <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
     </term>
     <listitem>
