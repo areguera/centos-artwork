@@ -1,8 +1,10 @@
 #!/bin/bash
 #
-# cli_expandTMarkers.sh -- This function standardizes translation
-# markers and their replacements. Raplacements are applied to temporal
-# instances used to produce final files.
+# cli_expandTMarkers.sh -- This function standardizes construction of
+# translation markers and their related expansion. As convention,
+# translation markers must be set inside source files (e.g., Docbook,
+# Svg, etc.) and expanded inside temporal instances used to produce
+# final contents.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -41,13 +43,9 @@ function cli_expandTMarkers {
     cli_checkFiles -e ${LOCATION}
 
     # Define copyright translation markers.
-    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LAST='
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(_LAST)?='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --year)"
-    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --year)"
-    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_LIST='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --years-list)"
-    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEARS_LIST='
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(S)?_LIST='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --years-list)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --holder)"
@@ -100,18 +98,28 @@ function cli_expandTMarkers {
     DST[((++${#DST[*]}))]=$(cli_printUrl '--mirrors' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_DOCS='
     DST[((++${#DST[*]}))]=$(cli_printUrl '--docs' '--with-locale')
-    SRC[((++${#SRC[*]}))]='=URL_IRC='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--irc')
+    SRC[((++${#SRC[*]}))]='=URL_PROJECTS='
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--projects' '--with-locale')
+    SRC[((++${#SRC[*]}))]='=URL_BUGS='
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--bugs' '--with-locale')
+    SRC[((++${#SRC[*]}))]='=URL_SVN='
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--svn' '--with-locale')
+    SRC[((++${#SRC[*]}))]='=URL_TRAC='
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--trac' '--with-locale')
+    SRC[((++${#SRC[*]}))]='=URL_PLANET='
+    DST[((++${#DST[*]}))]=$(cli_printUrl '--planet' '--with-locale')
 
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
     DST[((++${#DST[*]}))]="$(cli_printMailingList --docs)"
 
     # Define locale translation markers.
-    SRC[((++${#SRC[*]}))]='=LOCALE_LL='
-    DST[((++${#DST[*]}))]="${CLI_LANG_LL}"
     SRC[((++${#SRC[*]}))]='=LOCALE='
     DST[((++${#DST[*]}))]="${CLI_LANG_LC}"
+    SRC[((++${#SRC[*]}))]='=LOCALE_LL='
+    DST[((++${#DST[*]}))]="${CLI_LANG_LL}"
+    SRC[((++${#SRC[*]}))]='=LOCALE_CC='
+    DST[((++${#DST[*]}))]="${CLI_LANG_CC}"
 
     # Define domain translation markers for domains.
     SRC[((++${#SRC[*]}))]='=DOMAIN_LL='
@@ -124,7 +132,7 @@ function cli_expandTMarkers {
     # Define repository translation markers.
     SRC[((++${#SRC[*]}))]='=REPO_TLDIR='
     DST[((++${#DST[*]}))]="${TCAR_WORKDIR}/trunk"
-    SRC[((++${#SRC[*]}))]='=REPO_HOME='
+    SRC[((++${#SRC[*]}))]='=(REPO_HOME|TCAR_WORKDIR)='
     DST[((++${#DST[*]}))]="${TCAR_WORKDIR}"
 
     # Do replacement of nested translation markers.
@@ -173,9 +181,16 @@ function cli_expandTMarkers {
 
     done
 
+    # Remove escaped character from translation markers. This is one
+    # of the reasons why translation marker should be expanded in
+    # source files instances not the source files themselves.
+    # Escaping translation markers provides a way of talking about
+    # them without expanding them.
+    sed -r -i 's/(=)\\([A-Z_]+=)/\1\2/g' ${LOCATION}
+
     # Unset specific translation markers and specific replacement
     # variables in order to clean them up. Otherwise, undesired values
-    # may ramain from one file to another.
+    # may remain from one file to another.
     unset SRC
     unset DST
 
