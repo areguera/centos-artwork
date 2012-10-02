@@ -156,8 +156,6 @@
     <term>
         <cmdsynopsis>
             <command>cli_expandTMarkers</command>
-            <arg choice="opt">--as-html-link</arg>
-            <arg choice="opt">--with-locale</arg>
             <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -167,7 +165,10 @@
         construction of translation markers and their related
         expansion. As convention, translation markers are set inside
         source files (e.g., DocBook, SVG) and expanded inside temporal
-        instances used to produce final contents.
+        instances used to produce final contents. The
+        <replaceable>LOCATION</replaceable> argument should point to
+        the temporal file where translation markers expansion takes
+        place in.
     </para>
     <para>
         Translation markers written in source files must comply the
@@ -477,22 +478,53 @@
     </para>
     </listitem>
     </varlistentry>
-
     </variablelist>
+
+    <para>
+        See also: <xref linkend="cli_getTemporalFile" />
+    </para>
+
     </listitem>
     </varlistentry>
 
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command>cli_exportFunctions</command>
+            <command id="cli_exportFunctions">cli_exportFunctions</command>
             <arg choice="req"><replaceable>EXPORTID</replaceable></arg>
         </cmdsynopsis>
     </term>
     <listitem>
     <para>
-        ...
+        The <function>cli_exportFunctions</function> function
+        standardizes the way specific functionalities are exported to
+        <command>centos-art.sh</command> script execution environment.
+        The <replaceable>EXPORTID</replaceable> argument points the
+        specific function initialization file relatively from
+        <filename>trunk/Scripts/Bash/Functions</filename> directory
+        on. For example, if we want to export the
+        <function>render</function> specific functionality, we use the
+        following construction:
     </para>
+    <screen>cli_exportFunctions "Render/render"</screen>
+    <para>
+        In this construction, <literal>Render</literal> with the first
+        letter in upper case is the name of the directory under
+        <filename
+        class="directory">trunk/Scripts/Bash/Functions</filename>
+        where the specific functionality is stored in, and
+        <literal>render</literal> with all letters in lower case is
+        the name of the specific functionality we want to export,
+        without its extension. This name is also use as suffix to
+        identify all files related to the specific functionality we
+        are exporting to <command>centos-art.sh</command> script
+        execution environment.
+    </para>
+
+    <para>
+        See also: <xref linkend="cli_unsetFunctions" />
+    </para>
+
     </listitem>
     </varlistentry>
 
@@ -864,6 +896,34 @@
         Use <function>cli_printMessage</function> function whenever
         you need to print information inside the
         <command>centos-art.sh</command> script.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command id="cli_unsetFunctions" xreflabel="cli_unsetFunctions">cli_unsetFunctions</command>
+            <arg choice="req"><replaceable>EXPORTID</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command id="cli_getTemporalFile" xreflabel="cli_getTemporalFile">cli_getTemporalFile</command>
+            <arg choice="req"><replaceable>FILENAME</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        ...
     </para>
     </listitem>
     </varlistentry>
