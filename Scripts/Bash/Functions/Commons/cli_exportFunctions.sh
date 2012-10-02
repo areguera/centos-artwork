@@ -26,13 +26,16 @@
 
 function cli_exportFunctions {
 
-    # Verify the number of arguments passed to this function.
-    if [[ $# -lt 1 ]];then
-        cli_printMessage "${FUNCNAME}: `gettext "At least one argument must be passed."`"
-    fi
+    # Retrieve export identifier for the function we want to export.
+    local EXPORTID="$1"
 
-    # Retrive export identifier for the function we want to export.
-    local EXPORTID=$1
+    # Verify the export identification existence. This argument must
+    # be passed as first argument and match a relative path format.
+    if [[ ! $EXPORTID ]] || [[ $EXPORTID == '' ]];then
+        cli_printMessage "`gettext "The export id must be passed as first argument."`" --as-error-line
+    elif [[ ! $EXPORTID =~ '^[A-Z][[:alpha:]]+(/[[:alpha:]]+)+$' ]];then
+        cli_printMessage "`gettext "The export id doesn't match its pattern."`" --as-error-line
+    fi
 
     # Define the source location where function files are placed in.
     local LOCATION=${CLI_BASEDIR}/Functions/$(dirname ${EXPORTID})
