@@ -13,7 +13,7 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command>cli_checkFiles</command> 
+            <command id="cli_checkFiles" xreflabel="cli_checkFiles">cli_checkFiles</command> 
             <arg choice="req">
             <arg>-d</arg>
             <arg>-e</arg>
@@ -122,7 +122,7 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command>cli_checkRepoDirSource</command>
+            <command id="cli_checkRepoDirSource" xreflabel="cli_checkRepoDirSource">cli_checkRepoDirSource</command>
         </cmdsynopsis>
     </term>
     <listitem>
@@ -155,7 +155,7 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command>cli_expandTMarkers</command>
+            <command id="cli_expandTMarkers" xreflabel="cli_expandTMarkers">cli_expandTMarkers</command>
             <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -490,7 +490,7 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_exportFunctions">cli_exportFunctions</command>
+            <command id="cli_exportFunctions" xreflabel="cli_exportFuncations">cli_exportFunctions</command>
             <arg choice="req"><replaceable>EXPORTID</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -506,7 +506,9 @@
         <function>render</function> specific functionality, we use the
         following construction:
     </para>
-    <screen>cli_exportFunctions "Render/render"</screen>
+<programlisting>
+cli_exportFunctions "Render/render"
+</programlisting>
     <para>
         In this construction, <literal>Render</literal> with the first
         letter in upper case is the name of the directory under
@@ -515,7 +517,7 @@
         where the specific functionality is stored in, and
         <literal>render</literal> with all letters in lower case is
         the name of the specific functionality we want to export,
-        without its extension. This name is also use as suffix to
+        without its extension. This name is also used as suffix to
         identify all files related to the specific functionality we
         are exporting to <command>centos-art.sh</command> script
         execution environment.
@@ -531,7 +533,7 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command>cli_synchronizeRepoChanges</command>
+            <command id="cli_synchronizeRepoChanges" xreflabel="cli_synchronizeRepoChanges">cli_synchronizeRepoChanges</command>
             <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -558,7 +560,7 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command>cli_printMessage</command>
+            <command id="cli_printMessage" xreflabel="cli_printMessage">cli_printMessage</command>
             <arg choice="req"><replaceable>MESSAGE</replaceable></arg>
             <group choice="opt">
             <arg>--as-separator-line</arg>
@@ -910,6 +912,9 @@
     <listitem>
     <para>
         ...
+    </para>
+    <para>
+        See also: <xref linkend="cli_exportFunctions" />
     </para>
     </listitem>
     </varlistentry>
