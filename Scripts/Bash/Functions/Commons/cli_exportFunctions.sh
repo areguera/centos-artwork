@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# cli_exportFunctions.sh -- This function exports funtionalities to
-# `centos-art.sh' script execution evironment.
+# cli_exportFunctions.sh -- This function standardizes the way
+# specific functionalities are exported to centos-art.sh script
+# environment.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
