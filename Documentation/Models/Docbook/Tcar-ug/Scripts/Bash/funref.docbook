@@ -533,6 +533,166 @@ cli_exportFunctions "Render/render"
     <varlistentry>
     <term>
         <cmdsynopsis>
+        <command id="cli_getConfigLines" xreflabel="cli_getConfigLines">cli_getConfigLines</command>
+        <arg choice="req"><replaceable>FILE</replaceable></arg>
+        <arg choice="req"><replaceable>SECTION</replaceable></arg>
+        <arg choice="req"><replaceable>OPTION</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        The <function>cli_getConfigLines</function> function
+        standardizes the way configuration lines are retrieved from
+        configuration files. 
+    </para>
+    
+    <para>
+        The <function>cli_getConfigLines</function> function accepts
+        the following arguments:
+    </para>
+    
+    <variablelist>
+    <varlistentry>
+    <term><replaceable>FILE</replaceable></term>
+    <listitem>
+    <para>
+        This argument specifies the absolute path to the configuration
+        file you want to retrieve configuration lines from. For
+        example,
+        <quote><filename>${TCAR_WORKDIR}/trunk/Identity/Models/Themes/Default/Distro/5/Anaconda/branding.conf</filename></quote>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><replaceable>SECTION</replaceable></term>
+    <listitem>
+    <para>
+        This argument specifies the name of the section you want to
+        retrieve configuration lines from. For example,
+        <quote>symbols</quote> without brackets.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><replaceable>OPTION</replaceable></term>
+    <listitem>
+    <para>
+        This argument specifies the name of the option related to the
+        configuration line you want to retrieve. For example,
+        <quote>anaconda_header.svgz</quote>.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        In order for <function>cli_getConfigLines</function> to work
+        properly, the configuration files must have a section line
+        with the form <literal>[sectionname]</literal> which groups
+        several <literal>option = "value"</literal> lines.
+        Lines beginning with <literal>#</literal> are ignored and can
+        be used for comments.
+    </para>
+
+    <example id="cli_getConfigLines-conffile">
+    <title>Configuration file used to produce Tcar-fs documentation manual</title>
+    <screenshot>
+    <screeninfo>Configuration used to produce Tcar-fs documentation manual</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+[main]
+
+# Specify documentation backend used by documentation manual.
+manual_format = "texinfo"
+
+# Specify title style used by sections inside the manual.
+manual_section_style = "directory"
+
+# Specify the order used by sections inside the manual.
+manual_section_order = "ordered"
+
+[templates]
+
+# Specify relation between template files and section definition files
+# inside the manual. 
+Chapters/section-functions.texinfo   = "^.+-functions-[[:alnum:]]+\.texinfo$"
+Chapters/section.texinfo             = "^.+\.texinfo$"
+</programlisting>
+</textobject>
+</mediaobject>
+</screenshot>
+    </example>
+
+    <para>
+        The section names and option names used inside configuration
+        files can be anything. It depends on the use and
+        interpretation programmed inside
+        <command>centos-art.sh</command> script for specific purposes
+        which defines what kind of section and options must exist
+        inside a configuration file. For example, consider the
+        configuration files used by <function>render</function>
+        functionality. They follow the same structure used in
+        documentation configuration files but the meaning of their
+        sections and options change to fit the specific needs of
+        <function>render</function> functionality.
+    </para>
+
+    <example id="cli_getConfigLines-conffile-2">
+    <title>Configuration file used to produced Anaconda images</title>
+    <screenshot>
+    <screeninfo>Configuration used to produced Anaconda images</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+[types]
+
+anaconda_header.svgz   = "Types/White/48/=\BRAND=-5.png:x48+20+20"
+first.svgz             = "Types/White/32/=\BRAND=-5.png:x32+30+219"
+splash.svgz            = "Types/White/48/=\BRAND=-5-msg.png:x48+30+138"
+
+[symbols]
+
+anaconda_header.svgz   = "Symbols/48/=\BRAND=.png:x48+732+20"
+first.svgz             = "Symbols/48/=\BRAND=.png:x48+30+20"
+splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
+</programlisting>
+</textobject>
+</mediaobject>
+</screenshot>
+    </example>
+
+    <para>
+        Use the <function>cli_getConfigLines</function> function when
+        you need to retrieve <literal>option = "value"</literal> lines
+        from configuration files in a controlled way.
+    </para>
+
+    <para>
+        See also: <xref linkend="cli_getConfigValue" />
+    </para>
+
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>   
+            <command id="cli_getConfigValue" xreflabel="cli_getConfigValue">cli_getConfigValue</command>
+        </cmdsynopsis>   
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
             <command id="cli_synchronizeRepoChanges" xreflabel="cli_synchronizeRepoChanges">cli_synchronizeRepoChanges</command>
             <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
