@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# cli_getConfigValue.sh -- This function retrives configuration values
-# from configuration files. As arguments, the configuration file
-# absolute path, the configuration section name, and the configuration
-# variable name must be provided.
+# cli_getConfigValue.sh -- This function standardizes the way are
+# retrieved from configuration files. As arguments, the configuration
+# file absolute path, the configuration section name, and the
+# configuration option name must be provided.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -35,19 +35,19 @@ function cli_getConfigValue {
     local CONFIG_SECTION="$2"
 
     # Initialize variable name we want to retrive value from.
-    local CONFIG_VARNAME="$3"
+    local CONFIG_OPTION="$3"
 
     # Retrive configuration lines from configuration file.
     local CONFIG_LINES=$(cli_getConfigLines \
-        "$CONFIG_ABSPATH" "$CONFIG_SECTION" "$CONFIG_VARNAME")
+        "$CONFIG_ABSPATH" "$CONFIG_SECTION" "$CONFIG_OPTION")
 
     # Parse configuration lines to retrive the values of variable
     # names.
-    local CONFIG_VARVALUE=$(echo $CONFIG_LINES \
+    local CONFIG_VALUE=$(echo $CONFIG_LINES \
         | cut -d'=' -f2- \
         | sed -r 's/^"(.*)"$/\1/')
 
     # Output values related to variable name.
-    echo "$CONFIG_VARVALUE"
+    echo "$CONFIG_VALUE"
 
 }
