@@ -75,7 +75,7 @@ function texinfo_updateSectionNodes {
 
                 CONFRHS=$(echo $CONFLINE \
                     | gawk 'BEGIN{FS="="}; { print $2 }' \
-                    | sed -r 's![[:space:]]*!!g' | sed -r 's!^"(.+)"$!\1!')
+                    | sed -r -e 's![[:space:]]*!!g' -e 's!^"(.+)"$!\1!')
 
                 if [[ ${MANUAL_BASEDIR_L10N}/${INCL} =~ $CONFRHS ]];then
                     TEMPLATE="${MANUAL_TEMPLATE_L10N}/${CONFLHS}"
