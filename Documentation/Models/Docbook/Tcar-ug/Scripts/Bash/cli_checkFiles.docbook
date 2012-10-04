@@ -1,0 +1,191 @@
+<sect1 id="scripts-bash-cli_checkFiles">
+
+    <title>Standardizing File Verifications</title>
+    <indexterm type="common-function">
+        <primary>cli_checkFiles</primary>
+    </indexterm>
+
+    <para>
+        Tasks related to file verification are implemented through
+        <function>cli_checkFiles</function> function.  This function
+        is exported to centos-art.sh script environment in the very
+        beginning of its execution and will be available all along its
+        execution lifetime. You can use this function inside common
+        and specific functions whenever you need to verify files
+        inside the &TCAR;.
+    </para>
+
+    <para>
+        The <function>cli_checkFiles</function> is an interface for
+        the <command>test</command> command and answers basic
+        questions like <quote>Does <replaceable>location</replaceable>
+        is a regular file?</quote> and <quote>Does
+        <replaceable>location</replaceable> is directory?</quote>.
+        When the answer to such questions is positive, the script
+        passes the test silently and continues its execution.  When
+        the answer is negative, the script finishes its execution
+        immediately with an error message.
+    </para>
+
+    <para>
+        Use the <function>cli_checkFiles</function> function whenever
+        you need to verify the characteristics of different file types
+        (e.g., regular files, directories, links, etc.) inside &TCAR;.
+    </para>
+
+    <simplesect id="scripts-bash-cli_checkFiles-syntax">
+    <title>Syntax</title>
+    <cmdsynopsis>
+        <command>cli_checkFiles</command> 
+        <arg choice="req">
+            <arg>-d</arg>
+            <arg>-e</arg>
+            <arg>-f</arg>
+            <arg>-h</arg>
+            <arg>-x</arg>
+        </arg>
+        <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
+    </cmdsynopsis>
+    </simplesect>
+
+    <simplesect id="scripts-bash-cli_checkFiles-options">
+    <title>Options</title>
+    <para>
+        The <function>cli_checkFiles</function> function accepts the
+        following options:
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term><option>-d</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and is a directory. If it doesn't exists or isn't a directory,
+        an error message is printed and the script finishes its
+        execution.  Otherwise, if it exists and is a directory, the
+        script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-e</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists or
+        not. If it doesn't exist, an error message is printed and the
+        script finishes its execution.  Otherwise, if it does exists,
+        the script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-f</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and is a regular file. If it doesn't exists or isn't a regular
+        file, an error message is printed and the script finishes its
+        execution. Otherwise, if it exists and is a regular file, the
+        script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-h</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and is a symbolic link. If it doesn't exists or isn't a
+        symbolic link, an error message is printed and the script
+        finishes its execution immediately.  Otherwise, if it does
+        exist and is a symbolic link, the script continue its
+        execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-x</option></term>
+    <listitem>
+    <para>
+        Verifies whether <replaceable>LOCATION</replaceable> exists
+        and execution permission is granted. If it doesn't exist or
+        hasn't execution permission, the script finishes its execution
+        immediately. Otherwise, if it exists and has execution
+        permissions, the script continues its execution normally.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        The value of the <replaceable>LOCATION</replaceable> argument
+        must be an absolute path to the file you want to verify. If
+        such file doens't exists in any supported form, the script
+        finishes its execution with an error message.
+    </para>
+    </simplesect>
+
+    <simplesect id="scripts-bash-cli_checkFiles-description">
+    <title>Description</title>
+    <para>
+        The <function>cli_checkFiles</function> function is available
+        inside the centos-art.sh script only as part of its execution
+        environment. This function is exported to centos-art.sh script
+        just after executing the script from the command-line and will
+        be available all along the script lifetime. So, you can use
+        this function both in common and specific functionalities of
+        centos-art.sh script.
+    </para>
+
+    <para>
+        The <function>cli_checkFiles</function> function doesn't
+        create subsequent execution environments.
+    </para>
+    
+    </simplesect>
+
+    <simplesect id="scripts-bash-cli_checkFiles-authors">
+    <title>Authors</title>
+    <itemizedlist>
+    <listitem>
+    <para>
+        Alain Reguera Delgado <email>alain.reguera@gmail.com</email>, =COPYRIGHT_YEAR_LIST=
+    </para>
+    </listitem>
+    </itemizedlist>
+    </simplesect>
+
+    <simplesect id="scripts-bash-cli_checkFiles-licence">
+    <title>License</title>
+
+    <para>
+        Copyright &copy; =COPYRIGHT_YEAR_LIST= The CentOS Project
+    </para>
+ 
+    <para>
+        This program is free software; you can redistribute it and/or
+        modify it under the terms of the GNU General Public License as
+        published by the Free Software Foundation; either version 2 of
+        the License, or (at your option) any later version.
+    </para>
+ 
+    <para>
+        This program is distributed in the hope that it will be
+        useful, but WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+        PURPOSE.  See the GNU General Public License for more details.
+    </para>
+ 
+    <para>
+        You should have received a copy of the GNU General Public
+        License along with this program; if not, write to the Free
+        Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
+        USA.
+    </para>
+    </simplesect>
+
+</sect1>
