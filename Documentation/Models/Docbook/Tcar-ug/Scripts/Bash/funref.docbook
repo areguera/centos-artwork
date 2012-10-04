@@ -13,116 +13,11 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_checkFiles" xreflabel="cli_checkFiles">cli_checkFiles</command> 
-            <arg choice="req">
-            <arg>-d</arg>
-            <arg>-e</arg>
-            <arg>-f</arg>
-            <arg>-h</arg>
-            <arg>-x</arg>
-            </arg>
-            <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
-        </cmdsynopsis>
-    </term>
-    <listitem>
-    <para>
-        The <function>cli_checkFiles</function> standardizes the way
-        files are verified inside the centos-art.sh script. It tries
-        to answers questions like <emphasis>Is
-        <replaceable>LOCATION</replaceable> a regular file or
-        directory?</emphasis> or even, <emphasis>does
-        <replaceable>LOCATION</replaceable> have execution
-        rights?</emphasis>.  You can provide several
-        <replaceable>LOCATION</replaceable> arguments to this function
-        in order to perform the verifications over them. Likewise, you
-        can combine different options to realize different
-        verifications over the same files. In case the verification
-        fails, an error message is printed and the script finishes its
-        execution.
-    </para>
-    <para>
-        The <function>cli_checkFiles</function> is an interface for
-        the <command>test</command> command and accepts the following
-        options:
-    </para>
-    <variablelist>
-    <varlistentry>
-    <term><option>-d</option></term>
-    <listitem>
-    <para>
-        Verifies whether <replaceable>LOCATION</replaceable> exists
-        and is a directory. If it doesn't exists or isn't a directory,
-        an error message is printed and the script finishes its
-        execution.  Otherwise, if it exists and is a directory, the
-        script continues its execution normally.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>-e</option></term>
-    <listitem>
-    <para>
-        Verifies whether <replaceable>LOCATION</replaceable> exists or
-        not. If it doesn't exist, an error message is printed and the
-        script finishes its execution.  Otherwise, if it does exists,
-        the script continues its execution normally.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>-f</option></term>
-    <listitem>
-    <para>
-        Verifies whether <replaceable>LOCATION</replaceable> exists
-        and is a regular file. If it doesn't exists or isn't a regular
-        file, an error message is printed and the script finishes its
-        execution. Otherwise, if it exists and is a regular file, the
-        script continues its execution normally.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>-h</option></term>
-    <listitem>
-    <para>
-        Verifies whether <replaceable>LOCATION</replaceable> exists
-        and is a symbolic link. If it doesn't exists or isn't a
-        symbolic link, an error message is printed and the script
-        finishes its execution immediately.  Otherwise, if it does
-        exist and is a symbolic link, the script continue its
-        execution normally.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>-x</option></term>
-    <listitem>
-    <para>
-        Verifies whether <replaceable>LOCATION</replaceable> exists
-        and execution permission is granted. If it doesn't exist or
-        hasn't execution permission, the script finishes its execution
-        immediately. Otherwise, if it exists and has execution
-        permissions, the script continues its execution normally.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    </variablelist>
-    <para>
-        Use the <function>cli_checkFiles</function> function whenever
-        you need to verify files inside the &TCAR;.
-    </para>
-    </listitem>
-    </varlistentry>
-    
-    <varlistentry>
-    <term>
-        <cmdsynopsis>
-            <command id="cli_checkRepoDirSource" xreflabel="cli_checkRepoDirSource">cli_checkRepoDirSource</command>
+            <command id="cli_checkRepoDirSource" xreflabel="cli_checkRepoDirSource">cli_checkRepoDirSource
+            <indexterm type="common-function" zone="cli_checkRepoDirSource">
+            <primary>cli_checkRepoDirSource</primary>
+            </indexterm>
+            </command>
         </cmdsynopsis>
     </term>
     <listitem>
@@ -155,7 +50,11 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_expandTMarkers" xreflabel="cli_expandTMarkers">cli_expandTMarkers</command>
+            <command id="cli_expandTMarkers" xreflabel="cli_expandTMarkers">cli_expandTMarkers
+            <indexterm type="common-function" zone="cli_expandTMarkers">
+                <primary>cli_expandTMarkers</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -490,7 +389,11 @@
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_exportFunctions" xreflabel="cli_exportFuncations">cli_exportFunctions</command>
+            <command id="cli_exportFunctions" xreflabel="cli_exportFuncations">cli_exportFunctions
+            <indexterm type="common-function" zone="cli_exportFunctions">
+                <primary>cli_exportFunctions</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>EXPORTID</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -533,7 +436,11 @@ cli_exportFunctions "Render/render"
     <varlistentry>
     <term>
         <cmdsynopsis>
-        <command id="cli_getConfigLines" xreflabel="cli_getConfigLines">cli_getConfigLines</command>
+        <command id="cli_getConfigLines" xreflabel="cli_getConfigLines">cli_getConfigLines
+        <indexterm type="cli_getConfigLines" zone="cli_getConfigLines">
+            <primary>cli_getConfigLines</primary>
+        </indexterm>
+        </command>
         <arg choice="req"><replaceable>FILE</replaceable></arg>
         <arg choice="req"><replaceable>SECTION</replaceable></arg>
         <arg choice="req"><replaceable>OPTION</replaceable></arg>
@@ -680,7 +587,11 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <varlistentry>
     <term>
         <cmdsynopsis>   
-            <command id="cli_getConfigValue" xreflabel="cli_getConfigValue">cli_getConfigValue</command>
+            <command id="cli_getConfigValue" xreflabel="cli_getConfigValue">cli_getConfigValue
+            <indexterm type="common-function" zone="cli_getConfigValue">
+                <primary>cli_getConfigValue</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>FILE</replaceable></arg>
             <arg choice="req"><replaceable>SECTION</replaceable></arg>
             <arg choice="req"><replaceable>OPTION</replaceable></arg>
@@ -763,7 +674,11 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_getFilesList" xreflabel="cli_getFilesList">cli_getFilesList</command>
+            <command id="cli_getFilesList" xreflabel="cli_getFilesList">cli_getFilesList
+            <indexterm type="common-function" zone="cli_getFilesList">
+                <primary>cli_getFilesList</primary>
+            </indexterm>
+            </command>
             <arg choice="opt">--pattern</arg>
             <arg choice="opt">--mindepth</arg>
             <arg choice="opt">--maxdepth</arg>
@@ -920,7 +835,39 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_synchronizeRepoChanges" xreflabel="cli_synchronizeRepoChanges">cli_synchronizeRepoChanges</command>
+            <command id="cli_getPathComponent" xreflabel="cli_getPathComponent">cli_getPathComponent
+            <indexterm type="common-function" zone="cli_getPathComponent">
+                <primary>cli_getPathComponent</primary>
+            </indexterm>
+            </command>
+            <arg>--release</arg>
+            <arg>--release-major</arg>
+            <arg>--release-minor</arg>
+            <arg>--release-pattern</arg>
+            <arg>--architecture</arg>
+            <arg>--architecture-pattern</arg>
+            <arg>--motif</arg>
+            <arg>--motif-name</arg>
+            <arg>--motif-release</arg>
+            <arg>--motif-pattern</arg>
+            <arg choice="req"><replaceable>PATH</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        ...
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command id="cli_synchronizeRepoChanges" xreflabel="cli_synchronizeRepoChanges">cli_synchronizeRepoChanges
+            <indexterm type="common-function" zone="cli_synchronizeRepoChanges">
+                <primary>cli_syncronizeRepoChanges</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>LOCATION</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -947,7 +894,11 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_printMessage" xreflabel="cli_printMessage">cli_printMessage</command>
+            <command id="cli_printMessage" xreflabel="cli_printMessage">cli_printMessage
+            <indexterm type="common-function" zone="cli_printMessage">
+                <primary>cli_printMessage</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>MESSAGE</replaceable></arg>
             <group choice="opt">
             <arg>--as-separator-line</arg>
@@ -1292,7 +1243,11 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_unsetFunctions" xreflabel="cli_unsetFunctions">cli_unsetFunctions</command>
+            <command id="cli_unsetFunctions" xreflabel="cli_unsetFunctions">cli_unsetFunctions
+            <indexterm type="common-function" zone="cli_unsetFunctions">
+                <primary>cli_unsetFunctions</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>EXPORTID</replaceable></arg>
         </cmdsynopsis>
     </term>
@@ -1309,7 +1264,11 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <varlistentry>
     <term>
         <cmdsynopsis>
-            <command id="cli_getTemporalFile" xreflabel="cli_getTemporalFile">cli_getTemporalFile</command>
+            <command id="cli_getTemporalFile" xreflabel="cli_getTemporalFile">cli_getTemporalFile
+            <indexterm type="common-function" zone="cli_unsetFunctions">
+                <primary>cli_unsetFunctions</primary>
+            </indexterm>
+            </command>
             <arg choice="req"><replaceable>FILENAME</replaceable></arg>
         </cmdsynopsis>
     </term>
