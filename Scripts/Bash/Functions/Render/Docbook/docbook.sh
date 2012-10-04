@@ -68,7 +68,13 @@ function docbook {
     docbook_convertToXhtmlChunk
     docbook_convertToXhtml
     docbook_convertToText
-    docbook_convertToPdfFromXml
+
+    # NOTE: The current transformation from DocBook to PDF fails when
+    # we started to use DocBook <index /> tags inside DocBook files.
+    # Probably we need to test what happen when a newer release of XSL
+    # is used. Thus, comment production of PDF files until it can be
+    # produced correctly.
+    #docbook_convertToPdfFromXml
 
     # NOTE: From version 5.0 on, DocBook specification is no longer a
     # SGML specification but an XML specification only. Thus,
