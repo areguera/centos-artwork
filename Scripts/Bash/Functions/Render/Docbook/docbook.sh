@@ -44,6 +44,9 @@ function docbook {
     # script responsible of it.
     docbook_expandSystemEntities ${INSTANCE}
 
+    # Print validating action.
+    cli_printMessage "${INSTANCE}" --as-validating-line
+
     # Validate translated instance before processing it. This step is
     # very important in order to detect document's malformations and
     # warn you about it, so you can correct them. It is also necessary
