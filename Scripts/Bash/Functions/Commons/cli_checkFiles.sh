@@ -121,7 +121,7 @@ function cli_checkFiles {
 
         while [[ ${COUNTER} -lt ${#CONDITION_PATTERN[*]} ]];do
 
-            test ! ${CONDITION_PATTERN[$COUNTER]} ${FILE} \
+            [ ! ${CONDITION_PATTERN[$COUNTER]} ${FILE} ] \
                 && cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
 
             COUNTER=$(($COUNTER + 1))
