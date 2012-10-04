@@ -204,12 +204,12 @@ function cli_printMessage {
 
         --as-notrailingnew-line )
             echo -e -n "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 
             ;;
 
         --as-stdout-line )
             echo "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g"
             ;;
 
         --as-stderr-line )
