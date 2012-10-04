@@ -681,12 +681,239 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <term>
         <cmdsynopsis>   
             <command id="cli_getConfigValue" xreflabel="cli_getConfigValue">cli_getConfigValue</command>
+            <arg choice="req"><replaceable>FILE</replaceable></arg>
+            <arg choice="req"><replaceable>SECTION</replaceable></arg>
+            <arg choice="req"><replaceable>OPTION</replaceable></arg>
         </cmdsynopsis>   
     </term>
     <listitem>
     <para>
-        ...
+        The <function>cli_getConfigValue</function> function
+        standardizes the way option values are retrieved from
+        configuration files. As convention,
+        <function>cli_getConfigValue</function> uses the output
+        produced by <function>cli_getConfigLines</function> as input
+        to retrieve the option values. As convention, in
+        <literal>option = "value"</literal> lines, the values
+        retrieved are always on the right side. The values retrieved
+        are also output without quotation and translation markers
+        already expanded.
     </para>
+
+    <para>
+        The <function>cli_getConfigValue</function> function accepts
+        the following arguments:
+    </para>
+    
+    <variablelist>
+    <varlistentry>
+    <term><replaceable>FILE</replaceable></term>
+    <listitem>
+    <para>
+        This argument specifies the absolute path to the configuration
+        file you want to retrieve the value from. For example,
+        <quote><filename>${TCAR_WORKDIR}/trunk/Identity/Models/Themes/Default/Distro/5/Anaconda/branding.conf</filename></quote>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><replaceable>SECTION</replaceable></term>
+    <listitem>
+    <para>
+        This argument specifies the name of the section related to the
+        configuration line you want to retrieve the value from. For
+        example, <quote>symbols</quote> without brackets.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><replaceable>OPTION</replaceable></term>
+    <listitem>
+    <para>
+        This argument specifies the name of the option you want to
+        retrieve the value from. For example, in <xref
+        linkend="cli_getConfigLines-conffile-2" />, the
+        <quote><literal>anaconda_header.svgz</literal></quote> option will output the
+        <quote><literal>Symbols/48/=\BRAND=.png:x48+732+20</literal></quote> value
+        without quotation and translation markers expanded. So if the
+        value of <envar>TCAR_BRAND</envar> environment variable is
+        <quote><literal>centos</literal></quote>, the real value you
+        get will be
+        <quote><literal>Symbols/48/centos.png:x48+732+20</literal></quote>.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        Use the <function>cli_getConfigValue</function> function
+        whenever you want to retrieve values from configuration files
+        in a controlled way.
+    </para>
+
+    <para>
+        See also: <xref linkend="cli_getConfigLines" />
+    </para>
+
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        <cmdsynopsis>
+            <command id="cli_getFilesList" xreflabel="cli_getFilesList">cli_getFilesList</command>
+            <arg choice="opt">--pattern</arg>
+            <arg choice="opt">--mindepth</arg>
+            <arg choice="opt">--maxdepth</arg>
+            <arg choice="opt">--type</arg>
+            <arg choice="opt">--uid</arg>
+            <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
+        </cmdsynopsis>
+    </term>
+    <listitem>
+    <para>
+        The <function>cli_getFilesList</function> standardizes the way
+        list of files are built inside the
+        <command>centos-art.sh</command> script. This function outputs
+        a sorted and unique list of files based on the options and
+        location provided as argument. This function is an interface
+        to the <command>find</command> command. Don't use
+        <command>find</command> command directly inside the
+        centos-art.sh script. Instead, use the
+        <function>cli_getFilesList</function> function.
+    </para>
+    <para>
+        The <function>cli_getFilesList</function> accepts the
+        following arguments:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><replaceable>LOCATION</replaceable></term>
+    <listitem>
+    <para>
+        This arguments must be the absolute path to a directory and
+        specifies where the search of files in any form (e.g.,
+        directories, links, etc.) will take place in. If
+        <replaceable>LOCATION</replaceable> isn't a directory, the
+        script finishes its execution with an error message.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        The <function>cli_getFilesList</function> accepts the
+        following options:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--pattern="<replaceable>REGEX</replaceable>"</option></term>
+    <listitem>
+    <para>
+        This option specifies a posix-egrep type regular expression as
+        value. This regular expression is applied to path specified in
+        <replaceable>LOCATION</replaceable> argument. Only file paths
+        that match this regular expression inside
+        <replaceable>LOCATION</replaceable> directory will be included
+        in the final list of files. By default, if this option is not
+        provided, the
+        <quote><literal>^/.*[[:alnum:]_/-]+$</literal></quote> regular
+        expression is used.
+    </para>
+    <para>
+        When you use the <function>cli_getFilesList</function> you
+        don't need to specified the absolute path of files you want to
+        look for.  This is something
+        <function>cli_getFilesList</function> already does for you.
+        When you use this function, the value you pass as regular
+        expression isn't the final regular expression used. Instead,
+        the regular expression you pass is used to build the final
+        regular expression passed to <command>find</command> command.
+        The final regular expression passed to find is
+        <quote><literal>^/.*${PATTERN}$</literal></quote>, where
+        <literal>${PATTERN}</literal> is the value you passed to
+        <option>--pattern</option> option as
+        <replaceable>REGEX</replaceable>.
+    </para>
+    </listitem>
+    </varlistentry> 
+    <varlistentry>
+    <term><option>--mindepth="<replaceable>NUMBER</replaceable>"</option></term>
+    <listitem>
+    <para>
+        This option specifies the minimal
+        <replaceable>NUMBER</replaceable> of levels deep the search
+        should go under the directory
+        <replaceable>LOCATION</replaceable> specified. For example, if
+        you specify <option>--mindepth="2"</option> the search will 
+        start two levels deep considering the path provided as
+        reference. 
+    </para>
+    </listitem>
+    </varlistentry> 
+    <varlistentry>
+    <term><option>--maxdepth="<replaceable>NUMBER</replaceable>"</option></term>
+    <listitem>
+    <para>
+        This option specifies the maximum
+        <replaceable>NUMBER</replaceable> of levels deep the search
+        should go under the directory
+        <replaceable>LOCATION</replaceable> specified. For example, if
+        you specify <option>--maxdepth="2"</option> the search will
+        begin in the very same directory path you provided as
+        <replaceable>LOCATION</replaceable> and stop two levels deep
+        using it as reference.
+    </para>
+    </listitem>
+    </varlistentry> 
+    <varlistentry>
+    <term><option>--type="<replaceable>STRING</replaceable>"</option></term>
+    <listitem>
+    <para>
+        This option specifies the type of files being searched. This
+        option accepts the same values the <command>find</command>
+        <option>-type</option> option does. However, the following
+        <replaceable>STRING</replaceable> values are the most used
+        inside the script so far:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        d &mdash; directory.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        f &mdash; regular file.
+    </para>
+    </listitem>
+    </itemizedlist>
+
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--uid="<replaceable>NUMBER</replaceable>"</option></term>
+    <listitem>
+    <para>
+        This option specifies the numeric user id of the files you
+        want to search. Only files that match this numeric user id
+        will be added to the final list of files.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        Use the <function>cli_getFilesList</function> whenever you
+        need to build list of files for further processing.
+    </para>
+    
     </listitem>
     </varlistentry>
 
