@@ -27,10 +27,10 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS=""
+    local ARGSS="v"
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,update,edit,delete,dont-create-mo,is-localizable,sync-changes"
+    local ARGSL="verbose,filter:,answer-yes,update,edit,delete,dont-create-mo,is-localizable,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -48,8 +48,8 @@ function locale_getOptions {
                 shift 2
                 ;;
 
-            --quiet )
-                FLAG_QUIET="true"
+            -v | --verbose )
+                FLAG_VERBOSE="true"
                 shift 1
                 ;;
 
