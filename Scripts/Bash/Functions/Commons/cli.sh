@@ -44,9 +44,10 @@ function cli {
     local FLAG_FILTER='[[:alnum:]_/-]+'
 
     # Initialize default value to verbosity flag. The verbosity flag
-    # (--quiet) controls whether centos-art.sh script prints messages
-    # or not. By default, all messages are printed out.
-    local FLAG_QUIET='false'
+    # (-v | --verbose) controls whether centos-art.sh script prints
+    # messages or not. By default, all messages are suppressed except
+    # those directed to standard error.
+    local FLAG_VERBOSE='false'
     
     # Initialize default value to answer flag. The answer flag
     # (--answer-yes) controls whether centos-art.sh script does or
