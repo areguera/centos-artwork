@@ -71,7 +71,7 @@ function texinfo {
 
     elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME == '' ]];then
 
-        # When chapter option is provided whith out a section name,
+        # When chapter option is provided whithout a section name,
         # verify chapter's directory inside the manual,
         texinfo_createChapter
 
