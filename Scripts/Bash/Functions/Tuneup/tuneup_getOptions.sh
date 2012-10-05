@@ -26,10 +26,10 @@
 function tuneup_getOptions {
 
     # Define short options we want to support.
-    local ARGSS=""
+    local ARGSS="v"
 
     # Define long options we want to support.
-    local ARGSL="filter:,quiet,answer-yes,sync-changes"
+    local ARGSL="verbose,filter:,answer-yes,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -47,8 +47,8 @@ function tuneup_getOptions {
                 shift 2
                 ;;
 
-            --quiet )
-                FLAG_QUIET="true"
+            -v | --verbose )
+                FLAG_VERBOSE="true"
                 shift 1
                 ;;
 
