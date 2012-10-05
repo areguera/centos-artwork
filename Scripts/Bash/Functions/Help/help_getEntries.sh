@@ -72,7 +72,7 @@ function help_getEntries {
 
             # Manual section name.
             MANUAL_SECT[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $4 }') -f )
+                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $4 }' | tr '/' '-') -f )
 
         elif [[ ${MANUAL_DOCENTRY} =~ '^(trunk|branches|tags)' ]];then
 
