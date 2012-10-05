@@ -25,8 +25,8 @@
 
 function cli_printMessage {
 
-    # Verify `--quiet' option.
-    if [[ "$FLAG_QUIET" == 'true' ]];then
+    # Verify verbose option.
+    if [[ "$FLAG_VERBOSE" == 'false' ]];then
         return
     fi
 
