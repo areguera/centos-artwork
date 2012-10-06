@@ -33,9 +33,9 @@ function texinfo_createChapter {
     if [[ -d $MANUAL_CHAPTER_DIR ]];then
         return
     else
-        cli_printMessage "`gettext "The following documentation chapter will be created:"`"
+        cli_printMessage "`gettext "The following documentation chapter doesn't exist:"`" --as-stdout-line
         cli_printMessage "${MANUAL_CHAPTER_DIR}" --as-response-line
-        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
+        cli_printMessage "`gettext "Do you want to create it now?"`" --as-yesornorequest-line
     fi
 
     # Initialize chapter node, chapter index and chapter title.
