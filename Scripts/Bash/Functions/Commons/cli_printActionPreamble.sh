@@ -138,10 +138,10 @@ function cli_printActionPreamble {
     done
 
     # Print out the preamble message.
-    cli_printMessage "${MESSAGE}" "${OPTION}" 
+    cli_printMessage "${MESSAGE}" "${OPTION}" --as-stdout-line
     for FILE in $FILES;do
         cli_printMessage "$FILE" --as-response-line
     done
-    cli_printMessage "`gettext "Do you want to continue"`" --as-yesornorequest-line
+    cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
 
 }
