@@ -1,0 +1,294 @@
+<section id="scripts-bash-cliref">
+
+    <title>Command-line Reference</title>
+
+    <para>
+        The <command>centos-art.sh</command> script follows a
+        conventional command-line interface where there might be
+        options and non-option arguments in it. As convention, the
+        first non-option argument passed to
+        <command>centos-art.sh</command> script will be the name of
+        the specific function you want to execute (e.g.,
+        <function>render</function>, <function>locale</function>,
+        <function>help</function>, etc.).  This first argument will be
+        immediately removed from the list of arguments passed to
+        <command>centos-art.sh</command> script to leave just the
+        remaining options and non-option arguments passed to it.  At
+        this point, the <command>centos-art.sh</command> script uses
+        the <command>getopt</command> command to retrieve option
+        arguments and remove them from the list of arguments passed to
+        <command>centos-art.sh</command> script.
+    </para>
+
+    <para>
+        Once option arguments have been removed from list of arguments
+        passed to <command>centos-art.sh</command> script, non option
+        arguments are processed then.  Non-option arguments will
+        always be paths pointing directories inside your working copy
+        of &TCAR;. These paths can be absolute paths or relative paths
+        considering the working copy root directory as section. For
+        example, both the absolute path <filename
+        class="directory">/home/al/Projects/CentOS/artwork/trunk/Identity/Themes/</filename>
+        and the relative path <filename
+        class="directory">trunk/Identity/Themes</filename> point to
+        the same location.
+    </para>
+
+    <section id="scripts-bash-cliref-cli">
+    <title>The Command-line Interface</title>
+
+    <para>
+        To better understand the <command>centos-art.sh</command>
+        command-line interface, let's consider the real command shown
+        in <xref linkend="scripts-bash-cliref-cli-example1" /> as
+        section.  This command shows the entire command as a list of
+        space-separated arguments. The value of each argument can be
+        reached using special variable names based on the number of
+        arguments passed to the command-line.
+    </para>
+
+    <example id="scripts-bash-cliref-cli-example1">
+    <title>The command-line interface</title>
+    <screenshot>
+    <screeninfo>The command-line interface</screeninfo>
+    <mediaobject>
+    <textobject>
+<programlisting>
+   ${0}  | |${1}| |          ${2}            | |    ${3}   |
+---------|-|----|-|--------------------------|-|-----------|
+centos-art render trunk/Identity/Images/Themes --with-brands
+---------|-|----|-|--------------------------|-|-----------|
+</programlisting>
+    </textobject>
+    </mediaobject>
+    </screenshot>
+    </example>
+
+    <para>
+        In <xref linkend="scripts-bash-cliref-cli-example1" />, the
+        relation between special variables and arguments has the
+        following meaning:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><varname>${0}</varname></term>
+    <listitem>
+    <para>
+        This variable contains the absolute path to the command
+        executed. In case your home directory be <filename
+        class="directory">/home/john</filename> the value of this
+        argument will be expanded to
+        <filename>/home/john/bin/centos-art</filename> which is a
+        symbolic link to the
+        <filename>${TCAR_WORKDIR}/trunk/Scripts/Bash/centos-art.sh</filename>
+        file.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><varname>${1}</varname></term>
+    <listitem>
+    <para>
+        This variable contains the first non-option argument we use to
+        determine the specific function environment we want to execute
+        (e.g., <function>render</function> in this case). The position
+        of this information in the command-line is relevant to
+        <command>centos-art.sh</command> script and must not be
+        changed. Possible values to this variable are specified in
+        <xref linkend="scripts-bash-cli-specificfuncs" />.
+    </para>
+
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><varname>${2}</varname></term>
+    <listitem>
+    <para>
+        This variable contains a non-option argument referring a path
+        information inside the working copy of &TCAR;. The specific
+        path information you provide in this variable must be
+        recognized by specific function environment provided in
+        <varname>${1}</varname> variable. The position of path
+        information in the command-line is not relevant to
+        <command>centos-art.sh</command> script and can be changed
+        whenever it doesn't be interpreted as value to
+        <varname>${1}</varname> variable.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><varname>${3}</varname></term>
+    <listitem>
+    <para>
+        This variable contains an option argument. The specific option
+        information you provide in this variable must be recognized by
+        specific function environment provided in
+        <varname>${1}</varname> variable. The position of options in
+        the command-line is not relevant to
+        <command>centos-art.sh</command> script and can be changed
+        whenever it doesn't be interpreted as value to
+        <varname>${1}</varname> variable.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+    </section>
+
+    <section id="scripts-bash-cli-commonoptions">
+    <title>Common Options</title>
+
+    <para>
+        As convention, all function specific environments should
+        provide support for the following common options: 
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>-h</option> | <option>--help</option></term>
+    <listitem>
+    <para>
+        This option makes <command>centos-art.sh</command> script to
+        shows information about the specific function environment
+        (e.g., how to execute it, available options, etc.) set as
+        first non-option argument. For example, if you provide the
+        <command>centos-art render --help</command>, the
+        <command>centos-art.sh</command> script will display to you
+        the information related to the <filename
+        class="directory">trunk/Scripts/Bash/Functions/Render</filename>
+        directory.
+    </para>
+    <para>
+        This information is retrived from <quote>The CentOS Artwork
+        Repository File System (tcar-fs)</quote> documentation manual.
+        This manual is written in Texinfo format and provides a quick
+        way for you to read and browse documentation related to each
+        directory inside &TCAR; as you work with it from a text
+        terminal.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>-q</option> | <option>--quiet</option></term>
+    <listitem>
+    <para>
+        This option makes the <command>centos-art.sh</command> script
+        to suppress messages sent to standard output. This option
+        doesn't suppress error messages, nor questions related to
+        script execution.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    </variablelist>
+    </section>
+
+    <section id="scripts-bash-cli-specificoptions">
+    <title>Specific Options</title>
+
+    <para>
+        The specific options used by specific and common function
+        environments are described in their respective sections. See
+        <xref linkend="scripts-bash-cli-specificfuncs" /> and <xref
+        linkend="scripts-bash-cli-commonfuncs" /> to know which these
+        sections are.
+    </para>
+
+    <table id="scripts-bash-cli-specificfuncs">
+    <title>Specific Function Environments</title>
+    <tgroup cols="2" align="left">
+    <thead>
+        <row>
+            <entry>Name</entry>
+            <entry>Description</entry>
+        </row>
+    </thead>
+
+    <tbody>
+        <row>
+            <entry><literal>prepare</literal></entry>
+            <entry><xref linkend="scripts-bash-prepare" /></entry>
+        </row>
+        <row>
+            <entry><literal>render</literal></entry>
+            <entry><xref linkend="scripts-bash-render" /></entry>
+        </row>
+        <row>
+            <entry><literal>locale</literal></entry>
+            <entry><xref linkend="scripts-bash-locale" /></entry>
+        </row>
+        <row>
+            <entry><literal>help</literal></entry>
+            <entry><xref linkend="scripts-bash-help" /></entry>
+        </row>
+        <row>
+            <entry><literal>pack</literal></entry>
+            <entry><xref linkend="scripts-bash-pack" /></entry>
+        </row>
+        <row>
+            <entry><literal>tuneup</literal></entry>
+            <entry><xref linkend="scripts-bash-tuneup" /></entry>
+        </row>
+        <row>
+            <entry><literal>svn</literal></entry>
+            <entry><xref linkend="scripts-bash-svn" /></entry>
+        </row>
+    </tbody>
+    
+    </tgroup>
+    </table>
+
+    <table id="scripts-bash-cli-commonfuncs">
+    <title>Common Function Environments</title>
+    <tgroup cols="2" align="left">
+    <thead>
+        <row>
+            <entry>Name</entry>
+            <entry>Description</entry>
+        </row>
+    </thead>
+
+    <tbody>
+        <row>
+            <entry><literal>cli_checkFiles</literal></entry>
+            <entry><xref linkend="scripts-bash-cli_checkFiles" /></entry>
+        </row>
+    </tbody>
+    
+    </tgroup>
+    </table>
+
+    </section>
+
+    <section id="scripts-bash-cliref-implementation">
+
+        <title>Implementation</title>
+
+        <para>
+            When a new function is created to
+            <command>centos-art.sh</command> script, it is necessary
+            to consider whether it will use arguments or not. When the
+            function doesn't need arguments (e.g., it exists to
+            redefine values related to global variables only) there is
+            no need to consider a parsing feature for it.  However,
+            when the function does use arguments it is very important
+            to parse them appropriately (e.g., by using a parsing feature like
+            that provided by <command>getopt</command> command).
+        </para>
+
+        <para>
+            In this section will describe how to parse arguments (both
+            option and non-option) inside the
+            <command>centos-art.sh</command> script.  This information
+            must be used as section whenever you need to create a
+            new function for <command>centos-art.sh</command> script.
+        </para>
+
+    </section>
+
+</section>
