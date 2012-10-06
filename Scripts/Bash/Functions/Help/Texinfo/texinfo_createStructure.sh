@@ -33,10 +33,9 @@ function texinfo_createStructure {
     if [[ -f ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} ]];then
         return
     else
-        cli_printMessage "-" --as-separator-line
-        cli_printMessage "`eval_gettext "The following documentation manual will be created:"`"
+        cli_printMessage "`eval_gettext "The following documentation manual doesn't exist:"`" --as-stdout-line
         cli_printMessage "${MANUAL_BASEFILE}.texinfo" --as-response-line
-        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
+        cli_printMessage "`gettext "Do you want to create it now?"`" --as-yesornorequest-line
     fi
 
     # Initialize manual's information (e.g., title, subtitle, abstract).
