@@ -40,9 +40,9 @@ function texinfo_editEntry {
         fi
 
         # Print confirmation question. 
-        cli_printMessage "`gettext "The following documentation section will be created:"`"
+        cli_printMessage "`gettext "The following documentation section doesn't exist:"`" --as-stdout-line
         cli_printMessage "$MANUAL_ENTRY" --as-response-line
-        cli_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
+        cli_printMessage "`gettext "Do you want to create it now?"`" --as-yesornorequest-line
 
         # Update section menu, nodes and cross references based on
         # changes in order for manual structure to remain cosistent.
