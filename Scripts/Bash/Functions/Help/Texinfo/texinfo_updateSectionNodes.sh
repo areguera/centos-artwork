@@ -36,7 +36,7 @@ function texinfo_updateSectionNodes {
     for NODE in $NODES;do
 
         local NODE=$(echo "${NODE}" | sed -r 's!:! !g')
-        local INCL=$(echo "${NODE}" | sed -r 's! !/!' | sed -r 's! !-!g' | sed -r 's!/(.+)!/\L\1!').${MANUAL_EXTENSION}
+        local INCL=$(echo "${NODE}" | sed -r -e 's! !/!' -e 's! !-!g' -e's!/(.+)!/\L\1!').${MANUAL_EXTENSION}
         local SECT=$(texinfo_getEntryTitle "$NODE")
         local CIND=$(texinfo_getEntryIndex "$NODE")
 
