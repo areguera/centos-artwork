@@ -1,4 +1,4 @@
-<sect1 id="scripts-bash-tuneup">
+<section id="scripts-bash-tuneup">
 
     <title>Standardizing Maintainance Tasks</title>
 
@@ -102,7 +102,7 @@
         <filename class="extension">.svg</filename> and <filename
         class="extension">.xhtml</filename>) in the directory
         specified, builds a list with them and applies the
-        maintainance tasks using file extensions as reference.
+        maintainance tasks using file extensions as section.
     </para>
 
     <para>
@@ -170,7 +170,7 @@
         dynamicaly combining the absolute path of the file being
         currently modified, the workstation's date information, the
         <command>centos-art.sh</command> script copyright holder
-        (e.g., =COPYRIGHT_HOLDER=) as reference and the Creative
+        (e.g., =COPYRIGHT_HOLDER=) as section and the Creative
         Common Distribution-ShareAlike 3.0 License as default license
         to release SVG files.
     </para>
@@ -206,7 +206,7 @@
         element are set dynamically using the md5sum output of
         combining the page location, the <literal>head-</literal>
         string and the heading content itself.  If any of the
-        components used to build the heading reference changes, you
+        components used to build the heading section changes, you
         need to run the the tuneup functionality of
         <command>centos-art.sh</command> script in order for the
         anchor elements to use the correct information.
@@ -299,4 +299,4 @@
     </para>
     </simplesect>
 
-</sect1>
+</section>
