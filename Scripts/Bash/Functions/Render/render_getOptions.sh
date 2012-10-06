@@ -26,10 +26,10 @@
 function render_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q"
+    local ARGSS="q,h"
 
     # Define long options we want to support.
-    local ARGSL="quiet,filter:,answer-yes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands,sync-changes"
+    local ARGSL="quiet,help,filter:,answer-yes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -42,14 +42,20 @@ function render_getOptions {
 
         case "$1" in
 
-            --filter )
-                FLAG_FILTER="$2"
-                shift 2
+            -h | --help )
+                ${CLI_NAME} help --read trunk/Scripts/Bash/Functions/Render
+                shift 1
+                exit
                 ;;
 
             -q | --quiet )
                 FLAG_QUIET="true"
                 shift 1
+                ;;
+
+            --filter )
+                FLAG_FILTER="$2"
+                shift 2
                 ;;
 
             --answer-yes )
