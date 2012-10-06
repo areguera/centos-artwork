@@ -66,7 +66,7 @@ function prepare_updatePackages {
 
     # Define relation between centos-art.sh options and yum options.
     [[ $FLAG_ANSWER == 'true' ]] && YUM_OPTIONS="${YUM_OPTIONS} -y"
-    [[ $FLAG_VERBOSE  == 'false' ]] && YUM_OPTIONS="${YUM_OPTIONS} -q"
+    [[ $FLAG_QUIET  == 'true' ]] && YUM_OPTIONS="${YUM_OPTIONS} -q"
 
     # Use `sudo yum' to install missing packages in your workstation.
     if [[ ${#PACKAGES_MISSING[*]} -gt 0 ]];then
