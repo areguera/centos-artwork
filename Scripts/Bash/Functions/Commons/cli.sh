@@ -47,7 +47,7 @@ function cli {
     # (-v | --verbose) controls whether centos-art.sh script prints
     # messages or not. By default, all messages are suppressed except
     # those directed to standard error.
-    local FLAG_VERBOSE='false'
+    local FLAG_QUIET='false'
     
     # Initialize default value to answer flag. The answer flag
     # (--answer-yes) controls whether centos-art.sh script does or
