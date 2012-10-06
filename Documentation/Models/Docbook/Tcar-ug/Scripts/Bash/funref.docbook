@@ -1,4 +1,4 @@
-<sect1 id="scripts-bash-funref">
+<section id="scripts-bash-funref">
 
     <title>Environment Functions Reference</title>
 
@@ -206,7 +206,7 @@
         <filename>/etc/redhat-release</filename>. In case the option
         <option>--release</option> be passed, the value specified with
         it will overwrite the default value and will be this the one
-        used as reference for this translation marker to retrieve the
+        used as section for this translation marker to retrieve the
         release information. So, for example, if you are running a
         CentOS-5.8 distribution and no <option>--release</option>
         option is passed to <command>centos-art.sh</command> script,
@@ -235,7 +235,7 @@
         retrieved from <command>uname -i</command>. In case the option
         <option>--arch</option> be passed, the value specified with it
         will overwrite the default value and will be the one used as
-        reference. For example, if the <command>uname -i</command>
+        section. For example, if the <command>uname -i</command>
         outputs the line <computeroutput>i386</computeroutput>, this
         translation marker will expand to <literal>i386</literal>. On
         the other hand, if you pass the <option>--arch=x86_64</option>
@@ -766,7 +766,7 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
         <replaceable>LOCATION</replaceable> specified. For example, if
         you specify <option>--mindepth="2"</option> the search will 
         start two levels deep considering the path provided as
-        reference. 
+        section. 
     </para>
     </listitem>
     </varlistentry> 
@@ -781,7 +781,7 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
         you specify <option>--maxdepth="2"</option> the search will
         begin in the very same directory path you provided as
         <replaceable>LOCATION</replaceable> and stop two levels deep
-        using it as reference.
+        using it as section.
     </para>
     </listitem>
     </varlistentry> 
@@ -876,7 +876,7 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
         The <function>cli_synchronizeRepoChanges</function>
         standardizes the way changes are synchronized between the
         working copy and the central repository using
-        <replaceable>LOCATION</replaceable> as reference. This
+        <replaceable>LOCATION</replaceable> as section. This
         function is the interface we use inside the
         <command>centos-art.sh</command> script to execute the
         <function>Svn</function> functionality described in <xref
@@ -1290,5 +1290,5 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
 
     </variablelist>
 
-</sect1>
+</section>
 
