@@ -1,12 +1,28 @@
-<sect1 id="scripts-bash-prepare">
+<section id="scripts-bash-prepare">
 
     <title>Standardizing Configuration Tasks</title>
+    <indexterm type="specific-function">
+        <primary>prepare</primary>
+    </indexterm>
 
     <para>
-        The <function>prepare</function> functionality is the
-        interface the <command>centos-art.sh</command> script provides
-        to standardize the content production tasks inside the working
-        copy.
+        Inside the <command>centos-art.sh</command> script, the
+        working copy configuration tasks are standardized through the
+        <function>prepare</function> functionality. The main goals of
+        this function are: to set environment variables, to
+        install/update required packages, to create symbolic links for
+        content reusing, to render images based on available design
+        models and artistic motifs, to render documentation manuals,
+        build language-specific files required for content
+        localization and anything else needed in order to make the
+        working copy of &TCAR; ready to be used.
+    </para>
+
+    <para>
+        Use the <function>prepare</function> functionality the first
+        time you download a working copy of &TCAR; or later, to be
+        sure your workstation has all the components it needs so you
+        can use the working copy of &TCAR; in all its extension.
     </para>
 
     <simplesect id="scripts-bash-prepare-syntax">
@@ -24,7 +40,20 @@
         path first:
     </para>
 
-    <screen>~/artwork/trunk/Scripts/Bash/centos-art.sh prepare [OPTIONS]</screen>
+    <cmdsynopsis>
+        <command>~/artwork/trunk/Scripts/Bash/centos-art.sh</command>
+        <arg choice="req">prepare</arg>
+        <arg>--quiet</arg>
+        <arg>--answer-yes</arg>
+        <arg>--set-environment</arg>
+        <arg>--see-environment</arg>
+        <arg>--packages</arg>
+        <arg>--locales</arg>
+        <arg>--links</arg>
+        <arg>--images</arg>
+        <arg>--manuals</arg>
+        <arg>--sync-changes</arg>
+    </cmdsynopsis>
 
     <para>
         Later, once the <command>centos-art</command> command is
@@ -34,7 +63,20 @@
         directly, as the following example describes:
     </para>
 
-    <screen>centos-env prepare [OPTIONS]</screen>
+    <cmdsynopsis>
+        <command>centos-art</command>
+        <arg choice="req">prepare</arg>
+        <arg>--quiet</arg>
+        <arg>--answer-yes</arg>
+        <arg>--set-environment</arg>
+        <arg>--see-environment</arg>
+        <arg>--packages</arg>
+        <arg>--locales</arg>
+        <arg>--links</arg>
+        <arg>--images</arg>
+        <arg>--manuals</arg>
+        <arg>--sync-changes</arg>
+    </cmdsynopsis>
 
     </simplesect>
 
@@ -42,9 +84,8 @@
     <title>Options</title>
 
     <para>
-        When the <command>centos-art</command> command is executed
-        with the <function>prepare</function> functionality, it
-        accepts the following options:
+        The <command>centos-art prepare</command> command accepts the
+        following options:
     </para>
 
     <variablelist>
@@ -121,7 +162,7 @@
         This option removes all common fonts, brushes, patterns, and
         palettes currently installed in your home directory, in order
         to create a fresh installation of them all again, using the
-        working copy as reference.
+        working copy as section.
     </para>
     </caution>
     </listitem>
@@ -213,10 +254,14 @@
 
     </simplesect>
 
-    <simplesect id="script-bash-prepare-environment">
-    <title>Function Specific Environment</title>
+    <simplesect id="script-bash-prepare-bugs">
+    <title>Bugs</title>
     <para>
-        ...
+        To report bugs related to this function, please create a new
+        ticket at <ulink
+        url="https://projects.centos.org/trac/artwork" /> refering the
+        name of this function clearly and the specific problems you
+        found in it.
     </para>
     </simplesect>
 
@@ -264,4 +309,4 @@
     </para>
     </simplesect>
 
-</sect1>
+</section>
