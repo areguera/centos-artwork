@@ -25,11 +25,6 @@
 
 function cli_printMessage {
 
-    # Verify verbose option.
-    if [[ "$FLAG_VERBOSE" == 'false' ]];then
-        return
-    fi
-
     local MESSAGE="$1"
     local FORMAT="$2"
 
@@ -46,178 +41,11 @@ function cli_printMessage {
     # Remove empty spaces from message.
     MESSAGE=$(echo $MESSAGE | sed -r -e 's!^[[:space:]]+!!')
 
-    # Print out messages based on format.
+    # Print messages that will always be printed no matter what value
+    # the FLAG_QUIET variable has.
     case "$FORMAT" in
 
-        --as-separator-line )
-
-            # Build the separator line. 
-            MESSAGE=$(\
-                until [[ $MESSAGE_WIDTH -eq 0 ]];do
-                    echo -n "$(echo $MESSAGE | sed -r 's!(.).*!\1!')"
-                    MESSAGE_WIDTH=$(($MESSAGE_WIDTH - 1))
-                done)
-
-            # Draw the separator line.
-            echo "$MESSAGE"
-            ;;
-
-        --as-banner-line )
-            cli_printMessage '-' --as-separator-line
-            cli_printMessage "$MESSAGE"
-            cli_printMessage '-' --as-separator-line
-            ;;
-
-        --as-cropping-line )
-            cli_printMessage "`gettext "Cropping from"`: $MESSAGE"
-            ;;
-
-        --as-tuningup-line )
-            cli_printMessage "`gettext "Tuning-up"`: $MESSAGE"
-            ;;
-
-        --as-checking-line )
-            cli_printMessage "`gettext "Checking"`: $MESSAGE"
-            ;;
-
-        --as-combining-line )
-            cli_printMessage "`gettext "Combining"`: $MESSAGE"
-            ;;
-
-        --as-creating-line | --as-updating-line )
-            if [[ -a "$MESSAGE" ]];then
-                cli_printMessage "`gettext "Updating"`: $MESSAGE"
-            else
-                cli_printMessage "`gettext "Creating"`: $MESSAGE"
-            fi
-            ;;
-
-        --as-deleting-line )
-            cli_printMessage "`gettext "Deleting"`: $MESSAGE"
-            ;;
-
-        --as-reading-line )
-            cli_printMessage "`gettext "Reading"`: $MESSAGE"
-            ;;
-
-        --as-savedas-line )
-            cli_printMessage "`gettext "Saved as"`: $MESSAGE"
-            ;;
-            
-        --as-linkto-line )
-            cli_printMessage "`gettext "Linked to"`: $MESSAGE"
-            ;;
-        
-        --as-movedto-line )
-            cli_printMessage "`gettext "Moved to"`: $MESSAGE"
-            ;;
-
-        --as-translation-line )
-            cli_printMessage "`gettext "Translation"`: $MESSAGE"
-            ;;
-
-        --as-validating-line )
-            cli_printMessage "`gettext "Validating"`: $MESSAGE"
-            ;;
-
-        --as-template-line )
-            cli_printMessage "`gettext "Template"`: $MESSAGE"
-            ;;
-
-        --as-configuration-line )
-            cli_printMessage "`gettext "Configuration"`: $MESSAGE"
-            ;;
-
-        --as-palette-line )
-            cli_printMessage "`gettext "Palette"`: $MESSAGE"
-            ;;
-
-        --as-response-line )
-            cli_printMessage "--> $MESSAGE"
-            ;;
-
-        --as-request-line )
-            cli_printMessage "${MESSAGE}:\040" --as-notrailingnew-line
-            ;;
-
-        --as-selection-line )
-            local NAME=''
-            select NAME in ${MESSAGE};do
-                echo $NAME
-                break
-            done
-            ;;
-
-        --as-error-line )
-            # Define where the error was originated inside the
-            # centos-art.sh script. Print out the function name and
-            # line from the caller.
-            ORIGIN="$(caller 1 | gawk '{ print $2 " " $1 }')"
-
-            # Build the error message.
-            cli_printMessage "${CLI_NAME} (${ORIGIN}): $MESSAGE" --as-stderr-line
-            cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
-            ;;
-
-        --as-toknowmore-line )
-            cli_printMessage '-' --as-separator-line
-            cli_printMessage "`gettext "To know more, run the following command"`:"
-            cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE"
-            cli_printMessage '-' --as-separator-line
-            exit # <-- ATTENTION: Do not remove this line. We use this
-                 #                option as convenction to end script
-                 #                execution.
-            ;;
-    
-        --as-yesornorequest-line )
-            # Define positive answer.
-            local Y="`gettext "yes"`"
-
-            # Define negative answer.
-            local N="`gettext "no"`"
-
-            # Define default answer.
-            local ANSWER=${N}
-
-            if [[ $FLAG_ANSWER == 'true' ]];then
-
-                ANSWER=${Y}
-
-            else
-
-                # Print the question.
-                cli_printMessage "$MESSAGE [${Y}/${N}]:\040" --as-notrailingnew-line
-
-                # Redefine default answer based on user's input.
-                read ANSWER
-
-            fi
-
-            # Verify user's answer. Only positive answer let the
-            # script flow to continue. Otherwise, if something
-            # different from possitive answer is passed, the script
-            # terminates its execution immediatly.
-            if [[ ! ${ANSWER} =~ "^${Y}" ]];then
-                exit
-            fi
-            ;;
-
-        --as-notrailingnew-line )
-            echo -e -n "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 
-            ;;
-
         --as-stdout-line )
-            echo "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g"
-            ;;
-
-        --as-stderr-line )
-            echo "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
-            ;;
-
-        * )
 
             # Default printing format. This is the format used when no
             # other specification is passed to this function. As
@@ -234,6 +62,189 @@ function cli_printMessage {
                             printf "%-15s\t%s\n", $1, $2
                     }
                     END {}'
+            ;;
+
+        --as-error-line )
+
+            # Define where the error was originated inside the
+            # centos-art.sh script. Print out the function name and
+            # line from the caller.
+            local ORIGIN="$(caller 1 | gawk '{ print $2 " L." $1 }')"
+
+            # Build the error message.
+            cli_printMessage "${CLI_NAME} (${ORIGIN}):" --as-stdout-line
+            cli_printMessage "${MESSAGE}" --as-response-line
+            cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
+            ;;
+
+        --as-toknowmore-line )
+            cli_printMessage '-' --as-separator-line
+            cli_printMessage "`gettext "To know more, run the following command"`:" --as-stdout-line
+            cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE" --as-stdout-line
+            cli_printMessage '-' --as-separator-line
+            exit # <-- ATTENTION: Do not remove this line. We use this
+                 #                option as convenction to end script
+                 #                execution.
+            ;;
+
+        --as-yesornorequest-line )
+
+            # Define positive answer.
+            local Y="`gettext "yes"`"
+
+            # Define negative answer.
+            local N="`gettext "no"`"
+
+            # Define default answer.
+            local ANSWER=${N}
+
+            if [[ $FLAG_ANSWER == 'true' ]];then
+
+                ANSWER=${Y}
+
+            else
+
+                # Print the question to standard error.
+                cli_printMessage "$MESSAGE [${Y}/${N}]" --as-request-line
+
+                # Redefine default answer based on user's input.
+                read ANSWER
+
+            fi
+
+            # Verify user's answer. Only positive answer let the
+            # script flow to continue. Otherwise, if something
+            # different from positive answer is passed, the script
+            # terminates its execution immediately.
+            if [[ ! ${ANSWER} =~ "^${Y}" ]];then
+                exit
+            fi
+            ;;
+
+        --as-selection-line )
+            # Create selection based on message.
+            local NAME=''
+            select NAME in ${MESSAGE};do
+                echo $NAME
+                break
+            done
+            ;;
+
+        --as-response-line )
+            cli_printMessage "--> $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-request-line )
+            cli_printMessage "${MESSAGE}:\040" --as-notrailingnew-line
+            ;;
+
+        --as-notrailingnew-line )
+            echo -e -n "${MESSAGE}" | sed -r \
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g"
+            ;;
+
+        --as-stderr-line )
+            echo "$MESSAGE" | sed -r \
+                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
+            ;;
+
+    esac
+
+    # Verify verbose option. The verbose option controls whether
+    # messages are printed or not.
+    if [[ "$FLAG_QUIET" == 'true' ]];then
+        return
+    fi
+
+    # Print messages that will be printed only when the FLAG_QUIET
+    # variable is provided to centos-art.sh script.
+    case "$FORMAT" in
+
+        --as-separator-line )
+
+            # Build the separator line.
+            MESSAGE=$(\
+                until [[ $MESSAGE_WIDTH -eq 0 ]];do
+                    echo -n "$(echo $MESSAGE | sed -r 's!(.).*!\1!')"
+                    MESSAGE_WIDTH=$(($MESSAGE_WIDTH - 1))
+                done)
+
+            # Draw the separator line.
+            echo "$MESSAGE"
+            ;;
+
+        --as-banner-line )
+            cli_printMessage '-' --as-separator-line
+            cli_printMessage "$MESSAGE" --as-stdout-line
+            cli_printMessage '-' --as-separator-line
+            ;;
+
+        --as-cropping-line )
+            cli_printMessage "`gettext "Cropping from"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-tuningup-line )
+            cli_printMessage "`gettext "Tuning-up"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-checking-line )
+            cli_printMessage "`gettext "Checking"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-combining-line )
+            cli_printMessage "`gettext "Combining"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-creating-line | --as-updating-line )
+            if [[ -a "$MESSAGE" ]];then
+                cli_printMessage "`gettext "Updating"`: $MESSAGE" --as-stdout-line
+            else
+                cli_printMessage "`gettext "Creating"`: $MESSAGE" --as-stdout-line
+            fi
+            ;;
+
+        --as-deleting-line )
+            cli_printMessage "`gettext "Deleting"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-reading-line )
+            cli_printMessage "`gettext "Reading"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-savedas-line )
+            cli_printMessage "`gettext "Saved as"`: $MESSAGE" --as-stdout-line
+            ;;
+            
+        --as-linkto-line )
+            cli_printMessage "`gettext "Linked to"`: $MESSAGE" --as-stdout-line
+            ;;
+        
+        --as-movedto-line )
+            cli_printMessage "`gettext "Moved to"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-translation-line )
+            cli_printMessage "`gettext "Translation"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-validating-line )
+            cli_printMessage "`gettext "Validating"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-template-line )
+            cli_printMessage "`gettext "Template"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-configuration-line )
+            cli_printMessage "`gettext "Configuration"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-palette-line )
+            cli_printMessage "`gettext "Palette"`: $MESSAGE" --as-stdout-line
+            ;;
+
+        --as-inkscape-line )
+            cli_printMessage "$MESSAGE" --as-stdout-line
             ;;
 
     esac
