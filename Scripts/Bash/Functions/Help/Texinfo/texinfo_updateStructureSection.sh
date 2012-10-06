@@ -114,7 +114,7 @@ function texinfo_updateStructureSection {
     # the absolute path to that documentation entry which doesn't
     # exist and we want to update menu, nodes and cross references
     # information for.
-    if [[ $MANUAL_ENTRIES == '' ]] && [[ $PATTERN =~ '^[[:alnum:]./_-]+$' ]];then
+    if [[ $MANUAL_ENTRIES == '' ]] && [[ $PATTERN =~ '^/[[:alnum:]./_-]+$' ]];then
         MANUAL_ENTRIES=${PATTERN}
     fi
 
