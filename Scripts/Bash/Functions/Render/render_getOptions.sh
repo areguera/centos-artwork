@@ -26,10 +26,10 @@
 function render_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="v"
+    local ARGSS="q"
 
     # Define long options we want to support.
-    local ARGSL="verbose,filter:,answer-yes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands,sync-changes"
+    local ARGSL="quiet,filter:,answer-yes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -47,8 +47,8 @@ function render_getOptions {
                 shift 2
                 ;;
 
-            -v | --verbose )
-                FLAG_VERBOSE="true"
+            -q | --quiet )
+                FLAG_QUIET="true"
                 shift 1
                 ;;
 
