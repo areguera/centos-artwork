@@ -1,4 +1,4 @@
-<sect1 id="scripts-bash-cli_checkFiles">
+<section id="scripts-bash-cli_checkFiles">
 
     <title>Standardizing File Verifications</title>
     <indexterm type="common-function">
@@ -6,18 +6,19 @@
     </indexterm>
 
     <para>
-        Tasks related to file verification are implemented through
-        <function>cli_checkFiles</function> function.  This function
-        is exported to centos-art.sh script environment in the very
-        beginning of its execution and will be available all along its
-        execution lifetime. You can use this function inside common
-        and specific functions whenever you need to verify files
-        inside the &TCAR;.
+        The file verification tasks are implemented through
+        <function>cli_checkFiles</function> function inside the
+        <command>centos-art.sh</command> script.  The
+        <function>cli_checkFiles</function> function is exported to
+        <command>centos-art.sh</command> script environment in the
+        very beginning of its execution and will be available all
+        along its execution lifetime. You can use this function inside
+        common and specific functions whenever you need to verify
+        files inside the &TCAR;.
     </para>
 
     <para>
-        The <function>cli_checkFiles</function> is an interface for
-        the <command>test</command> command and answers basic
+        The <function>cli_checkFiles</function> answers basic
         questions like <quote>Does <replaceable>location</replaceable>
         is a regular file?</quote> and <quote>Does
         <replaceable>location</replaceable> is directory?</quote>.
@@ -188,4 +189,4 @@
     </para>
     </simplesect>
 
-</sect1>
+</section>
