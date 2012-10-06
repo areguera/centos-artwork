@@ -47,11 +47,11 @@ function svg {
     # Modify output from inkscape to fit the centos-art.sh script
     # output visual style.
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Area' \
-        | sed -r "s!^Area!`gettext "Area"`:!")"
+        | sed -r "s!^Area!`gettext "Area"`:!")" --as-inkscape-line
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Background' \
-        | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \1 \2!")" 
+        | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \1 \2!")" --as-inkscape-line
     cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
-        | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`:!")"
+        | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`:!")" --as-inkscape-line
 
     # Perform format post-rendition.
     svg_doPostActions
