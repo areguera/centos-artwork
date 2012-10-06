@@ -28,10 +28,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="v"
+    local ARGSS="q"
 
     # Define long options we want to support.
-    local ARGSL="verbose,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,sync-changes"
+    local ARGSL="quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -44,8 +44,8 @@ function prepare_getOptions {
     while true; do
         case "$1" in
 
-            -v | --verbose )
-                FLAG_VERBOSE="true"
+            -q | --quiet )
+                FLAG_QUIET="true"
                 shift 1
                 ;;
 
