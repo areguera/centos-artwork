@@ -64,18 +64,8 @@ function prepare_updateLinks {
     # directories don't exist, there isn't a target location where
     # configuration links can point to. To prevent such an issue
     # output an error message and stop the script execution after it.
-    if [[ ! -d $WCDIR ]];then
-        cli_printMessage "`eval_gettext "The directory \\\"\\\$WCDIR\\\" doesn't exist."`" 
-        cli_printMessage "`gettext "Do you want to download a working copy for it now?"`" --as-yesornorequest-line
-        svn -N co $(cli_printUrl --projects-artwork)trunk/Identity $WCDIR
-        
-    fi
     for DIR in $(echo "Brushes Palettes Patterns Fonts");do
-        if [[ ! -d ${WCDIR}/${DIR} ]];then
-            cli_printMessage "`eval_gettext "The directory \\\"\\\$WCDIR/\\\$DIR\\\" doesn't exist."`" 
-            cli_printMessage "`gettext "Do you want to download a working copy for it now?"`" --as-yesornorequest-line
-            svn co $(cli_printUrl --projects-artwork)trunk/Identity/${DIR} ${WCDIR}/${DIR}
-        fi
+        cli_checkFiles ${WCDIR}/${DIR} ]];then
     done
 
     # Define link relation for cli.
