@@ -321,10 +321,11 @@ al      ALL=(ALL)       SOFTWARE
     </listitem>
     <listitem>
     <para>
-       Edit <filename>~/.bash_profile</filename> file to set the new
-       location (without trailing slash) of your working copy as value
-       of TCAR_WORKDIR environment variable. For example:
-       <screen>TCAR_WORKDIR=${HOME}/Projects/CentOS/artwork</screen>
+       Update the environment variables set in
+       <filename>~/.bash_profile</filename> by running the
+       <command>centos-art.sh</command> script from the new location.
+       For example:
+       <screen>~/Projects/CentOS/artwork/trunk/Scripts/Bash/centos-art.sh prepare --set-environment</screen>
     </para>
     </listitem>
     <listitem>
@@ -338,7 +339,8 @@ al      ALL=(ALL)       SOFTWARE
     </listitem>
     <listitem>
     <para>
-        Update internal links by running the following command:
+        Update internal links by running the
+        <command>centos-art.sh</command> script. For example: 
         <screen>${TCAR_WORKDIR}/trunk/Scripts/Bash/centos-art.sh prepare --links</screen>
     </para>
     </listitem>
