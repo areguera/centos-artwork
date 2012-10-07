@@ -36,4 +36,10 @@ $Id$
     set       toc,title
     </xsl:param>
 
+    <!--
+    Don't use `Name' as title, use command's name instead.
+    -->
+    <xsl:param name="refentry.generate.title" select="1"></xsl:param>
+    <xsl:param name="refentry.generate.name" select="0"></xsl:param>
+
 </xsl:stylesheet>
