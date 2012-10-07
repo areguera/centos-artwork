@@ -82,3 +82,17 @@ div.sect3 > div.titlepage h4.title,
 div.section > div.titlepage h4.title {
     font-size: 1.2em;
     }
+
+div.refentry div.refnamediv h2 span {
+    font-family: "DejaVuLG Mono", monospace
+    }
+
+div.refentry div.refsynopsisdiv h2,
+div.refentry div.refsection h2 {
+    border-bottom: 1px solid #DADADA;
+    }
+
+div.reference div.titlepage h1,
+div.reference div.titlepage h2 {
+    margin: 0.5em 0;
+    }
