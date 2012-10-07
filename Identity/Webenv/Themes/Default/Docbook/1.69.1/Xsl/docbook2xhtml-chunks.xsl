@@ -14,7 +14,7 @@ $Id$
     <xsl:import href="=STYLE_XHTML_COMMON=" />
 
     <!-- 
-    Inside references, don't print toc and use title as page division.
+    Don't print toc inside reference pages.
     -->
     <xsl:param name="generate.toc">
     appendix  toc,title
@@ -26,7 +26,7 @@ $Id$
     preface   toc,title
     qandadiv  toc
     qandaset  toc
-    reference title
+    reference nop
     sect1     toc
     sect2     toc
     sect3     toc
