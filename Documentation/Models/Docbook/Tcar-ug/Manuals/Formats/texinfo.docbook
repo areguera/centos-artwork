@@ -4,20 +4,20 @@
 
     <para>
         This section describes the implementation of Texinfo
-        documentation format inside the <function>help</function>
-        functionality of <command>centos-art.sh</command> script
-        described in <xref linkend="scripts-bash-help" />. In this
-        section we assume you have a basic understanding of Texinfo
-        documentation system. Otherwise, if you don't know what
-        Texinfo documentation system is, read the Texinfo manual first
-        (e.g., by running the <command>info texinfo</command> command)
-        and then, come back here.
+        documentation format inside the <xref
+        linkend="scripts-bash-help"/> functionality of
+        <command>centos-art.sh</command> script. In this section we
+        assume you have a basic understanding of Texinfo documentation
+        system. Otherwise, if you don't know what Texinfo
+        documentation system is, read the Texinfo manual first (e.g.,
+        by running the <command>info texinfo</command> command) and
+        then, come back here.
     </para>
 
     <sect2 id="manuals-formats-texinfo-structure">
     <title>Document Structure</title>
     <para>
-        The <function>help</function> functionality of
+        The <xref linkend="scripts-bash-help"/> functionality of
         <command>centos-art.sh</command> provides a document structure
         that makes documentation manuals created through it to be
         scalable and maintainable through time.  This document
@@ -27,26 +27,20 @@
     </para>
 
     <para> 
-        The first time you use the <function>help</function>
-        functionality to create a documentation manual in Texinfo
-        format, the <function>help</function> functionality considers
-        the working directory you are placed in to determine where to
-        store the documentation manual source files.  When the current
-        working directory is <filename
-        class="directory">branches/Manuals/Texinfo</filename>, the
-        documentation manual directory is created therein.  On all
-        other situations, the documentation manual directory is
-        created under <filename
-        class="directory">trunk/Manuals</filename> directory.  Once
-        the documentation manual directory has been created, the
-        <function>help</function> functionality creates the related
-        definition files using Texinfo documentation templates, as
-        described in <xref linkend="manuals-formats-texinfo-templates"
-        />.
+        The <xref linkend="scripts-bash-help"/>
+        functionality creates documentation manuals source files in
+        the <filename
+        class="directory">trunk/Documentation/Models/Texinfo/</filename>
+        directory and saves output produced from them in the <filename
+        class="directory">trunk/Documentation/Manuals/Texinfo/</filename>
+        directory.  To produce documentation manuals initial source
+        files, the <xref linkend="scripts-bash-help"/> functionality
+        uses Texinfo documentation templates, as described in <xref
+        linkend="manuals-formats-texinfo-templates" />.
     </para>
 
     <para>
-        Inside the documentation manual directory, source files are
+        Inside the documentation models directory, source files are
         stored inside language-specific directories. The
         language-specific directories are necessary to implement
         internationalization of Texinfo source files, as described in
@@ -57,15 +51,14 @@
         Inside the language-specific directory, the following files
         exist to store the manual's main definitions (e.g., title,
         subtitle, author, copyright notice, chapters, appendixes,
-        indexes and all the similar stuff a documentation manual would
-        have).  In addition to these files, there is one directory for
+        indexes and all similar stuff a documentation manual usually
+        has).  In addition to these files, there is one directory for
         each chapter created inside the manual.  Inside each chapter
-        directory, you'll found the files controlling the section
-        definitions related to that chapter they belong to.  The
-        section files (a.k.a.  <quote>documentation entries</quote>)
-        are suffixed with a <filename
-        class="extension">texinfo</filename> extension and named
-        arbitrarily, as it is illustrated in <xref
+        directory, you'll find the files controlling the section
+        definitions related each chapter they belong to.  The section
+        files (a.k.a.  <quote>documentation entries</quote>) are
+        suffixed with a <filename class="extension">texinfo</filename>
+        extension and named arbitrarily, as it is illustrated in <xref
         linkend="manuals-formats-texinfo-structure-example1" />.
         Inside section files it is where you write the manual's
         content itself.
@@ -101,11 +94,10 @@
     <para>
         Texinfo (as in <package>texinfo-4.8-14.el5</package>) doesn't
         support part sectioning inside documentation manuals, so
-        neither does the <function>help</function> functionality of
-        <command>centos-art.sh</command> script. Nevertheless, you can
-        create several documentation manuals and
-        <emphasis>considered</emphasis> them as part of a bigger
-        documentation manual to workaround this issue.
+        neither the <xref linkend="scripts-bash-help"/> functionality
+        does.  Nevertheless, you can create several documentation
+        manuals and considered them as part of a bigger documentation
+        manual to workaround this issue.
     </para>
 
     <para>
@@ -114,7 +106,7 @@
         as many documenation manuals, chapters and sections as you
         need. The only limitation would be the amount of free space
         required to store the Texinfo source files and the output
-        files produced from them.
+        files produced from them in your workstation.
     </para>
 
     </sect2>
@@ -122,11 +114,11 @@
     <sect2 id="manuals-formats-texinfo-templates">
     <title>Document Templates</title>
     <para>
-        Texinfo document templates provide the initial state the
-        <function>help</function> functionality of
-        <command>centos-art.sh</command> script needs in order to
-        create and maintain document structures, as that one described
-        in <xref linkend="manuals-formats-texinfo-structure" />.
+        Texinfo document templates provide the initial document
+        structure the <xref linkend="scripts-bash-help"/>
+        functionality needs in order to create and maintain document
+        structures, as described in <xref
+        linkend="manuals-formats-texinfo-structure" />.
     </para>
 
     <para>
@@ -139,20 +131,20 @@
         locale is English language or when you are creating/editing a
         documentation manual in a language other than English, but no
         language-specific document template for that language exists
-        in the directory:
+        in the <filename
+        class="directory">trunk/Scripts/Documentation/Models/Texinfo/Default/</filename>
+        directory.
     </para>
 
-    <screen>
-trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
-
     <para>
-        This directory organizes all Texinfo document templates using
-        the format LL_CC, where LL is the language code (as in
-        ISO-639) and CC the country code (as in ISO-3166). The
-        directory structure of Texinfo document templates is
-        illustrated in the <xref
-        linkend="manuals-formats-texinfo-templates-example1" /> and
-        implemented through the following files:
+        The <filename
+        class="directory">trunk/Scripts/Documentation/Models/Texinfo/Default/</filename>
+        directory organizes all Texinfo document templates using the
+        format LL_CC, where LL is the language code (as in ISO-639)
+        and CC the country code (as in ISO-3166). The directory
+        structure of Texinfo document templates is illustrated in the
+        <xref linkend="manuals-formats-texinfo-templates-example1" />
+        and implemented through the following files:
     </para>
 
     <variablelist>
@@ -174,25 +166,28 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <para>
         This file can be found inside the language-specific directory
         and contains the menu definitions of chapters inside the
-        manual. Menu definitions in this file are automatically
-        updated when a new chapter is created or deleted through the
-        <function>help</function> functionality of
-        <command>centos-art.sh</command> script.  Generally, you don't
-        need to edit this file once the documentation manual has been
-        created.
+        manual. When <xref linkend="scripts-bash-help" />
+        functionality creates instances of this file, menu definitions
+        inside it are automatically updated when a new chapter is
+        created or deleted through the <xref
+        linkend="scripts-bash-help"/> functionality.  Generally, you
+        don't need to edit instances of this file once the
+        documentation manual has been created.
     </para>
     <para>
         When a documentation manual is created for first time, this
         file is copied from Texinfo document template directory
         structure to the documentation manual being currently created.
-        At this specific moment, this file contains the following
-        Texinfo menu definition:
+        At this specific moment, the instance created contains the
+        following Texinfo menu definition:
     </para>
 
-    <screen>@menu
+<programlisting>
+@menu
 * Licenses::
 * Index::
-@end menu</screen>
+@end menu
+</programlisting>
 
     <para>
         Later, when chapters are added to or deleted from the
@@ -200,10 +195,10 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         or deleting menu entries accordingly.  Nevertheless, the two
         entries shown above are ignored when new chapters are added to
         or removed from the list, so they will always be present in
-        this file. To preserve the manual consistency, the
-        <function>help</function> functionality prevents you from
-        deleting any of these chapters once the documentation manual
-        has been created.
+        instances of this file. To preserve the manual consistency,
+        the <xref linkend="scripts-bash-help"/> functionality prevents
+        you from deleting any of these chapters once the documentation
+        manual has been created.
     </para>
 
     </listitem>
@@ -215,14 +210,15 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <para>
         This file can be found inside the language-specific directory
         and contains the node definitions of all chapters inside the
-        manual.  Node definitions in this file are automatically
-        created based on menu definitions (see
-        <filename>manual-menu.texinfo</filename> file above) and they
-        don't include any content here.  Instead, as part of the node
-        definition, the <code>@include</code> command is used to
+        manual.  When <xref linkend="scripts-bash-help"/>
+        functionality creates instances of this file, node definitions
+        inside it are automatically created based on menu definitions
+        (see <filename>manual-menu.texinfo</filename> file above) and
+        they don't include any content here.  Instead, as part of the
+        node definition, the <code>@include</code> command is used to
         connect each node with its content.  Generally, you don't need
-        to edit this file once the documentation manual has been
-        created.
+        to edit instances of this file once the documentation manual
+        has been created.
     </para>
     </listitem>
     </varlistentry>
@@ -235,8 +231,8 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         and contains the Texinfo commands used to generated an
         organized view of all indexes you defined inside documentation
         entries so they can be quickly accessed. Generally, you don't
-        need to edit this file once the documentation manual has been
-        created.
+        need to edit instnaces of this file once the documentation
+        manual has been created.
     </para>
     </listitem>
     </varlistentry>
@@ -248,9 +244,9 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         This file contains the initial configuration of documentation
         manuals written in Texinfo format. When a documentation manual
         is created for first time, this file is copied into its target
-        directory so you be able of later customizing specific
-        information like menu order, title styles and template
-        assignments. The content of this file is described in <xref
+        directory so you be able to customize specific information
+        like menu order, title styles and template assignments
+        therein. The content of this file is described in <xref
         linkend="manuals-formats-texinfo-configuration" />.
     </para>
     </listitem>
@@ -260,14 +256,22 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <term><filename>chapter.texinfo</filename></term>
     <listitem>
     <para>
-        This file contains the Texinfo's main chapter definition used
-        by <function>help</function> functionality when new chapters
-        are created inside documentation manuals. When chapters are
-        created for first time, they come without any introduction or
-        documentation entry inside. If you want to add/update any
-        information inside the chapter definition itself, edit the
-        related chapter file inside the documentation manual you are
-        working on, not the template file used to create it.
+        This file contains Texinfo's main chapter definition used
+        by <xref linkend="scripts-bash-help"/> functionality when new
+        chapters are created inside documentation manuals. When
+        chapters are created for first time, they come without any
+        introduction or documentation entry inside.
+    </para>
+    <para>
+        In case you need to add/update the chapters definition files,
+        edit the related chapter definition file inside the
+        documentation manual you are working on, not the template file
+        used to create it. To edit the chapter definition file, don't
+        provide any section information in the documentation entry.
+        For example, if you want to update the chapter introduction
+        related to <quote>trunk</quote> chapter inside
+        <quote>tcar-fs</quote> documentation manual, use the
+        <quote>tcar-fs::trunk:</quote> documentation entry.
     </para>
     </listitem>
     </varlistentry>
@@ -293,7 +297,7 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <listitem>
     <para>
         This file is part of Texinfo's main chapter definition and
-        contains the node definition the <function>help</function>
+        contains the node definition the <xref linkend="scripts-bash-help"/>
         functionality uses as reference to create the list of Texinfo
         nodes related to all documentation entries created inside the
         chapter. The node definition of documentation entries is 
@@ -310,14 +314,15 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <listitem>
     <para>
         This file contains the Texinfo section definition used by
-        <function>help</function> functionality when new documentation
-        entries are created inside the chapters of a documentation
-        manual. When documentation entries are created for first time,
-        they are created as empty documentation entries that you need
-        to fill up with content.  Again, if you want to update the
-        content of sections inside the documentation manual, update
-        the related documentation entry inside the documentation
-        manual, not the template file used to create it.
+        <xref linkend="scripts-bash-help"/> functionality when new
+        documentation entries are created inside chapters of
+        documentation manuals. When documentation entries are created
+        for first time, they are created as empty documentation
+        entries that you need to fill up with content.  Again, if you
+        want to update the content of sections inside the
+        documentation manual, update the related documentation entry
+        inside the documentation manual, not the template file used to
+        create it.
     </para>
 
     <para>
@@ -327,16 +332,16 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         described in <xref
         linkend="manuals-formats-texinfo-structure-example1" />. In
         this example, <code>${SECTION_NAME}</code> is a variable
-        string refering the file name of documentaiton entries.
-        The file names of documentation entries is made of letters,
-        numbers and the minus sign (which is generally used to
-        separate words).
+        string referring the file name of documentation entries.  The
+        file names of documentation entries are made of letters,
+        numbers and the minus sign (which is generally used as word
+        separator).
     </para>
 
     <para>
-        Documentation entries are not limited inside a documentation
-        manual. You can create as many documentation entries as you
-        need to describe the content of your manual.
+        Documentation entries are not limited inside chapters of
+        documentation manuals. You can create as many documentation
+        entries as you need to describe the content of your manual.
     </para>
     </listitem>
     </varlistentry>
@@ -349,11 +354,10 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
         language-specific directories so you can control common and
         specific output settings through them.  These files aren't
         copied into the directory structure of new documentation
-        manuals created through the <function>help</function>
-        functionality of <command>centos-art.sh</command> script.
-        Instead, they remain inside the template directory structure
-        so as to be reused each time the output of documentation
-        manuals is rendered.
+        manuals created through the <xref linkend="scripts-bash-help"/>
+        functionality.  Instead, they remain inside the template
+        directory structure so as to be reused each time the output of
+        documentation manuals is rendered.
     </para>
 
     <variablelist>
@@ -379,13 +383,13 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <listitem>
     <para>
         This file can be found inside and outside language-specific
-        directories and contain special transformations for Texi2html
+        directories and contains special transformations for Texi2html
         output. Again, when this file is inside language-specific
-        directories the transformation have are applied to that
+        directories the transformation are applied to that
         language-specific XHTML output and when it is outside
         language-specific directories the transformations are applied
         to all language-specific XHTML outputs.  Most transformations
-        achived through this file are to produce admonitions since
+        achieved through this file are to produce admonitions since
         Texinfo documentation format (as in
         <package>texinfo-4.8-14.el5</package>) doesn't have an
         internal command to build them.
@@ -395,19 +399,20 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     </variablelist>
     
     <example id="manuals-formats-texinfo-templates-example1">
-    <title>Texinfo document template</title>
+    <title>Template for texinfo document structures</title>
     <screenshot>
-    <screeninfo>Texinfo document template</screeninfo>
+    <screeninfo>Template for texinfo document structures</screeninfo>
     <mediaobject>
     <textobject>
-    <programlisting>trunk/Scripts/Bash/Functions/Help/Texinfo/Templates
-|-- ${LANG}
-|   |-- Chapters
+    <programlisting>
+trunk/Documentation/Models/Texinfo/Default/
+|-- ${LANG}/
+|   |-- Chapters/
 |   |   |-- chapter-menu.texinfo
 |   |   |-- chapter-nodes.texinfo
 |   |   |-- chapter.texinfo
 |   |   `-- section.texinfo
-|   |-- Licenses
+|   |-- Licenses/
 |   |   |-- GFDL.texinfo
 |   |   |-- GPL.texinfo
 |   |   |-- chapter-menu.texinfo
@@ -421,7 +426,8 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
 |   |-- manual.sed
 |   `-- manual.texinfo
 |-- manual-init.pl
-`-- manual.sed</programlisting>
+`-- manual.sed
+</programlisting>
     </textobject>
     </mediaobject>
     </screenshot>
@@ -448,8 +454,9 @@ trunk/Scripts/Bash/Functions/Help/Texinfo/Templates</screen>
     <sect2 id="manuals-formats-texinfo-macros">
     <title>Document Expansions</title>
     <para>
-        The document expansions are special constructions used to
-        generate content dynamically inside Texinfo source files.
+        The document expansions are special constructions the <xref
+        linkend="scripts-bash-help" /> functionality uses to generate
+        content dynamically inside Texinfo source files.
     </para>
 
     <sect3>
@@ -569,7 +576,10 @@ option_name = "option_value"</screen>
     <para>
         Once the documentation manual has been created, you must not
         change the value of <option>manual_format</option> option.
-        This will produce an error.
+        This will produce an error because there is not a migration
+        feature available yet. In the future, when you change this
+        value, it must be possible to transform documentation manuals
+        from one format to another.
     </para>
     </caution>
     </listitem>
@@ -624,7 +634,7 @@ option_name = "option_value"</screen>
     </sect2>
 
     <sect2 id="manuals-formats-texinfo-l10n">
-    <title>Document Internationalization</title>
+    <title>Document Localization</title>
     <para>
         To produce localized documentation manuals through Texinfo
         documentation format it is necessary to create one
@@ -638,12 +648,12 @@ option_name = "option_value"</screen>
         based on its content.  To keep track of changes inside the
         source manual, the underlaying version control system must be
         used considering that there is no direct way to apply
-        <application>gettext</application><footnote>
+        <command>gettext</command><footnote>
         <para>
-            The <application>gettext</application> program  translates
+            The <command>gettext</command> program  translates
             a  natural language message into the user's language, by
             looking up the translation in a message catalog. For more
-            information about the <application>gettext</application>
+            information about the <command>gettext</command>
             program, run <command>info gettext</command>.
         </para>
         </footnote> procedures to Texinfo source files.
@@ -651,21 +661,20 @@ option_name = "option_value"</screen>
 
     <para>
         In order to maintain localization of Texinfo source files
-        through <application>gettext</application> procedures, it is
-        necessary to convert the Texinfo source files into
-        XML format first.  This way it would be possible to make use of
-        <function>locale</function> and <function>render</function>
-        functionalities from <command>centos-art.sh</command> script
-        to maintain translation messages in different languages
-        through portable objets and producing localized XML files
-        based on such portable objects, respectively.  Once the
-        localized XML file is available, it would be a matter of using
-        an XSLT processor (see the <command>xsltproc</command>
-        command) to realize the convertion from XML to a localize
-        Texinfo (or possible other) format.  Nevertheless, this
-        workaround fails because the Document Type Definition (DTD)
-        required to validate the XML file produced from
-        <command>makeinfo</command> (as in
+        through <command>gettext</command> procedures, it is necessary
+        to convert the Texinfo source files into XML format first.
+        This way it would be possible to make use of <xref
+        linkend="scripts-bash-locale"/> and <xref
+        linkend="scripts-bash-render"/> functionalities to maintain
+        translation messages in different languages through portable
+        objects and producing localized XML files based on such
+        portable objects, respectively.  Once the localized XML file
+        is available, it would be a matter of using an XSLT processor
+        (see the <command>xsltproc</command> command) to realize the
+        convertion from XML to a localize Texinfo (or possible other)
+        format.  Nevertheless, this workaround fails because the
+        Document Type Definition (DTD) required to validate the XML
+        file produced from <command>makeinfo</command> (as in
         <package>texinfo-4.8-14.el5</package>) is not availabe inside
         &TCD; (release 5.5), nor it is the XSLT files required to
         realize the transformation itself for such DTD.
@@ -673,14 +682,14 @@ option_name = "option_value"</screen>
 
     <para>
         Another similar approach to maintain localization of Texinfo
-        source files through <application>gettext</application>
-        procedures would be to convert Texinfo source file to DocBook
-        format; for who the required DTD and XSLT files are available
-        inside &TCD;.  This way, following a procedure similar to that
-        one describe for XML files above, it would be possible to end
-        up having localized DocBook files that can be used as source
-        to produce localized output for both online and printing
-        media.  However, the DocBook output produced from
+        source files through <command>gettext</command> procedures
+        would be to convert Texinfo source file to DocBook format; for
+        who the required DTD and XSLT files are available inside
+        &TCD;.  This way, following a procedure similar to that one
+        describe for XML files above, it would be possible to end up
+        having localized DocBook files that can be used as source to
+        produce localized output for both online and printing media.
+        However, the DocBook output produced from
         <command>makeinfo</command> command (as in
         <package>texinfo-4.8-14.el5</package>) isn't a valid DocBook
         document according to DocBook DTDs available inside &TCD;
@@ -698,8 +707,7 @@ option_name = "option_value"</screen>
         in ISO-639 standard) and must be set inside the manual's main
         definition file. Generally, there is no need to change the
         document language declaration once it has been created by the
-        <function>help</function> functionality of
-        <command>centos-art.sh</command> script; unless you
+        <xref linkend="scripts-bash-help"/> functionality; unless you
         mistakently create the manual for a locale code different to
         that one you previously pretended to do in first place, of
         course.
@@ -707,13 +715,12 @@ option_name = "option_value"</screen>
 
     <para>
         The language information used in both Texinfo source files and
-        XHTML output produced by the <function>help</function>
-        functionality of <command>centos-art.sh</command> script is
-        determined by the user's session <envar>LANG</envar>
-        environment variable.  This variable can be customized in the
-        graphical login screen before login, or once you've login by
-        explicitly setting the value of <envar>LANG</envar>
-        environment variable inside the
+        XHTML output produced by the <xref linkend="scripts-bash-help"/>
+        functionality is determined by the user's session
+        <envar>LANG</envar> environment variable.  This variable can
+        be customized in the graphical login screen before login, or
+        once you've login by explicitly setting the value of
+        <envar>LANG</envar> environment variable inside the
         <filename>~/.bash_profile</filename> file. 
     </para>
 
@@ -756,10 +763,9 @@ option_name = "option_value"</screen>
         <code>US-ASCII</code>, <code>ISO-8859-1</code>,
         <code>ISO-8859-15</code> or <code>ISO-8859-2</code> as
         argument.  Nevertheless, you should be aware that the
-        <code>help</code> functionality of
-        <command>centos-art.sh</command> script doesn't declare the
-        <code>@documentencoding</code> inside Texinfo source files.
-        Let's see why.
+        <xref linkend="scripts-bash-help" /> functionality doesn't
+        declare the <code>@documentencoding</code> inside Texinfo
+        source files.  Let's see why.
     </para>
 
     <para>
@@ -797,8 +803,8 @@ option_name = "option_value"</screen>
         <emphasis>over</emphasis> the <code>i</code> letter's dot,
         instead of removing the <code>i</code> letter's dot and
         put the accentuation mark on its place.  In the case of XHTML
-        output, however, it possible to produce well localized XHTML
-        output by setting
+        output, however, it is possible to produce well localized
+        XHTML output by setting
     </para>
 
     <screen>&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8" /&gt;</screen>
@@ -813,21 +819,44 @@ option_name = "option_value"</screen>
     <para>
         These contradictions provide the reasons over which it was
         decided not to set the <code>@documentencoding</code> in those
-        Texinfo source files produced by the <code>help</code>
-        functionality of <command>centos-art.sh</command> script. Now,
-        considering them, we can conclude that it is no viable way to
-        localize Texinfo source files through
-        <application>gettext</application> procedures so one
-        documentation manual must be created for each language we
-        desire to support documentation for. In this configuration,
-        it is difficult the production of well localized PDF output,
-        but it is possible to produce well localized Info, Text, and
-        XHTML outputs as long as no document encoding be explicitly
-        set inside Texinfo source files and UTF-8 be used as default
-        terminal character encoding.
+        Texinfo source files produced by the <xref
+        linkend="scripts-bash-help" /> functionality. 
     </para>
 
     </sect3>
+
+    </sect2>
+
+    <sect2 id="manuals-texinfo-l10n-conclusions">
+    <title>Conclusions</title>
+
+    <para>
+        Texinfo documentation format is very good producing online
+        documentation for reading text terminals. It provides feautres
+        to export source files to different output formats both for
+        reading online and paper. However, localized documents becomes
+        hard to maintain because it is required one document structure
+        for each language you want to produce documentation for.
+    </para>
+    <para>
+        Intermediate formats like XML and Docbook provide an
+        alternative to centralize localization of Texinfo document
+        source files, but there is no supported way inside &TCD; to
+        transformed a localized XML file back into texinfo format, nor
+        a way of producing well formed Docbook documents from Texinfo
+        source files. Thus, one Texinfo source structure for each
+        language to support is the solution adopted by <xref
+        linkend="scripts-bash-help" /> functionality.
+    </para>
+
+    <para>
+        When using Texinfo documentation format it is difficult to
+        produce well localized PDF outputs, but it is possible to
+        produce well localized Info, Text, and XHTML outputs as long
+        as no document encoding be explicitly set inside Texinfo
+        source files and UTF-8 be used as default terminal character
+        encoding.
+    </para>
 
     </sect2>
 
