@@ -1,33 +1,18 @@
-<section id="scripts-bash-prepare">
+<refentry id="scripts-bash-prepare">
 
-    <title>Standardizing Configuration Tasks</title>
-    <indexterm type="specific-function">
-        <primary>prepare</primary>
-    </indexterm>
+    <refmeta>
+        <refentrytitle>prepare</refentrytitle>
+        <indexterm type="specific-function">
+            <primary>Standardize configuration tasks inside &TCAR;</primary>
+        </indexterm>
+    </refmeta>
 
-    <para>
-        Inside the <command>centos-art.sh</command> script, the
-        working copy configuration tasks are standardized through the
-        <function>prepare</function> functionality. The main goals of
-        this function are: to set environment variables, to
-        install/update required packages, to create symbolic links for
-        content reusing, to render images based on available design
-        models and artistic motifs, to render documentation manuals,
-        build language-specific files required for content
-        localization and anything else needed in order to make the
-        working copy of &TCAR; ready to be used.
-    </para>
+    <refnamediv>
+        <refname>prepare</refname>
+        <refpurpose>Standardize configuration tasks inside &TCAR;</refpurpose>
+    </refnamediv>
 
-    <para>
-        Use the <function>prepare</function> functionality the first
-        time you download a working copy of &TCAR; or later, to be
-        sure your workstation has all the components it needs so you
-        can use the working copy of &TCAR; in all its extension.
-    </para>
-
-    <simplesect id="scripts-bash-prepare-syntax">
-    <title>Syntax</title>
-
+    <refsynopsisdiv>
     <para>
         Assuming this is the very first time you run the
         <command>centos-art</command> command, you'll find that there
@@ -66,6 +51,7 @@
     <cmdsynopsis>
         <command>centos-art</command>
         <arg choice="req">prepare</arg>
+        <arg>--help</arg>
         <arg>--quiet</arg>
         <arg>--answer-yes</arg>
         <arg>--set-environment</arg>
@@ -77,30 +63,72 @@
         <arg>--manuals</arg>
         <arg>--sync-changes</arg>
     </cmdsynopsis>
+    </refsynopsisdiv>
 
-    </simplesect>
+    <refsection>
+    <title>Description</title>
+    <para>
+        The <function>prepare</function> function exists to set
+        environment variables, install/update required packages,
+        create symbolic links for content reusing, render images based
+        on available design models and artistic motifs, render
+        documentation manuals, build language-specific files required
+        for content localization and anything else needed in order to
+        make the working copy of &TCAR; ready to be used.
+    </para>
 
-    <simplesect id="scripts-bash-prepare-options">
+    <para>
+        When no option is provided to <function>prepare</function>
+        functionality, the <command>centos-art.sh</command> script
+        uses the <option>--set-environment</option>,
+        <option>--packages</option>, <option>--locales</option>
+        <option>--links</option>, <option>--images</option> and
+        <option>--manuals</option> options, in that order, as default
+        behaviour.  Otherwise, if you provide any option, the
+        <command>centos-art.sh</command> script avoids its default
+        behaviour and executes the <function>prepare</function>
+        functionality as specified by the options you provided.
+    </para>
+
+    <para>
+        Notice that it is possible for you to execute the
+        <function>prepare</function> functionality as many times as
+        you need to.  This is specially useful when you need to keep
+        syncronized the relation between content produced inside your
+        working copy and the applications you use outside it. For
+        example, considering you've added new brushes to or removed
+        old brushes from your working copy of &TCAR;, the link
+        information related to those files need to be updated in the
+        <filename class="directory">~/.gimp-2.2/brushes</filename>
+        directory too, in a way the addition/deletion change that took
+        place in your working copy can be reflected there, as well.
+        The same is true for other similar components like fonts,
+        patterns and palettes.
+    </para>
+
+    </refsection>
+
+    <refsection>
+    <title>Usage</title>
+    <para>
+        Use the <function>prepare</function> functionality the first
+        time you download a working copy of &TCAR; or later, to be
+        sure your workstation has all the components it needs so you
+        can use the working copy of &TCAR; in all its extension.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-prepare-options">
     <title>Options</title>
 
     <para>
-        The <command>centos-art prepare</command> command accepts the
-        following options:
+        The <command>centos-art prepare</command> command accepts
+        common options described in <xref
+        linkend="scripts-bash-cli-commonoptions" /> and the following
+        specific options:
     </para>
 
     <variablelist>
-    <varlistentry>
-    <term><option>--quiet</option></term>
-    <listitem>
-    <para>
-        Supress all output messages except error messages.  When this
-        option is passed, all confirmation requests are supressed and
-        a possitive answer is assumed for them, just as if the
-        <option>--answer-yes</option> option whould have been provided.
-    </para>
-    </listitem>
-    </varlistentry>
-
     <varlistentry>
     <term><option>--answer-yes</option></term>
     <listitem>
@@ -218,43 +246,16 @@
     </varlistentry>
     </variablelist>
 
-    </simplesect>
+    </refsection>
 
-    <simplesect id="script-bash-prepare-description">
-    <title>Description</title>
-
+    <refsection id="scripts-bash-prepare-example">
+    <title>Examples</title>
     <para>
-        When no option is provided to <function>prepare</function>
-        functionality, the <command>centos-art.sh</command> script
-        uses the <option>--set-environment</option>,
-        <option>--packages</option>, <option>--locales</option>
-        <option>--links</option>, <option>--images</option> and
-        <option>--manuals</option> options, in that order, as default
-        behaviour.  Otherwise, if you provide any option, the
-        <command>centos-art.sh</command> script avoids its default
-        behaviour and executes the <function>prepare</function>
-        functionality as specified by the options you provided.
+        None.
     </para>
+    </refsection>
 
-    <para>
-        Notice that it is possible for you to execute the
-        <function>prepare</function> functionality as many times as
-        you need to.  This is specially useful when you need to keep
-        syncronized the relation between content produced inside your
-        working copy and the applications you use outside it. For
-        example, considering you've added new brushes to or removed
-        old brushes from your working copy of &TCAR;, the link
-        information related to those files need to be updated in the
-        <filename class="directory">~/.gimp-2.2/brushes</filename>
-        directory too, in a way the addition/deletion change that took
-        place in your working copy can be reflected there, as well.
-        The same is true for other similar components like fonts,
-        patterns and palettes.
-    </para>
-
-    </simplesect>
-
-    <simplesect id="script-bash-prepare-bugs">
+    <refsection id="scripts-bash-prepare-bugs">
     <title>Bugs</title>
     <para>
         To report bugs related to this function, please create a new
@@ -263,13 +264,12 @@
         name of this function clearly and the specific problems you
         found in it.
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="script-bash-prepare-authors">
+    <refsection id="scripts-bash-prepare-authors">
     <title>Authors</title>
     <para>
-        The following people have worked in the
-        <function>prepare</function> functionality:
+        The following people have worked in this functionality:
     </para>
     <itemizedlist>
     <listitem>
@@ -278,9 +278,9 @@
     </para>
     </listitem>
     </itemizedlist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-prepare-licence">
+    <refsection id="scripts-bash-prepare-licence">
     <title>License</title>
 
     <para>
@@ -307,6 +307,6 @@
         Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
         USA.
     </para>
-    </simplesect>
+    </refsection>
 
-</section>
+</refentry>
