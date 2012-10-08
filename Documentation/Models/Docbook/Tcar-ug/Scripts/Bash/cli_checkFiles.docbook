@@ -1,41 +1,19 @@
-<section id="scripts-bash-cli_checkFiles">
+<refentry id="scripts-bash-cli_checkFiles">
 
-    <title>Standardizing File Verifications</title>
-    <indexterm type="common-function">
-        <primary>cli_checkFiles</primary>
-    </indexterm>
+    <refmeta>
+        <refentrytitle>cli_checkFiles</refentrytitle>
+        <manvolnum>1</manvolnum>
+        <indexterm type="common-function">
+            <primary>Standardize constructions for file verifications</primary>
+        </indexterm>
+    </refmeta>
 
-    <para>
-        The file verification tasks are implemented through
-        <function>cli_checkFiles</function> function inside the
-        <command>centos-art.sh</command> script.  The
-        <function>cli_checkFiles</function> function is exported to
-        <command>centos-art.sh</command> script environment in the
-        very beginning of its execution and will be available all
-        along its execution lifetime. You can use this function inside
-        common and specific functions whenever you need to verify
-        files inside the &TCAR;.
-    </para>
+    <refnamediv>
+        <refname>cli_checkFiles</refname>
+        <refpurpose>Standardize constructions for file verifications.</refpurpose>
+    </refnamediv>
 
-    <para>
-        The <function>cli_checkFiles</function> answers basic
-        questions like <quote>Does <replaceable>location</replaceable>
-        is a regular file?</quote> and <quote>Does
-        <replaceable>location</replaceable> is directory?</quote>.
-        When the answer to such questions is positive, the script
-        passes the test silently and continues its execution.  When
-        the answer is negative, the script finishes its execution
-        immediately with an error message.
-    </para>
-
-    <para>
-        Use the <function>cli_checkFiles</function> function whenever
-        you need to verify the characteristics of different file types
-        (e.g., regular files, directories, links, etc.) inside &TCAR;.
-    </para>
-
-    <simplesect id="scripts-bash-cli_checkFiles-syntax">
-    <title>Syntax</title>
+    <refsynopsisdiv>
     <cmdsynopsis>
         <command>cli_checkFiles</command> 
         <arg choice="req">
@@ -47,9 +25,62 @@
         </arg>
         <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
     </cmdsynopsis>
-    </simplesect>
+    </refsynopsisdiv>
 
-    <simplesect id="scripts-bash-cli_checkFiles-options">
+    <refsection id="scripts-bash-cli_checkFiles-description">
+    <title>Description</title>
+    <para>
+        The <function>cli_checkFiles</function> exists to answer basic
+        questions like <quote>Is <replaceable>LOCATION</replaceable>
+        is a regular file?</quote> and <quote>Is
+        <replaceable>LOCATION</replaceable> a directory?</quote>. The
+        answer to such questions affects the script execution flow in
+        the following way: when the answer positive (e.g.,
+        <replaceable>LOCATION</replaceable> is a regular file), the
+        script passes the test silently and continues its execution.
+        When the answer is negative(e.g.,
+        <replaceable>LOCATION</replaceable> is not a regular file),
+        the script finishes its execution immediately with an error
+        message.
+    </para>
+
+    <para>
+        The <function>cli_checkFiles</function> function is exported
+        to <command>centos-art.sh</command> script environment in the
+        very beginning of its execution and will be available all
+        along its execution lifetime. You can use this function inside
+        common and specific functions whenever you need to verify
+        files inside the &TCAR;.
+    </para>
+
+    <para>
+        The <function>cli_checkFiles</function> function is available
+        inside the <command>centos-art.sh</command> script only as
+        part of its execution environment. This function is exported
+        to <command>centos-art.sh</command> script just after
+        executing the script from the command-line and will be
+        available all along the script lifetime. So, you can use this
+        function both in common and specific functionalities of
+        centos-art.sh script.
+    </para>
+
+    <para>
+        The <function>cli_checkFiles</function> function doesn't
+        create subsequent execution environments.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-cli_checkFiles-usage">
+    <title>Usage</title>
+    <para>
+        Use the <function>cli_checkFiles</function> function inside
+        <command>centos-art.sh</command> script whenever you need to
+        control the script execution flow based on file type (e.g.,
+        regular files, directories, links, etc.) verifications.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-cli_checkFiles-options">
     <title>Options</title>
     <para>
         The <function>cli_checkFiles</function> function accepts the
@@ -125,31 +156,52 @@
     <para>
         The value of the <replaceable>LOCATION</replaceable> argument
         must be an absolute path to the file you want to verify. If
-        such file doens't exists in any supported form, the script
+        such file doesn't exists in any supported form, the script
         finishes its execution with an error message.
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-cli_checkFiles-description">
-    <title>Description</title>
+    <refsection id="scripts-bash-cli_checkFiles-example">
+    <title>Examples</title>
     <para>
-        The <function>cli_checkFiles</function> function is available
-        inside the centos-art.sh script only as part of its execution
-        environment. This function is exported to centos-art.sh script
-        just after executing the script from the command-line and will
-        be available all along the script lifetime. So, you can use
-        this function both in common and specific functionalities of
-        centos-art.sh script.
+        The following example was taken from
+        <command>centos-art.sh</command> script initialization phase.
+        Notice the position of <function>cli_checkFiles</function>
+        function inside the loop. If some of the function files we
+        need to export doesn't have execution rights,
+        <function>cli_checkFiles</function> will
+        finish the script execution immediately with an error message.
     </para>
+<programlisting language="bash">
+# Process the list of files.
+for FUNCFILE in $FUNCFILES;do
 
+    # Verify the execution rights for function file.
+    cli_checkFiles -x ${FUNCFILE}
+  
+    # Initialize the function file.
+    . ${FUNCFILE}
+  
+    # Export the function names inside the file to current shell
+    # script environment.
+    export -f $(egrep "${PATTERN}" ${FUNCFILE} | gawk '{ print $2 }')
+  
+done
+</programlisting>
+    </refsection>
+
+    <refsection>
+    <title>Bugs</title>
     <para>
-        The <function>cli_checkFiles</function> function doesn't
-        create subsequent execution environments.
+        To report bugs related to this function, please create a new
+        ticket at <ulink
+        url="https://projects.centos.org/trac/artwork" /> refering the
+        name of this function clearly and the specific problems you
+        found in it.
     </para>
-    
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-cli_checkFiles-authors">
+    <refsection id="scripts-bash-cli_checkFiles-authors">
     <title>Authors</title>
     <itemizedlist>
     <listitem>
@@ -158,9 +210,9 @@
     </para>
     </listitem>
     </itemizedlist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-cli_checkFiles-licence">
+    <refsection id="scripts-bash-cli_checkFiles-licence">
     <title>License</title>
 
     <para>
@@ -187,6 +239,7 @@
         Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
         USA.
     </para>
-    </simplesect>
+    </refsection>
 
-</section>
+</refentry>
+
