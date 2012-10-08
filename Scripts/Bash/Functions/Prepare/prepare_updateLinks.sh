@@ -65,7 +65,7 @@ function prepare_updateLinks {
     # configuration links can point to. To prevent such an issue
     # output an error message and stop the script execution after it.
     for DIR in $(echo "Brushes Palettes Patterns Fonts");do
-        cli_checkFiles ${WCDIR}/${DIR} ]];then
+        cli_checkFiles ${WCDIR}/${DIR}
     done
 
     # Define link relation for cli.
