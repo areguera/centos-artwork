@@ -28,6 +28,13 @@
 
 function prepare_updateEnvironment {
 
+    # Verify that centos-art.sh script is run using an absolute path.
+    # We use this information to determine the exact working copy
+    # location to use, later when `bash_profile' file is created.
+    if [[ ! $0 =~ "^/[[:alnum:]/_-]+${CLI_NAME}.sh$" ]];then
+        cli_printMessage "`gettext "To set environment variables you should run centos-art.sh using its abosolute path."`" --as-error-line
+    fi
+
     local PROFILE=bash_profile
     local SOURCE=${PREPARE_CONFIG_DIR}/${PROFILE}.conf
     local TARGET=${HOME}/.${PROFILE}
