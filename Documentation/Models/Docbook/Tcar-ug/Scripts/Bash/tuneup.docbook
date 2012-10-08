@@ -1,19 +1,18 @@
-<section id="scripts-bash-tuneup">
+<refentry id="scripts-bash-tuneup">
 
-    <title>Standardizing Maintainance Tasks</title>
+    <refmeta>
+        <refentrytitle>tuneup</refentrytitle>
+        <indexterm type="specific-function">
+            <primary>Standardize maintainance tasks inside &TCAR;</primary>
+        </indexterm>
+    </refmeta>
 
-    <para>
-        The <function>tuneup</function> functionality is the
-        interface the <command>centos-art.sh</command> script provides
-        to standardize the maintainance tasks related to individual
-        files inside the working copy.
-    </para>
+    <refnamediv>
+        <refname>tuneup</refname>
+        <refpurpose>Standardize maintainance tasks inside &TCAR;</refpurpose>
+    </refnamediv>
 
-    <simplesect id="scripts-bash-tuneup-syntax">
-    <title>Syntax</title>
-
-    <screen>centos-art tuneup [OPTIONS] [DIRECTORY]</screen>
-
+    <refsynopsisdiv>
     <para>
         The <varname>DIRECTORY</varname> parameter specifies the
         directory path, inside the working copy of &TCAR;, where the
@@ -23,67 +22,9 @@
         parameter is not provided, the current directory path where
         the command was called from is used instead.
     </para>
-    </simplesect>
+    </refsynopsisdiv>
 
-    <simplesect id="scripts-bash-tuneup-options">
-    <title>Options</title>
-    <para>
-        The <function>tuneup</function> functionality accepts the
-        following options: 
-    </para>
-
-    <variablelist>
-    <varlistentry>
-    <term><option>--quiet</option></term>
-    <listitem>
-    <para>
-        Supress all output messages except error messages.  When this
-        option is passed, all confirmation requests are supressed and
-        a possitive answer is assumed for them, just as if the
-        <option>--answer-yes</option> option would have been provided.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>--answer-yes</option></term>
-    <listitem>
-    <para>
-       Assume <emphasis>yes</emphasis> to all confirmation requests.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>--filter="REGEX"</option></term>
-    <listitem>
-    <para>
-        Reduce the list of files to process inside
-        <replaceable>path/to/dir</replaceable> using
-        <replaceable>REGEX</replaceable> as pattern.  You can use this
-        option to control the amount of files you want to tuneup.  The
-        deeper you go into the directory structure the more specific
-        you'll be about the files you want to tuneup.  When you cannot
-        go deeper into the directory structure through
-        <replaceable>path/to/dir</replaceable> specification, use this
-        option to reduce the list of files therein.
-    </para>
-    </listitem>
-    </varlistentry>
-
-    <varlistentry>
-    <term><option>--sync-changes</option></term>
-    <listitem>
-    <para>
-        Synchronizes available changes between the working copy and
-        the central repository.
-    </para>
-    </listitem>
-    </varlistentry>
-    </variablelist>
-    </simplesect>
-
-    <simplesect id="scripts-bash-tuneup-description">
+    <refsection id="scripts-bash-tuneup-description">
     <title>Description</title>
 
     <para>
@@ -102,7 +43,7 @@
         <filename class="extension">.svg</filename> and <filename
         class="extension">.xhtml</filename>) in the directory
         specified, builds a list with them and applies the
-        maintainance tasks using file extensions as section.
+        maintainance tasks using file extensions as refentry.
     </para>
 
     <para>
@@ -170,7 +111,7 @@
         dynamicaly combining the absolute path of the file being
         currently modified, the workstation's date information, the
         <command>centos-art.sh</command> script copyright holder
-        (e.g., =COPYRIGHT_HOLDER=) as section and the Creative
+        (e.g., =COPYRIGHT_HOLDER=) as refentry and the Creative
         Common Distribution-ShareAlike 3.0 License as default license
         to release SVG files.
     </para>
@@ -206,7 +147,7 @@
         element are set dynamically using the md5sum output of
         combining the page location, the <literal>head-</literal>
         string and the heading content itself.  If any of the
-        components used to build the heading section changes, you
+        components used to build the heading refentry changes, you
         need to run the the tuneup functionality of
         <command>centos-art.sh</command> script in order for the
         anchor elements to use the correct information.
@@ -246,16 +187,74 @@
     </mediaobject>
     </screenshot>
     </example>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="script-bash-tuneup-environment">
+    <refsection id="scripts-bash-tuneup-options">
+    <title>Options</title>
+    <para>
+        The <function>tuneup</function> functionality accepts the
+        following options: 
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><option>--quiet</option></term>
+    <listitem>
+    <para>
+        Supress all output messages except error messages.  When this
+        option is passed, all confirmation requests are supressed and
+        a possitive answer is assumed for them, just as if the
+        <option>--answer-yes</option> option would have been provided.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--answer-yes</option></term>
+    <listitem>
+    <para>
+       Assume <emphasis>yes</emphasis> to all confirmation requests.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--filter="REGEX"</option></term>
+    <listitem>
+    <para>
+        Reduce the list of files to process inside
+        <replaceable>path/to/dir</replaceable> using
+        <replaceable>REGEX</replaceable> as pattern.  You can use this
+        option to control the amount of files you want to tuneup.  The
+        deeper you go into the directory structure the more specific
+        you'll be about the files you want to tuneup.  When you cannot
+        go deeper into the directory structure through
+        <replaceable>path/to/dir</replaceable> specification, use this
+        option to reduce the list of files therein.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--sync-changes</option></term>
+    <listitem>
+    <para>
+        Synchronizes available changes between the working copy and
+        the central repository.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    </refsection>
+
+    <refsection id="scripts-bash-tuneup-environment">
     <title>Function Specific Environment</title>
     <para>
         ...
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-tuneup-authors">
+    <refsection id="scripts-bash-tuneup-authors">
     <title>Authors</title>
     <para>
         The following people have worked in the
@@ -268,9 +267,9 @@
     </para>
     </listitem>
     </itemizedlist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-tuneup-licence">
+    <refsection id="scripts-bash-tuneup-licence">
     <title>License</title>
 
     <para>
@@ -297,6 +296,6 @@
         Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
         USA.
     </para>
-    </simplesect>
+    </refsection>
 
-</section>
+</refentry>
