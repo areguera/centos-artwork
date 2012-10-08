@@ -1,6 +1,6 @@
-<section id="scripts-bash-cliref">
+<sect1 id="scripts-bash-cliref">
 
-    <title>Command-line Reference</title>
+    <title>The Command-line Interface</title>
 
     <para>
         The <command>centos-art.sh</command> script follows a
@@ -26,7 +26,7 @@
         arguments are processed then.  Non-option arguments will
         always be paths pointing directories inside your working copy
         of &TCAR;. These paths can be absolute paths or relative paths
-        considering the working copy root directory as section. For
+        considering the working copy root directory as sect2. For
         example, both the absolute path <filename
         class="directory">/home/al/Projects/CentOS/artwork/trunk/Identity/Themes/</filename>
         and the relative path <filename
@@ -34,14 +34,11 @@
         the same location.
     </para>
 
-    <section id="scripts-bash-cliref-cli">
-    <title>The Command-line Interface</title>
-
     <para>
         To better understand the <command>centos-art.sh</command>
         command-line interface, let's consider the real command shown
         in <xref linkend="scripts-bash-cliref-cli-example1" /> as
-        section.  This command shows the entire command as a list of
+        sect2.  This command shows the entire command as a list of
         space-separated arguments. The value of each argument can be
         reached using special variable names based on the number of
         arguments passed to the command-line.
@@ -137,9 +134,8 @@ centos-art render trunk/Identity/Images/Themes --with-brands
     </varlistentry>
 
     </variablelist>
-    </section>
 
-    <section id="scripts-bash-cli-commonoptions">
+    <sect2 id="scripts-bash-cli-commonoptions">
     <title>Common Options</title>
 
     <para>
@@ -186,17 +182,17 @@ centos-art render trunk/Identity/Images/Themes --with-brands
     </varlistentry>
 
     </variablelist>
-    </section>
+    </sect2>
 
-    <section id="scripts-bash-cli-specificoptions">
+    <sect2 id="scripts-bash-cli-specificoptions">
     <title>Specific Options</title>
 
     <para>
         The specific options used by specific and common function
-        environments are described in their respective sections. See
+        environments are described in their respective sect2s. See
         <xref linkend="scripts-bash-cli-specificfuncs" /> and <xref
         linkend="scripts-bash-cli-commonfuncs" /> to know which these
-        sections are.
+        sect2s are.
     </para>
 
     <table id="scripts-bash-cli-specificfuncs">
@@ -211,32 +207,32 @@ centos-art render trunk/Identity/Images/Themes --with-brands
 
     <tbody>
         <row>
-            <entry><literal>prepare</literal></entry>
             <entry><xref linkend="scripts-bash-prepare" /></entry>
+            <entry>Standardize configuration tasks inside &TCAR;</entry>
         </row>
         <row>
-            <entry><literal>render</literal></entry>
             <entry><xref linkend="scripts-bash-render" /></entry>
+            <entry>Standardize rendition tasks inside &TCAR;</entry>
         </row>
         <row>
-            <entry><literal>locale</literal></entry>
             <entry><xref linkend="scripts-bash-locale" /></entry>
+            <entry>Standardize localization tasks inside &TCAR;</entry>
         </row>
         <row>
-            <entry><literal>help</literal></entry>
             <entry><xref linkend="scripts-bash-help" /></entry>
+            <entry>Standardize documentation tasks inside &TCAR;</entry>
         </row>
         <row>
-            <entry><literal>pack</literal></entry>
             <entry><xref linkend="scripts-bash-pack" /></entry>
+            <entry>Standardize packing tasks inside &TCAR;</entry>
         </row>
         <row>
-            <entry><literal>tuneup</literal></entry>
             <entry><xref linkend="scripts-bash-tuneup" /></entry>
+            <entry>Standardize maintainance tasks inside &TCAR;</entry>
         </row>
         <row>
-            <entry><literal>svn</literal></entry>
             <entry><xref linkend="scripts-bash-svn" /></entry>
+            <entry>Standardize version control tasks inside &TCAR;</entry>
         </row>
     </tbody>
     
@@ -256,16 +252,16 @@ centos-art render trunk/Identity/Images/Themes --with-brands
     <tbody>
         <row>
             <entry><literal>cli_checkFiles</literal></entry>
-            <entry><xref linkend="scripts-bash-cli_checkFiles" /></entry>
+            <entry>...</entry>
         </row>
     </tbody>
     
     </tgroup>
     </table>
 
-    </section>
+    </sect2>
 
-    <section id="scripts-bash-cliref-implementation">
+    <sect2 id="scripts-bash-cliref-implementation">
 
         <title>Implementation</title>
 
@@ -282,13 +278,13 @@ centos-art render trunk/Identity/Images/Themes --with-brands
         </para>
 
         <para>
-            In this section will describe how to parse arguments (both
+            In this sect2 will describe how to parse arguments (both
             option and non-option) inside the
             <command>centos-art.sh</command> script.  This information
-            must be used as section whenever you need to create a
+            must be used as sect2 whenever you need to create a
             new function for <command>centos-art.sh</command> script.
         </para>
 
-    </section>
+    </sect2>
 
-</section>
+</sect1>
