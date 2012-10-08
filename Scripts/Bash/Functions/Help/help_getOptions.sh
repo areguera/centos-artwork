@@ -27,10 +27,10 @@
 function help_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q"
+    local ARGSS="q,h"
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
+    local ARGSL="quiet,help,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -42,6 +42,12 @@ function help_getOptions {
     # Define action to take for each option passed.
     while true; do
         case "$1" in
+
+            -h | --help )
+                ${CLI_NAME} help --read trunk/Scripts/Bash/Functions/Help
+                shift 1
+                exit
+                ;;
 
             -q | --quiet )
                 FLAG_QUIET="true"
