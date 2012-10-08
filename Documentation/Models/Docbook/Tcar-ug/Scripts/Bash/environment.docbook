@@ -1,6 +1,6 @@
-<section id="scripts-bash-environment">
+<sect1 id="scripts-bash-environment">
 
-    <title>Execution Environment Reference</title>
+    <title>The Execution Environment</title>
 
     <para>
         The execution environment of <command>centos-art.sh</command>
@@ -88,7 +88,7 @@ Shell execution environment
         variables set in <filename>~/.bash_profile</filename> file.
     </para>
 
-    <section id="scripts-bash-environment-varref">
+    <sect2 id="scripts-bash-environment-varref">
 
     <title>Environment Variables</title>
 
@@ -346,7 +346,7 @@ Shell execution environment
         The files stored under <filename
         class="directory">trunk/Identity/Models/Brands</filename>
         should be named using the value of
-        <literal>${TCAR_BRAND}</literal> as section. If you change
+        <literal>${TCAR_BRAND}</literal> as sect2. If you change
         the value of this variable, you need to be sure the new value
         set does coincide with the file names you use to store brand
         information.
@@ -357,9 +357,9 @@ Shell execution environment
     </varlistentry>
     </variablelist>
 
-    </section>
+    </sect2>
 
-    <section id="scripts-bash-environment-func">
+    <sect2 id="scripts-bash-environment-func">
 
     <title>Environment Functions</title>
 
@@ -403,11 +403,11 @@ Shell execution environment
     <para>
         Both specific and common environment functions exist to
         standardize frequent tasks inside &TCAR;. The following
-        sections will describe which these frequent tasks are and the
+        sect2s will describe which these frequent tasks are and the
         way they are standardized using specific and common
         environment functions.
     </para>
 
-    </section>
+    </sect2>
 
-</section>
+</sect1>
