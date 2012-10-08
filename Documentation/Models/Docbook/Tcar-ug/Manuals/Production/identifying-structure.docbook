@@ -8,33 +8,37 @@
     </para>
     
     <para>
-        The document structure of documentation manuals is specific to
-        that documentation format used to write documentation source
-        files.  Nevertheless, no matter what the documentation format
-        be, the document structure produce produced from the
-        <function>help</function> functionality of
-        <command>centos-art.sh</command> script follows and
-        upside-down tree configuration. In this configuration,
-        documentation manuals can be organized through parts,
-        chapters, sections, and several subsection levels based in
-        whether the chosen documentation format supports them or not.
+        The specific document structure you choose for a documentation
+        manuals is affected by the documentation format you use to
+        write documentation source files.  Nevertheless, no matter
+        what the documentation format be, the document structure
+        produced from the <xref linkend="scripts-bash-help" />
+        functionality will always follow and upside-down tree
+        configuration for document structures. In this configuration,
+        documentation manuals can be organized through different
+        structural levels (e.g., parts, chapters, sections,
+        subsection, etc.) based on the support provided by the
+        documentation format you chose.
     </para>
 
     <para>
-        Considering the <citetitle>The CentOS Artwork Repository File
-        System</citetitle> documentation manual, we already know that
-        it was conceived to document each directory structure &TCAR;
-        is made of using Texinfo format and the sectioning levels
-        supported by it.  At this point we phase that &TCAR; has more
-        levels deep than sectioning commands available inside Texinfo
-        formats.  This way it is not possible to use one sectioning
-        command for each directory level inside the repository
-        directory structure we need to document.  Based on these
-        issues, it is imperative to reaccomodate the document
-        structure in order to be able of documenting every directory
-        &TCAR; is made of, using the sectioning levels supported by
-        most documentation formats inside &TCD;, no matter how many
-        levels deep the repository directory structure has.
+        The <citetitle>The CentOS Artwork Repository File
+        System</citetitle> documentation manual was conceived to
+        document each directory structure &TCAR; is made of, using
+        Texinfo as main documentation format.
+    </para>
+        
+    <para>
+        At this point we find that &TCAR; had more levels deep than
+        sectioning commands available inside documentation format.
+        This way it is not possible to use one sectioning command for
+        each directory level inside the repository directory structure
+        we need to document.  Based on these issues, it is
+        imperative to re-accommodate the document structure in order
+        to be able of documenting every directory &TCAR; is made of,
+        using the sectioning levels supported by that documentation
+        format we chose, no matter how many levels deep the repository
+        directory structure had.
     </para>
     
     <para>
@@ -100,9 +104,8 @@
         This appendix is confined to organize licenses mentioned
         in the manual. The content of this appendix is out of
         documenatation manual scope itself and is shared among all
-        documentation manuals written through the
-        <function>help</function> of <command>centos-art.sh</command>
-        script inside &TCAR;.
+        documentation manuals written through the <xref
+        linkend="scripts-bash-help" /> functionality.
     </para>
     </listitem>
     </varlistentry>
@@ -123,20 +126,20 @@
 
     <para>
         The document structure illustrated above is also considered
-        the default document structure used by the
-        <function>help</function> functionality of
+        the default document structure used by the <xref
+        linkend="scripts-bash-help" /> functionality of
         <command>centos-art.sh</command> script when you produce new
         documentation manuals inside &TCAR;. In contrast with document
         structure illustrated above, the default document structure
-        used by <function>help</function> functionality doesn't
-        include sectioning constructions like parts, chapters,
-        sections, subsections and the like. Such structuring
-        constructions should be specified by you when building the
-        documentation manual. The only exceptions to this restriction
-        are sectioning structures used to organize contents like
-        <quote>Index</quote> and <quote>Licenses</quote>, which are
-        considered inseparable components of documentation manuals
-        stored inside &TCAR;.
+        used by <xref linkend="scripts-bash-help" /> functionality
+        doesn't include sectioning constructions like parts, chapters,
+        sections, subsections and the like in the document structure
+        created. Such structuring constructions should be specified by
+        you when building the documentation manual. The only
+        exceptions to this restriction are sectioning structures used
+        to organize contents like <quote>Index</quote> and
+        <quote>Licenses</quote>, which are considered inseparable
+        components of documentation manuals stored inside &TCAR;.
     </para>
 
 </sect1>
