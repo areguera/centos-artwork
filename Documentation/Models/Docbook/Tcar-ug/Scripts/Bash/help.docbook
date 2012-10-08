@@ -1,65 +1,216 @@
-<section id="scripts-bash-help">
+<refentry id="scripts-bash-help">
 
-    <title>Standardizing Documentation Tasks</title>
+    <refmeta>
+        <refentrytitle>help</refentrytitle>
+        <indexterm type="common-function">
+            <primary>Standardize constructions tasks inside &TCAR;</primary>
+        </indexterm>
+    </refmeta>
+
+    <refnamediv>
+        <refname>help</refname>
+        <refpurpose>Standardize documentation tasks inside &TCAR;.</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+    <cmdsynopsis>
+        <command>help</command> 
+        <arg choice="opt">
+            <arg>--help</arg>
+            <arg>--quiet</arg>
+            <arg>--answer-yes</arg>
+            <arg>--sync-changes</arg>
+            <arg>--search="<replaceable>KEYWORD</replaceable>"</arg>
+            <arg>--edit</arg>
+            <arg>--read</arg>
+            <arg>--update</arg>
+            <arg>--copy</arg>
+            <arg>--delete</arg>
+            <arg>--rename</arg>
+        </arg>
+        <group choice="req">
+        <arg rep="repeat"><replaceable>MANUAL</replaceable>:<replaceable>PART</replaceable>:<replaceable>CHAPTER</replaceable>:<replaceable>SECTION</replaceable></arg>
+        <arg rep="repeat"><replaceable>LOCATION</replaceable></arg>
+        </group>
+    </cmdsynopsis>
+
+    </refsynopsisdiv>
+
+    <refsection id="scripts-bash-help-description">
+    <title>Description</title>
 
     <para>
-        The <function>help</function> functionality is the interface
-        the <command>centos-art.sh</command> script provides to
-        standardize frequent documentation tasks, based on specific
-        documentation formats, as described in <xref
-        linkend="manuals-formats"/>.
+        The <function>help</function> functionality exists to create
+        and maintain documentation structures inside &TCAR;. The
+        documentation structure and documentation format implemented
+        by this functionality is described in  <xref
+        linkend="manuals-production-identifying-structure" /> and
+        <xref linkend="manuals-format-texinfo" />, respectively.
     </para>
 
-    <simplesect id="scripts-bash-help-syntax">
-    <title>Syntax</title>
+    <refsection id="scripts-bash-help-description-docentry">
+    <title>Documentation Entry Format</title>
+    <para>
+        ...
+    </para>
+    </refsection>
 
-    <screen>centos-art help [OPTIONS] [DOCENTRY]</screen>
+    <refsection id="scripts-bash-help-description-create">
+    <title>New Document Structures</title>
+    <para>
+        To create new documentation manuals inside &TCAR; use the
+        following command: 
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit "<replaceable>manual-name</replaceable>"</command>
+    </cmdsynopsis>
 
     <para>
-        The <varname>DOCENTRY</varname> parameter specifies the
-        documentation entry you want to process.  It can be provided
-        one or more times in the form
-        <code>MANUAL:PART:CHAPTER:SECTION</code> or
-        <code>MANUAL::CHAPTER:SECTION</code> based on whether the
-        manual documentation backend you are using supports
-        structuring through parts or not. When
-        <varname>DOCENTRY</varname> parameter is not provided,
-        <quote>&TCAR; Repository File System</quote> documentation
-        manual is used as default value.
+        The first time you execute this command, you will be prompted
+        to enter manual specific information like document format,
+        document title, document subtitle, document author, etc.  Once
+        this information has been collected the
+        <function>help</function> functionality performs some
+        repository verifications and creates the manual source files
+        inside the manual's directory name you specified as
+        <replaceable>manual-name</replaceable>.
     </para>
 
     <para>
-        To determine the documentation format to use, when new
-        documentation manuals are created and no configuration file is
-        available, the <function>help</function> functionality request
-        you to enter one of the supported documentation formats and
-        then, uses it to create the documentation manual. Once the
-        documentation manual is created, the document configuration
-        file is available inside the manual directory structure and
-        used to retrive the document format information, instead.
+        When you create new documentation manuals, take care of the
+        locale information you are currently using. This information
+        is generally set in the <envar>LANG</envar> environment
+        variable and is used by the <function>help</function>
+        functionality of <command>centos-art.sh</command> script to
+        define the language of new documentation manual and the
+        document template used to build it, as well.
     </para>
-    </simplesect>
 
-    <simplesect id="scripts-bash-help-options">
+    <para>
+        Once the documentation structure has been created this way,
+        the recently created documentation manual is ready to receive
+        new chapters and sections.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-edit">
+    <title>Editing Document Structures</title>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit "tcar-fs::trunk"</command>
+    </cmdsynopsis>
+
+    <para>
+        This command edits the <quote>trunk</quote> chapter
+        documentation entry. Here is where you can define the chapter
+        introduction. This very same procedure is used to create
+        <quote>branches</quote> and <quote>tags</quote> chapters, just
+        be sure to change the chapter field accordingly.
+    </para>
+
+    <para>
+        If the related manual or chapter itself don't exist in the
+        documentation structure, centos-art.sh script creates them in
+        their respective hierarchical order (i.e., the manual
+        structure first, and the chapter structure later).
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit "tcar-fs::trunk:Identity"</command>
+    </cmdsynopsis>
+
+    <para>
+        This command edits the <quote>trunk/Identity</quote>
+        documentation entry inside <quote>The CentOS Artwork
+        Repository File System</quote> documentation manual.
+    </para>
+
+    <para>
+        When you edit documentation for a directory which related
+        chapter doesn't exist, centos-art.sh script creates the
+        related chapter first and then proceed to create the related
+        documentaiton entry.
+    </para>
+    
+    <para>
+        In order to document deeper directory levels, you need to
+        refer the directory you want to document by using a path-style
+        or a hyphen-style format as documentation entry.  For example,
+        to edit the documentation related to the <quote><filename
+        class="directory">trunk/Identity/Models/Themes</filename></quote>
+        directory, you can use any of the following documentation
+        entries:
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+        <literal>tcar-fs::trunk:identity-models-themes</literal>
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <literal>tcar-fs::trunk:Identity/Models/Themes</literal>
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <literal>trunk/Identity/Models/Themes</literal>
+    </para>
+    <note>
+    <para>
+        This last format assummes you are using the
+        <quote>trunk</quote> chapter inside <quote>tcar-fs</quote>
+        documentation manual as parent documentation structure. The
+        field related to the part sectioning structure in the
+        documentatin entry (second field) is assumed empty, as well.
+    </para>
+    </note>
+    </listitem>
+    </itemizedlist>
+
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-copy">
+    <title>Copying Document Structure</title>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-delete">
+    <title>Deleting Document Structure</title>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-rename">
+    <title>Renaming Document Structure</title>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-update">
+    <title>Updating Document Structure</title>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    </refsection>
+
+    <refsection id="scripts-bash-help-options">
     <title>Options</title>
     <para>
-        The <function>help</function> functionality accepts the
-        following options:
+        The <command>centos-art help</command> command accepts common
+        options described in <xref
+        linkend="scripts-bash-cli-commonoptions" /> and the following
+        specific options:
     </para>
 
     <variablelist>
-    <varlistentry>
-    <term><option>--quiet</option></term>
-    <listitem>
-    <para>
-        Supress all output messages except error messages.  When this
-        option is passed, all confirmation requests are supressed and
-        a possitive answer is assumed for them, just as if the
-        <option>--answer-yes</option> option would have been provided.
-    </para>
-    </listitem>
-    </varlistentry>
-
     <varlistentry>
     <term><option>--answer-yes</option></term>
     <listitem>
@@ -187,31 +338,30 @@
         When documentation entries are removed (e.g., through
         <option>--delete</option> or <option>--rename</option>
         options), the <function>help</function> functionality takes
-        care of updating nodes, menus and cross sections related to
+        care of updating nodes, menus and cross refentrys related to
         documentation entries in order to keep the manual structure in
         a consistent state.
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-help-description">
-    <title>Description</title>
+    <refsection id="scripts-bash-help-examples">
+    <title>Examples</title>
+    <para>
+        None.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-bugs">
+    <title>Bugs</title>
     <para>
         ...
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="script-bash-help-environment">
-    <title>Function Specific Environment</title>
-    <para>
-        ...
-    </para>
-    </simplesect>
-
-    <simplesect id="scripts-bash-help-authors">
+    <refsection id="scripts-bash-help-authors">
     <title>Authors</title>
     <para>
-        The following people have worked in the
-        <function>help</function> functionality:
+        The following people have worked in this functionality:
     </para>
     <itemizedlist>
     <listitem>
@@ -220,9 +370,9 @@
     </para>
     </listitem>
     </itemizedlist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-help-licence">
+    <refsection id="scripts-bash-help-licence">
     <title>License</title>
 
     <para>
@@ -249,6 +399,6 @@
         Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
         USA.
     </para>
-    </simplesect>
+    </refsection>
 
-</section>
+</refentry>
