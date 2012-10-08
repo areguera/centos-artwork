@@ -74,4 +74,7 @@ function texinfo_editEntry {
 
     fi
 
+    # Rebuild output files to propagate recent changes, if any.
+    texinfo_updateOutputFiles
+
 }
