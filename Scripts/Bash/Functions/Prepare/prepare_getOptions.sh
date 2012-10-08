@@ -28,10 +28,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q"
+    local ARGSS="q,h"
 
     # Define long options we want to support.
-    local ARGSL="quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,sync-changes"
+    local ARGSL="quiet,help,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -43,6 +43,12 @@ function prepare_getOptions {
     # Look for options passed through command-line.
     while true; do
         case "$1" in
+
+            -h | --help )
+                ${CLI_NAME} help --read trunk/Scripts/Bash/Functions/Prepare
+                shift 1
+                exit
+                ;;
 
             -q | --quiet )
                 FLAG_QUIET="true"
