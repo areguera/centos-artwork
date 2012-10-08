@@ -3,51 +3,10 @@
     <title>Implementing Document Structure</title>
 
     <para>
-        This section describes the steps you should follow to
-        implement document structures like that one described in <xref
+        The document structure implementation is automated by the
+        <xref linkend="scripts-bash-help" /> functionality, as
+        described in <xref
         linkend="manuals-production-identifying-structure" />.
     </para>
-
-    <sect2>
-    <title>Creating Document Structure</title>
-
-    <para>
-        To create new documentation manuals inside &TCAR; you need to
-        use the <function>help</function> functionality of
-        <command>centos-art.sh</command> script, as shown in the
-        following command: 
-    </para>
-
-    <screen>centos-art help --edit "<replaceable>manual-name</replaceable>"</screen>
-
-    <para>
-        The first time you execute this command, you will be prompted
-        to enter manual specific information like document format,
-        document title, document subtitle, document author, etc.  Once
-        this information has been collected the
-        <function>help</function> functionality performs some
-        repository verifications and creates the manual source files
-        inside the manual's directory name you specified as
-        <replaceable>manual-name</replaceable>.
-    </para>
-
-    <para>
-        When you create new documentation manuals, take care of the
-        locale information you are currently using. This information
-        is generally set in the <envar>LANG</envar> environment
-        variable and is used by the <function>help</function>
-        functionality of <command>centos-art.sh</command> script to
-        define the language of new documentation manual and the
-        document template used to build it, as well.
-    </para>
-
-    <para>
-        Once the documentation structure has been created this way,
-        the recently created documentation manual is ready to receive
-        new chapters and sections as it is described in <xref
-        linkend="manuals-production-maintaining-structure" />.
-    </para>
-
-    </sect2>
 
 </sect1>
