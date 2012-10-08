@@ -1,18 +1,18 @@
-<section id="scripts-bash-locale">
+<refentry id="scripts-bash-locale">
 
-    <title>Standardizing Localization Tasks</title>
+    <refmeta>
+        <refentrytitle>locale</refentrytitle>
+        <indexterm type="specific-function">
+            <primary>Standardize translation tasks inside &TCAR;</primary>
+        </indexterm>
+    </refmeta>
 
-    <para>
-        The <function>locale</function> functionality is the
-        interface the <command>centos-art.sh</command> script provides
-        to standardize localization tasks inside the working copy.
-    </para>
+    <refnamediv>
+        <refname>locale</refname>
+        <refpurpose>Standardize translation tasks inside &TCAR;</refpurpose>
+    </refnamediv>
 
-    <simplesect id="scripts-bash-locale-syntax">
-    <title>Syntax</title>
-
-    <screen>centos-art locale [OPTIONS] [DIRECTORY]</screen>
-
+    <refsynopsisdiv>
     <para>
         The <varname>DIRECTORY</varname> parameter specifies the
         directory path, inside the working copy of &TCAR;, where the
@@ -22,9 +22,9 @@
         parameter is not provided, the current directory path where
         the command was called from is used instead.
     </para>
-    </simplesect>
+    </refsynopsisdiv>
 
-    <simplesect id="scripts-bash-locale-options">
+    <refsection id="scripts-bash-locale-options">
     <title>Options</title>
     <para>
         The <function>locale</function> functionality accepts the
@@ -130,9 +130,9 @@
     </varlistentry>
 
     </variablelist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-locale-description">
+    <refsection id="scripts-bash-locale-description">
     <title>Description</title>
 
     <para>
@@ -236,16 +236,16 @@
         messages for, run the following command: <command>locale -a |
         less</command>.
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="script-bash-locale-environment">
+    <refsection id="scripts-bash-locale-environment">
     <title>Function Specific Environment</title>
     <para>
         ...
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-locale-authors">
+    <refsection id="scripts-bash-locale-authors">
     <title>Authors</title>
     <para>
         The following people have worked in the
@@ -258,9 +258,9 @@
     </para>
     </listitem>
     </itemizedlist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-locale-licence">
+    <refsection id="scripts-bash-locale-licence">
     <title>License</title>
 
     <para>
@@ -287,6 +287,6 @@
         Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
         USA.
     </para>
-    </simplesect>
+    </refsection>
 
-</section>
+</refentry>
