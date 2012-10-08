@@ -1,40 +1,45 @@
-<section id="scripts-bash-pack">
+<refentry id="scripts-bash-pack">
 
-    <title>Standardizing Packaging Tasks</title>
+    <refmeta>
+        <refentrytitle>pack</refentrytitle>
+        <indexterm type="specific-function">
+            <primary>Standardize packing tasks inside &TCAR;</primary>
+        </indexterm>
+    </refmeta>
 
+    <refnamediv>
+        <refname>pack</refname>
+        <refpurpose>Standardize packing tasks inside &TCAR;</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
     <para>
         ...
     </para>
+    </refsynopsisdiv>
 
-    <simplesect id="scripts-bash-pack-syntax">
-    <title>Syntax</title>
-    <para>
-        ...
-    </para>
-    </simplesect>
-
-    <simplesect id="scripts-bash-pack-options">
-    <title>Options</title>
-    <para>
-        ...
-    </para>
-    </simplesect>
-
-    <simplesect id="scripts-bash-pack-description">
+    <refsection id="scripts-bash-pack-description">
     <title>Description</title>
     <para>
         ...
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="script-bash-pack-environment">
+    <refsection id="scripts-bash-pack-usage">
+    <title>Usage</title>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-pack-environment">
     <title>Function Specific Environment</title>
     <para>
         ...
     </para>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-pack-authors">
+    <refsection id="scripts-bash-pack-authors">
     <title>Authors</title>
     <itemizedlist>
     <listitem>
@@ -43,9 +48,9 @@
     </para>
     </listitem>
     </itemizedlist>
-    </simplesect>
+    </refsection>
 
-    <simplesect id="scripts-bash-pack-licence">
+    <refsection id="scripts-bash-pack-licence">
     <title>License</title>
 
     <para>
@@ -72,6 +77,6 @@
         Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139,
         USA.
     </para>
-    </simplesect>
+    </refsection>
 
-</section>
+</refentry>
