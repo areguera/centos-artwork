@@ -14,7 +14,7 @@
 
     <refsynopsisdiv>
     <cmdsynopsis>
-        <command>help</command> 
+        <command>centos-art help</command> 
         <arg choice="opt">
             <arg>--help</arg>
             <arg>--quiet</arg>
@@ -41,18 +41,116 @@
 
     <para>
         The <function>help</function> functionality exists to create
-        and maintain documentation structures inside &TCAR;. The
-        documentation structure and documentation format implemented
-        by this functionality is described in  <xref
-        linkend="manuals-production-identifying-structure" /> and
-        <xref linkend="manuals-format-texinfo" />, respectively.
+        and maintain documentation manuals inside &TCAR;. The
+        documentation structure and format implemented by
+        <function>help</function> functionality are described in
+        <xref linkend="manuals-production-identifying-structure" />
+        and <xref linkend="manuals-format-texinfo" />, respectively.
     </para>
 
     <refsection id="scripts-bash-help-description-docentry">
-    <title>Documentation Entry Format</title>
+    <title>Documentation Entries</title>
     <para>
-        ...
+        The documentation entry identifies the specific file you want
+        to work with inside a documentation manual. The help
+        functionality recognizes documentation entries in the
+        following two formats:
     </para>
+    <variablelist>
+    <varlistentry>
+    <term>Path style</term>
+    <listitem>
+    <para>
+        This format uses paths to represent the documentation entries
+        you want to work with.  This format assumes you are using the
+        first path component as chapter and the rest of the path as
+        section identifier both inside <quote>tcar-fs</quote>
+        documentation manual as parent documentation structure. The
+        field related to the part sectioning structure in the
+        documentation entry (the second field) is assumed empty, as
+        well. For example, if you want to document the directory
+        <quote><filename
+        class="directory">trunk/Scripts/Bash/Functions/Help</filename></quote>,
+        then you can do it with the following command:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit trunk/Scripts/Bash/Functions/Help</command>
+    </cmdsynopsis>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>Colon style</term>
+    <listitem>
+    <para>
+        This format uses colons to represent the documentation entries
+        you want to work with. In this format, the whole documentation
+        entry is divided in fields using colon as separator character.
+        Documentation entries written this way use each field to
+        specify manual, part, chapter and section identifiers (in this
+        order). The section identifier can use a path style or hyphen
+        style to separate
+        components. For example, if you want to document the directory
+        <quote><filename
+        class="directory">trunk/Scripts/Bash/Functions/Help</filename></quote>,
+        then you can do it with any of the following commands:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit tcar-fs::trunk:Scripts/Bash/Functions/Help</command>
+    <command>centos-art help --edit tcar-fs::trunk:scripts-bash-functions-help</command>
+    </cmdsynopsis>
+
+    <para>
+        The documentation manual name specified in the first field of
+        a colon style documentation entry, must match the name the
+        name of the directory where the documentation manual is stored
+        in. By default documentation manuals are written in
+        trunk/Documentation/Models/Texinfo or
+        trunk/Documentation/Models/Docbook directories, based on
+        whether they are written in Texinfo or Docbook documentation
+        format. 
+    </para>
+    <para>
+        The match relation between the manual name you provide in the
+        documentation entry and the related directory name inside
+        &TCAR; is case insensitive. The same is true for all other
+        documentation entry fields.
+    </para>
+
+    </listitem>
+    </varlistentry>
+    </variablelist>
+
+    <para>
+        From these documentation entry formats, the colon style
+        provides more flexibility than path style does. You can use
+        documentation entries written in colon style to create and
+        maintain different documentation manuals, including the
+        <quote>tcar-fs</quote> documentation manual. This is something
+        you cannot do with documentation entries written in path style
+        because they confine all documentation actions to
+        <quote>tcar-fs</quote> documentation manual.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-formats">
+    <title>Supported Documentation Formats</title>
+
+    <para>
+        The <function>help</function> functionality provides support
+        for the following documentation formats:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        Texinfo (See <xref linkend="manuals-format-texinfo"/>)
+    </para>
+    </listitem>
+    </itemizedlist>
+
     </refsection>
 
     <refsection id="scripts-bash-help-description-create">
@@ -157,15 +255,6 @@
     <para>
         <literal>trunk/Identity/Models/Themes</literal>
     </para>
-    <note>
-    <para>
-        This last format assummes you are using the
-        <quote>trunk</quote> chapter inside <quote>tcar-fs</quote>
-        documentation manual as parent documentation structure. The
-        field related to the part sectioning structure in the
-        documentatin entry (second field) is assumed empty, as well.
-    </para>
-    </note>
     </listitem>
     </itemizedlist>
 
