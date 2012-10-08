@@ -28,6 +28,13 @@
 
 function prepare_updateLocales {
 
-    ${CLI_BASEDIR}/${CLI_NAME}.sh locale trunk/Scripts/Bash --update
+    # Realize localization tasks only when the current locale
+    # information is different to English language. Otherwise
+    # centos-art.sh would complain with an `English language cannot be
+    # localized to itself' message.  Avoid this noise in the
+    # preparation stuff.
+    if [[ ! ${CLI_LANG_LL} =~ '^en' ]];then
+        ${CLI_BASEDIR}/${CLI_NAME}.sh locale trunk/Scripts/Bash --update
+    fi
 
 }
