@@ -23,7 +23,8 @@
             <arg>--search="<replaceable>KEYWORD</replaceable>"</arg>
             <arg>--edit</arg>
             <arg>--read</arg>
-            <arg>--update</arg>
+            <arg>--update-output</arg>
+            <arg>--update-structure</arg>
             <arg>--copy</arg>
             <arg>--delete</arg>
             <arg>--rename</arg>
@@ -41,11 +42,7 @@
 
     <para>
         The <function>help</function> functionality exists to create
-        and maintain documentation manuals inside &TCAR;. The
-        documentation structure and format implemented by
-        <function>help</function> functionality are described in
-        <xref linkend="manuals-production-identifying-structure" />
-        and <xref linkend="manuals-format-texinfo" />, respectively.
+        and maintain documentation manuals inside &TCAR;.
     </para>
 
     <refsection id="scripts-bash-help-description-docentry">
@@ -146,146 +143,11 @@
     <itemizedlist>
     <listitem>
     <para>
-        Texinfo (See <xref linkend="manuals-format-texinfo"/>)
+        Texinfo, as described in <xref linkend="manuals-format-texinfo"/>.
     </para>
     </listitem>
     </itemizedlist>
 
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-create">
-    <title>New Document Structures</title>
-    <para>
-        To create new documentation manuals inside &TCAR; use the
-        following command: 
-    </para>
-
-    <cmdsynopsis>
-    <command>centos-art help --edit "<replaceable>manual-name</replaceable>"</command>
-    </cmdsynopsis>
-
-    <para>
-        The first time you execute this command, you will be prompted
-        to enter manual specific information like document format,
-        document title, document subtitle, document author, etc.  Once
-        this information has been collected the
-        <function>help</function> functionality performs some
-        repository verifications and creates the manual source files
-        inside the manual's directory name you specified as
-        <replaceable>manual-name</replaceable>.
-    </para>
-
-    <para>
-        When you create new documentation manuals, take care of the
-        locale information you are currently using. This information
-        is generally set in the <envar>LANG</envar> environment
-        variable and is used by the <function>help</function>
-        functionality of <command>centos-art.sh</command> script to
-        define the language of new documentation manual and the
-        document template used to build it, as well.
-    </para>
-
-    <para>
-        Once the documentation structure has been created this way,
-        the recently created documentation manual is ready to receive
-        new chapters and sections.
-    </para>
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-edit">
-    <title>Editing Document Structures</title>
-
-    <cmdsynopsis>
-    <command>centos-art help --edit "tcar-fs::trunk"</command>
-    </cmdsynopsis>
-
-    <para>
-        This command edits the <quote>trunk</quote> chapter
-        documentation entry. Here is where you can define the chapter
-        introduction. This very same procedure is used to create
-        <quote>branches</quote> and <quote>tags</quote> chapters, just
-        be sure to change the chapter field accordingly.
-    </para>
-
-    <para>
-        If the related manual or chapter itself don't exist in the
-        documentation structure, centos-art.sh script creates them in
-        their respective hierarchical order (i.e., the manual
-        structure first, and the chapter structure later).
-    </para>
-
-    <cmdsynopsis>
-    <command>centos-art help --edit "tcar-fs::trunk:Identity"</command>
-    </cmdsynopsis>
-
-    <para>
-        This command edits the <quote>trunk/Identity</quote>
-        documentation entry inside <quote>The CentOS Artwork
-        Repository File System</quote> documentation manual.
-    </para>
-
-    <para>
-        When you edit documentation for a directory which related
-        chapter doesn't exist, centos-art.sh script creates the
-        related chapter first and then proceed to create the related
-        documentaiton entry.
-    </para>
-    
-    <para>
-        In order to document deeper directory levels, you need to
-        refer the directory you want to document by using a path-style
-        or a hyphen-style format as documentation entry.  For example,
-        to edit the documentation related to the <quote><filename
-        class="directory">trunk/Identity/Models/Themes</filename></quote>
-        directory, you can use any of the following documentation
-        entries:
-    </para>
-    <itemizedlist>
-    <listitem>
-    <para>
-        <literal>tcar-fs::trunk:identity-models-themes</literal>
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        <literal>tcar-fs::trunk:Identity/Models/Themes</literal>
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-        <literal>trunk/Identity/Models/Themes</literal>
-    </para>
-    </listitem>
-    </itemizedlist>
-
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-copy">
-    <title>Copying Document Structure</title>
-    <para>
-        ...
-    </para>
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-delete">
-    <title>Deleting Document Structure</title>
-    <para>
-        ...
-    </para>
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-rename">
-    <title>Renaming Document Structure</title>
-    <para>
-        ...
-    </para>
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-update">
-    <title>Updating Document Structure</title>
-    <para>
-        ...
-    </para>
     </refsection>
 
     </refsection>
@@ -320,12 +182,12 @@
     </varlistentry>
 
     <varlistentry>
-    <term><option>--search="KEYWORD"</option></term>
+    <term><option>--search="<replaceable>KEYWORD</replaceable>"</option></term>
     <listitem>
     <para>
-        This option looks for <varname>KEYWORD</varname> inside the
-        manual specified in the documentation entry and display
-        related information you to read.
+        This option looks for <replaceable>KEYWORD</replaceable>
+        inside the documentation entry you provide and displays the
+        related information for you to read.
     </para>
     </listitem>
     </varlistentry>
@@ -334,20 +196,18 @@
     <term><option>--edit</option></term>
     <listitem>
     <para>
-        Edit documentation entry related to path specified by
-        <varname>DOCENTRY</varname> parameter.
+        Edit documentation entry.
     </para>
     <para>
-        The <varname>DOCENTRY</varname> parameter must point to any
-        directory inside the working copy.  When more than one
-        <varname>DOCENTRY</varname> are passed as non-option
-        arguments to the <command>centos-art.sh</command> script
-        command-line, they are queued for further edition.  The
-        edition itself takes place through your default text editor
-        (e.g., the one you specified in the <envar>EDITOR</envar>
-        environment variable) and the text editor opens one file at
-        time (i.e., the queue of files to edit is not loaded in the
-        text editor.).
+        The documentation entry must point to any directory inside the
+        working copy.  When more than one documentation entry is
+        passed as non-option arguments to the
+        <command>centos-art.sh</command> script command-line, they are
+        queued for further edition.  The edition itself takes place
+        through your default text editor (e.g., the one you specified
+        in the <envar>EDITOR</envar> environment variable) and the
+        text editor opens one file at time (i.e., the queue of files
+        to edit is not loaded in the text editor.).
     </para>
     </listitem>
     </varlistentry>
@@ -356,21 +216,34 @@
     <term><option>--read</option></term>
     <listitem>
     <para>
-        Read documentation entry specified by
-        <varname>DOCENTRY</varname> path.  This option is used
-        internally by <command>centos-art.sh</command> script to refer
-        documentation based on errors, so you can know more about them
-        and the causes that could have provoked them.
+        Read documentation entry.  This option is used internally by
+        <command>centos-art.sh</command> script to refer documentation
+        based on errors, so you can know more about them and the
+        causes that could have provoked them.
     </para>
     </listitem>
     </varlistentry>
 
     <varlistentry>
-    <term><option>--update</option></term>
+    <term><option>--update-output</option></term>
     <listitem>
     <para>
         Update output files rexporting them from the specified backend
         source files.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><option>--update-structure</option></term>
+    <listitem>
+    <para>
+        Update document structure (e.g., cross references, menus,
+        nodes, etc.). This option should be used whenever a document
+        structure changes (e.g., when documentation entries are added,
+        copied, renamed, deleted, etc.). This option grantees the
+        document integrity and should be run before the
+        <option>--update-output</option> option.
     </para>
     </listitem>
     </varlistentry>
@@ -396,11 +269,9 @@
     <term><option>--delete</option></term>
     <listitem>
     <para>
-        Delete documentation entries specified by
-        <varname>DOCENTRY</varname> inside the working copy. It is
-        possible to delete more than one documentation entry by
-        specifying more <varname>DOCENTRY</varname> parameters in the
-        command-line.
+        Delete documentation entries. It is possible to delete more
+        than one documentation entry by specifying several
+        documentation entries in the command line.
     </para>
     </listitem>
     </varlistentry>
@@ -435,9 +306,103 @@
 
     <refsection id="scripts-bash-help-examples">
     <title>Examples</title>
+
+    <refsection id="scripts-bash-help-description-create">
+    <title>New Document Structures</title>
     <para>
-        None.
+        To create new documentation manuals inside &TCAR; use the
+        following command: 
     </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit "<replaceable>manual</replaceable>"</command>
+    </cmdsynopsis>
+
+    <para>
+        The first time you execute this command, you will be prompted
+        to enter manual specific information like document format,
+        document title, document subtitle, document author, etc.  Once
+        this information has been collected the
+        <function>help</function> functionality performs some
+        repository verifications and creates the manual source files
+        inside the manual's directory name you specified as
+        <replaceable>manual</replaceable>.
+    </para>
+
+    <para>
+        Once the documentation structure has been created this way,
+        the recently created documentation manual is ready to receive
+        new sectioning levels (e.g., parts, chapters, sections, etc.).
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-edit">
+    <title>Editing Document Structures</title>
+
+    <para>
+        To edit documentation entries, use the following command:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    </cmdsynopsis>
+
+    <para>
+        ...
+    </para>
+
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-copy">
+    <title>Copying Document Structure</title>
+    <para>
+        To copy one documentation entry, use the following command:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --copy "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    </cmdsynopsis>
+
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-delete">
+    <title>Deleting Document Structure</title>
+    <para>
+        To delete one documentation entry, use the following command:
+    </para>
+    <cmdsynopsis>
+    <command>centos-art help --delete "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    </cmdsynopsis>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-rename">
+    <title>Renaming Document Structure</title>
+    <para>
+        To rename one documentation entry, use the following command:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --copy "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    </cmdsynopsis>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-update">
+    <title>Updating Document Structure</title>
+    <para>
+        To update the document structure of one manual, use the
+        following command:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --update-structure "<replaceable>manual</replaceable>"</command>
+    </cmdsynopsis>
+    </refsection>
     </refsection>
 
     <refsection id="scripts-bash-help-bugs">
