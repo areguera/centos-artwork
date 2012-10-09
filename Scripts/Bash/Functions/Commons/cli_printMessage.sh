@@ -54,6 +54,7 @@ function cli_printMessage {
             # messages.
             echo "$MESSAGE" | sed -r \
                 -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" \
+                -e "s!/{2,}!/!g" \
                 | awk 'BEGIN { FS=": " }
                     { 
                         if ( $0 ~ /^-+$/ )
