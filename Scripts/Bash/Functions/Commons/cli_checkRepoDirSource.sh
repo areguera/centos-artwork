@@ -41,12 +41,6 @@
 
 function cli_checkRepoDirSource {
 
-    # Check action value to be sure strange characters are kept far
-    # away from the path provided as action value.
-    if [[ ! ${ACTIONVAL} =~ "^[[:alnum:]/-]+$" ]];then
-        cli_printMessage "${ACTIONVAL} `gettext "contains an invalid format"`" --as-error-line
-    fi
-
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing the absolute path
     # prefix (e.g., `/home/centos/artwork/') from all centos-art.sh
@@ -60,8 +54,31 @@ function cli_checkRepoDirSource {
         ACTIONVAL=${TCAR_WORKDIR}/$ACTIONVAL 
     fi
 
-    # Be sure that action value does exist and is a directory before
-    # processing it.
-    cli_checkFiles -d ${ACTIONVAL}
+    # Generally, action value should point to directories inside the
+    # working copy. However, when we are working with documentation,
+    # it points to documentation entries (i.e., regular files). Lets
+    # consider this and realize verification of source locations based
+    # on whether they are directories or files.
+    if [[ -f ${ACTIONVAL} ]];then
+
+        # Check action value to be sure strange characters are kept
+        # far away from the path provided as action value.
+        if [[ ! ${ACTIONVAL} =~ "^[[:alnum:]/_-]+\.[[:alnum:]]+$" ]];then
+            cli_printMessage "${ACTIONVAL} `gettext "contains an invalid format"`" --as-error-line
+        fi
+
+    else
+
+        # Check action value to be sure strange characters are kept
+        # far away from the path provided as action value.
+        if [[ ! ${ACTIONVAL} =~ "^[[:alnum:]/_-]+$" ]];then
+            cli_printMessage "${ACTIONVAL} `gettext "contains an invalid format"`" --as-error-line
+        fi
+
+        # Be sure that action value does exist and is a directory
+        # before processing it.
+        cli_checkFiles -d ${ACTIONVAL}
+
+    fi
 
 }
