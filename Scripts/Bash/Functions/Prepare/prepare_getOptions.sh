@@ -45,7 +45,7 @@ function prepare_getOptions {
         case "$1" in
 
             -h | --help )
-                ${CLI_NAME} help --read trunk/Scripts/Bash/Functions/Prepare
+                ${CLI_NAME} help --read --format="texinfo" trunk/Scripts/Bash/Functions/Prepare
                 shift 1
                 exit
                 ;;
