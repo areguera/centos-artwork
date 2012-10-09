@@ -41,6 +41,8 @@
 
 function cli_checkRepoDirSource {
 
+    local LOCATION=${1}
+
     # Redefine source value to build repository absolute path from
     # repository top level on. As we are removing the absolute path
     # prefix (e.g., `/home/centos/artwork/') from all centos-art.sh
