@@ -27,6 +27,9 @@
     
 function texinfo {
 
+    # Verify documentation format based on file type.
+    cli_checkFiles -i "text/x-texinfo" ${MANUAL_BASEFILE}.${FLAG_FORMAT}
+
     # Verify documentation entry to be sure it coincides with
     # Texinfo's supported structuring (e.g., texinfo-4.8 doesn't
     # support structuring through parts, but chapters and sections
@@ -36,13 +39,13 @@ function texinfo {
     fi
 
     # Define file extension used by source files inside manuals.
-    MANUAL_EXTENSION="${MANUAL_FORMAT}"
+    MANUAL_EXTENSION="${FLAG_FORMAT}"
 
     # Define absolute path to template directory. This is the place
     # where we store locale directories (e.g., en_US, es_ES, etc.)
     # used to build manuals in texinfo format.
     MANUAL_TEMPLATE=${TCAR_WORKDIR}/trunk/Documentation/Models/$(cli_getRepoName \
-        ${MANUAL_FORMAT} -d)/Default
+        ${FLAG_FORMAT} -d)/Default
 
     # Define absolute path to language-specific template directory.
     # This is the place where we store locale-specific files used to
@@ -124,27 +127,11 @@ function texinfo {
         # considered as source location.
         break
 
-    elif [[ $ACTIONNAM =~ "^(search(Node|Index)|updateOutputFiles)$" ]];then
-
-        # The two final actions of help functionality are precisely to
-        # update manual output files and commit all changes from
-        # working copy to central repository. In this situation, when
-        # the `--update-output' option is provided to `centos-art.sh',
-        # don't duplicate the rendition of manual output files (e.g.,
-        # one for the option and other for help's normal execution
-        # flow) nor commit any change form working copy to central
-        # repository (e.g., output files aren't under version
-        # control).
-        texinfo_${ACTIONNAM}
-
     else
 
         # Execute action names as part of normal help's execution
         # flow, without any extra modification.
         texinfo_${ACTIONNAM}
-
-        # Rebuild output files to propagate recent changes, if any.
-        texinfo_updateOutputFiles
 
     fi
 
