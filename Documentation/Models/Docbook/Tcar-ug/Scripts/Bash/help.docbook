@@ -20,6 +20,7 @@
             <arg>--quiet</arg>
             <arg>--answer-yes</arg>
             <arg>--sync-changes</arg>
+            <arg>--format="<replaceable>KEYWORD</replaceable>"</arg>
             <arg>--search="<replaceable>KEYWORD</replaceable>"</arg>
             <arg>--edit</arg>
             <arg>--read</arg>
@@ -51,7 +52,7 @@
         The documentation entry identifies the specific file you want
         to work with inside a documentation manual. The help
         functionality recognizes documentation entries in the
-        following two formats:
+        following formats:
     </para>
     <variablelist>
     <varlistentry>
@@ -132,24 +133,6 @@
     </para>
     </refsection>
 
-    <refsection id="scripts-bash-help-description-formats">
-    <title>Supported Documentation Formats</title>
-
-    <para>
-        The <function>help</function> functionality provides support
-        for the following documentation formats:
-    </para>
-
-    <itemizedlist>
-    <listitem>
-    <para>
-        Texinfo, as described in <xref linkend="manuals-format-texinfo"/>.
-    </para>
-    </listitem>
-    </itemizedlist>
-
-    </refsection>
-
     </refsection>
 
     <refsection id="scripts-bash-help-options">
@@ -182,12 +165,65 @@
     </varlistentry>
 
     <varlistentry>
+    <term><option>--format="<replaceable>KEYWORD</replaceable>"</option></term>
+    <listitem>
+    <para>
+        Specifies the format of documentation entry source file. This
+        information is used as reference to build the absolute path of
+        documentation entry, so you always have to provide it in order
+        to reach the documentation entry you want to work with.
+        Possible values for this option are shown in in <xref
+        linkend="scripts-bash-help-supportedformats" />. 
+    </para>
+    <table id="scripts-bash-help-supportedformats">
+    <title>Documentation formats</title>
+    <tgroup cols="3" align="left">
+    <thead>
+        <row>
+            <entry>Keyword</entry>
+            <entry>Description</entry>
+            <entry>Supported</entry>
+        </row>
+    </thead>
+
+    <tbody>
+        <row>
+            <entry><literal>texinfo</literal></entry>
+            <entry><xref linkend="manuals-formats-texinfo"/></entry>
+            <entry>Yes</entry>
+        </row>
+        <row>
+            <entry><literal>docbook</literal></entry>
+            <entry><xref linkend="manuals-formats-docbook"/></entry>
+            <entry>No</entry>
+        </row>
+        <row>
+            <entry><literal>latex</literal></entry>
+            <entry><xref linkend="manuals-formats-latex"/></entry>
+            <entry>No</entry>
+        </row>
+        <row>
+            <entry><literal>linuxdoc</literal></entry>
+            <entry>...</entry>
+            <entry>No</entry>
+        </row>
+    </tbody>
+    
+    </tgroup>
+    </table>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
     <term><option>--search="<replaceable>KEYWORD</replaceable>"</option></term>
     <listitem>
     <para>
-        This option looks for <replaceable>KEYWORD</replaceable>
-        inside the documentation entry you provide and displays the
-        related information for you to read.
+        Looks for documentation entries that match the
+        <replaceable>KEYWORD</replaceable> specified as value and
+        display them one by one in the order they were found. The way
+        each documentation entry is presented to you depends on the
+        documentation format the related documentation manual was
+        written on.
     </para>
     </listitem>
     </varlistentry>
@@ -196,18 +232,11 @@
     <term><option>--edit</option></term>
     <listitem>
     <para>
-        Edit documentation entry.
-    </para>
-    <para>
-        The documentation entry must point to any directory inside the
-        working copy.  When more than one documentation entry is
-        passed as non-option arguments to the
-        <command>centos-art.sh</command> script command-line, they are
-        queued for further edition.  The edition itself takes place
-        through your default text editor (e.g., the one you specified
-        in the <envar>EDITOR</envar> environment variable) and the
-        text editor opens one file at time (i.e., the queue of files
-        to edit is not loaded in the text editor.).
+        Edit the documentation entry provided as argument.  The
+        edition itself takes place through your default text editor
+        (e.g., the one you specified in the <envar>EDITOR</envar>
+        environment variable) one file at a time (i.e., the queue of
+        files to edit is not loaded in the text editor.).
     </para>
     </listitem>
     </varlistentry>
@@ -216,10 +245,10 @@
     <term><option>--read</option></term>
     <listitem>
     <para>
-        Read documentation entry.  This option is used internally by
-        <command>centos-art.sh</command> script to refer documentation
-        based on errors, so you can know more about them and the
-        causes that could have provoked them.
+        Read the documentation entry provided as argument.  This
+        option is used internally by <command>centos-art.sh</command>
+        script to refer documentation based on errors, so you can know
+        more about them and the causes that could have provoked them.
     </para>
     </listitem>
     </varlistentry>
@@ -308,14 +337,14 @@
     <title>Examples</title>
 
     <refsection id="scripts-bash-help-description-create">
-    <title>New Document Structures</title>
+    <title>Creating Document Structures</title>
     <para>
         To create new documentation manuals inside &TCAR; use the
         following command: 
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit "<replaceable>manual</replaceable>"</command>
+    <command>centos-art help --edit "<replaceable>manual:::</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
@@ -354,7 +383,7 @@
     </refsection>
 
     <refsection id="scripts-bash-help-description-copy">
-    <title>Copying Document Structure</title>
+    <title>Copying Document Structures</title>
     <para>
         To copy one documentation entry, use the following command:
     </para>
@@ -369,7 +398,7 @@
     </refsection>
 
     <refsection id="scripts-bash-help-description-delete">
-    <title>Deleting Document Structure</title>
+    <title>Deleting Document Structures</title>
     <para>
         To delete one documentation entry, use the following command:
     </para>
@@ -382,7 +411,7 @@
     </refsection>
 
     <refsection id="scripts-bash-help-description-rename">
-    <title>Renaming Document Structure</title>
+    <title>Renaming Document Structures</title>
     <para>
         To rename one documentation entry, use the following command:
     </para>
@@ -390,18 +419,42 @@
     <cmdsynopsis>
     <command>centos-art help --copy "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
+
+    <para>
+        ...
+    </para>
     </refsection>
 
-    <refsection id="scripts-bash-help-description-update">
-    <title>Updating Document Structure</title>
+    <refsection id="scripts-bash-help-description-updatestructure">
+    <title>Updating Document Structures</title>
     <para>
         To update the document structure of one manual, use the
         following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --update-structure "<replaceable>manual</replaceable>"</command>
+    <command>centos-art help --update-structure "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
+
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-updateoutput">
+    <title>Updating Document Final Outputs</title>
+    <para>
+        To update the document final outputs of one manual, use the
+        following command:
+    </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --update-output "<replaceable>manual:::</replaceable>"</command>
+    </cmdsynopsis>
+
+    <para>
+        ...
+    </para>
     </refsection>
     </refsection>
 
