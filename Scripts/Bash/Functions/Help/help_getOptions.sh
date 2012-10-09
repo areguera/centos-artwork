@@ -30,7 +30,7 @@ function help_getOptions {
     local ARGSS="q,h"
 
     # Define long options we want to support.
-    local ARGSL="quiet,help,answer-yes,read,search:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
+    local ARGSL="quiet,help,answer-yes,read,search:,format:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -62,6 +62,11 @@ function help_getOptions {
             --search )
                 ACTIONNAM="searchIndex"
                 FLAG_SEARCH="$2"
+                shift 2
+                ;;
+
+            --format )
+                FLAG_FORMAT=$(cli_getRepoName "$2" -f)
                 shift 2
                 ;;
     
