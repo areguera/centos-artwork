@@ -103,7 +103,7 @@ function render {
         # Sanitate non-option arguments to be sure they match the
         # directory convenctions stablished by centos-art.sh script
         # against source directory locations in the working copy.
-        cli_checkRepoDirSource
+        cli_checkRepoDirSource ${ACTIONVAL}
 
         # Define renderable directories and the way they are produced.
         # To describe the way renderable directories are produced, we
