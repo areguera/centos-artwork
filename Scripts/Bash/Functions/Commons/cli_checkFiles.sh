@@ -31,10 +31,10 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='i:,d,e,f,h,x'
+    local ARGSS='i:,r,d,e,f,h,x'
 
     # Define long options.
-    local ARGSL='mime:'
+    local ARGSL='mime:,is-versioned'
 
     # Initialize array variables.
     local -a CONDITION_COMMAND
@@ -105,6 +105,13 @@ function cli_checkFiles {
                 shift 2
                 ;;
 
+            -r | --is-versioned )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="${CLI_NAME} svn"
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='--is-versioned'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't under version control."`"
+                shift 1
+                ;;
+
             -- )
                 shift 1
                 break
@@ -113,21 +120,9 @@ function cli_checkFiles {
         esac
     done
 
-    # FIXME: Find a way to be sure that file is inside the working
-    # copy and under version control too. All the files we use to
-    # produce content (i.e., svg, docbook, texinfo, etc.) must be
-    # under version control and inside the working copy.  Note also
-    # that we uso temporal files which aren't inside the working copy
-    # nor under version control. So a way to verify different types of
-    # files based on context must be available.
-    #
-    # For example: It would be useful to have an option to standardize
-    # questions like "Is this file under version control?" or "Is this
-    # file under the working copy directory structure?".
-
     # Define list of files we want to apply verifications to, now that
     # all option-like arguments have been removed from positional
-    # paramters list.
+    # parameters list.
     local FILE=''
     local FILES=$@
 
@@ -136,6 +131,12 @@ function cli_checkFiles {
         while [[ ${COUNTER} -lt ${#CONDITION_PATTERN[*]} ]];do
 
             case ${CONDITION_COMMAND[$COUNTER]} in
+
+                "${CLI_NAME} svn" )
+                if [[ $(${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE}) -ne 0 ]];then \
+                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                fi
+                ;;
 
                 test )
                 ${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE} \
