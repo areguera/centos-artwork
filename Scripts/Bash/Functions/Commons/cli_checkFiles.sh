@@ -3,7 +3,7 @@
 # cli_checkFiles.sh -- This function standardizes the way file
 # conditional expressions are applied inside centos-art.sh script.
 # Here is where we answer questions like: is the file a regular file
-# or a directory?  or, is it a symbolic link? or even, does it have
+# or a directory?  Or, is it a symbolic link? Or even, does it have
 # execution rights, etc.  If the verification fails somehow at any
 # point, an error message is output and centos-art.sh script finishes
 # its execution. 
@@ -31,12 +31,13 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='d,e,f,h,x'
+    local ARGSS='i:,d,e,f,h,x'
 
     # Define long options.
-    local ARGSL=''
+    local ARGSL='mime:'
 
     # Initialize array variables.
+    local -a CONDITION_COMMAND
     local -a CONDITION_PATTERN
     local -a CONDITION_MESSAGE
 
@@ -63,32 +64,45 @@ function cli_checkFiles {
         case "$1" in
 
             -d )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-d'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a directory."`"
                 shift 1
                 ;;
 
             -e )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
                 ;;
 
             -f )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-f'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a regular file."`"
                 shift 1
                 ;;
 
             -h )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-h'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a symbolic link."`"
                 shift 1
                 ;;
 
             -x )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-x'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't an executable file."`"
                 shift 1
+                ;;
+
+            -i | --mime )
+                local MIME=$2
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='file'
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-bi'
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\$MIME\\\" file."`"
+                shift 2
                 ;;
 
             -- )
@@ -121,8 +135,23 @@ function cli_checkFiles {
 
         while [[ ${COUNTER} -lt ${#CONDITION_PATTERN[*]} ]];do
 
-            [ ! ${CONDITION_PATTERN[$COUNTER]} ${FILE} ] \
-                && cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+            case ${CONDITION_COMMAND[$COUNTER]} in
+
+                test )
+                ${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE} \
+                    || cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                ;;
+
+                file )
+                if [[ ! $(${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE}) == "$MIME" ]];then
+                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                fi
+                ;;
+
+                * )
+                cli_printMessage "`gettext "The condition command provided isn't supported."`" --as-error-line
+                ;;
+            esac
 
             COUNTER=$(($COUNTER + 1))
 
