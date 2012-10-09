@@ -38,7 +38,16 @@ function help {
 
     # Initialize manuals's top-level directory. This is the place
     # where source files for documentation manuals will be stored in. 
-    local MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models/Texinfo"
+    local MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models"
+
+    # Define documentation format. This information defines the kind
+    # of source files we work with inside the documentation manual as
+    # well as the kind of actions required by them to perform actions
+    # related to document management (e.g., creation, edition,
+    # deletion, copying, renaming, etc.). By default no documentation
+    # format is specified, so it needs to be specified later, either
+    # through the `--format' option, or direct request to user.
+    FLAG_FORMAT=''
 
     # Initialize documentation entries arrays. Arrays defined here
     # contain all the information needed to process documentation
@@ -80,7 +89,8 @@ function help {
 
         # Define absolute path to directory holding language-specific
         # models.
-        MANUAL_BASEDIR="${MANUAL_TLDIR}/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
+        MANUAL_BASEDIR="${MANUAL_TLDIR}/$(cli_getRepoName \
+            ${FLAG_FORMAT} -d)/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
 
         # Define absolute path to directory holding language-specific
         # texinfo source files.
@@ -99,6 +109,9 @@ function help {
         # name (without extension) we use as reference to build output
         # files in different formats (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
+
+        # Verify absolute path to base file.
+        cli_checkFiles -f ${MANUAL_BASEFILE}.${FLAG_FORMAT}
 
         # Define manual base file used for output.
         MANUAL_OUTPUT_BASEFILE=$(echo $MANUAL_BASEFILE | sed -r 's!Models/!Manuals/!')
@@ -128,37 +141,6 @@ function help {
         # as the style and order used for printing sections. 
         MANUAL_CONFIG_FILE="${MANUAL_BASEFILE}.conf" 
 
-        # Define documentation format. This information defines the
-        # kind of source files we work with inside the documentation
-        # manual as well as the kind of actions required by them to
-        # perform actions related to document management (e.g.,
-        # creation, edition, deletion, copying, renaming, etc.).
-        if [[ -f ${MANUAL_CONFIG_FILE} ]];then
-
-            # Retrive documentation format from configuration file.
-            MANUAL_FORMAT=$(cli_getConfigValue \
-                "${MANUAL_CONFIG_FILE}" "main" "manual_format")
-
-            # Verify documentation format. This is required in order
-            # to prevent malformed values from being used. Be sure
-            # only supported documentation formats can be provided as
-            # value to `manual_format' option inside configuration
-            # files.
-            if [[ ! $MANUAL_FORMAT =~ '^(texinfo)$' ]];then
-                cli_printMessage "`gettext "The documentation format provided isn't supported."`" --as-error-line
-            fi 
-
-        else
-
-            # When the current documentation manual is being created
-            # for first time, there's no way to get the documentation
-            # format to use in the future manual, but asking the user
-            # creating it which one to use.
-            cli_printMessage "`gettext "Select one of the following documentation formats:"`"
-            MANUAL_FORMAT=$(cli_printMessage "texinfo" --as-selection-line)
-
-        fi
-
         # Notice that, because we are processing non-option arguments
         # one by one, there is no need to sycronize changes or
         # initialize functionalities to the same manual time after
@@ -171,7 +153,7 @@ function help {
             || ( ( ${MANUAL_DOCENTRY_ID} -gt 0 ) && ( \
             ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} - 1))]} ) ) ]];then
 
-            # Syncronize changes between repository and working copy.
+            # Synchronize changes between repository and working copy.
             # At this point, changes in the repository are merged in
             # the working copy and changes in the working copy
             # committed up to repository.
@@ -184,12 +166,12 @@ function help {
             # `centos-art.sh''s execution environment and make them
             # available, this way, to perform format-specific
             # documentation tasks.
-            cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${MANUAL_FORMAT} -d)/${MANUAL_FORMAT}"
+            cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${FLAG_FORMAT} -d)/${FLAG_FORMAT}"
 
         fi
 
         # Execute format-specific documentation tasks.
-        ${MANUAL_FORMAT}
+        ${FLAG_FORMAT}
 
         # Unset the exported functions before go on with the next
         # documentation entry provided as non-option argument to
@@ -208,7 +190,7 @@ function help {
         if [[ ${MANUAL_DOCENTRY_ID} -gt 0 \
             && ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]} ]];then
             cli_unsetFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-                ${MANUAL_FORMAT} -d)" "${MANUAL_FORMAT}"
+                ${FLAG_FORMAT} -d)" "${FLAG_FORMAT}"
         fi
 
         # Increment documentation entry counter id.
