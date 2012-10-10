@@ -29,7 +29,7 @@ function svn_getOptions {
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,sync,update,commit,is-versioned,get-status"
+    local ARGSL="help,quiet,sync-changes,update,commit,is-versioned,get-status,mkdir,copy"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -53,7 +53,7 @@ function svn_getOptions {
                 shift 1
                 ;;
 
-            --sync )
+            --sync-changes )
                 ACTIONNAMS="${ACTIONNAMS} svn_syncroRepoChanges"
                 shift 1
                 ;;
@@ -80,6 +80,11 @@ function svn_getOptions {
 
             --copy )
                 ACTIONNAMS="${ACTIONNAMS} svn_copyRepoFile"
+                shift 1
+                ;;
+
+            --mkdir )
+                ACTIONNAMS="${ACTIONNAMS} svn_mkRepoDirectory"
                 shift 1
                 ;;
 
