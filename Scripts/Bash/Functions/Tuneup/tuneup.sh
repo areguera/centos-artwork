@@ -63,13 +63,13 @@ function tuneup {
         # Sanitate non-option arguments to be sure they match the
         # directory convenctions stablished by centos-art.sh script
         # against source directory locations in the working copy.
-        cli_checkRepoDirSource ${ACTIONVAL}
+        ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
         # Syncronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_synchronizeRepoChanges ${ACTIONVAL}
+        cli_synchronizeRepoChanges "${ACTIONVAL}"
 
         # Execute action name.
         ${ACTIONNAM}
@@ -78,7 +78,7 @@ function tuneup {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_synchronizeRepoChanges ${ACTIONVAL}
+        cli_synchronizeRepoChanges "${ACTIONVAL}"
 
     done
 
