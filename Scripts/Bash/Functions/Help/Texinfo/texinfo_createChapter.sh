@@ -66,7 +66,7 @@ function texinfo_createChapter {
     # Create chapter directory using subversion. This is the place
     # where all chapter-specific files will be stored in.
     if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
-        svn mkdir ${MANUAL_CHAPTER_DIR} --quiet
+        ${CLI_NAME} svn --mkdir ${MANUAL_CHAPTER_DIR}
     fi
 
     # Create chapter-specific files using template files as reference.
@@ -79,7 +79,7 @@ function texinfo_createChapter {
         cli_checkFiles ${FILE} --is-versioned
         
         # Copy template files into the chapter directory.
-        svn cp ${FILE} ${MANUAL_CHAPTER_DIR} --quiet
+        ${CLI_NAME} svn --copy ${FILE} ${MANUAL_CHAPTER_DIR}
 
     done
 
