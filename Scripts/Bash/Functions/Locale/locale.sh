@@ -62,9 +62,16 @@ function locale {
     for ACTIONVAL in "$@";do
 
         # Sanitate non-option arguments to be sure they match the
-        # directory convenctions stablished by centos-art.sh script
+        # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
+
+        # Verify non-option arguments passed to centos-art.sh
+        # command-line. It should point to an existent directory under
+        # version control inside the working copy.  Otherwise, if it
+        # doesn't point to a directory under version control, finish
+        # the script execution with an error message.
+        cli_checkFiles ${ACTIONVAL} -d --is-versioned
 
         # Define localization working directory using directory passed
         # as non-option argument. The localization working directory
