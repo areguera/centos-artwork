@@ -60,7 +60,7 @@ function texinfo_copyEntryManual {
 
         # Copy chapter directory from source to target using
         # subversion.
-        svn cp ${MANUAL_CHAPTER} ${MANUAL_BASEDIR_L10N} --quiet
+        ${CLI_NAME} svn --copy ${MANUAL_CHAPTER} ${MANUAL_BASEDIR_L10N}
 
         # Define manual chapter name.
         local MANUAL_CHAPTER_NAME=$(basename ${MANUAL_CHAPTER})
