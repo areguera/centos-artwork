@@ -33,7 +33,7 @@ function cli_exportFunctions {
     # be passed as first argument and match a relative path format.
     if [[ ! $EXPORTID ]] || [[ $EXPORTID == '' ]];then
         cli_printMessage "`gettext "The export id must be passed as first argument."`" --as-error-line
-    elif [[ ! $EXPORTID =~ '^[A-Z][[:alpha:]]+(/[[:alpha:]]+)+$' ]];then
+    elif [[ ! $EXPORTID =~ '^[A-Z][[:alpha:]]+(/[[:alpha:]_]+)+$' ]];then
         cli_printMessage "`gettext "The export id doesn't match its pattern."`" --as-error-line
     fi
 
@@ -57,7 +57,7 @@ function cli_exportFunctions {
 
     # Define the pattern used to retrieve function names from function
     # files.
-    local PATTERN="^function[[:space:]]+${SUFFIX}[[:space:]]+{$"
+    local PATTERN="^function[[:space:]]+${SUFFIX}[[:space:]]+{[[:space:]]*$"
 
     # Define the list of files.
     local FUNCFILE=''
@@ -77,6 +77,14 @@ function cli_exportFunctions {
 
         # Verify the execution rights for function file.
         cli_checkFiles -x ${FUNCFILE}
+
+        # Verify that function files have not been already exported.
+        # If they have been already exported don't export them again.
+        # Instead, continue with the next function file in the list.
+        declare -F | gawk '{ print $3 }' | egrep "^${FUNCFILE}$" > /dev/null
+        if [[ $? -eq 0 ]];then
+            continue
+        fi
 
         # Initialize the function file.
         . ${FUNCFILE}
