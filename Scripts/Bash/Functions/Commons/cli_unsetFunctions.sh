@@ -25,17 +25,16 @@
 
 function cli_unsetFunctions {
 
-    # Define source location where function files are placed in.
-    local LOCATION=$1
-
-    # Define suffix used to retrive function files.
-    local SUFFIX=$2
+    # Define export id used to retrive function files. This is the
+    # same export id used to export functions without the directory
+    # part.
+    local EXPORTID=$(basename "$1")
 
     # Verify suffix value used to retrive function files. Assuming no
     # suffix value is passed as second argument to this function, use
     # the function name value (CLI_FUNCNAME) as default value.
-    if [[ $SUFFIX == '' ]];then
-        SUFFIX=$CLI_FUNCNAME
+    if [[ $EXPORTID == '' ]];then
+        cli_printMessage "`gettext "The export id was not provided."`" --as-error-line
     fi
 
     # Define list of format-specific functionalities. This is the
@@ -43,7 +42,7 @@ function cli_unsetFunctions {
     # `cli_exportFunctions'.  Be sure to limit the list to function
     # names that start with the suffix specified only.
     local FUNCDEF=''
-    local FUNCDEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${SUFFIX}")
+    local FUNCDEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${EXPORTID}")
 
     # Unset function names from current execution environment.
     for FUNCDEF in $FUNCDEFS;do
