@@ -33,10 +33,11 @@ function svn_updateRepoChanges {
     local UPDATEOUT=''
     local PREDICATE=''
     local CHNGTOTAL=0
+    local LOCATION=$(cli_checkRepoDirSource "$1")
 
     # Update working copy and retrive update output.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
-    UPDATEOUT=$(${SVN} update ${ACTIONVAL} --quiet)
+    UPDATEOUT=$(${SVN} update ${LOCATION} --quiet)
 
     # Define path of files considered recent modifications from
     # central repository to working copy.
@@ -76,7 +77,7 @@ function svn_updateRepoChanges {
             "files from the repository" $((${FILESNUM[$COUNT]} + 1))`
 
         # Output report line.
-        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}"
+        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}" --as-stdout-line
 
         # Increase counter.
         COUNT=$(($COUNT + 1))
