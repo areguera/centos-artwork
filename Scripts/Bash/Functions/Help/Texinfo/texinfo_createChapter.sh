@@ -76,10 +76,7 @@ function texinfo_createChapter {
         # structure.  Be sure they are inside the working copy of
         # The CentOS Artwork Repository (-w) and under version control
         # (-n), too.
-        ${CLI_NAME} svn --is-versioned ${FILE}
-        if [[ $? -ne 0 ]];then
-            cli_printMessage "${FILE} `gettext "is not under version control."`" --as-error-line
-        fi
+        cli_checkFiles ${FILE} --is-versioned
         
         # Copy template files into the chapter directory.
         svn cp ${FILE} ${MANUAL_CHAPTER_DIR} --quiet
