@@ -46,12 +46,12 @@ function texinfo_createStructure {
     # Create manual's top-level directory using subversion. This is
     # the place where all texinfo documentation manuals is stored in.
     if [[ ! -d ${MANUAL_BASEDIR} ]];then
-        svn mkdir ${MANUAL_BASEDIR} --quiet
+        ${CLI_NAME} svn --mkdir ${MANUAL_BASEDIR}
     fi
 
     # Create manual's base directory. This is the place where
     # language-specific documentation source files are stored in.
-    svn mkdir ${MANUAL_BASEDIR_L10N} --quiet
+    ${CLI_NAME} svn --mkdir ${MANUAL_BASEDIR_L10N}
 
     # Retrive manual's information from standard input.
     cli_printMessage "`gettext "Manual Title"`" --as-request-line
@@ -93,7 +93,7 @@ function texinfo_createStructure {
                 | sed -r "s!manual!${MANUAL_NAME}!")
 
             # Copy using subversion to register this action.
-            svn cp ${FILE} ${DST} --quiet
+            ${CLI_NAME} svn --copy ${FILE} ${DST}
 
             # Expand common translation markers inside target file.
             cli_expandTMarkers ${DST}
