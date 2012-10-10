@@ -106,8 +106,8 @@ function cli_checkFiles {
                 ;;
 
             -r | --is-versioned )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="${CLI_NAME} svn"
-                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='--is-versioned'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="Svn"
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='svn_isVersioned'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't under version control."`"
                 shift 1
                 ;;
@@ -116,13 +116,12 @@ function cli_checkFiles {
                 shift 1
                 break
                 ;;
-
         esac
     done
 
     # Define list of files we want to apply verifications to, now that
     # all option-like arguments have been removed from positional
-    # parameters list.
+    # parameters list so we are free to go with the verifications.
     local FILE=''
     local FILES=$@
 
@@ -132,10 +131,12 @@ function cli_checkFiles {
 
             case ${CONDITION_COMMAND[$COUNTER]} in
 
-                "${CLI_NAME} svn" )
-                if [[ $(${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE}) -ne 0 ]];then \
+                "Svn" )
+                cli_exportFunctions "${CONDITION_COMMAND[${COUNTER}]}/${CONDITION_PATTERN[$COUNTER]}"
+                if [[ $(${CONDITION_PATTERN[$COUNTER]} ${FILE}) -ne 0 ]];then \
                     cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
                 fi
+                cli_unsetFunctions "${CONDITION_COMMAND[${COUNTER}]}/${CONDITION_PATTERN[$COUNTER]}"
                 ;;
 
                 test )
