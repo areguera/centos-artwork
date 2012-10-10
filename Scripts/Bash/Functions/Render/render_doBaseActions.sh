@@ -37,6 +37,7 @@ function render_doBaseActions {
     local THIS_FILE_DIR=''
     local NEXT_FILE_DIR=''
     local RENDER_EXTENSION=''
+    local EXPORTID=''
     local COUNT=0
 
     # Verify default directory where design models are stored in.
@@ -61,6 +62,9 @@ function render_doBaseActions {
            cli_printMessage "`eval_gettext "The \\\"\\\$RENDER_EXTENSION\\\" file extension is not supported yet."`" --as-error-line 
         fi
 
+        # Redefine specific function export id. 
+        EXPORTID="${CLI_FUNCDIRNAM}/$(cli_getRepoName ${RENDER_FORMAT} -d)/$(cli_getRepoName ${RENDER_FORMAT} -f)"
+
         # Define the list of files to process. Use an array variable
         # to store the list of files to process. This make possible to
         # realize verifications like: is the current base directory
@@ -71,7 +75,7 @@ function render_doBaseActions {
         # when to apply last-rendition actions.
         #
         # Another issue is that some directories might be named as if
-        # they were files (e.g., using a renderable extension like
+        # they were files (e.g., using a render able extension like
         # .docbook).  In these situations we need to avoid such
         # directories from being interpreted as a render able file.
         # For this, pass the `--type="f"' option when building the
@@ -123,7 +127,7 @@ function render_doBaseActions {
         fi
 
         # Initialize format-specific functionalities.
-        cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${RENDER_FORMAT} -d)/$(cli_getRepoName ${RENDER_FORMAT} -f)"
+        cli_exportFunctions "${EXPORTID}"
 
         # Start processing the base rendition list of FILES. Fun part
         # approaching :-).
@@ -225,8 +229,7 @@ function render_doBaseActions {
         done
 
         # Unset format-specific functionalities.
-        cli_unsetFunctions "${RENDER_FORMAT_DIR}/$(cli_getRepoName \
-            ${RENDER_FORMAT} -d)" "${RENDER_FORMAT}"
+        cli_unsetFunctions "${EXPORTID}"
 
     done
 }
