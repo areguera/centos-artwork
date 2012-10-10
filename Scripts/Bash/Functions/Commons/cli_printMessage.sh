@@ -76,6 +76,11 @@ function cli_printMessage {
             cli_printMessage "${CLI_NAME} (${ORIGIN}):" --as-stdout-line
             cli_printMessage "${MESSAGE}" --as-response-line
             cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
+
+            # Finish script execution.  We use are using this option
+            # as convenction to finish the script execution. So, don't
+            # remove the following line, please.
+            exit
             ;;
 
         --as-toknowmore-line )
@@ -83,9 +88,6 @@ function cli_printMessage {
             cli_printMessage "`gettext "To know more, run the following command"`:" --as-stdout-line
             cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE" --as-stdout-line
             cli_printMessage '-' --as-separator-line
-            exit # <-- ATTENTION: Do not remove this line. We use this
-                 #                option as convenction to end script
-                 #                execution.
             ;;
 
         --as-yesornorequest-line )
