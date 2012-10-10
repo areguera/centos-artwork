@@ -59,7 +59,7 @@ function texinfo_copyEntryChapter {
 
     # Copy sections from source chapter to target chapter.
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-        svn cp $MANUAL_ENTRY $MANUAL_ENTRY_DST --quiet
+        ${CLI_NAME} svn --copy $MANUAL_ENTRY $MANUAL_ENTRY_DST
     done
 
     # Update section menu, nodes and cross reference definitions
