@@ -33,6 +33,7 @@ function svn_commitRepoChanges {
     local STATUSOUT=''
     local PREDICATE=''
     local CHNGTOTAL=0
+    local LOCATION=$(cli_checkRepoDirSource "$1")
 
     # Print action message.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
@@ -45,14 +46,14 @@ function svn_commitRepoChanges {
     # files, so we need to differentiate them using their locations.
 
     # Process location based on its path information.
-    if [[ $ACTIONVAL =~ 'trunk/Documentation/Manuals/Texinfo)' ]];then
-        STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
-    elif [[ $ACTIONVAL =~ 'trunk/Documentation/Manuals/Docbook' ]];then
-        STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
-    elif [[ $ACTIONVAL =~ 'trunk/Identity' ]];then
-        STATUSOUT="$(${SVN} status ${ACTIONVAL} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
+    if [[ ${LOCATION} =~ 'trunk/Documentation/Manuals/Texinfo)' ]];then
+        STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
+    elif [[ $LOCATION =~ 'trunk/Documentation/Manuals/Docbook' ]];then
+        STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
+    elif [[ $LOCATION =~ 'trunk/Identity' ]];then
+        STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
     else
-        STATUSOUT="$(${SVN} status ${ACTIONVAL})\n$STATUSOUT"
+        STATUSOUT="$(${SVN} status ${LOCATION})\n$STATUSOUT"
     fi
 
     # Sanitate status output. Expand new lines, remove leading spaces
@@ -95,7 +96,7 @@ function svn_commitRepoChanges {
             "files in the working copy" $((${FILESNUM[$COUNT]} + 1))`
 
         # Output report line.
-        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}"
+        cli_printMessage "${INFO[$COUNT]}: ${FILESNUM[$COUNT]} ${PREDICATE[$COUNT]}" --as-stdout-line
 
         # Increase counter.
         COUNT=$(($COUNT + 1))
@@ -108,11 +109,11 @@ function svn_commitRepoChanges {
     if [[ ${FILESNUM[0]} -gt 0 ]];then
 
         cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-        ${SVN} diff ${ACTIONVAL} | less
+        ${SVN} diff ${LOCATION} | less
 
         # Commit changes up to central repository.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${ACTIONVAL}
+        ${SVN} commit ${LOCATION}
 
     fi
 
@@ -129,7 +130,7 @@ function svn_commitRepoChanges {
 
         # Commit changes up to central repository.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${ACTIONVAL}
+        ${SVN} commit ${LOCATION}
 
     fi
 
@@ -139,7 +140,7 @@ function svn_commitRepoChanges {
     if [[ ${FILESNUM[3]} -gt 0 ]];then
         cli_printMessage '-' --as-separator-line
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${ACTIONVAL}
+        ${SVN} commit ${LOCATION}
     fi
 
 }
