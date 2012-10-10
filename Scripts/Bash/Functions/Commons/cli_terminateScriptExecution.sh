@@ -31,7 +31,8 @@ function cli_terminateScriptExecution {
     # Remove temporal directory.
     rm -r ${TMPDIR}
 
-    # Terminate script correctly.
-    exit 0
+    # NOTE: Don't specify an exit status here. As convenction we do
+    # this when error messages are triggerd. See `--as-error-line'
+    # option from `cli_printMessage' functionality.
 
 }
