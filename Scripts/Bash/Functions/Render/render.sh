@@ -101,14 +101,22 @@ function render {
     for ACTIONVAL in "$@";do
         
         # Sanitate non-option arguments to be sure they match the
-        # directory convenctions stablished by centos-art.sh script
+        # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
-        # Define renderable directories and the way they are produced.
-        # To describe the way renderable directories are produced, we
-        # take the action value (ACTIONVAL) as reference and describe
-        # the production through an action name (ACTIONNAM).
+        # Verify non-option arguments passed to centos-art.sh
+        # command-line. It should point to an existent directory under
+        # version control inside the working copy.  Otherwise, if it
+        # doesn't point to a directory under version control, finish
+        # the script execution with an error message.
+        cli_checkFiles ${ACTIONVAL} -d --is-versioned
+
+        # Define render able directories and the way they are
+        # produced.  To describe the way render able directories are
+        # produced, we take the action value (ACTIONVAL) as reference
+        # and describe the production through an action name
+        # (ACTIONNAM).
         if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images/Themes" ]];then
             ACTIONNAM="render_doThemeActions"
         elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images" ]];then
