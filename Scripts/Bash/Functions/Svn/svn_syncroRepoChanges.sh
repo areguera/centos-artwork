@@ -27,18 +27,26 @@
 
 function svn_syncroRepoChanges {
 
-    # Verify whether the action value is under version control or not.
-    # In case it is under version control continue with the script
-    # execution. Otherwise, if it is not under version control, finish
-    # script execution immediately with an error message.
-    if [[ $(svn_isVersioned ${ACTIONVAL}) != 0 ]];then
-        cli_printMessage "${ACTIONVAL} `gettext "isn't under version control."`" --as-error-line
-    fi
+    local LOCATION=''
+    local LOCATIONS="${@}"
 
-    # Bring changes from the repository into the working copy.
-    svn_updateRepoChanges
+    for LOCATION in $LOCATIONS;do
 
-    # Check changes in the working copy.
-    svn_commitRepoChanges
+        # Verify whether the location is valid or not.
+        LOCATION=$(cli_checkRepoDirSource ${LOCATION})
+
+        # Verify whether location is under version control or not.  In
+        # case it is under version control continue with the script
+        # execution. Otherwise, if it is not under version control,
+        # finish script execution immediately with an error message.
+        cli_checkFiles ${LOCATION} --is-versioned
+
+        # Bring changes from the repository into the working copy.
+        svn_updateRepoChanges ${LOCATION}
+
+        # Check changes in the working copy.
+        svn_commitRepoChanges ${LOCATION}
+
+    done
 
 }
