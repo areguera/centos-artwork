@@ -44,7 +44,7 @@ function help_getOptions {
         case "$1" in
 
             -h | --help )
-                ${CLI_NAME} help --read trunk/Scripts/Bash/Functions/Help
+                ${CLI_NAME} help --read --format="texinfo" trunk/Scripts/Bash/Functions/Help
                 shift 1
                 exit
                 ;;
