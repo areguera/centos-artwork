@@ -103,7 +103,7 @@ function render {
         # Sanitate non-option arguments to be sure they match the
         # directory convenctions stablished by centos-art.sh script
         # against source directory locations in the working copy.
-        cli_checkRepoDirSource ${ACTIONVAL}
+        ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
         # Define renderable directories and the way they are produced.
         # To describe the way renderable directories are produced, we
@@ -123,7 +123,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_synchronizeRepoChanges ${ACTIONVAL}
+        cli_synchronizeRepoChanges "${ACTIONVAL}"
 
         # Execute action name.
         ${ACTIONNAM}
@@ -132,7 +132,7 @@ function render {
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
-        cli_synchronizeRepoChanges ${ACTIONVAL}
+        cli_synchronizeRepoChanges "${ACTIONVAL}"
 
     done
 
