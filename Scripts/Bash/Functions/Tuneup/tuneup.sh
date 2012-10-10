@@ -61,11 +61,18 @@ function tuneup {
     for ACTIONVAL in "$@";do
         
         # Sanitate non-option arguments to be sure they match the
-        # directory convenctions stablished by centos-art.sh script
+        # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
-        # Syncronize changes between repository and working copy. At
+        # Verify source location absolute path. It should point to
+        # existent directories under version control inside the
+        # working copy.  Otherwise, if it doesn't point to an existent
+        # file under version control, finish the script execution with
+        # an error message.
+        cli_checkFiles ${ACTIONVAL} -d --is-versioned
+
+        # Synchronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
