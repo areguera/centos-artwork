@@ -53,6 +53,3 @@ declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
 if [[ -x ${CLI_FUNCDIR}/Commons/cli.sh ]];then
     . ${CLI_FUNCDIR}/Commons/cli.sh; export -f 'cli'; cli "$@"
 fi
-
-# End script execution correctly.
-exit 0
