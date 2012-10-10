@@ -26,10 +26,10 @@
 function svn_getOptions {
 
     # Define short options we want to support.
-    local ARGSS=""
+    local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="sync,update,commit,is-versioned,get-status"
+    local ARGSL="help,quiet,sync,update,commit,is-versioned,get-status"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -41,6 +41,17 @@ function svn_getOptions {
     while true; do
 
         case "$1" in
+
+            -h | --help )
+                ${CLI_NAME} help --read --format="texinfo" trunk/Scripts/Bash/Functions/Svn
+                shift 1
+                exit
+                ;;
+
+            -q | --quiet )
+                FLAG_QUIET="true"
+                shift 1
+                ;;
 
             --sync )
                 ACTIONNAMS="${ACTIONNAMS} svn_syncroRepoChanges"
@@ -64,6 +75,11 @@ function svn_getOptions {
 
             --get-status )
                 ACTIONNAMS="${ACTIONNAMS} svn_getRepoStatus"
+                shift 1
+                ;;
+
+            --copy )
+                ACTIONNAMS="${ACTIONNAMS} svn_copyRepoFile"
                 shift 1
                 ;;
 
