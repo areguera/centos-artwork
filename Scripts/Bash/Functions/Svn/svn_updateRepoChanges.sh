@@ -35,7 +35,14 @@ function svn_updateRepoChanges {
     local CHNGTOTAL=0
     local LOCATION=$(cli_checkRepoDirSource "$1")
 
-    # Update working copy and retrive update output.
+    # Verify source location absolute path. It should point either to
+    # existent files or directories both under version control inside
+    # the working copy.  Otherwise, if it doesn't point to an existent
+    # file under version control, finish the script execution with an
+    # error message.
+    cli_checkFiles ${LOCATION} -e --is-versioned
+
+    # Update working copy and retrieve update output.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
     UPDATEOUT=$(${SVN} update ${LOCATION} --quiet)
 
