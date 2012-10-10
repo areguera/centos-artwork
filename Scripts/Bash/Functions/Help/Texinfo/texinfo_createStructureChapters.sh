@@ -51,11 +51,11 @@ function texinfo_createStructureChapters {
 
         # Verify chapter's directory. If it doesn't exist, create it.
         if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
-            svn mkdir ${MANUAL_CHAPTER_DIR} --quiet
+            ${CLI_NAME} svn --mkdir ${MANUAL_CHAPTER_DIR}
         fi
 
         # Copy template files into chapter's directory.
-        svn cp ${FILE} ${MANUAL_CHAPTER_DIR} --quiet
+        ${CLI_NAME} svn --copy ${FILE} ${MANUAL_CHAPTER_DIR}
 
     done
 
