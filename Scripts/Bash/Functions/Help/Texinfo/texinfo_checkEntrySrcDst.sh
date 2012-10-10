@@ -45,12 +45,9 @@ function texinfo_checkEntrySrcDst {
 
     # Verify source location to be sure it is under version control
     # and there isn't pending change to be committed first.
-    if [[ $(${CLI_NAME} svn --is-versioned ${MANUAL_ENTRY_SRC}) -eq 0 ]];then
-        if [[ $(${CLI_NAME} svn --get-status ${MANUAL_ENTRY_SRC}) != '' ]];then
-            cli_printMessage "`gettext "The source location has pending changes."`" --as-error-line
-        fi
-    else
-        cli_printMessage "`gettext "The source location isn't under version control."`" --as-error-line
+    cli_checkFiles ${MANUAL_ENTRY_SRC} --is-versioned
+    if [[ $(${CLI_NAME} svn --get-status ${MANUAL_ENTRY_SRC}) != '' ]];then
+        cli_printMessage "`gettext "The source location has pending changes."`" --as-error-line
     fi
 
     # Verify target directory where the source will be duplicated in.
