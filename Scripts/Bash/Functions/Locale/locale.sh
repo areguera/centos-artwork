@@ -64,7 +64,7 @@ function locale {
         # Sanitate non-option arguments to be sure they match the
         # directory convenctions stablished by centos-art.sh script
         # against source directory locations in the working copy.
-        cli_checkRepoDirSource ${ACTIONVAL}
+        ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
         # Define localization working directory using directory passed
         # as non-option argument. The localization working directory
