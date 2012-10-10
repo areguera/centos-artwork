@@ -91,7 +91,7 @@ function texinfo_updateSectionNodes {
 
             # Create documentation entry using texinfo template as
             # reference.
-            svn cp ${TEMPLATE} ${MANUAL_BASEDIR_L10N}/$INCL --quiet
+            ${CLI_NAME} svn --copy ${TEMPLATE} ${MANUAL_BASEDIR_L10N}/$INCL
 
         fi
 
