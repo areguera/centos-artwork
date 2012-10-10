@@ -4,12 +4,9 @@
 # construction to directories inside the working copy, using absolute
 # paths. This function transforms relative paths passed as non-option
 # arguments to centos-art.sh script command-line into absolute paths
-# inside the working copy and verifies whether they really exist as
-# directories inside the working copy or not. If the path provided
-# doesn't exist as directory inside the working copy, the script will
-# finish its execution immediately with an error message. Otherwise,
-# if the directory exists, the variable ACTIONVAL is redefined with
-# the related absolute path for further use.
+# inside the working copy. Further verifications, (e.g., whether they
+# really exist as directories inside the working copy or not) should
+# be realized outside this function. 
 #
 #   NOTE: Transforming relative paths into absolute paths before
 #   processing them is very useful when you need to execute the
@@ -52,35 +49,10 @@ function cli_checkRepoDirSource {
     # refer trunk's entries using both
     # `/home/centos/artwork/trunk/...' or just `trunk/...', the
     # `/home/centos/artwork/' part is automatically added here. 
-    if [[ $ACTIONVAL =~ '^(trunk|branches|tags)' ]];then
-        ACTIONVAL=${TCAR_WORKDIR}/$ACTIONVAL 
+    if [[ $LOCATION =~ '^(trunk|branches|tags)' ]];then
+        LOCATION=${TCAR_WORKDIR}/$LOCATION
     fi
 
-    # Generally, action value should point to directories inside the
-    # working copy. However, when we are working with documentation,
-    # it points to documentation entries (i.e., regular files). Lets
-    # consider this and realize verification of source locations based
-    # on whether they are directories or files.
-    if [[ -f ${ACTIONVAL} ]];then
-
-        # Check action value to be sure strange characters are kept
-        # far away from the path provided as action value.
-        if [[ ! ${ACTIONVAL} =~ "^[[:alnum:]/_-]+\.[[:alnum:]]+$" ]];then
-            cli_printMessage "${ACTIONVAL} `gettext "contains an invalid format"`" --as-error-line
-        fi
-
-    else
-
-        # Check action value to be sure strange characters are kept
-        # far away from the path provided as action value.
-        if [[ ! ${ACTIONVAL} =~ "^[[:alnum:]/_-]+$" ]];then
-            cli_printMessage "${ACTIONVAL} `gettext "contains an invalid format"`" --as-error-line
-        fi
-
-        # Be sure that action value does exist and is a directory
-        # before processing it.
-        cli_checkFiles -d ${ACTIONVAL}
-
-    fi
-
+    # Output absolute path to location.
+    echo "${LOCATION}"
 }
