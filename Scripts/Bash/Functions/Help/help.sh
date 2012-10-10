@@ -36,18 +36,23 @@ function help {
     # Initialize manual's language.
     local MANUAL_L10N=${CLI_LANG_LC}
 
-    # Initialize manuals's top-level directory. This is the place
-    # where source files for documentation manuals will be stored in. 
+    # Initialize manuals' top-level directory. This is the place where
+    # source files for documentation manuals will be stored in. 
     local MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models"
 
-    # Define documentation format. This information defines the kind
-    # of source files we work with inside the documentation manual as
-    # well as the kind of actions required by them to perform actions
-    # related to document management (e.g., creation, edition,
-    # deletion, copying, renaming, etc.). By default no documentation
-    # format is specified, so it needs to be specified later, either
-    # through the `--format' option, or direct request to user.
-    FLAG_FORMAT=''
+    # Initialize documentation format. This information defines the
+    # kind of source files we work with inside the documentation
+    # manual as well as the kind of actions required by them to
+    # perform actions related to document management (e.g., creation,
+    # edition, deletion, copying, renaming, etc.). By default no
+    # documentation format is specified, so it needs to be specified
+    # later, either through the `--format' option, or direct request
+    # to user.
+    local FLAG_FORMAT=''
+
+    # Initialize specific function export id. This value is redefined
+    # later once we know which is the documentation format.
+    local EXPORTID=''
 
     # Initialize documentation entries arrays. Arrays defined here
     # contain all the information needed to process documentation
@@ -68,7 +73,7 @@ function help {
     # Redefine arrays related to documentation entries using
     # non-option arguments passed through the command-line. At this
     # point all options have been removed from ARGUMENTS and
-    # non-option arguments remain. Evaluate ARGUMENTS to retrive the
+    # non-option arguments remain. Evaluate ARGUMENTS to retrieve the
     # information related documentation entries from there.
     help_getEntries
 
@@ -76,7 +81,7 @@ function help {
     # documentation entry specified in the command-line, individually.
     # Notice that we've stored all documentation entries passed as
     # non-option arguments in array variables in order to process them
-    # now, one by one.  This is particularily useful when we need to
+    # now, one by one.  This is particularly useful when we need to
     # reach items in the array beyond the current iteration cycle. For
     # example, when we perform actions that require source and target
     # locations (e.g., copying and renaming): we use the current value
@@ -93,13 +98,13 @@ function help {
             ${FLAG_FORMAT} -d)/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
 
         # Define absolute path to directory holding language-specific
-        # texinfo source files.
+        # source files.
         MANUAL_BASEDIR_L10N="${MANUAL_BASEDIR}/${MANUAL_L10N}"
 
         # Define absolute path to changed directories inside the
         # manual. For example, when a section entry is edited, copied
         # or renamed inside  the same manual there is only one
-        # aboslute path to look for changes, the one holding the
+        # absolute path to look for changes, the one holding the
         # section entry.  However, when an entire manual is renamed,
         # there might be two different locations to look changes for,
         # the source location deleted and the target location added.
@@ -112,6 +117,9 @@ function help {
 
         # Verify absolute path to base file.
         cli_checkFiles -f ${MANUAL_BASEFILE}.${FLAG_FORMAT}
+
+        # Redefine function export id based on documentation format.
+        EXPORTID="${CLI_FUNCDIRNAM}/$(cli_getRepoName ${FLAG_FORMAT} -d)/${FLAG_FORMAT}"
 
         # Define manual base file used for output.
         MANUAL_OUTPUT_BASEFILE=$(echo $MANUAL_BASEFILE | sed -r 's!Models/!Manuals/!')
@@ -142,7 +150,7 @@ function help {
         MANUAL_CONFIG_FILE="${MANUAL_BASEFILE}.conf" 
 
         # Notice that, because we are processing non-option arguments
-        # one by one, there is no need to sycronize changes or
+        # one by one, there is no need to synchronize changes or
         # initialize functionalities to the same manual time after
         # time (assuming all documentation entries passed as
         # non-option arguments refer the same manual directory name).
@@ -166,7 +174,7 @@ function help {
             # `centos-art.sh''s execution environment and make them
             # available, this way, to perform format-specific
             # documentation tasks.
-            cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${FLAG_FORMAT} -d)/${FLAG_FORMAT}"
+            cli_exportFunctions "${EXPORTID}"
 
         fi
 
@@ -184,13 +192,12 @@ function help {
         # formats, we might end up loading documentation format
         # functionalities that aren't used in the current
         # documentation entry being processed. In that sake, unset
-        # documentation bakend functionalities when the next
+        # documentation back-end functionalities when the next
         # documentation entry refers to a manual directory different
         # to that one being currently processed.
         if [[ ${MANUAL_DOCENTRY_ID} -gt 0 \
             && ${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]} != ${MANUAL_DIRN[((${MANUAL_DOCENTRY_ID} + 1))]} ]];then
-            cli_unsetFunctions "${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/$(cli_getRepoName \
-                ${FLAG_FORMAT} -d)" "${FLAG_FORMAT}"
+            cli_unsetFunctions "${EXPORTID}"
         fi
 
         # Increment documentation entry counter id.
@@ -198,7 +205,7 @@ function help {
 
     done
 
-    # Syncronize changes between repository and working copy. At this
+    # Synchronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
     cli_synchronizeRepoChanges "${MANUAL_CHANGED_DIRS}"
