@@ -158,7 +158,7 @@ function help {
             # the working copy and changes in the working copy
             # committed up to repository.
             if [[ -d ${MANUAL_CHANGED_DIRS} ]];then
-                cli_synchronizeRepoChanges ${MANUAL_CHANGED_DIRS}
+                cli_synchronizeRepoChanges "${MANUAL_CHANGED_DIRS}"
             fi
 
             # Initialize documentation format functionalities. At
@@ -201,6 +201,6 @@ function help {
     # Syncronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_synchronizeRepoChanges ${MANUAL_CHANGED_DIRS}
+    cli_synchronizeRepoChanges "${MANUAL_CHANGED_DIRS}"
 
 }
