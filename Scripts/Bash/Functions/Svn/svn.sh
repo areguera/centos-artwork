@@ -40,20 +40,20 @@ function svn {
     # only non-option arguments remain in it. 
     eval set -- "$ARGUMENTS"
 
-    # Define action value. We use non-option arguments to define the
-    # action value (ACTIONVAL) variable.
-    for ACTIONVAL in "$@";do
-        
-        # Sanitate non-option arguments to be sure they match the
-        # directory convenctions stablished by centos-art.sh script
-        # against source directory locations in the working copy.
-        cli_checkRepoDirSource
+    # Don't realize action value verification here. There are actions
+    # like `copy' and `rename' that require two arguments from which
+    # the last one doesn't exist at the moment of executing the
+    # command. This will provoke the second action value verification
+    # to fail when indeed is should not. Thus, go to action names
+    # processing directly.
 
-        # Execute action names.
-        for ACTIONNAM in $ACTIONNAMS;do
-            $ACTIONNAM
-        done
-
+    # Execute action names. This is required in order to realize
+    # actions like copy and rename which need two values as argument.
+    # Otherwise, it wouldn't be possible to execute them because
+    # action values would be processed one a time. Thus, lets work
+    # with `$@' instead.
+    for ACTIONNAM in $ACTIONNAMS;do
+        $ACTIONNAM "$@"
     done
 
 }
