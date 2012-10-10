@@ -30,7 +30,14 @@ function svn_getRepoStatus {
 
     local LOCATION=$(cli_checkRepoDirSource "$1")
 
-    # Define regular expression pattern to retrive first column,
+    # Verify source location absolute path. It should point either to
+    # existent files or directories both under version control inside
+    # the working copy.  Otherwise, if it doesn't point to an existent
+    # file under version control, finish the script execution with an
+    # error message.
+    cli_checkFiles ${LOCATION} -e --is-versioned
+
+    # Define regular expression pattern to retrieve first column,
     # returned by subversion status command. This column is one
     # character column as describes `svn help status' command.
     local PATTERN='^( |A|C|D|I|M|R|X|!|~).+$'
