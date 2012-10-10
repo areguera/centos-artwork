@@ -77,10 +77,11 @@ function cli_printMessage {
             cli_printMessage "${MESSAGE}" --as-response-line
             cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
 
-            # Finish script execution.  We use are using this option
-            # as convenction to finish the script execution. So, don't
-            # remove the following line, please.
-            exit
+            # Finish script execution with exit status 1 (SIGHUP) to
+            # imply the script finished because an error.  We are
+            # using this as convention to finish the script execution.
+            # So, don't remove the following line, please.
+            exit 1
             ;;
 
         --as-toknowmore-line )
