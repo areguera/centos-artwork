@@ -35,11 +35,12 @@ function svn_syncroRepoChanges {
         # Verify whether the location is valid or not.
         LOCATION=$(cli_checkRepoDirSource ${LOCATION})
 
-        # Verify whether location is under version control or not.  In
-        # case it is under version control continue with the script
-        # execution. Otherwise, if it is not under version control,
-        # finish script execution immediately with an error message.
-        cli_checkFiles ${LOCATION} --is-versioned
+        # Verify source location absolute path. It should point either
+        # to existent files or directories both under version control
+        # inside the working copy.  Otherwise, if it doesn't point to
+        # an existent file under version control, finish the script
+        # execution with an error message.
+        cli_checkFiles ${LOCATION} -e --is-versioned
 
         # Bring changes from the repository into the working copy.
         svn_updateRepoChanges ${LOCATION}
