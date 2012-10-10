@@ -27,10 +27,10 @@
 
 function svn_isVersioned {
 
-    local LOCATION=$1
-    if [[ $LOCATION == '' ]];then
-        LOCATION=${ACTIONVAL}
-    fi
+    # Define location we want to find out it is under version control
+    # or not. Only the first non-option argument passed to
+    # centos-art.sh command-line will be used.
+    local LOCATION=$(cli_checkRepoDirSource "${1}")
 
     # Use subversion to determine whether the location is under
     # version control or not.
