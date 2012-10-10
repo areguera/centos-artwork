@@ -28,7 +28,7 @@
 
 function svn_getRepoStatus {
 
-    local LOCATION="$1"
+    local LOCATION=$(cli_checkRepoDirSource "$1")
 
     # Define regular expression pattern to retrive first column,
     # returned by subversion status command. This column is one
