@@ -30,6 +30,7 @@ function tuneup_doBaseActions {
     local TUNEUP_FORMAT_DIR=''
     local TUNEUP_FORMAT_INIT=''
     local TUNEUP_EXTENSION=''
+    local EXPORTID=''
     local FILE=''
     local FILES=''
 
@@ -41,6 +42,9 @@ function tuneup_doBaseActions {
 
         # Define format name based on supported file extensions.
         TUNEUP_FORMAT="${TUNEUP_EXTENSION}"
+
+        # Define specific functions export id.
+        EXPORTID="${CLI_FUNCDIRNAM}/$(cli_getRepoName ${TUNEUP_FORMAT} -d)/${TUNEUP_FORMAT}"
 
         # Define absolute path to directory where format-specific
         # functionalities are stored in.
@@ -59,7 +63,7 @@ function tuneup_doBaseActions {
         fi
 
         # Define absolute path to directory where format-specific
-        # configurations are retrived from.
+        # configurations are retrieved from.
         TUNEUP_CONFIG_DIR="${TUNEUP_FORMAT_DIR}/Config"
 
         # Build list of files to process using action value as
@@ -74,9 +78,9 @@ function tuneup_doBaseActions {
 
         # Export format-specific functionalities up to the
         # execution environment.
-        cli_exportFunctions "${CLI_FUNCDIRNAM}/$(cli_getRepoName ${TUNEUP_FORMAT} -d)/${TUNEUP_FORMAT}"
+        cli_exportFunctions "${EXPORTID}"
 
-        # Execute format-specific maintainance tasks.
+        # Execute format-specific maintenance tasks.
         for FILE in $FILES;do
             cli_printMessage "$FILE" --as-tuningup-line
             ${TUNEUP_FORMAT}
@@ -84,11 +88,10 @@ function tuneup_doBaseActions {
 
         # Unset format-specific functionalities from execution
         # environment.  This is required to prevent end up with more
-        # than one format-specifc function initialization, in those
+        # than one format-specific function initialization, in those
         # cases when different template files are rendered in just one
         # execution of `centos-art.sh' script.
-        cli_unsetFunctions "${TUNEUP_BASEDIR}/$(cli_getRepoName \
-            ${TUNEUP_FORMAT} -d)" "${TUNEUP_FORMAT}"
+        cli_unsetFunctions "${EXPORTID}"
 
     done
 
