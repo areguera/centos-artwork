@@ -29,7 +29,7 @@ function svn_getOptions {
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,sync-changes,update,commit,is-versioned,get-status,mkdir,copy"
+    local ARGSL="help,quiet,sync-changes,update,commit,is-versioned,get-status,mkdir,copy,delete"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
