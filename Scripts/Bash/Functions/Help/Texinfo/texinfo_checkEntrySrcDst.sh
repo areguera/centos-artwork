@@ -55,7 +55,7 @@ function texinfo_checkEntrySrcDst {
     # location into it. If it doesn't exist, use subversion to create
     # it it.
     if [[ ! -d $(dirname ${MANUAL_ENTRY_DST}) ]];then
-        svn mkdir $(dirname ${MANUAL_ENTRY_DST}) --quiet
+        ${CLI_NAME} svn --mkdir $(dirname ${MANUAL_ENTRY_DST})
     fi
 
     # Verify existence of target location.
