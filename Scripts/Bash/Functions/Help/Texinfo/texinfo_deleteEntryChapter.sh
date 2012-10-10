@@ -49,12 +49,9 @@ function texinfo_deleteEntryChapter {
         --pattern=".+\.${MANUAL_EXTENSION}" \
         | egrep -v '/chapter')
 
-    # Revert pending changes before deleting.
-    svn revert ${MANUAL_CHAPTER_DIR} --quiet --recursive
-
     # Remove chapter directory using subversion to register the
     # change.
-    svn del ${MANUAL_CHAPTER_DIR} --quiet
+    ${CLI_NAME} svn --delete ${MANUAL_CHAPTER_DIR}
 
     # Update chapter menu and nodes inside manual structure.
     texinfo_updateChapterMenu --delete-entry
