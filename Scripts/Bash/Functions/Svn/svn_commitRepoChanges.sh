@@ -35,6 +35,13 @@ function svn_commitRepoChanges {
     local CHNGTOTAL=0
     local LOCATION=$(cli_checkRepoDirSource "$1")
 
+    # Verify source location absolute path. It should point either to
+    # existent files or directories both under version control inside
+    # the working copy.  Otherwise, if it doesn't point to an existent
+    # file under version control, finish the script execution with an
+    # error message.
+    cli_checkFiles ${LOCATION} -e --is-versioned
+
     # Print action message.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
 
