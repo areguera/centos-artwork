@@ -102,7 +102,7 @@ function svg_convertPngToGrub {
     # of the change) and expand translation markers in the copied
     # instance.
     if [[ ! -f $PALETTE_GPL ]];then
-        svn cp ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/grub.gpl ${PALETTE_GPL}
+        ${CLI_NAME} svn --copy ${MODEL_BASEDIR}/${FLAG_THEME_MODEL}/Palettes/grub.gpl ${PALETTE_GPL}
         cli_expandTMarkers ${PALETTE_GPL}
     fi
 
