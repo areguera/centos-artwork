@@ -172,7 +172,7 @@
         information is used as reference to build the absolute path of
         documentation entry, so you always have to provide it in order
         to reach the documentation entry you want to work with.
-        Possible values for this option are shown in in <xref
+        Possible values for this option are shown in <xref
         linkend="scripts-bash-help-supportedformats" />. 
     </para>
     <table id="scripts-bash-help-supportedformats">
@@ -238,6 +238,17 @@
         environment variable) one file at a time (i.e., the queue of
         files to edit is not loaded in the text editor.).
     </para>
+    <para>
+        When parent components inside documentation entries doesn't
+        exist (e.g., you try to create a section for a documentation
+        manual that doesn't exist), the <function>help</function>
+        functionality will create all documentation parent structures
+        considering the documentation format constraints and the
+        following document structure hierarchy order: documentation
+        <quote>manual</quote> first, <quote>parts</quote> second,
+        <quote>chapters</quote> third and <quote>sections</quote>
+        lastly.
+    </para>
     </listitem>
     </varlistentry>
 
@@ -281,16 +292,87 @@
     <term><option>--copy</option></term>
     <listitem>
     <para>
-        Duplicate documentation entries inside the working copy.
+        Duplicate documentation entries inside the working copy using
+        version control.
     </para>
     <para>
-        When documentation entries are copied, it is required to pass
-        two non-option parameters in the command-line.  The first
-        non-option parameter is considered the source location and the
-        second one the target location.  Both source location and
-        target location must point to a directory under the working
-        copy.
+        When you duplicate documentation entries through this option,
+        you should pass only two documentation entries in the command
+        line.  The first one is considered the source location and
+        should point to a file under version control inside the
+        working copy. The second one is considered the target location
+        and should point either to the same structural level the
+        source points to or a direct parent level based on source
+        location, as described below.
     </para>
+
+    <variablelist>
+    <varlistentry>
+    <term>
+        "<replaceable>manual:part:chapter:section-1</replaceable>" "<replaceable>manual:part:chapter:section-2</replaceable>"</term>
+    <listitem>
+    <para>
+        Duplicates <replaceable>section-1</replaceable> as
+        <replaceable>section-2</replaceable> inside the same
+        <replaceable>chapter</replaceable>,
+        <replaceable>part</replaceable> and
+        <replaceable>manual</replaceable>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        "<replaceable>manual:part:chapter-1:</replaceable>" "<replaceable>manual:part:chapter-2:</replaceable>"</term>
+    <listitem>
+    <para>
+        Duplicates <replaceable>chapter-1</replaceable> as
+        <replaceable>chapter-2</replaceable> inside the same
+        <replaceable>part</replaceable> and
+        <replaceable>manual</replaceable>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        "<replaceable>manual:part-1::</replaceable>" "<replaceable>manual:part-2::</replaceable>"</term>
+    <listitem>
+    <para>
+        Duplicates <replaceable>part-1</replaceable> as
+        <replaceable>part-2</replaceable> inside the same
+        <replaceable>manual</replaceable>.
+    </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term>
+        "<replaceable>manual-1:::</replaceable>" "<replaceable>manual-2:::</replaceable>"</term>
+    <listitem>
+    <para>
+        Duplicates <replaceable>manual-1</replaceable> as
+        <replaceable>manual-2</replaceable> inside <filename
+        class="directory">trunk/Documentation/Models/${FLAG_FORMAT}/</filename>
+        directory, where ${FLAG_FORMAT} is the name of the format
+        passed as option with the first letter in uppercase and the
+        rest in lowercase.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    
+    <para>
+        When you copy documentation entries through this option, all
+        structuring sections inside the one copied will be also
+        copied. For example, if you copy a documentation manual that
+        is made of parts, chapters and sections, the duplicated manual
+        will contain all those parts, chapters and sections, as well.
+        The same is true for lower sectioning structures. Thus, you
+        can be more specific in the documentation entry to reduce the
+        amount of content to duplicate.
+    </para>
+            
     </listitem>
     </varlistentry>
 
@@ -344,7 +426,7 @@
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit "<replaceable>manual:::</replaceable>"</command>
+    <command>centos-art help --edit --format="texinfo" "<replaceable>manual:::</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
@@ -355,7 +437,7 @@
         <function>help</function> functionality performs some
         repository verifications and creates the manual source files
         inside the manual's directory name you specified as
-        <replaceable>manual</replaceable>.
+        <replaceable>manual:::</replaceable>.
     </para>
 
     <para>
@@ -373,7 +455,7 @@
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --edit --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
@@ -389,7 +471,7 @@
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --copy "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --copy --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
@@ -403,7 +485,7 @@
         To delete one documentation entry, use the following command:
     </para>
     <cmdsynopsis>
-    <command>centos-art help --delete "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --delete --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
     <para>
         ...
@@ -417,7 +499,7 @@
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --copy "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --copy --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
@@ -433,7 +515,7 @@
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --update-structure "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --update-structure --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
@@ -449,7 +531,7 @@
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --update-output "<replaceable>manual:::</replaceable>"</command>
+    <command>centos-art help --update-output --format="texinfo" "<replaceable>manual:::</replaceable>"</command>
     </cmdsynopsis>
 
     <para>
