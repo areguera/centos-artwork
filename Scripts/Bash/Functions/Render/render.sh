@@ -42,17 +42,17 @@ function render {
     local FLAG_BASEARCH=$(uname -i)
 
     # Initialize `--theme-model' option. The theme model option
-    # specifies the the theme model name used to produce theme
+    # specifies the theme model name used to produce theme
     # artistic motifs.
     local FLAG_THEME_MODEL='Default'
 
     # Initialize `--post-rendition' option. This option defines what
-    # command to use as post-rendition. Post-rendition takes palce
+    # command to use as post-rendition. Post-rendition takes place
     # over base-rendition output.
     local FLAG_POSTRENDITION=''
 
     # Initialize `--last-rendition' option. This option defines what
-    # command to use as last-rendition. Last-rendition takes palce
+    # command to use as last-rendition. Last-rendition takes place
     # once both base-rendition and post-rendition has been performed
     # in the same directory structure.
     local FLAG_LASTRENDITION=''
@@ -84,7 +84,7 @@ function render {
     # Initialize list of supported file extensions. These file
     # extensions are used by design model files, the files used as
     # base-rendition input. In order for design model files to be
-    # correclty rendered, they must end with one of the file
+    # correctly rendered, they must end with one of the file
     # extensions listed here.
     local RENDER_EXTENSIONS='svgz svg docbook'
 
@@ -127,7 +127,7 @@ function render {
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
         fi
 
-        # Syncronize changes between repository and working copy. At
+        # Synchronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
@@ -136,7 +136,7 @@ function render {
         # Execute action name.
         ${ACTIONNAM}
 
-        # Syncronize changes between repository and working copy. At
+        # Synchronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
