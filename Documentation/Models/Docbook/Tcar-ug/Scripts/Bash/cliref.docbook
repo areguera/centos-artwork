@@ -1,6 +1,6 @@
 <sect1 id="scripts-bash-cliref">
 
-    <title>The Command-line Interface</title>
+    <title>Script Command-line Interface</title>
 
     <para>
         The <command>centos-art.sh</command> script follows a
@@ -26,7 +26,7 @@
         arguments are processed then.  Non-option arguments will
         always be paths pointing directories inside your working copy
         of &TCAR;. These paths can be absolute paths or relative paths
-        considering the working copy root directory as sect2. For
+        considering the working copy root directory as section. For
         example, both the absolute path <filename
         class="directory">/home/al/Projects/CentOS/artwork/trunk/Identity/Themes/</filename>
         and the relative path <filename
@@ -38,7 +38,7 @@
         To better understand the <command>centos-art.sh</command>
         command-line interface, let's consider the real command shown
         in <xref linkend="scripts-bash-cliref-cli-example1" /> as
-        sect2.  This command shows the entire command as a list of
+        section.  This command shows the entire command as a list of
         space-separated arguments. The value of each argument can be
         reached using special variable names based on the number of
         arguments passed to the command-line.
@@ -189,10 +189,10 @@ centos-art render trunk/Identity/Images/Themes --with-brands
 
     <para>
         The specific options used by specific and common function
-        environments are described in their respective sect2s. See
+        environments are described in their respective sections. See
         <xref linkend="scripts-bash-cli-specificfuncs" /> and <xref
         linkend="scripts-bash-cli-commonfuncs" /> to know which these
-        sect2s are.
+        sections are.
     </para>
 
     <table id="scripts-bash-cli-specificfuncs">
@@ -278,10 +278,10 @@ centos-art render trunk/Identity/Images/Themes --with-brands
         </para>
 
         <para>
-            In this sect2 will describe how to parse arguments (both
+            In this section will describe how to parse arguments (both
             option and non-option) inside the
             <command>centos-art.sh</command> script.  This information
-            must be used as sect2 whenever you need to create a
+            must be used as section whenever you need to create a
             new function for <command>centos-art.sh</command> script.
         </para>
 
