@@ -369,8 +369,17 @@
         is made of parts, chapters and sections, the duplicated manual
         will contain all those parts, chapters and sections, as well.
         The same is true for lower sectioning structures. Thus, you
-        can be more specific in the documentation entry to reduce the
-        amount of content to duplicate.
+        can be more specific in the documentation entry by reducing
+        the amount of content to duplicate.
+    </para>
+
+    <para>
+        When you copy documentation entries through this option, you
+        do it using documentation entries in the same level only. This
+        option doesn't support copying documentation entries from
+        differnet structural levels. For example, you cannot copy one
+        section to a chapter different from that the source section
+        belongs to. The same applies to chapters, and parts.
     </para>
             
     </listitem>
