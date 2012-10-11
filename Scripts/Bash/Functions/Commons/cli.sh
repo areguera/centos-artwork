@@ -93,7 +93,7 @@ function cli {
     # provided, execute the help functionality and end script
     # execution.
     if [[ ! "$1" ]] || [[ ! "$1" =~ '^[[:alpha:]]' ]];then
-        ${CLI_BASEDIR}/${CLI_NAME}.sh help tcar-fs:::
+        ${CLI_BASEDIR}/${CLI_NAME}.sh help --read --format="texinfo" tcar-fs:::
         exit
     fi
 
