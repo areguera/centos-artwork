@@ -50,7 +50,7 @@ function render_getDirOutput {
     # options.  Other directories take such information from the path
     # they are stored in (e.g., the `Distro/5/Anaconda' directory
     # inside themes.). So, we need to differentiate the way
-    # information like release numbers and architectures are retrived
+    # information like release numbers and architectures are retrieved
     # in order to build the output path correctly at rendition time.
     if [[ $OUTPUT =~ "^${MOTIF_DIR}/Media$" ]];then
         OUTPUT=${OUTPUT}/${FLAG_RELEASEVER}/${FLAG_BASEARCH}
@@ -62,17 +62,17 @@ function render_getDirOutput {
 
     # Define whether to use or not locale-specific directory to store
     # content, using current locale information as reference. As
-    # convenction, when we produce content, only specific locations
+    # convection, when we produce content, only specific locations
     # use locale-specific directories to organize language-specific
     # content (e.g., Manuals, Anaconda, Installation media, etc.). All
     # other locations do not use locale-specific directories to
-    # organize content. This convenction is important in order for
+    # organize content. This convection is important in order for
     # the `prepare' functionality of centos-art.sh script to produce
     # content in the correct location. Otherwise, we might end up
     # duplicating content (e.g., icons, brands, etc.) which doesn't
     # have any translation, nor any need to be translated.
     if [[ ! ${CLI_LANG_LC} =~ '^en' ]];then
-        ${CLI_NAME} locale --is-localizable ${TEMPLATE}
+        cli_runFnEnvironment locale --is-localizable ${TEMPLATE}
         if [[ $? -eq 0 ]];then
             OUTPUT=${OUTPUT}/${CLI_LANG_LC}
         fi
