@@ -24,6 +24,9 @@
 # ----------------------------------------------------------------------
 
 function texinfo_updateChapterNodes {
+    
+    # Print action name.
+    cli_printMessage "${MANUAL_BASEFILE}-nodes.${MANUAL_EXTENSION}" --as-creating-line
 
     # Build chapter nodes using entries from chapter menu as
     # reference. Don't include `Licenses' or `Index' chapters here.
