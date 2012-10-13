@@ -428,21 +428,39 @@
     <refsection id="scripts-bash-help-examples">
     <title>Examples</title>
 
+    <para>
+        This section describes, using examples, the procedure you
+        should follow to manage documentation manuals through
+        <function>help</function> functionality inside &TCAR;. To
+        better understand the procedure to follow, it describes  a
+        hypothetical documentation scenario and the related commands
+        and outputs you may go through in order to complete specific
+        documentation tasks successfully.
+    </para>
+
     <refsection id="scripts-bash-help-description-create">
     <title>Creating Document Structures</title>
     <para>
-        To create new documentation manuals inside &TCAR; you use the
-        <option>--edit</option>. This option edits existent manuals or
-        creates new ones. For example, consider you need to create a
+        To create new documentation manuals inside &TCAR; you need to
+        provide the <option>--edit</option> option and a documentation
+        entry in the form <quote><literal>manual:::</literal></quote>
+        to the <function>help</function> functionality.
+    </para>
+
+    <para>
+        For example, consider a scenario where you need to create a
         documentation manual in texinfo format to describe different
-        kind of animals.  This manual will be named <quote>My
-        Zoo</quote>, use one chapter for each animal you want to
-        describe and sections to cover the description itself. To
-        create such documentation manual, run the following command:
+        maintenance tasks you need to realized in order to keep your
+        pets happy. We'll name such manual <quote>My Zoo</quote>. It
+        will use chapters to organize each different kind of pets you
+        have.  Inside chapters, sections will have the pet's name as
+        their own name to describe each pet's requirements, schedules,
+        and so on.  To create such documentation manual, run the
+        following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit --format="texinfo" "my-zoo:::"</command>
+    <command>centos-art help --edit --format="texinfo" "myzoo:::"</command>
     </cmdsynopsis>
 
     <para>
@@ -454,85 +472,85 @@
 
 <programlisting>
 The following documentation manual doesn't exist:
---> trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo.texinfo
+--> trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.texinfo
 Do you want to create it now? [yes/no]: yes
 Enter manual's title: My Zoo
 Enter manual's subtitle: Maintenance reference
 Enter manual's abstract: This manual relates pets' maintenance tasks.
-Creating        trunk/Documentation/Models/Texinfo/My-zoo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo.conf
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-index.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Licenses/chapter-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Licenses/chapter-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Licenses/chapter.texinfo
-Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.txt.bz2
-
+Creating        trunk/Documentation/Models/Texinfo/MyZoo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.conf
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-index.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Licenses/chapter-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Licenses/chapter-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Licenses/chapter.texinfo
+Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 </programlisting>
+
     <para>
         Once the documentation structure has been created this way,
         the recently created documentation manual is ready to receive
         new sectioning levels (e.g., parts, chapters, sections, etc.).
         For example, to create a new chapter named
-        <quote>Turtless</quote> inside <quote>My-zoo</quote>
+        <quote>Turtles</quote> inside <quote>My Zoo</quote>
         documentation manual, run the following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit --format="texinfo" "my-zoo::turtles:"</command>
+    <command>centos-art help --edit --format="texinfo" "myzoo::turtles:"</command>
     </cmdsynopsis>
 
 <programlisting>
 The following documentation chapter doesn't exist:
---> trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles
+--> trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles
 Do you want to create it now? [yes/no]: yes
 Enter chapter's title: Turtles
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter.texinfo
-Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-menu.texinfo
-Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-nodes.texinfo
-Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.txt.bz2
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter.texinfo
+Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-menu.texinfo
+Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-nodes.texinfo
+Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     <para>
         Once chapters have been created it is possible to create
-        sections inside them.  For example, to create a section to
-        describe the life of a turtle named Longneck, run the
-        following command:
+        sections inside them.  For example, if you want to create a
+        section for describing the life of a turtle named Longneck,
+        run the following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit --format="texinfo" "my-zoo::turtles:longneck"</command>
+    <command>centos-art help --edit --format="texinfo" "myzoo::turtles:longneck"</command>
     </cmdsynopsis>
 
 <programlisting>
 The following documentation section doesn't exist:
---> trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/longneck.texinfo
+--> trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
 Do you want to create it now? [yes/no]: yes
-Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/longneck.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.txt.bz2
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     </refsection>
@@ -541,26 +559,67 @@ Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.txt.bz2
     <title>Editing Document Structures</title>
     <para>
         To edit documentation entries you can follow the same
-        procedure described above to create documentation entries. If
-        the entry you want to edit already exist, it will be edited.
-        If the entry you want to edit doesn't exist it will be
-        created first and edited later.
+        procedure described above. Just keep in mind the following
+        rules:
     </para>
+    
+    <itemizedlist>
+    <listitem>
+    <para>
+        When the entry you want to edit already exist it will be
+        edited.
+    </para>
+    </listitem>
+
+    <listitem>
+    <para>
+     When the entry you want to edit doesn't exist it will be created
+     first and edited later.
+    </para>
+    </listitem>
+
+    </itemizedlist>
+
     </refsection>
 
     <refsection id="scripts-bash-help-description-copy">
     <title>Copying Document Structures</title>
     <para>
-        To copy one documentation entry, use the following command:
+        Consider a new turtle named Slowfeet has arrived to your home
+        and you want to duplicate Longneck's section for it (they both
+        are turtles and have similar requirements, squedules, etc.).
+        To copy documentation entries you use the
+        <option>--copy</option> option with two documentation entries,
+        where the first one is the source location and the second one
+        the target location.  This need can be covered with the
+        following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --copy --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --copy --format="texinfo" "myzoo::turtles:longneck" "myzoo::turtles:slowfeet"</command>
     </cmdsynopsis>
 
+<programlisting>
+------------------------------------------------------------------
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
+Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
+</programlisting>
+
+    <warning>
     <para>
-        ...
+        In order to copy documentation entries successfully, the
+        source documentation entry must not contain any pending
+        change. Otherwise, the section won't be created and the script
+        will immediatly stop its execution with a <quote>The source
+        location has pending changes.</quote> error message.
     </para>
+    </warning>
     </refsection>
 
     <refsection id="scripts-bash-help-description-delete">
