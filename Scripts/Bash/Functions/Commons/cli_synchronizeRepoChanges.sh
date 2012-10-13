@@ -36,6 +36,6 @@ function cli_synchronizeRepoChanges {
     cli_checkFiles -e $@
 
     # Synchronize changes.
-    ${CLI_NAME} svn --sync $@
+    cli_runFnEnvironment svn --sync $@
 
 }
