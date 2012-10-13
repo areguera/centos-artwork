@@ -117,7 +117,7 @@ function texinfo_updateStructureSection {
     # is nothing else to do here but printing an error message
     # describing the fact that no section entry was found to process.
     if [[ $MANUAL_ENTRIES == '' ]];then
-        cli_printMessage "`gettext "No section entry found to process."`" --as-error-line
+        cli_printMessage "`gettext "There wasn't any section for processing found."`" --as-error-line
     fi
 
     # Loop through target documentation entries in order to update the
