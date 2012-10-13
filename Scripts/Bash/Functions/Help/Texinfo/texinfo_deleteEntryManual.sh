@@ -30,22 +30,22 @@ function texinfo_deleteEntryManual {
 
     # Verify existence of documentation entry before deleting it. We
     # cannot delete an entry which doesn't exist.
-    cli_checkFiles -e "$MANUAL_ENTRY"
+    cli_checkFiles "$MANUAL_ENTRY" -f
 
     # Remove locale-specific documentation manual directory from the
     # working copy. Using subversion to register the change. Be sure
     # that related output files are removed too.
-    ${CLI_NAME} svn --delete ${MANUAL_BASEDIR_L10N}
+    cli_runFnEnvironment svn --quiet --delete ${MANUAL_BASEDIR_L10N}
 
     # Verify manual base directory. When the locale-specific
-    # documentaion manual is the last one inside the manual base
+    # documentation manual is the last one inside the manual base
     # directory, remove the manual base directory from the working
     # copy.  There is no need to have an empty manual base directories
     # inside the working copy.
     if [[ $(ls -1 $MANUAL_BASEDIR | wc -l) -le 1 ]];then
 
         # Remove manual base directory.
-        ${CLI_NAME} svn --delete ${MANUAL_BASEDIR}
+        cli_runFnEnvironment svn --delete ${MANUAL_BASEDIR}
 
         # Redefine absolute paths to changed directory.  This is
         # required in order for `svn_commitRepoChanges' to be aware
