@@ -27,6 +27,9 @@ function texinfo_updateChapterMenu {
     local ACTION=$1
     local MENUCHAPTERS=''
 
+    # Print action name.
+    cli_printMessage "${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION}" --as-creating-line
+
     # Build menu of chapters. The Index node is not included as other
     # nodes are. The Index node is defined inside the master texinfo
     # file (repository.texinfo) as an included file. To create the final
