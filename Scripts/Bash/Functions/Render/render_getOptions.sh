@@ -43,7 +43,7 @@ function render_getOptions {
         case "$1" in
 
             -h | --help )
-                ${CLI_NAME} help --read --format="texinfo" trunk/Scripts/Bash/Functions/Render
+                cli_runFnEnvironment help --read --format="texinfo" trunk/Scripts/Bash/Functions/Render
                 shift 1
                 exit
                 ;;
