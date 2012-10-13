@@ -27,10 +27,10 @@
 function help_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q,h"
+    local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="quiet,help,answer-yes,read,search:,format:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
+    local ARGSL="help,quiet,answer-yes,read,search:,format:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -59,6 +59,11 @@ function help_getOptions {
                 shift 1
                 ;;
 
+            --sync-changes )
+                FLAG_SYNC_CHANGES="true"
+                shift 1
+                ;;
+
             --search )
                 ACTIONNAM="searchIndex"
                 FLAG_SEARCH="$2"
@@ -74,6 +79,11 @@ function help_getOptions {
                     cli_printMessage "`gettext "The documentation format provided is not supported."`" --as-error-line
                 fi
                 shift 2
+                ;;
+
+            --read )
+                ACTIONNAM="searchNode"
+                shift 1
                 ;;
     
             --edit )
@@ -96,23 +106,13 @@ function help_getOptions {
                 shift 1
                 ;;
     
-            --update-output )
-                ACTIONNAM="updateOutputFiles"
-                shift 1
-                ;;
-
             --update-structure )
                 ACTIONNAM="updateStructureSection"
                 shift 1
                 ;;
     
-            --read )
-                ACTIONNAM="searchNode"
-                shift 1
-                ;;
-
-            --sync-changes )
-                FLAG_SYNC_CHANGES="true"
+            --update-output )
+                ACTIONNAM="updateOutputFiles"
                 shift 1
                 ;;
 
