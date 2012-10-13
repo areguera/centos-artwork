@@ -25,9 +25,6 @@
 
 function texinfo_editEntry {
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
-
     # Verify section definition inside chapters. 
     if [[ ! -f $MANUAL_ENTRY ]];then
 
@@ -43,6 +40,9 @@ function texinfo_editEntry {
         cli_printMessage "`gettext "The following documentation section doesn't exist:"`" --as-stdout-line
         cli_printMessage "$MANUAL_ENTRY" --as-response-line
         cli_printMessage "`gettext "Do you want to create it now?"`" --as-yesornorequest-line
+
+        # Print action message.
+        cli_printMessage "$MANUAL_ENTRY" --as-updating-line
 
         # Update section menu, nodes and cross references based on
         # changes in order for manual structure to remain cosistent.
