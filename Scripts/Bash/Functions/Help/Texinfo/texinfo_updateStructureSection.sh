@@ -26,11 +26,6 @@
 
 function texinfo_updateStructureSection {
 
-    # Print action message. These actions might consume some time to
-    # finish. The more section entries the regular expression pattern
-    # matches, the more time it will take to finish.
-    cli_printMessage "`gettext "Updating section menus, nodes and cross references"`" --as-banner-line
-
     local PATTERN=''
     local MANUAL_ENTRIES=''
     local ACTIONNAM_SECMENU=''
@@ -118,8 +113,8 @@ function texinfo_updateStructureSection {
         MANUAL_ENTRIES=${PATTERN}
     fi
 
-    # Verify list of target entries. Assumming it is still empty,
-    # there is nothing else to do here but printing an error message
+    # Verify list of target entries. Assuming it is still empty, there
+    # is nothing else to do here but printing an error message
     # describing the fact that no section entry was found to process.
     if [[ $MANUAL_ENTRIES == '' ]];then
         cli_printMessage "`gettext "No section entry found to process."`" --as-error-line
@@ -130,11 +125,17 @@ function texinfo_updateStructureSection {
     # documentation entry files, it is also needed to update menu,
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
-        cli_printMessage "${MANUAL_ENTRY}" --as-response-line
+
+        # Don't print action message here. Instead, use the related
+        # action functionality for doing so. Otherwise, if we print it
+        # here, delete actions will display a creating line for the
+        # documentation entry already deleted which is rather awkward. 
+
         texinfo_${ACTIONNAM_SECMENU}
         texinfo_updateSectionNodes
         texinfo_makeSeeAlso "${MANUAL_ENTRY}"
         texinfo_${ACTIONNAM_CROSREF} "${MANUAL_ENTRY}"
+
     done
 
 }
