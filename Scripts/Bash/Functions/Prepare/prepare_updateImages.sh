@@ -50,6 +50,6 @@ function prepare_updateImages {
         $(echo "$DIRS" | grep -v 'trunk/Identity/Images/Brands')"
 
     # Render image components using the list of directories.
-    ${CLI_BASEDIR}/${CLI_NAME}.sh render ${DIRS} --with-brands
+    cli_runFunEnvironment render ${DIRS} --with-brands
 
 }
