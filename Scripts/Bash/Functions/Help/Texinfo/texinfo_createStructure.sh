@@ -43,33 +43,31 @@ function texinfo_createStructure {
     local MANUAL_SUBTITLE=''
     local MANUAL_ABSTRACT=''
 
-    # Create manual's top-level directory using subversion. This is
-    # the place where all texinfo documentation manuals is stored in.
-    if [[ ! -d ${MANUAL_BASEDIR} ]];then
-        ${CLI_NAME} svn --mkdir ${MANUAL_BASEDIR}
-    fi
-
-    # Create manual's base directory. This is the place where
-    # language-specific documentation source files are stored in.
-    ${CLI_NAME} svn --mkdir ${MANUAL_BASEDIR_L10N}
-
-    # Retrive manual's information from standard input.
-    cli_printMessage "`gettext "Manual Title"`" --as-request-line
+    # Retrieve manual's information from standard input.
+    cli_printMessage "`gettext "Enter manual's title"`" --as-request-line
     read MANUAL_TITLE
-    cli_printMessage "`gettext "Manual Subtitle"`" --as-request-line
+    cli_printMessage "`gettext "Enter manual's subtitle"`" --as-request-line
     read MANUAL_SUBTITLE
-    cli_printMessage "`gettext "Manual Abstract"`" --as-request-line
+    cli_printMessage "`gettext "Enter manual's abstract"`" --as-request-line
     read MANUAL_ABSTRACT
-
-    # Print action message.
-    cli_printMessage "-" --as-separator-line
-    cli_printMessage "`gettext "Creating manual structure in texinfo format."`" --as-response-line
 
     # Verify manual's information. The title information must be
     # non-empty value.
     if [[ $MANUAL_TITLE == '' ]];then
         cli_printMessage "`gettext "The manual title cannot be empty."`" --as-error-line
     fi
+
+    # Create manual's top-level directory using subversion. This is
+    # the place where all texinfo documentation manuals is stored in.
+    if [[ ! -d ${MANUAL_BASEDIR} ]];then
+        cli_printMessage "${MANUAL_BASEDIR}" --as-creating-line
+        cli_runFnEnvironment svn --quiet --mkdir ${MANUAL_BASEDIR}
+    fi
+
+    # Create manual's base directory. This is the place where
+    # language-specific documentation source files are stored in.
+    cli_printMessage "${MANUAL_BASEDIR_L10N}" --as-creating-line
+    cli_runFnEnvironment svn --quiet --mkdir ${MANUAL_BASEDIR_L10N}
 
     # Define file names required to build the manual.
     local FILE=''
@@ -92,8 +90,11 @@ function texinfo_createStructure {
             local DST=${MANUAL_BASEDIR_L10N}/$(basename ${FILE} \
                 | sed -r "s!manual!${MANUAL_NAME}!")
 
+            # Print action name.
+            cli_printMessage "${DST}" --as-creating-line
+
             # Copy using subversion to register this action.
-            ${CLI_NAME} svn --copy ${FILE} ${DST}
+            cli_runFnEnvironment svn --quiet --copy ${FILE} ${DST}
 
             # Expand common translation markers inside target file.
             cli_expandTMarkers ${DST}
