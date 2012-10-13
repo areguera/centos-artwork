@@ -46,7 +46,7 @@ function texinfo_checkEntrySrcDst {
     # Verify source location to be sure it is under version control
     # and there isn't pending change to be committed first.
     cli_checkFiles ${MANUAL_ENTRY_SRC} --is-versioned
-    if [[ $(${CLI_NAME} svn --get-status ${MANUAL_ENTRY_SRC}) != '' ]];then
+    if [[ $(cli_runFnEnvironment svn --get-status ${MANUAL_ENTRY_SRC}) != '' ]];then
         cli_printMessage "`gettext "The source location has pending changes."`" --as-error-line
     fi
 
@@ -55,7 +55,7 @@ function texinfo_checkEntrySrcDst {
     # location into it. If it doesn't exist, use subversion to create
     # it it.
     if [[ ! -d $(dirname ${MANUAL_ENTRY_DST}) ]];then
-        ${CLI_NAME} svn --mkdir $(dirname ${MANUAL_ENTRY_DST})
+        cli_runFnEnvironment svn --mkdir $(dirname ${MANUAL_ENTRY_DST})
     fi
 
     # Verify existence of target location.
