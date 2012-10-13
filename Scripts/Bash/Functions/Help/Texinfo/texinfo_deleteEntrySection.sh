@@ -25,16 +25,9 @@
 
 function texinfo_deleteEntrySection {
 
-    # Print action message.
-    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
-
-    # Verify existence of documentation entry before deleting it. We
-    # cannot delete an entry which doesn't exist.
-    cli_checkFiles -e "$MANUAL_ENTRY"
-
     # Remove documentation entry using subversion to register the
     # change.
-    ${CLI_NAME} svn --delete $MANUAL_ENTRY
+    cli_runFnEnvironment svn --delete "${MANUAL_ENTRY}"
 
     # Update section menu, nodes and cross references.
     texinfo_updateStructureSection "${MANUAL_ENTRY}" --delete
