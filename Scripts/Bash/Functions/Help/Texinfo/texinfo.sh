@@ -27,9 +27,6 @@
     
 function texinfo {
 
-    # Verify documentation format based on file type.
-    cli_checkFiles -i "text/x-texinfo" ${MANUAL_BASEFILE}.${FLAG_FORMAT}
-
     # Verify documentation entry to be sure it coincides with
     # Texinfo's supported structuring (e.g., texinfo-4.8 doesn't
     # support structuring through parts, but chapters and sections
@@ -38,23 +35,24 @@ function texinfo {
         cli_printMessage "`gettext "The documentation entry provided isn't supported."`" --as-error-line
     fi
 
-    # Define file extension used by source files inside manuals.
-    MANUAL_EXTENSION="${FLAG_FORMAT}"
+    # Verify documentation format based on file type.
+    if [[ -f ${MANUAL_BASEFILE}.${MANUAL_EXTENSION} ]];then
+        cli_checkFiles -i "text/x-texinfo" ${MANUAL_BASEFILE}.${MANUAL_EXTENSION}
+    fi
 
     # Define absolute path to template directory. This is the place
     # where we store locale directories (e.g., en_US, es_ES, etc.)
     # used to build manuals in texinfo format.
-    MANUAL_TEMPLATE=${TCAR_WORKDIR}/trunk/Documentation/Models/$(cli_getRepoName \
-        ${FLAG_FORMAT} -d)/Default
+    MANUAL_TEMPLATE=${MANUAL_TLDIR}/$(cli_getRepoName ${FLAG_FORMAT} -d)/Default
 
     # Define absolute path to language-specific template directory.
     # This is the place where we store locale-specific files used to
     # build manuals in texinfo format.
     MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/${MANUAL_L10N}
 
-    # Verify absolute path to language-speicific template directory.
+    # Verify absolute path to language-specific template directory.
     # If it doesn't exist, use English language as default location to
-    # retrive template files.
+    # retrieve template files.
     if [[ ! -d $MANUAL_TEMPLATE_L10N ]];then
         MANUAL_TEMPLATE_L10N=${MANUAL_TEMPLATE}/en_US
     fi
@@ -64,7 +62,7 @@ function texinfo {
 
     # Define documentation entry default values. To build the
     # documentation entry, we combine the manual's name, part, chapter
-    # and section information retrived from the command-line.
+    # and section information retrieved from the command-line.
     if [[ $MANUAL_CHAPTER_NAME == '' ]];then
 
         # When chapter option is not provided, discard the section
@@ -74,7 +72,7 @@ function texinfo {
 
     elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME == '' ]];then
 
-        # When chapter option is provided whithout a section name,
+        # When chapter option is provided without a section name,
         # verify chapter's directory inside the manual,
         texinfo_createChapter
 
