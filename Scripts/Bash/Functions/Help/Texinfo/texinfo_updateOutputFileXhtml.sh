@@ -26,7 +26,7 @@
 function texinfo_updateOutputFileXhtml {
 
     # Output action message.
-    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.xhtml.tar.bz2" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.xhtml.tar.bz2" --as-creating-line
 
     # Verify initialization files used by texi2html.
     cli_checkFiles -e ${MANUAL_TEMPLATE}/manual-init.pl
