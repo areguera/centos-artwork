@@ -49,13 +49,16 @@ function texinfo_createStructureChapters {
         # Repository and under version control, too.
         cli_checkFiles ${FILE} --is-versioned
 
+        # Print action name.
+        cli_printMessage "${MANUAL_CHAPTER_DIR}/$(basename ${FILE})" --as-creating-line
+
         # Verify chapter's directory. If it doesn't exist, create it.
         if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
-            ${CLI_NAME} svn --mkdir ${MANUAL_CHAPTER_DIR}
+            cli_runFnEnvironment svn --quiet --mkdir ${MANUAL_CHAPTER_DIR}
         fi
 
         # Copy template files into chapter's directory.
-        ${CLI_NAME} svn --copy ${FILE} ${MANUAL_CHAPTER_DIR}
+        cli_runFnEnvironment svn --quiet --copy ${FILE} ${MANUAL_CHAPTER_DIR}
 
     done
 
