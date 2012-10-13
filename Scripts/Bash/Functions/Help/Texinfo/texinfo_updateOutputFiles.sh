@@ -37,9 +37,6 @@ function texinfo_updateOutputFiles {
         mkdir -p $(dirname $MANUAL_OUTPUT_BASEFILE)
     fi
 
-    # Print separator line.
-    cli_printMessage "`gettext "Updating output files"`" --as-banner-line
-
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
     # paths incorrectly.
