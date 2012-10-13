@@ -44,17 +44,13 @@ function texinfo_createChapter {
     local MANUAL_CHAPTER_CIND=''
 
     # Request the user to enter a chapter title.
-    cli_printMessage "`gettext "Chapter Title"`" --as-request-line
+    cli_printMessage "`gettext "Enter chapter's title"`" --as-request-line
     read MANUAL_CHAPTER_TITLE
 
     # Sanitate chapter node, chapter index and chapter title.
     MANUAL_CHAPTER_NODE=$(texinfo_getEntryNode "$MANUAL_CHAPTER_NAME")
     MANUAL_CHAPTER_CIND=$(texinfo_getEntryIndex "$MANUAL_CHAPTER_TITLE")
     MANUAL_CHAPTER_TITLE=$(texinfo_getEntryTitle "$MANUAL_CHAPTER_TITLE")
-
-    # Print action message.
-    cli_printMessage "-" --as-separator-line
-    cli_printMessage "`gettext "Creating chapter files."`" --as-response-line
 
     # Define list of template files used to build the chapter main
     # definition files.
@@ -66,7 +62,8 @@ function texinfo_createChapter {
     # Create chapter directory using subversion. This is the place
     # where all chapter-specific files will be stored in.
     if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
-        ${CLI_NAME} svn --mkdir ${MANUAL_CHAPTER_DIR}
+        cli_printMessage "${MANUAL_CHAPTER_DIR}" --as-creating-line
+        cli_runFnEnvironment svn --quiet --mkdir ${MANUAL_CHAPTER_DIR}
     fi
 
     # Create chapter-specific files using template files as reference.
@@ -77,9 +74,12 @@ function texinfo_createChapter {
         # The CentOS Artwork Repository (-w) and under version control
         # (-n), too.
         cli_checkFiles ${FILE} --is-versioned
+
+        # Print action name.
+        cli_printMessage "${MANUAL_CHAPTER_DIR}/$(basename ${FILE})" --as-creating-line
         
         # Copy template files into the chapter directory.
-        ${CLI_NAME} svn --copy ${FILE} ${MANUAL_CHAPTER_DIR}
+        cli_runFnEnvironment svn --quiet --copy ${FILE} ${MANUAL_CHAPTER_DIR}
 
     done
 
@@ -107,9 +107,6 @@ function texinfo_createChapter {
     # of the file. The node structure of chapter is created
     # automatically based on action value.
     echo "" > ${MANUAL_CHAPTER_DIR}/chapter-nodes.${MANUAL_EXTENSION}
-
-    # Print action maessage.
-    cli_printMessage "`gettext "Updating chapter menu and nodes inside manual structure."`" --as-response-line
 
     # Update chapter information inside the manual's texinfo
     # structure.
