@@ -43,7 +43,7 @@ function svn_getOptions {
         case "$1" in
 
             -h | --help )
-                ${CLI_NAME} help --read --format="texinfo" trunk/Scripts/Bash/Functions/Svn
+                cli_runFnEnvironment help --read --format="texinfo" trunk/Scripts/Bash/Functions/Svn
                 shift 1
                 exit
                 ;;
@@ -85,6 +85,11 @@ function svn_getOptions {
 
             --mkdir )
                 ACTIONNAMS="${ACTIONNAMS} svn_mkRepoDirectory"
+                shift 1
+                ;;
+
+            --delete )
+                ACTIONNAMS="${ACTIONNAMS} svn_deleteRepoFile"
                 shift 1
                 ;;
 
