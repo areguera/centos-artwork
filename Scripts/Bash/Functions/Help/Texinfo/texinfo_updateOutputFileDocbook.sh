@@ -26,7 +26,7 @@
 function texinfo_updateOutputFileDocbook {
 
     # Print action message.
-    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.docbook" --as-response-line
+    cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.docbook" --as-creating-line
 
     # Update xml output format.
     /usr/bin/makeinfo --docbook --output=${MANUAL_OUTPUT_BASEFILE}.docbook \
