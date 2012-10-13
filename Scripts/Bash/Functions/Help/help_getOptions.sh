@@ -44,7 +44,7 @@ function help_getOptions {
         case "$1" in
 
             -h | --help )
-                ${CLI_NAME} help --read --format="texinfo" trunk/Scripts/Bash/Functions/Help
+                cli_runFnEnvironment help --read --format="texinfo" trunk/Scripts/Bash/Functions/Help
                 shift 1
                 exit
                 ;;
@@ -67,6 +67,12 @@ function help_getOptions {
 
             --format )
                 FLAG_FORMAT=$(cli_getRepoName "$2" -f)
+                # Verify supported documentation manual formats. This
+                # is required in order to prevent building paths to
+                # non-existent documentation structures.
+                if [[ ! $FLAG_FORMAT =~ '^(texinfo)$' ]];then
+                    cli_printMessage "`gettext "The documentation format provided is not supported."`" --as-error-line
+                fi
                 shift 2
                 ;;
     
