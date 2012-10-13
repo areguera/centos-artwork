@@ -31,8 +31,8 @@ function svn_deleteRepoFile {
     # Print action reference.
     cli_printMessage "${TARGET}" --as-deleting-line
 
-    # Verify target existence.
-    cli_checkFiles -e ${TARGET}
+    # Verify target existence. Be sure it is under version control.
+    cli_checkFiles "${TARGET}" --is-versioned
 
     # Revert changes before deleting related files.
     ${SVN} revert ${TARGET} --quiet --recursive
