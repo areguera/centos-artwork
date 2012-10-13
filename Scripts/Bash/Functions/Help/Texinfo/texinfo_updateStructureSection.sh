@@ -27,6 +27,7 @@
 function texinfo_updateStructureSection {
 
     local PATTERN=''
+    local MANUAL_ENTRY=''
     local MANUAL_ENTRIES=''
     local ACTIONNAM_SECMENU=''
     local ACTIONNAM_CROSREF=''
