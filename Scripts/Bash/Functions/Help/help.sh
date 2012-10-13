@@ -92,10 +92,14 @@ function help {
         # Define name used by manual's main definition file.
         MANUAL_NAME=${MANUAL_SLFN[${MANUAL_DOCENTRY_ID}]}
 
+        # Define extension used by documentation manuals. The
+        # extension used must be the same passed in the format option.
+        MANUAL_EXTENSION=${FLAG_FORMAT}
+
         # Define absolute path to directory holding language-specific
         # models.
         MANUAL_BASEDIR="${MANUAL_TLDIR}/$(cli_getRepoName \
-            ${FLAG_FORMAT} -d)/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
+            ${MANUAL_EXTENSION} -d)/${MANUAL_DIRN[${MANUAL_DOCENTRY_ID}]}"
 
         # Define absolute path to directory holding language-specific
         # source files.
@@ -115,11 +119,8 @@ function help {
         # files in different formats (.info, .pdf, .xml, etc.).
         MANUAL_BASEFILE="${MANUAL_BASEDIR_L10N}/${MANUAL_NAME}"
 
-        # Verify absolute path to base file.
-        cli_checkFiles -f ${MANUAL_BASEFILE}.${FLAG_FORMAT}
-
         # Redefine function export id based on documentation format.
-        EXPORTID="${CLI_FUNCDIRNAM}/$(cli_getRepoName ${FLAG_FORMAT} -d)/${FLAG_FORMAT}"
+        EXPORTID="${CLI_FUNCDIRNAM}/$(cli_getRepoName ${MANUAL_EXTENSION} -d)/${MANUAL_EXTENSION}"
 
         # Define manual base file used for output.
         MANUAL_OUTPUT_BASEFILE=$(echo $MANUAL_BASEFILE | sed -r 's!Models/!Manuals/!')
@@ -179,7 +180,7 @@ function help {
         fi
 
         # Execute format-specific documentation tasks.
-        ${FLAG_FORMAT}
+        ${MANUAL_EXTENSION}
 
         # Unset the exported functions before go on with the next
         # documentation entry provided as non-option argument to
