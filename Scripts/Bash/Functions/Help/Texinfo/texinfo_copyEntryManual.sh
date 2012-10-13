@@ -52,15 +52,15 @@ function texinfo_copyEntryManual {
     # Create manual structure
     texinfo_createStructure
 
-    # Print action maessage.
-    cli_printMessage "`gettext "Updating chapter menus and nodes inside manual structure."`" --as-response-line
-
     # Loop through list of chapters.
     for MANUAL_CHAPTER in ${MANUAL_CHAPTERS};do
 
+        # Print action name.
+        cli_printMessage "${MANUAL_BASEDIR_L10N}" --as-creating-line
+
         # Copy chapter directory from source to target using
         # subversion.
-        ${CLI_NAME} svn --copy ${MANUAL_CHAPTER} ${MANUAL_BASEDIR_L10N}
+        cli_runFnEnvironment svn --copy ${MANUAL_CHAPTER} ${MANUAL_BASEDIR_L10N}
 
         # Define manual chapter name.
         local MANUAL_CHAPTER_NAME=$(basename ${MANUAL_CHAPTER})
