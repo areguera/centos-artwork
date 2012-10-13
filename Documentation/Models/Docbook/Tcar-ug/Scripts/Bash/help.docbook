@@ -431,30 +431,71 @@
     <refsection id="scripts-bash-help-description-create">
     <title>Creating Document Structures</title>
     <para>
-        To create new documentation manuals inside &TCAR; use the
-        following command: 
+        To create new documentation manuals inside &TCAR; you use the
+        <option>--edit</option>. This option edits existent manuals or
+        creates new ones. For example, consider you need to create a
+        documentation manual in texinfo format to describe different
+        kind of animals.  This manual will be named <quote>My
+        Zoo</quote>, use one chapter for each animal you want to
+        describe and sections to cover the description itself. To
+        create such documentation manual, run the following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit --format="texinfo" "<replaceable>manual:::</replaceable>"</command>
+    <command>centos-art help --edit --format="texinfo" "my-zoo:::"</command>
     </cmdsynopsis>
 
     <para>
-        The first time you execute this command, you will be prompted
-        to enter manual specific information like document format,
-        document title, document subtitle, document author, etc.  Once
-        this information has been collected the
-        <function>help</function> functionality performs some
-        repository verifications and creates the manual source files
-        inside the manual's directory name you specified as
-        <replaceable>manual:::</replaceable>.
+        In case such documentation manual doesn't exist in the
+        <filename
+        class="directory">trunk/Docuementation/Models/Texinfo/</filename>
+        directory, this command will produce the following output:
     </para>
 
+<programlisting>
+The following documentation manual doesn't exist:
+--> trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo.texinfo
+Do you want to create it now? [yes/no]: yes
+------------------------------------------------------------------
+Enter manual's title: My Zoo
+Enter manual's subtitle: Puppet reference
+Enter manual's abstract: This manual describes each puppet at home.
+------------------------------------------------------------------
+</programlisting>
     <para>
         Once the documentation structure has been created this way,
         the recently created documentation manual is ready to receive
         new sectioning levels (e.g., parts, chapters, sections, etc.).
+        For example, to create a new chapter named
+        <quote>Turtles</quote> inside <quote>My-zoo</quote>
+        documentation manual, run the following command:
     </para>
+
+    <cmdsynopsis>
+    <command>centos-art help --edit --format="texinfo" "my-zoo::turtles:"</command>
+    </cmdsynopsis>
+
+<programlisting>
+The following documentation chapter doesn't exist:
+--> trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles
+Do you want to create it now? [yes/no]: yes
+------------------------------------------------------------------
+Enter chapter's title: Turtles
+Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles
+Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter.texinfo
+Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-menu.texinfo
+Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/my-zoo-nodes.texinfo
+Updating        trunk/Documentation/Models/Texinfo/My-zoo/en_US/Turtles/chapter.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/My-zoo/en_US/my-zoo.txt.bz2
+</programlisting>
+
     </refsection>
 
     <refsection id="scripts-bash-help-description-edit">
