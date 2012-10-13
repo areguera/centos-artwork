@@ -56,11 +56,11 @@ function texinfo_makeSeeAlso {
         return
     fi
 
-    # Define `SeeAlso' transltaion marker regular expression pattern.
+    # Define `SeeAlso' translation marker regular expression pattern.
     TMARK_PATTERN="^@c -- <\[${CLI_NAME}\(SeeAlso(,(itemize|enumerate|menu))?\)$"
 
-    # Retrive `SeeAlso' translation marker definition lines. Be sure
-    # to retrive unique definitions only. If the same definition is
+    # Retrieve `SeeAlso' translation marker definition lines. Be sure
+    # to retrieve unique definitions only. If the same definition is
     # present more than once, it will be expanded in one pass. There's
     # no need to go through different passes in order to expand
     # repeated translation marker definition.
