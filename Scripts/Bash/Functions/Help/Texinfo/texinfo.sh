@@ -109,7 +109,7 @@ function texinfo {
         # Read manual's Top node from its info output file.
         info --node="Top" --file="${MANUAL_OUTPUT_BASEFILE}.info.bz2"
 
-    elif [[ $ACTIONNAM =~ "^(copy|rename)Entry$" ]];then
+    elif [[ $ACTIONNAM =~ "^(copy|rename|delete)Entry$" ]];then
 
         # Both `--copy' and `--rename' actions interpret non-option
         # arguments passed to `centos-art.sh' script in a special way.
