@@ -600,7 +600,6 @@ Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
     </cmdsynopsis>
 
 <programlisting>
-------------------------------------------------------------------
 Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
 Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
 Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
@@ -615,9 +614,9 @@ Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
     <para>
         In order to copy documentation entries successfully, the
         source documentation entry must not contain any pending
-        change. Otherwise, the section won't be created and the script
-        will immediatly stop its execution with a <quote>The source
-        location has pending changes.</quote> error message.
+        change. Otherwise, the target section won't be created and the
+        script will immediatly stop its execution with a <quote>The
+        source location has pending changes.</quote> error message.
     </para>
     </warning>
     </refsection>
@@ -650,37 +649,6 @@ Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
     </para>
     </refsection>
 
-    <refsection id="scripts-bash-help-description-updatestructure">
-    <title>Updating Document Structures</title>
-    <para>
-        To update the document structure of one manual, use the
-        following command:
-    </para>
-
-    <cmdsynopsis>
-    <command>centos-art help --update-structure --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>"</command>
-    </cmdsynopsis>
-
-    <para>
-        ...
-    </para>
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-updateoutput">
-    <title>Updating Document Final Outputs</title>
-    <para>
-        To update the document final outputs of one manual, use the
-        following command:
-    </para>
-
-    <cmdsynopsis>
-    <command>centos-art help --update-output --format="texinfo" "<replaceable>manual:::</replaceable>"</command>
-    </cmdsynopsis>
-
-    <para>
-        ...
-    </para>
-    </refsection>
     </refsection>
 
     <refsection id="scripts-bash-help-bugs">
