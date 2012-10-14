@@ -55,7 +55,7 @@ function locale_editMessages {
     if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
 
         # Define list of PO files for XML-based files.
-        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" --pattern="messages\.po$")
+        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" --pattern="^.+/messages\.po$")
 
         # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
@@ -63,7 +63,7 @@ function locale_editMessages {
     elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Scripts/Bash$" ]];then
 
         # Define list of PO files for script files.
-        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="${FLAG_FILTER}/messages\.po$")
+        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="^.*${FLAG_FILTER}/messages\.po$")
 
     else
         cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
