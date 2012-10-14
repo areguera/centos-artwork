@@ -40,7 +40,8 @@ function texinfo_getEntryNode {
         -e "s!chapter!!" \
         -e 's!(/|-)! !g' \
         -e 's!\<([[:alpha:]]+)\>!\u\1!g' \
-        -e 's!^[[:space:]]+!!')
+        -e 's!^[[:space:]]+!!' \
+        -e 's![[:space:]]+$!!')
 
     echo "$NODE"
 
