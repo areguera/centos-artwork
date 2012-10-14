@@ -55,7 +55,7 @@ function docbook_convertToXhtmlChunk {
 
     # Prepare XSL final instances used in transformations.
     docbook_prepareStyles $(cli_getFilesList \
-        ${DOCBOOK_XSL} --pattern='.*docbook2xhtml-(chunks|common)\.xsl')
+        ${DOCBOOK_XSL} --pattern='^.*/docbook2xhtml-(chunks|common)\.xsl$')
 
     # Transform DocBook XML to XHTML supressing all stderr output.
     xsltproc --output ${DST} ${STYLE_INSTANCE_FINAL} ${SRC} &> /dev/null
