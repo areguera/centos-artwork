@@ -47,8 +47,11 @@ function render_doThemeActions {
     # the FLAG_FILTER value be.
     local MODEL_DIR=''
     local MODEL_DIRS="$(cli_getFilesList ${MODEL_BASEDIR}/${FLAG_THEME_MODEL} \
-        --pattern=".+" --type="d" | egrep -v '\.svn' | sed -r '/^[[:space:]]*$/d' | sed -r \
-        "s!^.*/${FLAG_THEME_MODEL}/!!" | sed -r '/^[[:space:]]*$/d')"
+        --pattern="^.+$" --type="d" \
+        | egrep -v '\.svn' \
+        | sed -e '/^[[:space:]]*$/d' \
+              -e "s!^.*/${FLAG_THEME_MODEL}/!!" \
+              -e '/^[[:space:]]*$/d')"
 
     # Define design model regular expression patterns from design
     # models directory structure.
