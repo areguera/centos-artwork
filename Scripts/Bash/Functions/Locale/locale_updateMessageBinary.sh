@@ -45,7 +45,7 @@ function locale_updateMessageBinary {
     # functionalities we did donwload into the working copy and no
     # others. There is no need to have translation messages for
     # functionalities we didn't download.
-    local PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type='f' --pattern="/messages.po$")
+    local PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type='f' --pattern="^.+/messages.po$")
 
     # Define absolute path to machine object directory.
     local MO_DIR="${L10N_WORKDIR}/LC_MESSAGES"
