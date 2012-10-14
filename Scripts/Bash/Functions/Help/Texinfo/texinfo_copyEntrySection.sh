@@ -70,7 +70,7 @@ function texinfo_copyEntrySection {
     # required in order to update the `chapter-menu.texinfo' file
     # inside the target chapter where section entry was copied to, not
     # the source chapter where the section entry was taken from.  This
-    # is particulary useful section entries are copied from one
+    # is particularly useful section entries are copied from one
     # chapter into another different.
     local MANUAL_CHAPTER_DIR=$(dirname ${MANUAL_ENTRY_DST})
 
