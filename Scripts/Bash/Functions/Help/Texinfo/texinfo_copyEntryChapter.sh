@@ -54,17 +54,18 @@ function texinfo_copyEntryChapter {
     # copied to target chapter. Don't include chapter's main
     # definition files.
     local MANUAL_ENTRIES=$(cli_getFilesList $MANUAL_ENTRY_SRC \
-        --pattern="${MANUAL_ENTRY_SRC}/.+\.${MANUAL_EXTENSION}" \
-        | egrep -v '/chapter')
+        --pattern="^.+\.${MANUAL_EXTENSION}$" | egrep -v '/chapter')
 
-    # Copy sections from source chapter to target chapter.
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
-        cli_runFnEnvironment svn --copy $MANUAL_ENTRY $MANUAL_ENTRY_DST
-    done
 
-    # Update section menu, nodes and cross reference definitions
-    # inside target chapter where all section entries were copied to.
-    texinfo_updateStructureSection "${MANUAL_ENTRY_DST}/.+\.${MANUAL_EXTENSION}"
+        # Copy sections from source chapter to target chapter.
+        cli_runFnEnvironment svn --copy $MANUAL_ENTRY $MANUAL_ENTRY_DST
+
+        # Update section menu, nodes and cross reference definitions
+        # to all sections inside the documentation manual.
+        texinfo_updateStructureSection "${MANUAL_ENTRY_DST}/$(basename ${MANUAL_ENTRY})"
+
+    done
 
     # Update chapter menu and node definitions inside the manual
     # structure.
