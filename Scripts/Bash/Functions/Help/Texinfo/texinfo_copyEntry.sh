@@ -38,7 +38,7 @@ function texinfo_copyEntry {
 
         # In this configuration, the section name is specified in
         # first non-option argument and optionally in the second
-        # non-option arugment.
+        # non-option argument.
         texinfo_copyEntrySection
          
     elif [[ ${MANUAL_CHAP[${MANUAL_DOCENTRY_ID}]} != '' ]] \
@@ -61,7 +61,7 @@ function texinfo_copyEntry {
         texinfo_copyEntryManual
 
         # In this configuration, there is no need to update section
-        # menus, nodes and cross refereces. The section definition
+        # menus, nodes and cross references. The section definition
         # files were copied from the source manual with any change so
         # the manual should build without any problem. Be sure such
         # verification will never happen.
