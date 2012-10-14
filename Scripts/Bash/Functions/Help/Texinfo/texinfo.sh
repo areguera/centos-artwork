@@ -127,8 +127,8 @@ function texinfo {
 
     else
 
-        # Execute action names as part of normal help's execution
-        # flow, without any extra modification.
+        # Execute action names as part of normal help command's
+        # execution flow, without any extra modification.
         texinfo_${ACTIONNAM}
 
     fi
