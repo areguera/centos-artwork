@@ -26,17 +26,11 @@
 
 function texinfo_updateStructureSection {
 
-    local PATTERN=''
-    local MANUAL_ENTRY=''
-    local MANUAL_ENTRIES=''
-    local ACTIONNAM_SECMENU=''
-    local ACTIONNAM_CROSREF=''
+    local PATTERN="${1}"
 
     # Define regular expression pattern used to build the list of
     # section entries that will be processed.
-    if [[ "$1" != '' ]];then
-        PATTERN="$1"
-    else
+    if [[ $PATTERN == '' ]];then
         PATTERN="${MANUAL_ENTRY}"
     fi
 
@@ -46,8 +40,14 @@ function texinfo_updateStructureSection {
     # the command-line (e.g., `centos-art help --update-structure').
     if [[ $PATTERN =~ "${MANUAL_NAME}\.${MANUAL_EXTENSION}$" ]] \
         || [[ $PATTERN =~ "chapter\.${MANUAL_EXTENSION}$" ]];then
-        PATTERN="$(dirname ${MANUAL_ENTRY})/.+\.${MANUAL_EXTENSION}"
+        PATTERN="$(dirname ${MANUAL_ENTRY} \
+            | sed "s,${TCAR_WORKDIR},,")/.+\.${MANUAL_EXTENSION}"
     fi
+
+    local MANUAL_ENTRY=''
+    local MANUAL_ENTRIES=''
+    local ACTIONNAM_SECMENU=''
+    local ACTIONNAM_CROSREF=''
 
     # Define action to perform on menu, nodes and cross references
     # definitions.
