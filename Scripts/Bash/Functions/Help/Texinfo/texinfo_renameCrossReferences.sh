@@ -46,7 +46,8 @@ function texinfo_renameCrossReferences {
     # Define list of entries to process. This is, all the texinfo
     # source files the documentation manual is made of.
     local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
-        --pattern=".+\.${MANUAL_EXTENSION}")
+        --pattern="^.+\.${MANUAL_EXTENSION}$" \
+            | egrep -v "(${MANUAL_NAME}|chapter)-(menu|nodes|index)")
 
     # Update node cross references. The node-related cross reference
     # definition, long ones specially, could require more than one
@@ -57,14 +58,14 @@ function texinfo_renameCrossReferences {
     # `a' letter to name the label we use, followed by N command to
     # add a newline to the pattern space, the s command to make the
     # pattern replacement using the `g' flag to make it global and
-    # finaly the command `b' to branch label named `a'.
+    # finally the command `b' to branch label named `a'.
     #
     # Inside the pattern space, the `\<' and `\>' are used to restrict
     # the match pattern to a word boundary. The word boundary
     # restriction applied here is required to avoid undesired
     # replacements when we replace singular words with their plurals.
     # For example, if we need to change the node `Manual' to its
-    # plular (i.e., `Manuals'), and no boundary restriction is used in
+    # plural (i.e., `Manuals'), and no boundary restriction is used in
     # the pattern space to do that, we might end up having nodes like
     # `Manualsssss' which probably doesn't exist. This is because this
     # sed command might be applied to the same file more than once;
