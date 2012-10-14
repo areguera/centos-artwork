@@ -46,8 +46,8 @@ function texinfo_deleteEntryChapter {
     # that point to section entries inside the chapter that will be
     # deleted. Take care don't include the chapter definition files.
     local MANUAL_ENTRIES=$(cli_getFilesList $MANUAL_CHAPTER_DIR \
-        --pattern=".+\.${MANUAL_EXTENSION}" \
-        | egrep -v '/chapter')
+        --pattern="^.+\.${MANUAL_EXTENSION}$" \
+        | egrep -v "(${MANUAL_NAME}|chapter)-(menu|nodes|index)")
 
     # Remove chapter directory using subversion to register the
     # change.
@@ -57,13 +57,13 @@ function texinfo_deleteEntryChapter {
     texinfo_updateChapterMenu --delete-entry
     texinfo_updateChapterNodes
 
-    # Loop through section entries retrived from chapter, before
+    # Loop through section entries retrieved from chapter, before
     # deleting it, in order to remove cross references pointing to
     # those section entries. Since the chapter and all its sections
     # have been removed, cross references pointing them will point to
     # non-existent section entries. This way, all cross references
     # pointing to non-existent section entries will be transformed in
-    # order for documentors to advertise the section entry state.
+    # order for documenters to advertise the section entry state.
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
         texinfo_deleteCrossReferences ${MANUAL_ENTRY}
     done
