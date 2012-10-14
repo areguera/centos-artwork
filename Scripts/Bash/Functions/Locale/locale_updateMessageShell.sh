@@ -64,7 +64,7 @@ function locale_updateMessageShell {
         # in their file names (e.g., it would be difficult to match
         # only `hello.sh' if `hello-world.sh' also exists in the same
         # location).
-        local FILES=$(cli_getFilesList ${FNDIR} --pattern="\.${EXTENSION}$")
+        local FILES=$(cli_getFilesList ${FNDIR} --pattern="^.+\.${EXTENSION}$")
 
         # Retrive translatable strings from shell script files and
         # create the portable object template (.pot) from them.
