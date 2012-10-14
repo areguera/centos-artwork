@@ -34,7 +34,7 @@ function texinfo_createStructureChapters {
     # `--chapter' option passed in the command-line.
     local FILE=''
     local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE_L10N} \
-        --pattern='chapter(-menu|-nodes)?\.texinfo' --mindepth='2' \
+        --pattern="^.+/chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}$" --mindepth='2' \
         | grep -v '/Chapters/')
 
     # Loop through chapter structures and create them inside the
