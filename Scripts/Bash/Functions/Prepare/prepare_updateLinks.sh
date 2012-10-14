@@ -74,13 +74,13 @@ function prepare_updateLinks {
     USERFILES="${APPS_DIR}/${CLI_NAME}"
 
     # Define link relation for fonts.
-    for FONT in $(cli_getFilesList "${WCDIR_FONTS}" --pattern='.+\.ttf');do
+    for FONT in $(cli_getFilesList "${WCDIR_FONTS}" --pattern='^.+\.ttf$');do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${FONT_DIR}/$(basename $FONT)
         LINKS_DST[((++${#LINKS_DST[*]}))]=${FONT}
     done
 
     # Define link relation for common palettes.
-    for PALETTE in $(cli_getFilesList "${WCDIR_PALETTES}" --pattern=".+\.gpl");do
+    for PALETTE in $(cli_getFilesList "${WCDIR_PALETTES}" --pattern="^.+\.gpl$");do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_DIR_PALETTES}/$(prepare_getLinkName ${WCDIR_PALETTES} ${PALETTE})
         LINKS_DST[((++${#LINKS_DST[*]}))]=${PALETTE}
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${INKS_DIR_PALETTES}/$(prepare_getLinkName ${WCDIR_PALETTES} ${PALETTE})
@@ -88,13 +88,13 @@ function prepare_updateLinks {
     done
 
     # Define link relation for common brushes.
-    for BRUSH in $(cli_getFilesList "${WCDIR_BRUSHES}" --pattern=".+\.(gbr|gih)");do
+    for BRUSH in $(cli_getFilesList "${WCDIR_BRUSHES}" --pattern="^.+\.(gbr|gih)$");do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_DIR_BRUSHES}/$(prepare_getLinkName ${WCDIR_BRUSHES} ${BRUSH})
         LINKS_DST[((++${#LINKS_DST[*]}))]=${BRUSH}
     done
 
     # Define link relation for common patterns.
-    for PATTERN in $(cli_getFilesList "${WCDIR_PATTERNS}" --pattern=".+\.png");do
+    for PATTERN in $(cli_getFilesList "${WCDIR_PATTERNS}" --pattern="^.+\.png$");do
         LINKS_SRC[((++${#LINKS_SRC[*]}))]=${GIMP_DIR_PATTERNS}/$(prepare_getLinkName ${WCDIR_BRUSHES} ${BRUSH})
         LINKS_DST[((++${#LINKS_DST[*]}))]=${PATTERN}
     done
@@ -140,12 +140,12 @@ function prepare_updateLinks {
     # common brushes using symbolic links from the working copy to the
     # user's configuration directories inside the workstation.
     USERFILES=$(echo "$USERFILES";
-        cli_getFilesList ${APPS_DIR} --pattern='.+\.sh';
-        cli_getFilesList ${FONT_DIR} --pattern='.+\.ttf';
-        cli_getFilesList ${GIMP_DIR_BRUSHES} --pattern='.+\.(gbr|gih)';
-        cli_getFilesList ${GIMP_DIR_PATTERNS} --pattern='.+\.(pat|png|jpg|bmp)';
-        cli_getFilesList ${GIMP_DIR_PALETTES} --pattern='.+\.gpl';
-        cli_getFilesList ${INKS_DIR_PALETTES} --pattern='.+\.gpl';)
+        cli_getFilesList ${APPS_DIR} --pattern='^.+\.sh$';
+        cli_getFilesList ${FONT_DIR} --pattern='^.+\.ttf$';
+        cli_getFilesList ${GIMP_DIR_BRUSHES} --pattern='^.+\.(gbr|gih)$';
+        cli_getFilesList ${GIMP_DIR_PATTERNS} --pattern='^.+\.(pat|png|jpg|bmp)$';
+        cli_getFilesList ${GIMP_DIR_PALETTES} --pattern='^.+\.gpl$';
+        cli_getFilesList ${INKS_DIR_PALETTES} --pattern='^.+\.gpl$';)
 
     # Remove user-specific configuration files from user's home
     # directory before creating symbolic links from the working copy.
