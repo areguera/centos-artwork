@@ -110,7 +110,11 @@ function cli_getFilesList {
     # to use path expansion.  Using path expansion reduce the amount
     # of places to find out things and so the time required to finish
     # the task.
-    PATTERN="^/.*${PATTERN}$"
+    #
+    # Don't do such path expansion here. Instead, do it when you call
+    # this function. Otherwise you would be prohibiting the
+    # application of exact patterns. 
+    #PATTERN="^/.*${PATTERN}$"
 
     # Define list of files to process. At this point we cannot verify
     # whether the LOCATION is a directory or a file since path
