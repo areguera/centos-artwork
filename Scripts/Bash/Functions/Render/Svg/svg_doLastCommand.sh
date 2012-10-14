@@ -40,7 +40,7 @@ function svg_doLastCommand {
     # files in the output directory which extension match the
     # extension pattern previously defined.
     local FILE=''
-    local FILES=$(cli_getFilesList $OUTPUT --pattern=".+\.${EXTENSION}")
+    local FILES=$(cli_getFilesList $OUTPUT --pattern="^.+\.${EXTENSION}$")
 
     for FILE in $FILES;do
 
