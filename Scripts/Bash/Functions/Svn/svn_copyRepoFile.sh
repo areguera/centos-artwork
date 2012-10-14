@@ -37,7 +37,11 @@ function svn_copyRepoFile {
     cli_checkFiles ${SOURCE} -e --is-versioned
 
     # Print action reference.
-    cli_printMessage "${TARGET}" --as-creating-line
+    if [[ -f ${SOURCE} ]];then
+        cli_printMessage "${TARGET}/$(basename ${SOURCE})" --as-creating-line
+    else
+        cli_printMessage "${TARGET}" --as-creating-line
+    fi
 
     # Copy source location to its target using version control.
     ${SVN} copy ${SOURCE} ${TARGET} --quiet
