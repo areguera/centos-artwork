@@ -57,7 +57,7 @@ function texinfo_createChapter {
     local FILE=''
     local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE_L10N}/Chapters" \
         --maxdepth='1' \
-        --pattern="chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}")
+        --pattern="^.+/chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}$")
 
     # Create chapter directory using subversion. This is the place
     # where all chapter-specific files will be stored in.
