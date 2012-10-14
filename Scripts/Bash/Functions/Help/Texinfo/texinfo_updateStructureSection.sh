@@ -40,8 +40,7 @@ function texinfo_updateStructureSection {
     # the command-line (e.g., `centos-art help --update-structure').
     if [[ $PATTERN =~ "${MANUAL_NAME}\.${MANUAL_EXTENSION}$" ]] \
         || [[ $PATTERN =~ "chapter\.${MANUAL_EXTENSION}$" ]];then
-        PATTERN="$(dirname ${MANUAL_ENTRY} \
-            | sed "s,${TCAR_WORKDIR},,")/.+\.${MANUAL_EXTENSION}"
+        PATTERN="^$(dirname ${MANUAL_ENTRY})/.+\.${MANUAL_EXTENSION}$"
     fi
 
     local MANUAL_ENTRY=''
@@ -96,7 +95,8 @@ function texinfo_updateStructureSection {
     # definitions (i.e., all those section definition file that match
     # the pattern you specified). 
     MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
-        --pattern="${PATTERN}" | egrep -v "/(${MANUAL_NAME}|chapter)")
+        --pattern="${PATTERN}" \
+        | egrep -v "/(${MANUAL_NAME}|chapter)-(menu|nodes|index)")
 
     # Verify list of target entries. Assuming is is empty,  define
     # list of target documentation entries using pattern as reference
@@ -127,10 +127,8 @@ function texinfo_updateStructureSection {
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
 
-        # Don't print action message here. Instead, use the related
-        # action functionality for doing so. Otherwise, if we print it
-        # here, delete actions will display a creating line for the
-        # documentation entry already deleted which is rather awkward. 
+        # Don't print action name here. Instead, make it integral part
+        # of documentation entry creation process.
 
         texinfo_${ACTIONNAM_SECMENU}
         texinfo_updateSectionNodes
