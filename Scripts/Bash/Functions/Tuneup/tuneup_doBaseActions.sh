@@ -68,7 +68,7 @@ function tuneup_doBaseActions {
 
         # Build list of files to process using action value as
         # reference.
-        FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="${FLAG_FILTER}\.${TUNEUP_EXTENSION}")
+        FILES=$(cli_getFilesList ${ACTIONVAL} --pattern="^.*${FLAG_FILTER}\.${TUNEUP_EXTENSION}$")
 
         # Verify list of files to process. Assuming no file is found,
         # evaluate the next supported file extension.
