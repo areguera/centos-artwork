@@ -61,7 +61,7 @@ function cli_exportFunctions {
 
     # Define the list of files.
     local FUNCFILE=''
-    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${SUFFIX}\.sh" \
+    local FUNCFILES=$(cli_getFilesList ${LOCATION} --pattern="${LOCATION}/${SUFFIX}\.sh$" \
         --maxdepth='1' --mindepth='1' --type='f')
 
     # Verify the list of files. If no function file exists for the
