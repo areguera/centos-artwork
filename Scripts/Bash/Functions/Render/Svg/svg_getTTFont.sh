@@ -45,7 +45,7 @@ function svg_getTTFont {
     local FONT_DIR='/usr/share/fonts'
 
     # Define list of all TTF files installed in your workstation.
-    local FONT_FILES=$(cli_getFilesList ${FONT_DIR} --pattern="\.ttf")
+    local FONT_FILES=$(cli_getFilesList ${FONT_DIR} --pattern="^.+\.ttf$")
 
     # Define TTF absolute path based on pattern. Notice that if the
     # pattern matches more than one value, only the first one of a
