@@ -29,8 +29,8 @@ function texinfo_copyEntryManual {
     # created from template, rendition output and subversion.
     local MANUAL_CHAPTER=''
     local MANUAL_CHAPTERS=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
-        --maxdepth=1 --mindepth=1 --type="d" --pattern='.+' \
-        | egrep -v "(Licenses|\.svn|${MANUAL_NAME}-xhtml)$")
+        --maxdepth=1 --mindepth=1 --type="d" --pattern='^.+$' \
+        | egrep -v "(Licenses|\.svn)")
 
     # Redefine manual name using manual name passed to `centos-art.sh'
     # script as second non-option argument.
