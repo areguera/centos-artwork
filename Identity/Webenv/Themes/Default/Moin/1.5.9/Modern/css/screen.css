@@ -70,33 +70,6 @@ div#content form .userpref p {
     margin-left: 0;
     }
 
-/* Footer.
---------------------------------------------------------------------*/
-
-div#footer {
-	background: #204C8D url("../img/h1-bg.png") 0 0 repeat;
-	}
-
-div#footer div.credits {
-    padding: 10px;
-    }
-    
-div#footer div.credits .copyright,
-div#footer div.credits .license {
-    font-size: x-small;
-    color: #FFF;
-    line-height: 1.5em;
-    }
-
-div#footer div.credits a {
-    color: #FFF;
-    font-style: italic;
-    }
-
-div#footer div.top {
-    float:right;
-    }
-
 /* Logo
 --------------------------------------------------------------------*/
 div#header div#logo img {
@@ -294,6 +267,105 @@ div#body div.usertrail span.last:after {
 	height: 3px;
 	background-color: #FFF;
 	}
+
+/* Footer.
+--------------------------------------------------------------------*/
+
+#footer {
+    clear: both;
+    margin-top: 20px;
+    padding-bottom: 1em;
+	background: #204C8D url("../img/moin-header-background.png") 0 0 repeat;
+	}
+
+#footer div.credits {
+    padding: 10px;
+    }
+    
+#footer div.credits .copyright,
+#footer div.credits .license {
+    font-size: x-small;
+    color: #FFF;
+    line-height: 1.5em;
+    }
+
+#footer div.credits a {
+    color: #FFF;
+    font-style: italic;
+    }
+
+#footer div.top {
+    float:right;
+    }
+
+#footer .editbar {
+    border-top-width: 2px;
+    border-top-style: dotted;
+    border-top-color: #628EAC;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #C9C9C9;
+    }
+
+#footer .navibar li {
+    background-color: #FFF;
+    background-image: url("../img/moin-navibarbottom-bg.png");
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    -moz-border-radius: 0 0 3px 3px;
+    }
+
+#footer .navibar li:hover {
+    background-color: #628ECA;
+    background-image: url("../img/moin-navibarbottom-hover-bg.png");
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    }
+
+#footer .navibar li.current, 
+#footer .navibar li.current:hover, 
+#footer .navibar li.current:hover a, 
+#footer .navibar li.current:active a {
+    color: #FFFFFF;
+    background-color: #628ECA;
+    background-image: url("../img/moin-navibarbottom-hover-bg.png"); 
+    background-position: left top;
+    background-repeat: repeat-x;
+    }
+
+#credits, 
+#version, 
+#timings {
+    text-align: center;
+    font-size: 0.88em;
+    padding: 0;
+    margin-top: 2.5em;
+    color: #EEE;
+    }
+
+#credits a { 
+    color: #EEE; 
+    }
+
+#credits a:hover {
+    text-decoration: underline;
+    }
+
+#credits li, #timings li {
+    display: inline;
+    padding-right: 2px;
+    margin-right: 4px;
+    color: #EEE;
+    }
+
+#credits img {
+    vertical-align: middle;
+    }
+
+#content {
+    padding: 0 50px 0 50px;
+    }
+
 /* 
  * Webenv -> Forms
  *
@@ -556,9 +628,9 @@ div#header #last-releases a {
  * ----------------------------------------------------------------------
  */
 
-div#body ul { 
-    list-style: url("../img/ul.png") disc; 
-    }
+ul { 
+    list-style: url("../img/moin-ul.png") circle; 
+    } 
 
 div#body ul,
 div#body ol { 
@@ -837,7 +909,7 @@ div#header div.tabs span:hover a span {
     display: block;
     height: 20px;
     padding: 0;
-    padding-left: 20px;
+    padding-left: 10px;
     margin: 0;
     font-size: 0.9em;
 
@@ -860,6 +932,7 @@ div#header div.tabs span:hover a span {
     background-image: url("../img/moin-navibartop-bg.png");
     background-position: left top;
     background-repeat: repeat-x;
+    -moz-border-radius: 3px 3px 0 0;
     }
 
 *[dir="rtl"] .navibar li {
@@ -1113,81 +1186,3 @@ div#header div.tabs span:hover a span {
     background: #628ECA;
     }
 
-/* Footer */
-
-#footer {
-    clear: both;
-    margin-top: 20px;
-    padding-bottom: 1em;
-    background-color: #204C8D;
-    background-image: url("../img/moin-header-background.png");
-    }
-
-#footer .editbar {
-    border-top-width: 2px;
-    border-top-style: dotted;
-    border-top-color: #628EAC;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: #C9C9C9;
-    }
-
-#footer .navibar li {
-    background-color: #FFF;
-    background-image: url("../img/moin-navibarbottom-bg.png");
-    background-position: left bottom;
-    background-repeat: repeat-x;
-    }
-
-#footer .navibar li:hover {
-    background-color: #628ECA;
-    background-image: url("../img/moin-navibarbottom-hover-bg.png");
-    background-position: left bottom;
-    background-repeat: repeat-x;
-    }
-
-#footer .navibar li.current, 
-#footer .navibar li.current:hover, 
-#footer .navibar li.current:hover a, 
-#footer .navibar li.current:active a {
-    color: #FFFFFF;
-    background-color: #628ECA;
-    background-image: url("../img/moin-navibarbottom-hover-bg.png"); 
-    background-position: left top;
-    background-repeat: repeat-x;
-    }
-
-#credits, #version, #timings {
-    text-align: center;
-    font-size: 0.88em;
-    padding: 0;
-    margin-top: 2.5em;
-    color: #EEE;
-    }
-
-#credits a { 
-    color: #EEE; 
-    }
-
-#credits a:hover {
-    text-decoration: underline;
-    }
-
-#credits li, #timings li {
-    display: inline;
-    padding-right: 2px;
-    margin-right: 4px;
-    color: #EEE;
-    }
-
-#credits img {
-    vertical-align: middle;
-    }
-
-#content {
-    padding: 0 50px 0 50px;
-    }
-
-ul { 
-    list-style: url("../img/moin-ul.png") circle; 
-    } 
