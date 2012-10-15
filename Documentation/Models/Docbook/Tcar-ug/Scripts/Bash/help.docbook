@@ -279,11 +279,15 @@
     <listitem>
     <para>
         Update document structure (e.g., cross references, menus,
-        nodes, etc.). This option should be used whenever a document
-        structure changes (e.g., when documentation entries are added,
-        copied, renamed, deleted, etc.). This option grantees the
-        document integrity and should be run before the
-        <option>--update-output</option> option.
+        nodes, etc.) and should be passed with a section as
+        documentation entry.
+    </para>
+    <para>
+        This option should be used whenever a document structure
+        changes (e.g., documentation entries are added, copied,
+        renamed, deleted, etc.). This option grantees the document
+        integrity and should be run before updating documentation
+        manual final output files.
     </para>
     </listitem>
     </varlistentry>
@@ -309,11 +313,11 @@
     <variablelist>
     <varlistentry>
     <term>
-        "<replaceable>manual:part:chapter:section-1</replaceable>" "<replaceable>manual:part:chapter:section-2</replaceable>"</term>
+        "<replaceable>manual:part:chapter:section1</replaceable>" "<replaceable>manual:part:chapter:section2</replaceable>"</term>
     <listitem>
     <para>
-        Duplicates <replaceable>section-1</replaceable> as
-        <replaceable>section-2</replaceable> inside the same
+        Duplicates <replaceable>section1</replaceable> as
+        <replaceable>section2</replaceable> inside the same
         <replaceable>chapter</replaceable>,
         <replaceable>part</replaceable> and
         <replaceable>manual</replaceable>.
@@ -323,11 +327,11 @@
 
     <varlistentry>
     <term>
-        "<replaceable>manual:part:chapter-1:</replaceable>" "<replaceable>manual:part:chapter-2:</replaceable>"</term>
+        "<replaceable>manual:part:chapter1:</replaceable>" "<replaceable>manual:part:chapter2:</replaceable>"</term>
     <listitem>
     <para>
-        Duplicates <replaceable>chapter-1</replaceable> as
-        <replaceable>chapter-2</replaceable> inside the same
+        Duplicates <replaceable>chapter1</replaceable> as
+        <replaceable>chapter2</replaceable> inside the same
         <replaceable>part</replaceable> and
         <replaceable>manual</replaceable>.
     </para>
@@ -336,11 +340,11 @@
 
     <varlistentry>
     <term>
-        "<replaceable>manual:part-1::</replaceable>" "<replaceable>manual:part-2::</replaceable>"</term>
+        "<replaceable>manual:part1::</replaceable>" "<replaceable>manual:part2::</replaceable>"</term>
     <listitem>
     <para>
-        Duplicates <replaceable>part-1</replaceable> as
-        <replaceable>part-2</replaceable> inside the same
+        Duplicates <replaceable>part1</replaceable> as
+        <replaceable>part2</replaceable> inside the same
         <replaceable>manual</replaceable>.
     </para>
     </listitem>
@@ -348,11 +352,11 @@
 
     <varlistentry>
     <term>
-        "<replaceable>manual-1:::</replaceable>" "<replaceable>manual-2:::</replaceable>"</term>
+        "<replaceable>manual1:::</replaceable>" "<replaceable>manual2:::</replaceable>"</term>
     <listitem>
     <para>
-        Duplicates <replaceable>manual-1</replaceable> as
-        <replaceable>manual-2</replaceable> inside <filename
+        Duplicates <replaceable>manual1</replaceable> as
+        <replaceable>manual2</replaceable> inside <filename
         class="directory">trunk/Documentation/Models/${FLAG_FORMAT}/</filename>
         directory, where ${FLAG_FORMAT} is the name of the format
         passed as option with the first letter in uppercase and the
@@ -382,7 +386,16 @@
         source section belongs to. The same applies to chapters, and
         parts.
     </para>
-            
+
+    <para>
+        When you copy documentation entries through this option, the
+        source documentation entry you specify must not contain
+        pending changes.  Otherwise, the target section won't be
+        created and the script will immediatly stop its execution with
+        a <quote>The source location has pending changes.</quote>
+        error message.
+    </para>
+
     </listitem>
     </varlistentry>
 
@@ -394,6 +407,21 @@
         than one documentation entry by specifying several
         documentation entries in the command line.
     </para>
+    <para>
+        When you delete documentation entries, you can pass any number
+        of documentation entries as argument. The documentation
+        entries you provide will be processed one by one.
+    </para>
+    <para>
+        When you delete a documentation entry from a documentation
+        manual, all cross references pointing to the deleted
+        documentation entry will be transformed into something
+        different to point out the fact that the related documentation
+        entry has been removed from the documentation manual and
+        restored back if you create the deleted section again. The
+        purpose of this is to keep the documentation manual structure
+        in a consistent state.
+    </para>
     </listitem>
     </varlistentry>
 
@@ -401,28 +429,24 @@
     <term><option>--rename</option></term>
     <listitem>
     <para>
-        Rename documentation entries inside the working copy.  
+        Rename documentation entries inside the working copy. This
+        option copies the source documentation entry to its target
+        location, removes the source documentation entry, and restores
+        removed cross references renaming them to point the specified
+        target documentation entry.
     </para>
     <para>
-        When documentation entries are renamed, it is required to pass
+        When you rename documentation entries, it is required to pass
         only two non-option parameters to the command-line. The first
         non-option parameter is considered the source location and the
         second one the target location.  Both source location and
-        target location must point to a directory under the working
-        copy.
+        target location must point to a directory under version
+        control inside the working copy.
     </para>
     </listitem>
     </varlistentry>
     </variablelist>
 
-    <para>
-        When documentation entries are removed (e.g., through
-        <option>--delete</option> or <option>--rename</option>
-        options), the <function>help</function> functionality takes
-        care of updating nodes, menus and cross refentrys related to
-        documentation entries in order to keep the manual structure in
-        a consistent state.
-    </para>
     </refsection>
 
     <refsection id="scripts-bash-help-examples">
@@ -442,7 +466,8 @@
     <title>Creating Document Structures</title>
     <para>
         To create new documentation manuals inside &TCAR; you need to
-        provide the <option>--edit</option> option and a documentation
+        provide both <option>--edit</option> and
+        <option>--format</option> options as well as a documentation
         entry in the form <quote><literal>manual:::</literal></quote>
         to the <function>help</function> functionality.
     </para>
@@ -472,28 +497,28 @@
 
 <programlisting>
 The following documentation manual doesn't exist:
---> trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.texinfo
+--> trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
 Do you want to create it now? [yes/no]: yes
 Enter manual's title: My Zoo
-Enter manual's subtitle: Maintenance reference
-Enter manual's abstract: This manual relates pets' maintenance tasks.
-Creating        trunk/Documentation/Models/Texinfo/MyZoo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.conf
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-index.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Licenses/chapter-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Licenses/chapter-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Licenses/chapter.texinfo
-Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+Enter manual's subtitle: Reference
+Enter manual's abstract: This manual describes my zoo maintenance tasks.
+Creating        trunk/Documentation/Models/Texinfo/Myzoo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.conf
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-index.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter.texinfo
+Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
+Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     <para>
@@ -511,22 +536,22 @@ Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 
 <programlisting>
 The following documentation chapter doesn't exist:
---> trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles
+--> trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles
 Do you want to create it now? [yes/no]: yes
 Enter chapter's title: Turtles
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter.texinfo
-Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-menu.texinfo
-Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/myzoo-nodes.texinfo
-Updating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/chapter.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter-menu.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter-nodes.texinfo
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter.texinfo
+Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-menu.texinfo
+Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-nodes.texinfo
+Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     <para>
@@ -542,15 +567,15 @@ Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 
 <programlisting>
 The following documentation section doesn't exist:
---> trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
+--> trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
 Do you want to create it now? [yes/no]: yes
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     </refsection>
@@ -591,8 +616,7 @@ Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
         To copy documentation entries you use the
         <option>--copy</option> option with two documentation entries,
         where the first one is the source location and the second one
-        the target location.  This need can be covered with the
-        following command:
+        the target location.  To do this, run the following command:
     </para>
 
     <cmdsynopsis>
@@ -601,7 +625,6 @@ Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 
 <programlisting>
 Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
-Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
 Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
 Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
 Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
@@ -610,43 +633,62 @@ Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
 Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
-    <warning>
-    <para>
-        In order to copy documentation entries successfully, the
-        source documentation entry must not contain any pending
-        change. Otherwise, the target section won't be created and the
-        script will immediatly stop its execution with a <quote>The
-        source location has pending changes.</quote> error message.
-    </para>
-    </warning>
-    </refsection>
-
-    <refsection id="scripts-bash-help-description-delete">
-    <title>Deleting Document Structures</title>
-    <para>
-        To delete one documentation entry, use the following command:
-    </para>
-    <cmdsynopsis>
-    <command>centos-art help --delete --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>"</command>
-    </cmdsynopsis>
-    <para>
-        ...
-    </para>
     </refsection>
 
     <refsection id="scripts-bash-help-description-rename">
     <title>Renaming Document Structures</title>
     <para>
-        To rename one documentation entry, use the following command:
+        Consider you've created the section of Longneck turtle using
+        the following documentation entry format
+        <quote>myzoo::turtles:longnek</quote>, but you didn't notice
+        the typo in it. You've made cross references to the misspelled
+        section in a few pages inside the <quote>My Zoo</quote>
+        documentation manual and some time later you realize the
+        section name has a spelling problem.  To fix such a problem
+        you can rename the misspelled section with the correct one
+        running the following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --copy --format="texinfo" "<replaceable>manual:part:chapter:section</replaceable>" "<replaceable>manual:part:chapter:section</replaceable>"</command>
+    <command>centos-art help --rename --format="texinfo" "myzoo::turtles:longnek" "myzoo::turtles:longneck"</command>
     </cmdsynopsis>
+
+<programlisting>
+Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
+Deleting        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longnek.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+</programlisting>
 
     <para>
         ...
     </para>
+    </refsection>
+
+    <refsection id="scripts-bash-help-description-delete">
+    <title>Deleting Document Structures</title>
+    <para>
+        Consider you gift the turtle named Longneck to a friend and
+        you want to delete its section from the <quote>My Zoo</quote>
+        documentation manual. To do so, run the following command:
+    </para>
+    <cmdsynopsis>
+    <command>centos-art help --delete --format="texinfo" "myzoo::turtles:longneck"</command>
+    </cmdsynopsis>
+<programlisting>
+Deleting        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+</programlisting>
+
     </refsection>
 
     </refsection>
