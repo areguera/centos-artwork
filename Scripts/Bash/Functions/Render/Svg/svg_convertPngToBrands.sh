@@ -32,7 +32,7 @@ function svg_convertPngToBrands {
 
     # Define image formats you want to produce brands for.
     local FORMAT=""
-    local FORMATS="xpm pdf jpg tif pnm"
+    local FORMATS="xpm pdf jpg tif pam"
 
     for SIZE in ${SIZES};do
 
