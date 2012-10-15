@@ -51,9 +51,79 @@ div#body {
 
 div#content {
     padding: 30px;
-    padding-top: 20px;
+    padding-top: 10px;
     background-color: #FFF;
     }
+
+/* Headings
+--------------------------------------------------------------------*/
+
+h1 {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1.9em;
+        margin-top: 0.9em;
+        margin-bottom: 0.9em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #FFF;
+        border: none;
+        background-color: #204C8D;
+        background-image: url("../img/moin-h1-background.png");
+        }
+h2 {
+        font-size: 1.4em;
+        line-height: 1.8em;
+        margin: 0;
+        margin-top: 1.6em;
+        margin-bottom: 0.8em;
+        padding-left: 0.7em; /* Should be the same for h{1-4}*/
+        background-image: url("../img/moin-h2-background.png");
+        border: none;
+        color: #072B61;
+        }
+
+h3 {
+        font-size: 1.25em;
+        line-height: 1.6em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #072B61;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #DADADA;
+        }
+h4 {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0; /* Should be the same for h{1-4} */
+        color: #072B61;
+        border-bottom: none;
+        }
+
+h5 {
+        font-size: 1.1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #072B61;
+        font-weight: bold;
+        border-bottom: none;
+        }
+
+h6 {
+        font-size: 1em;
+        line-height: 1.1em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        padding-left: 0.7em; /* Should be the same for h{1-4} */
+        color: #000;
+        font-weight: bold;
+        border-bottom: none;
+        }
 
 /* Paragraphs
 --------------------------------------------------------------------*/
@@ -704,84 +774,96 @@ div#body div#content div.toc dl dl {
  * ----------------------------------------------------------------------
  */
 
-div#body blockquote {
-    margin-left: 0;
+/* Action messages.
+--------------------------------------------------------------------*/
+div#wrap div#message {
+    padding: 0 1em 1em 1em;
+	border: none;
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+    background-image: url("../img/moin-msg-bg-blue.png");
+	border-color: #D2E0F6; 
+	background-color: #ECF4FF;
+}
+
+
+/* Admonitions
+--------------------------------------------------------------------*/
+.message {
     background-image: url("../img/msg-bg-gray.png");
+    margin-left: 0;
     padding: 1em 1.5em 0 1em;
-	}
-
-div#body blockquote h3 {
-    line-height: 0;
-    margin: 1em 0 1em 0;
-    }
- 
-div#body blockquote pre {
-    border: none;
-    background-color: #333;
-    color: #FFFFFF;
-    }
-
-div#body blockquote.icon img {
-    float: left;
-    }
-
-div#body blockquote.icon pre,
-div#body blockquote.icon h3,
-div#body blockquote.icon p,
-div#body blockquote.icon table {
-    margin-left: 60px;
-    }
-
-div#body blockquote.icon ul,
-div#body blockquote.icon ol,
-div#body blockquote.icon dl {
-    margin-left: 110px;
-    }
-
-div#body blockquote.icon ul dl,
-div#body blockquote.icon ul ol,
-div#body blockquote.icon ul ul,
-div#body blockquote.icon ol dl,
-div#body blockquote.icon ol ol,
-div#body blockquote.icon ol ul,
-div#body blockquote.icon dl dl,
-div#body blockquote.icon dl ol,
-div#body blockquote.icon dl ul {
-    margin-left: 2.5em;
-    }
-
-div#body blockquote.message {
 	border: none;
 	border-top: 4px solid;
 	border-bottom: 4px solid;
     border-color: #CFCFCF;
 	}
 
-div#body blockquote.blue {
+.message h3 {
+    line-height: 0;
+    margin: 1em 0 1em 0;
+    }
+ 
+.message pre {
+    border: none;
+    background-color: #333;
+    color: #FFFFFF;
+    }
+
+.message.icon img {
+    float: left;
+    }
+
+.message.icon pre,
+.message.icon h3,
+.message.icon p,
+.message.icon table {
+    margin-left: 60px;
+    }
+
+.message.icon ul,
+.message.icon ol,
+.message.icon dl {
+    margin-left: 110px;
+    }
+
+.message.icon ul dl,
+.message.icon ul ol,
+.message.icon ul ul,
+.message.icon ol dl,
+.message.icon ol ol,
+.message.icon ol ul,
+.message.icon dl dl,
+.message.icon dl ol,
+.message.icon dl ul {
+    margin-left: 2.5em;
+    }
+
+.message.blue {
     background-image: url("../img/msg-bg-blue.png");
 	border-color: #D2E0F6; 
 	background-color: #ECF4FF;
 	}
 
-div#body blockquote.orange {
+.message.orange {
     border-color: #F6E7D2; 
     background-color: #FFF8EC;
     background-image: url("../img/msg-bg-orange.png");
 	}
 
-div#body blockquote.violet {
+.message.violet {
     border-color: #F6D2F6; 
     background-color: #FFECFF;
     background-image: url("../img/msg-bg-violet.png");
 	}
 
-div#body blockquote.red {
+.message.red {
     border-color: #E0B7B7;
     background-color: #FFECEC;
     background-image: url("../img/msg-bg-red.png");
 	}
 
-div#body blockquote.green {
+.message.green {
     border-color: #D6F6D2;
     background-color: #EEFFEC;
     background-image: url("../img/msg-bg-green.png");
