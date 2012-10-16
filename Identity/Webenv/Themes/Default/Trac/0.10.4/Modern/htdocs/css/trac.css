@@ -98,15 +98,14 @@ body {
 -----------------------------------------------*/
 
 a:link  { text-decoration: none; color: #0044B3; }
-a:hover { text-decoration: underline; color: green; }
-a:active { text-decoration: underline; color: green; }
+a:hover { text-decoration: none; color: green; }
+a:active { text-decoration: none; color: green; }
 a:visited { text-decoration: none; color: #0044B3; }
 a:visited:hover { text-decoration: underline; color: green; }
 
 h1 :link, h1 :visited ,h2 :link, h2 :visited, h3 :link, h3 :visited,
 h4 :link, h4 :visited, h5 :link, h5 :visited, h6 :link, h6 :visited {
 	color: inherit;
- 	border-bottom: 1px dotted #ddd;
 }
 
 h1 a:hover { text-decoration: underline; color: #FFF; }
@@ -558,9 +557,9 @@ label.disabled {
 
 #metanav { padding-top: 30px; }
 
-#metanav a { color: #eee; }
+#metanav a { color: #fff; }
 
-#metanav li { border-right-color: #eee; }
+#metanav li { border-right-color: #fff; }
 
 #metanav a:hover {
 	background: transparent;
@@ -582,7 +581,7 @@ label.disabled {
 	display: inline;
 	padding: 0 .75em;
 	white-space: nowrap;
-	color: #AAA;
+	color: #FFF;
 	}
 
 .nav li.last { 
@@ -893,7 +892,7 @@ label.disabled {
 
 #prefs {
 	background: #f7f7f0;
-	border: 1px outset #998;
+	border: 1px solid #AAA;
 	float: right;
 	font-size: 9px;
 	padding: .8em;
