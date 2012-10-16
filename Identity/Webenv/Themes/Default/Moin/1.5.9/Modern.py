@@ -82,8 +82,6 @@ class Theme(ThemeBase):
             u'<div id="editortitle">',
 	        self.title(d),
             u'</div>',
-            self.startPage(),
-            u'</div>',
             ]
         return u'\n'.join(html)
 
