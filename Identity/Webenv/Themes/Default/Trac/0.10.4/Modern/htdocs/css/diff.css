@@ -30,7 +30,7 @@
 #overview dd.message ul, 
 #overview dd.message ol,
 #overview dd.message pre { 
-    margin: 0.5em;
+    margin-left: 0;
 	}
 
 /* Colors for change types */
@@ -65,6 +65,9 @@
 	background: #ccc; 
 	}
 
+.diff {
+    }
+
 #chglist .unknown { 
 	background: #fff; 
 	}
@@ -72,15 +75,9 @@
 /* Legend for diff colors */
 
 .diff #legend {
-	float: left;
-	font-size: 9px;
-	line-height: 1em;
-	margin: 1em 0;
-	padding: .5em;
 	}
 
 .diff #legend h3 { 
-	display: none; 
 	}
 
 .diff #legend dt {
@@ -106,8 +103,8 @@
 .diff ul.entries { 
 	list-style: none !important; 
 	clear: both; 
-	margin: 0 !important; 
-	padding: 0 !important; 
+    margin-left: 20px;
+    padding-top: 1em;
 	}
 
 .diff ul.entries ul.props li { 
