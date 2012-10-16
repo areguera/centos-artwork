@@ -666,41 +666,48 @@ div#body div.records-list ul li.title {
 /* Broken or nonexistent links.
 --------------------------------------------------------------------*/
 
-div#body a.nonexistent,
-div#body a.nonexistent:hover { color: gray; }
+a.nonexistent,
+a.nonexistent:hover { color: gray; }
 
 /* Special decoration for some links' classes
 --------------------------------------------------------------------*/
 
-div#body a.www:before {
+a.www:before {
     white-space:nowrap;
-    content: url(../img/a-www.png);
+    content: url(../img/moin-www.png);
     margin: 0 0.2em;
     }
 
-div#body a.http:before {
+a.http:before {
     white-space:nowrap;
-    content: url(../img/a-www.png);
+    content: url(../img/moin-www.png);
     margin: 0 0.2em;
     }
 
-div#body a.https:before {
+a.https:before {
     white-space:nowrap;
-    content: url(../img/a-www.png);
+    content: url(../img/moin-www.png);
     margin: 0 0.2em;
     }
 
-div#body a.mailto:before {
+a.mailto:before {
     white-space:nowrap;
-    content: url(../img/a-mail.png);
+    content: url(../img/moin-email.png);
     margin: 0 0.2em;
     }
 
-div#body a.attachment:before {
+a.attachment:before {
     white-space:nowrap;
-    content: url(../img/a-attach.png);
+    content: url(../img/moin-attach.png);
     margin: 0 0.2em;
     }
+
+a.interwiki:before {
+    white-space:nowrap;
+    content: url(../img/moin-inter.png);
+    margin: 0 0.2em;
+    }
+
 
 /*
 --------------------------------------------------------------------*/
