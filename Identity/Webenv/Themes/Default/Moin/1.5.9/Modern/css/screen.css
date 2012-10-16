@@ -49,19 +49,24 @@ div#body {
     background-color: #F8F8F8;
 	}
 
-div#page {
-    margin-top: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
+div#page,
+div#preview {
+    padding: 10px 30px;
     }
 
 div#content {
     background-color: #FFF;
+    margin-bottom: 20px;
     }
 
 div#content > p,
 div#content > pre,
-div#content > div,
+div#content > div > table,
+div#content table.message,
+div#content div.table-of-contents,
+div#content div#page-history,
+div#content div#content-below-diff > p,
+div#content div#content-below-diff > pre,
 div#content div#preview > p,
 div#content div#preview > pre,
 div#content div#preview > div {
@@ -161,6 +166,56 @@ h6 {
     margin-bottom: 1em;
     }
 
+div#content-below-diff {
+    margin-top: 20px;
+    }
+
+div.recentchanges {
+    margin-top: 20px;
+    font-size: x-small;
+    }
+
+.recentchanges table {
+    width: 100%;
+    }
+
+.recentchanges tr.rcdaybreak {
+    background-image: url("../img/moin-h2-background.png");
+    }
+
+p.diff-header {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    font-weight: bold;
+    margin: 10px 0 !important;
+    }
+
+table.diff {
+    font-size: x-small;
+    width: 100%;
+    }
+
+table.diff tr.diff-title td {
+    border:none;
+    border-left: 1px solid #AAA;
+    border-right: 1px solid #AAA;
+    width: 50%;
+    }
+
+table.diff td.diff-removed {
+    background: #FFDDDD;
+    border: 1px solid #CC0000;
+    border-right: 1px solid #AAA;
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    }
+
+table.diff td.diff-added {
+    background: #DDFFDD;
+    border: 1px solid #00AA00;
+    border-left: 1px solid #AAA;
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    }
+
 /* Paragraphs
 --------------------------------------------------------------------*/
 
@@ -178,6 +233,7 @@ div#content form .userpref p {
 
 div#page p#pageinfo {
     margin-top: 5em;
+    margin-bottom: 0;
     }
 
 /* Logo
@@ -388,7 +444,6 @@ div#body div.usertrail span.last:after {
 
 #footer {
     clear: both;
-    margin-top: 20px;
     padding-bottom: 1em;
 	background: #204C8D url("../img/moin-header-background.png") 0 0 repeat;
 	}
@@ -727,6 +782,7 @@ div#header .usertrail a,
 div#header #last-releases a {
 	color: #fff;
     }
+
 /* 
  * Webenv -> Lists
  *
@@ -794,6 +850,15 @@ div.table-of-contents p.table-of-contents-heading {
     background-image: url("../img/moin-h2-background.png");
     color: #072B61;
     font-weight: bold;
+    }
+
+div.searchresults {
+    border-top: 1px solid #AAA;
+    }
+
+div.searchresults dl {
+    margin-left: 20px;
+    margin-right: 20px;
     }
 
 /* 
