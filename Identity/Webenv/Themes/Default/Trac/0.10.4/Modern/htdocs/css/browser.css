@@ -27,7 +27,6 @@ h1 :link,
 h1 :visited, 
 h1 .filename { 
 	color: #fff;
-	border-bottom: 1px dotted #ddd; 
 	}
 
 h1 :link:hover, 
@@ -39,7 +38,6 @@ h1 :visited:hover {
 
 h1 .first:link:hover, 
 h1 .first:visited:hover {
-	color: #ddd;
 	}
 
 h1 :link, 
@@ -49,7 +47,6 @@ h1 :visited {
 
 h1 .first:link, 
 h1 .first:visited { 
-	color: #ddd; 
 	}
 
 h1 .sep { 
@@ -68,6 +65,9 @@ h1 .sep {
 
 #jumprev input { 
 	margin-right: 0; 
+    padding: 3px;
+    width: 160px;
+    -moz-border-radius: 5px;
 	}
 
 /* Styles for the directory entries table (extends the styles for
