@@ -61,7 +61,10 @@ div#content {
 
 div#content > p,
 div#content > pre,
-div#content > div {
+div#content > div,
+div#content div#preview > p,
+div#content div#preview > pre,
+div#content div#preview > div {
     margin-left: 20px;
     }
 
