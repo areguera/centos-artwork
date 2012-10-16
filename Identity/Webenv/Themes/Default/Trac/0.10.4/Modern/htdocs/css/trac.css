@@ -194,28 +194,30 @@ input[type=reset][disabled] {
 #search input.textwidget, 
 #search textarea { 
 	border: 2px solid #204C8D;
-	width: 130px;
+	width: 160px;
 	background-color: #EDF4FF;
-        padding: 2px;
-        padding-left: 4px;
-        color: #204C8D;
+    padding: 3px;
+    padding-left: 5px;
+    color: #204C8D;
+    -moz-border-radius: 5px;
 	}
 
 #search input[type=button], 
 #search input[type=submit], 
 #search input[type=reset] {
-        border-width: 2px;
-        border-style: solid;
-        border-color: #204C8D;
-        background-color: #3B71B8;
-        color: #FFFFFF;
-        cursor: pointer;
-        display: inline;
-        font-weight: bold;
-        text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #204C8D;
+    background-color: #3B71B8;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline;
+    font-weight: bold;
+    text-decoration: none;
 	padding: 2px;
 	padding-left: 4px;
 	padding-right: 4px;
+    -moz-border-radius: 5px;
 	}
 
 input[type=text], 
@@ -402,33 +404,38 @@ label.disabled {
 }
 
 .mainnav li {
-        float: left;
-        display: inline;
-        white-space: nowrap;
-        margin-left: 3px;
-	padding:0;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #628ECA;
-        background-color: #FFF;
-        background-image: url("../topbar_gradient.png");
-        background-position: left top;
-        background-repeat: repeat-x;
+    float: left;
+    display: inline;
+    white-space: nowrap;
+    margin-left: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #628ECA;
+    background-color: #FFF;
+    background-image: url("../topbar_gradient.png");
+    background-position: left top;
+    background-repeat: repeat-x;
 	font-size: 0.9em;
     -moz-border-radius: 3px 3px 0 0;
         }
 
 .mainnav li a { 
-        /* To cover the box area as linkable */
-        padding: 8px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-	background: transparent;
-	border-bottom: 0;
-	margin: 0;
-        }
+    /* To cover the box area as linkable */
+    padding: 7px 8px;
+    }
+
+#banner .mainnav li.active a { 
+    /* To cover the box area as linkable in the header area */
+    padding: 6px 8px 7px; 
+    }
+
+
+#footer .mainnav li.active a { 
+    /* To cover the box area as linkable in the footer area */
+    padding: 7px 8px 6px;
+    }
 
 .mainnav a, 
 .mainnav a:visited {
@@ -482,7 +489,7 @@ label.disabled {
         background-image: url("../bottombar_gradient.png");
         background-position: left bottom;
         background-repeat: repeat-x;
-    -moz-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 0 0 3px 3px;
         }
 
 #footer .mainnav a, 
