@@ -63,6 +63,7 @@ class Theme(ThemeBase):
             #self.emit_custom_html(self.cfg.page_header1),
 
             # Header
+            u'<div id="wrap">',
             u'<div id="header">',
             self.logo(),
             u'<div id="userlinks">',
@@ -82,6 +83,7 @@ class Theme(ThemeBase):
 	        self.title(d),
             u'</div>',
             self.startPage(),
+            u'</div>',
             ]
         return u'\n'.join(html)
 
