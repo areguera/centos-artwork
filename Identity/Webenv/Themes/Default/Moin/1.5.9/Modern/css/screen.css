@@ -838,6 +838,13 @@ div.table-of-contents p.table-of-contents-heading {
 
 
 /* Admonitions
+--------------------------------------------------------------------
+Stylesheet for admonitions require using table elements as part of
+wiki markup. For example, to build a note admonition, use the following
+MoinMoin table markup:
+--------------------------------------------------------------------
+||<tableclass="message blue"^|2>  attachment:ArtWork/note.png ||||<class="title" width="99%"> Note ||
+||<class="content"> Here is where the content goes in. ||
 --------------------------------------------------------------------*/
 
 table.message.blue {
@@ -867,6 +874,37 @@ table.message.blue td.content {
     border-right: 1px solid #D2E0F6;
     border-top: none;
     border-bottom: 1px solid #D2E0F6;
+    border-left: none;
+    }
+
+table.message.orange {
+    border-color: #F6E7D2; 
+    background-color: #FFF8EC;
+    background-image: url("../img/moin-msg-bg-orange.png");
+    }
+
+table.message.orange td:first-child {
+    border-left: 5px solid #F6E7D2;
+    border-top: 1px solid #F6E7D2;
+    border-bottom: 1px solid #F6E7D2;
+    border-right: none;
+    }
+
+table.message.orange td.title {
+    border-top: 1px solid #F6E7D2;
+    border-right: 1px solid #F6E7D2;
+    border-bottom: none;
+    border-left: none;
+    padding-bottom: 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: inherit;
+    }
+
+table.message.orange td.content {
+    border-right: 1px solid #F6E7D2;
+    border-top: none;
+    border-bottom: 1px solid #F6E7D2;
     border-left: none;
     }
 
