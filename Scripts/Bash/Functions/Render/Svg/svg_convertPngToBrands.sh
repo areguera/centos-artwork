@@ -32,7 +32,7 @@ function svg_convertPngToBrands {
 
     # Define image formats you want to produce brands for.
     local FORMAT=""
-    local FORMATS="xpm pdf jpg tif ico"
+    local FORMATS="xpm pdf jpg tif"
 
     for SIZE in ${SIZES};do
 
@@ -71,6 +71,14 @@ function svg_convertPngToBrands {
         # Create copy of size-specific image with emboss effect.
         cli_printMessage "${FINALFILE}-emboss.png" --as-creating-line
         convert -emboss 1 ${FINALFILE}.png ${FINALFILE}-emboss.png
+
+        # Create copy of size-specific image as icon format. Don't
+        # convert files larger than 96 pixels of width/height.
+        # Otherwise, the `convert' command will complain with a `Width
+        # or height exceeds limit' error message. 
+        if [[ $SIZE -le 96 ]];then
+            convert ${FINALFILE}.png ${FINALFILE}.ico
+        fi
 
     done
 
