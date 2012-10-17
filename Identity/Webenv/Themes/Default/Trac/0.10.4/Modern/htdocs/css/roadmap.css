@@ -38,9 +38,9 @@ table.progress td :hover {
 	}
 
 p.percent { 
-	font-size: 10px;
-	line-height: 2.4em;
-	margin: 0.9em 0 0; 
+	font-size: smaller;
+    margin: 0;
+	margin-top: 3px;
 	}
 
 /* Styles for the roadmap view */
@@ -60,9 +60,6 @@ li.milestone {
 	}
 
 .milestone .info h2 {
-	background: #f7f7f7;
-	border-bottom: 1px solid #d7d7d7;
-	margin: 0;
 	}
 
 .milestone .info h2 :link, 
@@ -84,30 +81,35 @@ li.milestone {
 
 .milestone .info .date {
 	color: #888;
-	font-size: 11px;
+	font-size: smaller;
 	font-style: italic;
 	margin: 0;
+    margin-left: 20px;
 	}
 
 .milestone .info .progress { 
-	margin: 1em 1em 0; 
-	width: 40em;
+	margin: 0;
 	max-width: 70%; 
+	width: 60%;
+    margin-left: 20px;
 	}
 
 .milestone .info dl {
-	font-size: 10px;
+	font-size: smaller;
 	font-style: italic;
-	margin: 0 1em 2em;
+	margin: 0;
+    margin-top: 5px;
+    margin-left: 20px;
 	white-space: nowrap;
 	}
 
 .milestone .info dt { 
-	display: inline; margin-left: .5em; 
+	display: inline; 
 	}
 
 .milestone .info dd { 
-	display: inline; margin: 0 1em 0 .5em; 
+	display: inline; 
+    margin: 0 2em 0 0; 
 	}
 
 .milestone .description { 
@@ -123,7 +125,8 @@ li.milestone {
 	}
 
 .milestone .description { 
-	margin: 1em 0 2em; 
+    margin-left: 20px;
+    margin-right: 45%;
 	}
 
 /* Styles for the milestone statistics table */
@@ -153,7 +156,8 @@ li.milestone {
 
 #stats th {
 	text-align: right; 
-	text-transform: capitalize; 
+    border: none;
+    vertical-align: middle;
 	}
 
 #stats th :link,
@@ -162,6 +166,7 @@ li.milestone {
 	}
 
 #stats td {
+    border: none;
 	padding-left: 0.5em; 
 	width: 100%; 
 	}
