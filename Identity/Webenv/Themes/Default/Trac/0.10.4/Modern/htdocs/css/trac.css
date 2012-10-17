@@ -98,6 +98,8 @@ body {
 div#content > p,
 div#content > pre,
 div#content > form > div > div,
+div#content > form > div.field,
+div#content > form > fieldset,
 div#content > form > p,
 div#content div#searchable > form > div,
 div#content div#preview > p,
@@ -404,11 +406,7 @@ table tr td,
 table tr th {
     border: 1pt;
     border-style: solid;
-    border-color: #CCC;
-    padding-top: 0.25em;
-    padding-right: 0.5em;
-    padding-bottom: 0.25em;
-    padding-left: 0.5em;
+    border-color: #EEE;
     vertical-align: top;
     }
 
@@ -480,7 +478,6 @@ textarea {
 	}
 
 input[type=text] { 
-    width: 80%;
     font-size: 1em;
 }
 
@@ -569,13 +566,21 @@ label.disabled {
 
 #metanav a { color: #fff; }
 
-#metanav li { border-right-color: #fff; }
+#metanav li { 
+    border-right-color: #fff; 
+    padding-right: 0.75em;
+    padding-left: 0.75em;
+    }
 
 #metanav a:hover {
 	background: transparent;
 	color: #fff;
 	text-decoration: underline;
 }
+
+#ctxtnav li {
+    color: #AAA;
+    }
 
 .nav ul { 
 	font-size: 10px; 
@@ -589,12 +594,16 @@ label.disabled {
 .nav li {
 	border-right: 1px dotted #628ECA;
 	display: inline;
-	padding: 0 .75em;
 	white-space: nowrap;
 	color: #FFF;
 	}
 
+.nav li.first {
+    padding-right: .75em;
+    }
+
 .nav li.last { 
+    padding-left: 1em;
 	border-right: none; 
 	}
 
@@ -755,6 +764,7 @@ label.disabled {
 	margin: 0;
 	padding-top: 3px;
 	padding-bottom: 3px;
+	padding-left: 20px;
 	border-bottom: 2px dotted #628ECA;	
 	font-size: 0.9em;
 	clear: both;
@@ -786,6 +796,8 @@ label.disabled {
 #altlinks { 
 	clear: both; 
 	text-align: center; 
+    margin-left: 20px;
+    margin-right: 20px;
 	}
 
 #altlinks h3 { 
@@ -797,7 +809,6 @@ label.disabled {
 #altlinks ul { 
 	list-style: none; 
 	margin: 0; 
-	padding: 0 0 1em 
 	}
 
 #altlinks li {
@@ -829,6 +840,7 @@ label.disabled {
 #footer {
 	background: #204c8d url("../header-background.png");
 	margin-top: 1em;
+    clear: both;
 	}
 
 #footer :link, 
@@ -881,7 +893,6 @@ label.disabled {
 #content { 
 	padding-left: 20px;
 	padding-right: 20px;
-	padding-bottom: 2em; 
 	position: relative 
 	}
 
@@ -904,10 +915,10 @@ label.disabled {
 	background: #f7f7f0;
 	border: 1px solid #AAA;
 	float: right;
-	font-size: 9px;
-	padding: .8em;
+	font-size: xx-small;
 	position: relative;
 	margin: 0 1em 1em;
+    padding: 1em;
 	}
 
 * html #prefs { width: 26em } /* Set width only for IE */
@@ -939,35 +950,28 @@ label.disabled {
 	margin: 1em 0 0 20px;
 	clear: both;
 	width: 100%;
-    border: none;
 	}
 
 #info th, 
 #info td { 
-	padding: 2px .5em; 
-	vertical-align: top 
+	vertical-align: top;
+    border:none;
 	}
 
 #info th { 
 	font-weight: bold; 
 	text-align: left; 
 	white-space: nowrap; 
-    border:none;
 	}
 
 #info td.message { 
 	width: 100%;
-    border: none;
 	}
 
 #info .message ul { 
-	padding: 0; 
-	margin: 0 2em 
 	}
 
 #info .message p { 
-	margin: 0; 
-	padding: 0 
 	}
 
 /* Wiki */
