@@ -580,6 +580,12 @@ label.disabled {
 
 #ctxtnav li {
     color: #AAA;
+    padding: 0;
+    padding-right: 0.75em;
+    padding-left: 0.75em;
+    }
+
+#ctxtnav li.first {
     }
 
 .nav ul { 
@@ -764,9 +770,9 @@ label.disabled {
 	margin: 0;
 	padding-top: 3px;
 	padding-bottom: 3px;
-	padding-left: 20px;
+	padding-left: 10px;
 	border-bottom: 2px dotted #628ECA;	
-	font-size: 0.9em;
+    font-size: small;
 	clear: both;
 	text-align: left;
 	}
