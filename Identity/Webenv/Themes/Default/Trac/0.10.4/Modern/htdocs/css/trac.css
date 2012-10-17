@@ -43,6 +43,7 @@
 html {
     background-color: #FFF;
     background-image: url("../background.png");
+    min-width: 800px;
     }
 
 /* Define body
@@ -96,6 +97,7 @@ body {
 
 div#content > p,
 div#content > pre,
+div#content > form > div > div,
 div#content > form > p,
 div#content div#searchable > form > div,
 div#content div#preview > p,
@@ -474,13 +476,12 @@ input[type=text],
 input.textwidget, 
 textarea { 
 	border: 1px solid #ccc;
-    font-size: 1.4em;
-    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
 	background-color: #f8f8f8;
 	}
 
 input[type=text] { 
-	font-size: 1em;
+    width: 80%;
+    font-size: 1em;
 }
 
 input[type=text], 
@@ -1058,6 +1059,7 @@ table.wiki td {
 	border-width: 1px 1px 1px 0;
 	height: 18px;
 	width: 208px;
+    margin: 1px !important;
 	}
 
 .wikitoolbar :link, .wikitoolbar :visited {
