@@ -94,6 +94,15 @@ body {
 	color: #000 
 	}
 
+div#content > p,
+div#content > pre,
+div#content div#searchable form input,
+div#content div#preview > p,
+div#content div#preview > pre,
+div#content div#preview > div {
+    margin-left: 20px;
+    }
+
 /* Links 
 -----------------------------------------------*/
 
@@ -495,7 +504,8 @@ fieldset {
 
 fieldset.iefix { 
 	background: transparent; 
-	border: none; padding: 0; margin: 0; 
+	border: none; 
+    margin-left: 20px; 
 	}
 
 * html fieldset.iefix { 
@@ -517,7 +527,7 @@ label.disabled {
 	}
 
 .buttons { 
-	margin: .5em .5em .5em 0; 
+	margin: .5em .5em .5em 20px; 
 	}
 
 .buttons form, 
@@ -530,13 +540,7 @@ label.disabled {
 	}
 
 .inlinebuttons input { 
-	margin: 0;
-	padding: 0.1em;
-	border: 1px solid #ddd;
-	font-size: 95%;
-    cursor: pointer;
 	}
-
 
 /* Quick search */
 
@@ -930,13 +934,10 @@ label.disabled {
 /* Version information (browser, wiki, attachments) */
 
 #info {
-	margin: 1em 0 0 0;
-	background: #f7f7f0;
-	border: 1px solid #d7d7d7;
-	border-collapse: collapse;
-	border-spacing: 0;
+	margin: 1em 0 0 20px;
 	clear: both;
 	width: 100%;
+    border: none;
 	}
 
 #info th, 
@@ -949,10 +950,12 @@ label.disabled {
 	font-weight: bold; 
 	text-align: left; 
 	white-space: nowrap; 
+    border:none;
 	}
 
 #info td.message { 
-	width: 100% 
+	width: 100%;
+    border: none;
 	}
 
 #info .message ul { 
@@ -1113,13 +1116,13 @@ table.wiki td {
 #attachment fieldset .field { float: left; margin: 0 1em .5em 0 }
 #attachment .options { float: left; padding: 0 0 1em 1em }
 #attachment br { clear: left }
-.attachment #preview { margin-top: 1em }
+.attachment #preview { margin-top: 1em; margin-left: 20px; }
 
 /* Styles for the list of attachments. */
 
 #attachments { 
-	border: 1px solid #ddd; 
 	padding-right: 1em;
+    margin-left: 20px;
 	}
 
 #attachments .attachments { 
@@ -1129,8 +1132,7 @@ table.wiki td {
 
 #attachments dt { 
 	display: list-item; 
-	list-style: square; 
-	font-size: small;
+    list-style: url("../ul.png") circle; 
 	}
 
 #attachments dd { 
