@@ -8,7 +8,7 @@
 /* Diff/change overview */
 
 #overview { 
-    margin: 0px; 
+    margin-left: 20px; 
 	}
 
 #overview dt.property {
@@ -23,12 +23,15 @@
 	margin-left: 8.5em; 
 	}
 
-#overview dt { 
+#overview dt.message {
+    }
+
+#overview dd.message ul, 
+#overview dd.message ol {
+    margin-left: 2.5em;
     }
 
 #overview dd.message p, 
-#overview dd.message ul, 
-#overview dd.message ol,
 #overview dd.message pre { 
     margin-left: 0;
 	}
