@@ -97,7 +97,7 @@ body {
 div#content > p,
 div#content > pre,
 div#content > form > p,
-div#content div#searchable form input,
+div#content div#searchable > form > div,
 div#content div#preview > p,
 div#content div#preview > pre,
 div#content div#preview > div {
@@ -504,9 +504,9 @@ fieldset {
 	}
 
 fieldset.iefix { 
-	background: transparent; 
 	border: none; 
-    margin-left: 20px; 
+    padding: 0;
+    width: 70%;
 	}
 
 * html fieldset.iefix { 
@@ -1115,7 +1115,7 @@ table.wiki td {
 #attachment label { padding-left: .2em }
 #attachment fieldset { margin-top: 2em }
 #attachment fieldset .field { float: left; margin: 0 1em .5em 0 }
-#attachment .options { float: left; padding: 0 0 1em 1em }
+#attachment .options { float: left; }
 #attachment br { clear: left }
 .attachment #preview { margin-top: 1em; margin-left: 20px; }
 
