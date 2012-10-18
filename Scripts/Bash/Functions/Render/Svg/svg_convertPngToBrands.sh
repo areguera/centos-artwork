@@ -72,12 +72,14 @@ function svg_convertPngToBrands {
         cli_printMessage "${FINALFILE}-emboss.png" --as-creating-line
         convert -emboss 1 ${FINALFILE}.png ${FINALFILE}-emboss.png
 
-        # Create copy of size-specific image as icon format. Don't
-        # convert files larger than 96 pixels of width/height.
-        # Otherwise, the `convert' command will complain with a `Width
-        # or height exceeds limit' error message. 
-        if [[ $SIZE -le 96 ]];then
-            convert ${FINALFILE}.png ${FINALFILE}.ico
+        # Create copy of size-specific image as ico format. This is
+        # the format used by web browsers to show that little image on
+        # address bar that identifies the site visited. The maximum
+        # size of ico images is 255 pixels, so don't cross this limit
+        # to prevent complains from `convert' command.
+        if [[ $SIZE -le '255' ]];then
+            convert ${FINALFILE}.png pnm:- | ppmtowinicon -output=${FINALFILE}.ico -
+
         fi
 
     done
