@@ -281,7 +281,7 @@ blockquote {
     border-style: solid;
     border-left-width: 5px;
     margin-left: 1.5em;
-    padding: 0.5em 2em;
+    padding: 0 1em;
     margin-top: 1em;
     margin-bottom: 1.3em;
     }
@@ -479,7 +479,6 @@ textarea {
     }
 
 input[type=text] { 
-    font-size: 1em;
 }
 
 input[type=text], 
@@ -505,7 +504,7 @@ fieldset {
 fieldset.iefix { 
     border: none; 
     padding: 0;
-    width: 70%;
+    width: 99%;
     }
 
 * html fieldset.iefix { 
@@ -519,7 +518,6 @@ fieldset.iefix p {
 legend { 
     color: #999; 
     padding: 0 .25em; 
-    font-size: 90%; 
     font-weight: bold 
     }
 
@@ -1035,11 +1033,12 @@ pre.literal-block {
     }
 
 blockquote.citation { 
-    margin: -0.6em 0;
     border-style: solid; 
-    border-width: 0 0 0 2px; 
-    padding-left: .5em;
+    border-width: 0 2px 0 2px; 
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     border-color: #b44; 
+    background: transparent;
     }
 
 .citation blockquote.citation { 
@@ -1315,6 +1314,6 @@ div.system-message p.system-message-title {
 
 .wikitext {
     padding: 3px;	
-    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
-    font-size: 1em;
+    height: 300px;
+    width: 100%;
 }
