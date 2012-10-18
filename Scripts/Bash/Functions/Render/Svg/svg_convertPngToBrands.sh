@@ -75,11 +75,18 @@ function svg_convertPngToBrands {
         # Create copy of size-specific image as ico format. This is
         # the format used by web browsers to show that little image on
         # address bar that identifies the site visited. The maximum
-        # size of ico images is 255 pixels, so don't cross this limit
-        # to prevent complains from `convert' command.
-        if [[ $SIZE -le '255' ]];then
+        # size of ico images is 255 pixels and 256 colors, so don't
+        # cross these limits to prevent complains from `convert'
+        # command. Because of these reasons, icon images will be
+        # produced only for symbols.
+        if [[ $(identify -verbose ${FINALFILE}.png \
+            | grep 'Colors:' \
+            | gawk 'FS=":" { print $2 }') -le 256 ]] \
+            && [[ $(identify ${FINALFILE}.png \
+            | cut -d' ' -f3 | cut -dx -f1) -le 255 ]] \
+            && [[ ${FINALFILE} =~ 'trunk/Identity/Images/Brands/Symbols' ]];then
+            cli_printMessage "${FINALFILE}.ico" --as-creating-line
             convert ${FINALFILE}.png pnm:- | ppmtowinicon -output=${FINALFILE}.ico -
-
         fi
 
     done
