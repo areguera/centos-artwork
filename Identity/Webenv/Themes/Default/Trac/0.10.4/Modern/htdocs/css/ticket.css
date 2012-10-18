@@ -14,7 +14,12 @@
 }
 
 #ticket {
+    border: 1px solid #DADADA;
 	}
+
+#ticket p {
+    margin-right: 20px;
+    }
 
 h1 .status { 
 	color: #fff; 
@@ -54,17 +59,17 @@ h1 .status {
 
 #ticket table.properties th {
 	text-align: right;
-	width: 10%;
+	width: 150px;
     border: none;
     vertical-align: top;
-    padding: 0.5em;
+    padding: 0.3em;
 	}
 
 #ticket table.properties td { 
 	width: 30%; 
     border: none;
     vertical-align: top;
-    padding: 0.5em;
+    padding: 0.3em;
 	}
 
 #ticket table.properties .description { 
@@ -110,14 +115,10 @@ h1 .status {
 	}
 
 form .field { 
-    margin: 0;
-    margin-top: 0.75em;
-    margin-left: 20px;
-	width: 100% 
+    margin-top: 0;
 	}
 
 form #comment { 
-	width: 100% 
 	}
 
 #properties { 
@@ -132,9 +133,9 @@ form #comment {
 #properties table th {
 	padding: .4em;
 	text-align: right;
-	width: 20%;
 	vertical-align: top;
     border:none;
+    width: 1%;
 	}
 
 #properties table th.col2 {
@@ -149,8 +150,20 @@ form #comment {
 
 #properties table td.fullrow {
 	vertical-align: middle; 
-	width: 80%; 
+	width: 99%; 
 	}
+
+#properties table td.fullrow textarea#description,
+#properties table td.fullrow input#reporter,
+#properties table td.fullrow input#summary {
+    width: 98%;
+    }
+
+#properties table td input#keywords,
+#properties table td input#owner,
+#properties table td input#cc {
+	width: 95%; 
+    }
 
 #action {
     margin-left: 20px;
