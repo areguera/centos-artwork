@@ -245,11 +245,143 @@
     </para>
 
     </simplesect>
+
     <simplesect>
-    <title>Update DocBook Documentation Structure And Processing</title>
+    <title>Enhance The CentOS Logo Construction</title>
+    
     <para>
-        ...
+        The CentOS Logo is made of two different components known as
+        The CentOS Symbol and The CentOS Type.  Presently, to produce
+        these components, we create one SVG image for each PNG image
+        we want to produce, store it in trunk/Identity/Models/Brands/
+        directory structure and run the command: centos-art render
+        trunk/Identity/Images/Brands
     </para>
+
+    <para>
+        This model works and scales well in situations where final
+        images aren't reused among themselves. However, when you need
+        to reuse images among themselves, a better solution is
+        required. The goal here would be: don't create SVG images
+        for PNG images you can build based on other PNG images. 
+    </para>
+
+    <para>  
+        This might be achieved by one of the following ways:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        Create a new specific functionality to achieved the goal
+        because the render specific functionality uses SVG files as
+        reference to build images (i.e., one SVG image produces one
+        PNG image). 
+    </para>
+    </listitem>
+
+    <listitem>
+    <para>
+        Modify render functionality to work in two modes. The first
+        mode uses render-able source files in SVG or Docbook format as
+        reference to build PNG images and documentation in different
+        formats, respectively. The second mode uses a configuration
+        file named <filename>images.conf</filename> inside the design
+        models directory you want to produce images for as reference
+        to build PNG images.  In this second case, the configuration
+        file specifies how final PNG images will be produced (e.g., by
+        appending or overlapping them one another).
+    </para>
+    </listitem>
+    </itemizedlist>
+
+    <para>
+        For example, consider the following command-line:
+    </para>
+
+    <cmdsynopsis>
+        <command>centos-art render trunk/Identity/Models/Brands/Logos</command>
+    </cmdsynopsis>
+
+    <para>
+        This command should evaluate whether to render images either
+        using SVG rendition mode or configuration-based rendition
+        mode. When there are render-able source files (e.g., SVG,
+        Docbook,) inside the design model directory structure the
+        rendition  will be run from source files (i.e,. build a list
+        of SVG/Docbook files and create final content based on them).
+        When there isn't render-able source files inside design models
+        directory, and only then, centos-art.sh will look for
+        images.conf configuration file and, if it exists, create
+        images based on its content. In case the configuration file
+        doesn't exist, no rendition will take place.
+    </para>
+
+    <para>
+        For example if the
+        trunk/Identity/Models/Brands/Logos/images.conf configuration
+        file exists and has the following content:
+    </para>
+
+<programlisting>
+[centos.png]
+
+models  = "trunk/Identity/Models/Brands/Symbols/centos-40x50mm.svgz trunk/Identity/Models/Brands/Types/centos-x50mm.svgz"
+formats = "xpm jpg"
+heights = "48 78"
+fgcolor = "000000 ffffff"
+bgcolor = "ffffff:0"
+command = "/usr/bin/convert +append"
+
+[centos-artwork.png]
+
+models  = "trunk/Identity/Models/Brands/Symbols/centos-40x50mm.svgz trunk/Identity/Models/Brands/Types/centos-x50mm.svgz trunk/Identity/Models/Brands/Types/artwork-x50mm.svgz"
+formats = "xpm jpg"
+heights = "48 78"
+fgcolor = "000000 ffffff"
+bgcolor = "ffffff:0"
+command = "/usr/bin/convert +appdend"
+</programlisting>
+
+    <para>
+        The centos-art.sh script should produce the following files:
+    </para>
+
+<programlisting>
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.jpg
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.png
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.xpm
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.png
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.jpg
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.xmp
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.jpg
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.png
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.xpm
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.png
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.jpg
+trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.xmp
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.jpg
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.png
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.xpm
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.png
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.jpg
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.xmp
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.jpg
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.png
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.xpm
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.png
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.jpg
+trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.xmp
+</programlisting>
+
+    <para>
+        The final images output location inside the repository is
+        determined using the design model directory provided as
+        argument. Basically, by changing the path string from Models
+        to Images and adding foreground color, background color,
+        height value and image name to it.
+    </para>
+
     </simplesect>
 
 </sect1>
