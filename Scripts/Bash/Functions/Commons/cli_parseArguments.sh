@@ -31,9 +31,11 @@ function cli_parseArguments {
     # Parse optional arguments using getopt.
     ARGUMENTS=$(getopt -o "$ARGSS" -l "$ARGSL" -n "$CLI_NAME (${FUNCNAME[1]})" -- "$@")
 
-    # Be sure getout parsed arguments successfully.
+    # Be sure getout parsed arguments successfully. Otherwise, finish
+    # script execution with a to know more line.
     if [[ $? != 0 ]]; then 
         cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
+        exit
     fi
 
 }
