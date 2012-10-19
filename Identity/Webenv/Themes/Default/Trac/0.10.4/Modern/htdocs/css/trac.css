@@ -103,6 +103,7 @@ div#content > form > fieldset,
 div#content > form > p,
 div#content > form > input,
 div#content div#searchable > form > div,
+div#content div#searchable > div#ticket > form > div.description > table,
 div#content div#preview > p,
 div#content div#preview > strong,
 div#content fieldset#preview > p,
@@ -411,6 +412,7 @@ table tr th {
     border-style: solid;
     border-color: #EEE;
     vertical-align: top;
+    padding: 0.5em;
     }
 
 table tr td p,
@@ -1035,14 +1037,9 @@ blockquote.citation {
     }
 
 table.wiki {
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-    border-spacing: 0;
     }
 
 table.wiki td { 
-    border: 1px solid #ccc;  
-    padding: .5em ; 
     }
 
 .wikitoolbar {
