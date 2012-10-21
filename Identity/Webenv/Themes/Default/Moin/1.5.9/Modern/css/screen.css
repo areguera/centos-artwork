@@ -51,7 +51,7 @@ div#body {
 
 div#page,
 div#preview {
-    padding: 10px 30px;
+    padding: 10px 30px 30px;
     }
 
 div#content {
@@ -62,6 +62,7 @@ div#content {
 div#content > p,
 div#content > pre,
 div#content > div > table,
+div#content img,
 div#content table.message,
 div#content div.table-of-contents,
 div#content div#page-history,
@@ -235,6 +236,7 @@ div#content form .userpref p {
 div#page p#pageinfo {
     margin-top: 5em;
     margin-bottom: 0;
+    color: gray;
     }
 
 /* Logo
