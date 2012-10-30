@@ -38,7 +38,7 @@ function cli_getConfigLines {
     local CONFIG_SECTION="$2"
 
     # Be sure the configuration section name has the correct format.
-    if [[ ! $CONFIG_SECTION =~ '^[[:alpha:]]+$' ]];then
+    if [[ ! $CONFIG_SECTION =~ '^[[:alnum:]._-]+$' ]];then
         cli_printMessage "`gettext "The configuration section provided is incorrect."`" --as-error-line
     fi
 
@@ -57,8 +57,7 @@ function cli_getConfigLines {
     local CONFIG_LINES=$(cat ${CONFIG_ABSPATH} \
         | egrep -v '^#' \
         | egrep -v '^[[:space:]]*$' \
-        | sed -r 's![[:space:]]*!!g' \
-        | sed -r -n "/^\[${CONFIG_SECTION}\]$/,/^\[/p" \
+        | sed -r -n "/^\[${CONFIG_SECTION}\][[:space:]]*$/,/^\[/p" \
         | egrep -v '^\[' | sort | uniq \
         | egrep "^${CONFIG_OPTION}")
 
