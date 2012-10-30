@@ -73,7 +73,7 @@ function render_getDirTemplate {
     else
         TEMPLATE=$(echo "$TEMPLATE" | sed -r \
             -e "s!/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!/Themes/${FLAG_THEME_MODEL}!" \
-            -e "s!/Images!/Models!")
+            -e "s!/(Manuals|Images)!/Models!")
     fi
 
     # Verify absolute path to input file. This verification is
