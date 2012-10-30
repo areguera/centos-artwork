@@ -119,7 +119,7 @@ function render {
             ACTIONNAM="render_doThemeActions"
         elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images" ]];then
             ACTIONNAM="render_doBaseActions"
-        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/[[:alnum:]-]+" ]];then
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/Manuals/Docbook/[[:alnum:]-]+" ]];then
             ACTIONNAM="render_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
