@@ -58,7 +58,7 @@ function render_doTranslation {
 
         # Create translation instance to combine both template
         # translation and licenses translations.
-        local TRANSLATION_INSTANCE=$(cli_getTemporalFile ${TRANSLATION})
+        local TRANSLATION_INSTANCE=${TMPDIR}/${TRANSLATION}
     
         if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/.+$" ]];then
 
