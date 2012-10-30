@@ -80,9 +80,23 @@ function conf {
         COMMAND=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "command") 
 
         for FGCOLOR in $FGCOLORS;do
+
+            # Verify value passed as foreground color.
+            cli_checkFiles ${FGCOLOR} --match="^[a-fA-F0-9]{3,6}$"
+
             for BGCOLOR in $BGCOLORS;do
+
+                # Verify value passed as background color.
+                cli_checkFiles ${BGCOLOR} --match="^[a-fA-F0-9]{6}-(0|1)$"
+
                 for HEIGHT in $HEIGHTS;do
+
+                    # Verify value passed as height.
+                    cli_checkFiles ${HEIGHT} --match="^[[:digit:]]+$"
+
+                    # Do base rendition actions.
                     conf_doBaseActions
+
                 done
             done
         done
