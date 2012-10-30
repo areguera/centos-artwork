@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# render.sh -- This function initializes rendition variables and
-# actions to centos-art.sh script.
+# render.sh -- This function standardizes the way source files are
+# rendered inside the working copy.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -72,21 +72,19 @@ function render {
     # branded.
     local FLAG_WITH_BRANDS='false'
 
-    # Initialize name of rendition format as an empty value. The name
-    # of rendition format is determined automatically based on
-    # template file extension, later, at rendition time. 
+    # Initialize list of supported file extensions. These file
+    # extensions are used to build the list of source files we'll use
+    # to create images from.
+    local RENDER_EXTENSIONS='svgz svg docbook conf'
+
+    # Initialize the rendition format name as an empty value. The name
+    # of rendition format is determined later at rendition time, based
+    # on template file extension.
     local RENDER_FORMAT=''
 
     # Initialize absolute path to format's base directory, the place
     # where format-specific directories are stored in.
     local RENDER_FORMAT_DIR="${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
-
-    # Initialize list of supported file extensions. These file
-    # extensions are used by design model files, the files used as
-    # base-rendition input. In order for design model files to be
-    # correctly rendered, they must end with one of the file
-    # extensions listed here.
-    local RENDER_EXTENSIONS='svgz svg docbook'
 
     # Interpret arguments and options passed through command-line.
     render_getOptions
@@ -112,8 +110,8 @@ function render {
         # the script execution with an error message.
         cli_checkFiles ${ACTIONVAL} -d --is-versioned
 
-        # Define render able directories and the way they are
-        # produced.  To describe the way render able directories are
+        # Define render-able directories and the way they are
+        # produced.  To describe the way render-able directories are
         # produced, we take the action value (ACTIONVAL) as reference
         # and describe the production through an action name
         # (ACTIONNAM).
