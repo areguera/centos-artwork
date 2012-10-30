@@ -31,10 +31,10 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='i:,r,d,e,f,h,x'
+    local ARGSS='i:,r,m:,d,e,f,h,x'
 
     # Define long options.
-    local ARGSL='mime:,is-versioned'
+    local ARGSL='mime:,is-versioned,match:'
 
     # Initialize array variables.
     local -a CONDITION_COMMAND
@@ -105,6 +105,13 @@ function cli_checkFiles {
                 shift 2
                 ;;
 
+            -m | --match )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='match'
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="$2"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "doesn't match its pattern."`"
+                shift 2
+                ;;
+
             -r | --is-versioned )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="Svn"
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='svn_isVersioned'
@@ -139,13 +146,19 @@ function cli_checkFiles {
                 cli_unsetFunctions "${CONDITION_COMMAND[${COUNTER}]}/${CONDITION_PATTERN[$COUNTER]}"
                 ;;
 
-                test )
+                "test" )
                 ${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE} \
                     || cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
                 ;;
 
-                file )
+                "file" )
                 if [[ ! $(${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE}) == "$MIME" ]];then
+                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                fi
+                ;;
+
+                "match" )
+                if [[ ! ${FILE} =~ "${CONDITION_PATTERN[$COUNTER]}" ]];then
                     cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
                 fi
                 ;;
