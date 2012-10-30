@@ -110,15 +110,17 @@ function render_doBaseActions {
         # `--filter="repository"') or `repository-preamble.docbook'
         # and `repository-parts.docbook' but not `repository.docbook'
         # (e.g., through `--filter="repository-.*"').
-        if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/.+$" ]];then
+        if [[ ${RENDER_FORMAT} =~ "^docbook$" ]];then
 
-            # When template points to docbook documentation models,
-            # don't build a list of files to process. Instead, build
-            # the absolute path of the main file used to render
-            # docbook from models to final output manuals.
+            # When the render format is docbook, don't build a list of
+            # files to process. Instead, build the absolute path of
+            # the main file used to render docbook from models to
+            # final output manuals. This file must be stored directly
+            # inside the main manual's directory and named as it but
+            # with all letters in lowercase.
             for FILE in $(cli_getFilesList ${TEMPLATE} \
                 --maxdepth="1" --mindepth="1" \
-                --pattern="^.*$(cli_getRepoName ${ACTIONVAL} -f)\.${RENDER_EXTENSION}$" \
+                --pattern="^.*$(cli_getRepoName ${TEMPLATE} -f)\.${RENDER_EXTENSION}$" \
                 --type="f");do
                 FILES[((++${#FILES[*]}))]=$FILE
             done
@@ -134,7 +136,7 @@ function render_doBaseActions {
 
         fi
 
-        # Verify list of files to process. Assuming no file is found,
+        # Verify list of files to process. Assuming no file was found,
         # evaluate the next supported file extension.
         if [[ ${#FILES[*]} -eq 0 ]];then
             continue
