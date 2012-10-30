@@ -31,21 +31,21 @@ function cli_getConfigValue {
     local CONFIG_ABSPATH="$1"
 
     # Initialize configuration section name where the variable value
-    # we want to to retrive is set in.
+    # we want to to retrieve is set in.
     local CONFIG_SECTION="$2"
 
-    # Initialize variable name we want to retrive value from.
+    # Initialize variable name we want to retrieve value from.
     local CONFIG_OPTION="$3"
 
-    # Retrive configuration lines from configuration file.
+    # Retrieve configuration lines from configuration file.
     local CONFIG_LINES=$(cli_getConfigLines \
         "$CONFIG_ABSPATH" "$CONFIG_SECTION" "$CONFIG_OPTION")
 
-    # Parse configuration lines to retrive the values of variable
+    # Parse configuration lines to retrieve the values of variable
     # names.
     local CONFIG_VALUE=$(echo $CONFIG_LINES \
         | gawk 'BEGIN{FS="="}; { print $2 }' \
-        | sed -r -e 's![[:space:]]*!!g' -e 's!^"(.+)"$!\1!')
+        | sed -r -e 's/"//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' )
 
     # Output values related to variable name.
     echo "$CONFIG_VALUE"
