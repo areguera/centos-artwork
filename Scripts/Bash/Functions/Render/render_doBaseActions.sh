@@ -45,25 +45,28 @@ function render_doBaseActions {
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
-
-    # Define base location of template files.
-    render_getDirTemplate
-    
+ 
     # Loop through list of supported file extensions. 
     for RENDER_EXTENSION in ${RENDER_EXTENSIONS};do
 
-        # Redefine name of rendition format based on supported file
+        # Redefine rendition format name based on supported file
         # extension.
         if [[ $RENDER_EXTENSION =~ '^(svgz|svg)$' ]];then
             RENDER_FORMAT='svg'
         elif [[ $RENDER_EXTENSION =~ '^(docbook)$' ]];then
             RENDER_FORMAT='docbook'
+        elif [[ $RENDER_EXTENSION =~ '^(conf)$' ]];then
+            RENDER_FORMAT='conf'
         else
            cli_printMessage "`eval_gettext "The \\\"\\\$RENDER_EXTENSION\\\" file extension is not supported yet."`" --as-error-line 
         fi
 
         # Redefine specific function export id. 
         EXPORTID="${CLI_FUNCDIRNAM}/$(cli_getRepoName ${RENDER_FORMAT} -d)/$(cli_getRepoName ${RENDER_FORMAT} -f)"
+
+        # Define base location of template files using paths passed to
+        # centos-art.sh script as argument to.
+        render_getDirTemplate
 
         # Define the list of files to process. Use an array variable
         # to store the list of files to process. This make possible to
@@ -82,23 +85,24 @@ function render_doBaseActions {
         # list of files to process in order to retrieve regular files
         # only.
         #
-        # Another issue to consider here, is that in some cases both
+        # Another issue to consider here is that, in some cases, both
         # templates and outputs might be in the same location. In
         # these cases localized content are stored in the same
         # location where template files are retrieved from and we need
         # to avoid using localized content from being interpreted as
         # design models. In that sake, build the list of files to
-        # process using the files directely stored in the directory
+        # process using the files directly stored in the directory
         # passed as argument to centos-art.sh command-line. Don't go
-        # recursive here.
+        # recursively here.
         #
-        # Another issue to consider here, is the way of filtering. We
-        # cannot expand the pattern specified by FLAG_FILTER with a
-        # `.*' here (e.g., "${FLAG_FILTER}.*\.${RENDER_EXTENSION}")
-        # because that would suppress any possibility from the user to
-        # specify just one file name in locations where more than one
-        # file with the same name as prefix exists (e.g.,
-        # `repository.docbook', `repository-preamble.docbook' and
+        # Another issue to consider here, is the way of restricting
+        # the list of files to process. We cannot expand the pattern
+        # specified by FLAG_FILTER with a `.*' here (e.g.,
+        # "${FLAG_FILTER}.*\.${RENDER_EXTENSION}") because that would
+        # suppress any possibility from the user to specify just one
+        # file name in locations where more than one file with the
+        # same name as prefix exists (e.g., `repository.docbook',
+        # `repository-preamble.docbook' and
         # `repository-parts.docbook').  Instead, pass filtering
         # control to the user whom can use regular expression markup
         # in the `--filter' option to decide whether to match
@@ -106,19 +110,29 @@ function render_doBaseActions {
         # `--filter="repository"') or `repository-preamble.docbook'
         # and `repository-parts.docbook' but not `repository.docbook'
         # (e.g., through `--filter="repository-.*"').
-        if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/(Models|Manuals)/Docbook/.+$" ]];then
-            TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
+        if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/.+$" ]];then
+
+            # When template points to docbook documentation models,
+            # don't build a list of files to process. Instead, build
+            # the absolute path of the main file used to render
+            # docbook from models to final output manuals.
+            for FILE in $(cli_getFilesList ${TEMPLATE} \
                 --maxdepth="1" --mindepth="1" \
-                --pattern="^.*$(cli_getRepoName ${TEMPLATE} -f)\.${RENDER_EXTENSION}$" \
-                --type="f")
+                --pattern="^.*$(cli_getRepoName ${ACTIONVAL} -f)\.${RENDER_EXTENSION}$" \
+                --type="f");do
+                FILES[((++${#FILES[*]}))]=$FILE
+            done
+
         else
-            TEMPLATES=$(cli_getFilesList ${TEMPLATE} \
+
+            # For all other cases, build a list of files to process.
+            for FILE in $(cli_getFilesList ${TEMPLATE} \
                 --pattern="^.*${FLAG_FILTER}\.${RENDER_EXTENSION}$" \
-                --type="f")
+                --type="f");do
+                FILES[((++${#FILES[*]}))]=$FILE
+            done
+
         fi
-        for FILE in $TEMPLATES;do
-            FILES[((++${#FILES[*]}))]=$FILE
-        done
 
         # Verify list of files to process. Assuming no file is found,
         # evaluate the next supported file extension.
@@ -208,8 +222,8 @@ function render_doBaseActions {
             # Define instance name from design model.
             INSTANCE=$(cli_getTemporalFile ${TEMPLATE})
 
-            # Apply translation file to design model to produce the design
-            # model translated instance. 
+            # Apply translation to design model in order to produce
+            # the translated design model instance.
             render_doTranslation
 
             # Expand translation markers inside design model instance.
@@ -228,8 +242,14 @@ function render_doBaseActions {
 
         done
 
+        # Reset counter to prevent accumulation of values.
+        COUNT=0
+
         # Unset format-specific functionalities.
         cli_unsetFunctions "${EXPORTID}"
+
+        # Unset files list to prevent accumulation of values.
+        unset FILES
 
     done
 }
