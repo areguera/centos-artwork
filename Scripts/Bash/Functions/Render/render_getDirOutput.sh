@@ -34,7 +34,7 @@ function render_getDirOutput {
         -e "s!Documentation/Models!Documentation/Manuals!" \
         -e "s!/Tpl!!")
 
-    # By default rendered identity content is stored immediatly under
+    # By default rendered identity content is stored immediately under
     # identity entry structure,  but if `Img/' directory exists use it
     # instead.
     if [[ -d "${OUTPUT}/Img" ]];then
