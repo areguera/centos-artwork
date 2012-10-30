@@ -26,10 +26,9 @@
 function conf_doBaseActions {
 
     local COUNTER=0
-    local INKSCAPE_EXPORTID="CENTOSARTWORK"
+    local EXPORTID="CENTOSARTWORK"
     local -a MODEL_INSTANCES
-    local -a INKSCAPE_OUTPUT
-    local -a INKSCAPE_COMMANDS
+    local -a IMAGE_COMMANDS
 
     # Define absolute path to output location. This is the location
     # inside the working copy all images will be stored in.
@@ -42,8 +41,8 @@ function conf_doBaseActions {
 
     while [[ $COUNTER -lt ${#MODELS[*]} ]];do
 
-        # Verify existence of design models.
-        cli_checkFiles ${MODELS[$COUNTER]} -f
+        # Verify existence and extension of design models.
+        cli_checkFiles ${MODELS[$COUNTER]} -f --match='\.(svgz|svg)$'
 
         # Define file name for design model instances.
         MODEL_INSTANCES[$COUNTER]=${TMPDIR}/$(basename ${MODELS[$COUNTER]})
@@ -73,15 +72,15 @@ function conf_doBaseActions {
 
         # Create list of Inkscape commands based for each design model
         # set in the configuration file.
-        INKSCAPE_COMMANDS[${COUNTER}]="${MODEL_INSTANCES[$COUNTER]} \
-            --export-id=${INKSCAPE_EXPORTID} \
+        IMAGE_COMMANDS[${COUNTER}]="${MODEL_INSTANCES[$COUNTER]} \
+            --export-id=${EXPORTID} \
             --export-png=${IMAGE_INSTANCES[$COUNTER]}  \
             --export-background=$(echo ${BGCOLOR} | cut -d'-' -f1) \
             --export-background-opacity=$(echo ${BGCOLOR} | cut -d'-' -f2) \
             --export-height=${HEIGHT}"
 
         # Create PNG image based on design models.
-        inkscape ${INKSCAPE_COMMANDS[$COUNTER]} > /dev/null
+        inkscape ${IMAGE_COMMANDS[$COUNTER]} > /dev/null
 
         COUNTER=$(( $COUNTER + 1 ))
 
