@@ -28,7 +28,8 @@
     <cmdsynopsis>
         <command>~/artwork/trunk/Scripts/Bash/centos-art.sh</command>
         <arg choice="req">prepare</arg>
-        <arg>--quiet</arg>
+        <arg>-h|--help</arg>
+        <arg>-q|--quiet</arg>
         <arg>--answer-yes</arg>
         <arg>--set-environment</arg>
         <arg>--see-environment</arg>
@@ -51,8 +52,8 @@
     <cmdsynopsis>
         <command>centos-art</command>
         <arg choice="req">prepare</arg>
-        <arg>--help</arg>
-        <arg>--quiet</arg>
+        <arg>-h|--help</arg>
+        <arg>-q|--quiet</arg>
         <arg>--answer-yes</arg>
         <arg>--set-environment</arg>
         <arg>--see-environment</arg>
