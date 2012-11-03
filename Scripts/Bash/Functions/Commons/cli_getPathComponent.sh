@@ -41,8 +41,9 @@ function cli_getPathComponent {
     # CentOS distribution is able to be installed on.
     local ARCHITECTURE="(i386|x86_64)"
 
-    # Define pattern for themes' artistic motifs.
-    local THEME_MOTIF="Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
+    # Define regular expression pattern that match the theme artistic
+    # motif component inside the path strings.
+    local THEME_MOTIF="trunk/Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
