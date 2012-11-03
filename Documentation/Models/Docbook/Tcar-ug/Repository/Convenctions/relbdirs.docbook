@@ -1,121 +1,158 @@
-<sect1 id="repo-convs-relbdirs">
+<section id="repo-convs-relbdirs">
 
-    <title>Repository Path Types</title>
+    <title>Repository Path Relations</title>
 
     <para>
         In order for automation scripts to produce content inside a
         working copy of &TCAR;, it is required that all work lines be
-        related somehow.  The relation between work lines is used by
-        automation scripts to know where to retrive the information
-        they need to work with (e.g., input files, translation
-        messages, output locations, etc.).  This kind of relation is
-        built using two path constructions known as <emphasis>master
-        paths</emphasis> and <emphasis>auxiliar paths</emphasis>.
+        related somehow.  The automation scripts take the relation
+        between work lines as reference to determine the place the
+        information they will work with will be retrieve from (e.g.,
+        scalable vector graphics, documentation, translations, etc.),
+        as well as the place where it will store the final files
+        produced as result of automation process (e.g., portable
+        network graphics, documentation ready for printing and reading
+        online, etc.).
+    </para>
+    <para>
+        In order to implement the relation between work lines it is
+        required to establish a path name convenction, so we can
+        conceptually organize different components and relate them one
+        another using predictable path constructions in a scalable
+        way. Based on this need, we identify three different path
+        types inside &TCAR;.  These path types are: <emphasis>Output
+        Paths</emphasis>, <emphasis>Input Paths</emphasis>, and
+        <emphasis>Auxiliary Paths</emphasis>.
     </para>
 
-    <sect2 id="repo-convs-relbdirs-master">
-    <title>Master Paths</title>
+    <section id="repo-convs-relbdirs-renderable">
+    <title>Output Paths</title>
 
     <para>
-        A master path refers to a directory inside the repository that
-        contain input files required to produce output files through
-        automation scripts. Examples of master paths inside the
-        repository include:
+        The output paths point to directories inside the working copy
+        which contain files produced from files inside the input
+        paths. For example, the following paths are consider as output
+        paths:
     </para>
 
     <itemizedlist>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Models/Brands</filename>
+            <filename class="directory">trunk/Identity/Images/Brands/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Manuals/Tcar-ug</filename>
+            <filename class="directory">trunk/Documentation/Manuals/Tcar-ug/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Models/Themes/Default/Distro/5/Anaconda</filename>
+            <filename class="directory">trunk/Identity/Images/Themes/Modern/2/Distro/5/Anaconda/</filename>
         </para>
         </listitem>
     </itemizedlist>
 
-    </sect2>
+    <para>
+        Output paths are also known as <emphasis><quote>Render-able
+        Directories</quote></emphasis> because they are the type of
+        path you should provide as argument to <xref
+        linkend="scripts-bash-render" /> functionality so as to
+        produce content through it.
+    </para>
 
-    <sect2 id="repo-convs-relbdirs-auxiliar">
-    <title>Auxiliar Paths</title>
+    </section>
+
+    <section id="repo-convs-relbdirs-designmodels">
+    <title>Input Paths</title>
+    <para>
+        The input paths point to a directories inside the working copy
+        which contain files used to produce files inside output paths.
+        For example, the following paths are considered as input
+        paths:
+    </para>
+
+    <itemizedlist>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Identity/Models/Brands/</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Documentation/Models/Tcar-ug/</filename>
+        </para>
+        </listitem>
+        <listitem>
+        <para>
+            <filename class="directory">trunk/Identity/Models/Themes/Default/Distro/5/Anaconda/</filename>
+        </para>
+        </listitem>
+    </itemizedlist>
+    </section>
+
+    <section id="repo-convs-relbdirs-auxiliar">
+    <title>Auxiliary Paths</title>
 
     <para>
-        An auxiliar path refers to directories inside the repository
-        considered auxiliar for one single master path. Auxiliar path
-        can be either for output or localization. Assuming the master
-        path provides the input information, the auxiliar paths
-        provide the auxiliar information which describes how and where
-        that input information must be rendered by automation scripts.
-        Examples of auxiliar paths inside the repository include:
+        The auxiliary paths point to directories inside the working
+        copy which contain files used to create modified instances of 
+        inside input paths which are use in turn to produce files
+        inside output paths.  For example, the following paths are
+        considered as auxiliary paths:
     </para>
         
     <itemizedlist>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Images/Brands</filename>
+            <filename class="directory">trunk/Identity/Images/Brands/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Manuals/Tcar-ug/es_ES</filename>
+            <filename class="directory">trunk/Locales/Documentation/Models/Docbook/Tcar-ug/es_ES/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Locales/Manuals/Tcar-ug/es_ES</filename>
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            <filename class="directory">trunk/Identity/Images/Themes/Flame/3/Distro/5/Anaconda/es_ES</filename>
-        </para>
-        </listitem>
-        <listitem>
-        <para>
-            <filename class="directory">trunk/Locales/Identity/Models/Default/Distro/5/Anaconda/es_ES</filename>
+            <filename class="directory">trunk/Locales/Identity/Models/Themes/Default/Distro/5/Anaconda/es_ES/</filename>
         </para>
         </listitem>
     </itemizedlist>
-
+    
     <para>
-        The relationship between master and auxiliar paths is built by
-        combining the second directory level of master paths with
-        directories in the second directory level of repository
-        layout. In the second directory level of repository layout,
-        the <filename class="directory">Identity</filename>, <filename
-        class="directory">Manuals</filename> and <filename
-        class="directory">Scripts</filename> directories are always
-        used to create the master paths and the output auxiliar paths.
-        The <filename class="directory">Locales</filename> directory,
-        on the other hand, is always used to create localization
-        auxiliar paths for all the master paths available under
-        <filename class="directory">Identity</filename>, <filename
-        class="directory">Manuals</filename> and <filename
-        class="directory">Scripts directories</filename>.
+        The relationship between input, output and auxiliary paths is
+        created by combining the second directory level of input paths
+        with the second directory level in the repository directory
+        layout. In the repository directory layout, the second level
+        includes the <filename
+        class="directory">trunk/Identity</filename>, <filename
+        class="directory">trunk/Documentation</filename> and <filename
+        class="directory">trunk/Scripts</filename> directories. These
+        directories are always used to create input and output paths.
+        The <filename class="directory">trunk/Locales</filename>
+        directory, on the other hand, is always used to create
+        auxiliary paths only for input paths available under <filename
+        class="directory">Identity</filename>, <filename
+        class="directory">Documentation</filename> and <filename
+        class="directory">Scripts</filename> directories.
     </para>
         
     <para>
         For example, if the <varname>LANG</varname> environment
         variable is set to <quote>es_ES.UTF-8</quote> and you execute
-        the <function>render</function> functionality of
+        the <xref linkend="scripts-bash-render"/> functionality of
         <command>centos-art.sh</command> script with the <filename
-        class="directory">trunk/Manuals/Tcar-ug</filename>  master
-        path as argument, it will produce &TCARUG; in Spanish language
-        using translation messages from
-        <filename>trunk/Locales/Manuals/Tcar-ug/es_ES</filename>
-        auxiliar path and would save final documentation output files
-        under <filename
-        class="directory">trunk/Manuals/Tcar-ug/es_ES</filename>
-        auxiliar path.
+        class="directory">trunk/Documentation/Manuals/Docbook/Tcar-ug/</filename>
+        input path as argument, it will produce &TCARUG; in Spanish
+        language using translation messages from
+        <filename>trunk/Locales/Documentation/Models/Docbook/Tcar-ug/es_ES/</filename>
+        auxiliary path and would save final documentation files under
+        <filename
+        class="directory">trunk/Documentation/Manuals/Docbook/Tcar-ug/es_ES/</filename>
+        output path.
     </para>
 
-    </sect2>
+    </section>
 
-</sect1>
+</section>
