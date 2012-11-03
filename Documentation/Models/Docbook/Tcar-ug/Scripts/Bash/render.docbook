@@ -9,7 +9,7 @@
 
     <refnamediv>
         <refname>render</refname>
-        <refpurpose>Standardize rendition tasks inside &TCAR;</refpurpose>
+        <refpurpose>Standardize rendition tasks inside &TCAR;.</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv>
@@ -28,7 +28,7 @@
         <arg>--theme-model="<replaceable>MODELNAME</replaceable>"</arg>
         <arg>--with-brands</arg>
         <arg>--sync-changes</arg>
-        <arg choice="req"><replaceable>LOCATION</replaceable></arg>
+        <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
     </cmdsynopsis>
     </refsynopsisdiv>
 
@@ -36,24 +36,61 @@
     <title>Description</title>
 
     <para>
-        The <function>render</function> functionality exists to render
-        final image and documentation files from their respective
-        source files.
+        The <function>render</function> functionality exists to
+        automate content rendition inside &TCAR;. The content
+        rendition process itself takes place through the following
+        rendition modes:
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        <literal>svg</literal> &mdash; This modes works with both
+        gzip-compressed (<filename class="extension">.svgz</filename>)
+        or uncompressed (<filename class="extension">.svg</filename>)
+        scalable vector graphics as source files and produces portable
+        network graphics as main output.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <literal>docbook</literal> &mdash; This mode works with
+        DocBook source files and produces XHTML as main output. It is
+        also possible to produce PDF output from DocBook source files,
+        however PDF output is commented because its production fails
+        trying to create indexes.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <literal>conf</literal> &mdash; This mode works with one or
+        more configuration files as source and produces portable
+        network graphics as main output. The format used in these
+        configuration files is described in <xref
+        linkend="scripts-bash-render-description-conffiles"/>.
+    </para>
+    </listitem>
+    </itemizedlist>
+
+    <para>
+        To determine the rendition mode, the
+        <function>render</function> functionality uses the path
+        provided as <replaceable>LOCATION</replaceable> argument and
+        the path name convention described in <xref
+        linkend="repo-convs-relbdirs" />.
     </para>
 
     <refsection id="scripts-bash-render-description-renderabledirs">
-    <title>Render-able directories</title>
+    <title>Render-able Directories</title>
 
     <para>
-        Inside the working copy of &TCAR;, render-able directories are
-        conventional locations inside the working copy where you can
-        find output files, produced from source files and optionally
-        auxiliary files. Auxiliary files are optionally used to modify
-        the way output files are produced from source files (e.g., to
-        produce localized output). Inside render-able directories the
-        rendition process is performed through different rendition
-        flows known as base-rendition, post-rendition, last-rendition
-        and directory-specific rendition.
+        The render-able directories are conventional locations inside
+        the working copy where you can find final output files. The
+        final output files are produced from source files and
+        auxiliary files.  Auxiliary files are frequently used to
+        create localized instances of source files which are, in turn,
+        used to create final output files in different forms (e.g., in
+        a different language).
     </para>
 
     <para>
@@ -96,6 +133,81 @@
     </listitem>
     </itemizedlist>
 
+    <para>
+        Inside render-able directories the rendition process is
+        performed through different rendition flows known as
+        theme-rendition, base-rendition, post-rendition and
+        last-rendition.
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-render-description-themeflow">
+    <title>Theme-Rendition Flow</title>
+    <para>
+        The theme-rendition flow exists to produce content inside
+        <filename>trunk/Identity/Images/Themes/</filename> directory
+        structure. This rendition flow identifies which directories
+        are render-able and uses the base-rendition on them, one by
+        one.
+    </para>
+    <para>
+        The theme-rendition flow exists to support massive rendition
+        of themes through the following command:
+    </para>
+
+    <cmdsynopsis>
+        <command>centos-art render trunk/Identity/Images/Themes</command>
+    </cmdsynopsis>
+
+    <para>
+        In case you need to limit the amount of themes or components
+        inside themes you want to render, you can be more
+        specific about the <replaceable>LOCATION</replaceable> you
+        passed as argument and use the
+        <option>--filter="<replaceable>REGEX</replaceable>"</option>
+        to specify the file you want to render.  For example, if you
+        only want to render the <filename>01-welcome.png</filename>
+        Anaconda file for CentOS-5 distribution based on version 2 of
+        Modern artistic motif, then you can run the following command:
+    </para>
+
+    <cmdsynopsis>
+        <command>centos-art render trunk/Identity/Images/Themes/Modern/2/Distro/5/Anaconda --filter="01-welcome"</command>
+    </cmdsynopsis>
+
+    <para>
+        Notice that you can reach the same result in different ways
+        here by creating combinations between the path you provide as
+        <replaceable>LOCATION</replaceable> and the
+        <option>--filter</option> option. For example, all the
+        following commands produce the same result:
+    </para>
+
+    <cmdsynopsis>
+        <command>centos-art render trunk/Identity/Images/Themes/Modern/2/Distro/5/Anaconda</command>
+    </cmdsynopsis>
+
+    <cmdsynopsis>
+        <command>centos-art render trunk/Identity/Images/Themes/Modern --filter="2/Distro/5/Anaconda"</command>
+    </cmdsynopsis>
+
+    <cmdsynopsis>
+        <command>centos-art render trunk/Identity/Images/Themes --filter="Modern/2/Distro/5/Anaconda"</command>
+    </cmdsynopsis>
+
+    <para>
+        You can use whatever combination you like whenever it matches
+        a valid render-able directory inside the working copy. But it
+        seems to be an acceptable practice to use the
+        <replaceable>LOCATION</replaceable> argument to specify the
+        render-able directory path inside the <filename
+        class="directory">trunk/Identity/Images/Themes</filename>
+        directory which images need to be rendered for and the
+        <option>--filter</option> option only when it is needed to
+        restrict rendition to a specific file inside the directory
+        provided as <replaceable>LOCATION</replaceable>.
+    </para>
+
     </refsection>
 
     <refsection id="scripts-bash-render-description-baseflow">
@@ -114,6 +226,13 @@
 
     <refsection id="scripts-bash-render-description-lastflow">
     <title>Last-Rendition Flow </title>
+    <para>
+        ...
+    </para>
+    </refsection>
+
+    <refsection id="scripts-bash-render-description-conffiles">
+    <title>Configuration Files (<filename>render.conf</filename>)</title>
     <para>
         ...
     </para>
