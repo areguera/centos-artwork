@@ -25,6 +25,13 @@
 
 function svg {
 
+    # Apply translation to design model in order to produce the
+    # translated design model instance.
+    svg_doTranslation
+
+    # Expand translation markers inside design model instance.
+    cli_expandTMarkers ${INSTANCE}
+
     # Initialize the export id used inside design templates. This
     # value defines the design area we want to export.
     local EXPORTID='CENTOSARTWORK'

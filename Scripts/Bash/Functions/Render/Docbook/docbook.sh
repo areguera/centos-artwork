@@ -32,6 +32,13 @@ function docbook {
     # Define absolute path to Docbook models.
     local DOCBOOK_MODELS="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook"
 
+    # Apply translation to design model in order to produce the
+    # translated design model instance.
+    docbook_doTranslation
+
+    # Expand translation markers inside design model instance.
+    cli_expandTMarkers ${INSTANCE}
+
     # Exapand common contents inside instance.
     docbook_expandLicenses ${INSTANCE}
 

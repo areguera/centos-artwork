@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# render_doTranslation.sh -- This function standardizes the way
-# translation files are applied to design models in order to produce
-# the translated instance that is used to expand translation markers
-# and produce the base-rendition output.
+# svg_doTranslation.sh -- This function standardizes the way
+# translation files are applied to SVG design models in order to
+# produce the translated instance that is used to expand translation
+# markers and produce PNG output in different languages.
 #
 # Assuming no translation file exists, an untranslated instace is
 # taken from the design model and created (i.e., just a copy) from it.
@@ -30,7 +30,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_doTranslation {
+function svg_doTranslation {
 
     # Define which command will be used to output the template
     # content. This is required because template files might be found
@@ -58,28 +58,12 @@ function render_doTranslation {
 
         # Create translation instance to combine both template
         # translation and licenses translations.
-        local TRANSLATION_INSTANCE=${TMPDIR}/${TRANSLATION}
+        local TRANSLATION_INSTANCE=${TMPDIR}/message.po
     
-        if [[ ${TEMPLATE} =~ "${TCAR_WORKDIR}/trunk/Documentation/.+$" ]];then
-
-            # Combine license translations with template translation
-            # in order to reuse licenses translations in template
-            # files without including them in template portable
-            # objects. In the case of Docbook templates, translations
-            # related to licenses are required because license content
-            # is expanded at execution time inside the docbook
-            # instance used by XSL processor during transformation.
-            cli_exportFunctions "Locale/locale_combineLicenseMessages"
-            locale_combineLicenseMessages ${TRANSLATION_INSTANCE} ${TRANSLATION}
-
-        else
-
-            # In the case of SVG and other files, license translations
-            # is not required so we don't combine it into the template
-            # translation.
-            cp ${TRANSLATION} ${TRANSLATION_INSTANCE}
-
-        fi
+        # In the case of SVG and other files, license translations is
+        # not required so we don't combine it into the template
+        # translation.
+        cp ${TRANSLATION} ${TRANSLATION_INSTANCE}
 
         # Create the translated instance of design model.
         ${COMMAND} ${TEMPLATE} | xml2po -a -l ${CLI_LANG_LL} \

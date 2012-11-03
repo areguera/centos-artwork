@@ -168,25 +168,23 @@ function render_doBaseActions {
             # Print separator line.
             cli_printMessage '-' --as-separator-line
 
+            # Verify design models file existence. We cannot continue
+            # with out it.
+            cli_checkFiles ${FILE} -f
+
+            # Print action message.
+            cli_printMessage "${FILE}" --as-template-line
+
+            # Define final location of output directory.
+            render_getDirOutput
+
             # Define final location of translation file.
-            TRANSLATION=$(dirname $FILE \
+            TRANSLATION=$(dirname ${FILE} \
                | sed -r 's!trunk/(Documentation|Identity)!trunk/Locales/\1!')/${CLI_LANG_LC}/messages.po
 
             # Define final location of template file.
             TEMPLATE=${FILE}
-
-            # Verify design models file existence. We cannot continue
-            # with out it.
-            if [[ ! -f $TEMPLATE ]];then
-                cli_printMessage "`gettext "The template file doesn't exist."`" --as-error-line
-            fi
-
-            # Print action message.
-            cli_printMessage "$TEMPLATE" --as-template-line
- 
-            # Define final location of output directory.
-            render_getDirOutput
-
+            
             # Get relative path to file. The path string (stored in
             # FILE) has two parts: 1. the variable path and 2. the
             # common path.  The variable path is before the common
@@ -224,13 +222,6 @@ function render_doBaseActions {
 
             # Define instance name from design model.
             INSTANCE=$(cli_getTemporalFile ${TEMPLATE})
-
-            # Apply translation to design model in order to produce
-            # the translated design model instance.
-            render_doTranslation
-
-            # Expand translation markers inside design model instance.
-            cli_expandTMarkers ${INSTANCE}
 
             # Perform format base-rendition.
             ${RENDER_FORMAT}
