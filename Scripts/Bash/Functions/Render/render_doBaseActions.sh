@@ -127,9 +127,10 @@ function render_doBaseActions {
 
         else
 
-            # For all other cases, build a list of files to process.
+            # For all other cases, build a list of files to process
+            # using the path value pass as argument.
             for FILE in $(cli_getFilesList ${TEMPLATE} \
-                --pattern="^.*${FLAG_FILTER}\.${RENDER_EXTENSION}$" \
+                --pattern="^/.*${FLAG_FILTER}\.${RENDER_EXTENSION}$" \
                 --type="f");do
                 FILES[((++${#FILES[*]}))]=$FILE
             done
