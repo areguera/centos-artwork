@@ -1,4 +1,4 @@
-<sect1 id="repo-ws-config">
+<section id="repo-ws-config">
 
     <title>Configuring Your Workstation</title>
 
@@ -12,7 +12,7 @@
         links, and anything else needed.
     </para>
 
-    <sect2 id="repo-ws-config-wp">
+    <section id="repo-ws-config-wp">
     <title>Define Your Workplace</title>
     <para>
         Once you've installed the workstation and it is up and
@@ -52,7 +52,7 @@
         be distributed.  Let's see some alternatives.
     </para>
 
-    <sect3>
+    <section>
     <title>Different absolute paths</title>
     <para>
         Consider that you store your working copy under <filename
@@ -68,9 +68,9 @@
         yours or mine? (None of them is, of course.)
     </para>
 
-    </sect3>
+    </section>
 
-    <sect3 id="repo-ws-config-wp-OneUniqueAbsolutePath">
+    <section id="repo-ws-config-wp-OneUniqueAbsolutePath">
     <title>One unique absolute path</title>
     <para>
         Another case would be that where you and I ourselves use one
@@ -89,9 +89,9 @@
         different subversion credentials for committing changes to be
         lost.
     </para>
-    </sect3>
+    </section>
 
-    <sect3>
+    <section>
     <title>Different absolute paths through dynamic expansion</title>
     <para>
         Most of the absolute paths we use inside the working copy are
@@ -108,9 +108,9 @@
         are used as in their permanent state inside the repository
         (e.g., CSS files and other files similar in purpose).
     </para>
-    </sect3>
+    </section>
 
-    <sect3>
+    <section>
     <title>Different absolute paths, dynamic expansion, symbolic
     links, relative links, and environment variables</title>
 
@@ -156,11 +156,11 @@
         the working copy you are using.
     </para>
 
-    </sect3>
+    </section>
 
-    </sect2>
+    </section>
 
-    <sect2 id="repo-ws-config-wc">
+    <section id="repo-ws-config-wc">
     <title>Download Your Working Copy</title>
 
     <para>
@@ -191,9 +191,9 @@
         implement &TCPCVI;.
     </para>
 
-    </sect2>
+    </section>
 
-    <sect2 id="repo-ws-config-sudoers">
+    <section id="repo-ws-config-sudoers">
     <title>Configure Administrative Tasks</title>
 
     <para>
@@ -259,9 +259,9 @@ al      ALL=(ALL)       SOFTWARE
     </screenshot>
     </example>
     
-    </sect2>
+    </section>
 
-    <sect2 id="repo-ws-config-runout">
+    <section id="repo-ws-config-runout">
     <title>Run Preparation Tool</title>
     <para>
         Once you've both downloaded a working copy from &TCAR; 
@@ -279,9 +279,9 @@ al      ALL=(ALL)       SOFTWARE
         functionality of <command>centos-art.sh</command> script, see
         <xref linkend="scripts-bash-prepare" />.
     </para>
-    </sect2>
+    </section>
 
-    <sect2 id="repo-ws-config-ChangeWorkingCopy">
+    <section id="repo-ws-config-ChangeWorkingCopy">
     <title>Changing Your Working Copy Default Path</title>
     <para>
         By default your working copy should be store in your home
@@ -346,6 +346,6 @@ al      ALL=(ALL)       SOFTWARE
     </listitem>
     </orderedlist>
 
-    </sect2>
+    </section>
 
-</sect1>
+</section>
