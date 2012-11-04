@@ -179,8 +179,8 @@
         Notice that you can reach the same result in different ways
         here by creating combinations between the path you provide as
         <replaceable>LOCATION</replaceable> and the
-        <option>--filter</option> option. For example, all the
-        following commands produce the same result:
+        <option>--filter</option> option. For example, the following
+        commands produce the same result:
     </para>
 
     <cmdsynopsis>
@@ -189,10 +189,6 @@
 
     <cmdsynopsis>
         <command>centos-art render trunk/Identity/Images/Themes/Modern --filter="2/Distro/5/Anaconda"</command>
-    </cmdsynopsis>
-
-    <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Themes --filter="Modern/2/Distro/5/Anaconda"</command>
     </cmdsynopsis>
 
     <para>
