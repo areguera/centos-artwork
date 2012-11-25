@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.4\n"
+"Project-Id-Version: centos-art-0.0.3\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-10-10 20:53-0400\n"
-"PO-Revision-Date: 2012-10-10 20:53-0400\n"
+"POT-Creation-Date: 2012-11-03 11:07-0500\n"
+"PO-Revision-Date: 2012-11-03 11:07-0500\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -30,12 +30,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:38
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:35
 #: trunk/Scripts/Bash/Functions/Help/help_getEntries.sh:102
 msgid "The documentation entry provided isn't supported."
 msgstr "La entrada de documentación suministrada no está soportada."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:93
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:91
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntry.sh:70
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntry.sh:66
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_renameEntry.sh:70
@@ -58,10 +58,6 @@ msgstr "La ubicación de origen tiene cambios pendientes."
 msgid "The target location already exists."
 msgstr "La ubicación de destino ya existe."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntryManual.sh:56
-msgid "Updating chapter menus and nodes inside manual structure."
-msgstr "Actualizando menús y nodos en la estructura del manual."
-
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:51
 msgid "The location provided as target isn't valid."
 msgstr "La ubicación suministrada como destino no es válida."
@@ -72,44 +68,32 @@ msgstr "El capítulo de documentación siguiente no existe:"
 
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:38
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:38
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:45
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:42
 msgid "Do you want to create it now?"
 msgstr "¿Desea crearlo ahora?"
 
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:47
-msgid "Chapter Title"
-msgstr "Título del capítulo"
-
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:57
-msgid "Creating chapter files."
-msgstr "Creando los ficheros del capítulo"
-
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:112
-msgid "Updating chapter menu and nodes inside manual structure."
-msgstr "Actualizando menú y nodos dentro de la estructura del manual."
+msgid "Enter chapter's title"
+msgstr "Entre el título del capítulo"
 
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:36
 #, sh-format
 msgid "The following documentation manual doesn't exist:"
 msgstr "El manual de documentación siguiente no existe:"
 
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:47
+msgid "Enter manual's title"
+msgstr "Entre el título del manual"
+
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:49
+msgid "Enter manual's subtitle"
+msgstr "Entre el subtítulo del manual"
+
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:51
+msgid "Enter manual's abstract"
+msgstr "Entre el preámbulo del manual"
+
 #: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:57
-msgid "Manual Title"
-msgstr "Título del manual"
-
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:59
-msgid "Manual Subtitle"
-msgstr "Subtítulo del manual"
-
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:61
-msgid "Manual Abstract"
-msgstr "Preámbulo del manual"
-
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:66
-msgid "Creating manual structure in texinfo format."
-msgstr "Creando la estructura del manual en formato texinfo."
-
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:71
 msgid "The manual title cannot be empty."
 msgstr "El título del manual no puede estar vacío."
 
@@ -132,21 +116,41 @@ msgstr "Eliminando"
 msgid "The chapter specified cannot be removed."
 msgstr "El capítulo especificado no puede eliminarse."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:43
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:40
 msgid "The following documentation section doesn't exist:"
 msgstr "La sección de documentación siguiente no existe:"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_updateOutputFiles.sh:41
-msgid "Updating output files"
-msgstr "Actualizando los ficheros de salida"
+#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:121
+msgid "There wasn't any section for processing found."
+msgstr "No se encontraron secciones para ser procesadas."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:32
-msgid "Updating section menus, nodes and cross references"
-msgstr "Actualizando menús, nodos y referencias cruzadas de sectión."
+#: trunk/Scripts/Bash/Functions/Help/help_getOptions.sh:79
+msgid "The documentation format provided is not supported."
+msgstr "El formato de documentación suministrado no está soportado."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:125
-msgid "No section entry found to process."
-msgstr "No hay entrada de sección que procesar."
+#~ msgid "Updating chapter menus and nodes inside manual structure."
+#~ msgstr "Actualizando menús y nodos en la estructura del manual."
+
+#~ msgid "Creating chapter files."
+#~ msgstr "Creando los ficheros del capítulo"
+
+#~ msgid "Updating chapter menu and nodes inside manual structure."
+#~ msgstr "Actualizando menú y nodos dentro de la estructura del manual."
+
+#~ msgid "Manual Title"
+#~ msgstr "Título del manual"
+
+#~ msgid "Creating manual structure in texinfo format."
+#~ msgstr "Creando la estructura del manual en formato texinfo."
+
+#~ msgid "Updating output files"
+#~ msgstr "Actualizando los ficheros de salida"
+
+#~ msgid "Updating section menus, nodes and cross references"
+#~ msgstr "Actualizando menús, nodos y referencias cruzadas de sectión."
+
+#~ msgid "No section entry found to process."
+#~ msgstr "No hay entrada de sección que procesar."
 
 #~ msgid "The source location isn't under version control."
 #~ msgstr "La ubicación de origen no está bajo control de versiones."
@@ -156,9 +160,6 @@ msgstr "No hay entrada de sección que procesar."
 
 #~ msgid "isn't under version control."
 #~ msgstr "no está bajo control de versión."
-
-#~ msgid "The documentation format provided isn't supported."
-#~ msgstr "El formato de documentación suministrado no está soportado."
 
 #~ msgid "Select one of the following documentation formats:"
 #~ msgstr "Seleccione uno de los siguientes formatos de documentación:"
