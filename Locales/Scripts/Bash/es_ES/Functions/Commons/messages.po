@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.4\n"
+"Project-Id-Version: centos-art-0.0.3\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-10-10 20:53-0400\n"
-"PO-Revision-Date: 2012-10-10 20:53-0400\n"
+"POT-Creation-Date: 2012-11-03 11:07-0500\n"
+"PO-Revision-Date: 2012-11-03 11:07-0500\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -61,16 +61,22 @@ msgid "isn't a \"$MIME\" file."
 msgstr "isn't a \"$MIME\" file."
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:111
+#, sh-format
+msgid "doesn't match its pattern."
+msgstr "no coincide con su patrón."
+
+#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:118
 msgid "isn't under version control."
 msgstr "no está bajo control de versión."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:154
+#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:167
 msgid "The condition command provided isn't supported."
 msgstr "El comando condicional suministrado no está soportado."
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:35
 msgid "The export id must be passed as first argument."
-msgstr "El identificador de exportación debe ser suministrado como primer argumento."
+msgstr ""
+"El identificador de exportación debe ser suministrado como primer argumento."
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:37
 msgid "The export id doesn't match its pattern."
@@ -157,7 +163,7 @@ msgstr "El mensaje no puede estar vacío."
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:89
 msgid "To know more, run the following command"
-msgstr "Para conocer más, ejecute el command siguiente"
+msgstr "Para conocer más, ejecute el comando siguiente"
 
 #: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:97
 msgid "yes"
