@@ -46,7 +46,6 @@ function locale_updateMessageXml {
         # translations be there. If we cannot treat licenses as
         # idependent documents (e.g., through XInclude), then lets
         # keep translation messages as syncronized as possible.
-        locale_combineLicenseMessages ${MESSAGES}.po
 
     elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Models/.+$" ]];then
 
