@@ -54,6 +54,10 @@ function locale_updateMessageXmlDocbook {
     cli_expandTMarkers ${INSTANCE}
 
     # Expand system entities definition.
+    cli_exportFunctions "Render/Docbook/docbook_doTranslation"
+    docbook_doTranslation ${INSTANCE}
+
+    # Expand system entities definition.
     cli_exportFunctions "Render/Docbook/docbook_expandSystemEntities"
     docbook_expandSystemEntities ${INSTANCE}
 
