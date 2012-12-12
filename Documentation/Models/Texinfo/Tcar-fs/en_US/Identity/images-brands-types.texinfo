@@ -1,8 +1,8 @@
-@node Trunk Identity Images Brands Types
-@section @file{trunk/Identity/Images/Brands/Types}
-@cindex Trunk identity images brands types
+@node Identity Images Brands Types
+@section @file{Identity/Images/Brands/Types}
+@cindex identity images brands types
 
-The @file{trunk/Identity/Images/Brands/Types} exists to organize
+The @file{Identity/Images/Brands/Types} exists to organize
 images related to The CentOS Symbol, in different formats (e.g., PNG,
 JPG, PDF, TIF, XBM, XPM) and dimensions. 
 
@@ -16,16 +16,16 @@ is printed out and a route to reproduce it in such a way must be
 available so as to avoid reproduction mistakes when images are branded
 with it.
 
-The @file{trunk/Identity/Images/Brands/Types} directory and the files
+The @file{Identity/Images/Brands/Types} directory and the files
 inside it aren't under version control. Files in this location are
 mainly used to build The CentOS Logo from combining both The CentOS
 Type and The CentOS Symbol in specific situations that might be needed
 doing so.
 
-The @file{trunk/Identity/Images/Brands/Types} directory contains files
+The @file{Identity/Images/Brands/Types} directory contains files
 used by no package, as far as we've found out.
 
-The @file{trunk/Identity/Images/Brands/Types} directory organizes
+The @file{Identity/Images/Brands/Types} directory organizes
 files under directories numerically named (e.g., @file{48}, @file{64},
 @file{128}, etc.).  Inside these directories, image files are stored
 in specific heights and named as
@@ -36,9 +36,9 @@ to determine the image height of files stored inside.  For example,
 the directory @file{48} stores image files of 48 pixels height in
 different formats.
 
-Content rendition inside @file{trunk/Identity/Images/Brands/Types}
+Content rendition inside @file{Identity/Images/Brands/Types}
 directory takes place through the following command:
 
 @verbatim
-centos-art render trunk/Identity/Images/Brands/Types --dont-commit-changes
+centos-art render Identity/Images/Brands/Types --dont-commit-changes
 @end verbatim

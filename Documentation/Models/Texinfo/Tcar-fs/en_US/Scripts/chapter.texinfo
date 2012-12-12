@@ -1,29 +1,25 @@
-@node Trunk Scripts
-@section @file{trunk/Scripts}
-@cindex Trunk scripts
+@node Scripts
+@chapter The @file{Scripts} Directory
+@cindex The @file{Scripts} Directory
 
-The @file{trunk/Scripts} directory exists to organize automation
+@c -- Chapter Introduction
+
+The @file{Scripts} directory exists to organize automation
 scripts related to @value{TCPCVI}. Such automation scripts are
 implemented through @command{centos-art.sh} script, a bash scripts
 designed to automate most frequent tasks performed inside the working
 copy of @value{TCAR} (e.g., image rendition, content documentation,
 content translation, etc.).
 
-The @file{trunk/Scripts} directory and all files inside it are under
+The @file{Scripts} directory and all files inside it are under
 version control. 
 
-The @file{trunk/Scripts} directory contains just one file, the
+The @file{Scripts} directory contains just one file, the
 @file{centos-art.sh} file. This file is the invocation script the
 @command{centos-art} command calls to. In addition to
 @file{centos-art.sh} file, the following directories are available:
 
-@c -- <[centos-art(SeeAlso)
-@itemize
-@item @ref{Trunk Scripts Functions}
-@end itemize
-@c -- ]>
-
-Content rendition inside @file{trunk/Scripts} is not supported.
+Content rendition inside @file{Scripts} is not supported.
 
 Once the @command{centos-art.sh} script is executed, the following
 variables are available all along the script execution:
@@ -71,3 +67,9 @@ where @var{BASEDIR} is an absolute path inside your workstation,
 @samp{ISO-3166} (e.g., @samp{es_ES} for Spanish from Spain,
 @samp{fr_FR} for French from France, etc.).
 @end defvar
+
+@c -- Chapter Menu
+@include Identity/chapter-menu.texinfo
+
+@c -- Chapter Nodes
+@include Identity/chapter-nodes.texinfo

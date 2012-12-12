@@ -1,29 +1,29 @@
-@node Trunk Scripts Functions
-@section @file{trunk/Scripts/Functions}
-@cindex Trunk scripts functions
+@node Scripts Functions
+@section @file{Scripts/Functions}
+@cindex Scripts functions
 
-The @file{trunk/Scripts/Functions} directory exists to organize common
-and spectic functionalities related to the @command{centos-art.sh}
+The @file{Scripts/Functions} directory exists to organize common and
+specific functionalities related to the @command{centos-art.sh}
 script. Common functionalities are loaded once the
 @command{centos-art.sh} script is executed and made available for
-sepecific functionalities to reuse.
+specific functionalities to reuse.
 
-The @file{trunk/Scripts/Functions} directory and all files inside it
+The @file{Scripts/Functions} directory and all files inside it
 are under version control.
 
-Content rendition inside `trunk/Scripts/Functions' directory is not
+Content rendition inside `Scripts/Functions' directory is not
 supported.
 
-Inside @file{trunk/Scripts/Functions} directory, specific
+Inside @file{Scripts/Functions} directory, specific
 functionalities are organized in the following directories:
 
 @c -- <[centos-art(SeeAlso)
 @itemize
-@item @ref{Trunk Scripts Functions Prepare}
+@item @ref{Scripts Functions Prepare}
 @end itemize
 @c -- ]>
 
-Inside @file{trunk/Scripts/Functions} directory, common
+Inside @file{Scripts/Functions} directory, common
 functionalities are stored in files prefixed with the @samp{cli}
 string as described below:
 

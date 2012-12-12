@@ -1,8 +1,8 @@
-@node Trunk Identity Brushes
-@section @file{trunk/Identity/Brushes}
-@cindex Trunk identity brushes
+@node Identity Brushes
+@section @file{Identity/Brushes}
+@cindex identity brushes
 
-The @file{trunk/Identity/Brushes} directory exists to organize GIMP
+The @file{Identity/Brushes} directory exists to organize GIMP
 brushes used inside @value{TCPCVI}. 
 
 A brush is a pixmap or set of pixmaps used for painting through an
@@ -11,30 +11,30 @@ are initially created in @file{.xcf} format and later exported to any
 of the brush formats recognized by GIMP (e.g., @file{.gbr} or
 @file{.gih}) using the same name of its source file.
 
-The @file{trunk/Identity/Brushes} directory is under version control.
+The @file{Identity/Brushes} directory is under version control.
 
-The @file{trunk/Identity/Brushes} directory contains no file, but the
+The @file{Identity/Brushes} directory contains no file, but the
 following organizational directories:
 
 @c -- <[centos-art(SeeAlso)
 @itemize
-@item @ref{Trunk Identity Brushes Corporate}
+@item @ref{Identity Brushes Corporate}
 @end itemize
 @c -- ]>
 
-Content rendition inside @file{trunk/Identity/Brushes} directory is
+Content rendition inside @file{Identity/Brushes} directory is
 not supported. 
 
 In order for brushes to be loaded by GIMP, they should be stored in
 the @file{~/.gimp-2.2/brushes} directory. This location is out of
 @value{TCAR} and doesn't provide version control by itself. To be able
 of using version controlled brushes inside GIMP, we store brush
-related files inside @file{trunk/Identity/Brushes} directory and
+related files inside @file{Identity/Brushes} directory and
 create links to them from @file{~/.gimp-2.2/brushes} directory.
 
 @float Example,trunk-identity-brushes-1
 @verbatim
-trunk/Identity/Brushes
+Identity/Brushes
 |-- Corporate
 |   |-- symbol.xcf
 |   `-- symbol.gbr (file) <-- ~/.gimp-2.2/brushes/corporate-symbol.gbr (link)
