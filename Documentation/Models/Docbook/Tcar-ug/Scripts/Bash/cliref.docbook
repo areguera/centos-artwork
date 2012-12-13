@@ -28,9 +28,9 @@
         of &TCAR;. These paths can be absolute paths or relative paths
         considering the working copy root directory as section. For
         example, both the absolute path <filename
-        class="directory">/home/al/Projects/CentOS/artwork/trunk/Identity/Themes/</filename>
+        class="directory">/home/al/Projects/CentOS/artwork/Identity/Themes/</filename>
         and the relative path <filename
-        class="directory">trunk/Identity/Themes</filename> point to
+        class="directory">Identity/Themes</filename> point to
         the same location.
     </para>
 
@@ -53,7 +53,7 @@
 <programlisting>
    ${0}  | |${1}| |          ${2}            | |    ${3}   |
 ---------|-|----|-|--------------------------|-|-----------|
-centos-art render trunk/Identity/Images/Themes --with-brands
+centos-art render Identity/Images/Themes --with-brands
 ---------|-|----|-|--------------------------|-|-----------|
 </programlisting>
     </textobject>
@@ -78,7 +78,7 @@ centos-art render trunk/Identity/Images/Themes --with-brands
         argument will be expanded to
         <filename>/home/john/bin/centos-art</filename> which is a
         symbolic link to the
-        <filename>${TCAR_WORKDIR}/trunk/Scripts/Bash/centos-art.sh</filename>
+        <filename>${TCAR_WORKDIR}/Scripts/Bash/centos-art.sh</filename>
         file.
     </para>
     </listitem>
@@ -155,7 +155,7 @@ centos-art render trunk/Identity/Images/Themes --with-brands
         <command>centos-art render --help</command>, the
         <command>centos-art.sh</command> script will display to you
         the information related to the <filename
-        class="directory">trunk/Scripts/Bash/Functions/Render</filename>
+        class="directory">Scripts/Bash/Functions/Render</filename>
         directory.
     </para>
     <para>

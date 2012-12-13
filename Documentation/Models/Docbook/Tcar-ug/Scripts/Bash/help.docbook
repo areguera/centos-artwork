@@ -68,12 +68,12 @@
         documentation entry (the second field) is assumed empty, as
         well. For example, if you want to document the directory
         <quote><filename
-        class="directory">trunk/Scripts/Bash/Functions/Help</filename></quote>,
+        class="directory">Scripts/Bash/Functions/Help</filename></quote>,
         then you can do it with the following command:
     </para>
 
     <cmdsynopsis>
-    <command>centos-art help --edit trunk/Scripts/Bash/Functions/Help</command>
+    <command>centos-art help --edit Scripts/Bash/Functions/Help</command>
     </cmdsynopsis>
     </listitem>
     </varlistentry>
@@ -91,7 +91,7 @@
         style to separate
         components. For example, if you want to document the directory
         <quote><filename
-        class="directory">trunk/Scripts/Bash/Functions/Help</filename></quote>,
+        class="directory">Scripts/Bash/Functions/Help</filename></quote>,
         then you can do it with any of the following commands:
     </para>
 
@@ -105,8 +105,8 @@
         a colon style documentation entry, must match the name the
         name of the directory where the documentation manual is stored
         in. By default documentation manuals are written in
-        trunk/Documentation/Models/Texinfo or
-        trunk/Documentation/Models/Docbook directories, based on
+        Documentation/Models/Texinfo or
+        Documentation/Models/Docbook directories, based on
         whether they are written in Texinfo or Docbook documentation
         format. 
     </para>
@@ -357,7 +357,7 @@
     <para>
         Duplicates <replaceable>manual1</replaceable> as
         <replaceable>manual2</replaceable> inside <filename
-        class="directory">trunk/Documentation/Models/${FLAG_FORMAT}/</filename>
+        class="directory">Documentation/Models/${FLAG_FORMAT}/</filename>
         directory, where ${FLAG_FORMAT} is the name of the format
         passed as option with the first letter in uppercase and the
         rest in lowercase.
@@ -491,34 +491,34 @@
     <para>
         In case such documentation manual doesn't exist in the
         <filename
-        class="directory">trunk/Docuementation/Models/Texinfo/</filename>
+        class="directory">Docuementation/Models/Texinfo/</filename>
         directory, this command will produce the following output:
     </para>
 
 <programlisting>
 The following documentation manual doesn't exist:
---> trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
+--> Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
 Do you want to create it now? [yes/no]: yes
 Enter manual's title: My Zoo
 Enter manual's subtitle: Reference
 Enter manual's abstract: This manual describes my zoo maintenance tasks.
-Creating        trunk/Documentation/Models/Texinfo/Myzoo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.conf
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-index.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter.texinfo
-Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
-Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
-Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
-Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
-Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
-Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
-Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
+Creating        Documentation/Models/Texinfo/Myzoo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo.conf
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo-index.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo-menu.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo-nodes.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter-menu.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter-nodes.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Licenses/chapter.texinfo
+Updating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo.texinfo
+Creating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Creating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Creating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Creating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Creating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Creating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     <para>
@@ -536,22 +536,22 @@ Creating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 
 <programlisting>
 The following documentation chapter doesn't exist:
---> trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles
+--> Documentation/Models/Texinfo/Myzoo/en_US/Turtles
 Do you want to create it now? [yes/no]: yes
 Enter chapter's title: Turtles
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter-menu.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter-nodes.texinfo
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter.texinfo
-Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-menu.texinfo
-Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/myzoo-nodes.texinfo
-Updating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter-menu.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter-nodes.texinfo
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter.texinfo
+Updating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo-menu.texinfo
+Updating        Documentation/Models/Texinfo/Myzoo/en_US/myzoo-nodes.texinfo
+Updating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/chapter.texinfo
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     <para>
@@ -567,15 +567,15 @@ Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 
 <programlisting>
 The following documentation section doesn't exist:
---> trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
+--> Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
 Do you want to create it now? [yes/no]: yes
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     </refsection>
@@ -624,13 +624,13 @@ Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
     </cmdsynopsis>
 
 <programlisting>
-Creating        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
+Creating        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/slowfeet.texinfo
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.info.bz2
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xhtml.tar.bz2
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.xml
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.docbook
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.pdf
+Updating        Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     </refsection>
@@ -654,14 +654,14 @@ Updating        trunk/Documentation/Manuals/Texinfo/Myzoo/en_US/myzoo.txt.bz2
     </cmdsynopsis>
 
 <programlisting>
-Creating        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
-Deleting        trunk/Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longnek.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+Creating        Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longneck.texinfo
+Deleting        Documentation/Models/Texinfo/MyZoo/en_US/Turtles/longnek.texinfo
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     <para>
@@ -680,13 +680,13 @@ Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
     <command>centos-art help --delete --format="texinfo" "myzoo::turtles:longneck"</command>
     </cmdsynopsis>
 <programlisting>
-Deleting        trunk/Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
-Updating        trunk/Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
+Deleting        Documentation/Models/Texinfo/Myzoo/en_US/Turtles/longneck.texinfo
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.info.bz2
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xhtml.tar.bz2
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.xml
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.docbook
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.pdf
+Updating        Documentation/Manuals/Texinfo/MyZoo/en_US/myzoo.txt.bz2
 </programlisting>
 
     </refsection>

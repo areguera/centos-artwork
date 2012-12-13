@@ -77,7 +77,7 @@ Shell execution environment
     <para>
         The first file the <command>centos-art.sh</command> script
         calls is the
-        <filename>trunk/Scripts/Bash/Functions/Common/cli.sh</filename>
+        <filename>Scripts/Bash/Functions/Common/cli.sh</filename>
         file. This file initializes variables and functions can be
         used along the script execution environment lifetime.  Such
         environment variables are for internal use inside the
@@ -205,7 +205,7 @@ Shell execution environment
         <envar>TEXTDOMAIN</envar> environment variable.  In the very
         specific case of <command>centos-art.sh</command> script we
         use the <filename
-        class="directory">trunk/Locales/Scripts/Bash</filename>
+        class="directory">Locales/Scripts/Bash</filename>
         path as default value.
     </para>
     <para>
@@ -316,7 +316,7 @@ Shell execution environment
         brand information that identifies the content produced inside
         &TCAR;. The brand information is used to give name to some
         files inside the repository (e.g., see files under <filename
-        class="directory">trunk/Identity/Models/Brands</filename>
+        class="directory">Identity/Models/Brands</filename>
         directory).
     </para>
     <para>
@@ -344,7 +344,7 @@ Shell execution environment
     <listitem>
     <para>
         The files stored under <filename
-        class="directory">trunk/Identity/Models/Brands</filename>
+        class="directory">Identity/Models/Brands</filename>
         should be named using the value of
         <literal>${TCAR_BRAND}</literal> as sect2. If you change
         the value of this variable, you need to be sure the new value
@@ -371,7 +371,7 @@ Shell execution environment
     
     <para>
         Common environment functions are stored under <filename
-        class="directory">trunk/Scripts/Bash/Functions/Commons</filename>
+        class="directory">Scripts/Bash/Functions/Commons</filename>
         directory and will be available always, both for common
         environment functions themselves and specific environment
         functions.
@@ -380,7 +380,7 @@ Shell execution environment
     <para>
         Specific environment functionalities, on the other hand, are
         stored in the <filename
-        class="directory">trunk/Scripts/Bash/Functions/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh</filename>
+        class="directory">Scripts/Bash/Functions/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh</filename>
         file, where <varname>CLI_FUNCDIRNAME</varname> is the first
         argument passed to centos-art.sh script with the first letter
         in uppercase but the rest in lowercase and

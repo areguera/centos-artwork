@@ -30,9 +30,9 @@
         The <xref linkend="scripts-bash-help"/>
         functionality creates documentation manuals source files in
         the <filename
-        class="directory">trunk/Documentation/Models/Texinfo/</filename>
+        class="directory">Documentation/Models/Texinfo/</filename>
         directory and saves output produced from them in the <filename
-        class="directory">trunk/Documentation/Manuals/Texinfo/</filename>
+        class="directory">Documentation/Manuals/Texinfo/</filename>
         directory.  To produce documentation manuals initial source
         files, the <xref linkend="scripts-bash-help"/> functionality
         uses Texinfo documentation templates, as described in <xref
@@ -70,7 +70,7 @@
     <screeninfo>Texinfo document structure</screeninfo>
     <mediaobject>
     <textobject>
-    <programlisting>trunk/Manuals/${MANUAL_NAME}
+    <programlisting>Manuals/${MANUAL_NAME}
 `-- ${LANG}
     |-- ${CHAPTER_NAME}
     |   |-- chapter-menu.texinfo
@@ -132,13 +132,13 @@
         documentation manual in a language other than English, but no
         language-specific document template for that language exists
         in the <filename
-        class="directory">trunk/Scripts/Documentation/Models/Texinfo/Default/</filename>
+        class="directory">Scripts/Documentation/Models/Texinfo/Default/</filename>
         directory.
     </para>
 
     <para>
         The <filename
-        class="directory">trunk/Scripts/Documentation/Models/Texinfo/Default/</filename>
+        class="directory">Scripts/Documentation/Models/Texinfo/Default/</filename>
         directory organizes all Texinfo document templates using the
         format LL_CC, where LL is the language code (as in ISO-639)
         and CC the country code (as in ISO-3166). The directory
@@ -405,7 +405,7 @@
     <mediaobject>
     <textobject>
     <programlisting>
-trunk/Documentation/Models/Texinfo/Default/
+Documentation/Models/Texinfo/Default/
 |-- ${LANG}/
 |   |-- Chapters/
 |   |   |-- chapter-menu.texinfo
@@ -478,7 +478,7 @@ trunk/Documentation/Models/Texinfo/Default/
         This expansion might result useful when you are documenting
         the repository file system. For example, if you are currently
         editing the documentation entry related to <filename
-        class="directory">trunk/Identity</filename> directory and want
+        class="directory">Identity</filename> directory and want
         to create a linkable list of all documentation entries in the
         first level under it, the code you'll have once the
         construction be expanded would look like the following:
@@ -503,7 +503,7 @@ trunk/Documentation/Models/Texinfo/Default/
         expansions are executed each time the related documentation
         entry is edited or updated. Following with the example above,
         if the documentation entries related to directories under
-        <filename class="directory">trunk/Identity</filename> changes
+        <filename class="directory">Identity</filename> changes
         for some reason (e.g., they are removed from documentation
         manual), the list generated as result of document expansion
         will be updated automatically after editing the documentation

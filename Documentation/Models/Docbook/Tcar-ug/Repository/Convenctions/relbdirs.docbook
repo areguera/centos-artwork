@@ -38,17 +38,17 @@
     <itemizedlist>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Images/Brands/</filename>
+            <filename class="directory">Identity/Images/Brands/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Documentation/Manuals/Tcar-ug/</filename>
+            <filename class="directory">Documentation/Manuals/Tcar-ug/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Images/Themes/Modern/2/Distro/5/Anaconda/</filename>
+            <filename class="directory">Identity/Images/Themes/Modern/2/Distro/5/Anaconda/</filename>
         </para>
         </listitem>
     </itemizedlist>
@@ -75,17 +75,17 @@
     <itemizedlist>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Models/Brands/</filename>
+            <filename class="directory">Identity/Models/Brands/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Documentation/Models/Tcar-ug/</filename>
+            <filename class="directory">Documentation/Models/Tcar-ug/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Models/Themes/Default/Distro/5/Anaconda/</filename>
+            <filename class="directory">Identity/Models/Themes/Default/Distro/5/Anaconda/</filename>
         </para>
         </listitem>
     </itemizedlist>
@@ -105,32 +105,31 @@
     <itemizedlist>
         <listitem>
         <para>
-            <filename class="directory">trunk/Identity/Images/Brands/</filename>
+            <filename class="directory">Identity/Images/Brands/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Locales/Documentation/Models/Docbook/Tcar-ug/es_ES/</filename>
+            <filename class="directory">Locales/Documentation/Models/Docbook/Tcar-ug/es_ES/</filename>
         </para>
         </listitem>
         <listitem>
         <para>
-            <filename class="directory">trunk/Locales/Identity/Models/Themes/Default/Distro/5/Anaconda/es_ES/</filename>
+            <filename class="directory">Locales/Identity/Models/Themes/Default/Distro/5/Anaconda/es_ES/</filename>
         </para>
         </listitem>
     </itemizedlist>
     
     <para>
         The relationship between input, output and auxiliary paths is
-        created by combining the second directory level of input paths
-        with the second directory level in the repository directory
-        layout. In the repository directory layout, the second level
-        includes the <filename
-        class="directory">trunk/Identity</filename>, <filename
-        class="directory">trunk/Documentation</filename> and <filename
-        class="directory">trunk/Scripts</filename> directories. These
-        directories are always used to create input and output paths.
-        The <filename class="directory">trunk/Locales</filename>
+        created by combining the first directory level of input paths
+        with the first directory level in the repository directory
+        layout. In the repository directory layout, the first level
+        includes the <filename class="directory">Identity</filename>,
+        <filename class="directory">Documentation</filename> and
+        <filename class="directory">Scripts</filename> directories.
+        These directories are always used to create input and output
+        paths.  The <filename class="directory">Locales</filename>
         directory, on the other hand, is always used to create
         auxiliary paths only for input paths available under <filename
         class="directory">Identity</filename>, <filename
@@ -143,13 +142,13 @@
         variable is set to <quote>es_ES.UTF-8</quote> and you execute
         the <xref linkend="scripts-bash-render"/> functionality of
         <command>centos-art.sh</command> script with the <filename
-        class="directory">trunk/Documentation/Manuals/Docbook/Tcar-ug/</filename>
+        class="directory">Documentation/Manuals/Docbook/Tcar-ug/</filename>
         input path as argument, it will produce &TCARUG; in Spanish
         language using translation messages from
-        <filename>trunk/Locales/Documentation/Models/Docbook/Tcar-ug/es_ES/</filename>
+        <filename>Locales/Documentation/Models/Docbook/Tcar-ug/es_ES/</filename>
         auxiliary path and would save final documentation files under
         <filename
-        class="directory">trunk/Documentation/Manuals/Docbook/Tcar-ug/es_ES/</filename>
+        class="directory">Documentation/Manuals/Docbook/Tcar-ug/es_ES/</filename>
         output path.
     </para>
 

@@ -101,12 +101,12 @@
     <itemizedlist>
     <listitem>
     <para>
-        <filename class="directory">trunk/Identity/Images/</filename>
+        <filename class="directory">Identity/Images/</filename>
         &mdash; This directory structure organizes final image files
         in different formats. It also includes source files for
         producing the backgrounds of themes. Related design models for
         all these files are under <filename
-        class="directory">trunk/Identity/Models/</filename> directory
+        class="directory">Identity/Models/</filename> directory
         structure.
     </para>
     <important>
@@ -123,11 +123,11 @@
     <listitem>
     <para>
         <filename
-        class="directory">trunk/Documentation/Manuals/</filename>
+        class="directory">Documentation/Manuals/</filename>
         &mdash; This directory structure organizes final documentation
         files. Design models for all these files are organized under
         <filename
-        class="directory">trunk/Documentation/Models/</filename>
+        class="directory">Documentation/Models/</filename>
         directory structure.
     </para>
     </listitem>
@@ -145,7 +145,7 @@
     <title>Theme-Rendition Flow</title>
     <para>
         The theme-rendition flow exists to produce content inside
-        <filename>trunk/Identity/Images/Themes/</filename> directory
+        <filename>Identity/Images/Themes/</filename> directory
         structure. This rendition flow identifies which directories
         are render-able and uses the base-rendition on them, one by
         one.
@@ -156,7 +156,7 @@
     </para>
 
     <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Themes</command>
+        <command>centos-art render Identity/Images/Themes</command>
     </cmdsynopsis>
 
     <para>
@@ -172,7 +172,7 @@
     </para>
 
     <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Themes/Modern/2/Distro/5/Anaconda --filter="01-welcome"</command>
+        <command>centos-art render Identity/Images/Themes/Modern/2/Distro/5/Anaconda --filter="01-welcome"</command>
     </cmdsynopsis>
 
     <para>
@@ -184,11 +184,11 @@
     </para>
 
     <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Themes/Modern/2/Distro/5/Anaconda</command>
+        <command>centos-art render Identity/Images/Themes/Modern/2/Distro/5/Anaconda</command>
     </cmdsynopsis>
 
     <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Themes/Modern --filter="2/Distro/5/Anaconda"</command>
+        <command>centos-art render Identity/Images/Themes/Modern --filter="2/Distro/5/Anaconda"</command>
     </cmdsynopsis>
 
     <para>
@@ -197,7 +197,7 @@
         seems to be an acceptable practice to use the
         <replaceable>LOCATION</replaceable> argument to specify the
         render-able directory path inside the <filename
-        class="directory">trunk/Identity/Images/Themes</filename>
+        class="directory">Identity/Images/Themes</filename>
         directory which images need to be rendered for and the
         <option>--filter</option> option only when it is needed to
         restrict rendition to a specific file inside the directory
@@ -337,7 +337,7 @@
     </para>
 
     <cmdsynopsis>
-        <command>ls ${TCAR_WORKDIR}/trunk/Identity/Models/Themes</command>
+        <command>ls ${TCAR_WORKDIR}/Identity/Models/Themes</command>
     </cmdsynopsis>
 
     </listitem>

@@ -50,7 +50,7 @@
         When shell scripts are found, the <function>tuneup</function>
         functionality of centos-art.sh script reads a comment template
         from
-        <filename>trunk/Scripts/Functions/Tuneup/Shell/Config/topcomment.sed</filename>
+        <filename>Scripts/Functions/Tuneup/Shell/Config/topcomment.sed</filename>
         and applies it to all shell scripts found, one by one. As
         result, all shell scripts will end up having the same
         copyright and license information the comment template does.
@@ -100,7 +100,7 @@
     <para>
         When scalable vector graphics are found, the tuneup
         functionality reads a SVG metadata template from
-        <filename>trunk/Scripts/Functions/Tuneup/Svg/Config/metadata.sed</filename>
+        <filename>Scripts/Functions/Tuneup/Svg/Config/metadata.sed</filename>
         and applies it to all files found, one by one. Immediatly
         after the metadata template has been applied and, before
         passing to next file, all unused definition are removed from

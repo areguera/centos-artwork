@@ -176,7 +176,7 @@
         theme part of the path you provide as non-option argument to
         <command>centos-art.sh</command> script. For example, if you
         provide the path
-        <filename>trunk/Identity/Images/Themes/Modern/2/Distro/5</filename>,
+        <filename>Identity/Images/Themes/Modern/2/Distro/5</filename>,
         this translation will expand to the
         <literal>Modern/2/</literal> value.
     </para>
@@ -187,7 +187,7 @@
         <literal>=\THEMERELEASE=</literal> translation markers,
         respectively. When you use these translation markers, forward
         slashes are removed from result. So, if you provide the path
-        <filename>trunk/Identity/Images/Themes/Modern/2/Distro/5</filename>,
+        <filename>Identity/Images/Themes/Modern/2/Distro/5</filename>,
         <literal>=\THEMENAME=</literal> will expand to
         <literal>Modern</literal> and
         <literal>=THEMERELEASE=</literal> will expand to
@@ -359,7 +359,7 @@
     <listitem>
     <para>
         This translation marker expands to the absolute path to
-        <filename class="directory">trunk/</filename> directory inside
+        <filename class="directory"></filename> directory inside
         your workstation. For example,
         <literal>/home/al/Projects/CentOS/artwork/trunk</literal>.
     </para>
@@ -404,7 +404,7 @@
         <command>centos-art.sh</command> script execution environment.
         The <replaceable>EXPORTID</replaceable> argument points the
         specific function initialization file relatively from
-        <filename>trunk/Scripts/Bash/Functions</filename> directory
+        <filename>Scripts/Bash/Functions</filename> directory
         on. For example, if we want to export the
         <function>render</function> specific functionality, we use the
         following construction:
@@ -416,7 +416,7 @@ cli_exportFunctions "Render/render"
         In this construction, <literal>Render</literal> with the first
         letter in upper case is the name of the directory under
         <filename
-        class="directory">trunk/Scripts/Bash/Functions</filename>
+        class="directory">Scripts/Bash/Functions</filename>
         where the specific functionality is stored in, and
         <literal>render</literal> with all letters in lower case is
         the name of the specific functionality we want to export,
@@ -466,7 +466,7 @@ cli_exportFunctions "Render/render"
         This argument specifies the absolute path to the configuration
         file you want to retrieve configuration lines from. For
         example,
-        <quote><filename>${TCAR_WORKDIR}/trunk/Identity/Models/Themes/Default/Distro/5/Anaconda/branding.conf</filename></quote>.
+        <quote><filename>${TCAR_WORKDIR}/Identity/Models/Themes/Default/Distro/5/Anaconda/branding.conf</filename></quote>.
     </para>
     </listitem>
     </varlistentry>
@@ -623,7 +623,7 @@ splash.svgz            = "Symbols/48/=\BRAND=.png:x48+30+20"
     <para>
         This argument specifies the absolute path to the configuration
         file you want to retrieve the value from. For example,
-        <quote><filename>${TCAR_WORKDIR}/trunk/Identity/Models/Themes/Default/Distro/5/Anaconda/branding.conf</filename></quote>.
+        <quote><filename>${TCAR_WORKDIR}/Identity/Models/Themes/Default/Distro/5/Anaconda/branding.conf</filename></quote>.
     </para>
     </listitem>
     </varlistentry>

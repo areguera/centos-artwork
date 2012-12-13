@@ -55,7 +55,7 @@
         <function>prepare</function> functionality (which require the
         <function>locale</function> functionality to be available), or
         later, by running the following command: 
-        <screen>centos-art locale trunk/Scripts/Bash --update</screen>
+        <screen>centos-art locale Scripts/Bash --update</screen>
     </para>
 
     <para>
@@ -91,7 +91,7 @@
     <mediaobject>
     <textobject>
 <programlisting>
-/home/centos/Projects/artwork/trunk/
+/home/centos/Projects/artwork/
 |-- Locales/
 |   `-- Scripts/
 |       `-- Bash/
@@ -158,7 +158,7 @@
     <mediaobject>
     <textobject>
 <programlisting>
-/home/al/Projects/Myapp/trunk/
+/home/al/Projects/Myapp/
 |-- Locales/           
 |   `-- Scripts/
 |       `-- Bash/         
@@ -254,12 +254,12 @@
         of September), to produce these components, we create one
         <acronym>SVG</acronym> image for each PNG image we want to
         produce, store it in <filename
-        class="directory">trunk/Identity/Models/Brands/Logos</filename>
+        class="directory">Identity/Models/Brands/Logos</filename>
         directory structure and run the command: 
     </para>
     
     <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Brands/Logos</command>
+        <command>centos-art render Identity/Images/Brands/Logos</command>
     </cmdsynopsis>
 
     <para>
@@ -307,7 +307,7 @@
     </para>
 
     <cmdsynopsis>
-        <command>centos-art render trunk/Identity/Images/Brands/Logos</command>
+        <command>centos-art render Identity/Images/Brands/Logos</command>
     </cmdsynopsis>
 
     <para>
@@ -331,15 +331,15 @@
         finishes its execution without any error message.  For
         example, if no <acronym>SVG</acronym> file is found inside
         <filename
-        class="directory">trunk/Identity/Models/Brands/Logos/</filename>
+        class="directory">Identity/Models/Brands/Logos/</filename>
         directory and the
-        <filename>trunk/Identity/Models/Brands/Logos/images.conf</filename>
+        <filename>Identity/Models/Brands/Logos/images.conf</filename>
         configuration file exists therein with the following content:
     </para>
 
 <programlisting>
 [centos.png]
-models  = "trunk/Identity/Models/Brands/Symbols/centos-symbol-forlogos.svgz trunk/Identity/Models/Brands/Types/centos.svgz"
+models  = "Identity/Models/Brands/Symbols/centos-symbol-forlogos.svgz Identity/Models/Brands/Types/centos.svgz"
 formats = "xpm jpg"
 heights = "48 78"
 fgcolor = "000000 ffffff"
@@ -347,7 +347,7 @@ bgcolor = "ffffff-0"
 command = "/usr/bin/convert +append"
 
 [centos-artwork.png]
-models  = "trunk/Identity/Models/Brands/Symbols/centos-symbol-forlogos.svgz trunk/Identity/Models/Brands/Types/centos.svgz trunk/Identity/Models/Brands/Types/artwork.svgz"
+models  = "Identity/Models/Brands/Symbols/centos-symbol-forlogos.svgz Identity/Models/Brands/Types/centos.svgz Identity/Models/Brands/Types/artwork.svgz"
 formats = "xpm jpg"
 heights = "48 78"
 fgcolor = "000000 ffffff"
@@ -361,30 +361,30 @@ command = "/usr/bin/convert +append"
     </para>
 
 <programlisting>
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.jpg
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.png
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.xpm
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.png
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.jpg
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.xmp
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.jpg
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.png
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.xpm
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.png
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.jpg
-trunk/Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.xmp
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.jpg
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.png
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.xpm
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.png
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.jpg
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.xmp
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.jpg
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.png
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.xpm
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.png
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.jpg
-trunk/Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.xmp
+Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.jpg
+Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.png
+Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.xpm
+Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.png
+Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.jpg
+Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.xmp
+Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.jpg
+Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.png
+Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.xpm
+Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.png
+Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.jpg
+Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.xmp
+Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.jpg
+Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.png
+Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.xpm
+Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.png
+Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.jpg
+Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.xmp
+Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.jpg
+Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.png
+Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.xpm
+Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.png
+Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.jpg
+Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.xmp
 </programlisting>
 
     <para>
