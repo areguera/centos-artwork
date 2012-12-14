@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.3\n"
+"Project-Id-Version: centos-art-0.0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-11-03 11:07-0500\n"
-"PO-Revision-Date: 2012-11-03 11:07-0500\n"
+"POT-Creation-Date: 2012-12-13 21:15-0500\n"
+"PO-Revision-Date: 2012-12-13 21:15-0500\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -30,101 +30,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:35
-#: trunk/Scripts/Bash/Functions/Help/help_getEntries.sh:102
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:35
 msgid "The documentation entry provided isn't supported."
 msgstr "La entrada de documentación suministrada no está soportada."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:91
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntry.sh:70
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntry.sh:66
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_renameEntry.sh:70
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:91
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntry.sh:70
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntry.sh:66
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_renameEntry.sh:70
 msgid "The parameters you provided are not supported."
 msgstr "Los parámetros que usted suministró no están soportados."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:37
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:37
 msgid "The source location doesn't exist."
 msgstr "La ubicación de origen no existe."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:43
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:43
 msgid "The source and target locations cannot be the same."
 msgstr "La ubicación de origen y destino no puden ser las mismas."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:50
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:50
 msgid "The source location has pending changes."
 msgstr "La ubicación de origen tiene cambios pendientes."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:63
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:63
 msgid "The target location already exists."
 msgstr "La ubicación de destino ya existe."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:51
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:51
 msgid "The location provided as target isn't valid."
 msgstr "La ubicación suministrada como destino no es válida."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:36
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:36
 msgid "The following documentation chapter doesn't exist:"
 msgstr "El capítulo de documentación siguiente no existe:"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:38
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:38
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:42
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:38
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:38
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:42
 msgid "Do you want to create it now?"
 msgstr "¿Desea crearlo ahora?"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:47
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:47
 msgid "Enter chapter's title"
 msgstr "Entre el título del capítulo"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:36
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:36
 #, sh-format
 msgid "The following documentation manual doesn't exist:"
 msgstr "El manual de documentación siguiente no existe:"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:47
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:47
 msgid "Enter manual's title"
 msgstr "Entre el título del manual"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:49
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:49
 msgid "Enter manual's subtitle"
 msgstr "Entre el subtítulo del manual"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:51
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:51
 msgid "Enter manual's abstract"
 msgstr "Entre el preámbulo del manual"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:57
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:57
 msgid "The manual title cannot be empty."
 msgstr "El título del manual no puede estar vacío."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:41
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_getEntryNode.sh:33
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:45
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:41
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_getEntryNode.sh:33
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:45
 msgid "The first positional parameter cannot be empty."
 msgstr "El primer argumento de posición no puede estar vacío."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:50
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:62
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:38
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:43
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:53
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:54
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:50
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:62
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:38
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:43
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:53
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:54
 msgid "Removed"
 msgstr "Eliminando"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntryChapter.sh:41
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntryChapter.sh:41
 msgid "The chapter specified cannot be removed."
 msgstr "El capítulo especificado no puede eliminarse."
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:40
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:40
 msgid "The following documentation section doesn't exist:"
 msgstr "La sección de documentación siguiente no existe:"
 
-#: trunk/Scripts/Bash/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:121
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:121
 msgid "There wasn't any section for processing found."
 msgstr "No se encontraron secciones para ser procesadas."
 
-#: trunk/Scripts/Bash/Functions/Help/help_getOptions.sh:79
+#: Scripts/Bash/Functions/Help/help_getOptions.sh:79
 msgid "The documentation format provided is not supported."
 msgstr "El formato de documentación suministrado no está soportado."
 

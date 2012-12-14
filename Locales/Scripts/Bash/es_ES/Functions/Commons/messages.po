@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.3\n"
+"Project-Id-Version: centos-art-0.0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-11-03 11:07-0500\n"
-"PO-Revision-Date: 2012-11-03 11:07-0500\n"
+"POT-Creation-Date: 2012-12-13 21:15-0500\n"
+"PO-Revision-Date: 2012-12-13 21:15-0500\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -30,213 +30,213 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli.sh:73
+#: Scripts/Bash/Functions/Commons/cli.sh:73
 #, sh-format
 msgid "The $FILE needs to have execution rights."
 msgstr "El fichero $FILE necesita tener permiso de ejecución."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:69
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:69
 msgid "isn't a directory."
 msgstr "no es un directorio."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:76
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:76
 msgid "doesn't exist."
 msgstr "no existe."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:82
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:82
 msgid "isn't a regular file."
 msgstr "no es un fichero regular."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:89
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:89
 msgid "isn't a symbolic link."
 msgstr "no es un enlace simbólico."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:96
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:96
 msgid "isn't an executable file."
 msgstr "no es un fichero ejecutable."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:104
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:104
 #, sh-format
 msgid "isn't a \"$MIME\" file."
 msgstr "isn't a \"$MIME\" file."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:111
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:111
 #, sh-format
 msgid "doesn't match its pattern."
 msgstr "no coincide con su patrón."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:118
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:118
 msgid "isn't under version control."
 msgstr "no está bajo control de versión."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_checkFiles.sh:167
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:167
 msgid "The condition command provided isn't supported."
 msgstr "El comando condicional suministrado no está soportado."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:35
+#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:35
 msgid "The export id must be passed as first argument."
 msgstr ""
 "El identificador de exportación debe ser suministrado como primer argumento."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:37
+#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:37
 msgid "The export id doesn't match its pattern."
 msgstr "El identificador de exportación no coincide su patrón."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:72
+#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:72
 msgid "No function file was found."
 msgstr "Ningún fichero de función fue encontrado."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_getConfigLines.sh:42
+#: Scripts/Bash/Functions/Commons/cli_getConfigLines.sh:42
 msgid "The configuration section provided is incorrect."
 msgstr "La sección de configuración suministrada es incorrecta."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_getTemporalFile.sh:38
+#: Scripts/Bash/Functions/Commons/cli_getTemporalFile.sh:38
 msgid "The first argument cannot be empty."
 msgstr "El primer argumento no puede estar vacío."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:75
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:75
 msgid "There is no entry to create."
 msgstr "No hay entrada alguna que crear."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:78
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:78
 msgid "The following entry will be created"
 msgid_plural "The following entries will be created"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:88
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:88
 msgid "There is no file to delete."
 msgstr "No hay fichero alguno que borrar."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:91
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:91
 msgid "The following entry will be deleted"
 msgid_plural "The following entries will be deleted"
 msgstr[0] "La entrada siguiente será creada"
 msgstr[1] "Las entradas siguientes serán creada"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:101
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:101
 msgid "There is no file to locale."
 msgstr "No hay fichero alguno que localizar."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:104
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:104
 msgid "Translatable strings will be retrived from the following entry"
 msgid_plural "Translatable strings will be retrived from the following entries"
 msgstr[0] "Las cadenas traducibles serán recuperadas de la entrada siguiente"
 msgstr[1] ""
 "Las cadenas traducibles serán recuperadas de las entradas siguientes"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:114
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:114
 msgid "There is no file to edit."
 msgstr "No hay fichero alguno que editar."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:117
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:117
 msgid "The following file will be edited"
 msgid_plural "The following files will be edited"
 msgstr[0] "El fichero siguiente será editado"
 msgstr[1] "Los ficheros siguientes serán editados"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:127
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:127
 msgid "There is no file to process."
 msgstr "No hay fichero alguno que procesar."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:130
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:130
 msgid "The following file will be processed"
 msgid_plural "The following files will be processed"
 msgstr[0] "El fichero siguiente será procesado"
 msgstr[1] "Los ficheros siguientes serán procesados"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:145
+#: Scripts/Bash/Functions/Commons/cli_printActionPreamble.sh:145
 msgid "Do you want to continue?"
 msgstr "¿Desea continuar?"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printCopyrightInfo.sh:44
+#: Scripts/Bash/Functions/Commons/cli_printCopyrightInfo.sh:44
 msgid "Creative Common Attribution-ShareAlike 3.0 License"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printCopyrightInfo.sh:103
+#: Scripts/Bash/Functions/Commons/cli_printCopyrightInfo.sh:103
 msgid "All rights reserved."
 msgstr "Todos los derechos reservados."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:33
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:33
 msgid "The message cannot be empty."
 msgstr "El mensaje no puede estar vacío."
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:89
-msgid "To know more, run the following command"
-msgstr "Para conocer más, ejecute el comando siguiente"
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:90
+msgid "To know more, run"
+msgstr "Para conocer más, ejecute"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:97
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:97
 msgid "yes"
 msgstr "sí"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:100
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:100
 msgid "no"
 msgstr "no"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:187
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:187
 msgid "Cropping from"
 msgstr "Recortando de"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:191
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:191
 msgid "Tuning-up"
 msgstr "Afinado"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:195
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:195
 msgid "Checking"
 msgstr "Comprobando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:199
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:199
 msgid "Combining"
 msgstr "Combinando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:204
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:204
 msgid "Updating"
 msgstr "Actualizando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:206
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:206
 msgid "Creating"
 msgstr "Creando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:211
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:211
 msgid "Deleting"
 msgstr "Eliminando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:215
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:215
 msgid "Reading"
 msgstr "Leyendo"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:219
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:219
 msgid "Saved as"
 msgstr "Guardado como"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:223
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:223
 msgid "Linked to"
 msgstr "Enlazado a"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:227
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:227
 msgid "Moved to"
 msgstr "Movido a"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:231
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:231
 msgid "Translation"
 msgstr "Traducción"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:235
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:235
 msgid "Validating"
 msgstr "Validando"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:239
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:239
 msgid "Template"
 msgstr "Plantilla"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:243
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:243
 msgid "Configuration"
 msgstr "Configuración"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_printMessage.sh:247
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:247
 msgid "Palette"
 msgstr "Paleta"
 
-#: trunk/Scripts/Bash/Functions/Commons/cli_unsetFunctions.sh:37
+#: Scripts/Bash/Functions/Commons/cli_unsetFunctions.sh:37
 msgid "The export id was not provided."
 msgstr "El identificador de exportación no fue suministrado."

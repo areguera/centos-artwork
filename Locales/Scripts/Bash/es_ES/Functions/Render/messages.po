@@ -19,10 +19,10 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.3\n"
+"Project-Id-Version: centos-art-0.0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-11-03 11:07-0500\n"
-"PO-Revision-Date: 2012-11-03 11:07-0500\n"
+"POT-Creation-Date: 2012-12-13 21:15-0500\n"
+"PO-Revision-Date: 2012-12-13 21:15-0500\n"
 "Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -30,100 +30,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook.sh:58
+#: Scripts/Bash/Functions/Render/Docbook/docbook.sh:65
 msgid "Validation failed."
 msgstr "La validación falló."
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:111
+#: Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:110
 msgid "Cannot produce the PDF file."
 msgstr "No se pudo producir el fichero PDF."
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
+#: Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
 msgid "No way to convert from XHTML to plain-text found."
 msgstr "No se encontró una forma para convertir de XHTML a texto."
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:59
+#: Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:59
 msgid "Licenses"
 msgstr "Licencias"
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:50
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:57
 msgid "Area"
 msgstr "Área"
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:52
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:59
 msgid "Background"
 msgstr "Fondo"
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:54
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:61
 msgid "Saved as"
 msgstr "Guardado como"
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkColorAmount.sh:38
+#: Scripts/Bash/Functions/Render/Svg/svg_checkColorAmount.sh:38
 msgid "The palette does not have the correct number of colors."
 msgstr "La paleta no tiene el número correcto de colores."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkColorFormats.sh:84
+#: Scripts/Bash/Functions/Render/Svg/svg_checkColorFormats.sh:84
 #, sh-format
 msgid "The \"$COLOR\" string is not a valid color code."
 msgstr "La cadena \"$COLOR\" no es un código de color válido."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:36
+#: Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:36
 msgid "The export id value cannot be empty."
 msgstr "El identificador de exportación no puede estar vacío."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:42
+#: Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:42
 #, sh-format
 msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
 msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:54
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:54
 msgid "There is no resolution information to process."
 msgstr "No hay información de resolución a procesar."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:118
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:118
 #, sh-format
 msgid "The \"$DM\" display manager is not supported yet."
 msgstr "El administrador de monitor \"$DM\" no está soportado aún."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToGrub.sh:76
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToSyslinux.sh:85
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToGrub.sh:76
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToSyslinux.sh:85
 #, sh-format
 msgid "The \"$OPTION\" option is already used."
 msgstr "La opción \"$OPTION\" ya se encuentra en uso."
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_doPostActions.sh:35
+#: Scripts/Bash/Functions/Render/Svg/svg_doPostActions.sh:35
 msgid "Created in CentOS Artwork Repository"
 msgstr "Creado en Repositorio Artístico de CentOS"
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_getTTFont.sh:68
+#: Scripts/Bash/Functions/Render/Svg/svg_getTTFont.sh:68
 msgid "The font provided doesn't exist."
 msgstr "La fuente suministrada no existe."
 
-#: trunk/Scripts/Bash/Functions/Render/render.sh:125
+#: Scripts/Bash/Functions/Render/render.sh:125
 msgid "The path provided doesn't support rendition."
 msgstr "El camino suministrado no soporta la producción."
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
+#: Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:181
-msgid "The template file doesn't exist."
-msgstr "El fichero plantilla no existe."
-
-#: trunk/Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
+#: Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
 msgid "There is no action string to work with."
 msgstr "No hay cadena de acción con la cual trabajar."
 
-#: trunk/Scripts/Bash/Functions/Render/render_getConfigOption.sh:48
+#: Scripts/Bash/Functions/Render/render_getConfigOption.sh:48
 msgid "The field definition is not valid."
 msgstr "La definición del campo no es válida."
 
-#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:84
+#: Scripts/Bash/Functions/Render/render_getOptions.sh:84
 msgid "The architecture provided is not supported."
 msgstr "La arquitectura suministrada no está soportada."
 
-#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:92
+#: Scripts/Bash/Functions/Render/render_getOptions.sh:92
 msgid "The release version provided is not supported."
 msgstr "La versión de la entrega suministrada no está soportada."
+
+#~ msgid "The template file doesn't exist."
+#~ msgstr "El fichero plantilla no existe."

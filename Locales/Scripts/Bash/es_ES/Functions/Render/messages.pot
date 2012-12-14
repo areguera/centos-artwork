@@ -1,115 +1,111 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR The CentOS Project
-# This file is distributed under the same license as the centos-art-0.0.3 package.
+# This file is distributed under the same license as the centos-art-0.0.4 package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.3\n"
+"Project-Id-Version: centos-art-0.0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-11-03 11:07-0500\n"
-"PO-Revision-Date: 2012-11-03 11:07-0500\n"
+"POT-Creation-Date: 2012-12-13 21:15-0500\n"
+"PO-Revision-Date: 2012-12-13 21:15-0500\n"
 "Last-Translator: Documentation SIG\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook.sh:58
+#: Scripts/Bash/Functions/Render/Docbook/docbook.sh:65
 msgid "Validation failed."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:111
+#: Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:110
 msgid "Cannot produce the PDF file."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
+#: Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
 msgid "No way to convert from XHTML to plain-text found."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:59
+#: Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:59
 msgid "Licenses"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:50
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:57
 msgid "Area"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:52
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:59
 msgid "Background"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg.sh:54
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:61
 msgid "Saved as"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkColorAmount.sh:38
+#: Scripts/Bash/Functions/Render/Svg/svg_checkColorAmount.sh:38
 msgid "The palette does not have the correct number of colors."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkColorFormats.sh:84
+#: Scripts/Bash/Functions/Render/Svg/svg_checkColorFormats.sh:84
 #, sh-format
 msgid "The \"$COLOR\" string is not a valid color code."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:36
+#: Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:36
 msgid "The export id value cannot be empty."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:42
+#: Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:42
 #, sh-format
 msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:54
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:54
 msgid "There is no resolution information to process."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:118
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:118
 #, sh-format
 msgid "The \"$DM\" display manager is not supported yet."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToGrub.sh:76
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_convertPngToSyslinux.sh:85
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToGrub.sh:76
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToSyslinux.sh:85
 #, sh-format
 msgid "The \"$OPTION\" option is already used."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_doPostActions.sh:35
+#: Scripts/Bash/Functions/Render/Svg/svg_doPostActions.sh:35
 msgid "Created in CentOS Artwork Repository"
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/Svg/svg_getTTFont.sh:68
+#: Scripts/Bash/Functions/Render/Svg/svg_getTTFont.sh:68
 msgid "The font provided doesn't exist."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render.sh:125
+#: Scripts/Bash/Functions/Render/render.sh:125
 msgid "The path provided doesn't support rendition."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
+#: Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
 #, sh-format
 msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_doBaseActions.sh:181
-msgid "The template file doesn't exist."
-msgstr ""
-
-#: trunk/Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
+#: Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
 msgid "There is no action string to work with."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_getConfigOption.sh:48
+#: Scripts/Bash/Functions/Render/render_getConfigOption.sh:48
 msgid "The field definition is not valid."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:84
+#: Scripts/Bash/Functions/Render/render_getOptions.sh:84
 msgid "The architecture provided is not supported."
 msgstr ""
 
-#: trunk/Scripts/Bash/Functions/Render/render_getOptions.sh:92
+#: Scripts/Bash/Functions/Render/render_getOptions.sh:92
 msgid "The release version provided is not supported."
 msgstr ""
