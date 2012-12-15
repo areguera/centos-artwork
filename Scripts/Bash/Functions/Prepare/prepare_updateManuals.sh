@@ -28,7 +28,7 @@
 function prepare_updateManuals {
 
     # Render key documentation manuals.
-    cli_runFnEnvironment render trunk/Documentation/Models/Docbook/Tcar-ug 
+    cli_runFnEnvironment render Documentation/Models/Docbook/Tcar-ug
     cli_runFnEnvironment help --update --format="texinfo" tcar-fs:::
 
 }

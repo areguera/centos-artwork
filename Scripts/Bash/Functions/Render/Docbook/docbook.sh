@@ -25,26 +25,26 @@
 
 function docbook {
 
-    # Define absolute path to XSL files used for transforming Docbook
+    # Define absolute path to XSL files used for transforming DocBook
     # into other formats.
-    local DOCBOOK_XSL="${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
+    local DOCBOOK_XSL="${TCAR_WORKDIR}/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
 
-    # Define absolute path to Docbook models.
-    local DOCBOOK_MODELS="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook"
+    # Define absolute path to DocBook models.
+    local DOCBOOK_MODELS="${TCAR_WORKDIR}/Documentation/Models/Docbook"
+
+    # Verify absolute path to DocBook models.
+    cli_checkFiles ${DOCBOOK_MODELS} -d
 
     # Apply translation to design model in order to produce the
     # translated design model instance.
     docbook_doTranslation
 
-    # Expand translation markers inside design model instance.
-    cli_expandTMarkers ${INSTANCE}
-
-    # Exapand common contents inside instance.
+    # Expand common contents inside instance.
     docbook_expandLicenses ${INSTANCE}
 
     # When translated instances are rendered, system entities (e.g.,
     # `%entity-name;') don't appear in the translated instance (it
-    # seems that xml2po removes them) and this provokes Docbook
+    # seems that xml2po removes them) and this provokes DocBook
     # validation to fail.  So in order to pass the validation
     # successfully and automate the whole creation of system entities,
     # don't let this duty ion users'. Instead, make centos-art.sh
@@ -58,18 +58,19 @@ function docbook {
     # very important in order to detect document's malformations and
     # warn you about it, so you can correct them. It is also necessary
     # to save them in a new file in order to make translation markers
-    # expansion possible before transforming the Docbook instance into
+    # expansion possible before transforming the DocBook instance into
     # other formats.
     xmllint --valid --noent ${INSTANCE} > ${INSTANCE}.tmp
     if [[ $? -ne 0 ]];then
         cli_printMessage "`gettext "Validation failed."`" --as-error-line
     fi
 
-    # Expand translation markers on temporal instance.
-    cli_expandTMarkers ${INSTANCE}.tmp
-
     # Update instance to add translation markers expansion.
     mv ${INSTANCE}.tmp ${INSTANCE}
+
+    # Expand translation markers on the temporal instance with
+    # entities already expanded.
+    cli_expandTMarkers ${INSTANCE}
 
     # Convert DocBook source files to other formats.
     docbook_convertToXhtmlChunk

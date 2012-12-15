@@ -38,16 +38,17 @@ function locale {
     # Define localization (l10n) base directory. This is the place
     # where all translation messages are organized in. Translation
     # messages are organized herein using the same layout of the
-    # components they represent under the `trunk/Identity',
-    # `trunk/Documentation/Manuals' or `trunk/Scripts' directory
-    # structures.  The localization base directory must be used as
-    # source location for subversion operations (e.g., status, update,
-    # commit, etc.).  Otherwise, it would be difficult to add
-    # directory structures that have several levels down from the
-    # localization base directory up to the repository (e.g., it is
-    # not possible in subversion to add a directory which parent
-    # directory hasn't been added to the repository previously.).
-    local L10N_BASEDIR="${TCAR_WORKDIR}/trunk/Locales"
+    # components they represent under the `Identity',
+    # `Documentation/Manuals' or `Scripts' directory structures.  The
+    # localization base directory must be used as source location for
+    # control version system operations (e.g., status, update, commit,
+    # etc.).  Otherwise, it would be difficult to add directory
+    # structures that have several levels down from the localization
+    # base directory up to the repository (e.g.,
+    # subversion-1.4.2-4.el5_3.1.i386.rpm doesn't support recursive
+    # creation of directories which parent directories doesn't
+    # exist.).
+    local L10N_BASEDIR="${TCAR_WORKDIR}/Locales"
 
     # Interpret arguments and options passed through command-line.
     locale_getOptions
@@ -78,7 +79,7 @@ function locale {
         # is the place where POT and PO files are stored inside the
         # working copy.
         L10N_WORKDIR=$(echo "${ACTIONVAL}" \
-            | sed -r -e "s!trunk/(Identity|Scripts|Documentation)!trunk/Locales/\1!")/${CLI_LANG_LC}
+            | sed -r -e "s!(Identity|Scripts|Documentation)!Locales/\1!")/${CLI_LANG_LC}
 
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization

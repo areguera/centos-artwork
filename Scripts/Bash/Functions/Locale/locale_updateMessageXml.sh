@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # locale_updateMessageXml.sh -- This function parses XML-based files
-# (e.g., scalable vector graphics), retrives translatable strings and
+# (e.g., scalable vector graphics), retrieves translatable strings and
 # creates/update gettext portable objects.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
@@ -33,21 +33,21 @@ function locale_updateMessageXml {
     # (.pot) and portable objects (.po) files.
     local MESSAGES="${L10N_WORKDIR}/messages"
 
-    # Define what kind of XML file we are generatin translation
+    # Define what kind of XML file we are generating translation
     # messages for. This is relevant because scalable vector graphics
     # (SVG) files are not using entity expansion while DocBook files
     # do.
-    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/[[:alnum:]-]+$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Documentation/Models/Docbook/[[:alnum:]-]+$" ]];then
 
         locale_updateMessageXmlDocbook
 
         # Combine template messages and licenses messages so when
         # template be merged into the final portable object the
         # translations be there. If we cannot treat licenses as
-        # idependent documents (e.g., through XInclude), then lets
-        # keep translation messages as syncronized as possible.
+        # independent documents (e.g., through XInclude), then lets
+        # keep translation messages as synchronized as possible.
 
-    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Models/.+$" ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Models/.+$" ]];then
 
         locale_updateMessageXmlSvg
 

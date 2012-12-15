@@ -45,14 +45,14 @@ function locale_editMessages {
     # Prepare working directory to receive translation files.
     locale_prepareWorkingDirectory ${L10N_WORKDIR}
 
-    # Syncronize changes between repository and working copy. At this
+    # Synchronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
     cli_synchronizeRepoChanges "${L10N_WORKDIR}"
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
-    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
 
         # Define list of PO files for XML-based files.
         PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" --pattern="^.+/messages\.po$")
@@ -60,7 +60,7 @@ function locale_editMessages {
         # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
 
-    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Scripts/Bash$" ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Scripts/Bash$" ]];then
 
         # Define list of PO files for script files.
         PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="^.*${FLAG_FILTER}/messages\.po$")
@@ -92,7 +92,7 @@ function locale_editMessages {
     # so we need to update the related MO file based on recently
     # updated PO files here in order for `centos-art.sh' script to
     # print out the most up to date revision of localized messages.
-    # Notice that this is required only if we were localizaing shell
+    # Notice that this is required only if we were localizing shell
     # scripts.
     locale_updateMessageBinary
 

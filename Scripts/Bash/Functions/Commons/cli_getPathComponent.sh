@@ -43,7 +43,7 @@ function cli_getPathComponent {
 
     # Define regular expression pattern that match the theme artistic
     # motif component inside the path strings.
-    local THEME_MOTIF="trunk/Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
+    local THEME_MOTIF="Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to

@@ -27,6 +27,12 @@ if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == "" ]];then
     TCAR_WORKDIR=${HOME}/artwork
 fi
 
+# Redefine the working copy absolute path considering the previous
+# directory structures used in the repository.
+if [[ -d ${TCAR_WORKDIR}/trunk ]];then
+    TCAR_WORKDIR=${TCAR_WORKDIR}/trunk
+fi
+
 # Initialize repository brand information.
 if [[ ! $TCAR_BRAND ]] || [[ $TCAR_BRAND == "" ]] ;then
     TCAR_BRAND='centos'
@@ -38,13 +44,13 @@ declare -xr CLI_VERSION='0.0.4'
 declare -xr CLI_LANG_LC=$(echo ${LANG} | cut -d'.' -f1)
 declare -xr CLI_LANG_LL=$(echo ${CLI_LANG_LC} | cut -d'_' -f1)
 declare -xr CLI_LANG_CC=$(echo ${CLI_LANG_LC} | cut -d'_' -f2)
-declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/trunk/Scripts/Bash"
+declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/Scripts/Bash"
 declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
-# Initialize internazionalization through GNU gettext.
+# Initialize internationalization through GNU gettext.
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/trunk/Locales/Scripts/Bash
+declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/Locales/Scripts/Bash
 
 # Initialize absolute path to temporal directory.
 declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"

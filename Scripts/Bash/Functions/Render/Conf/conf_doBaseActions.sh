@@ -96,9 +96,12 @@ function conf_doBaseActions {
     cli_printMessage "${OUTPUT}" --as-creating-line
     ${COMMAND} ${IMAGE_INSTANCES[*]} ${OUTPUT}
 
+    # Create path for different image formats creation using PNG image
+    # extension as reference.
+    TARGET=$(echo ${OUTPUT} | sed -r "s/\.png$//")
+
     # Convert images from PNG to those formats specified in the
     # configuration file.
-    local TARGET=$(echo $OUTPUT | sed -r 's/\.(.+)$//')
     for FORMAT in ${FORMATS};do
         cli_printMessage "${TARGET}.${FORMAT}" --as-creating-line
         convert ${OUTPUT} ${TARGET}.${FORMAT}

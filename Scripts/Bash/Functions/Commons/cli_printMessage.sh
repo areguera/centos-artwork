@@ -53,7 +53,8 @@ function cli_printMessage {
             # paths in order to free horizontal space on final output
             # messages.
             echo "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" \
+                -e "s!${TCAR_WORKDIR}/!!g" \
+                -e "s!> /!> !g" \
                 -e "s!/{2,}!/!g" \
                 | awk 'BEGIN { FS=": " }
                     { 
@@ -75,7 +76,7 @@ function cli_printMessage {
             # Build the error message.
             cli_printMessage "${CLI_NAME} (${ORIGIN}):" --as-stdout-line
             cli_printMessage "${MESSAGE}" --as-response-line
-            cli_printMessage "${CLI_FUNCDIRNAM}" --as-toknowmore-line
+            cli_printMessage "${CLI_FUNCNAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are
@@ -86,8 +87,7 @@ function cli_printMessage {
 
         --as-toknowmore-line )
             cli_printMessage '-' --as-separator-line
-            cli_printMessage "`gettext "To know more, run the following command"`:" --as-stdout-line
-            cli_printMessage "centos-art help --read trunk/Scripts/Functions/$MESSAGE" --as-stdout-line
+            cli_printMessage "`gettext "To know more, run"` ${CLI_NAME} ${MESSAGE} --help" --as-stdout-line
             cli_printMessage '-' --as-separator-line
             ;;
 
@@ -144,12 +144,12 @@ function cli_printMessage {
 
         --as-notrailingnew-line )
             echo -e -n "${MESSAGE}" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g"
+                -e "s!${TCAR_WORKDIR}/!!g"
             ;;
 
         --as-stderr-line )
             echo "$MESSAGE" | sed -r \
-                -e "s!${TCAR_WORKDIR}/(trunk|branches|tags)/!\1/!g" 1>&2
+                -e "s!${TCAR_WORKDIR}/!!g" 1>&2
             ;;
 
     esac

@@ -80,7 +80,7 @@ function locale_updateMessageMetadata {
     # their working copies in different locations and we don't want to
     # version those changes each time a translation message be
     # updated. To be consistent about this, show path information from
-    # trunk level on. Don't show the variable part of the path.
+    # first level on. Don't show the variable part of the path.
     sed -i -r "s,${TCAR_WORKDIR}/,,g" ${FILE}
 
     # Expand translation markers inside file.

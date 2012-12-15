@@ -62,8 +62,8 @@ function texinfo_updateOutputFileXhtml {
     # Create `css' and `images' directories. In order to save disk
     # space, these directories are linked (symbolically) to their
     # respective locations inside the working copy. 
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css Css
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv Images
+    ln -s ${TCAR_WORKDIR}/Identity/Webenv/Themes/Default/Docbook/1.69.1/Css Css
+    ln -s ${TCAR_WORKDIR}/Identity/Images/Webenv Images
 
     # Remove directory where xhtml files are stored from directory
     # stack. The xhtml files have been already created.
@@ -73,9 +73,9 @@ function texinfo_updateOutputFileXhtml {
     # inside the initialization script (repository-init.pl). For example,
     # Would it be a possible way to produce different quotation HTML
     # outputs from the same texinfo quotation definition?  Instead,
-    # once the HTML code is produced we can take que quotation HTML
+    # once the HTML code is produced we can take the quotation HTML
     # definition plus the first letters inside it and transform the
-    # structure to a completly different thing that can be handle
+    # structure to a completely different thing that can be handle
     # through classed inside CSS definitions.
     sed -r -i \
         -f ${MANUAL_TEMPLATE}/manual.sed \

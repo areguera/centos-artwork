@@ -44,7 +44,7 @@ function help_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" trunk/Scripts/Bash/Functions/Help
+                cli_runFnEnvironment help --read --format="texinfo" Scripts/Bash/Functions/Help
                 shift 1
                 exit
                 ;;

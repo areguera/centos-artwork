@@ -43,7 +43,7 @@ function prepare_updateEnvironment {
     # executed from. This information will be used to construct the
     # working copy absolute path and will easy the procedure to follow
     # when a new absolute path should be defined for the working copy.
-    local TCAR_WORKDIR=$(echo "$0" | sed -r 's!^(.+)/trunk.*!\1!')
+    local TCAR_WORKDIR=$(dirname "$0")
 
     # Determine which is the brand information that will be used as
     # repository brand information. By default we are using `centos'

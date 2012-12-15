@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# cli_getRepoName.sh -- This function standardize file and directories
-# name convection inside the working copy of CentOS Artowrk
-# Repository. As convection, regular files are written in lower case
-# and directories are written in lower case but with the first letter
-# in upper case.  Use this function to sanitate the name of regular
-# files and directory components of paths you work with.
+# cli_getRepoName.sh -- This function standardizes files and
+# directories name convection inside the working copy of CentOS
+# Artowrk Repository. As convection, regular files are written in
+# lower-case and directories are written capitalized.  Use this
+# function to sanitate the name of regular files and directories on
+# paths you work with.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -78,12 +78,12 @@ function cli_getRepoName {
                 # When path information is reduced, we need to
                 # consider that absolute paths contain some
                 # directories outside the working copy directory
-                # structure that shouldn't be sanitated  (e.g., /home,
+                # structure that shouldn't be sanitized (e.g., /home,
                 # /home/centos, /home/centos/artwork,
                 # /home/centos/artwork/turnk, trunk, etc.) So, we keep
-                # them unchaged for later use.
+                # them unchanged for later use.
                 PREFIXDIR=$(echo $NAME \
-                    | sed -r "s,^((${TCAR_WORKDIR}/)?(trunk|branches|tags)/).+$,\1,")
+                    | sed -r "s,^((${TCAR_WORKDIR}/)?(trunk|branches|tags)/)?.+$,\1,")
 
                 # ... and remove them from the path information we do
                 # want to sanitate.
@@ -110,15 +110,15 @@ function cli_getRepoName {
                         | sed -r 's/^([[:alpha:]])/\u\1/')
                 fi
 
-                # Rebuild path using sanitated values.
+                # Rebuild path using sanitized values.
                 CLEANDIRS="${CLEANDIRS}/$DIR"
 
             done
 
-            # Redefine path using sanitated values.
+            # Redefine path using sanitized values.
             NAME=$(echo ${CLEANDIRS} | sed -r "s!^/!!")
 
-            # Add prefix directory information to sanitated path
+            # Add prefix directory information to sanitate path
             # information.
             if [[ "$PREFIXDIR" != '' ]];then
                 NAME=${PREFIXDIR}${NAME}

@@ -43,7 +43,7 @@ function locale_updateMessageXmlDocbook {
     cli_checkFiles -e ${TEMPLATE}
 
     # Define file name used as template instance. Here is where we
-    # expand translation markers and entities before retriving
+    # expand translation markers and entities before retrieving
     # translation messages.
     local INSTANCE=$(cli_getTemporalFile "$(basename ${TEMPLATE})")
 
@@ -68,7 +68,7 @@ function locale_updateMessageXmlDocbook {
     # Create link to `Images' directory for validation to pass.
     # Otherwise, a validation error is reported because no path was
     # found to images.
-    ln -s ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
+    ln -s ${TCAR_WORKDIR}/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
 
     # Move into temporal directory so paths can be found relatively.
     pushd $(dirname ${INSTANCE}) > /dev/null
@@ -77,7 +77,7 @@ function locale_updateMessageXmlDocbook {
     xmllint --valid --noent ${INSTANCE} | xml2po -a - \
         | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
 
-    # Move out to initail location.
+    # Move out to initial location.
     popd > /dev/null
 
     # Remove instance.

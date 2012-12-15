@@ -5,10 +5,10 @@
 # produce the translated instance that is used to expand translation
 # markers and produce different output formats.
 #
-# Assuming no translation file exists, an untranslated instace is
+# Assuming no translation file exists, an untranslated instance is
 # taken from the design model and created (i.e., just a copy) from it.
 # Using a design model instance (translated or not) is required in
-# order to expand translation markers safetly.
+# order to expand translation markers safely.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -60,9 +60,9 @@ function docbook_doTranslation {
         # translation and licenses translations.
         local TRANSLATION_INSTANCE=${TMPDIR}/message.po
     
-        # Define path to docbook locales using models as reference.
+        # Define path to DocBook locales using models as reference.
         local DOCBOOK_LOCALES=$(echo $DOCBOOK_MODELS \
-            | sed 's!trunk/!trunk/Locales/!')
+            | sed 's!^!Locales/!')
 
         # Define list of all locale files you want to combine.
         local DOCBOOK_PO_FILES="${DOCBOOK_LOCALES}/Gpl/${CLI_LANG_LC}/messages.po \
@@ -75,9 +75,9 @@ function docbook_doTranslation {
         # Combine license translations with template translation in
         # order to reuse licenses translations in template files
         # without including them in template portable objects. In the
-        # case of Docbook templates, translations related to licenses
+        # case of DocBook templates, translations related to licenses
         # are required because license content is expanded at
-        # execution time inside the docbook instance used by XSL
+        # execution time inside the DocBook instance used by XSL
         # processor during transformation.
         msgcat --output=${TRANSLATION_INSTANCE} \
             --width=70 --no-location --use-first ${DOCBOOK_PO_FILES}

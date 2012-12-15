@@ -58,7 +58,7 @@ function texinfo_createStructure {
     fi
 
     # Create manual's top-level directory using subversion. This is
-    # the place where all texinfo documentation manuals is stored in.
+    # the place where all texinfo documentation manuals are stored in.
     if [[ ! -d ${MANUAL_BASEDIR} ]];then
         cli_printMessage "${MANUAL_BASEDIR}" --as-creating-line
         cli_runFnEnvironment svn --quiet --mkdir ${MANUAL_BASEDIR}

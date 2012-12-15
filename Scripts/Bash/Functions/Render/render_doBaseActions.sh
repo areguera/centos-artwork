@@ -41,7 +41,7 @@ function render_doBaseActions {
     local COUNT=0
 
     # Verify default directory where design models are stored in.
-    cli_checkFiles -e "${TCAR_WORKDIR}/trunk/Identity/Models/Themes/${FLAG_THEME_MODEL}"
+    cli_checkFiles -e "${TCAR_WORKDIR}/Identity/Models/Themes/${FLAG_THEME_MODEL}"
 
     # Redefine parent directory for current workplace.
     PARENTDIR=$(basename "${ACTIONVAL}")
@@ -180,7 +180,7 @@ function render_doBaseActions {
 
             # Define final location of translation file.
             TRANSLATION=$(dirname ${FILE} \
-               | sed -r 's!trunk/(Documentation|Identity)!trunk/Locales/\1!')/${CLI_LANG_LC}/messages.po
+               | sed -r 's!(Documentation|Identity)!Locales/\1!')/${CLI_LANG_LC}/messages.po
 
             # Define final location of template file.
             TEMPLATE=${FILE}
@@ -198,11 +198,11 @@ function render_doBaseActions {
             # -------------------------v| point   |    v------------v
             # Identity/Images/Themes/.../Firstboot/Img/3/splash-small.png
             #
-            # What we do here is remove the varibale path, the common
+            # What we do here is remove the variable path, the common
             # point, and the file extension parts in the string
-            # holding the path retrived from design models directory
+            # holding the path retrieved from design models directory
             # structure.  Then we use the common path as relative path
-            # to store the the final image file.
+            # to store the final image file.
             #
             # The file extension is removed from the common path
             # because it is set when we create the final image file.

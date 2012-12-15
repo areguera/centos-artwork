@@ -38,7 +38,7 @@ function help {
 
     # Initialize manuals' top-level directory. This is the place where
     # source files for documentation manuals will be stored in. 
-    local MANUAL_TLDIR="${TCAR_WORKDIR}/trunk/Documentation/Models"
+    local MANUAL_TLDIR="${TCAR_WORKDIR}/Documentation/Models"
 
     # Initialize documentation format. This information defines the
     # kind of source files we work with inside the documentation

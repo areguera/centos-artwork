@@ -94,17 +94,17 @@ function svg_getColors {
     done
 
     # Define path to gpl palette. This is the first file we use to
-    # retrive color information from. Only the first file provided
+    # retrieve color information from. Only the first file provided
     # will be used.
     local PALETTE=$(echo $@ | cut -d' ' -f1)
 
     if [[ ! -f $PALETTE ]];then
 
         # Define palette path inside the theme's artistic motif.
-        local MOTIF_PALETTE=${TCAR_WORKDIR}/trunk/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)/Palettes/grub.gpl
+        local MOTIF_PALETTE=${TCAR_WORKDIR}/Identity/Images/Themes/$(cli_getPathComponent $ACTIONVAL --motif)/Palettes/grub.gpl
 
         # Define palette path inside the theme's design model.
-        local MODEL_PALETTE=${TCAR_WORKDIR}/trunk/Identity/Models/Themes/${THEME_MODEL_NAME}/Palettes/grub.gpl
+        local MODEL_PALETTE=${TCAR_WORKDIR}/Identity/Models/Themes/${THEME_MODEL_NAME}/Palettes/grub.gpl
 
         # Redefine default background color using palettes provided by
         # artistic motif first, and design model later. Assuming none
@@ -120,7 +120,7 @@ function svg_getColors {
 
     else
 
-        # Retrive the fourth column from GPL palette. The fourth
+        # Retrieve the fourth column from GPL palette. The fourth
         # column of a GPL palette contains the palette commentary
         # field. The palette commentary field can be anything, but for
         # the sake of our own convenience we use it to store the color
@@ -132,7 +132,7 @@ function svg_getColors {
 
     fi
 
-    # Implement color formats convertions from rrggbb to other formats
+    # Implement color formats conversions from rrggbb to other formats
     # that you might need to use.
     for COLOR in $COLORS;do
 

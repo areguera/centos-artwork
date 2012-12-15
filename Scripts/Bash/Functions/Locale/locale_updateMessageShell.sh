@@ -36,7 +36,7 @@ function locale_updateMessageShell {
 
     # Define list of absolute paths to function directories.
     local FNDIRS=$(cli_getFilesList ${ACTIONVAL}/Functions \
-        --maxdepth=1 --mindepth=1 --type='d' --pattern="/[^.]${FLAG_FILTER}")
+        --maxdepth=1 --mindepth=1 --type='d' --pattern="${ACTIONVAL}/${FLAG_FILTER}")
 
     for FNDIR in $FNDIRS;do
 
@@ -66,7 +66,7 @@ function locale_updateMessageShell {
         # location).
         local FILES=$(cli_getFilesList ${FNDIR} --pattern="^.+\.${EXTENSION}$")
 
-        # Retrive translatable strings from shell script files and
+        # Retrieve translatable strings from shell script files and
         # create the portable object template (.pot) from them.
         xgettext --output=${MESSAGES}.pot \
             --copyright-holder="$(cli_printCopyrightInfo --holder)" \

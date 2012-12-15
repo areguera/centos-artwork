@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# texinfo.sh -- This function initilializes Texinfo documentation
-# format used by `centos-art.sh' script to produce and maintain
-# documentation manuals written in Texinfo format, inside the working
-# copy of The CentOS Artwork Repository.
+# texinfo.sh -- This function initializes Texinfo documentation format
+# used by `centos-art.sh' script to produce and maintain documentation
+# manuals written in Texinfo format, inside the working copy of The
+# CentOS Artwork Repository.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #

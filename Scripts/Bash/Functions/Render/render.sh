@@ -115,11 +115,11 @@ function render {
         # produced, we take the action value (ACTIONVAL) as reference
         # and describe the production through an action name
         # (ACTIONNAM).
-        if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images/Themes" ]];then
+        if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Images/Themes" ]];then
             ACTIONNAM="render_doThemeActions"
-        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Identity/Images" ]];then
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Images" ]];then
             ACTIONNAM="render_doBaseActions"
-        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Documentation/Manuals/Docbook/[[:alnum:]-]+" ]];then
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Documentation/Manuals/Docbook/[[:alnum:]-]+" ]];then
             ACTIONNAM="render_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line

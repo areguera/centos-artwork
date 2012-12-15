@@ -46,8 +46,8 @@ function conf {
     for FILENAME in $FILENAMES;do
 
         # Retrieve models you want to produce the image from.  Notice
-        # that relative path passed in this option must begin with
-        # `trunk/' directory and point to an existent file.
+        # that relative path passed in this option must point to one
+        # existent file inside the working copy.
         for MODEL in $(cli_getConfigValue "$TEMPLATE" "$FILENAME" "models");do
             MODELS[((++${#MODELS[*]}))]=${TCAR_WORKDIR}/${MODEL}
         done

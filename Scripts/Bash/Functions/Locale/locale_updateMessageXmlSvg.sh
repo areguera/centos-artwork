@@ -4,7 +4,7 @@
 
 function locale_updateMessageXmlSvg {
 
-    # Inside trunk/Identity/Models, design models can be compressed or
+    # Inside `Identity/Models', design models can be compressed or
     # uncompressed. Because of this we cannot process all the design
     # models in one unique way. Instead, we need to treat them
     # individually based on their file type.

@@ -34,10 +34,9 @@ function cli_expandTMarkers {
     local COUNT=0
     local COUNTSRC=0
     local COUNTDST=0
-    local LOCATION=''
 
     # Define source location on which sed replacements take place.
-    LOCATION="$1" 
+    local LOCATION="$1"
 
     # Verify that source location does exist.
     cli_checkFiles -e ${LOCATION}
@@ -130,9 +129,7 @@ function cli_expandTMarkers {
     fi
 
     # Define repository translation markers.
-    SRC[((++${#SRC[*]}))]='=REPO_TLDIR='
-    DST[((++${#DST[*]}))]="${TCAR_WORKDIR}/trunk"
-    SRC[((++${#SRC[*]}))]='=(REPO_HOME|TCAR_WORKDIR)='
+    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_WORKDIR)='
     DST[((++${#DST[*]}))]="${TCAR_WORKDIR}"
 
     # Do replacement of nested translation markers.

@@ -46,7 +46,7 @@ function locale_updateMessages {
     # Prepare working directory to receive translation files.
     locale_prepareWorkingDirectory ${L10N_WORKDIR}
 
-    # Syncronize changes between repository and working copy. At this
+    # Synchronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
     cli_synchronizeRepoChanges "${L10N_WORKDIR}"
@@ -55,14 +55,14 @@ function locale_updateMessages {
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to XML-based files (e.g., scalable vector
         # graphics).
         locale_updateMessageXml
 
-    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/trunk/Scripts/Bash$" ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Scripts/Bash$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to shell scripts (e.g., the centos-art.sh
@@ -73,7 +73,7 @@ function locale_updateMessages {
         cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
     fi
 
-    # Syncronize changes between repository and working copy. At this
+    # Synchronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
     cli_synchronizeRepoChanges "${L10N_WORKDIR}"

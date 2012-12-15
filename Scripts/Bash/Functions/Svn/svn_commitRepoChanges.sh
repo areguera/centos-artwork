@@ -2,7 +2,7 @@
 #
 # svn_commitRepoChanges.sh -- This function explores the working copy
 # and commits changes up to central repository after checking changes
-# and adding unversioned files.
+# and adding files which aren't under version control.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -45,19 +45,19 @@ function svn_commitRepoChanges {
     # Print action message.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
 
-    # Build list of files that have received changes in its versioned
+    # Build list of files that have received changes in its version
     # status.  Be sure to keep output files off from this list.
-    # Remember, output files are not versioned inside the working
-    # copy, so they are not considered for evaluation here. But take
-    # care, sometimes output files are in the same format of source
-    # files, so we need to differentiate them using their locations.
+    # Remember, output files are not version inside the working copy,
+    # so they are not considered for evaluation here. But take care,
+    # sometimes output files are in the same format of source files,
+    # so we need to differentiate them using their locations.
 
     # Process location based on its path information.
-    if [[ ${LOCATION} =~ 'trunk/Documentation/Manuals/Texinfo)' ]];then
+    if [[ ${LOCATION} =~ 'Documentation/Manuals/Texinfo)' ]];then
         STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
-    elif [[ $LOCATION =~ 'trunk/Documentation/Manuals/Docbook' ]];then
+    elif [[ $LOCATION =~ 'Documentation/Manuals/Docbook' ]];then
         STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
-    elif [[ $LOCATION =~ 'trunk/Identity' ]];then
+    elif [[ $LOCATION =~ 'Identity' ]];then
         STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
     else
         STATUSOUT="$(${SVN} status ${LOCATION})\n$STATUSOUT"

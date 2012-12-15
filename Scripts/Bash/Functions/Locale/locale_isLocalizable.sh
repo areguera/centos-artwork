@@ -3,8 +3,8 @@
 # locale_isLocalizable.sh -- This function determines whether a file or
 # directory can have translation messages or not. This is the way we
 # standardize what locations can be localized and what cannot inside
-# the repository. This function returns 0 when the path is localizable
-# and 1 when it is not.
+# the repository. This function returns 0 when the path is localize
+# able and 1 when it is not.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -50,15 +50,14 @@ function locale_isLocalizable {
     # Verify location existence. If it doesn't exist we cannot go on.
     cli_checkFiles -e $LOCATION
 
-    # Define regular expresion list of all directories inside the
-    # repository that can have translation. These are the
-    # locale-specific directories will be created for.
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/trunk/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
+    # Define regular expression list of all directories inside the
+    # repository that can have translation.
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
         cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook/[[:alnum:]-]+$"
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/trunk/Scripts/Bash$"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Docbook/[[:alnum:]-]+$"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Scripts/Bash$"
 
-    # Verify location passed as first argument agains the list of
+    # Verify location passed as first argument against the list of
     # directories that can have translation messages. By default, the
     # location passed as first argument is considered as a location
     # that cannot have translation messages until a positive answer

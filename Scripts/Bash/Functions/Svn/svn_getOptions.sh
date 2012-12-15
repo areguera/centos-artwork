@@ -43,7 +43,7 @@ function svn_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" trunk/Scripts/Bash/Functions/Svn
+                cli_runFnEnvironment help --read --format="texinfo" Scripts/Bash/Functions/Svn
                 shift 1
                 exit
                 ;;

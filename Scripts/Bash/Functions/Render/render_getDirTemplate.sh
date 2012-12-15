@@ -6,15 +6,15 @@
 # direct or theme-specific rendition.
 #
 # Direct rendition takes one XML file from design model
-# (`trunk/Identity/Models') directory structure and produces one file
-# in `trunk/Identity/Images' directory strucutre. In this
+# (`Identity/Models') directory structure and produces one file
+# in `Identity/Images' directory strucutre. In this
 # configuration, the organization used to stored the design model is
 # taken as reference to build the path required to store the image
-# related to it under `trunk/Identity/Images' directory structure. 
+# related to it under `Identity/Images' directory structure.
 #
 # Theme-specific rendition takes one design model from
-# `trunk/Identity/Models/Themes' directory structure to produce one or
-# more images in `trunk/Identity/Images/Themes/$THEME/$VERSION/$MODEL'
+# `Identity/Models/Themes' directory structure to produce one or
+# more images in `Identity/Images/Themes/$THEME/$VERSION/$MODEL'
 # directory structure. In this configuration we have many different
 # artistic motifs that use one unique design model directory structure
 # as reference to produce images. 
@@ -58,13 +58,6 @@ function render_getDirTemplate {
     # Initialize design models location used as reference to process
     # renderable directory structures.
     TEMPLATE=$ACTIONVAL
-
-    # Sanitate design models location.  Be sure design models do
-    # always point to trunk directory structure. This is useful to let
-    # `centos-art.sh' script do rendition under branches directory
-    # structure, reusing design models under trunk directory
-    # structure.
-    TEMPLATE=$(echo "$TEMPLATE" | sed "s!/branches/!/trunk/!")
 
     # Define absolute path to input files using absolute path from
     # output files.

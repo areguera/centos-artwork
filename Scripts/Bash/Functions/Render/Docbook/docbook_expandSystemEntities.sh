@@ -2,7 +2,7 @@
 #
 # docbook_expandSystemEntities.sh -- This function expands system
 # entities required by DocBook projects stored under
-# `trunk/Documentation/Manuals' directory.
+# `Documentation/Manuals' directory.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -41,7 +41,7 @@ function docbook_expandSystemEntities {
             local ENTITY_NAME=$(basename ${ENTITY_PATH})
             echo '\n\t<!ENTITY % '${ENTITY_NAME}' SYSTEM "'${ENTITY_PATH}'">\n'
             echo '\t%'${ENTITY_NAME}';'
-        done)" 
+        done)"
 
     # Define both xml and docbook public definition.
     local PREAMBLE="<?xml version=\"1.0\" ?>"

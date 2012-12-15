@@ -34,7 +34,7 @@ function prepare_updateLocales {
     # localized to itself' message.  Avoid this noise in the
     # preparation stuff.
     if [[ ! ${CLI_LANG_LL} =~ '^en' ]];then
-        cli_runFnEnvironment locale trunk/Scripts/Bash --update
+        cli_runFnEnvironment locale Scripts/Bash --update
     fi
 
 }

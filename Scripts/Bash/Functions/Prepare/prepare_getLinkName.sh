@@ -9,8 +9,8 @@
 # 
 # For example, if the following information is provided:
 #
-# ARG1: /home/centos/artwork/trunk/Identity/Brushes
-# ARG2: /home/centos/artwork/trunk/Identity/Brushes/Corporate/symbol.gbr
+# ARG1: /home/centos/artwork/Identity/Brushes
+# ARG2: /home/centos/artwork/Identity/Brushes/Corporate/symbol.gbr
 #
 # the result will be: `corporate-symbol.gbr'.
 #

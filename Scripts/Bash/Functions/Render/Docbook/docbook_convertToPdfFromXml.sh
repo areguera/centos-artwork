@@ -10,21 +10,20 @@
 # In this configuration and using default configuration settings, I've
 # presented the following problems:
 #
-# 1. Something is wrong with headings. They are not expanded along
-# the whole page-body. They seem to be rendered in a reduced width
-# (1 inch approximatly). This provokes the heading to be broken in a
-# two-to-five letters column and sometimes it overlaps the
-# sectioning titles (e.g., chatper, section). I tried to customize
-# the value of `header.column.widths' and `page.margin.top' but it
-# seems to be not there where I need to touch.
+# 1. Something is wrong with headings. They are not expanded along the
+# whole page-body. They seem to be rendered in a reduced width (1 inch
+# approximately). This provokes the heading to be broken in a
+# two-to-five letters column and sometimes it overlaps the sectioning
+# titles (e.g., chapter, section). I tried to customize the value of
+# `header.column.widths' and `page.margin.top' but it seems to be not
+# there where I need to touch.
 #
 # 2. TOC's indentation is not rendered. Even the `toc.indent.width'
 # property is set to 24 by default.
 #
-# 3. Inside lists, when items are more than one line, the
-# indentation seems to work for the first line only.  All other
-# lines in the same item are not indented and begin completly
-# unaligned.
+# 3. Inside lists, when items are more than one line, the indentation
+# seems to work for the first line only.  All other lines in the same
+# item are not indented and begin completely unaligned.
 #
 # 4. Long file paths near the end of page-body aren't hyphenated.
 # Even the `hyphenate' property is set to `true' by default.
@@ -93,9 +92,9 @@ function docbook_convertToPdfFromXml {
     # Create link to `Images' directory. This is the directory where
     # images used by documentation are stored in. Be sure to remove
     # previous links first to prevent a recursive creation of links.
-    ln -sf ${TCAR_WORKDIR}/trunk/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
+    ln -sf ${TCAR_WORKDIR}/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
 
-    # Create formatting object supressing output from stderr.
+    # Create formatting object suppressing output from stderr.
     xsltproc --output ${FO} ${STYLE_INSTANCE_FINAL} ${SRC} 2> /dev/null
 
     # Create PDF format from formatting object. Because we are using

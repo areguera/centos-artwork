@@ -34,8 +34,8 @@ function docbook_expandLicenses {
 
     local INSTANCE=$1
 
-    # Define absolute path to Docbook models.
-    local DOCBOOK_MODELS="${TCAR_WORKDIR}/trunk/Documentation/Models/Docbook"
+    # Define absolute path to DocBook models.
+    local DOCBOOK_MODELS="${TCAR_WORKDIR}/Documentation/Models/Docbook"
 
     # Define list of files holding licenses you want to include. Note
     # even this files are not inside the documentation structure

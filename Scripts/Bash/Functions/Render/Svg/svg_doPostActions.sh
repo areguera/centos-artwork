@@ -38,7 +38,7 @@ function svg_doPostActions {
     # applied to base-rendition output and base-rendition output is
     # used as reference to perform directory-specific rendition, these
     # action must be defined before directory-specific rendition.
-    # Otherwise it wouldn't be possible to propagate changes impossed
+    # Otherwise it wouldn't be possible to propagate changes imposed
     # by these actions to new files produced as result of
     # directory-specific rendition.
     POSTACTIONS[((++${#POSTACTIONS[*]}))]="doPostCommand:png:mogrify -comment '$COMMENT'"
@@ -49,7 +49,7 @@ function svg_doPostActions {
     # the repository.
     if [[ $FLAG_DONT_DIRSPECIFIC == 'false' ]];then
 
-        if [[ $TEMPLATE =~ "trunk/Identity/(Models|Images)/Themes/.+\.${RENDER_EXTENSION}$" ]];then
+        if [[ $TEMPLATE =~ "Identity/(Models|Images)/Themes/.+\.${RENDER_EXTENSION}$" ]];then
 
             POSTACTIONS[((++${#POSTACTIONS[*]}))]="convertPngToBranded"
 
@@ -73,13 +73,13 @@ function svg_doPostActions {
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
             fi
 
-        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Brands/.+\.${RENDER_EXTENSION}$" ]];then
+        elif [[ $TEMPLATE =~ "Identity/Models/Brands/.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToBrands'
 
-        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Icons/.+\.${RENDER_EXTENSION}$" ]];then
+        elif [[ $TEMPLATE =~ "Identity/Models/Icons/.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToIcons'
 
-        elif [[ $TEMPLATE =~ "trunk/Identity/Models/Manuals.+\.${RENDER_EXTENSION}$" ]];then
+        elif [[ $TEMPLATE =~ "Identity/Models/Manuals.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
 
         fi

@@ -33,7 +33,7 @@ function locale_combineLicenseMessages {
     local TRANSLATION_TEMPLATE=$2
 
     local DOCBOOK_LOCALES=$(echo $DOCBOOK_MODELS \
-        | sed 's!trunk/!trunk/Locales/!')
+        | sed -r 's!^!Locales/!')
 
     # Define list of all files you want to combine.
     local FILES="${DOCBOOK_LOCALES}/Gpl/${CLI_LANG_LC}/messages.po \
