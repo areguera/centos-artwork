@@ -1,6 +1,6 @@
 @node Identity Fonts
 @section @file{Identity/Fonts}
-@cindex identity fonts
+@cindex Identity fonts
 
 The @file{Identity/Fonts} directory exists to organize
 typographies used inside @value{TCPCVI} that aren't packaged inside
@@ -22,7 +22,7 @@ available inside programs like GIMP and Inkscape, we store them under
 @file{Identity/Fonts} directory and create links to them from
 @file{~/.fonts} directory.
 
-@float Example, trunk-identity-fonts-1
+@float Example, identity-fonts-1
 @verbatim
 Identity/Fonts
 `-- denmark.ttf (file) <-- ~/.fonts/denmark.ttf (link)
@@ -30,7 +30,7 @@ Identity/Fonts
 @caption{Relation between fonts inside the workstation.}
 @end float
 
-The creation and maintainance of links related to fonts inside the
+The creation and maintenance of links related to fonts inside the
 working copy are automated by @code{prepare} functionality of
 @command{centos-art.sh} script.
 

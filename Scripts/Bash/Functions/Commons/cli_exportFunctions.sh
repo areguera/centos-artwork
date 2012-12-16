@@ -31,9 +31,7 @@ function cli_exportFunctions {
 
     # Verify the export identification existence. This argument must
     # be passed as first argument and match a relative path format.
-    if [[ ! $EXPORTID ]] || [[ $EXPORTID == '' ]];then
-        cli_printMessage "`gettext "The export id must be passed as first argument."`" --as-error-line
-    elif [[ ! $EXPORTID =~ '^[A-Z][[:alpha:]]+(/[[:alpha:]_]+)+$' ]];then
+    if [[ ! $EXPORTID =~ '^[A-Z][[:alpha:]]+(/[[:alpha:]_]+)+$' ]];then
         cli_printMessage "`gettext "The export id doesn't match its pattern."`" --as-error-line
     fi
 

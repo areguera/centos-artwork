@@ -1,6 +1,6 @@
 @node Identity Brushes
 @section @file{Identity/Brushes}
-@cindex identity brushes
+@cindex Identity brushes
 
 The @file{Identity/Brushes} directory exists to organize GIMP
 brushes used inside @value{TCPCVI}. 
@@ -32,7 +32,7 @@ of using version controlled brushes inside GIMP, we store brush
 related files inside @file{Identity/Brushes} directory and
 create links to them from @file{~/.gimp-2.2/brushes} directory.
 
-@float Example,trunk-identity-brushes-1
+@float Example,identity-brushes-1
 @verbatim
 Identity/Brushes
 |-- Corporate
@@ -51,17 +51,17 @@ Identity/Brushes
 @caption{Relation between brushes inside the workstation.}
 @end float
 
-The entire link preparation and maintainance of brushes inside the
+The entire link preparation and maintenance of brushes inside the
 working copy is automated by @code{prepare} functionality of
 @command{centos-art.sh} script.
 
 Inside the working copy, brushes might be created individually in
 different locations, but they all need to be linked from one unique
 location (i.e., @file{~/.gimp-2.2/brushes}).  This configuration may
-provoke brushes to overlap one another if a consistent name
-convenction is not implemented correctly.  In that sake, the brushes
-file names are build using their directory and file names as reference
-in order to build unique names that can be used as identifiers.
+provoke brushes to overlap one another if a consistent name convention
+is not implemented correctly.  In that sake, the brushes file names
+are build using their directory and file names as reference in order
+to build unique names that can be used as identifiers.
 
 Brushes produced with GIMP has a description field associated that is
 shown in the Brushes panel of GIMP.  This description is set when the

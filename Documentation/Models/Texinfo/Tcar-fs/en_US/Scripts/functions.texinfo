@@ -1,5 +1,5 @@
 @node Scripts Functions
-@section @file{Scripts/Functions}
+@section The @file{Scripts/Functions} directory
 @cindex Scripts functions
 
 The @file{Scripts/Functions} directory exists to organize common and
@@ -31,7 +31,7 @@ string as described below:
 The @code{cli} functionality initializes the command-line interface
 (cli) of @command{centos-art.sh} script. This function evaluates the
 first argument provided to @command{centos-art.sh} script and call the
-specific functionality that respondes to it. The @code{cli} function
+specific functionality that responds to it. The @code{cli} function
 is directly called from @file{centos-art.sh} itself once global
 variables are defined, working copy verification performed, common
 functionalities exported into the execution environment, and signals

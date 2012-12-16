@@ -40,7 +40,7 @@ function texinfo_updateOutputFiles {
     # Add the working copy root directory to directory stack to make
     # path construction correctly. Otherwise, makeinfo may produce
     # paths incorrectly.
-    pushd ${TCAR_WORKDIR} > /dev/null
+    pushd ${MANUAL_BASEDIR_L10N} > /dev/null
 
     texinfo_updateOutputFileInfo
     texinfo_updateOutputFileXhtml
