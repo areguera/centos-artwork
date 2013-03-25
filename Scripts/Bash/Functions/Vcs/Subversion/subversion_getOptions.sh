@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# render_getOptions.sh -- This function interprets option parameters
-# passed to `render' functionality and calls actions accordingly.
+# subversion_getOptions.sh -- This function interprets option
+# parameters passed to `svn' functionality and calls actions
+# accordingly.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -23,13 +24,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function render_getOptions {
+function subversion_getOptions {
 
     # Define short options we want to support.
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,filter:,answer-yes,dont-dirspecific,releasever:,basearch:,post-rendition:,last-rendition:,theme-model:,with-brands,synchronize"
+    local ARGSL="help,quiet,synchronize,update,commit,is-versioned,get-status,mkdir,copy,delete"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -43,7 +44,7 @@ function render_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-render"
+                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-vcs-subversion"
                 shift 1
                 exit
                 ;;
@@ -53,59 +54,43 @@ function render_getOptions {
                 shift 1
                 ;;
 
-            --filter )
-                FLAG_FILTER="$2"
-                shift 2
-                ;;
-
-            --answer-yes )
-                FLAG_ANSWER="true"
-                shift 1
-                ;;
-
-            --dont-dirspecific )
-                FLAG_DONT_DIRSPECIFIC="true"
-                shift 1
-                ;;
-
-            --post-rendition )
-                FLAG_POSTRENDITION="$2"
-                shift 2
-                ;;
-
-            --last-rendition )
-                FLAG_LASTRENDITION="$2"
-                shift 2
-                ;;
-
-            --basearch )
-                FLAG_BASEARCH="$2"
-                if [[ ! $FLAG_BASEARCH =~ $(cli_getPathComponent --architecture-pattern) ]];then
-                    cli_printMessage "`gettext "The architecture provided is not supported."`" --as-error-line
-                fi
-                shift 2
-                ;;
-
-            --releasever )
-                FLAG_RELEASEVER="$2"
-                if [[ ! $FLAG_RELEASEVER =~ $(cli_getPathComponent --release-pattern) ]];then
-                    cli_printMessage "`gettext "The release version provided is not supported."`" --as-error-line
-                fi
-                shift 2
-                ;;
-
-            --theme-model )
-                FLAG_THEME_MODEL=$(cli_getRepoName $2 -d)
-                shift 2
-                ;;
-
-            --with-brands )
-                FLAG_WITH_BRANDS='true'
-                shift 1
-                ;;
-
             --synchronize )
-                FLAG_SYNCHRONIZE='true'
+                ACTIONNAMS="${ACTIONNAMS} subversion_syncRepoChanges"
+                shift 1
+                ;;
+
+            --commit )
+                ACTIONNAMS="${ACTIONNAMS} subversion_commitRepoChanges"
+                shift 1
+                ;;
+
+            --update )
+                ACTIONNAMS="${ACTIONNAMS} subversion_updateRepoChanges"
+                shift 1
+                ;;
+
+            --is-versioned )
+                ACTIONNAMS="${ACTIONNAMS} subversion_isVersioned"
+                shift 1
+                ;;
+
+            --get-status )
+                ACTIONNAMS="${ACTIONNAMS} subversion_getRepoStatus"
+                shift 1
+                ;;
+
+            --copy )
+                ACTIONNAMS="${ACTIONNAMS} subversion_copyRepoFile"
+                shift 1
+                ;;
+
+            --mkdir )
+                ACTIONNAMS="${ACTIONNAMS} subversion_mkRepoDirectory"
+                shift 1
+                ;;
+
+            --delete )
+                ACTIONNAMS="${ACTIONNAMS} subversion_deleteRepoFile"
                 shift 1
                 ;;
 
@@ -115,7 +100,7 @@ function render_getOptions {
                 # correctly. At this point all option arguments have
                 # been processed already but the `--' argument still
                 # remains to mark ending of option arguments and
-                # begining of non-option arguments. The `--' argument
+                # beginning of non-option arguments. The `--' argument
                 # needs to be removed here in order to avoid
                 # centos-art.sh script to process it as a path inside
                 # the repository, which obviously is not.

@@ -19,7 +19,7 @@
             <arg>-h|--help</arg>
             <arg>-q|--quiet</arg>
             <arg>--answer-yes</arg>
-            <arg>--sync-changes</arg>
+            <arg>--synchronize</arg>
             <arg>--format="<replaceable>KEYWORD</replaceable>"</arg>
             <arg>--search="<replaceable>KEYWORD</replaceable>"</arg>
             <arg>--edit</arg>
@@ -155,7 +155,7 @@
     </varlistentry>
 
     <varlistentry>
-    <term><option>--sync-changes</option></term>
+    <term><option>--synchronize</option></term>
     <listitem>
     <para>
         Synchronizes available changes between the working copy and
@@ -173,8 +173,11 @@
         documentation entry, so you always have to provide it in order
         to reach the documentation entry you want to work with.
         Possible values for this option are shown in <xref
-        linkend="scripts-bash-help-supportedformats" />. 
+        linkend="scripts-bash-help-supportedformats" />. When none of
+        these values is passed as format, Texinfo is used as default
+        format.
     </para>
+
     <table id="scripts-bash-help-supportedformats">
     <title>Documentation formats</title>
     <tgroup cols="3" align="left">

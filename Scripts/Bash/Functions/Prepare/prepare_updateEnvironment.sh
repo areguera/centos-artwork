@@ -31,7 +31,7 @@ function prepare_updateEnvironment {
     # Verify that centos-art.sh script is run using an absolute path.
     # We use this information to determine the exact working copy
     # location to use, later when `bash_profile' file is created.
-    if [[ ! $0 =~ "^/[[:alnum:]/_-]+${CLI_NAME}.sh$" ]];then
+    if [[ ! $0 =~ "^${HOME}/.+/${CLI_NAME}.sh$" ]];then
         cli_printMessage "`gettext "To set environment variables you should run centos-art.sh using its abosolute path."`" --as-error-line
     fi
 
@@ -39,11 +39,15 @@ function prepare_updateEnvironment {
     local SOURCE=${PREPARE_CONFIG_DIR}/${PROFILE}.conf
     local TARGET=${HOME}/.${PROFILE}
 
-    # Determine which is the absolute path the script has been
-    # executed from. This information will be used to construct the
-    # working copy absolute path and will easy the procedure to follow
-    # when a new absolute path should be defined for the working copy.
-    local TCAR_WORKDIR=$(dirname "$0")
+    # Determine the repository absolute path using the script absolute
+    # path the script has been executed from. Be careful when you use
+    # the centos-art command. It points to ~/bin directory which is
+    # not (and must not be) the repository working copy absolute path.
+    if [[ $TCAR_WORKDIR =~ "^${HOME}/bin" ]];then
+        cli_printMessage "`eval_gettext "The repository working directory cannot be $HOME/bin"`" --as-error-line
+    else
+        local TCAR_WORKDIR=$(dirname "$0" | sed "s,${TCAR_BASHSCRIPTS},,")
+    fi
 
     # Determine which is the brand information that will be used as
     # repository brand information. By default we are using `centos'

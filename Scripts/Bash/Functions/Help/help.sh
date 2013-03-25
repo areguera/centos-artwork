@@ -44,11 +44,10 @@ function help {
     # kind of source files we work with inside the documentation
     # manual as well as the kind of actions required by them to
     # perform actions related to document management (e.g., creation,
-    # edition, deletion, copying, renaming, etc.). By default no
-    # documentation format is specified, so it needs to be specified
-    # later, either through the `--format' option, or direct request
-    # to user.
-    local FLAG_FORMAT=''
+    # edition, deletion, copying, renaming, etc.). By default texinfo
+    # format is used. Other formats can be specified in the
+    # command-line using the `--format' option.
+    local FLAG_FORMAT='texinfo'
 
     # Initialize specific function export id. This value is redefined
     # later once we know which is the documentation format.

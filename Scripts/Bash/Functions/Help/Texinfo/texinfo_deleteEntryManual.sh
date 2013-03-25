@@ -35,7 +35,7 @@ function texinfo_deleteEntryManual {
     # Remove locale-specific documentation manual directory from the
     # working copy. Using subversion to register the change. Be sure
     # that related output files are removed too.
-    cli_runFnEnvironment svn --quiet --delete ${MANUAL_BASEDIR_L10N}
+    cli_runFnEnvironment vcs --quiet --delete ${MANUAL_BASEDIR_L10N}
 
     # Verify manual base directory. When the locale-specific
     # documentation manual is the last one inside the manual base
@@ -45,11 +45,11 @@ function texinfo_deleteEntryManual {
     if [[ $(ls -1 $MANUAL_BASEDIR | wc -l) -le 1 ]];then
 
         # Remove manual base directory.
-        cli_runFnEnvironment svn --delete ${MANUAL_BASEDIR}
+        cli_runFnEnvironment vcs --delete ${MANUAL_BASEDIR}
 
         # Redefine absolute paths to changed directory.  This is
-        # required in order for `svn_commitRepoChanges' to be aware
-        # that we are deleting MANUAL_BASEDIR, not
+        # required in order for `subversion_commitRepoChanges' to be
+        # aware that we are deleting MANUAL_BASEDIR, not
         # MANUAL_BASEDIR_L10N.
         MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR}"
 

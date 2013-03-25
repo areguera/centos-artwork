@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# svn_syncroRepoChanges.sh -- This function syncronizes both central
-# repository and working copy directory structures by performing a
-# subversion update command first and a subversion commit command
-# later.
+# subversion_syncRepoChanges.sh -- This function syncnizes both
+# central repository and working copy directory structures by
+# performing a subversion update command first and a subversion commit
+# command later.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -25,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_syncroRepoChanges {
+function subversion_syncRepoChanges {
 
     local LOCATION=''
     local LOCATIONS="${@}"
@@ -43,10 +43,10 @@ function svn_syncroRepoChanges {
         cli_checkFiles ${LOCATION} -e --is-versioned
 
         # Bring changes from the repository into the working copy.
-        svn_updateRepoChanges ${LOCATION}
+        subversion_updateRepoChanges ${LOCATION}
 
         # Check changes in the working copy.
-        svn_commitRepoChanges ${LOCATION}
+        subversion_commitRepoChanges ${LOCATION}
 
     done
 

@@ -59,7 +59,7 @@ function texinfo_copyEntryChapter {
     for MANUAL_ENTRY in $MANUAL_ENTRIES;do
 
         # Copy sections from source chapter to target chapter.
-        cli_runFnEnvironment svn --copy $MANUAL_ENTRY $MANUAL_ENTRY_DST
+        cli_runFnEnvironment vcs --copy $MANUAL_ENTRY $MANUAL_ENTRY_DST
 
         # Update section menu, nodes and cross reference definitions
         # to all sections inside the documentation manual.

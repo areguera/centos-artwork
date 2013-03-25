@@ -27,10 +27,10 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q"
+    local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="quiet,filter:,answer-yes,update,edit,delete,dont-create-mo,is-localizable,sync-changes"
+    local ARGSL="help,quiet,filter:,answer-yes,update,edit,delete,dont-create-mo,is-localizable,synchronize"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -43,14 +43,20 @@ function locale_getOptions {
     while true; do
         case "$1" in
 
-            --filter )
-                FLAG_FILTER="$2"
-                shift 2
+            -h | --help )
+                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-locale"
+                shift 1
+                exit
                 ;;
 
             -q | --quiet )
                 FLAG_QUIET="true"
                 shift 1
+                ;;
+
+            --filter )
+                FLAG_FILTER="$2"
+                shift 2
                 ;;
 
             --answer-yes )
@@ -83,8 +89,8 @@ function locale_getOptions {
                 shift 1
                 ;;
 
-            --sync-changes )
-                FLAG_SYNC_CHANGES="true"
+            --synchronize )
+                FLAG_SYNCHRONIZE="true"
                 shift 1
                 ;;
 

@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# svn_commitRepoChanges.sh -- This function explores the working copy
-# and commits changes up to central repository after checking changes
-# and adding files which aren't under version control.
+# subversion_commitRepoChanges.sh -- This function explores the
+# working copy and commits changes up to central repository after
+# checking changes and adding files which aren't under version
+# control.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -24,7 +25,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_commitRepoChanges {
+function subversion_commitRepoChanges {
 
     local -a FILES
     local -a INFO
@@ -54,13 +55,13 @@ function svn_commitRepoChanges {
 
     # Process location based on its path information.
     if [[ ${LOCATION} =~ 'Documentation/Manuals/Texinfo)' ]];then
-        STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
+        STATUSOUT="$(${COMMAND} status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
     elif [[ $LOCATION =~ 'Documentation/Manuals/Docbook' ]];then
-        STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
+        STATUSOUT="$(${COMMAND} status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
     elif [[ $LOCATION =~ 'Identity' ]];then
-        STATUSOUT="$(${SVN} status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
+        STATUSOUT="$(${COMMAND} status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
     else
-        STATUSOUT="$(${SVN} status ${LOCATION})\n$STATUSOUT"
+        STATUSOUT="$(${COMMAND} status ${LOCATION})\n$STATUSOUT"
     fi
 
     # Sanitate status output. Expand new lines, remove leading spaces
@@ -116,11 +117,11 @@ function svn_commitRepoChanges {
     if [[ ${FILESNUM[0]} -gt 0 ]];then
 
         cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
-        ${SVN} diff ${LOCATION} | less
+        ${COMMAND} diff ${LOCATION} | less
 
         # Commit changes up to central repository.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${LOCATION}
+        ${COMMAND} commit ${LOCATION}
 
     fi
 
@@ -132,12 +133,12 @@ function svn_commitRepoChanges {
         cli_printMessage '-' --as-separator-line
         cli_printMessage "`gettext "Do you want to add unversioned files now?"`" --as-yesornorequest-line
         for FILE in ${FILES[1]};do
-            ${SVN} add "${TCAR_WORKDIR}/$FILE"
+            ${COMMAND} add "${TCAR_WORKDIR}/$FILE"
         done
 
         # Commit changes up to central repository.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${LOCATION}
+        ${COMMAND} commit ${LOCATION}
 
     fi
 
@@ -147,7 +148,7 @@ function svn_commitRepoChanges {
     if [[ ${FILESNUM[3]} -gt 0 ]];then
         cli_printMessage '-' --as-separator-line
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${SVN} commit ${LOCATION}
+        ${COMMAND} commit ${LOCATION}
     fi
 
 }

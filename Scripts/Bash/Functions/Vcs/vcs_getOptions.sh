@@ -1,7 +1,8 @@
 #!/bin/bash
 #
-# svn_getOptions.sh -- This function interprets option parameters
-# passed to `svn' functionality and calls actions accordingly.
+# vcs_getOptions.sh -- This function interprets option parameters
+# passed to `vcs' functionality and calls actions accordingly. It
+# serves as interface to Subversion and Git sub-functionalities.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -23,13 +24,13 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_getOptions {
+function vcs_getOptions {
 
     # Define short options we want to support.
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,sync-changes,update,commit,is-versioned,get-status,mkdir,copy,delete"
+    local ARGSL="help,quiet,synchronize,update,commit,is-versioned,get-status,mkdir,copy,delete"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -43,7 +44,7 @@ function svn_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" Scripts/Bash/Functions/Svn
+                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-vcs"
                 shift 1
                 exit
                 ;;
@@ -53,43 +54,43 @@ function svn_getOptions {
                 shift 1
                 ;;
 
-            --sync-changes )
-                ACTIONNAMS="${ACTIONNAMS} svn_syncroRepoChanges"
+            --synchronize )
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_syncRepoChanges"
                 shift 1
                 ;;
 
             --commit )
-                ACTIONNAMS="${ACTIONNAMS} svn_commitRepoChanges"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_commitRepoChanges"
                 shift 1
                 ;;
 
             --update )
-                ACTIONNAMS="${ACTIONNAMS} svn_updateRepoChanges"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_updateRepoChanges"
                 shift 1
                 ;;
 
             --is-versioned )
-                ACTIONNAMS="${ACTIONNAMS} svn_isVersioned"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_isVersioned"
                 shift 1
                 ;;
 
             --get-status )
-                ACTIONNAMS="${ACTIONNAMS} svn_getRepoStatus"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_getRepoStatus"
                 shift 1
                 ;;
 
             --copy )
-                ACTIONNAMS="${ACTIONNAMS} svn_copyRepoFile"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_copyRepoFile"
                 shift 1
                 ;;
 
             --mkdir )
-                ACTIONNAMS="${ACTIONNAMS} svn_mkRepoDirectory"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_mkRepoDirectory"
                 shift 1
                 ;;
 
             --delete )
-                ACTIONNAMS="${ACTIONNAMS} svn_deleteRepoFile"
+                ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_deleteRepoFile"
                 shift 1
                 ;;
 
@@ -99,7 +100,7 @@ function svn_getOptions {
                 # correctly. At this point all option arguments have
                 # been processed already but the `--' argument still
                 # remains to mark ending of option arguments and
-                # begining of non-option arguments. The `--' argument
+                # beginning of non-option arguments. The `--' argument
                 # needs to be removed here in order to avoid
                 # centos-art.sh script to process it as a path inside
                 # the repository, which obviously is not.

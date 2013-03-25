@@ -26,10 +26,10 @@
 function tuneup_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q"
+    local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="quiet,filter:,answer-yes,sync-changes"
+    local ARGSL="help,quiet,filter:,answer-yes,synchronize"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -42,9 +42,10 @@ function tuneup_getOptions {
 
         case "$1" in
 
-            --filter )
-                FLAG_FILTER="$2"
-                shift 2
+            -h | --help )
+                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-tuneup"
+                shift 1
+                exit
                 ;;
 
             -q | --quiet )
@@ -52,13 +53,18 @@ function tuneup_getOptions {
                 shift 1
                 ;;
 
+            --filter )
+                FLAG_FILTER="$2"
+                shift 2
+                ;;
+
             --answer-yes )
                 FLAG_ANSWER="true"
                 shift 1
                 ;;
 
-            --answer-yes )
-                FLAG_SYNC_CHANGES="true"
+            --synchronize )
+                FLAG_SYNCHRONIZE="true"
                 shift 1
                 ;;
 

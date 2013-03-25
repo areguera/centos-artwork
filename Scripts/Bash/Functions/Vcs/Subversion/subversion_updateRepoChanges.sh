@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# svn_updateRepoChanges.sh -- This function realizes a subversion
-# update command against the working copy in order to bring changes
-# from the central repository into the working copy.
+# subversion_updateRepoChanges.sh -- This function realizes a
+# subversion update command against the working copy in order to bring
+# changes from the central repository into the working copy.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_updateRepoChanges {
+function subversion_updateRepoChanges {
 
     local -a FILES
     local -a INFO
@@ -44,7 +44,7 @@ function svn_updateRepoChanges {
 
     # Update working copy and retrieve update output.
     cli_printMessage "`gettext "Bringing changes from the repository into the working copy"`" --as-banner-line
-    UPDATEOUT=$(${SVN} update ${LOCATION} --quiet)
+    UPDATEOUT=$(${COMMAND} update ${LOCATION} --quiet)
 
     # Define path of files considered recent modifications from
     # central repository to working copy.

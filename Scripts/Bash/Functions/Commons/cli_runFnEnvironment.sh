@@ -34,7 +34,7 @@ function cli_runFnEnvironment {
     local STATUS=$?
 
     # Finish script execution based on exit status.
-    if [[ ${STATUS} -eq 1 ]];then
+    if [[ ${STATUS} -ne 0 ]];then
         exit ${STATUS}
     fi
 

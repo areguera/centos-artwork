@@ -55,38 +55,52 @@ function help_getEntries {
 
             # Manual self name.
             MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $1 }') -f \
+                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS=":" } { print $1 }') -f \
                 | tr '[:upper:]' '[:lower:]')
 
             # Manual self directory name.
             MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $1 }') -d )
+                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS=":" } { print $1 }') -d )
 
             # Manual part name.
             MANUAL_PART[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $2 }') -d )
+                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS=":" } { print $2 }') -d )
 
             # Manual chapter name.
             MANUAL_CHAP[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $3 }') -d )
+                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS=":" } { print $3 }') -d )
 
             # Manual section name.
             MANUAL_SECT[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
-                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN{ FS=":" } { print $4 }' | tr '/' '-') -f )
+                $(echo "${MANUAL_DOCENTRY}" | gawk 'BEGIN { FS=":" } { print $4 }' | tr '/' '-') -f )
 
-        elif [[ ${MANUAL_DOCENTRY} =~ '^(trunk|branches|tags)' ]];then
+        elif [[ ${MANUAL_DOCENTRY} =~ "^(trunk|branches|tags)?(/)?($(ls ${TCAR_WORKDIR} \
+            | tr '[[:space:]]' '|' | sed 's/|$//'))" ]];then
 
-            # When `path/to/dir' is used as format to documentation
-            # entry, you cannot specify the manual chapter or section
-            # where documentation actions will take place on. Instead,
-            # they are predefined for you here. Use this format to
-            # document directories inside your working copy.
+            # When we use the `path/to/dir' as format to reach
+            # documentation entries, you cannot specify the manual
+            # chapter or section where documentation actions will take
+            # place on. Instead, they are predefined for you here. Use
+            # this format to quickly document directories inside your
+            # working copy.
+            #
+            # When we use the `path/to/dir' format to reach
+            # documentation entries, there is a distinction between
+            # Subversion and Git version control system we need to be
+            # aware of.  This is the directory structure layout used
+            # in the repository.  In Subversion, we use a trunk/,
+            # branches/, tags/ layout as first level in the repository
+            # directory structure but, in Git, we don't need such
+            # special layout in the repository's first directory
+            # level. The script must be able to understand both
+            # directory structures.
 
             # Manual's self name.
             MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]='tcar-fs'
 
             # Manual's self directory name.
-            MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]='Tcar-fs'
+            MANUAL_DIRN[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \
+                ${MANUAL_SLFN[${MANUAL_DOCENTRY_COUNT}]} -d)
 
             # Manual's chapter name.
             MANUAL_CHAP[${MANUAL_DOCENTRY_COUNT}]=$(cli_getRepoName \

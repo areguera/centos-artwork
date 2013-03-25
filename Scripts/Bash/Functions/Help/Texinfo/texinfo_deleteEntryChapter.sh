@@ -51,7 +51,7 @@ function texinfo_deleteEntryChapter {
 
     # Remove chapter directory using subversion to register the
     # change.
-    cli_runFnEnvironment svn --quiet --delete ${MANUAL_CHAPTER_DIR}
+    cli_runFnEnvironment vcs --quiet --delete ${MANUAL_CHAPTER_DIR}
 
     # Update chapter menu and nodes inside manual structure.
     texinfo_updateChapterMenu --delete-entry

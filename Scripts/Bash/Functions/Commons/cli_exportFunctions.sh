@@ -36,7 +36,7 @@ function cli_exportFunctions {
     fi
 
     # Define the source location where function files are placed in.
-    local LOCATION=${CLI_BASEDIR}/Functions/$(dirname ${EXPORTID})
+    local LOCATION=${CLI_FUNCDIR}/$(dirname ${EXPORTID})
 
     # Define suffix used to retrieve function files.
     local SUFFIX=$(basename "$EXPORTID")

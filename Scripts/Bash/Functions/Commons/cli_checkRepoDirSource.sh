@@ -42,6 +42,10 @@ function cli_checkRepoDirSource {
 
     local LOCATION=${1}
 
+    # Remove the working directory absolute path from location to
+    # avoid path duplications here.
+    LOCATION=$(echo "$LOCATION" | sed "s,${TCAR_WORKDIR}/,,g")
+
     # When we use Subversion as version control system, we follow the
     # `trunk', `branches', `tags' convention to organize files inside
     # the repository and need to redefine the source path in order to

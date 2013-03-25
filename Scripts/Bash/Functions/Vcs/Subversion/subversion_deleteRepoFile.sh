@@ -1,9 +1,8 @@
 #!/bin/bash
 #
-# svn_isVersioned.sh -- This function determines whether a location is
-# under version control or not. When the location is under version
-# control, this function returns `true'. when the location isn't under
-# version control, this function returns `false'.
+# subversion_deleteRepoFile.sh -- This function standardizes the way
+# centos-art.sh script deletes files and directories inside the
+# working copy.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -25,18 +24,20 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_isVersioned {
+function subversion_deleteRepoFile {
 
-    # Define location we want to find out it is under version control
-    # or not. Only the first non-option argument passed to
-    # centos-art.sh command-line will be used.
-    local LOCATION=$(cli_checkRepoDirSource "${1}")
+    local TARGET=$(cli_checkRepoDirSource ${1})
 
-    # Use subversion to determine whether the location is under
-    # version control or not.
-    ${SVN} info $LOCATION > /dev/null 2>&1
+    # Print action reference.
+    cli_printMessage "${TARGET}" --as-deleting-line
 
-    # Verify subversion exit status and print output.
-    echo $?
+    # Verify target existence. Be sure it is under version control.
+    cli_checkFiles "${TARGET}" --is-versioned
+
+    # Revert changes before deleting related files.
+    ${COMMAND} revert ${TARGET} --quiet --recursive
+
+    # Delete source location.
+    ${COMMAND} delete ${TARGET} --quiet --force
 
 }

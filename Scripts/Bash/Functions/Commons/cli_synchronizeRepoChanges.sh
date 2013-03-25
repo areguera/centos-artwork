@@ -27,8 +27,8 @@
 
 function cli_synchronizeRepoChanges {
 
-    # Verify syncronization flag.
-    if [[ ! $FLAG_SYNC_CHANGES == 'true' ]];then
+    # Verify synchronization flag.
+    if [[ ! $FLAG_SYNCHRONIZE == 'true' ]];then
         return
     fi
     
@@ -36,6 +36,6 @@ function cli_synchronizeRepoChanges {
     cli_checkFiles -e $@
 
     # Synchronize changes.
-    cli_runFnEnvironment svn --sync $@
+    cli_runFnEnvironment vcs --synchronize $@
 
 }

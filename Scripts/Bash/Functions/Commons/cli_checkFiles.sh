@@ -31,10 +31,10 @@
 function cli_checkFiles {
 
     # Define short options.
-    local ARGSS='i:,r,m:,d,e,f,h,x'
+    local ARGSS='i:,r,m:,n,d,e,f,h,x'
 
     # Define long options.
-    local ARGSL='mime:,is-versioned,match:'
+    local ARGSL='mime:,is-versioned,match:,is-installed'
 
     # Initialize array variables.
     local -a CONDITION_COMMAND
@@ -74,6 +74,7 @@ function cli_checkFiles {
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
+                shift 1
                 ;;
 
             -f )
@@ -110,12 +111,19 @@ function cli_checkFiles {
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="$2"
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "doesn't match its pattern."`"
                 shift 2
-                ;;
+               ;;
 
             -r | --is-versioned )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="Svn"
-                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='svn_isVersioned'
-                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't under version control."`"
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="centos-art"
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="vcs --is-versioned"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]=""
+                shift 1
+                ;;
+
+            -n | --is-installed )
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="rpm"
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="-q --quiet"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't installed in the system."`"
                 shift 1
                 ;;
 
@@ -123,6 +131,7 @@ function cli_checkFiles {
                 shift 1
                 break
                 ;;
+
         esac
     done
 
@@ -134,21 +143,21 @@ function cli_checkFiles {
 
     for FILE in $FILES;do
 
-        while [[ ${COUNTER} -lt ${#CONDITION_PATTERN[*]} ]];do
+        until [[ ${COUNTER} -eq ${#CONDITION_PATTERN[*]} ]];do
 
             case ${CONDITION_COMMAND[$COUNTER]} in
 
-                "Svn" )
-                cli_exportFunctions "${CONDITION_COMMAND[${COUNTER}]}/${CONDITION_PATTERN[$COUNTER]}"
-                if [[ $(${CONDITION_PATTERN[$COUNTER]} ${FILE}) -ne 0 ]];then \
-                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
-                fi
-                cli_unsetFunctions "${CONDITION_COMMAND[${COUNTER}]}/${CONDITION_PATTERN[$COUNTER]}"
-                ;;
-
-                "test" )
+                "test" | "rpm" )
                 ${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE} \
                     || cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                ;;
+
+                "centos-art" )
+                # Don't create another level for error messages here
+                # (that would duplicate them unnecessarily).  Instead,
+                # set error messages inside specific functionalities
+                # and use them directly from there.
+                cli_runFnEnvironment ${CONDITION_PATTERN[$COUNTER]} ${FILE}
                 ;;
 
                 "file" )
@@ -166,6 +175,7 @@ function cli_checkFiles {
                 * )
                 cli_printMessage "`gettext "The condition command provided isn't supported."`" --as-error-line
                 ;;
+
             esac
 
             COUNTER=$(($COUNTER + 1))

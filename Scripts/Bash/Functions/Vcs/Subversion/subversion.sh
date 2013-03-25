@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# svn.sh -- This function standardizes subversion tasks inside the
-# repository.
+# subversion.sh -- This function standardizes Subversion tasks inside
+# the repository.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -23,17 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn {
-
-    local ACTIONNAM=''
-    local ACTIONNAMS=''
-    local ACTIONVAL=''
-
-    # Define absolute path to Subversion command.
-    SVN=/usr/bin/svn
-
-    # Interpret arguments and options passed through command-line.
-    svn_getOptions
+function subversion {
 
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and

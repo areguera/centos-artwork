@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# svn_copyRepoFile.sh -- This function standardizes the way files
-# (including directories) are duplicated inside the working copy. This
-# function is an interface for subversion's `copy' command.
+# subversion_mkRepoDirectory.sh -- This function standardizes the way
+# centos-art.sh script creates directories inside the working copy.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -24,26 +23,14 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_copyRepoFile {
+function subversion_mkRepoDirectory {
 
-    local SOURCE=$(cli_checkRepoDirSource ${1})
-    local TARGET=$(cli_checkRepoDirSource ${2})
-
-    # Verify source location absolute path. It should point either to
-    # existent files or directories both under version control inside
-    # the working copy.  Otherwise, if it doesn't point to an existent
-    # file under version control, finish the script execution with an
-    # error message.
-    cli_checkFiles ${SOURCE} -e --is-versioned
+    local TARGET=$(cli_checkRepoDirSource ${1})
 
     # Print action reference.
-    if [[ -f ${SOURCE} ]];then
-        cli_printMessage "${TARGET}/$(basename ${SOURCE})" --as-creating-line
-    else
-        cli_printMessage "${TARGET}" --as-creating-line
-    fi
+    cli_printMessage "${TARGET}" --as-creating-line
 
     # Copy source location to its target using version control.
-    ${SVN} copy ${SOURCE} ${TARGET} --quiet
+    ${COMMAND} mkdir ${TARGET} --quiet
 
 }

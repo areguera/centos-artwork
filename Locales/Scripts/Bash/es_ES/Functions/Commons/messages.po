@@ -19,11 +19,11 @@
 # ----------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: centos-art-0.0.4\n"
+"Project-Id-Version: centos-art-0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2012-12-14 19:34-0500\n"
-"PO-Revision-Date: 2012-12-14 19:34-0500\n"
-"Last-Translator: Alain Reguera Delgado <alain.reguera@gmail.com>\n"
+"POT-Creation-Date: 2013-03-23 23:26-0400\n"
+"PO-Revision-Date: 2013-03-23 23:26-0400\n"
+"Last-Translator: Documentation SIG\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
 "Content-Type: textplain; charset=UTF-8\n"
@@ -43,46 +43,41 @@ msgstr "no es un directorio."
 msgid "doesn't exist."
 msgstr "no existe."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:82
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:83
 msgid "isn't a regular file."
 msgstr "no es un fichero regular."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:89
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:90
 msgid "isn't a symbolic link."
 msgstr "no es un enlace simbólico."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:96
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:97
 msgid "isn't an executable file."
 msgstr "no es un fichero ejecutable."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:104
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:105
 #, sh-format
 msgid "isn't a \"$MIME\" file."
 msgstr "isn't a \"$MIME\" file."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:111
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:112
 #, sh-format
 msgid "doesn't match its pattern."
 msgstr "no coincide con su patrón."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:118
-msgid "isn't under version control."
-msgstr "no está bajo control de versión."
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:126
+msgid "isn't installed in the system."
+msgstr "no está instalado en el sistema."
 
-#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:167
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:176
 msgid "The condition command provided isn't supported."
 msgstr "El comando condicional suministrado no está soportado."
 
 #: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:35
-msgid "The export id must be passed as first argument."
-msgstr ""
-"El identificador de exportación debe ser suministrado como primer argumento."
-
-#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:37
 msgid "The export id doesn't match its pattern."
 msgstr "El identificador de exportación no coincide su patrón."
 
-#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:72
+#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:70
 msgid "No function file was found."
 msgstr "Ningún fichero de función fue encontrado."
 
@@ -240,3 +235,11 @@ msgstr "Paleta"
 #: Scripts/Bash/Functions/Commons/cli_unsetFunctions.sh:37
 msgid "The export id was not provided."
 msgstr "El identificador de exportación no fue suministrado."
+
+#~ msgid "isn't under version control."
+#~ msgstr "no está bajo control de versión."
+
+#~ msgid "The export id must be passed as first argument."
+#~ msgstr ""
+#~ "El identificador de exportación debe ser suministrado como primer "
+#~ "argumento."

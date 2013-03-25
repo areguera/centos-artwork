@@ -22,13 +22,39 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-# Initialize absolute path to the working copy.
-if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == "" ]];then
-    TCAR_WORKDIR=${HOME}/artwork
+# Initialize relative path (from repository first directory level on)
+# used to store bash scripts.
+TCAR_BASHSCRIPTS='Scripts/Bash'
+
+# Verify the working copy absolute path using the command path. It is
+# not possible to consider relative paths here because we are using a
+# symbolic link to create the connection between the centos-art.sh
+# script and the centos-art command. The link location is stored
+# inside ~/bin directory which is outside the repository directory
+# structure. So we cannot use the command path as reference to define
+# the repository working directory each time we run the command.
+# Instead, in order to get the correct working directory path, it is
+# required to finish the script execution when the absolute path
+# points to the ~/bin directory and print an error message explaining
+# the issue. This message cannot be translated to other languages
+# because the TEXTDOMAINDIR variable hasn't been defined yet (it
+# requires the working copy directory path to be defined first).
+if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == '' ]] ;then
+
+    if [[ $0 =~ "^${HOME}/bin" ]];then
+        echo "To run centos-art correctly, you need to prepare your workstation first."
+        exit 1
+    else
+
+        # Initialize absolute path to the working copy.
+        TCAR_WORKDIR=$(dirname $0 | sed "s,/${TCAR_BASHSCRIPTS},,")
+
+    fi
+
 fi
 
-# Redefine the working copy absolute path considering the previous
-# directory structures used in the repository.
+# Redefine the working copy absolute path considering the (Subversion)
+# previous directory structures used in the repository.
 if [[ -d ${TCAR_WORKDIR}/trunk ]];then
     TCAR_WORKDIR=${TCAR_WORKDIR}/trunk
 fi
@@ -40,17 +66,17 @@ fi
 
 # Initialize script-specific configuration variables.
 declare -xr CLI_NAME="${TCAR_BRAND}-art"
-declare -xr CLI_VERSION='0.0.4'
+declare -xr CLI_VERSION='0.4'
 declare -xr CLI_LANG_LC=$(echo ${LANG} | cut -d'.' -f1)
 declare -xr CLI_LANG_LL=$(echo ${CLI_LANG_LC} | cut -d'_' -f1)
 declare -xr CLI_LANG_CC=$(echo ${CLI_LANG_LC} | cut -d'_' -f2)
-declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/Scripts/Bash"
+declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/${TCAR_BASHSCRIPTS}"
 declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
 # Initialize internationalization through GNU gettext.
 . gettext.sh
 declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/Locales/Scripts/Bash
+declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/Locales/${TCAR_BASHSCRIPTS}
 
 # Initialize absolute path to temporal directory.
 declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"

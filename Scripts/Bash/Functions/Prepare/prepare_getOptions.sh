@@ -28,10 +28,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="q,h"
+    local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="quiet,help,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,sync-changes"
+    local ARGSL="help,quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,synchronize"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -45,7 +45,7 @@ function prepare_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" Scripts/Bash/Functions/Prepare
+                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-prepare"
                 shift 1
                 exit
                 ;;
@@ -95,8 +95,8 @@ function prepare_getOptions {
                 shift 1
                 ;;
 
-            --sync-changes )
-                FLAG_SYNC_CHANGES="true"
+            --synchronize )
+                FLAG_SYNCHRONIZE="true"
                 shift 1
                 ;;
 

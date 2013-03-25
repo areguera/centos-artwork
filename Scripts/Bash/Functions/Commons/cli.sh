@@ -56,10 +56,10 @@ function cli {
     local FLAG_ANSWER='false'
 
     # Initialize default value to commit changes flag. This flag
-    # (--sync-changes) controls whether subversion is triggered or
-    # not after realizing changes to source files under version
-    # control.
-    local FLAG_SYNC_CHANGES='false'
+    # (--synchronize) controls whether version control system is
+    # triggered or not after realizing changes to source files under
+    # version control.
+    local FLAG_SYNCHRONIZE='false'
 
     # Initialize list of common functionalities to load.
     local FILES=$(ls ${CLI_FUNCDIR}/Commons/*.sh)
@@ -131,6 +131,6 @@ function cli {
     cli_exportFunctions "${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}"
 
     # Execute function.
-    eval $CLI_FUNCNAME
+    $CLI_FUNCNAME
 
 }

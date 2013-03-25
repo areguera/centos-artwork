@@ -27,7 +27,7 @@ function texinfo_deleteEntrySection {
 
     # Remove documentation entry using subversion to register the
     # change.
-    cli_runFnEnvironment svn --delete "${MANUAL_ENTRY}"
+    cli_runFnEnvironment vcs --delete "${MANUAL_ENTRY}"
 
     # Update section menu, nodes and cross references.
     texinfo_updateStructureSection "${MANUAL_ENTRY}" --delete

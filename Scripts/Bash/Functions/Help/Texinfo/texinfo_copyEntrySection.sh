@@ -59,7 +59,7 @@ function texinfo_copyEntrySection {
     texinfo_checkEntrySrcDst "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
 
     # Copy section entry from source to target using subversion.
-    cli_runFnEnvironment svn --quiet --copy "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
+    cli_runFnEnvironment vcs --quiet --copy "${MANUAL_ENTRY_SRC}" "${MANUAL_ENTRY_DST}"
 
     # Redefine chapter name using chapter name passed to
     # `centos-art.sh' script as second non-option argument.

@@ -47,7 +47,7 @@ function render_doThemeActions {
     # the FLAG_FILTER value be.
     local MODEL_DIR=''
     local MODEL_DIRS="$(cli_getFilesList ${MODEL_BASEDIR}/${FLAG_THEME_MODEL} \
-        --pattern="^/[^.svn][[:alnum:]_/-]+$" --type="d" \
+        --pattern='^/[^.svn][[:alnum:]_/-]+$' --type="d" \
         | sed -e "s!^.*/${FLAG_THEME_MODEL}!!" \
               -e '/^[[:space:]]*$/d' \
               -e 's!^/!!')"

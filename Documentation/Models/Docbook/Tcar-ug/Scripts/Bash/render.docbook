@@ -27,7 +27,7 @@
         <arg>--last-rendition="<replaceable>COMMAND</replaceable>"</arg>
         <arg>--theme-model="<replaceable>MODELNAME</replaceable>"</arg>
         <arg>--with-brands</arg>
-        <arg>--sync-changes</arg>
+        <arg>--synchronize</arg>
         <arg choice="req" rep="repeat"><replaceable>LOCATION</replaceable></arg>
     </cmdsynopsis>
     </refsynopsisdiv>
@@ -281,7 +281,7 @@
     </varlistentry>
 
     <varlistentry>
-    <term><option>--sync-changes</option></term>
+    <term><option>--synchronize</option></term>
     <listitem>
     <para>
         Synchronizes available changes between the working copy and

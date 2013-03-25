@@ -63,7 +63,7 @@ function texinfo_createChapter {
     # where all chapter-specific files will be stored in.
     if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
         cli_printMessage "${MANUAL_CHAPTER_DIR}" --as-creating-line
-        cli_runFnEnvironment svn --quiet --mkdir ${MANUAL_CHAPTER_DIR}
+        cli_runFnEnvironment vcs --quiet --mkdir ${MANUAL_CHAPTER_DIR}
     fi
 
     # Create chapter-specific files using template files as reference.
@@ -79,7 +79,7 @@ function texinfo_createChapter {
         cli_printMessage "${MANUAL_CHAPTER_DIR}/$(basename ${FILE})" --as-creating-line
         
         # Copy template files into the chapter directory.
-        cli_runFnEnvironment svn --quiet --copy ${FILE} ${MANUAL_CHAPTER_DIR}
+        cli_runFnEnvironment vcs --quiet --copy ${FILE} ${MANUAL_CHAPTER_DIR}
 
     done
 

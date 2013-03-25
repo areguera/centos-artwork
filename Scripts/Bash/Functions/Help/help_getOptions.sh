@@ -30,7 +30,7 @@ function help_getOptions {
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,answer-yes,read,search:,format:,edit,update-output,update-structure,copy,delete,rename,sync-changes"
+    local ARGSL="help,quiet,answer-yes,read,search:,format:,edit,update-output,update-structure,copy,delete,rename,synchronize"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -44,7 +44,7 @@ function help_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" Scripts/Bash/Functions/Help
+                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-help"
                 shift 1
                 exit
                 ;;
@@ -59,8 +59,8 @@ function help_getOptions {
                 shift 1
                 ;;
 
-            --sync-changes )
-                FLAG_SYNC_CHANGES="true"
+            --synchronize )
+                FLAG_SYNCHRONIZE="true"
                 shift 1
                 ;;
 

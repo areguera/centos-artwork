@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# svn_mkRepoDirectory.sh -- This function standardizes the way
-# centos-art.sh script creates directories inside the working copy.
+# subversion_isVersioned.sh -- This function determines whether a
+# location is under version control or not. When the location is under
+# version control, this function returns `0'. When the location isn't
+# under version control, this function returns `1'.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -23,14 +25,20 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function svn_mkRepoDirectory {
+function subversion_isVersioned {
 
-    local TARGET=$(cli_checkRepoDirSource ${1})
+    # Define the location absolute path we want to determine whether
+    # it is under version control or not. Only the first non-option
+    # argument passed to centos-art.sh command-line will be used.
+    local LOCATION=$(cli_checkRepoDirSource "${1}")
 
-    # Print action reference.
-    cli_printMessage "${TARGET}" --as-creating-line
+    # Use Subversion to determine whether the location is under
+    # version control or not.
+    ${COMMAND} info ${LOCATION} > /dev/null 2>&1
 
-    # Copy source location to its target using version control.
-    ${SVN} mkdir ${TARGET} --quiet
+    # Verify Subversion's exit status.
+    if [[ $? -ne 0 ]];then
+        cli_printMessage "${LOCATION} `gettext "isn't under version control."`" --as-error-line
+    fi
 
 }

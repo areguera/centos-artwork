@@ -39,7 +39,7 @@ function tuneup {
     local TUNEUP_BASEDIR="${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
 
     # Initialize list of supported file extensions. This is, the file
-    # extensions we want to perform maintainance tasks for.
+    # extensions we want to perform maintenance tasks for.
     local TUNEUP_EXTENSIONS='svg xhtml sh'
 
     # Interpret arguments and options passed through command-line.
