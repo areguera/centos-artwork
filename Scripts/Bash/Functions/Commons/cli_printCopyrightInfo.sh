@@ -10,9 +10,9 @@
 # terms the creator considers better.  At this moment I don't feel
 # very confident about this legal affairs and their legal
 # implications, but I need to decide what copyright information the
-# centos-art.sh script will print out. So, in that sake, I'll assume
-# the same copyright information used by The CentOS Wiki
-# (http://wiki.centos.org/) as reference.
+# centos-art.sh script will print out when it be requested about it.
+# So, in that sake, I'll assume the same copyright information used by
+# The CentOS Wiki (http://wiki.centos.org/) as reference.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -52,9 +52,10 @@ function cli_printCopyrightInfo {
 
         --first-year )
 
-            # The former year when I (as part of The CentOS Project)
-            # started to consolidate The CentOS Project Corporate
-            # Visual Identity through the CentOS Artwork Repository.
+            # The former year when I (as collaborator of The CentOS
+            # Project) started to consolidate The CentOS Project
+            # Corporate Visual Identity through the CentOS Artwork
+            # Repository.
             echo '2009'
             ;;
 

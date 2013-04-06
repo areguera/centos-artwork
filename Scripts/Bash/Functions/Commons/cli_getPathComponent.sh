@@ -2,9 +2,9 @@
 #
 # cli_getPathComponent.sh -- This function standardizes the way
 # directory structures are organized inside the working copy of CentOS
-# Artwork Repository. You can use this function to retrive information
-# from paths (e.g., releases, architectures and theme artistic motifs)
-# or the patterns used to build the paths.
+# Artwork Repository. You can use this function to retrieve
+# information from paths (e.g., releases, architectures and theme
+# artistic motifs) or the patterns used to build the paths.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #

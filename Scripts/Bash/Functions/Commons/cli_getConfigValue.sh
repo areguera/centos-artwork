@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# cli_getConfigValue.sh -- This function standardizes the way are
-# retrieved from configuration files. As arguments, the configuration
-# file absolute path, the configuration section name, and the
+# cli_getConfigValue.sh -- This function standardizes the way configuration
+# files are retrieved from configuration files. As arguments, the
+# configuration file absolute path, the configuration section name, and the
 # configuration option name must be provided.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project

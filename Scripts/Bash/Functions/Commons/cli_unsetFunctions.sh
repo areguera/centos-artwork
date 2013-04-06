@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# cli_unsetFunctions.sh -- This function unsets funtionalities from
-# `centos-art.sh' script execution evironment.
+# cli_unsetFunctions.sh -- This function unsets functionalities from
+# `centos-art.sh' script execution environment.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
