@@ -1,7 +1,7 @@
 /* 
- * Webenv -> Main Blocks
+ * screen.css -- This file provides visual style for screens.
  *
- * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ * Copyright (C) 2009-2013 The CentOS Project
  *
  * This CSS is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by
@@ -16,10 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- *
- * ----------------------------------------------------------------------
- * $Id: base.css 5276 2012-08-28 22:08:58Z al $
- * ----------------------------------------------------------------------
+ * 
+ */
+
+/*
+ * Webenv -> Main Blocks
+ * ---------------------
  */
 
 div#header,
@@ -29,15 +31,14 @@ div#footer {
     min-width: 728px;
     }
 
-/* Header.
---------------------------------------------------------------------*/
+/* Header */
+
 div#header {
 	background: #204C8D url("../img/moin-header-background.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
-/* Content.
---------------------------------------------------------------------*/
+/* Content */
 
 div#wrap {
     background-color: #FFF;
@@ -74,8 +75,7 @@ div#content div#preview > div {
     margin-left: 20px;
     }
 
-/* Headings
---------------------------------------------------------------------*/
+/* Headings */
 
 h1 {
     font-size: 1.7em;
@@ -177,8 +177,25 @@ div.recentchanges {
     font-size: x-small;
     }
 
+div.recentchanges td.rcicon1 img,
+div.recentchanges td.rcicon2 img {
+    margin: 0 0 0 10px !important;
+    }
+
+div.recentchanges div.rcrss img,
+table.recentchanges td img {
+    margin-left: 0 !important;
+    }
+
+table.recentchanges {
+    margin-left: 0 !important;
+    width: 100%;
+    margin-top: 15px;
+    }
+
 .recentchanges table {
     width: 100%;
+    margin-left: 0 !important;
     }
 
 .recentchanges tr.rcdaybreak {
@@ -218,11 +235,10 @@ table.diff td.diff-added {
     font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
     }
 
-/* Paragraphs
---------------------------------------------------------------------*/
+/* Paragraphs */
 
 div#content p {
-    text-align:justify; 
+    /* text-align:justify; */
     }
 
 div#content form .userpref table {
@@ -239,16 +255,15 @@ div#page p#pageinfo {
     color: gray;
     }
 
-/* Logo
---------------------------------------------------------------------*/
+/* Logo */
+
 div#header div#logo img {
     border: none;
     float: left;
     margin-left: 10px;
     }
 
-/* Google advertisement (468x60px)
---------------------------------------------------------------------*/
+/* Google advertisement (468x60px) */
 
 div#header div.ads-google {
     float: right;
@@ -259,8 +274,8 @@ div#header div.ads-google img {
     border: none;
     }
 
-/* Last releases and RSS link for them.
---------------------------------------------------------------------*/
+/* Last releases and RSS link for them. */
+
 div#header div#last-releases {
     clear: both;
     min-height: 35px;
@@ -310,8 +325,7 @@ div#header div#last-releases div span.last {
     border-right: 0px;
     }
 
-/* User links on header.
---------------------------------------------------------------------*/
+/* User links on header */
 
 div#header div.userlinks {
     padding: 10px;
@@ -391,8 +405,8 @@ div#header div.userlinks div.trail span.last:after {
 	content: none;
 	}
 
-/* User trail on content.
---------------------------------------------------------------------*/
+/* User trail on content. */
+
 div#body div.usertrail {
     font-size: small;
     }
@@ -422,8 +436,7 @@ div#body div.usertrail span.last:after {
 	content: none;
 	}
 
-/* Page lines.
---------------------------------------------------------------------*/
+/* Page lines */
 
 .line {
 	clear: both;
@@ -442,8 +455,7 @@ div#body div.usertrail span.last:after {
     font-size: x-small;
     }
 
-/* Footer.
---------------------------------------------------------------------*/
+/* Footer */
 
 #footer {
     clear: both;
@@ -537,26 +549,7 @@ div#body div.usertrail span.last:after {
 
 /* 
  * Webenv -> Forms
- *
- * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
- *
- * This CSS is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This CSS is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- *
- * ----------------------------------------------------------------------
- * $Id: forms.css 5257 2012-08-28 18:02:18Z al $
- * ----------------------------------------------------------------------
+ * ---------------
  */
 
 div#body div.row1 {
@@ -708,36 +701,15 @@ div#body div.records-list ul li.title {
 
 /*
  * Webenv -> Links
- *
- * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
- *
- * This CSS is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This CSS is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- *
- * ----------------------------------------------------------------------
- * $Id: links.css 5276 2012-08-28 22:08:58Z al $
- * ----------------------------------------------------------------------
+ * ---------------
  */
 
-/* Broken or nonexistent links.
---------------------------------------------------------------------*/
+/* Broken or nonexistent links. */
 
 a.nonexistent,
 a.nonexistent:hover { color: gray; }
 
-/* Special decoration for some links' classes
---------------------------------------------------------------------*/
+/* Special decoration for some links' classes */
 
 a.www:before {
     white-space:nowrap;
@@ -776,8 +748,7 @@ a.interwiki:before {
     }
 
 
-/*
---------------------------------------------------------------------*/
+/* */
 
 div#header .user-last-visit a,
 div#header .userlinks a,
@@ -788,26 +759,7 @@ div#header #last-releases a {
 
 /* 
  * Webenv -> Lists
- *
- * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
- *
- * This CSS is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This CSS is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- *
- * ----------------------------------------------------------------------
- * $Id: lists.css 5276 2012-08-28 22:08:58Z al $
- * ----------------------------------------------------------------------
+ * ---------------
  */
 
 ul { 
@@ -829,8 +781,7 @@ div#right ul li {
     padding: 2px;
     }
 
-/* Table of content (table-of-contents) 
---------------------------------------------------------------------*/
+/* Table of content (table-of-contents)  */
 
 div.table-of-contents {
 	font-size: small;
@@ -866,30 +817,11 @@ div.searchresults dl {
 
 /* 
  * Webenv -> Quotation
- *
- * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
- *
- * This CSS is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This CSS is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- *
- * ----------------------------------------------------------------------
- * $Id: quotation.css 5276 2012-08-28 22:08:58Z al $
- * ----------------------------------------------------------------------
+ * -------------------
  */
 
-/* Action messages.
---------------------------------------------------------------------*/
+/* Action messages */
+
 #message {
     padding: 0 2em 0em;
 	border: none;
@@ -906,14 +838,18 @@ div.searchresults dl {
 
 
 /* Admonitions
---------------------------------------------------------------------
-Stylesheet for admonitions require using table elements as part of
-wiki markup. For example, to build a note admonition, use the following
-MoinMoin table markup:
---------------------------------------------------------------------
-||<tableclass="message blue"^|2>  attachment:ArtWork/note.png ||||<class="title" width="99%"> Note ||
-||<class="content"> Here is where the content goes in. ||
---------------------------------------------------------------------*/
+ * 
+ * NOTE: To build admonitions, use the following wiki markup as
+ * template:
+ * --------------------------------------------------------------------
+ * ||<tableclass="message blue"^|2>  attachment:ArtWork/note.png ||||<class="title" width="99%"(> Note: ||
+ * ||<class="content"> Here is where the admonition content goes in. ||
+ * --------------------------------------------------------------------
+ */
+
+table.message td {
+    padding: 5px;
+    }
 
 table.message.blue {
     background-image: url("../img/moin-msg-bg-blue.png");
@@ -982,26 +918,7 @@ table.message img {
 
 /* 
  * Webenv -> Tabs (Style 2: Two Rounded Borders)
- *
- * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
- *
- * This CSS is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This CSS is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
- *
- * ----------------------------------------------------------------------
- * $Id: tabs.css 5276 2012-08-28 22:08:58Z al $
- * ----------------------------------------------------------------------
+ * ---------------------------------------------
  */
 
 div#header div.tabs {
@@ -1059,8 +976,8 @@ div#header div.tabs span:hover a span {
 	background: url("../img/tabs-bg-2.png") 0 0;
 	}
 
-/* Application level navigation bar.
---------------------------------------------------------------------*/
+/* Application level navigation bar. */
+
 .editbar {
     clear: both;
     display: block;
@@ -1154,7 +1071,7 @@ div#header div.tabs span:hover a span {
 
 #footer .navibar li.current a { 
     /* To cover the box area as linkable in the footer area */
-    padding: 7px 8px 6px;
+    padding: 7px 8px 5px;
     }
 
 .navibar a, .navibar a:visited {
@@ -1287,7 +1204,6 @@ div#header div.tabs span:hover a span {
 #pagetrail {
     font-size: 0.82em;
     margin: 5px 0 0 0;
-    text-align: right;
     }
 
 *[dir="rtl"] #pagetrail {
@@ -1334,7 +1250,6 @@ div#header div.tabs span:hover a span {
 #pagetrail li {
     display: inline;
     margin: 0;
-    color: #EEEEEE;
     }
 
 /* XXX Warning: non-ascii characters! */
@@ -1369,12 +1284,6 @@ div#header div.tabs span:hover a span {
 #username a:visited { text-decoration: none; color: #EEE; }
 #username a:visited:hover { text-decoration: underline; color: #FFF; }
 
-#pagetrail a:link { text-decoration: none; color: #EEE;}
-#pagetrail a:hover { text-decoration: underline; color: #FFF; }
-#pagetrail a:active { text-decoration: underline; color: #FFF; }
-#pagetrail a:visited { text-decoration: none; color: #EEE; }
-#pagetrail a:visited:hover { text-decoration: underline; color: #FFF; }
-
 #userlinks {
     padding: 10px;
     }
@@ -1389,4 +1298,3 @@ div#header div.tabs span:hover a span {
     line-height: 5px;
     background: #628ECA;
     }
-

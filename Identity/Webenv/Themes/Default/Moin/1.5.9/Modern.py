@@ -2,12 +2,11 @@
 """
     MoinMoin - Modern Theme
 
-    Created for the CentOS Project Wiki. This is a
-    modification of the MoinMoin's modern default
-    wiki theme, and a continuation of previous
-    modern-CentOS theme.
+    Created for The CentOS Project Wiki. This is a modification of
+    MoinMoin's modern default wiki theme, and a continuation of
+    previous modern-CentOS theme.
 
-    @copyright: 2008 by The CentOS ArtWork SIG.
+    @copyright: 2008-2013 The CentOS Project
     @license: GNU GPL, see COPYING for details.  
 """
 
@@ -36,7 +35,6 @@ class Theme(ThemeBase):
             u'<div id="userlinks">',
             self.searchform(d),
             self.username(d),
-            self.trail(d),
             u'</div>',
 	        self.navibar(d),
     	    u'<div class="pageline"><hr style="display:none;" /></div>',
@@ -46,6 +44,7 @@ class Theme(ThemeBase):
             # Page
             self.msg(d),
             self.startPage(),
+            self.trail(d),
             ]
         return u'\n'.join(html)
 
@@ -69,7 +68,6 @@ class Theme(ThemeBase):
             u'<div id="userlinks">',
             self.searchform(d),
             self.username(d),
-            self.trail(d),
             u'</div>',
     	    u'<div class="pageline"><hr style="display:none;"></div>',
             u'</div>',
