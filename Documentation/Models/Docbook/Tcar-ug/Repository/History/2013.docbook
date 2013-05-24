@@ -16,18 +16,69 @@
         possibilities began to appear.
     </para>
 
-    <simplesect id="repository-history-2013-VersionControl">
-    <title>Update Version Control Back-end</title>
     <para>
-        The version control system functionality was renamed from
-        <function>svn</function> to <xref linkend="scripts-bash-vcs"
-        /> in order to handle both Subversion and Git working copies
-        of &TCAR;. This change prepares the
-        <command>centos-art.sh</command> script to follow the
-        suggestion of a complete migration of version control system
-        from Subversion to Git for &TCAR;, at some point.
+        On April 9th, I begin a training on how to manage small
+        enterprises. This training take place in Reina's church,
+        specifically in a centre called <quote>La Anunciata</quote>.
+        This training demanded me attention, so the few hours I was
+        dedicating to &TCAR; at nights were reduced even more.
+    </para>
+
+    <para>
+        On May 14th, the work at Reina's church ends for me and I have
+        to return to Cienfuegos city. It was not possible to conclude
+        the training on business management. I tried to take advantage
+        of the situation dedicating more work and study hours to
+        &TCAR; and the related automation scripts once again. At this
+        point I consider a Git+Gitolite+Gitweb infrastructure for
+        &TCAR; and start working on it in my workstation. This, in
+        order to implement a new work flow for &TCAR; based on Git
+        version control.
+    </para>
+
+    <simplesect id="repository-history-2013-VersionControl">
+    <title>Update Version Control Environment</title>
+    <para>
+        The function environment related to version control tasks was
+        renamed from <function>svn</function> to <xref
+        linkend="scripts-bash-vcs" /> in order to handle both
+        <application>Subversion</application> and
+        <application>Git</application> working copies of &TCAR;. This
+        change prepares the <command>centos-art.sh</command> script to
+        follow the suggestion of a complete migration from
+        <application>Subversion</application> to
+        <application>Git</application>, at some point.
+    </para>
+
+    <para>
+        Because the <application>Subversion</application>
+        infrastructure is the one in place right now and it is the one
+        with most artwork history, it will be
+        <application>Subversion</application> the version control
+        system we are using as default in
+        <filename>centos-art.sh</filename>.  However this will surely
+        change as soon as a <application>Git</application>
+        infrastructure be approved for &TCAR; and everything could be
+        moved there.
     </para>
     </simplesect>
+
+    <simplesect id="repository-history-2013-ConfigurationFile">
+    <title>Add <filename>centos-art.conf</filename> file</title>
+    <para>
+        Based on the need of supporting more than one application to
+        handle version control tasks, it was added the
+        <filename>centos-art.conf</filename> file into the <filename
+        class="directory">Scripts/Bash</filename> directory. This file
+        exists to customize specific behaviours of
+        <command>centos-art.sh</command> script once it has been
+        executed (e.g., what kind of application will be used as
+        default for doing version control, or even if the actions
+        related to version control will be performed or not). 
+    </para>
+    </simplesect>
+
+    <!--
 
     <simplesect id="repository-history-2013-UpdateDocbookStructure">
     <title>Update DocBook Physical Divisions</title>
@@ -42,5 +93,6 @@
         ...
     </para>
     </simplesect>
+    -->
 
 </section>

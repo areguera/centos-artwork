@@ -26,26 +26,30 @@
     <mediaobject>
     <textobject>
 <programlisting>
-+----------------------------------------------------------+
-| Shell environment                                        |
-+---|-------------------|-----------------|----------------+
-.   |-- TCAR_WORKDIR    |-- TCAR_BRAND    |-- EDITOR       .
-.   |-- LANG            |-- HOME          |-- PATH         .
-.   `-- centos-art.sh   `-- TMPDIR        `-- ...          .
-.       +---|--------------------------------------------+ .
-.       | Command environment                            | .
-.       +---|---------------|----------------|-----------+ .
-.       .   |-- CLI_NAME    |-- CLI_VERSION  `-- ...     . .
-.       .   |-- CLI_FUNCDIR `-- CLI_BASEDIR              . .
-.       .   |  +---------------------------------------+ . .
-.       .   +--| Common functions environment          | . .
-.       .      +--|------------------------------------+ . .
-.       .      .  |  +-------------------------------+ . . .
-.       .      .  +--| Specific function environment | . . .
-.       .      .     +-------------------------------+ . . .
-.       .      ......................................... . .
-.       .................................................. .
-............................................................
++-----------------------------------------------------+
+| Shell environment                                   |
++---|-------------------|-----------------|-----------+
+.   |-- TCAR_WORKDIR    |-- TCAR_BRAND    |-- EDITOR  .
+.   |-- LANG            |-- HOME          |-- PATH    .
+.   `-- centos-art.sh   `-- TMPDIR        `-- ...     .
+.   +---|-----------------------------------------+   .
+.   | Command environment                         |   .
+.   +---|---------------|----------------|--------+   .
+.   .   |-- CLI_NAME    |-- CLI_VERSION  `-- ...  .   .
+.   .   |-- CLI_FUNCDIR `-- CLI_BASEDIR           .   .
+.   .   `-- cli()                                 .   .
+.   .   +---|-----------------------------------+ .   .
+.   .   | Common functions environment          | .   .
+.   .   +---|------------------------|----------+ .   .
+.   .   .   |-- cli_printMessage()   |-- ...    . .   .
+.   .   .   |-- cli_getFilesList()   |-- ...    . .   .
+.   .   .   `-- render()             `-- ...    . .   .
+.   .   .   +---|---------------------------+   . .   .
+.   .   .   | Specific function environment |   . .   .
+.   .   .   +-------------------------------+   . .   .
+.   .   ......................................... .   .
+.   ...............................................   .
+.......................................................
 </programlisting>
     </textobject>
     </mediaobject>
@@ -371,31 +375,98 @@
         Specific function environments, on the other hand, are stored
         in the <filename
         class="directory">Scripts/Bash/Functions/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh</filename>
-        file, where <varname>CLI_FUNCDIRNAME</varname> is the first
-        argument passed to centos-art.sh script with the first letter
-        in uppercase but the rest in lowercase and
-        <varname>CLI_FUNCNAME</varname> is the first argument passed
-        to centos-art.sh script with all letters in lowercase.
-        Specific functionalities are exported after common
-        functionalities, so specific environment functionalities
-        aren't available inside common environment functionalities.
+        file, where:
+    </para>
+
+    <variablelist>
+    <varlistentry>
+    <term><varname>CLI_FUNCDIRNAME</varname></term>
+    <listitem>
+    <para>
+        Is the first argument passed to
+        <command>centos-art.sh</command> script with the first letter
+        in uppercase but the rest in lowercase. For example,
+        <literal>Render</literal>, <literal>Locale</literal> and
+        <literal>Help</literal> are all possible values to this
+        variable.
+     </para>
+    </listitem>
+    </varlistentry>
+
+    <varlistentry>
+    <term><varname>CLI_FUNCNAME</varname></term>
+    <listitem>
+    <para>
+        Is the first argument passed to
+        <command>centos-art.sh</command> script with all letters in
+        lowercase. For example, <literal>render</literal>,
+        <literal>locale</literal> and <literal>help</literal> are all
+        possible values to this variable. 
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    
+    <para>
+        Specific functions environment can be written in just one file
+        or in several files inside the same directory. Using one file
+        to write specific functions environment is rarely seen inside
+        the <command>centos-art.sh</command> script but it could
+        happen in situations where the need you want to solve can be
+        written in a few lines inside just one file. On the other
+        hand, if you find yourself writing a too long file, it is
+        convenient to logically divide it into several files. This
+        logical division takes place using functions, which indeed
+        create other environments where you can create and express
+        your solutions.
     </para>
 
     <para>
-        In <xref linkend="scripts-bash-environment-example1" />,
-        <function>render</function>, <function>help</function> and
-        <function>locale</function> are all specific environment
-        functions while <function>cli_printMessage</function> and
-        <function>cli_getFilesList</function> are common environment
-        functions.
+        The order in which individual files are exported and executed
+        inside the specific functions environments depends in the way
+        each developer write the <filename
+        class="directory">Scripts/Bash/Functions/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh</filename>
+        file. This is the main file inside the specific function
+        environment and controls the kind of logical division you
+        implement to organize the solution you need. As file name
+        convention, the following structure for new specific functions
+        environment is proposed:
+    </para>
+
+<programlisting>
+Scripts/Bash/Functions/${CLI_FUNCDIRNAM}/
+|-- ${CLI_FUNCNAME}.sh
+`-- ${CLI_FUNCNAME}_verbSubject.sh
+</programlisting>
+
+    <para>
+        Specific functions environment is exported after common
+        functions environment does, so it is not possible for specific
+        functions environment to be available inside the common
+        functions environment, nor inside other specific functions
+        environment, different to the one been passed as first
+        argument to the <command>centos-art.sh</command> script
+        command-line.<footnote>
+            <para>
+                Although, it is possible for you to call the
+                <command>centos-art.sh</command> script to itself
+                through the <function>cli_runFnEnvironment</function>
+                common function environment.
+            </para>
+        </footnote> In <xref
+        linkend="scripts-bash-environment-example1" />,
+        <function>render</function> is a specific function environment
+        while <function>cli_printMessage</function> and
+        <function>cli_getFilesList</function> are common function
+        environments.
     </para>
 
     <para>
-        Both specific and common environment functions exist to
+        Both specific and common function environments exist to
         standardize frequent tasks inside &TCAR;. The following
         sections will describe which these frequent tasks are and the
-        way they are standardized using specific and common
-        environment functions.
+        way they are standardized using specific and common function
+        environments.
     </para>
     </sect3>
 

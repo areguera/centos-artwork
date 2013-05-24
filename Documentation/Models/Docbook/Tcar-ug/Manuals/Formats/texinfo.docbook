@@ -70,17 +70,17 @@
     <screeninfo>Texinfo document structure</screeninfo>
     <mediaobject>
     <textobject>
-    <programlisting>Manuals/${MANUAL_NAME}
+    <programlisting>Documentation/Models/Texinfo/${MANUAL_NAME}
 `-- ${LANG}
-    |-- ${CHAPTER_NAME}
-    |   |-- chapter-menu.texinfo
-    |   |-- chapter-nodes.texinfo
-    |   |-- chapter.texinfo
+    |-- ${CHAPTER_NAME}/
     |   `-- ${SECTION_NAME}.texinfo
-    |-- Licenses
-    |   |-- chapter-menu.texinfo
-    |   |-- chapter-nodes.texinfo
-    |   `-- chapter.texinfo
+    |-- ${CHAPTER_NAME}-menu.texinfo
+    |-- ${CHAPTER_NAME}-nodes.texinfo
+    |-- ${CHAPTER_NAME}.texinfo
+    |-- Licenses -> Documentation/Models/Texinfo/Default/${LANG}/Licenses
+    |-- Licenses-menu.texinfo -> Documentation/Models/Texinfo/Default/${LANG}/Licenses-menu.texinfo
+    |-- Licenses-nodes.texinfo -> Documentation/Models/Texinfo/Default/${LANG}/Licenses-nodes.texinfo
+    |-- Licenses.texinfo -> Documentation/Models/Texinfo/Default/${LANG}/Licenses.texinfo
     |-- ${MANUAL_NAME}.conf
     |-- ${MANUAL_NAME}-index.texinfo
     |-- ${MANUAL_NAME}-menu.texinfo
@@ -96,7 +96,7 @@
         support part sectioning inside documentation manuals, so
         neither the <xref linkend="scripts-bash-help"/> functionality
         does.  Nevertheless, you can create several documentation
-        manuals and considered them as part of a bigger documentation
+        manuals and consider them as part of a bigger documentation
         manual to workaround this issue.
     </para>
 
@@ -253,7 +253,7 @@
     </varlistentry>
 
     <varlistentry>
-    <term><filename>chapter.texinfo</filename></term>
+    <term><filename>Chapters.texinfo</filename></term>
     <listitem>
     <para>
         This file contains Texinfo's main chapter definition used
@@ -277,7 +277,7 @@
     </varlistentry>
 
     <varlistentry>
-    <term><filename>chapter-menu.texinfo</filename></term>
+    <term><filename>Chapters-menu.texinfo</filename></term>
     <listitem>
     <para>
         This file is part of Texinfo's main chapter definition and
@@ -293,7 +293,7 @@
     </varlistentry>
 
     <varlistentry>
-    <term><filename>chapter-nodes.texinfo</filename></term>
+    <term><filename>Chapters-nodes.texinfo</filename></term>
     <listitem>
     <para>
         This file is part of Texinfo's main chapter definition and
@@ -303,7 +303,7 @@
         chapter. The node definition of documentation entries is 
         automatically created from the menu definition of
         documentation entries (see
-        <filename>chapter-menu.texinfo</filename> file above), once it
+        <filename>Chapters-menu.texinfo</filename> file above), once it
         has been updated from Texinfo source files.
     </para>
     </listitem>
@@ -408,16 +408,17 @@
 Documentation/Models/Texinfo/Default/
 |-- ${LANG}/
 |   |-- Chapters/
-|   |   |-- chapter-menu.texinfo
-|   |   |-- chapter-nodes.texinfo
-|   |   |-- chapter.texinfo
-|   |   `-- section.texinfo
+|   |   |-- section.texinfo
+|   |   `-- section-functions.texinfo
+|   |-- Chapters-menu.texinfo
+|   |-- Chapters-nodes.texinfo
+|   |-- Chapters.texinfo
 |   |-- Licenses/
 |   |   |-- GFDL.texinfo
-|   |   |-- GPL.texinfo
-|   |   |-- chapter-menu.texinfo
-|   |   |-- chapter-nodes.texinfo
-|   |   `-- chapter.texinfo
+|   |   `-- GPL.texinfo
+|   |-- Licenses-menu.texinfo
+|   |-- Licenses-nodes.texinfo
+|   |-- Licenses.texinfo
 |   |-- manual-index.texinfo
 |   |-- manual-init.pl
 |   |-- manual-menu.texinfo
@@ -436,18 +437,24 @@ Documentation/Models/Texinfo/Default/
     <para>
         Inside the directory structure of Texinfo document templates,
         the <filename class="directory">Chapters</filename> directory
-        organizes chapter specific models used to create and maintain
-        both chapter and sections files inside manuals. On the other
-        hand, the <filename class="directory">Licenses</filename>
-        directory organizes the license information linked from all
-        manuals.  Notice the license information is not copied into
-        documentation manuals when they are created, but refered from
-        this location where they are maintained.  This configuration
-        permites that all documentation manuals written in Texinfo
-        format inside &TCAR; do use the same license information and
-        if a change is committed to the license files, such changes be
-        immediatly propagated to documentation manuals the next time
-        their output files be updated.
+        stores section specific models used to create and maintain
+        section files inside manuals. File names beginning with
+        <quote>Chapters</quote>, at the same level of <filename
+        class="directory">Chapters</filename> directory, are used to
+        create chapter specific files inside manuals.
+    </para>
+        
+    <para>
+        The <filename class="directory">Licenses</filename> directory
+        organizes the license information linked from all manuals.
+        Notice the license information is not copied into
+        documentation manuals when they are created, but referred from
+        models location where they are maintained.  This configuration
+        permits all documentation manuals written in Texinfo format
+        inside &TCAR; to use the same license information. This way,
+        if a change is committed to license files, it will be
+        immediately propagated to all documentation manuals the next
+        time their output files be updated.
     </para>
     </sect2>
 
@@ -455,8 +462,8 @@ Documentation/Models/Texinfo/Default/
     <title>Document Expansions</title>
     <para>
         The document expansions are special constructions the <xref
-        linkend="scripts-bash-help" /> functionality uses to generate
-        content dynamically inside Texinfo source files.
+        linkend="scripts-bash-help" /> functionality provides to
+        generate content dynamically inside Texinfo source files.
     </para>
 
     <sect3>
@@ -747,7 +754,7 @@ option_name = "option_value"</screen>
         information set by <code>@documentlanguage</code> is ignored
         in Info and HTML output, but cosidered by Tex program to
         redefine various English words used in the PDF output (e.g.,
-        <quote>Chapter</quote>, <quote>Index</quote>,
+        <quote>Chapters</quote>, <quote>Index</quote>,
         <quote>See</quote>, and so on) based on the current language
         set in.
     </para>
