@@ -34,7 +34,7 @@ function texinfo_createChapter {
         return
     else
         cli_printMessage "`gettext "The following documentation chapter doesn't exist:"`" --as-stdout-line
-        cli_printMessage "${MANUAL_CHAPTER_DIR}" --as-response-line
+        cli_printMessage "${MANUAL_CHAPTER_DIR}.${MANUAL_EXTENSION}" --as-response-line
         cli_printMessage "`gettext "Do you want to create it now?"`" --as-yesornorequest-line
     fi
 
@@ -55,12 +55,12 @@ function texinfo_createChapter {
     # Define list of template files used to build the chapter main
     # definition files.
     local FILE=''
-    local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE_L10N}/Chapters" \
+    local FILES=$(cli_getFilesList "${MANUAL_TEMPLATE_L10N}" \
         --maxdepth='1' \
-        --pattern="^.+/chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}$")
+        --pattern="^.+/Chapters(-menu|-nodes)?\.${MANUAL_EXTENSION}$")
 
-    # Create chapter directory using subversion. This is the place
-    # where all chapter-specific files will be stored in.
+    # Create chapter directory using version control. This is the
+    # place where all chapter-specific files will be stored in.
     if [[ ! -d ${MANUAL_CHAPTER_DIR} ]];then
         cli_printMessage "${MANUAL_CHAPTER_DIR}" --as-creating-line
         cli_runFnEnvironment vcs --quiet --mkdir ${MANUAL_CHAPTER_DIR}
@@ -70,21 +70,25 @@ function texinfo_createChapter {
     for FILE in $FILES;do
 
         # Verify texinfo templates used as based to build the chapter
-        # structure.  Be sure they are inside the working copy of
-        # The CentOS Artwork Repository (-w) and under version control
+        # structure.  Be sure they are inside the working copy of The
+        # CentOS Artwork Repository (-w) and under version control
         # (-n), too.
-        cli_checkFiles ${FILE} --is-versioned
+        cli_checkFiles ${FILE}
+
+        # Redefine the chapter file using the correct name.
+        local MANUAL_CHAPTER_FILE=${MANUAL_CHAPTER_DIR}$(basename ${FILE} \
+            | sed -r 's,Chapters,,')
 
         # Print action name.
-        cli_printMessage "${MANUAL_CHAPTER_DIR}/$(basename ${FILE})" --as-creating-line
+        cli_printMessage "${MANUAL_CHAPTER_FILE}" --as-creating-line
         
         # Copy template files into the chapter directory.
-        cli_runFnEnvironment vcs --quiet --copy ${FILE} ${MANUAL_CHAPTER_DIR}
+        cli_runFnEnvironment vcs --quiet --copy ${FILE} ${MANUAL_CHAPTER_FILE}
 
     done
 
     # Before expanding chapter information, be sure the slash (/)
-    # character be scaped. Otherwise, if the slashes aren't scape,
+    # character be escaped. Otherwise, if the slashes aren't scape,
     # they will be interpreted as sed's separator and might provoke
     # sed to complain.
     MANUAL_CHAPTER_NODE=$(echo "$MANUAL_CHAPTER_NODE" | sed -r 's/\//\\\//g')
@@ -98,7 +102,7 @@ function texinfo_createChapter {
         -e "s/=CHAPTER_TITLE=/${MANUAL_CHAPTER_TITLE}/" \
         -e "s/=CHAPTER_CIND=/${MANUAL_CHAPTER_CIND}/" \
         -e "s/=CHAPTER_NAME=/${MANUAL_CHAPTER_NAME}/" \
-        ${MANUAL_CHAPTER_DIR}/chapter.${MANUAL_EXTENSION}
+        ${MANUAL_CHAPTER_DIR}.${MANUAL_EXTENSION}
 
     # Remove content from `chapter-nodes.texinfo' file to start with a
     # clean node structure. This file is also used to create new
@@ -106,7 +110,7 @@ function texinfo_createChapter {
     # now (when the chapter structure is created), just an empty copy
     # of the file. The node structure of chapter is created
     # automatically based on action value.
-    echo "" > ${MANUAL_CHAPTER_DIR}/chapter-nodes.${MANUAL_EXTENSION}
+    echo "" > ${MANUAL_CHAPTER_DIR}-nodes.${MANUAL_EXTENSION}
 
     # Update chapter information inside the manual's texinfo
     # structure.

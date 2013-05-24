@@ -138,7 +138,7 @@ function help {
         # extra slash be present in the value (e.g., when the part
         # name isn't provided).
         MANUAL_CHAPTER_DIR="$(echo ${MANUAL_PART_DIR}/${MANUAL_CHAPTER_NAME} \
-            | sed -r 's!/{2,}!/!g' )"
+            | sed -r 's!/{2,}!/!g' | sed -r 's!/$!!' )"
 
         # Define section name.
         MANUAL_SECTION_NAME=${MANUAL_SECT[${MANUAL_DOCENTRY_ID}]}

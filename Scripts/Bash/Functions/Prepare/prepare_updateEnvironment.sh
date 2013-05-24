@@ -46,7 +46,7 @@ function prepare_updateEnvironment {
     if [[ $TCAR_WORKDIR =~ "^${HOME}/bin" ]];then
         cli_printMessage "`eval_gettext "The repository working directory cannot be $HOME/bin"`" --as-error-line
     else
-        local TCAR_WORKDIR=$(dirname "$0" | sed "s,${TCAR_BASHSCRIPTS},,")
+        local TCAR_WORKDIR=$(dirname "$0" | sed "s,/${TCAR_BASHSCRIPTS},,")
     fi
 
     # Determine which is the brand information that will be used as

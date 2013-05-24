@@ -32,7 +32,7 @@ function texinfo_editEntry {
         # manuals, all documentation entries are stored directly under
         # its chapter directory. There is no more levels deep so it is
         # possible to perform a direct chapter verification here.
-        if [[ ! -a $(dirname $MANUAL_ENTRY)/chapter.${MANUAL_EXTENSION} ]];then
+        if [[ ! -a $(dirname $MANUAL_ENTRY).${MANUAL_EXTENSION} ]];then
             texinfo_createChapter
         fi
 
@@ -45,7 +45,7 @@ function texinfo_editEntry {
         cli_printMessage "$MANUAL_ENTRY" --as-updating-line
 
         # Update section menu, nodes and cross references based on
-        # changes in order for manual structure to remain cosistent.
+        # changes in order for manual structure to remain consistent.
         texinfo_updateStructureSection "$MANUAL_ENTRY"
 
         # Use default text editor to write changes on documentation entry.

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# subversion_syncRepoChanges.sh -- This function syncnizes both
+# subversion_syncRepoChanges.sh -- This function synchronizes both
 # central repository and working copy directory structures by
 # performing a subversion update command first and a subversion commit
 # command later.

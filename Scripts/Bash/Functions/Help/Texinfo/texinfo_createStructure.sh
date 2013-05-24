@@ -34,7 +34,7 @@ function texinfo_createStructure {
         return
     else
         cli_printMessage "`eval_gettext "The following documentation manual doesn't exist:"`" --as-stdout-line
-        cli_printMessage "${MANUAL_BASEFILE}.texinfo" --as-response-line
+        cli_printMessage "${MANUAL_BASEFILE}.${MANUAL_EXTENSION}" --as-response-line
         cli_printMessage "`gettext "Do you want to create it now?"`" --as-yesornorequest-line
     fi
 

@@ -44,15 +44,22 @@ if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == '' ]] ;then
     if [[ $0 =~ "^${HOME}/bin" ]];then
         echo "To run centos-art correctly, you need to prepare your workstation first."
         exit 1
-    else
-
-        # Initialize absolute path to the working copy.
-        TCAR_WORKDIR=$(dirname $0 | sed "s,/${TCAR_BASHSCRIPTS},,")
-
     fi
 
 fi
 
+# Initialize absolute path to the working copy. Take care that, in
+# some cases, you might execute centos-art.sh script from a path
+# different to that set in TCAR_WORKDIR variable inside your
+# ~/.bash_profile (e.g., you are changing your working copy from one
+# location to another). In these cases, the last path must be used as
+# reference whenever it doesn't point to user's bin directory. This is
+# another reason to provide the centos-art.sh absolute path when you
+# execute the prepare function.
+if [[ ! $TCAR_WORKDIR =~ "^$(dirname $0)" ]] \
+    && [[ ! $(dirname $0) =~ "^${HOME}/bin" ]];then
+    TCAR_WORKDIR=$(dirname $0 | sed "s,/${TCAR_BASHSCRIPTS},,")
+fi
 # Redefine the working copy absolute path considering the (Subversion)
 # previous directory structures used in the repository.
 if [[ -d ${TCAR_WORKDIR}/trunk ]];then
@@ -60,7 +67,7 @@ if [[ -d ${TCAR_WORKDIR}/trunk ]];then
 fi
 
 # Initialize repository brand information.
-if [[ ! $TCAR_BRAND ]] || [[ $TCAR_BRAND == "" ]] ;then
+if [[ ! $TCAR_BRAND ]] || [[ $TCAR_BRAND == "" ]];then
     TCAR_BRAND='centos'
 fi
 

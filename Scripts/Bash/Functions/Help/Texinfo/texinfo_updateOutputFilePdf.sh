@@ -25,6 +25,12 @@
 
 function texinfo_updateOutputFilePdf {
 
+    # Verify texi2pdf package existence. If this package isn't
+    # installed in the system, stop script execution with an error
+    # message. texi2pdf isn't a package by itself but a program of
+    # texinfo-tex package. So check the correct package.
+    cli_checkFiles texinfo-tex --is-installed
+
     # Output action message.
     cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.pdf" --as-creating-line
 

@@ -78,7 +78,7 @@ function texinfo {
 
         # and define documentation entry based on chapter's main
         # definition file.
-        MANUAL_ENTRY="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}/chapter.${MANUAL_EXTENSION}"
+        MANUAL_ENTRY="${MANUAL_BASEDIR_L10N}/${MANUAL_CHAPTER_NAME}.${MANUAL_EXTENSION}"
 
     elif [[ $MANUAL_CHAPTER_NAME != '' ]] && [[ $MANUAL_SECTION_NAME != '' ]];then
 

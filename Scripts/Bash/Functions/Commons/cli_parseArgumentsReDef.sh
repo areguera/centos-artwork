@@ -34,7 +34,7 @@ function cli_parseArgumentsReDef {
     # Fill up arguments global variable with current positional
     # parameter  information. To avoid interpretation problems, use
     # single quotes to enclose each argument (ARG) from command-line
-    # idividually.
+    # individually.
     for ARG in "$@"; do
 
         # Remove any single quote from arguments passed to
@@ -42,16 +42,17 @@ function cli_parseArgumentsReDef {
         # option values so white space can be passed through them.
         ARG=$(echo "$ARG" | tr -d "'")
 
-        # Concatenate arguments and encolose them to let getopt to
+        # Concatenate arguments and enclose them to let getopt to
         # process them when they have spaces inside.
         ARGUMENTS="$ARGUMENTS '$ARG'"
 
     done
 
     # Verify non-option arguments passed to command-line. If there
-    # isn't any, redefine the ARGUMENTS variable to use the current
-    # location the centos-art.sh script was called from.
-    if [[ $ARGUMENTS == '' ]];then
+    # isn't any or dot is provided, redefine the ARGUMENTS variable to
+    # use the current location the centos-art.sh script was called
+    # from.
+    if [[ -z $ARGUMENTS ]];then 
         ARGUMENTS=${PWD}
     fi
 

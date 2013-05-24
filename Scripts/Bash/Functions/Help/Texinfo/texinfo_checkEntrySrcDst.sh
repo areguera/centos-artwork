@@ -46,7 +46,7 @@ function texinfo_checkEntrySrcDst {
     # Verify source location to be sure it is under version control
     # and there isn't pending change to be committed first.
     cli_checkFiles ${MANUAL_ENTRY_SRC} --is-versioned
-    if [[ $(cli_runFnEnvironment vcs --get-status ${MANUAL_ENTRY_SRC}) != '' ]];then
+    if [[ $(cli_runFnEnvironment vcs --status ${MANUAL_ENTRY_SRC}) != '' ]];then
         cli_printMessage "`gettext "The source location has pending changes."`" --as-error-line
     fi
 

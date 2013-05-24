@@ -25,6 +25,11 @@
 
 function texinfo_updateOutputFileXhtml {
 
+    # Verify texi2html package existence. If this package isn't
+    # installed in the system, stop script execution with an error
+    # message.
+    cli_checkFiles texi2html --is-installed
+
     # Output action message.
     cli_printMessage "${MANUAL_OUTPUT_BASEFILE}.xhtml.tar.bz2" --as-creating-line
 

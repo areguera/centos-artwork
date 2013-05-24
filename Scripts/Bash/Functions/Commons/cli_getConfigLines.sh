@@ -50,7 +50,7 @@ function cli_getConfigLines {
     # well-formed paths. Be sure configuration variable name starts
     # just at the beginning of the line.
     if [[ ! $CONFIG_OPTION =~ '^[[:alnum:]_./-]+$' ]];then
-        CONFIG_OPTION='[[:alnum:]_./-]+='
+        CONFIG_OPTION='[[:alnum:]_./-]+[[:space:]]*='
     fi
 
     # Retrieve configuration lines from configuration file.

@@ -73,7 +73,7 @@ function texinfo_makeSeeAlso {
     TMARKS=$(echo "$TMARKS" | sed -r 's/ /\\040/g')
 
     # Define pattern used to build list of child sections. A child
-    # section shares the same path information of its parent with out
+    # section shares the same path information of its parent without
     # file extension. For example, if you have the `identity',
     # `identity-images' and `identity-images-themes' section entries,
     # `identity-images' is a child entry of `identity' likewise
@@ -84,7 +84,7 @@ function texinfo_makeSeeAlso {
     # menu nodes. Reverse the output here to produce the correct value
     # based on menu nodes definition set further.
     CHILD_ENTRIES=$(cli_getFilesList $(dirname ${MANUAL_ENTRY}) \
-        --pattern="^.+/${ENTRY_PATTERN}-[[:alnum:]]+\.${MANUAL_EXTENSION}$" | sort -r | uniq )
+        --pattern="^${ENTRY_PATTERN}-[[:alnum:]]+\.${MANUAL_EXTENSION}$" | sort -r | uniq )
 
     # Loop through translation marker definition lines.
     for TMARK in $TMARKS;do
@@ -105,7 +105,7 @@ function texinfo_makeSeeAlso {
         # Define list properties (type included).
         LIST_PROP=$(echo "$TMARK" | sed -r -e 's/\\040/ /g' -e "s/${TMARK_PATTERN}/\1/")
 
-        # Define `SeeAlso' transltaion marker regular expression
+        # Define `SeeAlso' translation marker regular expression
         # pattern that matches the translation marker definition.
         # Notice that we cannot use TMARK_PATTERN here because it
         # includes a selection list of all possible translation

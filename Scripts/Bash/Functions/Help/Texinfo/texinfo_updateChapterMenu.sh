@@ -71,7 +71,7 @@ function texinfo_updateChapterMenu {
 
     # Organize menu of chapters alphabetically and verify that no
     # duplicated line be included on the list. Notice that organizing
-    # menu this way supresses the idea of putting the last chapter
+    # menu this way suppresses the idea of putting the last chapter
     # created at the end of the list. 
     #MENUCHAPTERS=$(echo "${MENUCHAPTERS}" | sort | uniq)
 

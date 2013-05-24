@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 # vcs_getOptions.sh -- This function interprets option parameters
-# passed to `vcs' functionality and calls actions accordingly. It
-# serves as interface to Subversion and Git sub-functionalities.
+# passed to `vcs' functionality and calls actions accordingly. This
+# function serves as interface to Subversion and Git
+# sub-functionalities.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -30,7 +31,7 @@ function vcs_getOptions {
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,synchronize,update,commit,is-versioned,get-status,mkdir,copy,delete"
+    local ARGSL="help,quiet,synchronize,update,commit,is-versioned,status,mkdir,copy,delete"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -74,7 +75,7 @@ function vcs_getOptions {
                 shift 1
                 ;;
 
-            --get-status )
+            --status )
                 ACTIONNAMS="${ACTIONNAMS} ${PACKAGE}_getRepoStatus"
                 shift 1
                 ;;

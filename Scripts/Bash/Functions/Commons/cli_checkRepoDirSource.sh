@@ -42,6 +42,16 @@ function cli_checkRepoDirSource {
 
     local LOCATION=${1}
 
+    # Remove any dot from arguments passed to centos-art.sh script.
+    # This way it is possible to use a single dot to reflect the
+    # current location from which centos-art.sh was executed. Notice
+    # that using a dot as argument is optional (e.g.: when you pass no
+    # argument to centos-art command-line, the current location is
+    # used as default location). However, it might be useful to use a
+    # dot as argument when you want to include the current location in
+    # a list of arguments to process.
+    LOCATION=$(echo "$LOCATION" | sed -r "s,^\.$,$(pwd),g")
+
     # Remove the working directory absolute path from location to
     # avoid path duplications here.
     LOCATION=$(echo "$LOCATION" | sed "s,${TCAR_WORKDIR}/,,g")

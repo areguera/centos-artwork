@@ -1,8 +1,9 @@
 #!/bin/bash
 #
 # texinfo_updateStructureSection.sh -- This function looks for all
-# section entry files inside manual's base directory and updates menu,
-# nodes and cross references definitions for them all, one at a time.
+# section entries (i.e., files holding section definitions) inside the
+# manual's base directory and updates menu, nodes and cross references
+# definitions for them all, one at a time.
 #
 # Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
 #
@@ -28,19 +29,12 @@ function texinfo_updateStructureSection {
 
     local PATTERN="${1}"
 
-    # Define regular expression pattern used to build the list of
-    # section entries that will be processed.
-    if [[ $PATTERN == '' ]];then
-        PATTERN="${MANUAL_ENTRY}"
-    fi
-
-    # Verify the pattern value considering both the chapter and
-    # section names. This is required when no chapter or section name
-    # is provided to `centos-art.sh' script, as non-option argument in
-    # the command-line (e.g., `centos-art help --update-structure').
+    # Define regular expression pattern used to build list of section
+    # entries when pattern points to manual's file name or it is not
+    # provided at all.
     if [[ $PATTERN =~ "${MANUAL_NAME}\.${MANUAL_EXTENSION}$" ]] \
-        || [[ $PATTERN =~ "chapter\.${MANUAL_EXTENSION}$" ]];then
-        PATTERN="^$(dirname ${MANUAL_ENTRY})/.+\.${MANUAL_EXTENSION}$"
+        || [[ $PATTERN == '' ]]; then
+        PATTERN="/.+\.${MANUAL_EXTENSION}$"
     fi
 
     local MANUAL_ENTRY=''
@@ -56,28 +50,28 @@ function texinfo_updateStructureSection {
 
             # Remove menu and node definitions for sections inside
             # manual, in order to reflect the changes.
-            ACTIONNAM_SECMENU='updateSectionMenu --delete-entry'
+            ACTIONNAM_SECMENU='texinfo_updateSectionMenu --delete-entry'
 
             # Remove cross reference definitions inside manual
             # structure.
-            ACTIONNAM_CROSREF='deleteCrossReferences'
+            ACTIONNAM_CROSREF='texinfo_deleteCrossReferences'
             ;;
 
         --update | * )
 
             # Update menu and node definitions for sections inside
             # manual, in order to reflect the changes.
-            ACTIONNAM_SECMENU='updateSectionMenu --add-entry'
+            ACTIONNAM_SECMENU='texinfo_updateSectionMenu --add-entry'
 
-            # Resotre cross reference definitions inside manual
+            # Restore cross reference definitions inside manual
             # structure.  If a documentation entry has been removed by
             # mistake and that mistake is later fixed by adding the
             # removed documentation entry back into the manual
             # structure, it is necessary to rebuild the missing cross
             # reference information inside the manual structure in
-            # order to reactivate the removed cross refereces, as
+            # order to reactivate the removed cross references, as
             # well.
-            ACTIONNAM_CROSREF='restoreCrossReferences'
+            ACTIONNAM_CROSREF='texinfo_restoreCrossReferences'
             ;;
 
     esac
@@ -95,13 +89,12 @@ function texinfo_updateStructureSection {
     # definitions (i.e., all those section definition file that match
     # the pattern you specified). 
     MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
-        --pattern="${PATTERN}" \
-        | egrep -v "/(${MANUAL_NAME}|chapter)-(menu|nodes|index)")
+        --pattern="${PATTERN}" --mindepth="2" --maxdepth="2")
 
     # Verify list of target entries. Assuming is is empty,  define
     # list of target documentation entries using pattern as reference
     # instead.  When we delete a section entry from the working copy,
-    # using find to retrive its path isn't possible because the
+    # using find to retrieve its path isn't possible because the
     # section definition file is removed before executing find and by
     # consequence no match is found.  This issue provokes no section
     # entry to be removed from menu, nodes and cross references. In
@@ -127,13 +120,20 @@ function texinfo_updateStructureSection {
     # nodes and related cross-references).
     for MANUAL_ENTRY in ${MANUAL_ENTRIES};do
 
+        # Define menu file based on manual entry. We use the menu file
+        # as reference to build the nodes files and update the menu
+        # file itself based on available section files.
+        local MENUFILE=$(dirname ${MANUAL_ENTRY} \
+            | sed -r 's,/$,,')-menu.${MANUAL_EXTENSION}
+
         # Don't print action name here. Instead, make it integral part
         # of documentation entry creation process.
+        #cli_printMessage "${MANUAL_ENTRY}" --as-stdout-line
 
-        texinfo_${ACTIONNAM_SECMENU}
+        ${ACTIONNAM_SECMENU}
         texinfo_updateSectionNodes
         texinfo_makeSeeAlso "${MANUAL_ENTRY}"
-        texinfo_${ACTIONNAM_CROSREF} "${MANUAL_ENTRY}"
+        ${ACTIONNAM_CROSREF} "${MANUAL_ENTRY}"
 
     done
 

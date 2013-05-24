@@ -61,7 +61,7 @@ function texinfo_restoreCrossReferences {
     # Define list of entries to process.
     local MANUAL_ENTRIES=$(cli_getFilesList ${MANUAL_BASEDIR_L10N} \
         --pattern="^.+\.${MANUAL_EXTENSION}$")
-
+   
     # Update node-related cross references. The node-related cross
     # reference definition, long ones specially, could require more
     # than one line to be set. By default, GNU sed does not matches 
@@ -71,7 +71,7 @@ function texinfo_restoreCrossReferences {
     # use the `a' letter to name the label we use, followed by N
     # command to add a newline to the pattern space, the s command to
     # make the pattern replacement using the `g' flag to make it
-    # global and finaly the command `b' to branch label named `a'.
+    # global and finally the command `b' to branch label named `a'.
     sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${MANUAL_ENTRIES}
 
     # Update menu-related cross references. Menu-related cross

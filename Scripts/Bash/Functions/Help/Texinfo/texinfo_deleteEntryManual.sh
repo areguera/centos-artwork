@@ -25,9 +25,6 @@
 
 function texinfo_deleteEntryManual {
 
-    # Print action message.
-    cli_printMessage "$MANUAL_ENTRY" --as-deleting-line
-
     # Verify existence of documentation entry before deleting it. We
     # cannot delete an entry which doesn't exist.
     cli_checkFiles "$MANUAL_ENTRY" -f
@@ -48,8 +45,8 @@ function texinfo_deleteEntryManual {
         cli_runFnEnvironment vcs --delete ${MANUAL_BASEDIR}
 
         # Redefine absolute paths to changed directory.  This is
-        # required in order for `subversion_commitRepoChanges' to be
-        # aware that we are deleting MANUAL_BASEDIR, not
+        # required in order for `(git|subversion)_commitRepoChanges'
+        # to be aware that we are deleting MANUAL_BASEDIR, not
         # MANUAL_BASEDIR_L10N.
         MANUAL_CHANGED_DIRS="${MANUAL_BASEDIR}"
 

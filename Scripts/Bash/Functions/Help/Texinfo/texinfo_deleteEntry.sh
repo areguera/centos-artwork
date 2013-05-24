@@ -25,9 +25,6 @@
 
 function texinfo_deleteEntry {
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
-
     # Remove manual, chapter or section based on documentation entry
     # provided as non-option argument to `centos-art.sh' script.  
     if [[ ${MANUAL_SECT[$MANUAL_DOCENTRY_ID]} != '' ]];then

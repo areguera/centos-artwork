@@ -30,7 +30,7 @@ function texinfo_updateChapterNodes {
 
     # Build chapter nodes using entries from chapter menu as
     # reference. Don't include `Licenses' or `Index' chapters here.
-    # These chapters are part of our manual's main defintion file and
+    # These chapters are part of our manual's main definition file and
     # shouldn't be handled as regular chapters.
     local CHAPTERNODES=$(cat ${MANUAL_BASEFILE}-menu.${MANUAL_EXTENSION} \
         | egrep -v '^@(end )?menu$' | egrep -v '^\* (Licenses|Index)::$'\
@@ -41,7 +41,7 @@ function texinfo_updateChapterNodes {
     local FILENODE=$(\
         for CHAPTERNODE in ${CHAPTERNODES};do
             INCL=$(echo ${CHAPTERNODE} \
-                | sed -r "s!(${CHAPTERNODE})!\1/chapter\.${MANUAL_EXTENSION}!")
+                | sed -r "s!(${CHAPTERNODE})!\1.${MANUAL_EXTENSION}!")
             # Output inclusion line using texinfo format.
             echo "@include $INCL"
         done)

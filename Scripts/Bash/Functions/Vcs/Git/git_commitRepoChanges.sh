@@ -1,11 +1,9 @@
 #!/bin/bash
 #
-# subversion_commitRepoChanges.sh -- This function explores the
-# working copy and commits changes up to central repository after
-# checking changes and adding files which aren't under version
-# control.
+# git_commitRepoChanges.sh -- This function commits all the changes
+# found in files under version control.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function subversion_commitRepoChanges {
+function git_commitRepoChanges {
 
     local -a FILES
     local -a INFO
@@ -36,12 +34,10 @@ function subversion_commitRepoChanges {
     local CHNGTOTAL=0
     local LOCATION=$(cli_checkRepoDirSource "$1")
 
-    # Verify source location absolute path. It should point either to
-    # existent files or directories both under version control inside
-    # the working copy.  Otherwise, if it doesn't point to an existent
-    # file under version control, finish the script execution with an
-    # error message.
-    cli_checkFiles ${LOCATION} -e --is-versioned
+    # Verify source location absolute path. It should point to
+    # existent files or directories. They don't need to be under
+    # version control.
+    cli_checkFiles ${LOCATION} -e
 
     # Print action message.
     cli_printMessage "`gettext "Checking changes in the working copy"`" --as-banner-line
@@ -52,31 +48,21 @@ function subversion_commitRepoChanges {
     # so they are not considered for evaluation here. But take care,
     # sometimes output files are in the same format of source files,
     # so we need to differentiate them using their locations.
+    STATUSOUT="$(${COMMAND} status --porcelain ${LOCATION})"
 
-    # Process location based on its path information.
-    if [[ ${LOCATION} =~ 'Documentation/Manuals/Texinfo)' ]];then
-        STATUSOUT="$(${COMMAND} status ${LOCATION} | egrep -v '(pdf|txt|xhtml|xml|docbook|bz2)$')\n$STATUSOUT"
-    elif [[ $LOCATION =~ 'Documentation/Manuals/Docbook' ]];then
-        STATUSOUT="$(${COMMAND} status ${LOCATION} | egrep -v '(pdf|txt|xhtml)$')\n$STATUSOUT"
-    elif [[ $LOCATION =~ 'Identity' ]];then
-        STATUSOUT="$(${COMMAND} status ${LOCATION} | egrep -v '(pdf|png|jpg|rc|xpm|xbm|tif|ppm|pnm|gz|lss|log)$')\n$STATUSOUT"
-    else
-        STATUSOUT="$(${COMMAND} status ${LOCATION})\n$STATUSOUT"
-    fi
-
-    # Sanitate status output. Expand new lines, remove leading spaces
-    # and empty lines.
-    STATUSOUT=$(echo -e "$STATUSOUT" | sed -r 's!^[[:space:]]*!!' | egrep -v '^[[:space:]]*$')
+    # Process location based on its path information. Both
+    # by-extension and by-location exclusions are no longer needed
+    # here.  They are already set in the `.git/info/exclude' file.
 
     # Define path to files considered recent modifications from
-    # working copy up to central repository.
-    FILES[0]=$(echo "$STATUSOUT" | egrep "^M"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
-    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?" | sed -r "s,^.+${TCAR_WORKDIR}/,,")
-    FILES[2]=$(echo "$STATUSOUT" | egrep "^D"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
-    FILES[3]=$(echo "$STATUSOUT" | egrep "^A"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    # working copy up to local repository.
+    FILES[0]=$(echo "$STATUSOUT" | egrep "^.M"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[1]=$(echo "$STATUSOUT" | egrep "^.\?" | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[2]=$(echo "$STATUSOUT" | egrep "^.D"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[3]=$(echo "$STATUSOUT" | egrep "^.A"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
 
     # Define description of files considered recent modifications from
-    # working copy up to central repository.
+    # working copy up to local repository.
     INFO[0]="`gettext "Modified"`"
     INFO[1]="`gettext "Unversioned"`"
     INFO[2]="`gettext "Deleted"`"
@@ -113,14 +99,22 @@ function subversion_commitRepoChanges {
 
     # When files have changed in the target location, show which these
     # files are and request user to see such changes and then, for
-    # committing them up to the central repository.
+    # committing them up to the local repository.
     if [[ ${FILESNUM[0]} -gt 0 ]];then
 
+        # Print action message.
         cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
+
+        # Show differences.
         ${COMMAND} diff ${LOCATION} | less
 
-        # Commit changes up to central repository.
+        # Print action message.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
+
+        # Add changes for next commit.
+        ${COMMAND} add ${LOCATION}
+
+        # Commit changes up to local repository.
         ${COMMAND} commit ${LOCATION}
 
     fi
@@ -130,20 +124,25 @@ function subversion_commitRepoChanges {
     # the working copy.
     if [[ ${FILESNUM[1]} -gt 0 ]];then
 
+        # Print action message.
         cli_printMessage '-' --as-separator-line
         cli_printMessage "`gettext "Do you want to add unversioned files now?"`" --as-yesornorequest-line
+
+        # Add unversioned files to be considered in the next commit.
         for FILE in ${FILES[1]};do
             ${COMMAND} add "${TCAR_WORKDIR}/$FILE"
         done
 
-        # Commit changes up to central repository.
+        # Print action message.
         cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
+
+        # Commit changes up to local repository.
         ${COMMAND} commit ${LOCATION}
 
     fi
 
     # When there are added files in the target location, show which
-    # these files are and request user to commit them up to central
+    # these files are and request user to commit them up to local
     # repository.
     if [[ ${FILESNUM[3]} -gt 0 ]];then
         cli_printMessage '-' --as-separator-line

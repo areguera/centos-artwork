@@ -25,12 +25,12 @@
 
 function texinfo_deleteEntryChapter {
 
-    # Print action message.
-    cli_printMessage "$MANUAL_CHAPTER_DIR" --as-deleting-line
-
     # Verify existence of documentation entry before deleting it.
     # We cannot delete an entry which doesn't exist.
-    cli_checkFiles "$MANUAL_CHAPTER_DIR" -d
+    cli_checkFiles "${MANUAL_CHAPTER_DIR}" -d
+    cli_checkFiles "${MANUAL_CHAPTER_DIR}-menu.${MANUAL_EXTENSION}" -f
+    cli_checkFiles "${MANUAL_CHAPTER_DIR}-nodes.${MANUAL_EXTENSION}" -f
+    cli_checkFiles "${MANUAL_CHAPTER_DIR}.${MANUAL_EXTENSION}" -f
 
     # Define list of chapters that shouldn't be removed.
     local SPECIAL_CHAPTERS='/(Licenses|Index)$'
@@ -46,12 +46,14 @@ function texinfo_deleteEntryChapter {
     # that point to section entries inside the chapter that will be
     # deleted. Take care don't include the chapter definition files.
     local MANUAL_ENTRIES=$(cli_getFilesList $MANUAL_CHAPTER_DIR \
-        --pattern="^.+\.${MANUAL_EXTENSION}$" \
-        | egrep -v "(${MANUAL_NAME}|chapter)-(menu|nodes|index)")
+        --pattern="^/.+\.${MANUAL_EXTENSION}$")
 
-    # Remove chapter directory using subversion to register the
-    # change.
-    cli_runFnEnvironment vcs --quiet --delete ${MANUAL_CHAPTER_DIR}
+    # Remove chapter directory and related files using version control
+    # to register the change.
+    cli_runFnEnvironment vcs --delete ${MANUAL_CHAPTER_DIR}
+    cli_runFnEnvironment vcs --delete ${MANUAL_CHAPTER_DIR}-menu.${MANUAL_EXTENSION}
+    cli_runFnEnvironment vcs --delete ${MANUAL_CHAPTER_DIR}-nodes.${MANUAL_EXTENSION}
+    cli_runFnEnvironment vcs --delete ${MANUAL_CHAPTER_DIR}.${MANUAL_EXTENSION}
 
     # Update chapter menu and nodes inside manual structure.
     texinfo_updateChapterMenu --delete-entry

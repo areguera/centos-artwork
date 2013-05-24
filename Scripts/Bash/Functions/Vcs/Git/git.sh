@@ -25,10 +25,6 @@
 
 function git {
 
-    local ACTIONNAM=''
-    local ACTIONNAMS=''
-    local ACTIONVAL=''
-
     # Redefine positional parameters using ARGUMENTS. At this point,
     # option arguments have been removed from ARGUMENTS variable and
     # only non-option arguments remain in it. 

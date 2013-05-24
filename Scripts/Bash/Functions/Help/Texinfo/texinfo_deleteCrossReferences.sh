@@ -51,10 +51,10 @@ function texinfo_deleteCrossReferences {
 
     # Define replacement string for missing entries. It is convenient
     # to keep missing entries in documentation for documentation team
-    # to know. Removing the missing cross reference may intorudce
-    # confussion. Imagine that! you are spending lots of hours in an
-    # article and suddenly one of your cross refereces disappears with
-    # no visible reason, with the next working copy update you
+    # to know. Removing the missing cross reference may introduce
+    # confusion. Imagine that you are spending lots of hours in an
+    # article and suddenly one of your cross references disappears
+    # with no visible reason, with the next working copy update you
     # perform. That's frustrating. Instead, when centos-art.sh script
     # finds a missing cross reference it removes the link and remark
     # the issue for you to act on it.
@@ -75,7 +75,7 @@ function texinfo_deleteCrossReferences {
     # use the `a' letter to name the label we use, followed by N
     # command to add a newline to the pattern space, the s command to
     # make the pattern replacement using the `g' flag to make it
-    # global and finaly the command `b' to branch label named `a'.
+    # global and finally the command `b' to branch label named `a'.
     sed -r -i ":a;N;s!${PATTERN[0]}!${REPLACE[0]}!g;ba" ${MANUAL_ENTRIES}
 
     # Update menu-related cross references. Menu-related cross

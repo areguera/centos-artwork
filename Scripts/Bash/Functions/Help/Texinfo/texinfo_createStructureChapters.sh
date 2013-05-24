@@ -36,7 +36,7 @@ function texinfo_createStructureChapters {
     # from its default template directory.
     local FILE=''
     local FILES=$(cli_getFilesList ${MANUAL_TEMPLATE_L10N} \
-        --pattern="^.+/chapter(-menu|-nodes)?\.${MANUAL_EXTENSION}$" --mindepth='2' \
+        --pattern="^.+/Chapters(-menu|-nodes)?\.${MANUAL_EXTENSION}$" --mindepth='1' \
         | egrep -v '/(Chapters|Licenses)/')
 
     # Loop through chapter structures and create them inside the
@@ -68,10 +68,6 @@ function texinfo_createStructureChapters {
     # isn't a need to duplicate this information. In fact it is
     # important not to have it duplicated so we can centralize such
     # information for all documentation manuals.
-    if [[ -d ${MANUAL_CHAPTER_DIR}/Licenses ]];then
-        rm -r ${MANUAL_CHAPTER_DIR}/Licenses
-    else
-        ln -s ${TCAR_WORKDIR}/Documentation/Models/Texinfo/Default/${CLI_LANG_LL}/Licenses ${MANUAL_CHAPTER_DIR}/Licenses
-    fi
+    texinfo_updateLicenseLink
 
 }

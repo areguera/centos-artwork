@@ -26,9 +26,12 @@
 
 function texinfo_updateSectionNodes {
 
+    # Define node file.
+    local NODEFILE=$(echo $MENUFILE | sed -r "s,-menu,-nodes,")
+
     # Build list of chapter nodes using entries from chapter menu as
     # reference.
-    local NODES=$(cat $(dirname ${MANUAL_ENTRY})/chapter-menu.${MANUAL_EXTENSION} \
+    local NODES=$(cat ${MENUFILE} \
         | sed -r 's!^\* !!' | sed -r 's!:{1,2}.*$!!g' \
         | egrep -v '^@(end )?menu$' | sed -r 's! !:!g')
 
@@ -40,28 +43,28 @@ function texinfo_updateSectionNodes {
         local SECT=$(texinfo_getEntryTitle "$NODE")
         local CIND=$(texinfo_getEntryIndex "$NODE")
 
+        # Initialize absolute path to final texinfo template.
+        local TEMPLATE=''
+
         # Create texinfo section file using templates, only if the
         # section file doesn't exist and hasn't been marked for
         # deletion.  Otherwise, when the files have been marked for
         # deletion, they will be created again from texinfo template
         # to working copy and that might create confusion.
         if [[ ! -f ${MANUAL_BASEDIR_L10N}/$INCL ]] \
-            && [[ $(cli_runFnEnvironment vcs --get-status ${MANUAL_BASEDIR_L10N}/$INCL) != 'D' ]];then
+            && [[ $(cli_runFnEnvironment vcs --status ${MANUAL_BASEDIR_L10N}/$INCL) != 'D' ]];then
 
-            # Retrive configuration lines from configuration file. Be
-            # sure no line begining with `#' or space remain in the
+            # Retrieve configuration lines from configuration file. Be
+            # sure no line beginning with `#' or space remain in the
             # line. Otherwise, it would be difficult to loop through
             # configuration lines.
             local CONFLINE=''
-            local CONFLINES=$(cli_getConfigLines "${MANUAL_CONFIG_FILE}" "templates")
+            local CONFLINES=$(cli_getConfigLines "${MANUAL_CONFIG_FILE}" "templates" "*")
 
             # Initialize both left hand side and right hand side
             # configuration values.
             local CONFLHS=''
             local CONFRHS=''
-
-            # Initialize absolute path to final texinfo template.
-            local TEMPLATE=''
 
             # Define what section template to apply using
             # documentation entry absolute path and values provided by
@@ -87,11 +90,11 @@ function texinfo_updateSectionNodes {
             # Verify existence of texinfo template file. If no
             # template is found, stop script execution with an error
             # message. We cannot continue without it.
-            cli_checkFiles -e $TEMPLATE
+            cli_checkFiles -e ${TEMPLATE}
 
             # Create documentation entry using texinfo template as
             # reference.
-            cli_runFnEnvironment vcs --copy ${TEMPLATE} ${MANUAL_BASEDIR_L10N}/$INCL
+            cli_runFnEnvironment vcs --copy --quiet ${TEMPLATE} ${MANUAL_BASEDIR_L10N}/$INCL
 
         fi
 
@@ -111,10 +114,10 @@ function texinfo_updateSectionNodes {
             -e '0,/^@cindex/c@cindex =CIND=' \
             "${MANUAL_BASEDIR_L10N}/$INCL" 
 
-        # Before expading node, section and concept index, be sure
+        # Before expanding node, section and concept index, be sure
         # that all slash characters (`/') be escaped.  Otherwise, they
         # might be interpreted as separators and that isn't
-        # desireable in anyway. 
+        # desirable in anyway. 
         NODE=$(echo "$NODE" | sed -r 's/\//\\\//g')
         SECT=$(echo "$SECT" | sed -r 's/\//\\\//g')
         CIND=$(echo "$CIND" | sed -r 's/\//\\\//g')
@@ -127,16 +130,16 @@ function texinfo_updateSectionNodes {
             -e "s/=CIND=/${CIND}/g" \
             "${MANUAL_BASEDIR_L10N}/$INCL"
 
-        # Verify existence of chapter-nodes template file. If no
-        # chapter-nodes template is found, stop script execution with
+        # Verify existence of Chapter-nodes template file. If no
+        # Chapter-nodes template is found, stop script execution with
         # an error message. We cannot continue without it.
-        cli_checkFiles -e ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION}
+        cli_checkFiles -e ${MANUAL_TEMPLATE_L10N}/Chapters-nodes.${MANUAL_EXTENSION}
 
         # Expand chapter node inclusion definition.
-        cat ${MANUAL_TEMPLATE_L10N}/Chapters/chapter-nodes.${MANUAL_EXTENSION} \
+        cat ${MANUAL_TEMPLATE_L10N}/Chapters-nodes.${MANUAL_EXTENSION} \
             | sed -r "s!=INCL=!${INCL}!g"
 
     # Dump chapter node definition into manual structure.
-    done > $(dirname ${MANUAL_ENTRY})/chapter-nodes.${MANUAL_EXTENSION}
+    done > ${NODEFILE}
 
 }
