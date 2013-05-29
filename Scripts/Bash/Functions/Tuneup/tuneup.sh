@@ -81,7 +81,7 @@ function tuneup {
         # Execute action name.
         ${ACTIONNAM}
 
-        # Syncronize changes between repository and working copy. At
+        # Synchronize changes between repository and working copy. At
         # this point, changes in the repository are merged in the
         # working copy and changes in the working copy committed up to
         # repository.
