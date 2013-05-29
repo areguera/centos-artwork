@@ -10,7 +10,7 @@
 # file so changes made to licenses translations will also be available
 # to documentation manuals in different languages.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

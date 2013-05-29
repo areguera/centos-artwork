@@ -5,7 +5,7 @@
 # accesible by all other functions. The cli function is the first
 # script executed by centos-art.sh, onces executed in a terminal.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

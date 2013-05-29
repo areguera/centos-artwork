@@ -6,7 +6,7 @@
 # the repository. This function returns 0 when the path is localize
 # able and 1 when it is not.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

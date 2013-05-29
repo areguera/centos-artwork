@@ -4,7 +4,7 @@
 # entry provided to `centos-art.sh' script command-line into a node
 # and tries to read it from the manual's `.info' output file.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

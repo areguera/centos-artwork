@@ -2,7 +2,7 @@
 #
 # centos-art.sh -- The CentOS Artwork Repository automation tool.
 #
-# Copyright (C) 2009, 2010, 2011, 2012 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -60,6 +60,7 @@ if [[ ! $TCAR_WORKDIR =~ "^$(dirname $0)" ]] \
     && [[ ! $(dirname $0) =~ "^${HOME}/bin" ]];then
     TCAR_WORKDIR=$(dirname $0 | sed "s,/${TCAR_BASHSCRIPTS},,")
 fi
+
 # Redefine the working copy absolute path considering the (Subversion)
 # previous directory structures used in the repository.
 if [[ -d ${TCAR_WORKDIR}/trunk ]];then
