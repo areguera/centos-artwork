@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2013-03-23 23:26-0400\n"
-"PO-Revision-Date: 2013-03-23 23:26-0400\n"
+"POT-Creation-Date: 2013-05-29 11:21-0400\n"
+"PO-Revision-Date: 2013-05-29 11:21-0400\n"
 "Last-Translator: Documentation SIG\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -17,47 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:43
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:47
 msgid "Checking changes in the working copy"
 msgstr "Comprobando cambios en la copia de trabajo"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:66
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:80
 msgid "Modified"
 msgstr "Modificados"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:67
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:81
 msgid "Unversioned"
 msgstr "Sin versionar"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:68
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:82
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:60
 msgid "Deleted"
 msgstr "Eliminado"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:69
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:83
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:59
 msgid "Added"
 msgstr "Adicionado"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:89
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:103
 msgid "file in the working copy"
 msgid_plural "files in the working copy"
 msgstr[0] "fichero en la copia de trabajo"
 msgstr[1] "ficheros en la copia de trabajo"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:106
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:119
 msgid "Do you want to see changes now?"
 msgstr "¿Desea ver los cambios ahora?"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:112
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:137
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:149
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:123
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:140
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:150
 msgid "Do you want to commit changes now?"
 msgstr "¿Desea enviar los cambios ahora?"
 
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:129
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:134
 msgid "Do you want to add unversioned files now?"
 msgstr "¿Desea adicionar ficheros sin versionar ahora?"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_isVersioned.sh:44
+msgid " contains untracked files."
+msgstr " contiene ficheros sin rastrear."
 
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_isVersioned.sh:41
 msgid "isn't under version control."
