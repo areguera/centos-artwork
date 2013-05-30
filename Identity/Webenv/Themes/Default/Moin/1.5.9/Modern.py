@@ -33,8 +33,8 @@ class Theme(ThemeBase):
             u'<div id="header">',
             self.logo(),
             u'<div id="userlinks">',
-            self.searchform(d),
             self.username(d),
+            self.trail(d),
             u'</div>',
 	        self.navibar(d),
     	    u'<div class="pageline"><hr style="display:none;" /></div>',
@@ -44,7 +44,8 @@ class Theme(ThemeBase):
             # Page
             self.msg(d),
             self.startPage(),
-            self.trail(d),
+            self.searchform(d),
+            self.title(d),
             ]
         return u'\n'.join(html)
 
@@ -66,8 +67,8 @@ class Theme(ThemeBase):
             u'<div id="header">',
             self.logo(),
             u'<div id="userlinks">',
-            self.searchform(d),
             self.username(d),
+            self.trail(d),
             u'</div>',
     	    u'<div class="pageline"><hr style="display:none;"></div>',
             u'</div>',
@@ -126,13 +127,12 @@ class Theme(ThemeBase):
 	        u'<img src="/error/include/img/wiki.png" alt="Wiki" />',
     	    u'<div class="userlinks">',
     	    self.username(d),
-	        self.searchform(d),
+            self.trail(d),
     	    u'</div>',
             u'<h1>Wiki</h1>',
             self.navibar(d),
             self.editbar(d),
             self.interwiki(d),
-            self.trail(d),
             self.title(d),
             u'</div>',
             ]

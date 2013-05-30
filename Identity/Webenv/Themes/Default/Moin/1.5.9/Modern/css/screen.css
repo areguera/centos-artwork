@@ -1113,7 +1113,7 @@ div#header div.tabs span:hover a span {
     }
 
 #username {
-    margin: 5px 0 0 0;
+    margin: 0;
     text-align: right;
     font-size: 0.82em;
     white-space: nowrap;
@@ -1153,10 +1153,11 @@ div#header div.tabs span:hover a span {
 
 #searchform {
     color: #FFFFFF; 
-    margin-right: 0;
+    margin-top: 5px;
     text-align: right;
     padding: 0;
     white-space: nowrap;
+    float: right;
     }
 
 *[dir="rtl"] #searchform {
@@ -1176,7 +1177,7 @@ div#header div.tabs span:hover a span {
     color: #204C8D;
     display: inline;
     width: 160px;
-    -moz-border-radius: 5px;
+    -moz-border-radius: 3px;
     }
 
 #titlesearch, #fullsearch {
@@ -1189,7 +1190,7 @@ div#header div.tabs span:hover a span {
     display: inline;
     font-weight: bold;
     text-decoration: none;
-    -moz-border-radius: 5px;
+    -moz-border-radius: 3px;
     }
 
 #searchform label {
@@ -1204,6 +1205,8 @@ div#header div.tabs span:hover a span {
 #pagetrail {
     font-size: 0.82em;
     margin: 5px 0 0 0;
+    color: #EEE;
+    text-align: right;
     }
 
 *[dir="rtl"] #pagetrail {
@@ -1236,9 +1239,7 @@ div#header div.tabs span:hover a span {
     }
 
 #pagelocation {
-    margin: 0;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin: 5px 0;
     padding: 0;
     }
 
@@ -1284,6 +1285,12 @@ div#header div.tabs span:hover a span {
 #username a:visited { text-decoration: none; color: #EEE; }
 #username a:visited:hover { text-decoration: underline; color: #FFF; }
 
+#pagetrail a:link { text-decoration: none; color: #EEE; }
+#pagetrail a:hover { text-decoration: underline; color: #FFF; }
+#pagetrail a:active { text-decoration: underline; color: #FFF; }
+#pagetrail a:visited { text-decoration: none; color: #EEE; }
+#pagetrail a:visited:hover { text-decoration: underline; color: #FFF; }
+
 #userlinks {
     padding: 10px;
     }
@@ -1298,3 +1305,11 @@ div#header div.tabs span:hover a span {
     line-height: 5px;
     background: #628ECA;
     }
+
+/* Horizontal rules */
+hr.hr1 { height: 2px; }
+hr.hr2 { height: 3px; }
+hr.hr3 { height: 4px; }
+hr.hr4 { height: 5px; }
+hr.hr5 { height: 6px; }
+hr.hr6 { height: 7px; }
