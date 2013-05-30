@@ -56,32 +56,30 @@ function cli_checkRepoDirSource {
     # avoid path duplications here.
     LOCATION=$(echo "$LOCATION" | sed "s,${TCAR_WORKDIR}/,,g")
 
+    # When we use Git as version control system, there isn't a need of
+    # using the `trunk', `branches', `tags' convention we were using
+    # for Subversion.  The working copy begins directly with the
+    # content of our repository (e.g., Documentation, Scripts,
+    # Identity and Locales).
+    #
     # When we use Subversion as version control system, we follow the
     # `trunk', `branches', `tags' convention to organize files inside
     # the repository and need to redefine the source path in order to
-    # build repository absolute path from repository's top level on.
+    # build the repository absolute path from the repository top level
+    # on.  As convention, when you prepare your working copy through
+    # centos-art.sh script, the absolute path to the `trunk/'
+    # directory is used as working copy. This is, path arguments
+    # provided to centos-art.sh script will be interpreted from trunk/
+    # directory level on. For example, the following command should
+    # work correctly in both Subversion and Git repositories:
     #
-    # As we are removing the absolute path prefix (e.g.,
-    # `/home/centos/artwork/') from all centos-art.sh output (in order
-    # to save horizontal output space), we need to be sure that all
-    # strings beginning with `trunk/...', `branches/...', and
-    # `tags/...' use the correct absolute path. That is, you can refer
-    # trunk's entries using both `/home/centos/artwork/trunk/...' or
-    # just `trunk/...', the `/home/centos/artwork/' part is
-    # automatically added here.
-    #
-    # When we use Git as version control system, there isn't a need of
-    # using the `trunk', `branches', `tags' convention we were using
-    # for Subversion.  Instead, we use a Git remote branch named
-    # `develop' to do most of the work. Then, when we have something
-    # functional in `develop' branch, we merge `develop' branch into
-    # the `master' branch (probably doing a rebase on master branch).
+    #   centos-art render Documentation/Docbook/Manuals/Tcar-ug
     #
     # There isn't a need of verifying the paths built here.  This is
     # something we do later, using the cli_checkFiles function. We
     # don't do the file verification here to avoid malformed error
     # messages when we reassign variable values using this function as
-    # reference (e.g., in order to prevent error messages to be also
+    # reference (e.g., in order to prevent error messages from being
     # stored inside variables.).
     LOCATION=${TCAR_WORKDIR}/${LOCATION}
 
