@@ -32,7 +32,7 @@ function vcs {
     # Verify whether version control actions should be performed or
     # not inside the repository directory structure.
     local ENABLED=$(cli_getConfigValue "${CLI_BASEDIR}/${CLI_NAME}.conf" "version_control" "enabled")
-    if [[ ! ${ENABLED} =~ '^(yes|ye|y|0)$' ]];then
+    if [[ ! ${ENABLED} =~ '^(yes|ye|y|1)$' ]];then
         return
     fi
 
