@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# git_commitRepoChanges.sh -- This function commits all the changes
-# found in files under version control.
+# git_commitRepoChanges.sh -- This function standardizes the way local
+# changes are committed up to central repository.
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -32,7 +32,7 @@ function git_commitRepoChanges {
     local STATUSOUT=''
     local PREDICATE=''
     local CHNGTOTAL=0
-    local LOCATION=$(cli_checkRepoDirSource "$1")
+    local LOCATION=$(cli_checkRepoDirSource "${1}")
 
     # Verify source location absolute path. It should point to
     # existent files or directories. They don't need to be under
@@ -56,17 +56,19 @@ function git_commitRepoChanges {
 
     # Define path to files considered recent modifications from
     # working copy up to local repository.
-    FILES[0]=$(echo "$STATUSOUT" | egrep "^.M"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
-    FILES[1]=$(echo "$STATUSOUT" | egrep "^.\?" | sed -r "s,^.+${TCAR_WORKDIR}/,,")
-    FILES[2]=$(echo "$STATUSOUT" | egrep "^.D"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
-    FILES[3]=$(echo "$STATUSOUT" | egrep "^.A"  | sed -r "s,^.+${TCAR_WORKDIR}/,,")
+    FILES[0]=$(echo "$STATUSOUT" | egrep "^[[:space:]]M")
+    FILES[1]=$(echo "$STATUSOUT" | egrep "^\?\?")
+    FILES[2]=$(echo "$STATUSOUT" | egrep "^[[:space:]]D")
+    FILES[3]=$(echo "$STATUSOUT" | egrep "^[[:space:]]A")
+    FILES[4]=$(echo "$STATUSOUT" | egrep "^(A|M|R|C)( |M|D)")
 
     # Define description of files considered recent modifications from
     # working copy up to local repository.
     INFO[0]="`gettext "Modified"`"
-    INFO[1]="`gettext "Unversioned"`"
+    INFO[1]="`gettext "Untracked"`"
     INFO[2]="`gettext "Deleted"`"
     INFO[3]="`gettext "Added"`"
+    INFO[4]="`gettext "Staged"`"
 
     while [[ $COUNT -ne ${#FILES[*]} ]];do
 
@@ -97,57 +99,20 @@ function git_commitRepoChanges {
 
     done
 
-    # When files have changed in the target location, show which these
-    # files are and request user to see such changes and then, for
-    # committing them up to the local repository.
-    if [[ ${FILESNUM[0]} -gt 0 ]];then
+    # Stage files
+    cli_printMessage "`gettext "Do you want to stage files?"`" --as-yesornorequest-line
+    ${COMMAND} add ${LOCATION}
 
-        # Print action message.
-        cli_printMessage "`gettext "Do you want to see changes now?"`" --as-yesornorequest-line
+    # See staged differences.
+    cli_printMessage "`gettext "Do you want to see staged files differences?"`" --as-yesornorequest-line
+    ${COMMAND} diff --staged ${LOCATION} | less
 
-        # Show differences.
-        ${COMMAND} diff ${LOCATION} | less
+    # Commit staged files.
+    cli_printMessage "`gettext "Do you want to commit staged files differences?"`" --as-yesornorequest-line
+    ${COMMAND} commit ${LOCATION}
 
-        # Print action message.
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-
-        # Add changes for next commit.
-        ${COMMAND} add ${LOCATION}
-
-        # Commit changes up to local repository.
-        ${COMMAND} commit ${LOCATION}
-
-    fi
-
-    # When there are unversioned files in the target location, show
-    # which these files are and request user to add such files into
-    # the working copy.
-    if [[ ${FILESNUM[1]} -gt 0 ]];then
-
-        # Print action message.
-        cli_printMessage '-' --as-separator-line
-        cli_printMessage "`gettext "Do you want to add unversioned files now?"`" --as-yesornorequest-line
-
-        # Add unversioned files to be considered in the next commit.
-        for FILE in ${FILES[1]};do
-            ${COMMAND} add "${TCAR_WORKDIR}/$FILE"
-        done
-
-        # Print action message.
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-
-        # Commit changes up to local repository.
-        ${COMMAND} commit ${LOCATION}
-
-    fi
-
-    # When there are added files in the target location, show which
-    # these files are and request user to commit them up to local
-    # repository.
-    if [[ ${FILESNUM[3]} -gt 0 ]];then
-        cli_printMessage '-' --as-separator-line
-        cli_printMessage "`gettext "Do you want to commit changes now?"`" --as-yesornorequest-line
-        ${COMMAND} commit ${LOCATION}
-    fi
+    # Push committed files.
+    cli_printMessage "`gettext "Do you want to push committed files?"`" --as-yesornorequest-line
+    ${COMMAND} push 
 
 }

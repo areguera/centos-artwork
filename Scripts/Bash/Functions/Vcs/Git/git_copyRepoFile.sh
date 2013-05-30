@@ -32,7 +32,7 @@ function git_copyRepoFile {
     # Verify source location absolute path. It should point to
     # existent files or directories. They don't need to be under
     # version control.
-    cli_checkFiles ${LOCATION} -e
+    cli_checkFiles ${SOURCE} -e
 
     # Print action reference.
     if [[ -f ${SOURCE} ]];then

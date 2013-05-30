@@ -37,6 +37,13 @@ function git {
     # to fail when indeed is should not. Thus, go to action names
     # processing directly.
 
+    # All git actions will be performed against the working copy.
+    # Otherwise, errors like `fatal: Not a git repository (or any of
+    # the parent directories): .git' or `Unable to determine absolute
+    # path of git directory' might occur. So, move from whenever you
+    # be right now up to the git working copy.
+    pushd ${TCAR_WORKDIR} > /dev/null
+
     # Execute action names. This is required in order to realize
     # actions like copy and rename which need two values as argument.
     # Otherwise, it wouldn't be possible to execute them because
@@ -45,5 +52,8 @@ function git {
     for ACTIONNAM in $ACTIONNAMS;do
         $ACTIONNAM "$@"
     done
+
+    # Return to the place you were initially. 
+    popd > /dev/null
 
 }

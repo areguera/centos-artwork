@@ -39,7 +39,7 @@ function git_deleteRepoFile {
 
     # Remove target based on whether it is under version control or
     # not.
-    if [[ $(cli_runFnEnvironment vcs --status ${TARGET}) == '?' ]];then
+    if [[ $(cli_runFnEnvironment vcs --status ${TARGET}) =~ '^\?\?$' ]];then
         # Target isn't under version control.
         if [[ -d ${TARGET} ]];then
             rm -r ${TARGET}
