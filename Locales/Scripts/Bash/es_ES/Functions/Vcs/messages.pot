@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art-0.4\n"
 "Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
-"POT-Creation-Date: 2013-05-29 11:21-0400\n"
-"PO-Revision-Date: 2013-05-29 11:21-0400\n"
+"POT-Creation-Date: 2013-05-29 23:30-0400\n"
+"PO-Revision-Date: 2013-05-29 23:30-0400\n"
 "Last-Translator: Documentation SIG\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -22,64 +22,79 @@ msgstr ""
 msgid "Checking changes in the working copy"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:66
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:67
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:80
 msgid "Modified"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:67
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:81
-msgid "Unversioned"
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:68
+msgid "Untracked"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:68
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:69
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:82
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:60
 msgid "Deleted"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:69
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:70
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:83
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:59
 msgid "Added"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:89
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:71
+msgid "Staged"
+msgstr ""
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:91
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:103
 msgid "file in the working copy"
 msgid_plural "files in the working copy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:106
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:119
-msgid "Do you want to see changes now?"
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:103
+msgid "Do you want to stage files?"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:112
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:137
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:149
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:123
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:140
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:150
-msgid "Do you want to commit changes now?"
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:107
+msgid "Do you want to see staged files differences?"
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:129
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:134
-msgid "Do you want to add unversioned files now?"
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:111
+msgid "Do you want to commit staged files differences?"
 msgstr ""
 
 #: Scripts/Bash/Functions/Vcs/Git/git_isVersioned.sh:44
 msgid " contains untracked files."
 msgstr ""
 
-#: Scripts/Bash/Functions/Vcs/Subversion/subversion_isVersioned.sh:41
-msgid "isn't under version control."
-msgstr ""
-
+#: Scripts/Bash/Functions/Vcs/Git/git_updateRepoChanges.sh:29
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:46
 msgid "Bringing changes from the repository into the working copy"
+msgstr ""
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:81
+msgid "Unversioned"
+msgstr ""
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:119
+msgid "Do you want to see changes now?"
+msgstr ""
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:123
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:140
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:150
+msgid "Do you want to commit changes now?"
+msgstr ""
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:134
+msgid "Do you want to add unversioned files now?"
+msgstr ""
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_isVersioned.sh:41
+msgid "isn't under version control."
 msgstr ""
 
 #: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:61
@@ -100,6 +115,6 @@ msgid_plural "files from the repository"
 msgstr[0] ""
 msgstr[1] ""
 
-#: Scripts/Bash/Functions/Vcs/vcs.sh:59
+#: Scripts/Bash/Functions/Vcs/vcs.sh:70
 msgid "isn't supported as version control system."
 msgstr ""
