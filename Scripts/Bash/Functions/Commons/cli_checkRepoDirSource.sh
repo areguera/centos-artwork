@@ -73,7 +73,7 @@ function cli_checkRepoDirSource {
     # directory level on. For example, the following command should
     # work correctly in both Subversion and Git repositories:
     #
-    #   centos-art render Documentation/Docbook/Manuals/Tcar-ug
+    #   centos-art render Documentation/Manuals/Docbook/Tcar-ug
     #
     # There isn't a need of verifying the paths built here.  This is
     # something we do later, using the cli_checkFiles function. We
