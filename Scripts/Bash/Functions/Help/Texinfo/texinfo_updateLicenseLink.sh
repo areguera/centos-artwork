@@ -40,9 +40,16 @@ function texinfo_updateLicenseLink {
         # Remove path from license templates.
         FILE=$(basename ${FILE})
 
-        # Remove license files from manual's specific models.
-        if [[ -e ${MANUAL_BASEDIR_L10N}/${FILE} ]];then
-            rm -r ${MANUAL_BASEDIR_L10N}/${FILE}
+        # Remove license files from manual's specific models. All
+        # these files are symbolic links. If they aren't, stop the
+        # script execution with an error message. In this case you
+        # need to fix your directory structure first (e.g., by
+        # fetching a more up-to-date version of it from central
+        # repository).
+        if [[ -h ${MANUAL_BASEDIR_L10N}/${FILE} ]];then
+            rm ${MANUAL_BASEDIR_L10N}/${FILE}
+        else
+            cli_printMessage "${MANUAL_BASEDIR_L10N} `gettext "has an old directory structure."`" --as-error-line
         fi
 
         # Create link from manual's default models to manual's

@@ -37,9 +37,11 @@ function texinfo_updateOutputFiles {
         mkdir -p $(dirname $MANUAL_OUTPUT_BASEFILE)
     fi
 
-    # Add the working copy root directory to directory stack to make
-    # path construction correctly. Otherwise, makeinfo may produce
-    # paths incorrectly.
+    # Move script execution to manuals base directory in order for
+    # makeinfo to produce content correctly. This is the location
+    # where the documentation's main definition file is stored in.
+    # Related content outside this location is accessible through
+    # symbolic links.
     pushd ${MANUAL_BASEDIR_L10N} > /dev/null
 
     # Verify existence of link to Licenses information.
