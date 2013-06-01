@@ -88,6 +88,7 @@ h1 {
     border: none;
     background-color: #204C8D;
     background-image: url("../img/moin-h1-background.png");
+    -moz-border-radius: 3px;
     }
 
 h2 {
@@ -100,6 +101,7 @@ h2 {
     background-image: url("../img/moin-h2-background.png");
     border: none;
     color: #072B61;
+    -moz-border-radius: 3px;
     }
 
 h3 {
@@ -790,6 +792,7 @@ div.table-of-contents {
 	border: 1px solid #D2E0F6;
     background-image: url("../img/moin-msg-bg-blue.png");
 	background-color: #ECF4FF;
+    -moz-border-radius: 3px;
 	}
 
 div.table-of-contents > ol {
@@ -804,6 +807,7 @@ div.table-of-contents p.table-of-contents-heading {
     background-image: url("../img/moin-h2-background.png");
     color: #072B61;
     font-weight: bold;
+    border-bottom: 1px solid #D2E0F6;
     }
 
 div.searchresults {
