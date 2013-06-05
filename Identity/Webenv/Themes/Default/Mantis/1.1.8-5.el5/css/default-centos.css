@@ -1,0 +1,275 @@
+/*
+ * default-centos.css -- The mantisBT (v1.1.8) default visual style
+ * customized by The CentOS Project.
+ *
+ * Copyright (C) 2013 The CentOS Project
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ * 
+ */
+
+/* Reset browsers default margins and paddings */
+*   { 
+    margin: 0; 
+    padding: 0; 
+    }
+
+/* Define html */
+
+html {
+    background-image:url(../images/html-background.png);
+    background-color: #FFF;
+    font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+    font-size: 0.85em;
+    line-height: 1.25em;
+    /* margin: 0;           /* <- full screen                         */
+    margin: 0 30px 0 30px;  /* <- with 30px of left and right margin  */
+    }
+
+body {
+    background-color: #ffffff; 
+	color: #000000; 
+	padding: 0 10px;
+	}
+
+/* Links */
+
+a:link  			{ text-decoration: none; color: #1865A6; cursor: pointer; }
+a:link:hover 		{ text-decoration: underline; color: green; } 
+a:link:active 		{ text-decoration: underline; color: green; } 
+a:visited 			{ text-decoration: none; color: #1865A6; }
+a:visited:hover 	{ text-decoration: underline; color: green; }
+
+#header {
+   background-color: #1865A6;
+   background-image: url("../images/header-background.png");
+   margin-bottom: 5px;
+   }
+
+#logo {
+    float:left;
+    /* For text only logo */
+    font-size: 1.4em;
+    font-weight: bold;
+    }
+
+#logo img {
+    margin-left: 10px;
+    vertical-align: middle;
+	border: 0;
+    }
+
+#logo a {
+    color: white;
+    text-decoration: none;
+	border: 0;
+    }
+
+.pageline {
+    clear: both;
+    width: 100%;
+    /* sync these values, line-height is needed for IE */
+    height: 5px;
+    line-height: 5px;
+	border: none;
+    }
+
+.pageline.blue {
+    background: #5FA1D8;
+    }
+
+/* Information about Login  */
+
+form[name=login_form] table,
+form[name=signup_form] table,
+form[name=lost_password_form] table {
+	margin-top: 2em;
+	}
+
+/* Form Elements */
+
+input[type=text],
+input[type=password],
+textarea {
+    padding: 2px;
+    }
+
+input, 
+select { 
+    vertical-align: middle; 
+    font-size: x-small; 
+    }
+
+form { 
+	display: inline; 
+	margin: 0;
+	}
+
+/* Paragraphs */
+
+p { 
+    margin: 1em 0 1.5em 0;
+    line-height: 1.5em;
+    }
+
+/* Tables */
+
+table				{ clear: both; }
+table.border_black	{ border: 1px solid #000; }
+table.hide			{ font-size: x-small; width: 100%; }
+table.hide table.width100	{ font-size: 1.25em; width: 100%; }
+table.width100		{ width: 100%; border: solid 1px #CCC; margin: 5px 0; }
+table.width75		{ width: 75%;  border: solid 1px #CCC; margin: 5px 0; }
+table.width60		{ width: 60%;  border: solid 1px #CCC; margin: 5px 0; }
+table.width50		{ width: 50%;  border: solid 1px #CCC; margin: 5px 0; }
+
+table div           { margin: 5px 0 5px 0; }
+
+td 				    { padding: 0.5em; text-align: left; };
+td img.icon_sort	{ float:right; padding-right: 3px; padding-left: 3px; }
+
+td.center			{ text-align: center; }
+td.left				{ text-align: left; }
+td.right			{ text-align: right; }
+td.category			{ background-color: #EAE1EE; color: #000000; font-weight: bold; vertical-align : top; }
+
+td.col-1			{ background-color: #EAF3F9; color: #000000; }
+td.col-2			{ background-color: #EAF3F9; color: #000000; }
+td.form-title		{ font-weight: bold; text-align: left; background-color: #FFFFFF; background-image: url(../images/h2-background.png); }
+td.nopad			{ padding: 0px; }
+td.spacer			{ display: none; }
+td.small-caption	{ }
+td.print			{ text-align: left; padding: 2px; }
+td.print-category	{ color: #000000; font-weight: bold; text-align: right; padding: 2px; }
+td.print-bottom		{ border-bottom: 1px solid #000000; }
+td.print-spacer		{ background-color: #ffffff; color: #000000; font-size: 1pt; line-height: 0.1; padding: 0px;}
+
+tr				    {}
+tr.title			{ background-color: #FFF; background-image: url("../images/h2-background.png");}
+tr.row-1			{ background-color: #EAF3F9; color: #000000; }
+tr.row-2			{ background-color: #D8E9F4; color: #000000; }
+tr.row-category		{ background-color: #EAE1EE; color: #000000; font-weight: bold;}
+tr.row-category td  { text-align:center; }
+tr.row-category2	{ background-color: #EAE1EE; color: #000000; }
+tr.row-category-history { background-color: #EAE1EE; color: #000000; font-weight: bold;}
+tr.row-category-history td  { text-align: left; }
+tr.vcenter			{ vertical-align: middle; }
+tr.print			{ vertical-align: top; }
+tr.print-category	{ color: #000000; font-weight: bold; }
+tr.spacer			{ display: none; }
+
+#buglist tr			{ text-align: center; }
+#buglist tr:last-child { font-size: x-small; }
+
+tr.bugnote			{ vertical-align: top; }
+td.bugnote-public	{ background-color: #EAE1EE; color: #000000; font-weight: bold; width: 25%; line-height: 1.4; }
+td.bugnote-private	{ background-color: #EAF3F9; color: #000000; font-weight: bold; width: 25%; line-height: 1.4; }
+td.bugnote-note-public	{ background-color: #EAF3F9; color: #000000; width: 75%; }
+td.bugnote-note-private	{ background-color: #EAF3F9; color: #000000; width: 75%; }
+
+td.login-info-left		{ width: 40%; padding: 0px; text-align: left; padding-left: 10px; }
+td.login-info-middle	{ width: 20%; padding: 0px; text-align: center; }
+td.login-info-right		{ width: 40%; padding: 0px; text-align: right; white-space: nowrap; }
+
+td.menu				{ background-color: #EAF3F9; color: #000000; padding: 3px; padding-left: 10px; font-size: small; }
+td.menu a			{ white-space: nowrap; }
+
+td.news-heading-public	{ background-image: url(../images/h2-background.png); color: #000000; text-align: left; border-bottom: 1px solid #ccc; padding: 5px; }
+td.news-heading-private { background-image: url(../images/h2-background.png); color: #000000; text-align: left; border-bottom: 1px solid #ccc; }
+
+td.news-body			{ background-color: #ffffff; color: #000000; padding: 1.3em; line-height: 1.5em; }
+
+/* Quick summary. Element displayed near titles
+ * with the amount of opened and assigned issues. */
+
+/* Miscellaneous */
+
+.center				{ text-align: center; }
+.left				{ text-align: left; }
+.right				{ text-align: right; }
+.small				{ }
+.small-normal 		{ }
+.small-subprojects	{ }
+.bold				{ font-weight: bold; }
+.bold-small			{ font-weight: bold; font-size: small; }
+.italic				{ font-style: italic; }
+.italic-small		{ font-style: italic; font-weight: normal; }
+.underline			{ text-decoration: underline; }
+.underline-small	{ text-decoration: underline; font-size: small; }
+.strike				{ text-decoration: line-through; }
+.strike-small		{ text-decoration: line-through; font-size: small; }
+.quick-summary-left	{ float: left; margin: 0 10px 20px; font-size: x-small; }
+.quick-summary-right { float: right; margin: 0 10px 20px; font-size: x-small; }
+.border-center		{ text-align: center; }
+
+span.print			{ }
+span.required 	    { color: #bb0000; }
+span.small 			{ font-weight: normal; }
+span.pagetitle		{ font-weight: bold; text-align: center; }
+span.bracket-link	{ white-space: nowrap; font-size: small; }
+
+/* Set nested tables bottom margin. */
+table.width100 table.width100 { margin-bottom: 10px; }
+
+/* Hide br and hr tags. They consume too much space. */
+br, hr              { display: none;}
+/* Show br and hr tags only when it is absolutely needed. */
+div.center > br,
+hr.pageline         { display: block;}
+
+/* Footer */
+
+body > table:last-child { 
+    /* ------------------------------------------------------*/
+    /* Here you can hide the table that mantis uses for its  */
+    /* copyright and supported link information.             */
+    /* ------------------------------------------------------*/
+	/* display: none; */
+	font-size: x-small;
+	line-height: 1.5em;
+	color: #333;
+	}
+
+body > table:last-child div {
+    padding: 0;
+    margin: 0;
+    }
+
+body > table:last-child td {
+    padding: 10px 0 0 0;
+    }
+
+#footer {
+    clear: both;
+    background: #204C8D url("../images/header-background.png") 0 0 repeat;
+    margin-top: 1em;
+    }
+
+#credits {
+    text-align: left;
+    font-size: x-small;
+    color: #EEE;
+    padding: 1em;
+    }
+
+#credits a { 
+    color: #EEE; 
+    }
+
+#credits p { padding: 0; margin: 0; }
+
+#credits a:hover {
+    text-decoration: underline;
+    }

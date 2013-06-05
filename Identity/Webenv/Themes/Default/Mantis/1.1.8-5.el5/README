@@ -1,0 +1,87 @@
+This file describes The CentOS Project customized version of mantisBT
+(v1.1.8-5.el5) default visual style.
+
+Theme Files
+-----------
+.
+|-- centos-bottom.html        --> The page footer.
+|-- centos-header.html        --> The page header.
+|-- config_inc.php            --> Example of mantis configuration file.
+|-- css
+|   `-- default-centos.css    --> The CentOS Project visual style customization.
+`-- images
+    |-- centos-bugs-logo.png  --> The logo used by The CentOS Bugs website.
+    |-- centos-favicon.png    --> The favicon used by The CentOS Bugs website.
+    |-- h2-background.png     --> The background image used on titles
+    `-- header-background.png --> the background image used on header and footer.
+
+
+How To Install 
+--------------
+
+1. yum install mantis
+
+   NOTE: This require you to have epel repository installed in your
+   CentOS distribution. To know how to install the epel repository
+   read http://wiki.centos.org/AdditionalResources/Repositories
+
+2. Configure mantisBT application and be sure it works as you expect.
+
+2. svn export https://projects.centos.org/svn/artwork/trunk/Identity/Webenv/Themes/Default/Mantis/1.1.8-5.el5 ~/Desktop/
+
+3. Copy theme files into your system's mantisBT tree, as root user.
+The source-target relation between files is shown in the following
+table:
+
+---------------------------------------------------+-----------------------------------------------
+SOURCE                                             | TARGET
+---------------------------------------------------+-----------------------------------------------
+~/Desktop/1.1.8-5.el5/centos-bottom.html           | /usr/share/mantis/centos-bottom.html
+~/Desktop/1.1.8-5.el5/centos-header.html           | /usr/share/mantis/centos-header.html
+~/Desktop/1.1.8-5.el5/css/default-centos.css       | /usr/share/mantis/css/default-centos.css
+~/Desktop/1.1.8-5.el5/images/centos-bugs-logo.png  | /usr/share/mantis/images/centos-bugs-logo.png
+~/Desktop/1.1.8-5.el5/images/centos-favicon.png    | /usr/share/mantis/images/centos-favicon.png
+~/Desktop/1.1.8-5.el5/images/h2-background.png     | /usr/share/mantis/images/h2-background.png
+~/Desktop/1.1.8-5.el5/images/header-background.png | /usr/share/mantis/images/header-background.png
+---------------------------------------------------+-----------------------------------------------
+
+4. Check file permissions. Be sure these files are readable by apache
+web server. For example, if both user and group for these files are
+set to `root', then the `-rw-r--r--' rights are ok for all these
+files.
+
+5. Update your configuration file. Be sure it has the following
+information:
+
+	# --- html variables --------------
+	$g_window_title 	    = "The CentOS Bugs";
+	$g_top_include_page 	= "centos-header.html";
+	$g_bottom_include_page 	= "centos-bottom.html";
+	$g_css_include_file 	= "css/default-centos.css";
+	$g_favicon_image 	    = "images/centos-favicon.png";
+
+6. Point your browser to mantisBT install and reload it to see the
+changes.
+
+Package Updates
+---------------
+An important characteristic of this theme is that all modifications
+take place in the configuration file and CSS files. No PHP files
+inside the mantis package needs to be modified (except the
+configuration file, of course.). This way you can update the mantis
+package installed in your system without loosing the visual style
+you already set for it.
+
+Feedback
+--------
+Your comments and suggestions are very welcome. In fact, we need them
+to make this work better. Thus, feel free to send e-mails to
+centos-devel@centos.org mailing list or fill a ticket at
+https://projects.centos.org/trac/artwork/newticket page.
+
+Author
+------
+The following people have worked in The CentOS Project customization
+of mantisBT default theme:
+
+    * Alain Reguera Delgado <alain.reguera@gmail.com>, 2013
