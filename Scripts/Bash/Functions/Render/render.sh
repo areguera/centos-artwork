@@ -104,11 +104,13 @@ function render {
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
         # Verify non-option arguments passed to centos-art.sh
-        # command-line. It should point to an existent directory under
-        # version control inside the working copy.  Otherwise, if it
-        # doesn't point to a directory under version control, finish
-        # the script execution with an error message.
-        cli_checkFiles ${ACTIONVAL} -d --is-versioned
+        # command-line. It should point to a path inside the
+        # repository which is not under version control (because is
+        # used to stored rendered content). In case the directory
+        # doesn't exist, create it and continue.
+        if [[ ! -d ${ACTIONVAL} ]];then
+            mkdir -p ${ACTIONVAL}
+        fi
 
         # Define render-able directories and the way they are
         # produced.  To describe the way render-able directories are
@@ -119,7 +121,7 @@ function render {
             ACTIONNAM="render_doThemeActions"
         elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Images" ]];then
             ACTIONNAM="render_doBaseActions"
-        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Documentation/Manuals/Docbook/[[:alnum:]-]+" ]];then
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Documentation/Manuals/(Docbook|Svg)/[[:alnum:]-]+" ]];then
             ACTIONNAM="render_doBaseActions"
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
