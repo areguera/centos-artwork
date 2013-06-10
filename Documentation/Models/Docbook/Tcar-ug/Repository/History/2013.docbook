@@ -5,35 +5,20 @@
     <para>
         &TCAR; development was eventually stopped at November, 2012,
         when I moved myself from Cienfuegos to Havana city for working
-        on the insides restoration of <quote><ulink
-        url="http://www.jesuitasencuba.org/">Sagrado Corazón de Jesús
-        y San Ignacio de Loyola</ulink></quote>'s church (also known
-        as Reina's church). The first months at Havana were very
-        difficult, specially at the moment of finding a stable place
-        to set my personal desktop (I was moved from one apartment to
-        another, frequently). It wasn't until January, 2013, when I
-        started to live in the church building itself when more stable
-        possibilities began to appear.
+        The first months were very difficult, specially at the moment
+        of finding a stable place to set my personal desktop (I was
+        moving myself from one apartment to another, frequently).
     </para>
 
     <para>
-        On April 9th, I begin a training on how to manage small
-        enterprises. This training take place in Reina's church,
-        specifically in a centre called <quote>La Anunciata</quote>.
-        This training demanded me attention, so the few hours I was
-        dedicating to &TCAR; at nights were reduced even more.
-    </para>
-
-    <para>
-        On May 14th, the work at Reina's church ends for me and I have
-        to return to Cienfuegos city. It was not possible to conclude
-        the training on business management. I tried to take advantage
-        of the situation dedicating more work and study hours to
-        &TCAR; and the related automation scripts once again. At this
-        point I consider a Git+Gitolite+Gitweb infrastructure for
+        On May 14th, the work in Havana ends for me and I have to
+        return to Cienfuegos city. I tried to take advantage of the
+        situation dedicating more work and study hours to &TCAR; and
+        the related automation scripts once again. At this point I
+        consider a Git+Gitolite+Gitweb+MantisBT infrastructure for
         &TCAR; and start working on it in my workstation. This, in
-        order to implement a new work flow for &TCAR; based on Git
-        version control.
+        order to implement a distributed work flow for &TCAR; based on
+        Git version control system.
     </para>
 
     <simplesect id="repository-history-2013-VersionControl">
@@ -64,7 +49,7 @@
     </simplesect>
 
     <simplesect id="repository-history-2013-ConfigurationFile">
-    <title>Add <filename>centos-art.conf</filename> file</title>
+    <title>Start Using The <filename>centos-art.conf</filename> File</title>
     <para>
         Based on the need of supporting more than one application to
         handle version control tasks, it was added the
@@ -76,6 +61,64 @@
         default for doing version control, or even if the actions
         related to version control will be performed or not). 
     </para>
+    </simplesect>
+
+
+    <simplesect id="repository-history-2013-UpdateRepositoryLayout">
+    <title>Update Repository Directories Structure</title>
+    <para>
+        I face the following situation: I am working on a
+        documentation project named <quote>solinfo-network</quote>.
+        While I was organizing it, I found that the directory
+        structure of &TCAR; fits quite well the needs of
+        <quote>solinfo-network</quote> documentation project. However,
+        I don't want to duplicate automation scripts in two separate
+        projects, but share them between themselves (i.e., changes
+        committed to automation scripts are pushed to one single
+        place, not two.).
+    </para>
+    <para>
+        When we use Subversion repositories, it is possible to
+        checkout specific parts of different repositories into a new
+        repository. This is very useful if we need to create several
+        projects that share the same component and we don't want to
+        duplicate the common component in two or more different
+        projects but <quote>share</quote> it between them. See
+        <xref linkend="repository-history-2012-UpdateLocales" />. 
+    </para>
+
+    <para>
+        When we use Git repository, it is not possible to checkout
+        specific parts of a repository but the complete tree. So, in
+        order to share common components of a repository we need to
+        create one repository for each common component we want to
+        share and then use Git submodules<citation>see progit-book,
+        page 152.</citation>  This requires that brand new
+        repositories be created for each component we want to share.
+    </para>
+
+    <para>
+        In both situations, including Git and Subversion repositories,
+        it is necessary that we define very well the structure of each
+        component we want to share, so it can be
+        <quote>plugged</quote> nicely into other projects. Likewise,
+        other projects must have the same directory structure the
+        pluggable component was design to fit in. If these two
+        conditions can be reached, it would be possible to reuse
+        repositories components and concentrate efforts.  The current
+        directory structure &TCAR; is set in allows components inside
+        Subversion repositories to be reused by related working
+        copies. However, we cannot do the same if it is stored in a
+        Git repository.  In order for Git repositories to be able to
+        share components with other Git repositories, &TCAR; directory
+        structure needs to be reorganized to better delineate each
+        component the repository is made of.
+    </para>
+
+    <para>
+        For more information see <xref linkend="repo-convs" />.
+    </para>
+
     </simplesect>
 
     <!--
