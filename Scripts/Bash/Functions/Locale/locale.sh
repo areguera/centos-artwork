@@ -50,6 +50,13 @@ function locale {
     # exist.).
     local L10N_BASEDIR="${TCAR_WORKDIR}/Locales"
 
+    # Verify current locale information to avoid English messages from
+    # being localized to themselves.  The English language is used as
+    # reference to write translatable strings inside the source files.
+    if [[ ${CLI_LANG_LC} =~ '^en' ]];then
+        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
+    fi
+
     # Interpret arguments and options passed through command-line.
     locale_getOptions
 
@@ -62,10 +69,20 @@ function locale {
     # through its command-line.
     for ACTIONVAL in "$@";do
 
+        # Print action message.
+        cli_printMessage "${ACTIONVAL}" --as-processing-line
+
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
+
+        # Verify directory passed as non-option argument to be sure it
+        # supports localization.
+        locale_isLocalizable "${ACTIONVAL}"
+        if [[ $? -ne 0 ]];then
+            cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
+        fi
 
         # Verify non-option arguments passed to centos-art.sh
         # command-line. It should point to an existent directory under
@@ -73,13 +90,6 @@ function locale {
         # doesn't point to a directory under version control, finish
         # the script execution with an error message.
         cli_checkFiles ${ACTIONVAL} -d --is-versioned
-
-        # Define localization working directory using directory passed
-        # as non-option argument. The localization working directory
-        # is the place where POT and PO files are stored inside the
-        # working copy.
-        L10N_WORKDIR=$(echo "${ACTIONVAL}" \
-            | sed -r -e "s!(Identity|Scripts|Documentation)!Locales/\1!")/${CLI_LANG_LC}
 
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization

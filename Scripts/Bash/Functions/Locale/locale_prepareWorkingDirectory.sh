@@ -43,7 +43,7 @@ function locale_prepareWorkingDirectory {
 
     elif [[ $L10N_WORKDIR == '' ]];then
     
-        cli_printMessage "`gettext "The variable L10N_WORKDIR cannot be empty."`" --as-error-line
+        cli_printMessage "`gettext "The localization directory isn't defined."`" --as-error-line
         
     fi
 

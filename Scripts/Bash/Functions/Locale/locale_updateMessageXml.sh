@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # locale_updateMessageXml.sh -- This function parses XML-based files
-# (e.g., scalable vector graphics), retrieves translatable strings and
-# creates/update gettext portable objects.
+# (e.g., Scalable Vector Graphics and Docbook files), retrieves
+# translatable strings and creates/update gettext portable objects.
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -26,13 +26,6 @@
 
 function locale_updateMessageXml {
 
-    # Print separator line.
-    cli_printMessage '-' --as-separator-line
-
-    # Define filename used to create both portable object templates
-    # (.pot) and portable objects (.po) files.
-    local MESSAGES="${L10N_WORKDIR}/messages"
-
     # Define what kind of XML file we are generating translation
     # messages for. This is relevant because scalable vector graphics
     # (SVG) files are not using entity expansion while DocBook files
@@ -47,14 +40,15 @@ function locale_updateMessageXml {
         # independent documents (e.g., through XInclude), then lets
         # keep translation messages as synchronized as possible.
 
-    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Models/.+$" ]];then
+    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Models/.+$" ]] \
+        || [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Documentation/Models/Svg/.+$" ]];then
 
         locale_updateMessageXmlSvg
 
-    fi
+    else
 
-    # Verify, initialize or merge portable objects from portable
-    # object templates.
-    locale_updateMessagePObjects "${MESSAGES}"
+        cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
+
+    fi
 
 }

@@ -40,19 +40,16 @@ function locale_updateMessageShell {
 
     for FNDIR in $FNDIRS;do
 
-        # Define function name.
-        local FNNAME=$(basename $FNDIR)
-
         # Define absolute path to directory used as reference to store
         # portable objects.
-        local L10N_DIR=${L10N_WORKDIR}/Functions/${FNNAME}
+        local L10N_WORKDIR=$(cli_getLocalizationDir "${FNDIR}")
 
         # Prepare working directory to receive translation files.
-        locale_prepareWorkingDirectory ${L10N_DIR}
+        locale_prepareWorkingDirectory ${L10N_WORKDIR}
 
         # Define absolute path to file used as reference to create
         # portable objects.
-        local MESSAGES="${L10N_DIR}/messages"
+        local MESSAGES="${L10N_WORKDIR}/messages"
 
         # Print action message.
         cli_printMessage "${MESSAGES}.pot" --as-updating-line

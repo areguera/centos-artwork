@@ -42,7 +42,7 @@ function locale_updateMessageBinary {
     # FLAG_FILTER mustn't be applied here). Thus, when we are
     # selective about the functionalities we want to use, it is
     # possible to have translation messages only for those
-    # functionalities we did donwload into the working copy and no
+    # functionalities we did download into the working copy and no
     # others. There is no need to have translation messages for
     # functionalities we didn't download.
     local PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type='f' --pattern="^.+/messages.po$")

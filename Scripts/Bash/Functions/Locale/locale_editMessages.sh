@@ -25,49 +25,33 @@
 
 function locale_editMessages {
 
-    # Verify current locale information to avoid English messages from
-    # being localized to themselves.  The English language is used as
-    # reference to write translatable strings inside the source files.
-    if [[ ${CLI_LANG_LC} =~ '^en' ]];then
-        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
-    fi
-
-    # Verify directory passed as non-option argument to be sure it
-    # supports localization.
-    locale_isLocalizable "${ACTIONVAL}"
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-    fi
-
     local PO_FILE=''
     local PO_FILES=''
 
-    # Prepare working directory to receive translation files.
-    locale_prepareWorkingDirectory ${L10N_WORKDIR}
+    # Define location where translation files will be stored in
+    # without language information in it. The language information is
+    # put later, when we build the list of files.
+    local L10N_WORKDIR=$(cli_getLocalizationDir "${ACTIONVAL}" "--no-lang")
 
-    # Synchronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_synchronizeRepoChanges "${L10N_WORKDIR}"
+    # Prepare working directory to receive translation files. Don't do
+    # this here. It is already done as part the update actions, but we
+    # need it here for those cases when no update action is run and
+    # one execute the edit option.
+    locale_prepareWorkingDirectory ${L10N_WORKDIR}
 
     # Define list of PO files to process based on paths provided as
     # non-option arguments through centos-art.sh script command-line.
-    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
-
-        # Define list of PO files for XML-based files.
-        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" --pattern="^.+/messages\.po$")
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/(Documentation/Models/(Docbook|Svg)|Identity/Models)/.*$" ]];then
 
         # Do not create MO files for XML-based files.
         FLAG_DONT_CREATE_MO='true'
 
-    elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Scripts/Bash$" ]];then
-
-        # Define list of PO files for script files.
-        PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --pattern="^.*${FLAG_FILTER}/messages\.po$")
-
-    else
-        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
     fi
+     
+    # Define list of PO files we want to work with. Don't forget to
+    # include the language information here.
+    PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type="f" \
+        --pattern=".+/${FLAG_FILTER}/${CLI_LANG_LC}/messages\.po$")
 
     # Verify list of PO files.
     if [[ $PO_FILES = "" ]];then
@@ -75,6 +59,11 @@ function locale_editMessages {
     else
         cli_printMessage '-' --as-separator-line
     fi
+
+    # Synchronize changes between repository and working copy. At this
+    # point, changes in the repository are merged in the working copy
+    # and changes in the working copy committed up to repository.
+    cli_synchronizeRepoChanges "${PO_FILES}"
 
     # Loop through list of PO files to process in order to edit them
     # one by one using user's default text editor.
@@ -96,9 +85,9 @@ function locale_editMessages {
     # scripts.
     locale_updateMessageBinary
 
-    # Syncronize changes between repository and working copy. At this
+    # Synchronize changes between repository and working copy. At this
     # point, changes in the repository are merged in the working copy
     # and changes in the working copy committed up to repository.
-    cli_synchronizeRepoChanges "${L10N_WORKDIR}"
+    cli_synchronizeRepoChanges "${PO_FILES}"
 
 }

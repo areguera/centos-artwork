@@ -29,33 +29,32 @@
 
 function locale_updateMessages {
 
-    # Verify current locale information to avoid English messages from
-    # being localized to themselves.  The English language is used as
-    # reference to write translatable strings inside the source files.
-    if [[ ${CLI_LANG_LC} =~ '^en' ]];then
-        cli_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
-    fi
-
-    # Verify directory passed as non-option argument to be sure it
-    # supports localization.
-    locale_isLocalizable "${ACTIONVAL}"
-    if [[ $? -ne 0 ]];then
-        cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-    fi
-
-    # Prepare working directory to receive translation files.
-    locale_prepareWorkingDirectory ${L10N_WORKDIR}
-
-    # Synchronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_synchronizeRepoChanges "${L10N_WORKDIR}"
+    # Prepare working directory to receive translation files.  Don't
+    # do this here. This location can be redefine later based on
+    # deeper directory structures not provided as arguments to
+    # centos-art.sh script. For example, if you execute the following
+    # command:
+    #
+    #   centos-art locale Documentation/Models/Svg/Brands --update
+    #
+    # it should produce the following directory structure:
+    #
+    #   Locales/Documentation/Models/Svg/Brands/Logos/${LANG}/
+    #   Locales/Documentation/Models/Svg/Brands/Symbols/${LANG}/
+    #   Locales/Documentation/Models/Svg/Brands/Types/${LANG}/
+    #
+    # and not the next one:
+    #
+    #   Locales/Documentation/Models/Svg/Brands/${LANG}/
+    #
+    # So, don't prepare working directory to receive translation files
+    # here. Instead, do it just before POT files creation.
 
     # Evaluate action value to determine whether to use xml2po to
     # extract translatable strings from XML-based files or to use
     # xgettext to extract translatable strings from shell script
     # files.
-    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/(Documentation/Models/Docbook|Identity/Models)/.*$" ]];then
+    if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/(Documentation/Models/(Docbook|Svg)|Identity/Models)/.*$" ]];then
 
         # Update translatable strings inside the portable object
         # template related to XML-based files (e.g., scalable vector
@@ -72,10 +71,5 @@ function locale_updateMessages {
     else
         cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
     fi
-
-    # Synchronize changes between repository and working copy. At this
-    # point, changes in the repository are merged in the working copy
-    # and changes in the working copy committed up to repository.
-    cli_synchronizeRepoChanges "${L10N_WORKDIR}"
 
 }

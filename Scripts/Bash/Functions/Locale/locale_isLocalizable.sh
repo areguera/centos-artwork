@@ -55,6 +55,7 @@ function locale_isLocalizable {
     DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
         cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
     DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Docbook/[[:alnum:]-]+$"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Svg/[[:alnum:]-]+$"
     DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Scripts/Bash$"
 
     # Verify location passed as first argument against the list of

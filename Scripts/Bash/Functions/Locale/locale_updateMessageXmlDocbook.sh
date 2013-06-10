@@ -26,6 +26,13 @@
 
 function locale_updateMessageXmlDocbook {
 
+    # Define location where translation files will be stored in.
+    local L10N_WORKDIR=$(cli_getLocalizationDir ${ACTIONVAL})
+
+    # Define location of the file used to create both portable object
+    # templates (.pot) and portable objects (.po) files.
+    local MESSAGES="${L10N_WORKDIR}/messages"
+
     # Print action message.
     cli_printMessage "${MESSAGES}.pot" --as-updating-line
 
@@ -73,6 +80,9 @@ function locale_updateMessageXmlDocbook {
     # Move into temporal directory so paths can be found relatively.
     pushd $(dirname ${INSTANCE}) > /dev/null
 
+    # Prepare working directory to receive translation files.
+    locale_prepareWorkingDirectory ${L10N_WORKDIR}
+
     # Create portable object template from instance.
     xmllint --valid --noent ${INSTANCE} | xml2po -a - \
         | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
@@ -82,5 +92,10 @@ function locale_updateMessageXmlDocbook {
 
     # Remove instance.
     rm ${INSTANCE}
+
+    # Verify, initialize or merge portable objects from portable
+    # object templates.
+    locale_updateMessagePObjects "${MESSAGES}"
+
 
 }
