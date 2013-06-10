@@ -183,6 +183,10 @@ function cli_printMessage {
             cli_printMessage '-' --as-separator-line
             ;;
 
+        --as-processing-line )
+            cli_printMessage "`gettext "Processing"`: $MESSAGE" --as-stdout-line
+            ;;
+
         --as-cropping-line )
             cli_printMessage "`gettext "Cropping from"`: $MESSAGE" --as-stdout-line
             ;;
