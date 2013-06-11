@@ -29,6 +29,10 @@
 
 function locale_updateMessages {
 
+    # Verify directory passed as non-option argument to be sure it
+    # supports localization.
+    locale_isLocalizable "${ACTIONVAL}"
+
     # Prepare working directory to receive translation files.  Don't
     # do this here. This location can be redefine later based on
     # deeper directory structures not provided as arguments to

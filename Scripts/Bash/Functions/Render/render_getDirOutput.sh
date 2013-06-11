@@ -72,10 +72,7 @@ function render_getDirOutput {
     # duplicating content (e.g., icons, brands, etc.) which doesn't
     # have any translation, nor any need to be translated.
     if [[ ! ${CLI_LANG_LC} =~ '^en' ]];then
-        cli_runFnEnvironment locale --is-localizable ${TEMPLATE}
-        if [[ $? -eq 0 ]];then
-            OUTPUT=${OUTPUT}/${CLI_LANG_LC}
-        fi
+        OUTPUT=${OUTPUT}/${CLI_LANG_LC}
     fi
 
     # Create final output directory, if it doesn't exist yet.

@@ -85,6 +85,27 @@ function cli_printMessage {
             exit 1
             ;;
 
+        --as-suggestion-line )
+
+            # Define where the error was originated inside the
+            # centos-art.sh script. Print out the function name and
+            # line from the caller.
+            local ORIGIN="$(caller 1 | gawk '{ print $2 " L." $1 }')"
+
+            # Build the error message.
+            cli_printMessage "${CLI_NAME} (${ORIGIN}):" --as-stdout-line
+            cli_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stdout-line
+            cli_printMessage "`gettext "Instead, try the following equivalence:"`" --as-stdout-line
+            cli_printMessage "${MESSAGE}" --as-response-line
+            cli_printMessage "${CLI_FUNCNAME}" --as-toknowmore-line
+
+            # Finish script execution with exit status 1 (SIGHUP) to
+            # imply the script finished because an error.  We are
+            # using this as convention to finish the script execution.
+            # So, don't remove the following line, please.
+            exit 1
+            ;;
+
         --as-toknowmore-line )
             cli_printMessage '-' --as-separator-line
             cli_printMessage "`gettext "To know more, run"` ${CLI_NAME} ${MESSAGE} --help" --as-stdout-line

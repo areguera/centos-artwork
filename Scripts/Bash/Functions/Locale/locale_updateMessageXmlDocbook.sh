@@ -43,7 +43,7 @@ function locale_updateMessageXmlDocbook {
     # Define absolute paths to Docbook main file.
     local TEMPLATE=$(cli_getFilesList ${ACTIONVAL} \
         --maxdepth=1 --mindepth=1 --type='f' \
-        --pattern="$(cli_getRepoName ${ACTIONVAL} -f)\.${EXTENSION}$")
+        --pattern=".+/$(cli_getRepoName ${ACTIONVAL} -f)\.${EXTENSION}$")
 
     # Verify existence of docbook's main template file. We cannot go
     # on without it.
@@ -54,15 +54,12 @@ function locale_updateMessageXmlDocbook {
     # translation messages.
     local INSTANCE=$(cli_getTemporalFile "$(basename ${TEMPLATE})")
 
-    # Create instance from docbook's main file.
-    cp ${TEMPLATE} ${INSTANCE}
+    # Expand system entities definition.
+    cli_exportFunctions "Render/Docbook/docbook_doTranslation"
+    docbook_doTranslation
 
     # Expand translation markers inside instance.
     cli_expandTMarkers ${INSTANCE}
-
-    # Expand system entities definition.
-    cli_exportFunctions "Render/Docbook/docbook_doTranslation"
-    docbook_doTranslation ${INSTANCE}
 
     # Expand system entities definition.
     cli_exportFunctions "Render/Docbook/docbook_expandSystemEntities"
@@ -84,7 +81,7 @@ function locale_updateMessageXmlDocbook {
     locale_prepareWorkingDirectory ${L10N_WORKDIR}
 
     # Create portable object template from instance.
-    xmllint --valid --noent ${INSTANCE} | xml2po -a - \
+    xmllint --valid --noent ${INSTANCE} | xml2po -a -l ${CLI_LANG_LC} - \
         | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
 
     # Move out to initial location.
@@ -96,6 +93,5 @@ function locale_updateMessageXmlDocbook {
     # Verify, initialize or merge portable objects from portable
     # object templates.
     locale_updateMessagePObjects "${MESSAGES}"
-
 
 }

@@ -68,6 +68,14 @@ function render_doBaseActions {
         # centos-art.sh script as argument to.
         render_getDirTemplate
 
+        # Verify whether or not the source location of the path
+        # provided as argument to centos-art.sh script accepts or not
+        # localization messages. Don't produce localized content for
+        # repository components that don't accept it.
+        if [[ ! ${CLI_LANG_LC} =~ '^en' ]];then
+            cli_runFnEnvironment locale --is-localizable ${TEMPLATE}
+        fi
+
         # Define the list of files to process. Use an array variable
         # to store the list of files to process. This make possible to
         # realize verifications like: is the current base directory
@@ -130,7 +138,7 @@ function render_doBaseActions {
             # For all other cases, build a list of files to process
             # using the path value pass as argument.
             for FILE in $(cli_getFilesList ${TEMPLATE} \
-                --pattern="^/.*${FLAG_FILTER}\.${RENDER_EXTENSION}$" \
+                --pattern="^.+/${FLAG_FILTER}.*\.${RENDER_EXTENSION}$" \
                 --type="f");do
                 FILES[((++${#FILES[*]}))]=$FILE
             done
@@ -175,15 +183,15 @@ function render_doBaseActions {
             # Print action message.
             cli_printMessage "${FILE}" --as-template-line
 
-            # Define final location of output directory.
-            render_getDirOutput
-
             # Define final location of translation file.
             TRANSLATION=$(dirname ${FILE} \
                | sed -r 's!(Documentation|Identity)!Locales/\1!')/${CLI_LANG_LC}/messages.po
 
             # Define final location of template file.
             TEMPLATE=${FILE}
+
+            # Define final location of output directory.
+            render_getDirOutput
             
             # Get relative path to file. The path string (stored in
             # FILE) has two parts: 1. the variable path and 2. the

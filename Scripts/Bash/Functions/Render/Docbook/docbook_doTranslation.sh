@@ -62,7 +62,7 @@ function docbook_doTranslation {
     
         # Define path to DocBook locales using models as reference.
         local DOCBOOK_LOCALES=$(echo $DOCBOOK_MODELS \
-            | sed 's!^!Locales/!')
+            | sed "s!${TCAR_WORKDIR}/!${TCAR_WORKDIR}/Locales/!")
 
         # Define list of all locale files you want to combine.
         local DOCBOOK_PO_FILES="${DOCBOOK_LOCALES}/Gpl/${CLI_LANG_LC}/messages.po \

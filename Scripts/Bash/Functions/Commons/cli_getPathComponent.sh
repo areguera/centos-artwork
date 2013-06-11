@@ -35,7 +35,7 @@ function cli_getPathComponent {
     local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-release,motif-pattern'
 
     # Define release pattern.
-    local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+)){0,1})"
+    local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+))?)"
 
     # Define architecture pattern. Make it match the architectures the
     # CentOS distribution is able to be installed on.

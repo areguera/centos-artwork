@@ -1,10 +1,9 @@
 #!/bin/bash
 #
-# locale_isLocalizable.sh -- This function determines whether a file or
-# directory can have translation messages or not. This is the way we
-# standardize what locations can be localized and what cannot inside
-# the repository. This function returns 0 when the path is localize
-# able and 1 when it is not.
+# locale_isLocalizable.sh -- This function determines whether a file
+# or directory can have translation messages or not. This is the way
+# we standardize what locations can and cannot be localized inside the
+# repository.
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -34,6 +33,10 @@ function locale_isLocalizable {
     # Initialize location will use as reference to determine whether
     # it can have translation messages or not.
     local LOCATION="$1"
+
+    # Initialize answer value. By default all paths do not accept
+    # localization.
+    local L10N_ACCEPTED='no'
     
     # When no variable is passed to this function, use the action
     # value instead.
@@ -50,13 +53,18 @@ function locale_isLocalizable {
     # Verify location existence. If it doesn't exist we cannot go on.
     cli_checkFiles -e $LOCATION
 
+    # Initialize possible messages this function would print out.
+    local -a MESSAGES
+
     # Define regular expression list of all directories inside the
-    # repository that can have translation.
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Identity/Models/Themes/[[:alnum:]-]+/(Distro/$(\
-        cli_getPathComponent --release-pattern)/Anaconda|Concept|Posters|Media)"
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Docbook/[[:alnum:]-]+$"
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Svg/[[:alnum:]-]+$"
-    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Scripts/Bash$"
+    # repository that can have translation. Try to keep regular
+    # expressions as simple as possible, so they can be understood by
+    # sed program.
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Identity/Models/Themes/[[:alnum:]-]+/Distro/$(\
+        cli_getPathComponent --release-pattern)/(Anaconda|Concept|Posters|Media)"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Docbook/[[:alnum:]-]+"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Documentation/Models/Svg/[[:alnum:]-]+"
+    DIRS[++((${#DIRS[*]}))]="${TCAR_WORKDIR}/Scripts/Bash"
 
     # Verify location passed as first argument against the list of
     # directories that can have translation messages. By default, the
@@ -64,12 +72,45 @@ function locale_isLocalizable {
     # that cannot have translation messages until a positive answer
     # says otherwise.
     for DIR in ${DIRS[@]};do
-        if [[ $LOCATION =~ $DIR ]];then
-            return 0
+
+        # Define the path part which is not present in the
+        # localizable directories.
+        local PATHDIFF=$(echo ${LOCATION} | sed -r "s,${DIR}/,,")
+
+        # Define the path part that is present in the localizable
+        # directories.
+        local PATHSAME=$(echo ${LOCATION} | sed -r "s,/${PATHDIFF},,")
+
+        # Initiate verification between location provided and
+        # localizable directories.
+        if [[ $LOCATION =~ "^$DIR$" ]];then
+
+            # At this point the location provided is exactly the same
+            # that matches the localizable directories. There is
+            # nothing else to do here but return the script flow to
+            # this function caller.
+            L10N_ACCEPTED='yes' 
+            break
+
+        elif [[ ${PATHSAME} =~ "^${DIR}" ]] && [[ -d ${LOCATION} ]];then
+
+            # At this point the location provided is a directory in
+            # the repository which doesn't match any localizable
+            # directory in the list, but it could be rendered if the
+            # --filter option is provided with the appropriate path
+            # argument. Print a suggestion about it.
+            cli_printMessage "${PATHSAME} --filter=\"$PATHDIFF\"" --as-suggestion-line
+            break
+            
         fi
+
     done
 
-    # Output final answer to all verifications. 
-    return 1
+    # At this point, we are safe to say that the path provided isn't
+    # allow to have any localization for it. So, finish the script
+    # execution with an error message.
+    if [[ $L10N_ACCEPTED == 'no' ]];then
+        cli_printMessage "`gettext "The path provided doesn't support localization."`" --as-error-line
+    fi
 
 }

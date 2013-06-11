@@ -25,6 +25,10 @@
 
 function locale_editMessages {
 
+    # Verify directory passed as non-option argument to be sure it
+    # supports localization.
+    locale_isLocalizable "${ACTIONVAL}"
+
     local PO_FILE=''
     local PO_FILES=''
 

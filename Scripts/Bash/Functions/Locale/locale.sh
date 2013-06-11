@@ -69,20 +69,17 @@ function locale {
     # through its command-line.
     for ACTIONVAL in "$@";do
 
-        # Print action message.
-        cli_printMessage "${ACTIONVAL}" --as-processing-line
+        # Don't call locale_isLocalizable function here. Remember that
+        # this function (i.e., locale) is called from other functions
+        # using the cli_runFnEnvironment function to determine whether
+        # a location can accept or not localized messages. If you put
+        # the locale_isLocalizable function here, you would be
+        # duplicating its execution.
 
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
-
-        # Verify directory passed as non-option argument to be sure it
-        # supports localization.
-        locale_isLocalizable "${ACTIONVAL}"
-        if [[ $? -ne 0 ]];then
-            cli_printMessage "`gettext "The path provided does not support localization."`" --as-error-line
-        fi
 
         # Verify non-option arguments passed to centos-art.sh
         # command-line. It should point to an existent directory under
@@ -90,7 +87,7 @@ function locale {
         # doesn't point to a directory under version control, finish
         # the script execution with an error message.
         cli_checkFiles ${ACTIONVAL} -d --is-versioned
-
+    
         # Execute localization actions provided to centos-art.sh
         # script through its command-line. Notice that localization
         # actions will be executed in the same order they were
