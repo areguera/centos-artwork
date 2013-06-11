@@ -33,11 +33,11 @@ function locale_combineLicenseMessages {
     local TRANSLATION_TEMPLATE=$2
 
     local DOCBOOK_LOCALES=$(echo $DOCBOOK_MODELS \
-        | sed -r 's!^!Locales/!')
+        | sed -r "s!${TCAR_WORKDIR}/!${TCAR_WORKDIR}/Locales/!")
 
     # Define list of all files you want to combine.
-    local FILES="${DOCBOOK_LOCALES}/Gpl/${CLI_LANG_LC}/messages.po \
-        ${DOCBOOK_LOCALES}/Gfdl/${CLI_LANG_LC}/messages.po \
+    local FILES="${DOCBOOK_LOCALES}/${CLI_LANG_LC}/messages.po \
+        ${DOCBOOK_LOCALES}/${CLI_LANG_LC}/messages.po \
         ${TRANSLATION_TEMPLATE}"
 
     # Be sure the files we want to combine do exist.

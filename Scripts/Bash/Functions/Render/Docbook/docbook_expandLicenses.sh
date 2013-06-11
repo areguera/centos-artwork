@@ -42,8 +42,8 @@ function docbook_expandLicenses {
     # itself, they are connected with it. The files holding license
     # information does contain id information used inside the
     # documentation structure at cross references.
-    local LICENSES="${DOCBOOK_MODELS}/Default/Licenses/gpl.docbook \
-        ${DOCBOOK_MODELS}/Default/Licenses/gfdl.docbook"
+    local LICENSES="${DOCBOOK_MODELS}/Default/Licenses/Gpl/gpl.docbook \
+        ${DOCBOOK_MODELS}/Default/Licenses/Gfdl/gfdl.docbook"
 
     # Define top level structure in the instance. This is the tag
     # defined in the second field of DOCTYPE definition.

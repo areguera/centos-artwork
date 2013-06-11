@@ -29,8 +29,10 @@ function docbook {
     # into other formats.
     local DOCBOOK_XSL="${TCAR_WORKDIR}/Identity/Webenv/Themes/Default/Docbook/1.69.1/Xsl"
 
-    # Define absolute path to DocBook models.
-    local DOCBOOK_MODELS="${TCAR_WORKDIR}/Documentation/Models/Docbook"
+    # Define absolute path to DocBook models. This path must take
+    # until the directory which holds the main documentation docbook
+    # file.
+    local DOCBOOK_MODELS="$(dirname ${TEMPLATE})"
 
     # Verify absolute path to DocBook models.
     cli_checkFiles ${DOCBOOK_MODELS} -d

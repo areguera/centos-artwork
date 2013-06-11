@@ -58,15 +58,18 @@ function docbook_doTranslation {
 
         # Create translation instance to combine both template
         # translation and licenses translations.
-        local TRANSLATION_INSTANCE=${TMPDIR}/message.po
+        local TRANSLATION_INSTANCE=${TMPDIR}/messages.po
     
         # Define path to DocBook locales using models as reference.
-        local DOCBOOK_LOCALES=$(echo $DOCBOOK_MODELS \
-            | sed "s!${TCAR_WORKDIR}/!${TCAR_WORKDIR}/Locales/!")
+        local DOCBOOK_LOCALES=$(cli_getLocalizationDir "$DOCBOOK_MODELS")
 
-        # Define list of all locale files you want to combine.
-        local DOCBOOK_PO_FILES="${DOCBOOK_LOCALES}/Gpl/${CLI_LANG_LC}/messages.po \
-            ${DOCBOOK_LOCALES}/Gfdl/${CLI_LANG_LC}/messages.po \
+        # Define list of all locale files you want to combine. This
+        # include the localization files related to all different kind
+        # of licenses you want to use in the main documentation file
+        # and the localization file of the main documentation file, as
+        # well.
+        local DOCBOOK_PO_FILES="${TCAR_WORKDIR}/Locales/Documentation/Models/Docbook/Default/Licenses/Gfdl/${CLI_LANG_LC}/messages.po \
+            ${TCAR_WORKDIR}/Locales/Documentation/Models/Docbook/Default/Licenses/Gpl/${CLI_LANG_LC}/messages.po \
             ${TRANSLATION}"
 
         # Be sure the files we want to combine do exist.
