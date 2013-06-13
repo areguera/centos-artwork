@@ -62,15 +62,12 @@ div#content {
 
 div#content > p,
 div#content > pre,
-div#content > div > table,
-div#content table.message,
-div#content div.table-of-contents,
+div#content table,
 div#content div#page-history,
 div#content div#content-below-diff > p,
 div#content div#content-below-diff > pre,
 div#content div#preview > p,
-div#content div#preview > pre,
-div#content div#preview > div {
+div#content div#preview > pre {
     margin-left: 20px;
     }
 
@@ -855,8 +852,8 @@ div.searchresults dl {
  */
 
 table.message {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 1.5em;
+    margin-bottom: 1.3em;
     }
 
 table.message td {
