@@ -272,7 +272,7 @@ td.news-body			{ background-color: #ffffff; color: #000000; padding: 1.3em; line
 span.print			{ }
 span.required 	    { color: #bb0000; }
 span.small 			{ font-weight: normal; }
-span.pagetitle		{ font-weight: bold; text-align: center; }
+span.pagetitle		{ display: block; font-size: 1.5em; line-height: 1.5em; font-weight: bold; }
 span.bracket-link	{ white-space: nowrap; font-size: small; }
 
 /* Set nested tables bottom margin. */
@@ -282,6 +282,8 @@ table.width100 table.width100 { margin-bottom: 10px; }
 br, hr              { display: none;}
 /* Show br and hr tags only when it is absolutely needed. */
 div.center > br,
+div[align="center"] > br,
+tt > br,
 hr.pageline         { display: block;}
 
 /* Footer */
