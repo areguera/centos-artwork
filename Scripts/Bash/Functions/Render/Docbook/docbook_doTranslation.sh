@@ -32,83 +32,57 @@
 
 function docbook_doTranslation {
 
-    # Define which command will be used to output the template
-    # content. This is required because template files might be found
-    # as compressed files inside the repository.
-    local COMMAND="/bin/cat"
-    if [[ $(file -b -i $TEMPLATE) =~ '^application/x-gzip$' ]];then
-        COMMAND="/bin/zcat"
-    fi
+    # Print final location of translation file.
+    cli_printMessage "${TRANSLATION}" --as-translation-line
 
-    # Move into template's directory in order to satisfy relative
-    # entities.  Take care that some XML documents (e.g., DocBook
-    # documents) can use entities relatively from their base
-    # locations. In order to process such documents, it is necessary
-    # to put the template directory up in the directory stack and
-    # create the instance from there. Thus, it is possible to expand
-    # relative entities correctly when validating the document.
-    pushd $(dirname $TEMPLATE) > /dev/null
-
-    # Verify translation file existence and create template
-    # instance accordingly.
-    if [[ -f ${TRANSLATION} ]];then
-
-        # Print final location of translation file.
-        cli_printMessage "${TRANSLATION}" --as-translation-line
-
-        # Create translation instance to combine both template
-        # translation and licenses translations.
-        local TRANSLATION_INSTANCE=${TMPDIR}/messages.po
+    # Create translation instance to combine both template translation
+    # and licenses translations.
+    local TRANSLATION_INSTANCE=${TMPDIR}/messages.po
     
-        # Define path to DocBook locales using models as reference.
-        local DOCBOOK_LOCALES=$(cli_getLocalizationDir "$DOCBOOK_MODELS")
+    # Define path to DocBook locales using models as reference.
+    local DOCBOOK_LOCALES=$(cli_getLocalizationDir "$DOCBOOK_MODELS")
 
-        # Define list of all locale files you want to combine. This
-        # include the localization files related to all different kind
-        # of licenses you want to use in the main documentation file
-        # and the localization file of the main documentation file, as
-        # well.
-        local DOCBOOK_PO_FILES="${TCAR_WORKDIR}/Locales/Documentation/Models/Docbook/Default/Licenses/Gfdl/${CLI_LANG_LC}/messages.po \
-            ${TCAR_WORKDIR}/Locales/Documentation/Models/Docbook/Default/Licenses/Gpl/${CLI_LANG_LC}/messages.po \
-            ${TRANSLATION}"
+    # Define list of all locale files you want to combine. This
+    # include the localization files related to all different kind of
+    # licenses you want to use in the main documentation file and the
+    # localization file of the main documentation file, as well.
+    local DOCBOOK_PO_FILES="${TCAR_WORKDIR}/Locales/Documentation/Models/Docbook/Default/Licenses/Gfdl/${CLI_LANG_LC}/messages.po \
+        ${TCAR_WORKDIR}/Locales/Documentation/Models/Docbook/Default/Licenses/Gpl/${CLI_LANG_LC}/messages.po \
+        ${TRANSLATION}"
 
-        # Be sure the files we want to combine do exist.
-        cli_checkFiles -e ${DOCBOOK_PO_FILES}
+    # Be sure the files we want to combine do exist.
+    cli_checkFiles -e ${DOCBOOK_PO_FILES}
 
-        # Combine license translations with template translation in
-        # order to reuse licenses translations in template files
-        # without including them in template portable objects. In the
-        # case of DocBook templates, translations related to licenses
-        # are required because license content is expanded at
-        # execution time inside the DocBook instance used by XSL
-        # processor during transformation.
-        msgcat --output=${TRANSLATION_INSTANCE} \
-            --width=70 --no-location --use-first ${DOCBOOK_PO_FILES}
+    # Combine license translations with template translation in order
+    # to reuse licenses translations in template files without
+    # including them in template portable objects. In the case of
+    # DocBook templates, translations related to licenses are required
+    # because license content is expanded at execution time inside the
+    # DocBook instance used by XSL processor during transformation.
+    msgcat --output=${TRANSLATION_INSTANCE} \
+        --width=70 --no-location --use-first ${DOCBOOK_PO_FILES}
 
-        # Create the translated instance of design model.
-        ${COMMAND} ${TEMPLATE} | xml2po -a -l ${CLI_LANG_LL} \
-            -p ${TRANSLATION_INSTANCE} -o ${INSTANCE} -
+    # At this point the translation instance with both licenses and
+    # manual translations have been saved. Now it is required to
+    # expand entities so it could be possible to create a translated
+    # instance with all the content inside.
 
-        # Remove .xml2po.mo temporal file.
-        if [[ -f ${PWD}/.xml2po.mo ]];then
-            rm ${PWD}/.xml2po.mo
-        fi
+    # Print action message.
+    cli_printMessage "${INSTANCE}" --as-translating-line
 
-        # Remove instance created to store both licenses and template
-        # translations.
-        if [[ -f ${TRANSLATION_INSTANCE} ]];then
-            rm ${TRANSLATION_INSTANCE}
-        fi
+    # Create the translated instance of design model instance with all
+    # entities and translation markers expanded.
+    xml2po -a -l ${CLI_LANG_LL} \
+        -p ${TRANSLATION_INSTANCE} \
+        -o ${INSTANCE}-${CLI_LANG_LL}.tmp ${INSTANCE}
 
-    else
+    # Rename final instance so it can be treated as just instance. 
+    mv ${INSTANCE}-${CLI_LANG_LL}.tmp ${INSTANCE}
 
-        # Create the non-translated instance of design model. 
-        ${COMMAND} ${TEMPLATE} > ${INSTANCE}
-
+    # Remove .xml2po.mo temporal file.
+    if [[ -f ${PWD}/.xml2po.mo ]];then
+        rm ${PWD}/.xml2po.mo
     fi
-
-    # Return to where we were.
-    popd > /dev/null
 
     # Verify instance existence.
     cli_checkFiles -e $INSTANCE

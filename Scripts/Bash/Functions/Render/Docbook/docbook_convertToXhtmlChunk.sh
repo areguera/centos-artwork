@@ -33,6 +33,11 @@ function docbook_convertToXhtmlChunk {
     local -a STYLE_INSTANCE
     local STYLE_INSTANCE_FINAL=''
 
+    # Define absolute path to DocBook source file. This is the
+    # repository documentation manual file where DOCTYPE and ENTITY
+    # definition lines are set.
+    local SRC=${1}
+
     # Define absolute path to PDF target file. This is the final
     # location the PDF file produced as result of DocBook to PDF
     # transformation will be stored in.
@@ -47,11 +52,6 @@ function docbook_convertToXhtmlChunk {
 
     # Print action message.
     cli_printMessage "${FILE}-xhtml" --as-creating-line
-
-    # Define absolute path to DocBook source file. This is the
-    # repository documentation manual file where DOCTYPE and ENTITY
-    # definition lines are set.
-    local SRC=${INSTANCE}
 
     # Prepare XSL final instances used in transformations.
     docbook_prepareStyles $(cli_getFilesList \

@@ -31,10 +31,16 @@ function cli_getLocalizationDir {
     # against source directory locations in the working copy.
     LOCATION=$(cli_checkRepoDirSource "${1}")
 
+    # In case the location specified would be a file, remove the file
+    # part from the path so only its parent directory remains.
+    if [[ -f ${LOCATION} ]];then
+        LOCATION=$(dirname ${LOCATION})
+    fi
+
     # Make path transformation.
     case "${2}" in
 
-        '--no-lang')
+        '--no-lang' )
             LOCATION=$(echo "${LOCATION}" \
                 | sed -r -e "s!(Identity|Scripts|Documentation)!Locales/\1!")
             ;;

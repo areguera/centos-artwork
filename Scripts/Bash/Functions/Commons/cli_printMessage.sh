@@ -256,6 +256,10 @@ function cli_printMessage {
             cli_printMessage "`gettext "Translation"`: $MESSAGE" --as-stdout-line
             ;;
 
+        --as-translating-line )
+            cli_printMessage "`gettext "Translating"`: $MESSAGE" --as-stdout-line
+            ;;
+
         --as-validating-line )
             cli_printMessage "`gettext "Validating"`: $MESSAGE" --as-stdout-line
             ;;

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# locale_updateMessageXmlDocbook.sh -- This function retrives
+# locale_updateMessageXmlDocbook.sh -- This function retrieves
 # translation messages from Docbook files and creates related portable
 # object template for them.
 #
@@ -29,13 +29,6 @@ function locale_updateMessageXmlDocbook {
     # Define location where translation files will be stored in.
     local L10N_WORKDIR=$(cli_getLocalizationDir ${ACTIONVAL})
 
-    # Define location of the file used to create both portable object
-    # templates (.pot) and portable objects (.po) files.
-    local MESSAGES="${L10N_WORKDIR}/messages"
-
-    # Print action message.
-    cli_printMessage "${MESSAGES}.pot" --as-updating-line
-
     # Define regular expression to match extensions of shell scripts
     # we use inside the repository.
     local EXTENSION='docbook'
@@ -45,53 +38,18 @@ function locale_updateMessageXmlDocbook {
         --maxdepth=1 --mindepth=1 --type='f' \
         --pattern=".+/$(cli_getRepoName ${ACTIONVAL} -f)\.${EXTENSION}$")
 
-    # Verify existence of docbook's main template file. We cannot go
-    # on without it.
-    cli_checkFiles -e ${TEMPLATE}
-
-    # Define file name used as template instance. Here is where we
-    # expand translation markers and entities before retrieving
-    # translation messages.
-    local INSTANCE=$(cli_getTemporalFile "$(basename ${TEMPLATE})")
-
-    # Expand system entities definition.
-    cli_exportFunctions "Render/Docbook/docbook_doTranslation"
-    docbook_doTranslation
-
-    # Expand translation markers inside instance.
-    cli_expandTMarkers ${INSTANCE}
-
-    # Expand system entities definition.
-    cli_exportFunctions "Render/Docbook/docbook_expandSystemEntities"
-    docbook_expandSystemEntities ${INSTANCE}
-
-    # Expand license block.
-    cli_exportFunctions "Render/Docbook/docbook_expandLicenses"
-    docbook_expandLicenses ${INSTANCE}
-
-    # Create link to `Images' directory for validation to pass.
-    # Otherwise, a validation error is reported because no path was
-    # found to images.
-    ln -s ${TCAR_WORKDIR}/Identity/Images/Webenv $(dirname ${INSTANCE})/Images
-
-    # Move into temporal directory so paths can be found relatively.
-    pushd $(dirname ${INSTANCE}) > /dev/null
-
-    # Prepare working directory to receive translation files.
-    locale_prepareWorkingDirectory ${L10N_WORKDIR}
-
-    # Create portable object template from instance.
-    xmllint --valid --noent ${INSTANCE} | xml2po -a -l ${CLI_LANG_LC} - \
-        | msgcat --output=${MESSAGES}.pot --width=70 --no-location -
-
-    # Move out to initial location.
-    popd > /dev/null
-
-    # Remove instance.
-    rm ${INSTANCE}
-
-    # Verify, initialize or merge portable objects from portable
-    # object templates.
-    locale_updateMessagePObjects "${MESSAGES}"
+    # Process Docbook template files based on whether it is empty or
+    # not. When it is empty, it is because there is not a Docbook main
+    # file in the location provided to centos-art.sh script
+    # command-line. In this case, we try to create one POT file to all
+    # docbook files inside the location provided but without expanding
+    # entities. When Docbook template file is not empty, expand
+    # entities and create the POT file from a Docbook main file
+    # instance, with all entities expanded. 
+    if [[ -z ${TEMPLATE} ]];then
+        locale_updateMessageXmlDocbookNoEntities
+    else
+        locale_updateMessageXmlDocbookWithEntities
+    fi
 
 }

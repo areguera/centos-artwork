@@ -37,9 +37,8 @@ function docbook {
     # Verify absolute path to DocBook models.
     cli_checkFiles ${DOCBOOK_MODELS} -d
 
-    # Apply translation to design model in order to produce the
-    # translated design model instance.
-    docbook_doTranslation
+    # Create the non-translated instance of design model. 
+    cp ${TEMPLATE} ${INSTANCE}
 
     # Expand common contents inside instance.
     docbook_expandLicenses ${INSTANCE}
@@ -74,9 +73,16 @@ function docbook {
     # entities already expanded.
     cli_expandTMarkers ${INSTANCE}
 
+    # Verify translation file existence apply translation to docbook
+    # design model instance in order to produce the translated design
+    # model instance.
+    if [[ -f ${TRANSLATION} ]];then
+        docbook_doTranslation ${INSTANCE}
+    fi
+
     # Convert DocBook source files to other formats.
-    docbook_convertToXhtmlChunk
-    docbook_convertToXhtml
+    docbook_convertToXhtmlChunk ${INSTANCE}
+    docbook_convertToXhtml ${INSTANCE}
     docbook_convertToText
 
     # NOTE: The current transformation from DocBook to PDF fails when
