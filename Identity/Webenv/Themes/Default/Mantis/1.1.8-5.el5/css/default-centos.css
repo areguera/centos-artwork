@@ -283,6 +283,7 @@ br, hr              { display: none;}
 /* Show br and hr tags only when it is absolutely needed. */
 div.center > br,
 div[align="center"] > br,
+div[align="center"] > p > br,
 tt > br,
 hr.pageline         { display: block;}
 
