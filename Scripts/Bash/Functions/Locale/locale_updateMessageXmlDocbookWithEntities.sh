@@ -64,6 +64,9 @@ function locale_updateMessageXmlDocbookWithEntities {
         | msgcat --output=${MESSAGES}.pot \
                  --width=70 --no-location -
 
+    # Expand translation markers inside file.
+    cli_expandTMarkers ${INSTANCE}
+
     # Verify, initialize or merge portable objects from portable
     # object templates.
     locale_updateMessagePObjects "${MESSAGES}"

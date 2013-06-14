@@ -83,9 +83,6 @@ function locale_updateMessageMetadata {
     # first level on. Don't show the variable part of the path.
     sed -i -r "s,${TCAR_WORKDIR}/,,g" ${FILE}
 
-    # Expand translation markers inside file.
-    cli_expandTMarkers ${FILE}
-
     # Unset array variables to avoid undesired concatenations.
     unset SRC
     unset DST
