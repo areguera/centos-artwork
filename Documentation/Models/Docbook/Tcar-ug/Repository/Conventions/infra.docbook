@@ -1,0 +1,142 @@
+<section id="repo-convs-infra">
+
+    <title>Repository Infrastructure</title>
+
+    <para>
+        &TCAR; is made of one <quote>central repository</quote> and
+        many <quote>working copies</quote> of that central repository.
+        The working copies are independent one another, can be
+        distributed all around the world and provide a local place for
+        designers, documenters, translators and programmers to perform
+        their work in a decentralized way.  The central repository, on
+        the other hand, provides a common place for all independent
+        working copies to exchange data in the community.
+    </para>
+
+    <figure id="repo-convs-infra-1">
+    <title>Repository infrastructure</title>
+    <screenshot>
+    <screeninfo>Repository infrastructure</screeninfo>
+    <mediaobject>
+    <imageobject>
+        <imagedata fileref="=TCAR_WORKDIR=/Documentation/Manuals/Svg/Repository/infrastructure.png" format="PNG" /> 
+    </imageobject>
+    </mediaobject>
+    </screenshot>
+    </figure>
+
+    <section id="repo-convs-infra-subversion">
+    <title>Subversion</title>
+
+    <para>
+        The current infrastructure that holds &TCAR;, on the Internet,
+        is made of the following components:
+    </para>
+    
+    <itemizedlist>
+    <listitem>
+    <para>
+        <application><ulink
+        url="http://subversion.tigris.org/">Subversion</ulink></application>
+        &mdash; Modern Version Control System designed to replace CVS.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <application><ulink
+        url="http://trac.edgewall.org/">Trac</ulink></application>
+        &mdash; Enhanced wiki and issue tracking system.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <application>Httpd+WebDav</application>  as data exchanging route between the workstations
+        and the central repository, through the Internet.  Httpd was
+        configured to provide service through SSL, so all traffic
+        between the workstations and the server be protected while it
+        travels across the Internet.  </para>
+    </listitem>
+    <listitem>
+    <para>
+       The access rights are controlled by using a combination of both
+       Subversion's authorization files and Httpd's password files.
+       These files can be managed consistently through Trac's WebAdmin
+       plug-in.
+    </para>
+    </listitem>
+    </itemizedlist>
+
+    <para>
+        In this infrastructure, the first level of directories in the
+        repository provides the Subversion's standard
+        trunk-branches-tags layout.  The second level of directories
+        provides organization for different work lines, as described
+        in <xref linkend="repo-convs-worklines" />.  All other
+        subsequent directory levels from second level on exist to
+        organize specific concepts related to the work line they
+        belong to.
+    </para>
+
+    </section>
+
+    <section id="repo-convs-infra-git">
+    <title>Git</title>
+
+    <para>
+        In addition to current Subversion infrastructure, we are
+        working on a Git infrastructure with the intention of
+        migrating the current Subversion infrastructure up to it,
+        progressively. The Git infrastructure we are working on is
+        made of the following components: 
+    </para>
+
+    <itemizedlist>
+    <listitem>
+    <para>
+        Git &mdash; Fast version control system.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <application>Gitolite</application> &mdash; Highly flexible
+        server for git directory version tracker.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <application>Gitweb</application> &mdash; Simple web interface
+        to git repositories.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        <application>MantisBT</application> &mdash; Web-based issue
+        tracking system.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        The data exchanging route between the working copies and the
+        central repository takes place through SSH.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+        The access rights are controlled by using a combination of SSH
+        public keys and Gitolite's repository configuration file.
+    </para>
+    </listitem>
+    </itemizedlist>
+    
+    <para>
+        In this infrastructure, the first level of directories in the
+        repository provides organization for different work lines, as
+        described in <xref linkend="repo-convs-worklines" />.  All
+        other subsequent directory levels from second level on exist
+        to organize specific concepts related to the work line they
+        belong to.
+    </para>
+
+    </section>
+
+</section>
