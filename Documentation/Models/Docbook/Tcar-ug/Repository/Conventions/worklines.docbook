@@ -9,49 +9,44 @@
         produced individually by each work line is combined one
         another later to achieve higher purposes (e.g., corporate
         identity for &TCP;). The repository work lines, as conceived
-        here, provide a relaible environment for people to work
-        syncronized and descentralized.
+        here, provide a reliable environment for people to work
+        synchronized and decentralized.
     </para>
 
     <para>
-        The action of combining work lines inside &TCAR; is known as
-        the corporate identity production cycle. The rest of this
-        section describes the work lines available in the repository
-        and how they fit inside the corporate identity production
-        cycle.
+        The action of combining work lines inside &TCAR; is also known
+        as the <quote>Production Cycle</quote> of CentOS corporate
+        visual identity. The rest of this section describes the work
+        lines available in the repository and how they integrate one
+        another.
     </para>
 
-    <section id="repo-convs-worklines-idenity">
+    <section id="repo-convs-worklines-artworks">
 
-    <title>Visual Identity</title>
-
-    <para>
-        The visual identity is the first component we work out in
-        order to produce a new corporate identity.  Through this work
-        line, graphic designers create <quote>models</quote> and
-        <quote>motifs</quote> for all the visual manifestation &TCP;
-        is made of.  Once design models and artistic motifs are set in
-        place, graphic designers use the <function>render</function>
-        functionality described in <xref linkend="scripts-bash-render"
-        /> to combine both design models and artistic motifs into
-        final images.
-    </para>
+    <title>Artworks</title>
 
     <para>
-        The main purposes of this work line is define all the visual
-        manifestations the &TCP; is made of and provide design models
-        and artistic motifs for them in order to render the set of
-        images required to transmit the visual style that identifies
-        &TCP; as unique organization. To know more about &TCPCVI;,
-        read <xref linkend="identity" />.
+        <emphasis>Artworks</emphasis> is the first component we work
+        out in order to produce new corporate visual identities.
+        Through this work line, graphic designers create
+        <quote>models</quote> and <quote>motifs</quote> for all the
+        visual manifestation &TCP; is made of.  Once design models and
+        artistic motifs are set in place, graphic designers use the
+        <xref linkend="scripts-bash-render" /> functionality to
+        combine them into final images.
     </para>
 
     <para>
-        The visual identity work line takes palce in the <ulink
-        url="https://projects.centos.org/~al/artwork.git/Identity"><filename
-        class="directory">Identity</filename></ulink> directory.
+        The mission of <emphasis>Artworks</emphasis> work line is
+        define all the visual manifestations the &TCP; is made of and
+        provide design models and artistic motifs for them in order to
+        produce the image files required to transmit the visual style
+        that identifies &TCP; as unique organization.
     </para>
 
+    <para>
+        To know more about &TCPCVI;, read <xref linkend="identity" />.
+    </para>
 
     </section>
 
@@ -60,34 +55,42 @@
     <title>Localization</title>
 
     <para>
-        The content localization is the second component that must be
-        worked out in the corporate identity production cycle.
-        Through this work line translators localize source files
-        (e.g., SVG, DocBook, Shell scripts) which are later use to
-        produce localized images, localized documentation and
-        localized automation scripts.  To localize source files,
-        translators use 
-        the <function>locale</function> functionality described in
-        <xref linkend="scripts-bash-locale" /> which takes care of
-        retriving translatable strings from source files and provide a
-        consistent localization interface based on GNU
+        <emphasis>Localization</emphasis> is the second component that
+        must be worked out in the production cycle of CentOS corporate
+        visual identity.  Through this work line translators localize
+        source files (e.g., SVG, DocBook, Shell scripts) which are
+        later used to produce localized images, localized
+        documentation and localized automation scripts.  To localize
+        source files, translators use the <xref
+        linkend="scripts-bash-locale" /> functionality which takes
+        care of retrieving translatable strings from source files and
+        provide a consistent localization interface based on GNU
         <application>gettext</application> multi-lingual message
         production tool set and <command>xml2po</command> command.
     </para>
 
     <para>
-        The main purpose of this work line is extend the visual
-        identity (produced in English language) to as many native
-        languages as possible in order for people which doesn't
-        understand English languague to feel more confortable with
-        &TCP; and its messages. To know more about the specific
-        localization process read <xref linkend="locale" />.
+        The localization process takes place inside the
+        <quote><filename
+        class="directory">Localization/</filename></quote> directory
+        in the first level of each repository directory structure.
+        This directory mirrors the renderable directory structures
+        outside it and stores <filename
+        class="extension">.po</filename> and <filename
+        class="extension">.pot</filename> files mainly.
     </para>
 
     <para>
-        The localization work line takes palce in the <ulink
-        url="https://projects.centos.org/~al/artwork.git/Locales"><filename
-        class="directory">Locales</filename></ulink> directory.
+        The mission of <emphasis>Localization</emphasis> work line is
+        extend the visual identity (produced in English language) to
+        as many native languages as possible, in order for people
+        which doesn't understand English language to feel more
+        comfortable with &TCP; in their own native languages.
+    </para>
+    
+    <para>
+        To know more about the specific localization process read
+        <xref linkend="locale" />.
     </para>
 
     </section>
@@ -123,11 +126,11 @@
 
     </section>
 
-    <section id="repo-convs-worklines-packaging">
-    <title>Packaging</title>
+    <section id="repo-convs-worklines-packages">
+    <title>Packages</title>
 
     <para>
-        The packaging work line is the fourth component that must be
+        The packages work line is the fourth component that must be
         worked out in the corporate identity production cycle. Through
         this work line packager gather final images, final
         translations and final documentation related to art works and
@@ -145,7 +148,7 @@
     </para>
 
     <para>
-        The packaging work line takes palce in the <ulink
+        The packages work line takes palce in the <ulink
         url="https://projects.centos.org/~al/artwork.git/Packages"><filename
         class="directory">Packages</filename></ulink> directory.
     </para>
