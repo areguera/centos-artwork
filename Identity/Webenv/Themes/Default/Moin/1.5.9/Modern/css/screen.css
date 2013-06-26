@@ -713,21 +713,47 @@ a.nonexistent:hover { color: gray; }
 
 /* Special decoration for some links' classes */
 
-a.www:before {
+a.www:before,
+a.http:before,
+a.https:before, {
     white-space:nowrap;
     content: url(../img/moin-www.png);
     margin: 0 0.2em;
     }
 
-a.http:before {
+a.ftp:before {
     white-space:nowrap;
-    content: url(../img/moin-www.png);
+    content: url(../img/moin-ftp.png);
     margin: 0 0.2em;
     }
 
-a.https:before {
+a.nntp:before {
     white-space:nowrap;
-    content: url(../img/moin-www.png);
+    content: url(../img/moin-nntp.png);
+    margin: 0 0.2em;
+    }
+
+a.news:before {
+    white-space:nowrap;
+    content: url(../img/moin-news.png);
+    margin: 0 0.2em;
+    }
+
+a.telnet:before {
+    white-space:nowrap;
+    content: url(../img/moin-telnet.png);
+    margin: 0 0.2em;
+    }
+
+a.irc:before {
+    white-space:nowrap;
+    content: url(../img/moin-irc.png);
+    margin: 0 0.2em;
+    }
+
+a.file:before {
+    white-space:nowrap;
+    content: url(../img/moin-file.png);
     margin: 0 0.2em;
     }
 
@@ -748,7 +774,6 @@ a.interwiki:before {
     content: url(../img/moin-inter.png);
     margin: 0 0.2em;
     }
-
 
 /* */
 
