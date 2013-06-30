@@ -80,7 +80,7 @@ function render_setThemes {
     # execution with an error message. There is an obvious typo in the
     # path provided.
     if [[ -z ${MOTIF_RENDERABLE_DIRS} ]];then
-        cli_printMessage "`gettext "Nothing to do."`" --as-error-line
+        cli_printMessage "`gettext "No related model was found for the path provided."`" --as-error-line
     fi
 
     # Rebuild list of render-able directory structures using an array

@@ -33,7 +33,7 @@ function render_setThemesDirStructure {
     local THEMES_SOURCE_DIR=$(cli_checkRepoDirSource "${1}")
     local THEMES_TARGET_DIR=$(cli_checkRepoDirSource "${2}")
 
-    local THEMES_FILTER=$(cli_getPathComponent ${ACTIONVAL} --repo-dir)
+    local THEMES_FILTER=${THEMES_TARGET_DIR}/$(cli_getPathComponent --motif ${ACTIONVAL})
 
     THEMES_TARGET_DIRS=$(cli_getFilesList ${THEMES_TARGET_DIR} \
         --pattern=".+/[[:digit:]]+$" --maxdepth=2 --mindepth=2 \
