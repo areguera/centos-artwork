@@ -37,6 +37,11 @@ function prepare {
     # Interpret arguments and options passed through command-line.
     prepare_getOptions
 
+    # Redefine positional parameters using ARGUMENTS. At this point,
+    # option arguments have been removed from ARGUMENTS variable and
+    # only non-option arguments remain in it. 
+    eval set -- "$ARGUMENTS"
+
     # Execute action names based on whether they were provided or not.
     if [[ $ACTIONNAMS == '' ]];then
 
@@ -54,7 +59,7 @@ function prepare {
         # When action names are provided, loop through them and
         # execute them one by one.
         for ACTIONNAM in $ACTIONNAMS;do
-            ${ACTIONNAM}
+            ${ACTIONNAM} $@
         done
 
     fi

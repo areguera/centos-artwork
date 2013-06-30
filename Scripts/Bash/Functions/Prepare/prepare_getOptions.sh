@@ -31,7 +31,7 @@ function prepare_getOptions {
     local ARGSS="h,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,answer-yes,packages,locales,links,images,manuals,set-environment,see-environment,synchronize"
+    local ARGSL="help,quiet,answer-yes,packages,locales,links,images,manuals,directories,set-environment,see-environment,synchronize"
 
     # Redefine ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
@@ -95,14 +95,34 @@ function prepare_getOptions {
                 shift 1
                 ;;
 
+            --directories )
+                ACTIONNAMS="${ACTIONNAMS} prepare_updateDirectoryStructure"
+                shift 1
+                ;;
+
             --synchronize )
                 FLAG_SYNCHRONIZE="true"
                 shift 1
                 ;;
 
-            * )
+            -- )
+                # Remove the `--' argument from the list of arguments
+                # in order for processing non-option arguments
+                # correctly. At this point all option arguments have
+                # been processed already but the `--' argument still
+                # remains to mark ending of option arguments and
+                # beginning of non-option arguments. The `--' argument
+                # needs to be removed here in order to avoid
+                # centos-art.sh script to process it as a path inside
+                # the repository, which obviously is not.
+                shift 1
                 break
+                ;;
+
         esac
     done
+
+    # Redefine ARGUMENTS variable using current positional parameters. 
+    cli_parseArgumentsReDef "$@"
 
 }

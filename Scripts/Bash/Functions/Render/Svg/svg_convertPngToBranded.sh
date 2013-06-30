@@ -54,7 +54,7 @@ function svg_convertPngToBranded {
     # execution. Instead, continue with the next action in the list.
     # This is required in order to perform massive rendition inside
     # structures like themes where components might or might not have
-    # `branding.conf' files associted. For example, the `Concept'
+    # `branding.conf' files associated. For example, the `Concept'
     # component doesn't have branding information associated but most
     # elements inside `Distro' component do.
     if [[ ! -f "$BRANDING_CONF_FILE" ]];then
@@ -83,8 +83,7 @@ function svg_convertPngToBranded {
         # the image put over the PNG image produced as result of
         # design models base rendition.
         BRANDFILE=${TCAR_WORKDIR}/Identity/Images/Brands/$(echo $BRANDING_CONF_VALUE \
-            | gawk 'BEGIN{ FS=":" } { print $1 }' \
-            | sed -r "s/=BRAND=/${TCAR_BRAND}/g")
+            | gawk 'BEGIN{ FS=":" } { print $1 }' )
 
         # Verify absolute path to image file used as brand. Assuming
         # no brand image file is found, continue with the next

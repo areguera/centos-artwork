@@ -29,14 +29,9 @@ function conf {
     local MODEL=''
     local -a MODELS
     local FORMAT=''
-    local FORMATS=''
     local HEIGHT=''
-    local HEIGHTS=''
     local FGCOLOR=''
-    local FGCOLORS=''
     local BGCOLOR=''
-    local BGCOLORS=''
-    local COMMAND=''
 
     # Define list with all section names. These are the final file
     # names we want to produce images for.
@@ -55,17 +50,26 @@ function conf {
         # Retrieve formats you want to produce the image for. This
         # variable contains one or more image format supported by
         # ImageMagick.  For example, `xpm', `jpg', 'tiff', etc.
-        FORMATS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "formats")
+        local FORMATS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "formats")
+        if [[ -z ${FORMATS} ]];then
+            FORMATS="xpm pdf jpg tif"
+        fi
         
         # Retrieve heights you want to produce the image for. This
         # variable contains one or more numerical values. For example,
         # `16', `24', `32', etc.
-        HEIGHTS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "heights")
+        local HEIGHTS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "heights")
+        if [[ -z ${HEIGHTS} ]];then
+            HEIGHTS="16 20 22 24 32 36 38 40 48 64 72 78 96 112 124 128 148 164 196 200 512"
+        fi
 
         # Retrieve foreground colors you want to produce the image
         # for. This variable contains one or more color number in
         # hexadecimal format. For example, `000000', `ffffff', etc.
-        FGCOLORS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "fgcolors")
+        local FGCOLORS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "fgcolors")
+        if [[ -z ${FGCOLORS} ]];then
+            FGCOLORS="000000"
+        fi
 
         # Retrieve background colors you want to produce the image
         # for. This variable contains one or more color number in
@@ -73,11 +77,17 @@ function conf {
         # Opacity is specified between 0.0 and 1.0 where 0.0 is full
         # transparency and 1.0 full opacity. For example, the
         # following values are accepted: `000000-0', `ffffff-1', etc.
-        BGCOLORS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "bgcolors") 
+        local BGCOLORS=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "bgcolors") 
+        if [[ -z ${BGCOLORS} ]];then
+            BGCOLORS="000000-0"
+        fi
 
         # Retrieve command-line you want execute to produce the image.
         # For example, `/usr/bin/convert +append'
-        COMMAND=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "command") 
+        local COMMAND=$(cli_getConfigValue "$TEMPLATE" "$FILENAME" "command") 
+        if [[ -z ${COMMAND} ]];then
+            COMMAND=/bin/cp
+        fi
 
         for FGCOLOR in $FGCOLORS;do
 
@@ -95,7 +105,7 @@ function conf {
                     cli_checkFiles ${HEIGHT} --match="^[[:digit:]]+$"
 
                     # Do base rendition actions.
-                    conf_doBaseActions
+                    conf_setBaseRendition
 
                 done
             done

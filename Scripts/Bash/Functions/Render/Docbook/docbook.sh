@@ -41,7 +41,7 @@ function docbook {
     cp ${TEMPLATE} ${INSTANCE}
 
     # Expand common contents inside instance.
-    docbook_expandLicenses ${INSTANCE}
+    docbook_setExpansionLicenses ${INSTANCE}
 
     # When translated instances are rendered, system entities (e.g.,
     # `%entity-name;') don't appear in the translated instance (it
@@ -50,7 +50,7 @@ function docbook {
     # successfully and automate the whole creation of system entities,
     # don't let this duty ion users'. Instead, make centos-art.sh
     # script responsible of it.
-    docbook_expandSystemEntities ${INSTANCE}
+    docbook_setExpansionSystemEntities ${INSTANCE}
 
     # Print validating action.
     cli_printMessage "${INSTANCE}" --as-validating-line
@@ -77,20 +77,20 @@ function docbook {
     # design model instance in order to produce the translated design
     # model instance.
     if [[ -f ${TRANSLATION} ]];then
-        docbook_doTranslation ${INSTANCE}
+        docbook_setTranslation ${INSTANCE}
     fi
 
     # Convert DocBook source files to other formats.
-    docbook_convertToXhtmlChunk ${INSTANCE}
-    docbook_convertToXhtml ${INSTANCE}
-    docbook_convertToText
+    docbook_setConversionXhtmlChunks ${INSTANCE}
+    docbook_setConversionXhtml ${INSTANCE}
+    docbook_setConversionText
 
     # NOTE: The current transformation from DocBook to PDF fails when
     # we started to use DocBook <index /> tags inside DocBook files.
     # Probably we need to test what happen when a newer release of XSL
     # is used. Thus, comment production of PDF files until it can be
     # produced correctly.
-    #docbook_convertToPdfFromXml
+    #docbook_setConversionXml2Pdf
 
     # NOTE: From version 5.0 on, DocBook specification is no longer a
     # SGML specification but an XML specification only. Thus,
@@ -98,9 +98,9 @@ function docbook {
     # supported in `centos-art.sh' script.
 
     # Perform format post-rendition.
-    docbook_doPostActions
+    docbook_setPostRendition
 
     # Perform format last-rendition.
-    docbook_doLastActions
+    docbook_setLastRendition
 
 }

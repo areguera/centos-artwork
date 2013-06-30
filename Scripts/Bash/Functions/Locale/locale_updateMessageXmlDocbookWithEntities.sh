@@ -43,8 +43,8 @@ function locale_updateMessageXmlDocbookWithEntities {
     cp ${TEMPLATE} ${INSTANCE}
 
     # Expand common contents inside instance.
-    cli_exportFunctions "Render/Docbook/docbook_expandLicenses"
-    docbook_expandLicenses ${INSTANCE}
+    cli_exportFunctions "Render/Docbook/docbook_setExpansionLicenses"
+    docbook_setExpansionLicenses ${INSTANCE}
 
     # When translated instances are rendered, system entities (e.g.,
     # `%entity-name;') don't appear in the translated instance (it
@@ -53,8 +53,8 @@ function locale_updateMessageXmlDocbookWithEntities {
     # successfully and automate the whole creation of system entities,
     # don't let this duty ion users'. Instead, make centos-art.sh
     # script responsible of it.
-    cli_exportFunctions "Render/Docbook/docbook_expandSystemEntities"
-    docbook_expandSystemEntities ${INSTANCE}
+    cli_exportFunctions "Render/Docbook/docbook_setExpansionSystemEntities"
+    docbook_setExpansionSystemEntities ${INSTANCE}
 
     # Create portable object template from instance.  Validate
     # translated instance before processing it. This step is very

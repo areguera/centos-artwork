@@ -32,13 +32,13 @@ function render_getDirOutput {
         -e "s!Identity/Models!Identity/Images!" \
         -e "s!Themes/${FLAG_THEME_MODEL}!Themes/$(cli_getPathComponent $ACTIONVAL --motif)!" \
         -e "s!Documentation/Models!Documentation/Manuals!" \
-        -e "s!/Tpl!!")
+        -e "s!/Models!!")
 
-    # By default rendered identity content is stored immediately under
-    # identity entry structure,  but if `Img/' directory exists use it
-    # instead.
-    if [[ -d "${OUTPUT}/Img" ]];then
-        OUTPUT=${OUTPUT}/Img
+    # By default, images rendered are stored under Identity/Images
+    # directory structure. But if an `Images/' directory exists in the
+    # current location use it instead.
+    if [[ -d "${OUTPUT}/Images" ]];then
+        OUTPUT=${OUTPUT}/Images
     fi
 
     # Redefine base output directory to introduce specific information

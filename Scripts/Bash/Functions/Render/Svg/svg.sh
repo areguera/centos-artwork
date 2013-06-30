@@ -40,11 +40,11 @@ function svg {
     svg_checkModelExportId "$INSTANCE" "$EXPORTID" 
 
     # Check existence of external files. Inside design templates and
-    # their instances, external files are used to refere the
-    # background information required by the design template. If such
-    # background information is not available the image is produced
-    # without background information. This is something that need to
-    # be avoided.
+    # their instances, external files are used to refer the background
+    # information required by the design template. If such background
+    # information is not available the image is produced without
+    # background information. This is something that need to be
+    # avoided.
     svg_checkModelAbsref "$INSTANCE"
 
     # Render template instance using inkscape and save the output.

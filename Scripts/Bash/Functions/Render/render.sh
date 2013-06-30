@@ -74,7 +74,9 @@ function render {
 
     # Initialize list of supported file extensions. These file
     # extensions are used to build the list of source files we'll use
-    # to create images from.
+    # to create images from. The order in which these extensions are
+    # listed here determines the order in which they are process if
+    # more than one is found in the same location.
     local RENDER_EXTENSIONS='svgz svg docbook conf'
 
     # Initialize the rendition format name as an empty value. The name
@@ -104,13 +106,13 @@ function render {
         ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
 
         # Verify non-option arguments passed to centos-art.sh
-        # command-line. It should point to a path inside the
-        # repository which is not under version control (because is
-        # used to stored rendered content). In case the directory
-        # doesn't exist, create it and continue.
-        if [[ ! -d ${ACTIONVAL} ]];then
-            mkdir -p ${ACTIONVAL}
-        fi
+        # command-line. The path provided as argument must exist in
+        # the repository.  Otherwise, it would be possible to create
+        # arbitrary directories inside the repository without any
+        # meaning. In order to be sure all required directories are
+        # available in the repository it is necessary use the prepare
+        # functionality.
+        #cli_checkFiles ${ACTIONVAL} -d
 
         # Define render-able directories and the way they are
         # produced.  To describe the way render-able directories are
@@ -118,11 +120,13 @@ function render {
         # and describe the production through an action name
         # (ACTIONNAM).
         if [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Images/Themes" ]];then
-            ACTIONNAM="render_doThemeActions"
+            ACTIONNAM="render_setThemes"
+        elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Images/Brands" ]];then
+            ACTIONNAM="render_setBrands"
         elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Identity/Images" ]];then
-            ACTIONNAM="render_doBaseActions"
+            ACTIONNAM="render_setBaseRendition"
         elif [[ $ACTIONVAL =~ "^${TCAR_WORKDIR}/Documentation/Manuals/(Docbook|Svg)/[[:alnum:]-]+" ]];then
-            ACTIONNAM="render_doBaseActions"
+            ACTIONNAM="render_setBaseRendition"
         else
             cli_printMessage "`gettext "The path provided doesn't support rendition."`" --as-error-line
         fi

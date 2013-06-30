@@ -32,7 +32,7 @@ function cli_getPathComponent {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-release,motif-pattern'
+    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-release,motif-pattern,repo-dir'
 
     # Define release pattern.
     local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+))?)"
@@ -123,6 +123,12 @@ function cli_getPathComponent {
 
             --motif-pattern )
                 echo "${THEME_MOTIF}"
+                shift 1
+                break
+                ;;
+
+            --repo-dir )
+                echo "${LOCATION}" | sed "s,${TCAR_WORKDIR}/,,"
                 shift 1
                 break
                 ;;

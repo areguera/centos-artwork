@@ -35,7 +35,12 @@
     <listitem>
     <para>
         This directory contains GIMP brushes. Brushes stored in this
-        directory will be available inside GIMP's brushes dialog.
+        directory will be available inside GIMP's brushes dialog. This
+        directory organizes brushes files inside <filename
+        class="directory">Images</filename> and <filename
+        class="directory">Models</filename> directories. Inside
+        <filename class="directory">Models</filename> directory we
+        find the GIMP projects used to build the brush images.
     </para>
     </listitem>
     </varlistentry>
@@ -45,7 +50,12 @@
     <listitem>
     <para>
         This directory contains GIMP patterns. Patterns stored in this
-        directory will be available inside GIMP's patterns dialog.
+        directory will be available inside GIMP's patterns dialog. This
+        directory organizes patterns files inside <filename
+        class="directory">Images</filename> and <filename
+        class="directory">Models</filename> directories. Inside
+        <filename class="directory">Models</filename> directory we
+        find the GIMP projects used to build the pattern images.
     </para>
     </listitem>
     </varlistentry>
@@ -56,7 +66,11 @@
     <para>
         This directory contains GIMP gradients. Gradients stored in
         this directory will be available inside GIMP's gradients
-        dialog.
+        dialog. This directory organizes gradient files inside
+        <filename class="directory">Images</filename> and <filename
+        class="directory">Models</filename> directories. Inside
+        <filename class="directory">Models</filename> directory we
+        find the GIMP projects used to build the gradient images.
     </para>
     </listitem>
     </varlistentry>
@@ -67,7 +81,13 @@
     <para>
         This directory contains font files. Font files stored in this
         directory will be available to be used from applications like
-        GIMP and Inkscape. 
+        GIMP and Inkscape. This directory organizes font files inside
+        <filename class="directory">Images</filename> and <filename
+        class="directory">Models</filename> directories. Inside
+        <filename class="directory">Models</filename> directory we
+        find the Fontforge projects used to build the font files,
+        which are stored in the <filename
+        class="directory">Images</filename> directory.
     </para>
     </listitem>
     </varlistentry>

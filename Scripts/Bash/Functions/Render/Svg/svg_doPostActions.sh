@@ -73,9 +73,6 @@ function svg_doPostActions {
                 POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngTo:jpg pdf'
             fi
 
-        elif [[ $TEMPLATE =~ "Identity/Models/Brands/.+\.${RENDER_EXTENSION}$" ]];then
-            POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToBrands'
-
         elif [[ $TEMPLATE =~ "Identity/Models/Icons/.+\.${RENDER_EXTENSION}$" ]];then
             POSTACTIONS[((++${#POSTACTIONS[*]}))]='convertPngToIcons'
 

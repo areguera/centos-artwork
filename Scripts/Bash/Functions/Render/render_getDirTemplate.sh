@@ -61,8 +61,8 @@ function render_getDirTemplate {
 
     # Define absolute path to input files using absolute path from
     # output files.
-    if [[ -d ${TEMPLATE}/Tpl ]];then
-        TEMPLATE=${TEMPLATE}/Tpl
+    if [[ -d ${TEMPLATE}/Models ]];then
+        TEMPLATE=${TEMPLATE}/Models
     else
         TEMPLATE=$(echo "$TEMPLATE" | sed -r \
             -e "s!/Themes/$(cli_getPathComponent $ACTIONVAL --motif)!/Themes/${FLAG_THEME_MODEL}!" \
