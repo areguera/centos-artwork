@@ -1,0 +1,2272 @@
+# Spanish translations for centos-art-0.4 package
+# Traducciones al español para el paquete centos-art-0.4.
+# Copyright (C) 2013 The CentOS Project
+# This file is distributed under the same license as the centos-art-0.4 package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: centos-art-0.4\n"
+"Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org>\n"
+"POT-Creation-Date: 2013-05-30 23:31-0400\n"
+"PO-Revision-Date: 2013-05-30 23:31-0400\n"
+"Last-Translator: Documentation SIG\n"
+"Language-Team: Español\n"
+"MIME-Version: 1.0\n"
+"Content-Type: textplain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Scripts/Bash/Functions/Commons/cli.sh:73
+#, sh-format
+msgid "The $FILE needs to have execution rights."
+msgstr "El fichero $FILE necesita tener permiso de ejecución."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:69
+msgid "isn't a directory."
+msgstr "no es un directorio."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:76
+msgid "doesn't exist."
+msgstr "no existe."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:83
+msgid "isn't a regular file."
+msgstr "no es un fichero regular."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:90
+msgid "isn't a symbolic link."
+msgstr "no es un enlace simbólico."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:97
+msgid "isn't an executable file."
+msgstr "no es un fichero ejecutable."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:105
+#, sh-format
+msgid "isn't a \"$MIME\" file."
+msgstr "isn't a \"$MIME\" file."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:112
+#, sh-format
+msgid "doesn't match its pattern."
+msgstr "no coincide con su patrón."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:126
+msgid "isn't installed in the system."
+msgstr "no está instalado en el sistema."
+
+#: Scripts/Bash/Functions/Commons/cli_checkFiles.sh:176
+msgid "The condition command provided isn't supported."
+msgstr "El comando condicional suministrado no está soportado."
+
+#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:35
+msgid "The export id doesn't match its pattern."
+msgstr "El identificador de exportación no coincide su patrón."
+
+#: Scripts/Bash/Functions/Commons/cli_exportFunctions.sh:70
+msgid "No function file was found."
+msgstr "Ningún fichero de función fue encontrado."
+
+#: Scripts/Bash/Functions/Commons/cli_getConfigLines.sh:42
+msgid "The configuration section provided is incorrect."
+msgstr "La sección de configuración suministrada es incorrecta."
+
+#: Scripts/Bash/Functions/Commons/cli_getTemporalFile.sh:38
+msgid "The first argument cannot be empty."
+msgstr "El primer argumento no puede estar vacío."
+
+#: Scripts/Bash/Functions/Commons/cli_printCopyrightInfo.sh:44
+msgid "Creative Common Attribution-ShareAlike 3.0 License"
+msgstr ""
+
+#: Scripts/Bash/Functions/Commons/cli_printCopyrightInfo.sh:104
+msgid "All rights reserved."
+msgstr "Todos los derechos reservados."
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:33
+msgid "The message cannot be empty."
+msgstr "El mensaje no puede estar vacío."
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:90
+msgid "To know more, run"
+msgstr "Para conocer más, ejecute"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:97
+msgid "yes"
+msgstr "sí"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:100
+msgid "no"
+msgstr "no"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:187
+msgid "Cropping from"
+msgstr "Recortando de"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:191
+msgid "Tuning-up"
+msgstr "Afinado"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:195
+msgid "Checking"
+msgstr "Comprobando"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:199
+msgid "Combining"
+msgstr "Combinando"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:204
+msgid "Updating"
+msgstr "Actualizando"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:206
+msgid "Creating"
+msgstr "Creando"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:211
+msgid "Deleting"
+msgstr "Eliminando"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:215
+msgid "Reading"
+msgstr "Leyendo"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:219
+msgid "Saved as"
+msgstr "Guardado como"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:223
+msgid "Linked to"
+msgstr "Enlazado a"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:227
+msgid "Moved to"
+msgstr "Movido a"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:231
+msgid "Translation"
+msgstr "Traducción"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:235
+msgid "Validating"
+msgstr "Validando"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:239
+msgid "Template"
+msgstr "Plantilla"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:243
+msgid "Configuration"
+msgstr "Configuración"
+
+#: Scripts/Bash/Functions/Commons/cli_printMessage.sh:247
+msgid "Palette"
+msgstr "Paleta"
+
+#: Scripts/Bash/Functions/Commons/cli_unsetFunctions.sh:37
+msgid "The export id was not provided."
+msgstr "El identificador de exportación no fue suministrado."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:35
+#: Scripts/Bash/Functions/Help/help_getEntries.sh:116
+msgid "The documentation entry provided isn't supported."
+msgstr "La entrada de documentación suministrada no está soportada."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo.sh:91
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntry.sh:70
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntry.sh:63
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_renameEntry.sh:70
+msgid "The parameters you provided are not supported."
+msgstr "Los parámetros que usted suministró no están soportados."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:37
+msgid "The source location doesn't exist."
+msgstr "La ubicación de origen no existe."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:43
+msgid "The source and target locations cannot be the same."
+msgstr "La ubicación de origen y destino no puden ser las mismas."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:50
+msgid "The source location has pending changes."
+msgstr "La ubicación de origen tiene cambios pendientes."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_checkEntrySrcDst.sh:63
+msgid "The target location already exists."
+msgstr "La ubicación de destino ya existe."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_copyEntrySection.sh:51
+msgid "The location provided as target isn't valid."
+msgstr "La ubicación suministrada como destino no es válida."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:36
+msgid "The following documentation chapter doesn't exist:"
+msgstr "El capítulo de documentación siguiente no existe:"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:38
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:38
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:42
+msgid "Do you want to create it now?"
+msgstr "¿Desea crearlo ahora?"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createChapter.sh:47
+msgid "Enter chapter's title"
+msgstr "Entre el título del capítulo"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:36
+#, sh-format
+msgid "The following documentation manual doesn't exist:"
+msgstr "El manual de documentación siguiente no existe:"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:47
+msgid "Enter manual's title"
+msgstr "Entre el título del manual"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:49
+msgid "Enter manual's subtitle"
+msgstr "Entre el subtítulo del manual"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:51
+msgid "Enter manual's abstract"
+msgstr "Entre el preámbulo del manual"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_createStructure.sh:57
+msgid "The manual title cannot be empty."
+msgstr "El título del manual no puede estar vacío."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:41
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_getEntryNode.sh:33
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:45
+msgid "The first positional parameter cannot be empty."
+msgstr "El primer argumento de posición no puede estar vacío."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:50
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteCrossReferences.sh:62
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:38
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_renameCrossReferences.sh:43
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:53
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_restoreCrossReferences.sh:54
+msgid "Removed"
+msgstr "Eliminando"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_deleteEntryChapter.sh:41
+msgid "The chapter specified cannot be removed."
+msgstr "El capítulo especificado no puede eliminarse."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_editEntry.sh:40
+msgid "The following documentation section doesn't exist:"
+msgstr "La sección de documentación siguiente no existe:"
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_updateLicenseLink.sh:52
+msgid "has an old directory structure."
+msgstr "tiene una estructura de directorio vieja."
+
+#: Scripts/Bash/Functions/Help/Texinfo/texinfo_updateStructureSection.sh:114
+msgid "There wasn't any section for processing found."
+msgstr "No se encontraron secciones para ser procesadas."
+
+#: Scripts/Bash/Functions/Help/help_getOptions.sh:79
+msgid "The documentation format provided is not supported."
+msgstr "El formato de documentación suministrado no está soportado."
+
+#: Scripts/Bash/Functions/Locale/locale_combineLicenseMessages.sh:29
+msgid "One argument is required."
+msgstr "Un argumento es necesario."
+
+#: Scripts/Bash/Functions/Locale/locale_editMessages.sh:32
+#: Scripts/Bash/Functions/Locale/locale_updateMessages.sh:36
+msgid "The English language cannot be localized to itself."
+msgstr "El idioma Inglés no puede ser traducido a sí mismo."
+
+#: Scripts/Bash/Functions/Locale/locale_editMessages.sh:39
+#: Scripts/Bash/Functions/Locale/locale_editMessages.sh:69
+#: Scripts/Bash/Functions/Locale/locale_updateMessages.sh:43
+msgid "The path provided does not support localization."
+msgstr "El camino suministrado no soporta la localización."
+
+#: Scripts/Bash/Functions/Locale/locale_editMessages.sh:74
+msgid "The path provided hasn't translations yet."
+msgstr "El camino suministrado no tiene traducciones aún."
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:28
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:28
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:33
+msgid "Andorra"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:36
+msgid "United Arab Emirates"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:39
+msgid "Afghanistan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:42
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:45
+msgid "Anguilla"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:48
+msgid "Albania"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:51
+msgid "Armenia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:54
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:57
+msgid "Angola"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:60
+msgid "Antarctica"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:63
+msgid "Argentina"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:66
+msgid "Samoa (American)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:69
+msgid "Austria"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:72
+msgid "Australia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:75
+msgid "Aruba"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:78
+msgid "Azerbaijan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:81
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:84
+msgid "Barbados"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:87
+msgid "Bangladesh"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:90
+msgid "Belgium"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:93
+msgid "Burkina Faso"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:96
+msgid "Bulgaria"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:99
+msgid "Bahrain"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:102
+msgid "Burundi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:105
+msgid "Benin"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:108
+msgid "Bermuda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:111
+msgid "Brunei"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:114
+msgid "Bolivia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:117
+msgid "Brazil"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:120
+msgid "Bahamas"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:123
+msgid "Bhutan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:126
+msgid "Bouvet Island"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:129
+msgid "Botswana"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:132
+msgid "Belarus"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:135
+msgid "Belize"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:138
+msgid "Canada"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:141
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:144
+msgid "Congo (Dem. Rep.)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:147
+msgid "Central African Rep."
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:150
+msgid "Congo (Rep.)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:153
+msgid "Switzerland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:156
+msgid "Co^te d'Ivoire"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:159
+msgid "Cook Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:162
+msgid "Chile"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:165
+msgid "Cameroon"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:168
+msgid "China"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:171
+msgid "Colombia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:174
+msgid "Costa Rica"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:177
+msgid "Serbia and Montenegro"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:180
+msgid "Cuba"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:183
+msgid "Cape Verde"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:186
+msgid "Christmas Island"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:189
+msgid "Cyprus"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:192
+msgid "Czech Republic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:195
+msgid "Germany"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:198
+msgid "Djibouti"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:201
+msgid "Denmark"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:204
+msgid "Dominica"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:207
+msgid "Dominican Republic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:210
+msgid "Algeria"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:213
+msgid "Ecuador"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:216
+msgid "Estonia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:219
+msgid "Egypt"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:222
+msgid "Western Sahara"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:225
+msgid "Eritrea"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:228
+msgid "Spain"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:231
+msgid "Ethiopia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:234
+msgid "Finland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:237
+msgid "Fiji"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:240
+msgid "Falkland Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:243
+msgid "Micronesia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:246
+msgid "Faeroe Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:249
+msgid "France"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:252
+msgid "Gabon"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:255
+msgid "Britain (UK)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:258
+msgid "Grenada"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:261
+msgid "Georgia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:264
+msgid "French Guiana"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:267
+msgid "Ghana"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:270
+msgid "Gibraltar"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:273
+msgid "Greenland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:276
+msgid "Gambia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:279
+msgid "Guinea"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:282
+msgid "Guadeloupe"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:285
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:288
+msgid "Greece"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:291
+msgid "South Georgia and the South Sandwich Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:294
+msgid "Guatemala"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:297
+msgid "Guam"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:300
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:303
+msgid "Guyana"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:306
+msgid "Hong Kong"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:309
+msgid "Heard Island and McDonald Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:312
+msgid "Honduras"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:315
+msgid "Croatia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:318
+msgid "Haiti"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:321
+msgid "Hungary"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:324
+msgid "Indonesia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:327
+msgid "Ireland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:330
+msgid "Israel"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:333
+msgid "India"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:336
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:339
+msgid "Iraq"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:342
+msgid "Iran"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:345
+msgid "Iceland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:348
+msgid "Italy"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:351
+msgid "Jamaica"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:354
+msgid "Jordan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:357
+msgid "Japan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:360
+msgid "Kenya"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:363
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:366
+msgid "Cambodia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:369
+msgid "Kiribati"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:372
+msgid "Comoros"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:375
+msgid "St Kitts and Nevis"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:378
+msgid "Korea (North)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:381
+msgid "Korea (South)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:384
+msgid "Kuwait"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:387
+msgid "Cayman Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:390
+msgid "Kazakhstan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:393
+msgid "Laos"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:396
+msgid "Lebanon"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:399
+msgid "St Lucia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:402
+msgid "Liechtenstein"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:405
+msgid "Sri Lanka"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:408
+msgid "Liberia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:411
+msgid "Lesotho"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:414
+msgid "Lithuania"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:417
+msgid "Luxembourg"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:420
+msgid "Latvia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:423
+msgid "Libya"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:426
+msgid "Morocco"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:429
+msgid "Monaco"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:432
+msgid "Moldova"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:435
+msgid "Madagascar"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:438
+msgid "Marshall Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:441
+msgid "Macedonia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:444
+msgid "Mali"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:447
+msgid "Myanmar (Burma)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:450
+msgid "Mongolia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:453
+msgid "Macao"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:456
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:459
+msgid "Martinique"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:462
+msgid "Mauritania"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:465
+msgid "Montserrat"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:468
+msgid "Malta"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:471
+msgid "Mauritius"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:474
+msgid "Maldives"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:477
+msgid "Malawi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:480
+msgid "Mexico"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:483
+msgid "Malaysia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:486
+msgid "Mozambique"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:489
+msgid "Namibia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:492
+msgid "New Caledonia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:495
+msgid "Niger"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:498
+msgid "Norfolk Island"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:501
+msgid "Nigeria"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:504
+msgid "Nicaragua"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:507
+msgid "Netherlands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:510
+msgid "Norway"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:513
+msgid "Nepal"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:516
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:476
+msgid "Nauru"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:519
+msgid "Niue"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:522
+msgid "New Zealand"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:525
+msgid "Oman"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:528
+msgid "Panama"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:531
+msgid "Peru"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:534
+msgid "French Polynesia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:537
+msgid "Papua New Guinea"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:540
+msgid "Philippines"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:543
+msgid "Pakistan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:546
+msgid "Poland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:549
+msgid "St Pierre and Miquelon"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:552
+msgid "Pitcairn"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:555
+msgid "Puerto Rico"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:558
+msgid "Palestine"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:561
+msgid "Portugal"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:564
+msgid "Palau"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:567
+msgid "Paraguay"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:570
+msgid "Qatar"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:573
+msgid "Reunion"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:576
+msgid "Romania"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:579
+msgid "Russia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:582
+msgid "Rwanda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:585
+msgid "Saudi Arabia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:588
+msgid "Solomon Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:591
+msgid "Seychelles"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:594
+msgid "Sudan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:597
+msgid "Sweden"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:600
+msgid "Singapore"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:603
+msgid "St Helena"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:606
+msgid "Slovenia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:609
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:612
+msgid "Slovakia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:615
+msgid "Sierra Leone"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:618
+msgid "San Marino"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:621
+msgid "Senegal"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:624
+msgid "Somalia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:627
+msgid "Suriname"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:630
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:633
+msgid "El Salvador"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:636
+msgid "Syria"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:639
+msgid "Swaziland"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:642
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:645
+msgid "Chad"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:648
+msgid "French Southern and Antarctic Lands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:651
+msgid "Togo"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:654
+msgid "Thailand"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:657
+msgid "Tajikistan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:660
+msgid "Tokelau"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:663
+msgid "Timor-Leste"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:666
+msgid "Turkmenistan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:669
+msgid "Tunisia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:672
+msgid "Tonga"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:675
+msgid "Turkey"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:678
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:681
+msgid "Tuvalu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:684
+msgid "Taiwan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:687
+msgid "Tanzania"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:690
+msgid "Ukraine"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:693
+msgid "Uganda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:696
+msgid "US minor outlying islands"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:699
+msgid "United States"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:702
+msgid "Uruguay"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:705
+msgid "Uzbekistan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:708
+msgid "Vatican City"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:711
+msgid "St Vincent"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:714
+msgid "Venezuela"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:717
+msgid "Virgin Islands (UK)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:720
+msgid "Virgin Islands (US)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:723
+msgid "Vietnam"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:726
+msgid "Vanuatu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:729
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:732
+msgid "Samoa (Western)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:735
+msgid "Yemen"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:738
+msgid "Mayotte"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:741
+msgid "South Africa"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:744
+msgid "Zambia"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getCountryName.sh:747
+msgid "Zimbabwe"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:33
+msgid "Afar"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:37
+msgid "Abkhazian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:41
+msgid "Avestan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:45
+msgid "Afrikaans"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:49
+msgid "Akan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:53
+msgid "Amharic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:57
+msgid "Aragonese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:61
+msgid "Arabic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:65
+msgid "Assamese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:69
+msgid "Avaric"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:73
+msgid "Aymara"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:77
+msgid "Azerbaijani"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:81
+msgid "Bashkir"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:85
+msgid "Byelorussian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:89
+msgid "Bulgarian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:93
+msgid "Bihari"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:97
+msgid "Bislama"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:101
+msgid "Bambara"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:105
+msgid "Bengali"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:109
+msgid "Tibetan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:113
+msgid "Breton"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:117
+msgid "Bosnian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:121
+msgid "Catalan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:125
+msgid "Chechen"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:129
+msgid "Chamorro"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:133
+msgid "Corsican"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:137
+msgid "Cree"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:141
+msgid "Czech"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:145
+msgid "Church Slavic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:149
+msgid "Chuvash"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:153
+msgid "Welsh"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:157
+msgid "Danish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:161
+msgid "German"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:165
+msgid "Divehi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:169
+msgid "Dzongkha"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:173
+msgid "E'we"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:177
+msgid "Greek"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:181
+msgid "English"
+msgstr "Inglés"
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:185
+msgid "Esperanto"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:189
+msgid "Spanish"
+msgstr "Español"
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:193
+msgid "Estonian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:197
+msgid "Basque"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:200
+msgid "Persian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:204
+msgid "Fulah"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:208
+msgid "Finnish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:212
+msgid "Fijian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:216
+msgid "Faroese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:220
+msgid "French"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:224
+msgid "Frisian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:228
+msgid "Irish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:232
+msgid "Scots"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:236
+msgid "Gallegan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:240
+msgid "Guarani"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:244
+msgid "Gujarati"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:248
+msgid "Manx"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:252
+msgid "Hausa"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:256
+msgid "Hebrew"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:260
+msgid "Hindi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:264
+msgid "Hiri Motu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:268
+msgid "Croatian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:272
+msgid "Haitian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:276
+msgid "Hungarian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:280
+msgid "Armenian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:284
+msgid "Herero"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:288
+msgid "Interlingua"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:292
+msgid "Indonesian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:296
+msgid "Interlingue"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:300
+msgid "Igbo"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:304
+msgid "Sichuan Yi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:308
+msgid "Inupiak"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:312
+msgid "Ido"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:316
+msgid "Icelandic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:320
+msgid "Italian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:324
+msgid "Inuktitut"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:328
+msgid "Japanese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:332
+msgid "Javanese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:336
+msgid "Georgian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:340
+msgid "Kongo"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:344
+msgid "Kikuyu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:348
+msgid "Kuanyama"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:352
+msgid "Kazakh"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:356
+msgid "Kalaallisut"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:360
+msgid "Khmer"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:364
+msgid "Kannada"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:368
+msgid "Korean"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:372
+msgid "Kanuri"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:376
+msgid "Kashmiri"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:380
+msgid "Kurdish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:384
+msgid "Komi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:388
+msgid "Cornish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:392
+msgid "Kirghiz"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:396
+msgid "Latin"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:400
+msgid "Letzeburgesch"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:404
+msgid "Ganda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:408
+msgid "Limburgish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:412
+msgid "Lingala"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:416
+msgid "Lao"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:420
+msgid "Lithuanian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:424
+msgid "Luba-Katanga"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:428
+msgid "Latvian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:432
+msgid "Malagasy"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:436
+msgid "Marshall"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:440
+msgid "Maori"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:444
+msgid "Macedonian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:448
+msgid "Malayalam"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:452
+msgid "Mongolian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:456
+msgid "Moldavian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:460
+msgid "Marathi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:464
+msgid "Malay"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:468
+msgid "Maltese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:472
+msgid "Burmese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:480
+msgid "Norwegian Bokmaal"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:484
+msgid "Ndebele, North"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:488
+msgid "Nepali"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:492
+msgid "Ndonga"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:496
+msgid "Dutch"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:500
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:504
+msgid "Norwegian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:508
+msgid "Ndebele, South"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:512
+msgid "Navajo"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:516
+msgid "Chichewa"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:520
+msgid "Occitan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:524
+msgid "Ojibwa"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:528
+msgid "(Afan) Oromo"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:532
+msgid "Oriya"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:536
+msgid "Ossetian; Ossetic"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:540
+msgid "Panjabi; Punjabi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:544
+msgid "Pali"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:548
+msgid "Polish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:552
+msgid "Pashto, Pushto"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:556
+msgid "Portuguese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:560
+msgid "Quechua"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:564
+msgid "Rhaeto-Romance"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:568
+msgid "Rundi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:572
+msgid "Romanian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:576
+msgid "Russian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:580
+msgid "Kinyarwanda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:584
+msgid "Sanskrit"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:588
+msgid "Sardinian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:592
+msgid "Sindhi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:596
+msgid "Northern Sami"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:600
+msgid "Sango; Sangro"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:604
+msgid "Sinhalese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:608
+msgid "Slovak"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:612
+msgid "Slovenian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:616
+msgid "Samoan"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:620
+msgid "Shona"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:624
+msgid "Somali"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:628
+msgid "Albanian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:632
+msgid "Serbian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:636
+msgid "Swati; Siswati"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:640
+msgid "Sesotho; Sotho, Southern"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:644
+msgid "Sundanese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:648
+msgid "Swedish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:652
+msgid "Swahili"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:656
+msgid "Tamil"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:660
+msgid "Telugu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:664
+msgid "Tajik"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:668
+msgid "Thai"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:672
+msgid "Tigrinya"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:676
+msgid "Turkmen"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:680
+msgid "Tagalog"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:684
+msgid "Tswana; Setswana"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:688
+msgid "Tonga (?)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:692
+msgid "Turkish"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:696
+msgid "Tsonga"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:701
+msgid "Tatar"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:705
+msgid "Twi"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:709
+msgid "Tahitian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:713
+msgid "Uighur"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:717
+msgid "Ukrainian"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:721
+msgid "Urdu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:725
+msgid "Uzbek"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:729
+msgid "Venda"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:733
+msgid "Vietnamese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:737
+msgid "Volapuk; Volapuk"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:741
+msgid "Walloon"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:745
+msgid "Wolof"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:749
+msgid "Xhosa"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:753
+msgid "Yiddish (formerly ji)"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:757
+msgid "Yoruba"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:761
+msgid "Zhuang"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:765
+msgid "Chinese"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getLanguageName.sh:769
+msgid "Zulu"
+msgstr ""
+
+#: Scripts/Bash/Functions/Locale/locale_getOptions.sh:116
+msgid "You need to provide one action at least."
+msgstr "Es necesario que suministre una acción al menos."
+
+#: Scripts/Bash/Functions/Locale/locale_prepareWorkingDirectory.sh:46
+msgid "The variable L10N_WORKDIR cannot be empty."
+msgstr "La variable L10N_WORKDIR no puede estar vacía."
+
+#: Scripts/Bash/Functions/Locale/locale_updateMessages.sh:73
+msgid "The path provided doesn't support localization."
+msgstr "El camino suministrado no soporta la localización."
+
+#: Scripts/Bash/Functions/Prepare/prepare_getEnvars.sh:41
+#: Scripts/Bash/Functions/Prepare/prepare_seeEnvironment.sh:42
+msgid "Default text editor"
+msgstr "Editor de texto predeterminado"
+
+#: Scripts/Bash/Functions/Prepare/prepare_getEnvars.sh:42
+#: Scripts/Bash/Functions/Prepare/prepare_seeEnvironment.sh:43
+msgid "Default time zone representation"
+msgstr "Representación de la zona horaria predeterminada"
+
+#: Scripts/Bash/Functions/Prepare/prepare_getEnvars.sh:43
+#: Scripts/Bash/Functions/Prepare/prepare_seeEnvironment.sh:44
+msgid "Default domain used to retrieve translated messages"
+msgstr "Dominio predeterminado para recuperar los mensajes traducidos"
+
+#: Scripts/Bash/Functions/Prepare/prepare_getEnvars.sh:44
+#: Scripts/Bash/Functions/Prepare/prepare_seeEnvironment.sh:45
+msgid "Default directory used to retrive translated messages"
+msgstr "Directorio predeterminado usado para recuperar los mensajes traducidos"
+
+#: Scripts/Bash/Functions/Prepare/prepare_getEnvars.sh:45
+#: Scripts/Bash/Functions/Prepare/prepare_seeEnvironment.sh:46
+msgid "Default locale information"
+msgstr "Información de idioma predeterminada"
+
+#: Scripts/Bash/Functions/Prepare/prepare_seeEnvironment.sh:47
+msgid "Default path to your working copy"
+msgstr "Camino predeterminado a su copia de trabajo."
+
+#: Scripts/Bash/Functions/Prepare/prepare_updateEnvironment.sh:35
+msgid ""
+"To set environment variables you should run centos-art.sh using its "
+"abosolute path."
+msgstr ""
+"Para fijar las variables de entorno usted debe ejecutar centos-art.sh usando "
+"su camino absoluto."
+
+#: Scripts/Bash/Functions/Render/Docbook/docbook.sh:65
+msgid "Validation failed."
+msgstr "La validación falló."
+
+#: Scripts/Bash/Functions/Render/Docbook/docbook_convertToPdfFromXml.sh:110
+msgid "Cannot produce the PDF file."
+msgstr "No se pudo producir el fichero PDF."
+
+#: Scripts/Bash/Functions/Render/Docbook/docbook_convertToText.sh:67
+msgid "No way to convert from XHTML to plain-text found."
+msgstr "No se encontró una forma para convertir de XHTML a texto."
+
+#: Scripts/Bash/Functions/Render/Docbook/docbook_expandLicenses.sh:59
+msgid "Licenses"
+msgstr "Licencias"
+
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:57
+msgid "Area"
+msgstr "Área"
+
+#: Scripts/Bash/Functions/Render/Svg/svg.sh:59
+msgid "Background"
+msgstr "Fondo"
+
+#: Scripts/Bash/Functions/Render/Svg/svg_checkColorAmount.sh:38
+msgid "The palette does not have the correct number of colors."
+msgstr "La paleta no tiene el número correcto de colores."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_checkColorFormats.sh:84
+#, sh-format
+msgid "The \"$COLOR\" string is not a valid color code."
+msgstr "La cadena \"$COLOR\" no es un código de color válido."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:36
+msgid "The export id value cannot be empty."
+msgstr "El identificador de exportación no puede estar vacío."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_checkModelExportId.sh:42
+#, sh-format
+msgid "There is not export id ($EXPORTID) inside \"$TEMPLATE\"."
+msgstr "El identificador de exrtación ($EXPORTID) no existe en \"$TEMPLATE\"."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:54
+msgid "There is no resolution information to process."
+msgstr "No hay información de resolución a procesar."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToDm.sh:118
+#, sh-format
+msgid "The \"$DM\" display manager is not supported yet."
+msgstr "El administrador de monitor \"$DM\" no está soportado aún."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToGrub.sh:76
+#: Scripts/Bash/Functions/Render/Svg/svg_convertPngToSyslinux.sh:85
+#, sh-format
+msgid "The \"$OPTION\" option is already used."
+msgstr "La opción \"$OPTION\" ya se encuentra en uso."
+
+#: Scripts/Bash/Functions/Render/Svg/svg_doPostActions.sh:35
+msgid "Created in CentOS Artwork Repository"
+msgstr "Creado en Repositorio Artístico de CentOS"
+
+#: Scripts/Bash/Functions/Render/Svg/svg_getTTFont.sh:68
+msgid "The font provided doesn't exist."
+msgstr "La fuente suministrada no existe."
+
+#: Scripts/Bash/Functions/Render/render.sh:125
+msgid "The path provided doesn't support rendition."
+msgstr "El camino suministrado no soporta la producción."
+
+#: Scripts/Bash/Functions/Render/render_doBaseActions.sh:61
+#, sh-format
+msgid "The \"$RENDER_EXTENSION\" file extension is not supported yet."
+msgstr "La extensión de ficheros \"$RENDER_EXTENSION\" no está soportado aún."
+
+#: Scripts/Bash/Functions/Render/render_getConfigOption.sh:42
+msgid "There is no action string to work with."
+msgstr "No hay cadena de acción con la cual trabajar."
+
+#: Scripts/Bash/Functions/Render/render_getConfigOption.sh:48
+msgid "The field definition is not valid."
+msgstr "La definición del campo no es válida."
+
+#: Scripts/Bash/Functions/Render/render_getOptions.sh:84
+msgid "The architecture provided is not supported."
+msgstr "La arquitectura suministrada no está soportada."
+
+#: Scripts/Bash/Functions/Render/render_getOptions.sh:92
+msgid "The release version provided is not supported."
+msgstr "La versión de la entrega suministrada no está soportada."
+
+#: Scripts/Bash/Functions/Tuneup/Xhtml/xhtml_doToc.sh:139
+msgid "Table of contents"
+msgstr "Tabla de contenidos"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:43
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:47
+msgid "Checking changes in the working copy"
+msgstr "Comprobando cambios en la copia de trabajo"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:67
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:80
+msgid "Modified"
+msgstr "Modificados"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:68
+msgid "Untracked"
+msgstr "Sin rastrear"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:69
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:82
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:60
+msgid "Deleted"
+msgstr "Eliminado"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:70
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:83
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:59
+msgid "Added"
+msgstr "Adicionado"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:71
+msgid "Staged"
+msgstr "Indexado"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:91
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:103
+msgid "file in the working copy"
+msgid_plural "files in the working copy"
+msgstr[0] "fichero en la copia de trabajo"
+msgstr[1] "ficheros en la copia de trabajo"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:103
+msgid "Do you want to stage files?"
+msgstr "¿Desea indexar los ficheros?"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:107
+msgid "Do you want to see staged files differences?"
+msgstr "¿Desea ver las diferencias de los ficheros indexados?"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:111
+msgid "Do you want to commit staged files differences?"
+msgstr "¿Desea registrar las diferencias indexadas?"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_commitRepoChanges.sh:115
+msgid "Do you want to push committed files?"
+msgstr "¿Desea enviar los cambios registrados?"
+
+#: Scripts/Bash/Functions/Vcs/Git/git_isVersioned.sh:44
+msgid " contains untracked files."
+msgstr " contiene ficheros sin rastrear."
+
+#: Scripts/Bash/Functions/Vcs/Git/git_updateRepoChanges.sh:29
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:46
+msgid "Bringing changes from the repository into the working copy"
+msgstr "Acarreando cambios desde el repositorio hacia la copia de trabajo"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:81
+msgid "Unversioned"
+msgstr "Sin versionar"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:119
+msgid "Do you want to see changes now?"
+msgstr "¿Desea ver los cambios ahora?"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:123
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:140
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:150
+msgid "Do you want to commit changes now?"
+msgstr "¿Desea enviar los cambios ahora?"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_commitRepoChanges.sh:134
+msgid "Do you want to add unversioned files now?"
+msgstr "¿Desea adicionar ficheros sin versionar ahora?"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:61
+msgid "Updated"
+msgstr "Actualizado"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:62
+msgid "Conflicted"
+msgstr "En conflicto"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:63
+msgid "Merged"
+msgstr "Mezclado"
+
+#: Scripts/Bash/Functions/Vcs/Subversion/subversion_updateRepoChanges.sh:83
+msgid "file from the repository"
+msgid_plural "files from the repository"
+msgstr[0] "fichero desde el repositorio"
+msgstr[1] "ficheros desde el repositorio"
+
+#: Scripts/Bash/Functions/Vcs/vcs.sh:59
+msgid "isn't supported as version control system."
+msgstr "no está soportado como sistema de control de versión."
+
+#~ msgid "Updating chapter menus and nodes inside manual structure."
+#~ msgstr "Actualizando menús y nodos en la estructura del manual."
+
+#~ msgid "Creating chapter files."
+#~ msgstr "Creando los ficheros del capítulo"
+
+#~ msgid "Updating chapter menu and nodes inside manual structure."
+#~ msgstr "Actualizando menú y nodos dentro de la estructura del manual."
+
+#~ msgid "Manual Title"
+#~ msgstr "Título del manual"
+
+#~ msgid "Creating manual structure in texinfo format."
+#~ msgstr "Creando la estructura del manual en formato texinfo."
+
+#~ msgid "Updating output files"
+#~ msgstr "Actualizando los ficheros de salida"
+
+#~ msgid "Updating section menus, nodes and cross references"
+#~ msgstr "Actualizando menús, nodos y referencias cruzadas de sectión."
+
+#~ msgid "No section entry found to process."
+#~ msgstr "No hay entrada de sección que procesar."
+
+#~ msgid "The source location isn't under version control."
+#~ msgstr "La ubicación de origen no está bajo control de versiones."
+
+#~ msgid "is not under version control."
+#~ msgstr "no está bajo control de versión."
+
+#~ msgid "isn't under version control."
+#~ msgstr "no está bajo control de versión."
+
+#~ msgid "Select one of the following documentation formats:"
+#~ msgstr "Seleccione uno de los siguientes formatos de documentación:"
+
+#~ msgid "The template file doesn't exist."
+#~ msgstr "El fichero plantilla no existe."
