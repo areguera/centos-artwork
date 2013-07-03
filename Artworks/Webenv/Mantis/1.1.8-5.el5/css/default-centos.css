@@ -40,9 +40,10 @@ html {
 
 body {
     background-color: #ffffff; 
-	color: #000000; 
-	padding: 0 10px;
-	}
+    color: #000000; 
+    padding: 0 10px;
+    min-width: 728px;
+    }
 
 /* Links */
 
@@ -308,6 +309,23 @@ body > table:last-child div {
 body > table:last-child td {
     padding: 10px 0 0 0;
     }
+
+/* Issue History table customziation */
+
+div#history_open td {
+    /* Consume the smallest amount of horizontal space in the first
+     * columns which are not wrapped. */
+    width: 1%;
+    }
+
+div#history_open td:last-child {
+   /* Consume the largest amount of horizontal space in the last
+    * column which is wrapped. */
+    width: 97%; 
+    white-space: normal;
+    }
+
+/*  Footer */
 
 #footer {
     clear: both;
