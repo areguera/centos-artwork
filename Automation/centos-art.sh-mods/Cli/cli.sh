@@ -93,11 +93,6 @@ function cli {
     # start counting from second argument (inclusive) on.
     shift 1
 
-    # Process all arguments currently available in this function
-    # environment. If either ARGSS or ARGSL local variables have been
-    # defined, argument processing goes through getopt for validation.
-    cli_setArguments "${@}"
-
     # Define default text editors used by centos-art.sh script.
     if [[ ! "${TCAR_USER_EDITOR}" =~ '/usr/bin/(vim|emacs|nano)' ]];then
         TCAR_USER_EDITOR='/usr/bin/vim'
@@ -111,6 +106,6 @@ function cli {
     cli_exportFunctions "${CLI_FUNCTION_DIR}/${CLI_FUNCTION_NAME}"
 
     # Execute function.
-    ${CLI_FUNCTION_NAME}
+    ${CLI_FUNCTION_NAME} "${@}"
 
 }
